@@ -32,3 +32,7 @@ Added:
 - Recording detail view from History.
 - GPX export for individual recordings.
 - Full JSON backup and restore.
+- OpenStreetMap street segment fetching through Overpass.
+- Local SQLite cache for OSM street segments.
+- GPS-to-street proximity matching.
+- Explored/unexplored street overlay on the map.

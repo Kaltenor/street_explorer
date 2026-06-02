@@ -29,6 +29,7 @@ Tables:
 - `walk_sessions`
 - `gps_points`
 - `app_settings`
+- `osm_street_segments`
 
 `walk_sessions` stores one recording:
 
@@ -55,6 +56,15 @@ Tables:
 - last selected mode
 - active recording session id
 - active recording mode
+
+`osm_street_segments` caches OpenStreetMap way geometry:
+
+- OSM way id
+- name
+- highway type
+- coordinate geometry
+- bounding box
+- fetched timestamp
 
 ## Recording Flow
 
@@ -90,14 +100,22 @@ GPS paths are sampled along each segment. Cells touched by the path are marked e
 
 This is a temporary approximation before true OpenStreetMap street completion.
 
-## Street Completion Foundation
+## Street Completion
 
-`src/services/streetCompletion.ts` exists as the boundary for future OSM logic.
+Street completion V1 uses OpenStreetMap as a data layer while keeping Apple MapKit as the visual map background.
 
-The current implementation intentionally reports that street matching is not configured. Real street completion will require:
+Flow:
 
-- loading OSM street segment geometry
-- snapping GPS points to nearby street segments
-- marking matched segments as explored
-- calculating completion by city, district, and mode
+- Fetch nearby OSM `highway` ways through Overpass.
+- Cache way geometries in SQLite.
+- Match recorded GPS points to nearby street polylines using a distance threshold.
+- Draw unloaded/unexplored streets as gray overlays.
+- Draw matched streets as green overlays.
+- Report loaded streets, explored streets, and explored street distance.
 
+Limitations:
+
+- Long OSM ways are still counted as one street segment.
+- Matching is proximity-based and can be wrong near parallel roads.
+- Completion is based on loaded nearby streets, not full city boundaries yet.
+- Completion is not separated by activity mode yet.

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Alert, AppState, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -49,7 +49,9 @@ import {
   calculateExploredCellCount,
   calculateNewCellsForActivePath
 } from "../services/explorationArea";
-import { getStreetCompletionSummary } from "../services/streetCompletion";
+import { getStreetSegmentsNear, upsertStreetSegments } from "../database/streetRepository";
+import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
+import { calculateStreetCompletion } from "../services/streetCompletion";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
@@ -72,6 +74,7 @@ import {
   WalkSession,
   WalkWithPoints
 } from "../types/walk";
+import { OsmStreetSegment, StreetCompletionSummary } from "../types/street";
 
 const EMPTY_STATS: LifetimeStats = {
   walkCount: 0,
@@ -87,6 +90,8 @@ const EMPTY_STATS: LifetimeStats = {
   todayRecordingCount: 0
 };
 
+const OSM_STREET_RADIUS_METERS = 1400;
+
 type MapScreenProps = {
   activityMode: ActivityMode;
   onChangeMode: () => void;
@@ -99,6 +104,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [history, setHistory] = useState<WalkSession[]>([]);
   const [activeWalk, setActiveWalk] = useState<ActiveWalk | null>(null);
   const [stats, setStats] = useState<LifetimeStats>(EMPTY_STATS);
+  const [streetSegments, setStreetSegments] = useState<OsmStreetSegment[]>([]);
+  const [streetStatus, setStreetStatus] = useState<StreetCompletionSummary["status"]>("empty");
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [historyVisible, setHistoryVisible] = useState(false);
@@ -117,6 +124,17 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
+  const streetCacheCenterRef = useRef<GpsPoint | null>(null);
+  const streetCompletion = useMemo(
+    () =>
+      calculateStreetCompletion(
+        walks,
+        activeWalk?.points ?? [],
+        streetSegments,
+        streetStatus
+      ),
+    [activeWalk?.points, streetSegments, streetStatus, walks]
+  );
 
   const refreshSavedData = useCallback(async () => {
     const [savedWalks, lifetimeStats, savedHistory] = await Promise.all([
@@ -164,6 +182,35 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   useEffect(() => {
     refreshSavedData();
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    if (!currentLocation) {
+      return;
+    }
+
+    if (
+      streetCacheCenterRef.current &&
+      calculatePathDistanceMeters([streetCacheCenterRef.current, currentLocation]) < 250
+    ) {
+      return;
+    }
+
+    streetCacheCenterRef.current = currentLocation;
+
+    getStreetSegmentsNear(
+      currentLocation.latitude,
+      currentLocation.longitude,
+      OSM_STREET_RADIUS_METERS
+    )
+      .then((cachedSegments) => {
+        setStreetSegments(cachedSegments);
+        setStreetStatus(cachedSegments.length > 0 ? "ready" : "empty");
+      })
+      .catch((error) => {
+        console.warn("Failed to load cached OSM streets", error);
+        setStreetStatus("error");
+      });
+  }, [currentLocation]);
 
   useEffect(() => {
     requestForegroundLocationPermission()
@@ -558,6 +605,37 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     );
   }, [activeWalk, refreshSavedData]);
 
+  const handleLoadNearbyStreets = useCallback(async () => {
+    if (!currentLocation) {
+      Alert.alert("Location unavailable", "Wait for GPS before loading nearby OSM streets.");
+      return;
+    }
+
+    setStreetStatus("loading");
+
+    try {
+      const fetchedSegments = await fetchNearbyOsmStreetSegments(
+        currentLocation,
+        OSM_STREET_RADIUS_METERS
+      );
+
+      await upsertStreetSegments(fetchedSegments);
+
+      const cachedSegments = await getStreetSegmentsNear(
+        currentLocation.latitude,
+        currentLocation.longitude,
+        OSM_STREET_RADIUS_METERS
+      );
+
+      setStreetSegments(cachedSegments);
+      setStreetStatus("ready");
+    } catch (error) {
+      console.warn("Failed to load nearby OSM streets", error);
+      setStreetStatus("error");
+      Alert.alert("OSM load failed", "Street Explorer could not fetch nearby OpenStreetMap streets.");
+    }
+  }, [currentLocation]);
+
   const handleChangeMode = useCallback(() => {
     if (activeWalk) {
       Alert.alert("Recording active", "Stop the current recording before changing mode.");
@@ -589,8 +667,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         walks={walks}
         activePoints={activeWalk?.points ?? []}
         currentLocation={currentLocation}
+        exploredStreetIds={streetCompletion.exploredStreetIds}
         highlightedSessionId={selectedSessionId}
         layers={layers}
+        streetSegments={streetSegments}
       />
 
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
@@ -691,7 +771,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         ) : null}
 
         {layers.showStreetLayer ? (
-          <StreetCompletionPanel summary={getStreetCompletionSummary(walks)} />
+          <StreetCompletionPanel
+            canLoad={Boolean(currentLocation)}
+            isLoading={streetCompletion.summary.status === "loading"}
+            onLoadNearbyStreets={handleLoadNearbyStreets}
+            summary={streetCompletion.summary}
+          />
         ) : null}
 
         <View style={styles.bottomPanel}>

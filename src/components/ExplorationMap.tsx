@@ -5,6 +5,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { buildExplorationCells } from "../services/explorationArea";
+import { OsmStreetSegment } from "../types/street";
 import { GpsPoint, WalkWithPoints } from "../types/walk";
 import { MapLayerState } from "./LayerControls";
 
@@ -14,6 +15,8 @@ type ExplorationMapProps = {
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
+  exploredStreetIds: Set<string>;
+  streetSegments: OsmStreetSegment[];
 };
 
 const PATH_COLORS = [
@@ -33,8 +36,10 @@ export function ExplorationMap({
   walks,
   activePoints,
   currentLocation,
+  exploredStreetIds,
   highlightedSessionId,
-  layers
+  layers,
+  streetSegments
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
@@ -158,7 +163,23 @@ export function ExplorationMap({
           />
         )) : null}
 
-        {/* TODO: Replace grid cells with OpenStreetMap street segments and GPS map matching. */}
+        {layers.showStreetLayer
+          ? streetSegments.map((segment) => {
+              const explored = exploredStreetIds.has(segment.id);
+
+              return (
+                <Polyline
+                  key={segment.id}
+                  coordinates={segment.coordinates}
+                  strokeColor={explored ? "rgba(22, 163, 74, 0.95)" : "rgba(71, 85, 105, 0.35)"}
+                  strokeWidth={explored ? 5 : 2}
+                  lineCap="round"
+                  lineJoin="round"
+                />
+              );
+            })
+          : null}
+
         {layers.showPaths ? walks.map((walk) => {
           const coordinates = walk.points.map(pointToCoordinate);
           const color = getPathColor(walk.id);

@@ -82,7 +82,22 @@ Toggle:
 
 Confirm each layer appears or disappears.
 
-The Streets layer currently only shows a status panel. Real street geometry is not loaded yet.
+## OpenStreetMap Streets Test
+
+1. Wait for GPS to locate you.
+2. Tap Show details.
+3. Turn on Streets.
+4. Tap Load in the Street completion panel.
+5. Confirm gray OSM streets appear on the map.
+6. Record or view a route near loaded streets.
+7. Confirm matched streets turn green.
+8. Restart the app and confirm loaded streets can reappear from the local cache.
+
+Notes:
+
+- The first load needs internet access.
+- Matching is V1 proximity matching, so it can be imperfect near parallel roads.
+- OSM streets are cached locally and can be refetched later.
 
 ## Recovery Test
 

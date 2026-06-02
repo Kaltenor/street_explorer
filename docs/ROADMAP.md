@@ -22,20 +22,24 @@
 - Compact live recording controls.
 - GPX export for recordings.
 - JSON backup and restore.
+- OpenStreetMap street segment fetching.
+- Local OSM street cache.
+- GPS-to-street proximity matching.
+- Explored street overlay.
 - Layer controls.
-- Street-completion service boundary.
+- Street-completion V1.
 
 ## Next Priority
 
-### 1. OpenStreetMap Street Completion V1
+### 1. OpenStreetMap Street Completion V2
 
-Build the real game layer:
+Improve the real game layer:
 
-- fetch or import OSM street segments
-- cache city street geometry locally
-- match GPS points to nearby street segments
-- mark street segments as explored
-- show street completion percentage
+- split long OSM ways into smaller completion segments
+- match by route segment overlap, not only point proximity
+- keep separate street completion by mode
+- add city/district bounds and progress
+- use a more reliable Overpass endpoint strategy
 
 ### 2. Recording Recovery V2
 

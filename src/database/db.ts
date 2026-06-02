@@ -87,6 +87,25 @@ export async function initDatabase() {
       `);
     }
   });
+
+  await applyMigration(5, "create_osm_street_segments", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS osm_street_segments (
+        id TEXT PRIMARY KEY NOT NULL,
+        name TEXT,
+        highway TEXT NOT NULL,
+        coordinates_json TEXT NOT NULL,
+        min_latitude REAL NOT NULL,
+        max_latitude REAL NOT NULL,
+        min_longitude REAL NOT NULL,
+        max_longitude REAL NOT NULL,
+        fetched_at TEXT NOT NULL
+      );
+
+      CREATE INDEX IF NOT EXISTS osm_street_segments_bounds_index
+        ON osm_street_segments (min_latitude, max_latitude, min_longitude, max_longitude);
+    `);
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {
