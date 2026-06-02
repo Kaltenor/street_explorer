@@ -37,10 +37,21 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TASK_NAME, async ({ data, error }) =>
   }
 });
 
-export async function requestBackgroundLocationPermission() {
-  const permission = await Location.requestBackgroundPermissionsAsync();
+export type BackgroundPermissionResult = {
+  backgroundStatus: Location.PermissionStatus;
+  foregroundStatus: Location.PermissionStatus;
+  granted: boolean;
+};
 
-  return permission.status === Location.PermissionStatus.GRANTED;
+export async function requestBackgroundLocationPermission(): Promise<BackgroundPermissionResult> {
+  const foregroundPermission = await Location.getForegroundPermissionsAsync();
+  const backgroundPermission = await Location.requestBackgroundPermissionsAsync();
+
+  return {
+    backgroundStatus: backgroundPermission.status,
+    foregroundStatus: foregroundPermission.status,
+    granted: backgroundPermission.status === Location.PermissionStatus.GRANTED
+  };
 }
 
 export async function startBackgroundLocationTracking(activityMode: "walk" | "wheel" | "car") {

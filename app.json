@@ -15,6 +15,7 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Street Explorer uses your location to record walks and draw your exploration map.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Street Explorer can keep recording an active exploration while the app is locked.",
+        "NSLocationAlwaysUsageDescription": "Street Explorer can keep recording an active exploration while the app is locked.",
         "UIBackgroundModes": [
           "location"
         ],

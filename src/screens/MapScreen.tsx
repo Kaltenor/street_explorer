@@ -328,16 +328,16 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           "Background tracking needs a development build; Expo Go will record only while open."
         );
       } else {
-        const hasBackgroundPermission = await requestBackgroundLocationPermission();
+        const backgroundPermission = await requestBackgroundLocationPermission();
 
-        if (hasBackgroundPermission) {
+        if (backgroundPermission.granted) {
           await startBackgroundLocationTracking(activityMode);
           setBackgroundTrackingMessage(
             "Background tracking enabled. Keep this recording stopped before switching mode."
           );
         } else {
           setBackgroundTrackingMessage(
-            "Background permission was not granted; recording continues only while the app is open."
+            `Background permission is ${backgroundPermission.backgroundStatus}; foreground is ${backgroundPermission.foregroundStatus}. Recording continues while the app is open.`
           );
         }
       }
