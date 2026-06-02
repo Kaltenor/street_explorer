@@ -19,6 +19,9 @@
 - Map legend.
 - Clearer mode switch control.
 - Expanded route details in history.
+- Compact live recording controls.
+- GPX export for recordings.
+- JSON backup and restore.
 - Layer controls.
 - Street-completion service boundary.
 
@@ -50,6 +53,15 @@ Add:
 - collapsible top panels for small screens
 - stronger route detail layout
 - clearer GPS status states
+
+### 4. Data Tools V2
+
+Add:
+
+- backup file version migration support
+- import preview before replacing local data
+- GPX import
+- bulk export per mode
 
 ## Not Planned Yet
 

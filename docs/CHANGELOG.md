@@ -28,3 +28,7 @@ Added:
 - Expanded exploration stats with today, latest, longest, cells, and total duration.
 - Map legend and clearer mode switch control.
 - Expanded route details in history.
+- Compact live recording controls with expandable details.
+- Recording detail view from History.
+- GPX export for individual recordings.
+- Full JSON backup and restore.

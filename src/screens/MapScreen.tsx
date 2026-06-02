@@ -50,6 +50,7 @@ import {
   calculateNewCellsForActivePath
 } from "../services/explorationArea";
 import { getStreetCompletionSummary } from "../services/streetCompletion";
+import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
   LocationPermissionState,
@@ -488,6 +489,75 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     [refreshSavedData]
   );
 
+  const handleExportWalkGpx = useCallback(async (sessionId: number) => {
+    try {
+      const [session, points] = await Promise.all([
+        getWalkSessionById(sessionId),
+        getGpsPointsForSession(sessionId)
+      ]);
+
+      if (!session) {
+        Alert.alert("Export unavailable", "This recording could not be found.");
+        return;
+      }
+
+      if (points.length === 0) {
+        Alert.alert("Export unavailable", "This recording has no GPS points.");
+        return;
+      }
+
+      await exportWalkGpx(session, points);
+    } catch (error) {
+      console.warn("Failed to export GPX", error);
+      Alert.alert("Export failed", "Street Explorer could not export this recording.");
+    }
+  }, []);
+
+  const handleExportBackup = useCallback(async () => {
+    try {
+      await exportBackupJson();
+    } catch (error) {
+      console.warn("Failed to export backup", error);
+      Alert.alert("Backup failed", "Street Explorer could not create the backup file.");
+    }
+  }, []);
+
+  const handleImportBackup = useCallback(() => {
+    if (activeWalk) {
+      Alert.alert("Recording active", "Stop the current recording before restoring a backup.");
+      return;
+    }
+
+    Alert.alert(
+      "Restore backup?",
+      "This replaces all local recordings with the selected backup file.",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Restore",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              const imported = await importBackupJson();
+
+              if (imported) {
+                await clearActiveRecordingSettings();
+                setSelectedSessionId(null);
+                await refreshSavedData();
+              }
+            } catch (error) {
+              console.warn("Failed to import backup", error);
+              Alert.alert("Restore failed", "Street Explorer could not restore this backup file.");
+            }
+          }
+        }
+      ]
+    );
+  }, [activeWalk, refreshSavedData]);
+
   const handleChangeMode = useCallback(() => {
     if (activeWalk) {
       Alert.alert("Recording active", "Stop the current recording before changing mode.");
@@ -630,7 +700,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             isRecording={Boolean(activeWalk)}
             distanceMeters={activeWalk?.distanceMeters ?? 0}
             durationSeconds={elapsedSeconds}
+            gpsAccuracyMeters={currentLocation?.accuracy}
+            gpsStatus={activeWalk?.lastRejectedPointReason}
             pointCount={activeWalk?.points.length ?? 0}
+            speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
             onStart={handleStartWalk}
             onStop={handleStopWalk}
           />
@@ -644,6 +717,9 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         selectedSessionId={selectedSessionId}
         onClose={() => setHistoryVisible(false)}
         onDeleteWalk={handleDeleteWalk}
+        onExportBackup={handleExportBackup}
+        onExportWalkGpx={handleExportWalkGpx}
+        onImportBackup={handleImportBackup}
         onRenameWalk={handleRenameWalk}
         onSelectWalk={setSelectedSessionId}
       />

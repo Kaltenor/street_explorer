@@ -21,6 +21,9 @@ type WalkHistoryModalProps = {
   selectedSessionId: number | null;
   onClose: () => void;
   onDeleteWalk: (sessionId: number) => void;
+  onExportBackup: () => void;
+  onExportWalkGpx: (sessionId: number) => void;
+  onImportBackup: () => void;
   onRenameWalk: (sessionId: number, displayName: string) => void;
   onSelectWalk: (sessionId: number) => void;
 };
@@ -32,14 +35,25 @@ export function WalkHistoryModal({
   selectedSessionId,
   onClose,
   onDeleteWalk,
+  onExportBackup,
+  onExportWalkGpx,
+  onImportBackup,
   onRenameWalk,
   onSelectWalk
 }: WalkHistoryModalProps) {
   const [draftNames, setDraftNames] = useState<Record<number, string>>({});
+  const [detailSessionId, setDetailSessionId] = useState<number | null>(null);
+  const detailWalk = walks.find((walk) => walk.id === detailSessionId) ?? null;
 
   useEffect(() => {
     setDraftNames(Object.fromEntries(walks.map((walk) => [walk.id, walk.displayName ?? ""])));
   }, [walks]);
+
+  useEffect(() => {
+    if (!visible) {
+      setDetailSessionId(null);
+    }
+  }, [visible]);
 
   return (
     <Modal animationType="slide" visible={visible} presentationStyle="pageSheet">
@@ -54,7 +68,43 @@ export function WalkHistoryModal({
           </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.list}>
+        {detailWalk ? (
+          <RecordingDetail
+            draftName={draftNames[detailWalk.id] ?? ""}
+            onBack={() => setDetailSessionId(null)}
+            onDeleteWalk={onDeleteWalk}
+            onExportWalkGpx={onExportWalkGpx}
+            onFocusWalk={(sessionId) => {
+              onSelectWalk(sessionId);
+              onClose();
+            }}
+            onRenameWalk={onRenameWalk}
+            onUpdateDraftName={(value) =>
+              setDraftNames((current) => ({ ...current, [detailWalk.id]: value }))
+            }
+            walk={detailWalk}
+          />
+        ) : (
+          <ScrollView contentContainerStyle={styles.list}>
+            <View style={styles.tools}>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={onExportBackup}
+                style={styles.toolButton}
+              >
+                <Ionicons name="download-outline" size={18} color="#0f172a" />
+                <Text style={styles.toolButtonText}>Backup</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={onImportBackup}
+                style={styles.toolButton}
+              >
+                <Ionicons name="cloud-upload-outline" size={18} color="#0f172a" />
+                <Text style={styles.toolButtonText}>Restore</Text>
+              </TouchableOpacity>
+            </View>
+
           {walks.length === 0 ? (
             <View style={styles.empty}>
               <Text style={styles.emptyTitle}>No recordings yet</Text>
@@ -66,46 +116,36 @@ export function WalkHistoryModal({
           ) : (
             walks.map((walk) => (
               <HistoryRow
-                draftName={draftNames[walk.id] ?? ""}
                 isSelected={walk.id === selectedSessionId}
                 key={walk.id}
-                onDeleteWalk={onDeleteWalk}
-                onRenameWalk={onRenameWalk}
-                onSelectWalk={onSelectWalk}
-                onUpdateDraftName={(value) =>
-                  setDraftNames((current) => ({ ...current, [walk.id]: value }))
-                }
+                onOpenWalk={(sessionId) => {
+                  onSelectWalk(sessionId);
+                  setDetailSessionId(sessionId);
+                }}
                 walk={walk}
               />
             ))
           )}
-        </ScrollView>
+          </ScrollView>
+        )}
       </View>
     </Modal>
   );
 }
 
 function HistoryRow({
-  draftName,
   isSelected,
   walk,
-  onDeleteWalk,
-  onRenameWalk,
-  onSelectWalk,
-  onUpdateDraftName
+  onOpenWalk
 }: {
-  draftName: string;
   isSelected: boolean;
   walk: WalkSession;
-  onDeleteWalk: (sessionId: number) => void;
-  onRenameWalk: (sessionId: number, displayName: string) => void;
-  onSelectWalk: (sessionId: number) => void;
-  onUpdateDraftName: (value: string) => void;
+  onOpenWalk: (sessionId: number) => void;
 }) {
   return (
     <TouchableOpacity
       accessibilityRole="button"
-      onPress={() => onSelectWalk(walk.id)}
+      onPress={() => onOpenWalk(walk.id)}
       style={[styles.row, isSelected ? styles.selectedRow : null]}
     >
       <View style={styles.rowHeader}>
@@ -116,47 +156,109 @@ function HistoryRow({
             {walk.pointCount ?? 0} points
           </Text>
         </View>
-        <Ionicons name={isSelected ? "chevron-up" : "chevron-down"} size={20} color="#64748b" />
+        <Ionicons name="chevron-forward" size={20} color="#64748b" />
       </View>
+    </TouchableOpacity>
+  );
+}
 
-      {isSelected ? (
+function RecordingDetail({
+  draftName,
+  walk,
+  onBack,
+  onDeleteWalk,
+  onExportWalkGpx,
+  onFocusWalk,
+  onRenameWalk,
+  onUpdateDraftName
+}: {
+  draftName: string;
+  walk: WalkSession;
+  onBack: () => void;
+  onDeleteWalk: (sessionId: number) => void;
+  onExportWalkGpx: (sessionId: number) => void;
+  onFocusWalk: (sessionId: number) => void;
+  onRenameWalk: (sessionId: number, displayName: string) => void;
+  onUpdateDraftName: (value: string) => void;
+}) {
+  return (
+    <ScrollView contentContainerStyle={styles.detailScreen}>
+      <TouchableOpacity accessibilityRole="button" onPress={onBack} style={styles.backButton}>
+        <Ionicons name="chevron-back" size={19} color="#0f172a" />
+        <Text style={styles.backButtonText}>History</Text>
+      </TouchableOpacity>
+
+      <View style={styles.detailCard}>
+        <Text style={styles.detailTitle}>{walk.displayName || formatDate(walk.startedAt)}</Text>
+        <Text style={styles.detailSubtitle}>{ACTIVITY_MODE_LABELS[walk.activityMode]} recording</Text>
+
+        <View style={styles.summaryGrid}>
+          <Summary label="Distance" value={formatDistance(walk.distanceMeters)} />
+          <Summary label="Duration" value={formatDuration(walk.durationSeconds)} />
+          <Summary label="Points" value={(walk.pointCount ?? 0).toString()} />
+          <Summary label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
+        </View>
+
         <View style={styles.details}>
-          <Text style={styles.detailsTitle}>Route details</Text>
-          <Detail label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
           <Detail label="Started" value={formatFullDate(walk.startedAt)} />
           <Detail label="Ended" value={formatFullDate(walk.endedAt)} />
-          <Detail label="Distance" value={formatDistance(walk.distanceMeters)} />
-          <Detail label="Duration" value={formatDuration(walk.durationSeconds)} />
-          <Detail label="Points" value={(walk.pointCount ?? 0).toString()} />
-
-          <TextInput
-            placeholder="Recording name"
-            onChangeText={onUpdateDraftName}
-            style={styles.input}
-            value={draftName}
-          />
-
-          <View style={styles.actions}>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => onRenameWalk(walk.id, draftName)}
-              style={styles.saveButton}
-            >
-              <Ionicons name="checkmark" size={18} color="#ffffff" />
-              <Text style={styles.saveButtonText}>Save</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => onDeleteWalk(walk.id)}
-              style={styles.deleteButton}
-            >
-              <Ionicons name="trash-outline" size={18} color="#dc2626" />
-              <Text style={styles.deleteButtonText}>Delete</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-      ) : null}
-    </TouchableOpacity>
+
+        <TextInput
+          placeholder="Recording name"
+          onChangeText={onUpdateDraftName}
+          style={styles.input}
+          value={draftName}
+        />
+
+        <View style={styles.actions}>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={() => onRenameWalk(walk.id, draftName)}
+            style={styles.saveButton}
+          >
+            <Ionicons name="checkmark" size={18} color="#ffffff" />
+            <Text style={styles.saveButtonText}>Save</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={() => onFocusWalk(walk.id)}
+            style={styles.secondaryButton}
+          >
+            <Ionicons name="locate-outline" size={18} color="#0f172a" />
+            <Text style={styles.secondaryButtonText}>Focus on map</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.actions}>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={() => onExportWalkGpx(walk.id)}
+            style={styles.secondaryButton}
+          >
+            <Ionicons name="download-outline" size={18} color="#0f172a" />
+            <Text style={styles.secondaryButtonText}>Export GPX</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={() => onDeleteWalk(walk.id)}
+            style={styles.deleteButton}
+          >
+            <Ionicons name="trash-outline" size={18} color="#dc2626" />
+            <Text style={styles.deleteButtonText}>Delete</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
+  );
+}
+
+function Summary({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.summary}>
+      <Text style={styles.summaryValue}>{value}</Text>
+      <Text style={styles.summaryLabel}>{label}</Text>
+    </View>
   );
 }
 
@@ -194,6 +296,18 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: 2
   },
+  backButton: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    flexDirection: "row",
+    gap: 4,
+    paddingVertical: 4
+  },
+  backButtonText: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "800"
+  },
   closeButton: {
     alignItems: "center",
     borderColor: "#dbe3ea",
@@ -229,9 +343,32 @@ const styles = StyleSheet.create({
     color: "#64748b",
     fontSize: 12
   },
+  detailCard: {
+    backgroundColor: "#ffffff",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 14,
+    padding: 14
+  },
   detailRow: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  detailScreen: {
+    gap: 12,
+    padding: 18
+  },
+  detailSubtitle: {
+    color: "#64748b",
+    fontSize: 13,
+    fontWeight: "700",
+    marginTop: -8
+  },
+  detailTitle: {
+    color: "#0f172a",
+    fontSize: 22,
+    fontWeight: "900"
   },
   details: {
     borderTopColor: "#e2e8f0",
@@ -330,6 +467,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "700"
   },
+  secondaryButton: {
+    alignItems: "center",
+    borderColor: "#cbd5e1",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: "row",
+    gap: 6,
+    height: 42,
+    justifyContent: "center",
+    paddingHorizontal: 12
+  },
+  secondaryButtonText: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "700"
+  },
   screen: {
     backgroundColor: "#f8fafc",
     flex: 1
@@ -337,6 +491,28 @@ const styles = StyleSheet.create({
   selectedRow: {
     borderColor: "#2563eb",
     borderWidth: 2
+  },
+  summary: {
+    backgroundColor: "#f8fafc",
+    borderRadius: 8,
+    flex: 1,
+    minWidth: "42%",
+    padding: 10
+  },
+  summaryGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10
+  },
+  summaryLabel: {
+    color: "#64748b",
+    fontSize: 12,
+    marginTop: 2
+  },
+  summaryValue: {
+    color: "#0f172a",
+    fontSize: 17,
+    fontWeight: "900"
   },
   subtitle: {
     color: "#64748b",
@@ -347,5 +523,26 @@ const styles = StyleSheet.create({
     color: "#0f172a",
     fontSize: 22,
     fontWeight: "900"
+  },
+  toolButton: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    minHeight: 40,
+    paddingHorizontal: 12
+  },
+  toolButtonText: {
+    color: "#0f172a",
+    fontSize: 13,
+    fontWeight: "800"
+  },
+  tools: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
   }
 });

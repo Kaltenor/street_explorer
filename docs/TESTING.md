@@ -36,7 +36,8 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
    - current speed appears
    - active path appears
    - explored cells appear
-   - recording health panel appears
+   - bottom controls show distance, duration, and Stop
+   - recording details can be expanded to show points, speed, and GPS
 8. Tap Stop.
 9. Confirm the recording appears in History.
 
@@ -44,7 +45,7 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 
 1. Open History.
 2. Tap a recording.
-3. Confirm details expand:
+3. Confirm a recording detail view opens:
    - started time
    - ended time
    - distance
@@ -53,8 +54,22 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
    - point count
 4. Rename the recording.
 5. Tap Save.
-6. Confirm the route is highlighted on the map.
-7. Delete a bad recording if needed.
+6. Tap Focus on map and confirm the route is highlighted on the map.
+7. Export GPX for a recording.
+8. Delete a bad recording if needed.
+
+## Data Tools Test
+
+1. Open History.
+2. Tap Backup.
+3. Confirm iOS shows a share/save sheet for a JSON backup.
+4. Tap a recording.
+5. Tap Export GPX.
+6. Confirm iOS shows a share/save sheet for a GPX file.
+7. Return to History.
+8. Tap Restore.
+9. Pick a Street Explorer JSON backup.
+10. Confirm recordings reload after restore.
 
 ## Layer Controls Test
 

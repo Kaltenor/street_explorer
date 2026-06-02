@@ -42,6 +42,13 @@ type FinishWalkInput = {
   durationSeconds: number;
 };
 
+export type StreetExplorerBackup = {
+  exportedAt: string;
+  points: GpsPoint[];
+  sessions: WalkSession[];
+  version: 1;
+};
+
 export async function createWalkSession(input: CreateWalkInput) {
   const db = await getDatabase();
   const result = await db.runAsync(
@@ -287,6 +294,112 @@ export async function updateWalkSessionName(sessionId: number, displayName: stri
     normalizedName,
     sessionId
   );
+}
+
+export async function getBackupData(): Promise<StreetExplorerBackup> {
+  const db = await getDatabase();
+  const sessionRows = await db.getAllAsync<WalkSessionRow>(`
+    SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds
+    FROM walk_sessions
+    ORDER BY started_at ASC
+  `);
+  const pointRows = await db.getAllAsync<GpsPointRow>(`
+    SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
+    FROM gps_points
+    ORDER BY session_id, point_index
+  `);
+
+  return {
+    exportedAt: new Date().toISOString(),
+    points: pointRows.map(mapPointRow),
+    sessions: sessionRows.map(mapSessionRow),
+    version: 1
+  };
+}
+
+export async function restoreBackupData(backup: StreetExplorerBackup) {
+  const db = await getDatabase();
+
+  validateBackupData(backup);
+
+  await db.execAsync(`
+    DELETE FROM gps_points;
+    DELETE FROM walk_sessions;
+  `);
+
+  for (const session of backup.sessions) {
+    await db.runAsync(
+      `
+        INSERT INTO walk_sessions (
+          id,
+          activity_mode,
+          display_name,
+          started_at,
+          ended_at,
+          distance_meters,
+          duration_seconds
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `,
+      session.id,
+      session.activityMode,
+      session.displayName,
+      session.startedAt,
+      session.endedAt,
+      session.distanceMeters,
+      session.durationSeconds
+    );
+  }
+
+  for (const point of backup.points) {
+    if (!point.id || !point.sessionId) {
+      throw new Error("Backup contains a GPS point without an id or session id.");
+    }
+
+    await db.runAsync(
+      `
+        INSERT INTO gps_points (
+          id,
+          session_id,
+          latitude,
+          longitude,
+          timestamp,
+          accuracy,
+          point_index
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `,
+      point.id,
+      point.sessionId,
+      point.latitude,
+      point.longitude,
+      point.timestamp,
+      point.accuracy,
+      point.pointIndex
+    );
+  }
+}
+
+function validateBackupData(backup: StreetExplorerBackup) {
+  const sessionIds = new Set<number>();
+
+  for (const session of backup.sessions) {
+    if (!session.id) {
+      throw new Error("Backup contains a session without an id.");
+    }
+
+    sessionIds.add(session.id);
+  }
+
+  for (const point of backup.points) {
+    if (!point.id || !point.sessionId) {
+      throw new Error("Backup contains a GPS point without an id or session id.");
+    }
+
+    if (!sessionIds.has(point.sessionId)) {
+      throw new Error("Backup contains a GPS point for a missing session.");
+    }
+  }
 }
 
 export async function deleteAllData() {
