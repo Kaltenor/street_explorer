@@ -17,7 +17,8 @@
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Street Explorer can keep recording an active exploration while the app is locked.",
         "UIBackgroundModes": [
           "location"
-        ]
+        ],
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -31,7 +32,13 @@
       ]
     },
     "plugins": [
-      "expo-sqlite"
-    ]
+      "expo-sqlite",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "36a4b99f-9e7a-4c43-a6c1-347f4dedef01"
+      }
+    }
   }
 }
