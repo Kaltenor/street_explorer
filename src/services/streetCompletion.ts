@@ -3,7 +3,7 @@ import { haversineDistanceMeters } from "./distance";
 import { OsmStreetSegment, StreetCompletionSummary } from "../types/street";
 import { GpsPoint, WalkWithPoints } from "../types/walk";
 
-const STREET_MATCH_THRESHOLD_METERS = 18;
+const STREET_MATCH_THRESHOLD_METERS = 12;
 const STREET_SAMPLE_STRIDE = 3;
 
 export type StreetCompletionResult = {

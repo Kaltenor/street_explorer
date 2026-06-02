@@ -41,9 +41,9 @@ export function StreetCompletionPanel({
       </View>
 
       <View style={styles.metrics}>
-        <Metric label="Explored" value={summary.exploredStreetCount.toString()} />
-        <Metric label="Loaded" value={summary.loadedStreetCount.toString()} />
-        <Metric label="Distance" value={formatDistance(summary.exploredDistanceMeters)} />
+        <Metric label="Matched" value={summary.exploredStreetCount.toString()} />
+        <Metric label="Nearby" value={summary.loadedStreetCount.toString()} />
+        <Metric label="Street dist." value={formatDistance(summary.exploredDistanceMeters)} />
       </View>
     </View>
   );
@@ -71,7 +71,7 @@ function getStatusText(summary: StreetCompletionSummary, completionPercent: numb
     return "Load nearby OSM streets to start matching.";
   }
 
-  return `${completionPercent}% of loaded street distance explored`;
+  return `${completionPercent}% of loaded nearby street segments matched`;
 }
 
 const styles = StyleSheet.create({

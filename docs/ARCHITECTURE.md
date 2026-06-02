@@ -57,9 +57,9 @@ Tables:
 - active recording session id
 - active recording mode
 
-`osm_street_segments` caches OpenStreetMap way geometry:
+`osm_street_segments` caches short OpenStreetMap-derived street segment geometry:
 
-- OSM way id
+- OSM way-part id
 - name
 - highway type
 - coordinate geometry
@@ -107,15 +107,15 @@ Street completion V1 uses OpenStreetMap as a data layer while keeping Apple MapK
 Flow:
 
 - Fetch nearby OSM `highway` ways through Overpass.
-- Cache way geometries in SQLite.
-- Match recorded GPS points to nearby street polylines using a distance threshold.
+- Split long OSM ways into short local segments.
+- Cache segment geometries in SQLite.
+- Match recorded GPS points to nearby segment polylines using a distance threshold.
 - Draw unloaded/unexplored streets as gray overlays.
 - Draw matched streets as green overlays.
-- Report loaded streets, explored streets, and explored street distance.
+- Report loaded segments, matched segments, and matched street-segment distance.
 
 Limitations:
 
-- Long OSM ways are still counted as one street segment.
 - Matching is proximity-based and can be wrong near parallel roads.
 - Completion is based on loaded nearby streets, not full city boundaries yet.
 - Completion is not separated by activity mode yet.

@@ -79,6 +79,7 @@ export async function getStreetSegmentsNear(
         AND min_latitude <= ?
         AND max_longitude >= ?
         AND min_longitude <= ?
+        AND id LIKE 'way/%/part/%'
       ORDER BY name IS NULL, name, id
     `,
     latitude - latitudeDelta,
@@ -88,6 +89,12 @@ export async function getStreetSegmentsNear(
   );
 
   return rows.map(mapStreetSegmentRow);
+}
+
+export async function deleteAllStreetSegments() {
+  const db = await getDatabase();
+
+  await db.runAsync("DELETE FROM osm_street_segments");
 }
 
 function mapStreetSegmentRow(row: OsmStreetSegmentRow): OsmStreetSegment {

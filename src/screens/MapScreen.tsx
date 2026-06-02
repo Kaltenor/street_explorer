@@ -49,7 +49,11 @@ import {
   calculateExploredCellCount,
   calculateNewCellsForActivePath
 } from "../services/explorationArea";
-import { getStreetSegmentsNear, upsertStreetSegments } from "../database/streetRepository";
+import {
+  deleteAllStreetSegments,
+  getStreetSegmentsNear,
+  upsertStreetSegments
+} from "../database/streetRepository";
 import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
 import { calculateStreetCompletion } from "../services/streetCompletion";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
@@ -90,7 +94,7 @@ const EMPTY_STATS: LifetimeStats = {
   todayRecordingCount: 0
 };
 
-const OSM_STREET_RADIUS_METERS = 1400;
+const OSM_STREET_RADIUS_METERS = 650;
 
 type MapScreenProps = {
   activityMode: ActivityMode;
@@ -619,6 +623,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         OSM_STREET_RADIUS_METERS
       );
 
+      await deleteAllStreetSegments();
       await upsertStreetSegments(fetchedSegments);
 
       const cachedSegments = await getStreetSegmentsNear(

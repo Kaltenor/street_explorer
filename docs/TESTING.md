@@ -88,14 +88,17 @@ Confirm each layer appears or disappears.
 2. Tap Show details.
 3. Turn on Streets.
 4. Tap Load in the Street completion panel.
-5. Confirm gray OSM streets appear on the map.
+5. Confirm faint gray OSM street segments appear on the map.
 6. Record or view a route near loaded streets.
-7. Confirm matched streets turn green.
+7. Confirm matched street segments turn green.
 8. Restart the app and confirm loaded streets can reappear from the local cache.
 
 Notes:
 
 - The first load needs internet access.
+- Nearby means a smaller local radius around your current position.
+- Matched is the number of short OSM street segments close to your GPS path.
+- Street dist. is matched OSM segment distance, not the same thing as recording distance.
 - Matching is V1 proximity matching, so it can be imperfect near parallel roads.
 - OSM streets are cached locally and can be refetched later.
 

@@ -36,3 +36,5 @@ Added:
 - Local SQLite cache for OSM street segments.
 - GPS-to-street proximity matching.
 - Explored/unexplored street overlay on the map.
+- Short local OSM segment splitting to avoid whole long streets turning green.
+- Clearer street completion labels and lighter map overlays.

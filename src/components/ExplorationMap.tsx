@@ -171,8 +171,8 @@ export function ExplorationMap({
                 <Polyline
                   key={segment.id}
                   coordinates={segment.coordinates}
-                  strokeColor={explored ? "rgba(22, 163, 74, 0.95)" : "rgba(71, 85, 105, 0.35)"}
-                  strokeWidth={explored ? 5 : 2}
+                  strokeColor={explored ? "rgba(22, 163, 74, 0.78)" : "rgba(71, 85, 105, 0.16)"}
+                  strokeWidth={explored ? 3 : 1}
                   lineCap="round"
                   lineJoin="round"
                 />

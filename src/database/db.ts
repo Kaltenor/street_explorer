@@ -106,6 +106,12 @@ export async function initDatabase() {
         ON osm_street_segments (min_latitude, max_latitude, min_longitude, max_longitude);
     `);
   });
+
+  await applyMigration(6, "clear_oversized_osm_street_cache", async () => {
+    await db.execAsync(`
+      DELETE FROM osm_street_segments;
+    `);
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {
