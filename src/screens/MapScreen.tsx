@@ -336,8 +336,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             "Background tracking enabled. Keep this recording stopped before switching mode."
           );
         } else {
+          const settingsHint = backgroundPermission.backgroundCanAskAgain
+            ? "iOS may show another permission prompt after recording starts."
+            : "Open iPhone Settings > Street Explorer > Location and choose Always. If Always is missing, reinstall the latest development build.";
+
           setBackgroundTrackingMessage(
-            `Background permission is ${backgroundPermission.backgroundStatus}; foreground is ${backgroundPermission.foregroundStatus}. Recording continues while the app is open.`
+            `Background recording is not enabled yet. Foreground recording is active. ${settingsHint}`
           );
         }
       }

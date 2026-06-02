@@ -38,6 +38,7 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TASK_NAME, async ({ data, error }) =>
 });
 
 export type BackgroundPermissionResult = {
+  backgroundCanAskAgain: boolean;
   backgroundStatus: Location.PermissionStatus;
   foregroundStatus: Location.PermissionStatus;
   granted: boolean;
@@ -45,12 +46,33 @@ export type BackgroundPermissionResult = {
 
 export async function requestBackgroundLocationPermission(): Promise<BackgroundPermissionResult> {
   const foregroundPermission = await Location.getForegroundPermissionsAsync();
-  const backgroundPermission = await Location.requestBackgroundPermissionsAsync();
+  const currentBackgroundPermission = await Location.getBackgroundPermissionsAsync();
+
+  if (currentBackgroundPermission.status === Location.PermissionStatus.GRANTED) {
+    return {
+      backgroundCanAskAgain: currentBackgroundPermission.canAskAgain,
+      backgroundStatus: currentBackgroundPermission.status,
+      foregroundStatus: foregroundPermission.status,
+      granted: true
+    };
+  }
+
+  if (foregroundPermission.status !== Location.PermissionStatus.GRANTED) {
+    return {
+      backgroundCanAskAgain: currentBackgroundPermission.canAskAgain,
+      backgroundStatus: currentBackgroundPermission.status,
+      foregroundStatus: foregroundPermission.status,
+      granted: false
+    };
+  }
+
+  const requestedBackgroundPermission = await Location.requestBackgroundPermissionsAsync();
 
   return {
-    backgroundStatus: backgroundPermission.status,
+    backgroundCanAskAgain: requestedBackgroundPermission.canAskAgain,
+    backgroundStatus: requestedBackgroundPermission.status,
     foregroundStatus: foregroundPermission.status,
-    granted: backgroundPermission.status === Location.PermissionStatus.GRANTED
+    granted: requestedBackgroundPermission.status === Location.PermissionStatus.GRANTED
   };
 }
 

@@ -34,7 +34,18 @@
     },
     "plugins": [
       "expo-sqlite",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true,
+          "isIosBackgroundLocationEnabled": true,
+          "locationAlwaysAndWhenInUsePermission": "Street Explorer can keep recording an active exploration while the app is locked.",
+          "locationAlwaysPermission": "Street Explorer can keep recording an active exploration while the app is locked.",
+          "locationWhenInUsePermission": "Street Explorer uses your location to record walks and draw your exploration map."
+        }
+      ]
     ],
     "extra": {
       "eas": {
