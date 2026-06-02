@@ -4,11 +4,13 @@
     "slug": "street-explorer",
     "version": "0.1.0",
     "orientation": "portrait",
+    "scheme": "street-explorer",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.kaltenor.streetexplorer",
       "supportsTablet": true,
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Street Explorer uses your location to record walks and draw your exploration map.",
@@ -19,6 +21,7 @@
       }
     },
     "android": {
+      "package": "com.kaltenor.streetexplorer",
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",

@@ -28,6 +28,13 @@ Goals:
 - verify iOS background location indicator
 - verify foreground service behavior on Android
 
+Status:
+
+- EAS build profiles are configured in `eas.json`.
+- `expo-dev-client` is installed.
+- iOS and Android application identifiers are configured.
+- A physical iPhone build still requires an Expo account and Apple Developer Program access.
+
 ### 2. Recording Recovery Polish
 
 Current recovery works, but can be improved:
@@ -74,4 +81,3 @@ Add:
 - achievements
 - social features
 - route recommendations
-

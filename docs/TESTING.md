@@ -19,6 +19,8 @@ If stale errors appear:
 npx expo start --clear
 ```
 
+For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
+
 ## Basic Recording Test
 
 1. Open the app in Expo Go.

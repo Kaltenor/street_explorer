@@ -5,14 +5,18 @@
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "start:dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:ios:dev": "eas build --platform ios --profile development",
+    "build:ios:sim": "eas build --platform ios --profile development-simulator"
   },
   "dependencies": {
     "@expo/vector-icons": "latest",
     "expo": "~54.0.0",
+    "expo-dev-client": "~6.0.21",
     "expo-location": "~19.0.8",
     "expo-sqlite": "~16.0.10",
     "expo-status-bar": "~3.0.9",

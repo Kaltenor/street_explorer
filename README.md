@@ -25,6 +25,7 @@ Use Expo Go for normal foreground testing. Use a development build later for rel
 - [Architecture](docs/ARCHITECTURE.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Testing](docs/TESTING.md)
+- [Development Build](docs/DEVELOPMENT_BUILD.md)
 - [Changelog](docs/CHANGELOG.md)
 
 ## Current Status
