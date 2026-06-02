@@ -45,4 +45,6 @@ export type LifetimeStats = {
   latestRecordingDistanceMeters: number;
   longestRecordingDistanceMeters: number;
   newCellsThisRecording: number;
+  todayDistanceMeters: number;
+  todayRecordingCount: number;
 };

@@ -14,31 +14,17 @@
 - Development build background recording verified on iPhone.
 - Active recording re-sync after returning from background.
 - Recording health panel.
-- Recording recovery.
+- Recovery modal with resume, finish/save, and discard.
+- Better exploration stats.
+- Map legend.
+- Clearer mode switch control.
+- Expanded route details in history.
 - Layer controls.
 - Street-completion service boundary.
 
 ## Next Priority
 
-### 1. Recording Recovery Polish
-
-Current recovery works, but can be improved:
-
-- show a custom recovery screen instead of an alert
-- show recovered distance, duration, and point count
-- allow delete/recover/finish
-
-### 2. Better Exploration Stats
-
-Add:
-
-- current recording new cells
-- total cells by mode
-- latest recording summary
-- longest recording summary
-- explored area by mode
-
-### 3. OpenStreetMap Street Completion V1
+### 1. OpenStreetMap Street Completion V1
 
 Build the real game layer:
 
@@ -48,14 +34,21 @@ Build the real game layer:
 - mark street segments as explored
 - show street completion percentage
 
-### 4. UI Polish
+### 2. Recording Recovery V2
 
 Add:
 
-- map legend
-- layer panel layout improvements
-- route detail screen
-- mode-specific colors
+- recovery full-screen route preview
+- recovered background status verification
+- naming prompt before finishing a recovered recording
+
+### 3. UI Polish V2
+
+Add:
+
+- mode-specific colors across panels and paths
+- collapsible top panels for small screens
+- stronger route detail layout
 - clearer GPS status states
 
 ## Not Planned Yet

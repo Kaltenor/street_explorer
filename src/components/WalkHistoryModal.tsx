@@ -121,10 +121,13 @@ function HistoryRow({
 
       {isSelected ? (
         <View style={styles.details}>
+          <Text style={styles.detailsTitle}>Route details</Text>
+          <Detail label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
           <Detail label="Started" value={formatFullDate(walk.startedAt)} />
           <Detail label="Ended" value={formatFullDate(walk.endedAt)} />
           <Detail label="Distance" value={formatDistance(walk.distanceMeters)} />
           <Detail label="Duration" value={formatDuration(walk.durationSeconds)} />
+          <Detail label="Points" value={(walk.pointCount ?? 0).toString()} />
 
           <TextInput
             placeholder="Recording name"
@@ -237,6 +240,11 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 12,
     width: "100%"
+  },
+  detailsTitle: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "900"
   },
   detailValue: {
     color: "#0f172a",

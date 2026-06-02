@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-import { formatDistance } from "../services/distance";
+import { formatDistance, formatDuration } from "../services/distance";
 import { ActivityMode, LifetimeStats } from "../types/walk";
 
 type StatsPanelProps = {
@@ -11,12 +11,23 @@ type StatsPanelProps = {
 export function StatsPanel({ activityMode, stats }: StatsPanelProps) {
   return (
     <View style={styles.container}>
-      <Stat label={getCountLabel(activityMode)} value={stats.walkCount.toString()} />
-      <Stat label="Distance" value={formatDistance(stats.totalDistanceMeters)} />
-      <Stat label="Area" value={formatArea(stats.approximateExploredAreaSquareMeters)} />
-      <Stat label="Cells" value={stats.exploredCellCount.toString()} />
-      <Stat label="New" value={stats.newCellsThisRecording.toString()} />
-      <Stat label="Longest" value={formatDistance(stats.longestRecordingDistanceMeters)} />
+      <View style={styles.primaryRow}>
+        <Stat label={getCountLabel(activityMode)} value={stats.walkCount.toString()} />
+        <Stat label="Distance" value={formatDistance(stats.totalDistanceMeters)} />
+        <Stat label="Duration" value={formatDuration(stats.totalDurationSeconds)} />
+      </View>
+      <View style={styles.secondaryRow}>
+        <Stat label="Today" value={formatDistance(stats.todayDistanceMeters)} />
+        <Stat label="Latest" value={formatDistance(stats.latestRecordingDistanceMeters)} />
+        <Stat label="Longest" value={formatDistance(stats.longestRecordingDistanceMeters)} />
+        <Stat label="Cells" value={stats.exploredCellCount.toString()} />
+        <Stat label="New" value={stats.newCellsThisRecording.toString()} />
+        <Stat label="Area" value={formatArea(stats.approximateExploredAreaSquareMeters)} />
+      </View>
+      <Text style={styles.caption}>
+        {stats.todayRecordingCount} {stats.todayRecordingCount === 1 ? "recording" : "recordings"}{" "}
+        today
+      </Text>
     </View>
   );
 }
@@ -56,10 +67,13 @@ const styles = StyleSheet.create({
     borderColor: "#dbe3ea",
     borderRadius: 8,
     borderWidth: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 12,
+    gap: 10,
     padding: 12
+  },
+  caption: {
+    color: "#64748b",
+    fontSize: 11,
+    fontWeight: "700"
   },
   label: {
     color: "#64748b",
@@ -67,7 +81,17 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   stat: {
+    flex: 1,
     minWidth: "28%"
+  },
+  primaryRow: {
+    flexDirection: "row",
+    gap: 12
+  },
+  secondaryRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12
   },
   value: {
     color: "#0f172a",

@@ -24,3 +24,7 @@ Added:
 - Development-build background recording support.
 - Active recording health panel.
 - Foreground re-sync of background-saved GPS points.
+- Recovery modal with resume, finish/save, and discard actions.
+- Expanded exploration stats with today, latest, longest, cells, and total duration.
+- Map legend and clearer mode switch control.
+- Expanded route details in history.

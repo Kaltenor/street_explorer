@@ -23,7 +23,7 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 
 ## Basic Recording Test
 
-1. Open the app in Expo Go.
+1. Open the Street Explorer development build.
 2. Choose Walk, Wheel, or Car.
 3. Confirm the version number appears under the app name.
 4. Tap Start.
@@ -36,6 +36,7 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
    - current speed appears
    - active path appears
    - explored cells appear
+   - recording health panel appears
 8. Tap Stop.
 9. Confirm the recording appears in History.
 
@@ -48,6 +49,8 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
    - ended time
    - distance
    - duration
+   - mode
+   - point count
 4. Rename the recording.
 5. Tap Save.
 6. Confirm the route is highlighted on the map.
@@ -72,7 +75,15 @@ The Streets layer currently only shows a status panel. Real street geometry is n
 2. Force close or reload the app without pressing Stop.
 3. Reopen the app.
 4. Confirm it asks about an unfinished recording.
-5. Choose Resume or Finish.
+5. Confirm the recovery modal shows:
+   - mode
+   - distance
+   - duration
+   - point count
+   - last GPS point time
+6. Choose Resume and confirm recording continues.
+7. Repeat the test and choose Finish & Save.
+8. Repeat the test and choose Discard.
 
 ## Background Tracking Notes
 
@@ -105,7 +116,7 @@ Possible causes:
 Restart Expo with:
 
 ```powershell
-npx expo start --clear
+npx expo start --dev-client --clear
 ```
 
 ### Expo Go Says SDK Is Unsupported

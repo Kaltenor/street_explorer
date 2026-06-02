@@ -240,7 +240,9 @@ export async function getLifetimeStats(activityMode: ActivityMode): Promise<Life
     latestRecordingStartedAt: null,
     latestRecordingDistanceMeters: 0,
     longestRecordingDistanceMeters: 0,
-    newCellsThisRecording: 0
+    newCellsThisRecording: 0,
+    todayDistanceMeters: 0,
+    todayRecordingCount: 0
   };
 }
 
