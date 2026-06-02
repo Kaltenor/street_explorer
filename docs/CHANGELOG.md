@@ -21,4 +21,6 @@ Added:
 - Recording recovery.
 - Layer controls.
 - Street completion service foundation.
-
+- Development-build background recording support.
+- Active recording health panel.
+- Foreground re-sync of background-saved GPS points.

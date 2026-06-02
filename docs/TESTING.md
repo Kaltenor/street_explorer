@@ -4,19 +4,19 @@
 
 ```powershell
 cd W:\street_explorer
-npx expo start
+npx expo start --dev-client --lan
 ```
 
 If the phone cannot connect reliably:
 
 ```powershell
-npx expo start --tunnel
+npx expo start --dev-client --tunnel
 ```
 
 If stale errors appear:
 
 ```powershell
-npx expo start --clear
+npx expo start --dev-client --clear
 ```
 
 For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
@@ -76,15 +76,17 @@ The Streets layer currently only shows a status panel. Real street geometry is n
 
 ## Background Tracking Notes
 
-Background tracking is configured but may not fully work in Expo Go on iOS.
+Background tracking requires the development build. Expo Go is no longer the right target for realistic recording tests.
 
-For reliable locked-screen recording, create a development build later and test:
+Test:
 
 - iPhone locked
 - app in background
 - app fully reopened after a walk
 - permission prompts
 - iOS location indicator
+- recording health panel says background recording is on
+- distance and saved point count catch up after reopening the app
 
 ## Common Issues
 

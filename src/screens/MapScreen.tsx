@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, AppState, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,6 +10,10 @@ import { ExplorationMap } from "../components/ExplorationMap";
 import { GpsStatusPanel } from "../components/GpsStatusPanel";
 import { LayerControls, MapLayerState } from "../components/LayerControls";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
+import {
+  BackgroundTrackingStatus,
+  RecordingHealthPanel
+} from "../components/RecordingHealthPanel";
 import { StatsPanel } from "../components/StatsPanel";
 import { StreetCompletionPanel } from "../components/StreetCompletionPanel";
 import { WalkControls } from "../components/WalkControls";
@@ -53,6 +57,7 @@ import {
   finishPersistedActiveWalk,
   persistAcceptedGpsPoint
 } from "../services/walkRecorder";
+import { calculatePathDistanceMeters } from "../services/distance";
 import {
   ActiveWalk,
   ActivityMode,
@@ -90,6 +95,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [historyVisible, setHistoryVisible] = useState(false);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [backgroundTrackingMessage, setBackgroundTrackingMessage] = useState<string | null>(null);
+  const [backgroundTrackingStatus, setBackgroundTrackingStatus] =
+    useState<BackgroundTrackingStatus>("idle");
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
@@ -220,6 +227,28 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     });
   }, []);
 
+  const syncActiveWalkFromDatabase = useCallback(async () => {
+    if (!activeWalk) {
+      return;
+    }
+
+    const points = await getGpsPointsForSession(activeWalk.sessionId);
+    const lastSpeedMetersPerSecond = calculateLastSpeedMetersPerSecond(points);
+
+    setActiveWalk((currentWalk) => {
+      if (!currentWalk || currentWalk.sessionId !== activeWalk.sessionId) {
+        return currentWalk;
+      }
+
+      return {
+        ...currentWalk,
+        currentSpeedMetersPerSecond: lastSpeedMetersPerSecond,
+        distanceMeters: calculatePathDistanceMeters(points),
+        points
+      };
+    });
+  }, [activeWalk]);
+
   useEffect(() => {
     let isMounted = true;
 
@@ -281,6 +310,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
                 startedAt: session.startedAt
               });
               setBackgroundTrackingMessage("Recovered unfinished recording.");
+              setBackgroundTrackingStatus("foreground-only");
               await startForegroundWatch();
             }
           }
@@ -318,12 +348,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const nextWalk = createActiveWalk(activityMode, sessionId, startedAt);
     setActiveWalk(nextWalk);
     setElapsedSeconds(0);
+    setBackgroundTrackingStatus("starting");
     await saveActiveRecordingSettings({ activityMode, sessionId });
 
     try {
       const canUseBackgroundTasks = await isBackgroundLocationTaskAvailable();
 
       if (!canUseBackgroundTasks) {
+        setBackgroundTrackingStatus("unavailable");
         setBackgroundTrackingMessage(
           "Background tracking needs a development build; Expo Go will record only while open."
         );
@@ -332,10 +364,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
         if (backgroundPermission.granted) {
           await startBackgroundLocationTracking(activityMode);
+          setBackgroundTrackingStatus("enabled");
           setBackgroundTrackingMessage(
             "Background tracking enabled. Keep this recording stopped before switching mode."
           );
         } else {
+          setBackgroundTrackingStatus("foreground-only");
           const settingsHint = backgroundPermission.backgroundCanAskAgain
             ? "iOS may show another permission prompt after recording starts."
             : "Open iPhone Settings > Street Explorer > Location and choose Always. If Always is missing, reinstall the latest development build.";
@@ -347,6 +381,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       }
     } catch (error) {
       console.warn("Background tracking setup failed", error);
+      setBackgroundTrackingStatus("unavailable");
       setBackgroundTrackingMessage(
         "Background tracking is unavailable here; foreground recording is still active."
       );
@@ -368,6 +403,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt);
     setActiveWalk(null);
     setElapsedSeconds(0);
+    setBackgroundTrackingStatus("idle");
     setBackgroundTrackingMessage(null);
 
     if (!savedSessionId) {
@@ -421,6 +457,18 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   useEffect(() => {
     return () => stopLocationWatch();
   }, [stopLocationWatch]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextState) => {
+      if (nextState === "active") {
+        syncActiveWalkFromDatabase().catch((error) =>
+          console.warn("Failed to sync active recording", error)
+        );
+      }
+    });
+
+    return () => subscription.remove();
+  }, [syncActiveWalkFromDatabase]);
 
   return (
     <View style={styles.screen}>
@@ -481,12 +529,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           </View>
         ) : null}
 
-        {backgroundTrackingMessage ? (
-          <View style={styles.backgroundPanel}>
-            <Text style={styles.backgroundTitle}>Background recording</Text>
-            <Text style={styles.backgroundText}>{backgroundTrackingMessage}</Text>
-          </View>
-        ) : null}
+        <RecordingHealthPanel
+          activeWalk={activeWalk}
+          backgroundMessage={backgroundTrackingMessage}
+          backgroundStatus={backgroundTrackingStatus}
+        />
 
         <ModeProfilePanel activityMode={activityMode} />
 
@@ -521,26 +568,28 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   );
 }
 
+function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
+  const previousPoint = points.at(-2);
+  const latestPoint = points.at(-1);
+
+  if (!previousPoint || !latestPoint) {
+    return 0;
+  }
+
+  const secondsBetweenPoints = Math.max(
+    0,
+    (new Date(latestPoint.timestamp).getTime() - new Date(previousPoint.timestamp).getTime()) /
+      1000
+  );
+
+  if (secondsBetweenPoints === 0) {
+    return 0;
+  }
+
+  return calculatePathDistanceMeters([previousPoint, latestPoint]) / secondsBetweenPoints;
+}
+
 const styles = StyleSheet.create({
-  backgroundPanel: {
-    backgroundColor: "rgba(239, 246, 255, 0.96)",
-    borderColor: "#bfdbfe",
-    borderRadius: 8,
-    borderWidth: 1,
-    marginTop: 12,
-    padding: 12
-  },
-  backgroundText: {
-    color: "#1e3a8a",
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 4
-  },
-  backgroundTitle: {
-    color: "#1e3a8a",
-    fontSize: 14,
-    fontWeight: "700"
-  },
   bottomPanel: {
     marginTop: "auto"
   },
