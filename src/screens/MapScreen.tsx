@@ -98,6 +98,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [history, setHistory] = useState<WalkSession[]>([]);
   const [activeWalk, setActiveWalk] = useState<ActiveWalk | null>(null);
   const [stats, setStats] = useState<LifetimeStats>(EMPTY_STATS);
+  const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
@@ -528,9 +529,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             <View style={styles.headerText}>
               <Text style={styles.title}>Street Explorer</Text>
               <Text style={styles.version}>v{APP_VERSION}</Text>
-              <Text style={styles.subtitle}>
-                {ACTIVITY_MODE_LABELS[activityMode]} exploration map
-              </Text>
+              {dashboardExpanded ? (
+                <Text style={styles.subtitle}>
+                  {ACTIVITY_MODE_LABELS[activityMode]} exploration map
+                </Text>
+              ) : null}
             </View>
             <TouchableOpacity
               accessibilityRole="button"
@@ -541,29 +544,58 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               <Text style={styles.modeButtonText}>{ACTIVITY_MODE_LABELS[activityMode]}</Text>
             </TouchableOpacity>
           </View>
-          <StatsPanel activityMode={activityMode} stats={stats} />
-          <LayerControls layers={layers} onToggleLayer={toggleLayer} />
-          <MapLegend
-            showExploredCells={layers.showExploredCells}
-            showPaths={layers.showPaths}
-          />
-          <View style={styles.statusRow}>
-            <GpsStatusPanel
-              activityMode={activityMode}
-              currentLocation={currentLocation}
-              isRecording={Boolean(activeWalk)}
-              lastRejectedPointReason={activeWalk?.lastRejectedPointReason ?? null}
-              speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
-            />
+          <View style={styles.quickActions}>
+            <TouchableOpacity
+              accessibilityRole="button"
+              onPress={() => setDashboardExpanded((expanded) => !expanded)}
+              style={styles.dashboardToggle}
+            >
+              <Ionicons
+                name={dashboardExpanded ? "chevron-up" : "chevron-down"}
+                size={18}
+                color="#0f172a"
+              />
+              <Text style={styles.dashboardToggleText}>
+                {dashboardExpanded ? "Hide details" : "Show details"}
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity
               accessibilityRole="button"
               onPress={() => setHistoryVisible(true)}
-              style={styles.historyButton}
+              style={styles.dashboardToggle}
             >
               <Ionicons name="time-outline" size={18} color="#0f172a" />
-              <Text style={styles.historyButtonText}>History</Text>
+              <Text style={styles.dashboardToggleText}>History</Text>
             </TouchableOpacity>
           </View>
+
+          {dashboardExpanded ? (
+            <>
+              <StatsPanel activityMode={activityMode} stats={stats} />
+              <LayerControls layers={layers} onToggleLayer={toggleLayer} />
+              <MapLegend
+                showExploredCells={layers.showExploredCells}
+                showPaths={layers.showPaths}
+              />
+              <View style={styles.statusRow}>
+                <GpsStatusPanel
+                  activityMode={activityMode}
+                  currentLocation={currentLocation}
+                  isRecording={Boolean(activeWalk)}
+                  lastRejectedPointReason={activeWalk?.lastRejectedPointReason ?? null}
+                  speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
+                />
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  onPress={() => setHistoryVisible(true)}
+                  style={styles.historyButton}
+                >
+                  <Ionicons name="time-outline" size={18} color="#0f172a" />
+                  <Text style={styles.historyButtonText}>History</Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          ) : null}
         </View>
 
         {permissionState === "denied" ? (
@@ -576,13 +608,17 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           </View>
         ) : null}
 
-        <RecordingHealthPanel
-          activeWalk={activeWalk}
-          backgroundMessage={backgroundTrackingMessage}
-          backgroundStatus={backgroundTrackingStatus}
-        />
+        {dashboardExpanded ? (
+          <>
+            <RecordingHealthPanel
+              activeWalk={activeWalk}
+              backgroundMessage={backgroundTrackingMessage}
+              backgroundStatus={backgroundTrackingStatus}
+            />
 
-        <ModeProfilePanel activityMode={activityMode} />
+            <ModeProfilePanel activityMode={activityMode} />
+          </>
+        ) : null}
 
         {layers.showStreetLayer ? (
           <StreetCompletionPanel summary={getStreetCompletionSummary(walks)} />
@@ -657,6 +693,24 @@ const styles = StyleSheet.create({
   bottomPanel: {
     marginTop: "auto"
   },
+  dashboardToggle: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    marginTop: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8
+  },
+  dashboardToggleText: {
+    color: "#0f172a",
+    fontSize: 12,
+    fontWeight: "800"
+  },
   headerRow: {
     alignItems: "flex-start",
     flexDirection: "row",
@@ -683,6 +737,11 @@ const styles = StyleSheet.create({
     color: "#0f172a",
     fontSize: 13,
     fontWeight: "700"
+  },
+  quickActions: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
   },
   modeButton: {
     alignItems: "center",
