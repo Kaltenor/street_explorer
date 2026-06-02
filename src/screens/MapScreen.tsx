@@ -97,6 +97,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     showStreetLayer: false
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
+  const recoveryPromptedSessionRef = useRef<number | null>(null);
 
   const refreshSavedData = useCallback(async () => {
     const [savedWalks, lifetimeStats, savedHistory] = await Promise.all([
@@ -224,9 +225,17 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
     getActiveRecordingSettings()
       .then(async (activeRecording) => {
-        if (!isMounted || !activeRecording || activeRecording.activityMode !== activityMode) {
+        if (
+          !isMounted ||
+          activeWalk ||
+          !activeRecording ||
+          activeRecording.activityMode !== activityMode ||
+          recoveryPromptedSessionRef.current === activeRecording.sessionId
+        ) {
           return;
         }
+
+        recoveryPromptedSessionRef.current = activeRecording.sessionId;
 
         const [session, points] = await Promise.all([
           getWalkSessionById(activeRecording.sessionId),
@@ -256,6 +265,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               await clearActiveRecordingSettings();
               await finishPersistedActiveWalk(recoveredWalk, new Date().toISOString());
               await refreshSavedData();
+              recoveryPromptedSessionRef.current = null;
             }
           },
           {
@@ -281,7 +291,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     return () => {
       isMounted = false;
     };
-  }, [activityMode, refreshSavedData, startForegroundWatch]);
+  }, [activeWalk, activityMode, startForegroundWatch]);
 
   const handleStartWalk = useCallback(async () => {
     let permission = permissionState;
