@@ -3,7 +3,7 @@
 ## Run The App
 
 ```powershell
-cd C:\Users\aleboucher\Documents\Street_explorer
+cd W:\street_explorer
 npx expo start
 ```
 
@@ -107,4 +107,3 @@ npx expo start --clear
 ### Expo Go Says SDK Is Unsupported
 
 This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK for this setup.
-

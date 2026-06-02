@@ -11,6 +11,12 @@ npm install
 npx expo start
 ```
 
+Current local project path:
+
+```text
+W:\street_explorer
+```
+
 Use Expo Go for normal foreground testing. Use a development build later for reliable iOS background tracking.
 
 ## Docs
