@@ -28,6 +28,8 @@ export type CompletionObjective = {
 };
 
 type CompletionModalProps = {
+  currentObjective: CompletionObjective | null;
+  currentObjectiveStats: ZoneCompletionStats | null;
   currentLocation: GpsPoint | null;
   onFocusZone: (zone: CachedZone) => void;
   onSetObjective: (objective: CompletionObjective) => void;
@@ -48,6 +50,8 @@ const SCOPES: CompletionScope[] = ["country", "city", "district"];
 const MODES: CompletionMode[] = ["walk", "wheel", "car", "all"];
 
 export function CompletionModal({
+  currentObjective,
+  currentObjectiveStats,
   currentLocation,
   onClose,
   onFocusZone,
@@ -60,6 +64,8 @@ export function CompletionModal({
   const [zones, setZones] = useState<CachedZone[]>([]);
   const [isRefreshingZones, setIsRefreshingZones] = useState(false);
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
+  const [zonePickerOpen, setZonePickerOpen] = useState(false);
+  const [zoneStatsById, setZoneStatsById] = useState<Record<string, ZoneCompletionStats>>({});
   const selectedZone = useMemo(
     () => zones.find((zone) => zone.id === selectedZoneId) ?? zones[0] ?? null,
     [selectedZoneId, zones]
@@ -69,15 +75,18 @@ export function CompletionModal({
 
   const loadZones = useCallback(
     async () => {
-      const cachedZones = await getCachedZones(scope);
+      const cachedZones = sortZonesForLocation(await getCachedZones(scope), currentLocation);
+      const bestZone = getBestZoneForLocation(cachedZones, currentLocation);
+
       setZones(cachedZones);
       setSelectedZoneId((currentZoneId) =>
         currentZoneId && cachedZones.some((zone) => zone.id === currentZoneId)
           ? currentZoneId
-          : cachedZones[0]?.id ?? null
+          : bestZone?.id ?? cachedZones[0]?.id ?? null
       );
+      setZonePickerOpen(false);
     },
-    [scope]
+    [currentLocation, scope]
   );
 
   useEffect(() => {
@@ -102,6 +111,7 @@ export function CompletionModal({
   useEffect(() => {
     if (!visible || !selectedZone) {
       setZoneStats(null);
+      setZoneStatsById({});
       setCompletedZoneCount(0);
       return;
     }
@@ -112,8 +122,18 @@ export function CompletionModal({
         const zoneStatsList = await Promise.all(
           zones.map((zone) => calculateZoneCompletionStats(zone, cells))
         );
+        const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
+
+        zones.forEach((zone, index) => {
+          const statsForZone = zoneStatsList[index];
+
+          if (statsForZone) {
+            nextZoneStatsById[zone.id] = statsForZone;
+          }
+        });
 
         setZoneStats(selectedStats);
+        setZoneStatsById(nextZoneStatsById);
         setCompletedZoneCount(
           zoneStatsList.filter(
             (completion) =>
@@ -184,12 +204,33 @@ export function CompletionModal({
         </View>
 
         <ScrollView contentContainerStyle={styles.content}>
+          {currentObjective ? (
+            <View style={styles.currentObjectivePanel}>
+              <View style={styles.currentObjectiveHeader}>
+                <Ionicons name="flag-outline" size={17} color="#2563eb" />
+                <Text style={styles.currentObjectiveTitle}>Current objective</Text>
+              </View>
+              <Text numberOfLines={1} style={styles.currentObjectiveName}>
+                {currentObjective.zone.name}
+              </Text>
+              <Text style={styles.currentObjectiveMeta}>
+                {formatObjectiveMode(currentObjective.mode)} |{" "}
+                {formatCompletion(currentObjectiveStats)} |{" "}
+                {formatObjectiveCells(currentObjectiveStats)}
+              </Text>
+            </View>
+          ) : null}
+
           <Selector
             label="Scope"
             options={SCOPES}
             selected={scope}
             titleForOption={(option) => capitalize(option)}
-            onSelect={setScope}
+            onSelect={(nextScope) => {
+              setScope(nextScope);
+              setSelectedZoneId(null);
+              setZonePickerOpen(false);
+            }}
           />
           <Selector
             label="Mode"
@@ -223,12 +264,41 @@ export function CompletionModal({
               </TouchableOpacity>
             </View>
             {zones.length > 0 ? (
-              <View style={styles.zoneList}>
-                {zones.map((zone) => (
+              <View style={styles.zonePicker}>
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  onPress={() => setZonePickerOpen((open) => !open)}
+                  style={styles.zonePickerButton}
+                >
+                  <View style={styles.zonePickerText}>
+                    <Text style={styles.zonePickerLabel}>
+                      {scope === "district" ? "Nearest district" : "Nearest area"}
+                    </Text>
+                    <Text numberOfLines={1} style={styles.zonePickerName}>
+                      {selectedZone?.name ?? "Select area"}
+                    </Text>
+                    {selectedZone ? (
+                      <Text style={styles.zoneMetaText}>
+                        {formatZoneLocationHint(selectedZone, currentLocation)} |{" "}
+                        {formatZoneSource(selectedZone)} | {formatFetchedAt(selectedZone.fetchedAt)} |{" "}
+                        {formatCompletion(zoneStatsById[selectedZone.id] ?? zoneStats)}
+                      </Text>
+                    ) : null}
+                  </View>
+                  <Ionicons
+                    name={zonePickerOpen ? "chevron-up" : "chevron-down"}
+                    size={18}
+                    color="#0f172a"
+                  />
+                </TouchableOpacity>
+                {zonePickerOpen ? zones.map((zone) => (
                   <TouchableOpacity
                     accessibilityRole="button"
                     key={zone.id}
-                    onPress={() => setSelectedZoneId(zone.id)}
+                    onPress={() => {
+                      setSelectedZoneId(zone.id);
+                      setZonePickerOpen(false);
+                    }}
                     style={[
                       styles.zoneButton,
                       selectedZone?.id === zone.id ? styles.selectedZoneButton : null
@@ -248,10 +318,12 @@ export function CompletionModal({
                         selectedZone?.id === zone.id ? styles.selectedZoneMetaText : null
                       ]}
                     >
-                      {formatZoneSource(zone)} | {formatFetchedAt(zone.fetchedAt)}
+                      {formatZoneLocationHint(zone, currentLocation)} | {formatZoneSource(zone)} |{" "}
+                      {formatFetchedAt(zone.fetchedAt)} |{" "}
+                      {formatCompletion(zoneStatsById[zone.id] ?? null)}
                     </Text>
                   </TouchableOpacity>
-                ))}
+                )) : null}
               </View>
             ) : (
               <Text style={styles.helpText}>
@@ -274,10 +346,14 @@ export function CompletionModal({
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={() => onSetObjective({ mode, zone: selectedZone })}
-                style={styles.focusButton}
+                style={[styles.focusButton, isCurrentObjective(currentObjective, selectedZone, mode) ? styles.activeObjectiveButton : null]}
               >
                 <Ionicons name="flag-outline" size={16} color="#0f172a" />
-                <Text style={styles.focusButtonText}>Set objective</Text>
+                <Text style={styles.focusButtonText}>
+                  {isCurrentObjective(currentObjective, selectedZone, mode)
+                    ? "Current objective"
+                    : "Set objective"}
+                </Text>
               </TouchableOpacity>
               </>
             ) : null}
@@ -381,6 +457,33 @@ function formatZoneCells(stats: ZoneCompletionStats | null) {
   return String(stats.totalZoneCells);
 }
 
+function formatObjectiveMode(mode: CompletionObjective["mode"]) {
+  return mode === "all" ? "All modes" : ACTIVITY_MODE_LABELS[mode];
+}
+
+function formatObjectiveCells(stats: ZoneCompletionStats | null) {
+  if (!stats) {
+    return "cells pending";
+  }
+
+  if (stats.totalZoneCells === null) {
+    return `${stats.exploredCells} explored`;
+  }
+
+  return `${stats.exploredCells} explored, ${Math.max(
+    0,
+    stats.totalZoneCells - stats.exploredCells
+  )} left`;
+}
+
+function isCurrentObjective(
+  currentObjective: CompletionObjective | null,
+  selectedZone: CachedZone,
+  mode: CompletionMode
+) {
+  return currentObjective?.zone.id === selectedZone.id && currentObjective.mode === mode;
+}
+
 function formatZoneSource(zone: CachedZone) {
   return zone.source.includes("fallback") ? "Approx bounds" : "Exact polygon";
 }
@@ -395,6 +498,148 @@ function getZoneNotice(zone: CachedZone) {
     : "Exact polygon from OSM boundary geometry.";
 }
 
+function sortZonesForLocation(zones: CachedZone[], currentLocation: GpsPoint | null) {
+  if (!currentLocation) {
+    return zones;
+  }
+
+  return [...zones].sort((first, second) => {
+    const firstScore = getZoneLocationScore(first, currentLocation);
+    const secondScore = getZoneLocationScore(second, currentLocation);
+
+    if (firstScore.rank !== secondScore.rank) {
+      return firstScore.rank - secondScore.rank;
+    }
+
+    return firstScore.distanceMeters - secondScore.distanceMeters;
+  });
+}
+
+function getBestZoneForLocation(zones: CachedZone[], currentLocation: GpsPoint | null) {
+  if (!currentLocation || zones.length === 0) {
+    return zones[0] ?? null;
+  }
+
+  return sortZonesForLocation(zones, currentLocation)[0] ?? null;
+}
+
+function getZoneLocationScore(zone: CachedZone, currentLocation: GpsPoint) {
+  const coordinate = {
+    latitude: currentLocation.latitude,
+    longitude: currentLocation.longitude
+  };
+
+  if (isPointInsideZone(coordinate, zone)) {
+    return {
+      distanceMeters: 0,
+      rank: 0
+    };
+  }
+
+  return {
+    distanceMeters: distanceMeters(coordinate, getZoneCenter(zone)),
+    rank: 1
+  };
+}
+
+function formatZoneLocationHint(zone: CachedZone, currentLocation: GpsPoint | null) {
+  if (!currentLocation) {
+    return "Cached";
+  }
+
+  const score = getZoneLocationScore(zone, currentLocation);
+
+  if (score.rank === 0) {
+    return "You are here";
+  }
+
+  if (score.distanceMeters >= 1000) {
+    return `${(score.distanceMeters / 1000).toFixed(1)} km away`;
+  }
+
+  return `${Math.round(score.distanceMeters)} m away`;
+}
+
+function isPointInsideZone(point: { latitude: number; longitude: number }, zone: CachedZone) {
+  const insideOuter = zone.geometry.some((ring) => pointInPolygon(point, ring));
+  const insideHole = zone.holes.some((ring) => pointInPolygon(point, ring));
+
+  return insideOuter && !insideHole;
+}
+
+function getZoneCenter(zone: CachedZone) {
+  const coordinates = zone.geometry.flat();
+
+  if (coordinates.length === 0) {
+    return {
+      latitude: 0,
+      longitude: 0
+    };
+  }
+
+  return {
+    latitude:
+      coordinates.reduce((total, coordinate) => total + coordinate.latitude, 0) /
+      coordinates.length,
+    longitude:
+      coordinates.reduce((total, coordinate) => total + coordinate.longitude, 0) /
+      coordinates.length
+  };
+}
+
+function pointInPolygon(
+  point: { latitude: number; longitude: number },
+  polygon: Array<{ latitude: number; longitude: number }>
+) {
+  if (polygon.length < 3) {
+    return false;
+  }
+
+  let inside = false;
+
+  for (let currentIndex = 0, previousIndex = polygon.length - 1; currentIndex < polygon.length; previousIndex = currentIndex++) {
+    const current = polygon[currentIndex];
+    const previous = polygon[previousIndex];
+
+    if (!current || !previous) {
+      continue;
+    }
+
+    const intersects =
+      current.longitude > point.longitude !== previous.longitude > point.longitude &&
+      point.latitude <
+        ((previous.latitude - current.latitude) * (point.longitude - current.longitude)) /
+          (previous.longitude - current.longitude) +
+          current.latitude;
+
+    if (intersects) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+}
+
+function distanceMeters(
+  first: { latitude: number; longitude: number },
+  second: { latitude: number; longitude: number }
+) {
+  const earthRadiusMeters = 6371000;
+  const latitudeDelta = toRadians(second.latitude - first.latitude);
+  const longitudeDelta = toRadians(second.longitude - first.longitude);
+  const firstLatitude = toRadians(first.latitude);
+  const secondLatitude = toRadians(second.latitude);
+  const haversine =
+    Math.sin(latitudeDelta / 2) ** 2 +
+    Math.cos(firstLatitude) * Math.cos(secondLatitude) * Math.sin(longitudeDelta / 2) ** 2;
+
+  return earthRadiusMeters * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+}
+
+function toRadians(degrees: number) {
+  return (degrees * Math.PI) / 180;
+}
+
 function formatFetchedAt(value: string) {
   return new Intl.DateTimeFormat(undefined, {
     day: "2-digit",
@@ -407,6 +652,10 @@ function capitalize(value: string) {
 }
 
 const styles = StyleSheet.create({
+  activeObjectiveButton: {
+    backgroundColor: "#dbeafe",
+    borderColor: "#93c5fd"
+  },
   closeButton: {
     alignItems: "center",
     backgroundColor: "#ffffff",
@@ -421,6 +670,35 @@ const styles = StyleSheet.create({
     gap: 12,
     padding: 16,
     paddingBottom: 28
+  },
+  currentObjectiveHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 6
+  },
+  currentObjectiveMeta: {
+    color: "#475569",
+    fontSize: 12,
+    fontWeight: "700",
+    marginTop: 3
+  },
+  currentObjectiveName: {
+    color: "#0f172a",
+    fontSize: 18,
+    fontWeight: "900",
+    marginTop: 6
+  },
+  currentObjectivePanel: {
+    backgroundColor: "#eff6ff",
+    borderColor: "#bfdbfe",
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 12
+  },
+  currentObjectiveTitle: {
+    color: "#2563eb",
+    fontSize: 12,
+    fontWeight: "900"
   },
   header: {
     alignItems: "center",
@@ -599,9 +877,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "800"
   },
-  zoneList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+  zonePicker: {
     gap: 8
+  },
+  zonePickerButton: {
+    alignItems: "center",
+    backgroundColor: "#f8fafc",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingVertical: 9
+  },
+  zonePickerLabel: {
+    color: "#2563eb",
+    fontSize: 10,
+    fontWeight: "900"
+  },
+  zonePickerName: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "900",
+    marginTop: 2
+  },
+  zonePickerText: {
+    flex: 1
   }
 });

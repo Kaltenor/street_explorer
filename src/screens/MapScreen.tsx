@@ -8,13 +8,14 @@ import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
-import { GpsStatusPanel } from "../components/GpsStatusPanel";
 import { MapLegend } from "../components/MapLegend";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
 import {
   BackgroundTrackingStatus,
   RecordingHealthPanel
 } from "../components/RecordingHealthPanel";
+import { RecordingDiagnosticsPanel } from "../components/RecordingDiagnosticsPanel";
+import { RecordingDiagnosticsModal } from "../components/RecordingDiagnosticsModal";
 import {
   RecoverableRecording,
   RecordingRecoveryModal
@@ -154,6 +155,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [completionVisible, setCompletionVisible] = useState(false);
+  const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
@@ -171,7 +173,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
-    showPaths: true
+    showPaths: false
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
@@ -434,6 +436,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
       return {
         ...currentWalk,
+        acceptedGpsPointCount: points.length,
         currentSpeedMetersPerSecond: lastSpeedMetersPerSecond,
         distanceMeters: calculatePathDistanceMeters(points),
         points,
@@ -743,12 +746,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     setRecoverableRecording(null);
     setActiveWalk({
       activityMode: session.activityMode,
+      acceptedGpsPointCount: points.length,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
       startedAt: session.startedAt,
+      rejectedGpsPointCount: 0,
       stepCount: session.stepCount
     });
     setBackgroundTrackingMessage("Recovered unfinished recording.");
@@ -766,12 +771,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const { points, session } = recoverableRecording;
     const recoveredWalk: ActiveWalk = {
       activityMode: session.activityMode,
+      acceptedGpsPointCount: points.length,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
       startedAt: session.startedAt,
+      rejectedGpsPointCount: 0,
       stepCount: session.stepCount
     };
     const endedAt = new Date().toISOString();
@@ -1008,6 +1015,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               <Ionicons name="trophy-outline" size={18} color="#0f172a" />
               <Text style={styles.dashboardToggleText}>Completion</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityRole="button"
+              onPress={() => setDiagnosticsVisible(true)}
+              style={styles.dashboardToggle}
+            >
+              <Ionicons name="pulse-outline" size={18} color="#0f172a" />
+              <Text style={styles.dashboardToggleText}>Diagnostics</Text>
+            </TouchableOpacity>
           </View>
 
           {objective ? (
@@ -1043,12 +1058,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
                 showPaths={layers.showPaths}
               />
               <View style={styles.statusRow}>
-                <GpsStatusPanel
-                  activityMode={activityMode}
+                <RecordingDiagnosticsPanel
+                  activeWalk={activeWalk}
+                  backgroundMessage={backgroundTrackingMessage}
+                  backgroundStatus={backgroundTrackingStatus}
                   currentLocation={currentLocation}
-                  isRecording={Boolean(activeWalk)}
-                  lastRejectedPointReason={activeWalk?.lastRejectedPointReason ?? null}
-                  speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
                 />
                 <TouchableOpacity
                   accessibilityRole="button"
@@ -1124,6 +1138,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         recording={recoverableRecording}
       />
       <CompletionModal
+        currentObjective={objective}
+        currentObjectiveStats={objectiveStats}
         currentLocation={currentLocation}
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
@@ -1140,6 +1156,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           setCompletionVisible(false);
         }}
         visible={completionVisible}
+      />
+      <RecordingDiagnosticsModal
+        activeWalk={activeWalk}
+        backgroundMessage={backgroundTrackingMessage}
+        backgroundStatus={backgroundTrackingStatus}
+        currentLocation={currentLocation}
+        onClose={() => setDiagnosticsVisible(false)}
+        visible={diagnosticsVisible}
       />
     </View>
   );
@@ -1182,6 +1206,9 @@ function ObjectiveHud({
         <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
         <Text style={styles.objectiveMeta}>
           {formatObjectiveMode(objective.mode)} | {formatObjectiveCompletion(stats)}
+        </Text>
+        <Text style={styles.objectiveMeta}>
+          {formatObjectiveCells(stats)}
         </Text>
       </View>
       <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
@@ -1275,16 +1302,38 @@ function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
   return `${stats.completionPercent}% complete`;
 }
 
+function formatObjectiveCells(stats: ZoneCompletionStats | null) {
+  if (!stats) {
+    return "cells pending";
+  }
+
+  const remainingCells =
+    stats.totalZoneCells === null
+      ? null
+      : Math.max(0, stats.totalZoneCells - stats.exploredCells);
+
+  return remainingCells === null
+    ? `${stats.exploredCells} explored`
+    : `${stats.exploredCells} explored | ${remainingCells} left`;
+}
+
 function showLoopResultAlert(result: LoopProcessingResult) {
   if (result.status === "not_checked") {
-    Alert.alert("Loop check", "No closed loop was detected in this recording.");
+    Alert.alert(
+      "Loop check",
+      "No enclosed cell area was detected. Walked cells need to form a closed boundary before the interior can be filled."
+    );
     return;
   }
 
   if (result.status === "filled") {
     Alert.alert(
       "Loop filled",
-      `${result.filledLoopCount} loop${result.filledLoopCount === 1 ? "" : "s"} filled. ${result.filledCellCount} interior cells were added.`
+      `${result.filledLoopCount} enclosed area${
+        result.filledLoopCount === 1 ? "" : "s"
+      } filled. ${result.filledCellCount} interior cells were added.${
+        result.rejectedLoopCount > 0 ? ` ${result.rejectedLoopCount} area(s) were too large.` : ""
+      }`
     );
     return;
   }

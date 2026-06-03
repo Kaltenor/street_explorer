@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.3.24
+
+Changed:
+
+- Completion dropdown now shows completion percentage for the selected area and each dropdown item.
+
+## v0.3.23
+
+Changed:
+
+- Completion now auto-selects the cached zone containing the current GPS position when possible.
+- Cached zones are sorted by current location, with containing zones first and nearest zones next.
+- Completion area selection now uses a compact dropdown instead of showing all city or district buttons by default.
+
+## v0.3.22
+
+Added:
+
+- Recording diagnostics screen and details panel with accepted GPS count, rejected GPS count, step count, GPS accuracy, GPS distance, and background status.
+- Current objective card in Completion.
+- Objective HUD details for explored and remaining cells.
+- Clearer loop-fill explanation in history detail.
+
+Changed:
+
+- Saved path lines are hidden by default so explored area is the primary map layer.
+- Active recording path still renders while recording.
+- Explored-area fill and outline opacity adapt to map zoom to reduce low-zoom jaggedness.
+- Stop-walk loop-fill alert now explains enclosed-area cells more clearly.
+
 ## v0.3.21
 
 Added:

@@ -212,6 +212,7 @@ function RecordingDetail({
           <Detail label="Started" value={formatFullDate(walk.startedAt)} />
           <Detail label="Ended" value={formatFullDate(walk.endedAt)} />
           <Detail label="Loop result" value={formatLoopSummary(loopFillSummary)} />
+          <Detail label="Loop explanation" value={formatLoopExplanation(loopFillSummary)} />
         </View>
 
         <TextInput
@@ -294,6 +295,18 @@ function formatLoopSummary(summary: LoopFillSessionSummary | null) {
   }
 
   return formatLoopRejectionReason(summary.rejectionReason);
+}
+
+function formatLoopExplanation(summary: LoopFillSessionSummary | null) {
+  if (!summary) {
+    return "No enclosed cell boundary was found for this recording.";
+  }
+
+  if (summary.accepted) {
+    return `${summary.loopFilledCellCount} interior cells were added because walked cells formed a closed boundary under the current max-area limit.`;
+  }
+
+  return `${formatLoopRejectionReason(summary.rejectionReason)}. The walked cells did not produce a fillable enclosed area.`;
 }
 
 function formatLoopCount(summary: LoopFillSessionSummary | null) {

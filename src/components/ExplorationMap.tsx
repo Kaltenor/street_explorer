@@ -59,6 +59,8 @@ export function ExplorationMap({
   const hasCenteredOnInitialLocation = useRef(false);
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const region = getInitialRegion(currentLocation, walks, activePoints);
+  const [visibleRegion, setVisibleRegion] = useState(region);
+  const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
   const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
   const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
@@ -191,6 +193,7 @@ export function ExplorationMap({
         style={styles.map}
         initialRegion={region}
         onPanDrag={() => setIsAutoFollowEnabled(false)}
+        onRegionChangeComplete={setVisibleRegion}
         onTouchStart={() => setIsAutoFollowEnabled(false)}
         pitchEnabled
         rotateEnabled
@@ -205,7 +208,7 @@ export function ExplorationMap({
           <Polygon
             key={polygon.id}
             coordinates={polygon.coordinates}
-            fillColor="rgba(239, 68, 68, 0.34)"
+            fillColor={areaStyle.fillColor}
             strokeColor="rgba(239, 68, 68, 0)"
             strokeWidth={0}
           />
@@ -217,8 +220,8 @@ export function ExplorationMap({
             key={`outline-${segment.id}`}
             lineCap="round"
             lineJoin="round"
-            strokeColor="rgba(0, 0, 0, 0.9)"
-            strokeWidth={3}
+            strokeColor={areaStyle.outlineColor}
+            strokeWidth={areaStyle.outlineWidth}
           />
         )) : null}
 
@@ -271,7 +274,7 @@ export function ExplorationMap({
           );
         }) : null}
 
-        {layers.showPaths && activePoints[0] ? (
+        {activePoints[0] ? (
           <>
             <PathSegmentLines
               activityMode={activeMode}
@@ -337,6 +340,30 @@ export function ExplorationMap({
       </View>
     </View>
   );
+}
+
+function getExploredAreaStyle(latitudeDelta: number) {
+  if (latitudeDelta > 0.045) {
+    return {
+      fillColor: "rgba(239, 68, 68, 0.42)",
+      outlineColor: "rgba(0, 0, 0, 0.48)",
+      outlineWidth: 1.5
+    };
+  }
+
+  if (latitudeDelta > 0.018) {
+    return {
+      fillColor: "rgba(239, 68, 68, 0.38)",
+      outlineColor: "rgba(0, 0, 0, 0.72)",
+      outlineWidth: 2
+    };
+  }
+
+  return {
+    fillColor: "rgba(239, 68, 68, 0.34)",
+    outlineColor: "rgba(0, 0, 0, 0.9)",
+    outlineWidth: 3
+  };
 }
 
 function LayerIconButton({
