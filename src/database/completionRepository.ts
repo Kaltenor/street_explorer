@@ -317,7 +317,25 @@ export async function getCachedZones(type: CompletionScope): Promise<CachedZone[
     type
   );
 
-  return rows.map((row) => ({
+  return rows.map(mapZoneRow);
+}
+
+export async function getCachedZoneById(id: string): Promise<CachedZone | null> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<ZoneRow>(
+    `
+      SELECT id, type, name, parent_zone_id, source, geometry_json, fetched_at
+      FROM zones
+      WHERE id = ?
+    `,
+    id
+  );
+
+  return row ? mapZoneRow(row) : null;
+}
+
+function mapZoneRow(row: ZoneRow): CachedZone {
+  return {
     fetchedAt: row.fetched_at,
     ...parseZoneGeometry(row.geometry_json),
     id: row.id,
@@ -325,7 +343,7 @@ export async function getCachedZones(type: CompletionScope): Promise<CachedZone[
     parentZoneId: row.parent_zone_id,
     source: row.source,
     type: row.type
-  }));
+  };
 }
 
 export async function upsertZones(zones: CachedZone[]) {

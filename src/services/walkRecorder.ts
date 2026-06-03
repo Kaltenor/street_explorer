@@ -31,7 +31,8 @@ export function createActiveWalk(
     points: [],
     distanceMeters: 0,
     currentSpeedMetersPerSecond: 0,
-    lastRejectedPointReason: null
+    lastRejectedPointReason: null,
+    stepCount: 0
   };
 }
 
@@ -81,7 +82,11 @@ export async function persistAcceptedGpsPoint(
   return evaluation;
 }
 
-export async function finishPersistedActiveWalk(activeWalk: ActiveWalk, endedAt: string) {
+export async function finishPersistedActiveWalk(
+  activeWalk: ActiveWalk,
+  endedAt: string,
+  stepCount = activeWalk.stepCount
+) {
   const points = await getGpsPointsForSession(activeWalk.sessionId);
 
   if (points.length < 2) {
@@ -98,7 +103,8 @@ export async function finishPersistedActiveWalk(activeWalk: ActiveWalk, endedAt:
   await finishWalkSession(activeWalk.sessionId, {
     endedAt,
     distanceMeters,
-    durationSeconds
+    durationSeconds,
+    stepCount
   });
 
   return activeWalk.sessionId;

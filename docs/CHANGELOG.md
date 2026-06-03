@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.3.21
+
+Added:
+
+- Device pedometer support through Expo Sensors for Walk recordings.
+- Saved step counts per recording, with today’s cumulative steps shown in the HUD.
+- Persisted Completion objective so the selected goal is restored on next launch.
+
+Changed:
+
+- The main recording card now shows steps instead of GPS point count.
+- Completion defaults to District scope and Walk mode.
+
+## v0.3.20
+
+Changed:
+
+- Moved path, cell, and pin layer toggles into compact map-side icon buttons.
+- Removed duplicate layer controls from the expanded details panel.
+- Removed the visible OSM debug overlay control from the main UI; OSM data remains available as hidden analysis data.
+
+## v0.3.19
+
+Changed:
+
+- Completed/explored area fill changed from green to a less-transparent red.
+
+## v0.3.18
+
+Fixed:
+
+- Path display filtering no longer filters the explored-cell layer.
+- Explored cells now always render from all saved walks in the current mode, while path lines can still be scoped to Today, 7 days, All, or Selected.
+
 ## v0.3.17
 
 Changed:

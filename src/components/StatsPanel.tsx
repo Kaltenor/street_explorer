@@ -18,6 +18,7 @@ export function StatsPanel({ activityMode, stats }: StatsPanelProps) {
       </View>
       <View style={styles.secondaryRow}>
         <Stat label="Today" value={formatDistance(stats.todayDistanceMeters)} />
+        <Stat label="Steps today" value={formatNumber(stats.todayStepCount)} />
         <Stat label="Latest" value={formatDistance(stats.latestRecordingDistanceMeters)} />
         <Stat label="Longest" value={formatDistance(stats.longestRecordingDistanceMeters)} />
         <Stat label="Cells" value={stats.exploredCellCount.toString()} />
@@ -59,6 +60,10 @@ function formatArea(squareMeters: number) {
   }
 
   return `${(squareMeters / 10000).toFixed(2)} ha`;
+}
+
+function formatNumber(value: number) {
+  return Math.max(0, Math.round(value)).toLocaleString();
 }
 
 const styles = StyleSheet.create({

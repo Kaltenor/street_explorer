@@ -16,6 +16,7 @@ type WalkSessionRow = {
   distance_meters: number;
   duration_seconds: number;
   point_count?: number;
+  step_count: number;
 };
 
 type GpsPointRow = {
@@ -34,12 +35,14 @@ type CreateWalkInput = {
   endedAt: string;
   distanceMeters: number;
   durationSeconds: number;
+  stepCount?: number;
 };
 
 type FinishWalkInput = {
   endedAt: string;
   distanceMeters: number;
   durationSeconds: number;
+  stepCount: number;
 };
 
 export type StreetExplorerBackup = {
@@ -58,15 +61,17 @@ export async function createWalkSession(input: CreateWalkInput) {
         started_at,
         ended_at,
         distance_meters,
-        duration_seconds
+        duration_seconds,
+        step_count
       )
-      VALUES (?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?)
     `,
     input.activityMode,
     input.startedAt,
     input.endedAt,
     input.distanceMeters,
-    input.durationSeconds
+    input.durationSeconds,
+    input.stepCount ?? 0
   );
 
   return result.lastInsertRowId;
@@ -154,7 +159,7 @@ export async function getWalkSessionById(sessionId: number): Promise<WalkSession
   const db = await getDatabase();
   const row = await db.getFirstAsync<WalkSessionRow>(
     `
-      SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds
+      SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds, step_count
       FROM walk_sessions
       WHERE id = ?
     `,
@@ -170,12 +175,13 @@ export async function finishWalkSession(sessionId: number, input: FinishWalkInpu
   await db.runAsync(
     `
       UPDATE walk_sessions
-      SET ended_at = ?, distance_meters = ?, duration_seconds = ?
+      SET ended_at = ?, distance_meters = ?, duration_seconds = ?, step_count = ?
       WHERE id = ?
     `,
     input.endedAt,
     input.distanceMeters,
     input.durationSeconds,
+    input.stepCount,
     sessionId
   );
 }
@@ -184,7 +190,7 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
   const db = await getDatabase();
   const sessions = await db.getAllAsync<WalkSessionRow>(
     `
-    SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds
+    SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds, step_count
     FROM walk_sessions
     WHERE activity_mode = ?
     ORDER BY started_at DESC
@@ -227,11 +233,18 @@ export async function getLifetimeStats(activityMode: ActivityMode): Promise<Life
     walk_count: number;
     total_distance_meters: number | null;
     total_duration_seconds: number | null;
+    today_step_count: number | null;
   }>(`
     SELECT
       COUNT(*) AS walk_count,
       SUM(distance_meters) AS total_distance_meters,
-      SUM(duration_seconds) AS total_duration_seconds
+      SUM(duration_seconds) AS total_duration_seconds,
+      SUM(
+        CASE
+          WHEN date(started_at) = date('now', 'localtime') THEN step_count
+          ELSE 0
+        END
+      ) AS today_step_count
     FROM walk_sessions
     WHERE activity_mode = ?
   `,
@@ -249,7 +262,8 @@ export async function getLifetimeStats(activityMode: ActivityMode): Promise<Life
     longestRecordingDistanceMeters: 0,
     newCellsThisRecording: 0,
     todayDistanceMeters: 0,
-    todayRecordingCount: 0
+    todayRecordingCount: 0,
+    todayStepCount: stats?.today_step_count ?? 0
   };
 }
 
@@ -265,6 +279,7 @@ export async function getWalkHistory(activityMode: ActivityMode): Promise<WalkSe
         walk_sessions.ended_at,
         walk_sessions.distance_meters,
         walk_sessions.duration_seconds,
+        walk_sessions.step_count,
         COUNT(gps_points.id) AS point_count
       FROM walk_sessions
       LEFT JOIN gps_points ON gps_points.session_id = walk_sessions.id
@@ -299,7 +314,7 @@ export async function updateWalkSessionName(sessionId: number, displayName: stri
 export async function getBackupData(): Promise<StreetExplorerBackup> {
   const db = await getDatabase();
   const sessionRows = await db.getAllAsync<WalkSessionRow>(`
-    SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds
+    SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds, step_count
     FROM walk_sessions
     ORDER BY started_at ASC
   `);
@@ -337,9 +352,10 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
           started_at,
           ended_at,
           distance_meters,
-          duration_seconds
+          duration_seconds,
+          step_count
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `,
       session.id,
       session.activityMode,
@@ -347,7 +363,8 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
       session.startedAt,
       session.endedAt,
       session.distanceMeters,
-      session.durationSeconds
+      session.durationSeconds,
+      session.stepCount ?? 0
     );
   }
 
@@ -420,7 +437,8 @@ function mapSessionRow(row: WalkSessionRow): WalkSession {
     endedAt: row.ended_at,
     distanceMeters: row.distance_meters,
     durationSeconds: row.duration_seconds,
-    pointCount: row.point_count
+    pointCount: row.point_count,
+    stepCount: row.step_count ?? 0
   };
 }
 

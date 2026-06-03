@@ -19,6 +19,7 @@ export type WalkSession = {
   distanceMeters: number;
   durationSeconds: number;
   pointCount?: number;
+  stepCount: number;
 };
 
 export type WalkWithPoints = WalkSession & {
@@ -33,6 +34,7 @@ export type ActiveWalk = {
   distanceMeters: number;
   currentSpeedMetersPerSecond: number;
   lastRejectedPointReason: string | null;
+  stepCount: number;
 };
 
 export type LifetimeStats = {
@@ -47,4 +49,5 @@ export type LifetimeStats = {
   newCellsThisRecording: number;
   todayDistanceMeters: number;
   todayRecordingCount: number;
+  todayStepCount: number;
 };

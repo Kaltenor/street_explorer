@@ -157,7 +157,7 @@ function HistoryRow({
           <Text style={styles.date}>{walk.displayName || formatDate(walk.startedAt)}</Text>
           <Text style={styles.meta}>
             {formatDistance(walk.distanceMeters)} - {formatDuration(walk.durationSeconds)} -{" "}
-            {walk.pointCount ?? 0} points
+            {formatSteps(walk.stepCount)} steps
           </Text>
         </View>
         <Ionicons name="chevron-forward" size={20} color="#64748b" />
@@ -201,7 +201,8 @@ function RecordingDetail({
         <View style={styles.summaryGrid}>
           <Summary label="Distance" value={formatDistance(walk.distanceMeters)} />
           <Summary label="Duration" value={formatDuration(walk.durationSeconds)} />
-          <Summary label="Points" value={(walk.pointCount ?? 0).toString()} />
+          <Summary label="Steps" value={formatSteps(walk.stepCount)} />
+          <Summary label="GPS pts" value={(walk.pointCount ?? 0).toString()} />
           <Summary label="Loops" value={formatLoopCount(loopFillSummary)} />
           <Summary label="Loop cells" value={String(loopFillSummary?.loopFilledCellCount ?? 0)} />
           <Summary label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
@@ -345,6 +346,10 @@ function formatFullDate(value: string) {
     month: "short",
     year: "numeric"
   }).format(new Date(value));
+}
+
+function formatSteps(steps: number) {
+  return Math.max(0, Math.round(steps)).toLocaleString();
 }
 
 const styles = StyleSheet.create({

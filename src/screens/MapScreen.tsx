@@ -9,7 +9,6 @@ import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import { GpsStatusPanel } from "../components/GpsStatusPanel";
-import { LayerControls, MapLayerState } from "../components/LayerControls";
 import { MapLegend } from "../components/MapLegend";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
 import {
@@ -21,7 +20,6 @@ import {
   RecordingRecoveryModal
 } from "../components/RecordingRecoveryModal";
 import { StatsPanel } from "../components/StatsPanel";
-import { StreetCompletionPanel } from "../components/StreetCompletionPanel";
 import { WalkControls } from "../components/WalkControls";
 import { WalkHistoryModal } from "../components/WalkHistoryModal";
 import {
@@ -37,7 +35,9 @@ import {
 import {
   clearActiveRecordingSettings,
   getActiveRecordingSettings,
-  saveActiveRecordingSettings
+  getSavedCompletionObjective,
+  saveActiveRecordingSettings,
+  saveCompletionObjective
 } from "../database/settingsRepository";
 import {
   CachedZone,
@@ -65,11 +65,8 @@ import {
 } from "../services/explorationArea";
 import { analyzeLoopFillsForCells } from "../services/loopFill";
 import {
-  deleteAllStreetSegments,
-  getStreetSegmentsNear,
-  upsertStreetSegments
+  getStreetSegmentsNear
 } from "../database/streetRepository";
-import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
 import { calculateStreetCompletion } from "../services/streetCompletion";
 import { calculateZoneCompletionStats, ZoneCompletionStats } from "../services/zoneCompletion";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
@@ -87,6 +84,11 @@ import {
 } from "../services/walkRecorder";
 import { calculatePathDistanceMeters } from "../services/distance";
 import {
+  getStepCountBetween,
+  StepSubscription,
+  watchStepCount
+} from "../services/pedometerService";
+import {
   ActiveWalk,
   ActivityMode,
   GpsPoint,
@@ -94,6 +96,7 @@ import {
   WalkSession,
   WalkWithPoints
 } from "../types/walk";
+import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment, StreetCompletionSummary } from "../types/street";
 
 const EMPTY_STATS: LifetimeStats = {
@@ -107,7 +110,8 @@ const EMPTY_STATS: LifetimeStats = {
   longestRecordingDistanceMeters: 0,
   newCellsThisRecording: 0,
   todayDistanceMeters: 0,
-  todayRecordingCount: 0
+  todayRecordingCount: 0,
+  todayStepCount: 0
 };
 
 const OSM_STREET_RADIUS_METERS = 650;
@@ -167,10 +171,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
-    showPaths: true,
-    showStreetLayer: false
+    showPaths: true
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
+  const stepSubscriptionRef = useRef<StepSubscription | null>(null);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const streetCacheCenterRef = useRef<GpsPoint | null>(null);
   const streetCompletion = useMemo(
@@ -238,7 +242,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         activityMode
       ),
       todayDistanceMeters: todayWalks.reduce((distance, walk) => distance + walk.distanceMeters, 0),
-      todayRecordingCount: todayWalks.length
+      todayRecordingCount: todayWalks.length,
+      todayStepCount: todayWalks.reduce((steps, walk) => steps + walk.stepCount, 0)
     });
     setHistory(savedHistory);
     setSelectedSessionId((currentSessionId) =>
@@ -258,6 +263,19 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   useEffect(() => {
     refreshSavedData();
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    getSavedCompletionObjective()
+      .then((savedObjective) => {
+        if (!savedObjective) {
+          return;
+        }
+
+        setObjective(savedObjective);
+        setSelectedZone(savedObjective.zone);
+      })
+      .catch((error) => console.warn("Failed to load saved completion objective", error));
+  }, []);
 
   useEffect(() => {
     if (!objective) {
@@ -336,6 +354,30 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     subscriptionRef.current = null;
   }, []);
 
+  const stopStepWatch = useCallback(() => {
+    stepSubscriptionRef.current?.remove();
+    stepSubscriptionRef.current = null;
+  }, []);
+
+  const startStepWatch = useCallback(
+    async (startedAt: string, recordingMode: ActivityMode) => {
+      stopStepWatch();
+
+      if (recordingMode !== "walk") {
+        return;
+      }
+
+      const baseSteps = await getStepCountBetween(startedAt, new Date().toISOString());
+
+      setActiveWalk((walk) => (walk ? { ...walk, stepCount: baseSteps } : walk));
+
+      stepSubscriptionRef.current = await watchStepCount((liveSteps) => {
+        setActiveWalk((walk) => (walk ? { ...walk, stepCount: baseSteps + liveSteps } : walk));
+      });
+    },
+    [stopStepWatch]
+  );
+
   const startForegroundWatch = useCallback(async () => {
     const currentPoint = await getCurrentGpsPoint();
     if (currentPoint) {
@@ -394,7 +436,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         ...currentWalk,
         currentSpeedMetersPerSecond: lastSpeedMetersPerSecond,
         distanceMeters: calculatePathDistanceMeters(points),
-        points
+        points,
+        stepCount: currentWalk.stepCount
       };
     });
   }, [activeWalk]);
@@ -505,10 +548,18 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     setBackgroundTrackingStatus("starting");
     await saveActiveRecordingSettings({ activityMode, sessionId });
 
+    await startStepWatch(startedAt, activityMode);
     await enableBackgroundTracking();
 
     await startForegroundWatch();
-  }, [activityMode, enableBackgroundTracking, permissionState, startForegroundWatch, stopLocationWatch]);
+  }, [
+    activityMode,
+    enableBackgroundTracking,
+    permissionState,
+    startForegroundWatch,
+    startStepWatch,
+    stopLocationWatch
+  ]);
 
   const reprocessModeExploration = useCallback(
     async (mode: ActivityMode): Promise<LoopProcessingResult & { recordingCount: number }> => {
@@ -614,15 +665,22 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
   const handleStopWalk = useCallback(async () => {
     stopLocationWatch();
+    stopStepWatch();
 
     if (!activeWalk) {
       return;
     }
 
     const endedAt = new Date().toISOString();
+    const finalStepCount =
+      activeWalk.activityMode === "walk"
+        ? await getStepCountBetween(activeWalk.startedAt, endedAt)
+        : activeWalk.stepCount;
+
     await stopBackgroundLocationTracking();
+    stopStepWatch();
     await clearActiveRecordingSettings();
-    const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt);
+    const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt, finalStepCount);
     setActiveWalk(null);
     setElapsedSeconds(0);
     setBackgroundTrackingStatus("idle");
@@ -636,7 +694,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const loopResult = await reprocessModeExploration(activeWalk.activityMode);
     await refreshSavedData();
     showLoopResultAlert(loopResult);
-  }, [activeWalk, refreshSavedData, reprocessModeExploration, stopLocationWatch]);
+  }, [activeWalk, refreshSavedData, reprocessModeExploration, stopLocationWatch, stopStepWatch]);
 
   const handleReprocessRecordings = useCallback(() => {
     if (activeWalk) {
@@ -684,19 +742,21 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const { points, session } = recoverableRecording;
     setRecoverableRecording(null);
     setActiveWalk({
-      activityMode,
+      activityMode: session.activityMode,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
-      startedAt: session.startedAt
+      startedAt: session.startedAt,
+      stepCount: session.stepCount
     });
     setBackgroundTrackingMessage("Recovered unfinished recording.");
     setBackgroundTrackingStatus("starting");
+    await startStepWatch(session.startedAt, session.activityMode);
     await enableBackgroundTracking();
     await startForegroundWatch();
-  }, [activityMode, enableBackgroundTracking, recoverableRecording, startForegroundWatch]);
+  }, [activityMode, enableBackgroundTracking, recoverableRecording, startForegroundWatch, startStepWatch]);
 
   const handleFinishRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -705,18 +765,28 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
     const { points, session } = recoverableRecording;
     const recoveredWalk: ActiveWalk = {
-      activityMode,
+      activityMode: session.activityMode,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
-      startedAt: session.startedAt
+      startedAt: session.startedAt,
+      stepCount: session.stepCount
     };
+    const endedAt = new Date().toISOString();
+    const finalStepCount =
+      recoveredWalk.activityMode === "walk"
+        ? await getStepCountBetween(recoveredWalk.startedAt, endedAt)
+        : recoveredWalk.stepCount;
 
     await stopBackgroundLocationTracking();
     await clearActiveRecordingSettings();
-    const savedSessionId = await finishPersistedActiveWalk(recoveredWalk, new Date().toISOString());
+    const savedSessionId = await finishPersistedActiveWalk(
+      recoveredWalk,
+      endedAt,
+      finalStepCount
+    );
 
     if (savedSessionId) {
       await reprocessModeExploration(recoveredWalk.activityMode);
@@ -725,20 +795,21 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
     await refreshSavedData();
-  }, [activityMode, recoverableRecording, refreshSavedData, reprocessModeExploration]);
+  }, [activityMode, recoverableRecording, refreshSavedData, reprocessModeExploration, stopStepWatch]);
 
   const handleDiscardRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
       return;
     }
 
+    stopStepWatch();
     await stopBackgroundLocationTracking();
     await clearActiveRecordingSettings();
     await deleteWalkSession(recoverableRecording.session.id);
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
     await refreshSavedData();
-  }, [recoverableRecording, refreshSavedData]);
+  }, [recoverableRecording, refreshSavedData, stopStepWatch]);
 
   const handleDeleteWalk = useCallback(
     (sessionId: number) => {
@@ -841,38 +912,6 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     );
   }, [activeWalk, refreshSavedData]);
 
-  const handleLoadNearbyStreets = useCallback(async () => {
-    if (!currentLocation) {
-      Alert.alert("Location unavailable", "Wait for GPS before loading nearby OSM streets.");
-      return;
-    }
-
-    setStreetStatus("loading");
-
-    try {
-      const fetchedSegments = await fetchNearbyOsmStreetSegments(
-        currentLocation,
-        OSM_STREET_RADIUS_METERS
-      );
-
-      await deleteAllStreetSegments();
-      await upsertStreetSegments(fetchedSegments);
-
-      const cachedSegments = await getStreetSegmentsNear(
-        currentLocation.latitude,
-        currentLocation.longitude,
-        OSM_STREET_RADIUS_METERS
-      );
-
-      setStreetSegments(cachedSegments);
-      setStreetStatus("ready");
-    } catch (error) {
-      console.warn("Failed to load nearby OSM streets", error);
-      setStreetStatus("error");
-      Alert.alert("OSM load failed", "Street Explorer could not fetch nearby OpenStreetMap streets.");
-    }
-  }, [currentLocation]);
-
   const handleChangeMode = useCallback(() => {
     if (activeWalk) {
       Alert.alert("Recording active", "Stop the current recording before changing mode.");
@@ -883,8 +922,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   }, [activeWalk, onChangeMode]);
 
   useEffect(() => {
-    return () => stopLocationWatch();
-  }, [stopLocationWatch]);
+    return () => {
+      stopLocationWatch();
+      stopStepWatch();
+    };
+  }, [stopLocationWatch, stopStepWatch]);
 
   useEffect(() => {
     const subscription = AppState.addEventListener("change", (nextState) => {
@@ -901,14 +943,15 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   return (
     <View style={styles.screen}>
       <ExplorationMap
-        walks={displayedWalks}
+        walks={walks}
+        pathWalks={displayedWalks}
         activePoints={activeWalk?.points ?? []}
         activeMode={activityMode}
         currentLocation={currentLocation}
-        exploredStreetIds={streetCompletion.exploredStreetIds}
         highlightedSessionId={selectedSessionId}
         layers={layers}
         loopFillCellIds={loopFillCellIds}
+        onToggleLayer={toggleLayer}
         selectedZone={selectedZone}
         streetSegments={streetSegments}
       />
@@ -971,9 +1014,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             <ObjectiveHud
               objective={objective}
               stats={objectiveStats}
-              onClear={() => {
+              onClear={async () => {
                 setObjective(null);
                 setObjectiveStats(null);
+                await saveCompletionObjective(null);
               }}
             />
           ) : null}
@@ -986,7 +1030,6 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
                 selectedSessionId={selectedSessionId}
                 onChangeMode={setPathDisplayMode}
               />
-              <LayerControls layers={layers} onToggleLayer={toggleLayer} />
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={handleReprocessRecordings}
@@ -1042,15 +1085,6 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           </>
         ) : null}
 
-        {layers.showStreetLayer ? (
-          <StreetCompletionPanel
-            canLoad={Boolean(currentLocation)}
-            isLoading={streetCompletion.summary.status === "loading"}
-            onLoadNearbyStreets={handleLoadNearbyStreets}
-            summary={streetCompletion.summary}
-          />
-        ) : null}
-
         <View style={styles.bottomPanel}>
           <WalkControls
             activityMode={activityMode}
@@ -1061,6 +1095,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             gpsStatus={activeWalk?.lastRejectedPointReason}
             pointCount={activeWalk?.points.length ?? 0}
             speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
+            stepCount={activeWalk?.stepCount ?? 0}
+            todayStepCount={stats.todayStepCount + (activeWalk?.stepCount ?? 0)}
             onStart={handleStartWalk}
             onStop={handleStopWalk}
           />
@@ -1097,6 +1133,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         onSetObjective={(nextObjective) => {
           setObjective(nextObjective);
           setSelectedZone(nextObjective.zone);
+          saveCompletionObjective({
+            mode: nextObjective.mode,
+            zoneId: nextObjective.zone.id
+          }).catch((error) => console.warn("Failed to save completion objective", error));
           setCompletionVisible(false);
         }}
         visible={completionVisible}

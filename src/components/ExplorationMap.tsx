@@ -11,20 +11,21 @@ import {
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
 import { buildPathSegmentsWithInference } from "../services/pathInference";
+import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
-import { MapLayerState } from "./LayerControls";
 
 type ExplorationMapProps = {
   walks: WalkWithPoints[];
+  pathWalks: WalkWithPoints[];
   activePoints: GpsPoint[];
   activeMode: ActivityMode;
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
   loopFillCellIds: string[];
+  onToggleLayer: (layer: keyof MapLayerState) => void;
   selectedZone: CachedZone | null;
-  exploredStreetIds: Set<string>;
   streetSegments: OsmStreetSegment[];
 };
 
@@ -43,13 +44,14 @@ const PATH_COLORS = [
 
 export function ExplorationMap({
   walks,
+  pathWalks,
   activePoints,
   activeMode,
   currentLocation,
-  exploredStreetIds,
   highlightedSessionId,
   layers,
   loopFillCellIds,
+  onToggleLayer,
   selectedZone,
   streetSegments
 }: ExplorationMapProps) {
@@ -154,7 +156,7 @@ export function ExplorationMap({
   const fitToVisiblePaths = () => {
     setIsAutoFollowEnabled(false);
 
-    const coordinates = getAllPathPoints(walks, activePoints).map(pointToCoordinate);
+    const coordinates = getAllPathPoints(pathWalks, activePoints).map(pointToCoordinate);
 
     if (coordinates.length === 0) {
       centerOnCurrentLocation();
@@ -203,8 +205,8 @@ export function ExplorationMap({
           <Polygon
             key={polygon.id}
             coordinates={polygon.coordinates}
-            fillColor="rgba(34, 197, 94, 0.24)"
-            strokeColor="rgba(34, 197, 94, 0)"
+            fillColor="rgba(239, 68, 68, 0.34)"
+            strokeColor="rgba(239, 68, 68, 0)"
             strokeWidth={0}
           />
         )) : null}
@@ -220,21 +222,6 @@ export function ExplorationMap({
           />
         )) : null}
 
-        {layers.showStreetLayer
-          ? streetSegments
-              .filter((segment) => exploredStreetIds.has(segment.id))
-              .map((segment) => (
-                <Polyline
-                  key={segment.id}
-                  coordinates={segment.coordinates}
-                  strokeColor="rgba(22, 163, 74, 0.7)"
-                  strokeWidth={3}
-                  lineCap="round"
-                  lineJoin="round"
-                />
-              ))
-          : null}
-
         {selectedZone
           ? selectedZone.geometry.map((ring, index) => (
               <Polygon
@@ -247,7 +234,7 @@ export function ExplorationMap({
             ))
           : null}
 
-        {layers.showPaths ? walks.map((walk) => {
+        {layers.showPaths ? pathWalks.map((walk) => {
           const color = getPathColor(walk.id);
           const isHighlighted = highlightedSessionId === walk.id;
           const isDimmed = highlightedSessionId !== null && !isHighlighted;
@@ -329,8 +316,49 @@ export function ExplorationMap({
         >
           <Ionicons name="scan" size={22} color="#0f172a" />
         </TouchableOpacity>
+        <LayerIconButton
+          active={layers.showPaths}
+          accessibilityLabel="Toggle paths"
+          icon="git-branch-outline"
+          onPress={() => onToggleLayer("showPaths")}
+        />
+        <LayerIconButton
+          active={layers.showExploredCells}
+          accessibilityLabel="Toggle explored cells"
+          icon="grid-outline"
+          onPress={() => onToggleLayer("showExploredCells")}
+        />
+        <LayerIconButton
+          active={layers.showMarkers}
+          accessibilityLabel="Toggle pins"
+          icon="flag-outline"
+          onPress={() => onToggleLayer("showMarkers")}
+        />
       </View>
     </View>
+  );
+}
+
+function LayerIconButton({
+  accessibilityLabel,
+  active,
+  icon,
+  onPress
+}: {
+  accessibilityLabel: string;
+  active: boolean;
+  icon: keyof typeof Ionicons.glyphMap;
+  onPress: () => void;
+}) {
+  return (
+    <TouchableOpacity
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="button"
+      onPress={onPress}
+      style={[styles.layerControlButton, active ? styles.activeControlButton : null]}
+    >
+      <Ionicons name={icon} size={18} color={active ? "#ffffff" : "#0f172a"} />
+    </TouchableOpacity>
   );
 }
 
@@ -474,6 +502,16 @@ const styles = StyleSheet.create({
   },
   disabledButton: {
     opacity: 0.45
+  },
+  layerControlButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.96)",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 36,
+    justifyContent: "center",
+    width: 36
   },
   map: {
     bottom: 0,

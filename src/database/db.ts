@@ -220,6 +220,18 @@ export async function initDatabase() {
       ALTER TABLE loop_fills_next RENAME TO loop_fills;
     `);
   });
+
+  await applyMigration(11, "add_step_count_to_walk_sessions", async () => {
+    const columns = await db.getAllAsync<{ name: string }>("PRAGMA table_info(walk_sessions)");
+    const hasStepCount = columns.some((column) => column.name === "step_count");
+
+    if (!hasStepCount) {
+      await db.execAsync(`
+        ALTER TABLE walk_sessions
+          ADD COLUMN step_count INTEGER NOT NULL DEFAULT 0;
+      `);
+    }
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

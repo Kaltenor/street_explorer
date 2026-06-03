@@ -16,6 +16,7 @@
         "NSLocationWhenInUseUsageDescription": "Street Explorer uses your location to record walks and draw your exploration map.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Street Explorer can keep recording an active exploration while the app is locked.",
         "NSLocationAlwaysUsageDescription": "Street Explorer can keep recording an active exploration while the app is locked.",
+        "NSMotionUsageDescription": "Street Explorer uses step count while walking to show more reliable walking stats.",
         "UIBackgroundModes": [
           "location"
         ],
@@ -28,6 +29,7 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
         "ACCESS_BACKGROUND_LOCATION",
+        "ACTIVITY_RECOGNITION",
         "FOREGROUND_SERVICE",
         "FOREGROUND_SERVICE_LOCATION"
       ]

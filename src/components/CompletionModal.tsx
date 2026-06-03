@@ -54,8 +54,8 @@ export function CompletionModal({
   onSetObjective,
   visible
 }: CompletionModalProps) {
-  const [mode, setMode] = useState<CompletionMode>("all");
-  const [scope, setScope] = useState<CompletionScope>("city");
+  const [mode, setMode] = useState<CompletionMode>("walk");
+  const [scope, setScope] = useState<CompletionScope>("district");
   const [stats, setStats] = useState<CompletionStats>(EMPTY_STATS);
   const [zones, setZones] = useState<CachedZone[]>([]);
   const [isRefreshingZones, setIsRefreshingZones] = useState(false);

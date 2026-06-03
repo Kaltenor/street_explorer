@@ -15,6 +15,8 @@ type WalkControlsProps = {
   gpsStatus?: string | null;
   pointCount: number;
   speedMetersPerSecond?: number;
+  stepCount: number;
+  todayStepCount: number;
   onStart: () => void;
   onStop: () => void;
 };
@@ -28,6 +30,8 @@ export function WalkControls({
   gpsStatus,
   pointCount,
   speedMetersPerSecond = 0,
+  stepCount,
+  todayStepCount,
   onStart,
   onStop
 }: WalkControlsProps) {
@@ -38,7 +42,7 @@ export function WalkControls({
       <View style={styles.metrics}>
         <Metric label="Distance" value={formatDistance(distanceMeters)} />
         <Metric label="Duration" value={formatDuration(durationSeconds)} />
-        {!isRecording ? <Metric label="Points" value={pointCount.toString()} /> : null}
+        <Metric label="Steps today" value={formatSteps(todayStepCount)} />
       </View>
 
       {isRecording ? (
@@ -60,7 +64,8 @@ export function WalkControls({
 
       {isRecording && detailsExpanded ? (
         <View style={styles.details}>
-          <Metric label="Points" value={pointCount.toString()} />
+          <Metric label="Steps" value={formatSteps(stepCount)} />
+          <Metric label="GPS pts" value={pointCount.toString()} />
           <Metric label="Speed" value={formatSpeed(speedMetersPerSecond)} />
           <Metric label="GPS" value={formatGps(gpsAccuracyMeters)} />
           {gpsStatus ? <Text style={styles.gpsStatus}>{gpsStatus}</Text> : null}
@@ -106,6 +111,10 @@ function formatGps(accuracyMeters: number | null | undefined) {
   }
 
   return `${Math.round(accuracyMeters)} m`;
+}
+
+function formatSteps(steps: number) {
+  return Math.max(0, Math.round(steps)).toLocaleString();
 }
 
 const styles = StyleSheet.create({
