@@ -77,20 +77,10 @@ Toggle:
 
 - Paths
 - Cells
-- Fog
 - Pins
 - OSM
 
 Confirm each layer appears or disappears.
-
-## Fog Of War Test
-
-1. Reload the app and confirm Fog is enabled by default.
-2. Confirm unexplored nearby areas have a dark translucent overlay.
-3. Confirm recorded/explored areas remain visible through cleared fog tiles.
-4. Open Show details and toggle Fog off.
-5. Confirm the map returns to the normal Apple map view.
-6. Pan and zoom the map and confirm fog refreshes without freezing the app.
 
 ## OpenStreetMap Debug Matching Test
 

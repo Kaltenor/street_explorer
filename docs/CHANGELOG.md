@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.3.4
+
+Removed:
+
+- Fog of War map layer, toggle, legend item, and rendering helpers.
+- Fog documentation and manual test steps.
+
 ## v0.3.3
 
 Changed:

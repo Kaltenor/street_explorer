@@ -137,18 +137,6 @@ Inferred path routing is intentionally not implemented yet. `src/services/pathIn
 
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
 
-## Fog Of War
-
-Fog of War V1 is a visual map layer, enabled by default.
-
-It uses 120m fog tiles for only the currently visible map viewport plus a small buffer. Tiles that overlap explored 15m cells are skipped, creating a simple reveal effect without trying to draw a city-scale overlay.
-
-The logical model is still infinite fog: unexplored space is considered hidden, but the app only renders the part currently visible on screen. Edge tiles use lower opacity so the rendered boundary feels softer during pan and zoom.
-
-The fog is dark enough to obscure Apple MapKit labels in unrevealed areas. The app does not directly remove base-map labels because `react-native-maps` does not expose per-area label masking for Apple MapKit.
-
-The fog layer is only visual. It does not change saved recordings, explored cells, completion, or OSM analysis.
-
 ## Loop Fill
 
 Closed-loop fill is a conservative V1 game mechanic.

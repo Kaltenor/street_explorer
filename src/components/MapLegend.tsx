@@ -2,12 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 
 type MapLegendProps = {
   showExploredCells: boolean;
-  showFogOfWar: boolean;
   showPaths: boolean;
 };
 
-export function MapLegend({ showExploredCells, showFogOfWar, showPaths }: MapLegendProps) {
-  if (!showExploredCells && !showFogOfWar && !showPaths) {
+export function MapLegend({ showExploredCells, showPaths }: MapLegendProps) {
+  if (!showExploredCells && !showPaths) {
     return null;
   }
 
@@ -17,7 +16,6 @@ export function MapLegend({ showExploredCells, showFogOfWar, showPaths }: MapLeg
       {showPaths ? <LegendItem color="#ef4444" label="Recording" /> : null}
       {showPaths ? <LegendItem color="#b45309" label="GPS gap" /> : null}
       {showExploredCells ? <LegendItem color="#86efac" label="Explored cells" /> : null}
-      {showFogOfWar ? <LegendItem color="#334155" label="Fog" /> : null}
     </View>
   );
 }

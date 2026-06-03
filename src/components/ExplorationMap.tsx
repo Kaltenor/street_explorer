@@ -1,11 +1,11 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
-import { buildExplorationCells, buildFogCells } from "../services/explorationArea";
+import { buildExplorationCells } from "../services/explorationArea";
 import { buildPathSegmentsWithInference } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
@@ -52,12 +52,7 @@ export function ExplorationMap({
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
   const region = getInitialRegion(currentLocation, walks, activePoints);
-  const [visibleRegion, setVisibleRegion] = useState<Region>(region);
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
-  const fogCells = buildFogCells({
-    explorationCells,
-    visibleRegion
-  });
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -177,7 +172,6 @@ export function ExplorationMap({
         ref={mapRef}
         style={styles.map}
         initialRegion={region}
-        onRegionChangeComplete={setVisibleRegion}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -187,18 +181,6 @@ export function ExplorationMap({
         zoomEnabled
         followsUserLocation={false}
       >
-        {layers.showFogOfWar
-          ? fogCells.map((cell) => (
-              <Polygon
-                coordinates={cell.coordinates}
-                fillColor={`rgba(15, 23, 42, ${cell.opacity})`}
-                key={`fog-${cell.id}`}
-                strokeColor={`rgba(15, 23, 42, ${Math.max(0.18, cell.opacity - 0.18)})`}
-                strokeWidth={0.5}
-              />
-            ))
-          : null}
-
         {layers.showExploredCells ? explorationCells.map((cell) => (
           <Polygon
             key={cell.id}

@@ -21,12 +21,6 @@ export type ExplorationCell = {
   source: ExplorationCellSource;
 };
 
-export type FogCell = {
-  id: string;
-  coordinates: MapCoordinate[];
-  opacity: number;
-};
-
 type MercatorPoint = {
   x: number;
   y: number;
@@ -36,10 +30,6 @@ type CellKey = {
   x: number;
   y: number;
 };
-
-const FOG_CELL_SIZE_METERS = EXPLORATION_CELL_SIZE_METERS * 8;
-const FOG_VIEWPORT_PADDING_FACTOR = 0.18;
-const MAX_FOG_CELLS = 900;
 
 export function buildExplorationCells(
   walks: WalkWithPoints[],
@@ -56,47 +46,6 @@ export function buildExplorationCells(
       .filter((key) => !cellKeys.has(key))
       .map((key) => buildExplorationCell(key, "loop_fill"))
   ];
-}
-
-export function buildFogCells(input: {
-  explorationCells: ExplorationCell[];
-  visibleRegion: {
-    latitude: number;
-    latitudeDelta: number;
-    longitude: number;
-    longitudeDelta: number;
-  };
-}) {
-  const bounds = getFogBounds(input);
-
-  if (!bounds) {
-    return [];
-  }
-
-  const exploredFogKeys = new Set(
-    input.explorationCells.map((cell) => fogCellKeyToString(mercatorToFogCellKey(
-      coordinateToMercator(getCellApproximateCenter(cell.coordinates))
-    )))
-  );
-  const range = clampFogRange({
-    maxX: Math.floor(bounds.maxX / FOG_CELL_SIZE_METERS),
-    maxY: Math.floor(bounds.maxY / FOG_CELL_SIZE_METERS),
-    minX: Math.floor(bounds.minX / FOG_CELL_SIZE_METERS),
-    minY: Math.floor(bounds.minY / FOG_CELL_SIZE_METERS)
-  });
-  const fogCells: FogCell[] = [];
-
-  for (let x = range.minX; x <= range.maxX; x += 1) {
-    for (let y = range.minY; y <= range.maxY; y += 1) {
-      const key = fogCellKeyToString({ x, y });
-
-      if (!exploredFogKeys.has(key)) {
-        fogCells.push(buildFogCell({ x, y }, getFogCellOpacity({ x, y }, range)));
-      }
-    }
-  }
-
-  return fogCells;
 }
 
 export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
@@ -261,106 +210,6 @@ export function buildExplorationCell(
   };
 }
 
-function buildFogCell(key: CellKey, opacity: number): FogCell {
-  const minX = key.x * FOG_CELL_SIZE_METERS;
-  const minY = key.y * FOG_CELL_SIZE_METERS;
-  const maxX = minX + FOG_CELL_SIZE_METERS;
-  const maxY = minY + FOG_CELL_SIZE_METERS;
-
-  return {
-    coordinates: [
-      mercatorToCoordinate({ x: minX, y: minY }),
-      mercatorToCoordinate({ x: maxX, y: minY }),
-      mercatorToCoordinate({ x: maxX, y: maxY }),
-      mercatorToCoordinate({ x: minX, y: maxY })
-    ],
-    id: fogCellKeyToString(key),
-    opacity
-  };
-}
-
-function getFogBounds(input: {
-  visibleRegion: {
-    latitude: number;
-    latitudeDelta: number;
-    longitude: number;
-    longitudeDelta: number;
-  };
-}) {
-  const latitudePadding = input.visibleRegion.latitudeDelta * FOG_VIEWPORT_PADDING_FACTOR;
-  const longitudePadding = input.visibleRegion.longitudeDelta * FOG_VIEWPORT_PADDING_FACTOR;
-  const northWest = coordinateToMercator({
-    latitude: input.visibleRegion.latitude + input.visibleRegion.latitudeDelta / 2 + latitudePadding,
-    longitude: input.visibleRegion.longitude - input.visibleRegion.longitudeDelta / 2 - longitudePadding
-  });
-  const southEast = coordinateToMercator({
-    latitude: input.visibleRegion.latitude - input.visibleRegion.latitudeDelta / 2 - latitudePadding,
-    longitude: input.visibleRegion.longitude + input.visibleRegion.longitudeDelta / 2 + longitudePadding
-  });
-
-  return {
-    maxX: Math.max(northWest.x, southEast.x),
-    maxY: Math.max(northWest.y, southEast.y),
-    minX: Math.min(northWest.x, southEast.x),
-    minY: Math.min(northWest.y, southEast.y)
-  };
-}
-
-function clampFogRange(range: { maxX: number; maxY: number; minX: number; minY: number }) {
-  const width = range.maxX - range.minX + 1;
-  const height = range.maxY - range.minY + 1;
-  const total = width * height;
-
-  if (total <= MAX_FOG_CELLS) {
-    return range;
-  }
-
-  const aspect = Math.max(0.5, Math.min(2, width / Math.max(1, height)));
-  const clampedWidth = Math.max(1, Math.floor(Math.sqrt(MAX_FOG_CELLS * aspect)));
-  const clampedHeight = Math.max(1, Math.floor(MAX_FOG_CELLS / clampedWidth));
-  const centerX = Math.floor((range.minX + range.maxX) / 2);
-  const centerY = Math.floor((range.minY + range.maxY) / 2);
-  const halfWidth = Math.floor(clampedWidth / 2);
-  const halfHeight = Math.floor(clampedHeight / 2);
-
-  return {
-    maxX: centerX + halfWidth,
-    maxY: centerY + halfHeight,
-    minX: centerX - halfWidth,
-    minY: centerY - halfHeight
-  };
-}
-
-function getFogCellOpacity(key: CellKey, range: { maxX: number; maxY: number; minX: number; minY: number }) {
-  const edgeDistance = Math.min(
-    key.x - range.minX,
-    range.maxX - key.x,
-    key.y - range.minY,
-    range.maxY - key.y
-  );
-
-  if (edgeDistance <= 0) {
-    return 0.28;
-  }
-
-  if (edgeDistance === 1) {
-    return 0.52;
-  }
-
-  return 0.72;
-}
-
-function getCellApproximateCenter(coordinates: MapCoordinate[]) {
-  return {
-    latitude:
-      coordinates.reduce((total, coordinate) => total + coordinate.latitude, 0) /
-      Math.max(1, coordinates.length),
-    longitude:
-      coordinates.reduce((total, coordinate) => total + coordinate.longitude, 0) /
-      Math.max(1, coordinates.length)
-  };
-}
-
 export function coordinateToExplorationCellKey(point: Pick<MapCoordinate, "latitude" | "longitude">) {
   return cellKeyToString(mercatorToCellKey(coordinateToMercator(point)));
 }
@@ -393,13 +242,6 @@ function mercatorToCellKey(point: MercatorPoint): CellKey {
   };
 }
 
-function mercatorToFogCellKey(point: MercatorPoint): CellKey {
-  return {
-    x: Math.floor(point.x / FOG_CELL_SIZE_METERS),
-    y: Math.floor(point.y / FOG_CELL_SIZE_METERS)
-  };
-}
-
 function cellCenterToMercator(key: CellKey): MercatorPoint {
   return {
     x: key.x * EXPLORATION_CELL_SIZE_METERS + EXPLORATION_CELL_SIZE_METERS / 2,
@@ -408,10 +250,6 @@ function cellCenterToMercator(key: CellKey): MercatorPoint {
 }
 
 function cellKeyToString(key: CellKey) {
-  return `${key.x}:${key.y}`;
-}
-
-function fogCellKeyToString(key: CellKey) {
   return `${key.x}:${key.y}`;
 }
 
