@@ -30,6 +30,9 @@ Tables:
 - `gps_points`
 - `app_settings`
 - `osm_street_segments`
+- `zones`
+- `explored_cells`
+- `loop_fills`
 
 `walk_sessions` stores one recording:
 
@@ -66,6 +69,25 @@ Tables:
 - bounding box
 - fetched timestamp
 
+`explored_cells` stores persisted exploration cells by mode, cell size, source, and session:
+
+- mode
+- cell size in meters
+- cell x/y
+- source: `gps`, `inferred`, or `loop_fill`
+- nullable session id
+- created timestamp
+
+`loop_fills` stores closed-loop analysis results:
+
+- session id and mode
+- loop polygon
+- area
+- total and unwalked walkable OSM street length inside the polygon
+- accepted/rejected state and rejection reason
+
+`zones` is the future local cache for country, city, and district boundaries.
+
 ## Recording Flow
 
 1. User taps Start.
@@ -94,7 +116,7 @@ The recorder rejects:
 
 ## Exploration Cells
 
-The current exploration layer uses 10m x 10m grid cells.
+The current exploration layer uses configurable 15m x 15m grid cells.
 
 GPS paths are first classified into path segments:
 
@@ -106,11 +128,32 @@ Only confirmed and inferred path geometry can mark cells. Rejected gaps are not 
 
 Inferred path routing is intentionally not implemented yet. `src/services/pathInference.ts` contains the boundary for future OSM street-graph routing and currently returns `not_configured` instead of falling back to straight lines.
 
-The 10m x 10m grid is still a temporary approximation before true OpenStreetMap street completion.
+The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
+
+## Loop Fill
+
+Closed-loop fill is a conservative V1 game mechanic.
+
+When a valid GPS path comes back near an earlier point in the same recording, the app can build a polygon from that trusted subpath. Rejected GPS gaps never form loops.
+
+The loop is rejected if it is too short, too small, too large, or self-intersecting. Current thresholds are:
+
+- close distance: 25m
+- minimum loop distance: 150m
+- minimum elapsed time: 60s
+- minimum polygon area: 2,000m2
+- maximum polygon area: 1,000,000m2
+
+OSM is used as hidden analysis data inside the polygon. The app measures walkable street length inside the loop and accepts the fill only when unwalked walkable street length is low:
+
+- unwalked walkable street length <= 50m, or
+- unwalked walkable street ratio <= 10%
+
+Accepted loop-fill cells are stored separately from directly walked GPS cells.
 
 ## Street Completion
 
-Street completion V1 uses OpenStreetMap as a data layer while keeping Apple MapKit as the visual map background.
+Street completion V1 uses OpenStreetMap as a hidden analysis and debug data layer while keeping Apple MapKit as the visual map background.
 
 Flow:
 
@@ -118,8 +161,8 @@ Flow:
 - Split long OSM ways into short local segments.
 - Cache segment geometries in SQLite.
 - Match recorded GPS points to nearby segment polylines using a distance threshold.
-- Draw unloaded/unexplored streets as gray overlays.
-- Draw matched streets as green overlays.
+- Keep unmatched OSM streets hidden from the main map by default.
+- Draw matched streets only when the OSM debug layer is enabled.
 - Report loaded segments, matched segments, and matched street-segment distance.
 
 Limitations:

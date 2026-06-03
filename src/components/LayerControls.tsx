@@ -37,7 +37,7 @@ export function LayerControls({ layers, onToggleLayer }: LayerControlsProps) {
       <LayerButton
         active={layers.showStreetLayer}
         icon="map-outline"
-        label="Streets"
+        label="OSM"
         onPress={() => onToggleLayer("showStreetLayer")}
       />
     </View>

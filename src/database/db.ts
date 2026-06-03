@@ -112,6 +112,57 @@ export async function initDatabase() {
       DELETE FROM osm_street_segments;
     `);
   });
+
+  await applyMigration(7, "create_completion_tables", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS zones (
+        id TEXT PRIMARY KEY NOT NULL,
+        type TEXT NOT NULL,
+        name TEXT NOT NULL,
+        parent_zone_id TEXT,
+        source TEXT NOT NULL,
+        geometry_json TEXT NOT NULL,
+        fetched_at TEXT NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS explored_cells (
+        mode TEXT NOT NULL,
+        cell_size_m INTEGER NOT NULL,
+        cell_x INTEGER NOT NULL,
+        cell_y INTEGER NOT NULL,
+        source TEXT NOT NULL,
+        session_id INTEGER,
+        created_at TEXT NOT NULL,
+        PRIMARY KEY (mode, cell_size_m, cell_x, cell_y, source, session_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS loop_fills (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        session_id INTEGER NOT NULL,
+        mode TEXT NOT NULL,
+        polygon_json TEXT NOT NULL,
+        area_m2 REAL NOT NULL,
+        total_walkable_street_length_m REAL NOT NULL,
+        unwalked_walkable_street_length_m REAL NOT NULL,
+        accepted INTEGER NOT NULL,
+        rejection_reason TEXT,
+        created_at TEXT NOT NULL
+      );
+
+      CREATE INDEX IF NOT EXISTS explored_cells_mode_index
+        ON explored_cells (mode, cell_size_m, source);
+
+      CREATE INDEX IF NOT EXISTS zones_type_index
+        ON zones (type, name);
+    `);
+  });
+
+  await applyMigration(8, "reset_explored_cells_for_15m_grid", async () => {
+    await db.execAsync(`
+      DELETE FROM explored_cells;
+      DELETE FROM loop_fills;
+    `);
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

@@ -19,18 +19,20 @@ Each mode has separate recordings, paths, stats, and history.
 - Local SQLite persistence.
 - Saved paths displayed on the map.
 - Active recording path displayed live.
-- 10m x 10m deduplicated explored cells.
+- 15m x 15m deduplicated explored cells.
+- Conservative closed-loop area fill for loops with little unwalked walkable street geometry inside.
 - Mode-specific GPS quality filters.
 - Route history with rename, delete, and highlight.
 - Last selected mode persistence.
 - Recording recovery for unfinished active sessions.
-- Layer controls for paths, cells, markers, and street-completion status.
+- Layer controls for paths, cells, markers, and optional OSM debug matching.
+- Completion screen foundation with scope and mode selectors.
 
 ## Current Limitations
 
 - Background tracking is configured but may not fully work in Expo Go on iOS. A development build is likely required for real locked-screen recording.
 - Explored cells are grid-based, not exact street geometry.
-- Street completion is not implemented yet.
+- OSM is no longer a primary visible gameplay overlay by default.
+- Country, city, and district boundary fetching is not implemented yet.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
-- OpenStreetMap data is not loaded yet.
-
+- OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.

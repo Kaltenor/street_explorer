@@ -78,19 +78,19 @@ Toggle:
 - Paths
 - Cells
 - Pins
-- Streets
+- OSM
 
 Confirm each layer appears or disappears.
 
-## OpenStreetMap Streets Test
+## OpenStreetMap Debug Matching Test
 
 1. Wait for GPS to locate you.
 2. Tap Show details.
-3. Turn on Streets.
-4. Tap Load in the Street completion panel.
-5. Confirm faint gray OSM street segments appear on the map.
+3. Turn on OSM.
+4. Tap Load in the OSM debug matching panel.
+5. Confirm unmatched OSM street segments do not flood the map.
 6. Record or view a route near loaded streets.
-7. Confirm matched street segments turn green.
+7. Confirm matched street segments can appear as green debug lines.
 8. Restart the app and confirm loaded streets can reappear from the local cache.
 
 Notes:
@@ -101,6 +101,25 @@ Notes:
 - Street dist. is matched OSM segment distance, not the same thing as recording distance.
 - Matching is V1 proximity matching, so it can be imperfect near parallel roads.
 - OSM streets are cached locally and can be refetched later.
+- OSM is hidden analysis/debug data; cells and paths are still the main exploration view.
+
+## Completion Screen Test
+
+1. Tap Completion.
+2. Change Scope between Country, City, and District.
+3. Change Mode between Walk, Wheel, Car, and All.
+4. Confirm stats load without crashing even when no cached zones exist.
+5. Confirm explored cells, direct GPS cells, loop-filled cells, distance, and recordings are shown.
+
+## Loop Fill Test
+
+1. Load nearby OSM data from the OSM debug layer.
+2. Record a closed loop of at least 150m.
+3. Stop the recording.
+4. Confirm normal GPS cells still appear.
+5. If the loop contains little unwalked walkable street length, confirm subtle loop-fill cells appear inside the polygon.
+6. If the loop contains many unwalked streets, confirm the polygon is not filled.
+7. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
 
 ## GPS Gap Safety Test
 

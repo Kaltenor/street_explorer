@@ -8,7 +8,7 @@
 - Foreground GPS recording.
 - Saved paths and active paths on the map.
 - Route history with details, rename, delete, and highlight.
-- 10m x 10m deduplicated explored cells.
+- 15m x 15m deduplicated explored cells.
 - Mode-specific GPS filtering.
 - Basic background tracking setup.
 - Development build background recording verified on iPhone.
@@ -25,24 +25,35 @@
 - OpenStreetMap street segment fetching.
 - Local OSM street cache.
 - GPS-to-street proximity matching.
-- Explored street overlay.
+- Optional OSM debug street overlay.
 - Confirmed/inferred/rejected path segment boundary.
 - Rejected GPS gaps skipped for map drawing and cell exploration.
 - Layer controls.
 - Street-completion V1.
+- Completion screen foundation.
+- Conservative closed-loop fill V1.
 
 ## Next Priority
 
-### 1. OpenStreetMap Street Completion V2
+### 1. Zone Boundary Completion V1
 
 Improve the real game layer:
 
+- fetch and cache OSM country, city, and district boundaries
+- calculate completion denominators inside selected zones
+- degrade gracefully when district boundaries are unavailable
+- keep OSM boundaries as hidden analysis data, not visual clutter
+
+### 2. OpenStreetMap Street Completion V2
+
+Improve street intelligence:
+
 - match by route segment overlap, not only point proximity
 - keep separate street completion by mode
-- add city/district bounds and progress
+- use street length instead of local segment counts
 - use a more reliable Overpass endpoint strategy
 
-### 2. Path Inference V1
+### 3. Path Inference V1
 
 Use the new path inference boundary:
 
@@ -51,7 +62,7 @@ Use the new path inference boundary:
 - reject inferred routes with impossible speed or excessive detour
 - store/draw inferred paths with lower confidence than GPS paths
 
-### 3. Recording Recovery V2
+### 4. Recording Recovery V2
 
 Add:
 
@@ -59,7 +70,7 @@ Add:
 - recovered background status verification
 - naming prompt before finishing a recovered recording
 
-### 4. UI Polish V2
+### 5. UI Polish V2
 
 Add:
 
@@ -68,7 +79,7 @@ Add:
 - stronger route detail layout
 - clearer GPS status states
 
-### 5. Data Tools V2
+### 6. Data Tools V2
 
 Add:
 

@@ -26,7 +26,7 @@ export function StreetCompletionPanel({
     <View style={styles.container}>
       <View style={styles.header}>
         <View>
-          <Text style={styles.title}>Street completion V1</Text>
+          <Text style={styles.title}>OSM debug matching</Text>
           <Text style={styles.text}>{getStatusText(summary, completionPercent)}</Text>
         </View>
         <TouchableOpacity
@@ -71,7 +71,7 @@ function getStatusText(summary: StreetCompletionSummary, completionPercent: numb
     return "Load nearby OSM streets to start matching.";
   }
 
-  return `${completionPercent}% of loaded nearby street segments matched`;
+  return `${completionPercent}% of loaded nearby street distance matched`;
 }
 
 const styles = StyleSheet.create({

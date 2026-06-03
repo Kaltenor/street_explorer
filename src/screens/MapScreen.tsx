@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
+import { CompletionModal } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import { GpsStatusPanel } from "../components/GpsStatusPanel";
 import { LayerControls, MapLayerState } from "../components/LayerControls";
@@ -39,6 +40,12 @@ import {
   saveActiveRecordingSettings
 } from "../database/settingsRepository";
 import {
+  deleteExploredCellsForSession,
+  getLoopFillCellKeys,
+  saveExploredCells,
+  saveLoopFill
+} from "../database/completionRepository";
+import {
   isBackgroundLocationTaskAvailable,
   requestBackgroundLocationPermission,
   startBackgroundLocationTracking,
@@ -47,8 +54,10 @@ import {
 import {
   calculateExploredAreaSquareMeters,
   calculateExploredCellCount,
-  calculateNewCellsForActivePath
+  calculateNewCellsForActivePath,
+  collectExploredCellIdsForPath
 } from "../services/explorationArea";
+import { analyzeLoopFill } from "../services/loopFill";
 import {
   deleteAllStreetSegments,
   getStreetSegmentsNear,
@@ -112,7 +121,9 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [streetStatus, setStreetStatus] = useState<StreetCompletionSummary["status"]>("empty");
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [completionVisible, setCompletionVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
+  const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [recoverableRecording, setRecoverableRecording] = useState<RecoverableRecording | null>(
     null
@@ -141,10 +152,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   );
 
   const refreshSavedData = useCallback(async () => {
-    const [savedWalks, lifetimeStats, savedHistory] = await Promise.all([
+    const [savedWalks, lifetimeStats, savedHistory, savedLoopFillCellIds] = await Promise.all([
       getAllWalksWithPoints(activityMode),
       getLifetimeStats(activityMode),
-      getWalkHistory(activityMode)
+      getWalkHistory(activityMode),
+      getLoopFillCellKeys(activityMode)
     ]);
     const latestWalk = savedHistory[0] ?? null;
     const longestWalk = savedHistory.reduce<WalkSession | null>((longest, walk) => {
@@ -157,6 +169,17 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const todayWalks = savedHistory.filter((walk) => isToday(walk.startedAt));
 
     setWalks(savedWalks);
+    setLoopFillCellIds(savedLoopFillCellIds);
+    await saveExploredCells(
+      savedWalks.flatMap((walk) =>
+        collectExploredCellIdsForPath(walk.points, walk.activityMode).map((cellKey) => ({
+          cellKey,
+          mode: walk.activityMode,
+          sessionId: walk.id,
+          source: "gps" as const
+        }))
+      )
+    );
     setStats({
       ...lifetimeStats,
       approximateExploredAreaSquareMeters: calculateExploredAreaSquareMeters(savedWalks),
@@ -430,6 +453,56 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     await startForegroundWatch();
   }, [activityMode, enableBackgroundTracking, permissionState, startForegroundWatch, stopLocationWatch]);
 
+  const processCompletedSession = useCallback(
+    async (sessionId: number, mode: ActivityMode) => {
+      const points = await getGpsPointsForSession(sessionId);
+      const directCellIds = collectExploredCellIdsForPath(points, mode);
+
+      await saveExploredCells(
+        directCellIds.map((cellKey) => ({
+          cellKey,
+          mode,
+          sessionId,
+          source: "gps"
+        }))
+      );
+
+      const loopFill = analyzeLoopFill({
+        activityMode: mode,
+        exploredStreetIds: streetCompletion.exploredStreetIds,
+        points,
+        streetSegments
+      });
+
+      if (!loopFill) {
+        return;
+      }
+
+      await saveLoopFill({
+        accepted: loopFill.accepted,
+        areaM2: loopFill.areaM2,
+        mode,
+        polygonJson: JSON.stringify(loopFill.polygon),
+        rejectionReason: loopFill.rejectionReason,
+        sessionId,
+        totalWalkableStreetLengthM: loopFill.totalWalkableStreetLengthM,
+        unwalkedWalkableStreetLengthM: loopFill.unwalkedWalkableStreetLengthM
+      });
+
+      if (loopFill.accepted) {
+        await saveExploredCells(
+          loopFill.cellIds.map((cellKey) => ({
+            cellKey,
+            mode,
+            sessionId,
+            source: "loop_fill"
+          }))
+        );
+      }
+    },
+    [streetCompletion.exploredStreetIds, streetSegments]
+  );
+
   const handleStopWalk = useCallback(async () => {
     stopLocationWatch();
 
@@ -451,8 +524,9 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       return;
     }
 
+    await processCompletedSession(savedSessionId, activeWalk.activityMode);
     await refreshSavedData();
-  }, [activeWalk, refreshSavedData, stopLocationWatch]);
+  }, [activeWalk, processCompletedSession, refreshSavedData, stopLocationWatch]);
 
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -494,11 +568,16 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
     await stopBackgroundLocationTracking();
     await clearActiveRecordingSettings();
-    await finishPersistedActiveWalk(recoveredWalk, new Date().toISOString());
+    const savedSessionId = await finishPersistedActiveWalk(recoveredWalk, new Date().toISOString());
+
+    if (savedSessionId) {
+      await processCompletedSession(savedSessionId, recoveredWalk.activityMode);
+    }
+
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
     await refreshSavedData();
-  }, [activityMode, recoverableRecording, refreshSavedData]);
+  }, [activityMode, processCompletedSession, recoverableRecording, refreshSavedData]);
 
   const handleDiscardRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -524,6 +603,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           text: "Delete",
           style: "destructive",
           onPress: async () => {
+            await deleteExploredCellsForSession(sessionId);
             await deleteWalkSession(sessionId);
             setSelectedSessionId((currentSessionId) =>
               currentSessionId === sessionId ? null : currentSessionId
@@ -680,6 +760,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         exploredStreetIds={streetCompletion.exploredStreetIds}
         highlightedSessionId={selectedSessionId}
         layers={layers}
+        loopFillCellIds={loopFillCellIds}
         streetSegments={streetSegments}
       />
 
@@ -726,6 +807,14 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             >
               <Ionicons name="time-outline" size={18} color="#0f172a" />
               <Text style={styles.dashboardToggleText}>History</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityRole="button"
+              onPress={() => setCompletionVisible(true)}
+              style={styles.dashboardToggle}
+            >
+              <Ionicons name="trophy-outline" size={18} color="#0f172a" />
+              <Text style={styles.dashboardToggleText}>Completion</Text>
             </TouchableOpacity>
           </View>
 
@@ -823,6 +912,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         onFinish={handleFinishRecoveredRecording}
         onResume={handleResumeRecoveredRecording}
         recording={recoverableRecording}
+      />
+      <CompletionModal
+        onClose={() => setCompletionVisible(false)}
+        visible={completionVisible}
       />
     </View>
   );

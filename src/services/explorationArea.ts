@@ -1,7 +1,9 @@
 import { buildPathSegments } from "./pathInference";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
 
-export const EXPLORATION_CELL_SIZE_METERS = 10;
+export const EXPLORATION_CELL_SIZE_METERS = 15;
+
+export type ExplorationCellSource = "gps" | "inferred" | "loop_fill";
 
 const EARTH_RADIUS_METERS = 6378137;
 const SAMPLE_SPACING_METERS = EXPLORATION_CELL_SIZE_METERS / 4;
@@ -15,6 +17,7 @@ export type MapCoordinate = {
 export type ExplorationCell = {
   id: string;
   coordinates: MapCoordinate[];
+  source: ExplorationCellSource;
 };
 
 type MercatorPoint = {
@@ -30,11 +33,18 @@ type CellKey = {
 export function buildExplorationCells(
   walks: WalkWithPoints[],
   activePoints: GpsPoint[],
-  activeMode: ActivityMode
+  activeMode: ActivityMode,
+  loopFillCellIds: string[] = []
 ) {
   const cellKeys = collectExploredCellKeys(walks, activePoints, activeMode);
+  const loopFillKeys = new Set(loopFillCellIds);
 
-  return [...cellKeys].map((key) => buildExplorationCell(key));
+  return [
+    ...[...cellKeys].map((key) => buildExplorationCell(key, "gps")),
+    ...[...loopFillKeys]
+      .filter((key) => !cellKeys.has(key))
+      .map((key) => buildExplorationCell(key, "loop_fill"))
+  ];
 }
 
 export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
@@ -63,6 +73,14 @@ export function calculateNewCellsForActivePath(
   }
 
   return newCellCount;
+}
+
+export function collectExploredCellIdsForPath(points: GpsPoint[], activityMode: ActivityMode) {
+  const keys = new Set<string>();
+
+  markPathCells(keys, points, activityMode);
+
+  return [...keys];
 }
 
 function collectExploredCellKeys(
@@ -138,7 +156,10 @@ function markNearbyCells(keys: Set<string>, sample: MercatorPoint) {
   }
 }
 
-function buildExplorationCell(keyString: string): ExplorationCell {
+export function buildExplorationCell(
+  keyString: string,
+  source: ExplorationCellSource = "gps"
+): ExplorationCell {
   const key = stringToCellKey(keyString);
   const minX = key.x * EXPLORATION_CELL_SIZE_METERS;
   const minY = key.y * EXPLORATION_CELL_SIZE_METERS;
@@ -152,11 +173,20 @@ function buildExplorationCell(keyString: string): ExplorationCell {
       mercatorToCoordinate({ x: maxX, y: minY }),
       mercatorToCoordinate({ x: maxX, y: maxY }),
       mercatorToCoordinate({ x: minX, y: maxY })
-    ]
+    ],
+    source
   };
 }
 
-function coordinateToMercator(point: GpsPoint): MercatorPoint {
+export function coordinateToExplorationCellKey(point: Pick<MapCoordinate, "latitude" | "longitude">) {
+  return cellKeyToString(mercatorToCellKey(coordinateToMercator(point)));
+}
+
+export function explorationCellKeyToCenterCoordinate(keyString: string) {
+  return mercatorToCoordinate(cellCenterToMercator(stringToCellKey(keyString)));
+}
+
+function coordinateToMercator(point: Pick<MapCoordinate, "latitude" | "longitude">): MercatorPoint {
   const latitudeRadians = (point.latitude * Math.PI) / 180;
   const longitudeRadians = (point.longitude * Math.PI) / 180;
 

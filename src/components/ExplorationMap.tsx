@@ -17,6 +17,7 @@ type ExplorationMapProps = {
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
+  loopFillCellIds: string[];
   exploredStreetIds: Set<string>;
   streetSegments: OsmStreetSegment[];
 };
@@ -42,12 +43,13 @@ export function ExplorationMap({
   exploredStreetIds,
   highlightedSessionId,
   layers,
+  loopFillCellIds,
   streetSegments
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
   const region = getInitialRegion(currentLocation, walks, activePoints);
-  const explorationCells = buildExplorationCells(walks, activePoints, activeMode);
+  const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -160,27 +162,25 @@ export function ExplorationMap({
           <Polygon
             key={cell.id}
             coordinates={cell.coordinates}
-            fillColor="rgba(34, 197, 94, 0.24)"
-            strokeColor="rgba(22, 163, 74, 0.28)"
+            fillColor={cell.source === "loop_fill" ? "rgba(59, 130, 246, 0.18)" : "rgba(34, 197, 94, 0.24)"}
+            strokeColor={cell.source === "loop_fill" ? "rgba(37, 99, 235, 0.24)" : "rgba(22, 163, 74, 0.28)"}
             strokeWidth={1}
           />
         )) : null}
 
         {layers.showStreetLayer
-          ? streetSegments.map((segment) => {
-              const explored = exploredStreetIds.has(segment.id);
-
-              return (
+          ? streetSegments
+              .filter((segment) => exploredStreetIds.has(segment.id))
+              .map((segment) => (
                 <Polyline
                   key={segment.id}
                   coordinates={segment.coordinates}
-                  strokeColor={explored ? "rgba(22, 163, 74, 0.78)" : "rgba(71, 85, 105, 0.16)"}
-                  strokeWidth={explored ? 3 : 1}
+                  strokeColor="rgba(22, 163, 74, 0.7)"
+                  strokeWidth={3}
                   lineCap="round"
                   lineJoin="round"
                 />
-              );
-            })
+              ))
           : null}
 
         {layers.showPaths ? walks.map((walk) => {
