@@ -47,9 +47,24 @@ export type ZoneCompletionStats = {
   totalZoneCells: number | null;
 };
 
+export type ZoneFetchResult = {
+  rawElementCount: number;
+  relationCount: number;
+  usableZoneCount: number;
+  zones: CachedZone[];
+};
+
 export async function fetchNearbyOsmZones(
   center: Pick<GpsPoint, "latitude" | "longitude">
 ): Promise<CachedZone[]> {
+  const result = await fetchNearbyOsmZonesWithDebug(center);
+
+  return result.zones;
+}
+
+export async function fetchNearbyOsmZonesWithDebug(
+  center: Pick<GpsPoint, "latitude" | "longitude">
+): Promise<ZoneFetchResult> {
   const response = await fetch(OVERPASS_ENDPOINT, {
     body: buildBoundaryQuery(center.latitude, center.longitude),
     headers: {
@@ -64,11 +79,17 @@ export async function fetchNearbyOsmZones(
 
   const data = (await response.json()) as OverpassBoundaryResponse;
   const fetchedAt = new Date().toISOString();
-
-  return (data.elements ?? [])
-    .filter((element) => element.type === "relation")
+  const relationElements = (data.elements ?? []).filter((element) => element.type === "relation");
+  const zones = relationElements
     .map((element) => mapRelationToZone(element, fetchedAt))
     .filter((zone): zone is CachedZone => Boolean(zone));
+
+  return {
+    rawElementCount: data.elements?.length ?? 0,
+    relationCount: relationElements.length,
+    usableZoneCount: zones.length,
+    zones
+  };
 }
 
 export function calculateZoneCompletionStats(

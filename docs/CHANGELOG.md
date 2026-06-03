@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.2
+
+Added:
+
+- Boundary refresh diagnostics showing raw OSM element count, relation count, and usable zone count when no zones are cached.
+
 ## v0.2.1
 
 Fixed:

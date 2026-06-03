@@ -15,7 +15,7 @@ import {
 import {
   ZoneCompletionStats,
   calculateZoneCompletionStats,
-  fetchNearbyOsmZones
+  fetchNearbyOsmZonesWithDebug
 } from "../services/zoneCompletion";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
@@ -120,14 +120,14 @@ export function CompletionModal({
     setIsRefreshingZones(true);
 
     try {
-      const fetchedZones = await fetchNearbyOsmZones(currentLocation);
-      await upsertZones(fetchedZones);
+      const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
+      await upsertZones(result.zones);
       await loadZones();
       Alert.alert(
         "Boundaries refreshed",
-        fetchedZones.length > 0
-          ? `${fetchedZones.length} nearby boundary zones were cached.`
-          : "No matching OSM boundaries were found here."
+        result.zones.length > 0
+          ? `${result.zones.length} nearby boundary zones were cached.`
+          : `No usable boundaries were found. Raw: ${result.rawElementCount}, relations: ${result.relationCount}, usable: ${result.usableZoneCount}.`
       );
     } catch (error) {
       console.warn("Failed to refresh OSM boundaries", error);
