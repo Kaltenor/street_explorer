@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.1
+
+Fixed:
+
+- Improved OSM boundary refresh so containing administrative areas are queried through a cleaner area pivot.
+- Added a fallback polygon for fragmented OSM boundary geometry so usable zones are not discarded.
+
 ## v0.2.0
 
 Added:

@@ -105,10 +105,11 @@ function buildBoundaryQuery(latitude: number, longitude: number) {
   return `
     [out:json][timeout:35];
     is_in(${latitude},${longitude})->.containingAreas;
+    area.containingAreas
+      ["boundary"="administrative"]
+      ["admin_level"~"^(2|8|9|10)$"]->.matchedContainingAreas;
     (
-      rel(pivot.containingAreas)
-        ["boundary"="administrative"]
-        ["admin_level"~"^(2|8|9|10)$"];
+      rel(pivot.matchedContainingAreas);
       rel(around:3500,${latitude},${longitude})
         ["boundary"="administrative"]
         ["admin_level"~"^(8|9|10)$"];
@@ -166,8 +167,13 @@ function extractRelationGeometry(element: OverpassRelationElement) {
     .filter((member) => member.type === "way" && member.role !== "inner")
     .map((member) => mapGeometryRing(member.geometry ?? []))
     .filter((ring) => ring.length >= 2);
+  const rings = assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
 
-  return assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
+  if (rings.length > 0) {
+    return rings;
+  }
+
+  return buildFallbackBoundsGeometry(ways);
 }
 
 function mapGeometryRing(points: OverpassGeometryPoint[]) {
@@ -245,6 +251,22 @@ function isSameCoordinate(
     Math.abs(first.latitude - second.latitude) < 0.000001 &&
     Math.abs(first.longitude - second.longitude) < 0.000001
   );
+}
+
+function buildFallbackBoundsGeometry(ways: MapCoordinate[][]) {
+  const bounds = getGeometryBounds(ways);
+
+  if (!bounds) {
+    return [];
+  }
+
+  return [[
+    { latitude: bounds.minLatitude, longitude: bounds.minLongitude },
+    { latitude: bounds.minLatitude, longitude: bounds.maxLongitude },
+    { latitude: bounds.maxLatitude, longitude: bounds.maxLongitude },
+    { latitude: bounds.maxLatitude, longitude: bounds.minLongitude },
+    { latitude: bounds.minLatitude, longitude: bounds.minLongitude }
+  ]];
 }
 
 function calculateTotalZoneCells(geometry: MapCoordinate[][]) {
