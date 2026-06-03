@@ -1,4 +1,3 @@
-import { MODE_LOCATION_CONFIG } from "../constants/config";
 import { haversineDistanceMeters } from "./distance";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
@@ -6,19 +5,23 @@ const MODE_PATH_GAP_CONFIG: Record<
   ActivityMode,
   {
     maxConfirmedStraightLineMeters: number;
+    maxDisplaySpeedMetersPerSecond: number;
     maxUninferredGapSeconds: number;
   }
 > = {
   walk: {
     maxConfirmedStraightLineMeters: 300,
+    maxDisplaySpeedMetersPerSecond: 8,
     maxUninferredGapSeconds: 180
   },
   wheel: {
     maxConfirmedStraightLineMeters: 650,
+    maxDisplaySpeedMetersPerSecond: 24,
     maxUninferredGapSeconds: 150
   },
   car: {
     maxConfirmedStraightLineMeters: 1800,
+    maxDisplaySpeedMetersPerSecond: 75,
     maxUninferredGapSeconds: 120
   }
 };
@@ -144,13 +147,12 @@ function getSuspiciousGapReason(
   distanceMeters: number
 ) {
   const gapConfig = MODE_PATH_GAP_CONFIG[activityMode];
-  const locationConfig = MODE_LOCATION_CONFIG[activityMode];
   const seconds = getSecondsBetweenPoints(startPoint, endPoint);
 
   if (seconds > 0) {
     const speedMetersPerSecond = distanceMeters / seconds;
 
-    if (speedMetersPerSecond > locationConfig.maxSpeedMetersPerSecond) {
+    if (speedMetersPerSecond > gapConfig.maxDisplaySpeedMetersPerSecond) {
       return `impossible ${activityMode} speed`;
     }
   }

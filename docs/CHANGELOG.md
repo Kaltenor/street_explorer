@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.3
+
+Fixed:
+
+- Saved path rendering now uses more tolerant display-only speed thresholds.
+- Live GPS filtering remains strict, but real saved walks are less likely to show false GPS gaps.
+
 ## v0.1.2
 
 Fixed:
