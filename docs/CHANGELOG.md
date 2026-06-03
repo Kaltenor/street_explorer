@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.4
+
+Fixed:
+
+- Made saved-path gap rejection much more conservative so real walked sections with sparse GPS points render normally and create cells.
+- Kept dashed GPS gaps for only extreme outages or impossible movement.
+
 ## v0.1.3
 
 Fixed:

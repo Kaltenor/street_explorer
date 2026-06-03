@@ -10,19 +10,19 @@ const MODE_PATH_GAP_CONFIG: Record<
   }
 > = {
   walk: {
-    maxConfirmedStraightLineMeters: 300,
-    maxDisplaySpeedMetersPerSecond: 8,
-    maxUninferredGapSeconds: 180
+    maxConfirmedStraightLineMeters: 1000,
+    maxDisplaySpeedMetersPerSecond: 15,
+    maxUninferredGapSeconds: 900
   },
   wheel: {
-    maxConfirmedStraightLineMeters: 650,
-    maxDisplaySpeedMetersPerSecond: 24,
-    maxUninferredGapSeconds: 150
+    maxConfirmedStraightLineMeters: 2500,
+    maxDisplaySpeedMetersPerSecond: 40,
+    maxUninferredGapSeconds: 600
   },
   car: {
-    maxConfirmedStraightLineMeters: 1800,
-    maxDisplaySpeedMetersPerSecond: 75,
-    maxUninferredGapSeconds: 120
+    maxConfirmedStraightLineMeters: 6000,
+    maxDisplaySpeedMetersPerSecond: 120,
+    maxUninferredGapSeconds: 600
   }
 };
 
