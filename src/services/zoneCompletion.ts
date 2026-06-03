@@ -26,6 +26,12 @@ type OverpassRelationMember = {
 };
 
 type OverpassRelationElement = {
+  bounds?: {
+    maxlat: number;
+    maxlon: number;
+    minlat: number;
+    minlon: number;
+  };
   id: number;
   members?: OverpassRelationMember[];
   tags?: {
@@ -144,7 +150,7 @@ function mapRelationToZone(
   fetchedAt: string
 ): CachedZone | null {
   const scope = getScopeFromAdminLevel(element.tags?.admin_level);
-  const name = element.tags?.name;
+  const name = element.tags?.name ?? `Boundary ${element.id}`;
 
   if (!scope || !name) {
     return null;
@@ -153,7 +159,21 @@ function mapRelationToZone(
   const geometry = extractRelationGeometry(element);
 
   if (geometry.length === 0) {
-    return null;
+    const fallbackGeometry = buildBoundsGeometry(element.bounds);
+
+    if (fallbackGeometry.length === 0) {
+      return null;
+    }
+
+    return {
+      fetchedAt,
+      geometry: fallbackGeometry,
+      id: `relation/${element.id}`,
+      name,
+      parentZoneId: null,
+      source: "openstreetmap_bounds_fallback",
+      type: scope
+    };
   }
 
   return {
@@ -277,16 +297,43 @@ function isSameCoordinate(
 function buildFallbackBoundsGeometry(ways: MapCoordinate[][]) {
   const bounds = getGeometryBounds(ways);
 
+  return buildBoundsGeometry(bounds);
+}
+
+function buildBoundsGeometry(bounds: {
+  maxLatitude?: number;
+  maxLongitude?: number;
+  maxlat?: number;
+  maxlon?: number;
+  minLatitude?: number;
+  minLongitude?: number;
+  minlat?: number;
+  minlon?: number;
+} | null | undefined) {
   if (!bounds) {
     return [];
   }
 
+  const minLatitude = bounds.minLatitude ?? bounds.minlat;
+  const minLongitude = bounds.minLongitude ?? bounds.minlon;
+  const maxLatitude = bounds.maxLatitude ?? bounds.maxlat;
+  const maxLongitude = bounds.maxLongitude ?? bounds.maxlon;
+
+  if (
+    minLatitude === undefined ||
+    minLongitude === undefined ||
+    maxLatitude === undefined ||
+    maxLongitude === undefined
+  ) {
+    return [];
+  }
+
   return [[
-    { latitude: bounds.minLatitude, longitude: bounds.minLongitude },
-    { latitude: bounds.minLatitude, longitude: bounds.maxLongitude },
-    { latitude: bounds.maxLatitude, longitude: bounds.maxLongitude },
-    { latitude: bounds.maxLatitude, longitude: bounds.minLongitude },
-    { latitude: bounds.minLatitude, longitude: bounds.minLongitude }
+    { latitude: minLatitude, longitude: minLongitude },
+    { latitude: minLatitude, longitude: maxLongitude },
+    { latitude: maxLatitude, longitude: maxLongitude },
+    { latitude: maxLatitude, longitude: minLongitude },
+    { latitude: minLatitude, longitude: minLongitude }
   ]];
 }
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.3
+
+Fixed:
+
+- Boundary refresh now keeps OSM relation bounds as a fallback when detailed relation geometry cannot be parsed.
+- Boundary relations without a name no longer get discarded.
+
 ## v0.2.2
 
 Added:
