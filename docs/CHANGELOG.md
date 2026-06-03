@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.2
+
+Changed:
+
+- Fog of War is darker so unrevealed map labels are obscured.
+- Fog now covers a 10km radius around the current player location.
+- Fog tiles are larger for performance over the wider radius.
+
 ## v0.3.1
 
 Added:

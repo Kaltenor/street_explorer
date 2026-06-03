@@ -36,10 +36,9 @@ type CellKey = {
   y: number;
 };
 
-const FOG_CELL_SIZE_METERS = EXPLORATION_CELL_SIZE_METERS * 4;
-const FOG_PADDING_METERS = 480;
-const FOG_DEFAULT_RADIUS_METERS = 900;
-const MAX_FOG_CELLS = 1200;
+const FOG_CELL_SIZE_METERS = EXPLORATION_CELL_SIZE_METERS * 16;
+const FOG_RADIUS_AROUND_PLAYER_METERS = 10000;
+const MAX_FOG_CELLS = 7600;
 
 export function buildExplorationCells(
   walks: WalkWithPoints[],
@@ -291,31 +290,14 @@ function getFogBounds(input: {
     return null;
   }
 
-  if (points.length === 0) {
-    const center = coordinateToMercator(centerPoint);
+  const center = coordinateToMercator(centerPoint);
 
-    return {
-      maxX: center.x + FOG_DEFAULT_RADIUS_METERS,
-      maxY: center.y + FOG_DEFAULT_RADIUS_METERS,
-      minX: center.x - FOG_DEFAULT_RADIUS_METERS,
-      minY: center.y - FOG_DEFAULT_RADIUS_METERS
-    };
-  }
-
-  return points.map(coordinateToMercator).reduce(
-    (bounds, point) => ({
-      maxX: Math.max(bounds.maxX, point.x + FOG_PADDING_METERS),
-      maxY: Math.max(bounds.maxY, point.y + FOG_PADDING_METERS),
-      minX: Math.min(bounds.minX, point.x - FOG_PADDING_METERS),
-      minY: Math.min(bounds.minY, point.y - FOG_PADDING_METERS)
-    }),
-    {
-      maxX: Number.NEGATIVE_INFINITY,
-      maxY: Number.NEGATIVE_INFINITY,
-      minX: Number.POSITIVE_INFINITY,
-      minY: Number.POSITIVE_INFINITY
-    }
-  );
+  return {
+    maxX: center.x + FOG_RADIUS_AROUND_PLAYER_METERS,
+    maxY: center.y + FOG_RADIUS_AROUND_PLAYER_METERS,
+    minX: center.x - FOG_RADIUS_AROUND_PLAYER_METERS,
+    minY: center.y - FOG_RADIUS_AROUND_PLAYER_METERS
+  };
 }
 
 function clampFogRange(range: { maxX: number; maxY: number; minX: number; minY: number }) {

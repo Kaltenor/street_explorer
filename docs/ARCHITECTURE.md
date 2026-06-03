@@ -141,7 +141,9 @@ The 15m x 15m grid is still a temporary approximation before true OpenStreetMap 
 
 Fog of War V1 is a visual map layer, enabled by default.
 
-It uses larger 60m fog tiles around the current/saved exploration area for performance. Tiles that overlap explored 15m cells are skipped, creating a simple reveal effect without masking the entire world.
+It uses larger 240m fog tiles around a 10km radius from the current player location for performance. Tiles that overlap explored 15m cells are skipped, creating a simple reveal effect without masking the entire world.
+
+The fog is dark enough to obscure Apple MapKit labels in unrevealed areas. The app does not directly remove base-map labels because `react-native-maps` does not expose per-area label masking for Apple MapKit.
 
 The fog layer is only visual. It does not change saved recordings, explored cells, completion, or OSM analysis.
 

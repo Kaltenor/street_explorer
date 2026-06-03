@@ -191,9 +191,9 @@ export function ExplorationMap({
           ? fogCells.map((cell) => (
               <Polygon
                 coordinates={cell.coordinates}
-                fillColor="rgba(15, 23, 42, 0.34)"
+                fillColor="rgba(15, 23, 42, 0.78)"
                 key={`fog-${cell.id}`}
-                strokeColor="rgba(15, 23, 42, 0.16)"
+                strokeColor="rgba(15, 23, 42, 0.48)"
                 strokeWidth={0.5}
               />
             ))
