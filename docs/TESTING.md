@@ -102,6 +102,13 @@ Notes:
 - Matching is V1 proximity matching, so it can be imperfect near parallel roads.
 - OSM streets are cached locally and can be refetched later.
 
+## GPS Gap Safety Test
+
+1. Record normally and confirm short GPS segments still draw as paths.
+2. If a recording has a long GPS gap, confirm the app does not draw a straight diagonal across it.
+3. Confirm explored cells are not filled along the missing diagonal.
+4. Confirm future inferred paths are not shown unless street routing is configured.
+
 ## Recovery Test
 
 1. Start a recording.

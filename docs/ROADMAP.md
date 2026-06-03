@@ -26,6 +26,8 @@
 - Local OSM street cache.
 - GPS-to-street proximity matching.
 - Explored street overlay.
+- Confirmed/inferred/rejected path segment boundary.
+- Rejected GPS gaps skipped for map drawing and cell exploration.
 - Layer controls.
 - Street-completion V1.
 
@@ -35,13 +37,21 @@
 
 Improve the real game layer:
 
-- split long OSM ways into smaller completion segments
 - match by route segment overlap, not only point proximity
 - keep separate street completion by mode
 - add city/district bounds and progress
 - use a more reliable Overpass endpoint strategy
 
-### 2. Recording Recovery V2
+### 2. Path Inference V1
+
+Use the new path inference boundary:
+
+- snap suspicious gap endpoints to nearby OSM street segments
+- route through the local OSM street graph
+- reject inferred routes with impossible speed or excessive detour
+- store/draw inferred paths with lower confidence than GPS paths
+
+### 3. Recording Recovery V2
 
 Add:
 
@@ -49,7 +59,7 @@ Add:
 - recovered background status verification
 - naming prompt before finishing a recovered recording
 
-### 3. UI Polish V2
+### 4. UI Polish V2
 
 Add:
 
@@ -58,7 +68,7 @@ Add:
 - stronger route detail layout
 - clearer GPS status states
 
-### 4. Data Tools V2
+### 5. Data Tools V2
 
 Add:
 

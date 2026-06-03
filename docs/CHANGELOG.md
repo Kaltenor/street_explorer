@@ -38,3 +38,5 @@ Added:
 - Explored/unexplored street overlay on the map.
 - Short local OSM segment splitting to avoid whole long streets turning green.
 - Clearer street completion labels and lighter map overlays.
+- Path processing boundary for confirmed, inferred, and rejected segments.
+- Rejected GPS gaps no longer draw straight lines or mark exploration cells.

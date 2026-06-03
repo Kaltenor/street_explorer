@@ -96,9 +96,17 @@ The recorder rejects:
 
 The current exploration layer uses 10m x 10m grid cells.
 
-GPS paths are sampled along each segment. Cells touched by the path are marked explored. A cell is counted only once, even if visited multiple times.
+GPS paths are first classified into path segments:
 
-This is a temporary approximation before true OpenStreetMap street completion.
+- confirmed GPS segments
+- inferred street-path segments
+- rejected gaps
+
+Only confirmed and inferred path geometry can mark cells. Rejected gaps are not sampled, so a missing GPS interval does not create fake diagonal exploration through buildings.
+
+Inferred path routing is intentionally not implemented yet. `src/services/pathInference.ts` contains the boundary for future OSM street-graph routing and currently returns `not_configured` instead of falling back to straight lines.
+
+The 10m x 10m grid is still a temporary approximation before true OpenStreetMap street completion.
 
 ## Street Completion
 

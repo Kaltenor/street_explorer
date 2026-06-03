@@ -5,13 +5,15 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { buildExplorationCells } from "../services/explorationArea";
+import { buildPathSegments } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
-import { GpsPoint, WalkWithPoints } from "../types/walk";
+import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
 import { MapLayerState } from "./LayerControls";
 
 type ExplorationMapProps = {
   walks: WalkWithPoints[];
   activePoints: GpsPoint[];
+  activeMode: ActivityMode;
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
@@ -35,6 +37,7 @@ const PATH_COLORS = [
 export function ExplorationMap({
   walks,
   activePoints,
+  activeMode,
   currentLocation,
   exploredStreetIds,
   highlightedSessionId,
@@ -44,7 +47,7 @@ export function ExplorationMap({
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
   const region = getInitialRegion(currentLocation, walks, activePoints);
-  const explorationCells = buildExplorationCells(walks, activePoints);
+  const explorationCells = buildExplorationCells(walks, activePoints, activeMode);
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -181,7 +184,6 @@ export function ExplorationMap({
           : null}
 
         {layers.showPaths ? walks.map((walk) => {
-          const coordinates = walk.points.map(pointToCoordinate);
           const color = getPathColor(walk.id);
           const isHighlighted = highlightedSessionId === walk.id;
           const isDimmed = highlightedSessionId !== null && !isHighlighted;
@@ -190,12 +192,12 @@ export function ExplorationMap({
 
           return (
             <Fragment key={walk.id}>
-              <Polyline
-                coordinates={coordinates}
-                strokeColor={isDimmed ? "rgba(100, 116, 139, 0.35)" : color}
-                strokeWidth={isHighlighted ? 8 : 5}
-                lineCap="round"
-                lineJoin="round"
+              <PathSegmentLines
+                activityMode={walk.activityMode}
+                color={color}
+                isDimmed={isDimmed}
+                isHighlighted={isHighlighted}
+                points={walk.points}
               />
               {layers.showMarkers && firstPoint ? (
                 <Marker
@@ -219,12 +221,12 @@ export function ExplorationMap({
 
         {layers.showPaths && activePoints[0] ? (
           <>
-            <Polyline
-              coordinates={activePoints.map(pointToCoordinate)}
-              strokeColor="#ef4444"
-              strokeWidth={6}
-              lineCap="round"
-              lineJoin="round"
+            <PathSegmentLines
+              activityMode={activeMode}
+              color="#ef4444"
+              isDimmed={false}
+              isHighlighted
+              points={activePoints}
             />
             {layers.showMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
@@ -262,6 +264,65 @@ export function ExplorationMap({
   );
 }
 
+function PathSegmentLines({
+  activityMode,
+  color,
+  isDimmed,
+  isHighlighted,
+  points
+}: {
+  activityMode: ActivityMode;
+  color: string;
+  isDimmed: boolean;
+  isHighlighted: boolean;
+  points: GpsPoint[];
+}) {
+  return (
+    <>
+      {buildPathSegments(points, activityMode).map((segment, index) => {
+        if (segment.type === "rejected") {
+          return null;
+        }
+
+        const isInferred = segment.type === "inferred";
+        const strokeColor = getSegmentStrokeColor({
+          color,
+          isDimmed,
+          isInferred
+        });
+
+        return (
+          <Polyline
+            coordinates={segment.points.map(pointToCoordinate)}
+            key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
+            lineCap="round"
+            lineDashPattern={isInferred ? [8, 7] : undefined}
+            lineJoin="round"
+            strokeColor={strokeColor}
+            strokeWidth={isHighlighted ? 8 : 5}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+function getSegmentStrokeColor({
+  color,
+  isDimmed,
+  isInferred
+}: {
+  color: string;
+  isDimmed: boolean;
+  isInferred: boolean;
+}) {
+  if (isInferred) {
+    return "rgba(14, 116, 144, 0.75)";
+  }
+
+  return isDimmed ? "rgba(100, 116, 139, 0.35)" : color;
+}
+
 function getInitialRegion(
   currentLocation: GpsPoint | null,
   walks: WalkWithPoints[],
@@ -290,7 +351,7 @@ function getAllPathPoints(walks: WalkWithPoints[], activePoints: GpsPoint[]) {
 }
 
 function getPathColor(sessionId: number) {
-  return PATH_COLORS[sessionId % PATH_COLORS.length];
+  return PATH_COLORS[sessionId % PATH_COLORS.length] ?? "#2563eb";
 }
 
 function formatMarkerDate(value: string) {

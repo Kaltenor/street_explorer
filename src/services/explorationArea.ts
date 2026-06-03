@@ -1,4 +1,5 @@
-import { GpsPoint, WalkWithPoints } from "../types/walk";
+import { buildPathSegments } from "./pathInference";
+import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
 
 export const EXPLORATION_CELL_SIZE_METERS = 10;
 
@@ -26,11 +27,12 @@ type CellKey = {
   y: number;
 };
 
-export function buildExplorationCells(walks: WalkWithPoints[], activePoints: GpsPoint[]) {
-  const cellKeys = collectExploredCellKeys([
-    ...walks.map((walk) => walk.points),
-    activePoints
-  ]);
+export function buildExplorationCells(
+  walks: WalkWithPoints[],
+  activePoints: GpsPoint[],
+  activeMode: ActivityMode
+) {
+  const cellKeys = collectExploredCellKeys(walks, activePoints, activeMode);
 
   return [...cellKeys].map((key) => buildExplorationCell(key));
 }
@@ -40,14 +42,18 @@ export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
 }
 
 export function calculateExploredCellCount(walks: WalkWithPoints[]) {
-  const cellKeys = collectExploredCellKeys(walks.map((walk) => walk.points));
+  const cellKeys = collectExploredCellKeys(walks, [], "walk");
 
   return cellKeys.size;
 }
 
-export function calculateNewCellsForActivePath(walks: WalkWithPoints[], activePoints: GpsPoint[]) {
-  const savedKeys = collectExploredCellKeys(walks.map((walk) => walk.points));
-  const activeKeys = collectExploredCellKeys([activePoints]);
+export function calculateNewCellsForActivePath(
+  walks: WalkWithPoints[],
+  activePoints: GpsPoint[],
+  activeMode: ActivityMode
+) {
+  const savedKeys = collectExploredCellKeys(walks, [], activeMode);
+  const activeKeys = collectExploredCellKeys([], activePoints, activeMode);
   let newCellCount = 0;
 
   for (const key of activeKeys) {
@@ -59,27 +65,37 @@ export function calculateNewCellsForActivePath(walks: WalkWithPoints[], activePo
   return newCellCount;
 }
 
-function collectExploredCellKeys(paths: GpsPoint[][]) {
+function collectExploredCellKeys(
+  walks: WalkWithPoints[],
+  activePoints: GpsPoint[],
+  activeMode: ActivityMode
+) {
   const keys = new Set<string>();
 
-  for (const points of paths) {
-    if (points.length < 2) {
+  for (const walk of walks) {
+    markPathCells(keys, walk.points, walk.activityMode);
+  }
+
+  markPathCells(keys, activePoints, activeMode);
+
+  return keys;
+}
+
+function markPathCells(keys: Set<string>, points: GpsPoint[], activityMode: ActivityMode) {
+  for (const segment of buildPathSegments(points, activityMode)) {
+    if (segment.type === "rejected") {
       continue;
     }
 
-    for (let index = 1; index < points.length; index += 1) {
-      const from = points[index - 1];
-      const to = points[index];
+    for (let index = 1; index < segment.points.length; index += 1) {
+      const from = segment.points[index - 1];
+      const to = segment.points[index];
 
-      if (!from || !to) {
-        continue;
+      if (from && to) {
+        markSegmentCells(keys, from, to);
       }
-
-      markSegmentCells(keys, from, to);
     }
   }
-
-  return keys;
 }
 
 function markSegmentCells(keys: Set<string>, from: GpsPoint, to: GpsPoint) {

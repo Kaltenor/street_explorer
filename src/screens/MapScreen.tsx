@@ -164,7 +164,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       latestRecordingDistanceMeters: latestWalk?.distanceMeters ?? 0,
       latestRecordingStartedAt: latestWalk?.startedAt ?? null,
       longestRecordingDistanceMeters: longestWalk?.distanceMeters ?? 0,
-      newCellsThisRecording: calculateNewCellsForActivePath(savedWalks, activeWalk?.points ?? []),
+      newCellsThisRecording: calculateNewCellsForActivePath(
+        savedWalks,
+        activeWalk?.points ?? [],
+        activityMode
+      ),
       todayDistanceMeters: todayWalks.reduce((distance, walk) => distance + walk.distanceMeters, 0),
       todayRecordingCount: todayWalks.length
     });
@@ -671,6 +675,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       <ExplorationMap
         walks={walks}
         activePoints={activeWalk?.points ?? []}
+        activeMode={activityMode}
         currentLocation={currentLocation}
         exploredStreetIds={streetCompletion.exploredStreetIds}
         highlightedSessionId={selectedSessionId}
