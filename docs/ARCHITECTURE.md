@@ -139,24 +139,22 @@ The 15m x 15m grid is still a temporary approximation before true OpenStreetMap 
 
 ## Loop Fill
 
-Closed-loop fill is a conservative V1 game mechanic.
+Closed-loop fill is a gameplay-first V1 mechanic based on global explored cell enclosure per mode.
 
-When a valid GPS path comes back near an earlier point in the same recording, the app can build a polygon from that trusted subpath. Rejected GPS gaps never form loops.
+The app first samples trusted GPS path geometry into explored cells. Rejected GPS gaps never mark cells, so they cannot become part of a loop boundary.
 
-The loop is rejected if it is too short, too small, too large, or self-intersecting. Current thresholds are:
+All directly explored cells for the current mode are treated as the boundary, even when they came from different recordings. For V1, the boundary is expanded by one cell during detection so tiny GPS/cell sampling gaps do not prevent obvious block loops from filling. The app flood-fills from outside the mode's explored-cell bounds; any unvisited cells that cannot be reached are considered enclosed loop-fill cells.
 
-- close distance: 25m
-- minimum loop distance: 150m
-- minimum elapsed time: 60s
-- minimum polygon area: 2,000m2
-- maximum polygon area: 1,000,000m2
+Current thresholds are:
 
-OSM is used as hidden analysis data inside the polygon. The app measures walkable street length inside the loop and accepts the fill only when unwalked walkable street length is low:
+- minimum recording distance before loop analysis: 80m
+- minimum enclosed cells: 1
+- detection boundary expansion: 1 cell
+- maximum enclosed area: 150,000m2
 
-- unwalked walkable street length <= 50m, or
-- unwalked walkable street ratio <= 10%
+OSM is used as hidden analysis data inside the polygon. The app still measures walkable street length for future debugging and tuning, but OSM street density no longer blocks a valid loop from filling.
 
-Accepted loop-fill cells are stored separately from directly walked GPS cells.
+One mode can contain multiple loop fills. Accepted loop-fill cells are stored separately from directly walked GPS cells.
 
 ## Street Completion
 

@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
-import { CompletionModal } from "../components/CompletionModal";
+import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import { GpsStatusPanel } from "../components/GpsStatusPanel";
 import { LayerControls, MapLayerState } from "../components/LayerControls";
@@ -42,7 +42,11 @@ import {
 import {
   CachedZone,
   deleteExploredCellsForSession,
+  deleteLoopFillDataForMode,
+  getExploredCellRecords,
   getLoopFillCellKeys,
+  getLoopFillSessionSummaries,
+  LoopFillSessionSummary,
   saveExploredCells,
   saveLoopFill
 } from "../database/completionRepository";
@@ -59,7 +63,7 @@ import {
   collectExploredCellIdsBySource,
   collectExploredCellIdsForPath
 } from "../services/explorationArea";
-import { analyzeLoopFill } from "../services/loopFill";
+import { analyzeLoopFillsForCells } from "../services/loopFill";
 import {
   deleteAllStreetSegments,
   getStreetSegmentsNear,
@@ -67,6 +71,7 @@ import {
 } from "../database/streetRepository";
 import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
 import { calculateStreetCompletion } from "../services/streetCompletion";
+import { calculateZoneCompletionStats, ZoneCompletionStats } from "../services/zoneCompletion";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
@@ -112,6 +117,27 @@ type MapScreenProps = {
   onChangeMode: () => void;
 };
 
+type PathDisplayMode = "today" | "last7" | "all" | "selected";
+
+type LoopProcessingResult =
+  | {
+      status: "filled";
+      filledCellCount: number;
+      filledLoopCount: number;
+      rejectionReason: null;
+      rejectedLoopCount: number;
+    }
+  | {
+      status: "rejected";
+      filledCellCount: number;
+      filledLoopCount: number;
+      rejectionReason: string | null;
+      rejectedLoopCount: number;
+    }
+  | {
+      status: "not_checked";
+    };
+
 export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [permissionState, setPermissionState] = useState<LocationPermissionState>("unknown");
   const [currentLocation, setCurrentLocation] = useState<GpsPoint | null>(null);
@@ -126,6 +152,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [completionVisible, setCompletionVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
+  const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
+  const [objective, setObjective] = useState<CompletionObjective | null>(null);
+  const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
+  const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [recoverableRecording, setRecoverableRecording] = useState<RecoverableRecording | null>(
@@ -153,13 +183,24 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       ),
     [activeWalk?.points, streetSegments, streetStatus, walks]
   );
+  const displayedWalks = useMemo(
+    () => filterWalksForPathDisplay(walks, pathDisplayMode, selectedSessionId),
+    [pathDisplayMode, selectedSessionId, walks]
+  );
 
   const refreshSavedData = useCallback(async () => {
-    const [savedWalks, lifetimeStats, savedHistory, savedLoopFillCellIds] = await Promise.all([
+    const [
+      savedWalks,
+      lifetimeStats,
+      savedHistory,
+      savedLoopFillCellIds,
+      savedLoopFillSummaries
+    ] = await Promise.all([
       getAllWalksWithPoints(activityMode),
       getLifetimeStats(activityMode),
       getWalkHistory(activityMode),
-      getLoopFillCellKeys(activityMode)
+      getLoopFillCellKeys(activityMode),
+      getLoopFillSessionSummaries(activityMode)
     ]);
     const latestWalk = savedHistory[0] ?? null;
     const longestWalk = savedHistory.reduce<WalkSession | null>((longest, walk) => {
@@ -173,6 +214,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
     setWalks(savedWalks);
     setLoopFillCellIds(savedLoopFillCellIds);
+    setLoopFillSummaries(savedLoopFillSummaries);
     await saveExploredCells(
       savedWalks.flatMap((walk) =>
         collectExploredCellIdsForPath(walk.points, walk.activityMode).map((cellKey) => ({
@@ -216,6 +258,18 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   useEffect(() => {
     refreshSavedData();
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    if (!objective) {
+      setObjectiveStats(null);
+      return;
+    }
+
+    getExploredCellRecords(objective.mode)
+      .then((cells) => calculateZoneCompletionStats(objective.zone, cells))
+      .then(setObjectiveStats)
+      .catch((error) => console.warn("Failed to calculate objective completion", error));
+  }, [loopFillCellIds, objective, walks]);
 
   useEffect(() => {
     if (!currentLocation) {
@@ -456,60 +510,104 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     await startForegroundWatch();
   }, [activityMode, enableBackgroundTracking, permissionState, startForegroundWatch, stopLocationWatch]);
 
-  const processCompletedSession = useCallback(
-    async (sessionId: number, mode: ActivityMode) => {
-      const points = await getGpsPointsForSession(sessionId);
-      const cellIdsBySource = collectExploredCellIdsBySource(points, mode, streetSegments);
+  const reprocessModeExploration = useCallback(
+    async (mode: ActivityMode): Promise<LoopProcessingResult & { recordingCount: number }> => {
+      const savedWalks = await getAllWalksWithPoints(mode);
+      const boundaryCellIds = new Set<string>();
 
-      await saveExploredCells(
-        cellIdsBySource.gps.map((cellKey) => ({
-          cellKey,
-          mode,
-          sessionId,
-          source: "gps"
-        }))
-      );
-      await saveExploredCells(
-        cellIdsBySource.inferred.map((cellKey) => ({
-          cellKey,
-          mode,
-          sessionId,
-          source: "inferred"
-        }))
-      );
+      for (const walk of savedWalks) {
+        await deleteExploredCellsForSession(walk.id);
 
-      const loopFill = analyzeLoopFill({
-        activityMode: mode,
-        exploredStreetIds: streetCompletion.exploredStreetIds,
-        points,
-        streetSegments
-      });
+        const cellIdsBySource = collectExploredCellIdsBySource(
+          walk.points,
+          walk.activityMode,
+          streetSegments
+        );
 
-      if (!loopFill) {
-        return;
+        for (const cellKey of [...cellIdsBySource.gps, ...cellIdsBySource.inferred]) {
+          boundaryCellIds.add(cellKey);
+        }
+
+        await saveExploredCells(
+          cellIdsBySource.gps.map((cellKey) => ({
+            cellKey,
+            mode: walk.activityMode,
+            sessionId: walk.id,
+            source: "gps"
+          }))
+        );
+        await saveExploredCells(
+          cellIdsBySource.inferred.map((cellKey) => ({
+            cellKey,
+            mode: walk.activityMode,
+            sessionId: walk.id,
+            source: "inferred"
+          }))
+        );
       }
 
-      await saveLoopFill({
-        accepted: loopFill.accepted,
-        areaM2: loopFill.areaM2,
-        mode,
-        polygonJson: JSON.stringify(loopFill.polygon),
-        rejectionReason: loopFill.rejectionReason,
-        sessionId,
-        totalWalkableStreetLengthM: loopFill.totalWalkableStreetLengthM,
-        unwalkedWalkableStreetLengthM: loopFill.unwalkedWalkableStreetLengthM
-      });
+      await deleteLoopFillDataForMode(mode);
 
-      if (loopFill.accepted) {
+      const loopFills = analyzeLoopFillsForCells({
+        activityMode: mode,
+        boundaryCellIds: [...boundaryCellIds],
+        exploredStreetIds: streetCompletion.exploredStreetIds,
+        streetSegments
+      });
+      const acceptedLoopFills = loopFills.filter((loopFill) => loopFill.accepted);
+      const rejectedLoopFills = loopFills.filter((loopFill) => !loopFill.accepted);
+      const filledCellKeys = new Set(acceptedLoopFills.flatMap((loopFill) => loopFill.cellIds));
+
+      for (const loopFill of loopFills) {
+        await saveLoopFill({
+          accepted: loopFill.accepted,
+          areaM2: loopFill.areaM2,
+          mode,
+          polygonJson: JSON.stringify(loopFill.polygon),
+          rejectionReason: loopFill.rejectionReason,
+          sessionId: null,
+          totalWalkableStreetLengthM: loopFill.totalWalkableStreetLengthM,
+          unwalkedWalkableStreetLengthM: loopFill.unwalkedWalkableStreetLengthM
+        });
+      }
+
+      if (filledCellKeys.size > 0) {
         await saveExploredCells(
-          loopFill.cellIds.map((cellKey) => ({
+          [...filledCellKeys].map((cellKey) => ({
             cellKey,
             mode,
-            sessionId,
+            sessionId: null,
             source: "loop_fill"
           }))
         );
       }
+
+      if (acceptedLoopFills.length > 0) {
+        return {
+          filledCellCount: filledCellKeys.size,
+          filledLoopCount: acceptedLoopFills.length,
+          recordingCount: savedWalks.length,
+          rejectedLoopCount: rejectedLoopFills.length,
+          rejectionReason: null,
+          status: "filled"
+        };
+      }
+
+      if (rejectedLoopFills.length > 0) {
+        return {
+          filledCellCount: 0,
+          filledLoopCount: 0,
+          recordingCount: savedWalks.length,
+          rejectedLoopCount: rejectedLoopFills.length,
+          rejectionReason: rejectedLoopFills[0]?.rejectionReason ?? "not_closed_enough",
+          status: "rejected"
+        };
+      }
+
+      return {
+        recordingCount: savedWalks.length,
+        status: "not_checked"
+      };
     },
     [streetCompletion.exploredStreetIds, streetSegments]
   );
@@ -535,9 +633,48 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       return;
     }
 
-    await processCompletedSession(savedSessionId, activeWalk.activityMode);
+    const loopResult = await reprocessModeExploration(activeWalk.activityMode);
     await refreshSavedData();
-  }, [activeWalk, processCompletedSession, refreshSavedData, stopLocationWatch]);
+    showLoopResultAlert(loopResult);
+  }, [activeWalk, refreshSavedData, reprocessModeExploration, stopLocationWatch]);
+
+  const handleReprocessRecordings = useCallback(() => {
+    if (activeWalk) {
+      Alert.alert("Recording active", "Stop the current recording before reprocessing saved walks.");
+      return;
+    }
+
+    Alert.alert(
+      "Reprocess saved recordings?",
+      `This rebuilds explored cells and loop fills for saved ${ACTIVITY_MODE_LABELS[
+        activityMode
+      ].toLowerCase()} recordings using the current rules.`,
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Reprocess",
+          onPress: async () => {
+            const summary = await reprocessModeExploration(activityMode);
+
+            await refreshSavedData();
+            Alert.alert(
+              "Reprocess complete",
+              `${summary.recordingCount} recordings checked.\nFilled loops: ${
+                summary.status === "filled" ? summary.filledLoopCount : 0
+              }\nRejected loops: ${
+                summary.status === "not_checked" ? 0 : summary.rejectedLoopCount
+              }\nLoop cells added: ${
+                summary.status === "filled" ? summary.filledCellCount : 0
+              }`
+            );
+          }
+        }
+      ]
+    );
+  }, [activeWalk, activityMode, refreshSavedData, reprocessModeExploration]);
 
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -582,13 +719,13 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     const savedSessionId = await finishPersistedActiveWalk(recoveredWalk, new Date().toISOString());
 
     if (savedSessionId) {
-      await processCompletedSession(savedSessionId, recoveredWalk.activityMode);
+      await reprocessModeExploration(recoveredWalk.activityMode);
     }
 
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
     await refreshSavedData();
-  }, [activityMode, processCompletedSession, recoverableRecording, refreshSavedData]);
+  }, [activityMode, recoverableRecording, refreshSavedData, reprocessModeExploration]);
 
   const handleDiscardRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -764,7 +901,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   return (
     <View style={styles.screen}>
       <ExplorationMap
-        walks={walks}
+        walks={displayedWalks}
         activePoints={activeWalk?.points ?? []}
         activeMode={activityMode}
         currentLocation={currentLocation}
@@ -830,10 +967,34 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             </TouchableOpacity>
           </View>
 
+          {objective ? (
+            <ObjectiveHud
+              objective={objective}
+              stats={objectiveStats}
+              onClear={() => {
+                setObjective(null);
+                setObjectiveStats(null);
+              }}
+            />
+          ) : null}
+
           {dashboardExpanded ? (
             <>
               <StatsPanel activityMode={activityMode} stats={stats} />
+              <PathDisplayControls
+                mode={pathDisplayMode}
+                selectedSessionId={selectedSessionId}
+                onChangeMode={setPathDisplayMode}
+              />
               <LayerControls layers={layers} onToggleLayer={toggleLayer} />
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={handleReprocessRecordings}
+                style={styles.dashboardToggle}
+              >
+                <Ionicons name="sync-outline" size={18} color="#0f172a" />
+                <Text style={styles.dashboardToggleText}>Reprocess recordings</Text>
+              </TouchableOpacity>
               <MapLegend
                 showExploredCells={layers.showExploredCells}
                 showPaths={layers.showPaths}
@@ -908,6 +1069,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
       <WalkHistoryModal
         activityMode={activityMode}
+        loopFillSummaries={loopFillSummaries}
         visible={historyVisible}
         walks={history}
         selectedSessionId={selectedSessionId}
@@ -930,6 +1092,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
           setSelectedZone(zone);
+          setCompletionVisible(false);
+        }}
+        onSetObjective={(nextObjective) => {
+          setObjective(nextObjective);
+          setSelectedZone(nextObjective.zone);
           setCompletionVisible(false);
         }}
         visible={completionVisible}
@@ -957,6 +1124,149 @@ function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
   }
 
   return calculatePathDistanceMeters([previousPoint, latestPoint]) / secondsBetweenPoints;
+}
+
+function ObjectiveHud({
+  objective,
+  stats,
+  onClear
+}: {
+  objective: CompletionObjective;
+  stats: ZoneCompletionStats | null;
+  onClear: () => void;
+}) {
+  return (
+    <View style={styles.objectiveHud}>
+      <View style={styles.objectiveText}>
+        <Text style={styles.objectiveLabel}>Objective</Text>
+        <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
+        <Text style={styles.objectiveMeta}>
+          {formatObjectiveMode(objective.mode)} | {formatObjectiveCompletion(stats)}
+        </Text>
+      </View>
+      <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
+        <Ionicons name="close" size={17} color="#0f172a" />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function PathDisplayControls({
+  mode,
+  selectedSessionId,
+  onChangeMode
+}: {
+  mode: PathDisplayMode;
+  selectedSessionId: number | null;
+  onChangeMode: (mode: PathDisplayMode) => void;
+}) {
+  const options: Array<{ label: string; value: PathDisplayMode; disabled?: boolean }> = [
+    { label: "Today", value: "today" },
+    { label: "7 days", value: "last7" },
+    { label: "All", value: "all" },
+    { disabled: selectedSessionId === null, label: "Selected", value: "selected" }
+  ];
+
+  return (
+    <View style={styles.pathDisplayPanel}>
+      <Text style={styles.pathDisplayTitle}>Paths</Text>
+      <View style={styles.pathDisplayOptions}>
+        {options.map((option) => (
+          <TouchableOpacity
+            accessibilityRole="button"
+            disabled={option.disabled}
+            key={option.value}
+            onPress={() => onChangeMode(option.value)}
+            style={[
+              styles.pathDisplayButton,
+              mode === option.value ? styles.selectedPathDisplayButton : null,
+              option.disabled ? styles.disabledPathDisplayButton : null
+            ]}
+          >
+            <Text
+              style={[
+                styles.pathDisplayButtonText,
+                mode === option.value ? styles.selectedPathDisplayButtonText : null
+              ]}
+            >
+              {option.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function filterWalksForPathDisplay(
+  walks: WalkWithPoints[],
+  mode: PathDisplayMode,
+  selectedSessionId: number | null
+) {
+  if (mode === "all") {
+    return walks;
+  }
+
+  if (mode === "selected") {
+    return selectedSessionId
+      ? walks.filter((walk) => walk.id === selectedSessionId)
+      : [];
+  }
+
+  if (mode === "last7") {
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 7);
+
+    return walks.filter((walk) => new Date(walk.startedAt) >= cutoff);
+  }
+
+  return walks.filter((walk) => isToday(walk.startedAt));
+}
+
+function formatObjectiveMode(mode: CompletionObjective["mode"]) {
+  return mode === "all" ? "All modes" : ACTIVITY_MODE_LABELS[mode];
+}
+
+function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
+  if (!stats || stats.completionPercent === null) {
+    return "pending";
+  }
+
+  return `${stats.completionPercent}% complete`;
+}
+
+function showLoopResultAlert(result: LoopProcessingResult) {
+  if (result.status === "not_checked") {
+    Alert.alert("Loop check", "No closed loop was detected in this recording.");
+    return;
+  }
+
+  if (result.status === "filled") {
+    Alert.alert(
+      "Loop filled",
+      `${result.filledLoopCount} loop${result.filledLoopCount === 1 ? "" : "s"} filled. ${result.filledCellCount} interior cells were added.`
+    );
+    return;
+  }
+
+  Alert.alert("Loop rejected", formatLoopRejectionReason(result.rejectionReason));
+}
+
+function formatLoopRejectionReason(reason: string | null) {
+  switch (reason) {
+    case "loop_area_too_large":
+      return "The loop area was too large for V1.";
+    case "loop_area_too_small":
+      return "The loop area was too small to fill.";
+    case "loop_distance_too_short":
+      return "The closed section was shorter than the minimum loop distance.";
+    case "loop_duration_too_short":
+      return "The closed section was shorter than the minimum loop duration.";
+    case "not_closed_enough":
+      return "The route did not come back close enough to an earlier GPS point.";
+    default:
+      return "The loop was detected, but it did not pass the V1 fill rules.";
+  }
 }
 
 function isToday(value: string) {
@@ -991,6 +1301,9 @@ const styles = StyleSheet.create({
     color: "#0f172a",
     fontSize: 12,
     fontWeight: "800"
+  },
+  disabledPathDisplayButton: {
+    opacity: 0.45
   },
   headerRow: {
     alignItems: "flex-start",
@@ -1041,9 +1354,84 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "800"
   },
+  objectiveClear: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 34,
+    justifyContent: "center",
+    width: 34
+  },
+  objectiveHud: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(255, 255, 255, 0.96)",
+    borderColor: "#bfdbfe",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 8,
+    maxWidth: "100%",
+    paddingHorizontal: 10,
+    paddingVertical: 9
+  },
+  objectiveLabel: {
+    color: "#2563eb",
+    fontSize: 10,
+    fontWeight: "900"
+  },
+  objectiveMeta: {
+    color: "#475569",
+    fontSize: 11,
+    fontWeight: "700",
+    marginTop: 1
+  },
+  objectiveName: {
+    color: "#0f172a",
+    fontSize: 14,
+    fontWeight: "900",
+    maxWidth: 260
+  },
+  objectiveText: {
+    flexShrink: 1
+  },
   overlay: {
     flex: 1,
     padding: 16
+  },
+  pathDisplayButton: {
+    backgroundColor: "#ffffff",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    paddingHorizontal: 9,
+    paddingVertical: 7
+  },
+  pathDisplayButtonText: {
+    color: "#0f172a",
+    fontSize: 12,
+    fontWeight: "800"
+  },
+  pathDisplayOptions: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 7
+  },
+  pathDisplayPanel: {
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 8,
+    padding: 10
+  },
+  pathDisplayTitle: {
+    color: "#0f172a",
+    fontSize: 12,
+    fontWeight: "900"
   },
   permissionPanel: {
     backgroundColor: "rgba(254, 242, 242, 0.96)",
@@ -1067,6 +1455,13 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: "#e2e8f0",
     flex: 1
+  },
+  selectedPathDisplayButton: {
+    backgroundColor: "#2563eb",
+    borderColor: "#2563eb"
+  },
+  selectedPathDisplayButtonText: {
+    color: "#ffffff"
   },
   subtitle: {
     color: "#475569",

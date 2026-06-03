@@ -175,6 +175,51 @@ export async function initDatabase() {
       );
     `);
   });
+
+  await applyMigration(10, "allow_global_loop_fills", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS loop_fills_next (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        session_id INTEGER,
+        mode TEXT NOT NULL,
+        polygon_json TEXT NOT NULL,
+        area_m2 REAL NOT NULL,
+        total_walkable_street_length_m REAL NOT NULL,
+        unwalked_walkable_street_length_m REAL NOT NULL,
+        accepted INTEGER NOT NULL,
+        rejection_reason TEXT,
+        created_at TEXT NOT NULL
+      );
+
+      INSERT INTO loop_fills_next (
+        id,
+        session_id,
+        mode,
+        polygon_json,
+        area_m2,
+        total_walkable_street_length_m,
+        unwalked_walkable_street_length_m,
+        accepted,
+        rejection_reason,
+        created_at
+      )
+      SELECT
+        id,
+        session_id,
+        mode,
+        polygon_json,
+        area_m2,
+        total_walkable_street_length_m,
+        unwalked_walkable_street_length_m,
+        accepted,
+        rejection_reason,
+        created_at
+      FROM loop_fills;
+
+      DROP TABLE loop_fills;
+      ALTER TABLE loop_fills_next RENAME TO loop_fills;
+    `);
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

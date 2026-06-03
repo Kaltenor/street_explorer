@@ -82,6 +82,28 @@ Toggle:
 
 Confirm each layer appears or disappears.
 
+## Path Display Scope Test
+
+1. Open Show details.
+2. Under Paths, switch between Today, 7 days, All, and Selected.
+3. Confirm the path lines change while explored cells remain visible.
+4. Select a recording from History and confirm Selected shows only that route.
+
+## Objective HUD Test
+
+1. Open Completion.
+2. Refresh/load nearby boundaries if needed.
+3. Select a zone such as a district.
+4. Tap Set objective.
+5. Confirm the map HUD shows the objective name and completion percentage.
+6. Record or reprocess exploration and confirm the objective percentage updates.
+
+## Explored Area Outline Test
+
+1. Show explored cells on the map.
+2. Confirm adjacent cells do not show internal borders.
+3. Confirm a thin dark outline appears only around the outside edge of explored areas.
+
 ## OpenStreetMap Debug Matching Test
 
 1. Wait for GPS to locate you.
@@ -133,9 +155,22 @@ Notes:
 2. Record a closed loop of at least 150m.
 3. Stop the recording.
 4. Confirm normal GPS cells still appear.
-5. If the loop contains little unwalked walkable street length, confirm subtle loop-fill cells appear inside the polygon.
-6. If the loop contains many unwalked streets, confirm the polygon is not filled.
-7. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
+5. Confirm the stop-walk alert says whether the loop was filled, rejected, or not detected.
+6. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
+7. Confirm a straight walk does not create loop fills after reprocessing.
+8. Open History, tap the recording, and confirm Loop cells and Loop result are shown.
+9. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
+10. Record or reprocess a walk with multiple block loops and confirm History shows multiple filled loops.
+11. Confirm obvious loops with tiny cell gaps still fill, unless the filled area would be too large.
+
+## Reprocess Recordings Test
+
+1. Open Show details.
+2. Tap Reprocess recordings.
+3. Confirm the app asks before rebuilding saved exploration data for the current mode.
+4. Tap Reprocess.
+5. Confirm the summary shows checked recordings, filled loops, rejected loops, and loop cells added.
+6. Confirm areas enclosed by cells from multiple recordings can fill.
 
 ## GPS Gap Safety Test
 

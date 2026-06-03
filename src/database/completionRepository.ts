@@ -26,6 +26,17 @@ export type CompletionStats = {
   recordingCount: number;
 };
 
+export type LoopFillSessionSummary = {
+  accepted: boolean;
+  filledLoopCount: number;
+  areaM2: number;
+  loopFilledCellCount: number;
+  rejectedLoopCount: number;
+  rejectionReason: string | null;
+  totalWalkableStreetLengthM: number;
+  unwalkedWalkableStreetLengthM: number;
+};
+
 type ExploredCellInput = {
   cellKey: string;
   mode: ActivityMode;
@@ -96,6 +107,61 @@ export async function getLoopFillCellKeys(mode: ActivityMode | "all") {
   );
 
   return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
+}
+
+export async function getLoopFillSessionSummaries(mode: ActivityMode | "all") {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{
+    accepted_count: number;
+    area_m2: number;
+    loop_count: number;
+    loop_filled_cell_count: number;
+    rejected_count: number;
+    rejection_reasons: string | null;
+    session_id: number;
+    total_walkable_street_length_m: number;
+    unwalked_walkable_street_length_m: number;
+  }>(
+    `
+      SELECT
+        lf.session_id,
+        COUNT(lf.id) AS loop_count,
+        SUM(CASE WHEN lf.accepted = 1 THEN 1 ELSE 0 END) AS accepted_count,
+        SUM(CASE WHEN lf.accepted = 0 THEN 1 ELSE 0 END) AS rejected_count,
+        MAX(lf.area_m2) AS area_m2,
+        SUM(lf.total_walkable_street_length_m) AS total_walkable_street_length_m,
+        SUM(lf.unwalked_walkable_street_length_m) AS unwalked_walkable_street_length_m,
+        GROUP_CONCAT(DISTINCT lf.rejection_reason) AS rejection_reasons,
+        COUNT(DISTINCT ec.cell_x || ':' || ec.cell_y) AS loop_filled_cell_count
+      FROM loop_fills lf
+      LEFT JOIN explored_cells ec
+        ON ec.session_id = lf.session_id
+        AND ec.source = 'loop_fill'
+        AND ec.cell_size_m = ?
+      WHERE (? = 'all' OR lf.mode = ?)
+      GROUP BY lf.session_id
+      ORDER BY MAX(lf.created_at) DESC
+    `,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode,
+    mode
+  );
+
+  return Object.fromEntries(
+    rows.map((row) => [
+      row.session_id,
+      {
+        accepted: row.accepted_count > 0,
+        areaM2: row.area_m2,
+        filledLoopCount: row.accepted_count,
+        loopFilledCellCount: row.loop_filled_cell_count,
+        rejectedLoopCount: row.rejected_count,
+        rejectionReason: row.rejection_reasons,
+        totalWalkableStreetLengthM: row.total_walkable_street_length_m,
+        unwalkedWalkableStreetLengthM: row.unwalked_walkable_street_length_m
+      } satisfies LoopFillSessionSummary
+    ])
+  );
 }
 
 export async function getCompletionStats(mode: ActivityMode | "all"): Promise<CompletionStats> {
@@ -180,13 +246,33 @@ export async function deleteExploredCellsForSession(sessionId: number) {
   await db.runAsync("DELETE FROM loop_fills WHERE session_id = ?", sessionId);
 }
 
+export async function deleteLoopFillDataForMode(mode: ActivityMode) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      DELETE FROM explored_cells
+      WHERE mode = ?
+        AND source = 'loop_fill'
+    `,
+    mode
+  );
+  await db.runAsync(
+    `
+      DELETE FROM loop_fills
+      WHERE mode = ?
+    `,
+    mode
+  );
+}
+
 export async function saveLoopFill(input: {
   accepted: boolean;
   areaM2: number;
   mode: ActivityMode;
   polygonJson: string;
   rejectionReason: string | null;
-  sessionId: number;
+  sessionId: number | null;
   totalWalkableStreetLengthM: number;
   unwalkedWalkableStreetLengthM: number;
 }) {

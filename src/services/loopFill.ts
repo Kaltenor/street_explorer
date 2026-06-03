@@ -1,24 +1,27 @@
 import {
+  EXPLORATION_CELL_SIZE_METERS,
   MapCoordinate,
-  coordinateToExplorationCellKey,
+  collectExploredCellIdsForPath,
   explorationCellKeyToCenterCoordinate
 } from "./explorationArea";
 import { haversineDistanceMeters } from "./distance";
-import { buildPathSegments } from "./pathInference";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
 export const LOOP_FILL_CONFIG = {
-  closeDistanceMeters: 25,
-  maxPolygonAreaSquareMeters: 1_000_000,
-  maxUnwalkedStreetLengthMeters: 50,
-  maxUnwalkedStreetRatio: 0.1,
-  minLoopDistanceMeters: 150,
-  minLoopElapsedSeconds: 60,
-  minPolygonAreaSquareMeters: 2_000
+  boundaryExpansionCells: 1,
+  maxEnclosedCellCount: Math.floor(150_000 / (EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS)),
+  maxPolygonAreaSquareMeters: 150_000,
+  minEnclosedCellCount: 1,
+  minLoopDistanceMeters: 80
 };
 
 type ProjectedPoint = {
+  x: number;
+  y: number;
+};
+
+type CellKey = {
   x: number;
   y: number;
 };
@@ -49,33 +52,65 @@ export function analyzeLoopFill(input: {
   points: GpsPoint[];
   streetSegments: OsmStreetSegment[];
 }): LoopFillResult | null {
-  const confirmedPoints = flattenTrustedPathPoints(input.points, input.activityMode);
+  return analyzeLoopFills(input)[0] ?? null;
+}
 
-  if (confirmedPoints.length < 4) {
-    return null;
+export function analyzeLoopFills(input: {
+  activityMode: ActivityMode;
+  exploredStreetIds: Set<string>;
+  points: GpsPoint[];
+  streetSegments: OsmStreetSegment[];
+}): LoopFillResult[] {
+  if (input.points.length < 4 || calculateGpsPathDistance(input.points) < LOOP_FILL_CONFIG.minLoopDistanceMeters) {
+    return [];
   }
 
-  const candidate = findLoopCandidate(confirmedPoints);
+  const boundaryCellIds = collectExploredCellIdsForPath(input.points, input.activityMode);
+  return analyzeLoopFillsForCells({
+    activityMode: input.activityMode,
+    boundaryCellIds,
+    exploredStreetIds: input.exploredStreetIds,
+    streetSegments: input.streetSegments
+  });
+}
 
-  if (!candidate) {
-    return null;
+export function analyzeLoopFillsForCells(input: {
+  activityMode: ActivityMode;
+  boundaryCellIds: string[];
+  exploredStreetIds: Set<string>;
+  streetSegments: OsmStreetSegment[];
+}): LoopFillResult[] {
+  const enclosedCellGroups = findEnclosedCellGroups(input.boundaryCellIds);
+
+  if (enclosedCellGroups.length === 0) {
+    return [];
   }
 
-  const polygon = candidate.points.map(toCoordinate);
+  return enclosedCellGroups.map((cellIds) => analyzeEnclosedCellGroup({
+    activityMode: input.activityMode,
+    cellIds,
+    exploredStreetIds: input.exploredStreetIds,
+    streetSegments: input.streetSegments
+  }));
+}
+
+function analyzeEnclosedCellGroup(input: {
+  activityMode: ActivityMode;
+  cellIds: string[];
+  exploredStreetIds: Set<string>;
+  streetSegments: OsmStreetSegment[];
+}): LoopFillResult {
+  const polygon = getCellGroupBoundsPolygon(input.cellIds);
   const referenceLatitude = averageLatitude(polygon);
   const projectedPolygon = polygon.map((point) => coordinateToLocalMeters(point, referenceLatitude));
-  const areaM2 = calculatePolygonAreaSquareMeters(projectedPolygon);
+  const areaM2 = input.cellIds.length * EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS;
 
-  if (areaM2 < LOOP_FILL_CONFIG.minPolygonAreaSquareMeters) {
+  if (input.cellIds.length < LOOP_FILL_CONFIG.minEnclosedCellCount) {
     return rejectedLoop(polygon, areaM2, "loop_area_too_small");
   }
 
-  if (areaM2 > LOOP_FILL_CONFIG.maxPolygonAreaSquareMeters) {
+  if (input.cellIds.length > LOOP_FILL_CONFIG.maxEnclosedCellCount) {
     return rejectedLoop(polygon, areaM2, "loop_area_too_large");
-  }
-
-  if (hasSelfIntersection(projectedPolygon)) {
-    return rejectedLoop(polygon, areaM2, "loop_self_intersects");
   }
 
   const streetAnalysis = calculateStreetLengthInsidePolygon({
@@ -85,87 +120,16 @@ export function analyzeLoopFill(input: {
     referenceLatitude,
     streetSegments: input.streetSegments
   });
-  const unwalkedRatio =
-    streetAnalysis.totalWalkableStreetLengthM === 0
-      ? 0
-      : streetAnalysis.unwalkedWalkableStreetLengthM /
-        streetAnalysis.totalWalkableStreetLengthM;
-  const accepted =
-    streetAnalysis.unwalkedWalkableStreetLengthM <=
-      LOOP_FILL_CONFIG.maxUnwalkedStreetLengthMeters ||
-    unwalkedRatio <= LOOP_FILL_CONFIG.maxUnwalkedStreetRatio;
 
   return {
-    accepted,
+    accepted: true,
     areaM2,
-    cellIds: accepted ? collectCellsInsidePolygon(polygon, projectedPolygon, referenceLatitude) : [],
+    cellIds: input.cellIds,
     polygon,
-    rejectionReason: accepted ? null : "too_many_unwalked_streets_inside_loop",
+    rejectionReason: null,
     totalWalkableStreetLengthM: streetAnalysis.totalWalkableStreetLengthM,
     unwalkedWalkableStreetLengthM: streetAnalysis.unwalkedWalkableStreetLengthM
   };
-}
-
-function flattenTrustedPathPoints(points: GpsPoint[], activityMode: ActivityMode) {
-  const trustedPoints: GpsPoint[] = [];
-
-  for (const segment of buildPathSegments(points, activityMode)) {
-    if (segment.type === "rejected") {
-      continue;
-    }
-
-    for (const point of segment.points) {
-      const previous = trustedPoints.at(-1);
-
-      if (!previous || previous.timestamp !== point.timestamp) {
-        trustedPoints.push(point);
-      }
-    }
-  }
-
-  return trustedPoints;
-}
-
-function findLoopCandidate(points: GpsPoint[]) {
-  for (let currentIndex = points.length - 1; currentIndex >= 3; currentIndex -= 1) {
-    const currentPoint = points[currentIndex];
-
-    if (!currentPoint) {
-      continue;
-    }
-
-    for (let earlierIndex = 0; earlierIndex < currentIndex - 2; earlierIndex += 1) {
-      const earlierPoint = points[earlierIndex];
-
-      if (!earlierPoint) {
-        continue;
-      }
-
-      if (
-        haversineDistanceMeters(earlierPoint, currentPoint) >
-        LOOP_FILL_CONFIG.closeDistanceMeters
-      ) {
-        continue;
-      }
-
-      const loopPoints = points.slice(earlierIndex, currentIndex + 1);
-      const distanceMeters = calculateGpsPathDistance(loopPoints);
-      const elapsedSeconds = calculateElapsedSeconds(loopPoints);
-
-      if (
-        distanceMeters >= LOOP_FILL_CONFIG.minLoopDistanceMeters &&
-        elapsedSeconds >= LOOP_FILL_CONFIG.minLoopElapsedSeconds
-      ) {
-        return {
-          distanceMeters,
-          elapsedSeconds,
-          points: loopPoints
-        };
-      }
-    }
-  }
-
-  return null;
 }
 
 function calculateStreetLengthInsidePolygon(input: {
@@ -209,39 +173,6 @@ function calculateStreetLengthInsidePolygon(input: {
   };
 }
 
-function collectCellsInsidePolygon(
-  polygon: MapCoordinate[],
-  projectedPolygon: ProjectedPoint[],
-  referenceLatitude: number
-) {
-  const bounds = getCoordinateBounds(polygon);
-  const cornerKeys = [
-    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.minLongitude }),
-    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.maxLongitude }),
-    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.minLongitude }),
-    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.maxLongitude })
-  ].map(parseCellKey);
-  const minX = Math.min(...cornerKeys.map((key) => key.x));
-  const maxX = Math.max(...cornerKeys.map((key) => key.x));
-  const minY = Math.min(...cornerKeys.map((key) => key.y));
-  const maxY = Math.max(...cornerKeys.map((key) => key.y));
-  const cellIds: string[] = [];
-
-  for (let x = minX; x <= maxX; x += 1) {
-    for (let y = minY; y <= maxY; y += 1) {
-      const cellId = `${x}:${y}`;
-      const center = explorationCellKeyToCenterCoordinate(cellId);
-      const projectedCenter = coordinateToLocalMeters(center, referenceLatitude);
-
-      if (pointInPolygon(projectedCenter, projectedPolygon)) {
-        cellIds.push(cellId);
-      }
-    }
-  }
-
-  return cellIds;
-}
-
 function rejectedLoop(
   polygon: MapCoordinate[],
   areaM2: number,
@@ -256,6 +187,152 @@ function rejectedLoop(
     totalWalkableStreetLengthM: 0,
     unwalkedWalkableStreetLengthM: 0
   };
+}
+
+function findEnclosedCellGroups(boundaryCellIds: string[]) {
+  const boundary = new Set(boundaryCellIds);
+  const detectionBoundary = expandBoundaryCells(boundary, LOOP_FILL_CONFIG.boundaryExpansionCells);
+  const keys = [...detectionBoundary].map(parseCellKey);
+
+  if (keys.length === 0) {
+    return [];
+  }
+
+  const bounds = {
+    maxX: Math.max(...keys.map((key) => key.x)) + 1,
+    maxY: Math.max(...keys.map((key) => key.y)) + 1,
+    minX: Math.min(...keys.map((key) => key.x)) - 1,
+    minY: Math.min(...keys.map((key) => key.y)) - 1
+  };
+  const outside = floodReachableCells({
+    blocked: detectionBoundary,
+    bounds,
+    start: { x: bounds.minX, y: bounds.minY }
+  });
+  const enclosed = new Set<string>();
+
+  for (let x = bounds.minX + 1; x < bounds.maxX; x += 1) {
+    for (let y = bounds.minY + 1; y < bounds.maxY; y += 1) {
+      const key = cellKeyToString({ x, y });
+
+      if (!boundary.has(key) && !outside.has(key)) {
+        enclosed.add(key);
+      }
+    }
+  }
+
+  return collectConnectedCellGroups(enclosed);
+}
+
+function expandBoundaryCells(boundary: Set<string>, radius: number) {
+  const expanded = new Set(boundary);
+
+  for (const cellKey of boundary) {
+    const cell = parseCellKey(cellKey);
+
+    for (let xOffset = -radius; xOffset <= radius; xOffset += 1) {
+      for (let yOffset = -radius; yOffset <= radius; yOffset += 1) {
+        expanded.add(cellKeyToString({
+          x: cell.x + xOffset,
+          y: cell.y + yOffset
+        }));
+      }
+    }
+  }
+
+  return expanded;
+}
+
+function floodReachableCells(input: {
+  blocked: Set<string>;
+  bounds: { maxX: number; maxY: number; minX: number; minY: number };
+  start: CellKey;
+}) {
+  const visited = new Set<string>();
+  const queue: CellKey[] = [input.start];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+
+    if (!current || !isInsideBounds(current, input.bounds)) {
+      continue;
+    }
+
+    const key = cellKeyToString(current);
+
+    if (visited.has(key) || input.blocked.has(key)) {
+      continue;
+    }
+
+    visited.add(key);
+    queue.push(
+      { x: current.x + 1, y: current.y },
+      { x: current.x - 1, y: current.y },
+      { x: current.x, y: current.y + 1 },
+      { x: current.x, y: current.y - 1 }
+    );
+  }
+
+  return visited;
+}
+
+function collectConnectedCellGroups(cells: Set<string>) {
+  const remaining = new Set(cells);
+  const groups: string[][] = [];
+
+  while (remaining.size > 0) {
+    const first = remaining.values().next().value;
+
+    if (!first) {
+      break;
+    }
+
+    const group: string[] = [];
+    const queue = [parseCellKey(first)];
+
+    remaining.delete(first);
+
+    while (queue.length > 0) {
+      const current = queue.shift();
+
+      if (!current) {
+        continue;
+      }
+
+      const key = cellKeyToString(current);
+      group.push(key);
+
+      for (const neighbor of getNeighborCellKeys(current)) {
+        const neighborKey = cellKeyToString(neighbor);
+
+        if (remaining.has(neighborKey)) {
+          remaining.delete(neighborKey);
+          queue.push(neighbor);
+        }
+      }
+    }
+
+    groups.push(group);
+  }
+
+  return groups;
+}
+
+function getCellGroupBoundsPolygon(cellIds: string[]) {
+  const centers = cellIds.map((cellId) => explorationCellKeyToCenterCoordinate(cellId));
+
+  if (centers.length === 0) {
+    return [];
+  }
+
+  const bounds = getCoordinateBounds(centers);
+
+  return [
+    { latitude: bounds.minLatitude, longitude: bounds.minLongitude },
+    { latitude: bounds.minLatitude, longitude: bounds.maxLongitude },
+    { latitude: bounds.maxLatitude, longitude: bounds.maxLongitude },
+    { latitude: bounds.maxLatitude, longitude: bounds.minLongitude }
+  ];
 }
 
 function isWalkableForMode(segment: OsmStreetSegment, activityMode: ActivityMode) {
@@ -283,54 +360,6 @@ function calculatePolygonAreaSquareMeters(points: ProjectedPoint[]) {
   }
 
   return Math.abs(area) / 2;
-}
-
-function hasSelfIntersection(points: ProjectedPoint[]) {
-  for (let firstIndex = 0; firstIndex < points.length; firstIndex += 1) {
-    const firstA = points[firstIndex];
-    const firstB = points[(firstIndex + 1) % points.length];
-
-    if (!firstA || !firstB) {
-      continue;
-    }
-
-    for (let secondIndex = firstIndex + 1; secondIndex < points.length; secondIndex += 1) {
-      if (Math.abs(firstIndex - secondIndex) <= 1) {
-        continue;
-      }
-
-      if (firstIndex === 0 && secondIndex === points.length - 1) {
-        continue;
-      }
-
-      const secondA = points[secondIndex];
-      const secondB = points[(secondIndex + 1) % points.length];
-
-      if (secondA && secondB && segmentsIntersect(firstA, firstB, secondA, secondB)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
-function segmentsIntersect(
-  a: ProjectedPoint,
-  b: ProjectedPoint,
-  c: ProjectedPoint,
-  d: ProjectedPoint
-) {
-  const directionA = orientation(a, b, c);
-  const directionB = orientation(a, b, d);
-  const directionC = orientation(c, d, a);
-  const directionD = orientation(c, d, b);
-
-  return directionA * directionB < 0 && directionC * directionD < 0;
-}
-
-function orientation(a: ProjectedPoint, b: ProjectedPoint, c: ProjectedPoint) {
-  return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 }
 
 function pointInPolygon(point: ProjectedPoint, polygon: ProjectedPoint[]) {
@@ -381,20 +410,6 @@ function calculateCoordinatePathDistance(points: MapCoordinate[]) {
   }, 0);
 }
 
-function calculateElapsedSeconds(points: GpsPoint[]) {
-  const first = points[0];
-  const last = points.at(-1);
-
-  if (!first || !last) {
-    return 0;
-  }
-
-  return Math.max(
-    0,
-    (new Date(last.timestamp).getTime() - new Date(first.timestamp).getTime()) / 1000
-  );
-}
-
 function getPolylineMidpoint(points: MapCoordinate[]) {
   return points[Math.floor(points.length / 2)] ?? null;
 }
@@ -441,11 +456,24 @@ function parseCellKey(cellKey: string) {
   };
 }
 
-function toCoordinate(point: GpsPoint): MapCoordinate {
-  return {
-    latitude: point.latitude,
-    longitude: point.longitude
-  };
+function cellKeyToString(key: CellKey) {
+  return `${key.x}:${key.y}`;
+}
+
+function getNeighborCellKeys(key: CellKey) {
+  return [
+    { x: key.x + 1, y: key.y },
+    { x: key.x - 1, y: key.y },
+    { x: key.x, y: key.y + 1 },
+    { x: key.x, y: key.y - 1 }
+  ];
+}
+
+function isInsideBounds(
+  key: CellKey,
+  bounds: { maxX: number; maxY: number; minX: number; minY: number }
+) {
+  return key.x >= bounds.minX && key.x <= bounds.maxX && key.y >= bounds.minY && key.y <= bounds.maxY;
 }
 
 function toGpsPoint(coordinate: MapCoordinate): GpsPoint {

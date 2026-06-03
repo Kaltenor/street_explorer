@@ -1,5 +1,117 @@
 # Changelog
 
+## v0.3.17
+
+Changed:
+
+- Explored-area outline now traces continuous contour paths.
+- Outline corners are geometrically rounded with curve points instead of relying on line join styling.
+
+## v0.3.16
+
+Changed:
+
+- Explored-area outline now uses rounded caps and joins for a softer edge.
+
+## v0.3.15
+
+Changed:
+
+- Explored-area outside outline is now much darker and thicker.
+
+## v0.3.14
+
+Changed:
+
+- Explored cells now render as green fill without internal borders.
+- Added a thin dark outline only around the outside edge of the explored area.
+- Adjacent explored cells should read more like one continuous explored shape.
+
+## v0.3.13
+
+Added:
+
+- Path display scope control: Today, 7 days, All, and Selected.
+- Completion objective selection from the Completion screen.
+- Objective HUD on the map showing selected zone and completion percentage.
+
+Notes:
+
+- Raw recordings and GPS points are still preserved; path scope only changes what is drawn on the map.
+
+## v0.3.12
+
+Changed:
+
+- Reprocess now analyzes the whole current mode's explored-cell map instead of each recording separately.
+- Stop Walk also refreshes global loop fills for the current mode.
+- Loop-fill cells can now come from boundaries created across multiple recordings.
+- Global loop fills are stored separately from individual recording loop summaries.
+
+## v0.3.11
+
+Changed:
+
+- Loop-fill detection now uses a one-cell expanded boundary to close tiny GPS/cell sampling gaps.
+- Maximum loop-fill area is reduced to about 150,000m2.
+- Valid enclosed areas should fill more reliably when they look closed on the map.
+
+## v0.3.10
+
+Changed:
+
+- Auto-follow/auto-fit pauses when the user touches or pans the map during recording.
+- The center-on-me button resumes auto-follow and is highlighted while auto-follow is active.
+- Fit-all-paths now leaves auto-follow paused so the user can inspect the map.
+
+## v0.3.9
+
+Changed:
+
+- Loop fill now uses enclosed explored cells instead of GPS point proximity loops.
+- Straight walks should no longer generate many false loop detections.
+- Multiple loop fills are now counted from connected enclosed cell groups.
+- Visually closed cell boundaries can fill even when the raw GPS polygon is imperfect.
+
+## v0.3.8
+
+Changed:
+
+- Loop detection can now find multiple loops inside one recording.
+- Loop closing is more tolerant for real GPS traces.
+- Self-intersection no longer rejects loop fill in V1.
+- Loop fill thresholds are more gameplay-oriented: 80m minimum loop distance, 120m2 minimum area, no minimum duration.
+- History now summarizes filled and rejected loop counts per recording.
+
+## v0.3.7
+
+Changed:
+
+- Loop fill now prioritizes gameplay: valid GPS loops fill by default.
+- OSM street analysis is kept as metadata and no longer blocks loop fills.
+- Loop fill thresholds are more forgiving: 500m2 minimum area and 30s minimum elapsed time.
+
+## v0.3.6
+
+Added:
+
+- Reprocess recordings action under Show details.
+- Saved recordings can now rebuild explored cells and loop-fill results using the current rules.
+- Reprocess summary reports filled loops, rejected loops, recordings without loops, and added loop cells.
+
+## v0.3.5
+
+Changed:
+
+- Loop-filled cells now render exactly like directly walked explored cells.
+- Explored cells are merged into larger rectangular polygons before rendering to reduce map load.
+- Closed-loop detection is more tolerant for real GPS walks with a 35m close threshold.
+
+Added:
+
+- Stop-walk loop result alert showing filled, rejected, or not detected.
+- History detail loop summary with loop-filled cell count and rejection reason.
+
 ## v0.3.4
 
 Removed:

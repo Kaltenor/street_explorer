@@ -22,9 +22,15 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 
 type CompletionMode = ActivityMode | "all";
 
+export type CompletionObjective = {
+  mode: CompletionMode;
+  zone: CachedZone;
+};
+
 type CompletionModalProps = {
   currentLocation: GpsPoint | null;
   onFocusZone: (zone: CachedZone) => void;
+  onSetObjective: (objective: CompletionObjective) => void;
   visible: boolean;
   onClose: () => void;
 };
@@ -45,6 +51,7 @@ export function CompletionModal({
   currentLocation,
   onClose,
   onFocusZone,
+  onSetObjective,
   visible
 }: CompletionModalProps) {
   const [mode, setMode] = useState<CompletionMode>("all");
@@ -263,6 +270,14 @@ export function CompletionModal({
               >
                 <Ionicons name="scan" size={16} color="#0f172a" />
                 <Text style={styles.focusButtonText}>Focus on map</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={() => onSetObjective({ mode, zone: selectedZone })}
+                style={styles.focusButton}
+              >
+                <Ionicons name="flag-outline" size={16} color="#0f172a" />
+                <Text style={styles.focusButtonText}>Set objective</Text>
               </TouchableOpacity>
               </>
             ) : null}

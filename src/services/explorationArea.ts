@@ -21,6 +21,16 @@ export type ExplorationCell = {
   source: ExplorationCellSource;
 };
 
+export type ExplorationPolygon = {
+  coordinates: MapCoordinate[];
+  id: string;
+};
+
+export type ExplorationOutlineSegment = {
+  coordinates: MapCoordinate[];
+  id: string;
+};
+
 type MercatorPoint = {
   x: number;
   y: number;
@@ -29,6 +39,11 @@ type MercatorPoint = {
 type CellKey = {
   x: number;
   y: number;
+};
+
+type GridEdge = {
+  from: CellKey;
+  to: CellKey;
 };
 
 export function buildExplorationCells(
@@ -46,6 +61,113 @@ export function buildExplorationCells(
       .filter((key) => !cellKeys.has(key))
       .map((key) => buildExplorationCell(key, "loop_fill"))
   ];
+}
+
+export function buildMergedExplorationPolygons(cells: ExplorationCell[]): ExplorationPolygon[] {
+  const rowIntervals = new Map<number, Array<{ endX: number; startX: number }>>();
+
+  for (const cell of cells) {
+    const key = stringToCellKey(cell.id);
+    const intervals = rowIntervals.get(key.y) ?? [];
+    const previous = intervals.at(-1);
+
+    if (previous && previous.endX + 1 === key.x) {
+      previous.endX = key.x;
+    } else {
+      intervals.push({ endX: key.x, startX: key.x });
+    }
+
+    rowIntervals.set(key.y, intervals);
+  }
+
+  for (const [row, intervals] of rowIntervals) {
+    intervals.sort((left, right) => left.startX - right.startX);
+    rowIntervals.set(row, mergeRowIntervals(intervals));
+  }
+
+  const activeRectangles = new Map<string, { endX: number; endY: number; startX: number; startY: number }>();
+  const rectangles: Array<{ endX: number; endY: number; startX: number; startY: number }> = [];
+  const sortedRows = [...rowIntervals.keys()].sort((left, right) => left - right);
+
+  for (const row of sortedRows) {
+    const intervals = rowIntervals.get(row) ?? [];
+    const currentKeys = new Set<string>();
+
+    for (const interval of intervals) {
+      const key = `${interval.startX}:${interval.endX}`;
+      const existing = activeRectangles.get(key);
+
+      currentKeys.add(key);
+
+      if (existing && existing.endY + 1 === row) {
+        existing.endY = row;
+      } else {
+        if (existing) {
+          rectangles.push(existing);
+        }
+
+        activeRectangles.set(key, {
+          endX: interval.endX,
+          endY: row,
+          startX: interval.startX,
+          startY: row
+        });
+      }
+    }
+
+    for (const [key, rectangle] of [...activeRectangles.entries()]) {
+      if (!currentKeys.has(key) && rectangle.endY < row) {
+        rectangles.push(rectangle);
+        activeRectangles.delete(key);
+      }
+    }
+  }
+
+  rectangles.push(...activeRectangles.values());
+
+  return rectangles.map((rectangle) => buildExplorationRectangle(rectangle));
+}
+
+export function buildExplorationOutlineSegments(cells: ExplorationCell[]): ExplorationOutlineSegment[] {
+  const cellKeys = new Set(cells.map((cell) => cell.id));
+  const edges: GridEdge[] = [];
+
+  for (const cell of cells) {
+    const key = stringToCellKey(cell.id);
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y - 1 }))) {
+      edges.push({
+        from: { x: key.x, y: key.y },
+        to: { x: key.x + 1, y: key.y }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y + 1 }))) {
+      edges.push({
+        from: { x: key.x + 1, y: key.y + 1 },
+        to: { x: key.x, y: key.y + 1 }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x - 1, y: key.y }))) {
+      edges.push({
+        from: { x: key.x, y: key.y + 1 },
+        to: { x: key.x, y: key.y }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x + 1, y: key.y }))) {
+      edges.push({
+        from: { x: key.x + 1, y: key.y },
+        to: { x: key.x + 1, y: key.y + 1 }
+      });
+    }
+  }
+
+  return traceGridOutlinePaths(edges).map((path, index) => ({
+    coordinates: roundGridPathCorners(path).map(gridPointToCoordinate),
+    id: `outline:${index}`
+  }));
 }
 
 export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
@@ -208,6 +330,179 @@ export function buildExplorationCell(
     ],
     source
   };
+}
+
+function buildExplorationRectangle(rectangle: {
+  endX: number;
+  endY: number;
+  startX: number;
+  startY: number;
+}): ExplorationPolygon {
+  const minX = rectangle.startX * EXPLORATION_CELL_SIZE_METERS;
+  const minY = rectangle.startY * EXPLORATION_CELL_SIZE_METERS;
+  const maxX = (rectangle.endX + 1) * EXPLORATION_CELL_SIZE_METERS;
+  const maxY = (rectangle.endY + 1) * EXPLORATION_CELL_SIZE_METERS;
+
+  return {
+    coordinates: [
+      mercatorToCoordinate({ x: minX, y: minY }),
+      mercatorToCoordinate({ x: maxX, y: minY }),
+      mercatorToCoordinate({ x: maxX, y: maxY }),
+      mercatorToCoordinate({ x: minX, y: maxY })
+    ],
+    id: `${rectangle.startX}:${rectangle.startY}:${rectangle.endX}:${rectangle.endY}`
+  };
+}
+
+function mergeRowIntervals(intervals: Array<{ endX: number; startX: number }>) {
+  const merged: Array<{ endX: number; startX: number }> = [];
+
+  for (const interval of intervals) {
+    const previous = merged.at(-1);
+
+    if (previous && previous.endX + 1 >= interval.startX) {
+      previous.endX = Math.max(previous.endX, interval.endX);
+    } else {
+      merged.push({ ...interval });
+    }
+  }
+
+  return merged;
+}
+
+function traceGridOutlinePaths(edges: GridEdge[]) {
+  const edgesByStart = new Map<string, GridEdge[]>();
+  const unused = new Set(edges.map(gridEdgeToString));
+  const paths: CellKey[][] = [];
+
+  for (const edge of edges) {
+    const key = cellKeyToString(edge.from);
+    const bucket = edgesByStart.get(key) ?? [];
+
+    bucket.push(edge);
+    edgesByStart.set(key, bucket);
+  }
+
+  for (const edge of edges) {
+    const edgeKey = gridEdgeToString(edge);
+
+    if (!unused.has(edgeKey)) {
+      continue;
+    }
+
+    const path: CellKey[] = [edge.from];
+    const startPoint = edge.from;
+    let currentEdge: GridEdge | null = edge;
+
+    while (currentEdge) {
+      unused.delete(gridEdgeToString(currentEdge));
+      path.push(currentEdge.to);
+
+      if (cellKeyToString(currentEdge.to) === cellKeyToString(startPoint)) {
+        break;
+      }
+
+      const nextEdge: GridEdge | undefined = (edgesByStart.get(cellKeyToString(currentEdge.to)) ?? [])
+        .find((candidate) => unused.has(gridEdgeToString(candidate)));
+
+      currentEdge = nextEdge ?? null;
+    }
+
+    if (path.length > 2) {
+      paths.push(path);
+    }
+  }
+
+  return paths;
+}
+
+function roundGridPathCorners(path: CellKey[]) {
+  const closedPath = isSameCellKey(path[0], path.at(-1)) ? path.slice(0, -1) : path;
+
+  if (closedPath.length < 3) {
+    return path;
+  }
+
+  const rounded: Array<{ x: number; y: number }> = [];
+  const cornerRadius = 0.34;
+  const curveSteps = 4;
+
+  for (let index = 0; index < closedPath.length; index += 1) {
+    const previous = closedPath[(index - 1 + closedPath.length) % closedPath.length];
+    const current = closedPath[index];
+    const next = closedPath[(index + 1) % closedPath.length];
+
+    if (!previous || !current || !next) {
+      continue;
+    }
+
+    const incoming = normalizeGridVector({
+      x: previous.x - current.x,
+      y: previous.y - current.y
+    });
+    const outgoing = normalizeGridVector({
+      x: next.x - current.x,
+      y: next.y - current.y
+    });
+
+    if (incoming.x === -outgoing.x && incoming.y === -outgoing.y) {
+      rounded.push(current);
+      continue;
+    }
+
+    const curveStart = {
+      x: current.x + incoming.x * cornerRadius,
+      y: current.y + incoming.y * cornerRadius
+    };
+    const curveEnd = {
+      x: current.x + outgoing.x * cornerRadius,
+      y: current.y + outgoing.y * cornerRadius
+    };
+
+    rounded.push(curveStart);
+
+    for (let step = 1; step <= curveSteps; step += 1) {
+      const t = step / curveSteps;
+      const inverse = 1 - t;
+
+      rounded.push({
+        x: inverse * inverse * curveStart.x + 2 * inverse * t * current.x + t * t * curveEnd.x,
+        y: inverse * inverse * curveStart.y + 2 * inverse * t * current.y + t * t * curveEnd.y
+      });
+    }
+  }
+
+  const first = rounded[0];
+
+  if (first) {
+    rounded.push(first);
+  }
+
+  return rounded;
+}
+
+function gridPointToCoordinate(point: { x: number; y: number }) {
+  return mercatorToCoordinate({
+    x: point.x * EXPLORATION_CELL_SIZE_METERS,
+    y: point.y * EXPLORATION_CELL_SIZE_METERS
+  });
+}
+
+function normalizeGridVector(vector: { x: number; y: number }) {
+  const length = Math.max(1, Math.hypot(vector.x, vector.y));
+
+  return {
+    x: vector.x / length,
+    y: vector.y / length
+  };
+}
+
+function gridEdgeToString(edge: GridEdge) {
+  return `${cellKeyToString(edge.from)}>${cellKeyToString(edge.to)}`;
+}
+
+function isSameCellKey(first: CellKey | undefined, second: CellKey | undefined) {
+  return Boolean(first && second && first.x === second.x && first.y === second.y);
 }
 
 export function coordinateToExplorationCellKey(point: Pick<MapCoordinate, "latitude" | "longitude">) {

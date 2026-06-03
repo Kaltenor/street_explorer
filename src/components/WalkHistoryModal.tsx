@@ -11,11 +11,13 @@ import {
 } from "react-native";
 
 import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
+import { LoopFillSessionSummary } from "../database/completionRepository";
 import { formatDistance, formatDuration } from "../services/distance";
 import { ActivityMode, WalkSession } from "../types/walk";
 
 type WalkHistoryModalProps = {
   activityMode: ActivityMode;
+  loopFillSummaries: Record<number, LoopFillSessionSummary>;
   visible: boolean;
   walks: WalkSession[];
   selectedSessionId: number | null;
@@ -30,6 +32,7 @@ type WalkHistoryModalProps = {
 
 export function WalkHistoryModal({
   activityMode,
+  loopFillSummaries,
   visible,
   walks,
   selectedSessionId,
@@ -82,6 +85,7 @@ export function WalkHistoryModal({
             onUpdateDraftName={(value) =>
               setDraftNames((current) => ({ ...current, [detailWalk.id]: value }))
             }
+            loopFillSummary={loopFillSummaries[detailWalk.id] ?? null}
             walk={detailWalk}
           />
         ) : (
@@ -170,9 +174,11 @@ function RecordingDetail({
   onExportWalkGpx,
   onFocusWalk,
   onRenameWalk,
-  onUpdateDraftName
+  onUpdateDraftName,
+  loopFillSummary
 }: {
   draftName: string;
+  loopFillSummary: LoopFillSessionSummary | null;
   walk: WalkSession;
   onBack: () => void;
   onDeleteWalk: (sessionId: number) => void;
@@ -196,12 +202,15 @@ function RecordingDetail({
           <Summary label="Distance" value={formatDistance(walk.distanceMeters)} />
           <Summary label="Duration" value={formatDuration(walk.durationSeconds)} />
           <Summary label="Points" value={(walk.pointCount ?? 0).toString()} />
+          <Summary label="Loops" value={formatLoopCount(loopFillSummary)} />
+          <Summary label="Loop cells" value={String(loopFillSummary?.loopFilledCellCount ?? 0)} />
           <Summary label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
         </View>
 
         <View style={styles.details}>
           <Detail label="Started" value={formatFullDate(walk.startedAt)} />
           <Detail label="Ended" value={formatFullDate(walk.endedAt)} />
+          <Detail label="Loop result" value={formatLoopSummary(loopFillSummary)} />
         </View>
 
         <TextInput
@@ -269,6 +278,54 @@ function Detail({ label, value }: { label: string; value: string }) {
       <Text style={styles.detailValue}>{value}</Text>
     </View>
   );
+}
+
+function formatLoopSummary(summary: LoopFillSessionSummary | null) {
+  if (!summary) {
+    return "No loop detected";
+  }
+
+  if (summary.accepted) {
+    const rejectedText =
+      summary.rejectedLoopCount > 0 ? `, ${summary.rejectedLoopCount} rejected` : "";
+
+    return `${summary.filledLoopCount} filled${rejectedText}, ${summary.loopFilledCellCount} cells`;
+  }
+
+  return formatLoopRejectionReason(summary.rejectionReason);
+}
+
+function formatLoopCount(summary: LoopFillSessionSummary | null) {
+  if (!summary) {
+    return "0";
+  }
+
+  return `${summary.filledLoopCount}/${summary.filledLoopCount + summary.rejectedLoopCount}`;
+}
+
+function formatLoopRejectionReason(reason: string | null) {
+  if (reason?.includes(",")) {
+    return `Rejected: ${reason.split(",").map(formatLoopRejectionLabel).join(", ")}`;
+  }
+
+  return `Rejected: ${formatLoopRejectionLabel(reason)}`;
+}
+
+function formatLoopRejectionLabel(reason: string | null) {
+  switch (reason) {
+    case "loop_area_too_large":
+      return "area too large";
+    case "loop_area_too_small":
+      return "area too small";
+    case "loop_distance_too_short":
+      return "distance too short";
+    case "loop_duration_too_short":
+      return "duration too short";
+    case "not_closed_enough":
+      return "not closed enough";
+    default:
+      return "unknown";
+  }
 }
 
 function formatDate(value: string) {

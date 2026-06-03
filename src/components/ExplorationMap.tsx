@@ -1,11 +1,15 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
-import { buildExplorationCells } from "../services/explorationArea";
+import {
+  buildExplorationCells,
+  buildExplorationOutlineSegments,
+  buildMergedExplorationPolygons
+} from "../services/explorationArea";
 import { buildPathSegmentsWithInference } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
@@ -51,8 +55,11 @@ export function ExplorationMap({
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
+  const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const region = getInitialRegion(currentLocation, walks, activePoints);
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
+  const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
+  const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -72,7 +79,12 @@ export function ExplorationMap({
   }, [currentLocation]);
 
   useEffect(() => {
-    if (activePoints.length < 2) {
+    if (activePoints.length === 0) {
+      setIsAutoFollowEnabled(true);
+      return;
+    }
+
+    if (activePoints.length < 2 || !isAutoFollowEnabled) {
       return;
     }
 
@@ -82,7 +94,7 @@ export function ExplorationMap({
       right: 48,
       top: 190
     });
-  }, [activePoints]);
+  }, [activePoints, isAutoFollowEnabled]);
 
   useEffect(() => {
     if (!highlightedSessionId) {
@@ -126,6 +138,8 @@ export function ExplorationMap({
       return;
     }
 
+    setIsAutoFollowEnabled(true);
+
     mapRef.current?.animateToRegion(
       {
         latitude: currentLocation.latitude,
@@ -138,6 +152,8 @@ export function ExplorationMap({
   };
 
   const fitToVisiblePaths = () => {
+    setIsAutoFollowEnabled(false);
+
     const coordinates = getAllPathPoints(walks, activePoints).map(pointToCoordinate);
 
     if (coordinates.length === 0) {
@@ -172,6 +188,8 @@ export function ExplorationMap({
         ref={mapRef}
         style={styles.map}
         initialRegion={region}
+        onPanDrag={() => setIsAutoFollowEnabled(false)}
+        onTouchStart={() => setIsAutoFollowEnabled(false)}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -181,13 +199,24 @@ export function ExplorationMap({
         zoomEnabled
         followsUserLocation={false}
       >
-        {layers.showExploredCells ? explorationCells.map((cell) => (
+        {layers.showExploredCells ? explorationPolygons.map((polygon) => (
           <Polygon
-            key={cell.id}
-            coordinates={cell.coordinates}
-            fillColor={cell.source === "loop_fill" ? "rgba(59, 130, 246, 0.18)" : "rgba(34, 197, 94, 0.24)"}
-            strokeColor={cell.source === "loop_fill" ? "rgba(37, 99, 235, 0.24)" : "rgba(22, 163, 74, 0.28)"}
-            strokeWidth={1}
+            key={polygon.id}
+            coordinates={polygon.coordinates}
+            fillColor="rgba(34, 197, 94, 0.24)"
+            strokeColor="rgba(34, 197, 94, 0)"
+            strokeWidth={0}
+          />
+        )) : null}
+
+        {layers.showExploredCells ? explorationOutlineSegments.map((segment) => (
+          <Polyline
+            coordinates={segment.coordinates}
+            key={`outline-${segment.id}`}
+            lineCap="round"
+            lineJoin="round"
+            strokeColor="rgba(0, 0, 0, 0.9)"
+            strokeWidth={3}
           />
         )) : null}
 
@@ -284,9 +313,13 @@ export function ExplorationMap({
           accessibilityRole="button"
           disabled={!currentLocation}
           onPress={centerOnCurrentLocation}
-          style={[styles.controlButton, !currentLocation ? styles.disabledButton : null]}
+          style={[
+            styles.controlButton,
+            isAutoFollowEnabled ? styles.activeControlButton : null,
+            !currentLocation ? styles.disabledButton : null
+          ]}
         >
-          <Ionicons name="locate" size={22} color="#0f172a" />
+          <Ionicons name="locate" size={22} color={isAutoFollowEnabled ? "#ffffff" : "#0f172a"} />
         </TouchableOpacity>
         <TouchableOpacity
           accessibilityLabel="Fit all paths"
@@ -416,6 +449,10 @@ function formatMarkerDate(value: string) {
 }
 
 const styles = StyleSheet.create({
+  activeControlButton: {
+    backgroundColor: "#2563eb",
+    borderColor: "#2563eb"
+  },
   container: {
     ...StyleSheet.absoluteFillObject
   },
