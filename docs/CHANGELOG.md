@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.2
+
+Fixed:
+
+- Rejected GPS gaps now render as thin dashed amber connectors so old recordings do not look broken.
+- GPS gap connectors remain visually distinct from confirmed paths and do not mark explored cells.
+
 ## v0.1.1
 
 Fixed:

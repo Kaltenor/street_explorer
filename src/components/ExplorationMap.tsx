@@ -281,7 +281,20 @@ function PathSegmentLines({
     <>
       {buildPathSegments(points, activityMode).map((segment, index) => {
         if (segment.type === "rejected") {
-          return null;
+          return (
+            <Polyline
+              coordinates={[
+                pointToCoordinate(segment.startPoint),
+                pointToCoordinate(segment.endPoint)
+              ]}
+              key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
+              lineCap="round"
+              lineDashPattern={[3, 8]}
+              lineJoin="round"
+              strokeColor={isDimmed ? "rgba(180, 83, 9, 0.25)" : "rgba(180, 83, 9, 0.62)"}
+              strokeWidth={isHighlighted ? 5 : 3}
+            />
+          );
         }
 
         const isInferred = segment.type === "inferred";
