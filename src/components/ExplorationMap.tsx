@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
@@ -52,12 +52,11 @@ export function ExplorationMap({
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
   const region = getInitialRegion(currentLocation, walks, activePoints);
+  const [visibleRegion, setVisibleRegion] = useState<Region>(region);
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
   const fogCells = buildFogCells({
-    activePoints,
-    currentLocation,
     explorationCells,
-    walks
+    visibleRegion
   });
 
   useEffect(() => {
@@ -178,6 +177,7 @@ export function ExplorationMap({
         ref={mapRef}
         style={styles.map}
         initialRegion={region}
+        onRegionChangeComplete={setVisibleRegion}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -191,9 +191,9 @@ export function ExplorationMap({
           ? fogCells.map((cell) => (
               <Polygon
                 coordinates={cell.coordinates}
-                fillColor="rgba(15, 23, 42, 0.78)"
+                fillColor={`rgba(15, 23, 42, ${cell.opacity})`}
                 key={`fog-${cell.id}`}
-                strokeColor="rgba(15, 23, 42, 0.48)"
+                strokeColor={`rgba(15, 23, 42, ${Math.max(0.18, cell.opacity - 0.18)})`}
                 strokeWidth={0.5}
               />
             ))

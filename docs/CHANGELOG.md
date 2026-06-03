@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.3
+
+Changed:
+
+- Fog of War now renders only the visible map viewport plus a small buffer.
+- Added faded edge fog tiles for a softer visual boundary.
+- Reduced fog render load to avoid map instability from large-radius fog.
+
 ## v0.3.2
 
 Changed:

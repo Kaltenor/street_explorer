@@ -90,6 +90,7 @@ Confirm each layer appears or disappears.
 3. Confirm recorded/explored areas remain visible through cleared fog tiles.
 4. Open Show details and toggle Fog off.
 5. Confirm the map returns to the normal Apple map view.
+6. Pan and zoom the map and confirm fog refreshes without freezing the app.
 
 ## OpenStreetMap Debug Matching Test
 

@@ -24,6 +24,7 @@ export type ExplorationCell = {
 export type FogCell = {
   id: string;
   coordinates: MapCoordinate[];
+  opacity: number;
 };
 
 type MercatorPoint = {
@@ -36,9 +37,9 @@ type CellKey = {
   y: number;
 };
 
-const FOG_CELL_SIZE_METERS = EXPLORATION_CELL_SIZE_METERS * 16;
-const FOG_RADIUS_AROUND_PLAYER_METERS = 10000;
-const MAX_FOG_CELLS = 7600;
+const FOG_CELL_SIZE_METERS = EXPLORATION_CELL_SIZE_METERS * 8;
+const FOG_VIEWPORT_PADDING_FACTOR = 0.18;
+const MAX_FOG_CELLS = 900;
 
 export function buildExplorationCells(
   walks: WalkWithPoints[],
@@ -58,10 +59,13 @@ export function buildExplorationCells(
 }
 
 export function buildFogCells(input: {
-  activePoints: GpsPoint[];
-  currentLocation: GpsPoint | null;
   explorationCells: ExplorationCell[];
-  walks: WalkWithPoints[];
+  visibleRegion: {
+    latitude: number;
+    latitudeDelta: number;
+    longitude: number;
+    longitudeDelta: number;
+  };
 }) {
   const bounds = getFogBounds(input);
 
@@ -87,7 +91,7 @@ export function buildFogCells(input: {
       const key = fogCellKeyToString({ x, y });
 
       if (!exploredFogKeys.has(key)) {
-        fogCells.push(buildFogCell({ x, y }));
+        fogCells.push(buildFogCell({ x, y }, getFogCellOpacity({ x, y }, range)));
       }
     }
   }
@@ -257,7 +261,7 @@ export function buildExplorationCell(
   };
 }
 
-function buildFogCell(key: CellKey): FogCell {
+function buildFogCell(key: CellKey, opacity: number): FogCell {
   const minX = key.x * FOG_CELL_SIZE_METERS;
   const minY = key.y * FOG_CELL_SIZE_METERS;
   const maxX = minX + FOG_CELL_SIZE_METERS;
@@ -270,33 +274,35 @@ function buildFogCell(key: CellKey): FogCell {
       mercatorToCoordinate({ x: maxX, y: maxY }),
       mercatorToCoordinate({ x: minX, y: maxY })
     ],
-    id: fogCellKeyToString(key)
+    id: fogCellKeyToString(key),
+    opacity
   };
 }
 
 function getFogBounds(input: {
-  activePoints: GpsPoint[];
-  currentLocation: GpsPoint | null;
-  walks: WalkWithPoints[];
+  visibleRegion: {
+    latitude: number;
+    latitudeDelta: number;
+    longitude: number;
+    longitudeDelta: number;
+  };
 }) {
-  const points = [
-    ...input.walks.flatMap((walk) => walk.points),
-    ...input.activePoints,
-    ...(input.currentLocation ? [input.currentLocation] : [])
-  ];
-  const centerPoint = input.currentLocation ?? points[0];
-
-  if (!centerPoint) {
-    return null;
-  }
-
-  const center = coordinateToMercator(centerPoint);
+  const latitudePadding = input.visibleRegion.latitudeDelta * FOG_VIEWPORT_PADDING_FACTOR;
+  const longitudePadding = input.visibleRegion.longitudeDelta * FOG_VIEWPORT_PADDING_FACTOR;
+  const northWest = coordinateToMercator({
+    latitude: input.visibleRegion.latitude + input.visibleRegion.latitudeDelta / 2 + latitudePadding,
+    longitude: input.visibleRegion.longitude - input.visibleRegion.longitudeDelta / 2 - longitudePadding
+  });
+  const southEast = coordinateToMercator({
+    latitude: input.visibleRegion.latitude - input.visibleRegion.latitudeDelta / 2 - latitudePadding,
+    longitude: input.visibleRegion.longitude + input.visibleRegion.longitudeDelta / 2 + longitudePadding
+  });
 
   return {
-    maxX: center.x + FOG_RADIUS_AROUND_PLAYER_METERS,
-    maxY: center.y + FOG_RADIUS_AROUND_PLAYER_METERS,
-    minX: center.x - FOG_RADIUS_AROUND_PLAYER_METERS,
-    minY: center.y - FOG_RADIUS_AROUND_PLAYER_METERS
+    maxX: Math.max(northWest.x, southEast.x),
+    maxY: Math.max(northWest.y, southEast.y),
+    minX: Math.min(northWest.x, southEast.x),
+    minY: Math.min(northWest.y, southEast.y)
   };
 }
 
@@ -323,6 +329,25 @@ function clampFogRange(range: { maxX: number; maxY: number; minX: number; minY: 
     minX: centerX - halfWidth,
     minY: centerY - halfHeight
   };
+}
+
+function getFogCellOpacity(key: CellKey, range: { maxX: number; maxY: number; minX: number; minY: number }) {
+  const edgeDistance = Math.min(
+    key.x - range.minX,
+    range.maxX - key.x,
+    key.y - range.minY,
+    range.maxY - key.y
+  );
+
+  if (edgeDistance <= 0) {
+    return 0.28;
+  }
+
+  if (edgeDistance === 1) {
+    return 0.52;
+  }
+
+  return 0.72;
 }
 
 function getCellApproximateCenter(coordinates: MapCoordinate[]) {
