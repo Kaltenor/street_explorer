@@ -10,16 +10,16 @@ const MODE_PATH_GAP_CONFIG: Record<
   }
 > = {
   walk: {
-    maxConfirmedStraightLineMeters: 90,
-    maxUninferredGapSeconds: 90
+    maxConfirmedStraightLineMeters: 300,
+    maxUninferredGapSeconds: 180
   },
   wheel: {
-    maxConfirmedStraightLineMeters: 220,
-    maxUninferredGapSeconds: 75
+    maxConfirmedStraightLineMeters: 650,
+    maxUninferredGapSeconds: 150
   },
   car: {
-    maxConfirmedStraightLineMeters: 650,
-    maxUninferredGapSeconds: 60
+    maxConfirmedStraightLineMeters: 1800,
+    maxUninferredGapSeconds: 120
   }
 };
 
@@ -160,10 +160,6 @@ function getSuspiciousGapReason(
     seconds > gapConfig.maxUninferredGapSeconds
   ) {
     return `large GPS gap ${Math.round(distanceMeters)} m over ${Math.round(seconds)} s`;
-  }
-
-  if (distanceMeters > gapConfig.maxConfirmedStraightLineMeters) {
-    return `long unverified GPS segment ${Math.round(distanceMeters)} m`;
   }
 
   return null;

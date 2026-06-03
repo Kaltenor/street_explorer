@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.1
+
+Fixed:
+
+- Relaxed path gap rejection so older sparse-but-plausible GPS recordings do not show large missing sections.
+- Kept rejection for impossible speeds and large time-plus-distance GPS gaps.
+
 ## v0.1.0
 
 Initial MVP and exploration prototype.
