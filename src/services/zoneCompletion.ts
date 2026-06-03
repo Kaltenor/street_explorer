@@ -7,7 +7,9 @@ import {
   CachedZone,
   CompletionScope,
   ExploredCellRecord,
-  ExploredCellSource
+  ExploredCellSource,
+  getCachedZoneTotal,
+  saveCachedZoneTotal
 } from "../database/completionRepository";
 import { GpsPoint } from "../types/walk";
 
@@ -49,6 +51,7 @@ export type ZoneCompletionStats = {
   completionPercent: number | null;
   directlyWalkedCells: number;
   exploredCells: number;
+  inferredCells: number;
   loopFilledCells: number;
   totalZoneCells: number | null;
 };
@@ -98,19 +101,20 @@ export async function fetchNearbyOsmZonesWithDebug(
   };
 }
 
-export function calculateZoneCompletionStats(
+export async function calculateZoneCompletionStats(
   zone: CachedZone,
   exploredCells: ExploredCellRecord[]
-): ZoneCompletionStats {
+): Promise<ZoneCompletionStats> {
   const exploredInside = exploredCells.filter((cell) =>
-    isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone.geometry)
+    isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone)
   );
   const uniqueExplored = uniqueCellCount(exploredInside);
   const directlyWalkedCells = uniqueCellCount(
-    exploredInside.filter((cell) => cell.source === "gps" || cell.source === "inferred")
+    exploredInside.filter((cell) => cell.source === "gps")
   );
+  const inferredCells = uniqueCellCount(exploredInside.filter((cell) => cell.source === "inferred"));
   const loopFilledCells = uniqueCellCount(exploredInside.filter((cell) => cell.source === "loop_fill"));
-  const totalZoneCells = calculateTotalZoneCells(zone.geometry);
+  const totalZoneCells = await calculateTotalZoneCells(zone);
 
   return {
     completionPercent:
@@ -119,6 +123,7 @@ export function calculateZoneCompletionStats(
         : null,
     directlyWalkedCells,
     exploredCells: uniqueExplored,
+    inferredCells,
     loopFilledCells,
     totalZoneCells
   };
@@ -167,7 +172,8 @@ function mapRelationToZone(
 
     return {
       fetchedAt,
-      geometry: fallbackGeometry,
+    geometry: fallbackGeometry,
+      holes: [],
       id: `relation/${element.id}`,
       name,
       parentZoneId: null,
@@ -179,6 +185,7 @@ function mapRelationToZone(
   return {
     fetchedAt,
     geometry,
+    holes: extractRelationHoles(element),
     id: `relation/${element.id}`,
     name,
     parentZoneId: null,
@@ -215,6 +222,15 @@ function extractRelationGeometry(element: OverpassRelationElement) {
   }
 
   return buildFallbackBoundsGeometry(ways);
+}
+
+function extractRelationHoles(element: OverpassRelationElement) {
+  const ways = (element.members ?? [])
+    .filter((member) => member.type === "way" && member.role === "inner")
+    .map((member) => mapGeometryRing(member.geometry ?? []))
+    .filter((ring) => ring.length >= 2);
+
+  return assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
 }
 
 function mapGeometryRing(points: OverpassGeometryPoint[]) {
@@ -337,8 +353,14 @@ function buildBoundsGeometry(bounds: {
   ]];
 }
 
-function calculateTotalZoneCells(geometry: MapCoordinate[][]) {
-  const bounds = getGeometryBounds(geometry);
+async function calculateTotalZoneCells(zone: CachedZone) {
+  const cachedTotal = await getCachedZoneTotal(zone.id);
+
+  if (cachedTotal !== null) {
+    return cachedTotal;
+  }
+
+  const bounds = getGeometryBounds(zone.geometry);
 
   if (!bounds) {
     return null;
@@ -366,17 +388,22 @@ function calculateTotalZoneCells(geometry: MapCoordinate[][]) {
     for (let y = minY; y <= maxY; y += 1) {
       const center = explorationCellKeyToCenterCoordinate(`${x}:${y}`);
 
-      if (isPointInsideZone(center, geometry)) {
+      if (isPointInsideZone(center, zone)) {
         count += 1;
       }
     }
   }
 
+  await saveCachedZoneTotal(zone.id, count);
+
   return count;
 }
 
-function isPointInsideZone(point: MapCoordinate, geometry: MapCoordinate[][]) {
-  return geometry.some((ring) => pointInPolygon(point, ring));
+function isPointInsideZone(point: MapCoordinate, zone: CachedZone) {
+  const insideOuter = zone.geometry.some((ring) => pointInPolygon(point, ring));
+  const insideHole = zone.holes.some((ring) => pointInPolygon(point, ring));
+
+  return insideOuter && !insideHole;
 }
 
 function pointInPolygon(point: MapCoordinate, polygon: MapCoordinate[]) {

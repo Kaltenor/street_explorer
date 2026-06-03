@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.3.0
+
+Added:
+
+- Zone Completion polish with exact polygon vs approximate bounds labels.
+- Last fetched date on cached zones.
+- Clear cached zones action.
+- Cached zone cell totals for faster repeated Completion stats.
+- Inner boundary holes are excluded when OSM relation geometry provides them.
+- Street-aware path inference V1 using loaded OSM street segments.
+- Inferred exploration cells are saved separately from direct GPS cells.
+
+Notes:
+
+- Street inference only runs when nearby OSM streets are loaded.
+- Inferred paths are low confidence and still reject if no reliable street route is found.
+- Approximate boundary zones still avoid misleading exact wording.
+
 ## v0.2.3
 
 Fixed:

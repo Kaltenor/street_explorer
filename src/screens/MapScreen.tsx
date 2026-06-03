@@ -56,6 +56,7 @@ import {
   calculateExploredAreaSquareMeters,
   calculateExploredCellCount,
   calculateNewCellsForActivePath,
+  collectExploredCellIdsBySource,
   collectExploredCellIdsForPath
 } from "../services/explorationArea";
 import { analyzeLoopFill } from "../services/loopFill";
@@ -458,14 +459,22 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const processCompletedSession = useCallback(
     async (sessionId: number, mode: ActivityMode) => {
       const points = await getGpsPointsForSession(sessionId);
-      const directCellIds = collectExploredCellIdsForPath(points, mode);
+      const cellIdsBySource = collectExploredCellIdsBySource(points, mode, streetSegments);
 
       await saveExploredCells(
-        directCellIds.map((cellKey) => ({
+        cellIdsBySource.gps.map((cellKey) => ({
           cellKey,
           mode,
           sessionId,
           source: "gps"
+        }))
+      );
+      await saveExploredCells(
+        cellIdsBySource.inferred.map((cellKey) => ({
+          cellKey,
+          mode,
+          sessionId,
+          source: "inferred"
         }))
       );
 

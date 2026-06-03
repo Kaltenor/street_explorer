@@ -10,6 +10,7 @@ import {
   getExploredCellRecords,
   getCachedZones,
   getCompletionStats,
+  deleteCachedZones,
   upsertZones
 } from "../database/completionRepository";
 import {
@@ -31,6 +32,7 @@ type CompletionModalProps = {
 const EMPTY_STATS: CompletionStats = {
   directlyWalkedCells: 0,
   exploredCells: 0,
+  inferredCells: 0,
   loopFilledCells: 0,
   recordingCount: 0,
   walkedDistanceMeters: 0
@@ -98,14 +100,18 @@ export function CompletionModal({
     }
 
     getExploredCellRecords(mode)
-      .then((cells) => {
-        setZoneStats(calculateZoneCompletionStats(selectedZone, cells));
-        setCompletedZoneCount(
-          zones.filter((zone) => {
-            const completion = calculateZoneCompletionStats(zone, cells);
+      .then(async (cells) => {
+        const selectedStats = await calculateZoneCompletionStats(selectedZone, cells);
+        const zoneStatsList = await Promise.all(
+          zones.map((zone) => calculateZoneCompletionStats(zone, cells))
+        );
 
-            return completion.completionPercent !== null && completion.completionPercent >= 100;
-          }).length
+        setZoneStats(selectedStats);
+        setCompletedZoneCount(
+          zoneStatsList.filter(
+            (completion) =>
+              completion.completionPercent !== null && completion.completionPercent >= 100
+          ).length
         );
       })
       .catch((error) => console.warn("Failed to calculate zone completion", error));
@@ -135,6 +141,26 @@ export function CompletionModal({
     } finally {
       setIsRefreshingZones(false);
     }
+  };
+
+  const handleClearBoundaries = () => {
+    Alert.alert("Clear cached zones?", "This removes cached boundary zones, not recordings.", [
+      {
+        text: "Cancel",
+        style: "cancel"
+      },
+      {
+        text: "Clear",
+        style: "destructive",
+        onPress: async () => {
+          await deleteCachedZones();
+          setZones([]);
+          setSelectedZoneId(null);
+          setZoneStats(null);
+          setCompletedZoneCount(0);
+        }
+      }
+    ]);
   };
 
   return (
@@ -180,6 +206,14 @@ export function CompletionModal({
                   {isRefreshingZones ? "Loading" : "Refresh"}
                 </Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={handleClearBoundaries}
+                style={styles.smallButton}
+              >
+                <Ionicons name="trash-outline" size={15} color="#0f172a" />
+                <Text style={styles.smallButtonText}>Clear</Text>
+              </TouchableOpacity>
             </View>
             {zones.length > 0 ? (
               <View style={styles.zoneList}>
@@ -201,6 +235,14 @@ export function CompletionModal({
                     >
                       {zone.name}
                     </Text>
+                    <Text
+                      style={[
+                        styles.zoneMetaText,
+                        selectedZone?.id === zone.id ? styles.selectedZoneMetaText : null
+                      ]}
+                    >
+                      {formatZoneSource(zone)} | {formatFetchedAt(zone.fetchedAt)}
+                    </Text>
                   </TouchableOpacity>
                 ))}
               </View>
@@ -210,6 +252,10 @@ export function CompletionModal({
               </Text>
             )}
             {selectedZone ? (
+              <>
+                <Text style={styles.zoneNotice}>
+                  {getZoneNotice(selectedZone)}
+                </Text>
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={() => onFocusZone(selectedZone)}
@@ -218,6 +264,7 @@ export function CompletionModal({
                 <Ionicons name="scan" size={16} color="#0f172a" />
                 <Text style={styles.focusButtonText}>Focus on map</Text>
               </TouchableOpacity>
+              </>
             ) : null}
           </View>
 
@@ -226,6 +273,7 @@ export function CompletionModal({
             <Stat label="Zone cells" value={formatZoneCells(zoneStats)} />
             <Stat label="Explored cells" value={String(zoneStats?.exploredCells ?? stats.exploredCells)} />
             <Stat label="Direct GPS" value={String(zoneStats?.directlyWalkedCells ?? stats.directlyWalkedCells)} />
+            <Stat label="Inferred" value={String(zoneStats?.inferredCells ?? stats.inferredCells)} />
             <Stat label="Loop-filled" value={String(zoneStats?.loopFilledCells ?? stats.loopFilledCells)} />
             <Stat label="Distance" value={formatDistance(stats.walkedDistanceMeters)} />
             <Stat label="Recordings" value={String(stats.recordingCount)} />
@@ -318,6 +366,27 @@ function formatZoneCells(stats: ZoneCompletionStats | null) {
   return String(stats.totalZoneCells);
 }
 
+function formatZoneSource(zone: CachedZone) {
+  return zone.source.includes("fallback") ? "Approx bounds" : "Exact polygon";
+}
+
+function getZoneNotice(zone: CachedZone) {
+  if (zone.source.includes("fallback")) {
+    return "Completion is approximate: this zone is using OSM bounds because the exact polygon could not be assembled yet.";
+  }
+
+  return zone.holes.length > 0
+    ? "Exact polygon with inner holes excluded from completion."
+    : "Exact polygon from OSM boundary geometry.";
+}
+
+function formatFetchedAt(value: string) {
+  return new Intl.DateTimeFormat(undefined, {
+    day: "2-digit",
+    month: "short"
+  }).format(new Date(value));
+}
+
 function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
@@ -390,6 +459,7 @@ const styles = StyleSheet.create({
   panelHeader: {
     alignItems: "center",
     flexDirection: "row",
+    gap: 8,
     justifyContent: "space-between"
   },
   screen: {
@@ -409,6 +479,9 @@ const styles = StyleSheet.create({
   },
   selectedZoneButtonText: {
     color: "#ffffff"
+  },
+  selectedZoneMetaText: {
+    color: "#cbd5e1"
   },
   selectorButton: {
     backgroundColor: "#ffffff",
@@ -493,6 +566,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 8
+  },
+  zoneMetaText: {
+    color: "#64748b",
+    fontSize: 10,
+    fontWeight: "700",
+    marginTop: 3
+  },
+  zoneNotice: {
+    color: "#64748b",
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 10
   },
   zoneButtonText: {
     color: "#0f172a",

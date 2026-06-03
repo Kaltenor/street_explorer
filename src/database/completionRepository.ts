@@ -9,6 +9,7 @@ export type ExploredCellSource = "gps" | "inferred" | "loop_fill";
 export type CachedZone = {
   fetchedAt: string;
   geometry: MapCoordinate[][];
+  holes: MapCoordinate[][];
   id: string;
   name: string;
   parentZoneId: string | null;
@@ -19,6 +20,7 @@ export type CachedZone = {
 export type CompletionStats = {
   directlyWalkedCells: number;
   exploredCells: number;
+  inferredCells: number;
   loopFilledCells: number;
   walkedDistanceMeters: number;
   recordingCount: number;
@@ -138,6 +140,7 @@ export async function getCompletionStats(mode: ActivityMode | "all"): Promise<Co
   return {
     directlyWalkedCells: counts.gps ?? 0,
     exploredCells: totalRow?.count ?? 0,
+    inferredCells: counts.inferred ?? 0,
     loopFilledCells: counts.loop_fill ?? 0,
     recordingCount: walkRow?.recording_count ?? 0,
     walkedDistanceMeters: walkRow?.walked_distance_meters ?? 0
@@ -230,7 +233,7 @@ export async function getCachedZones(type: CompletionScope): Promise<CachedZone[
 
   return rows.map((row) => ({
     fetchedAt: row.fetched_at,
-    geometry: parseZoneGeometry(row.geometry_json),
+    ...parseZoneGeometry(row.geometry_json),
     id: row.id,
     name: row.name,
     parentZoneId: row.parent_zone_id,
@@ -261,7 +264,10 @@ export async function upsertZones(zones: CachedZone[]) {
       zone.name,
       zone.parentZoneId,
       zone.source,
-      JSON.stringify(zone.geometry),
+      JSON.stringify({
+        holes: zone.holes,
+        outer: zone.geometry
+      }),
       zone.fetchedAt
     );
   }
@@ -271,6 +277,43 @@ export async function deleteCachedZones() {
   const db = await getDatabase();
 
   await db.runAsync("DELETE FROM zones");
+  await db.runAsync("DELETE FROM zone_cell_totals");
+}
+
+export async function getCachedZoneTotal(zoneId: string) {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ total_cells: number }>(
+    `
+      SELECT total_cells
+      FROM zone_cell_totals
+      WHERE zone_id = ?
+        AND cell_size_m = ?
+    `,
+    zoneId,
+    EXPLORATION_CELL_SIZE_METERS
+  );
+
+  return row?.total_cells ?? null;
+}
+
+export async function saveCachedZoneTotal(zoneId: string, totalCells: number) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT OR REPLACE INTO zone_cell_totals (
+        zone_id,
+        cell_size_m,
+        total_cells,
+        calculated_at
+      )
+      VALUES (?, ?, ?, ?)
+    `,
+    zoneId,
+    EXPLORATION_CELL_SIZE_METERS,
+    totalCells,
+    new Date().toISOString()
+  );
 }
 
 function parseCellKey(cellKey: string) {
@@ -282,16 +325,35 @@ function parseCellKey(cellKey: string) {
   };
 }
 
-function parseZoneGeometry(value: string): MapCoordinate[][] {
+function parseZoneGeometry(value: string): Pick<CachedZone, "geometry" | "holes"> {
   try {
-    const parsed = JSON.parse(value) as MapCoordinate[][];
+    const parsed = JSON.parse(value) as MapCoordinate[][] | {
+      holes?: MapCoordinate[][];
+      outer?: MapCoordinate[][];
+    };
 
     if (Array.isArray(parsed)) {
-      return parsed;
+      return {
+        geometry: parsed,
+        holes: []
+      };
+    }
+
+    if (parsed && "outer" in parsed && Array.isArray(parsed.outer)) {
+      return {
+        geometry: parsed.outer,
+        holes: Array.isArray(parsed.holes) ? parsed.holes : []
+      };
     }
   } catch {
-    return [];
+    return {
+      geometry: [],
+      holes: []
+    };
   }
 
-  return [];
+  return {
+    geometry: [],
+    holes: []
+  };
 }

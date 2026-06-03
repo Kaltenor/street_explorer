@@ -88,6 +88,13 @@ Tables:
 
 `zones` caches country, city, and district boundary polygons fetched from OSM administrative relations.
 
+`zone_cell_totals` caches calculated zone denominators:
+
+- zone id
+- cell size
+- total cells
+- calculated timestamp
+
 ## Recording Flow
 
 1. User taps Start.
@@ -187,3 +194,19 @@ Flow:
 Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone.
 
 District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.
+
+Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate bounds are used only when relation geometry cannot be assembled yet.
+
+## Street-Aware Inference
+
+Street-aware path inference V1 uses loaded nearby OSM street segments only when a GPS gap is already considered suspicious.
+
+Flow:
+
+- snap gap endpoints to nearest local OSM graph nodes
+- run shortest path through connected local street-segment endpoints
+- reject routes with excessive detour or impossible speed
+- render accepted inferred paths as dashed lower-confidence geometry
+- store inferred cells separately from direct GPS cells
+
+If no reliable street route is found, the gap remains rejected. There is still no straight-line fallback for inferred exploration.

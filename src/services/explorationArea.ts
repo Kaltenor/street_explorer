@@ -1,4 +1,5 @@
-import { buildPathSegments } from "./pathInference";
+import { buildPathSegments, buildPathSegmentsWithInference } from "./pathInference";
+import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
 
 export const EXPLORATION_CELL_SIZE_METERS = 15;
@@ -81,6 +82,37 @@ export function collectExploredCellIdsForPath(points: GpsPoint[], activityMode: 
   markPathCells(keys, points, activityMode);
 
   return [...keys];
+}
+
+export function collectExploredCellIdsBySource(
+  points: GpsPoint[],
+  activityMode: ActivityMode,
+  streetSegments: OsmStreetSegment[] = []
+) {
+  const gps = new Set<string>();
+  const inferred = new Set<string>();
+
+  for (const segment of buildPathSegmentsWithInference(points, activityMode, streetSegments)) {
+    if (segment.type === "rejected") {
+      continue;
+    }
+
+    const targetKeys = segment.type === "inferred" ? inferred : gps;
+
+    for (let index = 1; index < segment.points.length; index += 1) {
+      const from = segment.points[index - 1];
+      const to = segment.points[index];
+
+      if (from && to) {
+        markSegmentCells(targetKeys, from, to);
+      }
+    }
+  }
+
+  return {
+    gps: [...gps],
+    inferred: [...inferred].filter((cellKey) => !gps.has(cellKey))
+  };
 }
 
 function collectExploredCellKeys(

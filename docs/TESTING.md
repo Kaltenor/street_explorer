@@ -115,6 +115,17 @@ Notes:
 8. Confirm explored cells, direct GPS cells, loop-filled cells, distance, and recordings are shown.
 9. Tap Focus on map and confirm the selected zone outline appears on the map.
 10. For city or district zones, confirm Completion shows a percentage when the zone is small enough to scan locally.
+11. Confirm each zone shows Exact polygon or Approx bounds.
+12. Tap Clear and confirm cached zones disappear while recordings remain.
+
+## Street Inference Test
+
+1. Open Show details.
+2. Enable OSM and tap Load to cache nearby streets.
+3. View an older route with a suspicious GPS gap.
+4. If nearby OSM streets connect the gap, confirm a dashed inferred street path appears instead of only the amber GPS-gap connector.
+5. Confirm Completion shows inferred cells separately from Direct GPS.
+6. If no street route is available, confirm the amber GPS-gap connector still appears and no fake exploration is counted.
 
 ## Loop Fill Test
 

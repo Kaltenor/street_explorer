@@ -6,7 +6,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
 import { buildExplorationCells } from "../services/explorationArea";
-import { buildPathSegments } from "../services/pathInference";
+import { buildPathSegmentsWithInference } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
 import { MapLayerState } from "./LayerControls";
@@ -233,6 +233,7 @@ export function ExplorationMap({
                 isDimmed={isDimmed}
                 isHighlighted={isHighlighted}
                 points={walk.points}
+                streetSegments={streetSegments}
               />
               {layers.showMarkers && firstPoint ? (
                 <Marker
@@ -262,6 +263,7 @@ export function ExplorationMap({
               isDimmed={false}
               isHighlighted
               points={activePoints}
+              streetSegments={streetSegments}
             />
             {layers.showMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
@@ -304,17 +306,19 @@ function PathSegmentLines({
   color,
   isDimmed,
   isHighlighted,
-  points
+  points,
+  streetSegments
 }: {
   activityMode: ActivityMode;
   color: string;
   isDimmed: boolean;
   isHighlighted: boolean;
   points: GpsPoint[];
+  streetSegments: OsmStreetSegment[];
 }) {
   return (
     <>
-      {buildPathSegments(points, activityMode).map((segment, index) => {
+      {buildPathSegmentsWithInference(points, activityMode, streetSegments).map((segment, index) => {
         if (segment.type === "rejected") {
           return (
             <Polyline

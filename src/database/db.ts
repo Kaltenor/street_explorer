@@ -163,6 +163,18 @@ export async function initDatabase() {
       DELETE FROM loop_fills;
     `);
   });
+
+  await applyMigration(9, "create_zone_cell_totals", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS zone_cell_totals (
+        zone_id TEXT NOT NULL,
+        cell_size_m INTEGER NOT NULL,
+        total_cells INTEGER NOT NULL,
+        calculated_at TEXT NOT NULL,
+        PRIMARY KEY (zone_id, cell_size_m)
+      );
+    `);
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

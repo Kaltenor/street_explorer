@@ -33,6 +33,8 @@
 - Completion screen foundation.
 - Conservative closed-loop fill V1.
 - OSM boundary fetching and zone completion V1.
+- Zone polish with exact/fallback labels and cached denominators.
+- Street-aware path inference V1.
 
 ## Next Priority
 
@@ -45,7 +47,16 @@ Improve the real game layer:
 - cache calculated zone denominators
 - add boundary refresh status and last-fetched date
 
-### 2. OpenStreetMap Street Completion V2
+### 2. Street-Aware Path Inference V2
+
+Improve inferred routes:
+
+- use full OSM street topology instead of local loaded segments only
+- connect intersections more robustly when OSM ways do not share exact nodes
+- add confidence scoring in history/detail screens
+- persist inferred path geometry, not only inferred cells
+
+### 3. OpenStreetMap Street Completion V2
 
 Improve street intelligence:
 
@@ -53,15 +64,6 @@ Improve street intelligence:
 - keep separate street completion by mode
 - use street length instead of local segment counts
 - use a more reliable Overpass endpoint strategy
-
-### 3. Path Inference V1
-
-Use the new path inference boundary:
-
-- snap suspicious gap endpoints to nearby OSM street segments
-- route through the local OSM street graph
-- reject inferred routes with impossible speed or excessive detour
-- store/draw inferred paths with lower confidence than GPS paths
 
 ### 4. Recording Recovery V2
 
