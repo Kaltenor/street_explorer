@@ -137,6 +137,14 @@ Inferred path routing is intentionally not implemented yet. `src/services/pathIn
 
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
 
+## Fog Of War
+
+Fog of War V1 is a visual map layer, enabled by default.
+
+It uses larger 60m fog tiles around the current/saved exploration area for performance. Tiles that overlap explored 15m cells are skipped, creating a simple reveal effect without masking the entire world.
+
+The fog layer is only visual. It does not change saved recordings, explored cells, completion, or OSM analysis.
+
 ## Loop Fill
 
 Closed-loop fill is a conservative V1 game mechanic.

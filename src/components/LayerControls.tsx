@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export type MapLayerState = {
   showExploredCells: boolean;
+  showFogOfWar: boolean;
   showMarkers: boolean;
   showPaths: boolean;
   showStreetLayer: boolean;
@@ -27,6 +28,12 @@ export function LayerControls({ layers, onToggleLayer }: LayerControlsProps) {
         icon="grid-outline"
         label="Cells"
         onPress={() => onToggleLayer("showExploredCells")}
+      />
+      <LayerButton
+        active={layers.showFogOfWar}
+        icon="cloudy-outline"
+        label="Fog"
+        onPress={() => onToggleLayer("showFogOfWar")}
       />
       <LayerButton
         active={layers.showMarkers}

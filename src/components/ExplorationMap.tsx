@@ -5,7 +5,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
-import { buildExplorationCells } from "../services/explorationArea";
+import { buildExplorationCells, buildFogCells } from "../services/explorationArea";
 import { buildPathSegmentsWithInference } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
@@ -53,6 +53,12 @@ export function ExplorationMap({
   const hasCenteredOnInitialLocation = useRef(false);
   const region = getInitialRegion(currentLocation, walks, activePoints);
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
+  const fogCells = buildFogCells({
+    activePoints,
+    currentLocation,
+    explorationCells,
+    walks
+  });
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -181,6 +187,18 @@ export function ExplorationMap({
         zoomEnabled
         followsUserLocation={false}
       >
+        {layers.showFogOfWar
+          ? fogCells.map((cell) => (
+              <Polygon
+                coordinates={cell.coordinates}
+                fillColor="rgba(15, 23, 42, 0.34)"
+                key={`fog-${cell.id}`}
+                strokeColor="rgba(15, 23, 42, 0.16)"
+                strokeWidth={0.5}
+              />
+            ))
+          : null}
+
         {layers.showExploredCells ? explorationCells.map((cell) => (
           <Polygon
             key={cell.id}

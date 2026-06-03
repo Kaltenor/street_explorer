@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.1
+
+Added:
+
+- Fog of War map layer, enabled by default.
+- Fog layer toggle and legend entry.
+
+Notes:
+
+- V1 uses larger 60m fog tiles around the active exploration area for map performance.
+- Explored cells clear matching fog tiles, giving a first real exploration-game reveal effect.
+
 ## v0.3.0
 
 Added:

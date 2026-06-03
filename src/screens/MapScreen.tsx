@@ -136,6 +136,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     useState<BackgroundTrackingStatus>("idle");
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
+    showFogOfWar: true,
     showMarkers: true,
     showPaths: true,
     showStreetLayer: false
@@ -836,6 +837,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               <LayerControls layers={layers} onToggleLayer={toggleLayer} />
               <MapLegend
                 showExploredCells={layers.showExploredCells}
+                showFogOfWar={layers.showFogOfWar}
                 showPaths={layers.showPaths}
               />
               <View style={styles.statusRow}>
