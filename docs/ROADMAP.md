@@ -32,17 +32,18 @@
 - Street-completion V1.
 - Completion screen foundation.
 - Conservative closed-loop fill V1.
+- OSM boundary fetching and zone completion V1.
 
 ## Next Priority
 
-### 1. Zone Boundary Completion V1
+### 1. Zone Boundary Completion V2
 
 Improve the real game layer:
 
-- fetch and cache OSM country, city, and district boundaries
-- calculate completion denominators inside selected zones
-- degrade gracefully when district boundaries are unavailable
-- keep OSM boundaries as hidden analysis data, not visual clutter
+- improve relation polygon assembly for complex multipolygons
+- add completed district/city rollups
+- cache calculated zone denominators
+- add boundary refresh status and last-fetched date
 
 ### 2. OpenStreetMap Street Completion V2
 

@@ -1,4 +1,5 @@
 import { EXPLORATION_CELL_SIZE_METERS } from "../services/explorationArea";
+import { MapCoordinate } from "../services/explorationArea";
 import { ActivityMode } from "../types/walk";
 import { getDatabase } from "./db";
 
@@ -7,7 +8,7 @@ export type ExploredCellSource = "gps" | "inferred" | "loop_fill";
 
 export type CachedZone = {
   fetchedAt: string;
-  geometryJson: string;
+  geometry: MapCoordinate[][];
   id: string;
   name: string;
   parentZoneId: string | null;
@@ -38,6 +39,12 @@ type ZoneRow = {
   parent_zone_id: string | null;
   source: string;
   type: CompletionScope;
+};
+
+export type ExploredCellRecord = {
+  cellKey: string;
+  mode: ActivityMode;
+  source: ExploredCellSource;
 };
 
 export async function saveExploredCells(cells: ExploredCellInput[]) {
@@ -137,6 +144,32 @@ export async function getCompletionStats(mode: ActivityMode | "all"): Promise<Co
   };
 }
 
+export async function getExploredCellRecords(mode: ActivityMode | "all") {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{
+    cell_x: number;
+    cell_y: number;
+    mode: ActivityMode;
+    source: ExploredCellSource;
+  }>(
+    `
+      SELECT DISTINCT cell_x, cell_y, mode, source
+      FROM explored_cells
+      WHERE cell_size_m = ?
+        AND (? = 'all' OR mode = ?)
+    `,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode,
+    mode
+  );
+
+  return rows.map((row) => ({
+    cellKey: `${row.cell_x}:${row.cell_y}`,
+    mode: row.mode,
+    source: row.source
+  }));
+}
+
 export async function deleteExploredCellsForSession(sessionId: number) {
   const db = await getDatabase();
 
@@ -197,13 +230,47 @@ export async function getCachedZones(type: CompletionScope): Promise<CachedZone[
 
   return rows.map((row) => ({
     fetchedAt: row.fetched_at,
-    geometryJson: row.geometry_json,
+    geometry: parseZoneGeometry(row.geometry_json),
     id: row.id,
     name: row.name,
     parentZoneId: row.parent_zone_id,
     source: row.source,
     type: row.type
   }));
+}
+
+export async function upsertZones(zones: CachedZone[]) {
+  const db = await getDatabase();
+
+  for (const zone of zones) {
+    await db.runAsync(
+      `
+        INSERT OR REPLACE INTO zones (
+          id,
+          type,
+          name,
+          parent_zone_id,
+          source,
+          geometry_json,
+          fetched_at
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `,
+      zone.id,
+      zone.type,
+      zone.name,
+      zone.parentZoneId,
+      zone.source,
+      JSON.stringify(zone.geometry),
+      zone.fetchedAt
+    );
+  }
+}
+
+export async function deleteCachedZones() {
+  const db = await getDatabase();
+
+  await db.runAsync("DELETE FROM zones");
 }
 
 function parseCellKey(cellKey: string) {
@@ -213,4 +280,18 @@ function parseCellKey(cellKey: string) {
     x: x ?? 0,
     y: y ?? 0
   };
+}
+
+function parseZoneGeometry(value: string): MapCoordinate[][] {
+  try {
+    const parsed = JSON.parse(value) as MapCoordinate[][];
+
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+  } catch {
+    return [];
+  }
+
+  return [];
 }

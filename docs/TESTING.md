@@ -106,10 +106,15 @@ Notes:
 ## Completion Screen Test
 
 1. Tap Completion.
-2. Change Scope between Country, City, and District.
-3. Change Mode between Walk, Wheel, Car, and All.
-4. Confirm stats load without crashing even when no cached zones exist.
-5. Confirm explored cells, direct GPS cells, loop-filled cells, distance, and recordings are shown.
+2. Tap Refresh.
+3. Confirm the app loads nearby OSM boundaries, or shows a clear load failure if Overpass is unavailable.
+4. Change Scope between Country, City, and District.
+5. Select each available zone.
+6. Change Mode between Walk, Wheel, Car, and All.
+7. Confirm stats load without crashing even when district zones are unavailable.
+8. Confirm explored cells, direct GPS cells, loop-filled cells, distance, and recordings are shown.
+9. Tap Focus on map and confirm the selected zone outline appears on the map.
+10. For city or district zones, confirm Completion shows a percentage when the zone is small enough to scan locally.
 
 ## Loop Fill Test
 

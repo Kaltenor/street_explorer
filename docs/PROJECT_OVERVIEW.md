@@ -27,12 +27,15 @@ Each mode has separate recordings, paths, stats, and history.
 - Recording recovery for unfinished active sessions.
 - Layer controls for paths, cells, markers, and optional OSM debug matching.
 - Completion screen foundation with scope and mode selectors.
+- OSM boundary loading and cached Country / City / District completion zones.
+- Zone-specific completion stats and map focus.
 
 ## Current Limitations
 
 - Background tracking is configured but may not fully work in Expo Go on iOS. A development build is likely required for real locked-screen recording.
 - Explored cells are grid-based, not exact street geometry.
 - OSM is no longer a primary visible gameplay overlay by default.
-- Country, city, and district boundary fetching is not implemented yet.
+- District boundaries depend on what exists in OSM near the current location.
+- Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
 - OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.

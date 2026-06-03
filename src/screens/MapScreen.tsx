@@ -40,6 +40,7 @@ import {
   saveActiveRecordingSettings
 } from "../database/settingsRepository";
 import {
+  CachedZone,
   deleteExploredCellsForSession,
   getLoopFillCellKeys,
   saveExploredCells,
@@ -124,6 +125,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [completionVisible, setCompletionVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
+  const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [recoverableRecording, setRecoverableRecording] = useState<RecoverableRecording | null>(
     null
@@ -761,6 +763,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         highlightedSessionId={selectedSessionId}
         layers={layers}
         loopFillCellIds={loopFillCellIds}
+        selectedZone={selectedZone}
         streetSegments={streetSegments}
       />
 
@@ -914,7 +917,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         recording={recoverableRecording}
       />
       <CompletionModal
+        currentLocation={currentLocation}
         onClose={() => setCompletionVisible(false)}
+        onFocusZone={(zone) => {
+          setSelectedZone(zone);
+          setCompletionVisible(false);
+        }}
         visible={completionVisible}
       />
     </View>

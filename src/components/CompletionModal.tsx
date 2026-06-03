@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
@@ -7,14 +7,23 @@ import {
   CachedZone,
   CompletionScope,
   CompletionStats,
+  getExploredCellRecords,
   getCachedZones,
-  getCompletionStats
+  getCompletionStats,
+  upsertZones
 } from "../database/completionRepository";
-import { ActivityMode } from "../types/walk";
+import {
+  ZoneCompletionStats,
+  calculateZoneCompletionStats,
+  fetchNearbyOsmZones
+} from "../services/zoneCompletion";
+import { ActivityMode, GpsPoint } from "../types/walk";
 
 type CompletionMode = ActivityMode | "all";
 
 type CompletionModalProps = {
+  currentLocation: GpsPoint | null;
+  onFocusZone: (zone: CachedZone) => void;
   visible: boolean;
   onClose: () => void;
 };
@@ -30,15 +39,36 @@ const EMPTY_STATS: CompletionStats = {
 const SCOPES: CompletionScope[] = ["country", "city", "district"];
 const MODES: CompletionMode[] = ["walk", "wheel", "car", "all"];
 
-export function CompletionModal({ onClose, visible }: CompletionModalProps) {
+export function CompletionModal({
+  currentLocation,
+  onClose,
+  onFocusZone,
+  visible
+}: CompletionModalProps) {
   const [mode, setMode] = useState<CompletionMode>("all");
   const [scope, setScope] = useState<CompletionScope>("city");
   const [stats, setStats] = useState<CompletionStats>(EMPTY_STATS);
   const [zones, setZones] = useState<CachedZone[]>([]);
+  const [isRefreshingZones, setIsRefreshingZones] = useState(false);
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
   const selectedZone = useMemo(
     () => zones.find((zone) => zone.id === selectedZoneId) ?? zones[0] ?? null,
     [selectedZoneId, zones]
+  );
+  const [completedZoneCount, setCompletedZoneCount] = useState(0);
+  const [zoneStats, setZoneStats] = useState<ZoneCompletionStats | null>(null);
+
+  const loadZones = useCallback(
+    async () => {
+      const cachedZones = await getCachedZones(scope);
+      setZones(cachedZones);
+      setSelectedZoneId((currentZoneId) =>
+        currentZoneId && cachedZones.some((zone) => zone.id === currentZoneId)
+          ? currentZoneId
+          : cachedZones[0]?.id ?? null
+      );
+    },
+    [scope]
   );
 
   useEffect(() => {
@@ -56,17 +86,56 @@ export function CompletionModal({ onClose, visible }: CompletionModalProps) {
       return;
     }
 
-    getCachedZones(scope)
-      .then((cachedZones) => {
-        setZones(cachedZones);
-        setSelectedZoneId((currentZoneId) =>
-          currentZoneId && cachedZones.some((zone) => zone.id === currentZoneId)
-            ? currentZoneId
-            : cachedZones[0]?.id ?? null
+    loadZones()
+      .catch((error) => console.warn("Failed to load completion zones", error));
+  }, [loadZones, visible]);
+
+  useEffect(() => {
+    if (!visible || !selectedZone) {
+      setZoneStats(null);
+      setCompletedZoneCount(0);
+      return;
+    }
+
+    getExploredCellRecords(mode)
+      .then((cells) => {
+        setZoneStats(calculateZoneCompletionStats(selectedZone, cells));
+        setCompletedZoneCount(
+          zones.filter((zone) => {
+            const completion = calculateZoneCompletionStats(zone, cells);
+
+            return completion.completionPercent !== null && completion.completionPercent >= 100;
+          }).length
         );
       })
-      .catch((error) => console.warn("Failed to load completion zones", error));
-  }, [scope, visible]);
+      .catch((error) => console.warn("Failed to calculate zone completion", error));
+  }, [mode, selectedZone, visible, zones]);
+
+  const handleRefreshBoundaries = async () => {
+    if (!currentLocation) {
+      Alert.alert("Location unavailable", "Wait for GPS before refreshing boundaries.");
+      return;
+    }
+
+    setIsRefreshingZones(true);
+
+    try {
+      const fetchedZones = await fetchNearbyOsmZones(currentLocation);
+      await upsertZones(fetchedZones);
+      await loadZones();
+      Alert.alert(
+        "Boundaries refreshed",
+        fetchedZones.length > 0
+          ? `${fetchedZones.length} nearby boundary zones were cached.`
+          : "No matching OSM boundaries were found here."
+      );
+    } catch (error) {
+      console.warn("Failed to refresh OSM boundaries", error);
+      Alert.alert("Boundary load failed", "Street Explorer could not fetch nearby OSM boundaries.");
+    } finally {
+      setIsRefreshingZones(false);
+    }
+  };
 
   return (
     <Modal animationType="slide" onRequestClose={onClose} visible={visible}>
@@ -98,7 +167,20 @@ export function CompletionModal({ onClose, visible }: CompletionModalProps) {
           />
 
           <View style={styles.panel}>
-            <Text style={styles.panelTitle}>Area</Text>
+            <View style={styles.panelHeader}>
+              <Text style={styles.panelTitle}>Area</Text>
+              <TouchableOpacity
+                accessibilityRole="button"
+                disabled={isRefreshingZones}
+                onPress={handleRefreshBoundaries}
+                style={[styles.smallButton, isRefreshingZones ? styles.disabledButton : null]}
+              >
+                <Ionicons name="refresh" size={15} color="#0f172a" />
+                <Text style={styles.smallButtonText}>
+                  {isRefreshingZones ? "Loading" : "Refresh"}
+                </Text>
+              </TouchableOpacity>
+            </View>
             {zones.length > 0 ? (
               <View style={styles.zoneList}>
                 {zones.map((zone) => (
@@ -124,19 +206,30 @@ export function CompletionModal({ onClose, visible }: CompletionModalProps) {
               </View>
             ) : (
               <Text style={styles.helpText}>
-                No cached {scope} boundary yet. The app will use OSM boundaries later when nearby
-                zones are available.
+                No cached {scope} boundary yet. Tap Refresh to load nearby OSM boundaries.
               </Text>
             )}
+            {selectedZone ? (
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={() => onFocusZone(selectedZone)}
+                style={styles.focusButton}
+              >
+                <Ionicons name="scan" size={16} color="#0f172a" />
+                <Text style={styles.focusButtonText}>Focus on map</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
 
           <View style={styles.statsGrid}>
-            <Stat label="Completion" value={selectedZone ? "V1" : "Pending"} />
-            <Stat label="Explored cells" value={String(stats.exploredCells)} />
-            <Stat label="Direct GPS" value={String(stats.directlyWalkedCells)} />
-            <Stat label="Loop-filled" value={String(stats.loopFilledCells)} />
+            <Stat label="Completion" value={formatCompletion(zoneStats)} />
+            <Stat label="Zone cells" value={formatZoneCells(zoneStats)} />
+            <Stat label="Explored cells" value={String(zoneStats?.exploredCells ?? stats.exploredCells)} />
+            <Stat label="Direct GPS" value={String(zoneStats?.directlyWalkedCells ?? stats.directlyWalkedCells)} />
+            <Stat label="Loop-filled" value={String(zoneStats?.loopFilledCells ?? stats.loopFilledCells)} />
             <Stat label="Distance" value={formatDistance(stats.walkedDistanceMeters)} />
             <Stat label="Recordings" value={String(stats.recordingCount)} />
+            <Stat label="Completed zones" value={String(completedZoneCount)} />
           </View>
 
           <View style={styles.panel}>
@@ -209,6 +302,22 @@ function formatDistance(distanceMeters: number) {
   return `${Math.round(distanceMeters)} m`;
 }
 
+function formatCompletion(stats: ZoneCompletionStats | null) {
+  if (!stats || stats.completionPercent === null) {
+    return "Pending";
+  }
+
+  return `${stats.completionPercent}%`;
+}
+
+function formatZoneCells(stats: ZoneCompletionStats | null) {
+  if (!stats || stats.totalZoneCells === null) {
+    return "Large";
+  }
+
+  return String(stats.totalZoneCells);
+}
+
 function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
@@ -244,6 +353,27 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 19
   },
+  disabledButton: {
+    opacity: 0.5
+  },
+  focusButton: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "#f8fafc",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 6,
+    marginTop: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8
+  },
+  focusButtonText: {
+    color: "#0f172a",
+    fontSize: 12,
+    fontWeight: "800"
+  },
   panel: {
     backgroundColor: "#ffffff",
     borderColor: "#dbe3ea",
@@ -256,6 +386,11 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "800",
     marginBottom: 8
+  },
+  panelHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   screen: {
     backgroundColor: "#f8fafc",
@@ -299,6 +434,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     padding: 12
+  },
+  smallButton: {
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    borderColor: "#dbe3ea",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 5,
+    paddingHorizontal: 9,
+    paddingVertical: 7
+  },
+  smallButtonText: {
+    color: "#0f172a",
+    fontSize: 12,
+    fontWeight: "800"
   },
   stat: {
     backgroundColor: "#ffffff",

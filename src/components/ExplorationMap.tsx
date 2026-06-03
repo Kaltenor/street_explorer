@@ -4,6 +4,7 @@ import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
+import { CachedZone } from "../database/completionRepository";
 import { buildExplorationCells } from "../services/explorationArea";
 import { buildPathSegments } from "../services/pathInference";
 import { OsmStreetSegment } from "../types/street";
@@ -18,6 +19,7 @@ type ExplorationMapProps = {
   highlightedSessionId: number | null;
   layers: MapLayerState;
   loopFillCellIds: string[];
+  selectedZone: CachedZone | null;
   exploredStreetIds: Set<string>;
   streetSegments: OsmStreetSegment[];
 };
@@ -44,6 +46,7 @@ export function ExplorationMap({
   highlightedSessionId,
   layers,
   loopFillCellIds,
+  selectedZone,
   streetSegments
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
@@ -97,6 +100,26 @@ export function ExplorationMap({
       });
     }
   }, [highlightedSessionId, walks]);
+
+  useEffect(() => {
+    if (!selectedZone) {
+      return;
+    }
+
+    const coordinates = selectedZone.geometry.flat();
+
+    if (coordinates.length > 1) {
+      mapRef.current?.fitToCoordinates(coordinates, {
+        animated: true,
+        edgePadding: {
+          bottom: 230,
+          left: 36,
+          right: 36,
+          top: 170
+        }
+      });
+    }
+  }, [selectedZone]);
 
   const centerOnCurrentLocation = () => {
     if (!currentLocation) {
@@ -181,6 +204,18 @@ export function ExplorationMap({
                   lineJoin="round"
                 />
               ))
+          : null}
+
+        {selectedZone
+          ? selectedZone.geometry.map((ring, index) => (
+              <Polygon
+                coordinates={ring}
+                fillColor="rgba(37, 99, 235, 0.06)"
+                key={`${selectedZone.id}-${index}`}
+                strokeColor="rgba(37, 99, 235, 0.62)"
+                strokeWidth={2}
+              />
+            ))
           : null}
 
         {layers.showPaths ? walks.map((walk) => {

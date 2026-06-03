@@ -86,7 +86,7 @@ Tables:
 - total and unwalked walkable OSM street length inside the polygon
 - accepted/rejected state and rejection reason
 
-`zones` is the future local cache for country, city, and district boundaries.
+`zones` caches country, city, and district boundary polygons fetched from OSM administrative relations.
 
 ## Recording Flow
 
@@ -170,3 +170,20 @@ Limitations:
 - Matching is proximity-based and can be wrong near parallel roads.
 - Completion is based on loaded nearby streets, not full city boundaries yet.
 - Completion is not separated by activity mode yet.
+
+## Zone Completion
+
+The Completion screen can fetch nearby OSM administrative boundaries using the current GPS location.
+
+Flow:
+
+- fetch OSM administrative relations for country, city, and district scopes
+- cache zone polygons in `zones`
+- select a scope and zone in Completion
+- count explored 15m cells whose centers fall inside the selected polygon
+- count total 15m cells inside city/district-sized polygons
+- show completion percentage when the zone denominator can be scanned locally
+
+Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone.
+
+District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.

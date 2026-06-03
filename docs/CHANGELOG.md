@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.0
+
+Added:
+
+- OSM boundary fetching for nearby country, city, and district administrative zones.
+- Local SQLite cache for zone polygons.
+- Zone-specific completion stats in the Completion screen.
+- Refresh boundaries action in Completion.
+- Focus on map action for cached zones.
+- Light optional zone outline on the map when focused.
+
+Notes:
+
+- Zone completion is cell-based and local-only.
+- Very large zones can show a pending denominator to avoid expensive country-scale scans.
+- District availability depends on local OSM boundary data.
+
 ## v0.1.4
 
 Fixed:

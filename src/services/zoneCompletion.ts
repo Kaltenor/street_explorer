@@ -1,0 +1,356 @@
+import {
+  MapCoordinate,
+  coordinateToExplorationCellKey,
+  explorationCellKeyToCenterCoordinate
+} from "./explorationArea";
+import {
+  CachedZone,
+  CompletionScope,
+  ExploredCellRecord,
+  ExploredCellSource
+} from "../database/completionRepository";
+import { GpsPoint } from "../types/walk";
+
+const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
+const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
+
+type OverpassGeometryPoint = {
+  lat: number;
+  lon: number;
+};
+
+type OverpassRelationMember = {
+  geometry?: OverpassGeometryPoint[];
+  role?: string;
+  type: string;
+};
+
+type OverpassRelationElement = {
+  id: number;
+  members?: OverpassRelationMember[];
+  tags?: {
+    admin_level?: string;
+    name?: string;
+  };
+  type: "relation";
+};
+
+type OverpassBoundaryResponse = {
+  elements?: OverpassRelationElement[];
+};
+
+export type ZoneCompletionStats = {
+  completionPercent: number | null;
+  directlyWalkedCells: number;
+  exploredCells: number;
+  loopFilledCells: number;
+  totalZoneCells: number | null;
+};
+
+export async function fetchNearbyOsmZones(
+  center: Pick<GpsPoint, "latitude" | "longitude">
+): Promise<CachedZone[]> {
+  const response = await fetch(OVERPASS_ENDPOINT, {
+    body: buildBoundaryQuery(center.latitude, center.longitude),
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    method: "POST"
+  });
+
+  if (!response.ok) {
+    throw new Error(`Overpass boundary request failed: ${response.status}`);
+  }
+
+  const data = (await response.json()) as OverpassBoundaryResponse;
+  const fetchedAt = new Date().toISOString();
+
+  return (data.elements ?? [])
+    .filter((element) => element.type === "relation")
+    .map((element) => mapRelationToZone(element, fetchedAt))
+    .filter((zone): zone is CachedZone => Boolean(zone));
+}
+
+export function calculateZoneCompletionStats(
+  zone: CachedZone,
+  exploredCells: ExploredCellRecord[]
+): ZoneCompletionStats {
+  const exploredInside = exploredCells.filter((cell) =>
+    isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone.geometry)
+  );
+  const uniqueExplored = uniqueCellCount(exploredInside);
+  const directlyWalkedCells = uniqueCellCount(
+    exploredInside.filter((cell) => cell.source === "gps" || cell.source === "inferred")
+  );
+  const loopFilledCells = uniqueCellCount(exploredInside.filter((cell) => cell.source === "loop_fill"));
+  const totalZoneCells = calculateTotalZoneCells(zone.geometry);
+
+  return {
+    completionPercent:
+      totalZoneCells && totalZoneCells > 0
+        ? Math.min(100, Math.round((uniqueExplored / totalZoneCells) * 1000) / 10)
+        : null,
+    directlyWalkedCells,
+    exploredCells: uniqueExplored,
+    loopFilledCells,
+    totalZoneCells
+  };
+}
+
+export function getZoneBounds(zone: CachedZone) {
+  return getGeometryBounds(zone.geometry);
+}
+
+function buildBoundaryQuery(latitude: number, longitude: number) {
+  return `
+    [out:json][timeout:35];
+    is_in(${latitude},${longitude})->.containingAreas;
+    (
+      rel(pivot.containingAreas)
+        ["boundary"="administrative"]
+        ["admin_level"~"^(2|8|9|10)$"];
+      rel(around:3500,${latitude},${longitude})
+        ["boundary"="administrative"]
+        ["admin_level"~"^(8|9|10)$"];
+    );
+    out tags geom;
+  `;
+}
+
+function mapRelationToZone(
+  element: OverpassRelationElement,
+  fetchedAt: string
+): CachedZone | null {
+  const scope = getScopeFromAdminLevel(element.tags?.admin_level);
+  const name = element.tags?.name;
+
+  if (!scope || !name) {
+    return null;
+  }
+
+  const geometry = extractRelationGeometry(element);
+
+  if (geometry.length === 0) {
+    return null;
+  }
+
+  return {
+    fetchedAt,
+    geometry,
+    id: `relation/${element.id}`,
+    name,
+    parentZoneId: null,
+    source: "openstreetmap",
+    type: scope
+  };
+}
+
+function getScopeFromAdminLevel(adminLevel: string | undefined): CompletionScope | null {
+  if (adminLevel === "2") {
+    return "country";
+  }
+
+  if (adminLevel === "8") {
+    return "city";
+  }
+
+  if (adminLevel === "9" || adminLevel === "10") {
+    return "district";
+  }
+
+  return null;
+}
+
+function extractRelationGeometry(element: OverpassRelationElement) {
+  const ways = (element.members ?? [])
+    .filter((member) => member.type === "way" && member.role !== "inner")
+    .map((member) => mapGeometryRing(member.geometry ?? []))
+    .filter((ring) => ring.length >= 2);
+
+  return assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
+}
+
+function mapGeometryRing(points: OverpassGeometryPoint[]) {
+  return points.map((point) => ({
+    latitude: point.lat,
+    longitude: point.lon
+  }));
+}
+
+function assembleWaysIntoRings(ways: MapCoordinate[][]) {
+  const remaining = [...ways];
+  const rings: MapCoordinate[][] = [];
+
+  while (remaining.length > 0) {
+    const seed = remaining.shift();
+
+    if (!seed) {
+      continue;
+    }
+
+    const ring = [...seed];
+    let didExtend = true;
+
+    while (!isRingClosed(ring) && didExtend) {
+      didExtend = false;
+      const end = ring.at(-1);
+
+      if (!end) {
+        break;
+      }
+
+      const matchIndex = remaining.findIndex((candidate) =>
+        isSameCoordinate(candidate[0], end) || isSameCoordinate(candidate.at(-1), end)
+      );
+
+      if (matchIndex < 0) {
+        continue;
+      }
+
+      const match = remaining.splice(matchIndex, 1)[0];
+
+      if (!match) {
+        continue;
+      }
+
+      const oriented = isSameCoordinate(match[0], end) ? match.slice(1) : match.slice(0, -1).reverse();
+      ring.push(...oriented);
+      didExtend = true;
+    }
+
+    if (isRingClosed(ring)) {
+      rings.push(ring);
+    }
+  }
+
+  return rings;
+}
+
+function isRingClosed(ring: MapCoordinate[]) {
+  const first = ring[0];
+  const last = ring.at(-1);
+
+  return Boolean(first && last && isSameCoordinate(first, last));
+}
+
+function isSameCoordinate(
+  first: MapCoordinate | undefined,
+  second: MapCoordinate | undefined
+) {
+  if (!first || !second) {
+    return false;
+  }
+
+  return (
+    Math.abs(first.latitude - second.latitude) < 0.000001 &&
+    Math.abs(first.longitude - second.longitude) < 0.000001
+  );
+}
+
+function calculateTotalZoneCells(geometry: MapCoordinate[][]) {
+  const bounds = getGeometryBounds(geometry);
+
+  if (!bounds) {
+    return null;
+  }
+
+  const cornerKeys = [
+    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.minLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.maxLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.minLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.maxLongitude })
+  ].map(parseCellKey);
+  const minX = Math.min(...cornerKeys.map((key) => key.x));
+  const maxX = Math.max(...cornerKeys.map((key) => key.x));
+  const minY = Math.min(...cornerKeys.map((key) => key.y));
+  const maxY = Math.max(...cornerKeys.map((key) => key.y));
+  const estimatedCells = (maxX - minX + 1) * (maxY - minY + 1);
+
+  if (estimatedCells > MAX_TOTAL_ZONE_CELLS_TO_SCAN) {
+    return null;
+  }
+
+  let count = 0;
+
+  for (let x = minX; x <= maxX; x += 1) {
+    for (let y = minY; y <= maxY; y += 1) {
+      const center = explorationCellKeyToCenterCoordinate(`${x}:${y}`);
+
+      if (isPointInsideZone(center, geometry)) {
+        count += 1;
+      }
+    }
+  }
+
+  return count;
+}
+
+function isPointInsideZone(point: MapCoordinate, geometry: MapCoordinate[][]) {
+  return geometry.some((ring) => pointInPolygon(point, ring));
+}
+
+function pointInPolygon(point: MapCoordinate, polygon: MapCoordinate[]) {
+  let inside = false;
+
+  for (
+    let index = 0, previousIndex = polygon.length - 1;
+    index < polygon.length;
+    previousIndex = index, index += 1
+  ) {
+    const current = polygon[index];
+    const previous = polygon[previousIndex];
+
+    if (!current || !previous) {
+      continue;
+    }
+
+    const intersects =
+      current.latitude > point.latitude !== previous.latitude > point.latitude &&
+      point.longitude <
+        ((previous.longitude - current.longitude) * (point.latitude - current.latitude)) /
+          (previous.latitude - current.latitude) +
+          current.longitude;
+
+    if (intersects) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+}
+
+function getGeometryBounds(geometry: MapCoordinate[][]) {
+  const points = geometry.flat();
+
+  if (points.length === 0) {
+    return null;
+  }
+
+  return points.reduce(
+    (bounds, point) => ({
+      maxLatitude: Math.max(bounds.maxLatitude, point.latitude),
+      maxLongitude: Math.max(bounds.maxLongitude, point.longitude),
+      minLatitude: Math.min(bounds.minLatitude, point.latitude),
+      minLongitude: Math.min(bounds.minLongitude, point.longitude)
+    }),
+    {
+      maxLatitude: Number.NEGATIVE_INFINITY,
+      maxLongitude: Number.NEGATIVE_INFINITY,
+      minLatitude: Number.POSITIVE_INFINITY,
+      minLongitude: Number.POSITIVE_INFINITY
+    }
+  );
+}
+
+function uniqueCellCount(cells: Array<{ cellKey: string; source?: ExploredCellSource }>) {
+  return new Set(cells.map((cell) => cell.cellKey)).size;
+}
+
+function parseCellKey(cellKey: string) {
+  const [x, y] = cellKey.split(":").map(Number);
+
+  return {
+    x: x ?? 0,
+    y: y ?? 0
+  };
+}
