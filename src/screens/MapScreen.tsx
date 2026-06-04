@@ -176,8 +176,11 @@ type RecordingSummary = {
   distanceMeters: number;
   durationSeconds: number;
   finalStepCount: number;
+  gpsPausedEventCount: number;
   loopResult: LoopProcessingResult;
   newCellCount: number;
+  objectiveAfter: ZoneCompletionStats | null;
+  objectiveBefore: ZoneCompletionStats | null;
   quality: ReturnType<typeof calculateRecordingQuality>;
   sessionId: number;
 };
@@ -276,6 +279,10 @@ export function MapScreen({
 
     return countExploredCellKeysInsideZone(objective.zone, todayCellKeys);
   }, [activeWalk?.points, activityMode, objective, walks]);
+  const todayNewCellIds = useMemo(
+    () => collectTodayNewCellIds(walks, activeWalk?.points ?? [], activityMode),
+    [activeWalk?.points, activityMode, walks]
+  );
 
   const refreshSavedData = useCallback(async () => {
     const [
@@ -536,6 +543,7 @@ export function MapScreen({
         walk
           ? {
               ...walk,
+              gpsPausedEventCount: walk.gpsPausedEventCount + 1,
               lastRejectedPointReason: "GPS unavailable; recording paused until signal returns"
             }
           : walk
@@ -567,6 +575,7 @@ export function MapScreen({
         walk
           ? {
               ...walk,
+              gpsPausedEventCount: walk.gpsPausedEventCount + 1,
               lastRejectedPointReason: "GPS watch unavailable; recording paused until signal returns"
             }
           : walk
@@ -852,8 +861,12 @@ export function MapScreen({
         activeWalk.points,
         activeWalk.activityMode
       );
+      const objectiveBefore = objectiveStats;
       const loopResult = await reprocessModeExploration(activeWalk.activityMode);
       await refreshSavedData();
+      const objectiveAfter = objective
+        ? await calculateObjectiveStats(objective)
+        : null;
       await waitForMapRenderCommit();
       setIsComputingRecording(false);
       setRecordingSummary({
@@ -864,8 +877,11 @@ export function MapScreen({
           Math.round((new Date(endedAt).getTime() - new Date(activeWalk.startedAt).getTime()) / 1000)
         ),
         finalStepCount,
+        gpsPausedEventCount: activeWalk.gpsPausedEventCount,
         loopResult,
         newCellCount,
+        objectiveAfter,
+        objectiveBefore,
         quality: recordingQuality,
         sessionId: savedSessionId
       });
@@ -877,6 +893,8 @@ export function MapScreen({
   }, [
     activeWalk,
     backgroundTrackingStatus,
+    objective,
+    objectiveStats,
     recordingQuality,
     refreshSavedData,
     reprocessModeExploration,
@@ -935,6 +953,7 @@ export function MapScreen({
       acceptedGpsPointCount: points.length,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
+      gpsPausedEventCount: 0,
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
@@ -960,6 +979,7 @@ export function MapScreen({
       acceptedGpsPointCount: points.length,
       currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
       distanceMeters: calculatePathDistanceMeters(points),
+      gpsPausedEventCount: 0,
       lastRejectedPointReason: null,
       points,
       sessionId: session.id,
@@ -1148,6 +1168,7 @@ export function MapScreen({
         onMapReady={() => setIsMapReady(true)}
         selectedZone={selectedZone}
         streetSegments={streetSegments}
+        todayNewCellIds={todayNewCellIds}
       />
 
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
@@ -1416,6 +1437,10 @@ function ObjectiveHud({
   onClear: () => void;
 }) {
   const remainingCells = getObjectiveRemainingCells(stats);
+  const objectiveProgress =
+    stats?.completionPercent === null || stats?.completionPercent === undefined
+      ? 0
+      : Math.max(0, Math.min(100, stats.completionPercent));
 
   return (
     <View style={styles.objectiveHud}>
@@ -1433,6 +1458,9 @@ function ObjectiveHud({
             ? `${stats?.exploredCells ?? 0} cells explored`
             : `${remainingCells} cells remaining`}
         </Text>
+        <View style={styles.objectiveProgressTrack}>
+          <View style={[styles.objectiveProgressFill, { width: `${objectiveProgress}%` }]} />
+        </View>
         <Text style={styles.objectiveToday}>+{todayCellCount} cells today</Text>
       </View>
       <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
@@ -1544,6 +1572,8 @@ function RecordingSummaryModal({
   }
 
   const isFrench = language === "fr";
+  const objectiveDelta = getObjectiveProgressDelta(summary.objectiveBefore, summary.objectiveAfter);
+  const milestoneBadges = getRecordingMilestones(summary, language);
 
   return (
     <Modal animationType="slide" transparent visible>
@@ -1572,6 +1602,26 @@ function RecordingSummaryModal({
             <SummaryMetric label={isFrench ? "Boucles" : "Loops"} value={formatLoopResultShort(summary.loopResult, language)} />
           </View>
 
+          <View style={styles.summaryGrid}>
+            <SummaryMetric label={isFrench ? "Objectif" : "Objective"} value={formatObjectiveDelta(objectiveDelta, language)} />
+            <SummaryMetric label="GPS" value={formatGpsSummary(summary.gpsPausedEventCount, language)} />
+          </View>
+          <View style={styles.summaryProgressPanel}>
+            <Text style={styles.summaryNote}>
+              {formatObjectiveProgressLine(summary.objectiveBefore, summary.objectiveAfter, language)}
+            </Text>
+            <Text style={styles.summaryNote}>{formatLoopResultLine(summary.loopResult)}</Text>
+          </View>
+          {milestoneBadges.length > 0 ? (
+            <View style={styles.badgeRow}>
+              {milestoneBadges.map((badge) => (
+                <View key={badge.label} style={[styles.badge, styles.unlockedBadge]}>
+                  <Ionicons name={badge.icon} size={15} color="#02060a" />
+                  <Text style={[styles.badgeText, styles.unlockedBadgeText]}>{badge.label}</Text>
+                </View>
+              ))}
+            </View>
+          ) : null}
           <Text style={styles.summaryNote}>{summary.quality.reason}</Text>
           <TextInput
             onChangeText={setDisplayName}
@@ -1607,6 +1657,107 @@ function SummaryMetric({ label, value }: { label: string; value: string }) {
       <Text style={styles.summaryMetricLabel}>{label}</Text>
     </View>
   );
+}
+
+function getObjectiveProgressDelta(
+  before: ZoneCompletionStats | null,
+  after: ZoneCompletionStats | null
+) {
+  return {
+    cells: (after?.exploredCells ?? 0) - (before?.exploredCells ?? 0),
+    percent:
+      after?.completionPercent !== null &&
+      after?.completionPercent !== undefined &&
+      before?.completionPercent !== null &&
+      before?.completionPercent !== undefined
+        ? Math.round((after.completionPercent - before.completionPercent) * 10) / 10
+        : null
+  };
+}
+
+function formatObjectiveDelta(
+  delta: { cells: number; percent: number | null },
+  language: AppLanguage
+) {
+  if (delta.cells === 0 && (delta.percent === null || delta.percent === 0)) {
+    return language === "fr" ? "inchangÃ©" : "unchanged";
+  }
+
+  const percentText = delta.percent !== null && delta.percent !== 0
+    ? `, ${delta.percent > 0 ? "+" : ""}${delta.percent}%`
+    : "";
+
+  return `${delta.cells > 0 ? "+" : ""}${delta.cells} cells${percentText}`;
+}
+
+function formatObjectiveProgressLine(
+  before: ZoneCompletionStats | null,
+  after: ZoneCompletionStats | null,
+  language: AppLanguage
+) {
+  if (!after) {
+    return language === "fr"
+      ? "Aucun objectif actif pendant cette sortie."
+      : "No active objective during this recording.";
+  }
+
+  const remainingCells = after.totalZoneCells === null
+    ? null
+    : Math.max(0, after.totalZoneCells - after.exploredCells);
+  const delta = getObjectiveProgressDelta(before, after);
+  const completion = after.completionPercent === null
+    ? getStrings(language).common.pending
+    : `${after.completionPercent}%`;
+
+  if (language === "fr") {
+    return `${completion} sur l'objectif, ${remainingCells ?? "?"} cellules restantes, ${delta.cells >= 0 ? "+" : ""}${delta.cells} cellules sur cette sortie.`;
+  }
+
+  return `${completion} objective progress, ${remainingCells ?? "?"} cells remaining, ${delta.cells >= 0 ? "+" : ""}${delta.cells} cells from this recording.`;
+}
+
+function formatGpsSummary(pausedEventCount: number, language: AppLanguage) {
+  if (pausedEventCount === 0) {
+    return language === "fr" ? "propre" : "clean";
+  }
+
+  return language === "fr" ? `${pausedEventCount} pauses` : `${pausedEventCount} paused`;
+}
+
+function getRecordingMilestones(summary: RecordingSummary, language: AppLanguage) {
+  const isFrench = language === "fr";
+  const milestones: Array<{ icon: keyof typeof Ionicons.glyphMap; label: string }> = [];
+
+  if (summary.newCellCount >= 1000) {
+    milestones.push({
+      icon: "grid-outline",
+      label: isFrench ? "1000 cellules" : "1000 cells"
+    });
+  }
+
+  if (summary.distanceMeters >= 25000) {
+    milestones.push({ icon: "map-outline", label: "25 km" });
+  } else if (summary.distanceMeters >= 10000) {
+    milestones.push({ icon: "map-outline", label: "10 km" });
+  } else if (summary.distanceMeters >= 5000) {
+    milestones.push({ icon: "map-outline", label: "5 km" });
+  }
+
+  if ((summary.objectiveAfter?.completionPercent ?? 0) >= 5) {
+    milestones.push({
+      icon: "flag-outline",
+      label: isFrench ? "Quartier 5%" : "District 5%"
+    });
+  }
+
+  if (summary.gpsPausedEventCount === 0 && summary.quality.score >= 80) {
+    milestones.push({
+      icon: "checkmark-circle-outline",
+      label: isFrench ? "GPS propre" : "Clean GPS"
+    });
+  }
+
+  return milestones;
 }
 
 function formatLoopResultShort(result: LoopProcessingResult, language: AppLanguage) {
@@ -2011,8 +2162,18 @@ function getAchievementBadges(
     },
     {
       icon: "map-outline" as keyof typeof Ionicons.glyphMap,
+      label: "5 km",
+      unlocked: stats.totalDistanceMeters >= 5000
+    },
+    {
+      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
       label: "10 km",
       unlocked: stats.totalDistanceMeters >= 10000
+    },
+    {
+      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
+      label: "25 km",
+      unlocked: stats.totalDistanceMeters >= 25000
     },
     {
       icon: "grid-outline" as keyof typeof Ionicons.glyphMap,
@@ -2021,8 +2182,13 @@ function getAchievementBadges(
     },
     {
       icon: "flag-outline" as keyof typeof Ionicons.glyphMap,
-      label: isFrench ? "Zone terminée" : "Zone complete",
-      unlocked: (objectiveStats?.completionPercent ?? 0) >= 100
+      label: isFrench ? "Quartier 5%" : "District 5%",
+      unlocked: (objectiveStats?.completionPercent ?? 0) >= 5
+    },
+    {
+      icon: "trophy-outline" as keyof typeof Ionicons.glyphMap,
+      label: isFrench ? "Record perso" : "Longest walk",
+      unlocked: stats.longestRecordingDistanceMeters > 0
     }
   ];
 }
@@ -2100,6 +2266,35 @@ function filterWalksForPathDisplay(
   }
 
   return walks.filter((walk) => isToday(walk.startedAt));
+}
+
+async function calculateObjectiveStats(objective: CompletionObjective) {
+  const cells = await getExploredCellRecords(objective.mode);
+
+  return calculateZoneCompletionStats(objective.zone, cells);
+}
+
+function collectTodayNewCellIds(
+  walks: WalkWithPoints[],
+  activePoints: GpsPoint[],
+  activeMode: ActivityMode
+) {
+  const previousCellIds = new Set<string>();
+  const todayCellIds = new Set<string>();
+
+  for (const walk of walks) {
+    const target = isToday(walk.startedAt) ? todayCellIds : previousCellIds;
+
+    for (const cellId of collectExploredCellIdsForPath(walk.points, walk.activityMode)) {
+      target.add(cellId);
+    }
+  }
+
+  for (const cellId of collectExploredCellIdsForPath(activePoints, activeMode)) {
+    todayCellIds.add(cellId);
+  }
+
+  return [...todayCellIds].filter((cellId) => !previousCellIds.has(cellId));
 }
 
 function getRecentDistanceMeters(walks: WalkWithPoints[], dayCount: number) {
@@ -2616,6 +2811,18 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     maxWidth: 300
   },
+  objectiveProgressFill: {
+    backgroundColor: "#9cff00",
+    borderRadius: 999,
+    height: "100%"
+  },
+  objectiveProgressTrack: {
+    backgroundColor: "rgba(148, 163, 184, 0.22)",
+    borderRadius: 999,
+    height: 6,
+    marginTop: 6,
+    overflow: "hidden"
+  },
   objectiveText: {
     flex: 1,
     flexShrink: 1
@@ -2788,6 +2995,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "700",
     lineHeight: 17
+  },
+  summaryProgressPanel: {
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.24)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 6,
+    padding: 10
   },
   summaryPrimary: {
     alignItems: "center",

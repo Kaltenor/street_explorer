@@ -6,6 +6,7 @@ import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
 import {
   buildExplorationCells,
+  buildExplorationCell,
   buildExplorationOutlineSegments,
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
@@ -27,6 +28,7 @@ type ExplorationMapProps = {
   onMapReady?: () => void;
   selectedZone: CachedZone | null;
   streetSegments: OsmStreetSegment[];
+  todayNewCellIds: string[];
 };
 
 const PATH_COLORS = [
@@ -52,7 +54,8 @@ export function ExplorationMap({
   layers,
   loopFillCellIds,
   onMapReady,
-  selectedZone
+  selectedZone,
+  todayNewCellIds
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
@@ -67,6 +70,9 @@ export function ExplorationMap({
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
   const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
   const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
+  const todayNewPolygons = buildMergedExplorationPolygons(
+    todayNewCellIds.map((cellId) => buildExplorationCell(cellId, "gps"))
+  );
   const shouldShowCompletedArea = layers.showExploredCells;
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
@@ -183,6 +189,16 @@ export function ExplorationMap({
           />
         )) : null}
 
+        {shouldShowCompletedArea ? todayNewPolygons.map((polygon) => (
+          <Polygon
+            key={`today-${polygon.id}`}
+            coordinates={polygon.coordinates}
+            fillColor={areaStyle.todayFillColor}
+            strokeColor="rgba(248, 113, 113, 0)"
+            strokeWidth={0}
+          />
+        )) : null}
+
         {shouldShowOutline ? explorationOutlineSegments.map((segment) => (
           <Polyline
             coordinates={segment.coordinates}
@@ -274,7 +290,8 @@ function getExploredAreaStyle(latitudeDelta: number) {
     return {
       fillColor: "rgba(239, 68, 68, 0.50)",
       outlineColor: "rgba(0, 0, 0, 0.34)",
-      outlineWidth: 1
+      outlineWidth: 1,
+      todayFillColor: "rgba(251, 146, 60, 0.38)"
     };
   }
 
@@ -282,7 +299,8 @@ function getExploredAreaStyle(latitudeDelta: number) {
     return {
       fillColor: "rgba(239, 68, 68, 0.46)",
       outlineColor: "rgba(0, 0, 0, 0.54)",
-      outlineWidth: 1.5
+      outlineWidth: 1.5,
+      todayFillColor: "rgba(251, 146, 60, 0.42)"
     };
   }
 
@@ -290,14 +308,16 @@ function getExploredAreaStyle(latitudeDelta: number) {
     return {
       fillColor: "rgba(239, 68, 68, 0.40)",
       outlineColor: "rgba(0, 0, 0, 0.74)",
-      outlineWidth: 2.4
+      outlineWidth: 2.4,
+      todayFillColor: "rgba(251, 146, 60, 0.48)"
     };
   }
 
   return {
     fillColor: "rgba(239, 68, 68, 0.34)",
     outlineColor: "rgba(0, 0, 0, 0.92)",
-    outlineWidth: 3.5
+    outlineWidth: 3.5,
+    todayFillColor: "rgba(251, 146, 60, 0.54)"
   };
 }
 

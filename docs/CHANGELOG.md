@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.3.44
+
+Added:
+
+- Post-walk report now shows objective progress delta, GPS clean/paused state, loop-fill result, and earned walk milestones.
+- Today’s newly explored cells now render as a brighter overlay on the map.
+- Objective HUD now includes a compact progress bar.
+- Goals and badges now cover 5 km, 10 km, 25 km, 1000 cells, district 5%, and longest-walk progress.
+
 ## v0.3.43
 
 Fixed:

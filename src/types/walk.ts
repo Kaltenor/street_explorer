@@ -32,6 +32,7 @@ export type ActiveWalk = {
   startedAt: string;
   acceptedGpsPointCount: number;
   rejectedGpsPointCount: number;
+  gpsPausedEventCount: number;
   points: GpsPoint[];
   distanceMeters: number;
   currentSpeedMetersPerSecond: number;

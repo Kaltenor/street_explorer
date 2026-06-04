@@ -31,6 +31,7 @@ export function createActiveWalk(
     startedAt,
     acceptedGpsPointCount: 0,
     points: [],
+    gpsPausedEventCount: 0,
     rejectedGpsPointCount: 0,
     distanceMeters: 0,
     currentSpeedMetersPerSecond: 0,
@@ -47,6 +48,10 @@ export function appendGpsPoint(activeWalk: ActiveWalk, rawPoint: GpsPoint): Acti
     return {
       ...activeWalk,
       lastRejectedPointReason: evaluation.reason,
+      gpsPausedEventCount:
+        !evaluation.countAsRejected && evaluation.reason
+          ? activeWalk.gpsPausedEventCount + 1
+          : activeWalk.gpsPausedEventCount,
       rejectedGpsPointCount: evaluation.countAsRejected
         ? activeWalk.rejectedGpsPointCount + 1
         : activeWalk.rejectedGpsPointCount
