@@ -30,6 +30,6 @@ Use Expo Go for normal foreground testing. Use a development build later for rel
 
 ## Current Status
 
-Current version: `v0.3.25`
+Current version: `v0.3.26`
 
 The app supports local recording, mode-specific GPS filtering, history, explored cells, loop-fill analysis, recovery for unfinished recordings, and hidden OpenStreetMap analysis for future street completion.

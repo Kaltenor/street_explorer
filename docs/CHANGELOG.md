@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.3.26
+
+Added:
+
+- Branded loading screen overlay using the Street Explorer artwork style.
+- Loading screen waits for saved map data, location readiness, and native map readiness before showing `Press to start`.
+
+Changed:
+
+- Native Expo splash image now points to the portrait loading artwork.
+
 ## v0.3.25
 
 Added:

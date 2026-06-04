@@ -8,6 +8,7 @@ import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
+import { LaunchLoadingOverlay } from "../components/LaunchLoadingOverlay";
 import { MapLegend } from "../components/MapLegend";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
 import {
@@ -175,6 +176,9 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [backgroundTrackingMessage, setBackgroundTrackingMessage] = useState<string | null>(null);
   const [backgroundTrackingStatus, setBackgroundTrackingStatus] =
     useState<BackgroundTrackingStatus>("idle");
+  const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
+  const [isMapReady, setIsMapReady] = useState(false);
+  const [isSavedDataReady, setIsSavedDataReady] = useState(false);
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
@@ -208,6 +212,11 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       }),
     [activeWalk, backgroundTrackingStatus, currentLocation, elapsedSeconds]
   );
+  const isLaunchReady =
+    isMapReady &&
+    isSavedDataReady &&
+    permissionState !== "unknown" &&
+    (permissionState !== "granted" || Boolean(currentLocation));
   const todayObjectiveCellCount = useMemo(() => {
     if (!objective) {
       return 0;
@@ -283,6 +292,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         ? currentSessionId
         : null
     );
+    setIsSavedDataReady(true);
   }, [activeWalk?.points, activityMode]);
 
   const toggleLayer = useCallback((layer: keyof MapLayerState) => {
@@ -988,6 +998,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         highlightedSessionId={selectedSessionId}
         layers={layers}
         loopFillCellIds={loopFillCellIds}
+        onMapReady={() => setIsMapReady(true)}
         onToggleLayer={toggleLayer}
         selectedZone={selectedZone}
         streetSegments={streetSegments}
@@ -1200,6 +1211,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
       />
+      {!isLaunchDismissed ? (
+        <LaunchLoadingOverlay
+          isReady={isLaunchReady}
+          onStart={() => setIsLaunchDismissed(true)}
+        />
+      ) : null}
     </View>
   );
 }

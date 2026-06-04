@@ -25,6 +25,7 @@ type ExplorationMapProps = {
   highlightedSessionId: number | null;
   layers: MapLayerState;
   loopFillCellIds: string[];
+  onMapReady?: () => void;
   onToggleLayer: (layer: keyof MapLayerState) => void;
   selectedZone: CachedZone | null;
   streetSegments: OsmStreetSegment[];
@@ -52,6 +53,7 @@ export function ExplorationMap({
   highlightedSessionId,
   layers,
   loopFillCellIds,
+  onMapReady,
   onToggleLayer,
   selectedZone,
   streetSegments
@@ -197,6 +199,7 @@ export function ExplorationMap({
         style={styles.map}
         initialRegion={region}
         onPanDrag={() => setIsAutoFollowEnabled(false)}
+        onMapReady={onMapReady}
         onRegionChangeComplete={setVisibleRegion}
         onTouchStart={() => setIsAutoFollowEnabled(false)}
         pitchEnabled
