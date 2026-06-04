@@ -60,7 +60,7 @@ export function WalkControls({
           >
             <Ionicons
               name={detailsExpanded ? "chevron-down" : "chevron-up"}
-              color="#0f172a"
+              color="#f8fafc"
               size={16}
             />
             <Text style={styles.detailsToggleText}>
@@ -153,16 +153,16 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   container: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(2, 6, 10, 0.9)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 12,
     padding: 12
   },
   details: {
-    backgroundColor: "#f8fafc",
-    borderColor: "#e2e8f0",
+    backgroundColor: "rgba(15, 23, 42, 0.92)",
+    borderColor: "rgba(248, 250, 252, 0.14)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -178,30 +178,30 @@ const styles = StyleSheet.create({
     paddingVertical: 2
   },
   detailsToggleText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
   gpsStatus: {
-    color: "#64748b",
+    color: "#cbd5e1",
     flexBasis: "100%",
     fontSize: 12,
     fontWeight: "700"
   },
   goodQuality: {
-    backgroundColor: "#dcfce7",
+    backgroundColor: "rgba(22, 163, 74, 0.32)",
     borderColor: "#86efac"
   },
   metric: {
     flex: 1
   },
   metricLabel: {
-    color: "#64748b",
+    color: "#cbd5e1",
     fontSize: 12,
     marginTop: 2
   },
   metricValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 16,
     fontWeight: "700"
   },
@@ -210,11 +210,11 @@ const styles = StyleSheet.create({
     gap: 12
   },
   okQuality: {
-    backgroundColor: "#fef9c3",
+    backgroundColor: "rgba(234, 179, 8, 0.32)",
     borderColor: "#fde047"
   },
   poorQuality: {
-    backgroundColor: "#fee2e2",
+    backgroundColor: "rgba(220, 38, 38, 0.32)",
     borderColor: "#fca5a5"
   },
   qualityBadge: {
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4
   },
   qualityText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 11,
     fontWeight: "900"
   },

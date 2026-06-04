@@ -26,6 +26,7 @@ type WalkHistoryModalProps = {
   onExportBackup: () => void;
   onExportWalkGpx: (sessionId: number) => void;
   onImportBackup: () => void;
+  onOpenDiagnostics: () => void;
   onRenameWalk: (sessionId: number, displayName: string) => void;
   onSelectWalk: (sessionId: number) => void;
 };
@@ -41,6 +42,7 @@ export function WalkHistoryModal({
   onExportBackup,
   onExportWalkGpx,
   onImportBackup,
+  onOpenDiagnostics,
   onRenameWalk,
   onSelectWalk
 }: WalkHistoryModalProps) {
@@ -59,16 +61,21 @@ export function WalkHistoryModal({
   }, [visible]);
 
   return (
-    <Modal animationType="slide" visible={visible} presentationStyle="pageSheet">
+    <Modal
+      animationType="slide"
+      onRequestClose={onClose}
+      presentationStyle="fullScreen"
+      visible={visible}
+    >
       <View style={styles.screen}>
         <View style={styles.header}>
+          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
+            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
+          </TouchableOpacity>
           <View>
             <Text style={styles.title}>{ACTIVITY_MODE_LABELS[activityMode]} history</Text>
             <Text style={styles.subtitle}>{walks.length} saved recordings</Text>
           </View>
-          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="close" size={24} color="#0f172a" />
-          </TouchableOpacity>
         </View>
 
         {detailWalk ? (
@@ -106,6 +113,14 @@ export function WalkHistoryModal({
               >
                 <Ionicons name="cloud-upload-outline" size={18} color="#0f172a" />
                 <Text style={styles.toolButtonText}>Restore</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={onOpenDiagnostics}
+                style={styles.toolButton}
+              >
+                <Ionicons name="pulse-outline" size={18} color="#0f172a" />
+                <Text style={styles.toolButtonText}>Diagnostics</Text>
               </TouchableOpacity>
             </View>
 
@@ -383,6 +398,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "800"
   },
+  backToMapButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(15, 23, 42, 0.96)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 42,
+    justifyContent: "center",
+    width: 42
+  },
   closeButton: {
     alignItems: "center",
     borderColor: "#dbe3ea",
@@ -484,11 +509,13 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    borderBottomColor: "#e2e8f0",
+    backgroundColor: "#02060a",
+    borderBottomColor: "rgba(156, 255, 0, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 18
+    gap: 12,
+    padding: 16,
+    paddingTop: 58
   },
   input: {
     backgroundColor: "#ffffff",
@@ -560,7 +587,7 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   screen: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#071016",
     flex: 1
   },
   selectedRow: {
@@ -590,12 +617,12 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   subtitle: {
-    color: "#64748b",
+    color: "#cbd5e1",
     fontSize: 13,
     marginTop: 3
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 22,
     fontWeight: "900"
   },

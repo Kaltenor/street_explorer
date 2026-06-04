@@ -209,7 +209,7 @@ function inferStreetRoute(
   const startNode = findNearestGraphNode(startPoint, graph);
   const endNode = findNearestGraphNode(endPoint, graph);
 
-  if (!startNode || !endNode || startNode.distanceMeters > 60 || endNode.distanceMeters > 60) {
+  if (!startNode || !endNode || startNode.distanceMeters > 75 || endNode.distanceMeters > 75) {
     return null;
   }
 

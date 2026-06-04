@@ -1,5 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Alert, AppState, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  AppState,
+  Image,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -45,6 +56,7 @@ import {
   CachedZone,
   deleteExploredCellsForSession,
   deleteLoopFillDataForMode,
+  getCachedZones,
   getExploredCellRecords,
   getLoopFillCellKeys,
   getLoopFillSessionSummaries,
@@ -75,6 +87,7 @@ import {
   countExploredCellKeysInsideZone,
   ZoneCompletionStats
 } from "../services/zoneCompletion";
+import { buildPathSegments } from "../services/pathInference";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
@@ -88,7 +101,7 @@ import {
   finishPersistedActiveWalk,
   persistAcceptedGpsPoint
 } from "../services/walkRecorder";
-import { calculatePathDistanceMeters } from "../services/distance";
+import { calculatePathDistanceMeters, formatDistance } from "../services/distance";
 import {
   getStepCountBetween,
   StepSubscription,
@@ -121,11 +134,11 @@ const EMPTY_STATS: LifetimeStats = {
   todayStepCount: 0
 };
 
-const OSM_STREET_RADIUS_METERS = 650;
+const OSM_STREET_RADIUS_METERS = 1600;
 
 type MapScreenProps = {
   activityMode: ActivityMode;
-  onChangeMode: () => void;
+  onChangeMode: (mode: ActivityMode) => void;
 };
 
 type PathDisplayMode = "today" | "last7" | "all" | "selected";
@@ -163,6 +176,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [completionVisible, setCompletionVisible] = useState(false);
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
+  const [isComputingRecording, setIsComputingRecording] = useState(false);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
@@ -186,6 +200,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
+  const lastAutoObjectiveZoneIdRef = useRef<string | null>(null);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const streetCacheCenterRef = useRef<GpsPoint | null>(null);
   const streetCompletion = useMemo(
@@ -330,6 +345,53 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       .then(setObjectiveStats)
       .catch((error) => console.warn("Failed to calculate objective completion", error));
   }, [loopFillCellIds, objective, walks]);
+
+  useEffect(() => {
+    if (
+      !currentLocation ||
+      !objective ||
+      !["city", "district"].includes(objective.zone.type)
+    ) {
+      return;
+    }
+
+    let isMounted = true;
+
+    getCachedZones(objective.zone.type)
+      .then(async (zones) => {
+        if (!isMounted) {
+          return;
+        }
+
+        const containingZone = zones.find((zone) => isPointInsideZone(currentLocation, zone));
+
+        if (
+          !containingZone ||
+          containingZone.id === objective.zone.id ||
+          containingZone.id === lastAutoObjectiveZoneIdRef.current
+        ) {
+          return;
+        }
+
+        lastAutoObjectiveZoneIdRef.current = containingZone.id;
+        const nextObjective = {
+          mode: objective.mode,
+          zone: containingZone
+        };
+
+        setObjective(nextObjective);
+        setSelectedZone(containingZone);
+        await saveCompletionObjective({
+          mode: nextObjective.mode,
+          zoneId: containingZone.id
+        });
+      })
+      .catch((error) => console.warn("Failed to auto-switch completion objective", error));
+
+    return () => {
+      isMounted = false;
+    };
+  }, [currentLocation, objective]);
 
   useEffect(() => {
     if (!currentLocation) {
@@ -714,30 +776,55 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       return;
     }
 
-    const endedAt = new Date().toISOString();
-    const finalStepCount =
-      activeWalk.activityMode === "walk"
-        ? await getStepCountBetween(activeWalk.startedAt, endedAt)
-        : activeWalk.stepCount;
+    setIsComputingRecording(true);
 
-    await stopBackgroundLocationTracking();
-    stopStepWatch();
-    await clearActiveRecordingSettings();
-    const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt, finalStepCount);
-    setActiveWalk(null);
-    setElapsedSeconds(0);
-    setBackgroundTrackingStatus("idle");
-    setBackgroundTrackingMessage(null);
+    try {
+      const endedAt = new Date().toISOString();
+      const finalStepCount =
+        activeWalk.activityMode === "walk"
+          ? await getStepCountBetween(activeWalk.startedAt, endedAt)
+          : activeWalk.stepCount;
 
-    if (!savedSessionId) {
-      Alert.alert("Walk discarded", "At least 2 valid GPS points are required to save a walk.");
-      return;
+      const finalBackgroundStatus = backgroundTrackingStatus;
+      await stopBackgroundLocationTracking();
+      stopStepWatch();
+      await clearActiveRecordingSettings();
+      const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt, finalStepCount);
+      setActiveWalk(null);
+      setElapsedSeconds(0);
+      setBackgroundTrackingStatus("idle");
+      setBackgroundTrackingMessage(null);
+
+      if (!savedSessionId) {
+        setIsComputingRecording(false);
+        Alert.alert("Walk discarded", "At least 2 valid GPS points are required to save a walk.");
+        return;
+      }
+
+      const loopResult = await reprocessModeExploration(activeWalk.activityMode);
+      await refreshSavedData();
+      setIsComputingRecording(false);
+      showRecordingResultAlert({
+        activeWalk,
+        backgroundStatus: finalBackgroundStatus,
+        finalStepCount,
+        loopResult,
+        quality: recordingQuality
+      });
+    } catch (error) {
+      console.warn("Failed to stop recording", error);
+      setIsComputingRecording(false);
+      Alert.alert("Recording failed", "Street Explorer could not finish this recording.");
     }
-
-    const loopResult = await reprocessModeExploration(activeWalk.activityMode);
-    await refreshSavedData();
-    showLoopResultAlert(loopResult);
-  }, [activeWalk, refreshSavedData, reprocessModeExploration, stopLocationWatch, stopStepWatch]);
+  }, [
+    activeWalk,
+    backgroundTrackingStatus,
+    recordingQuality,
+    refreshSavedData,
+    reprocessModeExploration,
+    stopLocationWatch,
+    stopStepWatch
+  ]);
 
   const handleReprocessRecordings = useCallback(() => {
     if (activeWalk) {
@@ -959,13 +1046,13 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     );
   }, [activeWalk, refreshSavedData]);
 
-  const handleChangeMode = useCallback(() => {
+  const handleChangeMode = useCallback((mode: ActivityMode) => {
     if (activeWalk) {
       Alert.alert("Recording active", "Stop the current recording before changing mode.");
       return;
     }
 
-    onChangeMode();
+    onChangeMode(mode);
   }, [activeWalk, onChangeMode]);
 
   useEffect(() => {
@@ -999,7 +1086,6 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         layers={layers}
         loopFillCellIds={loopFillCellIds}
         onMapReady={() => setIsMapReady(true)}
-        onToggleLayer={toggleLayer}
         selectedZone={selectedZone}
         streetSegments={streetSegments}
       />
@@ -1008,116 +1094,31 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         <View style={styles.topPanel}>
           <View style={styles.headerRow}>
             <View style={styles.headerText}>
-              <Text style={styles.title}>Street Explorer</Text>
+              <Image
+                resizeMode="contain"
+                source={require("../../assets/transplogo.png")}
+                style={styles.logo}
+              />
               <Text style={styles.version}>v{APP_VERSION}</Text>
-              {dashboardExpanded ? (
-                <Text style={styles.subtitle}>
-                  {ACTIVITY_MODE_LABELS[activityMode]} exploration map
-                </Text>
-              ) : null}
             </View>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={handleChangeMode}
-              style={styles.modeButton}
-            >
-              <Ionicons name="swap-horizontal" size={22} color="#0f172a" />
-              <Text style={styles.modeButtonText}>{ACTIVITY_MODE_LABELS[activityMode]}</Text>
-            </TouchableOpacity>
           </View>
-          <View style={styles.quickActions}>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => setDashboardExpanded((expanded) => !expanded)}
-              style={styles.dashboardToggle}
-            >
-              <Ionicons
-                name={dashboardExpanded ? "chevron-up" : "chevron-down"}
-                size={18}
-                color="#0f172a"
+          <View style={styles.objectiveRow}>
+            {objective ? (
+              <ObjectiveHud
+                objective={objective}
+                stats={objectiveStats}
+                todayCellCount={todayObjectiveCellCount}
+                onClear={async () => {
+                  setObjective(null);
+                  setObjectiveStats(null);
+                  await saveCompletionObjective(null);
+                }}
               />
-              <Text style={styles.dashboardToggleText}>
-                {dashboardExpanded ? "Hide details" : "Show details"}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => setHistoryVisible(true)}
-              style={styles.dashboardToggle}
-            >
-              <Ionicons name="time-outline" size={18} color="#0f172a" />
-              <Text style={styles.dashboardToggleText}>History</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => setCompletionVisible(true)}
-              style={styles.dashboardToggle}
-            >
-              <Ionicons name="trophy-outline" size={18} color="#0f172a" />
-              <Text style={styles.dashboardToggleText}>Completion</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityRole="button"
-              onPress={() => setDiagnosticsVisible(true)}
-              style={styles.dashboardToggle}
-            >
-              <Ionicons name="pulse-outline" size={18} color="#0f172a" />
-              <Text style={styles.dashboardToggleText}>Diagnostics</Text>
-            </TouchableOpacity>
+            ) : (
+              <View style={styles.objectiveSpacer} />
+            )}
+            <LayerControls layers={layers} onToggleLayer={toggleLayer} />
           </View>
-
-          {objective ? (
-            <ObjectiveHud
-              objective={objective}
-              stats={objectiveStats}
-              todayCellCount={todayObjectiveCellCount}
-              onClear={async () => {
-                setObjective(null);
-                setObjectiveStats(null);
-                await saveCompletionObjective(null);
-              }}
-            />
-          ) : null}
-
-          {dashboardExpanded ? (
-            <>
-              <StatsPanel activityMode={activityMode} stats={stats} />
-              <PathDisplayControls
-                mode={pathDisplayMode}
-                selectedSessionId={selectedSessionId}
-                onChangeMode={setPathDisplayMode}
-              />
-              <TouchableOpacity
-                accessibilityRole="button"
-                onPress={handleReprocessRecordings}
-                style={styles.dashboardToggle}
-              >
-                <Ionicons name="sync-outline" size={18} color="#0f172a" />
-                <Text style={styles.dashboardToggleText}>Reprocess recordings</Text>
-              </TouchableOpacity>
-              <MapLegend
-                showExploredCells={layers.showExploredCells}
-                showPaths={layers.showPaths}
-              />
-              <View style={styles.statusRow}>
-                <RecordingDiagnosticsPanel
-                  activeWalk={activeWalk}
-                  backgroundMessage={backgroundTrackingMessage}
-                  backgroundStatus={backgroundTrackingStatus}
-                  currentLocation={currentLocation}
-                  recordingQuality={recordingQuality}
-                />
-                <TouchableOpacity
-                  accessibilityRole="button"
-                  onPress={() => setHistoryVisible(true)}
-                  style={styles.historyButton}
-                >
-                  <Ionicons name="time-outline" size={18} color="#0f172a" />
-                  <Text style={styles.historyButtonText}>History</Text>
-                </TouchableOpacity>
-              </View>
-            </>
-          ) : null}
         </View>
 
         {permissionState === "denied" ? (
@@ -1130,19 +1131,37 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           </View>
         ) : null}
 
-        {dashboardExpanded ? (
-          <>
-            <RecordingHealthPanel
-              activeWalk={activeWalk}
-              backgroundMessage={backgroundTrackingMessage}
-              backgroundStatus={backgroundTrackingStatus}
-            />
-
-            <ModeProfilePanel activityMode={activityMode} />
-          </>
-        ) : null}
-
         <View style={styles.bottomPanel}>
+          <View style={styles.bottomTabs}>
+            <TouchableOpacity
+              accessibilityLabel="Details"
+              accessibilityRole="button"
+              onPress={() => setDashboardExpanded(true)}
+              style={[styles.bottomTab, dashboardExpanded ? styles.activeBottomTab : null]}
+            >
+              <Ionicons
+                name="list-outline"
+                size={19}
+                color={dashboardExpanded ? "#02060a" : "#f8fafc"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityLabel="History"
+              accessibilityRole="button"
+              onPress={() => setHistoryVisible(true)}
+              style={styles.bottomTab}
+            >
+              <Ionicons name="time-outline" size={19} color="#f8fafc" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityLabel="Completion"
+              accessibilityRole="button"
+              onPress={() => setCompletionVisible(true)}
+              style={styles.bottomTab}
+            >
+              <Ionicons name="trophy-outline" size={19} color="#f8fafc" />
+            </TouchableOpacity>
+          </View>
           <WalkControls
             activityMode={activityMode}
             isRecording={Boolean(activeWalk)}
@@ -1161,6 +1180,27 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         </View>
       </SafeAreaView>
 
+      <DetailsModal
+        activeWalk={activeWalk}
+        activityMode={activityMode}
+        backgroundMessage={backgroundTrackingMessage}
+        backgroundStatus={backgroundTrackingStatus}
+        currentLocation={currentLocation}
+        layers={layers}
+        mode={pathDisplayMode}
+        onChangeMode={setPathDisplayMode}
+        onClose={() => setDashboardExpanded(false)}
+        onOpenHistory={() => {
+          setDashboardExpanded(false);
+          setHistoryVisible(true);
+        }}
+        onReprocessRecordings={handleReprocessRecordings}
+        recordingQuality={recordingQuality}
+        selectedSessionId={selectedSessionId}
+        stats={stats}
+        visible={dashboardExpanded}
+      />
+
       <WalkHistoryModal
         activityMode={activityMode}
         loopFillSummaries={loopFillSummaries}
@@ -1174,6 +1214,10 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         onImportBackup={handleImportBackup}
         onRenameWalk={handleRenameWalk}
         onSelectWalk={setSelectedSessionId}
+        onOpenDiagnostics={() => {
+          setHistoryVisible(false);
+          setDiagnosticsVisible(true);
+        }}
       />
       <RecordingRecoveryModal
         onDiscard={handleDiscardRecoveredRecording}
@@ -1211,9 +1255,12 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
       />
+      <ComputingRecordingModal visible={isComputingRecording} />
       {!isLaunchDismissed ? (
         <LaunchLoadingOverlay
+          activityMode={activityMode}
           isReady={isLaunchReady}
+          onChangeMode={handleChangeMode}
           onStart={() => setIsLaunchDismissed(true)}
         />
       ) : null}
@@ -1253,23 +1300,199 @@ function ObjectiveHud({
   todayCellCount: number;
   onClear: () => void;
 }) {
+  const remainingCells = getObjectiveRemainingCells(stats);
+
   return (
     <View style={styles.objectiveHud}>
       <View style={styles.objectiveText}>
-        <Text style={styles.objectiveLabel}>Objective</Text>
-        <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
-        <Text style={styles.objectiveMeta}>
-          {formatObjectiveMode(objective.mode)} | {formatObjectiveCompletion(stats)}
+        <Text style={styles.objectiveLabel}>
+          {objective.zone.type === "district" ? "District objective" : `${objective.zone.type} objective`}
         </Text>
+        <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
+        <View style={styles.objectiveMetricRow}>
+          <Text style={styles.objectivePercent}>{formatObjectiveCompletion(stats)}</Text>
+          <Text style={styles.objectiveMeta}>{formatObjectiveMode(objective.mode)}</Text>
+        </View>
         <Text style={styles.objectiveMeta}>
-          {formatObjectiveCells(stats)}
+          {remainingCells === null
+            ? `${stats?.exploredCells ?? 0} cells explored`
+            : `${remainingCells} cells remaining`}
         </Text>
         <Text style={styles.objectiveToday}>+{todayCellCount} cells today</Text>
       </View>
       <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
-        <Ionicons name="close" size={17} color="#0f172a" />
+        <Ionicons name="close" size={17} color="#f8fafc" />
       </TouchableOpacity>
     </View>
+  );
+}
+
+function LayerControls({
+  layers,
+  onToggleLayer
+}: {
+  layers: MapLayerState;
+  onToggleLayer: (layer: keyof MapLayerState) => void;
+}) {
+  return (
+    <View style={styles.layerControls}>
+      <LayerIconButton
+        active={layers.showPaths}
+        accessibilityLabel="Toggle paths"
+        icon="git-branch-outline"
+        onPress={() => onToggleLayer("showPaths")}
+      />
+      <LayerIconButton
+        active={layers.showExploredCells}
+        accessibilityLabel="Toggle explored cells"
+        icon="grid-outline"
+        onPress={() => onToggleLayer("showExploredCells")}
+      />
+      <LayerIconButton
+        active={layers.showMarkers}
+        accessibilityLabel="Toggle pins"
+        icon="flag-outline"
+        onPress={() => onToggleLayer("showMarkers")}
+      />
+    </View>
+  );
+}
+
+function LayerIconButton({
+  accessibilityLabel,
+  active,
+  icon,
+  onPress
+}: {
+  accessibilityLabel: string;
+  active: boolean;
+  icon: keyof typeof Ionicons.glyphMap;
+  onPress: () => void;
+}) {
+  return (
+    <TouchableOpacity
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole="button"
+      onPress={onPress}
+      style={[styles.layerControlButton, active ? styles.activeLayerControlButton : null]}
+    >
+      <Ionicons name={icon} size={14} color={active ? "#02060a" : "#f8fafc"} />
+    </TouchableOpacity>
+  );
+}
+
+function ComputingRecordingModal({ visible }: { visible: boolean }) {
+  return (
+    <Modal animationType="fade" transparent visible={visible}>
+      <View style={styles.computingOverlay}>
+        <View style={styles.computingDialog}>
+          <ActivityIndicator color="#9cff00" size="large" />
+          <Text style={styles.computingTitle}>Computing information</Text>
+          <Text style={styles.computingText}>
+            Updating your route, explored area, loops, and recording report.
+          </Text>
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+function DetailsModal({
+  activeWalk,
+  activityMode,
+  backgroundMessage,
+  backgroundStatus,
+  currentLocation,
+  layers,
+  mode,
+  onChangeMode,
+  onClose,
+  onOpenHistory,
+  onReprocessRecordings,
+  recordingQuality,
+  selectedSessionId,
+  stats,
+  visible
+}: {
+  activeWalk: ActiveWalk | null;
+  activityMode: ActivityMode;
+  backgroundMessage: string | null;
+  backgroundStatus: BackgroundTrackingStatus;
+  currentLocation: GpsPoint | null;
+  layers: MapLayerState;
+  mode: PathDisplayMode;
+  onChangeMode: (mode: PathDisplayMode) => void;
+  onClose: () => void;
+  onOpenHistory: () => void;
+  onReprocessRecordings: () => void;
+  recordingQuality: ReturnType<typeof calculateRecordingQuality>;
+  selectedSessionId: number | null;
+  stats: LifetimeStats;
+  visible: boolean;
+}) {
+  return (
+    <Modal
+      animationType="slide"
+      onRequestClose={onClose}
+      presentationStyle="fullScreen"
+      visible={visible}
+    >
+      <View style={styles.detailsScreen}>
+        <View style={styles.fullScreenHeader}>
+          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
+            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.fullScreenTitle}>Details</Text>
+            <Text style={styles.fullScreenSubtitle}>
+              {ACTIVITY_MODE_LABELS[activityMode]} exploration map
+            </Text>
+          </View>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.detailsContent}>
+          <StatsPanel activityMode={activityMode} stats={stats} />
+          <PathDisplayControls
+            mode={mode}
+            selectedSessionId={selectedSessionId}
+            onChangeMode={onChangeMode}
+          />
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={onReprocessRecordings}
+            style={styles.dashboardToggle}
+          >
+            <Ionicons name="sync-outline" size={18} color="#f8fafc" />
+            <Text style={styles.dashboardToggleText}>Reprocess recordings</Text>
+          </TouchableOpacity>
+          <MapLegend
+            showExploredCells={layers.showExploredCells}
+            showPaths={layers.showPaths}
+          />
+          <RecordingDiagnosticsPanel
+            activeWalk={activeWalk}
+            backgroundMessage={backgroundMessage}
+            backgroundStatus={backgroundStatus}
+            currentLocation={currentLocation}
+            recordingQuality={recordingQuality}
+          />
+          <RecordingHealthPanel
+            activeWalk={activeWalk}
+            backgroundMessage={backgroundMessage}
+            backgroundStatus={backgroundStatus}
+          />
+          <ModeProfilePanel activityMode={activityMode} />
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={onOpenHistory}
+            style={styles.dashboardToggle}
+          >
+            <Ionicons name="time-outline" size={18} color="#f8fafc" />
+            <Text style={styles.dashboardToggleText}>Open history</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+    </Modal>
   );
 }
 
@@ -1354,46 +1577,81 @@ function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
     return "pending";
   }
 
-  return `${stats.completionPercent}% complete`;
+  return `${stats.completionPercent}%`;
 }
 
-function formatObjectiveCells(stats: ZoneCompletionStats | null) {
-  if (!stats) {
-    return "cells pending";
-  }
+function showRecordingResultAlert({
+  activeWalk,
+  backgroundStatus,
+  finalStepCount,
+  loopResult,
+  quality
+}: {
+  activeWalk: ActiveWalk;
+  backgroundStatus: BackgroundTrackingStatus;
+  finalStepCount: number;
+  loopResult: LoopProcessingResult;
+  quality: ReturnType<typeof calculateRecordingQuality>;
+}) {
+  const segments = buildPathSegments(activeWalk.points, activeWalk.activityMode);
+  const rejectedGapCount = segments.filter((segment) => segment.type === "rejected").length;
+  const gpsTotal = activeWalk.acceptedGpsPointCount + activeWalk.rejectedGpsPointCount;
+  const acceptRate = gpsTotal > 0
+    ? Math.round((activeWalk.acceptedGpsPointCount / gpsTotal) * 100)
+    : 0;
 
-  const remainingCells =
-    stats.totalZoneCells === null
-      ? null
-      : Math.max(0, stats.totalZoneCells - stats.exploredCells);
-
-  return remainingCells === null
-    ? `${stats.exploredCells} explored`
-    : `${stats.exploredCells} explored | ${remainingCells} left`;
+  Alert.alert(
+    `Recording saved - ${quality.label}`,
+    [
+      `Distance: ${formatDistance(activeWalk.distanceMeters)} from accepted GPS path.`,
+      `GPS: ${activeWalk.acceptedGpsPointCount} accepted, ${activeWalk.rejectedGpsPointCount} rejected (${acceptRate}% accepted).`,
+      `Gaps: ${rejectedGapCount} hidden/rejected. Street inference is paused for gameplay safety.`,
+      `Steps: ${finalStepCount.toLocaleString()}.`,
+      `Background: ${formatBackgroundStatus(backgroundStatus)}.`,
+      `Quality: ${quality.reason}`,
+      formatLoopResultLine(loopResult)
+    ].join("\n"),
+    [
+      {
+        text: "Add new data on map"
+      }
+    ]
+  );
 }
 
-function showLoopResultAlert(result: LoopProcessingResult) {
+function formatLoopResultLine(result: LoopProcessingResult) {
   if (result.status === "not_checked") {
-    Alert.alert(
-      "Loop check",
-      "No enclosed cell area was detected. Walked cells need to form a closed boundary before the interior can be filled."
-    );
-    return;
+    return "Loops: no enclosed cell area detected.";
   }
 
   if (result.status === "filled") {
-    Alert.alert(
-      "Loop filled",
-      `${result.filledLoopCount} enclosed area${
-        result.filledLoopCount === 1 ? "" : "s"
-      } filled. ${result.filledCellCount} interior cells were added.${
-        result.rejectedLoopCount > 0 ? ` ${result.rejectedLoopCount} area(s) were too large.` : ""
-      }`
-    );
-    return;
+    return `Loops: ${result.filledLoopCount} filled, ${result.filledCellCount} cells added.`;
   }
 
-  Alert.alert("Loop rejected", formatLoopRejectionReason(result.rejectionReason));
+  return `Loops: rejected - ${formatLoopRejectionReason(result.rejectionReason)}`;
+}
+
+function formatBackgroundStatus(status: BackgroundTrackingStatus) {
+  switch (status) {
+    case "enabled":
+      return "enabled";
+    case "foreground-only":
+      return "foreground only";
+    case "starting":
+      return "starting";
+    case "unavailable":
+      return "unavailable";
+    default:
+      return "idle";
+  }
+}
+
+function getObjectiveRemainingCells(stats: ZoneCompletionStats | null) {
+  if (!stats || stats.totalZoneCells === null) {
+    return null;
+  }
+
+  return Math.max(0, stats.totalZoneCells - stats.exploredCells);
 }
 
 function formatLoopRejectionReason(reason: string | null) {
@@ -1424,15 +1682,114 @@ function isToday(value: string) {
   );
 }
 
+function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
+  const coordinate = {
+    latitude: point.latitude,
+    longitude: point.longitude
+  };
+  const insideOuter = zone.geometry.some((ring) => pointInPolygon(coordinate, ring));
+  const insideHole = zone.holes.some((ring) => pointInPolygon(coordinate, ring));
+
+  return insideOuter && !insideHole;
+}
+
+function pointInPolygon(
+  point: { latitude: number; longitude: number },
+  polygon: Array<{ latitude: number; longitude: number }>
+) {
+  if (polygon.length < 3) {
+    return false;
+  }
+
+  let inside = false;
+
+  for (
+    let index = 0, previousIndex = polygon.length - 1;
+    index < polygon.length;
+    previousIndex = index, index += 1
+  ) {
+    const current = polygon[index];
+    const previous = polygon[previousIndex];
+
+    if (!current || !previous) {
+      continue;
+    }
+
+    const intersects =
+      current.longitude > point.longitude !== previous.longitude > point.longitude &&
+      point.latitude <
+        ((previous.latitude - current.latitude) * (point.longitude - current.longitude)) /
+          (previous.longitude - current.longitude) +
+          current.latitude;
+
+    if (intersects) {
+      inside = !inside;
+    }
+  }
+
+  return inside;
+}
+
 const styles = StyleSheet.create({
   bottomPanel: {
     marginTop: "auto"
   },
+  activeBottomTab: {
+    backgroundColor: "#9cff00",
+    borderColor: "#9cff00"
+  },
+  bottomTab: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.92)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 38,
+    justifyContent: "center",
+    width: 38
+  },
+  bottomTabs: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 7,
+    marginBottom: -1,
+    marginLeft: 10,
+    zIndex: 2
+  },
+  computingDialog: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.94)",
+    borderColor: "rgba(156, 255, 0, 0.35)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 10,
+    marginHorizontal: 28,
+    paddingHorizontal: 22,
+    paddingVertical: 20
+  },
+  computingOverlay: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.62)",
+    flex: 1,
+    justifyContent: "center"
+  },
+  computingText: {
+    color: "#cbd5e1",
+    fontSize: 13,
+    fontWeight: "700",
+    lineHeight: 18,
+    textAlign: "center"
+  },
+  computingTitle: {
+    color: "#f8fafc",
+    fontSize: 18,
+    fontWeight: "900"
+  },
   dashboardToggle: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -1442,27 +1799,67 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   dashboardToggleText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
+  },
+  backToMapButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(15, 23, 42, 0.96)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 42,
+    justifyContent: "center",
+    width: 42
+  },
+  detailsContent: {
+    gap: 12,
+    padding: 16,
+    paddingBottom: 28
+  },
+  detailsScreen: {
+    backgroundColor: "#071016",
+    flex: 1
   },
   disabledPathDisplayButton: {
     opacity: 0.45
   },
-  headerRow: {
-    alignItems: "flex-start",
+  fullScreenHeader: {
+    alignItems: "center",
+    backgroundColor: "#02060a",
+    borderBottomColor: "rgba(156, 255, 0, 0.22)",
+    borderBottomWidth: 1,
     flexDirection: "row",
     gap: 12,
-    justifyContent: "space-between"
+    padding: 16,
+    paddingTop: 58
+  },
+  fullScreenSubtitle: {
+    color: "#cbd5e1",
+    fontSize: 13,
+    marginTop: 3
+  },
+  fullScreenTitle: {
+    color: "#f8fafc",
+    fontSize: 24,
+    fontWeight: "900"
+  },
+  headerRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 12,
+    justifyContent: "center"
   },
   headerText: {
+    alignItems: "center",
     flex: 1
   },
   historyButton: {
     alignItems: "center",
     alignSelf: "flex-end",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -1472,9 +1869,27 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   historyButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "700"
+  },
+  activeLayerControlButton: {
+    backgroundColor: "#9cff00",
+    borderColor: "#9cff00"
+  },
+  layerControlButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 28,
+    justifyContent: "center",
+    width: 28
+  },
+  layerControls: {
+    gap: 6,
+    justifyContent: "center"
   },
   quickActions: {
     flexDirection: "row",
@@ -1500,8 +1915,8 @@ const styles = StyleSheet.create({
   },
   objectiveClear: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(15, 23, 42, 0.96)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     height: 34,
@@ -1510,58 +1925,85 @@ const styles = StyleSheet.create({
   },
   objectiveHud: {
     alignItems: "center",
-    alignSelf: "flex-start",
-    backgroundColor: "rgba(255, 255, 255, 0.96)",
-    borderColor: "#bfdbfe",
+    backgroundColor: "rgba(2, 6, 10, 0.88)",
+    borderColor: "rgba(156, 255, 0, 0.35)",
     borderRadius: 8,
     borderWidth: 1,
+    flex: 1,
     flexDirection: "row",
     gap: 10,
-    marginTop: 8,
-    maxWidth: "100%",
+    minWidth: 260,
     paddingHorizontal: 10,
     paddingVertical: 9
   },
   objectiveLabel: {
-    color: "#2563eb",
+    color: "#9cff00",
     fontSize: 10,
     fontWeight: "900"
   },
   objectiveMeta: {
-    color: "#475569",
+    color: "#cbd5e1",
     fontSize: 11,
     fontWeight: "700",
     marginTop: 1
   },
+  objectiveMetricRow: {
+    alignItems: "baseline",
+    flexDirection: "row",
+    gap: 7,
+    marginTop: 2
+  },
+  objectivePercent: {
+    color: "#f87171",
+    fontSize: 16,
+    fontWeight: "900"
+  },
   objectiveToday: {
-    color: "#16a34a",
+    color: "#9cff00",
     fontSize: 11,
     fontWeight: "900",
     marginTop: 2
   },
   objectiveName: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "900",
-    maxWidth: 260
+    maxWidth: 300
   },
   objectiveText: {
+    flex: 1,
     flexShrink: 1
+  },
+  objectiveRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 8
+  },
+  objectiveSpacer: {
+    flex: 1
   },
   overlay: {
     flex: 1,
     padding: 16
   },
+  logo: {
+    height: 292,
+    marginBottom: -86,
+    marginTop: -46,
+    maxWidth: "180%",
+    width: 1260
+  },
   pathDisplayButton: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     paddingHorizontal: 9,
     paddingVertical: 7
   },
   pathDisplayButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
@@ -1571,34 +2013,34 @@ const styles = StyleSheet.create({
     gap: 7
   },
   pathDisplayPanel: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 8,
     padding: 10
   },
   pathDisplayTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "900"
   },
   permissionPanel: {
-    backgroundColor: "rgba(254, 242, 242, 0.96)",
-    borderColor: "#fecaca",
+    backgroundColor: "rgba(69, 10, 10, 0.9)",
+    borderColor: "rgba(252, 165, 165, 0.45)",
     borderRadius: 8,
     borderWidth: 1,
     marginTop: 12,
     padding: 12
   },
   permissionText: {
-    color: "#7f1d1d",
+    color: "#fecaca",
     fontSize: 13,
     lineHeight: 18,
     marginTop: 4
   },
   permissionTitle: {
-    color: "#7f1d1d",
+    color: "#fee2e2",
     fontSize: 14,
     fontWeight: "700"
   },
@@ -1624,18 +2066,16 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "space-between"
   },
-  title: {
-    color: "#0f172a",
-    fontSize: 24,
-    fontWeight: "800"
-  },
   topPanel: {
     gap: 2
   },
   version: {
-    color: "#64748b",
+    color: "#f8fafc",
     fontSize: 11,
     fontWeight: "700",
-    marginTop: 1
+    marginTop: -4,
+    textShadowColor: "rgba(2, 6, 10, 0.75)",
+    textShadowOffset: { height: 1, width: 0 },
+    textShadowRadius: 2
   }
 });

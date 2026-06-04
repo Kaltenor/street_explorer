@@ -7,8 +7,8 @@
     "scheme": "street-explorer",
     "splash": {
       "backgroundColor": "#02060a",
-      "image": "./assets/loading-screen.png",
-      "resizeMode": "cover"
+      "image": "./assets/splash.png",
+      "resizeMode": "contain"
     },
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [

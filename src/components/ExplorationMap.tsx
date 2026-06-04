@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
@@ -10,7 +9,7 @@ import {
   buildExplorationOutlineSegments,
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
-import { buildPathSegmentsWithInference } from "../services/pathInference";
+import { buildPathSegments } from "../services/pathInference";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
@@ -26,7 +25,6 @@ type ExplorationMapProps = {
   layers: MapLayerState;
   loopFillCellIds: string[];
   onMapReady?: () => void;
-  onToggleLayer: (layer: keyof MapLayerState) => void;
   selectedZone: CachedZone | null;
   streetSegments: OsmStreetSegment[];
 };
@@ -54,9 +52,7 @@ export function ExplorationMap({
   layers,
   loopFillCellIds,
   onMapReady,
-  onToggleLayer,
-  selectedZone,
-  streetSegments
+  selectedZone
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
@@ -143,45 +139,6 @@ export function ExplorationMap({
     }
   }, [selectedZone]);
 
-  const centerOnCurrentLocation = () => {
-    if (!currentLocation) {
-      return;
-    }
-
-    setIsAutoFollowEnabled(true);
-
-    mapRef.current?.animateToRegion(
-      {
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-        latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
-        longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
-      },
-      450
-    );
-  };
-
-  const fitToVisiblePaths = () => {
-    setIsAutoFollowEnabled(false);
-
-    const coordinates = getAllPathPoints(pathWalks, activePoints).map(pointToCoordinate);
-
-    if (coordinates.length === 0) {
-      centerOnCurrentLocation();
-      return;
-    }
-
-    mapRef.current?.fitToCoordinates(coordinates, {
-      animated: true,
-      edgePadding: {
-        bottom: 220,
-        left: 42,
-        right: 42,
-        top: 190
-      }
-    });
-  };
-
   const fitToPoints = (
     points: GpsPoint[],
     edgePadding: { bottom: number; left: number; right: number; top: number }
@@ -260,7 +217,6 @@ export function ExplorationMap({
                 isHighlighted={isHighlighted}
                 points={walk.points}
                 simplificationToleranceMeters={pathSimplificationToleranceMeters}
-                streetSegments={streetSegments}
               />
               {layers.showMarkers && firstPoint ? (
                 <Marker
@@ -291,7 +247,6 @@ export function ExplorationMap({
               isHighlighted
               points={activePoints}
               simplificationToleranceMeters={0}
-              streetSegments={streetSegments}
             />
             {layers.showMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
@@ -305,73 +260,39 @@ export function ExplorationMap({
           <Marker coordinate={pointToCoordinate(currentLocation)} title="Current location" />
         ) : null}
       </MapView>
-
-      <View style={styles.controls}>
-        <TouchableOpacity
-          accessibilityLabel="Center on me"
-          accessibilityRole="button"
-          disabled={!currentLocation}
-          onPress={centerOnCurrentLocation}
-          style={[
-            styles.controlButton,
-            isAutoFollowEnabled ? styles.activeControlButton : null,
-            !currentLocation ? styles.disabledButton : null
-          ]}
-        >
-          <Ionicons name="locate" size={22} color={isAutoFollowEnabled ? "#ffffff" : "#0f172a"} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          accessibilityLabel="Fit all paths"
-          accessibilityRole="button"
-          onPress={fitToVisiblePaths}
-          style={styles.controlButton}
-        >
-          <Ionicons name="scan" size={22} color="#0f172a" />
-        </TouchableOpacity>
-        <LayerIconButton
-          active={layers.showPaths}
-          accessibilityLabel="Toggle paths"
-          icon="git-branch-outline"
-          onPress={() => onToggleLayer("showPaths")}
-        />
-        <LayerIconButton
-          active={layers.showExploredCells}
-          accessibilityLabel="Toggle explored cells"
-          icon="grid-outline"
-          onPress={() => onToggleLayer("showExploredCells")}
-        />
-        <LayerIconButton
-          active={layers.showMarkers}
-          accessibilityLabel="Toggle pins"
-          icon="flag-outline"
-          onPress={() => onToggleLayer("showMarkers")}
-        />
-      </View>
     </View>
   );
 }
 
 function getExploredAreaStyle(latitudeDelta: number) {
-  if (latitudeDelta > 0.045) {
+  if (latitudeDelta > 0.07) {
     return {
-      fillColor: "rgba(239, 68, 68, 0.42)",
-      outlineColor: "rgba(0, 0, 0, 0.48)",
+      fillColor: "rgba(239, 68, 68, 0.50)",
+      outlineColor: "rgba(0, 0, 0, 0.34)",
+      outlineWidth: 1
+    };
+  }
+
+  if (latitudeDelta > 0.035) {
+    return {
+      fillColor: "rgba(239, 68, 68, 0.46)",
+      outlineColor: "rgba(0, 0, 0, 0.54)",
       outlineWidth: 1.5
     };
   }
 
-  if (latitudeDelta > 0.018) {
+  if (latitudeDelta > 0.014) {
     return {
-      fillColor: "rgba(239, 68, 68, 0.38)",
-      outlineColor: "rgba(0, 0, 0, 0.72)",
-      outlineWidth: 2
+      fillColor: "rgba(239, 68, 68, 0.40)",
+      outlineColor: "rgba(0, 0, 0, 0.74)",
+      outlineWidth: 2.4
     };
   }
 
   return {
     fillColor: "rgba(239, 68, 68, 0.34)",
-    outlineColor: "rgba(0, 0, 0, 0.9)",
-    outlineWidth: 3
+    outlineColor: "rgba(0, 0, 0, 0.92)",
+    outlineWidth: 3.5
   };
 }
 
@@ -391,37 +312,13 @@ function getPathSimplificationTolerance(latitudeDelta: number) {
   return 0;
 }
 
-function LayerIconButton({
-  accessibilityLabel,
-  active,
-  icon,
-  onPress
-}: {
-  accessibilityLabel: string;
-  active: boolean;
-  icon: keyof typeof Ionicons.glyphMap;
-  onPress: () => void;
-}) {
-  return (
-    <TouchableOpacity
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole="button"
-      onPress={onPress}
-      style={[styles.layerControlButton, active ? styles.activeControlButton : null]}
-    >
-      <Ionicons name={icon} size={18} color={active ? "#ffffff" : "#0f172a"} />
-    </TouchableOpacity>
-  );
-}
-
 function PathSegmentLines({
   activityMode,
   color,
   isDimmed,
   isHighlighted,
   points,
-  simplificationToleranceMeters,
-  streetSegments
+  simplificationToleranceMeters
 }: {
   activityMode: ActivityMode;
   color: string;
@@ -429,33 +326,18 @@ function PathSegmentLines({
   isHighlighted: boolean;
   points: GpsPoint[];
   simplificationToleranceMeters: number;
-  streetSegments: OsmStreetSegment[];
 }) {
   return (
     <>
-      {buildPathSegmentsWithInference(points, activityMode, streetSegments).map((segment, index) => {
+      {buildPathSegments(points, activityMode).map((segment, index) => {
         if (segment.type === "rejected") {
-          return (
-            <Polyline
-              coordinates={[
-                pointToCoordinate(segment.startPoint),
-                pointToCoordinate(segment.endPoint)
-              ]}
-              key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
-              lineCap="round"
-              lineDashPattern={[3, 8]}
-              lineJoin="round"
-              strokeColor={isDimmed ? "rgba(180, 83, 9, 0.25)" : "rgba(180, 83, 9, 0.62)"}
-              strokeWidth={isHighlighted ? 5 : 3}
-            />
-          );
+          return null;
         }
 
-        const isInferred = segment.type === "inferred";
         const strokeColor = getSegmentStrokeColor({
           color,
           isDimmed,
-          isInferred
+          isInferred: false
         });
 
         return (
@@ -466,7 +348,7 @@ function PathSegmentLines({
             ).map(pointToCoordinate)}
             key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
             lineCap="round"
-            lineDashPattern={isInferred ? [8, 7] : undefined}
+            lineDashPattern={undefined}
             lineJoin="round"
             strokeColor={strokeColor}
             strokeWidth={isHighlighted ? 8 : 5}
@@ -516,10 +398,6 @@ function pointToCoordinate(point: GpsPoint) {
   };
 }
 
-function getAllPathPoints(walks: WalkWithPoints[], activePoints: GpsPoint[]) {
-  return [...walks.flatMap((walk) => walk.points), ...activePoints];
-}
-
 function getPathColor(sessionId: number) {
   return PATH_COLORS[sessionId % PATH_COLORS.length] ?? "#2563eb";
 }
@@ -534,41 +412,8 @@ function formatMarkerDate(value: string) {
 }
 
 const styles = StyleSheet.create({
-  activeControlButton: {
-    backgroundColor: "#2563eb",
-    borderColor: "#2563eb"
-  },
   container: {
     ...StyleSheet.absoluteFillObject
-  },
-  controlButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.96)",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 44,
-    justifyContent: "center",
-    width: 44
-  },
-  controls: {
-    gap: 8,
-    position: "absolute",
-    right: 16,
-    top: 210
-  },
-  disabledButton: {
-    opacity: 0.45
-  },
-  layerControlButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.96)",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 36,
-    justifyContent: "center",
-    width: 36
   },
   map: {
     bottom: 0,

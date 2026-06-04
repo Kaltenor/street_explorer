@@ -197,16 +197,21 @@ export function CompletionModal({
   };
 
   return (
-    <Modal animationType="slide" onRequestClose={onClose} visible={visible}>
+    <Modal
+      animationType="slide"
+      onRequestClose={onClose}
+      presentationStyle="fullScreen"
+      visible={visible}
+    >
       <View style={styles.screen}>
         <View style={styles.header}>
+          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
+            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
+          </TouchableOpacity>
           <View>
             <Text style={styles.title}>Completion</Text>
             <Text style={styles.subtitle}>Exploration progress by area and mode</Text>
           </View>
-          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="close" size={22} color="#0f172a" />
-          </TouchableOpacity>
         </View>
 
         <ScrollView contentContainerStyle={styles.content}>
@@ -714,6 +719,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 42
   },
+  backToMapButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(15, 23, 42, 0.96)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 42,
+    justifyContent: "center",
+    width: 42
+  },
   content: {
     gap: 12,
     padding: 16,
@@ -756,11 +771,11 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    backgroundColor: "#f8fafc",
-    borderBottomColor: "#dbe3ea",
+    backgroundColor: "#02060a",
+    borderBottomColor: "rgba(156, 255, 0, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+    gap: 12,
     padding: 16,
     paddingTop: 58
   },
@@ -810,7 +825,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   screen: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#071016",
     flex: 1
   },
   selectedSelectorButton: {
@@ -897,12 +912,12 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   subtitle: {
-    color: "#64748b",
+    color: "#cbd5e1",
     fontSize: 13,
     marginTop: 3
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 24,
     fontWeight: "900"
   },

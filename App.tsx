@@ -45,7 +45,7 @@ export default function App() {
       <View style={styles.app}>
         <StatusBar style="dark" />
         {selectedMode ? (
-          <MapScreen activityMode={selectedMode} onChangeMode={() => setSelectedMode(null)} />
+          <MapScreen activityMode={selectedMode} onChangeMode={handleSelectMode} />
         ) : (
           <ModeSelectionScreen onSelectMode={handleSelectMode} />
         )}

@@ -1,5 +1,123 @@
 # Changelog
 
+## v0.3.40
+
+Changed:
+
+- Details now opens as a full-screen app view with a back button.
+- History header now uses the same safe top spacing/layout as Completion.
+- Details content moved out of the map HUD to reduce map clutter.
+
+## v0.3.39
+
+Changed:
+
+- History and Completion now open as full-screen app views.
+- Added clear back buttons to return from History and Completion to the map.
+- Updated their headers/backgrounds to better match the dark HUD style.
+
+## v0.3.38
+
+Changed:
+
+- Replaced top Details/History/Completion text buttons with icon-only tabs.
+- Attached those three tabs to the top-left edge of the Start/Stop recording panel.
+- Enlarged the transparent logo overlay using the freed top HUD space.
+
+## v0.3.37
+
+Added:
+
+- Blocking `Computing information` dialog while stopping a recording and rebuilding map data.
+
+Changed:
+
+- Recording report confirmation button now says `Add new data on map`.
+
+## v0.3.36
+
+Changed:
+
+- Reduced Path/Cells/Pins layer buttons and icons by about 30%.
+
+## v0.3.35
+
+Changed:
+
+- Moved Path/Cells/Pins layer buttons into the same HUD row as the objective card.
+- Objective card now stretches to the available space before the layer buttons.
+- Layer buttons are vertically centered with the objective card instead of being map-positioned.
+
+## v0.3.34
+
+Changed:
+
+- Centered the transparent logo overlay across the screen.
+- Enlarged the logo overlay to roughly three times the previous width.
+
+## v0.3.33
+
+Fixed:
+
+- Restored valid sparse GPS path sections by removing the paused street-inference gap threshold from normal GPS path validation.
+- Reprocessing should now keep normal walked sections unless they imply impossible speed or a very large missing GPS gap.
+
+## v0.3.32
+
+Changed:
+
+- Paused street-aware inferred paths for normal map rendering and explored-cell generation.
+- Suspicious GPS gaps are hidden again instead of contributing inferred cells.
+- Post-recording summary now reports hidden/rejected gaps and notes that street inference is paused.
+
+## v0.3.31
+
+Changed:
+
+- Replaced the text title with the transparent logo overlay.
+- Moved layer buttons upward so Path/Cells/Pins align with the objective HUD.
+- Extended objective HUD width to use the space before the floating layer buttons.
+
+## v0.3.30
+
+Changed:
+
+- Removed the on-map Walk/Wheel/Car mode button.
+- Added mode switching to the launch loading screen before entering the map.
+- Removed center-on-me and fit-to-path map buttons.
+- Moved Diagnostics access into the History modal tools row.
+- Started a dark HUD pass for the main map buttons, objective HUD, layer toggles, and recording controls.
+
+## v0.3.29
+
+Added:
+
+- Post-recording trust summary with GPS accepted/rejected counts, inferred/rejected gaps, steps, distance source, background status, and quality reason.
+- Objective HUD now emphasizes selected zone, completion percent, cells remaining, and cells added today.
+
+Changed:
+
+- Rejected GPS gaps no longer draw fake dashed straight lines on the map.
+- Street-aware inference now attempts credible OSM routes for suspicious GPS gaps when cached streets are available.
+- Explored-area fill and outline opacity now adapt more strongly by zoom level.
+- Cached local street radius increased so street-aware gap filling has more nearby geometry available.
+
+## v0.3.28
+
+Changed:
+
+- Native splash config now points to the repository `assets/splash.png` artwork.
+- Confirmed in-game loading overlay uses the same `assets/splash.png` image.
+- Confirmed splash artwork is 1170x2532 and the in-game loading overlay stretches it to the full screen.
+
+## v0.3.27
+
+Changed:
+
+- Loading artwork now uses contained sizing instead of cover sizing to avoid zoom/crop.
+- Native splash config now uses contained sizing.
+- Existing city or district objectives auto-switch when GPS enters another cached city/district.
+
 ## v0.3.26
 
 Added:

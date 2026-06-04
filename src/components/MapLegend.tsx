@@ -14,7 +14,6 @@ export function MapLegend({ showExploredCells, showPaths }: MapLegendProps) {
     <View style={styles.container}>
       {showPaths ? <LegendItem color="#2563eb" label="Saved route" /> : null}
       {showPaths ? <LegendItem color="#ef4444" label="Recording" /> : null}
-      {showPaths ? <LegendItem color="#b45309" label="GPS gap" /> : null}
       {showExploredCells ? <LegendItem color="#86efac" label="Explored cells" /> : null}
     </View>
   );
