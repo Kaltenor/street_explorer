@@ -3,6 +3,7 @@ import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "rea
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { RecordingDiagnosticsPanel } from "./RecordingDiagnosticsPanel";
+import { RecordingQuality } from "../services/recordingQuality";
 import { ActiveWalk, GpsPoint } from "../types/walk";
 
 type RecordingDiagnosticsModalProps = {
@@ -11,6 +12,7 @@ type RecordingDiagnosticsModalProps = {
   backgroundStatus: BackgroundTrackingStatus;
   currentLocation: GpsPoint | null;
   onClose: () => void;
+  recordingQuality: RecordingQuality;
   visible: boolean;
 };
 
@@ -20,6 +22,7 @@ export function RecordingDiagnosticsModal({
   backgroundStatus,
   currentLocation,
   onClose,
+  recordingQuality,
   visible
 }: RecordingDiagnosticsModalProps) {
   return (
@@ -40,6 +43,7 @@ export function RecordingDiagnosticsModal({
             backgroundMessage={backgroundMessage}
             backgroundStatus={backgroundStatus}
             currentLocation={currentLocation}
+            recordingQuality={recordingQuality}
           />
           <View style={styles.note}>
             <Text style={styles.noteTitle}>How to read this</Text>

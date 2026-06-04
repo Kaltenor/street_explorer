@@ -129,6 +129,18 @@ export async function calculateZoneCompletionStats(
   };
 }
 
+export function countExploredCellKeysInsideZone(zone: CachedZone, cellKeys: string[]) {
+  const uniqueInside = new Set<string>();
+
+  for (const cellKey of cellKeys) {
+    if (isPointInsideZone(explorationCellKeyToCenterCoordinate(cellKey), zone)) {
+      uniqueInside.add(cellKey);
+    }
+  }
+
+  return uniqueInside.size;
+}
+
 export function getZoneBounds(zone: CachedZone) {
   return getGeometryBounds(zone.geometry);
 }

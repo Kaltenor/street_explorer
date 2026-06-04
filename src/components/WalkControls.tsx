@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { ACTIVITY_MODE_RECORDING_NOUNS } from "../constants/activityModes";
 import { formatDistance, formatDuration } from "../services/distance";
+import { RecordingQuality } from "../services/recordingQuality";
 import { ActivityMode } from "../types/walk";
 
 type WalkControlsProps = {
@@ -17,6 +18,7 @@ type WalkControlsProps = {
   speedMetersPerSecond?: number;
   stepCount: number;
   todayStepCount: number;
+  recordingQuality: RecordingQuality;
   onStart: () => void;
   onStop: () => void;
 };
@@ -32,6 +34,7 @@ export function WalkControls({
   speedMetersPerSecond = 0,
   stepCount,
   todayStepCount,
+  recordingQuality,
   onStart,
   onStop
 }: WalkControlsProps) {
@@ -46,20 +49,25 @@ export function WalkControls({
       </View>
 
       {isRecording ? (
-        <TouchableOpacity
-          accessibilityRole="button"
-          onPress={() => setDetailsExpanded((expanded) => !expanded)}
-          style={styles.detailsToggle}
-        >
-          <Ionicons
-            name={detailsExpanded ? "chevron-down" : "chevron-up"}
-            color="#0f172a"
-            size={16}
-          />
-          <Text style={styles.detailsToggleText}>
-            {detailsExpanded ? "Hide recording details" : "Recording details"}
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.recordingStatusRow}>
+          <View style={[styles.qualityBadge, getQualityStyle(recordingQuality.label)]}>
+            <Text style={styles.qualityText}>{recordingQuality.label}</Text>
+          </View>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={() => setDetailsExpanded((expanded) => !expanded)}
+            style={styles.detailsToggle}
+          >
+            <Ionicons
+              name={detailsExpanded ? "chevron-down" : "chevron-up"}
+              color="#0f172a"
+              size={16}
+            />
+            <Text style={styles.detailsToggleText}>
+              {detailsExpanded ? "Hide recording details" : "Recording details"}
+            </Text>
+          </TouchableOpacity>
+        </View>
       ) : null}
 
       {isRecording && detailsExpanded ? (
@@ -68,6 +76,7 @@ export function WalkControls({
           <Metric label="GPS pts" value={pointCount.toString()} />
           <Metric label="Speed" value={formatSpeed(speedMetersPerSecond)} />
           <Metric label="GPS" value={formatGps(gpsAccuracyMeters)} />
+          <Text style={styles.gpsStatus}>{recordingQuality.reason}</Text>
           {gpsStatus ? <Text style={styles.gpsStatus}>{gpsStatus}</Text> : null}
         </View>
       ) : null}
@@ -115,6 +124,18 @@ function formatGps(accuracyMeters: number | null | undefined) {
 
 function formatSteps(steps: number) {
   return Math.max(0, Math.round(steps)).toLocaleString();
+}
+
+function getQualityStyle(label: RecordingQuality["label"]) {
+  if (label === "Good") {
+    return styles.goodQuality;
+  }
+
+  if (label === "Poor") {
+    return styles.poorQuality;
+  }
+
+  return styles.okQuality;
 }
 
 const styles = StyleSheet.create({
@@ -167,6 +188,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "700"
   },
+  goodQuality: {
+    backgroundColor: "#dcfce7",
+    borderColor: "#86efac"
+  },
   metric: {
     flex: 1
   },
@@ -183,6 +208,31 @@ const styles = StyleSheet.create({
   metrics: {
     flexDirection: "row",
     gap: 12
+  },
+  okQuality: {
+    backgroundColor: "#fef9c3",
+    borderColor: "#fde047"
+  },
+  poorQuality: {
+    backgroundColor: "#fee2e2",
+    borderColor: "#fca5a5"
+  },
+  qualityBadge: {
+    borderRadius: 999,
+    borderWidth: 1,
+    paddingHorizontal: 9,
+    paddingVertical: 4
+  },
+  qualityText: {
+    color: "#0f172a",
+    fontSize: 11,
+    fontWeight: "900"
+  },
+  recordingStatusRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "space-between"
   },
   startButton: {
     backgroundColor: "#2563eb"

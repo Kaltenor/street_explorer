@@ -11,6 +11,7 @@ import {
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
 import { buildPathSegmentsWithInference } from "../services/pathInference";
+import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
@@ -61,6 +62,9 @@ export function ExplorationMap({
   const region = getInitialRegion(currentLocation, walks, activePoints);
   const [visibleRegion, setVisibleRegion] = useState(region);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
+  const pathSimplificationToleranceMeters = getPathSimplificationTolerance(
+    visibleRegion.latitudeDelta
+  );
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
   const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
   const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
@@ -252,6 +256,7 @@ export function ExplorationMap({
                 isDimmed={isDimmed}
                 isHighlighted={isHighlighted}
                 points={walk.points}
+                simplificationToleranceMeters={pathSimplificationToleranceMeters}
                 streetSegments={streetSegments}
               />
               {layers.showMarkers && firstPoint ? (
@@ -282,6 +287,7 @@ export function ExplorationMap({
               isDimmed={false}
               isHighlighted
               points={activePoints}
+              simplificationToleranceMeters={0}
               streetSegments={streetSegments}
             />
             {layers.showMarkers ? <Marker
@@ -366,6 +372,22 @@ function getExploredAreaStyle(latitudeDelta: number) {
   };
 }
 
+function getPathSimplificationTolerance(latitudeDelta: number) {
+  if (latitudeDelta > 0.08) {
+    return 35;
+  }
+
+  if (latitudeDelta > 0.035) {
+    return 20;
+  }
+
+  if (latitudeDelta > 0.015) {
+    return 8;
+  }
+
+  return 0;
+}
+
 function LayerIconButton({
   accessibilityLabel,
   active,
@@ -395,6 +417,7 @@ function PathSegmentLines({
   isDimmed,
   isHighlighted,
   points,
+  simplificationToleranceMeters,
   streetSegments
 }: {
   activityMode: ActivityMode;
@@ -402,6 +425,7 @@ function PathSegmentLines({
   isDimmed: boolean;
   isHighlighted: boolean;
   points: GpsPoint[];
+  simplificationToleranceMeters: number;
   streetSegments: OsmStreetSegment[];
 }) {
   return (
@@ -433,7 +457,10 @@ function PathSegmentLines({
 
         return (
           <Polyline
-            coordinates={segment.points.map(pointToCoordinate)}
+            coordinates={simplifyGpsPointsForRender(
+              segment.points,
+              simplificationToleranceMeters
+            ).map(pointToCoordinate)}
             key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
             lineCap="round"
             lineDashPattern={isInferred ? [8, 7] : undefined}

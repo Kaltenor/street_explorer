@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.3.25
+
+Added:
+
+- Splash image asset and Expo splash configuration.
+- Recording quality score: Good, OK, or Poor.
+- Quality score shown in the recording HUD and diagnostics.
+- Render-only route simplification at lower zoom levels while preserving raw GPS points in SQLite and exports.
+- Objective progress for today, shown as `+N cells today`.
+- Nearby incomplete area suggestion in Completion.
+
+Changed:
+
+- Street-aware gap inference now filters usable streets by mode before routing.
+- Inferred street paths can be marked medium confidence when the route closely matches the GPS gap.
+
 ## v0.3.24
 
 Changed:

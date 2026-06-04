@@ -69,7 +69,11 @@ import {
   getStreetSegmentsNear
 } from "../database/streetRepository";
 import { calculateStreetCompletion } from "../services/streetCompletion";
-import { calculateZoneCompletionStats, ZoneCompletionStats } from "../services/zoneCompletion";
+import {
+  calculateZoneCompletionStats,
+  countExploredCellKeysInsideZone,
+  ZoneCompletionStats
+} from "../services/zoneCompletion";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
@@ -89,6 +93,7 @@ import {
   StepSubscription,
   watchStepCount
 } from "../services/pedometerService";
+import { calculateRecordingQuality } from "../services/recordingQuality";
 import {
   ActiveWalk,
   ActivityMode,
@@ -193,6 +198,31 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     () => filterWalksForPathDisplay(walks, pathDisplayMode, selectedSessionId),
     [pathDisplayMode, selectedSessionId, walks]
   );
+  const recordingQuality = useMemo(
+    () =>
+      calculateRecordingQuality({
+        activeWalk,
+        backgroundStatus: backgroundTrackingStatus,
+        currentLocation,
+        elapsedSeconds
+      }),
+    [activeWalk, backgroundTrackingStatus, currentLocation, elapsedSeconds]
+  );
+  const todayObjectiveCellCount = useMemo(() => {
+    if (!objective) {
+      return 0;
+    }
+
+    const todayWalks = walks.filter((walk) => isToday(walk.startedAt));
+    const todayCellKeys = [
+      ...todayWalks.flatMap((walk) =>
+        collectExploredCellIdsForPath(walk.points, walk.activityMode)
+      ),
+      ...collectExploredCellIdsForPath(activeWalk?.points ?? [], activityMode)
+    ];
+
+    return countExploredCellKeysInsideZone(objective.zone, todayCellKeys);
+  }, [activeWalk?.points, activityMode, objective, walks]);
 
   const refreshSavedData = useCallback(async () => {
     const [
@@ -1029,6 +1059,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             <ObjectiveHud
               objective={objective}
               stats={objectiveStats}
+              todayCellCount={todayObjectiveCellCount}
               onClear={async () => {
                 setObjective(null);
                 setObjectiveStats(null);
@@ -1063,6 +1094,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
                   backgroundMessage={backgroundTrackingMessage}
                   backgroundStatus={backgroundTrackingStatus}
                   currentLocation={currentLocation}
+                  recordingQuality={recordingQuality}
                 />
                 <TouchableOpacity
                   accessibilityRole="button"
@@ -1111,6 +1143,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
             stepCount={activeWalk?.stepCount ?? 0}
             todayStepCount={stats.todayStepCount + (activeWalk?.stepCount ?? 0)}
+            recordingQuality={recordingQuality}
             onStart={handleStartWalk}
             onStop={handleStopWalk}
           />
@@ -1140,6 +1173,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       <CompletionModal
         currentObjective={objective}
         currentObjectiveStats={objectiveStats}
+        currentObjectiveTodayCells={todayObjectiveCellCount}
         currentLocation={currentLocation}
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
@@ -1163,6 +1197,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         backgroundStatus={backgroundTrackingStatus}
         currentLocation={currentLocation}
         onClose={() => setDiagnosticsVisible(false)}
+        recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
       />
     </View>
@@ -1193,10 +1228,12 @@ function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
 function ObjectiveHud({
   objective,
   stats,
+  todayCellCount,
   onClear
 }: {
   objective: CompletionObjective;
   stats: ZoneCompletionStats | null;
+  todayCellCount: number;
   onClear: () => void;
 }) {
   return (
@@ -1210,6 +1247,7 @@ function ObjectiveHud({
         <Text style={styles.objectiveMeta}>
           {formatObjectiveCells(stats)}
         </Text>
+        <Text style={styles.objectiveToday}>+{todayCellCount} cells today</Text>
       </View>
       <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
         <Ionicons name="close" size={17} color="#0f172a" />
@@ -1477,6 +1515,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: "700",
     marginTop: 1
+  },
+  objectiveToday: {
+    color: "#16a34a",
+    fontSize: 11,
+    fontWeight: "900",
+    marginTop: 2
   },
   objectiveName: {
     color: "#0f172a",

@@ -1,6 +1,6 @@
 import type { ActivityMode } from "../types/walk";
 
-export const APP_VERSION = "0.3.24";
+export const APP_VERSION = "0.3.25";
 
 export const LOCATION_CONFIG = {
   maxAcceptedAccuracyMeters: 100,

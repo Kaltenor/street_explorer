@@ -5,6 +5,11 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "scheme": "street-explorer",
+    "splash": {
+      "backgroundColor": "#02060a",
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
+    },
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"

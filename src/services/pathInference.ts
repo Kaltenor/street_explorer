@@ -205,7 +205,7 @@ function inferStreetRoute(
   activityMode: ActivityMode,
   streetSegments: OsmStreetSegment[]
 ): InferredPathSegment | null {
-  const graph = buildStreetGraph(streetSegments);
+  const graph = buildStreetGraph(streetSegments.filter((segment) => isStreetUsableForMode(segment, activityMode)));
   const startNode = findNearestGraphNode(startPoint, graph);
   const endNode = findNearestGraphNode(endPoint, graph);
 
@@ -240,7 +240,9 @@ function inferStreetRoute(
     .map((point, index) => toGpsPoint(point, index, startPoint.timestamp));
 
   return {
-    confidence: "low",
+    confidence: routeDistance <= Math.max(straightDistance * 1.8, straightDistance + 160)
+      ? "medium"
+      : "low",
     distanceMeters: routeDistance,
     endPoint,
     points: [startPoint, ...routePoints, endPoint],
@@ -248,6 +250,24 @@ function inferStreetRoute(
     startPoint,
     type: "inferred"
   };
+}
+
+function isStreetUsableForMode(segment: OsmStreetSegment, activityMode: ActivityMode) {
+  if (activityMode === "car") {
+    return !["footway", "path", "pedestrian", "steps"].includes(segment.highway);
+  }
+
+  if (activityMode === "wheel") {
+    return segment.highway !== "steps";
+  }
+
+  if (
+    ["motorway", "motorway_link", "trunk", "trunk_link"].includes(segment.highway)
+  ) {
+    return false;
+  }
+
+  return true;
 }
 
 function buildStreetGraph(streetSegments: OsmStreetSegment[]) {

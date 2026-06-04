@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { formatDistance } from "../services/distance";
+import { RecordingQuality } from "../services/recordingQuality";
 import { ActiveWalk, GpsPoint } from "../types/walk";
 
 type RecordingDiagnosticsPanelProps = {
@@ -10,13 +11,15 @@ type RecordingDiagnosticsPanelProps = {
   backgroundMessage: string | null;
   backgroundStatus: BackgroundTrackingStatus;
   currentLocation: GpsPoint | null;
+  recordingQuality: RecordingQuality;
 };
 
 export function RecordingDiagnosticsPanel({
   activeWalk,
   backgroundMessage,
   backgroundStatus,
-  currentLocation
+  currentLocation,
+  recordingQuality
 }: RecordingDiagnosticsPanelProps) {
   if (!activeWalk) {
     return (
@@ -35,7 +38,10 @@ export function RecordingDiagnosticsPanel({
 
   return (
     <View style={styles.container}>
-      <PanelHeader title="Recording diagnostics" status={getBackgroundLabel(backgroundStatus)} />
+      <PanelHeader
+        title="Recording diagnostics"
+        status={`${recordingQuality.label} | ${getBackgroundLabel(backgroundStatus)}`}
+      />
       <View style={styles.grid}>
         <Diagnostic label="GPS accepted" value={activeWalk.acceptedGpsPointCount.toString()} />
         <Diagnostic label="GPS rejected" value={activeWalk.rejectedGpsPointCount.toString()} />
@@ -45,8 +51,11 @@ export function RecordingDiagnosticsPanel({
         <Diagnostic label="GPS distance" value={formatDistance(activeWalk.distanceMeters)} />
       </View>
       <Text style={styles.statusText}>
-        {activeWalk.lastRejectedPointReason ?? "GPS points are currently being accepted."}
+        {recordingQuality.reason}
       </Text>
+      {activeWalk.lastRejectedPointReason ? (
+        <Text style={styles.statusText}>{activeWalk.lastRejectedPointReason}</Text>
+      ) : null}
       {backgroundMessage ? <Text style={styles.backgroundText}>{backgroundMessage}</Text> : null}
       <Text style={styles.helpText}>
         GPS draws the map. Steps come from the device pedometer. They can disagree when GPS jumps,

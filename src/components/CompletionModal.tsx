@@ -30,6 +30,7 @@ export type CompletionObjective = {
 type CompletionModalProps = {
   currentObjective: CompletionObjective | null;
   currentObjectiveStats: ZoneCompletionStats | null;
+  currentObjectiveTodayCells: number;
   currentLocation: GpsPoint | null;
   onFocusZone: (zone: CachedZone) => void;
   onSetObjective: (objective: CompletionObjective) => void;
@@ -52,6 +53,7 @@ const MODES: CompletionMode[] = ["walk", "wheel", "car", "all"];
 export function CompletionModal({
   currentObjective,
   currentObjectiveStats,
+  currentObjectiveTodayCells,
   currentLocation,
   onClose,
   onFocusZone,
@@ -72,6 +74,10 @@ export function CompletionModal({
   );
   const [completedZoneCount, setCompletedZoneCount] = useState(0);
   const [zoneStats, setZoneStats] = useState<ZoneCompletionStats | null>(null);
+  const nearestIncompleteZone = useMemo(
+    () => getNearestIncompleteZone(zones, zoneStatsById, selectedZoneId),
+    [selectedZoneId, zoneStatsById, zones]
+  );
 
   const loadZones = useCallback(
     async () => {
@@ -217,6 +223,9 @@ export function CompletionModal({
                 {formatObjectiveMode(currentObjective.mode)} |{" "}
                 {formatCompletion(currentObjectiveStats)} |{" "}
                 {formatObjectiveCells(currentObjectiveStats)}
+              </Text>
+              <Text style={styles.currentObjectiveToday}>
+                +{currentObjectiveTodayCells} cells today
               </Text>
             </View>
           ) : null}
@@ -371,6 +380,28 @@ export function CompletionModal({
             <Stat label="Completed zones" value={String(completedZoneCount)} />
           </View>
 
+          {nearestIncompleteZone ? (
+            <View style={styles.panel}>
+              <Text style={styles.panelTitle}>Nearby incomplete area</Text>
+              <Text style={styles.helpText}>
+                {nearestIncompleteZone.name} is at{" "}
+                {formatCompletion(zoneStatsById[nearestIncompleteZone.id] ?? null)}.{" "}
+                {formatObjectiveCells(zoneStatsById[nearestIncompleteZone.id] ?? null)}
+              </Text>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={() => {
+                  setSelectedZoneId(nearestIncompleteZone.id);
+                  onSetObjective({ mode, zone: nearestIncompleteZone });
+                }}
+                style={styles.focusButton}
+              >
+                <Ionicons name="flag-outline" size={16} color="#0f172a" />
+                <Text style={styles.focusButtonText}>Use as objective</Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
+
           <View style={styles.panel}>
             <Text style={styles.panelTitle}>V1 rules</Text>
             <Text style={styles.helpText}>
@@ -482,6 +513,23 @@ function isCurrentObjective(
   mode: CompletionMode
 ) {
   return currentObjective?.zone.id === selectedZone.id && currentObjective.mode === mode;
+}
+
+function getNearestIncompleteZone(
+  zones: CachedZone[],
+  zoneStatsById: Record<string, ZoneCompletionStats>,
+  selectedZoneId: string | null
+) {
+  return (
+    zones.find((zone) => {
+      if (zone.id === selectedZoneId) {
+        return false;
+      }
+
+      const stats = zoneStatsById[zone.id];
+      return !stats || stats.completionPercent === null || stats.completionPercent < 100;
+    }) ?? null
+  );
 }
 
 function formatZoneSource(zone: CachedZone) {
@@ -681,6 +729,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "700",
     marginTop: 3
+  },
+  currentObjectiveToday: {
+    color: "#16a34a",
+    fontSize: 12,
+    fontWeight: "900",
+    marginTop: 4
   },
   currentObjectiveName: {
     color: "#0f172a",
