@@ -20,15 +20,19 @@ Each mode has separate recordings, paths, stats, and history.
 - Saved paths displayed on the map.
 - Active recording path displayed live.
 - 15m x 15m deduplicated explored cells.
-- Conservative closed-loop area fill for loops with little unwalked walkable street geometry inside.
+- Gameplay-first closed-loop area fill based on enclosed explored cells.
 - Mode-specific GPS quality filters.
 - Route history with rename, delete, and highlight.
 - Last selected mode persistence.
 - Recording recovery for unfinished active sessions.
-- Layer controls for paths, cells, markers, and optional OSM debug matching.
-- Completion screen foundation with scope and mode selectors.
+- Device step counts for Walk recordings.
+- Icon layer controls for paths, cells, and markers.
+- Full-screen Details, History, and Completion views with map back navigation.
+- Completion screen with scope, zone, and mode selectors.
 - OSM boundary loading and cached Country / City / District completion zones.
 - Zone-specific completion stats and map focus.
+- Objective HUD with selected zone, completion percentage, remaining cells, and today's added cells.
+- Branded splash/loading screen and transparent map logo overlay.
 
 ## Current Limitations
 
@@ -39,3 +43,4 @@ Each mode has separate recordings, paths, stats, and history.
 - Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
 - OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.
+- Street-aware path inference is paused for normal gameplay rendering and explored-cell generation until it can be made reliable and debuggable.

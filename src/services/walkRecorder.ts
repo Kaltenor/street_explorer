@@ -16,6 +16,7 @@ export type PointEvaluation =
     }
   | {
       accepted: false;
+      countAsRejected: boolean;
       reason: string | null;
     };
 
@@ -46,7 +47,9 @@ export function appendGpsPoint(activeWalk: ActiveWalk, rawPoint: GpsPoint): Acti
     return {
       ...activeWalk,
       lastRejectedPointReason: evaluation.reason,
-      rejectedGpsPointCount: activeWalk.rejectedGpsPointCount + 1
+      rejectedGpsPointCount: evaluation.countAsRejected
+        ? activeWalk.rejectedGpsPointCount + 1
+        : activeWalk.rejectedGpsPointCount
     };
   }
 
@@ -124,7 +127,8 @@ export function evaluateGpsPoint(
   if (!hasUsableAccuracy(rawPoint, modeConfig.maxAcceptedAccuracyMeters)) {
     return {
       accepted: false,
-      reason: `Weak GPS: ${Math.round(rawPoint.accuracy ?? 0)} m accuracy`
+      countAsRejected: false,
+      reason: `GPS signal weak (${Math.round(rawPoint.accuracy ?? 0)} m); recording paused until GPS returns`
     };
   }
 
@@ -144,6 +148,7 @@ export function evaluateGpsPoint(
   if (distanceFromPrevious < modeConfig.minDistanceBetweenPointsMeters) {
     return {
       accepted: false,
+      countAsRejected: false,
       reason: null
     };
   }
@@ -154,6 +159,7 @@ export function evaluateGpsPoint(
     if (speedMetersPerSecond > modeConfig.maxSpeedMetersPerSecond) {
       return {
         accepted: false,
+        countAsRejected: true,
         reason: `Jump ignored: ${formatSpeed(speedMetersPerSecond)}`
       };
     }

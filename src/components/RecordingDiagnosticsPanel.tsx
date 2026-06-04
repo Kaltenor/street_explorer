@@ -69,7 +69,7 @@ function PanelHeader({ status, title }: { status: string; title: string }) {
   return (
     <View style={styles.header}>
       <View style={styles.headerTitle}>
-        <Ionicons name="pulse-outline" size={17} color="#0f172a" />
+        <Ionicons name="pulse-outline" size={17} color="#9cff00" />
         <Text style={styles.title}>{title}</Text>
       </View>
       <Text style={styles.statusBadge}>{status}</Text>
@@ -115,22 +115,24 @@ function getBackgroundLabel(status: BackgroundTrackingStatus) {
 
 const styles = StyleSheet.create({
   backgroundText: {
-    color: "#1d4ed8",
+    color: "#93c5fd",
     fontSize: 12,
     fontWeight: "700",
     lineHeight: 17
   },
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.96)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(11, 21, 29, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 10,
     padding: 12
   },
   diagnostic: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#16232e",
+    borderColor: "rgba(148, 163, 184, 0.18)",
     borderRadius: 8,
+    borderWidth: 1,
     flexBasis: "31%",
     flexGrow: 1,
     padding: 9
@@ -151,34 +153,34 @@ const styles = StyleSheet.create({
     gap: 6
   },
   helpText: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 11,
     fontWeight: "700",
     lineHeight: 16
   },
   label: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 11,
     fontWeight: "700",
     marginTop: 2
   },
   statusBadge: {
-    color: "#2563eb",
+    color: "#9cff00",
     fontSize: 11,
     fontWeight: "900"
   },
   statusText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "900"
   },
   value: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 15,
     fontWeight: "900"
   }

@@ -4,7 +4,13 @@ import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { initDatabase } from "./src/database/db";
-import { getLastActivityMode, saveLastActivityMode } from "./src/database/settingsRepository";
+import {
+  getAppLanguage,
+  getLastActivityMode,
+  saveAppLanguage,
+  saveLastActivityMode
+} from "./src/database/settingsRepository";
+import { AppLanguage } from "./src/i18n";
 import { ModeSelectionScreen } from "./src/screens/ModeSelectionScreen";
 import { MapScreen } from "./src/screens/MapScreen";
 import { ActivityMode } from "./src/types/walk";
@@ -12,12 +18,19 @@ import "./src/services/backgroundLocationTask";
 
 export default function App() {
   const [databaseReady, setDatabaseReady] = useState(false);
+  const [language, setLanguage] = useState<AppLanguage>("en");
   const [selectedMode, setSelectedMode] = useState<ActivityMode | null>(null);
 
   useEffect(() => {
     initDatabase()
       .then(async () => {
-        setSelectedMode(await getLastActivityMode());
+        const [savedLanguage, savedMode] = await Promise.all([
+          getAppLanguage(),
+          getLastActivityMode()
+        ]);
+
+        setLanguage(savedLanguage);
+        setSelectedMode(savedMode);
         setDatabaseReady(true);
       })
       .catch((error) => {
@@ -28,6 +41,11 @@ export default function App() {
   const handleSelectMode = async (activityMode: ActivityMode) => {
     setSelectedMode(activityMode);
     await saveLastActivityMode(activityMode);
+  };
+
+  const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
+    setLanguage(nextLanguage);
+    await saveAppLanguage(nextLanguage);
   };
 
   if (!databaseReady) {
@@ -45,9 +63,14 @@ export default function App() {
       <View style={styles.app}>
         <StatusBar style="dark" />
         {selectedMode ? (
-          <MapScreen activityMode={selectedMode} onChangeMode={handleSelectMode} />
+          <MapScreen
+            activityMode={selectedMode}
+            language={language}
+            onChangeLanguage={handleChangeLanguage}
+            onChangeMode={handleSelectMode}
+          />
         ) : (
-          <ModeSelectionScreen onSelectMode={handleSelectMode} />
+          <ModeSelectionScreen language={language} onSelectMode={handleSelectMode} />
         )}
       </View>
     </SafeAreaProvider>

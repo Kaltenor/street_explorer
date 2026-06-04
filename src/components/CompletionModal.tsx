@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import {
   CachedZone,
   CompletionScope,
@@ -32,6 +32,7 @@ type CompletionModalProps = {
   currentObjectiveStats: ZoneCompletionStats | null;
   currentObjectiveTodayCells: number;
   currentLocation: GpsPoint | null;
+  language: AppLanguage;
   onFocusZone: (zone: CachedZone) => void;
   onSetObjective: (objective: CompletionObjective) => void;
   visible: boolean;
@@ -55,6 +56,7 @@ export function CompletionModal({
   currentObjectiveStats,
   currentObjectiveTodayCells,
   currentLocation,
+  language,
   onClose,
   onFocusZone,
   onSetObjective,
@@ -74,6 +76,9 @@ export function CompletionModal({
   );
   const [completedZoneCount, setCompletedZoneCount] = useState(0);
   const [zoneStats, setZoneStats] = useState<ZoneCompletionStats | null>(null);
+  const strings = getStrings(language);
+  const completionStrings = strings.completionMenu;
+  const modeText = ACTIVITY_MODE_TEXT[language];
   const nearestIncompleteZone = useMemo(
     () => getNearestIncompleteZone(zones, zoneStatsById, selectedZoneId),
     [selectedZoneId, zoneStatsById, zones]
@@ -152,7 +157,10 @@ export function CompletionModal({
 
   const handleRefreshBoundaries = async () => {
     if (!currentLocation) {
-      Alert.alert("Location unavailable", "Wait for GPS before refreshing boundaries.");
+      Alert.alert(
+        completionStrings.locationUnavailable,
+        completionStrings.locationUnavailableMessage
+      );
       return;
     }
 
@@ -163,27 +171,34 @@ export function CompletionModal({
       await upsertZones(result.zones);
       await loadZones();
       Alert.alert(
-        "Boundaries refreshed",
+        completionStrings.boundariesRefreshed,
         result.zones.length > 0
-          ? `${result.zones.length} nearby boundary zones were cached.`
-          : `No usable boundaries were found. Raw: ${result.rawElementCount}, relations: ${result.relationCount}, usable: ${result.usableZoneCount}.`
+          ? interpolate(completionStrings.nearbyBoundaryZonesCached, { count: result.zones.length })
+          : interpolate(completionStrings.noUsableBoundaries, {
+              raw: result.rawElementCount,
+              relations: result.relationCount,
+              usable: result.usableZoneCount
+            })
       );
     } catch (error) {
       console.warn("Failed to refresh OSM boundaries", error);
-      Alert.alert("Boundary load failed", "Street Explorer could not fetch nearby OSM boundaries.");
+      Alert.alert(
+        completionStrings.boundaryLoadFailed,
+        completionStrings.boundaryLoadFailedMessage
+      );
     } finally {
       setIsRefreshingZones(false);
     }
   };
 
   const handleClearBoundaries = () => {
-    Alert.alert("Clear cached zones?", "This removes cached boundary zones, not recordings.", [
+    Alert.alert(completionStrings.clearCachedZones, completionStrings.clearCachedZonesMessage, [
       {
-        text: "Cancel",
+        text: strings.common.cancel,
         style: "cancel"
       },
       {
-        text: "Clear",
+        text: strings.common.clear,
         style: "destructive",
         onPress: async () => {
           await deleteCachedZones();
@@ -209,8 +224,8 @@ export function CompletionModal({
             <Ionicons name="chevron-back" size={22} color="#f8fafc" />
           </TouchableOpacity>
           <View>
-            <Text style={styles.title}>Completion</Text>
-            <Text style={styles.subtitle}>Exploration progress by area and mode</Text>
+            <Text style={styles.title}>{strings.common.completion}</Text>
+            <Text style={styles.subtitle}>{completionStrings.progressSubtitle}</Text>
           </View>
         </View>
 
@@ -218,28 +233,30 @@ export function CompletionModal({
           {currentObjective ? (
             <View style={styles.currentObjectivePanel}>
               <View style={styles.currentObjectiveHeader}>
-                <Ionicons name="flag-outline" size={17} color="#2563eb" />
-                <Text style={styles.currentObjectiveTitle}>Current objective</Text>
+                <Ionicons name="flag-outline" size={17} color="#9cff00" />
+                <Text style={styles.currentObjectiveTitle}>{completionStrings.currentObjective}</Text>
               </View>
               <Text numberOfLines={1} style={styles.currentObjectiveName}>
                 {currentObjective.zone.name}
               </Text>
               <Text style={styles.currentObjectiveMeta}>
-                {formatObjectiveMode(currentObjective.mode)} |{" "}
-                {formatCompletion(currentObjectiveStats)} |{" "}
-                {formatObjectiveCells(currentObjectiveStats)}
+                {formatObjectiveMode(currentObjective.mode, language)} |{" "}
+                {formatCompletion(currentObjectiveStats, language)} |{" "}
+                {formatObjectiveCells(currentObjectiveStats, language)}
               </Text>
               <Text style={styles.currentObjectiveToday}>
-                +{currentObjectiveTodayCells} cells today
+                {interpolate(completionStrings.objectiveCellsToday, {
+                  count: currentObjectiveTodayCells
+                })}
               </Text>
             </View>
           ) : null}
 
           <Selector
-            label="Scope"
+            label={completionStrings.scope}
             options={SCOPES}
             selected={scope}
-            titleForOption={(option) => capitalize(option)}
+            titleForOption={(option) => formatScope(option, language)}
             onSelect={(nextScope) => {
               setScope(nextScope);
               setSelectedZoneId(null);
@@ -247,25 +264,25 @@ export function CompletionModal({
             }}
           />
           <Selector
-            label="Mode"
+            label={strings.common.mode}
             options={MODES}
             selected={mode}
-            titleForOption={(option) => option === "all" ? "All" : ACTIVITY_MODE_LABELS[option]}
+            titleForOption={(option) => option === "all" ? strings.common.all : modeText.labels[option]}
             onSelect={setMode}
           />
 
           <View style={styles.panel}>
             <View style={styles.panelHeader}>
-              <Text style={styles.panelTitle}>Area</Text>
+              <Text style={styles.panelTitle}>{completionStrings.area}</Text>
               <TouchableOpacity
                 accessibilityRole="button"
                 disabled={isRefreshingZones}
                 onPress={handleRefreshBoundaries}
                 style={[styles.smallButton, isRefreshingZones ? styles.disabledButton : null]}
               >
-                <Ionicons name="refresh" size={15} color="#0f172a" />
+                <Ionicons name="refresh" size={15} color="#f8fafc" />
                 <Text style={styles.smallButtonText}>
-                  {isRefreshingZones ? "Loading" : "Refresh"}
+                  {isRefreshingZones ? completionStrings.loading : strings.common.refresh}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -273,8 +290,8 @@ export function CompletionModal({
                 onPress={handleClearBoundaries}
                 style={styles.smallButton}
               >
-                <Ionicons name="trash-outline" size={15} color="#0f172a" />
-                <Text style={styles.smallButtonText}>Clear</Text>
+                <Ionicons name="trash-outline" size={15} color="#f8fafc" />
+                <Text style={styles.smallButtonText}>{strings.common.clear}</Text>
               </TouchableOpacity>
             </View>
             {zones.length > 0 ? (
@@ -286,23 +303,25 @@ export function CompletionModal({
                 >
                   <View style={styles.zonePickerText}>
                     <Text style={styles.zonePickerLabel}>
-                      {scope === "district" ? "Nearest district" : "Nearest area"}
+                      {scope === "district"
+                        ? completionStrings.nearestDistrict
+                        : completionStrings.nearestArea}
                     </Text>
                     <Text numberOfLines={1} style={styles.zonePickerName}>
-                      {selectedZone?.name ?? "Select area"}
+                      {selectedZone?.name ?? completionStrings.selectArea}
                     </Text>
                     {selectedZone ? (
                       <Text style={styles.zoneMetaText}>
-                        {formatZoneLocationHint(selectedZone, currentLocation)} |{" "}
-                        {formatZoneSource(selectedZone)} | {formatFetchedAt(selectedZone.fetchedAt)} |{" "}
-                        {formatCompletion(zoneStatsById[selectedZone.id] ?? zoneStats)}
+                        {formatZoneLocationHint(selectedZone, currentLocation, language)} |{" "}
+                        {formatZoneSource(selectedZone, language)} | {formatFetchedAt(selectedZone.fetchedAt)} |{" "}
+                        {formatCompletion(zoneStatsById[selectedZone.id] ?? zoneStats, language)}
                       </Text>
                     ) : null}
                   </View>
                   <Ionicons
                     name={zonePickerOpen ? "chevron-up" : "chevron-down"}
                     size={18}
-                    color="#0f172a"
+                    color="#f8fafc"
                   />
                 </TouchableOpacity>
                 {zonePickerOpen ? zones.map((zone) => (
@@ -332,41 +351,43 @@ export function CompletionModal({
                         selectedZone?.id === zone.id ? styles.selectedZoneMetaText : null
                       ]}
                     >
-                      {formatZoneLocationHint(zone, currentLocation)} | {formatZoneSource(zone)} |{" "}
+                      {formatZoneLocationHint(zone, currentLocation, language)} | {formatZoneSource(zone, language)} |{" "}
                       {formatFetchedAt(zone.fetchedAt)} |{" "}
-                      {formatCompletion(zoneStatsById[zone.id] ?? null)}
+                      {formatCompletion(zoneStatsById[zone.id] ?? null, language)}
                     </Text>
                   </TouchableOpacity>
                 )) : null}
               </View>
             ) : (
               <Text style={styles.helpText}>
-                No cached {scope} boundary yet. Tap Refresh to load nearby OSM boundaries.
+                {interpolate(completionStrings.noCachedBoundary, {
+                  scope: formatScope(scope, language).toLowerCase()
+                })}
               </Text>
             )}
             {selectedZone ? (
               <>
                 <Text style={styles.zoneNotice}>
-                  {getZoneNotice(selectedZone)}
+                  {getZoneNotice(selectedZone, language)}
                 </Text>
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={() => onFocusZone(selectedZone)}
                 style={styles.focusButton}
               >
-                <Ionicons name="scan" size={16} color="#0f172a" />
-                <Text style={styles.focusButtonText}>Focus on map</Text>
+                <Ionicons name="scan" size={16} color="#f8fafc" />
+                <Text style={styles.focusButtonText}>{completionStrings.focusOnMap}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={() => onSetObjective({ mode, zone: selectedZone })}
                 style={[styles.focusButton, isCurrentObjective(currentObjective, selectedZone, mode) ? styles.activeObjectiveButton : null]}
               >
-                <Ionicons name="flag-outline" size={16} color="#0f172a" />
+                <Ionicons name="flag-outline" size={16} color="#f8fafc" />
                 <Text style={styles.focusButtonText}>
                   {isCurrentObjective(currentObjective, selectedZone, mode)
-                    ? "Current objective"
-                    : "Set objective"}
+                    ? completionStrings.currentObjectiveButton
+                    : completionStrings.setObjective}
                 </Text>
               </TouchableOpacity>
               </>
@@ -374,24 +395,27 @@ export function CompletionModal({
           </View>
 
           <View style={styles.statsGrid}>
-            <Stat label="Completion" value={formatCompletion(zoneStats)} />
-            <Stat label="Zone cells" value={formatZoneCells(zoneStats)} />
-            <Stat label="Explored cells" value={String(zoneStats?.exploredCells ?? stats.exploredCells)} />
-            <Stat label="Direct GPS" value={String(zoneStats?.directlyWalkedCells ?? stats.directlyWalkedCells)} />
-            <Stat label="Inferred" value={String(zoneStats?.inferredCells ?? stats.inferredCells)} />
-            <Stat label="Loop-filled" value={String(zoneStats?.loopFilledCells ?? stats.loopFilledCells)} />
-            <Stat label="Distance" value={formatDistance(stats.walkedDistanceMeters)} />
-            <Stat label="Recordings" value={String(stats.recordingCount)} />
-            <Stat label="Completed zones" value={String(completedZoneCount)} />
+            <Stat label={strings.common.completion} value={formatCompletion(zoneStats, language)} />
+            <Stat label={completionStrings.zoneCells} value={formatZoneCells(zoneStats, language)} />
+            <Stat label={completionStrings.exploredCells} value={String(zoneStats?.exploredCells ?? stats.exploredCells)} />
+            <Stat label={completionStrings.directGps} value={String(zoneStats?.directlyWalkedCells ?? stats.directlyWalkedCells)} />
+            <Stat label={completionStrings.inferred} value={String(zoneStats?.inferredCells ?? stats.inferredCells)} />
+            <Stat label={completionStrings.loopFilled} value={String(zoneStats?.loopFilledCells ?? stats.loopFilledCells)} />
+            <Stat label={strings.common.distance} value={formatDistance(stats.walkedDistanceMeters)} />
+            <Stat label={language === "fr" ? "Enregistrements" : "Recordings"} value={String(stats.recordingCount)} />
+            <Stat label={completionStrings.completedZones} value={String(completedZoneCount)} />
           </View>
 
           {nearestIncompleteZone ? (
             <View style={styles.panel}>
-              <Text style={styles.panelTitle}>Nearby incomplete area</Text>
+              <Text style={styles.panelTitle}>{completionStrings.nearbyIncompleteArea}</Text>
               <Text style={styles.helpText}>
-                {nearestIncompleteZone.name} is at{" "}
-                {formatCompletion(zoneStatsById[nearestIncompleteZone.id] ?? null)}.{" "}
-                {formatObjectiveCells(zoneStatsById[nearestIncompleteZone.id] ?? null)}
+                {formatNearbyIncompleteZoneText(
+                  nearestIncompleteZone.name,
+                  formatCompletion(zoneStatsById[nearestIncompleteZone.id] ?? null, language),
+                  formatObjectiveCells(zoneStatsById[nearestIncompleteZone.id] ?? null, language),
+                  language
+                )}
               </Text>
               <TouchableOpacity
                 accessibilityRole="button"
@@ -401,18 +425,16 @@ export function CompletionModal({
                 }}
                 style={styles.focusButton}
               >
-                <Ionicons name="flag-outline" size={16} color="#0f172a" />
-                <Text style={styles.focusButtonText}>Use as objective</Text>
+                <Ionicons name="flag-outline" size={16} color="#f8fafc" />
+                <Text style={styles.focusButtonText}>{completionStrings.useAsObjective}</Text>
               </TouchableOpacity>
             </View>
           ) : null}
 
           <View style={styles.panel}>
-            <Text style={styles.panelTitle}>V1 rules</Text>
+            <Text style={styles.panelTitle}>{completionStrings.v1Rules}</Text>
             <Text style={styles.helpText}>
-              The main map stays readable: cells and recorded paths are the primary game layer.
-              OSM is kept as hidden analysis data for street matching, loop-fill checks, and future
-              city or district boundaries.
+              {completionStrings.v1RulesText}
             </Text>
           </View>
         </ScrollView>
@@ -477,39 +499,56 @@ function formatDistance(distanceMeters: number) {
   return `${Math.round(distanceMeters)} m`;
 }
 
-function formatCompletion(stats: ZoneCompletionStats | null) {
+function formatCompletion(stats: ZoneCompletionStats | null, language: AppLanguage) {
   if (!stats || stats.completionPercent === null) {
-    return "Pending";
+    return getStrings(language).common.pending;
   }
 
   return `${stats.completionPercent}%`;
 }
 
-function formatZoneCells(stats: ZoneCompletionStats | null) {
+function formatZoneCells(stats: ZoneCompletionStats | null, language: AppLanguage) {
   if (!stats || stats.totalZoneCells === null) {
-    return "Large";
+    return getStrings(language).completionMenu.large;
   }
 
   return String(stats.totalZoneCells);
 }
 
-function formatObjectiveMode(mode: CompletionObjective["mode"]) {
-  return mode === "all" ? "All modes" : ACTIVITY_MODE_LABELS[mode];
+function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLanguage) {
+  return mode === "all"
+    ? getStrings(language).completionMenu.objectiveModeAll
+    : ACTIVITY_MODE_TEXT[language].labels[mode];
 }
 
-function formatObjectiveCells(stats: ZoneCompletionStats | null) {
+function formatObjectiveCells(stats: ZoneCompletionStats | null, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
   if (!stats) {
-    return "cells pending";
+    return strings.cellsPending;
   }
 
   if (stats.totalZoneCells === null) {
-    return `${stats.exploredCells} explored`;
+    return `${stats.exploredCells} ${strings.explored}`;
   }
 
-  return `${stats.exploredCells} explored, ${Math.max(
+  return `${stats.exploredCells} ${strings.explored}, ${Math.max(
     0,
     stats.totalZoneCells - stats.exploredCells
-  )} left`;
+  )} ${strings.left}`;
+}
+
+function formatNearbyIncompleteZoneText(
+  zoneName: string,
+  completion: string,
+  cells: string,
+  language: AppLanguage
+) {
+  if (language === "fr") {
+    return `${zoneName} est à ${completion}. ${cells}`;
+  }
+
+  return `${zoneName} is at ${completion}. ${cells}`;
 }
 
 function isCurrentObjective(
@@ -537,18 +576,22 @@ function getNearestIncompleteZone(
   );
 }
 
-function formatZoneSource(zone: CachedZone) {
-  return zone.source.includes("fallback") ? "Approx bounds" : "Exact polygon";
+function formatZoneSource(zone: CachedZone, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
+  return zone.source.includes("fallback") ? strings.approxBounds : strings.exactPolygon;
 }
 
-function getZoneNotice(zone: CachedZone) {
+function getZoneNotice(zone: CachedZone, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
   if (zone.source.includes("fallback")) {
-    return "Completion is approximate: this zone is using OSM bounds because the exact polygon could not be assembled yet.";
+    return strings.sourceNoticeApprox;
   }
 
   return zone.holes.length > 0
-    ? "Exact polygon with inner holes excluded from completion."
-    : "Exact polygon from OSM boundary geometry.";
+    ? strings.exactPolygonWithHoles
+    : strings.exactPolygonNotice;
 }
 
 function sortZonesForLocation(zones: CachedZone[], currentLocation: GpsPoint | null) {
@@ -595,22 +638,32 @@ function getZoneLocationScore(zone: CachedZone, currentLocation: GpsPoint) {
   };
 }
 
-function formatZoneLocationHint(zone: CachedZone, currentLocation: GpsPoint | null) {
+function formatZoneLocationHint(
+  zone: CachedZone,
+  currentLocation: GpsPoint | null,
+  language: AppLanguage
+) {
+  const strings = getStrings(language).completionMenu;
+
   if (!currentLocation) {
-    return "Cached";
+    return strings.cached;
   }
 
   const score = getZoneLocationScore(zone, currentLocation);
 
   if (score.rank === 0) {
-    return "You are here";
+    return strings.youAreHere;
   }
 
   if (score.distanceMeters >= 1000) {
-    return `${(score.distanceMeters / 1000).toFixed(1)} km away`;
+    return language === "fr"
+      ? `à ${(score.distanceMeters / 1000).toFixed(1)} km`
+      : `${(score.distanceMeters / 1000).toFixed(1)} km away`;
   }
 
-  return `${Math.round(score.distanceMeters)} m away`;
+  return language === "fr"
+    ? `à ${Math.round(score.distanceMeters)} m`
+    : `${Math.round(score.distanceMeters)} m away`;
 }
 
 function isPointInsideZone(point: { latitude: number; longitude: number }, zone: CachedZone) {
@@ -704,10 +757,27 @@ function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+function formatScope(scope: CompletionScope, language: AppLanguage) {
+  if (language === "fr") {
+    switch (scope) {
+      case "country":
+        return "Pays";
+      case "city":
+        return "Ville";
+      case "district":
+        return "Quartier";
+      default:
+        return scope;
+    }
+  }
+
+  return capitalize(scope);
+}
+
 const styles = StyleSheet.create({
   activeObjectiveButton: {
-    backgroundColor: "#dbeafe",
-    borderColor: "#93c5fd"
+    backgroundColor: "rgba(156, 255, 0, 0.16)",
+    borderColor: "rgba(156, 255, 0, 0.42)"
   },
   closeButton: {
     alignItems: "center",
@@ -740,32 +810,32 @@ const styles = StyleSheet.create({
     gap: 6
   },
   currentObjectiveMeta: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 12,
     fontWeight: "700",
     marginTop: 3
   },
   currentObjectiveToday: {
-    color: "#16a34a",
+    color: "#9cff00",
     fontSize: 12,
     fontWeight: "900",
     marginTop: 4
   },
   currentObjectiveName: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 18,
     fontWeight: "900",
     marginTop: 6
   },
   currentObjectivePanel: {
-    backgroundColor: "#eff6ff",
-    borderColor: "#bfdbfe",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(156, 255, 0, 0.22)",
     borderRadius: 8,
     borderWidth: 1,
     padding: 12
   },
   currentObjectiveTitle: {
-    color: "#2563eb",
+    color: "#9cff00",
     fontSize: 12,
     fontWeight: "900"
   },
@@ -780,7 +850,7 @@ const styles = StyleSheet.create({
     paddingTop: 58
   },
   helpText: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 13,
     lineHeight: 19
   },
@@ -790,8 +860,8 @@ const styles = StyleSheet.create({
   focusButton: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: "#f8fafc",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -801,19 +871,19 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   focusButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
   panel: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     padding: 12
   },
   panelTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "800",
     marginBottom: 8
@@ -829,15 +899,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   selectedSelectorButton: {
-    backgroundColor: "#2563eb",
-    borderColor: "#2563eb"
+    backgroundColor: "#9cff00",
+    borderColor: "#9cff00"
   },
   selectedSelectorButtonText: {
-    color: "#ffffff"
+    color: "#02060a"
   },
   selectedZoneButton: {
-    backgroundColor: "#0f172a",
-    borderColor: "#0f172a"
+    backgroundColor: "rgba(156, 255, 0, 0.16)",
+    borderColor: "rgba(156, 255, 0, 0.42)"
   },
   selectedZoneButtonText: {
     color: "#ffffff"
@@ -846,15 +916,15 @@ const styles = StyleSheet.create({
     color: "#cbd5e1"
   },
   selectorButton: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 8
   },
   selectorButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
@@ -864,16 +934,16 @@ const styles = StyleSheet.create({
     gap: 8
   },
   selectorPanel: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     padding: 12
   },
   smallButton: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -882,13 +952,13 @@ const styles = StyleSheet.create({
     paddingVertical: 7
   },
   smallButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
   stat: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     flexBasis: "48%",
@@ -896,7 +966,7 @@ const styles = StyleSheet.create({
     padding: 12
   },
   statLabel: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     fontWeight: "700",
     marginTop: 3
@@ -907,7 +977,7 @@ const styles = StyleSheet.create({
     gap: 10
   },
   statValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 22,
     fontWeight: "900"
   },
@@ -922,27 +992,27 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   zoneButton: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 8
   },
   zoneMetaText: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 10,
     fontWeight: "700",
     marginTop: 3
   },
   zoneNotice: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     lineHeight: 17,
     marginTop: 10
   },
   zoneButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
   },
@@ -951,8 +1021,8 @@ const styles = StyleSheet.create({
   },
   zonePickerButton: {
     alignItems: "center",
-    backgroundColor: "#f8fafc",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -962,12 +1032,12 @@ const styles = StyleSheet.create({
     paddingVertical: 9
   },
   zonePickerLabel: {
-    color: "#2563eb",
+    color: "#9cff00",
     fontSize: 10,
     fontWeight: "900"
   },
   zonePickerName: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "900",
     marginTop: 2

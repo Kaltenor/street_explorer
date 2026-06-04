@@ -17,7 +17,7 @@ Current local project path:
 W:\street_explorer
 ```
 
-Use Expo Go for normal foreground testing. Use a development build later for reliable iOS background tracking.
+Use the development build for real device testing, especially background location. Expo Go is only useful for quick foreground checks.
 
 ## Docs
 
@@ -32,4 +32,4 @@ Use Expo Go for normal foreground testing. Use a development build later for rel
 
 Current version: `v0.3.40`
 
-The app supports local recording, mode-specific GPS filtering, history, explored cells, loop-fill analysis, recovery for unfinished recordings, and hidden OpenStreetMap analysis for future street completion.
+The app supports local recording, mode-specific GPS filtering, full-screen Details/History/Completion views, explored cells, loop-fill analysis, recovery for unfinished recordings, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.

@@ -16,11 +16,16 @@ export async function requestForegroundLocationPermission(): Promise<LocationPer
 }
 
 export async function getCurrentGpsPoint(): Promise<GpsPoint | null> {
-  const location = await Location.getCurrentPositionAsync({
-    accuracy: Location.Accuracy.BestForNavigation
-  });
+  try {
+    const location = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.BestForNavigation
+    });
 
-  return locationToGpsPoint(location, 0);
+    return locationToGpsPoint(location, 0);
+  } catch (error) {
+    console.warn("GPS position unavailable", error);
+    return null;
+  }
 }
 
 export async function watchGpsPoints(onPoint: (point: GpsPoint) => void) {

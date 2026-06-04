@@ -1,21 +1,27 @@
 import { StyleSheet, Text, View } from "react-native";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { MODE_LOCATION_CONFIG } from "../constants/config";
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import { ActivityMode } from "../types/walk";
 
 type ModeProfilePanelProps = {
   activityMode: ActivityMode;
+  language: AppLanguage;
 };
 
-export function ModeProfilePanel({ activityMode }: ModeProfilePanelProps) {
+export function ModeProfilePanel({ activityMode, language }: ModeProfilePanelProps) {
   const profile = MODE_LOCATION_CONFIG[activityMode];
+  const strings = getStrings(language);
+  const modeLabel = ACTIVITY_MODE_TEXT[language].labels[activityMode];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{ACTIVITY_MODE_LABELS[activityMode]} profile</Text>
+      <Text style={styles.title}>
+        {interpolate(strings.modeProfile.profile, { mode: modeLabel })}
+      </Text>
       <Text style={styles.text}>
-        GPS {"<="} {profile.maxAcceptedAccuracyMeters} m | Jump cap{" "}
+        {strings.modeProfile.gps} {"<="} {profile.maxAcceptedAccuracyMeters} m |{" "}
+        {strings.modeProfile.jumpCap}{" "}
         {Math.round(profile.maxSpeedMetersPerSecond * 3.6)} km/h
       </Text>
     </View>

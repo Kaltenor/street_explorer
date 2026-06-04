@@ -1,12 +1,15 @@
 import { getDatabase } from "./db";
 import { ActivityMode } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
+import { AppLanguage } from "../i18n";
 
 const LAST_ACTIVITY_MODE_KEY = "last_activity_mode";
+const APP_LANGUAGE_KEY = "app_language";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
 const COMPLETION_OBJECTIVE_KEY = "completion_objective";
 const ACTIVITY_MODES: ActivityMode[] = ["walk", "wheel", "car"];
+const APP_LANGUAGES: AppLanguage[] = ["en", "fr"];
 const COMPLETION_MODES = ["walk", "wheel", "car", "all"] as const;
 type CompletionMode = ActivityMode | "all";
 
@@ -40,6 +43,34 @@ export async function saveLastActivityMode(activityMode: ActivityMode) {
     `,
     LAST_ACTIVITY_MODE_KEY,
     activityMode
+  );
+}
+
+export async function getAppLanguage(): Promise<AppLanguage> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?",
+    APP_LANGUAGE_KEY
+  );
+
+  if (APP_LANGUAGES.includes(row?.value as AppLanguage)) {
+    return row?.value as AppLanguage;
+  }
+
+  return "en";
+}
+
+export async function saveAppLanguage(language: AppLanguage) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO app_settings (key, value)
+      VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `,
+    APP_LANGUAGE_KEY,
+    language
   );
 }
 

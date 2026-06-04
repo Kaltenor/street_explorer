@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(11, 21, 29, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   detail: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12
   },
   dot: {
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#16a34a"
   },
   status: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "700"
   },

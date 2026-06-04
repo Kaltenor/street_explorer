@@ -1,11 +1,12 @@
 import { ActivityIndicator, ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
 import { ActivityMode } from "../types/walk";
 
 type LaunchLoadingOverlayProps = {
   activityMode: ActivityMode;
   isReady: boolean;
+  language: AppLanguage;
   onChangeMode: (mode: ActivityMode) => void;
   onStart: () => void;
 };
@@ -13,9 +14,13 @@ type LaunchLoadingOverlayProps = {
 export function LaunchLoadingOverlay({
   activityMode,
   isReady,
+  language,
   onChangeMode,
   onStart
 }: LaunchLoadingOverlayProps) {
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
+
   return (
     <Pressable
       accessibilityRole="button"
@@ -43,17 +48,17 @@ export function LaunchLoadingOverlay({
                     activityMode === mode ? styles.selectedModeButtonText : null
                   ]}
                 >
-                  {ACTIVITY_MODE_LABELS[mode]}
+                  {modeText.labels[mode]}
                 </Text>
               </TouchableOpacity>
             ))}
           </View>
           {isReady ? (
-            <Text style={styles.startText}>Press to start</Text>
+            <Text style={styles.startText}>{strings.launch.pressToStart}</Text>
           ) : (
             <View style={styles.loadingRow}>
               <ActivityIndicator color="#9cff00" size="small" />
-              <Text style={styles.loadingText}>Loading current area map</Text>
+              <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
             </View>
           )}
         </View>

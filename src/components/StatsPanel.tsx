@@ -1,48 +1,52 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import { formatDistance, formatDuration } from "../services/distance";
 import { ActivityMode, LifetimeStats } from "../types/walk";
 
 type StatsPanelProps = {
   activityMode: ActivityMode;
+  language: AppLanguage;
   stats: LifetimeStats;
 };
 
-export function StatsPanel({ activityMode, stats }: StatsPanelProps) {
+export function StatsPanel({ activityMode, language, stats }: StatsPanelProps) {
+  const strings = getStrings(language);
+
   return (
     <View style={styles.container}>
       <View style={styles.primaryRow}>
-        <Stat label={getCountLabel(activityMode)} value={stats.walkCount.toString()} />
-        <Stat label="Distance" value={formatDistance(stats.totalDistanceMeters)} />
-        <Stat label="Duration" value={formatDuration(stats.totalDurationSeconds)} />
+        <Stat
+          label={ACTIVITY_MODE_TEXT[language].countLabels[activityMode]}
+          value={stats.walkCount.toString()}
+        />
+        <Stat label={strings.common.distance} value={formatDistance(stats.totalDistanceMeters)} />
+        <Stat label={strings.common.duration} value={formatDuration(stats.totalDurationSeconds)} />
       </View>
       <View style={styles.secondaryRow}>
-        <Stat label="Today" value={formatDistance(stats.todayDistanceMeters)} />
-        <Stat label="Steps today" value={formatNumber(stats.todayStepCount)} />
-        <Stat label="Latest" value={formatDistance(stats.latestRecordingDistanceMeters)} />
-        <Stat label="Longest" value={formatDistance(stats.longestRecordingDistanceMeters)} />
-        <Stat label="Cells" value={stats.exploredCellCount.toString()} />
-        <Stat label="New" value={stats.newCellsThisRecording.toString()} />
-        <Stat label="Area" value={formatArea(stats.approximateExploredAreaSquareMeters)} />
+        <Stat label={strings.stats.today} value={formatDistance(stats.todayDistanceMeters)} />
+        <Stat label={strings.walkControls.stepsToday} value={formatNumber(stats.todayStepCount)} />
+        <Stat label={strings.stats.latest} value={formatDistance(stats.latestRecordingDistanceMeters)} />
+        <Stat label={strings.stats.longest} value={formatDistance(stats.longestRecordingDistanceMeters)} />
+        <Stat label={strings.stats.cells} value={stats.exploredCellCount.toString()} />
+        <Stat label={strings.stats.new} value={stats.newCellsThisRecording.toString()} />
+        <Stat label={strings.stats.area} value={formatArea(stats.approximateExploredAreaSquareMeters)} />
       </View>
       <Text style={styles.caption}>
-        {stats.todayRecordingCount} {stats.todayRecordingCount === 1 ? "recording" : "recordings"}{" "}
-        today
+        {interpolate(strings.stats.recordingsToday, {
+          count: stats.todayRecordingCount,
+          recording:
+            language === "fr"
+              ? stats.todayRecordingCount === 1
+                ? "enregistrement"
+                : "enregistrements"
+              : stats.todayRecordingCount === 1
+                ? "recording"
+                : "recordings"
+        })}
       </Text>
     </View>
   );
-}
-
-function getCountLabel(activityMode: ActivityMode) {
-  if (activityMode === "walk") {
-    return "Walks";
-  }
-
-  if (activityMode === "wheel") {
-    return "Rides";
-  }
-
-  return "Drives";
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
@@ -68,20 +72,20 @@ function formatNumber(value: number) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(11, 21, 29, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 10,
     padding: 12
   },
   caption: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 11,
     fontWeight: "700"
   },
   label: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     marginTop: 2
   },
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
     gap: 12
   },
   value: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 16,
     fontWeight: "700"
   }

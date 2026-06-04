@@ -10,13 +10,17 @@ import {
   View
 } from "react-native";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { LoopFillSessionSummary } from "../database/completionRepository";
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import { formatDistance, formatDuration } from "../services/distance";
-import { ActivityMode, WalkSession } from "../types/walk";
+import { collectExploredCellIdsForPath } from "../services/explorationArea";
+import { buildPathSegments } from "../services/pathInference";
+import { ActivityMode, WalkSession, WalkWithPoints } from "../types/walk";
 
 type WalkHistoryModalProps = {
   activityMode: ActivityMode;
+  detailedWalks: WalkWithPoints[];
+  language: AppLanguage;
   loopFillSummaries: Record<number, LoopFillSessionSummary>;
   visible: boolean;
   walks: WalkSession[];
@@ -33,6 +37,8 @@ type WalkHistoryModalProps = {
 
 export function WalkHistoryModal({
   activityMode,
+  detailedWalks,
+  language,
   loopFillSummaries,
   visible,
   walks,
@@ -49,6 +55,9 @@ export function WalkHistoryModal({
   const [draftNames, setDraftNames] = useState<Record<number, string>>({});
   const [detailSessionId, setDetailSessionId] = useState<number | null>(null);
   const detailWalk = walks.find((walk) => walk.id === detailSessionId) ?? null;
+  const detailedWalk = detailedWalks.find((walk) => walk.id === detailSessionId) ?? null;
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
 
   useEffect(() => {
     setDraftNames(Object.fromEntries(walks.map((walk) => [walk.id, walk.displayName ?? ""])));
@@ -73,8 +82,12 @@ export function WalkHistoryModal({
             <Ionicons name="chevron-back" size={22} color="#f8fafc" />
           </TouchableOpacity>
           <View>
-            <Text style={styles.title}>{ACTIVITY_MODE_LABELS[activityMode]} history</Text>
-            <Text style={styles.subtitle}>{walks.length} saved recordings</Text>
+            <Text style={styles.title}>
+              {modeText.labels[activityMode]} {strings.history.history}
+            </Text>
+            <Text style={styles.subtitle}>
+              {interpolate(strings.history.savedRecordings, { count: walks.length })}
+            </Text>
           </View>
         </View>
 
@@ -92,8 +105,10 @@ export function WalkHistoryModal({
             onUpdateDraftName={(value) =>
               setDraftNames((current) => ({ ...current, [detailWalk.id]: value }))
             }
+            language={language}
             loopFillSummary={loopFillSummaries[detailWalk.id] ?? null}
             walk={detailWalk}
+            walkWithPoints={detailedWalk}
           />
         ) : (
           <ScrollView contentContainerStyle={styles.list}>
@@ -103,33 +118,34 @@ export function WalkHistoryModal({
                 onPress={onExportBackup}
                 style={styles.toolButton}
               >
-                <Ionicons name="download-outline" size={18} color="#0f172a" />
-                <Text style={styles.toolButtonText}>Backup</Text>
+                <Ionicons name="download-outline" size={18} color="#f8fafc" />
+                <Text style={styles.toolButtonText}>{strings.history.backup}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={onImportBackup}
                 style={styles.toolButton}
               >
-                <Ionicons name="cloud-upload-outline" size={18} color="#0f172a" />
-                <Text style={styles.toolButtonText}>Restore</Text>
+                <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
+                <Text style={styles.toolButtonText}>{strings.common.restore}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 accessibilityRole="button"
                 onPress={onOpenDiagnostics}
                 style={styles.toolButton}
               >
-                <Ionicons name="pulse-outline" size={18} color="#0f172a" />
-                <Text style={styles.toolButtonText}>Diagnostics</Text>
+                <Ionicons name="pulse-outline" size={18} color="#f8fafc" />
+                <Text style={styles.toolButtonText}>{strings.history.diagnostics}</Text>
               </TouchableOpacity>
             </View>
 
           {walks.length === 0 ? (
             <View style={styles.empty}>
-              <Text style={styles.emptyTitle}>No recordings yet</Text>
+              <Text style={styles.emptyTitle}>{strings.history.noRecordings}</Text>
               <Text style={styles.emptyText}>
-                Saved {ACTIVITY_MODE_LABELS[activityMode].toLowerCase()} explorations will appear
-                here.
+                {interpolate(strings.history.noRecordingsText, {
+                  mode: modeText.labels[activityMode].toLowerCase()
+                })}
               </Text>
             </View>
           ) : (
@@ -141,6 +157,7 @@ export function WalkHistoryModal({
                   onSelectWalk(sessionId);
                   setDetailSessionId(sessionId);
                 }}
+                language={language}
                 walk={walk}
               />
             ))
@@ -154,13 +171,17 @@ export function WalkHistoryModal({
 
 function HistoryRow({
   isSelected,
+  language,
   walk,
   onOpenWalk
 }: {
   isSelected: boolean;
+  language: AppLanguage;
   walk: WalkSession;
   onOpenWalk: (sessionId: number) => void;
 }) {
+  const strings = getStrings(language);
+
   return (
     <TouchableOpacity
       accessibilityRole="button"
@@ -172,7 +193,7 @@ function HistoryRow({
           <Text style={styles.date}>{walk.displayName || formatDate(walk.startedAt)}</Text>
           <Text style={styles.meta}>
             {formatDistance(walk.distanceMeters)} - {formatDuration(walk.durationSeconds)} -{" "}
-            {formatSteps(walk.stepCount)} steps
+            {formatSteps(walk.stepCount)} {strings.history.stepsSuffix}
           </Text>
         </View>
         <Ionicons name="chevron-forward" size={20} color="#64748b" />
@@ -183,6 +204,7 @@ function HistoryRow({
 
 function RecordingDetail({
   draftName,
+  language,
   walk,
   onBack,
   onDeleteWalk,
@@ -190,11 +212,14 @@ function RecordingDetail({
   onFocusWalk,
   onRenameWalk,
   onUpdateDraftName,
-  loopFillSummary
+  loopFillSummary,
+  walkWithPoints
 }: {
   draftName: string;
+  language: AppLanguage;
   loopFillSummary: LoopFillSessionSummary | null;
   walk: WalkSession;
+  walkWithPoints: WalkWithPoints | null;
   onBack: () => void;
   onDeleteWalk: (sessionId: number) => void;
   onExportWalkGpx: (sessionId: number) => void;
@@ -202,36 +227,73 @@ function RecordingDetail({
   onRenameWalk: (sessionId: number, displayName: string) => void;
   onUpdateDraftName: (value: string) => void;
 }) {
+  const report = buildRecordingReport(walk, walkWithPoints, loopFillSummary);
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
+
   return (
     <ScrollView contentContainerStyle={styles.detailScreen}>
       <TouchableOpacity accessibilityRole="button" onPress={onBack} style={styles.backButton}>
-        <Ionicons name="chevron-back" size={19} color="#0f172a" />
-        <Text style={styles.backButtonText}>History</Text>
+        <Ionicons name="chevron-back" size={19} color="#f8fafc" />
+        <Text style={styles.backButtonText}>{strings.history.history}</Text>
       </TouchableOpacity>
 
       <View style={styles.detailCard}>
         <Text style={styles.detailTitle}>{walk.displayName || formatDate(walk.startedAt)}</Text>
-        <Text style={styles.detailSubtitle}>{ACTIVITY_MODE_LABELS[walk.activityMode]} recording</Text>
+        <Text style={styles.detailSubtitle}>
+          {modeText.labels[walk.activityMode]} {strings.history.recording}
+        </Text>
 
         <View style={styles.summaryGrid}>
-          <Summary label="Distance" value={formatDistance(walk.distanceMeters)} />
-          <Summary label="Duration" value={formatDuration(walk.durationSeconds)} />
-          <Summary label="Steps" value={formatSteps(walk.stepCount)} />
-          <Summary label="GPS pts" value={(walk.pointCount ?? 0).toString()} />
-          <Summary label="Loops" value={formatLoopCount(loopFillSummary)} />
-          <Summary label="Loop cells" value={String(loopFillSummary?.loopFilledCellCount ?? 0)} />
-          <Summary label="Mode" value={ACTIVITY_MODE_LABELS[walk.activityMode]} />
+          <Summary label={strings.common.distance} value={formatDistance(walk.distanceMeters)} />
+          <Summary label={strings.common.duration} value={formatDuration(walk.durationSeconds)} />
+          <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
+          <Summary label={strings.history.gpsPoints} value={(walk.pointCount ?? 0).toString()} />
+          <Summary label={strings.history.loops} value={formatLoopCount(loopFillSummary)} />
+          <Summary label={strings.history.loopCells} value={String(loopFillSummary?.loopFilledCellCount ?? 0)} />
+          <Summary label={strings.common.mode} value={modeText.labels[walk.activityMode]} />
         </View>
 
         <View style={styles.details}>
-          <Detail label="Started" value={formatFullDate(walk.startedAt)} />
-          <Detail label="Ended" value={formatFullDate(walk.endedAt)} />
-          <Detail label="Loop result" value={formatLoopSummary(loopFillSummary)} />
-          <Detail label="Loop explanation" value={formatLoopExplanation(loopFillSummary)} />
+          <Detail label={strings.history.started} value={formatFullDate(walk.startedAt)} />
+          <Detail label={strings.history.ended} value={formatFullDate(walk.endedAt)} />
+          <Detail label={strings.history.loopResult} value={formatLoopSummary(loopFillSummary)} />
+          <Detail label={strings.history.loopExplanation} value={formatLoopExplanation(loopFillSummary)} />
+        </View>
+
+        <View style={styles.reportCard}>
+          <View style={styles.reportHeader}>
+            <Ionicons name="clipboard-outline" size={16} color="#9cff00" />
+            <Text style={styles.reportTitle}>{strings.history.recordingReport}</Text>
+          </View>
+          <View style={styles.summaryGrid}>
+            <Summary label={strings.history.gpsAccepted} value={report.gpsAccepted} />
+            <Summary label={strings.history.gpsRejected} value={report.gpsRejected} />
+            <Summary label={strings.history.hiddenGaps} value={report.hiddenGaps} />
+            <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
+            <Summary label={strings.history.loopFill} value={report.loopFillResult} />
+            <Summary label={strings.history.quality} value={report.qualityScore} />
+          </View>
+          <Text style={styles.reportNote}>{report.qualityReason}</Text>
+        </View>
+
+        <View style={styles.reportCard}>
+          <View style={styles.reportHeader}>
+            <Ionicons name="git-network-outline" size={16} color="#9cff00" />
+            <Text style={styles.reportTitle}>{strings.history.loopFillDebug}</Text>
+          </View>
+          <View style={styles.details}>
+            <Detail label={strings.stats.cells} value={report.cellsWalked} />
+            <Detail label={strings.history.loops} value={report.loopsFilled} />
+            <Detail label={strings.history.loopResult} value={report.loopsRejected} />
+            <Detail label={strings.history.reason} value={report.loopReason} />
+            <Detail label={strings.stats.area} value={report.areaSize} />
+          </View>
         </View>
 
         <TextInput
-          placeholder="Recording name"
+          placeholder={strings.history.recordingName}
+          placeholderTextColor="#64748b"
           onChangeText={onUpdateDraftName}
           style={styles.input}
           value={draftName}
@@ -244,15 +306,15 @@ function RecordingDetail({
             style={styles.saveButton}
           >
             <Ionicons name="checkmark" size={18} color="#ffffff" />
-            <Text style={styles.saveButtonText}>Save</Text>
+            <Text style={styles.saveButtonText}>{strings.common.save}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityRole="button"
             onPress={() => onFocusWalk(walk.id)}
             style={styles.secondaryButton}
           >
-            <Ionicons name="locate-outline" size={18} color="#0f172a" />
-            <Text style={styles.secondaryButtonText}>Focus on map</Text>
+            <Ionicons name="locate-outline" size={18} color="#f8fafc" />
+            <Text style={styles.secondaryButtonText}>{strings.history.focusOnMap}</Text>
           </TouchableOpacity>
         </View>
 
@@ -262,8 +324,8 @@ function RecordingDetail({
             onPress={() => onExportWalkGpx(walk.id)}
             style={styles.secondaryButton}
           >
-            <Ionicons name="download-outline" size={18} color="#0f172a" />
-            <Text style={styles.secondaryButtonText}>Export GPX</Text>
+            <Ionicons name="download-outline" size={18} color="#f8fafc" />
+            <Text style={styles.secondaryButtonText}>{strings.history.exportGpx}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityRole="button"
@@ -271,7 +333,7 @@ function RecordingDetail({
             style={styles.deleteButton}
           >
             <Ionicons name="trash-outline" size={18} color="#dc2626" />
-            <Text style={styles.deleteButtonText}>Delete</Text>
+            <Text style={styles.deleteButtonText}>{strings.history.delete}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -295,6 +357,84 @@ function Detail({ label, value }: { label: string; value: string }) {
       <Text style={styles.detailValue}>{value}</Text>
     </View>
   );
+}
+
+function buildRecordingReport(
+  walk: WalkSession,
+  walkWithPoints: WalkWithPoints | null,
+  loopFillSummary: LoopFillSessionSummary | null
+) {
+  const points = walkWithPoints?.points ?? [];
+  const segments = buildPathSegments(points, walk.activityMode);
+  const hiddenGapCount = segments.filter((segment) => segment.type === "rejected").length;
+  const acceptedPointCount = walk.pointCount ?? points.length;
+  const cellsWalked = points.length > 1
+    ? collectExploredCellIdsForPath(points, walk.activityMode).length
+    : 0;
+  const quality = calculateSavedRecordingQuality({
+    hiddenGapCount,
+    pointCount: acceptedPointCount,
+    durationSeconds: walk.durationSeconds
+  });
+
+  return {
+    areaSize: loopFillSummary ? formatArea(loopFillSummary.areaM2) : "0 m2",
+    cellsWalked: String(cellsWalked),
+    gpsAccepted: String(acceptedPointCount),
+    gpsRejected: "Not stored",
+    hiddenGaps: String(hiddenGapCount),
+    loopFillResult: formatLoopSummary(loopFillSummary),
+    loopReason: loopFillSummary?.accepted
+      ? "closed cell boundary accepted"
+      : formatLoopRejectionLabel(loopFillSummary?.rejectionReason ?? null),
+    loopsFilled: String(loopFillSummary?.filledLoopCount ?? 0),
+    loopsRejected: String(loopFillSummary?.rejectedLoopCount ?? 0),
+    qualityReason: quality.reason,
+    qualityScore: `${quality.score}/100 ${quality.label}`
+  };
+}
+
+function calculateSavedRecordingQuality({
+  durationSeconds,
+  hiddenGapCount,
+  pointCount
+}: {
+  durationSeconds: number;
+  hiddenGapCount: number;
+  pointCount: number;
+}) {
+  let score = 100;
+  const pointsPerMinute = durationSeconds > 0 ? pointCount / (durationSeconds / 60) : pointCount;
+  const reasons: string[] = [];
+
+  if (pointCount < 2) {
+    score -= 60;
+    reasons.push("too few accepted GPS points");
+  } else if (durationSeconds > 60 && pointsPerMinute < 2) {
+    score -= 30;
+    reasons.push("GPS updates were sparse");
+  } else if (durationSeconds > 60 && pointsPerMinute < 4) {
+    score -= 12;
+    reasons.push("GPS updates were slow");
+  }
+
+  if (hiddenGapCount > 3) {
+    score -= 25;
+    reasons.push("multiple hidden gaps");
+  } else if (hiddenGapCount > 0) {
+    score -= 10;
+    reasons.push("hidden GPS gaps");
+  }
+
+  const boundedScore = Math.max(0, Math.min(100, score));
+
+  return {
+    label: boundedScore >= 80 ? "Good" : boundedScore >= 55 ? "OK" : "Poor",
+    reason:
+      reasons[0] ??
+      "Saved report uses accepted GPS points and derived hidden gaps; rejected raw GPS counts were not persisted for older recordings.",
+    score: boundedScore
+  };
 }
 
 function formatLoopSummary(summary: LoopFillSessionSummary | null) {
@@ -380,6 +520,14 @@ function formatSteps(steps: number) {
   return Math.max(0, Math.round(steps)).toLocaleString();
 }
 
+function formatArea(areaM2: number) {
+  if (areaM2 >= 1000000) {
+    return `${(areaM2 / 1000000).toFixed(2)} km2`;
+  }
+
+  return `${Math.round(areaM2).toLocaleString()} m2`;
+}
+
 const styles = StyleSheet.create({
   actions: {
     flexDirection: "row",
@@ -394,7 +542,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4
   },
   backButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "800"
   },
@@ -418,13 +566,14 @@ const styles = StyleSheet.create({
     width: 42
   },
   date: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 16,
     fontWeight: "700"
   },
   deleteButton: {
     alignItems: "center",
-    borderColor: "#fecaca",
+    backgroundColor: "rgba(127, 29, 29, 0.16)",
+    borderColor: "rgba(248, 113, 113, 0.42)",
     borderRadius: 8,
     borderWidth: 1,
     flex: 1,
@@ -440,18 +589,19 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   detailLabel: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12
   },
   detailCard: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 14,
     padding: 14
   },
   detailRow: {
+    gap: 12,
     flexDirection: "row",
     justifyContent: "space-between"
   },
@@ -460,18 +610,18 @@ const styles = StyleSheet.create({
     padding: 18
   },
   detailSubtitle: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 13,
     fontWeight: "700",
     marginTop: -8
   },
   detailTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 22,
     fontWeight: "900"
   },
   details: {
-    borderTopColor: "#e2e8f0",
+    borderTopColor: "rgba(148, 163, 184, 0.18)",
     borderTopWidth: 1,
     gap: 10,
     marginTop: 12,
@@ -479,31 +629,34 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   detailsTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "900"
   },
   detailValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
+    flex: 1,
     fontSize: 12,
-    fontWeight: "700"
+    fontWeight: "700",
+    textAlign: "right"
   },
   empty: {
     alignItems: "center",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     padding: 24
   },
   emptyText: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 14,
     lineHeight: 20,
     marginTop: 6,
     textAlign: "center"
   },
   emptyTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 18,
     fontWeight: "800"
   },
@@ -518,11 +671,11 @@ const styles = StyleSheet.create({
     paddingTop: 58
   },
   input: {
-    backgroundColor: "#ffffff",
-    borderColor: "#cbd5e1",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 15,
     minHeight: 44,
     paddingHorizontal: 12
@@ -532,14 +685,37 @@ const styles = StyleSheet.create({
     padding: 18
   },
   meta: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 13,
     marginTop: 4
   },
+  reportCard: {
+    backgroundColor: "#111c25",
+    borderColor: "rgba(156, 255, 0, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 12,
+    padding: 12
+  },
+  reportHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 7
+  },
+  reportNote: {
+    color: "#94a3b8",
+    fontSize: 12,
+    lineHeight: 17
+  },
+  reportTitle: {
+    color: "#f8fafc",
+    fontSize: 13,
+    fontWeight: "900"
+  },
   row: {
     alignItems: "stretch",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     gap: 10,
@@ -571,7 +747,8 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     alignItems: "center",
-    borderColor: "#cbd5e1",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
     borderRadius: 8,
     borderWidth: 1,
     flex: 1,
@@ -582,7 +759,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   secondaryButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "700"
   },
@@ -591,11 +768,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   selectedRow: {
-    borderColor: "#2563eb",
+    borderColor: "#9cff00",
     borderWidth: 2
   },
   summary: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#16232e",
+    borderColor: "rgba(148, 163, 184, 0.18)",
+    borderWidth: 1,
     borderRadius: 8,
     flex: 1,
     minWidth: "42%",
@@ -607,12 +786,12 @@ const styles = StyleSheet.create({
     gap: 10
   },
   summaryLabel: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     marginTop: 2
   },
   summaryValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 17,
     fontWeight: "900"
   },
@@ -628,8 +807,8 @@ const styles = StyleSheet.create({
   },
   toolButton: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -638,7 +817,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   toolButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "800"
   },

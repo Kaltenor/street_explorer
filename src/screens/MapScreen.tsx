@@ -8,6 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View
 } from "react-native";
@@ -15,7 +16,6 @@ import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
@@ -101,13 +101,20 @@ import {
   finishPersistedActiveWalk,
   persistAcceptedGpsPoint
 } from "../services/walkRecorder";
-import { calculatePathDistanceMeters, formatDistance } from "../services/distance";
+import { calculatePathDistanceMeters, formatDistance, formatDuration } from "../services/distance";
 import {
   getStepCountBetween,
   StepSubscription,
   watchStepCount
 } from "../services/pedometerService";
 import { calculateRecordingQuality } from "../services/recordingQuality";
+import {
+  ACTIVITY_MODE_TEXT,
+  APP_LANGUAGES,
+  AppLanguage,
+  getStrings,
+  interpolate
+} from "../i18n";
 import {
   ActiveWalk,
   ActivityMode,
@@ -138,6 +145,8 @@ const OSM_STREET_RADIUS_METERS = 1600;
 
 type MapScreenProps = {
   activityMode: ActivityMode;
+  language: AppLanguage;
+  onChangeLanguage: (language: AppLanguage) => void;
   onChangeMode: (mode: ActivityMode) => void;
 };
 
@@ -162,7 +171,25 @@ type LoopProcessingResult =
       status: "not_checked";
     };
 
-export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
+type RecordingSummary = {
+  backgroundStatus: BackgroundTrackingStatus;
+  distanceMeters: number;
+  durationSeconds: number;
+  finalStepCount: number;
+  loopResult: LoopProcessingResult;
+  newCellCount: number;
+  quality: ReturnType<typeof calculateRecordingQuality>;
+  sessionId: number;
+};
+
+export function MapScreen({
+  activityMode,
+  language,
+  onChangeLanguage,
+  onChangeMode
+}: MapScreenProps) {
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
   const [permissionState, setPermissionState] = useState<LocationPermissionState>("unknown");
   const [currentLocation, setCurrentLocation] = useState<GpsPoint | null>(null);
   const [walks, setWalks] = useState<WalkWithPoints[]>([]);
@@ -172,11 +199,13 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
   const [streetSegments, setStreetSegments] = useState<OsmStreetSegment[]>([]);
   const [streetStatus, setStreetStatus] = useState<StreetCompletionSummary["status"]>("empty");
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
+  const [optionsVisible, setOptionsVisible] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [completionVisible, setCompletionVisible] = useState(false);
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
+  const [recordingSummary, setRecordingSummary] = useState<RecordingSummary | null>(null);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
@@ -484,6 +513,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
   const startForegroundWatch = useCallback(async () => {
     const currentPoint = await getCurrentGpsPoint();
+
     if (currentPoint) {
       setCurrentLocation(currentPoint);
       setActiveWalk((walk) => {
@@ -501,26 +531,47 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
         return next;
       });
+    } else {
+      setActiveWalk((walk) =>
+        walk
+          ? {
+              ...walk,
+              lastRejectedPointReason: "GPS unavailable; recording paused until signal returns"
+            }
+          : walk
+      );
     }
 
-    subscriptionRef.current = await watchGpsPoints((point) => {
-      setCurrentLocation(point);
-      setActiveWalk((walk) => {
-        if (!walk) {
-          return walk;
-        }
+    try {
+      subscriptionRef.current = await watchGpsPoints((point) => {
+        setCurrentLocation(point);
+        setActiveWalk((walk) => {
+          if (!walk) {
+            return walk;
+          }
 
-        const next = appendGpsPoint(walk, point);
+          const next = appendGpsPoint(walk, point);
 
-        if (next.points.length > walk.points.length) {
-          persistAcceptedGpsPoint(walk.sessionId, walk.activityMode, point).catch((error) =>
-            console.warn("Failed to persist watched GPS point", error)
-          );
-        }
+          if (next.points.length > walk.points.length) {
+            persistAcceptedGpsPoint(walk.sessionId, walk.activityMode, point).catch((error) =>
+              console.warn("Failed to persist watched GPS point", error)
+            );
+          }
 
-        return next;
+          return next;
+        });
       });
-    });
+    } catch (error) {
+      console.warn("Foreground GPS watch unavailable", error);
+      setActiveWalk((walk) =>
+        walk
+          ? {
+              ...walk,
+              lastRejectedPointReason: "GPS watch unavailable; recording paused until signal returns"
+            }
+          : walk
+      );
+    }
   }, []);
 
   const syncActiveWalkFromDatabase = useCallback(async () => {
@@ -553,9 +604,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
       if (!canUseBackgroundTasks) {
         setBackgroundTrackingStatus("unavailable");
-        setBackgroundTrackingMessage(
-          "Background tracking needs a development build; Expo Go will record only while open."
-        );
+        setBackgroundTrackingMessage(strings.map.backgroundNeedsDevelopmentBuild);
         return;
       }
 
@@ -564,28 +613,24 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       if (backgroundPermission.granted) {
         await startBackgroundLocationTracking(activityMode);
         setBackgroundTrackingStatus("enabled");
-        setBackgroundTrackingMessage(
-          "Background tracking enabled. Keep this recording stopped before switching mode."
-        );
+        setBackgroundTrackingMessage(strings.map.backgroundEnabled);
         return;
       }
 
       setBackgroundTrackingStatus("foreground-only");
       const settingsHint = backgroundPermission.backgroundCanAskAgain
-        ? "iOS may show another permission prompt after recording starts."
-        : "Open iPhone Settings > Street Explorer > Location and choose Always. If Always is missing, reinstall the latest development build.";
+        ? strings.map.foregroundHintAskAgain
+        : strings.map.foregroundHintSettings;
 
       setBackgroundTrackingMessage(
-        `Background recording is not enabled yet. Foreground recording is active. ${settingsHint}`
+        interpolate(strings.map.backgroundForegroundOnly, { hint: settingsHint })
       );
     } catch (error) {
       console.warn("Background tracking setup failed", error);
       setBackgroundTrackingStatus("unavailable");
-      setBackgroundTrackingMessage(
-        "Background tracking is unavailable here; foreground recording is still active."
-      );
+      setBackgroundTrackingMessage(strings.map.backgroundUnavailable);
     }
-  }, [activityMode]);
+  }, [activityMode, strings]);
 
   useEffect(() => {
     let isMounted = true;
@@ -634,7 +679,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     }
 
     if (permission !== "granted") {
-      Alert.alert("Location denied", "Enable location permission to record a walk.");
+      Alert.alert(strings.map.locationOff, strings.map.locationOffText);
       return;
     }
 
@@ -663,7 +708,8 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     permissionState,
     startForegroundWatch,
     startStepWatch,
-    stopLocationWatch
+    stopLocationWatch,
+    strings
   ]);
 
   const reprocessModeExploration = useCallback(
@@ -801,15 +847,27 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         return;
       }
 
+      const newCellCount = calculateNewCellsForActivePath(
+        walks,
+        activeWalk.points,
+        activeWalk.activityMode
+      );
       const loopResult = await reprocessModeExploration(activeWalk.activityMode);
       await refreshSavedData();
+      await waitForMapRenderCommit();
       setIsComputingRecording(false);
-      showRecordingResultAlert({
-        activeWalk,
+      setRecordingSummary({
         backgroundStatus: finalBackgroundStatus,
+        distanceMeters: activeWalk.distanceMeters,
+        durationSeconds: Math.max(
+          0,
+          Math.round((new Date(endedAt).getTime() - new Date(activeWalk.startedAt).getTime()) / 1000)
+        ),
         finalStepCount,
         loopResult,
-        quality: recordingQuality
+        newCellCount,
+        quality: recordingQuality,
+        sessionId: savedSessionId
       });
     } catch (error) {
       console.warn("Failed to stop recording", error);
@@ -823,23 +881,24 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     refreshSavedData,
     reprocessModeExploration,
     stopLocationWatch,
-    stopStepWatch
+    stopStepWatch,
+    walks
   ]);
 
   const handleReprocessRecordings = useCallback(() => {
     if (activeWalk) {
-      Alert.alert("Recording active", "Stop the current recording before reprocessing saved walks.");
+      Alert.alert(strings.map.recordingActive, strings.map.recordingActiveMode);
       return;
     }
 
     Alert.alert(
       "Reprocess saved recordings?",
-      `This rebuilds explored cells and loop fills for saved ${ACTIVITY_MODE_LABELS[
+      `This rebuilds explored cells and loop fills for saved ${modeText.labels[
         activityMode
       ].toLowerCase()} recordings using the current rules.`,
       [
         {
-          text: "Cancel",
+          text: strings.common.cancel,
           style: "cancel"
         },
         {
@@ -862,7 +921,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         }
       ]
     );
-  }, [activeWalk, activityMode, refreshSavedData, reprocessModeExploration]);
+  }, [activeWalk, activityMode, modeText, refreshSavedData, reprocessModeExploration, strings]);
 
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
@@ -929,6 +988,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
     await refreshSavedData();
+    await waitForMapRenderCommit();
   }, [activityMode, recoverableRecording, refreshSavedData, reprocessModeExploration, stopStepWatch]);
 
   const handleDiscardRecoveredRecording = useCallback(async () => {
@@ -1006,26 +1066,26 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
       await exportBackupJson();
     } catch (error) {
       console.warn("Failed to export backup", error);
-      Alert.alert("Backup failed", "Street Explorer could not create the backup file.");
+      Alert.alert(strings.map.backupFailedTitle, strings.map.backupFailedMessage);
     }
-  }, []);
+  }, [strings]);
 
   const handleImportBackup = useCallback(() => {
     if (activeWalk) {
-      Alert.alert("Recording active", "Stop the current recording before restoring a backup.");
+      Alert.alert(strings.map.recordingActive, strings.map.recordingActiveBackup);
       return;
     }
 
     Alert.alert(
-      "Restore backup?",
-      "This replaces all local recordings with the selected backup file.",
+      strings.map.restoreBackupTitle,
+      strings.map.restoreBackupMessage,
       [
         {
-          text: "Cancel",
+          text: strings.common.cancel,
           style: "cancel"
         },
         {
-          text: "Restore",
+          text: strings.common.restore,
           style: "destructive",
           onPress: async () => {
             try {
@@ -1038,22 +1098,22 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               }
             } catch (error) {
               console.warn("Failed to import backup", error);
-              Alert.alert("Restore failed", "Street Explorer could not restore this backup file.");
+              Alert.alert(strings.map.restoreFailedTitle, strings.map.restoreFailedMessage);
             }
           }
         }
       ]
     );
-  }, [activeWalk, refreshSavedData]);
+  }, [activeWalk, refreshSavedData, strings]);
 
   const handleChangeMode = useCallback((mode: ActivityMode) => {
     if (activeWalk) {
-      Alert.alert("Recording active", "Stop the current recording before changing mode.");
+      Alert.alert(strings.map.recordingActive, strings.map.recordingActiveMode);
       return;
     }
 
     onChangeMode(mode);
-  }, [activeWalk, onChangeMode]);
+  }, [activeWalk, onChangeMode, strings]);
 
   useEffect(() => {
     return () => {
@@ -1106,6 +1166,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
             {objective ? (
               <ObjectiveHud
                 objective={objective}
+                language={language}
                 stats={objectiveStats}
                 todayCellCount={todayObjectiveCellCount}
                 onClear={async () => {
@@ -1123,10 +1184,9 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
 
         {permissionState === "denied" ? (
           <View style={styles.permissionPanel}>
-            <Text style={styles.permissionTitle}>Location permission is off</Text>
+            <Text style={styles.permissionTitle}>{strings.map.locationOff}</Text>
             <Text style={styles.permissionText}>
-              You can still view saved walks, but location permission is required to record a new
-              walk.
+              {strings.map.locationOffText}
             </Text>
           </View>
         ) : null}
@@ -1134,19 +1194,19 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         <View style={styles.bottomPanel}>
           <View style={styles.bottomTabs}>
             <TouchableOpacity
-              accessibilityLabel="Details"
+              accessibilityLabel={strings.common.details}
               accessibilityRole="button"
               onPress={() => setDashboardExpanded(true)}
               style={[styles.bottomTab, dashboardExpanded ? styles.activeBottomTab : null]}
             >
               <Ionicons
-                name="list-outline"
+                name="footsteps-outline"
                 size={19}
                 color={dashboardExpanded ? "#02060a" : "#f8fafc"}
               />
             </TouchableOpacity>
             <TouchableOpacity
-              accessibilityLabel="History"
+              accessibilityLabel={strings.common.history}
               accessibilityRole="button"
               onPress={() => setHistoryVisible(true)}
               style={styles.bottomTab}
@@ -1154,25 +1214,43 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
               <Ionicons name="time-outline" size={19} color="#f8fafc" />
             </TouchableOpacity>
             <TouchableOpacity
-              accessibilityLabel="Completion"
+              accessibilityLabel={strings.common.completion}
               accessibilityRole="button"
               onPress={() => setCompletionVisible(true)}
               style={styles.bottomTab}
             >
               <Ionicons name="trophy-outline" size={19} color="#f8fafc" />
             </TouchableOpacity>
+            <View style={styles.bottomTabSpacer} />
+            <TouchableOpacity
+              accessibilityLabel={strings.common.options}
+              accessibilityRole="button"
+              onPress={() => setOptionsVisible(true)}
+              style={[styles.bottomTab, optionsVisible ? styles.activeBottomTab : null]}
+            >
+              <Ionicons
+                name="options-outline"
+                size={19}
+                color={optionsVisible ? "#02060a" : "#f8fafc"}
+              />
+            </TouchableOpacity>
           </View>
           <WalkControls
             activityMode={activityMode}
+            acceptedGpsPointCount={activeWalk?.acceptedGpsPointCount ?? 0}
+            backgroundStatus={backgroundTrackingStatus}
             isRecording={Boolean(activeWalk)}
             distanceMeters={activeWalk?.distanceMeters ?? 0}
             durationSeconds={elapsedSeconds}
             gpsAccuracyMeters={currentLocation?.accuracy}
             gpsStatus={activeWalk?.lastRejectedPointReason}
+            latestPointTimestamp={activeWalk?.points.at(-1)?.timestamp ?? null}
             pointCount={activeWalk?.points.length ?? 0}
+            rejectedGpsPointCount={activeWalk?.rejectedGpsPointCount ?? 0}
             speedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
             stepCount={activeWalk?.stepCount ?? 0}
             todayStepCount={stats.todayStepCount + (activeWalk?.stepCount ?? 0)}
+            language={language}
             recordingQuality={recordingQuality}
             onStart={handleStartWalk}
             onStop={handleStopWalk}
@@ -1180,12 +1258,26 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         </View>
       </SafeAreaView>
 
+      <OptionsModal
+        activityMode={activityMode}
+        language={language}
+        layers={layers}
+        mode={pathDisplayMode}
+        onChangeLanguage={onChangeLanguage}
+        onChangeMode={handleChangeMode}
+        onChangePathDisplayMode={setPathDisplayMode}
+        onClose={() => setOptionsVisible(false)}
+        onToggleLayer={toggleLayer}
+        selectedSessionId={selectedSessionId}
+        visible={optionsVisible}
+      />
       <DetailsModal
         activeWalk={activeWalk}
         activityMode={activityMode}
         backgroundMessage={backgroundTrackingMessage}
         backgroundStatus={backgroundTrackingStatus}
         currentLocation={currentLocation}
+        language={language}
         layers={layers}
         mode={pathDisplayMode}
         onChangeMode={setPathDisplayMode}
@@ -1195,14 +1287,18 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
           setHistoryVisible(true);
         }}
         onReprocessRecordings={handleReprocessRecordings}
+        objectiveStats={objectiveStats}
         recordingQuality={recordingQuality}
         selectedSessionId={selectedSessionId}
         stats={stats}
         visible={dashboardExpanded}
+        walks={walks}
       />
 
       <WalkHistoryModal
         activityMode={activityMode}
+        detailedWalks={walks}
+        language={language}
         loopFillSummaries={loopFillSummaries}
         visible={historyVisible}
         walks={history}
@@ -1230,6 +1326,7 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         currentObjectiveStats={objectiveStats}
         currentObjectiveTodayCells={todayObjectiveCellCount}
         currentLocation={currentLocation}
+        language={language}
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
           setSelectedZone(zone);
@@ -1255,11 +1352,27 @@ export function MapScreen({ activityMode, onChangeMode }: MapScreenProps) {
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
       />
-      <ComputingRecordingModal visible={isComputingRecording} />
+      <RecordingSummaryModal
+        language={language}
+        onClose={() => setRecordingSummary(null)}
+        onSaveName={async (displayName) => {
+          if (!recordingSummary || displayName.trim().length === 0) {
+            setRecordingSummary(null);
+            return;
+          }
+
+          await updateWalkSessionName(recordingSummary.sessionId, displayName.trim());
+          await refreshSavedData();
+          setRecordingSummary(null);
+        }}
+        summary={recordingSummary}
+      />
+      <ComputingRecordingModal language={language} visible={isComputingRecording} />
       {!isLaunchDismissed ? (
         <LaunchLoadingOverlay
           activityMode={activityMode}
           isReady={isLaunchReady}
+          language={language}
           onChangeMode={handleChangeMode}
           onStart={() => setIsLaunchDismissed(true)}
         />
@@ -1291,11 +1404,13 @@ function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
 
 function ObjectiveHud({
   objective,
+  language,
   stats,
   todayCellCount,
   onClear
 }: {
   objective: CompletionObjective;
+  language: AppLanguage;
   stats: ZoneCompletionStats | null;
   todayCellCount: number;
   onClear: () => void;
@@ -1311,7 +1426,7 @@ function ObjectiveHud({
         <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
         <View style={styles.objectiveMetricRow}>
           <Text style={styles.objectivePercent}>{formatObjectiveCompletion(stats)}</Text>
-          <Text style={styles.objectiveMeta}>{formatObjectiveMode(objective.mode)}</Text>
+          <Text style={styles.objectiveMeta}>{formatObjectiveMode(objective.mode, language)}</Text>
         </View>
         <Text style={styles.objectiveMeta}>
           {remainingCells === null
@@ -1381,15 +1496,23 @@ function LayerIconButton({
   );
 }
 
-function ComputingRecordingModal({ visible }: { visible: boolean }) {
+function ComputingRecordingModal({
+  language,
+  visible
+}: {
+  language: AppLanguage;
+  visible: boolean;
+}) {
+  const strings = getStrings(language);
+
   return (
     <Modal animationType="fade" transparent visible={visible}>
       <View style={styles.computingOverlay}>
         <View style={styles.computingDialog}>
           <ActivityIndicator color="#9cff00" size="large" />
-          <Text style={styles.computingTitle}>Computing information</Text>
+          <Text style={styles.computingTitle}>{strings.map.computingInfo}</Text>
           <Text style={styles.computingText}>
-            Updating your route, explored area, loops, and recording report.
+            {strings.map.computingInfoText}
           </Text>
         </View>
       </View>
@@ -1397,39 +1520,137 @@ function ComputingRecordingModal({ visible }: { visible: boolean }) {
   );
 }
 
-function DetailsModal({
-  activeWalk,
+function RecordingSummaryModal({
+  language,
+  onClose,
+  onSaveName,
+  summary
+}: {
+  language: AppLanguage;
+  onClose: () => void;
+  onSaveName: (displayName: string) => void;
+  summary: RecordingSummary | null;
+}) {
+  const [displayName, setDisplayName] = useState("");
+
+  useEffect(() => {
+    if (summary) {
+      setDisplayName("");
+    }
+  }, [summary]);
+
+  if (!summary) {
+    return null;
+  }
+
+  const isFrench = language === "fr";
+
+  return (
+    <Modal animationType="slide" transparent visible>
+      <View style={styles.summaryBackdrop}>
+        <View style={styles.summaryDialog}>
+          <View style={styles.summaryHeader}>
+            <View>
+              <Text style={styles.summaryTitle}>
+                {isFrench ? "Enregistrement terminé" : "Recording complete"}
+              </Text>
+              <Text style={styles.summarySubtitle}>
+                {isFrench ? "Résumé et nom de la sortie" : "Summary and recording name"}
+              </Text>
+            </View>
+            <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.summaryClose}>
+              <Ionicons name="close" size={20} color="#f8fafc" />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.summaryGrid}>
+            <SummaryMetric label={isFrench ? "Distance" : "Distance"} value={formatDistance(summary.distanceMeters)} />
+            <SummaryMetric label={isFrench ? "Durée" : "Duration"} value={formatDuration(summary.durationSeconds)} />
+            <SummaryMetric label={isFrench ? "Pas" : "Steps"} value={summary.finalStepCount.toLocaleString()} />
+            <SummaryMetric label={isFrench ? "Qualité" : "Quality"} value={`${summary.quality.label} ${summary.quality.score}/100`} />
+            <SummaryMetric label={isFrench ? "Nouvelles cellules" : "New cells"} value={String(summary.newCellCount)} />
+            <SummaryMetric label={isFrench ? "Boucles" : "Loops"} value={formatLoopResultShort(summary.loopResult, language)} />
+          </View>
+
+          <Text style={styles.summaryNote}>{summary.quality.reason}</Text>
+          <TextInput
+            onChangeText={setDisplayName}
+            placeholder={isFrench ? "Nom de l'enregistrement" : "Recording name"}
+            placeholderTextColor="#64748b"
+            style={styles.summaryInput}
+            value={displayName}
+          />
+
+          <View style={styles.summaryActions}>
+            <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.summarySecondary}>
+              <Text style={styles.summarySecondaryText}>{isFrench ? "Ignorer" : "Skip"}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityRole="button"
+              onPress={() => onSaveName(displayName)}
+              style={styles.summaryPrimary}
+            >
+              <Ionicons name="checkmark" size={18} color="#ffffff" />
+              <Text style={styles.summaryPrimaryText}>{isFrench ? "Enregistrer" : "Save"}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+function SummaryMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.summaryMetric}>
+      <Text style={styles.summaryMetricValue}>{value}</Text>
+      <Text style={styles.summaryMetricLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function formatLoopResultShort(result: LoopProcessingResult, language: AppLanguage) {
+  if (result.status === "filled") {
+    return language === "fr"
+      ? `${result.filledLoopCount} / ${result.filledCellCount} cellules`
+      : `${result.filledLoopCount} / ${result.filledCellCount} cells`;
+  }
+
+  if (result.status === "rejected") {
+    return language === "fr" ? `${result.rejectedLoopCount} rejetées` : `${result.rejectedLoopCount} rejected`;
+  }
+
+  return language === "fr" ? "aucune" : "none";
+}
+
+function OptionsModal({
   activityMode,
-  backgroundMessage,
-  backgroundStatus,
-  currentLocation,
+  language,
   layers,
   mode,
+  onChangeLanguage,
   onChangeMode,
+  onChangePathDisplayMode,
   onClose,
-  onOpenHistory,
-  onReprocessRecordings,
-  recordingQuality,
+  onToggleLayer,
   selectedSessionId,
-  stats,
   visible
 }: {
-  activeWalk: ActiveWalk | null;
   activityMode: ActivityMode;
-  backgroundMessage: string | null;
-  backgroundStatus: BackgroundTrackingStatus;
-  currentLocation: GpsPoint | null;
+  language: AppLanguage;
   layers: MapLayerState;
   mode: PathDisplayMode;
-  onChangeMode: (mode: PathDisplayMode) => void;
+  onChangeLanguage: (language: AppLanguage) => void;
+  onChangeMode: (mode: ActivityMode) => void;
+  onChangePathDisplayMode: (mode: PathDisplayMode) => void;
   onClose: () => void;
-  onOpenHistory: () => void;
-  onReprocessRecordings: () => void;
-  recordingQuality: ReturnType<typeof calculateRecordingQuality>;
+  onToggleLayer: (layer: keyof MapLayerState) => void;
   selectedSessionId: number | null;
-  stats: LifetimeStats;
   visible: boolean;
 }) {
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
+
   return (
     <Modal
       animationType="slide"
@@ -1443,19 +1664,215 @@ function DetailsModal({
             <Ionicons name="chevron-back" size={22} color="#f8fafc" />
           </TouchableOpacity>
           <View>
-            <Text style={styles.fullScreenTitle}>Details</Text>
+            <Text style={styles.fullScreenTitle}>{strings.common.options}</Text>
+            <Text style={styles.fullScreenSubtitle}>{strings.options.subtitle}</Text>
+          </View>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.detailsContent}>
+          <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>{strings.options.activityMode}</Text>
+            <View style={styles.optionRows}>
+              {(["walk", "wheel", "car"] as ActivityMode[]).map((nextMode) => (
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  key={nextMode}
+                  onPress={() => onChangeMode(nextMode)}
+                  style={[
+                    styles.optionButton,
+                    activityMode === nextMode ? styles.selectedPathDisplayButton : null
+                  ]}
+                >
+                  <Ionicons name={getModeIcon(nextMode)} size={17} color="#f8fafc" />
+                  <Text
+                    style={[
+                      styles.pathDisplayButtonText,
+                      activityMode === nextMode ? styles.selectedPathDisplayButtonText : null
+                    ]}
+                  >
+                    {modeText.labels[nextMode]}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
+          <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>{strings.common.language}</Text>
+            <View style={styles.optionRows}>
+              {APP_LANGUAGES.map((option) => (
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  key={option.code}
+                  onPress={() => onChangeLanguage(option.code)}
+                  style={[
+                    styles.optionButton,
+                    language === option.code ? styles.selectedPathDisplayButton : null
+                  ]}
+                >
+                  <Ionicons name="language-outline" size={17} color="#f8fafc" />
+                  <Text
+                    style={[
+                      styles.pathDisplayButtonText,
+                      language === option.code ? styles.selectedPathDisplayButtonText : null
+                    ]}
+                  >
+                    {option.label}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
+          <PathDisplayControls
+            language={language}
+            mode={mode}
+            selectedSessionId={selectedSessionId}
+            onChangeMode={onChangePathDisplayMode}
+          />
+
+          <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>{strings.options.layers}</Text>
+            <View style={styles.optionRows}>
+              <OptionToggle
+                active={layers.showPaths}
+                icon="git-branch-outline"
+                label={strings.mapLegend.savedRoute}
+                onPress={() => onToggleLayer("showPaths")}
+              />
+              <OptionToggle
+                active={layers.showExploredCells}
+                icon="grid-outline"
+                label={strings.mapLegend.exploredCells}
+                onPress={() => onToggleLayer("showExploredCells")}
+              />
+              <OptionToggle
+                active={layers.showMarkers}
+                icon="flag-outline"
+                label={language === "fr" ? "Repères" : "Pins"}
+                onPress={() => onToggleLayer("showMarkers")}
+              />
+            </View>
+          </View>
+
+          <ModeProfilePanel activityMode={activityMode} language={language} />
+        </ScrollView>
+      </View>
+    </Modal>
+  );
+}
+
+function getModeIcon(mode: ActivityMode): keyof typeof Ionicons.glyphMap {
+  if (mode === "walk") {
+    return "walk";
+  }
+
+  if (mode === "wheel") {
+    return "radio-button-on";
+  }
+
+  return "car";
+}
+
+function OptionToggle({
+  active,
+  icon,
+  label,
+  onPress
+}: {
+  active: boolean;
+  icon: keyof typeof Ionicons.glyphMap;
+  label: string;
+  onPress: () => void;
+}) {
+  return (
+    <TouchableOpacity
+      accessibilityRole="button"
+      onPress={onPress}
+      style={[styles.optionButton, active ? styles.selectedPathDisplayButton : null]}
+    >
+      <Ionicons name={icon} size={17} color={active ? "#ffffff" : "#f8fafc"} />
+      <Text
+        style={[
+          styles.pathDisplayButtonText,
+          active ? styles.selectedPathDisplayButtonText : null
+        ]}
+      >
+        {label}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+function DetailsModal({
+  activeWalk,
+  activityMode,
+  backgroundMessage,
+  backgroundStatus,
+  currentLocation,
+  language,
+  layers,
+  mode,
+  onChangeMode,
+  onClose,
+  onOpenHistory,
+  onReprocessRecordings,
+  objectiveStats,
+  recordingQuality,
+  selectedSessionId,
+  stats,
+  visible,
+  walks
+}: {
+  activeWalk: ActiveWalk | null;
+  activityMode: ActivityMode;
+  backgroundMessage: string | null;
+  backgroundStatus: BackgroundTrackingStatus;
+  currentLocation: GpsPoint | null;
+  language: AppLanguage;
+  layers: MapLayerState;
+  mode: PathDisplayMode;
+  onChangeMode: (mode: PathDisplayMode) => void;
+  onClose: () => void;
+  onOpenHistory: () => void;
+  onReprocessRecordings: () => void;
+  objectiveStats: ZoneCompletionStats | null;
+  recordingQuality: ReturnType<typeof calculateRecordingQuality>;
+  selectedSessionId: number | null;
+  stats: LifetimeStats;
+  visible: boolean;
+  walks: WalkWithPoints[];
+}) {
+  const strings = getStrings(language);
+  const modeLabel = ACTIVITY_MODE_TEXT[language].labels[activityMode];
+
+  return (
+    <Modal
+      animationType="slide"
+      onRequestClose={onClose}
+      presentationStyle="fullScreen"
+      visible={visible}
+    >
+      <View style={styles.detailsScreen}>
+        <View style={styles.fullScreenHeader}>
+          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
+            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.fullScreenTitle}>{strings.common.details}</Text>
             <Text style={styles.fullScreenSubtitle}>
-              {ACTIVITY_MODE_LABELS[activityMode]} exploration map
+              {interpolate(strings.details.mapSubtitle, { mode: modeLabel })}
             </Text>
           </View>
         </View>
 
         <ScrollView contentContainerStyle={styles.detailsContent}>
-          <StatsPanel activityMode={activityMode} stats={stats} />
-          <PathDisplayControls
-            mode={mode}
-            selectedSessionId={selectedSessionId}
-            onChangeMode={onChangeMode}
+          <StatsPanel activityMode={activityMode} language={language} stats={stats} />
+          <GameProgressPanel
+            language={language}
+            objectiveStats={objectiveStats}
+            stats={stats}
+            walks={walks}
           />
           <TouchableOpacity
             accessibilityRole="button"
@@ -1463,9 +1880,10 @@ function DetailsModal({
             style={styles.dashboardToggle}
           >
             <Ionicons name="sync-outline" size={18} color="#f8fafc" />
-            <Text style={styles.dashboardToggleText}>Reprocess recordings</Text>
+            <Text style={styles.dashboardToggleText}>{strings.details.reprocessRecordings}</Text>
           </TouchableOpacity>
           <MapLegend
+            language={language}
             showExploredCells={layers.showExploredCells}
             showPaths={layers.showPaths}
           />
@@ -1481,14 +1899,13 @@ function DetailsModal({
             backgroundMessage={backgroundMessage}
             backgroundStatus={backgroundStatus}
           />
-          <ModeProfilePanel activityMode={activityMode} />
           <TouchableOpacity
             accessibilityRole="button"
             onPress={onOpenHistory}
             style={styles.dashboardToggle}
           >
             <Ionicons name="time-outline" size={18} color="#f8fafc" />
-            <Text style={styles.dashboardToggleText}>Open history</Text>
+            <Text style={styles.dashboardToggleText}>{strings.details.openHistory}</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -1496,25 +1913,142 @@ function DetailsModal({
   );
 }
 
+function GameProgressPanel({
+  language,
+  objectiveStats,
+  stats,
+  walks
+}: {
+  language: AppLanguage;
+  objectiveStats: ZoneCompletionStats | null;
+  stats: LifetimeStats;
+  walks: WalkWithPoints[];
+}) {
+  const isFrench = language === "fr";
+  const weekDistanceMeters = getRecentDistanceMeters(walks, 7);
+  const dailyCellGoal = 50;
+  const weeklyDistanceGoalMeters = 10000;
+  const objectivePercent = objectiveStats?.completionPercent ?? null;
+  const badges = getAchievementBadges(stats, objectiveStats, language);
+
+  return (
+    <View style={styles.gamePanel}>
+      <Text style={styles.gamePanelTitle}>{isFrench ? "Objectifs et badges" : "Goals and badges"}</Text>
+      <View style={styles.goalList}>
+        <GoalRow
+          label={isFrench ? "Cellules aujourd'hui" : "Cells today"}
+          value={`${Math.min(stats.newCellsThisRecording, dailyCellGoal)}/${dailyCellGoal}`}
+          progress={dailyCellGoal > 0 ? stats.newCellsThisRecording / dailyCellGoal : 0}
+        />
+        <GoalRow
+          label={isFrench ? "Distance cette semaine" : "Weekly distance"}
+          value={`${formatDistance(Math.min(weekDistanceMeters, weeklyDistanceGoalMeters))}/${formatDistance(weeklyDistanceGoalMeters)}`}
+          progress={weeklyDistanceGoalMeters > 0 ? weekDistanceMeters / weeklyDistanceGoalMeters : 0}
+        />
+        <GoalRow
+          label={isFrench ? "Objectif de zone" : "Zone objective"}
+          value={objectivePercent === null ? (isFrench ? "en attente" : "pending") : `${objectivePercent}%`}
+          progress={objectivePercent === null ? 0 : objectivePercent / 100}
+        />
+      </View>
+      <View style={styles.badgeRow}>
+        {badges.map((badge) => (
+          <View
+            key={badge.label}
+            style={[styles.badge, badge.unlocked ? styles.unlockedBadge : null]}
+          >
+            <Ionicons
+              name={badge.icon}
+              size={15}
+              color={badge.unlocked ? "#02060a" : "#94a3b8"}
+            />
+            <Text style={[styles.badgeText, badge.unlocked ? styles.unlockedBadgeText : null]}>
+              {badge.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+function GoalRow({
+  label,
+  progress,
+  value
+}: {
+  label: string;
+  progress: number;
+  value: string;
+}) {
+  const boundedProgress = Math.max(0, Math.min(1, progress));
+
+  return (
+    <View style={styles.goalRow}>
+      <View style={styles.goalHeader}>
+        <Text style={styles.goalLabel}>{label}</Text>
+        <Text style={styles.goalValue}>{value}</Text>
+      </View>
+      <View style={styles.goalTrack}>
+        <View style={[styles.goalFill, { width: `${Math.round(boundedProgress * 100)}%` }]} />
+      </View>
+    </View>
+  );
+}
+
+function getAchievementBadges(
+  stats: LifetimeStats,
+  objectiveStats: ZoneCompletionStats | null,
+  language: AppLanguage
+) {
+  const isFrench = language === "fr";
+
+  return [
+    {
+      icon: "footsteps-outline" as keyof typeof Ionicons.glyphMap,
+      label: isFrench ? "Première sortie" : "First recording",
+      unlocked: stats.walkCount > 0
+    },
+    {
+      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
+      label: "10 km",
+      unlocked: stats.totalDistanceMeters >= 10000
+    },
+    {
+      icon: "grid-outline" as keyof typeof Ionicons.glyphMap,
+      label: isFrench ? "1000 cellules" : "1000 cells",
+      unlocked: stats.exploredCellCount >= 1000
+    },
+    {
+      icon: "flag-outline" as keyof typeof Ionicons.glyphMap,
+      label: isFrench ? "Zone terminée" : "Zone complete",
+      unlocked: (objectiveStats?.completionPercent ?? 0) >= 100
+    }
+  ];
+}
+
 function PathDisplayControls({
+  language,
   mode,
   selectedSessionId,
   onChangeMode
 }: {
+  language: AppLanguage;
   mode: PathDisplayMode;
   selectedSessionId: number | null;
   onChangeMode: (mode: PathDisplayMode) => void;
 }) {
+  const strings = getStrings(language);
   const options: Array<{ label: string; value: PathDisplayMode; disabled?: boolean }> = [
-    { label: "Today", value: "today" },
-    { label: "7 days", value: "last7" },
-    { label: "All", value: "all" },
-    { disabled: selectedSessionId === null, label: "Selected", value: "selected" }
+    { label: strings.details.today, value: "today" },
+    { label: strings.details.sevenDays, value: "last7" },
+    { label: strings.common.all, value: "all" },
+    { disabled: selectedSessionId === null, label: strings.details.selected, value: "selected" }
   ];
 
   return (
     <View style={styles.pathDisplayPanel}>
-      <Text style={styles.pathDisplayTitle}>Paths</Text>
+      <Text style={styles.pathDisplayTitle}>{strings.details.paths}</Text>
       <View style={styles.pathDisplayOptions}>
         {options.map((option) => (
           <TouchableOpacity
@@ -1568,8 +2102,17 @@ function filterWalksForPathDisplay(
   return walks.filter((walk) => isToday(walk.startedAt));
 }
 
-function formatObjectiveMode(mode: CompletionObjective["mode"]) {
-  return mode === "all" ? "All modes" : ACTIVITY_MODE_LABELS[mode];
+function getRecentDistanceMeters(walks: WalkWithPoints[], dayCount: number) {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - dayCount);
+
+  return walks
+    .filter((walk) => new Date(walk.startedAt) >= cutoff)
+    .reduce((total, walk) => total + walk.distanceMeters, 0);
+}
+
+function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLanguage) {
+  return mode === "all" ? getStrings(language).common.all : ACTIVITY_MODE_TEXT[language].labels[mode];
 }
 
 function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
@@ -1682,6 +2225,14 @@ function isToday(value: string) {
   );
 }
 
+function waitForMapRenderCommit() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => resolve());
+    });
+  });
+}
+
 function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
   const coordinate = {
     latitude: point.latitude,
@@ -1754,7 +2305,11 @@ const styles = StyleSheet.create({
     gap: 7,
     marginBottom: -1,
     marginLeft: 10,
+    marginRight: 10,
     zIndex: 2
+  },
+  bottomTabSpacer: {
+    flex: 1
   },
   computingDialog: {
     alignItems: "center",
@@ -1845,6 +2400,72 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "900"
   },
+  badge: {
+    alignItems: "center",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 7
+  },
+  badgeRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 7
+  },
+  badgeText: {
+    color: "#94a3b8",
+    fontSize: 11,
+    fontWeight: "800"
+  },
+  gamePanel: {
+    backgroundColor: "rgba(11, 21, 29, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.24)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 12,
+    padding: 12
+  },
+  gamePanelTitle: {
+    color: "#f8fafc",
+    fontSize: 13,
+    fontWeight: "900"
+  },
+  goalFill: {
+    backgroundColor: "#9cff00",
+    borderRadius: 999,
+    height: "100%"
+  },
+  goalHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  goalLabel: {
+    color: "#cbd5e1",
+    fontSize: 12,
+    fontWeight: "800"
+  },
+  goalList: {
+    gap: 9
+  },
+  goalRow: {
+    gap: 5
+  },
+  goalTrack: {
+    backgroundColor: "rgba(148, 163, 184, 0.22)",
+    borderRadius: 999,
+    height: 7,
+    overflow: "hidden"
+  },
+  goalValue: {
+    color: "#9cff00",
+    fontSize: 12,
+    fontWeight: "900"
+  },
   headerRow: {
     alignItems: "center",
     flexDirection: "row",
@@ -1898,8 +2519,8 @@ const styles = StyleSheet.create({
   },
   modeButton: {
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
+    backgroundColor: "rgba(11, 21, 29, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.24)",
     borderRadius: 8,
     borderWidth: 1,
     flexDirection: "row",
@@ -1909,9 +2530,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   modeButtonText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
+  },
+  optionButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    minHeight: 38,
+    paddingHorizontal: 10,
+    paddingVertical: 8
+  },
+  optionPanel: {
+    backgroundColor: "rgba(2, 6, 10, 0.86)",
+    borderColor: "rgba(248, 250, 252, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 8,
+    padding: 10
+  },
+  optionRows: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
   },
   objectiveClear: {
     alignItems: "center",
@@ -2069,6 +2715,121 @@ const styles = StyleSheet.create({
   topPanel: {
     gap: 2
   },
+  summaryActions: {
+    flexDirection: "row",
+    gap: 10
+  },
+  summaryBackdrop: {
+    backgroundColor: "rgba(2, 6, 10, 0.62)",
+    flex: 1,
+    justifyContent: "flex-end",
+    padding: 16
+  },
+  summaryClose: {
+    alignItems: "center",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 38,
+    justifyContent: "center",
+    width: 38
+  },
+  summaryDialog: {
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(156, 255, 0, 0.26)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 13,
+    padding: 14
+  },
+  summaryGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
+  },
+  summaryHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  summaryInput: {
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    color: "#f8fafc",
+    fontSize: 15,
+    minHeight: 44,
+    paddingHorizontal: 12
+  },
+  summaryMetric: {
+    backgroundColor: "#16232e",
+    borderColor: "rgba(148, 163, 184, 0.18)",
+    borderRadius: 8,
+    borderWidth: 1,
+    flexBasis: "31%",
+    flexGrow: 1,
+    padding: 9
+  },
+  summaryMetricLabel: {
+    color: "#94a3b8",
+    fontSize: 11,
+    fontWeight: "700",
+    marginTop: 2
+  },
+  summaryMetricValue: {
+    color: "#f8fafc",
+    fontSize: 15,
+    fontWeight: "900"
+  },
+  summaryNote: {
+    color: "#cbd5e1",
+    fontSize: 12,
+    fontWeight: "700",
+    lineHeight: 17
+  },
+  summaryPrimary: {
+    alignItems: "center",
+    backgroundColor: "#2563eb",
+    borderRadius: 8,
+    flex: 1,
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center",
+    minHeight: 42
+  },
+  summaryPrimaryText: {
+    color: "#ffffff",
+    fontSize: 14,
+    fontWeight: "800"
+  },
+  summarySecondary: {
+    alignItems: "center",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    justifyContent: "center",
+    minHeight: 42
+  },
+  summarySecondaryText: {
+    color: "#f8fafc",
+    fontSize: 14,
+    fontWeight: "800"
+  },
+  summarySubtitle: {
+    color: "#94a3b8",
+    fontSize: 12,
+    fontWeight: "700",
+    marginTop: 2
+  },
+  summaryTitle: {
+    color: "#f8fafc",
+    fontSize: 20,
+    fontWeight: "900"
+  },
   version: {
     color: "#f8fafc",
     fontSize: 11,
@@ -2077,5 +2838,13 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(2, 6, 10, 0.75)",
     textShadowOffset: { height: 1, width: 0 },
     textShadowRadius: 2
+  }
+  ,
+  unlockedBadge: {
+    backgroundColor: "#9cff00",
+    borderColor: "#9cff00"
+  },
+  unlockedBadgeText: {
+    color: "#02060a"
   }
 });

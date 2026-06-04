@@ -34,7 +34,11 @@
 - Conservative closed-loop fill V1.
 - OSM boundary fetching and zone completion V1.
 - Zone polish with exact/fallback labels and cached denominators.
-- Street-aware path inference V1.
+- Recording quality summary after stopping a recording.
+- Device step counting for Walk mode.
+- Full-screen Details, History, and Completion views.
+- Branded splash/loading screen and transparent map logo HUD.
+- Street-aware path inference prototype, currently paused for normal gameplay because it needs stronger validation.
 
 ## Next Priority
 
@@ -49,12 +53,14 @@ Improve the real game layer:
 
 ### 2. Street-Aware Path Inference V2
 
-Improve inferred routes:
+Bring inferred routes back carefully as debug/off-by-default first:
 
+- add a debug layer that previews inferred routes without saving cells
 - use full OSM street topology instead of local loaded segments only
 - connect intersections more robustly when OSM ways do not share exact nodes
 - add confidence scoring in history/detail screens
-- persist inferred path geometry, not only inferred cells
+- persist inferred path geometry only after route validation is trustworthy
+- never let inferred paths affect completion until the user can inspect them
 
 ### 3. OpenStreetMap Street Completion V2
 
@@ -78,8 +84,8 @@ Add:
 Add:
 
 - mode-specific colors across panels and paths
-- collapsible top panels for small screens
-- stronger route detail layout
+- finish dark styling inside Details, History, and Completion content cards
+- stronger route detail and recording report layout
 - clearer GPS status states
 
 ### 6. Data Tools V2

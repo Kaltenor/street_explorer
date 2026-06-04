@@ -69,14 +69,8 @@ export function buildMergedExplorationPolygons(cells: ExplorationCell[]): Explor
   for (const cell of cells) {
     const key = stringToCellKey(cell.id);
     const intervals = rowIntervals.get(key.y) ?? [];
-    const previous = intervals.at(-1);
 
-    if (previous && previous.endX + 1 === key.x) {
-      previous.endX = key.x;
-    } else {
-      intervals.push({ endX: key.x, startX: key.x });
-    }
-
+    intervals.push({ endX: key.x, startX: key.x });
     rowIntervals.set(key.y, intervals);
   }
 

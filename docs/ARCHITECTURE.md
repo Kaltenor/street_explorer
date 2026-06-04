@@ -128,12 +128,11 @@ The current exploration layer uses configurable 15m x 15m grid cells.
 GPS paths are first classified into path segments:
 
 - confirmed GPS segments
-- inferred street-path segments
 - rejected gaps
 
-Only confirmed and inferred path geometry can mark cells. Rejected gaps are not sampled, so a missing GPS interval does not create fake diagonal exploration through buildings.
+Only confirmed GPS geometry currently marks cells. Rejected gaps are not sampled, so a missing GPS interval does not create fake diagonal exploration through buildings.
 
-Inferred path routing is intentionally not implemented yet. `src/services/pathInference.ts` contains the boundary for future OSM street-graph routing and currently returns `not_configured` instead of falling back to straight lines.
+The schema still supports `inferred` cells for future use, but normal gameplay does not currently save or render inferred cells. Street-aware inference exists as a prototype boundary in `src/services/pathInference.ts`, but it is paused for map rendering and cell generation until it can be inspected and trusted.
 
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
 
@@ -167,13 +166,13 @@ Flow:
 - Cache segment geometries in SQLite.
 - Match recorded GPS points to nearby segment polylines using a distance threshold.
 - Keep unmatched OSM streets hidden from the main map by default.
-- Draw matched streets only when the OSM debug layer is enabled.
+- Keep matched/unmatched OSM street data hidden from the main gameplay map by default.
 - Report loaded segments, matched segments, and matched street-segment distance.
 
 Limitations:
 
 - Matching is proximity-based and can be wrong near parallel roads.
-- Completion is based on loaded nearby streets, not full city boundaries yet.
+- Street matching is based on loaded nearby streets, not full city-scale street coverage yet.
 - Completion is not separated by activity mode yet.
 
 ## Zone Completion
@@ -197,14 +196,24 @@ Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate b
 
 ## Street-Aware Inference
 
-Street-aware path inference V1 uses loaded nearby OSM street segments only when a GPS gap is already considered suspicious.
+Street-aware path inference is currently paused for normal gameplay.
 
-Flow:
+The prototype service can snap suspicious GPS gaps to cached OSM street graph nodes and search for a plausible route, but inferred routes do not currently:
 
-- snap gap endpoints to nearest local OSM graph nodes
+- render on the main map
+- create explored cells
+- affect zone completion
+- affect loop-fill boundaries
+
+This prevents OSM routing mistakes from changing the player map.
+
+Future intended flow:
+
+- snap gap endpoints to nearest valid OSM graph nodes
 - run shortest path through connected local street-segment endpoints
 - reject routes with excessive detour or impossible speed
-- render accepted inferred paths as dashed lower-confidence geometry
-- store inferred cells separately from direct GPS cells
+- show accepted inferred paths in a debug/off-by-default layer first
+- eventually store inferred geometry separately from direct GPS
+- only count inferred cells after confidence and review tooling are good enough
 
-If no reliable street route is found, the gap remains rejected. There is still no straight-line fallback for inferred exploration.
+There is still no straight-line fallback for inferred exploration.

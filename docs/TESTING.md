@@ -24,22 +24,31 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 ## Basic Recording Test
 
 1. Open the Street Explorer development build.
-2. Choose Walk, Wheel, or Car.
-3. Confirm the version number appears under the app name.
-4. Tap Start.
-5. Wait for GPS to become ready.
-6. Move at least 20-30 meters.
-7. Confirm:
+2. On the launch screen, choose Walk, Wheel, or Car if needed.
+3. Tap Press to start.
+4. Confirm the version number appears under the transparent logo.
+5. Tap Start.
+6. Wait for GPS to become ready.
+7. Move at least 20-30 meters.
+8. Confirm:
    - duration increases
-   - points increase
+   - steps today is visible for Walk mode
    - distance increases
-   - current speed appears
    - active path appears
    - explored cells appear
    - bottom controls show distance, duration, and Stop
-   - recording details can be expanded to show points, speed, and GPS
-8. Tap Stop.
-9. Confirm the recording appears in History.
+9. Tap Stop.
+10. Confirm a blocking Computing information dialog appears.
+11. Confirm the recording report appears with the Add new data on map button.
+12. Confirm the recording appears in History.
+
+## Full-Screen Navigation Test
+
+1. Tap the Details icon above the Start/Stop panel.
+2. Confirm Details opens full screen with a back button.
+3. Tap back and confirm the map returns.
+4. Tap History and confirm it opens full screen with the same back-button layout as Completion.
+5. Tap Completion and confirm it opens full screen with a back button.
 
 ## History Test
 
@@ -78,13 +87,12 @@ Toggle:
 - Paths
 - Cells
 - Pins
-- OSM
 
 Confirm each layer appears or disappears.
 
 ## Path Display Scope Test
 
-1. Open Show details.
+1. Open Details.
 2. Under Paths, switch between Today, 7 days, All, and Selected.
 3. Confirm the path lines change while explored cells remain visible.
 4. Select a recording from History and confirm Selected shows only that route.
@@ -107,13 +115,9 @@ Confirm each layer appears or disappears.
 ## OpenStreetMap Debug Matching Test
 
 1. Wait for GPS to locate you.
-2. Tap Show details.
-3. Turn on OSM.
-4. Tap Load in the OSM debug matching panel.
-5. Confirm unmatched OSM street segments do not flood the map.
-6. Record or view a route near loaded streets.
-7. Confirm matched street segments can appear as green debug lines.
-8. Restart the app and confirm loaded streets can reappear from the local cache.
+2. Open Completion and refresh boundaries if needed.
+3. Confirm OSM boundary loading does not flood the main map with street lines.
+4. Confirm OSM remains hidden analysis/debug data, not the primary gameplay overlay.
 
 Notes:
 
@@ -123,7 +127,7 @@ Notes:
 - Street dist. is matched OSM segment distance, not the same thing as recording distance.
 - Matching is V1 proximity matching, so it can be imperfect near parallel roads.
 - OSM streets are cached locally and can be refetched later.
-- OSM is hidden analysis/debug data; cells and paths are still the main exploration view.
+- OSM is hidden analysis data; cells and confirmed GPS paths are still the main exploration view.
 
 ## Completion Screen Test
 
@@ -140,22 +144,21 @@ Notes:
 11. Confirm each zone shows Exact polygon or Approx bounds.
 12. Tap Clear and confirm cached zones disappear while recordings remain.
 
-## Street Inference Test
+## Street Inference Safety Test
 
-1. Open Show details.
-2. Enable OSM and tap Load to cache nearby streets.
-3. View an older route with a suspicious GPS gap.
-4. If nearby OSM streets connect the gap, confirm a dashed inferred street path appears instead of only the amber GPS-gap connector.
-5. Confirm Completion shows inferred cells separately from Direct GPS.
-6. If no street route is available, confirm the amber GPS-gap connector still appears and no fake exploration is counted.
+1. View or reprocess a route with sparse but plausible GPS updates.
+2. Confirm normal walked sections still render and create explored cells.
+3. View a route with an extreme GPS outage or impossible jump.
+4. Confirm the app does not draw a straight diagonal across the missing section.
+5. Confirm no inferred street path is shown in the normal gameplay map.
+6. Confirm Completion does not gain inferred cells from OSM routing.
 
 ## Loop Fill Test
 
-1. Load nearby OSM data from the OSM debug layer.
-2. Record a closed loop of at least 150m.
+1. Record a closed loop of at least 80m.
 3. Stop the recording.
 4. Confirm normal GPS cells still appear.
-5. Confirm the stop-walk alert says whether the loop was filled, rejected, or not detected.
+5. Confirm the stop-walk report mentions whether loops were filled, rejected, or not detected.
 6. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
 7. Confirm a straight walk does not create loop fills after reprocessing.
 8. Open History, tap the recording, and confirm Loop cells and Loop result are shown.
@@ -165,7 +168,7 @@ Notes:
 
 ## Reprocess Recordings Test
 
-1. Open Show details.
+1. Open Details.
 2. Tap Reprocess recordings.
 3. Confirm the app asks before rebuilding saved exploration data for the current mode.
 4. Tap Reprocess.
@@ -177,7 +180,7 @@ Notes:
 1. Record normally and confirm short GPS segments still draw as paths.
 2. If a recording has a long GPS gap, confirm the app does not draw a straight diagonal across it.
 3. Confirm explored cells are not filled along the missing diagonal.
-4. Confirm future inferred paths are not shown unless street routing is configured.
+4. Confirm inferred paths are not shown in normal gameplay.
 
 ## Recovery Test
 

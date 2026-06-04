@@ -59,6 +59,7 @@ export function ExplorationMap({
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const region = getInitialRegion(currentLocation, walks, activePoints);
   const [visibleRegion, setVisibleRegion] = useState(region);
+  const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
   const pathSimplificationToleranceMeters = getPathSimplificationTolerance(
     visibleRegion.latitudeDelta
@@ -66,6 +67,10 @@ export function ExplorationMap({
   const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
   const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
   const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
+  const shouldShowCompletedArea = layers.showExploredCells;
+  const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
+  const shouldShowRoutes = layers.showPaths && renderLevel === "close";
+  const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
@@ -168,7 +173,7 @@ export function ExplorationMap({
         zoomEnabled
         followsUserLocation={false}
       >
-        {layers.showExploredCells ? explorationPolygons.map((polygon) => (
+        {shouldShowCompletedArea ? explorationPolygons.map((polygon) => (
           <Polygon
             key={polygon.id}
             coordinates={polygon.coordinates}
@@ -178,7 +183,7 @@ export function ExplorationMap({
           />
         )) : null}
 
-        {layers.showExploredCells ? explorationOutlineSegments.map((segment) => (
+        {shouldShowOutline ? explorationOutlineSegments.map((segment) => (
           <Polyline
             coordinates={segment.coordinates}
             key={`outline-${segment.id}`}
@@ -189,7 +194,7 @@ export function ExplorationMap({
           />
         )) : null}
 
-        {selectedZone
+        {selectedZone && renderLevel !== "far"
           ? selectedZone.geometry.map((ring, index) => (
               <Polygon
                 coordinates={ring}
@@ -201,7 +206,7 @@ export function ExplorationMap({
             ))
           : null}
 
-        {layers.showPaths ? pathWalks.map((walk) => {
+        {shouldShowRoutes ? pathWalks.map((walk) => {
           const color = getPathColor(walk.id);
           const isHighlighted = highlightedSessionId === walk.id;
           const isDimmed = highlightedSessionId !== null && !isHighlighted;
@@ -218,7 +223,7 @@ export function ExplorationMap({
                 points={walk.points}
                 simplificationToleranceMeters={pathSimplificationToleranceMeters}
               />
-              {layers.showMarkers && firstPoint ? (
+              {shouldShowMarkers && firstPoint ? (
                 <Marker
                   coordinate={pointToCoordinate(firstPoint)}
                   pinColor="#16a34a"
@@ -226,7 +231,7 @@ export function ExplorationMap({
                   description={formatMarkerDate(walk.startedAt)}
                 />
               ) : null}
-              {layers.showMarkers && lastPoint ? (
+              {shouldShowMarkers && lastPoint ? (
                 <Marker
                   coordinate={pointToCoordinate(lastPoint)}
                   pinColor={color}
@@ -238,7 +243,7 @@ export function ExplorationMap({
           );
         }) : null}
 
-        {activePoints[0] ? (
+        {activePoints[0] && renderLevel === "close" ? (
           <>
             <PathSegmentLines
               activityMode={activeMode}
@@ -248,7 +253,7 @@ export function ExplorationMap({
               points={activePoints}
               simplificationToleranceMeters={0}
             />
-            {layers.showMarkers ? <Marker
+            {shouldShowMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
               pinColor="#16a34a"
               title="Recording start"
@@ -256,7 +261,7 @@ export function ExplorationMap({
           </>
         ) : null}
 
-        {layers.showMarkers && currentLocation ? (
+        {shouldShowMarkers && currentLocation ? (
           <Marker coordinate={pointToCoordinate(currentLocation)} title="Current location" />
         ) : null}
       </MapView>
@@ -294,6 +299,18 @@ function getExploredAreaStyle(latitudeDelta: number) {
     outlineColor: "rgba(0, 0, 0, 0.92)",
     outlineWidth: 3.5
   };
+}
+
+function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {
+  if (latitudeDelta > 0.07) {
+    return "far";
+  }
+
+  if (latitudeDelta > 0.018) {
+    return "medium";
+  }
+
+  return "close";
 }
 
 function getPathSimplificationTolerance(latitudeDelta: number) {

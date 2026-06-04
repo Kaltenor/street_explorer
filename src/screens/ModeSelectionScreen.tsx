@@ -2,27 +2,36 @@ import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { ACTIVITY_MODE_DESCRIPTIONS, ACTIVITY_MODE_LABELS } from "../constants/activityModes";
 import { APP_VERSION } from "../constants/config";
+import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
 import { ActivityMode } from "../types/walk";
 
 type ModeSelectionScreenProps = {
+  language: AppLanguage;
   onSelectMode: (mode: ActivityMode) => void;
 };
 
-export function ModeSelectionScreen({ onSelectMode }: ModeSelectionScreenProps) {
+export function ModeSelectionScreen({ language, onSelectMode }: ModeSelectionScreenProps) {
+  const strings = getStrings(language);
+  const modeText = ACTIVITY_MODE_TEXT[language];
+
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
         <Text style={styles.title}>Street Explorer</Text>
         <Text style={styles.version}>v{APP_VERSION}</Text>
-        <Text style={styles.subtitle}>Choose the exploration mode to record.</Text>
+        <Text style={styles.subtitle}>{strings.modeSelection.subtitle}</Text>
       </View>
 
       <View style={styles.options}>
-        <ModeButton mode="walk" icon="walk" onPress={onSelectMode} />
-        <ModeButton mode="wheel" icon="radio-button-on" onPress={onSelectMode} />
-        <ModeButton mode="car" icon="car" onPress={onSelectMode} />
+        <ModeButton mode="walk" icon="walk" modeText={modeText} onPress={onSelectMode} />
+        <ModeButton
+          mode="wheel"
+          icon="radio-button-on"
+          modeText={modeText}
+          onPress={onSelectMode}
+        />
+        <ModeButton mode="car" icon="car" modeText={modeText} onPress={onSelectMode} />
       </View>
     </SafeAreaView>
   );
@@ -31,10 +40,12 @@ export function ModeSelectionScreen({ onSelectMode }: ModeSelectionScreenProps) 
 function ModeButton({
   mode,
   icon,
+  modeText,
   onPress
 }: {
   mode: ActivityMode;
   icon: keyof typeof Ionicons.glyphMap;
+  modeText: typeof ACTIVITY_MODE_TEXT[AppLanguage];
   onPress: (mode: ActivityMode) => void;
 }) {
   return (
@@ -43,8 +54,8 @@ function ModeButton({
         <Ionicons name={icon} size={28} color="#0f172a" />
       </View>
       <View style={styles.cardText}>
-        <Text style={styles.cardTitle}>{ACTIVITY_MODE_LABELS[mode]}</Text>
-        <Text style={styles.cardSubtitle}>{ACTIVITY_MODE_DESCRIPTIONS[mode]}</Text>
+        <Text style={styles.cardTitle}>{modeText.labels[mode]}</Text>
+        <Text style={styles.cardSubtitle}>{modeText.descriptions[mode]}</Text>
       </View>
       <Ionicons name="chevron-forward" size={22} color="#64748b" />
     </TouchableOpacity>

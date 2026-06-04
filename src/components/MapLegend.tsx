@@ -1,20 +1,27 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { AppLanguage, getStrings } from "../i18n";
+
 type MapLegendProps = {
+  language: AppLanguage;
   showExploredCells: boolean;
   showPaths: boolean;
 };
 
-export function MapLegend({ showExploredCells, showPaths }: MapLegendProps) {
+export function MapLegend({ language, showExploredCells, showPaths }: MapLegendProps) {
   if (!showExploredCells && !showPaths) {
     return null;
   }
 
+  const strings = getStrings(language);
+
   return (
     <View style={styles.container}>
-      {showPaths ? <LegendItem color="#2563eb" label="Saved route" /> : null}
-      {showPaths ? <LegendItem color="#ef4444" label="Recording" /> : null}
-      {showExploredCells ? <LegendItem color="#86efac" label="Explored cells" /> : null}
+      {showPaths ? <LegendItem color="#2563eb" label={strings.mapLegend.savedRoute} /> : null}
+      {showPaths ? <LegendItem color="#ef4444" label={strings.mapLegend.recording} /> : null}
+      {showExploredCells ? (
+        <LegendItem color="#86efac" label={strings.mapLegend.exploredCells} />
+      ) : null}
     </View>
   );
 }

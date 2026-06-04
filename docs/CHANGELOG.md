@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.3.43
+
+Fixed:
+
+- Explored-area boundaries now outline every red/non-red edge, including internal holes and cutouts.
+
+## v0.3.42
+
+Fixed:
+
+- Explored-area boundaries now use contour nesting so outside edges match the red surface while fully enclosed internal holes are not outlined.
+
+## v0.3.41
+
+Fixed:
+
+- Stop recording now waits for the regenerated explored surface to commit before showing the result report.
+- Temporary GPS loss now pauses route/cell calculation instead of failing the recording.
+- Explored-area rendering no longer overlaps merged rectangles or draws heavy outlines around internal holes.
+
 ## v0.3.40
 
 Changed:
