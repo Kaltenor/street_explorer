@@ -10,8 +10,11 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 
 export const LOOP_FILL_CONFIG = {
   boundaryExpansionCells: 1,
-  maxEnclosedCellCount: Math.floor(150_000 / (EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS)),
-  maxPolygonAreaSquareMeters: 150_000,
+  maxPolygonAreaSquareMetersByMode: {
+    car: 5_000_000,
+    walk: 150_000,
+    wheel: 400_000
+  } satisfies Record<ActivityMode, number>,
   minEnclosedCellCount: 1,
   minLoopDistanceMeters: 80
 };
@@ -109,7 +112,7 @@ function analyzeEnclosedCellGroup(input: {
     return rejectedLoop(polygon, areaM2, "loop_area_too_small");
   }
 
-  if (input.cellIds.length > LOOP_FILL_CONFIG.maxEnclosedCellCount) {
+  if (input.cellIds.length > getMaxEnclosedCellCount(input.activityMode)) {
     return rejectedLoop(polygon, areaM2, "loop_area_too_large");
   }
 
@@ -130,6 +133,13 @@ function analyzeEnclosedCellGroup(input: {
     totalWalkableStreetLengthM: streetAnalysis.totalWalkableStreetLengthM,
     unwalkedWalkableStreetLengthM: streetAnalysis.unwalkedWalkableStreetLengthM
   };
+}
+
+function getMaxEnclosedCellCount(activityMode: ActivityMode) {
+  return Math.floor(
+    LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activityMode] /
+      (EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS)
+  );
 }
 
 function calculateStreetLengthInsidePolygon(input: {

@@ -1,9 +1,10 @@
 {
   "name": "street-explorer",
-  "version": "0.1.0",
+  "version": "0.3.45",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
+    "postinstall": "node scripts/patch-react-native-maps-poi-filter.js",
     "start": "expo start",
     "start:dev": "expo start --dev-client",
     "android": "expo start --android",

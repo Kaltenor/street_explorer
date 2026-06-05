@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
+import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
 
@@ -42,6 +43,62 @@ const PATH_COLORS = [
   "#9333ea",
   "#ea580c",
   "#0d9488"
+];
+
+type AppleMapsPointOfInterestCategory =
+  | "airport"
+  | "amusementPark"
+  | "aquarium"
+  | "beach"
+  | "campground"
+  | "fireStation"
+  | "hospital"
+  | "library"
+  | "marina"
+  | "museum"
+  | "nationalPark"
+  | "park"
+  | "police"
+  | "postOffice"
+  | "publicTransport"
+  | "school"
+  | "stadium"
+  | "theater"
+  | "university"
+  | "zoo";
+
+type ApplePoiFilteredMapViewProps = ComponentProps<typeof MapView> & {
+  appleMapsPointsOfInterestFilter?: {
+    categories: AppleMapsPointOfInterestCategory[];
+    mode: "exclude" | "include";
+  };
+};
+
+const ApplePoiFilteredMapView = MapView as unknown as ForwardRefExoticComponent<
+  ApplePoiFilteredMapViewProps & RefAttributes<MapView>
+>;
+
+const LANDMARK_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [
+  "airport",
+  "amusementPark",
+  "aquarium",
+  "beach",
+  "campground",
+  "fireStation",
+  "hospital",
+  "library",
+  "marina",
+  "museum",
+  "nationalPark",
+  "park",
+  "police",
+  "postOffice",
+  "publicTransport",
+  "school",
+  "stadium",
+  "theater",
+  "university",
+  "zoo"
 ];
 
 export function ExplorationMap({
@@ -162,9 +219,13 @@ export function ExplorationMap({
 
   return (
     <View style={styles.container}>
-      <MapView
+      <ApplePoiFilteredMapView
         ref={mapRef}
         style={styles.map}
+        appleMapsPointsOfInterestFilter={{
+          categories: LANDMARK_POI_CATEGORIES,
+          mode: "include"
+        }}
         initialRegion={region}
         onPanDrag={() => setIsAutoFollowEnabled(false)}
         onMapReady={onMapReady}
@@ -280,7 +341,7 @@ export function ExplorationMap({
         {shouldShowMarkers && currentLocation ? (
           <Marker coordinate={pointToCoordinate(currentLocation)} title="Current location" />
         ) : null}
-      </MapView>
+      </ApplePoiFilteredMapView>
     </View>
   );
 }

@@ -1,13 +1,19 @@
 # Changelog
 
-## v0.3.44
+## v0.3.45
 
 Added:
 
+- Apple Maps POIs are now filtered to landmark-style categories so restaurants and most commercial clutter stay off the map.
+- Current city/district objectives now follow the user's containing zone, refreshing nearby boundaries when cached zones do not cover the current location.
 - Post-walk report now shows objective progress delta, GPS clean/paused state, loop-fill result, and earned walk milestones.
 - Today’s newly explored cells now render as a brighter overlay on the map.
 - Objective HUD now includes a compact progress bar.
 - Goals and badges now cover 5 km, 10 km, 25 km, 1000 cells, district 5%, and longest-walk progress.
+
+Changed:
+
+- Loop-fill caps are now mode-specific: 150,000m2 for walk, 400,000m2 for wheel, and 5km2 for car.
 
 ## v0.3.43
 

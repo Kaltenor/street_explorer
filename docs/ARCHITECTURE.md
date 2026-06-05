@@ -149,7 +149,7 @@ Current thresholds are:
 - minimum recording distance before loop analysis: 80m
 - minimum enclosed cells: 1
 - detection boundary expansion: 1 cell
-- maximum enclosed area: 150,000m2
+- maximum enclosed area: 150,000m2 for walk, 400,000m2 for wheel, 5km2 for car
 
 OSM is used as hidden analysis data inside the polygon. The app still measures walkable street length for future debugging and tuning, but OSM street density no longer blocks a valid loop from filling.
 

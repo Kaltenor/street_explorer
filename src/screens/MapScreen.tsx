@@ -62,7 +62,8 @@ import {
   getLoopFillSessionSummaries,
   LoopFillSessionSummary,
   saveExploredCells,
-  saveLoopFill
+  saveLoopFill,
+  upsertZones
 } from "../database/completionRepository";
 import {
   isBackgroundLocationTaskAvailable,
@@ -85,6 +86,7 @@ import { calculateStreetCompletion } from "../services/streetCompletion";
 import {
   calculateZoneCompletionStats,
   countExploredCellKeysInsideZone,
+  fetchNearbyOsmZonesWithDebug,
   ZoneCompletionStats
 } from "../services/zoneCompletion";
 import { buildPathSegments } from "../services/pathInference";
@@ -142,6 +144,9 @@ const EMPTY_STATS: LifetimeStats = {
 };
 
 const OSM_STREET_RADIUS_METERS = 1600;
+const AUTO_OBJECTIVE_CHECK_DISTANCE_METERS = 25;
+const AUTO_OBJECTIVE_FETCH_DISTANCE_METERS = 500;
+const AUTO_OBJECTIVE_FETCH_INTERVAL_MS = 10 * 60 * 1000;
 
 type MapScreenProps = {
   activityMode: ActivityMode;
@@ -232,6 +237,9 @@ export function MapScreen({
   });
   const subscriptionRef = useRef<Location.LocationSubscription | null>(null);
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
+  const autoObjectiveCheckCenterRef = useRef<GpsPoint | null>(null);
+  const autoObjectiveFetchCenterRef = useRef<GpsPoint | null>(null);
+  const autoObjectiveFetchTimestampRef = useRef(0);
   const lastAutoObjectiveZoneIdRef = useRef<string | null>(null);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const streetCacheCenterRef = useRef<GpsPoint | null>(null);
@@ -382,6 +390,19 @@ export function MapScreen({
       .catch((error) => console.warn("Failed to calculate objective completion", error));
   }, [loopFillCellIds, objective, walks]);
 
+  const shouldFetchAutoObjectiveZones = useCallback((location: GpsPoint) => {
+    const previousFetchCenter = autoObjectiveFetchCenterRef.current;
+    const previousFetchTimestamp = autoObjectiveFetchTimestampRef.current;
+    const isFetchRecentlyAttempted =
+      Date.now() - previousFetchTimestamp < AUTO_OBJECTIVE_FETCH_INTERVAL_MS;
+    const isNearPreviousFetch =
+      previousFetchCenter &&
+      calculatePathDistanceMeters([previousFetchCenter, location]) <
+        AUTO_OBJECTIVE_FETCH_DISTANCE_METERS;
+
+    return !isFetchRecentlyAttempted || !isNearPreviousFetch;
+  }, []);
+
   useEffect(() => {
     if (
       !currentLocation ||
@@ -392,42 +413,66 @@ export function MapScreen({
     }
 
     let isMounted = true;
+    const checkedCenter = autoObjectiveCheckCenterRef.current;
 
-    getCachedZones(objective.zone.type)
-      .then(async (zones) => {
-        if (!isMounted) {
-          return;
+    if (
+      checkedCenter &&
+      calculatePathDistanceMeters([checkedCenter, currentLocation]) <
+        AUTO_OBJECTIVE_CHECK_DISTANCE_METERS
+    ) {
+      return;
+    }
+
+    autoObjectiveCheckCenterRef.current = currentLocation;
+
+    const updateObjectiveForCurrentLocation = async () => {
+      let zones = await getCachedZones(objective.zone.type);
+      let containingZone = findContainingZone(currentLocation, zones);
+
+      if (!containingZone && shouldFetchAutoObjectiveZones(currentLocation)) {
+        autoObjectiveFetchCenterRef.current = currentLocation;
+        autoObjectiveFetchTimestampRef.current = Date.now();
+
+        try {
+          const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
+          await upsertZones(result.zones);
+          zones = result.zones.filter((zone) => zone.type === objective.zone.type);
+          containingZone = findContainingZone(currentLocation, zones);
+        } catch (error) {
+          console.warn("Failed to refresh zones for auto objective", error);
         }
+      }
 
-        const containingZone = zones.find((zone) => isPointInsideZone(currentLocation, zone));
+      if (
+        !isMounted ||
+        !containingZone ||
+        containingZone.id === objective.zone.id ||
+        containingZone.id === lastAutoObjectiveZoneIdRef.current
+      ) {
+        return;
+      }
 
-        if (
-          !containingZone ||
-          containingZone.id === objective.zone.id ||
-          containingZone.id === lastAutoObjectiveZoneIdRef.current
-        ) {
-          return;
-        }
+      lastAutoObjectiveZoneIdRef.current = containingZone.id;
+      const nextObjective = {
+        mode: objective.mode,
+        zone: containingZone
+      };
 
-        lastAutoObjectiveZoneIdRef.current = containingZone.id;
-        const nextObjective = {
-          mode: objective.mode,
-          zone: containingZone
-        };
+      setObjective(nextObjective);
+      setSelectedZone(containingZone);
+      await saveCompletionObjective({
+        mode: nextObjective.mode,
+        zoneId: containingZone.id
+      });
+    };
 
-        setObjective(nextObjective);
-        setSelectedZone(containingZone);
-        await saveCompletionObjective({
-          mode: nextObjective.mode,
-          zoneId: containingZone.id
-        });
-      })
+    updateObjectiveForCurrentLocation()
       .catch((error) => console.warn("Failed to auto-switch completion objective", error));
 
     return () => {
       isMounted = false;
     };
-  }, [currentLocation, objective]);
+  }, [currentLocation, objective, shouldFetchAutoObjectiveZones]);
 
   useEffect(() => {
     if (!currentLocation) {
@@ -2437,6 +2482,10 @@ function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
   const insideHole = zone.holes.some((ring) => pointInPolygon(coordinate, ring));
 
   return insideOuter && !insideHole;
+}
+
+function findContainingZone(point: GpsPoint, zones: CachedZone[]) {
+  return zones.find((zone) => isPointInsideZone(point, zone)) ?? null;
 }
 
 function pointInPolygon(
