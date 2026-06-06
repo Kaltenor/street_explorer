@@ -139,6 +139,8 @@ export const STRINGS = {
     },
     options: {
       activityMode: "Activity mode",
+      defaultActivityMode: "Default transport mode",
+      defaultActivityModeHint: "Used when Street Explorer opens.",
       layers: "Map layers",
       pathDisplay: "Paths shown on map",
       profile: "Recording profile",
@@ -324,6 +326,8 @@ export const STRINGS = {
     },
     options: {
       activityMode: "Mode d'activité",
+      defaultActivityMode: "Mode de transport par défaut",
+      defaultActivityModeHint: "Utilisé à l'ouverture de Street Explorer.",
       layers: "Couches de carte",
       pathDisplay: "Traces affichées sur la carte",
       profile: "Profil d'enregistrement",

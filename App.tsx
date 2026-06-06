@@ -6,8 +6,10 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { initDatabase } from "./src/database/db";
 import {
   getAppLanguage,
+  getDefaultActivityMode,
   getLastActivityMode,
   saveAppLanguage,
+  saveDefaultActivityMode,
   saveLastActivityMode
 } from "./src/database/settingsRepository";
 import { AppLanguage } from "./src/i18n";
@@ -20,17 +22,20 @@ export default function App() {
   const [databaseReady, setDatabaseReady] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("en");
   const [selectedMode, setSelectedMode] = useState<ActivityMode | null>(null);
+  const [defaultMode, setDefaultMode] = useState<ActivityMode | null>(null);
 
   useEffect(() => {
     initDatabase()
       .then(async () => {
-        const [savedLanguage, savedMode] = await Promise.all([
+        const [savedLanguage, savedDefaultMode, savedMode] = await Promise.all([
           getAppLanguage(),
+          getDefaultActivityMode(),
           getLastActivityMode()
         ]);
 
         setLanguage(savedLanguage);
-        setSelectedMode(savedMode);
+        setDefaultMode(savedDefaultMode);
+        setSelectedMode(savedDefaultMode ?? savedMode);
         setDatabaseReady(true);
       })
       .catch((error) => {
@@ -38,9 +43,23 @@ export default function App() {
       });
   }, []);
 
-  const handleSelectMode = async (activityMode: ActivityMode) => {
+  const handleSelectInitialMode = async (activityMode: ActivityMode) => {
+    setSelectedMode(activityMode);
+    setDefaultMode(activityMode);
+    await Promise.all([
+      saveLastActivityMode(activityMode),
+      saveDefaultActivityMode(activityMode)
+    ]);
+  };
+
+  const handleChangeMode = async (activityMode: ActivityMode) => {
     setSelectedMode(activityMode);
     await saveLastActivityMode(activityMode);
+  };
+
+  const handleChangeDefaultMode = async (activityMode: ActivityMode) => {
+    setDefaultMode(activityMode);
+    await saveDefaultActivityMode(activityMode);
   };
 
   const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
@@ -65,12 +84,14 @@ export default function App() {
         {selectedMode ? (
           <MapScreen
             activityMode={selectedMode}
+            defaultMode={defaultMode ?? selectedMode}
             language={language}
             onChangeLanguage={handleChangeLanguage}
-            onChangeMode={handleSelectMode}
+            onChangeDefaultMode={handleChangeDefaultMode}
+            onChangeMode={handleChangeMode}
           />
         ) : (
-          <ModeSelectionScreen language={language} onSelectMode={handleSelectMode} />
+          <ModeSelectionScreen language={language} onSelectMode={handleSelectInitialMode} />
         )}
       </View>
     </SafeAreaProvider>

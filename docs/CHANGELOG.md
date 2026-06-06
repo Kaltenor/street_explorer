@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.46
+
+Fixed:
+
+- Post-recording explored surface updates now avoid redundant saved-map rebuilds and memoize rendered map geometry so the red overlay is ready behind the result screen.
+
 ## v0.3.45
 
 Added:

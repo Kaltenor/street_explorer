@@ -150,8 +150,10 @@ const AUTO_OBJECTIVE_FETCH_INTERVAL_MS = 10 * 60 * 1000;
 
 type MapScreenProps = {
   activityMode: ActivityMode;
+  defaultMode: ActivityMode;
   language: AppLanguage;
   onChangeLanguage: (language: AppLanguage) => void;
+  onChangeDefaultMode: (mode: ActivityMode) => void;
   onChangeMode: (mode: ActivityMode) => void;
 };
 
@@ -192,8 +194,10 @@ type RecordingSummary = {
 
 export function MapScreen({
   activityMode,
+  defaultMode,
   language,
   onChangeLanguage,
+  onChangeDefaultMode,
   onChangeMode
 }: MapScreenProps) {
   const strings = getStrings(language);
@@ -291,8 +295,19 @@ export function MapScreen({
     () => collectTodayNewCellIds(walks, activeWalk?.points ?? [], activityMode),
     [activeWalk?.points, activityMode, walks]
   );
+  const displayStats = useMemo(
+    () => ({
+      ...stats,
+      newCellsThisRecording: calculateNewCellsForActivePath(
+        walks,
+        activeWalk?.points ?? [],
+        activityMode
+      )
+    }),
+    [activeWalk?.points, activityMode, stats, walks]
+  );
 
-  const refreshSavedData = useCallback(async () => {
+  const refreshSavedData = useCallback(async (options?: { rebuildExploredCells?: boolean }) => {
     const [
       savedWalks,
       lifetimeStats,
@@ -319,16 +334,18 @@ export function MapScreen({
     setWalks(savedWalks);
     setLoopFillCellIds(savedLoopFillCellIds);
     setLoopFillSummaries(savedLoopFillSummaries);
-    await saveExploredCells(
-      savedWalks.flatMap((walk) =>
-        collectExploredCellIdsForPath(walk.points, walk.activityMode).map((cellKey) => ({
-          cellKey,
-          mode: walk.activityMode,
-          sessionId: walk.id,
-          source: "gps" as const
-        }))
-      )
-    );
+    if (options?.rebuildExploredCells ?? true) {
+      await saveExploredCells(
+        savedWalks.flatMap((walk) =>
+          collectExploredCellIdsForPath(walk.points, walk.activityMode).map((cellKey) => ({
+            cellKey,
+            mode: walk.activityMode,
+            sessionId: walk.id,
+            source: "gps" as const
+          }))
+        )
+      );
+    }
     setStats({
       ...lifetimeStats,
       approximateExploredAreaSquareMeters: calculateExploredAreaSquareMeters(savedWalks),
@@ -336,11 +353,7 @@ export function MapScreen({
       latestRecordingDistanceMeters: latestWalk?.distanceMeters ?? 0,
       latestRecordingStartedAt: latestWalk?.startedAt ?? null,
       longestRecordingDistanceMeters: longestWalk?.distanceMeters ?? 0,
-      newCellsThisRecording: calculateNewCellsForActivePath(
-        savedWalks,
-        activeWalk?.points ?? [],
-        activityMode
-      ),
+      newCellsThisRecording: 0,
       todayDistanceMeters: todayWalks.reduce((distance, walk) => distance + walk.distanceMeters, 0),
       todayRecordingCount: todayWalks.length,
       todayStepCount: todayWalks.reduce((steps, walk) => steps + walk.stepCount, 0)
@@ -352,7 +365,7 @@ export function MapScreen({
         : null
     );
     setIsSavedDataReady(true);
-  }, [activeWalk?.points, activityMode]);
+  }, [activityMode]);
 
   const toggleLayer = useCallback((layer: keyof MapLayerState) => {
     setLayers((current) => ({
@@ -908,7 +921,7 @@ export function MapScreen({
       );
       const objectiveBefore = objectiveStats;
       const loopResult = await reprocessModeExploration(activeWalk.activityMode);
-      await refreshSavedData();
+      await refreshSavedData({ rebuildExploredCells: false });
       const objectiveAfter = objective
         ? await calculateObjectiveStats(objective)
         : null;
@@ -969,7 +982,7 @@ export function MapScreen({
           onPress: async () => {
             const summary = await reprocessModeExploration(activityMode);
 
-            await refreshSavedData();
+            await refreshSavedData({ rebuildExploredCells: false });
             Alert.alert(
               "Reprocess complete",
               `${summary.recordingCount} recordings checked.\nFilled loops: ${
@@ -1052,7 +1065,7 @@ export function MapScreen({
 
     setRecoverableRecording(null);
     recoveryPromptedSessionRef.current = null;
-    await refreshSavedData();
+    await refreshSavedData({ rebuildExploredCells: false });
     await waitForMapRenderCommit();
   }, [activityMode, recoverableRecording, refreshSavedData, reprocessModeExploration, stopStepWatch]);
 
@@ -1097,9 +1110,14 @@ export function MapScreen({
   const handleRenameWalk = useCallback(
     async (sessionId: number, displayName: string) => {
       await updateWalkSessionName(sessionId, displayName);
-      await refreshSavedData();
+      setWalks((currentWalks) =>
+        currentWalks.map((walk) => (walk.id === sessionId ? { ...walk, displayName } : walk))
+      );
+      setHistory((currentHistory) =>
+        currentHistory.map((walk) => (walk.id === sessionId ? { ...walk, displayName } : walk))
+      );
     },
-    [refreshSavedData]
+    []
   );
 
   const handleExportWalkGpx = useCallback(async (sessionId: number) => {
@@ -1326,9 +1344,11 @@ export function MapScreen({
 
       <OptionsModal
         activityMode={activityMode}
+        defaultMode={defaultMode}
         language={language}
         layers={layers}
         mode={pathDisplayMode}
+        onChangeDefaultMode={onChangeDefaultMode}
         onChangeLanguage={onChangeLanguage}
         onChangeMode={handleChangeMode}
         onChangePathDisplayMode={setPathDisplayMode}
@@ -1356,7 +1376,7 @@ export function MapScreen({
         objectiveStats={objectiveStats}
         recordingQuality={recordingQuality}
         selectedSessionId={selectedSessionId}
-        stats={stats}
+        stats={displayStats}
         visible={dashboardExpanded}
         walks={walks}
       />
@@ -1428,7 +1448,20 @@ export function MapScreen({
           }
 
           await updateWalkSessionName(recordingSummary.sessionId, displayName.trim());
-          await refreshSavedData();
+          setWalks((currentWalks) =>
+            currentWalks.map((walk) =>
+              walk.id === recordingSummary.sessionId
+                ? { ...walk, displayName: displayName.trim() }
+                : walk
+            )
+          );
+          setHistory((currentHistory) =>
+            currentHistory.map((walk) =>
+              walk.id === recordingSummary.sessionId
+                ? { ...walk, displayName: displayName.trim() }
+                : walk
+            )
+          );
           setRecordingSummary(null);
         }}
         summary={recordingSummary}
@@ -1821,9 +1854,11 @@ function formatLoopResultShort(result: LoopProcessingResult, language: AppLangua
 
 function OptionsModal({
   activityMode,
+  defaultMode,
   language,
   layers,
   mode,
+  onChangeDefaultMode,
   onChangeLanguage,
   onChangeMode,
   onChangePathDisplayMode,
@@ -1833,9 +1868,11 @@ function OptionsModal({
   visible
 }: {
   activityMode: ActivityMode;
+  defaultMode: ActivityMode;
   language: AppLanguage;
   layers: MapLayerState;
   mode: PathDisplayMode;
+  onChangeDefaultMode: (mode: ActivityMode) => void;
   onChangeLanguage: (language: AppLanguage) => void;
   onChangeMode: (mode: ActivityMode) => void;
   onChangePathDisplayMode: (mode: PathDisplayMode) => void;
@@ -1887,6 +1924,34 @@ function OptionsModal({
                     ]}
                   >
                     {modeText.labels[nextMode]}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+
+          <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>{strings.options.defaultActivityMode}</Text>
+            <Text style={styles.optionHelpText}>{strings.options.defaultActivityModeHint}</Text>
+            <View style={styles.optionRows}>
+              {(["walk", "wheel", "car"] as ActivityMode[]).map((nextMode) => (
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  key={nextMode}
+                  onPress={() => onChangeDefaultMode(nextMode)}
+                  style={[
+                    styles.optionButton,
+                    defaultMode === nextMode ? styles.selectedPathDisplayButton : null
+                  ]}
+                >
+                  <Ionicons name={getModeIcon(nextMode)} size={17} color="#f8fafc" />
+                  <Text
+                    style={[
+                      styles.pathDisplayButtonText,
+                      defaultMode === nextMode ? styles.selectedPathDisplayButtonText : null
+                    ]}
+                  >
+                    {modeText.recordingNouns[nextMode]}
                   </Text>
                 </TouchableOpacity>
               ))}
@@ -2797,6 +2862,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     gap: 8,
     padding: 10
+  },
+  optionHelpText: {
+    color: "#94a3b8",
+    fontSize: 12,
+    fontWeight: "700",
+    lineHeight: 17
   },
   optionRows: {
     flexDirection: "row",

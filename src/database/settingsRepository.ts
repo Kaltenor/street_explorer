@@ -4,6 +4,7 @@ import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
 
 const LAST_ACTIVITY_MODE_KEY = "last_activity_mode";
+const DEFAULT_ACTIVITY_MODE_KEY = "default_activity_mode";
 const APP_LANGUAGE_KEY = "app_language";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
@@ -42,6 +43,34 @@ export async function saveLastActivityMode(activityMode: ActivityMode) {
       ON CONFLICT(key) DO UPDATE SET value = excluded.value
     `,
     LAST_ACTIVITY_MODE_KEY,
+    activityMode
+  );
+}
+
+export async function getDefaultActivityMode(): Promise<ActivityMode | null> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?",
+    DEFAULT_ACTIVITY_MODE_KEY
+  );
+
+  if (ACTIVITY_MODES.includes(row?.value as ActivityMode)) {
+    return row?.value as ActivityMode;
+  }
+
+  return null;
+}
+
+export async function saveDefaultActivityMode(activityMode: ActivityMode) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO app_settings (key, value)
+      VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `,
+    DEFAULT_ACTIVITY_MODE_KEY,
     activityMode
   );
 }

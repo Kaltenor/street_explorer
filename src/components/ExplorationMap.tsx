@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
@@ -124,16 +124,34 @@ export function ExplorationMap({
   const pathSimplificationToleranceMeters = getPathSimplificationTolerance(
     visibleRegion.latitudeDelta
   );
-  const explorationCells = buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds);
-  const explorationOutlineSegments = buildExplorationOutlineSegments(explorationCells);
-  const explorationPolygons = buildMergedExplorationPolygons(explorationCells);
-  const todayNewPolygons = buildMergedExplorationPolygons(
-    todayNewCellIds.map((cellId) => buildExplorationCell(cellId, "gps"))
-  );
   const shouldShowCompletedArea = layers.showExploredCells;
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
+  const explorationCells = useMemo(
+    () =>
+      shouldShowCompletedArea || shouldShowOutline
+        ? buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds)
+        : [],
+    [activeMode, activePoints, loopFillCellIds, shouldShowCompletedArea, shouldShowOutline, walks]
+  );
+  const explorationPolygons = useMemo(
+    () => (shouldShowCompletedArea ? buildMergedExplorationPolygons(explorationCells) : []),
+    [explorationCells, shouldShowCompletedArea]
+  );
+  const explorationOutlineSegments = useMemo(
+    () => (shouldShowOutline ? buildExplorationOutlineSegments(explorationCells) : []),
+    [explorationCells, shouldShowOutline]
+  );
+  const todayNewPolygons = useMemo(
+    () =>
+      shouldShowCompletedArea
+        ? buildMergedExplorationPolygons(
+            todayNewCellIds.map((cellId) => buildExplorationCell(cellId, "gps"))
+          )
+        : [],
+    [shouldShowCompletedArea, todayNewCellIds]
+  );
 
   useEffect(() => {
     if (!currentLocation || hasCenteredOnInitialLocation.current) {
