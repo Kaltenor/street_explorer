@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.47
+
+Added:
+
+- Stop recording now opens a confirmation popup with Continue and a hold-to-quit action to prevent accidental stops.
+
 ## v0.3.46
 
 Fixed:

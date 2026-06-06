@@ -217,6 +217,7 @@ export function MapScreen({
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
+  const [stopConfirmationVisible, setStopConfirmationVisible] = useState(false);
   const [recordingSummary, setRecordingSummary] = useState<RecordingSummary | null>(null);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
@@ -882,6 +883,7 @@ export function MapScreen({
   );
 
   const handleStopWalk = useCallback(async () => {
+    setStopConfirmationVisible(false);
     stopLocationWatch();
     stopStepWatch();
 
@@ -960,6 +962,14 @@ export function MapScreen({
     stopStepWatch,
     walks
   ]);
+
+  const handleRequestStopWalk = useCallback(() => {
+    if (!activeWalk || isComputingRecording) {
+      return;
+    }
+
+    setStopConfirmationVisible(true);
+  }, [activeWalk, isComputingRecording]);
 
   const handleReprocessRecordings = useCallback(() => {
     if (activeWalk) {
@@ -1337,7 +1347,7 @@ export function MapScreen({
             language={language}
             recordingQuality={recordingQuality}
             onStart={handleStartWalk}
-            onStop={handleStopWalk}
+            onStop={handleRequestStopWalk}
           />
         </View>
       </SafeAreaView>
@@ -1437,6 +1447,13 @@ export function MapScreen({
         onClose={() => setDiagnosticsVisible(false)}
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
+      />
+      <StopRecordingConfirmationModal
+        activityMode={activityMode}
+        language={language}
+        onCancel={() => setStopConfirmationVisible(false)}
+        onConfirm={handleStopWalk}
+        visible={stopConfirmationVisible}
       />
       <RecordingSummaryModal
         language={language}
@@ -1620,6 +1637,132 @@ function ComputingRecordingModal({
           <Text style={styles.computingText}>
             {strings.map.computingInfoText}
           </Text>
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+const STOP_CONFIRM_HOLD_MS = 1300;
+
+function StopRecordingConfirmationModal({
+  activityMode,
+  language,
+  onCancel,
+  onConfirm,
+  visible
+}: {
+  activityMode: ActivityMode;
+  language: AppLanguage;
+  onCancel: () => void;
+  onConfirm: () => void;
+  visible: boolean;
+}) {
+  const [holdProgress, setHoldProgress] = useState(0);
+  const holdStartedAtRef = useRef<number | null>(null);
+  const holdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const isFrench = language === "fr";
+  const recordingNoun = ACTIVITY_MODE_TEXT[language].recordingNouns[activityMode];
+
+  const clearHold = useCallback(() => {
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+
+    holdStartedAtRef.current = null;
+    setHoldProgress(0);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) {
+      clearHold();
+    }
+
+    return clearHold;
+  }, [clearHold, visible]);
+
+  const startHold = useCallback(() => {
+    clearHold();
+    holdStartedAtRef.current = Date.now();
+    setHoldProgress(0);
+
+    progressTimerRef.current = setInterval(() => {
+      if (!holdStartedAtRef.current) {
+        return;
+      }
+
+      const elapsed = Date.now() - holdStartedAtRef.current;
+      setHoldProgress(Math.min(1, elapsed / STOP_CONFIRM_HOLD_MS));
+    }, 40);
+
+    holdTimerRef.current = setTimeout(() => {
+      clearHold();
+      onConfirm();
+    }, STOP_CONFIRM_HOLD_MS);
+  }, [clearHold, onConfirm]);
+
+  if (!visible) {
+    return null;
+  }
+
+  return (
+    <Modal animationType="fade" onRequestClose={onCancel} transparent visible>
+      <View style={styles.stopConfirmOverlay}>
+        <View style={styles.stopConfirmDialog}>
+          <View style={styles.stopConfirmIcon}>
+            <Ionicons name="stop-circle" size={30} color="#fecaca" />
+          </View>
+          <Text style={styles.stopConfirmTitle}>
+            {isFrench ? "Quitter l'enregistrement ?" : `Quit ${recordingNoun}?`}
+          </Text>
+          <Text style={styles.stopConfirmText}>
+            {isFrench
+              ? "Touchez Continuer pour garder l'enregistrement actif. Maintenez Quitter pour terminer."
+              : "Tap Continue to keep recording. Hold Quit to finish."}
+          </Text>
+          <View style={styles.stopConfirmActions}>
+            <TouchableOpacity
+              accessibilityRole="button"
+              onPress={onCancel}
+              style={styles.stopConfirmContinue}
+            >
+              <Text style={styles.stopConfirmContinueText}>
+                {isFrench ? "Continuer" : "Continue"}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityHint={
+                isFrench
+                  ? "Maintenez pour terminer l'enregistrement"
+                  : "Hold to finish the recording"
+              }
+              accessibilityRole="button"
+              onPressIn={startHold}
+              onPressOut={clearHold}
+              style={styles.stopConfirmQuit}
+            >
+              <View
+                pointerEvents="none"
+                style={[
+                  styles.stopConfirmQuitFill,
+                  { width: `${Math.round(holdProgress * 100)}%` }
+                ]}
+              />
+              <View style={styles.stopConfirmQuitContent}>
+                <Ionicons name="hand-left-outline" size={17} color="#ffffff" />
+                <Text style={styles.stopConfirmQuitText}>
+                  {isFrench ? "Maintenir Quitter" : "Hold Quit"}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </Modal>
@@ -3038,6 +3181,94 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     justifyContent: "space-between"
+  },
+  stopConfirmActions: {
+    flexDirection: "row",
+    gap: 10
+  },
+  stopConfirmContinue: {
+    alignItems: "center",
+    backgroundColor: "#111c25",
+    borderColor: "rgba(148, 163, 184, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    justifyContent: "center",
+    minHeight: 46
+  },
+  stopConfirmContinueText: {
+    color: "#f8fafc",
+    fontSize: 14,
+    fontWeight: "900"
+  },
+  stopConfirmDialog: {
+    alignItems: "center",
+    backgroundColor: "#0b151d",
+    borderColor: "rgba(252, 165, 165, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    gap: 13,
+    marginHorizontal: 18,
+    maxWidth: 440,
+    padding: 16,
+    width: "100%"
+  },
+  stopConfirmIcon: {
+    alignItems: "center",
+    backgroundColor: "rgba(220, 38, 38, 0.18)",
+    borderColor: "rgba(252, 165, 165, 0.34)",
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 50,
+    justifyContent: "center",
+    width: 50
+  },
+  stopConfirmOverlay: {
+    alignItems: "center",
+    backgroundColor: "rgba(2, 6, 10, 0.68)",
+    flex: 1,
+    justifyContent: "center",
+    padding: 18
+  },
+  stopConfirmQuit: {
+    alignItems: "center",
+    backgroundColor: "#dc2626",
+    borderRadius: 8,
+    flex: 1,
+    justifyContent: "center",
+    minHeight: 46,
+    overflow: "hidden"
+  },
+  stopConfirmQuitContent: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center"
+  },
+  stopConfirmQuitFill: {
+    backgroundColor: "#991b1b",
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+    top: 0
+  },
+  stopConfirmQuitText: {
+    color: "#ffffff",
+    fontSize: 14,
+    fontWeight: "900"
+  },
+  stopConfirmText: {
+    color: "#cbd5e1",
+    fontSize: 13,
+    fontWeight: "700",
+    lineHeight: 18,
+    textAlign: "center"
+  },
+  stopConfirmTitle: {
+    color: "#f8fafc",
+    fontSize: 20,
+    fontWeight: "900",
+    textAlign: "center"
   },
   topPanel: {
     gap: 2
