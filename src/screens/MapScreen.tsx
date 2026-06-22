@@ -15,6 +15,7 @@ import {
 import * as Location from "expo-location";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import type { Region } from "react-native-maps";
 
 import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
@@ -226,6 +227,8 @@ export function MapScreen({
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
+  const [mapViewportCenter, setMapViewportCenter] = useState<GpsPoint | null>(null);
+  const [zoneFocusRequestId, setZoneFocusRequestId] = useState(0);
   const [recoverableRecording, setRecoverableRecording] = useState<RecoverableRecording | null>(
     null
   );
@@ -307,6 +310,17 @@ export function MapScreen({
     }),
     [activeWalk?.points, activityMode, stats, walks]
   );
+  const completionReferenceLocation = activeWalk ? currentLocation : mapViewportCenter ?? currentLocation;
+
+  const handleVisibleRegionChange = useCallback((region: Region) => {
+    setMapViewportCenter({
+      accuracy: null,
+      latitude: region.latitude,
+      longitude: region.longitude,
+      pointIndex: 0,
+      timestamp: new Date().toISOString()
+    });
+  }, []);
 
   const refreshSavedData = useCallback(async (options?: { rebuildExploredCells?: boolean }) => {
     const [
@@ -419,7 +433,7 @@ export function MapScreen({
 
   useEffect(() => {
     if (
-      !currentLocation ||
+      !completionReferenceLocation ||
       !objective ||
       !["city", "district"].includes(objective.zone.type)
     ) {
@@ -431,27 +445,27 @@ export function MapScreen({
 
     if (
       checkedCenter &&
-      calculatePathDistanceMeters([checkedCenter, currentLocation]) <
+      calculatePathDistanceMeters([checkedCenter, completionReferenceLocation]) <
         AUTO_OBJECTIVE_CHECK_DISTANCE_METERS
     ) {
       return;
     }
 
-    autoObjectiveCheckCenterRef.current = currentLocation;
+    autoObjectiveCheckCenterRef.current = completionReferenceLocation;
 
-    const updateObjectiveForCurrentLocation = async () => {
+    const updateObjectiveForReferenceLocation = async () => {
       let zones = await getCachedZones(objective.zone.type);
-      let containingZone = findContainingZone(currentLocation, zones);
+      let containingZone = findContainingZone(completionReferenceLocation, zones);
 
-      if (!containingZone && shouldFetchAutoObjectiveZones(currentLocation)) {
-        autoObjectiveFetchCenterRef.current = currentLocation;
+      if (!containingZone && shouldFetchAutoObjectiveZones(completionReferenceLocation)) {
+        autoObjectiveFetchCenterRef.current = completionReferenceLocation;
         autoObjectiveFetchTimestampRef.current = Date.now();
 
         try {
-          const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
+          const result = await fetchNearbyOsmZonesWithDebug(completionReferenceLocation);
           await upsertZones(result.zones);
           zones = result.zones.filter((zone) => zone.type === objective.zone.type);
-          containingZone = findContainingZone(currentLocation, zones);
+          containingZone = findContainingZone(completionReferenceLocation, zones);
         } catch (error) {
           console.warn("Failed to refresh zones for auto objective", error);
         }
@@ -480,13 +494,64 @@ export function MapScreen({
       });
     };
 
-    updateObjectiveForCurrentLocation()
+    updateObjectiveForReferenceLocation()
       .catch((error) => console.warn("Failed to auto-switch completion objective", error));
 
     return () => {
       isMounted = false;
     };
-  }, [currentLocation, objective, shouldFetchAutoObjectiveZones]);
+  }, [completionReferenceLocation, objective, shouldFetchAutoObjectiveZones]);
+
+  useEffect(() => {
+    if (activeWalk || objective || !mapViewportCenter) {
+      return;
+    }
+
+    let isMounted = true;
+    const checkedCenter = autoObjectiveCheckCenterRef.current;
+
+    if (
+      checkedCenter &&
+      calculatePathDistanceMeters([checkedCenter, mapViewportCenter]) <
+        AUTO_OBJECTIVE_CHECK_DISTANCE_METERS
+    ) {
+      return;
+    }
+
+    autoObjectiveCheckCenterRef.current = mapViewportCenter;
+
+    const updateViewedDistrict = async () => {
+      let zones = await getCachedZones("district");
+      let containingZone = findContainingZone(mapViewportCenter, zones);
+
+      if (!containingZone && shouldFetchAutoObjectiveZones(mapViewportCenter)) {
+        autoObjectiveFetchCenterRef.current = mapViewportCenter;
+        autoObjectiveFetchTimestampRef.current = Date.now();
+
+        try {
+          const result = await fetchNearbyOsmZonesWithDebug(mapViewportCenter);
+          await upsertZones(result.zones);
+          zones = result.zones.filter((zone) => zone.type === "district");
+          containingZone = findContainingZone(mapViewportCenter, zones);
+        } catch (error) {
+          console.warn("Failed to refresh zones for viewed district", error);
+        }
+      }
+
+      if (!isMounted || !containingZone || containingZone.id === selectedZone?.id) {
+        return;
+      }
+
+      setSelectedZone(containingZone);
+    };
+
+    updateViewedDistrict()
+      .catch((error) => console.warn("Failed to update viewed district", error));
+
+    return () => {
+      isMounted = false;
+    };
+  }, [activeWalk, mapViewportCenter, objective, selectedZone?.id, shouldFetchAutoObjectiveZones]);
 
   useEffect(() => {
     if (!currentLocation) {
@@ -1239,9 +1304,11 @@ export function MapScreen({
         layers={layers}
         loopFillCellIds={loopFillCellIds}
         onMapReady={() => setIsMapReady(true)}
+        onVisibleRegionChange={handleVisibleRegionChange}
         selectedZone={selectedZone}
         streetSegments={streetSegments}
         todayNewCellIds={todayNewCellIds}
+        zoneFocusRequestId={zoneFocusRequestId}
       />
 
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
@@ -1421,11 +1488,12 @@ export function MapScreen({
         currentObjective={objective}
         currentObjectiveStats={objectiveStats}
         currentObjectiveTodayCells={todayObjectiveCellCount}
-        currentLocation={currentLocation}
+        currentLocation={completionReferenceLocation}
         language={language}
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
           setSelectedZone(zone);
+          setZoneFocusRequestId((requestId) => requestId + 1);
           setCompletionVisible(false);
         }}
         onSetObjective={(nextObjective) => {

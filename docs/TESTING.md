@@ -150,7 +150,7 @@ Notes:
 2. Confirm normal walked sections still render and create explored cells.
 3. View a route with an extreme GPS outage or impossible jump.
 4. Confirm the app does not draw a straight diagonal across the missing section.
-5. Confirm no inferred street path is shown in the normal gameplay map.
+5. Confirm any inferred street path is shown only as a route line and does not create explored cells.
 6. Confirm Completion does not gain inferred cells from OSM routing.
 
 ## Loop Fill Test
@@ -180,7 +180,7 @@ Notes:
 1. Record normally and confirm short GPS segments still draw as paths.
 2. If a recording has a long GPS gap, confirm the app does not draw a straight diagonal across it.
 3. Confirm explored cells are not filled along the missing diagonal.
-4. Confirm inferred paths are not shown in normal gameplay.
+4. Confirm inferred paths do not create explored cells in normal gameplay.
 
 ## Recovery Test
 

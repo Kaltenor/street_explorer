@@ -38,7 +38,7 @@
 - Device step counting for Walk mode.
 - Full-screen Details, History, and Completion views.
 - Branded splash/loading screen and transparent map logo HUD.
-- Street-aware path inference prototype, currently paused for normal gameplay because it needs stronger validation.
+- Street-aware path inference prototype, currently limited to display-only route refinement because it needs stronger validation before it affects cells.
 
 ## Next Priority
 
@@ -53,9 +53,8 @@ Improve the real game layer:
 
 ### 2. Street-Aware Path Inference V2
 
-Bring inferred routes back carefully as debug/off-by-default first:
+Make inferred routes trustworthy enough to persist:
 
-- add a debug layer that previews inferred routes without saving cells
 - use full OSM street topology instead of local loaded segments only
 - connect intersections more robustly when OSM ways do not share exact nodes
 - add confidence scoring in history/detail screens

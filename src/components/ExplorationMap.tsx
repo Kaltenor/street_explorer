@@ -11,7 +11,7 @@ import {
   buildExplorationOutlineSegments,
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
-import { buildPathSegments } from "../services/pathInference";
+import { buildPathSegmentsWithInference } from "../services/pathInference";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
@@ -27,9 +27,11 @@ type ExplorationMapProps = {
   layers: MapLayerState;
   loopFillCellIds: string[];
   onMapReady?: () => void;
+  onVisibleRegionChange?: (region: Region) => void;
   selectedZone: CachedZone | null;
   streetSegments: OsmStreetSegment[];
   todayNewCellIds: string[];
+  zoneFocusRequestId: number;
 };
 
 const PATH_COLORS = [
@@ -111,11 +113,15 @@ export function ExplorationMap({
   layers,
   loopFillCellIds,
   onMapReady,
+  onVisibleRegionChange,
   selectedZone,
-  todayNewCellIds
+  streetSegments,
+  todayNewCellIds,
+  zoneFocusRequestId
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
   const hasCenteredOnInitialLocation = useRef(false);
+  const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const region = getInitialRegion(currentLocation, walks, activePoints);
   const [visibleRegion, setVisibleRegion] = useState(region);
@@ -206,10 +212,11 @@ export function ExplorationMap({
   }, [highlightedSessionId, walks]);
 
   useEffect(() => {
-    if (!selectedZone) {
+    if (!selectedZone || zoneFocusRequestId === handledZoneFocusRequestId.current) {
       return;
     }
 
+    handledZoneFocusRequestId.current = zoneFocusRequestId;
     const coordinates = selectedZone.geometry.flat();
 
     if (coordinates.length > 1) {
@@ -223,7 +230,12 @@ export function ExplorationMap({
         }
       });
     }
-  }, [selectedZone]);
+  }, [selectedZone, zoneFocusRequestId]);
+
+  const handleRegionChangeComplete = (nextRegion: Region) => {
+    setVisibleRegion(nextRegion);
+    onVisibleRegionChange?.(nextRegion);
+  };
 
   const fitToPoints = (
     points: GpsPoint[],
@@ -247,7 +259,7 @@ export function ExplorationMap({
         initialRegion={region}
         onPanDrag={() => setIsAutoFollowEnabled(false)}
         onMapReady={onMapReady}
-        onRegionChangeComplete={setVisibleRegion}
+        onRegionChangeComplete={handleRegionChangeComplete}
         onTouchStart={() => setIsAutoFollowEnabled(false)}
         pitchEnabled
         rotateEnabled
@@ -317,6 +329,7 @@ export function ExplorationMap({
                 isHighlighted={isHighlighted}
                 points={walk.points}
                 simplificationToleranceMeters={pathSimplificationToleranceMeters}
+                streetSegments={streetSegments}
               />
               {shouldShowMarkers && firstPoint ? (
                 <Marker
@@ -347,6 +360,7 @@ export function ExplorationMap({
               isHighlighted
               points={activePoints}
               simplificationToleranceMeters={0}
+              streetSegments={streetSegments}
             />
             {shouldShowMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
@@ -434,7 +448,8 @@ function PathSegmentLines({
   isDimmed,
   isHighlighted,
   points,
-  simplificationToleranceMeters
+  simplificationToleranceMeters,
+  streetSegments
 }: {
   activityMode: ActivityMode;
   color: string;
@@ -442,10 +457,11 @@ function PathSegmentLines({
   isHighlighted: boolean;
   points: GpsPoint[];
   simplificationToleranceMeters: number;
+  streetSegments: OsmStreetSegment[];
 }) {
   return (
     <>
-      {buildPathSegments(points, activityMode).map((segment, index) => {
+      {buildPathSegmentsWithInference(points, activityMode, streetSegments).map((segment, index) => {
         if (segment.type === "rejected") {
           return null;
         }
@@ -453,7 +469,7 @@ function PathSegmentLines({
         const strokeColor = getSegmentStrokeColor({
           color,
           isDimmed,
-          isInferred: false
+          isInferred: segment.type === "inferred"
         });
 
         return (

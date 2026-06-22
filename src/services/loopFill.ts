@@ -10,6 +10,7 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 
 export const LOOP_FILL_CONFIG = {
   boundaryExpansionCells: 1,
+  maxFloodBoundsCells: 1_000_000,
   maxPolygonAreaSquareMetersByMode: {
     car: 5_000_000,
     walk: 150_000,
@@ -201,12 +202,23 @@ function rejectedLoop(
 
 function findEnclosedCellGroups(boundaryCellIds: string[]) {
   const boundary = new Set(boundaryCellIds);
-  const detectionBoundary = expandBoundaryCells(boundary, LOOP_FILL_CONFIG.boundaryExpansionCells);
-  const keys = [...detectionBoundary].map(parseCellKey);
 
-  if (keys.length === 0) {
+  if (boundary.size === 0) {
     return [];
   }
+
+  return collectDetectionBoundaryGroups(boundary)
+    .flatMap((detectionBoundary) => findEnclosedCellGroupsInComponent(boundary, detectionBoundary));
+}
+
+function collectDetectionBoundaryGroups(boundary: Set<string>) {
+  const detectionBoundary = expandBoundaryCells(boundary, LOOP_FILL_CONFIG.boundaryExpansionCells);
+
+  return collectConnectedCellGroups(detectionBoundary).map((group) => new Set(group));
+}
+
+function findEnclosedCellGroupsInComponent(boundary: Set<string>, detectionBoundary: Set<string>) {
+  const keys = [...detectionBoundary].map(parseCellKey);
 
   const bounds = {
     maxX: Math.max(...keys.map((key) => key.x)) + 1,
@@ -214,6 +226,11 @@ function findEnclosedCellGroups(boundaryCellIds: string[]) {
     minX: Math.min(...keys.map((key) => key.x)) - 1,
     minY: Math.min(...keys.map((key) => key.y)) - 1
   };
+
+  if (countCellsInBounds(bounds) > LOOP_FILL_CONFIG.maxFloodBoundsCells) {
+    return [];
+  }
+
   const outside = floodReachableCells({
     blocked: detectionBoundary,
     bounds,
@@ -232,6 +249,10 @@ function findEnclosedCellGroups(boundaryCellIds: string[]) {
   }
 
   return collectConnectedCellGroups(enclosed);
+}
+
+function countCellsInBounds(bounds: { maxX: number; maxY: number; minX: number; minY: number }) {
+  return (bounds.maxX - bounds.minX + 1) * (bounds.maxY - bounds.minY + 1);
 }
 
 function expandBoundaryCells(boundary: Set<string>, radius: number) {
@@ -260,9 +281,11 @@ function floodReachableCells(input: {
 }) {
   const visited = new Set<string>();
   const queue: CellKey[] = [input.start];
+  let queueIndex = 0;
 
-  while (queue.length > 0) {
-    const current = queue.shift();
+  while (queueIndex < queue.length) {
+    const current = queue[queueIndex];
+    queueIndex += 1;
 
     if (!current || !isInsideBounds(current, input.bounds)) {
       continue;
@@ -299,11 +322,13 @@ function collectConnectedCellGroups(cells: Set<string>) {
 
     const group: string[] = [];
     const queue = [parseCellKey(first)];
+    let queueIndex = 0;
 
     remaining.delete(first);
 
-    while (queue.length > 0) {
-      const current = queue.shift();
+    while (queueIndex < queue.length) {
+      const current = queue[queueIndex];
+      queueIndex += 1;
 
       if (!current) {
         continue;

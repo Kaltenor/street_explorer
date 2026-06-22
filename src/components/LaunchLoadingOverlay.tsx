@@ -1,5 +1,6 @@
 import { ActivityIndicator, ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { APP_VERSION } from "../constants/config";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
 import { ActivityMode } from "../types/walk";
 
@@ -61,6 +62,7 @@ export function LaunchLoadingOverlay({
               <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
             </View>
           )}
+          <Text style={styles.version}>v{APP_VERSION}</Text>
         </View>
       </ImageBackground>
     </Pressable>
@@ -147,5 +149,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 12,
     textTransform: "uppercase"
+  },
+  version: {
+    color: "rgba(248, 250, 252, 0.72)",
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0.8
   }
 });

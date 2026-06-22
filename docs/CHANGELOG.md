@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.3.49
+
+Changed:
+
+- Preview build version for phone testing.
+
+## v0.3.48
+
+Fixed:
+
+- Suspicious GPS gaps now try display-only street routing before being drawn, and are hidden when they cannot be refined safely.
+- Path gap filtering now uses the same mode speed limits as recording so delayed GPS points are less likely to draw diagonal shortcuts.
+
 ## v0.3.47
 
 Added:

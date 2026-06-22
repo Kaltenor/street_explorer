@@ -132,7 +132,7 @@ GPS paths are first classified into path segments:
 
 Only confirmed GPS geometry currently marks cells. Rejected gaps are not sampled, so a missing GPS interval does not create fake diagonal exploration through buildings.
 
-The schema still supports `inferred` cells for future use, but normal gameplay does not currently save or render inferred cells. Street-aware inference exists as a prototype boundary in `src/services/pathInference.ts`, but it is paused for map rendering and cell generation until it can be inspected and trusted.
+The schema still supports `inferred` cells for future use, but normal gameplay does not currently save inferred cells. Street-aware inference can refine suspicious gaps for display-only route lines, but it is still paused for cell generation until it can be inspected and trusted.
 
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
 
@@ -196,23 +196,21 @@ Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate b
 
 ## Street-Aware Inference
 
-Street-aware path inference is currently paused for normal gameplay.
+Street-aware path inference is currently display-only in normal gameplay.
 
-The prototype service can snap suspicious GPS gaps to cached OSM street graph nodes and search for a plausible route, but inferred routes do not currently:
+The prototype service can snap suspicious GPS gaps to cached OSM street graph nodes and search for a plausible route. Accepted inferred routes may render as route lines, but they do not currently:
 
-- render on the main map
 - create explored cells
 - affect zone completion
 - affect loop-fill boundaries
 
-This prevents OSM routing mistakes from changing the player map.
+This prevents OSM routing mistakes from changing the player's explored map.
 
 Future intended flow:
 
 - snap gap endpoints to nearest valid OSM graph nodes
 - run shortest path through connected local street-segment endpoints
 - reject routes with excessive detour or impossible speed
-- show accepted inferred paths in a debug/off-by-default layer first
 - eventually store inferred geometry separately from direct GPS
 - only count inferred cells after confidence and review tooling are good enough
 

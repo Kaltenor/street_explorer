@@ -43,4 +43,4 @@ Each mode has separate recordings, paths, stats, and history.
 - Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
 - OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.
-- Street-aware path inference is paused for normal gameplay rendering and explored-cell generation until it can be made reliable and debuggable.
+- Street-aware path inference is display-only for suspicious route gaps and is still paused for explored-cell generation until it can be made reliable and debuggable.

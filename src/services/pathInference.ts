@@ -1,4 +1,5 @@
 import { haversineDistanceMeters } from "./distance";
+import { MODE_LOCATION_CONFIG } from "../constants/config";
 import { MapCoordinate } from "./explorationArea";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint } from "../types/walk";
@@ -7,24 +8,20 @@ const MODE_PATH_GAP_CONFIG: Record<
   ActivityMode,
   {
     maxConfirmedStraightLineMeters: number;
-    maxDisplaySpeedMetersPerSecond: number;
     maxUninferredGapSeconds: number;
   }
 > = {
   walk: {
-    maxConfirmedStraightLineMeters: 1000,
-    maxDisplaySpeedMetersPerSecond: 15,
-    maxUninferredGapSeconds: 900
+    maxConfirmedStraightLineMeters: 75,
+    maxUninferredGapSeconds: 18
   },
   wheel: {
-    maxConfirmedStraightLineMeters: 2500,
-    maxDisplaySpeedMetersPerSecond: 40,
-    maxUninferredGapSeconds: 600
+    maxConfirmedStraightLineMeters: 180,
+    maxUninferredGapSeconds: 24
   },
   car: {
-    maxConfirmedStraightLineMeters: 6000,
-    maxDisplaySpeedMetersPerSecond: 120,
-    maxUninferredGapSeconds: 600
+    maxConfirmedStraightLineMeters: 700,
+    maxUninferredGapSeconds: 20
   }
 };
 
@@ -167,7 +164,7 @@ function getSuspiciousGapReason(
   if (seconds > 0) {
     const speedMetersPerSecond = distanceMeters / seconds;
 
-    if (speedMetersPerSecond > gapConfig.maxDisplaySpeedMetersPerSecond) {
+    if (speedMetersPerSecond > MODE_LOCATION_CONFIG[activityMode].maxSpeedMetersPerSecond) {
       return `impossible ${activityMode} speed`;
     }
   }
@@ -224,13 +221,12 @@ function inferStreetRoute(
   const straightDistance = haversineDistanceMeters(startPoint, endPoint);
   const seconds = getSecondsBetweenPoints(startPoint, endPoint);
   const speedMetersPerSecond = seconds > 0 ? routeDistance / seconds : 0;
-  const gapConfig = MODE_PATH_GAP_CONFIG[activityMode];
 
   if (routeDistance > Math.max(straightDistance * 4, straightDistance + 800)) {
     return null;
   }
 
-  if (speedMetersPerSecond > gapConfig.maxDisplaySpeedMetersPerSecond) {
+  if (speedMetersPerSecond > MODE_LOCATION_CONFIG[activityMode].maxSpeedMetersPerSecond) {
     return null;
   }
 
