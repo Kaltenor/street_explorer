@@ -29,8 +29,6 @@ export async function getCurrentGpsPoint(): Promise<GpsPoint | null> {
 }
 
 export async function watchGpsPoints(onPoint: (point: GpsPoint) => void) {
-  // TODO: Add background location tracking for long walks with Expo TaskManager
-  // once the MVP needs recording to continue while the app is closed.
   return Location.watchPositionAsync(
     {
       accuracy: Location.Accuracy.BestForNavigation,
@@ -49,6 +47,19 @@ function locationToGpsPoint(location: Location.LocationObject, pointIndex: numbe
     longitude: location.coords.longitude,
     timestamp: new Date(location.timestamp).toISOString(),
     accuracy: location.coords.accuracy,
-    pointIndex
+    heading: normalizeHeading(location.coords.heading),
+    pointIndex,
+    speedMetersPerSecond:
+      typeof location.coords.speed === "number" && location.coords.speed >= 0
+        ? location.coords.speed
+        : null
   };
+}
+
+function normalizeHeading(heading: number | null) {
+  if (typeof heading !== "number" || !Number.isFinite(heading) || heading < 0) {
+    return null;
+  }
+
+  return ((heading % 360) + 360) % 360;
 }

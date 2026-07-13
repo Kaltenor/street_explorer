@@ -9,6 +9,8 @@ import {
 import { calculatePathDistanceMeters, haversineDistanceMeters } from "./distance";
 import { ActiveWalk, ActivityMode, GpsPoint } from "../types/walk";
 
+const gpsPersistenceQueues = new Map<number, Promise<void>>();
+
 export type PointEvaluation =
   | {
       accepted: true;
@@ -74,24 +76,44 @@ export function appendGpsPoint(activeWalk: ActiveWalk, rawPoint: GpsPoint): Acti
   };
 }
 
-export async function persistAcceptedGpsPoint(
+export function persistAcceptedGpsPoint(
   sessionId: number,
   activityMode: ActivityMode,
   rawPoint: Omit<GpsPoint, "pointIndex">
 ) {
-  const previousPoint = await getLastGpsPointForSession(sessionId);
-  const evaluation = evaluateGpsPoint(activityMode, previousPoint, {
-    ...rawPoint,
-    pointIndex: 0
+  const previousOperation = gpsPersistenceQueues.get(sessionId) ?? Promise.resolve();
+  const operation = previousOperation.then(async () => {
+    const previousPoint = await getLastGpsPointForSession(sessionId);
+    const evaluation = evaluateGpsPoint(activityMode, previousPoint, {
+      ...rawPoint,
+      pointIndex: 0
+    });
+
+    if (!evaluation.accepted) {
+      return null;
+    }
+
+    await saveGpsPointWithNextIndex(sessionId, rawPoint);
+
+    return evaluation;
+  });
+  const settledOperation = operation.then(
+    () => undefined,
+    () => undefined
+  );
+
+  gpsPersistenceQueues.set(sessionId, settledOperation);
+  void settledOperation.then(() => {
+    if (gpsPersistenceQueues.get(sessionId) === settledOperation) {
+      gpsPersistenceQueues.delete(sessionId);
+    }
   });
 
-  if (!evaluation.accepted) {
-    return null;
-  }
+  return operation;
+}
 
-  await saveGpsPointWithNextIndex(sessionId, rawPoint);
-
-  return evaluation;
+export async function flushPendingGpsPoints(sessionId: number) {
+  await gpsPersistenceQueues.get(sessionId);
 }
 
 export async function finishPersistedActiveWalk(
@@ -99,6 +121,7 @@ export async function finishPersistedActiveWalk(
   endedAt: string,
   stepCount = activeWalk.stepCount
 ) {
+  await flushPendingGpsPoints(activeWalk.sessionId);
   const points = await getGpsPointsForSession(activeWalk.sessionId);
 
   if (points.length < 2) {
@@ -145,10 +168,29 @@ export function evaluateGpsPoint(
   }
 
   const distanceFromPrevious = haversineDistanceMeters(previousPoint, rawPoint);
-  const secondsFromPrevious = Math.max(
-    0,
-    (new Date(rawPoint.timestamp).getTime() - new Date(previousPoint.timestamp).getTime()) / 1000
-  );
+  const rawTimestamp = new Date(rawPoint.timestamp).getTime();
+  const previousTimestamp = new Date(previousPoint.timestamp).getTime();
+
+  if (!Number.isFinite(rawTimestamp) || !Number.isFinite(previousTimestamp)) {
+    return {
+      accepted: false,
+      countAsRejected: true,
+      reason: "GPS point ignored: invalid timestamp"
+    };
+  }
+
+  if (rawTimestamp <= previousTimestamp) {
+    return {
+      accepted: false,
+      countAsRejected: rawTimestamp < previousTimestamp || distanceFromPrevious > 1,
+      reason:
+        rawTimestamp < previousTimestamp || distanceFromPrevious > 1
+          ? "GPS point ignored: stale or duplicate timestamp"
+          : null
+    };
+  }
+
+  const secondsFromPrevious = (rawTimestamp - previousTimestamp) / 1000;
 
   if (distanceFromPrevious < modeConfig.minDistanceBetweenPointsMeters) {
     return {

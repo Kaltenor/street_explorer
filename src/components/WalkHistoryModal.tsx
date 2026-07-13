@@ -271,6 +271,22 @@ function RecordingDetail({
             <Summary label={strings.history.gpsRejected} value={report.gpsRejected} />
             <Summary label={strings.history.hiddenGaps} value={report.hiddenGaps} />
             <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
+            <Summary
+              label={strings.history.routeGeometry}
+              value={
+                walkWithPoints?.routeSegments != null
+                  ? strings.history.frozenRoute
+                  : strings.history.legacyRoute
+              }
+            />
+            <Summary
+              label={strings.history.inferredSections}
+              value={String(
+                walkWithPoints?.routeSegments?.filter(
+                  (segment) => segment.type === "inferred"
+                ).length ?? 0
+              )}
+            />
             <Summary label={strings.history.loopFill} value={report.loopFillResult} />
             <Summary label={strings.history.quality} value={report.qualityScore} />
           </View>

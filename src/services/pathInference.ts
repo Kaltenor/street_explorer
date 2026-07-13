@@ -4,6 +4,8 @@ import { MapCoordinate } from "./explorationArea";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
+const MAX_SAFE_STREET_SNAP_CONNECTOR_METERS = 12;
+
 const MODE_PATH_GAP_CONFIG: Record<
   ActivityMode,
   {
@@ -12,16 +14,16 @@ const MODE_PATH_GAP_CONFIG: Record<
   }
 > = {
   walk: {
-    maxConfirmedStraightLineMeters: 75,
-    maxUninferredGapSeconds: 18
+    maxConfirmedStraightLineMeters: 15,
+    maxUninferredGapSeconds: 6
   },
   wheel: {
-    maxConfirmedStraightLineMeters: 180,
-    maxUninferredGapSeconds: 24
+    maxConfirmedStraightLineMeters: 35,
+    maxUninferredGapSeconds: 6
   },
   car: {
-    maxConfirmedStraightLineMeters: 700,
-    maxUninferredGapSeconds: 20
+    maxConfirmedStraightLineMeters: 90,
+    maxUninferredGapSeconds: 6
   }
 };
 
@@ -77,6 +79,7 @@ export function buildPathSegmentsWithInference(
   streetSegments: OsmStreetSegment[] = []
 ): PathSegment[] {
   const segments: PathSegment[] = [];
+  const routingContext = createStreetRoutingContext(activityMode, streetSegments);
 
   for (let index = 1; index < points.length; index += 1) {
     const startPoint = points[index - 1];
@@ -105,7 +108,12 @@ export function buildPathSegmentsWithInference(
       continue;
     }
 
-    const inferredPath = inferPathBetweenPoints(startPoint, endPoint, activityMode, streetSegments);
+    const inferredPath = inferPathBetweenPointsWithContext(
+      startPoint,
+      endPoint,
+      activityMode,
+      routingContext
+    );
 
     if (inferredPath.status === "inferred") {
       segments.push(inferredPath.segment);
@@ -130,14 +138,28 @@ export function inferPathBetweenPoints(
   activityMode: ActivityMode,
   streetSegments: OsmStreetSegment[] = []
 ): InferredPathResult {
-  if (streetSegments.length === 0) {
+  return inferPathBetweenPointsWithContext(
+    startPoint,
+    endPoint,
+    activityMode,
+    createStreetRoutingContext(activityMode, streetSegments)
+  );
+}
+
+function inferPathBetweenPointsWithContext(
+  startPoint: GpsPoint,
+  endPoint: GpsPoint,
+  activityMode: ActivityMode,
+  routingContext: StreetRoutingContext | null
+): InferredPathResult {
+  if (!routingContext) {
     return {
       reason: "street graph routing is not configured",
       status: "not_configured"
     };
   }
 
-  const route = inferStreetRoute(startPoint, endPoint, activityMode, streetSegments);
+  const route = inferStreetRoute(startPoint, endPoint, activityMode, routingContext);
 
   if (!route) {
     return {
@@ -151,7 +173,6 @@ export function inferPathBetweenPoints(
     status: "inferred"
   };
 }
-
 function getSuspiciousGapReason(
   startPoint: GpsPoint,
   endPoint: GpsPoint,
@@ -196,18 +217,66 @@ type GraphNode = {
   edges: GraphEdge[];
 };
 
+type StreetRoutingContext = {
+  graph: Map<string, GraphNode>;
+  nextSnapId: number;
+  streetSegments: OsmStreetSegment[];
+};
+
+function createStreetRoutingContext(
+  activityMode: ActivityMode,
+  streetSegments: OsmStreetSegment[]
+): StreetRoutingContext | null {
+  const usableStreetSegments = streetSegments
+    .filter((segment) => isStreetUsableForMode(segment, activityMode));
+
+  if (usableStreetSegments.length === 0) {
+    return null;
+  }
+
+  return {
+    graph: buildStreetGraph(usableStreetSegments),
+    nextSnapId: 0,
+    streetSegments: usableStreetSegments
+  };
+}
+
 function inferStreetRoute(
   startPoint: GpsPoint,
   endPoint: GpsPoint,
   activityMode: ActivityMode,
-  streetSegments: OsmStreetSegment[]
+  routingContext: StreetRoutingContext
 ): InferredPathSegment | null {
-  const graph = buildStreetGraph(streetSegments.filter((segment) => isStreetUsableForMode(segment, activityMode)));
-  const startNode = findNearestGraphNode(startPoint, graph);
-  const endNode = findNearestGraphNode(endPoint, graph);
+  const graph = routingContext.graph;
+  const startNode = attachPointToStreetGraph(
+    startPoint,
+    graph,
+    routingContext.streetSegments,
+    String(routingContext.nextSnapId++)
+  );
+  const endNode = attachPointToStreetGraph(
+    endPoint,
+    graph,
+    routingContext.streetSegments,
+    String(routingContext.nextSnapId++)
+  );
+  const maxSnapDistanceMeters = {
+    walk: 30,
+    wheel: 35,
+    car: 45
+  }[activityMode];
 
-  if (!startNode || !endNode || startNode.distanceMeters > 75 || endNode.distanceMeters > 75) {
+  if (
+    !startNode ||
+    !endNode ||
+    startNode.distanceMeters > maxSnapDistanceMeters ||
+    endNode.distanceMeters > maxSnapDistanceMeters
+  ) {
     return null;
+  }
+
+  if (startNode.edgeKey === endNode.edgeKey) {
+    connectGraphNodes(graph, startNode.key, endNode.key);
   }
 
   const route = findShortestPath(graph, startNode.key, endNode.key);
@@ -222,7 +291,7 @@ function inferStreetRoute(
   const seconds = getSecondsBetweenPoints(startPoint, endPoint);
   const speedMetersPerSecond = seconds > 0 ? routeDistance / seconds : 0;
 
-  if (routeDistance > Math.max(straightDistance * 4, straightDistance + 800)) {
+  if (routeDistance > Math.max(straightDistance * 2.25, straightDistance + 250)) {
     return null;
   }
 
@@ -230,18 +299,29 @@ function inferStreetRoute(
     return null;
   }
 
-  const routePoints = route.keys
+  const graphRoutePoints = route.keys
     .map((key) => graph.get(key)?.coordinate)
     .filter((point): point is MapCoordinate => Boolean(point))
-    .map((point, index) => toGpsPoint(point, index, startPoint.timestamp));
+    .map((point, index) => toGpsPoint(point, index + 1, startPoint.timestamp));
+  const routePoints = [
+    ...(startNode.distanceMeters <= MAX_SAFE_STREET_SNAP_CONNECTOR_METERS
+      ? [startPoint]
+      : []),
+    ...graphRoutePoints,
+    ...(endNode.distanceMeters <= MAX_SAFE_STREET_SNAP_CONNECTOR_METERS
+      ? [endPoint]
+      : [])
+  ];
+  const isHighConfidence =
+    startNode.distanceMeters <= 12 &&
+    endNode.distanceMeters <= 12 &&
+    routeDistance <= Math.max(straightDistance * 1.35, straightDistance + 60);
 
   return {
-    confidence: routeDistance <= Math.max(straightDistance * 1.8, straightDistance + 160)
-      ? "medium"
-      : "low",
+    confidence: isHighConfidence ? "high" : "medium",
     distanceMeters: routeDistance,
     endPoint,
-    points: [startPoint, ...routePoints, endPoint],
+    points: routePoints,
     source: "inferred",
     startPoint,
     type: "inferred"
@@ -307,58 +387,151 @@ function ensureGraphNode(graph: Map<string, GraphNode>, key: string, coordinate:
   return node;
 }
 
-function findNearestGraphNode(point: GpsPoint, graph: Map<string, GraphNode>) {
-  let nearest: { distanceMeters: number; key: string } | null = null;
+function attachPointToStreetGraph(
+  point: GpsPoint,
+  graph: Map<string, GraphNode>,
+  streetSegments: OsmStreetSegment[],
+  keySuffix: string
+) {
+  let nearest: {
+    coordinate: MapCoordinate;
+    distanceMeters: number;
+    edgeKey: string;
+    fromKey: string;
+    toKey: string;
+  } | null = null;
 
-  for (const [key, node] of graph.entries()) {
-    const distanceMeters = haversineDistanceMeters(point, toGpsPoint(node.coordinate));
+  for (const segment of streetSegments) {
+    for (let index = 1; index < segment.coordinates.length; index += 1) {
+      const from = segment.coordinates[index - 1];
+      const to = segment.coordinates[index];
 
-    if (!nearest || distanceMeters < nearest.distanceMeters) {
-      nearest = { distanceMeters, key };
-    }
-  }
-
-  return nearest;
-}
-
-function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKey: string) {
-  const distances = new Map<string, number>([[startKey, 0]]);
-  const previous = new Map<string, string>();
-  const unvisited = new Set(graph.keys());
-
-  while (unvisited.size > 0) {
-    let currentKey: string | null = null;
-    let currentDistance = Number.POSITIVE_INFINITY;
-
-    for (const key of unvisited) {
-      const distance = distances.get(key) ?? Number.POSITIVE_INFINITY;
-
-      if (distance < currentDistance) {
-        currentDistance = distance;
-        currentKey = key;
-      }
-    }
-
-    if (!currentKey || currentDistance === Number.POSITIVE_INFINITY) {
-      break;
-    }
-
-    if (currentKey === endKey) {
-      break;
-    }
-
-    unvisited.delete(currentKey);
-
-    for (const edge of graph.get(currentKey)?.edges ?? []) {
-      if (!unvisited.has(edge.key)) {
+      if (!from || !to) {
         continue;
       }
 
-      const nextDistance = currentDistance + edge.distanceMeters;
+      const coordinate = projectCoordinateOntoSegment(point, from, to);
+      const distanceMeters = haversineDistanceMeters(point, toGpsPoint(coordinate));
+
+      if (!nearest || distanceMeters < nearest.distanceMeters) {
+        const fromKey = coordinateKey(from);
+        const toKey = coordinateKey(to);
+
+        nearest = {
+          coordinate,
+          distanceMeters,
+          edgeKey: [fromKey, toKey].sort().join(">"),
+          fromKey,
+          toKey
+        };
+      }
+    }
+  }
+
+  if (!nearest) {
+    return null;
+  }
+
+  const key = "snap:" + keySuffix;
+  ensureGraphNode(graph, key, nearest.coordinate);
+  connectGraphNodes(graph, key, nearest.fromKey);
+  connectGraphNodes(graph, key, nearest.toKey);
+
+  return {
+    distanceMeters: nearest.distanceMeters,
+    edgeKey: nearest.edgeKey,
+    key
+  };
+}
+
+function connectGraphNodes(graph: Map<string, GraphNode>, leftKey: string, rightKey: string) {
+  if (leftKey === rightKey) {
+    return;
+  }
+
+  const left = graph.get(leftKey);
+  const right = graph.get(rightKey);
+
+  if (!left || !right) {
+    return;
+  }
+
+  const distanceMeters = haversineDistanceMeters(
+    toGpsPoint(left.coordinate),
+    toGpsPoint(right.coordinate)
+  );
+
+  if (!left.edges.some((edge) => edge.key === rightKey)) {
+    left.edges.push({ distanceMeters, key: rightKey });
+  }
+
+  if (!right.edges.some((edge) => edge.key === leftKey)) {
+    right.edges.push({ distanceMeters, key: leftKey });
+  }
+}
+
+function projectCoordinateOntoSegment(
+  point: Pick<MapCoordinate, "latitude" | "longitude">,
+  from: MapCoordinate,
+  to: MapCoordinate
+) {
+  const latitudeRadians = (point.latitude * Math.PI) / 180;
+  const longitudeScale = Math.max(1, 111_320 * Math.cos(latitudeRadians));
+  const fromX = (from.longitude - point.longitude) * longitudeScale;
+  const fromY = (from.latitude - point.latitude) * 111_320;
+  const toX = (to.longitude - point.longitude) * longitudeScale;
+  const toY = (to.latitude - point.latitude) * 111_320;
+  const deltaX = toX - fromX;
+  const deltaY = toY - fromY;
+  const lengthSquared = deltaX * deltaX + deltaY * deltaY;
+  const progress = lengthSquared > 0
+    ? Math.max(0, Math.min(1, -(fromX * deltaX + fromY * deltaY) / lengthSquared))
+    : 0;
+
+  return {
+    latitude: from.latitude + (to.latitude - from.latitude) * progress,
+    longitude: from.longitude + (to.longitude - from.longitude) * progress
+  };
+}
+function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKey: string) {
+  const distances = new Map<string, number>([[startKey, 0]]);
+  const previous = new Map<string, string>();
+  const visited = new Set<string>();
+  const queue: Array<{ distanceMeters: number; key: string }> = [
+    { distanceMeters: 0, key: startKey }
+  ];
+
+  while (queue.length > 0) {
+    const current = popNearestQueueItem(queue);
+
+    if (!current || visited.has(current.key)) {
+      continue;
+    }
+
+    if (current.distanceMeters !== distances.get(current.key)) {
+      continue;
+    }
+
+    visited.add(current.key);
+
+    if (current.key === endKey) {
+      break;
+    }
+
+    for (const edge of graph.get(current.key)?.edges ?? []) {
+      if (visited.has(edge.key)) {
+        continue;
+      }
+
+      const nextDistance = current.distanceMeters + edge.distanceMeters;
 
       if (nextDistance < (distances.get(edge.key) ?? Number.POSITIVE_INFINITY)) {
         distances.set(edge.key, nextDistance);
-        previous.set(edge.key, currentKey);
+        previous.set(edge.key, current.key);
+        pushQueueItem(queue, {
+          distanceMeters: nextDistance,
+          key: edge.key
+        });
       }
     }
   }
@@ -389,8 +562,71 @@ function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKe
   };
 }
 
+function pushQueueItem(
+  queue: Array<{ distanceMeters: number; key: string }>,
+  item: { distanceMeters: number; key: string }
+) {
+  queue.push(item);
+  let index = queue.length - 1;
+
+  while (index > 0) {
+    const parentIndex = Math.floor((index - 1) / 2);
+    const parent = queue[parentIndex];
+
+    if (!parent || parent.distanceMeters <= item.distanceMeters) {
+      break;
+    }
+
+    queue[index] = parent;
+    index = parentIndex;
+  }
+
+  queue[index] = item;
+}
+
+function popNearestQueueItem(
+  queue: Array<{ distanceMeters: number; key: string }>
+) {
+  const nearest = queue[0];
+  const last = queue.pop();
+
+  if (!nearest || !last || queue.length === 0) {
+    return nearest;
+  }
+
+  let index = 0;
+
+  while (true) {
+    const leftIndex = index * 2 + 1;
+    const rightIndex = leftIndex + 1;
+    const left = queue[leftIndex];
+    const right = queue[rightIndex];
+
+    if (!left) {
+      break;
+    }
+
+    const smallerChildIndex =
+      right && right.distanceMeters < left.distanceMeters
+        ? rightIndex
+        : leftIndex;
+    const smallerChild = queue[smallerChildIndex];
+
+    if (!smallerChild || smallerChild.distanceMeters >= last.distanceMeters) {
+      break;
+    }
+
+    queue[index] = smallerChild;
+    index = smallerChildIndex;
+  }
+
+  queue[index] = last;
+
+  return nearest;
+}
+
 function coordinateKey(coordinate: MapCoordinate) {
-  return `${coordinate.latitude.toFixed(5)}:${coordinate.longitude.toFixed(5)}`;
+  return `${coordinate.latitude.toFixed(6)}:${coordinate.longitude.toFixed(6)}`;
 }
 
 function toGpsPoint(

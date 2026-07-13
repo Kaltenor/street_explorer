@@ -1,21 +1,21 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
-import { StyleSheet, View } from "react-native";
+import { Animated, Easing, StyleSheet, View } from "react-native";
 
 import { MAP_CONFIG } from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
 import {
-  buildExplorationCells,
-  buildExplorationCell,
-  buildExplorationOutlineSegments,
-  buildMergedExplorationPolygons
+  buildExplorationPolygonOutlineSegments,
+  buildMergedExplorationPolygons,
+  collectExplorationCellIds
 } from "../services/explorationArea";
-import { buildPathSegmentsWithInference } from "../services/pathInference";
+import { haversineDistanceMeters } from "../services/distance";
+import { buildPathSegments } from "../services/pathInference";
+import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
-import { OsmStreetSegment } from "../types/street";
-import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
+import { ActivityMode, GpsPoint, RenderedRouteSegment, WalkWithPoints } from "../types/walk";
 
 type ExplorationMapProps = {
   walks: WalkWithPoints[];
@@ -29,7 +29,6 @@ type ExplorationMapProps = {
   onMapReady?: () => void;
   onVisibleRegionChange?: (region: Region) => void;
   selectedZone: CachedZone | null;
-  streetSegments: OsmStreetSegment[];
   todayNewCellIds: string[];
   zoneFocusRequestId: number;
 };
@@ -115,7 +114,6 @@ export function ExplorationMap({
   onMapReady,
   onVisibleRegionChange,
   selectedZone,
-  streetSegments,
   todayNewCellIds,
   zoneFocusRequestId
 }: ExplorationMapProps) {
@@ -127,34 +125,57 @@ export function ExplorationMap({
   const [visibleRegion, setVisibleRegion] = useState(region);
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
-  const pathSimplificationToleranceMeters = getPathSimplificationTolerance(
-    visibleRegion.latitudeDelta
-  );
+  // Preserve every finalized street corner so rendered routes never cut through buildings.
+  const pathSimplificationToleranceMeters = 0;
   const shouldShowCompletedArea = layers.showExploredCells;
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
-  const explorationCells = useMemo(
+  const playerLocation = activePoints.at(-1) ?? currentLocation;
+  const shouldBuildSavedArea = shouldShowCompletedArea || shouldShowOutline;
+  const maxFilledHoleAreaSquareMeters =
+    LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeMode];
+  const savedExplorationCellIds = useMemo(
     () =>
-      shouldShowCompletedArea || shouldShowOutline
-        ? buildExplorationCells(walks, activePoints, activeMode, loopFillCellIds)
+      shouldBuildSavedArea
+        ? collectExplorationCellIds(walks, [], activeMode, loopFillCellIds)
         : [],
-    [activeMode, activePoints, loopFillCellIds, shouldShowCompletedArea, shouldShowOutline, walks]
+    [activeMode, loopFillCellIds, shouldBuildSavedArea, walks]
+  );
+  const activeExplorationCellIds = useMemo(
+    () =>
+      shouldShowCompletedArea && activePoints.length > 1
+        ? collectExplorationCellIds([], activePoints, activeMode)
+        : [],
+    [activeMode, activePoints, shouldShowCompletedArea]
   );
   const explorationPolygons = useMemo(
-    () => (shouldShowCompletedArea ? buildMergedExplorationPolygons(explorationCells) : []),
-    [explorationCells, shouldShowCompletedArea]
+    () =>
+      shouldShowCompletedArea
+        ? buildMergedExplorationPolygons(savedExplorationCellIds, {
+            maxFilledHoleAreaSquareMeters
+          })
+        : [],
+    [maxFilledHoleAreaSquareMeters, savedExplorationCellIds, shouldShowCompletedArea]
+  );
+  const activeExplorationPolygons = useMemo(
+    () =>
+      shouldShowCompletedArea
+        ? buildMergedExplorationPolygons(activeExplorationCellIds)
+        : [],
+    [activeExplorationCellIds, shouldShowCompletedArea]
   );
   const explorationOutlineSegments = useMemo(
-    () => (shouldShowOutline ? buildExplorationOutlineSegments(explorationCells) : []),
-    [explorationCells, shouldShowOutline]
+    () =>
+      shouldShowOutline
+        ? buildExplorationPolygonOutlineSegments(explorationPolygons)
+        : [],
+    [explorationPolygons, shouldShowOutline]
   );
   const todayNewPolygons = useMemo(
     () =>
       shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(
-            todayNewCellIds.map((cellId) => buildExplorationCell(cellId, "gps"))
-          )
+        ? buildMergedExplorationPolygons(todayNewCellIds)
         : [],
     [shouldShowCompletedArea, todayNewCellIds]
   );
@@ -265,7 +286,7 @@ export function ExplorationMap({
         rotateEnabled
         scrollEnabled
         zoomTapEnabled
-        showsUserLocation={Boolean(currentLocation)}
+        showsUserLocation={false}
         showsMyLocationButton={false}
         zoomEnabled
         followsUserLocation={false}
@@ -274,6 +295,17 @@ export function ExplorationMap({
           <Polygon
             key={polygon.id}
             coordinates={polygon.coordinates}
+            holes={polygon.holes}
+            fillColor={areaStyle.fillColor}
+            strokeColor="rgba(239, 68, 68, 0)"
+            strokeWidth={0}
+          />
+        )) : null}
+        {shouldShowCompletedArea ? activeExplorationPolygons.map((polygon) => (
+          <Polygon
+            key={"active-" + polygon.id}
+            coordinates={polygon.coordinates}
+            holes={polygon.holes}
             fillColor={areaStyle.fillColor}
             strokeColor="rgba(239, 68, 68, 0)"
             strokeWidth={0}
@@ -284,6 +316,7 @@ export function ExplorationMap({
           <Polygon
             key={`today-${polygon.id}`}
             coordinates={polygon.coordinates}
+            holes={polygon.holes}
             fillColor={areaStyle.todayFillColor}
             strokeColor="rgba(248, 113, 113, 0)"
             strokeWidth={0}
@@ -328,8 +361,8 @@ export function ExplorationMap({
                 isDimmed={isDimmed}
                 isHighlighted={isHighlighted}
                 points={walk.points}
+                segments={walk.routeSegments}
                 simplificationToleranceMeters={pathSimplificationToleranceMeters}
-                streetSegments={streetSegments}
               />
               {shouldShowMarkers && firstPoint ? (
                 <Marker
@@ -360,7 +393,6 @@ export function ExplorationMap({
               isHighlighted
               points={activePoints}
               simplificationToleranceMeters={0}
-              streetSegments={streetSegments}
             />
             {shouldShowMarkers ? <Marker
               coordinate={pointToCoordinate(activePoints[0])}
@@ -370,12 +402,265 @@ export function ExplorationMap({
           </>
         ) : null}
 
-        {shouldShowMarkers && currentLocation ? (
-          <Marker coordinate={pointToCoordinate(currentLocation)} title="Current location" />
+        {playerLocation && currentLocation ? (
+          <PlayerLocationMarker
+            activePoints={activePoints}
+            location={playerLocation}
+          />
         ) : null}
       </ApplePoiFilteredMapView>
     </View>
   );
+}
+
+const PLAYER_MOVING_SPEED_METERS_PER_SECOND = 0.45;
+const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
+const PLAYER_BEARING_MIN_DISTANCE_METERS = 3;
+
+function PlayerLocationMarker({
+  activePoints,
+  location
+}: {
+  activePoints: GpsPoint[];
+  location: GpsPoint;
+}) {
+  const movement = getRecentMovement(activePoints);
+  const liveSpeed =
+    typeof location.speedMetersPerSecond === "number"
+      ? location.speedMetersPerSecond
+      : null;
+  const isMoving =
+    activePoints.length > 0 &&
+    Math.max(liveSpeed ?? 0, movement?.speedMetersPerSecond ?? 0) >=
+      PLAYER_MOVING_SPEED_METERS_PER_SECOND;
+  const heading = getPlayerHeading(location, movement);
+  const headingAnimation = useRef(new Animated.Value(heading ?? 0)).current;
+  const motionAnimation = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (heading === null) {
+      return;
+    }
+
+    let cancelled = false;
+
+    headingAnimation.stopAnimation((currentHeading) => {
+      if (cancelled) {
+        return;
+      }
+
+      const normalizedCurrent = normalizeHeading(currentHeading);
+      const delta = shortestHeadingDelta(normalizedCurrent, heading);
+      const targetHeading = normalizedCurrent + delta;
+
+      headingAnimation.setValue(normalizedCurrent);
+      Animated.timing(headingAnimation, {
+        duration: Math.min(480, 180 + Math.abs(delta) * 2),
+        easing: Easing.out(Easing.cubic),
+        toValue: targetHeading,
+        useNativeDriver: true
+      }).start(({ finished }) => {
+        if (finished) {
+          headingAnimation.setValue(normalizeHeading(targetHeading));
+        }
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      headingAnimation.stopAnimation();
+    };
+  }, [heading, headingAnimation]);
+
+  useEffect(() => {
+    motionAnimation.stopAnimation();
+
+    if (!isMoving) {
+      Animated.timing(motionAnimation, {
+        duration: 140,
+        toValue: 0,
+        useNativeDriver: true
+      }).start();
+      return;
+    }
+
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(motionAnimation, {
+          duration: 260,
+          easing: Easing.inOut(Easing.sin),
+          toValue: 1,
+          useNativeDriver: true
+        }),
+        Animated.timing(motionAnimation, {
+          duration: 260,
+          easing: Easing.inOut(Easing.sin),
+          toValue: 0,
+          useNativeDriver: true
+        })
+      ])
+    );
+
+    loop.start();
+
+    return () => {
+      loop.stop();
+    };
+  }, [isMoving, motionAnimation]);
+
+  const rotation = headingAnimation.interpolate({
+    inputRange: [-360, 720],
+    outputRange: ["-360deg", "720deg"]
+  });
+  const npcScale = motionAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.055]
+  });
+  const npcLift = motionAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, -1.5]
+  });
+  const haloScale = motionAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.14]
+  });
+  const haloOpacity = motionAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.82, 0.42]
+  });
+
+  return (
+    <Marker
+      anchor={{ x: 0.5, y: 0.5 }}
+      coordinate={pointToCoordinate(location)}
+      flat
+      title="Current player location"
+      tracksViewChanges={activePoints.length > 0}
+      zIndex={1000}
+    >
+      <View collapsable={false} style={styles.playerMarker}>
+        <Animated.View
+          style={[
+            styles.playerHalo,
+            {
+              opacity: haloOpacity,
+              transform: [{ scale: haloScale }]
+            }
+          ]}
+        />
+        <Animated.View
+          renderToHardwareTextureAndroid
+          style={[
+            styles.playerRotationLayer,
+            {
+              transform: [{ rotate: rotation }]
+            }
+          ]}
+        >
+          <View style={styles.playerDirectionPip} />
+          <Animated.Image
+            resizeMode="contain"
+            source={require("../../assets/player-npc-topdown.png")}
+            style={[
+              styles.playerNpc,
+              {
+                transform: [{ translateY: npcLift }, { scale: npcScale }]
+              }
+            ]}
+          />
+        </Animated.View>
+      </View>
+    </Marker>
+  );
+}
+
+type RecentMovement = {
+  bearingDegrees: number;
+  speedMetersPerSecond: number;
+};
+
+function getRecentMovement(points: GpsPoint[]): RecentMovement | null {
+  const endPoint = points.at(-1);
+
+  if (!endPoint) {
+    return null;
+  }
+
+  for (let index = points.length - 2; index >= 0; index -= 1) {
+    const startPoint = points[index];
+
+    if (!startPoint) {
+      continue;
+    }
+
+    const distanceMeters = haversineDistanceMeters(startPoint, endPoint);
+
+    if (distanceMeters < PLAYER_BEARING_MIN_DISTANCE_METERS) {
+      continue;
+    }
+
+    const seconds =
+      (new Date(endPoint.timestamp).getTime() - new Date(startPoint.timestamp).getTime()) /
+      1000;
+
+    if (!Number.isFinite(seconds) || seconds <= 0) {
+      continue;
+    }
+
+    return {
+      bearingDegrees: calculateBearingDegrees(startPoint, endPoint),
+      speedMetersPerSecond: distanceMeters / seconds
+    };
+  }
+
+  return null;
+}
+
+function getPlayerHeading(
+  liveLocation: GpsPoint,
+  movement: RecentMovement | null
+) {
+  const liveHeading = liveLocation.heading;
+  const effectiveSpeed = Math.max(
+    liveLocation.speedMetersPerSecond ?? 0,
+    movement?.speedMetersPerSecond ?? 0
+  );
+  const hasReliableLiveHeading =
+    typeof liveHeading === "number" &&
+    Number.isFinite(liveHeading) &&
+    liveHeading >= 0 &&
+    effectiveSpeed >= PLAYER_HEADING_SPEED_METERS_PER_SECOND &&
+    (liveLocation.accuracy === null || liveLocation.accuracy <= 80);
+
+  if (hasReliableLiveHeading) {
+    return normalizeHeading(liveHeading);
+  }
+
+  return movement?.bearingDegrees ?? null;
+}
+
+function calculateBearingDegrees(from: GpsPoint, to: GpsPoint) {
+  const fromLatitude = toRadians(from.latitude);
+  const toLatitude = toRadians(to.latitude);
+  const longitudeDelta = toRadians(to.longitude - from.longitude);
+  const y = Math.sin(longitudeDelta) * Math.cos(toLatitude);
+  const x =
+    Math.cos(fromLatitude) * Math.sin(toLatitude) -
+    Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeDelta);
+
+  return normalizeHeading((Math.atan2(y, x) * 180) / Math.PI);
+}
+
+function shortestHeadingDelta(from: number, to: number) {
+  return ((to - from + 540) % 360) - 180;
+}
+
+function normalizeHeading(heading: number) {
+  return ((heading % 360) + 360) % 360;
+}
+
+function toRadians(value: number) {
+  return (value * Math.PI) / 180;
 }
 
 function getExploredAreaStyle(latitudeDelta: number) {
@@ -426,42 +711,28 @@ function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {
   return "close";
 }
 
-function getPathSimplificationTolerance(latitudeDelta: number) {
-  if (latitudeDelta > 0.08) {
-    return 35;
-  }
-
-  if (latitudeDelta > 0.035) {
-    return 20;
-  }
-
-  if (latitudeDelta > 0.015) {
-    return 8;
-  }
-
-  return 0;
-}
-
 function PathSegmentLines({
   activityMode,
   color,
   isDimmed,
   isHighlighted,
   points,
-  simplificationToleranceMeters,
-  streetSegments
+  segments,
+  simplificationToleranceMeters
 }: {
   activityMode: ActivityMode;
   color: string;
   isDimmed: boolean;
   isHighlighted: boolean;
   points: GpsPoint[];
+  segments?: RenderedRouteSegment[] | null;
   simplificationToleranceMeters: number;
-  streetSegments: OsmStreetSegment[];
 }) {
+  const renderedSegments = segments ?? buildPathSegments(points, activityMode);
+
   return (
     <>
-      {buildPathSegmentsWithInference(points, activityMode, streetSegments).map((segment, index) => {
+      {renderedSegments.map((segment, index) => {
         if (segment.type === "rejected") {
           return null;
         }
@@ -478,7 +749,7 @@ function PathSegmentLines({
               segment.points,
               simplificationToleranceMeters
             ).map(pointToCoordinate)}
-            key={`${segment.type}-${index}-${segment.startPoint.timestamp}`}
+            key={`${segment.type}-${index}-${segment.points[0]?.timestamp ?? "route"}`}
             lineCap="round"
             lineDashPattern={undefined}
             lineJoin="round"
@@ -553,5 +824,49 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     top: 0
+  },
+  playerDirectionPip: {
+    backgroundColor: "#9cff00",
+    borderColor: "#0f172a",
+    borderRadius: 4,
+    borderWidth: 1.5,
+    height: 7,
+    left: 29,
+    position: "absolute",
+    top: -2,
+    width: 7,
+    zIndex: 3
+  },
+  playerHalo: {
+    backgroundColor: "rgba(255, 255, 255, 0.86)",
+    borderColor: "#9cff00",
+    borderRadius: 29,
+    borderWidth: 2.5,
+    height: 58,
+    left: 3,
+    position: "absolute",
+    shadowColor: "#0f172a",
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    top: 3,
+    width: 58
+  },
+  playerMarker: {
+    alignItems: "center",
+    height: 64,
+    justifyContent: "center",
+    overflow: "visible",
+    width: 64
+  },
+  playerNpc: {
+    height: 62,
+    width: 62
+  },
+  playerRotationLayer: {
+    alignItems: "center",
+    height: 64,
+    justifyContent: "center",
+    width: 64
   }
 });

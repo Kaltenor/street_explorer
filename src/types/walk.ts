@@ -7,7 +7,15 @@ export type GpsPoint = {
   longitude: number;
   timestamp: string;
   accuracy: number | null;
+  heading?: number | null;
   pointIndex: number;
+  speedMetersPerSecond?: number | null;
+};
+
+export type RenderedRouteSegment = {
+  confidence?: "medium" | "high";
+  points: GpsPoint[];
+  type: "confirmed" | "inferred";
 };
 
 export type WalkSession = {
@@ -24,6 +32,7 @@ export type WalkSession = {
 
 export type WalkWithPoints = WalkSession & {
   points: GpsPoint[];
+  routeSegments: RenderedRouteSegment[] | null;
 };
 
 export type ActiveWalk = {

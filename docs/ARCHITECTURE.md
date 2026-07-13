@@ -130,11 +130,12 @@ GPS paths are first classified into path segments:
 - confirmed GPS segments
 - rejected gaps
 
-Only confirmed GPS geometry currently marks cells. Rejected gaps are not sampled, so a missing GPS interval does not create fake diagonal exploration through buildings.
+Confirmed GPS geometry marks direct cells. A suspicious gap marks cells only when the frozen snapshot contains a validated street-graph bridge; rejected gaps are not sampled, so a missing GPS interval cannot create fake diagonal exploration through buildings.
 
-The schema still supports `inferred` cells for future use, but normal gameplay does not currently save inferred cells. Street-aware inference can refine suspicious gaps for display-only route lines, but it is still paused for cell generation until it can be inspected and trusted.
+Validated high- and medium-confidence street-matched bridge sections are stored as `inferred` cells. They contribute to the explored map, zone completion, and loop boundaries. Unmatched or low-confidence gaps remain rejected and never receive a straight-line fallback.
 
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
+For rendering, adjacent explored cells are unioned into contour polygons instead of being emitted as overlapping rectangles. Each connected explored island becomes one native map polygon. Enclosed contours at or below the active mode's existing fill-area cap are rendered solid, which guarantees that small missing-cell channels cannot show through a qualifying discovered frontier. When a hole is filled, nested island contours inside it are discarded because the parent surface already covers them. Oversized enclosed contours remain explicit holes and receive their own black frontier, while filled holes leave no internal outline. Live recording cells use a separate small contour layer so each GPS update does not rebuild the full saved history.
 
 ## Loop Fill
 
@@ -142,7 +143,7 @@ Closed-loop fill is a gameplay-first V1 mechanic based on global explored cell e
 
 The app first samples trusted GPS path geometry into explored cells. Rejected GPS gaps never mark cells, so they cannot become part of a loop boundary.
 
-All directly explored cells for the current mode are treated as the boundary, even when they came from different recordings. For V1, the boundary is expanded by one cell during detection so tiny GPS/cell sampling gaps do not prevent obvious block loops from filling. The app flood-fills from outside the mode's explored-cell bounds; any unvisited cells that cannot be reached are considered enclosed loop-fill cells.
+All directly explored cells for the current mode are treated as the boundary, even when they came from different recordings. The renderer and persistence layer share one authoritative grid-contour extraction: each qualifying enclosed contour produces the exact same cell set for the solid red surface, loop-fill storage, and completion. Nested contour cells are claimed once. The one-cell flood tolerance supplements only contours that are not already represented by the authoritative extraction.
 
 Current thresholds are:
 
@@ -188,7 +189,7 @@ Flow:
 - count total 15m cells inside city/district-sized polygons
 - show completion percentage when the zone denominator can be scanned locally
 
-Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone.
+Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone. Completion augments persisted cells with the same per-mode, area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage always use the same numerator.
 
 District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.
 
@@ -196,22 +197,12 @@ Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate b
 
 ## Street-Aware Inference
 
-Street-aware path inference is currently display-only in normal gameplay.
+Street-aware path inference is persisted in an immutable route snapshot and is shared by route rendering, explored-cell generation, completion, and loop analysis.
 
-The prototype service can snap suspicious GPS gaps to cached OSM street graph nodes and search for a plausible route. Accepted inferred routes may render as route lines, but they do not currently:
+The service projects suspicious GPS-gap endpoints onto the nearest point of cached OSM street segments, attaches those projected points to the graph, and searches for a plausible street route. This avoids treating a player beside the middle of a 35m fragment as if they were at one of its endpoints. Only high- or medium-confidence routes are frozen and counted. A high-confidence snap may close its endpoint seam only when it is within 12m; longer, unmatched, or low-confidence gaps never receive a straight connector. Once stored, a snapshot is never changed by map movement, cache refresh, normal saves, or loop recalculation.
 
-- create explored cells
-- affect zone completion
-- affect loop-fill boundaries
+The explicit **Reprocess recordings** action is the only workflow allowed to replace existing historical snapshots. It is deliberately cache-only: nearby OSM data is refreshed by the normal map workflow, while historical reprocessing combines the stable cached corridor with the currently loaded graph and performs no per-recording network request. One graph is built per recording and reused for every suspicious GPS interval. Individual recording failures retain their previous frozen route while the remaining recordings continue. The complete candidate includes confirmed cells, validated inferred cells, and authoritative contour fills. If its unique-cell total is lower than existing progress, both snapshots and the explored ledger remain untouched and the result reports a safety stop. Otherwise all explored cells and loop metadata are replaced in one atomic transaction. The phased progress modal is displayed over the map after full-screen panels close, and any uncaught failure produces a visible error.
 
-This prevents OSM routing mistakes from changing the player's explored map.
+Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V2 includes route snapshots, so exported and restored routes keep the same frozen geometry.
 
-Future intended flow:
-
-- snap gap endpoints to nearest valid OSM graph nodes
-- run shortest path through connected local street-segment endpoints
-- reject routes with excessive detour or impossible speed
-- eventually store inferred geometry separately from direct GPS
-- only count inferred cells after confidence and review tooling are good enough
-
-There is still no straight-line fallback for inferred exploration.
+There is still no straight-line fallback for inferred exploration. Low-confidence, implausible, or unmatched gaps remain hidden and contribute no explored cells.

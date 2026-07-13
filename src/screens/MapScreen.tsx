@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  type DimensionValue,
   TouchableOpacity,
   View
 } from "react-native";
@@ -56,14 +57,13 @@ import {
 import {
   CachedZone,
   deleteExploredCellsForSession,
-  deleteLoopFillDataForMode,
   getCachedZones,
   getExploredCellRecords,
   getLoopFillCellKeys,
   getLoopFillSessionSummaries,
   LoopFillSessionSummary,
+  replaceExplorationForMode,
   saveExploredCells,
-  saveLoopFill,
   upsertZones
 } from "../database/completionRepository";
 import {
@@ -76,12 +76,13 @@ import {
   calculateExploredAreaSquareMeters,
   calculateExploredCellCount,
   calculateNewCellsForActivePath,
-  collectExploredCellIdsBySource,
+  collectExploredCellIdsByRouteSegments,
   collectExploredCellIdsForPath
 } from "../services/explorationArea";
 import { analyzeLoopFillsForCells } from "../services/loopFill";
 import {
-  getStreetSegmentsNear
+  getStreetSegmentsNear,
+  upsertStreetSegments
 } from "../database/streetRepository";
 import { calculateStreetCompletion } from "../services/streetCompletion";
 import {
@@ -91,6 +92,13 @@ import {
   ZoneCompletionStats
 } from "../services/zoneCompletion";
 import { buildPathSegments } from "../services/pathInference";
+import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
+import {
+  createConfirmedRouteSnapshotIfMissing,
+  createRouteSnapshotIfMissing,
+  rebuildRouteSnapshot,
+  replaceRouteSnapshot
+} from "../services/routeSnapshot";
 import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
 import {
   getCurrentGpsPoint,
@@ -123,6 +131,7 @@ import {
   ActivityMode,
   GpsPoint,
   LifetimeStats,
+  RenderedRouteSegment,
   WalkSession,
   WalkWithPoints
 } from "../types/walk";
@@ -145,6 +154,9 @@ const EMPTY_STATS: LifetimeStats = {
 };
 
 const OSM_STREET_RADIUS_METERS = 1600;
+const OSM_STREET_FETCH_RADIUS_METERS = 800;
+const OSM_STREET_LOCAL_COVERAGE_RADIUS_METERS = 200;
+const OSM_STREET_CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const AUTO_OBJECTIVE_CHECK_DISTANCE_METERS = 25;
 const AUTO_OBJECTIVE_FETCH_DISTANCE_METERS = 500;
 const AUTO_OBJECTIVE_FETCH_INTERVAL_MS = 10 * 60 * 1000;
@@ -179,6 +191,20 @@ type LoopProcessingResult =
       status: "not_checked";
     };
 
+type ReprocessProgress = {
+  completed: number;
+  phase: "preparing" | "routes" | "contours" | "saving" | "refreshing";
+  total: number;
+};
+type ReprocessSummary = LoopProcessingResult & {
+  boundaryCellCount: number;
+  failedRecordingCount: number;
+  inferredCellCount: number;
+  preservedPreviousProgress: boolean;
+  previousCellCount: number;
+  recordingCount: number;
+  rebuiltCellCount: number;
+};
 type RecordingSummary = {
   backgroundStatus: BackgroundTrackingStatus;
   distanceMeters: number;
@@ -218,6 +244,7 @@ export function MapScreen({
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
+  const [reprocessProgress, setReprocessProgress] = useState<ReprocessProgress | null>(null);
   const [stopConfirmationVisible, setStopConfirmationVisible] = useState(false);
   const [recordingSummary, setRecordingSummary] = useState<RecordingSummary | null>(null);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
@@ -251,6 +278,7 @@ export function MapScreen({
   const lastAutoObjectiveZoneIdRef = useRef<string | null>(null);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const streetCacheCenterRef = useRef<GpsPoint | null>(null);
+  const streetLoadRequestRef = useRef(0);
   const streetCompletion = useMemo(
     () =>
       calculateStreetCompletion(
@@ -280,6 +308,11 @@ export function MapScreen({
     isSavedDataReady &&
     permissionState !== "unknown" &&
     (permissionState !== "granted" || Boolean(currentLocation));
+  useEffect(() => {
+    if (isLaunchReady) {
+      setIsLaunchDismissed(true);
+    }
+  }, [isLaunchReady]);
   const todayObjectiveCellCount = useMemo(() => {
     if (!objective) {
       return 0;
@@ -336,6 +369,18 @@ export function MapScreen({
       getLoopFillCellKeys(activityMode),
       getLoopFillSessionSummaries(activityMode)
     ]);
+    for (const walk of savedWalks) {
+      if (walk.routeSegments !== null) {
+        continue;
+      }
+
+      walk.routeSegments = await createConfirmedRouteSnapshotIfMissing(
+        walk.id,
+        walk.activityMode,
+        walk.points
+      );
+    }
+
     const latestWalk = savedHistory[0] ?? null;
     const longestWalk = savedHistory.reduce<WalkSession | null>((longest, walk) => {
       if (!longest || walk.distanceMeters > longest.distanceMeters) {
@@ -566,20 +611,80 @@ export function MapScreen({
     }
 
     streetCacheCenterRef.current = currentLocation;
+    const requestId = streetLoadRequestRef.current + 1;
+    streetLoadRequestRef.current = requestId;
 
-    getStreetSegmentsNear(
-      currentLocation.latitude,
-      currentLocation.longitude,
-      OSM_STREET_RADIUS_METERS
-    )
-      .then((cachedSegments) => {
-        setStreetSegments(cachedSegments);
-        setStreetStatus(cachedSegments.length > 0 ? "ready" : "empty");
-      })
-      .catch((error) => {
-        console.warn("Failed to load cached OSM streets", error);
-        setStreetStatus("error");
-      });
+    const loadStreetCoverage = async () => {
+      const [cachedSegments, localSegments] = await Promise.all([
+        getStreetSegmentsNear(
+          currentLocation.latitude,
+          currentLocation.longitude,
+          OSM_STREET_RADIUS_METERS
+        ),
+        getStreetSegmentsNear(
+          currentLocation.latitude,
+          currentLocation.longitude,
+          OSM_STREET_LOCAL_COVERAGE_RADIUS_METERS
+        )
+      ]);
+
+      if (requestId !== streetLoadRequestRef.current) {
+        return;
+      }
+
+      setStreetSegments(cachedSegments);
+      setStreetStatus(cachedSegments.length > 0 ? "ready" : "loading");
+
+      const freshAfter = Date.now() - OSM_STREET_CACHE_MAX_AGE_MS;
+      const hasFreshLocalCoverage = localSegments.some(
+        (segment) => new Date(segment.fetchedAt).getTime() >= freshAfter
+      );
+
+      if (hasFreshLocalCoverage) {
+        return;
+      }
+
+      try {
+        const fetchedSegments = await fetchNearbyOsmStreetSegments(
+          currentLocation,
+          OSM_STREET_FETCH_RADIUS_METERS
+        );
+        await upsertStreetSegments(fetchedSegments);
+
+        if (requestId !== streetLoadRequestRef.current) {
+          return;
+        }
+
+        const refreshedSegments = await getStreetSegmentsNear(
+          currentLocation.latitude,
+          currentLocation.longitude,
+          OSM_STREET_RADIUS_METERS
+        );
+
+        if (requestId !== streetLoadRequestRef.current) {
+          return;
+        }
+
+        setStreetSegments(refreshedSegments);
+        setStreetStatus(refreshedSegments.length > 0 ? "ready" : "empty");
+      } catch (error) {
+        if (requestId !== streetLoadRequestRef.current) {
+          return;
+        }
+
+        console.warn("Failed to refresh nearby OSM streets", error);
+        setStreetStatus(cachedSegments.length > 0 ? "ready" : "error");
+      }
+    };
+
+    loadStreetCoverage().catch((error) => {
+      if (requestId !== streetLoadRequestRef.current) {
+        return;
+      }
+
+      console.warn("Failed to load cached OSM streets", error);
+      setStreetStatus("error");
+    });
   }, [currentLocation]);
 
   useEffect(() => {
@@ -846,43 +951,97 @@ export function MapScreen({
   ]);
 
   const reprocessModeExploration = useCallback(
-    async (mode: ActivityMode): Promise<LoopProcessingResult & { recordingCount: number }> => {
+    async (
+      mode: ActivityMode,
+      options: {
+        rebuildRouteSnapshots?: boolean;
+        onProgress?: (progress: ReprocessProgress) => void;
+      } = {}
+    ): Promise<ReprocessSummary> => {
       const savedWalks = await getAllWalksWithPoints(mode);
+      options.onProgress?.({
+        completed: 0,
+        phase: "preparing",
+        total: savedWalks.length
+      });
+      const previousRecords = await getExploredCellRecords(mode);
+      const previousCellCount = new Set(previousRecords.map((record) => record.cellKey)).size;
       const boundaryCellIds = new Set<string>();
+      const inferredCellIds = new Set<string>();
+      let failedRecordingCount = 0;
+      const rebuiltWalkCells: Array<{
+        gps: string[];
+        inferred: string[];
+        replaceSnapshot: boolean;
+        routeSegments: RenderedRouteSegment[];
+        walk: WalkWithPoints;
+      }> = [];
 
-      for (const walk of savedWalks) {
-        await deleteExploredCellsForSession(walk.id);
+      // Build the complete candidate in memory first. Reprocessing must never erase
+      // already-earned exploration merely because a network/cache rebuild is weaker.
+      for (const [walkIndex, walk] of savedWalks.entries()) {
+        options.onProgress?.({
+          completed: walkIndex,
+          phase: "routes",
+          total: savedWalks.length
+        });
 
-        const cellIdsBySource = collectExploredCellIdsBySource(
-          walk.points,
-          walk.activityMode,
-          streetSegments
-        );
+        let replaceSnapshot = false;
+        let routeSegments: RenderedRouteSegment[];
 
-        for (const cellKey of [...cellIdsBySource.gps, ...cellIdsBySource.inferred]) {
+        try {
+          routeSegments = options.rebuildRouteSnapshots
+            ? await rebuildRouteSnapshot(
+                walk.id,
+                walk.activityMode,
+                walk.points,
+                streetSegments,
+                {
+                  persist: false,
+                  refreshStreetCoverage: false
+                }
+              )
+            : walk.routeSegments ?? await createRouteSnapshotIfMissing(
+                walk.id,
+                walk.activityMode,
+                walk.points
+              );
+          replaceSnapshot = Boolean(options.rebuildRouteSnapshots);
+        } catch (error) {
+          failedRecordingCount += 1;
+          console.warn("Unable to rebuild recording; preserving its frozen route", walk.id, error);
+          routeSegments = walk.routeSegments ?? [];
+        }
+        const cellIdsBySource = collectExploredCellIdsByRouteSegments(routeSegments);
+
+        for (const cellKey of cellIdsBySource.gps) {
           boundaryCellIds.add(cellKey);
         }
 
-        await saveExploredCells(
-          cellIdsBySource.gps.map((cellKey) => ({
-            cellKey,
-            mode: walk.activityMode,
-            sessionId: walk.id,
-            source: "gps"
-          }))
-        );
-        await saveExploredCells(
-          cellIdsBySource.inferred.map((cellKey) => ({
-            cellKey,
-            mode: walk.activityMode,
-            sessionId: walk.id,
-            source: "inferred"
-          }))
-        );
+        for (const cellKey of cellIdsBySource.inferred) {
+          boundaryCellIds.add(cellKey);
+          inferredCellIds.add(cellKey);
+        }
+
+        rebuiltWalkCells.push({
+          gps: cellIdsBySource.gps,
+          inferred: cellIdsBySource.inferred,
+          replaceSnapshot,
+          routeSegments,
+          walk
+        });
+        options.onProgress?.({
+          completed: walkIndex + 1,
+          phase: "routes",
+          total: savedWalks.length
+        });
       }
 
-      await deleteLoopFillDataForMode(mode);
-
+      options.onProgress?.({
+        completed: savedWalks.length,
+        phase: "contours",
+        total: savedWalks.length
+      });
       const loopFills = analyzeLoopFillsForCells({
         activityMode: mode,
         boundaryCellIds: [...boundaryCellIds],
@@ -892,9 +1051,51 @@ export function MapScreen({
       const acceptedLoopFills = loopFills.filter((loopFill) => loopFill.accepted);
       const rejectedLoopFills = loopFills.filter((loopFill) => !loopFill.accepted);
       const filledCellKeys = new Set(acceptedLoopFills.flatMap((loopFill) => loopFill.cellIds));
+      const rebuiltCellKeys = new Set([...boundaryCellIds, ...filledCellKeys]);
+      const preservedPreviousProgress = rebuiltCellKeys.size < previousCellCount;
 
-      for (const loopFill of loopFills) {
-        await saveLoopFill({
+      if (!preservedPreviousProgress) {
+        options.onProgress?.({
+          completed: savedWalks.length,
+          phase: "saving",
+          total: savedWalks.length
+        });
+
+        for (const rebuilt of rebuiltWalkCells) {
+          if (rebuilt.replaceSnapshot) {
+            await replaceRouteSnapshot(
+              rebuilt.walk.id,
+              rebuilt.walk.points,
+              rebuilt.routeSegments
+            );
+          }
+        }
+
+        const replacementCells = [
+          ...rebuiltWalkCells.flatMap((rebuilt) =>
+            rebuilt.gps.map((cellKey) => ({
+              cellKey,
+              mode: rebuilt.walk.activityMode,
+              sessionId: rebuilt.walk.id,
+              source: "gps" as const
+            }))
+          ),
+          ...rebuiltWalkCells.flatMap((rebuilt) =>
+            rebuilt.inferred.map((cellKey) => ({
+              cellKey,
+              mode: rebuilt.walk.activityMode,
+              sessionId: rebuilt.walk.id,
+              source: "inferred" as const
+            }))
+          ),
+          ...[...filledCellKeys].map((cellKey) => ({
+            cellKey,
+            mode,
+            sessionId: null,
+            source: "loop_fill" as const
+          }))
+        ];
+        const replacementLoopFills = loopFills.map((loopFill) => ({
           accepted: loopFill.accepted,
           areaM2: loopFill.areaM2,
           mode,
@@ -903,25 +1104,26 @@ export function MapScreen({
           sessionId: null,
           totalWalkableStreetLengthM: loopFill.totalWalkableStreetLengthM,
           unwalkedWalkableStreetLengthM: loopFill.unwalkedWalkableStreetLengthM
-        });
+        }));
+
+        await replaceExplorationForMode(mode, replacementCells, replacementLoopFills);
       }
 
-      if (filledCellKeys.size > 0) {
-        await saveExploredCells(
-          [...filledCellKeys].map((cellKey) => ({
-            cellKey,
-            mode,
-            sessionId: null,
-            source: "loop_fill"
-          }))
-        );
-      }
+      const diagnostics = {
+        boundaryCellCount: boundaryCellIds.size,
+        failedRecordingCount,
+        inferredCellCount: inferredCellIds.size,
+        preservedPreviousProgress,
+        previousCellCount,
+        rebuiltCellCount: rebuiltCellKeys.size,
+        recordingCount: savedWalks.length
+      };
 
       if (acceptedLoopFills.length > 0) {
         return {
+          ...diagnostics,
           filledCellCount: filledCellKeys.size,
           filledLoopCount: acceptedLoopFills.length,
-          recordingCount: savedWalks.length,
           rejectedLoopCount: rejectedLoopFills.length,
           rejectionReason: null,
           status: "filled"
@@ -930,9 +1132,9 @@ export function MapScreen({
 
       if (rejectedLoopFills.length > 0) {
         return {
+          ...diagnostics,
           filledCellCount: 0,
           filledLoopCount: 0,
-          recordingCount: savedWalks.length,
           rejectedLoopCount: rejectedLoopFills.length,
           rejectionReason: rejectedLoopFills[0]?.rejectionReason ?? "not_closed_enough",
           status: "rejected"
@@ -940,13 +1142,12 @@ export function MapScreen({
       }
 
       return {
-        recordingCount: savedWalks.length,
+        ...diagnostics,
         status: "not_checked"
       };
     },
     [streetCompletion.exploredStreetIds, streetSegments]
   );
-
   const handleStopWalk = useCallback(async () => {
     setStopConfirmationVisible(false);
     stopLocationWatch();
@@ -970,6 +1171,22 @@ export function MapScreen({
       stopStepWatch();
       await clearActiveRecordingSettings();
       const savedSessionId = await finishPersistedActiveWalk(activeWalk, endedAt, finalStepCount);
+      let finalizedPoints: GpsPoint[] = [];
+
+      if (savedSessionId) {
+        finalizedPoints = await getGpsPointsForSession(savedSessionId);
+
+        try {
+          await createRouteSnapshotIfMissing(
+            savedSessionId,
+            activeWalk.activityMode,
+            finalizedPoints
+          );
+        } catch (error) {
+          console.warn("Failed to freeze finalized route geometry", error);
+        }
+      }
+
       setActiveWalk(null);
       setElapsedSeconds(0);
       setBackgroundTrackingStatus("idle");
@@ -981,9 +1198,10 @@ export function MapScreen({
         return;
       }
 
+      const finalizedDistanceMeters = calculatePathDistanceMeters(finalizedPoints);
       const newCellCount = calculateNewCellsForActivePath(
         walks,
-        activeWalk.points,
+        finalizedPoints,
         activeWalk.activityMode
       );
       const objectiveBefore = objectiveStats;
@@ -996,7 +1214,7 @@ export function MapScreen({
       setIsComputingRecording(false);
       setRecordingSummary({
         backgroundStatus: finalBackgroundStatus,
-        distanceMeters: activeWalk.distanceMeters,
+        distanceMeters: finalizedDistanceMeters,
         durationSeconds: Math.max(
           0,
           Math.round((new Date(endedAt).getTime() - new Date(activeWalk.startedAt).getTime()) / 1000)
@@ -1042,38 +1260,79 @@ export function MapScreen({
       return;
     }
 
-    Alert.alert(
-      "Reprocess saved recordings?",
-      `This rebuilds explored cells and loop fills for saved ${modeText.labels[
-        activityMode
-      ].toLowerCase()} recordings using the current rules.`,
-      [
-        {
-          text: strings.common.cancel,
-          style: "cancel"
-        },
-        {
-          text: "Reprocess",
-          onPress: async () => {
-            const summary = await reprocessModeExploration(activityMode);
+    setOptionsVisible(false);
+    setHistoryVisible(false);
+    setCompletionVisible(false);
+    setDiagnosticsVisible(false);
+    setDashboardExpanded(false);
 
-            await refreshSavedData({ rebuildExploredCells: false });
-            Alert.alert(
-              "Reprocess complete",
-              `${summary.recordingCount} recordings checked.\nFilled loops: ${
-                summary.status === "filled" ? summary.filledLoopCount : 0
-              }\nRejected loops: ${
-                summary.status === "not_checked" ? 0 : summary.rejectedLoopCount
-              }\nLoop cells added: ${
-                summary.status === "filled" ? summary.filledCellCount : 0
-              }`
-            );
+    setTimeout(() => {
+      Alert.alert(
+        "Reprocess saved recordings?",
+        `This rebuilds frozen street-matched routes, explored cells, and loop fills for saved ${modeText.labels[
+          activityMode
+        ].toLowerCase()} recordings. Validated bridge cells will count toward exploration.`,
+        [
+          {
+            text: strings.common.cancel,
+            style: "cancel"
+          },
+          {
+            text: "Reprocess",
+            onPress: async () => {
+              setReprocessProgress({ completed: 0, phase: "preparing", total: 0 });
+
+              try {
+                const summary = await reprocessModeExploration(activityMode, {
+                  onProgress: setReprocessProgress,
+                  rebuildRouteSnapshots: true
+                });
+
+                setReprocessProgress({
+                  completed: summary.recordingCount,
+                  phase: "refreshing",
+                  total: summary.recordingCount
+                });
+                await refreshSavedData({ rebuildExploredCells: false });
+                setReprocessProgress(null);
+                Alert.alert(
+                  "Reprocess complete",
+                  `${summary.recordingCount} recordings checked.\nFilled loops: ${
+                    summary.status === "filled" ? summary.filledLoopCount : 0
+                  }\nRejected loops: ${
+                    summary.status === "not_checked" ? 0 : summary.rejectedLoopCount
+                  }\nLoop cells added: ${
+                    summary.status === "filled" ? summary.filledCellCount : 0
+                  }\nDirect + validated boundary cells: ${
+                    summary.boundaryCellCount
+                  }\nValidated inferred cells: ${
+                    summary.inferredCellCount
+                  }\nRecordings preserved after an individual failure: ${
+                    summary.failedRecordingCount
+                  }\nPrevious / rebuilt total: ${summary.previousCellCount} / ${
+                    summary.rebuiltCellCount
+                  }${
+                    summary.preservedPreviousProgress
+                      ? "\nSafety stop: the weaker rebuild was not allowed to replace existing progress."
+                      : ""
+                  }`
+                );
+              } catch (error) {
+                console.error("Reprocess recordings failed", error);
+                setReprocessProgress(null);
+                Alert.alert(
+                  "Reprocess failed",
+                  error instanceof Error
+                    ? error.message
+                    : "An unexpected error stopped the rebuild. Existing progress was preserved."
+                );
+              }
+            }
           }
-        }
-      ]
-    );
+        ]
+      );
+    }, 50);
   }, [activeWalk, activityMode, modeText, refreshSavedData, reprocessModeExploration, strings]);
-
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (!recoverableRecording) {
       return;
@@ -1135,6 +1394,18 @@ export function MapScreen({
     );
 
     if (savedSessionId) {
+      const finalizedPoints = await getGpsPointsForSession(savedSessionId);
+
+      try {
+        await createRouteSnapshotIfMissing(
+          savedSessionId,
+          recoveredWalk.activityMode,
+          finalizedPoints
+        );
+      } catch (error) {
+        console.warn("Failed to freeze recovered route geometry", error);
+      }
+
       await reprocessModeExploration(recoveredWalk.activityMode);
     }
 
@@ -1306,7 +1577,6 @@ export function MapScreen({
         onMapReady={() => setIsMapReady(true)}
         onVisibleRegionChange={handleVisibleRegionChange}
         selectedZone={selectedZone}
-        streetSegments={streetSegments}
         todayNewCellIds={todayNewCellIds}
         zoneFocusRequestId={zoneFocusRequestId}
       />
@@ -1552,13 +1822,13 @@ export function MapScreen({
         summary={recordingSummary}
       />
       <ComputingRecordingModal language={language} visible={isComputingRecording} />
+      <ReprocessingModal language={language} progress={reprocessProgress} />
       {!isLaunchDismissed ? (
         <LaunchLoadingOverlay
           activityMode={activityMode}
           isReady={isLaunchReady}
           language={language}
           onChangeMode={handleChangeMode}
-          onStart={() => setIsLaunchDismissed(true)}
         />
       ) : null}
     </View>
@@ -1684,6 +1954,80 @@ function LayerIconButton({
     >
       <Ionicons name={icon} size={14} color={active ? "#02060a" : "#f8fafc"} />
     </TouchableOpacity>
+  );
+}
+
+function ReprocessingModal({
+  language,
+  progress
+}: {
+  language: AppLanguage;
+  progress: ReprocessProgress | null;
+}) {
+  if (!progress) {
+    return null;
+  }
+
+  const isFrench = language === "fr";
+  const phaseLabels: Record<ReprocessProgress["phase"], string> = isFrench
+    ? {
+        contours: "Calcul des zones fermées",
+        preparing: "Préparation des enregistrements",
+        refreshing: "Actualisation de la carte",
+        routes: "Reconstruction des trajets",
+        saving: "Enregistrement sécurisé"
+      }
+    : {
+        contours: "Calculating enclosed areas",
+        preparing: "Preparing recordings",
+        refreshing: "Refreshing the map",
+        routes: "Rebuilding routes",
+        saving: "Saving verified progress"
+      };
+  const routeProgress = progress.total > 0
+    ? Math.max(0, Math.min(1, progress.completed / progress.total))
+    : 0;
+  const displayedProgress = progress.phase === "preparing"
+    ? 0.03
+    : progress.phase === "routes"
+      ? 0.05 + routeProgress * 0.75
+      : progress.phase === "contours"
+        ? 0.84
+        : progress.phase === "saving"
+          ? 0.93
+          : 0.98;
+  const progressWidth = (Math.round(displayedProgress * 100) + "%") as DimensionValue;
+
+  return (
+    <Modal animationType="fade" transparent visible>
+      <View style={styles.computingOverlay}>
+        <View style={styles.computingDialog}>
+          <ActivityIndicator color="#9cff00" size="large" />
+          <Text style={styles.computingTitle}>
+            {isFrench ? "Recalcul en cours" : "Reprocessing"}
+          </Text>
+          <Text style={styles.computingText}>{phaseLabels[progress.phase]}</Text>
+          {progress.total > 0 ? (
+            <Text style={styles.reprocessCounter}>
+              {progress.completed} / {progress.total}
+            </Text>
+          ) : null}
+          <View style={styles.reprocessProgressTrack}>
+            <View
+              style={[
+                styles.reprocessProgressFill,
+                { width: progressWidth }
+              ]}
+            />
+          </View>
+          <Text style={styles.computingText}>
+            {isFrench
+              ? "Ne fermez pas l'application. Votre progression existante reste protégée."
+              : "Keep the app open. Existing progress remains protected."}
+          </Text>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
@@ -1969,7 +2313,7 @@ function formatObjectiveDelta(
   language: AppLanguage
 ) {
   if (delta.cells === 0 && (delta.percent === null || delta.percent === 0)) {
-    return language === "fr" ? "inchangÃ©" : "unchanged";
+    return language === "fr" ? "inchange" : "unchanged";
   }
 
   const percentText = delta.percent !== null && delta.percent !== 0
@@ -2664,7 +3008,7 @@ function showRecordingResultAlert({
     [
       `Distance: ${formatDistance(activeWalk.distanceMeters)} from accepted GPS path.`,
       `GPS: ${activeWalk.acceptedGpsPointCount} accepted, ${activeWalk.rejectedGpsPointCount} rejected (${acceptRate}% accepted).`,
-      `Gaps: ${rejectedGapCount} hidden/rejected. Street inference is paused for gameplay safety.`,
+      `Gaps: ${rejectedGapCount} required validation; street-matched bridges count, unmatched gaps stay hidden.`,
       `Steps: ${finalStepCount.toLocaleString()}.`,
       `Background: ${formatBackgroundStatus(backgroundStatus)}.`,
       `Quality: ${quality.reason}`,
@@ -2855,7 +3199,23 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     textAlign: "center"
   },
-  computingTitle: {
+  reprocessCounter: {
+    color: "#9cff00",
+    fontSize: 14,
+    fontWeight: "900"
+  },
+  reprocessProgressFill: {
+    backgroundColor: "#9cff00",
+    borderRadius: 999,
+    height: "100%"
+  },
+  reprocessProgressTrack: {
+    backgroundColor: "rgba(248, 250, 252, 0.14)",
+    borderRadius: 999,
+    height: 8,
+    overflow: "hidden",
+    width: "100%"
+  },  computingTitle: {
     color: "#f8fafc",
     fontSize: 18,
     fontWeight: "900"

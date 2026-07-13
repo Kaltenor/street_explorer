@@ -21,6 +21,10 @@ Each mode has separate recordings, paths, stats, and history.
 - Active recording path displayed live.
 - 15m x 15m deduplicated explored cells.
 - Gameplay-first closed-loop area fill based on enclosed explored cells.
+- Shared authoritative red-surface and completion contours, with non-decreasing reprocess safety.
+- Visible phased progress and explicit failure reporting for historical reprocessing.
+- Cache-only, atomic historical reprocessing with per-recording fault isolation.
+- Automatic transition from the launch loader to the map.
 - Mode-specific GPS quality filters.
 - Route history with rename, delete, and highlight.
 - Last selected mode persistence.
@@ -43,4 +47,4 @@ Each mode has separate recordings, paths, stats, and history.
 - Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
 - OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.
-- Street-aware path inference is display-only for suspicious route gaps and is still paused for explored-cell generation until it can be made reliable and debuggable.
+- Only high- and medium-confidence segment-projected street bridges contribute inferred explored cells; unmatched or unsafe endpoint gaps remain hidden and uncounted, with no unvalidated straight-line fallback.

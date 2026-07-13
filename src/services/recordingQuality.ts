@@ -1,4 +1,5 @@
 import { BackgroundTrackingStatus } from "../components/RecordingHealthPanel";
+import { MODE_LOCATION_CONFIG } from "../constants/config";
 import { ActiveWalk, GpsPoint } from "../types/walk";
 
 export type RecordingQuality = {
@@ -34,16 +35,27 @@ export function calculateRecordingQuality({
     elapsedSeconds > 0 ? activeWalk.acceptedGpsPointCount / (elapsedSeconds / 60) : 0;
 
   if (typeof currentLocation?.accuracy === "number") {
-    if (currentLocation.accuracy > 60) {
+    const maximumAccuracy =
+      MODE_LOCATION_CONFIG[activeWalk.activityMode].maxAcceptedAccuracyMeters;
+
+    if (currentLocation.accuracy > maximumAccuracy) {
       score -= 35;
       reasons.push("weak GPS accuracy");
-    } else if (currentLocation.accuracy > 30) {
+    } else if (currentLocation.accuracy > maximumAccuracy * 0.6) {
       score -= 15;
       reasons.push("GPS accuracy is only fair");
     }
   } else {
     score -= 10;
     reasons.push("GPS accuracy unknown");
+  }
+
+  if (activeWalk.gpsPausedEventCount >= 5) {
+    score -= 20;
+    reasons.push("GPS recording paused repeatedly");
+  } else if (activeWalk.gpsPausedEventCount > 0) {
+    score -= 8;
+    reasons.push("GPS recording paused briefly");
   }
 
   if (rejectedRatio > 0.4) {

@@ -116,8 +116,16 @@ export async function isBackgroundLocationTaskAvailable() {
 function locationToGpsPoint(location: Location.LocationObject): Omit<GpsPoint, "pointIndex"> {
   return {
     accuracy: location.coords.accuracy,
+    heading:
+      typeof location.coords.heading === "number" && location.coords.heading >= 0
+        ? location.coords.heading % 360
+        : null,
     latitude: location.coords.latitude,
     longitude: location.coords.longitude,
+    speedMetersPerSecond:
+      typeof location.coords.speed === "number" && location.coords.speed >= 0
+        ? location.coords.speed
+        : null,
     timestamp: new Date(location.timestamp).toISOString()
   };
 }

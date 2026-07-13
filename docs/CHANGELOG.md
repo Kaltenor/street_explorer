@@ -1,5 +1,120 @@
 # Changelog
 
+## v0.3.60
+
+Fixed:
+
+- Zone completion now includes the exact qualifying enclosed contour cells that the map renders as solid red, eliminating the remaining display-versus-percentage mismatch without requiring those cells to be rediscovered.
+- Reprocess is cache-only and performs no per-recording network downloads.
+- A street graph is built once per recording and reused across all suspicious gaps instead of being reconstructed for every GPS interval.
+- Rebuilt GPS, inferred, and loop-fill cells are written in one atomic database transaction instead of separate transactions per recording and source.
+- An individual recording failure preserves that recording's frozen route and allows the remaining recordings to continue.
+- Details, History, Completion, and Diagnostics close before the confirmation and progress UI appears directly over the map.
+- The launch overlay now dismisses automatically as soon as the map, saved data, permissions, and initial location are ready; no press-to-start step remains.
+## v0.3.59
+
+Fixed:
+
+- Reprocess now shows a blocking progress modal with the active phase, completed/total recording count, and a progress bar from preparation through refresh.
+- Reprocess errors are caught and shown explicitly instead of silently leaving completion unchanged.
+- Historical OSM refresh requests time out after 35 seconds. After the first network failure, further historical refresh attempts pause for five minutes and the rebuild continues from cache instead of repeating long stalls.
+- The existing non-destructive safety check continues to protect both route snapshots and exploration progress while feedback is visible.
+## v0.3.58
+
+Fixed:
+
+- Loop persistence now consumes the same enclosed grid contours used by the red renderer, so every qualifying visually filled contour contributes the identical cells to completion.
+- Nested contour cells are deduplicated, keeping solid areas and their completion counts synchronized.
+- GPS endpoints are projected onto the actual OSM street segment instead of only its 35m fragment endpoints, eliminating false 15-20m snap gaps. High-confidence matches then close only short safe endpoint seams up to 12m; unmatched and longer snaps receive no straight fallback.
+- Reprocess now builds and evaluates the complete candidate before replacing route snapshots or deleting explored cells. A weaker candidate is rejected instead of reducing earned progress or freezing a gappier route.
+- The Reprocess result reports previous and rebuilt totals, direct/validated boundary cells, inferred cells, and whether the safety stop preserved existing progress.
+## v0.3.57
+
+Fixed:
+
+- Reprocessing now persists each genuinely enclosed cell area separately before applying the one-cell GPS seam tolerance, so completion percentage matches the solid discovered surface instead of dropping valid loop-fill cells.
+- Overlapping OSM fetches now give every physical way fragment a stable geometry-derived part index; nearby refreshes can no longer overwrite a different part of the same street and break the routing graph.
+- The one-time street-cache migration removes fragments stored with the old unstable identities.
+- Explicit historical reprocessing refreshes missing street coverage along saved routes before rebuilding frozen high/medium-confidence bridges, while still falling back safely to available cache when offline.
+- Added regressions for independent neighboring loop fills and stable street-fragment identities across overlapping fetch windows.
+
+## v0.3.56
+
+Fixed:
+
+- Previously explored corridors can now use frozen high- and medium-confidence street-matched bridges instead of remaining split by rejected GPS intervals.
+- Validated bridge cells are persisted as inferred exploration, included in completion percentage and cumulative loop boundaries, and rendered from the same immutable geometry.
+- Gaps without a reliable street route remain hidden and contribute no cells; there is still no straight-line fallback through buildings.
+
+Changed:
+
+- The explicit Reprocess recordings action now rebuilds historical route snapshots with cached/current street data, replaces the old snapshot once, recalculates explored cells and loops, and freezes the result again.
+- Normal recording finalization, map movement, OSM cache changes, and routine recalculation never replace an existing snapshot.
+
+## v0.3.55
+
+Fixed:
+
+- Filling a qualifying hole now removes redundant nested explored-island contours, eliminating the tiny reddish regions and stray black boxes visible inside solid discovered zones.
+- Retained unfilled holes now receive complete black frontier outlines instead of only the outer explored contour being outlined.
+- Walked open corridors are regression-tested as solid bands without internal holes.
+
+## v0.3.54
+
+Fixed:
+
+- Small enclosed gaps inside a discovered frontier no longer remain as white polygon holes after loop rendering.
+- The display now applies the active mode's existing maximum fill area to each enclosed contour, keeping oversized surfaces unfilled while making qualifying discovered zones visually solid.
+
+## v0.3.53
+
+Fixed:
+
+- Validated cumulative loops now render as completely solid surfaces without MapKit seams between adjacent cells.
+- Loop detection no longer mistakes the outside expansion halo for a valid small fill, so the existing per-mode area caps cannot be bypassed.
+- Every in-app version label now reads from the canonical package version instead of a stale hardcoded constant.
+
+Changed:
+
+- Explored cells now collapse into contour polygons with explicit real holes, drastically reducing native map overlays and eliminating internal rendering cracks.
+- Live recording cells render separately from saved exploration so adding a GPS point no longer rebuilds the entire historical surface.
+- Explored-cell database writes now use batched exclusive transactions.
+
+## v0.3.52
+
+Fixed:
+
+- Explored-area outlines now ignore enclosed interior gaps again, removing the dense black hole contours while preserving the outside edge of every explored island.
+
+## v0.3.51
+
+Added:
+
+- Repository-wide agent instructions now enforce version synchronization, exactly three clarifying questions for non-trivial features, documentation updates, and explicit completion validation.
+
+## v0.3.50
+
+Added:
+
+- The native location cursor is replaced by a top-down explorer marker that turns smoothly toward reliable GPS course data, falls back to accepted-route bearing, and animates only while moving.
+- Immutable route snapshots now freeze finalized display geometry so later OSM cache loads, map renders, and exploration recalculations cannot move an already saved trace.
+- Nearby OSM street coverage now refreshes automatically and rejects stale async results.
+- Recording history now reports whether geometry is frozen and how many sections were street-matched.
+- Backup format V2 preserves frozen route snapshots while remaining compatible with V1 imports.
+
+Fixed:
+
+- Foreground and background GPS writes are serialized, deduplicated, ordered by timestamp, and flushed before final distance and route calculation.
+- Inferred gaps no longer draw straight endpoint connectors that can cross buildings; only validated street-graph geometry is displayed.
+- Close-zoom inferred geometry is no longer simplified into corner-cutting diagonals.
+- Invalid, stale, and conflicting GPS timestamps are rejected.
+- Street routing now uses stricter endpoint snapping, detour limits, and a faster priority-queue shortest-path search.
+
+Changed:
+
+- GPS accuracy and suspicious-gap thresholds are more conservative in every activity mode.
+- Legacy saved routes are frozen on first load using stable confirmed-GPS geometry and never change at render time.
+
 ## v0.3.49
 
 Changed:

@@ -1,5 +1,6 @@
 import {
   MapCoordinate,
+  collectFillableEnclosedExplorationCellIds,
   coordinateToExplorationCellKey,
   explorationCellKeyToCenterCoordinate
 } from "./explorationArea";
@@ -11,10 +12,12 @@ import {
   getCachedZoneTotal,
   saveCachedZoneTotal
 } from "../database/completionRepository";
-import { GpsPoint } from "../types/walk";
+import { LOOP_FILL_CONFIG } from "./loopFill";
+import { ActivityMode, GpsPoint } from "../types/walk";
 
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
+const renderedContourFillCache = new WeakMap<ExploredCellRecord[], ExploredCellRecord[]>();
 
 type OverpassGeometryPoint = {
   lat: number;
@@ -105,7 +108,8 @@ export async function calculateZoneCompletionStats(
   zone: CachedZone,
   exploredCells: ExploredCellRecord[]
 ): Promise<ZoneCompletionStats> {
-  const exploredInside = exploredCells.filter((cell) =>
+  const completionCells = includeRenderedContourFills(exploredCells);
+  const exploredInside = completionCells.filter((cell) =>
     isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone)
   );
   const uniqueExplored = uniqueCellCount(exploredInside);
@@ -127,6 +131,51 @@ export async function calculateZoneCompletionStats(
     loopFilledCells,
     totalZoneCells
   };
+}
+
+export function includeRenderedContourFills(exploredCells: ExploredCellRecord[]) {
+  const cached = renderedContourFillCache.get(exploredCells);
+
+  if (cached) {
+    return cached;
+  }
+
+  const result = [...exploredCells];
+  const existingModeCells = new Set(
+    exploredCells.map((cell) => cell.mode + ":" + cell.cellKey)
+  );
+
+  for (const mode of ["walk", "wheel", "car"] as ActivityMode[]) {
+    const modeCellIds = [
+      ...new Set(
+        exploredCells
+          .filter((cell) => cell.mode === mode)
+          .map((cell) => cell.cellKey)
+      )
+    ];
+    const fillCellIds = collectFillableEnclosedExplorationCellIds(
+      modeCellIds,
+      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[mode]
+    );
+
+    for (const cellKey of fillCellIds) {
+      const modeCellKey = mode + ":" + cellKey;
+
+      if (existingModeCells.has(modeCellKey)) {
+        continue;
+      }
+
+      existingModeCells.add(modeCellKey);
+      result.push({
+        cellKey,
+        mode,
+        source: "loop_fill"
+      });
+    }
+  }
+
+  renderedContourFillCache.set(exploredCells, result);
+  return result;
 }
 
 export function countExploredCellKeysInsideZone(zone: CachedZone, cellKeys: string[]) {

@@ -80,10 +80,10 @@ ${trackPoints}
 }
 
 function parseBackup(rawJson: string): StreetExplorerBackup {
-  const parsed = JSON.parse(rawJson) as Partial<StreetExplorerBackup>;
+  const parsed = JSON.parse(rawJson) as Omit<Partial<StreetExplorerBackup>, "version"> & { version?: number };
 
   if (
-    parsed.version !== 1 ||
+    (parsed.version !== 1 && parsed.version !== 2) ||
     !Array.isArray(parsed.sessions) ||
     !Array.isArray(parsed.points)
   ) {
@@ -92,10 +92,29 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
 
   return {
     exportedAt: parsed.exportedAt ?? new Date().toISOString(),
-    points: parsed.points,
+    points: deduplicateBackupPoints(parsed.points),
+    routeSnapshots:
+      parsed.version === 2 && Array.isArray(parsed.routeSnapshots)
+        ? parsed.routeSnapshots
+        : [],
     sessions: parsed.sessions,
-    version: 1
+    version: 2
   };
+}
+
+function deduplicateBackupPoints(points: GpsPoint[]) {
+  const seen = new Set<string>();
+
+  return points.filter((point) => {
+    const key = `${point.sessionId ?? "missing"}:${point.timestamp}`;
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
 }
 
 function escapeXml(value: string) {

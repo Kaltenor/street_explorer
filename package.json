@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.3.49",
+  "version": "0.3.60",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
+    "test:geometry": "node scripts/test-exploration-geometry.js",
     "build:ios:dev": "eas build --platform ios --profile development",
     "build:ios:sim": "eas build --platform ios --profile development-simulator"
   },

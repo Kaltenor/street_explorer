@@ -1,6 +1,7 @@
 import {
   EXPLORATION_CELL_SIZE_METERS,
   MapCoordinate,
+  collectEnclosedExplorationCellGroups,
   collectExploredCellIdsForPath,
   explorationCellKeyToCenterCoordinate
 } from "./explorationArea";
@@ -84,7 +85,11 @@ export function analyzeLoopFillsForCells(input: {
   exploredStreetIds: Set<string>;
   streetSegments: OsmStreetSegment[];
 }): LoopFillResult[] {
-  const enclosedCellGroups = findEnclosedCellGroups(input.boundaryCellIds);
+  const exactContourGroups = collectEnclosedExplorationCellGroups(input.boundaryCellIds);
+  const exactContourCells = new Set(exactContourGroups.flat());
+  const tolerantGroups = findEnclosedCellGroups(input.boundaryCellIds)
+    .filter((group) => !group.some((cellId) => exactContourCells.has(cellId)));
+  const enclosedCellGroups = [...exactContourGroups, ...tolerantGroups];
 
   if (enclosedCellGroups.length === 0) {
     return [];
@@ -208,7 +213,21 @@ function findEnclosedCellGroups(boundaryCellIds: string[]) {
   }
 
   return collectDetectionBoundaryGroups(boundary)
-    .flatMap((detectionBoundary) => findEnclosedCellGroupsInComponent(boundary, detectionBoundary));
+    .flatMap((detectionBoundary) => {
+      const exactBoundary = new Set(
+        [...boundary].filter((cellKey) => detectionBoundary.has(cellKey))
+      );
+      const exactGroups = collectConnectedCellGroups(exactBoundary)
+        .flatMap((group) => findEnclosedCellGroupsInComponent(boundary, new Set(group)));
+
+      // Prefer the real cell topology whenever this component already closes a loop.
+      // The one-cell tolerance exists for tiny GPS seams, but applying it to an
+      // already-closed dense network merges independent courtyards into oversized
+      // groups and makes persisted completion disagree with the displayed fill.
+      return exactGroups.length > 0
+        ? exactGroups
+        : findEnclosedCellGroupsInComponent(boundary, detectionBoundary);
+    });
 }
 
 function collectDetectionBoundaryGroups(boundary: Set<string>) {
@@ -218,28 +237,41 @@ function collectDetectionBoundaryGroups(boundary: Set<string>) {
 }
 
 function findEnclosedCellGroupsInComponent(boundary: Set<string>, detectionBoundary: Set<string>) {
-  const keys = [...detectionBoundary].map(parseCellKey);
+  const detectionKeys = [...detectionBoundary].map(parseCellKey);
+  const componentBoundaryKeys = [...boundary]
+    .filter((cellKey) => detectionBoundary.has(cellKey))
+    .map(parseCellKey);
 
-  const bounds = {
-    maxX: Math.max(...keys.map((key) => key.x)) + 1,
-    maxY: Math.max(...keys.map((key) => key.y)) + 1,
-    minX: Math.min(...keys.map((key) => key.x)) - 1,
-    minY: Math.min(...keys.map((key) => key.y)) - 1
-  };
-
-  if (countCellsInBounds(bounds) > LOOP_FILL_CONFIG.maxFloodBoundsCells) {
+  if (componentBoundaryKeys.length === 0) {
     return [];
   }
 
+  const floodBounds = {
+    maxX: Math.max(...detectionKeys.map((key) => key.x)) + 1,
+    maxY: Math.max(...detectionKeys.map((key) => key.y)) + 1,
+    minX: Math.min(...detectionKeys.map((key) => key.x)) - 1,
+    minY: Math.min(...detectionKeys.map((key) => key.y)) - 1
+  };
+
+  if (countCellsInBounds(floodBounds) > LOOP_FILL_CONFIG.maxFloodBoundsCells) {
+    return [];
+  }
+
+  const candidateBounds = {
+    maxX: Math.max(...componentBoundaryKeys.map((key) => key.x)),
+    maxY: Math.max(...componentBoundaryKeys.map((key) => key.y)),
+    minX: Math.min(...componentBoundaryKeys.map((key) => key.x)),
+    minY: Math.min(...componentBoundaryKeys.map((key) => key.y))
+  };
   const outside = floodReachableCells({
     blocked: detectionBoundary,
-    bounds,
-    start: { x: bounds.minX, y: bounds.minY }
+    bounds: floodBounds,
+    start: { x: floodBounds.minX, y: floodBounds.minY }
   });
   const enclosed = new Set<string>();
 
-  for (let x = bounds.minX + 1; x < bounds.maxX; x += 1) {
-    for (let y = bounds.minY + 1; y < bounds.maxY; y += 1) {
+  for (let x = candidateBounds.minX; x <= candidateBounds.maxX; x += 1) {
+    for (let y = candidateBounds.minY; y <= candidateBounds.maxY; y += 1) {
       const key = cellKeyToString({ x, y });
 
       if (!boundary.has(key) && !outside.has(key)) {

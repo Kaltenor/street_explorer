@@ -1,6 +1,6 @@
-import { buildPathSegments } from "./pathInference";
+import { buildPathSegments, buildPathSegmentsWithInference } from "./pathInference";
 import { OsmStreetSegment } from "../types/street";
-import { ActivityMode, GpsPoint, WalkWithPoints } from "../types/walk";
+import { ActivityMode, GpsPoint, RenderedRouteSegment, WalkWithPoints } from "../types/walk";
 
 export const EXPLORATION_CELL_SIZE_METERS = 15;
 
@@ -23,7 +23,12 @@ export type ExplorationCell = {
 
 export type ExplorationPolygon = {
   coordinates: MapCoordinate[];
+  holes: MapCoordinate[][];
   id: string;
+};
+
+export type ExplorationPolygonOptions = {
+  maxFilledHoleAreaSquareMeters?: number;
 };
 
 export type ExplorationOutlineSegment = {
@@ -46,122 +51,204 @@ type GridEdge = {
   to: CellKey;
 };
 
-export function buildExplorationCells(
+type ExplorationCellReference = ExplorationCell | string;
+
+type GridContour = {
+  area: number;
+  path: CellKey[];
+};
+
+export function collectExplorationCellIds(
   walks: WalkWithPoints[],
   activePoints: GpsPoint[],
   activeMode: ActivityMode,
   loopFillCellIds: string[] = []
 ) {
   const cellKeys = collectExploredCellKeys(walks, activePoints, activeMode);
+
+  for (const cellId of loopFillCellIds) {
+    cellKeys.add(cellId);
+  }
+
+  return [...cellKeys];
+}
+
+export function buildExplorationCells(
+  walks: WalkWithPoints[],
+  activePoints: GpsPoint[],
+  activeMode: ActivityMode,
+  loopFillCellIds: string[] = []
+) {
   const loopFillKeys = new Set(loopFillCellIds);
 
-  return [
-    ...[...cellKeys].map((key) => buildExplorationCell(key, "gps")),
-    ...[...loopFillKeys]
-      .filter((key) => !cellKeys.has(key))
-      .map((key) => buildExplorationCell(key, "loop_fill"))
-  ];
+  return collectExplorationCellIds(walks, activePoints, activeMode, loopFillCellIds).map((key) =>
+    buildExplorationCell(key, loopFillKeys.has(key) ? "loop_fill" : "gps")
+  );
 }
 
-export function buildMergedExplorationPolygons(cells: ExplorationCell[]): ExplorationPolygon[] {
-  const rowIntervals = new Map<number, Array<{ endX: number; startX: number }>>();
+export function buildMergedExplorationPolygons(
+  cells: readonly ExplorationCellReference[],
+  options: ExplorationPolygonOptions = {}
+): ExplorationPolygon[] {
+  const contours = buildGridContours(cells);
+  const holeContours = contours.filter((contour) => contour.area < 0);
+  const filledHoleContours = new Set(
+    holeContours.filter((contour) =>
+      isHoleWithinFillLimit(contour, options.maxFilledHoleAreaSquareMeters)
+    )
+  );
+  const exteriorContours = contours
+    .filter((contour) => contour.area > 0)
+    .filter((contour) => {
+      const sample = getGridContourInteriorPoint(contour);
 
-  for (const cell of cells) {
-    const key = stringToCellKey(cell.id);
-    const intervals = rowIntervals.get(key.y) ?? [];
+      return !sample || ![...filledHoleContours].some((holeContour) =>
+        isPointInsideGridPath(sample, holeContour.path)
+      );
+    })
+    .sort((left, right) => right.area - left.area);
+  const polygons: ExplorationPolygon[] = exteriorContours.map((contour) => {
+    const first = contour.path[0];
 
-    intervals.push({ endX: key.x, startX: key.x });
-    rowIntervals.set(key.y, intervals);
-  }
+    return {
+      coordinates: gridPathToCoordinates(contour.path, false),
+      holes: [],
+      id:
+        "area:" +
+        (first?.x ?? 0) +
+        ":" +
+        (first?.y ?? 0) +
+        ":" +
+        Math.round(contour.area)
+    };
+  });
 
-  for (const [row, intervals] of rowIntervals) {
-    intervals.sort((left, right) => left.startX - right.startX);
-    rowIntervals.set(row, mergeRowIntervals(intervals));
-  }
+  for (const holeContour of holeContours) {
+    if (filledHoleContours.has(holeContour)) {
+      continue;
+    }
 
-  const activeRectangles = new Map<string, { endX: number; endY: number; startX: number; startY: number }>();
-  const rectangles: Array<{ endX: number; endY: number; startX: number; startY: number }> = [];
-  const sortedRows = [...rowIntervals.keys()].sort((left, right) => left - right);
+    const sample = getGridContourInteriorPoint(holeContour);
 
-  for (const row of sortedRows) {
-    const intervals = rowIntervals.get(row) ?? [];
-    const currentKeys = new Set<string>();
+    if (!sample) {
+      continue;
+    }
 
-    for (const interval of intervals) {
-      const key = `${interval.startX}:${interval.endX}`;
-      const existing = activeRectangles.get(key);
+    let ownerIndex = -1;
+    let ownerArea = Number.POSITIVE_INFINITY;
 
-      currentKeys.add(key);
+    for (let index = 0; index < exteriorContours.length; index += 1) {
+      const exterior = exteriorContours[index];
 
-      if (existing && existing.endY + 1 === row) {
-        existing.endY = row;
-      } else {
-        if (existing) {
-          rectangles.push(existing);
-        }
-
-        activeRectangles.set(key, {
-          endX: interval.endX,
-          endY: row,
-          startX: interval.startX,
-          startY: row
-        });
+      if (
+        exterior &&
+        exterior.area < ownerArea &&
+        isPointInsideGridPath(sample, exterior.path)
+      ) {
+        ownerArea = exterior.area;
+        ownerIndex = index;
       }
     }
 
-    for (const [key, rectangle] of [...activeRectangles.entries()]) {
-      if (!currentKeys.has(key) && rectangle.endY < row) {
-        rectangles.push(rectangle);
-        activeRectangles.delete(key);
+    if (ownerIndex >= 0) {
+      polygons[ownerIndex]?.holes.push(gridPathToCoordinates(holeContour.path, false));
+    }
+  }
+
+  return polygons;
+}
+
+export function collectEnclosedExplorationCellGroups(
+  cells: readonly ExplorationCellReference[]
+) {
+  const occupiedCellIds = new Set(cells.map(getExplorationCellId));
+
+  const claimedCellIds = new Set<string>();
+  const groups: string[][] = [];
+  const holeContours = buildGridContours(cells)
+    .filter((contour) => contour.area < 0)
+    .sort((left, right) => Math.abs(right.area) - Math.abs(left.area));
+
+  for (const contour of holeContours) {
+    const group = collectUnoccupiedCellsInsideGridContour(contour, occupiedCellIds)
+      .filter((cellId) => !claimedCellIds.has(cellId));
+
+    if (group.length === 0) {
+      continue;
+    }
+
+    groups.push(group);
+
+    for (const cellId of group) {
+      claimedCellIds.add(cellId);
+    }
+  }
+
+  return groups;
+}
+
+export function collectFillableEnclosedExplorationCellIds(
+  cells: readonly ExplorationCellReference[],
+  maxFilledAreaSquareMeters: number
+) {
+  const maxCellCount = Math.floor(
+    maxFilledAreaSquareMeters /
+      (EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS)
+  );
+
+  return collectEnclosedExplorationCellGroups(cells)
+    .filter((group) => group.length <= maxCellCount)
+    .flat();
+}
+function collectUnoccupiedCellsInsideGridContour(
+  contour: GridContour,
+  occupiedCellIds: Set<string>
+) {
+  const xValues = contour.path.map((point) => point.x);
+  const yValues = contour.path.map((point) => point.y);
+  const minX = Math.floor(Math.min(...xValues));
+  const maxX = Math.ceil(Math.max(...xValues));
+  const minY = Math.floor(Math.min(...yValues));
+  const maxY = Math.ceil(Math.max(...yValues));
+  const enclosedCellIds: string[] = [];
+
+  for (let x = minX; x < maxX; x += 1) {
+    for (let y = minY; y < maxY; y += 1) {
+      const cellId = cellKeyToString({ x, y });
+
+      if (
+        !occupiedCellIds.has(cellId) &&
+        isPointInsideGridPath({ x: x + 0.5, y: y + 0.5 }, contour.path)
+      ) {
+        enclosedCellIds.push(cellId);
       }
     }
   }
 
-  rectangles.push(...activeRectangles.values());
-
-  return rectangles.map((rectangle) => buildExplorationRectangle(rectangle));
+  return enclosedCellIds;
+}
+export function buildExplorationPolygonOutlineSegments(
+  polygons: readonly ExplorationPolygon[]
+): ExplorationOutlineSegment[] {
+  return polygons.flatMap((polygon) => [
+    {
+      coordinates: closeCoordinatePath(polygon.coordinates),
+      id: polygon.id + ":exterior"
+    },
+    ...polygon.holes.map((hole, index) => ({
+      coordinates: closeCoordinatePath(hole),
+      id: polygon.id + ":hole:" + index
+    }))
+  ]);
 }
 
-export function buildExplorationOutlineSegments(cells: ExplorationCell[]): ExplorationOutlineSegment[] {
-  const cellKeys = new Set(cells.map((cell) => cell.id));
-  const edges: GridEdge[] = [];
-
-  for (const cell of cells) {
-    const key = stringToCellKey(cell.id);
-
-    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y - 1 }))) {
-      edges.push({
-        from: { x: key.x, y: key.y },
-        to: { x: key.x + 1, y: key.y }
-      });
-    }
-
-    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y + 1 }))) {
-      edges.push({
-        from: { x: key.x + 1, y: key.y + 1 },
-        to: { x: key.x, y: key.y + 1 }
-      });
-    }
-
-    if (!cellKeys.has(cellKeyToString({ x: key.x - 1, y: key.y }))) {
-      edges.push({
-        from: { x: key.x, y: key.y + 1 },
-        to: { x: key.x, y: key.y }
-      });
-    }
-
-    if (!cellKeys.has(cellKeyToString({ x: key.x + 1, y: key.y }))) {
-      edges.push({
-        from: { x: key.x + 1, y: key.y },
-        to: { x: key.x + 1, y: key.y + 1 }
-      });
-    }
-  }
-
-  return traceGridOutlinePaths(edges).map((path, index) => ({
-    coordinates: roundGridPathCorners(path).map(gridPointToCoordinate),
-    id: `outline:${index}`
-  }));
+export function buildExplorationOutlineSegments(
+  cells: readonly ExplorationCellReference[],
+  options: ExplorationPolygonOptions = {}
+): ExplorationOutlineSegment[] {
+  return buildExplorationPolygonOutlineSegments(
+    buildMergedExplorationPolygons(cells, options)
+  );
 }
 
 export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
@@ -203,28 +290,59 @@ export function collectExploredCellIdsForPath(points: GpsPoint[], activityMode: 
 export function collectExploredCellIdsBySource(
   points: GpsPoint[],
   activityMode: ActivityMode,
-  _streetSegments: OsmStreetSegment[] = []
+  streetSegments: OsmStreetSegment[] = []
+) {
+  const routeSegments = buildPathSegmentsWithInference(
+    points,
+    activityMode,
+    streetSegments
+  ).flatMap<RenderedRouteSegment>((segment) => {
+    if (
+      segment.type === "rejected" ||
+      (segment.type === "inferred" && segment.confidence === "low")
+    ) {
+      return [];
+    }
+
+    return [{
+      confidence:
+        segment.type === "inferred"
+          ? segment.confidence === "high" ? "high" : "medium"
+          : undefined,
+      points: segment.points,
+      type: segment.type
+    }];
+  });
+
+  return collectExploredCellIdsByRouteSegments(routeSegments);
+}
+
+export function collectExploredCellIdsByRouteSegments(
+  routeSegments: readonly RenderedRouteSegment[]
 ) {
   const gps = new Set<string>();
+  const inferred = new Set<string>();
 
-  for (const segment of buildPathSegments(points, activityMode)) {
-    if (segment.type !== "confirmed") {
+  for (const segment of routeSegments) {
+    if (!isValidatedExplorationRouteSegment(segment)) {
       continue;
     }
+
+    const target = segment.type === "inferred" ? inferred : gps;
 
     for (let index = 1; index < segment.points.length; index += 1) {
       const from = segment.points[index - 1];
       const to = segment.points[index];
 
       if (from && to) {
-        markSegmentCells(gps, from, to);
+        markSegmentCells(target, from, to);
       }
     }
   }
 
   return {
     gps: [...gps],
-    inferred: []
+    inferred: [...inferred].filter((cellKey) => !gps.has(cellKey))
   };
 }
 
@@ -236,12 +354,44 @@ function collectExploredCellKeys(
   const keys = new Set<string>();
 
   for (const walk of walks) {
-    markPathCells(keys, walk.points, walk.activityMode);
+    if (walk.routeSegments !== null) {
+      markRouteSegmentCells(keys, walk.routeSegments);
+    } else {
+      markPathCells(keys, walk.points, walk.activityMode);
+    }
   }
 
   markPathCells(keys, activePoints, activeMode);
 
   return keys;
+}
+
+function isValidatedExplorationRouteSegment(segment: RenderedRouteSegment) {
+  return (
+    segment.type === "confirmed" ||
+    segment.confidence === "high" ||
+    segment.confidence === "medium"
+  );
+}
+
+function markRouteSegmentCells(
+  keys: Set<string>,
+  routeSegments: readonly RenderedRouteSegment[]
+) {
+  for (const segment of routeSegments) {
+    if (!isValidatedExplorationRouteSegment(segment)) {
+      continue;
+    }
+
+    for (let index = 1; index < segment.points.length; index += 1) {
+      const from = segment.points[index - 1];
+      const to = segment.points[index];
+
+      if (from && to) {
+        markSegmentCells(keys, from, to);
+      }
+    }
+  }
 }
 
 function markPathCells(keys: Set<string>, points: GpsPoint[], activityMode: ActivityMode) {
@@ -323,42 +473,58 @@ export function buildExplorationCell(
   };
 }
 
-function buildExplorationRectangle(rectangle: {
-  endX: number;
-  endY: number;
-  startX: number;
-  startY: number;
-}): ExplorationPolygon {
-  const minX = rectangle.startX * EXPLORATION_CELL_SIZE_METERS;
-  const minY = rectangle.startY * EXPLORATION_CELL_SIZE_METERS;
-  const maxX = (rectangle.endX + 1) * EXPLORATION_CELL_SIZE_METERS;
-  const maxY = (rectangle.endY + 1) * EXPLORATION_CELL_SIZE_METERS;
-
-  return {
-    coordinates: [
-      mercatorToCoordinate({ x: minX, y: minY }),
-      mercatorToCoordinate({ x: maxX, y: minY }),
-      mercatorToCoordinate({ x: maxX, y: maxY }),
-      mercatorToCoordinate({ x: minX, y: maxY })
-    ],
-    id: `${rectangle.startX}:${rectangle.startY}:${rectangle.endX}:${rectangle.endY}`
-  };
+function getExplorationCellId(cell: ExplorationCellReference) {
+  return typeof cell === "string" ? cell : cell.id;
 }
 
-function mergeRowIntervals(intervals: Array<{ endX: number; startX: number }>) {
-  const merged: Array<{ endX: number; startX: number }> = [];
+function buildGridContours(cells: readonly ExplorationCellReference[]): GridContour[] {
+  const edges = buildGridBoundaryEdges(cells);
 
-  for (const interval of intervals) {
-    const previous = merged.at(-1);
+  return traceGridOutlinePaths(edges)
+    .map((path) => ({
+      area: calculateSignedGridPathArea(path),
+      path
+    }))
+    .filter((contour) => contour.area !== 0);
+}
 
-    if (previous && previous.endX + 1 >= interval.startX) {
-      previous.endX = Math.max(previous.endX, interval.endX);
-    } else {
-      merged.push({ ...interval });
+function buildGridBoundaryEdges(cells: readonly ExplorationCellReference[]) {
+  const cellKeys = new Set(cells.map(getExplorationCellId));
+  const edges: GridEdge[] = [];
+
+  for (const cellId of cellKeys) {
+    const key = stringToCellKey(cellId);
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y - 1 }))) {
+      edges.push({
+        from: { x: key.x, y: key.y },
+        to: { x: key.x + 1, y: key.y }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y + 1 }))) {
+      edges.push({
+        from: { x: key.x + 1, y: key.y + 1 },
+        to: { x: key.x, y: key.y + 1 }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x - 1, y: key.y }))) {
+      edges.push({
+        from: { x: key.x, y: key.y + 1 },
+        to: { x: key.x, y: key.y }
+      });
+    }
+
+    if (!cellKeys.has(cellKeyToString({ x: key.x + 1, y: key.y }))) {
+      edges.push({
+        from: { x: key.x + 1, y: key.y },
+        to: { x: key.x + 1, y: key.y + 1 }
+      });
     }
   }
 
-  return merged;
+  return edges;
 }
 
 function traceGridOutlinePaths(edges: GridEdge[]) {
@@ -393,10 +559,9 @@ function traceGridOutlinePaths(edges: GridEdge[]) {
         break;
       }
 
-      const nextEdge: GridEdge | undefined = (edgesByStart.get(cellKeyToString(currentEdge.to)) ?? [])
-        .find((candidate) => unused.has(gridEdgeToString(candidate)));
-
-      currentEdge = nextEdge ?? null;
+      const candidates = (edgesByStart.get(cellKeyToString(currentEdge.to)) ?? [])
+        .filter((candidate) => unused.has(gridEdgeToString(candidate)));
+      currentEdge = chooseNextGridEdge(currentEdge, candidates);
     }
 
     if (path.length > 2) {
@@ -407,69 +572,164 @@ function traceGridOutlinePaths(edges: GridEdge[]) {
   return paths;
 }
 
-function roundGridPathCorners(path: CellKey[]) {
-  const closedPath = isSameCellKey(path[0], path.at(-1)) ? path.slice(0, -1) : path;
+function chooseNextGridEdge(current: GridEdge, candidates: GridEdge[]) {
+  if (candidates.length <= 1) {
+    return candidates[0] ?? null;
+  }
 
-  if (closedPath.length < 3) {
+  const currentDirection = getGridEdgeDirection(current);
+  const turnPriority = [1, 0, 3, 2];
+
+  return (
+    [...candidates].sort((left, right) => {
+      const leftTurn = (getGridEdgeDirection(left) - currentDirection + 4) % 4;
+      const rightTurn = (getGridEdgeDirection(right) - currentDirection + 4) % 4;
+
+      return turnPriority.indexOf(leftTurn) - turnPriority.indexOf(rightTurn);
+    })[0] ?? null
+  );
+}
+
+function getGridEdgeDirection(edge: GridEdge) {
+  const deltaX = edge.to.x - edge.from.x;
+  const deltaY = edge.to.y - edge.from.y;
+
+  if (deltaX > 0) {
+    return 0;
+  }
+
+  if (deltaY > 0) {
+    return 1;
+  }
+
+  if (deltaX < 0) {
+    return 2;
+  }
+
+  return 3;
+}
+
+function calculateSignedGridPathArea(path: CellKey[]) {
+  let twiceArea = 0;
+
+  for (let index = 0; index < path.length; index += 1) {
+    const current = path[index];
+    const next = path[(index + 1) % path.length];
+
+    if (current && next) {
+      twiceArea += current.x * next.y - next.x * current.y;
+    }
+  }
+
+  return twiceArea / 2;
+}
+
+function isHoleWithinFillLimit(
+  contour: GridContour,
+  maxFilledHoleAreaSquareMeters: number | undefined
+) {
+  if (maxFilledHoleAreaSquareMeters === undefined) {
+    return false;
+  }
+
+  const holeAreaSquareMeters =
+    Math.abs(contour.area) *
+    EXPLORATION_CELL_SIZE_METERS *
+    EXPLORATION_CELL_SIZE_METERS;
+
+  return holeAreaSquareMeters <= maxFilledHoleAreaSquareMeters;
+}
+
+function getGridContourInteriorPoint(contour: GridContour): CellKey | null {
+  const from = contour.path[0];
+  const to = contour.path[1];
+
+  if (!from || !to) {
+    return null;
+  }
+
+  const deltaX = to.x - from.x;
+  const deltaY = to.y - from.y;
+  const length = Math.max(1, Math.hypot(deltaX, deltaY));
+  const orientation = contour.area > 0 ? 1 : -1;
+
+  return {
+    x: (from.x + to.x) / 2 + (-deltaY / length) * 0.25 * orientation,
+    y: (from.y + to.y) / 2 + (deltaX / length) * 0.25 * orientation
+  };
+}
+
+function simplifyGridPath(path: CellKey[]) {
+  const last = path.at(-1);
+  const first = path[0];
+  const openPath =
+    first && last && first.x === last.x && first.y === last.y ? path.slice(0, -1) : path;
+
+  if (openPath.length < 3) {
+    return openPath;
+  }
+
+  return openPath.filter((current, index) => {
+    const previous = openPath[(index - 1 + openPath.length) % openPath.length];
+    const next = openPath[(index + 1) % openPath.length];
+
+    if (!previous || !next) {
+      return true;
+    }
+
+    return (
+      current.x - previous.x !== next.x - current.x ||
+      current.y - previous.y !== next.y - current.y
+    );
+  });
+}
+
+function gridPathToCoordinates(path: CellKey[], closePath: boolean) {
+  const simplified = simplifyGridPath(path);
+  const first = simplified[0];
+  const output = closePath && first ? [...simplified, first] : simplified;
+
+  return output.map(gridPointToCoordinate);
+}
+
+function closeCoordinatePath(path: MapCoordinate[]) {
+  const first = path[0];
+
+  if (!first) {
     return path;
   }
 
-  const rounded: Array<{ x: number; y: number }> = [];
-  const cornerRadius = 0.34;
-  const curveSteps = 4;
+  return [...path, first];
+}
 
-  for (let index = 0; index < closedPath.length; index += 1) {
-    const previous = closedPath[(index - 1 + closedPath.length) % closedPath.length];
-    const current = closedPath[index];
-    const next = closedPath[(index + 1) % closedPath.length];
+function isPointInsideGridPath(point: CellKey, path: CellKey[]) {
+  let inside = false;
 
-    if (!previous || !current || !next) {
+  for (
+    let index = 0, previousIndex = path.length - 1;
+    index < path.length;
+    previousIndex = index, index += 1
+  ) {
+    const current = path[index];
+    const previous = path[previousIndex];
+
+    if (!current || !previous) {
       continue;
     }
 
-    const incoming = normalizeGridVector({
-      x: previous.x - current.x,
-      y: previous.y - current.y
-    });
-    const outgoing = normalizeGridVector({
-      x: next.x - current.x,
-      y: next.y - current.y
-    });
+    const intersects =
+      current.y > point.y !== previous.y > point.y &&
+      point.x <
+        ((previous.x - current.x) * (point.y - current.y)) /
+          (previous.y - current.y) +
+          current.x;
 
-    if (incoming.x === -outgoing.x && incoming.y === -outgoing.y) {
-      rounded.push(current);
-      continue;
-    }
-
-    const curveStart = {
-      x: current.x + incoming.x * cornerRadius,
-      y: current.y + incoming.y * cornerRadius
-    };
-    const curveEnd = {
-      x: current.x + outgoing.x * cornerRadius,
-      y: current.y + outgoing.y * cornerRadius
-    };
-
-    rounded.push(curveStart);
-
-    for (let step = 1; step <= curveSteps; step += 1) {
-      const t = step / curveSteps;
-      const inverse = 1 - t;
-
-      rounded.push({
-        x: inverse * inverse * curveStart.x + 2 * inverse * t * current.x + t * t * curveEnd.x,
-        y: inverse * inverse * curveStart.y + 2 * inverse * t * current.y + t * t * curveEnd.y
-      });
+    if (intersects) {
+      inside = !inside;
     }
   }
 
-  const first = rounded[0];
-
-  if (first) {
-    rounded.push(first);
-  }
-
-  return rounded;
+  return inside;
 }
 
 function gridPointToCoordinate(point: { x: number; y: number }) {
@@ -479,22 +739,10 @@ function gridPointToCoordinate(point: { x: number; y: number }) {
   });
 }
 
-function normalizeGridVector(vector: { x: number; y: number }) {
-  const length = Math.max(1, Math.hypot(vector.x, vector.y));
-
-  return {
-    x: vector.x / length,
-    y: vector.y / length
-  };
-}
-
 function gridEdgeToString(edge: GridEdge) {
   return `${cellKeyToString(edge.from)}>${cellKeyToString(edge.to)}`;
 }
 
-function isSameCellKey(first: CellKey | undefined, second: CellKey | undefined) {
-  return Boolean(first && second && first.x === second.x && first.y === second.y);
-}
 
 export function coordinateToExplorationCellKey(point: Pick<MapCoordinate, "latitude" | "longitude">) {
   return cellKeyToString(mercatorToCellKey(coordinateToMercator(point)));

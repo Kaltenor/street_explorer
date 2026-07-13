@@ -4,6 +4,7 @@ import { GpsPoint } from "../types/walk";
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const DEFAULT_FETCH_RADIUS_METERS = 650;
 const MAX_SEGMENT_LENGTH_METERS = 35;
+const OVERPASS_TIMEOUT_MS = 35_000;
 const EXCLUDED_HIGHWAYS = [
   "bus_stop",
   "construction",
@@ -40,13 +41,28 @@ export async function fetchNearbyOsmStreetSegments(
   center: Pick<GpsPoint, "latitude" | "longitude">,
   radiusMeters = DEFAULT_FETCH_RADIUS_METERS
 ) {
-  const response = await fetch(OVERPASS_ENDPOINT, {
-    body: buildOverpassQuery(center.latitude, center.longitude, radiusMeters),
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    method: "POST"
-  });
+  const abortController = new AbortController();
+  const timeout = setTimeout(() => abortController.abort(), OVERPASS_TIMEOUT_MS);
+  let response: Response;
+
+  try {
+    response = await fetch(OVERPASS_ENDPOINT, {
+      body: buildOverpassQuery(center.latitude, center.longitude, radiusMeters),
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      method: "POST",
+      signal: abortController.signal
+    });
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error("OpenStreetMap street refresh timed out");
+    }
+
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!response.ok) {
     throw new Error(`Overpass request failed: ${response.status}`);
@@ -86,23 +102,27 @@ function mapOverpassWay(
     return [];
   }
 
-  return splitWayIntoLocalSegments(coordinates, center, radiusMeters).map((segment, index) =>
+  return splitWayIntoStableLocalSegments(coordinates, center, radiusMeters).map((segment) =>
     buildStreetSegment({
-      coordinates: segment,
+      coordinates: segment.coordinates,
       fetchedAt,
       highway: element.tags?.highway ?? "road",
-      id: `way/${element.id}/part/${index}`,
+      id: `way/${element.id}/part/${segment.partIndex}`,
       name: element.tags?.name ?? null
     })
   );
 }
 
-function splitWayIntoLocalSegments(
+export function splitWayIntoStableLocalSegments(
   coordinates: Pick<GpsPoint, "latitude" | "longitude">[],
   center: Pick<GpsPoint, "latitude" | "longitude">,
   radiusMeters: number
 ) {
-  const segments: Pick<GpsPoint, "latitude" | "longitude">[][] = [];
+  const segments: {
+    coordinates: Pick<GpsPoint, "latitude" | "longitude">[];
+    partIndex: number;
+  }[] = [];
+  let partIndex = 0;
 
   for (let index = 1; index < coordinates.length; index += 1) {
     const from = coordinates[index - 1];
@@ -121,8 +141,12 @@ function splitWayIntoLocalSegments(
       const midpoint = interpolateCoordinate(start, end, 0.5);
 
       if (haversineDistanceMeters(center, midpoint) <= radiusMeters) {
-        segments.push([start, end]);
+        segments.push({ coordinates: [start, end], partIndex });
       }
+
+      // Advance even when this fetch window excludes the part. The identity must
+      // depend on the OSM way geometry, never on which nearby fetch returned it.
+      partIndex += 1;
     }
   }
 

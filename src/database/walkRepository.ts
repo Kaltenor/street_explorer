@@ -3,6 +3,7 @@ import {
   ActivityMode,
   GpsPoint,
   LifetimeStats,
+  RenderedRouteSegment,
   WalkSession,
   WalkWithPoints
 } from "../types/walk";
@@ -29,6 +30,14 @@ type GpsPointRow = {
   point_index: number;
 };
 
+type RouteSnapshotRow = {
+  algorithm_version: number;
+  created_at: string;
+  segments_json: string;
+  session_id: number;
+  source_point_count: number;
+};
+
 type CreateWalkInput = {
   activityMode: ActivityMode;
   startedAt: string;
@@ -48,8 +57,15 @@ type FinishWalkInput = {
 export type StreetExplorerBackup = {
   exportedAt: string;
   points: GpsPoint[];
+  routeSnapshots: Array<{
+    algorithmVersion: number;
+    createdAt: string;
+    segments: RenderedRouteSegment[];
+    sessionId: number;
+    sourcePointCount: number;
+  }>;
   sessions: WalkSession[];
-  version: 1;
+  version: 2;
 };
 
 export async function createWalkSession(input: CreateWalkInput) {
@@ -103,25 +119,41 @@ export async function saveGpsPoint(sessionId: number, point: GpsPoint) {
 
 export async function saveGpsPointWithNextIndex(sessionId: number, point: Omit<GpsPoint, "pointIndex">) {
   const db = await getDatabase();
-  const existingPoint = await db.getFirstAsync<{ id: number }>(
-    "SELECT id FROM gps_points WHERE session_id = ? AND timestamp = ? LIMIT 1",
+
+  await db.runAsync(
+    `
+      INSERT OR IGNORE INTO gps_points (
+        session_id,
+        latitude,
+        longitude,
+        timestamp,
+        accuracy,
+        point_index
+      )
+      SELECT
+        ?,
+        ?,
+        ?,
+        ?,
+        ?,
+        COALESCE(
+          (SELECT MAX(point_index) + 1 FROM gps_points WHERE session_id = ?),
+          0
+        )
+      WHERE EXISTS (
+        SELECT 1
+        FROM walk_sessions
+        WHERE id = ? AND ended_at = started_at
+      )
+    `,
     sessionId,
-    point.timestamp
-  );
-
-  if (existingPoint) {
-    return;
-  }
-
-  const row = await db.getFirstAsync<{ next_index: number | null }>(
-    "SELECT COALESCE(MAX(point_index) + 1, 0) AS next_index FROM gps_points WHERE session_id = ?",
+    point.latitude,
+    point.longitude,
+    point.timestamp,
+    point.accuracy,
+    sessionId,
     sessionId
   );
-
-  await saveGpsPoint(sessionId, {
-    ...point,
-    pointIndex: row?.next_index ?? 0
-  });
 }
 
 export async function getLastGpsPointForSession(sessionId: number): Promise<GpsPoint | null> {
@@ -131,7 +163,7 @@ export async function getLastGpsPointForSession(sessionId: number): Promise<GpsP
       SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
       FROM gps_points
       WHERE session_id = ?
-      ORDER BY point_index DESC
+      ORDER BY timestamp DESC, id DESC
       LIMIT 1
     `,
     sessionId
@@ -147,7 +179,7 @@ export async function getGpsPointsForSession(sessionId: number): Promise<GpsPoin
       SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
       FROM gps_points
       WHERE session_id = ?
-      ORDER BY point_index
+      ORDER BY timestamp, id
     `,
     sessionId
   );
@@ -209,11 +241,20 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
       SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
       FROM gps_points
       WHERE session_id IN (${placeholders})
-      ORDER BY session_id, point_index
+      ORDER BY session_id, timestamp, id
+    `,
+    ...sessionIds
+  );
+  const routeSnapshots = await db.getAllAsync<RouteSnapshotRow>(
+    `
+      SELECT session_id, segments_json, source_point_count, algorithm_version, created_at
+      FROM route_snapshots
+      WHERE session_id IN (${placeholders})
     `,
     ...sessionIds
   );
   const pointsBySession = new Map<number, GpsPoint[]>();
+  const routeSegmentsBySession = new Map<number, RenderedRouteSegment[]>();
 
   for (const row of points) {
     const sessionPoints = pointsBySession.get(row.session_id) ?? [];
@@ -221,10 +262,48 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
     pointsBySession.set(row.session_id, sessionPoints);
   }
 
+  for (const snapshot of routeSnapshots) {
+    const segments = parseRouteSegments(snapshot.segments_json);
+
+    if (segments) {
+      routeSegmentsBySession.set(snapshot.session_id, segments);
+    }
+  }
+
   return sessions.map((row) => ({
     ...mapSessionRow(row),
-    points: pointsBySession.get(row.id) ?? []
+    points: pointsBySession.get(row.id) ?? [],
+    routeSegments: routeSegmentsBySession.get(row.id) ?? null
   }));
+}
+
+export async function saveRouteSnapshot(
+  sessionId: number,
+  segments: RenderedRouteSegment[],
+  sourcePointCount: number,
+  algorithmVersion: number,
+  options: { replaceExisting?: boolean } = {}
+) {
+  const db = await getDatabase();
+  const insertMode = options.replaceExisting ? "INSERT OR REPLACE" : "INSERT OR IGNORE";
+
+  await db.runAsync(
+    `
+      ${insertMode} INTO route_snapshots (
+        session_id,
+        segments_json,
+        source_point_count,
+        algorithm_version,
+        created_at
+      )
+      VALUES (?, ?, ?, ?, ?)
+    `,
+    sessionId,
+    JSON.stringify(segments),
+    sourcePointCount,
+    algorithmVersion,
+    new Date().toISOString()
+  );
 }
 
 export async function getLifetimeStats(activityMode: ActivityMode): Promise<LifetimeStats> {
@@ -296,6 +375,7 @@ export async function getWalkHistory(activityMode: ActivityMode): Promise<WalkSe
 export async function deleteWalkSession(sessionId: number) {
   const db = await getDatabase();
 
+  await db.runAsync("DELETE FROM route_snapshots WHERE session_id = ?", sessionId);
   await db.runAsync("DELETE FROM gps_points WHERE session_id = ?", sessionId);
   await db.runAsync("DELETE FROM walk_sessions WHERE id = ?", sessionId);
 }
@@ -321,14 +401,32 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
   const pointRows = await db.getAllAsync<GpsPointRow>(`
     SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
     FROM gps_points
-    ORDER BY session_id, point_index
+    ORDER BY session_id, timestamp, id
+  `);
+  const snapshotRows = await db.getAllAsync<RouteSnapshotRow>(`
+    SELECT session_id, segments_json, source_point_count, algorithm_version, created_at
+    FROM route_snapshots
+    ORDER BY session_id
   `);
 
   return {
     exportedAt: new Date().toISOString(),
     points: pointRows.map(mapPointRow),
+    routeSnapshots: snapshotRows.flatMap((row) => {
+      const segments = parseRouteSegments(row.segments_json);
+
+      return segments
+        ? [{
+            algorithmVersion: row.algorithm_version,
+            createdAt: row.created_at,
+            segments,
+            sessionId: row.session_id,
+            sourcePointCount: row.source_point_count
+          }]
+        : [];
+    }),
     sessions: sessionRows.map(mapSessionRow),
-    version: 1
+    version: 2
   };
 }
 
@@ -337,64 +435,87 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
 
   validateBackupData(backup);
 
-  await db.execAsync(`
-    DELETE FROM gps_points;
-    DELETE FROM walk_sessions;
-  `);
+  await db.withTransactionAsync(async () => {
+    await db.execAsync(`
+      DELETE FROM route_snapshots;
+      DELETE FROM gps_points;
+      DELETE FROM walk_sessions;
+    `);
 
-  for (const session of backup.sessions) {
-    await db.runAsync(
-      `
-        INSERT INTO walk_sessions (
-          id,
-          activity_mode,
-          display_name,
-          started_at,
-          ended_at,
-          distance_meters,
-          duration_seconds,
-          step_count
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `,
-      session.id,
-      session.activityMode,
-      session.displayName,
-      session.startedAt,
-      session.endedAt,
-      session.distanceMeters,
-      session.durationSeconds,
-      session.stepCount ?? 0
-    );
-  }
-
-  for (const point of backup.points) {
-    if (!point.id || !point.sessionId) {
-      throw new Error("Backup contains a GPS point without an id or session id.");
+    for (const session of backup.sessions) {
+      await db.runAsync(
+        `
+          INSERT INTO walk_sessions (
+            id,
+            activity_mode,
+            display_name,
+            started_at,
+            ended_at,
+            distance_meters,
+            duration_seconds,
+            step_count
+          )
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        `,
+        session.id,
+        session.activityMode,
+        session.displayName,
+        session.startedAt,
+        session.endedAt,
+        session.distanceMeters,
+        session.durationSeconds,
+        session.stepCount ?? 0
+      );
     }
 
-    await db.runAsync(
-      `
-        INSERT INTO gps_points (
-          id,
-          session_id,
-          latitude,
-          longitude,
-          timestamp,
-          accuracy,
-          point_index
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `,
-      point.id,
-      point.sessionId,
-      point.latitude,
-      point.longitude,
-      point.timestamp,
-      point.accuracy,
-      point.pointIndex
-    );
-  }
+    for (const point of backup.points) {
+      if (!point.id || !point.sessionId) {
+        throw new Error("Backup contains a GPS point without an id or session id.");
+      }
+
+      await db.runAsync(
+        `
+          INSERT INTO gps_points (
+            id,
+            session_id,
+            latitude,
+            longitude,
+            timestamp,
+            accuracy,
+            point_index
+          )
+          VALUES (?, ?, ?, ?, ?, ?, ?)
+        `,
+        point.id,
+        point.sessionId,
+        point.latitude,
+        point.longitude,
+        point.timestamp,
+        point.accuracy,
+        point.pointIndex
+      );
+    }
+
+    for (const snapshot of backup.routeSnapshots) {
+      await db.runAsync(
+        `
+          INSERT INTO route_snapshots (
+            session_id,
+            segments_json,
+            source_point_count,
+            algorithm_version,
+            created_at
+          )
+          VALUES (?, ?, ?, ?, ?)
+        `,
+        snapshot.sessionId,
+        JSON.stringify(snapshot.segments),
+        snapshot.sourcePointCount,
+        snapshot.algorithmVersion,
+        snapshot.createdAt
+      );
+    }
+  });
 }
 
 function validateBackupData(backup: StreetExplorerBackup) {
@@ -417,12 +538,19 @@ function validateBackupData(backup: StreetExplorerBackup) {
       throw new Error("Backup contains a GPS point for a missing session.");
     }
   }
+
+  for (const snapshot of backup.routeSnapshots) {
+    if (!sessionIds.has(snapshot.sessionId) || !areRenderedRouteSegments(snapshot.segments)) {
+      throw new Error("Backup contains an invalid route snapshot.");
+    }
+  }
 }
 
 export async function deleteAllData() {
   const db = await getDatabase();
 
   await db.execAsync(`
+    DELETE FROM route_snapshots;
     DELETE FROM gps_points;
     DELETE FROM walk_sessions;
   `);
@@ -452,4 +580,37 @@ function mapPointRow(row: GpsPointRow): GpsPoint {
     accuracy: row.accuracy,
     pointIndex: row.point_index
   };
+}
+
+function parseRouteSegments(value: string) {
+  try {
+    const parsed: unknown = JSON.parse(value);
+
+    return areRenderedRouteSegments(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function areRenderedRouteSegments(value: unknown): value is RenderedRouteSegment[] {
+  return Array.isArray(value) && value.every((segment) => {
+    if (!segment || typeof segment !== "object") {
+      return false;
+    }
+
+    const candidate = segment as Partial<RenderedRouteSegment>;
+
+    return (
+      (candidate.type === "confirmed" || candidate.type === "inferred") &&
+      Array.isArray(candidate.points) &&
+      candidate.points.length >= 2 &&
+      candidate.points.every((point) =>
+        Boolean(point) &&
+        typeof point.latitude === "number" &&
+        Number.isFinite(point.latitude) &&
+        typeof point.longitude === "number" &&
+        Number.isFinite(point.longitude)
+      )
+    );
+  });
 }

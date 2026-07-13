@@ -30,6 +30,6 @@ Use the development build for real device testing, especially background locatio
 
 ## Current Status
 
-Current version: `v0.3.40`
+Current version: `v0.3.60`
 
 The app supports local recording, mode-specific GPS filtering, full-screen Details/History/Completion views, explored cells, loop-fill analysis, recovery for unfinished recordings, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.

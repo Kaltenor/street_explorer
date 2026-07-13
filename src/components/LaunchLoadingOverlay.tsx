@@ -1,4 +1,4 @@
-import { ActivityIndicator, ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { APP_VERSION } from "../constants/config";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
@@ -9,26 +9,19 @@ type LaunchLoadingOverlayProps = {
   isReady: boolean;
   language: AppLanguage;
   onChangeMode: (mode: ActivityMode) => void;
-  onStart: () => void;
 };
 
 export function LaunchLoadingOverlay({
   activityMode,
   isReady,
   language,
-  onChangeMode,
-  onStart
+  onChangeMode
 }: LaunchLoadingOverlayProps) {
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
 
   return (
-    <Pressable
-      accessibilityRole="button"
-      disabled={!isReady}
-      onPress={onStart}
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <ImageBackground
         resizeMode="stretch"
         source={require("../../assets/splash.png")}
@@ -54,18 +47,18 @@ export function LaunchLoadingOverlay({
               </TouchableOpacity>
             ))}
           </View>
-          {isReady ? (
-            <Text style={styles.startText}>{strings.launch.pressToStart}</Text>
-          ) : (
-            <View style={styles.loadingRow}>
-              <ActivityIndicator color="#9cff00" size="small" />
-              <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
-            </View>
-          )}
+          <View style={styles.loadingRow}>
+            <ActivityIndicator color="#9cff00" size="small" />
+            <Text style={styles.loadingText}>
+              {isReady
+                ? language === "fr" ? "Ouverture de la carte" : "Opening map"
+                : strings.launch.loadingMap}
+            </Text>
+          </View>
           <Text style={styles.version}>v{APP_VERSION}</Text>
         </View>
       </ImageBackground>
-    </Pressable>
+    </View>
   );
 }
 
@@ -135,20 +128,6 @@ const styles = StyleSheet.create({
   },
   selectedModeButtonText: {
     color: "#02060a"
-  },
-  startText: {
-    backgroundColor: "rgba(2, 6, 10, 0.72)",
-    borderColor: "rgba(156, 255, 0, 0.5)",
-    borderRadius: 8,
-    borderWidth: 1,
-    color: "#9cff00",
-    fontSize: 18,
-    fontWeight: "900",
-    letterSpacing: 1.4,
-    overflow: "hidden",
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    textTransform: "uppercase"
   },
   version: {
     color: "rgba(248, 250, 252, 0.72)",

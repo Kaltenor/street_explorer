@@ -1,6 +1,8 @@
+import packageMetadata from "../../package.json";
+
 import type { ActivityMode } from "../types/walk";
 
-export const APP_VERSION = "0.3.49";
+export const APP_VERSION = packageMetadata.version;
 
 export const LOCATION_CONFIG = {
   maxAcceptedAccuracyMeters: 100,
@@ -18,17 +20,17 @@ export const MODE_LOCATION_CONFIG: Record<
   }
 > = {
   walk: {
-    maxAcceptedAccuracyMeters: 60,
+    maxAcceptedAccuracyMeters: 30,
     maxSpeedMetersPerSecond: 4,
     minDistanceBetweenPointsMeters: 1
   },
   wheel: {
-    maxAcceptedAccuracyMeters: 80,
+    maxAcceptedAccuracyMeters: 40,
     maxSpeedMetersPerSecond: 16,
     minDistanceBetweenPointsMeters: 2
   },
   car: {
-    maxAcceptedAccuracyMeters: 100,
+    maxAcceptedAccuracyMeters: 60,
     maxSpeedMetersPerSecond: 55,
     minDistanceBetweenPointsMeters: 5
   }

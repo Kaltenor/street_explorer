@@ -38,7 +38,11 @@
 - Device step counting for Walk mode.
 - Full-screen Details, History, and Completion views.
 - Branded splash/loading screen and transparent map logo HUD.
-- Street-aware path inference prototype, currently limited to display-only route refinement because it needs stronger validation before it affects cells.
+- Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
+- Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
+- Phased reprocessing progress, timeout handling, and visible completion diagnostics.
+- Cache-only graph reuse, atomic exploration replacement, and per-recording reprocess recovery.
+- Automatic launch-loader transition into the map.
 
 ## Next Priority
 
@@ -51,15 +55,15 @@ Improve the real game layer:
 - cache calculated zone denominators
 - add boundary refresh status and last-fetched date
 
-### 2. Street-Aware Path Inference V2
+### 2. Street-Aware Path Inference V3
 
-Make inferred routes trustworthy enough to persist:
+Improve the now-persisted and scored inferred routes:
 
 - use full OSM street topology instead of local loaded segments only
 - connect intersections more robustly when OSM ways do not share exact nodes
-- add confidence scoring in history/detail screens
-- persist inferred path geometry only after route validation is trustworthy
-- never let inferred paths affect completion until the user can inspect them
+- add per-bridge review and confidence details in history
+- show how many completion cells came from each frozen bridge
+- keep explicit reprocessing as the only way to replace historical snapshots
 
 ### 3. OpenStreetMap Street Completion V2
 

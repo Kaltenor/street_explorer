@@ -232,6 +232,35 @@ export async function initDatabase() {
       `);
     }
   });
+
+  await applyMigration(12, "freeze_rendered_routes_and_deduplicate_gps", async () => {
+    await db.execAsync(`
+      DELETE FROM gps_points
+      WHERE id NOT IN (
+        SELECT MIN(id)
+        FROM gps_points
+        GROUP BY session_id, timestamp
+      );
+
+      CREATE UNIQUE INDEX IF NOT EXISTS gps_points_session_timestamp_index
+        ON gps_points (session_id, timestamp);
+
+      CREATE TABLE IF NOT EXISTS route_snapshots (
+        session_id INTEGER PRIMARY KEY NOT NULL,
+        segments_json TEXT NOT NULL,
+        source_point_count INTEGER NOT NULL,
+        algorithm_version INTEGER NOT NULL,
+        created_at TEXT NOT NULL,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
+      );
+    `);
+  });
+  await applyMigration(13, "reset_unstable_osm_segment_ids", async () => {
+    // Older fetches numbered only the locally returned pieces of each OSM way.
+    // Overlapping fetch windows could therefore overwrite an unrelated road piece
+    // under the same ID and leave gaps in the routing graph.
+    await db.execAsync("DELETE FROM osm_street_segments;");
+  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

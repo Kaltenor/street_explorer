@@ -1,3 +1,5 @@
+import type { SQLiteDatabase } from "expo-sqlite";
+
 import { EXPLORATION_CELL_SIZE_METERS } from "../services/explorationArea";
 import { MapCoordinate } from "../services/explorationArea";
 import { ActivityMode } from "../types/walk";
@@ -37,7 +39,7 @@ export type LoopFillSessionSummary = {
   unwalkedWalkableStreetLengthM: number;
 };
 
-type ExploredCellInput = {
+export type ExploredCellInput = {
   cellKey: string;
   mode: ActivityMode;
   sessionId: number | null;
@@ -61,36 +63,51 @@ export type ExploredCellRecord = {
 };
 
 export async function saveExploredCells(cells: ExploredCellInput[]) {
+  if (cells.length === 0) {
+    return;
+  }
+
   const db = await getDatabase();
-  const createdAt = new Date().toISOString();
 
-  for (const cell of cells) {
-    const parsed = parseCellKey(cell.cellKey);
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    await insertExploredCells(transaction, cells, new Date().toISOString());
+  });
+}
 
-    await db.runAsync(
-      `
-        INSERT OR IGNORE INTO explored_cells (
-          mode,
-          cell_size_m,
-          cell_x,
-          cell_y,
-          source,
-          session_id,
-          created_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `,
-      cell.mode,
-      EXPLORATION_CELL_SIZE_METERS,
-      parsed.x,
-      parsed.y,
-      cell.source,
-      cell.sessionId,
-      createdAt
+async function insertExploredCells(
+  transaction: SQLiteDatabase,
+  cells: ExploredCellInput[],
+  createdAt: string
+) {
+  const batchSize = 100;
+
+  for (let offset = 0; offset < cells.length; offset += batchSize) {
+    const batch = cells.slice(offset, offset + batchSize);
+    const placeholders = batch.map(() => "(?, ?, ?, ?, ?, ?, ?)").join(", ");
+    const values: Array<number | string | null> = [];
+
+    for (const cell of batch) {
+      const parsed = parseCellKey(cell.cellKey);
+
+      values.push(
+        cell.mode,
+        EXPLORATION_CELL_SIZE_METERS,
+        parsed.x,
+        parsed.y,
+        cell.source,
+        cell.sessionId,
+        createdAt
+      );
+    }
+
+    await transaction.runAsync(
+      "INSERT OR IGNORE INTO explored_cells " +
+        "(mode, cell_size_m, cell_x, cell_y, source, session_id, created_at) VALUES " +
+        placeholders,
+      values
     );
   }
 }
-
 export async function getLoopFillCellKeys(mode: ActivityMode | "all") {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
@@ -266,7 +283,7 @@ export async function deleteLoopFillDataForMode(mode: ActivityMode) {
   );
 }
 
-export async function saveLoopFill(input: {
+export type LoopFillInput = {
   accepted: boolean;
   areaM2: number;
   mode: ActivityMode;
@@ -275,24 +292,43 @@ export async function saveLoopFill(input: {
   sessionId: number | null;
   totalWalkableStreetLengthM: number;
   unwalkedWalkableStreetLengthM: number;
-}) {
-  const db = await getDatabase();
+};
 
-  await db.runAsync(
-    `
-      INSERT INTO loop_fills (
-        session_id,
-        mode,
-        polygon_json,
-        area_m2,
-        total_walkable_street_length_m,
-        unwalked_walkable_street_length_m,
-        accepted,
-        rejection_reason,
-        created_at
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `,
+export async function replaceExplorationForMode(
+  mode: ActivityMode,
+  cells: ExploredCellInput[],
+  loopFills: LoopFillInput[]
+) {
+  const db = await getDatabase();
+  const createdAt = new Date().toISOString();
+
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    await transaction.runAsync("DELETE FROM explored_cells WHERE mode = ?", mode);
+    await transaction.runAsync("DELETE FROM loop_fills WHERE mode = ?", mode);
+    await insertExploredCells(transaction, cells, createdAt);
+
+    for (const input of loopFills) {
+      await insertLoopFill(transaction, input, createdAt);
+    }
+  });
+}
+
+export async function saveLoopFill(input: LoopFillInput) {
+  const db = await getDatabase();
+  await insertLoopFill(db, input, new Date().toISOString());
+}
+
+async function insertLoopFill(
+  transaction: SQLiteDatabase,
+  input: LoopFillInput,
+  createdAt: string
+) {
+  await transaction.runAsync(
+    "INSERT INTO loop_fills (" +
+      "session_id, mode, polygon_json, area_m2, " +
+      "total_walkable_street_length_m, unwalked_walkable_street_length_m, " +
+      "accepted, rejection_reason, created_at" +
+      ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
     input.sessionId,
     input.mode,
     input.polygonJson,
@@ -301,10 +337,9 @@ export async function saveLoopFill(input: {
     input.unwalkedWalkableStreetLengthM,
     input.accepted ? 1 : 0,
     input.rejectionReason,
-    new Date().toISOString()
+    createdAt
   );
 }
-
 export async function getCachedZones(type: CompletionScope): Promise<CachedZone[]> {
   const db = await getDatabase();
   const rows = await db.getAllAsync<ZoneRow>(
