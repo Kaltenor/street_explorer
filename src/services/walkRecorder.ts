@@ -1,119 +1,625 @@
-import { MODE_LOCATION_CONFIG } from "../constants/config";
 import {
-  deleteWalkSession,
+  getGpsObservationsForSession,
+  markGpsObservationProcessed,
+  replaceActiveWalkGpsPointsFromObservations,
+  saveActiveGpsObservation
+} from "../database/gpsObservationRepository";
+import {
   finishWalkSession,
-  getGpsPointsForSession,
+  getGpsPointForSessionTimestamp,
   getLastGpsPointForSession,
+  getWalkSessionById,
   saveGpsPointWithNextIndex
 } from "../database/walkRepository";
-import { calculatePathDistanceMeters, haversineDistanceMeters } from "./distance";
+import {
+  calculatePathDistanceMeters,
+  haversineDistanceMeters
+} from "./distance";
 import { ActiveWalk, ActivityMode, GpsPoint } from "../types/walk";
+import {
+  ACTIVE_RAW_POINT_LIMIT,
+  appendGpsPoint,
+  appendPersistedGpsPoint,
+  applyRejectedGpsEvaluation,
+  collectConfirmedLiveExploredCellIds,
+  createActiveWalk,
+  evaluateGpsPoint
+} from "./recordingState";
 
-const gpsPersistenceQueues = new Map<number, Promise<void>>();
+export {
+  ACTIVE_RAW_POINT_LIMIT,
+  appendGpsPoint,
+  appendPersistedGpsPoint,
+  applyRejectedGpsEvaluation,
+  collectConfirmedLiveExploredCellIds,
+  createActiveWalk,
+  evaluateGpsPoint
+};
+export type { AppendGpsPointResult, PointEvaluation } from "./recordingState";
 
-export type PointEvaluation =
-  | {
-      accepted: true;
-      speedMetersPerSecond: number;
-    }
-  | {
-      accepted: false;
-      countAsRejected: boolean;
-      reason: string | null;
-    };
+export type GpsPersistenceResult = {
+  didRebuild: boolean;
+  evaluation: ReturnType<typeof evaluateGpsPoint>;
+  point: GpsPoint | null;
+};
 
-export function createActiveWalk(
-  activityMode: ActivityMode,
-  sessionId: number,
-  startedAt = new Date().toISOString()
-): ActiveWalk {
-  return {
-    activityMode,
-    sessionId,
-    startedAt,
-    acceptedGpsPointCount: 0,
-    points: [],
-    gpsPausedEventCount: 0,
-    rejectedGpsPointCount: 0,
-    distanceMeters: 0,
-    currentSpeedMetersPerSecond: 0,
-    lastRejectedPointReason: null,
-    stepCount: 0
-  };
+type GpsPersistenceJob = {
+  activityMode: ActivityMode;
+  arrivalSequence: number;
+  eligibleAtMs: number;
+  isSettled: boolean;
+  rawPoint: Omit<GpsPoint, "pointIndex">;
+  reject: (reason: unknown) => void;
+  resolve: (result: GpsPersistenceResult) => void;
+};
+
+type GpsPersistenceQueue = {
+  jobs: GpsPersistenceJob[];
+  lastError: unknown;
+  reorderTimer: ReturnType<typeof setTimeout> | null;
+  retryAttempt: number;
+  retryTimer: ReturnType<typeof setTimeout> | null;
+  running: Promise<void> | null;
+};
+
+const GPS_PERSISTENCE_MAX_PENDING_JOBS = 4096;
+const GPS_PERSISTENCE_REORDER_WINDOW_MS = 750;
+const GPS_PERSISTENCE_RETRY_DELAYS_MS = [
+  250,
+  1000,
+  2000,
+  5000,
+  15_000,
+  30_000
+] as const;
+const gpsPersistenceQueues = new Map<number, GpsPersistenceQueue>();
+const gpsPersistenceFullSyncGenerations =
+  new Map<number, number>();
+let gpsPersistenceAdmissionCloseDepth = 0;
+let nextGpsPersistenceArrivalSequence = 0;
+
+export class GpsPersistenceBacklogError extends Error {
+  constructor() {
+    super("GPS persistence backlog is full; recording must wait for storage recovery.");
+    this.name = "GpsPersistenceBacklogError";
+  }
 }
 
-export function appendGpsPoint(activeWalk: ActiveWalk, rawPoint: GpsPoint): ActiveWalk {
-  const previousPoint = activeWalk.points.at(-1);
-  const evaluation = evaluateGpsPoint(activeWalk.activityMode, previousPoint ?? null, rawPoint);
-
-  if (!evaluation.accepted) {
-    return {
-      ...activeWalk,
-      lastRejectedPointReason: evaluation.reason,
-      gpsPausedEventCount:
-        !evaluation.countAsRejected && evaluation.reason
-          ? activeWalk.gpsPausedEventCount + 1
-          : activeWalk.gpsPausedEventCount,
-      rejectedGpsPointCount: evaluation.countAsRejected
-        ? activeWalk.rejectedGpsPointCount + 1
-        : activeWalk.rejectedGpsPointCount
-    };
+class GpsPersistenceAdmissionClosedError extends Error {
+  constructor() {
+    super("GPS persistence admission is closed for data replacement.");
+    this.name = "GpsPersistenceAdmissionClosedError";
   }
+}
 
-  const point = {
-    ...rawPoint,
-    pointIndex: activeWalk.points.length
-  };
-  const points = [...activeWalk.points, point];
+class GpsPersistenceSessionClosedError extends Error {
+  constructor() {
+    super("GPS persistence stopped because the recording is already closed.");
+    this.name = "GpsPersistenceSessionClosedError";
+  }
+}
 
-  return {
-    ...activeWalk,
-    acceptedGpsPointCount: activeWalk.acceptedGpsPointCount + 1,
-    points,
-    distanceMeters: calculatePathDistanceMeters(points),
-    currentSpeedMetersPerSecond: evaluation.speedMetersPerSecond,
-    lastRejectedPointReason: null
-  };
+export function canQueueAcceptedGpsPoint(sessionId: number) {
+  return (
+    (gpsPersistenceQueues.get(sessionId)?.jobs.length ?? 0) <
+    GPS_PERSISTENCE_MAX_PENDING_JOBS
+  );
 }
 
 export function persistAcceptedGpsPoint(
   sessionId: number,
   activityMode: ActivityMode,
   rawPoint: Omit<GpsPoint, "pointIndex">
-) {
-  const previousOperation = gpsPersistenceQueues.get(sessionId) ?? Promise.resolve();
-  const operation = previousOperation.then(async () => {
-    const previousPoint = await getLastGpsPointForSession(sessionId);
-    const evaluation = evaluateGpsPoint(activityMode, previousPoint, {
-      ...rawPoint,
-      pointIndex: 0
-    });
+): Promise<GpsPersistenceResult> {
+  if (gpsPersistenceAdmissionCloseDepth > 0) {
+    return Promise.reject(new GpsPersistenceAdmissionClosedError());
+  }
 
-    if (!evaluation.accepted) {
-      return null;
-    }
+  const queue = getOrCreatePersistenceQueue(sessionId);
 
-    await saveGpsPointWithNextIndex(sessionId, rawPoint);
+  if (queue.jobs.length >= GPS_PERSISTENCE_MAX_PENDING_JOBS) {
+    return Promise.reject(new GpsPersistenceBacklogError());
+  }
 
-    return evaluation;
+  let resolveJob!: (result: GpsPersistenceResult) => void;
+  let rejectJob!: (reason: unknown) => void;
+  const operation = new Promise<GpsPersistenceResult>((resolve, reject) => {
+    resolveJob = resolve;
+    rejectJob = reject;
   });
-  const settledOperation = operation.then(
-    () => undefined,
-    () => undefined
-  );
+  const job: GpsPersistenceJob = {
+    activityMode,
+    arrivalSequence: nextGpsPersistenceArrivalSequence++,
+    eligibleAtMs: Date.now() + GPS_PERSISTENCE_REORDER_WINDOW_MS,
+    isSettled: false,
+    rawPoint,
+    reject: rejectJob,
+    resolve: resolveJob
+  };
+  queue.jobs.push(job);
 
-  gpsPersistenceQueues.set(sessionId, settledOperation);
-  void settledOperation.then(() => {
-    if (gpsPersistenceQueues.get(sessionId) === settledOperation) {
-      gpsPersistenceQueues.delete(sessionId);
-    }
-  });
+  if (
+    queue.lastError !== undefined &&
+    queue.jobs[0]?.isSettled
+  ) {
+    job.isSettled = true;
+    job.reject(queue.lastError);
+  }
 
+  schedulePersistenceDrain(sessionId, queue);
   return operation;
 }
 
+export function consumeGpsPersistenceFullSyncRequest(sessionId: number) {
+  return gpsPersistenceFullSyncGenerations.get(sessionId) ?? null;
+}
+
+export function acknowledgeGpsPersistenceFullSyncRequest(
+  sessionId: number,
+  generation: number
+) {
+  if (
+    gpsPersistenceFullSyncGenerations.get(sessionId) === generation
+  ) {
+    gpsPersistenceFullSyncGenerations.delete(sessionId);
+  }
+}
+
+export function discardPendingGpsPoints(sessionId: number) {
+  gpsPersistenceFullSyncGenerations.delete(sessionId);
+
+  const queue = gpsPersistenceQueues.get(sessionId);
+
+  if (!queue) {
+    return;
+  }
+
+  gpsPersistenceQueues.delete(sessionId);
+
+  if (queue.retryTimer) {
+    clearTimeout(queue.retryTimer);
+    queue.retryTimer = null;
+  }
+
+  if (queue.reorderTimer) {
+    clearTimeout(queue.reorderTimer);
+    queue.reorderTimer = null;
+  }
+
+  const error = new Error("GPS persistence cancelled because the recording was discarded.");
+
+  for (const job of queue.jobs.splice(0)) {
+    if (!job.isSettled) {
+      job.isSettled = true;
+      job.reject(error);
+    }
+  }
+}
+
+export function closeGpsPersistenceAdmission() {
+  gpsPersistenceAdmissionCloseDepth += 1;
+  let released = false;
+
+  return () => {
+    if (released) {
+      return;
+    }
+
+    released = true;
+    gpsPersistenceAdmissionCloseDepth = Math.max(
+      0,
+      gpsPersistenceAdmissionCloseDepth - 1
+    );
+  };
+}
+
+export async function discardAllGpsPersistenceForDataReplacement() {
+  if (gpsPersistenceAdmissionCloseDepth === 0) {
+    throw new Error(
+      "GPS persistence admission must be closed before replacing data."
+    );
+  }
+
+  const runningOperations = [...gpsPersistenceQueues.values()]
+    .flatMap((queue) => queue.running ? [queue.running] : []);
+  const sessionIds = [...gpsPersistenceQueues.keys()];
+
+  for (const sessionId of sessionIds) {
+    discardPendingGpsPoints(sessionId);
+  }
+
+  await Promise.allSettled(runningOperations);
+  gpsPersistenceFullSyncGenerations.clear();
+}
+
 export async function flushPendingGpsPoints(sessionId: number) {
-  await gpsPersistenceQueues.get(sessionId);
+  for (;;) {
+    const queue = gpsPersistenceQueues.get(sessionId);
+
+    if (!queue) {
+      return;
+    }
+
+    if (queue.running) {
+      await queue.running;
+      continue;
+    }
+
+    if (queue.jobs.length > 0) {
+      if (queue.reorderTimer) {
+        clearTimeout(queue.reorderTimer);
+        queue.reorderTimer = null;
+      }
+
+      if (queue.retryTimer) {
+        clearTimeout(queue.retryTimer);
+        queue.retryTimer = null;
+      }
+
+      await drainPersistenceQueue(sessionId, queue, true);
+
+      if (queue.jobs.length > 0) {
+        throw queue.lastError;
+      }
+
+      continue;
+    }
+
+    if (gpsPersistenceQueues.get(sessionId) === queue) {
+      gpsPersistenceQueues.delete(sessionId);
+    }
+
+    return;
+  }
+}
+
+function drainPersistenceQueue(
+  sessionId: number,
+  queue: GpsPersistenceQueue,
+  bypassReorderWindow = false
+) {
+  if (queue.running) {
+    return queue.running;
+  }
+
+  const running = (async () => {
+    while (queue.jobs.length > 0) {
+      orderPersistenceJobs(queue.jobs);
+      const job = queue.jobs[0];
+
+      if (!job) {
+        break;
+      }
+
+      if (!bypassReorderWindow && job.eligibleAtMs > Date.now()) {
+        break;
+      }
+
+      try {
+        const result = await persistGpsPointJob(sessionId, job);
+        const completedJobIndex = queue.jobs.indexOf(job);
+
+        if (completedJobIndex >= 0) {
+          queue.jobs.splice(completedJobIndex, 1);
+        }
+
+        queue.lastError = undefined;
+        queue.retryAttempt = 0;
+
+        if (!job.isSettled) {
+          job.isSettled = true;
+          job.resolve(result);
+        }
+      } catch (error) {
+        queue.lastError = error;
+        const sessionClosed = error instanceof GpsPersistenceSessionClosedError;
+
+        // Retain every job for the bounded retry loop, but settle every caller.
+        // Otherwise a background outbox replay queued behind the failed head can
+        // wait forever even though no later job is eligible to run yet.
+        for (const pendingJob of queue.jobs) {
+          if (!pendingJob.isSettled) {
+            pendingJob.isSettled = true;
+            pendingJob.reject(error);
+          }
+        }
+
+        if (sessionClosed) {
+          queue.jobs.splice(0);
+
+          if (queue.retryTimer) {
+            clearTimeout(queue.retryTimer);
+            queue.retryTimer = null;
+          }
+
+          if (queue.reorderTimer) {
+            clearTimeout(queue.reorderTimer);
+            queue.reorderTimer = null;
+          }
+
+          if (gpsPersistenceQueues.get(sessionId) === queue) {
+            gpsPersistenceQueues.delete(sessionId);
+          }
+
+          break;
+        }
+
+        schedulePersistenceRetry(sessionId, queue);
+        break;
+      }
+    }
+  })();
+
+  queue.running = running;
+  void running.finally(() => {
+    if (queue.running === running) {
+      queue.running = null;
+    }
+
+    if (
+      queue.jobs.length === 0 &&
+      gpsPersistenceQueues.get(sessionId) === queue
+    ) {
+      gpsPersistenceQueues.delete(sessionId);
+      return;
+    }
+
+    if (
+      queue.jobs.length > 0 &&
+      !queue.retryTimer &&
+      gpsPersistenceQueues.get(sessionId) === queue
+    ) {
+      schedulePersistenceDrain(sessionId, queue);
+    }
+  });
+
+  return running;
+}
+
+function schedulePersistenceDrain(
+  sessionId: number,
+  queue: GpsPersistenceQueue
+) {
+  if (
+    queue.jobs.length === 0 ||
+    queue.reorderTimer ||
+    queue.retryTimer ||
+    queue.running ||
+    gpsPersistenceQueues.get(sessionId) !== queue
+  ) {
+    return;
+  }
+
+  orderPersistenceJobs(queue.jobs);
+  const firstJob = queue.jobs[0];
+
+  if (!firstJob) {
+    return;
+  }
+
+  const delayMs = Math.max(0, firstJob.eligibleAtMs - Date.now());
+  queue.reorderTimer = setTimeout(() => {
+    queue.reorderTimer = null;
+
+    if (gpsPersistenceQueues.get(sessionId) === queue) {
+      void drainPersistenceQueue(sessionId, queue);
+    }
+  }, delayMs);
+}
+
+function orderPersistenceJobs(jobs: GpsPersistenceJob[]) {
+  jobs.sort((left, right) => {
+    const timestampDifference =
+      getPersistenceTimestampMs(left) - getPersistenceTimestampMs(right);
+
+    return timestampDifference || left.arrivalSequence - right.arrivalSequence;
+  });
+}
+
+function getPersistenceTimestampMs(job: GpsPersistenceJob) {
+  const timestampMs = new Date(job.rawPoint.timestamp).getTime();
+
+  return Number.isFinite(timestampMs)
+    ? timestampMs
+    : Number.MAX_SAFE_INTEGER;
+}
+
+function schedulePersistenceRetry(
+  sessionId: number,
+  queue: GpsPersistenceQueue
+) {
+  if (
+    queue.retryTimer ||
+    gpsPersistenceQueues.get(sessionId) !== queue
+  ) {
+    return;
+  }
+
+  const retryIndex = Math.min(
+    queue.retryAttempt,
+    GPS_PERSISTENCE_RETRY_DELAYS_MS.length - 1
+  );
+  const retryDelay =
+    GPS_PERSISTENCE_RETRY_DELAYS_MS[retryIndex] ??
+    GPS_PERSISTENCE_RETRY_DELAYS_MS[
+      GPS_PERSISTENCE_RETRY_DELAYS_MS.length - 1
+    ];
+
+  queue.retryAttempt += 1;
+  queue.retryTimer = setTimeout(() => {
+    queue.retryTimer = null;
+
+    if (gpsPersistenceQueues.get(sessionId) === queue) {
+      void drainPersistenceQueue(sessionId, queue);
+    }
+  }, retryDelay);
+}
+
+async function persistGpsPointJob(
+  sessionId: number,
+  job: GpsPersistenceJob
+): Promise<GpsPersistenceResult> {
+  const observationWrite = await saveActiveGpsObservation(
+    sessionId,
+    job.rawPoint
+  );
+
+  if (!observationWrite.observation) {
+    throw new GpsPersistenceSessionClosedError();
+  }
+
+  if (observationWrite.processed) {
+    const persistedPoint = observationWrite.accepted
+      ? await getGpsPointForSessionTimestamp(
+          sessionId,
+          job.rawPoint.timestamp
+        )
+      : null;
+
+    if (observationWrite.accepted && !persistedPoint) {
+      throw new Error("A derived GPS observation is missing its route point.");
+    }
+
+    return {
+      didRebuild: false,
+      evaluation: observationWrite.accepted
+        ? { accepted: true, speedMetersPerSecond: 0 }
+        : { accepted: false, countAsRejected: false, reason: null },
+      point: persistedPoint
+    };
+  }
+
+  if (observationWrite.requiresRebuild) {
+    const observations = await getGpsObservationsForSession(sessionId);
+    const acceptedPoints = buildCanonicalGpsPoints(
+      job.activityMode,
+      observations
+    );
+    const replaced = await replaceActiveWalkGpsPointsFromObservations(
+      sessionId,
+      acceptedPoints,
+      calculatePathDistanceMeters(acceptedPoints),
+      observationWrite
+    );
+
+    if (!replaced) {
+      throw new Error(
+        "GPS observations changed before their active route could rebuild."
+      );
+    }
+
+    gpsPersistenceFullSyncGenerations.set(
+      sessionId,
+      (gpsPersistenceFullSyncGenerations.get(sessionId) ?? 0) + 1
+    );
+    const persistedPoint = acceptedPoints.some(
+      (point) => point.timestamp === job.rawPoint.timestamp
+    )
+      ? await getGpsPointForSessionTimestamp(
+          sessionId,
+          job.rawPoint.timestamp
+        )
+      : null;
+
+    return {
+      didRebuild: true,
+      evaluation: persistedPoint
+        ? { accepted: true, speedMetersPerSecond: 0 }
+        : { accepted: false, countAsRejected: false, reason: null },
+      point: persistedPoint
+    };
+  }
+
+  const previousPoint = await getLastGpsPointForSession(sessionId);
+  const evaluation = evaluateGpsPoint(job.activityMode, previousPoint, {
+    ...job.rawPoint,
+    pointIndex: 0
+  });
+
+  if (!evaluation.accepted) {
+    await markGpsObservationProcessed(
+      sessionId,
+      job.rawPoint.timestamp,
+      false
+    );
+
+    return {
+      didRebuild: false,
+      evaluation,
+      point: null
+    };
+  }
+
+  const persistedPoint = await saveGpsPointWithNextIndex(
+    sessionId,
+    job.rawPoint,
+    previousPoint
+      ? haversineDistanceMeters(previousPoint, {
+          ...job.rawPoint,
+          pointIndex: 0
+        })
+      : 0
+  );
+
+  if (!persistedPoint) {
+    throw new GpsPersistenceSessionClosedError();
+  }
+
+  await markGpsObservationProcessed(
+    sessionId,
+    job.rawPoint.timestamp,
+    true
+  );
+
+  return {
+    didRebuild: false,
+    evaluation,
+    point: persistedPoint
+  };
+}
+
+function buildCanonicalGpsPoints(
+  activityMode: ActivityMode,
+  observations: GpsPoint[]
+) {
+  const acceptedPoints: GpsPoint[] = [];
+
+  for (const observation of observations) {
+    const evaluation = evaluateGpsPoint(
+      activityMode,
+      acceptedPoints.at(-1) ?? null,
+      observation
+    );
+
+    if (evaluation.accepted) {
+      acceptedPoints.push({
+        ...observation,
+        pointIndex: acceptedPoints.length
+      });
+    }
+  }
+
+  return acceptedPoints;
+}
+
+function getOrCreatePersistenceQueue(sessionId: number) {
+  const existingQueue = gpsPersistenceQueues.get(sessionId);
+
+  if (existingQueue) {
+    return existingQueue;
+  }
+
+  const queue: GpsPersistenceQueue = {
+    jobs: [],
+    lastError: undefined,
+    reorderTimer: null,
+    retryAttempt: 0,
+    retryTimer: null,
+    running: null
+  };
+
+  gpsPersistenceQueues.set(sessionId, queue);
+  return queue;
 }
 
 export async function finishPersistedActiveWalk(
@@ -122,115 +628,18 @@ export async function finishPersistedActiveWalk(
   stepCount = activeWalk.stepCount
 ) {
   await flushPendingGpsPoints(activeWalk.sessionId);
-  const points = await getGpsPointsForSession(activeWalk.sessionId);
-
-  if (points.length < 2) {
-    await deleteWalkSession(activeWalk.sessionId);
-    return null;
-  }
-
+  const persistedSession = await getWalkSessionById(activeWalk.sessionId);
   const durationSeconds = Math.max(
     0,
     Math.round((new Date(endedAt).getTime() - new Date(activeWalk.startedAt).getTime()) / 1000)
   );
-  const distanceMeters = calculatePathDistanceMeters(points);
-
-  await finishWalkSession(activeWalk.sessionId, {
+  const finalized = await finishWalkSession(activeWalk.sessionId, {
     endedAt,
-    distanceMeters,
+    distanceMeters:
+      persistedSession?.distanceMeters ?? activeWalk.distanceMeters,
     durationSeconds,
     stepCount
   });
 
-  return activeWalk.sessionId;
-}
-
-export function evaluateGpsPoint(
-  activityMode: ActivityMode,
-  previousPoint: GpsPoint | null,
-  rawPoint: GpsPoint
-): PointEvaluation {
-  const modeConfig = MODE_LOCATION_CONFIG[activityMode];
-
-  if (!hasUsableAccuracy(rawPoint, modeConfig.maxAcceptedAccuracyMeters)) {
-    return {
-      accepted: false,
-      countAsRejected: false,
-      reason: `GPS signal weak (${Math.round(rawPoint.accuracy ?? 0)} m); recording paused until GPS returns`
-    };
-  }
-
-  if (!previousPoint) {
-    return {
-      accepted: true,
-      speedMetersPerSecond: 0
-    };
-  }
-
-  const distanceFromPrevious = haversineDistanceMeters(previousPoint, rawPoint);
-  const rawTimestamp = new Date(rawPoint.timestamp).getTime();
-  const previousTimestamp = new Date(previousPoint.timestamp).getTime();
-
-  if (!Number.isFinite(rawTimestamp) || !Number.isFinite(previousTimestamp)) {
-    return {
-      accepted: false,
-      countAsRejected: true,
-      reason: "GPS point ignored: invalid timestamp"
-    };
-  }
-
-  if (rawTimestamp <= previousTimestamp) {
-    return {
-      accepted: false,
-      countAsRejected: rawTimestamp < previousTimestamp || distanceFromPrevious > 1,
-      reason:
-        rawTimestamp < previousTimestamp || distanceFromPrevious > 1
-          ? "GPS point ignored: stale or duplicate timestamp"
-          : null
-    };
-  }
-
-  const secondsFromPrevious = (rawTimestamp - previousTimestamp) / 1000;
-
-  if (distanceFromPrevious < modeConfig.minDistanceBetweenPointsMeters) {
-    return {
-      accepted: false,
-      countAsRejected: false,
-      reason: null
-    };
-  }
-
-  if (secondsFromPrevious > 0) {
-    const speedMetersPerSecond = distanceFromPrevious / secondsFromPrevious;
-
-    if (speedMetersPerSecond > modeConfig.maxSpeedMetersPerSecond) {
-      return {
-        accepted: false,
-        countAsRejected: true,
-        reason: `Jump ignored: ${formatSpeed(speedMetersPerSecond)}`
-      };
-    }
-
-    return {
-      accepted: true,
-      speedMetersPerSecond
-    };
-  }
-
-  return {
-    accepted: true,
-    speedMetersPerSecond: 0
-  };
-}
-
-function hasUsableAccuracy(point: GpsPoint, maxAcceptedAccuracyMeters: number) {
-  if (point.accuracy === null) {
-    return true;
-  }
-
-  return point.accuracy <= maxAcceptedAccuracyMeters;
-}
-
-function formatSpeed(metersPerSecond: number) {
-  return `${Math.round(metersPerSecond * 3.6)} km/h`;
+  return finalized ? activeWalk.sessionId : null;
 }

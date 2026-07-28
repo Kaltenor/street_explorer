@@ -1,18 +1,23 @@
 import { getStreetSegmentsNear, upsertStreetSegments } from "../database/streetRepository";
-import { saveRouteSnapshot } from "../database/walkRepository";
+import { getRouteSnapshot, saveRouteSnapshot } from "../database/walkRepository";
 import { OsmStreetSegment } from "../types/street";
 import { ActivityMode, GpsPoint, RenderedRouteSegment } from "../types/walk";
 import { haversineDistanceMeters } from "./distance";
-import { fetchNearbyOsmStreetSegments } from "./osmStreetService";
+import {
+  fetchNearbyOsmStreetSegments,
+  fetchOsmStreetSegmentsForCorridors
+} from "./osmStreetService";
 import { buildPathSegments, buildPathSegmentsWithInference } from "./pathInference";
 
-const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 2;
+const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 3;
 const STREET_CORRIDOR_RADIUS_METERS = 450;
 const STREET_SAMPLE_SPACING_METERS = 250;
 const STREET_REFRESH_SAMPLE_SPACING_METERS = 600;
 const STREET_REFRESH_PROBE_RADIUS_METERS = 175;
 const STREET_REFRESH_FETCH_RADIUS_METERS = 700;
 const STREET_REFRESH_FAILURE_COOLDOWN_MS = 5 * 60 * 1000;
+const STREET_REPAIR_CORRIDOR_RADIUS_METERS = 250;
+const STREET_REPAIR_SAMPLE_SPACING_METERS = 175;
 
 let streetRefreshDisabledUntil = 0;
 
@@ -30,14 +35,21 @@ export async function createConfirmedRouteSnapshotIfMissing(
       : []
   );
 
-  await saveRouteSnapshot(
+  const storedRouteSegments = await saveRouteSnapshot(
     sessionId,
     routeSegments,
     points.length,
-    ROUTE_SNAPSHOT_ALGORITHM_VERSION
+    ROUTE_SNAPSHOT_ALGORITHM_VERSION,
+    {
+      expectedSourceMaxPointId: getExpectedSourceMaxPointId(points)
+    }
   );
 
-  return routeSegments;
+  if (!storedRouteSegments) {
+    throw new Error("Route snapshot session no longer exists.");
+  }
+
+  return storedRouteSegments;
 }
 
 export async function createRouteSnapshotIfMissing(
@@ -45,6 +57,12 @@ export async function createRouteSnapshotIfMissing(
   activityMode: ActivityMode,
   points: GpsPoint[]
 ) {
+  const existingRouteSegments = await getRouteSnapshot(sessionId);
+
+  if (existingRouteSegments) {
+    return existingRouteSegments;
+  }
+
   return persistStreetMatchedRouteSnapshot({
     activityMode,
     persist: true,
@@ -77,18 +95,76 @@ export async function rebuildRouteSnapshot(
   });
 }
 
+export type StreetCoverageRepairResult = {
+  corridorCount: number;
+  error: string | null;
+  segmentCount: number;
+  status: "failed" | "not_needed" | "refreshed";
+};
+
+export async function repairStreetCoverageForRecordings(
+  recordings: Array<{ points: GpsPoint[] }>
+): Promise<StreetCoverageRepairResult> {
+  const corridors = recordings
+    .map((recording) => samplePathCenters(
+      recording.points,
+      STREET_REPAIR_SAMPLE_SPACING_METERS
+    ))
+    .filter((corridor) => corridor.length > 0);
+
+  if (corridors.length === 0) {
+    return {
+      corridorCount: 0,
+      error: null,
+      segmentCount: 0,
+      status: "not_needed"
+    };
+  }
+
+  try {
+    const segments = await fetchOsmStreetSegmentsForCorridors(
+      corridors,
+      STREET_REPAIR_CORRIDOR_RADIUS_METERS
+    );
+    await upsertStreetSegments(segments);
+
+    return {
+      corridorCount: corridors.length,
+      error: null,
+      segmentCount: segments.length,
+      status: "refreshed"
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown street coverage error";
+    console.warn("Unable to repair historical street coverage; continuing from cache", error);
+
+    return {
+      corridorCount: corridors.length,
+      error: message,
+      segmentCount: 0,
+      status: "failed"
+    };
+  }
+}
 export async function replaceRouteSnapshot(
   sessionId: number,
   points: GpsPoint[],
   routeSegments: RenderedRouteSegment[]
 ) {
-  await saveRouteSnapshot(
+  const storedRouteSegments = await saveRouteSnapshot(
     sessionId,
     routeSegments,
     points.length,
     ROUTE_SNAPSHOT_ALGORITHM_VERSION,
-    { replaceExisting: true }
+    {
+      expectedSourceMaxPointId: getExpectedSourceMaxPointId(points),
+      replaceExisting: true
+    }
   );
+
+  if (!storedRouteSegments) {
+    throw new Error("Route snapshot session no longer exists.");
+  }
 }
 
 async function persistStreetMatchedRouteSnapshot(input: {
@@ -139,13 +215,22 @@ async function persistStreetMatchedRouteSnapshot(input: {
   });
 
   if (input.persist) {
-    await saveRouteSnapshot(
+    const storedRouteSegments = await saveRouteSnapshot(
       input.sessionId,
       routeSegments,
       input.points.length,
       ROUTE_SNAPSHOT_ALGORITHM_VERSION,
-      { replaceExisting: input.replaceExisting }
+      {
+        expectedSourceMaxPointId: getExpectedSourceMaxPointId(input.points),
+        replaceExisting: input.replaceExisting
+      }
     );
+
+    if (!storedRouteSegments) {
+      throw new Error("Route snapshot session no longer exists.");
+    }
+
+    return storedRouteSegments;
   }
 
   return routeSegments;
@@ -233,4 +318,22 @@ function samplePathCenters(
   }
 
   return centers;
+}
+
+function getExpectedSourceMaxPointId(points: GpsPoint[]) {
+  let maxPointId = 0;
+
+  for (const point of points) {
+    if (
+      typeof point.id !== "number" ||
+      !Number.isInteger(point.id) ||
+      point.id <= 0
+    ) {
+      return null;
+    }
+
+    maxPointId = Math.max(maxPointId, point.id);
+  }
+
+  return maxPointId;
 }

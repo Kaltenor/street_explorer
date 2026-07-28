@@ -4,12 +4,12 @@
 
 - Expo React Native TypeScript app scaffold.
 - Local SQLite persistence.
-- Walk, Wheel, and Car modes.
+- Walking-focused exploration.
 - Foreground GPS recording.
 - Saved paths and active paths on the map.
 - Route history with details, rename, delete, and highlight.
 - 15m x 15m deduplicated explored cells.
-- Mode-specific GPS filtering.
+- Walking-focused GPS filtering.
 - Basic background tracking setup.
 - Development build background recording verified on iPhone.
 - Active recording re-sync after returning from background.
@@ -17,7 +17,6 @@
 - Recovery modal with resume, finish/save, and discard.
 - Better exploration stats.
 - Map legend.
-- Clearer mode switch control.
 - Expanded route details in history.
 - Compact live recording controls.
 - GPX export for recordings.
@@ -35,14 +34,15 @@
 - OSM boundary fetching and zone completion V1.
 - Zone polish with exact/fallback labels and cached denominators.
 - Recording quality summary after stopping a recording.
-- Device step counting for Walk mode.
+- Device step counting for walks.
 - Full-screen Details, History, and Completion views.
-- Branded splash/loading screen and transparent map logo HUD.
+- Branded `loading-screen2.png` splash/loading presentation and transparent `title.png` map logo HUD.
 - Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.
-- Cache-only graph reuse, atomic exploration replacement, and per-recording reprocess recovery.
+- Consolidated historical street-corridor repair, per-recording graph reuse, atomic exploration replacement, and calculation recovery.
 - Automatic launch-loader transition into the map.
+- Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player marker, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
 
 ## Next Priority
 
@@ -70,7 +70,7 @@ Improve the now-persisted and scored inferred routes:
 Improve street intelligence:
 
 - match by route segment overlap, not only point proximity
-- keep separate street completion by mode
+- improve walking street-completion accuracy
 - use street length instead of local segment counts
 - use a more reliable Overpass endpoint strategy
 
@@ -86,7 +86,7 @@ Add:
 
 Add:
 
-- mode-specific colors across panels and paths
+- coherent walking colors across panels and paths
 - finish dark styling inside Details, History, and Completion content cards
 - stronger route detail and recording report layout
 - clearer GPS status states
@@ -98,7 +98,7 @@ Add:
 - backup file version migration support
 - import preview before replacing local data
 - GPX import
-- bulk export per mode
+- bulk export for walks
 
 ## Not Planned Yet
 

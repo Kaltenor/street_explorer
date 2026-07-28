@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRef, useState } from "react";
 
@@ -10,7 +10,9 @@ import { ActivityMode } from "../types/walk";
 
 type WalkControlsProps = {
   activityMode: ActivityMode;
+  isFinalizing: boolean;
   isRecording: boolean;
+  isStarting: boolean;
   distanceMeters: number;
   durationSeconds: number;
   gpsAccuracyMeters?: number | null;
@@ -31,7 +33,9 @@ type WalkControlsProps = {
 
 export function WalkControls({
   activityMode,
+  isFinalizing,
   isRecording,
+  isStarting,
   distanceMeters,
   durationSeconds,
   gpsAccuracyMeters,
@@ -138,18 +142,31 @@ export function WalkControls({
 
       <TouchableOpacity
         accessibilityRole="button"
+        disabled={isStarting || isFinalizing}
         onPress={isRecording ? onStop : onStart}
-        style={[styles.button, isRecording ? styles.stopButton : styles.startButton]}
+        style={[
+          styles.button,
+          isRecording ? styles.stopButton : styles.startButton,
+          isStarting || isFinalizing ? styles.disabledButton : null
+        ]}
       >
-        <Ionicons
-          name={isRecording ? "stop-circle" : "play-circle"}
-          color="#ffffff"
-          size={19}
-        />
+        {isStarting || isFinalizing ? (
+          <ActivityIndicator color="#ffffff" size="small" />
+        ) : (
+          <Ionicons
+            name={isRecording ? "stop-circle" : "play-circle"}
+            color="#ffffff"
+            size={19}
+          />
+        )}
         <Text style={styles.buttonText}>
-          {isRecording
-            ? `${strings.walkControls.stop} ${recordingNoun}`
-            : `${strings.walkControls.start} ${recordingNoun}`}
+          {isFinalizing
+            ? language === "fr" ? "Finalisation..." : "Finishing..."
+            : isStarting
+            ? language === "fr" ? "D\u00e9marrage..." : "Starting..."
+            : isRecording
+              ? `${strings.walkControls.stop} ${recordingNoun}`
+              : `${strings.walkControls.start} ${recordingNoun}`}
         </Text>
       </TouchableOpacity>
     </View>
@@ -294,6 +311,9 @@ const styles = StyleSheet.create({
     color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
+  },
+  disabledButton: {
+    opacity: 0.72
   },
   gpsStatus: {
     color: "#cbd5e1",

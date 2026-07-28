@@ -145,7 +145,7 @@ export function includeRenderedContourFills(exploredCells: ExploredCellRecord[])
     exploredCells.map((cell) => cell.mode + ":" + cell.cellKey)
   );
 
-  for (const mode of ["walk", "wheel", "car"] as ActivityMode[]) {
+  for (const mode of ["walk"] as ActivityMode[]) {
     const modeCellIds = [
       ...new Set(
         exploredCells

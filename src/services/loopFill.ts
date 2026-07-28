@@ -13,9 +13,7 @@ export const LOOP_FILL_CONFIG = {
   boundaryExpansionCells: 1,
   maxFloodBoundsCells: 1_000_000,
   maxPolygonAreaSquareMetersByMode: {
-    car: 5_000_000,
-    walk: 150_000,
-    wheel: 400_000
+    walk: 150_000
   } satisfies Record<ActivityMode, number>,
   minEnclosedCellCount: 1,
   minLoopDistanceMeters: 80
@@ -159,7 +157,7 @@ function calculateStreetLengthInsidePolygon(input: {
   let unwalkedWalkableStreetLengthM = 0;
 
   for (const segment of input.streetSegments) {
-    if (!isWalkableForMode(segment, input.activityMode)) {
+    if (!isWalkable(segment)) {
       continue;
     }
 
@@ -402,15 +400,7 @@ function getCellGroupBoundsPolygon(cellIds: string[]) {
   ];
 }
 
-function isWalkableForMode(segment: OsmStreetSegment, activityMode: ActivityMode) {
-  if (activityMode === "car") {
-    return !["footway", "path", "pedestrian", "steps"].includes(segment.highway);
-  }
-
-  if (activityMode === "wheel") {
-    return !["steps"].includes(segment.highway) && WALKABLE_HIGHWAYS.has(segment.highway);
-  }
-
+function isWalkable(segment: OsmStreetSegment) {
   return WALKABLE_HIGHWAYS.has(segment.highway);
 }
 

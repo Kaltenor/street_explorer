@@ -16,14 +16,6 @@ const MODE_PATH_GAP_CONFIG: Record<
   walk: {
     maxConfirmedStraightLineMeters: 15,
     maxUninferredGapSeconds: 6
-  },
-  wheel: {
-    maxConfirmedStraightLineMeters: 35,
-    maxUninferredGapSeconds: 6
-  },
-  car: {
-    maxConfirmedStraightLineMeters: 90,
-    maxUninferredGapSeconds: 6
   }
 };
 
@@ -79,7 +71,7 @@ export function buildPathSegmentsWithInference(
   streetSegments: OsmStreetSegment[] = []
 ): PathSegment[] {
   const segments: PathSegment[] = [];
-  const routingContext = createStreetRoutingContext(activityMode, streetSegments);
+  const routingContext = createStreetRoutingContext(streetSegments);
 
   for (let index = 1; index < points.length; index += 1) {
     const startPoint = points[index - 1];
@@ -142,7 +134,7 @@ export function inferPathBetweenPoints(
     startPoint,
     endPoint,
     activityMode,
-    createStreetRoutingContext(activityMode, streetSegments)
+    createStreetRoutingContext(streetSegments)
   );
 }
 
@@ -224,11 +216,10 @@ type StreetRoutingContext = {
 };
 
 function createStreetRoutingContext(
-  activityMode: ActivityMode,
   streetSegments: OsmStreetSegment[]
 ): StreetRoutingContext | null {
   const usableStreetSegments = streetSegments
-    .filter((segment) => isStreetUsableForMode(segment, activityMode));
+    .filter((segment) => isStreetUsable(segment));
 
   if (usableStreetSegments.length === 0) {
     return null;
@@ -260,11 +251,7 @@ function inferStreetRoute(
     routingContext.streetSegments,
     String(routingContext.nextSnapId++)
   );
-  const maxSnapDistanceMeters = {
-    walk: 30,
-    wheel: 35,
-    car: 45
-  }[activityMode];
+  const maxSnapDistanceMeters = 30;
 
   if (
     !startNode ||
@@ -328,15 +315,7 @@ function inferStreetRoute(
   };
 }
 
-function isStreetUsableForMode(segment: OsmStreetSegment, activityMode: ActivityMode) {
-  if (activityMode === "car") {
-    return !["footway", "path", "pedestrian", "steps"].includes(segment.highway);
-  }
-
-  if (activityMode === "wheel") {
-    return segment.highway !== "steps";
-  }
-
+function isStreetUsable(segment: OsmStreetSegment) {
   if (
     ["motorway", "motorway_link", "trunk", "trunk_link"].includes(segment.highway)
   ) {

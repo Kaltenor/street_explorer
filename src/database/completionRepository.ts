@@ -2,7 +2,7 @@ import type { SQLiteDatabase } from "expo-sqlite";
 
 import { EXPLORATION_CELL_SIZE_METERS } from "../services/explorationArea";
 import { MapCoordinate } from "../services/explorationArea";
-import { ActivityMode } from "../types/walk";
+import { ActivityMode, RenderedRouteSegment } from "../types/walk";
 import { getDatabase } from "./db";
 
 export type CompletionScope = "country" | "city" | "district";
@@ -74,6 +74,86 @@ export async function saveExploredCells(cells: ExploredCellInput[]) {
   });
 }
 
+export async function commitPendingRecordingRepair(input: {
+  activityMode: ActivityMode;
+  expectedSourceMaxPointId: number;
+  expectedSourcePointCount: number;
+  expectedRouteSegments: RenderedRouteSegment[];
+  gpsCellIds: string[];
+  inferredCellIds: string[];
+  sessionId: number;
+}): Promise<boolean> {
+  const db = await getDatabase();
+  let committed = false;
+
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    const repair = await transaction.getFirstAsync<{ session_id: number }>(
+      `
+        SELECT pending_recording_repairs.session_id
+        FROM pending_recording_repairs
+        JOIN walk_sessions
+          ON walk_sessions.id = pending_recording_repairs.session_id
+        JOIN route_snapshots
+          ON route_snapshots.session_id = pending_recording_repairs.session_id
+        WHERE pending_recording_repairs.session_id = ?
+          AND walk_sessions.activity_mode = ?
+          AND walk_sessions.ended_at > walk_sessions.started_at
+          AND route_snapshots.source_point_count = ?
+          AND route_snapshots.source_max_point_id = ?
+          AND route_snapshots.segments_json = ?
+          AND ? = (
+            SELECT COUNT(*)
+            FROM gps_points
+            WHERE gps_points.session_id = pending_recording_repairs.session_id
+          )
+          AND ? = (
+            SELECT COALESCE(MAX(id), 0)
+            FROM gps_points
+            WHERE gps_points.session_id = pending_recording_repairs.session_id
+          )
+      `,
+      input.sessionId,
+      input.activityMode,
+      input.expectedSourcePointCount,
+      input.expectedSourceMaxPointId,
+      JSON.stringify(input.expectedRouteSegments),
+      input.expectedSourcePointCount,
+      input.expectedSourceMaxPointId
+    );
+
+    if (!repair) {
+      return;
+    }
+
+    await insertExploredCells(
+      transaction,
+      [
+        ...input.gpsCellIds.map((cellKey) => ({
+          cellKey,
+          mode: input.activityMode,
+          sessionId: input.sessionId,
+          source: "gps" as const
+        })),
+        ...input.inferredCellIds.map((cellKey) => ({
+          cellKey,
+          mode: input.activityMode,
+          sessionId: input.sessionId,
+          source: "inferred" as const
+        }))
+      ],
+      new Date().toISOString()
+    );
+
+    const result = await transaction.runAsync(
+      "DELETE FROM pending_recording_repairs WHERE session_id = ?",
+      input.sessionId
+    );
+    committed = result.changes > 0;
+  });
+
+  return committed;
+}
+
 async function insertExploredCells(
   transaction: SQLiteDatabase,
   cells: ExploredCellInput[],
@@ -108,7 +188,7 @@ async function insertExploredCells(
     );
   }
 }
-export async function getLoopFillCellKeys(mode: ActivityMode | "all") {
+export async function getLoopFillCellKeys(mode: ActivityMode) {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
     `
@@ -116,17 +196,16 @@ export async function getLoopFillCellKeys(mode: ActivityMode | "all") {
       FROM explored_cells
       WHERE cell_size_m = ?
         AND source = 'loop_fill'
-        AND (? = 'all' OR mode = ?)
+        AND mode = ?
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode,
     mode
   );
 
   return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
 }
 
-export async function getLoopFillSessionSummaries(mode: ActivityMode | "all") {
+export async function getLoopFillSessionSummaries(mode: ActivityMode) {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{
     accepted_count: number;
@@ -155,12 +234,11 @@ export async function getLoopFillSessionSummaries(mode: ActivityMode | "all") {
         ON ec.session_id = lf.session_id
         AND ec.source = 'loop_fill'
         AND ec.cell_size_m = ?
-      WHERE (? = 'all' OR lf.mode = ?)
+      WHERE lf.mode = ?
       GROUP BY lf.session_id
       ORDER BY MAX(lf.created_at) DESC
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode,
     mode
   );
 
@@ -181,18 +259,17 @@ export async function getLoopFillSessionSummaries(mode: ActivityMode | "all") {
   );
 }
 
-export async function getCompletionStats(mode: ActivityMode | "all"): Promise<CompletionStats> {
+export async function getCompletionStats(mode: ActivityMode): Promise<CompletionStats> {
   const db = await getDatabase();
   const sourceRows = await db.getAllAsync<{ source: ExploredCellSource; count: number }>(
     `
       SELECT source, COUNT(DISTINCT cell_x || ':' || cell_y) AS count
       FROM explored_cells
       WHERE cell_size_m = ?
-        AND (? = 'all' OR mode = ?)
+        AND mode = ?
       GROUP BY source
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode,
     mode
   );
   const totalRow = await db.getFirstAsync<{ count: number }>(
@@ -200,10 +277,9 @@ export async function getCompletionStats(mode: ActivityMode | "all"): Promise<Co
       SELECT COUNT(DISTINCT cell_x || ':' || cell_y) AS count
       FROM explored_cells
       WHERE cell_size_m = ?
-        AND (? = 'all' OR mode = ?)
+        AND mode = ?
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode,
     mode
   );
   const walkRow = await db.getFirstAsync<{
@@ -213,9 +289,9 @@ export async function getCompletionStats(mode: ActivityMode | "all"): Promise<Co
     `
       SELECT COUNT(*) AS recording_count, SUM(distance_meters) AS walked_distance_meters
       FROM walk_sessions
-      WHERE (? = 'all' OR activity_mode = ?)
+      WHERE activity_mode = ?
+        AND ended_at > started_at
     `,
-    mode,
     mode
   );
   const counts = Object.fromEntries(sourceRows.map((row) => [row.source, row.count]));
@@ -230,7 +306,7 @@ export async function getCompletionStats(mode: ActivityMode | "all"): Promise<Co
   };
 }
 
-export async function getExploredCellRecords(mode: ActivityMode | "all") {
+export async function getExploredCellRecords(mode: ActivityMode) {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{
     cell_x: number;
@@ -242,10 +318,9 @@ export async function getExploredCellRecords(mode: ActivityMode | "all") {
       SELECT DISTINCT cell_x, cell_y, mode, source
       FROM explored_cells
       WHERE cell_size_m = ?
-        AND (? = 'all' OR mode = ?)
+        AND mode = ?
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode,
     mode
   );
 
@@ -256,11 +331,50 @@ export async function getExploredCellRecords(mode: ActivityMode | "all") {
   }));
 }
 
-export async function deleteExploredCellsForSession(sessionId: number) {
+export async function getExploredCellKeys(mode: ActivityMode) {
   const db = await getDatabase();
+  const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
+    `
+      SELECT DISTINCT cell_x, cell_y
+      FROM explored_cells
+      WHERE cell_size_m = ?
+        AND mode = ?
+    `,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode
+  );
 
-  await db.runAsync("DELETE FROM explored_cells WHERE session_id = ?", sessionId);
-  await db.runAsync("DELETE FROM loop_fills WHERE session_id = ?", sessionId);
+  return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
+}
+
+export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
+    `
+      SELECT DISTINCT current_cells.cell_x, current_cells.cell_y
+      FROM explored_cells current_cells
+      JOIN walk_sessions current_sessions
+        ON current_sessions.id = current_cells.session_id
+      WHERE current_cells.cell_size_m = ?
+        AND current_cells.mode = ?
+        AND date(current_sessions.started_at) = date('now', 'localtime')
+        AND NOT EXISTS (
+          SELECT 1
+          FROM explored_cells previous_cells
+          JOIN walk_sessions previous_sessions
+            ON previous_sessions.id = previous_cells.session_id
+          WHERE previous_cells.cell_size_m = current_cells.cell_size_m
+            AND previous_cells.mode = current_cells.mode
+            AND previous_cells.cell_x = current_cells.cell_x
+            AND previous_cells.cell_y = current_cells.cell_y
+            AND date(previous_sessions.started_at) < date('now', 'localtime')
+        )
+    `,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode
+  );
+
+  return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
 }
 
 export async function deleteLoopFillDataForMode(mode: ActivityMode) {

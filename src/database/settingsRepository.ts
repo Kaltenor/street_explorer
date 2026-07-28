@@ -3,77 +3,19 @@ import { ActivityMode } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
 
-const LAST_ACTIVITY_MODE_KEY = "last_activity_mode";
-const DEFAULT_ACTIVITY_MODE_KEY = "default_activity_mode";
 const APP_LANGUAGE_KEY = "app_language";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
 const COMPLETION_OBJECTIVE_KEY = "completion_objective";
-const ACTIVITY_MODES: ActivityMode[] = ["walk", "wheel", "car"];
+const ACTIVITY_MODES: ActivityMode[] = ["walk"];
 const APP_LANGUAGES: AppLanguage[] = ["en", "fr"];
-const COMPLETION_MODES = ["walk", "wheel", "car", "all"] as const;
-type CompletionMode = ActivityMode | "all";
+const COMPLETION_MODES: ActivityMode[] = ["walk"];
+type CompletionMode = ActivityMode;
 
 export type SavedCompletionObjective = {
   mode: CompletionMode;
   zoneId: string;
 };
-
-export async function getLastActivityMode(): Promise<ActivityMode | null> {
-  const db = await getDatabase();
-  const row = await db.getFirstAsync<{ value: string }>(
-    "SELECT value FROM app_settings WHERE key = ?",
-    LAST_ACTIVITY_MODE_KEY
-  );
-
-  if (ACTIVITY_MODES.includes(row?.value as ActivityMode)) {
-    return row?.value as ActivityMode;
-  }
-
-  return null;
-}
-
-export async function saveLastActivityMode(activityMode: ActivityMode) {
-  const db = await getDatabase();
-
-  await db.runAsync(
-    `
-      INSERT INTO app_settings (key, value)
-      VALUES (?, ?)
-      ON CONFLICT(key) DO UPDATE SET value = excluded.value
-    `,
-    LAST_ACTIVITY_MODE_KEY,
-    activityMode
-  );
-}
-
-export async function getDefaultActivityMode(): Promise<ActivityMode | null> {
-  const db = await getDatabase();
-  const row = await db.getFirstAsync<{ value: string }>(
-    "SELECT value FROM app_settings WHERE key = ?",
-    DEFAULT_ACTIVITY_MODE_KEY
-  );
-
-  if (ACTIVITY_MODES.includes(row?.value as ActivityMode)) {
-    return row?.value as ActivityMode;
-  }
-
-  return null;
-}
-
-export async function saveDefaultActivityMode(activityMode: ActivityMode) {
-  const db = await getDatabase();
-
-  await db.runAsync(
-    `
-      INSERT INTO app_settings (key, value)
-      VALUES (?, ?)
-      ON CONFLICT(key) DO UPDATE SET value = excluded.value
-    `,
-    DEFAULT_ACTIVITY_MODE_KEY,
-    activityMode
-  );
-}
 
 export async function getAppLanguage(): Promise<AppLanguage> {
   const db = await getDatabase();
@@ -108,58 +50,204 @@ export type ActiveRecordingSettings = {
   sessionId: number;
 };
 
-export async function getActiveRecordingSettings(): Promise<ActiveRecordingSettings | null> {
-  const db = await getDatabase();
-  const rows = await db.getAllAsync<{ key: string; value: string }>(
-    "SELECT key, value FROM app_settings WHERE key IN (?, ?)",
-    ACTIVE_RECORDING_SESSION_ID_KEY,
-    ACTIVE_RECORDING_MODE_KEY
-  );
-  const values = Object.fromEntries(rows.map((row) => [row.key, row.value]));
-  const sessionId = Number(values[ACTIVE_RECORDING_SESSION_ID_KEY]);
-  const activityMode = values[ACTIVE_RECORDING_MODE_KEY] as ActivityMode | undefined;
+export class ActiveRecordingConflictError extends Error {
+  constructor(readonly activeRecording: ActiveRecordingSettings) {
+    super("An unfinished recording already exists.");
+    this.name = "ActiveRecordingConflictError";
+  }
+}
 
-  if (!Number.isFinite(sessionId) || !activityMode || !ACTIVITY_MODES.includes(activityMode)) {
-    return null;
+export async function createActiveRecordingSession(input: {
+  activityMode: ActivityMode;
+  startedAt: string;
+}) {
+  const db = await getDatabase();
+  let sessionId: number | null = null;
+
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    const rows = await transaction.getAllAsync<{ key: string; value: string }>(
+      "SELECT key, value FROM app_settings WHERE key IN (?, ?)",
+      ACTIVE_RECORDING_SESSION_ID_KEY,
+      ACTIVE_RECORDING_MODE_KEY
+    );
+    const values = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+    const existingSessionId = Number(values[ACTIVE_RECORDING_SESSION_ID_KEY]);
+    const existingSession =
+      Number.isFinite(existingSessionId) && existingSessionId > 0
+        ? await transaction.getFirstAsync<{
+            activity_mode: ActivityMode;
+            ended_at: string;
+            started_at: string;
+          }>(
+            `
+              SELECT activity_mode, started_at, ended_at
+              FROM walk_sessions
+              WHERE id = ?
+            `,
+            existingSessionId
+          )
+        : null;
+
+    if (
+      existingSession &&
+      existingSession.ended_at === existingSession.started_at &&
+      ACTIVITY_MODES.includes(existingSession.activity_mode)
+    ) {
+      throw new ActiveRecordingConflictError({
+        activityMode: existingSession.activity_mode,
+        sessionId: existingSessionId
+      });
+    }
+
+    await transaction.runAsync(
+      "DELETE FROM app_settings WHERE key IN (?, ?)",
+      ACTIVE_RECORDING_SESSION_ID_KEY,
+      ACTIVE_RECORDING_MODE_KEY
+    );
+
+    const result = await transaction.runAsync(
+      `
+        INSERT INTO walk_sessions (
+          activity_mode,
+          started_at,
+          ended_at,
+          distance_meters,
+          duration_seconds,
+          step_count
+        )
+        VALUES (?, ?, ?, 0, 0, 0)
+      `,
+      input.activityMode,
+      input.startedAt,
+      input.startedAt
+    );
+    sessionId = result.lastInsertRowId;
+
+    await transaction.runAsync(
+      `
+        INSERT INTO app_settings (key, value)
+        VALUES (?, ?)
+        ON CONFLICT(key) DO UPDATE SET value = excluded.value
+      `,
+      ACTIVE_RECORDING_SESSION_ID_KEY,
+      sessionId.toString()
+    );
+    await transaction.runAsync(
+      `
+        INSERT INTO app_settings (key, value)
+        VALUES (?, ?)
+        ON CONFLICT(key) DO UPDATE SET value = excluded.value
+      `,
+      ACTIVE_RECORDING_MODE_KEY,
+      input.activityMode
+    );
+  });
+
+  if (sessionId === null) {
+    throw new Error("Active recording transaction completed without a session.");
   }
 
-  return {
-    activityMode,
-    sessionId
-  };
+  return sessionId;
 }
 
-export async function saveActiveRecordingSettings(input: ActiveRecordingSettings) {
+export async function getActiveRecordingSettings(): Promise<ActiveRecordingSettings | null> {
   const db = await getDatabase();
+  let activeRecording: ActiveRecordingSettings | null = null;
 
-  await db.runAsync(
-    `
-      INSERT INTO app_settings (key, value)
-      VALUES (?, ?)
-      ON CONFLICT(key) DO UPDATE SET value = excluded.value
-    `,
-    ACTIVE_RECORDING_SESSION_ID_KEY,
-    input.sessionId.toString()
-  );
-  await db.runAsync(
-    `
-      INSERT INTO app_settings (key, value)
-      VALUES (?, ?)
-      ON CONFLICT(key) DO UPDATE SET value = excluded.value
-    `,
-    ACTIVE_RECORDING_MODE_KEY,
-    input.activityMode
-  );
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    const rows = await transaction.getAllAsync<{ key: string; value: string }>(
+      "SELECT key, value FROM app_settings WHERE key IN (?, ?)",
+      ACTIVE_RECORDING_SESSION_ID_KEY,
+      ACTIVE_RECORDING_MODE_KEY
+    );
+    const values = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+    const sessionId = Number(values[ACTIVE_RECORDING_SESSION_ID_KEY]);
+
+    if (!Number.isFinite(sessionId) || sessionId <= 0) {
+      if (rows.length > 0) {
+        await transaction.runAsync(
+          "DELETE FROM app_settings WHERE key IN (?, ?)",
+          ACTIVE_RECORDING_SESSION_ID_KEY,
+          ACTIVE_RECORDING_MODE_KEY
+        );
+      }
+
+      return;
+    }
+
+    const session = await transaction.getFirstAsync<{
+      activity_mode: ActivityMode;
+      ended_at: string;
+      started_at: string;
+    }>(
+      `
+        SELECT activity_mode, started_at, ended_at
+        FROM walk_sessions
+        WHERE id = ?
+      `,
+      sessionId
+    );
+
+    if (
+      !session ||
+      session.ended_at !== session.started_at ||
+      !ACTIVITY_MODES.includes(session.activity_mode)
+    ) {
+      await transaction.runAsync(
+        "DELETE FROM app_settings WHERE key IN (?, ?)",
+        ACTIVE_RECORDING_SESSION_ID_KEY,
+        ACTIVE_RECORDING_MODE_KEY
+      );
+      return;
+    }
+
+    const storedActivityMode =
+      values[ACTIVE_RECORDING_MODE_KEY] as ActivityMode | undefined;
+
+    if (storedActivityMode !== session.activity_mode) {
+      await transaction.runAsync(
+        `
+          INSERT INTO app_settings (key, value)
+          VALUES (?, ?)
+          ON CONFLICT(key) DO UPDATE SET value = excluded.value
+        `,
+        ACTIVE_RECORDING_MODE_KEY,
+        session.activity_mode
+      );
+    }
+
+    activeRecording = {
+      activityMode: session.activity_mode,
+      sessionId
+    };
+  });
+
+  return activeRecording;
 }
 
-export async function clearActiveRecordingSettings() {
+export async function clearActiveRecordingSettings(
+  expectedSessionId?: number
+) {
   const db = await getDatabase();
 
-  await db.runAsync(
-    "DELETE FROM app_settings WHERE key IN (?, ?)",
-    ACTIVE_RECORDING_SESSION_ID_KEY,
-    ACTIVE_RECORDING_MODE_KEY
-  );
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    if (expectedSessionId !== undefined) {
+      const currentSession = await transaction.getFirstAsync<{ value: string }>(
+        "SELECT value FROM app_settings WHERE key = ?",
+        ACTIVE_RECORDING_SESSION_ID_KEY
+      );
+
+      if (Number(currentSession?.value) !== expectedSessionId) {
+        return;
+      }
+    }
+
+    await transaction.runAsync(
+      "DELETE FROM app_settings WHERE key IN (?, ?)",
+      ACTIVE_RECORDING_SESSION_ID_KEY,
+      ACTIVE_RECORDING_MODE_KEY
+    );
+  });
 }
 
 export async function getSavedCompletionObjective() {

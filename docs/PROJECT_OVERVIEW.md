@@ -4,18 +4,14 @@ Street Explorer is a mobile exploration app built with Expo, React Native, TypeS
 
 The app records real-world movement and turns it into an exploration map. The goal is not to be a sport tracker. The goal is to feel like a real-life exploration game where streets and areas become visible as they are explored.
 
-## Current Modes
+## Current Activity
 
-- Walk: on-foot exploration.
-- Wheel: EUC exploration.
-- Car: car exploration.
-
-Each mode has separate recordings, paths, stats, and history.
+Street Explorer is dedicated to on-foot exploration. Recordings, paths, statistics, history, completion, and GPS quality rules all use the walking profile. Existing data from older activity profiles is preserved and consolidated into walking history during database migration.
 
 ## Current Features
 
-- Foreground GPS recording.
-- Best-effort background tracking setup.
+- Foreground GPS recording with automatic watcher recovery.
+- Permission-aware background tracking with serialized ownership, atomically published delivered batches, nullable headless owner recovery through a unique timestamp match, bounded unmatched retention, and chunked backlog backpressure.
 - Local SQLite persistence.
 - Saved paths displayed on the map.
 - Active recording path displayed live.
@@ -23,20 +19,23 @@ Each mode has separate recordings, paths, stats, and history.
 - Gameplay-first closed-loop area fill based on enclosed explored cells.
 - Shared authoritative red-surface and completion contours, with non-decreasing reprocess safety.
 - Visible phased progress and explicit failure reporting for historical reprocessing.
-- Cache-only, atomic historical reprocessing with per-recording fault isolation.
+- One-request historical OSM corridor repair followed by atomic reprocessing with per-recording calculation fault isolation.
 - Automatic transition from the launch loader to the map.
-- Mode-specific GPS quality filters.
+- Non-blocking GPS, route-cache, step-counter, and background-service initialization during launch and recording startup.
+- Map-first startup with accuracy-aware current-location centering, a persistent accepted-route player marker whose motion settles after stale fixes, a self-healing idle/recording watcher, cached explored cells, and lazy saved-route loading.
+- Full-walk live/recovery routes retain raw SQLite observations, rebuild deterministically when a fix arrives late, use canonical contiguous indexes, and render stable bounded chunks while only the recent 300 points remain in diagnostic state.
+- Confirmed Stop teardown drains entered handlers and the durable background outbox before single-recording finalization. Underfilled recordings retain a hidden five-minute recovery tombstone, and late finalized merges trigger an immediate safe map refresh. Backup export rejects active or settling data and reads one transaction; import closes both journal and in-memory GPS admission before replacing data.
+- Walking-focused GPS quality filters.
 - Route history with rename, delete, and highlight.
-- Last selected mode persistence.
 - Recording recovery for unfinished active sessions.
-- Device step counts for Walk recordings.
+- Device step counts for walking recordings.
 - Icon layer controls for paths, cells, and markers.
 - Full-screen Details, History, and Completion views with map back navigation.
-- Completion screen with scope, zone, and mode selectors.
+- Completion screen with scope and zone selectors.
 - OSM boundary loading and cached Country / City / District completion zones.
 - Zone-specific completion stats and map focus.
 - Objective HUD with selected zone, completion percentage, remaining cells, and today's added cells.
-- Branded splash/loading screen and transparent map logo overlay.
+- Branded `loading-screen2.png` splash/loading presentation and transparent `title.png` map logo overlay.
 
 ## Current Limitations
 

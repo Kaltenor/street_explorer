@@ -2,12 +2,26 @@ import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
 
+import { getActiveRecordingSettings } from "../database/settingsRepository";
 import {
   getBackupData,
   restoreBackupData,
   StreetExplorerBackup
 } from "../database/walkRepository";
 import { GpsPoint, WalkSession } from "../types/walk";
+import {
+  closeBackgroundLocationOutboxAdmission,
+  discardPendingBackgroundLocationBatches,
+  drainPendingBackgroundLocationBatches
+} from "./backgroundLocationOutbox";
+import {
+  clearBackgroundLocationSessionHint,
+  stopBackgroundLocationTracking
+} from "./backgroundLocationTask";
+import {
+  closeGpsPersistenceAdmission,
+  discardAllGpsPersistenceForDataReplacement
+} from "./walkRecorder";
 
 export async function exportWalkGpx(walk: WalkSession, points: GpsPoint[]) {
   const file = new File(Paths.document, `street-explorer-${walk.id}.gpx`);
@@ -19,6 +33,20 @@ export async function exportWalkGpx(walk: WalkSession, points: GpsPoint[]) {
 }
 
 export async function exportBackupJson() {
+  if (await getActiveRecordingSettings()) {
+    throw new Error(
+      "Finish or discard the active recording before exporting a backup."
+    );
+  }
+
+  await drainPendingBackgroundLocationBatches();
+
+  if (await getActiveRecordingSettings()) {
+    throw new Error(
+      "A recording started while the backup was being prepared."
+    );
+  }
+
   const backup = await getBackupData();
   const file = new File(Paths.document, `street-explorer-backup-${formatFileTimestamp()}.json`);
 
@@ -41,7 +69,28 @@ export async function importBackupJson() {
   const rawJson = await new File(result.assets[0].uri).text();
   const backup = parseBackup(rawJson);
 
-  await restoreBackupData(backup);
+  const activeRecording = await getActiveRecordingSettings();
+
+  if (activeRecording) {
+    throw new Error(
+      "Finish or discard the recoverable recording before restoring a backup."
+    );
+  }
+
+  const reopenOutboxAdmission = closeBackgroundLocationOutboxAdmission();
+  let reopenGpsAdmission: (() => void) | null = null;
+
+  try {
+    await stopBackgroundLocationTracking();
+    reopenGpsAdmission = closeGpsPersistenceAdmission();
+    await discardAllGpsPersistenceForDataReplacement();
+    await restoreBackupData(backup);
+    clearBackgroundLocationSessionHint();
+    await discardPendingBackgroundLocationBatches();
+  } finally {
+    reopenGpsAdmission?.();
+    reopenOutboxAdmission();
+  }
 
   return true;
 }

@@ -1,13 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { ACTIVITY_MODE_LABELS } from "../constants/activityModes";
-import { calculatePathDistanceMeters, formatDistance, formatDuration } from "../services/distance";
-import { ActivityMode, GpsPoint, WalkSession } from "../types/walk";
+import { formatDistance, formatDuration } from "../services/distance";
+import { GpsPoint, WalkSession } from "../types/walk";
 
 export type RecoverableRecording = {
+  lastPoint: GpsPoint | null;
   session: WalkSession;
-  points: GpsPoint[];
+  totalPointCount: number;
 };
 
 type RecordingRecoveryModalProps = {
@@ -27,9 +27,8 @@ export function RecordingRecoveryModal({
     return null;
   }
 
-  const { session, points } = recording;
-  const lastPoint = points.at(-1);
-  const distanceMeters = calculatePathDistanceMeters(points);
+  const { lastPoint, session } = recording;
+  const distanceMeters = session.distanceMeters;
   const durationSeconds = Math.max(
     0,
     Math.round((Date.now() - new Date(session.startedAt).getTime()) / 1000)
@@ -45,15 +44,13 @@ export function RecordingRecoveryModal({
 
           <Text style={styles.title}>Unfinished recording</Text>
           <Text style={styles.message}>
-            Street Explorer found an active {formatMode(session.activityMode)} recording. Choose
-            what to do before continuing.
+            Street Explorer found an unfinished walk. Choose what to do before continuing.
           </Text>
 
           <View style={styles.summaryGrid}>
-            <SummaryItem label="Mode" value={ACTIVITY_MODE_LABELS[session.activityMode]} />
             <SummaryItem label="Distance" value={formatDistance(distanceMeters)} />
             <SummaryItem label="Duration" value={formatDuration(durationSeconds)} />
-            <SummaryItem label="Points" value={points.length.toString()} />
+            <SummaryItem label="Points" value={recording.totalPointCount.toString()} />
           </View>
 
           <View style={styles.lastPoint}>
@@ -90,10 +87,6 @@ function SummaryItem({ label, value }: { label: string; value: string }) {
       <Text style={styles.summaryLabel}>{label}</Text>
     </View>
   );
-}
-
-function formatMode(activityMode: ActivityMode) {
-  return ACTIVITY_MODE_LABELS[activityMode].toLowerCase();
 }
 
 function formatFullDate(value: string) {

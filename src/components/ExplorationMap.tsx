@@ -1,31 +1,43 @@
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { Animated, Easing, StyleSheet, View } from "react-native";
 
-import { MAP_CONFIG } from "../constants/config";
+import {
+  LOCATION_CONFIG,
+  MAP_CONFIG,
+  MODE_LOCATION_CONFIG
+} from "../constants/config";
 import { CachedZone } from "../database/completionRepository";
 import {
   buildExplorationPolygonOutlineSegments,
-  buildMergedExplorationPolygons,
-  collectExplorationCellIds
+  buildMergedExplorationPolygons
 } from "../services/explorationArea";
 import { haversineDistanceMeters } from "../services/distance";
-import { buildPathSegments } from "../services/pathInference";
+import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
-import { ActivityMode, GpsPoint, RenderedRouteSegment, WalkWithPoints } from "../types/walk";
+import {
+  ActivityMode,
+  GpsPoint,
+  LiveRouteChunk,
+  RenderedRouteSegment,
+  WalkWithPoints
+} from "../types/walk";
 
 type ExplorationMapProps = {
   walks: WalkWithPoints[];
   pathWalks: WalkWithPoints[];
   activePoints: GpsPoint[];
+  activeRouteChunks: LiveRouteChunk[];
+  activeExplorationCellIds: string[];
+  explorationEnabled: boolean;
   activeMode: ActivityMode;
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
-  loopFillCellIds: string[];
+  savedExplorationCellIds: string[];
   onMapReady?: () => void;
   onVisibleRegionChange?: (region: Region) => void;
   selectedZone: CachedZone | null;
@@ -104,13 +116,16 @@ const LANDMARK_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [
 
 export function ExplorationMap({
   walks,
+  activeExplorationCellIds,
+  explorationEnabled,
   pathWalks,
   activePoints,
+  activeRouteChunks,
   activeMode,
   currentLocation,
   highlightedSessionId,
   layers,
-  loopFillCellIds,
+  savedExplorationCellIds,
   onMapReady,
   onVisibleRegionChange,
   selectedZone,
@@ -118,10 +133,28 @@ export function ExplorationMap({
   zoneFocusRequestId
 }: ExplorationMapProps) {
   const mapRef = useRef<MapView | null>(null);
-  const hasCenteredOnInitialLocation = useRef(false);
+  const hasUserMovedMapRef = useRef(false);
+  const initialCenterRef = useRef<InitialMapCenter | null>(null);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
-  const region = getInitialRegion(currentLocation, walks, activePoints);
+  const [isNativeMapReady, setIsNativeMapReady] = useState(false);
+  const activeRouteStartPoint =
+    activeRouteChunks[0]?.points[0] ?? activePoints[0] ?? null;
+  const activeRouteEndPoint =
+    activeRouteChunks.at(-1)?.points.at(-1) ?? activePoints.at(-1) ?? null;
+  // Once recording has an accepted point, weak/rejected raw fixes must not move
+  // either the player marker or the camera away from the canonical route.
+  const playerLocation = activeRouteEndPoint ?? currentLocation;
+  const startupCenter = useMemo(
+    () =>
+      getStartupCenterCandidate(
+        activeMode,
+        activeRouteEndPoint,
+        playerLocation
+      ),
+    [activeMode, activeRouteEndPoint, playerLocation]
+  );
+  const region = getInitialRegion(startupCenter?.point ?? null, walks);
   const [visibleRegion, setVisibleRegion] = useState(region);
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
@@ -131,39 +164,33 @@ export function ExplorationMap({
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
-  const playerLocation = activePoints.at(-1) ?? currentLocation;
-  const shouldBuildSavedArea = shouldShowCompletedArea || shouldShowOutline;
+  const shouldBuildExploredArea =
+    explorationEnabled && (shouldShowCompletedArea || shouldShowOutline);
   const maxFilledHoleAreaSquareMeters =
     LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeMode];
-  const savedExplorationCellIds = useMemo(
+  const renderedExplorationCellIds = useMemo(
     () =>
-      shouldBuildSavedArea
-        ? collectExplorationCellIds(walks, [], activeMode, loopFillCellIds)
+      shouldBuildExploredArea
+        ? [...new Set([...savedExplorationCellIds, ...activeExplorationCellIds])]
         : [],
-    [activeMode, loopFillCellIds, shouldBuildSavedArea, walks]
-  );
-  const activeExplorationCellIds = useMemo(
-    () =>
-      shouldShowCompletedArea && activePoints.length > 1
-        ? collectExplorationCellIds([], activePoints, activeMode)
-        : [],
-    [activeMode, activePoints, shouldShowCompletedArea]
+    [
+      activeExplorationCellIds,
+      savedExplorationCellIds,
+      shouldBuildExploredArea
+    ]
   );
   const explorationPolygons = useMemo(
     () =>
       shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(savedExplorationCellIds, {
+        ? buildMergedExplorationPolygons(renderedExplorationCellIds, {
             maxFilledHoleAreaSquareMeters
           })
         : [],
-    [maxFilledHoleAreaSquareMeters, savedExplorationCellIds, shouldShowCompletedArea]
-  );
-  const activeExplorationPolygons = useMemo(
-    () =>
+    [
+      maxFilledHoleAreaSquareMeters,
+      renderedExplorationCellIds,
       shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(activeExplorationCellIds)
-        : [],
-    [activeExplorationCellIds, shouldShowCompletedArea]
+    ]
   );
   const explorationOutlineSegments = useMemo(
     () =>
@@ -174,46 +201,80 @@ export function ExplorationMap({
   );
   const todayNewPolygons = useMemo(
     () =>
-      shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(todayNewCellIds)
+      explorationEnabled && shouldShowCompletedArea
+        ? buildMergedExplorationPolygons(todayNewCellIds, {
+            maxFilledHoleAreaSquareMeters
+          })
         : [],
-    [shouldShowCompletedArea, todayNewCellIds]
+    [
+      explorationEnabled,
+      maxFilledHoleAreaSquareMeters,
+      shouldShowCompletedArea,
+      todayNewCellIds
+    ]
   );
 
   useEffect(() => {
-    if (!currentLocation || hasCenteredOnInitialLocation.current) {
+    if (!isNativeMapReady || !startupCenter) {
       return;
     }
 
-    hasCenteredOnInitialLocation.current = true;
+    const previousCenter = initialCenterRef.current;
+
+    if (hasUserMovedMapRef.current) {
+      return;
+    }
+
+    if (previousCenter) {
+      const shouldUpgradeWeakCenter =
+        !previousCenter.isReliable &&
+        startupCenter.isReliable &&
+        startupCenter.timestamp >= previousCenter.timestamp &&
+        isSubstantiallyMoreAccurate(previousCenter, startupCenter);
+
+      if (!shouldUpgradeWeakCenter) {
+        return;
+      }
+    }
+
     mapRef.current?.animateToRegion(
       {
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
+        latitude: startupCenter.point.latitude,
+        longitude: startupCenter.point.longitude,
         latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
         longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
       },
       450
     );
-  }, [currentLocation]);
+    initialCenterRef.current = startupCenter;
+  }, [isNativeMapReady, startupCenter]);
 
   useEffect(() => {
-    if (activePoints.length === 0) {
+    const followTarget = activeRouteEndPoint;
+
+    if (!followTarget) {
       setIsAutoFollowEnabled(true);
       return;
     }
 
-    if (activePoints.length < 2 || !isAutoFollowEnabled) {
+    if (
+      !isNativeMapReady ||
+      !isAutoFollowEnabled ||
+      initialCenterRef.current?.timestamp ===
+        getPointTimestamp(followTarget)
+    ) {
       return;
     }
 
-    fitToPoints(activePoints, {
-      bottom: 230,
-      left: 48,
-      right: 48,
-      top: 190
-    });
-  }, [activePoints, isAutoFollowEnabled]);
+    mapRef.current?.animateCamera(
+      { center: pointToCoordinate(followTarget) },
+      { duration: 350 }
+    );
+  }, [
+    activeRouteEndPoint,
+    isAutoFollowEnabled,
+    isNativeMapReady
+  ]);
 
   useEffect(() => {
     if (!highlightedSessionId) {
@@ -258,6 +319,11 @@ export function ExplorationMap({
     onVisibleRegionChange?.(nextRegion);
   };
 
+  const disableAutoFollow = () => {
+    hasUserMovedMapRef.current = true;
+    setIsAutoFollowEnabled(false);
+  };
+
   const fitToPoints = (
     points: GpsPoint[],
     edgePadding: { bottom: number; left: number; right: number; top: number }
@@ -278,10 +344,13 @@ export function ExplorationMap({
           mode: "include"
         }}
         initialRegion={region}
-        onPanDrag={() => setIsAutoFollowEnabled(false)}
-        onMapReady={onMapReady}
+        onPanDrag={disableAutoFollow}
+        onMapReady={() => {
+          setIsNativeMapReady(true);
+          onMapReady?.();
+        }}
         onRegionChangeComplete={handleRegionChangeComplete}
-        onTouchStart={() => setIsAutoFollowEnabled(false)}
+        onTouchStart={disableAutoFollow}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -297,29 +366,18 @@ export function ExplorationMap({
             coordinates={polygon.coordinates}
             holes={polygon.holes}
             fillColor={areaStyle.fillColor}
-            strokeColor="rgba(239, 68, 68, 0)"
-            strokeWidth={0}
+            strokeColor={areaStyle.fillColor}
+            strokeWidth={1}
           />
         )) : null}
-        {shouldShowCompletedArea ? activeExplorationPolygons.map((polygon) => (
-          <Polygon
-            key={"active-" + polygon.id}
-            coordinates={polygon.coordinates}
-            holes={polygon.holes}
-            fillColor={areaStyle.fillColor}
-            strokeColor="rgba(239, 68, 68, 0)"
-            strokeWidth={0}
-          />
-        )) : null}
-
         {shouldShowCompletedArea ? todayNewPolygons.map((polygon) => (
           <Polygon
             key={`today-${polygon.id}`}
             coordinates={polygon.coordinates}
             holes={polygon.holes}
             fillColor={areaStyle.todayFillColor}
-            strokeColor="rgba(248, 113, 113, 0)"
-            strokeWidth={0}
+            strokeColor={areaStyle.todayFillColor}
+            strokeWidth={1}
           />
         )) : null}
 
@@ -384,7 +442,7 @@ export function ExplorationMap({
           );
         }) : null}
 
-        {activePoints[0] && renderLevel === "close" ? (
+        {activeRouteStartPoint && activeRouteChunks.length > 0 ? (
           <>
             <PathSegmentLines
               activityMode={activeMode}
@@ -392,17 +450,18 @@ export function ExplorationMap({
               isDimmed={false}
               isHighlighted
               points={activePoints}
+              segments={activeRouteChunks}
               simplificationToleranceMeters={0}
             />
             {shouldShowMarkers ? <Marker
-              coordinate={pointToCoordinate(activePoints[0])}
+              coordinate={pointToCoordinate(activeRouteStartPoint)}
               pinColor="#16a34a"
               title="Recording start"
             /> : null}
           </>
         ) : null}
 
-        {playerLocation && currentLocation ? (
+        {playerLocation ? (
           <PlayerLocationMarker
             activePoints={activePoints}
             location={playerLocation}
@@ -416,6 +475,8 @@ export function ExplorationMap({
 const PLAYER_MOVING_SPEED_METERS_PER_SECOND = 0.45;
 const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
 const PLAYER_BEARING_MIN_DISTANCE_METERS = 3;
+const PLAYER_MOTION_FRESHNESS_MS = 10_000;
+const LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS = 5_000;
 
 function PlayerLocationMarker({
   activePoints,
@@ -425,17 +486,47 @@ function PlayerLocationMarker({
   location: GpsPoint;
 }) {
   const movement = getRecentMovement(activePoints);
+  const [isAcceptedFixFresh, setIsAcceptedFixFresh] = useState(() =>
+    isPlayerMotionPointFresh(location)
+  );
   const liveSpeed =
     typeof location.speedMetersPerSecond === "number"
       ? location.speedMetersPerSecond
       : null;
   const isMoving =
+    isAcceptedFixFresh &&
     activePoints.length > 0 &&
     Math.max(liveSpeed ?? 0, movement?.speedMetersPerSecond ?? 0) >=
       PLAYER_MOVING_SPEED_METERS_PER_SECOND;
   const heading = getPlayerHeading(location, movement);
   const headingAnimation = useRef(new Animated.Value(heading ?? 0)).current;
   const motionAnimation = useRef(new Animated.Value(0)).current;
+  const [isMarkerImageLoaded, setIsMarkerImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const timestamp = getPointTimestamp(location);
+    const now = Date.now();
+    const expiresIn = timestamp + PLAYER_MOTION_FRESHNESS_MS - now;
+    const isFresh =
+      Number.isFinite(timestamp) &&
+      timestamp <= now + LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS &&
+      expiresIn > 0;
+    const settleMotion = () => {
+      motionAnimation.stopAnimation();
+      motionAnimation.setValue(0);
+      setIsAcceptedFixFresh(false);
+    };
+
+    if (!isFresh) {
+      settleMotion();
+      return;
+    }
+
+    setIsAcceptedFixFresh(true);
+    const freshnessTimer = setTimeout(settleMotion, expiresIn + 25);
+
+    return () => clearTimeout(freshnessTimer);
+  }, [location.timestamp, motionAnimation]);
 
   useEffect(() => {
     if (heading === null) {
@@ -535,7 +626,7 @@ function PlayerLocationMarker({
       coordinate={pointToCoordinate(location)}
       flat
       title="Current player location"
-      tracksViewChanges={activePoints.length > 0}
+      tracksViewChanges={isMoving || !isMarkerImageLoaded}
       zIndex={1000}
     >
       <View collapsable={false} style={styles.playerMarker}>
@@ -559,6 +650,7 @@ function PlayerLocationMarker({
         >
           <View style={styles.playerDirectionPip} />
           <Animated.Image
+            onLoad={() => setIsMarkerImageLoaded(true)}
             resizeMode="contain"
             source={require("../../assets/player-npc-topdown.png")}
             style={[
@@ -711,7 +803,7 @@ function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {
   return "close";
 }
 
-function PathSegmentLines({
+const PathSegmentLines = memo(function PathSegmentLines({
   activityMode,
   color,
   isDimmed,
@@ -725,15 +817,21 @@ function PathSegmentLines({
   isDimmed: boolean;
   isHighlighted: boolean;
   points: GpsPoint[];
-  segments?: RenderedRouteSegment[] | null;
+  segments?: readonly (LiveRouteChunk | RenderedRouteSegment)[] | null;
   simplificationToleranceMeters: number;
 }) {
-  const renderedSegments = segments ?? buildPathSegments(points, activityMode);
+  const renderedSegments = useMemo(
+    () =>
+      coalesceRouteSegmentsForRender(
+        segments ?? buildPathSegments(points, activityMode)
+      ),
+    [activityMode, points, segments]
+  );
 
   return (
     <>
       {renderedSegments.map((segment, index) => {
-        if (segment.type === "rejected") {
+        if (segment.points.length < 2) {
           return null;
         }
 
@@ -749,7 +847,11 @@ function PathSegmentLines({
               segment.points,
               simplificationToleranceMeters
             ).map(pointToCoordinate)}
-            key={`${segment.type}-${index}-${segment.points[0]?.timestamp ?? "route"}`}
+            key={
+              "id" in segment
+                ? segment.id
+                : `${segment.type}-${index}-${segment.points[0]?.timestamp ?? "route"}`
+            }
             lineCap="round"
             lineDashPattern={undefined}
             lineJoin="round"
@@ -759,6 +861,98 @@ function PathSegmentLines({
         );
       })}
     </>
+  );
+});
+
+type RouteLineSegment = LiveRouteChunk | PathSegment | RenderedRouteSegment;
+type DrawableRouteLineSegment =
+  | Exclude<PathSegment, { type: "rejected" }>
+  | LiveRouteChunk
+  | RenderedRouteSegment;
+
+const ROUTE_RENDER_MAX_VERTICES = 256;
+
+function coalesceRouteSegmentsForRender(
+  segments: readonly RouteLineSegment[]
+): DrawableRouteLineSegment[] {
+  if (segments.some((segment) => "id" in segment)) {
+    return segments.filter(
+      (segment): segment is DrawableRouteLineSegment =>
+        segment.type !== "rejected"
+    );
+  }
+
+  const result: DrawableRouteLineSegment[] = [];
+  let mergeableIndex: number | null = null;
+
+  for (const segment of segments) {
+    if (segment.type === "rejected") {
+      mergeableIndex = null;
+      continue;
+    }
+
+    for (const piece of splitRouteSegmentForRender(segment)) {
+      const tail =
+        mergeableIndex === null ? null : result[mergeableIndex] ?? null;
+      const tailEnd = tail?.points.at(-1);
+      const pieceStart = piece.points[0];
+      const canMerge =
+        tail &&
+        tail.type === "confirmed" &&
+        piece.type === "confirmed" &&
+        tailEnd &&
+        pieceStart &&
+        areSameRenderedPoint(tailEnd, pieceStart) &&
+        tail.points.length + piece.points.length - 1 <=
+          ROUTE_RENDER_MAX_VERTICES;
+
+      if (canMerge && mergeableIndex !== null && tail) {
+        result[mergeableIndex] = {
+          ...tail,
+          points: [...tail.points, ...piece.points.slice(1)]
+        };
+        continue;
+      }
+
+      result.push(piece);
+      mergeableIndex = result.length - 1;
+    }
+  }
+
+  return result;
+}
+
+function splitRouteSegmentForRender(
+  segment: Exclude<PathSegment, { type: "rejected" }> | RenderedRouteSegment
+): DrawableRouteLineSegment[] {
+  if (segment.points.length <= ROUTE_RENDER_MAX_VERTICES) {
+    return [segment];
+  }
+
+  const pieces: DrawableRouteLineSegment[] = [];
+
+  for (
+    let startIndex = 0;
+    startIndex < segment.points.length - 1;
+    startIndex += ROUTE_RENDER_MAX_VERTICES - 1
+  ) {
+    pieces.push({
+      ...segment,
+      points: segment.points.slice(
+        startIndex,
+        startIndex + ROUTE_RENDER_MAX_VERTICES
+      )
+    });
+  }
+
+  return pieces;
+}
+
+function areSameRenderedPoint(left: GpsPoint, right: GpsPoint) {
+  return (
+    left.latitude === right.latitude &&
+    left.longitude === right.longitude &&
+    left.timestamp === right.timestamp
   );
 }
 
@@ -778,13 +972,130 @@ function getSegmentStrokeColor({
   return isDimmed ? "rgba(100, 116, 139, 0.35)" : color;
 }
 
+const STARTUP_CENTER_MAX_AGE_MS = 30_000;
+const STARTUP_CENTER_LOCK_ACCURACY_METERS = 20;
+const STARTUP_CENTER_MIN_ACCURACY_IMPROVEMENT_METERS = 10;
+const STARTUP_CENTER_MIN_ACCURACY_IMPROVEMENT_RATIO = 0.25;
+
+type InitialMapCenter = {
+  accuracyMeters: number | null;
+  isReliable: boolean;
+  point: GpsPoint;
+  timestamp: number;
+};
+
+function getStartupCenterCandidate(
+  activeMode: ActivityMode,
+  activeRouteEndPoint: GpsPoint | null,
+  playerLocation: GpsPoint | null
+): InitialMapCenter | null {
+  if (!playerLocation || !hasPlausibleMapCoordinates(playerLocation)) {
+    return null;
+  }
+
+  const timestamp = getPointTimestamp(playerLocation);
+  const isAcceptedRoutePoint = activeRouteEndPoint === playerLocation;
+  const ageMs = Math.abs(Date.now() - timestamp);
+  const accuracyMeters = getPlausibleAccuracyMeters(playerLocation);
+
+  if (
+    !Number.isFinite(timestamp) ||
+    (!isAcceptedRoutePoint && ageMs > STARTUP_CENTER_MAX_AGE_MS) ||
+    (!isAcceptedRoutePoint &&
+      playerLocation.accuracy !== null &&
+      accuracyMeters === null)
+  ) {
+    return null;
+  }
+
+  return {
+    accuracyMeters,
+    isReliable:
+      isAcceptedRoutePoint ||
+      (accuracyMeters !== null &&
+        accuracyMeters <=
+          Math.min(
+            STARTUP_CENTER_LOCK_ACCURACY_METERS,
+            MODE_LOCATION_CONFIG[activeMode].maxAcceptedAccuracyMeters
+          )),
+    point: playerLocation,
+    timestamp
+  };
+}
+
+function hasPlausibleMapCoordinates(point: GpsPoint) {
+  return (
+    Number.isFinite(point.latitude) &&
+    point.latitude >= -90 &&
+    point.latitude <= 90 &&
+    Number.isFinite(point.longitude) &&
+    point.longitude >= -180 &&
+    point.longitude <= 180
+  );
+}
+
+function getPlausibleAccuracyMeters(point: GpsPoint) {
+  if (point.accuracy === null) {
+    return null;
+  }
+
+  return Number.isFinite(point.accuracy) &&
+    point.accuracy >= 0 &&
+    point.accuracy <= LOCATION_CONFIG.maxAcceptedAccuracyMeters
+    ? point.accuracy
+    : null;
+}
+
+function isSubstantiallyMoreAccurate(
+  previousCenter: InitialMapCenter,
+  nextCenter: InitialMapCenter
+) {
+  if (nextCenter.accuracyMeters === null) {
+    return false;
+  }
+
+  if (previousCenter.accuracyMeters === null) {
+    return (
+      nextCenter.accuracyMeters <= STARTUP_CENTER_LOCK_ACCURACY_METERS
+    );
+  }
+
+  const requiredImprovement = Math.max(
+    STARTUP_CENTER_MIN_ACCURACY_IMPROVEMENT_METERS,
+    previousCenter.accuracyMeters *
+      STARTUP_CENTER_MIN_ACCURACY_IMPROVEMENT_RATIO
+  );
+
+  return (
+    previousCenter.accuracyMeters - nextCenter.accuracyMeters >=
+    requiredImprovement
+  );
+}
+
+function getPointTimestamp(point: GpsPoint) {
+  const timestamp = new Date(point.timestamp).getTime();
+
+  return Number.isFinite(timestamp) ? timestamp : Number.NEGATIVE_INFINITY;
+}
+
+function isPlayerMotionPointFresh(point: GpsPoint) {
+  const timestamp = getPointTimestamp(point);
+  const now = Date.now();
+
+  return (
+    Number.isFinite(timestamp) &&
+    timestamp <= now + LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS &&
+    now - timestamp <= PLAYER_MOTION_FRESHNESS_MS
+  );
+}
+
 function getInitialRegion(
-  currentLocation: GpsPoint | null,
-  walks: WalkWithPoints[],
-  activePoints: GpsPoint[]
+  playerLocation: GpsPoint | null,
+  walks: WalkWithPoints[]
 ): Region {
-  const fallbackPoint = walks.find((walk) => walk.points.length > 0)?.points[0] ?? activePoints[0];
-  const center = currentLocation ?? fallbackPoint;
+  const savedRoutePoint =
+    walks.find((walk) => walk.points.length > 0)?.points.at(-1) ?? null;
+  const center = playerLocation ?? savedRoutePoint;
 
   return {
     latitude: center?.latitude ?? MAP_CONFIG.defaultLatitude,

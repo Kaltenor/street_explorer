@@ -1,20 +1,46 @@
 import * as SQLite from "expo-sqlite";
 
 let database: SQLite.SQLiteDatabase | null = null;
+let databaseOpenPromise: Promise<SQLite.SQLiteDatabase> | null = null;
+let databaseInitializationPromise: Promise<void> | null = null;
 
 export async function getDatabase() {
-  if (!database) {
-    database = await SQLite.openDatabaseAsync("street_explorer.db");
+  if (database) {
+    return database;
   }
 
-  return database;
+  if (!databaseOpenPromise) {
+    databaseOpenPromise = SQLite.openDatabaseAsync("street_explorer.db")
+      .then((openedDatabase) => {
+        database = openedDatabase;
+        return openedDatabase;
+      })
+      .catch((error) => {
+        databaseOpenPromise = null;
+        throw error;
+      });
+  }
+
+  return databaseOpenPromise;
 }
 
-export async function initDatabase() {
+export function initDatabase() {
+  if (!databaseInitializationPromise) {
+    databaseInitializationPromise = initializeDatabase().catch((error) => {
+      databaseInitializationPromise = null;
+      throw error;
+    });
+  }
+
+  return databaseInitializationPromise;
+}
+
+async function initializeDatabase() {
   const db = await getDatabase();
 
   await db.execAsync(`
     PRAGMA journal_mode = WAL;
+    PRAGMA foreign_keys = ON;
 
     CREATE TABLE IF NOT EXISTS schema_migrations (
       id INTEGER PRIMARY KEY NOT NULL,
@@ -249,6 +275,7 @@ export async function initDatabase() {
         session_id INTEGER PRIMARY KEY NOT NULL,
         segments_json TEXT NOT NULL,
         source_point_count INTEGER NOT NULL,
+        source_max_point_id INTEGER NOT NULL DEFAULT 0,
         algorithm_version INTEGER NOT NULL,
         created_at TEXT NOT NULL,
         FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
@@ -260,6 +287,110 @@ export async function initDatabase() {
     // Overlapping fetch windows could therefore overwrite an unrelated road piece
     // under the same ID and leave gaps in the routing graph.
     await db.execAsync("DELETE FROM osm_street_segments;");
+  });
+  await applyMigration(14, "track_pending_recording_repairs", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS pending_recording_repairs (
+        session_id INTEGER PRIMARY KEY NOT NULL,
+        created_at TEXT NOT NULL,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
+      );
+    `);
+  });
+  await applyMigration(15, "track_route_snapshot_gps_generation", async () => {
+    const columns = await db.getAllAsync<{ name: string }>(
+      "PRAGMA table_info(route_snapshots)"
+    );
+    const hasSourceMaxPointId = columns.some(
+      (column) => column.name === "source_max_point_id"
+    );
+
+    if (!hasSourceMaxPointId) {
+      await db.execAsync(`
+        ALTER TABLE route_snapshots
+          ADD COLUMN source_max_point_id INTEGER NOT NULL DEFAULT 0;
+      `);
+    }
+
+    await db.execAsync(`
+      UPDATE route_snapshots
+      SET source_max_point_id = COALESCE((
+        SELECT MAX(gps_points.id)
+        FROM gps_points
+        WHERE gps_points.session_id = route_snapshots.session_id
+      ), 0);
+    `);
+  });
+  await applyMigration(16, "retain_order-independent_gps_observations", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS gps_observations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        session_id INTEGER NOT NULL,
+        latitude REAL NOT NULL,
+        longitude REAL NOT NULL,
+        timestamp TEXT NOT NULL,
+        accuracy REAL,
+        processed INTEGER NOT NULL DEFAULT 0,
+        accepted INTEGER NOT NULL DEFAULT 0,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE,
+        UNIQUE (session_id, timestamp)
+      );
+
+      CREATE INDEX IF NOT EXISTS gps_observations_session_timestamp_index
+        ON gps_observations (session_id, timestamp);
+
+      INSERT OR IGNORE INTO gps_observations (
+        session_id, latitude, longitude, timestamp, accuracy, processed, accepted
+      )
+      SELECT
+        session_id, latitude, longitude, timestamp, accuracy, 1, 1
+      FROM gps_points;
+    `);
+  });
+  await applyMigration(17, "retain_underfilled_recordings_for_late_gps", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS pending_recording_discards (
+        session_id INTEGER PRIMARY KEY NOT NULL,
+        discard_after TEXT NOT NULL,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
+      );
+
+      CREATE INDEX IF NOT EXISTS pending_recording_discards_after_index
+        ON pending_recording_discards (discard_after);
+    `);
+  });
+  await applyMigration(18, "consolidate_exploration_into_walks", async () => {
+    await db.execAsync(`
+      UPDATE walk_sessions
+      SET activity_mode = 'walk'
+      WHERE activity_mode <> 'walk';
+
+      INSERT OR IGNORE INTO explored_cells (
+        mode, cell_size_m, cell_x, cell_y, source, session_id, created_at
+      )
+      SELECT
+        'walk', cell_size_m, cell_x, cell_y, source, session_id, created_at
+      FROM explored_cells
+      WHERE mode <> 'walk';
+
+      DELETE FROM explored_cells
+      WHERE mode <> 'walk';
+
+      UPDATE loop_fills
+      SET mode = 'walk'
+      WHERE mode <> 'walk';
+
+      DELETE FROM app_settings
+      WHERE key IN (
+        'last_activity_mode',
+        'default_activity_mode',
+        'completion_objective'
+      );
+
+      UPDATE app_settings
+      SET value = 'walk'
+      WHERE key = 'active_recording_mode';
+    `);
   });
 }
 

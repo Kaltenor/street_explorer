@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
+import { AppLanguage, getStrings, interpolate } from "../i18n";
 import {
   CachedZone,
   CompletionScope,
@@ -20,7 +20,7 @@ import {
 } from "../services/zoneCompletion";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
-type CompletionMode = ActivityMode | "all";
+type CompletionMode = ActivityMode;
 
 export type CompletionObjective = {
   mode: CompletionMode;
@@ -49,7 +49,6 @@ const EMPTY_STATS: CompletionStats = {
 };
 
 const SCOPES: CompletionScope[] = ["country", "city", "district"];
-const MODES: CompletionMode[] = ["walk", "wheel", "car", "all"];
 
 export function CompletionModal({
   currentObjective,
@@ -62,7 +61,7 @@ export function CompletionModal({
   onSetObjective,
   visible
 }: CompletionModalProps) {
-  const [mode, setMode] = useState<CompletionMode>("walk");
+  const mode: CompletionMode = "walk";
   const [scope, setScope] = useState<CompletionScope>("district");
   const [stats, setStats] = useState<CompletionStats>(EMPTY_STATS);
   const [zones, setZones] = useState<CachedZone[]>([]);
@@ -78,7 +77,6 @@ export function CompletionModal({
   const [zoneStats, setZoneStats] = useState<ZoneCompletionStats | null>(null);
   const strings = getStrings(language);
   const completionStrings = strings.completionMenu;
-  const modeText = ACTIVITY_MODE_TEXT[language];
   const nearestIncompleteZone = useMemo(
     () => getNearestIncompleteZone(zones, zoneStatsById, selectedZoneId),
     [selectedZoneId, zoneStatsById, zones]
@@ -240,7 +238,6 @@ export function CompletionModal({
                 {currentObjective.zone.name}
               </Text>
               <Text style={styles.currentObjectiveMeta}>
-                {formatObjectiveMode(currentObjective.mode, language)} |{" "}
                 {formatCompletion(currentObjectiveStats, language)} |{" "}
                 {formatObjectiveCells(currentObjectiveStats, language)}
               </Text>
@@ -262,13 +259,6 @@ export function CompletionModal({
               setSelectedZoneId(null);
               setZonePickerOpen(false);
             }}
-          />
-          <Selector
-            label={strings.common.mode}
-            options={MODES}
-            selected={mode}
-            titleForOption={(option) => option === "all" ? strings.common.all : modeText.labels[option]}
-            onSelect={setMode}
           />
 
           <View style={styles.panel}>
@@ -513,12 +503,6 @@ function formatZoneCells(stats: ZoneCompletionStats | null, language: AppLanguag
   }
 
   return String(stats.totalZoneCells);
-}
-
-function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLanguage) {
-  return mode === "all"
-    ? getStrings(language).completionMenu.objectiveModeAll
-    : ACTIVITY_MODE_TEXT[language].labels[mode];
 }
 
 function formatObjectiveCells(stats: ZoneCompletionStats | null, language: AppLanguage) {

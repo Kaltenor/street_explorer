@@ -1,5 +1,89 @@
 # Changelog
 
+## v0.3.66
+
+Changed:
+
+- Native splash and in-app launch presentation now use `assets/loading-screen2.png`.
+- The in-game map logo now uses `assets/title.png`.
+
+## v0.3.65
+
+Changed:
+
+- Street Explorer is now walking-only. Launch, Options, Completion, GPS filtering, path inference, background tracking, loop fill, labels, and persisted preferences no longer expose alternate activity choices.
+- Existing recordings, explored cells, loop fills, and active recovery markers are consolidated into walking history without deleting recorded data. Older backup sessions are normalized to walks during restore.
+- The walking loop-fill cap remains 150,000m2.
+
+Removed:
+
+- Activity-selection screens, launch/settings pickers, default activity persistence, alternate tracking profiles, and alternate completion filters.
+
+## v0.3.64
+
+Fixed:
+
+- The player marker remains rendered at the last accepted route position while location or map connectivity is interrupted. Rejected reconnect fixes cannot jump the icon or auto-follow camera, stale motion settles, and native marker snapshot tracking stops after the image is ready.
+- Startup now keeps an idle foreground watcher, waits for the initial location attempt, centers on a usable current fix, accepts a substantially more accurate follow-up fix, and rechecks permission after returning from Settings.
+- Details calculates weekly distance from already-loaded session history instead of showing zero until detailed routes are loaded.
+- A failed saved-data refresh can no longer leave valid explored surfaces hidden for the rest of the app session.
+- Foreground location watches report native errors, retry with bounded backoff, and are actively replaced when the recording watchdog detects a silent stall.
+- Live routes retain the complete recording in stable bounded chunks instead of losing the beginning after 300 accepted points or disappearing when auto-follow zooms out.
+- Active, saved, and today exploration surfaces use consistent loop-hole rules and edge coverage; saved and active cells are merged before polygon construction to remove transient seams.
+- Stop once again opens the Continue / hold-to-quit confirmation. Durable session finalization and queued GPS writes now complete before the recovery marker is cleared; a core failure restores the recording.
+- Recording start creates the session and active recovery marker in one SQLite transaction. Recovery actions verify ownership, stop stale native tracking, and restore background or foreground protection if synchronization fails.
+- Transient GPS persistence failures retain their queued point for retry instead of permanently poisoning every later flush.
+- Foreground and background fixes now retain raw SQLite observations and share one canonical contiguous route stream. The short reorder queue is only a fast path: a truly late or more accurate fix re-derives the route from all observations, requests a full live sync, and cannot leave a permanent hole.
+- Active exploration cells use only confirmed live intervals; a long outage never paints an unverified diagonal while recording.
+- Background start/stop operations are serialized and recording-owned, preventing stale callbacks from affecting a newer session. Every delivered native batch is atomically published before session lookup; a cold headless callback can recover only through one unambiguous timestamp match, unmatched batches remain for a bounded grace window, and 512-point admission chunks prevent backlogs larger than the queue cap from starving.
+- Stop retains an underfilled recording as a hidden five-minute recovery tombstone, allowing a delayed native callback to provide its final point before cleanup. Closed-session queue jobs are terminally removed and pivot to finalized canonical merge instead of retrying forever.
+- Database initialization, foreign-key enforcement, active-marker cleanup, session finalization, discard, history deletion, and backup replacement are transaction-safe. Backup export rejects active or settling recordings and reads one exclusive snapshot. Import closes both file-journal and in-memory GPS admission, quiesces tracking and old queue writes, commits the replacement, then clears old journals.
+- Finalization atomically records a pending derived-data repair. Startup and refresh reuse an authoritative route bound to the source GPS count and maximum point id, replace stale generations, then commit explored cells and clear the repair marker only while that exact generation still exists. A late journaled batch safely rebuilds canonical point order, invalidates stale derived data, and reopens the repair marker.
+- Nearby street downloads retry after a cooldown when a stationary request fails.
+
+Changed:
+
+- Only the most recent 300 raw points stay in the diagnostic state; full live drawing is preserved separately in stable 256-vertex route chunks.
+- Saved route overlays coalesce adjacent confirmed intervals into bounded polylines, reducing native map overlay count without changing stored or inferred geometry.
+- Finalized late-GPS merges load existing observations once and batch deletes/inserts, avoiding per-point lookup overhead on large journals.
+- Removed unused per-fix live street matching and duplicate History route loading.
+
+## v0.3.63
+
+Fixed:
+
+- Stop now removes the live recording state, halts foreground sensors, and clears the persisted active-session marker before any statistics, route, or exploration work begins.
+- Normal Stop finalization processes only the recording that just ended; it no longer launches a full-history exploration rebuild or shows a blocking computing modal.
+- The native map mounts before saved exploration contours are enabled, so historical geometry cannot delay initial map availability.
+- Normal startup reads distinct cached explored-cell ids directly and no longer loads every saved GPS point, creates route snapshots, or rebuilds the explored-cell cache.
+- Unfinished sessions are excluded from normal lifetime stats and saved-history route loading until they are actually finalized.
+- Saved exploration cells and live recording cells are separate cached layers; only the active recording's incremental cell delta is calculated during recording.
+- Recording distance is accumulated when each unique GPS point is persisted, and live street matching evaluates only newly accepted points.
+- Live and recovered routes are capped at the most recent 300 points; the recovery prompt still reports the complete persisted point count.
+- Saved routes load on demand when History or the Paths layer is opened.
+
+Changed:
+
+- Full-history route, street, contour, and loop work is reserved for the explicit Reprocess recordings action.
+- Automatic post-recording loop rebuilding is deferred to explicit Reprocess so Stop remains bounded and responsive.
+## v0.3.62
+
+Fixed:
+
+- The launch overlay no longer waits indefinitely for a fresh high-accuracy GPS fix; the map opens after map, saved-record, and permission initialization, then centers when location arrives.
+- Historical route-snapshot and explored-cell cache backfills now run after the first map render instead of extending the launch screen.
+- A fresh GPS request now times out after six seconds and falls back to a recent last-known position.
+- Starting a recording registers foreground GPS first and initializes step counting and background tracking independently, so a slow auxiliary service cannot stall the Start action.
+- The Start button now prevents duplicate sessions and displays visible progress while permission and session persistence complete.
+## v0.3.61
+
+Fixed:
+
+- Corrected the v0.3.50 legacy-route regression: explicit Reprocess now repairs OSM coverage around all saved raw recording corridors before rebuilding and freezing historical snapshots.
+- Historical street coverage is downloaded in one consolidated Overpass linestring request instead of hundreds of per-recording requests; it has a 35-second client timeout and never commits a partial-cache rebuild after a repair failure.
+- OSM street-cache inserts are now batched in one transaction, avoiding thousands of individual writes during coverage repair.
+- Reprocess progress now exposes the street-repair phase and its completion dialog reports the number of refreshed road segments.
+- Added regressions proving that a plausible legacy interval rejected by the v0.3.50 cache-less freeze becomes a validated inferred route after coverage repair, while unmatched gaps still receive no straight-line fallback.
 ## v0.3.60
 
 Fixed:
@@ -71,7 +155,7 @@ Fixed:
 Fixed:
 
 - Validated cumulative loops now render as completely solid surfaces without MapKit seams between adjacent cells.
-- Loop detection no longer mistakes the outside expansion halo for a valid small fill, so the existing per-mode area caps cannot be bypassed.
+- Loop detection no longer mistakes the outside expansion halo for a valid small fill, so the existing configured area caps cannot be bypassed.
 - Every in-app version label now reads from the canonical package version instead of a stale hardcoded constant.
 
 Changed:
@@ -153,7 +237,7 @@ Added:
 
 Changed:
 
-- Loop-fill caps are now mode-specific: 150,000m2 for walk, 400,000m2 for wheel, and 5km2 for car.
+- Loop-fill caps were introduced for the activity profiles available at that time.
 
 ## v0.3.43
 
@@ -257,8 +341,8 @@ Changed:
 
 Changed:
 
-- Removed the on-map Walk/Wheel/Car mode button.
-- Added mode switching to the launch loading screen before entering the map.
+- Removed the legacy on-map activity button.
+- Added activity switching to the launch loading screen before entering the map.
 - Removed center-on-me and fit-to-path map buttons.
 - Moved Diagnostics access into the History modal tools row.
 - Started a dark HUD pass for the main map buttons, objective HUD, layer toggles, and recording controls.
@@ -622,16 +706,16 @@ Added:
 
 - Expo React Native TypeScript app.
 - SQLite persistence.
-- Walk, Wheel, and Car modes.
+- Initial activity recording profiles.
 - Foreground GPS recording.
 - Best-effort background tracking setup.
 - Apple MapKit-based map through `react-native-maps`.
 - Saved and active path rendering.
 - 15m x 15m deduplicated explored cells.
-- Mode-specific GPS filtering.
+- Activity-aware GPS filtering.
 - GPS status and current speed.
 - History with details, rename, delete, and route highlight.
-- Last selected mode persistence.
+- Last selected activity persistence.
 - Recording recovery.
 - Layer controls.
 - Street completion service foundation.
@@ -640,7 +724,7 @@ Added:
 - Foreground re-sync of background-saved GPS points.
 - Recovery modal with resume, finish/save, and discard actions.
 - Expanded exploration stats with today, latest, longest, cells, and total duration.
-- Map legend and clearer mode switch control.
+- Map legend and clearer activity controls.
 - Expanded route details in history.
 - Compact live recording controls with expandable details.
 - Recording detail view from History.
@@ -654,7 +738,7 @@ Added:
 - Clearer street completion labels and lighter map overlays.
 - Path processing boundary for confirmed, inferred, and rejected segments.
 - Rejected GPS gaps no longer draw straight lines or mark exploration cells.
-- Completion screen foundation with scope and mode selectors.
+- Completion screen foundation with scope and activity selectors.
 - SQLite completion tables for zones, explored cells, and loop fills.
 - Conservative closed-loop fill analysis using hidden OSM street-length checks.
 - OSM overlays hidden by default so the main map stays readable.

@@ -18,46 +18,30 @@ export const ACTIVITY_MODE_TEXT: Record<
 > = {
   en: {
     countLabels: {
-      car: "Drives",
       walk: "Walks",
-      wheel: "Rides"
     },
     descriptions: {
-      car: "Explore by car",
       walk: "Explore on foot",
-      wheel: "Explore by EUC"
     },
     labels: {
-      car: "Car",
       walk: "Walk",
-      wheel: "Wheel"
     },
     recordingNouns: {
-      car: "Drive",
       walk: "Walk",
-      wheel: "Ride"
     }
   },
   fr: {
     countLabels: {
-      car: "Trajets",
       walk: "Marches",
-      wheel: "Sorties"
     },
     descriptions: {
-      car: "Explorer en voiture",
       walk: "Explorer à pied",
-      wheel: "Explorer en EUC"
     },
     labels: {
-      car: "Voiture",
       walk: "Marche",
-      wheel: "Roue"
     },
     recordingNouns: {
-      car: "trajet",
       walk: "marche",
-      wheel: "sortie"
     }
   }
 };
@@ -70,7 +54,6 @@ export const STRINGS = {
     common: {
       all: "All",
       cancel: "Cancel",
-      car: "Car",
       clear: "Clear",
       completion: "Completion",
       details: "Details",
@@ -89,14 +72,10 @@ export const STRINGS = {
       steps: "Steps",
       unknown: "Unknown",
       walk: "Walk",
-      wheel: "Wheel"
     },
     launch: {
       loadingMap: "Loading current area map",
       pressToStart: "Press to start"
-    },
-    modeSelection: {
-      subtitle: "Choose the exploration mode to record."
     },
     walkControls: {
       gps: "GPS",
@@ -113,7 +92,7 @@ export const STRINGS = {
       background: "Background",
       backupFailedMessage: "Street Explorer could not create the backup file.",
       backupFailedTitle: "Backup failed",
-      backgroundEnabled: "Background tracking enabled. Keep this recording stopped before switching mode.",
+      backgroundEnabled: "Background tracking enabled.",
       backgroundForegroundOnly:
         "Background recording is not enabled yet. Foreground recording is active. {hint}",
       backgroundNeedsDevelopmentBuild:
@@ -131,16 +110,13 @@ export const STRINGS = {
         "You can still view saved walks, but location permission is required to record a new walk.",
       recordingActive: "Recording active",
       recordingActiveBackup: "Stop the current recording before restoring a backup.",
-      recordingActiveMode: "Stop the current recording before changing mode.",
+      recordingActiveReprocess: "Stop the current recording before reprocessing walks.",
       restoreBackupMessage: "This replaces all local recordings with the selected backup file.",
       restoreBackupTitle: "Restore backup?",
       restoreFailedMessage: "Street Explorer could not restore this backup file.",
       restoreFailedTitle: "Restore failed"
     },
     options: {
-      activityMode: "Activity mode",
-      defaultActivityMode: "Default transport mode",
-      defaultActivityModeHint: "Used when Street Explorer opens.",
       layers: "Map layers",
       pathDisplay: "Paths shown on map",
       profile: "Recording profile",
@@ -241,8 +217,7 @@ export const STRINGS = {
       noCachedBoundary: "No cached {scope} boundary yet. Tap Refresh to load nearby OSM boundaries.",
       noUsableBoundaries: "No usable boundaries were found. Raw: {raw}, relations: {relations}, usable: {usable}.",
       objectiveCellsToday: "+{count} cells today",
-      objectiveModeAll: "All modes",
-      progressSubtitle: "Exploration progress by area and mode",
+      progressSubtitle: "Walking exploration progress by area",
       scope: "Scope",
       selectArea: "Select area",
       setObjective: "Set objective",
@@ -261,7 +236,6 @@ export const STRINGS = {
     common: {
       all: "Tous",
       cancel: "Annuler",
-      car: "Voiture",
       clear: "Effacer",
       completion: "Progression",
       details: "Détails",
@@ -280,14 +254,10 @@ export const STRINGS = {
       steps: "Pas",
       unknown: "Inconnu",
       walk: "Marche",
-      wheel: "Roue"
     },
     launch: {
       loadingMap: "Chargement de la carte locale",
       pressToStart: "Appuyez pour commencer"
-    },
-    modeSelection: {
-      subtitle: "Choisissez le mode d'exploration à enregistrer."
     },
     walkControls: {
       gps: "GPS",
@@ -304,7 +274,7 @@ export const STRINGS = {
       background: "Arrière-plan",
       backupFailedMessage: "Street Explorer n'a pas pu créer la sauvegarde.",
       backupFailedTitle: "Sauvegarde impossible",
-      backgroundEnabled: "Suivi en arrière-plan activé. Arrêtez cet enregistrement avant de changer de mode.",
+      backgroundEnabled: "Suivi en arrière-plan activé.",
       backgroundForegroundOnly:
         "Le suivi en arrière-plan n'est pas encore activé. L'enregistrement au premier plan est actif. {hint}",
       backgroundNeedsDevelopmentBuild:
@@ -322,16 +292,13 @@ export const STRINGS = {
         "Vous pouvez consulter les marches enregistrées, mais la localisation est nécessaire pour enregistrer une nouvelle marche.",
       recordingActive: "Enregistrement actif",
       recordingActiveBackup: "Arrêtez l'enregistrement en cours avant de restaurer une sauvegarde.",
-      recordingActiveMode: "Arrêtez l'enregistrement en cours avant de changer de mode.",
+      recordingActiveReprocess: "Arrêtez l'enregistrement en cours avant de recalculer les marches.",
       restoreBackupMessage: "Cela remplacera tous les enregistrements locaux par le fichier sélectionné.",
       restoreBackupTitle: "Restaurer la sauvegarde ?",
       restoreFailedMessage: "Street Explorer n'a pas pu restaurer cette sauvegarde.",
       restoreFailedTitle: "Restauration impossible"
     },
     options: {
-      activityMode: "Mode d'activité",
-      defaultActivityMode: "Mode de transport par défaut",
-      defaultActivityModeHint: "Utilisé à l'ouverture de Street Explorer.",
       layers: "Couches de carte",
       pathDisplay: "Traces affichées sur la carte",
       profile: "Profil d'enregistrement",
@@ -432,8 +399,7 @@ export const STRINGS = {
       noCachedBoundary: "Aucune limite {scope} en cache. Touchez Actualiser pour charger les limites OSM proches.",
       noUsableBoundaries: "Aucune limite utilisable trouvée. Brut : {raw}, relations : {relations}, utilisables : {usable}.",
       objectiveCellsToday: "+{count} cellules aujourd'hui",
-      objectiveModeAll: "Tous les modes",
-      progressSubtitle: "Progression d'exploration par zone et par mode",
+      progressSubtitle: "Progression de la marche par zone",
       scope: "Portée",
       selectArea: "Choisir une zone",
       setObjective: "Définir l'objectif",

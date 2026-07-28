@@ -19,7 +19,7 @@ On iOS, `react-native-maps` uses Apple MapKit by default.
 - `src/services`: app logic such as recording, distance, cells, and background tasks.
 - `src/database`: SQLite initialization and repositories.
 - `src/types`: shared TypeScript types.
-- `src/constants`: config and mode labels.
+- `src/constants`: walking GPS configuration and labels.
 
 ## Database
 
@@ -28,9 +28,14 @@ Tables:
 - `schema_migrations`
 - `walk_sessions`
 - `gps_points`
+- `gps_observations`
+- `route_snapshots`
+- `pending_recording_repairs`
+- `pending_recording_discards`
 - `app_settings`
 - `osm_street_segments`
 - `zones`
+- `zone_cell_totals`
 - `explored_cells`
 - `loop_fills`
 
@@ -56,9 +61,8 @@ Tables:
 
 `app_settings` stores lightweight local settings:
 
-- last selected mode
 - active recording session id
-- active recording mode
+- active recording profile marker
 
 `osm_street_segments` caches short OpenStreetMap-derived street segment geometry:
 
@@ -69,9 +73,9 @@ Tables:
 - bounding box
 - fetched timestamp
 
-`explored_cells` stores persisted exploration cells by mode, cell size, source, and session:
+`explored_cells` stores persisted walking exploration cells by profile key, cell size, source, and session:
 
-- mode
+- walking profile key
 - cell size in meters
 - cell x/y
 - source: `gps`, `inferred`, or `loop_fill`
@@ -80,13 +84,17 @@ Tables:
 
 `loop_fills` stores closed-loop analysis results:
 
-- session id and mode
+- session id and walking profile key
 - loop polygon
 - area
 - total and unwalked walkable OSM street length inside the polygon
 - accepted/rejected state and rejection reason
 
+`gps_observations` retains every validly formed raw fix, including filtered fixes, so a later out-of-order delivery can deterministically derive the route again in timestamp order. `route_snapshots` freezes validated render geometry for finalized sessions. `pending_recording_repairs` is a durable finalization outbox: its row is created in the same transaction that ends a valid session and removed only after route and exploration caches are safely present. `pending_recording_discards` temporarily hides a stopped session with fewer than two accepted points for a five-minute late-GPS recovery window, then removes it if it is still underfilled.
+
 `zones` caches country, city, and district boundary polygons fetched from OSM administrative relations.
+
+Migration 18 consolidates legacy non-walking session rows, exploration cells, loop fills, active markers, and imported backups into the walking profile without deleting recordings. Legacy activity preferences and completion objectives are removed because the app no longer exposes activity choices.
 
 `zone_cell_totals` caches calculated zone denominators:
 
@@ -97,29 +105,31 @@ Tables:
 
 ## Recording Flow
 
-1. User taps Start.
-2. A `walk_sessions` row is created immediately.
-3. Active recording settings are saved.
-4. Foreground GPS watch starts.
-5. Background tracking is attempted.
-6. Valid GPS points are saved progressively.
-7. User taps Stop.
-8. Session distance and duration are finalized.
-9. Active recording settings are cleared.
+1. Startup initializes saved data and unfinished-recording recovery while requesting foreground permission.
+2. With permission granted, one managed foreground-location hook requests the current position and keeps an idle high-accuracy watcher active so the player marker is available before recording.
+3. Native watcher errors retry with bounded backoff. During a recording, a watchdog probes and replaces a watcher that stops delivering usable fixes.
+4. User taps Start only after recovery detection completes.
+5. The new `walk_sessions` row and its active-session recovery settings are created in one exclusive SQLite transaction.
+6. The managed watcher switches to best-for-navigation settings. Step counting and background tracking initialize independently.
+7. Foreground fixes enter the canonical SQLite queue, with a file-journal fallback on storage pressure or failure. Every delivered native background batch is sorted, written to a temporary document-directory file, and atomically renamed into the durable outbox before database initialization or queueing. Ownerless points are matched only when exactly one recording contains their timestamp, and unmatched recent batches remain journaled for the bounded recovery window. Active backlogs are admitted in 512-point chunks so the in-memory queue cannot starve their tail.
+8. Each queued fix first enters `gps_observations`. In-order fixes use an incremental fast path; a late or improved fix rebuilds contiguous `gps_points` from all raw observations and requests one full UI synchronization. The UI otherwise reconciles the database tail once per second. This makes arrival order irrelevant while retaining the complete trace as stable route chunks of at most 256 raw vertices; only the newest 300 points remain in diagnostic/movement state.
+9. Exploration cells advance incrementally. Suspicious outage gaps remain explicit until finalized street inference can validate a safe bridge; the renderer never invents a diagonal through buildings.
+10. User taps Stop, then chooses Continue or holds Quit in the confirmation dialog.
+11. Confirmed Stop hides the active UI, invalidates recording ownership, verifies the serialized native background task has stopped, waits for entered handlers, drains the durable outbox, flushes the chronologically ordered queue, and atomically finalizes the SQLite session. The recovery marker is compare-cleared only after that boundary succeeds; a core failure restores the active recording. An underfilled session is hidden as a recoverable discard tombstone instead of being deleted before a delayed native callback can supply its final point.
+12. A native event that enters JavaScript after finalization still journals before session lookup and uses its recording-owner hint, or a unique timestamp match when the headless runtime has no hint. Raw observations are re-derived in canonical order; a changed route removes stale route/cell caches, reopens the repair marker, and notifies the mounted map to refresh. Snapshots persist their GPS source count and maximum point id; create-if-missing replaces a stale generation before freezing the current one. Explored cells and marker removal commit together only while the database, snapshot, and calculated cells still share that exact generation, serialized against both late merge and deletion.
+13. Full-history route, contour, loop-fill, and street rebuilds run only from the explicit Reprocess recordings action.
+
+The watcher keeps the raw current location independently from route acceptance. Before recording it drives accuracy-aware startup centering; once a recording has an accepted route point, the player marker and auto-follow prefer that canonical endpoint. A rejected or temporarily unavailable fix therefore cannot jump or hide the marker while watcher recovery continues.
 
 ## GPS Filtering
 
-Filtering is mode-specific:
-
-- Walk: stricter accuracy and lower max speed.
-- Wheel: medium accuracy and higher max speed.
-- Car: wider tolerance and high max speed.
+Filtering uses one walking profile: accepted fixes must be within 30m accuracy, movement is sampled from 1m, and the maximum plausible speed is 4m/s.
 
 The recorder rejects:
 
 - points with poor accuracy
 - points below the minimum movement threshold
-- impossible jumps above the mode speed cap
+- impossible jumps above the walking speed cap
 
 ## Exploration Cells
 
@@ -134,27 +144,29 @@ Confirmed GPS geometry marks direct cells. A suspicious gap marks cells only whe
 
 Validated high- and medium-confidence street-matched bridge sections are stored as `inferred` cells. They contribute to the explored map, zone completion, and loop boundaries. Unmatched or low-confidence gaps remain rejected and never receive a straight-line fallback.
 
+Normal startup reads distinct saved cell ids from the exploration ledger without loading saved GPS routes. The map mounts first; cached contour polygons are enabled only after the native map reports readiness. During recording, saved and active ids are combined before contour extraction so one surface owns shared boundaries and cannot show transient seams; unchanged sets retain their references so memoization avoids redundant work.
+
 The 15m x 15m grid is still a temporary approximation before true OpenStreetMap street completion.
-For rendering, adjacent explored cells are unioned into contour polygons instead of being emitted as overlapping rectangles. Each connected explored island becomes one native map polygon. Enclosed contours at or below the active mode's existing fill-area cap are rendered solid, which guarantees that small missing-cell channels cannot show through a qualifying discovered frontier. When a hole is filled, nested island contours inside it are discarded because the parent surface already covers them. Oversized enclosed contours remain explicit holes and receive their own black frontier, while filled holes leave no internal outline. Live recording cells use a separate small contour layer so each GPS update does not rebuild the full saved history.
+For rendering, adjacent explored cells are unioned into contour polygons instead of being emitted as overlapping rectangles. Each connected explored island becomes one native map polygon. Enclosed contours at or below the walking fill-area cap are rendered solid, which guarantees that small missing-cell channels cannot show through a qualifying discovered frontier. When a hole is filled, nested island contours inside it are discarded because the parent surface already covers them. Oversized enclosed contours remain explicit holes and receive their own black frontier, while filled holes leave no internal outline. The combined saved/live surface uses a matching edge stroke to cover native polygon rasterization seams.
 
 ## Loop Fill
 
-Closed-loop fill is a gameplay-first V1 mechanic based on global explored cell enclosure per mode.
+Closed-loop fill is a gameplay-first V1 mechanic based on global walking explored-cell enclosure.
 
 The app first samples trusted GPS path geometry into explored cells. Rejected GPS gaps never mark cells, so they cannot become part of a loop boundary.
 
-All directly explored cells for the current mode are treated as the boundary, even when they came from different recordings. The renderer and persistence layer share one authoritative grid-contour extraction: each qualifying enclosed contour produces the exact same cell set for the solid red surface, loop-fill storage, and completion. Nested contour cells are claimed once. The one-cell flood tolerance supplements only contours that are not already represented by the authoritative extraction.
+All directly explored walking cells are treated as the boundary, even when they came from different recordings. The renderer and persistence layer share one authoritative grid-contour extraction: each qualifying enclosed contour produces the exact same cell set for the solid red surface, loop-fill storage, and completion. Nested contour cells are claimed once. The one-cell flood tolerance supplements only contours that are not already represented by the authoritative extraction.
 
 Current thresholds are:
 
 - minimum recording distance before loop analysis: 80m
 - minimum enclosed cells: 1
 - detection boundary expansion: 1 cell
-- maximum enclosed area: 150,000m2 for walk, 400,000m2 for wheel, 5km2 for car
+- maximum enclosed area: 150,000m2
 
 OSM is used as hidden analysis data inside the polygon. The app still measures walkable street length for future debugging and tuning, but OSM street density no longer blocks a valid loop from filling.
 
-One mode can contain multiple loop fills. Accepted loop-fill cells are stored separately from directly walked GPS cells.
+Walking exploration can contain multiple loop fills. Accepted loop-fill cells are stored separately from directly walked GPS cells.
 
 ## Street Completion
 
@@ -166,6 +178,8 @@ Flow:
 - Split long OSM ways into short local segments.
 - Cache segment geometries in SQLite.
 - Match recorded GPS points to nearby segment polylines using a distance threshold.
+- During a live recording, match only points whose persisted point index has not already been processed.
+- Match full saved history only during the explicit Reprocess workflow.
 - Keep unmatched OSM streets hidden from the main map by default.
 - Keep matched/unmatched OSM street data hidden from the main gameplay map by default.
 - Report loaded segments, matched segments, and matched street-segment distance.
@@ -174,7 +188,7 @@ Limitations:
 
 - Matching is proximity-based and can be wrong near parallel roads.
 - Street matching is based on loaded nearby streets, not full city-scale street coverage yet.
-- Completion is not separated by activity mode yet.
+- Completion uses the walking exploration ledger.
 
 ## Zone Completion
 
@@ -189,7 +203,7 @@ Flow:
 - count total 15m cells inside city/district-sized polygons
 - show completion percentage when the zone denominator can be scanned locally
 
-Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone. Completion augments persisted cells with the same per-mode, area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage always use the same numerator.
+Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone. Completion augments persisted cells with the same walking area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage always use the same numerator.
 
 District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.
 
@@ -201,8 +215,8 @@ Street-aware path inference is persisted in an immutable route snapshot and is s
 
 The service projects suspicious GPS-gap endpoints onto the nearest point of cached OSM street segments, attaches those projected points to the graph, and searches for a plausible street route. This avoids treating a player beside the middle of a 35m fragment as if they were at one of its endpoints. Only high- or medium-confidence routes are frozen and counted. A high-confidence snap may close its endpoint seam only when it is within 12m; longer, unmatched, or low-confidence gaps never receive a straight connector. Once stored, a snapshot is never changed by map movement, cache refresh, normal saves, or loop recalculation.
 
-The explicit **Reprocess recordings** action is the only workflow allowed to replace existing historical snapshots. It is deliberately cache-only: nearby OSM data is refreshed by the normal map workflow, while historical reprocessing combines the stable cached corridor with the currently loaded graph and performs no per-recording network request. One graph is built per recording and reused for every suspicious GPS interval. Individual recording failures retain their previous frozen route while the remaining recordings continue. The complete candidate includes confirmed cells, validated inferred cells, and authoritative contour fills. If its unique-cell total is lower than existing progress, both snapshots and the explored ledger remain untouched and the result reports a safety stop. Otherwise all explored cells and loop metadata are replaced in one atomic transaction. The phased progress modal is displayed over the map after full-screen panels close, and any uncaught failure produces a visible error.
+The explicit **Reprocess recordings** action is the only workflow allowed to replace existing historical snapshots. Before route calculation, it makes one consolidated Overpass linestring request covering the raw corridors of every saved walking recording. This repairs the incomplete cache that caused the v0.3.50 legacy-freeze regression without returning to slow per-recording downloads. The request has a 35-second client timeout, its street segments are batch-written atomically, and failure aborts the rebuild while leaving existing routes and progress untouched. One graph is then built per recording and reused for every suspicious GPS interval. Individual recording calculation failures retain their previous frozen route while the remaining recordings continue. The complete candidate includes confirmed cells, validated inferred cells, and authoritative contour fills. If its unique-cell total is lower than existing progress, both snapshots and the explored ledger remain untouched and the result reports a safety stop. Otherwise all explored cells and loop metadata are replaced in one atomic transaction. The phased progress modal is displayed over the map after full-screen panels close, and any uncaught failure produces a visible error.
 
-Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V2 includes route snapshots, so exported and restored routes keep the same frozen geometry.
+Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V2 includes route snapshots, so exported and restored routes keep the same frozen geometry. Export is blocked while a recording is active or a recent underfilled Stop is still settling, drains the local background outbox, and reads sessions, points, and snapshots inside one exclusive transaction. Import closes file-journal admission, stops and drains native tracking, closes and settles the in-memory GPS queue, commits the replacement transaction, clears the old recording hint, and only then discards old journal files; a delayed pre-import event therefore cannot be attributed to an unrelated restored session.
 
 There is still no straight-line fallback for inferred exploration. Low-confidence, implausible, or unmatched gaps remain hidden and contribute no explored cells.

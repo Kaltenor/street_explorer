@@ -4,6 +4,9 @@ import type { ActivityMode } from "../types/walk";
 
 export const APP_VERSION = packageMetadata.version;
 
+export const BACKGROUND_LOCATION_RECOVERY_GRACE_MS =
+  5 * 60 * 1000;
+
 export const LOCATION_CONFIG = {
   maxAcceptedAccuracyMeters: 100,
   minDistanceBetweenPointsMeters: 1,
@@ -23,16 +26,6 @@ export const MODE_LOCATION_CONFIG: Record<
     maxAcceptedAccuracyMeters: 30,
     maxSpeedMetersPerSecond: 4,
     minDistanceBetweenPointsMeters: 1
-  },
-  wheel: {
-    maxAcceptedAccuracyMeters: 40,
-    maxSpeedMetersPerSecond: 16,
-    minDistanceBetweenPointsMeters: 2
-  },
-  car: {
-    maxAcceptedAccuracyMeters: 60,
-    maxSpeedMetersPerSecond: 55,
-    minDistanceBetweenPointsMeters: 5
   }
 };
 

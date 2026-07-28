@@ -1,6 +1,6 @@
 # Street Explorer
 
-Street Explorer is an Expo React Native app for recording real-world exploration across Walk, Wheel, and Car modes.
+Street Explorer is an Expo React Native app focused on recording real-world exploration on foot.
 
 The app records GPS paths locally, stores them in SQLite, and displays explored areas as deduplicated 15m x 15m cells on a map.
 
@@ -30,6 +30,6 @@ Use the development build for real device testing, especially background locatio
 
 ## Current Status
 
-Current version: `v0.3.60`
+Current version: `v0.3.66`
 
-The app supports local recording, mode-specific GPS filtering, full-screen Details/History/Completion views, explored cells, loop-fill analysis, recovery for unfinished recordings, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.
+The app supports self-healing foreground/background recording, accuracy-aware startup centering, a persistent accepted-route player marker, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion views, explored cells, loop-fill analysis, safe backup/restore, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.

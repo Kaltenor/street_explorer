@@ -14,46 +14,53 @@ type OsmStreetSegmentRow = {
 };
 
 export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
-  const db = await getDatabase();
-
-  for (const segment of segments) {
-    await db.runAsync(
-      `
-        INSERT INTO osm_street_segments (
-          id,
-          name,
-          highway,
-          coordinates_json,
-          min_latitude,
-          max_latitude,
-          min_longitude,
-          max_longitude,
-          fetched_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(id) DO UPDATE SET
-          name = excluded.name,
-          highway = excluded.highway,
-          coordinates_json = excluded.coordinates_json,
-          min_latitude = excluded.min_latitude,
-          max_latitude = excluded.max_latitude,
-          min_longitude = excluded.min_longitude,
-          max_longitude = excluded.max_longitude,
-          fetched_at = excluded.fetched_at
-      `,
-      segment.id,
-      segment.name,
-      segment.highway,
-      JSON.stringify(segment.coordinates),
-      segment.minLatitude,
-      segment.maxLatitude,
-      segment.minLongitude,
-      segment.maxLongitude,
-      segment.fetchedAt
-    );
+  if (segments.length === 0) {
+    return;
   }
-}
 
+  const db = await getDatabase();
+  const batchSize = 75;
+
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    for (let offset = 0; offset < segments.length; offset += batchSize) {
+      const batch = segments.slice(offset, offset + batchSize);
+      const placeholders = batch.map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?)").join(", ");
+      const values: Array<number | string | null> = [];
+
+      for (const segment of batch) {
+        values.push(
+          segment.id,
+          segment.name,
+          segment.highway,
+          JSON.stringify(segment.coordinates),
+          segment.minLatitude,
+          segment.maxLatitude,
+          segment.minLongitude,
+          segment.maxLongitude,
+          segment.fetchedAt
+        );
+      }
+
+      await transaction.runAsync(
+        "INSERT INTO osm_street_segments (" +
+          "id, name, highway, coordinates_json, min_latitude, max_latitude, " +
+          "min_longitude, max_longitude, fetched_at" +
+          ") VALUES " +
+          placeholders +
+          " ON CONFLICT(id) DO UPDATE SET " +
+          "name = excluded.name, " +
+          "highway = excluded.highway, " +
+          "coordinates_json = excluded.coordinates_json, " +
+          "min_latitude = excluded.min_latitude, " +
+          "max_latitude = excluded.max_latitude, " +
+          "min_longitude = excluded.min_longitude, " +
+          "max_longitude = excluded.max_longitude, " +
+          "fetched_at = excluded.fetched_at",
+        values
+      );
+    }
+  });
+}
 export async function getStreetSegmentsNear(
   latitude: number,
   longitude: number,

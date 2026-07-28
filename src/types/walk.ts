@@ -1,4 +1,4 @@
-export type ActivityMode = "walk" | "wheel" | "car";
+export type ActivityMode = "walk";
 
 export type GpsPoint = {
   id?: number;
@@ -16,6 +16,14 @@ export type RenderedRouteSegment = {
   confidence?: "medium" | "high";
   points: GpsPoint[];
   type: "confirmed" | "inferred";
+};
+
+export type LiveRouteChunk = {
+  id: string;
+  isFrozen: boolean;
+  points: GpsPoint[];
+  rawPointCount: number;
+  type: "confirmed";
 };
 
 export type WalkSession = {
@@ -45,7 +53,9 @@ export type ActiveWalk = {
   points: GpsPoint[];
   distanceMeters: number;
   currentSpeedMetersPerSecond: number;
+  exploredCellIds: string[];
   lastRejectedPointReason: string | null;
+  routeChunks: LiveRouteChunk[];
   stepCount: number;
 };
 
