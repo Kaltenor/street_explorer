@@ -27,8 +27,11 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 npm run typecheck
 npm run test:geometry
 npm run test:medals
+npm run test:player
 npx expo install --check
 ```
+
+`test:player` verifies the sixteen active native idle/walking frames plus retained source/stale assets, trustworthy-location and last-rendered-sprite retention, the stable native marker identifier, `AnimatedRegion` coordinate smoothing, disabled custom-view snapshot tracking, stale-GPS accessibility, and removal of fragile legacy marker rendering. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
@@ -67,10 +70,10 @@ Startup regressions: when testing an older development binary against the curren
    - bottom controls show distance, duration, and Stop
 13. Tap Stop.
 14. Confirm the Stop dialog offers Continue and a hold-to-quit action; choose Continue and confirm recording and drawing continue. With VoiceOver, confirm the Quit control exposes its confirmation action.
-15. Tap Stop again, hold Quit, and confirm the UI enters Finishing without a blocking Computing dialog.
-16. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
-17. Confirm the recording report appears after the bounded single-recording cache write.
-18. Confirm the recording appears in History.
+15. Tap Stop again, hold Quit, and confirm the UI enters Finishing only while tracking is quiesced and queued GPS is durably finalized.
+16. Confirm the recording report, History row, saved live cells, and Start control appear immediately at that durable boundary; route inference, exact steps, medals, objectives, and full cache refresh may finish afterward without blocking input.
+17. Start another short walk immediately and confirm the player remains visible and the new recording begins normally while the previous derived work settles.
+18. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
 
 ## Startup And Large-History Performance Test
 
@@ -80,7 +83,7 @@ Startup regressions: when testing an older development binary against the curren
 4. Open History and confirm the list appears without loading every route; tap one recording and confirm only that recording's detailed GPS and route data loads.
 5. Close History, restart, enable Paths, and confirm detailed routes load on demand.
 6. Start a recording and confirm live distance, cells, and the complete route advance without progressively worsening input lag.
-7. Stop and confirm finalization time depends on the active recording, not the complete saved history.
+7. Stop and confirm the report and Start control return after the durable session save, without waiting for route inference, exact step reconciliation, medals, objectives, or the complete saved-history refresh. For a continuous short route, confirm the direct snapshot fast path avoids street-corridor graph work.
 8. Run Reprocess recordings explicitly and confirm that is the only workflow that performs full-history route, street, contour, and loop rebuilding.
 9. Repeatedly open and close History and Completion with a large explored-cell ledger; confirm Back returns control to the map immediately while unfinished Completion scans are cancelled.
 
@@ -367,14 +370,17 @@ This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK 
 
 ## Animated Player Marker Test
 
-1. Launch outdoors with foreground permission and confirm the top-down explorer marker appears before recording.
+1. Launch outdoors with foreground permission and confirm the CC0 top-down pixel character appears before recording.
 2. Confirm the map initially centers on the current fix without replacing it with the native blue cursor.
-3. Start recording, walk straight for several metres, and confirm the explorer gently animates and faces the direction of travel.
-4. Turn through north (359 to 0 degrees) and confirm the explorer takes the short rotation without spinning backward.
-5. Stop moving and confirm the movement animation settles while the last reliable heading is retained.
-6. Interrupt location or map connectivity and confirm the explorer stays visible at the newest accepted route position.
-7. Restore service and confirm the watcher reconnects and drawing resumes automatically.
-8. Briefly create a weak or noisy reading and confirm the explorer follows accepted route points instead of jumping to rejected GPS positions.
+3. Start recording, walk straight for several metres, and confirm the three-frame walking cycle plays continuously without the player flashing, disappearing, or leaving partial fragments.
+4. Turn through north, east, south, and west; confirm the character changes to the corresponding directional artwork and glides between GPS updates instead of jumping or rotating the same image.
+5. Stop moving and confirm the character settles on the matching directional idle frame.
+6. Stop the walk and immediately start another; confirm the native annotation remains continuously visible during active-route teardown and recreation.
+7. Interrupt location or map connectivity and confirm the explorer stays visible at the newest trustworthy position.
+8. Wait at least ten seconds without a fix and confirm the player keeps its last rendered sprite instead of disappearing; with VoiceOver, confirm the marker is announced as a stale last-known position.
+9. Restore service and confirm the watcher reconnects, the accessible stale state clears, and drawing resumes automatically.
+10. Briefly create a weak or noisy reading and confirm the explorer follows accepted route points instead of jumping to rejected GPS positions.
+11. Run `npm run test:player` and confirm the asset/source regression checks pass.
 
 ## Explored Area Performance Test
 

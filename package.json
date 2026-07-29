@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.6.0",
+  "version": "0.6.3",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "test:geometry": "node scripts/test-exploration-geometry.js",
     "build:ios:dev": "eas build --platform ios --profile development",
-    "build:ios:sim": "eas build --platform ios --profile development-simulator"
+    "build:ios:sim": "eas build --platform ios --profile development-simulator",
+    "test:player": "node scripts/test-player-marker.js"
   },
   "dependencies": {
     "@expo/vector-icons": "latest",

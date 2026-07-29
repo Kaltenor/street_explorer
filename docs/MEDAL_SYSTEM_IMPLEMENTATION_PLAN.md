@@ -4,7 +4,19 @@
 
 This document began as the pre-implementation audit and now also records the decisions implemented in v0.4.0. The original findings remain as design rationale.
 
-Post-implementation maintenance through v0.6.0 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones, writes the shared JSON file asynchronously, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+Post-implementation maintenance through v0.6.3 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones, writes the shared JSON file asynchronously, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+
+## v0.6.3 non-medal finalization fix
+
+v0.6.3 keeps the medal rules and persistence schema unchanged. Normal Stop now returns its report immediately after durable recording finalization, and continuous routes skip unrelated street-corridor inference; the idempotent medal safety evaluation continues asynchronously with route/exploration repair and refresh, while live awards remain immediate during the walk.
+
+## v0.6.2 non-medal rendering fix
+
+v0.6.2 replaces the flickering nested player-marker view with precomposed native annotation images and smooths its coordinate through `AnimatedRegion`. This changes no landmark catalogue, enclosure, award, evidence, presentation queue, or Backup V3 medal behavior.
+
+## v0.6.1 non-medal maintenance note
+
+v0.6.1 changes only the map player presentation and location-marker lifecycle: a CC0 four-direction walking sprite replaces the static player image, and the last trustworthy position remains visible with a stale-GPS state through interruptions and recording transitions. Medal qualification, catalogue content, evidence, collection state, and Backup V3 medal behavior are unchanged.
 
 ## v0.6.0 collection-and-presentation amendment
 

@@ -724,11 +724,21 @@ export function MapScreen({
     setWalks(savedWalks);
   }, [activityMode]);
 
-  const refreshSavedData = useCallback(async () => {
-    setIsExplorationEnabled(false);
+  const refreshSavedData = useCallback(async (options: {
+    hideExplorationDuringRefresh?: boolean;
+    repairPendingCaches?: boolean;
+  } = {}) => {
+    const hideExplorationDuringRefresh =
+      options.hideExplorationDuringRefresh ?? true;
+
+    if (hideExplorationDuringRefresh) {
+      setIsExplorationEnabled(false);
+    }
 
     try {
-      await repairPendingRecordingCaches();
+      if (options.repairPendingCaches ?? true) {
+        await repairPendingRecordingCaches();
+      }
       const [
         lifetimeStats,
         savedHistory,
@@ -809,11 +819,13 @@ export function MapScreen({
         );
       }
     } finally {
-      // A failed cache refresh must never leave already valid exploration hidden.
-      await new Promise<void>((resolve) => setTimeout(resolve, 0));
+      if (hideExplorationDuringRefresh) {
+        // A failed cache refresh must never leave already valid exploration hidden.
+        await new Promise<void>((resolve) => setTimeout(resolve, 0));
 
-      if (isMapReadyRef.current) {
-        setIsExplorationEnabled(true);
+        if (isMapReadyRef.current) {
+          setIsExplorationEnabled(true);
+        }
       }
     }
   }, [activityMode, loadDetailedWalks]);
@@ -2079,6 +2091,8 @@ export function MapScreen({
     let endedAt = new Date().toISOString();
     const finalBackgroundStatus = backgroundTrackingStatus;
     const savedCellIdsBeforeStop = savedExplorationCellIdSet;
+    const objectiveBefore = objectiveStats;
+    const summaryQuality = recordingQuality;
 
     setStopConfirmationVisible(false);
     setIsComputingRecording(true);
@@ -2146,84 +2160,167 @@ export function MapScreen({
         return;
       }
 
-      let finalStepCount = walkToStop.stepCount;
-
-      if (walkToStop.activityMode === "walk") {
-        try {
-          finalStepCount = await getStepCountBetween(walkToStop.startedAt, endedAt);
-          await updateWalkSessionStepCount(savedSessionId, finalStepCount);
-        } catch (error) {
-          console.warn("Failed to finalize step count", error);
-        }
-      }
-
-      const finalizedPoints = await getGpsPointsForSession(savedSessionId);
-      let recordingCellIds: string[] = [];
-
-      try {
-        recordingCellIds = await persistRecordingExplorationDelta(
-          savedSessionId,
-          walkToStop.activityMode,
-          finalizedPoints
-        );
-      } catch (error) {
-        console.warn("Recording saved but exploration cache update failed", error);
-      }
-
-      try {
-        await evaluateMedalCollectionForRecording(savedSessionId);
-      } catch (error) {
-        console.warn("Recording saved but medal evaluation failed", error);
-      }
-
-      const finalizedSession = await getWalkSessionById(savedSessionId);
-      const finalizedDistanceMeters =
-        finalizedSession?.distanceMeters ?? walkToStop.distanceMeters;
-      const newCellCount = recordingCellIds.filter(
+      const durationSeconds = Math.max(
+        0,
+        Math.round(
+          (new Date(endedAt).getTime() -
+            new Date(walkToStop.startedAt).getTime()) /
+            1000
+        )
+      );
+      const immediateCellIds = [...new Set(walkToStop.exploredCellIds)];
+      const immediateNewCellIds = immediateCellIds.filter(
         (cellId) => !savedCellIdsBeforeStop.has(cellId)
-      ).length;
-      const objectiveBefore = objectiveStats;
-      const loopResult: LoopProcessingResult = { status: "not_checked" };
+      );
+      const immediateNewCellCount = immediateNewCellIds.length;
+      const immediateSession: WalkSession = {
+        activityMode: walkToStop.activityMode,
+        displayName: null,
+        distanceMeters: walkToStop.distanceMeters,
+        durationSeconds,
+        endedAt,
+        id: savedSessionId,
+        pointCount: walkToStop.acceptedGpsPointCount,
+        startedAt: walkToStop.startedAt,
+        stepCount: walkToStop.stepCount
+      };
 
-      try {
-        await refreshSavedData();
-      } catch (error) {
-        console.warn("Recording saved but the map refresh failed", error);
+      // The live route is already confirmed. Keep it visible immediately while
+      // route inference and the durable repair outbox finish in the background.
+      setSavedExplorationCellIds((currentCellIds) => [
+        ...new Set([...currentCellIds, ...immediateCellIds])
+      ]);
+      if (isToday(endedAt)) {
+        setSavedTodayNewCellIds((currentCellIds) => [
+          ...new Set([...currentCellIds, ...immediateNewCellIds])
+        ]);
       }
-
-      let objectiveAfter: ZoneCompletionStats | null = null;
-
-      if (objective) {
-        try {
-          objectiveAfter = await calculateObjectiveStats(objective);
-        } catch (error) {
-          console.warn("Recording saved but objective refresh failed", error);
-        }
-      }
-
-      await waitForMapRenderCommit();
+      setHistory((currentHistory) => [
+        immediateSession,
+        ...currentHistory.filter((session) => session.id !== savedSessionId)
+      ]);
+      setStats((currentStats) => ({
+        ...currentStats,
+        approximateExploredAreaSquareMeters:
+          (savedCellIdsBeforeStop.size + immediateNewCellCount) * 15 * 15,
+        exploredCellCount: savedCellIdsBeforeStop.size + immediateNewCellCount,
+        latestRecordingDistanceMeters: walkToStop.distanceMeters,
+        latestRecordingStartedAt: walkToStop.startedAt,
+        longestRecordingDistanceMeters: Math.max(
+          currentStats.longestRecordingDistanceMeters,
+          walkToStop.distanceMeters
+        ),
+        newCellsThisRecording: immediateNewCellCount,
+        todayDistanceMeters:
+          currentStats.todayDistanceMeters +
+          (isToday(endedAt) ? walkToStop.distanceMeters : 0),
+        todayRecordingCount:
+          currentStats.todayRecordingCount + (isToday(endedAt) ? 1 : 0),
+        todayStepCount:
+          currentStats.todayStepCount +
+          (isToday(endedAt) ? walkToStop.stepCount : 0),
+        totalDistanceMeters:
+          currentStats.totalDistanceMeters + walkToStop.distanceMeters,
+        totalDurationSeconds:
+          currentStats.totalDurationSeconds + durationSeconds,
+        walkCount: currentStats.walkCount + 1
+      }));
       setRecordingSummary({
         backgroundStatus: finalBackgroundStatus,
-        distanceMeters: finalizedDistanceMeters,
-        durationSeconds: Math.max(
-          0,
-          Math.round(
-            (new Date(endedAt).getTime() -
-              new Date(walkToStop.startedAt).getTime()) /
-              1000
-          )
-        ),
-        finalStepCount,
+        distanceMeters: walkToStop.distanceMeters,
+        durationSeconds,
+        finalStepCount: walkToStop.stepCount,
         gpsPausedEventCount: walkToStop.gpsPausedEventCount,
-        loopResult,
-        newCellCount,
-        objectiveAfter,
+        loopResult: { status: "not_checked" },
+        newCellCount: immediateNewCellCount,
+        objectiveAfter: null,
         objectiveBefore,
-        quality: recordingQuality,
+        quality: summaryQuality,
         sessionId: savedSessionId
       });
+
+      // Everything below is derived data. The finalized session and its repair
+      // marker are already durable, so this must not keep Stop or Start blocked.
+      void (async () => {
+        let finalStepCount = walkToStop.stepCount;
+        let recordingCellIds = immediateCellIds;
+
+        const stepCountPromise = walkToStop.activityMode === "walk"
+          ? getStepCountBetween(walkToStop.startedAt, endedAt)
+              .then(async (stepCount) => {
+                await updateWalkSessionStepCount(savedSessionId, stepCount);
+                return stepCount;
+              })
+              .catch((error) => {
+                console.warn("Failed to reconcile finalized step count", error);
+                return walkToStop.stepCount;
+              })
+          : Promise.resolve(walkToStop.stepCount);
+
+        try {
+          const finalizedPoints = await getGpsPointsForSession(savedSessionId);
+          recordingCellIds = await persistRecordingExplorationDelta(
+            savedSessionId,
+            walkToStop.activityMode,
+            finalizedPoints
+          );
+        } catch (error) {
+          console.warn("Recording saved; deferred exploration repair remains pending", error);
+        }
+
+        try {
+          await evaluateMedalCollectionForRecording(savedSessionId);
+        } catch (error) {
+          console.warn("Recording saved but deferred medal evaluation failed", error);
+        }
+
+        finalStepCount = await stepCountPromise;
+        const finalizedSession = await getWalkSessionById(savedSessionId).catch(
+          (error) => {
+            console.warn("Failed to reload the finalized recording", error);
+            return null;
+          }
+        );
+        let objectiveAfter: ZoneCompletionStats | null = null;
+
+        if (objective) {
+          try {
+            objectiveAfter = await calculateObjectiveStats(objective);
+            setObjectiveStats(objectiveAfter);
+          } catch (error) {
+            console.warn("Recording saved but deferred objective refresh failed", error);
+          }
+        }
+
+        try {
+          await refreshSavedData({
+            hideExplorationDuringRefresh: false,
+            repairPendingCaches: false
+          });
+        } catch (error) {
+          console.warn("Recording saved but deferred map refresh failed", error);
+        }
+
+        const reconciledNewCellCount = recordingCellIds.filter(
+          (cellId) => !savedCellIdsBeforeStop.has(cellId)
+        ).length;
+        setRecordingSummary((currentSummary) =>
+          currentSummary?.sessionId === savedSessionId
+            ? {
+                ...currentSummary,
+                distanceMeters:
+                  finalizedSession?.distanceMeters ?? currentSummary.distanceMeters,
+                finalStepCount,
+                newCellCount: reconciledNewCellCount,
+                objectiveAfter
+              }
+            : currentSummary
+        );
+      })().catch((error) =>
+        console.warn("Deferred recording reconciliation failed", error)
+      );
     } catch (error) {
-      console.warn("Recording was saved but post-save refresh failed", error);
+      console.warn("Recording was saved but immediate UI finalization failed", error);
       Alert.alert(
         "Recording saved",
         "The walk is safe. Some map details will refresh the next time the app becomes active."

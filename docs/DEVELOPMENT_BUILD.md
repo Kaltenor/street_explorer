@@ -70,27 +70,28 @@ npx eas-cli build --platform ios --profile development-simulator
 1. Install the development build on the iPhone.
 2. Launch from the development build, not Expo Go.
 3. Grant foreground and background location permissions if prompted.
-4. Before recording, confirm the player icon appears and the map centers on a usable current fix, then recenters if a substantially more accurate fix arrives before you move the map.
-5. Start a Walk and, for the long-route check, collect more than 1,000 accepted points.
-6. Interrupt location service or connectivity and confirm the marker remains on the last accepted route point, settles its movement animation, and keeps the existing route visible.
-7. Restore service and confirm drawing reconnects automatically without a missing segment or unsafe outage diagonal.
-8. Lock or background the phone for several minutes while moving.
-9. Reopen the app and allow the foreground/background tails to reconcile.
-10. Confirm:
+4. Before recording, confirm the four-direction pixel character appears and the map centers on a usable current fix, then recenters if a substantially more accurate fix arrives before you move the map.
+5. Start a Walk, change direction, and confirm the matching north/east/south/west three-frame walking cycle plays continuously with no disappearing frames; verify each one-second location update glides instead of jumping. For the long-route check, collect more than 1,000 accepted points.
+6. Stop and immediately start another Walk; confirm the same native player marker remains visible throughout the transition without flashing, leaving fragments, or briefly reverting to an empty native image.
+7. Interrupt location service or connectivity and confirm the marker remains on the last accepted route point and keeps its last rendered sprite after ten seconds; VoiceOver should describe it as the last known stale location.
+8. Restore service and confirm the stale state clears and drawing reconnects automatically without a missing segment or unsafe outage diagonal.
+9. Lock or background the phone for several minutes while moving.
+10. Reopen the app and allow the foreground/background tails to reconcile.
+11. Confirm:
    - points increased
    - distance increased
    - explored cells increased
    - the entire route remains continuous at every zoom
    - no stale background setup restarts after the recording changes state
-11. Tap Stop, choose Continue, and confirm recording continues.
-12. Tap Stop again immediately after a lock/unlock handoff, hold Quit, and confirm the route saves only after entered handlers, the atomically published background outbox, and raw-observation-derived queued writes finish.
-13. Force-close mid-recording and confirm recovery offers Resume, Finish, and Discard without losing the saved tail.
-14. Force-close once more just after finalization, including with a delayed background event, and confirm relaunch merges the owner-bound or uniquely timestamp-matched journaled tail and repairs route/exploration caches without changing an imported frozen route that has no new GPS source.
-15. Stop a very short recording near a delayed native callback and confirm a late second point within five minutes can safely promote the hidden recording instead of being lost.
-16. While recording, try Backup and confirm it is blocked; after Stop, confirm export succeeds even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup.
-17. Confirm the updated portrait splash appears before the launch overlay, then open Medals and verify localized names retain French accents and the horizontal category chips remain fully visible and vertically centered.
-18. During an active 80m+ loop around a landmark, confirm the medal unlocks in real time; after Continue, verify the 3D medal flies to the measured Medal tab and its marker/card remain unlocked. Open the collection and confirm permanent Unlocked and Locked sections appear in All and in the relevant category.
-19. Confirm the map shows the compact Lyon medal progress card and only one side flag. Tap the progress card to open Medals; tap the flag twice to show and hide the current district objective without clearing it. Verify layers remain configurable in Options and technical recording data remains available through History > Diagnostics or a recording's Technical details.
+12. Tap Stop, choose Continue, and confirm recording continues.
+13. Tap Stop again immediately after a lock/unlock handoff, hold Quit, and confirm the route saves only after entered handlers, the atomically published background outbox, and raw-observation-derived queued writes finish. Confirm the report and Start control return immediately after that durable boundary, even if route cells, exact steps, medals, and objective stats are still reconciling. For a continuous 50m route, confirm logs and timing show no surrounding street-corridor inference.
+14. Force-close mid-recording and confirm recovery offers Resume, Finish, and Discard without losing the saved tail.
+15. Force-close once more just after finalization, including with a delayed background event, and confirm relaunch merges the owner-bound or uniquely timestamp-matched journaled tail and repairs route/exploration caches without changing an imported frozen route that has no new GPS source.
+16. Stop a very short recording near a delayed native callback and confirm a late second point within five minutes can safely promote the hidden recording instead of being lost.
+17. While recording, try Backup and confirm it is blocked; after Stop, confirm export succeeds even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup.
+18. Confirm the updated portrait splash appears before the launch overlay, then open Medals and verify localized names retain French accents and the horizontal category chips remain fully visible and vertically centered.
+19. During an active 80m+ loop around a landmark, confirm the medal unlocks in real time; after Continue, verify the 3D medal flies to the measured Medal tab and its marker/card remain unlocked. Open the collection and confirm permanent Unlocked and Locked sections appear in All and in the relevant category.
+20. Confirm the map shows the compact Lyon medal progress card and only one side flag. Tap the progress card to open Medals; tap the flag twice to show and hide the current district objective without clearing it. Verify layers remain configurable in Options and technical recording data remains available through History > Diagnostics or a recording's Technical details.
 
 ## Expected Limitation
 

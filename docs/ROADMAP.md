@@ -46,6 +46,7 @@
 - Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V3, and allowlisted OpenStreetMap review tooling.
 - Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V3 sharing.
 - App-wide streamlined navy/gold presentation with a smaller map header, pill navigation, one objective toggle, layer controls centralized in Options, compact idle recording controls, four-metric Completion, and collapsed technical diagnostics.
+- CC0 four-direction animated pixel-art player marker with precomposed native annotation images, smooth coordinate interpolation, reliable last-position and last-rendered-sprite retention, accessible stale-GPS state, and continuous flicker-free Stop/Start recording visibility. Stop now releases the summary and next Start at the durable save boundary while repairable derived work continues asynchronously, and continuous routes bypass unnecessary street-corridor inference.
 
 ## Next Priority
 

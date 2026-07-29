@@ -1,7 +1,7 @@
 import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
-import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
-import { Animated, Easing, StyleSheet, View } from "react-native";
+import MapView, { AnimatedRegion, Marker, Polygon, Polyline, Region } from "react-native-maps";
+import { StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import {
@@ -146,6 +146,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
+  const persistentPlayerLocationRef = useRef<GpsPoint | null>(null);
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const [isNativeMapReady, setIsNativeMapReady] = useState(false);
   const activeRouteStartPoint =
@@ -153,8 +154,23 @@ export const ExplorationMap = memo(function ExplorationMap({
   const activeRouteEndPoint =
     activeRouteChunks.at(-1)?.points.at(-1) ?? activePoints.at(-1) ?? null;
   // Once recording has an accepted point, weak/rejected raw fixes must not move
-  // either the player marker or the camera away from the canonical route.
-  const playerLocation = activeRouteEndPoint ?? currentLocation;
+  // either the player marker or the camera away from the canonical route. Keep
+  // the last trustworthy point across recording teardown/startup transitions.
+  const playerLocationCandidate = activeRouteEndPoint ?? currentLocation;
+
+  if (
+    playerLocationCandidate &&
+    shouldAdoptPlayerLocation(
+      persistentPlayerLocationRef.current,
+      playerLocationCandidate,
+      activeRouteEndPoint === playerLocationCandidate,
+      activeMode
+    )
+  ) {
+    persistentPlayerLocationRef.current = playerLocationCandidate;
+  }
+
+  const playerLocation = persistentPlayerLocationRef.current;
   const startupCenter = useMemo(
     () =>
       getStartupCenterCandidate(
@@ -527,6 +543,53 @@ const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
 const PLAYER_BEARING_MIN_DISTANCE_METERS = 3;
 const PLAYER_MOTION_FRESHNESS_MS = 10_000;
 const LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS = 5_000;
+const PLAYER_WALK_FRAME_INTERVAL_MS = 170;
+const PLAYER_COORDINATE_ANIMATION_DEFAULT_MS = 700;
+const PLAYER_COORDINATE_ANIMATION_MAX_MS = 900;
+const PLAYER_COORDINATE_ANIMATION_MIN_MS = 250;
+const PLAYER_COORDINATE_SNAP_DISTANCE_METERS = 60;
+
+type PlayerDirection = "east" | "north" | "south" | "west";
+
+type PlayerSpriteSet = {
+  idle: number;
+  walk: readonly [number, number, number];
+};
+
+const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
+  east: {
+    idle: require("../../assets/player/native-idle-east.png"),
+    walk: [
+      require("../../assets/player/native-walk-east-1.png"),
+      require("../../assets/player/native-walk-east-2.png"),
+      require("../../assets/player/native-walk-east-3.png")
+    ]
+  },
+  north: {
+    idle: require("../../assets/player/native-idle-north.png"),
+    walk: [
+      require("../../assets/player/native-walk-north-1.png"),
+      require("../../assets/player/native-walk-north-2.png"),
+      require("../../assets/player/native-walk-north-3.png")
+    ]
+  },
+  south: {
+    idle: require("../../assets/player/native-idle-south.png"),
+    walk: [
+      require("../../assets/player/native-walk-south-1.png"),
+      require("../../assets/player/native-walk-south-2.png"),
+      require("../../assets/player/native-walk-south-3.png")
+    ]
+  },
+  west: {
+    idle: require("../../assets/player/native-idle-west.png"),
+    walk: [
+      require("../../assets/player/native-walk-west-1.png"),
+      require("../../assets/player/native-walk-west-2.png"),
+      require("../../assets/player/native-walk-west-3.png")
+    ]
+  }
+};
 
 function PlayerLocationMarker({
   activePoints,
@@ -535,23 +598,87 @@ function PlayerLocationMarker({
   activePoints: GpsPoint[];
   location: GpsPoint;
 }) {
-  const movement = getRecentMovement(activePoints);
-  const [isAcceptedFixFresh, setIsAcceptedFixFresh] = useState(() =>
+  const previousLocationRef = useRef<GpsPoint | null>(null);
+  const previousAnimatedLocationRef = useRef(location);
+  const animatedCoordinate = useRef(
+    new AnimatedRegion({
+      latitude: location.latitude,
+      latitudeDelta: 0,
+      longitude: location.longitude,
+      longitudeDelta: 0
+    })
+  ).current;
+  const routeMovement = getRecentMovement(activePoints);
+  const locationMovement = getMovementBetween(
+    previousLocationRef.current,
+    location
+  );
+  const movement = routeMovement ?? locationMovement;
+  const [isGpsFresh, setIsGpsFresh] = useState(() =>
     isPlayerMotionPointFresh(location)
   );
+  const [direction, setDirection] = useState<PlayerDirection>(() =>
+    getPlayerDirection(getPlayerHeading(location, movement))
+  );
+  const [walkFrameIndex, setWalkFrameIndex] = useState(0);
   const liveSpeed =
     typeof location.speedMetersPerSecond === "number"
       ? location.speedMetersPerSecond
       : null;
   const isMoving =
-    isAcceptedFixFresh &&
-    activePoints.length > 0 &&
+    isGpsFresh &&
     Math.max(liveSpeed ?? 0, movement?.speedMetersPerSecond ?? 0) >=
       PLAYER_MOVING_SPEED_METERS_PER_SECOND;
   const heading = getPlayerHeading(location, movement);
-  const headingAnimation = useRef(new Animated.Value(heading ?? 0)).current;
-  const motionAnimation = useRef(new Animated.Value(0)).current;
-  const [isMarkerImageLoaded, setIsMarkerImageLoaded] = useState(false);
+
+  useEffect(() => {
+    previousLocationRef.current = location;
+  }, [location]);
+
+  useEffect(() => {
+    const previousLocation = previousAnimatedLocationRef.current;
+    const distanceMeters = haversineDistanceMeters(previousLocation, location);
+    const updateIntervalMs =
+      getPointTimestamp(location) - getPointTimestamp(previousLocation);
+    previousAnimatedLocationRef.current = location;
+    animatedCoordinate.stopAnimation(() => undefined);
+
+    if (
+      !Number.isFinite(distanceMeters) ||
+      distanceMeters > PLAYER_COORDINATE_SNAP_DISTANCE_METERS
+    ) {
+      const snapAnimation = animatedCoordinate.timing({
+        duration: 0,
+        latitude: location.latitude,
+        latitudeDelta: 0,
+        longitude: location.longitude,
+        longitudeDelta: 0,
+        toValue: 0,
+        useNativeDriver: false
+      });
+      snapAnimation.start();
+      return () => snapAnimation.stop();
+    }
+
+    const duration = Number.isFinite(updateIntervalMs) && updateIntervalMs > 0
+      ? Math.min(
+          PLAYER_COORDINATE_ANIMATION_MAX_MS,
+          Math.max(PLAYER_COORDINATE_ANIMATION_MIN_MS, updateIntervalMs)
+        )
+      : PLAYER_COORDINATE_ANIMATION_DEFAULT_MS;
+    const animation = animatedCoordinate.timing({
+      duration,
+      latitude: location.latitude,
+      latitudeDelta: 0,
+      longitude: location.longitude,
+      longitudeDelta: 0,
+      toValue: 0,
+      useNativeDriver: false
+    });
+    animation.start();
+
+    return () => animation.stop();
+  }, [animatedCoordinate, location]);
 
   useEffect(() => {
     const timestamp = getPointTimestamp(location);
@@ -561,158 +688,71 @@ function PlayerLocationMarker({
       Number.isFinite(timestamp) &&
       timestamp <= now + LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS &&
       expiresIn > 0;
-    const settleMotion = () => {
-      motionAnimation.stopAnimation();
-      motionAnimation.setValue(0);
-      setIsAcceptedFixFresh(false);
-    };
 
     if (!isFresh) {
-      settleMotion();
+      setIsGpsFresh(false);
       return;
     }
 
-    setIsAcceptedFixFresh(true);
-    const freshnessTimer = setTimeout(settleMotion, expiresIn + 25);
-
-    return () => clearTimeout(freshnessTimer);
-  }, [location.timestamp, motionAnimation]);
-
-  useEffect(() => {
-    if (heading === null) {
-      return;
-    }
-
-    let cancelled = false;
-
-    headingAnimation.stopAnimation((currentHeading) => {
-      if (cancelled) {
-        return;
-      }
-
-      const normalizedCurrent = normalizeHeading(currentHeading);
-      const delta = shortestHeadingDelta(normalizedCurrent, heading);
-      const targetHeading = normalizedCurrent + delta;
-
-      headingAnimation.setValue(normalizedCurrent);
-      Animated.timing(headingAnimation, {
-        duration: Math.min(480, 180 + Math.abs(delta) * 2),
-        easing: Easing.out(Easing.cubic),
-        toValue: targetHeading,
-        useNativeDriver: true
-      }).start(({ finished }) => {
-        if (finished) {
-          headingAnimation.setValue(normalizeHeading(targetHeading));
-        }
-      });
-    });
-
-    return () => {
-      cancelled = true;
-      headingAnimation.stopAnimation();
-    };
-  }, [heading, headingAnimation]);
-
-  useEffect(() => {
-    motionAnimation.stopAnimation();
-
-    if (!isMoving) {
-      Animated.timing(motionAnimation, {
-        duration: 140,
-        toValue: 0,
-        useNativeDriver: true
-      }).start();
-      return;
-    }
-
-    const loop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(motionAnimation, {
-          duration: 260,
-          easing: Easing.inOut(Easing.sin),
-          toValue: 1,
-          useNativeDriver: true
-        }),
-        Animated.timing(motionAnimation, {
-          duration: 260,
-          easing: Easing.inOut(Easing.sin),
-          toValue: 0,
-          useNativeDriver: true
-        })
-      ])
+    setIsGpsFresh(true);
+    const freshnessTimer = setTimeout(
+      () => setIsGpsFresh(false),
+      expiresIn + 25
     );
 
-    loop.start();
+    return () => clearTimeout(freshnessTimer);
+  }, [location.timestamp]);
 
-    return () => {
-      loop.stop();
-    };
-  }, [isMoving, motionAnimation]);
+  useEffect(() => {
+    if (heading !== null) {
+      setDirection(getPlayerDirection(heading));
+    }
+  }, [heading]);
 
-  const rotation = headingAnimation.interpolate({
-    inputRange: [-360, 720],
-    outputRange: ["-360deg", "720deg"]
-  });
-  const npcScale = motionAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 1.055]
-  });
-  const npcLift = motionAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, -1.5]
-  });
-  const haloScale = motionAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 1.14]
-  });
-  const haloOpacity = motionAnimation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.82, 0.42]
-  });
+  useEffect(() => {
+    if (!isMoving) {
+      setWalkFrameIndex(0);
+      return;
+    }
+
+    const frameTimer = setInterval(() => {
+      setWalkFrameIndex((frameIndex) => (frameIndex + 1) % 3);
+    }, PLAYER_WALK_FRAME_INTERVAL_MS);
+
+    return () => clearInterval(frameTimer);
+  }, [isMoving]);
+
+  const spriteSet = PLAYER_SPRITES[direction];
+  const requestedSpriteSource = isMoving
+    ? spriteSet.walk[walkFrameIndex] ?? spriteSet.walk[0]
+    : spriteSet.idle;
+  const persistentSpriteSourceRef = useRef(requestedSpriteSource);
+
+  // MapKit loads annotation images asynchronously. When the last GPS fix ages
+  // out during Stop, retain the already visible bitmap instead of replacing it
+  // with another asset that can briefly clear the native annotation image.
+  if (isGpsFresh) {
+    persistentSpriteSourceRef.current = requestedSpriteSource;
+  }
+
+  const spriteSource = persistentSpriteSourceRef.current;
 
   return (
-    <Marker
+    <Marker.Animated
+      accessibilityLabel={
+        isGpsFresh
+          ? "Current player location"
+          : "Last known player location, GPS signal stale"
+      }
       anchor={{ x: 0.5, y: 0.5 }}
-      coordinate={pointToCoordinate(location)}
-      flat
-      title="Current player location"
-      tracksViewChanges={isMoving || !isMarkerImageLoaded}
+      // Marker.Animated supports AnimatedRegion at runtime, but its SDK 54 type omits it.
+      coordinate={animatedCoordinate as never}
+      identifier="street-explorer-player"
+      image={spriteSource}
+      title={isGpsFresh ? "Current player location" : "Last known location"}
+      tracksViewChanges={false}
       zIndex={1000}
-    >
-      <View collapsable={false} style={styles.playerMarker}>
-        <Animated.View
-          style={[
-            styles.playerHalo,
-            {
-              opacity: haloOpacity,
-              transform: [{ scale: haloScale }]
-            }
-          ]}
-        />
-        <Animated.View
-          renderToHardwareTextureAndroid
-          style={[
-            styles.playerRotationLayer,
-            {
-              transform: [{ rotate: rotation }]
-            }
-          ]}
-        >
-          <View style={styles.playerDirectionPip} />
-          <Animated.Image
-            onLoad={() => setIsMarkerImageLoaded(true)}
-            resizeMode="contain"
-            source={require("../../assets/player-npc-topdown.png")}
-            style={[
-              styles.playerNpc,
-              {
-                transform: [{ translateY: npcLift }, { scale: npcScale }]
-              }
-            ]}
-          />
-        </Animated.View>
-      </View>
-    </Marker>
+    />
   );
 }
 
@@ -758,6 +798,53 @@ function getRecentMovement(points: GpsPoint[]): RecentMovement | null {
   return null;
 }
 
+function getMovementBetween(
+  from: GpsPoint | null,
+  to: GpsPoint
+): RecentMovement | null {
+  if (!from || getPointTimestamp(from) === getPointTimestamp(to)) {
+    return null;
+  }
+
+  const distanceMeters = haversineDistanceMeters(from, to);
+  const seconds = (getPointTimestamp(to) - getPointTimestamp(from)) / 1000;
+
+  if (
+    distanceMeters < PLAYER_BEARING_MIN_DISTANCE_METERS ||
+    !Number.isFinite(seconds) ||
+    seconds <= 0
+  ) {
+    return null;
+  }
+
+  return {
+    bearingDegrees: calculateBearingDegrees(from, to),
+    speedMetersPerSecond: distanceMeters / seconds
+  };
+}
+
+function getPlayerDirection(heading: number | null): PlayerDirection {
+  if (heading === null) {
+    return "south";
+  }
+
+  const normalizedHeading = normalizeHeading(heading);
+
+  if (normalizedHeading >= 45 && normalizedHeading < 135) {
+    return "east";
+  }
+
+  if (normalizedHeading >= 135 && normalizedHeading < 225) {
+    return "south";
+  }
+
+  if (normalizedHeading >= 225 && normalizedHeading < 315) {
+    return "west";
+  }
+
+  return "north";
+}
+
 function getPlayerHeading(
   liveLocation: GpsPoint,
   movement: RecentMovement | null
@@ -791,10 +878,6 @@ function calculateBearingDegrees(from: GpsPoint, to: GpsPoint) {
     Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeDelta);
 
   return normalizeHeading((Math.atan2(y, x) * 180) / Math.PI);
-}
-
-function shortestHeadingDelta(from: number, to: number) {
-  return ((to - from + 540) % 360) - 180;
 }
 
 function normalizeHeading(heading: number) {
@@ -1139,6 +1222,38 @@ function isPlayerMotionPointFresh(point: GpsPoint) {
   );
 }
 
+function shouldAdoptPlayerLocation(
+  current: GpsPoint | null,
+  candidate: GpsPoint,
+  isAcceptedRoutePoint: boolean,
+  activeMode: ActivityMode
+) {
+  if (!hasPlausibleMapCoordinates(candidate)) {
+    return false;
+  }
+
+  if (!current) {
+    return true;
+  }
+
+  const candidateTimestamp = getPointTimestamp(candidate);
+
+  if (candidateTimestamp < getPointTimestamp(current)) {
+    return false;
+  }
+
+  if (isAcceptedRoutePoint) {
+    return true;
+  }
+
+  const accuracyMeters = getPlausibleAccuracyMeters(candidate);
+
+  return (
+    accuracyMeters !== null &&
+    accuracyMeters <= MODE_LOCATION_CONFIG[activeMode].maxAcceptedAccuracyMeters
+  );
+}
+
 function getInitialRegion(
   playerLocation: GpsPoint | null,
   walks: WalkWithPoints[]
@@ -1206,48 +1321,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#3f4f5b",
     borderColor: "#a9b6c0"
   },
-  playerDirectionPip: {
-    backgroundColor: "#f5c451",
-    borderColor: "#0f172a",
-    borderRadius: 4,
-    borderWidth: 1.5,
-    height: 7,
-    left: 29,
-    position: "absolute",
-    top: -2,
-    width: 7,
-    zIndex: 3
-  },
-  playerHalo: {
-    backgroundColor: "rgba(255, 255, 255, 0.86)",
-    borderColor: "#f5c451",
-    borderRadius: 29,
-    borderWidth: 2.5,
-    height: 58,
-    left: 3,
-    position: "absolute",
-    shadowColor: "#0f172a",
-    shadowOffset: { height: 2, width: 0 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    top: 3,
-    width: 58
-  },
-  playerMarker: {
-    alignItems: "center",
-    height: 64,
-    justifyContent: "center",
-    overflow: "visible",
-    width: 64
-  },
-  playerNpc: {
-    height: 62,
-    width: 62
-  },
-  playerRotationLayer: {
-    alignItems: "center",
-    height: 64,
-    justifyContent: "center",
-    width: 64
-  }
+
 });

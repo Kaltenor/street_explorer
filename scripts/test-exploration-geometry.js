@@ -683,6 +683,22 @@ assert(
   "Stop requires confirmation and clears recovery state only after durable finalization"
 );
 
+const immediateStopSummaryIndex = stopWalkSource.indexOf(
+  "setRecordingSummary({"
+);
+const deferredExplorationIndex = stopWalkSource.indexOf(
+  "persistRecordingExplorationDelta("
+);
+assert(
+  immediateStopSummaryIndex > stopClearIndex &&
+    deferredExplorationIndex > immediateStopSummaryIndex &&
+    stopWalkSource.includes("void (async () => {") &&
+    stopWalkSource.includes("hideExplorationDuringRefresh: false") &&
+    stopWalkSource.includes("repairPendingCaches: false") &&
+    refreshSavedDataSource.includes("repairPendingCaches?: boolean"),
+  "Stop releases the UI after durable save while derived caches reconcile asynchronously"
+);
+
 const recoveryFinalizationIndex = finishRecoverySource.indexOf(
   "finishPersistedActiveWalk"
 );
@@ -893,6 +909,12 @@ assert(
   "create-if-missing replaces stale frozen routes and validates their exact GPS generation"
 );
 assert(
+  routeSnapshotSource.includes("const hasSuspiciousGap") &&
+    routeSnapshotSource.includes('segment.type === "rejected"') &&
+    routeSnapshotSource.includes("createConfirmedRouteSnapshotIfMissing("),
+  "continuous finalized routes skip unnecessary street-corridor inference"
+);
+assert(
   databaseSource.includes("track_pending_recording_repairs") &&
     walkRepositorySource.includes(
       "INSERT INTO pending_recording_repairs"
@@ -982,15 +1004,17 @@ assert(
     explorationMapSource.includes(
       "const followTarget = activeRouteEndPoint"
     ) &&
-    explorationMapSource.includes(
-      "tracksViewChanges={isMoving || !isMarkerImageLoaded}"
-    ) &&
+    explorationMapSource.includes("persistentPlayerLocationRef") &&
+    explorationMapSource.includes("shouldAdoptPlayerLocation") &&
+    explorationMapSource.includes("Marker.Animated") &&
+    explorationMapSource.includes("animatedCoordinate.timing") &&
+    explorationMapSource.includes("tracksViewChanges={false}") &&
     explorationMapSource.includes("PLAYER_MOTION_FRESHNESS_MS") &&
     explorationMapSource.includes("isSubstantiallyMoreAccurate") &&
-    explorationMapSource.includes(
-      "onLoad={() => setIsMarkerImageLoaded(true)}"
-    ),
-  "the complete live route and accepted player location survive recovery while stale marker motion settles"
+    explorationMapSource.includes("PLAYER_SPRITES") &&
+    explorationMapSource.includes("persistentSpriteSourceRef") &&
+    explorationMapSource.includes('identifier="street-explorer-player"'),
+  "the complete live route and native animated player survive recovery, recording transitions, stale GPS, and MapKit redraws"
 );
 assert(
   foregroundResumeSyncSource.includes("const points = persistedPoints") &&

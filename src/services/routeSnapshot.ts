@@ -63,6 +63,18 @@ export async function createRouteSnapshotIfMissing(
     return existingRouteSegments;
   }
 
+  const hasSuspiciousGap = buildPathSegments(points, activityMode).some(
+    (segment) => segment.type === "rejected"
+  );
+
+  if (!hasSuspiciousGap) {
+    return createConfirmedRouteSnapshotIfMissing(
+      sessionId,
+      activityMode,
+      points
+    );
+  }
+
   return persistStreetMatchedRouteSnapshot({
     activityMode,
     persist: true,

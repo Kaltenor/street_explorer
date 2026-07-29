@@ -1,5 +1,42 @@
 # Changelog
 
+## v0.6.3
+
+Fixed:
+
+- Stop now returns the recording summary and Start control immediately after native tracking shutdown, queued GPS flush, durable session finalization, and recovery-setting cleanup.
+- Route inference, exact step reconciliation, medal safety evaluation, objective recalculation, and full saved-data refresh now continue asynchronously through the existing durable repair outbox instead of blocking short walks for several seconds. Continuous routes with no suspicious GPS gap also skip the unnecessary 450m street-corridor lookup and graph inference.
+- Confirmed live exploration cells, History, and headline statistics transfer into saved UI state at the durable boundary, so the route does not blink out while derived caches finish.
+- The native player annotation keeps its last already-rendered sprite when a fix becomes stale during Stop and uses a stable MapKit identifier, preventing the cursor from disappearing across Stop and the next Start.
+- Added regression coverage for the immediate/deferred Stop boundary and persistent native sprite behavior.
+- Synchronized the app version to 0.6.3, iOS build 80, and Android version code 80.
+
+## v0.6.2
+
+Fixed:
+
+- Reproduced the reported player flicker from the 14-second garden screen recording: the GPS coordinate remained available while iOS intermittently dropped the nested animated custom-marker snapshot.
+- Replaced the nested React Native marker subtree with precomposed 64x64 native annotation images for every idle, walking, and stale direction state; native snapshot tracking is now disabled.
+- Added `Marker.Animated` coordinate interpolation so accepted one-second GPS updates glide for 250-900ms instead of visibly jumping. Moves above 60m still snap to avoid an unrealistic map-spanning animation.
+- Preserved the last-trustworthy-position, Stop/Start continuity, four-direction walking animation, gold halo, and stale clock presentation.
+- Expanded player regression checks to cover all native marker assets, `AnimatedRegion` smoothing, native image rendering, and removal of the fragile custom view.
+- Synchronized the app version to `0.6.2`, iOS build `79`, and Android version code `79`.
+
+## v0.6.1
+
+Added:
+
+- A freely licensed CC0 64x64 top-down pixel-art character with dedicated north, east, south, and west idle frames plus three-frame walking cycles.
+- A subdued stale-location state with a slate halo, lower character opacity, clock badge, and accessible last-known-location label.
+- A focused `npm run test:player` source/asset regression check and retained asset provenance in `assets/player/README.md`.
+
+Fixed:
+
+- The player marker now retains the newest trustworthy location through GPS interruptions and the Stop/Start recording transition instead of disappearing with active-route teardown.
+- Reliable accepted route endpoints remain authoritative over weak raw fixes, while fresh non-recording movement can still update direction and animation.
+- Native custom-marker view tracking remains enabled for the single animated player marker so iOS cannot cache or drop an empty/stale snapshot during frame and recording-state changes.
+- Synchronized the app version to `0.6.1`, iOS build `78`, and Android version code `78`.
+
 ## v0.6.0
 
 Added:
