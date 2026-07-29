@@ -20,6 +20,8 @@ import type { Region } from "react-native-maps";
 import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
+import { MedalCelebration } from "../components/MedalCelebration";
+import { MedalCollectionModal } from "../components/MedalCollectionModal";
 import { LaunchLoadingOverlay } from "../components/LaunchLoadingOverlay";
 import { MapLegend } from "../components/MapLegend";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
@@ -46,6 +48,7 @@ import {
   getLastGpsPointForSession,
   getLifetimeStats,
   getPendingRecordingRepairSessionIds,
+  getRouteSnapshot,
   getWalkSessionById,
   getWalkHistory,
   updateWalkSessionName,
@@ -59,6 +62,13 @@ import {
   getSavedCompletionObjective,
   saveCompletionObjective
 } from "../database/settingsRepository";
+import {
+  getMedalAlbumProgress,
+  getPendingMedalPresentations,
+  hasCompletedMedalRetroScan,
+  markMedalPresentationState
+} from "../database/medalRepository";
+import { DEFAULT_MEDAL_ALBUM_ID } from "../data/medalAlbums";
 import {
   CachedZone,
   commitPendingRecordingRepair,
@@ -83,6 +93,10 @@ import {
   stopBackgroundLocationTracking
 } from "../services/backgroundLocationTask";
 import { collectExploredCellIdsByRouteSegments } from "../services/explorationArea";
+import {
+  evaluateMedalCollectionForRecording,
+  runMedalRetroScan
+} from "../services/medalEnclosure";
 import { analyzeLoopFillsForCells } from "../services/loopFill";
 import {
   getStreetSegmentsNear,
@@ -151,6 +165,7 @@ import {
 import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 
+import { CollectedMedal, MedalAlbumProgress } from "../types/medal";
 const EMPTY_STATS: LifetimeStats = {
   walkCount: 0,
   totalDistanceMeters: 0,
@@ -166,6 +181,10 @@ const EMPTY_STATS: LifetimeStats = {
   todayStepCount: 0
 };
 
+const EMPTY_CELL_IDS: string[] = [];
+const EMPTY_GPS_POINTS: GpsPoint[] = [];
+const EMPTY_LIVE_ROUTE_CHUNKS: ActiveWalk["routeChunks"] = [];
+const EMPTY_MEDALS: CollectedMedal[] = [];
 const OSM_STREET_RADIUS_METERS = 1600;
 const OSM_STREET_FETCH_RADIUS_METERS = 800;
 const OSM_STREET_LOCAL_COVERAGE_RADIUS_METERS = 200;
@@ -330,6 +349,7 @@ async function repairPendingRecordingCaches() {
         session.activityMode,
         points
       );
+      await evaluateMedalCollectionForRecording(sessionId);
     } catch (error) {
       console.warn(`Failed to repair finalized recording ${sessionId}`, error);
     }
@@ -384,6 +404,14 @@ export function MapScreen({
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [completionVisible, setCompletionVisible] = useState(false);
+  const [medalsVisible, setMedalsVisible] = useState(false);
+  const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
+  const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
+  const [celebrationMedal, setCelebrationMedal] = useState<CollectedMedal | null>(null);
+  const [focusedMedal, setFocusedMedal] = useState<CollectedMedal | null>(null);
+  const [medalFocusRequestId, setMedalFocusRequestId] = useState(0);
+  const [medalRetroScanComplete, setMedalRetroScanComplete] = useState(false);
+  const [isScanningMedals, setIsScanningMedals] = useState(false);
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
@@ -603,11 +631,6 @@ export function MapScreen({
     isRecoveryCheckComplete &&
     permissionState !== "unknown" &&
     (permissionState !== "granted" || initialLocationResolved);
-  useEffect(() => {
-    if (isLaunchReady) {
-      setIsLaunchDismissed(true);
-    }
-  }, [isLaunchReady]);
   const todayObjectiveCellCount = useMemo(
     () => objective
       ? countExploredCellKeysInsideZone(objective.zone, todayNewCellIds)
@@ -633,6 +656,47 @@ export function MapScreen({
     });
   }, []);
 
+  const handleMapMedalPress = useCallback((medal: CollectedMedal) => {
+    setFocusedMedal(medal);
+    setMedalsVisible(true);
+  }, []);
+
+  const handleMapReady = useCallback(() => {
+    isMapReadyRef.current = true;
+    setIsMapReady(true);
+    setTimeout(() => setIsExplorationEnabled(true), 0);
+  }, []);
+
+  const loadDetailedWalk = useCallback(async (sessionId: number) => {
+    const [session, points, routeSegments] = await Promise.all([
+      getWalkSessionById(sessionId),
+      getGpsPointsForSession(sessionId),
+      getRouteSnapshot(sessionId)
+    ]);
+
+    if (!session) {
+      return;
+    }
+
+    const detailedWalk: WalkWithPoints = {
+      ...session,
+      points,
+      routeSegments
+    };
+
+    setWalks((currentWalks) => {
+      const existingIndex = currentWalks.findIndex((walk) => walk.id === sessionId);
+
+      if (existingIndex < 0) {
+        return [...currentWalks, detailedWalk];
+      }
+
+      const nextWalks = [...currentWalks];
+      nextWalks[existingIndex] = detailedWalk;
+      return nextWalks;
+    });
+  }, []);
+
   const loadDetailedWalks = useCallback(async () => {
     const savedWalks = await getAllWalksWithPoints(activityMode);
     detailedWalksModeRef.current = activityMode;
@@ -650,14 +714,20 @@ export function MapScreen({
         savedLoopFillCellIds,
         savedLoopFillSummaries,
         exploredCellIds,
-        todayNewExploredCellIds
+        todayNewExploredCellIds,
+        savedMedalProgress,
+        pendingMedalPresentations,
+        retroScanComplete
       ] = await Promise.all([
         getLifetimeStats(activityMode),
         getWalkHistory(activityMode),
         getLoopFillCellKeys(activityMode),
         getLoopFillSessionSummaries(activityMode),
         getExploredCellKeys(activityMode),
-        getTodayNewExploredCellKeys(activityMode)
+        getTodayNewExploredCellKeys(activityMode),
+        getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
+        getPendingMedalPresentations(),
+        hasCompletedMedalRetroScan(DEFAULT_MEDAL_ALBUM_ID)
       ]);
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
@@ -682,6 +752,9 @@ export function MapScreen({
       setLoopFillSummaries(savedLoopFillSummaries);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
+      setMedalProgress(savedMedalProgress);
+      setMedalPresentationQueue(pendingMedalPresentations);
+      setMedalRetroScanComplete(retroScanComplete);
       setStats({
         ...lifetimeStats,
         approximateExploredAreaSquareMeters: exploredCellIds.length * 15 * 15,
@@ -742,6 +815,80 @@ export function MapScreen({
       console.warn("Failed to refresh saved map data", error)
     );
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    const nextMedal = medalPresentationQueue[0];
+
+    if (!isLaunchDismissed || celebrationMedal || !nextMedal) {
+      return;
+    }
+
+    setMedalPresentationQueue((current) => current.slice(1));
+    setCelebrationMedal(nextMedal);
+    markMedalPresentationState(nextMedal.albumId, nextMedal.id, "presenting").catch(
+      (error) => console.warn("Failed to start medal presentation", error)
+    );
+  }, [celebrationMedal, isLaunchDismissed, medalPresentationQueue]);
+
+  const handleCompleteMedalCelebration = useCallback(async () => {
+    if (!celebrationMedal) {
+      return;
+    }
+
+    try {
+      await markMedalPresentationState(
+        celebrationMedal.albumId,
+        celebrationMedal.id,
+        "presented"
+      );
+      setMedalProgress(await getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID));
+    } catch (error) {
+      console.warn("Failed to finish medal presentation", error);
+    } finally {
+      setCelebrationMedal(null);
+    }
+  }, [celebrationMedal]);
+
+  const handleRunMedalRetroScan = useCallback(() => {
+    const isFrench = language === "fr";
+
+    Alert.alert(
+      isFrench ? "Analyser les parcours pr\u00e9c\u00e9dents ?" : "Scan past walks?",
+      isFrench
+        ? "Seuls les segments GPS directs avec une pr\u00e9cision connue de 30 m ou moins seront utilis\u00e9s."
+        : "Only direct GPS segments with known accuracy of 30 m or better will be used.",
+      [
+        { text: isFrench ? "Annuler" : "Cancel", style: "cancel" },
+        {
+          text: isFrench ? "Analyser" : "Scan",
+          onPress: async () => {
+            setIsScanningMedals(true);
+
+            try {
+              const result = await runMedalRetroScan();
+              await refreshSavedData();
+              Alert.alert(
+                isFrench ? "Analyse termin\u00e9e" : "Scan complete",
+                isFrench
+                  ? `${result.collected.length} nouvelle(s) m\u00e9daille(s) trouv\u00e9e(s).`
+                  : `${result.collected.length} new medal(s) found.`
+              );
+            } catch (error) {
+              console.warn("Failed to scan past walks for medals", error);
+              Alert.alert(
+                isFrench ? "Analyse impossible" : "Scan failed",
+                isFrench
+                  ? "Street Explorer n\u2019a pas pu analyser les parcours."
+                  : "Street Explorer could not scan the saved walks."
+              );
+            } finally {
+              setIsScanningMedals(false);
+            }
+          }
+        }
+      ]
+    );
+  }, [language, refreshSavedData]);
 
   useEffect(() => {
     let isMounted = true;
@@ -1894,6 +2041,12 @@ export function MapScreen({
         console.warn("Recording saved but exploration cache update failed", error);
       }
 
+      try {
+        await evaluateMedalCollectionForRecording(savedSessionId);
+      } catch (error) {
+        console.warn("Recording saved but medal evaluation failed", error);
+      }
+
       const finalizedSession = await getWalkSessionById(savedSessionId);
       const finalizedDistanceMeters =
         finalizedSession?.distanceMeters ?? walkToStop.distanceMeters;
@@ -2381,6 +2534,12 @@ export function MapScreen({
           );
         }
 
+        try {
+          await evaluateMedalCollectionForRecording(savedSessionId);
+        } catch (error) {
+          console.warn("Recovered recording saved but medal evaluation failed", error);
+        }
+
         await refreshSavedData();
         await waitForMapRenderCommit();
       } catch (error) {
@@ -2595,16 +2754,6 @@ export function MapScreen({
     );
   }, [activeWalk, refreshSavedData, strings]);
 
-  useEffect(() => {
-    if (!historyVisible) {
-      return;
-    }
-
-    loadDetailedWalks().catch((error) =>
-      console.warn("Failed to load recording details", error)
-    );
-  }, [historyVisible, loadDetailedWalks]);
-
   useEffect(
     () => () => {
       invalidateRecordingLifecycle();
@@ -2655,21 +2804,21 @@ export function MapScreen({
   return (
     <View style={styles.screen}>
       <ExplorationMap
-        activeExplorationCellIds={activeWalk?.exploredCellIds ?? []}
-        activeRouteChunks={activeWalk?.routeChunks ?? []}
+        activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
+        activeRouteChunks={activeWalk?.routeChunks ?? EMPTY_LIVE_ROUTE_CHUNKS}
         walks={walks}
         explorationEnabled={isExplorationEnabled}
         pathWalks={displayedWalks}
-        activePoints={activeWalk?.points ?? []}
+        activePoints={activeWalk?.points ?? EMPTY_GPS_POINTS}
         activeMode={activeWalk?.activityMode ?? activityMode}
+        focusedMedal={focusedMedal}
+        medalFocusRequestId={medalFocusRequestId}
+        medals={medalProgress?.medals ?? EMPTY_MEDALS}
+        onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
         highlightedSessionId={selectedSessionId}
         layers={layers}
-        onMapReady={() => {
-          isMapReadyRef.current = true;
-          setIsMapReady(true);
-          setTimeout(() => setIsExplorationEnabled(true), 0);
-        }}
+        onMapReady={handleMapReady}
         onVisibleRegionChange={handleVisibleRegionChange}
         selectedZone={selectedZone}
         savedExplorationCellIds={savedExplorationCellIds}
@@ -2747,6 +2896,14 @@ export function MapScreen({
               style={styles.bottomTab}
             >
               <Ionicons name="trophy-outline" size={19} color="#f8fafc" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityLabel={language === "fr" ? "M\u00e9dailles" : "Medals"}
+              accessibilityRole="button"
+              onPress={() => setMedalsVisible(true)}
+              style={[styles.bottomTab, medalsVisible ? styles.activeBottomTab : null]}
+            >
+              <Ionicons name="medal-outline" size={19} color={medalsVisible ? "#02060a" : "#f8fafc"} />
             </TouchableOpacity>
             <View style={styles.bottomTabSpacer} />
             <TouchableOpacity
@@ -2835,6 +2992,11 @@ export function MapScreen({
         onExportBackup={handleExportBackup}
         onExportWalkGpx={handleExportWalkGpx}
         onImportBackup={handleImportBackup}
+        onLoadWalkDetails={(sessionId) => {
+          loadDetailedWalk(sessionId).catch((error) =>
+            console.warn("Failed to load recording details", error)
+          );
+        }}
         onRenameWalk={handleRenameWalk}
         onSelectWalk={setSelectedSessionId}
         onOpenDiagnostics={() => {
@@ -2870,6 +3032,25 @@ export function MapScreen({
           setCompletionVisible(false);
         }}
         visible={completionVisible}
+      />
+      <MedalCollectionModal
+        language={language}
+        onClose={() => setMedalsVisible(false)}
+        onFocusMedal={(medal) => {
+          setFocusedMedal(medal);
+          setMedalFocusRequestId((requestId) => requestId + 1);
+          setMedalsVisible(false);
+        }}
+        onRunRetroScan={handleRunMedalRetroScan}
+        progress={medalProgress}
+        retroScanComplete={medalRetroScanComplete}
+        scanning={isScanningMedals}
+        visible={medalsVisible}
+      />
+      <MedalCelebration
+        language={language}
+        medal={celebrationMedal}
+        onComplete={handleCompleteMedalCelebration}
       />
       <RecordingDiagnosticsModal
         activeWalk={activeWalk}
@@ -2920,6 +3101,7 @@ export function MapScreen({
         <LaunchLoadingOverlay
           isReady={isLaunchReady}
           language={language}
+          onStart={() => setIsLaunchDismissed(true)}
         />
       ) : null}
     </View>

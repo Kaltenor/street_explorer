@@ -1,6 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { initDatabase } from "./src/database/db";
@@ -16,9 +22,11 @@ import {
 
 export default function App() {
   const [databaseReady, setDatabaseReady] = useState(false);
+  const [databaseFailed, setDatabaseFailed] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("en");
 
-  useEffect(() => {
+  const initializeApp = () => {
+    setDatabaseFailed(false);
     initDatabase()
       .then(async () => {
         await drainPendingBackgroundLocationBatches().catch((error) =>
@@ -32,7 +40,12 @@ export default function App() {
       })
       .catch((error) => {
         console.error("Failed to initialize database", error);
+        setDatabaseFailed(true);
       });
+  };
+
+  useEffect(() => {
+    initializeApp();
   }, []);
 
   const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
@@ -44,7 +57,25 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <SafeAreaView style={styles.loadingScreen}>
-          <ActivityIndicator size="large" color="#2563eb" />
+          {databaseFailed ? (
+            <>
+              <Text style={styles.startupErrorTitle}>
+                Street Explorer couldn&apos;t start
+              </Text>
+              <Text style={styles.startupErrorBody}>
+                Please try again. If this keeps happening, restart the app.
+              </Text>
+              <TouchableOpacity
+                accessibilityRole="button"
+                onPress={initializeApp}
+                style={styles.retryButton}
+              >
+                <Text style={styles.retryText}>Try again</Text>
+              </TouchableOpacity>
+            </>
+          ) : (
+            <ActivityIndicator size="large" color="#9cff00" />
+          )}
         </SafeAreaView>
       </SafeAreaProvider>
     );
@@ -69,8 +100,35 @@ const styles = StyleSheet.create({
   },
   loadingScreen: {
     alignItems: "center",
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#02060a",
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: 28
+  },
+  retryButton: {
+    backgroundColor: "#9cff00",
+    borderRadius: 10,
+    marginTop: 22,
+    paddingHorizontal: 20,
+    paddingVertical: 12
+  },
+  retryText: {
+    color: "#02060a",
+    fontSize: 15,
+    fontWeight: "900"
+  },
+  startupErrorBody: {
+    color: "#b7c3cc",
+    fontSize: 15,
+    lineHeight: 22,
+    marginTop: 10,
+    maxWidth: 360,
+    textAlign: "center"
+  },
+  startupErrorTitle: {
+    color: "#f8fafc",
+    fontSize: 22,
+    fontWeight: "900",
+    textAlign: "center"
   }
 });

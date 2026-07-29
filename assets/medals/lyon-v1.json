@@ -1,0 +1,150 @@
+{
+  "id": "lyon-v1",
+  "cityId": "lyon-fr",
+  "cityName": { "en": "Lyon", "fr": "Lyon" },
+  "version": 1,
+  "publishedAt": "2026-07-29",
+  "sourceAttribution": "Landmark identities and anchor coordinates: OpenStreetMap contributors, ODbL 1.0.",
+  "medals": [
+    {
+      "id": "fourviere-basilica", "category": "architecture",
+      "name": { "en": "Fourvi?re Basilica", "fr": "Basilique Notre-Dame de Fourvi?re" },
+      "description": { "en": "Lyon's hilltop basilica and one of its defining silhouettes.", "fr": "La basilique qui domine Lyon et marque sa silhouette." },
+      "latitude": 45.7622841, "longitude": 4.8225879,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 29179429 }
+    },
+    {
+      "id": "fourviere-ancient-theatre", "category": "history",
+      "name": { "en": "Ancient Theatre of Fourvi?re", "fr": "Th??tre Gallo-Romain de Fourvi?re" },
+      "description": { "en": "A major Roman theatre on Fourvi?re hill.", "fr": "Un grand th??tre romain sur la colline de Fourvi?re." },
+      "latitude": 45.7597239, "longitude": 4.8196914,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 88526502 }
+    },
+    {
+      "id": "three-gauls-amphitheatre", "category": "history",
+      "name": { "en": "Amphitheatre of the Three Gauls", "fr": "Amphith??tre des Trois Gaules" },
+      "description": { "en": "Roman remains at the foot of Croix-Rousse.", "fr": "Des vestiges romains au pied de la Croix-Rousse." },
+      "latitude": 45.7706702, "longitude": 4.8305151,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 113289145 }
+    },
+    {
+      "id": "saint-jean-cathedral", "category": "architecture",
+      "name": { "en": "Saint-Jean Cathedral", "fr": "Cath?drale Saint-Jean" },
+      "description": { "en": "The historic cathedral at the heart of Vieux Lyon.", "fr": "La cath?drale historique au c?ur du Vieux Lyon." },
+      "latitude": 45.7607136, "longitude": 4.8274238,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 136200148 }
+    },
+    {
+      "id": "cour-des-voraces", "category": "history",
+      "name": { "en": "Cour des Voraces", "fr": "Cour des Voraces" },
+      "description": { "en": "A celebrated Croix-Rousse traboule and monumental staircase.", "fr": "Une c?l?bre traboule de la Croix-Rousse et son escalier monumental." },
+      "latitude": 45.7719623, "longitude": 4.8346709,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 197673569 }
+    },
+    {
+      "id": "fresque-des-lyonnais", "category": "art",
+      "name": { "en": "Fresque des Lyonnais", "fr": "Fresque des Lyonnais" },
+      "description": { "en": "A vast painted wall celebrating notable people from Lyon.", "fr": "Un vaste mur peint c?l?brant des figures lyonnaises." },
+      "latitude": 45.7681132, "longitude": 4.8280341,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 259813452 }
+    },
+    {
+      "id": "mur-des-canuts", "category": "art",
+      "name": { "en": "Mur des Canuts", "fr": "Mur des Canuts" },
+      "description": { "en": "A landmark trompe-l'?il mural in Croix-Rousse.", "fr": "Une fresque en trompe-l'?il embl?matique de la Croix-Rousse." },
+      "latitude": 45.7779289, "longitude": 4.8279691,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 251734547 }
+    },
+    {
+      "id": "bartholdi-fountain", "category": "art",
+      "name": { "en": "Bartholdi Fountain", "fr": "Fontaine Bartholdi" },
+      "description": { "en": "Bartholdi's monumental fountain on Place des Terreaux.", "fr": "La fontaine monumentale de Bartholdi place des Terreaux." },
+      "latitude": 45.7676328, "longitude": 4.8334601,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 55071957 }
+    },
+    {
+      "id": "lyon-city-hall", "category": "architecture",
+      "name": { "en": "Lyon City Hall", "fr": "H?tel de Ville de Lyon" },
+      "description": { "en": "The historic civic palace between Terreaux and the Opera.", "fr": "Le palais civique historique entre les Terreaux et l'Op?ra." },
+      "latitude": 45.7676357, "longitude": 4.8350696,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 1221535523 }
+    },
+    {
+      "id": "lyon-opera", "category": "culture",
+      "name": { "en": "Lyon Opera", "fr": "Op?ra de Lyon" },
+      "description": { "en": "A historic opera house crowned by a modern glass dome.", "fr": "Un op?ra historique couronn? d'un d?me contemporain en verre." },
+      "latitude": 45.7678161, "longitude": 4.8365964,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 10061086 }
+    },
+    {
+      "id": "palais-de-la-bourse", "category": "architecture",
+      "name": { "en": "Palais de la Bourse", "fr": "Palais de la Bourse" },
+      "description": { "en": "The ornate nineteenth-century exchange palace on the Presqu'?le.", "fr": "Le palais de la Bourse du XIXe si?cle sur la Presqu'?le." },
+      "latitude": 45.7639291, "longitude": 4.8363531,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62268058 }
+    },
+    {
+      "id": "louis-xiv-statue", "category": "art",
+      "name": { "en": "Louis XIV Statue", "fr": "Statue ?questre de Louis XIV" },
+      "description": { "en": "The equestrian monument at the centre of Place Bellecour.", "fr": "Le monument ?questre au centre de la place Bellecour." },
+      "latitude": 45.7578371, "longitude": 4.8321925,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 236376643 }
+    },
+    {
+      "id": "fine-arts-museum", "category": "culture",
+      "name": { "en": "Museum of Fine Arts", "fr": "Mus?e des Beaux-Arts de Lyon" },
+      "description": { "en": "Lyon's fine arts museum in the former Saint-Pierre abbey.", "fr": "Le mus?e des Beaux-Arts install? dans l'ancienne abbaye Saint-Pierre." },
+      "latitude": 45.7667047, "longitude": 4.8336451,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 493540665 }
+    },
+    {
+      "id": "confluences-museum", "category": "culture",
+      "name": { "en": "Mus?e des Confluences", "fr": "Mus?e des Confluences" },
+      "description": { "en": "The science and anthropology museum at the meeting of the rivers.", "fr": "Le mus?e de sciences et d'anthropologie au confluent des deux fleuves." },
+      "latitude": 45.7326778, "longitude": 4.8181607,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 440270631 }
+    },
+    {
+      "id": "institut-lumiere", "category": "culture",
+      "name": { "en": "Institut Lumi?re", "fr": "Institut Lumi?re" },
+      "description": { "en": "A museum and film centre at the birthplace of cinematography.", "fr": "Un mus?e et centre du cin?ma sur les lieux de sa naissance." },
+      "latitude": 45.7450881, "longitude": 4.8706151,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 4485572406 }
+    },
+    {
+      "id": "tete-dor-park", "category": "nature",
+      "name": { "en": "Parc de la T?te d'Or", "fr": "Parc de la T?te d'Or" },
+      "description": { "en": "Lyon's great urban park, lake and botanical gardens.", "fr": "Le grand parc urbain de Lyon, son lac et son jardin botanique." },
+      "latitude": 45.7785792, "longitude": 4.8520963,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 4077207 }
+    },
+    {
+      "id": "jardin-des-curiosites", "category": "nature",
+      "name": { "en": "Jardin des Curiosit?s", "fr": "Jardin des Curiosit?s" },
+      "description": { "en": "A hillside garden with a broad view across Lyon.", "fr": "Un jardin en belv?d?re offrant une large vue sur Lyon." },
+      "latitude": 45.7552197, "longitude": 4.8221182,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 40551161 }
+    },
+    {
+      "id": "fourviere-metallic-tower", "category": "architecture",
+      "name": { "en": "Fourvi?re Metallic Tower", "fr": "Tour m?tallique de Fourvi?re" },
+      "description": { "en": "The lattice tower standing above Fourvi?re hill.", "fr": "La tour en treillis qui domine la colline de Fourvi?re." },
+      "latitude": 45.7639041, "longitude": 4.822347,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 45144233 }
+    },
+    {
+      "id": "palais-justice-footbridge", "category": "architecture",
+      "name": { "en": "Palais de Justice Footbridge", "fr": "Passerelle du Palais de Justice" },
+      "description": { "en": "The pedestrian bridge linking Vieux Lyon to the Presqu'?le.", "fr": "La passerelle pi?tonne reliant le Vieux Lyon ? la Presqu'?le." },
+      "latitude": 45.7615147, "longitude": 4.8300076,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 273993961 }
+    },
+    {
+      "id": "cinema-miniature-museum", "category": "culture",
+      "name": { "en": "Cinema and Miniature Museum", "fr": "Mus?e Cin?ma et Miniature" },
+      "description": { "en": "A museum of film effects, props and miniature scenes in Vieux Lyon.", "fr": "Un mus?e d'effets de cin?ma, d'accessoires et de sc?nes miniatures." },
+      "latitude": 45.7618753, "longitude": 4.8272985,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 1421012868 }
+    }
+  ]
+}

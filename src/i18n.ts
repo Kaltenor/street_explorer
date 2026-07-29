@@ -75,7 +75,7 @@ export const STRINGS = {
     },
     launch: {
       loadingMap: "Loading current area map",
-      pressToStart: "Press to start"
+      pressToStart: "Press here to start"
     },
     walkControls: {
       gps: "GPS",
@@ -257,7 +257,7 @@ export const STRINGS = {
     },
     launch: {
       loadingMap: "Chargement de la carte locale",
-      pressToStart: "Appuyez pour commencer"
+      pressToStart: "Appuyez ici pour commencer"
     },
     walkControls: {
       gps: "GPS",

@@ -1,5 +1,10 @@
 import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
+import {
+  cacheDirectory,
+  EncodingType,
+  writeAsStringAsync
+} from "expo-file-system/legacy";
 import * as Sharing from "expo-sharing";
 
 import { getActiveRecordingSettings } from "../database/settingsRepository";
@@ -48,12 +53,20 @@ export async function exportBackupJson() {
   }
 
   const backup = await getBackupData();
-  const file = new File(Paths.document, `street-explorer-backup-${formatFileTimestamp()}.json`);
+  const fileUri = getCacheExportUri(
+    `street-explorer-backup-${formatFileTimestamp()}.json`
+  );
 
-  file.write(JSON.stringify(backup, null, 2));
-  await shareFile(file.uri);
+  await writeAsStringAsync(fileUri, JSON.stringify(backup), {
+    encoding: EncodingType.UTF8
+  });
+  await shareFile(fileUri, {
+    dialogTitle: "Export Street Explorer backup",
+    mimeType: "application/json",
+    UTI: "public.json"
+  });
 
-  return file.uri;
+  return fileUri;
 }
 
 export async function importBackupJson() {
@@ -95,12 +108,29 @@ export async function importBackupJson() {
   return true;
 }
 
-async function shareFile(fileUri: string) {
+async function shareFile(
+  fileUri: string,
+  options?: {
+    dialogTitle?: string;
+    mimeType?: string;
+    UTI?: string;
+  }
+) {
   const canShare = await Sharing.isAvailableAsync();
 
-  if (canShare) {
-    await Sharing.shareAsync(fileUri);
+  if (!canShare) {
+    throw new Error("File sharing is unavailable on this device.");
   }
+
+  await Sharing.shareAsync(fileUri, options);
+}
+
+function getCacheExportUri(fileName: string) {
+  if (!cacheDirectory) {
+    throw new Error("The app cache directory is unavailable.");
+  }
+
+  return `${cacheDirectory}${fileName}`;
 }
 
 function buildGpx(walk: WalkSession, points: GpsPoint[]) {
@@ -132,7 +162,7 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
   const parsed = JSON.parse(rawJson) as Omit<Partial<StreetExplorerBackup>, "version"> & { version?: number };
 
   if (
-    (parsed.version !== 1 && parsed.version !== 2) ||
+    (parsed.version !== 1 && parsed.version !== 2 && parsed.version !== 3) ||
     !Array.isArray(parsed.sessions) ||
     !Array.isArray(parsed.points)
   ) {
@@ -140,14 +170,26 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
   }
 
   return {
+    medalSystem:
+      parsed.version === 3 &&
+      parsed.medalSystem &&
+      Array.isArray(parsed.medalSystem.acquisitionEvents) &&
+      Array.isArray(parsed.medalSystem.collectedMedals) &&
+      Array.isArray(parsed.medalSystem.retroScanSettings)
+        ? parsed.medalSystem
+        : {
+            acquisitionEvents: [],
+            collectedMedals: [],
+            retroScanSettings: []
+          },
     exportedAt: parsed.exportedAt ?? new Date().toISOString(),
     points: deduplicateBackupPoints(parsed.points),
     routeSnapshots:
-      parsed.version === 2 && Array.isArray(parsed.routeSnapshots)
+      parsed.version >= 2 && Array.isArray(parsed.routeSnapshots)
         ? parsed.routeSnapshots
         : [],
     sessions: parsed.sessions,
-    version: 2
+    version: 3
   };
 }
 

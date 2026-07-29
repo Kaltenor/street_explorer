@@ -20,22 +20,28 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Shared authoritative red-surface and completion contours, with non-decreasing reprocess safety.
 - Visible phased progress and explicit failure reporting for historical reprocessing.
 - One-request historical OSM corridor repair followed by atomic reprocessing with per-recording calculation fault isolation.
-- Automatic transition from the launch loader to the map.
+- Ready-gated transition from the launch loader to the map through a discreet `Press here to start` control on every launch.
 - Non-blocking GPS, route-cache, step-counter, and background-service initialization during launch and recording startup.
 - Map-first startup with accuracy-aware current-location centering, a persistent accepted-route player marker whose motion settles after stale fixes, a self-healing idle/recording watcher, cached explored cells, and lazy saved-route loading.
 - Full-walk live/recovery routes retain raw SQLite observations, rebuild deterministically when a fix arrives late, use canonical contiguous indexes, and render stable bounded chunks while only the recent 300 points remain in diagnostic state.
-- Confirmed Stop teardown drains entered handlers and the durable background outbox before single-recording finalization. Underfilled recordings retain a hidden five-minute recovery tombstone, and late finalized merges trigger an immediate safe map refresh. Backup export rejects active or settling data and reads one transaction; import closes both journal and in-memory GPS admission before replacing data.
+- Confirmed Stop teardown drains entered handlers and the durable background outbox before single-recording finalization. Underfilled recordings retain a hidden five-minute recovery tombstone, and late finalized merges trigger an immediate safe map refresh. Backup export rejects active recording data, omits hidden recovery tombstones, writes compact JSON asynchronously, and reads one transaction; import closes both journal and in-memory GPS admission before replacing data.
 - Walking-focused GPS quality filters.
 - Route history with rename, delete, and highlight.
 - Recording recovery for unfinished active sessions.
 - Device step counts for walking recordings.
 - Icon layer controls for paths, cells, and markers.
-- Full-screen Details, History, and Completion views with map back navigation.
+- Full-screen Details, History, and Completion views with responsive map back navigation, lazy per-recording History details, and cancellable chunked Completion scans.
 - Completion screen with scope and zone selectors.
 - OSM boundary loading and cached Country / City / District completion zones.
 - Zone-specific completion stats and map focus.
 - Objective HUD with selected zone, completion percentage, remaining cells, and today's added cells.
 - Branded `loading-screen2.png` splash/loading presentation and transparent `title.png` map logo overlay.
+- Frozen Lyon v1 landmark album with 20 reviewed OpenStreetMap identities and anchors.
+- Direct-GPS enclosure medals with strict interior checks, known accuracy at or below 30m, cumulative recording coverage, a 100,000m2 cap, and no inferred-route or proximity awards.
+- Medal pins on the map and a full-screen, category-filtered collection with collected counts and landmark focus.
+- Recoverable medal presentation with a metallic chime, haptic success cue, reduced-motion support, and an acknowledged queue.
+- Explicit opt-in scanning for qualifying historical walks; new albums never award silently.
+- Backup V3 preserves frozen route snapshots, medal evidence, collection state, presentation state, and historical-scan state.
 
 ## Current Limitations
 

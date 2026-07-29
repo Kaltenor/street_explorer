@@ -11,6 +11,11 @@ Street Explorer needs a development build to test:
 - iOS background location indicator
 - recovery after background recording
 - native modules such as `expo-task-manager` and `expo-dev-client`
+- medal feedback through `expo-audio` and `expo-haptics`
+
+Whenever a native dependency is added or changed, rebuild and reinstall the development build. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Street Explorer treats unavailable medal sound and haptics as optional so an older binary can still start safely.
+
+Keep transitive native bridges on the same Expo SDK line. `expo-asset` and `expo-constants` are direct SDK 54 dependencies because `expo-audio` otherwise permits npm to select incompatible newer peer packages. Run `npx expo install --check` before producing a new development build.
 
 ## Prerequisites
 
@@ -81,7 +86,7 @@ npx eas-cli build --platform ios --profile development-simulator
 13. Force-close mid-recording and confirm recovery offers Resume, Finish, and Discard without losing the saved tail.
 14. Force-close once more just after finalization, including with a delayed background event, and confirm relaunch merges the owner-bound or uniquely timestamp-matched journaled tail and repairs route/exploration caches without changing an imported frozen route that has no new GPS source.
 15. Stop a very short recording near a delayed native callback and confirm a late second point within five minutes can safely promote the hidden recording instead of being lost.
-16. While recording, try Backup and confirm it is blocked; after Stop has fully settled, confirm export succeeds and restore cannot accept an unfinished-session backup.
+16. While recording, try Backup and confirm it is blocked; after Stop, confirm export succeeds even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup.
 
 ## Expected Limitation
 

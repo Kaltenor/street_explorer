@@ -2,7 +2,7 @@
   "expo": {
     "name": "Street Explorer",
     "slug": "street-explorer",
-    "version": "0.3.66",
+    "version": "0.4.4",
     "orientation": "portrait",
     "scheme": "street-explorer",
     "splash": {
@@ -15,7 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "66",
+      "buildNumber": "73",
       "bundleIdentifier": "com.kaltenor.streetexplorer",
       "supportsTablet": true,
       "infoPlist": {
@@ -31,7 +31,7 @@
     },
     "android": {
       "package": "com.kaltenor.streetexplorer",
-      "versionCode": 66,
+      "versionCode": 73,
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
@@ -54,7 +54,9 @@
           "locationAlwaysPermission": "Street Explorer can keep recording an active exploration while the app is locked.",
           "locationWhenInUsePermission": "Street Explorer uses your location to record walks and draw your exploration map."
         }
-      ]
+      ],
+      "expo-audio",
+      "expo-asset"
     ],
     "extra": {
       "eas": {

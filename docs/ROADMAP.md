@@ -41,8 +41,10 @@
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.
 - Consolidated historical street-corridor repair, per-recording graph reuse, atomic exploration replacement, and calculation recovery.
-- Automatic launch-loader transition into the map.
+- Preloaded launch screen with an explicit, discreet ready-state entry control.
 - Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player marker, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
+- Landmark medal collection V1 with a frozen 20-item Lyon album, strict direct-GPS enclosure proof, map pins, collection UI, explicit historical scan, presentation recovery, Backup V3, and allowlisted OpenStreetMap review tooling.
+- Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V3 sharing.
 
 ## Next Priority
 

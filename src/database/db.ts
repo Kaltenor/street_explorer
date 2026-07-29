@@ -1,4 +1,5 @@
 import * as SQLite from "expo-sqlite";
+import { BUNDLED_MEDAL_ALBUMS } from "../data/medalAlbums";
 
 let database: SQLite.SQLiteDatabase | null = null;
 let databaseOpenPromise: Promise<SQLite.SQLiteDatabase> | null = null;
@@ -391,6 +392,170 @@ async function initializeDatabase() {
       SET value = 'walk'
       WHERE key = 'active_recording_mode';
     `);
+  });
+
+  await applyMigration(19, "create_landmark_medal_tables", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS medal_albums (
+        id TEXT PRIMARY KEY NOT NULL,
+        city_id TEXT NOT NULL,
+        city_name_json TEXT NOT NULL,
+        definition_version INTEGER NOT NULL,
+        published_at TEXT NOT NULL,
+        source_attribution TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS medals (
+        id TEXT PRIMARY KEY NOT NULL,
+        category TEXT NOT NULL,
+        name_json TEXT NOT NULL,
+        description_json TEXT NOT NULL,
+        latitude REAL NOT NULL,
+        longitude REAL NOT NULL,
+        external_source TEXT NOT NULL,
+        external_type TEXT NOT NULL,
+        external_id INTEGER NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS medal_album_items (
+        album_id TEXT NOT NULL,
+        medal_id TEXT NOT NULL,
+        sort_order INTEGER NOT NULL,
+        PRIMARY KEY (album_id, medal_id),
+        FOREIGN KEY (album_id) REFERENCES medal_albums (id) ON DELETE CASCADE,
+        FOREIGN KEY (medal_id) REFERENCES medals (id) ON DELETE CASCADE
+      );
+      CREATE TABLE IF NOT EXISTS medal_acquisition_events (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        album_id TEXT NOT NULL,
+        medal_id TEXT NOT NULL,
+        session_id INTEGER,
+        reason TEXT NOT NULL,
+        enclosure_id TEXT NOT NULL,
+        anchor_cell_id TEXT NOT NULL,
+        enclosure_area_m2 REAL NOT NULL,
+        enclosure_cells_json TEXT NOT NULL,
+        acquired_at TEXT NOT NULL,
+        FOREIGN KEY (album_id) REFERENCES medal_albums (id),
+        FOREIGN KEY (medal_id) REFERENCES medals (id),
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE SET NULL
+      );
+      CREATE TABLE IF NOT EXISTS collected_medals (
+        album_id TEXT NOT NULL,
+        medal_id TEXT NOT NULL,
+        acquisition_event_id INTEGER NOT NULL,
+        presentation_state TEXT NOT NULL DEFAULT 'pending',
+        presented_at TEXT,
+        PRIMARY KEY (album_id, medal_id),
+        FOREIGN KEY (album_id) REFERENCES medal_albums (id) ON DELETE CASCADE,
+        FOREIGN KEY (medal_id) REFERENCES medals (id) ON DELETE CASCADE,
+        FOREIGN KEY (acquisition_event_id) REFERENCES medal_acquisition_events (id) ON DELETE CASCADE
+      );
+      CREATE INDEX IF NOT EXISTS collected_medals_presentation_index
+        ON collected_medals (presentation_state);
+      CREATE INDEX IF NOT EXISTS medal_acquisition_events_session_index
+        ON medal_acquisition_events (session_id, acquired_at);
+    `);
+  });
+
+  await applyMigration(20, "create_poi_candidate_review_tables", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS poi_candidate_fetches (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        city_id TEXT NOT NULL,
+        bounds_json TEXT NOT NULL,
+        source TEXT NOT NULL,
+        requested_at TEXT NOT NULL,
+        completed_at TEXT,
+        status TEXT NOT NULL,
+        error_message TEXT
+      );
+      CREATE TABLE IF NOT EXISTS poi_candidates (
+        fetch_id INTEGER NOT NULL,
+        external_type TEXT NOT NULL,
+        external_id INTEGER NOT NULL,
+        name TEXT NOT NULL,
+        category TEXT NOT NULL,
+        latitude REAL NOT NULL,
+        longitude REAL NOT NULL,
+        tags_json TEXT NOT NULL,
+        review_status TEXT NOT NULL DEFAULT 'unreviewed',
+        PRIMARY KEY (fetch_id, external_type, external_id),
+        FOREIGN KEY (fetch_id) REFERENCES poi_candidate_fetches (id) ON DELETE CASCADE
+      );
+      CREATE INDEX IF NOT EXISTS poi_candidates_review_index
+        ON poi_candidates (review_status, category);
+    `);
+  });
+
+  await seedBundledMedalAlbums(db);
+  await db.runAsync(`
+    UPDATE collected_medals
+    SET presentation_state = 'pending'
+    WHERE presentation_state = 'presenting'
+  `);
+}
+
+async function seedBundledMedalAlbums(db: SQLite.SQLiteDatabase) {
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    for (const album of BUNDLED_MEDAL_ALBUMS) {
+      await transaction.runAsync(
+        `INSERT INTO medal_albums (
+          id, city_id, city_name_json, definition_version, published_at, source_attribution
+        ) VALUES (?, ?, ?, ?, ?, ?)
+        ON CONFLICT(id) DO UPDATE SET
+          city_id = excluded.city_id,
+          city_name_json = excluded.city_name_json,
+          definition_version = excluded.definition_version,
+          published_at = excluded.published_at,
+          source_attribution = excluded.source_attribution`,
+        album.id,
+        album.cityId,
+        JSON.stringify(album.cityName),
+        album.version,
+        album.publishedAt,
+        album.sourceAttribution
+      );
+
+      for (let index = 0; index < album.medals.length; index += 1) {
+        const medal = album.medals[index];
+
+        if (!medal) {
+          continue;
+        }
+
+        await transaction.runAsync(
+          `INSERT INTO medals (
+            id, category, name_json, description_json, latitude, longitude,
+            external_source, external_type, external_id
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            category = excluded.category,
+            name_json = excluded.name_json,
+            description_json = excluded.description_json,
+            latitude = excluded.latitude,
+            longitude = excluded.longitude,
+            external_source = excluded.external_source,
+            external_type = excluded.external_type,
+            external_id = excluded.external_id`,
+          medal.id,
+          medal.category,
+          JSON.stringify(medal.name),
+          JSON.stringify(medal.description),
+          medal.latitude,
+          medal.longitude,
+          medal.externalIdentity.source,
+          medal.externalIdentity.type,
+          medal.externalIdentity.id
+        );
+        await transaction.runAsync(
+          `INSERT INTO medal_album_items (album_id, medal_id, sort_order)
+          VALUES (?, ?, ?)
+          ON CONFLICT(album_id, medal_id) DO UPDATE SET sort_order = excluded.sort_order`,
+          album.id,
+          medal.id,
+          index
+        );
+      }
+    }
   });
 }
 

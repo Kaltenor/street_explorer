@@ -30,6 +30,7 @@ type WalkHistoryModalProps = {
   onExportBackup: () => void;
   onExportWalkGpx: (sessionId: number) => void;
   onImportBackup: () => void;
+  onLoadWalkDetails: (sessionId: number) => void;
   onOpenDiagnostics: () => void;
   onRenameWalk: (sessionId: number, displayName: string) => void;
   onSelectWalk: (sessionId: number) => void;
@@ -48,6 +49,7 @@ export function WalkHistoryModal({
   onExportBackup,
   onExportWalkGpx,
   onImportBackup,
+  onLoadWalkDetails,
   onOpenDiagnostics,
   onRenameWalk,
   onSelectWalk
@@ -154,6 +156,7 @@ export function WalkHistoryModal({
                 isSelected={walk.id === selectedSessionId}
                 key={walk.id}
                 onOpenWalk={(sessionId) => {
+                  onLoadWalkDetails(sessionId);
                   onSelectWalk(sessionId);
                   setDetailSessionId(sessionId);
                 }}

@@ -1,5 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Alert, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  InteractionManager,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { AppLanguage, getStrings, interpolate } from "../i18n";
@@ -118,39 +127,64 @@ export function CompletionModal({
   }, [loadZones, visible]);
 
   useEffect(() => {
-    if (!visible || !selectedZone) {
+    if (!visible) {
+      return;
+    }
+
+    if (!selectedZone) {
       setZoneStats(null);
       setZoneStatsById({});
       setCompletedZoneCount(0);
       return;
     }
 
-    getExploredCellRecords(mode)
-      .then(async (cells) => {
-        const selectedStats = await calculateZoneCompletionStats(selectedZone, cells);
-        const zoneStatsList = await Promise.all(
-          zones.map((zone) => calculateZoneCompletionStats(zone, cells))
-        );
-        const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
+    const abortController = new AbortController();
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      getExploredCellRecords(mode)
+        .then(async (cells) => {
+          const orderedZones = [
+            selectedZone,
+            ...zones.filter((zone) => zone.id !== selectedZone.id)
+          ];
+          const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
+          const zoneStatsList: ZoneCompletionStats[] = [];
 
-        zones.forEach((zone, index) => {
-          const statsForZone = zoneStatsList[index];
+          for (const zone of orderedZones) {
+            const statsForZone = await calculateZoneCompletionStats(
+              zone,
+              cells,
+              abortController.signal
+            );
 
-          if (statsForZone) {
             nextZoneStatsById[zone.id] = statsForZone;
+            zoneStatsList.push(statsForZone);
+          }
+
+          if (abortController.signal.aborted) {
+            return;
+          }
+
+          setZoneStats(nextZoneStatsById[selectedZone.id] ?? null);
+          setZoneStatsById(nextZoneStatsById);
+          setCompletedZoneCount(
+            zoneStatsList.filter(
+              (completion) =>
+                completion.completionPercent !== null &&
+                completion.completionPercent >= 100
+            ).length
+          );
+        })
+        .catch((error) => {
+          if (!abortController.signal.aborted) {
+            console.warn("Failed to calculate zone completion", error);
           }
         });
+    });
 
-        setZoneStats(selectedStats);
-        setZoneStatsById(nextZoneStatsById);
-        setCompletedZoneCount(
-          zoneStatsList.filter(
-            (completion) =>
-              completion.completionPercent !== null && completion.completionPercent >= 100
-          ).length
-        );
-      })
-      .catch((error) => console.warn("Failed to calculate zone completion", error));
+    return () => {
+      abortController.abort();
+      interactionTask.cancel();
+    };
   }, [mode, selectedZone, visible, zones]);
 
   const handleRefreshBoundaries = async () => {

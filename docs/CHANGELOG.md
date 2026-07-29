@@ -1,5 +1,74 @@
 # Changelog
 
+## v0.4.4
+
+Documentation:
+
+- Synchronized every product/developer Markdown source with the asynchronous Backup V3, lazy History, memoized map, and cancellable Completion behavior introduced by the v0.4.3 fixes.
+- Corrected stale development-build and historical medal-plan wording about underfilled recovery tombstones and the current backup format.
+- Synchronized the app version to `0.4.4`, iOS build `73`, and Android version code `73`.
+
+
+## v0.4.3
+
+Fixed:
+
+- Backup now omits hidden underfilled late-GPS recovery tombstones instead of rejecting the whole export, writes compact JSON asynchronously to the share cache, and supplies the correct JSON share metadata.
+- Backup V3 restore now retains frozen route snapshots instead of accepting them only from V2 files.
+- History loads detailed GPS and route data only for the recording the user opens; opening History no longer loads every saved point or competes with Backup.
+- The native map subtree is memoized with stable empty data and callbacks, so closing a full-screen menu does not reconcile every polygon, route, and marker.
+- Completion zone scans run after transitions, yield periodically, stop when the menu closes, and no longer calculate the selected zone twice.
+- Synchronized the app version to `0.4.3`, iOS build `72`, and Android version code `72`.
+
+
+## v0.4.2
+
+Fixed:
+
+- Pinned `expo-asset` and `expo-constants` to their Expo SDK 54 versions so `expo-audio` cannot resolve Expo 57 native bridge packages in the SDK 54 runtime.
+- Updated Expo to the dependency checker's expected SDK 54 patch release.
+- Synchronized the app version to `0.4.2`, iOS build `71`, and Android version code `71`.
+
+
+## v0.4.1
+
+Fixed:
+
+- Medal audio and haptics now load only when a collection celebration begins. An older development binary that does not yet contain the new native modules can launch normally and falls back silently until it is rebuilt.
+- Database startup failures now show a dark, actionable retry screen instead of leaving the app on an indefinite white loading view.
+- Synchronized the app version to `0.4.1`, iOS build `70`, and Android version code `70`.
+
+## v0.4.0
+
+Added:
+
+- A frozen Lyon v1 album of 20 reviewed landmark medals with localized names, categories, descriptions, OpenStreetMap identities, and safe map anchors.
+- Exact direct-GPS enclosure proof across recordings. A newly finalized recording must contribute to the closing boundary, the anchor must transition into the strict interior, the boundary must be at least 80m, and the enclosure must not exceed 100,000m2.
+- A full-screen Medals collection with counts, category filters, locked/collected states, landmark map focus, and distinct map pins.
+- Recoverable medal presentation with a bundled metallic chime, success haptic, reduced-motion-aware rotation, accessibility announcement, and silent failure fallback.
+- Explicit, confirmed historical scanning for each frozen album version; albums never grant historical medals silently.
+- Backup V3 support for medal acquisition evidence, collection state, presentation state, and retro-scan state, with V1/V2 import compatibility.
+- Developer-only allowlisted OpenStreetMap POI candidate fetching and review persistence. Fetched candidates cannot mutate the frozen album automatically.
+- Focused medal enclosure regression checks through `npm run test:medals`.
+
+Changed:
+
+- GPS points without numeric accuracy remain usable by ordinary exploration where existing behavior allows them, but are excluded from medal acquisition proof.
+- Added SDK 54-compatible `expo-audio` and `expo-haptics` native dependencies.
+- Synchronized the app version to `0.4.0`, iOS build `69`, and Android version code `69`.
+
+## v0.3.68
+
+Fixed:
+
+- The launch entry control now uses the same touch handling as the app menus and lets the native press finish before removing the launch overlay, preventing input from becoming unresponsive after opening and closing a full-screen menu.
+
+## v0.3.67
+
+Changed:
+
+- The branded launch screen now remains visible after map, saved-data, recovery, permission, and initial-location preloading completes, then opens the map only when the user taps the discreet `Press here to start` control.
+
 ## v0.3.66
 
 Changed:

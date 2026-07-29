@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.3.66",
+  "version": "0.4.4",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "start:dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "test:medals": "node scripts/test-medal-enclosures.js",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test:geometry": "node scripts/test-exploration-geometry.js",
@@ -17,11 +18,15 @@
   },
   "dependencies": {
     "@expo/vector-icons": "latest",
-    "expo": "~54.0.0",
+    "expo": "~54.0.36",
+    "expo-asset": "~12.0.13",
+    "expo-audio": "~1.1.1",
+    "expo-constants": "~18.0.13",
     "expo-dev-client": "~6.0.21",
     "expo-document-picker": "~14.0.8",
     "expo-file-system": "~19.0.23",
     "expo-font": "~14.0.12",
+    "expo-haptics": "~15.0.8",
     "expo-location": "~19.0.8",
     "expo-sensors": "~15.0.8",
     "expo-sharing": "~14.0.8",

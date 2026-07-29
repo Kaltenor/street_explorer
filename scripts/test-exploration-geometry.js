@@ -560,6 +560,14 @@ const explorationMapSource = fs.readFileSync(
   require.resolve("../src/components/ExplorationMap.tsx"),
   "utf8"
 );
+const completionModalSource = fs.readFileSync(
+  require.resolve("../src/components/CompletionModal.tsx"),
+  "utf8"
+);
+const zoneCompletionSource = fs.readFileSync(
+  require.resolve("../src/services/zoneCompletion.ts"),
+  "utf8"
+);
 const locationHookSource = fs.readFileSync(
   require.resolve("../src/hooks/useReliableForegroundLocation.ts"),
   "utf8"
@@ -835,6 +843,34 @@ assert(
       "Finish or discard the active recording before exporting a backup"
     ),
   "backup export rejects active recordings and reads one consistent database snapshot"
+);
+assert(
+  dataToolsSource.includes('from "expo-file-system/legacy"') &&
+    dataToolsSource.includes("writeAsStringAsync") &&
+    dataToolsSource.includes("parsed.version >= 2") &&
+    walkRepositorySource.includes(
+      "WHERE session_id = walk_sessions.id"
+    ) &&
+    !walkRepositorySource.includes(
+      "A recently stopped recording is still accepting late GPS fixes."
+    ),
+  "backup exports visible finalized recordings asynchronously and preserves V2/V3 route snapshots"
+);
+assert(
+  explorationMapSource.includes(
+    "memo(function ExplorationMap"
+  ) &&
+    mapScreenSource.includes("onLoadWalkDetails") &&
+    mapScreenSource.includes("loadDetailedWalk(sessionId)") &&
+    !mapScreenSource.includes("if (!historyVisible)"),
+  "menu visibility changes avoid full map reconciliation and History loads route details on demand"
+);
+assert(
+  completionModalSource.includes("InteractionManager.runAfterInteractions") &&
+    completionModalSource.includes("abortController.abort()") &&
+    zoneCompletionSource.includes("COMPLETION_SCAN_YIELD_INTERVAL") &&
+    zoneCompletionSource.includes("await yieldToEventLoop()"),
+  "completion zone scans yield to navigation and cancel when the menu closes"
 );
 assert(
   routeSnapshotSource.includes("getRouteSnapshot(sessionId)") &&

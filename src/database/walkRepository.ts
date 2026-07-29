@@ -60,6 +60,31 @@ type FinishWalkInput = {
 
 export type StreetExplorerBackup = {
   exportedAt: string;
+  medalSystem: {
+    acquisitionEvents: Array<{
+      id: number;
+      albumId: string;
+      medalId: string;
+      sessionId: number | null;
+      reason: "recording" | "retro_scan";
+      enclosureId: string;
+      anchorCellId: string;
+      enclosureAreaSquareMeters: number;
+      enclosureCellIds: string[];
+      acquiredAt: string;
+    }>;
+    collectedMedals: Array<{
+      albumId: string;
+      medalId: string;
+      acquisitionEventId: number;
+      presentationState: "pending" | "presenting" | "presented";
+      presentedAt: string | null;
+    }>;
+    retroScanSettings: Array<{
+      key: string;
+      value: string;
+    }>;
+  };
   points: GpsPoint[];
   routeSnapshots: Array<{
     algorithmVersion: number;
@@ -70,7 +95,7 @@ export type StreetExplorerBackup = {
     sourcePointCount: number;
   }>;
   sessions: WalkSession[];
-  version: 2;
+  version: 3;
 };
 
 export async function createWalkSession(input: CreateWalkInput) {
@@ -887,11 +912,13 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       SELECT id, activity_mode, display_name, started_at, ended_at,
         distance_meters, duration_seconds, step_count
       FROM walk_sessions
+      WHERE NOT EXISTS (
+        SELECT 1
+        FROM pending_recording_discards
+        WHERE session_id = walk_sessions.id
+      )
       ORDER BY started_at ASC
     `);
-    const pendingDiscard = await transaction.getFirstAsync<{ count: number }>(
-      "SELECT COUNT(*) AS count FROM pending_recording_discards"
-    );
 
     if (sessionRows.some((row) => row.ended_at === row.started_at)) {
       throw new Error(
@@ -899,27 +926,107 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       );
     }
 
-    if ((pendingDiscard?.count ?? 0) > 0) {
-      throw new Error(
-        "A recently stopped recording is still accepting late GPS fixes."
-      );
-    }
-
     const pointRows = await transaction.getAllAsync<GpsPointRow>(`
       SELECT id, session_id, latitude, longitude, timestamp, accuracy,
         point_index
       FROM gps_points
+      WHERE session_id IN (
+        SELECT id
+        FROM walk_sessions
+        WHERE NOT EXISTS (
+          SELECT 1 FROM pending_recording_discards
+          WHERE session_id = walk_sessions.id
+        )
+      )
       ORDER BY session_id, timestamp, id
     `);
     const snapshotRows = await transaction.getAllAsync<RouteSnapshotRow>(`
       SELECT session_id, segments_json, source_point_count,
         source_max_point_id, algorithm_version, created_at
       FROM route_snapshots
+      WHERE session_id IN (
+        SELECT id
+        FROM walk_sessions
+        WHERE NOT EXISTS (
+          SELECT 1 FROM pending_recording_discards
+          WHERE session_id = walk_sessions.id
+        )
+      )
       ORDER BY session_id
+    `);
+    const medalEventRows = await transaction.getAllAsync<{
+      id: number; album_id: string; medal_id: string; session_id: number | null;
+      reason: "recording" | "retro_scan"; enclosure_id: string;
+      anchor_cell_id: string; enclosure_area_m2: number;
+      enclosure_cells_json: string; acquired_at: string;
+    }>(`
+      SELECT id, album_id, medal_id, session_id, reason, enclosure_id,
+        anchor_cell_id, enclosure_area_m2, enclosure_cells_json, acquired_at
+      FROM medal_acquisition_events
+      WHERE session_id IS NULL
+        OR session_id IN (
+          SELECT id
+          FROM walk_sessions
+          WHERE NOT EXISTS (
+            SELECT 1 FROM pending_recording_discards
+            WHERE session_id = walk_sessions.id
+          )
+        )
+      ORDER BY id
+    `);
+    const collectedMedalRows = await transaction.getAllAsync<{
+      album_id: string; medal_id: string; acquisition_event_id: number;
+      presentation_state: "pending" | "presenting" | "presented";
+      presented_at: string | null;
+    }>(`
+      SELECT album_id, medal_id, acquisition_event_id, presentation_state, presented_at
+      FROM collected_medals AS collected
+      WHERE EXISTS (
+        SELECT 1
+        FROM medal_acquisition_events AS event
+        WHERE event.id = collected.acquisition_event_id
+          AND (
+            event.session_id IS NULL
+            OR NOT EXISTS (
+              SELECT 1 FROM pending_recording_discards
+              WHERE session_id = event.session_id
+            )
+          )
+      )
+      ORDER BY album_id, medal_id
+    `);
+    const retroScanSettings = await transaction.getAllAsync<{
+      key: string; value: string;
+    }>(`
+      SELECT key, value FROM app_settings
+      WHERE key LIKE 'medal_retro_scan:%'
+      ORDER BY key
     `);
 
     backup = {
       exportedAt: new Date().toISOString(),
+      medalSystem: {
+        acquisitionEvents: medalEventRows.map((row) => ({
+          id: row.id,
+          albumId: row.album_id,
+          medalId: row.medal_id,
+          sessionId: row.session_id,
+          reason: row.reason,
+          enclosureId: row.enclosure_id,
+          anchorCellId: row.anchor_cell_id,
+          enclosureAreaSquareMeters: row.enclosure_area_m2,
+          enclosureCellIds: parseStringArray(row.enclosure_cells_json),
+          acquiredAt: row.acquired_at
+        })),
+        collectedMedals: collectedMedalRows.map((row) => ({
+          albumId: row.album_id,
+          medalId: row.medal_id,
+          acquisitionEventId: row.acquisition_event_id,
+          presentationState: row.presentation_state,
+          presentedAt: row.presented_at
+        })),
+        retroScanSettings
+      },
       points: pointRows.map(mapPointRow),
       routeSnapshots: snapshotRows.flatMap((row) => {
         const segments = parseRouteSegments(row.segments_json);
@@ -936,7 +1043,7 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
           : [];
       }),
       sessions: sessionRows.map(mapSessionRow),
-      version: 2
+      version: 3
     };
   });
 
@@ -955,6 +1062,9 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         'active_recording_session_id',
         'active_recording_mode'
       );
+      DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';
+      DELETE FROM collected_medals;
+      DELETE FROM medal_acquisition_events;
       DELETE FROM pending_recording_repairs;
       DELETE FROM pending_recording_discards;
       DELETE FROM explored_cells;
@@ -1071,6 +1181,52 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         snapshot.createdAt
       );
     }
+
+    for (const event of backup.medalSystem.acquisitionEvents) {
+      await transaction.runAsync(
+        `INSERT INTO medal_acquisition_events (
+          id, album_id, medal_id, session_id, reason, enclosure_id,
+          anchor_cell_id, enclosure_area_m2, enclosure_cells_json, acquired_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        event.id,
+        event.albumId,
+        event.medalId,
+        event.sessionId,
+        event.reason,
+        event.enclosureId,
+        event.anchorCellId,
+        event.enclosureAreaSquareMeters,
+        JSON.stringify(event.enclosureCellIds),
+        event.acquiredAt
+      );
+    }
+
+    for (const medal of backup.medalSystem.collectedMedals) {
+      await transaction.runAsync(
+        `INSERT INTO collected_medals (
+          album_id, medal_id, acquisition_event_id, presentation_state, presented_at
+        ) VALUES (?, ?, ?, ?, ?)`,
+        medal.albumId,
+        medal.medalId,
+        medal.acquisitionEventId,
+        medal.presentationState === "presenting" ? "pending" : medal.presentationState,
+        medal.presentedAt
+      );
+    }
+
+    for (const setting of backup.medalSystem.retroScanSettings) {
+      if (!setting.key.startsWith("medal_retro_scan:")) {
+        continue;
+      }
+
+      await transaction.runAsync(
+        `INSERT INTO app_settings (key, value)
+        VALUES (?, ?)
+        ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+        setting.key,
+        setting.value
+      );
+    }
   });
 }
 
@@ -1118,6 +1274,34 @@ function validateBackupData(backup: StreetExplorerBackup) {
       throw new Error("Backup contains an invalid route snapshot GPS generation.");
     }
   }
+
+  const eventIds = new Set<number>();
+
+  for (const event of backup.medalSystem.acquisitionEvents) {
+    if (
+      !Number.isInteger(event.id) ||
+      event.id <= 0 ||
+      !event.albumId ||
+      !event.medalId ||
+      (event.sessionId !== null && !sessionIds.has(event.sessionId)) ||
+      !Array.isArray(event.enclosureCellIds)
+    ) {
+      throw new Error("Backup contains an invalid medal acquisition event.");
+    }
+
+    eventIds.add(event.id);
+  }
+
+  for (const medal of backup.medalSystem.collectedMedals) {
+    if (
+      !medal.albumId ||
+      !medal.medalId ||
+      !eventIds.has(medal.acquisitionEventId) ||
+      !["pending", "presenting", "presented"].includes(medal.presentationState)
+    ) {
+      throw new Error("Backup contains an invalid collected medal.");
+    }
+  }
 }
 
 function getBackupSourceMaxPointId(points: GpsPoint[], sessionId: number) {
@@ -1126,6 +1310,18 @@ function getBackupSourceMaxPointId(points: GpsPoint[], sessionId: number) {
       point.sessionId === sessionId ? Math.max(maxPointId, point.id ?? 0) : maxPointId,
     0
   );
+}
+
+function parseStringArray(value: string) {
+  try {
+    const parsed = JSON.parse(value) as unknown;
+
+    return Array.isArray(parsed)
+      ? parsed.filter((item): item is string => typeof item === "string")
+      : [];
+  } catch {
+    return [];
+  }
 }
 
 export async function deleteAllData() {
@@ -1144,6 +1340,9 @@ export async function deleteAllData() {
       DELETE FROM loop_fills;
       DELETE FROM route_snapshots;
       DELETE FROM gps_points;
+      DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';
+      DELETE FROM collected_medals;
+      DELETE FROM medal_acquisition_events;
       DELETE FROM gps_observations;
       DELETE FROM walk_sessions;
     `);

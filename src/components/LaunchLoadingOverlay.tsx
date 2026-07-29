@@ -1,4 +1,11 @@
-import { ActivityIndicator, ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 
 import { APP_VERSION } from "../constants/config";
 import { AppLanguage, getStrings } from "../i18n";
@@ -6,13 +13,19 @@ import { AppLanguage, getStrings } from "../i18n";
 type LaunchLoadingOverlayProps = {
   isReady: boolean;
   language: AppLanguage;
+  onStart: () => void;
 };
 
 export function LaunchLoadingOverlay({
   isReady,
-  language
+  language,
+  onStart
 }: LaunchLoadingOverlayProps) {
   const strings = getStrings(language);
+
+  const handleStart = () => {
+    requestAnimationFrame(onStart);
+  };
 
   return (
     <View style={styles.container}>
@@ -22,14 +35,21 @@ export function LaunchLoadingOverlay({
         style={styles.background}
       >
         <View style={styles.footer}>
-          <View style={styles.loadingRow}>
-            <ActivityIndicator color="#9cff00" size="small" />
-            <Text style={styles.loadingText}>
-              {isReady
-                ? language === "fr" ? "Ouverture de la carte" : "Opening map"
-                : strings.launch.loadingMap}
-            </Text>
-          </View>
+          {isReady ? (
+            <TouchableOpacity
+              accessibilityRole="button"
+              activeOpacity={0.45}
+              onPress={handleStart}
+              style={styles.startButton}
+            >
+              <Text style={styles.startText}>{strings.launch.pressToStart}</Text>
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.loadingRow}>
+              <ActivityIndicator color="#9cff00" size="small" />
+              <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
+            </View>
+          )}
           <Text style={styles.version}>v{APP_VERSION}</Text>
         </View>
       </ImageBackground>
@@ -70,6 +90,23 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "900",
     letterSpacing: 0.8,
+    textTransform: "uppercase"
+  },
+  startButton: {
+    paddingHorizontal: 22,
+    paddingVertical: 12
+  },
+  startText: {
+    color: "rgba(248, 250, 252, 0.78)",
+    fontSize: 12,
+    fontWeight: "500",
+    letterSpacing: 2.2,
+    textShadowColor: "rgba(156, 255, 0, 0.35)",
+    textShadowOffset: {
+      height: 0,
+      width: 0
+    },
+    textShadowRadius: 6,
     textTransform: "uppercase"
   },
   version: {

@@ -2,6 +2,7 @@ import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { Animated, Easing, StyleSheet, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   LOCATION_CONFIG,
@@ -18,6 +19,7 @@ import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
+import { CollectedMedal } from "../types/medal";
 import {
   ActivityMode,
   GpsPoint,
@@ -34,6 +36,10 @@ type ExplorationMapProps = {
   activeExplorationCellIds: string[];
   explorationEnabled: boolean;
   activeMode: ActivityMode;
+  focusedMedal: CollectedMedal | null;
+  medalFocusRequestId: number;
+  medals: CollectedMedal[];
+  onMedalPress?: (medal: CollectedMedal) => void;
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
   layers: MapLayerState;
@@ -114,7 +120,7 @@ const LANDMARK_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [
   "zoo"
 ];
 
-export function ExplorationMap({
+export const ExplorationMap = memo(function ExplorationMap({
   walks,
   activeExplorationCellIds,
   explorationEnabled,
@@ -123,6 +129,10 @@ export function ExplorationMap({
   activeRouteChunks,
   activeMode,
   currentLocation,
+  focusedMedal,
+  medalFocusRequestId,
+  medals,
+  onMedalPress,
   highlightedSessionId,
   layers,
   savedExplorationCellIds,
@@ -164,6 +174,7 @@ export function ExplorationMap({
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
+  const shouldShowMedalMarkers = layers.showMarkers && renderLevel !== "far";
   const shouldBuildExploredArea =
     explorationEnabled && (shouldShowCompletedArea || shouldShowOutline);
   const maxFilledHoleAreaSquareMeters =
@@ -314,6 +325,24 @@ export function ExplorationMap({
     }
   }, [selectedZone, zoneFocusRequestId]);
 
+  useEffect(() => {
+    if (!focusedMedal || medalFocusRequestId === 0 || !isNativeMapReady) {
+      return;
+    }
+
+    mapRef.current?.animateToRegion(
+      {
+        latitude: focusedMedal.latitude,
+        longitude: focusedMedal.longitude,
+        latitudeDelta: 0.007,
+        longitudeDelta: 0.007
+      },
+      450
+    );
+    hasUserMovedMapRef.current = true;
+    setIsAutoFollowEnabled(false);
+  }, [focusedMedal, isNativeMapReady, medalFocusRequestId]);
+
   const handleRegionChangeComplete = (nextRegion: Region) => {
     setVisibleRegion(nextRegion);
     onVisibleRegionChange?.(nextRegion);
@@ -461,6 +490,27 @@ export function ExplorationMap({
           </>
         ) : null}
 
+        {shouldShowMedalMarkers ? medals.map((medal) => (
+          <Marker
+            accessibilityLabel={`${medal.name.en}, ${medal.isCollected ? "collected" : "locked"}`}
+            coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
+            key={`medal-${medal.albumId}-${medal.id}`}
+            onPress={() => onMedalPress?.(medal)}
+            title={medal.name.en}
+          >
+            <View style={[
+              styles.medalMarker,
+              medal.isCollected ? styles.medalMarkerCollected : styles.medalMarkerLocked
+            ]}>
+              <Ionicons
+                color={medal.isCollected ? "#fff5c4" : "#d6dee5"}
+                name={medal.isCollected ? "medal" : "lock-closed"}
+                size={17}
+              />
+            </View>
+          </Marker>
+        )) : null}
+
         {playerLocation ? (
           <PlayerLocationMarker
             activePoints={activePoints}
@@ -470,7 +520,7 @@ export function ExplorationMap({
       </ApplePoiFilteredMapView>
     </View>
   );
-}
+});
 
 const PLAYER_MOVING_SPEED_METERS_PER_SECOND = 0.45;
 const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
@@ -1135,6 +1185,26 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 0,
     top: 0
+  },
+  medalMarker: {
+    alignItems: "center",
+    borderRadius: 20,
+    borderWidth: 2,
+    height: 38,
+    justifyContent: "center",
+    shadowColor: "#02060a",
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.38,
+    shadowRadius: 4,
+    width: 38
+  },
+  medalMarkerCollected: {
+    backgroundColor: "#a77316",
+    borderColor: "#ffe198"
+  },
+  medalMarkerLocked: {
+    backgroundColor: "#3f4f5b",
+    borderColor: "#a9b6c0"
   },
   playerDirectionPip: {
     backgroundColor: "#9cff00",

@@ -9,6 +9,8 @@
 - Location via `expo-location`
 - Background task foundation via `expo-task-manager`
 - Map display via `react-native-maps`
+- Medal audio via `expo-audio`
+- Medal success feedback via `expo-haptics`
 
 On iOS, `react-native-maps` uses Apple MapKit by default.
 
@@ -38,6 +40,13 @@ Tables:
 - `zone_cell_totals`
 - `explored_cells`
 - `loop_fills`
+- `medal_albums`
+- `medals`
+- `medal_album_items`
+- `medal_acquisition_events`
+- `collected_medals`
+- `poi_candidate_fetches`
+- `poi_candidates`
 
 `walk_sessions` stores one recording:
 
@@ -105,7 +114,7 @@ Migration 18 consolidates legacy non-walking session rows, exploration cells, lo
 
 ## Recording Flow
 
-1. Startup initializes saved data and unfinished-recording recovery while requesting foreground permission.
+1. Startup initializes saved data and unfinished-recording recovery while requesting foreground permission behind the branded launch overlay. After map, data, recovery, permission, and bounded initial-location readiness complete, the overlay waits for the user's explicit entry tap.
 2. With permission granted, one managed foreground-location hook requests the current position and keeps an idle high-accuracy watcher active so the player marker is available before recording.
 3. Native watcher errors retry with bounded backoff. During a recording, a watchdog probes and replaces a watcher that stops delivering usable fixes.
 4. User taps Start only after recovery detection completes.
@@ -120,6 +129,8 @@ Migration 18 consolidates legacy non-walking session rows, exploration cells, lo
 13. Full-history route, contour, loop-fill, and street rebuilds run only from the explicit Reprocess recordings action.
 
 The watcher keeps the raw current location independently from route acceptance. Before recording it drives accuracy-aware startup centering; once a recording has an accepted route point, the player marker and auto-follow prefer that canonical endpoint. A rejected or temporarily unavailable fix therefore cannot jump or hide the marker while watcher recovery continues.
+
+History keeps its summary rows separate from detailed GPS data: opening the list performs no full-history point load, opening one recording loads only that recording, and enabling the Paths layer remains the explicit full-route display trigger. Full-screen menu visibility uses stable map props and a memoized native map subtree, avoiding polygon/route reconciliation when returning to the map.
 
 ## GPS Filtering
 
@@ -168,6 +179,25 @@ OSM is used as hidden analysis data inside the polygon. The app still measures w
 
 Walking exploration can contain multiple loop fills. Accepted loop-fill cells are stored separately from directly walked GPS cells.
 
+
+## Landmark Medals
+
+Lyon album v1 is a frozen, bundled catalog of 20 reviewed landmarks. The catalog stores stable internal ids, localized names and descriptions, categories, OpenStreetMap identities, and reviewed capture anchors. SQLite seeds the definitions idempotently and stores immutable acquisition evidence separately from presentation state.
+
+Medal proof deliberately does not reuse the normal display or loop-fill ledger. The evaluator:
+
+- rebuilds only confirmed direct segments from canonical accepted `gps_points`;
+- requires both endpoints to have numeric accuracy at or below 30m;
+- excludes inferred route geometry, loop-fill cells, GPS points with missing accuracy, and the display layer's one-cell closure tolerance;
+- combines trusted direct coverage across recordings, while requiring the newly finalized recording to contribute to the boundary that changes the anchor from outside to strictly inside;
+- caps a qualifying enclosure at 100,000m2 and requires at least 80m of occupied grid boundary;
+- writes the evidence event and unique collected-medal row in one exclusive transaction.
+
+Startup resets an interrupted `presenting` state to `pending`, so every collected medal remains in the presentation queue until acknowledged. Presentation uses a bundled metallic chime, success haptic, reduced-motion-aware animation, and silent/haptic failure fallbacks.
+
+Historical collection is never automatic. The Medals screen offers an explicitly confirmed scan of saved walks and records completion per frozen album version. Backup V3 includes acquisition events, collected state, presentation state, and retro-scan settings. Older V1/V2 backups restore with an empty medal collection.
+
+The developer-only POI candidate service queries an allowlisted set of OpenStreetMap tags inside fixed bounds and stores candidates as `unreviewed`. Network results never mutate the frozen shipped album or become collectible without review and a release change.
 ## Street Completion
 
 Street completion V1 uses OpenStreetMap as a hidden analysis and debug data layer while keeping Apple MapKit as the visual map background.
@@ -205,6 +235,8 @@ Flow:
 
 Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone. Completion augments persisted cells with the same walking area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage always use the same numerator.
 
+Local denominator scans are chunked and yield to the React Native event loop. The Completion screen starts them after its opening transition, calculates the selected zone only once, and aborts unfinished work immediately when the screen closes so navigation cannot be held by a large grid scan.
+
 District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.
 
 Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate bounds are used only when relation geometry cannot be assembled yet.
@@ -217,6 +249,6 @@ The service projects suspicious GPS-gap endpoints onto the nearest point of cach
 
 The explicit **Reprocess recordings** action is the only workflow allowed to replace existing historical snapshots. Before route calculation, it makes one consolidated Overpass linestring request covering the raw corridors of every saved walking recording. This repairs the incomplete cache that caused the v0.3.50 legacy-freeze regression without returning to slow per-recording downloads. The request has a 35-second client timeout, its street segments are batch-written atomically, and failure aborts the rebuild while leaving existing routes and progress untouched. One graph is then built per recording and reused for every suspicious GPS interval. Individual recording calculation failures retain their previous frozen route while the remaining recordings continue. The complete candidate includes confirmed cells, validated inferred cells, and authoritative contour fills. If its unique-cell total is lower than existing progress, both snapshots and the explored ledger remain untouched and the result reports a safety stop. Otherwise all explored cells and loop metadata are replaced in one atomic transaction. The phased progress modal is displayed over the map after full-screen panels close, and any uncaught failure produces a visible error.
 
-Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V2 includes route snapshots, so exported and restored routes keep the same frozen geometry. Export is blocked while a recording is active or a recent underfilled Stop is still settling, drains the local background outbox, and reads sessions, points, and snapshots inside one exclusive transaction. Import closes file-journal admission, stops and drains native tracking, closes and settles the in-memory GPS queue, commits the replacement transaction, clears the old recording hint, and only then discards old journal files; a delayed pre-import event therefore cannot be attributed to an unrelated restored session.
+Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V3 includes route snapshots and medal acquisition/presentation state, so exported and restored routes keep the same frozen geometry. Export is blocked while a recording is active, drains the local background outbox, omits any still-hidden underfilled late-GPS recovery tombstone, and reads visible sessions, points, snapshots, and medal state inside one exclusive transaction. The compact JSON file is written asynchronously to the share cache. Import closes file-journal admission, stops and drains native tracking, closes and settles the in-memory GPS queue, commits the replacement transaction, clears the old recording hint, and only then discards old journal files; a delayed pre-import event therefore cannot be attributed to an unrelated restored session.
 
 There is still no straight-line fallback for inferred exploration. Low-confidence, implausible, or unmatched gaps remain hidden and contribute no explored cells.

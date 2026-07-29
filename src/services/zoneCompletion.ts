@@ -17,6 +17,7 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
+const COMPLETION_SCAN_YIELD_INTERVAL = 2_048;
 const renderedContourFillCache = new WeakMap<ExploredCellRecord[], ExploredCellRecord[]>();
 
 type OverpassGeometryPoint = {
@@ -106,19 +107,41 @@ export async function fetchNearbyOsmZonesWithDebug(
 
 export async function calculateZoneCompletionStats(
   zone: CachedZone,
-  exploredCells: ExploredCellRecord[]
+  exploredCells: ExploredCellRecord[],
+  signal?: AbortSignal
 ): Promise<ZoneCompletionStats> {
+  throwIfCompletionCancelled(signal);
   const completionCells = includeRenderedContourFills(exploredCells);
-  const exploredInside = completionCells.filter((cell) =>
-    isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone)
-  );
+  const exploredInside: ExploredCellRecord[] = [];
+
+  for (let index = 0; index < completionCells.length; index += 1) {
+    if (index > 0 && index % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
+      throwIfCompletionCancelled(signal);
+      await yieldToEventLoop();
+    }
+
+    const cell = completionCells[index];
+
+    if (
+      cell &&
+      isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone)
+    ) {
+      exploredInside.push(cell);
+    }
+  }
+
+  throwIfCompletionCancelled(signal);
   const uniqueExplored = uniqueCellCount(exploredInside);
   const directlyWalkedCells = uniqueCellCount(
     exploredInside.filter((cell) => cell.source === "gps")
   );
-  const inferredCells = uniqueCellCount(exploredInside.filter((cell) => cell.source === "inferred"));
-  const loopFilledCells = uniqueCellCount(exploredInside.filter((cell) => cell.source === "loop_fill"));
-  const totalZoneCells = await calculateTotalZoneCells(zone);
+  const inferredCells = uniqueCellCount(
+    exploredInside.filter((cell) => cell.source === "inferred")
+  );
+  const loopFilledCells = uniqueCellCount(
+    exploredInside.filter((cell) => cell.source === "loop_fill")
+  );
+  const totalZoneCells = await calculateTotalZoneCells(zone, signal);
 
   return {
     completionPercent:
@@ -414,8 +437,11 @@ function buildBoundsGeometry(bounds: {
   ]];
 }
 
-async function calculateTotalZoneCells(zone: CachedZone) {
+async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal) {
+  throwIfCompletionCancelled(signal);
   const cachedTotal = await getCachedZoneTotal(zone.id);
+
+  throwIfCompletionCancelled(signal);
 
   if (cachedTotal !== null) {
     return cachedTotal;
@@ -444,9 +470,17 @@ async function calculateTotalZoneCells(zone: CachedZone) {
   }
 
   let count = 0;
+  let scannedCellCount = 0;
 
   for (let x = minX; x <= maxX; x += 1) {
     for (let y = minY; y <= maxY; y += 1) {
+      scannedCellCount += 1;
+
+      if (scannedCellCount % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
+        throwIfCompletionCancelled(signal);
+        await yieldToEventLoop();
+      }
+
       const center = explorationCellKeyToCenterCoordinate(`${x}:${y}`);
 
       if (isPointInsideZone(center, zone)) {
@@ -455,9 +489,23 @@ async function calculateTotalZoneCells(zone: CachedZone) {
     }
   }
 
+  throwIfCompletionCancelled(signal);
   await saveCachedZoneTotal(zone.id, count);
 
   return count;
+}
+
+
+function throwIfCompletionCancelled(signal?: AbortSignal) {
+  if (signal?.aborted) {
+    throw new Error("Zone completion calculation cancelled.");
+  }
+}
+
+function yieldToEventLoop() {
+  return new Promise<void>((resolve) => {
+    setTimeout(resolve, 0);
+  });
 }
 
 function isPointInsideZone(point: MapCoordinate, zone: CachedZone) {

@@ -21,41 +21,57 @@ npx expo start --dev-client --clear
 
 For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 
+## Automated Checks
+
+```powershell
+npm run typecheck
+npm run test:geometry
+npm run test:medals
+npx expo install --check
+```
+
+`test:medals` covers exact closure, trigger-boundary contribution, strict interior, no repeat transition, the 100,000m2 cap, rejection of missing GPS accuracy, and acceptance of short direct segments with trusted numeric accuracy.
+
 ## Basic Recording Test
+
+Startup regressions: when testing an older development binary against the current JavaScript bundle, confirm startup succeeds even if medal sound or haptics are unavailable. In a diagnostic build where database initialization is deliberately made to fail, confirm a dark retry screen appears instead of an indefinite white screen.
 
 1. Open the Street Explorer development build.
 2. Confirm the `loading-screen2.png` artwork appears for the native splash and remains as the branded loading overlay while the native map, saved records, unfinished-recording check, permission state, and bounded initial-location attempt are pending.
-3. Confirm there is no Press to start prompt.
-4. With foreground permission granted, confirm the player icon appears before recording and the map centers on the current location.
-5. If no fix is available, confirm startup resolves after the bounded attempt; a later fix may center the map unless you already moved it.
-6. Confirm the version number appears under the transparent `title.png` logo.
-7. Tap Start and confirm the button immediately shows Starting, then changes to Stop without waiting for step or background-service setup.
-8. Confirm repeated taps while Starting do not create duplicate recordings.
-9. Move at least 20-30 meters.
-10. Confirm:
+3. Confirm `Press here to start` appears only after preloading completes and the launch screen remains visible until it is tapped.
+4. Tap `Press here to start` and confirm the preloaded map opens immediately.
+5. Open and close Details, History, Completion, and Options in turn; after each one, confirm the map gestures and bottom controls still respond.
+6. With foreground permission granted, confirm the player icon appears before recording and the map centers on the current location.
+7. If no fix is available, confirm startup resolves after the bounded attempt; a later fix may center the map unless you already moved it.
+8. Confirm the version number appears under the transparent `title.png` logo.
+9. Tap Start and confirm the button immediately shows Starting, then changes to Stop without waiting for step or background-service setup.
+10. Confirm repeated taps while Starting do not create duplicate recordings.
+11. Move at least 20-30 meters.
+12. Confirm:
    - duration increases
    - steps today is visible for walking recordings
    - distance increases
    - the complete active path appears
    - explored cells appear
    - bottom controls show distance, duration, and Stop
-11. Tap Stop.
-12. Confirm the Stop dialog offers Continue and a hold-to-quit action; choose Continue and confirm recording and drawing continue. With VoiceOver, confirm the Quit control exposes its confirmation action.
-13. Tap Stop again, hold Quit, and confirm the UI enters Finishing without a blocking Computing dialog.
-14. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
-15. Confirm the recording report appears after the bounded single-recording cache write.
-16. Confirm the recording appears in History.
+13. Tap Stop.
+14. Confirm the Stop dialog offers Continue and a hold-to-quit action; choose Continue and confirm recording and drawing continue. With VoiceOver, confirm the Quit control exposes its confirmation action.
+15. Tap Stop again, hold Quit, and confirm the UI enters Finishing without a blocking Computing dialog.
+16. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
+17. Confirm the recording report appears after the bounded single-recording cache write.
+18. Confirm the recording appears in History.
 
 ## Startup And Large-History Performance Test
 
 1. Use a device database with many long recordings and a large explored-cell ledger.
 2. Cold-launch the app and confirm the native map appears before saved red exploration contours.
 3. Confirm startup does not freeze while route history is unopened and the Paths layer is off.
-4. Open History and confirm detailed route points load only then.
+4. Open History and confirm the list appears without loading every route; tap one recording and confirm only that recording's detailed GPS and route data loads.
 5. Close History, restart, enable Paths, and confirm detailed routes load on demand.
 6. Start a recording and confirm live distance, cells, and the complete route advance without progressively worsening input lag.
 7. Stop and confirm finalization time depends on the active recording, not the complete saved history.
 8. Run Reprocess recordings explicitly and confirm that is the only workflow that performs full-history route, street, contour, and loop rebuilding.
+9. Repeatedly open and close History and Completion with a large explored-cell ledger; confirm Back returns control to the map immediately while unfinished Completion scans are cancelled.
 
 ## Long Recording And Reconnect Test
 
@@ -109,6 +125,8 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 11. Pick a Street Explorer JSON backup.
 12. Confirm recordings reload after restore.
 13. Confirm an imported backup containing an unfinished active session is rejected instead of creating an invisible orphan.
+14. Repeat Backup immediately after stopping a recording too short to appear in History; confirm the hidden late-GPS recovery tombstone does not block the export and is not included in the file.
+15. Restore a V3 file and confirm frozen route snapshots remain available without reprocessing.
 
 ## Layer Controls Test
 
@@ -190,6 +208,19 @@ Notes:
 7. Confirm the app does not draw or fill a straight diagonal across the missing section.
 8. Pan away and return; confirm the frozen corridor does not move when the OSM cache changes.
 
+## Landmark Medal Test
+
+1. Open the map in Lyon with Markers enabled and confirm the 20 album landmarks appear as locked medal pins.
+2. Open Medals and confirm the Lyon count is shown out of 20, all six category filters work, and tapping any card focuses its exact anchor on the map.
+3. Walk a direct-GPS boundary of at least 80m that exactly closes around one landmark and stays below 100,000m2; Stop and confirm the new recording contributes to the closing boundary.
+4. Confirm the medal appears only when its anchor cell is strictly inside. Passing near the landmark, placing it on the boundary, leaving the contour open, or closing only through inferred street geometry must not award it.
+5. Confirm GPS segments with missing accuracy or accuracy above 30m do not contribute to medal proof even though ordinary exploration behavior remains unchanged.
+6. Confirm the metallic chime, success haptic, dark overlay, rotating medal, localized title, and Continue control appear. With Reduce Motion enabled, confirm the transform animation is suppressed while the award remains usable.
+7. Force-close while an award is presenting, reopen, enter through the launch screen, and confirm the pending award is presented again before being marked complete.
+8. Open Medals on an installation with qualifying saved walks and confirm no historical medal appears until Scan my walks is selected and the strict-GPS confirmation is accepted.
+9. Run the historical scan twice and confirm the unique collected count does not increase for an already collected medal.
+10. Export Backup V3, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
+11. Disable sound or haptics at the device level and confirm presentation still completes without trapping the UI.
 ## Loop Fill Test
 
 1. Record a closed loop of at least 80m.
