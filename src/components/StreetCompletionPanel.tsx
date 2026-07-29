@@ -35,7 +35,7 @@ export function StreetCompletionPanel({
           onPress={onLoadNearbyStreets}
           style={[styles.loadButton, !canLoad || isLoading ? styles.disabledButton : null]}
         >
-          <Ionicons name="cloud-download-outline" size={17} color="#ffffff" />
+          <Ionicons name="cloud-download-outline" size={17} color="#151006" />
           <Text style={styles.loadButtonText}>{isLoading ? "Loading" : "Load"}</Text>
         </TouchableOpacity>
       </View>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 10,
     marginTop: 10,
@@ -95,15 +95,15 @@ const styles = StyleSheet.create({
   },
   loadButton: {
     alignItems: "center",
-    backgroundColor: "#2563eb",
-    borderRadius: 8,
+    backgroundColor: "#f5c451",
+    borderRadius: 14,
     flexDirection: "row",
     gap: 5,
     minHeight: 36,
     paddingHorizontal: 10
   },
   loadButtonText: {
-    color: "#ffffff",
+    color: "#151006",
     fontSize: 12,
     fontWeight: "800"
   },

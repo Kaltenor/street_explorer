@@ -182,20 +182,24 @@ Walking exploration can contain multiple loop fills. Accepted loop-fill cells ar
 
 ## Landmark Medals
 
-Lyon album v1 is a frozen, bundled catalog of 20 reviewed landmarks. The catalog stores stable internal ids, localized names and descriptions, categories, OpenStreetMap identities, and reviewed capture anchors. SQLite seeds the definitions idempotently and stores immutable acquisition evidence separately from presentation state.
+Lyon album v1 is a frozen, bundled catalog of 20 reviewed landmarks. The UTF-8 catalog stores stable internal ids, Unicode-localized names and descriptions, categories, OpenStreetMap identities, and reviewed capture anchors. SQLite seeds the definitions idempotently and stores immutable acquisition evidence separately from presentation state. The collection view gives its horizontal category strip an explicit viewport and chip height so iOS cannot collapse or clip the labels. Each filtered result is split into permanent Unlocked and Locked sections in frozen catalogue order; only unlocked cards expose the full landmark description.
 
-Medal proof deliberately does not reuse the normal display or loop-fill ledger. The evaluator:
+The v0.6 presentation hierarchy uses the Medal screen navy/gold surfaces across app startup recovery, map HUD, walk controls, full-screen menus, summaries, and diagnostics. The map owns a persistent city-medal progress card and a single objective toggle. Layer switches remain in Options, maintenance moved out of everyday Details, Completion exposes four primary measures, and History keeps route-quality diagnostics collapsed behind Technical details. These are presentation-only boundaries: the underlying recording, layer, completion, and repair services are unchanged.
 
-- rebuilds only confirmed direct segments from canonical accepted `gps_points`;
-- requires both endpoints to have numeric accuracy at or below 30m;
-- excludes inferred route geometry, loop-fill cells, GPS points with missing accuracy, and the display layer's one-cell closure tolerance;
-- combines trusted direct coverage across recordings, while requiring the newly finalized recording to contribute to the boundary that changes the anchor from outside to strictly inside;
-- caps a qualifying enclosure at 100,000m2 and requires at least 80m of occupied grid boundary;
+Medal qualification deliberately shares the normal gameplay enclosure rules instead of maintaining a stricter parallel contour model. The evaluator:
+
+- rasterizes the accepted active route during recording and evaluates again from the finalized frozen route at Stop or recovery;
+- uses the same exact-contour-first, one-cell seam-tolerance fallback as normal loop fill;
+- accepts the same confirmed and validated inferred route geometry after finalization, without treating already stored `loop_fill` interior cells as boundary evidence;
+- requires at least 80m of walked distance, keeps the landmark anchor strictly inside rather than on the boundary, and uses the walking gameplay cap of 150,000m2;
+- evaluates a newly walked loop independently, so previously mapped or previously enclosed ground cannot block the award;
 - writes the evidence event and unique collected-medal row in one exclusive transaction.
 
-Startup resets an interrupted `presenting` state to `pending`, so every collected medal remains in the presentation queue until acknowledged. Presentation uses a bundled metallic chime, success haptic, reduced-motion-aware animation, and silent/haptic failure fallbacks.
+The active-walk evaluator runs whenever its accepted boundary grows, updates the marker and collection immediately, and queues presentation without waiting for Stop. Finalization and recovery repeat the idempotent evaluation as safety nets. A one-time `gameplay-v2` repair checks each previously finalized recording so walks missed by the v0.4 strict evaluator can be awarded after upgrading. Once earned, a medal remains durable even if its active recording is later discarded; the acquisition event keeps its evidence while its session foreign key becomes null.
 
-Historical collection is never automatic. The Medals screen offers an explicitly confirmed scan of saved walks and records completion per frozen album version. Backup V3 includes acquisition events, collected state, presentation state, and retro-scan settings. Older V1/V2 backups restore with an empty medal collection.
+Startup resets an interrupted `presenting` state to `pending`, so every collected medal remains in the presentation queue until acknowledged. Presentation uses a bundled metallic chime, success haptic, reduced-motion-aware 3D rotation, localized description, and silent/haptic failure fallbacks. Continue measures the on-map Medal tab, flies the medal into it, and briefly pulses the destination. The collection filters in frozen album order and renders the resulting earned and locked arrays as separately labeled sections.
+
+The Medals screen still offers an explicitly confirmed cumulative scan of saved walks for older coverage and records completion per frozen album version. The one-time v0.5 repair is narrower: it only restores awards that an individual saved recording should have earned under the live/Stop rules. Backup V3 includes acquisition events, collected state, presentation state, and retro-scan settings. Older V1/V2 backups restore with an empty medal collection.
 
 The developer-only POI candidate service queries an allowlisted set of OpenStreetMap tags inside fixed bounds and stores candidates as `unreviewed`. Network results never mutate the frozen shipped album or become collectible without review and a release change.
 ## Street Completion

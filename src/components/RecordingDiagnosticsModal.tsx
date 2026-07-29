@@ -34,7 +34,7 @@ export function RecordingDiagnosticsModal({
             <Text style={styles.subtitle}>GPS, steps, and background recording status</Text>
           </View>
           <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="close" size={22} color="#0f172a" />
+            <Ionicons name="close" size={22} color="#f8fafc" />
           </TouchableOpacity>
         </View>
         <ScrollView contentContainerStyle={styles.content}>
@@ -62,9 +62,9 @@ export function RecordingDiagnosticsModal({
 const styles = StyleSheet.create({
   closeButton: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
+    backgroundColor: "#0c151c",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    backgroundColor: "#f8fafc",
-    borderBottomColor: "#dbe3ea",
+    backgroundColor: "#071018",
+    borderBottomColor: "rgba(245, 196, 81, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -85,34 +85,34 @@ const styles = StyleSheet.create({
     paddingTop: 58
   },
   note: {
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
+    backgroundColor: "#0c151c",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
     padding: 12
   },
   noteText: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 13,
     lineHeight: 19
   },
   noteTitle: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "900"
   },
   screen: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#071018",
     flex: 1
   },
   subtitle: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 13,
     marginTop: 3
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 24,
     fontWeight: "900"
   }

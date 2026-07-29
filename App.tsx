@@ -74,7 +74,7 @@ export default function App() {
               </TouchableOpacity>
             </>
           ) : (
-            <ActivityIndicator size="large" color="#9cff00" />
+            <ActivityIndicator size="large" color="#f5c451" />
           )}
         </SafeAreaView>
       </SafeAreaProvider>
@@ -100,20 +100,20 @@ const styles = StyleSheet.create({
   },
   loadingScreen: {
     alignItems: "center",
-    backgroundColor: "#02060a",
+    backgroundColor: "#071018",
     flex: 1,
     justifyContent: "center",
     padding: 28
   },
   retryButton: {
-    backgroundColor: "#9cff00",
-    borderRadius: 10,
+    backgroundColor: "#f5c451",
+    borderRadius: 14,
     marginTop: 22,
     paddingHorizontal: 20,
     paddingVertical: 12
   },
   retryText: {
-    color: "#02060a",
+    color: "#151006",
     fontSize: 15,
     fontWeight: "900"
   },

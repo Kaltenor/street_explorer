@@ -47,10 +47,15 @@ export function MedalCollectionModal({
 }: MedalCollectionModalProps) {
   const [category, setCategory] = useState<CategoryFilter>("all");
   const text = getText(language);
-  const medals = useMemo(
-    () => progress?.medals.filter((medal) => category === "all" || medal.category === category) ?? [],
+  const filteredMedals = useMemo(
+    () =>
+      progress?.medals.filter(
+        (medal) => category === "all" || medal.category === category
+      ) ?? [],
     [category, progress]
   );
+  const collectedMedals = filteredMedals.filter((medal) => medal.isCollected);
+  const lockedMedals = filteredMedals.filter((medal) => !medal.isCollected);
 
   return (
     <Modal animationType="slide" onRequestClose={onClose} visible={visible}>
@@ -97,34 +102,20 @@ export function MedalCollectionModal({
         </ScrollView>
 
         <ScrollView contentContainerStyle={styles.medalGrid}>
-          {medals.map((medal) => (
-            <TouchableOpacity
-              accessibilityHint={text.mapHint}
-              accessibilityLabel={`${medal.name[language]}, ${medal.isCollected ? text.unlocked : text.locked}`}
-              accessibilityRole="button"
-              key={medal.id}
-              onPress={() => onFocusMedal(medal)}
-              style={[styles.card, medal.isCollected ? styles.cardCollected : styles.cardLocked]}
-            >
-              <View style={[styles.medal, medal.isCollected ? styles.medalCollected : null]}>
-                <Ionicons
-                  color={medal.isCollected ? "#fff7d6" : "#64748b"}
-                  name={medal.isCollected ? CATEGORY_ICONS[medal.category] : "lock-closed"}
-                  size={28}
-                />
-              </View>
-              <View style={styles.cardText}>
-                <Text style={[styles.medalName, !medal.isCollected ? styles.lockedText : null]}>
-                  {medal.name[language]}
-                </Text>
-                <Text numberOfLines={2} style={styles.description}>
-                  {medal.description[language]}
-                </Text>
-                <Text style={styles.category}>{text.categories[medal.category]}</Text>
-              </View>
-              <Ionicons color="#94a3b8" name="locate-outline" size={20} />
-            </TouchableOpacity>
-          ))}
+          <MedalSection
+            emptyLabel={text.noUnlocked}
+            language={language}
+            medals={collectedMedals}
+            onFocusMedal={onFocusMedal}
+            title={text.unlockedSection}
+          />
+          <MedalSection
+            emptyLabel={text.noLocked}
+            language={language}
+            medals={lockedMedals}
+            onFocusMedal={onFocusMedal}
+            title={text.lockedSection}
+          />
 
           <View style={styles.retroCard}>
             <Text style={styles.retroTitle}>{text.pastWalks}</Text>
@@ -152,6 +143,62 @@ export function MedalCollectionModal({
   );
 }
 
+function MedalSection({
+  emptyLabel,
+  language,
+  medals,
+  onFocusMedal,
+  title
+}: {
+  emptyLabel: string;
+  language: AppLanguage;
+  medals: CollectedMedal[];
+  onFocusMedal: (medal: CollectedMedal) => void;
+  title: string;
+}) {
+  const text = getText(language);
+
+  return (
+    <View style={styles.section}>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>{title}</Text>
+        <Text style={styles.sectionCount}>{medals.length}</Text>
+      </View>
+      {medals.length === 0 ? <Text style={styles.emptySection}>{emptyLabel}</Text> : null}
+      {medals.map((medal) => (
+        <TouchableOpacity
+          accessibilityHint={text.mapHint}
+          accessibilityLabel={medal.name[language] + ", " + (medal.isCollected ? text.unlocked : text.locked)}
+          accessibilityRole="button"
+          key={medal.id}
+          onPress={() => onFocusMedal(medal)}
+          style={[styles.card, medal.isCollected ? styles.cardCollected : styles.cardLocked]}
+        >
+          <View style={[styles.medal, medal.isCollected ? styles.medalCollected : null]}>
+            <Ionicons
+              color={medal.isCollected ? "#fff7d6" : "#64748b"}
+              name={medal.isCollected ? CATEGORY_ICONS[medal.category] : "lock-closed"}
+              size={28}
+            />
+          </View>
+          <View style={styles.cardText}>
+            <Text style={[styles.medalName, !medal.isCollected ? styles.lockedText : null]}>
+              {medal.name[language]}
+            </Text>
+            {medal.isCollected ? (
+              <Text numberOfLines={3} style={styles.description}>
+                {medal.description[language]}
+              </Text>
+            ) : null}
+            <Text style={styles.category}>{text.categories[medal.category]}</Text>
+          </View>
+          <Ionicons color="#94a3b8" name="locate-outline" size={20} />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+}
+
 function getText(language: AppLanguage) {
   if (language === "fr") {
     return {
@@ -160,7 +207,10 @@ function getText(language: AppLanguage) {
         culture: "Culture", history: "Histoire", nature: "Nature"
       } as Record<CategoryFilter, string>,
       close: "Fermer", collected: "collect\u00e9es", collection: "M\u00c9DAILLES DE LIEUX",
-      locked: "verrouill\u00e9e", mapHint: "Afficher ce lieu sur la carte", unlocked: "collect\u00e9e",
+      locked: "verrouill\u00e9e", lockedSection: "VERROUILL\u00c9ES", mapHint: "Afficher ce lieu sur la carte",
+      noLocked: "Toutes les m\u00e9dailles de cette cat\u00e9gorie sont collect\u00e9es.",
+      noUnlocked: "Aucune m\u00e9daille collect\u00e9e dans cette cat\u00e9gorie.",
+      unlocked: "collect\u00e9e", unlockedSection: "COLLECT\u00c9ES",
       pastWalks: "Parcours pr\u00e9c\u00e9dents", scan: "Analyser mes parcours",
       scanAgain: "Analyser \u00e0 nouveau", scanComplete: "Vos parcours pr\u00e9c\u00e9dents ont \u00e9t\u00e9 analys\u00e9s avec les m\u00eames r\u00e8gles GPS strictes.",
       scanDescription: "Optionnel : recherchez les m\u00e9dailles d\u00e9j\u00e0 encercl\u00e9es par vos parcours enregistr\u00e9s.",
@@ -173,7 +223,10 @@ function getText(language: AppLanguage) {
       culture: "Culture", history: "History", nature: "Nature"
     } as Record<CategoryFilter, string>,
     close: "Close", collected: "collected", collection: "LANDMARK MEDALS",
-    locked: "locked", mapHint: "Show this landmark on the map", unlocked: "collected",
+    locked: "locked", lockedSection: "LOCKED", mapHint: "Show this landmark on the map",
+    noLocked: "Every medal in this category is collected.",
+    noUnlocked: "No collected medals in this category yet.",
+    unlocked: "collected", unlockedSection: "UNLOCKED",
     pastWalks: "Past walks", scan: "Scan my walks", scanAgain: "Scan again",
     scanComplete: "Your past walks have been scanned with the same strict GPS rules.",
     scanDescription: "Optional: find medals already enclosed by your saved walks."
@@ -187,13 +240,38 @@ const styles = StyleSheet.create({
   title: { color: "#f8fafc", fontSize: 32, fontWeight: "900", marginTop: 2 },
   progress: { color: "#94a3b8", fontSize: 14, marginTop: 4 },
   closeButton: { alignItems: "center", backgroundColor: "#182630", borderRadius: 22, height: 44, justifyContent: "center", width: 44 },
-  filterScroller: { flexGrow: 0 },
-  filters: { gap: 8, paddingHorizontal: 20, paddingVertical: 8 },
-  filter: { backgroundColor: "#13212b", borderColor: "#2a3c49", borderRadius: 18, borderWidth: 1, paddingHorizontal: 14, paddingVertical: 8 },
+  filterScroller: { flexGrow: 0, height: 56 },
+  filters: { alignItems: "center", gap: 8, paddingHorizontal: 20, paddingVertical: 8 },
+  filter: {
+    alignItems: "center",
+    backgroundColor: "#13212b",
+    borderColor: "#2a3c49",
+    borderRadius: 20,
+    borderWidth: 1,
+    height: 40,
+    justifyContent: "center",
+    paddingHorizontal: 14
+  },
   filterActive: { backgroundColor: "#f5c451", borderColor: "#f5c451" },
-  filterText: { color: "#cbd5e1", fontSize: 13, fontWeight: "700" },
+  filterText: { color: "#cbd5e1", fontSize: 13, fontWeight: "700", lineHeight: 18 },
   filterTextActive: { color: "#151006" },
-  medalGrid: { gap: 12, padding: 20, paddingBottom: 48 },
+  medalGrid: { gap: 24, padding: 20, paddingBottom: 48 },
+  section: { gap: 10 },
+  sectionHeader: { alignItems: "center", flexDirection: "row", gap: 8 },
+  sectionTitle: { color: "#f5c451", fontSize: 11, fontWeight: "900", letterSpacing: 1.5 },
+  sectionCount: {
+    backgroundColor: "#182630",
+    borderRadius: 10,
+    color: "#cbd5e1",
+    fontSize: 11,
+    fontWeight: "900",
+    minWidth: 22,
+    overflow: "hidden",
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    textAlign: "center"
+  },
+  emptySection: { color: "#64748b", fontSize: 12, fontStyle: "italic", paddingVertical: 8 },
   card: { alignItems: "center", borderRadius: 18, borderWidth: 1, flexDirection: "row", gap: 14, padding: 14 },
   cardCollected: { backgroundColor: "#13232a", borderColor: "#46606a" },
   cardLocked: { backgroundColor: "#0c151c", borderColor: "#1c2a34", opacity: 0.74 },

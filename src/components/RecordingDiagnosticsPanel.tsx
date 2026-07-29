@@ -69,7 +69,7 @@ function PanelHeader({ status, title }: { status: string; title: string }) {
   return (
     <View style={styles.header}>
       <View style={styles.headerTitle}>
-        <Ionicons name="pulse-outline" size={17} color="#9cff00" />
+        <Ionicons name="pulse-outline" size={17} color="#f5c451" />
         <Text style={styles.title}>{title}</Text>
       </View>
       <Text style={styles.statusBadge}>{status}</Text>
@@ -123,15 +123,15 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 10,
     padding: 12
   },
   diagnostic: {
-    backgroundColor: "#16232e",
+    backgroundColor: "#182630",
     borderColor: "rgba(148, 163, 184, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexBasis: "31%",
     flexGrow: 1,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     marginTop: 2
   },
   statusBadge: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 11,
     fontWeight: "900"
   },

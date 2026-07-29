@@ -26,11 +26,7 @@ export function StatsPanel({ activityMode, language, stats }: StatsPanelProps) {
       <View style={styles.secondaryRow}>
         <Stat label={strings.stats.today} value={formatDistance(stats.todayDistanceMeters)} />
         <Stat label={strings.walkControls.stepsToday} value={formatNumber(stats.todayStepCount)} />
-        <Stat label={strings.stats.latest} value={formatDistance(stats.latestRecordingDistanceMeters)} />
-        <Stat label={strings.stats.longest} value={formatDistance(stats.longestRecordingDistanceMeters)} />
         <Stat label={strings.stats.cells} value={stats.exploredCellCount.toString()} />
-        <Stat label={strings.stats.new} value={stats.newCellsThisRecording.toString()} />
-        <Stat label={strings.stats.area} value={formatArea(stats.approximateExploredAreaSquareMeters)} />
       </View>
       <Text style={styles.caption}>
         {interpolate(strings.stats.recordingsToday, {
@@ -74,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 10,
     padding: 12

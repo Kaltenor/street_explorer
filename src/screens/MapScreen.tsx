@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type ComponentRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -17,10 +24,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import type { Region } from "react-native-maps";
 
-import { APP_VERSION } from "../constants/config";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
-import { MedalCelebration } from "../components/MedalCelebration";
+import {
+  MedalCelebration,
+  MedalFlightTarget
+} from "../components/MedalCelebration";
 import { MedalCollectionModal } from "../components/MedalCollectionModal";
 import { LaunchLoadingOverlay } from "../components/LaunchLoadingOverlay";
 import { MapLegend } from "../components/MapLegend";
@@ -94,7 +103,10 @@ import {
 } from "../services/backgroundLocationTask";
 import { collectExploredCellIdsByRouteSegments } from "../services/explorationArea";
 import {
+  evaluateLiveMedalCollection,
   evaluateMedalCollectionForRecording,
+  MEDAL_MIN_BOUNDARY_LENGTH_METERS,
+  repairMissedRecordingMedals,
   runMedalRetroScan
 } from "../services/medalEnclosure";
 import { analyzeLoopFillsForCells } from "../services/loopFill";
@@ -408,6 +420,8 @@ export function MapScreen({
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
   const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
   const [celebrationMedal, setCelebrationMedal] = useState<CollectedMedal | null>(null);
+  const [medalFlightTarget, setMedalFlightTarget] = useState<MedalFlightTarget | null>(null);
+  const [medalTabPulse, setMedalTabPulse] = useState(false);
   const [focusedMedal, setFocusedMedal] = useState<CollectedMedal | null>(null);
   const [medalFocusRequestId, setMedalFocusRequestId] = useState(0);
   const [medalRetroScanComplete, setMedalRetroScanComplete] = useState(false);
@@ -421,6 +435,7 @@ export function MapScreen({
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
+  const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
@@ -452,6 +467,12 @@ export function MapScreen({
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
   const activeSessionIdRef = useRef<number | null>(null);
   const activeWalkRef = useRef<ActiveWalk | null>(null);
+  const medalTabRef = useRef<ComponentRef<typeof TouchableOpacity>>(null);
+  const liveMedalEvaluationRef = useRef({
+    boundaryCellCount: -1,
+    inFlight: false,
+    sessionId: null as number | null
+  });
   const recordingLifecycleGenerationRef = useRef(0);
   const appStateTransitionGenerationRef = useRef(0);
   const autoObjectiveCheckCenterRef = useRef<GpsPoint | null>(null);
@@ -817,6 +838,26 @@ export function MapScreen({
   }, [refreshSavedData]);
 
   useEffect(() => {
+    let active = true;
+
+    void repairMissedRecordingMedals()
+      .then((result) => {
+        if (active && result.collected.length > 0) {
+          return refreshSavedData();
+        }
+
+        return undefined;
+      })
+      .catch((error) =>
+        console.warn("Failed to repair missed medal awards", error)
+      );
+
+    return () => {
+      active = false;
+    };
+  }, [refreshSavedData]);
+
+  useEffect(() => {
     const nextMedal = medalPresentationQueue[0];
 
     if (!isLaunchDismissed || celebrationMedal || !nextMedal) {
@@ -829,6 +870,93 @@ export function MapScreen({
       (error) => console.warn("Failed to start medal presentation", error)
     );
   }, [celebrationMedal, isLaunchDismissed, medalPresentationQueue]);
+
+  useEffect(() => {
+    if (!celebrationMedal) {
+      setMedalFlightTarget(null);
+      return;
+    }
+
+    const frameId = requestAnimationFrame(() => {
+      medalTabRef.current?.measureInWindow((x, y, width, height) => {
+        setMedalFlightTarget({
+          x: x + width / 2,
+          y: y + height / 2
+        });
+      });
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, [celebrationMedal]);
+
+  useEffect(() => {
+    if (!medalTabPulse) {
+      return;
+    }
+
+    const timerId = setTimeout(() => setMedalTabPulse(false), 900);
+    return () => clearTimeout(timerId);
+  }, [medalTabPulse]);
+
+  useEffect(() => {
+    const evaluation = liveMedalEvaluationRef.current;
+
+    if (!activeWalk) {
+      evaluation.boundaryCellCount = -1;
+      evaluation.inFlight = false;
+      evaluation.sessionId = null;
+      return;
+    }
+
+    if (evaluation.sessionId !== activeWalk.sessionId) {
+      evaluation.boundaryCellCount = -1;
+      evaluation.inFlight = false;
+      evaluation.sessionId = activeWalk.sessionId;
+    }
+
+    const boundaryCellCount = activeWalk.exploredCellIds.length;
+
+    if (
+      activeWalk.distanceMeters < MEDAL_MIN_BOUNDARY_LENGTH_METERS ||
+      boundaryCellCount < 4 ||
+      evaluation.boundaryCellCount === boundaryCellCount ||
+      evaluation.inFlight
+    ) {
+      return;
+    }
+
+    evaluation.boundaryCellCount = boundaryCellCount;
+    evaluation.inFlight = true;
+    const input = {
+      boundaryCellIds: [...activeWalk.exploredCellIds],
+      sessionId: activeWalk.sessionId,
+      walkedDistanceMeters: activeWalk.distanceMeters
+    };
+
+    void evaluateLiveMedalCollection(input)
+      .then(async (result) => {
+        if (result.collected.length === 0) {
+          return;
+        }
+
+        const [progress, pendingPresentations] = await Promise.all([
+          getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
+          getPendingMedalPresentations()
+        ]);
+        setMedalProgress(progress);
+        setMedalPresentationQueue(pendingPresentations);
+      })
+      .catch((error) =>
+        console.warn("Live medal evaluation failed", error)
+      )
+      .finally(() => {
+        evaluation.inFlight = false;
+      });
+  }, [
+    activeWalk?.distanceMeters,
+    activeWalk?.exploredCellIds.length,
+    activeWalk?.sessionId
+  ]);
 
   const handleCompleteMedalCelebration = useCallback(async () => {
     if (!celebrationMedal) {
@@ -846,6 +974,7 @@ export function MapScreen({
       console.warn("Failed to finish medal presentation", error);
     } finally {
       setCelebrationMedal(null);
+      setMedalTabPulse(true);
     }
   }, [celebrationMedal]);
 
@@ -855,8 +984,8 @@ export function MapScreen({
     Alert.alert(
       isFrench ? "Analyser les parcours pr\u00e9c\u00e9dents ?" : "Scan past walks?",
       isFrench
-        ? "Seuls les segments GPS directs avec une pr\u00e9cision connue de 30 m ou moins seront utilis\u00e9s."
-        : "Only direct GPS segments with known accuracy of 30 m or better will be used.",
+        ? "Les m\u00eames r\u00e8gles de fermeture de boucle que la carte seront utilis\u00e9es."
+        : "The same loop-closing rules as the exploration map will be used.",
       [
         { text: isFrench ? "Annuler" : "Cancel", style: "cancel" },
         {
@@ -2829,33 +2958,40 @@ export function MapScreen({
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
         <View style={styles.topPanel}>
           <View style={styles.headerRow}>
-            <View style={styles.headerText}>
-              <Image
-                resizeMode="contain"
-                source={require("../../assets/title.png")}
-                style={styles.logo}
-              />
-              <Text style={styles.version}>v{APP_VERSION}</Text>
-            </View>
+            <Image
+              resizeMode="contain"
+              source={require("../../assets/title.png")}
+              style={styles.logo}
+            />
           </View>
-          <View style={styles.objectiveRow}>
-            {objective ? (
-              <ObjectiveHud
-                objective={objective}
-                language={language}
-                stats={objectiveStats}
-                todayCellCount={todayObjectiveCellCount}
-                onClear={async () => {
-                  setObjective(null);
-                  setObjectiveStats(null);
-                  await saveCompletionObjective(null);
-                }}
-              />
-            ) : (
-              <View style={styles.objectiveSpacer} />
-            )}
-            <LayerControls layers={layers} onToggleLayer={toggleLayer} />
+          <View style={styles.mapHudRow}>
+            <CityMedalProgress
+              language={language}
+              onPress={() => setMedalsVisible(true)}
+              progress={medalProgress}
+            />
+            <ObjectiveToggleButton
+              hasObjective={Boolean(objective)}
+              language={language}
+              onPress={() => {
+                if (!objective) {
+                  setCompletionVisible(true);
+                  return;
+                }
+
+                setObjectiveHudVisible((visible) => !visible);
+              }}
+              visible={Boolean(objective && objectiveHudVisible)}
+            />
           </View>
+          {objective && objectiveHudVisible ? (
+            <ObjectiveHud
+              objective={objective}
+              language={language}
+              stats={objectiveStats}
+              todayCellCount={todayObjectiveCellCount}
+            />
+          ) : null}
         </View>
 
         {permissionState === "denied" ? (
@@ -2878,7 +3014,7 @@ export function MapScreen({
               <Ionicons
                 name="footsteps-outline"
                 size={19}
-                color={dashboardExpanded ? "#02060a" : "#f8fafc"}
+                color={dashboardExpanded ? "#151006" : "#f8fafc"}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -2901,9 +3037,17 @@ export function MapScreen({
               accessibilityLabel={language === "fr" ? "M\u00e9dailles" : "Medals"}
               accessibilityRole="button"
               onPress={() => setMedalsVisible(true)}
-              style={[styles.bottomTab, medalsVisible ? styles.activeBottomTab : null]}
+              ref={medalTabRef}
+              style={[
+                styles.bottomTab,
+                medalsVisible || medalTabPulse ? styles.activeBottomTab : null
+              ]}
             >
-              <Ionicons name="medal-outline" size={19} color={medalsVisible ? "#02060a" : "#f8fafc"} />
+              <Ionicons
+                name={medalTabPulse ? "medal" : "medal-outline"}
+                size={19}
+                color={medalsVisible || medalTabPulse ? "#151006" : "#f8fafc"}
+              />
             </TouchableOpacity>
             <View style={styles.bottomTabSpacer} />
             <TouchableOpacity
@@ -2915,7 +3059,7 @@ export function MapScreen({
               <Ionicons
                 name="options-outline"
                 size={19}
-                color={optionsVisible ? "#02060a" : "#f8fafc"}
+                color={optionsVisible ? "#151006" : "#f8fafc"}
               />
             </TouchableOpacity>
           </View>
@@ -2952,6 +3096,7 @@ export function MapScreen({
         onChangePathDisplayMode={setPathDisplayMode}
         onClose={() => setOptionsVisible(false)}
         onToggleLayer={toggleLayer}
+        onReprocessRecordings={handleReprocessRecordings}
         selectedSessionId={selectedSessionId}
         visible={optionsVisible}
       />
@@ -3024,6 +3169,7 @@ export function MapScreen({
         }}
         onSetObjective={(nextObjective) => {
           setObjective(nextObjective);
+          setObjectiveHudVisible(true);
           setSelectedZone(nextObjective.zone);
           saveCompletionObjective({
             mode: nextObjective.mode,
@@ -3048,6 +3194,7 @@ export function MapScreen({
         visible={medalsVisible}
       />
       <MedalCelebration
+        flightTarget={medalFlightTarget}
         language={language}
         medal={celebrationMedal}
         onComplete={handleCompleteMedalCelebration}
@@ -3133,14 +3280,12 @@ function ObjectiveHud({
   objective,
   language,
   stats,
-  todayCellCount,
-  onClear
+  todayCellCount
 }: {
   objective: CompletionObjective;
   language: AppLanguage;
   stats: ZoneCompletionStats | null;
   todayCellCount: number;
-  onClear: () => void;
 }) {
   const remainingCells = getObjectiveRemainingCells(stats);
   const objectiveProgress =
@@ -3150,82 +3295,100 @@ function ObjectiveHud({
 
   return (
     <View style={styles.objectiveHud}>
-      <View style={styles.objectiveText}>
-        <Text style={styles.objectiveLabel}>
-          {objective.zone.type === "district" ? "District objective" : `${objective.zone.type} objective`}
-        </Text>
-        <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
-        <View style={styles.objectiveMetricRow}>
-          <Text style={styles.objectivePercent}>{formatObjectiveCompletion(stats)}</Text>
-          <Text style={styles.objectiveMeta}>{formatObjectiveMode(objective.mode, language)}</Text>
+      <View style={styles.objectiveHeader}>
+        <View style={styles.objectiveTitleBlock}>
+          <Text style={styles.objectiveLabel}>
+            {objective.zone.type === "district"
+              ? language === "fr" ? "OBJECTIF DU QUARTIER" : "DISTRICT OBJECTIVE"
+              : language === "fr" ? "OBJECTIF ACTUEL" : "CURRENT OBJECTIVE"}
+          </Text>
+          <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
         </View>
+        <Text style={styles.objectivePercent}>{formatObjectiveCompletion(stats)}</Text>
+      </View>
+      <View style={styles.objectiveProgressTrack}>
+        <View style={[styles.objectiveProgressFill, { width: (objectiveProgress + "%") as DimensionValue }]} />
+      </View>
+      <View style={styles.objectiveFooter}>
         <Text style={styles.objectiveMeta}>
           {remainingCells === null
-            ? `${stats?.exploredCells ?? 0} cells explored`
-            : `${remainingCells} cells remaining`}
+            ? String(stats?.exploredCells ?? 0) + (language === "fr" ? " cellules explor\u00e9es" : " cells explored")
+            : String(remainingCells) + (language === "fr" ? " cellules restantes" : " cells remaining")}
         </Text>
-        <View style={styles.objectiveProgressTrack}>
-          <View style={[styles.objectiveProgressFill, { width: `${objectiveProgress}%` }]} />
-        </View>
-        <Text style={styles.objectiveToday}>+{todayCellCount} cells today</Text>
+        <Text style={styles.objectiveToday}>+{todayCellCount} {language === "fr" ? "aujourd’hui" : "today"}</Text>
       </View>
-      <TouchableOpacity accessibilityRole="button" onPress={onClear} style={styles.objectiveClear}>
-        <Ionicons name="close" size={17} color="#f8fafc" />
-      </TouchableOpacity>
     </View>
   );
 }
 
-function LayerControls({
-  layers,
-  onToggleLayer
+function CityMedalProgress({
+  language,
+  onPress,
+  progress
 }: {
-  layers: MapLayerState;
-  onToggleLayer: (layer: keyof MapLayerState) => void;
-}) {
-  return (
-    <View style={styles.layerControls}>
-      <LayerIconButton
-        active={layers.showPaths}
-        accessibilityLabel="Toggle paths"
-        icon="git-branch-outline"
-        onPress={() => onToggleLayer("showPaths")}
-      />
-      <LayerIconButton
-        active={layers.showExploredCells}
-        accessibilityLabel="Toggle explored cells"
-        icon="grid-outline"
-        onPress={() => onToggleLayer("showExploredCells")}
-      />
-      <LayerIconButton
-        active={layers.showMarkers}
-        accessibilityLabel="Toggle pins"
-        icon="flag-outline"
-        onPress={() => onToggleLayer("showMarkers")}
-      />
-    </View>
-  );
-}
-
-function LayerIconButton({
-  accessibilityLabel,
-  active,
-  icon,
-  onPress
-}: {
-  accessibilityLabel: string;
-  active: boolean;
-  icon: keyof typeof Ionicons.glyphMap;
+  language: AppLanguage;
   onPress: () => void;
+  progress: MedalAlbumProgress | null;
 }) {
+  const collected = progress?.collectedCount ?? 0;
+  const total = progress?.medals.length ?? 0;
+  const ratio = total > 0 ? Math.min(100, (collected / total) * 100) : 0;
+  const city = progress?.album.cityName[language] ?? "Lyon";
+
   return (
     <TouchableOpacity
-      accessibilityLabel={accessibilityLabel}
+      accessibilityLabel={language === "fr" ? "Progression des m\u00e9dailles de la ville" : "City medal progress"}
       accessibilityRole="button"
       onPress={onPress}
-      style={[styles.layerControlButton, active ? styles.activeLayerControlButton : null]}
+      style={styles.cityMedalHud}
     >
-      <Ionicons name={icon} size={14} color={active ? "#02060a" : "#f8fafc"} />
+      <View style={styles.cityMedalIcon}>
+        <Ionicons color="#151006" name="medal" size={18} />
+      </View>
+      <View style={styles.cityMedalContent}>
+        <View style={styles.cityMedalHeader}>
+          <Text numberOfLines={1} style={styles.cityMedalName}>{city}</Text>
+          <Text style={styles.cityMedalCount}>{collected}/{total}</Text>
+        </View>
+        <View style={styles.cityMedalTrack}>
+          <View style={[styles.cityMedalFill, { width: (ratio + "%") as DimensionValue }]} />
+        </View>
+      </View>
+      <Ionicons color="#94a3b8" name="chevron-forward" size={15} />
+    </TouchableOpacity>
+  );
+}
+
+function ObjectiveToggleButton({
+  hasObjective,
+  language,
+  onPress,
+  visible
+}: {
+  hasObjective: boolean;
+  language: AppLanguage;
+  onPress: () => void;
+  visible: boolean;
+}) {
+  const label = hasObjective
+    ? visible
+      ? language === "fr" ? "Masquer l’objectif du quartier" : "Hide district objective"
+      : language === "fr" ? "Afficher l’objectif du quartier" : "Show district objective"
+    : language === "fr" ? "Choisir un objectif de quartier" : "Choose a district objective";
+
+  return (
+    <TouchableOpacity
+      accessibilityLabel={label}
+      accessibilityRole="button"
+      accessibilityState={{ expanded: visible }}
+      onPress={onPress}
+      style={[styles.objectiveToggle, visible ? styles.objectiveToggleActive : null]}
+    >
+      <Ionicons
+        color={visible ? "#151006" : hasObjective ? "#f5c451" : "#94a3b8"}
+        name={visible ? "flag" : "flag-outline"}
+        size={20}
+      />
     </TouchableOpacity>
   );
 }
@@ -3279,7 +3442,7 @@ function ReprocessingModal({
     <Modal animationType="fade" transparent visible>
       <View style={styles.computingOverlay}>
         <View style={styles.computingDialog}>
-          <ActivityIndicator color="#9cff00" size="large" />
+          <ActivityIndicator color="#f5c451" size="large" />
           <Text style={styles.computingTitle}>
             {isFrench ? "Recalcul en cours" : "Reprocessing"}
           </Text>
@@ -3471,7 +3634,6 @@ function RecordingSummaryModal({
   }
 
   const isFrench = language === "fr";
-  const objectiveDelta = getObjectiveProgressDelta(summary.objectiveBefore, summary.objectiveAfter);
   const milestoneBadges = getRecordingMilestones(summary, language);
 
   return (
@@ -3494,17 +3656,11 @@ function RecordingSummaryModal({
 
           <View style={styles.summaryGrid}>
             <SummaryMetric label={isFrench ? "Distance" : "Distance"} value={formatDistance(summary.distanceMeters)} />
-            <SummaryMetric label={isFrench ? "Durée" : "Duration"} value={formatDuration(summary.durationSeconds)} />
+            <SummaryMetric label={isFrench ? "Dur\u00e9e" : "Duration"} value={formatDuration(summary.durationSeconds)} />
             <SummaryMetric label={isFrench ? "Pas" : "Steps"} value={summary.finalStepCount.toLocaleString()} />
-            <SummaryMetric label={isFrench ? "Qualité" : "Quality"} value={`${summary.quality.label} ${summary.quality.score}/100`} />
             <SummaryMetric label={isFrench ? "Nouvelles cellules" : "New cells"} value={String(summary.newCellCount)} />
-            <SummaryMetric label={isFrench ? "Boucles" : "Loops"} value={formatLoopResultShort(summary.loopResult, language)} />
           </View>
 
-          <View style={styles.summaryGrid}>
-            <SummaryMetric label={isFrench ? "Objectif" : "Objective"} value={formatObjectiveDelta(objectiveDelta, language)} />
-            <SummaryMetric label="GPS" value={formatGpsSummary(summary.gpsPausedEventCount, language)} />
-          </View>
           <View style={styles.summaryProgressPanel}>
             <Text style={styles.summaryNote}>
               {formatObjectiveProgressLine(summary.objectiveBefore, summary.objectiveAfter, language)}
@@ -3515,13 +3671,12 @@ function RecordingSummaryModal({
             <View style={styles.badgeRow}>
               {milestoneBadges.map((badge) => (
                 <View key={badge.label} style={[styles.badge, styles.unlockedBadge]}>
-                  <Ionicons name={badge.icon} size={15} color="#02060a" />
+                  <Ionicons name={badge.icon} size={15} color="#151006" />
                   <Text style={[styles.badgeText, styles.unlockedBadgeText]}>{badge.label}</Text>
                 </View>
               ))}
             </View>
           ) : null}
-          <Text style={styles.summaryNote}>{summary.quality.reason}</Text>
           <TextInput
             onChangeText={setDisplayName}
             placeholder={isFrench ? "Nom de l'enregistrement" : "Recording name"}
@@ -3539,7 +3694,7 @@ function RecordingSummaryModal({
               onPress={() => onSaveName(displayName)}
               style={styles.summaryPrimary}
             >
-              <Ionicons name="checkmark" size={18} color="#ffffff" />
+              <Ionicons name="checkmark" size={18} color="#151006" />
               <Text style={styles.summaryPrimaryText}>{isFrench ? "Enregistrer" : "Save"}</Text>
             </TouchableOpacity>
           </View>
@@ -3681,6 +3836,7 @@ function OptionsModal({
   onChangePathDisplayMode,
   onClose,
   onToggleLayer,
+  onReprocessRecordings,
   selectedSessionId,
   visible
 }: {
@@ -3691,6 +3847,7 @@ function OptionsModal({
   onChangePathDisplayMode: (mode: PathDisplayMode) => void;
   onClose: () => void;
   onToggleLayer: (layer: keyof MapLayerState) => void;
+  onReprocessRecordings: () => void;
   selectedSessionId: number | null;
   visible: boolean;
 }) {
@@ -3728,7 +3885,11 @@ function OptionsModal({
                     language === option.code ? styles.selectedPathDisplayButton : null
                   ]}
                 >
-                  <Ionicons name="language-outline" size={17} color="#f8fafc" />
+                  <Ionicons
+                    name="language-outline"
+                    size={17}
+                    color={language === option.code ? "#151006" : "#f8fafc"}
+                  />
                   <Text
                     style={[
                       styles.pathDisplayButtonText,
@@ -3773,7 +3934,19 @@ function OptionsModal({
             </View>
           </View>
 
-          <ModeProfilePanel activityMode="walk" language={language} />
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={onReprocessRecordings}
+            style={styles.maintenanceButton}
+          >
+            <Ionicons name="sync-outline" size={18} color="#f5c451" />
+            <View style={styles.maintenanceText}>
+              <Text style={styles.pathDisplayTitle}>{strings.details.reprocessRecordings}</Text>
+              <Text style={styles.optionHelpText}>
+                {language === "fr" ? "Outil de maintenance pour recalculer les anciens parcours." : "Maintenance tool for rebuilding older recordings."}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </Modal>
@@ -3797,7 +3970,7 @@ function OptionToggle({
       onPress={onPress}
       style={[styles.optionButton, active ? styles.selectedPathDisplayButton : null]}
     >
-      <Ionicons name={icon} size={17} color={active ? "#ffffff" : "#f8fafc"} />
+      <Ionicons name={icon} size={17} color={active ? "#151006" : "#f8fafc"} />
       <Text
         style={[
           styles.pathDisplayButtonText,
@@ -3882,31 +4055,6 @@ function DetailsModal({
           />
           <TouchableOpacity
             accessibilityRole="button"
-            onPress={onReprocessRecordings}
-            style={styles.dashboardToggle}
-          >
-            <Ionicons name="sync-outline" size={18} color="#f8fafc" />
-            <Text style={styles.dashboardToggleText}>{strings.details.reprocessRecordings}</Text>
-          </TouchableOpacity>
-          <MapLegend
-            language={language}
-            showExploredCells={layers.showExploredCells}
-            showPaths={layers.showPaths}
-          />
-          <RecordingDiagnosticsPanel
-            activeWalk={activeWalk}
-            backgroundMessage={backgroundMessage}
-            backgroundStatus={backgroundStatus}
-            currentLocation={currentLocation}
-            recordingQuality={recordingQuality}
-          />
-          <RecordingHealthPanel
-            activeWalk={activeWalk}
-            backgroundMessage={backgroundMessage}
-            backgroundStatus={backgroundStatus}
-          />
-          <TouchableOpacity
-            accessibilityRole="button"
             onPress={onOpenHistory}
             style={styles.dashboardToggle}
           >
@@ -3935,11 +4083,10 @@ function GameProgressPanel({
   const dailyCellGoal = 50;
   const weeklyDistanceGoalMeters = 10000;
   const objectivePercent = objectiveStats?.completionPercent ?? null;
-  const badges = getAchievementBadges(stats, objectiveStats, language);
 
   return (
     <View style={styles.gamePanel}>
-      <Text style={styles.gamePanelTitle}>{isFrench ? "Objectifs et badges" : "Goals and badges"}</Text>
+      <Text style={styles.gamePanelTitle}>{isFrench ? "Objectifs" : "Goals"}</Text>
       <View style={styles.goalList}>
         <GoalRow
           label={isFrench ? "Cellules aujourd'hui" : "Cells today"}
@@ -3956,23 +4103,6 @@ function GameProgressPanel({
           value={objectivePercent === null ? (isFrench ? "en attente" : "pending") : `${objectivePercent}%`}
           progress={objectivePercent === null ? 0 : objectivePercent / 100}
         />
-      </View>
-      <View style={styles.badgeRow}>
-        {badges.map((badge) => (
-          <View
-            key={badge.label}
-            style={[styles.badge, badge.unlocked ? styles.unlockedBadge : null]}
-          >
-            <Ionicons
-              name={badge.icon}
-              size={15}
-              color={badge.unlocked ? "#02060a" : "#94a3b8"}
-            />
-            <Text style={[styles.badgeText, badge.unlocked ? styles.unlockedBadgeText : null]}>
-              {badge.label}
-            </Text>
-          </View>
-        ))}
       </View>
     </View>
   );
@@ -4000,52 +4130,6 @@ function GoalRow({
       </View>
     </View>
   );
-}
-
-function getAchievementBadges(
-  stats: LifetimeStats,
-  objectiveStats: ZoneCompletionStats | null,
-  language: AppLanguage
-) {
-  const isFrench = language === "fr";
-
-  return [
-    {
-      icon: "footsteps-outline" as keyof typeof Ionicons.glyphMap,
-      label: isFrench ? "Première sortie" : "First recording",
-      unlocked: stats.walkCount > 0
-    },
-    {
-      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
-      label: "5 km",
-      unlocked: stats.totalDistanceMeters >= 5000
-    },
-    {
-      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
-      label: "10 km",
-      unlocked: stats.totalDistanceMeters >= 10000
-    },
-    {
-      icon: "map-outline" as keyof typeof Ionicons.glyphMap,
-      label: "25 km",
-      unlocked: stats.totalDistanceMeters >= 25000
-    },
-    {
-      icon: "grid-outline" as keyof typeof Ionicons.glyphMap,
-      label: isFrench ? "1000 cellules" : "1000 cells",
-      unlocked: stats.exploredCellCount >= 1000
-    },
-    {
-      icon: "flag-outline" as keyof typeof Ionicons.glyphMap,
-      label: isFrench ? "Quartier 5%" : "District 5%",
-      unlocked: (objectiveStats?.completionPercent ?? 0) >= 5
-    },
-    {
-      icon: "trophy-outline" as keyof typeof Ionicons.glyphMap,
-      label: isFrench ? "Record perso" : "Longest walk",
-      unlocked: stats.longestRecordingDistanceMeters > 0
-    }
-  ];
 }
 
 function PathDisplayControls({
@@ -4318,36 +4402,36 @@ const styles = StyleSheet.create({
     marginTop: "auto"
   },
   activeBottomTab: {
-    backgroundColor: "#9cff00",
-    borderColor: "#9cff00"
+    backgroundColor: "#f5c451"
   },
   bottomTab: {
     alignItems: "center",
-    backgroundColor: "rgba(2, 6, 10, 0.92)",
-    borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 38,
+    backgroundColor: "transparent",
+    borderRadius: 14,
+    height: 42,
     justifyContent: "center",
-    width: 38
+    width: 42
   },
   bottomTabs: {
     alignItems: "center",
+    alignSelf: "stretch",
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "rgba(245, 196, 81, 0.22)",
+    borderRadius: 20,
+    borderWidth: 1,
     flexDirection: "row",
-    gap: 7,
-    marginBottom: -1,
-    marginLeft: 10,
-    marginRight: 10,
+    gap: 3,
+    marginBottom: 8,
+    marginHorizontal: 4,
+    padding: 4,
     zIndex: 2
   },
-  bottomTabSpacer: {
-    flex: 1
-  },
+  bottomTabSpacer: { flex: 1 },
   computingDialog: {
     alignItems: "center",
     backgroundColor: "rgba(2, 6, 10, 0.94)",
-    borderColor: "rgba(156, 255, 0, 0.35)",
-    borderRadius: 8,
+    borderColor: "rgba(245, 196, 81, 0.35)",
+    borderRadius: 14,
     borderWidth: 1,
     gap: 10,
     marginHorizontal: 28,
@@ -4368,12 +4452,12 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   reprocessCounter: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 14,
     fontWeight: "900"
   },
   reprocessProgressFill: {
-    backgroundColor: "#9cff00",
+    backgroundColor: "#f5c451",
     borderRadius: 999,
     height: "100%"
   },
@@ -4394,7 +4478,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 6,
@@ -4411,7 +4495,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(15, 23, 42, 0.96)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
@@ -4423,7 +4507,7 @@ const styles = StyleSheet.create({
     paddingBottom: 28
   },
   detailsScreen: {
-    backgroundColor: "#071016",
+    backgroundColor: "#071018",
     flex: 1
   },
   disabledPathDisplayButton: {
@@ -4431,8 +4515,8 @@ const styles = StyleSheet.create({
   },
   fullScreenHeader: {
     alignItems: "center",
-    backgroundColor: "#02060a",
-    borderBottomColor: "rgba(156, 255, 0, 0.22)",
+    backgroundColor: "#071018",
+    borderBottomColor: "rgba(245, 196, 81, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
     gap: 12,
@@ -4451,9 +4535,9 @@ const styles = StyleSheet.create({
   },
   badge: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 5,
@@ -4473,7 +4557,7 @@ const styles = StyleSheet.create({
   gamePanel: {
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 12,
     padding: 12
@@ -4484,7 +4568,7 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   goalFill: {
-    backgroundColor: "#9cff00",
+    backgroundColor: "#f5c451",
     borderRadius: 999,
     height: "100%"
   },
@@ -4511,7 +4595,7 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   },
   goalValue: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 12,
     fontWeight: "900"
   },
@@ -4530,7 +4614,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
@@ -4544,14 +4628,14 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   activeLayerControlButton: {
-    backgroundColor: "#9cff00",
-    borderColor: "#9cff00"
+    backgroundColor: "#f5c451",
+    borderColor: "#f5c451"
   },
   layerControlButton: {
     alignItems: "center",
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 28,
     justifyContent: "center",
@@ -4566,11 +4650,22 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: 8
   },
+  maintenanceButton: {
+    alignItems: "center",
+    backgroundColor: "#0c151c",
+    borderColor: "rgba(245, 196, 81, 0.24)",
+    borderRadius: 16,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 12,
+    padding: 14
+  },
+  maintenanceText: { flex: 1, gap: 3 },
   modeButton: {
     alignItems: "center",
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 6,
@@ -4587,7 +4682,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
@@ -4598,7 +4693,7 @@ const styles = StyleSheet.create({
   optionPanel: {
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 8,
     padding: 10
@@ -4614,102 +4709,85 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: 8
   },
-  objectiveClear: {
+  cityMedalHud: {
     alignItems: "center",
-    backgroundColor: "rgba(15, 23, 42, 0.96)",
-    borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
-    borderWidth: 1,
-    height: 34,
-    justifyContent: "center",
-    width: 34
-  },
-  objectiveHud: {
-    alignItems: "center",
-    backgroundColor: "rgba(2, 6, 10, 0.88)",
-    borderColor: "rgba(156, 255, 0, 0.35)",
-    borderRadius: 8,
+    backgroundColor: "rgba(7, 16, 24, 0.95)",
+    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderRadius: 18,
     borderWidth: 1,
     flex: 1,
     flexDirection: "row",
     gap: 10,
-    minWidth: 260,
-    paddingHorizontal: 10,
+    minHeight: 52,
+    paddingHorizontal: 12,
     paddingVertical: 9
   },
-  objectiveLabel: {
-    color: "#9cff00",
-    fontSize: 10,
-    fontWeight: "900"
+  cityMedalIcon: {
+    alignItems: "center",
+    backgroundColor: "#f5c451",
+    borderRadius: 16,
+    height: 32,
+    justifyContent: "center",
+    width: 32
   },
-  objectiveMeta: {
-    color: "#cbd5e1",
-    fontSize: 11,
-    fontWeight: "700",
-    marginTop: 1
-  },
-  objectiveMetricRow: {
-    alignItems: "baseline",
-    flexDirection: "row",
-    gap: 7,
-    marginTop: 2
-  },
-  objectivePercent: {
-    color: "#f87171",
-    fontSize: 16,
-    fontWeight: "900"
-  },
-  objectiveToday: {
-    color: "#9cff00",
-    fontSize: 11,
-    fontWeight: "900",
-    marginTop: 2
-  },
-  objectiveName: {
-    color: "#f8fafc",
-    fontSize: 14,
-    fontWeight: "900",
-    maxWidth: 300
-  },
-  objectiveProgressFill: {
-    backgroundColor: "#9cff00",
+  cityMedalContent: { flex: 1, gap: 6 },
+  cityMedalHeader: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
+  cityMedalName: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "900" },
+  cityMedalCount: { color: "#f5c451", fontSize: 12, fontWeight: "900" },
+  cityMedalTrack: {
+    backgroundColor: "rgba(148, 163, 184, 0.22)",
     borderRadius: 999,
-    height: "100%"
+    height: 5,
+    overflow: "hidden"
   },
+  cityMedalFill: { backgroundColor: "#f5c451", borderRadius: 999, height: "100%" },
+  mapHudRow: { alignItems: "center", flexDirection: "row", gap: 8 },
+  objectiveToggle: {
+    alignItems: "center",
+    backgroundColor: "rgba(7, 16, 24, 0.95)",
+    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderRadius: 18,
+    borderWidth: 1,
+    height: 52,
+    justifyContent: "center",
+    width: 52
+  },
+  objectiveToggleActive: { backgroundColor: "#f5c451", borderColor: "#f5c451" },
+  objectiveHud: {
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "rgba(245, 196, 81, 0.34)",
+    borderRadius: 18,
+    borderWidth: 1,
+    gap: 9,
+    padding: 13
+  },
+  objectiveHeader: { alignItems: "center", flexDirection: "row", gap: 12 },
+  objectiveTitleBlock: { flex: 1 },
+  objectiveLabel: { color: "#f5c451", fontSize: 9, fontWeight: "900", letterSpacing: 1.2 },
+  objectiveName: { color: "#f8fafc", fontSize: 15, fontWeight: "900", marginTop: 2 },
+  objectivePercent: { color: "#f8fafc", fontSize: 20, fontWeight: "900" },
+  objectiveProgressFill: { backgroundColor: "#f5c451", borderRadius: 999, height: "100%" },
   objectiveProgressTrack: {
     backgroundColor: "rgba(148, 163, 184, 0.22)",
     borderRadius: 999,
     height: 6,
-    marginTop: 6,
     overflow: "hidden"
   },
-  objectiveText: {
-    flex: 1,
-    flexShrink: 1
-  },
-  objectiveRow: {
-    alignItems: "center",
-    flexDirection: "row",
-    gap: 10,
-    marginTop: 8
-  },
-  objectiveSpacer: {
-    flex: 1
-  },
+  objectiveFooter: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
+  objectiveMeta: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
+  objectiveToday: { color: "#f5c451", fontSize: 11, fontWeight: "900" },
   overlay: {
     flex: 1,
-    padding: 16
+    padding: 14
   },
   logo: {
-    height: 136,
-    marginBottom: -8,
-    marginTop: -8,
-    width: "100%"
+    height: 82,
+    width: "72%"
   },
   pathDisplayButton: {
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     paddingHorizontal: 9,
     paddingVertical: 7
@@ -4727,7 +4805,7 @@ const styles = StyleSheet.create({
   pathDisplayPanel: {
     backgroundColor: "rgba(2, 6, 10, 0.86)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 8,
     padding: 10
@@ -4740,7 +4818,7 @@ const styles = StyleSheet.create({
   permissionPanel: {
     backgroundColor: "rgba(69, 10, 10, 0.9)",
     borderColor: "rgba(252, 165, 165, 0.45)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginTop: 12,
     padding: 12
@@ -4757,18 +4835,18 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   screen: {
-    backgroundColor: "#e2e8f0",
+    backgroundColor: "#071018",
     flex: 1
   },
   selectedPathDisplayButton: {
-    backgroundColor: "#2563eb",
-    borderColor: "#2563eb"
+    backgroundColor: "#f5c451",
+    borderColor: "#f5c451"
   },
   selectedPathDisplayButtonText: {
-    color: "#ffffff"
+    color: "#151006"
   },
   subtitle: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 13,
     marginBottom: 10
   },
@@ -4784,9 +4862,9 @@ const styles = StyleSheet.create({
   },
   stopConfirmContinue: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flex: 1,
     justifyContent: "center",
@@ -4799,9 +4877,9 @@ const styles = StyleSheet.create({
   },
   stopConfirmDialog: {
     alignItems: "center",
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(252, 165, 165, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 13,
     marginHorizontal: 18,
@@ -4813,7 +4891,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(220, 38, 38, 0.18)",
     borderColor: "rgba(252, 165, 165, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 50,
     justifyContent: "center",
@@ -4829,7 +4907,7 @@ const styles = StyleSheet.create({
   stopConfirmQuit: {
     alignItems: "center",
     backgroundColor: "#dc2626",
-    borderRadius: 8,
+    borderRadius: 14,
     flex: 1,
     justifyContent: "center",
     minHeight: 46,
@@ -4881,18 +4959,18 @@ const styles = StyleSheet.create({
   },
   summaryClose: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 38,
     justifyContent: "center",
     width: 38
   },
   summaryDialog: {
-    backgroundColor: "#0b151d",
-    borderColor: "rgba(156, 255, 0, 0.26)",
-    borderRadius: 8,
+    backgroundColor: "#0c151c",
+    borderColor: "rgba(245, 196, 81, 0.26)",
+    borderRadius: 14,
     borderWidth: 1,
     gap: 13,
     padding: 14
@@ -4908,9 +4986,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   summaryInput: {
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     color: "#f8fafc",
     fontSize: 15,
@@ -4918,11 +4996,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   summaryMetric: {
-    backgroundColor: "#16232e",
+    backgroundColor: "#182630",
     borderColor: "rgba(148, 163, 184, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
-    flexBasis: "31%",
+    flexBasis: "47%",
     flexGrow: 1,
     padding: 9
   },
@@ -4944,17 +5022,17 @@ const styles = StyleSheet.create({
     lineHeight: 17
   },
   summaryProgressPanel: {
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
     padding: 10
   },
   summaryPrimary: {
     alignItems: "center",
-    backgroundColor: "#2563eb",
-    borderRadius: 8,
+    backgroundColor: "#f5c451",
+    borderRadius: 14,
     flex: 1,
     flexDirection: "row",
     gap: 6,
@@ -4962,15 +5040,15 @@ const styles = StyleSheet.create({
     minHeight: 42
   },
   summaryPrimaryText: {
-    color: "#ffffff",
+    color: "#151006",
     fontSize: 14,
     fontWeight: "800"
   },
   summarySecondary: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flex: 1,
     justifyContent: "center",
@@ -5003,10 +5081,10 @@ const styles = StyleSheet.create({
   }
   ,
   unlockedBadge: {
-    backgroundColor: "#9cff00",
-    borderColor: "#9cff00"
+    backgroundColor: "#f5c451",
+    borderColor: "#f5c451"
   },
   unlockedBadgeText: {
-    color: "#02060a"
+    color: "#151006"
   }
 });

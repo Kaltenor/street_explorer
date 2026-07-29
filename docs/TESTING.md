@@ -30,7 +30,18 @@ npm run test:medals
 npx expo install --check
 ```
 
-`test:medals` covers exact closure, trigger-boundary contribution, strict interior, no repeat transition, the 100,000m2 cap, rejection of missing GPS accuracy, and acceptance of short direct segments with trusted numeric accuracy.
+`test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+
+## Streamlined Interface Test
+
+1. Enter the map and confirm the smaller logo leaves the map readable, the Lyon medal card shows the current collected/total count and progress bar, and the bottom destinations share one rounded navigation surface.
+2. Tap the Lyon progress card and confirm Medals opens. In All and every category, confirm Unlocked and Locked headers remain visible with independent counts; unlocked cards appear first and show descriptions, while locked cards stay compact.
+3. Confirm only one side flag remains. Tap it to hide and show the district objective card; verify the saved objective remains selected in Completion. With no objective, tap the flag and confirm Completion opens so one can be selected.
+4. Open Options and confirm Paths, Explored Cells, and Pins remain independently configurable even though their three map shortcuts were removed. Confirm route-reprocessing maintenance is also available there.
+5. Open Details and confirm everyday statistics and goals appear without map legends or GPS diagnostics. Open History, choose a recording, and confirm route-quality reports remain hidden until Technical details is expanded.
+6. Confirm Completion shows four primary measures and omits fetched-source metadata and the V1 rules explanation from the default flow.
+7. With no active walk, confirm only today's steps and Start Walk are shown. During a walk, confirm distance, duration, steps, Stop, and the existing double-tap health details remain accessible.
+8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces and confirm the same navy/gold surfaces, rounded layout, readable contrast, and red-only destructive actions.
 
 ## Basic Recording Test
 
@@ -211,16 +222,19 @@ Notes:
 ## Landmark Medal Test
 
 1. Open the map in Lyon with Markers enabled and confirm the 20 album landmarks appear as locked medal pins.
-2. Open Medals and confirm the Lyon count is shown out of 20, all six category filters work, and tapping any card focuses its exact anchor on the map.
-3. Walk a direct-GPS boundary of at least 80m that exactly closes around one landmark and stays below 100,000m2; Stop and confirm the new recording contributes to the closing boundary.
-4. Confirm the medal appears only when its anchor cell is strictly inside. Passing near the landmark, placing it on the boundary, leaving the contour open, or closing only through inferred street geometry must not award it.
-5. Confirm GPS segments with missing accuracy or accuracy above 30m do not contribute to medal proof even though ordinary exploration behavior remains unchanged.
-6. Confirm the metallic chime, success haptic, dark overlay, rotating medal, localized title, and Continue control appear. With Reduce Motion enabled, confirm the transform animation is suppressed while the award remains usable.
-7. Force-close while an award is presenting, reopen, enter through the launch screen, and confirm the pending award is presented again before being marked complete.
-8. Open Medals on an installation with qualifying saved walks and confirm no historical medal appears until Scan my walks is selected and the strict-GPS confirmation is accepted.
-9. Run the historical scan twice and confirm the unique collected count does not increase for an already collected medal.
-10. Export Backup V3, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
-11. Disable sound or haptics at the device level and confirm presentation still completes without trapping the UI.
+2. Open Medals and confirm the Lyon count is shown out of 20, collected medals appear before locked medals in All and every category filter, French accents such as `Fourvière` render correctly, all six category chips are vertically centered and unclipped, every filter works, and tapping any card focuses its exact anchor on the map.
+3. Start a walk and trace at least 80m around a landmark, returning close enough for the normal one-cell gameplay seam tolerance. Keep the anchor strictly inside and the enclosed area below 150,000m2.
+4. Confirm the medal unlocks while the walk is still active as soon as the accepted boundary closes: the map marker changes from a lock to a medal and the collection card becomes unlocked without waiting for Stop.
+5. Confirm previously mapped red cells do not block the award. Repeat over an area visited before the medal feature and verify the new qualifying loop still unlocks it.
+6. Confirm passing near the marker, leaving it on the boundary, walking less than 80m, leaving a gap larger than the normal seam tolerance, or exceeding 150,000m2 does not award it.
+7. Confirm the metallic chime, success haptic, dark overlay, 3D rotating medal, localized title/description, and Continue control appear. Tap Continue and confirm the medal shrinks and flies into the measured Medal tab, which briefly pulses. With Reduce Motion enabled, confirm the initial reveal is static while the award remains usable.
+8. Stop immediately after closing a qualifying loop and confirm the idempotent Stop-time safety evaluation still unlocks it if live evaluation did not finish. Repeat through recovered-recording finalization.
+9. Unlock during an active walk, discard that walk, and confirm the medal remains earned and its acquisition event no longer depends on the deleted session.
+10. Upgrade an installation containing an individually qualifying walk missed by v0.4; confirm the one-time gameplay-v2 repair awards it and presents it without requiring the walk to be repeated.
+11. Open Medals on an installation with cumulative qualifying saved coverage and run Scan my walks; confirm it uses the same gameplay loop rules and the unique count does not increase when repeated.
+12. Force-close while an award is presenting, reopen, enter through the launch screen, and confirm the pending award is presented again before being marked complete.
+13. Export Backup V3, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
+14. Disable sound or haptics at the device level and confirm presentation still completes without trapping the UI.
 ## Loop Fill Test
 
 1. Record a closed loop of at least 80m.

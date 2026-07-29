@@ -4,7 +4,31 @@
 
 This document began as the pre-implementation audit and now also records the decisions implemented in v0.4.0. The original findings remain as design rationale.
 
-Post-implementation maintenance through v0.4.4 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones, and writes the shared JSON file asynchronously.
+Post-implementation maintenance through v0.6.0 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones, writes the shared JSON file asynchronously, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+
+## v0.6.0 collection-and-presentation amendment
+
+The collection now renders every filtered catalogue as permanent Unlocked and Locked sections rather than one sorted stream. Counts stay visible even when a section is empty, catalogue order is stable inside each section, unlocked cards show their full descriptions, and locked cards stay compact.
+
+The map exposes album progress through a persistent city card and replaces the three duplicate layer shortcuts with one flag that toggles the saved district-objective card. Layer switches remain available in Options. The navy/gold Medal visual language now governs all primary UI surfaces, while technical Completion and History information is hidden from the default path but remains reachable through maintenance or expandable diagnostic controls.
+
+## v0.5.1 collection-order amendment
+
+The collection UI filters the frozen catalogue first and then performs a stable collected-first sort. Earned medals therefore appear before locked medals in All and every category, while original catalogue order is retained inside both groups.
+
+## v0.5.0 gameplay-alignment amendment
+
+A physical field test around Institut Lumière exposed that the shipped v0.4 strict evaluator could reject a loop that the exploration map visibly accepted. The v0.5.0 product decision supersedes the original strict-proof recommendations below wherever they conflict:
+
+- medal enclosure uses the normal exact-contour-first, one-cell seam-tolerance loop algorithm;
+- the minimum walked distance remains 80m and the area cap now matches walking gameplay at 150,000m2;
+- accepted active GPS cells evaluate in real time, while finalized confirmed and validated inferred route cells are evaluated again at Stop/recovery;
+- a newly walked qualifying loop can award over previously mapped or previously enclosed ground, and the unique database key still prevents duplicates;
+- an award persists even if its active recording is discarded, with the acquisition event's session reference becoming null;
+- the reveal rotates in 3D, shows localized description copy, and flies into the measured Medal tab after Continue;
+- a one-time gameplay-v2 repair rechecks each saved recording missed by v0.4 without replacing the separate explicit cumulative historical scan.
+
+The original audit and v0.4.0 decision record remain below as historical rationale, not as the current runtime contract.
 
 - Audited working-tree version: `0.3.68` (`package.json:3`).
 - Synchronized declarations observed: `package-lock.json:3`, `package-lock.json:9`, `app.json:5`, iOS build `68` at `app.json:18`, and Android version code `68` at `app.json:34`.
@@ -1091,9 +1115,9 @@ Keep each commit internally valid; do not split a required migration from the re
 
 - **Exact current GPS architecture:** foreground and background fixes converge through a durable observation store and the same timestamp-ordered `evaluateGpsPoint()` pipeline; only canonical accepted `gps_points` become frozen confirmed/inferred route snapshots and source-separated exploration cells.
 - **Exact current loop architecture:** explicit full-history reprocessing unions confirmed and validated inferred cells across all recordings, finds exact grid holes plus a one-cell tolerant fallback, applies an area cap, stores interiors separately as `loop_fill`, and persists only a bounding rectangle as loop polygon metadata.
-- **How to determine whether a medal is surrounded:** rebuild a separate direct-only boundary from confirmed canonical GPS segments, use exact grid-contour enclosure without tolerance, require a new before/after closure, apply strict area/length guards, and require the reviewed target to be strictly inside.
-- **Several recordings:** safe and recommended under policy B when only canonical confirmed direct GPS is combined and the triggering recording causes the closure.
+- **How to determine whether a medal is surrounded now:** apply the normal gameplay enclosure analyzer to the current accepted boundary in real time and the frozen accepted route at Stop/recovery, including the normal one-cell seam tolerance; require 80m, a strict-interior anchor, and the 150,000m2 walking cap.
+- **Several recordings:** normal live/Stop awards evaluate the new recording independently so old mapped ground cannot block it; the explicit historical scan may combine accepted frozen boundaries across recordings.
 - **Historical awards:** do not award silently. Offer an explicit one-time policy-D scan per frozen album version, label results retroactive, and then use normal B behavior.
 - **Wheel/Car residue:** no active Wheel/Car concepts remain, but generic mode types, columns, settings, filters, UI wording, backup fields, migration behavior, tests, and historical docs remain.
 - **Legacy compatibility:** retain legacy columns/fields/records; normalize operational behavior to walking; preserve imported original mode as hidden provenance in Backup V3; decide explicitly whether unknown legacy provenance is medal-eligible.
-- **v0.4.0 decisions implemented:** cumulative trigger policy B, explicit retro-scan policy D, exact strict interior, 100,000m2 cap, known accuracy only, SDK-compatible audio/haptics, frozen album versioning, review-only candidate tooling, and the final 20-item Lyon roster.
+- **v0.4.0 decisions implemented historically:** cumulative trigger policy B, explicit retro-scan policy D, exact strict interior, 100,000m2 cap, known accuracy only, SDK-compatible audio/haptics, frozen album versioning, review-only candidate tooling, and the final 20-item Lyon roster. **v0.5.0 supersedes the acquisition geometry and timing portions** with gameplay-equivalent closure, real-time durable awards, Stop/recovery safety evaluation, missed-award repair, and the 3D flight-to-tab presentation.

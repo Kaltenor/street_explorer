@@ -36,15 +36,16 @@
 - Recording quality summary after stopping a recording.
 - Device step counting for walks.
 - Full-screen Details, History, and Completion views.
-- Branded `loading-screen2.png` splash/loading presentation and transparent `title.png` map logo HUD.
+- Updated 1320x2868 portrait `loading-screen2.png` shared by the native splash and in-app launch presentation, plus the transparent `title.png` map logo HUD.
 - Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.
 - Consolidated historical street-corridor repair, per-recording graph reuse, atomic exploration replacement, and calculation recovery.
 - Preloaded launch screen with an explicit, discreet ready-state entry control.
 - Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player marker, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
-- Landmark medal collection V1 with a frozen 20-item Lyon album, strict direct-GPS enclosure proof, map pins, collection UI, explicit historical scan, presentation recovery, Backup V3, and allowlisted OpenStreetMap review tooling.
+- Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V3, and allowlisted OpenStreetMap review tooling.
 - Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V3 sharing.
+- App-wide streamlined navy/gold presentation with a smaller map header, pill navigation, one objective toggle, layer controls centralized in Options, compact idle recording controls, four-metric Completion, and collapsed technical diagnostics.
 
 ## Next Priority
 

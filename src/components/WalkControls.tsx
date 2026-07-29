@@ -79,9 +79,19 @@ export function WalkControls({
   return (
     <View onTouchEnd={handlePanelTouchEnd} style={styles.container}>
       <View style={styles.metrics}>
-        <Metric label={strings.common.distance} value={formatDistance(distanceMeters)} />
-        <Metric label={strings.common.duration} value={formatDuration(durationSeconds)} />
-        <Metric label={strings.walkControls.stepsToday} value={formatSteps(todayStepCount)} />
+        {isRecording ? (
+          <>
+            <Metric label={strings.common.distance} value={formatDistance(distanceMeters)} />
+            <Metric label={strings.common.duration} value={formatDuration(durationSeconds)} />
+            <Metric label={strings.common.steps} value={formatSteps(stepCount)} />
+          </>
+        ) : (
+          <View style={styles.idleSummary}>
+            <Ionicons color="#f5c451" name="footsteps-outline" size={17} />
+            <Text style={styles.idleSummaryValue}>{formatSteps(todayStepCount)}</Text>
+            <Text style={styles.idleSummaryLabel}>{strings.walkControls.stepsToday}</Text>
+          </View>
+        )}
       </View>
 
       {isRecording && healthExpanded ? (
@@ -151,15 +161,15 @@ export function WalkControls({
         ]}
       >
         {isStarting || isFinalizing ? (
-          <ActivityIndicator color="#ffffff" size="small" />
+          <ActivityIndicator color={isRecording ? "#ffffff" : "#151006"} size="small" />
         ) : (
           <Ionicons
             name={isRecording ? "stop-circle" : "play-circle"}
-            color="#ffffff"
+            color={isRecording ? "#ffffff" : "#151006"}
             size={19}
           />
         )}
-        <Text style={styles.buttonText}>
+        <Text style={[styles.buttonText, !isRecording ? styles.startButtonText : null]}>
           {isFinalizing
             ? language === "fr" ? "Finalisation..." : "Finishing..."
             : isStarting
@@ -271,11 +281,11 @@ function getQualityStyle(label: RecordingQuality["label"]) {
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 14,
     flexDirection: "row",
-    gap: 6,
+    gap: 8,
     justifyContent: "center",
-    minHeight: 40
+    minHeight: 48
   },
   buttonText: {
     color: "#ffffff",
@@ -283,17 +293,17 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   container: {
-    backgroundColor: "rgba(2, 6, 10, 0.9)",
-    borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "rgba(245, 196, 81, 0.28)",
+    borderRadius: 20,
     borderWidth: 1,
-    gap: 8,
-    padding: 8
+    gap: 10,
+    padding: 10
   },
   details: {
-    backgroundColor: "rgba(15, 23, 42, 0.92)",
+    backgroundColor: "rgba(19, 33, 43, 0.92)",
     borderColor: "rgba(248, 250, 252, 0.14)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     flexWrap: "wrap",
@@ -326,9 +336,9 @@ const styles = StyleSheet.create({
     gap: 8
   },
   healthStrip: {
-    backgroundColor: "rgba(15, 23, 42, 0.92)",
+    backgroundColor: "rgba(19, 33, 43, 0.92)",
     borderColor: "rgba(248, 250, 252, 0.14)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 8,
     padding: 10
@@ -364,6 +374,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8
   },
+  idleSummary: { alignItems: "center", flexDirection: "row", gap: 7, minHeight: 24 },
+  idleSummaryValue: { color: "#f8fafc", fontSize: 15, fontWeight: "900" },
+  idleSummaryLabel: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
   miniHealth: {
     flex: 1
   },
@@ -404,16 +417,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   readinessPanel: {
-    backgroundColor: "rgba(15, 23, 42, 0.72)",
+    backgroundColor: "rgba(19, 33, 43, 0.72)",
     borderColor: "rgba(248, 250, 252, 0.12)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 10,
     padding: 10
   },
+  startButtonText: { color: "#151006" },
   startButton: {
-    backgroundColor: "#2563eb"
+    backgroundColor: "#f5c451"
   },
   stopButton: {
     backgroundColor: "#dc2626"

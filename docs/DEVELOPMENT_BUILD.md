@@ -12,6 +12,7 @@ Street Explorer needs a development build to test:
 - recovery after background recording
 - native modules such as `expo-task-manager` and `expo-dev-client`
 - medal feedback through `expo-audio` and `expo-haptics`
+- the configured portrait `assets/loading-screen2.png` splash asset
 
 Whenever a native dependency is added or changed, rebuild and reinstall the development build. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Street Explorer treats unavailable medal sound and haptics as optional so an older binary can still start safely.
 
@@ -87,6 +88,9 @@ npx eas-cli build --platform ios --profile development-simulator
 14. Force-close once more just after finalization, including with a delayed background event, and confirm relaunch merges the owner-bound or uniquely timestamp-matched journaled tail and repairs route/exploration caches without changing an imported frozen route that has no new GPS source.
 15. Stop a very short recording near a delayed native callback and confirm a late second point within five minutes can safely promote the hidden recording instead of being lost.
 16. While recording, try Backup and confirm it is blocked; after Stop, confirm export succeeds even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup.
+17. Confirm the updated portrait splash appears before the launch overlay, then open Medals and verify localized names retain French accents and the horizontal category chips remain fully visible and vertically centered.
+18. During an active 80m+ loop around a landmark, confirm the medal unlocks in real time; after Continue, verify the 3D medal flies to the measured Medal tab and its marker/card remain unlocked. Open the collection and confirm permanent Unlocked and Locked sections appear in All and in the relevant category.
+19. Confirm the map shows the compact Lyon medal progress card and only one side flag. Tap the progress card to open Medals; tap the flag twice to show and hide the current district objective without clearing it. Verify layers remain configurable in Options and technical recording data remains available through History > Diagnostics or a recording's Technical details.
 
 ## Expected Limitation
 

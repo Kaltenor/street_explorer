@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     backgroundColor: "rgba(11, 21, 29, 0.96)",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     flexWrap: "wrap",

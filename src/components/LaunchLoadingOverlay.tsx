@@ -46,7 +46,7 @@ export function LaunchLoadingOverlay({
             </TouchableOpacity>
           ) : (
             <View style={styles.loadingRow}>
-              <ActivityIndicator color="#9cff00" size="small" />
+              <ActivityIndicator color="#f5c451" size="small" />
               <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
             </View>
           )}
@@ -59,13 +59,13 @@ export function LaunchLoadingOverlay({
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "#02060a",
+    backgroundColor: "#071018",
     flex: 1,
     justifyContent: "flex-end"
   },
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "#02060a",
+    backgroundColor: "#071018",
     zIndex: 50
   },
   footer: {

@@ -39,7 +39,7 @@ export function RecordingRecoveryModal({
       <View style={styles.backdrop}>
         <View style={styles.card}>
           <View style={styles.iconWrap}>
-            <Ionicons name="alert-circle-outline" size={28} color="#1d4ed8" />
+            <Ionicons name="alert-circle-outline" size={28} color="#f5c451" />
           </View>
 
           <Text style={styles.title}>Unfinished recording</Text>
@@ -62,11 +62,11 @@ export function RecordingRecoveryModal({
 
           <View style={styles.actions}>
             <TouchableOpacity accessibilityRole="button" onPress={onResume} style={styles.primary}>
-              <Ionicons name="play-circle" size={19} color="#ffffff" />
+              <Ionicons name="play-circle" size={19} color="#151006" />
               <Text style={styles.primaryText}>Resume</Text>
             </TouchableOpacity>
             <TouchableOpacity accessibilityRole="button" onPress={onFinish} style={styles.secondary}>
-              <Ionicons name="checkmark-circle-outline" size={19} color="#0f172a" />
+              <Ionicons name="checkmark-circle-outline" size={19} color="#f8fafc" />
               <Text style={styles.secondaryText}>Finish & Save</Text>
             </TouchableOpacity>
             <TouchableOpacity accessibilityRole="button" onPress={onDiscard} style={styles.danger}>
@@ -106,14 +106,14 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     alignItems: "center",
-    backgroundColor: "rgba(15, 23, 42, 0.35)",
+    backgroundColor: "rgba(2, 6, 10, 0.78)",
     flex: 1,
     justifyContent: "center",
     padding: 18
   },
   card: {
-    backgroundColor: "#ffffff",
-    borderRadius: 8,
+    backgroundColor: "#0c151c",
+    borderRadius: 14,
     gap: 13,
     maxWidth: 440,
     padding: 18,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   danger: {
     alignItems: "center",
     borderColor: "#fecaca",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
@@ -136,53 +136,54 @@ const styles = StyleSheet.create({
   },
   iconWrap: {
     alignItems: "center",
-    backgroundColor: "#dbeafe",
-    borderRadius: 8,
+    backgroundColor: "rgba(245, 196, 81, 0.16)",
+    borderRadius: 14,
     height: 46,
     justifyContent: "center",
     width: 46
   },
   lastPoint: {
-    backgroundColor: "#f8fafc",
-    borderColor: "#e2e8f0",
-    borderRadius: 8,
+    backgroundColor: "#13212b",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     padding: 10
   },
   lastPointLabel: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     fontWeight: "700"
   },
   lastPointValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "800",
     marginTop: 3
   },
   message: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 14,
     lineHeight: 20
   },
   primary: {
     alignItems: "center",
-    backgroundColor: "#2563eb",
-    borderRadius: 8,
+    backgroundColor: "#f5c451",
+    borderRadius: 14,
     flexDirection: "row",
     gap: 7,
     justifyContent: "center",
     minHeight: 46
   },
   primaryText: {
-    color: "#ffffff",
+    color: "#151006",
     fontSize: 15,
     fontWeight: "800"
   },
   secondary: {
     alignItems: "center",
-    borderColor: "#cbd5e1",
-    borderRadius: 8,
+    backgroundColor: "#13212b",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     minHeight: 44
   },
   secondaryText: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 14,
     fontWeight: "800"
   },
@@ -200,24 +201,24 @@ const styles = StyleSheet.create({
     gap: 10
   },
   summaryItem: {
-    backgroundColor: "#f8fafc",
-    borderRadius: 8,
+    backgroundColor: "#13212b",
+    borderRadius: 14,
     flexBasis: "47%",
     flexGrow: 1,
     padding: 10
   },
   summaryLabel: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     marginTop: 2
   },
   summaryValue: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 17,
     fontWeight: "900"
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 22,
     fontWeight: "900"
   }

@@ -34,13 +34,14 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Completion screen with scope and zone selectors.
 - OSM boundary loading and cached Country / City / District completion zones.
 - Zone-specific completion stats and map focus.
-- Objective HUD with selected zone, completion percentage, remaining cells, and today's added cells.
-- Branded `loading-screen2.png` splash/loading presentation and transparent `title.png` map logo overlay.
+- A compact objective HUD with selected zone, completion percentage, remaining cells, and today's added cells, toggled by one map-side flag without clearing the saved objective.
+- Updated 1320x2868 portrait `loading-screen2.png` shared by the native splash and in-app launch presentation, plus the transparent `title.png` map logo overlay.
 - Frozen Lyon v1 landmark album with 20 reviewed OpenStreetMap identities and anchors.
-- Direct-GPS enclosure medals with strict interior checks, known accuracy at or below 30m, cumulative recording coverage, a 100,000m2 cap, and no inferred-route or proximity awards.
-- Medal pins on the map and a full-screen, category-filtered collection with collected counts and landmark focus.
-- Recoverable medal presentation with a metallic chime, haptic success cue, reduced-motion support, and an acknowledged queue.
+- Real-time enclosure medals using the normal gameplay loop rules: 80m minimum distance, one-cell seam tolerance, accepted finalized route geometry, strict interior anchors, and a 150,000m2 cap.
+- Medal pins, a persistent city medal-progress card on the map, and a full-screen category-filtered collection with permanent Unlocked/Locked sections, Unicode-safe localized landmark copy, unclipped chips, richer earned descriptions, and landmark focus.
+- Recoverable medal presentation with a metallic chime, haptic success cue, reduced-motion support, a 3D reveal, localized description, Continue-triggered flight into the Medal tab, and an acknowledged queue.
 - Explicit opt-in scanning for qualifying historical walks; new albums never award silently.
+- A streamlined navy/gold presentation system across map HUD, walk controls, full-screen menus, summaries, recovery, and diagnostics; duplicate layer shortcuts and default technical density are removed while advanced tools remain in Options or expandable details.
 - Backup V3 preserves frozen route snapshots, medal evidence, collection state, presentation state, and historical-scan state.
 
 ## Current Limitations

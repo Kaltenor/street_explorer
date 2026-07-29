@@ -233,6 +233,7 @@ function RecordingDetail({
   const report = buildRecordingReport(walk, walkWithPoints, loopFillSummary);
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
+  const [technicalVisible, setTechnicalVisible] = useState(false);
 
   return (
     <ScrollView contentContainerStyle={styles.detailScreen}>
@@ -251,64 +252,80 @@ function RecordingDetail({
           <Summary label={strings.common.distance} value={formatDistance(walk.distanceMeters)} />
           <Summary label={strings.common.duration} value={formatDuration(walk.durationSeconds)} />
           <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
-          <Summary label={strings.history.gpsPoints} value={(walk.pointCount ?? 0).toString()} />
           <Summary label={strings.history.loops} value={formatLoopCount(loopFillSummary)} />
-          <Summary label={strings.history.loopCells} value={String(loopFillSummary?.loopFilledCellCount ?? 0)} />
-          <Summary label={strings.common.mode} value={modeText.labels[walk.activityMode]} />
         </View>
 
         <View style={styles.details}>
           <Detail label={strings.history.started} value={formatFullDate(walk.startedAt)} />
           <Detail label={strings.history.ended} value={formatFullDate(walk.endedAt)} />
-          <Detail label={strings.history.loopResult} value={formatLoopSummary(loopFillSummary)} />
-          <Detail label={strings.history.loopExplanation} value={formatLoopExplanation(loopFillSummary)} />
         </View>
 
-        <View style={styles.reportCard}>
-          <View style={styles.reportHeader}>
-            <Ionicons name="clipboard-outline" size={16} color="#9cff00" />
-            <Text style={styles.reportTitle}>{strings.history.recordingReport}</Text>
-          </View>
-          <View style={styles.summaryGrid}>
-            <Summary label={strings.history.gpsAccepted} value={report.gpsAccepted} />
-            <Summary label={strings.history.gpsRejected} value={report.gpsRejected} />
-            <Summary label={strings.history.hiddenGaps} value={report.hiddenGaps} />
-            <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
-            <Summary
-              label={strings.history.routeGeometry}
-              value={
-                walkWithPoints?.routeSegments != null
-                  ? strings.history.frozenRoute
-                  : strings.history.legacyRoute
-              }
-            />
-            <Summary
-              label={strings.history.inferredSections}
-              value={String(
-                walkWithPoints?.routeSegments?.filter(
-                  (segment) => segment.type === "inferred"
-                ).length ?? 0
-              )}
-            />
-            <Summary label={strings.history.loopFill} value={report.loopFillResult} />
-            <Summary label={strings.history.quality} value={report.qualityScore} />
-          </View>
-          <Text style={styles.reportNote}>{report.qualityReason}</Text>
-        </View>
+        <TouchableOpacity
+          accessibilityRole="button"
+          onPress={() => setTechnicalVisible((visible) => !visible)}
+          style={styles.technicalToggle}
+        >
+          <Ionicons color="#f5c451" name="settings-outline" size={17} />
+          <Text style={styles.technicalToggleText}>
+            {language === "fr" ? "D\u00e9tails techniques" : "Technical details"}
+          </Text>
+          <Ionicons
+            color="#94a3b8"
+            name={technicalVisible ? "chevron-up" : "chevron-down"}
+            size={17}
+          />
+        </TouchableOpacity>
 
-        <View style={styles.reportCard}>
-          <View style={styles.reportHeader}>
-            <Ionicons name="git-network-outline" size={16} color="#9cff00" />
-            <Text style={styles.reportTitle}>{strings.history.loopFillDebug}</Text>
-          </View>
-          <View style={styles.details}>
-            <Detail label={strings.stats.cells} value={report.cellsWalked} />
-            <Detail label={strings.history.loops} value={report.loopsFilled} />
-            <Detail label={strings.history.loopResult} value={report.loopsRejected} />
-            <Detail label={strings.history.reason} value={report.loopReason} />
-            <Detail label={strings.stats.area} value={report.areaSize} />
-          </View>
-        </View>
+        {technicalVisible ? (
+          <>
+            <View style={styles.reportCard}>
+              <View style={styles.reportHeader}>
+                <Ionicons name="clipboard-outline" size={16} color="#f5c451" />
+                <Text style={styles.reportTitle}>{strings.history.recordingReport}</Text>
+              </View>
+              <View style={styles.summaryGrid}>
+                <Summary label={strings.history.gpsAccepted} value={report.gpsAccepted} />
+                <Summary label={strings.history.gpsRejected} value={report.gpsRejected} />
+                <Summary label={strings.history.hiddenGaps} value={report.hiddenGaps} />
+                <Summary label={strings.common.steps} value={formatSteps(walk.stepCount)} />
+                <Summary
+                  label={strings.history.routeGeometry}
+                  value={
+                    walkWithPoints?.routeSegments != null
+                      ? strings.history.frozenRoute
+                      : strings.history.legacyRoute
+                  }
+                />
+                <Summary
+                  label={strings.history.inferredSections}
+                  value={String(
+                    walkWithPoints?.routeSegments?.filter(
+                      (segment) => segment.type === "inferred"
+                    ).length ?? 0
+                  )}
+                />
+                <Summary label={strings.history.loopFill} value={report.loopFillResult} />
+                <Summary label={strings.history.quality} value={report.qualityScore} />
+              </View>
+              <Text style={styles.reportNote}>{report.qualityReason}</Text>
+            </View>
+
+            <View style={styles.reportCard}>
+              <View style={styles.reportHeader}>
+                <Ionicons name="git-network-outline" size={16} color="#f5c451" />
+                <Text style={styles.reportTitle}>{strings.history.loopFillDebug}</Text>
+              </View>
+              <View style={styles.details}>
+                <Detail label={strings.stats.cells} value={report.cellsWalked} />
+                <Detail label={strings.history.loops} value={report.loopsFilled} />
+                <Detail label={strings.history.loopResult} value={report.loopsRejected} />
+                <Detail label={strings.history.reason} value={report.loopReason} />
+                <Detail label={strings.stats.area} value={report.areaSize} />
+              </View>
+            </View>
+
+              </>
+        ) : null}
 
         <TextInput
           placeholder={strings.history.recordingName}
@@ -324,7 +341,7 @@ function RecordingDetail({
             onPress={() => onRenameWalk(walk.id, draftName)}
             style={styles.saveButton}
           >
-            <Ionicons name="checkmark" size={18} color="#ffffff" />
+            <Ionicons name="checkmark" size={18} color="#151006" />
             <Text style={styles.saveButtonText}>{strings.common.save}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -569,7 +586,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(15, 23, 42, 0.96)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
@@ -578,7 +595,7 @@ const styles = StyleSheet.create({
   closeButton: {
     alignItems: "center",
     borderColor: "#dbe3ea",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
@@ -593,7 +610,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(127, 29, 29, 0.16)",
     borderColor: "rgba(248, 113, 113, 0.42)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flex: 1,
     flexDirection: "row",
@@ -612,9 +629,9 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   detailCard: {
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 14,
     padding: 14
@@ -661,9 +678,9 @@ const styles = StyleSheet.create({
   },
   empty: {
     alignItems: "center",
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     padding: 24
   },
@@ -681,8 +698,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    backgroundColor: "#02060a",
-    borderBottomColor: "rgba(156, 255, 0, 0.22)",
+    backgroundColor: "#071018",
+    borderBottomColor: "rgba(245, 196, 81, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
     gap: 12,
@@ -690,9 +707,9 @@ const styles = StyleSheet.create({
     paddingTop: 58
   },
   input: {
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     color: "#f8fafc",
     fontSize: 15,
@@ -709,9 +726,9 @@ const styles = StyleSheet.create({
     marginTop: 4
   },
   reportCard: {
-    backgroundColor: "#111c25",
-    borderColor: "rgba(156, 255, 0, 0.18)",
-    borderRadius: 8,
+    backgroundColor: "#13212b",
+    borderColor: "rgba(245, 196, 81, 0.18)",
+    borderRadius: 14,
     borderWidth: 1,
     gap: 12,
     padding: 12
@@ -733,9 +750,9 @@ const styles = StyleSheet.create({
   },
   row: {
     alignItems: "stretch",
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 10,
     padding: 12
@@ -750,8 +767,8 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     alignItems: "center",
-    backgroundColor: "#2563eb",
-    borderRadius: 8,
+    backgroundColor: "#f5c451",
+    borderRadius: 14,
     flex: 1,
     flexDirection: "row",
     gap: 6,
@@ -760,15 +777,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   saveButtonText: {
-    color: "#ffffff",
+    color: "#151006",
     fontSize: 14,
     fontWeight: "700"
   },
   secondaryButton: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flex: 1,
     flexDirection: "row",
@@ -783,18 +800,18 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   screen: {
-    backgroundColor: "#071016",
+    backgroundColor: "#071018",
     flex: 1
   },
   selectedRow: {
-    borderColor: "#9cff00",
+    borderColor: "#f5c451",
     borderWidth: 2
   },
   summary: {
-    backgroundColor: "#16232e",
+    backgroundColor: "#182630",
     borderColor: "rgba(148, 163, 184, 0.18)",
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 14,
     flex: 1,
     minWidth: "42%",
     padding: 10
@@ -824,11 +841,23 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "900"
   },
+  technicalToggle: {
+    alignItems: "center",
+    backgroundColor: "#13212b",
+    borderColor: "rgba(245, 196, 81, 0.24)",
+    borderRadius: 14,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 8,
+    minHeight: 44,
+    paddingHorizontal: 12
+  },
+  technicalToggleText: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "800" },
   toolButton: {
     alignItems: "center",
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,

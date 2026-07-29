@@ -1,5 +1,58 @@
 # Changelog
 
+## v0.6.0
+
+Added:
+
+- Permanent Unlocked and Locked sections inside every Medal category, including compact empty states and counts.
+- A persistent, tappable Lyon medal-progress card on the map with collected/total count and a gold progress bar.
+- One map-side objective flag that toggles the current district-objective card and opens Completion when no objective exists.
+
+Changed:
+
+- Reworked the complete app presentation around the Medal screen navy/gold language, rounded cards, consistent spacing, and quieter borders.
+- Reduced the map logo and consolidated bottom navigation into one pill-shaped control surface.
+- Removed the three duplicate map-side layer buttons; Paths, Explored Cells, and Pins remain available in Options.
+- Removed the objective-card close/clear button; the flag now hides and restores the card without deleting the saved objective.
+- Simplified idle walk controls, the recording summary, Details, Completion, and History defaults while retaining maintenance and diagnostics behind Options or Technical details.
+- Locked medal cards no longer reveal full descriptions; collected cards retain the richer description.
+- Expanded focused source checks for the new collection sections, city HUD, single objective toggle, and streamlined presentation hierarchy.
+- Synchronized the app version to `0.6.0`, iOS build `77`, and Android version code `77`.
+
+## v0.5.1
+
+Changed:
+
+- Medal collection lists now place collected medals before locked medals in the full album and every category filter, while preserving catalogue order inside each group.
+- Added a regression assertion for collected-first collection ordering.
+- Synchronized the app version to `0.5.1`, iOS build `76`, and Android version code `76`.
+
+## v0.5.0
+
+Added:
+
+- Real-time medal evaluation whenever an active walk's accepted boundary grows, with immediate marker and collection-state updates before Stop.
+- A 3D medal reveal whose Continue action flies the medal into the measured Medal tab and briefly pulses the destination.
+- A one-time gameplay-v2 repair that rechecks each finalized recording missed by the older strict evaluator, including the reported Institut Lumière walk.
+- Regression coverage proving the updated 1320x2868 portrait PNG is the configured Expo splash asset.
+
+Changed:
+
+- Medal enclosure now uses the same 80m minimum, exact-contour-first one-cell seam tolerance, accepted route geometry, and 150,000m2 cap as normal gameplay.
+- Previously mapped or previously enclosed ground no longer blocks a newly walked qualifying loop, and medals earned live remain durable if that active recording is later discarded.
+- Stop and recovery evaluation remain idempotent safety nets, while the explicit cumulative historical scan uses the same gameplay loop rules.
+- Preserved and bundled the user-updated `assets/loading-screen2.png` splash image.
+- Synchronized the app version to `0.5.0`, iOS build `75`, and Android version code `75`.
+
+## v0.4.5
+
+Fixed:
+
+- Restored every corrupted French accent and ligature in the bundled Lyon landmark catalogue, including `Fourvière`, `Théâtre`, `Musée`, and `œ`.
+- Gave the Medals category scroller and chips explicit heights, centered alignment, and stable line height so iOS no longer clips their labels.
+- Added medal-catalog regression checks for corrupted placeholder characters and representative Unicode names.
+- Synchronized the app version to `0.4.5`, iOS build `74`, and Android version code `74`.
+
 ## v0.4.4
 
 Documentation:

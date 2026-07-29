@@ -1207,7 +1207,7 @@ const styles = StyleSheet.create({
     borderColor: "#a9b6c0"
   },
   playerDirectionPip: {
-    backgroundColor: "#9cff00",
+    backgroundColor: "#f5c451",
     borderColor: "#0f172a",
     borderRadius: 4,
     borderWidth: 1.5,
@@ -1220,7 +1220,7 @@ const styles = StyleSheet.create({
   },
   playerHalo: {
     backgroundColor: "rgba(255, 255, 255, 0.86)",
-    borderColor: "#9cff00",
+    borderColor: "#f5c451",
     borderRadius: 29,
     borderWidth: 2.5,
     height: 58,

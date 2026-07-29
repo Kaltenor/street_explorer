@@ -17,7 +17,7 @@ export function MapLegend({ language, showExploredCells, showPaths }: MapLegendP
 
   return (
     <View style={styles.container}>
-      {showPaths ? <LegendItem color="#2563eb" label={strings.mapLegend.savedRoute} /> : null}
+      {showPaths ? <LegendItem color="#f5c451" label={strings.mapLegend.savedRoute} /> : null}
       {showPaths ? <LegendItem color="#ef4444" label={strings.mapLegend.recording} /> : null}
       {showExploredCells ? (
         <LegendItem color="#86efac" label={strings.mapLegend.exploredCells} />
@@ -38,9 +38,9 @@ function LegendItem({ color, label }: { color: string; label: string }) {
 const styles = StyleSheet.create({
   container: {
     alignSelf: "flex-start",
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     flexWrap: "wrap",
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     gap: 5
   },
   label: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 11,
     fontWeight: "700"
   },

@@ -31,10 +31,12 @@ Use the development build for real device testing, especially background locatio
 
 ## Current Status
 
-Current version: `v0.4.4`
+Current version: `v0.6.0`
 
-The app supports self-healing foreground/background recording, accuracy-aware startup centering, a persistent accepted-route player marker, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion/Medals views, explored cells, loop-fill analysis, landmark medal collection, safe backup/restore, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.
+The app supports an updated shared portrait splash/launch presentation, self-healing foreground/background recording, accuracy-aware startup centering, a persistent accepted-route player marker, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion/Medals views, explored cells, loop-fill analysis, landmark medal collection, safe backup/restore, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.
 
-Lyon album v1 contains 20 reviewed landmark medals. A medal is awarded only when direct, known-accuracy GPS coverage forms an exact closed enclosure whose strict interior contains the landmark anchor; proximity, inferred streets, display loop tolerance, and GPS points without accuracy do not count.
+Lyon album v1 contains 20 reviewed landmark medals. Its UTF-8 localized copy preserves French accents, and the Medals category strip uses fixed, vertically centered chips on iOS. Medal enclosure now uses the same 80m minimum, one-cell seam tolerance, accepted route geometry, and 150,000m2 cap as normal gameplay. A qualifying active walk awards immediately even over previously mapped ground; Stop/recovery remain safety nets, and a one-time repair rechecks recordings missed by the older strict evaluator. The reveal rotates in 3D, shows the localized description, then flies into the Medal tab after Continue. Every category now has permanent Unlocked and Locked sections; unlocked cards lead with their descriptions while locked cards stay compact.
+
+The v0.6 interface uses one consistent navy/gold system with rounded surfaces and reduced default density. A persistent Lyon medal-progress card opens the collection from the map, one flag button toggles the current district objective, map layers live in Options, Completion shows only its four primary measures, and recording diagnostics stay behind explicit technical-detail controls.
 
 History keeps full GPS/route data lazy until a recording is opened, Completion calculations yield and cancel during navigation, and Backup V3 exports visible finalized recordings asynchronously while preserving frozen route snapshots and medal state.

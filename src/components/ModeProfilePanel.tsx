@@ -30,20 +30,20 @@ export function ModeProfilePanel({ activityMode, language }: ModeProfilePanelPro
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.95)",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     marginTop: 10,
     padding: 10
   },
   text: {
-    color: "#64748b",
+    color: "#94a3b8",
     fontSize: 12,
     marginTop: 3
   },
   title: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 13,
     fontWeight: "800"
   }

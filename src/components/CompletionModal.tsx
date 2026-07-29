@@ -265,7 +265,7 @@ export function CompletionModal({
           {currentObjective ? (
             <View style={styles.currentObjectivePanel}>
               <View style={styles.currentObjectiveHeader}>
-                <Ionicons name="flag-outline" size={17} color="#9cff00" />
+                <Ionicons name="flag-outline" size={17} color="#f5c451" />
                 <Text style={styles.currentObjectiveTitle}>{completionStrings.currentObjective}</Text>
               </View>
               <Text numberOfLines={1} style={styles.currentObjectiveName}>
@@ -337,7 +337,6 @@ export function CompletionModal({
                     {selectedZone ? (
                       <Text style={styles.zoneMetaText}>
                         {formatZoneLocationHint(selectedZone, currentLocation, language)} |{" "}
-                        {formatZoneSource(selectedZone, language)} | {formatFetchedAt(selectedZone.fetchedAt)} |{" "}
                         {formatCompletion(zoneStatsById[selectedZone.id] ?? zoneStats, language)}
                       </Text>
                     ) : null}
@@ -375,8 +374,7 @@ export function CompletionModal({
                         selectedZone?.id === zone.id ? styles.selectedZoneMetaText : null
                       ]}
                     >
-                      {formatZoneLocationHint(zone, currentLocation, language)} | {formatZoneSource(zone, language)} |{" "}
-                      {formatFetchedAt(zone.fetchedAt)} |{" "}
+                      {formatZoneLocationHint(zone, currentLocation, language)} |{" "}
                       {formatCompletion(zoneStatsById[zone.id] ?? null, language)}
                     </Text>
                   </TouchableOpacity>
@@ -422,12 +420,7 @@ export function CompletionModal({
             <Stat label={strings.common.completion} value={formatCompletion(zoneStats, language)} />
             <Stat label={completionStrings.zoneCells} value={formatZoneCells(zoneStats, language)} />
             <Stat label={completionStrings.exploredCells} value={String(zoneStats?.exploredCells ?? stats.exploredCells)} />
-            <Stat label={completionStrings.directGps} value={String(zoneStats?.directlyWalkedCells ?? stats.directlyWalkedCells)} />
-            <Stat label={completionStrings.inferred} value={String(zoneStats?.inferredCells ?? stats.inferredCells)} />
-            <Stat label={completionStrings.loopFilled} value={String(zoneStats?.loopFilledCells ?? stats.loopFilledCells)} />
             <Stat label={strings.common.distance} value={formatDistance(stats.walkedDistanceMeters)} />
-            <Stat label={language === "fr" ? "Enregistrements" : "Recordings"} value={String(stats.recordingCount)} />
-            <Stat label={completionStrings.completedZones} value={String(completedZoneCount)} />
           </View>
 
           {nearestIncompleteZone ? (
@@ -455,12 +448,7 @@ export function CompletionModal({
             </View>
           ) : null}
 
-          <View style={styles.panel}>
-            <Text style={styles.panelTitle}>{completionStrings.v1Rules}</Text>
-            <Text style={styles.helpText}>
-              {completionStrings.v1RulesText}
-            </Text>
-          </View>
+
         </ScrollView>
       </View>
     </Modal>
@@ -794,14 +782,14 @@ function formatScope(scope: CompletionScope, language: AppLanguage) {
 
 const styles = StyleSheet.create({
   activeObjectiveButton: {
-    backgroundColor: "rgba(156, 255, 0, 0.16)",
-    borderColor: "rgba(156, 255, 0, 0.42)"
+    backgroundColor: "rgba(245, 196, 81, 0.16)",
+    borderColor: "rgba(245, 196, 81, 0.42)"
   },
   closeButton: {
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    borderColor: "#dbe3ea",
-    borderRadius: 8,
+    backgroundColor: "#13212b",
+    borderColor: "#2a3c49",
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
@@ -811,16 +799,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(15, 23, 42, 0.96)",
     borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     height: 42,
     justifyContent: "center",
     width: 42
   },
   content: {
-    gap: 12,
-    padding: 16,
-    paddingBottom: 28
+    gap: 16,
+    padding: 18,
+    paddingBottom: 36
   },
   currentObjectiveHeader: {
     alignItems: "center",
@@ -834,7 +822,7 @@ const styles = StyleSheet.create({
     marginTop: 3
   },
   currentObjectiveToday: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 12,
     fontWeight: "900",
     marginTop: 4
@@ -846,21 +834,21 @@ const styles = StyleSheet.create({
     marginTop: 6
   },
   currentObjectivePanel: {
-    backgroundColor: "#0b151d",
-    borderColor: "rgba(156, 255, 0, 0.22)",
-    borderRadius: 8,
+    backgroundColor: "#0c151c",
+    borderColor: "rgba(245, 196, 81, 0.22)",
+    borderRadius: 14,
     borderWidth: 1,
     padding: 12
   },
   currentObjectiveTitle: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 12,
     fontWeight: "900"
   },
   header: {
     alignItems: "center",
-    backgroundColor: "#02060a",
-    borderBottomColor: "rgba(156, 255, 0, 0.22)",
+    backgroundColor: "#071018",
+    borderBottomColor: "rgba(245, 196, 81, 0.22)",
     borderBottomWidth: 1,
     flexDirection: "row",
     gap: 12,
@@ -878,9 +866,9 @@ const styles = StyleSheet.create({
   focusButton: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 6,
@@ -894,9 +882,9 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   panel: {
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     padding: 12
   },
@@ -913,19 +901,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   screen: {
-    backgroundColor: "#071016",
+    backgroundColor: "#071018",
     flex: 1
   },
   selectedSelectorButton: {
-    backgroundColor: "#9cff00",
-    borderColor: "#9cff00"
+    backgroundColor: "#f5c451",
+    borderColor: "#f5c451"
   },
   selectedSelectorButtonText: {
     color: "#02060a"
   },
   selectedZoneButton: {
-    backgroundColor: "rgba(156, 255, 0, 0.16)",
-    borderColor: "rgba(156, 255, 0, 0.42)"
+    backgroundColor: "rgba(245, 196, 81, 0.16)",
+    borderColor: "rgba(245, 196, 81, 0.42)"
   },
   selectedZoneButtonText: {
     color: "#ffffff"
@@ -934,9 +922,9 @@ const styles = StyleSheet.create({
     color: "#cbd5e1"
   },
   selectorButton: {
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 8
@@ -952,17 +940,17 @@ const styles = StyleSheet.create({
     gap: 8
   },
   selectorPanel: {
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     padding: 12
   },
   smallButton: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 5,
@@ -975,9 +963,9 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   stat: {
-    backgroundColor: "#0b151d",
+    backgroundColor: "#0c151c",
     borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexBasis: "48%",
     flexGrow: 1,
@@ -1010,9 +998,9 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   zoneButton: {
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 8
@@ -1039,9 +1027,9 @@ const styles = StyleSheet.create({
   },
   zonePickerButton: {
     alignItems: "center",
-    backgroundColor: "#111c25",
+    backgroundColor: "#13212b",
     borderColor: "rgba(148, 163, 184, 0.34)",
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     flexDirection: "row",
     gap: 10,
@@ -1050,7 +1038,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9
   },
   zonePickerLabel: {
-    color: "#9cff00",
+    color: "#f5c451",
     fontSize: 10,
     fontWeight: "900"
   },

@@ -74,7 +74,7 @@ function getStatusColor(status: BackgroundTrackingStatus) {
   }
 
   if (status === "starting") {
-    return "#2563eb";
+    return "#f5c451";
   }
 
   return "#f97316";
@@ -110,16 +110,16 @@ function formatLatestPoint(ageSeconds: number | null) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(239, 246, 255, 0.96)",
-    borderColor: "#bfdbfe",
-    borderRadius: 8,
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: "rgba(245, 196, 81, 0.28)",
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
     marginTop: 12,
     padding: 12
   },
   detail: {
-    color: "#475569",
+    color: "#94a3b8",
     fontSize: 12,
     fontWeight: "600"
   },
@@ -129,12 +129,12 @@ const styles = StyleSheet.create({
     gap: 7
   },
   message: {
-    color: "#1e3a8a",
+    color: "#f5c451",
     fontSize: 12,
     lineHeight: 17
   },
   quality: {
-    color: "#0f172a",
+    color: "#f8fafc",
     fontSize: 12,
     fontWeight: "700"
   },
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 12
   },
   title: {
-    color: "#1e3a8a",
+    color: "#f5c451",
     fontSize: 14,
     fontWeight: "800"
   }
