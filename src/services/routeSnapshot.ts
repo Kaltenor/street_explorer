@@ -7,9 +7,13 @@ import {
   fetchNearbyOsmStreetSegments,
   fetchOsmStreetSegmentsForCorridors
 } from "./osmStreetService";
+import { collectExploredCellIdsForPath } from "./explorationArea";
 import { buildPathSegments, buildPathSegmentsWithInference } from "./pathInference";
 
-const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 3;
+const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 4;
+const GAP_TOPOLOGY_FETCH_RADIUS_METERS = 120;
+const GAP_TOPOLOGY_PROBE_RADIUS_METERS = 70;
+const GAP_TOPOLOGY_FRESHNESS_MS = 30 * 24 * 60 * 60 * 1000;
 const STREET_CORRIDOR_RADIUS_METERS = 450;
 const STREET_SAMPLE_SPACING_METERS = 250;
 const STREET_REFRESH_SAMPLE_SPACING_METERS = 600;
@@ -192,6 +196,9 @@ async function persistStreetMatchedRouteSnapshot(input: {
     await refreshMissingStreetCoverage(input.points);
   }
 
+  if (!input.replaceExisting) {
+    await refreshSuspiciousGapTopology(input.points, input.activityMode);
+  }
   const cachedStreetSegments = await getCachedStreetCorridor(input.points);
   const streetSegmentsById = new Map<string, OsmStreetSegment>();
 
@@ -214,6 +221,13 @@ async function persistStreetMatchedRouteSnapshot(input: {
 
     if (segment.type === "inferred") {
       return [{
+        bridgeEvidence: {
+          ...segment.bridgeEvidence,
+          inferredCellCount: collectExploredCellIdsForPath(
+            segment.points,
+            input.activityMode
+          ).length
+        },
         confidence: segment.confidence === "high" ? "high" : "medium",
         points: segment.points,
         type: "inferred"
@@ -248,6 +262,59 @@ async function persistStreetMatchedRouteSnapshot(input: {
   return routeSegments;
 }
 
+async function refreshSuspiciousGapTopology(
+  points: GpsPoint[],
+  activityMode: ActivityMode
+) {
+  if (Date.now() < streetRefreshDisabledUntil) {
+    return;
+  }
+
+  const suspiciousGaps = buildPathSegments(points, activityMode).filter(
+    (segment) => segment.type === "rejected"
+  );
+  const corridors: GpsPoint[][] = [];
+  const freshnessCutoff = Date.now() - GAP_TOPOLOGY_FRESHNESS_MS;
+
+  for (const gap of suspiciousGaps) {
+    const midpoint: GpsPoint = {
+      accuracy: null,
+      latitude: (gap.startPoint.latitude + gap.endPoint.latitude) / 2,
+      longitude: (gap.startPoint.longitude + gap.endPoint.longitude) / 2,
+      pointIndex: gap.startPoint.pointIndex,
+      timestamp: gap.startPoint.timestamp
+    };
+    const nearbySegments = await getStreetSegmentsNear(
+      midpoint.latitude,
+      midpoint.longitude,
+      GAP_TOPOLOGY_PROBE_RADIUS_METERS
+    );
+    const hasFreshTopology = nearbySegments.some(
+      (segment) => Date.parse(segment.fetchedAt) >= freshnessCutoff
+    );
+
+    if (!hasFreshTopology) {
+      corridors.push([gap.startPoint, midpoint, gap.endPoint]);
+    }
+  }
+
+  if (corridors.length === 0) {
+    return;
+  }
+
+  try {
+    const fetchedSegments = await fetchOsmStreetSegmentsForCorridors(
+      corridors,
+      GAP_TOPOLOGY_FETCH_RADIUS_METERS
+    );
+    await upsertStreetSegments(fetchedSegments);
+  } catch (error) {
+    // Snapshot creation remains usable offline with cached coverage. The cooldown
+    // prevents every finalization from immediately retrying a failed Overpass call.
+    streetRefreshDisabledUntil = Date.now() + STREET_REFRESH_FAILURE_COOLDOWN_MS;
+    console.warn("Unable to refresh suspicious-gap street topology", error);
+  }
+}
 async function refreshMissingStreetCoverage(points: GpsPoint[]) {
   if (Date.now() < streetRefreshDisabledUntil) {
     return;

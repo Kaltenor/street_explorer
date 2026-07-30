@@ -95,7 +95,10 @@ npx eas-cli build --platform ios --profile development-simulator
 
 21. With a large history, switch Paths among Today, Last 7 days, Selected, and All. Confirm each scope renders the expected routes, History scrolls smoothly, and returning from History or Completion restores map gestures without a multi-second stall.
 22. During a long active walk, confirm the player and blue/red route react immediately while the red explored surface and medal evaluation settle within roughly 650ms. Watch development logs for repeated `[perf]` slow-operation or render-count messages and capture any sustained spikes.
-23. Export a large Backup V3 after Stop and confirm the share sheet opens without a memory warning. Compare the iOS export asset list and confirm Ionicons is the only bundled `@expo/vector-icons` font family.
+23. Export a large Backup V4 after Stop and confirm the share sheet opens without a memory warning. Compare the iOS export asset list and confirm Ionicons is the only bundled `@expo/vector-icons` font family.
+24. Open Completion with a boundary refresh older than 30 days and confirm one automatic refresh runs, the last-success date updates, incomplete OSM relations remain display-only, and permanent district/city completion rollups survive cache clearing and a Backup V4 restore.
+25. Finish a walk containing a suspicious GPS gap and confirm its bounded street-topology lookup does not delay ordinary continuous saves. In History, verify the Street bridges totals and per-bridge Technical details; confirm an overpass is not joined to the street below and that the frozen result changes only after explicit Reprocess recordings.
+26. With Saved route disabled, open a History recording and tap Focus on map. Confirm the map immediately fits that recording with Paths set to Selected and the route visible. Repeat with a walk crossing local midnight and confirm the Today scope retains it after midnight.
 
 ## Expected Limitation
 

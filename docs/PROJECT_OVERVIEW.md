@@ -13,7 +13,7 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Foreground GPS recording with automatic watcher recovery.
 - Permission-aware background tracking with serialized ownership, atomically published delivered batches, nullable headless owner recovery through a unique timestamp match, bounded unmatched retention, and chunked backlog backpressure.
 - Local SQLite persistence.
-- Saved paths displayed on the map.
+- Saved paths displayed on the map, with History focus automatically selecting/enabling the requested route and Today retaining recordings that overlap midnight.
 - Active recording path displayed live.
 - 15m x 15m deduplicated explored cells.
 - Gameplay-first closed-loop area fill based on enclosed explored cells.
@@ -26,7 +26,7 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Full-walk live/recovery routes retain raw SQLite observations, rebuild deterministically when a fix arrives late, use canonical contiguous indexes, and render stable bounded chunks while only the recent 300 points remain in diagnostic state.
 - Confirmed Stop teardown drains entered handlers and the durable background outbox before single-recording finalization. The summary, History row, stats, live cells, and Start control return at that durable boundary; route inference, exact steps, medal/objective checks, and full refresh then reconcile asynchronously through the pending repair outbox; continuous routes without suspicious gaps skip street-corridor graph inference. Underfilled recordings retain a hidden five-minute recovery tombstone, and late finalized merges trigger an immediate safe map refresh. Backup export rejects the authoritative active recording, omits hidden recovery tombstones and invisible orphan unfinished rows with their dependent data, reads one transaction, writes compact JSON through Expo's current cache-file API, verifies the file before sharing, and reports preparation/write/share failures separately; import closes both journal and in-memory GPS admission before replacing data.
 - Performance-bounded map rendering: immediate player/route updates, 650ms settled exploration and medal analysis, memoized native surface overlays, localized duration ticking, three-second idle tail synchronization, and development render/timing diagnostics.
-- Large-history scaling through virtualized History rows, unmounted hidden panels, Paths queries scoped to the selected display period, indexed exploration/session reads, pre-aggregated completion SQL, and incrementally streamed Backup V3 JSON.
+- Large-history scaling through virtualized History rows, unmounted hidden panels, Paths queries scoped to the selected display period, indexed exploration/session reads, pre-aggregated completion SQL, and incrementally streamed Backup V4 JSON.
 - Startup mounts the map after database and language readiness while the coalesced background outbox drain continues concurrently behind the authoritative recovery check.
 - Walking-focused GPS quality filters.
 - Route history with rename, delete, and highlight.
@@ -35,7 +35,8 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Icon layer controls for paths, cells, and markers.
 - Full-screen Details, History, and Completion views with responsive map back navigation, lazy per-recording History details, and cancellable chunked Completion scans.
 - Completion screen with scope and zone selectors.
-- OSM boundary loading and cached Country / City / District completion zones.
+- OSM boundary loading with robust multi-ring relation assembly, display-only invalid fallbacks, geometry-fingerprinted denominator caches, automatic 30-day refresh status, and a visible last-fetched date.
+- Permanent exact-boundary completion achievements with district and city rollups that remain earned across later OSM changes and cache clearing.
 - Zone-specific completion stats and map focus.
 - A compact objective HUD with selected zone, completion percentage, remaining cells, and today's added cells, toggled by one map-side flag without clearing the saved objective.
 - Updated 1320x2868 portrait `loading-screen2.png` shared by the native splash and in-app launch presentation, plus the transparent `title.png` map logo overlay.
@@ -45,7 +46,7 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Recoverable medal presentation with a metallic chime, haptic success cue, reduced-motion support, a 3D reveal, localized description, Continue-triggered flight into the Medal tab, and an acknowledged queue.
 - Explicit opt-in scanning for qualifying historical walks; new albums never award silently.
 - A streamlined navy/gold presentation system across map HUD, walk controls, full-screen menus, summaries, recovery, and diagnostics; duplicate layer shortcuts and default technical density are removed while advanced tools remain in Options or expandable details.
-- Backup V3 preserves frozen route snapshots, medal evidence, collection state, presentation state, and historical-scan state; its verified cache-file export opens the native share sheet only after a non-empty file exists.
+- Backup V4 preserves frozen route snapshots, medal evidence, collection state, historical-scan state, and permanent zone achievements; its verified cache-file export opens the native share sheet only after a non-empty file exists.
 
 ## Current Limitations
 
@@ -56,4 +57,4 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
 - OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.
-- Only high- and medium-confidence segment-projected street bridges contribute inferred explored cells; unmatched or unsafe endpoint gaps remain hidden and uncounted, with no unvalidated straight-line fallback.
+- Only high- and medium-confidence topology-validated street bridges contribute inferred explored cells. V3 accepts exact joins, ground-level geometric crossings, and grade-compatible endpoint seams up to 8m, persists per-bridge evidence/cell attribution, and leaves unmatched or unsafe gaps hidden with no straight-line fallback.

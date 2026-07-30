@@ -497,6 +497,72 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(22, "add_zone_completion_v2", async () => {
+    const totalColumns = await db.getAllAsync<{ name: string }>(
+      "PRAGMA table_info(zone_cell_totals)"
+    );
+    const hasGeometryFingerprint = totalColumns.some(
+      (column) => column.name === "geometry_fingerprint"
+    );
+
+    if (!hasGeometryFingerprint) {
+      await db.execAsync(`
+        ALTER TABLE zone_cell_totals
+          ADD COLUMN geometry_fingerprint TEXT NOT NULL DEFAULT '';
+      `);
+    }
+
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS zone_achievements (
+        zone_id TEXT PRIMARY KEY NOT NULL,
+        zone_type TEXT NOT NULL,
+        zone_name TEXT NOT NULL,
+        completed_at TEXT NOT NULL,
+        explored_cells INTEGER NOT NULL,
+        total_zone_cells INTEGER NOT NULL,
+        boundary_fetched_at TEXT NOT NULL,
+        boundary_source TEXT NOT NULL,
+        geometry_fingerprint TEXT NOT NULL
+      );
+
+      CREATE INDEX IF NOT EXISTS zone_achievements_type_completed_index
+        ON zone_achievements (zone_type, completed_at);
+
+      CREATE TABLE IF NOT EXISTS zone_refresh_state (
+        id INTEGER PRIMARY KEY NOT NULL CHECK (id = 1),
+        status TEXT NOT NULL,
+        last_attempted_at TEXT,
+        last_succeeded_at TEXT,
+        error_message TEXT
+      );
+    `);
+  });
+
+  await applyMigration(23, "add_street_topology_metadata", async () => {
+    const columns = await db.getAllAsync<{ name: string }>(
+      "PRAGMA table_info(osm_street_segments)"
+    );
+    const additions = [
+      { definition: "TEXT", name: "access" },
+      { definition: "INTEGER NOT NULL DEFAULT 0", name: "bridge" },
+      { definition: "TEXT", name: "foot" },
+      { definition: "INTEGER NOT NULL DEFAULT 0", name: "layer" },
+      { definition: "INTEGER NOT NULL DEFAULT 0", name: "tunnel" }
+    ];
+
+    for (const addition of additions) {
+      if (!columns.some((column) => column.name === addition.name)) {
+        await db.execAsync(
+          `ALTER TABLE osm_street_segments ADD COLUMN ${addition.name} ${addition.definition};`
+        );
+      }
+    }
+
+    // Old rows do not contain grade-separation or access metadata. Clearing only
+    // this derived cache prevents V3 from treating an overpass as an intersection.
+    await db.execAsync("DELETE FROM osm_street_segments;");
+  });
+
   await seedBundledMedalAlbums(db);
   await db.runAsync(`
     UPDATE collected_medals

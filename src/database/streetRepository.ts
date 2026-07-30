@@ -2,15 +2,20 @@ import { getDatabase } from "./db";
 import { OsmStreetSegment } from "../types/street";
 
 type OsmStreetSegmentRow = {
-  id: string;
-  name: string | null;
-  highway: string;
+  access: string | null;
+  bridge: number;
   coordinates_json: string;
-  min_latitude: number;
-  max_latitude: number;
-  min_longitude: number;
-  max_longitude: number;
   fetched_at: string;
+  foot: string | null;
+  highway: string;
+  id: string;
+  layer: number;
+  max_latitude: number;
+  max_longitude: number;
+  min_latitude: number;
+  min_longitude: number;
+  name: string | null;
+  tunnel: number;
 };
 
 export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
@@ -24,7 +29,7 @@ export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
   await db.withExclusiveTransactionAsync(async (transaction) => {
     for (let offset = 0; offset < segments.length; offset += batchSize) {
       const batch = segments.slice(offset, offset + batchSize);
-      const placeholders = batch.map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?)").join(", ");
+      const placeholders = batch.map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").join(", ");
       const values: Array<number | string | null> = [];
 
       for (const segment of batch) {
@@ -32,6 +37,11 @@ export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
           segment.id,
           segment.name,
           segment.highway,
+          segment.access,
+          segment.foot,
+          segment.bridge ? 1 : 0,
+          segment.tunnel ? 1 : 0,
+          segment.layer,
           JSON.stringify(segment.coordinates),
           segment.minLatitude,
           segment.maxLatitude,
@@ -43,13 +53,18 @@ export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
 
       await transaction.runAsync(
         "INSERT INTO osm_street_segments (" +
-          "id, name, highway, coordinates_json, min_latitude, max_latitude, " +
-          "min_longitude, max_longitude, fetched_at" +
+          "id, name, highway, access, foot, bridge, tunnel, layer, coordinates_json, " +
+          "min_latitude, max_latitude, min_longitude, max_longitude, fetched_at" +
           ") VALUES " +
           placeholders +
           " ON CONFLICT(id) DO UPDATE SET " +
           "name = excluded.name, " +
           "highway = excluded.highway, " +
+          "access = excluded.access, " +
+          "foot = excluded.foot, " +
+          "bridge = excluded.bridge, " +
+          "tunnel = excluded.tunnel, " +
+          "layer = excluded.layer, " +
           "coordinates_json = excluded.coordinates_json, " +
           "min_latitude = excluded.min_latitude, " +
           "max_latitude = excluded.max_latitude, " +
@@ -61,6 +76,7 @@ export async function upsertStreetSegments(segments: OsmStreetSegment[]) {
     }
   });
 }
+
 export async function getStreetSegmentsNear(
   latitude: number,
   longitude: number,
@@ -75,6 +91,11 @@ export async function getStreetSegmentsNear(
         id,
         name,
         highway,
+        access,
+        foot,
+        bridge,
+        tunnel,
+        layer,
         coordinates_json,
         min_latitude,
         max_latitude,
@@ -106,15 +127,20 @@ export async function deleteAllStreetSegments() {
 
 function mapStreetSegmentRow(row: OsmStreetSegmentRow): OsmStreetSegment {
   return {
+    access: row.access,
+    bridge: row.bridge === 1,
     coordinates: JSON.parse(row.coordinates_json),
     fetchedAt: row.fetched_at,
+    foot: row.foot,
     highway: row.highway,
     id: row.id,
+    layer: row.layer,
     maxLatitude: row.max_latitude,
     maxLongitude: row.max_longitude,
     minLatitude: row.min_latitude,
     minLongitude: row.min_longitude,
-    name: row.name
+    name: row.name,
+    tunnel: row.tunnel === 1
   };
 }
 

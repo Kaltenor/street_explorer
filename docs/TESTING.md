@@ -33,6 +33,10 @@ npx expo install --check
 
 `test:player` verifies the sixteen active native idle/walking frames plus retained source/stale assets, trustworthy-location and last-rendered-sprite retention, the stable native marker identifier, `AnimatedRegion` coordinate smoothing, disabled custom-view snapshot tracking, stale-GPS accessibility, and removal of fragile legacy marker rendering. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
+`test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V4 wiring.
+
+`test:geometry` verifies Path Inference V3 ground-level geometric joins, rejects bridge/ground crossings, bounds compatible endpoint joins to 8m at medium confidence, and checks persisted topology/evidence wiring. It also verifies one-action saved-route focus and overlap-based Today path queries.
+
 `test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, debounced and memoized map surfaces, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, streamed backup output, and render instrumentation.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
@@ -127,9 +131,10 @@ Startup regressions: when testing an older development binary against the curren
    - point count
 4. Rename the recording.
 5. Tap Save.
-6. Tap Focus on map and confirm the route is highlighted on the map.
-7. Export GPX for a recording.
-8. Delete a bad recording if needed.
+6. Turn the Saved route layer off and select Today or All. Tap Focus on map and confirm History closes, the chosen route is fitted and highlighted, Paths is now Selected, and Saved route is enabled without another Options action.
+7. Save a recording that begins shortly before midnight and ends shortly after midnight. Confirm it appears in Today on both affected dates, while recordings entirely outside the local day remain excluded.
+8. Export GPX for a recording.
+9. Delete a bad recording if needed.
 
 ## Data Tools Test
 
@@ -147,7 +152,7 @@ Startup regressions: when testing an older development binary against the curren
 12. Confirm recordings reload after restore.
 13. Confirm an imported backup containing an unfinished active session is rejected instead of creating an invisible orphan.
 14. Repeat Backup immediately after stopping a recording too short to appear in History; confirm the hidden late-GPS recovery tombstone does not block the export and is not included in the file.
-15. Restore a V3 file and confirm frozen route snapshots remain available without reprocessing.
+15. Restore a V4 file and confirm frozen route snapshots remain available without reprocessing.
 
 ## Layer Controls Test
 
@@ -205,19 +210,20 @@ Notes:
 
 ## Completion Screen Test
 
-1. Tap Completion.
-2. Tap Refresh.
-3. Confirm the app loads nearby OSM boundaries, or shows a clear load failure if Overpass is unavailable.
-4. Change Scope between Country, City, and District.
-5. Select each available zone.
-6. Confirm Completion has no activity selector and reports walking exploration only.
-7. Confirm stats load without crashing even when district zones are unavailable.
-8. Confirm explored cells, direct GPS cells, loop-filled cells, distance, and recordings are shown.
-9. Tap Focus on map and confirm the selected zone outline appears on the map.
-10. For city or district zones, confirm Completion shows a percentage when the zone is small enough to scan locally.
-11. Confirm each zone shows Exact polygon or Approx bounds.
-12. Tap Clear and confirm cached zones disappear while recordings remain.
-
+1. Open Completion with a known successful boundary fetch less than 30 days old and confirm no automatic network refresh starts.
+2. Set the stored success date to at least 30 days old, reopen Completion with GPS available, and confirm one automatic refresh starts while manual Refresh remains disabled only during the request.
+3. Confirm the permanent-achievement panel shows separate district and city counts plus the last successful boundary date and 30-day policy.
+4. Tap Refresh and confirm the app loads nearby OSM boundaries, or persists and displays a clear failure while retaining the previous successful date.
+5. Change Scope between Country, City, and District and select each available zone.
+6. Confirm exact multi-ring zones report walking-only progress, exclude inner holes, and show a percentage when the denominator is small enough to scan locally.
+7. Use a fixture whose outer ways are unordered/reversed and contains multiple outer rings; confirm it remains exact and every component contributes to the denominator.
+8. Use an incomplete or degenerate relation fixture and confirm it is labeled display-only/unavailable, cannot become an objective, and cannot grant an achievement.
+9. Reach 100% on an exact district and city fixture; confirm each creates one permanent achievement and increments the respective rollup only once.
+10. Refresh either completed zone with changed geometry and clear the zone cache; confirm its permanent achievement and rollup remain earned.
+11. Confirm a changed exact geometry receives a new denominator instead of reusing the previous geometry fingerprint's total.
+12. Tap Focus on map and confirm both exact and display-only selected boundaries can still be inspected on the map.
+13. Confirm Completion scans still yield, cancel immediately on close, and do not block returning to the map.
+14. Export Backup V4, clear data, restore it, and confirm permanent zone achievements and rollups return. Restore a V1-V3 backup and confirm it imports with no zone achievements.
 ## Street Inference Safety Test
 
 1. View or reprocess a route with sparse but plausible GPS updates and cached OSM streets.
@@ -243,7 +249,7 @@ Notes:
 10. Upgrade an installation containing an individually qualifying walk missed by v0.4; confirm the one-time gameplay-v2 repair awards it and presents it without requiring the walk to be repeated.
 11. Open Medals on an installation with cumulative qualifying saved coverage and run Scan my walks; confirm it uses the same gameplay loop rules and the unique count does not increase when repeated.
 12. Force-close while an award is presenting, reopen, enter through the launch screen, and confirm the pending award is presented again before being marked complete.
-13. Export Backup V3, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
+13. Export Backup V4, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
 14. Disable sound or haptics at the device level and confirm presentation still completes without trapping the UI.
 ## Loop Fill Test
 
@@ -280,10 +286,15 @@ Notes:
 ## GPS Gap Safety Test
 
 1. Record normally and confirm short GPS segments still draw as paths.
-2. If a recording has a long GPS gap with a reliable cached street route, confirm the frozen bridge follows streets and creates inferred cells.
-3. If no reliable street route exists, confirm the app does not draw or fill a straight diagonal across the gap.
-4. Confirm low-confidence and unmatched gaps contribute no explored cells.
-
+2. If a recording has a long GPS gap, confirm finalization performs only a bounded topology lookup around that gap and the frozen bridge follows walkable streets.
+3. Test a normal ground-level intersection whose OSM ways cross without sharing an exact node; confirm the bridge can turn through it.
+4. Test visually crossing bridge/tunnel or different-layer geometry; confirm the graph does not join the two ways.
+5. Test two compatible fragment endpoints less than 8m apart; confirm the bridge may be accepted at medium confidence. Repeat above 8m and confirm rejection.
+6. Confirm explicitly private or foot-prohibited ways are not used.
+7. Open History and confirm Street bridges shows accepted, cell, high, and medium totals. Expand Technical details and confirm each new bridge shows distance, inferred cells, and its topology reason.
+8. Pan, reload, or refresh OSM data without reprocessing and confirm the accepted frozen route and evidence remain unchanged.
+9. Confirm low-confidence, implausible, and unmatched gaps draw no straight diagonal and contribute no explored cells.
+10. Repeat finalization offline and confirm cached coverage remains usable; a failed topology refresh must not delete or replace existing data.
 ## Recovery Test
 
 1. Start a recording.

@@ -1,15 +1,20 @@
 import { MapCoordinate } from "../services/explorationArea";
 
 export type OsmStreetSegment = {
-  id: string;
-  name: string | null;
-  highway: string;
+  access: string | null;
+  bridge: boolean;
   coordinates: MapCoordinate[];
   fetchedAt: string;
-  minLatitude: number;
+  foot: string | null;
+  highway: string;
+  id: string;
+  layer: number;
   maxLatitude: number;
-  minLongitude: number;
   maxLongitude: number;
+  minLatitude: number;
+  minLongitude: number;
+  name: string | null;
+  tunnel: boolean;
 };
 
 export type StreetCompletionSummary = {

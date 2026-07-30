@@ -169,6 +169,8 @@ async function writeBackupJson(file: File, backup: StreetExplorerBackup) {
     await writeArray(backup.routeSnapshots);
     await writeText(',"sessions":');
     await writeArray(backup.sessions);
+    await writeText(',"zoneAchievements":');
+    await writeArray(backup.zoneAchievements);
     await writeText(`,"version":${backup.version}}`);
     await writer.close();
   } catch (error) {
@@ -227,7 +229,7 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
   const parsed = JSON.parse(rawJson) as Omit<Partial<StreetExplorerBackup>, "version"> & { version?: number };
 
   if (
-    (parsed.version !== 1 && parsed.version !== 2 && parsed.version !== 3) ||
+    (parsed.version !== 1 && parsed.version !== 2 && parsed.version !== 3 && parsed.version !== 4) ||
     !Array.isArray(parsed.sessions) ||
     !Array.isArray(parsed.points)
   ) {
@@ -236,7 +238,7 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
 
   return {
     medalSystem:
-      parsed.version === 3 &&
+      parsed.version >= 3 &&
       parsed.medalSystem &&
       Array.isArray(parsed.medalSystem.acquisitionEvents) &&
       Array.isArray(parsed.medalSystem.collectedMedals) &&
@@ -254,7 +256,11 @@ function parseBackup(rawJson: string): StreetExplorerBackup {
         ? parsed.routeSnapshots
         : [],
     sessions: parsed.sessions,
-    version: 3
+    zoneAchievements:
+      parsed.version >= 4 && Array.isArray(parsed.zoneAchievements)
+        ? parsed.zoneAchievements
+        : [],
+    version: 4
   };
 }
 

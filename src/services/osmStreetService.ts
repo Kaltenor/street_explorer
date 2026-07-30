@@ -29,8 +29,13 @@ type OverpassWayElement = {
   geometry?: OverpassGeometryPoint[];
   id: number;
   tags?: {
+    access?: string;
+    bridge?: string;
+    foot?: string;
     highway?: string;
+    layer?: string;
     name?: string;
+    tunnel?: string;
   };
   type: "way";
 };
@@ -143,6 +148,7 @@ function mapOverpassWay(
 
   return splitWayIntoStableLocalSegments(coordinates, center, radiusMeters).map((segment) =>
     buildStreetSegment({
+      ...getTopologyMetadata(element),
       coordinates: segment.coordinates,
       fetchedAt,
       highway: element.tags?.highway ?? "road",
@@ -166,6 +172,7 @@ function mapOverpassWayForCorridors(
 
   return splitWayIntoStableCorridorSegments(coordinates, corridors, radiusMeters).map((segment) =>
     buildStreetSegment({
+      ...getTopologyMetadata(element),
       coordinates: segment.coordinates,
       fetchedAt,
       highway: element.tags?.highway ?? "road",
@@ -293,26 +300,54 @@ function distanceToSegmentMeters(point: StreetCenter, from: StreetCenter, to: St
 
   return Math.sqrt(projectedX * projectedX + projectedY * projectedY);
 }
+function getTopologyMetadata(element: OverpassWayElement) {
+  const bridge = isTruthyOsmTag(element.tags?.bridge);
+  const tunnel = isTruthyOsmTag(element.tags?.tunnel);
+  const parsedLayer = Number(element.tags?.layer);
+
+  return {
+    access: element.tags?.access ?? null,
+    bridge,
+    foot: element.tags?.foot ?? null,
+    layer: Number.isFinite(parsedLayer) ? parsedLayer : bridge ? 1 : tunnel ? -1 : 0,
+    tunnel
+  };
+}
+
+function isTruthyOsmTag(value: string | undefined) {
+  return value === "yes" || value === "true" || value === "1";
+}
+
 function buildStreetSegment(input: {
+  access: string | null;
+  bridge: boolean;
   coordinates: StreetCenter[];
   fetchedAt: string;
+  foot: string | null;
   highway: string;
   id: string;
+  layer: number;
   name: string | null;
+  tunnel: boolean;
 }): OsmStreetSegment {
   const latitudes = input.coordinates.map((coordinate) => coordinate.latitude);
   const longitudes = input.coordinates.map((coordinate) => coordinate.longitude);
 
   return {
+    access: input.access,
+    bridge: input.bridge,
     coordinates: input.coordinates,
     fetchedAt: input.fetchedAt,
+    foot: input.foot,
     highway: input.highway,
     id: input.id,
+    layer: input.layer,
     maxLatitude: Math.max(...latitudes),
     maxLongitude: Math.max(...longitudes),
     minLatitude: Math.min(...latitudes),
     minLongitude: Math.min(...longitudes),
-    name: input.name
+    name: input.name,
+    tunnel: input.tunnel
   };
 }
 

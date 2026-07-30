@@ -38,6 +38,8 @@ Tables:
 - `osm_street_segments`
 - `zones`
 - `zone_cell_totals`
+- `zone_achievements`
+- `zone_refresh_state`
 - `explored_cells`
 - `loop_fills`
 - `medal_albums`
@@ -101,16 +103,13 @@ Tables:
 
 `gps_observations` retains every validly formed raw fix, including filtered fixes, so a later out-of-order delivery can deterministically derive the route again in timestamp order. `route_snapshots` freezes validated render geometry for finalized sessions. `pending_recording_repairs` is a durable finalization outbox: its row is created in the same transaction that ends a valid session and removed only after route and exploration caches are safely present. `pending_recording_discards` temporarily hides a stopped session with fewer than two accepted points for a five-minute late-GPS recovery window, then removes it if it is still underfilled.
 
-`zones` caches country, city, and district boundary polygons fetched from OSM administrative relations.
+`zones` caches country, city, and district boundary polygons fetched from OSM administrative relations. V2 relation assembly joins unordered and reversed member ways, retains multiple outer components and holes, and marks any incomplete or degenerate assembly as a display-only bounds fallback.
 
 Migration 18 consolidates legacy non-walking session rows, exploration cells, loop fills, active markers, and imported backups into the walking profile without deleting recordings. Legacy activity preferences and completion objectives are removed because the app no longer exposes activity choices.
 
-`zone_cell_totals` caches calculated zone denominators:
+`zone_cell_totals` caches calculated zone denominators by zone id, cell size, and deterministic geometry fingerprint. A changed boundary invalidates its previous total instead of reusing a stale denominator.
 
-- zone id
-- cell size
-- total cells
-- calculated timestamp
+`zone_achievements` stores the first exact 100% completion evidence independently from the mutable zone cache. Achievements therefore remain earned after a boundary refresh or cache clear. `zone_refresh_state` stores the last attempt, last success, status, and error needed for the 30-day automatic refresh policy and visible diagnostics.
 
 ## Recording Flow
 
@@ -194,6 +193,8 @@ Lyon album v1 is a frozen, bundled catalog of 20 reviewed landmarks. The UTF-8 c
 
 The v0.6 presentation hierarchy uses the Medal screen navy/gold surfaces across app startup recovery, map HUD, walk controls, full-screen menus, summaries, and diagnostics. The map owns a persistent city-medal progress card and a single objective toggle. Layer switches remain in Options, maintenance moved out of everyday Details, Completion exposes four primary measures, and History keeps route-quality diagnostics collapsed behind Technical details. These are presentation-only boundaries: the underlying recording, layer, completion, and repair services are unchanged.
 
+Saved-path presentation is independently scoped from explored-cell surfaces. Focus on map atomically selects the History session, changes the path scope to Selected, and enables the Saved route layer; the existing map fit then frames that loaded walk. Today queries use interval overlap (ended_at > local-day-start and started_at < next-local-day-start) so a midnight-crossing session is retained without loading unrelated history.
+
 Medal qualification deliberately shares the normal gameplay enclosure rules instead of maintaining a stricter parallel contour model. The evaluator:
 
 - rasterizes the accepted active route during recording and evaluates again from the finalized frozen route at Stop or recovery;
@@ -207,7 +208,7 @@ The active-walk evaluator runs whenever its accepted boundary grows, updates the
 
 Startup resets an interrupted `presenting` state to `pending`, so every collected medal remains in the presentation queue until acknowledged. Presentation uses a bundled metallic chime, success haptic, reduced-motion-aware 3D rotation, localized description, and silent/haptic failure fallbacks. Continue measures the on-map Medal tab, flies the medal into it, and briefly pulses the destination. The collection filters in frozen album order and renders the resulting earned and locked arrays as separately labeled sections.
 
-The Medals screen still offers an explicitly confirmed cumulative scan of saved walks for older coverage and records completion per frozen album version. The one-time v0.5 repair is narrower: it only restores awards that an individual saved recording should have earned under the live/Stop rules. Backup V3 includes acquisition events, collected state, presentation state, and retro-scan settings. Older V1/V2 backups restore with an empty medal collection.
+The Medals screen still offers an explicitly confirmed cumulative scan of saved walks for older coverage and records completion per frozen album version. The one-time v0.5 repair is narrower: it only restores awards that an individual saved recording should have earned under the live/Stop rules. Backup V4 includes acquisition events, collected state, presentation state, and retro-scan settings. Older V1/V2 backups restore with an empty medal collection.
 
 The developer-only POI candidate service queries an allowlisted set of OpenStreetMap tags inside fixed bounds and stores candidates as `unreviewed`. Network results never mutate the frozen shipped album or become collectible without review and a release change.
 ## Street Completion
@@ -234,33 +235,36 @@ Limitations:
 
 ## Zone Completion
 
-The Completion screen can fetch nearby OSM administrative boundaries using the current GPS location.
+Completion fetches nearby OSM administrative relations for country, city, and district scopes from the current GPS location. Opening the screen triggers one automatic refresh when the last successful fetch is missing or at least 30 days old; manual Refresh remains available. The last attempt, last success, failure state, and last-fetched date persist across launches.
 
 Flow:
 
-- fetch OSM administrative relations for country, city, and district scopes
-- cache zone polygons in `zones`
-- select a scope and zone in Completion
-- count explored 15m cells whose centers fall inside the selected polygon
-- count total 15m cells inside city/district-sized polygons
-- show completion percentage when the zone denominator can be scanned locally
+- assemble unordered or reversed relation ways into all closed outer rings and inner holes
+- require every participating boundary fragment to form a non-degenerate closed ring for completion eligibility
+- retain an incomplete relation only as a visibly labeled display bounds fallback
+- cache exact zone polygons in `zones`
+- count explored 15m cell centers inside the selected exact polygon and outside its holes
+- reuse a denominator only when zone id, cell size, and geometry fingerprint all match
+- insert the first exact 100% result into `zone_achievements` with `INSERT OR IGNORE`
+- show permanent district and city achievement rollups in Completion
 
-Large zones can intentionally show a pending denominator. This avoids expensive country-scale scans on the phone. Completion augments persisted cells with the same walking area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage always use the same numerator.
+Fallback boundaries cannot calculate percentages, become objectives, or grant achievements. A previously earned achievement remains permanent if a later refresh changes or temporarily invalidates the current OSM geometry.
 
-Local denominator scans are chunked and yield to the React Native event loop. The Completion screen starts them after its opening transition, calculates the selected zone only once, and aborts unfinished work immediately when the screen closes so navigation cannot be held by a large grid scan.
+Large exact zones can intentionally show a pending denominator to avoid expensive country-scale scans on the phone. Completion augments persisted cells with the same walking area-capped enclosed contour cells used by the solid red renderer, so a qualifying visible surface and its percentage use the same numerator. Local scans are chunked, yield to the React Native event loop, begin after the opening transition, and abort when Completion closes.
 
-District data depends on local OSM coverage. If no district relation exists near the user, Completion degrades to country/city zones.
-
-Zones are labeled as exact OSM polygons or approximate OSM bounds. Approximate bounds are used only when relation geometry cannot be assembled yet.
-
+District data depends on local OSM coverage. If no valid district relation exists nearby, Completion degrades to country/city zones while any incomplete relation remains display-only.
 ## Street-Aware Inference
 
 Street-aware path inference is persisted in an immutable route snapshot and is shared by route rendering, explored-cell generation, completion, and loop analysis.
 
-The service projects suspicious GPS-gap endpoints onto the nearest point of cached OSM street segments, attaches those projected points to the graph, and searches for a plausible street route. This avoids treating a player beside the middle of a 35m fragment as if they were at one of its endpoints. Only high- or medium-confidence routes are frozen and counted. A high-confidence snap may close its endpoint seam only when it is within 12m; longer, unmatched, or low-confidence gaps never receive a straight connector. Once stored, a snapshot is never changed by map movement, cache refresh, normal saves, or loop recalculation.
+The service projects suspicious GPS-gap endpoints onto the nearest point of cached OSM street segments, attaches those projected points to one graph, and searches for a plausible walking route. New suspicious gaps first make one bounded 120m corridor request only where shared topology coverage is absent or older than 30 days; failures fall back to the cache behind a five-minute retry cooldown. This avoids both a history-sized fetch during normal finalization and treating a player beside the middle of a 35m fragment as if they were at one of its endpoints.
+
+V3 graph edges preserve exact OSM nodes, add verified ground-level geometric crossings, and join grade-compatible fragment endpoints only within 8m. Bridge, tunnel, layer, access, and foot tags prevent common overpass and private-way false joins. Endpoint-join routes are capped at medium confidence. Only plausible high- or medium-confidence routes are frozen and counted, and a snap may close its visible endpoint seam only within 12m; longer, unmatched, or low-confidence gaps never receive a straight connector.
+
+Each inferred snapshot segment persists schema-versioned evidence: acceptance reason, endpoint and intersection join counts, maximum endpoint seam, snap distances, gap duration/distance, routed distance, source topology size, confidence, and inferred-cell contribution. History exposes the accepted/high/medium/cell totals by default and the per-bridge evidence under Technical details. Once stored, a snapshot is never changed by map movement, cache refresh, normal saves, or loop recalculation.
 
 The explicit **Reprocess recordings** action is the only workflow allowed to replace existing historical snapshots. Before route calculation, it makes one consolidated Overpass linestring request covering the raw corridors of every saved walking recording. This repairs the incomplete cache that caused the v0.3.50 legacy-freeze regression without returning to slow per-recording downloads. The request has a 35-second client timeout, its street segments are batch-written atomically, and failure aborts the rebuild while leaving existing routes and progress untouched. One graph is then built per recording and reused for every suspicious GPS interval. Individual recording calculation failures retain their previous frozen route while the remaining recordings continue. The complete candidate includes confirmed cells, validated inferred cells, and authoritative contour fills. If its unique-cell total is lower than existing progress, both snapshots and the explored ledger remain untouched and the result reports a safety stop. Otherwise all explored cells and loop metadata are replaced in one atomic transaction. The phased progress modal is displayed over the map after full-screen panels close, and any uncaught failure produces a visible error.
 
-Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V3 includes route snapshots and medal acquisition/presentation state, so exported and restored routes keep the same frozen geometry. Export drains the local background outbox, then blocks only an unfinished session referenced by the authoritative active-recording setting inside the exclusive snapshot transaction. It omits still-hidden underfilled late-GPS recovery tombstones plus invisible orphan unfinished rows and consistently excludes their points, snapshots, and recording-linked medal state while reading every visible finalized recording. The compact JSON file is written through Expo's current cache-file API, verified as present and non-empty, and only then passed to the native share sheet. Preparation, writing, and sharing errors retain their stage and technical detail for an actionable alert. Import closes file-journal admission, stops and drains native tracking, closes and settles the in-memory GPS queue, commits the replacement transaction, clears the old recording hint, and only then discards old journal files; a delayed pre-import event therefore cannot be attributed to an unrelated restored session.
+Legacy confirmed-only snapshots remain unchanged until the user explicitly reprocesses them. Backup V4 includes route snapshots, medal acquisition/presentation state, and permanent zone achievements, so exported and restored routes keep the same frozen geometry. Export drains the local background outbox, then blocks only an unfinished session referenced by the authoritative active-recording setting inside the exclusive snapshot transaction. It omits still-hidden underfilled late-GPS recovery tombstones plus invisible orphan unfinished rows and consistently excludes their points, snapshots, and recording-linked medal state while reading every visible finalized recording. The compact JSON file is written through Expo's current cache-file API, verified as present and non-empty, and only then passed to the native share sheet. Preparation, writing, and sharing errors retain their stage and technical detail for an actionable alert. Import closes file-journal admission, stops and drains native tracking, closes and settles the in-memory GPS queue, commits the replacement transaction, clears the old recording hint, and only then discards old journal files; a delayed pre-import event therefore cannot be attributed to an unrelated restored session.
 
 There is still no straight-line fallback for inferred exploration. Low-confidence, implausible, or unmatched gaps remain hidden and contribute no explored cells.

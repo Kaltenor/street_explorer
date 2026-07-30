@@ -2,7 +2,7 @@ import { haversineDistanceMeters } from "./distance";
 import { MODE_LOCATION_CONFIG } from "../constants/config";
 import { MapCoordinate } from "./explorationArea";
 import { OsmStreetSegment } from "../types/street";
-import { ActivityMode, GpsPoint } from "../types/walk";
+import { ActivityMode, GpsPoint, RouteBridgeEvidence } from "../types/walk";
 
 const MAX_SAFE_STREET_SNAP_CONNECTOR_METERS = 12;
 
@@ -28,6 +28,7 @@ export type ConfirmedPathSegment = {
 };
 
 export type InferredPathSegment = {
+  bridgeEvidence: RouteBridgeEvidence;
   confidence: "low" | "medium" | "high";
   distanceMeters: number;
   endPoint: GpsPoint;
@@ -199,7 +200,10 @@ function getSecondsBetweenPoints(startPoint: GpsPoint, endPoint: GpsPoint) {
   );
 }
 
+type GraphConnectionType = "endpoint_join" | "intersection" | "snap" | "street";
+
 type GraphEdge = {
+  connectionType: GraphConnectionType;
   distanceMeters: number;
   key: string;
 };
@@ -263,7 +267,7 @@ function inferStreetRoute(
   }
 
   if (startNode.edgeKey === endNode.edgeKey) {
-    connectGraphNodes(graph, startNode.key, endNode.key);
+    connectGraphNodes(graph, startNode.key, endNode.key, "street");
   }
 
   const route = findShortestPath(graph, startNode.key, endNode.key);
@@ -299,12 +303,42 @@ function inferStreetRoute(
       ? [endPoint]
       : [])
   ];
+  const endpointJoinEdges = route.edges.filter(
+    (edge) => edge.connectionType === "endpoint_join"
+  );
+  const endpointJoinCount = endpointJoinEdges.length;
+  const intersectionJoinCount = new Set(
+    route.keys.filter((key) => key.startsWith("intersection:"))
+  ).size;
   const isHighConfidence =
+    endpointJoinCount === 0 &&
     startNode.distanceMeters <= 12 &&
     endNode.distanceMeters <= 12 &&
     routeDistance <= Math.max(straightDistance * 1.35, straightDistance + 60);
 
   return {
+    bridgeEvidence: {
+      acceptanceReason: endpointJoinCount > 0
+        ? "near_endpoint_join"
+        : intersectionJoinCount > 0
+          ? "geometric_crossing"
+          : "exact_topology",
+      endSnapDistanceMeters: endNode.distanceMeters,
+      endpointJoinCount,
+      gapDistanceMeters: straightDistance,
+      gapDurationSeconds: seconds,
+      inferredCellCount: 0,
+      intersectionJoinCount,
+      maxEndpointJoinDistanceMeters: endpointJoinEdges.reduce(
+        (maximum, edge) => Math.max(maximum, edge.distanceMeters),
+        0
+      ),
+      routeDistanceMeters: routeDistance,
+      schemaVersion: 1,
+      sourceStreetSegmentCount: routingContext.streetSegments.length,
+      startSnapDistanceMeters: startNode.distanceMeters,
+      straightDistanceMeters: straightDistance
+    },
     confidence: isHighConfidence ? "high" : "medium",
     distanceMeters: routeDistance,
     endPoint,
@@ -322,11 +356,37 @@ function isStreetUsable(segment: OsmStreetSegment) {
     return false;
   }
 
+  const access = segment.access?.toLowerCase() ?? null;
+  const foot = segment.foot?.toLowerCase() ?? null;
+  const explicitlyWalkable = ["designated", "permissive", "yes"].includes(foot ?? "");
+
+  if (["no", "private"].includes(foot ?? "")) {
+    return false;
+  }
+
+  if (["no", "private"].includes(access ?? "") && !explicitlyWalkable) {
+    return false;
+  }
+
   return true;
 }
 
+type StreetGraphLine = {
+  from: MapCoordinate;
+  fromKey: string;
+  segment: OsmStreetSegment;
+  to: MapCoordinate;
+  toKey: string;
+};
+
+type ProjectedPoint = {
+  x: number;
+  y: number;
+};
+
 function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
   const graph = new Map<string, GraphNode>();
+  const lines: StreetGraphLine[] = [];
 
   for (const segment of streetSegments) {
     for (let index = 1; index < segment.coordinates.length; index += 1) {
@@ -341,12 +401,254 @@ function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
       const toKey = coordinateKey(to);
       const distanceMeters = haversineDistanceMeters(toGpsPoint(from), toGpsPoint(to));
 
-      ensureGraphNode(graph, fromKey, from).edges.push({ distanceMeters, key: toKey });
-      ensureGraphNode(graph, toKey, to).edges.push({ distanceMeters, key: fromKey });
+      ensureGraphNode(graph, fromKey, from).edges.push({
+        connectionType: "street",
+        distanceMeters,
+        key: toKey
+      });
+      ensureGraphNode(graph, toKey, to).edges.push({
+        connectionType: "street",
+        distanceMeters,
+        key: fromKey
+      });
+      lines.push({ from, fromKey, segment, to, toKey });
     }
   }
 
+  connectSafeGeometricCrossings(graph, lines);
+  connectSafeEndpointJoins(graph, lines);
+
   return graph;
+}
+
+function connectSafeGeometricCrossings(
+  graph: Map<string, GraphNode>,
+  lines: StreetGraphLine[]
+) {
+  const originLatitude = lines[0]?.from.latitude ?? 0;
+  const bucketSizeMeters = 32;
+  const buckets = new Map<string, number[]>();
+
+  lines.forEach((line, index) => {
+    if (!isGroundLevelStreet(line.segment)) {
+      return;
+    }
+
+    const from = projectForTopology(line.from, originLatitude);
+    const to = projectForTopology(line.to, originLatitude);
+    const minX = Math.floor((Math.min(from.x, to.x) - 0.5) / bucketSizeMeters);
+    const maxX = Math.floor((Math.max(from.x, to.x) + 0.5) / bucketSizeMeters);
+    const minY = Math.floor((Math.min(from.y, to.y) - 0.5) / bucketSizeMeters);
+    const maxY = Math.floor((Math.max(from.y, to.y) + 0.5) / bucketSizeMeters);
+
+    for (let x = minX; x <= maxX; x += 1) {
+      for (let y = minY; y <= maxY; y += 1) {
+        const key = `${x}:${y}`;
+        const entries = buckets.get(key) ?? [];
+        entries.push(index);
+        buckets.set(key, entries);
+      }
+    }
+  });
+
+  const checkedPairs = new Set<string>();
+
+  for (const entries of buckets.values()) {
+    for (let leftIndex = 0; leftIndex < entries.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < entries.length; rightIndex += 1) {
+        const leftLineIndex = entries[leftIndex];
+        const rightLineIndex = entries[rightIndex];
+
+        if (leftLineIndex === undefined || rightLineIndex === undefined) {
+          continue;
+        }
+
+        const pairKey = leftLineIndex < rightLineIndex
+          ? `${leftLineIndex}:${rightLineIndex}`
+          : `${rightLineIndex}:${leftLineIndex}`;
+
+        if (checkedPairs.has(pairKey)) {
+          continue;
+        }
+
+        checkedPairs.add(pairKey);
+        const left = lines[leftLineIndex];
+        const right = lines[rightLineIndex];
+
+        if (
+          !left ||
+          !right ||
+          left.segment.id === right.segment.id ||
+          !isGroundLevelStreet(right.segment) ||
+          sharesExactEndpoint(left, right)
+        ) {
+          continue;
+        }
+
+        const crossing = getLineIntersection(left, right, originLatitude);
+
+        if (!crossing) {
+          continue;
+        }
+
+        const crossingKey = `intersection:${coordinateKey(crossing)}`;
+        ensureGraphNode(graph, crossingKey, crossing);
+
+        for (const endpointKey of [left.fromKey, left.toKey, right.fromKey, right.toKey]) {
+          connectGraphNodes(graph, crossingKey, endpointKey, "intersection");
+        }
+      }
+    }
+  }
+}
+
+function connectSafeEndpointJoins(
+  graph: Map<string, GraphNode>,
+  lines: StreetGraphLine[]
+) {
+  const maximumJoinMeters = 8;
+  const originLatitude = lines[0]?.from.latitude ?? 0;
+  const endpoints = lines.flatMap((line, lineIndex) => [
+    { coordinate: line.from, key: line.fromKey, lineIndex, segment: line.segment },
+    { coordinate: line.to, key: line.toKey, lineIndex, segment: line.segment }
+  ]);
+  const buckets = new Map<string, number[]>();
+
+  endpoints.forEach((endpoint, index) => {
+    const projected = projectForTopology(endpoint.coordinate, originLatitude);
+    const x = Math.floor(projected.x / maximumJoinMeters);
+    const y = Math.floor(projected.y / maximumJoinMeters);
+    const key = `${x}:${y}`;
+    const entries = buckets.get(key) ?? [];
+    entries.push(index);
+    buckets.set(key, entries);
+  });
+
+  const checkedPairs = new Set<string>();
+
+  endpoints.forEach((left, leftIndex) => {
+    const projected = projectForTopology(left.coordinate, originLatitude);
+    const x = Math.floor(projected.x / maximumJoinMeters);
+    const y = Math.floor(projected.y / maximumJoinMeters);
+
+    for (let deltaX = -1; deltaX <= 1; deltaX += 1) {
+      for (let deltaY = -1; deltaY <= 1; deltaY += 1) {
+        for (const rightIndex of buckets.get(`${x + deltaX}:${y + deltaY}`) ?? []) {
+          if (rightIndex <= leftIndex) {
+            continue;
+          }
+
+          const right = endpoints[rightIndex];
+          const pairKey = `${leftIndex}:${rightIndex}`;
+
+          if (
+            !right ||
+            checkedPairs.has(pairKey) ||
+            left.lineIndex === right.lineIndex ||
+            left.key === right.key ||
+            !isGradeCompatible(left.segment, right.segment)
+          ) {
+            continue;
+          }
+
+          checkedPairs.add(pairKey);
+          const distanceMeters = haversineDistanceMeters(
+            toGpsPoint(left.coordinate),
+            toGpsPoint(right.coordinate)
+          );
+
+          if (distanceMeters > 0.15 && distanceMeters <= maximumJoinMeters) {
+            connectGraphNodes(
+              graph,
+              left.key,
+              right.key,
+              "endpoint_join",
+              distanceMeters
+            );
+          }
+        }
+      }
+    }
+  });
+}
+
+function isGroundLevelStreet(segment: OsmStreetSegment) {
+  return !segment.bridge && !segment.tunnel && segment.layer === 0;
+}
+
+function isGradeCompatible(left: OsmStreetSegment, right: OsmStreetSegment) {
+  return (
+    left.bridge === right.bridge &&
+    left.tunnel === right.tunnel &&
+    left.layer === right.layer
+  );
+}
+
+function sharesExactEndpoint(left: StreetGraphLine, right: StreetGraphLine) {
+  return (
+    left.fromKey === right.fromKey ||
+    left.fromKey === right.toKey ||
+    left.toKey === right.fromKey ||
+    left.toKey === right.toKey
+  );
+}
+
+function getLineIntersection(
+  left: StreetGraphLine,
+  right: StreetGraphLine,
+  originLatitude: number
+): MapCoordinate | null {
+  const p = projectForTopology(left.from, originLatitude);
+  const p2 = projectForTopology(left.to, originLatitude);
+  const q = projectForTopology(right.from, originLatitude);
+  const q2 = projectForTopology(right.to, originLatitude);
+  const r = { x: p2.x - p.x, y: p2.y - p.y };
+  const s = { x: q2.x - q.x, y: q2.y - q.y };
+  const denominator = crossProduct(r, s);
+
+  if (Math.abs(denominator) < 0.000001) {
+    return null;
+  }
+
+  const qMinusP = { x: q.x - p.x, y: q.y - p.y };
+  const leftProgress = crossProduct(qMinusP, s) / denominator;
+  const rightProgress = crossProduct(qMinusP, r) / denominator;
+  const tolerance = 0.00001;
+
+  if (
+    leftProgress < -tolerance ||
+    leftProgress > 1 + tolerance ||
+    rightProgress < -tolerance ||
+    rightProgress > 1 + tolerance
+  ) {
+    return null;
+  }
+
+  const progress = Math.max(0, Math.min(1, leftProgress));
+
+  return {
+    latitude: left.from.latitude + (left.to.latitude - left.from.latitude) * progress,
+    longitude: left.from.longitude + (left.to.longitude - left.from.longitude) * progress
+  };
+}
+
+function projectForTopology(
+  coordinate: MapCoordinate,
+  originLatitude: number
+): ProjectedPoint {
+  const longitudeScale = Math.max(
+    1,
+    111_320 * Math.cos((originLatitude * Math.PI) / 180)
+  );
+
+  return {
+    x: coordinate.longitude * longitudeScale,
+    y: coordinate.latitude * 111_320
+  };
+}
+
+function crossProduct(left: ProjectedPoint, right: ProjectedPoint) {
+  return left.x * right.y - left.y * right.x;
 }
 
 function ensureGraphNode(graph: Map<string, GraphNode>, key: string, coordinate: MapCoordinate) {
@@ -413,8 +715,8 @@ function attachPointToStreetGraph(
 
   const key = "snap:" + keySuffix;
   ensureGraphNode(graph, key, nearest.coordinate);
-  connectGraphNodes(graph, key, nearest.fromKey);
-  connectGraphNodes(graph, key, nearest.toKey);
+  connectGraphNodes(graph, key, nearest.fromKey, "snap");
+  connectGraphNodes(graph, key, nearest.toKey, "snap");
 
   return {
     distanceMeters: nearest.distanceMeters,
@@ -423,7 +725,13 @@ function attachPointToStreetGraph(
   };
 }
 
-function connectGraphNodes(graph: Map<string, GraphNode>, leftKey: string, rightKey: string) {
+function connectGraphNodes(
+  graph: Map<string, GraphNode>,
+  leftKey: string,
+  rightKey: string,
+  connectionType: GraphConnectionType,
+  explicitDistanceMeters?: number
+) {
   if (leftKey === rightKey) {
     return;
   }
@@ -435,17 +743,17 @@ function connectGraphNodes(graph: Map<string, GraphNode>, leftKey: string, right
     return;
   }
 
-  const distanceMeters = haversineDistanceMeters(
+  const distanceMeters = explicitDistanceMeters ?? haversineDistanceMeters(
     toGpsPoint(left.coordinate),
     toGpsPoint(right.coordinate)
   );
 
   if (!left.edges.some((edge) => edge.key === rightKey)) {
-    left.edges.push({ distanceMeters, key: rightKey });
+    left.edges.push({ connectionType, distanceMeters, key: rightKey });
   }
 
   if (!right.edges.some((edge) => edge.key === leftKey)) {
-    right.edges.push({ distanceMeters, key: leftKey });
+    right.edges.push({ connectionType, distanceMeters, key: leftKey });
   }
 }
 
@@ -474,7 +782,7 @@ function projectCoordinateOntoSegment(
 }
 function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKey: string) {
   const distances = new Map<string, number>([[startKey, 0]]);
-  const previous = new Map<string, string>();
+  const previous = new Map<string, { edge: GraphEdge; key: string }>();
   const visited = new Set<string>();
   const queue: Array<{ distanceMeters: number; key: string }> = [
     { distanceMeters: 0, key: startKey }
@@ -506,7 +814,7 @@ function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKe
 
       if (nextDistance < (distances.get(edge.key) ?? Number.POSITIVE_INFINITY)) {
         distances.set(edge.key, nextDistance);
-        previous.set(edge.key, current.key);
+        previous.set(edge.key, { edge, key: current.key });
         pushQueueItem(queue, {
           distanceMeters: nextDistance,
           key: edge.key
@@ -521,22 +829,25 @@ function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKe
     return null;
   }
 
+  const edges: GraphEdge[] = [];
   const keys = [endKey];
   let currentKey = endKey;
 
   while (currentKey !== startKey) {
-    const previousKey = previous.get(currentKey);
+    const previousStep = previous.get(currentKey);
 
-    if (!previousKey) {
+    if (!previousStep) {
       return null;
     }
 
-    keys.unshift(previousKey);
-    currentKey = previousKey;
+    edges.unshift(previousStep.edge);
+    keys.unshift(previousStep.key);
+    currentKey = previousStep.key;
   }
 
   return {
     distanceMeters: distance,
+    edges,
     keys
   };
 }

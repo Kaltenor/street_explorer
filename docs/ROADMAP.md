@@ -43,35 +43,19 @@
 - Consolidated historical street-corridor repair, per-recording graph reuse, atomic exploration replacement, and calculation recovery.
 - Preloaded launch screen with an explicit, discreet ready-state entry control.
 - Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player marker, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
-- Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V3, and allowlisted OpenStreetMap review tooling.
-- Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V3 sharing.
+- Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V4, and allowlisted OpenStreetMap review tooling.
+- Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V4 sharing.
 - App-wide streamlined navy/gold presentation with a smaller map header, pill navigation, one objective toggle, layer controls centralized in Options, compact idle recording controls, four-metric Completion, and collapsed technical diagnostics.
 - CC0 four-direction animated pixel-art player marker with precomposed native annotation images, smooth coordinate interpolation, reliable last-position and last-rendered-sprite retention, accessible stale-GPS state, and continuous flicker-free Stop/Start recording visibility. Stop now releases the summary and next Start at the durable save boundary while repairable derived work continues asynchronously, and continuous routes bypass unnecessary street-corridor inference.
 
 - Performance pass V1: immediate player/route lane, settled and memoized exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, streamed backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
+- Zone Boundary Completion V2: robust unordered/reversed multipolygon assembly, display-only invalid-boundary fallbacks, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V4 preservation.
+- Street-Aware Path Inference V3: bounded suspicious-gap topology refresh, metadata-safe crossings and sub-8m endpoint joins, immutable evidence-rich bridge snapshots, inferred-cell attribution, and concise History review.
+- Saved-path focus polish: one-action Selected/layer activation and overlap-based Today visibility for midnight-crossing recordings.
 
 ## Next Priority
 
-### 1. Zone Boundary Completion V2
-
-Improve the real game layer:
-
-- improve relation polygon assembly for complex multipolygons
-- add completed district/city rollups
-- cache calculated zone denominators
-- add boundary refresh status and last-fetched date
-
-### 2. Street-Aware Path Inference V3
-
-Improve the now-persisted and scored inferred routes:
-
-- use full OSM street topology instead of local loaded segments only
-- connect intersections more robustly when OSM ways do not share exact nodes
-- add per-bridge review and confidence details in history
-- show how many completion cells came from each frozen bridge
-- keep explicit reprocessing as the only way to replace historical snapshots
-
-### 3. OpenStreetMap Street Completion V2
+### 1. OpenStreetMap Street Completion V2
 
 Improve street intelligence:
 
@@ -80,7 +64,7 @@ Improve street intelligence:
 - use street length instead of local segment counts
 - use a more reliable Overpass endpoint strategy
 
-### 4. Recording Recovery V2
+### 2. Recording Recovery V2
 
 Add:
 
@@ -88,7 +72,7 @@ Add:
 - recovered background status verification
 - naming prompt before finishing a recovered recording
 
-### 5. UI Polish V2
+### 3. UI Polish V2
 
 Add:
 
@@ -97,7 +81,7 @@ Add:
 - stronger route detail and recording report layout
 - clearer GPS status states
 
-### 6. Data Tools V2
+### 5. Data Tools V2
 
 Add:
 

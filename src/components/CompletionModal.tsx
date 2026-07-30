@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   InteractionManager,
@@ -19,13 +19,20 @@ import {
   getExploredCellRecords,
   getCachedZones,
   getCompletionStats,
+  getZoneAchievementRollup,
+  getZoneRefreshState,
   deleteCachedZones,
-  upsertZones
+  saveZoneRefreshState,
+  upsertZones,
+  ZoneAchievementRollup,
+  ZoneRefreshState
 } from "../database/completionRepository";
 import {
   ZoneCompletionStats,
   calculateZoneCompletionStats,
-  fetchNearbyOsmZonesWithDebug
+  fetchNearbyOsmZonesWithDebug,
+  isBoundaryRefreshStale,
+  isZoneCompletionEligible
 } from "../services/zoneCompletion";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
@@ -59,6 +66,8 @@ const EMPTY_STATS: CompletionStats = {
 
 const SCOPES: CompletionScope[] = ["country", "city", "district"];
 
+const EMPTY_ACHIEVEMENT_ROLLUP: ZoneAchievementRollup = { city: 0, district: 0 };
+
 export function CompletionModal({
   currentObjective,
   currentObjectiveStats,
@@ -82,8 +91,20 @@ export function CompletionModal({
     () => zones.find((zone) => zone.id === selectedZoneId) ?? zones[0] ?? null,
     [selectedZoneId, zones]
   );
-  const [completedZoneCount, setCompletedZoneCount] = useState(0);
   const [zoneStats, setZoneStats] = useState<ZoneCompletionStats | null>(null);
+  const [achievementRollup, setAchievementRollup] = useState<ZoneAchievementRollup>(
+    EMPTY_ACHIEVEMENT_ROLLUP
+  );
+  const [refreshState, setRefreshState] = useState<ZoneRefreshState>({
+    errorMessage: null,
+    lastAttemptedAt: null,
+    lastSucceededAt: null,
+    status: "idle"
+  });
+  const autoRefreshAttemptedRef = useRef(false);
+  const currentLocationRef = useRef(currentLocation);
+  currentLocationRef.current = currentLocation;
+  const hasCurrentLocation = Boolean(currentLocation);
   const strings = getStrings(language);
   const completionStrings = strings.completionMenu;
   const nearestIncompleteZone = useMemo(
@@ -93,8 +114,12 @@ export function CompletionModal({
 
   const loadZones = useCallback(
     async () => {
-      const cachedZones = sortZonesForLocation(await getCachedZones(scope), currentLocation);
-      const bestZone = getBestZoneForLocation(cachedZones, currentLocation);
+      const referenceLocation = currentLocationRef.current;
+      const cachedZones = sortZonesForLocation(
+        await getCachedZones(scope),
+        referenceLocation
+      );
+      const bestZone = getBestZoneForLocation(cachedZones, referenceLocation);
 
       setZones(cachedZones);
       setSelectedZoneId((currentZoneId) =>
@@ -104,7 +129,7 @@ export function CompletionModal({
       );
       setZonePickerOpen(false);
     },
-    [currentLocation, scope]
+    [scope]
   );
 
   useEffect(() => {
@@ -134,7 +159,6 @@ export function CompletionModal({
     if (!selectedZone) {
       setZoneStats(null);
       setZoneStatsById({});
-      setCompletedZoneCount(0);
       return;
     }
 
@@ -147,7 +171,6 @@ export function CompletionModal({
             ...zones.filter((zone) => zone.id !== selectedZone.id)
           ];
           const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
-          const zoneStatsList: ZoneCompletionStats[] = [];
 
           for (const zone of orderedZones) {
             const statsForZone = await calculateZoneCompletionStats(
@@ -157,7 +180,6 @@ export function CompletionModal({
             );
 
             nextZoneStatsById[zone.id] = statsForZone;
-            zoneStatsList.push(statsForZone);
           }
 
           if (abortController.signal.aborted) {
@@ -166,13 +188,7 @@ export function CompletionModal({
 
           setZoneStats(nextZoneStatsById[selectedZone.id] ?? null);
           setZoneStatsById(nextZoneStatsById);
-          setCompletedZoneCount(
-            zoneStatsList.filter(
-              (completion) =>
-                completion.completionPercent !== null &&
-                completion.completionPercent >= 100
-            ).length
-          );
+          setAchievementRollup(await getZoneAchievementRollup());
         })
         .catch((error) => {
           if (!abortController.signal.aborted) {
@@ -187,42 +203,112 @@ export function CompletionModal({
     };
   }, [mode, selectedZone, visible, zones]);
 
-  const handleRefreshBoundaries = async () => {
-    if (!currentLocation) {
-      Alert.alert(
-        completionStrings.locationUnavailable,
-        completionStrings.locationUnavailableMessage
-      );
+  const refreshBoundaries = useCallback(
+    async (showResult: boolean) => {
+      const refreshLocation = currentLocationRef.current;
+
+      if (!refreshLocation) {
+        if (showResult) {
+          Alert.alert(
+            completionStrings.locationUnavailable,
+            completionStrings.locationUnavailableMessage
+          );
+        }
+        return;
+      }
+
+      const attemptedAt = new Date().toISOString();
+      const previousState = await getZoneRefreshState();
+      const refreshingState: ZoneRefreshState = {
+        errorMessage: null,
+        lastAttemptedAt: attemptedAt,
+        lastSucceededAt: previousState.lastSucceededAt,
+        status: "refreshing"
+      };
+
+      setIsRefreshingZones(true);
+      setRefreshState(refreshingState);
+
+      try {
+        await saveZoneRefreshState(refreshingState);
+        const result = await fetchNearbyOsmZonesWithDebug(refreshLocation);
+        await upsertZones(result.zones);
+        const succeededState: ZoneRefreshState = {
+          errorMessage: null,
+          lastAttemptedAt: attemptedAt,
+          lastSucceededAt: new Date().toISOString(),
+          status: "succeeded"
+        };
+
+        await saveZoneRefreshState(succeededState);
+        setRefreshState(succeededState);
+        await loadZones();
+
+        if (showResult) {
+          Alert.alert(
+            completionStrings.boundariesRefreshed,
+            result.zones.length > 0
+              ? interpolate(completionStrings.nearbyBoundaryZonesCached, {
+                  count: result.zones.length
+                })
+              : interpolate(completionStrings.noUsableBoundaries, {
+                  raw: result.rawElementCount,
+                  relations: result.relationCount,
+                  usable: result.usableZoneCount
+                })
+          );
+        }
+      } catch (error) {
+        const failedState: ZoneRefreshState = {
+          errorMessage: error instanceof Error ? error.message : String(error),
+          lastAttemptedAt: attemptedAt,
+          lastSucceededAt: previousState.lastSucceededAt,
+          status: "failed"
+        };
+
+        console.warn("Failed to refresh OSM boundaries", error);
+        await saveZoneRefreshState(failedState);
+        setRefreshState(failedState);
+
+        if (showResult) {
+          Alert.alert(
+            completionStrings.boundaryLoadFailed,
+            completionStrings.boundaryLoadFailedMessage
+          );
+        }
+      } finally {
+        setIsRefreshingZones(false);
+      }
+    },
+    [completionStrings, loadZones]
+  );
+
+  const handleRefreshBoundaries = () => {
+    void refreshBoundaries(true);
+  };
+
+  useEffect(() => {
+    if (!visible) {
+      autoRefreshAttemptedRef.current = false;
       return;
     }
 
-    setIsRefreshingZones(true);
+    Promise.all([getZoneRefreshState(), getZoneAchievementRollup()])
+      .then(([storedRefreshState, storedRollup]) => {
+        setRefreshState(storedRefreshState);
+        setAchievementRollup(storedRollup);
 
-    try {
-      const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
-      await upsertZones(result.zones);
-      await loadZones();
-      Alert.alert(
-        completionStrings.boundariesRefreshed,
-        result.zones.length > 0
-          ? interpolate(completionStrings.nearbyBoundaryZonesCached, { count: result.zones.length })
-          : interpolate(completionStrings.noUsableBoundaries, {
-              raw: result.rawElementCount,
-              relations: result.relationCount,
-              usable: result.usableZoneCount
-            })
-      );
-    } catch (error) {
-      console.warn("Failed to refresh OSM boundaries", error);
-      Alert.alert(
-        completionStrings.boundaryLoadFailed,
-        completionStrings.boundaryLoadFailedMessage
-      );
-    } finally {
-      setIsRefreshingZones(false);
-    }
-  };
-
+        if (
+          hasCurrentLocation &&
+          !autoRefreshAttemptedRef.current &&
+          isBoundaryRefreshStale(storedRefreshState.lastSucceededAt)
+        ) {
+          autoRefreshAttemptedRef.current = true;
+          return refreshBoundaries(false);
+        }
+      })
+      .catch((error) => console.warn("Failed to load zone V2 state", error));
+  }, [hasCurrentLocation, refreshBoundaries, visible]);
   const handleClearBoundaries = () => {
     Alert.alert(completionStrings.clearCachedZones, completionStrings.clearCachedZonesMessage, [
       {
@@ -237,7 +323,12 @@ export function CompletionModal({
           setZones([]);
           setSelectedZoneId(null);
           setZoneStats(null);
-          setCompletedZoneCount(0);
+          setRefreshState({
+            errorMessage: null,
+            lastAttemptedAt: null,
+            lastSucceededAt: null,
+            status: "idle"
+          });
         }
       }
     ]);
@@ -282,6 +373,28 @@ export function CompletionModal({
               </Text>
             </View>
           ) : null}
+
+          <View style={styles.achievementPanel}>
+            <View style={styles.currentObjectiveHeader}>
+              <Ionicons name="trophy-outline" size={17} color="#f5c451" />
+              <Text style={styles.currentObjectiveTitle}>
+                {completionStrings.completedZones}
+              </Text>
+            </View>
+            <View style={styles.rollupRow}>
+              <View style={styles.rollupItem}>
+                <Text style={styles.rollupValue}>{achievementRollup.district}</Text>
+                <Text style={styles.rollupLabel}>{completionStrings.districts}</Text>
+              </View>
+              <View style={styles.rollupItem}>
+                <Text style={styles.rollupValue}>{achievementRollup.city}</Text>
+                <Text style={styles.rollupLabel}>{completionStrings.cities}</Text>
+              </View>
+            </View>
+            <Text style={styles.refreshStatusText}>
+              {formatRefreshStatus(refreshState, language)}
+            </Text>
+          </View>
 
           <Selector
             label={completionStrings.scope}
@@ -402,8 +515,15 @@ export function CompletionModal({
               </TouchableOpacity>
               <TouchableOpacity
                 accessibilityRole="button"
+                disabled={!isZoneCompletionEligible(selectedZone)}
                 onPress={() => onSetObjective({ mode, zone: selectedZone })}
-                style={[styles.focusButton, isCurrentObjective(currentObjective, selectedZone, mode) ? styles.activeObjectiveButton : null]}
+                style={[
+                  styles.focusButton,
+                  isCurrentObjective(currentObjective, selectedZone, mode)
+                    ? styles.activeObjectiveButton
+                    : null,
+                  !isZoneCompletionEligible(selectedZone) ? styles.disabledButton : null
+                ]}
               >
                 <Ionicons name="flag-outline" size={16} color="#f8fafc" />
                 <Text style={styles.focusButtonText}>
@@ -512,6 +632,16 @@ function formatDistance(distanceMeters: number) {
 }
 
 function formatCompletion(stats: ZoneCompletionStats | null, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
+  if (stats?.permanentlyCompleted) {
+    return strings.completed;
+  }
+
+  if (stats?.completionStatus === "invalid_boundary") {
+    return strings.unavailable;
+  }
+
   if (!stats || stats.completionPercent === null) {
     return getStrings(language).common.pending;
   }
@@ -520,8 +650,14 @@ function formatCompletion(stats: ZoneCompletionStats | null, language: AppLangua
 }
 
 function formatZoneCells(stats: ZoneCompletionStats | null, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
+  if (stats?.completionStatus === "invalid_boundary") {
+    return strings.unavailable;
+  }
+
   if (!stats || stats.totalZoneCells === null) {
-    return getStrings(language).completionMenu.large;
+    return strings.large;
   }
 
   return String(stats.totalZoneCells);
@@ -532,6 +668,10 @@ function formatObjectiveCells(stats: ZoneCompletionStats | null, language: AppLa
 
   if (!stats) {
     return strings.cellsPending;
+  }
+
+  if (stats.completionStatus === "invalid_boundary") {
+    return strings.unavailable;
   }
 
   if (stats.totalZoneCells === null) {
@@ -576,8 +716,12 @@ function getNearestIncompleteZone(
         return false;
       }
 
+      if (!isZoneCompletionEligible(zone)) {
+        return false;
+      }
+
       const stats = zoneStatsById[zone.id];
-      return !stats || stats.completionPercent === null || stats.completionPercent < 100;
+      return !stats || !stats.permanentlyCompleted;
     }) ?? null
   );
 }
@@ -592,7 +736,7 @@ function getZoneNotice(zone: CachedZone, language: AppLanguage) {
   const strings = getStrings(language).completionMenu;
 
   if (zone.source.includes("fallback")) {
-    return strings.sourceNoticeApprox;
+    return strings.sourceNoticeUnavailable;
   }
 
   return zone.holes.length > 0
@@ -759,6 +903,29 @@ function formatFetchedAt(value: string) {
   }).format(new Date(value));
 }
 
+function formatRefreshStatus(state: ZoneRefreshState, language: AppLanguage) {
+  const strings = getStrings(language).completionMenu;
+
+  if (state.status === "refreshing") {
+    return strings.automaticRefreshInProgress;
+  }
+
+  if (state.status === "failed") {
+    return state.lastSucceededAt
+      ? `${strings.refreshFailed} ${interpolate(strings.lastUpdated, {
+          date: formatFetchedAt(state.lastSucceededAt)
+        })}`
+      : strings.refreshFailed;
+  }
+
+  if (!state.lastSucceededAt) {
+    return strings.neverRefreshed;
+  }
+
+  return `${interpolate(strings.lastUpdated, {
+    date: formatFetchedAt(state.lastSucceededAt)
+  })} · ${strings.refreshesEveryThirtyDays}`;
+}
 function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
@@ -784,6 +951,13 @@ const styles = StyleSheet.create({
   activeObjectiveButton: {
     backgroundColor: "rgba(245, 196, 81, 0.16)",
     borderColor: "rgba(245, 196, 81, 0.42)"
+  },
+  achievementPanel: {
+    backgroundColor: "#0c151c",
+    borderColor: "rgba(245, 196, 81, 0.28)",
+    borderRadius: 14,
+    borderWidth: 1,
+    padding: 12
   },
   closeButton: {
     alignItems: "center",
@@ -880,6 +1054,34 @@ const styles = StyleSheet.create({
     color: "#f8fafc",
     fontSize: 12,
     fontWeight: "800"
+  },
+  refreshStatusText: {
+    color: "#94a3b8",
+    fontSize: 11,
+    lineHeight: 16,
+    marginTop: 10
+  },
+  rollupItem: {
+    backgroundColor: "rgba(245, 196, 81, 0.08)",
+    borderRadius: 12,
+    flex: 1,
+    padding: 10
+  },
+  rollupLabel: {
+    color: "#cbd5e1",
+    fontSize: 11,
+    fontWeight: "700",
+    marginTop: 2
+  },
+  rollupRow: {
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 10
+  },
+  rollupValue: {
+    color: "#f5c451",
+    fontSize: 22,
+    fontWeight: "900"
   },
   panel: {
     backgroundColor: "#0c151c",

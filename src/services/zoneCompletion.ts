@@ -10,6 +10,8 @@ import {
   ExploredCellRecord,
   ExploredCellSource,
   getCachedZoneTotal,
+  getZoneAchievement,
+  recordZoneAchievement,
   saveCachedZoneTotal
 } from "../database/completionRepository";
 import { LOOP_FILL_CONFIG } from "./loopFill";
@@ -18,6 +20,7 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
 const COMPLETION_SCAN_YIELD_INTERVAL = 2_048;
+export const ZONE_BOUNDARY_STALE_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
 const renderedContourFillCache = new WeakMap<ExploredCellRecord[], ExploredCellRecord[]>();
 
 type OverpassGeometryPoint = {
@@ -52,11 +55,14 @@ type OverpassBoundaryResponse = {
 };
 
 export type ZoneCompletionStats = {
+  completedAt: string | null;
   completionPercent: number | null;
+  completionStatus: "available" | "invalid_boundary" | "too_large";
   directlyWalkedCells: number;
   exploredCells: number;
   inferredCells: number;
   loopFilledCells: number;
+  permanentlyCompleted: boolean;
   totalZoneCells: number | null;
 };
 
@@ -141,21 +147,80 @@ export async function calculateZoneCompletionStats(
   const loopFilledCells = uniqueCellCount(
     exploredInside.filter((cell) => cell.source === "loop_fill")
   );
-  const totalZoneCells = await calculateTotalZoneCells(zone, signal);
+  const completionEligible = isZoneCompletionEligible(zone);
+  const totalZoneCells = completionEligible
+    ? await calculateTotalZoneCells(zone, signal)
+    : null;
+  const completionPercent =
+    totalZoneCells && totalZoneCells > 0
+      ? Math.min(100, Math.round((uniqueExplored / totalZoneCells) * 1000) / 10)
+      : null;
+  const geometryFingerprint = getZoneGeometryFingerprint(zone);
+  let achievement = await getZoneAchievement(zone.id);
+
+  if (!achievement && completionPercent !== null && completionPercent >= 100 && totalZoneCells) {
+    const completedAt = new Date().toISOString();
+
+    await recordZoneAchievement({
+      boundaryFetchedAt: zone.fetchedAt,
+      boundarySource: zone.source,
+      completedAt,
+      exploredCells: uniqueExplored,
+      geometryFingerprint,
+      totalZoneCells,
+      zoneId: zone.id,
+      zoneName: zone.name,
+      zoneType: zone.type
+    });
+    achievement = await getZoneAchievement(zone.id);
+  }
 
   return {
-    completionPercent:
-      totalZoneCells && totalZoneCells > 0
-        ? Math.min(100, Math.round((uniqueExplored / totalZoneCells) * 1000) / 10)
-        : null,
+    completedAt: achievement?.completedAt ?? null,
+    completionPercent,
+    completionStatus: !completionEligible
+      ? "invalid_boundary"
+      : totalZoneCells === null
+        ? "too_large"
+        : "available",
     directlyWalkedCells,
     exploredCells: uniqueExplored,
     inferredCells,
     loopFilledCells,
+    permanentlyCompleted: Boolean(achievement),
     totalZoneCells
   };
 }
 
+export function isBoundaryRefreshStale(
+  lastSucceededAt: string | null,
+  nowMs = Date.now()
+) {
+  if (!lastSucceededAt) {
+    return true;
+  }
+
+  const lastSucceededMs = new Date(lastSucceededAt).getTime();
+
+  return !Number.isFinite(lastSucceededMs) ||
+    nowMs - lastSucceededMs >= ZONE_BOUNDARY_STALE_AFTER_MS;
+}
+
+export function isZoneCompletionEligible(zone: CachedZone) {
+  return zone.source === "openstreetmap";
+}
+
+export function getZoneGeometryFingerprint(zone: CachedZone) {
+  const serialized = JSON.stringify({ holes: zone.holes, outer: zone.geometry });
+  let hash = 2166136261;
+
+  for (let index = 0; index < serialized.length; index += 1) {
+    hash ^= serialized.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return `fnv1a:${(hash >>> 0).toString(16).padStart(8, "0")}`;
+}
 export function includeRenderedContourFills(exploredCells: ExploredCellRecord[]) {
   const cached = renderedContourFillCache.get(exploredCells);
 
@@ -245,35 +310,44 @@ function mapRelationToZone(
     return null;
   }
 
-  const geometry = extractRelationGeometry(element);
+  const outerWays = getRelationWays(element, "outer");
+  const innerWays = getRelationWays(element, "inner");
+  const outerAssembly = assembleWaysIntoRings(outerWays);
+  const innerAssembly = assembleWaysIntoRings(innerWays);
+  const exactGeometry =
+    outerAssembly.rings.length > 0 &&
+    outerAssembly.unclosedWayCount === 0 &&
+    innerAssembly.unclosedWayCount === 0;
 
-  if (geometry.length === 0) {
-    const fallbackGeometry = buildBoundsGeometry(element.bounds);
-
-    if (fallbackGeometry.length === 0) {
-      return null;
-    }
-
+  if (exactGeometry) {
     return {
       fetchedAt,
-    geometry: fallbackGeometry,
-      holes: [],
+      geometry: outerAssembly.rings,
+      holes: innerAssembly.rings,
       id: `relation/${element.id}`,
       name,
       parentZoneId: null,
-      source: "openstreetmap_bounds_fallback",
+      source: "openstreetmap",
       type: scope
     };
   }
 
+  const fallbackGeometry = buildBoundsGeometry(element.bounds).length > 0
+    ? buildBoundsGeometry(element.bounds)
+    : buildFallbackBoundsGeometry([...outerWays, ...innerWays]);
+
+  if (fallbackGeometry.length === 0) {
+    return null;
+  }
+
   return {
     fetchedAt,
-    geometry,
-    holes: extractRelationHoles(element),
+    geometry: fallbackGeometry,
+    holes: [],
     id: `relation/${element.id}`,
     name,
     parentZoneId: null,
-    source: "openstreetmap",
+    source: "openstreetmap_incomplete_fallback",
     type: scope
   };
 }
@@ -294,39 +368,34 @@ function getScopeFromAdminLevel(adminLevel: string | undefined): CompletionScope
   return null;
 }
 
-function extractRelationGeometry(element: OverpassRelationElement) {
-  const ways = (element.members ?? [])
-    .filter((member) => member.type === "way" && member.role !== "inner")
+function getRelationWays(
+  element: OverpassRelationElement,
+  role: "inner" | "outer"
+) {
+  return (element.members ?? [])
+    .filter((member) =>
+      member.type === "way" &&
+      (role === "inner" ? member.role === "inner" : member.role !== "inner")
+    )
     .map((member) => mapGeometryRing(member.geometry ?? []))
-    .filter((ring) => ring.length >= 2);
-  const rings = assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
-
-  if (rings.length > 0) {
-    return rings;
-  }
-
-  return buildFallbackBoundsGeometry(ways);
-}
-
-function extractRelationHoles(element: OverpassRelationElement) {
-  const ways = (element.members ?? [])
-    .filter((member) => member.type === "way" && member.role === "inner")
-    .map((member) => mapGeometryRing(member.geometry ?? []))
-    .filter((ring) => ring.length >= 2);
-
-  return assembleWaysIntoRings(ways).filter((ring) => ring.length >= 4);
+    .filter((way) => way.length >= 2);
 }
 
 function mapGeometryRing(points: OverpassGeometryPoint[]) {
-  return points.map((point) => ({
+  const coordinates = points.map((point) => ({
     latitude: point.lat,
     longitude: point.lon
   }));
+
+  return coordinates.filter(
+    (coordinate, index) => index === 0 || !isSameCoordinate(coordinate, coordinates[index - 1])
+  );
 }
 
-function assembleWaysIntoRings(ways: MapCoordinate[][]) {
-  const remaining = [...ways];
+export function assembleWaysIntoRings(ways: MapCoordinate[][]) {
+  const remaining = ways.map((way) => [...way]);
   const rings: MapCoordinate[][] = [];
+  let unclosedWayCount = 0;
 
   while (remaining.length > 0) {
     const seed = remaining.shift();
@@ -335,22 +404,25 @@ function assembleWaysIntoRings(ways: MapCoordinate[][]) {
       continue;
     }
 
-    const ring = [...seed];
+    let ring = [...seed];
+    let joinedWayCount = 1;
     let didExtend = true;
 
     while (!isRingClosed(ring) && didExtend) {
       didExtend = false;
+      const start = ring[0];
       const end = ring.at(-1);
+      const matchIndex = remaining.findIndex((candidate) => {
+        const candidateStart = candidate[0];
+        const candidateEnd = candidate.at(-1);
 
-      if (!end) {
-        break;
-      }
+        return isSameCoordinate(candidateStart, end) ||
+          isSameCoordinate(candidateEnd, end) ||
+          isSameCoordinate(candidateEnd, start) ||
+          isSameCoordinate(candidateStart, start);
+      });
 
-      const matchIndex = remaining.findIndex((candidate) =>
-        isSameCoordinate(candidate[0], end) || isSameCoordinate(candidate.at(-1), end)
-      );
-
-      if (matchIndex < 0) {
+      if (matchIndex < 0 || !start || !end) {
         continue;
       }
 
@@ -360,19 +432,51 @@ function assembleWaysIntoRings(ways: MapCoordinate[][]) {
         continue;
       }
 
-      const oriented = isSameCoordinate(match[0], end) ? match.slice(1) : match.slice(0, -1).reverse();
-      ring.push(...oriented);
+      const matchStart = match[0];
+      const matchEnd = match.at(-1);
+
+      if (isSameCoordinate(matchStart, end)) {
+        ring.push(...match.slice(1));
+      } else if (isSameCoordinate(matchEnd, end)) {
+        ring.push(...match.slice(0, -1).reverse());
+      } else if (isSameCoordinate(matchEnd, start)) {
+        ring = [...match.slice(0, -1), ...ring];
+      } else if (isSameCoordinate(matchStart, start)) {
+        ring = [...match.slice(1).reverse(), ...ring];
+      }
+
+      joinedWayCount += 1;
       didExtend = true;
     }
 
-    if (isRingClosed(ring)) {
+    if (isUsableRing(ring)) {
       rings.push(ring);
+    } else {
+      unclosedWayCount += joinedWayCount;
     }
   }
 
-  return rings;
+  return { rings, unclosedWayCount };
 }
 
+function isUsableRing(ring: MapCoordinate[]) {
+  if (ring.length < 4 || !isRingClosed(ring)) {
+    return false;
+  }
+
+  let doubledArea = 0;
+
+  for (let index = 0; index < ring.length - 1; index += 1) {
+    const current = ring[index];
+    const next = ring[index + 1];
+
+    if (current && next) {
+      doubledArea += current.longitude * next.latitude - next.longitude * current.latitude;
+    }
+  }
+
+  return Math.abs(doubledArea) > 1e-12;
+}
 function isRingClosed(ring: MapCoordinate[]) {
   const first = ring[0];
   const last = ring.at(-1);
@@ -439,7 +543,8 @@ function buildBoundsGeometry(bounds: {
 
 async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal) {
   throwIfCompletionCancelled(signal);
-  const cachedTotal = await getCachedZoneTotal(zone.id);
+  const geometryFingerprint = getZoneGeometryFingerprint(zone);
+  const cachedTotal = await getCachedZoneTotal(zone.id, geometryFingerprint);
 
   throwIfCompletionCancelled(signal);
 
@@ -490,7 +595,7 @@ async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal) {
   }
 
   throwIfCompletionCancelled(signal);
-  await saveCachedZoneTotal(zone.id, count);
+  await saveCachedZoneTotal(zone.id, count, geometryFingerprint);
 
   return count;
 }

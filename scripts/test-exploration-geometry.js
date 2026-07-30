@@ -21,6 +21,17 @@ const pathInference = require("../src/services/pathInference.ts");
 const liveRoute = require("../src/services/liveRoute.ts");
 const recordingState = require("../src/services/recordingState.ts");
 const config = require("../src/constants/config.ts");
+const Module = require("module");
+const originalModuleLoad = Module._load;
+Module._load = function loadWithExpoSqliteStub(request, parent, isMain) {
+  if (request === "expo-sqlite") {
+    return {};
+  }
+
+  return originalModuleLoad.call(this, request, parent, isMain);
+};
+const zoneCompletion = require("../src/services/zoneCompletion.ts");
+Module._load = originalModuleLoad;
 const packageMetadata = require("../package.json");
 
 function assert(condition, message) {
@@ -289,18 +300,23 @@ const safeSnapEnd = {
   latitude: 45.75003
 };
 const safeStreetSegment = {
+  access: null,
+  bridge: false,
   coordinates: [
     { latitude: 45.75, longitude: 4.8 },
     { latitude: 45.75, longitude: 4.801 }
   ],
   fetchedAt: "2026-01-01T00:00:00.000Z",
+  foot: null,
   highway: "residential",
   id: "way/test/part/0",
+  layer: 0,
   maxLatitude: 45.75,
   maxLongitude: 4.801,
   minLatitude: 45.75,
   minLongitude: 4.8,
-  name: "Test street"
+  name: "Test street",
+  tunnel: false
 };
 const safeSnapResult = pathInference.inferPathBetweenPoints(
   safeSnapStart,
@@ -315,6 +331,81 @@ assert(
     safeSnapResult.segment.points.at(-1).latitude === safeSnapEnd.latitude,
   "high-confidence street matches close their short endpoint seams"
 );
+const topologySegment = (id, coordinates, overrides = {}) => ({
+  ...safeStreetSegment,
+  coordinates,
+  id,
+  maxLatitude: Math.max(...coordinates.map((point) => point.latitude)),
+  maxLongitude: Math.max(...coordinates.map((point) => point.longitude)),
+  minLatitude: Math.min(...coordinates.map((point) => point.latitude)),
+  minLongitude: Math.min(...coordinates.map((point) => point.longitude)),
+  ...overrides
+});
+const crossingStart = gpsPoint(0, 0, 0);
+const crossingEnd = {
+  ...gpsPoint(0.0005, 1, 80),
+  latitude: 45.7506
+};
+const crossingHorizontal = topologySegment("way/crossing-horizontal/part/0", [
+  { latitude: 45.75, longitude: 4.8 },
+  { latitude: 45.75, longitude: 4.801 }
+]);
+const crossingVertical = topologySegment("way/crossing-vertical/part/0", [
+  { latitude: 45.75, longitude: 4.8005 },
+  { latitude: 45.7506, longitude: 4.8005 }
+]);
+const crossingResult = pathInference.inferPathBetweenPoints(
+  crossingStart,
+  crossingEnd,
+  "walk",
+  [crossingHorizontal, crossingVertical]
+);
+assert(
+  crossingResult.status === "inferred" &&
+    crossingResult.segment.bridgeEvidence.acceptanceReason === "geometric_crossing" &&
+    crossingResult.segment.bridgeEvidence.intersectionJoinCount === 1,
+  "ground-level geometric crossings create an evidenced street bridge"
+);
+const overpassResult = pathInference.inferPathBetweenPoints(
+  crossingStart,
+  crossingEnd,
+  "walk",
+  [
+    crossingHorizontal,
+    topologySegment(
+      "way/crossing-bridge/part/0",
+      crossingVertical.coordinates,
+      { bridge: true, layer: 1 }
+    )
+  ]
+);
+assert(
+  overpassResult.status === "rejected",
+  "bridge and ground geometry crossings remain disconnected"
+);
+const endpointJoinResult = pathInference.inferPathBetweenPoints(
+  gpsPoint(0, 0, 0),
+  gpsPoint(0.001, 1, 80),
+  "walk",
+  [
+    topologySegment("way/endpoint-left/part/0", [
+      { latitude: 45.75, longitude: 4.8 },
+      { latitude: 45.75, longitude: 4.8005 }
+    ]),
+    topologySegment("way/endpoint-right/part/0", [
+      { latitude: 45.75, longitude: 4.80055 },
+      { latitude: 45.75, longitude: 4.801 }
+    ])
+  ]
+);
+assert(
+  endpointJoinResult.status === "inferred" &&
+    endpointJoinResult.segment.confidence === "medium" &&
+    endpointJoinResult.segment.bridgeEvidence.acceptanceReason === "near_endpoint_join" &&
+    endpointJoinResult.segment.bridgeEvidence.maxEndpointJoinDistanceMeters <= 8,
+  "compatible street endpoints within eight metres create a medium-confidence evidenced bridge"
+);
+
 const legacyGapStart = gpsPoint(0, 0, 0);
 const legacyGapEnd = gpsPoint(0.0007, 1, 20);
 const legacyGapWithoutCoverage = pathInference.buildPathSegments(
@@ -552,6 +643,68 @@ assert(
   "location recovery leaves the unexplored outage corridor empty"
 );
 
+const fragmentedOuterRing = zoneCompletion.assembleWaysIntoRings([
+  [{ latitude: 0, longitude: 1 }, { latitude: 1, longitude: 1 }],
+  [{ latitude: 0, longitude: 0 }, { latitude: 0, longitude: 1 }],
+  [{ latitude: 0, longitude: 0 }, { latitude: 1, longitude: 0 }],
+  [{ latitude: 1, longitude: 1 }, { latitude: 1, longitude: 0 }]
+]);
+assert(
+  fragmentedOuterRing.rings.length === 1 &&
+    fragmentedOuterRing.unclosedWayCount === 0 &&
+    fragmentedOuterRing.rings[0].length === 5,
+  "zone V2 assembles reversed and unordered OSM way fragments into a closed ring"
+);
+const multipleOuterRings = zoneCompletion.assembleWaysIntoRings([
+  [{ latitude: 0, longitude: 0 }, { latitude: 0, longitude: 1 }, { latitude: 1, longitude: 1 }, { latitude: 1, longitude: 0 }, { latitude: 0, longitude: 0 }],
+  [{ latitude: 2, longitude: 2 }, { latitude: 2, longitude: 3 }, { latitude: 3, longitude: 3 }, { latitude: 3, longitude: 2 }, { latitude: 2, longitude: 2 }]
+]);
+assert(
+  multipleOuterRings.rings.length === 2 && multipleOuterRings.unclosedWayCount === 0,
+  "zone V2 retains every closed outer component in a complex multipolygon"
+);
+const malformedOuterRing = zoneCompletion.assembleWaysIntoRings([
+  [{ latitude: 0, longitude: 0 }, { latitude: 0, longitude: 1 }],
+  [{ latitude: 1, longitude: 1 }, { latitude: 1, longitude: 0 }]
+]);
+assert(
+  malformedOuterRing.rings.length === 0 && malformedOuterRing.unclosedWayCount === 2,
+  "zone V2 rejects incomplete multipolygon fragments for completion"
+);
+assert(
+  zoneCompletion.isBoundaryRefreshStale(null) &&
+    zoneCompletion.isBoundaryRefreshStale("2025-01-01T00:00:00.000Z", Date.parse("2025-02-01T00:00:00.000Z")) &&
+    !zoneCompletion.isBoundaryRefreshStale("2025-01-15T00:00:00.000Z", Date.parse("2025-02-01T00:00:00.000Z")),
+  "zone V2 refreshes missing or 30-day-stale boundary caches"
+);
+const exactTestZone = {
+  fetchedAt: "2025-01-01T00:00:00.000Z",
+  geometry: multipleOuterRings.rings,
+  holes: [],
+  id: "relation/1",
+  name: "Exact",
+  parentZoneId: null,
+  source: "openstreetmap",
+  type: "district"
+};
+assert(
+  zoneCompletion.isZoneCompletionEligible(exactTestZone) &&
+    !zoneCompletion.isZoneCompletionEligible({
+      ...exactTestZone,
+      source: "openstreetmap_incomplete_fallback"
+    }) &&
+    zoneCompletion.getZoneGeometryFingerprint(exactTestZone) !==
+      zoneCompletion.getZoneGeometryFingerprint({
+        ...exactTestZone,
+        holes: [[
+          { latitude: 0.2, longitude: 0.2 },
+          { latitude: 0.2, longitude: 0.3 },
+          { latitude: 0.3, longitude: 0.3 },
+          { latitude: 0.2, longitude: 0.2 }
+        ]]
+      }),
+  "zone V2 separates display fallbacks from award geometry and fingerprints denominator inputs"
+);
 const mapScreenSource = fs.readFileSync(
   require.resolve("../src/screens/MapScreen.tsx"),
   "utf8"
@@ -957,6 +1110,40 @@ assert(
   "startup, scoped paths, database indexes, and aggregate queries avoid unnecessary blocking work"
 );
 assert(
+  mapScreenSource.includes("const focusSavedWalkOnMap") &&
+    mapScreenSource.includes('setPathDisplayMode("selected")') &&
+    mapScreenSource.includes("{ ...current, showPaths: true }") &&
+    mapScreenSource.includes("onSelectWalk={focusSavedWalkOnMap}") &&
+    mapScreenSource.includes("doesWalkOverlapToday") &&
+    mapScreenSource.includes("endedAfter: todayStart.toISOString()") &&
+    walkRepositorySource.includes(
+      "walk_sessions.ended_at > ? AND walk_sessions.started_at < ?"
+    ),
+  "Focus on map reveals the selected route and Today includes midnight-overlap walks"
+);assert(
+  databaseSource.includes('applyMigration(22, "add_zone_completion_v2"') &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS zone_achievements") &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS zone_refresh_state") &&
+    completionRepositorySource.includes("INSERT OR IGNORE INTO zone_achievements") &&
+    completionRepositorySource.includes("geometry_fingerprint = ?") &&
+    completionModalSource.includes("isBoundaryRefreshStale") &&
+    completionModalSource.includes("achievementRollup.district") &&
+    zoneCompletionSource.includes('"invalid_boundary"') &&
+    walkRepositorySource.includes("zoneAchievements: ZoneAchievement[]") &&
+    dataToolsSource.includes("parsed.version !== 4"),
+  "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V4"
+);
+assert(
+  databaseSource.includes('applyMigration(23, "add_street_topology_metadata"') &&
+    databaseSource.includes("DELETE FROM osm_street_segments") &&
+    routeSnapshotSource.includes("ROUTE_SNAPSHOT_ALGORITHM_VERSION = 4") &&
+    routeSnapshotSource.includes("refreshSuspiciousGapTopology") &&
+    routeSnapshotSource.includes("inferredCellCount: collectExploredCellIdsForPath") &&
+    walkRepositorySource.includes("isRouteBridgeEvidence") &&
+    walkHistorySource.includes("strings.history.bridgeSummary") &&
+    walkHistorySource.includes("formatBridgeEvidence"),
+  "path inference V3 persists safe topology metadata and reviewable bridge evidence"
+);assert(
   completionModalSource.includes("InteractionManager.runAfterInteractions") &&
     completionModalSource.includes("abortController.abort()") &&
     zoneCompletionSource.includes("COMPLETION_SCAN_YIELD_INTERVAL") &&

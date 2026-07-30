@@ -18,6 +18,29 @@ export type CachedZone = {
   source: string;
   type: CompletionScope;
 };
+export type ZoneAchievement = {
+  boundaryFetchedAt: string;
+  boundarySource: string;
+  completedAt: string;
+  exploredCells: number;
+  geometryFingerprint: string;
+  totalZoneCells: number;
+  zoneId: string;
+  zoneName: string;
+  zoneType: CompletionScope;
+};
+
+export type ZoneAchievementRollup = {
+  city: number;
+  district: number;
+};
+
+export type ZoneRefreshState = {
+  errorMessage: string | null;
+  lastAttemptedAt: string | null;
+  lastSucceededAt: string | null;
+  status: "failed" | "idle" | "refreshing" | "succeeded";
+};
 
 export type CompletionStats = {
   directlyWalkedCells: number;
@@ -546,32 +569,47 @@ function mapZoneRow(row: ZoneRow): CachedZone {
 export async function upsertZones(zones: CachedZone[]) {
   const db = await getDatabase();
 
-  for (const zone of zones) {
-    await db.runAsync(
-      `
-        INSERT OR REPLACE INTO zones (
-          id,
-          type,
-          name,
-          parent_zone_id,
-          source,
-          geometry_json,
-          fetched_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-      `,
-      zone.id,
-      zone.type,
-      zone.name,
-      zone.parentZoneId,
-      zone.source,
-      JSON.stringify({
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    for (const zone of zones) {
+      const geometryJson = JSON.stringify({
         holes: zone.holes,
         outer: zone.geometry
-      }),
-      zone.fetchedAt
-    );
-  }
+      });
+      const existing = await transaction.getFirstAsync<{ geometry_json: string }>(
+        "SELECT geometry_json FROM zones WHERE id = ?",
+        zone.id
+      );
+
+      if (existing && existing.geometry_json !== geometryJson) {
+        await transaction.runAsync(
+          "DELETE FROM zone_cell_totals WHERE zone_id = ?",
+          zone.id
+        );
+      }
+
+      await transaction.runAsync(
+        `
+          INSERT OR REPLACE INTO zones (
+            id,
+            type,
+            name,
+            parent_zone_id,
+            source,
+            geometry_json,
+            fetched_at
+          )
+          VALUES (?, ?, ?, ?, ?, ?, ?)
+        `,
+        zone.id,
+        zone.type,
+        zone.name,
+        zone.parentZoneId,
+        zone.source,
+        geometryJson,
+        zone.fetchedAt
+      );
+    }
+  });
 }
 
 export async function deleteCachedZones() {
@@ -579,9 +617,13 @@ export async function deleteCachedZones() {
 
   await db.runAsync("DELETE FROM zones");
   await db.runAsync("DELETE FROM zone_cell_totals");
+  await db.runAsync("DELETE FROM zone_refresh_state");
 }
 
-export async function getCachedZoneTotal(zoneId: string) {
+export async function getCachedZoneTotal(
+  zoneId: string,
+  geometryFingerprint: string
+) {
   const db = await getDatabase();
   const row = await db.getFirstAsync<{ total_cells: number }>(
     `
@@ -589,15 +631,21 @@ export async function getCachedZoneTotal(zoneId: string) {
       FROM zone_cell_totals
       WHERE zone_id = ?
         AND cell_size_m = ?
+        AND geometry_fingerprint = ?
     `,
     zoneId,
-    EXPLORATION_CELL_SIZE_METERS
+    EXPLORATION_CELL_SIZE_METERS,
+    geometryFingerprint
   );
 
   return row?.total_cells ?? null;
 }
 
-export async function saveCachedZoneTotal(zoneId: string, totalCells: number) {
+export async function saveCachedZoneTotal(
+  zoneId: string,
+  totalCells: number,
+  geometryFingerprint: string
+) {
   const db = await getDatabase();
 
   await db.runAsync(
@@ -606,17 +654,167 @@ export async function saveCachedZoneTotal(zoneId: string, totalCells: number) {
         zone_id,
         cell_size_m,
         total_cells,
-        calculated_at
+        calculated_at,
+        geometry_fingerprint
       )
-      VALUES (?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?)
     `,
     zoneId,
     EXPLORATION_CELL_SIZE_METERS,
     totalCells,
-    new Date().toISOString()
+    new Date().toISOString(),
+    geometryFingerprint
   );
 }
 
+export async function getZoneAchievement(zoneId: string) {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<ZoneAchievementRow>(
+    `
+      SELECT zone_id, zone_type, zone_name, completed_at, explored_cells,
+        total_zone_cells, boundary_fetched_at, boundary_source,
+        geometry_fingerprint
+      FROM zone_achievements
+      WHERE zone_id = ?
+    `,
+    zoneId
+  );
+
+  return row ? mapZoneAchievementRow(row) : null;
+}
+
+export async function getZoneAchievements() {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<ZoneAchievementRow>(`
+    SELECT zone_id, zone_type, zone_name, completed_at, explored_cells,
+      total_zone_cells, boundary_fetched_at, boundary_source,
+      geometry_fingerprint
+    FROM zone_achievements
+    ORDER BY completed_at DESC
+  `);
+
+  return rows.map(mapZoneAchievementRow);
+}
+
+export async function getZoneAchievementRollup(): Promise<ZoneAchievementRollup> {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{ count: number; zone_type: CompletionScope }>(`
+    SELECT zone_type, COUNT(*) AS count
+    FROM zone_achievements
+    WHERE zone_type IN ('city', 'district')
+    GROUP BY zone_type
+  `);
+  const counts = Object.fromEntries(rows.map((row) => [row.zone_type, row.count]));
+
+  return {
+    city: counts.city ?? 0,
+    district: counts.district ?? 0
+  };
+}
+
+export async function recordZoneAchievement(input: ZoneAchievement) {
+  const db = await getDatabase();
+  const result = await db.runAsync(
+    `
+      INSERT OR IGNORE INTO zone_achievements (
+        zone_id, zone_type, zone_name, completed_at, explored_cells,
+        total_zone_cells, boundary_fetched_at, boundary_source,
+        geometry_fingerprint
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+    input.zoneId,
+    input.zoneType,
+    input.zoneName,
+    input.completedAt,
+    input.exploredCells,
+    input.totalZoneCells,
+    input.boundaryFetchedAt,
+    input.boundarySource,
+    input.geometryFingerprint
+  );
+
+  return result.changes > 0;
+}
+
+export async function getZoneRefreshState(): Promise<ZoneRefreshState> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{
+    error_message: string | null;
+    last_attempted_at: string | null;
+    last_succeeded_at: string | null;
+    status: ZoneRefreshState["status"];
+  }>(`
+    SELECT status, last_attempted_at, last_succeeded_at, error_message
+    FROM zone_refresh_state
+    WHERE id = 1
+  `);
+
+  return row
+    ? {
+        errorMessage:
+          row.status === "refreshing"
+            ? "The previous boundary refresh was interrupted."
+            : row.error_message,
+        lastAttemptedAt: row.last_attempted_at,
+        lastSucceededAt: row.last_succeeded_at,
+        status: row.status === "refreshing" ? "failed" : row.status
+      }
+    : {
+        errorMessage: null,
+        lastAttemptedAt: null,
+        lastSucceededAt: null,
+        status: "idle"
+      };
+}
+
+export async function saveZoneRefreshState(state: ZoneRefreshState) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO zone_refresh_state (
+        id, status, last_attempted_at, last_succeeded_at, error_message
+      )
+      VALUES (1, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
+        status = excluded.status,
+        last_attempted_at = excluded.last_attempted_at,
+        last_succeeded_at = excluded.last_succeeded_at,
+        error_message = excluded.error_message
+    `,
+    state.status,
+    state.lastAttemptedAt,
+    state.lastSucceededAt,
+    state.errorMessage
+  );
+}
+
+type ZoneAchievementRow = {
+  boundary_fetched_at: string;
+  boundary_source: string;
+  completed_at: string;
+  explored_cells: number;
+  geometry_fingerprint: string;
+  total_zone_cells: number;
+  zone_id: string;
+  zone_name: string;
+  zone_type: CompletionScope;
+};
+
+function mapZoneAchievementRow(row: ZoneAchievementRow): ZoneAchievement {
+  return {
+    boundaryFetchedAt: row.boundary_fetched_at,
+    boundarySource: row.boundary_source,
+    completedAt: row.completed_at,
+    exploredCells: row.explored_cells,
+    geometryFingerprint: row.geometry_fingerprint,
+    totalZoneCells: row.total_zone_cells,
+    zoneId: row.zone_id,
+    zoneName: row.zone_name,
+    zoneType: row.zone_type
+  };
+}
 function parseCellKey(cellKey: string) {
   const [x, y] = cellKey.split(":").map(Number);
 

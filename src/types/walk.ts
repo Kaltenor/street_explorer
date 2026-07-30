@@ -12,7 +12,24 @@ export type GpsPoint = {
   speedMetersPerSecond?: number | null;
 };
 
+export type RouteBridgeEvidence = {
+  acceptanceReason: "exact_topology" | "geometric_crossing" | "near_endpoint_join";
+  endSnapDistanceMeters: number;
+  endpointJoinCount: number;
+  gapDistanceMeters: number;
+  gapDurationSeconds: number;
+  inferredCellCount: number;
+  intersectionJoinCount: number;
+  maxEndpointJoinDistanceMeters: number;
+  routeDistanceMeters: number;
+  schemaVersion: 1;
+  sourceStreetSegmentCount: number;
+  startSnapDistanceMeters: number;
+  straightDistanceMeters: number;
+};
+
 export type RenderedRouteSegment = {
+  bridgeEvidence?: RouteBridgeEvidence;
   confidence?: "medium" | "high";
   points: GpsPoint[];
   type: "confirmed" | "inferred";

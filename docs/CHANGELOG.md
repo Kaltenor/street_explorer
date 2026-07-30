@@ -1,5 +1,45 @@
 # Changelog
 
+## v0.8.1
+
+Fixed:
+
+- History's Focus on map action now switches Paths to Selected and enables the Saved route layer before fitting the recording.
+- The Today path scope now selects recordings whose time range overlaps the local day, so walks crossing midnight are not hidden because they began the previous evening.
+- Added regression coverage for automatic selected-route visibility and overlap-based scoped SQL.
+- Synchronized the app version to 0.8.1, iOS build 86, and Android version code 86.
+
+## v0.8.0
+
+Added:
+
+- Street-Aware Path Inference V3 bounded topology refreshes around suspicious GPS gaps, reusing fresh shared cache coverage and remaining usable from cache when Overpass is unavailable.
+- Safe graph joins for true ground-level geometric crossings and compatible street endpoints up to 8m apart, with bridge, tunnel, layer, access, and foot safeguards.
+- Persisted per-bridge evidence including confidence, topology reason, snap distances, route metrics, join counts, and inferred completion-cell contribution.
+- A concise Street bridges summary in History plus per-bridge evidence under Technical details.
+- Geometry regressions for accepted ground crossings, rejected bridge/ground overpasses, and medium-confidence near-endpoint joins.
+
+Changed:
+
+- Old street-cache rows are cleared during migration because they lack grade/access metadata; recordings, route snapshots, explored cells, achievements, and other user data are untouched.
+- Frozen historical routes remain immutable during normal use; Reprocess recordings remains the only workflow that replaces them.
+- Synchronized the app version to 0.8.0, iOS build 85, and Android version code 85.
+
+## v0.7.0
+
+Added:
+
+- Zone Boundary Completion V2 permanent achievements for exact district, city, and country boundaries, with durable completion evidence and district/city rollups in Completion.
+- Automatic 30-day boundary refresh on opening Completion, persisted success/failure state, a visible last-updated date, and the existing manual refresh control.
+- Backup V4 export and restore for permanent zone achievements while retaining V1-V3 import compatibility.
+
+Changed:
+
+- Administrative relation assembly now joins unordered and reversed OSM way fragments, preserves multiple outer rings and inner holes, and rejects incomplete or degenerate geometry for completion.
+- Incomplete multipolygons use bounds only for map display; they cannot calculate progress, become objectives, or grant achievements until an exact boundary is fetched.
+- Zone denominator caches are tied to a deterministic geometry fingerprint and invalidated when refreshed geometry changes.
+- Synchronized the app version to 0.7.0, iOS build 84, and Android version code 84.
+
 ## v0.6.6
 
 Optimized:

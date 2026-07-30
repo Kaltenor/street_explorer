@@ -16,7 +16,7 @@ import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18
 import { formatDistance, formatDuration } from "../services/distance";
 import { collectExploredCellIdsForPath } from "../services/explorationArea";
 import { buildPathSegments } from "../services/pathInference";
-import { ActivityMode, WalkSession, WalkWithPoints } from "../types/walk";
+import { ActivityMode, RouteBridgeEvidence, WalkSession, WalkWithPoints } from "../types/walk";
 
 type WalkHistoryModalProps = {
   activityMode: ActivityMode;
@@ -241,6 +241,22 @@ function RecordingDetail({
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
   const [technicalVisible, setTechnicalVisible] = useState(false);
+  const inferredSegments = walkWithPoints?.routeSegments?.filter(
+    (segment) => segment.type === "inferred"
+  ) ?? [];
+  const inferredCellCount = inferredSegments.reduce(
+    (total, segment) => total + (
+      segment.bridgeEvidence?.inferredCellCount ??
+      collectExploredCellIdsForPath(segment.points, walk.activityMode).length
+    ),
+    0
+  );
+  const bridgeSummary = interpolate(strings.history.bridgeSummary, {
+    cells: inferredCellCount,
+    count: inferredSegments.length,
+    high: inferredSegments.filter((segment) => segment.confidence === "high").length,
+    medium: inferredSegments.filter((segment) => segment.confidence === "medium").length
+  });
 
   return (
     <ScrollView contentContainerStyle={styles.detailScreen}>
@@ -266,6 +282,16 @@ function RecordingDetail({
           <Detail label={strings.history.started} value={formatFullDate(walk.startedAt)} />
           <Detail label={strings.history.ended} value={formatFullDate(walk.endedAt)} />
         </View>
+
+        {inferredSegments.length > 0 ? (
+          <View style={styles.reportCard}>
+            <View style={styles.reportHeader}>
+              <Ionicons name="git-branch-outline" size={16} color="#f5c451" />
+              <Text style={styles.reportTitle}>{strings.history.streetBridges}</Text>
+            </View>
+            <Text style={styles.reportNote}>{bridgeSummary}</Text>
+          </View>
+        ) : null}
 
         <TouchableOpacity
           accessibilityRole="button"
@@ -316,6 +342,26 @@ function RecordingDetail({
               </View>
               <Text style={styles.reportNote}>{report.qualityReason}</Text>
             </View>
+
+            {inferredSegments.length > 0 ? (
+              <View style={styles.reportCard}>
+                <View style={styles.reportHeader}>
+                  <Ionicons name="git-branch-outline" size={16} color="#f5c451" />
+                  <Text style={styles.reportTitle}>{strings.history.streetBridges}</Text>
+                </View>
+                <View style={styles.details}>
+                  {inferredSegments.map((segment, index) => (
+                    <Detail
+                      key={`bridge-${index}`}
+                      label={`#${index + 1} ${segment.confidence ?? "medium"}`}
+                      value={segment.bridgeEvidence
+                        ? formatBridgeEvidence(segment.bridgeEvidence, language)
+                        : strings.history.bridgeEvidenceUnavailable}
+                    />
+                  ))}
+                </View>
+              </View>
+            ) : null}
 
             <View style={styles.reportCard}>
               <View style={styles.reportHeader}>
@@ -480,6 +526,25 @@ function calculateSavedRecordingQuality({
   };
 }
 
+function formatBridgeEvidence(
+  evidence: RouteBridgeEvidence,
+  language: AppLanguage
+) {
+  const reason = language === "fr"
+    ? evidence.acceptanceReason === "geometric_crossing"
+      ? "croisement géométrique"
+      : evidence.acceptanceReason === "near_endpoint_join"
+        ? "jonction proche"
+        : "topologie exacte"
+    : evidence.acceptanceReason === "geometric_crossing"
+      ? "geometric crossing"
+      : evidence.acceptanceReason === "near_endpoint_join"
+        ? "near endpoint join"
+        : "exact topology";
+  const cells = language === "fr" ? "cellules" : "cells";
+
+  return `${formatDistance(evidence.routeDistanceMeters)} · ${evidence.inferredCellCount} ${cells} · ${reason}`;
+}
 function formatLoopSummary(summary: LoopFillSessionSummary | null) {
   if (!summary) {
     return "No loop detected";

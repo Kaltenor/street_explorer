@@ -1,12 +1,14 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
+import type { CompletionScope, ZoneAchievement } from "./completionRepository";
 import { BACKGROUND_LOCATION_RECOVERY_GRACE_MS } from "../constants/config";
 import {
   ActivityMode,
   GpsPoint,
   LifetimeStats,
   RenderedRouteSegment,
+  RouteBridgeEvidence,
   WalkSession,
   WalkWithPoints
 } from "../types/walk";
@@ -95,7 +97,8 @@ export type StreetExplorerBackup = {
     sourcePointCount: number;
   }>;
   sessions: WalkSession[];
-  version: 3;
+  zoneAchievements: ZoneAchievement[];
+  version: 4;
 };
 
 export async function createWalkSession(input: CreateWalkInput) {
@@ -535,7 +538,7 @@ export type WalkPointLoadScope =
   | { kind: "all" }
   | { kind: "selected"; sessionId: number }
   | { kind: "since"; startedAt: string }
-  | { endedBefore: string; kind: "range"; startedAt: string };
+  | { endedAfter: string; kind: "range"; startedBefore: string };
 
 export async function getAllWalksWithPoints(
   activityMode: ActivityMode,
@@ -548,7 +551,7 @@ export async function getAllWalksWithPoints(
       : scope.kind === "since"
         ? "AND walk_sessions.started_at >= ?"
         : scope.kind === "range"
-          ? "AND walk_sessions.started_at >= ? AND walk_sessions.started_at < ?"
+          ? "AND walk_sessions.ended_at > ? AND walk_sessions.started_at < ?"
           : "";
   const scopeParameters =
     scope.kind === "selected"
@@ -556,7 +559,7 @@ export async function getAllWalksWithPoints(
       : scope.kind === "since"
         ? [scope.startedAt]
         : scope.kind === "range"
-          ? [scope.startedAt, scope.endedBefore]
+          ? [scope.endedAfter, scope.startedBefore]
           : [];
   const sessions = await db.getAllAsync<WalkSessionRow>(
     `
@@ -1073,6 +1076,23 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       WHERE key LIKE 'medal_retro_scan:%'
       ORDER BY key
     `);
+    const zoneAchievementRows = await transaction.getAllAsync<{
+      boundary_fetched_at: string;
+      boundary_source: string;
+      completed_at: string;
+      explored_cells: number;
+      geometry_fingerprint: string;
+      total_zone_cells: number;
+      zone_id: string;
+      zone_name: string;
+      zone_type: CompletionScope;
+    }>(`
+      SELECT zone_id, zone_type, zone_name, completed_at, explored_cells,
+        total_zone_cells, boundary_fetched_at, boundary_source,
+        geometry_fingerprint
+      FROM zone_achievements
+      ORDER BY completed_at
+    `);
 
     backup = {
       exportedAt: new Date().toISOString(),
@@ -1114,7 +1134,18 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
           : [];
       }),
       sessions: sessionRows.map(mapSessionRow),
-      version: 3
+      zoneAchievements: zoneAchievementRows.map((row) => ({
+        boundaryFetchedAt: row.boundary_fetched_at,
+        boundarySource: row.boundary_source,
+        completedAt: row.completed_at,
+        exploredCells: row.explored_cells,
+        geometryFingerprint: row.geometry_fingerprint,
+        totalZoneCells: row.total_zone_cells,
+        zoneId: row.zone_id,
+        zoneName: row.zone_name,
+        zoneType: row.zone_type
+      })),
+      version: 4
     };
   });
 
@@ -1136,6 +1167,7 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
       DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
+      DELETE FROM zone_achievements;
       DELETE FROM pending_recording_repairs;
       DELETE FROM pending_recording_discards;
       DELETE FROM explored_cells;
@@ -1298,6 +1330,24 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         setting.value
       );
     }
+    for (const achievement of backup.zoneAchievements) {
+      await transaction.runAsync(
+        `INSERT INTO zone_achievements (
+          zone_id, zone_type, zone_name, completed_at, explored_cells,
+          total_zone_cells, boundary_fetched_at, boundary_source,
+          geometry_fingerprint
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        achievement.zoneId,
+        achievement.zoneType,
+        achievement.zoneName,
+        achievement.completedAt,
+        achievement.exploredCells,
+        achievement.totalZoneCells,
+        achievement.boundaryFetchedAt,
+        achievement.boundarySource,
+        achievement.geometryFingerprint
+      );
+    }
   });
 }
 
@@ -1373,6 +1423,21 @@ function validateBackupData(backup: StreetExplorerBackup) {
       throw new Error("Backup contains an invalid collected medal.");
     }
   }
+  for (const achievement of backup.zoneAchievements) {
+    if (
+      !achievement.zoneId ||
+      !achievement.zoneName ||
+      !["country", "city", "district"].includes(achievement.zoneType) ||
+      !Number.isInteger(achievement.exploredCells) ||
+      achievement.exploredCells < 0 ||
+      !Number.isInteger(achievement.totalZoneCells) ||
+      achievement.totalZoneCells <= 0 ||
+      !Number.isFinite(new Date(achievement.completedAt).getTime()) ||
+      !achievement.geometryFingerprint
+    ) {
+      throw new Error("Backup contains an invalid zone achievement.");
+    }
+  }
 }
 
 function getBackupSourceMaxPointId(points: GpsPoint[], sessionId: number) {
@@ -1414,6 +1479,7 @@ export async function deleteAllData() {
       DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
+      DELETE FROM zone_achievements;
       DELETE FROM gps_observations;
       DELETE FROM walk_sessions;
     `);
@@ -1489,7 +1555,38 @@ function areRenderedRouteSegments(value: unknown): value is RenderedRouteSegment
         Number.isFinite(point.latitude) &&
         typeof point.longitude === "number" &&
         Number.isFinite(point.longitude)
-      )
+      ) &&
+      (candidate.bridgeEvidence === undefined ||
+        isRouteBridgeEvidence(candidate.bridgeEvidence))
     );
   });
+}
+
+function isRouteBridgeEvidence(value: unknown): value is RouteBridgeEvidence {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<RouteBridgeEvidence>;
+  const numericValues = [
+    candidate.endSnapDistanceMeters,
+    candidate.endpointJoinCount,
+    candidate.gapDistanceMeters,
+    candidate.gapDurationSeconds,
+    candidate.inferredCellCount,
+    candidate.intersectionJoinCount,
+    candidate.maxEndpointJoinDistanceMeters,
+    candidate.routeDistanceMeters,
+    candidate.sourceStreetSegmentCount,
+    candidate.startSnapDistanceMeters,
+    candidate.straightDistanceMeters
+  ];
+
+  return (
+    candidate.schemaVersion === 1 &&
+    ["exact_topology", "geometric_crossing", "near_endpoint_join"].includes(
+      candidate.acceptanceReason ?? ""
+    ) &&
+    numericValues.every((entry) => typeof entry === "number" && Number.isFinite(entry))
+  );
 }

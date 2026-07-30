@@ -859,6 +859,14 @@ export function MapScreen({
     }));
   }, []);
 
+  const focusSavedWalkOnMap = useCallback((sessionId: number) => {
+    setSelectedSessionId(sessionId);
+    setPathDisplayMode("selected");
+    setLayers((current) => current.showPaths
+      ? current
+      : { ...current, showPaths: true });
+  }, []);
+
   useEffect(() => {
     refreshSavedData().catch((error) =>
       console.warn("Failed to refresh saved map data", error)
@@ -3292,7 +3300,7 @@ export function MapScreen({
           );
         }}
         onRenameWalk={handleRenameWalk}
-        onSelectWalk={setSelectedSessionId}
+        onSelectWalk={focusSavedWalkOnMap}
         onOpenDiagnostics={() => {
           setHistoryVisible(false);
           setDiagnosticsVisible(true);
@@ -4238,7 +4246,9 @@ function GameProgressPanel({
   const weekDistanceMeters = getRecentDistanceMeters(sessions, 7);
   const dailyCellGoal = 50;
   const weeklyDistanceGoalMeters = 10000;
-  const objectivePercent = objectiveStats?.completionPercent ?? null;
+  const objectivePercent = objectiveStats?.permanentlyCompleted
+    ? 100
+    : objectiveStats?.completionPercent ?? null;
 
   return (
     <View style={styles.gamePanel}>
@@ -4366,9 +4376,9 @@ function getWalkPointLoadScope(
     );
 
     return {
-      endedBefore: tomorrowStart.toISOString(),
+      endedAfter: todayStart.toISOString(),
       kind: "range",
-      startedAt: todayStart.toISOString()
+      startedBefore: tomorrowStart.toISOString()
     };
   }
 
@@ -4397,7 +4407,7 @@ function filterWalksForPathDisplay(
     return walks.filter((walk) => new Date(walk.startedAt) >= cutoff);
   }
 
-  return walks.filter((walk) => isToday(walk.startedAt));
+  return walks.filter((walk) => doesWalkOverlapToday(walk));
 }
 
 async function calculateObjectiveStats(objective: CompletionObjective) {
@@ -4421,6 +4431,10 @@ function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLan
 }
 
 function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
+  if (stats?.permanentlyCompleted) {
+    return "100%";
+  }
+
   if (!stats || stats.completionPercent === null) {
     return "pending";
   }
@@ -4495,6 +4509,10 @@ function formatBackgroundStatus(status: BackgroundTrackingStatus) {
 }
 
 function getObjectiveRemainingCells(stats: ZoneCompletionStats | null) {
+  if (stats?.permanentlyCompleted) {
+    return 0;
+  }
+
   if (!stats || stats.totalZoneCells === null) {
     return null;
   }
@@ -4517,6 +4535,21 @@ function formatLoopRejectionReason(reason: string | null) {
     default:
       return "The loop was detected, but it did not pass the V1 fill rules.";
   }
+}
+
+function doesWalkOverlapToday(walk: Pick<WalkSession, "endedAt" | "startedAt">) {
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const tomorrowStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  );
+
+  return (
+    new Date(walk.endedAt) > todayStart &&
+    new Date(walk.startedAt) < tomorrowStart
+  );
 }
 
 function isToday(value: string) {
@@ -4550,7 +4583,9 @@ function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
 }
 
 function findContainingZone(point: GpsPoint, zones: CachedZone[]) {
-  return zones.find((zone) => isPointInsideZone(point, zone)) ?? null;
+  return zones.find((zone) =>
+    zone.source === "openstreetmap" && isPointInsideZone(point, zone)
+  ) ?? null;
 }
 
 function pointInPolygon(

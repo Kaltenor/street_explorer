@@ -4,7 +4,19 @@
 
 This document began as the pre-implementation audit and now also records the decisions implemented in v0.4.0. The original findings remain as design rationale.
 
-Post-implementation maintenance through v0.6.6 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones or invisible orphan unfinished rows, identifies the true active session from its authoritative setting, writes and verifies the shared JSON through Expo's current cache-file API, reports preparation/write/share failures separately, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+Post-implementation maintenance through v0.8.1 keeps Backup V4 route snapshots, medal state, and permanent zone achievements intact, exports visible finalized recordings without hidden underfilled recovery tombstones or invisible orphan unfinished rows, identifies the true active session from its authoritative setting, writes and verifies the shared JSON through Expo's current cache-file API, reports preparation/write/share failures separately, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+
+## v0.7.0 non-medal zone-completion amendment
+
+v0.7.0 changes no medal catalogue, qualification rule, evidence, or presentation behavior. Backup V4 retains all Backup V3 medal arrays and adds permanent administrative-zone achievements; V1-V3 imports remain compatible. Zone-boundary multipolygon validation is separate from landmark enclosure geometry.
+
+## v0.8.0 non-medal path-inference amendment
+
+V3 street inference changes no medal catalogue or strict-interior landmark-anchor rule. Newly frozen, topology-validated inferred segments remain eligible boundary geometry under the existing gameplay policy, while their persisted bridge evidence is diagnostic only. Historical snapshots change only through explicit recording reprocessing.
+
+## v0.8.1 non-medal saved-path visibility amendment
+
+v0.8.1 changes only saved-route display selection and local-day overlap queries. Medal evidence, qualification, persistence, and presentation remain unchanged.
 
 ## v0.6.6 performance maintenance
 
@@ -209,7 +221,7 @@ Substantial generic activity-mode residue remains:
 - `buildPathSegmentsWithInference()` examines each adjacent accepted GPS pair (`src/services/pathInference.ts:68-125`).
 - A segment is suspicious when it exceeds 4 m/s, or when both distance is over 15 m and elapsed time is over 6 s (`src/services/pathInference.ts:168-193`).
 - With no street graph, suspicious segments are rejected. With cached OSM, `inferStreetRoute()` may return a high/medium/low-confidence street route (`src/services/pathInference.ts:141-166`, `235-316`).
-- `persistStreetMatchedRouteSnapshot()` freezes only confirmed and high/medium inferred geometry with algorithm version 3 (`src/services/routeSnapshot.ts:12`, `170-236`).
+- `persistStreetMatchedRouteSnapshot()` freezes only confirmed and high/medium inferred geometry with algorithm version 4 and optional per-bridge evidence (`src/services/routeSnapshot.ts`).
 - Rejected gaps are omitted. There is no straight fallback.
 
 ### Direct-GPS explored-cell generation
