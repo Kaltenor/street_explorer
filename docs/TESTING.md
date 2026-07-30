@@ -33,6 +33,8 @@ npx expo install --check
 
 `test:player` verifies the sixteen active native idle/walking frames plus retained source/stale assets, trustworthy-location and last-rendered-sprite retention, the stable native marker identifier, `AnimatedRegion` coordinate smoothing, disabled custom-view snapshot tracking, stale-GPS accessibility, and removal of fragile legacy marker rendering. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
+`test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, debounced and memoized map surfaces, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, streamed backup output, and render instrumentation.
+
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
 ## Streamlined Interface Test
@@ -86,6 +88,11 @@ Startup regressions: when testing an older development binary against the curren
 7. Stop and confirm the report and Start control return after the durable session save, without waiting for route inference, exact step reconciliation, medals, objectives, or the complete saved-history refresh. For a continuous short route, confirm the direct snapshot fast path avoids street-corridor graph work.
 8. Run Reprocess recordings explicitly and confirm that is the only workflow that performs full-history route, street, contour, and loop rebuilding.
 9. Repeatedly open and close History and Completion with a large explored-cell ledger; confirm Back returns control to the map immediately while unfinished Completion scans are cancelled.
+10. Scroll a history containing at least 100 recordings and confirm rows stay responsive instead of mounting the complete list at once.
+11. Switch Paths through Today, Last 7 days, Selected, and All and confirm only that scope is loaded and displayed.
+12. During recording, confirm the player and active route move immediately while red/today contours settle within roughly 650ms; medal collection may use the same short settle interval.
+13. Confirm development logs do not show continuously increasing MapScreen/ExplorationMap render counts while the map is idle. Investigate any recurring `[perf]` operation above its printed threshold.
+14. Export a large backup and confirm incremental file writing completes without an iOS memory warning or empty file.
 
 ## Long Recording And Reconnect Test
 
@@ -130,7 +137,7 @@ Startup regressions: when testing an older development binary against the curren
 2. Confirm export is blocked while the recording is active.
 3. Stop and save the recording, then reopen History.
 4. Tap Backup.
-5. Confirm iOS shows a share/save sheet for a JSON backup.
+5. Confirm iOS shows a share/save sheet for a non-empty JSON backup, including when the database contains an invisible orphan row whose start and end timestamps match. Confirm that orphan and its dependent points/routes/medal events are absent from the JSON. If sharing does not open, record the stage-specific Prepare, Write, or Share message and its technical detail.
 6. Tap a recording.
 7. Tap Export GPX.
 8. Confirm iOS shows a share/save sheet for a GPX file.
@@ -360,7 +367,7 @@ This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK 
 12. Delete a recording while pending repair refresh is running and confirm neither route snapshots nor explored cells remain for the deleted session.
 13. Start and stop while step/background setup is still completing; confirm no late watcher or background task restarts after Stop.
 14. Replace a finalized session's GPS rows with the same point count but new auto-increment ids while its repair is running; confirm the old snapshot/cells do not commit and the next repair freezes the new generation.
-15. Deliver a valid older fix after the reorder window and confirm raw observations re-derive contiguous indexes, the one-second synchronizer reloads the full live route, and no middle segment remains missing.
+15. Deliver a valid older fix after the reorder window and confirm raw observations re-derive contiguous indexes, the three-second idle synchronizer reloads the full live route, and no middle segment remains missing.
 16. Interrupt journal publication after the temporary file write, relaunch, and confirm the valid temporary batch is promoted and drained; an incomplete temporary file must be quarantined without blocking other batches.
 17. Begin a delayed background callback while restoring a backup and confirm restore first closes admission and stops tracking; after commit, no pre-import point may appear in an unrelated restored session.
 18. Replay more than 4,096 pending active points and confirm chunked admission eventually persists the tail instead of rejecting the same tail forever.

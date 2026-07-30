@@ -88,10 +88,14 @@ npx eas-cli build --platform ios --profile development-simulator
 14. Force-close mid-recording and confirm recovery offers Resume, Finish, and Discard without losing the saved tail.
 15. Force-close once more just after finalization, including with a delayed background event, and confirm relaunch merges the owner-bound or uniquely timestamp-matched journaled tail and repairs route/exploration caches without changing an imported frozen route that has no new GPS source.
 16. Stop a very short recording near a delayed native callback and confirm a late second point within five minutes can safely promote the hidden recording instead of being lost.
-17. While recording, try Backup and confirm it is blocked; after Stop, confirm export succeeds even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup.
+17. While recording, try Backup and confirm it is blocked; after Stop, confirm the verified JSON export opens the iOS share sheet even if a too-short recording remains hidden in its late-GPS recovery window, and confirm restore cannot accept an unfinished-session backup. Confirm an old orphan row with identical start/end timestamps does not trigger an active-recording error. If export fails, confirm the alert names Prepare, Write, or Share and includes a technical detail instead of the old generic message.
 18. Confirm the updated portrait splash appears before the launch overlay, then open Medals and verify localized names retain French accents and the horizontal category chips remain fully visible and vertically centered.
 19. During an active 80m+ loop around a landmark, confirm the medal unlocks in real time; after Continue, verify the 3D medal flies to the measured Medal tab and its marker/card remain unlocked. Open the collection and confirm permanent Unlocked and Locked sections appear in All and in the relevant category.
 20. Confirm the map shows the compact Lyon medal progress card and only one side flag. Tap the progress card to open Medals; tap the flag twice to show and hide the current district objective without clearing it. Verify layers remain configurable in Options and technical recording data remains available through History > Diagnostics or a recording's Technical details.
+
+21. With a large history, switch Paths among Today, Last 7 days, Selected, and All. Confirm each scope renders the expected routes, History scrolls smoothly, and returning from History or Completion restores map gestures without a multi-second stall.
+22. During a long active walk, confirm the player and blue/red route react immediately while the red explored surface and medal evaluation settle within roughly 650ms. Watch development logs for repeated `[perf]` slow-operation or render-count messages and capture any sustained spikes.
+23. Export a large Backup V3 after Stop and confirm the share sheet opens without a memory warning. Compare the iOS export asset list and confirm Ionicons is the only bundled `@expo/vector-icons` font family.
 
 ## Expected Limitation
 

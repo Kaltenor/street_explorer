@@ -29,14 +29,17 @@ export default function App() {
     setDatabaseFailed(false);
     initDatabase()
       .then(async () => {
-        await drainPendingBackgroundLocationBatches().catch((error) =>
-          console.warn("Background GPS outbox will retry after launch", error)
-        );
-
         const savedLanguage = await getAppLanguage();
 
         setLanguage(savedLanguage);
         setDatabaseReady(true);
+
+        // Mount the map as soon as its schema and language are ready. Recovery
+        // still awaits this drain inside MapScreen, while map/assets initialize
+        // concurrently behind the branded launch overlay.
+        void drainPendingBackgroundLocationBatches().catch((error) =>
+          console.warn("Background GPS outbox will retry during recovery", error)
+        );
       })
       .catch((error) => {
         console.error("Failed to initialize database", error);

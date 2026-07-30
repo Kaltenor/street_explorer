@@ -12,6 +12,7 @@ import {
 } from "./explorationArea";
 import { analyzeLoopFillsForCells, LOOP_FILL_CONFIG } from "./loopFill";
 import { buildPathSegments } from "./pathInference";
+import { measurePerformance } from "./performance";
 import {
   MedalAlbumDefinition,
   MedalCollectionCandidate,
@@ -33,6 +34,7 @@ type GameplayGpsEvidence = {
 export type MedalCandidateEvaluationInput = {
   album: MedalAlbumDefinition;
   boundaryCellIds: ReadonlySet<string>;
+  eligibleMedalIds?: ReadonlySet<string>;
   walkedDistanceMeters: number;
 };
 
@@ -45,12 +47,23 @@ export function findMedalCollectionCandidates(
 
   const candidates: MedalCollectionCandidate[] = [];
   const candidateMedalIds = new Set<string>();
-  const loopFills = analyzeLoopFillsForCells({
-    activityMode: "walk",
-    boundaryCellIds: [...input.boundaryCellIds],
-    exploredStreetIds: new Set(),
-    streetSegments: []
-  });
+  const nearbyMedals = getMedalsInsideBoundaryBounds(input);
+
+  if (nearbyMedals.length === 0) {
+    return [];
+  }
+
+  const loopFills = measurePerformance(
+    "medals.anchor-gated-enclosure",
+    () =>
+      analyzeLoopFillsForCells({
+        activityMode: "walk",
+        boundaryCellIds: [...input.boundaryCellIds],
+        exploredStreetIds: new Set(),
+        streetSegments: []
+      }),
+    12
+  );
 
   for (const loopFill of loopFills) {
     if (!loopFill.accepted || loopFill.cellIds.length === 0) {
@@ -60,7 +73,7 @@ export function findMedalCollectionCandidates(
     const enclosedCellIds = new Set(loopFill.cellIds);
     const enclosureId = buildEnclosureId(loopFill.cellIds);
 
-    for (const medal of input.album.medals) {
+    for (const medal of nearbyMedals) {
       if (candidateMedalIds.has(medal.id)) {
         continue;
       }
@@ -90,11 +103,16 @@ export async function evaluateLiveMedalCollection(input: {
   boundaryCellIds: readonly string[];
   sessionId: number;
   walkedDistanceMeters: number;
+  eligibleMedalIds?: readonly string[];
 }): Promise<MedalCollectionResult> {
+  const eligibleMedalIds = input.eligibleMedalIds
+    ? new Set(input.eligibleMedalIds)
+    : undefined;
   const candidates = BUNDLED_MEDAL_ALBUMS.flatMap((album) =>
     findMedalCollectionCandidates({
       album,
       boundaryCellIds: new Set(input.boundaryCellIds),
+      eligibleMedalIds,
       walkedDistanceMeters: input.walkedDistanceMeters
     })
   );
@@ -236,6 +254,44 @@ export function buildGameplayDirectRouteSegments(
       points: [segment.startPoint, segment.endPoint],
       type: "confirmed"
     }];
+  });
+}
+
+function getMedalsInsideBoundaryBounds(input: MedalCandidateEvaluationInput) {
+  let minX = Number.POSITIVE_INFINITY;
+  let maxX = Number.NEGATIVE_INFINITY;
+  let minY = Number.POSITIVE_INFINITY;
+  let maxY = Number.NEGATIVE_INFINITY;
+
+  for (const cellId of input.boundaryCellIds) {
+    const [xText, yText] = cellId.split(":");
+    const x = Number(xText);
+    const y = Number(yText);
+
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      continue;
+    }
+
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
+  }
+
+  if (!Number.isFinite(minX) || !Number.isFinite(minY)) {
+    return [];
+  }
+
+  return input.album.medals.filter((medal) => {
+    if (input.eligibleMedalIds && !input.eligibleMedalIds.has(medal.id)) {
+      return false;
+    }
+
+    const [xText, yText] = coordinateToExplorationCellKey(medal).split(":");
+    const x = Number(xText);
+    const y = Number(yText);
+
+    return x >= minX && x <= maxX && y >= minY && y <= maxY;
   });
 }
 

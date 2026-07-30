@@ -531,8 +531,33 @@ export async function purgeExpiredUnderfilledRecordings(
   });
 }
 
-export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise<WalkWithPoints[]> {
+export type WalkPointLoadScope =
+  | { kind: "all" }
+  | { kind: "selected"; sessionId: number }
+  | { kind: "since"; startedAt: string }
+  | { endedBefore: string; kind: "range"; startedAt: string };
+
+export async function getAllWalksWithPoints(
+  activityMode: ActivityMode,
+  scope: WalkPointLoadScope = { kind: "all" }
+): Promise<WalkWithPoints[]> {
   const db = await getDatabase();
+  const scopeSql =
+    scope.kind === "selected"
+      ? "AND walk_sessions.id = ?"
+      : scope.kind === "since"
+        ? "AND walk_sessions.started_at >= ?"
+        : scope.kind === "range"
+          ? "AND walk_sessions.started_at >= ? AND walk_sessions.started_at < ?"
+          : "";
+  const scopeParameters =
+    scope.kind === "selected"
+      ? [scope.sessionId]
+      : scope.kind === "since"
+        ? [scope.startedAt]
+        : scope.kind === "range"
+          ? [scope.startedAt, scope.endedBefore]
+          : [];
   const sessions = await db.getAllAsync<WalkSessionRow>(
     `
     SELECT id, activity_mode, display_name, started_at, ended_at, distance_meters, duration_seconds, step_count
@@ -544,9 +569,11 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
         FROM pending_recording_discards
         WHERE session_id = walk_sessions.id
       )
+      ${scopeSql}
     ORDER BY started_at DESC
   `,
-    activityMode
+    activityMode,
+    ...scopeParameters
   );
   const sessionIds = sessions.map((session) => session.id);
 
@@ -554,22 +581,46 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
     return [];
   }
 
-  const placeholders = sessionIds.map(() => "?").join(",");
   const points = await db.getAllAsync<GpsPointRow>(
     `
       SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
       FROM gps_points
-      WHERE session_id IN (${placeholders})
+      WHERE EXISTS (
+        SELECT 1
+        FROM walk_sessions
+        WHERE walk_sessions.id = gps_points.session_id
+          AND walk_sessions.activity_mode = ?
+          AND walk_sessions.ended_at > walk_sessions.started_at
+          AND NOT EXISTS (
+            SELECT 1
+            FROM pending_recording_discards
+            WHERE session_id = walk_sessions.id
+          )
+          ${scopeSql}
+      )
       ORDER BY session_id, timestamp, id
     `,
-    ...sessionIds
+    activityMode,
+    ...scopeParameters
   );
   const routeSnapshots = await db.getAllAsync<RouteSnapshotRow>(
     `
       SELECT session_id, segments_json, source_point_count, source_max_point_id,
         algorithm_version, created_at
       FROM route_snapshots
-      WHERE session_id IN (${placeholders})
+      WHERE EXISTS (
+        SELECT 1
+        FROM walk_sessions
+        WHERE walk_sessions.id = route_snapshots.session_id
+          AND walk_sessions.activity_mode = ?
+          AND walk_sessions.ended_at > walk_sessions.started_at
+          AND NOT EXISTS (
+            SELECT 1
+            FROM pending_recording_discards
+            WHERE session_id = walk_sessions.id
+          )
+          ${scopeSql}
+      )
         AND source_point_count = (
           SELECT COUNT(*)
           FROM gps_points
@@ -581,7 +632,8 @@ export async function getAllWalksWithPoints(activityMode: ActivityMode): Promise
           WHERE gps_points.session_id = route_snapshots.session_id
         )
     `,
-    ...sessionIds
+    activityMode,
+    ...scopeParameters
   );
   const pointsBySession = new Map<number, GpsPoint[]>();
   const routeSegmentsBySession = new Map<number, RenderedRouteSegment[]>();
@@ -908,23 +960,33 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
   let backup!: StreetExplorerBackup;
 
   await db.withExclusiveTransactionAsync(async (transaction) => {
-    const sessionRows = await transaction.getAllAsync<WalkSessionRow>(`
-      SELECT id, activity_mode, display_name, started_at, ended_at,
-        distance_meters, duration_seconds, step_count
-      FROM walk_sessions
-      WHERE NOT EXISTS (
-        SELECT 1
-        FROM pending_recording_discards
-        WHERE session_id = walk_sessions.id
-      )
-      ORDER BY started_at ASC
+    const activeSession = await transaction.getFirstAsync<{ id: number }>(`
+      SELECT walk_sessions.id
+      FROM app_settings
+      JOIN walk_sessions
+        ON walk_sessions.id = CAST(app_settings.value AS INTEGER)
+      WHERE app_settings.key = 'active_recording_session_id'
+        AND walk_sessions.ended_at = walk_sessions.started_at
     `);
 
-    if (sessionRows.some((row) => row.ended_at === row.started_at)) {
+    if (activeSession) {
       throw new Error(
         "An active recording cannot be included in a backup."
       );
     }
+
+    const sessionRows = await transaction.getAllAsync<WalkSessionRow>(`
+      SELECT id, activity_mode, display_name, started_at, ended_at,
+        distance_meters, duration_seconds, step_count
+      FROM walk_sessions
+      WHERE ended_at > started_at
+        AND NOT EXISTS (
+          SELECT 1
+          FROM pending_recording_discards
+          WHERE session_id = walk_sessions.id
+        )
+      ORDER BY started_at ASC
+    `);
 
     const pointRows = await transaction.getAllAsync<GpsPointRow>(`
       SELECT id, session_id, latitude, longitude, timestamp, accuracy,
@@ -933,10 +995,11 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       WHERE session_id IN (
         SELECT id
         FROM walk_sessions
-        WHERE NOT EXISTS (
-          SELECT 1 FROM pending_recording_discards
-          WHERE session_id = walk_sessions.id
-        )
+        WHERE ended_at > started_at
+          AND NOT EXISTS (
+            SELECT 1 FROM pending_recording_discards
+            WHERE session_id = walk_sessions.id
+          )
       )
       ORDER BY session_id, timestamp, id
     `);
@@ -947,10 +1010,11 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       WHERE session_id IN (
         SELECT id
         FROM walk_sessions
-        WHERE NOT EXISTS (
-          SELECT 1 FROM pending_recording_discards
-          WHERE session_id = walk_sessions.id
-        )
+        WHERE ended_at > started_at
+          AND NOT EXISTS (
+            SELECT 1 FROM pending_recording_discards
+            WHERE session_id = walk_sessions.id
+          )
       )
       ORDER BY session_id
     `);
@@ -967,10 +1031,11 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
         OR session_id IN (
           SELECT id
           FROM walk_sessions
-          WHERE NOT EXISTS (
-            SELECT 1 FROM pending_recording_discards
-            WHERE session_id = walk_sessions.id
-          )
+          WHERE ended_at > started_at
+            AND NOT EXISTS (
+              SELECT 1 FROM pending_recording_discards
+              WHERE session_id = walk_sessions.id
+            )
         )
       ORDER BY id
     `);
@@ -987,9 +1052,15 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
         WHERE event.id = collected.acquisition_event_id
           AND (
             event.session_id IS NULL
-            OR NOT EXISTS (
-              SELECT 1 FROM pending_recording_discards
-              WHERE session_id = event.session_id
+            OR EXISTS (
+              SELECT 1
+              FROM walk_sessions
+              WHERE walk_sessions.id = event.session_id
+                AND walk_sessions.ended_at > walk_sessions.started_at
+                AND NOT EXISTS (
+                  SELECT 1 FROM pending_recording_discards
+                  WHERE session_id = walk_sessions.id
+                )
             )
           )
       )

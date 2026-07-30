@@ -219,25 +219,49 @@ export async function getLoopFillSessionSummaries(mode: ActivityMode) {
     unwalked_walkable_street_length_m: number;
   }>(
     `
+      WITH loop_summary AS (
+        SELECT
+          session_id,
+          COUNT(id) AS loop_count,
+          SUM(CASE WHEN accepted = 1 THEN 1 ELSE 0 END) AS accepted_count,
+          SUM(CASE WHEN accepted = 0 THEN 1 ELSE 0 END) AS rejected_count,
+          MAX(area_m2) AS area_m2,
+          SUM(total_walkable_street_length_m) AS total_walkable_street_length_m,
+          SUM(unwalked_walkable_street_length_m) AS unwalked_walkable_street_length_m,
+          GROUP_CONCAT(DISTINCT rejection_reason) AS rejection_reasons,
+          MAX(created_at) AS latest_created_at
+        FROM loop_fills
+        WHERE mode = ?
+        GROUP BY session_id
+      ),
+      cell_summary AS (
+        SELECT session_id, COUNT(*) AS loop_filled_cell_count
+        FROM (
+          SELECT session_id, cell_x, cell_y
+          FROM explored_cells
+          WHERE source = 'loop_fill'
+            AND cell_size_m = ?
+            AND mode = ?
+          GROUP BY session_id, cell_x, cell_y
+        )
+        GROUP BY session_id
+      )
       SELECT
-        lf.session_id,
-        COUNT(lf.id) AS loop_count,
-        SUM(CASE WHEN lf.accepted = 1 THEN 1 ELSE 0 END) AS accepted_count,
-        SUM(CASE WHEN lf.accepted = 0 THEN 1 ELSE 0 END) AS rejected_count,
-        MAX(lf.area_m2) AS area_m2,
-        SUM(lf.total_walkable_street_length_m) AS total_walkable_street_length_m,
-        SUM(lf.unwalked_walkable_street_length_m) AS unwalked_walkable_street_length_m,
-        GROUP_CONCAT(DISTINCT lf.rejection_reason) AS rejection_reasons,
-        COUNT(DISTINCT ec.cell_x || ':' || ec.cell_y) AS loop_filled_cell_count
-      FROM loop_fills lf
-      LEFT JOIN explored_cells ec
-        ON ec.session_id = lf.session_id
-        AND ec.source = 'loop_fill'
-        AND ec.cell_size_m = ?
-      WHERE lf.mode = ?
-      GROUP BY lf.session_id
-      ORDER BY MAX(lf.created_at) DESC
+        loop_summary.session_id,
+        loop_summary.loop_count,
+        loop_summary.accepted_count,
+        loop_summary.rejected_count,
+        loop_summary.area_m2,
+        loop_summary.total_walkable_street_length_m,
+        loop_summary.unwalked_walkable_street_length_m,
+        loop_summary.rejection_reasons,
+        COALESCE(cell_summary.loop_filled_cell_count, 0) AS loop_filled_cell_count
+      FROM loop_summary
+      LEFT JOIN cell_summary
+        ON cell_summary.session_id = loop_summary.session_id
+      ORDER BY loop_summary.latest_created_at DESC
     `,
+    mode,
     EXPLORATION_CELL_SIZE_METERS,
     mode
   );
@@ -263,10 +287,14 @@ export async function getCompletionStats(mode: ActivityMode): Promise<Completion
   const db = await getDatabase();
   const sourceRows = await db.getAllAsync<{ source: ExploredCellSource; count: number }>(
     `
-      SELECT source, COUNT(DISTINCT cell_x || ':' || cell_y) AS count
-      FROM explored_cells
-      WHERE cell_size_m = ?
-        AND mode = ?
+      SELECT source, COUNT(*) AS count
+      FROM (
+        SELECT source, cell_x, cell_y
+        FROM explored_cells
+        WHERE cell_size_m = ?
+          AND mode = ?
+        GROUP BY source, cell_x, cell_y
+      )
       GROUP BY source
     `,
     EXPLORATION_CELL_SIZE_METERS,
@@ -274,10 +302,14 @@ export async function getCompletionStats(mode: ActivityMode): Promise<Completion
   );
   const totalRow = await db.getFirstAsync<{ count: number }>(
     `
-      SELECT COUNT(DISTINCT cell_x || ':' || cell_y) AS count
-      FROM explored_cells
-      WHERE cell_size_m = ?
-        AND mode = ?
+      SELECT COUNT(*) AS count
+      FROM (
+        SELECT cell_x, cell_y
+        FROM explored_cells
+        WHERE cell_size_m = ?
+          AND mode = ?
+        GROUP BY cell_x, cell_y
+      )
     `,
     EXPLORATION_CELL_SIZE_METERS,
     mode
@@ -349,6 +381,18 @@ export async function getExploredCellKeys(mode: ActivityMode) {
 
 export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
   const db = await getDatabase();
+  const now = new Date();
+  const todayStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+  const tomorrowStart = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  );
+  const todayStartIso = todayStart.toISOString();
   const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
     `
       SELECT DISTINCT current_cells.cell_x, current_cells.cell_y
@@ -357,7 +401,8 @@ export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
         ON current_sessions.id = current_cells.session_id
       WHERE current_cells.cell_size_m = ?
         AND current_cells.mode = ?
-        AND date(current_sessions.started_at) = date('now', 'localtime')
+        AND current_sessions.started_at >= ?
+        AND current_sessions.started_at < ?
         AND NOT EXISTS (
           SELECT 1
           FROM explored_cells previous_cells
@@ -367,11 +412,14 @@ export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
             AND previous_cells.mode = current_cells.mode
             AND previous_cells.cell_x = current_cells.cell_x
             AND previous_cells.cell_y = current_cells.cell_y
-            AND date(previous_sessions.started_at) < date('now', 'localtime')
+            AND previous_sessions.started_at < ?
         )
     `,
     EXPLORATION_CELL_SIZE_METERS,
-    mode
+    mode,
+    todayStartIso,
+    tomorrowStart.toISOString(),
+    todayStartIso
   );
 
   return rows.map((row) => `${row.cell_x}:${row.cell_y}`);

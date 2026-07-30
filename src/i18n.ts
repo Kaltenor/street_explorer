@@ -91,7 +91,11 @@ export const STRINGS = {
       addNewDataOnMap: "Add new data on map",
       background: "Background",
       backupFailedMessage: "Street Explorer could not create the backup file.",
+      backupFailedPrepareMessage: "Street Explorer could not prepare the backup data.",
+      backupFailedShareMessage: "The backup file was created, but iOS could not open the share sheet.",
       backupFailedTitle: "Backup failed",
+      backupFailedWriteMessage: "Street Explorer could not write the backup file.",
+      backupFailureDetail: "Technical detail",
       backgroundEnabled: "Background tracking enabled.",
       backgroundForegroundOnly:
         "Background recording is not enabled yet. Foreground recording is active. {hint}",
@@ -273,7 +277,11 @@ export const STRINGS = {
       addNewDataOnMap: "Ajouter les données sur la carte",
       background: "Arrière-plan",
       backupFailedMessage: "Street Explorer n'a pas pu créer la sauvegarde.",
+      backupFailedPrepareMessage: "Street Explorer n'a pas pu préparer les données de sauvegarde.",
+      backupFailedShareMessage: "Le fichier de sauvegarde a été créé, mais iOS n'a pas pu ouvrir la feuille de partage.",
       backupFailedTitle: "Sauvegarde impossible",
+      backupFailedWriteMessage: "Street Explorer n'a pas pu écrire le fichier de sauvegarde.",
+      backupFailureDetail: "Détail technique",
       backgroundEnabled: "Suivi en arrière-plan activé.",
       backgroundForegroundOnly:
         "Le suivi en arrière-plan n'est pas encore activé. L'enregistrement au premier plan est actif. {hint}",

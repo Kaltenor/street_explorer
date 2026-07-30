@@ -1,6 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useState } from "react";
 import {
+  FlatList,
   Modal,
   ScrollView,
   StyleSheet,
@@ -113,48 +114,54 @@ export function WalkHistoryModal({
             walkWithPoints={detailedWalk}
           />
         ) : (
-          <ScrollView contentContainerStyle={styles.list}>
-            <View style={styles.tools}>
-              <TouchableOpacity
-                accessibilityRole="button"
-                onPress={onExportBackup}
-                style={styles.toolButton}
-              >
-                <Ionicons name="download-outline" size={18} color="#f8fafc" />
-                <Text style={styles.toolButtonText}>{strings.history.backup}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                accessibilityRole="button"
-                onPress={onImportBackup}
-                style={styles.toolButton}
-              >
-                <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
-                <Text style={styles.toolButtonText}>{strings.common.restore}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                accessibilityRole="button"
-                onPress={onOpenDiagnostics}
-                style={styles.toolButton}
-              >
-                <Ionicons name="pulse-outline" size={18} color="#f8fafc" />
-                <Text style={styles.toolButtonText}>{strings.history.diagnostics}</Text>
-              </TouchableOpacity>
-            </View>
-
-          {walks.length === 0 ? (
-            <View style={styles.empty}>
-              <Text style={styles.emptyTitle}>{strings.history.noRecordings}</Text>
-              <Text style={styles.emptyText}>
-                {interpolate(strings.history.noRecordingsText, {
-                  mode: modeText.labels[activityMode].toLowerCase()
-                })}
-              </Text>
-            </View>
-          ) : (
-            walks.map((walk) => (
+          <FlatList
+            contentContainerStyle={styles.list}
+            data={walks}
+            initialNumToRender={12}
+            keyExtractor={(walk) => String(walk.id)}
+            ListEmptyComponent={(
+              <View style={styles.empty}>
+                <Text style={styles.emptyTitle}>{strings.history.noRecordings}</Text>
+                <Text style={styles.emptyText}>
+                  {interpolate(strings.history.noRecordingsText, {
+                    mode: modeText.labels[activityMode].toLowerCase()
+                  })}
+                </Text>
+              </View>
+            )}
+            ListHeaderComponent={(
+              <View style={styles.tools}>
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  onPress={onExportBackup}
+                  style={styles.toolButton}
+                >
+                  <Ionicons name="download-outline" size={18} color="#f8fafc" />
+                  <Text style={styles.toolButtonText}>{strings.history.backup}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  onPress={onImportBackup}
+                  style={styles.toolButton}
+                >
+                  <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
+                  <Text style={styles.toolButtonText}>{strings.common.restore}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  onPress={onOpenDiagnostics}
+                  style={styles.toolButton}
+                >
+                  <Ionicons name="pulse-outline" size={18} color="#f8fafc" />
+                  <Text style={styles.toolButtonText}>{strings.history.diagnostics}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            maxToRenderPerBatch={12}
+            removeClippedSubviews
+            renderItem={({ item: walk }) => (
               <HistoryRow
                 isSelected={walk.id === selectedSessionId}
-                key={walk.id}
                 onOpenWalk={(sessionId) => {
                   onLoadWalkDetails(sessionId);
                   onSelectWalk(sessionId);
@@ -163,9 +170,9 @@ export function WalkHistoryModal({
                 language={language}
                 walk={walk}
               />
-            ))
-          )}
-          </ScrollView>
+            )}
+            windowSize={7}
+          />
         )}
       </View>
     </Modal>

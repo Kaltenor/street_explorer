@@ -486,6 +486,17 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(21, "add_exploration_query_indexes", async () => {
+    await db.execAsync(`
+      CREATE INDEX IF NOT EXISTS explored_cells_coordinate_cover_index
+        ON explored_cells (
+          mode, cell_size_m, cell_x, cell_y, source, session_id, created_at
+        );
+      CREATE INDEX IF NOT EXISTS walk_sessions_mode_started_ended_index
+        ON walk_sessions (activity_mode, started_at, ended_at);
+    `);
+  });
+
   await seedBundledMedalAlbums(db);
   await db.runAsync(`
     UPDATE collected_medals

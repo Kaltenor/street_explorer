@@ -20,7 +20,7 @@
 - Expanded route details in history.
 - Compact live recording controls.
 - GPX export for recordings.
-- JSON backup and restore.
+- JSON backup and restore with authoritative active-session detection, consistent exclusion of invisible unfinished rows, a verified modern cache-file export, and stage-specific failure diagnostics.
 - OpenStreetMap street segment fetching.
 - Local OSM street cache.
 - GPS-to-street proximity matching.
@@ -47,6 +47,8 @@
 - Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and asynchronous Backup V3 sharing.
 - App-wide streamlined navy/gold presentation with a smaller map header, pill navigation, one objective toggle, layer controls centralized in Options, compact idle recording controls, four-metric Completion, and collapsed technical diagnostics.
 - CC0 four-direction animated pixel-art player marker with precomposed native annotation images, smooth coordinate interpolation, reliable last-position and last-rendered-sprite retention, accessible stale-GPS state, and continuous flicker-free Stop/Start recording visibility. Stop now releases the summary and next Start at the durable save boundary while repairable derived work continues asynchronously, and continuous routes bypass unnecessary street-corridor inference.
+
+- Performance pass V1: immediate player/route lane, settled and memoized exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, streamed backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
 
 ## Next Priority
 

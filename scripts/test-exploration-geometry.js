@@ -616,6 +616,27 @@ const dataToolsSource = fs.readFileSync(
   require.resolve("../src/services/dataTools.ts"),
   "utf8"
 );
+const appSource = fs.readFileSync(require.resolve("../App.tsx"), "utf8");
+const walkControlsSource = fs.readFileSync(
+  require.resolve("../src/components/WalkControls.tsx"),
+  "utf8"
+);
+const walkHistorySource = fs.readFileSync(
+  require.resolve("../src/components/WalkHistoryModal.tsx"),
+  "utf8"
+);
+const medalEnclosureSource = fs.readFileSync(
+  require.resolve("../src/services/medalEnclosure.ts"),
+  "utf8"
+);
+const performanceSource = fs.readFileSync(
+  require.resolve("../src/services/performance.ts"),
+  "utf8"
+);
+const backupDataSource = walkRepositorySource.slice(
+  walkRepositorySource.indexOf("export async function getBackupData"),
+  walkRepositorySource.indexOf("export async function restoreBackupData")
+);
 const refreshSavedDataSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const refreshSavedData"),
   mapScreenSource.indexOf("const toggleLayer")
@@ -641,6 +662,10 @@ const finishRecoverySource = mapScreenSource.slice(
 const foregroundResumeSyncSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const syncActiveWalkFromDatabase"),
   mapScreenSource.indexOf("const syncActiveWalkTailFromDatabase")
+);
+const tailSyncSource = mapScreenSource.slice(
+  mapScreenSource.indexOf("const syncActiveWalkTailFromDatabase"),
+  mapScreenSource.indexOf("const enableBackgroundTracking")
 );
 const activeRouteRenderStart = explorationMapSource.indexOf(
   "{activeRouteStartPoint"
@@ -852,17 +877,29 @@ assert(
 );
 assert(
   walkRepositorySource.includes("withExclusiveTransactionAsync") &&
+    backupDataSource.includes(
+      "app_settings.key = 'active_recording_session_id'"
+    ) &&
+    backupDataSource.includes("WHERE ended_at > started_at") &&
+    !backupDataSource.includes("sessionRows.some") &&
     walkRepositorySource.includes(
       "An active recording cannot be included in a backup"
     ) &&
     dataToolsSource.includes(
       "Finish or discard the active recording before exporting a backup"
     ),
-  "backup export rejects active recordings and reads one consistent database snapshot"
+  "backup export rejects the authoritative active recording, ignores orphan unfinished rows, and reads one consistent database snapshot"
 );
 assert(
-  dataToolsSource.includes('from "expo-file-system/legacy"') &&
-    dataToolsSource.includes("writeAsStringAsync") &&
+  dataToolsSource.includes("new File(") &&
+    dataToolsSource.includes("Paths.cache") &&
+    dataToolsSource.includes("file.size <= 0") &&
+    dataToolsSource.includes("file.writableStream().getWriter()") &&
+    dataToolsSource.includes("await writeArray(backup.points)") &&
+    !dataToolsSource.includes("file.write(JSON.stringify(backup))") &&
+    dataToolsSource.includes('new BackupExportError("write", error)') &&
+    dataToolsSource.includes('new BackupExportError("share", error)') &&
+    !dataToolsSource.includes('from "expo-file-system/legacy"') &&
     dataToolsSource.includes("parsed.version >= 2") &&
     walkRepositorySource.includes(
       "WHERE session_id = walk_sessions.id"
@@ -870,7 +907,7 @@ assert(
     !walkRepositorySource.includes(
       "A recently stopped recording is still accepting late GPS fixes."
     ),
-  "backup exports visible finalized recordings asynchronously and preserves V2/V3 route snapshots"
+  "backup exports visible finalized recordings through a verified modern cache file and preserves V2/V3 route snapshots"
 );
 assert(
   explorationMapSource.includes(
@@ -878,8 +915,46 @@ assert(
   ) &&
     mapScreenSource.includes("onLoadWalkDetails") &&
     mapScreenSource.includes("loadDetailedWalk(sessionId)") &&
+    mapScreenSource.includes("{historyVisible ? <WalkHistoryModal") &&
+    mapScreenSource.includes("{completionVisible ? <CompletionModal") &&
+    mapScreenSource.includes("{medalsVisible ? <MedalCollectionModal") &&
+    walkHistorySource.includes("<FlatList") &&
+    walkHistorySource.includes("removeClippedSubviews") &&
     !mapScreenSource.includes("if (!historyVisible)"),
-  "menu visibility changes avoid full map reconciliation and History loads route details on demand"
+  "hidden menus unmount, History virtualizes rows, and details remain lazy"
+);
+assert(
+  !mapScreenSource.includes("setElapsedSeconds") &&
+    walkControlsSource.includes("setInterval(updateDuration, 1000)") &&
+    mapScreenSource.includes("setInterval(synchronizeTail, 3000)") &&
+    tailSyncSource.indexOf("if (persistedPoints.length === 0)") <
+      tailSyncSource.indexOf("const session = await getWalkSessionById(sessionId)") &&
+    explorationMapSource.includes("useDebouncedValue(") &&
+    explorationMapSource.includes("settledActiveExplorationCellIds") &&
+    explorationMapSource.includes("settledTodayNewCellIds") &&
+    explorationMapSource.includes("memo(function ExplorationSurfaceOverlay") &&
+    medalEnclosureSource.includes("getMedalsInsideBoundaryBounds") &&
+    medalEnclosureSource.includes("medals.anchor-gated-enclosure") &&
+    mapScreenSource.includes("}, 650);") &&
+    performanceSource.includes("usePerformanceRenderCounter") &&
+    performanceSource.includes("[performance]"),
+  "map timers, polling, surfaces, medals, and render diagnostics use bounded performance paths"
+);
+assert(
+  databaseSource.includes('applyMigration(21, "add_exploration_query_indexes"') &&
+    databaseSource.includes("explored_cells_coordinate_cover_index") &&
+    completionRepositorySource.includes("WITH loop_summary AS") &&
+    completionRepositorySource.includes("cell_summary AS") &&
+    !completionRepositorySource.includes("COUNT(DISTINCT cell_x || ':' || cell_y)") &&
+    !completionRepositorySource.includes("date(current_sessions.started_at)") &&
+    walkRepositorySource.includes("export type WalkPointLoadScope") &&
+    walkRepositorySource.includes("${scopeSql}") &&
+    !walkRepositorySource.includes("const placeholders = sessionIds") &&
+    mapScreenSource.includes("getWalkPointLoadScope") &&
+    appSource.indexOf("setDatabaseReady(true)") <
+      appSource.indexOf("void drainPendingBackgroundLocationBatches()") &&
+    mapScreenSource.includes("await drainPendingBackgroundLocationBatches()"),
+  "startup, scoped paths, database indexes, and aggregate queries avoid unnecessary blocking work"
 );
 assert(
   completionModalSource.includes("InteractionManager.runAfterInteractions") &&
@@ -1042,7 +1117,7 @@ assert(
   "canonical full sync, history totals, accessible Stop, and exploration refresh recovery remain wired"
 );
 assert(
-  exploredAreaBuildSource.includes("activeExplorationCellIds") &&
+  exploredAreaBuildSource.includes("settledActiveExplorationCellIds") &&
     exploredAreaBuildSource.includes("maxFilledHoleAreaSquareMeters"),
   "live and saved explored cells share one hole-filled surface without visual seams"
 );

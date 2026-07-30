@@ -31,7 +31,7 @@ Use the development build for real device testing, especially background locatio
 
 ## Current Status
 
-Current version: `v0.6.3`
+Current version: `v0.6.6`
 
 The app supports an updated shared portrait splash/launch presentation, self-healing foreground/background recording, accuracy-aware startup centering, a persistent four-direction animated pixel-art player marker, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion/Medals views, explored cells, loop-fill analysis, landmark medal collection, safe backup/restore, device step counts, objective HUD progress, and hidden OpenStreetMap analysis for future street completion.
 
@@ -41,4 +41,6 @@ The CC0 top-down player uses distinct north/east/south/west idle and walking fra
 
 The v0.6 interface uses one consistent navy/gold system with rounded surfaces and reduced default density. A persistent Lyon medal-progress card opens the collection from the map, one flag button toggles the current district objective, map layers live in Options, Completion shows only its four primary measures, and recording diagnostics stay behind explicit technical-detail controls.
 
-History keeps full GPS/route data lazy until a recording is opened, Completion calculations yield and cancel during navigation, and Backup V3 exports visible finalized recordings asynchronously while preserving frozen route snapshots and medal state. Stop blocks only until tracking is quiescent and the session is durable; the summary, History row, stats, and live cells appear immediately while route inference, exact steps, medal safety evaluation, objectives, and cache refresh reconcile in the background. A continuous recording with no suspicious GPS gap bypasses street-corridor graph inference entirely.
+Performance work in v0.6.6 keeps the player and active route immediate while batching expensive exploration contours and live medal enclosure checks behind a 650ms settle window. Saved route queries are scoped to the visible period or selected recording, History virtualizes its rows, hidden full-screen panels unmount, map overlays are memoized, completion aggregates use indexed SQLite queries, startup no longer waits for the background outbox before mounting, and Backup V3 writes JSON incrementally instead of allocating a second database-sized string.
+
+History keeps full GPS/route data lazy until a recording is opened, Completion calculations yield and cancel during navigation, and Backup V3 exports visible finalized recordings through Expo's current cache-file API, identifies active recording state from its authoritative setting, excludes invisible orphan unfinished rows and their dependent data, verifies the non-empty JSON before opening the share sheet, and preserves frozen route snapshots and medal state. Preparation, writing, and sharing failures are reported separately with technical detail. Stop blocks only until tracking is quiescent and the session is durable; the summary, History row, stats, and live cells appear immediately while route inference, exact steps, medal safety evaluation, objectives, and cache refresh reconcile in the background. A continuous recording with no suspicious GPS gap bypasses street-corridor graph inference entirely.

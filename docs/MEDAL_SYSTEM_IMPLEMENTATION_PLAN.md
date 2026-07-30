@@ -4,7 +4,19 @@
 
 This document began as the pre-implementation audit and now also records the decisions implemented in v0.4.0. The original findings remain as design rationale.
 
-Post-implementation maintenance through v0.6.3 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones, writes the shared JSON file asynchronously, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+Post-implementation maintenance through v0.6.6 keeps Backup V3 route snapshots and medal state intact, exports visible finalized recordings without hidden underfilled recovery tombstones or invisible orphan unfinished rows, identifies the true active session from its authoritative setting, writes and verifies the shared JSON through Expo's current cache-file API, reports preparation/write/share failures separately, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+
+## v0.6.6 performance maintenance
+
+v0.6.6 changes no medal catalogue, qualification distance, seam tolerance, anchor rule, area cap, or persistence schema. Live evaluation is debounced by 650ms and skips topology work when no still-locked landmark anchor lies inside the walked boundary bounds; immediate player/route updates and Stop/recovery safety evaluation remain unchanged. The collection's hidden modal unmounts with other full-screen panels, direct Ionicons imports reduce bundled fonts, and Backup V3 medal arrays are streamed into the JSON file while retaining the same V3 payload.
+
+## v0.6.5 backup snapshot correction
+
+v0.6.5 keeps the medal schema and qualification rules unchanged. It replaces the false timestamp-based active-recording check with the authoritative active setting inside the snapshot transaction and excludes medal events belonging to invisible orphan unfinished rows, while retaining every visible finalized recording and its medals.
+
+## v0.6.4 non-medal backup fix
+
+v0.6.4 changes no medal catalogue, qualification rule, acquisition evidence, or restore schema. Backup V3 export now uses Expo's current cache-file API, verifies the non-empty file before sharing, and reports preparation, writing, and sharing failures separately so medal-state backups can be diagnosed on device.
 
 ## v0.6.3 non-medal finalization fix
 

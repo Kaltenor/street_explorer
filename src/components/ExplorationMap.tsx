@@ -2,7 +2,7 @@ import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, { AnimatedRegion, Marker, Polygon, Polyline, Region } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import {
   LOCATION_CONFIG,
@@ -17,6 +17,10 @@ import {
 import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
+import {
+  measurePerformance,
+  usePerformanceRenderCounter
+} from "../services/performance";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
 import { CollectedMedal } from "../types/medal";
@@ -142,6 +146,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   todayNewCellIds,
   zoneFocusRequestId
 }: ExplorationMapProps) {
+  usePerformanceRenderCounter("ExplorationMap");
   const mapRef = useRef<MapView | null>(null);
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
@@ -195,23 +200,37 @@ export const ExplorationMap = memo(function ExplorationMap({
     explorationEnabled && (shouldShowCompletedArea || shouldShowOutline);
   const maxFilledHoleAreaSquareMeters =
     LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeMode];
+  const settledActiveExplorationCellIds = useDebouncedValue(
+    activeExplorationCellIds,
+    650
+  );
   const renderedExplorationCellIds = useMemo(
     () =>
       shouldBuildExploredArea
-        ? [...new Set([...savedExplorationCellIds, ...activeExplorationCellIds])]
+        ? [
+            ...new Set([
+              ...savedExplorationCellIds,
+              ...settledActiveExplorationCellIds
+            ])
+          ]
         : [],
     [
-      activeExplorationCellIds,
       savedExplorationCellIds,
+      settledActiveExplorationCellIds,
       shouldBuildExploredArea
     ]
   );
   const explorationPolygons = useMemo(
     () =>
       shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(renderedExplorationCellIds, {
-            maxFilledHoleAreaSquareMeters
-          })
+        ? measurePerformance(
+            "map.exploration-surface",
+            () =>
+              buildMergedExplorationPolygons(renderedExplorationCellIds, {
+                maxFilledHoleAreaSquareMeters
+              }),
+            12
+          )
         : [],
     [
       maxFilledHoleAreaSquareMeters,
@@ -226,18 +245,24 @@ export const ExplorationMap = memo(function ExplorationMap({
         : [],
     [explorationPolygons, shouldShowOutline]
   );
+  const settledTodayNewCellIds = useDebouncedValue(todayNewCellIds, 650);
   const todayNewPolygons = useMemo(
     () =>
       explorationEnabled && shouldShowCompletedArea
-        ? buildMergedExplorationPolygons(todayNewCellIds, {
-            maxFilledHoleAreaSquareMeters
-          })
+        ? measurePerformance(
+            "map.today-surface",
+            () =>
+              buildMergedExplorationPolygons(settledTodayNewCellIds, {
+                maxFilledHoleAreaSquareMeters
+              }),
+            8
+          )
         : [],
     [
       explorationEnabled,
       maxFilledHoleAreaSquareMeters,
       shouldShowCompletedArea,
-      todayNewCellIds
+      settledTodayNewCellIds
     ]
   );
 
@@ -405,37 +430,14 @@ export const ExplorationMap = memo(function ExplorationMap({
         zoomEnabled
         followsUserLocation={false}
       >
-        {shouldShowCompletedArea ? explorationPolygons.map((polygon) => (
-          <Polygon
-            key={polygon.id}
-            coordinates={polygon.coordinates}
-            holes={polygon.holes}
-            fillColor={areaStyle.fillColor}
-            strokeColor={areaStyle.fillColor}
-            strokeWidth={1}
-          />
-        )) : null}
-        {shouldShowCompletedArea ? todayNewPolygons.map((polygon) => (
-          <Polygon
-            key={`today-${polygon.id}`}
-            coordinates={polygon.coordinates}
-            holes={polygon.holes}
-            fillColor={areaStyle.todayFillColor}
-            strokeColor={areaStyle.todayFillColor}
-            strokeWidth={1}
-          />
-        )) : null}
-
-        {shouldShowOutline ? explorationOutlineSegments.map((segment) => (
-          <Polyline
-            coordinates={segment.coordinates}
-            key={`outline-${segment.id}`}
-            lineCap="round"
-            lineJoin="round"
-            strokeColor={areaStyle.outlineColor}
-            strokeWidth={areaStyle.outlineWidth}
-          />
-        )) : null}
+        <ExplorationSurfaceOverlay
+          areaStyle={areaStyle}
+          explorationPolygons={explorationPolygons}
+          outlineSegments={explorationOutlineSegments}
+          shouldShowCompletedArea={shouldShowCompletedArea}
+          shouldShowOutline={shouldShowOutline}
+          todayPolygons={todayNewPolygons}
+        />
 
         {selectedZone && renderLevel !== "far"
           ? selectedZone.geometry.map((ring, index) => (
@@ -537,6 +539,76 @@ export const ExplorationMap = memo(function ExplorationMap({
     </View>
   );
 });
+
+type ExplorationSurfaceOverlayProps = {
+  areaStyle: ReturnType<typeof getExploredAreaStyle>;
+  explorationPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
+  outlineSegments: ReturnType<typeof buildExplorationPolygonOutlineSegments>;
+  shouldShowCompletedArea: boolean;
+  shouldShowOutline: boolean;
+  todayPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
+};
+
+const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
+  areaStyle,
+  explorationPolygons,
+  outlineSegments,
+  shouldShowCompletedArea,
+  shouldShowOutline,
+  todayPolygons
+}: ExplorationSurfaceOverlayProps) {
+  return (
+    <>
+      {shouldShowCompletedArea
+        ? explorationPolygons.map((polygon) => (
+            <Polygon
+              key={polygon.id}
+              coordinates={polygon.coordinates}
+              holes={polygon.holes}
+              fillColor={areaStyle.fillColor}
+              strokeColor={areaStyle.fillColor}
+              strokeWidth={1}
+            />
+          ))
+        : null}
+      {shouldShowCompletedArea
+        ? todayPolygons.map((polygon) => (
+            <Polygon
+              key={`today-${polygon.id}`}
+              coordinates={polygon.coordinates}
+              holes={polygon.holes}
+              fillColor={areaStyle.todayFillColor}
+              strokeColor={areaStyle.todayFillColor}
+              strokeWidth={1}
+            />
+          ))
+        : null}
+      {shouldShowOutline
+        ? outlineSegments.map((segment) => (
+            <Polyline
+              coordinates={segment.coordinates}
+              key={`outline-${segment.id}`}
+              lineCap="round"
+              lineJoin="round"
+              strokeColor={areaStyle.outlineColor}
+              strokeWidth={areaStyle.outlineWidth}
+            />
+          ))
+        : null}
+    </>
+  );
+});
+
+function useDebouncedValue<T>(value: T, delayMs: number) {
+  const [settledValue, setSettledValue] = useState(value);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => setSettledValue(value), delayMs);
+    return () => clearTimeout(timerId);
+  }, [delayMs, value]);
+
+  return settledValue;
+}
 
 const PLAYER_MOVING_SPEED_METERS_PER_SECOND = 0.45;
 const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;

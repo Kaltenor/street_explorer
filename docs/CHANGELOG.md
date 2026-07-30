@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.6.6
+
+Optimized:
+
+- Kept player movement and the active route immediate while debouncing expensive red exploration/today contours and live medal enclosure analysis by 650ms; medal evaluation first checks whether an eligible landmark anchor is inside the boundary bounds.
+- Memoized the large exploration overlay, added development-only render/timing counters, moved the one-second duration clock into Walk Controls, reduced inactive tail polling to three seconds, and avoided the session query when no new GPS point exists.
+- Unmounted hidden full-screen panels and virtualized History rows so returning to the map no longer reconciles inactive menus or every saved recording card.
+- Scoped Paths database loading to All, Today, Last 7 days, or Selected; removed history-sized SQL placeholder lists; added exploration/session covering indexes; and replaced expensive string/date distinct queries plus row-multiplying loop aggregates.
+- Mounted the map once database/language initialization completes while the background outbox drain continues concurrently behind the existing recovery gate.
+- Streamed Backup V3 arrays to the cache file to avoid a second monolithic JSON allocation, and imported Ionicons directly so Expo does not bundle unused icon families.
+- Added focused performance regression assertions while preserving GPS accuracy, route safety, exploration geometry, and medal qualification rules.
+- Synchronized the app version to 0.6.6, iOS build 83, and Android version code 83.
+
+## v0.6.5
+
+Fixed:
+
+- Backup snapshot preparation now identifies an active walk from the authoritative active-recording setting inside the same exclusive transaction instead of treating every row whose start and end timestamps match as active.
+- Orphan unfinished rows that are not visible in History are excluded consistently with their GPS points, frozen routes, and recording-linked medal events, while every visible finalized recording remains in the backup.
+- Added regression coverage for the exact device-reported false-positive active-recording failure.
+- Synchronized the app version to 0.6.5, iOS build 82, and Android version code 82.
+
+## v0.6.4
+
+Fixed:
+
+- Backup export now uses Expo's current file API and its supported cache directory instead of the legacy file-system bridge that could fail before opening the iOS share sheet.
+- The exporter verifies that a non-empty JSON file exists before sharing it.
+- Backup failures now identify the preparation, file-write, or iOS-sharing stage and include the underlying technical detail, replacing the unactionable generic error.
+- Added regression coverage for the modern verified backup path and synchronized the app version to 0.6.4, iOS build 81, and Android version code 81.
+
 ## v0.6.3
 
 Fixed:

@@ -21,7 +21,7 @@ import {
   View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import type { Region } from "react-native-maps";
 
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
@@ -60,6 +60,7 @@ import {
   getRouteSnapshot,
   getWalkSessionById,
   getWalkHistory,
+  type WalkPointLoadScope,
   updateWalkSessionName,
   updateWalkSessionStepCount
 } from "../database/walkRepository";
@@ -92,6 +93,7 @@ import {
   upsertZones
 } from "../database/completionRepository";
 import {
+  drainPendingBackgroundLocationBatches,
   persistDeliveredBackgroundLocationBatch,
   subscribeToFinalizedBackgroundLocationChanges
 } from "../services/backgroundLocationOutbox";
@@ -122,6 +124,7 @@ import {
   ZoneCompletionStats
 } from "../services/zoneCompletion";
 import { buildPathSegments } from "../services/pathInference";
+import { usePerformanceRenderCounter } from "../services/performance";
 import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
 import {
   createRouteSnapshotIfMissing,
@@ -129,7 +132,12 @@ import {
   repairStreetCoverageForRecordings,
   replaceRouteSnapshot
 } from "../services/routeSnapshot";
-import { exportBackupJson, exportWalkGpx, importBackupJson } from "../services/dataTools";
+import {
+  BackupExportError,
+  exportBackupJson,
+  exportWalkGpx,
+  importBackupJson
+} from "../services/dataTools";
 import {
   getForegroundLocationPermission,
   LocationPermissionState,
@@ -402,6 +410,7 @@ export function MapScreen({
   language,
   onChangeLanguage
 }: MapScreenProps) {
+  usePerformanceRenderCounter("MapScreen");
   const activityMode: ActivityMode = "walk";
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
@@ -414,7 +423,6 @@ export function MapScreen({
   const [streetSegments, setStreetSegments] = useState<OsmStreetSegment[]>([]);
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
-  const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [completionVisible, setCompletionVisible] = useState(false);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
@@ -425,6 +433,7 @@ export function MapScreen({
   const [focusedMedal, setFocusedMedal] = useState<CollectedMedal | null>(null);
   const [medalFocusRequestId, setMedalFocusRequestId] = useState(0);
   const [medalRetroScanComplete, setMedalRetroScanComplete] = useState(false);
+  const [liveMedalEvaluationRevision, setLiveMedalEvaluationRevision] = useState(0);
   const [isScanningMedals, setIsScanningMedals] = useState(false);
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
@@ -494,6 +503,11 @@ export function MapScreen({
   const isStoppingRecordingRef = useRef(false);
   const isMapReadyRef = useRef(false);
   const detailedWalksModeRef = useRef<ActivityMode | null>(null);
+  const pathDisplayModeRef = useRef<PathDisplayMode>(pathDisplayMode);
+  const selectedSessionIdRef = useRef<number | null>(selectedSessionId);
+  pathDisplayModeRef.current = pathDisplayMode;
+  selectedSessionIdRef.current = selectedSessionId;
+
   const handleLocationPoint = useCallback((point: GpsPoint) => {
     setCurrentLocation((currentPoint) =>
       !currentPoint || getGpsTimestamp(point) >= getGpsTimestamp(currentPoint)
@@ -642,9 +656,9 @@ export function MapScreen({
         activeWalk,
         backgroundStatus: backgroundTrackingStatus,
         currentLocation,
-        elapsedSeconds
+        elapsedSeconds: activeWalk ? getElapsedSeconds(activeWalk.startedAt) : 0
       }),
-    [activeWalk, backgroundTrackingStatus, currentLocation, elapsedSeconds]
+    [activeWalk, backgroundTrackingStatus, currentLocation]
   );
   const isLaunchReady =
     isMapReady &&
@@ -718,8 +732,16 @@ export function MapScreen({
     });
   }, []);
 
-  const loadDetailedWalks = useCallback(async () => {
-    const savedWalks = await getAllWalksWithPoints(activityMode);
+  const loadDetailedWalks = useCallback(async (options?: {
+    mode?: PathDisplayMode;
+    selectedSessionId?: number | null;
+  }) => {
+    const mode = options?.mode ?? pathDisplayModeRef.current;
+    const scope = getWalkPointLoadScope(
+      mode,
+      options?.selectedSessionId ?? selectedSessionIdRef.current
+    );
+    const savedWalks = await getAllWalksWithPoints(activityMode, scope);
     detailedWalksModeRef.current = activityMode;
     setWalks(savedWalks);
   }, [activityMode]);
@@ -831,23 +853,35 @@ export function MapScreen({
   }, [activityMode, loadDetailedWalks]);
 
   const toggleLayer = useCallback((layer: keyof MapLayerState) => {
-    if (layer === "showPaths" && !layers.showPaths) {
-      loadDetailedWalks().catch((error) =>
-        console.warn("Failed to load saved paths", error)
-      );
-    }
-
     setLayers((current) => ({
       ...current,
       [layer]: !current[layer]
     }));
-  }, [layers.showPaths, loadDetailedWalks]);
+  }, []);
 
   useEffect(() => {
     refreshSavedData().catch((error) =>
       console.warn("Failed to refresh saved map data", error)
     );
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    if (!layers.showPaths) {
+      return;
+    }
+
+    loadDetailedWalks({
+      mode: pathDisplayMode,
+      selectedSessionId
+    }).catch((error) =>
+      console.warn("Failed to load scoped saved paths", error)
+    );
+  }, [
+    layers.showPaths,
+    loadDetailedWalks,
+    pathDisplayMode,
+    selectedSessionId
+  ]);
 
   useEffect(() => {
     let active = true;
@@ -929,23 +963,32 @@ export function MapScreen({
     const boundaryCellCount = activeWalk.exploredCellIds.length;
 
     if (
+      !medalProgress ||
       activeWalk.distanceMeters < MEDAL_MIN_BOUNDARY_LENGTH_METERS ||
       boundaryCellCount < 4 ||
-      evaluation.boundaryCellCount === boundaryCellCount ||
-      evaluation.inFlight
+      evaluation.boundaryCellCount === boundaryCellCount
     ) {
       return;
     }
 
     evaluation.boundaryCellCount = boundaryCellCount;
-    evaluation.inFlight = true;
+
+    if (evaluation.inFlight) {
+      return;
+    }
+
     const input = {
       boundaryCellIds: [...activeWalk.exploredCellIds],
+      eligibleMedalIds: medalProgress.medals
+        .filter((medal) => !medal.isCollected)
+        .map((medal) => medal.id),
       sessionId: activeWalk.sessionId,
       walkedDistanceMeters: activeWalk.distanceMeters
     };
+    const timerId = setTimeout(() => {
+      evaluation.inFlight = true;
 
-    void evaluateLiveMedalCollection(input)
+      void evaluateLiveMedalCollection(input)
       .then(async (result) => {
         if (result.collected.length === 0) {
           return;
@@ -963,11 +1006,20 @@ export function MapScreen({
       )
       .finally(() => {
         evaluation.inFlight = false;
+
+        if (evaluation.boundaryCellCount !== input.boundaryCellIds.length) {
+          setLiveMedalEvaluationRevision((revision) => revision + 1);
+        }
       });
+    }, 650);
+
+    return () => clearTimeout(timerId);
   }, [
     activeWalk?.distanceMeters,
     activeWalk?.exploredCellIds.length,
-    activeWalk?.sessionId
+    activeWalk?.sessionId,
+    liveMedalEvaluationRevision,
+    medalProgress?.collectedCount
   ]);
 
   const handleCompleteMedalCelebration = useCallback(async () => {
@@ -1363,21 +1415,6 @@ export function MapScreen({
       });
   }, []);
 
-  useEffect(() => {
-    if (!activeWalk) {
-      setElapsedSeconds(0);
-      return;
-    }
-
-    const timerId = setInterval(() => {
-      setElapsedSeconds(
-        Math.max(0, Math.round((Date.now() - new Date(activeWalk.startedAt).getTime()) / 1000))
-      );
-    }, 1000);
-
-    return () => clearInterval(timerId);
-  }, [activeWalk?.startedAt]);
-
   const stopStepWatch = useCallback(() => {
     stepSubscriptionRef.current?.remove();
     stepSubscriptionRef.current = null;
@@ -1501,14 +1538,16 @@ export function MapScreen({
 
     const lastRenderedPoint =
       walk.routeChunks.at(-1)?.points.at(-1) ?? walk.points.at(-1);
-    const [persistedPoints, session] = await Promise.all([
-      getGpsPointsAfterIndex(sessionId, lastRenderedPoint?.pointIndex ?? -1),
-      getWalkSessionById(sessionId)
-    ]);
+    const persistedPoints = await getGpsPointsAfterIndex(
+      sessionId,
+      lastRenderedPoint?.pointIndex ?? -1
+    );
 
     if (persistedPoints.length === 0) {
       return;
     }
+
+    const session = await getWalkSessionById(sessionId);
 
     setActiveWalk((currentWalk) => {
       if (!currentWalk || currentWalk.sessionId !== sessionId) {
@@ -1564,7 +1603,7 @@ export function MapScreen({
           syncInFlight = false;
         });
     };
-    const intervalId = setInterval(synchronizeTail, 1000);
+    const intervalId = setInterval(synchronizeTail, 3000);
     synchronizeTail();
 
     return () => clearInterval(intervalId);
@@ -1655,6 +1694,7 @@ export function MapScreen({
         return;
       }
 
+      await drainPendingBackgroundLocationBatches();
       const activeRecording = await getActiveRecordingSettings();
 
       if (
@@ -1774,7 +1814,6 @@ export function MapScreen({
 
       activeWalkRef.current = nextWalk;
       setActiveWalk(nextWalk);
-      setElapsedSeconds(0);
       setBackgroundTrackingStatus("starting");
 
       refreshCurrentLocation({ allowLastKnown: false }).catch((error) =>
@@ -2098,7 +2137,6 @@ export function MapScreen({
     setIsComputingRecording(true);
     setActiveWalk(null);
     activeWalkRef.current = null;
-    setElapsedSeconds(0);
     setBackgroundTrackingStatus("idle");
     setBackgroundTrackingMessage(null);
     invalidateRecordingLifecycle();
@@ -2940,6 +2978,21 @@ export function MapScreen({
       await exportBackupJson();
     } catch (error) {
       console.warn("Failed to export backup", error);
+
+      if (error instanceof BackupExportError) {
+        const stageMessage = {
+          prepare: strings.map.backupFailedPrepareMessage,
+          share: strings.map.backupFailedShareMessage,
+          write: strings.map.backupFailedWriteMessage
+        }[error.stage];
+
+        Alert.alert(
+          strings.map.backupFailedTitle,
+          `${stageMessage}\n\n${strings.map.backupFailureDetail}: ${error.detail}`
+        );
+        return;
+      }
+
       Alert.alert(strings.map.backupFailedTitle, strings.map.backupFailedMessage);
     }
   }, [strings]);
@@ -3168,7 +3221,7 @@ export function MapScreen({
             isRecording={Boolean(activeWalk)}
             isStarting={isStartingRecording}
             distanceMeters={activeWalk?.distanceMeters ?? 0}
-            durationSeconds={elapsedSeconds}
+            startedAt={activeWalk?.startedAt ?? null}
             gpsAccuracyMeters={currentLocation?.accuracy}
             gpsStatus={activeWalk?.lastRejectedPointReason}
             latestPointTimestamp={activeWalk?.points.at(-1)?.timestamp ?? null}
@@ -3185,7 +3238,7 @@ export function MapScreen({
         </View>
       </SafeAreaView>
 
-      <OptionsModal
+      {optionsVisible ? <OptionsModal
         language={language}
         layers={layers}
         mode={pathDisplayMode}
@@ -3196,8 +3249,8 @@ export function MapScreen({
         onReprocessRecordings={handleReprocessRecordings}
         selectedSessionId={selectedSessionId}
         visible={optionsVisible}
-      />
-      <DetailsModal
+      /> : null}
+      {dashboardExpanded ? <DetailsModal
         activeWalk={activeWalk}
         activityMode={activityMode}
         backgroundMessage={backgroundTrackingMessage}
@@ -3219,9 +3272,8 @@ export function MapScreen({
         stats={displayStats}
         visible={dashboardExpanded}
         history={history}
-      />
-
-      <WalkHistoryModal
+      /> : null}
+      {historyVisible ? <WalkHistoryModal
         activityMode={activityMode}
         detailedWalks={walks}
         language={language}
@@ -3245,14 +3297,14 @@ export function MapScreen({
           setHistoryVisible(false);
           setDiagnosticsVisible(true);
         }}
-      />
+      /> : null}
       <RecordingRecoveryModal
         onDiscard={handleDiscardRecoveredRecording}
         onFinish={handleFinishRecoveredRecording}
         onResume={handleResumeRecoveredRecording}
         recording={recoverableRecording}
       />
-      <CompletionModal
+      {completionVisible ? <CompletionModal
         currentObjective={objective}
         currentObjectiveStats={objectiveStats}
         currentObjectiveTodayCells={todayObjectiveCellCount}
@@ -3275,8 +3327,8 @@ export function MapScreen({
           setCompletionVisible(false);
         }}
         visible={completionVisible}
-      />
-      <MedalCollectionModal
+      /> : null}
+      {medalsVisible ? <MedalCollectionModal
         language={language}
         onClose={() => setMedalsVisible(false)}
         onFocusMedal={(medal) => {
@@ -3289,14 +3341,14 @@ export function MapScreen({
         retroScanComplete={medalRetroScanComplete}
         scanning={isScanningMedals}
         visible={medalsVisible}
-      />
+      /> : null}
       <MedalCelebration
         flightTarget={medalFlightTarget}
         language={language}
         medal={celebrationMedal}
         onComplete={handleCompleteMedalCelebration}
       />
-      <RecordingDiagnosticsModal
+      {diagnosticsVisible ? <RecordingDiagnosticsModal
         activeWalk={activeWalk}
         backgroundMessage={backgroundTrackingMessage}
         backgroundStatus={backgroundTrackingStatus}
@@ -3304,7 +3356,7 @@ export function MapScreen({
         onClose={() => setDiagnosticsVisible(false)}
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
-      />
+      /> : null}
       <StopRecordingConfirmationModal
         activityMode={activeWalk?.activityMode ?? activityMode}
         language={language}
@@ -3349,6 +3401,13 @@ export function MapScreen({
         />
       ) : null}
     </View>
+  );
+}
+
+function getElapsedSeconds(startedAt: string) {
+  return Math.max(
+    0,
+    Math.round((Date.now() - new Date(startedAt).getTime()) / 1000)
   );
 }
 
@@ -4277,6 +4336,43 @@ function PathDisplayControls({
       </View>
     </View>
   );
+}
+
+function getWalkPointLoadScope(
+  mode: PathDisplayMode,
+  selectedSessionId: number | null
+): WalkPointLoadScope {
+  if (mode === "selected") {
+    return { kind: "selected", sessionId: selectedSessionId ?? -1 };
+  }
+
+  if (mode === "last7") {
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 7);
+    return { kind: "since", startedAt: cutoff.toISOString() };
+  }
+
+  if (mode === "today") {
+    const now = new Date();
+    const todayStart = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+    const tomorrowStart = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + 1
+    );
+
+    return {
+      endedBefore: tomorrowStart.toISOString(),
+      kind: "range",
+      startedAt: todayStart.toISOString()
+    };
+  }
+
+  return { kind: "all" };
 }
 
 function filterWalksForPathDisplay(

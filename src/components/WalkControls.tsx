@@ -1,6 +1,6 @@
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useRef, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect, useRef, useState } from "react";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
@@ -14,7 +14,7 @@ type WalkControlsProps = {
   isRecording: boolean;
   isStarting: boolean;
   distanceMeters: number;
-  durationSeconds: number;
+  startedAt?: string | null;
   gpsAccuracyMeters?: number | null;
   gpsStatus?: string | null;
   acceptedGpsPointCount: number;
@@ -37,7 +37,7 @@ export function WalkControls({
   isRecording,
   isStarting,
   distanceMeters,
-  durationSeconds,
+  startedAt,
   gpsAccuracyMeters,
   gpsStatus,
   acceptedGpsPointCount,
@@ -55,9 +55,28 @@ export function WalkControls({
 }: WalkControlsProps) {
   const [detailsExpanded, setDetailsExpanded] = useState(false);
   const [healthExpanded, setHealthExpanded] = useState(false);
+  const [durationSeconds, setDurationSeconds] = useState(0);
   const lastTapRef = useRef(0);
   const strings = getStrings(language);
   const recordingNoun = ACTIVITY_MODE_TEXT[language].recordingNouns[activityMode];
+
+  useEffect(() => {
+    if (!isRecording || !startedAt) {
+      setDurationSeconds(0);
+      return;
+    }
+
+    const updateDuration = () => {
+      setDurationSeconds(
+        Math.max(0, Math.round((Date.now() - new Date(startedAt).getTime()) / 1000))
+      );
+    };
+    updateDuration();
+    const timerId = setInterval(updateDuration, 1000);
+
+    return () => clearInterval(timerId);
+  }, [isRecording, startedAt]);
+
   const handlePanelTouchEnd = () => {
     const now = Date.now();
 

@@ -1,10 +1,5 @@
 import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
-import {
-  cacheDirectory,
-  EncodingType,
-  writeAsStringAsync
-} from "expo-file-system/legacy";
 import * as Sharing from "expo-sharing";
 
 import { getActiveRecordingSettings } from "../database/settingsRepository";
@@ -37,36 +32,70 @@ export async function exportWalkGpx(walk: WalkSession, points: GpsPoint[]) {
   return file.uri;
 }
 
+export type BackupExportStage = "prepare" | "write" | "share";
+
+export class BackupExportError extends Error {
+  readonly detail: string;
+  readonly stage: BackupExportStage;
+
+  constructor(stage: BackupExportStage, error: unknown) {
+    const detail = getErrorMessage(error);
+    super(`Backup export failed during ${stage}: ${detail}`);
+    this.name = "BackupExportError";
+    this.detail = detail;
+    this.stage = stage;
+  }
+}
+
 export async function exportBackupJson() {
-  if (await getActiveRecordingSettings()) {
-    throw new Error(
-      "Finish or discard the active recording before exporting a backup."
-    );
+  let backup: StreetExplorerBackup;
+
+  try {
+    if (await getActiveRecordingSettings()) {
+      throw new Error(
+        "Finish or discard the active recording before exporting a backup."
+      );
+    }
+
+    await drainPendingBackgroundLocationBatches();
+
+    if (await getActiveRecordingSettings()) {
+      throw new Error(
+        "A recording started while the backup was being prepared."
+      );
+    }
+
+    backup = await getBackupData();
+  } catch (error) {
+    throw new BackupExportError("prepare", error);
   }
 
-  await drainPendingBackgroundLocationBatches();
-
-  if (await getActiveRecordingSettings()) {
-    throw new Error(
-      "A recording started while the backup was being prepared."
-    );
-  }
-
-  const backup = await getBackupData();
-  const fileUri = getCacheExportUri(
+  const file = new File(
+    Paths.cache,
     `street-explorer-backup-${formatFileTimestamp()}.json`
   );
 
-  await writeAsStringAsync(fileUri, JSON.stringify(backup), {
-    encoding: EncodingType.UTF8
-  });
-  await shareFile(fileUri, {
-    dialogTitle: "Export Street Explorer backup",
-    mimeType: "application/json",
-    UTI: "public.json"
-  });
+  try {
+    await writeBackupJson(file, backup);
 
-  return fileUri;
+    if (!file.exists || file.size <= 0) {
+      throw new Error("The backup file was empty or could not be verified.");
+    }
+  } catch (error) {
+    throw new BackupExportError("write", error);
+  }
+
+  try {
+    await shareFile(file.uri, {
+      dialogTitle: "Export Street Explorer backup",
+      mimeType: "application/json",
+      UTI: "public.json"
+    });
+  } catch (error) {
+    throw new BackupExportError("share", error);
+  }
+
+  return file.uri;
 }
 
 export async function importBackupJson() {
@@ -108,6 +137,46 @@ export async function importBackupJson() {
   return true;
 }
 
+async function writeBackupJson(file: File, backup: StreetExplorerBackup) {
+  file.create({ overwrite: true });
+  const writer = file.writableStream().getWriter();
+  const encoder = new TextEncoder();
+  const writeText = (text: string) => writer.write(encoder.encode(text));
+  const writeArray = async (values: readonly unknown[]) => {
+    await writeText("[");
+
+    for (let index = 0; index < values.length; index += 1) {
+      if (index > 0) {
+        await writeText(",");
+      }
+
+      await writeText(JSON.stringify(values[index]));
+    }
+
+    await writeText("]");
+  };
+
+  try {
+    await writeText(`{"exportedAt":${JSON.stringify(backup.exportedAt)},"medalSystem":{"acquisitionEvents":`);
+    await writeArray(backup.medalSystem.acquisitionEvents);
+    await writeText(',"collectedMedals":');
+    await writeArray(backup.medalSystem.collectedMedals);
+    await writeText(',"retroScanSettings":');
+    await writeArray(backup.medalSystem.retroScanSettings);
+    await writeText('},"points":');
+    await writeArray(backup.points);
+    await writeText(',"routeSnapshots":');
+    await writeArray(backup.routeSnapshots);
+    await writeText(',"sessions":');
+    await writeArray(backup.sessions);
+    await writeText(`,"version":${backup.version}}`);
+    await writer.close();
+  } catch (error) {
+    await writer.abort(error).catch(() => undefined);
+    throw error;
+  }
+}
+
 async function shareFile(
   fileUri: string,
   options?: {
@@ -125,12 +194,8 @@ async function shareFile(
   await Sharing.shareAsync(fileUri, options);
 }
 
-function getCacheExportUri(fileName: string) {
-  if (!cacheDirectory) {
-    throw new Error("The app cache directory is unavailable.");
-  }
-
-  return `${cacheDirectory}${fileName}`;
+function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }
 
 function buildGpx(walk: WalkSession, points: GpsPoint[]) {
