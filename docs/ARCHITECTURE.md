@@ -213,26 +213,23 @@ The Medals screen still offers an explicitly confirmed cumulative scan of saved 
 The developer-only POI candidate service queries an allowlisted set of OpenStreetMap tags inside fixed bounds and stores candidates as `unreviewed`. Network results never mutate the frozen shipped album or become collectible without review and a release change.
 ## Street Completion
 
-Street completion V1 uses OpenStreetMap as a hidden analysis and debug data layer while keeping Apple MapKit as the visual map background.
+Street Completion V2 keeps Apple MapKit as the visible map while using cached OpenStreetMap ways as a durable analysis denominator. Progress is rebuilt only from immutable `route_snapshots`; raw GPS remains available solely to capture the one-time V1 migration baseline.
 
 Flow:
 
-- Fetch nearby OSM `highway` ways through Overpass.
-- Split long OSM ways into short local segments.
-- Cache segment geometries in SQLite.
-- Match recorded GPS points to nearby segment polylines using a distance threshold.
-- During a live recording, match only points whose persisted point index has not already been processed.
-- Match full saved history only during the explicit Reprocess workflow.
-- Keep unmatched OSM streets hidden from the main map by default.
-- Keep matched/unmatched OSM street data hidden from the main gameplay map by default.
-- Report loaded segments, matched segments, and matched street-segment distance.
+- Fetch walkable OSM `highway` ways through the shared Overpass corridor service and split them into stable, at-most-35m local pieces.
+- Build one spatial index over cached street geometry and sample each frozen confirmed or accepted inferred route at 3m intervals.
+- Consider only OSM lines within 12m whose direction is compatible within 50 degrees, treating travel in either direction as valid.
+- Select the nearest compatible line for each sample so parallel streets cannot both receive credit.
+- Deduplicate coverage into 4m bins per stable OSM piece, persist each recording's covered-bin evidence, and union bins across recordings instead of adding repeat walks twice.
+- Roll local pieces up to their parent OSM way for reached/completed street counts; the way is first completed when its loaded distance reaches 90%.
+- Preserve the first 90% timestamp as audit evidence while deriving the visible completed count from current saved-route coverage, so deleting a recording also removes its contribution.
 
-Limitations:
+Migration 24 adds `street_completion_v1_evidence`, `street_completion_session_coverage`, `street_completion_segments`, and `street_completion_state`. Before the first V2 rebuild, the old V1 12m point-proximity result is captured as evidence only; it never becomes the V2 numerator. Existing recordings and frozen routes are not rewritten. Restore and Clear all remove this derived ledger and set it back to pending so imported recordings rebuild cleanly.
 
-- Matching is proximity-based and can be wrong near parallel roads.
-- Street matching is based on loaded nearby streets, not full city-scale street coverage yet.
-- Completion uses the walking exploration ledger.
+The one-time upgrade rebuild repairs historical OSM corridors asynchronously and then processes every valid frozen snapshot. Normal Stop runs the same aggregation inside deferred reconciliation; recovered finalization launches it without waiting; explicit Reprocess runs it after replacing frozen routes; deletion and restore schedule a fresh aggregate. The worker yields to the React Native event loop every four recordings and returns to pending before writing if a recording becomes active. No V2 matching, aggregation, or SQLite replacement runs in the active-walk path.
 
+Completion polls the small aggregate while visible and reports walked street distance, loaded street distance, percentage, reached OSM ways, and completed OSM ways. Street coverage is intentionally the locally cached network around recorded corridors rather than a full city-wide denominator. OSM access/foot restrictions and motorway/trunk exclusions match the inference safety policy.
 ## Zone Completion
 
 Completion fetches nearby OSM administrative relations for country, city, and district scopes from the current GPS location. Opening the screen triggers one automatic refresh when the last successful fetch is missing or at least 30 days old; manual Refresh remains available. The last attempt, last success, failure state, and last-fetched date persist across launches.

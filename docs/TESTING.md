@@ -48,7 +48,7 @@ npx expo install --check
 3. Confirm only one side flag remains. Tap it to hide and show the district objective card; verify the saved objective remains selected in Completion. With no objective, tap the flag and confirm Completion opens so one can be selected.
 4. Open Options and confirm Paths, Explored Cells, and Pins remain independently configurable even though their three map shortcuts were removed. Confirm route-reprocessing maintenance is also available there.
 5. Open Details and confirm everyday statistics and goals appear without map legends or GPS diagnostics. Open History, choose a recording, and confirm route-quality reports remain hidden until Technical details is expanded.
-6. Confirm Completion shows four primary measures and omits fetched-source metadata and the V1 rules explanation from the default flow.
+6. Confirm Completion keeps the compact zone measures, adds the Street Completion V2 card, and still omits fetched-source metadata and the old V1 rules explanation from the default flow.
 7. With no active walk, confirm only today's steps and Start Walk are shown. During a walk, confirm distance, duration, steps, Stop, and the existing double-tap health details remain accessible.
 8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces and confirm the same navy/gold surfaces, rounded layout, readable contrast, and red-only destructive actions.
 
@@ -191,7 +191,7 @@ Confirm each layer appears or disappears.
 7. Confirm an oversized loop remains unfilled under the walking area limit.
 8. Inspect a long open walked path and confirm its red corridor is solid without internal holes.
 
-## OpenStreetMap Debug Matching Test
+## OpenStreetMap Analysis Test
 
 1. Wait for GPS to locate you.
 2. Open Completion and refresh boundaries if needed.
@@ -200,13 +200,10 @@ Confirm each layer appears or disappears.
 
 Notes:
 
-- The first load needs internet access.
-- Nearby means a smaller local radius around your current position.
-- Matched is the number of short OSM street segments close to your GPS path.
-- Street dist. is matched OSM segment distance, not the same thing as recording distance.
-- Matching is V1 proximity matching, so it can be imperfect near parallel roads.
-- OSM streets are cached locally and can be refetched later.
-- OSM is hidden analysis data; cells and confirmed GPS paths are still the main exploration view.
+- The first corridor load needs internet access; saved cached coverage remains usable offline.
+- Street Completion V2 uses frozen-route overlap, nearest compatible direction, and deduplicated walked metres rather than whole-segment V1 proximity credit.
+- Loaded street distance is the cached corridor denominator, not recording distance or full city street length.
+- OSM streets can be refetched later; cells and confirmed/inferred saved paths remain the primary map view.
 
 ## Completion Screen Test
 
@@ -224,6 +221,22 @@ Notes:
 12. Tap Focus on map and confirm both exact and display-only selected boundaries can still be inspected on the map.
 13. Confirm Completion scans still yield, cancel immediately on close, and do not block returning to the map.
 14. Export Backup V4, clear data, restore it, and confirm permanent zone achievements and rollups return. Restore a V1-V3 backup and confirm it imports with no zone achievements.
+## Street Completion V2 Test
+
+1. Upgrade an installation with several saved walks and cached OSM corridor data, wait on the idle map, then open Completion.
+2. Confirm the OpenStreetMap streets card moves from calculating to ready without delaying map entry, changing recordings, or replacing frozen routes.
+3. Confirm the card reports walked distance, loaded distance, percentage with up to one decimal, reached streets, and streets completed at 90%.
+4. Confirm V1 evidence is shown after migration when the old proximity matcher had cached matches, but its whole-segment distance is not used as the V2 numerator.
+5. Walk roughly half of one straight OSM way, Stop, reopen Completion after deferred processing, and confirm only proportional metres are credited rather than the whole way.
+6. Repeat the same half in either direction and confirm walked metres do not double-count already covered bins.
+7. Finish the remaining section and confirm the OSM way becomes complete once aggregate loaded coverage reaches at least 90%.
+8. Walk one of two parallel streets less than 12m apart and confirm only the nearest direction-compatible street receives credit.
+9. Cross a street perpendicularly at an intersection without following it and confirm the crossed street receives no directional coverage.
+10. Confirm private, foot-prohibited, motorway, motorway-link, trunk, and trunk-link geometry does not enter progress.
+11. Stop a walk and immediately start another while the rebuild is pending; confirm the worker returns to pending and does not calculate or replace SQLite progress during the active recording. Stop again and confirm processing resumes asynchronously.
+12. Finish a recovered recording and confirm Start/map controls return without waiting for street aggregation.
+13. Run Reprocess recordings and confirm the final dialog includes walked/loaded street distance, percentage, and completed-street count after route rebuilding.
+14. Delete a recording and restore a Backup V4; confirm derived street progress rebuilds from the remaining/imported frozen routes while the recordings themselves remain unchanged.
 ## Street Inference Safety Test
 
 1. View or reprocess a route with sparse but plausible GPS updates and cached OSM streets.
@@ -270,13 +283,13 @@ Notes:
 2. Tap Reprocess recordings and confirm Details closes before the confirmation appears over the map.
 3. Confirm the app explains that street coverage, frozen routes, explored cells, and loop fills will be rebuilt for walking history.
 4. Tap Reprocess in the confirmation.
-5. Confirm a blocking progress modal appears over the map and advances through preparation, one-time street coverage repair, route reconstruction with a completed/total counter, contour calculation, atomic saving, and map refresh.
+5. Confirm a blocking progress modal appears over the map and advances through preparation, one-time street coverage repair, route reconstruction with a completed/total counter, contour calculation, atomic saving, Street Completion V2 aggregation, and map refresh.
 6. Confirm street repair uses one consolidated request rather than pausing for a download on every historical recording.
 7. Confirm the successful summary reports the number of refreshed road segments.
 8. Confirm routes containing plausible intervals previously hidden by the v0.3.50 legacy freeze become continuous street-matched corridors where OSM has a reliable route.
 9. Confirm one deliberately malformed recording is reported as preserved while later recording calculations continue.
 10. Confirm success always produces a detailed completion summary and failure always produces a visible error.
-11. Confirm the summary shows checked recordings, preserved failures, filled loops, rejected loops, loop cells, direct/validated boundary cells, inferred cells, and previous/rebuilt totals.
+11. Confirm the summary shows checked recordings, preserved failures, filled loops, rejected loops, loop cells, direct/validated boundary cells, inferred cells, walked/loaded street distance, street percentage, completed streets, and previous/rebuilt totals.
 12. Confirm independently enclosed qualifying areas count toward completion immediately and that the percentage matches the solid red surface.
 13. If the rebuilt total is below the previous total, confirm the summary reports a safety stop and the existing percentage does not decrease.
 14. Confirm areas enclosed by direct and inferred cells from multiple recordings can fill.

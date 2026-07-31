@@ -99,6 +99,7 @@ npx eas-cli build --platform ios --profile development-simulator
 24. Open Completion with a boundary refresh older than 30 days and confirm one automatic refresh runs, the last-success date updates, incomplete OSM relations remain display-only, and permanent district/city completion rollups survive cache clearing and a Backup V4 restore.
 25. Finish a walk containing a suspicious GPS gap and confirm its bounded street-topology lookup does not delay ordinary continuous saves. In History, verify the Street bridges totals and per-bridge Technical details; confirm an overpass is not joined to the street below and that the frozen result changes only after explicit Reprocess recordings.
 26. With Saved route disabled, open a History recording and tap Focus on map. Confirm the map immediately fits that recording with Paths set to Selected and the route visible. Repeat with a walk crossing local midnight and confirm the Today scope retains it after midnight.
+27. On an idle upgraded build, open Completion and confirm Street Completion V2 finishes its frozen-route migration asynchronously, reports walked/loaded street distance plus percentage and completed streets, deduplicates a repeated route, rejects a perpendicular/parallel-road false match, and returns to pending without writing if a new walk starts.
 
 ## Expected Limitation
 

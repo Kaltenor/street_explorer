@@ -58,6 +58,18 @@ Update docs/CHANGELOG.md for release-worthy changes. Keep README.md, docs/ARCHIT
 
 Only reference documentation mirrors or generated context folders if they actually exist. If one is introduced later, keep it synchronized.
 
+## Major Feature Test Protocol
+
+Whenever a major feature is completed, provide a concrete manual test protocol immediately in the final handoff.
+
+The protocol must:
+
+- State any build, device, permission, network, location, or test-data prerequisites.
+- Use numbered, directly actionable steps in the order the user should perform them.
+- State the expected result for every step or tightly related group of steps.
+- Cover the primary success path, persistence across reopening when relevant, and the most important edge or failure cases.
+- Distinguish automated checks already run from physical-device checks that still require the user.
+
 ## Completion and Validation
 
 Before declaring implementation complete:

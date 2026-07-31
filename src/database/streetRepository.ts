@@ -119,6 +119,34 @@ export async function getStreetSegmentsNear(
   return rows.map(mapStreetSegmentRow);
 }
 
+export async function getAllStreetSegments(): Promise<OsmStreetSegment[]> {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<OsmStreetSegmentRow>(
+    `
+      SELECT
+        id,
+        name,
+        highway,
+        access,
+        foot,
+        bridge,
+        tunnel,
+        layer,
+        coordinates_json,
+        min_latitude,
+        max_latitude,
+        min_longitude,
+        max_longitude,
+        fetched_at
+      FROM osm_street_segments
+      WHERE id LIKE 'way/%/part/%'
+      ORDER BY id
+    `
+  );
+
+  return rows.map(mapStreetSegmentRow);
+}
+
 export async function deleteAllStreetSegments() {
   const db = await getDatabase();
 

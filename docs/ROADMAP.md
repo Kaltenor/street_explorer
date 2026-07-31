@@ -51,20 +51,12 @@
 - Performance pass V1: immediate player/route lane, settled and memoized exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, streamed backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
 - Zone Boundary Completion V2: robust unordered/reversed multipolygon assembly, display-only invalid-boundary fallbacks, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V4 preservation.
 - Street-Aware Path Inference V3: bounded suspicious-gap topology refresh, metadata-safe crossings and sub-8m endpoint joins, immutable evidence-rich bridge snapshots, inferred-cell attribution, and concise History review.
+- OpenStreetMap Street Completion V2: frozen-route proportional metre coverage, nearest direction-compatible matching, repeated-bin deduplication, 90% OSM-way completion records, V1 evidence migration, durable SQLite state, Completion metrics, and active-walk-safe asynchronous rebuilding.
 - Saved-path focus polish: one-action Selected/layer activation and overlap-based Today visibility for midnight-crossing recordings.
 
 ## Next Priority
 
-### 1. OpenStreetMap Street Completion V2
-
-Improve street intelligence:
-
-- match by route segment overlap, not only point proximity
-- improve walking street-completion accuracy
-- use street length instead of local segment counts
-- use a more reliable Overpass endpoint strategy
-
-### 2. Recording Recovery V2
+### 1. Recording Recovery V2
 
 Add:
 
@@ -72,7 +64,7 @@ Add:
 - recovered background status verification
 - naming prompt before finishing a recovered recording
 
-### 3. UI Polish V2
+### 2. UI Polish V2
 
 Add:
 
@@ -81,7 +73,7 @@ Add:
 - stronger route detail and recording report layout
 - clearer GPS status states
 
-### 5. Data Tools V2
+### 3. Data Tools V2
 
 Add:
 

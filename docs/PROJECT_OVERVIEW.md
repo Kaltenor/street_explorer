@@ -35,6 +35,7 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Icon layer controls for paths, cells, and markers.
 - Full-screen Details, History, and Completion views with responsive map back navigation, lazy per-recording History details, and cancellable chunked Completion scans.
 - Completion screen with scope and zone selectors.
+- OpenStreetMap Street Completion V2 rebuilt from immutable saved routes, with nearest direction-compatible metre coverage, repeat-walk deduplication, a 90% OSM-way completion threshold, durable first-completion timestamps/V1 migration evidence, and asynchronous active-walk isolation.
 - OSM boundary loading with robust multi-ring relation assembly, display-only invalid fallbacks, geometry-fingerprinted denominator caches, automatic 30-day refresh status, and a visible last-fetched date.
 - Permanent exact-boundary completion achievements with district and city rollups that remain earned across later OSM changes and cache clearing.
 - Zone-specific completion stats and map focus.
@@ -56,5 +57,6 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - District boundaries depend on what exists in OSM near the current location.
 - Very large zone denominators may be skipped to keep the app responsive.
 - There is no backend, account, cloud sync, social feature, or route suggestion system.
-- OpenStreetMap data can be loaded nearby, but it is mainly used as hidden analysis data.
+- OpenStreetMap streets remain hidden analysis data; cells and recorded paths are still the primary exploration map.
+- Street Completion V2 reports cached walked/loaded OSM distance, not recording distance or a full city-wide denominator. Accuracy still depends on locally cached OSM geometry and tagging; new cache coverage enters the denominator on the next asynchronous rebuild.
 - Only high- and medium-confidence topology-validated street bridges contribute inferred explored cells. V3 accepts exact joins, ground-level geometric crossings, and grade-compatible endpoint seams up to 8m, persists per-bridge evidence/cell attribution, and leaves unmatched or unsafe gaps hidden with no straight-line fallback.

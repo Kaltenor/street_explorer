@@ -1,50 +1,61 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
+import { AppLanguage } from "../i18n";
 import { formatDistance } from "../services/distance";
 import { StreetCompletionSummary } from "../types/street";
 
 type StreetCompletionPanelProps = {
-  canLoad: boolean;
-  isLoading: boolean;
-  onLoadNearbyStreets: () => void;
+  language: AppLanguage;
   summary: StreetCompletionSummary;
 };
 
 export function StreetCompletionPanel({
-  canLoad,
-  isLoading,
-  onLoadNearbyStreets,
+  language,
   summary
 }: StreetCompletionPanelProps) {
-  const completionPercent =
-    summary.totalDistanceMeters > 0
-      ? Math.round((summary.exploredDistanceMeters / summary.totalDistanceMeters) * 100)
-      : 0;
+  const isFrench = language === "fr";
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View>
-          <Text style={styles.title}>OSM debug matching</Text>
-          <Text style={styles.text}>{getStatusText(summary, completionPercent)}</Text>
+        <View style={styles.titleRow}>
+          <Ionicons name="trail-sign-outline" size={18} color="#f5c451" />
+          <Text style={styles.title}>
+            {isFrench ? "Rues OpenStreetMap" : "OpenStreetMap streets"}
+          </Text>
         </View>
-        <TouchableOpacity
-          accessibilityRole="button"
-          disabled={!canLoad || isLoading}
-          onPress={onLoadNearbyStreets}
-          style={[styles.loadButton, !canLoad || isLoading ? styles.disabledButton : null]}
-        >
-          <Ionicons name="cloud-download-outline" size={17} color="#151006" />
-          <Text style={styles.loadButtonText}>{isLoading ? "Loading" : "Load"}</Text>
-        </TouchableOpacity>
+        <Text style={styles.percent}>{formatPercent(summary.completionPercent, language)}</Text>
       </View>
 
+      <Text style={styles.text}>{getStatusText(summary, language)}</Text>
+
       <View style={styles.metrics}>
-        <Metric label="Matched" value={summary.exploredStreetCount.toString()} />
-        <Metric label="Nearby" value={summary.loadedStreetCount.toString()} />
-        <Metric label="Street dist." value={formatDistance(summary.exploredDistanceMeters)} />
+        <Metric
+          label={isFrench ? "Parcouru" : "Walked"}
+          value={formatDistance(summary.exploredDistanceMeters)}
+        />
+        <Metric
+          label={isFrench ? "Chargé" : "Loaded"}
+          value={formatDistance(summary.totalDistanceMeters)}
+        />
+        <Metric
+          label={isFrench ? "Rues finies" : "Completed"}
+          value={summary.completedStreetCount.toString()}
+        />
+        <Metric
+          label={isFrench ? "Rues touchées" : "Reached"}
+          value={summary.exploredStreetCount.toString()}
+        />
       </View>
+
+      {summary.legacyMatchedStreetCount > 0 ? (
+        <Text style={styles.evidenceText}>
+          {isFrench
+            ? `Preuve V1 conservée : ${summary.legacyMatchedStreetCount} rues associées.`
+            : `V1 evidence retained: ${summary.legacyMatchedStreetCount} matched streets.`}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -58,34 +69,51 @@ function Metric({ label, value }: { label: string; value: string }) {
   );
 }
 
-function getStatusText(summary: StreetCompletionSummary, completionPercent: number) {
-  if (summary.status === "loading") {
-    return "Fetching OpenStreetMap streets nearby";
+function formatPercent(value: number, language: AppLanguage) {
+  return `${new Intl.NumberFormat(language === "fr" ? "fr-FR" : "en-US", {
+    maximumFractionDigits: 1
+  }).format(value)}%`;
+}
+
+function getStatusText(summary: StreetCompletionSummary, language: AppLanguage) {
+  const isFrench = language === "fr";
+
+  if (summary.status === "loading" || summary.status === "pending") {
+    return isFrench
+      ? "Calcul asynchrone depuis les traces figées…"
+      : "Calculating asynchronously from frozen routes…";
   }
 
   if (summary.status === "error") {
-    return "OSM load failed. Try again nearby or later.";
+    return isFrench
+      ? "Le dernier calcul a échoué. Utilisez Retraiter les enregistrements pour réessayer."
+      : "The latest calculation failed. Use Reprocess recordings to retry.";
   }
 
   if (summary.loadedStreetCount === 0) {
-    return "Load nearby OSM streets to start matching.";
+    return isFrench
+      ? "Aucune rue en cache pour le moment. La couverture OSM se charge pendant vos marches."
+      : "No cached streets yet. OSM coverage loads as you walk.";
   }
 
-  return `${completionPercent}% of loaded nearby street distance matched`;
+  return isFrench
+    ? `${summary.processedRecordingCount} enregistrements calculés. Une rue est finie à 90 %.`
+    : `${summary.processedRecordingCount} recordings processed. A street completes at 90%.`;
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgba(11, 21, 29, 0.96)",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderRadius: 16,
     borderWidth: 1,
-    gap: 10,
-    marginTop: 10,
-    padding: 10
+    gap: 11,
+    padding: 14
   },
-  disabledButton: {
-    opacity: 0.55
+  evidenceText: {
+    color: "#94a3b8",
+    fontSize: 11,
+    lineHeight: 16
   },
   header: {
     alignItems: "center",
@@ -93,22 +121,9 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "space-between"
   },
-  loadButton: {
-    alignItems: "center",
-    backgroundColor: "#f5c451",
-    borderRadius: 14,
-    flexDirection: "row",
-    gap: 5,
-    minHeight: 36,
-    paddingHorizontal: 10
-  },
-  loadButtonText: {
-    color: "#151006",
-    fontSize: 12,
-    fontWeight: "800"
-  },
   metric: {
-    flex: 1
+    flex: 1,
+    minWidth: "42%"
   },
   metricLabel: {
     color: "#94a3b8",
@@ -117,21 +132,32 @@ const styles = StyleSheet.create({
   },
   metricValue: {
     color: "#f8fafc",
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "900"
   },
   metrics: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10
   },
+  percent: {
+    color: "#f5c451",
+    fontSize: 24,
+    fontWeight: "900"
+  },
   text: {
-    color: "#94a3b8",
+    color: "#cbd5e1",
     fontSize: 12,
-    marginTop: 3
+    lineHeight: 17
   },
   title: {
     color: "#f8fafc",
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "800"
+  },
+  titleRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 7
   }
 });

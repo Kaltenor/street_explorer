@@ -117,6 +117,8 @@ import {
   upsertStreetSegments
 } from "../database/streetRepository";
 import { matchGpsPointsToStreetSegments } from "../services/streetCompletion";
+import { rebuildStreetCompletionV2 } from "../services/streetCompletionV2";
+import { getStreetCompletionState } from "../database/streetCompletionRepository";
 import {
   calculateZoneCompletionStats,
   countExploredCellKeysInsideZone,
@@ -499,6 +501,7 @@ export function MapScreen({
     null
   );
   const streetLoadRequestRef = useRef(0);
+  const streetCompletionMigrationStartedRef = useRef(false);
   const isStartingRecordingRef = useRef(false);
   const isStoppingRecordingRef = useRef(false);
   const isMapReadyRef = useRef(false);
@@ -851,6 +854,40 @@ export function MapScreen({
       }
     }
   }, [activityMode, loadDetailedWalks]);
+
+  useEffect(() => {
+    if (
+      !isSavedDataReady ||
+      !isRecoveryCheckComplete ||
+      activeWalk ||
+      recoverableRecording ||
+      streetCompletionMigrationStartedRef.current
+    ) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      if (streetCompletionMigrationStartedRef.current) {
+        return;
+      }
+
+      streetCompletionMigrationStartedRef.current = true;
+      getStreetCompletionState()
+        .then((state) =>
+          state.needsRebuild
+            ? rebuildStreetCompletionV2({
+                refreshStreetCoverage: true,
+                shouldAbort: () => Boolean(activeWalkRef.current)
+              })
+            : null
+        )
+        .catch((error) =>
+          console.warn("Automatic Street Completion V2 rebuild failed", error)
+        );
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [activeWalk, isRecoveryCheckComplete, isSavedDataReady, recoverableRecording]);
 
   const toggleLayer = useCallback((layer: keyof MapLayerState) => {
     setLayers((current) => ({
@@ -1305,6 +1342,24 @@ export function MapScreen({
     }, OSM_STREET_RETRY_DELAY_MS);
   }, []);
 
+  const rebuildPendingStreetCompletion = useCallback(() => {
+    if (activeWalkRef.current) {
+      return;
+    }
+
+    getStreetCompletionState()
+      .then((state) =>
+        state.needsRebuild
+          ? rebuildStreetCompletionV2({
+              shouldAbort: () => Boolean(activeWalkRef.current)
+            })
+          : null
+      )
+      .catch((error) =>
+        console.warn("Pending Street Completion V2 rebuild failed", error)
+      );
+  }, []);
+
   useEffect(() => {
     if (!currentLocation) {
       return;
@@ -1352,6 +1407,7 @@ export function MapScreen({
 
       if (hasFreshLocalCoverage) {
         clearStreetCoverageRetry();
+        rebuildPendingStreetCompletion();
         return;
       }
 
@@ -1378,6 +1434,7 @@ export function MapScreen({
 
         setStreetSegments(refreshedSegments);
         clearStreetCoverageRetry();
+        rebuildPendingStreetCompletion();
       } catch (error) {
         if (requestId !== streetLoadRequestRef.current) {
           return;
@@ -1401,6 +1458,7 @@ export function MapScreen({
   }, [
     clearStreetCoverageRetry,
     currentLocation,
+    rebuildPendingStreetCompletion,
     scheduleStreetCoverageRetry,
     streetRetryRevision
   ]);
@@ -2315,6 +2373,12 @@ export function MapScreen({
         }
 
         try {
+          await rebuildStreetCompletionV2({ shouldAbort: () => Boolean(activeWalkRef.current) });
+        } catch (error) {
+          console.warn("Recording saved but deferred street completion failed", error);
+        }
+
+        try {
           await evaluateMedalCollectionForRecording(savedSessionId);
         } catch (error) {
           console.warn("Recording saved but deferred medal evaluation failed", error);
@@ -2434,6 +2498,8 @@ export function MapScreen({
                   rebuildRouteSnapshots: true
                 });
 
+                const streetCompletion = await rebuildStreetCompletionV2({ shouldAbort: () => Boolean(activeWalkRef.current) });
+
                 setReprocessProgress({
                   completed: summary.recordingCount,
                   phase: "refreshing",
@@ -2459,7 +2525,7 @@ export function MapScreen({
                       : summary.streetCoverageStatus === "failed"
                         ? `repair failed (${summary.streetCoverageError ?? "unknown error"}); existing cache used`
                         : "not needed"
-                  }\nRecordings preserved after an individual failure: ${
+                  }\nStreet completion: ${formatDistance(streetCompletion.exploredDistanceMeters)} / ${formatDistance(streetCompletion.totalDistanceMeters)} (${streetCompletion.completionPercent}%), ${streetCompletion.completedStreetCount} streets complete\nRecordings preserved after an individual failure: ${
                     summary.failedRecordingCount
                   }\nPrevious / rebuilt total: ${summary.previousCellCount} / ${
                     summary.rebuiltCellCount
@@ -2806,6 +2872,10 @@ export function MapScreen({
           );
         }
 
+        void rebuildStreetCompletionV2({ shouldAbort: () => Boolean(activeWalkRef.current) }).catch((error) =>
+          console.warn("Recovered recording saved but deferred street completion failed", error)
+        );
+
         try {
           await evaluateMedalCollectionForRecording(savedSessionId);
         } catch (error) {
@@ -2930,6 +3000,9 @@ export function MapScreen({
                 currentSessionId === sessionId ? null : currentSessionId
               );
               await refreshSavedData();
+              void rebuildStreetCompletionV2({ shouldAbort: () => Boolean(activeWalkRef.current) }).catch((error) =>
+                console.warn("Failed to rebuild street completion after deletion", error)
+              );
             } catch (error) {
               console.warn("Failed to delete recording", error);
               Alert.alert(
@@ -3030,6 +3103,12 @@ export function MapScreen({
                 await clearActiveRecordingSettings();
                 setSelectedSessionId(null);
                 await refreshSavedData();
+                void rebuildStreetCompletionV2({
+                  refreshStreetCoverage: true,
+                  shouldAbort: () => Boolean(activeWalkRef.current)
+                }).catch((error) =>
+                  console.warn("Failed to rebuild street completion after restore", error)
+                );
               }
             } catch (error) {
               console.warn("Failed to import backup", error);

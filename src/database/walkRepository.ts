@@ -1168,6 +1168,18 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
+      DELETE FROM street_completion_session_coverage;
+      DELETE FROM street_completion_segments;
+      DELETE FROM street_completion_v1_evidence;
+      UPDATE street_completion_state
+      SET status = 'pending',
+        needs_rebuild = 1,
+        processed_recording_count = 0,
+        total_recording_count = 0,
+        legacy_captured_at = NULL,
+        last_error = NULL,
+        updated_at = NULL
+      WHERE id = 1;
       DELETE FROM pending_recording_repairs;
       DELETE FROM pending_recording_discards;
       DELETE FROM explored_cells;
@@ -1480,6 +1492,18 @@ export async function deleteAllData() {
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
+      DELETE FROM street_completion_session_coverage;
+      DELETE FROM street_completion_segments;
+      DELETE FROM street_completion_v1_evidence;
+      UPDATE street_completion_state
+      SET status = 'pending',
+        needs_rebuild = 1,
+        processed_recording_count = 0,
+        total_recording_count = 0,
+        legacy_captured_at = NULL,
+        last_error = NULL,
+        updated_at = NULL
+      WHERE id = 1;
       DELETE FROM gps_observations;
       DELETE FROM walk_sessions;
     `);

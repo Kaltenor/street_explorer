@@ -18,9 +18,37 @@ export type OsmStreetSegment = {
 };
 
 export type StreetCompletionSummary = {
+  completedStreetCount: number;
+  completionPercent: number;
   exploredDistanceMeters: number;
   exploredStreetCount: number;
+  legacyMatchedStreetCount: number;
   loadedStreetCount: number;
-  status: "empty" | "loading" | "ready" | "error";
+  processedRecordingCount: number;
+  status: "empty" | "pending" | "loading" | "ready" | "error";
   totalDistanceMeters: number;
+  updatedAt: string | null;
+};
+
+export type StreetSegmentCoverage = {
+  coveredBinIndexes: number[];
+  segmentId: string;
+  streetId: string;
+  totalBinCount: number;
+  totalDistanceMeters: number;
+  walkedDistanceMeters: number;
+};
+
+export type StreetCompletionSessionCoverage = StreetSegmentCoverage & {
+  sessionId: number;
+};
+
+export type StreetCompletionSegmentProgress = {
+  completionPercent: number;
+  highway: string;
+  name: string | null;
+  segmentId: string;
+  streetId: string;
+  totalDistanceMeters: number;
+  walkedDistanceMeters: number;
 };

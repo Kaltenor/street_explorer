@@ -563,6 +563,73 @@ async function initializeDatabase() {
     await db.execAsync("DELETE FROM osm_street_segments;");
   });
 
+  await applyMigration(24, "add_street_completion_v2", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS street_completion_v1_evidence (
+        segment_id TEXT PRIMARY KEY NOT NULL,
+        street_id TEXT NOT NULL,
+        name TEXT,
+        total_distance_m REAL NOT NULL,
+        captured_at TEXT NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS street_completion_session_coverage (
+        session_id INTEGER NOT NULL,
+        segment_id TEXT NOT NULL,
+        street_id TEXT NOT NULL,
+        covered_bins_json TEXT NOT NULL,
+        total_bin_count INTEGER NOT NULL,
+        total_distance_m REAL NOT NULL,
+        walked_distance_m REAL NOT NULL,
+        processed_at TEXT NOT NULL,
+        PRIMARY KEY (session_id, segment_id),
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
+      );
+
+      CREATE INDEX IF NOT EXISTS street_completion_session_segment_index
+        ON street_completion_session_coverage (segment_id, session_id);
+
+      CREATE TABLE IF NOT EXISTS street_completion_segments (
+        segment_id TEXT PRIMARY KEY NOT NULL,
+        street_id TEXT NOT NULL,
+        name TEXT,
+        highway TEXT NOT NULL,
+        walked_distance_m REAL NOT NULL,
+        total_distance_m REAL NOT NULL,
+        completion_percent REAL NOT NULL,
+        completed_at TEXT,
+        updated_at TEXT NOT NULL
+      );
+
+      CREATE INDEX IF NOT EXISTS street_completion_segments_street_index
+        ON street_completion_segments (street_id, completion_percent);
+
+      CREATE TABLE IF NOT EXISTS street_completion_state (
+        id INTEGER PRIMARY KEY NOT NULL CHECK (id = 1),
+        algorithm_version INTEGER NOT NULL,
+        status TEXT NOT NULL,
+        needs_rebuild INTEGER NOT NULL,
+        processed_recording_count INTEGER NOT NULL,
+        total_recording_count INTEGER NOT NULL,
+        legacy_captured_at TEXT,
+        last_error TEXT,
+        updated_at TEXT
+      );
+
+      INSERT OR IGNORE INTO street_completion_state (
+        id,
+        algorithm_version,
+        status,
+        needs_rebuild,
+        processed_recording_count,
+        total_recording_count,
+        legacy_captured_at,
+        last_error,
+        updated_at
+      ) VALUES (1, 2, 'pending', 1, 0, 0, NULL, NULL, NULL);
+    `);
+  });
+
   await seedBundledMedalAlbums(db);
   await db.runAsync(`
     UPDATE collected_medals

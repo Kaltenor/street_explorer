@@ -12,6 +12,9 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { AppLanguage, getStrings, interpolate } from "../i18n";
+import { StreetCompletionPanel } from "./StreetCompletionPanel";
+import { getStreetCompletionSummary } from "../database/streetCompletionRepository";
+import { emptyStreetCompletionSummary } from "../services/streetCompletion";
 import {
   CachedZone,
   CompletionScope,
@@ -82,6 +85,9 @@ export function CompletionModal({
   const mode: CompletionMode = "walk";
   const [scope, setScope] = useState<CompletionScope>("district");
   const [stats, setStats] = useState<CompletionStats>(EMPTY_STATS);
+  const [streetSummary, setStreetSummary] = useState(
+    emptyStreetCompletionSummary("pending")
+  );
   const [zones, setZones] = useState<CachedZone[]>([]);
   const [isRefreshingZones, setIsRefreshingZones] = useState(false);
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
@@ -141,6 +147,30 @@ export function CompletionModal({
       .then(setStats)
       .catch((error) => console.warn("Failed to load completion stats", error));
   }, [mode, visible]);
+
+  useEffect(() => {
+    if (!visible) {
+      return;
+    }
+
+    let cancelled = false;
+    const loadStreetSummary = () => {
+      getStreetCompletionSummary()
+        .then((summary) => {
+          if (!cancelled) {
+            setStreetSummary(summary);
+          }
+        })
+        .catch((error) => console.warn("Failed to load street completion", error));
+    };
+    loadStreetSummary();
+    const refreshTimer = setInterval(loadStreetSummary, 1500);
+
+    return () => {
+      cancelled = true;
+      clearInterval(refreshTimer);
+    };
+  }, [visible]);
 
   useEffect(() => {
     if (!visible) {
@@ -353,6 +383,8 @@ export function CompletionModal({
         </View>
 
         <ScrollView contentContainerStyle={styles.content}>
+          <StreetCompletionPanel language={language} summary={streetSummary} />
+
           {currentObjective ? (
             <View style={styles.currentObjectivePanel}>
               <View style={styles.currentObjectiveHeader}>

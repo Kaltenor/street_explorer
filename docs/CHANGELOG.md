@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.9.1
+
+Changed:
+
+- Repository instructions now require every major-feature handoff to include an immediately usable manual test protocol with prerequisites, ordered actions, expected results, persistence checks, and important edge/failure cases.
+- Synchronized the app version to 0.9.1, iOS build 88, and Android version code 88.
+
+## v0.9.0
+
+Added:
+
+- OpenStreetMap Street Completion V2 with durable per-recording coverage evidence derived exclusively from immutable rendered-route snapshots.
+- Proportional walked metres using deduplicated 4m street bins, nearest-street selection, a 12m lateral limit, compatible travel direction, and OSM walking-access safeguards.
+- A Completion overview showing walked street distance, loaded street distance, overall percentage, reached streets, and OSM ways completed at the 90% threshold.
+- One-time automatic V1 evidence capture before V2 replaces the old whole-segment proximity estimate.
+
+Changed:
+
+- Street completion rebuilds asynchronously after Stop and recovered finalization, during explicit Reprocess, and after restore/deletion; it yields through large histories and returns to pending if a recording becomes active.
+- Existing recordings are migrated by repairing corridor coverage once and rebuilding from frozen route snapshots without changing recordings or their route geometry.
+- Completion state, per-session covered bins, aggregate segment metres, first-completion timestamps, processing status, and migration evidence are persisted in SQLite migration 24.
+- Backup restore and Clear all discard only derived street-completion state so imported recordings can rebuild cleanly.
+- Added geometry and lifecycle regressions for proportional coverage, parallel roads, direction compatibility, reverse walking, access restrictions, persistence, and active-recording isolation.
+- Synchronized the app version to 0.9.0, iOS build 87, and Android version code 87.
+
 ## v0.8.1
 
 Fixed:

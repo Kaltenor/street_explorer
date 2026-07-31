@@ -18,6 +18,7 @@ const explorationArea = require("../src/services/explorationArea.ts");
 const loopFill = require("../src/services/loopFill.ts");
 const osmStreetService = require("../src/services/osmStreetService.ts");
 const pathInference = require("../src/services/pathInference.ts");
+const streetCompletion = require("../src/services/streetCompletion.ts");
 const liveRoute = require("../src/services/liveRoute.ts");
 const recordingState = require("../src/services/recordingState.ts");
 const config = require("../src/constants/config.ts");
@@ -95,6 +96,105 @@ function gpsPoint(longitudeOffset, pointIndex, seconds = pointIndex * 5) {
     timestamp: new Date(Date.UTC(2026, 0, 1, 12, 0, seconds)).toISOString()
   };
 }
+
+function streetFixture(id, from, to, overrides = {}) {
+  return {
+    access: null,
+    bridge: false,
+    coordinates: [from, to],
+    fetchedAt: "2026-01-01T00:00:00.000Z",
+    foot: null,
+    highway: "residential",
+    id,
+    layer: 0,
+    maxLatitude: Math.max(from.latitude, to.latitude),
+    maxLongitude: Math.max(from.longitude, to.longitude),
+    minLatitude: Math.min(from.latitude, to.latitude),
+    minLongitude: Math.min(from.longitude, to.longitude),
+    name: id,
+    tunnel: false,
+    ...overrides
+  };
+}
+
+function routeFixture(points) {
+  return [{
+    points: points.map((point, index) => ({
+      accuracy: 5,
+      latitude: point.latitude,
+      longitude: point.longitude,
+      pointIndex: index,
+      timestamp: new Date(Date.UTC(2026, 0, 1, 12, 0, index * 5)).toISOString()
+    })),
+    type: "confirmed"
+  }];
+}
+
+const v2StreetStart = { latitude: 45.75, longitude: 4.8 };
+const v2StreetEnd = { latitude: 45.75, longitude: 4.801 };
+const v2ParallelOffset = 8 / 111320;
+const v2MainStreet = streetFixture("way/100/part/0", v2StreetStart, v2StreetEnd);
+const v2ParallelStreet = streetFixture(
+  "way/200/part/0",
+  { latitude: 45.75 + v2ParallelOffset, longitude: 4.8 },
+  { latitude: 45.75 + v2ParallelOffset, longitude: 4.801 }
+);
+const v2PartialCoverage = streetCompletion.calculateStreetCoverageForRouteSegments(
+  routeFixture([
+    v2StreetStart,
+    { latitude: 45.75, longitude: 4.8005 }
+  ]),
+  [v2MainStreet, v2ParallelStreet]
+);
+const v2PartialMain = v2PartialCoverage.find(
+  (coverage) => coverage.segmentId === v2MainStreet.id
+);
+assert(
+  Boolean(v2PartialMain) &&
+    v2PartialMain.walkedDistanceMeters > v2PartialMain.totalDistanceMeters * 0.35 &&
+    v2PartialMain.walkedDistanceMeters < v2PartialMain.totalDistanceMeters * 0.7,
+  "street completion V2 awards proportional metres instead of a whole street"
+);
+assert(
+  !v2PartialCoverage.some((coverage) => coverage.segmentId === v2ParallelStreet.id),
+  "street completion V2 credits only the nearest compatible parallel street"
+);
+const v2RepeatedBins = new Map();
+streetCompletion.addStreetCoverageToAggregate(v2RepeatedBins, v2PartialCoverage);
+const v2UniqueBinCount = v2RepeatedBins.get(v2MainStreet.id)?.size ?? 0;
+streetCompletion.addStreetCoverageToAggregate(v2RepeatedBins, v2PartialCoverage);
+assert(
+  v2RepeatedBins.get(v2MainStreet.id)?.size === v2UniqueBinCount,
+  "street completion V2 does not double-count repeated walks over the same bins"
+);
+const v2PerpendicularCoverage = streetCompletion.calculateStreetCoverageForRouteSegments(
+  routeFixture([
+    { latitude: 45.7498, longitude: 4.8005 },
+    { latitude: 45.7502, longitude: 4.8005 }
+  ]),
+  [v2MainStreet]
+);
+assert(
+  v2PerpendicularCoverage.length === 0,
+  "street completion V2 rejects close but direction-incompatible crossings"
+);
+const v2ReverseCoverage = streetCompletion.calculateStreetCoverageForRouteSegments(
+  routeFixture([v2StreetEnd, v2StreetStart]),
+  [v2MainStreet]
+)[0];
+assert(
+  Boolean(v2ReverseCoverage) &&
+    v2ReverseCoverage.walkedDistanceMeters >= v2ReverseCoverage.totalDistanceMeters * 0.9,
+  "street completion V2 accepts either walking direction and reaches the 90 percent threshold"
+);
+const v2PrivateCoverage = streetCompletion.calculateStreetCoverageForRouteSegments(
+  routeFixture([v2StreetStart, v2StreetEnd]),
+  [streetFixture("way/300/part/0", v2StreetStart, v2StreetEnd, { access: "private" })]
+);
+assert(
+  v2PrivateCoverage.length === 0,
+  "street completion V2 excludes non-walkable OSM access"
+);
 
 assert(
   config.APP_VERSION === packageMetadata.version,
@@ -745,6 +845,18 @@ const completionRepositorySource = fs.readFileSync(
   require.resolve("../src/database/completionRepository.ts"),
   "utf8"
 );
+const streetCompletionRepositorySource = fs.readFileSync(
+  require.resolve("../src/database/streetCompletionRepository.ts"),
+  "utf8"
+);
+const streetCompletionV2Source = fs.readFileSync(
+  require.resolve("../src/services/streetCompletionV2.ts"),
+  "utf8"
+);
+const streetCompletionPanelSource = fs.readFileSync(
+  require.resolve("../src/components/StreetCompletionPanel.tsx"),
+  "utf8"
+);
 const routeSnapshotSource = fs.readFileSync(
   require.resolve("../src/services/routeSnapshot.ts"),
   "utf8"
@@ -1132,6 +1244,24 @@ assert(
     walkRepositorySource.includes("zoneAchievements: ZoneAchievement[]") &&
     dataToolsSource.includes("parsed.version !== 4"),
   "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V4"
+);
+assert(
+  databaseSource.includes('applyMigration(24, "add_street_completion_v2"') &&
+    databaseSource.includes("street_completion_v1_evidence") &&
+    databaseSource.includes("street_completion_session_coverage") &&
+    databaseSource.includes("street_completion_segments") &&
+    streetCompletionRepositorySource.includes("covered_bins_json") &&
+    streetCompletionRepositorySource.includes("walked_distance_m >= total_distance_m * 0.9") &&
+    streetCompletionRepositorySource.includes("active_recording_session_id") &&
+    streetCompletionV2Source.includes("walk.routeSegments") &&
+    streetCompletionV2Source.includes("markStreetCompletionPending") &&
+    streetCompletionV2Source.includes("yieldToEventLoop") &&
+    mapScreenSource.includes("Automatic Street Completion V2 rebuild failed") &&
+    mapScreenSource.includes("deferred street completion failed") &&
+    completionModalSource.includes("<StreetCompletionPanel") &&
+    streetCompletionPanelSource.includes("summary.completedStreetCount") &&
+    walkRepositorySource.includes("DELETE FROM street_completion_v1_evidence"),
+  "street completion V2 persists frozen-route metre coverage and runs outside active recording"
 );
 assert(
   databaseSource.includes('applyMigration(23, "add_street_topology_metadata"') &&
