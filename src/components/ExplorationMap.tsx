@@ -200,7 +200,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     explorationEnabled && (shouldShowCompletedArea || shouldShowOutline);
   const maxFilledHoleAreaSquareMeters =
     LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeMode];
-  const settledActiveExplorationCellIds = useDebouncedValue(
+  const settledActiveExplorationCellIds = useCoalescedValue(
     activeExplorationCellIds,
     650
   );
@@ -245,7 +245,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         : [],
     [explorationPolygons, shouldShowOutline]
   );
-  const settledTodayNewCellIds = useDebouncedValue(todayNewCellIds, 650);
+  const settledTodayNewCellIds = useCoalescedValue(todayNewCellIds, 650);
   const todayNewPolygons = useMemo(
     () =>
       explorationEnabled && shouldShowCompletedArea
@@ -599,13 +599,31 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
   );
 });
 
-function useDebouncedValue<T>(value: T, delayMs: number) {
+function useCoalescedValue<T>(value: T, intervalMs: number) {
   const [settledValue, setSettledValue] = useState(value);
+  const latestValueRef = useRef(value);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  latestValueRef.current = value;
 
   useEffect(() => {
-    const timerId = setTimeout(() => setSettledValue(value), delayMs);
-    return () => clearTimeout(timerId);
-  }, [delayMs, value]);
+    if (Object.is(value, settledValue) || timerRef.current) {
+      return;
+    }
+
+    timerRef.current = setTimeout(() => {
+      timerRef.current = null;
+      setSettledValue(latestValueRef.current);
+    }, intervalMs);
+  }, [intervalMs, settledValue, value]);
+
+  useEffect(
+    () => () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    },
+    []
+  );
 
   return settledValue;
 }

@@ -2,12 +2,21 @@ import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
 
+import { APP_VERSION } from "../constants/config";
 import { getActiveRecordingSettings } from "../database/settingsRepository";
 import {
-  getBackupData,
-  restoreBackupData,
-  StreetExplorerBackup
+  restoreBackupV5Data,
+  StreetExplorerBackup,
+  validateLegacyBackupV4,
+  withBackupV5Snapshot
 } from "../database/walkRepository";
+import { BACKUP_V5_EXTENSION, BackupV5Manifest } from "./backupV5";
+import {
+  inspectBackupV5File,
+  readBackupV5Blocks,
+  writeBackupV5Snapshot,
+  writeLegacyV4AsBackupV5
+} from "./backupV5File";
 import { GpsPoint, WalkSession } from "../types/walk";
 import {
   closeBackgroundLocationOutboxAdmission,
@@ -32,7 +41,7 @@ export async function exportWalkGpx(walk: WalkSession, points: GpsPoint[]) {
   return file.uri;
 }
 
-export type BackupExportStage = "prepare" | "write" | "share";
+export type BackupExportStage = "prepare" | "share" | "verify" | "write";
 
 export class BackupExportError extends Error {
   readonly detail: string;
@@ -47,70 +56,76 @@ export class BackupExportError extends Error {
   }
 }
 
-export async function exportBackupJson() {
-  let backup: StreetExplorerBackup;
+export type BackupV5OperationResult = {
+  archiveBlockCount: number;
+  fileSize: number;
+  hotSessionCount: number;
+  pointCount: number;
+  sessionCount: number;
+};
 
+export async function exportBackupV5(): Promise<BackupV5OperationResult> {
   try {
-    if (await getActiveRecordingSettings()) {
-      throw new Error(
-        "Finish or discard the active recording before exporting a backup."
-      );
-    }
-
-    await drainPendingBackgroundLocationBatches();
-
-    if (await getActiveRecordingSettings()) {
-      throw new Error(
-        "A recording started while the backup was being prepared."
-      );
-    }
-
-    backup = await getBackupData();
+    await prepareBackupExport();
   } catch (error) {
     throw new BackupExportError("prepare", error);
   }
 
-  const file = new File(
-    Paths.cache,
-    `street-explorer-backup-${formatFileTimestamp()}.json`
-  );
+  const file = createBackupV5CacheFile();
+  let manifest: BackupV5Manifest;
 
   try {
-    await writeBackupJson(file, backup);
-
-    if (!file.exists || file.size <= 0) {
-      throw new Error("The backup file was empty or could not be verified.");
-    }
+    manifest = await withBackupV5Snapshot((source) =>
+      writeBackupV5Snapshot(file, source)
+    );
   } catch (error) {
     throw new BackupExportError("write", error);
   }
 
-  try {
-    await shareFile(file.uri, {
-      dialogTitle: "Export Street Explorer backup",
-      mimeType: "application/json",
-      UTI: "public.json"
-    });
-  } catch (error) {
-    throw new BackupExportError("share", error);
-  }
-
-  return file.uri;
+  await shareBackupV5File(file);
+  const verified = await verifyExternallySavedBackup(manifest.backupId);
+  return toBackupV5OperationResult(verified.manifest, verified.fileSize);
 }
 
-export async function importBackupJson() {
-  const result = await DocumentPicker.getDocumentAsync({
-    copyToCacheDirectory: true,
-    type: "application/json"
-  });
+export async function convertLegacyV4BackupToV5(): Promise<
+  BackupV5OperationResult | null
+> {
+  const selected = await pickBackupFile("application/json");
 
-  if (result.canceled || !result.assets[0]) {
+  if (!selected) {
+    return null;
+  }
+
+  let legacy: StreetExplorerBackup;
+
+  try {
+    legacy = parseLegacyV4Backup(await selected.text());
+  } catch (error) {
+    throw new BackupExportError("prepare", error);
+  }
+
+  const file = createBackupV5CacheFile();
+  let manifest: BackupV5Manifest;
+
+  try {
+    manifest = await writeLegacyV4AsBackupV5(file, legacy, APP_VERSION);
+  } catch (error) {
+    throw new BackupExportError("write", error);
+  }
+
+  await shareBackupV5File(file);
+  const verified = await verifyExternallySavedBackup(manifest.backupId);
+  return toBackupV5OperationResult(verified.manifest, verified.fileSize);
+}
+
+export async function importBackupV5() {
+  const file = await pickBackupFile("*/*");
+
+  if (!file) {
     return false;
   }
 
-  const rawJson = await new File(result.assets[0].uri).text();
-  const backup = parseBackup(rawJson);
-
+  const inspection = await inspectBackupV5File(file);
   const activeRecording = await getActiveRecordingSettings();
 
   if (activeRecording) {
@@ -126,7 +141,10 @@ export async function importBackupJson() {
     await stopBackgroundLocationTracking();
     reopenGpsAdmission = closeGpsPersistenceAdmission();
     await discardAllGpsPersistenceForDataReplacement();
-    await restoreBackupData(backup);
+    await restoreBackupV5Data(
+      inspection.manifest,
+      readBackupV5Blocks(file, inspection.manifest)
+    );
     clearBackgroundLocationSessionHint();
     await discardPendingBackgroundLocationBatches();
   } finally {
@@ -137,46 +155,115 @@ export async function importBackupJson() {
   return true;
 }
 
-async function writeBackupJson(file: File, backup: StreetExplorerBackup) {
-  file.create({ overwrite: true });
-  const writer = file.writableStream().getWriter();
-  const encoder = new TextEncoder();
-  const writeText = (text: string) => writer.write(encoder.encode(text));
-  const writeArray = async (values: readonly unknown[]) => {
-    await writeText("[");
+async function prepareBackupExport() {
+  if (await getActiveRecordingSettings()) {
+    throw new Error(
+      "Finish or discard the active recording before exporting a backup."
+    );
+  }
 
-    for (let index = 0; index < values.length; index += 1) {
-      if (index > 0) {
-        await writeText(",");
-      }
+  await drainPendingBackgroundLocationBatches();
 
-      await writeText(JSON.stringify(values[index]));
+  if (await getActiveRecordingSettings()) {
+    throw new Error(
+      "A recording started while the backup was being prepared."
+    );
+  }
+}
+
+function createBackupV5CacheFile() {
+  return new File(
+    Paths.cache,
+    `street-explorer-backup-${formatFileTimestamp()}.${BACKUP_V5_EXTENSION}`
+  );
+}
+
+async function shareBackupV5File(file: File) {
+  try {
+    await shareFile(file.uri, {
+      dialogTitle: "Export Street Explorer V5 backup",
+      mimeType: "application/octet-stream",
+      UTI: "public.data"
+    });
+  } catch (error) {
+    throw new BackupExportError("share", error);
+  }
+}
+
+async function verifyExternallySavedBackup(expectedBackupId: string) {
+  try {
+    const selected = await pickBackupFile("*/*");
+
+    if (!selected) {
+      throw new Error(
+        "Verification is required. Save the backup in Files, then select that saved file."
+      );
     }
 
-    await writeText("]");
+    return await inspectBackupV5File(selected, expectedBackupId);
+  } catch (error) {
+    throw new BackupExportError("verify", error);
+  }
+}
+
+async function pickBackupFile(type: string) {
+  const result = await DocumentPicker.getDocumentAsync({
+    copyToCacheDirectory: true,
+    type
+  });
+
+  if (result.canceled || !result.assets[0]) {
+    return null;
+  }
+
+  return new File(result.assets[0].uri);
+}
+
+function parseLegacyV4Backup(rawJson: string): StreetExplorerBackup {
+  const parsed = JSON.parse(rawJson) as Partial<StreetExplorerBackup> & {
+    version?: number;
   };
 
-  try {
-    await writeText(`{"exportedAt":${JSON.stringify(backup.exportedAt)},"medalSystem":{"acquisitionEvents":`);
-    await writeArray(backup.medalSystem.acquisitionEvents);
-    await writeText(',"collectedMedals":');
-    await writeArray(backup.medalSystem.collectedMedals);
-    await writeText(',"retroScanSettings":');
-    await writeArray(backup.medalSystem.retroScanSettings);
-    await writeText('},"points":');
-    await writeArray(backup.points);
-    await writeText(',"routeSnapshots":');
-    await writeArray(backup.routeSnapshots);
-    await writeText(',"sessions":');
-    await writeArray(backup.sessions);
-    await writeText(',"zoneAchievements":');
-    await writeArray(backup.zoneAchievements);
-    await writeText(`,"version":${backup.version}}`);
-    await writer.close();
-  } catch (error) {
-    await writer.abort(error).catch(() => undefined);
-    throw error;
+  if (
+    parsed.version !== 4 ||
+    !Array.isArray(parsed.sessions) ||
+    !Array.isArray(parsed.points) ||
+    !Array.isArray(parsed.routeSnapshots) ||
+    !Array.isArray(parsed.zoneAchievements) ||
+    !parsed.medalSystem ||
+    !Array.isArray(parsed.medalSystem.acquisitionEvents) ||
+    !Array.isArray(parsed.medalSystem.collectedMedals) ||
+    !Array.isArray(parsed.medalSystem.retroScanSettings)
+  ) {
+    throw new Error(
+      "The temporary converter accepts complete Street Explorer V4 JSON backups only."
+    );
   }
+
+  const backup: StreetExplorerBackup = {
+    exportedAt: parsed.exportedAt ?? new Date().toISOString(),
+    medalSystem: parsed.medalSystem,
+    points: parsed.points,
+    routeSnapshots: parsed.routeSnapshots,
+    sessions: parsed.sessions,
+    version: 4,
+    zoneAchievements: parsed.zoneAchievements
+  };
+  validateLegacyBackupV4(backup);
+  return backup;
+}
+
+function toBackupV5OperationResult(
+  manifest: BackupV5Manifest,
+  fileSize: number
+): BackupV5OperationResult {
+  return {
+    archiveBlockCount: manifest.totals.archiveBlockCount,
+    fileSize,
+    hotSessionCount: manifest.totals.hotSessionCount,
+    pointCount: manifest.totals.pointCount,
+    sessionCount: manifest.totals.sessionCount
+  };
 }
 
 async function shareFile(
@@ -225,59 +312,6 @@ ${trackPoints}
 </gpx>`;
 }
 
-function parseBackup(rawJson: string): StreetExplorerBackup {
-  const parsed = JSON.parse(rawJson) as Omit<Partial<StreetExplorerBackup>, "version"> & { version?: number };
-
-  if (
-    (parsed.version !== 1 && parsed.version !== 2 && parsed.version !== 3 && parsed.version !== 4) ||
-    !Array.isArray(parsed.sessions) ||
-    !Array.isArray(parsed.points)
-  ) {
-    throw new Error("This file is not a valid Street Explorer backup.");
-  }
-
-  return {
-    medalSystem:
-      parsed.version >= 3 &&
-      parsed.medalSystem &&
-      Array.isArray(parsed.medalSystem.acquisitionEvents) &&
-      Array.isArray(parsed.medalSystem.collectedMedals) &&
-      Array.isArray(parsed.medalSystem.retroScanSettings)
-        ? parsed.medalSystem
-        : {
-            acquisitionEvents: [],
-            collectedMedals: [],
-            retroScanSettings: []
-          },
-    exportedAt: parsed.exportedAt ?? new Date().toISOString(),
-    points: deduplicateBackupPoints(parsed.points),
-    routeSnapshots:
-      parsed.version >= 2 && Array.isArray(parsed.routeSnapshots)
-        ? parsed.routeSnapshots
-        : [],
-    sessions: parsed.sessions,
-    zoneAchievements:
-      parsed.version >= 4 && Array.isArray(parsed.zoneAchievements)
-        ? parsed.zoneAchievements
-        : [],
-    version: 4
-  };
-}
-
-function deduplicateBackupPoints(points: GpsPoint[]) {
-  const seen = new Set<string>();
-
-  return points.filter((point) => {
-    const key = `${point.sessionId ?? "missing"}:${point.timestamp}`;
-
-    if (seen.has(key)) {
-      return false;
-    }
-
-    seen.add(key);
-    return true;
-  });
-}
 
 function escapeXml(value: string) {
   return value

@@ -625,7 +625,8 @@ function getOrCreatePersistenceQueue(sessionId: number) {
 export async function finishPersistedActiveWalk(
   activeWalk: ActiveWalk,
   endedAt: string,
-  stepCount = activeWalk.stepCount
+  stepCount = activeWalk.stepCount,
+  displayName?: string
 ) {
   await flushPendingGpsPoints(activeWalk.sessionId);
   const persistedSession = await getWalkSessionById(activeWalk.sessionId);
@@ -635,6 +636,7 @@ export async function finishPersistedActiveWalk(
   );
   const finalized = await finishWalkSession(activeWalk.sessionId, {
     endedAt,
+    ...(displayName !== undefined ? { displayName } : {}),
     distanceMeters:
       persistedSession?.distanceMeters ?? activeWalk.distanceMeters,
     durationSeconds,

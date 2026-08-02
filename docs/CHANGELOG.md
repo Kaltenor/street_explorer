@@ -1,5 +1,81 @@
 # Changelog
 
+## v0.11.2
+
+Changed:
+
+- Backup, temporary V4 conversion, and V5 restore now enter a synchronous single-flight guard on the first tap, immediately disable duplicate data-tool actions, and show an accessible in-progress panel before any expensive work begins.
+- History waits two rendered frames before starting file/database work so the progress message is visible even when compression briefly occupies the JavaScript thread.
+- V5 gzip compression now uses level 3 instead of level 6 for faster device exports with a modest size tradeoff.
+- Added regression coverage for duplicate-tap prevention and visible Backup/Restore busy feedback.
+- Synchronized the app version to 0.11.2, iOS build 95, and Android version code 95.
+
+## v0.11.1
+
+Fixed:
+
+- Backup V5 no longer assumes historical `gps_points.point_index` values are unique within a session; the SQLite schema permits duplicates and Session 4 exposed that legacy condition on-device.
+- Confirmed frozen-route references now use stable positions in the archived raw GPS stream, preserving duplicate legacy indexes and every original point without normalization or deletion.
+- Added a regression that round-trips a route containing duplicate point indexes.
+- Synchronized the app version to 0.11.1, iOS build 94, and Android version code 94.
+
+## v0.11.0
+
+Added:
+
+- Backup V5 stores a checksum-verified, compressed record stream instead of one monolithic JSON document.
+- The newest 20 walks remain individual hot records; older walks are physically consolidated by month into blocks capped at 20 sessions or about 25,000 GPS points, while every logical recording remains separate and retains its original identity and metadata.
+- Confirmed frozen-route segments reference the archive's single lossless GPS stream, while inferred bridge geometry and evidence remain fully preserved.
+- Backup success now requires selecting the externally saved Files copy again so the complete archive, backup identity, record order, counts, and checksums can be verified.
+- Added a temporary V4-only converter that produces and verifies V5 archives without restoring the V4 data into the app. V1-V3 restore support has been removed.
+- V5 restore reads one bounded block at a time and batch-inserts GPS points, avoiding the former whole-file parse and per-point database round trips.
+- Added Backup V5 regressions for archive grouping, one-to-one logical session coverage, lossless route round trips, compression, manifest totals, and corruption rejection.
+
+Changed:
+
+- Added the pure-JavaScript `fflate` dependency; no native development build is required for compression support.
+- Synchronized the app version to 0.11.0, iOS build 93, and Android version code 93.
+
+## v0.10.2
+
+Fixed:
+
+- Exploration and today surfaces now refresh on a bounded 650ms cadence even when iOS delivers GPS fixes continuously, instead of waiting indefinitely for a quiet interval.
+- Closing a valid enclosure changes the native polygon identity whenever its exterior or holes change, preventing MapKit from retaining a stale transparent interior during the walk or after Stop.
+- Added regressions for non-starving surface scheduling and filled-hole polygon identity.
+- Synchronized the app version to 0.10.2, iOS build 92, and Android version code 92.
+
+## v0.10.1
+
+Fixed:
+
+- Live medal evaluation no longer marks a changed exploration boundary as completed before its delayed check actually runs.
+- A GPS update that cancels or supersedes the 650ms live check now leaves the newest boundary retryable, restoring active-walk medal unlocks without removing the performance settle window.
+- Added a scheduler regression covering the cancelled-timer failure.
+- Synchronized the app version to 0.10.1, iOS build 91, and Android version code 91.
+
+## v0.10.0
+
+Added:
+
+- Recording Recovery V2 opens unfinished walks in a full-screen saved-route preview with start/end markers and bounded rendering for long recordings.
+- Recovery verifies the native background GPS task and labels the walk Active, Interrupted, or Uncertain, then recommends Resume or Finish while retaining every recovery action.
+- Finish now requires an editable date/time-based name and stores it atomically with durable recovered-session finalization.
+
+Changed:
+
+- Failed Resume, Finish, or Discard attempts restore recovery protection and refresh the displayed runtime status without losing the saved recording.
+- Discard now requires explicit destructive confirmation.
+- Synchronized the app version to 0.10.0, iOS build 90, and Android version code 90.
+
+## v0.9.2
+
+Fixed:
+
+- Completion now waits for its full-screen opening transition before starting aggregate SQLite reads, keeping navigation responsive with a large exploration history.
+- Street Completion V2 summary refreshes use one aggregate database query instead of four sequential round trips, without changing coverage or achievement calculations.
+- Synchronized the app version to 0.9.2, iOS build 89, and Android version code 89.
+
 ## v0.9.1
 
 Changed:

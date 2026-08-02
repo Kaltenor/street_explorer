@@ -283,6 +283,29 @@ async function stopNativeBackgroundLocationTracking() {
   throw lastError ?? new Error("Background location task could not be stopped.");
 }
 
+export type BackgroundLocationRecoveryStatus =
+  | "active"
+  | "interrupted"
+  | "uncertain";
+
+export async function getBackgroundLocationRecoveryStatus():
+  Promise<BackgroundLocationRecoveryStatus> {
+  try {
+    if (!(await TaskManager.isAvailableAsync())) {
+      return "uncertain";
+    }
+
+    return (await Location.hasStartedLocationUpdatesAsync(
+      BACKGROUND_LOCATION_TASK_NAME
+    ))
+      ? "active"
+      : "interrupted";
+  } catch (error) {
+    console.warn("Could not verify background location recovery status", error);
+    return "uncertain";
+  }
+}
+
 export async function isBackgroundLocationTaskAvailable() {
   return TaskManager.isAvailableAsync();
 }

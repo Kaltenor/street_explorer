@@ -1,6 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   FlatList,
   Modal,
   ScrollView,
@@ -21,12 +22,14 @@ import { ActivityMode, RouteBridgeEvidence, WalkSession, WalkWithPoints } from "
 type WalkHistoryModalProps = {
   activityMode: ActivityMode;
   detailedWalks: WalkWithPoints[];
+  dataOperation: "backup" | "convert" | "restore" | null;
   language: AppLanguage;
   loopFillSummaries: Record<number, LoopFillSessionSummary>;
   visible: boolean;
   walks: WalkSession[];
   selectedSessionId: number | null;
   onClose: () => void;
+  onConvertLegacyBackup: () => void;
   onDeleteWalk: (sessionId: number) => void;
   onExportBackup: () => void;
   onExportWalkGpx: (sessionId: number) => void;
@@ -39,6 +42,7 @@ type WalkHistoryModalProps = {
 
 export function WalkHistoryModal({
   activityMode,
+  dataOperation,
   detailedWalks,
   language,
   loopFillSummaries,
@@ -47,6 +51,7 @@ export function WalkHistoryModal({
   selectedSessionId,
   onClose,
   onDeleteWalk,
+  onConvertLegacyBackup,
   onExportBackup,
   onExportWalkGpx,
   onImportBackup,
@@ -61,6 +66,14 @@ export function WalkHistoryModal({
   const detailedWalk = detailedWalks.find((walk) => walk.id === detailSessionId) ?? null;
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
+  const dataOperationLabel =
+    dataOperation === "backup"
+      ? strings.history.backupProcessing
+      : dataOperation === "convert"
+        ? strings.history.conversionProcessing
+        : dataOperation === "restore"
+          ? strings.history.restoreProcessing
+          : null;
 
   useEffect(() => {
     setDraftNames(Object.fromEntries(walks.map((walk) => [walk.id, walk.displayName ?? ""])));
@@ -75,13 +88,23 @@ export function WalkHistoryModal({
   return (
     <Modal
       animationType="slide"
-      onRequestClose={onClose}
+      onRequestClose={() => {
+        if (dataOperation === null) {
+          onClose();
+        }
+      }}
       presentationStyle="fullScreen"
       visible={visible}
     >
       <View style={styles.screen}>
         <View style={styles.header}>
-          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={{ disabled: dataOperation !== null }}
+            disabled={dataOperation !== null}
+            onPress={onClose}
+            style={[styles.backToMapButton, dataOperation !== null && styles.toolButtonDisabled]}
+          >
             <Ionicons name="chevron-back" size={22} color="#f8fafc" />
           </TouchableOpacity>
           <View>
@@ -133,28 +156,107 @@ export function WalkHistoryModal({
               <View style={styles.tools}>
                 <TouchableOpacity
                   accessibilityRole="button"
+                  accessibilityState={{
+                    busy: dataOperation === "backup",
+                    disabled: dataOperation !== null
+                  }}
+                  disabled={dataOperation !== null}
                   onPress={onExportBackup}
-                  style={styles.toolButton}
+                  style={[
+                    styles.toolButton,
+                    dataOperation !== null &&
+                      dataOperation !== "backup" && styles.toolButtonDisabled
+                  ]}
                 >
-                  <Ionicons name="download-outline" size={18} color="#f8fafc" />
-                  <Text style={styles.toolButtonText}>{strings.history.backup}</Text>
+                  {dataOperation === "backup" ? (
+                    <ActivityIndicator color="#f5c451" size="small" />
+                  ) : (
+                    <Ionicons name="download-outline" size={18} color="#f8fafc" />
+                  )}
+                  <Text style={styles.toolButtonText}>
+                    {dataOperation === "backup"
+                      ? strings.history.backupProcessing
+                      : strings.history.backup}
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   accessibilityRole="button"
+                  accessibilityState={{
+                    busy: dataOperation === "convert",
+                    disabled: dataOperation !== null
+                  }}
+                  disabled={dataOperation !== null}
+                  onPress={onConvertLegacyBackup}
+                  style={[
+                    styles.toolButton,
+                    dataOperation !== null &&
+                      dataOperation !== "convert" && styles.toolButtonDisabled
+                  ]}
+                >
+                  {dataOperation === "convert" ? (
+                    <ActivityIndicator color="#f5c451" size="small" />
+                  ) : (
+                    <Ionicons name="swap-horizontal-outline" size={18} color="#f8fafc" />
+                  )}
+                  <Text style={styles.toolButtonText}>
+                    {dataOperation === "convert"
+                      ? strings.history.conversionProcessing
+                      : strings.history.convertLegacyBackup}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  accessibilityState={{
+                    busy: dataOperation === "restore",
+                    disabled: dataOperation !== null
+                  }}
+                  disabled={dataOperation !== null}
                   onPress={onImportBackup}
-                  style={styles.toolButton}
+                  style={[
+                    styles.toolButton,
+                    dataOperation !== null &&
+                      dataOperation !== "restore" && styles.toolButtonDisabled
+                  ]}
                 >
-                  <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
-                  <Text style={styles.toolButtonText}>{strings.common.restore}</Text>
+                  {dataOperation === "restore" ? (
+                    <ActivityIndicator color="#f5c451" size="small" />
+                  ) : (
+                    <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
+                  )}
+                  <Text style={styles.toolButtonText}>
+                    {dataOperation === "restore"
+                      ? strings.history.restoreProcessing
+                      : strings.common.restore}
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   accessibilityRole="button"
+                  accessibilityState={{ disabled: dataOperation !== null }}
+                  disabled={dataOperation !== null}
                   onPress={onOpenDiagnostics}
-                  style={styles.toolButton}
+                  style={[
+                    styles.toolButton,
+                    dataOperation !== null && styles.toolButtonDisabled
+                  ]}
                 >
                   <Ionicons name="pulse-outline" size={18} color="#f8fafc" />
                   <Text style={styles.toolButtonText}>{strings.history.diagnostics}</Text>
                 </TouchableOpacity>
+                {dataOperationLabel ? (
+                  <View
+                    accessibilityLiveRegion="polite"
+                    accessibilityRole="progressbar"
+                    style={styles.operationStatus}
+                  >
+                    <ActivityIndicator color="#f5c451" size="small" />
+                    <View style={styles.operationStatusCopy}>
+                      <Text style={styles.operationStatusTitle}>{dataOperationLabel}</Text>
+                      <Text style={styles.operationStatusText}>
+                        {strings.history.dataOperationHint}
+                      </Text>
+                    </View>
+                  </View>
+                ) : null}
               </View>
             )}
             maxToRenderPerBatch={12}
@@ -925,6 +1027,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   technicalToggleText: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "800" },
+  operationStatus: {
+    alignItems: "center",
+    backgroundColor: "rgba(245, 196, 81, 0.1)",
+    borderColor: "rgba(245, 196, 81, 0.36)",
+    borderRadius: 14,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 11,
+    width: "100%"
+  },
+  operationStatusCopy: {
+    flex: 1
+  },
+  operationStatusText: {
+    color: "#cbd5e1",
+    fontSize: 12,
+    marginTop: 2
+  },
+  operationStatusTitle: {
+    color: "#f5c451",
+    fontSize: 13,
+    fontWeight: "900"
+  },
   toolButton: {
     alignItems: "center",
     backgroundColor: "#0c151c",
@@ -935,6 +1062,9 @@ const styles = StyleSheet.create({
     gap: 7,
     minHeight: 40,
     paddingHorizontal: 12
+  },
+  toolButtonDisabled: {
+    opacity: 0.48
   },
   toolButtonText: {
     color: "#f8fafc",

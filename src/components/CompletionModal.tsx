@@ -143,9 +143,13 @@ export function CompletionModal({
       return;
     }
 
-    getCompletionStats(mode)
-      .then(setStats)
-      .catch((error) => console.warn("Failed to load completion stats", error));
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      getCompletionStats(mode)
+        .then(setStats)
+        .catch((error) => console.warn("Failed to load completion stats", error));
+    });
+
+    return () => interactionTask.cancel();
   }, [mode, visible]);
 
   useEffect(() => {
@@ -154,6 +158,7 @@ export function CompletionModal({
     }
 
     let cancelled = false;
+    let refreshTimer: ReturnType<typeof setInterval> | null = null;
     const loadStreetSummary = () => {
       getStreetCompletionSummary()
         .then((summary) => {
@@ -163,12 +168,17 @@ export function CompletionModal({
         })
         .catch((error) => console.warn("Failed to load street completion", error));
     };
-    loadStreetSummary();
-    const refreshTimer = setInterval(loadStreetSummary, 1500);
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      loadStreetSummary();
+      refreshTimer = setInterval(loadStreetSummary, 1500);
+    });
 
     return () => {
       cancelled = true;
-      clearInterval(refreshTimer);
+      interactionTask.cancel();
+      if (refreshTimer) {
+        clearInterval(refreshTimer);
+      }
     };
   }, [visible]);
 
@@ -177,8 +187,12 @@ export function CompletionModal({
       return;
     }
 
-    loadZones()
-      .catch((error) => console.warn("Failed to load completion zones", error));
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      loadZones()
+        .catch((error) => console.warn("Failed to load completion zones", error));
+    });
+
+    return () => interactionTask.cancel();
   }, [loadZones, visible]);
 
   useEffect(() => {
@@ -323,21 +337,25 @@ export function CompletionModal({
       return;
     }
 
-    Promise.all([getZoneRefreshState(), getZoneAchievementRollup()])
-      .then(([storedRefreshState, storedRollup]) => {
-        setRefreshState(storedRefreshState);
-        setAchievementRollup(storedRollup);
+    const interactionTask = InteractionManager.runAfterInteractions(() => {
+      Promise.all([getZoneRefreshState(), getZoneAchievementRollup()])
+        .then(([storedRefreshState, storedRollup]) => {
+          setRefreshState(storedRefreshState);
+          setAchievementRollup(storedRollup);
 
-        if (
-          hasCurrentLocation &&
-          !autoRefreshAttemptedRef.current &&
-          isBoundaryRefreshStale(storedRefreshState.lastSucceededAt)
-        ) {
-          autoRefreshAttemptedRef.current = true;
-          return refreshBoundaries(false);
-        }
-      })
-      .catch((error) => console.warn("Failed to load zone V2 state", error));
+          if (
+            hasCurrentLocation &&
+            !autoRefreshAttemptedRef.current &&
+            isBoundaryRefreshStale(storedRefreshState.lastSucceededAt)
+          ) {
+            autoRefreshAttemptedRef.current = true;
+            return refreshBoundaries(false);
+          }
+        })
+        .catch((error) => console.warn("Failed to load zone V2 state", error));
+    });
+
+    return () => interactionTask.cancel();
   }, [hasCurrentLocation, refreshBoundaries, visible]);
   const handleClearBoundaries = () => {
     Alert.alert(completionStrings.clearCachedZones, completionStrings.clearCachedZonesMessage, [

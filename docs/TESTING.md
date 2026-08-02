@@ -25,6 +25,7 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 
 ```powershell
 npm run typecheck
+npm run test:backup
 npm run test:geometry
 npm run test:medals
 npm run test:player
@@ -33,11 +34,13 @@ npx expo install --check
 
 `test:player` verifies the sixteen active native idle/walking frames plus retained source/stale assets, trustworthy-location and last-rendered-sprite retention, the stable native marker identifier, `AnimatedRegion` coordinate smoothing, disabled custom-view snapshot tracking, stale-GPS accessibility, and removal of fragile legacy marker rendering. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
-`test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V4 wiring.
+`test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 
 `test:geometry` verifies Path Inference V3 ground-level geometric joins, rejects bridge/ground crossings, bounds compatible endpoint joins to 8m at medium confidence, and checks persisted topology/evidence wiring. It also verifies one-action saved-route focus and overlap-based Today path queries.
 
-`test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, debounced and memoized map surfaces, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, streamed backup output, and render instrumentation.
+`test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, non-starving coalesced and memoized map surfaces, geometry-changing native polygon identities, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, and render instrumentation.
+
+`test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, and consistent manifest totals.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
@@ -94,9 +97,9 @@ Startup regressions: when testing an older development binary against the curren
 9. Repeatedly open and close History and Completion with a large explored-cell ledger; confirm Back returns control to the map immediately while unfinished Completion scans are cancelled.
 10. Scroll a history containing at least 100 recordings and confirm rows stay responsive instead of mounting the complete list at once.
 11. Switch Paths through Today, Last 7 days, Selected, and All and confirm only that scope is loaded and displayed.
-12. During recording, confirm the player and active route move immediately while red/today contours settle within roughly 650ms; medal collection may use the same short settle interval.
+12. During recording, keep moving through several rapid GPS fixes and confirm the player and active route move immediately while red/today contours refresh repeatedly at roughly 650ms intervals instead of waiting for GPS delivery to pause; medal collection may use the same short settle interval.
 13. Confirm development logs do not show continuously increasing MapScreen/ExplorationMap render counts while the map is idle. Investigate any recurring `[perf]` operation above its printed threshold.
-14. Export a large backup and confirm incremental file writing completes without an iOS memory warning or empty file.
+14. Export a large V5 backup and confirm bounded block compression completes without an iOS memory warning or empty file, then reselect the Files copy and confirm verification succeeds.
 
 ## Long Recording And Reconnect Test
 
@@ -136,23 +139,25 @@ Startup regressions: when testing an older development binary against the curren
 8. Export GPX for a recording.
 9. Delete a bad recording if needed.
 
-## Data Tools Test
+## Backup V5 Manual Test
 
-1. Start a recording, open History, and tap Backup.
-2. Confirm export is blocked while the recording is active.
-3. Stop and save the recording, then reopen History.
-4. Tap Backup.
-5. Confirm iOS shows a share/save sheet for a non-empty JSON backup, including when the database contains an invisible orphan row whose start and end timestamps match. Confirm that orphan and its dependent points/routes/medal events are absent from the JSON. If sharing does not open, record the stage-specific Prepare, Write, or Share message and its technical detail.
-6. Tap a recording.
-7. Tap Export GPX.
-8. Confirm iOS shows a share/save sheet for a GPX file.
-9. Return to History.
-10. Tap Restore.
-11. Pick a Street Explorer JSON backup.
-12. Confirm recordings reload after restore.
-13. Confirm an imported backup containing an unfinished active session is rejected instead of creating an invisible orphan.
-14. Repeat Backup immediately after stopping a recording too short to appear in History; confirm the hidden late-GPS recovery tombstone does not block the export and is not included in the file.
-15. Restore a V4 file and confirm frozen route snapshots remain available without reprocessing.
+Prerequisites: serve the Street Explorer 0.11.2 JavaScript bundle to the already-installed compatible development client (build 92 is sufficient; build 95 is the next release build), allow Files access, stop any active recording, keep one known-good V4 JSON backup for conversion, and ensure the device has enough free space for both the source and converted archive. For archive-block coverage, use a database with at least 25 finalized walks. Network and location permissions are not required for export or restore.
+
+1. Start a recording, open History, and tap Backup. Expected: export is blocked and the active recording remains unchanged.
+2. Stop and save the recording, reopen History, and note the walk count, names, point counts, medals, zone achievements, and one frozen route containing an inferred bridge. Expected: this is the baseline for lossless restore.
+3. Tap Backup several times quickly. Expected: the first tap immediately shows Backup in progress, disables duplicate actions, and produces only one export. Choose Save to Files and save the `.streetexplorer` archive outside the app; after sharing, Files opens again for required verification and the app has not reported success yet.
+4. Cancel that verification picker. Expected: Backup failed identifies the Verify stage and does not claim the cache-only file is safe.
+5. Repeat Backup, save it to Files, then select that exact saved file in the verification picker. Expected: Backup verified reports its size, walk count, GPS-point count, and old-walk archive-block count.
+6. Repeat once but select a different V5 file during verification. Expected: verification rejects the mismatched backup identity.
+7. Force-close and reopen Street Explorer, then confirm the saved archive is still visible in Files. Expected: the external copy survives independently of the app cache.
+8. Tap Restore, confirm replacement, and select the verified V5 archive. Expected: Restore in progress appears immediately after confirmation, repeated data-tool taps are disabled, and the app restores all logical walks with their original IDs/names/times/counts, frozen route geometry and inferred evidence, medals, and zone achievements; no monthly archive block appears as a fake recording.
+9. Force-close and reopen after restore. Expected: the same restored history and map data persist, and derived exploration/street completion can rebuild from the exact frozen routes.
+10. Duplicate and truncate or alter a V5 archive on a computer, return it to Files, and try Restore. Expected: checksum/footer verification rejects it before local data is replaced; the existing history remains intact.
+11. In History, tap Convert V4, select the known-good complete V4 JSON, save the produced V5 file to Files, and reselect it for verification. Expected: conversion reports a verified V5 size/count summary without first importing V4 into the live database.
+12. Restore the converted V5 archive. Expected: every V4 session and raw GPS point is present, route snapshots are unchanged, and the archive is materially smaller than the original 52 MB JSON when the source contained duplicated confirmed-route points.
+13. Try Convert V4 with a V1-V3 file or incomplete JSON, and try Restore with any JSON file. Expected: both are rejected; restore accepts V5 only.
+14. With at least 25 walks, repeat export/restore and inspect History. Expected: the newest 20 are stored as individual hot records, older walks share bounded monthly physical blocks, and all walks remain individually named/selectable/deletable.
+15. Tap a recording and Export GPX. Expected: the existing GPX share/save flow still works.
 
 ## Layer Controls Test
 
@@ -219,8 +224,10 @@ Notes:
 10. Refresh either completed zone with changed geometry and clear the zone cache; confirm its permanent achievement and rollup remain earned.
 11. Confirm a changed exact geometry receives a new denominator instead of reusing the previous geometry fingerprint's total.
 12. Tap Focus on map and confirm both exact and display-only selected boundaries can still be inspected on the map.
-13. Confirm Completion scans still yield, cancel immediately on close, and do not block returning to the map.
-14. Export Backup V4, clear data, restore it, and confirm permanent zone achievements and rollups return. Restore a V1-V3 backup and confirm it imports with no zone achievements.
+13. With at least 100 recordings and a large explored-cell ledger, open Completion repeatedly and confirm its full-screen transition remains smooth while aggregate values populate after the transition.
+14. Confirm Completion scans still yield, cancel immediately on close, and do not block returning to the map.
+15. Export Backup V5, clear data, restore it, and confirm permanent zone achievements and rollups return. Confirm V1-V3 files are rejected.
+
 ## Street Completion V2 Test
 
 1. Upgrade an installation with several saved walks and cached OSM corridor data, wait on the idle map, then open Completion.
@@ -236,7 +243,7 @@ Notes:
 11. Stop a walk and immediately start another while the rebuild is pending; confirm the worker returns to pending and does not calculate or replace SQLite progress during the active recording. Stop again and confirm processing resumes asynchronously.
 12. Finish a recovered recording and confirm Start/map controls return without waiting for street aggregation.
 13. Run Reprocess recordings and confirm the final dialog includes walked/loaded street distance, percentage, and completed-street count after route rebuilding.
-14. Delete a recording and restore a Backup V4; confirm derived street progress rebuilds from the remaining/imported frozen routes while the recordings themselves remain unchanged.
+14. Delete a recording and restore a Backup V5; confirm derived street progress rebuilds from the remaining/imported frozen routes while the recordings themselves remain unchanged.
 ## Street Inference Safety Test
 
 1. View or reprocess a route with sparse but plausible GPS updates and cached OSM streets.
@@ -253,7 +260,7 @@ Notes:
 1. Open the map in Lyon with Markers enabled and confirm the 20 album landmarks appear as locked medal pins.
 2. Open Medals and confirm the Lyon count is shown out of 20, collected medals appear before locked medals in All and every category filter, French accents such as `Fourvière` render correctly, all six category chips are vertically centered and unclipped, every filter works, and tapping any card focuses its exact anchor on the map.
 3. Start a walk and trace at least 80m around a landmark, returning close enough for the normal one-cell gameplay seam tolerance. Keep the anchor strictly inside and the enclosed area below 150,000m2.
-4. Confirm the medal unlocks while the walk is still active as soon as the accepted boundary closes: the map marker changes from a lock to a medal and the collection card becomes unlocked without waiting for Stop.
+4. Close the accepted boundary and continue moving for several GPS fixes instead of pausing. Confirm the medal still unlocks while the walk remains active within the short settle window: the map marker changes from a lock to a medal and the collection card becomes unlocked without waiting for Stop.
 5. Confirm previously mapped red cells do not block the award. Repeat over an area visited before the medal feature and verify the new qualifying loop still unlocks it.
 6. Confirm passing near the marker, leaving it on the boundary, walking less than 80m, leaving a gap larger than the normal seam tolerance, or exceeding 150,000m2 does not award it.
 7. Confirm the metallic chime, success haptic, dark overlay, 3D rotating medal, localized title/description, and Continue control appear. Tap Continue and confirm the medal shrinks and flies into the measured Medal tab, which briefly pulses. With Reduce Motion enabled, confirm the initial reveal is static while the award remains usable.
@@ -262,16 +269,17 @@ Notes:
 10. Upgrade an installation containing an individually qualifying walk missed by v0.4; confirm the one-time gameplay-v2 repair awards it and presents it without requiring the walk to be repeated.
 11. Open Medals on an installation with cumulative qualifying saved coverage and run Scan my walks; confirm it uses the same gameplay loop rules and the unique count does not increase when repeated.
 12. Force-close while an award is presenting, reopen, enter through the launch screen, and confirm the pending award is presented again before being marked complete.
-13. Export Backup V4, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Restore a V1/V2 backup and confirm recordings restore with an empty medal collection.
+13. Export Backup V5, delete data, restore it, and confirm collection evidence, presentation state, and historical-scan state return. Confirm V1-V3 files are rejected.
 14. Disable sound or haptics at the device level and confirm presentation still completes without trapping the UI.
 ## Loop Fill Test
 
 1. Record a closed loop of at least 80m.
-3. Stop the recording.
-4. Confirm normal GPS cells still appear.
-5. Confirm Stop does not automatically rebuild historical loops; open Details and run Reprocess recordings explicitly before validating loop-fill results.
-6. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
-7. Confirm a straight walk does not create loop fills after reprocessing.
+2. Stop the recording.
+3. Confirm normal GPS cells still appear.
+4. Confirm Stop does not automatically rebuild historical loops; open Details and run Reprocess recordings explicitly before validating loop-fill results.
+5. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
+6. Confirm a straight walk does not create loop fills after reprocessing.
+7. Trace a qualifying enclosure while continuing to move after crossing the boundary. Confirm its red/today surface fills during the active walk without pausing for GPS, remains filled immediately after Stop, and does not require an app restart.
 8. Open History, tap the recording, and confirm Loop cells and Loop result are shown.
 9. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
 10. Record or reprocess a walk with multiple block loops and confirm History shows multiple filled loops.
@@ -308,23 +316,25 @@ Notes:
 8. Pan, reload, or refresh OSM data without reprocessing and confirm the accepted frozen route and evidence remain unchanged.
 9. Confirm low-confidence, implausible, and unmatched gaps draw no straight diagonal and contribute no explored cells.
 10. Repeat finalization offline and confirm cached coverage remains usable; a failed topology refresh must not delete or replace existing data.
-## Recovery Test
 
-1. Start a recording.
-2. Force close or reload the app without pressing Stop.
-3. Reopen the app.
-4. Confirm it asks about an unfinished recording.
-5. Confirm the recovery modal shows:
-   - full persisted distance
-   - duration
-   - complete persisted point count
-   - last GPS point time
-6. Use a recovered recording longer than 300 points, choose Resume, and confirm its complete persisted route is rebuilt into stable live chunks.
-7. Confirm only the newest 300 raw points are kept in diagnostic/movement state; this limit must not truncate the drawn or saved route.
-8. Confirm distance resumes from the persisted total and new points append after a complete database reload.
-9. Repeat the test and choose Finish & Save; confirm a failed finalization preserves the recovery record for retry.
-10. On success, confirm the active recovery marker clears only after durable session finalization and the recording appears in History.
-11. Repeat with Discard; a failed database delete must keep the recovery prompt, while a successful delete clears it.
+## Recording Recovery V2 Test
+
+Prerequisites: install development build 93 on a physical iPhone, grant precise foreground and Always background location, and use a test walk with at least two valid points. Internet access is optional because recovery uses persisted GPS and native task state.
+
+1. Start a walk, travel for several minutes, lock the iPhone for part of it, then force-close or reload Street Explorer without pressing Stop.
+2. Reopen the app and confirm Recovery opens automatically as a full-screen view before another walk can start.
+3. Confirm the map previews the complete persisted route with start/end markers. For a recording over 300 points, confirm the preview and later Resume still retain the complete route; only rendering may be bounded.
+4. Confirm distance, elapsed duration, persisted point count, and last-point time match the saved recording.
+5. When the native task is verified running, confirm status is Active and Resume is the gold recommended action. When it is verified stopped, confirm status is Interrupted and Finish is recommended. If verification cannot run, confirm status is Uncertain and Finish is recommended.
+6. In every status, confirm Resume, Finish, and Discard remain available.
+7. Choose Resume. Confirm the old route is rebuilt into stable live chunks, distance continues from the persisted total, new points append normally, and the recovery screen closes.
+8. Repeat the interruption and choose Finish. Confirm an editable date/time-based default name appears before finalization; change it and save.
+9. Confirm the active marker clears only after durable finalization, the recording appears in History with the edited name, and reopening the app does not show recovery again.
+10. Repeat Finish without changing the proposed name and confirm the generated name persists in History.
+11. Repeat recovery and choose Discard. Confirm a destructive confirmation appears; cancel once and verify recovery remains, then confirm deletion and verify the walk disappears.
+12. Induce or simulate a failed Resume, Finish, and Discard where practical. Confirm the authoritative unfinished recording remains available, background protection is restored when possible, and status updates to Active or Uncertain instead of silently losing the walk.
+13. Confirm a recovered recording with fewer than two valid points follows the existing safe underfilled-recording behavior rather than appearing as a normal History walk.
+14. Repeat with network disabled and confirm preview, status verification, Resume/Finish naming, and durable save do not depend on internet access.
 
 ## Background Tracking Notes
 

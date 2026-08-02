@@ -230,6 +230,10 @@ assert(
   visuallyFilledRing.length === 1 && visuallyFilledRing[0].holes.length === 0,
   "small enclosed display holes are filled within the active mode limit"
 );
+assert(
+  ring[0].id !== visuallyFilledRing[0].id,
+  "a filled hole changes native polygon identity so MapKit cannot retain stale geometry"
+);
 
 const filledRingWithNestedIsland = explorationArea.buildMergedExplorationPolygons(
   [...new Set([...perimeter(9), "4:4"])],
@@ -817,6 +821,11 @@ const completionModalSource = fs.readFileSync(
   require.resolve("../src/components/CompletionModal.tsx"),
   "utf8"
 );
+const recordingRecoveryModalSource = fs.readFileSync(
+  require.resolve("../src/components/RecordingRecoveryModal.tsx"),
+  "utf8"
+);
+
 const zoneCompletionSource = fs.readFileSync(
   require.resolve("../src/services/zoneCompletion.ts"),
   "utf8"
@@ -882,6 +891,14 @@ const dataToolsSource = fs.readFileSync(
   "utf8"
 );
 const appSource = fs.readFileSync(require.resolve("../App.tsx"), "utf8");
+const backupV5Source = fs.readFileSync(
+  require.resolve("../src/services/backupV5.ts"),
+  "utf8"
+);
+const backupV5FileSource = fs.readFileSync(
+  require.resolve("../src/services/backupV5File.ts"),
+  "utf8"
+);
 const walkControlsSource = fs.readFileSync(
   require.resolve("../src/components/WalkControls.tsx"),
   "utf8"
@@ -899,8 +916,8 @@ const performanceSource = fs.readFileSync(
   "utf8"
 );
 const backupDataSource = walkRepositorySource.slice(
-  walkRepositorySource.indexOf("export async function getBackupData"),
-  walkRepositorySource.indexOf("export async function restoreBackupData")
+  walkRepositorySource.indexOf("export async function withBackupV5Snapshot"),
+  walkRepositorySource.indexOf("export async function restoreBackupV5Data")
 );
 const refreshSavedDataSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const refreshSavedData"),
@@ -987,6 +1004,21 @@ assert(
     stopWalkSource.includes("repairPendingCaches: false") &&
     refreshSavedDataSource.includes("repairPendingCaches?: boolean"),
   "Stop releases the UI after durable save while derived caches reconcile asynchronously"
+);
+
+assert(
+  recordingRecoveryModalSource.includes("<MapView") &&
+    recordingRecoveryModalSource.includes("<Polyline") &&
+    recordingRecoveryModalSource.includes("buildPreviewPoints") &&
+    recordingRecoveryModalSource.includes('finishRecommended = recoveryStatus !== "active"') &&
+    recordingRecoveryModalSource.includes("onFinish(finishName.trim())") &&
+    recordingRecoveryModalSource.includes("Alert.alert(strings.discardTitle") &&
+    backgroundLocationTaskSource.includes("getBackgroundLocationRecoveryStatus") &&
+    backgroundLocationTaskSource.includes("hasStartedLocationUpdatesAsync") &&
+    mapScreenSource.includes("getBackgroundLocationRecoveryStatus()") &&
+    finishRecoverySource.includes("displayName") &&
+    walkRepositorySource.includes("input.displayName !== undefined"),
+  "recovery V2 previews the full saved route, verifies runtime status, recommends a safe action, and names finalization atomically"
 );
 
 const recoveryFinalizationIndex = finishRecoverySource.indexOf(
@@ -1119,7 +1151,7 @@ assert(
       "discardAllGpsPersistenceForDataReplacement"
     ) &&
     dataToolsSource.includes("await stopBackgroundLocationTracking()") &&
-    dataToolsSource.indexOf("await restoreBackupData(backup)") <
+    dataToolsSource.indexOf("await restoreBackupV5Data(") <
       dataToolsSource.indexOf("await discardPendingBackgroundLocationBatches()") &&
     backgroundLocationOutboxSource.includes(
       "outboxAdmissionCloseDepth"
@@ -1158,21 +1190,38 @@ assert(
 assert(
   dataToolsSource.includes("new File(") &&
     dataToolsSource.includes("Paths.cache") &&
-    dataToolsSource.includes("file.size <= 0") &&
-    dataToolsSource.includes("file.writableStream().getWriter()") &&
-    dataToolsSource.includes("await writeArray(backup.points)") &&
-    !dataToolsSource.includes("file.write(JSON.stringify(backup))") &&
+    dataToolsSource.includes("verifyExternallySavedBackup") &&
+    dataToolsSource.includes("inspectBackupV5File(selected, expectedBackupId)") &&
     dataToolsSource.includes('new BackupExportError("write", error)') &&
     dataToolsSource.includes('new BackupExportError("share", error)') &&
+    dataToolsSource.includes('new BackupExportError("verify", error)') &&
     !dataToolsSource.includes('from "expo-file-system/legacy"') &&
-    dataToolsSource.includes("parsed.version >= 2") &&
+    dataToolsSource.includes("parsed.version !== 4") &&
+    backupV5Source.includes("BACKUP_V5_HOT_SESSION_COUNT = 20") &&
+    backupV5Source.includes("encodePointPositionRuns") &&
+    backupV5FileSource.includes("handle.writeBytes") &&
+    backupV5FileSource.includes("assertBackupV5Footer") &&
     walkRepositorySource.includes(
       "WHERE session_id = walk_sessions.id"
     ) &&
     !walkRepositorySource.includes(
       "A recently stopped recording is still accepting late GPS fixes."
     ),
-  "backup exports visible finalized recordings through a verified modern cache file and preserves V2/V3 route snapshots"
+  "Backup V5 exports visible finalized recordings in bounded verified blocks and preserves lossless route snapshots"
+);
+assert(
+  mapScreenSource.includes("dataOperationRef.current !== null") &&
+    mapScreenSource.includes('beginDataOperation("backup")') &&
+    mapScreenSource.includes('beginDataOperation("restore")') &&
+    mapScreenSource.includes("await waitForMapRenderCommit()") &&
+    mapScreenSource.includes('finishDataOperation("backup")') &&
+    mapScreenSource.includes('finishDataOperation("restore")') &&
+    walkHistorySource.includes('dataOperation === "backup"') &&
+    walkHistorySource.includes('dataOperation === "restore"') &&
+    walkHistorySource.includes("<ActivityIndicator") &&
+    walkHistorySource.includes("dataOperationHint") &&
+    walkHistorySource.includes("disabled={dataOperation !== null}"),
+  "backup, conversion, and restore are single-flight operations with immediate busy feedback"
 );
 assert(
   explorationMapSource.includes(
@@ -1194,7 +1243,9 @@ assert(
     mapScreenSource.includes("setInterval(synchronizeTail, 3000)") &&
     tailSyncSource.indexOf("if (persistedPoints.length === 0)") <
       tailSyncSource.indexOf("const session = await getWalkSessionById(sessionId)") &&
-    explorationMapSource.includes("useDebouncedValue(") &&
+    explorationMapSource.includes("useCoalescedValue(") &&
+    explorationMapSource.includes("latestValueRef.current") &&
+    explorationMapSource.includes("timerRef.current") &&
     explorationMapSource.includes("settledActiveExplorationCellIds") &&
     explorationMapSource.includes("settledTodayNewCellIds") &&
     explorationMapSource.includes("memo(function ExplorationSurfaceOverlay") &&
@@ -1203,7 +1254,7 @@ assert(
     mapScreenSource.includes("}, 650);") &&
     performanceSource.includes("usePerformanceRenderCounter") &&
     performanceSource.includes("[performance]"),
-  "map timers, polling, surfaces, medals, and render diagnostics use bounded performance paths"
+  "map timers, polling, non-starving surfaces, medals, and render diagnostics use bounded performance paths"
 );
 assert(
   databaseSource.includes('applyMigration(21, "add_exploration_query_indexes"') &&
@@ -1214,7 +1265,8 @@ assert(
     !completionRepositorySource.includes("date(current_sessions.started_at)") &&
     walkRepositorySource.includes("export type WalkPointLoadScope") &&
     walkRepositorySource.includes("${scopeSql}") &&
-    !walkRepositorySource.includes("const placeholders = sessionIds") &&
+    walkRepositorySource.indexOf("const placeholders = sessionIds") >
+      walkRepositorySource.indexOf("withBackupV5Snapshot") &&
     mapScreenSource.includes("getWalkPointLoadScope") &&
     appSource.indexOf("setDatabaseReady(true)") <
       appSource.indexOf("void drainPendingBackgroundLocationBatches()") &&
@@ -1243,7 +1295,7 @@ assert(
     zoneCompletionSource.includes('"invalid_boundary"') &&
     walkRepositorySource.includes("zoneAchievements: ZoneAchievement[]") &&
     dataToolsSource.includes("parsed.version !== 4"),
-  "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V4"
+  "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V5"
 );
 assert(
   databaseSource.includes('applyMigration(24, "add_street_completion_v2"') &&
@@ -1252,6 +1304,8 @@ assert(
     databaseSource.includes("street_completion_segments") &&
     streetCompletionRepositorySource.includes("covered_bins_json") &&
     streetCompletionRepositorySource.includes("walked_distance_m >= total_distance_m * 0.9") &&
+    streetCompletionRepositorySource.includes("street_totals AS") &&
+    !streetCompletionRepositorySource.includes("const completed = await") &&
     streetCompletionRepositorySource.includes("active_recording_session_id") &&
     streetCompletionV2Source.includes("walk.routeSegments") &&
     streetCompletionV2Source.includes("markStreetCompletionPending") &&

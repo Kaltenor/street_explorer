@@ -51,10 +51,8 @@ import {
   clearPendingRecordingRepair,
   deleteWalkSession,
   getAllWalksWithPoints,
-  getGpsPointCountForSession,
   getGpsPointsAfterIndex,
   getGpsPointsForSession,
-  getLastGpsPointForSession,
   getLifetimeStats,
   getPendingRecordingRepairSessionIds,
   getRouteSnapshot,
@@ -98,6 +96,7 @@ import {
   subscribeToFinalizedBackgroundLocationChanges
 } from "../services/backgroundLocationOutbox";
 import {
+  getBackgroundLocationRecoveryStatus,
   isBackgroundLocationTaskAvailable,
   requestBackgroundLocationPermission,
   startBackgroundLocationTracking,
@@ -136,9 +135,10 @@ import {
 } from "../services/routeSnapshot";
 import {
   BackupExportError,
-  exportBackupJson,
+  convertLegacyV4BackupToV5,
+  exportBackupV5,
   exportWalkGpx,
-  importBackupJson
+  importBackupV5
 } from "../services/dataTools";
 import {
   getForegroundLocationPermission,
@@ -231,6 +231,8 @@ const GPS_STORAGE_PAUSED_REASON =
   "Storage unavailable; recording paused until queued GPS writes recover.";
 
 type PathDisplayMode = "today" | "last7" | "all" | "selected";
+
+type DataOperation = "backup" | "convert" | "restore" | null;
 
 type LoopProcessingResult =
   | {
@@ -439,6 +441,7 @@ export function MapScreen({
   const [isScanningMedals, setIsScanningMedals] = useState(false);
   const [diagnosticsVisible, setDiagnosticsVisible] = useState(false);
   const [historyVisible, setHistoryVisible] = useState(false);
+  const [dataOperation, setDataOperation] = useState<DataOperation>(null);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
   const [reprocessProgress, setReprocessProgress] = useState<ReprocessProgress | null>(null);
   const [stopConfirmationVisible, setStopConfirmationVisible] = useState(false);
@@ -479,9 +482,11 @@ export function MapScreen({
   const activeSessionIdRef = useRef<number | null>(null);
   const activeWalkRef = useRef<ActiveWalk | null>(null);
   const medalTabRef = useRef<ComponentRef<typeof TouchableOpacity>>(null);
+  const dataOperationRef = useRef<DataOperation>(null);
   const liveMedalEvaluationRef = useRef({
-    boundaryCellCount: -1,
+    evaluatedBoundaryCellCount: -1,
     inFlight: false,
+    latestBoundaryCellCount: -1,
     sessionId: null as number | null
   });
   const recordingLifecycleGenerationRef = useRef(0);
@@ -993,32 +998,30 @@ export function MapScreen({
     const evaluation = liveMedalEvaluationRef.current;
 
     if (!activeWalk) {
-      evaluation.boundaryCellCount = -1;
+      evaluation.evaluatedBoundaryCellCount = -1;
       evaluation.inFlight = false;
+      evaluation.latestBoundaryCellCount = -1;
       evaluation.sessionId = null;
       return;
     }
 
     if (evaluation.sessionId !== activeWalk.sessionId) {
-      evaluation.boundaryCellCount = -1;
+      evaluation.evaluatedBoundaryCellCount = -1;
       evaluation.inFlight = false;
+      evaluation.latestBoundaryCellCount = -1;
       evaluation.sessionId = activeWalk.sessionId;
     }
 
     const boundaryCellCount = activeWalk.exploredCellIds.length;
+    evaluation.latestBoundaryCellCount = boundaryCellCount;
 
     if (
       !medalProgress ||
       activeWalk.distanceMeters < MEDAL_MIN_BOUNDARY_LENGTH_METERS ||
       boundaryCellCount < 4 ||
-      evaluation.boundaryCellCount === boundaryCellCount
+      evaluation.evaluatedBoundaryCellCount === boundaryCellCount ||
+      evaluation.inFlight
     ) {
-      return;
-    }
-
-    evaluation.boundaryCellCount = boundaryCellCount;
-
-    if (evaluation.inFlight) {
       return;
     }
 
@@ -1034,28 +1037,32 @@ export function MapScreen({
       evaluation.inFlight = true;
 
       void evaluateLiveMedalCollection(input)
-      .then(async (result) => {
-        if (result.collected.length === 0) {
-          return;
-        }
+        .then(async (result) => {
+          if (result.collected.length === 0) {
+            return;
+          }
 
-        const [progress, pendingPresentations] = await Promise.all([
-          getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
-          getPendingMedalPresentations()
-        ]);
-        setMedalProgress(progress);
-        setMedalPresentationQueue(pendingPresentations);
-      })
-      .catch((error) =>
-        console.warn("Live medal evaluation failed", error)
-      )
-      .finally(() => {
-        evaluation.inFlight = false;
+          const [progress, pendingPresentations] = await Promise.all([
+            getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
+            getPendingMedalPresentations()
+          ]);
+          setMedalProgress(progress);
+          setMedalPresentationQueue(pendingPresentations);
+        })
+        .catch((error) =>
+          console.warn("Live medal evaluation failed", error)
+        )
+        .finally(() => {
+          evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length;
+          evaluation.inFlight = false;
 
-        if (evaluation.boundaryCellCount !== input.boundaryCellIds.length) {
-          setLiveMedalEvaluationRevision((revision) => revision + 1);
-        }
-      });
+          if (
+            evaluation.latestBoundaryCellCount !==
+            evaluation.evaluatedBoundaryCellCount
+          ) {
+            setLiveMedalEvaluationRevision((revision) => revision + 1);
+          }
+        });
     }, 650);
 
     return () => clearTimeout(timerId);
@@ -1066,7 +1073,6 @@ export function MapScreen({
     liveMedalEvaluationRevision,
     medalProgress?.collectedCount
   ]);
-
   const handleCompleteMedalCelebration = useCallback(async () => {
     if (!celebrationMedal) {
       return;
@@ -1777,10 +1783,10 @@ export function MapScreen({
 
       recoveryPromptedSessionRef.current = activeRecording.sessionId;
       claimedSessionId = activeRecording.sessionId;
-      const [session, totalPointCount, lastPoint] = await Promise.all([
+      const [session, points, recoveryStatus] = await Promise.all([
         getWalkSessionById(activeRecording.sessionId),
-        getGpsPointCountForSession(activeRecording.sessionId),
-        getLastGpsPointForSession(activeRecording.sessionId)
+        getGpsPointsForSession(activeRecording.sessionId),
+        getBackgroundLocationRecoveryStatus()
       ]);
 
       if (
@@ -1808,9 +1814,10 @@ export function MapScreen({
       }
 
       setRecoverableRecording({
-        lastPoint,
+        points,
+        recoveryStatus,
         session,
-        totalPointCount
+        totalPointCount: points.length
       });
       didCommitRecovery = true;
     };
@@ -2578,12 +2585,20 @@ export function MapScreen({
           recoveryResumeTransitionRef.current = null;
         }
 
+        setRecoverableRecording({
+          ...recording,
+          recoveryStatus: "active"
+        });
         setBackgroundTrackingStatus("enabled");
         setBackgroundTrackingMessage(
           "Unfinished recording protection was restored."
         );
       } catch (error) {
         console.warn("Failed to restore recovery background protection", error);
+        setRecoverableRecording({
+          ...recording,
+          recoveryStatus: "uncertain"
+        });
         setBackgroundTrackingStatus("foreground-only");
         setBackgroundTrackingMessage(
           "Keep Street Explorer open while retrying recovery."
@@ -2723,7 +2738,7 @@ export function MapScreen({
     startStepWatch
   ]);
 
-  const handleFinishRecoveredRecording = useCallback(async () => {
+  const handleFinishRecoveredRecording = useCallback(async (displayName: string) => {
     if (!recoverableRecording || isStoppingRecordingRef.current) {
       return;
     }
@@ -2815,7 +2830,8 @@ export function MapScreen({
         savedSessionId = await finishPersistedActiveWalk(
           recoveredWalk,
           endedAt,
-          recoveredWalk.stepCount
+          recoveredWalk.stepCount,
+          displayName
         );
       } catch (error) {
         console.warn("Failed to finish recovered recording", error);
@@ -3054,9 +3070,46 @@ export function MapScreen({
     }
   }, []);
 
+  const beginDataOperation = useCallback(async (
+    operation: Exclude<DataOperation, null>
+  ) => {
+    if (dataOperationRef.current !== null) {
+      return false;
+    }
+
+    dataOperationRef.current = operation;
+    setDataOperation(operation);
+    await waitForMapRenderCommit();
+    return true;
+  }, []);
+
+  const finishDataOperation = useCallback((
+    operation: Exclude<DataOperation, null>
+  ) => {
+    if (dataOperationRef.current !== operation) {
+      return;
+    }
+
+    dataOperationRef.current = null;
+    setDataOperation(null);
+  }, []);
+
   const handleExportBackup = useCallback(async () => {
+    if (!await beginDataOperation("backup")) {
+      return;
+    }
+
     try {
-      await exportBackupJson();
+      const result = await exportBackupV5();
+      Alert.alert(
+        strings.map.backupVerifiedTitle,
+        interpolate(strings.map.backupVerifiedMessage, {
+          blocks: result.archiveBlockCount,
+          points: result.pointCount,
+          sessions: result.sessionCount,
+          size: formatBackupFileSize(result.fileSize)
+        })
+      );
     } catch (error) {
       console.warn("Failed to export backup", error);
 
@@ -3064,6 +3117,7 @@ export function MapScreen({
         const stageMessage = {
           prepare: strings.map.backupFailedPrepareMessage,
           share: strings.map.backupFailedShareMessage,
+          verify: strings.map.backupFailedVerifyMessage,
           write: strings.map.backupFailedWriteMessage
         }[error.stage];
 
@@ -3075,10 +3129,64 @@ export function MapScreen({
       }
 
       Alert.alert(strings.map.backupFailedTitle, strings.map.backupFailedMessage);
+    } finally {
+      finishDataOperation("backup");
     }
-  }, [strings]);
+  }, [beginDataOperation, finishDataOperation, strings]);
+
+  const handleConvertLegacyBackup = useCallback(async () => {
+    if (!await beginDataOperation("convert")) {
+      return;
+    }
+
+    try {
+      const result = await convertLegacyV4BackupToV5();
+
+      if (!result) {
+        return;
+      }
+
+      Alert.alert(
+        strings.map.legacyConversionTitle,
+        interpolate(strings.map.legacyConversionMessage, {
+          blocks: result.archiveBlockCount,
+          points: result.pointCount,
+          sessions: result.sessionCount,
+          size: formatBackupFileSize(result.fileSize)
+        })
+      );
+    } catch (error) {
+      console.warn("Failed to convert legacy backup", error);
+
+      if (error instanceof BackupExportError) {
+        const stageMessage = {
+          prepare: strings.map.legacyConversionFailedPrepareMessage,
+          share: strings.map.backupFailedShareMessage,
+          verify: strings.map.backupFailedVerifyMessage,
+          write: strings.map.backupFailedWriteMessage
+        }[error.stage];
+
+        Alert.alert(
+          strings.map.legacyConversionFailedTitle,
+          `${stageMessage}\n\n${strings.map.backupFailureDetail}: ${error.detail}`
+        );
+        return;
+      }
+
+      Alert.alert(
+        strings.map.legacyConversionFailedTitle,
+        strings.map.legacyConversionFailedMessage
+      );
+    } finally {
+      finishDataOperation("convert");
+    }
+  }, [beginDataOperation, finishDataOperation, strings]);
 
   const handleImportBackup = useCallback(() => {
+    if (dataOperationRef.current !== null) {
+      return;
+    }
+
     if (activeWalk) {
       Alert.alert(strings.map.recordingActive, strings.map.recordingActiveBackup);
       return;
@@ -3096,8 +3204,12 @@ export function MapScreen({
           text: strings.common.restore,
           style: "destructive",
           onPress: async () => {
+            if (!await beginDataOperation("restore")) {
+              return;
+            }
+
             try {
-              const imported = await importBackupJson();
+              const imported = await importBackupV5();
 
               if (imported) {
                 await clearActiveRecordingSettings();
@@ -3113,13 +3225,20 @@ export function MapScreen({
             } catch (error) {
               console.warn("Failed to import backup", error);
               Alert.alert(strings.map.restoreFailedTitle, strings.map.restoreFailedMessage);
+            } finally {
+              finishDataOperation("restore");
             }
           }
         }
       ]
     );
-  }, [activeWalk, refreshSavedData, strings]);
-
+  }, [
+    activeWalk,
+    beginDataOperation,
+    finishDataOperation,
+    refreshSavedData,
+    strings
+  ]);
   useEffect(
     () => () => {
       invalidateRecordingLifecycle();
@@ -3366,10 +3485,12 @@ export function MapScreen({
         language={language}
         loopFillSummaries={loopFillSummaries}
         visible={historyVisible}
+        dataOperation={dataOperation}
         walks={history}
         selectedSessionId={selectedSessionId}
         onClose={() => setHistoryVisible(false)}
         onDeleteWalk={handleDeleteWalk}
+        onConvertLegacyBackup={handleConvertLegacyBackup}
         onExportBackup={handleExportBackup}
         onExportWalkGpx={handleExportWalkGpx}
         onImportBackup={handleImportBackup}
@@ -3386,6 +3507,7 @@ export function MapScreen({
         }}
       /> : null}
       <RecordingRecoveryModal
+        language={language}
         onDiscard={handleDiscardRecoveredRecording}
         onFinish={handleFinishRecoveredRecording}
         onResume={handleResumeRecoveredRecording}
@@ -4011,6 +4133,14 @@ function formatObjectiveProgressLine(
   }
 
   return `${completion} objective progress, ${remainingCells ?? "?"} cells remaining, ${delta.cells >= 0 ? "+" : ""}${delta.cells} cells from this recording.`;
+}
+
+function formatBackupFileSize(bytes: number) {
+  if (bytes < 1024 * 1024) {
+    return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+  }
+
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 function formatGpsSummary(pausedEventCount: number, language: AppLanguage) {

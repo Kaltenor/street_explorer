@@ -281,20 +281,16 @@ export async function replaceStreetCompletionV2(input: StreetCompletionRebuildIn
 }
 export async function getStreetCompletionSummary(): Promise<StreetCompletionSummary> {
   const db = await getDatabase();
-  const state = await db.getFirstAsync<{
-    processed_recording_count: number;
-    status: StreetCompletionSummary["status"];
-    updated_at: string | null;
-  }>(`
-    SELECT processed_recording_count, status, updated_at
-    FROM street_completion_state
-    WHERE id = 1
-  `);
-  const totals = await db.getFirstAsync<{
+  const summary = await db.getFirstAsync<{
+    completed_street_count: number;
     explored_distance_m: number;
     explored_street_count: number;
+    legacy_matched_street_count: number;
     loaded_street_count: number;
+    processed_recording_count: number;
+    status: StreetCompletionSummary["status"];
     total_distance_m: number;
+    updated_at: string | null;
   }>(`
     WITH street_rollup AS (
       SELECT
@@ -303,57 +299,58 @@ export async function getStreetCompletionSummary(): Promise<StreetCompletionSumm
         SUM(total_distance_m) AS total_distance_m
       FROM street_completion_segments
       GROUP BY street_id
+    ), street_totals AS (
+      SELECT
+        COALESCE(SUM(walked_distance_m), 0) AS explored_distance_m,
+        COALESCE(SUM(CASE WHEN walked_distance_m > 0 THEN 1 ELSE 0 END), 0)
+          AS explored_street_count,
+        COUNT(*) AS loaded_street_count,
+        COALESCE(SUM(total_distance_m), 0) AS total_distance_m,
+        COALESCE(SUM(
+          CASE
+            WHEN walked_distance_m >= total_distance_m * 0.9 THEN 1
+            ELSE 0
+          END
+        ), 0) AS completed_street_count
+      FROM street_rollup
     )
     SELECT
-      COALESCE(SUM(walked_distance_m), 0) AS explored_distance_m,
-      COALESCE(SUM(CASE WHEN walked_distance_m > 0 THEN 1 ELSE 0 END), 0)
-        AS explored_street_count,
-      COUNT(*) AS loaded_street_count,
-      COALESCE(SUM(total_distance_m), 0) AS total_distance_m
-    FROM street_rollup
+      state.processed_recording_count,
+      state.status,
+      state.updated_at,
+      street_totals.explored_distance_m,
+      street_totals.explored_street_count,
+      street_totals.loaded_street_count,
+      street_totals.total_distance_m,
+      street_totals.completed_street_count,
+      (
+        SELECT COUNT(DISTINCT street_id)
+        FROM street_completion_v1_evidence
+      ) AS legacy_matched_street_count
+    FROM street_completion_state AS state
+    CROSS JOIN street_totals
+    WHERE state.id = 1
   `);
-  const completed = await db.getFirstAsync<{ completed_street_count: number }>(`
-    WITH street_rollup AS (
-      SELECT
-        street_id,
-        SUM(walked_distance_m) AS walked_distance_m,
-        SUM(total_distance_m) AS total_distance_m
-      FROM street_completion_segments
-      GROUP BY street_id
-    )
-    SELECT COALESCE(SUM(
-      CASE
-        WHEN walked_distance_m >= total_distance_m * 0.9 THEN 1
-        ELSE 0
-      END
-    ), 0) AS completed_street_count
-    FROM street_rollup
-  `);
-  const legacy = await db.getFirstAsync<{ matched_street_count: number }>(`
-    SELECT COUNT(DISTINCT street_id) AS matched_street_count
-    FROM street_completion_v1_evidence
-  `);
-  const exploredDistanceMeters = totals?.explored_distance_m ?? 0;
-  const totalDistanceMeters = totals?.total_distance_m ?? 0;
-  const status = state?.status ?? (totalDistanceMeters > 0 ? "ready" : "empty");
+  const exploredDistanceMeters = summary?.explored_distance_m ?? 0;
+  const totalDistanceMeters = summary?.total_distance_m ?? 0;
+  const status = summary?.status ?? (totalDistanceMeters > 0 ? "ready" : "empty");
 
   return {
-    completedStreetCount: completed?.completed_street_count ?? 0,
+    completedStreetCount: summary?.completed_street_count ?? 0,
     completionPercent:
       totalDistanceMeters > 0
         ? Math.round((exploredDistanceMeters / totalDistanceMeters) * 1000) / 10
         : 0,
     exploredDistanceMeters,
-    exploredStreetCount: totals?.explored_street_count ?? 0,
-    legacyMatchedStreetCount: legacy?.matched_street_count ?? 0,
-    loadedStreetCount: totals?.loaded_street_count ?? 0,
-    processedRecordingCount: state?.processed_recording_count ?? 0,
+    exploredStreetCount: summary?.explored_street_count ?? 0,
+    legacyMatchedStreetCount: summary?.legacy_matched_street_count ?? 0,
+    loadedStreetCount: summary?.loaded_street_count ?? 0,
+    processedRecordingCount: summary?.processed_recording_count ?? 0,
     status,
     totalDistanceMeters,
-    updatedAt: state?.updated_at ?? null
+    updatedAt: summary?.updated_at ?? null
   };
 }
-
 function getOsmStreetId(segmentId: string) {
   const match = /^(way\/[^/]+)/.exec(segmentId);
   return match?.[1] ?? segmentId;

@@ -33,6 +33,10 @@ const mapScreenSource = fs.readFileSync(
   path.resolve(__dirname, "../src/screens/MapScreen.tsx"),
   "utf8"
 );
+const liveMedalEffectSource = mapScreenSource.slice(
+  mapScreenSource.indexOf("const evaluation = liveMedalEvaluationRef.current"),
+  mapScreenSource.indexOf("const handleCompleteMedalCelebration")
+);
 const medalCelebrationSource = fs.readFileSync(
   path.resolve(__dirname, "../src/components/MedalCelebration.tsx"),
   "utf8"
@@ -80,6 +84,19 @@ assert(
   mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&
     mapScreenSource.includes("repairMissedRecordingMedals()"),
   "live awards and one-time repair are wired into the map screen"
+);
+assert(
+  liveMedalEffectSource.includes("evaluation.latestBoundaryCellCount = boundaryCellCount") &&
+    liveMedalEffectSource.includes(
+      "evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length"
+    ) &&
+    liveMedalEffectSource.indexOf(
+      "evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length"
+    ) > liveMedalEffectSource.indexOf("evaluateLiveMedalCollection(input)") &&
+    !liveMedalEffectSource.includes(
+      "evaluation.evaluatedBoundaryCellCount = boundaryCellCount"
+    ),
+  "cancelled live medal checks remain retryable until an evaluation actually completes"
 );
 assert(
   medalCelebrationSource.includes("rotateY: spinY") &&

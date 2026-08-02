@@ -2,6 +2,12 @@ import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
 import type { CompletionScope, ZoneAchievement } from "./completionRepository";
+import { APP_VERSION } from "../constants/config";
+import type {
+  BackupV5Manifest,
+  BackupV5Metadata,
+  BackupV5SessionData
+} from "../services/backupV5";
 import { BACKGROUND_LOCATION_RECOVERY_GRACE_MS } from "../constants/config";
 import {
   ActivityMode,
@@ -54,6 +60,7 @@ type CreateWalkInput = {
 };
 
 type FinishWalkInput = {
+  displayName?: string | null;
   endedAt: string;
   distanceMeters: number;
   durationSeconds: number;
@@ -100,6 +107,10 @@ export type StreetExplorerBackup = {
   zoneAchievements: ZoneAchievement[];
   version: 4;
 };
+export function validateLegacyBackupV4(backup: StreetExplorerBackup) {
+  validateBackupData(backup);
+}
+
 
 export async function createWalkSession(input: CreateWalkInput) {
   const db = await getDatabase();
@@ -449,6 +460,17 @@ export async function finishWalkSession(
         ).toISOString()
       );
       return;
+    }
+
+    if (input.displayName !== undefined) {
+      const normalizedName = input.displayName?.trim()
+        ? input.displayName.trim()
+        : null;
+      await transaction.runAsync(
+        "UPDATE walk_sessions SET display_name = ? WHERE id = ?",
+        normalizedName,
+        sessionId
+      );
     }
 
     await transaction.runAsync(
@@ -958,9 +980,16 @@ export async function updateWalkSessionName(sessionId: number, displayName: stri
   );
 }
 
-export async function getBackupData(): Promise<StreetExplorerBackup> {
+export type BackupV5SnapshotSource = {
+  loadSessions: (sessionIds: readonly number[]) => Promise<BackupV5SessionData[]>;
+  metadata: BackupV5Metadata;
+};
+
+export async function withBackupV5Snapshot<T>(
+  operation: (source: BackupV5SnapshotSource) => Promise<T>
+): Promise<T> {
   const db = await getDatabase();
-  let backup!: StreetExplorerBackup;
+  let result!: T;
 
   await db.withExclusiveTransactionAsync(async (transaction) => {
     const activeSession = await transaction.getFirstAsync<{ id: number }>(`
@@ -978,9 +1007,23 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       );
     }
 
-    const sessionRows = await transaction.getAllAsync<WalkSessionRow>(`
-      SELECT id, activity_mode, display_name, started_at, ended_at,
-        distance_meters, duration_seconds, step_count
+    const sessionRows = await transaction.getAllAsync<
+      WalkSessionRow & { point_count: number }
+    >(`
+      SELECT
+        walk_sessions.id,
+        walk_sessions.activity_mode,
+        walk_sessions.display_name,
+        walk_sessions.started_at,
+        walk_sessions.ended_at,
+        walk_sessions.distance_meters,
+        walk_sessions.duration_seconds,
+        walk_sessions.step_count,
+        (
+          SELECT COUNT(*)
+          FROM gps_points
+          WHERE gps_points.session_id = walk_sessions.id
+        ) AS point_count
       FROM walk_sessions
       WHERE ended_at > started_at
         AND NOT EXISTS (
@@ -990,42 +1033,17 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
         )
       ORDER BY started_at ASC
     `);
-
-    const pointRows = await transaction.getAllAsync<GpsPointRow>(`
-      SELECT id, session_id, latitude, longitude, timestamp, accuracy,
-        point_index
-      FROM gps_points
-      WHERE session_id IN (
-        SELECT id
-        FROM walk_sessions
-        WHERE ended_at > started_at
-          AND NOT EXISTS (
-            SELECT 1 FROM pending_recording_discards
-            WHERE session_id = walk_sessions.id
-          )
-      )
-      ORDER BY session_id, timestamp, id
-    `);
-    const snapshotRows = await transaction.getAllAsync<RouteSnapshotRow>(`
-      SELECT session_id, segments_json, source_point_count,
-        source_max_point_id, algorithm_version, created_at
-      FROM route_snapshots
-      WHERE session_id IN (
-        SELECT id
-        FROM walk_sessions
-        WHERE ended_at > started_at
-          AND NOT EXISTS (
-            SELECT 1 FROM pending_recording_discards
-            WHERE session_id = walk_sessions.id
-          )
-      )
-      ORDER BY session_id
-    `);
     const medalEventRows = await transaction.getAllAsync<{
-      id: number; album_id: string; medal_id: string; session_id: number | null;
-      reason: "recording" | "retro_scan"; enclosure_id: string;
-      anchor_cell_id: string; enclosure_area_m2: number;
-      enclosure_cells_json: string; acquired_at: string;
+      id: number;
+      album_id: string;
+      medal_id: string;
+      session_id: number | null;
+      reason: "recording" | "retro_scan";
+      enclosure_id: string;
+      anchor_cell_id: string;
+      enclosure_area_m2: number;
+      enclosure_cells_json: string;
+      acquired_at: string;
     }>(`
       SELECT id, album_id, medal_id, session_id, reason, enclosure_id,
         anchor_cell_id, enclosure_area_m2, enclosure_cells_json, acquired_at
@@ -1043,7 +1061,9 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       ORDER BY id
     `);
     const collectedMedalRows = await transaction.getAllAsync<{
-      album_id: string; medal_id: string; acquisition_event_id: number;
+      album_id: string;
+      medal_id: string;
+      acquisition_event_id: number;
       presentation_state: "pending" | "presenting" | "presented";
       presented_at: string | null;
     }>(`
@@ -1070,7 +1090,8 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       ORDER BY album_id, medal_id
     `);
     const retroScanSettings = await transaction.getAllAsync<{
-      key: string; value: string;
+      key: string;
+      value: string;
     }>(`
       SELECT key, value FROM app_settings
       WHERE key LIKE 'medal_retro_scan:%'
@@ -1094,46 +1115,35 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
       ORDER BY completed_at
     `);
 
-    backup = {
+    const metadata: BackupV5Metadata = {
+      appVersion: APP_VERSION,
       exportedAt: new Date().toISOString(),
       medalSystem: {
         acquisitionEvents: medalEventRows.map((row) => ({
-          id: row.id,
+          acquiredAt: row.acquired_at,
           albumId: row.album_id,
-          medalId: row.medal_id,
-          sessionId: row.session_id,
-          reason: row.reason,
-          enclosureId: row.enclosure_id,
           anchorCellId: row.anchor_cell_id,
           enclosureAreaSquareMeters: row.enclosure_area_m2,
           enclosureCellIds: parseStringArray(row.enclosure_cells_json),
-          acquiredAt: row.acquired_at
+          enclosureId: row.enclosure_id,
+          id: row.id,
+          medalId: row.medal_id,
+          reason: row.reason,
+          sessionId: row.session_id
         })),
         collectedMedals: collectedMedalRows.map((row) => ({
+          acquisitionEventId: row.acquisition_event_id,
           albumId: row.album_id,
           medalId: row.medal_id,
-          acquisitionEventId: row.acquisition_event_id,
           presentationState: row.presentation_state,
           presentedAt: row.presented_at
         })),
         retroScanSettings
       },
-      points: pointRows.map(mapPointRow),
-      routeSnapshots: snapshotRows.flatMap((row) => {
-        const segments = parseRouteSegments(row.segments_json);
-
-        return segments
-          ? [{
-              algorithmVersion: row.algorithm_version,
-              createdAt: row.created_at,
-              segments,
-              sessionId: row.session_id,
-              sourceMaxPointId: row.source_max_point_id,
-              sourcePointCount: row.source_point_count
-            }]
-          : [];
-      }),
-      sessions: sessionRows.map(mapSessionRow),
+      sessions: sessionRows.map((row) => ({
+        ...mapSessionRow(row),
+        pointCount: row.point_count
+      })),
       zoneAchievements: zoneAchievementRows.map((row) => ({
         boundaryFetchedAt: row.boundary_fetched_at,
         boundarySource: row.boundary_source,
@@ -1144,18 +1154,88 @@ export async function getBackupData(): Promise<StreetExplorerBackup> {
         zoneId: row.zone_id,
         zoneName: row.zone_name,
         zoneType: row.zone_type
-      })),
-      version: 4
+      }))
     };
+
+    const loadSessions = async (
+      sessionIds: readonly number[]
+    ): Promise<BackupV5SessionData[]> => {
+      if (sessionIds.length === 0) {
+        return [];
+      }
+
+      const placeholders = sessionIds.map(() => "?").join(",");
+      const pointRows = await transaction.getAllAsync<GpsPointRow>(
+        `
+          SELECT id, session_id, latitude, longitude, timestamp, accuracy,
+            point_index
+          FROM gps_points
+          WHERE session_id IN (${placeholders})
+          ORDER BY session_id, point_index, id
+        `,
+        ...sessionIds
+      );
+      const snapshotRows = await transaction.getAllAsync<RouteSnapshotRow>(
+        `
+          SELECT session_id, segments_json, source_point_count,
+            source_max_point_id, algorithm_version, created_at
+          FROM route_snapshots
+          WHERE session_id IN (${placeholders})
+          ORDER BY session_id
+        `,
+        ...sessionIds
+      );
+      const pointsBySession = new Map<number, GpsPoint[]>();
+      const snapshotBySession = new Map<number, RouteSnapshotRow>();
+
+      for (const row of pointRows) {
+        const points = pointsBySession.get(row.session_id) ?? [];
+        points.push(mapPointRow(row));
+        pointsBySession.set(row.session_id, points);
+      }
+
+      for (const row of snapshotRows) {
+        snapshotBySession.set(row.session_id, row);
+      }
+
+      return sessionIds.map((sessionId) => {
+        const snapshot = snapshotBySession.get(sessionId);
+        const segments = snapshot
+          ? parseRouteSegments(snapshot.segments_json)
+          : null;
+
+        return {
+          points: pointsBySession.get(sessionId) ?? [],
+          routeSnapshot:
+            snapshot && segments
+              ? {
+                  algorithmVersion: snapshot.algorithm_version,
+                  createdAt: snapshot.created_at,
+                  segments,
+                  sessionId,
+                  sourceMaxPointId: snapshot.source_max_point_id,
+                  sourcePointCount: snapshot.source_point_count
+                }
+              : null,
+          sessionId
+        };
+      });
+    };
+
+    result = await operation({ loadSessions, metadata });
   });
 
-  return backup;
+  return result;
+
 }
-
-export async function restoreBackupData(backup: StreetExplorerBackup) {
+export async function restoreBackupV5Data(
+  manifest: BackupV5Manifest,
+  blocks: AsyncIterable<BackupV5SessionData[]>
+) {
   const db = await getDatabase();
-
-  validateBackupData(backup);
+  const expectedSessionIds = new Set(manifest.sessions.map((session) => session.id));
+  const restoredSessionIds = new Set<number>();
+  let restoredPointCount = 0;
 
   await db.withExclusiveTransactionAsync(async (transaction) => {
     await transaction.execAsync(`
@@ -1190,23 +1270,26 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
       DELETE FROM walk_sessions;
     `);
 
-    for (const session of backup.sessions) {
+    for (const session of manifest.sessions) {
+      if (
+        !Number.isInteger(session.id) ||
+        !Number.isInteger(session.pointCount) ||
+        new Date(session.endedAt).getTime() <=
+          new Date(session.startedAt).getTime()
+      ) {
+        throw new Error("V5 backup contains invalid session metadata.");
+      }
+
       await transaction.runAsync(
         `
           INSERT INTO walk_sessions (
-            id,
-            activity_mode,
-            display_name,
-            started_at,
-            ended_at,
-            distance_meters,
-            duration_seconds,
-            step_count
+            id, activity_mode, display_name, started_at, ended_at,
+            distance_meters, duration_seconds, step_count
           )
           VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         `,
         session.id,
-        "walk",
+        session.activityMode,
         session.displayName,
         session.startedAt,
         session.endedAt,
@@ -1214,90 +1297,114 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         session.durationSeconds,
         session.stepCount ?? 0
       );
+      await transaction.runAsync(
+        `
+          INSERT INTO pending_recording_repairs (session_id, created_at)
+          VALUES (?, ?)
+        `,
+        session.id,
+        new Date().toISOString()
+      );
+    }
 
-      if (
-        new Date(session.endedAt).getTime() >
-        new Date(session.startedAt).getTime()
-      ) {
-        await transaction.runAsync(
-          `
-            INSERT INTO pending_recording_repairs (session_id, created_at)
-            VALUES (?, ?)
-          `,
-          session.id,
-          new Date().toISOString()
-        );
+    for await (const blockSessions of blocks) {
+      for (const sessionData of blockSessions) {
+        if (
+          !expectedSessionIds.has(sessionData.sessionId) ||
+          restoredSessionIds.has(sessionData.sessionId)
+        ) {
+          throw new Error("V5 backup contains a duplicate or unexpected session block.");
+        }
+
+        for (
+          let offset = 0;
+          offset < sessionData.points.length;
+          offset += BACKUP_V5_POINT_INSERT_BATCH_SIZE
+        ) {
+          const pointBatch = sessionData.points.slice(
+            offset,
+            offset + BACKUP_V5_POINT_INSERT_BATCH_SIZE
+          );
+          const placeholders = pointBatch
+            .map(() => "(?, ?, ?, ?, ?, ?, ?)")
+            .join(",");
+          const values: Array<number | string | null> = [];
+
+          for (const point of pointBatch) {
+            if (
+              !Number.isInteger(point.id) ||
+              point.sessionId !== sessionData.sessionId
+            ) {
+              throw new Error("V5 backup contains an invalid GPS point.");
+            }
+
+            values.push(
+              point.id as number,
+              sessionData.sessionId,
+              point.latitude,
+              point.longitude,
+              point.timestamp,
+              point.accuracy,
+              point.pointIndex
+            );
+          }
+
+          if (pointBatch.length > 0) {
+            await transaction.runAsync(
+              `
+                INSERT INTO gps_points (
+                  id, session_id, latitude, longitude, timestamp, accuracy,
+                  point_index
+                )
+                VALUES ${placeholders}
+              `,
+              ...values
+            );
+          }
+        }
+
+        restoredPointCount += sessionData.points.length;
+
+        if (sessionData.routeSnapshot) {
+          await transaction.runAsync(
+            `
+              INSERT INTO route_snapshots (
+                session_id, segments_json, source_point_count,
+                source_max_point_id, algorithm_version, created_at
+              )
+              VALUES (?, ?, ?, ?, ?, ?)
+            `,
+            sessionData.sessionId,
+            JSON.stringify(sessionData.routeSnapshot.segments),
+            sessionData.routeSnapshot.sourcePointCount,
+            sessionData.routeSnapshot.sourceMaxPointId,
+            sessionData.routeSnapshot.algorithmVersion,
+            sessionData.routeSnapshot.createdAt
+          );
+        }
+
+        restoredSessionIds.add(sessionData.sessionId);
       }
     }
 
-    for (const point of backup.points) {
-      if (!point.id || !point.sessionId) {
-        throw new Error("Backup contains a GPS point without an id or session id.");
-      }
-
-      await transaction.runAsync(
-        `
-          INSERT INTO gps_points (
-            id,
-            session_id,
-            latitude,
-            longitude,
-            timestamp,
-            accuracy,
-            point_index
-          )
-          VALUES (?, ?, ?, ?, ?, ?, ?)
-        `,
-        point.id,
-        point.sessionId,
-        point.latitude,
-        point.longitude,
-        point.timestamp,
-        point.accuracy,
-        point.pointIndex
-      );
-      await transaction.runAsync(
-        `
-          INSERT INTO gps_observations (
-            session_id, latitude, longitude, timestamp, accuracy,
-            processed, accepted
-          )
-          VALUES (?, ?, ?, ?, ?, 1, 1)
-        `,
-        point.sessionId,
-        point.latitude,
-        point.longitude,
-        point.timestamp,
-        point.accuracy
-      );
+    if (
+      restoredSessionIds.size !== expectedSessionIds.size ||
+      restoredPointCount !== manifest.totals.pointCount
+    ) {
+      throw new Error("V5 backup did not restore every expected session and point.");
     }
 
-    for (const snapshot of backup.routeSnapshots) {
-      await transaction.runAsync(
-        `
-          INSERT INTO route_snapshots (
-            session_id,
-            segments_json,
-            source_point_count,
-            source_max_point_id,
-            algorithm_version,
-            created_at
-          )
-          VALUES (?, ?, ?, ?, ?, ?)
-        `,
-        snapshot.sessionId,
-        JSON.stringify(snapshot.segments),
-        snapshot.sourcePointCount,
-        snapshot.sourceMaxPointId ?? getBackupSourceMaxPointId(
-          backup.points,
-          snapshot.sessionId
-        ),
-        snapshot.algorithmVersion,
-        snapshot.createdAt
-      );
-    }
+    await transaction.execAsync(`
+      INSERT INTO gps_observations (
+        session_id, latitude, longitude, timestamp, accuracy, processed, accepted
+      )
+      SELECT
+        session_id, latitude, longitude, timestamp, accuracy, 1, 1
+      FROM gps_points
+      ORDER BY session_id, point_index, id;
+    `);
 
-    for (const event of backup.medalSystem.acquisitionEvents) {
+    for (const event of manifest.medalSystem.acquisitionEvents) {
       await transaction.runAsync(
         `INSERT INTO medal_acquisition_events (
           id, album_id, medal_id, session_id, reason, enclosure_id,
@@ -1316,7 +1423,7 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
       );
     }
 
-    for (const medal of backup.medalSystem.collectedMedals) {
+    for (const medal of manifest.medalSystem.collectedMedals) {
       await transaction.runAsync(
         `INSERT INTO collected_medals (
           album_id, medal_id, acquisition_event_id, presentation_state, presented_at
@@ -1324,12 +1431,14 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         medal.albumId,
         medal.medalId,
         medal.acquisitionEventId,
-        medal.presentationState === "presenting" ? "pending" : medal.presentationState,
+        medal.presentationState === "presenting"
+          ? "pending"
+          : medal.presentationState,
         medal.presentedAt
       );
     }
 
-    for (const setting of backup.medalSystem.retroScanSettings) {
+    for (const setting of manifest.medalSystem.retroScanSettings) {
       if (!setting.key.startsWith("medal_retro_scan:")) {
         continue;
       }
@@ -1342,7 +1451,8 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
         setting.value
       );
     }
-    for (const achievement of backup.zoneAchievements) {
+
+    for (const achievement of manifest.zoneAchievements) {
       await transaction.runAsync(
         `INSERT INTO zone_achievements (
           zone_id, zone_type, zone_name, completed_at, explored_cells,
@@ -1363,40 +1473,69 @@ export async function restoreBackupData(backup: StreetExplorerBackup) {
   });
 }
 
+const BACKUP_V5_POINT_INSERT_BATCH_SIZE = 100;
 function validateBackupData(backup: StreetExplorerBackup) {
   const sessionIds = new Set<number>();
 
   for (const session of backup.sessions) {
-    if (!session.id) {
-      throw new Error("Backup contains a session without an id.");
-    }
-
     const startedAt = new Date(session.startedAt).getTime();
     const endedAt = new Date(session.endedAt).getTime();
 
     if (
+      !Number.isInteger(session.id) ||
+      session.id <= 0 ||
+      sessionIds.has(session.id) ||
+      session.activityMode !== "walk" ||
       !Number.isFinite(startedAt) ||
       !Number.isFinite(endedAt) ||
-      endedAt <= startedAt
+      endedAt <= startedAt ||
+      !Number.isFinite(session.distanceMeters) ||
+      session.distanceMeters < 0 ||
+      !Number.isFinite(session.durationSeconds) ||
+      session.durationSeconds < 0 ||
+      !Number.isInteger(session.stepCount) ||
+      session.stepCount < 0
     ) {
-      throw new Error("Backup contains an unfinished recording.");
+      throw new Error("Backup contains invalid session metadata.");
     }
 
     sessionIds.add(session.id);
   }
 
+  const pointIds = new Set<number>();
+
   for (const point of backup.points) {
-    if (!point.id || !point.sessionId) {
-      throw new Error("Backup contains a GPS point without an id or session id.");
+    if (
+      !Number.isInteger(point.id) ||
+      (point.id ?? 0) <= 0 ||
+      pointIds.has(point.id as number) ||
+      !Number.isInteger(point.sessionId) ||
+      !sessionIds.has(point.sessionId as number) ||
+      !Number.isInteger(point.pointIndex) ||
+      point.pointIndex < 0 ||
+      !Number.isFinite(point.latitude) ||
+      !Number.isFinite(point.longitude) ||
+      !Number.isFinite(new Date(point.timestamp).getTime()) ||
+      (point.accuracy !== null && !Number.isFinite(point.accuracy))
+    ) {
+      throw new Error("Backup contains an invalid or duplicate GPS point.");
     }
 
-    if (!sessionIds.has(point.sessionId)) {
-      throw new Error("Backup contains a GPS point for a missing session.");
-    }
+    pointIds.add(point.id as number);
   }
 
+  const snapshotSessionIds = new Set<number>();
+
   for (const snapshot of backup.routeSnapshots) {
-    if (!sessionIds.has(snapshot.sessionId) || !areRenderedRouteSegments(snapshot.segments)) {
+    if (
+      snapshotSessionIds.has(snapshot.sessionId) ||
+      !sessionIds.has(snapshot.sessionId) ||
+      !areRenderedRouteSegments(snapshot.segments) ||
+      !Number.isInteger(snapshot.sourcePointCount) ||
+      snapshot.sourcePointCount < 0 ||
+      !Number.isInteger(snapshot.algorithmVersion) ||
+      !Number.isFinite(new Date(snapshot.createdAt).getTime())
+    ) {
       throw new Error("Backup contains an invalid route snapshot.");
     }
 
@@ -1406,6 +1545,8 @@ function validateBackupData(backup: StreetExplorerBackup) {
     ) {
       throw new Error("Backup contains an invalid route snapshot GPS generation.");
     }
+
+    snapshotSessionIds.add(snapshot.sessionId);
   }
 
   const eventIds = new Set<number>();
@@ -1414,6 +1555,7 @@ function validateBackupData(backup: StreetExplorerBackup) {
     if (
       !Number.isInteger(event.id) ||
       event.id <= 0 ||
+      eventIds.has(event.id) ||
       !event.albumId ||
       !event.medalId ||
       (event.sessionId !== null && !sessionIds.has(event.sessionId)) ||
@@ -1435,6 +1577,13 @@ function validateBackupData(backup: StreetExplorerBackup) {
       throw new Error("Backup contains an invalid collected medal.");
     }
   }
+
+  for (const setting of backup.medalSystem.retroScanSettings) {
+    if (typeof setting.key !== "string" || typeof setting.value !== "string") {
+      throw new Error("Backup contains invalid medal scan settings.");
+    }
+  }
+
   for (const achievement of backup.zoneAchievements) {
     if (
       !achievement.zoneId ||
@@ -1450,14 +1599,6 @@ function validateBackupData(backup: StreetExplorerBackup) {
       throw new Error("Backup contains an invalid zone achievement.");
     }
   }
-}
-
-function getBackupSourceMaxPointId(points: GpsPoint[], sessionId: number) {
-  return points.reduce(
-    (maxPointId, point) =>
-      point.sessionId === sessionId ? Math.max(maxPointId, point.id ?? 0) : maxPointId,
-    0
-  );
 }
 
 function parseStringArray(value: string) {

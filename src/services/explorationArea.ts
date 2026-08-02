@@ -155,7 +155,39 @@ export function buildMergedExplorationPolygons(
     }
   }
 
+  // MapKit can retain the previous native polygon when only its holes change.
+  // Include the complete rendered geometry in the identity so closing a loop
+  // remounts that polygon instead of leaving a stale transparent interior.
+  for (const polygon of polygons) {
+    polygon.id += ":geometry:" + hashExplorationPolygonGeometry(polygon);
+  }
+
   return polygons;
+}
+
+function hashExplorationPolygonGeometry(polygon: ExplorationPolygon) {
+  let hash = 2166136261;
+  const mix = (value: number) => {
+    hash ^= value;
+    hash = Math.imul(hash, 16777619);
+  };
+  const mixPath = (path: MapCoordinate[]) => {
+    mix(path.length);
+
+    for (const coordinate of path) {
+      mix(Math.round(coordinate.latitude * 10_000_000));
+      mix(Math.round(coordinate.longitude * 10_000_000));
+    }
+  };
+
+  mixPath(polygon.coordinates);
+  mix(polygon.holes.length);
+
+  for (const hole of polygon.holes) {
+    mixPath(hole);
+  }
+
+  return (hash >>> 0).toString(36);
 }
 
 export function collectEnclosedExplorationCellGroups(
