@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { AppLanguage, getStrings, interpolate } from "../i18n";
 import { StreetCompletionPanel } from "./StreetCompletionPanel";
+import { APP_COLORS } from "../constants/theme";
 import { getStreetCompletionSummary } from "../database/streetCompletionRepository";
 import { emptyStreetCompletionSummary } from "../services/streetCompletion";
 import {
@@ -54,6 +55,7 @@ type CompletionModalProps = {
   language: AppLanguage;
   onFocusZone: (zone: CachedZone) => void;
   onSetObjective: (objective: CompletionObjective) => void;
+  onZonesUpdated: () => Promise<void> | void;
   visible: boolean;
   onClose: () => void;
 };
@@ -80,6 +82,7 @@ export function CompletionModal({
   onClose,
   onFocusZone,
   onSetObjective,
+  onZonesUpdated,
   visible
 }: CompletionModalProps) {
   const mode: CompletionMode = "walk";
@@ -288,6 +291,12 @@ export function CompletionModal({
         setRefreshState(succeededState);
         await loadZones();
 
+        try {
+          await onZonesUpdated();
+        } catch (error) {
+          console.warn("Failed to restore completion objective after boundary refresh", error);
+        }
+
         if (showResult) {
           Alert.alert(
             completionStrings.boundariesRefreshed,
@@ -324,7 +333,7 @@ export function CompletionModal({
         setIsRefreshingZones(false);
       }
     },
-    [completionStrings, loadZones]
+    [completionStrings, loadZones, onZonesUpdated]
   );
 
   const handleRefreshBoundaries = () => {
@@ -1003,9 +1012,9 @@ const styles = StyleSheet.create({
     borderColor: "rgba(245, 196, 81, 0.42)"
   },
   achievementPanel: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.goldBorder,
+    borderRadius: 18,
     borderWidth: 1,
     padding: 12
   },
@@ -1058,9 +1067,9 @@ const styles = StyleSheet.create({
     marginTop: 6
   },
   currentObjectivePanel: {
-    backgroundColor: "#0c151c",
+    backgroundColor: APP_COLORS.card,
     borderColor: "rgba(245, 196, 81, 0.22)",
-    borderRadius: 14,
+    borderRadius: 18,
     borderWidth: 1,
     padding: 12
   },
@@ -1134,9 +1143,9 @@ const styles = StyleSheet.create({
     fontWeight: "900"
   },
   panel: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 18,
     borderWidth: 1,
     padding: 12
   },
@@ -1153,7 +1162,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   screen: {
-    backgroundColor: "#071018",
+    backgroundColor: APP_COLORS.background,
     flex: 1
   },
   selectedSelectorButton: {
@@ -1192,9 +1201,9 @@ const styles = StyleSheet.create({
     gap: 8
   },
   selectorPanel: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 18,
     borderWidth: 1,
     padding: 12
   },
@@ -1215,9 +1224,9 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   stat: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.cardRaised,
+    borderColor: APP_COLORS.border,
+    borderRadius: 16,
     borderWidth: 1,
     flexBasis: "48%",
     flexGrow: 1,

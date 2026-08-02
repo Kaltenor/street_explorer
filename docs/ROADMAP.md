@@ -49,24 +49,16 @@
 - CC0 four-direction animated pixel-art player marker with precomposed native annotation images, smooth coordinate interpolation, reliable last-position and last-rendered-sprite retention, accessible stale-GPS state, and continuous flicker-free Stop/Start recording visibility. Stop now releases the summary and next Start at the durable save boundary while repairable derived work continues asynchronously, and continuous routes bypass unnecessary street-corridor inference.
 
 - Performance pass V1: immediate player/route lane, non-starving coalesced and geometry-keyed exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, bounded backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
-- Zone Boundary Completion V2: robust unordered/reversed multipolygon assembly, display-only invalid-boundary fallbacks, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V5 preservation.
+- Zone Boundary Completion V2: full local and containing-city district retrieval, robust unordered/reversed multipolygon assembly, persistent city-wide district outlines, debounced map-driven objective switching, race-safe percentage scans, display-only invalid-boundary fallbacks, exact-cache downgrade protection, saved-objective recovery, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V5 preservation.
 - Street-Aware Path Inference V3: bounded suspicious-gap topology refresh, metadata-safe crossings and sub-8m endpoint joins, immutable evidence-rich bridge snapshots, inferred-cell attribution, and concise History review.
 - OpenStreetMap Street Completion V2: frozen-route proportional metre coverage, nearest direction-compatible matching, repeated-bin deduplication, 90% OSM-way completion records, V1 evidence migration, durable SQLite state, Completion metrics, and active-walk-safe asynchronous rebuilding.
 - Saved-path focus polish: one-action Selected/layer activation and overlap-based Today visibility for midnight-crossing recordings.
 - Recording Recovery V2: full-screen persisted-route preview, verified Active/Interrupted/Uncertain background status, safe recommended actions, bounded long-route rendering, and atomic date/time-based naming during recovered finalization.
+- UI Polish V2: semantic walking/path colors, consistent dark cards across Details/History/Completion, summary-first route details and post-walk reports, and five explicit GPS presentation states with age/accuracy thresholds.
 
 ## Next Priority
 
-### 1. UI Polish V2
-
-Add:
-
-- coherent walking colors across panels and paths
-- finish dark styling inside Details, History, and Completion content cards
-- stronger route detail and recording report layout
-- clearer GPS status states
-
-### 2. Data Tools V2
+### 1. Data Tools V2
 
 Add:
 

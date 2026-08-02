@@ -3,8 +3,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useRef, useState } from "react";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
+import { GPS_STATUS_COLORS } from "../constants/theme";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
 import { formatDistance, formatDuration } from "../services/distance";
+import { classifyGpsUiStatus, GpsUiStatus } from "../services/gpsStatus";
+import type { LocationPermissionState } from "../services/locationService";
 import { RecordingQuality } from "../services/recordingQuality";
 import { ActivityMode } from "../types/walk";
 
@@ -17,6 +20,9 @@ type WalkControlsProps = {
   startedAt?: string | null;
   gpsAccuracyMeters?: number | null;
   gpsStatus?: string | null;
+  locationPermission: LocationPermissionState;
+  locationResolved: boolean;
+  latestFixTimestamp?: string | null;
   acceptedGpsPointCount: number;
   backgroundStatus: BackgroundTrackingStatus;
   latestPointTimestamp?: string | null;
@@ -40,6 +46,9 @@ export function WalkControls({
   startedAt,
   gpsAccuracyMeters,
   gpsStatus,
+  locationPermission,
+  locationResolved,
+  latestFixTimestamp,
   acceptedGpsPointCount,
   backgroundStatus,
   latestPointTimestamp,
@@ -56,9 +65,25 @@ export function WalkControls({
   const [detailsExpanded, setDetailsExpanded] = useState(false);
   const [healthExpanded, setHealthExpanded] = useState(false);
   const [durationSeconds, setDurationSeconds] = useState(0);
+  const [gpsClockMs, setGpsClockMs] = useState(Date.now());
   const lastTapRef = useRef(0);
   const strings = getStrings(language);
   const recordingNoun = ACTIVITY_MODE_TEXT[language].recordingNouns[activityMode];
+  const gpsUiStatus = classifyGpsUiStatus({
+    accuracyMeters: gpsAccuracyMeters,
+    fixTimestamp: latestFixTimestamp,
+    isRecording,
+    locationResolved,
+    nowMs: gpsClockMs,
+    permissionState: locationPermission
+  });
+
+  useEffect(() => {
+    setGpsClockMs(Date.now());
+    const timerId = setInterval(() => setGpsClockMs(Date.now()), 5000);
+
+    return () => clearInterval(timerId);
+  }, [latestFixTimestamp]);
 
   useEffect(() => {
     if (!isRecording || !startedAt) {
@@ -112,6 +137,12 @@ export function WalkControls({
           </View>
         )}
       </View>
+
+      <GpsStateBadge
+        accuracyMeters={gpsAccuracyMeters}
+        language={language}
+        status={gpsUiStatus}
+      />
 
       {isRecording && healthExpanded ? (
         <View style={styles.healthStrip}>
@@ -218,6 +249,81 @@ function MiniHealth({ label, value }: { label: string; value: string }) {
       <Text style={styles.miniHealthLabel}>{label}</Text>
     </View>
   );
+}
+
+function GpsStateBadge({
+  accuracyMeters,
+  language,
+  status
+}: {
+  accuracyMeters: number | null | undefined;
+  language: AppLanguage;
+  status: GpsUiStatus;
+}) {
+  const color = GPS_STATUS_COLORS[status.state];
+
+  return (
+    <View
+      accessibilityLiveRegion="polite"
+      accessibilityLabel={`GPS ${formatGpsState(status, language)}`}
+      style={[styles.gpsState, { borderColor: color }]}
+    >
+      <View style={[styles.gpsStateDot, { backgroundColor: color }]} />
+      <Text style={[styles.gpsStateLabel, { color }]}>
+        {formatGpsState(status, language)}
+      </Text>
+      <Text numberOfLines={1} style={styles.gpsStateDetail}>
+        {formatGpsStateDetail(status, accuracyMeters, language)}
+      </Text>
+    </View>
+  );
+}
+
+function formatGpsState(status: GpsUiStatus, language: AppLanguage) {
+  switch (status.state) {
+    case "acquiring":
+      return language === "fr" ? "Acquisition" : "Acquiring";
+    case "good":
+      return language === "fr" ? "Bon" : "Good";
+    case "weak-stale":
+      return status.reason === "stale-fix"
+        ? language === "fr" ? "Périmé" : "Stale"
+        : language === "fr" ? "Faible" : "Weak";
+    case "denied":
+      return language === "fr" ? "Refusé" : "Denied";
+    case "unavailable":
+      return language === "fr" ? "Indisponible" : "Unavailable";
+  }
+}
+
+function formatGpsStateDetail(
+  status: GpsUiStatus,
+  accuracyMeters: number | null | undefined,
+  language: AppLanguage
+) {
+  if (status.reason === "permission-denied") {
+    return language === "fr" ? "Autorisation requise" : "Permission required";
+  }
+
+  if (status.reason === "permission-pending" || status.reason === "fix-pending") {
+    return language === "fr" ? "Recherche d'un signal" : "Finding a signal";
+  }
+
+  if (status.reason === "no-fix" || status.reason === "invalid-fix") {
+    return language === "fr" ? "Aucune position utilisable" : "No usable fix";
+  }
+
+  if (status.reason === "stale-fix") {
+    return language === "fr"
+      ? `Dernière position il y a ${status.ageSeconds ?? 0} s`
+      : `Last fix ${status.ageSeconds ?? 0}s ago`;
+  }
+
+  return typeof accuracyMeters === "number"
+    ? language === "fr"
+      ? `Précision ${Math.round(accuracyMeters)} m`
+      : `${Math.round(accuracyMeters)} m accuracy`
+    : language === "fr" ? "Précision inconnue" : "Accuracy unknown";
 }
 
 function formatSpeed(metersPerSecond: number) {
@@ -349,6 +455,32 @@ const styles = StyleSheet.create({
     flexBasis: "100%",
     fontSize: 12,
     fontWeight: "700"
+  },
+  gpsState: {
+    alignItems: "center",
+    backgroundColor: "rgba(19, 33, 43, 0.72)",
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    minHeight: 34,
+    paddingHorizontal: 9
+  },
+  gpsStateDetail: {
+    color: "#94a3b8",
+    flex: 1,
+    fontSize: 11,
+    fontWeight: "700",
+    textAlign: "right"
+  },
+  gpsStateDot: {
+    borderRadius: 999,
+    height: 8,
+    width: 8
+  },
+  gpsStateLabel: {
+    fontSize: 12,
+    fontWeight: "900"
   },
   healthMetrics: {
     flexDirection: "row",

@@ -36,17 +36,17 @@ Street Explorer is dedicated to on-foot exploration. Recordings, paths, statisti
 - Full-screen Details, History, and Completion views with responsive map back navigation, lazy per-recording History details, and cancellable chunked Completion scans.
 - Completion screen with scope and zone selectors.
 - OpenStreetMap Street Completion V2 rebuilt from immutable saved routes, with nearest direction-compatible metre coverage, repeat-walk deduplication, a 90% OSM-way completion threshold, durable first-completion timestamps/V1 migration evidence, and asynchronous active-walk isolation.
-- OSM boundary loading with robust multi-ring relation assembly, display-only invalid fallbacks, geometry-fingerprinted denominator caches, automatic 30-day refresh status, and a visible last-fetched date.
+- OSM boundary loading with full local relation-member geometry, robust multi-ring assembly, display-only invalid fallbacks, exact-cache downgrade protection, geometry-fingerprinted denominator caches, saved-objective recovery after cache repopulation, automatic 30-day refresh status, and a visible last-fetched date.
 - Permanent exact-boundary completion achievements with district and city rollups that remain earned across later OSM changes and cache clearing.
 - Zone-specific completion stats and map focus.
-- A compact objective HUD with selected zone, completion percentage, remaining cells, and today's added cells, toggled by one map-side flag without clearing the saved objective.
+- Persistent current-city district outlines with a gold active boundary, 400ms camera-settle objective switching, latest-only percentage calculations, and a compact objective HUD showing completion, remaining cells, and today's added cells.
 - Updated 1320x2868 portrait `loading-screen2.png` shared by the native splash and in-app launch presentation, plus the transparent `title.png` map logo overlay.
 - Frozen Lyon v1 landmark album with 20 reviewed OpenStreetMap identities and anchors.
 - Real-time enclosure medals using a retry-safe 650ms live evaluator and the normal gameplay loop rules: 80m minimum distance, one-cell seam tolerance, accepted finalized route geometry, strict interior anchors, and a 150,000m2 cap.
 - Medal pins, a persistent city medal-progress card on the map, and a full-screen category-filtered collection with permanent Unlocked/Locked sections, Unicode-safe localized landmark copy, unclipped chips, richer earned descriptions, and landmark focus.
 - Recoverable medal presentation with a metallic chime, haptic success cue, reduced-motion support, a 3D reveal, localized description, Continue-triggered flight into the Medal tab, and an acknowledged queue.
 - Explicit opt-in scanning for qualifying historical walks; new albums never award silently.
-- A streamlined navy/gold presentation system across map HUD, walk controls, full-screen menus, summaries, recovery, and diagnostics; duplicate layer shortcuts and default technical density are removed while advanced tools remain in Options or expandable details.
+- A streamlined navy/gold presentation system across map HUD, walk controls, full-screen menus, summaries, recovery, and diagnostics. UI Polish V2 adds shared dark card levels; semantic green active, gold selected, cool saved-route, cyan inferred-link, red explored-ground, and orange today colors; summary-first route-quality cards; and an always-visible GPS badge that classifies Acquiring, Good, Weak/Stale, Denied, and Unavailable from permission, fix age, and accuracy. Advanced tools and evidence remain in Options or expandable technical details.
 - Backup V5 preserves individual session identity, raw GPS points, frozen route snapshots, inferred bridge evidence, medal state, and permanent zone achievements. The newest 20 walks remain individual hot records; older walks are physically consolidated into bounded monthly blocks without fake merged recordings. Restore accepts V5 only, and a temporary complete-V4 converter produces V5 without importing V4 into the live database.
 
 ## Current Limitations

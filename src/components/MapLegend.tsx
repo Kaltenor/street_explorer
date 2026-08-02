@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { AppLanguage, getStrings } from "../i18n";
+import { WALKING_COLORS } from "../constants/theme";
 
 type MapLegendProps = {
   language: AppLanguage;
@@ -17,10 +18,14 @@ export function MapLegend({ language, showExploredCells, showPaths }: MapLegendP
 
   return (
     <View style={styles.container}>
-      {showPaths ? <LegendItem color="#f5c451" label={strings.mapLegend.savedRoute} /> : null}
-      {showPaths ? <LegendItem color="#ef4444" label={strings.mapLegend.recording} /> : null}
+      {showPaths ? (
+        <LegendItem color={WALKING_COLORS.savedRoutes[0]} label={strings.mapLegend.savedRoute} />
+      ) : null}
+      {showPaths ? (
+        <LegendItem color={WALKING_COLORS.activeRoute} label={strings.mapLegend.recording} />
+      ) : null}
       {showExploredCells ? (
-        <LegendItem color="#86efac" label={strings.mapLegend.exploredCells} />
+        <LegendItem color={WALKING_COLORS.exploredArea} label={strings.mapLegend.exploredCells} />
       ) : null}
     </View>
   );

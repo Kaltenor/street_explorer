@@ -13,6 +13,7 @@ import {
 } from "react-native";
 
 import { LoopFillSessionSummary } from "../database/completionRepository";
+import { APP_COLORS, WALKING_COLORS } from "../constants/theme";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import { formatDistance, formatDuration } from "../services/distance";
 import { collectExploredCellIdsForPath } from "../services/explorationArea";
@@ -293,6 +294,7 @@ function HistoryRow({
   onOpenWalk: (sessionId: number) => void;
 }) {
   const strings = getStrings(language);
+  const routeColor = getSavedRouteColor(walk.id, isSelected);
 
   return (
     <TouchableOpacity
@@ -301,6 +303,7 @@ function HistoryRow({
       style={[styles.row, isSelected ? styles.selectedRow : null]}
     >
       <View style={styles.rowHeader}>
+        <View style={[styles.routeSwatch, { backgroundColor: routeColor }]} />
         <View style={styles.rowText}>
           <Text style={styles.date}>{walk.displayName || formatDate(walk.startedAt)}</Text>
           <Text style={styles.meta}>
@@ -359,6 +362,7 @@ function RecordingDetail({
     high: inferredSegments.filter((segment) => segment.confidence === "high").length,
     medium: inferredSegments.filter((segment) => segment.confidence === "medium").length
   });
+  const routeColor = getSavedRouteColor(walk.id, true);
 
   return (
     <ScrollView contentContainerStyle={styles.detailScreen}>
@@ -368,10 +372,18 @@ function RecordingDetail({
       </TouchableOpacity>
 
       <View style={styles.detailCard}>
-        <Text style={styles.detailTitle}>{walk.displayName || formatDate(walk.startedAt)}</Text>
-        <Text style={styles.detailSubtitle}>
-          {modeText.labels[walk.activityMode]} {strings.history.recording}
-        </Text>
+        <View style={styles.detailHero}>
+          <View style={[styles.detailRouteSwatch, { backgroundColor: routeColor }]} />
+          <View style={styles.detailHeroCopy}>
+            <Text style={styles.detailTitle}>{walk.displayName || formatDate(walk.startedAt)}</Text>
+            <Text style={styles.detailSubtitle}>
+              {modeText.labels[walk.activityMode]} {strings.history.recording}
+            </Text>
+          </View>
+          <View style={[styles.qualityPill, getSavedQualityStyle(report.qualityLabel)]}>
+            <Text style={styles.qualityPillText}>{report.qualityLabel}</Text>
+          </View>
+        </View>
 
         <View style={styles.summaryGrid}>
           <Summary label={strings.common.distance} value={formatDistance(walk.distanceMeters)} />
@@ -383,6 +395,27 @@ function RecordingDetail({
         <View style={styles.details}>
           <Detail label={strings.history.started} value={formatFullDate(walk.startedAt)} />
           <Detail label={strings.history.ended} value={formatFullDate(walk.endedAt)} />
+        </View>
+
+        <View style={styles.routeOverviewCard}>
+          <View style={styles.reportHeader}>
+            <Ionicons name="pulse-outline" size={16} color={APP_COLORS.gold} />
+            <Text style={styles.reportTitle}>
+              {language === "fr" ? "Qualité du parcours" : "Route quality"}
+            </Text>
+          </View>
+          <View style={styles.routeOverviewMetrics}>
+            <OverviewMetric
+              label={language === "fr" ? "Points" : "Points"}
+              value={report.gpsAccepted}
+            />
+            <OverviewMetric label={strings.history.hiddenGaps} value={report.hiddenGaps} />
+            <OverviewMetric
+              label={strings.history.inferredSections}
+              value={String(inferredSegments.length)}
+            />
+          </View>
+          <Text style={styles.reportNote}>{report.qualityReason}</Text>
         </View>
 
         {inferredSegments.length > 0 ? (
@@ -550,6 +583,15 @@ function Detail({ label, value }: { label: string; value: string }) {
   );
 }
 
+function OverviewMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.overviewMetric}>
+      <Text style={styles.overviewMetricValue}>{value}</Text>
+      <Text style={styles.overviewMetricLabel}>{label}</Text>
+    </View>
+  );
+}
+
 function buildRecordingReport(
   walk: WalkSession,
   walkWithPoints: WalkWithPoints | null,
@@ -581,8 +623,30 @@ function buildRecordingReport(
     loopsFilled: String(loopFillSummary?.filledLoopCount ?? 0),
     loopsRejected: String(loopFillSummary?.rejectedLoopCount ?? 0),
     qualityReason: quality.reason,
+    qualityLabel: quality.label,
     qualityScore: `${quality.score}/100 ${quality.label}`
   };
+}
+
+function getSavedRouteColor(sessionId: number, isSelected: boolean) {
+  if (isSelected) {
+    return WALKING_COLORS.selectedRoute;
+  }
+
+  return WALKING_COLORS.savedRoutes[sessionId % WALKING_COLORS.savedRoutes.length]
+    ?? "#38bdf8";
+}
+
+function getSavedQualityStyle(label: string) {
+  if (label === "Good") {
+    return styles.qualityGood;
+  }
+
+  if (label === "Poor") {
+    return styles.qualityPoor;
+  }
+
+  return styles.qualityOk;
 }
 
 function calculateSavedRecordingQuality({
@@ -803,12 +867,25 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   detailCard: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 18,
     borderWidth: 1,
     gap: 14,
-    padding: 14
+    padding: 16
+  },
+  detailHero: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10
+  },
+  detailHeroCopy: {
+    flex: 1
+  },
+  detailRouteSwatch: {
+    borderRadius: 999,
+    height: 38,
+    width: 6
   },
   detailRow: {
     gap: 12,
@@ -820,13 +897,13 @@ const styles = StyleSheet.create({
     padding: 18
   },
   detailSubtitle: {
-    color: "#94a3b8",
+    color: APP_COLORS.textMuted,
     fontSize: 13,
     fontWeight: "700",
-    marginTop: -8
+    marginTop: 3
   },
   detailTitle: {
-    color: "#f8fafc",
+    color: APP_COLORS.text,
     fontSize: 22,
     fontWeight: "900"
   },
@@ -900,7 +977,7 @@ const styles = StyleSheet.create({
     marginTop: 4
   },
   reportCard: {
-    backgroundColor: "#13212b",
+    backgroundColor: APP_COLORS.cardRaised,
     borderColor: "rgba(245, 196, 81, 0.18)",
     borderRadius: 14,
     borderWidth: 1,
@@ -924,9 +1001,9 @@ const styles = StyleSheet.create({
   },
   row: {
     alignItems: "stretch",
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 16,
     borderWidth: 1,
     gap: 10,
     padding: 12
@@ -938,6 +1015,12 @@ const styles = StyleSheet.create({
   },
   rowText: {
     flex: 1
+  },
+  routeSwatch: {
+    alignSelf: "stretch",
+    borderRadius: 999,
+    minHeight: 38,
+    width: 4
   },
   saveButton: {
     alignItems: "center",
@@ -974,7 +1057,7 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   screen: {
-    backgroundColor: "#071018",
+    backgroundColor: APP_COLORS.background,
     flex: 1
   },
   selectedRow: {
@@ -982,7 +1065,7 @@ const styles = StyleSheet.create({
     borderWidth: 2
   },
   summary: {
-    backgroundColor: "#182630",
+    backgroundColor: APP_COLORS.cardHighlight,
     borderColor: "rgba(148, 163, 184, 0.18)",
     borderWidth: 1,
     borderRadius: 14,
@@ -1027,6 +1110,60 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   technicalToggleText: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "800" },
+  routeOverviewCard: {
+    backgroundColor: APP_COLORS.cardRaised,
+    borderColor: APP_COLORS.goldBorder,
+    borderRadius: 16,
+    borderWidth: 1,
+    gap: 11,
+    padding: 12
+  },
+  routeOverviewMetrics: {
+    flexDirection: "row",
+    gap: 8
+  },
+  overviewMetric: {
+    backgroundColor: APP_COLORS.cardHighlight,
+    borderRadius: 12,
+    flex: 1,
+    paddingHorizontal: 9,
+    paddingVertical: 8
+  },
+  overviewMetricLabel: {
+    color: APP_COLORS.textMuted,
+    fontSize: 10,
+    fontWeight: "700",
+    marginTop: 2
+  },
+  overviewMetricValue: {
+    color: APP_COLORS.text,
+    fontSize: 14,
+    fontWeight: "900"
+  },
+  qualityPill: {
+    borderRadius: 999,
+    borderWidth: 1,
+    paddingHorizontal: 9,
+    paddingVertical: 5
+  },
+  qualityPillText: {
+    color: APP_COLORS.text,
+    fontSize: 10,
+    fontWeight: "900",
+    textTransform: "uppercase"
+  },
+  qualityGood: {
+    backgroundColor: "rgba(34, 197, 94, 0.18)",
+    borderColor: "rgba(74, 222, 128, 0.55)"
+  },
+  qualityOk: {
+    backgroundColor: "rgba(245, 196, 81, 0.16)",
+    borderColor: "rgba(245, 196, 81, 0.5)"
+  },
+  qualityPoor: {
+    backgroundColor: "rgba(239, 68, 68, 0.18)",
+    borderColor: "rgba(248, 113, 113, 0.55)"
+  },
   operationStatus: {
     alignItems: "center",
     backgroundColor: "rgba(245, 196, 81, 0.1)",

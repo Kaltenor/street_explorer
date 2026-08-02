@@ -3,6 +3,7 @@ import type { SQLiteDatabase } from "expo-sqlite";
 import { EXPLORATION_CELL_SIZE_METERS } from "../services/explorationArea";
 import { MapCoordinate } from "../services/explorationArea";
 import { ActivityMode, RenderedRouteSegment } from "../types/walk";
+import { shouldReplaceCachedZone } from "../services/zoneBoundaryPolicy";
 import { getDatabase } from "./db";
 
 export type CompletionScope = "country" | "city" | "district";
@@ -575,10 +576,17 @@ export async function upsertZones(zones: CachedZone[]) {
         holes: zone.holes,
         outer: zone.geometry
       });
-      const existing = await transaction.getFirstAsync<{ geometry_json: string }>(
-        "SELECT geometry_json FROM zones WHERE id = ?",
+      const existing = await transaction.getFirstAsync<{
+        geometry_json: string;
+        source: string;
+      }>(
+        "SELECT geometry_json, source FROM zones WHERE id = ?",
         zone.id
       );
+
+      if (!shouldReplaceCachedZone(existing?.source ?? null, zone.source)) {
+        continue;
+      }
 
       if (existing && existing.geometry_json !== geometryJson) {
         await transaction.runAsync(

@@ -2,6 +2,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet, Text, View } from "react-native";
 
 import { AppLanguage } from "../i18n";
+import { APP_COLORS } from "../constants/theme";
 import { formatDistance } from "../services/distance";
 import { StreetCompletionSummary } from "../types/street";
 
@@ -103,9 +104,9 @@ function getStatusText(summary: StreetCompletionSummary, language: AppLanguage) 
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(11, 21, 29, 0.96)",
-    borderColor: "rgba(245, 196, 81, 0.32)",
-    borderRadius: 16,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.goldBorder,
+    borderRadius: 18,
     borderWidth: 1,
     gap: 11,
     padding: 14
@@ -122,8 +123,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   metric: {
+    backgroundColor: APP_COLORS.cardRaised,
+    borderRadius: 12,
     flex: 1,
-    minWidth: "42%"
+    minWidth: "42%",
+    padding: 9
   },
   metricLabel: {
     color: "#94a3b8",

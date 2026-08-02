@@ -47,6 +47,7 @@ import {
 import { StatsPanel } from "../components/StatsPanel";
 import { WalkControls } from "../components/WalkControls";
 import { WalkHistoryModal } from "../components/WalkHistoryModal";
+import { APP_COLORS } from "../constants/theme";
 import {
   clearPendingRecordingRepair,
   deleteWalkSession,
@@ -122,6 +123,7 @@ import {
   calculateZoneCompletionStats,
   countExploredCellKeysInsideZone,
   fetchNearbyOsmZonesWithDebug,
+  isZoneCompletionEligible,
   ZoneCompletionStats
 } from "../services/zoneCompletion";
 import { buildPathSegments } from "../services/pathInference";
@@ -214,6 +216,7 @@ const OSM_STREET_CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const AUTO_OBJECTIVE_CHECK_DISTANCE_METERS = 25;
 const AUTO_OBJECTIVE_FETCH_DISTANCE_METERS = 500;
 const AUTO_OBJECTIVE_FETCH_INTERVAL_MS = 10 * 60 * 1000;
+const MAP_OBJECTIVE_SETTLE_MS = 400;
 const OSM_STREET_RETRY_DELAY_MS = 30_000;
 
 function getGpsTimestamp(point: GpsPoint) {
@@ -451,10 +454,13 @@ export function MapScreen({
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
   const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
+  const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
+  const [districtZones, setDistrictZones] = useState<CachedZone[]>([]);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [mapViewportCenter, setMapViewportCenter] = useState<GpsPoint | null>(null);
+  const [playerFocusRequestId, setPlayerFocusRequestId] = useState(0);
   const [zoneFocusRequestId, setZoneFocusRequestId] = useState(0);
   const [recoverableRecording, setRecoverableRecording] = useState<RecoverableRecording | null>(
     null
@@ -495,6 +501,9 @@ export function MapScreen({
   const autoObjectiveFetchCenterRef = useRef<GpsPoint | null>(null);
   const autoObjectiveFetchTimestampRef = useRef(0);
   const lastAutoObjectiveZoneIdRef = useRef<string | null>(null);
+  const districtZoneLoadRequestRef = useRef(0);
+  const mapObjectiveSettleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const objectiveStatsRequestRef = useRef(0);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const recoveryResumeTransitionRef = useRef<{
     activityMode: ActivityMode;
@@ -690,13 +699,27 @@ export function MapScreen({
   const completionReferenceLocation = activeWalk ? currentLocation : mapViewportCenter ?? currentLocation;
 
   const handleVisibleRegionChange = useCallback((region: Region) => {
-    setMapViewportCenter({
-      accuracy: null,
-      latitude: region.latitude,
-      longitude: region.longitude,
-      pointIndex: 0,
-      timestamp: new Date().toISOString()
-    });
+    if (mapObjectiveSettleTimerRef.current) {
+      clearTimeout(mapObjectiveSettleTimerRef.current);
+    }
+
+    mapObjectiveSettleTimerRef.current = setTimeout(() => {
+      mapObjectiveSettleTimerRef.current = null;
+      setMapViewportCenter({
+        accuracy: null,
+        latitude: region.latitude,
+        longitude: region.longitude,
+        pointIndex: 0,
+        timestamp: new Date().toISOString()
+      });
+    }, MAP_OBJECTIVE_SETTLE_MS);
+  }, []);
+
+  useEffect(() => () => {
+    if (mapObjectiveSettleTimerRef.current) {
+      clearTimeout(mapObjectiveSettleTimerRef.current);
+      mapObjectiveSettleTimerRef.current = null;
+    }
   }, []);
 
   const handleMapMedalPress = useCallback((medal: CollectedMedal) => {
@@ -1165,29 +1188,95 @@ export function MapScreen({
     };
   }, [refreshSavedData]);
 
-  useEffect(() => {
-    getSavedCompletionObjective()
-      .then((savedObjective) => {
-        if (!savedObjective) {
-          return;
-        }
+  const reloadSavedCompletionObjective = useCallback(async () => {
+    const savedObjective = await getSavedCompletionObjective();
 
-        setObjective(savedObjective);
-        setSelectedZone(savedObjective.zone);
-      })
-      .catch((error) => console.warn("Failed to load saved completion objective", error));
-  }, []);
-
-  useEffect(() => {
-    if (!objective) {
-      setObjectiveStats(null);
+    if (!savedObjective) {
       return;
     }
 
+    setObjective(savedObjective);
+    setSelectedZone(savedObjective.zone);
+  }, []);
+
+  const loadVisibleDistrictZones = useCallback(async (referenceLocation: GpsPoint) => {
+    const requestId = districtZoneLoadRequestRef.current + 1;
+    districtZoneLoadRequestRef.current = requestId;
+    const [cities, districts] = await Promise.all([
+      getCachedZones("city"),
+      getCachedZones("district")
+    ]);
+    const currentCity = findContainingZone(referenceLocation, cities);
+    const nextDistrictZones = currentCity
+      ? districts.filter(
+          (zone) =>
+            isZoneCompletionEligible(zone) &&
+            doesDistrictBelongToCity(zone, currentCity)
+        )
+      : [];
+
+    if (districtZoneLoadRequestRef.current === requestId) {
+      setDistrictZones(nextDistrictZones);
+    }
+
+    return nextDistrictZones;
+  }, []);
+
+  const handleCompletionZonesUpdated = useCallback(async () => {
+    await reloadSavedCompletionObjective();
+
+    if (completionReferenceLocation) {
+      await loadVisibleDistrictZones(completionReferenceLocation);
+    }
+  }, [
+    completionReferenceLocation,
+    loadVisibleDistrictZones,
+    reloadSavedCompletionObjective
+  ]);
+
+  useEffect(() => {
+    reloadSavedCompletionObjective()
+      .catch((error) => console.warn("Failed to load saved completion objective", error));
+  }, [reloadSavedCompletionObjective]);
+
+  useEffect(() => {
+    const requestId = objectiveStatsRequestRef.current + 1;
+    objectiveStatsRequestRef.current = requestId;
+
+    if (!objective) {
+      setObjectiveStats(null);
+      setIsObjectiveStatsCalculating(false);
+      return;
+    }
+
+    const abortController = new AbortController();
+
+    setObjectiveStats(null);
+    setIsObjectiveStatsCalculating(true);
     getExploredCellRecords(objective.mode)
-      .then((cells) => calculateZoneCompletionStats(objective.zone, cells))
-      .then(setObjectiveStats)
-      .catch((error) => console.warn("Failed to calculate objective completion", error));
+      .then((cells) =>
+        calculateZoneCompletionStats(objective.zone, cells, abortController.signal)
+      )
+      .then((nextStats) => {
+        if (
+          !abortController.signal.aborted &&
+          objectiveStatsRequestRef.current === requestId
+        ) {
+          setObjectiveStats(nextStats);
+        }
+      })
+      .catch((error) => {
+        if (!abortController.signal.aborted) {
+          console.warn("Failed to calculate objective completion", error);
+        }
+      })
+      .finally(() => {
+        if (objectiveStatsRequestRef.current === requestId) {
+          setIsObjectiveStatsCalculating(false);
+        }
+      });
+
+    return () => abortController.abort();
   }, [loopFillCellIds, objective, walks]);
 
   const shouldFetchAutoObjectiveZones = useCallback((location: GpsPoint) => {
@@ -1226,17 +1315,30 @@ export function MapScreen({
     autoObjectiveCheckCenterRef.current = completionReferenceLocation;
 
     const updateObjectiveForReferenceLocation = async () => {
+      const visibleDistricts = await loadVisibleDistrictZones(
+        completionReferenceLocation
+      );
       let zones = await getCachedZones(objective.zone.type);
       let containingZone = findContainingZone(completionReferenceLocation, zones);
 
-      if (!containingZone && shouldFetchAutoObjectiveZones(completionReferenceLocation)) {
+      if (
+        (
+          !containingZone ||
+          !isZoneCompletionEligible(objective.zone) ||
+          visibleDistricts.length === 0
+        ) &&
+        shouldFetchAutoObjectiveZones(completionReferenceLocation)
+      ) {
         autoObjectiveFetchCenterRef.current = completionReferenceLocation;
         autoObjectiveFetchTimestampRef.current = Date.now();
 
         try {
           const result = await fetchNearbyOsmZonesWithDebug(completionReferenceLocation);
           await upsertZones(result.zones);
-          zones = result.zones.filter((zone) => zone.type === objective.zone.type);
+          await loadVisibleDistrictZones(
+            completionReferenceLocation
+          );
+          zones = await getCachedZones(objective.zone.type);
           containingZone = findContainingZone(completionReferenceLocation, zones);
         } catch (error) {
           console.warn("Failed to refresh zones for auto objective", error);
@@ -1245,10 +1347,27 @@ export function MapScreen({
 
       if (
         !isMounted ||
-        !containingZone ||
-        containingZone.id === objective.zone.id ||
-        containingZone.id === lastAutoObjectiveZoneIdRef.current
+        !containingZone
       ) {
+        return;
+      }
+
+      if (containingZone.id === objective.zone.id) {
+        if (
+          containingZone.fetchedAt !== objective.zone.fetchedAt ||
+          containingZone.source !== objective.zone.source
+        ) {
+          setObjective((currentObjective) =>
+            currentObjective?.zone.id === containingZone?.id
+              ? { ...currentObjective, zone: containingZone }
+              : currentObjective
+          );
+        }
+        setSelectedZone(containingZone);
+        return;
+      }
+
+      if (containingZone.id === lastAutoObjectiveZoneIdRef.current) {
         return;
       }
 
@@ -1259,6 +1378,7 @@ export function MapScreen({
       };
 
       setObjective(nextObjective);
+      setObjectiveHudVisible(true);
       setSelectedZone(containingZone);
       await saveCompletionObjective({
         mode: nextObjective.mode,
@@ -1272,7 +1392,12 @@ export function MapScreen({
     return () => {
       isMounted = false;
     };
-  }, [completionReferenceLocation, objective, shouldFetchAutoObjectiveZones]);
+  }, [
+    completionReferenceLocation,
+    loadVisibleDistrictZones,
+    objective,
+    shouldFetchAutoObjectiveZones
+  ]);
 
   useEffect(() => {
     if (activeWalk || objective || !mapViewportCenter) {
@@ -1293,28 +1418,48 @@ export function MapScreen({
     autoObjectiveCheckCenterRef.current = mapViewportCenter;
 
     const updateViewedDistrict = async () => {
+      const visibleDistricts = await loadVisibleDistrictZones(mapViewportCenter);
       let zones = await getCachedZones("district");
       let containingZone = findContainingZone(mapViewportCenter, zones);
 
-      if (!containingZone && shouldFetchAutoObjectiveZones(mapViewportCenter)) {
+      if (
+        (
+          !containingZone ||
+          !isZoneCompletionEligible(containingZone) ||
+          visibleDistricts.length === 0
+        ) &&
+        shouldFetchAutoObjectiveZones(mapViewportCenter)
+      ) {
         autoObjectiveFetchCenterRef.current = mapViewportCenter;
         autoObjectiveFetchTimestampRef.current = Date.now();
 
         try {
           const result = await fetchNearbyOsmZonesWithDebug(mapViewportCenter);
           await upsertZones(result.zones);
-          zones = result.zones.filter((zone) => zone.type === "district");
+          await loadVisibleDistrictZones(mapViewportCenter);
+          zones = await getCachedZones("district");
           containingZone = findContainingZone(mapViewportCenter, zones);
         } catch (error) {
           console.warn("Failed to refresh zones for viewed district", error);
         }
       }
 
-      if (!isMounted || !containingZone || containingZone.id === selectedZone?.id) {
+      if (!isMounted || !containingZone) {
         return;
       }
 
+      const nextObjective: CompletionObjective = {
+        mode: "walk",
+        zone: containingZone
+      };
+
+      setObjective(nextObjective);
+      setObjectiveHudVisible(true);
       setSelectedZone(containingZone);
+      await saveCompletionObjective({
+        mode: nextObjective.mode,
+        zoneId: containingZone.id
+      });
     };
 
     updateViewedDistrict()
@@ -1323,7 +1468,13 @@ export function MapScreen({
     return () => {
       isMounted = false;
     };
-  }, [activeWalk, mapViewportCenter, objective, selectedZone?.id, shouldFetchAutoObjectiveZones]);
+  }, [
+    activeWalk,
+    loadVisibleDistrictZones,
+    mapViewportCenter,
+    objective,
+    shouldFetchAutoObjectiveZones
+  ]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;
@@ -1888,6 +2039,7 @@ export function MapScreen({
       activeWalkRef.current = nextWalk;
       setActiveWalk(nextWalk);
       setBackgroundTrackingStatus("starting");
+      setPlayerFocusRequestId((requestId) => requestId + 1);
 
       refreshCurrentLocation({ allowLastKnown: false }).catch((error) =>
         console.warn("Failed to refresh starting GPS fix", error)
@@ -2688,6 +2840,7 @@ export function MapScreen({
       setActiveWalk(resumedWalk);
       setBackgroundTrackingMessage("Recovered unfinished recording.");
       setBackgroundTrackingStatus("starting");
+      setPlayerFocusRequestId((requestId) => requestId + 1);
 
       refreshCurrentLocation({ allowLastKnown: false }).catch((error) =>
         console.warn("Failed to refresh resumed GPS fix", error)
@@ -3301,10 +3454,12 @@ export function MapScreen({
         medals={medalProgress?.medals ?? EMPTY_MEDALS}
         onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
+        districtZones={districtZones}
         highlightedSessionId={selectedSessionId}
         layers={layers}
         onMapReady={handleMapReady}
         onVisibleRegionChange={handleVisibleRegionChange}
+        playerFocusRequestId={playerFocusRequestId}
         selectedZone={selectedZone}
         savedExplorationCellIds={savedExplorationCellIds}
         todayNewCellIds={todayNewCellIds}
@@ -3342,6 +3497,7 @@ export function MapScreen({
           </View>
           {objective && objectiveHudVisible ? (
             <ObjectiveHud
+              isCalculating={isObjectiveStatsCalculating}
               objective={objective}
               language={language}
               stats={objectiveStats}
@@ -3430,6 +3586,9 @@ export function MapScreen({
             startedAt={activeWalk?.startedAt ?? null}
             gpsAccuracyMeters={currentLocation?.accuracy}
             gpsStatus={activeWalk?.lastRejectedPointReason}
+            locationPermission={permissionState}
+            locationResolved={initialLocationResolved}
+            latestFixTimestamp={currentLocation?.timestamp ?? null}
             latestPointTimestamp={activeWalk?.points.at(-1)?.timestamp ?? null}
             pointCount={activeWalk?.acceptedGpsPointCount ?? 0}
             rejectedGpsPointCount={activeWalk?.rejectedGpsPointCount ?? 0}
@@ -3535,6 +3694,7 @@ export function MapScreen({
           }).catch((error) => console.warn("Failed to save completion objective", error));
           setCompletionVisible(false);
         }}
+        onZonesUpdated={handleCompletionZonesUpdated}
         visible={completionVisible}
       /> : null}
       {medalsVisible ? <MedalCollectionModal
@@ -3642,11 +3802,13 @@ function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
 }
 
 function ObjectiveHud({
+  isCalculating,
   objective,
   language,
   stats,
   todayCellCount
 }: {
+  isCalculating: boolean;
   objective: CompletionObjective;
   language: AppLanguage;
   stats: ZoneCompletionStats | null;
@@ -3669,16 +3831,22 @@ function ObjectiveHud({
           </Text>
           <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
         </View>
-        <Text style={styles.objectivePercent}>{formatObjectiveCompletion(stats)}</Text>
+        <Text style={styles.objectivePercent}>
+          {isCalculating
+            ? language === "fr" ? "Calcul…" : "Calculating…"
+            : formatObjectiveCompletion(stats)}
+        </Text>
       </View>
       <View style={styles.objectiveProgressTrack}>
         <View style={[styles.objectiveProgressFill, { width: (objectiveProgress + "%") as DimensionValue }]} />
       </View>
       <View style={styles.objectiveFooter}>
         <Text style={styles.objectiveMeta}>
-          {remainingCells === null
-            ? String(stats?.exploredCells ?? 0) + (language === "fr" ? " cellules explor\u00e9es" : " cells explored")
-            : String(remainingCells) + (language === "fr" ? " cellules restantes" : " cells remaining")}
+          {isCalculating
+            ? language === "fr" ? "Mise \u00e0 jour du quartier..." : "Updating district..."
+            : remainingCells === null
+              ? String(stats?.exploredCells ?? 0) + (language === "fr" ? " cellules explor\u00e9es" : " cells explored")
+              : String(remainingCells) + (language === "fr" ? " cellules restantes" : " cells remaining")}
         </Text>
         <Text style={styles.objectiveToday}>+{todayCellCount} {language === "fr" ? "aujourd’hui" : "today"}</Text>
       </View>
@@ -4019,6 +4187,20 @@ function RecordingSummaryModal({
             </TouchableOpacity>
           </View>
 
+          <View style={[styles.summaryQualityPanel, getSummaryQualityStyle(summary.quality.label)]}>
+            <Ionicons
+              name={summary.quality.label === "Good" ? "checkmark-circle" : "alert-circle"}
+              size={22}
+              color={summary.quality.label === "Good" ? "#4ade80" : "#f5c451"}
+            />
+            <View style={styles.summaryQualityCopy}>
+              <Text style={styles.summaryQualityTitle}>
+                {isFrench ? "Qualité du parcours" : "Route quality"} · {summary.quality.score}/100
+              </Text>
+              <Text style={styles.summaryQualityReason}>{summary.quality.reason}</Text>
+            </View>
+          </View>
+
           <View style={styles.summaryGrid}>
             <SummaryMetric label={isFrench ? "Distance" : "Distance"} value={formatDistance(summary.distanceMeters)} />
             <SummaryMetric label={isFrench ? "Dur\u00e9e" : "Duration"} value={formatDuration(summary.durationSeconds)} />
@@ -4076,6 +4258,20 @@ function SummaryMetric({ label, value }: { label: string; value: string }) {
       <Text style={styles.summaryMetricLabel}>{label}</Text>
     </View>
   );
+}
+
+function getSummaryQualityStyle(
+  label: ReturnType<typeof calculateRecordingQuality>["label"]
+) {
+  if (label === "Good") {
+    return styles.summaryQualityGood;
+  }
+
+  if (label === "Poor") {
+    return styles.summaryQualityPoor;
+  }
+
+  return styles.summaryQualityOk;
 }
 
 function getObjectiveProgressDelta(
@@ -4780,7 +4976,10 @@ function waitForMapRenderCommit() {
   });
 }
 
-function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
+function isPointInsideZone(
+  point: Pick<GpsPoint, "latitude" | "longitude">,
+  zone: CachedZone
+) {
   const coordinate = {
     latitude: point.latitude,
     longitude: point.longitude
@@ -4791,10 +4990,19 @@ function isPointInsideZone(point: GpsPoint, zone: CachedZone) {
   return insideOuter && !insideHole;
 }
 
-function findContainingZone(point: GpsPoint, zones: CachedZone[]) {
+function findContainingZone(
+  point: Pick<GpsPoint, "latitude" | "longitude">,
+  zones: CachedZone[]
+) {
   return zones.find((zone) =>
     zone.source === "openstreetmap" && isPointInsideZone(point, zone)
   ) ?? null;
+}
+
+function doesDistrictBelongToCity(district: CachedZone, city: CachedZone) {
+  return district.parentZoneId === city.id || district.geometry.some((ring) =>
+    ring.some((point) => isPointInsideZone(point, city))
+  );
 }
 
 function pointInPolygon(
@@ -4913,15 +5121,15 @@ const styles = StyleSheet.create({
   dashboardToggle: {
     alignItems: "center",
     alignSelf: "flex-start",
-    backgroundColor: "rgba(2, 6, 10, 0.86)",
-    borderColor: "rgba(248, 250, 252, 0.18)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.cardRaised,
+    borderColor: APP_COLORS.borderStrong,
+    borderRadius: 16,
     borderWidth: 1,
     flexDirection: "row",
     gap: 6,
-    marginTop: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8
+    marginTop: 2,
+    paddingHorizontal: 12,
+    paddingVertical: 11
   },
   dashboardToggleText: {
     color: "#f8fafc",
@@ -4944,7 +5152,7 @@ const styles = StyleSheet.create({
     paddingBottom: 28
   },
   detailsScreen: {
-    backgroundColor: "#071018",
+    backgroundColor: APP_COLORS.background,
     flex: 1
   },
   disabledPathDisplayButton: {
@@ -4992,12 +5200,12 @@ const styles = StyleSheet.create({
     fontWeight: "800"
   },
   gamePanel: {
-    backgroundColor: "rgba(11, 21, 29, 0.96)",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 18,
     borderWidth: 1,
     gap: 12,
-    padding: 12
+    padding: 14
   },
   gamePanelTitle: {
     color: "#f8fafc",
@@ -5450,6 +5658,40 @@ const styles = StyleSheet.create({
   summaryMetricValue: {
     color: "#f8fafc",
     fontSize: 15,
+    fontWeight: "900"
+  },
+  summaryQualityPanel: {
+    alignItems: "flex-start",
+    borderRadius: 14,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 9,
+    padding: 11
+  },
+  summaryQualityCopy: {
+    flex: 1
+  },
+  summaryQualityGood: {
+    backgroundColor: "rgba(34, 197, 94, 0.14)",
+    borderColor: "rgba(74, 222, 128, 0.46)"
+  },
+  summaryQualityOk: {
+    backgroundColor: "rgba(245, 196, 81, 0.12)",
+    borderColor: "rgba(245, 196, 81, 0.4)"
+  },
+  summaryQualityPoor: {
+    backgroundColor: "rgba(239, 68, 68, 0.14)",
+    borderColor: "rgba(248, 113, 113, 0.46)"
+  },
+  summaryQualityReason: {
+    color: "#cbd5e1",
+    fontSize: 11,
+    lineHeight: 16,
+    marginTop: 2
+  },
+  summaryQualityTitle: {
+    color: "#f8fafc",
+    fontSize: 13,
     fontWeight: "900"
   },
   summaryNote: {

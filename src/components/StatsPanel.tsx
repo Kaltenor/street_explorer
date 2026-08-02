@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
+import { APP_COLORS } from "../constants/theme";
 import { formatDistance, formatDuration } from "../services/distance";
 import { ActivityMode, LifetimeStats } from "../types/walk";
 
@@ -68,12 +69,12 @@ function formatNumber(value: number) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(11, 21, 29, 0.96)",
-    borderColor: "rgba(148, 163, 184, 0.24)",
-    borderRadius: 14,
+    backgroundColor: APP_COLORS.card,
+    borderColor: APP_COLORS.border,
+    borderRadius: 18,
     borderWidth: 1,
     gap: 10,
-    padding: 12
+    padding: 14
   },
   caption: {
     color: "#94a3b8",
@@ -99,8 +100,8 @@ const styles = StyleSheet.create({
     gap: 12
   },
   value: {
-    color: "#f8fafc",
-    fontSize: 16,
-    fontWeight: "700"
+    color: APP_COLORS.text,
+    fontSize: 18,
+    fontWeight: "900"
   }
 });

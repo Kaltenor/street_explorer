@@ -15,6 +15,10 @@ import {
   saveCachedZoneTotal
 } from "../database/completionRepository";
 import { LOOP_FILL_CONFIG } from "./loopFill";
+import {
+  buildBoundaryQuery,
+  EXACT_ZONE_BOUNDARY_SOURCE
+} from "./zoneBoundaryPolicy";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
@@ -99,9 +103,10 @@ export async function fetchNearbyOsmZonesWithDebug(
   const data = (await response.json()) as OverpassBoundaryResponse;
   const fetchedAt = new Date().toISOString();
   const relationElements = (data.elements ?? []).filter((element) => element.type === "relation");
-  const zones = relationElements
+  const mappedZones = relationElements
     .map((element) => mapRelationToZone(element, fetchedAt))
     .filter((zone): zone is CachedZone => Boolean(zone));
+  const zones = assignDistrictParentZones(mappedZones);
 
   return {
     rawElementCount: data.elements?.length ?? 0,
@@ -207,7 +212,29 @@ export function isBoundaryRefreshStale(
 }
 
 export function isZoneCompletionEligible(zone: CachedZone) {
-  return zone.source === "openstreetmap";
+  return zone.source === EXACT_ZONE_BOUNDARY_SOURCE;
+}
+
+function assignDistrictParentZones(zones: CachedZone[]) {
+  const cities = zones.filter(
+    (zone) => zone.type === "city" && isZoneCompletionEligible(zone)
+  );
+
+  return zones.map((zone) => {
+    if (zone.type !== "district") {
+      return zone;
+    }
+
+    const parentCity = cities.find((city) =>
+      zone.geometry.some((ring) =>
+        ring.some((point) => isPointInsideZone(point, city))
+      )
+    );
+
+    return parentCity
+      ? { ...zone, parentZoneId: parentCity.id }
+      : zone;
+  });
 }
 
 export function getZoneGeometryFingerprint(zone: CachedZone) {
@@ -280,23 +307,6 @@ export function countExploredCellKeysInsideZone(zone: CachedZone, cellKeys: stri
 
 export function getZoneBounds(zone: CachedZone) {
   return getGeometryBounds(zone.geometry);
-}
-
-function buildBoundaryQuery(latitude: number, longitude: number) {
-  return `
-    [out:json][timeout:35];
-    is_in(${latitude},${longitude})->.containingAreas;
-    area.containingAreas
-      ["boundary"="administrative"]
-      ["admin_level"~"^(2|8|9|10)$"]->.matchedContainingAreas;
-    (
-      rel(pivot.matchedContainingAreas);
-      rel(around:3500,${latitude},${longitude})
-        ["boundary"="administrative"]
-        ["admin_level"~"^(8|9|10)$"];
-    );
-    out tags geom;
-  `;
 }
 
 function mapRelationToZone(

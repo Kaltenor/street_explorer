@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.11.2",
+  "version": "0.13.1",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -14,6 +14,8 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test:geometry": "node scripts/test-exploration-geometry.js",
+    "test:ui": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-ui-polish.mjs",
+    "test:zones": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-boundary-recovery.mjs",
     "build:ios:dev": "eas build --platform ios --profile development",
     "build:ios:sim": "eas build --platform ios --profile development-simulator",
     "test:player": "node scripts/test-player-marker.js"

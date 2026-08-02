@@ -1,5 +1,54 @@
 # Changelog
 
+## v0.13.1
+
+Fixed:
+
+- Start and Resume now restore the normal walking-scale map region while centering on the persistent player, instead of preserving a city-wide zoom that made the unchanged sprite appear extremely small.
+- Added a regression that requires player-focus requests to use the canonical default walking deltas.
+- Synchronized the app version to 0.13.1, iOS build 99, and Android version code 99.
+
+## v0.13.0
+
+Added:
+
+- The map now keeps every exact district boundary from the current city visible, using subdued outlines for neighboring districts and a stronger gold outline for the active objective.
+- Boundary refreshes fetch and cache every district relation inside the containing OSM city, then persist each district-to-city association for reliable map grouping.
+- Starting or resuming a recording explicitly recenters the map on the persistent player marker and re-enables route following.
+
+Changed:
+
+- Idle map movement waits 400ms after the camera settles before switching and persisting the viewed district objective.
+- Objective percentage calculations now cancel superseded scans, hide stale values, and show a calculating state until only the newest district result is ready.
+- Added regressions for whole-city district retrieval, persistent boundary rendering, debounced race-safe objective switching, and Start-time player recentering.
+- Synchronized the app version to 0.13.0, iOS build 98, and Android version code 98.
+
+## v0.12.1
+
+Fixed:
+
+- Local OSM city and district requests now include complete relation-member geometry, preventing valid multipolygons such as Lyon 3e Arrondissement from being mislabeled as display-only boundaries.
+- A transient incomplete boundary response can no longer replace an exact cached polygon or invalidate its denominator cache.
+- Saved completion objectives are reloaded after manual or automatic boundary repopulation, including after the zone cache was cleared before an app restart.
+- Added focused regressions for boundary output mode, exact-cache downgrade protection, and objective recovery wiring.
+- Synchronized the app version to 0.12.1, iOS build 97, and Android version code 97.
+
+## v0.12.0
+
+Added:
+
+- UI Polish V2 semantic walking colors: green for the active route, gold for the selected saved route, a restrained cool palette for other saved routes, cyan for inferred street links, red for explored ground, and orange for today's exploration.
+- An always-visible, accessible GPS badge with Acquiring, Good, Weak/Stale, Denied, and Unavailable states derived from permission, fix availability, fix age, and accuracy.
+- Focused UI regressions for all GPS presentation states, shared path semantics, and summary-first report wiring.
+
+Changed:
+
+- Details, History, Completion, Street Completion, and post-walk content now use consistent navy dark-card levels with clearer hierarchy and contrast.
+- History rows carry their saved-route color, recording details lead with route quality and headline route evidence, and deeper bridge, loop, and diagnostic evidence remains behind Technical details.
+- The post-walk report now leads with a route-quality score and reason before progress details and naming actions.
+- A Good GPS fix now requires 25m accuracy or better. The visible state becomes Stale after 12 seconds during recording or 20 seconds while idle; the recording acceptance limit remains the existing safety-focused 30m.
+- Synchronized the app version to 0.12.0, iOS build 96, and Android version code 96.
+
 ## v0.11.2
 
 Changed:

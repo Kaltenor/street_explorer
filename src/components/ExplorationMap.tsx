@@ -9,6 +9,7 @@ import {
   MAP_CONFIG,
   MODE_LOCATION_CONFIG
 } from "../constants/config";
+import { WALKING_COLORS } from "../constants/theme";
 import { CachedZone } from "../database/completionRepository";
 import {
   buildExplorationPolygonOutlineSegments,
@@ -50,23 +51,12 @@ type ExplorationMapProps = {
   savedExplorationCellIds: string[];
   onMapReady?: () => void;
   onVisibleRegionChange?: (region: Region) => void;
+  districtZones: CachedZone[];
+  playerFocusRequestId: number;
   selectedZone: CachedZone | null;
   todayNewCellIds: string[];
   zoneFocusRequestId: number;
 };
-
-const PATH_COLORS = [
-  "#2563eb",
-  "#16a34a",
-  "#f97316",
-  "#7c3aed",
-  "#0891b2",
-  "#db2777",
-  "#65a30d",
-  "#9333ea",
-  "#ea580c",
-  "#0d9488"
-];
 
 type AppleMapsPointOfInterestCategory =
   | "airport"
@@ -142,6 +132,8 @@ export const ExplorationMap = memo(function ExplorationMap({
   savedExplorationCellIds,
   onMapReady,
   onVisibleRegionChange,
+  districtZones,
+  playerFocusRequestId,
   selectedZone,
   todayNewCellIds,
   zoneFocusRequestId
@@ -150,6 +142,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   const mapRef = useRef<MapView | null>(null);
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
+  const handledPlayerFocusRequestId = useRef(playerFocusRequestId);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
   const persistentPlayerLocationRef = useRef<GpsPoint | null>(null);
   const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
@@ -189,6 +182,10 @@ export const ExplorationMap = memo(function ExplorationMap({
   const [visibleRegion, setVisibleRegion] = useState(region);
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
+  const unselectedDistrictZones = useMemo(
+    () => districtZones.filter((zone) => zone.id !== selectedZone?.id),
+    [districtZones, selectedZone?.id]
+  );
   // Preserve every finalized street corner so rendered routes never cut through buildings.
   const pathSimplificationToleranceMeters = 0;
   const shouldShowCompletedArea = layers.showExploredCells;
@@ -329,6 +326,29 @@ export const ExplorationMap = memo(function ExplorationMap({
   ]);
 
   useEffect(() => {
+    if (
+      !isNativeMapReady ||
+      !playerLocation ||
+      playerFocusRequestId === handledPlayerFocusRequestId.current
+    ) {
+      return;
+    }
+
+    handledPlayerFocusRequestId.current = playerFocusRequestId;
+    hasUserMovedMapRef.current = false;
+    setIsAutoFollowEnabled(true);
+    mapRef.current?.animateToRegion(
+      {
+        latitude: playerLocation.latitude,
+        longitude: playerLocation.longitude,
+        latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
+        longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
+      },
+      450
+    );
+  }, [isNativeMapReady, playerFocusRequestId, playerLocation]);
+
+  useEffect(() => {
     if (!highlightedSessionId) {
       return;
     }
@@ -439,22 +459,36 @@ export const ExplorationMap = memo(function ExplorationMap({
           todayPolygons={todayNewPolygons}
         />
 
-        {selectedZone && renderLevel !== "far"
+        {unselectedDistrictZones.flatMap((zone) =>
+          zone.geometry.map((ring, index) => (
+            <Polygon
+              coordinates={ring}
+              fillColor="rgba(148, 163, 184, 0.025)"
+              key={`district-${zone.id}-${index}`}
+              strokeColor="rgba(148, 163, 184, 0.5)"
+              strokeWidth={1}
+            />
+          ))
+        )}
+
+        {selectedZone
           ? selectedZone.geometry.map((ring, index) => (
               <Polygon
                 coordinates={ring}
-                fillColor="rgba(37, 99, 235, 0.06)"
+                fillColor="rgba(245, 196, 81, 0.09)"
                 key={`${selectedZone.id}-${index}`}
-                strokeColor="rgba(37, 99, 235, 0.62)"
-                strokeWidth={2}
+                strokeColor={WALKING_COLORS.selectedRoute}
+                strokeWidth={3}
               />
             ))
           : null}
 
         {shouldShowRoutes ? pathWalks.map((walk) => {
-          const color = getPathColor(walk.id);
           const isHighlighted = highlightedSessionId === walk.id;
           const isDimmed = highlightedSessionId !== null && !isHighlighted;
+          const color = isHighlighted
+            ? WALKING_COLORS.selectedRoute
+            : getPathColor(walk.id);
           const firstPoint = walk.points[0];
           const lastPoint = walk.points.at(-1);
 
@@ -493,7 +527,7 @@ export const ExplorationMap = memo(function ExplorationMap({
           <>
             <PathSegmentLines
               activityMode={activeMode}
-              color="#ef4444"
+              color={WALKING_COLORS.activeRoute}
               isDimmed={false}
               isHighlighted
               points={activePoints}
@@ -1189,10 +1223,10 @@ function getSegmentStrokeColor({
   isInferred: boolean;
 }) {
   if (isInferred) {
-    return "rgba(14, 116, 144, 0.75)";
+    return WALKING_COLORS.inferredRoute;
   }
 
-  return isDimmed ? "rgba(100, 116, 139, 0.35)" : color;
+  return isDimmed ? WALKING_COLORS.dimmedRoute : color;
 }
 
 const STARTUP_CENTER_MAX_AGE_MS = 30_000;
@@ -1368,7 +1402,8 @@ function pointToCoordinate(point: GpsPoint) {
 }
 
 function getPathColor(sessionId: number) {
-  return PATH_COLORS[sessionId % PATH_COLORS.length] ?? "#2563eb";
+  return WALKING_COLORS.savedRoutes[sessionId % WALKING_COLORS.savedRoutes.length]
+    ?? WALKING_COLORS.savedRoutes[0];
 }
 
 function formatMarkerDate(value: string) {
