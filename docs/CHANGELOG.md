@@ -1,5 +1,61 @@
 # Changelog
 
+## v0.14.4
+
+Fixed:
+
+- The app-owned player overlay is now hidden until the launch presentation is dismissed, preventing it from appearing over the title artwork and Start prompt while the map initializes underneath.
+- Added a regression requiring launch dismissal to control player visibility.
+- Synchronized the app version to 0.14.4, iOS build 104, and Android version code 104.
+
+## v0.14.3
+
+Fixed:
+
+- Removed the player sprite from MapKit's custom-annotation lifecycle, which could discard the icon after background/idle movement or a short recording even while GPS stayed Good.
+- The 64×64-point sprite is now an app-owned screen overlay: it remains pinned to map center during automatic following and uses native coordinate projection after an intentional map pan.
+- Idle GPS fixes now drive the same auto-follow camera path as accepted recording points until the user moves the map, so travelling before starting a walk no longer leaves the player outside an apparently followed viewport.
+- Enabled iOS's native user-location indicator underneath the sprite as an independent safety fallback if coordinate projection is briefly unavailable while MapKit rebuilds.
+- Updated player regressions to reject the crash-prone animated custom annotation and require overlay projection, center pinning, native fallback, and explicit 64×64-point rendering.
+- Synchronized the app version to 0.14.3, iOS build 103, and Android version code 103.
+
+## v0.14.2
+
+Fixed:
+
+- Restored the player to an explicit 64×64-point on-screen size; the previous 64-pixel native image rendered at roughly one third of that size on a 3× Retina iPhone.
+- Replaced the twelve simultaneous animated MapKit annotations introduced in 0.14.1 with one persistent marker, removing the likely source of the reported short-walk crash and continued marker disappearance.
+- Directional facing remains, coordinate movement remains smoothly animated, and the marker uses one simple React Native image child instead of native-image replacement or twelve synchronized coordinates.
+- Temporarily disabled 170ms walking-frame swaps to prioritize marker visibility and device stability.
+- Synchronized the app version to 0.14.2, iOS build 102, and Android version code 102.
+
+## v0.14.1
+
+Fixed:
+
+- The animated player can no longer lose its MapKit bitmap shortly after a Stop/Start recording transition while GPS, distance, and steps continue normally.
+- All twelve directional walking frames now remain mounted as stable native annotations; animation changes only their visibility instead of replacing the annotation image every 170ms.
+- Idle and stale states use the already-loaded middle walking frame, preserving the player through recording teardown without an asynchronous image request.
+- Expanded the player regression to reject runtime native-image replacement and require stable preloaded-frame visibility switching.
+- Synchronized the app version to 0.14.1, iOS build 101, and Android version code 101.
+
+## v0.14.0
+
+Added:
+
+- Long-pressing the map now gives selection haptic feedback and intentionally selects the exact district or city at that coordinate.
+- When a held coordinate belongs to both scopes, a compact map card offers separate District and City buttons without requiring a confirmation step.
+- Uncached held areas perform one boundary fetch, while unavailable exact geometry produces visible feedback and leaves the existing objective intact.
+
+Changed:
+
+- Ordinary map panning no longer changes the completion objective, selected boundary, or persisted city/district.
+- With no saved objective, the real GPS position still preloads the current city's district outlines without selecting or persisting an area.
+- Long-press boundary lookups use latest-request protection, percentage scans retain their existing cancellation protection, and objective saves are serialized so rapid selections cannot persist out of order.
+- Selecting a city replaces the visible district group with that city's boundaries; selecting a district retains the full containing-city outline context.
+- Added regressions for the long-press gesture, optional haptics, scope picker, removal of pan-driven switching, and latest-only lookup behavior.
+- Synchronized the app version to 0.14.0, iOS build 100, and Android version code 100.
+
 ## v0.13.1
 
 Fixed:

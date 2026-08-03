@@ -1443,24 +1443,30 @@ assert(
   activeRouteRenderSource.includes("segments={activeRouteChunks}") &&
     !activeRouteRenderSource.includes("shouldShowRoutes") &&
     !activeRouteRenderSource.includes('renderLevel === "close"') &&
-    explorationMapSource.includes("{playerLocation ? (") &&
+    explorationMapSource.includes("{playerVisible && playerLocation && playerScreenPoint ? (") &&
+    mapScreenSource.includes("playerVisible={isLaunchDismissed}") &&
     explorationMapSource.includes(
       "activeRouteEndPoint ?? currentLocation"
     ) &&
     explorationMapSource.includes(
-      "const followTarget = activeRouteEndPoint"
+      "const followTarget = activeRouteEndPoint ?? playerLocation"
     ) &&
     explorationMapSource.includes("persistentPlayerLocationRef") &&
     explorationMapSource.includes("shouldAdoptPlayerLocation") &&
-    explorationMapSource.includes("Marker.Animated") &&
-    explorationMapSource.includes("animatedCoordinate.timing") &&
-    explorationMapSource.includes("tracksViewChanges={false}") &&
+    explorationMapSource.includes("PlayerLocationOverlay") &&
+    explorationMapSource.includes("pointForCoordinate") &&
+    explorationMapSource.includes("mapViewportSize.width / 2") &&
+    explorationMapSource.includes("showsUserLocation") &&
     explorationMapSource.includes("PLAYER_MOTION_FRESHNESS_MS") &&
     explorationMapSource.includes("isSubstantiallyMoreAccurate") &&
     explorationMapSource.includes("PLAYER_SPRITES") &&
-    explorationMapSource.includes("persistentSpriteSourceRef") &&
-    explorationMapSource.includes('identifier="street-explorer-player"'),
-  "the complete live route and native animated player survive recovery, recording transitions, stale GPS, and MapKit redraws"
+    explorationMapSource.includes("source={spriteSource}") &&
+    explorationMapSource.includes("style={styles.playerSpriteImage}") &&
+    !explorationMapSource.includes("Marker.Animated") &&
+    !explorationMapSource.includes("new AnimatedRegion") &&
+    !explorationMapSource.includes("PLAYER_NATIVE_FRAMES") &&
+    !explorationMapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS"),
+  "the complete live route and app-owned player overlay survive recovery, recording transitions, stale GPS, and MapKit redraws"
 );
 assert(
   foregroundResumeSyncSource.includes("const points = persistedPoints") &&

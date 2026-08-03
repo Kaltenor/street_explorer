@@ -41,12 +41,21 @@ const zoneCompletionSource = readFileSync(
 assert.match(completionSource, /await onZonesUpdated\(\)/);
 assert.match(mapSource, /const reloadSavedCompletionObjective = useCallback/);
 assert.match(mapSource, /onZonesUpdated=\{handleCompletionZonesUpdated\}/);
-assert.match(mapSource, /!isZoneCompletionEligible\(containingZone\)/);
-assert.match(mapSource, /MAP_OBJECTIVE_SETTLE_MS = 400/);
 assert.match(mapSource, /objectiveStatsRequestRef\.current === requestId/);
 assert.match(mapSource, /doesDistrictBelongToCity\(zone, currentCity\)/);
 assert.match(mapSource, /setPlayerFocusRequestId\(\(requestId\) => requestId \+ 1\)/);
+assert.match(mapSource, /const handleMapLongPress = useCallback/);
+assert.match(mapSource, /await Haptics\.selectionAsync\(\)/);
+assert.match(mapSource, /mapZoneSelectionRequestRef\.current !== requestId/);
+assert.match(mapSource, /setMapZoneSelection\(city && district \? choices : null\)/);
+assert.match(mapSource, /applyMapObjective\(preferredZone\)/);
+assert.match(mapSource, /function MapZoneScopePicker/);
+assert.match(mapSource, /const preloadCurrentCityDistricts = async/);
+assert.match(mapSource, /if \(objective \|\| !currentLocation\)/);
+assert.doesNotMatch(mapSource, /shouldFetchAutoObjectiveZones/);
+assert.doesNotMatch(mapSource, /Failed to auto-switch completion objective/);
 assert.match(explorationMapSource, /unselectedDistrictZones\.flatMap/);
+assert.match(explorationMapSource, /onLongPress=\{handleMapLongPress\}/);
 assert.match(explorationMapSource, /playerFocusRequestId/);
 assert.match(
   explorationMapSource,
@@ -57,5 +66,5 @@ assert.match(zoneCompletionSource, /assignDistrictParentZones/);
 console.log("PASS local OSM boundaries request complete relation-member geometry");
 console.log("PASS exact cached boundaries reject incomplete-response downgrades");
 console.log("PASS saved objectives reload after boundary caches are repopulated");
-console.log("PASS city districts stay outlined with debounced, race-safe objective switching");
+console.log("PASS panning preserves the objective while long press selects race-safe city or district scopes");
 console.log("PASS recording Start restores walking-scale zoom around the persistent player");

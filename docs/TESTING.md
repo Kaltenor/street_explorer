@@ -33,7 +33,7 @@ npm run test:player
 npx expo install --check
 ```
 
-`test:player` verifies the sixteen active native idle/walking frames plus retained source/stale assets, trustworthy-location and last-rendered-sprite retention, the stable native marker identifier, `AnimatedRegion` coordinate smoothing, disabled custom-view snapshot tracking, stale-GPS accessibility, and removal of fragile legacy marker rendering. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
+`test:player` verifies the sixteen native idle/walking assets plus retained source/stale assets, trustworthy-location retention, explicit 64×64-point overlay rendering, launch-screen visibility gating, auto-follow center pinning, native projection after manual map movement, the native location fallback, removal of custom animated MapKit annotations and 170ms frame churn, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 
@@ -51,7 +51,7 @@ npx expo install --check
 
 1. Enter the map and confirm the smaller logo leaves the map readable, the Lyon medal card shows the current collected/total count and progress bar, and the bottom destinations share one rounded navigation surface.
 2. Tap the Lyon progress card and confirm Medals opens. In All and every category, confirm Unlocked and Locked headers remain visible with independent counts; unlocked cards appear first and show descriptions, while locked cards stay compact.
-3. Confirm only one side flag remains. Tap it to hide and show the district objective card; verify the saved objective remains selected in Completion. With no objective, tap the flag and confirm Completion opens so one can be selected.
+3. Confirm only one side flag remains. Tap it to hide and show the district or city objective card; verify the saved objective remains selected in Completion. With no objective, tap the flag and confirm Completion opens so one can be selected.
 4. Open Options and confirm Paths, Explored Cells, and Pins remain independently configurable even though their three map shortcuts were removed. Confirm route-reprocessing maintenance is also available there.
 5. Open Details and confirm everyday statistics and goals appear in consistent dark cards without map legends or GPS diagnostics. Open History, choose a recording, and confirm the route-quality summary is immediately visible while bridge, loop, and diagnostic evidence remains hidden until Technical details is expanded.
 6. Confirm Completion keeps the compact zone measures, adds the Street Completion V2 card, and still omits fetched-source metadata and the old V1 rules explanation from the default flow.
@@ -69,7 +69,7 @@ Prerequisites: run the Street Explorer 0.12.0 JavaScript bundle in a compatible 
 5. Record and stop a short valid walk. Expected: the post-walk report opens at the durable save boundary, leads with its quality score and reason, keeps the four headline metrics prominent, and retains objective/loop progress plus Skip, Save, and naming actions.
 6. Cold-start while the permission prompt or first fix is pending. Expected: the GPS badge says Acquiring in blue and exposes the same state to VoiceOver.
 7. Grant permission and obtain an outdoor fix at 25m accuracy or better. Expected: the badge changes to Good in green and shows rounded accuracy. Move somewhere with accuracy worse than 25m but keep fixes arriving. Expected: it changes to Weak in orange; recording still follows the existing 30m acceptance safety limit.
-8. While recording, interrupt fresh fixes for more than 12 seconds; while idle, repeat for more than 20 seconds. Expected: the badge changes to Stale in orange and reports the last-fix age without removing the last trustworthy player marker or existing route.
+8. While recording, interrupt fresh fixes for more than 12 seconds; while idle, repeat for more than 20 seconds. Expected: the badge changes to Stale in orange and reports the last-fix age without removing the last trustworthy player overlay or existing route.
 9. Deny foreground location permission. Expected: the badge says Denied in red and the existing permission guidance remains visible. Grant permission but provide no usable fix until the bounded initial lookup resolves, using simulator Location None if needed. Expected: the badge says Unavailable in gray rather than remaining indefinitely in Acquiring.
 10. Force-close and reopen the app. Expected: saved routes, names, exploration, and reports remain unchanged; the GPS state is recalculated from the new permission/fix lifecycle instead of persisting a stale label. Repeat with larger text or VoiceOver and confirm badges, cards, and report actions remain readable and operable.
 
@@ -99,7 +99,7 @@ Startup regressions: when testing an older development binary against the curren
 14. Confirm the Stop dialog offers Continue and a hold-to-quit action; choose Continue and confirm recording and drawing continue. With VoiceOver, confirm the Quit control exposes its confirmation action.
 15. Tap Stop again, hold Quit, and confirm the UI enters Finishing only while tracking is quiesced and queued GPS is durably finalized.
 16. Confirm the recording report, History row, saved live cells, and Start control appear immediately at that durable boundary; route inference, exact steps, medals, objectives, and full cache refresh may finish afterward without blocking input.
-17. Start another short walk immediately and confirm the player remains visible and the new recording begins normally while the previous derived work settles.
+17. After a first walk of at least 200m, start another walk immediately and continue for at least one minute. Confirm the player remains approximately 64 points wide, visible through every direction change, and stable while the new distance, steps, and route continue normally and the previous derived work settles.
 18. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
 
 ## Startup And Large-History Performance Test
@@ -248,11 +248,13 @@ Notes:
 16. In Lyon 3e Arrondissement, refresh District boundaries and confirm the zone reports a percentage instead of Display-only/Unavailable, Set objective is enabled, and focusing it shows the real multipolygon rather than a rectangular bounds fallback.
 17. Set Lyon 3e as the objective, clear only the boundary cache, force-close, reopen, and allow the automatic map fetch or tap Refresh. Confirm the saved objective HUD returns once the exact zone is cached. Then simulate an incomplete response for the same relation and confirm the exact cached boundary, denominator, and objective remain intact.
 18. With internet and a current Lyon location, remain on the map until boundary loading settles. Confirm all nine arrondissement outlines are simultaneously visible, non-objective districts use thin muted strokes, and the objective district uses the stronger gold stroke.
-19. Pan from Lyon 3e into an adjacent arrondissement and release the map. Confirm no objective change occurs during movement; after about 400ms the viewed district becomes the persisted objective, its gold outline appears, and the HUD shows Calculating before the new percentage.
-20. Pan rapidly back and forth across the same district boundary several times. Confirm cancelled scans never restore an older district name, outline, percentage, remaining-cell count, or today count after the final district finishes calculating.
-21. Force-close and reopen. Confirm the last viewed district remains the saved objective and all cached Lyon district outlines return without requiring Completion to be opened.
-22. Pan into a different city with district relations. Confirm the old city outlines are replaced by that containing city group after the settled fetch, without mixing cached districts from previously visited cities.
-23. Zoom out to a city-wide view and move the map away from the player, then tap Start with foreground location permission and a trustworthy fix. Confirm the camera recenters at the normal walking-scale zoom, the player icon is back to its previous visible size, and accepted route points continue auto-following. Repeat through Resume on a recoverable recording.
+19. Pan from Lyon 3e across several arrondissement boundaries and release the map. Confirm the saved objective name, gold outline, percentage, remaining-cell count, and today count never change merely because the viewport moved.
+20. Long-press inside an adjacent arrondissement. Confirm haptic feedback occurs, the district immediately becomes the persisted objective, its gold outline appears, and the HUD shows Calculating until that district's percentage is ready.
+21. When the held point has both district and city boundaries, confirm a compact scope picker offers separate District and City buttons. Tap City and confirm the city boundary becomes gold while all of its district outlines remain visible; repeat and choose District.
+22. Rapidly long-press different districts or cities while an uncached boundary request is pending. Confirm an older lookup or percentage never restores an earlier name, scope, outline, remaining-cell count, or today count after the final selection finishes.
+23. Force-close and reopen. Confirm the last long-pressed scope and area remain the saved objective and the selected city's cached district outlines return without requiring Completion to be opened.
+24. Long-press inside a different city with district relations. Confirm that city's district group replaces the previous city outlines without mixing cached districts. Disable network, long-press an uncached area, and confirm an Area unavailable message appears without changing the existing objective.
+25. Zoom out to a city-wide view and move the map away from the player, then tap Start with foreground location permission and a trustworthy fix. Confirm the camera recenters at the normal walking-scale zoom, the player icon is back to its previous visible size, and accepted route points continue auto-following. Repeat through Resume on a recoverable recording.
 
 ## Street Completion V2 Test
 

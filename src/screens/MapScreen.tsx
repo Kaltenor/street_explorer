@@ -213,10 +213,8 @@ const OSM_STREET_RADIUS_METERS = 1600;
 const OSM_STREET_FETCH_RADIUS_METERS = 800;
 const OSM_STREET_LOCAL_COVERAGE_RADIUS_METERS = 200;
 const OSM_STREET_CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-const AUTO_OBJECTIVE_CHECK_DISTANCE_METERS = 25;
-const AUTO_OBJECTIVE_FETCH_DISTANCE_METERS = 500;
-const AUTO_OBJECTIVE_FETCH_INTERVAL_MS = 10 * 60 * 1000;
-const MAP_OBJECTIVE_SETTLE_MS = 400;
+const CITY_BOUNDARY_PRELOAD_DISTANCE_METERS = 500;
+const CITY_BOUNDARY_PRELOAD_INTERVAL_MS = 10 * 60 * 1000;
 const OSM_STREET_RETRY_DELAY_MS = 30_000;
 
 function getGpsTimestamp(point: GpsPoint) {
@@ -228,6 +226,11 @@ function getGpsTimestamp(point: GpsPoint) {
 type MapScreenProps = {
   language: AppLanguage;
   onChangeLanguage: (language: AppLanguage) => void;
+};
+
+type MapZoneSelection = {
+  city: CachedZone | null;
+  district: CachedZone | null;
 };
 
 const GPS_STORAGE_PAUSED_REASON =
@@ -456,6 +459,8 @@ export function MapScreen({
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
   const [districtZones, setDistrictZones] = useState<CachedZone[]>([]);
+  const [mapZoneSelection, setMapZoneSelection] = useState<MapZoneSelection | null>(null);
+  const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
@@ -497,12 +502,11 @@ export function MapScreen({
   });
   const recordingLifecycleGenerationRef = useRef(0);
   const appStateTransitionGenerationRef = useRef(0);
-  const autoObjectiveCheckCenterRef = useRef<GpsPoint | null>(null);
-  const autoObjectiveFetchCenterRef = useRef<GpsPoint | null>(null);
-  const autoObjectiveFetchTimestampRef = useRef(0);
-  const lastAutoObjectiveZoneIdRef = useRef<string | null>(null);
   const districtZoneLoadRequestRef = useRef(0);
-  const mapObjectiveSettleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cityBoundaryPreloadCenterRef = useRef<GpsPoint | null>(null);
+  const cityBoundaryPreloadTimestampRef = useRef(0);
+  const mapZoneSelectionRequestRef = useRef(0);
+  const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const recoveryResumeTransitionRef = useRef<{
@@ -699,27 +703,13 @@ export function MapScreen({
   const completionReferenceLocation = activeWalk ? currentLocation : mapViewportCenter ?? currentLocation;
 
   const handleVisibleRegionChange = useCallback((region: Region) => {
-    if (mapObjectiveSettleTimerRef.current) {
-      clearTimeout(mapObjectiveSettleTimerRef.current);
-    }
-
-    mapObjectiveSettleTimerRef.current = setTimeout(() => {
-      mapObjectiveSettleTimerRef.current = null;
-      setMapViewportCenter({
-        accuracy: null,
-        latitude: region.latitude,
-        longitude: region.longitude,
-        pointIndex: 0,
-        timestamp: new Date().toISOString()
-      });
-    }, MAP_OBJECTIVE_SETTLE_MS);
-  }, []);
-
-  useEffect(() => () => {
-    if (mapObjectiveSettleTimerRef.current) {
-      clearTimeout(mapObjectiveSettleTimerRef.current);
-      mapObjectiveSettleTimerRef.current = null;
-    }
+    setMapViewportCenter({
+      accuracy: null,
+      latitude: region.latitude,
+      longitude: region.longitude,
+      pointIndex: 0,
+      timestamp: new Date().toISOString()
+    });
   }, []);
 
   const handleMapMedalPress = useCallback((medal: CollectedMedal) => {
@@ -1192,11 +1182,12 @@ export function MapScreen({
     const savedObjective = await getSavedCompletionObjective();
 
     if (!savedObjective) {
-      return;
+      return null;
     }
 
     setObjective(savedObjective);
     setSelectedZone(savedObjective.zone);
+    return savedObjective;
   }, []);
 
   const loadVisibleDistrictZones = useCallback(async (referenceLocation: GpsPoint) => {
@@ -1222,14 +1213,145 @@ export function MapScreen({
     return nextDistrictZones;
   }, []);
 
-  const handleCompletionZonesUpdated = useCallback(async () => {
-    await reloadSavedCompletionObjective();
+  const loadDistrictZonesForObjectiveZone = useCallback(async (zone: CachedZone) => {
+    const requestId = districtZoneLoadRequestRef.current + 1;
+    districtZoneLoadRequestRef.current = requestId;
+    const [cities, districts] = await Promise.all([
+      getCachedZones("city"),
+      getCachedZones("district")
+    ]);
+    const currentCity = zone.type === "city"
+      ? cities.find((city) => city.id === zone.id) ?? zone
+      : cities.find((city) => city.id === zone.parentZoneId) ??
+        cities.find((city) => doesDistrictBelongToCity(zone, city)) ??
+        null;
+    const nextDistrictZones = currentCity
+      ? districts.filter(
+          (district) =>
+            isZoneCompletionEligible(district) &&
+            doesDistrictBelongToCity(district, currentCity)
+        )
+      : zone.type === "district" && isZoneCompletionEligible(zone)
+        ? [zone]
+        : [];
 
-    if (completionReferenceLocation) {
+    if (districtZoneLoadRequestRef.current === requestId) {
+      setDistrictZones(nextDistrictZones);
+    }
+
+    return nextDistrictZones;
+  }, []);
+
+  const applyMapObjective = useCallback((zone: CachedZone) => {
+    const nextObjective: CompletionObjective = {
+      mode: "walk",
+      zone
+    };
+
+    setObjective(nextObjective);
+    setObjectiveHudVisible(true);
+    setSelectedZone(zone);
+    objectiveSaveChainRef.current = objectiveSaveChainRef.current
+      .then(() => saveCompletionObjective({
+        mode: nextObjective.mode,
+        zoneId: nextObjective.zone.id
+      }))
+      .catch((error) => {
+        console.warn("Failed to save long-press completion objective", error);
+      });
+  }, []);
+
+  const handleMapLongPress = useCallback(async (coordinate: {
+    latitude: number;
+    longitude: number;
+  }) => {
+    const requestId = mapZoneSelectionRequestRef.current + 1;
+    mapZoneSelectionRequestRef.current = requestId;
+    setIsMapZoneSelectionLoading(true);
+    setMapZoneSelection(null);
+
+    try {
+      try {
+        const Haptics = await import("expo-haptics");
+        await Haptics.selectionAsync();
+      } catch {
+        // Haptics are optional in older or restricted development clients.
+      }
+
+      let [cities, districts] = await Promise.all([
+        getCachedZones("city"),
+        getCachedZones("district")
+      ]);
+      let city = findContainingZone(coordinate, cities);
+      let district = findContainingZone(coordinate, districts);
+
+      if (!city || !district) {
+        try {
+          const result = await fetchNearbyOsmZonesWithDebug(coordinate);
+          await upsertZones(result.zones);
+          [cities, districts] = await Promise.all([
+            getCachedZones("city"),
+            getCachedZones("district")
+          ]);
+          city = findContainingZone(coordinate, cities);
+          district = findContainingZone(coordinate, districts);
+        } catch (error) {
+          console.warn("Failed to load boundaries for map long press", error);
+        }
+      }
+
+      if (mapZoneSelectionRequestRef.current !== requestId) {
+        return;
+      }
+
+      if (!city && !district) {
+        Alert.alert(
+          language === "fr" ? "Zone indisponible" : "Area unavailable",
+          language === "fr"
+            ? "Aucune limite exacte de ville ou de quartier n’a été trouvée à cet endroit."
+            : "No exact city or district boundary was found at that location."
+        );
+        return;
+      }
+
+      const nextDistrictZones = city
+        ? districts.filter(
+            (zone) =>
+              isZoneCompletionEligible(zone) && doesDistrictBelongToCity(zone, city)
+          )
+        : district
+          ? [district]
+          : [];
+      districtZoneLoadRequestRef.current += 1;
+      setDistrictZones(nextDistrictZones);
+
+      const choices = { city, district };
+      setMapZoneSelection(city && district ? choices : null);
+      const preferredZone = objective?.zone.type === "city"
+        ? city ?? district
+        : district ?? city;
+
+      if (preferredZone) {
+        applyMapObjective(preferredZone);
+      }
+    } finally {
+      if (mapZoneSelectionRequestRef.current === requestId) {
+        setIsMapZoneSelectionLoading(false);
+      }
+    }
+  }, [applyMapObjective, language, objective?.zone.type]);
+
+  const handleCompletionZonesUpdated = useCallback(async () => {
+    const savedObjective = await reloadSavedCompletionObjective();
+
+    if (savedObjective) {
+      await loadDistrictZonesForObjectiveZone(savedObjective.zone);
+    } else if (completionReferenceLocation) {
       await loadVisibleDistrictZones(completionReferenceLocation);
     }
   }, [
     completionReferenceLocation,
+    loadDistrictZonesForObjectiveZone,
     loadVisibleDistrictZones,
     reloadSavedCompletionObjective
   ]);
@@ -1238,6 +1360,69 @@ export function MapScreen({
     reloadSavedCompletionObjective()
       .catch((error) => console.warn("Failed to load saved completion objective", error));
   }, [reloadSavedCompletionObjective]);
+
+  useEffect(() => {
+    if (!objective) {
+      return;
+    }
+
+    loadDistrictZonesForObjectiveZone(objective.zone)
+      .catch((error) => console.warn("Failed to load objective city districts", error));
+  }, [
+    loadDistrictZonesForObjectiveZone,
+    objective?.zone.fetchedAt,
+    objective?.zone.id
+  ]);
+
+  useEffect(() => {
+    if (objective || !currentLocation) {
+      return;
+    }
+
+    const previousCenter = cityBoundaryPreloadCenterRef.current;
+    const wasRecentlyChecked =
+      Date.now() - cityBoundaryPreloadTimestampRef.current <
+        CITY_BOUNDARY_PRELOAD_INTERVAL_MS;
+
+    if (
+      wasRecentlyChecked &&
+      previousCenter &&
+      calculatePathDistanceMeters([previousCenter, currentLocation]) <
+        CITY_BOUNDARY_PRELOAD_DISTANCE_METERS
+    ) {
+      return;
+    }
+
+    cityBoundaryPreloadCenterRef.current = currentLocation;
+    cityBoundaryPreloadTimestampRef.current = Date.now();
+    let isMounted = true;
+
+    const preloadCurrentCityDistricts = async () => {
+      const cachedDistricts = await loadVisibleDistrictZones(currentLocation);
+
+      if (!isMounted || cachedDistricts.length > 0) {
+        return;
+      }
+
+      try {
+        const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
+        await upsertZones(result.zones);
+
+        if (isMounted) {
+          await loadVisibleDistrictZones(currentLocation);
+        }
+      } catch (error) {
+        console.warn("Failed to preload current-city boundaries", error);
+      }
+    };
+
+    preloadCurrentCityDistricts()
+      .catch((error) => console.warn("Failed to show current-city boundaries", error));
+
+    return () => {
+      isMounted = false;
+    };
+  }, [currentLocation, loadVisibleDistrictZones, objective]);
 
   useEffect(() => {
     const requestId = objectiveStatsRequestRef.current + 1;
@@ -1278,203 +1463,6 @@ export function MapScreen({
 
     return () => abortController.abort();
   }, [loopFillCellIds, objective, walks]);
-
-  const shouldFetchAutoObjectiveZones = useCallback((location: GpsPoint) => {
-    const previousFetchCenter = autoObjectiveFetchCenterRef.current;
-    const previousFetchTimestamp = autoObjectiveFetchTimestampRef.current;
-    const isFetchRecentlyAttempted =
-      Date.now() - previousFetchTimestamp < AUTO_OBJECTIVE_FETCH_INTERVAL_MS;
-    const isNearPreviousFetch =
-      previousFetchCenter &&
-      calculatePathDistanceMeters([previousFetchCenter, location]) <
-        AUTO_OBJECTIVE_FETCH_DISTANCE_METERS;
-
-    return !isFetchRecentlyAttempted || !isNearPreviousFetch;
-  }, []);
-
-  useEffect(() => {
-    if (
-      !completionReferenceLocation ||
-      !objective ||
-      !["city", "district"].includes(objective.zone.type)
-    ) {
-      return;
-    }
-
-    let isMounted = true;
-    const checkedCenter = autoObjectiveCheckCenterRef.current;
-
-    if (
-      checkedCenter &&
-      calculatePathDistanceMeters([checkedCenter, completionReferenceLocation]) <
-        AUTO_OBJECTIVE_CHECK_DISTANCE_METERS
-    ) {
-      return;
-    }
-
-    autoObjectiveCheckCenterRef.current = completionReferenceLocation;
-
-    const updateObjectiveForReferenceLocation = async () => {
-      const visibleDistricts = await loadVisibleDistrictZones(
-        completionReferenceLocation
-      );
-      let zones = await getCachedZones(objective.zone.type);
-      let containingZone = findContainingZone(completionReferenceLocation, zones);
-
-      if (
-        (
-          !containingZone ||
-          !isZoneCompletionEligible(objective.zone) ||
-          visibleDistricts.length === 0
-        ) &&
-        shouldFetchAutoObjectiveZones(completionReferenceLocation)
-      ) {
-        autoObjectiveFetchCenterRef.current = completionReferenceLocation;
-        autoObjectiveFetchTimestampRef.current = Date.now();
-
-        try {
-          const result = await fetchNearbyOsmZonesWithDebug(completionReferenceLocation);
-          await upsertZones(result.zones);
-          await loadVisibleDistrictZones(
-            completionReferenceLocation
-          );
-          zones = await getCachedZones(objective.zone.type);
-          containingZone = findContainingZone(completionReferenceLocation, zones);
-        } catch (error) {
-          console.warn("Failed to refresh zones for auto objective", error);
-        }
-      }
-
-      if (
-        !isMounted ||
-        !containingZone
-      ) {
-        return;
-      }
-
-      if (containingZone.id === objective.zone.id) {
-        if (
-          containingZone.fetchedAt !== objective.zone.fetchedAt ||
-          containingZone.source !== objective.zone.source
-        ) {
-          setObjective((currentObjective) =>
-            currentObjective?.zone.id === containingZone?.id
-              ? { ...currentObjective, zone: containingZone }
-              : currentObjective
-          );
-        }
-        setSelectedZone(containingZone);
-        return;
-      }
-
-      if (containingZone.id === lastAutoObjectiveZoneIdRef.current) {
-        return;
-      }
-
-      lastAutoObjectiveZoneIdRef.current = containingZone.id;
-      const nextObjective = {
-        mode: objective.mode,
-        zone: containingZone
-      };
-
-      setObjective(nextObjective);
-      setObjectiveHudVisible(true);
-      setSelectedZone(containingZone);
-      await saveCompletionObjective({
-        mode: nextObjective.mode,
-        zoneId: containingZone.id
-      });
-    };
-
-    updateObjectiveForReferenceLocation()
-      .catch((error) => console.warn("Failed to auto-switch completion objective", error));
-
-    return () => {
-      isMounted = false;
-    };
-  }, [
-    completionReferenceLocation,
-    loadVisibleDistrictZones,
-    objective,
-    shouldFetchAutoObjectiveZones
-  ]);
-
-  useEffect(() => {
-    if (activeWalk || objective || !mapViewportCenter) {
-      return;
-    }
-
-    let isMounted = true;
-    const checkedCenter = autoObjectiveCheckCenterRef.current;
-
-    if (
-      checkedCenter &&
-      calculatePathDistanceMeters([checkedCenter, mapViewportCenter]) <
-        AUTO_OBJECTIVE_CHECK_DISTANCE_METERS
-    ) {
-      return;
-    }
-
-    autoObjectiveCheckCenterRef.current = mapViewportCenter;
-
-    const updateViewedDistrict = async () => {
-      const visibleDistricts = await loadVisibleDistrictZones(mapViewportCenter);
-      let zones = await getCachedZones("district");
-      let containingZone = findContainingZone(mapViewportCenter, zones);
-
-      if (
-        (
-          !containingZone ||
-          !isZoneCompletionEligible(containingZone) ||
-          visibleDistricts.length === 0
-        ) &&
-        shouldFetchAutoObjectiveZones(mapViewportCenter)
-      ) {
-        autoObjectiveFetchCenterRef.current = mapViewportCenter;
-        autoObjectiveFetchTimestampRef.current = Date.now();
-
-        try {
-          const result = await fetchNearbyOsmZonesWithDebug(mapViewportCenter);
-          await upsertZones(result.zones);
-          await loadVisibleDistrictZones(mapViewportCenter);
-          zones = await getCachedZones("district");
-          containingZone = findContainingZone(mapViewportCenter, zones);
-        } catch (error) {
-          console.warn("Failed to refresh zones for viewed district", error);
-        }
-      }
-
-      if (!isMounted || !containingZone) {
-        return;
-      }
-
-      const nextObjective: CompletionObjective = {
-        mode: "walk",
-        zone: containingZone
-      };
-
-      setObjective(nextObjective);
-      setObjectiveHudVisible(true);
-      setSelectedZone(containingZone);
-      await saveCompletionObjective({
-        mode: nextObjective.mode,
-        zoneId: containingZone.id
-      });
-    };
-
-    updateViewedDistrict()
-      .catch((error) => console.warn("Failed to update viewed district", error));
-
-    return () => {
-      isMounted = false;
-    };
-  }, [
-    activeWalk,
-    loadVisibleDistrictZones,
-    mapViewportCenter,
-    objective,
-    shouldFetchAutoObjectiveZones
-  ]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;
@@ -3457,9 +3445,14 @@ export function MapScreen({
         districtZones={districtZones}
         highlightedSessionId={selectedSessionId}
         layers={layers}
+        onMapLongPress={(coordinate) => {
+          handleMapLongPress(coordinate)
+            .catch((error) => console.warn("Failed to select map objective", error));
+        }}
         onMapReady={handleMapReady}
         onVisibleRegionChange={handleVisibleRegionChange}
         playerFocusRequestId={playerFocusRequestId}
+        playerVisible={isLaunchDismissed}
         selectedZone={selectedZone}
         savedExplorationCellIds={savedExplorationCellIds}
         todayNewCellIds={todayNewCellIds}
@@ -3502,6 +3495,24 @@ export function MapScreen({
               language={language}
               stats={objectiveStats}
               todayCellCount={todayObjectiveCellCount}
+            />
+          ) : null}
+          {isMapZoneSelectionLoading ? (
+            <View style={styles.mapZoneSelectionLoading}>
+              <ActivityIndicator color="#f5c451" size="small" />
+              <Text style={styles.mapZoneSelectionLoadingText}>
+                {language === "fr" ? "Recherche de la zone…" : "Finding area…"}
+              </Text>
+            </View>
+          ) : null}
+          {mapZoneSelection?.city && mapZoneSelection.district ? (
+            <MapZoneScopePicker
+              city={mapZoneSelection.city}
+              district={mapZoneSelection.district}
+              language={language}
+              onClose={() => setMapZoneSelection(null)}
+              onSelect={applyMapObjective}
+              selectedZoneId={objective?.zone.id ?? null}
             />
           ) : null}
         </View>
@@ -3685,13 +3696,7 @@ export function MapScreen({
           setCompletionVisible(false);
         }}
         onSetObjective={(nextObjective) => {
-          setObjective(nextObjective);
-          setObjectiveHudVisible(true);
-          setSelectedZone(nextObjective.zone);
-          saveCompletionObjective({
-            mode: nextObjective.mode,
-            zoneId: nextObjective.zone.id
-          }).catch((error) => console.warn("Failed to save completion objective", error));
+          applyMapObjective(nextObjective.zone);
           setCompletionVisible(false);
         }}
         onZonesUpdated={handleCompletionZonesUpdated}
@@ -3801,6 +3806,87 @@ function calculateLastSpeedMetersPerSecond(points: GpsPoint[]) {
   return calculatePathDistanceMeters([previousPoint, latestPoint]) / secondsBetweenPoints;
 }
 
+function MapZoneScopePicker({
+  city,
+  district,
+  language,
+  onClose,
+  onSelect,
+  selectedZoneId
+}: {
+  city: CachedZone;
+  district: CachedZone;
+  language: AppLanguage;
+  onClose: () => void;
+  onSelect: (zone: CachedZone) => void;
+  selectedZoneId: string | null;
+}) {
+  const selectZone = (zone: CachedZone) => {
+    onSelect(zone);
+    onClose();
+  };
+
+  return (
+    <View style={styles.mapZoneSelection}>
+      <View style={styles.mapZoneSelectionHeader}>
+        <View style={styles.mapZoneSelectionTitleBlock}>
+          <Text style={styles.mapZoneSelectionEyebrow}>
+            {language === "fr" ? "APPUI LONG" : "LONG PRESS"}
+          </Text>
+          <Text numberOfLines={1} style={styles.mapZoneSelectionTitle}>
+            {language === "fr" ? "Choisir la portée" : "Choose objective scope"}
+          </Text>
+        </View>
+        <TouchableOpacity
+          accessibilityLabel={language === "fr" ? "Fermer" : "Close"}
+          accessibilityRole="button"
+          onPress={onClose}
+          style={styles.mapZoneSelectionClose}
+        >
+          <Ionicons color="#cbd5e1" name="close" size={18} />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.mapZoneSelectionOptions}>
+        {[district, city].map((zone) => {
+          const isSelected = selectedZoneId === zone.id;
+          const label = zone.type === "district"
+            ? language === "fr" ? "Quartier" : "District"
+            : language === "fr" ? "Ville" : "City";
+
+          return (
+            <TouchableOpacity
+              accessibilityLabel={`${label}: ${zone.name}`}
+              accessibilityRole="button"
+              key={zone.id}
+              onPress={() => selectZone(zone)}
+              style={[
+                styles.mapZoneSelectionOption,
+                isSelected ? styles.mapZoneSelectionOptionActive : null
+              ]}
+            >
+              <Text style={[
+                styles.mapZoneSelectionOptionLabel,
+                isSelected ? styles.mapZoneSelectionOptionLabelActive : null
+              ]}>
+                {label}
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={[
+                  styles.mapZoneSelectionOptionName,
+                  isSelected ? styles.mapZoneSelectionOptionNameActive : null
+                ]}
+              >
+                {zone.name}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
 function ObjectiveHud({
   isCalculating,
   objective,
@@ -3827,7 +3913,7 @@ function ObjectiveHud({
           <Text style={styles.objectiveLabel}>
             {objective.zone.type === "district"
               ? language === "fr" ? "OBJECTIF DU QUARTIER" : "DISTRICT OBJECTIVE"
-              : language === "fr" ? "OBJECTIF ACTUEL" : "CURRENT OBJECTIVE"}
+              : language === "fr" ? "OBJECTIF DE LA VILLE" : "CITY OBJECTIVE"}
           </Text>
           <Text numberOfLines={1} style={styles.objectiveName}>{objective.zone.name}</Text>
         </View>
@@ -3843,7 +3929,9 @@ function ObjectiveHud({
       <View style={styles.objectiveFooter}>
         <Text style={styles.objectiveMeta}>
           {isCalculating
-            ? language === "fr" ? "Mise \u00e0 jour du quartier..." : "Updating district..."
+            ? objective.zone.type === "district"
+              ? language === "fr" ? "Mise \u00e0 jour du quartier..." : "Updating district..."
+              : language === "fr" ? "Mise \u00e0 jour de la ville..." : "Updating city..."
             : remainingCells === null
               ? String(stats?.exploredCells ?? 0) + (language === "fr" ? " cellules explor\u00e9es" : " cells explored")
               : String(remainingCells) + (language === "fr" ? " cellules restantes" : " cells remaining")}
@@ -3905,9 +3993,9 @@ function ObjectiveToggleButton({
 }) {
   const label = hasObjective
     ? visible
-      ? language === "fr" ? "Masquer l’objectif du quartier" : "Hide district objective"
-      : language === "fr" ? "Afficher l’objectif du quartier" : "Show district objective"
-    : language === "fr" ? "Choisir un objectif de quartier" : "Choose a district objective";
+      ? language === "fr" ? "Masquer l’objectif de zone" : "Hide area objective"
+      : language === "fr" ? "Afficher l’objectif de zone" : "Show area objective"
+    : language === "fr" ? "Choisir un objectif de zone" : "Choose an area objective";
 
   return (
     <TouchableOpacity
@@ -5421,6 +5509,84 @@ const styles = StyleSheet.create({
   objectiveFooter: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
   objectiveMeta: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
   objectiveToday: { color: "#f5c451", fontSize: 11, fontWeight: "900" },
+  mapZoneSelection: {
+    backgroundColor: "rgba(7, 16, 24, 0.98)",
+    borderColor: "rgba(245, 196, 81, 0.42)",
+    borderRadius: 18,
+    borderWidth: 1,
+    gap: 10,
+    marginTop: 8,
+    padding: 12
+  },
+  mapZoneSelectionClose: {
+    alignItems: "center",
+    backgroundColor: "rgba(148, 163, 184, 0.12)",
+    borderRadius: 999,
+    height: 32,
+    justifyContent: "center",
+    width: 32
+  },
+  mapZoneSelectionEyebrow: {
+    color: "#f5c451",
+    fontSize: 9,
+    fontWeight: "900",
+    letterSpacing: 1.1
+  },
+  mapZoneSelectionHeader: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10
+  },
+  mapZoneSelectionLoading: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(7, 16, 24, 0.94)",
+    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderRadius: 999,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8
+  },
+  mapZoneSelectionLoadingText: {
+    color: "#e2e8f0",
+    fontSize: 12,
+    fontWeight: "800"
+  },
+  mapZoneSelectionOption: {
+    backgroundColor: "rgba(15, 29, 40, 0.96)",
+    borderColor: "rgba(148, 163, 184, 0.28)",
+    borderRadius: 14,
+    borderWidth: 1,
+    flex: 1,
+    gap: 3,
+    minWidth: 0,
+    paddingHorizontal: 11,
+    paddingVertical: 9
+  },
+  mapZoneSelectionOptionActive: {
+    backgroundColor: "#f5c451",
+    borderColor: "#f5c451"
+  },
+  mapZoneSelectionOptionLabel: {
+    color: "#94a3b8",
+    fontSize: 9,
+    fontWeight: "900",
+    letterSpacing: 0.8,
+    textTransform: "uppercase"
+  },
+  mapZoneSelectionOptionLabelActive: { color: "#332408" },
+  mapZoneSelectionOptionName: {
+    color: "#f8fafc",
+    fontSize: 12,
+    fontWeight: "900"
+  },
+  mapZoneSelectionOptionNameActive: { color: "#151006" },
+  mapZoneSelectionOptions: { flexDirection: "row", gap: 8 },
+  mapZoneSelectionTitle: { color: "#f8fafc", fontSize: 14, fontWeight: "900" },
+  mapZoneSelectionTitleBlock: { flex: 1 },
   overlay: {
     flex: 1,
     padding: 14

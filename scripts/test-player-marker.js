@@ -6,6 +6,10 @@ const mapSource = fs.readFileSync(
   path.join(root, "src", "components", "ExplorationMap.tsx"),
   "utf8"
 );
+const mapScreenSource = fs.readFileSync(
+  path.join(root, "src", "screens", "MapScreen.tsx"),
+  "utf8"
+);
 const directions = ["east", "north", "south", "west"];
 
 function assert(condition, message) {
@@ -54,28 +58,39 @@ assert(
   "Player location is not preserved across recording transitions"
 );
 assert(
-  mapSource.includes("new AnimatedRegion") &&
-    mapSource.includes("Marker.Animated") &&
-    mapSource.includes("animatedCoordinate.timing"),
-  "Native coordinate smoothing is missing"
+  mapSource.includes("pointForCoordinate") &&
+    mapSource.includes("isAutoFollowEnabled") &&
+    mapSource.includes("mapViewportSize.width / 2") &&
+    mapSource.includes("mapViewportSize.height / 2"),
+  "Screen-space player projection and auto-follow centering are missing"
 );
 assert(
-  mapSource.includes("image={spriteSource}") &&
-    mapSource.includes("tracksViewChanges={false}"),
-  "Player is not rendered as a stable native marker image"
+  mapSource.includes("PlayerLocationOverlay") &&
+    mapSource.includes("source={spriteSource}") &&
+    mapSource.includes("style={styles.playerSpriteImage}") &&
+    mapSource.includes("height: 64") &&
+    mapSource.includes("width: 64"),
+  "Player is not rendered as one explicitly sized persistent screen overlay"
 );
 assert(
-  mapSource.includes("persistentSpriteSourceRef") &&
-    mapSource.includes('identifier="street-explorer-player"') &&
-    mapSource.includes("Last known player location, GPS signal stale") &&
-    !mapSource.includes("PLAYER_STALE_SPRITES"),
-  "Stop/Start marker persistence or stale GPS accessibility is missing"
+  mapSource.includes("playerVisible && playerLocation && playerScreenPoint") &&
+    mapScreenSource.includes("playerVisible={isLaunchDismissed}"),
+  "Player overlay is not hidden behind the launch presentation"
 );
 assert(
-  !mapSource.includes("<Animated.View") &&
+  mapSource.includes("Last known player location, GPS signal stale") &&
+    mapSource.includes("showsUserLocation") &&
+    !mapSource.includes("PLAYER_NATIVE_FRAMES") &&
+    !mapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS"),
+  "Stop/Start overlay persistence, native fallback, or stale GPS accessibility is missing"
+);
+assert(
+  !mapSource.includes("Marker.Animated") &&
+    !mapSource.includes("new AnimatedRegion") &&
+    !mapSource.includes('identifier="street-explorer-player"') &&
     !mapSource.includes("playerSpriteLayer") &&
     !mapSource.includes('require("../../assets/player-npc-topdown.png")'),
-  "Fragile custom-view or legacy static player rendering is still active"
+  "Fragile MapKit annotation animation or legacy player rendering is still active"
 );
 
-console.log("Player marker checks passed.");
+console.log("Player overlay checks passed.");
