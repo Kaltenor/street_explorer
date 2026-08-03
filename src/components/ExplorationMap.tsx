@@ -21,6 +21,7 @@ import {
   buildExplorationPolygonOutlineSegments,
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
+import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import {
@@ -683,14 +684,117 @@ function useCoalescedValue<T>(value: T, intervalMs: number) {
   return settledValue;
 }
 
+const PLAYER_MOVING_SPEED_METERS_PER_SECOND = 0.45;
+const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
+const PLAYER_BEARING_MIN_DISTANCE_METERS = 3;
 const PLAYER_MOTION_FRESHNESS_MS = 10_000;
+const PLAYER_MOVEMENT_SETTLE_MS = 4_000;
 const LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS = 5_000;
-const PLAYER_SPRITE = require("../../assets/player/native-idle-south.png");
+const PLAYER_WALK_FRAME_INTERVAL_MS = 170;
+
+type PlayerDirection = "east" | "north" | "south" | "west";
+
+type PlayerSpriteSet = {
+  idle: number;
+  walk: readonly [number, number, number];
+};
+
+const PLAYER_DIRECTIONS: readonly PlayerDirection[] = [
+  "east",
+  "north",
+  "south",
+  "west"
+];
+
+const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
+  east: {
+    idle: require("../../assets/player/native-idle-east.png"),
+    walk: [
+      require("../../assets/player/native-walk-east-1.png"),
+      require("../../assets/player/native-walk-east-2.png"),
+      require("../../assets/player/native-walk-east-3.png")
+    ]
+  },
+  north: {
+    idle: require("../../assets/player/native-idle-north.png"),
+    walk: [
+      require("../../assets/player/native-walk-north-1.png"),
+      require("../../assets/player/native-walk-north-2.png"),
+      require("../../assets/player/native-walk-north-3.png")
+    ]
+  },
+  south: {
+    idle: require("../../assets/player/native-idle-south.png"),
+    walk: [
+      require("../../assets/player/native-walk-south-1.png"),
+      require("../../assets/player/native-walk-south-2.png"),
+      require("../../assets/player/native-walk-south-3.png")
+    ]
+  },
+  west: {
+    idle: require("../../assets/player/native-idle-west.png"),
+    walk: [
+      require("../../assets/player/native-walk-west-1.png"),
+      require("../../assets/player/native-walk-west-2.png"),
+      require("../../assets/player/native-walk-west-3.png")
+    ]
+  }
+};
+
+const PLAYER_SPRITE_LAYERS = PLAYER_DIRECTIONS.flatMap((direction) => {
+  const spriteSet = PLAYER_SPRITES[direction];
+
+  return [
+    { key: `${direction}-idle`, source: spriteSet.idle },
+    ...spriteSet.walk.map((source, frameIndex) => ({
+      key: `${direction}-walk-${frameIndex}`,
+      source
+    }))
+  ];
+});
 
 function PlayerLocationMarker({ location }: { location: GpsPoint }) {
+  const movementAnchorRef = useRef(location);
+  const [movement, setMovement] = useState<RecentMovement | null>(null);
   const [isGpsFresh, setIsGpsFresh] = useState(() =>
     isPlayerMotionPointFresh(location)
   );
+  const [direction, setDirection] = useState<PlayerDirection>(() =>
+    getPlayerDirection(getPlayerHeading(location, movement))
+  );
+  const [walkFrameIndex, setWalkFrameIndex] = useState(0);
+  const liveSpeed =
+    typeof location.speedMetersPerSecond === "number" &&
+    Number.isFinite(location.speedMetersPerSecond)
+      ? Math.max(0, location.speedMetersPerSecond)
+      : 0;
+  const hasReliableMotionFix =
+    isGpsFresh &&
+    (location.accuracy === null ||
+      (Number.isFinite(location.accuracy) &&
+        location.accuracy <=
+          MODE_LOCATION_CONFIG.walk.maxAcceptedAccuracyMeters));
+  const isMoving =
+    hasReliableMotionFix &&
+    Math.max(liveSpeed, movement?.speedMetersPerSecond ?? 0) >=
+      PLAYER_MOVING_SPEED_METERS_PER_SECOND;
+  const heading = getPlayerHeading(location, movement);
+
+  useEffect(() => {
+    const anchor = movementAnchorRef.current;
+    const nextMovement = getMovementBetween(anchor, location);
+
+    if (nextMovement) {
+      movementAnchorRef.current = location;
+      setMovement(nextMovement);
+      return;
+    }
+
+    if (getPointTimestamp(location) - getPointTimestamp(anchor) >= PLAYER_MOVEMENT_SETTLE_MS) {
+      movementAnchorRef.current = location;
+      setMovement(null);
+    }
+  }, [location]);
 
   useEffect(() => {
     const timestamp = getPointTimestamp(location);
@@ -715,9 +819,31 @@ function PlayerLocationMarker({ location }: { location: GpsPoint }) {
     return () => clearTimeout(freshnessTimer);
   }, [location]);
 
+  useEffect(() => {
+    if (heading !== null) {
+      setDirection(getPlayerDirection(heading));
+    }
+  }, [heading]);
+
+  useEffect(() => {
+    if (!isMoving) {
+      setWalkFrameIndex(0);
+      return;
+    }
+
+    const frameTimer = setInterval(() => {
+      setWalkFrameIndex((frameIndex) => (frameIndex + 1) % 3);
+    }, PLAYER_WALK_FRAME_INTERVAL_MS);
+
+    return () => clearInterval(frameTimer);
+  }, [isMoving]);
+
   const accessibilityLabel = isGpsFresh
     ? "Current player location"
     : "Last known player location, GPS signal stale";
+  const visibleSpriteSource = isMoving
+    ? PLAYER_SPRITES[direction].walk[walkFrameIndex]
+    : PLAYER_SPRITES[direction].idle;
 
   return (
     <Marker
@@ -730,16 +856,113 @@ function PlayerLocationMarker({ location }: { location: GpsPoint }) {
       zIndex={1000}
     >
       <View collapsable={false} pointerEvents="none" style={styles.playerMarker}>
-        <Image
-          accessibilityIgnoresInvertColors
-          fadeDuration={0}
-          resizeMode="contain"
-          source={PLAYER_SPRITE}
-          style={styles.playerSpriteImage}
-        />
+        {PLAYER_SPRITE_LAYERS.map((frame) => (
+          <Image
+            accessibilityIgnoresInvertColors
+            fadeDuration={0}
+            key={frame.key}
+            resizeMode="contain"
+            source={frame.source}
+            style={[
+              styles.playerSpriteImage,
+              { opacity: frame.source === visibleSpriteSource ? 1 : 0 }
+            ]}
+          />
+        ))}
       </View>
     </Marker>
   );
+}
+
+type RecentMovement = {
+  bearingDegrees: number;
+  speedMetersPerSecond: number;
+};
+
+function getMovementBetween(
+  from: GpsPoint | null,
+  to: GpsPoint
+): RecentMovement | null {
+  if (!from || getPointTimestamp(from) === getPointTimestamp(to)) {
+    return null;
+  }
+
+  const distanceMeters = haversineDistanceMeters(from, to);
+  const seconds = (getPointTimestamp(to) - getPointTimestamp(from)) / 1000;
+
+  if (
+    distanceMeters < PLAYER_BEARING_MIN_DISTANCE_METERS ||
+    !Number.isFinite(seconds) ||
+    seconds <= 0
+  ) {
+    return null;
+  }
+
+  return {
+    bearingDegrees: calculateBearingDegrees(from, to),
+    speedMetersPerSecond: distanceMeters / seconds
+  };
+}
+
+function getPlayerDirection(heading: number | null): PlayerDirection {
+  if (heading === null) {
+    return "south";
+  }
+
+  const normalizedHeading = normalizeHeading(heading);
+
+  if (normalizedHeading >= 45 && normalizedHeading < 135) {
+    return "east";
+  }
+
+  if (normalizedHeading >= 135 && normalizedHeading < 225) {
+    return "south";
+  }
+
+  if (normalizedHeading >= 225 && normalizedHeading < 315) {
+    return "west";
+  }
+
+  return "north";
+}
+
+function getPlayerHeading(
+  liveLocation: GpsPoint,
+  movement: RecentMovement | null
+) {
+  const liveHeading = liveLocation.heading;
+  const effectiveSpeed = Math.max(
+    liveLocation.speedMetersPerSecond ?? 0,
+    movement?.speedMetersPerSecond ?? 0
+  );
+  const hasReliableLiveHeading =
+    typeof liveHeading === "number" &&
+    Number.isFinite(liveHeading) &&
+    liveHeading >= 0 &&
+    effectiveSpeed >= PLAYER_HEADING_SPEED_METERS_PER_SECOND &&
+    (liveLocation.accuracy === null || liveLocation.accuracy <= 80);
+
+  if (hasReliableLiveHeading) {
+    return normalizeHeading(liveHeading);
+  }
+
+  return movement?.bearingDegrees ?? null;
+}
+
+function calculateBearingDegrees(from: GpsPoint, to: GpsPoint) {
+  const fromLatitude = toRadians(from.latitude);
+  const toLatitude = toRadians(to.latitude);
+  const longitudeDelta = toRadians(to.longitude - from.longitude);
+  const y = Math.sin(longitudeDelta) * Math.cos(toLatitude);
+  const x =
+    Math.cos(fromLatitude) * Math.sin(toLatitude) -
+    Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeDelta);
+
+  return normalizeHeading((Math.atan2(y, x) * 180) / Math.PI);
+}
+
+function normalizeHeading(heading: number) {
+  return ((heading % 360) + 360) % 360;
 }
 
 function toRadians(value: number) {
@@ -1190,6 +1413,9 @@ const styles = StyleSheet.create({
   },
   playerSpriteImage: {
     height: 64,
+    left: 0,
+    position: "absolute",
+    top: 0,
     width: 64
   }
 

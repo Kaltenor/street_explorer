@@ -47,12 +47,12 @@ function assertFrame(name, shouldBeBundled) {
 
 for (const direction of directions) {
   assertFrame(`idle-${direction}.png`, false);
-  assertFrame(`native-idle-${direction}.png`, direction === "south");
+  assertFrame(`native-idle-${direction}.png`, true);
   assertFrame(`native-stale-${direction}.png`, false);
 
   for (let frame = 1; frame <= 3; frame += 1) {
     assertFrame(`walk-${direction}-${frame}.png`, false);
-    assertFrame(`native-walk-${direction}-${frame}.png`, false);
+    assertFrame(`native-walk-${direction}-${frame}.png`, true);
   }
 }
 
@@ -77,12 +77,13 @@ assert(
     mapSource.includes("coordinate={pointToCoordinate(location)}") &&
     mapSource.includes("tracksViewChanges") &&
     mapSource.includes("collapsable={false}") &&
-    mapSource.includes("source={PLAYER_SPRITE}") &&
-    mapSource.includes('native-idle-south.png') &&
-    mapSource.includes("style={styles.playerSpriteImage}") &&
+    mapSource.includes("PLAYER_SPRITE_LAYERS.map") &&
+    mapSource.includes("source={frame.source}") &&
+    mapSource.includes("styles.playerSpriteImage") &&
     mapSource.includes("height: 64") &&
-    mapSource.includes("width: 64"),
-  "Player is not one stable, explicitly sized native map annotation"
+    mapSource.includes("width: 64") &&
+    (mapSource.match(/identifier="street-explorer-player"/g) ?? []).length === 1,
+  "Player animation is not contained in one stable, explicitly sized native map annotation"
 );
 assert(
   mapSource.includes("playerVisible && playerLocation") &&
@@ -104,19 +105,26 @@ assert(
 assert(
   mapSource.includes("Last known player location, GPS signal stale") &&
     mapSource.includes("showsUserLocation") &&
-    !mapSource.includes("PLAYER_NATIVE_FRAMES") &&
-    !mapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS"),
-  "Stop/Start marker persistence, native fallback, or stale GPS accessibility is missing"
+    mapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS = 170") &&
+    mapSource.includes("setWalkFrameIndex") &&
+    mapSource.includes("setInterval") &&
+    mapSource.includes("setMovement(null)") &&
+    !mapSource.includes("PLAYER_NATIVE_FRAMES"),
+  "Stop/Start persistence, frame timing, movement settling, native fallback, or stale GPS accessibility is missing"
 );
 assert(
+    mapSource.includes("PLAYER_SPRITES") &&
+    mapSource.includes("getPlayerDirection") &&
+    mapSource.includes("getPlayerHeading") &&
+    mapSource.includes("getMovementBetween") &&
+    mapSource.includes("MODE_LOCATION_CONFIG.walk.maxAcceptedAccuracyMeters") &&
+    mapSource.includes("opacity: frame.source === visibleSpriteSource ? 1 : 0") &&
     !mapSource.includes("Marker.Animated") &&
     !mapSource.includes("new AnimatedRegion") &&
-    !mapSource.includes("PLAYER_SPRITES") &&
-    !mapSource.includes("getPlayerDirection") &&
-    !mapSource.includes("getPlayerHeading") &&
+    !mapSource.includes("image={") &&
     !mapSource.includes("playerSpriteLayer") &&
     !mapSource.includes('require("../../assets/player-npc-topdown.png")'),
-  "Fragile annotation animation, runtime sprite churn, or legacy player rendering is still active"
+  "Directional frame animation is missing or fragile marker/image animation returned"
 );
 
-console.log("Player marker checks passed.");
+console.log("Player animation checks passed.");

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Street Explorer",
     "slug": "street-explorer",
-    "version": "0.14.9",
+    "version": "0.15.0",
     "orientation": "portrait",
     "scheme": "street-explorer",
     "splash": {
@@ -15,7 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "109",
+      "buildNumber": "110",
       "bundleIdentifier": "com.kaltenor.streetexplorer",
       "supportsTablet": true,
       "infoPlist": {
@@ -31,7 +31,7 @@
     },
     "android": {
       "package": "com.kaltenor.streetexplorer",
-      "versionCode": 109,
+      "versionCode": 110,
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",

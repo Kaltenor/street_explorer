@@ -106,7 +106,10 @@ import {
   startBackgroundLocationTracking,
   stopBackgroundLocationTracking
 } from "../services/backgroundLocationTask";
-import { collectExploredCellIdsByRouteSegments } from "../services/explorationArea";
+import {
+  collectExploredCellIdsByRouteSegments,
+  collectFillableEnclosedExplorationCellIds
+} from "../services/explorationArea";
 import {
   evaluateLiveMedalCollection,
   evaluateMedalCollectionForRecording,
@@ -114,7 +117,10 @@ import {
   repairMissedRecordingMedals,
   runMedalRetroScan
 } from "../services/medalEnclosure";
-import { analyzeLoopFillsForCells } from "../services/loopFill";
+import {
+  analyzeLoopFillsForCells,
+  LOOP_FILL_CONFIG
+} from "../services/loopFill";
 import {
   getStreetSegmentsNear,
   upsertStreetSegments
@@ -464,6 +470,7 @@ export function MapScreen({
   const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
+  const [objectiveClosureRevision, setObjectiveClosureRevision] = useState(0);
   const [districtZones, setDistrictZones] = useState<CachedZone[]>([]);
   const [mapZoneSelection, setMapZoneSelection] = useState<MapZoneSelection | null>(null);
   const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
@@ -514,6 +521,10 @@ export function MapScreen({
   const mapZoneSelectionRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
+  const objectiveClosureMonitorRef = useRef<{
+    contextKey: string | null;
+    fillCellIds: Set<string>;
+  }>({ contextKey: null, fillCellIds: new Set() });
   const recoveryPromptedSessionRef = useRef<number | null>(null);
   const recoveryResumeTransitionRef = useRef<{
     activityMode: ActivityMode;
@@ -737,7 +748,30 @@ export function MapScreen({
         : [],
     [activeWalk?.activityMode, activeWalk?.exploredCellIds, objective?.mode]
   );
-  const activeObjectiveCellKey = activeObjectiveCellIds.join("|");
+  const activeObjectiveClosureContextKey =
+    objective && activeWalk?.activityMode === objective.mode
+      ? `${activeWalk.sessionId}:${objective.mode}:${objective.zone.id}`
+      : null;
+  const activeObjectiveFillCellIds = useMemo(() => {
+    if (!activeObjectiveClosureContextKey || !objective) {
+      return [];
+    }
+
+    const combinedCellIds = [
+      ...new Set([...savedExplorationCellIds, ...activeObjectiveCellIds])
+    ];
+
+    return collectFillableEnclosedExplorationCellIds(
+      combinedCellIds,
+      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[objective.mode]
+    ).sort();
+  }, [
+    activeObjectiveCellIds,
+    activeObjectiveClosureContextKey,
+    objective,
+    savedExplorationCellIds
+  ]);
+  const activeObjectiveFillCellKey = activeObjectiveFillCellIds.join("|");
   const todayNewCellIds = useMemo(
     () => [...new Set([...savedTodayNewCellIds, ...activeNewCellIds])],
     [activeNewCellIds, savedTodayNewCellIds]
@@ -1500,6 +1534,39 @@ export function MapScreen({
   }, [currentLocation, loadVisibleDistrictZones, objective]);
 
   useEffect(() => {
+    const previousMonitor = objectiveClosureMonitorRef.current;
+
+    if (!activeObjectiveClosureContextKey) {
+      objectiveClosureMonitorRef.current = {
+        contextKey: null,
+        fillCellIds: new Set()
+      };
+      return;
+    }
+
+    if (previousMonitor.contextKey !== activeObjectiveClosureContextKey) {
+      objectiveClosureMonitorRef.current = {
+        contextKey: activeObjectiveClosureContextKey,
+        fillCellIds: new Set(activeObjectiveFillCellIds)
+      };
+      return;
+    }
+
+    const hasNewEnclosedCell = activeObjectiveFillCellIds.some(
+      (cellId) => !previousMonitor.fillCellIds.has(cellId)
+    );
+
+    objectiveClosureMonitorRef.current = {
+      contextKey: activeObjectiveClosureContextKey,
+      fillCellIds: new Set(activeObjectiveFillCellIds)
+    };
+
+    if (hasNewEnclosedCell) {
+      setObjectiveClosureRevision((currentRevision) => currentRevision + 1);
+    }
+  }, [activeObjectiveClosureContextKey, activeObjectiveFillCellKey]);
+
+  useEffect(() => {
     const requestId = objectiveStatsRequestRef.current + 1;
     objectiveStatsRequestRef.current = requestId;
 
@@ -1546,7 +1613,7 @@ export function MapScreen({
       });
 
     return () => abortController.abort();
-  }, [activeObjectiveCellKey, loopFillCellIds, objective, walks]);
+  }, [loopFillCellIds, objective, objectiveClosureRevision, walks]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;

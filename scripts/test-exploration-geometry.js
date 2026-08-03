@@ -1336,14 +1336,21 @@ assert(
 );
 assert(
   mapScreenSource.includes("activeObjectiveCellIds") &&
-    mapScreenSource.includes("activeObjectiveCellKey") &&
+    mapScreenSource.includes("collectFillableEnclosedExplorationCellIds(") &&
+    mapScreenSource.includes("activeObjectiveFillCellKey") &&
+    mapScreenSource.includes("objectiveClosureRevision") &&
+    mapScreenSource.includes("hasNewEnclosedCell") &&
+    mapScreenSource.includes(
+      "[loopFillCellIds, objective, objectiveClosureRevision, walks]"
+    ) &&
+    !mapScreenSource.includes("activeObjectiveCellKey") &&
     mapScreenSource.includes("mergeActiveExplorationCells(") &&
     mapScreenSource.includes("{ persistAchievement: activeObjectiveCellIds.length === 0 }") &&
     mapScreenSource.includes(
       "objectiveStatsRequestRef.current += 1;\n            setObjectiveStats(objectiveAfter)"
     ) &&
     zoneCompletionSource.includes("options.persistAchievement !== false"),
-  "district objective progress previews live loop closure safely and protects finalized refreshes from stale requests"
+  "district objective progress refreshes on new live closures and Stop without recalculating for open-line cells"
 );
 assert(
   routeSnapshotSource.includes("getRouteSnapshot(sessionId)") &&
@@ -1473,21 +1480,26 @@ assert(
     explorationMapSource.includes("showsUserLocation") &&
     explorationMapSource.includes("PLAYER_MOTION_FRESHNESS_MS") &&
     explorationMapSource.includes("isSubstantiallyMoreAccurate") &&
-    explorationMapSource.includes("PLAYER_SPRITE") &&
-    explorationMapSource.includes("source={PLAYER_SPRITE}") &&
-    explorationMapSource.includes("style={styles.playerSpriteImage}") &&
+    explorationMapSource.includes("PLAYER_SPRITES") &&
+    explorationMapSource.includes("PLAYER_SPRITE_LAYERS.map") &&
+    explorationMapSource.includes("source={frame.source}") &&
+    explorationMapSource.includes("styles.playerSpriteImage") &&
+    explorationMapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS = 170") &&
+    explorationMapSource.includes("getPlayerDirection") &&
+    explorationMapSource.includes("getPlayerHeading") &&
+    explorationMapSource.includes("opacity: frame.source === visibleSpriteSource ? 1 : 0") &&
     !explorationMapSource.includes("pointForCoordinate") &&
     !explorationMapSource.includes("schedulePlayerProjection") &&
     !explorationMapSource.includes("playerScreenPoint") &&
     !explorationMapSource.includes("animateCamera") &&
     !explorationMapSource.includes("isAutoFollowEnabled") &&
     !explorationMapSource.includes("isMapMoving") &&
-    !explorationMapSource.includes("PLAYER_SPRITES") &&
     !explorationMapSource.includes("Marker.Animated") &&
     !explorationMapSource.includes("new AnimatedRegion") &&
+    !explorationMapSource.includes("image={") &&
     !explorationMapSource.includes("PLAYER_NATIVE_FRAMES") &&
-    !explorationMapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS"),
-  "the complete live route and native player marker survive recovery, recording transitions, stale GPS, and MapKit redraws"
+    (explorationMapSource.match(/identifier="street-explorer-player"/g) ?? []).length === 1,
+  "the complete live route and single native animated player marker survive recovery, recording transitions, stale GPS, and MapKit redraws"
 );
 assert(
   foregroundResumeSyncSource.includes("const points = persistedPoints") &&

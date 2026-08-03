@@ -31,9 +31,9 @@ Use the development build for real device testing, especially background locatio
 
 ## Current Status
 
-Current version: `v0.14.9`
+Current version: `v0.15.0`
 
-The app supports an updated shared portrait splash/launch presentation, self-healing foreground/background recording, accuracy-aware startup and one-time walking-scale recording-start centering, a persistent static pixel-art player marker with native geographic anchoring, native location fallback, and camera-independent panning, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion/Medals views, explored cells, loop-fill analysis, landmark medal collection, safe backup/restore, device step counts, city-wide district outlines with a live-updating map objective HUD, and persistent OpenStreetMap street completion derived from frozen saved routes.
+The app supports an updated shared portrait splash/launch presentation, self-healing foreground/background recording, accuracy-aware startup and one-time walking-scale recording-start centering, a persistent four-direction animated pixel-art player with native geographic anchoring, native location fallback, and camera-independent panning, hole-free full-walk live rendering, bounded durable late-GPS recovery, walking-focused GPS filtering, full-screen Details/History/Completion/Medals views, explored cells, loop-fill analysis, landmark medal collection, safe backup/restore, device step counts, city-wide district outlines with a closure- and Stop-driven map objective HUD, and persistent OpenStreetMap street completion derived from frozen saved routes.
 
 UI Polish V2 keeps the navy/gold identity while assigning stable gameplay meaning to map colors: green is the active walk, gold is the selected saved route, a restrained cool palette distinguishes other saved walks, cyan marks inferred street links, red is explored ground, and orange is today's exploration. Details, History, Completion, and the post-walk report use consistent dark card levels. GPS now reports Acquiring, Good, Weak/Stale, Denied, or Unavailable from permission, fix age, and accuracy, with a good-fix threshold of 25m and stale thresholds of 12 seconds while recording or 20 seconds while idle.
 

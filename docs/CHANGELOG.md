@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.15.0
+
+Added:
+
+- Restored four-direction pixel-art player animation with east, north, south, and west idle poses plus three walking frames per direction at the requested 170ms cadence.
+- Animation runs from reliable GPS movement both during and outside recordings, using live heading when trustworthy and a 3m displacement bearing fallback when heading is unavailable.
+
+Changed:
+
+- District objective progress is now event-driven during a walk: ordinary open-line cells no longer launch a percentage scan, while each newly enclosed red area and Stop still refresh the HUD.
+- All 16 sprite images remain pre-mounted as layers inside the one proven 64×64-point native MapKit annotation; frame changes only toggle layer opacity instead of replacing the annotation, changing its image prop, or remounting it.
+- The v0.14.8-v0.14.9 geographic anchoring remains unchanged: there is still no `Marker.Animated`, `AnimatedRegion`, screen-space projection, coordinate interpolation, automatic camera following, or additional native annotations.
+- Animation requires a fresh fix within the walking acceptance accuracy threshold and at least 0.45m/s effective movement. Stationary displacement fallback settles after four seconds and stale GPS returns to the last directional idle frame.
+- Expanded player and geometry regressions to require every bundled directional frame, one stable native annotation, opacity-only frame selection, and the continued absence of the unreliable marker/projection paths.
+- Synchronized the app version to 0.15.0, iOS build 110, and Android version code 110.
+
 ## v0.14.9
 
 Fixed:
