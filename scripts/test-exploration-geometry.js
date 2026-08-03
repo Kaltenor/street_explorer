@@ -1335,6 +1335,17 @@ assert(
   "completion zone scans yield to navigation and cancel when the menu closes"
 );
 assert(
+  mapScreenSource.includes("activeObjectiveCellIds") &&
+    mapScreenSource.includes("activeObjectiveCellKey") &&
+    mapScreenSource.includes("mergeActiveExplorationCells(") &&
+    mapScreenSource.includes("{ persistAchievement: activeObjectiveCellIds.length === 0 }") &&
+    mapScreenSource.includes(
+      "objectiveStatsRequestRef.current += 1;\n            setObjectiveStats(objectiveAfter)"
+    ) &&
+    zoneCompletionSource.includes("options.persistAchievement !== false"),
+  "district objective progress previews live loop closure safely and protects finalized refreshes from stale requests"
+);
+assert(
   routeSnapshotSource.includes("getRouteSnapshot(sessionId)") &&
     routeSnapshotSource.includes("return existingRouteSegments") &&
     walkRepositorySource.includes(
@@ -1443,30 +1454,40 @@ assert(
   activeRouteRenderSource.includes("segments={activeRouteChunks}") &&
     !activeRouteRenderSource.includes("shouldShowRoutes") &&
     !activeRouteRenderSource.includes('renderLevel === "close"') &&
-    explorationMapSource.includes("{playerVisible && playerLocation && playerScreenPoint ? (") &&
     mapScreenSource.includes("playerVisible={isLaunchDismissed}") &&
+    mapScreenSource.includes("getSavedPlayerLocation") &&
+    mapScreenSource.includes("savePlayerLocation") &&
+    mapScreenSource.includes("playerLocationPersistenceCandidate") &&
+    explorationMapSource.includes("pendingPlayerFocusTimestampRef") &&
     explorationMapSource.includes(
       "activeRouteEndPoint ?? currentLocation"
     ) &&
-    explorationMapSource.includes(
-      "const followTarget = activeRouteEndPoint ?? playerLocation"
-    ) &&
     explorationMapSource.includes("persistentPlayerLocationRef") &&
     explorationMapSource.includes("shouldAdoptPlayerLocation") &&
-    explorationMapSource.includes("PlayerLocationOverlay") &&
-    explorationMapSource.includes("pointForCoordinate") &&
-    explorationMapSource.includes("mapViewportSize.width / 2") &&
+    explorationMapSource.includes("PlayerLocationMarker") &&
+    explorationMapSource.includes('identifier="street-explorer-player"') &&
+    explorationMapSource.includes("coordinate={pointToCoordinate(location)}") &&
+    explorationMapSource.includes("tracksViewChanges") &&
+    explorationMapSource.includes("collapsable={false}") &&
+    explorationMapSource.includes("onPanDrag={handleMapPan}") &&
     explorationMapSource.includes("showsUserLocation") &&
     explorationMapSource.includes("PLAYER_MOTION_FRESHNESS_MS") &&
     explorationMapSource.includes("isSubstantiallyMoreAccurate") &&
-    explorationMapSource.includes("PLAYER_SPRITES") &&
-    explorationMapSource.includes("source={spriteSource}") &&
+    explorationMapSource.includes("PLAYER_SPRITE") &&
+    explorationMapSource.includes("source={PLAYER_SPRITE}") &&
     explorationMapSource.includes("style={styles.playerSpriteImage}") &&
+    !explorationMapSource.includes("pointForCoordinate") &&
+    !explorationMapSource.includes("schedulePlayerProjection") &&
+    !explorationMapSource.includes("playerScreenPoint") &&
+    !explorationMapSource.includes("animateCamera") &&
+    !explorationMapSource.includes("isAutoFollowEnabled") &&
+    !explorationMapSource.includes("isMapMoving") &&
+    !explorationMapSource.includes("PLAYER_SPRITES") &&
     !explorationMapSource.includes("Marker.Animated") &&
     !explorationMapSource.includes("new AnimatedRegion") &&
     !explorationMapSource.includes("PLAYER_NATIVE_FRAMES") &&
     !explorationMapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS"),
-  "the complete live route and app-owned player overlay survive recovery, recording transitions, stale GPS, and MapKit redraws"
+  "the complete live route and native player marker survive recovery, recording transitions, stale GPS, and MapKit redraws"
 );
 assert(
   foregroundResumeSyncSource.includes("const points = persistedPoints") &&

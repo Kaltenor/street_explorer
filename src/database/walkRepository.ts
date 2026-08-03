@@ -1242,7 +1242,8 @@ export async function restoreBackupV5Data(
       DELETE FROM app_settings
       WHERE key IN (
         'active_recording_session_id',
-        'active_recording_mode'
+        'active_recording_mode',
+        'last_player_location'
       );
       DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';
       DELETE FROM collected_medals;
@@ -1621,7 +1622,8 @@ export async function deleteAllData() {
       DELETE FROM app_settings
       WHERE key IN (
         'active_recording_session_id',
-        'active_recording_mode'
+        'active_recording_mode',
+        'last_player_location'
       );
       DELETE FROM pending_recording_repairs;
       DELETE FROM pending_recording_discards;

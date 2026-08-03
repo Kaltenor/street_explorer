@@ -1,5 +1,5 @@
 import { getDatabase } from "./db";
-import { ActivityMode } from "../types/walk";
+import { ActivityMode, GpsPoint } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
 
@@ -7,6 +7,8 @@ const APP_LANGUAGE_KEY = "app_language";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
 const COMPLETION_OBJECTIVE_KEY = "completion_objective";
+const LAST_PLAYER_LOCATION_KEY = "last_player_location";
+const PLAYER_LOCATION_FUTURE_TOLERANCE_MS = 5 * 60 * 1000;
 const ACTIVITY_MODES: ActivityMode[] = ["walk"];
 const APP_LANGUAGES: AppLanguage[] = ["en", "fr"];
 const COMPLETION_MODES: ActivityMode[] = ["walk"];
@@ -42,6 +44,84 @@ export async function saveAppLanguage(language: AppLanguage) {
     `,
     APP_LANGUAGE_KEY,
     language
+  );
+}
+
+export async function getSavedPlayerLocation(): Promise<GpsPoint | null> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?",
+    LAST_PLAYER_LOCATION_KEY
+  );
+
+  if (!row?.value) {
+    return null;
+  }
+
+  try {
+    const point = JSON.parse(row.value) as Partial<GpsPoint>;
+    const timestamp = new Date(point.timestamp ?? "").getTime();
+    const hasValidAccuracy =
+      point.accuracy === null ||
+      (typeof point.accuracy === "number" &&
+        Number.isFinite(point.accuracy) &&
+        point.accuracy >= 0);
+
+    if (
+      typeof point.latitude !== "number" ||
+      !Number.isFinite(point.latitude) ||
+      point.latitude < -90 ||
+      point.latitude > 90 ||
+      typeof point.longitude !== "number" ||
+      !Number.isFinite(point.longitude) ||
+      point.longitude < -180 ||
+      point.longitude > 180 ||
+      !Number.isFinite(timestamp) ||
+      timestamp > Date.now() + PLAYER_LOCATION_FUTURE_TOLERANCE_MS ||
+      !hasValidAccuracy
+    ) {
+      return null;
+    }
+
+    return {
+      accuracy: point.accuracy ?? null,
+      heading:
+        typeof point.heading === "number" && Number.isFinite(point.heading)
+          ? point.heading
+          : null,
+      latitude: point.latitude,
+      longitude: point.longitude,
+      pointIndex: 0,
+      speedMetersPerSecond:
+        typeof point.speedMetersPerSecond === "number" &&
+        Number.isFinite(point.speedMetersPerSecond)
+          ? point.speedMetersPerSecond
+          : null,
+      timestamp: new Date(timestamp).toISOString()
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function savePlayerLocation(point: GpsPoint) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO app_settings (key, value)
+      VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `,
+    LAST_PLAYER_LOCATION_KEY,
+    JSON.stringify({
+      accuracy: point.accuracy,
+      heading: point.heading ?? null,
+      latitude: point.latitude,
+      longitude: point.longitude,
+      speedMetersPerSecond: point.speedMetersPerSecond ?? null,
+      timestamp: point.timestamp
+    })
   );
 }
 

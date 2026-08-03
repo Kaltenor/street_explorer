@@ -33,7 +33,7 @@ npm run test:player
 npx expo install --check
 ```
 
-`test:player` verifies the sixteen native idle/walking assets plus retained source/stale assets, trustworthy-location retention, explicit 64×64-point overlay rendering, launch-screen visibility gating, auto-follow center pinning, native projection after manual map movement, the native location fallback, removal of custom animated MapKit annotations and 170ms frame churn, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
+`test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, one stable static south-facing 64×64-point native map annotation, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the native location fallback, removal of screen-space projection/auto-follow/animated coordinate and directional-frame churn, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 
@@ -69,7 +69,7 @@ Prerequisites: run the Street Explorer 0.12.0 JavaScript bundle in a compatible 
 5. Record and stop a short valid walk. Expected: the post-walk report opens at the durable save boundary, leads with its quality score and reason, keeps the four headline metrics prominent, and retains objective/loop progress plus Skip, Save, and naming actions.
 6. Cold-start while the permission prompt or first fix is pending. Expected: the GPS badge says Acquiring in blue and exposes the same state to VoiceOver.
 7. Grant permission and obtain an outdoor fix at 25m accuracy or better. Expected: the badge changes to Good in green and shows rounded accuracy. Move somewhere with accuracy worse than 25m but keep fixes arriving. Expected: it changes to Weak in orange; recording still follows the existing 30m acceptance safety limit.
-8. While recording, interrupt fresh fixes for more than 12 seconds; while idle, repeat for more than 20 seconds. Expected: the badge changes to Stale in orange and reports the last-fix age without removing the last trustworthy player overlay or existing route.
+8. While recording, interrupt fresh fixes for more than 12 seconds; while idle, repeat for more than 20 seconds. Expected: the badge changes to Stale in orange and reports the last-fix age without removing the last trustworthy player marker or existing route.
 9. Deny foreground location permission. Expected: the badge says Denied in red and the existing permission guidance remains visible. Grant permission but provide no usable fix until the bounded initial lookup resolves, using simulator Location None if needed. Expected: the badge says Unavailable in gray rather than remaining indefinitely in Acquiring.
 10. Force-close and reopen the app. Expected: saved routes, names, exploration, and reports remain unchanged; the GPS state is recalculated from the new permission/fix lifecycle instead of persisting a stale label. Repeat with larger text or VoiceOver and confirm badges, cards, and report actions remain readable and operable.
 
@@ -99,8 +99,9 @@ Startup regressions: when testing an older development binary against the curren
 14. Confirm the Stop dialog offers Continue and a hold-to-quit action; choose Continue and confirm recording and drawing continue. With VoiceOver, confirm the Quit control exposes its confirmation action.
 15. Tap Stop again, hold Quit, and confirm the UI enters Finishing only while tracking is quiesced and queued GPS is durably finalized.
 16. Confirm the recording report, History row, saved live cells, and Start control appear immediately at that durable boundary; route inference, exact steps, medals, objectives, and full cache refresh may finish afterward without blocking input.
-17. After a first walk of at least 200m, start another walk immediately and continue for at least one minute. Confirm the player remains approximately 64 points wide, visible through every direction change, and stable while the new distance, steps, and route continue normally and the previous derived work settles.
-18. Force close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
+17. After a first walk of at least 200m, start another walk immediately and continue for at least one minute. Confirm the static player remains approximately 64 points wide while the new distance, steps, and route continue normally and the previous derived work settles.
+18. Before and during that second walk, pan, zoom, and rotate the map repeatedly. Expected: the character stays attached to one geographic point and moves synchronously with the map; its offset from the native blue location dot stays constant until a new trustworthy GPS coordinate arrives. It must not freeze at an old screen position, teleport after the gesture, disappear, or recenter the camera. Pan far enough to move the player offscreen, then pan back and confirm it returns at the same map coordinate.
+19. Force-close and reopen after a trustworthy fix. Expected: after the launch screen is dismissed, the player appears from the saved last position before a new fix is required. Start another walk and confirm the one-time recenter occurs, then pan and verify automatic camera following does not resume. Separately force-close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
 
 ## Startup And Large-History Performance Test
 
@@ -201,7 +202,7 @@ Confirm each layer appears or disappears.
 3. Select a zone such as a district.
 4. Tap Set objective.
 5. Confirm the map HUD shows the objective name and completion percentage.
-6. Record or reprocess exploration and confirm the objective percentage updates.
+6. Start recording, walk a qualifying loop that visibly closes and fills a new red area, and keep the recording active. Expected: after the closing cell is accepted, the HUD briefly calculates and then updates its percentage and remaining-cell count without Stop or relaunch. Stop and finalize the recording; expected: the same or reconciled durable percentage remains, and only durable 100% completion can create a permanent achievement.
 
 ## Explored Area Outline Test
 
@@ -254,7 +255,8 @@ Notes:
 22. Rapidly long-press different districts or cities while an uncached boundary request is pending. Confirm an older lookup or percentage never restores an earlier name, scope, outline, remaining-cell count, or today count after the final selection finishes.
 23. Force-close and reopen. Confirm the last long-pressed scope and area remain the saved objective and the selected city's cached district outlines return without requiring Completion to be opened.
 24. Long-press inside a different city with district relations. Confirm that city's district group replaces the previous city outlines without mixing cached districts. Disable network, long-press an uncached area, and confirm an Area unavailable message appears without changing the existing objective.
-25. Zoom out to a city-wide view and move the map away from the player, then tap Start with foreground location permission and a trustworthy fix. Confirm the camera recenters at the normal walking-scale zoom, the player icon is back to its previous visible size, and accepted route points continue auto-following. Repeat through Resume on a recoverable recording.
+25. Zoom out to a city-wide view and move the map away from the player, then tap Start with foreground location permission and a trustworthy fix. Confirm the camera recenters once at the normal walking-scale zoom and the player icon returns at its previous visible size. Pan immediately and confirm the camera stays under finger control instead of resuming follow. Repeat through Resume on a recoverable recording.
+26. With a district objective selected, start a walk and close a qualifying loop that visibly fills new red ground. Without stopping, confirm the HUD briefly shows Calculating and then increases the percentage/reduces remaining cells. Force-close before finalizing and confirm the preview did not create a permanent 100% achievement from unfinished cells. Recover or finalize the walk and confirm the durable percentage appears without another relaunch.
 
 ## Street Completion V2 Test
 
@@ -437,19 +439,21 @@ This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK 
 20. Stop a recording with one accepted point, deliver its second valid point after the handler quiet period but within five minutes, and confirm the hidden session is promoted, repaired, and shown without a hole.
 21. Replace a frozen route while an older repair calculation for the same GPS generation is still running; confirm the older cells cannot clear the marker against the newer route geometry.
 
-## Animated Player Marker Test
+## Static Player Overlay Test
 
 1. Launch outdoors with foreground permission and confirm the CC0 top-down pixel character appears before recording.
-2. Confirm the map initially centers on the current fix without replacing it with the native blue cursor.
-3. Start recording, walk straight for several metres, and confirm the three-frame walking cycle plays continuously without the player flashing, disappearing, or leaving partial fragments.
-4. Turn through north, east, south, and west; confirm the character changes to the corresponding directional artwork and glides between GPS updates instead of jumping or rotating the same image.
-5. Stop moving and confirm the character settles on the matching directional idle frame.
-6. Stop the walk and immediately start another; confirm the native annotation remains continuously visible during active-route teardown and recreation.
+2. Confirm the map initially centers on the current fix and the static 64×64-point character covers the native blue cursor.
+3. Start recording and confirm the camera recenters once at walking scale. Immediately pan in several directions and confirm the camera never pulls back toward the player.
+4. During pans, zooms, and rotations, confirm the sprite remains visible and stays attached to the same geographic position instead of sticking to screen center or disappearing. When that position leaves the viewport, the sprite should move naturally off-screen.
+5. Walk and turn through several directions; confirm the single south-facing image remains stable with no frame changes, flashing, disappearance, or fragments.
+6. Stop the walk and immediately start another; confirm the same overlay view returns after the one-time recenter without changing artwork.
 7. Interrupt location or map connectivity and confirm the explorer stays visible at the newest trustworthy position.
 8. Wait at least ten seconds without a fix and confirm the player keeps its last rendered sprite instead of disappearing; with VoiceOver, confirm the marker is announced as a stale last-known position.
 9. Restore service and confirm the watcher reconnects, the accessible stale state clears, and drawing resumes automatically.
 10. Briefly create a weak or noisy reading and confirm the explorer follows accepted route points instead of jumping to rejected GPS positions.
 11. Run `npm run test:player` and confirm the asset/source regression checks pass.
+12. With a Good fix, force-close and relaunch the app. Confirm the static sprite appears at the last trustworthy position even before a new GPS fix arrives; then Resume or start a new session and confirm the same sprite remains visible. If a newer fix arrives elsewhere, confirm the camera corrects once. Repeat while panning immediately and confirm that gesture cancels the correction without restarting auto-follow.
+13. Repeat with Location temporarily denied after the first successful run. Confirm the stale last-known sprite remains visible after launch while the GPS badge reports Denied; restoring permission should update the same sprite without remounting it.
 
 ## Explored Area Performance Test
 

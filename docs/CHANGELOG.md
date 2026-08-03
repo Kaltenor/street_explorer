@@ -1,5 +1,60 @@
 # Changelog
 
+## v0.14.9
+
+Fixed:
+
+- District and city objective percentages now preview the active recording's unique explored cells, so closing a qualifying red area updates the HUD during the walk instead of waiting for Stop or an app relaunch.
+- Live objective calculations use the same enclosed-contour fill rules as the map renderer while merging persisted and active cells without double-counting.
+- A 100% live preview cannot create a permanent completion achievement from unfinished recording data; achievement persistence remains gated on durable cells after finalization.
+- Finalized objective refreshes now invalidate any older live calculation before publishing their result, preventing a stale asynchronous preview from replacing the durable percentage.
+- Added regression and physical-device coverage for live loop-closure percentage updates.
+- Synchronized the app version to 0.14.9, iOS build 109, and Android version code 109.
+
+## v0.14.8
+
+Fixed:
+
+- Replaced the lagging screen-space player overlay with one stable 64×64-point native map annotation, so the character and map now move in the same MapKit coordinate system during pans, zooms, rotations, and camera transitions.
+- Removed asynchronous `pointForCoordinate` scheduling and its stale-result queue, which the supplied device video showed freezing and teleporting the character independently of the correct native location dot.
+- Kept the annotation deliberately static and continuously tracked: there is no animated coordinate, direction, or frame swapping in the live render path, while the durable last-trustworthy position, one-time Start/Resume recenter, stale label, and native iOS location fallback remain unchanged.
+- Added regressions that require native coordinate anchoring, one stable annotation child, and the absence of screen-projection state.
+- Synchronized the app version to 0.14.8, iOS build 108, and Android version code 108.
+
+## v0.14.7
+
+Fixed:
+
+- The newest trustworthy player position is now validated and stored in local settings at most once every five seconds, with an immediate best-effort save whenever the app backgrounds.
+- Cold launch restores that durable position before relying on a new iOS location response, covering force-close/relaunch, denied or delayed GPS, and unfinished-session recovery transitions.
+- Accepted active-route endpoints take precedence over raw fixes for persistence, and weak fixes above the walking acceptance threshold cannot overwrite the durable player position.
+- Start and Resume may perform one final immediate recenter when the first newer trustworthy fix replaces a restored position; the first user pan cancels that pending correction, so continuous auto-follow cannot return.
+- The always-mounted sprite becomes visible from the restored coordinate as soon as launch is dismissed and the map has layout, using map center only while its first native screen projection resolves.
+- Backup restore and Clear Data remove the device-local player position so it cannot leak into unrelated restored or reset data.
+- Expanded player and geometry regressions to require durable position restore, throttled foreground persistence, background flush, and first-projection visibility fallback.
+- Synchronized the app version to 0.14.7, iOS build 107, and Android version code 107.
+
+## v0.14.6
+
+Changed:
+
+- The static player sprite now remains geographically anchored and visible throughout map pans, zooms, rotations, and programmatic camera movement.
+- Map camera changes schedule throttled native `pointForCoordinate` updates, with at most one projection in flight and one pending refresh, so the overlay follows MapKit without creating an unbounded asynchronous queue.
+- Panning still never re-enables automatic camera following; only the sprite's screen position changes.
+- Updated player and geometry regressions to require continuous camera-change projection and reject gesture-time hiding.
+- Synchronized the app version to 0.14.6, iOS build 106, and Android version code 106.
+
+## v0.14.5
+
+Fixed:
+
+- Rebuilt player presentation around one always-mounted, fixed south-facing 64×64-point sprite instead of remounting or swapping directional/movement artwork.
+- Removed continuous idle and recording camera-follow animations. Start and Resume now perform one immediate walking-scale recenter, after which the camera remains fully under the user's control.
+- Panning immediately hides the sprite instead of letting it appear pinned to screen center; after the map settles, the actual trustworthy GPS coordinate is projected and the same sprite view reappears there.
+- Retained the native iOS location dot beneath the sprite solely as a GPS/rendering fallback.
+- Updated regressions to reject auto-follow, sprite direction/frame logic, animated custom annotations, and runtime sprite remounting.
+- Synchronized the app version to 0.14.5, iOS build 105, and Android version code 105.
+
 ## v0.14.4
 
 Fixed:

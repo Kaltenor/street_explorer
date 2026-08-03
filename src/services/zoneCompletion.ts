@@ -119,7 +119,8 @@ export async function fetchNearbyOsmZonesWithDebug(
 export async function calculateZoneCompletionStats(
   zone: CachedZone,
   exploredCells: ExploredCellRecord[],
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  options: { persistAchievement?: boolean } = {}
 ): Promise<ZoneCompletionStats> {
   throwIfCompletionCancelled(signal);
   const completionCells = includeRenderedContourFills(exploredCells);
@@ -163,7 +164,13 @@ export async function calculateZoneCompletionStats(
   const geometryFingerprint = getZoneGeometryFingerprint(zone);
   let achievement = await getZoneAchievement(zone.id);
 
-  if (!achievement && completionPercent !== null && completionPercent >= 100 && totalZoneCells) {
+  if (
+    options.persistAchievement !== false &&
+    !achievement &&
+    completionPercent !== null &&
+    completionPercent >= 100 &&
+    totalZoneCells
+  ) {
     const completedAt = new Date().toISOString();
 
     await recordZoneAchievement({

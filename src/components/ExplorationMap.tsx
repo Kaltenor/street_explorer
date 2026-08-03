@@ -21,7 +21,6 @@ import {
   buildExplorationPolygonOutlineSegments,
   buildMergedExplorationPolygons
 } from "../services/explorationArea";
-import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import {
@@ -153,16 +152,10 @@ export const ExplorationMap = memo(function ExplorationMap({
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
   const handledPlayerFocusRequestId = useRef(playerFocusRequestId);
+  const pendingPlayerFocusTimestampRef = useRef<number | null>(null);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
   const persistentPlayerLocationRef = useRef<GpsPoint | null>(null);
-  const playerProjectionRequestRef = useRef(0);
-  const [isAutoFollowEnabled, setIsAutoFollowEnabled] = useState(true);
   const [isNativeMapReady, setIsNativeMapReady] = useState(false);
-  const [mapViewportSize, setMapViewportSize] = useState({ height: 0, width: 0 });
-  const [playerScreenPoint, setPlayerScreenPoint] = useState<{
-    x: number;
-    y: number;
-  } | null>(null);
   const activeRouteStartPoint =
     activeRouteChunks[0]?.points[0] ?? activePoints[0] ?? null;
   const activeRouteEndPoint =
@@ -315,78 +308,6 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [isNativeMapReady, startupCenter]);
 
   useEffect(() => {
-    const followTarget = activeRouteEndPoint ?? playerLocation;
-
-    if (!followTarget) {
-      return;
-    }
-
-    if (
-      !isNativeMapReady ||
-      !isAutoFollowEnabled ||
-      initialCenterRef.current?.timestamp ===
-        getPointTimestamp(followTarget)
-    ) {
-      return;
-    }
-
-    mapRef.current?.animateCamera(
-      { center: pointToCoordinate(followTarget) },
-      { duration: 350 }
-    );
-  }, [
-    activeRouteEndPoint,
-    isAutoFollowEnabled,
-    isNativeMapReady,
-    playerLocation
-  ]);
-
-  useEffect(() => {
-    if (!playerLocation || mapViewportSize.height <= 0 || mapViewportSize.width <= 0) {
-      setPlayerScreenPoint(null);
-      return;
-    }
-
-    const requestId = playerProjectionRequestRef.current + 1;
-    playerProjectionRequestRef.current = requestId;
-
-    if (isAutoFollowEnabled) {
-      setPlayerScreenPoint({
-        x: mapViewportSize.width / 2,
-        y: mapViewportSize.height / 2
-      });
-      return;
-    }
-
-    if (!isNativeMapReady || !mapRef.current) {
-      return;
-    }
-
-    mapRef.current
-      .pointForCoordinate(pointToCoordinate(playerLocation))
-      .then((point) => {
-        if (
-          playerProjectionRequestRef.current === requestId &&
-          Number.isFinite(point.x) &&
-          Number.isFinite(point.y)
-        ) {
-          setPlayerScreenPoint(point);
-        }
-      })
-      .catch(() => {
-        // The native user-location indicator remains available if projection
-        // briefly fails while MapKit is rebuilding its camera or annotations.
-      });
-  }, [
-    isAutoFollowEnabled,
-    isNativeMapReady,
-    mapViewportSize.height,
-    mapViewportSize.width,
-    playerLocation,
-    visibleRegion
-  ]);
-
-  useEffect(() => {
     if (
       !isNativeMapReady ||
       !playerLocation ||
@@ -397,7 +318,7 @@ export const ExplorationMap = memo(function ExplorationMap({
 
     handledPlayerFocusRequestId.current = playerFocusRequestId;
     hasUserMovedMapRef.current = false;
-    setIsAutoFollowEnabled(true);
+    pendingPlayerFocusTimestampRef.current = getPointTimestamp(playerLocation);
     mapRef.current?.animateToRegion(
       {
         latitude: playerLocation.latitude,
@@ -405,9 +326,42 @@ export const ExplorationMap = memo(function ExplorationMap({
         latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
         longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
       },
-      450
+      0
     );
-  }, [isNativeMapReady, playerFocusRequestId, playerLocation]);
+  }, [
+    isNativeMapReady,
+    playerFocusRequestId,
+    playerLocation
+  ]);
+
+  useEffect(() => {
+    const pendingTimestamp = pendingPlayerFocusTimestampRef.current;
+
+    if (
+      pendingTimestamp === null ||
+      !isNativeMapReady ||
+      !playerLocation ||
+      getPointTimestamp(playerLocation) <= pendingTimestamp
+    ) {
+      return;
+    }
+
+    pendingPlayerFocusTimestampRef.current = null;
+
+    if (hasUserMovedMapRef.current) {
+      return;
+    }
+
+    mapRef.current?.animateToRegion(
+      {
+        latitude: playerLocation.latitude,
+        longitude: playerLocation.longitude,
+        latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
+        longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
+      },
+      0
+    );
+  }, [isNativeMapReady, playerLocation]);
 
   useEffect(() => {
     if (!highlightedSessionId) {
@@ -417,6 +371,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     const highlightedWalk = walks.find((walk) => walk.id === highlightedSessionId);
 
     if (highlightedWalk && highlightedWalk.points.length > 1) {
+      pendingPlayerFocusTimestampRef.current = null;
       fitToPoints(highlightedWalk.points, {
         bottom: 230,
         left: 48,
@@ -435,6 +390,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     const coordinates = selectedZone.geometry.flat();
 
     if (coordinates.length > 1) {
+      pendingPlayerFocusTimestampRef.current = null;
       mapRef.current?.fitToCoordinates(coordinates, {
         animated: true,
         edgePadding: {
@@ -461,8 +417,8 @@ export const ExplorationMap = memo(function ExplorationMap({
       },
       450
     );
+    pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
-    setIsAutoFollowEnabled(false);
   }, [focusedMedal, isNativeMapReady, medalFocusRequestId]);
 
   const handleRegionChangeComplete = (nextRegion: Region) => {
@@ -470,13 +426,14 @@ export const ExplorationMap = memo(function ExplorationMap({
     onVisibleRegionChange?.(nextRegion);
   };
 
-  const disableAutoFollow = () => {
+  const handleMapPan = () => {
+    pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
-    setIsAutoFollowEnabled(false);
   };
 
   const handleMapLongPress = (event: LongPressEvent) => {
-    disableAutoFollow();
+    pendingPlayerFocusTimestampRef.current = null;
+    hasUserMovedMapRef.current = true;
     onMapLongPress?.(event.nativeEvent.coordinate);
   };
 
@@ -491,18 +448,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   };
 
   return (
-    <View
-      onLayout={(event) => {
-        const { height, width } = event.nativeEvent.layout;
-
-        setMapViewportSize((current) =>
-          current.height === height && current.width === width
-            ? current
-            : { height, width }
-        );
-      }}
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <ApplePoiFilteredMapView
         ref={mapRef}
         style={styles.map}
@@ -511,14 +457,13 @@ export const ExplorationMap = memo(function ExplorationMap({
           mode: "include"
         }}
         initialRegion={region}
-        onPanDrag={disableAutoFollow}
+        onPanDrag={handleMapPan}
         onMapReady={() => {
           setIsNativeMapReady(true);
           onMapReady?.();
         }}
         onLongPress={handleMapLongPress}
         onRegionChangeComplete={handleRegionChangeComplete}
-        onTouchStart={disableAutoFollow}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -641,14 +586,11 @@ export const ExplorationMap = memo(function ExplorationMap({
           </Marker>
         )) : null}
 
+        {playerVisible && playerLocation ? (
+          <PlayerLocationMarker location={playerLocation} />
+        ) : null}
+
       </ApplePoiFilteredMapView>
-      {playerVisible && playerLocation && playerScreenPoint ? (
-        <PlayerLocationOverlay
-          activePoints={activePoints}
-          location={playerLocation}
-          screenPoint={playerScreenPoint}
-        />
-      ) : null}
     </View>
   );
 });
@@ -741,81 +683,14 @@ function useCoalescedValue<T>(value: T, intervalMs: number) {
   return settledValue;
 }
 
-const PLAYER_HEADING_SPEED_METERS_PER_SECOND = 0.35;
-const PLAYER_BEARING_MIN_DISTANCE_METERS = 3;
 const PLAYER_MOTION_FRESHNESS_MS = 10_000;
 const LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS = 5_000;
-const PLAYER_RENDER_SIZE = 64;
+const PLAYER_SPRITE = require("../../assets/player/native-idle-south.png");
 
-type PlayerDirection = "east" | "north" | "south" | "west";
-
-type PlayerSpriteSet = {
-  idle: number;
-  walk: readonly [number, number, number];
-};
-
-const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
-  east: {
-    idle: require("../../assets/player/native-idle-east.png"),
-    walk: [
-      require("../../assets/player/native-walk-east-1.png"),
-      require("../../assets/player/native-walk-east-2.png"),
-      require("../../assets/player/native-walk-east-3.png")
-    ]
-  },
-  north: {
-    idle: require("../../assets/player/native-idle-north.png"),
-    walk: [
-      require("../../assets/player/native-walk-north-1.png"),
-      require("../../assets/player/native-walk-north-2.png"),
-      require("../../assets/player/native-walk-north-3.png")
-    ]
-  },
-  south: {
-    idle: require("../../assets/player/native-idle-south.png"),
-    walk: [
-      require("../../assets/player/native-walk-south-1.png"),
-      require("../../assets/player/native-walk-south-2.png"),
-      require("../../assets/player/native-walk-south-3.png")
-    ]
-  },
-  west: {
-    idle: require("../../assets/player/native-idle-west.png"),
-    walk: [
-      require("../../assets/player/native-walk-west-1.png"),
-      require("../../assets/player/native-walk-west-2.png"),
-      require("../../assets/player/native-walk-west-3.png")
-    ]
-  }
-};
-
-function PlayerLocationOverlay({
-  activePoints,
-  location,
-  screenPoint
-}: {
-  activePoints: GpsPoint[];
-  location: GpsPoint;
-  screenPoint: { x: number; y: number };
-}) {
-  const previousLocationRef = useRef<GpsPoint | null>(null);
-  const routeMovement = getRecentMovement(activePoints);
-  const locationMovement = getMovementBetween(
-    previousLocationRef.current,
-    location
-  );
-  const movement = routeMovement ?? locationMovement;
+function PlayerLocationMarker({ location }: { location: GpsPoint }) {
   const [isGpsFresh, setIsGpsFresh] = useState(() =>
     isPlayerMotionPointFresh(location)
   );
-  const [direction, setDirection] = useState<PlayerDirection>(() =>
-    getPlayerDirection(getPlayerHeading(location, movement))
-  );
-  const heading = getPlayerHeading(location, movement);
-
-  useEffect(() => {
-    previousLocationRef.current = location;
-  }, [location]);
 
   useEffect(() => {
     const timestamp = getPointTimestamp(location);
@@ -838,169 +713,33 @@ function PlayerLocationOverlay({
     );
 
     return () => clearTimeout(freshnessTimer);
-  }, [location.timestamp]);
-
-  useEffect(() => {
-    if (heading !== null) {
-      setDirection(getPlayerDirection(heading));
-    }
-  }, [heading]);
+  }, [location]);
 
   const accessibilityLabel = isGpsFresh
     ? "Current player location"
     : "Last known player location, GPS signal stale";
-  const spriteSource = PLAYER_SPRITES[direction].idle;
 
   return (
-    <View
-      accessible
+    <Marker
       accessibilityLabel={accessibilityLabel}
-      accessibilityRole="image"
-      pointerEvents="none"
-      style={[
-        styles.playerOverlay,
-        {
-          left: screenPoint.x - PLAYER_RENDER_SIZE / 2,
-          top: screenPoint.y - PLAYER_RENDER_SIZE / 2
-        }
-      ]}
+      anchor={{ x: 0.5, y: 0.5 }}
+      coordinate={pointToCoordinate(location)}
+      identifier="street-explorer-player"
+      title={isGpsFresh ? "Current player location" : "Last known location"}
+      tracksViewChanges
+      zIndex={1000}
     >
-      <Image
-        accessibilityIgnoresInvertColors
-        resizeMode="contain"
-        source={spriteSource}
-        style={styles.playerSpriteImage}
-      />
-    </View>
+      <View collapsable={false} pointerEvents="none" style={styles.playerMarker}>
+        <Image
+          accessibilityIgnoresInvertColors
+          fadeDuration={0}
+          resizeMode="contain"
+          source={PLAYER_SPRITE}
+          style={styles.playerSpriteImage}
+        />
+      </View>
+    </Marker>
   );
-}
-
-type RecentMovement = {
-  bearingDegrees: number;
-  speedMetersPerSecond: number;
-};
-
-function getRecentMovement(points: GpsPoint[]): RecentMovement | null {
-  const endPoint = points.at(-1);
-
-  if (!endPoint) {
-    return null;
-  }
-
-  for (let index = points.length - 2; index >= 0; index -= 1) {
-    const startPoint = points[index];
-
-    if (!startPoint) {
-      continue;
-    }
-
-    const distanceMeters = haversineDistanceMeters(startPoint, endPoint);
-
-    if (distanceMeters < PLAYER_BEARING_MIN_DISTANCE_METERS) {
-      continue;
-    }
-
-    const seconds =
-      (new Date(endPoint.timestamp).getTime() - new Date(startPoint.timestamp).getTime()) /
-      1000;
-
-    if (!Number.isFinite(seconds) || seconds <= 0) {
-      continue;
-    }
-
-    return {
-      bearingDegrees: calculateBearingDegrees(startPoint, endPoint),
-      speedMetersPerSecond: distanceMeters / seconds
-    };
-  }
-
-  return null;
-}
-
-function getMovementBetween(
-  from: GpsPoint | null,
-  to: GpsPoint
-): RecentMovement | null {
-  if (!from || getPointTimestamp(from) === getPointTimestamp(to)) {
-    return null;
-  }
-
-  const distanceMeters = haversineDistanceMeters(from, to);
-  const seconds = (getPointTimestamp(to) - getPointTimestamp(from)) / 1000;
-
-  if (
-    distanceMeters < PLAYER_BEARING_MIN_DISTANCE_METERS ||
-    !Number.isFinite(seconds) ||
-    seconds <= 0
-  ) {
-    return null;
-  }
-
-  return {
-    bearingDegrees: calculateBearingDegrees(from, to),
-    speedMetersPerSecond: distanceMeters / seconds
-  };
-}
-
-function getPlayerDirection(heading: number | null): PlayerDirection {
-  if (heading === null) {
-    return "south";
-  }
-
-  const normalizedHeading = normalizeHeading(heading);
-
-  if (normalizedHeading >= 45 && normalizedHeading < 135) {
-    return "east";
-  }
-
-  if (normalizedHeading >= 135 && normalizedHeading < 225) {
-    return "south";
-  }
-
-  if (normalizedHeading >= 225 && normalizedHeading < 315) {
-    return "west";
-  }
-
-  return "north";
-}
-
-function getPlayerHeading(
-  liveLocation: GpsPoint,
-  movement: RecentMovement | null
-) {
-  const liveHeading = liveLocation.heading;
-  const effectiveSpeed = Math.max(
-    liveLocation.speedMetersPerSecond ?? 0,
-    movement?.speedMetersPerSecond ?? 0
-  );
-  const hasReliableLiveHeading =
-    typeof liveHeading === "number" &&
-    Number.isFinite(liveHeading) &&
-    liveHeading >= 0 &&
-    effectiveSpeed >= PLAYER_HEADING_SPEED_METERS_PER_SECOND &&
-    (liveLocation.accuracy === null || liveLocation.accuracy <= 80);
-
-  if (hasReliableLiveHeading) {
-    return normalizeHeading(liveHeading);
-  }
-
-  return movement?.bearingDegrees ?? null;
-}
-
-function calculateBearingDegrees(from: GpsPoint, to: GpsPoint) {
-  const fromLatitude = toRadians(from.latitude);
-  const toLatitude = toRadians(to.latitude);
-  const longitudeDelta = toRadians(to.longitude - from.longitude);
-  const y = Math.sin(longitudeDelta) * Math.cos(toLatitude);
-  const x =
-    Math.cos(fromLatitude) * Math.sin(toLatitude) -
-    Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeDelta);
-
-  return normalizeHeading((Math.atan2(y, x) * 180) / Math.PI);
-}
-
-function normalizeHeading(heading: number) {
-  return ((heading % 360) + 360) % 360;
 }
 
 function toRadians(value: number) {
@@ -1412,7 +1151,8 @@ function formatMarkerDate(value: string) {
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
+    overflow: "hidden"
   },
   map: {
     bottom: 0,
@@ -1441,11 +1181,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#3f4f5b",
     borderColor: "#a9b6c0"
   },
-  playerOverlay: {
+  playerMarker: {
+    alignItems: "center",
     height: 64,
-    position: "absolute",
-    width: 64,
-    zIndex: 1000
+    justifyContent: "center",
+    overflow: "visible",
+    width: 64
   },
   playerSpriteImage: {
     height: 64,

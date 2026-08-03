@@ -68,7 +68,9 @@ import {
   clearActiveRecordingSettings,
   createActiveRecordingSession,
   getActiveRecordingSettings,
+  getSavedPlayerLocation,
   getSavedCompletionObjective,
+  savePlayerLocation,
   saveCompletionObjective
 } from "../database/settingsRepository";
 import {
@@ -81,6 +83,7 @@ import { DEFAULT_MEDAL_ALBUM_ID } from "../data/medalAlbums";
 import {
   CachedZone,
   commitPendingRecordingRepair,
+  type ExploredCellRecord,
   getCachedZones,
   getExploredCellKeys,
   getExploredCellRecords,
@@ -190,6 +193,9 @@ import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 
 import { CollectedMedal, MedalAlbumProgress } from "../types/medal";
+import { MODE_LOCATION_CONFIG } from "../constants/config";
+
+const PLAYER_LOCATION_PERSIST_INTERVAL_MS = 5_000;
 const EMPTY_STATS: LifetimeStats = {
   walkCount: 0,
   totalDistanceMeters: 0,
@@ -522,6 +528,8 @@ export function MapScreen({
   const streetCompletionMigrationStartedRef = useRef(false);
   const isStartingRecordingRef = useRef(false);
   const isStoppingRecordingRef = useRef(false);
+  const lastPlayerLocationPersistedAtRef = useRef(0);
+  const latestPlayerLocationForPersistenceRef = useRef<GpsPoint | null>(null);
   const isMapReadyRef = useRef(false);
   const detailedWalksModeRef = useRef<ActivityMode | null>(null);
   const pathDisplayModeRef = useRef<PathDisplayMode>(pathDisplayMode);
@@ -652,6 +660,65 @@ export function MapScreen({
     isRecording: Boolean(activeWalk),
     onPoint: handleLocationPoint
   });
+  const playerLocationPersistenceCandidate =
+    activeWalk?.routeChunks.at(-1)?.points.at(-1) ??
+    activeWalk?.points.at(-1) ??
+    currentLocation;
+  latestPlayerLocationForPersistenceRef.current =
+    playerLocationPersistenceCandidate;
+
+  useEffect(() => {
+    let mounted = true;
+
+    getSavedPlayerLocation()
+      .then((savedLocation) => {
+        if (!mounted || !savedLocation) {
+          return;
+        }
+
+        lastPlayerLocationPersistedAtRef.current = Date.now();
+        setCurrentLocation((currentPoint) =>
+          !currentPoint ||
+          getGpsTimestamp(savedLocation) > getGpsTimestamp(currentPoint)
+            ? savedLocation
+            : currentPoint
+        );
+      })
+      .catch((error) =>
+        console.warn("Failed to restore the last player position", error)
+      );
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isTrustworthyPlayerPersistencePoint(playerLocationPersistenceCandidate)) {
+      return;
+    }
+
+    const delay = Math.max(
+      0,
+      lastPlayerLocationPersistedAtRef.current +
+        PLAYER_LOCATION_PERSIST_INTERVAL_MS -
+        Date.now()
+    );
+    const timer = setTimeout(() => {
+      const latestPoint = latestPlayerLocationForPersistenceRef.current;
+
+      if (!isTrustworthyPlayerPersistencePoint(latestPoint)) {
+        return;
+      }
+
+      lastPlayerLocationPersistedAtRef.current = Date.now();
+      savePlayerLocation(latestPoint).catch((error) =>
+        console.warn("Failed to persist the player position", error)
+      );
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [playerLocationPersistenceCandidate]);
 
   const savedExplorationCellIdSet = useMemo(
     () => new Set(savedExplorationCellIds),
@@ -663,6 +730,14 @@ export function MapScreen({
     ),
     [activeWalk?.exploredCellIds, savedExplorationCellIdSet]
   );
+  const activeObjectiveCellIds = useMemo(
+    () =>
+      objective && activeWalk?.activityMode === objective.mode
+        ? [...new Set(activeWalk.exploredCellIds)]
+        : [],
+    [activeWalk?.activityMode, activeWalk?.exploredCellIds, objective?.mode]
+  );
+  const activeObjectiveCellKey = activeObjectiveCellIds.join("|");
   const todayNewCellIds = useMemo(
     () => [...new Set([...savedTodayNewCellIds, ...activeNewCellIds])],
     [activeNewCellIds, savedTodayNewCellIds]
@@ -1440,7 +1515,16 @@ export function MapScreen({
     setIsObjectiveStatsCalculating(true);
     getExploredCellRecords(objective.mode)
       .then((cells) =>
-        calculateZoneCompletionStats(objective.zone, cells, abortController.signal)
+        calculateZoneCompletionStats(
+          objective.zone,
+          mergeActiveExplorationCells(
+            cells,
+            activeObjectiveCellIds,
+            objective.mode
+          ),
+          abortController.signal,
+          { persistAchievement: activeObjectiveCellIds.length === 0 }
+        )
       )
       .then((nextStats) => {
         if (
@@ -1462,7 +1546,7 @@ export function MapScreen({
       });
 
     return () => abortController.abort();
-  }, [loopFillCellIds, objective, walks]);
+  }, [activeObjectiveCellKey, loopFillCellIds, objective, walks]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;
@@ -2543,7 +2627,9 @@ export function MapScreen({
         if (objective) {
           try {
             objectiveAfter = await calculateObjectiveStats(objective);
+            objectiveStatsRequestRef.current += 1;
             setObjectiveStats(objectiveAfter);
+            setIsObjectiveStatsCalculating(false);
           } catch (error) {
             console.warn("Recording saved but deferred objective refresh failed", error);
           }
@@ -3394,6 +3480,16 @@ export function MapScreen({
       const transitionGeneration = appStateTransitionGenerationRef.current;
 
       if (nextState !== "active") {
+        const latestPlayerLocation =
+          latestPlayerLocationForPersistenceRef.current;
+
+        if (isTrustworthyPlayerPersistencePoint(latestPlayerLocation)) {
+          lastPlayerLocationPersistedAtRef.current = Date.now();
+          savePlayerLocation(latestPlayerLocation).catch((error) =>
+            console.warn("Failed to persist the backgrounded player position", error)
+          );
+        }
+
         setIsAppActive(false);
         return;
       }
@@ -3782,6 +3878,25 @@ function getElapsedSeconds(startedAt: string) {
   return Math.max(
     0,
     Math.round((Date.now() - new Date(startedAt).getTime()) / 1000)
+  );
+}
+
+function isTrustworthyPlayerPersistencePoint(
+  point: GpsPoint | null
+): point is GpsPoint {
+  return Boolean(
+    point &&
+      Number.isFinite(point.latitude) &&
+      point.latitude >= -90 &&
+      point.latitude <= 90 &&
+      Number.isFinite(point.longitude) &&
+      point.longitude >= -180 &&
+      point.longitude <= 180 &&
+      typeof point.accuracy === "number" &&
+      Number.isFinite(point.accuracy) &&
+      point.accuracy >= 0 &&
+      point.accuracy <= MODE_LOCATION_CONFIG.walk.maxAcceptedAccuracyMeters &&
+      Number.isFinite(new Date(point.timestamp).getTime())
   );
 }
 
@@ -4907,6 +5022,34 @@ async function calculateObjectiveStats(objective: CompletionObjective) {
   const cells = await getExploredCellRecords(objective.mode);
 
   return calculateZoneCompletionStats(objective.zone, cells);
+}
+
+function mergeActiveExplorationCells(
+  persistedCells: ExploredCellRecord[],
+  activeCellIds: string[],
+  mode: ActivityMode
+) {
+  if (activeCellIds.length === 0) {
+    return persistedCells;
+  }
+
+  const mergedCells = [...persistedCells];
+  const existingCellIds = new Set(
+    persistedCells.map((cell) => `${cell.mode}:${cell.cellKey}`)
+  );
+
+  for (const cellKey of activeCellIds) {
+    const modeCellKey = `${mode}:${cellKey}`;
+
+    if (existingCellIds.has(modeCellKey)) {
+      continue;
+    }
+
+    existingCellIds.add(modeCellKey);
+    mergedCells.push({ cellKey, mode, source: "gps" });
+  }
+
+  return mergedCells;
 }
 
 
