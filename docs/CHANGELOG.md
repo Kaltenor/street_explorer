@@ -1,5 +1,58 @@
 # Changelog
 
+
+## v0.16.0
+
+Added:
+
+- Replaced the temporary pixel player with an original hand-inked four-direction cartographer: navy coat, gold trim, parchment hood, red scarf, three restrained walking frames, and desaturated stale-GPS poses.
+- Added the shared Atlas Cabinet treatment to Details, History, Completion, and Options with gold headers, cartographic emblems, ornamental dividers, subtle navy paper texture, and unified gold-edged cards.
+- Added quiet locally generated page and ink/stamp sounds, a Reduce Motion-aware 240ms menu transition, selected/completed objective stamps, an explored-area ink flash, and a focused saved-route draw-on animation.
+
+Changed:
+
+- Strengthened the objective HUD as a folded-map ledger card and preserved the dark-orange district, red city, light-orange explored-ground, and gold route hierarchy.
+- Preserved one stable native MapKit player annotation by pre-mounting all 20 generated frames and selecting them with opacity only.
+- Updated visual identity, player provenance, architecture, and iPhone validation documentation.
+- Synchronized the app version to 0.16.0, iOS build 115, and Android version code 115.
+
+## v0.15.4
+
+Changed:
+
+- City and district objective percentages now restore from an in-memory and SQLite snapshot cache instead of clearing while the selected scope is validated.
+- Snapshot validity follows both the exact boundary geometry and a monotonic exploration revision, so recording finalization, deletion, restore, and reprocessing invalidate stale results automatically.
+- Selecting a paired city/district scope precomputes whichever companion snapshot is missing in the background, while the HUD keeps the previous valid percentage visible with an Updating status.
+- Synchronized the app version to 0.15.4, iOS build 114, and Android version code 114.
+
+## v0.15.3
+
+Changed:
+
+- Selected city boundaries now render red while district boundaries remain burnt dark orange.
+- Preserved the 2-point neighboring district strokes, 6-point selected boundary stroke, light-orange explored surface, and gold route/today semantics.
+- Synchronized the app version to 0.15.3, iOS build 113, and Android version code 113.
+
+## v0.15.2
+
+Changed:
+
+- Changed district and city boundary outlines from gold/gray to burnt dark orange so they no longer resemble active or saved route colors.
+- Doubled boundary emphasis: neighboring districts now use 2-point strokes and the selected district/city objective uses a 6-point stroke.
+- Changed cumulative explored-area polygons from midnight teal to translucent light orange so they remain distinct from MapKit parks and forests.
+- Kept today's exploration and the active route gold.
+- Synchronized the app version to 0.15.2, iOS build 112, and Android version code 112.
+
+## v0.15.1
+
+Changed:
+
+- Introduced the iOS-first Midnight Cartographer map treatment: dark muted Apple MapKit, game-owned location presentation, and hidden native points of interest.
+- Recolored explored territory from red to midnight teal, today's discovery and the active route to gold, and saved routes to a restrained atlas palette.
+- Replaced native route pins and generic medal chips with custom parchment-and-ink start, finish, locked-landmark, and collected-landmark markers.
+- Updated map identity regressions and physical-device test guidance for the new presentation.
+- Synchronized the app version to 0.15.1, iOS build 111, and Android version code 111.
+
 ## v0.15.0
 
 Added:

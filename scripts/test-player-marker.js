@@ -48,7 +48,7 @@ function assertFrame(name, shouldBeBundled) {
 for (const direction of directions) {
   assertFrame(`idle-${direction}.png`, false);
   assertFrame(`native-idle-${direction}.png`, true);
-  assertFrame(`native-stale-${direction}.png`, false);
+  assertFrame(`native-stale-${direction}.png`, true);
 
   for (let frame = 1; frame <= 3; frame += 1) {
     assertFrame(`walk-${direction}-${frame}.png`, false);
@@ -104,13 +104,13 @@ assert(
 );
 assert(
   mapSource.includes("Last known player location, GPS signal stale") &&
-    mapSource.includes("showsUserLocation") &&
+    mapSource.includes("showsUserLocation={false}") &&
     mapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS = 170") &&
     mapSource.includes("setWalkFrameIndex") &&
     mapSource.includes("setInterval") &&
     mapSource.includes("setMovement(null)") &&
     !mapSource.includes("PLAYER_NATIVE_FRAMES"),
-  "Stop/Start persistence, frame timing, movement settling, native fallback, or stale GPS accessibility is missing"
+  "Stop/Start persistence, frame timing, movement settling, game-owned location presentation, or stale GPS accessibility is missing"
 );
 assert(
     mapSource.includes("PLAYER_SPRITES") &&
@@ -118,6 +118,7 @@ assert(
     mapSource.includes("getPlayerHeading") &&
     mapSource.includes("getMovementBetween") &&
     mapSource.includes("MODE_LOCATION_CONFIG.walk.maxAcceptedAccuracyMeters") &&
+    mapSource.includes("PLAYER_SPRITES[direction].stale") &&
     mapSource.includes("opacity: frame.source === visibleSpriteSource ? 1 : 0") &&
     !mapSource.includes("Marker.Animated") &&
     !mapSource.includes("new AnimatedRegion") &&
@@ -125,6 +126,11 @@ assert(
     !mapSource.includes("playerSpriteLayer") &&
     !mapSource.includes('require("../../assets/player-npc-topdown.png")'),
   "Directional frame animation is missing or fragile marker/image animation returned"
+);
+
+assert(
+  fs.existsSync(path.join(root, "assets", "player", "cartographer-sheet.png")),
+  "Original generated cartographer source sheet is missing"
 );
 
 console.log("Player animation checks passed.");

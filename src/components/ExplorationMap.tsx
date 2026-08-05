@@ -7,9 +7,13 @@ import MapView, {
   Polyline,
   Region
 } from "react-native-maps";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Platform, StyleSheet, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import {
+  playAtlasSound,
+  useReducedMotionPreference
+} from "./AtlasCabinet";
 import {
   LOCATION_CONFIG,
   MAP_CONFIG,
@@ -53,6 +57,7 @@ type ExplorationMapProps = {
   onMedalPress?: (medal: CollectedMedal) => void;
   currentLocation: GpsPoint | null;
   highlightedSessionId: number | null;
+  routeFocusRequestId: number;
   layers: MapLayerState;
   savedExplorationCellIds: string[];
   onMapReady?: () => void;
@@ -99,28 +104,8 @@ const ApplePoiFilteredMapView = MapView as unknown as ForwardRefExoticComponent<
   ApplePoiFilteredMapViewProps & RefAttributes<MapView>
 >;
 
-const LANDMARK_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [
-  "airport",
-  "amusementPark",
-  "aquarium",
-  "beach",
-  "campground",
-  "fireStation",
-  "hospital",
-  "library",
-  "marina",
-  "museum",
-  "nationalPark",
-  "park",
-  "police",
-  "postOffice",
-  "publicTransport",
-  "school",
-  "stadium",
-  "theater",
-  "university",
-  "zoo"
-];
+// Game-owned landmarks and medals replace MapKit's generic POI symbols.
+const GAMEPLAY_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [];
 
 export const ExplorationMap = memo(function ExplorationMap({
   walks,
@@ -136,6 +121,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   medals,
   onMedalPress,
   highlightedSessionId,
+  routeFocusRequestId,
   layers,
   savedExplorationCellIds,
   onMapReady,
@@ -149,6 +135,10 @@ export const ExplorationMap = memo(function ExplorationMap({
   zoneFocusRequestId
 }: ExplorationMapProps) {
   usePerformanceRenderCounter("ExplorationMap");
+  const reducedMotion = useReducedMotionPreference();
+  const [highlightedRouteDrawProgress, setHighlightedRouteDrawProgress] = useState(1);
+  const [isInkRevealing, setIsInkRevealing] = useState(false);
+  const previousExplorationCellCountRef = useRef<number | null>(null);
   const mapRef = useRef<MapView | null>(null);
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
@@ -161,6 +151,9 @@ export const ExplorationMap = memo(function ExplorationMap({
     activeRouteChunks[0]?.points[0] ?? activePoints[0] ?? null;
   const activeRouteEndPoint =
     activeRouteChunks.at(-1)?.points.at(-1) ?? activePoints.at(-1) ?? null;
+  const highlightedRoutePointCount = highlightedSessionId === null
+    ? 0
+    : walks.find((walk) => walk.id === highlightedSessionId)?.points.length ?? 0;
   // Once recording has an accepted point, weak/rejected raw fixes must not move
   // either the player marker or the camera away from the canonical route. Keep
   // the last trustworthy point across recording teardown/startup transitions.
@@ -273,6 +266,23 @@ export const ExplorationMap = memo(function ExplorationMap({
     ]
   );
 
+
+  useEffect(() => {
+    const previousCount = previousExplorationCellCountRef.current;
+    previousExplorationCellCountRef.current = renderedExplorationCellIds.length;
+
+    if (
+      reducedMotion ||
+      previousCount === null ||
+      renderedExplorationCellIds.length <= previousCount
+    ) {
+      return;
+    }
+
+    setIsInkRevealing(true);
+    const revealTimer = setTimeout(() => setIsInkRevealing(false), 520);
+    return () => clearTimeout(revealTimer);
+  }, [reducedMotion, renderedExplorationCellIds.length]);
   useEffect(() => {
     if (!isNativeMapReady || !startupCenter) {
       return;
@@ -383,6 +393,42 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [highlightedSessionId, walks]);
 
   useEffect(() => {
+    if (!highlightedSessionId) {
+      setHighlightedRouteDrawProgress(1);
+      return;
+    }
+
+    if (highlightedRoutePointCount < 2) {
+      setHighlightedRouteDrawProgress(0);
+      return;
+    }
+
+    if (reducedMotion) {
+      setHighlightedRouteDrawProgress(1);
+      return;
+    }
+
+    const startedAt = Date.now();
+    setHighlightedRouteDrawProgress(0);
+    const drawTimer = setInterval(() => {
+      const progress = Math.min(1, (Date.now() - startedAt) / 900);
+      setHighlightedRouteDrawProgress(progress);
+
+      if (progress >= 1) {
+        clearInterval(drawTimer);
+        playAtlasSound("ink");
+      }
+    }, 30);
+
+    return () => clearInterval(drawTimer);
+  }, [
+    highlightedRoutePointCount,
+    highlightedSessionId,
+    reducedMotion,
+    routeFocusRequestId
+  ]);
+
+  useEffect(() => {
     if (!selectedZone || zoneFocusRequestId === handledZoneFocusRequestId.current) {
       return;
     }
@@ -454,9 +500,11 @@ export const ExplorationMap = memo(function ExplorationMap({
         ref={mapRef}
         style={styles.map}
         appleMapsPointsOfInterestFilter={{
-          categories: LANDMARK_POI_CATEGORIES,
+          categories: GAMEPLAY_POI_CATEGORIES,
           mode: "include"
         }}
+        mapType={Platform.OS === "ios" ? "mutedStandard" : "standard"}
+        userInterfaceStyle={Platform.OS === "ios" ? "dark" : undefined}
         initialRegion={region}
         onPanDrag={handleMapPan}
         onMapReady={() => {
@@ -469,7 +517,8 @@ export const ExplorationMap = memo(function ExplorationMap({
         rotateEnabled
         scrollEnabled
         zoomTapEnabled
-        showsUserLocation
+        showsPointsOfInterest={false}
+        showsUserLocation={false}
         showsMyLocationButton={false}
         zoomEnabled
         followsUserLocation={false}
@@ -477,6 +526,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         <ExplorationSurfaceOverlay
           areaStyle={areaStyle}
           explorationPolygons={explorationPolygons}
+          isInkRevealing={isInkRevealing}
           outlineSegments={explorationOutlineSegments}
           shouldShowCompletedArea={shouldShowCompletedArea}
           shouldShowOutline={shouldShowOutline}
@@ -487,10 +537,10 @@ export const ExplorationMap = memo(function ExplorationMap({
           zone.geometry.map((ring, index) => (
             <Polygon
               coordinates={ring}
-              fillColor="rgba(148, 163, 184, 0.025)"
+              fillColor="rgba(180, 83, 9, 0.035)"
               key={`district-${zone.id}-${index}`}
-              strokeColor="rgba(148, 163, 184, 0.5)"
-              strokeWidth={1}
+              strokeColor="rgba(180, 83, 9, 0.72)"
+              strokeWidth={2}
             />
           ))
         )}
@@ -499,10 +549,12 @@ export const ExplorationMap = memo(function ExplorationMap({
           ? selectedZone.geometry.map((ring, index) => (
               <Polygon
                 coordinates={ring}
-                fillColor="rgba(245, 196, 81, 0.09)"
+                fillColor="rgba(180, 83, 9, 0.13)"
                 key={`${selectedZone.id}-${index}`}
-                strokeColor={WALKING_COLORS.selectedRoute}
-                strokeWidth={3}
+                strokeColor={selectedZone.type === "city"
+                  ? WALKING_COLORS.cityBoundary
+                  : WALKING_COLORS.districtBoundary}
+                strokeWidth={6}
               />
             ))
           : null}
@@ -521,6 +573,7 @@ export const ExplorationMap = memo(function ExplorationMap({
               <PathSegmentLines
                 activityMode={walk.activityMode}
                 color={color}
+                drawProgress={isHighlighted ? highlightedRouteDrawProgress : 1}
                 isDimmed={isDimmed}
                 isHighlighted={isHighlighted}
                 points={walk.points}
@@ -528,19 +581,21 @@ export const ExplorationMap = memo(function ExplorationMap({
                 simplificationToleranceMeters={pathSimplificationToleranceMeters}
               />
               {shouldShowMarkers && firstPoint ? (
-                <Marker
+                <AtlasRouteMarker
                   coordinate={pointToCoordinate(firstPoint)}
-                  pinColor="#16a34a"
-                  title="Start"
                   description={formatMarkerDate(walk.startedAt)}
+                  kind="start"
+                  title="Start"
                 />
               ) : null}
-              {shouldShowMarkers && lastPoint ? (
-                <Marker
+              {shouldShowMarkers &&
+              lastPoint &&
+              (!isHighlighted || highlightedRouteDrawProgress >= 1) ? (
+                <AtlasRouteMarker
                   coordinate={pointToCoordinate(lastPoint)}
-                  pinColor={color}
-                  title="End"
                   description={formatMarkerDate(walk.endedAt)}
+                  kind="end"
+                  title="End"
                 />
               ) : null}
             </Fragment>
@@ -558,33 +613,22 @@ export const ExplorationMap = memo(function ExplorationMap({
               segments={activeRouteChunks}
               simplificationToleranceMeters={0}
             />
-            {shouldShowMarkers ? <Marker
-              coordinate={pointToCoordinate(activeRouteStartPoint)}
-              pinColor="#16a34a"
-              title="Recording start"
-            /> : null}
+            {shouldShowMarkers ? (
+              <AtlasRouteMarker
+                coordinate={pointToCoordinate(activeRouteStartPoint)}
+                kind="start"
+                title="Recording start"
+              />
+            ) : null}
           </>
         ) : null}
 
         {shouldShowMedalMarkers ? medals.map((medal) => (
-          <Marker
-            accessibilityLabel={`${medal.name.en}, ${medal.isCollected ? "collected" : "locked"}`}
-            coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
+          <AtlasMedalMarker
             key={`medal-${medal.albumId}-${medal.id}`}
+            medal={medal}
             onPress={() => onMedalPress?.(medal)}
-            title={medal.name.en}
-          >
-            <View style={[
-              styles.medalMarker,
-              medal.isCollected ? styles.medalMarkerCollected : styles.medalMarkerLocked
-            ]}>
-              <Ionicons
-                color={medal.isCollected ? "#fff5c4" : "#d6dee5"}
-                name={medal.isCollected ? "medal" : "lock-closed"}
-                size={17}
-              />
-            </View>
-          </Marker>
+          />
         )) : null}
 
         {playerVisible && playerLocation ? (
@@ -596,9 +640,93 @@ export const ExplorationMap = memo(function ExplorationMap({
   );
 });
 
+type AtlasRouteMarkerProps = {
+  coordinate: { latitude: number; longitude: number };
+  description?: string;
+  kind: "end" | "start";
+  title: string;
+};
+
+function AtlasRouteMarker({
+  coordinate,
+  description,
+  kind,
+  title
+}: AtlasRouteMarkerProps) {
+  const isStart = kind === "start";
+
+  return (
+    <Marker
+      accessibilityLabel={title}
+      anchor={{ x: 0.5, y: 1 }}
+      coordinate={coordinate}
+      description={description}
+      tracksViewChanges={false}
+      title={title}
+    >
+      <View collapsable={false} pointerEvents="none" style={styles.atlasRouteMarker}>
+        <View
+          style={[
+            styles.atlasRouteMarkerPaper,
+            isStart ? styles.atlasRouteMarkerStart : styles.atlasRouteMarkerEnd
+          ]}
+        >
+          <View style={styles.atlasRouteMarkerInset}>
+            <Ionicons
+              color="#2a2015"
+              name={isStart ? "flag-outline" : "checkmark"}
+              size={18}
+            />
+          </View>
+        </View>
+        <View style={styles.atlasRouteMarkerPoint} />
+      </View>
+    </Marker>
+  );
+}
+
+function AtlasMedalMarker({
+  medal,
+  onPress
+}: {
+  medal: CollectedMedal;
+  onPress: () => void;
+}) {
+  return (
+    <Marker
+      accessibilityLabel={
+        medal.name.en + ", " + (medal.isCollected ? "collected" : "locked")
+      }
+      anchor={{ x: 0.5, y: 0.5 }}
+      coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
+      onPress={onPress}
+      title={medal.name.en}
+    >
+      <View
+        collapsable={false}
+        style={[
+          styles.atlasMedalMarker,
+          medal.isCollected
+            ? styles.atlasMedalMarkerCollected
+            : styles.atlasMedalMarkerLocked
+        ]}
+      >
+        <View style={styles.atlasMedalMarkerInner}>
+          <Ionicons
+            color={medal.isCollected ? "#2a2015" : "#d9d0bc"}
+            name={medal.isCollected ? "ribbon-outline" : "lock-closed-outline"}
+            size={18}
+          />
+        </View>
+      </View>
+    </Marker>
+  );
+}
+
 type ExplorationSurfaceOverlayProps = {
   areaStyle: ReturnType<typeof getExploredAreaStyle>;
   explorationPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
+  isInkRevealing: boolean;
   outlineSegments: ReturnType<typeof buildExplorationPolygonOutlineSegments>;
   shouldShowCompletedArea: boolean;
   shouldShowOutline: boolean;
@@ -608,6 +736,7 @@ type ExplorationSurfaceOverlayProps = {
 const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
   areaStyle,
   explorationPolygons,
+  isInkRevealing,
   outlineSegments,
   shouldShowCompletedArea,
   shouldShowOutline,
@@ -621,8 +750,8 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
               key={polygon.id}
               coordinates={polygon.coordinates}
               holes={polygon.holes}
-              fillColor={areaStyle.fillColor}
-              strokeColor={areaStyle.fillColor}
+              fillColor={isInkRevealing ? areaStyle.revealFillColor : areaStyle.fillColor}
+              strokeColor={isInkRevealing ? areaStyle.revealFillColor : areaStyle.fillColor}
               strokeWidth={1}
             />
           ))
@@ -696,6 +825,7 @@ type PlayerDirection = "east" | "north" | "south" | "west";
 
 type PlayerSpriteSet = {
   idle: number;
+  stale: number;
   walk: readonly [number, number, number];
 };
 
@@ -709,6 +839,7 @@ const PLAYER_DIRECTIONS: readonly PlayerDirection[] = [
 const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
   east: {
     idle: require("../../assets/player/native-idle-east.png"),
+    stale: require("../../assets/player/native-stale-east.png"),
     walk: [
       require("../../assets/player/native-walk-east-1.png"),
       require("../../assets/player/native-walk-east-2.png"),
@@ -717,6 +848,7 @@ const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
   },
   north: {
     idle: require("../../assets/player/native-idle-north.png"),
+    stale: require("../../assets/player/native-stale-north.png"),
     walk: [
       require("../../assets/player/native-walk-north-1.png"),
       require("../../assets/player/native-walk-north-2.png"),
@@ -725,6 +857,7 @@ const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
   },
   south: {
     idle: require("../../assets/player/native-idle-south.png"),
+    stale: require("../../assets/player/native-stale-south.png"),
     walk: [
       require("../../assets/player/native-walk-south-1.png"),
       require("../../assets/player/native-walk-south-2.png"),
@@ -733,6 +866,7 @@ const PLAYER_SPRITES: Record<PlayerDirection, PlayerSpriteSet> = {
   },
   west: {
     idle: require("../../assets/player/native-idle-west.png"),
+    stale: require("../../assets/player/native-stale-west.png"),
     walk: [
       require("../../assets/player/native-walk-west-1.png"),
       require("../../assets/player/native-walk-west-2.png"),
@@ -746,6 +880,7 @@ const PLAYER_SPRITE_LAYERS = PLAYER_DIRECTIONS.flatMap((direction) => {
 
   return [
     { key: `${direction}-idle`, source: spriteSet.idle },
+    { key: `${direction}-stale`, source: spriteSet.stale },
     ...spriteSet.walk.map((source, frameIndex) => ({
       key: `${direction}-walk-${frameIndex}`,
       source
@@ -841,7 +976,9 @@ function PlayerLocationMarker({ location }: { location: GpsPoint }) {
   const accessibilityLabel = isGpsFresh
     ? "Current player location"
     : "Last known player location, GPS signal stale";
-  const visibleSpriteSource = isMoving
+  const visibleSpriteSource = !isGpsFresh
+    ? PLAYER_SPRITES[direction].stale
+    : isMoving
     ? PLAYER_SPRITES[direction].walk[walkFrameIndex]
     : PLAYER_SPRITES[direction].idle;
 
@@ -972,36 +1109,40 @@ function toRadians(value: number) {
 function getExploredAreaStyle(latitudeDelta: number) {
   if (latitudeDelta > 0.07) {
     return {
-      fillColor: "rgba(239, 68, 68, 0.50)",
-      outlineColor: "rgba(0, 0, 0, 0.34)",
+      fillColor: "rgba(251, 146, 60, 0.54)",
+      outlineColor: "rgba(3, 35, 38, 0.48)",
       outlineWidth: 1,
-      todayFillColor: "rgba(251, 146, 60, 0.38)"
+      revealFillColor: "rgba(253, 186, 116, 0.70)",
+      todayFillColor: "rgba(245, 196, 81, 0.42)"
     };
   }
 
   if (latitudeDelta > 0.035) {
     return {
-      fillColor: "rgba(239, 68, 68, 0.46)",
-      outlineColor: "rgba(0, 0, 0, 0.54)",
+      fillColor: "rgba(251, 146, 60, 0.48)",
+      outlineColor: "rgba(3, 30, 34, 0.64)",
       outlineWidth: 1.5,
-      todayFillColor: "rgba(251, 146, 60, 0.42)"
+      revealFillColor: "rgba(253, 186, 116, 0.66)",
+      todayFillColor: "rgba(245, 196, 81, 0.46)"
     };
   }
 
   if (latitudeDelta > 0.014) {
     return {
-      fillColor: "rgba(239, 68, 68, 0.40)",
-      outlineColor: "rgba(0, 0, 0, 0.74)",
+      fillColor: "rgba(251, 146, 60, 0.42)",
+      outlineColor: "rgba(2, 25, 29, 0.80)",
       outlineWidth: 2.4,
-      todayFillColor: "rgba(251, 146, 60, 0.48)"
+      revealFillColor: "rgba(253, 186, 116, 0.62)",
+      todayFillColor: "rgba(245, 196, 81, 0.52)"
     };
   }
 
   return {
-    fillColor: "rgba(239, 68, 68, 0.34)",
-    outlineColor: "rgba(0, 0, 0, 0.92)",
+    fillColor: "rgba(251, 146, 60, 0.36)",
+    outlineColor: "rgba(1, 19, 23, 0.94)",
     outlineWidth: 3.5,
-    todayFillColor: "rgba(251, 146, 60, 0.54)"
+    revealFillColor: "rgba(253, 186, 116, 0.58)",
+    todayFillColor: "rgba(245, 196, 81, 0.58)"
   };
 }
 
@@ -1020,6 +1161,7 @@ function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {
 const PathSegmentLines = memo(function PathSegmentLines({
   activityMode,
   color,
+  drawProgress = 1,
   isDimmed,
   isHighlighted,
   points,
@@ -1028,6 +1170,7 @@ const PathSegmentLines = memo(function PathSegmentLines({
 }: {
   activityMode: ActivityMode;
   color: string;
+  drawProgress?: number;
   isDimmed: boolean;
   isHighlighted: boolean;
   points: GpsPoint[];
@@ -1042,10 +1185,43 @@ const PathSegmentLines = memo(function PathSegmentLines({
     [activityMode, points, segments]
   );
 
+  const visibleSegments = useMemo(() => {
+    const clampedProgress = Math.max(0, Math.min(1, drawProgress));
+
+    if (clampedProgress >= 1) {
+      return renderedSegments.map((segment) => ({
+        points: segment.points,
+        segment
+      }));
+    }
+
+    const totalEdges = renderedSegments.reduce(
+      (sum, segment) => sum + Math.max(0, segment.points.length - 1),
+      0
+    );
+    let remainingEdges = Math.floor(totalEdges * clampedProgress);
+
+    return renderedSegments.flatMap((segment) => {
+      const edgeCount = Math.max(0, segment.points.length - 1);
+
+      if (remainingEdges <= 0 || edgeCount === 0) {
+        return [];
+      }
+
+      const visibleEdgeCount = Math.min(edgeCount, remainingEdges);
+      remainingEdges -= visibleEdgeCount;
+
+      return [{
+        points: segment.points.slice(0, visibleEdgeCount + 1),
+        segment
+      }];
+    });
+  }, [drawProgress, renderedSegments]);
+
   return (
     <>
-      {renderedSegments.map((segment, index) => {
-        if (segment.points.length < 2) {
+      {visibleSegments.map(({ points: visiblePoints, segment }, index) => {
+        if (visiblePoints.length < 2) {
           return null;
         }
 
@@ -1058,7 +1234,7 @@ const PathSegmentLines = memo(function PathSegmentLines({
         return (
           <Polyline
             coordinates={simplifyGpsPointsForRender(
-              segment.points,
+              visiblePoints,
               simplificationToleranceMeters
             ).map(pointToCoordinate)}
             key={
@@ -1384,25 +1560,84 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0
   },
-  medalMarker: {
+  atlasMedalMarker: {
     alignItems: "center",
-    borderRadius: 20,
+    borderRadius: 5,
     borderWidth: 2,
-    height: 38,
+    height: 40,
     justifyContent: "center",
     shadowColor: "#02060a",
-    shadowOffset: { height: 2, width: 0 },
-    shadowOpacity: 0.38,
-    shadowRadius: 4,
+    shadowOffset: { height: 3, width: 1 },
+    shadowOpacity: 0.48,
+    shadowRadius: 3,
+    width: 40
+  },
+  atlasMedalMarkerCollected: {
+    backgroundColor: "#d6ad55",
+    borderColor: "#3f301c",
+    transform: [{ rotate: "-2deg" }]
+  },
+  atlasMedalMarkerInner: {
+    alignItems: "center",
+    borderColor: "rgba(42, 32, 21, 0.45)",
+    borderRadius: 3,
+    borderWidth: 1,
+    height: 30,
+    justifyContent: "center",
+    width: 30
+  },
+  atlasMedalMarkerLocked: {
+    backgroundColor: "#46565a",
+    borderColor: "#d9d0bc",
+    transform: [{ rotate: "2deg" }]
+  },
+  atlasRouteMarker: {
+    alignItems: "center",
+    height: 46,
+    justifyContent: "flex-start",
+    width: 42
+  },
+  atlasRouteMarkerEnd: {
+    backgroundColor: "#c9b98e",
+    borderColor: "#35291b",
+    transform: [{ rotate: "2deg" }]
+  },
+  atlasRouteMarkerInset: {
+    alignItems: "center",
+    borderColor: "rgba(42, 32, 21, 0.38)",
+    borderRadius: 2,
+    borderWidth: 1,
+    height: 25,
+    justifyContent: "center",
+    width: 29
+  },
+  atlasRouteMarkerPaper: {
+    alignItems: "center",
+    borderRadius: 4,
+    borderWidth: 2,
+    height: 34,
+    justifyContent: "center",
+    shadowColor: "#02060a",
+    shadowOffset: { height: 2, width: 1 },
+    shadowOpacity: 0.48,
+    shadowRadius: 3,
     width: 38
   },
-  medalMarkerCollected: {
-    backgroundColor: "#a77316",
-    borderColor: "#ffe198"
+  atlasRouteMarkerPoint: {
+    backgroundColor: "#dfca99",
+    borderBottomColor: "#2a2015",
+    borderBottomWidth: 2,
+    borderRightColor: "#2a2015",
+    borderRightWidth: 2,
+    height: 11,
+    marginTop: -6,
+    transform: [{ rotate: "45deg" }],
+    width: 11
   },
-  medalMarkerLocked: {
-    backgroundColor: "#3f4f5b",
-    borderColor: "#a9b6c0"
+  atlasRouteMarkerStart: {
+    backgroundColor: "#dfca99",
+    borderColor: "#2a2015",
+    transform: [{ rotate: "-2deg" }]
   },
   playerMarker: {
     alignItems: "center",

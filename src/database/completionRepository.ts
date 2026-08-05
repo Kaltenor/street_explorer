@@ -86,6 +86,27 @@ export type ExploredCellRecord = {
   source: ExploredCellSource;
 };
 
+export type CachedZoneCompletionStats = {
+  completedAt: string | null;
+  completionPercent: number | null;
+  completionStatus: "available" | "invalid_boundary" | "too_large";
+  directlyWalkedCells: number;
+  exploredCells: number;
+  inferredCells: number;
+  loopFilledCells: number;
+  permanentlyCompleted: boolean;
+  totalZoneCells: number | null;
+};
+
+export type ZoneCompletionSnapshot = {
+  calculatedAt: string;
+  explorationRevision: number;
+  geometryFingerprint: string;
+  mode: ActivityMode;
+  stats: CachedZoneCompletionStats;
+  zoneId: string;
+};
+
 export async function saveExploredCells(cells: ExploredCellInput[]) {
   if (cells.length === 0) {
     return;
@@ -387,6 +408,16 @@ export async function getExploredCellRecords(mode: ActivityMode) {
   }));
 }
 
+
+export async function getExplorationRevision(mode: ActivityMode) {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ revision: number }>(
+    "SELECT revision FROM exploration_revisions WHERE mode = ?",
+    mode
+  );
+
+  return row?.revision ?? 0;
+}
 export async function getExploredCellKeys(mode: ActivityMode) {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
@@ -593,6 +624,10 @@ export async function upsertZones(zones: CachedZone[]) {
           "DELETE FROM zone_cell_totals WHERE zone_id = ?",
           zone.id
         );
+        await transaction.runAsync(
+          "DELETE FROM zone_completion_snapshots WHERE zone_id = ?",
+          zone.id
+        );
       }
 
       await transaction.runAsync(
@@ -623,11 +658,78 @@ export async function upsertZones(zones: CachedZone[]) {
 export async function deleteCachedZones() {
   const db = await getDatabase();
 
+  await db.runAsync("DELETE FROM zone_completion_snapshots");
   await db.runAsync("DELETE FROM zones");
   await db.runAsync("DELETE FROM zone_cell_totals");
   await db.runAsync("DELETE FROM zone_refresh_state");
 }
 
+
+export async function getZoneCompletionSnapshot(
+  zoneId: string,
+  mode: ActivityMode
+): Promise<ZoneCompletionSnapshot | null> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{
+    calculated_at: string;
+    exploration_revision: number;
+    geometry_fingerprint: string;
+    mode: ActivityMode;
+    stats_json: string;
+    zone_id: string;
+  }>(
+    `
+      SELECT zone_id, mode, geometry_fingerprint, exploration_revision,
+        stats_json, calculated_at
+      FROM zone_completion_snapshots
+      WHERE zone_id = ?
+        AND mode = ?
+    `,
+    zoneId,
+    mode
+  );
+
+  if (!row) {
+    return null;
+  }
+
+  try {
+    return {
+      calculatedAt: row.calculated_at,
+      explorationRevision: row.exploration_revision,
+      geometryFingerprint: row.geometry_fingerprint,
+      mode: row.mode,
+      stats: JSON.parse(row.stats_json) as CachedZoneCompletionStats,
+      zoneId: row.zone_id
+    };
+  } catch {
+    await db.runAsync(
+      "DELETE FROM zone_completion_snapshots WHERE zone_id = ? AND mode = ?",
+      zoneId,
+      mode
+    );
+    return null;
+  }
+}
+
+export async function saveZoneCompletionSnapshot(input: ZoneCompletionSnapshot) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT OR REPLACE INTO zone_completion_snapshots (
+        zone_id, mode, geometry_fingerprint, exploration_revision,
+        stats_json, calculated_at
+      ) VALUES (?, ?, ?, ?, ?, ?)
+    `,
+    input.zoneId,
+    input.mode,
+    input.geometryFingerprint,
+    input.explorationRevision,
+    JSON.stringify(input.stats),
+    input.calculatedAt
+  );
+}
 export async function getCachedZoneTotal(
   zoneId: string,
   geometryFingerprint: string

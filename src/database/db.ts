@@ -630,6 +630,60 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(25, "cache_zone_completion_snapshots", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS exploration_revisions (
+        mode TEXT PRIMARY KEY NOT NULL,
+        revision INTEGER NOT NULL DEFAULT 0
+      );
+
+      INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+      SELECT mode, COUNT(*) FROM explored_cells GROUP BY mode;
+      INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+      VALUES ('walk', 0);
+
+      CREATE TRIGGER IF NOT EXISTS explored_cells_revision_after_insert
+      AFTER INSERT ON explored_cells
+      BEGIN
+        INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+        VALUES (NEW.mode, 0);
+        UPDATE exploration_revisions SET revision = revision + 1
+        WHERE mode = NEW.mode;
+      END;
+
+      CREATE TRIGGER IF NOT EXISTS explored_cells_revision_after_delete
+      AFTER DELETE ON explored_cells
+      BEGIN
+        INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+        VALUES (OLD.mode, 0);
+        UPDATE exploration_revisions SET revision = revision + 1
+        WHERE mode = OLD.mode;
+      END;
+
+      CREATE TRIGGER IF NOT EXISTS explored_cells_revision_after_update
+      AFTER UPDATE ON explored_cells
+      BEGIN
+        INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+        VALUES (OLD.mode, 0);
+        INSERT OR IGNORE INTO exploration_revisions (mode, revision)
+        VALUES (NEW.mode, 0);
+        UPDATE exploration_revisions SET revision = revision + 1
+        WHERE mode IN (OLD.mode, NEW.mode);
+      END;
+
+      CREATE TABLE IF NOT EXISTS zone_completion_snapshots (
+        zone_id TEXT NOT NULL,
+        mode TEXT NOT NULL,
+        geometry_fingerprint TEXT NOT NULL,
+        exploration_revision INTEGER NOT NULL,
+        stats_json TEXT NOT NULL,
+        calculated_at TEXT NOT NULL,
+        PRIMARY KEY (zone_id, mode),
+        FOREIGN KEY (zone_id) REFERENCES zones (id) ON DELETE CASCADE
+      );
+    `);
+  });
+
   await seedBundledMedalAlbums(db);
   await db.runAsync(`
     UPDATE collected_medals

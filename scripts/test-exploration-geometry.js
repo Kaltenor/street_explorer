@@ -393,7 +393,7 @@ const completionContourCells = new Set(
 assert(
   completionContourCells.size === authoritativeContourCells.size &&
     [...completionContourCells].every((cellId) => authoritativeContourCells.has(cellId)),
-  "completion includes every qualifying enclosed cell rendered as solid red"
+  "completion includes every qualifying enclosed cell rendered as solid light orange"
 );
 const safeSnapStart = {
   ...gpsPoint(0.0002, 0, 0),
@@ -1298,6 +1298,25 @@ assert(
   "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V5"
 );
 assert(
+  databaseSource.includes('applyMigration(25, "cache_zone_completion_snapshots"') &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS exploration_revisions") &&
+    databaseSource.includes("explored_cells_revision_after_insert") &&
+    databaseSource.includes("explored_cells_revision_after_delete") &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS zone_completion_snapshots") &&
+    completionRepositorySource.includes("getExplorationRevision") &&
+    completionRepositorySource.includes("getZoneCompletionSnapshot") &&
+    completionRepositorySource.includes("saveZoneCompletionSnapshot") &&
+    completionRepositorySource.includes(
+      "DELETE FROM zone_completion_snapshots WHERE zone_id = ?"
+    ) &&
+    mapScreenSource.includes("objectiveStatsCacheRef") &&
+    mapScreenSource.includes("objectiveScopePairRef") &&
+    mapScreenSource.includes("const durableSnapshots = await Promise.all") &&
+    mapScreenSource.includes("const calculationResults = await Promise.all") &&
+    mapScreenSource.includes("isCalculating && !stats"),
+  "objective scope switching restores valid memory/SQLite snapshots and precomputes paired city/district stats"
+);
+assert(
   databaseSource.includes('applyMigration(24, "add_street_completion_v2"') &&
     databaseSource.includes("street_completion_v1_evidence") &&
     databaseSource.includes("street_completion_session_coverage") &&
@@ -1345,7 +1364,7 @@ assert(
     ) &&
     !mapScreenSource.includes("activeObjectiveCellKey") &&
     mapScreenSource.includes("mergeActiveExplorationCells(") &&
-    mapScreenSource.includes("{ persistAchievement: activeObjectiveCellIds.length === 0 }") &&
+    mapScreenSource.includes("{ persistAchievement: !usesLivePreview }") &&
     mapScreenSource.includes(
       "objectiveStatsRequestRef.current += 1;\n            setObjectiveStats(objectiveAfter)"
     ) &&
@@ -1477,7 +1496,7 @@ assert(
     explorationMapSource.includes("tracksViewChanges") &&
     explorationMapSource.includes("collapsable={false}") &&
     explorationMapSource.includes("onPanDrag={handleMapPan}") &&
-    explorationMapSource.includes("showsUserLocation") &&
+    explorationMapSource.includes("showsUserLocation={false}") &&
     explorationMapSource.includes("PLAYER_MOTION_FRESHNESS_MS") &&
     explorationMapSource.includes("isSubstantiallyMoreAccurate") &&
     explorationMapSource.includes("PLAYER_SPRITES") &&

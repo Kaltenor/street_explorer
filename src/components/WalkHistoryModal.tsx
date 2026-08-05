@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import { AtlasModalHeader, AtlasScreen } from "./AtlasCabinet";
 
 import { LoopFillSessionSummary } from "../database/completionRepository";
 import { APP_COLORS, WALKING_COLORS } from "../constants/theme";
@@ -88,7 +89,7 @@ export function WalkHistoryModal({
 
   return (
     <Modal
-      animationType="slide"
+      animationType="none"
       onRequestClose={() => {
         if (dataOperation === null) {
           onClose();
@@ -97,26 +98,15 @@ export function WalkHistoryModal({
       presentationStyle="fullScreen"
       visible={visible}
     >
-      <View style={styles.screen}>
-        <View style={styles.header}>
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={{ disabled: dataOperation !== null }}
-            disabled={dataOperation !== null}
-            onPress={onClose}
-            style={[styles.backToMapButton, dataOperation !== null && styles.toolButtonDisabled]}
-          >
-            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
-          </TouchableOpacity>
-          <View>
-            <Text style={styles.title}>
-              {modeText.labels[activityMode]} {strings.history.history}
-            </Text>
-            <Text style={styles.subtitle}>
-              {interpolate(strings.history.savedRecordings, { count: walks.length })}
-            </Text>
-          </View>
-        </View>
+      <AtlasScreen visible={visible}>
+        <AtlasModalHeader
+          backDisabled={dataOperation !== null}
+          emblem="book-outline"
+          eyebrow={language === "fr" ? "JOURNAL DE VOYAGE" : "TRAVEL LOG"}
+          onBack={onClose}
+          subtitle={interpolate(strings.history.savedRecordings, { count: walks.length })}
+          title={`${modeText.labels[activityMode]} ${strings.history.history}`}
+        />
 
         {detailWalk ? (
           <RecordingDetail
@@ -277,7 +267,7 @@ export function WalkHistoryModal({
             windowSize={7}
           />
         )}
-      </View>
+      </AtlasScreen>
     </Modal>
   );
 }
@@ -1002,7 +992,7 @@ const styles = StyleSheet.create({
   row: {
     alignItems: "stretch",
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.border,
+    borderColor: APP_COLORS.goldBorder,
     borderRadius: 16,
     borderWidth: 1,
     gap: 10,

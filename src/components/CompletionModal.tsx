@@ -11,6 +11,11 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import {
+  AtlasModalHeader,
+  AtlasScreen,
+  AtlasSectionLabel
+} from "./AtlasCabinet";
 import { AppLanguage, getStrings, interpolate } from "../i18n";
 import { StreetCompletionPanel } from "./StreetCompletionPanel";
 import { APP_COLORS } from "../constants/theme";
@@ -393,23 +398,25 @@ export function CompletionModal({
 
   return (
     <Modal
-      animationType="slide"
+      animationType="none"
       onRequestClose={onClose}
       presentationStyle="fullScreen"
       visible={visible}
     >
-      <View style={styles.screen}>
-        <View style={styles.header}>
-          <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.backToMapButton}>
-            <Ionicons name="chevron-back" size={22} color="#f8fafc" />
-          </TouchableOpacity>
-          <View>
-            <Text style={styles.title}>{strings.common.completion}</Text>
-            <Text style={styles.subtitle}>{completionStrings.progressSubtitle}</Text>
-          </View>
-        </View>
+      <AtlasScreen visible={visible}>
+        <AtlasModalHeader
+          emblem="map-outline"
+          eyebrow={language === "fr" ? "REGISTRE TERRITORIAL" : "TERRITORY REGISTRY"}
+          onBack={onClose}
+          subtitle={completionStrings.progressSubtitle}
+          title={strings.common.completion}
+        />
 
         <ScrollView contentContainerStyle={styles.content}>
+          <AtlasSectionLabel
+            icon="compass-outline"
+            title={language === "fr" ? "PROGRESSION DE L'ATLAS" : "ATLAS PROGRESS"}
+          />
           <StreetCompletionPanel language={language} summary={streetSummary} />
 
           {currentObjective ? (
@@ -629,7 +636,7 @@ export function CompletionModal({
 
 
         </ScrollView>
-      </View>
+      </AtlasScreen>
     </Modal>
   );
 }
@@ -1144,7 +1151,7 @@ const styles = StyleSheet.create({
   },
   panel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.border,
+    borderColor: APP_COLORS.goldBorder,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12
@@ -1202,7 +1209,7 @@ const styles = StyleSheet.create({
   },
   selectorPanel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.border,
+    borderColor: APP_COLORS.goldBorder,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12

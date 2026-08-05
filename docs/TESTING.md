@@ -33,7 +33,7 @@ npm run test:player
 npx expo install --check
 ```
 
-`test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map annotation, the 170ms opacity-only frame cadence, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the native location fallback, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
+`test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map annotation, the 170ms opacity-only frame cadence, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the disabled native location cursor and game-owned player presentation, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 
@@ -43,9 +43,52 @@ npx expo install --check
 
 `test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, and consistent manifest totals.
 
-`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, and summary-first route/report wiring.
+`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, the iOS Midnight Cartographer basemap/POI/cursor settings, custom atlas markers, light-orange/gold territory, burnt-orange district boundaries, and red city boundaries, and summary-first route/report wiring.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+
+
+## Atlas Identity V0.16.0 iPhone Manual Test
+
+Prerequisites: install a development client whose native version is compatible with the 0.16.0 bundle on an iPhone, allow foreground location, keep sound and haptics enabled, and have one saved walk plus a selectable district/city pair. Network is required for uncached MapKit tiles and uncached OSM boundaries. Repeat motion checks once with iOS Settings > Accessibility > Motion > Reduce Motion enabled.
+
+1. Launch while stationary and dismiss the ready screen. Expected: the only location symbol is the hand-inked cartographer in its current directional idle pose; navy coat, gold trim, parchment hood, and red scarf remain legible at the normal walking zoom.
+2. Walk north, east, south, and west with a fresh accurate fix, both before and during a recording. Expected: the matching direction and restrained three-frame walk cycle appear without a second marker, flicker, empty annotation, camera auto-follow, or geographic drift during pan/zoom/rotation.
+3. Stop receiving fresh fixes for at least 10 seconds. Expected: the same marker remains at the last trustworthy coordinate, changes to the desaturated stale pose, and exposes the last-known-location accessibility label. A fresh trustworthy fix restores the normal pose.
+4. Open Details, History, Completion, and Options in turn. Expected: each uses the same navy paper texture, gold title, cartographic emblem, ornamental divider, gold-edged cards, short page sound, and responsive back action. Recovery, Stop confirmation, and destructive/system dialogs keep their specialized appearance.
+5. With Reduce Motion disabled, reopen each primary menu. Expected: content enters with a restrained 240ms fade/slide and no double sound. Enable Reduce Motion and repeat. Expected: content appears directly with no slide while navigation and sound remain functional.
+6. Long-press a point that offers both district and city scopes, then switch scopes. Expected: a compact gold Atlas stamp names the selected district/city, the district outline remains thick dark orange, the city outline remains thick red, and the explored polygon remains light orange rather than park green.
+7. Use an already complete exact zone or complete one during the test. Expected: the completion stamp appears once for that zone in the app session with one quiet ink sound and one medium haptic; reopening the same objective does not repeatedly award the stamp.
+8. Add at least one new explored cell during a recording. Expected: the explored surface briefly brightens like fresh orange ink, then settles to the standard light-orange fill without changing contour geometry. With Reduce Motion enabled, no transient flash is required and the final fill appears directly.
+9. Open History and focus a saved walk with several points. Expected: the selected route draws from start to finish over roughly 900ms, the finish marker appears only when drawing completes, and one quiet ink sound plays. With Reduce Motion enabled, the full route and finish marker appear immediately.
+10. Force-close and reopen. Expected: walks, objective snapshots, map colors, and generated player assets return unchanged; menu sound/transition state starts cleanly, and no stamp is persisted as gameplay data.
+
+Automated coverage still verifies the one-marker/opacity-only player contract, all directional assets, map palette, custom markers, and UI wiring. Physical-device checks remain required for MapKit bitmap stability, perceived audio level, haptics, real GPS direction/stale transitions, and iOS Reduce Motion behavior.
+## Objective Scope Snapshot Cache V0.15.4 Manual Test
+
+Prerequisites: run the 0.15.4 JavaScript bundle in a compatible iOS development client on an iPhone, allow location access, keep exact city and district boundaries cached for one point, and have enough explored cells that an uncached city calculation is visibly slower than a scope tap. No network is required after the boundaries are cached.
+
+1. Long-press inside the cached district and leave District selected. Expected: the district objective appears, shows Updating during its first calculation, and settles on a percentage.
+2. Keep the scope chooser open or long-press the same point again, then wait a few seconds after the district result settles. Choose City. Expected: the city percentage appears immediately or after only the short SQLite validation; the HUD retains the cached value if Updating is still visible.
+3. Switch back to District, then City again. Expected: both values restore without clearing to 0%, pending, or a full visible polygon-rescan delay.
+4. Force-close and reopen the app, then switch between the same scopes. Expected: the saved objective and its valid SQLite snapshot survive relaunch; each cached percentage returns after a short validation.
+5. Finish a recording that adds explored cells inside either boundary, then revisit both scopes. Expected: the exploration revision invalidates the old snapshots, the last cached value remains visible with Updating, and both percentages are recalculated and persisted.
+6. Use Reprocess recordings or restore a backup with different exploration, then revisit both scopes. Expected: neither old percentage is accepted as current; both scopes refresh from the replaced explored-cell set.
+7. Start a recording, close a qualifying enclosure, and switch scopes before Stop. Expected: the selected live percentage can update in memory, but force-closing before finalization cannot turn that preview into a durable snapshot or permanent achievement.
+
+## Midnight Cartographer V0.15.1 Manual Test
+
+Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development client on an iPhone, allow foreground location, enable Paths, Explored Cells, and Markers, and keep at least one saved walk plus one Lyon medal marker in view. Network access is required for uncached Apple MapKit tiles; no OSM refresh is required.
+
+1. Enter the map. Expected: Apple MapKit uses a dark muted treatment; roads and essential labels remain legible, while generic native POI symbols and the native blue location cursor are absent.
+2. Obtain a trustworthy outdoor fix, then pan, zoom, and rotate. Expected: the game-owned player is the sole location symbol and remains attached to its geographic coordinate without camera auto-follow.
+3. View previously explored ground and today's contribution. Expected: cumulative territory is translucent light orange with a dark ink-like frontier, while today's contribution is gold and remains distinguishable at walking and city zoom levels.
+4. Start a recording and walk through several accepted fixes. Expected: the active route is gold, the light-orange explored surface extends on its normal coalesced cadence, and GPS quality colors retain their existing semantic meanings.
+5. Focus a saved recording from History. Expected: the selected route becomes parchment, other routes use restrained teal/slate/earth variants and dim when appropriate, and inferred street links remain bright teal.
+6. Inspect saved route endpoints and medal landmarks. Expected: start and finish use parchment-and-ink flag/check markers; locked and collected medals use distinct custom atlas seals; no native teardrop pins remain. Tap each kind and confirm its title/callout or medal action still works.
+7. Disable Markers in Options and re-enable them. Expected: route and medal markers hide and return without affecting the player, route geometry, explored territory, or map gestures.
+8. Force-close and reopen, then repeat once with location permission denied. Expected: the visual treatment returns unchanged, saved data persists, and the durable last-known player remains the only location marker while the GPS badge reports the permission state.
+9. Zoom from close walking scale to a city-wide view with a large explored ledger. Expected: light-orange/gold contours remain seam-free, far-level marker reduction still works, and map interaction remains responsive.
 
 ## Streamlined Interface Test
 
@@ -58,12 +101,12 @@ npx expo install --check
 7. With no active walk, confirm only today's steps and Start Walk are shown. During a walk, confirm distance, duration, steps, Stop, and the existing double-tap health details remain accessible.
 8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces and confirm the same navy/gold surfaces, rounded layout, readable contrast, and red-only destructive actions.
 
-## UI Polish V2 Manual Test
+## UI Polish and Map Semantics Regression Test
 
-Prerequisites: run the Street Explorer 0.12.0 JavaScript bundle in a compatible iOS development client, keep at least two saved walks including one with an inferred street section if available, enable the Paths and Explored Cells layers, and test once outdoors with location permission granted and once with permission denied. A simulator with Location set to None is useful for the Unavailable case. No network is required except when loading uncached map or OSM data.
+Prerequisites: run the Street Explorer 0.15.1 JavaScript bundle in a compatible iOS development client, keep at least two saved walks including one with an inferred street section if available, enable the Paths and Explored Cells layers, and test once outdoors with location permission granted and once with permission denied. A simulator with Location set to None is useful for the Unavailable case. No network is required except when loading uncached map or OSM data.
 
-1. Open the map with at least two saved routes. Expected: saved routes use restrained blue/teal/violet/orange variants, explored ground remains red, and today's explored overlay remains orange without competing with the navy/gold interface.
-2. Open History and choose Focus on map for one route. Expected: the focused route is gold, other visible saved routes are dimmed, and starting a new recording draws its active route in green. Any topology-inferred section remains cyan rather than looking directly GPS-observed.
+1. Open the map with at least two saved routes. Expected: saved routes use restrained teal/slate/earth variants, explored ground uses translucent light orange, and today's explored overlay uses gold without competing with the navy/gold interface.
+2. Open History and choose Focus on map for one route. Expected: the focused route is parchment, other visible saved routes are dimmed, and starting a new recording draws its active route in gold. Any topology-inferred section remains cyan rather than looking directly GPS-observed.
 3. Open Details, History, and Completion in turn. Expected: every primary content card uses the same dark navy surface hierarchy, secondary cards are visibly raised without turning light, gold is reserved for selection/progress, text remains readable, and back navigation returns to the unchanged map.
 4. In History, open a saved recording. Expected: the route color, name, quality badge, distance, duration, steps, loops, accepted points, hidden gaps, and inferred-section count are visible before technical details. Expand Technical details and confirm bridge evidence, loop diagnostics, frozen-route status, and the full quality score remain available.
 5. Record and stop a short valid walk. Expected: the post-walk report opens at the durable save boundary, leads with its quality score and reason, keeps the four headline metrics prominent, and retains objective/loop progress plus Skip, Save, and naming actions.
@@ -100,12 +143,12 @@ Startup regressions: when testing an older development binary against the curren
 15. Tap Stop again, hold Quit, and confirm the UI enters Finishing only while tracking is quiesced and queued GPS is durably finalized.
 16. Confirm the recording report, History row, saved live cells, and Start control appear immediately at that durable boundary; route inference, exact steps, medals, objectives, and full cache refresh may finish afterward without blocking input.
 17. After a first walk of at least 200m, start another walk immediately and continue for at least one minute. Confirm the animated player remains approximately 64 points wide, faces the movement direction, cycles its three walking frames, and returns to a directional idle pose when stationary while the new distance, steps, and route continue normally.
-18. Before and during that second walk, pan, zoom, and rotate the map repeatedly. Expected: the character stays attached to one geographic point and moves synchronously with the map; its offset from the native blue location dot stays constant until a new trustworthy GPS coordinate arrives. It must not freeze at an old screen position, teleport after the gesture, disappear, or recenter the camera. Pan far enough to move the player offscreen, then pan back and confirm it returns at the same map coordinate.
+18. Before and during that second walk, pan, zoom, and rotate the map repeatedly. Expected: the character stays attached to one geographic point and moves synchronously with the map; no native blue location dot competes with it as trustworthy GPS coordinates arrive. It must not freeze at an old screen position, teleport after the gesture, disappear, or recenter the camera. Pan far enough to move the player offscreen, then pan back and confirm it returns at the same map coordinate.
 19. Force-close and reopen after a trustworthy fix. Expected: after the launch screen is dismissed, the player appears from the saved last position before a new fix is required. Start another walk and confirm the one-time recenter occurs, then pan and verify automatic camera following does not resume. Separately force-close during finalization, reopen, and confirm the session is either saved or offered for recovery, never silently lost.
 
 ## Player Animation V0.15.0 Manual Test
 
-Prerequisites: run the 0.15.0 JavaScript bundle in a compatible iOS development client, grant foreground location permission, test outdoors with a fresh fix at 30m accuracy or better, and leave the native blue location indicator enabled. No network or cached OSM data is required. Use a route where several direction changes are safe and obvious.
+Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development client, grant foreground location permission, test outdoors with a fresh fix at 30m accuracy or better, and confirm the native blue location indicator is absent. No network or cached OSM data is required. Use a route where several direction changes are safe and obvious.
 
 1. Dismiss the launch screen while stationary. Expected: one approximately 64-point player appears at the restored or current coordinate in an idle pose; no walking-frame cycling occurs.
 2. Without starting a recording, walk continuously for at least 15m. Expected: reliable GPS movement starts the three-frame animation at roughly 170ms per frame. Stop for at least four seconds while fixes continue; expected: animation settles to the idle pose without the marker disappearing.
@@ -216,18 +259,18 @@ Confirm each layer appears or disappears.
 3. Select a zone such as a district.
 4. Tap Set objective.
 5. Confirm the map HUD shows the objective name and completion percentage.
-6. Start recording, walk a qualifying loop that visibly closes and fills a new red area, and keep the recording active. Expected: after the closing cell is accepted, the HUD briefly calculates and then updates its percentage and remaining-cell count without Stop or relaunch. Stop and finalize the recording; expected: the same or reconciled durable percentage remains, and only durable 100% completion can create a permanent achievement.
+6. Start recording, walk a qualifying loop that visibly closes and fills a new light-orange area, and keep the recording active. Expected: after the closing cell is accepted, the HUD briefly calculates and then updates its percentage and remaining-cell count without Stop or relaunch. Stop and finalize the recording; expected: the same or reconciled durable percentage remains, and only durable 100% completion can create a permanent achievement.
 
 ## Explored Area Outline Test
 
 1. Show explored cells on the map.
 2. Confirm adjacent cells do not show internal borders.
-3. Confirm a thin dark outline appears around every real red-to-unfilled frontier.
+3. Confirm a thin dark outline appears around every real teal-to-unfilled frontier.
 4. Confirm a retained oversized hole has a complete inner black outline.
-5. Confirm a filled qualifying hole has no internal black outline or tiny reddish nested islands.
+5. Confirm a filled qualifying hole has no internal black outline or tiny teal nested islands.
 6. Reprocess a qualifying cumulative loop and confirm everything inside its exterior black border is a continuous solid fill with no white cracks.
 7. Confirm an oversized loop remains unfilled under the walking area limit.
-8. Inspect a long open walked path and confirm its red corridor is solid without internal holes.
+8. Inspect a long open walked path and confirm its teal corridor is solid without internal holes.
 
 ## OpenStreetMap Analysis Test
 
@@ -262,10 +305,10 @@ Notes:
 15. Export Backup V5, clear data, restore it, and confirm permanent zone achievements and rollups return. Confirm V1-V3 files are rejected.
 16. In Lyon 3e Arrondissement, refresh District boundaries and confirm the zone reports a percentage instead of Display-only/Unavailable, Set objective is enabled, and focusing it shows the real multipolygon rather than a rectangular bounds fallback.
 17. Set Lyon 3e as the objective, clear only the boundary cache, force-close, reopen, and allow the automatic map fetch or tap Refresh. Confirm the saved objective HUD returns once the exact zone is cached. Then simulate an incomplete response for the same relation and confirm the exact cached boundary, denominator, and objective remain intact.
-18. With internet and a current Lyon location, remain on the map until boundary loading settles. Confirm all nine arrondissement outlines are simultaneously visible, non-objective districts use thin muted strokes, and the objective district uses the stronger gold stroke.
-19. Pan from Lyon 3e across several arrondissement boundaries and release the map. Confirm the saved objective name, gold outline, percentage, remaining-cell count, and today count never change merely because the viewport moved.
-20. Long-press inside an adjacent arrondissement. Confirm haptic feedback occurs, the district immediately becomes the persisted objective, its gold outline appears, and the HUD shows Calculating until that district's percentage is ready.
-21. When the held point has both district and city boundaries, confirm a compact scope picker offers separate District and City buttons. Tap City and confirm the city boundary becomes gold while all of its district outlines remain visible; repeat and choose District.
+18. With internet and a current Lyon location, remain on the map until boundary loading settles. Confirm all nine arrondissement outlines are simultaneously visible, non-objective districts use 2-point burnt-orange strokes, and the objective district uses the stronger 6-point burnt-orange stroke.
+19. Pan from Lyon 3e across several arrondissement boundaries and release the map. Confirm the saved objective name, dark-orange outline, percentage, remaining-cell count, and today count never change merely because the viewport moved.
+20. Long-press inside an adjacent arrondissement. Confirm haptic feedback occurs, the district immediately becomes the persisted objective, its dark-orange outline appears, and the HUD shows Calculating until that district's percentage is ready.
+21. When the held point has both district and city boundaries, confirm a compact scope picker offers separate District and City buttons. Tap City and confirm the city boundary becomes red while all of its district outlines remain visible; repeat and choose District.
 22. Rapidly long-press different districts or cities while an uncached boundary request is pending. Confirm an older lookup or percentage never restores an earlier name, scope, outline, remaining-cell count, or today count after the final selection finishes.
 23. Force-close and reopen. Confirm the last long-pressed scope and area remain the saved objective and the selected city's cached district outlines return without requiring Completion to be opened.
 24. Long-press inside a different city with district relations. Confirm that city's district group replaces the previous city outlines without mixing cached districts. Disable network, long-press an uncached area, and confirm an Area unavailable message appears without changing the existing objective.
@@ -292,7 +335,7 @@ Notes:
 
 1. View or reprocess a route with sparse but plausible GPS updates and cached OSM streets.
 2. Confirm normal walked sections still render and create direct GPS cells.
-3. Confirm a high- or medium-confidence frozen street bridge creates a continuous red corridor.
+3. Confirm a high- or medium-confidence frozen street bridge creates a continuous teal corridor.
 4. Confirm Completion reports inferred cells and includes them in the completion percentage.
 5. Confirm loop analysis can use the same inferred bridge cells as boundaries.
 6. View a route with an extreme GPS outage, impossible jump, or no valid street route.
@@ -305,7 +348,7 @@ Notes:
 2. Open Medals and confirm the Lyon count is shown out of 20, collected medals appear before locked medals in All and every category filter, French accents such as `Fourvière` render correctly, all six category chips are vertically centered and unclipped, every filter works, and tapping any card focuses its exact anchor on the map.
 3. Start a walk and trace at least 80m around a landmark, returning close enough for the normal one-cell gameplay seam tolerance. Keep the anchor strictly inside and the enclosed area below 150,000m2.
 4. Close the accepted boundary and continue moving for several GPS fixes instead of pausing. Confirm the medal still unlocks while the walk remains active within the short settle window: the map marker changes from a lock to a medal and the collection card becomes unlocked without waiting for Stop.
-5. Confirm previously mapped red cells do not block the award. Repeat over an area visited before the medal feature and verify the new qualifying loop still unlocks it.
+5. Confirm previously mapped teal cells do not block the award. Repeat over an area visited before the medal feature and verify the new qualifying loop still unlocks it.
 6. Confirm passing near the marker, leaving it on the boundary, walking less than 80m, leaving a gap larger than the normal seam tolerance, or exceeding 150,000m2 does not award it.
 7. Confirm the metallic chime, success haptic, dark overlay, 3D rotating medal, localized title/description, and Continue control appear. Tap Continue and confirm the medal shrinks and flies into the measured Medal tab, which briefly pulses. With Reduce Motion enabled, confirm the initial reveal is static while the award remains usable.
 8. Stop immediately after closing a qualifying loop and confirm the idempotent Stop-time safety evaluation still unlocks it if live evaluation did not finish. Repeat through recovered-recording finalization.
@@ -323,7 +366,7 @@ Notes:
 4. Confirm Stop does not automatically rebuild historical loops; open Details and run Reprocess recordings explicitly before validating loop-fill results.
 5. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
 6. Confirm a straight walk does not create loop fills after reprocessing.
-7. Trace a qualifying enclosure while continuing to move after crossing the boundary. Confirm its red/today surface fills during the active walk without pausing for GPS, remains filled immediately after Stop, and does not require an app restart.
+7. Trace a qualifying enclosure while continuing to move after crossing the boundary. Confirm its light-orange/gold surface fills during the active walk without pausing for GPS, remains filled immediately after Stop, and does not require an app restart.
 8. Open History, tap the recording, and confirm Loop cells and Loop result are shown.
 9. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
 10. Record or reprocess a walk with multiple block loops and confirm History shows multiple filled loops.
@@ -342,7 +385,7 @@ Notes:
 9. Confirm one deliberately malformed recording is reported as preserved while later recording calculations continue.
 10. Confirm success always produces a detailed completion summary and failure always produces a visible error.
 11. Confirm the summary shows checked recordings, preserved failures, filled loops, rejected loops, loop cells, direct/validated boundary cells, inferred cells, walked/loaded street distance, street percentage, completed streets, and previous/rebuilt totals.
-12. Confirm independently enclosed qualifying areas count toward completion immediately and that the percentage matches the solid red surface.
+12. Confirm independently enclosed qualifying areas count toward completion immediately and that the percentage matches the solid light-orange surface.
 13. If the rebuilt total is below the previous total, confirm the summary reports a safety stop and the existing percentage does not decrease.
 14. Confirm areas enclosed by direct and inferred cells from multiple recordings can fill.
 15. Confirm high-confidence street matches close only short endpoint seams and unmatched gaps never draw a straight building shortcut.
@@ -456,7 +499,7 @@ This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK 
 ## Static Player Overlay Test
 
 1. Launch outdoors with foreground permission and confirm the CC0 top-down pixel character appears before recording.
-2. Confirm the map initially centers on the current fix and the static 64×64-point character covers the native blue cursor.
+2. Confirm the map initially centers on the current fix and the static 64×64-point character is the sole location symbol and no native blue cursor is visible.
 3. Start recording and confirm the camera recenters once at walking scale. Immediately pan in several directions and confirm the camera never pulls back toward the player.
 4. During pans, zooms, and rotations, confirm the sprite remains visible and stays attached to the same geographic position instead of sticking to screen center or disappearing. When that position leaves the viewport, the sprite should move naturally off-screen.
 5. Walk and turn through several directions; confirm the single south-facing image remains stable with no frame changes, flashing, disappearance, or fragments.

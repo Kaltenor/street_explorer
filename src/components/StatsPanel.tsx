@@ -70,7 +70,7 @@ function formatNumber(value: number) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.border,
+    borderColor: APP_COLORS.goldBorder,
     borderRadius: 18,
     borderWidth: 1,
     gap: 10,
