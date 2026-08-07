@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 
 import { AppLanguage, getStrings } from "../i18n";
 import { WALKING_COLORS } from "../constants/theme";
@@ -40,7 +41,7 @@ function LegendItem({ color, label }: { color: string; label: string }) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     alignSelf: "flex-start",
     backgroundColor: "rgba(7, 16, 24, 0.96)",

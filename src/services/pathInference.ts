@@ -219,6 +219,15 @@ type StreetRoutingContext = {
   streetSegments: OsmStreetSegment[];
 };
 
+type StreetSnapNode = {
+  distanceMeters: number;
+  edgeKey: string;
+  key: string;
+};
+
+const MAX_STREET_SNAP_CANDIDATES = 6;
+const STREET_SNAP_AMBIGUITY_METERS = 4;
+
 function createStreetRoutingContext(
   streetSegments: OsmStreetSegment[]
 ): StreetRoutingContext | null {
@@ -243,44 +252,76 @@ function inferStreetRoute(
   routingContext: StreetRoutingContext
 ): InferredPathSegment | null {
   const graph = routingContext.graph;
-  const startNode = attachPointToStreetGraph(
+  const maxSnapDistanceMeters = 30;
+  const startNodes = attachPointCandidatesToStreetGraph(
     startPoint,
     graph,
     routingContext.streetSegments,
-    String(routingContext.nextSnapId++)
+    String(routingContext.nextSnapId++),
+    maxSnapDistanceMeters
   );
-  const endNode = attachPointToStreetGraph(
+  const endNodes = attachPointCandidatesToStreetGraph(
     endPoint,
     graph,
     routingContext.streetSegments,
-    String(routingContext.nextSnapId++)
+    String(routingContext.nextSnapId++),
+    maxSnapDistanceMeters
   );
-  const maxSnapDistanceMeters = 30;
 
-  if (
-    !startNode ||
-    !endNode ||
-    startNode.distanceMeters > maxSnapDistanceMeters ||
-    endNode.distanceMeters > maxSnapDistanceMeters
-  ) {
+  if (startNodes.length === 0 || endNodes.length === 0) {
     return null;
   }
 
-  if (startNode.edgeKey === endNode.edgeKey) {
-    connectGraphNodes(graph, startNode.key, endNode.key, "street");
+  for (const startNode of startNodes) {
+    for (const endNode of endNodes) {
+      if (startNode.edgeKey === endNode.edgeKey) {
+        connectGraphNodes(graph, startNode.key, endNode.key, "street");
+      }
+    }
   }
 
-  const route = findShortestPath(graph, startNode.key, endNode.key);
+  let selectedMatch: {
+    endNode: StreetSnapNode;
+    route: NonNullable<ReturnType<typeof findShortestPath>>;
+    routeDistance: number;
+    startNode: StreetSnapNode;
+  } | null = null;
 
-  if (!route || route.keys.length < 2) {
+  for (const startNode of startNodes) {
+    for (const endNode of endNodes) {
+      const candidateRoute = findShortestPath(graph, startNode.key, endNode.key);
+
+      if (!candidateRoute || candidateRoute.keys.length < 2) {
+        continue;
+      }
+
+      const candidateDistance =
+        startNode.distanceMeters + candidateRoute.distanceMeters + endNode.distanceMeters;
+
+      if (!selectedMatch || candidateDistance < selectedMatch.routeDistance) {
+        selectedMatch = {
+          endNode,
+          route: candidateRoute,
+          routeDistance: candidateDistance,
+          startNode
+        };
+      }
+    }
+  }
+
+  if (!selectedMatch) {
     return null;
   }
 
-  const routeDistance =
-    startNode.distanceMeters + route.distanceMeters + endNode.distanceMeters;
+  const { endNode, route, routeDistance, startNode } = selectedMatch;
   const straightDistance = haversineDistanceMeters(startPoint, endPoint);
   const seconds = getSecondsBetweenPoints(startPoint, endPoint);
-  const speedMetersPerSecond = seconds > 0 ? routeDistance / seconds : 0;
+  // Snap connectors correct GPS drift onto the street graph; they are not
+  // additional walked distance. Counting them against the speed ceiling can
+  // reject a valid outage whose raw endpoints already passed the hard speed
+  // guard, especially when the two fixes drift to opposite sides of a road.
+  const routedStreetDistance = route.distanceMeters;
+  const speedMetersPerSecond = seconds > 0 ? routedStreetDistance / seconds : 0;
 
   if (routeDistance > Math.max(straightDistance * 2.25, straightDistance + 250)) {
     return null;
@@ -360,7 +401,7 @@ function isStreetUsable(segment: OsmStreetSegment) {
   const foot = segment.foot?.toLowerCase() ?? null;
   const explicitlyWalkable = ["designated", "permissive", "yes"].includes(foot ?? "");
 
-  if (["no", "private"].includes(foot ?? "")) {
+  if (["no", "private", "use_sidepath"].includes(foot ?? "")) {
     return false;
   }
 
@@ -668,19 +709,20 @@ function ensureGraphNode(graph: Map<string, GraphNode>, key: string, coordinate:
   return node;
 }
 
-function attachPointToStreetGraph(
+function attachPointCandidatesToStreetGraph(
   point: GpsPoint,
   graph: Map<string, GraphNode>,
   streetSegments: OsmStreetSegment[],
-  keySuffix: string
-) {
-  let nearest: {
+  keySuffix: string,
+  maxSnapDistanceMeters: number
+): StreetSnapNode[] {
+  const candidatesByEdge = new Map<string, {
     coordinate: MapCoordinate;
     distanceMeters: number;
     edgeKey: string;
     fromKey: string;
     toKey: string;
-  } | null = null;
+  }>();
 
   for (const segment of streetSegments) {
     for (let index = 1; index < segment.coordinates.length; index += 1) {
@@ -693,36 +735,50 @@ function attachPointToStreetGraph(
 
       const coordinate = projectCoordinateOntoSegment(point, from, to);
       const distanceMeters = haversineDistanceMeters(point, toGpsPoint(coordinate));
+      const fromKey = coordinateKey(from);
+      const toKey = coordinateKey(to);
+      const edgeKey = [fromKey, toKey].sort().join(">");
+      const existing = candidatesByEdge.get(edgeKey);
 
-      if (!nearest || distanceMeters < nearest.distanceMeters) {
-        const fromKey = coordinateKey(from);
-        const toKey = coordinateKey(to);
-
-        nearest = {
+      if (!existing || distanceMeters < existing.distanceMeters) {
+        candidatesByEdge.set(edgeKey, {
           coordinate,
           distanceMeters,
-          edgeKey: [fromKey, toKey].sort().join(">"),
+          edgeKey,
           fromKey,
           toKey
-        };
+        });
       }
     }
   }
 
-  if (!nearest) {
-    return null;
+  const rankedCandidates = [...candidatesByEdge.values()].sort(
+    (left, right) => left.distanceMeters - right.distanceMeters
+  );
+  const nearestDistance = rankedCandidates[0]?.distanceMeters;
+
+  if (nearestDistance === undefined || nearestDistance > maxSnapDistanceMeters) {
+    return [];
   }
 
-  const key = "snap:" + keySuffix;
-  ensureGraphNode(graph, key, nearest.coordinate);
-  connectGraphNodes(graph, key, nearest.fromKey, "snap");
-  connectGraphNodes(graph, key, nearest.toKey, "snap");
+  return rankedCandidates
+    .filter((candidate) =>
+      candidate.distanceMeters <= maxSnapDistanceMeters &&
+      candidate.distanceMeters <= nearestDistance + STREET_SNAP_AMBIGUITY_METERS
+    )
+    .slice(0, MAX_STREET_SNAP_CANDIDATES)
+    .map((candidate, index) => {
+      const key = `snap:${keySuffix}:${index}`;
+      ensureGraphNode(graph, key, candidate.coordinate);
+      connectGraphNodes(graph, key, candidate.fromKey, "snap");
+      connectGraphNodes(graph, key, candidate.toKey, "snap");
 
-  return {
-    distanceMeters: nearest.distanceMeters,
-    edgeKey: nearest.edgeKey,
-    key
-  };
+      return {
+        distanceMeters: candidate.distanceMeters,
+        edgeKey: candidate.edgeKey,
+        key
+      };
+    });
 }
 
 function connectGraphNodes(

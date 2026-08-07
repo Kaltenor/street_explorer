@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { createAppearanceStyles } from "../constants/appearance";
 import {
   ActivityIndicator,
   Modal,
@@ -176,7 +177,7 @@ function MedalSection({
         >
           <View style={[styles.medal, medal.isCollected ? styles.medalCollected : null]}>
             <Ionicons
-              color={medal.isCollected ? "#fff7d6" : "#64748b"}
+              color={medal.isCollected ? APP_COLORS.parchment : APP_COLORS.textMuted}
               name={medal.isCollected ? CATEGORY_ICONS[medal.category] : "lock-closed"}
               size={28}
             />
@@ -192,7 +193,7 @@ function MedalSection({
             ) : null}
             <Text style={styles.category}>{text.categories[medal.category]}</Text>
           </View>
-          <Ionicons color="#94a3b8" name="locate-outline" size={20} />
+          <Ionicons color={APP_COLORS.textMuted} name="locate-outline" size={20} />
         </TouchableOpacity>
       ))}
     </View>
@@ -235,7 +236,7 @@ function getText(language: AppLanguage) {
   };
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   filterPanel: { gap: 4, paddingHorizontal: 16, paddingTop: 14 },
   filterScroller: { flexGrow: 0, height: 56 },
   filters: { alignItems: "center", gap: 8, paddingVertical: 8 },

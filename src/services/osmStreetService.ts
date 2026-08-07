@@ -1,7 +1,11 @@
 import { OsmStreetSegment } from "../types/street";
 import { GpsPoint } from "../types/walk";
 
-const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
+const OVERPASS_ENDPOINTS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter"
+] as const;
+const RETRYABLE_OVERPASS_STATUSES = new Set([408, 425, 429, 500, 502, 503, 504]);
 const DEFAULT_FETCH_RADIUS_METERS = 650;
 const MAX_SEGMENT_LENGTH_METERS = 35;
 const OVERPASS_TIMEOUT_MS = 35_000;
@@ -48,7 +52,7 @@ export async function fetchNearbyOsmStreetSegments(
   center: StreetCenter,
   radiusMeters = DEFAULT_FETCH_RADIUS_METERS
 ) {
-  const data = await fetchOverpass(buildOverpassQuery(center.latitude, center.longitude, radiusMeters));
+  const data = await fetchOverpassQuery(buildOverpassQuery(center.latitude, center.longitude, radiusMeters));
   const fetchedAt = new Date().toISOString();
 
   return (data.elements ?? [])
@@ -66,7 +70,7 @@ export async function fetchOsmStreetSegmentsForCorridors(
     return [];
   }
 
-  const data = await fetchOverpass(buildCorridorOverpassQuery(usableCorridors, radiusMeters));
+  const data = await fetchOverpassQuery(buildCorridorOverpassQuery(usableCorridors, radiusMeters));
   const fetchedAt = new Date().toISOString();
 
   return (data.elements ?? [])
@@ -76,35 +80,93 @@ export async function fetchOsmStreetSegmentsForCorridors(
     );
 }
 
-async function fetchOverpass(query: string) {
+class OverpassRequestError extends Error {
+  constructor(
+    message: string,
+    readonly retryable: boolean,
+    readonly status: number | null = null
+  ) {
+    super(message);
+    this.name = "OverpassRequestError";
+  }
+}
+
+export async function fetchOverpassQuery(query: string) {
+  const failures: string[] = [];
+
+  for (const [endpointIndex, endpoint] of OVERPASS_ENDPOINTS.entries()) {
+    try {
+      return await fetchOverpassEndpoint(query, endpoint);
+    } catch (error) {
+      const requestError = error instanceof OverpassRequestError
+        ? error
+        : new OverpassRequestError(
+            error instanceof Error ? error.message : "unknown network error",
+            true
+          );
+      failures.push(`${getOverpassEndpointLabel(endpoint)}: ${requestError.message}`);
+      const hasFallback = endpointIndex < OVERPASS_ENDPOINTS.length - 1;
+
+      if (!requestError.retryable || !hasFallback) {
+        if (!requestError.retryable) {
+          throw requestError;
+        }
+        break;
+      }
+    }
+  }
+
+  throw new Error(
+    `Overpass temporarily unavailable after ${failures.length} attempts (${failures.join("; ")})`
+  );
+}
+
+async function fetchOverpassEndpoint(query: string, endpoint: string) {
   const abortController = new AbortController();
   const timeout = setTimeout(() => abortController.abort(), OVERPASS_TIMEOUT_MS);
   let response: Response;
 
   try {
-    response = await fetch(OVERPASS_ENDPOINT, {
-      body: query,
+    response = await fetch(endpoint, {
+      body: `data=${encodeURIComponent(query)}`,
       headers: {
-        "Content-Type": "text/plain"
+        Accept: "application/json",
+        "User-Agent": "StreetExplorer-App/1.0 (com.kaltenor.streetexplorer)",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       method: "POST",
       signal: abortController.signal
     });
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
-      throw new Error("OpenStreetMap street refresh timed out");
+      throw new OverpassRequestError("request timed out", true);
     }
 
-    throw error;
+    throw new OverpassRequestError(
+      error instanceof Error ? error.message : "network request failed",
+      true
+    );
   } finally {
     clearTimeout(timeout);
   }
 
   if (!response.ok) {
-    throw new Error(`Overpass request failed: ${response.status}`);
+    throw new OverpassRequestError(
+      `HTTP ${response.status}`,
+      RETRYABLE_OVERPASS_STATUSES.has(response.status),
+      response.status
+    );
   }
 
-  return (await response.json()) as OverpassResponse;
+  try {
+    return (await response.json()) as OverpassResponse;
+  } catch {
+    throw new OverpassRequestError("invalid JSON response", true);
+  }
+}
+
+function getOverpassEndpointLabel(endpoint: string) {
+  return endpoint.replace(/^https?:\/\//, "").split("/")[0] ?? endpoint;
 }
 
 function buildOverpassQuery(latitude: number, longitude: number, radiusMeters: number) {

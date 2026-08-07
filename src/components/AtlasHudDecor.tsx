@@ -1,4 +1,5 @@
 import { Image, StyleSheet, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 
 import { APP_COLORS } from "../constants/theme";
 
@@ -24,7 +25,7 @@ export function AtlasHudDivider() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   diamond: {
     backgroundColor: APP_COLORS.gold,
     height: 4,

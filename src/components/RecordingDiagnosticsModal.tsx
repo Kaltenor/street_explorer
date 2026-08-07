@@ -1,4 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createAppearanceStyles } from "../constants/appearance";
+import { APP_COLORS } from "../constants/theme";
 import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
@@ -34,7 +36,7 @@ export function RecordingDiagnosticsModal({
             <Text style={styles.subtitle}>GPS, steps, and background recording status</Text>
           </View>
           <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.closeButton}>
-            <Ionicons name="close" size={22} color="#f8fafc" />
+            <Ionicons name="close" size={22} color={APP_COLORS.text} />
           </TouchableOpacity>
         </View>
         <ScrollView contentContainerStyle={styles.content}>
@@ -59,7 +61,7 @@ export function RecordingDiagnosticsModal({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   closeButton: {
     alignItems: "center",
     backgroundColor: "#0c151c",

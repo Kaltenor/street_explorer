@@ -1,4 +1,5 @@
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useRef, useState } from "react";
 
@@ -138,7 +139,7 @@ export function WalkControls({
           </>
         ) : (
           <View style={styles.idleSummary}>
-            <Ionicons color="#f5c451" name="footsteps-outline" size={17} />
+            <Ionicons color={APP_COLORS.gold} name="footsteps-outline" size={17} />
             <Text style={styles.idleSummaryValue}>{formatSteps(todayStepCount)}</Text>
             <Text style={styles.idleSummaryLabel}>{strings.walkControls.stepsToday}</Text>
           </View>
@@ -171,7 +172,7 @@ export function WalkControls({
           >
             <Ionicons
               name={detailsExpanded ? "chevron-down" : "chevron-up"}
-              color="#f8fafc"
+              color={APP_COLORS.text}
               size={16}
             />
             <Text style={styles.detailsToggleText}>
@@ -218,11 +219,11 @@ export function WalkControls({
         ]}
       >
         {isStarting || isFinalizing ? (
-          <ActivityIndicator color={isRecording ? "#ffffff" : "#151006"} size="small" />
+          <ActivityIndicator color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold} size="small" />
         ) : (
           <Ionicons
             name={isRecording ? "stop-circle" : "play-circle"}
-            color={isRecording ? "#ffffff" : "#151006"}
+            color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold}
             size={19}
           />
         )}
@@ -410,7 +411,7 @@ function getQualityStyle(label: RecordingQuality["label"]) {
   return styles.okQuality;
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   button: {
     alignItems: "center",
     borderRadius: 14,
@@ -430,9 +431,10 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: APP_COLORS.borderStrong,
     borderTopColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 1,
     gap: 7,
+    marginHorizontal: -7,
     overflow: "hidden",
     padding: 9
   },

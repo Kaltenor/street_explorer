@@ -1,4 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createAppearanceStyles } from "../constants/appearance";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -30,6 +31,8 @@ type WalkHistoryModalProps = {
   visible: boolean;
   walks: WalkSession[];
   selectedSessionId: number | null;
+  reprocessDisabled: boolean;
+  reprocessingSessionId: number | null;
   onClose: () => void;
   onConvertLegacyBackup: () => void;
   onDeleteWalk: (sessionId: number) => void;
@@ -39,6 +42,7 @@ type WalkHistoryModalProps = {
   onLoadWalkDetails: (sessionId: number) => void;
   onOpenDiagnostics: () => void;
   onRenameWalk: (sessionId: number, displayName: string) => void;
+  onReprocessWalk: (sessionId: number) => void;
   onSelectWalk: (sessionId: number) => void;
 };
 
@@ -51,6 +55,8 @@ export function WalkHistoryModal({
   visible,
   walks,
   selectedSessionId,
+  reprocessDisabled,
+  reprocessingSessionId,
   onClose,
   onDeleteWalk,
   onConvertLegacyBackup,
@@ -60,6 +66,7 @@ export function WalkHistoryModal({
   onLoadWalkDetails,
   onOpenDiagnostics,
   onRenameWalk,
+  onReprocessWalk,
   onSelectWalk
 }: WalkHistoryModalProps) {
   const [draftNames, setDraftNames] = useState<Record<number, string>>({});
@@ -124,11 +131,14 @@ export function WalkHistoryModal({
               onClose();
             }}
             onRenameWalk={onRenameWalk}
+            onReprocessWalk={onReprocessWalk}
             onUpdateDraftName={(value) =>
               setDraftNames((current) => ({ ...current, [detailWalk.id]: value }))
             }
             language={language}
             loopFillSummary={loopFillSummaries[detailWalk.id] ?? null}
+            reprocessDisabled={reprocessDisabled}
+            reprocessingSessionId={reprocessingSessionId}
             walk={detailWalk}
             walkWithPoints={detailedWalk}
           />
@@ -165,9 +175,9 @@ export function WalkHistoryModal({
                   ]}
                 >
                   {dataOperation === "backup" ? (
-                    <ActivityIndicator color="#f5c451" size="small" />
+                    <ActivityIndicator color={APP_COLORS.gold} size="small" />
                   ) : (
-                    <Ionicons name="download-outline" size={18} color="#f8fafc" />
+                    <Ionicons name="download-outline" size={18} color={APP_COLORS.text} />
                   )}
                   <Text style={styles.toolButtonText}>
                     {dataOperation === "backup"
@@ -190,9 +200,9 @@ export function WalkHistoryModal({
                   ]}
                 >
                   {dataOperation === "convert" ? (
-                    <ActivityIndicator color="#f5c451" size="small" />
+                    <ActivityIndicator color={APP_COLORS.gold} size="small" />
                   ) : (
-                    <Ionicons name="swap-horizontal-outline" size={18} color="#f8fafc" />
+                    <Ionicons name="swap-horizontal-outline" size={18} color={APP_COLORS.text} />
                   )}
                   <Text style={styles.toolButtonText}>
                     {dataOperation === "convert"
@@ -215,9 +225,9 @@ export function WalkHistoryModal({
                   ]}
                 >
                   {dataOperation === "restore" ? (
-                    <ActivityIndicator color="#f5c451" size="small" />
+                    <ActivityIndicator color={APP_COLORS.gold} size="small" />
                   ) : (
-                    <Ionicons name="cloud-upload-outline" size={18} color="#f8fafc" />
+                    <Ionicons name="cloud-upload-outline" size={18} color={APP_COLORS.text} />
                   )}
                   <Text style={styles.toolButtonText}>
                     {dataOperation === "restore"
@@ -235,7 +245,7 @@ export function WalkHistoryModal({
                     dataOperation !== null && styles.toolButtonDisabled
                   ]}
                 >
-                  <Ionicons name="pulse-outline" size={18} color="#f8fafc" />
+                  <Ionicons name="pulse-outline" size={18} color={APP_COLORS.text} />
                   <Text style={styles.toolButtonText}>{strings.history.diagnostics}</Text>
                 </TouchableOpacity>
                 {dataOperationLabel ? (
@@ -244,7 +254,7 @@ export function WalkHistoryModal({
                     accessibilityRole="progressbar"
                     style={styles.operationStatus}
                   >
-                    <ActivityIndicator color="#f5c451" size="small" />
+                    <ActivityIndicator color={APP_COLORS.gold} size="small" />
                     <View style={styles.operationStatusCopy}>
                       <Text style={styles.operationStatusTitle}>{dataOperationLabel}</Text>
                       <Text style={styles.operationStatusText}>
@@ -306,7 +316,7 @@ function HistoryRow({
             {formatSteps(walk.stepCount)} {strings.history.stepsSuffix}
           </Text>
         </View>
-        <Ionicons name="chevron-forward" size={20} color="#64748b" />
+        <Ionicons name="chevron-forward" size={20} color={APP_COLORS.textMuted} />
       </View>
     </TouchableOpacity>
   );
@@ -321,13 +331,18 @@ function RecordingDetail({
   onExportWalkGpx,
   onFocusWalk,
   onRenameWalk,
+  onReprocessWalk,
   onUpdateDraftName,
   loopFillSummary,
+  reprocessDisabled,
+  reprocessingSessionId,
   walkWithPoints
 }: {
   draftName: string;
   language: AppLanguage;
   loopFillSummary: LoopFillSessionSummary | null;
+  reprocessDisabled: boolean;
+  reprocessingSessionId: number | null;
   walk: WalkSession;
   walkWithPoints: WalkWithPoints | null;
   onBack: () => void;
@@ -335,6 +350,7 @@ function RecordingDetail({
   onExportWalkGpx: (sessionId: number) => void;
   onFocusWalk: (sessionId: number) => void;
   onRenameWalk: (sessionId: number, displayName: string) => void;
+  onReprocessWalk: (sessionId: number) => void;
   onUpdateDraftName: (value: string) => void;
 }) {
   const report = buildRecordingReport(walk, walkWithPoints, loopFillSummary);
@@ -358,11 +374,13 @@ function RecordingDetail({
     medium: inferredSegments.filter((segment) => segment.confidence === "medium").length
   });
   const routeColor = getSavedRouteColor(walk.id, true);
+  const isReprocessing = reprocessingSessionId === walk.id;
+  const isReprocessDisabled = reprocessDisabled || isReprocessing;
 
   return (
     <ScrollView contentContainerStyle={styles.detailScreen}>
       <TouchableOpacity accessibilityRole="button" onPress={onBack} style={styles.backButton}>
-        <Ionicons name="chevron-back" size={19} color="#f8fafc" />
+        <Ionicons name="chevron-back" size={19} color={APP_COLORS.text} />
         <Text style={styles.backButtonText}>{strings.history.history}</Text>
       </TouchableOpacity>
 
@@ -416,7 +434,7 @@ function RecordingDetail({
         {inferredSegments.length > 0 ? (
           <View style={styles.reportCard}>
             <View style={styles.reportHeader}>
-              <Ionicons name="git-branch-outline" size={16} color="#f5c451" />
+              <Ionicons name="git-branch-outline" size={16} color={APP_COLORS.gold} />
               <Text style={styles.reportTitle}>{strings.history.streetBridges}</Text>
             </View>
             <Text style={styles.reportNote}>{bridgeSummary}</Text>
@@ -428,12 +446,12 @@ function RecordingDetail({
           onPress={() => setTechnicalVisible((visible) => !visible)}
           style={styles.technicalToggle}
         >
-          <Ionicons color="#f5c451" name="settings-outline" size={17} />
+          <Ionicons color={APP_COLORS.gold} name="settings-outline" size={17} />
           <Text style={styles.technicalToggleText}>
             {language === "fr" ? "D\u00e9tails techniques" : "Technical details"}
           </Text>
           <Ionicons
-            color="#94a3b8"
+            color={APP_COLORS.textMuted}
             name={technicalVisible ? "chevron-up" : "chevron-down"}
             size={17}
           />
@@ -443,7 +461,7 @@ function RecordingDetail({
           <>
             <View style={styles.reportCard}>
               <View style={styles.reportHeader}>
-                <Ionicons name="clipboard-outline" size={16} color="#f5c451" />
+                <Ionicons name="clipboard-outline" size={16} color={APP_COLORS.gold} />
                 <Text style={styles.reportTitle}>{strings.history.recordingReport}</Text>
               </View>
               <View style={styles.summaryGrid}>
@@ -476,7 +494,7 @@ function RecordingDetail({
             {inferredSegments.length > 0 ? (
               <View style={styles.reportCard}>
                 <View style={styles.reportHeader}>
-                  <Ionicons name="git-branch-outline" size={16} color="#f5c451" />
+                  <Ionicons name="git-branch-outline" size={16} color={APP_COLORS.gold} />
                   <Text style={styles.reportTitle}>{strings.history.streetBridges}</Text>
                 </View>
                 <View style={styles.details}>
@@ -495,7 +513,7 @@ function RecordingDetail({
 
             <View style={styles.reportCard}>
               <View style={styles.reportHeader}>
-                <Ionicons name="git-network-outline" size={16} color="#f5c451" />
+                <Ionicons name="git-network-outline" size={16} color={APP_COLORS.gold} />
                 <Text style={styles.reportTitle}>{strings.history.loopFillDebug}</Text>
               </View>
               <View style={styles.details}>
@@ -512,7 +530,7 @@ function RecordingDetail({
 
         <TextInput
           placeholder={strings.history.recordingName}
-          placeholderTextColor="#64748b"
+          placeholderTextColor={APP_COLORS.textMuted}
           onChangeText={onUpdateDraftName}
           style={styles.input}
           value={draftName}
@@ -524,7 +542,7 @@ function RecordingDetail({
             onPress={() => onRenameWalk(walk.id, draftName)}
             style={styles.saveButton}
           >
-            <Ionicons name="checkmark" size={18} color="#151006" />
+            <Ionicons name="checkmark" size={18} color={APP_COLORS.inkOnGold} />
             <Text style={styles.saveButtonText}>{strings.common.save}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -532,7 +550,7 @@ function RecordingDetail({
             onPress={() => onFocusWalk(walk.id)}
             style={styles.secondaryButton}
           >
-            <Ionicons name="locate-outline" size={18} color="#f8fafc" />
+            <Ionicons name="locate-outline" size={18} color={APP_COLORS.text} />
             <Text style={styles.secondaryButtonText}>{strings.history.focusOnMap}</Text>
           </TouchableOpacity>
         </View>
@@ -543,9 +561,30 @@ function RecordingDetail({
             onPress={() => onExportWalkGpx(walk.id)}
             style={styles.secondaryButton}
           >
-            <Ionicons name="download-outline" size={18} color="#f8fafc" />
+            <Ionicons name="download-outline" size={18} color={APP_COLORS.text} />
             <Text style={styles.secondaryButtonText}>{strings.history.exportGpx}</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={{ busy: isReprocessing, disabled: isReprocessDisabled }}
+            disabled={isReprocessDisabled}
+            onPress={() => onReprocessWalk(walk.id)}
+            style={[styles.secondaryButton, isReprocessDisabled && styles.actionButtonDisabled]}
+          >
+            {isReprocessing ? (
+              <ActivityIndicator color={APP_COLORS.gold} size="small" />
+            ) : (
+              <Ionicons name="sync-outline" size={18} color={APP_COLORS.text} />
+            )}
+            <Text style={styles.secondaryButtonText}>
+              {isReprocessing
+                ? strings.history.reprocessWalkBusy
+                : strings.history.reprocessWalk}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.actions}>
           <TouchableOpacity
             accessibilityRole="button"
             onPress={() => onDeleteWalk(walk.id)}
@@ -797,7 +836,10 @@ function formatArea(areaM2: number) {
   return `${Math.round(areaM2).toLocaleString()} m2`;
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
+  actionButtonDisabled: {
+    opacity: 0.48
+  },
   actions: {
     flexDirection: "row",
     gap: 10,

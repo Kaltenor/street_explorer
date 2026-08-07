@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createAppearanceStyles } from "../constants/appearance";
 import {
   Alert,
   InteractionManager,
@@ -423,7 +424,7 @@ export function CompletionModal({
           {currentObjective ? (
             <View style={styles.currentObjectivePanel}>
               <View style={styles.currentObjectiveHeader}>
-                <Ionicons name="flag-outline" size={17} color="#f5c451" />
+                <Ionicons name="flag-outline" size={17} color={APP_COLORS.gold} />
                 <Text style={styles.currentObjectiveTitle}>{completionStrings.currentObjective}</Text>
               </View>
               <Text numberOfLines={1} style={styles.currentObjectiveName}>
@@ -443,7 +444,7 @@ export function CompletionModal({
 
           <View style={styles.achievementPanel}>
             <View style={styles.currentObjectiveHeader}>
-              <Ionicons name="trophy-outline" size={17} color="#f5c451" />
+              <Ionicons name="trophy-outline" size={17} color={APP_COLORS.gold} />
               <Text style={styles.currentObjectiveTitle}>
                 {completionStrings.completedZones}
               </Text>
@@ -484,7 +485,7 @@ export function CompletionModal({
                 onPress={handleRefreshBoundaries}
                 style={[styles.smallButton, isRefreshingZones ? styles.disabledButton : null]}
               >
-                <Ionicons name="refresh" size={15} color="#f8fafc" />
+                <Ionicons name="refresh" size={15} color={APP_COLORS.text} />
                 <Text style={styles.smallButtonText}>
                   {isRefreshingZones ? completionStrings.loading : strings.common.refresh}
                 </Text>
@@ -494,7 +495,7 @@ export function CompletionModal({
                 onPress={handleClearBoundaries}
                 style={styles.smallButton}
               >
-                <Ionicons name="trash-outline" size={15} color="#f8fafc" />
+                <Ionicons name="trash-outline" size={15} color={APP_COLORS.text} />
                 <Text style={styles.smallButtonText}>{strings.common.clear}</Text>
               </TouchableOpacity>
             </View>
@@ -524,7 +525,7 @@ export function CompletionModal({
                   <Ionicons
                     name={zonePickerOpen ? "chevron-up" : "chevron-down"}
                     size={18}
-                    color="#f8fafc"
+                    color={APP_COLORS.text}
                   />
                 </TouchableOpacity>
                 {zonePickerOpen ? zones.map((zone) => (
@@ -577,7 +578,7 @@ export function CompletionModal({
                 onPress={() => onFocusZone(selectedZone)}
                 style={styles.focusButton}
               >
-                <Ionicons name="scan" size={16} color="#f8fafc" />
+                <Ionicons name="scan" size={16} color={APP_COLORS.text} />
                 <Text style={styles.focusButtonText}>{completionStrings.focusOnMap}</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -592,7 +593,7 @@ export function CompletionModal({
                   !isZoneCompletionEligible(selectedZone) ? styles.disabledButton : null
                 ]}
               >
-                <Ionicons name="flag-outline" size={16} color="#f8fafc" />
+                <Ionicons name="flag-outline" size={16} color={APP_COLORS.text} />
                 <Text style={styles.focusButtonText}>
                   {isCurrentObjective(currentObjective, selectedZone, mode)
                     ? completionStrings.currentObjectiveButton
@@ -629,7 +630,7 @@ export function CompletionModal({
                 }}
                 style={styles.focusButton}
               >
-                <Ionicons name="flag-outline" size={16} color="#f8fafc" />
+                <Ionicons name="flag-outline" size={16} color={APP_COLORS.text} />
                 <Text style={styles.focusButtonText}>{completionStrings.useAsObjective}</Text>
               </TouchableOpacity>
             </View>
@@ -1014,7 +1015,7 @@ function formatScope(scope: CompletionScope, language: AppLanguage) {
   return capitalize(scope);
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   activeObjectiveButton: {
     backgroundColor: "rgba(245, 196, 81, 0.16)",
     borderColor: "rgba(245, 196, 81, 0.42)"

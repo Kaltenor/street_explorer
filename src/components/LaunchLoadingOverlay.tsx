@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
+import { APP_COLORS } from "../constants/theme";
 
 import { APP_VERSION } from "../constants/config";
 import { AppLanguage, getStrings } from "../i18n";
@@ -46,7 +48,7 @@ export function LaunchLoadingOverlay({
             </TouchableOpacity>
           ) : (
             <View style={styles.loadingRow}>
-              <ActivityIndicator color="#f5c451" size="small" />
+              <ActivityIndicator color={APP_COLORS.gold} size="small" />
               <Text style={styles.loadingText}>{strings.launch.loadingMap}</Text>
             </View>
           )}
@@ -57,7 +59,7 @@ export function LaunchLoadingOverlay({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   background: {
     backgroundColor: "#071018",
     flex: 1,

@@ -1,4 +1,9 @@
 import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
+import {
+  AppearanceMode,
+  createAppearanceStyles,
+  isDaylightAppearance
+} from "../constants/appearance";
 import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
 import MapView, {
   type LongPressEvent,
@@ -19,7 +24,7 @@ import {
   MAP_CONFIG,
   MODE_LOCATION_CONFIG
 } from "../constants/config";
-import { WALKING_COLORS } from "../constants/theme";
+import { APP_COLORS, WALKING_COLORS } from "../constants/theme";
 import { CachedZone } from "../database/completionRepository";
 import {
   buildExplorationPolygonOutlineSegments,
@@ -49,6 +54,7 @@ type ExplorationMapProps = {
   activePoints: GpsPoint[];
   activeRouteChunks: LiveRouteChunk[];
   activeExplorationCellIds: string[];
+  appearanceMode: AppearanceMode;
   explorationEnabled: boolean;
   activeMode: ActivityMode;
   focusedMedal: CollectedMedal | null;
@@ -113,6 +119,7 @@ const MEDAL_MARKER_MAX_LATITUDE_DELTA = 0.14;
 export const ExplorationMap = memo(function ExplorationMap({
   walks,
   activeExplorationCellIds,
+  appearanceMode,
   explorationEnabled,
   pathWalks,
   activePoints,
@@ -502,14 +509,22 @@ export const ExplorationMap = memo(function ExplorationMap({
     <View style={styles.container}>
       <ApplePoiFilteredMapView
         ref={mapRef}
-        key={`native-map-city-${cityZone?.id ?? "none"}`}
+        key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}
         style={styles.map}
         appleMapsPointsOfInterestFilter={{
           categories: GAMEPLAY_POI_CATEGORIES,
           mode: "include"
         }}
-        mapType={Platform.OS === "ios" ? "mutedStandard" : "standard"}
-        userInterfaceStyle={Platform.OS === "ios" ? "dark" : undefined}
+        mapType={
+          Platform.OS === "ios" && !isDaylightAppearance(appearanceMode)
+            ? "mutedStandard"
+            : "standard"
+        }
+        userInterfaceStyle={
+          Platform.OS === "ios"
+            ? isDaylightAppearance(appearanceMode) ? "light" : "dark"
+            : undefined
+        }
         initialRegion={visibleRegion}
         onPanDrag={handleMapPan}
         onMapReady={() => {
@@ -704,7 +719,7 @@ function AtlasRouteMarker({
         >
           <View style={styles.atlasRouteMarkerInset}>
             <Ionicons
-              color="#2a2015"
+              color={APP_COLORS.inkOnGold}
               name={isStart ? "flag-outline" : "checkmark"}
               size={18}
             />
@@ -744,7 +759,7 @@ function AtlasMedalMarker({
       >
         <View style={styles.atlasMedalMarkerInner}>
           <Ionicons
-            color={medal.isCollected ? "#2a2015" : "#d9d0bc"}
+            color={medal.isCollected ? APP_COLORS.inkOnGold : APP_COLORS.parchmentMuted}
             name={medal.isCollected ? "ribbon-outline" : "lock-closed-outline"}
             size={18}
           />
@@ -1585,7 +1600,7 @@ function formatMarkerDate(value: string) {
   }).format(new Date(value));
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     ...StyleSheet.absoluteFillObject,
     overflow: "hidden"

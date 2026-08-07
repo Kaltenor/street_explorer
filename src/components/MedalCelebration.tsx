@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { createAppearanceStyles } from "../constants/appearance";
+import { APP_COLORS } from "../constants/theme";
 import {
   AccessibilityInfo,
   Animated,
@@ -244,7 +246,7 @@ export function MedalCelebration({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   backdrop: { alignItems: "center", backgroundColor: "rgba(2, 6, 10, 0.95)", flex: 1, justifyContent: "center", padding: 30 },
   copy: { alignItems: "center" },
   kicker: { color: "#f5c451", fontSize: 13, fontWeight: "900", letterSpacing: 2.4, marginBottom: 24 },

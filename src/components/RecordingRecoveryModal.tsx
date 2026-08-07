@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createAppearanceStyles } from "../constants/appearance";
+import { APP_COLORS } from "../constants/theme";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MapView, { Marker, Polyline, Region } from "react-native-maps";
 import {
@@ -111,7 +113,7 @@ export function RecordingRecoveryModal({
         <SafeAreaView style={styles.screen}>
         <View style={styles.header}>
           <View style={styles.headerIcon}>
-            <Ionicons name="shield-checkmark-outline" size={25} color="#f5c451" />
+            <Ionicons name="shield-checkmark-outline" size={25} color={APP_COLORS.gold} />
           </View>
           <View style={styles.headerText}>
             <Text style={styles.eyebrow}>{strings.recoveryEyebrow}</Text>
@@ -153,12 +155,12 @@ export function RecordingRecoveryModal({
             </MapView>
           ) : (
             <View style={styles.emptyPreview}>
-              <Ionicons name="location-outline" size={34} color="#64748b" />
+              <Ionicons name="location-outline" size={34} color={APP_COLORS.textMuted} />
               <Text style={styles.emptyPreviewText}>{strings.noRoute}</Text>
             </View>
           )}
           <View pointerEvents="none" style={styles.previewBadge}>
-            <Ionicons name="map-outline" size={15} color="#f5c451" />
+            <Ionicons name="map-outline" size={15} color={APP_COLORS.gold} />
             <Text style={styles.previewBadgeText}>{strings.savedRoutePreview}</Text>
           </View>
         </View>
@@ -201,7 +203,7 @@ export function RecordingRecoveryModal({
                 maxLength={80}
                 onChangeText={setFinishName}
                 placeholder={strings.namePlaceholder}
-                placeholderTextColor="#64748b"
+                placeholderTextColor={APP_COLORS.textMuted}
                 selectTextOnFocus
                 style={styles.nameInput}
                 value={finishName}
@@ -223,7 +225,7 @@ export function RecordingRecoveryModal({
                     !finishName.trim() && styles.disabled
                   ]}
                 >
-                  <Ionicons name="checkmark" size={18} color="#151006" />
+                  <Ionicons name="checkmark" size={18} color={APP_COLORS.inkOnGold} />
                   <Text style={styles.primaryText}>{strings.saveRecoveredWalk}</Text>
                 </TouchableOpacity>
               </View>
@@ -237,7 +239,7 @@ export function RecordingRecoveryModal({
                     onPress={() => setFinishPromptVisible(true)}
                     style={styles.primary}
                   >
-                    <Ionicons name="checkmark-circle-outline" size={20} color="#151006" />
+                    <Ionicons name="checkmark-circle-outline" size={20} color={APP_COLORS.inkOnGold} />
                     <Text style={styles.primaryText}>{strings.finishAndSave}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -245,7 +247,7 @@ export function RecordingRecoveryModal({
                     onPress={onResume}
                     style={styles.secondary}
                   >
-                    <Ionicons name="play-circle-outline" size={20} color="#f8fafc" />
+                    <Ionicons name="play-circle-outline" size={20} color={APP_COLORS.text} />
                     <Text style={styles.secondaryText}>{strings.resumeInstead}</Text>
                   </TouchableOpacity>
                 </>
@@ -256,7 +258,7 @@ export function RecordingRecoveryModal({
                     onPress={onResume}
                     style={styles.primary}
                   >
-                    <Ionicons name="play-circle" size={20} color="#151006" />
+                    <Ionicons name="play-circle" size={20} color={APP_COLORS.inkOnGold} />
                     <Text style={styles.primaryText}>{strings.resume}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -264,7 +266,7 @@ export function RecordingRecoveryModal({
                     onPress={() => setFinishPromptVisible(true)}
                     style={styles.secondary}
                   >
-                    <Ionicons name="checkmark-circle-outline" size={20} color="#f8fafc" />
+                    <Ionicons name="checkmark-circle-outline" size={20} color={APP_COLORS.text} />
                     <Text style={styles.secondaryText}>{strings.finishInstead}</Text>
                   </TouchableOpacity>
                 </>
@@ -491,7 +493,7 @@ function getRecoveryStrings(language: AppLanguage) {
       };
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   actions: {
     gap: 9
   },

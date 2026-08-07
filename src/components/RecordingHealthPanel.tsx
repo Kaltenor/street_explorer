@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { formatDuration } from "../services/distance";
@@ -108,7 +109,7 @@ function formatLatestPoint(ageSeconds: number | null) {
   return `Last point ${formatDuration(ageSeconds)} ago`;
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: "rgba(245, 196, 81, 0.28)",

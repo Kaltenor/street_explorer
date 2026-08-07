@@ -7,6 +7,11 @@ import {
   useState
 } from "react";
 import {
+  APPEARANCE_MODES,
+  AppearanceMode,
+  createAppearanceStyles
+} from "../constants/appearance";
+import {
   Animated,
   Easing,
   ActivityIndicator,
@@ -59,7 +64,7 @@ import {
 import { StatsPanel } from "../components/StatsPanel";
 import { WalkControls } from "../components/WalkControls";
 import { WalkHistoryModal } from "../components/WalkHistoryModal";
-import { APP_COLORS, ATLAS_DISPLAY_FONT } from "../constants/theme";
+import { APP_COLORS, ATLAS_DISPLAY_FONT, GPS_STATUS_COLORS } from "../constants/theme";
 import {
   clearPendingRecordingRepair,
   deleteWalkSession,
@@ -138,6 +143,7 @@ import {
   LOOP_FILL_CONFIG
 } from "../services/loopFill";
 import {
+  getAllStreetSegments,
   getStreetSegmentsNear,
   upsertStreetSegments
 } from "../database/streetRepository";
@@ -257,7 +263,9 @@ function getGpsTimestamp(point: GpsPoint) {
 }
 
 type MapScreenProps = {
+  appearanceMode: AppearanceMode;
   language: AppLanguage;
+  onChangeAppearanceMode: (mode: AppearanceMode) => void;
   onChangeLanguage: (language: AppLanguage) => void;
 };
 
@@ -316,6 +324,10 @@ type ReprocessSummary = LoopProcessingResult & {
   boundaryCellCount: number;
   failedRecordingCount: number;
   inferredCellCount: number;
+  targetBridgeCount: number;
+  targetHiddenGapCount: number;
+  targetInferredCellCount: number;
+  targetSessionId: number | null;
   streetCoverageError: string | null;
   streetCoverageSegmentCount: number;
   streetCoverageStatus: "failed" | "not_needed" | "refreshed";
@@ -465,7 +477,9 @@ function createRecoveredActiveWalk(
 
 
 export function MapScreen({
+  appearanceMode,
   language,
+  onChangeAppearanceMode,
   onChangeLanguage
 }: MapScreenProps) {
   usePerformanceRenderCounter("MapScreen");
@@ -501,6 +515,7 @@ export function MapScreen({
   const [dataOperation, setDataOperation] = useState<DataOperation>(null);
   const [isComputingRecording, setIsComputingRecording] = useState(false);
   const [reprocessProgress, setReprocessProgress] = useState<ReprocessProgress | null>(null);
+  const [reprocessingSessionId, setReprocessingSessionId] = useState<number | null>(null);
   const [stopConfirmationVisible, setStopConfirmationVisible] = useState(false);
   const [recordingSummary, setRecordingSummary] = useState<RecordingSummary | null>(null);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
@@ -2642,17 +2657,24 @@ export function MapScreen({
       options: {
         rebuildRouteSnapshots?: boolean;
         onProgress?: (progress: ReprocessProgress) => void;
+        targetSessionId?: number;
       } = {}
     ): Promise<ReprocessSummary> => {
       const savedWalks = await getAllWalksWithPoints(mode);
-      const historicalExploredStreetIds = matchGpsPointsToStreetSegments(
-        savedWalks.flatMap((walk) => walk.points),
-        streetSegments
-      );
+      const targetSessionId = options.targetSessionId ?? null;
+      const targetWalk = targetSessionId === null
+        ? null
+        : savedWalks.find((walk) => walk.id === targetSessionId) ?? null;
+
+      if (targetSessionId !== null && !targetWalk) {
+        throw new Error("The selected recording no longer exists.");
+      }
+
+      const reportingRecordingCount = targetWalk ? 1 : savedWalks.length;
       options.onProgress?.({
         completed: 0,
         phase: "preparing",
-        total: savedWalks.length
+        total: reportingRecordingCount
       });
       let streetCoverageRepair = {
         corridorCount: 0,
@@ -2667,12 +2689,14 @@ export function MapScreen({
           phase: "streets",
           total: 1
         });
-        streetCoverageRepair = await repairStreetCoverageForRecordings(savedWalks);
+        streetCoverageRepair = await repairStreetCoverageForRecordings(
+          targetWalk ? [targetWalk] : savedWalks
+        );
 
         if (streetCoverageRepair.status === "failed") {
           throw new Error(
             `Street coverage repair failed: ${streetCoverageRepair.error ?? "unknown error"}. ` +
-              "Existing routes and progress were left unchanged. Check your connection and retry."
+              "Existing routes and progress were left unchanged. OpenStreetMap may be busy; wait a moment and retry, then check your connection if it continues."
           );
         }
         options.onProgress?.({
@@ -2681,6 +2705,13 @@ export function MapScreen({
           total: 1
         });
       }
+      const routingStreetSegments = options.rebuildRouteSnapshots
+        ? await getAllStreetSegments()
+        : streetSegments;
+      const historicalExploredStreetIds = matchGpsPointsToStreetSegments(
+        savedWalks.flatMap((walk) => walk.points),
+        routingStreetSegments
+      );
       const previousRecords = await getExploredCellRecords(mode);
       const previousCellCount = new Set(previousRecords.map((record) => record.cellKey)).size;
       const boundaryCellIds = new Set<string>();
@@ -2696,23 +2727,29 @@ export function MapScreen({
 
       // Build the complete candidate in memory first. Reprocessing must never erase
       // already-earned exploration merely because a network/cache rebuild is weaker.
+      let rebuiltRouteProgress = 0;
       for (const [walkIndex, walk] of savedWalks.entries()) {
-        options.onProgress?.({
-          completed: walkIndex,
-          phase: "routes",
-          total: savedWalks.length
-        });
+        const shouldRebuildSnapshot = Boolean(options.rebuildRouteSnapshots) &&
+          (targetSessionId === null || walk.id === targetSessionId);
+
+        if (targetSessionId === null || shouldRebuildSnapshot) {
+          options.onProgress?.({
+            completed: targetSessionId === null ? walkIndex : rebuiltRouteProgress,
+            phase: "routes",
+            total: reportingRecordingCount
+          });
+        }
 
         let replaceSnapshot = false;
         let routeSegments: RenderedRouteSegment[];
 
         try {
-          routeSegments = options.rebuildRouteSnapshots
+          routeSegments = shouldRebuildSnapshot
             ? await rebuildRouteSnapshot(
                 walk.id,
                 walk.activityMode,
                 walk.points,
-                streetSegments,
+                routingStreetSegments,
                 {
                   persist: false,
                   refreshStreetCoverage: false
@@ -2723,7 +2760,7 @@ export function MapScreen({
                 walk.activityMode,
                 walk.points
               );
-          replaceSnapshot = Boolean(options.rebuildRouteSnapshots);
+          replaceSnapshot = shouldRebuildSnapshot;
         } catch (error) {
           failedRecordingCount += 1;
           console.warn("Unable to rebuild recording; preserving its frozen route", walk.id, error);
@@ -2747,23 +2784,26 @@ export function MapScreen({
           routeSegments,
           walk
         });
-        options.onProgress?.({
-          completed: walkIndex + 1,
-          phase: "routes",
-          total: savedWalks.length
-        });
+        if (targetSessionId === null || shouldRebuildSnapshot) {
+          rebuiltRouteProgress += 1;
+          options.onProgress?.({
+            completed: targetSessionId === null ? walkIndex + 1 : rebuiltRouteProgress,
+            phase: "routes",
+            total: reportingRecordingCount
+          });
+        }
       }
 
       options.onProgress?.({
-        completed: savedWalks.length,
+        completed: reportingRecordingCount,
         phase: "contours",
-        total: savedWalks.length
+        total: reportingRecordingCount
       });
       const loopFills = analyzeLoopFillsForCells({
         activityMode: mode,
         boundaryCellIds: [...boundaryCellIds],
         exploredStreetIds: historicalExploredStreetIds,
-        streetSegments
+        streetSegments: routingStreetSegments
       });
       const acceptedLoopFills = loopFills.filter((loopFill) => loopFill.accepted);
       const rejectedLoopFills = loopFills.filter((loopFill) => !loopFill.accepted);
@@ -2773,9 +2813,9 @@ export function MapScreen({
 
       if (!preservedPreviousProgress) {
         options.onProgress?.({
-          completed: savedWalks.length,
+          completed: reportingRecordingCount,
           phase: "saving",
-          total: savedWalks.length
+          total: reportingRecordingCount
         });
 
         for (const rebuilt of rebuiltWalkCells) {
@@ -2826,17 +2866,33 @@ export function MapScreen({
         await replaceExplorationForMode(mode, replacementCells, replacementLoopFills);
       }
 
+      const rebuiltTarget = targetSessionId === null
+        ? null
+        : rebuiltWalkCells.find((rebuilt) => rebuilt.walk.id === targetSessionId) ?? null;
+      const targetBridgeCount = rebuiltTarget?.routeSegments.filter(
+        (segment) => segment.type === "inferred"
+      ).length ?? 0;
+      const targetHiddenGapCount = targetWalk
+        ? buildPathSegments(targetWalk.points, targetWalk.activityMode).filter(
+            (segment) => segment.type === "rejected"
+          ).length
+        : 0;
+
       const diagnostics = {
         boundaryCellCount: boundaryCellIds.size,
         failedRecordingCount,
         inferredCellCount: inferredCellIds.size,
+        targetBridgeCount,
+        targetHiddenGapCount,
+        targetInferredCellCount: rebuiltTarget?.inferred.length ?? 0,
+        targetSessionId,
         streetCoverageError: streetCoverageRepair.error,
         streetCoverageSegmentCount: streetCoverageRepair.segmentCount,
         streetCoverageStatus: streetCoverageRepair.status,
         preservedPreviousProgress,
         previousCellCount,
         rebuiltCellCount: rebuiltCellKeys.size,
-        recordingCount: savedWalks.length
+        recordingCount: reportingRecordingCount
       };
 
       if (acceptedLoopFills.length > 0) {
@@ -3245,7 +3301,7 @@ export function MapScreen({
                   }`
                 );
               } catch (error) {
-                console.error("Reprocess recordings failed", error);
+                console.warn("Reprocess recordings failed", error);
                 setReprocessProgress(null);
                 Alert.alert(
                   "Reprocess failed",
@@ -3260,6 +3316,94 @@ export function MapScreen({
       );
     }, 50);
   }, [activeWalk, activityMode, modeText, refreshSavedData, reprocessModeExploration, strings]);
+
+  const handleReprocessWalk = useCallback((sessionId: number) => {
+    const walk = history.find((candidate) => candidate.id === sessionId);
+
+    if (!walk) {
+      Alert.alert(
+        language === "fr" ? "Enregistrement introuvable" : "Recording unavailable",
+        language === "fr"
+          ? "Cette marche n'existe plus. Actualisez l'historique et r\u00e9essayez."
+          : "This walk no longer exists. Refresh History and try again."
+      );
+      return;
+    }
+
+    if (activeWalk) {
+      Alert.alert(strings.map.recordingActive, strings.map.recordingActiveReprocess);
+      return;
+    }
+
+    if (reprocessProgress) {
+      return;
+    }
+
+    Alert.alert(
+      language === "fr" ? "Recalculer cette marche ?" : "Reprocess this walk?",
+      language === "fr"
+        ? "Seule cette trace sera recalcul\u00e9e avec un r\u00e9seau OSM actualis\u00e9. Les totaux partag\u00e9s seront ensuite r\u00e9concili\u00e9s depuis les autres traces fig\u00e9es."
+        : "Only this route will be rebuilt with refreshed OSM coverage. Shared totals will then be reconciled from the other frozen routes.",
+      [
+        { text: strings.common.cancel, style: "cancel" },
+        {
+          text: strings.history.reprocessWalk,
+          onPress: async () => {
+            setReprocessingSessionId(sessionId);
+            setReprocessProgress({ completed: 0, phase: "preparing", total: 1 });
+
+            try {
+              const summary = await reprocessModeExploration(walk.activityMode, {
+                onProgress: setReprocessProgress,
+                rebuildRouteSnapshots: true,
+                targetSessionId: sessionId
+              });
+              const streetCompletion = await rebuildStreetCompletionV2({
+                shouldAbort: () => Boolean(activeWalkRef.current)
+              });
+
+              setReprocessProgress({ completed: 1, phase: "refreshing", total: 1 });
+              await refreshSavedData({
+                hideExplorationDuringRefresh: false,
+                repairPendingCaches: false
+              });
+              await loadDetailedWalk(sessionId);
+              setReprocessProgress(null);
+              setReprocessingSessionId(null);
+
+              Alert.alert(
+                language === "fr" ? "Marche recalcul\u00e9e" : "Walk reprocessed",
+                language === "fr"
+                  ? `${summary.targetHiddenGapCount} coupure(s) d\u00e9tect\u00e9e(s).\n${summary.targetBridgeCount} pont(s) accept\u00e9(s).\n${summary.targetInferredCellCount} cellule(s) d\u00e9duite(s) r\u00e9cup\u00e9r\u00e9e(s).\nProgression des rues : ${streetCompletion.completionPercent}%.`
+                  : `${summary.targetHiddenGapCount} gap(s) detected.\n${summary.targetBridgeCount} bridge(s) accepted.\n${summary.targetInferredCellCount} inferred cell(s) recovered.\nStreet completion: ${streetCompletion.completionPercent}%.`
+              );
+            } catch (error) {
+              console.warn(`Reprocess recording ${sessionId} failed`, error);
+              setReprocessProgress(null);
+              setReprocessingSessionId(null);
+              Alert.alert(
+                language === "fr" ? "Recalcul impossible" : "Reprocess failed",
+                error instanceof Error
+                  ? error.message
+                  : language === "fr"
+                    ? "Une erreur inattendue a interrompu le recalcul. La progression existante a \u00e9t\u00e9 conserv\u00e9e."
+                    : "An unexpected error stopped the rebuild. Existing progress was preserved."
+              );
+            }
+          }
+        }
+      ]
+    );
+  }, [
+    activeWalk,
+    history,
+    language,
+    loadDetailedWalk,
+    refreshSavedData,
+    reprocessModeExploration,
+    reprocessProgress,
+    strings
+  ]);
 
   const restoreRecoverableRecordingProtection = useCallback(
     async (recording: RecoverableRecording) => {
@@ -4004,6 +4148,7 @@ export function MapScreen({
       <ExplorationMap
         activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
         activeRouteChunks={activeWalk?.routeChunks ?? EMPTY_LIVE_ROUTE_CHUNKS}
+        appearanceMode={appearanceMode}
         walks={walks}
         explorationEnabled={isExplorationEnabled}
         pathWalks={displayedWalks}
@@ -4047,7 +4192,7 @@ export function MapScreen({
               {
                 height: wordmarkCollapseProgress.interpolate({
                   inputRange: [0, 1],
-                  outputRange: [82, 38]
+                  outputRange: [98, 38]
                 })
               }
             ]}
@@ -4059,31 +4204,26 @@ export function MapScreen({
                 styles.logo,
                 {
                   opacity: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.9] }),
-                  transform: [{ scale: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.46] }) }]
+                  transform: [{ scale: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.385] }) }]
                 }
               ]}
             />
           </Animated.View>
-          <View style={styles.mapHudRow}>
-            <CityMedalProgress
-              language={language}
-              onPress={() => setMedalsVisible(true)}
-              progress={medalProgress}
-            />
-            <ObjectiveToggleButton
-              hasObjective={Boolean(objective)}
-              language={language}
-              onPress={() => {
-                if (!objective) {
-                  setCompletionVisible(true);
-                  return;
-                }
+          <CityMedalProgress
+            hasObjective={Boolean(objective)}
+            language={language}
+            objectiveVisible={Boolean(objective && objectiveHudVisible)}
+            onObjectivePress={() => {
+              if (!objective) {
+                setCompletionVisible(true);
+                return;
+              }
 
-                setObjectiveHudVisible((visible) => !visible);
-              }}
-              visible={Boolean(objective && objectiveHudVisible)}
-            />
-          </View>
+              setObjectiveHudVisible((visible) => !visible);
+            }}
+            onPress={() => setMedalsVisible(true)}
+            progress={medalProgress}
+          />
           {objective && objectiveHudVisible ? (
             <ObjectiveHud
               isCalculating={isObjectiveStatsCalculating}
@@ -4095,7 +4235,7 @@ export function MapScreen({
           ) : null}
           {isMapZoneSelectionLoading ? (
             <View style={styles.mapZoneSelectionLoading}>
-              <ActivityIndicator color="#f5c451" size="small" />
+              <ActivityIndicator color={APP_COLORS.gold} size="small" />
               <Text style={styles.mapZoneSelectionLoadingText}>
                 {language === "fr" ? "Recherche de la zone…" : "Finding area…"}
               </Text>
@@ -4246,9 +4386,11 @@ export function MapScreen({
       </SafeAreaView>
 
       {optionsVisible ? <OptionsModal
+        appearanceMode={appearanceMode}
         language={language}
         layers={layers}
         mode={pathDisplayMode}
+        onChangeAppearanceMode={onChangeAppearanceMode}
         onChangeLanguage={onChangeLanguage}
         onChangePathDisplayMode={setPathDisplayMode}
         onClose={() => setOptionsVisible(false)}
@@ -4287,6 +4429,8 @@ export function MapScreen({
         loopFillSummaries={loopFillSummaries}
         visible={historyVisible}
         dataOperation={dataOperation}
+        reprocessDisabled={Boolean(activeWalk) || reprocessProgress !== null || dataOperation !== null}
+        reprocessingSessionId={reprocessingSessionId}
         walks={history}
         selectedSessionId={selectedSessionId}
         onClose={() => setHistoryVisible(false)}
@@ -4301,6 +4445,7 @@ export function MapScreen({
           );
         }}
         onRenameWalk={handleRenameWalk}
+        onReprocessWalk={handleReprocessWalk}
         onSelectWalk={focusSavedWalkOnMap}
         onOpenDiagnostics={() => {
           setHistoryVisible(false);
@@ -4498,7 +4643,7 @@ function MapZoneScopePicker({
           onPress={onClose}
           style={styles.mapZoneSelectionClose}
         >
-          <Ionicons color="#cbd5e1" name="close" size={18} />
+          <Ionicons color={APP_COLORS.textSecondary} name="close" size={18} />
         </TouchableOpacity>
       </View>
       <AtlasHudDivider />
@@ -4604,11 +4749,17 @@ function ObjectiveHud({
 }
 
 function CityMedalProgress({
+  hasObjective,
   language,
+  objectiveVisible,
+  onObjectivePress,
   onPress,
   progress
 }: {
+  hasObjective: boolean;
   language: AppLanguage;
+  objectiveVisible: boolean;
+  onObjectivePress: () => void;
   onPress: () => void;
   progress: MedalAlbumProgress | null;
 }) {
@@ -4618,27 +4769,36 @@ function CityMedalProgress({
   const city = progress?.album.cityName[language] ?? "Lyon";
 
   return (
-    <TouchableOpacity
-      accessibilityLabel={language === "fr" ? "Progression des m\u00e9dailles de la ville" : "City medal progress"}
-      accessibilityRole="button"
-      onPress={onPress}
-      style={styles.cityMedalHud}
-    >
+    <View style={styles.cityMedalHud}>
       <AtlasHudTexture opacity={0.07} />
-      <View style={styles.cityMedalIcon}>
-        <Ionicons color={APP_COLORS.gold} name="medal" size={18} />
-      </View>
-      <View style={styles.cityMedalContent}>
-        <View style={styles.cityMedalHeader}>
-          <Text numberOfLines={1} style={styles.cityMedalName}>{city}</Text>
-          <Text style={styles.cityMedalCount}>{collected}/{total}</Text>
+      <TouchableOpacity
+        accessibilityLabel={language === "fr" ? "Progression des m\u00e9dailles de la ville" : "City medal progress"}
+        accessibilityRole="button"
+        onPress={onPress}
+        style={styles.cityMedalMain}
+      >
+        <View style={styles.cityMedalIcon}>
+          <Ionicons color={APP_COLORS.gold} name="medal" size={18} />
         </View>
-        <View style={styles.cityMedalTrack}>
-          <View style={[styles.cityMedalFill, { width: (ratio + "%") as DimensionValue }]} />
+        <View style={styles.cityMedalContent}>
+          <View style={styles.cityMedalHeader}>
+            <Text numberOfLines={1} style={styles.cityMedalName}>{city}</Text>
+            <Text style={styles.cityMedalCount}>{collected}/{total}</Text>
+          </View>
+          <View style={styles.cityMedalTrack}>
+            <View style={[styles.cityMedalFill, { width: (ratio + "%") as DimensionValue }]} />
+          </View>
         </View>
-      </View>
-      <Ionicons color="#94a3b8" name="chevron-forward" size={15} />
-    </TouchableOpacity>
+        <Ionicons color={APP_COLORS.textMuted} name="chevron-forward" size={15} />
+      </TouchableOpacity>
+      <View style={styles.cityMedalActionDivider} />
+      <ObjectiveToggleButton
+        hasObjective={hasObjective}
+        language={language}
+        onPress={onObjectivePress}
+        visible={objectiveVisible}
+      />
+    </View>
   );
 }
 
@@ -4667,7 +4827,7 @@ function ObjectiveToggleButton({
       onPress={onPress}
       style={[styles.objectiveToggle, visible ? styles.objectiveToggleActive : null]}
     >
-      <AtlasHudTexture opacity={0.05} />
+
       <Ionicons
         color={visible || hasObjective ? APP_COLORS.gold : APP_COLORS.textMuted}
         name={visible ? "flag" : "flag-outline"}
@@ -4726,7 +4886,7 @@ function ReprocessingModal({
     <Modal animationType="fade" transparent visible>
       <View style={styles.computingOverlay}>
         <View style={styles.computingDialog}>
-          <ActivityIndicator color="#f5c451" size="large" />
+          <ActivityIndicator color={APP_COLORS.gold} size="large" />
           <Text style={styles.computingTitle}>
             {isFrench ? "Recalcul en cours" : "Reprocessing"}
           </Text>
@@ -4951,7 +5111,7 @@ function RecordingSummaryModal({
               </Text>
             </View>
             <TouchableOpacity accessibilityRole="button" onPress={onClose} style={styles.summaryClose}>
-              <Ionicons name="close" size={20} color="#f8fafc" />
+              <Ionicons name="close" size={20} color={APP_COLORS.text} />
             </TouchableOpacity>
           </View>
 
@@ -4960,7 +5120,7 @@ function RecordingSummaryModal({
             <Ionicons
               name={summary.quality.label === "Good" ? "checkmark-circle" : "alert-circle"}
               size={22}
-              color={summary.quality.label === "Good" ? "#4ade80" : "#f5c451"}
+              color={summary.quality.label === "Good" ? GPS_STATUS_COLORS.good : APP_COLORS.gold}
             />
             <View style={styles.summaryQualityCopy}>
               <Text style={styles.summaryQualityTitle}>
@@ -4987,7 +5147,7 @@ function RecordingSummaryModal({
             <View style={styles.badgeRow}>
               {milestoneBadges.map((badge) => (
                 <View key={badge.label} style={[styles.badge, styles.unlockedBadge]}>
-                  <Ionicons name={badge.icon} size={15} color="#151006" />
+                  <Ionicons name={badge.icon} size={15} color={APP_COLORS.inkOnGold} />
                   <Text style={[styles.badgeText, styles.unlockedBadgeText]}>{badge.label}</Text>
                 </View>
               ))}
@@ -4996,7 +5156,7 @@ function RecordingSummaryModal({
           <TextInput
             onChangeText={setDisplayName}
             placeholder={isFrench ? "Nom de l'enregistrement" : "Recording name"}
-            placeholderTextColor="#64748b"
+            placeholderTextColor={APP_COLORS.textMuted}
             style={styles.summaryInput}
             value={displayName}
           />
@@ -5010,7 +5170,7 @@ function RecordingSummaryModal({
               onPress={() => onSaveName(displayName)}
               style={styles.summaryPrimary}
             >
-              <Ionicons name="checkmark" size={18} color="#151006" />
+              <Ionicons name="checkmark" size={18} color={APP_COLORS.inkOnGold} />
               <Text style={styles.summaryPrimaryText}>{isFrench ? "Enregistrer" : "Save"}</Text>
             </TouchableOpacity>
           </View>
@@ -5177,9 +5337,11 @@ function formatLoopResultShort(result: LoopProcessingResult, language: AppLangua
 }
 
 function OptionsModal({
+  appearanceMode,
   language,
   layers,
   mode,
+  onChangeAppearanceMode,
   onChangeLanguage,
   onChangePathDisplayMode,
   onClose,
@@ -5188,9 +5350,11 @@ function OptionsModal({
   selectedSessionId,
   visible
 }: {
+  appearanceMode: AppearanceMode;
   language: AppLanguage;
   layers: MapLayerState;
   mode: PathDisplayMode;
+  onChangeAppearanceMode: (mode: AppearanceMode) => void;
   onChangeLanguage: (language: AppLanguage) => void;
   onChangePathDisplayMode: (mode: PathDisplayMode) => void;
   onClose: () => void;
@@ -5200,6 +5364,37 @@ function OptionsModal({
   visible: boolean;
 }) {
   const strings = getStrings(language);
+  const appearanceOptions = APPEARANCE_MODES.map((value) => {
+    if (value === "daylight") {
+      return {
+        description: language === "fr"
+          ? "Palette claire \u00e0 contraste renforc\u00e9 pour une lecture en plein soleil."
+          : "High-contrast light palette for clear reading in direct sunlight.",
+        icon: "sunny-outline" as const,
+        label: "Daylight",
+        value
+      };
+    }
+    if (value === "custom") {
+      return {
+        description: language === "fr"
+          ? "Palette personnalis\u00e9e \u00e0 d\u00e9finir lors d'une prochaine mise \u00e0 jour."
+          : "Custom palette to be defined in a future update.",
+        icon: "color-palette-outline" as const,
+        label: "Custom",
+        value
+      };
+    }
+
+    return {
+      description: language === "fr"
+        ? "Palette sombre actuelle de l'atlas."
+        : "Current dark atlas palette.",
+      icon: "compass-outline" as const,
+      label: "Explorator",
+      value
+    };
+  });
 
   return (
     <Modal
@@ -5224,6 +5419,63 @@ function OptionsModal({
             title={language === "fr" ? "R\u00c9GLAGES DE L'ATLAS" : "ATLAS SETTINGS"}
           />
           <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>
+              {language === "fr" ? "Apparence" : "Appearance"}
+            </Text>
+            <View style={styles.appearanceOptions}>
+              {appearanceOptions.map((option) => {
+                const selected = appearanceMode === option.value;
+
+                return (
+                  <TouchableOpacity
+                    accessibilityHint={option.description}
+                    accessibilityLabel={option.label}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: selected }}
+                    key={option.value}
+                    onPress={() => onChangeAppearanceMode(option.value)}
+                    style={[
+                      styles.appearanceOption,
+                      selected ? styles.selectedPathDisplayButton : null
+                    ]}
+                  >
+                    <Ionicons
+                      color={selected ? APP_COLORS.inkOnGold : APP_COLORS.text}
+                      name={option.icon}
+                      size={20}
+                    />
+                    <View style={styles.appearanceOptionCopy}>
+                      <Text
+                        style={[
+                          styles.pathDisplayButtonText,
+                          selected ? styles.selectedPathDisplayButtonText : null
+                        ]}
+                      >
+                        {option.label}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.appearanceOptionDescription,
+                          selected ? styles.selectedAppearanceOptionDescription : null
+                        ]}
+                      >
+                        {option.description}
+                      </Text>
+                    </View>
+                    {selected ? (
+                      <Ionicons
+                        color={APP_COLORS.inkOnGold}
+                        name="checkmark-circle"
+                        size={20}
+                      />
+                    ) : null}
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          </View>
+
+          <View style={styles.optionPanel}>
             <Text style={styles.pathDisplayTitle}>{strings.common.language}</Text>
             <View style={styles.optionRows}>
               {APP_LANGUAGES.map((option) => (
@@ -5239,7 +5491,7 @@ function OptionsModal({
                   <Ionicons
                     name="language-outline"
                     size={17}
-                    color={language === option.code ? "#151006" : "#f8fafc"}
+                    color={language === option.code ? APP_COLORS.inkOnGold : APP_COLORS.text}
                   />
                   <Text
                     style={[
@@ -5290,7 +5542,7 @@ function OptionsModal({
             onPress={onReprocessRecordings}
             style={styles.maintenanceButton}
           >
-            <Ionicons name="sync-outline" size={18} color="#f5c451" />
+            <Ionicons name="sync-outline" size={18} color={APP_COLORS.gold} />
             <View style={styles.maintenanceText}>
               <Text style={styles.pathDisplayTitle}>{strings.details.reprocessRecordings}</Text>
               <Text style={styles.optionHelpText}>
@@ -5321,7 +5573,7 @@ function OptionToggle({
       onPress={onPress}
       style={[styles.optionButton, active ? styles.selectedPathDisplayButton : null]}
     >
-      <Ionicons name={icon} size={17} color={active ? "#151006" : "#f8fafc"} />
+      <Ionicons name={icon} size={17} color={active ? APP_COLORS.inkOnGold : APP_COLORS.text} />
       <Text
         style={[
           styles.pathDisplayButtonText,
@@ -5410,7 +5662,7 @@ function DetailsModal({
             onPress={onOpenHistory}
             style={styles.dashboardToggle}
           >
-            <Ionicons name="time-outline" size={18} color="#f8fafc" />
+            <Ionicons name="time-outline" size={18} color={APP_COLORS.text} />
             <Text style={styles.dashboardToggleText}>{strings.details.openHistory}</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -5851,7 +6103,7 @@ function pointInPolygon(
   return inside;
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   dialogDivider: {
     alignItems: "center",
     flexDirection: "row",
@@ -5932,12 +6184,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: APP_COLORS.border,
     borderTopColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 1,
     flexDirection: "row",
     gap: 3,
     marginBottom: 8,
-    marginHorizontal: 4,
+    marginHorizontal: -7,
     overflow: "hidden",
     padding: 4,
     zIndex: 2
@@ -6214,6 +6466,30 @@ const styles = StyleSheet.create({
     gap: 8,
     padding: 10
   },
+  appearanceOptions: { gap: 8 },
+  appearanceOption: {
+    alignItems: "center",
+    backgroundColor: "rgba(12, 21, 28, 0.9)",
+    borderColor: APP_COLORS.border,
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 10,
+    minHeight: 64,
+    paddingHorizontal: 12,
+    paddingVertical: 10
+  },
+  appearanceOptionCopy: { flex: 1, gap: 2 },
+  appearanceOptionDescription: {
+    color: APP_COLORS.textMuted,
+    fontSize: 11,
+    fontWeight: "600",
+    lineHeight: 15
+  },
+  selectedAppearanceOptionDescription: {
+    color: APP_COLORS.inkOnGold,
+    opacity: 0.82
+  },
   optionHelpText: {
     color: "#94a3b8",
     fontSize: 12,
@@ -6230,15 +6506,26 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(7, 16, 24, 0.95)",
     borderColor: APP_COLORS.borderStrong,
     borderTopColor: "rgba(245, 196, 81, 0.24)",
-    borderRadius: 18,
+    borderRadius: 10,
     borderWidth: 1,
+    flexDirection: "row",
+    marginHorizontal: -7,
+    minHeight: 52,
+    overflow: "hidden"
+  },
+  cityMedalMain: {
+    alignItems: "center",
     flex: 1,
     flexDirection: "row",
     gap: 10,
     minHeight: 52,
-    overflow: "hidden",
-    paddingHorizontal: 12,
+    paddingHorizontal: 14,
     paddingVertical: 8
+  },
+  cityMedalActionDivider: {
+    alignSelf: "stretch",
+    backgroundColor: "rgba(245, 196, 81, 0.22)",
+    width: 1
   },
   cityMedalIcon: {
     alignItems: "center",
@@ -6267,29 +6554,27 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   },
   cityMedalFill: { backgroundColor: "#f5c451", borderRadius: 999, height: "100%" },
-  mapHudRow: { alignItems: "center", flexDirection: "row", gap: 8 },
+
   objectiveToggle: {
     alignItems: "center",
-    backgroundColor: "rgba(7, 16, 24, 0.95)",
-    borderColor: APP_COLORS.borderStrong,
-    borderRadius: 18,
-    borderWidth: 1,
+    backgroundColor: "transparent",
+    borderRadius: 0,
     height: 52,
     justifyContent: "center",
     overflow: "hidden",
-    width: 52
+    width: 56
   },
   objectiveToggleActive: {
-    backgroundColor: "rgba(245, 196, 81, 0.13)",
-    borderColor: "rgba(245, 196, 81, 0.56)"
+    backgroundColor: "rgba(245, 196, 81, 0.13)"
   },
   objectiveHud: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: APP_COLORS.border,
     borderTopColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 18,
+    borderRadius: 10,
     borderWidth: 1,
     gap: 7,
+    marginHorizontal: -7,
     overflow: "hidden",
     padding: 12
   },
@@ -6425,8 +6710,8 @@ const styles = StyleSheet.create({
     padding: 14
   },
   logo: {
-    height: 82,
-    width: "72%"
+    height: 98,
+    width: "86%"
   },
   pathDisplayButton: {
     backgroundColor: "rgba(2, 6, 10, 0.86)",

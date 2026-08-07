@@ -120,7 +120,7 @@ assert.ok(mapSource.includes("objective.zone.id === mapBoundaryContext.city.id")
 assert.ok(mapSource.includes("doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city)"));
 assert.ok(mapSource.includes("cityZone={visibleMapBoundaryContext.city}"));
 assert.match(mapSource, /!cityDistrictZones\.some/);
-assert.ok(explorationMapSource.includes('key={`native-map-city-${cityZone?.id ?? "none"}`}'));
+assert.ok(explorationMapSource.includes('key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}'));
 assert.match(explorationMapSource, /initialRegion={visibleRegion}/);
 assert.match(explorationMapSource, /onLongPress=\{handleMapLongPress\}/);
 assert.match(explorationMapSource, /playerFocusRequestId/);

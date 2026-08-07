@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 
 import { MODE_LOCATION_CONFIG } from "../constants/config";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
@@ -28,7 +29,7 @@ export function ModeProfilePanel({ activityMode, language }: ModeProfilePanelPro
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: "#2a3c49",

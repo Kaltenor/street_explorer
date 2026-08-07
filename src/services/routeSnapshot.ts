@@ -152,7 +152,7 @@ export async function repairStreetCoverageForRecordings(
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown street coverage error";
-    console.warn("Unable to repair historical street coverage; continuing from cache", error);
+
 
     return {
       corridorCount: corridors.length,

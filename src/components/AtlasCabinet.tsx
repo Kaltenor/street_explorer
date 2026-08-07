@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { createAppearanceStyles } from "../constants/appearance";
 import {
   AccessibilityInfo,
   Animated,
@@ -453,7 +454,7 @@ export const ATLAS_CARD_STYLE: ViewStyle = {
   borderWidth: 1
 };
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   backButton: {
     alignItems: "center",
     backgroundColor: "rgba(12, 21, 28, 0.9)",

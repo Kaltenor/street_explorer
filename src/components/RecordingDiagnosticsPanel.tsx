@@ -1,4 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createAppearanceStyles } from "../constants/appearance";
+import { APP_COLORS } from "../constants/theme";
 import { StyleSheet, Text, View } from "react-native";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
@@ -69,7 +71,7 @@ function PanelHeader({ status, title }: { status: string; title: string }) {
   return (
     <View style={styles.header}>
       <View style={styles.headerTitle}>
-        <Ionicons name="pulse-outline" size={17} color="#f5c451" />
+        <Ionicons name="pulse-outline" size={17} color={APP_COLORS.gold} />
         <Text style={styles.title}>{title}</Text>
       </View>
       <Text style={styles.statusBadge}>{status}</Text>
@@ -113,7 +115,7 @@ function getBackgroundLabel(status: BackgroundTrackingStatus) {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   backgroundText: {
     color: "#93c5fd",
     fontSize: 12,

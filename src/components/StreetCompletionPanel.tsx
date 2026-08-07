@@ -1,4 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createAppearanceStyles } from "../constants/appearance";
 import { StyleSheet, Text, View } from "react-native";
 
 import { AppLanguage } from "../i18n";
@@ -21,7 +22,7 @@ export function StreetCompletionPanel({
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.titleRow}>
-          <Ionicons name="trail-sign-outline" size={18} color="#f5c451" />
+          <Ionicons name="trail-sign-outline" size={18} color={APP_COLORS.gold} />
           <Text style={styles.title}>
             {isFrench ? "Rues OpenStreetMap" : "OpenStreetMap streets"}
           </Text>
@@ -102,7 +103,7 @@ function getStatusText(summary: StreetCompletionSummary, language: AppLanguage) 
     : `${summary.processedRecordingCount} recordings processed. A street completes at 90%.`;
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     backgroundColor: APP_COLORS.card,
     borderColor: APP_COLORS.goldBorder,

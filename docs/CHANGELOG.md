@@ -1,5 +1,70 @@
 # Changelog
 
+## v0.16.21
+
+Fixed:
+
+- Kept handled full-history and individual-walk reprocess failures out of React Native's development LogBox by reporting them as warnings while preserving the existing user-facing failure alerts and state cleanup.
+- Removed the duplicate service-layer street-repair warning whose cache-fallback wording was inaccurate for strict manual reprocessing.
+- Removed the former standalone flag texture after integrating the flag into the medal stripe, giving the complete rail one uniform paper-grain layer.
+
+Changed:
+
+- Added focused regressions and device guidance, corrected the README version display, and synchronized version 0.16.21 with iOS build 136 and Android version code 136.
+
+## v0.16.20
+
+Fixed:
+
+- Made OSM topology refresh resilient to transient Overpass overloads. HTTP 408/425/429/5xx responses, timeouts, network failures, and invalid JSON from the primary instance now fail over once to the independent globally covered Private.coffee instance; malformed and other non-retryable requests still stop immediately, and failure across all attempts preserves every existing route and progress row.
+- Clarified the reprocess failure message so a server-side outage is not presented only as a local connection problem.
+
+Changed:
+
+- Added executable 504-failover and non-retryable-error regressions, and synchronized version 0.16.20 with iOS build 135 and Android version code 135.
+
+## v0.16.19
+
+Added:
+
+- Added **Reprocess this walk** beside GPX export in each History recording. It refreshes only the selected route's OSM corridor and frozen snapshot, then safely reconciles shared exploration, loop-fill, and Street Completion totals from the other unchanged frozen routes. The action is unavailable during an active recording and reports detected gaps, accepted bridges, and recovered inferred cells.
+
+Fixed:
+
+- Recovered valid walking bridges through GPS outages near parallel infrastructure, including the supplied Cours Lafayette railway underpass: Overpass refreshes now use an encoded identifiable request, `foot=use_sidepath` geometry is excluded, near-ambiguous endpoint snaps are evaluated jointly, and GPS-to-street correction distance no longer inflates the walking-speed check. Raw GPS speed, routed speed, topology, and detour safety limits remain enforced.
+
+Changed:
+
+- Added a GPX-derived underpass regression plus individual-reprocess wiring coverage, and synchronized version 0.16.19 with iOS build 134 and Android version code 134.
+
+## v0.16.18
+
+Added:
+
+- Added a persistent Appearance selector in Options with Explorator, Daylight, and Custom choices. Explorator preserves the existing dark atlas presentation, Daylight applies a high-contrast light palette across the map, HUD, menus, dialogs, recovery, diagnostics, and loading surfaces, and Custom is retained as a selectable placeholder for a future user-defined palette.
+
+Changed:
+
+- Made the iOS MapKit presentation follow the selected appearance, using the existing dark muted playfield for Explorator/Custom and a light standard map for Daylight.
+- Extended focused UI regressions and device guidance for appearance selection, immediate switching, accessibility semantics, and cold-launch persistence.
+- Synchronized version 0.16.18 with iOS build 133 and Android version code 133.
+
+## v0.16.17
+
+Changed:
+
+- Softened the four map stripes with consistent 7px side gutters and restrained 10px outer corners, preserving their separate structure, current heights, and integrated medal-stripe flag action.
+- Updated focused UI regressions and device guidance, and synchronized version 0.16.17 with iOS build 132 and Android version code 132.
+
+## v0.16.16
+
+Changed:
+
+- Replaced the four persistent floating map cards with independent, square, edge-to-edge Atlas stripes for medal progress, district objectives, navigation, and the walking field log while preserving their existing vertical density.
+- Integrated the objective flag into the right side of the medal stripe with a distinct divider and independent accessible touch target.
+- Enlarged the untouched first-launch wordmark by about 20% while keeping its post-interaction compact endpoint unchanged.
+- Added focused stripe/title regressions, device guidance, and synchronized version 0.16.16 with iOS build 131 and Android version code 131.
+
 ## v0.16.15
 
 Changed:

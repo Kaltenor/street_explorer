@@ -510,6 +510,55 @@ assert(
   "compatible street endpoints within eight metres create a medium-confidence evidenced bridge"
 );
 
+const underpassGapStart = {
+  accuracy: 14,
+  latitude: 45.7635481007116,
+  longitude: 4.86038113328772,
+  pointIndex: 1907,
+  timestamp: "2026-08-07T10:47:54.001Z"
+};
+const underpassGapEnd = {
+  accuracy: 14,
+  latitude: 45.7637062669742,
+  longitude: 4.85975875576047,
+  pointIndex: 1908,
+  timestamp: "2026-08-07T10:48:07.002Z"
+};
+const underpassStreet = topologySegment("way/cours-lafayette-underpass/part/0", [
+  { latitude: 45.76365, longitude: 4.8597 },
+  { latitude: 45.76365, longitude: 4.86044 }
+]);
+const underpassServiceTrack = topologySegment(
+  "way/t1-service-track/part/0",
+  [
+    { latitude: 45.763706, longitude: 4.8597 },
+    { latitude: 45.763706, longitude: 4.85982 }
+  ],
+  { foot: "use_sidepath", highway: "service", name: "T1" }
+);
+const underpassGapResult = pathInference.inferPathBetweenPoints(
+  underpassGapStart,
+  underpassGapEnd,
+  "walk",
+  [underpassStreet, underpassServiceTrack]
+);
+assert(
+  underpassGapResult.status === "inferred" &&
+    underpassGapResult.segment.bridgeEvidence.gapDistanceMeters > 51 &&
+    underpassGapResult.segment.bridgeEvidence.startSnapDistanceMeters > 10,
+  "street snap corrections do not turn the recorded Cours Lafayette underpass gap into impossible walking speed"
+);
+const impossibleUnderpassGapResult = pathInference.inferPathBetweenPoints(
+  underpassGapStart,
+  { ...underpassGapEnd, timestamp: "2026-08-07T10:48:04.001Z" },
+  "walk",
+  [underpassStreet]
+);
+assert(
+  impossibleUnderpassGapResult.status === "rejected",
+  "street-only speed checks still reject a genuinely impossible underpass interval"
+);
+
 const legacyGapStart = gpsPoint(0, 0, 0);
 const legacyGapEnd = gpsPoint(0.0007, 1, 20);
 const legacyGapWithoutCoverage = pathInference.buildPathSegments(
@@ -873,6 +922,10 @@ const streetCompletionPanelSource = fs.readFileSync(
 );
 const routeSnapshotSource = fs.readFileSync(
   require.resolve("../src/services/routeSnapshot.ts"),
+  "utf8"
+);
+const osmStreetServiceSource = fs.readFileSync(
+  require.resolve("../src/services/osmStreetService.ts"),
   "utf8"
 );
 const recordingStateSource = fs.readFileSync(
@@ -1351,7 +1404,28 @@ assert(
     walkHistorySource.includes("strings.history.bridgeSummary") &&
     walkHistorySource.includes("formatBridgeEvidence"),
   "path inference V3 persists safe topology metadata and reviewable bridge evidence"
-);assert(
+);
+assert(
+  osmStreetServiceSource.includes("data=${encodeURIComponent(query)}") &&
+    osmStreetServiceSource.includes("application/x-www-form-urlencoded") &&
+    osmStreetServiceSource.includes('"User-Agent"') &&
+    osmStreetServiceSource.includes("StreetExplorer-App/1.0"),
+  "street topology refresh submits an identifiable encoded Overpass request"
+);
+assert(
+  mapScreenSource.includes("targetSessionId?: number") &&
+    mapScreenSource.includes("targetWalk ? [targetWalk] : savedWalks") &&
+    mapScreenSource.includes("? await getAllStreetSegments()") &&
+    mapScreenSource.includes("targetSessionId: sessionId") &&
+    mapScreenSource.includes("await rebuildStreetCompletionV2({") &&
+    mapScreenSource.includes("targetBridgeCount") &&
+    walkHistorySource.includes("onReprocessWalk(walk.id)") &&
+    walkHistorySource.includes("strings.history.reprocessWalk") &&
+    walkHistorySource.includes("accessibilityState={{ busy: isReprocessing") &&
+    mapScreenSource.includes("reprocessDisabled={Boolean(activeWalk)"),
+  "History reprocesses one selected frozen route, reconciles shared totals, and blocks the action during recording"
+);
+assert(
   completionModalSource.includes("InteractionManager.runAfterInteractions") &&
     completionModalSource.includes("abortController.abort()") &&
     zoneCompletionSource.includes("COMPLETION_SCAN_YIELD_INTERVAL") &&
@@ -1564,3 +1638,59 @@ assert(
   "50,000 adjacent cells collapse to one four-corner native polygon"
 );
 console.log("Geometry benchmark: " + elapsedMs + "ms");
+
+async function verifyOverpassFailover() {
+  const originalFetch = global.fetch;
+
+  try {
+    const retryCalls = [];
+    global.fetch = async (endpoint) => {
+      retryCalls.push(String(endpoint));
+
+      if (retryCalls.length === 1) {
+        return { ok: false, status: 504 };
+      }
+
+      return {
+        json: async () => ({ elements: [] }),
+        ok: true,
+        status: 200
+      };
+    };
+
+    await osmStreetService.fetchOverpassQuery("[out:json];out;");
+    assert(
+      retryCalls.length === 2 &&
+        retryCalls[0].includes("overpass-api.de") &&
+        retryCalls[1].includes("overpass.private.coffee"),
+      "a retryable Overpass 504 immediately falls back to the second public endpoint"
+    );
+
+    let nonRetryableError = null;
+    let nonRetryableCalls = 0;
+    global.fetch = async () => {
+      nonRetryableCalls += 1;
+      return { ok: false, status: 400 };
+    };
+
+    try {
+      await osmStreetService.fetchOverpassQuery("invalid query");
+    } catch (error) {
+      nonRetryableError = error;
+    }
+
+    assert(
+      nonRetryableCalls === 1 &&
+        nonRetryableError instanceof Error &&
+        nonRetryableError.message.includes("HTTP 400"),
+      "non-retryable Overpass request errors do not fan out across public instances"
+    );
+  } finally {
+    global.fetch = originalFetch;
+  }
+}
+
+verifyOverpassFailover().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

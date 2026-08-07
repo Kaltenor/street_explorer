@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { createAppearanceStyles } from "./src/constants/appearance";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
 import {
@@ -13,8 +14,14 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { initDatabase } from "./src/database/db";
 import {
   getAppLanguage,
-  saveAppLanguage
+  getAppearanceMode,
+  saveAppLanguage,
+  saveAppearanceMode
 } from "./src/database/settingsRepository";
+import {
+  AppearanceMode,
+  setActiveAppearanceMode
+} from "./src/constants/appearance";
 import { AppLanguage } from "./src/i18n";
 import { MapScreen } from "./src/screens/MapScreen";
 import {
@@ -28,14 +35,21 @@ export default function App() {
   const [databaseReady, setDatabaseReady] = useState(false);
   const [databaseFailed, setDatabaseFailed] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("en");
+  const [appearanceMode, setAppearanceMode] =
+    useState<AppearanceMode>("explorator");
 
   const initializeApp = () => {
     setDatabaseFailed(false);
     initDatabase()
       .then(async () => {
-        const savedLanguage = await getAppLanguage();
+        const [savedLanguage, savedAppearanceMode] = await Promise.all([
+          getAppLanguage(),
+          getAppearanceMode()
+        ]);
 
         setLanguage(savedLanguage);
+        setActiveAppearanceMode(savedAppearanceMode);
+        setAppearanceMode(savedAppearanceMode);
         setDatabaseReady(true);
 
         // Mount the map as soon as its schema and language are ready. Recovery
@@ -58,6 +72,12 @@ export default function App() {
   const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
     setLanguage(nextLanguage);
     await saveAppLanguage(nextLanguage);
+  };
+
+  const handleChangeAppearanceMode = async (nextMode: AppearanceMode) => {
+    setActiveAppearanceMode(nextMode);
+    setAppearanceMode(nextMode);
+    await saveAppearanceMode(nextMode);
   };
 
   if (!databaseReady || (!fontsLoaded && !fontError)) {
@@ -93,7 +113,9 @@ export default function App() {
       <View style={styles.app}>
         <StatusBar style="dark" />
         <MapScreen
+          appearanceMode={appearanceMode}
           language={language}
+          onChangeAppearanceMode={handleChangeAppearanceMode}
           onChangeLanguage={handleChangeLanguage}
         />
       </View>
@@ -101,7 +123,7 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   app: {
     flex: 1
   },

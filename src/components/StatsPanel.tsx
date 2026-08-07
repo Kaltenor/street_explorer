@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { createAppearanceStyles } from "../constants/appearance";
 
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
 import { APP_COLORS } from "../constants/theme";
@@ -67,7 +68,7 @@ function formatNumber(value: number) {
   return Math.max(0, Math.round(value)).toLocaleString();
 }
 
-const styles = StyleSheet.create({
+const styles = createAppearanceStyles({
   container: {
     backgroundColor: APP_COLORS.card,
     borderColor: APP_COLORS.goldBorder,

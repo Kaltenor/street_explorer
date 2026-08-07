@@ -3,8 +3,13 @@ import { ActivityMode, GpsPoint } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
 import { isOfficialDistrictAdminLevel } from "../services/zoneBoundaryPolicy";
+import {
+  APPEARANCE_MODES,
+  AppearanceMode
+} from "../constants/appearance";
 
 const APP_LANGUAGE_KEY = "app_language";
+const APPEARANCE_MODE_KEY = "appearance_mode";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
 const COMPLETION_OBJECTIVE_KEY = "completion_objective";
@@ -45,6 +50,34 @@ export async function saveAppLanguage(language: AppLanguage) {
     `,
     APP_LANGUAGE_KEY,
     language
+  );
+}
+
+export async function getAppearanceMode(): Promise<AppearanceMode> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?",
+    APPEARANCE_MODE_KEY
+  );
+
+  if (APPEARANCE_MODES.includes(row?.value as AppearanceMode)) {
+    return row?.value as AppearanceMode;
+  }
+
+  return "explorator";
+}
+
+export async function saveAppearanceMode(mode: AppearanceMode) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO app_settings (key, value)
+      VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `,
+    APPEARANCE_MODE_KEY,
+    mode
   );
 }
 
