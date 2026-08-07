@@ -7,20 +7,23 @@ import {
   useState
 } from "react";
 import {
+  Animated,
+  Easing,
   ActivityIndicator,
   Alert,
   AppState,
-  Image,
+  ImageBackground,
   Modal,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   type DimensionValue,
+  type LayoutChangeEvent,
   TouchableOpacity,
   View
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import type { Region } from "react-native-maps";
 
@@ -29,8 +32,10 @@ import {
   AtlasScreen,
   AtlasSectionLabel,
   AtlasStamp,
-  type AtlasStampMessage
+  type AtlasStampMessage,
+  useReducedMotionPreference
 } from "../components/AtlasCabinet";
+import { AtlasHudDivider, AtlasHudTexture } from "../components/AtlasHudDecor";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import {
@@ -54,7 +59,7 @@ import {
 import { StatsPanel } from "../components/StatsPanel";
 import { WalkControls } from "../components/WalkControls";
 import { WalkHistoryModal } from "../components/WalkHistoryModal";
-import { APP_COLORS } from "../constants/theme";
+import { APP_COLORS, ATLAS_DISPLAY_FONT } from "../constants/theme";
 import {
   clearPendingRecordingRepair,
   deleteWalkSession,
@@ -144,9 +149,13 @@ import {
   countExploredCellKeysInsideZone,
   fetchNearbyOsmZonesWithDebug,
   getZoneGeometryFingerprint,
+  getZoneBounds,
   isZoneCompletionEligible,
+  isOfficialDistrictZone,
   ZoneCompletionStats
 } from "../services/zoneCompletion";
+import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
+import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import { usePerformanceRenderCounter } from "../services/performance";
 import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
@@ -256,6 +265,21 @@ type MapZoneSelection = {
   city: CachedZone | null;
   district: CachedZone | null;
 };
+
+type MapBoundaryContext = {
+  city: CachedZone | null;
+  districts: CachedZone[];
+};
+
+const EMPTY_MAP_BOUNDARY_CONTEXT: MapBoundaryContext = {
+  city: null,
+  districts: []
+};
+function isSelectableMapObjectiveZone(zone: CachedZone) {
+  return zone.type !== "district" || isOfficialDistrictZone(zone);
+}
+
+
 
 const GPS_STORAGE_PAUSED_REASON =
   "Storage unavailable; recording paused until queued GPS writes recover.";
@@ -448,6 +472,9 @@ export function MapScreen({
   const activityMode: ActivityMode = "walk";
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
+  const safeAreaInsets = useSafeAreaInsets();
+  const reducedMotion = useReducedMotionPreference();
+  const wordmarkCollapseProgress = useRef(new Animated.Value(0)).current;
   const [permissionState, setPermissionState] = useState<LocationPermissionState>("unknown");
   const [currentLocation, setCurrentLocation] = useState<GpsPoint | null>(null);
   const [walks, setWalks] = useState<WalkWithPoints[]>([]);
@@ -483,8 +510,14 @@ export function MapScreen({
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
   const [atlasStampMessage, setAtlasStampMessage] = useState<AtlasStampMessage | null>(null);
+  const [mapOverlayPanelHeights, setMapOverlayPanelHeights] = useState({
+    bottom: 0,
+    top: 0
+  });
   const [objectiveClosureRevision, setObjectiveClosureRevision] = useState(0);
-  const [districtZones, setDistrictZones] = useState<CachedZone[]>([]);
+  const [mapBoundaryContext, setMapBoundaryContext] = useState<MapBoundaryContext>(
+    EMPTY_MAP_BOUNDARY_CONTEXT
+  );
   const [mapZoneSelection, setMapZoneSelection] = useState<MapZoneSelection | null>(null);
   const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
@@ -501,6 +534,7 @@ export function MapScreen({
   const [backgroundTrackingStatus, setBackgroundTrackingStatus] =
     useState<BackgroundTrackingStatus>("idle");
   const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
+  const [isMapWordmarkCollapsed, setIsMapWordmarkCollapsed] = useState(false);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isSavedDataReady, setIsSavedDataReady] = useState(false);
   const [isExplorationEnabled, setIsExplorationEnabled] = useState(false);
@@ -517,6 +551,23 @@ export function MapScreen({
     showPaths: false
   });
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
+  useEffect(() => {
+    wordmarkCollapseProgress.stopAnimation();
+    if (reducedMotion) {
+      wordmarkCollapseProgress.setValue(isMapWordmarkCollapsed ? 1 : 0);
+      return;
+    }
+
+    const animation = Animated.timing(wordmarkCollapseProgress, {
+      duration: 220,
+      easing: Easing.out(Easing.cubic),
+      toValue: isMapWordmarkCollapsed ? 1 : 0,
+      useNativeDriver: false
+    });
+    animation.start();
+    return () => animation.stop();
+  }, [isMapWordmarkCollapsed, reducedMotion, wordmarkCollapseProgress]);
+
   const activeSessionIdRef = useRef<number | null>(null);
   const activeWalkRef = useRef<ActiveWalk | null>(null);
   const medalTabRef = useRef<ComponentRef<typeof TouchableOpacity>>(null);
@@ -530,11 +581,15 @@ export function MapScreen({
   const recordingLifecycleGenerationRef = useRef(0);
   const appStateTransitionGenerationRef = useRef(0);
   const districtZoneLoadRequestRef = useRef(0);
+  const mapBoundaryContextRef = useRef<MapBoundaryContext>(EMPTY_MAP_BOUNDARY_CONTEXT);
+  const mapBoundarySwapChainRef = useRef(Promise.resolve());
+  const mapBoundarySwapGenerationRef = useRef(0);
   const cityBoundaryPreloadCenterRef = useRef<GpsPoint | null>(null);
   const cityBoundaryPreloadTimestampRef = useRef(0);
   const mapZoneSelectionRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
+  const legacyObjectiveRefreshIdsRef = useRef(new Set<string>());
   const objectiveScopePairRef = useRef<MapZoneSelection | null>(null);
   const objectiveStatsCacheRef = useRef(new Map<string, ZoneCompletionSnapshot>());
   const completedStampZoneIdsRef = useRef(new Set<string>());
@@ -827,6 +882,22 @@ export function MapScreen({
     [activeNewCellIds.length, stats]
   );
   const completionReferenceLocation = activeWalk ? currentLocation : mapViewportCenter ?? currentLocation;
+  const visibleMapBoundaryContext = useMemo(() => {
+    if (!objective || !mapBoundaryContext.city) {
+      return objective ? EMPTY_MAP_BOUNDARY_CONTEXT : mapBoundaryContext;
+    }
+
+    const objectiveMatchesCity = objective.zone.type === "city"
+      ? objective.zone.id === mapBoundaryContext.city.id
+      : doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city);
+
+    return objectiveMatchesCity ? mapBoundaryContext : EMPTY_MAP_BOUNDARY_CONTEXT;
+  }, [mapBoundaryContext, objective]);
+
+
+  const handleMapInteraction = useCallback(() => {
+    setIsMapWordmarkCollapsed(true);
+  }, []);
 
   const handleVisibleRegionChange = useCallback((region: Region) => {
     setMapViewportCenter({
@@ -1042,6 +1113,33 @@ export function MapScreen({
   const clearAtlasStamp = useCallback(() => {
     setAtlasStampMessage(null);
   }, []);
+
+  const handleMapTopPanelLayout = useCallback((event: LayoutChangeEvent) => {
+    const nextHeight = Math.ceil(event.nativeEvent.layout.height);
+    setMapOverlayPanelHeights((current) =>
+      current.top === nextHeight ? current : { ...current, top: nextHeight }
+    );
+  }, []);
+
+  const handleMapBottomPanelLayout = useCallback((event: LayoutChangeEvent) => {
+    const nextHeight = Math.ceil(event.nativeEvent.layout.height);
+    setMapOverlayPanelHeights((current) =>
+      current.bottom === nextHeight ? current : { ...current, bottom: nextHeight }
+    );
+  }, []);
+
+  const mapStampInsets = useMemo(
+    () => ({
+      bottom: safeAreaInsets.bottom + mapOverlayPanelHeights.bottom + 26,
+      top: safeAreaInsets.top + mapOverlayPanelHeights.top + 26
+    }),
+    [
+      mapOverlayPanelHeights.bottom,
+      mapOverlayPanelHeights.top,
+      safeAreaInsets.bottom,
+      safeAreaInsets.top
+    ]
+  );
 
 
   const focusSavedWalkOnMap = useCallback((sessionId: number) => {
@@ -1313,12 +1411,54 @@ export function MapScreen({
     const savedObjective = await getSavedCompletionObjective();
 
     if (!savedObjective) {
+      setObjective(null);
+      setSelectedZone(null);
+      setObjectiveStats(null);
+      objectiveScopePairRef.current = null;
+      mapBoundarySwapGenerationRef.current += 1;
+      districtZoneLoadRequestRef.current += 1;
+      mapBoundaryContextRef.current = EMPTY_MAP_BOUNDARY_CONTEXT;
+      setMapBoundaryContext(EMPTY_MAP_BOUNDARY_CONTEXT);
       return null;
     }
 
     setObjective(savedObjective);
     setSelectedZone(savedObjective.zone);
     return savedObjective;
+  }, []);
+
+  const commitMapBoundaryContext = useCallback(async (
+    nextContext: MapBoundaryContext
+  ) => {
+    const generation = mapBoundarySwapGenerationRef.current + 1;
+    mapBoundarySwapGenerationRef.current = generation;
+
+    const swapPromise = mapBoundarySwapChainRef.current.then(async () => {
+      if (mapBoundarySwapGenerationRef.current !== generation) {
+        return;
+      }
+
+      const previousContext = mapBoundaryContextRef.current;
+      const isCrossCitySwap =
+        previousContext.city !== null &&
+        previousContext.city.id !== nextContext.city?.id;
+
+      if (isCrossCitySwap) {
+        mapBoundaryContextRef.current = EMPTY_MAP_BOUNDARY_CONTEXT;
+        setMapBoundaryContext(EMPTY_MAP_BOUNDARY_CONTEXT);
+        await waitForMapRenderCommit();
+
+        if (mapBoundarySwapGenerationRef.current !== generation) {
+          return;
+        }
+      }
+
+      mapBoundaryContextRef.current = nextContext;
+      setMapBoundaryContext(nextContext);
+    });
+
+    mapBoundarySwapChainRef.current = swapPromise.catch(() => undefined);
+    await swapPromise;
   }, []);
 
   const loadVisibleDistrictZones = useCallback(async (referenceLocation: GpsPoint) => {
@@ -1338,11 +1478,14 @@ export function MapScreen({
       : [];
 
     if (districtZoneLoadRequestRef.current === requestId) {
-      setDistrictZones(nextDistrictZones);
+      await commitMapBoundaryContext({
+        city: currentCity,
+        districts: nextDistrictZones
+      });
     }
 
     return nextDistrictZones;
-  }, []);
+  }, [commitMapBoundaryContext]);
 
   const loadDistrictZonesForObjectiveZone = useCallback(async (zone: CachedZone) => {
     const requestId = districtZoneLoadRequestRef.current + 1;
@@ -1353,30 +1496,42 @@ export function MapScreen({
     ]);
     const currentCity = zone.type === "city"
       ? cities.find((city) => city.id === zone.id) ?? zone
-      : cities.find((city) => city.id === zone.parentZoneId) ??
-        cities.find((city) => doesDistrictBelongToCity(zone, city)) ??
-        null;
-    const nextDistrictZones = currentCity
+      : cities.find((city) => doesDistrictBelongToCity(zone, city)) ?? null;
+    const cityDistrictZones = currentCity
       ? districts.filter(
           (district) =>
             isZoneCompletionEligible(district) &&
             doesDistrictBelongToCity(district, currentCity)
         )
-      : zone.type === "district" && isZoneCompletionEligible(zone)
-        ? [zone]
-        : [];
+      : [];
+    const nextDistrictZones =
+      zone.type === "district" &&
+      isZoneCompletionEligible(zone) &&
+      !cityDistrictZones.some((district) => district.id === zone.id)
+        ? [...cityDistrictZones, zone]
+        : cityDistrictZones;
 
     if (districtZoneLoadRequestRef.current === requestId) {
-      objectiveScopePairRef.current = currentCity && zone.type === "district"
-        ? { city: currentCity, district: zone }
-        : null;
-      setDistrictZones(nextDistrictZones);
+      await commitMapBoundaryContext({
+        city: currentCity,
+        districts: nextDistrictZones
+      });
+
+      if (districtZoneLoadRequestRef.current === requestId) {
+        objectiveScopePairRef.current = currentCity && zone.type === "district"
+          ? { city: currentCity, district: zone }
+          : null;
+      }
     }
 
     return nextDistrictZones;
-  }, []);
+  }, [commitMapBoundaryContext]);
 
   const applyMapObjective = useCallback((zone: CachedZone) => {
+    if (!isSelectableMapObjectiveZone(zone)) {
+      return;
+    }
+
     const nextObjective: CompletionObjective = {
       mode: "walk",
       zone
@@ -1390,6 +1545,7 @@ export function MapScreen({
     setAtlasStampMessage({
       detail: cachedStats ? `${zone.name} - ${formatObjectiveCompletion(cachedStats)}` : zone.name,
       id: Date.now(),
+      presentation: "map-selection",
       title: zone.type === "city"
         ? language === "fr" ? "VILLE CHOISIE" : "CITY SELECTED"
         : language === "fr" ? "QUARTIER CHOISI" : "DISTRICT SELECTED"
@@ -1458,20 +1614,39 @@ export function MapScreen({
         return;
       }
 
-      const nextDistrictZones = city
+      const currentCityId = objective?.zone.type === "city"
+        ? objective.zone.id
+        : mapBoundaryContextRef.current.city?.id ?? null;
+      const cityDistrictZones = city
         ? districts.filter(
             (zone) =>
               isZoneCompletionEligible(zone) && doesDistrictBelongToCity(zone, city)
           )
-        : district
-          ? [district]
-          : [];
+        : [];
+      const nextDistrictZones =
+        district &&
+        isZoneCompletionEligible(district) &&
+        !cityDistrictZones.some((zone) => zone.id === district.id)
+          ? [...cityDistrictZones, district]
+          : cityDistrictZones;
       districtZoneLoadRequestRef.current += 1;
-      setDistrictZones(nextDistrictZones);
+      await commitMapBoundaryContext({
+        city,
+        districts: nextDistrictZones
+      });
+
+      if (mapZoneSelectionRequestRef.current !== requestId) {
+        return;
+      }
 
       const choices = { city, district };
-      setMapZoneSelection(city && district ? choices : null);
-      const preferredZone = objective?.zone.type === "city"
+      const shouldOfferScopeChoice = shouldOfferMapZoneScopeChoice({
+        currentCityId,
+        hasHeldDistrict: Boolean(district),
+        heldCityId: city?.id ?? null
+      });
+      setMapZoneSelection(shouldOfferScopeChoice ? choices : null);
+      const preferredZone = shouldOfferScopeChoice && objective?.zone.type === "city"
         ? city ?? district
         : district ?? city;
       objectiveScopePairRef.current = city && district ? choices : null;
@@ -1484,7 +1659,13 @@ export function MapScreen({
         setIsMapZoneSelectionLoading(false);
       }
     }
-  }, [applyMapObjective, language, objective?.zone.type]);
+  }, [
+    applyMapObjective,
+    commitMapBoundaryContext,
+    language,
+    objective?.zone.id,
+    objective?.zone.type
+  ]);
 
   const handleCompletionZonesUpdated = useCallback(async () => {
     const savedObjective = await reloadSavedCompletionObjective();
@@ -1505,6 +1686,51 @@ export function MapScreen({
     reloadSavedCompletionObjective()
       .catch((error) => console.warn("Failed to load saved completion objective", error));
   }, [reloadSavedCompletionObjective]);
+  useEffect(() => {
+    const zone = objective?.zone;
+
+    if (
+      !zone ||
+      zone.type === "country" ||
+      (zone.adminLevel !== null && zone.adminLevel !== undefined) ||
+      legacyObjectiveRefreshIdsRef.current.has(zone.id)
+    ) {
+      return;
+    }
+
+    const bounds = getZoneBounds(zone);
+
+    if (!bounds) {
+      return;
+    }
+
+    legacyObjectiveRefreshIdsRef.current.add(zone.id);
+    let cancelled = false;
+
+    fetchNearbyOsmZonesWithDebug({
+      latitude: (bounds.minLatitude + bounds.maxLatitude) / 2,
+      longitude: (bounds.minLongitude + bounds.maxLongitude) / 2
+    })
+      .then(async (result) => {
+        await upsertZones(result.zones);
+
+        if (!cancelled) {
+          await reloadSavedCompletionObjective();
+        }
+      })
+      .catch((error) => {
+        console.warn("Failed to classify legacy objective boundaries", error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    objective?.zone.adminLevel,
+    objective?.zone.id,
+    objective?.zone.type,
+    reloadSavedCompletionObjective
+  ]);
 
   useEffect(() => {
     if (!objective) {
@@ -3788,7 +4014,8 @@ export function MapScreen({
         medals={medalProgress?.medals ?? EMPTY_MEDALS}
         onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
-        districtZones={districtZones}
+        cityZone={visibleMapBoundaryContext.city}
+        districtZones={visibleMapBoundaryContext.districts}
         highlightedSessionId={selectedSessionId}
         routeFocusRequestId={routeFocusRequestId}
         layers={layers}
@@ -3797,6 +4024,7 @@ export function MapScreen({
             .catch((error) => console.warn("Failed to select map objective", error));
         }}
         onMapReady={handleMapReady}
+        onMapInteraction={handleMapInteraction}
         onVisibleRegionChange={handleVisibleRegionChange}
         playerFocusRequestId={playerFocusRequestId}
         playerVisible={isLaunchDismissed}
@@ -3807,18 +4035,35 @@ export function MapScreen({
       />
 
       <AtlasStamp
+        mapContentInsets={mapStampInsets}
         message={atlasStampMessage}
         onDismiss={clearAtlasStamp}
       />
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
-        <View style={styles.topPanel}>
-          <View style={styles.headerRow}>
-            <Image
+        <View onLayout={handleMapTopPanelLayout} style={styles.topPanel}>
+          <Animated.View
+            style={[
+              styles.logoFrame,
+              {
+                height: wordmarkCollapseProgress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [82, 38]
+                })
+              }
+            ]}
+          >
+            <Animated.Image
               resizeMode="contain"
               source={require("../../assets/title.png")}
-              style={styles.logo}
+              style={[
+                styles.logo,
+                {
+                  opacity: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.9] }),
+                  transform: [{ scale: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.46] }) }]
+                }
+              ]}
             />
-          </View>
+          </Animated.View>
           <View style={styles.mapHudRow}>
             <CityMedalProgress
               language={language}
@@ -3877,35 +4122,57 @@ export function MapScreen({
           </View>
         ) : null}
 
-        <View style={styles.bottomPanel}>
+        <View onLayout={handleMapBottomPanelLayout} style={styles.bottomPanel}>
           <View style={styles.bottomTabs}>
+            <AtlasHudTexture opacity={0.07} />
             <TouchableOpacity
               accessibilityLabel={strings.common.details}
               accessibilityRole="button"
               onPress={() => setDashboardExpanded(true)}
-              style={[styles.bottomTab, dashboardExpanded ? styles.activeBottomTab : null]}
+              style={[
+                styles.bottomTab,
+                dashboardExpanded ? styles.activeBottomTab : null,
+                dashboardExpanded ? styles.expandedBottomTab : null
+              ]}
             >
               <Ionicons
                 name="footsteps-outline"
                 size={19}
-                color={dashboardExpanded ? "#151006" : "#f8fafc"}
+                color={dashboardExpanded ? APP_COLORS.gold : APP_COLORS.text}
               />
+              {dashboardExpanded ? (
+                <Text style={styles.bottomTabLabel}>{strings.common.details}</Text>
+              ) : null}
             </TouchableOpacity>
             <TouchableOpacity
               accessibilityLabel={strings.common.history}
               accessibilityRole="button"
               onPress={() => setHistoryVisible(true)}
-              style={styles.bottomTab}
+              style={[
+                styles.bottomTab,
+                historyVisible ? styles.activeBottomTab : null,
+                historyVisible ? styles.expandedBottomTab : null
+              ]}
             >
-              <Ionicons name="time-outline" size={19} color="#f8fafc" />
+              <Ionicons name="time-outline" size={19} color={historyVisible ? APP_COLORS.gold : APP_COLORS.text} />
+              {historyVisible ? (
+                <Text style={styles.bottomTabLabel}>{strings.common.history}</Text>
+              ) : null}
             </TouchableOpacity>
             <TouchableOpacity
               accessibilityLabel={strings.common.completion}
               accessibilityRole="button"
               onPress={() => setCompletionVisible(true)}
-              style={styles.bottomTab}
+              style={[
+                styles.bottomTab,
+                completionVisible ? styles.activeBottomTab : null,
+                completionVisible ? styles.expandedBottomTab : null
+              ]}
             >
-              <Ionicons name="trophy-outline" size={19} color="#f8fafc" />
+              <Ionicons name="trophy-outline" size={19} color={completionVisible ? APP_COLORS.gold : APP_COLORS.text} />
+              {completionVisible ? (
+                <Text style={styles.bottomTabLabel}>{strings.common.completion}</Text>
+              ) : null}
             </TouchableOpacity>
             <TouchableOpacity
               accessibilityLabel={language === "fr" ? "M\u00e9dailles" : "Medals"}
@@ -3914,27 +4181,40 @@ export function MapScreen({
               ref={medalTabRef}
               style={[
                 styles.bottomTab,
-                medalsVisible || medalTabPulse ? styles.activeBottomTab : null
+                medalsVisible || medalTabPulse ? styles.activeBottomTab : null,
+                medalsVisible || medalTabPulse ? styles.expandedBottomTab : null
               ]}
             >
               <Ionicons
                 name={medalTabPulse ? "medal" : "medal-outline"}
                 size={19}
-                color={medalsVisible || medalTabPulse ? "#151006" : "#f8fafc"}
+                color={medalsVisible || medalTabPulse ? APP_COLORS.gold : APP_COLORS.text}
               />
+              {medalsVisible || medalTabPulse ? (
+                <Text style={styles.bottomTabLabel}>
+                  {language === "fr" ? "M\u00e9dailles" : "Medals"}
+                </Text>
+              ) : null}
             </TouchableOpacity>
             <View style={styles.bottomTabSpacer} />
             <TouchableOpacity
               accessibilityLabel={strings.common.options}
               accessibilityRole="button"
               onPress={() => setOptionsVisible(true)}
-              style={[styles.bottomTab, optionsVisible ? styles.activeBottomTab : null]}
+              style={[
+                styles.bottomTab,
+                optionsVisible ? styles.activeBottomTab : null,
+                optionsVisible ? styles.expandedBottomTab : null
+              ]}
             >
               <Ionicons
                 name="options-outline"
                 size={19}
-                color={optionsVisible ? "#151006" : "#f8fafc"}
+                color={optionsVisible ? APP_COLORS.gold : APP_COLORS.text}
               />
+              {optionsVisible ? (
+                <Text style={styles.bottomTabLabel}>{strings.common.options}</Text>
+              ) : null}
             </TouchableOpacity>
           </View>
           <WalkControls
@@ -4042,6 +4322,9 @@ export function MapScreen({
         language={language}
         onClose={() => setCompletionVisible(false)}
         onFocusZone={(zone) => {
+          void loadDistrictZonesForObjectiveZone(zone).catch((error) =>
+            console.warn("Failed to load focused zone city context", error)
+          );
           setSelectedZone(zone);
           setZoneFocusRequestId((requestId) => requestId + 1);
           setCompletionVisible(false);
@@ -4198,6 +4481,7 @@ function MapZoneScopePicker({
 
   return (
     <View style={styles.mapZoneSelection}>
+      <AtlasHudTexture opacity={0.1} />
       <View style={styles.mapZoneSelectionHeader}>
         <View style={styles.mapZoneSelectionTitleBlock}>
           <Text style={styles.mapZoneSelectionEyebrow}>
@@ -4210,12 +4494,14 @@ function MapZoneScopePicker({
         <TouchableOpacity
           accessibilityLabel={language === "fr" ? "Fermer" : "Close"}
           accessibilityRole="button"
+          hitSlop={6}
           onPress={onClose}
           style={styles.mapZoneSelectionClose}
         >
           <Ionicons color="#cbd5e1" name="close" size={18} />
         </TouchableOpacity>
       </View>
+      <AtlasHudDivider />
       <View style={styles.mapZoneSelectionOptions}>
         {[district, city].map((zone) => {
           const isSelected = selectedZoneId === zone.id;
@@ -4278,6 +4564,7 @@ function ObjectiveHud({
 
   return (
     <View style={styles.objectiveHud}>
+      <AtlasHudTexture opacity={0.1} />
       <View style={styles.objectiveHeader}>
         <View style={styles.objectiveSeal}>
           <Ionicons color={APP_COLORS.gold} name="map-outline" size={18} />
@@ -4296,6 +4583,7 @@ function ObjectiveHud({
             : formatObjectiveCompletion(stats)}
         </Text>
       </View>
+      <AtlasHudDivider />
       <View style={styles.objectiveProgressTrack}>
         <View style={[styles.objectiveProgressFill, { width: (objectiveProgress + "%") as DimensionValue }]} />
       </View>
@@ -4336,8 +4624,9 @@ function CityMedalProgress({
       onPress={onPress}
       style={styles.cityMedalHud}
     >
+      <AtlasHudTexture opacity={0.07} />
       <View style={styles.cityMedalIcon}>
-        <Ionicons color="#151006" name="medal" size={18} />
+        <Ionicons color={APP_COLORS.gold} name="medal" size={18} />
       </View>
       <View style={styles.cityMedalContent}>
         <View style={styles.cityMedalHeader}>
@@ -4378,8 +4667,9 @@ function ObjectiveToggleButton({
       onPress={onPress}
       style={[styles.objectiveToggle, visible ? styles.objectiveToggleActive : null]}
     >
+      <AtlasHudTexture opacity={0.05} />
       <Ionicons
-        color={visible ? "#151006" : hasObjective ? "#f5c451" : "#94a3b8"}
+        color={visible || hasObjective ? APP_COLORS.gold : APP_COLORS.textMuted}
         name={visible ? "flag" : "flag-outline"}
         size={20}
       />
@@ -4531,13 +4821,22 @@ function StopRecordingConfirmationModal({
   return (
     <Modal animationType="fade" onRequestClose={onCancel} transparent visible>
       <View style={styles.stopConfirmOverlay}>
-        <View style={styles.stopConfirmDialog}>
+        <ImageBackground
+          imageStyle={styles.dialogPaperTexture}
+          source={require("../../assets/ui/atlas-paper-texture.png")}
+          style={styles.stopConfirmDialog}
+        >
+          <View pointerEvents="none" style={styles.dialogInkWash} />
           <View style={styles.stopConfirmIcon}>
             <Ionicons name="stop-circle" size={30} color="#fecaca" />
           </View>
+          <Text style={styles.dialogEyebrow}>
+            {isFrench ? "CONTR\u00d4LE DU PARCOURS" : "RECORDING CONTROL"}
+          </Text>
           <Text style={styles.stopConfirmTitle}>
             {isFrench ? "Quitter l'enregistrement ?" : `Quit ${recordingNoun}?`}
           </Text>
+          <AtlasDialogDivider />
           <Text style={styles.stopConfirmText}>
             {isFrench
               ? "Touchez Continuer pour garder l'enregistrement actif. Maintenez Quitter pour terminer."
@@ -4598,7 +4897,7 @@ function StopRecordingConfirmationModal({
               </View>
             </TouchableOpacity>
           </View>
-        </View>
+        </ImageBackground>
       </View>
     </Modal>
   );
@@ -4633,9 +4932,17 @@ function RecordingSummaryModal({
   return (
     <Modal animationType="slide" transparent visible>
       <View style={styles.summaryBackdrop}>
-        <View style={styles.summaryDialog}>
+        <ImageBackground
+          imageStyle={styles.dialogPaperTexture}
+          source={require("../../assets/ui/atlas-paper-texture.png")}
+          style={styles.summaryDialog}
+        >
+          <View pointerEvents="none" style={styles.dialogInkWash} />
           <View style={styles.summaryHeader}>
             <View>
+              <Text style={styles.summaryEyebrow}>
+                {isFrench ? "CARNET D'ATLAS" : "ATLAS LOG"}
+              </Text>
               <Text style={styles.summaryTitle}>
                 {isFrench ? "Enregistrement terminé" : "Recording complete"}
               </Text>
@@ -4648,6 +4955,7 @@ function RecordingSummaryModal({
             </TouchableOpacity>
           </View>
 
+          <AtlasDialogDivider />
           <View style={[styles.summaryQualityPanel, getSummaryQualityStyle(summary.quality.label)]}>
             <Ionicons
               name={summary.quality.label === "Good" ? "checkmark-circle" : "alert-circle"}
@@ -4706,7 +5014,7 @@ function RecordingSummaryModal({
               <Text style={styles.summaryPrimaryText}>{isFrench ? "Enregistrer" : "Save"}</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ImageBackground>
       </View>
     </Modal>
   );
@@ -4717,6 +5025,16 @@ function SummaryMetric({ label, value }: { label: string; value: string }) {
     <View style={styles.summaryMetric}>
       <Text style={styles.summaryMetricValue}>{value}</Text>
       <Text style={styles.summaryMetricLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function AtlasDialogDivider() {
+  return (
+    <View pointerEvents="none" style={styles.dialogDivider}>
+      <View style={styles.dialogDividerLine} />
+      <View style={styles.dialogDividerDiamond} />
+      <View style={styles.dialogDividerLine} />
     </View>
   );
 }
@@ -4887,10 +5205,11 @@ function OptionsModal({
     <Modal
       animationType="none"
       onRequestClose={onClose}
-      presentationStyle="fullScreen"
+      presentationStyle="overFullScreen"
+      transparent
       visible={visible}
     >
-      <AtlasScreen visible={visible}>
+      <AtlasScreen onSwipeBack={onClose} visible={visible}>
         <AtlasModalHeader
           emblem="options-outline"
           eyebrow={language === "fr" ? "N\u00c9CESSAIRE DU CARTOGRAPHE" : "CARTOGRAPHER'S KIT"}
@@ -5061,10 +5380,11 @@ function DetailsModal({
     <Modal
       animationType="none"
       onRequestClose={onClose}
-      presentationStyle="fullScreen"
+      presentationStyle="overFullScreen"
+      transparent
       visible={visible}
     >
-      <AtlasScreen visible={visible}>
+      <AtlasScreen onSwipeBack={onClose} visible={visible}>
         <AtlasModalHeader
           emblem="stats-chart-outline"
           eyebrow={language === "fr" ? "CARNET DE L'EXPLORATEUR" : "EXPLORER'S LEDGER"}
@@ -5491,9 +5811,7 @@ function findContainingZone(
 }
 
 function doesDistrictBelongToCity(district: CachedZone, city: CachedZone) {
-  return district.parentZoneId === city.id || district.geometry.some((ring) =>
-    ring.some((point) => isPointInsideZone(point, city))
-  );
+  return doesDistrictGeometryBelongToCity(district, city);
 }
 
 function pointInPolygon(
@@ -5534,31 +5852,93 @@ function pointInPolygon(
 }
 
 const styles = StyleSheet.create({
+  dialogDivider: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 7,
+    width: "100%"
+  },
+  dialogDividerDiamond: {
+    backgroundColor: APP_COLORS.gold,
+    height: 5,
+    opacity: 0.72,
+    transform: [{ rotate: "45deg" }],
+    width: 5
+  },
+  dialogDividerLine: {
+    backgroundColor: APP_COLORS.gold,
+    flex: 1,
+    height: 1,
+    opacity: 0.24
+  },
+  dialogEyebrow: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 10,
+    letterSpacing: 1.4
+  },
+  dialogInkWash: {
+    backgroundColor: "rgba(2, 6, 10, 0.5)",
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+    right: 0,
+    top: 0
+  },
+  dialogPaperTexture: {
+    opacity: 0.26
+  },
+  summaryEyebrow: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 9,
+    letterSpacing: 1.3,
+    marginBottom: 2
+  },
   bottomPanel: {
     marginTop: "auto"
   },
   activeBottomTab: {
-    backgroundColor: "#f5c451"
+    backgroundColor: "rgba(245, 196, 81, 0.13)",
+    borderColor: "rgba(245, 196, 81, 0.52)"
   },
   bottomTab: {
     alignItems: "center",
     backgroundColor: "transparent",
-    borderRadius: 14,
-    height: 42,
+    borderColor: "transparent",
+    borderRadius: 16,
+    borderWidth: 1,
+    flexDirection: "row",
+    height: 44,
     justifyContent: "center",
-    width: 42
+    minWidth: 44,
+    width: 44
+  },
+  bottomTabLabel: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 9,
+    fontWeight: "900",
+    letterSpacing: 0.3
+  },
+  expandedBottomTab: {
+    gap: 6,
+    paddingHorizontal: 12,
+    width: "auto"
   },
   bottomTabs: {
     alignItems: "center",
     alignSelf: "stretch",
     backgroundColor: "rgba(7, 16, 24, 0.96)",
-    borderColor: "rgba(245, 196, 81, 0.22)",
+    borderColor: APP_COLORS.border,
+    borderTopColor: "rgba(245, 196, 81, 0.28)",
     borderRadius: 20,
     borderWidth: 1,
     flexDirection: "row",
     gap: 3,
     marginBottom: 8,
     marginHorizontal: 4,
+    overflow: "hidden",
     padding: 4,
     zIndex: 2
   },
@@ -5692,7 +6072,7 @@ const styles = StyleSheet.create({
   },
   gamePanel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 18,
     borderWidth: 1,
     gap: 12,
@@ -5735,11 +6115,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "900"
   },
-  headerRow: {
+  logoFrame: {
     alignItems: "center",
-    flexDirection: "row",
-    gap: 12,
-    justifyContent: "center"
+    justifyContent: "center",
+    overflow: "hidden",
+    width: "100%"
   },
   headerText: {
     alignItems: "center",
@@ -5828,7 +6208,7 @@ const styles = StyleSheet.create({
   },
   optionPanel: {
     backgroundColor: "rgba(2, 6, 10, 0.86)",
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 14,
     borderWidth: 1,
     gap: 8,
@@ -5848,27 +6228,37 @@ const styles = StyleSheet.create({
   cityMedalHud: {
     alignItems: "center",
     backgroundColor: "rgba(7, 16, 24, 0.95)",
-    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderColor: APP_COLORS.borderStrong,
+    borderTopColor: "rgba(245, 196, 81, 0.24)",
     borderRadius: 18,
     borderWidth: 1,
     flex: 1,
     flexDirection: "row",
     gap: 10,
     minHeight: 52,
+    overflow: "hidden",
     paddingHorizontal: 12,
-    paddingVertical: 9
+    paddingVertical: 8
   },
   cityMedalIcon: {
     alignItems: "center",
-    backgroundColor: "#f5c451",
+    backgroundColor: "rgba(245, 196, 81, 0.08)",
+    borderColor: "rgba(245, 196, 81, 0.4)",
     borderRadius: 16,
+    borderWidth: 1,
     height: 32,
     justifyContent: "center",
     width: 32
   },
   cityMedalContent: { flex: 1, gap: 6 },
   cityMedalHeader: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
-  cityMedalName: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "900" },
+  cityMedalName: {
+    color: APP_COLORS.parchment,
+    flex: 1,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 13,
+    fontWeight: "900"
+  },
   cityMedalCount: { color: "#f5c451", fontSize: 12, fontWeight: "900" },
   cityMedalTrack: {
     backgroundColor: "rgba(148, 163, 184, 0.22)",
@@ -5881,21 +6271,27 @@ const styles = StyleSheet.create({
   objectiveToggle: {
     alignItems: "center",
     backgroundColor: "rgba(7, 16, 24, 0.95)",
-    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderColor: APP_COLORS.borderStrong,
     borderRadius: 18,
     borderWidth: 1,
     height: 52,
     justifyContent: "center",
+    overflow: "hidden",
     width: 52
   },
-  objectiveToggleActive: { backgroundColor: "#f5c451", borderColor: "#f5c451" },
+  objectiveToggleActive: {
+    backgroundColor: "rgba(245, 196, 81, 0.13)",
+    borderColor: "rgba(245, 196, 81, 0.56)"
+  },
   objectiveHud: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
+    borderTopColor: "rgba(245, 196, 81, 0.28)",
     borderRadius: 18,
     borderWidth: 1,
-    gap: 9,
-    padding: 13
+    gap: 7,
+    overflow: "hidden",
+    padding: 12
   },
   objectiveHeader: { alignItems: "center", flexDirection: "row", gap: 12 },
   objectiveSeal: {
@@ -5910,8 +6306,20 @@ const styles = StyleSheet.create({
     width: 34
   },
   objectiveTitleBlock: { flex: 1 },
-  objectiveLabel: { color: "#f5c451", fontSize: 9, fontWeight: "900", letterSpacing: 1.2 },
-  objectiveName: { color: "#f8fafc", fontSize: 15, fontWeight: "900", marginTop: 2 },
+  objectiveLabel: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 9,
+    fontWeight: "900",
+    letterSpacing: 1.2
+  },
+  objectiveName: {
+    color: APP_COLORS.parchment,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 14,
+    fontWeight: "900",
+    marginTop: 1
+  },
   objectivePercent: { color: "#f8fafc", fontSize: 20, fontWeight: "900" },
   objectiveProgressFill: { backgroundColor: "#f5c451", borderRadius: 999, height: "100%" },
   objectiveProgressTrack: {
@@ -5925,12 +6333,14 @@ const styles = StyleSheet.create({
   objectiveToday: { color: "#f5c451", fontSize: 11, fontWeight: "900" },
   mapZoneSelection: {
     backgroundColor: "rgba(7, 16, 24, 0.98)",
-    borderColor: "rgba(245, 196, 81, 0.42)",
+    borderColor: APP_COLORS.borderStrong,
+    borderTopColor: "rgba(245, 196, 81, 0.28)",
     borderRadius: 18,
     borderWidth: 1,
-    gap: 10,
+    gap: 9,
     marginTop: 8,
-    padding: 12
+    overflow: "hidden",
+    padding: 11
   },
   mapZoneSelectionClose: {
     alignItems: "center",
@@ -5941,7 +6351,8 @@ const styles = StyleSheet.create({
     width: 32
   },
   mapZoneSelectionEyebrow: {
-    color: "#f5c451",
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
     fontSize: 9,
     fontWeight: "900",
     letterSpacing: 1.1
@@ -5955,7 +6366,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "flex-start",
     backgroundColor: "rgba(7, 16, 24, 0.94)",
-    borderColor: "rgba(245, 196, 81, 0.32)",
+    borderColor: APP_COLORS.borderStrong,
     borderRadius: 999,
     borderWidth: 1,
     flexDirection: "row",
@@ -5965,8 +6376,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   mapZoneSelectionLoadingText: {
-    color: "#e2e8f0",
-    fontSize: 12,
+    color: APP_COLORS.parchment,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 11,
     fontWeight: "800"
   },
   mapZoneSelectionOption: {
@@ -5976,13 +6388,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 1,
     gap: 3,
+    minHeight: 44,
     minWidth: 0,
     paddingHorizontal: 11,
     paddingVertical: 9
   },
   mapZoneSelectionOptionActive: {
-    backgroundColor: "#f5c451",
-    borderColor: "#f5c451"
+    backgroundColor: "rgba(245, 196, 81, 0.13)",
+    borderColor: "rgba(245, 196, 81, 0.52)"
   },
   mapZoneSelectionOptionLabel: {
     color: "#94a3b8",
@@ -5991,15 +6404,21 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
     textTransform: "uppercase"
   },
-  mapZoneSelectionOptionLabelActive: { color: "#332408" },
+  mapZoneSelectionOptionLabelActive: { color: APP_COLORS.gold },
   mapZoneSelectionOptionName: {
-    color: "#f8fafc",
+    color: APP_COLORS.parchment,
+    fontFamily: ATLAS_DISPLAY_FONT,
     fontSize: 12,
     fontWeight: "900"
   },
-  mapZoneSelectionOptionNameActive: { color: "#151006" },
+  mapZoneSelectionOptionNameActive: { color: APP_COLORS.parchment },
   mapZoneSelectionOptions: { flexDirection: "row", gap: 8 },
-  mapZoneSelectionTitle: { color: "#f8fafc", fontSize: 14, fontWeight: "900" },
+  mapZoneSelectionTitle: {
+    color: APP_COLORS.parchment,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 14,
+    fontWeight: "900"
+  },
   mapZoneSelectionTitleBlock: { flex: 1 },
   overlay: {
     flex: 1,
@@ -6102,13 +6521,14 @@ const styles = StyleSheet.create({
   },
   stopConfirmDialog: {
     alignItems: "center",
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(252, 165, 165, 0.34)",
-    borderRadius: 14,
+    backgroundColor: "rgba(9, 19, 27, 0.98)",
+    borderColor: "rgba(169, 93, 77, 0.68)",
+    borderRadius: 20,
     borderWidth: 1,
     gap: 13,
     marginHorizontal: 18,
     maxWidth: 440,
+    overflow: "hidden",
     padding: 16,
     width: "100%"
   },
@@ -6165,8 +6585,8 @@ const styles = StyleSheet.create({
   },
   stopConfirmTitle: {
     color: "#f8fafc",
-    fontSize: 20,
-    fontWeight: "900",
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 19,
     textAlign: "center"
   },
   topPanel: {
@@ -6193,11 +6613,12 @@ const styles = StyleSheet.create({
     width: 38
   },
   summaryDialog: {
-    backgroundColor: "#0c151c",
-    borderColor: "rgba(245, 196, 81, 0.26)",
-    borderRadius: 14,
+    backgroundColor: "rgba(9, 19, 27, 0.98)",
+    borderColor: APP_COLORS.borderStrong,
+    borderRadius: 20,
     borderWidth: 1,
     gap: 13,
+    overflow: "hidden",
     padding: 14
   },
   summaryGrid: {
@@ -6326,8 +6747,8 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     color: "#f8fafc",
-    fontSize: 20,
-    fontWeight: "900"
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 19
   },
   version: {
     color: "#f8fafc",

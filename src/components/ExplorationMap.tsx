@@ -62,8 +62,10 @@ type ExplorationMapProps = {
   savedExplorationCellIds: string[];
   onMapReady?: () => void;
   onMapLongPress?: (coordinate: { latitude: number; longitude: number }) => void;
+  onMapInteraction?: () => void;
   onVisibleRegionChange?: (region: Region) => void;
   districtZones: CachedZone[];
+  cityZone: CachedZone | null;
   playerFocusRequestId: number;
   playerVisible: boolean;
   selectedZone: CachedZone | null;
@@ -106,6 +108,7 @@ const ApplePoiFilteredMapView = MapView as unknown as ForwardRefExoticComponent<
 
 // Game-owned landmarks and medals replace MapKit's generic POI symbols.
 const GAMEPLAY_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [];
+const MEDAL_MARKER_MAX_LATITUDE_DELTA = 0.14;
 
 export const ExplorationMap = memo(function ExplorationMap({
   walks,
@@ -126,8 +129,10 @@ export const ExplorationMap = memo(function ExplorationMap({
   savedExplorationCellIds,
   onMapReady,
   onMapLongPress,
+  onMapInteraction,
   onVisibleRegionChange,
   districtZones,
+  cityZone,
   playerFocusRequestId,
   playerVisible,
   selectedZone,
@@ -185,17 +190,16 @@ export const ExplorationMap = memo(function ExplorationMap({
   const [visibleRegion, setVisibleRegion] = useState(region);
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
-  const unselectedDistrictZones = useMemo(
-    () => districtZones.filter((zone) => zone.id !== selectedZone?.id),
-    [districtZones, selectedZone?.id]
-  );
+
   // Preserve every finalized street corner so rendered routes never cut through buildings.
   const pathSimplificationToleranceMeters = 0;
   const shouldShowCompletedArea = layers.showExploredCells;
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   const shouldShowRoutes = layers.showPaths && renderLevel === "close";
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
-  const shouldShowMedalMarkers = layers.showMarkers && renderLevel !== "far";
+  const shouldShowMedalMarkers =
+    layers.showMarkers &&
+    visibleRegion.latitudeDelta <= MEDAL_MARKER_MAX_LATITUDE_DELTA;
   const shouldBuildExploredArea =
     explorationEnabled && (shouldShowCompletedArea || shouldShowOutline);
   const maxFilledHoleAreaSquareMeters =
@@ -498,6 +502,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     <View style={styles.container}>
       <ApplePoiFilteredMapView
         ref={mapRef}
+        key={`native-map-city-${cityZone?.id ?? "none"}`}
         style={styles.map}
         appleMapsPointsOfInterestFilter={{
           categories: GAMEPLAY_POI_CATEGORIES,
@@ -505,7 +510,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         }}
         mapType={Platform.OS === "ios" ? "mutedStandard" : "standard"}
         userInterfaceStyle={Platform.OS === "ios" ? "dark" : undefined}
-        initialRegion={region}
+        initialRegion={visibleRegion}
         onPanDrag={handleMapPan}
         onMapReady={() => {
           setIsNativeMapReady(true);
@@ -513,6 +518,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         }}
         onLongPress={handleMapLongPress}
         onRegionChangeComplete={handleRegionChangeComplete}
+        onTouchStart={onMapInteraction}
         pitchEnabled
         rotateEnabled
         scrollEnabled
@@ -533,31 +539,56 @@ export const ExplorationMap = memo(function ExplorationMap({
           todayPolygons={todayNewPolygons}
         />
 
-        {unselectedDistrictZones.flatMap((zone) =>
-          zone.geometry.map((ring, index) => (
-            <Polygon
-              coordinates={ring}
-              fillColor="rgba(180, 83, 9, 0.035)"
-              key={`district-${zone.id}-${index}`}
-              strokeColor="rgba(180, 83, 9, 0.72)"
-              strokeWidth={2}
-            />
-          ))
-        )}
+        <Fragment
+          key={`administrative-boundaries-${cityZone?.id ?? "none"}-${selectedZone?.id ?? "none"}`}
+        >
+          {districtZones.flatMap((zone) =>
+            zone.geometry.map((ring, index) => {
+              const isSelectedDistrict =
+                selectedZone?.type === "district" && selectedZone.id === zone.id;
 
-        {selectedZone
-          ? selectedZone.geometry.map((ring, index) => (
-              <Polygon
-                coordinates={ring}
-                fillColor="rgba(180, 83, 9, 0.13)"
-                key={`${selectedZone.id}-${index}`}
-                strokeColor={selectedZone.type === "city"
-                  ? WALKING_COLORS.cityBoundary
-                  : WALKING_COLORS.districtBoundary}
-                strokeWidth={6}
-              />
-            ))
-          : null}
+              return (
+                <Polygon
+                  coordinates={ring}
+                  fillColor={
+                    isSelectedDistrict
+                      ? WALKING_COLORS.selectedZoneFill
+                      : "rgba(194, 138, 69, 0)"
+                  }
+                  key={`district-${zone.id}-${index}`}
+                  strokeColor={
+                    isSelectedDistrict
+                      ? WALKING_COLORS.districtBoundary
+                      : WALKING_COLORS.districtBoundaryMuted
+                  }
+                  strokeWidth={isSelectedDistrict ? 3 : 1.5}
+                />
+              );
+            })
+          )}
+
+          {cityZone
+            ? cityZone.geometry.map((ring, index) => (
+                <Polygon
+                  coordinates={ring}
+                  fillColor={
+                    selectedZone?.type === "city" && selectedZone.id === cityZone.id
+                      ? WALKING_COLORS.selectedZoneFill
+                      : "rgba(141, 82, 104, 0)"
+                  }
+                  key={`city-boundary-${cityZone.id}-${index}`}
+                  strokeColor={
+                    selectedZone?.type === "city" && selectedZone.id === cityZone.id
+                      ? WALKING_COLORS.cityBoundary
+                      : WALKING_COLORS.cityBoundaryMuted
+                  }
+                  strokeWidth={
+                    selectedZone?.type === "city" && selectedZone.id === cityZone.id ? 4 : 3
+                  }
+                />
+              ))
+            : null}
+        </Fragment>
 
         {shouldShowRoutes ? pathWalks.map((walk) => {
           const isHighlighted = highlightedSessionId === walk.id;
@@ -993,6 +1024,12 @@ function PlayerLocationMarker({ location }: { location: GpsPoint }) {
       zIndex={1000}
     >
       <View collapsable={false} pointerEvents="none" style={styles.playerMarker}>
+        <View
+          style={[
+            styles.playerCompassHalo,
+            !isGpsFresh ? styles.playerCompassHaloStale : null
+          ]}
+        />
         {PLAYER_SPRITE_LAYERS.map((frame) => (
           <Image
             accessibilityIgnoresInvertColors
@@ -1109,7 +1146,7 @@ function toRadians(value: number) {
 function getExploredAreaStyle(latitudeDelta: number) {
   if (latitudeDelta > 0.07) {
     return {
-      fillColor: "rgba(251, 146, 60, 0.54)",
+      fillColor: "rgba(229, 122, 50, 0.54)",
       outlineColor: "rgba(3, 35, 38, 0.48)",
       outlineWidth: 1,
       revealFillColor: "rgba(253, 186, 116, 0.70)",
@@ -1119,7 +1156,7 @@ function getExploredAreaStyle(latitudeDelta: number) {
 
   if (latitudeDelta > 0.035) {
     return {
-      fillColor: "rgba(251, 146, 60, 0.48)",
+      fillColor: "rgba(229, 122, 50, 0.48)",
       outlineColor: "rgba(3, 30, 34, 0.64)",
       outlineWidth: 1.5,
       revealFillColor: "rgba(253, 186, 116, 0.66)",
@@ -1129,7 +1166,7 @@ function getExploredAreaStyle(latitudeDelta: number) {
 
   if (latitudeDelta > 0.014) {
     return {
-      fillColor: "rgba(251, 146, 60, 0.42)",
+      fillColor: "rgba(229, 122, 50, 0.42)",
       outlineColor: "rgba(2, 25, 29, 0.80)",
       outlineWidth: 2.4,
       revealFillColor: "rgba(253, 186, 116, 0.62)",
@@ -1138,7 +1175,7 @@ function getExploredAreaStyle(latitudeDelta: number) {
   }
 
   return {
-    fillColor: "rgba(251, 146, 60, 0.36)",
+    fillColor: "rgba(229, 122, 50, 0.36)",
     outlineColor: "rgba(1, 19, 23, 0.94)",
     outlineWidth: 3.5,
     revealFillColor: "rgba(253, 186, 116, 0.58)",
@@ -1638,6 +1675,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#dfca99",
     borderColor: "#2a2015",
     transform: [{ rotate: "-2deg" }]
+  },
+  playerCompassHalo: {
+    backgroundColor: "rgba(4, 16, 22, 0.82)",
+    borderColor: "rgba(245, 196, 81, 0.68)",
+    borderRadius: 20,
+    borderWidth: 1,
+    height: 40,
+    position: "absolute",
+    shadowColor: "#02060a",
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.52,
+    shadowRadius: 3,
+    transform: [{ rotate: "-3deg" }],
+    width: 40
+  },
+  playerCompassHaloStale: {
+    backgroundColor: "rgba(20, 27, 29, 0.88)",
+    borderColor: "rgba(223, 202, 153, 0.82)"
   },
   playerMarker: {
     alignItems: "center",

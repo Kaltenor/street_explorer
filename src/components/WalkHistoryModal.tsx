@@ -95,10 +95,15 @@ export function WalkHistoryModal({
           onClose();
         }
       }}
-      presentationStyle="fullScreen"
+      presentationStyle="overFullScreen"
+      transparent
       visible={visible}
     >
-      <AtlasScreen visible={visible}>
+      <AtlasScreen
+        onSwipeBack={detailWalk ? () => setDetailSessionId(null) : onClose}
+        swipeBackDisabled={dataOperation !== null}
+        visible={visible}
+      >
         <AtlasModalHeader
           backDisabled={dataOperation !== null}
           emblem="book-outline"
@@ -992,7 +997,7 @@ const styles = StyleSheet.create({
   row: {
     alignItems: "stretch",
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 16,
     borderWidth: 1,
     gap: 10,
@@ -1102,7 +1107,7 @@ const styles = StyleSheet.create({
   technicalToggleText: { color: "#f8fafc", flex: 1, fontSize: 13, fontWeight: "800" },
   routeOverviewCard: {
     backgroundColor: APP_COLORS.cardRaised,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.borderStrong,
     borderRadius: 16,
     borderWidth: 1,
     gap: 11,

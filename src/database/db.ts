@@ -148,6 +148,7 @@ async function initializeDatabase() {
         name TEXT NOT NULL,
         parent_zone_id TEXT,
         source TEXT NOT NULL,
+        admin_level INTEGER,
         geometry_json TEXT NOT NULL,
         fetched_at TEXT NOT NULL
       );
@@ -683,6 +684,27 @@ async function initializeDatabase() {
       );
     `);
   });
+  await applyMigration(26, "preserve_zone_admin_level", async () => {
+    const zoneColumns = await db.getAllAsync<{ name: string }>(
+      "PRAGMA table_info(zones)"
+    );
+    const hasAdminLevel = zoneColumns.some((column) => column.name === "admin_level");
+
+    if (!hasAdminLevel) {
+      await db.execAsync(`
+        ALTER TABLE zones
+          ADD COLUMN admin_level INTEGER;
+      `);
+    }
+
+    await db.execAsync(`
+      CREATE INDEX IF NOT EXISTS zones_type_admin_level_index
+        ON zones (type, admin_level, name);
+
+      DELETE FROM zone_refresh_state;
+    `);
+  });
+
 
   await seedBundledMedalAlbums(db);
   await db.runAsync(`

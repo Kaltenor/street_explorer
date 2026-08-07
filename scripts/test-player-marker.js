@@ -80,6 +80,7 @@ assert(
     mapSource.includes("PLAYER_SPRITE_LAYERS.map") &&
     mapSource.includes("source={frame.source}") &&
     mapSource.includes("styles.playerSpriteImage") &&
+    mapSource.includes("styles.playerCompassHalo") &&
     mapSource.includes("height: 64") &&
     mapSource.includes("width: 64") &&
     (mapSource.match(/identifier="street-explorer-player"/g) ?? []).length === 1,

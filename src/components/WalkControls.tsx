@@ -3,7 +3,8 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useRef, useState } from "react";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
-import { GPS_STATUS_COLORS } from "../constants/theme";
+import { AtlasHudTexture } from "./AtlasHudDecor";
+import { APP_COLORS, ATLAS_DISPLAY_FONT, GPS_STATUS_COLORS } from "../constants/theme";
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings } from "../i18n";
 import { formatDistance, formatDuration } from "../services/distance";
 import { classifyGpsUiStatus, GpsUiStatus } from "../services/gpsStatus";
@@ -122,7 +123,13 @@ export function WalkControls({
 
   return (
     <View onTouchEnd={handlePanelTouchEnd} style={styles.container}>
+      <AtlasHudTexture opacity={0.1} />
       <View style={styles.metrics}>
+        <View style={styles.ledgerIdentity}>
+          <Text numberOfLines={1} style={styles.ledgerEyebrow}>
+            {language === "fr" ? "CARNET" : "FIELD LOG"}
+          </Text>
+        </View>
         {isRecording ? (
           <>
             <Metric label={strings.common.distance} value={formatDistance(distanceMeters)} />
@@ -266,7 +273,7 @@ function GpsStateBadge({
     <View
       accessibilityLiveRegion="polite"
       accessibilityLabel={`GPS ${formatGpsState(status, language)}`}
-      style={[styles.gpsState, { borderColor: color }]}
+      style={styles.gpsState}
     >
       <View style={[styles.gpsStateDot, { backgroundColor: color }]} />
       <Text style={[styles.gpsStateLabel, { color }]}>
@@ -410,20 +417,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     justifyContent: "center",
-    minHeight: 48
+    minHeight: 44
   },
   buttonText: {
     color: "#ffffff",
-    fontSize: 14,
-    fontWeight: "700"
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 13,
+    fontWeight: "700",
+    letterSpacing: 0.25
   },
   container: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
-    borderColor: "rgba(245, 196, 81, 0.28)",
+    borderColor: APP_COLORS.borderStrong,
+    borderTopColor: "rgba(245, 196, 81, 0.28)",
     borderRadius: 20,
     borderWidth: 1,
-    gap: 10,
-    padding: 10
+    gap: 7,
+    overflow: "hidden",
+    padding: 9
   },
   details: {
     backgroundColor: "rgba(19, 33, 43, 0.92)",
@@ -458,12 +469,13 @@ const styles = StyleSheet.create({
   },
   gpsState: {
     alignItems: "center",
-    backgroundColor: "rgba(19, 33, 43, 0.72)",
+    backgroundColor: "rgba(19, 33, 43, 0.64)",
+    borderColor: APP_COLORS.border,
     borderRadius: 12,
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
-    minHeight: 34,
+    minHeight: 32,
     paddingHorizontal: 9
   },
   gpsStateDetail: {
@@ -521,11 +533,26 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "700"
   },
-  metrics: {
-    flexDirection: "row",
-    gap: 8
+  ledgerEyebrow: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 8,
+    fontWeight: "900",
+    letterSpacing: 0.75
   },
-  idleSummary: { alignItems: "center", flexDirection: "row", gap: 7, minHeight: 24 },
+  ledgerIdentity: {
+    borderRightColor: APP_COLORS.goldBorder,
+    borderRightWidth: 1,
+    justifyContent: "center",
+    minWidth: 58,
+    paddingRight: 8
+  },
+  metrics: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 7
+  },
+  idleSummary: { alignItems: "center", flex: 1, flexDirection: "row", gap: 7, minHeight: 24 },
   idleSummaryValue: { color: "#f8fafc", fontSize: 15, fontWeight: "900" },
   idleSummaryLabel: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
   miniHealth: {

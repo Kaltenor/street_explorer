@@ -36,6 +36,7 @@ npx expo install --check
 `test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map annotation, the 170ms opacity-only frame cadence, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the disabled native location cursor and game-owned player presentation, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
+`test:zones` additionally verifies persisted admin levels, level-9 district eligibility, strict interior parent sampling for shared-edge and detached-component relations, level-10 neighborhood retention/exclusion, automatic legacy-objective classification, hidden historical rollups, refresh invalidation, direct same-city district switching, and cross-city scope-choice decisions.
 
 `test:geometry` verifies Path Inference V3 ground-level geometric joins, rejects bridge/ground crossings, bounds compatible endpoint joins to 8m at medium confidence, and checks persisted topology/evidence wiring. It also verifies one-action saved-route focus and overlap-based Today path queries.
 
@@ -43,9 +44,128 @@ npx expo install --check
 
 `test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, and consistent manifest totals.
 
-`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, the iOS Midnight Cartographer basemap/POI/cursor settings, custom atlas markers, light-orange/gold territory, burnt-orange district boundaries, and red city boundaries, and summary-first route/report wiring.
+`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, the iOS Midnight Cartographer basemap/POI/cursor settings, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, first-touch wordmark contraction, Atlas-textured floating HUD surfaces, Cinzel identity/system-data typography separation, engraved selected tabs and objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, the shared Medals Atlas shell, interactive iOS edge-swipe activation/completion/cancellation thresholds and all five modal bindings, and summary-first route/report wiring.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+
+
+## Atlas Main-Map HUD V0.16.15 iPhone Manual Test
+
+Prerequisites: run the 0.16.15 bundle on an iPhone with the Cinzel font and Atlas paper texture bundled, allow foreground location, keep one district objective and Lyon medal progress available, and test once with normal text size and once with larger accessibility text. Network is required only for uncached MapKit tiles or boundaries.
+
+1. Open the map and compare the medal card, objective ledger, flag, navigation dock, and walking card with Details or Completion. Expected: all share quiet navy paper grain, parchment/Cinzel identity text, restrained gold rules, neutral card borders, and the same Atlas authorship without hiding map detail.
+2. Inspect the medal city name, objective label/name, selected dock label, scope chooser, and FIELD LOG/CARNET marker. Expected: identity copy uses Cinzel, while percentage, medal count, steps, GPS accuracy, and other changing values remain crisp in the system face.
+3. Toggle the objective and open each bottom destination. Expected: the flag and selected destination use engraved translucent-gold surfaces and gold icons rather than flat yellow blocks; inactive 44-point icons remain visually quiet and every target still responds across its complete area.
+4. Inspect the idle walking card, then start and stop a walk. Expected: its vertical density is modestly reduced, the Start target remains at least 44 points high, live metrics do not crowd the FIELD LOG marker, and the destructive Stop state remains unmistakably red.
+5. Observe Good, Acquiring, Weak/Stale, and Denied GPS states when practical. Expected: the inset panel border remains neutral in every state; only the dot and status label change semantic color, while accuracy/supporting text stays muted and readable.
+6. Trigger a cross-city long press so the loading pill and scope chooser appear. Expected: transient controls match the Atlas HUD; the selected District/City option is engraved rather than flat gold, names remain legible, and Close retains a comfortable touch target.
+7. Repeat with larger text, VoiceOver, and Reduce Motion. Expected: key copy remains unclipped, VoiceOver labels/actions are unchanged, the map remains the dominant surface, and no visual treatment affects navigation or gameplay state. Force-close and reopen; expected: the same HUD treatment returns with the saved objective and recording state intact.
+
+Automated coverage verifies texture/divider reuse, five MapScreen textured surfaces plus the walking ledger, both ornamental dividers, Cinzel bindings, engraved selection colors, neutral GPS framing, and the 44-point Start minimum. Physical-device verification remains required for MapKit compositing, perceived texture strength, font rasterization, and actual touch comfort.
+
+## Official District Hierarchy V0.16.7 iPhone Manual Test
+
+Prerequisites: run the 0.16.7 bundle on an iPhone upgraded from a build that cached Lyon boundaries, allow foreground location in Lyon, enable administrative/exploration layers, and use a network connection for the first hierarchy refresh. For the migration edge case, save Gerland as the objective on the older build before upgrading when possible.
+
+1. Launch the upgraded app and leave the map open while the automatic boundary request settles. Expected: legacy rows remain hidden during loading and are replaced by classified relations without manually clearing the cache.
+2. Open Completion and inspect District. Expected: the list contains exactly Lyon's nine municipal arrondissements; Gerland and every other level-10 neighborhood are absent.
+3. Return to the map and zoom across Lyon. Expected: exactly nine muted copper arrondissement outlines appear inside the single restrained wine Lyon perimeter; no Gerland neighborhood outline is drawn.
+4. Long-press inside Gerland. Expected: the 7th arrondissement is selected directly without a scope chooser, not Gerland, and only the 7th arrondissement receives the parchment selection wash.
+5. Repeat the upgrade with Gerland saved as the old objective when possible. Expected: after classification, the Gerland objective, selection fill, and HUD clear automatically; recordings, explored surfaces, medals, and unrelated settings remain unchanged.
+6. Reopen Completion and inspect permanent achievements. Expected: level-10 historical rows do not increase the visible District count, while prior level-9 arrondissement and city achievements remain.
+7. Force-close and reopen. Expected: the nine-arrondissement list and outlines persist, no neighborhood objective returns, and a valid saved arrondissement restores normally.
+8. Disable the network before a legacy refresh and relaunch. Expected: unclassified legacy district rows stay hidden rather than exposing neighborhoods; after restoring the network and using Refresh, the nine official arrondissements appear.
+
+Automated coverage verifies the level constants, persisted schema/upsert field, strict district query, completion eligibility, filtered refresh counts and rollups, automatic legacy classification, defensive objective clearing, and preservation of internal level-10 rows. Physical-device verification remains required for live OSM data, migration timing, and MapKit outlines.
+
+
+## Forgiving Edge Swipe and Objective Boundary Isolation V0.16.6 iPhone Manual Test
+
+Prerequisites: run the 0.16.6 bundle on an iPhone, allow foreground location in Lyon, cache exact Lyon and Villeurbanne boundaries, keep at least one saved recording, and enable Explored Cells. Network is required only for uncached boundaries or MapKit tiles.
+
+1. Open Details, place a finger at the extreme left edge, pause briefly, then drag right very slowly. Expected: the page begins following the finger without requiring a quick flick and reveals the live map underneath.
+2. Cancel one short drag, complete one deliberate drag beyond roughly one-third of the screen, and complete one short fast flick. Expected: the short drag springs back while both committed gestures return to the map.
+3. Begin a mostly vertical scroll more than 36 points from the edge in each long page, and horizontally scroll Medals categories from their normal content area. Expected: content scrolls normally without triggering Back.
+4. Open a saved recording detail in History and repeat the slow edge drag twice. Expected: the first completed swipe returns to History and the second returns to the map.
+5. While physically located in Lyon, select Villeurbanne as the city objective. Expected: every Lyon wine perimeter and copper district outline disappears; only Villeurbanne's wine city perimeter and its eligible district outlines render, while explored surfaces remain.
+6. Observe the map camera during that switch, then alternate Lyon and Villeurbanne several times, including rapid selections. Expected: MapKit may refresh once per city identity, but it returns at the same visible center/zoom and never displays both city contexts or resurrects a superseded one.
+7. Select two districts within the same city. Expected: the native map does not refresh, all quiet copper district outlines remain, and only the newest district has the parchment selection wash and stronger 3-point stroke.
+8. Force-close with Villeurbanne selected and reopen while still physically in Lyon. Expected: Villeurbanne restores as the sole administrative context; Lyon must not appear merely because it contains the current GPS position.
+
+Automated coverage verifies immediate/expanded edge recognition, preserved flick completion, objective-to-city gating, native-map city identity, preserved remount region, and the existing latest-only boundary swap. Physical-device verification remains required for slow-gesture feel and MapKit's native polygon lifecycle.
+
+
+
+## Interactive Atlas Edge Swipe V0.16.5 iPhone Manual Test
+
+Prerequisites: run the 0.16.5 bundle on an iPhone with the map loaded, make all five Atlas pages accessible, and keep at least one saved recording for the nested History check. No location permission or network connection is required once the app and map are loaded.
+
+1. Open Details, begin within 28 points of the left edge, and drag slowly to the right. Expected: the entire textured page follows the finger and reveals the live map beneath it.
+2. Release that drag before reaching roughly one-third of the screen. Expected: the page springs fully back into place and Details remains open.
+3. Repeat with a drag beyond roughly one-third of the screen, then repeat with a short fast flick after crossing the edge zone. Expected: either committed gesture completes the same Back action as the button and returns to the map.
+4. Repeat the cancel and completion checks in History, Completion, Medals, and Options. Expected: all five pages behave consistently and no stale page remains over the map.
+5. In Medals, horizontally scroll the category strip from its normal content area. Expected: the categories scroll without dismissing the page; a deliberate swipe beginning at the left edge still returns to the map.
+6. Open a saved recording's detail from History and swipe back. Expected: the first swipe returns to the History list and a second swipe returns to the map.
+7. Start a History backup, restore, conversion, or other data operation when available and try the edge gesture while its Back control is disabled. Expected: the page cannot be dismissed until the operation finishes.
+8. Enable iOS Reduce Motion and repeat one cancelled and one completed swipe. Expected: the page still tracks the finger, cancellation remains usable, and a completed release closes without extra completion travel.
+9. With VoiceOver enabled, perform the iOS accessibility escape gesture on an Atlas page. Expected: it invokes the same Back action, including the one-level History-detail behavior.
+10. Force-close, reopen, and revisit the pages. Expected: recordings, objectives, layers, and other persisted state are unchanged; the navigation gesture does not alter app data.
+
+Automated coverage verifies gesture thresholds, iOS gating, finger-follow translation, accessibility escape, transparent modal presentation, all five Back bindings, and History's nested/disabled behavior. Physical-device verification remains required for native iOS gesture feel, modal compositing, VoiceOver, Reduce Motion, and scroll-conflict behavior.
+
+
+
+## Native City Boundary Teardown V0.16.4 iPhone Manual Test
+
+Prerequisites: run the 0.16.4 bundle on an iPhone with exact Lyon and Villeurbanne boundaries cached, enable Explored Cells, and keep at least one explored surface visible. Network is not required after boundaries and MapKit tiles are cached.
+
+1. Select Lyon as the city objective and zoom out until its complete 4-point wine perimeter is visible. Expected: Lyon is the sole emphasized city polygon and its arrondissement outlines remain muted copper.
+2. While Lyon is selected, long-press inside Villeurbanne and use the cross-city chooser to select City. Expected: Lyon's wine perimeter and arrondissement outlines disappear completely, then only Villeurbanne's compact wine perimeter appears; no Lyon segments remain beneath or beside it.
+3. Inspect the orange explored surfaces before and after the switch. Expected: visited territory remains unchanged throughout the administrative-overlay teardown.
+4. Switch back to Lyon, then alternate Lyon and Villeurbanne several times, including rapid long presses. Expected: each completed switch shows exactly one city boundary context, and a superseded request never reappears.
+5. Force-close while Villeurbanne is selected and reopen. Expected: Villeurbanne restores as the only wine perimeter after the saved objective loads.
+
+Automated coverage verifies the serialized latest-only swap, explicit empty boundary context, two-frame native teardown, and delayed mount of the replacement context. Physical-device verification remains required because retained MapKit polygons are an iOS native rendering behavior.
+
+## Atomic Boundary Switching and Large Stamp V0.16.3 iPhone Manual Test
+
+Prerequisites: run the 0.16.3 bundle on an iPhone, allow foreground location, enable Explored Cells, cache boundaries for Lyon and Villeurbanne, and keep some explored territory visible in Lyon. Network is required only for uncached OSM boundaries or MapKit tiles.
+
+1. Select a Lyon district, then select a second Lyon district. Expected: every unselected district keeps its quiet 1.5-point copper outline, only the second district has the parchment selection wash and stronger 3-point stroke, and no trace of the first selection remains.
+2. Repeat rapid long presses across three Lyon districts. Expected: only the final district is selected after loading settles; no overlapping selected polygons or stale fills remain.
+3. While a Lyon objective is active, long-press Villeurbanne and choose its district or city scope from the cross-city chooser. Expected: Lyon's wine city perimeter and copper district outlines disappear as one group, only Villeurbanne's administrative overlays remain, and previously explored Lyon territory stays visible.
+4. Switch back to Lyon. Expected: Villeurbanne's administrative overlays disappear, Lyon returns as the sole active boundary context, and visited surfaces in both areas remain unchanged.
+5. Switch districts while the full top objective panel and bottom walking controls are visible, including once immediately after a cold launch. Expected: the complete seal remains invisible while its keyed local artwork loads, then artwork and wording become visible on exactly the same strike frame, descend together, compress, and rebound without any detached or early text.
+6. Inspect the longest available title and district/city name over both light and dark map regions. Expected: both two-line limits fit wholly inside the quiet navy center without touching the dotted inner ring; the tight white halo improves the gold/parchment edges and the slight navy offset remains a restrained shadow rather than doubled wording.
+7. Enable iOS Reduce Motion and select another district. Expected: the same compact centered seal appears immediately at its final attached-text state without strike or spring motion, then dismisses normally.
+8. Force-close and reopen. Expected: the saved objective restores with exactly one selected district and one active city boundary group; explored territory remains durable.
+
+Automated coverage verifies one polygon per district, exactly one conditional selection fill, keyed administrative context replacement, atomic city/district state, and measured 3x stamp wiring. Physical-device verification remains required for MapKit native-overlay teardown, exact safe-space placement across iPhone sizes, haptics, sound, and Reduce Motion.
+
+## Boundary, Player, and Medals Consistency V0.16.2 iPhone Manual Test
+
+Prerequisites: run the 0.16.2 bundle on an iPhone, allow foreground location, enable Explored Cells and Markers, cache one city with at least two districts, and keep a saved district/city objective available. Network is required only if the zone boundaries or MapKit tiles are not cached.
+
+1. Select a district objective and inspect both contours. Expected: the selected district has a 3-point copper outline and parchment selection wash; neighboring districts remain at 1.5 points and the containing city uses one quiet 3-point wine perimeter.
+2. Switch directly to the city objective. Expected: the wine city perimeter strengthens to 4 points without moving or duplicating, district outlines return to quiet copper, and the city receives the parchment selection wash.
+3. Switch back to the district, pan into a neighboring district, and zoom across the city. Expected: no district inherits the city style, and the whole-city muted wine perimeter remains visible without competing with gold routes.
+4. Walk or simulate location updates across a district boundary, then let the fix become stale. Expected: one hand-inked player remains visible at its trustworthy coordinate; its dark compass halo preserves contrast over each fill, and the stale pose remains readable without a second location marker.
+5. Open Details, History, Completion, then Medals/Landmarks. Expected: Medals uses the same textured full-screen Atlas shell, left back button, Cinzel title hierarchy, section rules, and neutral-edged cards as the other pages; gold remains concentrated on active and reward states.
+6. Exercise every medal category, open a landmark on the map, reopen Medals, and use Back. Expected: filters, Unlocked/Locked sections, counts, landmark focus, scrolling, and dismissal still work with no clipped title or controls.
+7. Force-close and reopen in the other district. Expected: the player restores at the last trustworthy position with its halo, the selected objective and independent city/district contour hierarchy return, and Medals retains the shared Atlas presentation.
+
+Automated coverage verifies the independent city/district layers, selected/unselected 4/3-point wine and 3/1.5-point copper stroke hierarchy, one-marker player halo wiring, and shared Medals Atlas components. Physical-device verification remains required for MapKit compositing, GPS/stale transitions, touch targets, scrolling, and visual parity on iOS.
+## Medal Map Range V0.16.1 Manual Test
+
+Prerequisites: run the 0.16.1 bundle on an iPhone with Markers enabled, load the Lyon medal album, and begin with several medal landmarks visible. Network is required only for uncached MapKit tiles.
+
+1. At normal walking zoom, confirm the expected medal landmarks are visible and tappable. Expected: collected and locked Atlas seals render normally.
+2. Zoom out gradually past the point where medals disappeared in 0.16.0. Expected: every medal in the visible Lyon map area remains present instead of disappearing at the old 0.07 cutoff.
+3. Continue to approximately twice the former map distance. Expected: medals remain visible through a latitude span of 0.14, allowing the full local collection to be seen at the stronger city zoom.
+4. Zoom substantially farther out. Expected: medals may hide beyond the new bounded cutoff, while map interaction remains responsive; zooming back in restores them.
+5. Disable and re-enable Markers in Options, then force-close and reopen. Expected: the layer setting still controls medals, and enabled medals return with the same extended range after relaunch.
+
+Automated coverage verifies the independent 0.14 cutoff. Physical-device validation remains required for actual MapKit zoom behavior, marker density, tapping, and visual overlap.
 
 
 ## Atlas Identity V0.16.0 iPhone Manual Test
@@ -55,11 +175,11 @@ Prerequisites: install a development client whose native version is compatible w
 1. Launch while stationary and dismiss the ready screen. Expected: the only location symbol is the hand-inked cartographer in its current directional idle pose; navy coat, gold trim, parchment hood, and red scarf remain legible at the normal walking zoom.
 2. Walk north, east, south, and west with a fresh accurate fix, both before and during a recording. Expected: the matching direction and restrained three-frame walk cycle appear without a second marker, flicker, empty annotation, camera auto-follow, or geographic drift during pan/zoom/rotation.
 3. Stop receiving fresh fixes for at least 10 seconds. Expected: the same marker remains at the last trustworthy coordinate, changes to the desaturated stale pose, and exposes the last-known-location accessibility label. A fresh trustworthy fix restores the normal pose.
-4. Open Details, History, Completion, and Options in turn. Expected: each uses the same navy paper texture, gold title, cartographic emblem, ornamental divider, gold-edged cards, short page sound, and responsive back action. Recovery, Stop confirmation, and destructive/system dialogs keep their specialized appearance.
+4. Open Details, History, Completion, and Options in turn. Expected: each uses the same navy paper texture, Cinzel gold title, cartographic emblem, ornamental divider, neutral-edged cards, short page sound, and responsive back action. Stop confirmation and the recording summary use a compact textured Atlas dialog; recovery and diagnostics keep their specialized presentation.
 5. With Reduce Motion disabled, reopen each primary menu. Expected: content enters with a restrained 240ms fade/slide and no double sound. Enable Reduce Motion and repeat. Expected: content appears directly with no slide while navigation and sound remain functional.
-6. Long-press a point that offers both district and city scopes, then switch scopes. Expected: a compact gold Atlas stamp names the selected district/city, the district outline remains thick dark orange, the city outline remains thick red, and the explored polygon remains light orange rather than park green.
-7. Use an already complete exact zone or complete one during the test. Expected: the completion stamp appears once for that zone in the app session with one quiet ink sound and one medium haptic; reopening the same objective does not repeatedly award the stamp.
-8. Add at least one new explored cell during a recording. Expected: the explored surface briefly brightens like fresh orange ink, then settles to the standard light-orange fill without changing contour geometry. With Reduce Motion enabled, no transient flash is required and the final fill appears directly.
+6. Start with an objective in another city, long-press a point that offers both district and city scopes, then switch scopes in the cross-city chooser. Expected: the hand-inked cartographer seal names the selected district/city inside its quiet navy center, districts retain the copper selected/unselected hierarchy, the city perimeter remains restrained wine, and the explored polygon remains burnt orange rather than park green.
+7. Use an already complete exact zone or complete one during the test. Expected: the same 20%-smaller seal appears once at the restrained completion scale with attached outlined wording, one quiet ink sound, and one medium haptic; reopening the same objective does not repeatedly award the stamp.
+8. Add at least one new explored cell during a recording. Expected: the explored surface briefly brightens like fresh orange ink, then settles to the standard burnt-orange fill without changing contour geometry. With Reduce Motion enabled, no transient flash is required and the final fill appears directly.
 9. Open History and focus a saved walk with several points. Expected: the selected route draws from start to finish over roughly 900ms, the finish marker appears only when drawing completes, and one quiet ink sound plays. With Reduce Motion enabled, the full route and finish marker appear immediately.
 10. Force-close and reopen. Expected: walks, objective snapshots, map colors, and generated player assets return unchanged; menu sound/transition state starts cleanly, and no stamp is persisted as gameplay data.
 
@@ -68,8 +188,8 @@ Automated coverage still verifies the one-marker/opacity-only player contract, a
 
 Prerequisites: run the 0.15.4 JavaScript bundle in a compatible iOS development client on an iPhone, allow location access, keep exact city and district boundaries cached for one point, and have enough explored cells that an uncached city calculation is visibly slower than a scope tap. No network is required after the boundaries are cached.
 
-1. Long-press inside the cached district and leave District selected. Expected: the district objective appears, shows Updating during its first calculation, and settles on a percentage.
-2. Keep the scope chooser open or long-press the same point again, then wait a few seconds after the district result settles. Choose City. Expected: the city percentage appears immediately or after only the short SQLite validation; the HUD retains the cached value if Updating is still visible.
+1. With no objective or an objective in the same city, long-press inside the cached district. Expected: the district is selected directly without a scope chooser, shows Updating during its first calculation, and settles on a percentage.
+2. After the district result settles, open Completion, switch Scope to City, select the containing city, and set it as the objective. Expected: the city percentage appears immediately or after only the short SQLite validation; the HUD retains the cached value if Updating is still visible.
 3. Switch back to District, then City again. Expected: both values restore without clearing to 0%, pending, or a full visible polygon-rescan delay.
 4. Force-close and reopen the app, then switch between the same scopes. Expected: the saved objective and its valid SQLite snapshot survive relaunch; each cached percentage returns after a short validation.
 5. Finish a recording that adds explored cells inside either boundary, then revisit both scopes. Expected: the exploration revision invalidates the old snapshots, the last cached value remains visible with Updating, and both percentages are recalculated and persisted.
@@ -82,30 +202,46 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 
 1. Enter the map. Expected: Apple MapKit uses a dark muted treatment; roads and essential labels remain legible, while generic native POI symbols and the native blue location cursor are absent.
 2. Obtain a trustworthy outdoor fix, then pan, zoom, and rotate. Expected: the game-owned player is the sole location symbol and remains attached to its geographic coordinate without camera auto-follow.
-3. View previously explored ground and today's contribution. Expected: cumulative territory is translucent light orange with a dark ink-like frontier, while today's contribution is gold and remains distinguishable at walking and city zoom levels.
-4. Start a recording and walk through several accepted fixes. Expected: the active route is gold, the light-orange explored surface extends on its normal coalesced cadence, and GPS quality colors retain their existing semantic meanings.
+3. View previously explored ground and today's contribution. Expected: cumulative territory is translucent burnt orange with a dark ink-like frontier, while today's contribution is gold and remains distinguishable at walking and city zoom levels.
+4. Start a recording and walk through several accepted fixes. Expected: the active route is gold, the burnt-orange explored surface extends on its normal coalesced cadence, and GPS quality colors retain their existing semantic meanings.
 5. Focus a saved recording from History. Expected: the selected route becomes parchment, other routes use restrained teal/slate/earth variants and dim when appropriate, and inferred street links remain bright teal.
 6. Inspect saved route endpoints and medal landmarks. Expected: start and finish use parchment-and-ink flag/check markers; locked and collected medals use distinct custom atlas seals; no native teardrop pins remain. Tap each kind and confirm its title/callout or medal action still works.
 7. Disable Markers in Options and re-enable them. Expected: route and medal markers hide and return without affecting the player, route geometry, explored territory, or map gestures.
 8. Force-close and reopen, then repeat once with location permission denied. Expected: the visual treatment returns unchanged, saved data persists, and the durable last-known player remains the only location marker while the GPS badge reports the permission state.
-9. Zoom from close walking scale to a city-wide view with a large explored ledger. Expected: light-orange/gold contours remain seam-free, far-level marker reduction still works, and map interaction remains responsive.
+9. Zoom from close walking scale to a city-wide view with a large explored ledger. Expected: burnt-orange/gold contours remain seam-free, far-level marker reduction still works, and map interaction remains responsive.
+
+## Visual Hierarchy V0.16.12 Manual Test
+
+Prerequisites: run the 0.16.12 JavaScript bundle in a compatible iOS development client on an iPhone, allow foreground location, keep at least one saved recording and one selectable district/city pair, and cache MapKit tiles plus exact boundaries or provide network access. Repeat the motion step once with iOS Settings > Accessibility > Motion > Reduce Motion enabled. French-language verification is recommended for accented display text.
+
+1. Launch and dismiss the ready screen without touching the map. Expected: the complete Street Explorer wordmark is visible above the medal/objective HUD and no top element overlaps the safe area.
+2. Tap, pan, or begin a zoom gesture directly on the map. Expected: the wordmark contracts once over roughly 220ms, the center playfield gains vertical space, the medal/objective HUD moves upward cleanly, and later map touches do not replay or reverse the transition.
+3. Open and close Details without terminating the app, then return to the map. Expected: the compact wordmark remains compact for the session. Force-close and reopen. Expected: the full wordmark returns for the new session and contracts again after the first map touch.
+4. Open Details, History, Completion, Medals, and Options in turn; observe the navigation surface during each opening/closing transition or a partially completed edge swipe. Expected: only the selected destination expands to reveal its localized label, inactive destinations remain icon-only, every target is at least 44 points, and no English or French label clips the pill.
+5. Inspect the five Atlas screens in English and French. Expected: Cinzel is restricted to display titles and section headings, accents render correctly, system typography remains on metrics/body copy, ordinary cards use quiet neutral edges, and gold remains concentrated on selection, progress, emblems, rewards, and primary actions.
+6. Select a district, then use Completion to select its containing city. Expected: unselected districts use quiet 1.5-point copper strokes, the selected district strengthens to 3 points with the parchment selection wash, the city perimeter uses muted wine at 3 points, and selecting City strengthens it to 4 points without resembling an error or obscuring gold routes.
+7. Start a valid recording, tap Stop, choose Continue, then return and hold Quit to finish. Expected: Stop confirmation uses textured navy paper, a Cinzel heading, gold ornamental divider, and red only for Hold Quit; Continue remains visually secondary. The resulting recording summary uses the matching Atlas treatment while keeping quality, four metrics, naming, Skip, and Save readable and operable.
+8. Enable larger text and VoiceOver, then repeat the map header, selected-tab, Stop, and summary checks on the smallest available supported iPhone. Expected: labels remain readable, controls remain reachable and announced correctly, and the map retains useful unobstructed space without clipped dialog content.
+9. Enable Reduce Motion and relaunch. Expected: the first map touch publishes the compact wordmark directly without the 220ms transition; Atlas screens and dialogs retain their final visual hierarchy and all navigation remains functional.
+
+Automated checks cover font/asset wiring, collapse signaling, selected-tab expansion, quiet borders, dialog texture, boundary colors/widths, and TypeScript correctness. Physical-device verification remains required for perceived typography, animation/layout smoothness, MapKit stroke balance, Dynamic Type, VoiceOver, and iOS Reduce Motion behavior.
 
 ## Streamlined Interface Test
 
-1. Enter the map and confirm the smaller logo leaves the map readable, the Lyon medal card shows the current collected/total count and progress bar, and the bottom destinations share one rounded navigation surface.
+1. Enter the map and confirm the full wordmark is visible. Touch the map once and confirm it contracts smoothly for the rest of the session, the Lyon medal card remains readable, and the bottom destinations share one rounded navigation surface.
 2. Tap the Lyon progress card and confirm Medals opens. In All and every category, confirm Unlocked and Locked headers remain visible with independent counts; unlocked cards appear first and show descriptions, while locked cards stay compact.
 3. Confirm only one side flag remains. Tap it to hide and show the district or city objective card; verify the saved objective remains selected in Completion. With no objective, tap the flag and confirm Completion opens so one can be selected.
 4. Open Options and confirm Paths, Explored Cells, and Pins remain independently configurable even though their three map shortcuts were removed. Confirm route-reprocessing maintenance is also available there.
 5. Open Details and confirm everyday statistics and goals appear in consistent dark cards without map legends or GPS diagnostics. Open History, choose a recording, and confirm the route-quality summary is immediately visible while bridge, loop, and diagnostic evidence remains hidden until Technical details is expanded.
 6. Confirm Completion keeps the compact zone measures, adds the Street Completion V2 card, and still omits fetched-source metadata and the old V1 rules explanation from the default flow.
 7. With no active walk, confirm only today's steps and Start Walk are shown. During a walk, confirm distance, duration, steps, Stop, and the existing double-tap health details remain accessible.
-8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces and confirm the same navy/gold surfaces, rounded layout, readable contrast, and red-only destructive actions.
+8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces. Expected: Stop and summary use textured Atlas cards, Cinzel display headings, and ornamental dividers; recovery and diagnostics remain specialized, contrast stays readable, and only the destructive action is red.
 
 ## UI Polish and Map Semantics Regression Test
 
 Prerequisites: run the Street Explorer 0.15.1 JavaScript bundle in a compatible iOS development client, keep at least two saved walks including one with an inferred street section if available, enable the Paths and Explored Cells layers, and test once outdoors with location permission granted and once with permission denied. A simulator with Location set to None is useful for the Unavailable case. No network is required except when loading uncached map or OSM data.
 
-1. Open the map with at least two saved routes. Expected: saved routes use restrained teal/slate/earth variants, explored ground uses translucent light orange, and today's explored overlay uses gold without competing with the navy/gold interface.
+1. Open the map with at least two saved routes. Expected: saved routes use restrained teal/slate/earth variants, explored ground uses translucent burnt orange, and today's explored overlay uses gold without competing with the navy/gold interface.
 2. Open History and choose Focus on map for one route. Expected: the focused route is parchment, other visible saved routes are dimmed, and starting a new recording draws its active route in gold. Any topology-inferred section remains cyan rather than looking directly GPS-observed.
 3. Open Details, History, and Completion in turn. Expected: every primary content card uses the same dark navy surface hierarchy, secondary cards are visibly raised without turning light, gold is reserved for selection/progress, text remains readable, and back navigation returns to the unchanged map.
 4. In History, open a saved recording. Expected: the route color, name, quality badge, distance, duration, steps, loops, accepted points, hidden gaps, and inferred-section count are visible before technical details. Expand Technical details and confirm bridge evidence, loop diagnostics, frozen-route status, and the full quality score remain available.
@@ -259,7 +395,7 @@ Confirm each layer appears or disappears.
 3. Select a zone such as a district.
 4. Tap Set objective.
 5. Confirm the map HUD shows the objective name and completion percentage.
-6. Start recording, walk a qualifying loop that visibly closes and fills a new light-orange area, and keep the recording active. Expected: after the closing cell is accepted, the HUD briefly calculates and then updates its percentage and remaining-cell count without Stop or relaunch. Stop and finalize the recording; expected: the same or reconciled durable percentage remains, and only durable 100% completion can create a permanent achievement.
+6. Start recording, walk a qualifying loop that visibly closes and fills a new burnt-orange area, and keep the recording active. Expected: after the closing cell is accepted, the HUD briefly calculates and then updates its percentage and remaining-cell count without Stop or relaunch. Stop and finalize the recording; expected: the same or reconciled durable percentage remains, and only durable 100% completion can create a permanent achievement.
 
 ## Explored Area Outline Test
 
@@ -305,13 +441,13 @@ Notes:
 15. Export Backup V5, clear data, restore it, and confirm permanent zone achievements and rollups return. Confirm V1-V3 files are rejected.
 16. In Lyon 3e Arrondissement, refresh District boundaries and confirm the zone reports a percentage instead of Display-only/Unavailable, Set objective is enabled, and focusing it shows the real multipolygon rather than a rectangular bounds fallback.
 17. Set Lyon 3e as the objective, clear only the boundary cache, force-close, reopen, and allow the automatic map fetch or tap Refresh. Confirm the saved objective HUD returns once the exact zone is cached. Then simulate an incomplete response for the same relation and confirm the exact cached boundary, denominator, and objective remain intact.
-18. With internet and a current Lyon location, remain on the map until boundary loading settles. Confirm all nine arrondissement outlines are simultaneously visible, non-objective districts use 2-point burnt-orange strokes, and the objective district uses the stronger 6-point burnt-orange stroke.
-19. Pan from Lyon 3e across several arrondissement boundaries and release the map. Confirm the saved objective name, dark-orange outline, percentage, remaining-cell count, and today count never change merely because the viewport moved.
-20. Long-press inside an adjacent arrondissement. Confirm haptic feedback occurs, the district immediately becomes the persisted objective, its dark-orange outline appears, and the HUD shows Calculating until that district's percentage is ready.
-21. When the held point has both district and city boundaries, confirm a compact scope picker offers separate District and City buttons. Tap City and confirm the city boundary becomes red while all of its district outlines remain visible; repeat and choose District.
+18. With internet and a current Lyon location, remain on the map until boundary loading settles. Confirm exactly the nine Lyon arrondissement outlines are visible with quiet 1.5-point copper strokes, the objective district strengthens to 3 points, and the containing city alone uses a 3-point wine perimeter. Expected: the adjacent Oullins and Pierre-Benite delegated-commune polygons south of Lyon are absent, including with an existing cache from v0.16.10.
+19. Pan from Lyon 3e across several arrondissement boundaries and release the map. Confirm the saved objective name, selected copper outline, percentage, remaining-cell count, and today count never change merely because the viewport moved.
+20. Long-press inside an adjacent arrondissement. Confirm haptic feedback occurs, no scope picker appears, the district immediately becomes the persisted objective, its stronger copper outline appears, and the HUD shows Calculating until that district's percentage is ready.
+21. While a Lyon district or city is active, long-press another Lyon district and confirm it switches directly with no scope picker. Then long-press a district in a different city and confirm the compact cross-city picker offers separate District and City buttons. Tap City and confirm the new wine city boundary strengthens from 3 to 4 points while all of that city's district outlines remain visible; repeat the cross-city hold and choose District.
 22. Rapidly long-press different districts or cities while an uncached boundary request is pending. Confirm an older lookup or percentage never restores an earlier name, scope, outline, remaining-cell count, or today count after the final selection finishes.
 23. Force-close and reopen. Confirm the last long-pressed scope and area remain the saved objective and the selected city's cached district outlines return without requiring Completion to be opened.
-24. Long-press inside a different city with district relations. Confirm that city's district group replaces the previous city outlines without mixing cached districts. Disable network, long-press an uncached area, and confirm an Area unavailable message appears without changing the existing objective.
+24. Long-press inside a different city with district relations. Confirm the cross-city scope picker appears, then choose a scope and confirm that city's district group replaces the previous city outlines without mixing cached districts. Disable network, long-press an uncached area, and confirm an Area unavailable message appears without changing the existing objective.
 25. Zoom out to a city-wide view and move the map away from the player, then tap Start with foreground location permission and a trustworthy fix. Confirm the camera recenters once at the normal walking-scale zoom and the player icon returns at its previous visible size. Pan immediately and confirm the camera stays under finger control instead of resuming follow. Repeat through Resume on a recoverable recording.
 26. With a district objective selected, start a walk and extend an open red line through several new cells. Confirm the percentage HUD does not enter Calculating or change for those line-only additions. Close a qualifying loop that visibly fills new red ground and, without stopping, confirm the HUD now briefly shows Calculating and then increases the percentage/reduces remaining cells. Start another open segment, tap Stop, and confirm the finalized percentage updates once even though that segment did not close an area. Force-close before finalizing a separate closure and confirm its preview did not create a permanent 100% achievement from unfinished cells; recover or finalize it and confirm the durable percentage appears without another relaunch.
 
@@ -366,7 +502,7 @@ Notes:
 4. Confirm Stop does not automatically rebuild historical loops; open Details and run Reprocess recordings explicitly before validating loop-fill results.
 5. Confirm interior loop-fill cells appear with the same visual style as normal explored cells.
 6. Confirm a straight walk does not create loop fills after reprocessing.
-7. Trace a qualifying enclosure while continuing to move after crossing the boundary. Confirm its light-orange/gold surface fills during the active walk without pausing for GPS, remains filled immediately after Stop, and does not require an app restart.
+7. Trace a qualifying enclosure while continuing to move after crossing the boundary. Confirm its burnt-orange/gold surface fills during the active walk without pausing for GPS, remains filled immediately after Stop, and does not require an app restart.
 8. Open History, tap the recording, and confirm Loop cells and Loop result are shown.
 9. Confirm a recording with a rejected GPS gap does not fill cells across that gap.
 10. Record or reprocess a walk with multiple block loops and confirm History shows multiple filled loops.
@@ -385,7 +521,7 @@ Notes:
 9. Confirm one deliberately malformed recording is reported as preserved while later recording calculations continue.
 10. Confirm success always produces a detailed completion summary and failure always produces a visible error.
 11. Confirm the summary shows checked recordings, preserved failures, filled loops, rejected loops, loop cells, direct/validated boundary cells, inferred cells, walked/loaded street distance, street percentage, completed streets, and previous/rebuilt totals.
-12. Confirm independently enclosed qualifying areas count toward completion immediately and that the percentage matches the solid light-orange surface.
+12. Confirm independently enclosed qualifying areas count toward completion immediately and that the percentage matches the solid burnt-orange surface.
 13. If the rebuilt total is below the previous total, confirm the summary reports a safety stop and the existing percentage does not decrease.
 14. Confirm areas enclosed by direct and inferred cells from multiple recordings can fill.
 15. Confirm high-confidence street matches close only short endpoint seams and unmatched gaps never draw a straight building shortcut.

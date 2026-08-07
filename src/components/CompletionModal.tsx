@@ -305,9 +305,9 @@ export function CompletionModal({
         if (showResult) {
           Alert.alert(
             completionStrings.boundariesRefreshed,
-            result.zones.length > 0
+            result.usableZoneCount > 0
               ? interpolate(completionStrings.nearbyBoundaryZonesCached, {
-                  count: result.zones.length
+                  count: result.usableZoneCount
                 })
               : interpolate(completionStrings.noUsableBoundaries, {
                   raw: result.rawElementCount,
@@ -400,10 +400,11 @@ export function CompletionModal({
     <Modal
       animationType="none"
       onRequestClose={onClose}
-      presentationStyle="fullScreen"
+      presentationStyle="overFullScreen"
+      transparent
       visible={visible}
     >
-      <AtlasScreen visible={visible}>
+      <AtlasScreen onSwipeBack={onClose} visible={visible}>
         <AtlasModalHeader
           emblem="map-outline"
           eyebrow={language === "fr" ? "REGISTRE TERRITORIAL" : "TERRITORY REGISTRY"}
@@ -1020,7 +1021,7 @@ const styles = StyleSheet.create({
   },
   achievementPanel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12
@@ -1075,7 +1076,7 @@ const styles = StyleSheet.create({
   },
   currentObjectivePanel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: "rgba(245, 196, 81, 0.22)",
+    borderColor: APP_COLORS.borderStrong,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12
@@ -1151,7 +1152,7 @@ const styles = StyleSheet.create({
   },
   panel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12
@@ -1209,7 +1210,7 @@ const styles = StyleSheet.create({
   },
   selectorPanel: {
     backgroundColor: APP_COLORS.card,
-    borderColor: APP_COLORS.goldBorder,
+    borderColor: APP_COLORS.border,
     borderRadius: 18,
     borderWidth: 1,
     padding: 12

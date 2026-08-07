@@ -10,6 +10,7 @@ export type CompletionScope = "country" | "city" | "district";
 export type ExploredCellSource = "gps" | "inferred" | "loop_fill";
 
 export type CachedZone = {
+  adminLevel?: number | null;
   fetchedAt: string;
   geometry: MapCoordinate[][];
   holes: MapCoordinate[][];
@@ -71,6 +72,7 @@ export type ExploredCellInput = {
 };
 
 type ZoneRow = {
+  admin_level: number | null;
   fetched_at: string;
   geometry_json: string;
   id: string;
@@ -561,9 +563,10 @@ export async function getCachedZones(type: CompletionScope): Promise<CachedZone[
   const db = await getDatabase();
   const rows = await db.getAllAsync<ZoneRow>(
     `
-      SELECT id, type, name, parent_zone_id, source, geometry_json, fetched_at
+      SELECT id, type, name, parent_zone_id, admin_level, source, geometry_json, fetched_at
       FROM zones
       WHERE type = ?
+        AND (type <> 'district' OR admin_level = 9)
       ORDER BY name
     `,
     type
@@ -576,7 +579,7 @@ export async function getCachedZoneById(id: string): Promise<CachedZone | null> 
   const db = await getDatabase();
   const row = await db.getFirstAsync<ZoneRow>(
     `
-      SELECT id, type, name, parent_zone_id, source, geometry_json, fetched_at
+      SELECT id, type, name, parent_zone_id, admin_level, source, geometry_json, fetched_at
       FROM zones
       WHERE id = ?
     `,
@@ -588,6 +591,7 @@ export async function getCachedZoneById(id: string): Promise<CachedZone | null> 
 
 function mapZoneRow(row: ZoneRow): CachedZone {
   return {
+    adminLevel: row.admin_level,
     fetchedAt: row.fetched_at,
     ...parseZoneGeometry(row.geometry_json),
     id: row.id,
@@ -637,16 +641,18 @@ export async function upsertZones(zones: CachedZone[]) {
             type,
             name,
             parent_zone_id,
+            admin_level,
             source,
             geometry_json,
             fetched_at
           )
-          VALUES (?, ?, ?, ?, ?, ?, ?)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         `,
         zone.id,
         zone.type,
         zone.name,
         zone.parentZoneId,
+        zone.adminLevel ?? null,
         zone.source,
         geometryJson,
         zone.fetchedAt
@@ -809,10 +815,15 @@ export async function getZoneAchievements() {
 export async function getZoneAchievementRollup(): Promise<ZoneAchievementRollup> {
   const db = await getDatabase();
   const rows = await db.getAllAsync<{ count: number; zone_type: CompletionScope }>(`
-    SELECT zone_type, COUNT(*) AS count
-    FROM zone_achievements
-    WHERE zone_type IN ('city', 'district')
-    GROUP BY zone_type
+    SELECT achievements.zone_type, COUNT(*) AS count
+    FROM zone_achievements AS achievements
+    LEFT JOIN zones ON zones.id = achievements.zone_id
+    WHERE achievements.zone_type = 'city'
+      OR (
+        achievements.zone_type = 'district'
+        AND zones.admin_level = 9
+      )
+    GROUP BY achievements.zone_type
   `);
   const counts = Object.fromEntries(rows.map((row) => [row.zone_type, row.count]));
 

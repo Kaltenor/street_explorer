@@ -12,14 +12,19 @@ export const APP_COLORS = {
   textSecondary: "#cbd5e1",
   border: "rgba(148, 163, 184, 0.24)",
   borderStrong: "rgba(148, 163, 184, 0.34)",
-  goldBorder: "rgba(245, 196, 81, 0.28)"
+  goldBorder: "rgba(245, 196, 81, 0.22)"
 } as const;
+
+export const ATLAS_DISPLAY_FONT = "Cinzel";
 
 export const WALKING_COLORS = {
   activeRoute: "#f5c451",
   selectedRoute: "#f3e5bd",
-  cityBoundary: "#dc2626",
-  districtBoundary: "#b45309",
+  cityBoundary: "#8d5268",
+  cityBoundaryMuted: "rgba(141, 82, 104, 0.7)",
+  districtBoundary: "#c28a45",
+  districtBoundaryMuted: "rgba(194, 138, 69, 0.64)",
+  selectedZoneFill: "rgba(242, 217, 166, 0.12)",
   savedRoutes: [
     "#67c8c2",
     "#4fa3a0",
@@ -30,7 +35,7 @@ export const WALKING_COLORS = {
   ],
   inferredRoute: "rgba(103, 232, 223, 0.78)",
   dimmedRoute: "rgba(86, 111, 115, 0.34)",
-  exploredArea: "rgba(251, 146, 60, 0.46)",
+  exploredArea: "rgba(229, 122, 50, 0.46)",
   todayArea: "rgba(245, 196, 81, 0.46)"
 } as const;
 

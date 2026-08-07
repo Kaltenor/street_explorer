@@ -1,9 +1,12 @@
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import {
   AccessibilityInfo,
   Animated,
   Easing,
+  Image,
   ImageBackground,
+  PanResponder,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,7 +15,12 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { APP_COLORS } from "../constants/theme";
+import { APP_COLORS, ATLAS_DISPLAY_FONT } from "../constants/theme";
+import {
+  shouldCaptureAtlasSwipeBackStart,
+  shouldCompleteAtlasSwipeBack,
+  shouldStartAtlasSwipeBack
+} from "../services/atlasSwipeBack";
 
 type AtlasSound = "ink" | "page";
 
@@ -53,22 +61,116 @@ export function playAtlasSound(sound: AtlasSound) {
     .catch(() => undefined);
 }
 
+
 export function AtlasScreen({
   children,
+  onSwipeBack,
+  swipeBackDisabled = false,
   visible
 }: {
   children: ReactNode;
+  onSwipeBack?: () => void;
+  swipeBackDisabled?: boolean;
   visible: boolean;
 }) {
   const entrance = useRef(new Animated.Value(0)).current;
+  const swipeTranslateX = useRef(new Animated.Value(0)).current;
   const openedRef = useRef(false);
+  const swipeBackCallbackRef = useRef(onSwipeBack);
+  const swipeBackEnabledRef = useRef(false);
+  const swipeScreenWidthRef = useRef(390);
   const reducedMotion = useReducedMotionPreference();
+  const reducedMotionRef = useRef(reducedMotion);
+  swipeBackCallbackRef.current = onSwipeBack;
+  swipeBackEnabledRef.current =
+    Platform.OS === "ios" && visible && Boolean(onSwipeBack) && !swipeBackDisabled;
+  reducedMotionRef.current = reducedMotion;
+
+  const panResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onStartShouldSetPanResponderCapture: (event) =>
+          shouldCaptureAtlasSwipeBackStart({
+            enabled: swipeBackEnabledRef.current,
+            startX: event.nativeEvent.pageX
+          }),
+        onMoveShouldSetPanResponder: (_event, gestureState) =>
+          shouldStartAtlasSwipeBack({
+            deltaX: gestureState.dx,
+            deltaY: gestureState.dy,
+            enabled: swipeBackEnabledRef.current,
+            startX: gestureState.x0
+          }),
+        onMoveShouldSetPanResponderCapture: (_event, gestureState) =>
+          shouldStartAtlasSwipeBack({
+            deltaX: gestureState.dx,
+            deltaY: gestureState.dy,
+            enabled: swipeBackEnabledRef.current,
+            startX: gestureState.x0
+          }),
+        onPanResponderMove: (_event, gestureState) => {
+          swipeTranslateX.setValue(
+            Math.max(0, Math.min(swipeScreenWidthRef.current, gestureState.dx))
+          );
+        },
+        onPanResponderRelease: (_event, gestureState) => {
+          const shouldComplete = shouldCompleteAtlasSwipeBack({
+            deltaX: gestureState.dx,
+            screenWidth: swipeScreenWidthRef.current,
+            velocityX: gestureState.vx
+          });
+
+          if (shouldComplete) {
+            if (reducedMotionRef.current) {
+              swipeTranslateX.setValue(swipeScreenWidthRef.current);
+              swipeBackCallbackRef.current?.();
+              return;
+            }
+
+            Animated.timing(swipeTranslateX, {
+              duration: 170,
+              easing: Easing.out(Easing.cubic),
+              toValue: swipeScreenWidthRef.current,
+              useNativeDriver: true
+            }).start(({ finished }) => {
+              if (finished) {
+                swipeBackCallbackRef.current?.();
+              }
+            });
+            return;
+          }
+
+          Animated.spring(swipeTranslateX, {
+            damping: 20,
+            mass: 0.7,
+            stiffness: 240,
+            toValue: 0,
+            useNativeDriver: true
+          }).start();
+        },
+        onPanResponderTerminate: () => {
+          Animated.spring(swipeTranslateX, {
+            damping: 20,
+            mass: 0.7,
+            stiffness: 240,
+            toValue: 0,
+            useNativeDriver: true
+          }).start();
+        },
+        onPanResponderTerminationRequest: () => false,
+        onStartShouldSetPanResponder: () => false
+      }),
+    [swipeTranslateX]
+  );
 
   useEffect(() => {
     if (!visible) {
       openedRef.current = false;
+      swipeTranslateX.setValue(0);
       return;
     }
+
+    swipeTranslateX.setValue(0);
 
     if (!openedRef.current) {
       openedRef.current = true;
@@ -88,33 +190,49 @@ export function AtlasScreen({
       toValue: 1,
       useNativeDriver: true
     }).start();
-  }, [entrance, reducedMotion, visible]);
+  }, [entrance, reducedMotion, swipeTranslateX, visible]);
 
   return (
-    <ImageBackground
-      imageStyle={styles.paperTexture}
-      resizeMode="cover"
-      source={require("../../assets/ui/atlas-paper-texture.png")}
-      style={styles.screen}
+    <Animated.View
+      {...panResponder.panHandlers}
+      onAccessibilityEscape={() => {
+        if (swipeBackEnabledRef.current) {
+          swipeBackCallbackRef.current?.();
+        }
+      }}
+      onLayout={(event) => {
+        swipeScreenWidthRef.current = event.nativeEvent.layout.width;
+      }}
+      style={[
+        styles.swipeSurface,
+        { transform: [{ translateX: swipeTranslateX }] }
+      ]}
     >
-      <View pointerEvents="none" style={styles.inkWash} />
-      <Animated.View
-        style={[
-          styles.screenContent,
-          {
-            opacity: entrance,
-            transform: [{
-              translateX: entrance.interpolate({
-                inputRange: [0, 1],
-                outputRange: reducedMotion ? [0, 0] : [22, 0]
-              })
-            }]
-          }
-        ]}
+      <ImageBackground
+        imageStyle={styles.paperTexture}
+        resizeMode="cover"
+        source={require("../../assets/ui/atlas-paper-texture.png")}
+        style={styles.screen}
       >
-        {children}
-      </Animated.View>
-    </ImageBackground>
+        <View pointerEvents="none" style={styles.inkWash} />
+        <Animated.View
+          style={[
+            styles.screenContent,
+            {
+              opacity: entrance,
+              transform: [{
+                translateX: entrance.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: reducedMotion ? [0, 0] : [22, 0]
+                })
+              }]
+            }
+          ]}
+        >
+          {children}
+        </Animated.View>
+      </ImageBackground>
+    </Animated.View>
   );
 }
 
@@ -182,22 +300,36 @@ export function AtlasSectionLabel({
 export type AtlasStampMessage = {
   detail: string;
   id: number;
+  presentation?: "map-selection" | "standard";
   title: string;
 };
 
+type AtlasStampMapInsets = {
+  bottom: number;
+  top: number;
+};
+
 export function AtlasStamp({
+  mapContentInsets,
   message,
   onDismiss
 }: {
+  mapContentInsets?: AtlasStampMapInsets;
   message: AtlasStampMessage | null;
   onDismiss: () => void;
 }) {
   const progress = useRef(new Animated.Value(0)).current;
+  const [loadedArtworkMessageId, setLoadedArtworkMessageId] = useState<number | null>(null);
   const reducedMotion = useReducedMotionPreference();
   const stampedMessageIdRef = useRef<number | null>(null);
+  const isMapSelection = message?.presentation === "map-selection";
+  const artworkReady = loadedArtworkMessageId === message?.id;
 
   useEffect(() => {
-    if (!message) return;
+    progress.stopAnimation();
+    progress.setValue(reducedMotion ? 1 : 0);
+
+    if (!message || !artworkReady) return;
 
     if (stampedMessageIdRef.current !== message.id) {
       stampedMessageIdRef.current = message.id;
@@ -206,43 +338,108 @@ export function AtlasStamp({
         .then((Haptics) => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium))
         .catch(() => undefined);
     }
-    progress.stopAnimation();
-    progress.setValue(reducedMotion ? 1 : 0);
-
-    if (!reducedMotion) {
-      Animated.spring(progress, {
-        damping: 10,
-        mass: 0.65,
-        stiffness: 220,
-        toValue: 1,
-        useNativeDriver: true
-      }).start();
-    }
+    const strikeAnimation = reducedMotion
+      ? null
+      : Animated.sequence([
+          Animated.timing(progress, {
+            duration: 125,
+            easing: Easing.in(Easing.cubic),
+            toValue: 0.76,
+            useNativeDriver: true
+          }),
+          Animated.spring(progress, {
+            damping: 6,
+            mass: 0.5,
+            stiffness: 300,
+            toValue: 1,
+            useNativeDriver: true
+          })
+        ]);
+    strikeAnimation?.start();
 
     const dismissTimer = setTimeout(onDismiss, reducedMotion ? 1050 : 1550);
-    return () => clearTimeout(dismissTimer);
-  }, [message, onDismiss, progress, reducedMotion]);
+    return () => {
+      clearTimeout(dismissTimer);
+      strikeAnimation?.stop();
+    };
+  }, [artworkReady, message, onDismiss, progress, reducedMotion]);
 
   if (!message) return null;
 
   return (
-    <View pointerEvents="none" style={styles.stampLayer}>
+    <View
+      pointerEvents="none"
+      style={[
+        styles.stampLayer,
+        isMapSelection
+          ? [
+              styles.mapSelectionStampLayer,
+              {
+                bottom: mapContentInsets?.bottom ?? 160,
+                top: mapContentInsets?.top ?? 180
+              }
+            ]
+          : null
+      ]}
+    >
       <Animated.View
         style={[
           styles.stamp,
           {
-            opacity: progress,
+            opacity: artworkReady
+              ? progress.interpolate({
+                  inputRange: [0, 0.08, 1],
+                  outputRange: [0, 1, 1]
+                })
+              : 0,
             transform: [
-              { rotate: "-5deg" },
-              { scale: progress.interpolate({ inputRange: [0, 1], outputRange: [1.38, 1] }) }
+              {
+                translateY: progress.interpolate({
+                  inputRange: [0, 0.76, 1],
+                  outputRange: [-24, 4, 0]
+                })
+              },
+              {
+                rotate: progress.interpolate({
+                  inputRange: [0, 0.76, 1],
+                  outputRange: ["-14deg", "-3deg", "-5deg"]
+                })
+              },
+              {
+                scale: progress.interpolate({
+                  inputRange: [0, 0.76, 1],
+                  outputRange: isMapSelection
+                    ? [4.8, 2.72, 3]
+                    : [1.6, 0.9, 1]
+                })
+              }
             ]
           }
         ]}
       >
-        <View style={styles.stampInner}>
-          <Ionicons color={APP_COLORS.gold} name="compass-outline" size={20} />
-          <Text style={styles.stampTitle}>{message.title}</Text>
-          <Text numberOfLines={2} style={styles.stampDetail}>{message.detail}</Text>
+        <Image
+          key={message.id}
+          onLoad={() => setLoadedArtworkMessageId(message.id)}
+          source={require("../../assets/ui/atlas-cartographer-stamp.png")}
+          style={styles.stampArtwork}
+        />
+        <View style={styles.stampCopy}>
+          <View style={styles.stampTextLine}>
+            <Text numberOfLines={2} style={[styles.stampTitle, styles.stampTextDrop]}>
+              {message.title}
+            </Text>
+            <Text numberOfLines={2} style={[styles.stampTitle, styles.stampTextFace]}>
+              {message.title}
+            </Text>
+          </View>
+          <View style={styles.stampTextLine}>
+            <Text numberOfLines={2} style={[styles.stampDetail, styles.stampTextDrop]}>
+              {message.detail}
+            </Text>
+            <Text numberOfLines={2} style={[styles.stampDetail, styles.stampTextFace]}>
+              {message.detail}
+            </Text>
+          </View>
         </View>
       </Animated.View>
     </View>
@@ -251,7 +448,7 @@ export function AtlasStamp({
 
 export const ATLAS_CARD_STYLE: ViewStyle = {
   backgroundColor: "rgba(9, 19, 27, 0.92)",
-  borderColor: APP_COLORS.goldBorder,
+  borderColor: APP_COLORS.border,
   borderRadius: 18,
   borderWidth: 1
 };
@@ -324,43 +521,65 @@ const styles = StyleSheet.create({
   paperTexture: { opacity: 0.3 },
   screen: { backgroundColor: APP_COLORS.background, flex: 1 },
   screenContent: { flex: 1 },
+  swipeSurface: {
+    flex: 1,
+    shadowColor: "#02060a",
+    shadowOffset: { height: 0, width: -8 },
+    shadowOpacity: 0.42,
+    shadowRadius: 16
+  },
   sectionLabel: { alignItems: "center", flexDirection: "row", gap: 7 },
   sectionLabelText: {
     color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
     fontSize: 11,
     fontWeight: "900",
     letterSpacing: 1.25,
     textTransform: "uppercase"
   },
   sectionRule: { backgroundColor: APP_COLORS.goldBorder, flex: 1, height: 1 },
+  mapSelectionStampLayer: { justifyContent: "center" },
   stamp: {
     alignItems: "center",
-    backgroundColor: "rgba(5, 15, 21, 0.96)",
-    borderColor: APP_COLORS.gold,
-    borderRadius: 62,
-    borderWidth: 2,
-    height: 124,
+    height: 106,
     justifyContent: "center",
-    padding: 6,
-    width: 124
+    width: 106
+  },
+  stampArtwork: {
+    height: "100%",
+    left: 0,
+    position: "absolute",
+    resizeMode: "contain",
+    top: 0,
+    width: "100%"
+  },
+  stampCopy: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "58%"
   },
   stampDetail: {
     color: APP_COLORS.parchment,
-    fontSize: 10,
+    fontSize: 7,
     fontWeight: "800",
-    lineHeight: 13,
-    marginTop: 3,
+    lineHeight: 8.5,
+    marginTop: 1.5,
     textAlign: "center"
   },
-  stampInner: {
-    alignItems: "center",
-    borderColor: "rgba(245, 196, 81, 0.52)",
-    borderRadius: 52,
-    borderWidth: 1,
-    flex: 1,
-    justifyContent: "center",
+  stampTextDrop: {
+    color: "rgba(1, 7, 11, 0.9)",
+    left: 1,
+    position: "absolute",
+    top: 1,
     width: "100%"
   },
+  stampTextFace: {
+    textShadowColor: "rgba(255, 255, 255, 0.92)",
+    textShadowOffset: { height: 0, width: 0 },
+    textShadowRadius: 1.25
+  },
+  stampTextLine: { width: "100%" },
+
   stampLayer: {
     alignItems: "center",
     left: 0,
@@ -371,13 +590,14 @@ const styles = StyleSheet.create({
   },
   stampTitle: {
     color: APP_COLORS.gold,
-    fontSize: 10,
+    fontSize: 7.5,
     fontWeight: "900",
-    letterSpacing: 1.05,
-    marginTop: 2,
+    letterSpacing: 0.55,
+    lineHeight: 9,
+    marginTop: 1,
     textAlign: "center"
   },
   subtitle: { color: APP_COLORS.textMuted, fontSize: 12, marginTop: 2 },
-  title: { color: APP_COLORS.gold, fontSize: 25, fontWeight: "900", marginTop: 1 }
+  title: { color: APP_COLORS.gold, fontFamily: ATLAS_DISPLAY_FONT, fontSize: 23, marginTop: 1 }
 });
 

@@ -1,5 +1,170 @@
 # Changelog
 
+## v0.16.15
+
+Changed:
+
+- Refitted every primary main-map overlay into the Atlas Cabinet language: subtle navy paper grain, parchment titles, Cinzel identity labels, restrained gold rules, and shared icon-seal treatment.
+- Replaced flat-yellow navigation, objective-toggle, and scope selections with engraved translucent-gold states while preserving gold for progress and the primary Start action.
+- Reworked the walking card as a compact field ledger, kept live values in the readable system face, and reduced vertical padding without shrinking any interactive target below 44 points.
+- Changed the GPS strip to a neutral inset border so semantic status color appears only in its dot and label.
+- Added reusable HUD texture/divider primitives, focused visual regressions, device guidance, and synchronized version 0.16.15 with iOS build 130 and Android version code 130.
+
+## v0.16.14
+
+Changed:
+
+- Reworked the map into one semantic atlas-ink palette: antiqued copper district borders, wine city borders, burnt-orange explored territory, and a quiet parchment wash for the selected district or city.
+- Preserved the existing selected/unselected stroke widths and muted-border opacity hierarchy, while keeping gold exclusive to today's exploration and active routes.
+- Added exact visual regression coverage for the four palette roles and every zoom-dependent explored-surface opacity.
+- Updated visual guidance and synchronized the app version to 0.16.14, iOS build 129, and Android version code 129.
+
+## v0.16.13
+
+Changed:
+
+- Long-pressing another district inside the current or selected city now switches directly to that district instead of opening the District/City chooser.
+- The scope chooser is now reserved for cross-city holds, including when the previous objective was a city in a different boundary context; its existing default-scope behavior remains intact after the city change.
+- Added executable same-city, cross-city, missing-context, and missing-district decision coverage.
+- Updated device guidance and synchronized the app version to 0.16.13, iOS build 128, and Android version code 128.
+
+## v0.16.12
+
+Changed:
+
+- The map wordmark now contracts after the first map touch, reclaiming vertical playfield space while retaining a compact branded mark for the rest of the session.
+- Selected bottom-navigation destinations expand to show a localized label; inactive destinations remain compact 44-point icon targets.
+- Bundled the OFL-licensed Cinzel variable font for Atlas titles and section headings while retaining the system face for dense metrics and body text.
+- Rebalanced the navy/gold hierarchy with neutral borders on ordinary cards and gold reserved for selection, progress, emblems, rewards, and primary actions.
+- Replaced error-like red/thick administrative outlines with muted copper districts and burgundy city boundaries; selected objectives receive stronger strokes without overwhelming routes or explored territory.
+- Brought Stop confirmation and the recording summary into the textured Atlas dialog language with display headings and ornamental dividers while retaining red only for the destructive action.
+- Expanded UI regression and physical-device guidance, and synchronized the app version to 0.16.12, iOS build 127, and Android version code 127.
+
+## v0.16.11
+
+Fixed:
+
+- Replaced permissive any-vertex district parenting with deterministic interior sampling across every outer component, preventing adjacent level-9 delegated communes such as Oullins and Pierre-Benite from rendering as Lyon arrondissements.
+- Map filtering and objective-city recovery now revalidate geometry instead of trusting a stale cached parent ID, so upgraded devices correct existing caches without deleting routes, exploration, achievements, or objectives.
+- Added executable regressions for a valid inner district, a shared-edge foreign relation, its correct neighboring parent, and a mixed relation with one detached component.
+- Updated device guidance and synchronized the app version to 0.16.11, iOS build 126, and Android version code 126.
+
+## v0.16.10
+
+Fixed:
+
+- Reduced the stamp title and detail typography, line height, spacing, and margins so localized selection/completion wording fits within the compact seal's quiet navy center.
+- Gated each message's complete animated surface on that exact image instance's load event; artwork, outlined text, opacity, impact, and sound now begin together without an early detached-text frame.
+- Added synchronization and fitted-type regression coverage, updated device guidance, and synchronized the app version to 0.16.10, iOS build 125, and Android version code 125.
+
+## v0.16.9
+
+Changed:
+
+- Reduced both standard and 3x map-selection seal presentations by 20% while preserving their measured map centering.
+- Reworked the stamp entrance into a faster angled strike with vertical impact, brief compression, and spring rebound; artwork and wording now share one transform so they land as a single printed object.
+- Added a tight white ink halo and restrained navy drop-shadow layer to the dynamic title/detail text for stronger integration and map contrast.
+- Expanded UI regression and physical-device guidance, and synchronized the app version to 0.16.9, iOS build 124, and Android version code 124.
+
+## v0.16.8
+
+Changed:
+
+- Replaced the code-drawn objective stamp and stock compass glyph with an original hand-inked cartographer seal generated for Street Explorer in the existing antique-gold, midnight-navy, and burnt-orange palette.
+- Preserved dynamic city/district wording inside the seal's quiet center, along with the existing standard/3x sizing, measured map placement, sound, haptic, spring, and Reduce Motion behavior.
+- Added bundled-asset regression coverage and synchronized the app version to 0.16.8, iOS build 123, and Android version code 123.
+
+## v0.16.7
+
+Added:
+
+- Persisted each cached OSM zone's original administrative level through schema migration 26 and all subsequent boundary upserts.
+- Retained level-10 neighborhood relations and historical achievements internally for a future Neighborhood tier.
+
+Changed:
+
+- Level 9 is now the only selectable, rendered, completion-eligible district tier across France and other locations using the same administrative hierarchy; level 10 is excluded from visible lists, objectives, refresh counts, and achievement rollups.
+- Upgraded legacy caches invalidate their refresh state and classify automatically around the current location or saved objective.
+- A legacy objective that resolves to level 10 is cleared defensively, while a real level-9 objective restores after refresh and all unrelated app data remains untouched.
+- Synchronized the app version to 0.16.7, iOS build 122, and Android version code 122.
+
+
+## v0.16.6
+
+Fixed:
+
+- Slow iOS edge drags now reserve the first 20 points immediately, accept horizontally dominant starts through 36 points after only 3 points of travel, and retain the easier 24-point fast-flick completion threshold.
+- Administrative overlays are now gated to the selected objective city, and a cross-city change remounts MapKit at the preserved camera region so the actual-location city or a retained native polygon cannot remain beside the new city.
+
+Changed:
+
+- Added regression coverage and a combined iPhone protocol for deliberate slow swipes, content scrolling, GPS/objective boundary separation, camera preservation, and repeated Lyon/Villeurbanne switches.
+- Synchronized the app version to 0.16.6, iOS build 121, and Android version code 121.
+
+
+## v0.16.5
+
+Added:
+
+- Added an interactive iOS left-edge swipe-back gesture to Details, History, Completion, Medals, and Options. The complete Atlas page follows the finger over the live map, cancelled drags spring back, and sufficient distance or velocity completes the existing Back action.
+- Added accessibility-escape support and pure activation/completion regression checks for the shared gesture.
+
+Changed:
+
+- A swipe from a recording detail returns to the History list first, while a second swipe returns to the map; History data operations disable both Back paths consistently.
+- Atlas pages now use transparent full-screen modal presentation so the map is revealed during the interactive transition.
+- Added an iPhone manual protocol for edge activation, cancellation, completion, nested History navigation, Reduce Motion, and gesture-conflict checks.
+- Synchronized the app version to 0.16.5, iOS build 120, and Android version code 120.
+
+
+
+## v0.16.4
+
+Fixed:
+
+- Confirmed Villeurbanne's cached OSM relation is a single correct municipal polygon and fixed the actual iOS issue: MapKit retained Lyon's old native polygon after React replaced the city context.
+- Cross-city changes now commit an overlay-free map frame before mounting the newest city and district group, guaranteeing native removal of the previous red perimeter while leaving explored surfaces untouched.
+- Serialized boundary swaps and added latest-generation checks so rapid Lyon/Villeurbanne selections cannot reapply an older context after the teardown.
+
+Changed:
+
+- Added source and iPhone regression coverage for the two-phase MapKit boundary teardown.
+- Synchronized the app version to 0.16.4, iOS build 119, and Android version code 119.
+
+## v0.16.3
+
+Fixed:
+
+- District overlays now render in a single pass, so selecting a new district removes the previous light-orange selection fill while preserving every normal dark-orange district outline.
+- City and district overlays now update as one keyed boundary context, preventing Lyon and Villeurbanne administrative boundaries from remaining visible together after a cross-city selection; explored territory remains global and unchanged.
+
+Changed:
+
+- Map-selection stamps now finish at three times their former size and dynamically center between the measured top HUD and bottom controls, keeping the animation over unobstructed map space with the existing sound, duration, haptic, and Reduce Motion behavior.
+- Added automated and iPhone regression coverage for single-selection district rendering, atomic cross-city overlay replacement, and large safe-area-aware stamps.
+- Synchronized the app version to 0.16.3, iOS build 118, and Android version code 118.
+
+## v0.16.2
+
+Fixed:
+
+- Decoupled the containing city from the selected objective so the whole city is always the only thick red boundary; district outlines remain normal-width dark orange whether or not a district is selected.
+- Added a permanent dark compass halo behind the hand-inked player layers so the icon remains readable over district fills and in its stale-GPS pose.
+
+Changed:
+
+- Rebuilt the Medals/Landmarks collection on the shared Atlas full-screen architecture used by Details, History, and Completion, including the same left back control, icon/title/subtitle header, paper texture, section treatment, and gold-edged cards.
+- Added automated and iPhone regression coverage for city/district layer independence, player contrast, and Medals page consistency.
+- Synchronized the app version to 0.16.2, iOS build 117, and Android version code 117.
+
+## v0.16.1
+
+Fixed:
+
+- Medal landmarks now remain visible until a 0.14 latitude span, twice the previous 0.07 map-distance cutoff, so the complete local collection stays readable at a stronger city zoom-out.
+- Kept route endpoint markers and heavier route/outline reduction at their existing zoom levels.
+- Added automated and physical-device coverage for the independent medal visibility range.
+- Synchronized the app version to 0.16.1, iOS build 116, and Android version code 116.
 
 ## v0.16.0
 

@@ -2,6 +2,7 @@ import { getDatabase } from "./db";
 import { ActivityMode, GpsPoint } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
+import { isOfficialDistrictAdminLevel } from "../services/zoneBoundaryPolicy";
 
 const APP_LANGUAGE_KEY = "app_language";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
@@ -357,6 +358,16 @@ export async function getSavedCompletionObjective() {
     if (!zone) {
       return null;
     }
+    if (
+      zone.type === "district" &&
+      zone.adminLevel !== null &&
+      zone.adminLevel !== undefined &&
+      !isOfficialDistrictAdminLevel(zone.adminLevel)
+    ) {
+      await db.runAsync("DELETE FROM app_settings WHERE key = ?", COMPLETION_OBJECTIVE_KEY);
+      return null;
+    }
+
 
     return {
       mode: parsed.mode as CompletionMode,

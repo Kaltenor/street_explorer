@@ -16,6 +16,8 @@ import {
 } from "../database/completionRepository";
 import { LOOP_FILL_CONFIG } from "./loopFill";
 import {
+  doesDistrictGeometryBelongToCity,
+  isOfficialDistrictAdminLevel,
   buildBoundaryQuery,
   EXACT_ZONE_BOUNDARY_SOURCE
 } from "./zoneBoundaryPolicy";
@@ -111,7 +113,9 @@ export async function fetchNearbyOsmZonesWithDebug(
   return {
     rawElementCount: data.elements?.length ?? 0,
     relationCount: relationElements.length,
-    usableZoneCount: zones.length,
+    usableZoneCount: zones.filter(
+      (zone) => zone.type !== "district" || isOfficialDistrictZone(zone)
+    ).length,
     zones
   };
 }
@@ -218,8 +222,13 @@ export function isBoundaryRefreshStale(
     nowMs - lastSucceededMs >= ZONE_BOUNDARY_STALE_AFTER_MS;
 }
 
+export function isOfficialDistrictZone(zone: CachedZone) {
+  return zone.type === "district" && isOfficialDistrictAdminLevel(zone.adminLevel);
+}
+
 export function isZoneCompletionEligible(zone: CachedZone) {
-  return zone.source === EXACT_ZONE_BOUNDARY_SOURCE;
+  return zone.source === EXACT_ZONE_BOUNDARY_SOURCE &&
+    (zone.type !== "district" || isOfficialDistrictZone(zone));
 }
 
 function assignDistrictParentZones(zones: CachedZone[]) {
@@ -233,9 +242,7 @@ function assignDistrictParentZones(zones: CachedZone[]) {
     }
 
     const parentCity = cities.find((city) =>
-      zone.geometry.some((ring) =>
-        ring.some((point) => isPointInsideZone(point, city))
-      )
+      doesDistrictGeometryBelongToCity(zone, city)
     );
 
     return parentCity
@@ -243,6 +250,7 @@ function assignDistrictParentZones(zones: CachedZone[]) {
       : zone;
   });
 }
+
 
 export function getZoneGeometryFingerprint(zone: CachedZone) {
   const serialized = JSON.stringify({ holes: zone.holes, outer: zone.geometry });
@@ -322,8 +330,9 @@ function mapRelationToZone(
 ): CachedZone | null {
   const scope = getScopeFromAdminLevel(element.tags?.admin_level);
   const name = element.tags?.name ?? `Boundary ${element.id}`;
+  const adminLevel = parseAdminLevel(element.tags?.admin_level);
 
-  if (!scope || !name) {
+  if (!scope || adminLevel === null || !name) {
     return null;
   }
 
@@ -344,6 +353,7 @@ function mapRelationToZone(
       id: `relation/${element.id}`,
       name,
       parentZoneId: null,
+      adminLevel,
       source: "openstreetmap",
       type: scope
     };
@@ -364,6 +374,7 @@ function mapRelationToZone(
     id: `relation/${element.id}`,
     name,
     parentZoneId: null,
+    adminLevel,
     source: "openstreetmap_incomplete_fallback",
     type: scope
   };
@@ -383,6 +394,15 @@ function getScopeFromAdminLevel(adminLevel: string | undefined): CompletionScope
   }
 
   return null;
+}
+
+function parseAdminLevel(adminLevel: string | undefined) {
+  if (!adminLevel) {
+    return null;
+  }
+
+  const parsed = Number(adminLevel);
+  return Number.isInteger(parsed) ? parsed : null;
 }
 
 function getRelationWays(

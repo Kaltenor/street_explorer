@@ -393,7 +393,7 @@ const completionContourCells = new Set(
 assert(
   completionContourCells.size === authoritativeContourCells.size &&
     [...completionContourCells].every((cellId) => authoritativeContourCells.has(cellId)),
-  "completion includes every qualifying enclosed cell rendered as solid light orange"
+  "completion includes every qualifying enclosed cell rendered as solid burnt orange"
 );
 const safeSnapStart = {
   ...gpsPoint(0.0002, 0, 0),
@@ -783,6 +783,7 @@ assert(
 );
 const exactTestZone = {
   fetchedAt: "2025-01-01T00:00:00.000Z",
+  adminLevel: 9,
   geometry: multipleOuterRings.rings,
   holes: [],
   id: "relation/1",
@@ -797,6 +798,10 @@ assert(
       ...exactTestZone,
       source: "openstreetmap_incomplete_fallback"
     }) &&
+    !zoneCompletion.isZoneCompletionEligible({
+      ...exactTestZone,
+      adminLevel: 10
+    }) &&
     zoneCompletion.getZoneGeometryFingerprint(exactTestZone) !==
       zoneCompletion.getZoneGeometryFingerprint({
         ...exactTestZone,
@@ -807,7 +812,7 @@ assert(
           { latitude: 0.2, longitude: 0.2 }
         ]]
       }),
-  "zone V2 separates display fallbacks from award geometry and fingerprints denominator inputs"
+  "zone V2 separates official districts and display fallbacks from award geometry"
 );
 const mapScreenSource = fs.readFileSync(
   require.resolve("../src/screens/MapScreen.tsx"),
@@ -1365,8 +1370,8 @@ assert(
     !mapScreenSource.includes("activeObjectiveCellKey") &&
     mapScreenSource.includes("mergeActiveExplorationCells(") &&
     mapScreenSource.includes("{ persistAchievement: !usesLivePreview }") &&
-    mapScreenSource.includes(
-      "objectiveStatsRequestRef.current += 1;\n            setObjectiveStats(objectiveAfter)"
+    /objectiveStatsRequestRef\.current \+= 1;\r?\n\s+setObjectiveStats\(objectiveAfter\)/.test(
+      mapScreenSource
     ) &&
     zoneCompletionSource.includes("options.persistAchievement !== false"),
   "district objective progress refreshes on new live closures and Stop without recalculating for open-line cells"

@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -21,6 +22,9 @@ import {
 } from "./src/services/backgroundLocationTask";
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    Cinzel: require("./assets/fonts/Cinzel-Variable.ttf")
+  });
   const [databaseReady, setDatabaseReady] = useState(false);
   const [databaseFailed, setDatabaseFailed] = useState(false);
   const [language, setLanguage] = useState<AppLanguage>("en");
@@ -56,7 +60,7 @@ export default function App() {
     await saveAppLanguage(nextLanguage);
   };
 
-  if (!databaseReady) {
+  if (!databaseReady || (!fontsLoaded && !fontError)) {
     return (
       <SafeAreaProvider>
         <SafeAreaView style={styles.loadingScreen}>

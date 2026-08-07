@@ -5,6 +5,11 @@ import {
   classifyGpsUiStatus,
   GPS_UI_THRESHOLDS
 } from "../src/services/gpsStatus.ts";
+import {
+  shouldCaptureAtlasSwipeBackStart,
+  shouldCompleteAtlasSwipeBack,
+  shouldStartAtlasSwipeBack
+} from "../src/services/atlasSwipeBack.ts";
 
 const NOW = Date.parse("2026-08-02T12:00:00.000Z");
 
@@ -25,22 +30,69 @@ assert.equal(status().state, "good");
 assert.equal(status({ accuracyMeters: GPS_UI_THRESHOLDS.goodAccuracyMeters + 1 }).state, "weak-stale");
 assert.equal(status({ fixTimestamp: "2026-08-02T11:59:40.000Z" }).reason, "stale-fix");
 assert.equal(status({ permissionState: "denied" }).state, "denied");
+assert.equal(
+  shouldCaptureAtlasSwipeBackStart({ enabled: true, startX: 12 }),
+  true
+);
+assert.equal(
+  shouldCaptureAtlasSwipeBackStart({ enabled: true, startX: 21 }),
+  false
+);
+assert.equal(
+  shouldCaptureAtlasSwipeBackStart({ enabled: false, startX: 12 }),
+  false
+);
 assert.equal(status({ fixTimestamp: null }).state, "unavailable");
 assert.equal(
   status({ fixTimestamp: null, locationResolved: false }).state,
   "acquiring"
 );
 
+assert.equal(
+  shouldStartAtlasSwipeBack({ deltaX: 10, deltaY: 2, enabled: true, startX: 20 }),
+  true
+);
+assert.equal(
+  shouldStartAtlasSwipeBack({ deltaX: 3, deltaY: 1, enabled: true, startX: 34 }),
+  true
+);
+assert.equal(
+  shouldStartAtlasSwipeBack({ deltaX: 10, deltaY: 2, enabled: true, startX: 37 }),
+  false
+);
+assert.equal(
+  shouldStartAtlasSwipeBack({ deltaX: 10, deltaY: 12, enabled: true, startX: 20 }),
+  false
+);
+assert.equal(
+  shouldCompleteAtlasSwipeBack({ deltaX: 130, screenWidth: 390, velocityX: 0.2 }),
+  true
+);
+assert.equal(
+  shouldCompleteAtlasSwipeBack({ deltaX: 30, screenWidth: 390, velocityX: 0.7 }),
+  true
+);
+assert.equal(
+  shouldCompleteAtlasSwipeBack({ deltaX: 80, screenWidth: 390, velocityX: 0.2 }),
+  false
+);
+
 const mapSource = readFileSync(new URL("../src/components/ExplorationMap.tsx", import.meta.url), "utf8");
+const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
 const atlasSource = readFileSync(new URL("../src/components/AtlasCabinet.tsx", import.meta.url), "utf8");
 const completionSource = readFileSync(new URL("../src/components/CompletionModal.tsx", import.meta.url), "utf8");
 const historySource = readFileSync(new URL("../src/components/WalkHistoryModal.tsx", import.meta.url), "utf8");
 const summarySource = readFileSync(new URL("../src/screens/MapScreen.tsx", import.meta.url), "utf8");
+const medalCollectionSource = readFileSync(new URL("../src/components/MedalCollectionModal.tsx", import.meta.url), "utf8");
 const themeSource = readFileSync(new URL("../src/constants/theme.ts", import.meta.url), "utf8");
+const hudDecorSource = readFileSync(new URL("../src/components/AtlasHudDecor.tsx", import.meta.url), "utf8");
+const walkControlsSource = readFileSync(new URL("../src/components/WalkControls.tsx", import.meta.url), "utf8");
 
 assert.ok(existsSync(new URL("../assets/ui/atlas-paper-texture.png", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/sounds/atlas-page.wav", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/sounds/atlas-stamp.wav", import.meta.url)));
+assert.ok(existsSync(new URL("../assets/fonts/Cinzel-Variable.ttf", import.meta.url)));
+assert.ok(existsSync(new URL("../assets/fonts/OFL-Cinzel.txt", import.meta.url)));
 
 assert.match(mapSource, /WALKING_COLORS\.activeRoute/);
 assert.match(mapSource, /WALKING_COLORS\.selectedRoute/);
@@ -52,31 +104,127 @@ assert.match(mapSource, /showsUserLocation=\{false\}/);
 assert.match(mapSource, /AtlasRouteMarker/);
 assert.match(mapSource, /AtlasMedalMarker/);
 assert.doesNotMatch(mapSource, /pinColor=/);
-assert.match(themeSource, /exploredArea: "rgba\(251, 146, 60, 0\.46\)"/);
-assert.match(themeSource, /cityBoundary: "#dc2626"/);
-assert.match(themeSource, /districtBoundary: "#b45309"/);
-assert.match(mapSource, /selectedZone\.type === "city"/);
-assert.match(mapSource, /strokeColor="rgba\(180, 83, 9, 0\.72\)"/);
-assert.match(mapSource, /strokeWidth=\{2\}/);
-assert.match(mapSource, /strokeWidth=\{6\}/);
+assert.match(themeSource, /exploredArea: "rgba\(229, 122, 50, 0\.46\)"/);
+assert.match(themeSource, /ATLAS_DISPLAY_FONT = "Cinzel"/);
+assert.match(themeSource, /cityBoundary: "#8d5268"/);
+assert.match(themeSource, /cityBoundaryMuted: "rgba\(141, 82, 104, 0\.7\)"/);
+assert.match(themeSource, /districtBoundary: "#c28a45"/);
+assert.match(themeSource, /districtBoundaryMuted: "rgba\(194, 138, 69, 0\.64\)"/);
+assert.match(mapSource, /cityZone\.geometry/);
+assert.match(themeSource, /selectedZoneFill: "rgba\(242, 217, 166, 0\.12\)"/);
+assert.match(mapSource, /city-boundary-/);
+assert.match(mapSource, /WALKING_COLORS\.cityBoundaryMuted/);
+assert.match(mapSource, /selectedZone\?\.type === "district"/);
+assert.match(mapSource, /WALKING_COLORS\.districtBoundaryMuted/);
+assert.equal([...mapSource.matchAll(/WALKING_COLORS\.selectedZoneFill/g)].length, 2);
+assert.equal([...mapSource.matchAll(/rgba\(229, 122, 50, 0\.(?:54|48|42|36)\)/g)].length, 4);
+assert.match(summarySource, /mapBoundaryContext/);
+assert.match(summarySource, /setMapBoundaryContext/);
+assert.doesNotMatch(summarySource, /cityBoundaryZone|setDistrictZones/);
+assert.match(mapSource, /districtZones\.flatMap/);
+assert.match(mapSource, /const isSelectedDistrict/);
+assert.match(mapSource, /administrative-boundaries-/);
+assert.doesNotMatch(mapSource, /unselectedDistrictZones|selectedZone\.geometry\.map/);
+assert.ok(summarySource.includes("const visibleMapBoundaryContext = useMemo"));
+assert.ok(mapSource.includes('key={`native-map-city-${cityZone?.id ?? "none"}`}'));
+assert.match(mapSource, /initialRegion={visibleRegion}/);
+assert.ok(summarySource.includes("objectiveMatchesCity"));
+assert.ok(summarySource.includes("doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city)"));
+assert.ok(summarySource.includes("cityZone={visibleMapBoundaryContext.city}"));
+assert.ok(summarySource.includes("districtZones={visibleMapBoundaryContext.districts}"));
+assert.match(mapSource, /styles\.playerCompassHalo/);
+assert.match(mapSource, /strokeWidth=\{isSelectedDistrict \? 3 : 1\.5\}/);
+assert.match(mapSource, /\? 4 : 3/);
+assert.match(mapSource, /MEDAL_MARKER_MAX_LATITUDE_DELTA = 0\.14/);
+assert.match(
+  mapSource,
+  /visibleRegion\.latitudeDelta <= MEDAL_MARKER_MAX_LATITUDE_DELTA/
+);
 assert.match(historySource, /technicalVisible/);
+assert.match(appSource, /useFonts/);
+assert.match(appSource, /Cinzel-Variable\.ttf/);
+assert.match(atlasSource, /fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(mapSource, /onTouchStart=\{onMapInteraction\}/);
+assert.match(summarySource, /wordmarkCollapseProgress/);
+assert.match(summarySource, /styles\.expandedBottomTab/);
+assert.match(summarySource, /<AtlasDialogDivider \/>/);
+assert.match(summarySource, /imageStyle=\{styles\.dialogPaperTexture\}/);
+assert.match(summarySource, /borderColor: APP_COLORS\.border/);
 assert.match(summarySource, /summaryQualityPanel/);
+assert.equal((summarySource.match(/<AtlasHudTexture/g) ?? []).length, 5);
+assert.equal((summarySource.match(/<AtlasHudDivider/g) ?? []).length, 2);
+assert.match(summarySource, /activeBottomTab:[\s\S]*rgba\(245, 196, 81, 0\.13\)/);
+assert.match(summarySource, /bottomTabLabel:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(summarySource, /cityMedalName:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(summarySource, /objectiveName:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(summarySource, /hitSlop=\{6\}/);
+assert.match(summarySource, /mapZoneSelectionOption:[\s\S]*minHeight: 44/);
+assert.match(hudDecorSource, /atlas-paper-texture\.png/);
+assert.match(hudDecorSource, /export function AtlasHudDivider/);
+assert.match(hudDecorSource, /transform: \[\{ rotate: "45deg" \}\]/);
+assert.match(walkControlsSource, /<AtlasHudTexture opacity=\{0\.1\} \/>/);
+assert.match(walkControlsSource, /FIELD LOG/);
+assert.match(walkControlsSource, /fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(walkControlsSource, /style=\{styles\.gpsState\}/);
+assert.match(walkControlsSource, /borderColor: APP_COLORS\.border/);
+assert.doesNotMatch(walkControlsSource, /borderColor: color/);
+assert.match(walkControlsSource, /minHeight: 44/);
 
 assert.match(atlasSource, /isReduceMotionEnabled/);
 assert.match(atlasSource, /atlas-paper-texture\.png/);
 assert.match(atlasSource, /atlas-page\.wav/);
 assert.match(atlasSource, /atlas-stamp\.wav/);
+assert.match(atlasSource, /atlas-cartographer-stamp\.png/);
+assert.match(atlasSource, /styles\.stampArtwork/);
+assert.match(atlasSource, /styles\.stampCopy/);
 assert.match(atlasSource, /duration: 240/);
-assert.match(completionSource, /<AtlasScreen visible=\{visible\}>/);
-assert.match(historySource, /<AtlasScreen visible=\{visible\}>/);
+assert.match(atlasSource, /PanResponder\.create/);
+assert.match(atlasSource, /onMoveShouldSetPanResponderCapture/);
+assert.match(atlasSource, /Platform\.OS === "ios"/);
+assert.match(atlasSource, /onStartShouldSetPanResponderCapture/);
+assert.match(atlasSource, /translateX: swipeTranslateX/);
+assert.match(atlasSource, /onAccessibilityEscape/);
+assert.match(completionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
+assert.match(historySource, /onSwipeBack=\{detailWalk \? \(\) => setDetailSessionId\(null\) : onClose\}/);
+assert.match(historySource, /swipeBackDisabled=\{dataOperation !== null\}/);
+assert.match(medalCollectionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
+assert.equal((summarySource.match(/<AtlasScreen onSwipeBack=\{onClose\}/g) ?? []).length, 2);
+for (const modalSource of [completionSource, historySource, medalCollectionSource, summarySource]) {
+  assert.match(modalSource, /presentationStyle="overFullScreen"/);
+  assert.match(modalSource, /transparent/);
+}
+assert.match(medalCollectionSource, /<AtlasModalHeader/);
+assert.match(medalCollectionSource, /emblem="ribbon-outline"/);
+assert.match(medalCollectionSource, /animationType="none"/);
+assert.match(medalCollectionSource, /<AtlasSectionLabel/);
+assert.doesNotMatch(medalCollectionSource, /SafeAreaView/);
+assert.doesNotMatch(medalCollectionSource, /styles\.closeButton/);
 assert.match(summarySource, /N\\u00c9CESSAIRE DU CARTOGRAPHE/);
 assert.match(summarySource, /CARNET DE L'EXPLORATEUR/);
 assert.match(summarySource, /<AtlasStamp/);
+assert.match(summarySource, /presentation: "map-selection"/);
+assert.match(summarySource, /mapContentInsets=\{mapStampInsets\}/);
+assert.match(summarySource, /onLayout=\{handleMapTopPanelLayout\}/);
+assert.match(summarySource, /onLayout=\{handleMapBottomPanelLayout\}/);
+assert.match(atlasSource, /height: 106/);
+assert.match(atlasSource, /Animated\.sequence/);
+assert.match(atlasSource, /toValue: 0\.76/);
+assert.match(atlasSource, /\? \[4\.8, 2\.72, 3\]/);
+assert.match(atlasSource, /stampTextFace/);
+assert.match(atlasSource, /textShadowColor: "rgba\(255, 255, 255, 0\.92\)"/);
+assert.match(atlasSource, /fontSize: 7\.5/);
+assert.match(atlasSource, /fontSize: 7,/);
+assert.match(atlasSource, /if \(!message \|\| !artworkReady\) return/);
+assert.match(atlasSource, /onLoad=\{\(\) => setLoadedArtworkMessageId\(message\.id\)\}/);
+assert.match(atlasSource, /opacity: artworkReady/);
 assert.match(mapSource, /setIsInkRevealing/);
 assert.match(mapSource, /highlightedRouteDrawProgress/);
 assert.match(mapSource, /drawProgress=\{isHighlighted/);
 console.log("PASS GPS UI classifies acquiring, good, weak/stale, denied, and unavailable states");
+console.log("PASS iOS Atlas edge-swipe activation, completion, cancellation, and modal wiring");
 console.log("PASS map paths use the shared semantic walking palette");
 console.log("PASS iOS map uses the Midnight Cartographer basemap, territory, and marker treatment");
 console.log("PASS route details and recording summaries use summary-first quality cards");
-console.log("PASS Atlas Cabinet menus, assets, Reduce Motion, stamps, and ink effects are wired");
+console.log("PASS visual hierarchy uses collapsing branding, display type, quiet borders, and branded dialogs");
+console.log("PASS Details, History, Completion, Options, and Medals share the Atlas Cabinet architecture");
+console.log("PASS floating map HUD uses Atlas typography, paper texture, engraved selections, and restrained status color");
