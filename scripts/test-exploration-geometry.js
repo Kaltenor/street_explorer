@@ -1419,6 +1419,9 @@ assert(
     mapScreenSource.includes("targetSessionId: sessionId") &&
     mapScreenSource.includes("await rebuildStreetCompletionV2({") &&
     mapScreenSource.includes("targetBridgeCount") &&
+    mapScreenSource.includes("targetSessionId !== null && walk.id === targetSessionId") &&
+    mapScreenSource.includes("Unable to rebuild the selected recording") &&
+    !mapScreenSource.includes("existing cache used") &&
     walkHistorySource.includes("onReprocessWalk(walk.id)") &&
     walkHistorySource.includes("strings.history.reprocessWalk") &&
     walkHistorySource.includes("accessibilityState={{ busy: isReprocessing") &&
@@ -1643,27 +1646,34 @@ async function verifyOverpassFailover() {
   const originalFetch = global.fetch;
 
   try {
-    const retryCalls = [];
-    global.fetch = async (endpoint) => {
-      retryCalls.push(String(endpoint));
+    let retryableFailuresHandled = true;
 
-      if (retryCalls.length === 1) {
-        return { ok: false, status: 504 };
-      }
+    for (const retryableStatus of [504, 501]) {
+      const retryCalls = [];
+      global.fetch = async (endpoint) => {
+        retryCalls.push(String(endpoint));
 
-      return {
-        json: async () => ({ elements: [] }),
-        ok: true,
-        status: 200
+        if (retryCalls.length === 1) {
+          return { ok: false, status: retryableStatus };
+        }
+
+        return {
+          json: async () => ({ elements: [] }),
+          ok: true,
+          status: 200
+        };
       };
-    };
 
-    await osmStreetService.fetchOverpassQuery("[out:json];out;");
-    assert(
-      retryCalls.length === 2 &&
+      await osmStreetService.fetchOverpassQuery("[out:json];out;");
+      retryableFailuresHandled = retryableFailuresHandled &&
+        retryCalls.length === 2 &&
         retryCalls[0].includes("overpass-api.de") &&
-        retryCalls[1].includes("overpass.private.coffee"),
-      "a retryable Overpass 504 immediately falls back to the second public endpoint"
+        retryCalls[1].includes("overpass.private.coffee");
+    }
+
+    assert(
+      retryableFailuresHandled,
+      "retryable Overpass 504 and other 5xx responses fall back to the second public endpoint"
     );
 
     let nonRetryableError = null;

@@ -153,7 +153,6 @@ export async function repairStreetCoverageForRecordings(
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown street coverage error";
 
-
     return {
       corridorCount: corridors.length,
       error: message,

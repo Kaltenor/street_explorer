@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.16.22
+
+Fixed:
+
+- Made the documented Overpass failover policy cover every HTTP 5xx response, not only 500/502/503/504, while retaining bounded fallback for 408/425/429 and immediate rejection of non-retryable client errors.
+- Made an individual walk calculation failure abort with the existing-route-preserved error instead of being counted like a tolerable full-history failure and potentially presenting a false success result.
+
+Changed:
+
+- Removed the unreachable manual-reprocess `failed repair; existing cache used` summary state, narrowed the successful repair result type, cleaned the street-repair failure path, expanded regressions, and synchronized version 0.16.22 with iOS build 137 and Android version code 137.
+
 ## v0.16.21
 
 Fixed:

@@ -328,9 +328,8 @@ type ReprocessSummary = LoopProcessingResult & {
   targetHiddenGapCount: number;
   targetInferredCellCount: number;
   targetSessionId: number | null;
-  streetCoverageError: string | null;
   streetCoverageSegmentCount: number;
-  streetCoverageStatus: "failed" | "not_needed" | "refreshed";
+  streetCoverageStatus: "not_needed" | "refreshed";
   preservedPreviousProgress: boolean;
   previousCellCount: number;
   recordingCount: number;
@@ -2676,11 +2675,12 @@ export function MapScreen({
         phase: "preparing",
         total: reportingRecordingCount
       });
-      let streetCoverageRepair = {
-        corridorCount: 0,
-        error: null as string | null,
+      let streetCoverageRepair: {
+        segmentCount: number;
+        status: "not_needed" | "refreshed";
+      } = {
         segmentCount: 0,
-        status: "not_needed" as "failed" | "not_needed" | "refreshed"
+        status: "not_needed"
       };
 
       if (options.rebuildRouteSnapshots) {
@@ -2689,16 +2689,20 @@ export function MapScreen({
           phase: "streets",
           total: 1
         });
-        streetCoverageRepair = await repairStreetCoverageForRecordings(
+        const repairResult = await repairStreetCoverageForRecordings(
           targetWalk ? [targetWalk] : savedWalks
         );
 
-        if (streetCoverageRepair.status === "failed") {
+        if (repairResult.status === "failed") {
           throw new Error(
-            `Street coverage repair failed: ${streetCoverageRepair.error ?? "unknown error"}. ` +
+            `Street coverage repair failed: ${repairResult.error ?? "unknown error"}. ` +
               "Existing routes and progress were left unchanged. OpenStreetMap may be busy; wait a moment and retry, then check your connection if it continues."
           );
         }
+        streetCoverageRepair = {
+          segmentCount: repairResult.segmentCount,
+          status: repairResult.status
+        };
         options.onProgress?.({
           completed: 1,
           phase: "streets",
@@ -2762,6 +2766,13 @@ export function MapScreen({
               );
           replaceSnapshot = shouldRebuildSnapshot;
         } catch (error) {
+          if (targetSessionId !== null && walk.id === targetSessionId) {
+            const detail = error instanceof Error ? ` ${error.message}` : "";
+            throw new Error(
+              `Unable to rebuild the selected recording. Its existing route and progress were left unchanged.${detail}`
+            );
+          }
+
           failedRecordingCount += 1;
           console.warn("Unable to rebuild recording; preserving its frozen route", walk.id, error);
           routeSegments = walk.routeSegments ?? [];
@@ -2886,7 +2897,6 @@ export function MapScreen({
         targetHiddenGapCount,
         targetInferredCellCount: rebuiltTarget?.inferred.length ?? 0,
         targetSessionId,
-        streetCoverageError: streetCoverageRepair.error,
         streetCoverageSegmentCount: streetCoverageRepair.segmentCount,
         streetCoverageStatus: streetCoverageRepair.status,
         preservedPreviousProgress,
@@ -3287,9 +3297,7 @@ export function MapScreen({
                   }\nStreet coverage: ${
                     summary.streetCoverageStatus === "refreshed"
                       ? `${summary.streetCoverageSegmentCount} cached road segments refreshed`
-                      : summary.streetCoverageStatus === "failed"
-                        ? `repair failed (${summary.streetCoverageError ?? "unknown error"}); existing cache used`
-                        : "not needed"
+                      : "not needed"
                   }\nStreet completion: ${formatDistance(streetCompletion.exploredDistanceMeters)} / ${formatDistance(streetCompletion.totalDistanceMeters)} (${streetCompletion.completionPercent}%), ${streetCompletion.completedStreetCount} streets complete\nRecordings preserved after an individual failure: ${
                     summary.failedRecordingCount
                   }\nPrevious / rebuilt total: ${summary.previousCellCount} / ${

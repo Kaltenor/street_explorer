@@ -40,7 +40,7 @@
 - Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.
-- Consolidated full-history and selected-recording street-corridor repair, per-recording graph reuse, atomic exploration replacement, frozen-route aggregate reconciliation, and calculation recovery.
+- Consolidated full-history and selected-recording street-corridor repair, per-recording graph reuse, atomic exploration replacement, frozen-route aggregate reconciliation, full-history calculation isolation, and explicit selected-walk failure reporting.
 - Preloaded launch screen with an explicit, discreet ready-state entry control.
 - Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player annotation with native MapKit anchoring and game-owned location presentation, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
 - Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V5 preservation, and allowlisted OpenStreetMap review tooling.

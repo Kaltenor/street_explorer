@@ -38,7 +38,7 @@ npx expo install --check
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 `test:zones` additionally verifies persisted admin levels, level-9 district eligibility, strict interior parent sampling for shared-edge and detached-component relations, level-10 neighborhood retention/exclusion, automatic legacy-objective classification, hidden historical rollups, refresh invalidation, direct same-city district switching, and cross-city scope-choice decisions.
 
-`test:geometry` verifies Path Inference V3 ground-level geometric joins, rejects bridge/ground crossings, bounds compatible endpoint joins to 8m at medium confidence, and checks persisted topology/evidence wiring. Its GPX-derived Cours Lafayette case verifies a valid underpass outage survives parallel `foot=use_sidepath` geometry and GPS snap correction without relaxing genuinely impossible-speed rejection. It also checks encoded identifiable Overpass requests, primary-504 failover to the independent public instance, immediate stop for non-retryable errors, selected-walk reprocessing with shared-total reconciliation, active-recording blocking, one-action saved-route focus, and overlap-based Today path queries.
+`test:geometry` verifies Path Inference V3 ground-level geometric joins, rejects bridge/ground crossings, bounds compatible endpoint joins to 8m at medium confidence, and checks persisted topology/evidence wiring. Its GPX-derived Cours Lafayette case verifies a valid underpass outage survives parallel `foot=use_sidepath` geometry and GPS snap correction without relaxing genuinely impossible-speed rejection. It also checks encoded identifiable Overpass requests, primary-504 and representative-other-5xx failover to the independent public instance, immediate stop for non-retryable errors, selected-walk reprocessing with shared-total reconciliation and explicit selected-calculation failure, active-recording blocking, one-action saved-route focus, and overlap-based Today path queries.
 
 `test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, non-starving coalesced and memoized map surfaces, geometry-changing native polygon identities, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, and render instrumentation.
 
@@ -49,6 +49,16 @@ npx expo install --check
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
 
+## Reprocess Reliability Cleanup V0.16.22 iPhone Manual Test
+
+Prerequisites: run the 0.16.22 development build on an iPhone with no active recording and one saved walk containing a suspicious gap. Keep network access available for the normal path; a development fault injection is optional for the calculation-failure path.
+
+1. Reprocess the saved walk normally. Expected: retryable Overpass responses, including any HTTP 5xx response, may use the fallback; success appears only after the selected route has actually been calculated and shared totals reconciled.
+2. If using a development fault injection, make the selected route calculation throw after topology refresh and retry. Expected: **Reprocess failed** states that the existing route and progress were left unchanged; no **Walk reprocessed** success alert appears.
+3. Run full-history **Reprocess recordings** with one deliberately invalid recording fixture. Expected: that recording retains its frozen route, the remaining recordings continue, and the completion summary reports the preserved failure count without claiming a cache fallback.
+4. Reopen History and focus the affected recording. Expected: after either failure case, its prior route, bridge evidence, explored cells, and completion contribution remain available.
+
+Automated coverage verifies 504 and representative 501 failover, non-retryable 400 behavior, selected-walk failure escalation, and removal of the unreachable cache-fallback success wording. Physical-device verification remains required for native progress and alert sequencing.
 ## Reprocess Failure Presentation V0.16.21 iPhone Manual Test
 
 Prerequisites: run the 0.16.21 development build on an iPhone with no active recording, keep one saved walk available, and temporarily disable networking after opening its History detail.

@@ -5,7 +5,7 @@ const OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.private.coffee/api/interpreter"
 ] as const;
-const RETRYABLE_OVERPASS_STATUSES = new Set([408, 425, 429, 500, 502, 503, 504]);
+const RETRYABLE_OVERPASS_CLIENT_STATUSES = new Set([408, 425, 429]);
 const DEFAULT_FETCH_RADIUS_METERS = 650;
 const MAX_SEGMENT_LENGTH_METERS = 35;
 const OVERPASS_TIMEOUT_MS = 35_000;
@@ -83,8 +83,7 @@ export async function fetchOsmStreetSegmentsForCorridors(
 class OverpassRequestError extends Error {
   constructor(
     message: string,
-    readonly retryable: boolean,
-    readonly status: number | null = null
+    readonly retryable: boolean
   ) {
     super(message);
     this.name = "OverpassRequestError";
@@ -153,8 +152,7 @@ async function fetchOverpassEndpoint(query: string, endpoint: string) {
   if (!response.ok) {
     throw new OverpassRequestError(
       `HTTP ${response.status}`,
-      RETRYABLE_OVERPASS_STATUSES.has(response.status),
-      response.status
+      isRetryableOverpassStatus(response.status)
     );
   }
 
@@ -163,6 +161,10 @@ async function fetchOverpassEndpoint(query: string, endpoint: string) {
   } catch {
     throw new OverpassRequestError("invalid JSON response", true);
   }
+}
+
+function isRetryableOverpassStatus(status: number) {
+  return RETRYABLE_OVERPASS_CLIENT_STATUSES.has(status) || (status >= 500 && status <= 599);
 }
 
 function getOverpassEndpointLabel(endpoint: string) {
