@@ -2,6 +2,9 @@
 
 ## Completed
 
+- Persistent Atlas footer navigation across all main and secondary pages, direct tab switching, highlighted-tab return to map, animated dock return, and localized hold-to-preview labels on the map.
+- Explorer Score with one point per unique walked tile, one enclosure bonus per enclosed tile, automatic retroactive calculation, live updates, Details placement, a combined idle Field Log score/today-steps row, point-bearing enclosure stamps, and a 55-item offline international mapped-surface ladder.
+- Real book-page audio at a restrained 50% player volume for both directions of Atlas icon-bar navigation, preloaded offline, audible in iPhone Silent mode, and mixed over music or podcasts.
 - Expo React Native TypeScript app scaffold.
 - Local SQLite persistence.
 - Walking-focused exploration.

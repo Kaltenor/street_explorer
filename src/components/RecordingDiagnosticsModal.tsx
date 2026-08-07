@@ -7,6 +7,7 @@ import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { RecordingDiagnosticsPanel } from "./RecordingDiagnosticsPanel";
 import { RecordingQuality } from "../services/recordingQuality";
 import { ActiveWalk, GpsPoint } from "../types/walk";
+import { AtlasScreen } from "./AtlasCabinet";
 
 type RecordingDiagnosticsModalProps = {
   activeWalk: ActiveWalk | null;
@@ -28,7 +29,14 @@ export function RecordingDiagnosticsModal({
   visible
 }: RecordingDiagnosticsModalProps) {
   return (
-    <Modal animationType="slide" onRequestClose={onClose} visible={visible}>
+    <Modal
+      animationType="none"
+      onRequestClose={onClose}
+      presentationStyle="overFullScreen"
+      transparent
+      visible={visible}
+    >
+      <AtlasScreen onSwipeBack={onClose} visible={visible}>
       <View style={styles.screen}>
         <View style={styles.header}>
           <View>
@@ -57,6 +65,7 @@ export function RecordingDiagnosticsModal({
           </View>
         </ScrollView>
       </View>
+      </AtlasScreen>
     </Modal>
   );
 }

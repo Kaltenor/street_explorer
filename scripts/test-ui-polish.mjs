@@ -10,6 +10,7 @@ import {
   shouldCompleteAtlasSwipeBack,
   shouldStartAtlasSwipeBack
 } from "../src/services/atlasSwipeBack.ts";
+import { AREA_COMPARISONS } from "../src/data/areaComparisons.ts";
 
 const NOW = Date.parse("2026-08-02T12:00:00.000Z");
 
@@ -90,7 +91,10 @@ const appearanceSource = readFileSync(new URL("../src/constants/appearance.ts", 
 const settingsSource = readFileSync(new URL("../src/database/settingsRepository.ts", import.meta.url), "utf8");
 const hudDecorSource = readFileSync(new URL("../src/components/AtlasHudDecor.tsx", import.meta.url), "utf8");
 const walkControlsSource = readFileSync(new URL("../src/components/WalkControls.tsx", import.meta.url), "utf8");
+const explorerScorePanelSource = readFileSync(new URL("../src/components/ExplorerScorePanel.tsx", import.meta.url), "utf8");
+const diagnosticsModalSource = readFileSync(new URL("../src/components/RecordingDiagnosticsModal.tsx", import.meta.url), "utf8");
 const routeSnapshotSource = readFileSync(new URL("../src/services/routeSnapshot.ts", import.meta.url), "utf8");
+const soundAssetReadme = readFileSync(new URL("../assets/sounds/README.md", import.meta.url), "utf8");
 
 assert.ok(existsSync(new URL("../assets/ui/atlas-paper-texture.png", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/sounds/atlas-page.wav", import.meta.url)));
@@ -99,6 +103,25 @@ assert.ok(existsSync(new URL("../assets/sounds/atlas-stamp.wav", import.meta.url
 assert.ok(existsSync(new URL("../assets/sounds/README.md", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/fonts/Cinzel-Variable.ttf", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/fonts/OFL-Cinzel.txt", import.meta.url)));
+assert.ok(AREA_COMPARISONS.length >= 50);
+assert.ok(AREA_COMPARISONS.every((entry, index) =>
+  entry.areaSquareMeters > 0 &&
+  entry.labels.en.length > 0 &&
+  entry.labels.fr.length > 0 &&
+  entry.sourceUrl.startsWith("https://") &&
+  (index === 0 || entry.areaSquareMeters >= AREA_COMPARISONS[index - 1].areaSquareMeters)
+));
+assert.match(explorerScorePanelSource, /EXPLORER POINTS/);
+assert.match(explorerScorePanelSource, /nextProgress/);
+assert.match(walkControlsSource, /explorerScore/);
+assert.match(walkControlsSource, /todayStepCount/);
+assert.match(walkControlsSource, /width: "60%"/);
+assert.ok(
+  walkControlsSource.indexOf("styles.stopButton : styles.startButton") <
+    walkControlsSource.indexOf("<GpsStateBadge")
+);
+assert.match(atlasSource, /pointsAwarded/);
+assert.match(summarySource, /calculateExplorerScore/);
 
 assert.match(mapSource, /WALKING_COLORS\.activeRoute/);
 assert.match(mapSource, /WALKING_COLORS\.selectedRoute/);
@@ -171,26 +194,44 @@ assert.doesNotMatch(summarySource, /styles\.mapHudRow/);
 assert.match(summarySource, /function CityMedalProgress[\s\S]*<ObjectiveToggleButton[\s\S]*function ObjectiveToggleButton/);
 assert.match(summarySource, /style=\{styles\.cityMedalMain\}/);
 assert.match(summarySource, /style=\{styles\.cityMedalActionDivider\}/);
-assert.equal((summarySource.match(/marginHorizontal: -7/g) ?? []).length, 3);
+assert.equal((summarySource.match(/marginHorizontal: -7/g) ?? []).length, 2);
 assert.match(summarySource, /cityMedalHud: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
 assert.match(summarySource, /objectiveHud: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
-assert.match(summarySource, /bottomTabs: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
-assert.match(summarySource, /styles\.expandedBottomTab/);
-assert.match(summarySource, /onPress=\{handleOpenExpeditions\}/);
-assert.match(summarySource, /expeditionsVisible \? styles\.activeBottomTab/);
-assert.match(summarySource, /name="compass-outline"/);
+assert.match(summarySource, /cityMedalHud: \{[\s\S]*minHeight: 46/);
+assert.match(atlasSource, /navigationDockItem: \{[\s\S]*height: 38,[\s\S]*minWidth: 38/);
+assert.match(atlasSource, /navigationDock: \{[\s\S]*gap: 1,[\s\S]*minHeight: 44,[\s\S]*paddingVertical: 3/);
+assert.match(atlasSource, /navigationDockFrame: \{[\s\S]*bottom: 2,[\s\S]*top: 2/);
+assert.match(atlasSource, /ATLAS_DOCK_HIT_SLOP/);
+assert.match(atlasSource, /AtlasNavigationProvider/);
+assert.match(atlasSource, /beginPreview/);
+assert.match(atlasSource, /finishPreview/);
+assert.match(atlasSource, /previewDismissTimerRef/);
+assert.match(atlasSource, /delayLongPress=\{320\}/);
+assert.match(atlasSource, /\}, 650\)/);
+assert.match(atlasSource, /duration: 220/);
+assert.match(atlasSource, /ATLAS_PAGE_DOCK_HEIGHT/);
+assert.match(atlasSource, /paddingBottom: ATLAS_PAGE_DOCK_HEIGHT/);
+assert.match(atlasSource, /disabled=\{swipeBackDisabled\}/);
+assert.match(summarySource, /<AtlasNavigationDock/);
+assert.match(summarySource, /navigateAtlasPage/);
+assert.match(summarySource, /mapDockReturnProgress/);
+assert.match(
+  summarySource,
+  /if \(activeAtlasPage === page\) \{\s*handleReturnToMapFromAtlas\(\)/
+);
+assert.match(diagnosticsModalSource, /<AtlasScreen/);
 assert.match(summarySource, /<AtlasDialogDivider \/>/);
 assert.match(summarySource, /imageStyle=\{styles\.dialogPaperTexture\}/);
 assert.match(summarySource, /borderColor: APP_COLORS\.border/);
 assert.match(summarySource, /summaryQualityPanel/);
-assert.equal((summarySource.match(/<AtlasHudTexture/g) ?? []).length, 4);
+assert.equal((summarySource.match(/<AtlasHudTexture/g) ?? []).length, 3);
 assert.doesNotMatch(summarySource, /<AtlasHudTexture opacity=\{0\.05\} \/>/);
 assert.doesNotMatch(summarySource, /console\.error\((?:"Reprocess recordings failed"|`Reprocess recording)/);
 assert.equal((summarySource.match(/console\.warn\((?:"Reprocess recordings failed"|`Reprocess recording)/g) ?? []).length, 2);
 assert.doesNotMatch(routeSnapshotSource, /continuing from cache/);
 assert.equal((summarySource.match(/<AtlasHudDivider/g) ?? []).length, 2);
-assert.match(summarySource, /activeBottomTab:[\s\S]*rgba\(245, 196, 81, 0\.13\)/);
-assert.match(summarySource, /bottomTabLabel:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
+assert.match(atlasSource, /navigationDockItemActive:[\s\S]*rgba\(245, 196, 81, 0\.13\)/);
+assert.match(atlasSource, /navigationDockLabel:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
 assert.match(summarySource, /cityMedalName:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
 assert.match(summarySource, /objectiveName:[\s\S]*fontFamily: ATLAS_DISPLAY_FONT/);
 assert.match(summarySource, /hitSlop=\{6\}/);
@@ -210,10 +251,13 @@ assert.match(walkControlsSource, /container: \{[\s\S]*borderRadius: 10,[\s\S]*ma
 assert.match(atlasSource, /isReduceMotionEnabled/);
 assert.match(atlasSource, /atlas-paper-texture\.png/);
 assert.match(atlasSource, /atlas-page\.wav/);
+assert.match(soundAssetReadme, /turned-page-s0164\.html/);
 assert.match(atlasSource, /atlas-reward-jingle\.wav/);
 assert.match(atlasSource, /atlas-stamp\.wav/);
 assert.match(atlasSource, /ATLAS_SOUND_PLAYERS/);
 assert.match(atlasSource, /ATLAS_REWARD_JINGLE_DELAY_MS = 90/);
+assert.match(atlasSource, /ATLAS_PAGE_SOUND_VOLUME = 0\.5/);
+assert.match(atlasSource, /ATLAS_SOUND_PLAYERS\.page\.volume = ATLAS_PAGE_SOUND_VOLUME/);
 assert.match(atlasSource, /playPreloadedAtlasSound\("ink"\)/);
 assert.match(
   atlasSource,
@@ -221,6 +265,7 @@ assert.match(
 );
 assert.doesNotMatch(atlasSource, /import\("expo-audio"\)/);
 assert.match(appSource, /interruptionMode: "mixWithOthers"/);
+assert.match(appSource, /playsInSilentMode: true/);
 assert.match(atlasSource, /atlas-cartographer-stamp\.png/);
 assert.match(atlasSource, /styles\.stampArtwork/);
 assert.match(atlasSource, /styles\.stampCopy/);
@@ -231,6 +276,8 @@ assert.match(atlasSource, /Platform\.OS === "ios"/);
 assert.match(atlasSource, /onStartShouldSetPanResponderCapture/);
 assert.match(atlasSource, /translateX: swipeTranslateX/);
 assert.match(atlasSource, /onAccessibilityEscape/);
+assert.match(summarySource, /function returnToMapFromAtlas[\s\S]*playAtlasSound\("page"\)/);
+assert.equal((summarySource.match(/returnToMapFromAtlas/g) ?? []).length, 5);
 assert.match(completionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
 assert.match(historySource, /onSwipeBack=\{detailWalk \? \(\) => setDetailSessionId\(null\) : onClose\}/);
 assert.match(historySource, /swipeBackDisabled=\{dataOperation !== null\}/);

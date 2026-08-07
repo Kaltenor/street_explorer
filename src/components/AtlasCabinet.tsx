@@ -1,4 +1,14 @@
-import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createContext,
+  type ComponentRef,
+  type ReactNode,
+  type Ref,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import { createAppearanceStyles } from "../constants/appearance";
 import {
   AccessibilityInfo,
@@ -16,8 +26,11 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAudioPlayer } from "expo-audio";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { APP_COLORS, ATLAS_DISPLAY_FONT } from "../constants/theme";
+import { type AppLanguage, getStrings } from "../i18n";
+import { AtlasHudTexture } from "./AtlasHudDecor";
 import {
   shouldCaptureAtlasSwipeBackStart,
   shouldCompleteAtlasSwipeBack,
@@ -28,11 +41,15 @@ type AtlasSound = "ink" | "page" | "reward";
 type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
 
 const ATLAS_REWARD_JINGLE_DELAY_MS = 90;
+const ATLAS_PAGE_SOUND_VOLUME = 0.5;
+const ATLAS_DOCK_HIT_SLOP = { bottom: 3, left: 3, right: 3, top: 3 } as const;
+const ATLAS_PAGE_DOCK_HEIGHT = 44;
 const ATLAS_SOUND_PLAYERS: Record<AtlasSound, AtlasAudioPlayer> = {
   ink: createAudioPlayer(require("../../assets/sounds/atlas-stamp.wav")),
   page: createAudioPlayer(require("../../assets/sounds/atlas-page.wav")),
   reward: createAudioPlayer(require("../../assets/sounds/atlas-reward-jingle.wav"))
 };
+ATLAS_SOUND_PLAYERS.page.volume = ATLAS_PAGE_SOUND_VOLUME;
 
 function playPreloadedAtlasSound(sound: AtlasSound) {
   const player = ATLAS_SOUND_PLAYERS[sound];
@@ -82,6 +99,199 @@ export function playAtlasSound(sound: AtlasSound) {
   );
 }
 
+export type AtlasPageId =
+  | "completion"
+  | "details"
+  | "expeditions"
+  | "history"
+  | "medals"
+  | "options";
+
+export type AtlasNavigationValue = {
+  activePage: AtlasPageId | null;
+  language: AppLanguage;
+  onNavigate: (page: AtlasPageId) => void;
+};
+
+const AtlasNavigationContext = createContext<AtlasNavigationValue | null>(null);
+
+export function AtlasNavigationProvider({
+  children,
+  value
+}: {
+  children: ReactNode;
+  value: AtlasNavigationValue;
+}) {
+  return (
+    <AtlasNavigationContext.Provider value={value}>
+      {children}
+    </AtlasNavigationContext.Provider>
+  );
+}
+
+const ATLAS_DOCK_ITEMS: Array<{
+  icon: keyof typeof Ionicons.glyphMap;
+  id: AtlasPageId;
+}> = [
+  { icon: "footsteps-outline", id: "details" },
+  { icon: "time-outline", id: "history" },
+  { icon: "trophy-outline", id: "completion" },
+  { icon: "medal-outline", id: "medals" },
+  { icon: "compass-outline", id: "expeditions" },
+  { icon: "options-outline", id: "options" }
+];
+
+export function AtlasNavigationDock({
+  activePage,
+  disabled = false,
+  language,
+  medalPulse = false,
+  medalTabRef,
+  onNavigate,
+  placement
+}: {
+  activePage: AtlasPageId | null;
+  disabled?: boolean;
+  language: AppLanguage;
+  medalPulse?: boolean;
+  medalTabRef?: Ref<ComponentRef<typeof TouchableOpacity>>;
+  onNavigate: (page: AtlasPageId) => void;
+  placement: "map" | "page";
+}) {
+  const strings = getStrings(language);
+  const [previewPage, setPreviewPage] = useState<AtlasPageId | null>(null);
+  const previewPageRef = useRef<AtlasPageId | null>(null);
+  const previewOpacity = useRef(new Animated.Value(0)).current;
+  const previewDismissTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const suppressNextPressRef = useRef(false);
+  const expandedPage = placement === "page"
+    ? activePage
+    : previewPage ?? (medalPulse ? "medals" : null);
+
+  useEffect(() => () => {
+    if (previewDismissTimerRef.current) {
+      clearTimeout(previewDismissTimerRef.current);
+    }
+  }, []);
+
+  const labels: Record<AtlasPageId, string> = {
+    completion: strings.common.completion,
+    details: strings.common.details,
+    expeditions: language === "fr" ? "Expéditions" : "Expeditions",
+    history: strings.common.history,
+    medals: language === "fr" ? "Médailles" : "Medals",
+    options: strings.common.options
+  };
+
+  const beginPreview = (page: AtlasPageId) => {
+    if (placement !== "map") return;
+    if (previewDismissTimerRef.current) {
+      clearTimeout(previewDismissTimerRef.current);
+      previewDismissTimerRef.current = null;
+    }
+    suppressNextPressRef.current = true;
+    previewPageRef.current = page;
+    setPreviewPage(page);
+    previewOpacity.stopAnimation();
+    previewOpacity.setValue(0);
+    Animated.timing(previewOpacity, {
+      duration: 130,
+      easing: Easing.out(Easing.cubic),
+      toValue: 1,
+      useNativeDriver: true
+    }).start();
+  };
+
+  const finishPreview = (page: AtlasPageId) => {
+    if (placement !== "map" || previewPageRef.current !== page) return;
+    setTimeout(() => {
+      suppressNextPressRef.current = false;
+    }, 0);
+    if (previewDismissTimerRef.current) {
+      clearTimeout(previewDismissTimerRef.current);
+    }
+    previewDismissTimerRef.current = setTimeout(() => {
+      Animated.timing(previewOpacity, {
+        duration: 220,
+        easing: Easing.inOut(Easing.cubic),
+        toValue: 0,
+        useNativeDriver: true
+      }).start(({ finished }) => {
+        if (finished) {
+          previewPageRef.current = null;
+          setPreviewPage(null);
+        }
+      });
+    }, 650);
+  };
+
+  return (
+    <View
+      style={[
+        styles.navigationDock,
+        placement === "page" ? styles.pageNavigationDock : styles.mapNavigationDock
+      ]}
+    >
+      <View pointerEvents="none" style={styles.navigationDockFrame}>
+        <AtlasHudTexture opacity={0.07} />
+      </View>
+      {ATLAS_DOCK_ITEMS.map((item, index) => {
+        const expanded = expandedPage === item.id;
+        const active = activePage === item.id || (item.id === "medals" && medalPulse);
+        const highlighted = active || expanded;
+
+        return (
+            <TouchableOpacity
+              accessibilityLabel={labels[item.id]}
+              accessibilityRole="button"
+              accessibilityState={{ disabled, selected: active }}
+              delayLongPress={320}
+              disabled={disabled}
+              hitSlop={ATLAS_DOCK_HIT_SLOP}
+              onLongPress={placement === "map" ? () => beginPreview(item.id) : undefined}
+              onPress={() => {
+                if (suppressNextPressRef.current) {
+                  suppressNextPressRef.current = false;
+                  return;
+                }
+                onNavigate(item.id);
+              }}
+              onPressOut={placement === "map" ? () => finishPreview(item.id) : undefined}
+              ref={item.id === "medals" ? medalTabRef : undefined}
+              key={item.id}
+              style={[
+                styles.navigationDockItem,
+                highlighted ? styles.navigationDockItemActive : null,
+                expanded ? styles.navigationDockItemExpanded : null,
+                index === ATLAS_DOCK_ITEMS.length - 1
+                  ? styles.navigationDockOptionsItem
+                  : null,
+                disabled ? styles.navigationDockDisabled : null
+              ]}
+            >
+              <Ionicons
+                color={highlighted ? APP_COLORS.gold : APP_COLORS.text}
+                name={item.id === "medals" && medalPulse ? "medal" : item.icon}
+                size={19}
+              />
+              {expanded ? (
+                <Animated.Text
+                  numberOfLines={1}
+                  style={[
+                    styles.navigationDockLabel,
+                    { opacity: placement === "page" || medalPulse ? 1 : previewOpacity }
+                  ]}
+                >
+                  {labels[item.id]}
+                </Animated.Text>
+              ) : null}
+            </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+}
+
 
 export function AtlasScreen({
   children,
@@ -94,6 +304,8 @@ export function AtlasScreen({
   swipeBackDisabled?: boolean;
   visible: boolean;
 }) {
+  const navigation = useContext(AtlasNavigationContext);
+  const safeAreaInsets = useSafeAreaInsets();
   const entrance = useRef(new Animated.Value(0)).current;
   const swipeTranslateX = useRef(new Animated.Value(0)).current;
   const openedRef = useRef(false);
@@ -239,6 +451,9 @@ export function AtlasScreen({
         <Animated.View
           style={[
             styles.screenContent,
+            navigation
+              ? { paddingBottom: ATLAS_PAGE_DOCK_HEIGHT + Math.max(safeAreaInsets.bottom, 6) }
+              : null,
             {
               opacity: entrance,
               transform: [{
@@ -252,6 +467,31 @@ export function AtlasScreen({
         >
           {children}
         </Animated.View>
+        {navigation ? (
+          <Animated.View
+            style={[
+              styles.pageDockLayer,
+              {
+                opacity: entrance,
+                paddingBottom: Math.max(safeAreaInsets.bottom, 6),
+                transform: [{
+                  translateY: entrance.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: reducedMotion ? [0, 0] : [28, 0]
+                  })
+                }]
+              }
+            ]}
+          >
+            <AtlasNavigationDock
+              activePage={navigation.activePage}
+              disabled={swipeBackDisabled}
+              language={navigation.language}
+              onNavigate={navigation.onNavigate}
+              placement="page"
+            />
+          </Animated.View>
+        ) : null}
       </ImageBackground>
     </Animated.View>
   );
@@ -321,6 +561,7 @@ export function AtlasSectionLabel({
 export type AtlasStampMessage = {
   detail: string;
   id: number;
+  pointsAwarded?: number;
   presentation?: "map-selection" | "standard";
   sound?: "ink" | "reward";
   title: string;
@@ -462,6 +703,16 @@ export function AtlasStamp({
               {message.detail}
             </Text>
           </View>
+          {message.pointsAwarded && message.pointsAwarded > 0 ? (
+            <View style={styles.stampTextLine}>
+              <Text numberOfLines={1} style={[styles.stampPoints, styles.stampTextDrop]}>
+                +{message.pointsAwarded.toLocaleString()} PTS
+              </Text>
+              <Text numberOfLines={1} style={[styles.stampPoints, styles.stampTextFace]}>
+                +{message.pointsAwarded.toLocaleString()} PTS
+              </Text>
+            </View>
+          ) : null}
         </View>
       </Animated.View>
     </View>
@@ -540,6 +791,66 @@ const styles = createAppearanceStyles({
     right: 0,
     top: 0
   },
+  navigationDock: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 1,
+    minHeight: 44,
+    paddingHorizontal: 1,
+    paddingVertical: 3
+  },
+  navigationDockFrame: {
+    backgroundColor: "rgba(7, 16, 24, 0.96)",
+    borderColor: APP_COLORS.border,
+    borderTopColor: "rgba(245, 196, 81, 0.28)",
+    borderRadius: 10,
+    borderWidth: 1,
+    bottom: 2,
+    left: 0,
+    overflow: "hidden",
+    position: "absolute",
+    right: 0,
+    top: 2
+  },
+  navigationDockDisabled: { opacity: 0.42 },
+  navigationDockItem: {
+    alignItems: "center",
+    backgroundColor: "transparent",
+    borderColor: "transparent",
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: "row",
+    height: 38,
+    justifyContent: "center",
+    minWidth: 38,
+    width: 38
+  },
+  navigationDockItemActive: {
+    backgroundColor: "rgba(245, 196, 81, 0.13)",
+    borderColor: "rgba(245, 196, 81, 0.52)"
+  },
+  navigationDockItemExpanded: {
+    gap: 4,
+    paddingHorizontal: 8,
+    width: "auto"
+  },
+  navigationDockLabel: {
+    color: APP_COLORS.gold,
+    fontFamily: ATLAS_DISPLAY_FONT,
+    fontSize: 9,
+    fontWeight: "900",
+    letterSpacing: 0.3
+  },
+  navigationDockOptionsItem: { marginLeft: "auto" },
+  mapNavigationDock: { marginBottom: 8, marginHorizontal: -7 },
+  pageDockLayer: {
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+    right: 0,
+    zIndex: 20
+  },
+  pageNavigationDock: { marginHorizontal: 8 },
   paperTexture: { opacity: 0.3 },
   screen: { backgroundColor: APP_COLORS.background, flex: 1 },
   screenContent: { flex: 1 },
@@ -585,6 +896,15 @@ const styles = createAppearanceStyles({
     fontSize: 7,
     fontWeight: "800",
     lineHeight: 8.5,
+    marginTop: 1.5,
+    textAlign: "center"
+  },
+  stampPoints: {
+    color: APP_COLORS.gold,
+    fontSize: 8,
+    fontWeight: "900",
+    letterSpacing: 0.45,
+    lineHeight: 9,
     marginTop: 1.5,
     textAlign: "center"
   },

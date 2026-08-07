@@ -15,6 +15,7 @@ require.extensions[".ts"] = (module, filename) => {
 };
 
 const explorationArea = require("../src/services/explorationArea.ts");
+const explorerScore = require("../src/services/explorerScore.ts");
 const loopFill = require("../src/services/loopFill.ts");
 const osmStreetService = require("../src/services/osmStreetService.ts");
 const pathInference = require("../src/services/pathInference.ts");
@@ -394,6 +395,38 @@ assert(
   completionContourCells.size === authoritativeContourCells.size &&
     [...completionContourCells].every((cellId) => authoritativeContourCells.has(cellId)),
   "completion includes every qualifying enclosed cell rendered as solid burnt orange"
+);
+
+const scoreBoundary = perimeter(5);
+const retroactiveEnclosedCells = explorationArea.collectFillableEnclosedExplorationCellIds(
+  scoreBoundary,
+  150000
+);
+const liveExplorerScore = explorerScore.calculateExplorerScore({
+  exploredCellIds: [...scoreBoundary, scoreBoundary[0]],
+  maxEnclosedAreaSquareMeters: 150000
+});
+const reopenedExplorerScore = explorerScore.calculateExplorerScore({
+  exploredCellIds: [...scoreBoundary, ...retroactiveEnclosedCells],
+  loopFillCellIds: retroactiveEnclosedCells,
+  maxEnclosedAreaSquareMeters: 150000
+});
+assert(
+  liveExplorerScore.walkedCellCount === 16 &&
+    liveExplorerScore.enclosedCellCount === 9 &&
+    liveExplorerScore.discoveredCellCount === 25 &&
+    liveExplorerScore.points === 34 &&
+    liveExplorerScore.surfaceAreaSquareMeters === 5625,
+  "explorer score awards one point per unique walked tile and one extra point per enclosed tile"
+);
+assert(
+  JSON.stringify(reopenedExplorerScore) === JSON.stringify(liveExplorerScore),
+  "retroactive persisted enclosure cells reproduce the live score without duplicates"
+);
+assert(
+  explorerScore.getAreaComparisonProgress(7140).current.id === "football-pitch" &&
+    explorerScore.getAreaComparisonProgress(7140).next.areaSquareMeters > 7140,
+  "international area ladder advances to the next larger comparison"
 );
 const safeSnapStart = {
   ...gpsPoint(0.0002, 0, 0),

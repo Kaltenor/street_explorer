@@ -11,10 +11,12 @@ Street Explorer needs a development build to test:
 - iOS background location indicator
 - recovery after background recording
 - native modules such as `expo-task-manager` and `expo-dev-client`
-- medal and enclosure/expedition reward feedback through `expo-audio` and `expo-haptics`
+- Atlas page-turn navigation plus medal and enclosure/expedition reward feedback through `expo-audio` and `expo-haptics`
+- persistent Atlas footer navigation, direct page switching, map hold previews, and safe-area/Reduce Motion behavior
+- live and retroactive Explorer Score presentation in Details, the idle Field Log, and enclosure stamps
 - the configured portrait `assets/loading-screen2.png` splash asset
 
-Whenever a native dependency is added or changed, rebuild and reinstall the development build. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Street Explorer treats unavailable medal/reward sound and haptics as optional so an older binary can still start safely. The locally bundled reward jingle and the preloaded-player/mixed-session behavior use the existing compatible `expo-audio` native module, so they do not themselves require a new development client.
+Whenever a native dependency is added or changed, rebuild and reinstall the development build. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Street Explorer treats unavailable medal/reward sound and haptics as optional so an older binary can still start safely. The locally bundled feedback, preloaded players, Silent-mode playback, mixed-session behavior, and shared Atlas dock use existing compatible native modules, so these UI and asset changes do not themselves require a new development client.
 
 
 +Backup V5 compression uses the pure-JavaScript `fflate` package. After `npm install`, an already-installed compatible development client can test V5 through Metro; this feature alone does not consume another EAS build.

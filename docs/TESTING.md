@@ -1,5 +1,58 @@
 # Testing
 
+## Persistent Atlas Dock V0.18.0 Manual Test
+
+Prerequisites: run the 0.18.0 bundle on a physical iPhone with the map loaded, keep at least one saved recording available, and test in both English and French. No location permission or network connection is required after the map is available. Repeat the visual checks on the narrowest supported phone, once with Reduce Motion enabled, and once with a non-zero bottom safe area.
+
+1. On the map, tap Details, History, Completion, Expeditions, Medals, and Options normally. Expected: each icon opens its page immediately with one discreet page-turn cue; the close-fitting dock remains visible as a safe-area-aware overlay footer and the selected destination expands to its localized title.
+2. Return to the map and hold each icon for at least 320ms, then release without moving. Expected: the localized title expands as a visual preview, the page does not open, the title stays visible for about 650ms after release, and it fades back to the icon over about 220ms. A normal tap immediately afterward still opens the destination.
+3. From every main Atlas page, tap each of the other five destinations. Expected: the app switches directly to the selected page without exposing the map between pages, the new icon becomes highlighted, and content remains clear of the overlay footer.
+4. On each main page, tap its already-highlighted icon. Expected: the page returns to the map with one page-turn cue and the map dock slides back into its original position. Repeat with header Back, a committed iOS edge swipe, accessibility escape, and Android Back when available; a cancelled edge swipe must remain on the page and play no return cue.
+5. Open one saved recording in History. Expected: its detail view retains the dock; switching to another destination works directly, while Back or a committed edge swipe returns one level to History before the map. Open History > Diagnostics and confirm its shared Atlas shell also retains the dock; its Back control returns to History, while tapping the highlighted History icon returns directly to the map.
+6. Start a protected History backup, bulk GPX export, restore inspection, or restore operation at a safe point and attempt to use the footer while the operation is active. Expected: dock navigation is disabled until the protected operation finishes, preventing the page from disappearing mid-operation. Cancel the restore confirmation rather than altering valuable data.
+7. Repeat direct switching and highlighted-icon return in French, on the narrowest supported phone, and above the bottom safe area. Expected: all six icons and expanded labels fit without clipping, visible 38-point cells retain comfortable effective 44-point touch targets, and the last rows or buttons on every page can scroll fully above the footer.
+8. Enable Reduce Motion and repeat opening, direct switching, highlighted-icon return, and map hold preview. Expected: navigation remains complete and readable, transition travel is reduced or published at its final state, and the preview still appears briefly and fades without opening a page.
+
+Automated checks cover the shared provider/dock wiring, all six destinations, same-page return, 320ms hold recognition, 650ms post-release visibility, 220ms fade, safe-area content reservation, protected History disabling, diagnostics shell integration, and map-dock return animation wiring. Physical-device validation remains required for native modal layering, touch timing, safe-area placement, page-turn perception, and animation quality.
+
+## Compact City And Icon Rails V0.17.3 Manual Test
+
+Prerequisites: run the app on a physical phone in both portrait appearance modes; no recording or network is required.
+
+1. Inspect the city medal rail and bottom icon rail. Expected: both frames sit closer to their content; the icon rail has only a one-point frame around 38-point cells, with no clipped icon, city name, medal count, progress track, border, or texture.
+2. Tap the city medal body and objective flag, then every bottom destination, including near each visible cell's edge. Expected: invisible hit slop makes every icon effectively 44 points, every destination opens normally, and the selected icon can still expand its label without clipping.
+3. Repeat in French and on the narrowest supported phone. Expected: the compact rails remain single-line, framed, and free of overlap.
+
+Automated checks cover the 46-point city rail, 38-point visible icon cells, one-point rail spacing, and hit-slop wiring. Physical-device validation remains required for final visual density and touch comfort.
+
+## Explorer Score V0.17.0 Manual Test
+
+Prerequisites: use an Expo SDK 54-compatible development client on a physical device, allow foreground location, and have either existing explored coverage or a safe outdoor route that can close a small loop. No network is required for scoring or comparisons. For an exact enclosure check, a five-by-five or larger cell loop is useful; each tile is 15m by 15m.
+
+1. Upgrade and open a profile that already has explored cells, then open Details. Expected: Explorer Score appears first, with `walked tiles + enclosure bonuses` matching `1 point per walked tile + 1 extra point per enclosed tile`; no manual migration or fresh recording is required.
+2. Note the score, return to the map, and leave recording stopped. Expected: the same total and today's step count appear side by side in the idle Field Log; Start is centered at 60% width with a full 44-point touch height, and the GPS strip is immediately beneath it.
+3. Start walking into previously unexplored tiles. Expected: Start becomes a same-sized Stop control, the GPS strip remains directly beneath it, Field Log switches to distance, duration, and current-walk steps as before, the score increases immediately as each unique tile is accepted, and revisiting an already discovered tile does not add points.
+4. Close a qualifying small loop. Expected: the filled interior appears, the existing `AREA ENCLOSED` stamp shows `+2 PTS` per newly enclosed tile, the score rises by the same amount, and stamp audio/haptics remain non-blocking.
+5. Open Details after mapping enough area to pass a comparison. Expected: the current international surface comparison advances, the next comparison is larger, and its progress bar reflects total mapped surface rather than points.
+6. Stop the recording, force-close, and reopen the app. Expected: score, breakdown, comparison, and idle Field Log total persist through deterministic recalculation with no loss or duplicate award.
+7. Reprocess a recording or restore an existing backup when safe test data is available. Expected: unchanged coverage produces the same score; changed authoritative coverage changes it once. A rejected or cancelled operation leaves the prior score intact.
+8. Repeat the Details and Field Log checks in French and with large totals. Expected: labels, separators, square-metre/kilometre formatting, and comparison names are localized and remain unclipped.
+
+Automated checks cover the exact point rule, duplicate inputs, live-versus-persisted enclosure equivalence, ladder ordering/progression, type safety, and exploration geometry. Physical-device validation remains required for live GPS timing, stamp legibility at 3x map presentation, and final layout in both appearance modes.
+
+## Atlas Page-Turn Audio V0.16.28 Manual Test
+
+Prerequisites: install a development client compatible with the current Expo SDK 54 bundle, keep device sound enabled, and optionally start music or a podcast in another app. No location permission, network, or test data is required.
+
+1. From the map, open Details, History, Completion, Expeditions, Medals, and Options one at a time. Expected: each tap immediately plays one short, natural book-page turn at a discreet level approximately half the previous player volume; the former navigation cue is not heard.
+2. Return to the map from each destination with the header Back control. Expected: the same page turn begins immediately before the map is revealed, exactly once per return.
+3. On iOS, repeat using a committed left-edge swipe and VoiceOver accessibility escape; on Android, repeat with the system Back action. Expected: every completed return plays once, while a cancelled iOS swipe plays nothing.
+4. From History, focus a saved walk; from Completion, focus or select an objective; and from Medals, focus a landmark. Expected: each action that returns to the map uses the same page-turn cue. Transfers between Atlas destinations, such as Details to History or Expeditions to Completion, do not layer duplicate sounds.
+5. Put the iPhone in Silent mode and repeat through the built-in speaker. Expected: the page turn and other game feedback remain audible.
+6. Repeat while external music or a podcast is playing. Expected: Street Explorer's page turn plays over it without pausing or ducking the external audio.
+
+Automated checks cover asset/provenance wiring and all destination-to-map close handlers. Physical-device validation remains required for perceived timing, volume, platform back gestures, and external-audio mixing.
+
 ## Run The App
 
 ```powershell

@@ -1,5 +1,78 @@
 # Changelog
 
+## v0.18.0
+
+Added:
+
+- Added one shared persistent Atlas navigation dock to every main page, History recording detail, and Recording Diagnostics so Details, History, Completion, Medals, Expeditions, and Options can be reached directly without returning through the map.
+- Added map-only hold previews: holding an icon expands its localized title, keeps it visible for 650ms after release, then fades it back over 220ms without opening the page.
+
+Changed:
+
+- Tapping the highlighted footer destination now returns to the map, while switching to another icon performs one direct page transition and one page-turn cue.
+- Animated the map dock upward from the footer when an Atlas page closes, reserved safe-area-aware content space above page footers, and kept the dock disabled during protected History data operations.
+- Converted Recording Diagnostics to the shared Atlas shell so its secondary page retains the dock and swipe-back behavior.
+- Synchronized version 0.18.0 with iOS build 151 and Android version code 151.
+
+## v0.17.4
+
+Changed:
+
+- Tightened the page-and-options icon rail to 38-point visible cells, one-point gaps, one-point outer padding, and smaller selected-label spacing.
+- Added three-point hit slop around every icon cell so each retains an effective 44-point touch area, and synchronized version 0.17.4 with iOS build 150 and Android version code 150.
+
+## v0.17.3
+
+Changed:
+
+- Tightened the city medal rail from 52 to 46 points with smaller internal spacing and ornament while retaining a 46-point touch surface.
+- Reduced the icon navigation rail's outer padding from four to two points while preserving every 44-point destination control, and synchronized version 0.17.3 with iOS build 149 and Android version code 149.
+
+## v0.17.2
+
+Changed:
+
+- Reduced both Start and Stop to the same centered 60%-width control while retaining a 44-point touch height.
+- Moved the GPS status strip immediately below the shared walk control in idle and recording states, and synchronized version 0.17.2 with iOS build 148 and Android version code 148.
+
+## v0.17.1
+
+Changed:
+
+- Restored today's step count beside Explorer Points in the idle Field Log while preserving current-walk steps in the recording metrics.
+- Reduced the idle Start button's visual width while retaining its 44-point touch height, and synchronized version 0.17.1 with iOS build 147 and Android version code 147.
+
+## v0.17.0
+
+Added:
+
+- Added a deterministic Explorer Score: one point per unique walked 15m tile plus one bonus point per enclosed tile, calculated retroactively from existing local coverage and updated live as new territory is earned.
+- Added a prominent bilingual score card to Details with the walked/enclosed breakdown, mapped surface, next-target progress, and a 55-item offline international area-comparison ladder sourced from sports governing bodies and Wikidata.
+- Added the current score to the idle Field Log and the exact `+N PTS` enclosure award to the existing non-blocking reward stamp.
+- Added regression coverage for duplicate-safe scoring, retroactive persisted enclosures, comparison progression, and synchronized version 0.17.0 with iOS build 146 and Android version code 146.
+
+## v0.16.30
+
+Changed:
+
+- Reduced only the shared Atlas page-turn player to 50% volume for quieter, more elegant navigation while leaving stamp, reward-jingle, and medal levels unchanged.
+- Added focused regression coverage and synchronized version 0.16.30 with iOS build 145 and Android version code 145.
+
+## v0.16.29
+
+Fixed:
+
+- Enabled game feedback through the iPhone speaker while Ring/Silent mode is active, while retaining mixed playback over external music and podcasts.
+- Added focused regression coverage and synchronized version 0.16.29 with iOS build 144 and Android version code 144.
+
+## v0.16.28
+
+Changed:
+
+- Replaced the Atlas icon-bar destination cue with a locally bundled CC0 recording of a real book page turning.
+- Played the same page-turn cue immediately before returning from Details, History, Completion, Expeditions, Medals, or Options to the map, including header back, swipe-back, accessibility escape, Android back, and map-focus actions.
+- Synchronized version 0.16.28 with iOS build 143 and Android version code 143.
+
 ## v0.16.27
 
 Fixed:

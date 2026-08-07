@@ -34,10 +34,14 @@ import type { Region } from "react-native-maps";
 
 import {
   AtlasModalHeader,
+  AtlasNavigationDock,
+  AtlasNavigationProvider,
   AtlasScreen,
   AtlasSectionLabel,
   AtlasStamp,
+  playAtlasSound,
   type AtlasStampMessage,
+  type AtlasPageId,
   useReducedMotionPreference
 } from "../components/AtlasCabinet";
 import { AtlasHudDivider, AtlasHudTexture } from "../components/AtlasHudDecor";
@@ -47,6 +51,7 @@ import {
   getExpeditionTitle
 } from "../components/DistrictExpeditionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
+import { ExplorerScorePanel } from "../components/ExplorerScorePanel";
 import {
   MedalCelebration,
   MedalFlightTarget
@@ -140,6 +145,7 @@ import {
   collectExploredCellIdsByRouteSegments,
   collectFillableEnclosedExplorationCellIds
 } from "../services/explorationArea";
+import { calculateExplorerScore, type ExplorerScore } from "../services/explorerScore";
 import {
   evaluateLiveMedalCollection,
   evaluateMedalCollectionForRecording,
@@ -489,6 +495,11 @@ function createRecoveredActiveWalk(
   };
 }
 
+function returnToMapFromAtlas(onReturn: () => void) {
+  playAtlasSound("page");
+  onReturn();
+}
+
 
 export function MapScreen({
   appearanceMode,
@@ -584,7 +595,53 @@ export function MapScreen({
     showMarkers: true,
     showPaths: false
   });
+  const activeAtlasPage: AtlasPageId | null = diagnosticsVisible
+    ? "history"
+    : dashboardExpanded
+      ? "details"
+      : historyVisible
+        ? "history"
+        : completionVisible
+          ? "completion"
+          : expeditionsVisible
+            ? "expeditions"
+            : medalsVisible
+              ? "medals"
+              : optionsVisible
+                ? "options"
+                : null;
+  const mapDockReturnProgress = useRef(new Animated.Value(1)).current;
+  const previousAtlasPageRef = useRef<AtlasPageId | null>(null);
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
+  useEffect(() => {
+    if (activeAtlasPage) {
+      previousAtlasPageRef.current = activeAtlasPage;
+      mapDockReturnProgress.stopAnimation();
+      mapDockReturnProgress.setValue(0);
+      return;
+    }
+
+    if (!previousAtlasPageRef.current) {
+      mapDockReturnProgress.setValue(1);
+      return;
+    }
+
+    previousAtlasPageRef.current = null;
+    mapDockReturnProgress.stopAnimation();
+    if (reducedMotion) {
+      mapDockReturnProgress.setValue(1);
+      return;
+    }
+
+    mapDockReturnProgress.setValue(0);
+    Animated.spring(mapDockReturnProgress, {
+      damping: 18,
+      mass: 0.65,
+      stiffness: 220,
+      toValue: 1,
+      useNativeDriver: true
+    }).start();
+  }, [activeAtlasPage, mapDockReturnProgress, reducedMotion]);
   useEffect(() => {
     wordmarkCollapseProgress.stopAnimation();
     if (reducedMotion) {
@@ -886,6 +943,26 @@ export function MapScreen({
     savedExplorationCellIds
   ]);
   const activeClosureFillCellKey = activeClosureFillCellIds.join("|");
+  const explorerScore = useMemo(
+    () => calculateExplorerScore({
+      exploredCellIds: [
+        ...savedExplorationCellIds,
+        ...(activeWalk?.exploredCellIds ?? [])
+      ],
+      loopFillCellIds,
+      maxEnclosedAreaSquareMeters:
+        LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[
+          activeWalk?.activityMode ?? activityMode
+        ]
+    }),
+    [
+      activeWalk?.activityMode,
+      activeWalk?.exploredCellIds,
+      activityMode,
+      loopFillCellIds,
+      savedExplorationCellIds
+    ]
+  );
   const todayNewCellIds = useMemo(
     () => [...new Set([...savedTodayNewCellIds, ...activeNewCellIds])],
     [activeNewCellIds, savedTodayNewCellIds]
@@ -1877,6 +1954,7 @@ export function MapScreen({
           ? `${newlyEnclosedCellIds.length} CASE${newlyEnclosedCellIds.length === 1 ? "" : "S"} RÉVÉLÉE${newlyEnclosedCellIds.length === 1 ? "" : "S"}`
           : `${newlyEnclosedCellIds.length} CELL${newlyEnclosedCellIds.length === 1 ? "" : "S"} REVEALED`,
         id: Date.now(),
+        pointsAwarded: newlyEnclosedCellIds.length * 2,
         presentation: "map-selection",
         sound: "reward",
         title: language === "fr" ? "ZONE ENCLOSE" : "AREA ENCLOSED"
@@ -2164,10 +2242,50 @@ export function MapScreen({
     language
   ]);
 
-  const handleOpenExpeditions = useCallback(() => {
-    setExpeditionsVisible(true);
-    setExpeditionRevision((revision) => revision + 1);
+  const closeAllAtlasPages = useCallback(() => {
+    setDashboardExpanded(false);
+    setHistoryVisible(false);
+    setCompletionVisible(false);
+    setExpeditionsVisible(false);
+    setMedalsVisible(false);
+    setOptionsVisible(false);
+    setDiagnosticsVisible(false);
   }, []);
+  const handleReturnToMapFromAtlas = useCallback(() => {
+    returnToMapFromAtlas(closeAllAtlasPages);
+  }, [closeAllAtlasPages]);
+  const navigateAtlasPage = useCallback((page: AtlasPageId) => {
+    if (activeAtlasPage === page) {
+      handleReturnToMapFromAtlas();
+      return;
+    }
+
+    closeAllAtlasPages();
+    switch (page) {
+      case "details":
+        setDashboardExpanded(true);
+        break;
+      case "history":
+        setHistoryVisible(true);
+        break;
+      case "completion":
+        setCompletionVisible(true);
+        break;
+      case "expeditions":
+        setExpeditionsVisible(true);
+        setExpeditionRevision((revision) => revision + 1);
+        break;
+      case "medals":
+        setMedalsVisible(true);
+        break;
+      case "options":
+        setOptionsVisible(true);
+        break;
+    }
+  }, [activeAtlasPage, closeAllAtlasPages, handleReturnToMapFromAtlas]);
+  const handleOpenExpeditions = useCallback(() => {
+    navigateAtlasPage("expeditions");
+  }, [navigateAtlasPage]);
 
   const handleAcceptExpedition = useCallback(async (
     expedition: DistrictExpedition
@@ -4345,6 +4463,13 @@ export function MapScreen({
   }, [activeWalk?.sessionId, syncActiveWalkFromDatabase]);
 
   return (
+    <AtlasNavigationProvider
+      value={{
+        activePage: activeAtlasPage,
+        language,
+        onNavigate: navigateAtlasPage
+      }}
+    >
     <View style={styles.screen}>
       <ExplorationMap
         activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
@@ -4416,13 +4541,13 @@ export function MapScreen({
             objectiveVisible={Boolean(objective && objectiveHudVisible)}
             onObjectivePress={() => {
               if (!objective) {
-                setCompletionVisible(true);
+                navigateAtlasPage("completion");
                 return;
               }
 
               setObjectiveHudVisible((visible) => !visible);
             }}
-            onPress={() => setMedalsVisible(true)}
+            onPress={() => navigateAtlasPage("medals")}
             progress={medalProgress}
           />
           {objective && objectiveHudVisible ? (
@@ -4466,121 +4591,26 @@ export function MapScreen({
         ) : null}
 
         <View onLayout={handleMapBottomPanelLayout} style={styles.bottomPanel}>
-          <View style={styles.bottomTabs}>
-            <AtlasHudTexture opacity={0.07} />
-            <TouchableOpacity
-              accessibilityLabel={strings.common.details}
-              accessibilityRole="button"
-              onPress={() => setDashboardExpanded(true)}
-              style={[
-                styles.bottomTab,
-                dashboardExpanded ? styles.activeBottomTab : null,
-                dashboardExpanded ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons
-                name="footsteps-outline"
-                size={19}
-                color={dashboardExpanded ? APP_COLORS.gold : APP_COLORS.text}
-              />
-              {dashboardExpanded ? (
-                <Text style={styles.bottomTabLabel}>{strings.common.details}</Text>
-              ) : null}
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityLabel={strings.common.history}
-              accessibilityRole="button"
-              onPress={() => setHistoryVisible(true)}
-              style={[
-                styles.bottomTab,
-                historyVisible ? styles.activeBottomTab : null,
-                historyVisible ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons name="time-outline" size={19} color={historyVisible ? APP_COLORS.gold : APP_COLORS.text} />
-              {historyVisible ? (
-                <Text style={styles.bottomTabLabel}>{strings.common.history}</Text>
-              ) : null}
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityLabel={strings.common.completion}
-              accessibilityRole="button"
-              onPress={() => setCompletionVisible(true)}
-              style={[
-                styles.bottomTab,
-                completionVisible ? styles.activeBottomTab : null,
-                completionVisible ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons name="trophy-outline" size={19} color={completionVisible ? APP_COLORS.gold : APP_COLORS.text} />
-              {completionVisible ? (
-                <Text style={styles.bottomTabLabel}>{strings.common.completion}</Text>
-              ) : null}
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityLabel={language === "fr" ? "M\u00e9dailles" : "Medals"}
-              accessibilityRole="button"
-              onPress={() => setMedalsVisible(true)}
-              ref={medalTabRef}
-              style={[
-                styles.bottomTab,
-                medalsVisible || medalTabPulse ? styles.activeBottomTab : null,
-                medalsVisible || medalTabPulse ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons
-                name={medalTabPulse ? "medal" : "medal-outline"}
-                size={19}
-                color={medalsVisible || medalTabPulse ? APP_COLORS.gold : APP_COLORS.text}
-              />
-              {medalsVisible || medalTabPulse ? (
-                <Text style={styles.bottomTabLabel}>
-                  {language === "fr" ? "M\u00e9dailles" : "Medals"}
-                </Text>
-              ) : null}
-            </TouchableOpacity>
-            <TouchableOpacity
-              accessibilityLabel={language === "fr" ? "Expéditions" : "Expeditions"}
-              accessibilityRole="button"
-              onPress={handleOpenExpeditions}
-              style={[
-                styles.bottomTab,
-                expeditionsVisible ? styles.activeBottomTab : null,
-                expeditionsVisible ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons
-                name="compass-outline"
-                size={19}
-                color={expeditionsVisible ? APP_COLORS.gold : APP_COLORS.text}
-              />
-              {expeditionsVisible ? (
-                <Text style={styles.bottomTabLabel}>
-                  {language === "fr" ? "Expéditions" : "Expeditions"}
-                </Text>
-              ) : null}
-            </TouchableOpacity>
-            <View style={styles.bottomTabSpacer} />
-            <TouchableOpacity
-              accessibilityLabel={strings.common.options}
-              accessibilityRole="button"
-              onPress={() => setOptionsVisible(true)}
-              style={[
-                styles.bottomTab,
-                optionsVisible ? styles.activeBottomTab : null,
-                optionsVisible ? styles.expandedBottomTab : null
-              ]}
-            >
-              <Ionicons
-                name="options-outline"
-                size={19}
-                color={optionsVisible ? APP_COLORS.gold : APP_COLORS.text}
-              />
-              {optionsVisible ? (
-                <Text style={styles.bottomTabLabel}>{strings.common.options}</Text>
-              ) : null}
-            </TouchableOpacity>
-          </View>
+          <Animated.View
+            style={{
+              opacity: mapDockReturnProgress,
+              transform: [{
+                translateY: mapDockReturnProgress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [30, 0]
+                })
+              }]
+            }}
+          >
+            <AtlasNavigationDock
+              activePage={null}
+              language={language}
+              medalPulse={medalTabPulse}
+              medalTabRef={medalTabRef}
+              onNavigate={navigateAtlasPage}
+              placement="map"
+            />
+          </Animated.View>
           <WalkControls
             activityMode={activeWalk?.activityMode ?? activityMode}
             acceptedGpsPointCount={activeWalk?.acceptedGpsPointCount ?? 0}
@@ -4588,6 +4618,7 @@ export function MapScreen({
             isFinalizing={isComputingRecording}
             isRecording={Boolean(activeWalk)}
             isStarting={isStartingRecording}
+            explorerScore={explorerScore.points}
             distanceMeters={activeWalk?.distanceMeters ?? 0}
             startedAt={activeWalk?.startedAt ?? null}
             gpsAccuracyMeters={currentLocation?.accuracy}
@@ -4617,7 +4648,7 @@ export function MapScreen({
         onChangeAppearanceMode={onChangeAppearanceMode}
         onChangeLanguage={onChangeLanguage}
         onChangePathDisplayMode={setPathDisplayMode}
-        onClose={() => setOptionsVisible(false)}
+        onClose={handleReturnToMapFromAtlas}
         onToggleLayer={toggleLayer}
         onReprocessRecordings={handleReprocessRecordings}
         selectedSessionId={selectedSessionId}
@@ -4633,13 +4664,11 @@ export function MapScreen({
         layers={layers}
         mode={pathDisplayMode}
         onChangeMode={setPathDisplayMode}
-        onClose={() => setDashboardExpanded(false)}
-        onOpenHistory={() => {
-          setDashboardExpanded(false);
-          setHistoryVisible(true);
-        }}
+        onClose={handleReturnToMapFromAtlas}
+        onOpenHistory={() => navigateAtlasPage("history")}
         onReprocessRecordings={handleReprocessRecordings}
         objectiveStats={objectiveStats}
+        explorerScore={explorerScore}
         recordingQuality={recordingQuality}
         selectedSessionId={selectedSessionId}
         stats={displayStats}
@@ -4657,7 +4686,7 @@ export function MapScreen({
         reprocessingSessionId={reprocessingSessionId}
         walks={history}
         selectedSessionId={selectedSessionId}
-        onClose={() => setHistoryVisible(false)}
+        onClose={handleReturnToMapFromAtlas}
         onDeleteWalk={handleDeleteWalk}
         onExportAllGpx={handleExportAllGpx}
         onExportBackup={handleExportBackup}
@@ -4689,18 +4718,18 @@ export function MapScreen({
         currentObjectiveTodayCells={todayObjectiveCellCount}
         currentLocation={completionReferenceLocation}
         language={language}
-        onClose={() => setCompletionVisible(false)}
+        onClose={handleReturnToMapFromAtlas}
         onFocusZone={(zone) => {
           void loadDistrictZonesForObjectiveZone(zone).catch((error) =>
             console.warn("Failed to load focused zone city context", error)
           );
           setSelectedZone(zone);
           setZoneFocusRequestId((requestId) => requestId + 1);
-          setCompletionVisible(false);
+          returnToMapFromAtlas(() => setCompletionVisible(false));
         }}
         onSetObjective={(nextObjective) => {
           applyMapObjective(nextObjective.zone);
-          setCompletionVisible(false);
+          returnToMapFromAtlas(() => setCompletionVisible(false));
         }}
         onZonesUpdated={handleCompletionZonesUpdated}
         visible={completionVisible}
@@ -4713,20 +4742,17 @@ export function MapScreen({
         language={language}
         onAbandon={handleAbandonExpedition}
         onAccept={handleAcceptExpedition}
-        onClose={() => setExpeditionsVisible(false)}
-        onSelectDistrict={() => {
-          setExpeditionsVisible(false);
-          setCompletionVisible(true);
-        }}
+        onClose={handleReturnToMapFromAtlas}
+        onSelectDistrict={() => navigateAtlasPage("completion")}
         visible={expeditionsVisible}
       /> : null}
       {medalsVisible ? <MedalCollectionModal
         language={language}
-        onClose={() => setMedalsVisible(false)}
+        onClose={handleReturnToMapFromAtlas}
         onFocusMedal={(medal) => {
           setFocusedMedal(medal);
           setMedalFocusRequestId((requestId) => requestId + 1);
-          setMedalsVisible(false);
+          returnToMapFromAtlas(() => setMedalsVisible(false));
         }}
         onRunRetroScan={handleRunMedalRetroScan}
         progress={medalProgress}
@@ -4745,7 +4771,10 @@ export function MapScreen({
         backgroundMessage={backgroundTrackingMessage}
         backgroundStatus={backgroundTrackingStatus}
         currentLocation={currentLocation}
-        onClose={() => setDiagnosticsVisible(false)}
+        onClose={() => {
+          setDiagnosticsVisible(false);
+          setHistoryVisible(true);
+        }}
         recordingQuality={recordingQuality}
         visible={diagnosticsVisible}
       /> : null}
@@ -4793,6 +4822,7 @@ export function MapScreen({
         />
       ) : null}
     </View>
+    </AtlasNavigationProvider>
   );
 }
 
@@ -5881,6 +5911,7 @@ function DetailsModal({
   backgroundMessage,
   backgroundStatus,
   currentLocation,
+  explorerScore,
   language,
   layers,
   mode,
@@ -5900,6 +5931,7 @@ function DetailsModal({
   backgroundMessage: string | null;
   backgroundStatus: BackgroundTrackingStatus;
   currentLocation: GpsPoint | null;
+  explorerScore: ExplorerScore;
   language: AppLanguage;
   layers: MapLayerState;
   mode: PathDisplayMode;
@@ -5935,6 +5967,11 @@ function DetailsModal({
         />
 
         <ScrollView contentContainerStyle={styles.detailsContent}>
+          <AtlasSectionLabel
+            icon="sparkles-outline"
+            title={language === "fr" ? "SCORE D'EXPLORATION" : "EXPLORATION SCORE"}
+          />
+          <ExplorerScorePanel language={language} score={explorerScore} />
           <AtlasSectionLabel
             icon="navigate-circle-outline"
             title={language === "fr" ? "\u00c9TAT DE L'EXP\u00c9DITION" : "EXPEDITION STATUS"}
@@ -6439,51 +6476,6 @@ const styles = createAppearanceStyles({
   bottomPanel: {
     marginTop: "auto"
   },
-  activeBottomTab: {
-    backgroundColor: "rgba(245, 196, 81, 0.13)",
-    borderColor: "rgba(245, 196, 81, 0.52)"
-  },
-  bottomTab: {
-    alignItems: "center",
-    backgroundColor: "transparent",
-    borderColor: "transparent",
-    borderRadius: 16,
-    borderWidth: 1,
-    flexDirection: "row",
-    height: 44,
-    justifyContent: "center",
-    minWidth: 44,
-    width: 44
-  },
-  bottomTabLabel: {
-    color: APP_COLORS.gold,
-    fontFamily: ATLAS_DISPLAY_FONT,
-    fontSize: 9,
-    fontWeight: "900",
-    letterSpacing: 0.3
-  },
-  expandedBottomTab: {
-    gap: 6,
-    paddingHorizontal: 12,
-    width: "auto"
-  },
-  bottomTabs: {
-    alignItems: "center",
-    alignSelf: "stretch",
-    backgroundColor: "rgba(7, 16, 24, 0.96)",
-    borderColor: APP_COLORS.border,
-    borderTopColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 10,
-    borderWidth: 1,
-    flexDirection: "row",
-    gap: 3,
-    marginBottom: 8,
-    marginHorizontal: -7,
-    overflow: "hidden",
-    padding: 4,
-    zIndex: 2
-  },
-  bottomTabSpacer: { flex: 1 },
   computingDialog: {
     alignItems: "center",
     backgroundColor: "rgba(2, 6, 10, 0.94)",
@@ -6799,17 +6791,17 @@ const styles = createAppearanceStyles({
     borderWidth: 1,
     flexDirection: "row",
     marginHorizontal: -7,
-    minHeight: 52,
+    minHeight: 46,
     overflow: "hidden"
   },
   cityMedalMain: {
     alignItems: "center",
     flex: 1,
     flexDirection: "row",
-    gap: 10,
-    minHeight: 52,
-    paddingHorizontal: 14,
-    paddingVertical: 8
+    gap: 8,
+    minHeight: 46,
+    paddingHorizontal: 11,
+    paddingVertical: 4
   },
   cityMedalActionDivider: {
     alignSelf: "stretch",
@@ -6820,13 +6812,13 @@ const styles = createAppearanceStyles({
     alignItems: "center",
     backgroundColor: "rgba(245, 196, 81, 0.08)",
     borderColor: "rgba(245, 196, 81, 0.4)",
-    borderRadius: 16,
+    borderRadius: 14,
     borderWidth: 1,
-    height: 32,
+    height: 28,
     justifyContent: "center",
-    width: 32
+    width: 28
   },
-  cityMedalContent: { flex: 1, gap: 6 },
+  cityMedalContent: { flex: 1, gap: 4 },
   cityMedalHeader: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
   cityMedalName: {
     color: APP_COLORS.parchment,
@@ -6839,7 +6831,7 @@ const styles = createAppearanceStyles({
   cityMedalTrack: {
     backgroundColor: "rgba(148, 163, 184, 0.22)",
     borderRadius: 999,
-    height: 5,
+    height: 4,
     overflow: "hidden"
   },
   cityMedalFill: { backgroundColor: "#f5c451", borderRadius: 999, height: "100%" },
@@ -6848,10 +6840,10 @@ const styles = createAppearanceStyles({
     alignItems: "center",
     backgroundColor: "transparent",
     borderRadius: 0,
-    height: 52,
+    height: 46,
     justifyContent: "center",
     overflow: "hidden",
-    width: 56
+    width: 50
   },
   objectiveToggleActive: {
     backgroundColor: "rgba(245, 196, 81, 0.13)"

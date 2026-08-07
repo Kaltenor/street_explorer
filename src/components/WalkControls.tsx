@@ -11,6 +11,7 @@ import { formatDistance, formatDuration } from "../services/distance";
 import { classifyGpsUiStatus, GpsUiStatus } from "../services/gpsStatus";
 import type { LocationPermissionState } from "../services/locationService";
 import { RecordingQuality } from "../services/recordingQuality";
+import { formatExplorerPoints } from "../services/explorerScore";
 import { ActivityMode } from "../types/walk";
 
 type WalkControlsProps = {
@@ -32,6 +33,7 @@ type WalkControlsProps = {
   rejectedGpsPointCount: number;
   speedMetersPerSecond?: number;
   stepCount: number;
+  explorerScore: number;
   todayStepCount: number;
   language: AppLanguage;
   recordingQuality: RecordingQuality;
@@ -58,6 +60,7 @@ export function WalkControls({
   rejectedGpsPointCount,
   speedMetersPerSecond = 0,
   stepCount,
+  explorerScore,
   todayStepCount,
   language,
   recordingQuality,
@@ -139,12 +142,51 @@ export function WalkControls({
           </>
         ) : (
           <View style={styles.idleSummary}>
-            <Ionicons color={APP_COLORS.gold} name="footsteps-outline" size={17} />
-            <Text style={styles.idleSummaryValue}>{formatSteps(todayStepCount)}</Text>
-            <Text style={styles.idleSummaryLabel}>{strings.walkControls.stepsToday}</Text>
+            <IdleMetric
+              icon="sparkles"
+              label={language === "fr" ? "points explorateur" : "explorer points"}
+              live
+              value={formatExplorerPoints(explorerScore, language)}
+            />
+            <View style={styles.idleSummaryDivider} />
+            <IdleMetric
+              icon="footsteps-outline"
+              label={strings.walkControls.stepsToday}
+              value={formatSteps(todayStepCount)}
+            />
           </View>
         )}
       </View>
+
+      <TouchableOpacity
+        accessibilityRole="button"
+        disabled={isStarting || isFinalizing}
+        onPress={isRecording ? onStop : onStart}
+        style={[
+          styles.button,
+          isRecording ? styles.stopButton : styles.startButton,
+          isStarting || isFinalizing ? styles.disabledButton : null
+        ]}
+      >
+        {isStarting || isFinalizing ? (
+          <ActivityIndicator color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold} size="small" />
+        ) : (
+          <Ionicons
+            name={isRecording ? "stop-circle" : "play-circle"}
+            color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold}
+            size={19}
+          />
+        )}
+        <Text style={[styles.buttonText, !isRecording ? styles.startButtonText : null]}>
+          {isFinalizing
+            ? language === "fr" ? "Finalisation..." : "Finishing..."
+            : isStarting
+            ? language === "fr" ? "D\u00e9marrage..." : "Starting..."
+            : isRecording
+              ? `${strings.walkControls.stop} ${recordingNoun}`
+              : `${strings.walkControls.start} ${recordingNoun}`}
+        </Text>
+      </TouchableOpacity>
 
       <GpsStateBadge
         accuracyMeters={gpsAccuracyMeters}
@@ -208,35 +250,6 @@ export function WalkControls({
         </View>
       ) : null}
 
-      <TouchableOpacity
-        accessibilityRole="button"
-        disabled={isStarting || isFinalizing}
-        onPress={isRecording ? onStop : onStart}
-        style={[
-          styles.button,
-          isRecording ? styles.stopButton : styles.startButton,
-          isStarting || isFinalizing ? styles.disabledButton : null
-        ]}
-      >
-        {isStarting || isFinalizing ? (
-          <ActivityIndicator color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold} size="small" />
-        ) : (
-          <Ionicons
-            name={isRecording ? "stop-circle" : "play-circle"}
-            color={isRecording ? "#ffffff" : APP_COLORS.inkOnGold}
-            size={19}
-          />
-        )}
-        <Text style={[styles.buttonText, !isRecording ? styles.startButtonText : null]}>
-          {isFinalizing
-            ? language === "fr" ? "Finalisation..." : "Finishing..."
-            : isStarting
-            ? language === "fr" ? "D\u00e9marrage..." : "Starting..."
-            : isRecording
-              ? `${strings.walkControls.stop} ${recordingNoun}`
-              : `${strings.walkControls.start} ${recordingNoun}`}
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -246,6 +259,30 @@ function Metric({ label, value }: { label: string; value: string }) {
     <View style={styles.metric}>
       <Text style={styles.metricValue}>{value}</Text>
       <Text style={styles.metricLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function IdleMetric({
+  icon,
+  label,
+  live = false,
+  value
+}: {
+  icon: "footsteps-outline" | "sparkles";
+  label: string;
+  live?: boolean;
+  value: string;
+}) {
+  return (
+    <View style={styles.idleMetric}>
+      <Ionicons color={APP_COLORS.gold} name={icon} size={15} />
+      <View style={styles.idleMetricCopy}>
+        <Text accessibilityLiveRegion={live ? "polite" : "none"} style={styles.idleSummaryValue}>
+          {value}
+        </Text>
+        <Text numberOfLines={1} style={styles.idleSummaryLabel}>{label}</Text>
+      </View>
     </View>
   );
 }
@@ -414,11 +451,13 @@ function getQualityStyle(label: RecordingQuality["label"]) {
 const styles = createAppearanceStyles({
   button: {
     alignItems: "center",
+    alignSelf: "center",
     borderRadius: 14,
     flexDirection: "row",
     gap: 8,
     justifyContent: "center",
-    minHeight: 44
+    minHeight: 44,
+    width: "60%"
   },
   buttonText: {
     color: "#ffffff",
@@ -554,9 +593,12 @@ const styles = createAppearanceStyles({
     flexDirection: "row",
     gap: 7
   },
-  idleSummary: { alignItems: "center", flex: 1, flexDirection: "row", gap: 7, minHeight: 24 },
-  idleSummaryValue: { color: "#f8fafc", fontSize: 15, fontWeight: "900" },
-  idleSummaryLabel: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
+  idleMetric: { alignItems: "center", flex: 1, flexDirection: "row", gap: 5, minWidth: 0 },
+  idleMetricCopy: { flex: 1, minWidth: 0 },
+  idleSummary: { alignItems: "center", flex: 1, flexDirection: "row", gap: 7, minHeight: 30 },
+  idleSummaryDivider: { backgroundColor: APP_COLORS.border, height: 25, width: 1 },
+  idleSummaryValue: { color: "#f8fafc", fontSize: 14, fontWeight: "900", lineHeight: 16 },
+  idleSummaryLabel: { color: "#94a3b8", fontSize: 9, fontWeight: "700" },
   miniHealth: {
     flex: 1
   },

@@ -68,7 +68,8 @@ export default function App() {
 
   useEffect(() => {
     void setAudioModeAsync({
-      interruptionMode: "mixWithOthers"
+      interruptionMode: "mixWithOthers",
+      playsInSilentMode: true
     }).catch((error) =>
       console.warn("Unable to configure mixed app audio", error)
     );
