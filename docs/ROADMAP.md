@@ -20,7 +20,7 @@
 - Expanded route details in history.
 - Compact live recording controls.
 - GPX export for recordings.
-- Backup V5 with authoritative active-session detection, lossless logical sessions, bounded compressed archive blocks, checksum/footer integrity, required verification of the externally saved Files copy, V5-only restore, and temporary complete-V4 conversion.
+- Backup V5 with authoritative active-session detection, lossless logical sessions, bounded compressed archive blocks, checksum/footer integrity, required verification of the externally saved Files copy, and V5-only restore.
 - OpenStreetMap street segment fetching with retryable-error failover across two globally covered public instances.
 - Local OSM street cache.
 - GPS-to-street proximity matching.
@@ -48,29 +48,32 @@
 - App-wide streamlined navy/gold presentation with a roughly 20%-enlarged first-launch wordmark that collapses after the first interaction, four separate lightly inset Atlas map stripes with consistent subtle corners, textured navigation whose engraved selected destination expands to a localized Cinzel label, an objective toggle integrated into the medal stripe, layer controls centralized in Options, a compact field-ledger recording stripe with neutral GPS inset, four-metric Completion, and collapsed technical diagnostics.
 - Persistent appearance modes with Explorator as the existing dark atlas, an app-wide daylight-optimized high-contrast palette and light native map, plus a selectable Custom placeholder reserved for later palette definition.
 - iOS-first Midnight Cartographer playfield with dark muted MapKit, hidden native POIs/cursor, burnt-orange explored territory, gold current activity, muted copper district boundaries, restrained wine city boundaries, selected-objective stroke hierarchy, restrained route colors, and hand-inked atlas markers.
-- Atlas identity pass: original hand-inked cartographer player, bundled Cinzel display typography, neutral-edged cartographic shells for Details/History/Completion/Medals/Options, gold active and reward emphasis, textured navy paper including Stop and recording-summary dialogs, matching textured main-map ledgers and navigation dock with engraved selections and neutral GPS framing, quiet UI sounds, Reduce Motion-aware transitions, a reusable generated gold/navy/burnt-orange cartographer seal with fitted outlined wording and a load-gated synchronized artwork/text strike, explored-area ink reveal, saved-route draw-on focus, and a folded-map objective HUD.
+- Atlas identity pass: original hand-inked cartographer player, bundled Cinzel display typography, neutral-edged cartographic shells for Details/History/Completion/Medals/Options, gold active and reward emphasis, textured navy paper including Stop and recording-summary dialogs, matching textured main-map ledgers and navigation dock with engraved selections and neutral GPS framing, quiet preloaded UI sounds mixed over external audio, Reduce Motion-aware transitions, a reusable generated gold/navy/burnt-orange cartographer seal with fitted outlined wording and a load-gated synchronized artwork/text strike, dedicated non-blocking enclosure/expedition reward wording with an immediate ink hit before its CC0 jingle, explored-area ink reveal, saved-route draw-on focus, and a folded-map objective HUD.
 - Original hand-inked four-direction cartographer animation inside one explicitly sized MapKit annotation, with all idle, walk, and stale-GPS frames pre-mounted and opacity-selected at a 170ms cadence. One-time Start/Resume recentering, camera-independent panning, durable trustworthy-position restore, accessible stale-GPS state, and Stop/Start/recovery visibility remain intact. Screen-space projection, coordinate animation, marker-image replacement, and parallel annotations remain disabled for device-stable rendering.
 
 - Performance pass V1: immediate player/route lane, non-starving coalesced and geometry-keyed exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, bounded backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
 - Zone Boundary Completion V2: full local and containing-city district retrieval, robust unordered/reversed multipolygon assembly, strict all-component interior parent validation that ignores stale cached associations, persistent city-wide district outlines, haptic long-press selection with direct same-city district switching and cross-city scope controls, objective-preserving panning, race-safe boundary and percentage scans, display-only invalid-boundary fallbacks, exact-cache downgrade protection, saved-objective recovery, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V5 preservation.
-- Administrative hierarchy preservation: retain source OSM levels, use level 9 for current District gameplay, keep level 10 internal for a future Neighborhood tier, automatically reclassify legacy caches, and clear invalid old neighborhood objectives without deleting historical rows.
+- Administrative hierarchy preservation: retain source OSM levels, use level 9 as the minimum and final playable District tier, keep level 10 internal only for source fidelity and backup compatibility, automatically reclassify legacy caches, and clear invalid old neighborhood objectives without deleting historical rows.
 - Objective completion snapshot cache: immediate memory/SQLite scope restoration, boundary-and-exploration validity keys, cached-value Updating feedback, and paired city/district background precomputation.
 - Street-Aware Path Inference V3: encoded identifiable topology refresh, metadata-safe crossings and sub-8m endpoint joins, bounded ambiguous-snap routing that excludes `foot=use_sidepath`, immutable evidence-rich bridge snapshots, inferred-cell attribution, concise History review, and selected-walk reprocessing.
 - OpenStreetMap Street Completion V2: frozen-route proportional metre coverage, nearest direction-compatible matching, repeated-bin deduplication, 90% OSM-way completion records, V1 evidence migration, durable SQLite state, Completion metrics, and active-walk-safe asynchronous rebuilding.
 - Saved-path focus polish: one-action Selected/layer activation and overlap-based Today visibility for midnight-crossing recordings.
 - Recording Recovery V2: full-screen persisted-route preview, verified Active/Interrupted/Uncertain background status, safe recommended actions, bounded long-route rendering, and atomic date/time-based naming during recovered finalization.
 - UI Polish V2: semantic walking/path colors, consistent dark cards across Details/History/Completion, summary-first route details and post-walk reports, and five explicit GPS presentation states with age/accuracy thresholds.
+- Data Tools V2: verified archive preview before restore confirmation, same-file revalidation before atomic replacement, streaming bulk GPX ZIP export, and retirement of the temporary V4 converter.
+- District Expeditions V1: three deterministic offline district choices per local day, one accepted active expedition globally, durable cell/street/loop/medal progress, permanent journal seals with no currency or score, a permanent Atlas navigation destination plus contextual HUD shortcut, no-district handoff to Completion, and Backup V5 preservation.
 
 ## Next Priority
 
-### 1. Data Tools V2
+### 1. District Progress Map
 
-Add:
+- optional emphasis for underexplored district pockets and incomplete streets
+- no automatic routing or prescribed path
 
-- remove the temporary V4 converter after the V5 transition window
-- import preview before replacing local data
-- GPX import
-- bulk export for walks
+### 2. Explorer Journal
+
+- chronological district, medal, loop, walk-record, and expedition milestones
+- offline and derived from durable local evidence
 
 ## Not Planned Yet
 

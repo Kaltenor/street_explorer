@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { setAudioModeAsync } from "expo-audio";
 import { createAppearanceStyles } from "./src/constants/appearance";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
@@ -66,6 +67,11 @@ export default function App() {
   };
 
   useEffect(() => {
+    void setAudioModeAsync({
+      interruptionMode: "mixWithOthers"
+    }).catch((error) =>
+      console.warn("Unable to configure mixed app audio", error)
+    );
     initializeApp();
   }, []);
 

@@ -356,6 +356,32 @@ function getOsmStreetId(segmentId: string) {
   return match?.[1] ?? segmentId;
 }
 
+export async function getStreetCompletionStreetStates() {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{
+    completed_at: string | null;
+    street_id: string;
+    total_distance_m: number;
+    walked_distance_m: number;
+  }>(`
+    SELECT
+      street_id,
+      MIN(completed_at) AS completed_at,
+      SUM(walked_distance_m) AS walked_distance_m,
+      SUM(total_distance_m) AS total_distance_m
+    FROM street_completion_segments
+    GROUP BY street_id
+  `);
+
+  return rows.map((row) => ({
+    completedAt: row.completed_at,
+    isComplete:
+      row.total_distance_m > 0 &&
+      row.walked_distance_m >= row.total_distance_m * 0.9,
+    streetId: row.street_id
+  }));
+}
+
 function calculateCoordinatePathDistance(segment: OsmStreetSegment) {
   let distance = 0;
 

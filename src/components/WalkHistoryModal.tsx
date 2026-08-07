@@ -25,7 +25,7 @@ import { ActivityMode, RouteBridgeEvidence, WalkSession, WalkWithPoints } from "
 type WalkHistoryModalProps = {
   activityMode: ActivityMode;
   detailedWalks: WalkWithPoints[];
-  dataOperation: "backup" | "convert" | "restore" | null;
+  dataOperation: "backup" | "bulkGpx" | "restorePreview" | "restore" | null;
   language: AppLanguage;
   loopFillSummaries: Record<number, LoopFillSessionSummary>;
   visible: boolean;
@@ -34,9 +34,9 @@ type WalkHistoryModalProps = {
   reprocessDisabled: boolean;
   reprocessingSessionId: number | null;
   onClose: () => void;
-  onConvertLegacyBackup: () => void;
   onDeleteWalk: (sessionId: number) => void;
   onExportBackup: () => void;
+  onExportAllGpx: () => void;
   onExportWalkGpx: (sessionId: number) => void;
   onImportBackup: () => void;
   onLoadWalkDetails: (sessionId: number) => void;
@@ -59,8 +59,8 @@ export function WalkHistoryModal({
   reprocessingSessionId,
   onClose,
   onDeleteWalk,
-  onConvertLegacyBackup,
   onExportBackup,
+  onExportAllGpx,
   onExportWalkGpx,
   onImportBackup,
   onLoadWalkDetails,
@@ -78,11 +78,15 @@ export function WalkHistoryModal({
   const dataOperationLabel =
     dataOperation === "backup"
       ? strings.history.backupProcessing
-      : dataOperation === "convert"
-        ? strings.history.conversionProcessing
+      : dataOperation === "bulkGpx"
+        ? strings.history.bulkGpxProcessing
+        : dataOperation === "restorePreview"
+          ? strings.history.restorePreviewProcessing
         : dataOperation === "restore"
           ? strings.history.restoreProcessing
           : null;
+  const isRestoreOperation =
+    dataOperation === "restorePreview" || dataOperation === "restore";
 
   useEffect(() => {
     setDraftNames(Object.fromEntries(walks.map((walk) => [walk.id, walk.displayName ?? ""])));
@@ -188,32 +192,32 @@ export function WalkHistoryModal({
                 <TouchableOpacity
                   accessibilityRole="button"
                   accessibilityState={{
-                    busy: dataOperation === "convert",
+                    busy: dataOperation === "bulkGpx",
                     disabled: dataOperation !== null
                   }}
                   disabled={dataOperation !== null}
-                  onPress={onConvertLegacyBackup}
+                  onPress={onExportAllGpx}
                   style={[
                     styles.toolButton,
                     dataOperation !== null &&
-                      dataOperation !== "convert" && styles.toolButtonDisabled
+                      dataOperation !== "bulkGpx" && styles.toolButtonDisabled
                   ]}
                 >
-                  {dataOperation === "convert" ? (
+                  {dataOperation === "bulkGpx" ? (
                     <ActivityIndicator color={APP_COLORS.gold} size="small" />
                   ) : (
-                    <Ionicons name="swap-horizontal-outline" size={18} color={APP_COLORS.text} />
+                    <Ionicons name="documents-outline" size={18} color={APP_COLORS.text} />
                   )}
                   <Text style={styles.toolButtonText}>
-                    {dataOperation === "convert"
-                      ? strings.history.conversionProcessing
-                      : strings.history.convertLegacyBackup}
+                    {dataOperation === "bulkGpx"
+                      ? strings.history.bulkGpxProcessing
+                      : strings.history.exportAllGpx}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   accessibilityRole="button"
                   accessibilityState={{
-                    busy: dataOperation === "restore",
+                    busy: isRestoreOperation,
                     disabled: dataOperation !== null
                   }}
                   disabled={dataOperation !== null}
@@ -221,17 +225,19 @@ export function WalkHistoryModal({
                   style={[
                     styles.toolButton,
                     dataOperation !== null &&
-                      dataOperation !== "restore" && styles.toolButtonDisabled
+                      !isRestoreOperation && styles.toolButtonDisabled
                   ]}
                 >
-                  {dataOperation === "restore" ? (
+                  {isRestoreOperation ? (
                     <ActivityIndicator color={APP_COLORS.gold} size="small" />
                   ) : (
                     <Ionicons name="cloud-upload-outline" size={18} color={APP_COLORS.text} />
                   )}
                   <Text style={styles.toolButtonText}>
-                    {dataOperation === "restore"
-                      ? strings.history.restoreProcessing
+                    {isRestoreOperation
+                      ? dataOperation === "restorePreview"
+                        ? strings.history.restorePreviewProcessing
+                        : strings.history.restoreProcessing
                       : strings.common.restore}
                   </Text>
                 </TouchableOpacity>

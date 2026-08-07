@@ -1,5 +1,65 @@
 # Changelog
 
+## v0.16.27
+
+Fixed:
+
+- Removed the reward-audio startup lag by keeping the Atlas page, ink, and reward players loaded for the app lifetime instead of importing Expo Audio and constructing a player after the stamp appears.
+- Configured game feedback to mix with other apps so walking music and podcasts continue playing at their existing volume when Street Explorer emits a sound.
+
+Changed:
+
+- Reward stamps now play the ink impact immediately on the award frame, followed by the victory jingle 90ms later, and synchronized version 0.16.27 with iOS build 142 and Android version code 142.
+
+## v0.16.26
+
+Added:
+
+- Added a non-blocking `AREA ENCLOSED` reward stamp as soon as an active walk creates a new qualifying enclosed surface, including the number of newly revealed cells and the same large map-centered presentation as a location change.
+- Added a dedicated locally bundled CC0 victory jingle for both area-enclosure and expedition-completion stamps while preserving the existing location-stamp art, scale, strike animation, haptic timing, and ordinary location-stamp ink sound.
+
+Changed:
+
+- Extended live enclosure monitoring beyond the selected objective so valid walking enclosures still receive immediate reward feedback, and synchronized version 0.16.26 with iOS build 141 and Android version code 141.
+
+## v0.16.25
+
+Added:
+
+- Added Expeditions as a permanent compass destination beside Details, History, Completion, and Medals in the Atlas navigation dock.
+- Added the same localized engraved selected state, 44-point target, full-screen Atlas presentation, interactive swipe/back behavior, and a no-district explanation that hands off directly to Completion.
+
+Changed:
+
+- Kept the district objective HUD expedition line as a contextual progress shortcut while making the complete journal discoverable from the persistent icon bar, and synchronized version 0.16.25 with iOS build 140 and Android version code 140.
+
+## v0.16.24
+
+Added:
+
+- Added District Expeditions V1 with three deterministic offline choices per selected official district and local day, one globally active expedition, and goals derived from newly explored cells, completed OSM streets, closed loops, and available landmark medals.
+- Added an Atlas expedition journal reachable from the district objective HUD, live durable progress, explicit accept/restart and abandon controls, permanent journal seals, and an expedition-completion stamp without currency, ranking, or route prescription.
+- Added SQLite expedition, seal, and finalized-loop-evidence persistence plus focused deterministic-generation, single-active, progress-safety, and backup-integrity regressions.
+
+Changed:
+
+- Backup V5 now preserves district expedition choices, active/completed state, finalized loop evidence, and permanent seals while remaining compatible with older V5 archives; restore preview now reports seal count.
+- Restricted expedition acceptance/restart during active recording so every goal has an exact durable evidence boundary, and synchronized version 0.16.24 with iOS build 139 and Android version code 139.
+
+## v0.16.23
+
+Added:
+
+- Added a fully verified restore preview that shows the selected V5 archive's export date, source app version, size, walk/GPS totals, medal count, and permanent zone-achievement count before local replacement can be confirmed.
+- Added a single-flight **Export all GPX** action that streams one portable, uniquely named GPX file per finalized walk into a shared ZIP without loading the complete history into one archive-sized value.
+
+Changed:
+
+- Revalidated the same inspected archive and active-recording state immediately before restore, preserving the existing GPS-admission fencing and atomic replacement path.
+- Removed the temporary V4-to-V5 converter, its legacy validation/write code, UI action, translations, and obsolete device procedure after the V5 transition window.
+- Defined level 9 Districts as the minimum and final playable boundary granularity; retained level-10 OSM rows only for source fidelity and backup compatibility, with no Neighborhood feature planned.
+- Added executable GPX document/filename regressions, expanded Data Tools source regressions, and synchronized version 0.16.23 with iOS build 138 and Android version code 138.
+
 ## v0.16.22
 
 Fixed:

@@ -42,6 +42,10 @@ import {
 } from "../components/AtlasCabinet";
 import { AtlasHudDivider, AtlasHudTexture } from "../components/AtlasHudDecor";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
+import {
+  DistrictExpeditionModal,
+  getExpeditionTitle
+} from "../components/DistrictExpeditionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import {
   MedalCelebration,
@@ -116,6 +120,11 @@ import {
   upsertZones
 } from "../database/completionRepository";
 import {
+  abandonDistrictExpedition,
+  acceptDistrictExpedition,
+  recordDistrictExpeditionLoopEvidence
+} from "../database/expeditionRepository";
+import {
   drainPendingBackgroundLocationBatches,
   persistDeliveredBackgroundLocationBatch,
   subscribeToFinalizedBackgroundLocationChanges
@@ -161,6 +170,7 @@ import {
   ZoneCompletionStats
 } from "../services/zoneCompletion";
 import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
+import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
 import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import { usePerformanceRenderCounter } from "../services/performance";
@@ -173,10 +183,11 @@ import {
 } from "../services/routeSnapshot";
 import {
   BackupExportError,
-  convertLegacyV4BackupToV5,
+  exportAllWalksGpx,
   exportBackupV5,
   exportWalkGpx,
-  importBackupV5
+  restoreBackupV5,
+  selectBackupV5ForRestore
 } from "../services/dataTools";
 import {
   getForegroundLocationPermission,
@@ -226,6 +237,10 @@ import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 
 import { CollectedMedal, MedalAlbumProgress } from "../types/medal";
+import type {
+  DistrictExpedition,
+  DistrictExpeditionDashboard
+} from "../types/expedition";
 import { MODE_LOCATION_CONFIG } from "../constants/config";
 
 const PLAYER_LOCATION_PERSIST_INTERVAL_MS = 5_000;
@@ -294,7 +309,7 @@ const GPS_STORAGE_PAUSED_REASON =
 
 type PathDisplayMode = "today" | "last7" | "all" | "selected";
 
-type DataOperation = "backup" | "convert" | "restore" | null;
+type DataOperation = "backup" | "bulkGpx" | "restorePreview" | "restore" | null;
 
 type LoopProcessingResult =
   | {
@@ -498,6 +513,11 @@ export function MapScreen({
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [completionVisible, setCompletionVisible] = useState(false);
+  const [expeditionsVisible, setExpeditionsVisible] = useState(false);
+  const [expeditionDashboard, setExpeditionDashboard] =
+    useState<DistrictExpeditionDashboard | null>(null);
+  const [isExpeditionBusy, setIsExpeditionBusy] = useState(false);
+  const [expeditionRevision, setExpeditionRevision] = useState(0);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
   const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
@@ -607,7 +627,8 @@ export function MapScreen({
   const objectiveScopePairRef = useRef<MapZoneSelection | null>(null);
   const objectiveStatsCacheRef = useRef(new Map<string, ZoneCompletionSnapshot>());
   const completedStampZoneIdsRef = useRef(new Set<string>());
-  const objectiveClosureMonitorRef = useRef<{
+  const knownExpeditionSealIdsRef = useRef<Set<string> | null>(null);
+  const activeClosureMonitorRef = useRef<{
     contextKey: string | null;
     fillCellIds: Set<string>;
   }>({ contextKey: null, fillCellIds: new Set() });
@@ -827,37 +848,44 @@ export function MapScreen({
     ),
     [activeWalk?.exploredCellIds, savedExplorationCellIdSet]
   );
+  const activeClosureBoundaryCellIds = useMemo(
+    () => activeWalk ? [...new Set(activeWalk.exploredCellIds)] : [],
+    [activeWalk?.exploredCellIds]
+  );
   const activeObjectiveCellIds = useMemo(
     () =>
       objective && activeWalk?.activityMode === objective.mode
-        ? [...new Set(activeWalk.exploredCellIds)]
+        ? activeClosureBoundaryCellIds
         : [],
-    [activeWalk?.activityMode, activeWalk?.exploredCellIds, objective?.mode]
+    [
+      activeClosureBoundaryCellIds,
+      activeWalk?.activityMode,
+      objective?.mode
+    ]
   );
-  const activeObjectiveClosureContextKey =
-    objective && activeWalk?.activityMode === objective.mode
-      ? `${activeWalk.sessionId}:${objective.mode}:${objective.zone.id}`
-      : null;
-  const activeObjectiveFillCellIds = useMemo(() => {
-    if (!activeObjectiveClosureContextKey || !objective) {
+  const activeClosureContextKey = activeWalk
+    ? `${activeWalk.sessionId}:${activeWalk.activityMode}`
+    : null;
+  const activeClosureFillCellIds = useMemo(() => {
+    if (!activeClosureContextKey || !activeWalk) {
       return [];
     }
 
     const combinedCellIds = [
-      ...new Set([...savedExplorationCellIds, ...activeObjectiveCellIds])
+      ...new Set([...savedExplorationCellIds, ...activeClosureBoundaryCellIds])
     ];
 
     return collectFillableEnclosedExplorationCellIds(
       combinedCellIds,
-      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[objective.mode]
+      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeWalk.activityMode]
     ).sort();
   }, [
-    activeObjectiveCellIds,
-    activeObjectiveClosureContextKey,
-    objective,
+    activeClosureBoundaryCellIds,
+    activeClosureContextKey,
+    activeWalk?.activityMode,
     savedExplorationCellIds
   ]);
-  const activeObjectiveFillCellKey = activeObjectiveFillCellIds.join("|");
+  const activeClosureFillCellKey = activeClosureFillCellIds.join("|");
   const todayNewCellIds = useMemo(
     () => [...new Set([...savedTodayNewCellIds, ...activeNewCellIds])],
     [activeNewCellIds, savedTodayNewCellIds]
@@ -888,6 +916,10 @@ export function MapScreen({
       : 0,
     [objective, todayNewCellIds]
   );
+  const expeditionDistrict =
+    objective?.zone.type === "district" && isOfficialDistrictZone(objective.zone)
+      ? objective.zone
+      : null;
   const displayStats = useMemo(
     () => ({
       ...stats,
@@ -1810,37 +1842,75 @@ export function MapScreen({
   }, [currentLocation, loadVisibleDistrictZones, objective]);
 
   useEffect(() => {
-    const previousMonitor = objectiveClosureMonitorRef.current;
+    const previousMonitor = activeClosureMonitorRef.current;
 
-    if (!activeObjectiveClosureContextKey) {
-      objectiveClosureMonitorRef.current = {
+    if (!activeClosureContextKey) {
+      activeClosureMonitorRef.current = {
         contextKey: null,
         fillCellIds: new Set()
       };
       return;
     }
 
-    if (previousMonitor.contextKey !== activeObjectiveClosureContextKey) {
-      objectiveClosureMonitorRef.current = {
-        contextKey: activeObjectiveClosureContextKey,
-        fillCellIds: new Set(activeObjectiveFillCellIds)
+    if (previousMonitor.contextKey !== activeClosureContextKey) {
+      activeClosureMonitorRef.current = {
+        contextKey: activeClosureContextKey,
+        fillCellIds: new Set(activeClosureFillCellIds)
       };
       return;
     }
 
-    const hasNewEnclosedCell = activeObjectiveFillCellIds.some(
+    const newlyEnclosedCellIds = activeClosureFillCellIds.filter(
       (cellId) => !previousMonitor.fillCellIds.has(cellId)
     );
 
-    objectiveClosureMonitorRef.current = {
-      contextKey: activeObjectiveClosureContextKey,
-      fillCellIds: new Set(activeObjectiveFillCellIds)
+    activeClosureMonitorRef.current = {
+      contextKey: activeClosureContextKey,
+      fillCellIds: new Set(activeClosureFillCellIds)
     };
 
-    if (hasNewEnclosedCell) {
-      setObjectiveClosureRevision((currentRevision) => currentRevision + 1);
+    if (newlyEnclosedCellIds.length > 0) {
+      const activeExpedition = expeditionDashboard?.active;
+
+      setAtlasStampMessage({
+        detail: language === "fr"
+          ? `${newlyEnclosedCellIds.length} CASE${newlyEnclosedCellIds.length === 1 ? "" : "S"} RÉVÉLÉE${newlyEnclosedCellIds.length === 1 ? "" : "S"}`
+          : `${newlyEnclosedCellIds.length} CELL${newlyEnclosedCellIds.length === 1 ? "" : "S"} REVEALED`,
+        id: Date.now(),
+        presentation: "map-selection",
+        sound: "reward",
+        title: language === "fr" ? "ZONE ENCLOSE" : "AREA ENCLOSED"
+      });
+
+      if (
+        activeExpedition?.kind === "close_loop" &&
+        activeExpedition.districtId === objective?.zone.id &&
+        activeWalk?.sessionId
+      ) {
+        void recordDistrictExpeditionLoopEvidence(
+          activeExpedition.id,
+          activeWalk.sessionId
+        ).catch((error) =>
+          console.warn("Failed to preserve expedition loop evidence", error)
+        );
+      }
+
+      if (objective?.mode === activeWalk?.activityMode) {
+        setObjectiveClosureRevision((currentRevision) => currentRevision + 1);
+      }
     }
-  }, [activeObjectiveClosureContextKey, activeObjectiveFillCellKey]);
+  }, [
+    activeClosureContextKey,
+    activeClosureFillCellKey,
+    activeWalk?.activityMode,
+    activeWalk?.sessionId,
+    expeditionDashboard?.active?.districtId,
+    expeditionDashboard?.active?.id,
+    expeditionDashboard?.active?.kind,
+    language,
+    objective?.mode,
+    objective?.zone.id
+  ]);
 
   useEffect(() => {
     const requestId = objectiveStatsRequestRef.current + 1;
@@ -2037,6 +2107,122 @@ export function MapScreen({
         : language === "fr" ? "QUARTIER COMPL\u00c9T\u00c9" : "DISTRICT COMPLETE"
     });
   }, [language, objective, objectiveStats?.permanentlyCompleted]);
+
+  useEffect(() => {
+    if (!expeditionDistrict) {
+      setExpeditionDashboard(null);
+      setIsExpeditionBusy(false);
+      return;
+    }
+
+    if (!isAppActive) {
+      return;
+    }
+
+    let isMounted = true;
+    setIsExpeditionBusy(true);
+    loadDistrictExpeditionDashboard(expeditionDistrict)
+      .then((dashboard) => {
+        if (!isMounted) {
+          return;
+        }
+
+        const knownSealIds = knownExpeditionSealIdsRef.current;
+        const newlyEarnedSeal = knownSealIds
+          ? dashboard.seals.find((seal) => !knownSealIds.has(seal.id))
+          : null;
+        knownExpeditionSealIdsRef.current = new Set(
+          dashboard.seals.map((seal) => seal.id)
+        );
+        setExpeditionDashboard(dashboard);
+
+        if (newlyEarnedSeal) {
+          setAtlasStampMessage({
+            detail: newlyEarnedSeal.districtName,
+            id: Date.now(),
+            presentation: "map-selection",
+            sound: "reward",
+            title: language === "fr" ? "EXPÉDITION ACCOMPLIE" : "EXPEDITION COMPLETE"
+          });
+        }
+      })
+      .catch((error) => console.warn("Failed to load district expeditions", error))
+      .finally(() => {
+        if (isMounted) {
+          setIsExpeditionBusy(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [
+    expeditionDistrict?.fetchedAt,
+    expeditionDistrict?.id,
+    expeditionRevision,
+    isAppActive,
+    language
+  ]);
+
+  const handleOpenExpeditions = useCallback(() => {
+    setExpeditionsVisible(true);
+    setExpeditionRevision((revision) => revision + 1);
+  }, []);
+
+  const handleAcceptExpedition = useCallback(async (
+    expedition: DistrictExpedition
+  ) => {
+    if (activeWalkRef.current) {
+      Alert.alert(
+        language === "fr" ? "Marche en cours" : "Walk in progress",
+        language === "fr"
+          ? "Terminez la marche avant d’accepter une expédition."
+          : "Finish the walk before accepting an expedition."
+      );
+      return;
+    }
+
+    setIsExpeditionBusy(true);
+    try {
+      await acceptDistrictExpedition(expedition.id);
+      setExpeditionRevision((revision) => revision + 1);
+    } catch (error) {
+      console.warn("Failed to accept district expedition", error);
+      Alert.alert(
+        language === "fr" ? "Expédition indisponible" : "Expedition unavailable",
+        error instanceof Error ? error.message : String(error)
+      );
+    } finally {
+      setIsExpeditionBusy(false);
+    }
+  }, [language]);
+
+  const handleAbandonExpedition = useCallback((expedition: DistrictExpedition) => {
+    Alert.alert(
+      language === "fr" ? "Abandonner l’expédition ?" : "Abandon expedition?",
+      language === "fr"
+        ? "La mission restera dans les choix du jour et pourra être reprise depuis zéro."
+        : "The mission remains in today’s choices and can be restarted from zero.",
+      [
+        { text: strings.common.cancel, style: "cancel" },
+        {
+          text: language === "fr" ? "Abandonner" : "Abandon",
+          style: "destructive",
+          onPress: async () => {
+            setIsExpeditionBusy(true);
+            try {
+              await abandonDistrictExpedition(expedition.id);
+              setExpeditionRevision((revision) => revision + 1);
+            } catch (error) {
+              console.warn("Failed to abandon district expedition", error);
+            } finally {
+              setIsExpeditionBusy(false);
+            }
+          }
+        }
+      ]
+    );
+  }, [language, strings.common.cancel]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;
@@ -3182,6 +3368,7 @@ export function MapScreen({
             hideExplorationDuringRefresh: false,
             repairPendingCaches: false
           });
+          setExpeditionRevision((revision) => revision + 1);
         } catch (error) {
           console.warn("Recording saved but deferred map refresh failed", error);
         }
@@ -3754,6 +3941,7 @@ export function MapScreen({
         }
 
         await refreshSavedData();
+        setExpeditionRevision((revision) => revision + 1);
         await waitForMapRenderCommit();
       } catch (error) {
         console.warn("Recovered recording saved but refresh failed", error);
@@ -3989,55 +4177,33 @@ export function MapScreen({
     }
   }, [beginDataOperation, finishDataOperation, strings]);
 
-  const handleConvertLegacyBackup = useCallback(async () => {
-    if (!await beginDataOperation("convert")) {
+  const handleExportAllGpx = useCallback(async () => {
+    if (!await beginDataOperation("bulkGpx")) {
       return;
     }
 
     try {
-      const result = await convertLegacyV4BackupToV5();
-
-      if (!result) {
-        return;
-      }
-
+      const result = await exportAllWalksGpx();
       Alert.alert(
-        strings.map.legacyConversionTitle,
-        interpolate(strings.map.legacyConversionMessage, {
-          blocks: result.archiveBlockCount,
+        strings.map.bulkGpxExportedTitle,
+        interpolate(strings.map.bulkGpxExportedMessage, {
           points: result.pointCount,
-          sessions: result.sessionCount,
+          sessions: result.walkCount,
           size: formatBackupFileSize(result.fileSize)
         })
       );
     } catch (error) {
-      console.warn("Failed to convert legacy backup", error);
-
-      if (error instanceof BackupExportError) {
-        const stageMessage = {
-          prepare: strings.map.legacyConversionFailedPrepareMessage,
-          share: strings.map.backupFailedShareMessage,
-          verify: strings.map.backupFailedVerifyMessage,
-          write: strings.map.backupFailedWriteMessage
-        }[error.stage];
-
-        Alert.alert(
-          strings.map.legacyConversionFailedTitle,
-          `${stageMessage}\n\n${strings.map.backupFailureDetail}: ${error.detail}`
-        );
-        return;
-      }
-
+      console.warn("Failed to export all GPX files", error);
       Alert.alert(
-        strings.map.legacyConversionFailedTitle,
-        strings.map.legacyConversionFailedMessage
+        strings.map.bulkGpxExportFailedTitle,
+        strings.map.bulkGpxExportFailedMessage
       );
     } finally {
-      finishDataOperation("convert");
+      finishDataOperation("bulkGpx");
     }
   }, [beginDataOperation, finishDataOperation, strings]);
 
-  const handleImportBackup = useCallback(() => {
+  const handleImportBackup = useCallback(async () => {
     if (dataOperationRef.current !== null) {
       return;
     }
@@ -4047,9 +4213,38 @@ export function MapScreen({
       return;
     }
 
+    if (!await beginDataOperation("restorePreview")) {
+      return;
+    }
+
+    let candidate;
+
+    try {
+      candidate = await selectBackupV5ForRestore();
+    } catch (error) {
+      console.warn("Failed to inspect backup", error);
+      Alert.alert(strings.map.restoreFailedTitle, strings.map.restoreInspectFailedMessage);
+      return;
+    } finally {
+      finishDataOperation("restorePreview");
+    }
+
+    if (!candidate) {
+      return;
+    }
+
     Alert.alert(
-      strings.map.restoreBackupTitle,
-      strings.map.restoreBackupMessage,
+      strings.map.restorePreviewTitle,
+      interpolate(strings.map.restorePreviewMessage, {
+        achievements: candidate.preview.zoneAchievementCount,
+        date: formatBackupExportDate(candidate.preview.exportedAt, language),
+        expeditions: candidate.preview.expeditionSealCount,
+        medals: candidate.preview.medalCount,
+        points: candidate.preview.pointCount,
+        sessions: candidate.preview.sessionCount,
+        size: formatBackupFileSize(candidate.preview.fileSize),
+        version: candidate.preview.appVersion
+      }),
       [
         {
           text: strings.common.cancel,
@@ -4064,19 +4259,16 @@ export function MapScreen({
             }
 
             try {
-              const imported = await importBackupV5();
-
-              if (imported) {
-                await clearActiveRecordingSettings();
-                setSelectedSessionId(null);
-                await refreshSavedData();
-                void rebuildStreetCompletionV2({
-                  refreshStreetCoverage: true,
-                  shouldAbort: () => Boolean(activeWalkRef.current)
-                }).catch((error) =>
-                  console.warn("Failed to rebuild street completion after restore", error)
-                );
-              }
+              await restoreBackupV5(candidate);
+              await clearActiveRecordingSettings();
+              setSelectedSessionId(null);
+              await refreshSavedData();
+              void rebuildStreetCompletionV2({
+                refreshStreetCoverage: true,
+                shouldAbort: () => Boolean(activeWalkRef.current)
+              }).catch((error) =>
+                console.warn("Failed to rebuild street completion after restore", error)
+              );
             } catch (error) {
               console.warn("Failed to import backup", error);
               Alert.alert(strings.map.restoreFailedTitle, strings.map.restoreFailedMessage);
@@ -4091,6 +4283,7 @@ export function MapScreen({
     activeWalk,
     beginDataOperation,
     finishDataOperation,
+    language,
     refreshSavedData,
     strings
   ]);
@@ -4234,9 +4427,11 @@ export function MapScreen({
           />
           {objective && objectiveHudVisible ? (
             <ObjectiveHud
+              activeExpedition={expeditionDashboard?.active ?? null}
               isCalculating={isObjectiveStatsCalculating}
               objective={objective}
               language={language}
+              onExpeditionsPress={expeditionDistrict ? handleOpenExpeditions : undefined}
               stats={objectiveStats}
               todayCellCount={todayObjectiveCellCount}
             />
@@ -4344,6 +4539,27 @@ export function MapScreen({
                 </Text>
               ) : null}
             </TouchableOpacity>
+            <TouchableOpacity
+              accessibilityLabel={language === "fr" ? "Expéditions" : "Expeditions"}
+              accessibilityRole="button"
+              onPress={handleOpenExpeditions}
+              style={[
+                styles.bottomTab,
+                expeditionsVisible ? styles.activeBottomTab : null,
+                expeditionsVisible ? styles.expandedBottomTab : null
+              ]}
+            >
+              <Ionicons
+                name="compass-outline"
+                size={19}
+                color={expeditionsVisible ? APP_COLORS.gold : APP_COLORS.text}
+              />
+              {expeditionsVisible ? (
+                <Text style={styles.bottomTabLabel}>
+                  {language === "fr" ? "Expéditions" : "Expeditions"}
+                </Text>
+              ) : null}
+            </TouchableOpacity>
             <View style={styles.bottomTabSpacer} />
             <TouchableOpacity
               accessibilityLabel={strings.common.options}
@@ -4443,7 +4659,7 @@ export function MapScreen({
         selectedSessionId={selectedSessionId}
         onClose={() => setHistoryVisible(false)}
         onDeleteWalk={handleDeleteWalk}
-        onConvertLegacyBackup={handleConvertLegacyBackup}
+        onExportAllGpx={handleExportAllGpx}
         onExportBackup={handleExportBackup}
         onExportWalkGpx={handleExportWalkGpx}
         onImportBackup={handleImportBackup}
@@ -4488,6 +4704,21 @@ export function MapScreen({
         }}
         onZonesUpdated={handleCompletionZonesUpdated}
         visible={completionVisible}
+      /> : null}
+      {expeditionsVisible ? <DistrictExpeditionModal
+        dashboard={expeditionDashboard}
+        districtAvailable={Boolean(expeditionDistrict)}
+        isBusy={isExpeditionBusy}
+        isRecording={Boolean(activeWalk)}
+        language={language}
+        onAbandon={handleAbandonExpedition}
+        onAccept={handleAcceptExpedition}
+        onClose={() => setExpeditionsVisible(false)}
+        onSelectDistrict={() => {
+          setExpeditionsVisible(false);
+          setCompletionVisible(true);
+        }}
+        visible={expeditionsVisible}
       /> : null}
       {medalsVisible ? <MedalCollectionModal
         language={language}
@@ -4697,15 +4928,19 @@ function MapZoneScopePicker({
 }
 
 function ObjectiveHud({
+  activeExpedition,
   isCalculating,
   objective,
   language,
+  onExpeditionsPress,
   stats,
   todayCellCount
 }: {
+  activeExpedition: DistrictExpedition | null;
   isCalculating: boolean;
   objective: CompletionObjective;
   language: AppLanguage;
+  onExpeditionsPress?: () => void;
   stats: ZoneCompletionStats | null;
   todayCellCount: number;
 }) {
@@ -4714,9 +4949,22 @@ function ObjectiveHud({
     stats?.completionPercent === null || stats?.completionPercent === undefined
       ? 0
       : Math.max(0, Math.min(100, stats.completionPercent));
+  const activeExpeditionMatchesDistrict =
+    activeExpedition?.districtId === objective.zone.id;
 
   return (
-    <View style={styles.objectiveHud}>
+    <TouchableOpacity
+      accessibilityLabel={
+        onExpeditionsPress
+          ? language === "fr" ? "Ouvrir les expéditions du quartier" : "Open district expeditions"
+          : undefined
+      }
+      accessibilityRole={onExpeditionsPress ? "button" : undefined}
+      activeOpacity={onExpeditionsPress ? 0.82 : 1}
+      disabled={!onExpeditionsPress}
+      onPress={onExpeditionsPress}
+      style={styles.objectiveHud}
+    >
       <AtlasHudTexture opacity={0.1} />
       <View style={styles.objectiveHeader}>
         <View style={styles.objectiveSeal}>
@@ -4752,7 +5000,27 @@ function ObjectiveHud({
         </Text>
         <Text style={styles.objectiveToday}>+{todayCellCount} {language === "fr" ? "aujourd’hui" : "today"}</Text>
       </View>
-    </View>
+      {objective.zone.type === "district" ? (
+        <View style={styles.objectiveExpeditionLink}>
+          <Ionicons color={APP_COLORS.gold} name="compass-outline" size={15} />
+          <Text numberOfLines={1} style={styles.objectiveExpeditionText}>
+            {activeExpeditionMatchesDistrict && activeExpedition
+              ? `${getExpeditionTitle(activeExpedition, language === "fr")} · ${Math.min(
+                  activeExpedition.progress,
+                  activeExpedition.target
+                )}/${activeExpedition.target}`
+              : activeExpedition
+                ? language === "fr"
+                  ? `Expédition active · ${activeExpedition.districtName}`
+                  : `Active expedition · ${activeExpedition.districtName}`
+                : language === "fr"
+                  ? "Ouvrir les expéditions du jour"
+                  : "Open today's expeditions"}
+          </Text>
+          <Ionicons color={APP_COLORS.textMuted} name="chevron-forward" size={14} />
+        </View>
+      ) : null}
+    </TouchableOpacity>
   );
 }
 
@@ -5284,6 +5552,19 @@ function formatBackupFileSize(bytes: number) {
   }
 
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function formatBackupExportDate(value: string, language: AppLanguage) {
+  const date = new Date(value);
+
+  if (!Number.isFinite(date.getTime())) {
+    return value;
+  }
+
+  return date.toLocaleString(language === "fr" ? "fr-FR" : "en-US", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  });
 }
 
 function formatGpsSummary(pausedEventCount: number, language: AppLanguage) {
@@ -6622,6 +6903,23 @@ const styles = createAppearanceStyles({
     overflow: "hidden"
   },
   objectiveFooter: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
+  objectiveExpeditionLink: {
+    alignItems: "center",
+    borderTopColor: APP_COLORS.goldBorder,
+    borderTopWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    marginHorizontal: -12,
+    marginBottom: -12,
+    paddingHorizontal: 12,
+    paddingVertical: 9
+  },
+  objectiveExpeditionText: {
+    color: APP_COLORS.parchmentMuted,
+    flex: 1,
+    fontSize: 11,
+    fontWeight: "800"
+  },
   objectiveMeta: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
   objectiveToday: { color: "#f5c451", fontSize: 11, fontWeight: "900" },
   mapZoneSelection: {

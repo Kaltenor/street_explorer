@@ -948,6 +948,10 @@ const dataToolsSource = fs.readFileSync(
   require.resolve("../src/services/dataTools.ts"),
   "utf8"
 );
+const gpxExportSource = fs.readFileSync(
+  require.resolve("../src/services/gpxExport.ts"),
+  "utf8"
+);
 const appSource = fs.readFileSync(require.resolve("../App.tsx"), "utf8");
 const backupV5Source = fs.readFileSync(
   require.resolve("../src/services/backupV5.ts"),
@@ -1254,7 +1258,8 @@ assert(
     dataToolsSource.includes('new BackupExportError("share", error)') &&
     dataToolsSource.includes('new BackupExportError("verify", error)') &&
     !dataToolsSource.includes('from "expo-file-system/legacy"') &&
-    dataToolsSource.includes("parsed.version !== 4") &&
+    !dataToolsSource.includes("convertLegacyV4BackupToV5") &&
+    !backupV5FileSource.includes("writeLegacyV4AsBackupV5") &&
     backupV5Source.includes("BACKUP_V5_HOT_SESSION_COUNT = 20") &&
     backupV5Source.includes("encodePointPositionRuns") &&
     backupV5FileSource.includes("handle.writeBytes") &&
@@ -1270,16 +1275,43 @@ assert(
 assert(
   mapScreenSource.includes("dataOperationRef.current !== null") &&
     mapScreenSource.includes('beginDataOperation("backup")') &&
+    mapScreenSource.includes('beginDataOperation("bulkGpx")') &&
+    mapScreenSource.includes('beginDataOperation("restorePreview")') &&
     mapScreenSource.includes('beginDataOperation("restore")') &&
     mapScreenSource.includes("await waitForMapRenderCommit()") &&
     mapScreenSource.includes('finishDataOperation("backup")') &&
+    mapScreenSource.includes('finishDataOperation("bulkGpx")') &&
+    mapScreenSource.includes('finishDataOperation("restorePreview")') &&
     mapScreenSource.includes('finishDataOperation("restore")') &&
     walkHistorySource.includes('dataOperation === "backup"') &&
+    walkHistorySource.includes('dataOperation === "bulkGpx"') &&
+    walkHistorySource.includes('dataOperation === "restorePreview"') &&
     walkHistorySource.includes('dataOperation === "restore"') &&
     walkHistorySource.includes("<ActivityIndicator") &&
     walkHistorySource.includes("dataOperationHint") &&
     walkHistorySource.includes("disabled={dataOperation !== null}"),
-  "backup, conversion, and restore are single-flight operations with immediate busy feedback"
+  "backup, bulk GPX, restore inspection, and restore are single-flight operations with immediate busy feedback"
+);
+assert(
+  dataToolsSource.includes("new Zip(") &&
+    dataToolsSource.includes("new ZipDeflate(") &&
+    dataToolsSource.includes("handle.writeBytes(chunk)") &&
+    dataToolsSource.includes("await getGpsPointsForSession(walk.id)") &&
+    gpxExportSource.includes("export function buildGpx") &&
+    gpxExportSource.includes("export function buildBulkGpxFilename") &&
+    mapScreenSource.includes("handleExportAllGpx") &&
+    walkHistorySource.includes("strings.history.exportAllGpx"),
+  "bulk GPX export streams one portable GPX entry per finalized walk with visible progress"
+);
+assert(
+  dataToolsSource.includes("selectBackupV5ForRestore") &&
+    dataToolsSource.includes("BackupV5RestorePreview") &&
+    dataToolsSource.includes("candidate.inspection.manifest.backupId") &&
+    mapScreenSource.indexOf("await selectBackupV5ForRestore()") <
+      mapScreenSource.indexOf("strings.map.restorePreviewTitle") &&
+    mapScreenSource.indexOf("strings.map.restorePreviewTitle") <
+      mapScreenSource.indexOf("await restoreBackupV5(candidate)"),
+  "restore fully inspects the chosen V5 archive, previews its totals, and revalidates it before replacement"
 );
 assert(
   explorationMapSource.includes(
@@ -1351,8 +1383,8 @@ assert(
     completionModalSource.includes("isBoundaryRefreshStale") &&
     completionModalSource.includes("achievementRollup.district") &&
     zoneCompletionSource.includes('"invalid_boundary"') &&
-    walkRepositorySource.includes("zoneAchievements: ZoneAchievement[]") &&
-    dataToolsSource.includes("parsed.version !== 4"),
+    walkRepositorySource.includes("for (const achievement of manifest.zoneAchievements)") &&
+    backupV5Source.includes("zoneAchievements: ZoneAchievement[]"),
   "zone V2 persists permanent rollups, refresh state, geometry-bound denominators, and Backup V5"
 );
 assert(
@@ -1438,9 +1470,13 @@ assert(
 assert(
   mapScreenSource.includes("activeObjectiveCellIds") &&
     mapScreenSource.includes("collectFillableEnclosedExplorationCellIds(") &&
-    mapScreenSource.includes("activeObjectiveFillCellKey") &&
+    mapScreenSource.includes("activeClosureFillCellKey") &&
     mapScreenSource.includes("objectiveClosureRevision") &&
-    mapScreenSource.includes("hasNewEnclosedCell") &&
+    mapScreenSource.includes("newlyEnclosedCellIds") &&
+    mapScreenSource.includes(
+      "`${activeWalk.sessionId}:${activeWalk.activityMode}`"
+    ) &&
+    mapScreenSource.includes('sound: "reward"') &&
     mapScreenSource.includes(
       "[loopFillCellIds, objective, objectiveClosureRevision, walks]"
     ) &&

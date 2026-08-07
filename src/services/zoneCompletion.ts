@@ -650,7 +650,7 @@ function yieldToEventLoop() {
   });
 }
 
-function isPointInsideZone(point: MapCoordinate, zone: CachedZone) {
+export function isPointInsideZone(point: MapCoordinate, zone: CachedZone) {
   const insideOuter = zone.geometry.some((ring) => pointInPolygon(point, ring));
   const insideHole = zone.holes.some((ring) => pointInPolygon(point, ring));
 

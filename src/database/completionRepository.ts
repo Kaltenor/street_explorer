@@ -482,6 +482,40 @@ export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
   return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
 }
 
+export async function getNewExploredCellKeysSince(
+  mode: ActivityMode,
+  acceptedAt: string
+) {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{ cell_x: number; cell_y: number }>(
+    `SELECT DISTINCT current_cells.cell_x, current_cells.cell_y
+    FROM explored_cells current_cells
+    JOIN walk_sessions current_sessions
+      ON current_sessions.id = current_cells.session_id
+    WHERE current_cells.cell_size_m = ?
+      AND current_cells.mode = ?
+      AND current_sessions.started_at >= ?
+      AND current_sessions.ended_at > current_sessions.started_at
+      AND NOT EXISTS (
+        SELECT 1
+        FROM explored_cells previous_cells
+        JOIN walk_sessions previous_sessions
+          ON previous_sessions.id = previous_cells.session_id
+        WHERE previous_cells.cell_size_m = current_cells.cell_size_m
+          AND previous_cells.mode = current_cells.mode
+          AND previous_cells.cell_x = current_cells.cell_x
+          AND previous_cells.cell_y = current_cells.cell_y
+          AND previous_sessions.started_at < ?
+      )`,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode,
+    acceptedAt,
+    acceptedAt
+  );
+
+  return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
+}
+
 export async function deleteLoopFillDataForMode(mode: ActivityMode) {
   const db = await getDatabase();
 

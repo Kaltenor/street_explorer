@@ -84,6 +84,7 @@ const completionSource = readFileSync(new URL("../src/components/CompletionModal
 const historySource = readFileSync(new URL("../src/components/WalkHistoryModal.tsx", import.meta.url), "utf8");
 const summarySource = readFileSync(new URL("../src/screens/MapScreen.tsx", import.meta.url), "utf8");
 const medalCollectionSource = readFileSync(new URL("../src/components/MedalCollectionModal.tsx", import.meta.url), "utf8");
+const expeditionSource = readFileSync(new URL("../src/components/DistrictExpeditionModal.tsx", import.meta.url), "utf8");
 const themeSource = readFileSync(new URL("../src/constants/theme.ts", import.meta.url), "utf8");
 const appearanceSource = readFileSync(new URL("../src/constants/appearance.ts", import.meta.url), "utf8");
 const settingsSource = readFileSync(new URL("../src/database/settingsRepository.ts", import.meta.url), "utf8");
@@ -93,7 +94,9 @@ const routeSnapshotSource = readFileSync(new URL("../src/services/routeSnapshot.
 
 assert.ok(existsSync(new URL("../assets/ui/atlas-paper-texture.png", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/sounds/atlas-page.wav", import.meta.url)));
+assert.ok(existsSync(new URL("../assets/sounds/atlas-reward-jingle.wav", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/sounds/atlas-stamp.wav", import.meta.url)));
+assert.ok(existsSync(new URL("../assets/sounds/README.md", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/fonts/Cinzel-Variable.ttf", import.meta.url)));
 assert.ok(existsSync(new URL("../assets/fonts/OFL-Cinzel.txt", import.meta.url)));
 
@@ -173,6 +176,9 @@ assert.match(summarySource, /cityMedalHud: \{[\s\S]*borderRadius: 10,[\s\S]*marg
 assert.match(summarySource, /objectiveHud: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
 assert.match(summarySource, /bottomTabs: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
 assert.match(summarySource, /styles\.expandedBottomTab/);
+assert.match(summarySource, /onPress=\{handleOpenExpeditions\}/);
+assert.match(summarySource, /expeditionsVisible \? styles\.activeBottomTab/);
+assert.match(summarySource, /name="compass-outline"/);
 assert.match(summarySource, /<AtlasDialogDivider \/>/);
 assert.match(summarySource, /imageStyle=\{styles\.dialogPaperTexture\}/);
 assert.match(summarySource, /borderColor: APP_COLORS\.border/);
@@ -204,7 +210,17 @@ assert.match(walkControlsSource, /container: \{[\s\S]*borderRadius: 10,[\s\S]*ma
 assert.match(atlasSource, /isReduceMotionEnabled/);
 assert.match(atlasSource, /atlas-paper-texture\.png/);
 assert.match(atlasSource, /atlas-page\.wav/);
+assert.match(atlasSource, /atlas-reward-jingle\.wav/);
 assert.match(atlasSource, /atlas-stamp\.wav/);
+assert.match(atlasSource, /ATLAS_SOUND_PLAYERS/);
+assert.match(atlasSource, /ATLAS_REWARD_JINGLE_DELAY_MS = 90/);
+assert.match(atlasSource, /playPreloadedAtlasSound\("ink"\)/);
+assert.match(
+  atlasSource,
+  /setTimeout\(\s*\(\) => playPreloadedAtlasSound\("reward"\),\s*ATLAS_REWARD_JINGLE_DELAY_MS/
+);
+assert.doesNotMatch(atlasSource, /import\("expo-audio"\)/);
+assert.match(appSource, /interruptionMode: "mixWithOthers"/);
 assert.match(atlasSource, /atlas-cartographer-stamp\.png/);
 assert.match(atlasSource, /styles\.stampArtwork/);
 assert.match(atlasSource, /styles\.stampCopy/);
@@ -219,8 +235,11 @@ assert.match(completionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
 assert.match(historySource, /onSwipeBack=\{detailWalk \? \(\) => setDetailSessionId\(null\) : onClose\}/);
 assert.match(historySource, /swipeBackDisabled=\{dataOperation !== null\}/);
 assert.match(medalCollectionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
+assert.match(expeditionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
+assert.match(expeditionSource, /No district selected/);
+assert.match(expeditionSource, /onPress=\{onSelectDistrict\}/);
 assert.equal((summarySource.match(/<AtlasScreen onSwipeBack=\{onClose\}/g) ?? []).length, 2);
-for (const modalSource of [completionSource, historySource, medalCollectionSource, summarySource]) {
+for (const modalSource of [completionSource, historySource, medalCollectionSource, expeditionSource, summarySource]) {
   assert.match(modalSource, /presentationStyle="overFullScreen"/);
   assert.match(modalSource, /transparent/);
 }
@@ -248,6 +267,10 @@ assert.match(atlasSource, /fontSize: 7,/);
 assert.match(atlasSource, /if \(!message \|\| !artworkReady\) return/);
 assert.match(atlasSource, /onLoad=\{\(\) => setLoadedArtworkMessageId\(message\.id\)\}/);
 assert.match(atlasSource, /opacity: artworkReady/);
+assert.match(atlasSource, /playAtlasSound\(message\.sound \?\? "ink"\)/);
+assert.match(summarySource, /title: language === "fr" \? "ZONE ENCLOSE" : "AREA ENCLOSED"/);
+assert.match(summarySource, /sound: "reward"/);
+assert.ok(summarySource.match(/presentation: "map-selection"/g)?.length >= 3);
 assert.match(mapSource, /setIsInkRevealing/);
 assert.match(mapSource, /highlightedRouteDrawProgress/);
 assert.match(mapSource, /drawProgress=\{isHighlighted/);
@@ -257,6 +280,7 @@ console.log("PASS map paths use the shared semantic walking palette");
 console.log("PASS iOS map switches between Explorator and Daylight while preserving game-owned territory and markers");
 console.log("PASS route details and recording summaries use summary-first quality cards");
 console.log("PASS visual hierarchy uses collapsing branding, display type, quiet borders, and branded dialogs");
-console.log("PASS Details, History, Completion, Options, and Medals share the Atlas Cabinet architecture");
+console.log("PASS Details, History, Completion, Expeditions, Options, and Medals share the Atlas Cabinet architecture");
+console.log("PASS Expeditions is a permanent engraved navigation destination with a district-selection empty state");
 console.log("PASS map HUD uses four separate lightly inset Atlas stripes with a uniformly textured objective action");
 console.log("PASS handled reprocess failures avoid LogBox and delegate repair logging to callers");

@@ -1,9 +1,6 @@
 import { File } from "expo-file-system";
 
-import type {
-  BackupV5SnapshotSource,
-  StreetExplorerBackup
-} from "../database/walkRepository";
+import type { BackupV5SnapshotSource } from "../database/walkRepository";
 import {
   assertBackupV5Footer,
   assertBackupV5Manifest,
@@ -38,64 +35,6 @@ export async function writeBackupV5Snapshot(
   source: BackupV5SnapshotSource
 ) {
   return writeBackupV5Archive(file, source);
-}
-
-export async function writeLegacyV4AsBackupV5(
-  file: File,
-  legacy: StreetExplorerBackup,
-  appVersion: string
-) {
-  const pointCountBySession = new Map<number, number>();
-  const pointsBySession = new Map<number, typeof legacy.points>();
-
-  for (const point of legacy.points) {
-    if (!point.sessionId) {
-      throw new Error("V4 backup contains a GPS point without a session id.");
-    }
-
-    const points = pointsBySession.get(point.sessionId) ?? [];
-    points.push(point);
-    pointsBySession.set(point.sessionId, points);
-    pointCountBySession.set(
-      point.sessionId,
-      (pointCountBySession.get(point.sessionId) ?? 0) + 1
-    );
-  }
-
-  const snapshotBySession = new Map(
-    legacy.routeSnapshots.map((snapshot) => [snapshot.sessionId, snapshot])
-  );
-  const metadata: BackupV5Metadata = {
-    appVersion,
-    exportedAt: new Date().toISOString(),
-    medalSystem: legacy.medalSystem,
-    sessions: legacy.sessions.map((session) => ({
-      ...session,
-      pointCount: pointCountBySession.get(session.id) ?? 0
-    })),
-    zoneAchievements: legacy.zoneAchievements
-  };
-
-  return writeBackupV5Archive(file, {
-    loadSessions: async (sessionIds) =>
-      sessionIds.map((sessionId) => {
-        const snapshot = snapshotBySession.get(sessionId);
-
-        return {
-          points: pointsBySession.get(sessionId) ?? [],
-          routeSnapshot: snapshot
-            ? {
-                ...snapshot,
-                sourceMaxPointId:
-                  snapshot.sourceMaxPointId ??
-                  getLegacySourceMaxPointId(legacy.points, sessionId)
-              }
-            : null,
-          sessionId
-        };
-      }),
-    metadata
-  });
 }
 
 export async function inspectBackupV5File(
@@ -319,19 +258,6 @@ function assertMagic(bytes: Uint8Array) {
   ) {
     throw new Error("This file is not a Street Explorer V5 backup.");
   }
-}
-
-function getLegacySourceMaxPointId(
-  points: StreetExplorerBackup["points"],
-  sessionId: number
-) {
-  return points.reduce(
-    (highestId, point) =>
-      point.sessionId === sessionId
-        ? Math.max(highestId, point.id ?? 0)
-        : highestId,
-    0
-  );
 }
 
 const BACKUP_V5_MAX_RECORD_BYTES = 256 * 1024 * 1024;

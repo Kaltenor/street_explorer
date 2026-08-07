@@ -1,23 +1,24 @@
 import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
+import { strToU8, Zip, ZipDeflate } from "fflate";
 
-import { APP_VERSION } from "../constants/config";
 import { getActiveRecordingSettings } from "../database/settingsRepository";
 import {
+  getGpsPointsForSession,
+  getWalkHistory,
   restoreBackupV5Data,
-  StreetExplorerBackup,
-  validateLegacyBackupV4,
   withBackupV5Snapshot
 } from "../database/walkRepository";
 import { BACKUP_V5_EXTENSION, BackupV5Manifest } from "./backupV5";
 import {
+  BackupV5Inspection,
   inspectBackupV5File,
   readBackupV5Blocks,
-  writeBackupV5Snapshot,
-  writeLegacyV4AsBackupV5
+  writeBackupV5Snapshot
 } from "./backupV5File";
-import { GpsPoint, WalkSession } from "../types/walk";
+import { buildBulkGpxFilename, buildGpx } from "./gpxExport";
+import type { GpsPoint, WalkSession } from "../types/walk";
 import {
   closeBackgroundLocationOutboxAdmission,
   discardPendingBackgroundLocationBatches,
@@ -64,6 +65,29 @@ export type BackupV5OperationResult = {
   sessionCount: number;
 };
 
+export type BackupV5RestorePreview = {
+  appVersion: string;
+  expeditionSealCount: number;
+  exportedAt: string;
+  fileSize: number;
+  medalCount: number;
+  pointCount: number;
+  sessionCount: number;
+  zoneAchievementCount: number;
+};
+
+export type BackupV5RestoreCandidate = {
+  file: File;
+  inspection: BackupV5Inspection;
+  preview: BackupV5RestorePreview;
+};
+
+export type BulkGpxExportResult = {
+  fileSize: number;
+  pointCount: number;
+  walkCount: number;
+};
+
 export async function exportBackupV5(): Promise<BackupV5OperationResult> {
   try {
     await prepareBackupExport();
@@ -87,45 +111,114 @@ export async function exportBackupV5(): Promise<BackupV5OperationResult> {
   return toBackupV5OperationResult(verified.manifest, verified.fileSize);
 }
 
-export async function convertLegacyV4BackupToV5(): Promise<
-  BackupV5OperationResult | null
-> {
-  const selected = await pickBackupFile("application/json");
+export async function exportAllWalksGpx(): Promise<BulkGpxExportResult> {
+  await prepareBackupExport();
+  const walks = await getWalkHistory("walk");
 
-  if (!selected) {
-    return null;
+  if (walks.length === 0) {
+    throw new Error("There are no finalized walks to export.");
   }
 
-  let legacy: StreetExplorerBackup;
+  const file = new File(
+    Paths.cache,
+    `street-explorer-gpx-${formatFileTimestamp()}.zip`
+  );
+  file.create({ overwrite: true });
+  const handle = file.open();
+  let archiveError: Error | null = null;
+  let finalized = false;
+  let pointCount = 0;
 
   try {
-    legacy = parseLegacyV4Backup(await selected.text());
-  } catch (error) {
-    throw new BackupExportError("prepare", error);
+    const archive = new Zip((error, chunk, final) => {
+      if (error) {
+        archiveError = error;
+        return;
+      }
+
+      try {
+        handle.writeBytes(chunk);
+        finalized = final;
+      } catch (writeError) {
+        archiveError = toError(writeError);
+      }
+    });
+
+    for (const walk of walks) {
+      const points = await getGpsPointsForSession(walk.id);
+      pointCount += points.length;
+      const entry = new ZipDeflate(buildBulkGpxFilename(walk), { level: 6 });
+      archive.add(entry);
+      entry.push(strToU8(buildGpx(walk, points)), true);
+
+      if (archiveError) {
+        throw archiveError;
+      }
+    }
+
+    archive.end();
+
+    if (archiveError) {
+      throw archiveError;
+    }
+
+    if (!finalized) {
+      throw new Error("The GPX ZIP archive did not finish writing.");
+    }
+  } finally {
+    handle.close();
   }
 
-  const file = createBackupV5CacheFile();
-  let manifest: BackupV5Manifest;
-
-  try {
-    manifest = await writeLegacyV4AsBackupV5(file, legacy, APP_VERSION);
-  } catch (error) {
-    throw new BackupExportError("write", error);
+  if (!file.exists || file.size <= 0) {
+    throw new Error("The GPX ZIP archive was empty.");
   }
 
-  await shareBackupV5File(file);
-  const verified = await verifyExternallySavedBackup(manifest.backupId);
-  return toBackupV5OperationResult(verified.manifest, verified.fileSize);
+  await shareFile(file.uri, {
+    dialogTitle: "Export all Street Explorer GPX files",
+    mimeType: "application/zip",
+    UTI: "public.zip-archive"
+  });
+
+  return {
+    fileSize: file.size,
+    pointCount,
+    walkCount: walks.length
+  };
 }
 
-export async function importBackupV5() {
+export async function selectBackupV5ForRestore(): Promise<
+  BackupV5RestoreCandidate | null
+> {
   const file = await pickBackupFile("*/*");
 
   if (!file) {
-    return false;
+    return null;
   }
 
   const inspection = await inspectBackupV5File(file);
+  const { manifest } = inspection;
+
+  return {
+    file,
+    inspection,
+    preview: {
+      appVersion: manifest.appVersion,
+      expeditionSealCount: manifest.expeditionSystem?.seals.length ?? 0,
+      exportedAt: manifest.exportedAt,
+      fileSize: inspection.fileSize,
+      medalCount: manifest.medalSystem.collectedMedals.length,
+      pointCount: manifest.totals.pointCount,
+      sessionCount: manifest.totals.sessionCount,
+      zoneAchievementCount: manifest.zoneAchievements.length
+    }
+  };
+}
+
+export async function restoreBackupV5(candidate: BackupV5RestoreCandidate) {
+  const inspection = await inspectBackupV5File(
+    candidate.file,
+    candidate.inspection.manifest.backupId
+  );
   const activeRecording = await getActiveRecordingSettings();
 
   if (activeRecording) {
@@ -143,7 +236,7 @@ export async function importBackupV5() {
     await discardAllGpsPersistenceForDataReplacement();
     await restoreBackupV5Data(
       inspection.manifest,
-      readBackupV5Blocks(file, inspection.manifest)
+      readBackupV5Blocks(candidate.file, inspection.manifest)
     );
     clearBackgroundLocationSessionHint();
     await discardPendingBackgroundLocationBatches();
@@ -151,8 +244,6 @@ export async function importBackupV5() {
     reopenGpsAdmission?.();
     reopenOutboxAdmission();
   }
-
-  return true;
 }
 
 async function prepareBackupExport() {
@@ -219,40 +310,6 @@ async function pickBackupFile(type: string) {
   return new File(result.assets[0].uri);
 }
 
-function parseLegacyV4Backup(rawJson: string): StreetExplorerBackup {
-  const parsed = JSON.parse(rawJson) as Partial<StreetExplorerBackup> & {
-    version?: number;
-  };
-
-  if (
-    parsed.version !== 4 ||
-    !Array.isArray(parsed.sessions) ||
-    !Array.isArray(parsed.points) ||
-    !Array.isArray(parsed.routeSnapshots) ||
-    !Array.isArray(parsed.zoneAchievements) ||
-    !parsed.medalSystem ||
-    !Array.isArray(parsed.medalSystem.acquisitionEvents) ||
-    !Array.isArray(parsed.medalSystem.collectedMedals) ||
-    !Array.isArray(parsed.medalSystem.retroScanSettings)
-  ) {
-    throw new Error(
-      "The temporary converter accepts complete Street Explorer V4 JSON backups only."
-    );
-  }
-
-  const backup: StreetExplorerBackup = {
-    exportedAt: parsed.exportedAt ?? new Date().toISOString(),
-    medalSystem: parsed.medalSystem,
-    points: parsed.points,
-    routeSnapshots: parsed.routeSnapshots,
-    sessions: parsed.sessions,
-    version: 4,
-    zoneAchievements: parsed.zoneAchievements
-  };
-  validateLegacyBackupV4(backup);
-  return backup;
-}
-
 function toBackupV5OperationResult(
   manifest: BackupV5Manifest,
   fileSize: number
@@ -287,41 +344,10 @@ function getErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
-function buildGpx(walk: WalkSession, points: GpsPoint[]) {
-  const trackName = escapeXml(walk.displayName || `Street Explorer ${walk.id}`);
-  const trackPoints = points
-    .map(
-      (point) => `      <trkpt lat="${point.latitude}" lon="${point.longitude}">
-        <time>${escapeXml(point.timestamp)}</time>
-      </trkpt>`
-    )
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Street Explorer" xmlns="http://www.topografix.com/GPX/1/1">
-  <metadata>
-    <name>${trackName}</name>
-    <time>${escapeXml(walk.startedAt)}</time>
-  </metadata>
-  <trk>
-    <name>${trackName}</name>
-    <trkseg>
-${trackPoints}
-    </trkseg>
-  </trk>
-</gpx>`;
-}
-
-
-function escapeXml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
-}
-
 function formatFileTimestamp() {
   return new Date().toISOString().replace(/[:.]/g, "-");
+}
+
+function toError(error: unknown) {
+  return error instanceof Error ? error : new Error(String(error));
 }

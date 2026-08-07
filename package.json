@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.16.22",
+  "version": "0.16.27",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -11,6 +11,8 @@
     "ios": "expo start --ios",
     "test:medals": "node scripts/test-medal-enclosures.js",
     "test:backup": "node scripts/test-backup-v5.js",
+    "test:gpx": "node scripts/test-gpx-export.js",
+    "test:expeditions": "node scripts/test-district-expeditions.js",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test:geometry": "node scripts/test-exploration-geometry.js",

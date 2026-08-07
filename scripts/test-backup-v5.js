@@ -244,5 +244,73 @@ assert(
   "manifest totals describe logical sessions and physical archive blocks"
 );
 
+const expeditionManifest = createBackupV5Manifest({
+  appVersion: "0.16.24",
+  expeditionSystem: {
+    expeditions: [{
+      abandonedAt: null,
+      acceptedAt: "2026-08-02T08:00:00.000Z",
+      completedAt: "2026-08-02T09:00:00.000Z",
+      districtId: "relation/9",
+      districtName: "Test District",
+      id: "expedition-1",
+      kind: "close_loop",
+      localDate: "2026-08-02",
+      progress: 1,
+      slot: 1,
+      target: 1,
+      updatedAt: "2026-08-02T09:00:00.000Z"
+    }],
+    loopEvidence: [{
+      detectedAt: "2026-08-02T08:30:00.000Z",
+      expeditionId: "expedition-1",
+      sessionId: 1
+    }],
+    seals: [{
+      districtId: "relation/9",
+      districtName: "Test District",
+      earnedAt: "2026-08-02T09:00:00.000Z",
+      expeditionId: "expedition-1",
+      id: "seal-expedition-1",
+      kind: "close_loop",
+      localDate: "2026-08-02"
+    }]
+  },
+  exportedAt: "2026-08-02T12:00:00.000Z",
+  medalSystem: {
+    acquisitionEvents: [],
+    collectedMedals: [],
+    retroScanSettings: []
+  },
+  sessions: groupedSessions,
+  zoneAchievements: []
+});
+assertBackupV5Manifest(expeditionManifest);
+assert(
+  expeditionManifest.expeditionSystem.seals.length === 1,
+  "V5 manifests preserve district expedition choices, loop evidence, and seals"
+);
+
+let rejectedOrphanedExpeditionEvidence = false;
+try {
+  assertBackupV5Manifest({
+    ...expeditionManifest,
+    expeditionSystem: {
+      ...expeditionManifest.expeditionSystem,
+      loopEvidence: [{
+        detectedAt: "2026-08-02T08:30:00.000Z",
+        expeditionId: "expedition-1",
+        sessionId: 99999
+      }]
+    }
+  });
+} catch {
+  rejectedOrphanedExpeditionEvidence = true;
+}
+assert(
+  rejectedOrphanedExpeditionEvidence,
+  "V5 validation rejects expedition evidence for a missing walk"
+);
+
 console.log("Backup V5 regression checks passed.");
 

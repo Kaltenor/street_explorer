@@ -7,6 +7,7 @@ import type {
   RouteBridgeEvidence,
   WalkSession
 } from "../types/walk";
+import type { BackupDistrictExpeditionSystem } from "../types/expedition";
 
 export const BACKUP_V5_EXTENSION = "streetexplorer";
 export const BACKUP_V5_FORMAT = "street-explorer";
@@ -51,6 +52,7 @@ export type BackupMedalSystem = {
 
 export type BackupV5Metadata = {
   appVersion: string;
+  expeditionSystem?: BackupDistrictExpeditionSystem;
   exportedAt: string;
   medalSystem: BackupMedalSystem;
   sessions: WalkSession[];
@@ -522,6 +524,7 @@ export function assertBackupV5Manifest(
 
   assertBackupV5MedalSystem(value.medalSystem, sessionIds);
   assertBackupV5ZoneAchievements(value.zoneAchievements);
+  assertBackupV5ExpeditionSystem(value.expeditionSystem, sessionIds);
 }
 
 export function assertBackupV5Footer(
@@ -966,6 +969,126 @@ function assertBackupV5ZoneAchievements(achievements: unknown[]) {
       throw new Error("V5 backup contains invalid zone achievement data.");
     }
   }
+}
+
+function assertBackupV5ExpeditionSystem(
+  expeditionSystem: unknown,
+  sessionIds: ReadonlySet<number>
+) {
+  if (expeditionSystem === undefined) {
+    return;
+  }
+
+  if (
+    !isRecord(expeditionSystem) ||
+    !Array.isArray(expeditionSystem.expeditions) ||
+    !Array.isArray(expeditionSystem.loopEvidence) ||
+    !Array.isArray(expeditionSystem.seals)
+  ) {
+    throw new Error("V5 backup contains invalid expedition data.");
+  }
+
+  const kinds = new Set([
+    "close_loop",
+    "collect_medal",
+    "complete_street",
+    "explore_cells"
+  ]);
+  const expeditionIds = new Set<string>();
+  let activeCount = 0;
+
+  for (const expedition of expeditionSystem.expeditions as unknown[]) {
+    if (
+      !isRecord(expedition) ||
+      typeof expedition.id !== "string" ||
+      expeditionIds.has(expedition.id) ||
+      typeof expedition.districtId !== "string" ||
+      typeof expedition.districtName !== "string" ||
+      typeof expedition.localDate !== "string" ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(expedition.localDate) ||
+      !kinds.has(expedition.kind) ||
+      !Number.isInteger(expedition.slot) ||
+      expedition.slot < 0 ||
+      !Number.isInteger(expedition.target) ||
+      expedition.target <= 0 ||
+      !Number.isInteger(expedition.progress) ||
+      expedition.progress < 0 ||
+      !isNullableBackupDate(expedition.acceptedAt) ||
+      !isNullableBackupDate(expedition.abandonedAt) ||
+      !isNullableBackupDate(expedition.completedAt) ||
+      typeof expedition.updatedAt !== "string" ||
+      !Number.isFinite(new Date(expedition.updatedAt).getTime())
+    ) {
+      throw new Error("V5 backup contains an invalid district expedition.");
+    }
+
+    if (
+      expedition.acceptedAt !== null &&
+      expedition.abandonedAt === null &&
+      expedition.completedAt === null
+    ) {
+      activeCount += 1;
+    }
+    expeditionIds.add(expedition.id);
+  }
+
+  if (activeCount > 1) {
+    throw new Error("V5 backup contains multiple active expeditions.");
+  }
+
+  const sealIds = new Set<string>();
+  const sealedExpeditionIds = new Set<string>();
+
+  for (const seal of expeditionSystem.seals as unknown[]) {
+    if (
+      !isRecord(seal) ||
+      typeof seal.id !== "string" ||
+      sealIds.has(seal.id) ||
+      typeof seal.expeditionId !== "string" ||
+      !expeditionIds.has(seal.expeditionId) ||
+      sealedExpeditionIds.has(seal.expeditionId) ||
+      typeof seal.districtId !== "string" ||
+      typeof seal.districtName !== "string" ||
+      typeof seal.localDate !== "string" ||
+      !kinds.has(seal.kind) ||
+      typeof seal.earnedAt !== "string" ||
+      !Number.isFinite(new Date(seal.earnedAt).getTime())
+    ) {
+      throw new Error("V5 backup contains an invalid expedition seal.");
+    }
+
+    sealIds.add(seal.id);
+    sealedExpeditionIds.add(seal.expeditionId);
+  }
+
+  const evidenceKeys = new Set<string>();
+
+  for (const evidence of expeditionSystem.loopEvidence as unknown[]) {
+    const key = isRecord(evidence)
+      ? `${String(evidence.expeditionId)}:${String(evidence.sessionId)}`
+      : "";
+
+    if (
+      !isRecord(evidence) ||
+      typeof evidence.expeditionId !== "string" ||
+      !expeditionIds.has(evidence.expeditionId) ||
+      !Number.isInteger(evidence.sessionId) ||
+      !sessionIds.has(evidence.sessionId) ||
+      evidenceKeys.has(key) ||
+      typeof evidence.detectedAt !== "string" ||
+      !Number.isFinite(new Date(evidence.detectedAt).getTime())
+    ) {
+      throw new Error("V5 backup contains invalid expedition loop evidence.");
+    }
+
+    evidenceKeys.add(key);
+  }
+}
+
+function isNullableBackupDate(value: unknown) {
+  return value === null || (
+    typeof value === "string" && Number.isFinite(new Date(value).getTime())
+  );
 }
 
 function isBackupV5RouteBridgeEvidence(

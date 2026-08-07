@@ -1,7 +1,13 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
-import type { CompletionScope, ZoneAchievement } from "./completionRepository";
+import {
+  mapExpeditionRow,
+  mapLoopEvidenceRow,
+  mapSealRow
+} from "./expeditionRepository";
+import type { DistrictExpeditionKind } from "../types/expedition";
+import type { CompletionScope } from "./completionRepository";
 import { APP_VERSION } from "../constants/config";
 import type {
   BackupV5Manifest,
@@ -66,51 +72,6 @@ type FinishWalkInput = {
   durationSeconds: number;
   stepCount: number;
 };
-
-export type StreetExplorerBackup = {
-  exportedAt: string;
-  medalSystem: {
-    acquisitionEvents: Array<{
-      id: number;
-      albumId: string;
-      medalId: string;
-      sessionId: number | null;
-      reason: "recording" | "retro_scan";
-      enclosureId: string;
-      anchorCellId: string;
-      enclosureAreaSquareMeters: number;
-      enclosureCellIds: string[];
-      acquiredAt: string;
-    }>;
-    collectedMedals: Array<{
-      albumId: string;
-      medalId: string;
-      acquisitionEventId: number;
-      presentationState: "pending" | "presenting" | "presented";
-      presentedAt: string | null;
-    }>;
-    retroScanSettings: Array<{
-      key: string;
-      value: string;
-    }>;
-  };
-  points: GpsPoint[];
-  routeSnapshots: Array<{
-    algorithmVersion: number;
-    createdAt: string;
-    segments: RenderedRouteSegment[];
-    sessionId: number;
-    sourceMaxPointId?: number;
-    sourcePointCount: number;
-  }>;
-  sessions: WalkSession[];
-  zoneAchievements: ZoneAchievement[];
-  version: 4;
-};
-export function validateLegacyBackupV4(backup: StreetExplorerBackup) {
-  validateBackupData(backup);
-}
-
 
 export async function createWalkSession(input: CreateWalkInput) {
   const db = await getDatabase();
@@ -1114,9 +1075,62 @@ export async function withBackupV5Snapshot<T>(
       FROM zone_achievements
       ORDER BY completed_at
     `);
+    const expeditionRows = await transaction.getAllAsync<{
+      abandoned_at: string | null;
+      accepted_at: string | null;
+      completed_at: string | null;
+      district_id: string;
+      district_name: string;
+      id: string;
+      kind: DistrictExpeditionKind;
+      local_date: string;
+      progress: number;
+      slot: number;
+      target: number;
+      updated_at: string;
+    }>(`
+      SELECT id, district_id, district_name, local_date, slot, kind, target,
+        progress, accepted_at, abandoned_at, completed_at, updated_at
+      FROM district_expeditions
+      ORDER BY local_date, district_id, slot
+    `);
+    const expeditionSealRows = await transaction.getAllAsync<{
+      district_id: string;
+      district_name: string;
+      earned_at: string;
+      expedition_id: string;
+      id: string;
+      kind: DistrictExpeditionKind;
+      local_date: string;
+    }>(`
+      SELECT id, expedition_id, district_id, district_name, local_date, kind,
+        earned_at
+      FROM district_expedition_seals
+      ORDER BY earned_at, id
+    `);
+    const expeditionLoopEvidenceRows = await transaction.getAllAsync<{
+      detected_at: string;
+      expedition_id: string;
+      session_id: number;
+    }>(`
+      SELECT evidence.expedition_id, evidence.session_id, evidence.detected_at
+      FROM district_expedition_loop_evidence AS evidence
+      JOIN walk_sessions ON walk_sessions.id = evidence.session_id
+      WHERE walk_sessions.ended_at > walk_sessions.started_at
+        AND NOT EXISTS (
+          SELECT 1 FROM pending_recording_discards
+          WHERE session_id = walk_sessions.id
+        )
+      ORDER BY evidence.expedition_id, evidence.session_id
+    `);
 
     const metadata: BackupV5Metadata = {
       appVersion: APP_VERSION,
+      expeditionSystem: {
+        expeditions: expeditionRows.map(mapExpeditionRow),
+        loopEvidence: expeditionLoopEvidenceRows.map(mapLoopEvidenceRow),
+        seals: expeditionSealRows.map(mapSealRow)
+      },
       exportedAt: new Date().toISOString(),
       medalSystem: {
         acquisitionEvents: medalEventRows.map((row) => ({
@@ -1249,6 +1263,9 @@ export async function restoreBackupV5Data(
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
+      DELETE FROM district_expedition_loop_evidence;
+      DELETE FROM district_expedition_seals;
+      DELETE FROM district_expeditions;
       DELETE FROM street_completion_session_coverage;
       DELETE FROM street_completion_segments;
       DELETE FROM street_completion_v1_evidence;
@@ -1471,137 +1488,64 @@ export async function restoreBackupV5Data(
         achievement.geometryFingerprint
       );
     }
+
+    const expeditionSystem = manifest.expeditionSystem ?? {
+      expeditions: [],
+      loopEvidence: [],
+      seals: []
+    };
+
+    for (const expedition of expeditionSystem.expeditions) {
+      await transaction.runAsync(
+        `INSERT INTO district_expeditions (
+          id, district_id, district_name, local_date, slot, kind, target,
+          progress, accepted_at, abandoned_at, completed_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        expedition.id,
+        expedition.districtId,
+        expedition.districtName,
+        expedition.localDate,
+        expedition.slot,
+        expedition.kind,
+        expedition.target,
+        expedition.progress,
+        expedition.acceptedAt,
+        expedition.abandonedAt,
+        expedition.completedAt,
+        expedition.updatedAt
+      );
+    }
+
+    for (const seal of expeditionSystem.seals) {
+      await transaction.runAsync(
+        `INSERT INTO district_expedition_seals (
+          id, expedition_id, district_id, district_name, local_date, kind,
+          earned_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        seal.id,
+        seal.expeditionId,
+        seal.districtId,
+        seal.districtName,
+        seal.localDate,
+        seal.kind,
+        seal.earnedAt
+      );
+    }
+
+    for (const evidence of expeditionSystem.loopEvidence) {
+      await transaction.runAsync(
+        `INSERT INTO district_expedition_loop_evidence (
+          expedition_id, session_id, detected_at
+        ) VALUES (?, ?, ?)`,
+        evidence.expeditionId,
+        evidence.sessionId,
+        evidence.detectedAt
+      );
+    }
   });
 }
 
 const BACKUP_V5_POINT_INSERT_BATCH_SIZE = 100;
-function validateBackupData(backup: StreetExplorerBackup) {
-  const sessionIds = new Set<number>();
-
-  for (const session of backup.sessions) {
-    const startedAt = new Date(session.startedAt).getTime();
-    const endedAt = new Date(session.endedAt).getTime();
-
-    if (
-      !Number.isInteger(session.id) ||
-      session.id <= 0 ||
-      sessionIds.has(session.id) ||
-      session.activityMode !== "walk" ||
-      !Number.isFinite(startedAt) ||
-      !Number.isFinite(endedAt) ||
-      endedAt <= startedAt ||
-      !Number.isFinite(session.distanceMeters) ||
-      session.distanceMeters < 0 ||
-      !Number.isFinite(session.durationSeconds) ||
-      session.durationSeconds < 0 ||
-      !Number.isInteger(session.stepCount) ||
-      session.stepCount < 0
-    ) {
-      throw new Error("Backup contains invalid session metadata.");
-    }
-
-    sessionIds.add(session.id);
-  }
-
-  const pointIds = new Set<number>();
-
-  for (const point of backup.points) {
-    if (
-      !Number.isInteger(point.id) ||
-      (point.id ?? 0) <= 0 ||
-      pointIds.has(point.id as number) ||
-      !Number.isInteger(point.sessionId) ||
-      !sessionIds.has(point.sessionId as number) ||
-      !Number.isInteger(point.pointIndex) ||
-      point.pointIndex < 0 ||
-      !Number.isFinite(point.latitude) ||
-      !Number.isFinite(point.longitude) ||
-      !Number.isFinite(new Date(point.timestamp).getTime()) ||
-      (point.accuracy !== null && !Number.isFinite(point.accuracy))
-    ) {
-      throw new Error("Backup contains an invalid or duplicate GPS point.");
-    }
-
-    pointIds.add(point.id as number);
-  }
-
-  const snapshotSessionIds = new Set<number>();
-
-  for (const snapshot of backup.routeSnapshots) {
-    if (
-      snapshotSessionIds.has(snapshot.sessionId) ||
-      !sessionIds.has(snapshot.sessionId) ||
-      !areRenderedRouteSegments(snapshot.segments) ||
-      !Number.isInteger(snapshot.sourcePointCount) ||
-      snapshot.sourcePointCount < 0 ||
-      !Number.isInteger(snapshot.algorithmVersion) ||
-      !Number.isFinite(new Date(snapshot.createdAt).getTime())
-    ) {
-      throw new Error("Backup contains an invalid route snapshot.");
-    }
-
-    if (
-      snapshot.sourceMaxPointId !== undefined &&
-      (!Number.isInteger(snapshot.sourceMaxPointId) || snapshot.sourceMaxPointId < 0)
-    ) {
-      throw new Error("Backup contains an invalid route snapshot GPS generation.");
-    }
-
-    snapshotSessionIds.add(snapshot.sessionId);
-  }
-
-  const eventIds = new Set<number>();
-
-  for (const event of backup.medalSystem.acquisitionEvents) {
-    if (
-      !Number.isInteger(event.id) ||
-      event.id <= 0 ||
-      eventIds.has(event.id) ||
-      !event.albumId ||
-      !event.medalId ||
-      (event.sessionId !== null && !sessionIds.has(event.sessionId)) ||
-      !Array.isArray(event.enclosureCellIds)
-    ) {
-      throw new Error("Backup contains an invalid medal acquisition event.");
-    }
-
-    eventIds.add(event.id);
-  }
-
-  for (const medal of backup.medalSystem.collectedMedals) {
-    if (
-      !medal.albumId ||
-      !medal.medalId ||
-      !eventIds.has(medal.acquisitionEventId) ||
-      !["pending", "presenting", "presented"].includes(medal.presentationState)
-    ) {
-      throw new Error("Backup contains an invalid collected medal.");
-    }
-  }
-
-  for (const setting of backup.medalSystem.retroScanSettings) {
-    if (typeof setting.key !== "string" || typeof setting.value !== "string") {
-      throw new Error("Backup contains invalid medal scan settings.");
-    }
-  }
-
-  for (const achievement of backup.zoneAchievements) {
-    if (
-      !achievement.zoneId ||
-      !achievement.zoneName ||
-      !["country", "city", "district"].includes(achievement.zoneType) ||
-      !Number.isInteger(achievement.exploredCells) ||
-      achievement.exploredCells < 0 ||
-      !Number.isInteger(achievement.totalZoneCells) ||
-      achievement.totalZoneCells <= 0 ||
-      !Number.isFinite(new Date(achievement.completedAt).getTime()) ||
-      !achievement.geometryFingerprint
-    ) {
-      throw new Error("Backup contains an invalid zone achievement.");
-    }
-  }
-}
-
 function parseStringArray(value: string) {
   try {
     const parsed = JSON.parse(value) as unknown;
@@ -1635,6 +1579,9 @@ export async function deleteAllData() {
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
+      DELETE FROM district_expedition_loop_evidence;
+      DELETE FROM district_expedition_seals;
+      DELETE FROM district_expeditions;
       DELETE FROM street_completion_session_coverage;
       DELETE FROM street_completion_segments;
       DELETE FROM street_completion_v1_evidence;

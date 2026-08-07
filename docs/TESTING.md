@@ -26,6 +26,7 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 ```powershell
 npm run typecheck
 npm run test:backup
+npm run test:expeditions
 npm run test:geometry
 npm run test:ui
 npm run test:medals
@@ -42,9 +43,11 @@ npx expo install --check
 
 `test:geometry` additionally asserts the bounded performance architecture: localized duration timing, three-second/conditional tail synchronization, non-starving coalesced and memoized map surfaces, geometry-changing native polygon identities, anchor-gated medals, hidden-panel unmounting, History virtualization, scoped path SQL, migration indexes, efficient completion aggregates, concurrent startup drain, and render instrumentation.
 
-`test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, and consistent manifest totals.
+`test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, consistent manifest totals, expedition-state preservation, and rejection of orphaned loop evidence.
 
-`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, all three persisted appearance choices, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs and objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, the shared Medals Atlas shell, interactive iOS edge-swipe activation/completion/cancellation thresholds and all five modal bindings, and summary-first route/report wiring.
+`test:expeditions` verifies deterministic three-choice generation, local-day rollover, viable fallback choices, one-active database enforcement, finalized-walk loop evidence, map/HUD wiring, and backup/restore/delete-all preservation.
+
+`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, all three persisted appearance choices, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
 
 `test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
@@ -422,25 +425,85 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 8. Export GPX for a recording.
 9. Delete a bad recording if needed.
 
+## Micro Reward Audio V0.16.27 iPhone Manual Test
+
+Prerequisites: run Street Explorer 0.16.27 in a compatible iOS development client (build 142 or newer for a matching release binary), allow foreground location, and prepare a qualifying enclosure or completable expedition. Start a music track and then a spoken-word podcast in another app so both content types can be checked. Headphones and the phone speaker should each be tested when practical; no network is required for the bundled sounds.
+
+1. Launch Street Explorer while external audio is already playing. Expected: the music or podcast continues without pausing, stopping, restarting, or lowering volume.
+2. Trigger an ordinary location-change stamp. Expected: its ink sound begins with the visible stamp and plays over the external audio; the other app continues uninterrupted.
+3. Close a qualifying new enclosure. Expected: the ink impact begins immediately as the reward stamp appears, the victory jingle follows about 90ms later, and neither cue pauses or ducks the external audio.
+4. Complete an expedition. Expected: the same immediate ink-then-jingle order plays exactly once over the continuing external audio.
+5. Trigger another reward after the first jingle has ended. Expected: both retained players restart from their beginning; no cue is missing, delayed by player creation, or resumed from its previous end position.
+6. Repeat steps 2–5 with Reduce Motion enabled, Bluetooth/headphones when available, and both music and podcast playback. Expected: the visual motion changes as documented, but cue order, prompt start, and external-audio mixing remain consistent.
+
+Automated checks verify static player creation, removal of the delayed dynamic import path, 90ms ink-before-jingle sequencing, `mixWithOthers` configuration, TypeScript integration, and iOS asset bundling. Physical-device verification remains required because simulator/export checks cannot prove iOS audio-session interaction with real media apps or subjective sound timing.
+
+## Micro Reward Stamps V0.16.26 iPhone Manual Test
+
+Prerequisites: run Street Explorer 0.16.26 in a compatible iOS development client (build 141 or newer for a matching release binary), allow foreground location, and use a walkable location where a qualifying enclosure can be closed. Select an official district and accept an expedition that can be completed with available local evidence. Network is needed only for uncached MapKit, boundary, street, or medal data; the reward assets themselves are offline.
+
+1. Select a district or city objective. Expected: the existing large location-selection stamp keeps its ordinary short ink sound and does not play the victory jingle.
+2. Start a walk and close a new qualifying enclosure. Expected: the enclosed surface fills, one large map-centered `AREA ENCLOSED` stamp uses the exact location-change scale/strike and reports the number of newly revealed cells, the dedicated victory jingle and medium haptic play once, and recording/map interaction continues without pausing.
+3. Keep walking after the stamp dismisses without creating another enclosure. Expected: the same enclosure does not replay the stamp or jingle. Close a second distinct qualifying enclosure; exactly one new reward plays for that closure.
+4. Complete the accepted expedition and wait for durable finalization. Expected: one `EXPEDITION COMPLETE` stamp uses the same strike and victory jingle, one permanent seal is added, and reopening the app does not replay the old reward.
+5. Enable iOS Reduce Motion and repeat a qualifying closure. Expected: the reward remains visible for the reduced duration, uses the final stamp state instead of the strike sequence, continues to avoid blocking input, and still plays the reward audio/haptic.
+6. Switch the app to French and repeat both reward types. Expected: localized `ZONE ENCLOSE`/`EXPÉDITION ACCOMPLIE` wording fits inside the existing stamp, including the singular/plural revealed-cell detail.
+
+Automated checks cover the locally bundled audio asset, source provenance file, reward-message routing, default ink fallback, TypeScript integration, and enclosure geometry. Physical-device verification remains required for audio balance, haptic timing, non-blocking interaction, Reduce Motion presentation, and localized visual fit.
+
+## Expedition Navigation Icon iPhone Manual Test
+
+Prerequisites: run Street Explorer 0.16.25 in a compatible iOS development client (build 140 or newer for a matching release binary). Have one official level-9 district available in Completion, but begin with no district objective selected. Network is required only if its boundary is not cached.
+
+1. Inspect the bottom icon bar. Expected: a permanent compass Expeditions target appears directly with Details, History, Completion, and Medals; Options remains separated at the far edge, and every inactive target remains at least 44 points.
+2. Tap Expeditions with no district objective. Expected: its icon alone gains the engraved gold selected state and localized label, the full-screen Atlas journal opens over the map, and an explicit no-district explanation appears instead of a blank or loading screen.
+3. Tap Select a district. Expected: Expeditions closes and Completion opens, preserving the normal Atlas transition and back behavior. Select an official district objective.
+4. Tap Expeditions again. Expected: the journal opens directly with that district’s three daily choices. Close it using both the header Back action and the iOS left-edge swipe; each returns to the live map and collapses the compass destination to its icon.
+5. Tap the expedition progress line in the district objective HUD. Expected: it opens the same journal and state as the permanent compass destination, with no duplicate modal or divergent progress.
+
+Automated UI coverage verifies permanent dock wiring, selected-state styling, the shared Atlas gesture, and the no-district Completion handoff. Physical-device verification remains required for icon spacing, localized expanded-label fit, touch comfort, and native modal gestures across supported iPhone widths.
+
+## District Expeditions V1 iPhone Manual Test
+
+Prerequisites: run the Street Explorer 0.16.25 bundle in a compatible iOS development client (build 140 or newer for a matching release binary), allow foreground location, and select an exact official level-9 district objective. Cache some OSM streets in that district; for complete coverage, use a district with at least one uncollected landmark medal. Stop any active recording before accepting an expedition. Network is needed only to obtain uncached boundaries, streets, MapKit tiles, or medal metadata; already cached gameplay and expedition progress are offline.
+
+1. Tap the expedition line in the district objective HUD. Expected: the Atlas journal opens with exactly three choices for the current local date and district, a seal count, and explicit wording that seals have no currency or ranking.
+2. Close and reopen the journal, then force-close and reopen the app. Expected: the same three choices, kinds, and targets remain for that district and date.
+3. Accept a new-cell expedition. Expected: it becomes the sole active expedition, begins at 0, appears in the objective HUD, and pre-existing cells do not count.
+4. Start walking inside the district and explore enough genuinely new cells. Expected: live map exploration behaves normally; after durable Stop/finalization, expedition progress increases only for qualifying district cells created after acceptance.
+5. Complete the target and wait for finalization. Expected: one EXPEDITION COMPLETE stamp appears, the expedition gains a completed state, exactly one permanent seal is added, and reopening the app keeps it earned without adding a duplicate.
+6. Accept another available expedition, then switch to a second district objective. Expected: the first expedition remains the only global active mission and the second district cannot accept another until the first is abandoned or completed; its journal still shows its own deterministic daily choices.
+7. Return to the first district and abandon the active expedition. Expected: the HUD clears its active progress, no seal is awarded, and a different expedition can now be accepted. Restarting the abandoned choice resets its post-acceptance progress boundary.
+8. While a recording is active, open the journal and try to accept or restart a choice. Expected: acceptance is disabled/blocked while recording; the recording continues safely and no ambiguous progress boundary is created.
+9. Accept a close-loop expedition, record a qualifying loop, and Stop. Expected: the provisional live closure does not complete the expedition before the walk is finalized; afterward progress becomes 1 and awards one seal. Repeat with an underfilled walk that is discarded during recovery. Expected: its provisional evidence does not count.
+10. If offered, accept a street expedition and finish an incomplete cached OSM street after acceptance. Expected: progress changes only when the street obtains its durable completion timestamp inside the selected district. If offered, repeat for an uncollected district medal. Expected: only a medal collected after acceptance and anchored inside the district counts.
+11. Leave an expedition unfinished across local midnight and reopen. Expected: the old active expedition remains reviewable and can be finished or abandoned, while the current day has a new deterministic set of three choices.
+12. Create and verify a Backup V5 archive after earning at least one seal and leaving another expedition active. Restore that archive. Expected: restore preview reports the seal count; the active expedition, progress, daily choices, loop evidence, and permanent seals return exactly once. Force-close and reopen to confirm persistence.
+13. Disable network after caching the district and repeat journal open, acceptance, cell progress, relaunch, and abandonment. Expected: all expedition state and qualifying cached gameplay remain functional offline.
+
+Automated coverage already verifies generation, local rollover, one-active enforcement, finalized loop evidence, persistence wiring, and V5 manifest validation. Physical-device verification remains required for MapKit/HUD interaction, live GPS finalization, midnight behavior, real OSM street/medal opportunity filtering, stamp presentation, and Files round-trip restore.
+
 ## Backup V5 Manual Test
 
-Prerequisites: serve the Street Explorer 0.12.0 JavaScript bundle to the already-installed compatible development client (build 92 is sufficient; build 96 is the next release build), allow Files access, stop any active recording, keep one known-good V4 JSON backup for conversion, and ensure the device has enough free space for both the source and converted archive. For archive-block coverage, use a database with at least 25 finalized walks. Network and location permissions are not required for export or restore.
+Prerequisites: run the Street Explorer 0.16.25 bundle in a compatible development client (iOS build 140 or newer for a matching release binary), allow Files access, stop any active recording, keep one known-good verified V5 archive, and ensure the device has enough free space for a backup plus a GPX ZIP. For archive-block coverage, use a database with at least 25 finalized walks. Include named walks with accents and filesystem-reserved punctuation if practical. Network and location permissions are not required for export or restore.
 
-1. Start a recording, open History, and tap Backup. Expected: export is blocked and the active recording remains unchanged.
+1. Start a recording, open History, and tap Backup and Export all GPX in turn. Expected: each export is blocked, no partial shared file is reported as successful, and the active recording remains unchanged.
 2. Stop and save the recording, reopen History, and note the walk count, names, point counts, medals, zone achievements, and one frozen route containing an inferred bridge. Expected: this is the baseline for lossless restore.
 3. Tap Backup several times quickly. Expected: the first tap immediately shows Backup in progress, disables duplicate actions, and produces only one export. Choose Save to Files and save the `.streetexplorer` archive outside the app; after sharing, Files opens again for required verification and the app has not reported success yet.
 4. Cancel that verification picker. Expected: Backup failed identifies the Verify stage and does not claim the cache-only file is safe.
 5. Repeat Backup, save it to Files, then select that exact saved file in the verification picker. Expected: Backup verified reports its size, walk count, GPS-point count, and old-walk archive-block count.
 6. Repeat once but select a different V5 file during verification. Expected: verification rejects the mismatched backup identity.
 7. Force-close and reopen Street Explorer, then confirm the saved archive is still visible in Files. Expected: the external copy survives independently of the app cache.
-8. Tap Restore, confirm replacement, and select the verified V5 archive. Expected: Restore in progress appears immediately after confirmation, repeated data-tool taps are disabled, and the app restores all logical walks with their original IDs/names/times/counts, frozen route geometry and inferred evidence, medals, and zone achievements; no monthly archive block appears as a fake recording.
-9. Force-close and reopen after restore. Expected: the same restored history and map data persist, and derived exploration/street completion can rebuild from the exact frozen routes.
-10. Duplicate and truncate or alter a V5 archive on a computer, return it to Files, and try Restore. Expected: checksum/footer verification rejects it before local data is replaced; the existing history remains intact.
-11. In History, tap Convert V4, select the known-good complete V4 JSON, save the produced V5 file to Files, and reselect it for verification. Expected: conversion reports a verified V5 size/count summary without first importing V4 into the live database.
-12. Restore the converted V5 archive. Expected: every V4 session and raw GPS point is present, route snapshots are unchanged, and the archive is materially smaller than the original 52 MB JSON when the source contained duplicated confirmed-route points.
-13. Try Convert V4 with a V1-V3 file or incomplete JSON, and try Restore with any JSON file. Expected: both are rejected; restore accepts V5 only.
+8. Tap Restore and choose the verified V5 archive. Expected: Checking backup appears while the complete archive is validated; only afterward does a confirmation show export date, source app version, size, walk count, GPS-point count, medal count, zone-achievement count, and expedition-seal count. Local data has not changed.
+9. Cancel the restore confirmation. Expected: History and all progress remain unchanged, and another data-tool action can start normally.
+10. Duplicate and truncate or alter a V5 archive on a computer, return it to Files, and choose it through Restore. Expected: checksum/footer verification fails before any confirmation or local replacement; the existing history remains intact.
+11. Select the valid V5 archive again and confirm its preview. Expected: Restore in progress appears immediately, repeated data-tool taps are disabled, the same archive is revalidated, and all logical walks return with their original IDs/names/times/counts, frozen route geometry and inferred evidence, medals, zone achievements, expedition state, and seals; no monthly archive block appears as a fake recording.
+12. Force-close and reopen after restore. Expected: the same restored history and map data persist, and derived exploration/street completion can rebuild from the exact frozen routes.
+13. Try Restore with a V1-V4 or arbitrary JSON file. Expected: it is rejected during inspection; V5 is the only accepted restore format and no V4 conversion action is present.
 14. With at least 25 walks, repeat export/restore and inspect History. Expected: the newest 20 are stored as individual hot records, older walks share bounded monthly physical blocks, and all walks remain individually named/selectable/deletable.
-15. Tap a recording and Export GPX. Expected: the existing GPX share/save flow still works.
+15. Tap Export all GPX several times quickly and save the ZIP through the share sheet. Expected: Exporting all GPX files appears immediately, duplicate data actions are disabled, and only one archive is produced.
+16. Inspect that ZIP on a computer. Expected: it contains exactly one `.gpx` entry for every finalized walk; names are readable, unique by session ID, stripped of reserved filesystem characters, and each GPX has the recording name, start time, and complete accepted point stream.
+17. Tap a recording and Export GPX. Expected: the existing single-recording GPX share/save flow still works and its document content matches the corresponding bulk entry.
 
 ## Layer Controls Test
 

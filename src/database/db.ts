@@ -705,6 +705,69 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(27, "add_district_expeditions", async () => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS district_expeditions (
+        id TEXT PRIMARY KEY NOT NULL,
+        district_id TEXT NOT NULL,
+        district_name TEXT NOT NULL,
+        local_date TEXT NOT NULL,
+        slot INTEGER NOT NULL,
+        kind TEXT NOT NULL CHECK (
+          kind IN ('explore_cells', 'complete_street', 'close_loop', 'collect_medal')
+        ),
+        target INTEGER NOT NULL CHECK (target > 0),
+        progress INTEGER NOT NULL DEFAULT 0 CHECK (progress >= 0),
+        accepted_at TEXT,
+        abandoned_at TEXT,
+        completed_at TEXT,
+        updated_at TEXT NOT NULL,
+        UNIQUE (district_id, local_date, slot)
+      );
+
+      CREATE INDEX IF NOT EXISTS district_expeditions_daily_index
+        ON district_expeditions (district_id, local_date, slot);
+      CREATE INDEX IF NOT EXISTS district_expeditions_active_index
+        ON district_expeditions (accepted_at, completed_at, abandoned_at);
+
+      CREATE TABLE IF NOT EXISTS district_expedition_seals (
+        id TEXT PRIMARY KEY NOT NULL,
+        expedition_id TEXT NOT NULL UNIQUE,
+        district_id TEXT NOT NULL,
+        district_name TEXT NOT NULL,
+        local_date TEXT NOT NULL,
+        kind TEXT NOT NULL,
+        earned_at TEXT NOT NULL,
+        FOREIGN KEY (expedition_id) REFERENCES district_expeditions (id)
+          ON DELETE CASCADE
+      );
+
+      CREATE INDEX IF NOT EXISTS district_expedition_seals_earned_index
+        ON district_expedition_seals (earned_at DESC);
+
+      CREATE TABLE IF NOT EXISTS district_expedition_loop_evidence (
+        expedition_id TEXT NOT NULL,
+        session_id INTEGER NOT NULL,
+        detected_at TEXT NOT NULL,
+        PRIMARY KEY (expedition_id, session_id),
+        FOREIGN KEY (expedition_id) REFERENCES district_expeditions (id)
+          ON DELETE CASCADE,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id)
+          ON DELETE CASCADE
+      );
+    `);
+  });
+
+  await applyMigration(28, "enforce_one_active_district_expedition", async () => {
+    await db.execAsync(`
+      CREATE UNIQUE INDEX IF NOT EXISTS idx_district_expeditions_one_active
+        ON district_expeditions ((1))
+        WHERE accepted_at IS NOT NULL
+          AND abandoned_at IS NULL
+          AND completed_at IS NULL;
+    `);
+  });
+
 
   await seedBundledMedalAlbums(db);
   await db.runAsync(`

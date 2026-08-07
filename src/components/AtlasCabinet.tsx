@@ -15,6 +15,7 @@ import {
   View
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { createAudioPlayer } from "expo-audio";
 
 import { APP_COLORS, ATLAS_DISPLAY_FONT } from "../constants/theme";
 import {
@@ -23,7 +24,29 @@ import {
   shouldStartAtlasSwipeBack
 } from "../services/atlasSwipeBack";
 
-type AtlasSound = "ink" | "page";
+type AtlasSound = "ink" | "page" | "reward";
+type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
+
+const ATLAS_REWARD_JINGLE_DELAY_MS = 90;
+const ATLAS_SOUND_PLAYERS: Record<AtlasSound, AtlasAudioPlayer> = {
+  ink: createAudioPlayer(require("../../assets/sounds/atlas-stamp.wav")),
+  page: createAudioPlayer(require("../../assets/sounds/atlas-page.wav")),
+  reward: createAudioPlayer(require("../../assets/sounds/atlas-reward-jingle.wav"))
+};
+
+function playPreloadedAtlasSound(sound: AtlasSound) {
+  const player = ATLAS_SOUND_PLAYERS[sound];
+
+  if (player.currentTime <= 0) {
+    player.play();
+    return;
+  }
+
+  player.pause();
+  void player.seekTo(0)
+    .then(() => player.play())
+    .catch(() => undefined);
+}
 
 export function useReducedMotionPreference() {
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -47,19 +70,16 @@ export function useReducedMotionPreference() {
 }
 
 export function playAtlasSound(sound: AtlasSound) {
-  let player: { play: () => void; release: () => void } | null = null;
+  if (sound !== "reward") {
+    playPreloadedAtlasSound(sound);
+    return;
+  }
 
-  void import("expo-audio")
-    .then(({ createAudioPlayer }) => {
-      player = createAudioPlayer(
-        sound === "page"
-          ? require("../../assets/sounds/atlas-page.wav")
-          : require("../../assets/sounds/atlas-stamp.wav")
-      );
-      player.play();
-      setTimeout(() => player?.release(), sound === "page" ? 900 : 600);
-    })
-    .catch(() => undefined);
+  playPreloadedAtlasSound("ink");
+  setTimeout(
+    () => playPreloadedAtlasSound("reward"),
+    ATLAS_REWARD_JINGLE_DELAY_MS
+  );
 }
 
 
@@ -302,6 +322,7 @@ export type AtlasStampMessage = {
   detail: string;
   id: number;
   presentation?: "map-selection" | "standard";
+  sound?: "ink" | "reward";
   title: string;
 };
 
@@ -334,7 +355,7 @@ export function AtlasStamp({
 
     if (stampedMessageIdRef.current !== message.id) {
       stampedMessageIdRef.current = message.id;
-      playAtlasSound("ink");
+      playAtlasSound(message.sound ?? "ink");
       void import("expo-haptics")
         .then((Haptics) => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium))
         .catch(() => undefined);
@@ -601,4 +622,3 @@ const styles = createAppearanceStyles({
   subtitle: { color: APP_COLORS.textMuted, fontSize: 12, marginTop: 2 },
   title: { color: APP_COLORS.gold, fontFamily: ATLAS_DISPLAY_FONT, fontSize: 23, marginTop: 1 }
 });
-
