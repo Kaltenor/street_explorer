@@ -168,7 +168,7 @@ assert.match(summarySource, /setMapBoundaryContext/);
 assert.doesNotMatch(summarySource, /cityBoundaryZone|setDistrictZones/);
 assert.match(mapSource, /districtZones\.flatMap/);
 assert.match(mapSource, /const isSelectedDistrict/);
-assert.match(mapSource, /administrative-boundaries-/);
+assert.match(mapSource, /memo\(function AdministrativeBoundaryOverlay/);
 assert.doesNotMatch(mapSource, /unselectedDistrictZones|selectedZone\.geometry\.map/);
 assert.ok(summarySource.includes("const visibleMapBoundaryContext = useMemo"));
 assert.ok(mapSource.includes('key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}'));

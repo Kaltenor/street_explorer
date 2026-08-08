@@ -7,7 +7,7 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.22.2)
+## Current shipped medal contract (v0.22.3)
 
 - The frozen offline catalogue contains 851 medals across metropolitan France's INSEE 2023 top 100 communes. Paris v2 contains 60 reviewed landmarks covering every arrondissement; Lyon v1 contains 20 and Villeurbanne v1 contains 14.
 - City and parent-district objectives resolve one active album through the lazy generated manifest. Definitions seed only when that city is opened; unsupported cities receive no fallback album.

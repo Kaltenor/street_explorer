@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const now = () =>
   typeof globalThis.performance?.now === "function"
@@ -46,17 +46,14 @@ export function usePerformanceRenderCounter(
   reportEvery = 120
 ) {
   const renderCountRef = useRef(0);
+
+  if (typeof __DEV__ === "undefined" || !__DEV__) {
+    return;
+  }
+
   renderCountRef.current += 1;
 
-  useEffect(() => {
-    if (
-      typeof __DEV__ !== "undefined" &&
-      __DEV__ &&
-      renderCountRef.current % reportEvery === 0
-    ) {
-      console.info(
-        `[performance] ${label}: ${renderCountRef.current} renders`
-      );
-    }
-  });
+  if (renderCountRef.current % reportEvery === 0) {
+    console.info(`[performance] ${label}: ${renderCountRef.current} renders`);
+  }
 }

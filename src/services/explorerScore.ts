@@ -29,6 +29,7 @@ export type AreaComparisonProgress = {
 };
 
 export function calculateExplorerScore(input: {
+  derivedEnclosedCellIds?: readonly string[];
   exploredCellIds: readonly string[];
   expeditionSealCount?: number;
   loopFillCellIds?: readonly string[];
@@ -42,10 +43,11 @@ export function calculateExplorerScore(input: {
   }
 
   const contourCellIds = new Set([...walkedCellIds, ...persistedEnclosedCellIds]);
-  const derivedEnclosedCellIds = collectFillableEnclosedExplorationCellIds(
-    [...contourCellIds],
-    input.maxEnclosedAreaSquareMeters
-  );
+  const derivedEnclosedCellIds = input.derivedEnclosedCellIds ??
+    collectFillableEnclosedExplorationCellIds(
+      [...contourCellIds],
+      input.maxEnclosedAreaSquareMeters
+    );
   const enclosedCellIds = new Set([
     ...persistedEnclosedCellIds,
     ...derivedEnclosedCellIds

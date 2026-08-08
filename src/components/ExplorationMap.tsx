@@ -1,4 +1,12 @@
-import { Fragment, memo, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Fragment,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   AppearanceMode,
   createAppearanceStyles,
@@ -114,6 +122,10 @@ const ApplePoiFilteredMapView = MapView as unknown as ForwardRefExoticComponent<
 
 // Game-owned landmarks and medals replace MapKit's generic POI symbols.
 const GAMEPLAY_POI_CATEGORIES: AppleMapsPointOfInterestCategory[] = [];
+const GAMEPLAY_POI_FILTER = {
+  categories: GAMEPLAY_POI_CATEGORIES,
+  mode: "include" as const
+};
 const MEDAL_MARKER_MAX_LATITUDE_DELTA = 0.14;
 
 export const ExplorationMap = memo(function ExplorationMap({
@@ -479,21 +491,26 @@ export const ExplorationMap = memo(function ExplorationMap({
     hasUserMovedMapRef.current = true;
   }, [focusedMedal, isNativeMapReady, medalFocusRequestId]);
 
-  const handleRegionChangeComplete = (nextRegion: Region) => {
+  const handleRegionChangeComplete = useCallback((nextRegion: Region) => {
     setVisibleRegion(nextRegion);
     onVisibleRegionChange?.(nextRegion);
-  };
+  }, [onVisibleRegionChange]);
 
-  const handleMapPan = () => {
+  const handleMapPan = useCallback(() => {
     pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
-  };
+  }, []);
 
-  const handleMapLongPress = (event: LongPressEvent) => {
+  const handleMapLongPress = useCallback((event: LongPressEvent) => {
     pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
     onMapLongPress?.(event.nativeEvent.coordinate);
-  };
+  }, [onMapLongPress]);
+
+  const handleNativeMapReady = useCallback(() => {
+    setIsNativeMapReady(true);
+    onMapReady?.();
+  }, [onMapReady]);
 
   const fitToPoints = (
     points: GpsPoint[],
@@ -511,10 +528,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         ref={mapRef}
         key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}
         style={styles.map}
-        appleMapsPointsOfInterestFilter={{
-          categories: GAMEPLAY_POI_CATEGORIES,
-          mode: "include"
-        }}
+        appleMapsPointsOfInterestFilter={GAMEPLAY_POI_FILTER}
         mapType={
           Platform.OS === "ios" && !isDaylightAppearance(appearanceMode)
             ? "mutedStandard"
@@ -527,10 +541,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         }
         initialRegion={visibleRegion}
         onPanDrag={handleMapPan}
-        onMapReady={() => {
-          setIsNativeMapReady(true);
-          onMapReady?.();
-        }}
+        onMapReady={handleNativeMapReady}
         onLongPress={handleMapLongPress}
         onRegionChangeComplete={handleRegionChangeComplete}
         onTouchStart={onMapInteraction}
@@ -554,56 +565,11 @@ export const ExplorationMap = memo(function ExplorationMap({
           todayPolygons={todayNewPolygons}
         />
 
-        <Fragment
-          key={`administrative-boundaries-${cityZone?.id ?? "none"}-${selectedZone?.id ?? "none"}`}
-        >
-          {districtZones.flatMap((zone) =>
-            zone.geometry.map((ring, index) => {
-              const isSelectedDistrict =
-                selectedZone?.type === "district" && selectedZone.id === zone.id;
-
-              return (
-                <Polygon
-                  coordinates={ring}
-                  fillColor={
-                    isSelectedDistrict
-                      ? WALKING_COLORS.selectedZoneFill
-                      : "rgba(194, 138, 69, 0)"
-                  }
-                  key={`district-${zone.id}-${index}`}
-                  strokeColor={
-                    isSelectedDistrict
-                      ? WALKING_COLORS.districtBoundary
-                      : WALKING_COLORS.districtBoundaryMuted
-                  }
-                  strokeWidth={isSelectedDistrict ? 3 : 1.5}
-                />
-              );
-            })
-          )}
-
-          {cityZone
-            ? cityZone.geometry.map((ring, index) => (
-                <Polygon
-                  coordinates={ring}
-                  fillColor={
-                    selectedZone?.type === "city" && selectedZone.id === cityZone.id
-                      ? WALKING_COLORS.selectedZoneFill
-                      : "rgba(141, 82, 104, 0)"
-                  }
-                  key={`city-boundary-${cityZone.id}-${index}`}
-                  strokeColor={
-                    selectedZone?.type === "city" && selectedZone.id === cityZone.id
-                      ? WALKING_COLORS.cityBoundary
-                      : WALKING_COLORS.cityBoundaryMuted
-                  }
-                  strokeWidth={
-                    selectedZone?.type === "city" && selectedZone.id === cityZone.id ? 4 : 3
-                  }
-                />
-              ))
-            : null}
-        </Fragment>
+        <AdministrativeBoundaryOverlay
+          cityZone={cityZone}
+          districtZones={districtZones}
+          selectedZone={selectedZone}
+        />
 
         {shouldShowRoutes ? pathWalks.map((walk) => {
           const isHighlighted = highlightedSessionId === walk.id;
@@ -628,9 +594,9 @@ export const ExplorationMap = memo(function ExplorationMap({
               />
               {shouldShowMarkers && firstPoint ? (
                 <AtlasRouteMarker
-                  coordinate={pointToCoordinate(firstPoint)}
                   description={formatMarkerDate(walk.startedAt)}
                   kind="start"
+                  point={firstPoint}
                   title="Start"
                 />
               ) : null}
@@ -638,9 +604,9 @@ export const ExplorationMap = memo(function ExplorationMap({
               lastPoint &&
               (!isHighlighted || highlightedRouteDrawProgress >= 1) ? (
                 <AtlasRouteMarker
-                  coordinate={pointToCoordinate(lastPoint)}
                   description={formatMarkerDate(walk.endedAt)}
                   kind="end"
+                  point={lastPoint}
                   title="End"
                 />
               ) : null}
@@ -661,8 +627,8 @@ export const ExplorationMap = memo(function ExplorationMap({
             />
             {shouldShowMarkers ? (
               <AtlasRouteMarker
-                coordinate={pointToCoordinate(activeRouteStartPoint)}
                 kind="start"
+                point={activeRouteStartPoint}
                 title="Recording start"
               />
             ) : null}
@@ -671,9 +637,11 @@ export const ExplorationMap = memo(function ExplorationMap({
 
         {shouldShowMedalMarkers ? medals.map((medal) => (
           <AtlasMedalMarker
-            key={`medal-${medal.albumId}-${medal.id}`}
+            key={`medal-${medal.albumId}-${medal.id}-${
+              medal.isCollected ? "collected" : "locked"
+            }`}
             medal={medal}
-            onPress={() => onMedalPress?.(medal)}
+            onMedalPress={onMedalPress}
           />
         )) : null}
 
@@ -686,17 +654,81 @@ export const ExplorationMap = memo(function ExplorationMap({
   );
 });
 
+const AdministrativeBoundaryOverlay = memo(function AdministrativeBoundaryOverlay({
+  cityZone,
+  districtZones,
+  selectedZone
+}: {
+  cityZone: CachedZone | null;
+  districtZones: CachedZone[];
+  selectedZone: CachedZone | null;
+}) {
+  return (
+    <>
+      {districtZones.flatMap((zone) =>
+        zone.geometry.map((ring, index) => {
+          const isSelectedDistrict =
+            selectedZone?.type === "district" && selectedZone.id === zone.id;
+
+          return (
+            <Polygon
+              coordinates={ring}
+              fillColor={
+                isSelectedDistrict
+                  ? WALKING_COLORS.selectedZoneFill
+                  : "rgba(194, 138, 69, 0)"
+              }
+              key={`district-${zone.id}-${index}`}
+              strokeColor={
+                isSelectedDistrict
+                  ? WALKING_COLORS.districtBoundary
+                  : WALKING_COLORS.districtBoundaryMuted
+              }
+              strokeWidth={isSelectedDistrict ? 3 : 1.5}
+            />
+          );
+        })
+      )}
+
+      {cityZone
+        ? cityZone.geometry.map((ring, index) => {
+            const isSelectedCity =
+              selectedZone?.type === "city" && selectedZone.id === cityZone.id;
+
+            return (
+              <Polygon
+                coordinates={ring}
+                fillColor={
+                  isSelectedCity
+                    ? WALKING_COLORS.selectedZoneFill
+                    : "rgba(141, 82, 104, 0)"
+                }
+                key={`city-boundary-${cityZone.id}-${index}`}
+                strokeColor={
+                  isSelectedCity
+                    ? WALKING_COLORS.cityBoundary
+                    : WALKING_COLORS.cityBoundaryMuted
+                }
+                strokeWidth={isSelectedCity ? 4 : 3}
+              />
+            );
+          })
+        : null}
+    </>
+  );
+});
+
 type AtlasRouteMarkerProps = {
-  coordinate: { latitude: number; longitude: number };
   description?: string;
   kind: "end" | "start";
+  point: GpsPoint;
   title: string;
 };
 
-function AtlasRouteMarker({
-  coordinate,
+const AtlasRouteMarker = memo(function AtlasRouteMarker({
   description,
   kind,
+  point,
   title
 }: AtlasRouteMarkerProps) {
   const isStart = kind === "start";
@@ -705,7 +737,7 @@ function AtlasRouteMarker({
     <Marker
       accessibilityLabel={title}
       anchor={{ x: 0.5, y: 1 }}
-      coordinate={coordinate}
+      coordinate={pointToCoordinate(point)}
       description={description}
       tracksViewChanges={false}
       title={title}
@@ -729,14 +761,14 @@ function AtlasRouteMarker({
       </View>
     </Marker>
   );
-}
+});
 
-function AtlasMedalMarker({
+const AtlasMedalMarker = memo(function AtlasMedalMarker({
   medal,
-  onPress
+  onMedalPress
 }: {
   medal: CollectedMedal;
-  onPress: () => void;
+  onMedalPress?: (medal: CollectedMedal) => void;
 }) {
   return (
     <Marker
@@ -745,8 +777,9 @@ function AtlasMedalMarker({
       }
       anchor={{ x: 0.5, y: 0.5 }}
       coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
-      onPress={onPress}
+      onPress={onMedalPress ? () => onMedalPress(medal) : undefined}
       title={medal.name.en}
+      tracksViewChanges={false}
     >
       <View
         collapsable={false}
@@ -767,7 +800,7 @@ function AtlasMedalMarker({
       </View>
     </Marker>
   );
-}
+});
 
 type ExplorationSurfaceOverlayProps = {
   areaStyle: ReturnType<typeof getExploredAreaStyle>;
@@ -934,7 +967,11 @@ const PLAYER_SPRITE_LAYERS = PLAYER_DIRECTIONS.flatMap((direction) => {
   ];
 });
 
-function PlayerLocationMarker({ location }: { location: GpsPoint }) {
+const PlayerLocationMarker = memo(function PlayerLocationMarker({
+  location
+}: {
+  location: GpsPoint;
+}) {
   const movementAnchorRef = useRef(location);
   const [movement, setMovement] = useState<RecentMovement | null>(null);
   const [isGpsFresh, setIsGpsFresh] = useState(() =>
@@ -1061,7 +1098,7 @@ function PlayerLocationMarker({ location }: { location: GpsPoint }) {
       </View>
     </Marker>
   );
-}
+});
 
 type RecentMovement = {
   bearingDegrees: number;
@@ -1158,44 +1195,49 @@ function toRadians(value: number) {
   return (value * Math.PI) / 180;
 }
 
+const FAR_EXPLORED_AREA_STYLE = {
+  fillColor: "rgba(229, 122, 50, 0.54)",
+  outlineColor: "rgba(3, 35, 38, 0.48)",
+  outlineWidth: 1,
+  revealFillColor: "rgba(253, 186, 116, 0.70)",
+  todayFillColor: "rgba(245, 196, 81, 0.42)"
+};
+const MEDIUM_FAR_EXPLORED_AREA_STYLE = {
+  fillColor: "rgba(229, 122, 50, 0.48)",
+  outlineColor: "rgba(3, 30, 34, 0.64)",
+  outlineWidth: 1.5,
+  revealFillColor: "rgba(253, 186, 116, 0.66)",
+  todayFillColor: "rgba(245, 196, 81, 0.46)"
+};
+const MEDIUM_CLOSE_EXPLORED_AREA_STYLE = {
+  fillColor: "rgba(229, 122, 50, 0.42)",
+  outlineColor: "rgba(2, 25, 29, 0.80)",
+  outlineWidth: 2.4,
+  revealFillColor: "rgba(253, 186, 116, 0.62)",
+  todayFillColor: "rgba(245, 196, 81, 0.52)"
+};
+const CLOSE_EXPLORED_AREA_STYLE = {
+  fillColor: "rgba(229, 122, 50, 0.36)",
+  outlineColor: "rgba(1, 19, 23, 0.94)",
+  outlineWidth: 3.5,
+  revealFillColor: "rgba(253, 186, 116, 0.58)",
+  todayFillColor: "rgba(245, 196, 81, 0.58)"
+};
+
 function getExploredAreaStyle(latitudeDelta: number) {
   if (latitudeDelta > 0.07) {
-    return {
-      fillColor: "rgba(229, 122, 50, 0.54)",
-      outlineColor: "rgba(3, 35, 38, 0.48)",
-      outlineWidth: 1,
-      revealFillColor: "rgba(253, 186, 116, 0.70)",
-      todayFillColor: "rgba(245, 196, 81, 0.42)"
-    };
+    return FAR_EXPLORED_AREA_STYLE;
   }
 
   if (latitudeDelta > 0.035) {
-    return {
-      fillColor: "rgba(229, 122, 50, 0.48)",
-      outlineColor: "rgba(3, 30, 34, 0.64)",
-      outlineWidth: 1.5,
-      revealFillColor: "rgba(253, 186, 116, 0.66)",
-      todayFillColor: "rgba(245, 196, 81, 0.46)"
-    };
+    return MEDIUM_FAR_EXPLORED_AREA_STYLE;
   }
 
   if (latitudeDelta > 0.014) {
-    return {
-      fillColor: "rgba(229, 122, 50, 0.42)",
-      outlineColor: "rgba(2, 25, 29, 0.80)",
-      outlineWidth: 2.4,
-      revealFillColor: "rgba(253, 186, 116, 0.62)",
-      todayFillColor: "rgba(245, 196, 81, 0.52)"
-    };
+    return MEDIUM_CLOSE_EXPLORED_AREA_STYLE;
   }
 
-  return {
-    fillColor: "rgba(229, 122, 50, 0.36)",
-    outlineColor: "rgba(1, 19, 23, 0.94)",
-    outlineWidth: 3.5,
-    revealFillColor: "rgba(253, 186, 116, 0.58)",
-    todayFillColor: "rgba(245, 196, 81, 0.58)"
-  };
+  return CLOSE_EXPLORED_AREA_STYLE;
 }
 
 function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {

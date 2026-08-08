@@ -525,8 +525,10 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 10. Scroll a history containing at least 100 recordings and confirm rows stay responsive instead of mounting the complete list at once.
 11. Switch Paths through Today, Last 7 days, Selected, and All and confirm only that scope is loaded and displayed.
 12. During recording, keep moving through several rapid GPS fixes and confirm the player and active route move immediately while red/today contours refresh repeatedly at roughly 650ms intervals instead of waiting for GPS delivery to pause; medal collection may use the same short settle interval.
-13. Confirm development logs do not show continuously increasing MapScreen/ExplorationMap render counts while the map is idle. Investigate any recurring `[perf]` operation above its printed threshold.
-14. Export a large V5 backup and confirm bounded block compression completes without an iOS memory warning or empty file, then reselect the Files copy and confirm verification succeeds.
+13. With the 0.22.3 development bundle, pan repeatedly across a city with many district outlines and a 60-marker Paris album, then remain idle and walk through several fixes. Confirm static medals and boundaries do not flicker or continuously redraw, medal taps still open the correct item, and the animated player continues updating.
+14. Inspect development logs. Confirm idle time does not continuously increase MapScreen/ExplorationMap render counts, and investigate recurring `[performance] map.live-enclosure`, `[performance] map.explorer-score`, `[performance] map.exploration-surface`, or `[performance] map.today-surface` entries above their printed thresholds.
+15. Close a qualifying loop during the recording. Confirm the enclosure stamp, live Explorer Score, filled surface, and final persisted score agree; this verifies that the shared enclosure result did not change behavior.
+16. Export a large V5 backup and confirm bounded block compression completes without an iOS memory warning or empty file, then reselect the Files copy and confirm verification succeeds.
 
 ## Long Recording And Reconnect Test
 
@@ -931,4 +933,5 @@ This project is pinned to Expo SDK 54 because that is the supported Expo Go SDK 
 4. Inspect an enclosed surface larger than the walking fill cap and confirm that it remains unfilled.
 5. Start a recording and confirm each GPS update extends the combined saved/live surface without freezing or exposing seams.
 6. Stop and save, then confirm the live corridor merges into the saved contour.
-7. Run npm run test:geometry and confirm all contour, display-hole, loop-cap, open-path, and large-surface checks pass.
+7. Close a qualifying loop and confirm the filled surface, enclosure reward, and Explorer Score update together with no duplicate pause.
+8. Run npm run test:geometry and confirm all contour, display-hole, loop-cap, score-reuse, open-path, and large-surface checks pass.

@@ -411,6 +411,11 @@ const reopenedExplorerScore = explorerScore.calculateExplorerScore({
   loopFillCellIds: retroactiveEnclosedCells,
   maxEnclosedAreaSquareMeters: 150000
 });
+const precomputedLiveExplorerScore = explorerScore.calculateExplorerScore({
+  derivedEnclosedCellIds: retroactiveEnclosedCells,
+  exploredCellIds: [...scoreBoundary, scoreBoundary[0]],
+  maxEnclosedAreaSquareMeters: 150000
+});
 assert(
   liveExplorerScore.walkedCellCount === 16 &&
     liveExplorerScore.enclosedCellCount === 9 &&
@@ -422,6 +427,10 @@ assert(
 assert(
   JSON.stringify(reopenedExplorerScore) === JSON.stringify(liveExplorerScore),
   "retroactive persisted enclosure cells reproduce the live score without duplicates"
+);
+assert(
+  JSON.stringify(precomputedLiveExplorerScore) === JSON.stringify(liveExplorerScore),
+  "live Explorer Score reuses the enclosure monitor result without changing points"
 );
 const expeditionExplorerScore = explorerScore.calculateExplorerScore({
   exploredCellIds: [...scoreBoundary],
@@ -1383,11 +1392,21 @@ assert(
     explorationMapSource.includes("settledActiveExplorationCellIds") &&
     explorationMapSource.includes("settledTodayNewCellIds") &&
     explorationMapSource.includes("memo(function ExplorationSurfaceOverlay") &&
+    explorationMapSource.includes("memo(function AdministrativeBoundaryOverlay") &&
+    explorationMapSource.includes("const AtlasMedalMarker = memo") &&
+    explorationMapSource.includes("tracksViewChanges={false}") &&
+    explorationMapSource.includes('medal.isCollected ? "collected" : "locked"') &&
+    explorationMapSource.includes("return FAR_EXPLORED_AREA_STYLE") &&
+    explorationMapSource.includes("onMapReady={handleNativeMapReady}") &&
     medalEnclosureSource.includes("getMedalsInsideBoundaryBounds") &&
     medalEnclosureSource.includes("medals.anchor-gated-enclosure") &&
     mapScreenSource.includes("}, 650);") &&
+    mapScreenSource.includes("onMapLongPress={handleMapLongPressEvent}") &&
+    mapScreenSource.includes('"map.live-enclosure"') &&
+    mapScreenSource.includes("derivedEnclosedCellIds: activeWalk") &&
     performanceSource.includes("usePerformanceRenderCounter") &&
-    performanceSource.includes("[performance]"),
+    performanceSource.includes("[performance]") &&
+    !performanceSource.includes("useEffect"),
   "map timers, polling, non-starving surfaces, medals, and render diagnostics use bounded performance paths"
 );
 assert(

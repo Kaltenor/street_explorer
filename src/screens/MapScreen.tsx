@@ -183,7 +183,10 @@ import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy
 import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
 import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
-import { usePerformanceRenderCounter } from "../services/performance";
+import {
+  measurePerformance,
+  usePerformanceRenderCounter
+} from "../services/performance";
 import { fetchNearbyOsmStreetSegments } from "../services/osmStreetService";
 import {
   createRouteSnapshotIfMissing,
@@ -946,10 +949,14 @@ export function MapScreen({
       ...new Set([...savedExplorationCellIds, ...activeClosureBoundaryCellIds])
     ];
 
-    return collectFillableEnclosedExplorationCellIds(
-      combinedCellIds,
-      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeWalk.activityMode]
-    ).sort();
+    return measurePerformance(
+      "map.live-enclosure",
+      () => collectFillableEnclosedExplorationCellIds(
+        combinedCellIds,
+        LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeWalk.activityMode]
+      ).sort(),
+      12
+    );
   }, [
     activeClosureBoundaryCellIds,
     activeClosureContextKey,
@@ -958,19 +965,27 @@ export function MapScreen({
   ]);
   const activeClosureFillCellKey = activeClosureFillCellIds.join("|");
   const explorerScore = useMemo(
-    () => calculateExplorerScore({
-      exploredCellIds: [
-        ...savedExplorationCellIds,
-        ...(activeWalk?.exploredCellIds ?? [])
-      ],
-      expeditionSealCount,
-      loopFillCellIds,
-      maxEnclosedAreaSquareMeters:
-        LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[
-          activeWalk?.activityMode ?? activityMode
-        ]
-    }),
+    () => measurePerformance(
+      "map.explorer-score",
+      () => calculateExplorerScore({
+        derivedEnclosedCellIds: activeWalk
+          ? activeClosureFillCellIds
+          : undefined,
+        exploredCellIds: [
+          ...savedExplorationCellIds,
+          ...(activeWalk?.exploredCellIds ?? [])
+        ],
+        expeditionSealCount,
+        loopFillCellIds,
+        maxEnclosedAreaSquareMeters:
+          LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[
+            activeWalk?.activityMode ?? activityMode
+          ]
+      }),
+      12
+    ),
     [
+      activeClosureFillCellIds,
       activeWalk?.activityMode,
       activeWalk?.exploredCellIds,
       activityMode,
@@ -2010,6 +2025,15 @@ export function MapScreen({
     objective?.mode,
     objective?.zone.id
   ]);
+
+  const handleMapLongPressEvent = useCallback((coordinate: {
+    latitude: number;
+    longitude: number;
+  }) => {
+    void handleMapLongPress(coordinate).catch((error) =>
+      console.warn("Failed to select map objective", error)
+    );
+  }, [handleMapLongPress]);
 
   useEffect(() => {
     const requestId = objectiveStatsRequestRef.current + 1;
@@ -4521,10 +4545,7 @@ export function MapScreen({
         highlightedSessionId={selectedSessionId}
         routeFocusRequestId={routeFocusRequestId}
         layers={layers}
-        onMapLongPress={(coordinate) => {
-          handleMapLongPress(coordinate)
-            .catch((error) => console.warn("Failed to select map objective", error));
-        }}
+        onMapLongPress={handleMapLongPressEvent}
         onMapReady={handleMapReady}
         onMapInteraction={handleMapInteraction}
         onVisibleRegionChange={handleVisibleRegionChange}

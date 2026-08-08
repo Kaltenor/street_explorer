@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.22.3
+
+Changed:
+
+- Stabilized native-map callbacks, POI filters, and zoom-tier explored-area styles so unrelated screen and GPS state updates no longer invalidate otherwise unchanged MapKit props.
+- Memoized administrative boundaries, route markers, medal markers, the player marker, and exploration surfaces; static medal markers no longer request continuous native view snapshots.
+- Reused live enclosure geometry for Explorer Score instead of running the same whole-surface contour analysis twice, with behavior-equivalence regression coverage.
+- Removed the production render-counter effect and added development slow-path labels for live enclosure and score derivation on a physical device.
+- Synchronized version 0.22.3 with iOS build 163 and Android version code 163.
+
 ## v0.22.2
 
 Changed:
