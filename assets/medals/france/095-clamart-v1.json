@@ -1,0 +1,166 @@
+{
+  "id": "clamart-v1",
+  "cityId": "clamart-fr",
+  "cityZoneId": "relation/29036",
+  "cityName": {
+    "en": "Clamart",
+    "fr": "Clamart"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "fondation Arp is one of the city's notable cultural landmarks.",
+        "fr": "fondation Arp compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1126",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "clamart-fondation-arp-m1126",
+      "latitude": 48.803529,
+      "longitude": 2.244319,
+      "name": {
+        "en": "fondation Arp",
+        "fr": "fondation Arp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088094",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clamart-hotel-de-ville-pa00088094",
+      "latitude": 48.8006519717737,
+      "longitude": 2.26291391565606,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque pour enfants is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque pour enfants compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125464",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clamart-bibliotheque-pour-enfants-pa00125464",
+      "latitude": 48.78607183614601,
+      "longitude": 2.2470801886828355,
+      "name": {
+        "en": "Bibliothèque pour enfants",
+        "fr": "Bibliothèque pour enfants"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088092",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clamart-eglise-saint-pierre-saint-paul-pa00088092",
+      "latitude": 48.7991664406067,
+      "longitude": 2.26325401302853,
+      "name": {
+        "en": "Église Saint-Pierre Saint-Paul",
+        "fr": "Église Saint-Pierre Saint-Paul"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "French organization",
+        "fr": "organisation (FR)"
+      },
+      "externalIdentity": {
+        "id": "Q54862490",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clamart-theatre-jean-arp-q54862490",
+      "latitude": 48.80294,
+      "longitude": 2.26416,
+      "name": {
+        "en": "théâtre Jean Arp",
+        "fr": "théâtre Jean Arp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861584",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clamart-eglise-saint-francois-de-sales-de-clamart-q29861584",
+      "latitude": 48.78456,
+      "longitude": 2.24818,
+      "name": {
+        "en": "église Saint-François-de-Sales de Clamart",
+        "fr": "église Saint-François-de-Sales de Clamart"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Clamart, France",
+        "fr": "impasse de Clamart, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116254479",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clamart-impasse-de-la-tour-q116254479",
+      "latitude": 48.7893689,
+      "longitude": 2.2671477,
+      "name": {
+        "en": "impasse de la Tour",
+        "fr": "impasse de la Tour"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Clamart is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Clamart, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602241",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clamart-monument-aux-morts-de-la-seconde-guerre-mondiale-de-clamart-q96602241",
+      "latitude": 48.79167,
+      "longitude": 2.26272,
+      "name": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Clamart",
+        "fr": "monument aux morts de la Seconde Guerre mondiale de Clamart"
+      }
+    }
+  ]
+}

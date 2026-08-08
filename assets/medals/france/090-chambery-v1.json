@@ -1,0 +1,166 @@
+{
+  "id": "chambery-v1",
+  "cityId": "chambery-fr",
+  "cityZoneId": "relation/74386",
+  "cityName": {
+    "en": "Chambéry",
+    "fr": "Chambéry"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Ducs de Savoie (ancien) is an important witness to the city's history.",
+        "fr": "Château des Ducs de Savoie (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118227",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-chateau-des-ducs-de-savoie-ancien-pa00118227",
+      "latitude": 45.56469973479088,
+      "longitude": 5.917244974143275,
+      "name": {
+        "en": "Château des Ducs de Savoie (ancien)",
+        "fr": "Château des Ducs de Savoie (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-François de Sales is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-François de Sales est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118223",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-cathedrale-saint-francois-de-sales-pa00118223",
+      "latitude": 45.5652447264213,
+      "longitude": 5.923108825678221,
+      "name": {
+        "en": "Cathédrale Saint-François de Sales",
+        "fr": "Cathédrale Saint-François de Sales"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Charmettes is one of the city's notable cultural landmarks.",
+        "fr": "musée des Charmettes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1049",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-des-charmettes-m1049",
+      "latitude": 45.552732,
+      "longitude": 5.93011,
+      "name": {
+        "en": "musée des Charmettes",
+        "fr": "musée des Charmettes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Savoisien is one of the city's notable cultural landmarks.",
+        "fr": "musée Savoisien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1050",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-savoisien-m1050",
+      "latitude": 45.571174,
+      "longitude": 5.875158,
+      "name": {
+        "en": "musée Savoisien",
+        "fr": "musée Savoisien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1048",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-des-beaux-arts-m1048",
+      "latitude": 45.567896,
+      "longitude": 5.919306,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118231",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-eglise-notre-dame-pa00118231",
+      "latitude": 45.5675308444306,
+      "longitude": 5.92076434229803,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Buisson Rond is an important witness to the city's history.",
+        "fr": "Château de Buisson Rond est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118225",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-chateau-de-buisson-rond-pa00118225",
+      "latitude": 45.56428087681441,
+      "longitude": 5.93736232254314,
+      "name": {
+        "en": "Château de Buisson Rond",
+        "fr": "Château de Buisson Rond"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Chateauneuf is an important witness to the city's history.",
+        "fr": "Hôtel de Chateauneuf est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118234",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-de-chateauneuf-pa00118234",
+      "latitude": 45.5650479849982,
+      "longitude": 5.92351760859405,
+      "name": {
+        "en": "Hôtel de Chateauneuf",
+        "fr": "Hôtel de Chateauneuf"
+      }
+    }
+  ]
+}

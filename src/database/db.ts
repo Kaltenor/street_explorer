@@ -1,5 +1,4 @@
 import * as SQLite from "expo-sqlite";
-import { BUNDLED_MEDAL_ALBUMS } from "../data/medalAlbums";
 
 let database: SQLite.SQLiteDatabase | null = null;
 let databaseOpenPromise: Promise<SQLite.SQLiteDatabase> | null = null;
@@ -768,78 +767,86 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(29, "scale_city_medal_catalogue", async () => {
+    const albumColumns = await db.getAllAsync<{ name: string }>(
+      "PRAGMA table_info(medal_albums)"
+    );
+    const additions = [
+      { definition: "TEXT", name: "city_zone_id" },
+      { definition: "REAL", name: "min_latitude" },
+      { definition: "REAL", name: "max_latitude" },
+      { definition: "REAL", name: "min_longitude" },
+      { definition: "REAL", name: "max_longitude" }
+    ];
 
-  await seedBundledMedalAlbums(db);
+    for (const addition of additions) {
+      if (!albumColumns.some((column) => column.name === addition.name)) {
+        await db.execAsync(
+          `ALTER TABLE medal_albums ADD COLUMN ${addition.name} ${addition.definition};`
+        );
+      }
+    }
+
+    await db.execAsync(`
+      CREATE INDEX IF NOT EXISTS medal_albums_city_zone_index
+        ON medal_albums (city_zone_id);
+      CREATE INDEX IF NOT EXISTS medals_coordinate_index
+        ON medals (latitude, longitude);
+      CREATE INDEX IF NOT EXISTS medal_acquisition_events_album_acquired_index
+        ON medal_acquisition_events (album_id, acquired_at, medal_id);
+      CREATE INDEX IF NOT EXISTS gps_points_coordinate_session_index
+        ON gps_points (latitude, longitude, session_id);
+
+      CREATE TABLE IF NOT EXISTS walk_session_bounds (
+        session_id INTEGER PRIMARY KEY NOT NULL,
+        min_latitude REAL NOT NULL,
+        max_latitude REAL NOT NULL,
+        min_longitude REAL NOT NULL,
+        max_longitude REAL NOT NULL,
+        FOREIGN KEY (session_id) REFERENCES walk_sessions (id) ON DELETE CASCADE
+      );
+
+      INSERT OR REPLACE INTO walk_session_bounds (
+        session_id, min_latitude, max_latitude, min_longitude, max_longitude
+      )
+      SELECT
+        gps_points.session_id,
+        MIN(gps_points.latitude),
+        MAX(gps_points.latitude),
+        MIN(gps_points.longitude),
+        MAX(gps_points.longitude)
+      FROM gps_points
+      INNER JOIN walk_sessions
+        ON walk_sessions.id = gps_points.session_id
+      GROUP BY gps_points.session_id;
+
+      CREATE INDEX IF NOT EXISTS walk_session_bounds_spatial_index
+        ON walk_session_bounds (
+          min_latitude, max_latitude, min_longitude, max_longitude, session_id
+        );
+
+      CREATE TRIGGER IF NOT EXISTS gps_points_bounds_after_insert
+      AFTER INSERT ON gps_points
+      BEGIN
+        INSERT INTO walk_session_bounds (
+          session_id, min_latitude, max_latitude, min_longitude, max_longitude
+        ) VALUES (
+          NEW.session_id, NEW.latitude, NEW.latitude, NEW.longitude, NEW.longitude
+        )
+        ON CONFLICT(session_id) DO UPDATE SET
+          min_latitude = MIN(min_latitude, NEW.latitude),
+          max_latitude = MAX(max_latitude, NEW.latitude),
+          min_longitude = MIN(min_longitude, NEW.longitude),
+          max_longitude = MAX(max_longitude, NEW.longitude);
+      END;
+    `);
+  });
+
   await db.runAsync(`
     UPDATE collected_medals
     SET presentation_state = 'pending'
     WHERE presentation_state = 'presenting'
   `);
-}
-
-async function seedBundledMedalAlbums(db: SQLite.SQLiteDatabase) {
-  await db.withExclusiveTransactionAsync(async (transaction) => {
-    for (const album of BUNDLED_MEDAL_ALBUMS) {
-      await transaction.runAsync(
-        `INSERT INTO medal_albums (
-          id, city_id, city_name_json, definition_version, published_at, source_attribution
-        ) VALUES (?, ?, ?, ?, ?, ?)
-        ON CONFLICT(id) DO UPDATE SET
-          city_id = excluded.city_id,
-          city_name_json = excluded.city_name_json,
-          definition_version = excluded.definition_version,
-          published_at = excluded.published_at,
-          source_attribution = excluded.source_attribution`,
-        album.id,
-        album.cityId,
-        JSON.stringify(album.cityName),
-        album.version,
-        album.publishedAt,
-        album.sourceAttribution
-      );
-
-      for (let index = 0; index < album.medals.length; index += 1) {
-        const medal = album.medals[index];
-
-        if (!medal) {
-          continue;
-        }
-
-        await transaction.runAsync(
-          `INSERT INTO medals (
-            id, category, name_json, description_json, latitude, longitude,
-            external_source, external_type, external_id
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON CONFLICT(id) DO UPDATE SET
-            category = excluded.category,
-            name_json = excluded.name_json,
-            description_json = excluded.description_json,
-            latitude = excluded.latitude,
-            longitude = excluded.longitude,
-            external_source = excluded.external_source,
-            external_type = excluded.external_type,
-            external_id = excluded.external_id`,
-          medal.id,
-          medal.category,
-          JSON.stringify(medal.name),
-          JSON.stringify(medal.description),
-          medal.latitude,
-          medal.longitude,
-          medal.externalIdentity.source,
-          medal.externalIdentity.type,
-          medal.externalIdentity.id
-        );
-        await transaction.runAsync(
-          `INSERT INTO medal_album_items (album_id, medal_id, sort_order)
-          VALUES (?, ?, ?)
-          ON CONFLICT(album_id, medal_id) DO UPDATE SET sort_order = excluded.sort_order`,
-          album.id,
-          medal.id,
-          index
-        );
-      }
-    }
-  });
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

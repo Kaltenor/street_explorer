@@ -1,0 +1,166 @@
+{
+  "id": "reims-v1",
+  "cityId": "reims-fr",
+  "cityZoneId": "relation/36458",
+  "cityName": {
+    "en": "Reims",
+    "fr": "Reims"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic cathedral of Reims in France",
+        "fr": "cathédrale située dans la Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q206823",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reims-cathedrale-notre-dame-de-reims-q206823",
+      "latitude": 49.253888888,
+      "longitude": 4.034166666,
+      "name": {
+        "en": "cathédrale Notre-Dame de Reims",
+        "fr": "cathédrale Notre-Dame de Reims"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Denis (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Denis (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078772",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-abbaye-saint-denis-ancienne-pa00078772",
+      "latitude": 49.2530684142083,
+      "longitude": 4.030517064800361,
+      "name": {
+        "en": "Abbaye Saint-Denis (ancienne)",
+        "fr": "Abbaye Saint-Denis (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Remi ou ancien Hôtel-Dieu is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Remi ou ancien Hôtel-Dieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078773",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-ancien-abbaye-saint-remi-ou-ancien-hotel-dieu-pa00078773",
+      "latitude": 49.2433370799268,
+      "longitude": 4.04105038345668,
+      "name": {
+        "en": "Ancien abbaye Saint-Remi ou ancien Hôtel-Dieu",
+        "fr": "Ancien abbaye Saint-Remi ou ancien Hôtel-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "basilica located in Marne, in France",
+        "fr": "basilique située dans la Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q334233",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reims-basilique-saint-remi-de-reims-q334233",
+      "latitude": 49.243055555,
+      "longitude": 4.041944444,
+      "name": {
+        "en": "basilique Saint-Remi de Reims",
+        "fr": "basilique Saint-Remi de Reims"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'ancien collège des jésuites is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'ancien collège des jésuites compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0313",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "reims-musee-de-l-ancien-college-des-jesuites-m0313",
+      "latitude": 49.246527,
+      "longitude": 4.040071,
+      "name": {
+        "en": "musée de l'ancien collège des jésuites",
+        "fr": "musée de l'ancien collège des jésuites"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée-hôtel Le Vergeur – maison Hugues Krafft is one of the city's notable cultural landmarks.",
+        "fr": "musée-hôtel Le Vergeur – maison Hugues Krafft compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0314",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "reims-musee-hotel-le-vergeur-maison-hugues-krafft-m0314",
+      "latitude": 49.257013,
+      "longitude": 4.034043,
+      "name": {
+        "en": "musée-hôtel Le Vergeur – maison Hugues Krafft",
+        "fr": "musée-hôtel Le Vergeur – maison Hugues Krafft"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts de Reims is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts de Reims compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0311",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "reims-musee-des-beaux-arts-de-reims-m0311",
+      "latitude": 49.253442,
+      "longitude": 4.030921,
+      "name": {
+        "en": "musée des beaux-arts de Reims",
+        "fr": "musée des beaux-arts de Reims"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078791",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-ancien-hotel-dieu-actuellement-annexe-du-palais-de-justice-pa00078791",
+      "latitude": 49.2540109747559,
+      "longitude": 4.03163216701849,
+      "name": {
+        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice",
+        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "roubaix-v1",
+  "cityId": "roubaix-fr",
+  "cityZoneId": "relation/59043",
+  "cityName": {
+    "en": "Roubaix",
+    "fr": "Roubaix"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix is one of the city's notable cultural landmarks.",
+        "fr": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0634",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "roubaix-la-piscine-musee-d-art-et-d-industrie-andre-diligent-de-roubaix-m0634",
+      "latitude": 50.693026,
+      "longitude": 3.16791,
+      "name": {
+        "en": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix",
+        "fr": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107928",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-saint-joseph-pa00107928",
+      "latitude": 50.7026902151965,
+      "longitude": 3.16695470386026,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-de-ville-pa59000020",
+      "latitude": 50.690929674858,
+      "longitude": 3.1740857167685,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Pierre Catteau, actuel palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Pierre Catteau, actuel palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-pierre-catteau-actuel-palais-de-justice-pa59000026",
+      "latitude": 50.6908509443156,
+      "longitude": 3.16531823260918,
+      "name": {
+        "en": "Hôtel Pierre Catteau, actuel palais de justice",
+        "fr": "Hôtel Pierre Catteau, actuel palais de justice"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Roubaix, France",
+        "fr": "musée français à Roubaix"
+      },
+      "externalIdentity": {
+        "id": "Q1955748",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-la-piscine-musee-d-art-et-d-industrie-q1955748",
+      "latitude": 50.69229323,
+      "longitude": 3.16782027,
+      "name": {
+        "en": "La Piscine, musée d'art et d'industrie",
+        "fr": "La Piscine, musée d'art et d'industrie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre and former cinema in Roubaix, France",
+        "fr": "salle de spectacle à Roubaix"
+      },
+      "externalIdentity": {
+        "id": "Q42295242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-colisee-theatre-de-roubaix-q42295242",
+      "latitude": 50.6911705,
+      "longitude": 3.1627867,
+      "name": {
+        "en": "Colisée - Théâtre de Roubaix",
+        "fr": "Colisée - Théâtre de Roubaix"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de la commune de Roubaix, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2051944",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-parc-barbieux-q2051944",
+      "latitude": 50.67594296,
+      "longitude": 3.16149831,
+      "name": {
+        "en": "parc Barbieux",
+        "fr": "parc Barbieux"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Nord department, France",
+        "fr": "monument aux morts du Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136071452",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-monument-aux-morts-de-roubaix-q136071452",
+      "latitude": 50.688289422,
+      "longitude": 3.176205315,
+      "name": {
+        "en": "monument aux morts de Roubaix",
+        "fr": "monument aux morts de Roubaix"
+      }
+    }
+  ]
+}

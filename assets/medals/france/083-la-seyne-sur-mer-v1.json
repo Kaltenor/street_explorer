@@ -1,0 +1,147 @@
+{
+  "id": "la-seyne-sur-mer-v1",
+  "cityId": "la-seyne-sur-mer-fr",
+  "cityZoneId": "relation/29188",
+  "cityName": {
+    "en": "La Seyne-sur-Mer",
+    "fr": "La Seyne-sur-Mer"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q2103646",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-pont-levant-de-la-seyne-sur-mer-q2103646",
+      "latitude": 43.1026,
+      "longitude": 5.883138888,
+      "name": {
+        "en": "pont levant de La Seyne-sur-Mer",
+        "fr": "pont levant de La Seyne-sur-Mer"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Seyne-sur-Mer, France",
+        "fr": "fort à La Seyne-sur-Mer (Var)"
+      },
+      "externalIdentity": {
+        "id": "Q3077770",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-fort-balaguier-q3077770",
+      "latitude": 43.0944,
+      "longitude": 5.91103,
+      "name": {
+        "en": "fort Balaguier",
+        "fr": "fort Balaguier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-du-Bon-Voyage is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-du-Bon-Voyage est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081735",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-eglise-notre-dame-du-bon-voyage-pa00081735",
+      "latitude": 43.100493178461,
+      "longitude": 5.88017386553581,
+      "name": {
+        "en": "Église Notre-Dame-du-Bon-Voyage",
+        "fr": "Église Notre-Dame-du-Bon-Voyage"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont-levant is a distinctive architectural landmark in the city.",
+        "fr": "Pont-levant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081737",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-pont-levant-pa00081737",
+      "latitude": 43.1025834178906,
+      "longitude": 5.88317077658226,
+      "name": {
+        "en": "Pont-levant",
+        "fr": "Pont-levant"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Napoléon is an important witness to the city's history.",
+        "fr": "Fort Napoléon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-fort-napoleon-pa83000048",
+      "latitude": 43.09421893465412,
+      "longitude": 5.893274764690117,
+      "name": {
+        "en": "Fort Napoléon",
+        "fr": "Fort Napoléon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "batterie de Peyras is an important witness to the city's history.",
+        "fr": "fort de la rade de Toulon"
+      },
+      "externalIdentity": {
+        "id": "Q15154172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-batterie-de-peyras-q15154172",
+      "latitude": 43.0632,
+      "longitude": 5.8609,
+      "name": {
+        "en": "batterie de Peyras",
+        "fr": "batterie de Peyras"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place Jean-Lurçat is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Wallace située à La Seyne-sur-Mer, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140315976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-fontaine-wallace-place-jean-lurcat-q140315976",
+      "latitude": 43.079048,
+      "longitude": 5.89362,
+      "name": {
+        "en": "fontaine Wallace, place Jean-Lurçat",
+        "fr": "fontaine Wallace, place Jean-Lurçat"
+      }
+    }
+  ]
+}

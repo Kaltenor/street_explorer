@@ -16,6 +16,7 @@ import type {
   DistrictExpeditionDashboard,
   DistrictExpeditionKind
 } from "../types/expedition";
+import { EXPLORER_POINTS_PER_EXPEDITION } from "../services/explorerScore";
 import { AtlasModalHeader, AtlasScreen, AtlasSectionLabel } from "./AtlasCabinet";
 
 type Props = {
@@ -161,8 +162,8 @@ export function DistrictExpeditionModal({
               </Text>
               <Text style={styles.helpText}>
                 {isFrench
-                  ? "Chaque mission terminée ajoute un sceau permanent, sans monnaie ni classement."
-                  : "Each completed mission adds one permanent seal, with no currency or ranking."}
+                  ? `Chaque mission terminée ajoute un sceau permanent et ${EXPLORER_POINTS_PER_EXPEDITION} points d'explorateur, sans classement.`
+                  : `Each completed mission adds one permanent seal and ${EXPLORER_POINTS_PER_EXPEDITION} Explorer Points, with no ranking.`}
               </Text>
             </View>
           </View>

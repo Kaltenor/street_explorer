@@ -1,0 +1,166 @@
+{
+  "id": "marseille-v1",
+  "cityId": "marseille-fr",
+  "cityZoneId": "relation/76469",
+  "cityName": {
+    "en": "Marseille",
+    "fr": "Marseille"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Borély ou domaine Borély is an important witness to the city's history.",
+        "fr": "Château Borély ou domaine Borély est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081332",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-chateau-borely-ou-domaine-borely-pa00081332",
+      "latitude": 43.2594298707516,
+      "longitude": 5.3806912648556,
+      "name": {
+        "en": "Château Borély ou domaine Borély",
+        "fr": "Château Borély ou domaine Borély"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Palais Longchamp is one of the city's notable cultural landmarks.",
+        "fr": "Palais Longchamp compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081368",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-palais-longchamp-pa00081368",
+      "latitude": 43.3059900517822,
+      "longitude": 5.39755768627276,
+      "name": {
+        "en": "Palais Longchamp",
+        "fr": "Palais Longchamp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble cathédral Sainte-Marie-Majeure is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble cathédral Sainte-Marie-Majeure est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081326",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-ensemble-cathedral-sainte-marie-majeure-pa00081326",
+      "latitude": 43.2997785870589,
+      "longitude": 5.36493879320848,
+      "name": {
+        "en": "Ensemble cathédral Sainte-Marie-Majeure",
+        "fr": "Ensemble cathédral Sainte-Marie-Majeure"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure is a distinctive architectural landmark in the city.",
+        "fr": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081336",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-eglise-de-la-vieille-major-ancienne-cathedrale-ou-ensemble-cathedral-sainte-marie-majeure-pa00081336",
+      "latitude": 43.2994644275018,
+      "longitude": 5.36532107820901,
+      "name": {
+        "en": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure",
+        "fr": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'If is an important witness to the city's history.",
+        "fr": "Château d'If est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081333",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-chateau-d-if-pa00081333",
+      "latitude": 43.2798462350654,
+      "longitude": 5.32505577123099,
+      "name": {
+        "en": "Château d'If",
+        "fr": "Château d'If"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Victor is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Victor est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081323",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-abbaye-saint-victor-pa00081323",
+      "latitude": 43.2902377423072,
+      "longitude": 5.36555226150343,
+      "name": {
+        "en": "Abbaye Saint-Victor",
+        "fr": "Abbaye Saint-Victor"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cabinet des monnaies et médailles is one of the city's notable cultural landmarks.",
+        "fr": "cabinet des monnaies et médailles compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0912",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "marseille-cabinet-des-monnaies-et-medailles-m0912",
+      "latitude": 43.295789,
+      "longitude": 5.383313,
+      "name": {
+        "en": "cabinet des monnaies et médailles",
+        "fr": "cabinet des monnaies et médailles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Cantini is one of the city's notable cultural landmarks.",
+        "fr": "musée Cantini compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0915",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "marseille-musee-cantini-m0915",
+      "latitude": 43.292383,
+      "longitude": 5.378137,
+      "name": {
+        "en": "musée Cantini",
+        "fr": "musée Cantini"
+      }
+    }
+  ]
+}

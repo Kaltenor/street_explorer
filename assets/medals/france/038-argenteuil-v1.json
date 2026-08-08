@@ -1,0 +1,166 @@
+{
+  "id": "argenteuil-v1",
+  "cityId": "argenteuil-fr",
+  "cityZoneId": "relation/103245",
+  "cityName": {
+    "en": "Argenteuil",
+    "fr": "Argenteuil"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieil Argenteuil is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieil Argenteuil compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0432",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "argenteuil-musee-du-vieil-argenteuil-m0432",
+      "latitude": 48.946909,
+      "longitude": 2.249331,
+      "name": {
+        "en": "musée du vieil Argenteuil",
+        "fr": "musée du vieil Argenteuil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Marais is an important witness to the city's history.",
+        "fr": "Château du Marais est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079979",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-chateau-du-marais-pa00079979",
+      "latitude": 48.9352889914199,
+      "longitude": 2.23047733987094,
+      "name": {
+        "en": "Château du Marais",
+        "fr": "Château du Marais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Notre-Dame d'Argenteuil is an important witness to the city's history.",
+        "fr": "Ancien abbaye Notre-Dame d'Argenteuil est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA95000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-ancien-abbaye-notre-dame-d-argenteuil-pa95000001",
+      "latitude": 48.940877870583705,
+      "longitude": 2.24852256884527,
+      "name": {
+        "en": "Ancien abbaye Notre-Dame d'Argenteuil",
+        "fr": "Ancien abbaye Notre-Dame d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Argenteuil",
+        "fr": "église d'Argenteuil"
+      },
+      "externalIdentity": {
+        "id": "Q22442779",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-basilique-saint-denys-d-argenteuil-q22442779",
+      "latitude": 48.942462,
+      "longitude": 2.246492,
+      "name": {
+        "en": "basilique Saint-Denys d'Argenteuil",
+        "fr": "basilique Saint-Denys d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont routier sur la Seine reliant Argenteuil à Gennevilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3556573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-viaduc-de-gennevilliers-q3556573",
+      "latitude": 48.9492,
+      "longitude": 2.28035,
+      "name": {
+        "en": "viaduc de Gennevilliers",
+        "fr": "viaduc de Gennevilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "road bridge over the River Seine in France",
+        "fr": "pont sur la Seine"
+      },
+      "externalIdentity": {
+        "id": "Q1306697",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-pont-d-argenteuil-q1306697",
+      "latitude": 48.940275,
+      "longitude": 2.255003,
+      "name": {
+        "en": "pont d'Argenteuil",
+        "fr": "pont d'Argenteuil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Paul-Vaillant-Couturier is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Argenteuil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920396",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-fontaine-wallace-rue-paul-vaillant-couturier-q128920396",
+      "latitude": 48.94376,
+      "longitude": 2.24991,
+      "name": {
+        "en": "fontaine Wallace, rue Paul-Vaillant-Couturier",
+        "fr": "fontaine Wallace, rue Paul-Vaillant-Couturier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Allée couverte des Déserts is an important witness to the city's history.",
+        "fr": "Allée couverte des Déserts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079977",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-allee-couverte-des-deserts-pa00079977",
+      "latitude": 48.9522262464595,
+      "longitude": 2.28261178528263,
+      "name": {
+        "en": "Allée couverte des Déserts",
+        "fr": "Allée couverte des Déserts"
+      }
+    }
+  ]
+}

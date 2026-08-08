@@ -1,0 +1,166 @@
+{
+  "id": "quimper-v1",
+  "cityId": "quimper-fr",
+  "cityZoneId": "relation/296095",
+  "cityName": {
+    "en": "Quimper",
+    "fr": "Quimper"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Corentin is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Corentin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090326",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "quimper-cathedrale-saint-corentin-pa00090326",
+      "latitude": 47.995619865801,
+      "longitude": -4.10221891523677,
+      "name": {
+        "en": "Cathédrale Saint-Corentin",
+        "fr": "Cathédrale Saint-Corentin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0207",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "quimper-musee-des-beaux-arts-m0207",
+      "latitude": 47.996188,
+      "longitude": -4.101963,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental breton is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental breton compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0208",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "quimper-musee-departemental-breton-m0208",
+      "latitude": 47.995125,
+      "longitude": -4.102602,
+      "name": {
+        "en": "musée départemental breton",
+        "fr": "musée départemental breton"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Trinité de Kerfeunteun is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Trinité de Kerfeunteun est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090330",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "quimper-eglise-de-la-trinite-de-kerfeunteun-pa00090330",
+      "latitude": 48.0037779479754,
+      "longitude": -4.09629355194462,
+      "name": {
+        "en": "Église de la Trinité de Kerfeunteun",
+        "fr": "Église de la Trinité de Kerfeunteun"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications is an important witness to the city's history.",
+        "fr": "Fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090337",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "quimper-fortifications-pa00090337",
+      "latitude": 47.9986440008065,
+      "longitude": -4.10372562315217,
+      "name": {
+        "en": "Fortifications",
+        "fr": "Fortifications"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lanniron is an important witness to the city's history.",
+        "fr": "Château de Lanniron est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090328",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "quimper-chateau-de-lanniron-pa00090328",
+      "latitude": 47.9763891164005,
+      "longitude": -4.111421551154581,
+      "name": {
+        "en": "Château de Lanniron",
+        "fr": "Château de Lanniron"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA29000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "quimper-theatre-pa29000019",
+      "latitude": 47.9944356313685,
+      "longitude": -4.09767780106018,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium",
+        "fr": "stade omnisport en France"
+      },
+      "externalIdentity": {
+        "id": "Q1167942",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "quimper-stade-de-penvillers-q1167942",
+      "latitude": 48.00892,
+      "longitude": -4.09923,
+      "name": {
+        "en": "stade de Penvillers",
+        "fr": "stade de Penvillers"
+      }
+    }
+  ]
+}

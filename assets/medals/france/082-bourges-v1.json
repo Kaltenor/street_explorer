@@ -1,0 +1,166 @@
+{
+  "id": "bourges-v1",
+  "cityId": "bourges-fr",
+  "cityZoneId": "relation/50312",
+  "cityName": {
+    "en": "Bourges",
+    "fr": "Bourges"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral in Bourges, Cher, France",
+        "fr": "cathédrale de Bourges, en France"
+      },
+      "externalIdentity": {
+        "id": "Q207985",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourges-cathedrale-saint-etienne-de-bourges-q207985",
+      "latitude": 47.08222,
+      "longitude": 2.39917,
+      "name": {
+        "en": "cathédrale Saint-Étienne de Bourges",
+        "fr": "cathédrale Saint-Étienne de Bourges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cloître de la cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Cloître de la cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096659",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-cloitre-de-la-cathedrale-pa00096659",
+      "latitude": 47.0820142017717,
+      "longitude": 2.40013478828404,
+      "name": {
+        "en": "Cloître de la cathédrale",
+        "fr": "Cloître de la cathédrale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château de Lazenay is an important witness to the city's history.",
+        "fr": "Ancien château de Lazenay est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096946",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-chateau-de-lazenay-pa00096946",
+      "latitude": 47.0534757441923,
+      "longitude": 2.40531720164296,
+      "name": {
+        "en": "Ancien château de Lazenay",
+        "fr": "Ancien château de Lazenay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison du Château et porte romane is an important witness to the city's history.",
+        "fr": "Maison du Château et porte romane est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-maison-du-chateau-et-porte-romane-pa00096938",
+      "latitude": 47.0776329926889,
+      "longitude": 2.40303546688769,
+      "name": {
+        "en": "Maison du Château et porte romane",
+        "fr": "Maison du Château et porte romane"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts décoratifs is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts décoratifs compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0229",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-des-arts-decoratifs-m0229",
+      "latitude": 47.084683,
+      "longitude": 2.398383,
+      "name": {
+        "en": "musée des arts décoratifs",
+        "fr": "musée des arts décoratifs"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des meilleurs ouvriers de France is one of the city's notable cultural landmarks.",
+        "fr": "musée des meilleurs ouvriers de France compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0232",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-des-meilleurs-ouvriers-de-france-m0232",
+      "latitude": 47.081774,
+      "longitude": 2.398494,
+      "name": {
+        "en": "musée des meilleurs ouvriers de France",
+        "fr": "musée des meilleurs ouvriers de France"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Berry is one of the city's notable cultural landmarks.",
+        "fr": "musée du Berry compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0230",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-du-berry-m0230",
+      "latitude": 47.083735,
+      "longitude": 2.39325,
+      "name": {
+        "en": "musée du Berry",
+        "fr": "musée du Berry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096742",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-couvent-des-ursulines-ou-ancien-grand-seminaire-actuel-palais-de-justice-pa00096742",
+      "latitude": 47.0850103210187,
+      "longitude": 2.39174272565226,
+      "name": {
+        "en": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice",
+        "fr": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "rouen-v1",
+  "cityId": "rouen-fr",
+  "cityZoneId": "relation/75628",
+  "cityName": {
+    "en": "Rouen",
+    "fr": "Rouen"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Seine-Maritime, in France",
+        "fr": "cathédrale située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q476516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rouen-cathedrale-notre-dame-de-rouen-q476516",
+      "latitude": 49.4402,
+      "longitude": 1.095,
+      "name": {
+        "en": "cathédrale Notre-Dame de Rouen",
+        "fr": "cathédrale Notre-Dame de Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble archiépiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble archiépiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100800",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ensemble-archiepiscopal-pa00100800",
+      "latitude": 49.4402597948152,
+      "longitude": 1.09523586915939,
+      "name": {
+        "en": "Ensemble archiépiscopal",
+        "fr": "Ensemble archiépiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Amand is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Amand est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-abbaye-de-saint-amand-pa00100798",
+      "latitude": 49.4496802938452,
+      "longitude": 1.08974408577627,
+      "name": {
+        "en": "Ancien abbaye de Saint-Amand",
+        "fr": "Ancien abbaye de Saint-Amand"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Beffroi is an important witness to the city's history.",
+        "fr": "Tour du Beffroi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-tour-du-beffroi-pa00101010",
+      "latitude": 49.4414788839741,
+      "longitude": 1.09118071337295,
+      "name": {
+        "en": "Tour du Beffroi",
+        "fr": "Tour du Beffroi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste is an important witness to the city's history.",
+        "fr": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-tour-dite-de-jeanne-d-arc-ou-ancien-donjon-du-chateau-de-philippe-auguste-pa00101011",
+      "latitude": 49.4464687405549,
+      "longitude": 1.09439385885525,
+      "name": {
+        "en": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste",
+        "fr": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Rouen, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q104314",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rouen-musee-maritime-fluvial-et-portuaire-de-rouen-q104314",
+      "latitude": 49.444705,
+      "longitude": 1.060739,
+      "name": {
+        "en": "musée maritime fluvial et portuaire de Rouen",
+        "fr": "musée maritime fluvial et portuaire de Rouen"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la céramique is one of the city's notable cultural landmarks.",
+        "fr": "musée de la céramique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0730",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-de-la-ceramique-m0730",
+      "latitude": 49.445543,
+      "longitude": 1.093846,
+      "name": {
+        "en": "musée de la céramique",
+        "fr": "musée de la céramique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Pierre Corneille is one of the city's notable cultural landmarks.",
+        "fr": "musée Pierre Corneille compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0731",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-pierre-corneille-m0731",
+      "latitude": 49.443051,
+      "longitude": 1.086748,
+      "name": {
+        "en": "musée Pierre Corneille",
+        "fr": "musée Pierre Corneille"
+      }
+    }
+  ]
+}

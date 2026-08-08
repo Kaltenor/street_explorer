@@ -98,6 +98,13 @@ assert(
   "loop progress only counts evidence from finalized walks"
 );
 assert(
+  repositorySource.includes("getDistrictExpeditionSealCount") &&
+    repositorySource.includes("COUNT(*) AS count FROM district_expedition_seals") &&
+    mapSource.includes("EXPLORER_POINTS_PER_EXPEDITION") &&
+    mapSource.includes("pointsAwarded: EXPLORER_POINTS_PER_EXPEDITION"),
+  "permanent seals drive retroactive score and the 200-point completion stamp"
+);
+assert(
   walkRepositorySource.includes("expeditionSystem:") &&
     walkRepositorySource.includes("manifest.expeditionSystem ??") &&
     walkRepositorySource.includes("DELETE FROM district_expedition_seals"),

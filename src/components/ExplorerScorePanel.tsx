@@ -54,11 +54,13 @@ export function ExplorerScorePanel({
       <View style={styles.breakdown}>
         <Text style={styles.breakdownText}>
           {isFrench
-            ? `${score.walkedCellCount.toLocaleString("fr-FR")} cases parcourues · ${score.enclosedCellCount.toLocaleString("fr-FR")} bonus d'enclos`
-            : `${score.walkedCellCount.toLocaleString("en-US")} walked tiles · ${score.enclosedCellCount.toLocaleString("en-US")} enclosure bonuses`}
+            ? `${score.walkedCellCount.toLocaleString("fr-FR")} cases parcourues · ${score.enclosedCellCount.toLocaleString("fr-FR")} bonus d'enclos · ${score.expeditionSealCount.toLocaleString("fr-FR")} expéditions (+${score.expeditionPoints.toLocaleString("fr-FR")})`
+            : `${score.walkedCellCount.toLocaleString("en-US")} walked tiles · ${score.enclosedCellCount.toLocaleString("en-US")} enclosure bonuses · ${score.expeditionSealCount.toLocaleString("en-US")} expeditions (+${score.expeditionPoints.toLocaleString("en-US")})`}
         </Text>
         <Text style={styles.ruleText}>
-          {isFrench ? "1 pt par case + 1 pt bonus par case enclose" : "1 pt per tile + 1 bonus pt per enclosed tile"}
+          {isFrench
+            ? "1 pt par case + 1 pt bonus par case enclose + 200 pts par expédition"
+            : "1 pt per tile + 1 bonus pt per enclosed tile + 200 pts per expedition"}
         </Text>
       </View>
 

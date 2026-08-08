@@ -1,5 +1,123 @@
 # Changelog
 
+## v0.22.2
+
+Changed:
+
+- Made Markdown/context refresh an explicit agent completion requirement: every affected file must be re-opened and stale descriptions, versions, commands, tests, and implementation-status claims refreshed rather than updating only the changelog.
+- Extended `npm run test:docs` to verify that the repository agent instructions retain this requirement.
+- Synchronized version 0.22.2 with iOS build 162 and Android version code 162.
+
+## v0.22.1
+
+Changed:
+
+- Audited every repository Markdown source against the current medal catalogue, active-city performance model, embedded Wikipedia reader, expedition scoring, Daylight stamp behavior, Backup V5, and v0.22 release metadata.
+- Reframed the original medal implementation plan as an explicitly historical decision record and added a concise current v0.22.1 runtime contract so old Backup V3/V4 and pre-v0.5 proposals cannot be mistaken for implementation guidance.
+- Updated development-build and automated-test documentation for the France top-100 catalogue, read-only Wikipedia WebView, 200-point expedition rewards, retroactive seal scoring, and Daylight stamp contrast.
+- Added `npm run test:docs` to verify synchronized package/lock/Expo versions, monotonic platform build declarations, current README/changelog headings, required context files, current feature claims, and the historical-plan warning.
+- Synchronized version 0.22.1 with iOS build 161 and Android version code 161.
+
+## v0.22.0
+
+Added:
+
+- Added 200 Explorer Points for every completed daily district expedition. The total is derived retroactively from permanent expedition seals, so existing completions are credited automatically and cannot be double-awarded.
+- Added expedition count and point contribution to the Details score breakdown, and added `+200 PTS` to each newly completed expedition's reward stamp.
+
+Fixed:
+
+- Kept stamp title, detail, and point lettering in the seal's original light gold/parchment inks during Daylight mode, with a dark outline for legibility against the unchanged navy stamp center.
+- Synchronized version 0.22.0 with iOS build 160 and Android version code 160.
+
+## v0.21.3
+
+Fixed:
+
+- Restored the non-throwing `RNCWebViewModule` TurboModule preflight after device testing showed that attempting a guarded package load still surfaces the native `getEnforcing` exception in LogBox before opening the fallback browser.
+- Added a clean-cache iOS development rebuild so the WebView TurboModule is registered in the installed binary; genuinely pre-WebView binaries remain on the quiet default-browser fallback.
+- Synchronized version 0.21.3 with iOS build 159 and Android version code 159.
+
+## v0.21.2
+
+Fixed:
+
+- Fixed build 157 incorrectly opening unlocked-medal articles in Safari because the legacy `UIManager` capability probe can return a false negative under React Native's new architecture. The lazy reader now checks the non-throwing `RNCWebViewModule` TurboModule lookup before loading the WebView package.
+- Preserved safe browser fallback for older binaries where `RNCWebViewModule` is genuinely absent, and extended the regression to reject the unreliable view-manager probe.
+- Synchronized version 0.21.2 with iOS build 158 and Android version code 158.
+
+## v0.21.1
+
+Fixed:
+
+- Fixed the current JavaScript bundle crashing at startup on an older development binary that does not contain `RNCWebViewModule`. The WebView package is now required only after the native view manager is confirmed available, so older binaries start normally and send unlocked-medal articles directly to the default browser.
+- Added a regression that forbids an eager runtime WebView import and verifies that native capability detection precedes the lazy module require.
+- Synchronized version 0.21.1 with iOS build 157 and Android version code 157.
+
+## v0.21.0
+
+Added:
+
+- Added a reward-only Wikipedia reader to unlocked medal descriptions. The tapped description morphs into a full-screen in-app reading frame with no address bar, tabs, editing, downloads, pop-ups, or external-site navigation.
+- Added exact Wikidata sitelink resolution in the selected English/French app language, fallback to the other language, and a same-language Wikipedia search when neither exact article can be resolved confidently.
+- Added automatic default-browser fallback when the embedded reader cannot load and deterministic regression coverage for language choice, title confidence, URL policy, locked-medal gating, reduced motion, and fallback wiring.
+
+Changed:
+
+- Medal cards now separate the existing map-focus action from the unlocked-description reading action, including distinct accessible button/link semantics.
+- Added the Expo SDK 54-compatible `react-native-webview` native dependency for the dedicated reader.
+- Synchronized version 0.21.0 with iOS build 156 and Android version code 156.
+
+## v0.20.2
+
+Added:
+
+- Expanded the Paris album from 10 to 60 reviewed landmarks across architecture, art, culture, history, and nature, with two to four anchors in every arrondissement and no métro stations.
+- Added frozen arrondissement metadata and regression coverage requiring all 20 Paris arrondissements, all five medal categories, stable unique identities, and the 851-medal national total.
+
+Changed:
+
+- Paris catalogue version 2 now includes major museums, gardens, civic and religious monuments, performance venues, sports heritage, a mainline railway terminus, bridges, and modern architecture selected against official Paris tourism and Ministry of Culture heritage sources.
+- The catalogue generator now preserves each hand-curated album's own definition version in the generated lazy manifest.
+- Synchronized version 0.20.2 with iOS build 155 and Android version code 155.
+
+## v0.20.1
+
+Fixed:
+
+- Fixed the v0.20.0 database upgrade failing with a foreign-key error when an older local database contains a GPS point whose deleted parent walk is no longer present. Migration 29 now derives spatial bounds only for existing walk sessions and safely ignores such legacy orphan rows.
+- Synchronized version 0.20.1 with iOS build 154 and Android version code 154.
+
+## v0.20.0
+
+Added:
+
+- Added a bundled offline catalogue for metropolitan France's 100 most populous communes by INSEE 2023 municipal population: 801 frozen landmark medals sourced from the Ministry of Culture Mérimée and Muséofile exports, reviewed Wikidata gap filling, and stable OSM commune identities.
+- Added a deterministic catalogue generator, auditable source/ranking snapshot, per-city JSON albums, and regression checks for whole-commune ranking, minimum roster size, unique city relations, globally unique medal ids, and finite anchors.
+- Added persisted per-walk spatial bounds and per-album, catalogue-version historical scan cursors.
+
+Changed:
+
+- Live and Stop-time medal checks now evaluate only the active city album; loop analysis no longer scales with the number of bundled cities.
+- Explicit historical medal scans now load only new finalized walks whose bounds overlap the active album, process each walk once, and perform zero walk work when the cursor and catalogue version are unchanged; new city albums never scan history silently.
+- District expedition medal availability and accepted-expedition progress now use bounded indexed SQL for the active parent-city album before exact district-polygon filtering.
+- Medal definitions are lazily imported when a supported city is opened. Unchanged definitions cause no writes during normal startup, and pending presentations load only their referenced albums.
+- Unsupported cities no longer display Lyon medals as a fallback.
+- Synchronized version 0.20.0 with iOS build 153 and Android version code 153.
+
+## v0.19.0
+
+Added:
+
+- Added the frozen Villeurbanne v1 album with 14 curated landmarks across architecture, art, culture, history, and nature, using reviewed OpenStreetMap identities, anchors, and bilingual copy grounded in official local heritage sources.
+- Added data-driven album-to-city relation mapping so a selected city or one of its parented districts activates the matching bundled medal collection.
+
+Changed:
+
+- The map rail, collection, markers, historical-scan status, live-award refresh, and celebration completion now follow the active city album while preserving Lyon as the backward-compatible default for unsupported or absent objectives.
+- Documented the human-reviewed expansion workflow for future cities and added catalogue integrity, Unicode, global-id, anchor, city, and parent-district regression coverage.
+- Synchronized version 0.19.0 with iOS build 152 and Android version code 152.
+
 ## v0.18.0
 
 Added:

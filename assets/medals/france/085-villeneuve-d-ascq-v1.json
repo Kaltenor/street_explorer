@@ -1,0 +1,128 @@
+{
+  "id": "villeneuve-d-ascq-v1",
+  "cityId": "villeneuve-d-ascq-fr",
+  "cityZoneId": "relation/7944799",
+  "cityName": {
+    "en": "Villeneuve-d'Ascq",
+    "fr": "Villeneuve-d'Ascq"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "LaM - Lille Métropole Musée d'art moderne, d'art contemporain et d'art brut is one of the city's notable cultural landmarks.",
+        "fr": "LaM - Lille Métropole Musée d'art moderne, d'art contemporain et d'art brut compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0639",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "villeneuve-d-ascq-lam-lille-metropole-musee-d-art-moderne-d-art-contemporain-et-d-art-brut-m0639",
+      "latitude": 50.637497,
+      "longitude": 3.148587,
+      "name": {
+        "en": "LaM - Lille Métropole Musée d'art moderne, d'art contemporain et d'art brut",
+        "fr": "LaM - Lille Métropole Musée d'art moderne, d'art contemporain et d'art brut"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Flers-Bourg is a distinctive architectural landmark in the city.",
+        "fr": "Église de Flers-Bourg est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107879",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-d-ascq-eglise-de-flers-bourg-pa00107879",
+      "latitude": 50.636209550458,
+      "longitude": 3.12939838087526,
+      "name": {
+        "en": "Église de Flers-Bourg",
+        "fr": "Église de Flers-Bourg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Motte féodale dite Motte Quiquempoix is an important witness to the city's history.",
+        "fr": "Motte féodale dite Motte Quiquempoix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107882",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-d-ascq-motte-feodale-dite-motte-quiquempoix-pa00107882",
+      "latitude": 50.6347513560488,
+      "longitude": 3.14758046771261,
+      "name": {
+        "en": "Motte féodale dite Motte Quiquempoix",
+        "fr": "Motte féodale dite Motte Quiquempoix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée d'Art moderne is one of the city's notable cultural landmarks.",
+        "fr": "Musée d'Art moderne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-d-ascq-musee-d-art-moderne-pa59000064",
+      "latitude": 50.6375886461938,
+      "longitude": 3.1511471128415804,
+      "name": {
+        "en": "Musée d'Art moderne",
+        "fr": "Musée d'Art moderne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2729226",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-d-ascq-cimetiere-d-annappes-q2729226",
+      "latitude": 50.627993,
+      "longitude": 3.149816,
+      "name": {
+        "en": "cimetière d'Annappes",
+        "fr": "cimetière d'Annappes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Petit pavillon d'Annapes is a distinctive architectural landmark in the city.",
+        "fr": "Petit pavillon d'Annapes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107883",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-d-ascq-petit-pavillon-d-annapes-pa00107883",
+      "latitude": 50.6382468079232,
+      "longitude": 3.1603170689705,
+      "name": {
+        "en": "Petit pavillon d'Annapes",
+        "fr": "Petit pavillon d'Annapes"
+      }
+    }
+  ]
+}

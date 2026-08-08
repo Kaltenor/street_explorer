@@ -1,0 +1,166 @@
+{
+  "id": "le-havre-v1",
+  "cityId": "le-havre-fr",
+  "cityZoneId": "relation/104492",
+  "cityName": {
+    "en": "Le Havre",
+    "fr": "Le Havre"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine is an important witness to the city's history.",
+        "fr": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100694",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-ancien-prieure-de-graville-ou-ancienne-abbaye-de-sainte-honorine-pa00100694",
+      "latitude": 49.50351617321131,
+      "longitude": 0.16634936917016901,
+      "name": {
+        "en": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine",
+        "fr": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'armateur is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'armateur compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0721",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-havre-musee-de-l-armateur-m0721",
+      "latitude": 49.486857,
+      "longitude": 0.112815,
+      "name": {
+        "en": "musée de l'armateur",
+        "fr": "musée de l'armateur"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du prieuré de Graville is one of the city's notable cultural landmarks.",
+        "fr": "musée du prieuré de Graville compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0719",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-havre-musee-du-prieure-de-graville-m0719",
+      "latitude": 49.503006,
+      "longitude": 0.168325,
+      "name": {
+        "en": "musée du prieuré de Graville",
+        "fr": "musée du prieuré de Graville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'ancien Havre is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'ancien Havre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0718",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-havre-musee-de-l-ancien-havre-m0718",
+      "latitude": 49.488805,
+      "longitude": 0.114474,
+      "name": {
+        "en": "musée de l'ancien Havre",
+        "fr": "musée de l'ancien Havre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000103",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-hotel-de-ville-pa76000103",
+      "latitude": 49.4941056638317,
+      "longitude": 0.107857039005559,
+      "name": {
+        "en": "Hôtel de Ville",
+        "fr": "Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cable-stayed bridge",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q504710",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-havre-pont-de-normandie-q504710",
+      "latitude": 49.432222222,
+      "longitude": 0.273888888,
+      "name": {
+        "en": "pont de Normandie",
+        "fr": "pont de Normandie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic cathedral in Le Havre, France",
+        "fr": "cathédrale située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942295",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-havre-cathedrale-notre-dame-du-havre-q2942295",
+      "latitude": 49.486944444,
+      "longitude": 0.108333333,
+      "name": {
+        "en": "cathédrale Notre-Dame du Havre",
+        "fr": "cathédrale Notre-Dame du Havre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Gadelles (également sur commune de Sainte-Adresse) is an important witness to the city's history.",
+        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-chateau-des-gadelles-egalement-sur-commune-de-sainte-adresse-pa76000029",
+      "latitude": 49.5012224469249,
+      "longitude": 0.0918592666586666,
+      "name": {
+        "en": "Château des Gadelles (également sur commune de Sainte-Adresse)",
+        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse)"
+      }
+    }
+  ]
+}

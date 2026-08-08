@@ -9,7 +9,10 @@ import {
   useRef,
   useState
 } from "react";
-import { createAppearanceStyles } from "../constants/appearance";
+import {
+  createAppearanceStyles,
+  isDaylightAppearance
+} from "../constants/appearance";
 import {
   AccessibilityInfo,
   Animated,
@@ -20,6 +23,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  type TextStyle,
   TouchableOpacity,
   type ViewStyle,
   View
@@ -43,6 +47,19 @@ type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
 const ATLAS_REWARD_JINGLE_DELAY_MS = 90;
 const ATLAS_PAGE_SOUND_VOLUME = 0.5;
 const ATLAS_DOCK_HIT_SLOP = { bottom: 3, left: 3, right: 3, top: 3 } as const;
+const DAYLIGHT_STAMP_DROP_STYLE: TextStyle = { color: "rgba(1, 7, 11, 0.95)" };
+const DAYLIGHT_STAMP_GOLD_FACE_STYLE: TextStyle = {
+  color: "#f5c451",
+  textShadowColor: "rgba(1, 7, 11, 0.95)",
+  textShadowOffset: { height: 0, width: 0 },
+  textShadowRadius: 1.5
+};
+const DAYLIGHT_STAMP_PARCHMENT_FACE_STYLE: TextStyle = {
+  color: "#f3e5bd",
+  textShadowColor: "rgba(1, 7, 11, 0.95)",
+  textShadowOffset: { height: 0, width: 0 },
+  textShadowRadius: 1.5
+};
 const ATLAS_PAGE_DOCK_HEIGHT = 44;
 const ATLAS_SOUND_PLAYERS: Record<AtlasSound, AtlasAudioPlayer> = {
   ink: createAudioPlayer(require("../../assets/sounds/atlas-stamp.wav")),
@@ -586,6 +603,7 @@ export function AtlasStamp({
   const reducedMotion = useReducedMotionPreference();
   const stampedMessageIdRef = useRef<number | null>(null);
   const isMapSelection = message?.presentation === "map-selection";
+  const isDaylight = isDaylightAppearance();
   const artworkReady = loadedArtworkMessageId === message?.id;
 
   useEffect(() => {
@@ -688,27 +706,69 @@ export function AtlasStamp({
         />
         <View style={styles.stampCopy}>
           <View style={styles.stampTextLine}>
-            <Text numberOfLines={2} style={[styles.stampTitle, styles.stampTextDrop]}>
+            <Text
+              numberOfLines={2}
+              style={[
+                styles.stampTitle,
+                styles.stampTextDrop,
+                isDaylight ? DAYLIGHT_STAMP_DROP_STYLE : null
+              ]}
+            >
               {message.title}
             </Text>
-            <Text numberOfLines={2} style={[styles.stampTitle, styles.stampTextFace]}>
+            <Text
+              numberOfLines={2}
+              style={[
+                styles.stampTitle,
+                styles.stampTextFace,
+                isDaylight ? DAYLIGHT_STAMP_GOLD_FACE_STYLE : null
+              ]}
+            >
               {message.title}
             </Text>
           </View>
           <View style={styles.stampTextLine}>
-            <Text numberOfLines={2} style={[styles.stampDetail, styles.stampTextDrop]}>
+            <Text
+              numberOfLines={2}
+              style={[
+                styles.stampDetail,
+                styles.stampTextDrop,
+                isDaylight ? DAYLIGHT_STAMP_DROP_STYLE : null
+              ]}
+            >
               {message.detail}
             </Text>
-            <Text numberOfLines={2} style={[styles.stampDetail, styles.stampTextFace]}>
+            <Text
+              numberOfLines={2}
+              style={[
+                styles.stampDetail,
+                styles.stampTextFace,
+                isDaylight ? DAYLIGHT_STAMP_PARCHMENT_FACE_STYLE : null
+              ]}
+            >
               {message.detail}
             </Text>
           </View>
           {message.pointsAwarded && message.pointsAwarded > 0 ? (
             <View style={styles.stampTextLine}>
-              <Text numberOfLines={1} style={[styles.stampPoints, styles.stampTextDrop]}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  styles.stampPoints,
+                  styles.stampTextDrop,
+                  isDaylight ? DAYLIGHT_STAMP_DROP_STYLE : null
+                ]}
+              >
                 +{message.pointsAwarded.toLocaleString()} PTS
               </Text>
-              <Text numberOfLines={1} style={[styles.stampPoints, styles.stampTextFace]}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  styles.stampPoints,
+                  styles.stampTextFace,
+                  isDaylight ? DAYLIGHT_STAMP_GOLD_FACE_STYLE : null
+                ]}
+              >
                 +{message.pointsAwarded.toLocaleString()} PTS
               </Text>
             </View>

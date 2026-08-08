@@ -105,7 +105,7 @@ import {
   hasCompletedMedalRetroScan,
   markMedalPresentationState
 } from "../database/medalRepository";
-import { DEFAULT_MEDAL_ALBUM_ID } from "../data/medalAlbums";
+import { getMedalAlbumIdForZone } from "../data/medalAlbums";
 import {
   CachedZone,
   commitPendingRecordingRepair,
@@ -127,6 +127,7 @@ import {
 import {
   abandonDistrictExpedition,
   acceptDistrictExpedition,
+  getDistrictExpeditionSealCount,
   recordDistrictExpeditionLoopEvidence
 } from "../database/expeditionRepository";
 import {
@@ -145,12 +146,15 @@ import {
   collectExploredCellIdsByRouteSegments,
   collectFillableEnclosedExplorationCellIds
 } from "../services/explorationArea";
-import { calculateExplorerScore, type ExplorerScore } from "../services/explorerScore";
+import {
+  calculateExplorerScore,
+  EXPLORER_POINTS_PER_EXPEDITION,
+  type ExplorerScore
+} from "../services/explorerScore";
 import {
   evaluateLiveMedalCollection,
   evaluateMedalCollectionForRecording,
   MEDAL_MIN_BOUNDARY_LENGTH_METERS,
-  repairMissedRecordingMedals,
   runMedalRetroScan
 } from "../services/medalEnclosure";
 import {
@@ -430,7 +434,7 @@ async function persistRecordingExplorationDelta(
   return [...new Set([...cellIdsBySource.gps, ...cellIdsBySource.inferred])];
 }
 
-async function repairPendingRecordingCaches() {
+async function repairPendingRecordingCaches(activeMedalAlbumId: string | null) {
   let sessionIds: number[];
 
   try {
@@ -459,7 +463,7 @@ async function repairPendingRecordingCaches() {
         session.activityMode,
         points
       );
-      await evaluateMedalCollectionForRecording(sessionId);
+      await evaluateMedalCollectionForRecording(sessionId, activeMedalAlbumId);
     } catch (error) {
       console.warn(`Failed to repair finalized recording ${sessionId}`, error);
     }
@@ -529,6 +533,7 @@ export function MapScreen({
     useState<DistrictExpeditionDashboard | null>(null);
   const [isExpeditionBusy, setIsExpeditionBusy] = useState(false);
   const [expeditionRevision, setExpeditionRevision] = useState(0);
+  const [expeditionSealCount, setExpeditionSealCount] = useState(0);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
   const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
@@ -567,6 +572,15 @@ export function MapScreen({
   const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
+  const activeMedalAlbumId = useMemo(
+    () => getMedalAlbumIdForZone(objective?.zone),
+    [objective?.zone.id, objective?.zone.parentZoneId]
+  );
+  const activeMedalAlbumIdRef = useRef(activeMedalAlbumId);
+  activeMedalAlbumIdRef.current = activeMedalAlbumId;
+  const activeMedalProgress = medalProgress?.album.id === activeMedalAlbumId
+    ? medalProgress
+    : null;
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [routeFocusRequestId, setRouteFocusRequestId] = useState(0);
   const [mapViewportCenter, setMapViewportCenter] = useState<GpsPoint | null>(null);
@@ -949,6 +963,7 @@ export function MapScreen({
         ...savedExplorationCellIds,
         ...(activeWalk?.exploredCellIds ?? [])
       ],
+      expeditionSealCount,
       loopFillCellIds,
       maxEnclosedAreaSquareMeters:
         LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[
@@ -959,6 +974,7 @@ export function MapScreen({
       activeWalk?.activityMode,
       activeWalk?.exploredCellIds,
       activityMode,
+      expeditionSealCount,
       loopFillCellIds,
       savedExplorationCellIds
     ]
@@ -1100,13 +1116,14 @@ export function MapScreen({
 
     try {
       if (options.repairPendingCaches ?? true) {
-        await repairPendingRecordingCaches();
+        await repairPendingRecordingCaches(activeMedalAlbumId);
       }
       const [
         lifetimeStats,
         savedHistory,
         savedLoopFillCellIds,
         savedLoopFillSummaries,
+        savedExpeditionSealCount,
         exploredCellIds,
         todayNewExploredCellIds,
         savedMedalProgress,
@@ -1117,11 +1134,16 @@ export function MapScreen({
         getWalkHistory(activityMode),
         getLoopFillCellKeys(activityMode),
         getLoopFillSessionSummaries(activityMode),
+        getDistrictExpeditionSealCount(),
         getExploredCellKeys(activityMode),
         getTodayNewExploredCellKeys(activityMode),
-        getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
+        activeMedalAlbumId
+          ? getMedalAlbumProgress(activeMedalAlbumId)
+          : Promise.resolve(null),
         getPendingMedalPresentations(),
-        hasCompletedMedalRetroScan(DEFAULT_MEDAL_ALBUM_ID)
+        activeMedalAlbumId
+          ? hasCompletedMedalRetroScan(activeMedalAlbumId)
+          : Promise.resolve(false)
       ]);
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
@@ -1144,11 +1166,15 @@ export function MapScreen({
 
       setLoopFillCellIds(savedLoopFillCellIds);
       setLoopFillSummaries(savedLoopFillSummaries);
+      setExpeditionSealCount(savedExpeditionSealCount);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
-      setMedalProgress(savedMedalProgress);
       setMedalPresentationQueue(pendingMedalPresentations);
-      setMedalRetroScanComplete(retroScanComplete);
+
+      if (savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
+        setMedalProgress(savedMedalProgress);
+        setMedalRetroScanComplete(retroScanComplete);
+      }
       setStats({
         ...lifetimeStats,
         approximateExploredAreaSquareMeters: exploredCellIds.length * 15 * 15,
@@ -1191,7 +1217,7 @@ export function MapScreen({
         }
       }
     }
-  }, [activityMode, loadDetailedWalks]);
+  }, [activeMedalAlbumId, activityMode, loadDetailedWalks]);
 
   useEffect(() => {
     if (
@@ -1299,26 +1325,6 @@ export function MapScreen({
   ]);
 
   useEffect(() => {
-    let active = true;
-
-    void repairMissedRecordingMedals()
-      .then((result) => {
-        if (active && result.collected.length > 0) {
-          return refreshSavedData();
-        }
-
-        return undefined;
-      })
-      .catch((error) =>
-        console.warn("Failed to repair missed medal awards", error)
-      );
-
-    return () => {
-      active = false;
-    };
-  }, [refreshSavedData]);
-
-  useEffect(() => {
     const nextMedal = medalPresentationQueue[0];
 
     if (!isLaunchDismissed || celebrationMedal || !nextMedal) {
@@ -1381,7 +1387,7 @@ export function MapScreen({
     evaluation.latestBoundaryCellCount = boundaryCellCount;
 
     if (
-      !medalProgress ||
+      !activeMedalProgress ||
       activeWalk.distanceMeters < MEDAL_MIN_BOUNDARY_LENGTH_METERS ||
       boundaryCellCount < 4 ||
       evaluation.evaluatedBoundaryCellCount === boundaryCellCount ||
@@ -1391,8 +1397,9 @@ export function MapScreen({
     }
 
     const input = {
+      albumId: activeMedalProgress.album.id,
       boundaryCellIds: [...activeWalk.exploredCellIds],
-      eligibleMedalIds: medalProgress.medals
+      eligibleMedalIds: activeMedalProgress.medals
         .filter((medal) => !medal.isCollected)
         .map((medal) => medal.id),
       sessionId: activeWalk.sessionId,
@@ -1408,10 +1415,12 @@ export function MapScreen({
           }
 
           const [progress, pendingPresentations] = await Promise.all([
-            getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID),
+            getMedalAlbumProgress(input.albumId),
             getPendingMedalPresentations()
           ]);
-          setMedalProgress(progress);
+          if (progress?.album.id === activeMedalAlbumIdRef.current) {
+            setMedalProgress(progress);
+          }
           setMedalPresentationQueue(pendingPresentations);
         })
         .catch((error) =>
@@ -1435,8 +1444,10 @@ export function MapScreen({
     activeWalk?.distanceMeters,
     activeWalk?.exploredCellIds.length,
     activeWalk?.sessionId,
+    activeMedalAlbumId,
     liveMedalEvaluationRevision,
-    medalProgress?.collectedCount
+    activeMedalProgress?.album.id,
+    activeMedalProgress?.collectedCount
   ]);
   const handleCompleteMedalCelebration = useCallback(async () => {
     if (!celebrationMedal) {
@@ -1449,16 +1460,26 @@ export function MapScreen({
         celebrationMedal.id,
         "presented"
       );
-      setMedalProgress(await getMedalAlbumProgress(DEFAULT_MEDAL_ALBUM_ID));
+      const progress = activeMedalAlbumId
+        ? await getMedalAlbumProgress(activeMedalAlbumId)
+        : null;
+
+      if (progress?.album.id === activeMedalAlbumIdRef.current) {
+        setMedalProgress(progress);
+      }
     } catch (error) {
       console.warn("Failed to finish medal presentation", error);
     } finally {
       setCelebrationMedal(null);
       setMedalTabPulse(true);
     }
-  }, [celebrationMedal]);
+  }, [activeMedalAlbumId, celebrationMedal]);
 
   const handleRunMedalRetroScan = useCallback(() => {
+    if (!activeMedalAlbumId) {
+      return;
+    }
+
     const isFrench = language === "fr";
 
     Alert.alert(
@@ -1474,7 +1495,7 @@ export function MapScreen({
             setIsScanningMedals(true);
 
             try {
-              const result = await runMedalRetroScan();
+              const result = await runMedalRetroScan(activeMedalAlbumId);
               await refreshSavedData();
               Alert.alert(
                 isFrench ? "Analyse termin\u00e9e" : "Scan complete",
@@ -1497,7 +1518,7 @@ export function MapScreen({
         }
       ]
     );
-  }, [language, refreshSavedData]);
+  }, [activeMedalAlbumId, language, refreshSavedData]);
 
   useEffect(() => {
     let isMounted = true;
@@ -2212,12 +2233,14 @@ export function MapScreen({
         knownExpeditionSealIdsRef.current = new Set(
           dashboard.seals.map((seal) => seal.id)
         );
+        setExpeditionSealCount(dashboard.seals.length);
         setExpeditionDashboard(dashboard);
 
         if (newlyEarnedSeal) {
           setAtlasStampMessage({
             detail: newlyEarnedSeal.districtName,
             id: Date.now(),
+            pointsAwarded: EXPLORER_POINTS_PER_EXPEDITION,
             presentation: "map-selection",
             sound: "reward",
             title: language === "fr" ? "EXPÉDITION ACCOMPLIE" : "EXPEDITION COMPLETE"
@@ -2943,6 +2966,7 @@ export function MapScreen({
       setIsStartingRecording(false);
     }
   }, [
+    activeMedalAlbumId,
     activeWalk,
     beginRecordingLifecycle,
     enableBackgroundTracking,
@@ -3456,7 +3480,10 @@ export function MapScreen({
         }
 
         try {
-          await evaluateMedalCollectionForRecording(savedSessionId);
+          await evaluateMedalCollectionForRecording(
+            savedSessionId,
+            activeMedalAlbumId
+          );
         } catch (error) {
           console.warn("Recording saved but deferred medal evaluation failed", error);
         }
@@ -4053,7 +4080,10 @@ export function MapScreen({
         );
 
         try {
-          await evaluateMedalCollectionForRecording(savedSessionId);
+          await evaluateMedalCollectionForRecording(
+            savedSessionId,
+            activeMedalAlbumId
+          );
         } catch (error) {
           console.warn("Recovered recording saved but medal evaluation failed", error);
         }
@@ -4077,6 +4107,7 @@ export function MapScreen({
       setIsComputingRecording(false);
     }
   }, [
+    activeMedalAlbumId,
     invalidateRecordingLifecycle,
     recoverableRecording,
     refreshSavedData,
@@ -4482,7 +4513,7 @@ export function MapScreen({
         activeMode={activeWalk?.activityMode ?? activityMode}
         focusedMedal={focusedMedal}
         medalFocusRequestId={medalFocusRequestId}
-        medals={medalProgress?.medals ?? EMPTY_MEDALS}
+        medals={activeMedalProgress?.medals ?? EMPTY_MEDALS}
         onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
         cityZone={visibleMapBoundaryContext.city}
@@ -4548,7 +4579,7 @@ export function MapScreen({
               setObjectiveHudVisible((visible) => !visible);
             }}
             onPress={() => navigateAtlasPage("medals")}
-            progress={medalProgress}
+            progress={activeMedalProgress}
           />
           {objective && objectiveHudVisible ? (
             <ObjectiveHud
@@ -4755,7 +4786,7 @@ export function MapScreen({
           returnToMapFromAtlas(() => setMedalsVisible(false));
         }}
         onRunRetroScan={handleRunMedalRetroScan}
-        progress={medalProgress}
+        progress={activeMedalProgress}
         retroScanComplete={medalRetroScanComplete}
         scanning={isScanningMedals}
         visible={medalsVisible}
@@ -5072,7 +5103,8 @@ function CityMedalProgress({
   const collected = progress?.collectedCount ?? 0;
   const total = progress?.medals.length ?? 0;
   const ratio = total > 0 ? Math.min(100, (collected / total) * 100) : 0;
-  const city = progress?.album.cityName[language] ?? "Lyon";
+  const city = progress?.album.cityName[language] ??
+    (language === "fr" ? "Aucun album local" : "No local album");
 
   return (
     <View style={styles.cityMedalHud}>

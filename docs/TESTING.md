@@ -1,5 +1,87 @@
 # Testing
 
+## Expedition Explorer Points and Daylight Stamp V0.22.0 Manual Test
+
+Prerequisites: use a profile with at least one existing completed expedition seal, select an official level-9 district, keep network/location permissions available for the chosen expedition type, and test once in Explorator and once in Daylight. For the three-award path, use a local day where all three generated expedition choices can be completed with durable evidence.
+
+1. Open Details before completing anything new. Expected: every existing expedition seal has already added 200 Explorer Points without a migration prompt; the breakdown shows the expedition count and its point subtotal, while walked/enclosed counts remain unchanged.
+2. Note the total, complete one accepted expedition, and wait for durable progress refresh. Expected: one permanent seal is added, total Explorer Score rises by exactly 200, and the large `EXPEDITION COMPLETE`/`EXPÉDITION ACCOMPLIE` stamp displays `+200 PTS` once with the reward sound and haptic.
+3. Complete the other two available expeditions for the same local day. Expected: each completion independently adds 200 points, for at most 600 points from that day's three choices; no artificial daily point cap is applied.
+4. Reopen Details and the expedition journal, then force-close and relaunch. Expected: the total and breakdown remain derived from the same unique seal count, completed expeditions do not award twice, and old completion stamps do not replay.
+5. Switch to Daylight and trigger an ordinary selection stamp and an expedition reward stamp. Expected: title and point text retain bright gold, detail text retains light parchment, and the dark outline remains legible against the stamp's unchanged navy center. Explorator retains its established stamp colors.
+6. Export and restore a Backup V5 containing expedition seals. Expected: the restored score immediately includes 200 points for each restored seal without a separate balance or migration.
+
+Automated checks cover the exact 200-point rule, three-seal arithmetic, permanent-seal count wiring, retroactive score composition, completion-stamp value, Daylight stamp contrast styles, type safety, expedition regressions, geometry, and the iOS bundle. Physical-device validation remains required for live completion timing, reward audio/haptics, final stamp contrast, relaunch persistence, and Files-based restore.
+
+## Unlocked Medal Wikipedia Reader V0.21.3 Manual Test
+
+Prerequisites: use a profile with at least one unlocked and one locked medal and enable network access. First load the v0.21.3 JavaScript in a pre-WebView development binary such as build 155, then repeat on clean-cache build 159 or newer. Repeat the embedded-reader motion check once with Reduce Motion enabled and test once in English and once in French.
+
+1. Open Medals and inspect a locked card. Expected: it remains compact, has no description or Wikipedia action, and tapping its map row retains the existing focus-on-map behavior.
+2. Inspect an unlocked card. Expected: its map row still focuses the landmark, while its description is a separate accessible `Read on Wikipedia`/`Lire sur Wikipédia` reward action.
+3. In the pre-WebView binary, launch the app and tap the unlocked description. Expected: startup has no `RNCWebViewModule` invariant, the article opens directly in the default browser, and returning leaves the medal collection usable.
+4. In clean-cache build 159 or newer, tap the unlocked description. Expected: the non-throwing native probe resolves the registered WebView and the tapped area expands into a full-screen Atlas-framed reader instead of opening the default browser; with Reduce Motion disabled it morphs over roughly 320ms, while Reduce Motion opens directly without spatial animation.
+5. Read and scroll the article. Expected: there is no address bar, browser navigation, tabs, editing, sharing, download, login, pop-up, or external-site access. The dedicated Close control is reachable and returns to the same collection position.
+6. Test a Wikidata-backed medal with both French and English articles. Expected: the article matches the selected app language. Test one missing the selected-language sitelink; expected: the other supported language opens and its language code appears in the reader header.
+7. Test a medal without a resolvable exact sitelink. Expected: a confident exact title opens when available; otherwise the selected-language Wikipedia search results appear rather than an unrelated guessed article.
+8. Disable networking after tapping a description, or otherwise force the embedded load to fail. Expected: the same resolved URL is handed to the default browser once. If the system browser also cannot open it, the reader shows a contained error state and Close remains available.
+9. With VoiceOver, distinguish the map-focus button from the Wikipedia link, open and close the reader, and confirm background Medal controls are hidden from accessibility while it is open. On Android, verify the system Back action dismisses the reader before the Medals page.
+
+Automated checks cover language and fallback selection, title confidence, HTTPS Wikipedia-only navigation, edit/external blocking, unlocked-only wiring, browser fallback, Reduce Motion, type safety, UI regressions, and the iOS bundle. Physical-device validation remains required for native WebView loading, morph geometry, accessibility focus, and system-browser fallback.
+
+## Paris V2 Album V0.20.2 Manual Test
+
+Prerequisites: run the v0.20.2 bundle with Paris selected as the city objective and Markers enabled. Preserve an existing profile if available so the versioned catalogue-update path is exercised. The 60 Paris definitions are bundled offline; network access is required only for uncached boundary or MapKit data.
+
+1. Open the map and Medals in Paris. Expected: the rail and collection show a total of 60, the previous ten landmarks remain present, and existing Paris unlocks are preserved.
+2. Inspect the collection by category. Expected: architecture, art, culture, history, and nature all contain entries; names and French descriptions retain their accents, and no métro station appears.
+3. Visit the map areas represented by arrondissements 1 through 20. Expected: every arrondissement contains at least two Paris medal anchors, while landmark-rich central areas may contain more.
+4. Focus representative outer-arrondissement cards: Palais de la Porte Dorée (12th), Bibliothèque François-Mitterrand (13th), Parc André Citroën (15th), Cité de l'Économie (17th), Philharmonie de Paris (19th), and Parc de Belleville (20th). Expected: each card focuses its reviewed anchor in the stated arrondissement.
+5. Force-close and reopen twice. Expected: Paris remains at 60, catalogue version 2 does not rewrite repeatedly, and the v0.20.1 orphan-safe database migration continues to initialize without error.
+6. Run the explicit past-walk scan for Paris. Expected: the v2 definition version permits the new landmarks to be considered against spatially overlapping walks without scanning unrelated cities; a second unchanged run performs no walk work.
+
+Automated checks cover the 60-item count, all 20 arrondissement labels, all five categories, the no-métro rule, global identity uniqueness, finite coordinates, the 851-medal pack total, type safety, geometry, and the iOS bundle. Physical-device validation remains required for visible marker placement, saved-unlock preservation, and performance with real Paris history.
+
+## Database Upgrade Recovery V0.20.1 Manual Test
+
+Prerequisites: install a v0.20.1 development bundle over the affected v0.20.0 installation without deleting the app or its local data. Keep the device offline so the result depends only on the local migration.
+
+1. Force-close and reopen the upgraded app. Expected: database initialization completes, the map replaces the red LogBox error, and the existing walks and exploration progress remain available.
+2. Force-close and reopen once more. Expected: startup succeeds again; migration 29 is recorded and does not repeat or show a foreign-key error.
+3. Record and stop a short test walk, then reopen the app. Expected: the new session persists normally and its GPS points continue updating the spatial-bounds index.
+4. Open Medals and run the past-walk scan for a supported city. Expected: the scan completes using valid saved sessions; any detached legacy GPS rows are ignored and cannot block startup or award medals.
+
+Automated checks cover the orphan-safe parent-session join, catalogue behavior, geometry regressions, type safety, and the iOS bundle. Physical-device validation is still required against the affected on-device database because its legacy orphan row is not present in a clean test profile.
+
+## France Top-100 Medal Catalogue V0.20.0 Manual Test
+
+Prerequisites: run the v0.20.0 bundle on a physical iPhone with foreground location allowed and Markers enabled. Cache administrative boundaries for at least two supported cities, one supported city district, and one commune outside the top 100. Keep one finalized qualifying walk in a supported city available for the historical-scan checks. The 100 albums and 801 medal definitions are offline; network is required only for uncached MapKit tiles or administrative boundaries.
+
+1. Select Paris, Marseille, Lyon, one medium-ranked city such as Pau, and one rank-100 city such as Maisons-Alfort in turn. Expected: each city shows its own name, total, markers, and collection; Paris/Marseille/Lyon appear as whole cities rather than arrondissement albums, Lyon remains 20, and no previous-city marker or progress flashes after selection settles.
+2. Select an official district inside a supported city. Expected: its parent OSM city relation keeps that city's album active. Switch rapidly between supported cities and districts; only the latest selection survives.
+3. Select a commune outside the top 100. Expected: no Lyon or other unrelated medals, markers, or progress are shown. Return to a supported city and expect its saved progress to restore.
+4. Disable networking after the tested boundaries are cached, force-close, and reopen on a supported city. Expected: its album, locked/unlocked cards, markers, and saved progress load offline. Reopen once more without changing cities; expected: no catalogue rewrite or visible startup delay.
+5. Start an 80m-or-longer safe outdoor loop around one uncollected active-city anchor, keeping the anchor strictly inside and the enclosure below 150,000m². Expected: live evaluation checks only that city's uncollected anchors, awards once, and presents the normal reveal/flight. Stop the walk; expected: the selected-session safety evaluation creates no duplicate.
+6. Open Medals and run the past-walk scan. Expected: only new saved walks overlapping the active city's landmark envelope are processed and any valid medal is awarded once. Run it again without adding a walk; expected: immediate completion with zero new awards and no history-wide pause. Add a walk in another city and rerun here; expected: no local award and no large-history stall.
+7. Open Expeditions for a supported-city district containing an uncollected medal. Expected: a medal expedition may be offered from that parent-city album. Accept it, collect a medal in the district, and reopen Expeditions; expected: progress advances from acquisition evidence after acceptance. In a district without an uncollected local medal, expected: no impossible medal choice.
+8. Force-close and reopen, then switch among three supported cities. Expected: every collected medal, presentation state, scan cursor, and city total persists independently; pending presentations still resume without loading all 100 albums into the visible map.
+
+Automated checks already run for this release are listed under Validation commands below. Physical-device validation is still required for native boundary parenting, MapKit marker replacement, live GPS award timing, process-death persistence, offline presentation, and perceived performance with a large real walk history.
+
+## Villeurbanne Medal Album V0.19.0 Manual Test
+
+Prerequisites: run the 0.19.0 bundle on a physical phone with Markers enabled, allow foreground location, and cache exact Lyon and Villeurbanne boundaries. Use a profile on which both cities' medal totals are easy to identify. Network is required only for uncached MapKit tiles or administrative boundaries; both medal albums and reward assets are offline. A safe outdoor route of at least 80m around one Villeurbanne anchor is required for the award path.
+
+1. Start with Lyon selected as a city objective and open Medals. Expected: the rail and collection show Lyon with 20 medals, with the existing earned state unchanged.
+2. Long-press Villeurbanne, select City, and let the boundary swap settle. Expected: the rail changes to Villeurbanne `0/14` or the saved Villeurbanne count, Medals lists the 14 curated landmarks across all five categories, and the map shows their anchors rather than Lyon's markers.
+3. Select a Villeurbanne district objective. Expected: the parent `relation/120989` keeps Villeurbanne active; switching between Villeurbanne districts does not flash or restore Lyon's album. Select a Lyon district and expect the rail, collection, and markers to return to Lyon 20.
+4. In both English and French, inspect every Villeurbanne card and focus representative landmarks from the centre, east, north, and west. Expected: names and descriptions retain accents, cards focus their exact OSM anchors, and no two landmarks share an id or marker.
+5. Start a qualifying walk of at least 80m around a Villeurbanne anchor, keep it strictly inside the closed loop, and keep the enclosure under 150,000m². Expected: the medal unlocks during the active walk or at Stop through the safety evaluation, the localized celebration appears, Continue flies it into the Medal tab, and Villeurbanne progress increments exactly once.
+6. Force-close and reopen with a Villeurbanne city or district objective saved. Expected: Villeurbanne 14 restores automatically with its earned medal and presentation state. Switch to Lyon and back; each city's progress remains independent. Run the historical scan twice and expect no duplicate awards.
+7. Select an unsupported city objective. Expected: no unrelated fallback album is shown and the app does not fetch, invent, or silently award live OSM points. Disable the network after boundaries are cached and repeat Lyon/Villeurbanne switching; both frozen albums continue to work offline.
+
+Automated checks cover both frozen roster sizes, all-category and Unicode-safe Villeurbanne copy, globally unique ids, finite anchors, city and parent-district relation mapping, latest-selection guards for rapid city switches, enclosure behavior, type safety, and the iOS bundle. Physical-device validation remains required for native boundary selection, map-marker replacement, live GPS collection, celebration flight, persistence after process death, and offline MapKit presentation.
+
 ## Persistent Atlas Dock V0.18.0 Manual Test
 
 Prerequisites: run the 0.18.0 bundle on a physical iPhone with the map loaded, keep at least one saved recording available, and test in both English and French. No location permission or network connection is required after the map is available. Repeat the visual checks on the narrowest supported phone, once with Reduce Motion enabled, and once with a non-zero bottom safe area.
@@ -79,11 +161,13 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 ```powershell
 npm run typecheck
 npm run test:backup
+npm run test:docs
 npm run test:expeditions
 npm run test:geometry
 npm run test:ui
 npm run test:medals
 npm run test:player
+npm run test:wikipedia
 npx expo install --check
 ```
 
@@ -98,11 +182,15 @@ npx expo install --check
 
 `test:backup` verifies V5 hot/archive grouping, exact one-to-one logical session coverage, archive point limits, lossless raw/frozen/inferred route round trips including duplicate legacy point indexes, material compression versus duplicated V4 JSON, checksum corruption rejection, consistent manifest totals, expedition-state preservation, and rejection of orphaned loop evidence.
 
-`test:expeditions` verifies deterministic three-choice generation, local-day rollover, viable fallback choices, one-active database enforcement, finalized-walk loop evidence, map/HUD wiring, and backup/restore/delete-all preservation.
+`test:docs` verifies synchronized package/lock/Expo versions and platform build declarations, the newest README/changelog release, required context files and links, recent catalogue/reader/score/appearance/backup claims, current development-build guidance, and the historical warning plus shipped-contract summary in the original medal design record.
 
-`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, all three persisted appearance choices, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
+`test:expeditions` verifies deterministic three-choice generation, local-day rollover, viable fallback choices, one-active database enforcement, finalized-walk loop evidence, the aggregate permanent-seal query, retroactive 200-point scoring and reward-stamp wiring, map/HUD behavior, and backup/restore/delete-all preservation.
 
-`test:medals` verifies the configured replacement splash PNG, real-time award/repair wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the single objective toggle, streamlined navy/gold presentation wiring, Unicode catalogue copy, gameplay-equivalent exact and one-cell-tolerant closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, all three persisted appearance choices, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, explicit Daylight gold/parchment stamp contrast overrides, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
+
+`test:medals` verifies the configured replacement splash PNG, active-city real-time/pending-recording safety wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the complete metropolitan top-100 whole-commune ranking, Paris's 20-arrondissement coverage, 851-medal integrity, lazy manifest loading, unique city relations and medal ids, finite reviewed anchors, spatial/versioned historical scans, no eager startup seeding, direct expedition queries, objective-city and parent-district mapping, gameplay-equivalent closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+
+`test:wikipedia` verifies selected-language and alternate-language Wikidata sitelinks, conservative title confidence, same-language search fallback, HTTPS Wikipedia-only navigation, edit/Special/external blocking, unlocked-only interaction wiring, lazy native-module guarding, default-browser fallback, and Reduce Motion support.
 
 
 ## Reprocess Reliability Cleanup V0.16.22 iPhone Manual Test
@@ -498,7 +586,7 @@ Prerequisites: run Street Explorer 0.16.26 in a compatible iOS development clien
 1. Select a district or city objective. Expected: the existing large location-selection stamp keeps its ordinary short ink sound and does not play the victory jingle.
 2. Start a walk and close a new qualifying enclosure. Expected: the enclosed surface fills, one large map-centered `AREA ENCLOSED` stamp uses the exact location-change scale/strike and reports the number of newly revealed cells, the dedicated victory jingle and medium haptic play once, and recording/map interaction continues without pausing.
 3. Keep walking after the stamp dismisses without creating another enclosure. Expected: the same enclosure does not replay the stamp or jingle. Close a second distinct qualifying enclosure; exactly one new reward plays for that closure.
-4. Complete the accepted expedition and wait for durable finalization. Expected: one `EXPEDITION COMPLETE` stamp uses the same strike and victory jingle, one permanent seal is added, and reopening the app does not replay the old reward.
+4. Complete the accepted expedition and wait for durable finalization. Expected: one `EXPEDITION COMPLETE` stamp uses the same strike and victory jingle, displays `+200 PTS`, adds one permanent seal, raises Explorer Score by 200, and does not replay after reopening.
 5. Enable iOS Reduce Motion and repeat a qualifying closure. Expected: the reward remains visible for the reduced duration, uses the final stamp state instead of the strike sequence, continues to avoid blocking input, and still plays the reward audio/haptic.
 6. Switch the app to French and repeat both reward types. Expected: localized `ZONE ENCLOSE`/`EXPÉDITION ACCOMPLIE` wording fits inside the existing stamp, including the singular/plural revealed-cell detail.
 
@@ -520,11 +608,11 @@ Automated UI coverage verifies permanent dock wiring, selected-state styling, th
 
 Prerequisites: run the Street Explorer 0.16.25 bundle in a compatible iOS development client (build 140 or newer for a matching release binary), allow foreground location, and select an exact official level-9 district objective. Cache some OSM streets in that district; for complete coverage, use a district with at least one uncollected landmark medal. Stop any active recording before accepting an expedition. Network is needed only to obtain uncached boundaries, streets, MapKit tiles, or medal metadata; already cached gameplay and expedition progress are offline.
 
-1. Tap the expedition line in the district objective HUD. Expected: the Atlas journal opens with exactly three choices for the current local date and district, a seal count, and explicit wording that seals have no currency or ranking.
+1. Tap the expedition line in the district objective HUD. Expected: the Atlas journal opens with exactly three choices for the current local date and district, a seal count, and explicit wording that each seal contributes 200 Explorer Points without introducing a ranking.
 2. Close and reopen the journal, then force-close and reopen the app. Expected: the same three choices, kinds, and targets remain for that district and date.
 3. Accept a new-cell expedition. Expected: it becomes the sole active expedition, begins at 0, appears in the objective HUD, and pre-existing cells do not count.
 4. Start walking inside the district and explore enough genuinely new cells. Expected: live map exploration behaves normally; after durable Stop/finalization, expedition progress increases only for qualifying district cells created after acceptance.
-5. Complete the target and wait for finalization. Expected: one EXPEDITION COMPLETE stamp appears, the expedition gains a completed state, exactly one permanent seal is added, and reopening the app keeps it earned without adding a duplicate.
+5. Complete the target and wait for finalization. Expected: one EXPEDITION COMPLETE stamp displays `+200 PTS`, the expedition gains a completed state, exactly one permanent seal is added, Explorer Score rises by 200, and reopening the app keeps it earned without adding a duplicate.
 6. Accept another available expedition, then switch to a second district objective. Expected: the first expedition remains the only global active mission and the second district cannot accept another until the first is abandoned or completed; its journal still shows its own deterministic daily choices.
 7. Return to the first district and abandon the active expedition. Expected: the HUD clears its active progress, no seal is awarded, and a different expedition can now be accepted. Restarting the abandoned choice resets its post-acceptance progress boundary.
 8. While a recording is active, open the journal and try to accept or restart a choice. Expected: acceptance is disabled/blocked while recording; the recording continues safely and no ambiguous progress boundary is created.
@@ -667,8 +755,8 @@ Notes:
 
 ## Landmark Medal Test
 
-1. Open the map in Lyon with Markers enabled and confirm the 20 album landmarks appear as locked medal pins.
-2. Open Medals and confirm the Lyon count is shown out of 20, collected medals appear before locked medals in All and every category filter, French accents such as `Fourvière` render correctly, all six category chips are vertically centered and unclipped, every filter works, and tapping any card focuses its exact anchor on the map.
+1. Open the map in Lyon with Markers enabled and confirm its 20 album landmarks appear as locked medal pins. Select Villeurbanne as a city objective and confirm the markers and rail switch to its 14 landmarks; select a Villeurbanne district and confirm the same parent-city album remains active.
+2. Open Medals for both cities and confirm the city-specific count is shown out of 20 or 14, collected medals appear before locked medals in All and every category filter, French accents such as `Fourvière`, `Nécropole`, and `Théâtre` render correctly, all six category chips are vertically centered and unclipped, every filter works, and tapping any card focuses its exact anchor on the map.
 3. Start a walk and trace at least 80m around a landmark, returning close enough for the normal one-cell gameplay seam tolerance. Keep the anchor strictly inside and the enclosed area below 150,000m2.
 4. Close the accepted boundary and continue moving for several GPS fixes instead of pausing. Confirm the medal still unlocks while the walk remains active within the short settle window: the map marker changes from a lock to a medal and the collection card becomes unlocked without waiting for Stop.
 5. Confirm previously mapped teal cells do not block the award. Repeat over an area visited before the medal feature and verify the new qualifying loop still unlocks it.

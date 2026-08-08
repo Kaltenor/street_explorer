@@ -1,0 +1,166 @@
+{
+  "id": "nice-v1",
+  "cityId": "nice-fr",
+  "cityZoneId": "relation/170100",
+  "cityName": {
+    "en": "Nice",
+    "fr": "Nice"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Reparate is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Reparate est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080779",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-cathedrale-sainte-reparate-pa00080779",
+      "latitude": 43.6970573043453,
+      "longitude": 7.27571442204675,
+      "name": {
+        "en": "Cathédrale Sainte-Reparate",
+        "fr": "Cathédrale Sainte-Reparate"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080774",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-ancien-abbaye-de-saint-pons-actuellement-hopital-pasteur-pa00080774",
+      "latitude": 43.7251295437668,
+      "longitude": 7.28302358357752,
+      "name": {
+        "en": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur",
+        "fr": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Villa de Châteauneuf, dans le quartier de Gairaut is an important witness to the city's history.",
+        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080967",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-villa-de-chateauneuf-dans-le-quartier-de-gairaut-pa00080967",
+      "latitude": 43.7311573042581,
+      "longitude": 7.26261301204554,
+      "name": {
+        "en": "Villa de Châteauneuf, dans le quartier de Gairaut",
+        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale orthodoxe Saint-Nicolas et chapelle du tsarévitch Nicolas Alexandrovitch is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale orthodoxe Saint-Nicolas et chapelle du tsarévitch Nicolas Alexandrovitch est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080780",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-cathedrale-orthodoxe-saint-nicolas-et-chapelle-du-tsarevitch-nicolas-alexandrovitch-pa00080780",
+      "latitude": 43.70382444511,
+      "longitude": 7.25388752009634,
+      "name": {
+        "en": "Cathédrale orthodoxe Saint-Nicolas et chapelle du tsarévitch Nicolas Alexandrovitch",
+        "fr": "Cathédrale orthodoxe Saint-Nicolas et chapelle du tsarévitch Nicolas Alexandrovitch"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Châteaux de Valrose, actuellement Université de Nice (Faculté des Sciences) is an important witness to the city's history.",
+        "fr": "Châteaux de Valrose, actuellement Université de Nice (Faculté des Sciences) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080785",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-chateaux-de-valrose-actuellement-universite-de-nice-faculte-des-sciences-pa00080785",
+      "latitude": 43.7167719905056,
+      "longitude": 7.267376906047611,
+      "name": {
+        "en": "Châteaux de Valrose, actuellement Université de Nice (Faculté des Sciences)",
+        "fr": "Châteaux de Valrose, actuellement Université de Nice (Faculté des Sciences)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Masséna is one of the city's notable cultural landmarks.",
+        "fr": "musée Masséna compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0881",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-massena-m0881",
+      "latitude": 43.695672,
+      "longitude": 7.259251,
+      "name": {
+        "en": "musée Masséna",
+        "fr": "musée Masséna"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de paléontologie de Terra Amata is one of the city's notable cultural landmarks.",
+        "fr": "musée de paléontologie de Terra Amata compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0885",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-de-paleontologie-de-terra-amata-m0885",
+      "latitude": 43.698046,
+      "longitude": 7.288686,
+      "name": {
+        "en": "musée de paléontologie de Terra Amata",
+        "fr": "musée de paléontologie de Terra Amata"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts Jules Chéret is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts Jules Chéret compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0880",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-des-beaux-arts-jules-cheret-m0880",
+      "latitude": 43.69467562501604,
+      "longitude": 7.249470499489079,
+      "name": {
+        "en": "musée des beaux-arts Jules Chéret",
+        "fr": "musée des beaux-arts Jules Chéret"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "besancon-v1",
+  "cityId": "besancon-fr",
+  "cityZoneId": "relation/103599",
+  "cityName": {
+    "en": "Besançon",
+    "fr": "Besançon"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Jean et Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Jean et Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101462",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-cathedrale-saint-jean-et-saint-etienne-pa00101462",
+      "latitude": 47.2337407664707,
+      "longitude": 6.03040628609094,
+      "name": {
+        "en": "Cathédrale Saint-Jean et Saint-Étienne",
+        "fr": "Cathédrale Saint-Jean et Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Paul (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Paul (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101453",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-abbaye-saint-paul-ancienne-pa00101453",
+      "latitude": 47.2390884514278,
+      "longitude": 6.02930956418957,
+      "name": {
+        "en": "Abbaye Saint-Paul (ancienne)",
+        "fr": "Abbaye Saint-Paul (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle et enceinte urbaine is an important witness to the city's history.",
+        "fr": "Citadelle et enceinte urbaine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101466",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-citadelle-et-enceinte-urbaine-pa00101466",
+      "latitude": 47.2454441277623,
+      "longitude": 6.02199688443861,
+      "name": {
+        "en": "Citadelle et enceinte urbaine",
+        "fr": "Citadelle et enceinte urbaine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du temps is one of the city's notable cultural landmarks.",
+        "fr": "musée du temps compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0333",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-du-temps-m0333",
+      "latitude": 47.235978,
+      "longitude": 6.0268,
+      "name": {
+        "en": "musée du temps",
+        "fr": "musée du temps"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0332",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-des-beaux-arts-et-d-archeologie-m0332",
+      "latitude": 47.240055,
+      "longitude": 6.022938,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée comtois is one of the city's notable cultural landmarks.",
+        "fr": "musée comtois compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0334",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-comtois-m0334",
+      "latitude": 47.236687,
+      "longitude": 6.022095,
+      "name": {
+        "en": "musée comtois",
+        "fr": "musée comtois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101510",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-hotel-de-ville-pa00101510",
+      "latitude": 47.2377115341935,
+      "longitude": 6.02406258036891,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101606",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-palais-de-justice-pa00101606",
+      "latitude": 47.2373087349659,
+      "longitude": 6.0234632044617,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 ## Completed
 
 - Persistent Atlas footer navigation across all main and secondary pages, direct tab switching, highlighted-tab return to map, animated dock return, and localized hold-to-preview labels on the map.
-- Explorer Score with one point per unique walked tile, one enclosure bonus per enclosed tile, automatic retroactive calculation, live updates, Details placement, a combined idle Field Log score/today-steps row, point-bearing enclosure stamps, and a 55-item offline international mapped-surface ladder.
+- Explorer Score with one point per unique walked tile, one enclosure bonus per enclosed tile, 200 points per permanent expedition seal, automatic retroactive calculation, live updates, a source breakdown in Details, a combined idle Field Log score/today-steps row, point-bearing enclosure and expedition stamps, and a 55-item offline international mapped-surface ladder.
 - Real book-page audio at a restrained 50% player volume for both directions of Atlas icon-bar navigation, preloaded offline, audible in iPhone Silent mode, and mixed over music or podcasts.
 - Expo React Native TypeScript app scaffold.
 - Local SQLite persistence.
@@ -46,7 +46,8 @@
 - Consolidated full-history and selected-recording street-corridor repair, per-recording graph reuse, atomic exploration replacement, frozen-route aggregate reconciliation, full-history calculation isolation, and explicit selected-walk failure reporting.
 - Preloaded launch screen with an explicit, discreet ready-state entry control.
 - Map-first cached exploration startup, accuracy-aware current-location centering, a persistent accepted-route player annotation with native MapKit anchoring and game-owned location presentation, self-healing foreground tracking, raw-observation-derived full-walk rendering, atomic durable background-batch publication with chunked backpressure and bounded late-event recovery, consistent backup snapshots, import admission fencing, and GPS-source-validated atomic derived-cache repair.
-- Landmark medal collection V1 with a frozen 20-item Lyon album, Unicode-safe French landmark copy, permanent Unlocked/Locked category sections, a persistent city-progress HUD, real-time gameplay-aligned loop awards over previously mapped ground, Stop/recovery safety evaluation, one-time missed-award repair, 3D tab-flight presentation, explicit historical scan, Backup V5 preservation, and allowlisted OpenStreetMap review tooling.
+- Landmark medal collection with a frozen 851-medal offline pack for metropolitan France's INSEE top 100 communes, including 60 Paris landmarks spanning all 20 arrondissements, objective-driven city/district album switching, lazy versioned catalogue imports, active-city live/Stop checks, spatial incremental historical scans, indexed expedition opportunity queries, permanent Unlocked/Locked sections, 3D tab-flight presentation, Backup V5 preservation, and deterministic reviewed source tooling.
+- Unlocked-medal Wikipedia rewards with a morphing read-only embedded frame, selected-language and alternate-language resolution, conservative search fallback, restricted navigation, Reduce Motion support, and default-browser recovery.
 - Responsive full-screen navigation with a memoized map subtree, lazy per-recording History details, cancellable Completion scans, and bounded asynchronous Backup V5 sharing.
 - App-wide streamlined navy/gold presentation with a roughly 20%-enlarged first-launch wordmark that collapses after the first interaction, four separate lightly inset Atlas map stripes with consistent subtle corners, textured navigation whose engraved selected destination expands to a localized Cinzel label, an objective toggle integrated into the medal stripe, layer controls centralized in Options, a compact field-ledger recording stripe with neutral GPS inset, four-metric Completion, and collapsed technical diagnostics.
 - Persistent appearance modes with Explorator as the existing dark atlas, an app-wide daylight-optimized high-contrast palette and light native map, plus a selectable Custom placeholder reserved for later palette definition.
@@ -64,7 +65,7 @@
 - Recording Recovery V2: full-screen persisted-route preview, verified Active/Interrupted/Uncertain background status, safe recommended actions, bounded long-route rendering, and atomic date/time-based naming during recovered finalization.
 - UI Polish V2: semantic walking/path colors, consistent dark cards across Details/History/Completion, summary-first route details and post-walk reports, and five explicit GPS presentation states with age/accuracy thresholds.
 - Data Tools V2: verified archive preview before restore confirmation, same-file revalidation before atomic replacement, streaming bulk GPX ZIP export, and retirement of the temporary V4 converter.
-- District Expeditions V1: three deterministic offline district choices per local day, one accepted active expedition globally, durable cell/street/loop/medal progress, permanent journal seals with no currency or score, a permanent Atlas navigation destination plus contextual HUD shortcut, no-district handoff to Completion, and Backup V5 preservation.
+- District Expeditions V1: three deterministic offline district choices per local day, one accepted active expedition globally, durable cell/street/loop/medal progress, permanent journal seals worth 200 retroactive Explorer Points each, a permanent Atlas navigation destination plus contextual HUD shortcut, no-district handoff to Completion, and Backup V5 preservation.
 
 ## Next Priority
 

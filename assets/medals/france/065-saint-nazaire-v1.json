@@ -1,0 +1,166 @@
+{
+  "id": "saint-nazaire-v1",
+  "cityId": "saint-nazaire-fr",
+  "cityZoneId": "relation/182415",
+  "cityName": {
+    "en": "Saint-Nazaire",
+    "fr": "Saint-Nazaire"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "écomusée is one of the city's notable cultural landmarks.",
+        "fr": "écomusée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0747",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-nazaire-ecomusee-m0747",
+      "latitude": 47.273813,
+      "longitude": -2.198174,
+      "name": {
+        "en": "écomusée",
+        "fr": "écomusée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont à haubans enjambant l'estuaire de la Loire"
+      },
+      "externalIdentity": {
+        "id": "Q1060111",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-nazaire-pont-de-saint-nazaire-q1060111",
+      "latitude": 47.278764,
+      "longitude": -2.165681,
+      "name": {
+        "en": "pont de Saint-Nazaire",
+        "fr": "pont de Saint-Nazaire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "maritime museum",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q347251",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-nazaire-base-sous-marine-de-saint-nazaire-q347251",
+      "latitude": 47.27583333,
+      "longitude": -2.2025,
+      "name": {
+        "en": "base sous-marine de Saint-Nazaire",
+        "fr": "base sous-marine de Saint-Nazaire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Saint-Nazaire, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3578598",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-nazaire-ecomusee-de-saint-nazaire-q3578598",
+      "latitude": 47.2742,
+      "longitude": -2.19851,
+      "name": {
+        "en": "écomusée de Saint-Nazaire",
+        "fr": "écomusée de Saint-Nazaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Salle du parc des sports du Grand Marais, dite La Soucoupe is a distinctive architectural landmark in the city.",
+        "fr": "Salle du parc des sports du Grand Marais, dite La Soucoupe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA44000067",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-nazaire-salle-du-parc-des-sports-du-grand-marais-dite-la-soucoupe-pa44000067",
+      "latitude": 47.27131242489667,
+      "longitude": -2.2287963413058725,
+      "name": {
+        "en": "Salle du parc des sports du Grand Marais, dite La Soucoupe",
+        "fr": "Salle du parc des sports du Grand Marais, dite La Soucoupe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Anne is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Anne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA44000066",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-nazaire-eglise-sainte-anne-pa44000066",
+      "latitude": 47.278135549617666,
+      "longitude": -2.2263954574945517,
+      "name": {
+        "en": "Église Sainte-Anne",
+        "fr": "Église Sainte-Anne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "memorial by Gertrude Vanderbilt Whitney in Saint-Nazaire, France",
+        "fr": "monument de Gertrude Vanderbilt Whitney à Saint-Nazaire, France"
+      },
+      "externalIdentity": {
+        "id": "Q20671159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-nazaire-monument-au-corps-expeditionnaire-americain-q20671159",
+      "latitude": 47.2681,
+      "longitude": -2.2137,
+      "name": {
+        "en": "Monument au corps expéditionnaire américain",
+        "fr": "Monument au corps expéditionnaire américain"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Loire-Atlantique department, France",
+        "fr": "monument aux morts de la Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q137680882",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-nazaire-monument-aux-morts-de-l-immaculee-de-saint-nazaire-q137680882",
+      "latitude": 47.271111111,
+      "longitude": -2.206944444,
+      "name": {
+        "en": "monument aux morts de l'Immaculée de Saint-Nazaire",
+        "fr": "monument aux morts de l'Immaculée de Saint-Nazaire"
+      }
+    }
+  ]
+}

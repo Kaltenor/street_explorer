@@ -1,0 +1,166 @@
+{
+  "id": "noisy-le-grand-v1",
+  "cityId": "noisy-le-grand-fr",
+  "cityZoneId": "relation/130492",
+  "cityName": {
+    "en": "Noisy-le-Grand",
+    "fr": "Noisy-le-Grand"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "19th c. French fort near Paris",
+        "fr": "ancien fort du système défensif de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q8564802",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-fort-de-villiers-q8564802",
+      "latitude": 48.833548,
+      "longitude": 2.555085,
+      "name": {
+        "en": "fort de Villiers",
+        "fr": "fort de Villiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sulpice et Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sulpice et Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079942",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "noisy-le-grand-eglise-saint-sulpice-et-notre-dame-pa00079942",
+      "latitude": 48.8509715069924,
+      "longitude": 2.54791888411361,
+      "name": {
+        "en": "Église Saint-Sulpice et Notre-Dame",
+        "fr": "Église Saint-Sulpice et Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall, Noisy-le-Grand, France",
+        "fr": "hôtel de ville, Noisy-le-Grand, France"
+      },
+      "externalIdentity": {
+        "id": "Q72839805",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-hotel-de-ville-de-noisy-le-grand-q72839805",
+      "latitude": 48.8493,
+      "longitude": 2.5525,
+      "name": {
+        "en": "hôtel de ville de Noisy-le-Grand",
+        "fr": "hôtel de ville de Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19888785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-eglise-saint-sulpice-de-noisy-le-grand-q19888785",
+      "latitude": 48.8509386,
+      "longitude": 2.54783534,
+      "name": {
+        "en": "église Saint-Sulpice de Noisy-le-Grand",
+        "fr": "église Saint-Sulpice de Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "street in Noisy-le-Grand, France",
+        "fr": "porte de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108866153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-porte-de-paris-q108866153",
+      "latitude": 48.83760372,
+      "longitude": 2.5430955,
+      "name": {
+        "en": "porte de Paris",
+        "fr": "porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "porte of Noisy-le-Grand, in France",
+        "fr": "porte de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108867633",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-porte-des-escoliers-q108867633",
+      "latitude": 48.84323,
+      "longitude": 2.5481,
+      "name": {
+        "en": "porte des Escoliers",
+        "fr": "porte des Escoliers"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Noisy-le-Grand, France",
+        "fr": "parc de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915195",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-parc-louis-antoine-de-bougainville-q108915195",
+      "latitude": 48.841419022,
+      "longitude": 2.539291479,
+      "name": {
+        "en": "parc Louis-Antoine de Bougainville",
+        "fr": "parc Louis-Antoine de Bougainville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Noisy-le-Grand, France",
+        "fr": "parc de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-parc-de-la-butte-verte-q108915192",
+      "latitude": 48.839357081,
+      "longitude": 2.579447453,
+      "name": {
+        "en": "parc de la Butte Verte",
+        "fr": "parc de la Butte Verte"
+      }
+    }
+  ]
+}

@@ -423,6 +423,17 @@ assert(
   JSON.stringify(reopenedExplorerScore) === JSON.stringify(liveExplorerScore),
   "retroactive persisted enclosure cells reproduce the live score without duplicates"
 );
+const expeditionExplorerScore = explorerScore.calculateExplorerScore({
+  exploredCellIds: [...scoreBoundary],
+  expeditionSealCount: 3,
+  maxEnclosedAreaSquareMeters: 150000
+});
+assert(
+  expeditionExplorerScore.expeditionSealCount === 3 &&
+    expeditionExplorerScore.expeditionPoints === 600 &&
+    expeditionExplorerScore.points === liveExplorerScore.points + 600,
+  "each permanent expedition seal adds 200 retroactive Explorer Points"
+);
 assert(
   explorerScore.getAreaComparisonProgress(7140).current.id === "football-pitch" &&
     explorerScore.getAreaComparisonProgress(7140).next.areaSquareMeters > 7140,

@@ -1,0 +1,166 @@
+{
+  "id": "bordeaux-v1",
+  "cityId": "bordeaux-fr",
+  "cityZoneId": "relation/105270",
+  "cityName": {
+    "en": "Bordeaux",
+    "fr": "Bordeaux"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083160",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-cathedrale-saint-andre-pa00083160",
+      "latitude": 44.8376562155826,
+      "longitude": -0.5778019976680611,
+      "name": {
+        "en": "Cathédrale Saint-André",
+        "fr": "Cathédrale Saint-André"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chartreuse de Mirande is an important witness to the city's history.",
+        "fr": "Chartreuse de Mirande est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083162",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-chartreuse-de-mirande-pa00083162",
+      "latitude": 44.8431347886391,
+      "longitude": -0.601879750838816,
+      "name": {
+        "en": "Chartreuse de Mirande",
+        "fr": "Chartreuse de Mirande"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "centre national Jean Moulin is one of the city's notable cultural landmarks.",
+        "fr": "centre national Jean Moulin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0068",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-centre-national-jean-moulin-m0068",
+      "latitude": 44.838651,
+      "longitude": -0.577869,
+      "name": {
+        "en": "centre national Jean Moulin",
+        "fr": "centre national Jean Moulin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "CAPC - musée d'art contemporain is one of the city's notable cultural landmarks.",
+        "fr": "CAPC - musée d'art contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0067",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-capc-musee-d-art-contemporain-m0067",
+      "latitude": 44.848186,
+      "longitude": -0.572137,
+      "name": {
+        "en": "CAPC - musée d'art contemporain",
+        "fr": "CAPC - musée d'art contemporain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'Aquitaine is one of the city's notable cultural landmarks.",
+        "fr": "musée d'Aquitaine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0064",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-musee-d-aquitaine-m0064",
+      "latitude": 44.835543,
+      "longitude": -0.575205,
+      "name": {
+        "en": "musée d'Aquitaine",
+        "fr": "musée d'Aquitaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083157",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-palais-de-rohan-ancien-archeveche-actuel-hotel-de-ville-pa00083157",
+      "latitude": 44.8379144007611,
+      "longitude": -0.579414071675413,
+      "name": {
+        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)",
+        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083210",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-ancien-hotel-de-ville-pa00083210",
+      "latitude": 44.8354474953354,
+      "longitude": -0.571358305864687,
+      "name": {
+        "en": "Ancien Hôtel de ville",
+        "fr": "Ancien Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte du Palais (ou Porte Cailhau) is an important witness to the city's history.",
+        "fr": "Porte du Palais (ou Porte Cailhau) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083477",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-porte-du-palais-ou-porte-cailhau-pa00083477",
+      "latitude": 44.838749961869,
+      "longitude": -0.568488130198075,
+      "name": {
+        "en": "Porte du Palais (ou Porte Cailhau)",
+        "fr": "Porte du Palais (ou Porte Cailhau)"
+      }
+    }
+  ]
+}

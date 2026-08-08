@@ -1,11 +1,13 @@
-import { getAllWalksWithPoints } from "../database/walkRepository";
+import {
+  getAllWalksWithPoints,
+  getLatestFinalizedWalkSessionId
+} from "../database/walkRepository";
 import {
   collectMedalCandidates,
-  hasCompletedMedalRecordingRepair,
-  markMedalRecordingRepairCompleted,
+  getMedalRetroScanCursor,
   markMedalRetroScanCompleted
 } from "../database/medalRepository";
-import { BUNDLED_MEDAL_ALBUMS } from "../data/medalAlbums";
+import { getBundledMedalAlbum } from "../data/medalAlbums";
 import {
   collectExploredCellIdsByRouteSegments,
   coordinateToExplorationCellKey
@@ -100,111 +102,147 @@ export function findMedalCollectionCandidates(
 }
 
 export async function evaluateLiveMedalCollection(input: {
+  albumId: string;
   boundaryCellIds: readonly string[];
   sessionId: number;
   walkedDistanceMeters: number;
   eligibleMedalIds?: readonly string[];
 }): Promise<MedalCollectionResult> {
+  const album = getBundledMedalAlbum(input.albumId);
+
+  if (!album) {
+    return buildCollectionResult([], input.boundaryCellIds.length, 0);
+  }
+
   const eligibleMedalIds = input.eligibleMedalIds
     ? new Set(input.eligibleMedalIds)
     : undefined;
-  const candidates = BUNDLED_MEDAL_ALBUMS.flatMap((album) =>
-    findMedalCollectionCandidates({
-      album,
-      boundaryCellIds: new Set(input.boundaryCellIds),
-      eligibleMedalIds,
-      walkedDistanceMeters: input.walkedDistanceMeters
-    })
-  );
+  const candidates = findMedalCollectionCandidates({
+    album,
+    boundaryCellIds: new Set(input.boundaryCellIds),
+    eligibleMedalIds,
+    walkedDistanceMeters: input.walkedDistanceMeters
+  });
   const collected = await collectMedalCandidates({
     candidates,
     reason: "recording",
     sessionId: input.sessionId
   });
 
-  return buildCollectionResult(collected, input.boundaryCellIds.length);
+  return buildCollectionResult(collected, input.boundaryCellIds.length, album.medals.length);
 }
 
 export async function evaluateMedalCollectionForRecording(
-  sessionId: number
+  sessionId: number,
+  albumId: string | null
 ): Promise<MedalCollectionResult> {
-  const walks = await getAllWalksWithPoints("walk");
-  const triggerWalk = walks.find((walk) => walk.id === sessionId);
+  const album = albumId ? getBundledMedalAlbum(albumId) : null;
+
+  if (!album) {
+    return buildCollectionResult([], 0, 0);
+  }
+
+  const walks = await getAllWalksWithPoints("walk", {
+    kind: "selected",
+    sessionId
+  });
+  const triggerWalk = walks[0];
 
   if (!triggerWalk) {
-    return buildCollectionResult([], 0);
+    return buildCollectionResult([], 0, album.medals.length);
   }
 
   const evidence = buildGameplayGpsEvidence([triggerWalk]);
-  const candidates = BUNDLED_MEDAL_ALBUMS.flatMap((album) =>
-    findMedalCollectionCandidates({
-      album,
-      boundaryCellIds: evidence.boundaryCellIds,
-      walkedDistanceMeters: evidence.walkedDistanceMeters
-    })
-  );
+  const candidates = findMedalCollectionCandidates({
+    album,
+    boundaryCellIds: evidence.boundaryCellIds,
+    walkedDistanceMeters: evidence.walkedDistanceMeters
+  });
   const collected = await collectMedalCandidates({
     candidates,
     reason: "recording",
     sessionId
   });
 
-  return buildCollectionResult(collected, evidence.pointKeys.size);
+  return buildCollectionResult(collected, evidence.pointKeys.size, album.medals.length);
 }
 
-export async function repairMissedRecordingMedals(): Promise<MedalCollectionResult> {
-  if (await hasCompletedMedalRecordingRepair()) {
-    return buildCollectionResult([], 0);
+export async function runMedalRetroScan(
+  albumId: string
+): Promise<MedalCollectionResult> {
+  return runIncrementalAlbumScan(albumId, "retro_scan");
+}
+
+async function runIncrementalAlbumScan(
+  albumId: string,
+  reason: "retro_scan"
+) {
+  const album = getBundledMedalAlbum(albumId);
+
+  if (!album) {
+    return buildCollectionResult([], 0, 0);
   }
 
-  const walks = await getAllWalksWithPoints("walk");
-  const collected = [];
+  const cursor = await getMedalRetroScanCursor(albumId);
+  const afterSessionId = cursor?.albumVersion === album.version
+    ? cursor.lastSessionId
+    : 0;
+  const latestSessionId = await getLatestFinalizedWalkSessionId();
+
+  if (afterSessionId >= latestSessionId) {
+    if (
+      cursor?.albumVersion !== album.version ||
+      cursor.lastSessionId !== latestSessionId
+    ) {
+      await markMedalRetroScanCompleted(
+        album.id,
+        album.version,
+        latestSessionId
+      );
+    }
+
+    return buildCollectionResult([], 0, album.medals.length);
+  }
+
+  const walks = await getAllWalksWithPoints("walk", {
+    afterSessionId,
+    bounds: getAlbumScanBounds(album),
+    kind: "spatial_since_id"
+  });
+  const collected: MedalCollectionResult["collected"] = [];
   let evaluatedPointCount = 0;
 
   for (const walk of walks) {
     const evidence = buildGameplayGpsEvidence([walk]);
     evaluatedPointCount += evidence.pointKeys.size;
-    const candidates = BUNDLED_MEDAL_ALBUMS.flatMap((album) =>
-      findMedalCollectionCandidates({
-        album,
-        boundaryCellIds: evidence.boundaryCellIds,
-        walkedDistanceMeters: evidence.walkedDistanceMeters
-      })
-    );
-    const newlyCollected = await collectMedalCandidates({
-      candidates,
-      reason: "recording",
-      sessionId: walk.id
-    });
-
-    collected.push(...newlyCollected);
-  }
-
-  await markMedalRecordingRepairCompleted();
-  return buildCollectionResult(collected, evaluatedPointCount);
-}
-
-export async function runMedalRetroScan(): Promise<MedalCollectionResult> {
-  const walks = await getAllWalksWithPoints("walk");
-  const evidence = buildGameplayGpsEvidence(walks);
-  const candidates = BUNDLED_MEDAL_ALBUMS.flatMap((album) =>
-    findMedalCollectionCandidates({
+    const candidates = findMedalCollectionCandidates({
       album,
       boundaryCellIds: evidence.boundaryCellIds,
       walkedDistanceMeters: evidence.walkedDistanceMeters
-    })
-  );
-  const collected = await collectMedalCandidates({
-    candidates,
-    reason: "retro_scan",
-    sessionId: null
-  });
+    });
+    const newlyCollected = await collectMedalCandidates({
+      candidates,
+      reason,
+      sessionId: walk.id
+    });
+    collected.push(...newlyCollected);
+  }
 
-  await Promise.all(
-    BUNDLED_MEDAL_ALBUMS.map((album) => markMedalRetroScanCompleted(album.id))
-  );
+  await markMedalRetroScanCompleted(album.id, album.version, latestSessionId);
+  return buildCollectionResult(collected, evaluatedPointCount, album.medals.length);
+}
 
-  return buildCollectionResult(collected, evidence.pointKeys.size);
+function getAlbumScanBounds(album: MedalAlbumDefinition) {
+  const paddingDegrees = 0.02;
+  const latitudes = album.medals.map((medal) => medal.latitude);
+  const longitudes = album.medals.map((medal) => medal.longitude);
+
+  return {
+    maxLatitude: Math.max(...latitudes) + paddingDegrees,
+    maxLongitude: Math.max(...longitudes) + paddingDegrees,
+    minLatitude: Math.min(...latitudes) - paddingDegrees,
+    minLongitude: Math.min(...longitudes) - paddingDegrees
+  };
 }
 
 export function buildGameplayGpsEvidence(
@@ -297,14 +335,12 @@ function getMedalsInsideBoundaryBounds(input: MedalCandidateEvaluationInput) {
 
 function buildCollectionResult(
   collected: MedalCollectionResult["collected"],
-  trustedPointCount: number
+  trustedPointCount: number,
+  evaluatedMedalCount: number
 ): MedalCollectionResult {
   return {
     collected,
-    evaluatedMedalCount: BUNDLED_MEDAL_ALBUMS.reduce(
-      (total, album) => total + album.medals.length,
-      0
-    ),
+    evaluatedMedalCount,
     trustedPointCount
   };
 }

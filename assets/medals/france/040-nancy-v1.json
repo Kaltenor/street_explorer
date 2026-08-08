@@ -1,0 +1,166 @@
+{
+  "id": "nancy-v1",
+  "cityId": "nancy-fr",
+  "cityZoneId": "relation/52399",
+  "cityName": {
+    "en": "Nancy",
+    "fr": "Nancy"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Saint-Epvre is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Saint-Epvre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nancy-basilique-saint-epvre-pa00106109",
+      "latitude": 48.6958702846482,
+      "longitude": 6.1799857686803,
+      "name": {
+        "en": "Basilique Saint-Epvre",
+        "fr": "Basilique Saint-Epvre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nancy-cathedrale-pa00106102",
+      "latitude": 48.6912179258062,
+      "longitude": 6.18610221611722,
+      "name": {
+        "en": "Cathédrale",
+        "fr": "Cathédrale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de la Citadelle is an important witness to the city's history.",
+        "fr": "Porte de la Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106312",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nancy-porte-de-la-citadelle-pa00106312",
+      "latitude": 48.7001671201188,
+      "longitude": 6.17807406404943,
+      "name": {
+        "en": "Porte de la Citadelle",
+        "fr": "Porte de la Citadelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0512",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nancy-musee-des-beaux-arts-m0512",
+      "latitude": 48.693507,
+      "longitude": 6.182435,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Ecole de Nancy is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Ecole de Nancy compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0513",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nancy-musee-de-l-ecole-de-nancy-m0513",
+      "latitude": 48.680494,
+      "longitude": 6.166351,
+      "name": {
+        "en": "musée de l'Ecole de Nancy",
+        "fr": "musée de l'Ecole de Nancy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée historique lorrain is one of the city's notable cultural landmarks.",
+        "fr": "musée historique lorrain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0514",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nancy-musee-historique-lorrain-m0514",
+      "latitude": 48.697316,
+      "longitude": 6.179154,
+      "name": {
+        "en": "musée historique lorrain",
+        "fr": "musée historique lorrain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106124",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nancy-hotel-de-ville-pa00106124",
+      "latitude": 48.6930741661624,
+      "longitude": 6.18357718523881,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastion d'Haussonville is an important witness to the city's history.",
+        "fr": "Bastion d'Haussonville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135698",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nancy-bastion-d-haussonville-pa00135698",
+      "latitude": 48.6936756924565,
+      "longitude": 6.1819135152212,
+      "name": {
+        "en": "Bastion d'Haussonville",
+        "fr": "Bastion d'Haussonville"
+      }
+    }
+  ]
+}

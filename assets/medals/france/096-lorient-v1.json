@@ -1,0 +1,166 @@
+{
+  "id": "lorient-v1",
+  "cityId": "lorient-fr",
+  "cityZoneId": "relation/30305",
+  "cityName": {
+    "en": "Lorient",
+    "fr": "Lorient"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium in Lorient, France",
+        "fr": "stade de football à Lorient"
+      },
+      "externalIdentity": {
+        "id": "Q39189",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-stade-du-moustoir-q39189",
+      "latitude": 47.74869,
+      "longitude": -3.36929,
+      "name": {
+        "en": "stade du Moustoir",
+        "fr": "stade du Moustoir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "German U-boat base in World War II",
+        "fr": "infrastructure bâtie en 1941"
+      },
+      "externalIdentity": {
+        "id": "Q321306",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-base-sous-marine-de-lorient-q321306",
+      "latitude": 47.729166666,
+      "longitude": -3.370277777,
+      "name": {
+        "en": "base sous-marine de Lorient",
+        "fr": "base sous-marine de Lorient"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Morbihan, in France",
+        "fr": "église située dans le Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3344695",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-eglise-notre-dame-de-victoire-q3344695",
+      "latitude": 47.7495,
+      "longitude": -3.36074,
+      "name": {
+        "en": "église Notre-Dame-de-Victoire",
+        "fr": "église Notre-Dame-de-Victoire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "lighthouse in Morbihan, France",
+        "fr": "tour de guet à Lorient"
+      },
+      "externalIdentity": {
+        "id": "Q2446458",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-tour-de-la-decouverte-q2446458",
+      "latitude": 47.745302,
+      "longitude": -3.353835,
+      "name": {
+        "en": "tour de la Découverte",
+        "fr": "tour de la Découverte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "centre d'exposition à Lorient"
+      },
+      "externalIdentity": {
+        "id": "Q2974767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-cite-de-la-voile-eric-tabarly-q2974767",
+      "latitude": 47.7306,
+      "longitude": -3.37361,
+      "name": {
+        "en": "Cité de la voile Éric-Tabarly",
+        "fr": "Cité de la voile Éric-Tabarly"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Lorient, France",
+        "fr": "salle de spectacle de Lorient, France"
+      },
+      "externalIdentity": {
+        "id": "Q3527636",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-theatre-de-lorient-q3527636",
+      "latitude": 47.7482,
+      "longitude": -3.36719,
+      "name": {
+        "en": "théâtre de Lorient",
+        "fr": "théâtre de Lorient"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "neighborhood",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q64736323",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-quartier-du-bois-du-chateau-q64736323",
+      "latitude": 47.765304,
+      "longitude": -3.375506,
+      "name": {
+        "en": "Quartier du Bois du Château",
+        "fr": "Quartier du Bois du Château"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q1456607",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lorient-le-sous-marin-flore-q1456607",
+      "latitude": 47.730672,
+      "longitude": -3.373983,
+      "name": {
+        "en": "Le sous-marin Flore",
+        "fr": "Le sous-marin Flore"
+      }
+    }
+  ]
+}

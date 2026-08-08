@@ -1,10 +1,24 @@
 # Landmark Medal System Implementation Plan
 
+> **HISTORICAL DECISION RECORD — NOT THE CURRENT IMPLEMENTATION SPECIFICATION.**
+> This file preserves the original v0.4.0 design audit and its early amendments. Proposals, line references, Backup V2/V3/V4 behavior, Lyon-only scope, strict-proof rules, 100,000m2 trials, and future-tense recommendations below describe their historical moment and must not override [Architecture](ARCHITECTURE.md), [Project Overview](PROJECT_OVERVIEW.md), [Testing](TESTING.md), or the current code.
+
 ## Status and scope
 
-This document began as the pre-implementation audit and now also records the decisions implemented in v0.4.0. The original findings remain as design rationale.
+This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-Post-implementation maintenance through v0.8.1 keeps Backup V4 route snapshots, medal state, and permanent zone achievements intact, exports visible finalized recordings without hidden underfilled recovery tombstones or invisible orphan unfinished rows, identifies the true active session from its authoritative setting, writes and verifies the shared JSON through Expo's current cache-file API, reports preparation/write/share failures separately, preserves Unicode landmark copy, stabilizes the iOS category-chip layout, and aligns medal acquisition with normal gameplay loops.
+## Current shipped medal contract (v0.22.2)
+
+- The frozen offline catalogue contains 851 medals across metropolitan France's INSEE 2023 top 100 communes. Paris v2 contains 60 reviewed landmarks covering every arrondissement; Lyon v1 contains 20 and Villeurbanne v1 contains 14.
+- City and parent-district objectives resolve one active album through the lazy generated manifest. Definitions seed only when that city is opened; unsupported cities receive no fallback album.
+- Live, Stop, and recovery evaluation is active-city scoped and uses normal gameplay closure: an 80m minimum, exact-contour-first plus one-cell seam tolerance, accepted finalized inferred geometry, a strict-interior anchor, and the 150,000m2 walking cap. Previously mapped ground does not invalidate a newly walked qualifying loop.
+- Historical scans are explicit, per-album, spatial, incremental, and definition-versioned. An unchanged scan loads zero walks; new albums never scan silently.
+- Paris, Lyon, and Villeurbanne retain hand-curated rosters. The other 97 albums are frozen from official INSEE and Ministry of Culture source snapshots with bounded reviewed Wikidata gap filling; runtime network results never create collectibles.
+- The collection keeps permanent Unlocked and Locked sections, durable presentation state, 3D reveal and flight-to-tab feedback, active-city markers, and Backup V5 preservation.
+- Only unlocked descriptions expose the reward-only Wikipedia action. It opens a localized, read-only in-app WebView when `RNCWebViewModule` is available and otherwise uses the default browser without crashing older native clients.
+- Runtime scaling is local and bounded: pending presentations query referenced albums only, live/Stop work touches the active album, historical work loads spatially overlapping new sessions only, and expedition opportunity checks use indexed active-city bounds.
+
+The sections below are historical unless a statement is also present in the current sources of truth linked above. In particular, v0.5.0 superseded the original strict evaluator, and later Backup V5 and national-catalogue releases superseded the early backup and Lyon-prototype scope.
 
 ## v0.7.0 non-medal zone-completion amendment
 

@@ -1,0 +1,166 @@
+{
+  "id": "toulouse-v1",
+  "cityId": "toulouse-fr",
+  "cityZoneId": "relation/35738",
+  "cityName": {
+    "en": "Toulouse",
+    "fr": "Toulouse"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Reynerie is an important witness to the city's history.",
+        "fr": "Château de Reynerie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094506",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-chateau-de-reynerie-pa00094506",
+      "latitude": 43.5725156885542,
+      "longitude": 1.3985516641373,
+      "name": {
+        "en": "Château de Reynerie",
+        "fr": "Château de Reynerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094498",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-cathedrale-saint-etienne-pa00094498",
+      "latitude": 43.5998879848683,
+      "longitude": 1.45066365002575,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien chartreuse is an important witness to the city's history.",
+        "fr": "Ancien chartreuse est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094503",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-ancien-chartreuse-pa00094503",
+      "latitude": 43.6046958238746,
+      "longitude": 1.43626761464448,
+      "name": {
+        "en": "Ancien chartreuse",
+        "fr": "Ancien chartreuse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Georges Labit is one of the city's notable cultural landmarks.",
+        "fr": "musée Georges Labit compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0564",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-georges-labit-m0564",
+      "latitude": 43.590964,
+      "longitude": 1.4584,
+      "name": {
+        "en": "musée Georges Labit",
+        "fr": "musée Georges Labit"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Augustins is one of the city's notable cultural landmarks.",
+        "fr": "musée des Augustins compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0562",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-des-augustins-m0562",
+      "latitude": 43.600562,
+      "longitude": 1.445904,
+      "name": {
+        "en": "musée des Augustins",
+        "fr": "musée des Augustins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Arts Précieux Paul-Dupuy is one of the city's notable cultural landmarks.",
+        "fr": "musée des Arts Précieux Paul-Dupuy compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0565",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-des-arts-precieux-paul-dupuy-m0565",
+      "latitude": 43.596898,
+      "longitude": 1.446935,
+      "name": {
+        "en": "musée des Arts Précieux Paul-Dupuy",
+        "fr": "musée des Arts Précieux Paul-Dupuy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Toulouse, France",
+        "fr": "basilique située à Toulouse en Haute-Garonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q1010268",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "toulouse-basilique-saint-sernin-de-toulouse-q1010268",
+      "latitude": 43.608485,
+      "longitude": 1.442126,
+      "name": {
+        "en": "basilique Saint-Sernin de Toulouse",
+        "fr": "basilique Saint-Sernin de Toulouse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville appelé Le Capitole is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville appelé Le Capitole est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094497",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-hotel-de-ville-appele-le-capitole-pa00094497",
+      "latitude": 43.6044703168776,
+      "longitude": 1.44423795256864,
+      "name": {
+        "en": "Hôtel de ville appelé Le Capitole",
+        "fr": "Hôtel de ville appelé Le Capitole"
+      }
+    }
+  ]
+}

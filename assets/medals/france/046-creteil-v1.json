@@ -1,0 +1,147 @@
+{
+  "id": "creteil-v1",
+  "cityId": "creteil-fr",
+  "cityZoneId": "relation/105389",
+  "cityName": {
+    "en": "Créteil",
+    "fr": "Créteil"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Val-de-Marne, in France",
+        "fr": "cathédrale située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942281",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-cathedrale-notre-dame-de-creteil-q2942281",
+      "latitude": 48.78972222,
+      "longitude": 2.44416667,
+      "name": {
+        "en": "cathédrale Notre-Dame de Créteil",
+        "fr": "cathédrale Notre-Dame de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Créteil, France",
+        "fr": "mosquée située à Créteil, dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3324892",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-grande-mosquee-sahaba-de-creteil-q3324892",
+      "latitude": 48.7813,
+      "longitude": 2.446,
+      "name": {
+        "en": "Grande Mosquée Sahaba de Créteil",
+        "fr": "Grande Mosquée Sahaba de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Créteil, France",
+        "fr": "hôtel de ville de Créteil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3146147",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-hotel-de-ville-de-creteil-q3146147",
+      "latitude": 48.7778,
+      "longitude": 2.45306,
+      "name": {
+        "en": "hôtel de ville de Créteil",
+        "fr": "hôtel de ville de Créteil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2886600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-ile-de-loisirs-de-creteil-q2886600",
+      "latitude": 48.777222222,
+      "longitude": 2.448333333,
+      "name": {
+        "en": "Île de loisirs de Créteil",
+        "fr": "Île de loisirs de Créteil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Buttes is an important witness to the city's history.",
+        "fr": "château français à Créteil"
+      },
+      "externalIdentity": {
+        "id": "Q78658894",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-chateau-des-buttes-q78658894",
+      "latitude": 48.80014,
+      "longitude": 2.46056,
+      "name": {
+        "en": "château des Buttes",
+        "fr": "château des Buttes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, allée Max-Ophüls is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Créteil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920428",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-fontaine-wallace-allee-max-ophuls-q128920428",
+      "latitude": 48.776263,
+      "longitude": 2.456986,
+      "name": {
+        "en": "fontaine Wallace, allée Max-Ophüls",
+        "fr": "fontaine Wallace, allée Max-Ophüls"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Créteil is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Créteil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88342039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-monument-aux-morts-de-creteil-q88342039",
+      "latitude": 48.79972,
+      "longitude": 2.45352,
+      "name": {
+        "en": "monument aux morts de Créteil",
+        "fr": "monument aux morts de Créteil"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
+import { ensureBundledMedalAlbumSeeded } from "./medalRepository";
 import {
   mapExpeditionRow,
   mapLoopEvidenceRow,
@@ -519,6 +520,16 @@ export async function purgeExpiredUnderfilledRecordings(
 
 export type WalkPointLoadScope =
   | { kind: "all" }
+  | {
+      afterSessionId: number;
+      bounds: {
+        maxLatitude: number;
+        maxLongitude: number;
+        minLatitude: number;
+        minLongitude: number;
+      };
+      kind: "spatial_since_id";
+    }
   | { kind: "selected"; sessionId: number }
   | { kind: "since"; startedAt: string }
   | { endedAfter: string; kind: "range"; startedBefore: string };
@@ -529,7 +540,17 @@ export async function getAllWalksWithPoints(
 ): Promise<WalkWithPoints[]> {
   const db = await getDatabase();
   const scopeSql =
-    scope.kind === "selected"
+    scope.kind === "spatial_since_id"
+      ? `AND walk_sessions.id > ?
+        AND EXISTS (
+          SELECT 1 FROM walk_session_bounds
+          WHERE walk_session_bounds.session_id = walk_sessions.id
+            AND walk_session_bounds.max_latitude >= ?
+            AND walk_session_bounds.min_latitude <= ?
+            AND walk_session_bounds.max_longitude >= ?
+            AND walk_session_bounds.min_longitude <= ?
+        )`
+      : scope.kind === "selected"
       ? "AND walk_sessions.id = ?"
       : scope.kind === "since"
         ? "AND walk_sessions.started_at >= ?"
@@ -537,7 +558,15 @@ export async function getAllWalksWithPoints(
           ? "AND walk_sessions.ended_at > ? AND walk_sessions.started_at < ?"
           : "";
   const scopeParameters =
-    scope.kind === "selected"
+    scope.kind === "spatial_since_id"
+      ? [
+          scope.afterSessionId,
+          scope.bounds.minLatitude,
+          scope.bounds.maxLatitude,
+          scope.bounds.minLongitude,
+          scope.bounds.maxLongitude
+        ]
+      : scope.kind === "selected"
       ? [scope.sessionId]
       : scope.kind === "since"
         ? [scope.startedAt]
@@ -643,6 +672,21 @@ export async function getAllWalksWithPoints(
     points: pointsBySession.get(row.id) ?? [],
     routeSegments: routeSegmentsBySession.get(row.id) ?? null
   }));
+}
+
+export async function getLatestFinalizedWalkSessionId() {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ latest_session_id: number | null }>(
+    `SELECT MAX(id) AS latest_session_id FROM walk_sessions
+    WHERE activity_mode = 'walk'
+      AND ended_at > started_at
+      AND NOT EXISTS (
+        SELECT 1 FROM pending_recording_discards
+        WHERE session_id = walk_sessions.id
+      )`
+  );
+
+  return row?.latest_session_id ?? 0;
 }
 
 export async function saveRouteSnapshot(
@@ -1246,6 +1290,20 @@ export async function restoreBackupV5Data(
   manifest: BackupV5Manifest,
   blocks: AsyncIterable<BackupV5SessionData[]>
 ) {
+  const medalAlbumIds = [
+    ...new Set([
+      ...manifest.medalSystem.acquisitionEvents.map((event) => event.albumId),
+      ...manifest.medalSystem.collectedMedals.map((medal) => medal.albumId)
+    ])
+  ];
+  const availableAlbums = await Promise.all(
+    medalAlbumIds.map(ensureBundledMedalAlbumSeeded)
+  );
+
+  if (availableAlbums.some((album) => album === null)) {
+    throw new Error("V5 backup references a medal album unavailable in this app version.");
+  }
+
   const db = await getDatabase();
   const expectedSessionIds = new Set(manifest.sessions.map((session) => session.id));
   const restoredSessionIds = new Set<number>();

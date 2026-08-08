@@ -1,0 +1,166 @@
+{
+  "id": "tourcoing-v1",
+  "cityId": "tourcoing-fr",
+  "cityZoneId": "relation/59551",
+  "cityName": {
+    "en": "Tourcoing",
+    "fr": "Tourcoing"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing is one of the city's notable cultural landmarks.",
+        "fr": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0637",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tourcoing-muba-eugene-leroy-tourcoing-musee-des-beaux-arts-eugene-leroy-de-tourcoing-m0637",
+      "latitude": 50.724594,
+      "longitude": 3.162878,
+      "name": {
+        "en": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing",
+        "fr": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107840",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-hotel-de-ville-pa00107840",
+      "latitude": 50.72396455879541,
+      "longitude": 3.16101458609175,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Palais Vaissier is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Palais Vaissier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107841",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-ancien-palais-vaissier-pa00107841",
+      "latitude": 50.695816216327,
+      "longitude": 3.14406949498839,
+      "name": {
+        "en": "Ancien Palais Vaissier",
+        "fr": "Ancien Palais Vaissier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden in France",
+        "fr": "jardin botanique en France"
+      },
+      "externalIdentity": {
+        "id": "Q6159736",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-jardin-botanique-de-tourcoing-q6159736",
+      "latitude": 50.724457539,
+      "longitude": 3.168106223,
+      "name": {
+        "en": "jardin botanique de Tourcoing",
+        "fr": "jardin botanique de Tourcoing"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3330321",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-musee-du-5-juin-1944-q3330321",
+      "latitude": 50.712,
+      "longitude": 3.15488,
+      "name": {
+        "en": "musée du 5 juin 1944",
+        "fr": "musée du 5 juin 1944"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-eglise-saint-christophe-de-tourcoing-q3581211",
+      "latitude": 50.7221,
+      "longitude": 3.15989,
+      "name": {
+        "en": "église Saint-Christophe de Tourcoing",
+        "fr": "église Saint-Christophe de Tourcoing"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15713503",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-eglise-saint-louis-de-tourcoing-q15713503",
+      "latitude": 50.713194444,
+      "longitude": 3.167916666,
+      "name": {
+        "en": "église Saint-Louis de Tourcoing",
+        "fr": "église Saint-Louis de Tourcoing"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Anges is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Anges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-eglise-notre-dame-des-anges-pa00107836",
+      "latitude": 50.7239548281032,
+      "longitude": 3.15519788444896,
+      "name": {
+        "en": "Église Notre-Dame-des-Anges",
+        "fr": "Église Notre-Dame-des-Anges"
+      }
+    }
+  ]
+}

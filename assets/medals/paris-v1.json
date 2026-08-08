@@ -1,0 +1,431 @@
+{
+  "id": "paris-v1",
+  "cityId": "paris-fr",
+  "cityZoneId": "relation/7444",
+  "cityName": { "en": "Paris", "fr": "Paris" },
+  "version": 2,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster reviewed against Paris je t'aime official heritage selections and the French Ministry of Culture Mérimée inventory. Stable identities and anchor coordinates: Wikidata (CC0) and OpenStreetMap contributors (ODbL).",
+  "medals": [
+    {
+      "id": "paris-louvre", "arrondissement": 1, "category": "culture",
+      "name": { "en": "Louvre Museum", "fr": "Musée du Louvre" },
+      "description": { "en": "The former royal palace that became one of the world's great museums.", "fr": "L'ancien palais royal devenu l'un des grands musées du monde." },
+      "latitude": 48.8611473, "longitude": 2.3380277,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q19675" }
+    },
+    {
+      "id": "paris-sainte-chapelle", "arrondissement": 1, "category": "architecture",
+      "name": { "en": "Sainte-Chapelle", "fr": "Sainte-Chapelle" },
+      "description": { "en": "A radiant Gothic royal chapel celebrated for its immense 13th-century stained glass.", "fr": "Une chapelle royale du gothique rayonnant célèbre pour ses immenses vitraux du XIIIe siècle." },
+      "latitude": 48.8553933, "longitude": 2.3449941,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q193193" }
+    },
+    {
+      "id": "paris-tuileries-garden", "arrondissement": 1, "category": "nature",
+      "name": { "en": "Tuileries Garden", "fr": "Jardin des Tuileries" },
+      "description": { "en": "The historic formal garden linking the Louvre to Place de la Concorde.", "fr": "Le jardin historique à la française qui relie le Louvre à la place de la Concorde." },
+      "latitude": 48.8635662, "longitude": 2.3269552,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q818517" }
+    },
+    {
+      "id": "paris-galerie-vivienne", "arrondissement": 2, "category": "architecture",
+      "name": { "en": "Galerie Vivienne", "fr": "Galerie Vivienne" },
+      "description": { "en": "An elegant 19th-century covered passage known for its glass roof and mosaic floor.", "fr": "Un élégant passage couvert du XIXe siècle connu pour sa verrière et son sol en mosaïque." },
+      "latitude": 48.8667277, "longitude": 2.339757,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1314020" }
+    },
+    {
+      "id": "paris-palais-brongniart", "arrondissement": 2, "category": "history",
+      "name": { "en": "Palais Brongniart", "fr": "Palais Brongniart" },
+      "description": { "en": "The monumental neoclassical home of the former Paris stock exchange.", "fr": "L'édifice néoclassique monumental qui abritait autrefois la Bourse de Paris." },
+      "latitude": 48.8691395, "longitude": 2.3413674,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1854102" }
+    },
+    {
+      "id": "paris-picasso-museum", "arrondissement": 3, "category": "art",
+      "name": { "en": "Picasso Museum", "fr": "Musée national Picasso-Paris" },
+      "description": { "en": "The Hôtel Salé houses the world's largest public collection of Picasso's work.", "fr": "L'hôtel Salé abrite la plus grande collection publique au monde consacrée à Picasso." },
+      "latitude": 48.8598698, "longitude": 2.3621152,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q743206" }
+    },
+    {
+      "id": "paris-arts-et-metiers", "arrondissement": 3, "category": "culture",
+      "name": { "en": "Museum of Arts and Crafts", "fr": "Musée des Arts et Métiers" },
+      "description": { "en": "A landmark collection tracing scientific instruments, inventions, and industrial design.", "fr": "Une collection majeure retraçant les instruments scientifiques, les inventions et le design industriel." },
+      "latitude": 48.8660977, "longitude": 2.3554138,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1538826" }
+    },
+    {
+      "id": "paris-carnavalet", "arrondissement": 3, "category": "history",
+      "name": { "en": "Carnavalet Museum", "fr": "Musée Carnavalet" },
+      "description": { "en": "Two historic Marais mansions tell the story of Paris from antiquity onward.", "fr": "Deux hôtels particuliers du Marais racontent l'histoire de Paris depuis l'Antiquité." },
+      "latitude": 48.8573232, "longitude": 2.3624734,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q640447" }
+    },
+    {
+      "id": "paris-notre-dame", "arrondissement": 4, "category": "architecture",
+      "name": { "en": "Notre-Dame Cathedral", "fr": "Cathédrale Notre-Dame de Paris" },
+      "description": { "en": "The Gothic cathedral on the Île de la Cité, begun in the 12th century.", "fr": "La cathédrale gothique de l'île de la Cité, commencée au XIIe siècle." },
+      "latitude": 48.8529371, "longitude": 2.3500501,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2981" }
+    },
+    {
+      "id": "paris-centre-pompidou", "arrondissement": 4, "category": "art",
+      "name": { "en": "Centre Pompidou", "fr": "Centre Pompidou" },
+      "description": { "en": "The inside-out cultural landmark devoted to modern and contemporary art.", "fr": "Le monument culturel à l'architecture renversée consacré à l'art moderne et contemporain." },
+      "latitude": 48.8604964, "longitude": 2.3524221,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q178065" }
+    },
+    {
+      "id": "paris-hotel-de-ville", "arrondissement": 4, "category": "history",
+      "name": { "en": "Paris City Hall", "fr": "Hôtel de Ville de Paris" },
+      "description": { "en": "The neo-Renaissance civic palace standing on the city's historic municipal seat.", "fr": "Le palais civique néo-Renaissance élevé sur le siège municipal historique de la capitale." },
+      "latitude": 48.8563889, "longitude": 2.3522222,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q122932003" }
+    },
+    {
+      "id": "paris-maison-victor-hugo", "arrondissement": 4, "category": "culture",
+      "name": { "en": "Victor Hugo's House", "fr": "Maison de Victor Hugo" },
+      "description": { "en": "The writer's former Place des Vosges home preserves his rooms, art, and manuscripts.", "fr": "L'ancienne demeure de l'écrivain place des Vosges conserve ses pièces, ses œuvres et ses manuscrits." },
+      "latitude": 48.854799, "longitude": 2.3661358,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2599177" }
+    },
+    {
+      "id": "paris-pantheon", "arrondissement": 5, "category": "history",
+      "name": { "en": "Panthéon", "fr": "Panthéon" },
+      "description": { "en": "The monumental mausoleum honouring distinguished figures of French history.", "fr": "Le mausolée monumental qui honore de grandes figures de l'histoire de France." },
+      "latitude": 48.8461947, "longitude": 2.3460507,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q188856" }
+    },
+    {
+      "id": "paris-jardin-des-plantes", "arrondissement": 5, "category": "nature",
+      "name": { "en": "Jardin des Plantes", "fr": "Jardin des Plantes" },
+      "description": { "en": "France's principal botanical garden combines historic collections, galleries, and greenhouses.", "fr": "Le principal jardin botanique de France réunit collections historiques, galeries et grandes serres." },
+      "latitude": 48.8438889, "longitude": 2.3597222,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q730948" }
+    },
+    {
+      "id": "paris-arenes-lutece", "arrondissement": 5, "category": "history",
+      "name": { "en": "Arènes de Lutèce", "fr": "Arènes de Lutèce" },
+      "description": { "en": "The surviving amphitheatre of Roman Lutetia is one of Paris's oldest visible monuments.", "fr": "L'amphithéâtre conservé de la Lutèce romaine compte parmi les plus anciens monuments visibles de Paris." },
+      "latitude": 48.8446039, "longitude": 2.3532221,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 8222344121 }
+    },
+    {
+      "id": "paris-grand-mosque", "arrondissement": 5, "category": "architecture",
+      "name": { "en": "Grand Mosque of Paris", "fr": "Grande Mosquée de Paris" },
+      "description": { "en": "A major Hispano-Moorish religious and cultural landmark inaugurated in 1926.", "fr": "Un grand repère religieux et culturel hispano-mauresque inauguré en 1926." },
+      "latitude": 48.8420709, "longitude": 2.3551029,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q392564" }
+    },
+    {
+      "id": "paris-luxembourg-garden", "arrondissement": 6, "category": "nature",
+      "name": { "en": "Luxembourg Garden", "fr": "Jardin du Luxembourg" },
+      "description": { "en": "The historic garden surrounding the Luxembourg Palace on the Left Bank.", "fr": "Le jardin historique qui entoure le palais du Luxembourg sur la rive gauche." },
+      "latitude": 48.8467228, "longitude": 2.3364148,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q309458" }
+    },
+    {
+      "id": "paris-saint-germain-des-pres", "arrondissement": 6, "category": "architecture",
+      "name": { "en": "Saint-Germain-des-Prés Church", "fr": "Église Saint-Germain-des-Prés" },
+      "description": { "en": "One of Paris's oldest surviving churches preserves the legacy of a powerful medieval abbey.", "fr": "L'une des plus anciennes églises conservées de Paris perpétue l'héritage d'une grande abbaye médiévale." },
+      "latitude": 48.8539328, "longitude": 2.3339079,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q22924488" }
+    },
+    {
+      "id": "paris-institut-de-france", "arrondissement": 6, "category": "culture",
+      "name": { "en": "Institut de France", "fr": "Institut de France" },
+      "description": { "en": "The domed former Collège des Quatre-Nations is home to France's learned academies.", "fr": "L'ancien collège des Quatre-Nations, coiffé de sa coupole, abrite les académies françaises." },
+      "latitude": 48.8568375, "longitude": 2.3372581,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q19297902" }
+    },
+    {
+      "id": "paris-eiffel-tower", "arrondissement": 7, "category": "architecture",
+      "name": { "en": "Eiffel Tower", "fr": "Tour Eiffel" },
+      "description": { "en": "The iron tower built for the 1889 World's Fair and Paris's most recognisable silhouette.", "fr": "La tour de fer construite pour l'Exposition universelle de 1889, silhouette emblématique de Paris." },
+      "latitude": 48.8582599, "longitude": 2.2945006,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q243" }
+    },
+    {
+      "id": "paris-orsay", "arrondissement": 7, "category": "art",
+      "name": { "en": "Musée d'Orsay", "fr": "Musée d'Orsay" },
+      "description": { "en": "A converted Beaux-Arts railway station housing a landmark collection of 19th-century art.", "fr": "Une gare Beaux-Arts transformée en musée majeur de l'art du XIXe siècle." },
+      "latitude": 48.8599179, "longitude": 2.3265849,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q23402" }
+    },
+    {
+      "id": "paris-invalides", "arrondissement": 7, "category": "history",
+      "name": { "en": "Hôtel des Invalides", "fr": "Hôtel des Invalides" },
+      "description": { "en": "The vast royal military complex is crowned by the golden Dome and houses Napoleon's tomb.", "fr": "Le vaste complexe militaire royal est couronné par le Dôme doré et abrite le tombeau de Napoléon." },
+      "latitude": 48.855, "longitude": 2.3125,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q188977" }
+    },
+    {
+      "id": "paris-rodin-museum", "arrondissement": 7, "category": "art",
+      "name": { "en": "Rodin Museum", "fr": "Musée Rodin" },
+      "description": { "en": "Rodin's sculpture collection occupies the Hôtel Biron and its garden.", "fr": "Les sculptures de Rodin occupent l'hôtel Biron et son jardin." },
+      "latitude": 48.8547473, "longitude": 2.315867,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q650519" }
+    },
+    {
+      "id": "paris-arc-de-triomphe", "arrondissement": 8, "category": "history",
+      "name": { "en": "Arc de Triomphe", "fr": "Arc de triomphe de l'Étoile" },
+      "description": { "en": "The monumental arch at Place Charles-de-Gaulle honours France's armies.", "fr": "L'arc monumental de la place Charles-de-Gaulle rend hommage aux armées françaises." },
+      "latitude": 48.8737791, "longitude": 2.2950372,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q64436" }
+    },
+    {
+      "id": "paris-grand-palais", "arrondissement": 8, "category": "architecture",
+      "name": { "en": "Grand Palais", "fr": "Grand Palais" },
+      "description": { "en": "The monumental 1900 exhibition palace is defined by its vast glass-and-steel nave.", "fr": "Le palais d'exposition monumental de 1900 se distingue par son immense nef de verre et d'acier." },
+      "latitude": 48.8661614, "longitude": 2.3122229,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q457318" }
+    },
+    {
+      "id": "paris-petit-palais", "arrondissement": 8, "category": "art",
+      "name": { "en": "Petit Palais", "fr": "Petit Palais" },
+      "description": { "en": "The ornate 1900 palace houses the City of Paris Museum of Fine Arts.", "fr": "Le palais orné de 1900 abrite le musée des Beaux-Arts de la Ville de Paris." },
+      "latitude": 48.866042, "longitude": 2.3153496,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q820892" }
+    },
+    {
+      "id": "paris-place-concorde", "arrondissement": 8, "category": "history",
+      "name": { "en": "Place de la Concorde", "fr": "Place de la Concorde" },
+      "description": { "en": "Paris's largest monumental square holds the Luxor Obelisk between the Tuileries and Champs-Élysées.", "fr": "La plus vaste place monumentale de Paris accueille l'obélisque de Louxor entre les Tuileries et les Champs-Élysées." },
+      "latitude": 48.8655715, "longitude": 2.3212248,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q189503" }
+    },
+    {
+      "id": "paris-palais-garnier", "arrondissement": 9, "category": "culture",
+      "name": { "en": "Palais Garnier", "fr": "Palais Garnier" },
+      "description": { "en": "Charles Garnier's lavish 19th-century opera house.", "fr": "Le somptueux opéra du XIXe siècle conçu par Charles Garnier." },
+      "latitude": 48.8719444, "longitude": 2.3316667,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q187840" }
+    },
+    {
+      "id": "paris-gustave-moreau", "arrondissement": 9, "category": "art",
+      "name": { "en": "Gustave Moreau Museum", "fr": "Musée Gustave Moreau" },
+      "description": { "en": "The Symbolist painter's home and towering studio preserve thousands of his works.", "fr": "La maison et le grand atelier du peintre symboliste conservent des milliers de ses œuvres." },
+      "latitude": 48.8778955, "longitude": 2.3345468,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2296362" }
+    },
+    {
+      "id": "paris-gare-du-nord", "arrondissement": 10, "category": "architecture",
+      "name": { "en": "Gare du Nord", "fr": "Gare du Nord" },
+      "description": { "en": "The monumental 1860s railway terminus presents a façade crowned by allegorical city statues.", "fr": "Le terminus ferroviaire monumental des années 1860 présente une façade couronnée de statues allégoriques." },
+      "latitude": 48.8819585, "longitude": 2.3562878,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q745942" }
+    },
+    {
+      "id": "paris-porte-saint-martin", "arrondissement": 10, "category": "history",
+      "name": { "en": "Porte Saint-Martin", "fr": "Porte Saint-Martin" },
+      "description": { "en": "A triumphal arch erected under Louis XIV on the line of the former city wall.", "fr": "Un arc de triomphe élevé sous Louis XIV sur le tracé de l'ancienne enceinte." },
+      "latitude": 48.869171, "longitude": 2.355601,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q950217" }
+    },
+    {
+      "id": "paris-atelier-lumieres", "arrondissement": 11, "category": "art",
+      "name": { "en": "Atelier des Lumières", "fr": "Atelier des Lumières" },
+      "description": { "en": "A former 19th-century foundry transformed into a monumental immersive digital-art venue.", "fr": "Une ancienne fonderie du XIXe siècle transformée en vaste lieu d'art numérique immersif." },
+      "latitude": 48.8618887, "longitude": 2.3811608,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q56255196" }
+    },
+    {
+      "id": "paris-cirque-hiver", "arrondissement": 11, "category": "culture",
+      "name": { "en": "Cirque d'Hiver", "fr": "Cirque d'Hiver" },
+      "description": { "en": "A rare surviving polygonal circus building, inaugurated in 1852.", "fr": "Un rare cirque polygonal conservé, inauguré en 1852." },
+      "latitude": 48.8635472, "longitude": 2.3675789,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1093108" }
+    },
+    {
+      "id": "paris-palais-porte-doree", "arrondissement": 12, "category": "architecture",
+      "name": { "en": "Palais de la Porte Dorée", "fr": "Palais de la Porte Dorée" },
+      "description": { "en": "The richly decorated Art Deco palace built for the 1931 Colonial Exhibition now houses a museum and aquarium.", "fr": "Le palais Art déco richement décoré de l'Exposition coloniale de 1931 abrite aujourd'hui un musée et un aquarium." },
+      "latitude": 48.8352731, "longitude": 2.4093649,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1141316" }
+    },
+    {
+      "id": "paris-cinematheque", "arrondissement": 12, "category": "culture",
+      "name": { "en": "Cinémathèque française", "fr": "Cinémathèque française" },
+      "description": { "en": "Frank Gehry's dynamic building houses one of the world's major film heritage institutions.", "fr": "Le bâtiment dynamique de Frank Gehry abrite l'une des grandes institutions mondiales du patrimoine cinématographique." },
+      "latitude": 48.8369987, "longitude": 2.3826352,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q174274" }
+    },
+    {
+      "id": "paris-coulee-verte", "arrondissement": 12, "category": "nature",
+      "name": { "en": "Coulée verte René-Dumont", "fr": "Coulée verte René-Dumont" },
+      "description": { "en": "A pioneering elevated greenway created along a disused railway viaduct.", "fr": "Une promenade plantée pionnière aménagée sur un ancien viaduc ferroviaire." },
+      "latitude": 48.8419713, "longitude": 2.3889809,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2060889" }
+    },
+    {
+      "id": "paris-bnf-mitterrand", "arrondissement": 13, "category": "architecture",
+      "name": { "en": "François-Mitterrand Library", "fr": "Bibliothèque François-Mitterrand" },
+      "description": { "en": "Four book-shaped towers frame the principal modern site of France's national library.", "fr": "Quatre tours en forme de livres encadrent le principal site moderne de la Bibliothèque nationale de France." },
+      "latitude": 48.8299133, "longitude": 2.3767315,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q571159" }
+    },
+    {
+      "id": "paris-gobelins", "arrondissement": 13, "category": "art",
+      "name": { "en": "Gobelins Manufactory", "fr": "Manufacture des Gobelins" },
+      "description": { "en": "The historic royal manufactory continues centuries of tapestry and textile craftsmanship.", "fr": "La manufacture royale historique perpétue des siècles de savoir-faire dans la tapisserie et le textile." },
+      "latitude": 48.8350372, "longitude": 2.3528661,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 1731162365 }
+    },
+    {
+      "id": "paris-butte-aux-cailles-pool", "arrondissement": 13, "category": "architecture",
+      "name": { "en": "Butte-aux-Cailles Swimming Pool", "fr": "Piscine de la Butte-aux-Cailles" },
+      "description": { "en": "A listed 1920s red-brick swimming complex supplied by a deep artesian well.", "fr": "Un ensemble de bains classé des années 1920, en brique rouge et alimenté par un puits artésien." },
+      "latitude": 48.8271041, "longitude": 2.3524306,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3389226" }
+    },
+    {
+      "id": "paris-catacombs", "arrondissement": 14, "category": "history",
+      "name": { "en": "Catacombs of Paris", "fr": "Catacombes de Paris" },
+      "description": { "en": "The underground ossuary preserves the remains of millions of Parisians in former quarries.", "fr": "L'ossuaire souterrain conserve dans d'anciennes carrières les restes de millions de Parisiens." },
+      "latitude": 48.8337439, "longitude": 2.3322925,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q28924" }
+    },
+    {
+      "id": "paris-parc-montsouris", "arrondissement": 14, "category": "nature",
+      "name": { "en": "Parc Montsouris", "fr": "Parc Montsouris" },
+      "description": { "en": "A sweeping 19th-century landscape park built around a lake in southern Paris.", "fr": "Un vaste parc paysager du XIXe siècle organisé autour d'un lac dans le sud de Paris." },
+      "latitude": 48.8219907, "longitude": 2.3377922,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1538929" }
+    },
+    {
+      "id": "paris-observatory", "arrondissement": 14, "category": "history",
+      "name": { "en": "Paris Observatory", "fr": "Observatoire de Paris" },
+      "description": { "en": "Founded in 1667, the world's oldest continuously operating observatory anchors the Paris meridian.", "fr": "Fondé en 1667, le plus ancien observatoire toujours en activité au monde marque le méridien de Paris." },
+      "latitude": 48.8365091, "longitude": 2.3365254,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q461340" }
+    },
+    {
+      "id": "paris-parc-andre-citroen", "arrondissement": 15, "category": "nature",
+      "name": { "en": "Parc André Citroën", "fr": "Parc André Citroën" },
+      "description": { "en": "A bold contemporary park created on the former Citroën factory grounds beside the Seine.", "fr": "Un parc contemporain audacieux créé sur l'ancien site des usines Citroën au bord de la Seine." },
+      "latitude": 48.8411948, "longitude": 2.2745351,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2051953" }
+    },
+    {
+      "id": "paris-bourdelle", "arrondissement": 15, "category": "art",
+      "name": { "en": "Bourdelle Museum", "fr": "Musée Bourdelle" },
+      "description": { "en": "Antoine Bourdelle's preserved studios and gardens display monumental sculpture where it was made.", "fr": "Les ateliers et jardins préservés d'Antoine Bourdelle exposent ses sculptures monumentales sur leur lieu de création." },
+      "latitude": 48.843302, "longitude": 2.3186277,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2715373" }
+    },
+    {
+      "id": "paris-bir-hakeim-bridge", "arrondissement": 15, "category": "architecture",
+      "name": { "en": "Pont de Bir-Hakeim", "fr": "Pont de Bir-Hakeim" },
+      "description": { "en": "A two-level steel bridge whose colonnaded lower deck frames celebrated views of the Eiffel Tower.", "fr": "Un pont métallique à deux niveaux dont la galerie inférieure offre des vues célèbres sur la tour Eiffel." },
+      "latitude": 48.8557254, "longitude": 2.2875477,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q290355" }
+    },
+    {
+      "id": "paris-palais-chaillot", "arrondissement": 16, "category": "architecture",
+      "name": { "en": "Palais de Chaillot", "fr": "Palais de Chaillot" },
+      "description": { "en": "The curved wings built for the 1937 exposition frame the Trocadéro's view toward the Eiffel Tower.", "fr": "Les ailes courbes édifiées pour l'Exposition de 1937 encadrent la perspective du Trocadéro vers la tour Eiffel." },
+      "latitude": 48.8628893, "longitude": 2.2890401,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q13360213" }
+    },
+    {
+      "id": "paris-fondation-louis-vuitton", "arrondissement": 16, "category": "art",
+      "name": { "en": "Louis Vuitton Foundation", "fr": "Fondation Louis Vuitton" },
+      "description": { "en": "Frank Gehry's glass-sailed contemporary-art museum rises beside the Bois de Boulogne.", "fr": "Le musée d'art contemporain aux voiles de verre de Frank Gehry s'élève au bord du bois de Boulogne." },
+      "latitude": 48.87665, "longitude": 2.2633381,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3075489" }
+    },
+    {
+      "id": "paris-roland-garros", "arrondissement": 16, "category": "culture",
+      "name": { "en": "Roland-Garros Stadium", "fr": "Stade Roland-Garros" },
+      "description": { "en": "The historic clay-court complex is home to the French Open tennis championships.", "fr": "Le complexe historique de courts en terre battue accueille les Internationaux de France de tennis." },
+      "latitude": 48.846869, "longitude": 2.2484179,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1613027" }
+    },
+    {
+      "id": "paris-marmottan-monet", "arrondissement": 16, "category": "art",
+      "name": { "en": "Marmottan Monet Museum", "fr": "Musée Marmottan Monet" },
+      "description": { "en": "A former mansion holds the world's largest collection of works by Claude Monet.", "fr": "Un ancien hôtel particulier conserve la plus importante collection mondiale d'œuvres de Claude Monet." },
+      "latitude": 48.8594112, "longitude": 2.2672558,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1327886" }
+    },
+    {
+      "id": "paris-cite-economie", "arrondissement": 17, "category": "architecture",
+      "name": { "en": "Cité de l'Économie", "fr": "Cité de l'Économie" },
+      "description": { "en": "The neo-Renaissance Hôtel Gaillard now houses an interactive museum of economics.", "fr": "L'hôtel Gaillard néo-Renaissance abrite aujourd'hui un musée interactif consacré à l'économie." },
+      "latitude": 48.8818908, "longitude": 2.3106965,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2974758" }
+    },
+    {
+      "id": "paris-martin-luther-king-park", "arrondissement": 17, "category": "nature",
+      "name": { "en": "Martin Luther King Park", "fr": "Parc Martin-Luther-King" },
+      "description": { "en": "A large ecological park forms the green heart of the contemporary Clichy-Batignolles district.", "fr": "Un grand parc écologique forme le cœur vert du quartier contemporain de Clichy-Batignolles." },
+      "latitude": 48.8912512, "longitude": 2.3136917,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2739499" }
+    },
+    {
+      "id": "paris-sacre-coeur", "arrondissement": 18, "category": "architecture",
+      "name": { "en": "Sacré-Cœur Basilica", "fr": "Basilique du Sacré-Cœur" },
+      "description": { "en": "The white-domed basilica crowns Montmartre and overlooks Paris.", "fr": "La basilique aux dômes blancs couronne Montmartre et domine Paris." },
+      "latitude": 48.8868058, "longitude": 2.3430153,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q28785" }
+    },
+    {
+      "id": "paris-moulin-rouge", "arrondissement": 18, "category": "culture",
+      "name": { "en": "Moulin Rouge", "fr": "Moulin Rouge" },
+      "description": { "en": "The red-windmill cabaret became an enduring emblem of Belle Époque Paris and the French cancan.", "fr": "Le cabaret au moulin rouge est devenu un emblème durable du Paris de la Belle Époque et du french cancan." },
+      "latitude": 48.8841094, "longitude": 2.3323564,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q151030" }
+    },
+    {
+      "id": "paris-montmartre-museum", "arrondissement": 18, "category": "art",
+      "name": { "en": "Montmartre Museum", "fr": "Musée de Montmartre" },
+      "description": { "en": "Historic artists' houses and Renoir's gardens preserve the artistic memory of Montmartre.", "fr": "Des maisons d'artistes historiques et les jardins Renoir préservent la mémoire artistique de Montmartre." },
+      "latitude": 48.8880499, "longitude": 2.3406297,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2919066" }
+    },
+    {
+      "id": "paris-buttes-chaumont", "arrondissement": 19, "category": "nature",
+      "name": { "en": "Parc des Buttes-Chaumont", "fr": "Parc des Buttes-Chaumont" },
+      "description": { "en": "A dramatic landscape park of cliffs, lake, grotto, and bridges created from former quarries.", "fr": "Un parc paysager spectaculaire de falaises, lac, grotte et ponts aménagé dans d'anciennes carrières." },
+      "latitude": 48.8795551, "longitude": 2.3820982,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q532113" }
+    },
+    {
+      "id": "paris-philharmonie", "arrondissement": 19, "category": "culture",
+      "name": { "en": "Philharmonie de Paris", "fr": "Philharmonie de Paris" },
+      "description": { "en": "Jean Nouvel's faceted concert hall anchors the musical campus of La Villette.", "fr": "La salle de concert facettée de Jean Nouvel constitue le cœur du pôle musical de La Villette." },
+      "latitude": 48.8919212, "longitude": 2.3941386,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3378907" }
+    },
+    {
+      "id": "paris-cite-sciences", "arrondissement": 19, "category": "culture",
+      "name": { "en": "Cité des Sciences et de l'Industrie", "fr": "Cité des Sciences et de l'Industrie" },
+      "description": { "en": "France's largest science museum occupies a vast converted industrial building at La Villette.", "fr": "Le plus grand musée scientifique de France occupe un vaste bâtiment industriel reconverti à La Villette." },
+      "latitude": 48.8956779, "longitude": 2.3879665,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1094338" }
+    },
+    {
+      "id": "paris-pere-lachaise", "arrondissement": 20, "category": "history",
+      "name": { "en": "Père Lachaise Cemetery", "fr": "Cimetière du Père-Lachaise" },
+      "description": { "en": "The landscaped necropolis where generations of artists, writers, and public figures rest.", "fr": "La nécropole paysagère où reposent des générations d'artistes, d'écrivains et de figures publiques." },
+      "latitude": 48.8611296, "longitude": 2.3940087,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q311" }
+    },
+    {
+      "id": "paris-parc-belleville", "arrondissement": 20, "category": "nature",
+      "name": { "en": "Parc de Belleville", "fr": "Parc de Belleville" },
+      "description": { "en": "A hillside park with gardens, vineyard, and a broad panorama across Paris.", "fr": "Un parc en pente avec jardins, vigne et vaste panorama sur Paris." },
+      "latitude": 48.8715484, "longitude": 2.384229,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q950446" }
+    },
+    {
+      "id": "paris-carre-baudouin", "arrondissement": 20, "category": "culture",
+      "name": { "en": "Pavillon Carré de Baudouin", "fr": "Pavillon Carré de Baudouin" },
+      "description": { "en": "An 18th-century pleasure pavilion now serves as a free cultural and exhibition venue.", "fr": "Un pavillon de plaisance du XVIIIe siècle devenu un lieu culturel et d'exposition gratuit." },
+      "latitude": 48.8700928, "longitude": 2.3939737,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3373018" }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "rennes-v1",
+  "cityId": "rennes-fr",
+  "cityZoneId": "relation/54517",
+  "cityName": {
+    "en": "Rennes",
+    "fr": "Rennes"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090675",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-cathedrale-saint-pierre-pa00090675",
+      "latitude": 48.1115932436082,
+      "longitude": -1.68337781665486,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "écomusée de la Bintinais is one of the city's notable cultural landmarks.",
+        "fr": "écomusée de la Bintinais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0213",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rennes-ecomusee-de-la-bintinais-m0213",
+      "latitude": 48.079557,
+      "longitude": -1.665571,
+      "name": {
+        "en": "écomusée de la Bintinais",
+        "fr": "écomusée de la Bintinais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0211",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rennes-musee-des-beaux-arts-m0211",
+      "latitude": 48.109837,
+      "longitude": -1.674981,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Bretagne is one of the city's notable cultural landmarks.",
+        "fr": "musée de Bretagne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0212",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rennes-musee-de-bretagne-m0212",
+      "latitude": 48.105455,
+      "longitude": -1.674922,
+      "name": {
+        "en": "musée de Bretagne",
+        "fr": "musée de Bretagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090703",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-hotel-de-ville-pa00090703",
+      "latitude": 48.1113531154098,
+      "longitude": -1.6801000388306602,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090751",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-palais-de-justice-pa00090751",
+      "latitude": 48.1128226947787,
+      "longitude": -1.67781303259528,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090671",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-ancien-abbaye-saint-georges-des-benedictins-ou-palais-saint-georges-pa00090671",
+      "latitude": 48.1117708672766,
+      "longitude": -1.67382726823955,
+      "name": {
+        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges",
+        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Ille-et-Vilaine, in France",
+        "fr": "édifice de Rennes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3360922",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rennes-palais-saint-georges-q3360922",
+      "latitude": 48.111666666,
+      "longitude": -1.674166666,
+      "name": {
+        "en": "palais Saint-Georges",
+        "fr": "palais Saint-Georges"
+      }
+    }
+  ]
+}

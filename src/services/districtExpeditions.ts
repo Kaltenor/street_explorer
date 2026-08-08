@@ -8,14 +8,17 @@ import {
   getDistrictExpeditionSeals,
   updateDistrictExpeditionProgress
 } from "../database/expeditionRepository";
-import { getAllMedalAlbumProgress } from "../database/medalRepository";
+import {
+  getCollectedMedalsSinceInBounds,
+  getUncollectedMedalsInBounds
+} from "../database/medalRepository";
+import { getMedalAlbumIdForZone } from "../data/medalAlbums";
 import { getStreetCompletionStreetStates } from "../database/streetCompletionRepository";
 import { getAllStreetSegments } from "../database/streetRepository";
 import type {
   DistrictExpedition,
   DistrictExpeditionDashboard
 } from "../types/expedition";
-import type { CollectedMedal } from "../types/medal";
 import type { OsmStreetSegment } from "../types/street";
 import { explorationCellKeyToCenterCoordinate } from "./explorationArea";
 import {
@@ -68,10 +71,14 @@ export async function loadDistrictExpeditionDashboard(
 }
 
 async function getDistrictOpportunities(district: CachedZone) {
-  const [streetStates, streetSegments, medalAlbums] = await Promise.all([
+  const albumId = getMedalAlbumIdForZone(district);
+  const bounds = getZoneBounds(district);
+  const [streetStates, streetSegments, medalCandidates] = await Promise.all([
     getStreetCompletionStreetStates(),
     getAllStreetSegments(),
-    getAllMedalAlbumProgress()
+    albumId && bounds
+      ? getUncollectedMedalsInBounds(albumId, bounds)
+      : Promise.resolve([])
   ]);
   const stateByStreetId = new Map(
     streetStates.map((state) => [state.streetId, state])
@@ -80,10 +87,8 @@ async function getDistrictOpportunities(district: CachedZone) {
     const state = stateByStreetId.get(getStreetId(segment));
     return state && !state.isComplete && isStreetInsideDistrict(segment, district);
   });
-  const hasMedalOpportunity = medalAlbums.some((album) =>
-    album.medals.some(
-      (medal) => !medal.isCollected && isMedalInsideDistrict(medal, district)
-    )
+  const hasMedalOpportunity = medalCandidates.some((medal) =>
+    isMedalInsideDistrict(medal, district)
   );
 
   return { hasMedalOpportunity, hasStreetOpportunity };
@@ -131,15 +136,19 @@ async function calculateDistrictExpeditionProgress(
       return completedInDistrict.size;
     }
     case "collect_medal": {
-      const albums = await getAllMedalAlbumProgress();
-      return albums
-        .flatMap((album) => album.medals)
-        .filter(
-          (medal) =>
-            medal.collectedAt !== null &&
-            medal.collectedAt >= expedition.acceptedAt! &&
-            isMedalInsideDistrict(medal, district)
-        ).length;
+      const albumId = getMedalAlbumIdForZone(district);
+      const bounds = getZoneBounds(district);
+
+      if (!albumId || !bounds) {
+        return 0;
+      }
+
+      const medals = await getCollectedMedalsSinceInBounds(
+        albumId,
+        expedition.acceptedAt,
+        bounds
+      );
+      return medals.filter((medal) => isMedalInsideDistrict(medal, district)).length;
     }
     case "close_loop":
       return countFinalizedLoopEvidence(expedition.id);
@@ -152,10 +161,36 @@ function isStreetInsideDistrict(segment: OsmStreetSegment, district: CachedZone)
   );
 }
 
-function isMedalInsideDistrict(medal: CollectedMedal, district: CachedZone) {
+function isMedalInsideDistrict(
+  medal: { latitude: number; longitude: number },
+  district: CachedZone
+) {
   return isPointInsideZone(
     { latitude: medal.latitude, longitude: medal.longitude },
     district
+  );
+}
+
+function getZoneBounds(district: CachedZone) {
+  const points = district.geometry.flat();
+
+  if (points.length === 0) {
+    return null;
+  }
+
+  return points.reduce(
+    (bounds, point) => ({
+      maxLatitude: Math.max(bounds.maxLatitude, point.latitude),
+      maxLongitude: Math.max(bounds.maxLongitude, point.longitude),
+      minLatitude: Math.min(bounds.minLatitude, point.latitude),
+      minLongitude: Math.min(bounds.minLongitude, point.longitude)
+    }),
+    {
+      maxLatitude: Number.NEGATIVE_INFINITY,
+      maxLongitude: Number.NEGATIVE_INFINITY,
+      minLatitude: Number.POSITIVE_INFINITY,
+      minLongitude: Number.POSITIVE_INFINITY
+    }
   );
 }
 

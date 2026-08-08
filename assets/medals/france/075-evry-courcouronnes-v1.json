@@ -1,0 +1,166 @@
+{
+  "id": "evry-courcouronnes-v1",
+  "cityId": "evry-courcouronnes-fr",
+  "cityZoneId": "relation/8851788",
+  "cityName": {
+    "en": "Évry-Courcouronnes",
+    "fr": "Évry-Courcouronnes"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic church in Évry, France",
+        "fr": "église française située à Évry"
+      },
+      "externalIdentity": {
+        "id": "Q749525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-cathedrale-de-la-resurrection-d-evry-q749525",
+      "latitude": 48.62358333,
+      "longitude": 2.42872222,
+      "name": {
+        "en": "cathédrale de la Résurrection d'Évry",
+        "fr": "cathédrale de la Résurrection d'Évry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Évry, Paris, France",
+        "fr": "mosquée située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q268798",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-mosquee-d-evry-courcouronnes-q268798",
+      "latitude": 48.625911111,
+      "longitude": 2.421663888,
+      "name": {
+        "en": "mosquée d'Évry-Courcouronnes",
+        "fr": "mosquée d'Évry-Courcouronnes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French castle",
+        "fr": "château français situé à Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q2970208",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-chateau-de-petit-bourg-q2970208",
+      "latitude": 48.63944444,
+      "longitude": 2.44111111,
+      "name": {
+        "en": "château de Petit-Bourg",
+        "fr": "château de Petit-Bourg"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée situé à Évry, Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3329304",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-musee-paul-delouvrier-q3329304",
+      "latitude": 48.6234,
+      "longitude": 2.42889,
+      "name": {
+        "en": "musée Paul-Delouvrier",
+        "fr": "musée Paul-Delouvrier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "halles de Méréville is a distinctive architectural landmark in the city.",
+        "fr": "halle à Méréville (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924220",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-halles-de-mereville-q22924220",
+      "latitude": 48.31936,
+      "longitude": 2.08917,
+      "name": {
+        "en": "halles de Méréville",
+        "fr": "halles de Méréville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc aux Lièvres is one of the city's notable green or natural landmarks.",
+        "fr": "quartier d'Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q123157245",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-parc-aux-lievres-q123157245",
+      "latitude": 48.6263,
+      "longitude": 2.4489,
+      "name": {
+        "en": "Parc aux Lièvres",
+        "fr": "Parc aux Lièvres"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Beauvoir is an important witness to the city's history.",
+        "fr": "château français à Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q2968511",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-chateau-de-beauvoir-q2968511",
+      "latitude": 48.6288,
+      "longitude": 2.45587,
+      "name": {
+        "en": "château de Beauvoir",
+        "fr": "château de Beauvoir"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne is one of the city's notable cultural landmarks.",
+        "fr": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3527654",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-theatre-de-l-agora-scene-nationale-d-evry-et-de-l-essonne-q3527654",
+      "latitude": 48.629051,
+      "longitude": 2.430124,
+      "name": {
+        "en": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne",
+        "fr": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne"
+      }
+    }
+  ]
+}

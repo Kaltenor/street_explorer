@@ -1,0 +1,166 @@
+{
+  "id": "maisons-alfort-v1",
+  "cityId": "maisons-alfort-fr",
+  "cityZoneId": "relation/105404",
+  "cityName": {
+    "en": "Maisons-Alfort",
+    "fr": "Maisons-Alfort"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Fragonard is one of the city's notable cultural landmarks.",
+        "fr": "musée Fragonard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5064",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "maisons-alfort-musee-fragonard-m5064",
+      "latitude": 48.81278282657873,
+      "longitude": 2.4233629652344084,
+      "name": {
+        "en": "musée Fragonard",
+        "fr": "musée Fragonard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Agnès is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Agnès est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079888",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-alfort-eglise-sainte-agnes-pa00079888",
+      "latitude": 48.8155600101529,
+      "longitude": 2.42134885291249,
+      "name": {
+        "en": "Église Sainte-Agnès",
+        "fr": "Église Sainte-Agnès"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Charentonneau (ancien) is an important witness to the city's history.",
+        "fr": "Château de Charentonneau (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079885",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-alfort-chateau-de-charentonneau-ancien-pa00079885",
+      "latitude": 48.8154154233075,
+      "longitude": 2.4366928179456,
+      "name": {
+        "en": "Château de Charentonneau (ancien)",
+        "fr": "Château de Charentonneau (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Réghat is an important witness to the city's history.",
+        "fr": "Château du Réghat est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079886",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-alfort-chateau-du-reghat-pa00079886",
+      "latitude": 48.8004297284896,
+      "longitude": 2.43566711410842,
+      "name": {
+        "en": "Château du Réghat",
+        "fr": "Château du Réghat"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q1631711",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maisons-alfort-musee-fragonard-de-l-ecole-veterinaire-de-maisons-alfort-q1631711",
+      "latitude": 48.812681,
+      "longitude": 2.4229,
+      "name": {
+        "en": "musée Fragonard de l'École vétérinaire de Maisons-Alfort",
+        "fr": "musée Fragonard de l'École vétérinaire de Maisons-Alfort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Charenton-le-Pont",
+        "fr": "pont sur la Marne entre Charenton-le-Pont et Maisons-Alfort"
+      },
+      "externalIdentity": {
+        "id": "Q102047714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maisons-alfort-viaduc-metro-de-charenton-q102047714",
+      "latitude": 48.81676,
+      "longitude": 2.41873,
+      "name": {
+        "en": "viaduc-métro de Charenton",
+        "fr": "viaduc-métro de Charenton"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort in Maisons-Alfort, France",
+        "fr": "ouvrage défensif de Maisons-Alfort, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3078155",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maisons-alfort-fort-de-charenton-q3078155",
+      "latitude": 48.808775,
+      "longitude": 2.428928,
+      "name": {
+        "en": "fort de Charenton",
+        "fr": "fort de Charenton"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396919",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maisons-alfort-pont-de-charenton-q3396919",
+      "latitude": 48.8169,
+      "longitude": 2.41972,
+      "name": {
+        "en": "pont de Charenton",
+        "fr": "pont de Charenton"
+      }
+    }
+  ]
+}

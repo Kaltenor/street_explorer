@@ -1,0 +1,166 @@
+{
+  "id": "perpignan-v1",
+  "cityId": "perpignan-fr",
+  "cityZoneId": "relation/18000",
+  "cityName": {
+    "en": "Perpignan",
+    "fr": "Perpignan"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon is an important witness to the city's history.",
+        "fr": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104069",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-citadelle-ou-ancien-palais-des-rois-de-majorque-et-d-aragon-pa00104069",
+      "latitude": 42.6936803347857,
+      "longitude": 2.89641110563733,
+      "name": {
+        "en": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon",
+        "fr": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104067",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-cathedrale-saint-jean-baptiste-pa00104067",
+      "latitude": 42.7006179903729,
+      "longitude": 2.89718724751146,
+      "name": {
+        "en": "Cathédrale Saint-Jean-Baptiste",
+        "fr": "Cathédrale Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet is an important witness to the city's history.",
+        "fr": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104066",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-castillet-grand-castillet-porte-notre-dame-ou-petit-castillet-pa00104066",
+      "latitude": 42.7006150968989,
+      "longitude": 2.89402766244451,
+      "name": {
+        "en": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet",
+        "fr": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Hyacinthe Rigaud is one of the city's notable cultural landmarks.",
+        "fr": "musée Hyacinthe Rigaud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0491",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-hyacinthe-rigaud-m0491",
+      "latitude": 42.698013,
+      "longitude": 2.892984,
+      "name": {
+        "en": "musée Hyacinthe Rigaud",
+        "fr": "musée Hyacinthe Rigaud"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Casa Pairal is one of the city's notable cultural landmarks.",
+        "fr": "musée Casa Pairal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0494",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-casa-pairal-m0494",
+      "latitude": 42.727965,
+      "longitude": 2.896696,
+      "name": {
+        "en": "musée Casa Pairal",
+        "fr": "musée Casa Pairal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Joseph Puig is one of the city's notable cultural landmarks.",
+        "fr": "musée Joseph Puig compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0492",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-joseph-puig-m0492",
+      "latitude": 42.69945,
+      "longitude": 2.883256,
+      "name": {
+        "en": "musée Joseph Puig",
+        "fr": "musée Joseph Puig"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-ancien-palais-de-justice-pa00104087",
+      "latitude": 42.6993509263109,
+      "longitude": 2.89457838938768,
+      "name": {
+        "en": "Ancien palais de justice",
+        "fr": "Ancien palais de justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104079",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-hotel-de-ville-pa00104079",
+      "latitude": 42.6994460089509,
+      "longitude": 2.89486629300855,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

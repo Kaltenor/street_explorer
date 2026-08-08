@@ -1,5 +1,5 @@
 import { getDatabase } from "./db";
-import { BUNDLED_MEDAL_ALBUMS, getBundledMedalAlbum } from "../data/medalAlbums";
+import { getBundledMedalAlbum } from "../data/medalAlbums";
 import {
   CollectedMedal,
   MedalAcquisitionReason,
@@ -22,10 +22,130 @@ type CollectedMedalRow = {
 const RETRO_SCAN_SETTING_PREFIX = "medal_retro_scan:";
 const RECORDING_REPAIR_SETTING_KEY = "medal_recording_repair:gameplay-v2";
 
+type MedalCoordinateRow = {
+  acquired_at?: string;
+  latitude: number;
+  longitude: number;
+  medal_id: string;
+};
+
+type MedalRetroScanCursor = {
+  albumVersion: number;
+  completedAt: string;
+  lastSessionId: number;
+};
+
+export async function ensureBundledMedalAlbumSeeded(albumId: string) {
+  const album = getBundledMedalAlbum(albumId);
+
+  if (!album) {
+    return null;
+  }
+
+  const db = await getDatabase();
+  const existing = await db.getFirstAsync<{
+    city_zone_id: string | null;
+    definition_version: number;
+    min_latitude: number | null;
+  }>(
+    `SELECT definition_version, city_zone_id, min_latitude
+    FROM medal_albums WHERE id = ?`,
+    album.id
+  );
+
+  if (
+    existing?.definition_version === album.version &&
+    existing.city_zone_id === album.cityZoneId &&
+    existing.min_latitude !== null
+  ) {
+    return album;
+  }
+
+  const latitudes = album.medals.map((medal) => medal.latitude);
+  const longitudes = album.medals.map((medal) => medal.longitude);
+
+  await db.withExclusiveTransactionAsync(async (transaction) => {
+    await transaction.runAsync(
+      `INSERT INTO medal_albums (
+        id, city_id, city_zone_id, city_name_json, definition_version, published_at,
+        source_attribution, min_latitude, max_latitude, min_longitude, max_longitude
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
+        city_id = excluded.city_id,
+        city_zone_id = excluded.city_zone_id,
+        city_name_json = excluded.city_name_json,
+        definition_version = excluded.definition_version,
+        published_at = excluded.published_at,
+        source_attribution = excluded.source_attribution,
+        min_latitude = excluded.min_latitude,
+        max_latitude = excluded.max_latitude,
+        min_longitude = excluded.min_longitude,
+        max_longitude = excluded.max_longitude`,
+      album.id,
+      album.cityId,
+      album.cityZoneId,
+      JSON.stringify(album.cityName),
+      album.version,
+      album.publishedAt,
+      album.sourceAttribution,
+      Math.min(...latitudes),
+      Math.max(...latitudes),
+      Math.min(...longitudes),
+      Math.max(...longitudes)
+    );
+    await transaction.runAsync(
+      "DELETE FROM medal_album_items WHERE album_id = ?",
+      album.id
+    );
+
+    for (let index = 0; index < album.medals.length; index += 1) {
+      const medal = album.medals[index];
+
+      if (!medal) {
+        continue;
+      }
+
+      await transaction.runAsync(
+        `INSERT INTO medals (
+          id, category, name_json, description_json, latitude, longitude,
+          external_source, external_type, external_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(id) DO UPDATE SET
+          category = excluded.category,
+          name_json = excluded.name_json,
+          description_json = excluded.description_json,
+          latitude = excluded.latitude,
+          longitude = excluded.longitude,
+          external_source = excluded.external_source,
+          external_type = excluded.external_type,
+          external_id = excluded.external_id`,
+        medal.id,
+        medal.category,
+        JSON.stringify(medal.name),
+        JSON.stringify(medal.description),
+        medal.latitude,
+        medal.longitude,
+        medal.externalIdentity.source,
+        medal.externalIdentity.type,
+        String(medal.externalIdentity.id)
+      );
+      await transaction.runAsync(
+        `INSERT INTO medal_album_items (album_id, medal_id, sort_order)
+        VALUES (?, ?, ?)`,
+        album.id,
+        medal.id,
+        index
+      );
+    }
+  });
+
+  return album;
+}
+
 export async function getMedalAlbumProgress(
   albumId: string
 ): Promise<MedalAlbumProgress | null> {
-  const album = getBundledMedalAlbum(albumId);
+  const album = await ensureBundledMedalAlbumSeeded(albumId);
 
   if (!album) {
     return null;
@@ -72,19 +192,88 @@ export async function getMedalAlbumProgress(
   };
 }
 
-export async function getAllMedalAlbumProgress() {
+export async function getPendingMedalPresentations() {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{ album_id: string }>(
+    `SELECT DISTINCT album_id FROM collected_medals
+    WHERE presentation_state = 'pending'`
+  );
   const albums = await Promise.all(
-    BUNDLED_MEDAL_ALBUMS.map((album) => getMedalAlbumProgress(album.id))
+    rows.map((row) => getMedalAlbumProgress(row.album_id))
   );
 
-  return albums.filter((album): album is MedalAlbumProgress => album !== null);
+  return albums.flatMap((album) =>
+    album?.medals.filter((medal) => medal.presentationState === "pending") ?? []
+  );
 }
 
-export async function getPendingMedalPresentations() {
-  const albums = await getAllMedalAlbumProgress();
+export async function getUncollectedMedalsInBounds(
+  albumId: string,
+  bounds: {
+    maxLatitude: number;
+    maxLongitude: number;
+    minLatitude: number;
+    minLongitude: number;
+  }
+) {
+  const album = await ensureBundledMedalAlbumSeeded(albumId);
 
-  return albums.flatMap((album) =>
-    album.medals.filter((medal) => medal.presentationState === "pending")
+  if (!album) {
+    return [];
+  }
+
+  const db = await getDatabase();
+  return db.getAllAsync<MedalCoordinateRow>(
+    `SELECT medals.id AS medal_id, medals.latitude, medals.longitude
+    FROM medal_album_items
+    JOIN medals ON medals.id = medal_album_items.medal_id
+    LEFT JOIN collected_medals
+      ON collected_medals.album_id = medal_album_items.album_id
+      AND collected_medals.medal_id = medal_album_items.medal_id
+    WHERE medal_album_items.album_id = ?
+      AND collected_medals.medal_id IS NULL
+      AND medals.latitude BETWEEN ? AND ?
+      AND medals.longitude BETWEEN ? AND ?`,
+    albumId,
+    bounds.minLatitude,
+    bounds.maxLatitude,
+    bounds.minLongitude,
+    bounds.maxLongitude
+  );
+}
+
+export async function getCollectedMedalsSinceInBounds(
+  albumId: string,
+  since: string,
+  bounds: {
+    maxLatitude: number;
+    maxLongitude: number;
+    minLatitude: number;
+    minLongitude: number;
+  }
+) {
+  const album = await ensureBundledMedalAlbumSeeded(albumId);
+
+  if (!album) {
+    return [];
+  }
+
+  const db = await getDatabase();
+  return db.getAllAsync<MedalCoordinateRow & { acquired_at: string }>(
+    `SELECT medals.id AS medal_id, medals.latitude, medals.longitude,
+      medal_acquisition_events.acquired_at
+    FROM medal_acquisition_events
+    JOIN medals ON medals.id = medal_acquisition_events.medal_id
+    WHERE medal_acquisition_events.album_id = ?
+      AND medal_acquisition_events.acquired_at >= ?
+      AND medals.latitude BETWEEN ? AND ?
+      AND medals.longitude BETWEEN ? AND ?`,
+    albumId,
+    since,
+    bounds.minLatitude,
+    bounds.maxLatitude,
+    bounds.minLongitude,
+    bounds.maxLongitude
   );
 }
 
@@ -97,6 +286,11 @@ export async function collectMedalCandidates(input: {
     return [];
   }
 
+  await Promise.all(
+    [...new Set(input.candidates.map((candidate) => candidate.albumId))].map(
+      ensureBundledMedalAlbumSeeded
+    )
+  );
   const db = await getDatabase();
   const collectedIds: string[] = [];
   const acquiredAt = new Date().toISOString();
@@ -205,25 +399,75 @@ export async function markMedalRecordingRepairCompleted() {
 }
 
 export async function hasCompletedMedalRetroScan(albumId: string) {
+  const album = getBundledMedalAlbum(albumId);
+
+  if (!album) {
+    return false;
+  }
+
   const db = await getDatabase();
   const row = await db.getFirstAsync<{ value: string }>(
     "SELECT value FROM app_settings WHERE key = ?",
     RETRO_SCAN_SETTING_PREFIX + albumId
   );
 
-  return Boolean(row?.value);
+  const cursor = parseMedalRetroScanCursor(row?.value);
+  const latest = await db.getFirstAsync<{ latest_session_id: number | null }>(
+    `SELECT MAX(id) AS latest_session_id FROM walk_sessions
+    WHERE activity_mode = 'walk' AND ended_at > started_at`
+  );
+
+  return cursor?.albumVersion === album.version &&
+    cursor.lastSessionId >= (latest?.latest_session_id ?? 0);
 }
 
-export async function markMedalRetroScanCompleted(albumId: string) {
+export async function getMedalRetroScanCursor(albumId: string) {
   const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?",
+    RETRO_SCAN_SETTING_PREFIX + albumId
+  );
+
+  return parseMedalRetroScanCursor(row?.value);
+}
+
+export async function markMedalRetroScanCompleted(
+  albumId: string,
+  albumVersion: number,
+  lastSessionId: number
+) {
+  const db = await getDatabase();
+  const completedAt = new Date().toISOString();
 
   await db.runAsync(
     `INSERT INTO app_settings (key, value)
     VALUES (?, ?)
     ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
     RETRO_SCAN_SETTING_PREFIX + albumId,
-    new Date().toISOString()
+    JSON.stringify({ albumVersion, completedAt, lastSessionId })
   );
+}
+
+function parseMedalRetroScanCursor(value: string | undefined) {
+  if (!value) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(value) as Partial<MedalRetroScanCursor>;
+
+    if (
+      Number.isInteger(parsed.albumVersion) &&
+      typeof parsed.completedAt === "string" &&
+      Number.isInteger(parsed.lastSessionId)
+    ) {
+      return parsed as MedalRetroScanCursor;
+    }
+  } catch {
+    // Legacy timestamp markers intentionally restart against the active album.
+  }
+
+  return null;
 }
 
 export async function clearAllCollectedMedals() {

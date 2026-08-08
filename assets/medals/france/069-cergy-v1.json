@@ -1,0 +1,147 @@
+{
+  "id": "cergy-v1",
+  "cityId": "cergy-fr",
+  "cityZoneId": "relation/120955",
+  "cityName": {
+    "en": "Cergy",
+    "fr": "Cergy"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Christophe is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Christophe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cergy-eglise-saint-christophe-pa00080012",
+      "latitude": 49.0334391362437,
+      "longitude": 2.0617378566879,
+      "name": {
+        "en": "Église Saint-Christophe",
+        "fr": "Église Saint-Christophe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour EDF-GDF is an important witness to the city's history.",
+        "fr": "Immeuble à Cergy"
+      },
+      "externalIdentity": {
+        "id": "Q3533064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-tour-edf-gdf-q3533064",
+      "latitude": 49.03555556,
+      "longitude": 2.07916667,
+      "name": {
+        "en": "Tour EDF-GDF",
+        "fr": "Tour EDF-GDF"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26816946",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-grande-mosquee-de-cergy-q26816946",
+      "latitude": 49.050262,
+      "longitude": 2.016856,
+      "name": {
+        "en": "Grande mosquée de Cergy",
+        "fr": "Grande mosquée de Cergy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans le Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q2886599",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-ile-de-loisirs-de-cergy-pontoise-q2886599",
+      "latitude": 49.0308,
+      "longitude": 2.0486,
+      "name": {
+        "en": "Île de loisirs de Cergy-Pontoise",
+        "fr": "Île de loisirs de Cergy-Pontoise"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour des Cerclades is an important witness to the city's history.",
+        "fr": "Immeuble à Cergy"
+      },
+      "externalIdentity": {
+        "id": "Q140051657",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-tour-des-cerclades-q140051657",
+      "latitude": 49.037156,
+      "longitude": 2.081512,
+      "name": {
+        "en": "Tour des Cerclades",
+        "fr": "Tour des Cerclades"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "shopping mall in Cergy, France",
+        "fr": "centre commercial à Cergy-Pontoise"
+      },
+      "externalIdentity": {
+        "id": "Q3230329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-les-3-fontaines-q3230329",
+      "latitude": 49.0383,
+      "longitude": 2.08204,
+      "name": {
+        "en": "Les 3 Fontaines",
+        "fr": "Les 3 Fontaines"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136049677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-monument-aux-morts-de-cergy-q136049677",
+      "latitude": 49.03411,
+      "longitude": 2.06203,
+      "name": {
+        "en": "monument aux morts de Cergy",
+        "fr": "monument aux morts de Cergy"
+      }
+    }
+  ]
+}

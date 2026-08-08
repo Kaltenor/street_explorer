@@ -1,0 +1,166 @@
+{
+  "id": "merignac-v1",
+  "cityId": "merignac-fr",
+  "cityZoneId": "relation/105275",
+  "cityName": {
+    "en": "Mérignac",
+    "fr": "Mérignac"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Peychotte, dit aussi Maison Carrée d'Arlac is an important witness to the city's history.",
+        "fr": "Château Peychotte, dit aussi Maison Carrée d'Arlac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083628",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "merignac-chateau-peychotte-dit-aussi-maison-carree-d-arlac-pa00083628",
+      "latitude": 44.8280472682846,
+      "longitude": -0.622812409852233,
+      "name": {
+        "en": "Château Peychotte, dit aussi Maison Carrée d'Arlac",
+        "fr": "Château Peychotte, dit aussi Maison Carrée d'Arlac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Veyrines is an important witness to the city's history.",
+        "fr": "Tour de Veyrines est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083631",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "merignac-tour-de-veyrines-pa00083631",
+      "latitude": 44.8256342401771,
+      "longitude": -0.64589818826467,
+      "name": {
+        "en": "Tour de Veyrines",
+        "fr": "Tour de Veyrines"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chartreuse de Fontcastel is an important witness to the city's history.",
+        "fr": "Chartreuse de Fontcastel est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083627",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "merignac-chartreuse-de-fontcastel-pa00083627",
+      "latitude": 44.8369320328285,
+      "longitude": -0.640591467256926,
+      "name": {
+        "en": "Chartreuse de Fontcastel",
+        "fr": "Chartreuse de Fontcastel"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Mérignac, France",
+        "fr": "parc à Mérignac (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q3364121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "merignac-parc-de-bourran-q3364121",
+      "latitude": 44.8387,
+      "longitude": -0.629333,
+      "name": {
+        "en": "parc de Bourran",
+        "fr": "parc de Bourran"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Vincent is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Vincent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083629",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "merignac-ancien-eglise-saint-vincent-pa00083629",
+      "latitude": 44.8404389528888,
+      "longitude": -0.647584814489115,
+      "name": {
+        "en": "Ancien église Saint-Vincent",
+        "fr": "Ancien église Saint-Vincent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Mérignac, France",
+        "fr": "Hôtel de ville de Mérignac est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q115973558",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "merignac-hotel-de-ville-de-merignac-q115973558",
+      "latitude": 44.84531,
+      "longitude": -0.65721,
+      "name": {
+        "en": "Hôtel de ville de Mérignac",
+        "fr": "Hôtel de ville de Mérignac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60393114",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "merignac-nouvelle-eglise-saint-vincent-de-merignac-q60393114",
+      "latitude": 44.84227,
+      "longitude": -0.6476,
+      "name": {
+        "en": "Nouvelle église Saint-Vincent de Mérignac",
+        "fr": "Nouvelle église Saint-Vincent de Mérignac"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Gironde department, France",
+        "fr": "monument aux morts de la Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136063022",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "merignac-monument-aux-morts-de-merignac-q136063022",
+      "latitude": 44.8419318,
+      "longitude": -0.6471023,
+      "name": {
+        "en": "monument aux morts de Mérignac",
+        "fr": "monument aux morts de Mérignac"
+      }
+    }
+  ]
+}

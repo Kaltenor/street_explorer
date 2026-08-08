@@ -1,0 +1,166 @@
+{
+  "id": "lille-v1",
+  "cityId": "lille-fr",
+  "cityZoneId": "relation/58404",
+  "cityName": {
+    "en": "Lille",
+    "fr": "Lille"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle de Lille is an important witness to the city's history.",
+        "fr": "Citadelle de Lille est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107573",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-citadelle-de-lille-pa00107573",
+      "latitude": 50.642478204226805,
+      "longitude": 3.044795645414219,
+      "name": {
+        "en": "Citadelle de Lille",
+        "fr": "Citadelle de Lille"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hospice Comtesse is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hospice Comtesse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0631",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lille-musee-de-l-hospice-comtesse-m0631",
+      "latitude": 50.641053,
+      "longitude": 3.06294,
+      "name": {
+        "en": "musée de l'hospice Comtesse",
+        "fr": "musée de l'hospice Comtesse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0629",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lille-musee-des-beaux-arts-m0629",
+      "latitude": 50.621132,
+      "longitude": 3.068387,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle et de géologie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle et de géologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7001",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lille-musee-d-histoire-naturelle-et-de-geologie-m7001",
+      "latitude": 50.626639,
+      "longitude": 3.066546,
+      "name": {
+        "en": "musée d'histoire naturelle et de géologie",
+        "fr": "musée d'histoire naturelle et de géologie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-hotel-de-ville-pa59000078",
+      "latitude": 50.6303018793353,
+      "longitude": 3.0711316213373006,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Rihour is a distinctive architectural landmark in the city.",
+        "fr": "Palais Rihour est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107721",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-palais-rihour-pa00107721",
+      "latitude": 50.635531855500105,
+      "longitude": 3.06194897629531,
+      "name": {
+        "en": "Palais Rihour",
+        "fr": "Palais Rihour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Rameau is a distinctive architectural landmark in the city.",
+        "fr": "Palais Rameau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107720",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-palais-rameau-pa00107720",
+      "latitude": 50.63429594853288,
+      "longitude": 3.049960760447988,
+      "name": {
+        "en": "Palais Rameau",
+        "fr": "Palais Rameau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien fort Saint-Sauveur is an important witness to the city's history.",
+        "fr": "Ancien fort Saint-Sauveur est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107585",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-ancien-fort-saint-sauveur-pa00107585",
+      "latitude": 50.62943820190184,
+      "longitude": 3.071689095542241,
+      "name": {
+        "en": "Ancien fort Saint-Sauveur",
+        "fr": "Ancien fort Saint-Sauveur"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "pantin-v1",
+  "cityId": "pantin-fr",
+  "cityZoneId": "relation/67685",
+  "cityName": {
+    "en": "Pantin",
+    "fr": "Pantin"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000074",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pantin-hotel-de-ville-pa93000074",
+      "latitude": 48.8969354936791,
+      "longitude": 2.40113790849626,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079943",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pantin-eglise-saint-germain-pa00079943",
+      "latitude": 48.8928575893599,
+      "longitude": 2.4132666845655404,
+      "name": {
+        "en": "Église Saint-Germain",
+        "fr": "Église Saint-Germain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Paris, in France",
+        "fr": "cimetière situé à Pantin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2972674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-cimetiere-parisien-de-pantin-q2972674",
+      "latitude": 48.9058,
+      "longitude": 2.411,
+      "name": {
+        "en": "cimetière parisien de Pantin",
+        "fr": "cimetière parisien de Pantin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre des Loges is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre des Loges - Pantin - Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q133141280",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-theatre-des-loges-q133141280",
+      "latitude": 48.889941612,
+      "longitude": 2.402466676,
+      "name": {
+        "en": "théâtre des Loges",
+        "fr": "théâtre des Loges"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "project of outdoor and leisure center in French region of in Île-de-France",
+        "fr": "projet de base de plein air et de loisirs en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q48752145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-ile-de-loisirs-de-la-corniche-des-forts-q48752145",
+      "latitude": 48.8879,
+      "longitude": 2.4317,
+      "name": {
+        "en": "Île de loisirs de la Corniche des Forts",
+        "fr": "Île de loisirs de la Corniche des Forts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "boucle du Fort is an important witness to the city's history.",
+        "fr": "boucle de Pantin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q130349392",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-boucle-du-fort-q130349392",
+      "latitude": 48.910635,
+      "longitude": 2.401309,
+      "name": {
+        "en": "boucle du Fort",
+        "fr": "boucle du Fort"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095750",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-monument-aux-morts-de-la-guerre-franco-prussienne-de-pantin-q136095750",
+      "latitude": 48.88544,
+      "longitude": 2.41716,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Pantin",
+        "fr": "monument aux morts de la guerre franco-prussienne de Pantin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097949",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pantin-monument-aux-morts-de-pantin-q136097949",
+      "latitude": 48.88564,
+      "longitude": 2.41577,
+      "name": {
+        "en": "monument aux morts de Pantin",
+        "fr": "monument aux morts de Pantin"
+      }
+    }
+  ]
+}

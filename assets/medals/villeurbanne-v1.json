@@ -1,0 +1,109 @@
+{
+  "id": "villeurbanne-v1",
+  "cityId": "villeurbanne-fr",
+  "cityZoneId": "relation/120989",
+  "cityName": { "en": "Villeurbanne", "fr": "Villeurbanne" },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Landmark identities and anchor coordinates: OpenStreetMap contributors, ODbL 1.0. Roster and copy reviewed against City of Villeurbanne heritage resources.",
+  "medals": [
+    {
+      "id": "villeurbanne-city-hall", "category": "architecture",
+      "name": { "en": "Villeurbanne City Hall", "fr": "Hôtel de Ville de Villeurbanne" },
+      "description": { "en": "The 1934 civic landmark whose 65-metre belfry anchors the Gratte-Ciel district.", "fr": "Le monument civique de 1934 dont le beffroi de 65 mètres domine le quartier des Gratte-Ciel." },
+      "latitude": 45.7665205, "longitude": 4.8795987,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 84817899 }
+    },
+    {
+      "id": "villeurbanne-tnp", "category": "culture",
+      "name": { "en": "Théâtre National Populaire", "fr": "Théâtre National Populaire" },
+      "description": { "en": "A landmark of French theatrical decentralisation in the former Théâtre de la Cité.", "fr": "Un haut lieu de la décentralisation théâtrale française dans l'ancien Théâtre de la Cité." },
+      "latitude": 45.7655515, "longitude": 4.8796475,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 184476349 }
+    },
+    {
+      "id": "villeurbanne-mlis", "category": "architecture",
+      "name": { "en": "House of Books, Images and Sound", "fr": "Maison du Livre, de l'Image et du Son" },
+      "description": { "en": "Mario Botta's 1988 cultural landmark bringing books, images and sound under one roof.", "fr": "L'édifice culturel de Mario Botta, inauguré en 1988, réunit livre, image et son." },
+      "latitude": 45.7681911, "longitude": 4.8877232,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 84952449 }
+    },
+    {
+      "id": "villeurbanne-astroballe", "category": "culture",
+      "name": { "en": "Astroballe", "fr": "Astroballe" },
+      "description": { "en": "The arena associated with Villeurbanne's celebrated ASVEL basketball tradition.", "fr": "La salle emblématique de la grande tradition du basket villeurbannais et de l'ASVEL." },
+      "latitude": 45.7664229, "longitude": 4.9072094,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 85200814 }
+    },
+    {
+      "id": "villeurbanne-saint-athanase", "category": "history",
+      "name": { "en": "Saint-Athanase Church", "fr": "Église Saint-Athanase" },
+      "description": { "en": "Villeurbanne's oldest monument, with surviving elements dating to the thirteenth century.", "fr": "Le plus ancien monument de Villeurbanne, dont certains éléments remontent au XIIIe siècle." },
+      "latitude": 45.7652736, "longitude": 4.9014313,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 85191645 }
+    },
+    {
+      "id": "villeurbanne-cusset-hydroelectric-plant", "category": "history",
+      "name": { "en": "Cusset Hydroelectric Plant", "fr": "Centrale hydroélectrique de Cusset" },
+      "description": { "en": "The pioneering 1899 power station built on the Jonage Canal.", "fr": "La centrale pionnière de 1899 construite sur le canal de Jonage." },
+      "latitude": 45.7677597, "longitude": 4.913933,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 441711169 }
+    },
+    {
+      "id": "villeurbanne-doua-necropolis", "category": "history",
+      "name": { "en": "Doua National Necropolis", "fr": "Nécropole nationale de la Doua" },
+      "description": { "en": "A national cemetery honouring thousands who died for France across the world wars.", "fr": "Une nécropole nationale honorant des milliers de morts pour la France lors des guerres mondiales." },
+      "latitude": 45.7851998, "longitude": 4.8862179,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 31856184 }
+    },
+    {
+      "id": "villeurbanne-le-zola", "category": "culture",
+      "name": { "en": "Le Zola Cinema", "fr": "Cinéma Le Zola" },
+      "description": { "en": "The last survivor of Villeurbanne's many interwar neighbourhood cinemas.", "fr": "Le dernier survivant des nombreux cinémas de quartier villeurbannais de l'entre-deux-guerres." },
+      "latitude": 45.7707167, "longitude": 4.8743594,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 82119005 }
+    },
+    {
+      "id": "villeurbanne-east-station", "category": "history",
+      "name": { "en": "Villeurbanne East Station", "fr": "Gare de Villeurbanne" },
+      "description": { "en": "The former East Lyon railway station, tied to resistance history and reborn beside the tramway.", "fr": "L'ancienne gare de l'Est lyonnais, liée à l'histoire de la Résistance et aujourd'hui voisine du tramway." },
+      "latitude": 45.7559671, "longitude": 4.8917475,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 84844151 }
+    },
+    {
+      "id": "villeurbanne-le-rize", "category": "culture",
+      "name": { "en": "Le Rize", "fr": "Le Rize" },
+      "description": { "en": "A centre for Villeurbanne's memory and society, combining archives, library and cultural spaces.", "fr": "Le centre mémoires et société de Villeurbanne réunit archives, médiathèque et espaces culturels." },
+      "latitude": 45.7597578, "longitude": 4.8837031,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 84810926 }
+    },
+    {
+      "id": "villeurbanne-iac", "category": "art",
+      "name": { "en": "Institute of Contemporary Art", "fr": "Institut d'Art Contemporain" },
+      "description": { "en": "One of France's early contemporary-art centres, established in Villeurbanne in 1982.", "fr": "L'un des premiers centres d'art contemporain français, ouvert à Villeurbanne en 1982." },
+      "latitude": 45.7625393, "longitude": 4.8727591,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 1460479330 }
+    },
+    {
+      "id": "villeurbanne-transbordeur", "category": "culture",
+      "name": { "en": "Le Transbordeur", "fr": "Le Transbordeur" },
+      "description": { "en": "A former water-treatment building transformed into a major concert venue in 1989.", "fr": "Un ancien bâtiment de traitement des eaux devenu une grande salle de concerts en 1989." },
+      "latitude": 45.7840136, "longitude": 4.8607875,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 85000536 }
+    },
+    {
+      "id": "villeurbanne-feyssine-park", "category": "nature",
+      "name": { "en": "Feyssine Park", "fr": "Parc de la Feyssine" },
+      "description": { "en": "A broad riverside park linking the Doua campus with the Rhône's wooded banks.", "fr": "Un vaste parc qui relie le campus de la Doua aux berges boisées du Rhône." },
+      "latitude": 45.7886952, "longitude": 4.8729726,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 154900893 }
+    },
+    {
+      "id": "villeurbanne-totem", "category": "art",
+      "name": { "en": "Guy de Rougemont's Totem", "fr": "Totem de Guy de Rougemont" },
+      "description": { "en": "A ten-metre lacquered-steel column created in 1981 as a colourful city gateway.", "fr": "Une colonne d'acier laqué de dix mètres, créée en 1981 comme porte colorée de la ville." },
+      "latitude": 45.7637725, "longitude": 4.8740508,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 54704555 }
+    }
+  ]
+}

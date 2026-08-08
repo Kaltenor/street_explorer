@@ -56,6 +56,8 @@ Whenever a change affects behavior, code, assets, configuration, schemas, builds
 
 Update docs/CHANGELOG.md for release-worthy changes. Keep README.md, docs/ARCHITECTURE.md, docs/PROJECT_OVERVIEW.md, docs/DEVELOPMENT_BUILD.md, docs/TESTING.md, and docs/ROADMAP.md consistent whenever the areas they describe change.
 
+Before declaring any qualifying change complete, re-open every affected Markdown/context file and refresh stale descriptions, version references, commands, test procedures, and implementation-status claims. Updating only docs/CHANGELOG.md does not satisfy this requirement when another context file is affected.
+
 Only reference documentation mirrors or generated context folders if they actually exist. If one is introduced later, keep it synchronized.
 
 ## Major Feature Test Protocol

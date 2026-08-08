@@ -1,0 +1,166 @@
+{
+  "id": "montreuil-v1",
+  "cityId": "montreuil-fr",
+  "cityZoneId": "relation/129423",
+  "cityName": {
+    "en": "Montreuil",
+    "fr": "Montreuil"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'histoire vivante is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'histoire vivante compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0420",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montreuil-musee-de-l-histoire-vivante-m0420",
+      "latitude": 48.866151,
+      "longitude": 2.469481,
+      "name": {
+        "en": "musée de l'histoire vivante",
+        "fr": "musée de l'histoire vivante"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montreuil-eglise-saint-pierre-et-saint-paul-du-haut-montreuil-pa00079938",
+      "latitude": 48.8637547438455,
+      "longitude": 2.44474109239755,
+      "name": {
+        "en": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil",
+        "fr": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000077",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montreuil-hotel-de-ville-pa93000077",
+      "latitude": 48.86237716935935,
+      "longitude": 2.4410501535301607,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Tillemont is an important witness to the city's history.",
+        "fr": "bâtiment situé à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q18649326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-chateau-de-tillemont-q18649326",
+      "latitude": 48.86152,
+      "longitude": 2.45623,
+      "name": {
+        "en": "château de Tillemont",
+        "fr": "château de Tillemont"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Jean-Moulin-Les Guilands is one of the city's notable green or natural landmarks.",
+        "fr": "espace vert à Bagnolet et à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q24258376",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-parc-jean-moulin-les-guilands-q24258376",
+      "latitude": 48.8627,
+      "longitude": 2.4254,
+      "name": {
+        "en": "parc Jean-Moulin-Les Guilands",
+        "fr": "parc Jean-Moulin-Les Guilands"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q32835247",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-la-grande-mosquee-de-montreuil-masjid-al-oumma-q32835247",
+      "latitude": 48.869125,
+      "longitude": 2.461675,
+      "name": {
+        "en": "La grande Mosquée de Montreuil - Masjid Al Oumma",
+        "fr": "La grande Mosquée de Montreuil - Masjid Al Oumma"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Cityscope is an important witness to the city's history.",
+        "fr": "immeuble à Montreuil, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q23906181",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-tour-cityscope-q23906181",
+      "latitude": 48.86079,
+      "longitude": 2.443106,
+      "name": {
+        "en": "tour Cityscope",
+        "fr": "tour Cityscope"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Altaïs Evolution is an important witness to the city's history.",
+        "fr": "bâtiment double situé à Montreui, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q23906199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-tour-altais-evolution-q23906199",
+      "latitude": 48.860516,
+      "longitude": 2.441976,
+      "name": {
+        "en": "tour Altaïs Evolution",
+        "fr": "tour Altaïs Evolution"
+      }
+    }
+  ]
+}

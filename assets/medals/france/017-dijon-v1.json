@@ -1,0 +1,166 @@
+{
+  "id": "dijon-v1",
+  "cityId": "dijon-fr",
+  "cityZoneId": "relation/74090",
+  "cityName": {
+    "en": "Dijon",
+    "fr": "Dijon"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Clairvaux (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye de Clairvaux (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112248",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-abbaye-de-clairvaux-ancienne-pa00112248",
+      "latitude": 47.3253731198692,
+      "longitude": 5.04086220096833,
+      "name": {
+        "en": "Abbaye de Clairvaux (ancienne)",
+        "fr": "Abbaye de Clairvaux (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Bénigne is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Bénigne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112249",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-ancien-abbaye-saint-benigne-pa00112249",
+      "latitude": 47.3211257187729,
+      "longitude": 5.03383099138917,
+      "name": {
+        "en": "Ancien abbaye Saint-Bénigne",
+        "fr": "Ancien abbaye Saint-Bénigne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0137",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-des-beaux-arts-m0137",
+      "latitude": 47.321356,
+      "longitude": 5.042873,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la vie bourguignonne is one of the city's notable cultural landmarks.",
+        "fr": "musée de la vie bourguignonne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0139",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-de-la-vie-bourguignonne-m0139",
+      "latitude": 47.317415,
+      "longitude": 5.037131,
+      "name": {
+        "en": "musée de la vie bourguignonne",
+        "fr": "musée de la vie bourguignonne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Rude is one of the city's notable cultural landmarks.",
+        "fr": "musée Rude compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0140",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-rude-m0140",
+      "latitude": 47.32122,
+      "longitude": 5.043978,
+      "name": {
+        "en": "musée Rude",
+        "fr": "musée Rude"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais des Ducs et des Etats de Bourgogne (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112427",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-palais-des-ducs-et-des-etats-de-bourgogne-ancien-pa00112427",
+      "latitude": 47.3217569344674,
+      "longitude": 5.04264602064686,
+      "name": {
+        "en": "Palais des Ducs et des Etats de Bourgogne (ancien)",
+        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112428",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-palais-de-justice-pa00112428",
+      "latitude": 47.3201806309523,
+      "longitude": 5.04154834682804,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Dijon, Burgundy, France",
+        "fr": "cathédrale située à Dijon en Côte-d'Or, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1711691",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dijon-cathedrale-saint-benigne-de-dijon-q1711691",
+      "latitude": 47.321388888,
+      "longitude": 5.034444444,
+      "name": {
+        "en": "cathédrale Saint-Bénigne de Dijon",
+        "fr": "cathédrale Saint-Bénigne de Dijon"
+      }
+    }
+  ]
+}

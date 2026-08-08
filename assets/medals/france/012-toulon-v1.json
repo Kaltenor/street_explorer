@@ -1,0 +1,166 @@
+{
+  "id": "toulon-v1",
+  "cityId": "toulon-fr",
+  "cityZoneId": "relation/35280",
+  "cityName": {
+    "en": "Toulon",
+    "fr": "Toulon"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Marie-de-la-Seds is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Marie-de-la-Seds est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081749",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-cathedrale-sainte-marie-de-la-seds-pa00081749",
+      "latitude": 43.1216871345097,
+      "longitude": 5.93404061134142,
+      "name": {
+        "en": "Cathédrale Sainte-Marie-de-la-Seds",
+        "fr": "Cathédrale Sainte-Marie-de-la-Seds"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art de Toulon - M.A.T. is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art de Toulon - M.A.T. compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0943",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulon-musee-d-art-de-toulon-m-a-t-m0943",
+      "latitude": 43.125971,
+      "longitude": 5.927245,
+      "name": {
+        "en": "musée d'art de Toulon - M.A.T.",
+        "fr": "musée d'art de Toulon - M.A.T."
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7061",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulon-museum-d-histoire-naturelle-m7061",
+      "latitude": 43.143305,
+      "longitude": 5.910861,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien Hôtel de ville, actuellement office de tourisme is an important witness to the city's history.",
+        "fr": "Ancien Hôtel de ville, actuellement office de tourisme est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081755",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-ancien-hotel-de-ville-actuellement-office-de-tourisme-pa00081755",
+      "latitude": 43.1201863028288,
+      "longitude": 5.93182814207966,
+      "name": {
+        "en": "Ancien Hôtel de ville, actuellement office de tourisme",
+        "fr": "Ancien Hôtel de ville, actuellement office de tourisme"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée de la Marine is one of the city's notable cultural landmarks.",
+        "fr": "Musée de la Marine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081748",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-musee-de-la-marine-pa00081748",
+      "latitude": 43.1218865287553,
+      "longitude": 5.928410320833341,
+      "name": {
+        "en": "Musée de la Marine",
+        "fr": "Musée de la Marine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081751",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-eglise-saint-louis-pa00081751",
+      "latitude": 43.1231412429899,
+      "longitude": 5.93031902757775,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien corderie is an important witness to the city's history.",
+        "fr": "Ancien corderie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081754",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-ancien-corderie-pa00081754",
+      "latitude": 43.122971448018,
+      "longitude": 5.928935183248771,
+      "name": {
+        "en": "Ancien corderie",
+        "fr": "Ancien corderie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort de la Grosse-Tour, dit aussi Tour Royale is an important witness to the city's history.",
+        "fr": "Fort de la Grosse-Tour, dit aussi Tour Royale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081752",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-fort-de-la-grosse-tour-dit-aussi-tour-royale-pa00081752",
+      "latitude": 43.1027101319364,
+      "longitude": 5.92579576894083,
+      "name": {
+        "en": "Fort de la Grosse-Tour, dit aussi Tour Royale",
+        "fr": "Fort de la Grosse-Tour, dit aussi Tour Royale"
+      }
+    }
+  ]
+}

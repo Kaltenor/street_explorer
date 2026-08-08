@@ -1,0 +1,166 @@
+{
+  "id": "strasbourg-v1",
+  "cityId": "strasbourg-fr",
+  "cityZoneId": "relation/71033",
+  "cityName": {
+    "en": "Strasbourg",
+    "fr": "Strasbourg"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Bas-Rhin, in France",
+        "fr": "cathédrale située dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q745460",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "strasbourg-cathedrale-notre-dame-de-strasbourg-q745460",
+      "latitude": 48.581889595,
+      "longitude": 7.75105618,
+      "name": {
+        "en": "cathédrale Notre-Dame de Strasbourg",
+        "fr": "cathédrale Notre-Dame de Strasbourg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle et abords is an important witness to the city's history.",
+        "fr": "Citadelle et abords est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-citadelle-et-abords-pa00085019",
+      "latitude": 48.5755722802308,
+      "longitude": 7.7737418943805,
+      "name": {
+        "en": "Citadelle et abords",
+        "fr": "Citadelle et abords"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cabinet des estampes et des dessins is one of the city's notable cultural landmarks.",
+        "fr": "cabinet des estampes et des dessins compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0013",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-cabinet-des-estampes-et-des-dessins-m0013",
+      "latitude": 48.5812366410149,
+      "longitude": 7.750544327135451,
+      "name": {
+        "en": "cabinet des estampes et des dessins",
+        "fr": "cabinet des estampes et des dessins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Œuvre Notre-Dame is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Œuvre Notre-Dame compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0017",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-musee-de-l-uvre-notre-dame-m0017",
+      "latitude": 48.580983049139164,
+      "longitude": 7.7513911134929225,
+      "name": {
+        "en": "musée de l'Œuvre Notre-Dame",
+        "fr": "musée de l'Œuvre Notre-Dame"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0015",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-musee-archeologique-m0015",
+      "latitude": 48.581229,
+      "longitude": 7.751984,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville, ancien Hôtel de Hanau is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville, ancien Hôtel de Hanau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085061",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-hotel-de-ville-ancien-hotel-de-hanau-pa00085061",
+      "latitude": 48.5846610188455,
+      "longitude": 7.7503304580394206,
+      "name": {
+        "en": "Hôtel de ville, ancien Hôtel de Hanau",
+        "fr": "Hôtel de ville, ancien Hôtel de Hanau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085183",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-ancien-palais-imperial-allemand-ou-kaiserpalast-dit-palais-du-rhin-pa00085183",
+      "latitude": 48.5877240606553,
+      "longitude": 7.752363074098011,
+      "name": {
+        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin",
+        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ponts couverts is an important witness to the city's history.",
+        "fr": "Ponts couverts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085192",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-ponts-couverts-pa00085192",
+      "latitude": 48.5802853420402,
+      "longitude": 7.7390546311878,
+      "name": {
+        "en": "Ponts couverts",
+        "fr": "Ponts couverts"
+      }
+    }
+  ]
+}

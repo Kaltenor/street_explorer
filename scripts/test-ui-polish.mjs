@@ -113,6 +113,8 @@ assert.ok(AREA_COMPARISONS.every((entry, index) =>
 ));
 assert.match(explorerScorePanelSource, /EXPLORER POINTS/);
 assert.match(explorerScorePanelSource, /nextProgress/);
+assert.match(explorerScorePanelSource, /score\.expeditionSealCount/);
+assert.match(explorerScorePanelSource, /200 pts per expedition/);
 assert.match(walkControlsSource, /explorerScore/);
 assert.match(walkControlsSource, /todayStepCount/);
 assert.match(walkControlsSource, /width: "60%"/);
@@ -121,6 +123,8 @@ assert.ok(
     walkControlsSource.indexOf("<GpsStateBadge")
 );
 assert.match(atlasSource, /pointsAwarded/);
+assert.match(atlasSource, /DAYLIGHT_STAMP_GOLD_FACE_STYLE/);
+assert.match(atlasSource, /DAYLIGHT_STAMP_PARCHMENT_FACE_STYLE/);
 assert.match(summarySource, /calculateExplorerScore/);
 
 assert.match(mapSource, /WALKING_COLORS\.activeRoute/);

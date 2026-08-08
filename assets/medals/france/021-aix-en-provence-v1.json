@@ -1,0 +1,166 @@
+{
+  "id": "aix-en-provence-v1",
+  "cityId": "aix-en-provence-fr",
+  "cityZoneId": "relation/70279",
+  "cityName": {
+    "en": "Aix-en-Provence",
+    "fr": "Aix-en-Provence"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Châteaurenard is an important witness to the city's history.",
+        "fr": "Hôtel de Châteaurenard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-hotel-de-chateaurenard-pa00081029",
+      "latitude": 43.5309386160191,
+      "longitude": 5.44718874400589,
+      "name": {
+        "en": "Hôtel de Châteaurenard",
+        "fr": "Hôtel de Châteaurenard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Gaude is an important witness to the city's history.",
+        "fr": "Château de la Gaude est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080988",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-la-gaude-pa00080988",
+      "latitude": 43.5685368101405,
+      "longitude": 5.478062514502451,
+      "name": {
+        "en": "Château de la Gaude",
+        "fr": "Château de la Gaude"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Pioline is an important witness to the city's history.",
+        "fr": "Château de la Pioline est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080992",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-la-pioline-pa00080992",
+      "latitude": 43.5088977849897,
+      "longitude": 5.40451952223664,
+      "name": {
+        "en": "Château de la Pioline",
+        "fr": "Château de la Pioline"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080981",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-cathedrale-saint-sauveur-pa00080981",
+      "latitude": 43.53181497414061,
+      "longitude": 5.44733259722635,
+      "name": {
+        "en": "Cathédrale Saint-Sauveur",
+        "fr": "Cathédrale Saint-Sauveur"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'atelier de Paul Cézanne is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'atelier de Paul Cézanne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0895",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-de-l-atelier-de-paul-cezanne-m0895",
+      "latitude": 43.537816,
+      "longitude": 5.446601,
+      "name": {
+        "en": "musée de l'atelier de Paul Cézanne",
+        "fr": "musée de l'atelier de Paul Cézanne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Paul Arbaud is one of the city's notable cultural landmarks.",
+        "fr": "musée Paul Arbaud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0899",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-paul-arbaud-m0899",
+      "latitude": 43.526201,
+      "longitude": 5.449931,
+      "name": {
+        "en": "musée Paul Arbaud",
+        "fr": "musée Paul Arbaud"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du pavillon de Vendôme is one of the city's notable cultural landmarks.",
+        "fr": "musée du pavillon de Vendôme compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0896",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-du-pavillon-de-vendome-m0896",
+      "latitude": 43.530846,
+      "longitude": 5.439915,
+      "name": {
+        "en": "musée du pavillon de Vendôme",
+        "fr": "musée du pavillon de Vendôme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-hotel-de-ville-pa00081058",
+      "latitude": 43.5298245587762,
+      "longitude": 5.44737998040628,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

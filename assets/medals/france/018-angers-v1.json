@@ -1,0 +1,166 @@
+{
+  "id": "angers-v1",
+  "cityId": "angers-fr",
+  "cityZoneId": "relation/178351",
+  "cityName": {
+    "en": "Angers",
+    "fr": "Angers"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Nicolas is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Nicolas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108862",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-abbaye-saint-nicolas-pa00108862",
+      "latitude": 47.475185315351,
+      "longitude": -0.575709883334167,
+      "name": {
+        "en": "Ancien abbaye Saint-Nicolas",
+        "fr": "Ancien abbaye Saint-Nicolas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Toussaint (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Toussaint (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108864",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-abbaye-toussaint-ancienne-pa00108864",
+      "latitude": 47.4691043340073,
+      "longitude": -0.555743663435011,
+      "name": {
+        "en": "Abbaye Toussaint (ancienne)",
+        "fr": "Abbaye Toussaint (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Aubin, actuelle préfecture is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Aubin, actuelle préfecture est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108861",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-abbaye-saint-aubin-actuelle-prefecture-pa00108861",
+      "latitude": 47.467801494589,
+      "longitude": -0.552833190608513,
+      "name": {
+        "en": "Ancien abbaye Saint-Aubin, actuelle préfecture",
+        "fr": "Ancien abbaye Saint-Aubin, actuelle préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108866",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-cathedrale-saint-maurice-pa00108866",
+      "latitude": 47.4705766813103,
+      "longitude": -0.554865612818301,
+      "name": {
+        "en": "Cathédrale Saint-Maurice",
+        "fr": "Cathédrale Saint-Maurice"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jean Lurcat et de la tapisserie contemporaine is one of the city's notable cultural landmarks.",
+        "fr": "musée Jean Lurcat et de la tapisserie contemporaine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0751",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angers-musee-jean-lurcat-et-de-la-tapisserie-contemporaine-m0751",
+      "latitude": 47.477759,
+      "longitude": -0.557052,
+      "name": {
+        "en": "musée Jean Lurcat et de la tapisserie contemporaine",
+        "fr": "musée Jean Lurcat et de la tapisserie contemporaine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Pincé is one of the city's notable cultural landmarks.",
+        "fr": "musée Pincé compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0749",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angers-musee-pince-m0749",
+      "latitude": 47.471767,
+      "longitude": -0.551841,
+      "name": {
+        "en": "musée Pincé",
+        "fr": "musée Pincé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et galerie David-d'Angers is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et galerie David-d'Angers compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0748",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angers-musee-des-beaux-arts-et-galerie-david-d-angers-m0748",
+      "latitude": 47.469659,
+      "longitude": -0.555485,
+      "name": {
+        "en": "musée des beaux-arts et galerie David-d'Angers",
+        "fr": "musée des beaux-arts et galerie David-d'Angers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché ou Palais du Tau is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché ou Palais du Tau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108880",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-eveche-ou-palais-du-tau-pa00108880",
+      "latitude": 47.4708792519356,
+      "longitude": -0.554377961723317,
+      "name": {
+        "en": "Ancien évêché ou Palais du Tau",
+        "fr": "Ancien évêché ou Palais du Tau"
+      }
+    }
+  ]
+}

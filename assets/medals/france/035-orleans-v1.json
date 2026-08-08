@@ -1,0 +1,166 @@
+{
+  "id": "orleans-v1",
+  "cityId": "orleans-fr",
+  "cityZoneId": "relation/147559",
+  "cityName": {
+    "en": "Orléans",
+    "fr": "Orléans"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Croix is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Croix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-cathedrale-sainte-croix-pa00098836",
+      "latitude": 47.9018958921136,
+      "longitude": 1.91038654964121,
+      "name": {
+        "en": "Cathédrale Sainte-Croix",
+        "fr": "Cathédrale Sainte-Croix"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région is an important witness to the city's history.",
+        "fr": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-abbaye-notre-dame-de-bonne-nouvelle-actuellement-prefecture-de-region-pa45000024",
+      "latitude": 47.8997619211674,
+      "longitude": 1.91050361250961,
+      "name": {
+        "en": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région",
+        "fr": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0286",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-musee-des-beaux-arts-m0286",
+      "latitude": 47.901573,
+      "longitude": 1.90861,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "hôtel Cabu, musée d'histoire et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "hôtel Cabu, musée d'histoire et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0287",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-hotel-cabu-musee-d-histoire-et-d-archeologie-m0287",
+      "latitude": 47.900952,
+      "longitude": 1.905193,
+      "name": {
+        "en": "hôtel Cabu, musée d'histoire et d'archéologie",
+        "fr": "hôtel Cabu, musée d'histoire et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'Orléans pour la biodiversité et l'environnement is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'Orléans pour la biodiversité et l'environnement compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7053",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-museum-d-orleans-pour-la-biodiversite-et-l-environnement-m7053",
+      "latitude": 47.907734,
+      "longitude": 1.909578,
+      "name": {
+        "en": "muséum d'Orléans pour la biodiversité et l'environnement",
+        "fr": "muséum d'Orléans pour la biodiversité et l'environnement"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Groslot, actuellement Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Groslot, actuellement Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098851",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-hotel-groslot-actuellement-hotel-de-ville-pa00098851",
+      "latitude": 47.9027866383333,
+      "longitude": 1.90819457711978,
+      "name": {
+        "en": "Hôtel Groslot, actuellement Hôtel de ville",
+        "fr": "Hôtel Groslot, actuellement Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Aignan is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Aignan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098843",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-saint-aignan-pa00098843",
+      "latitude": 47.8989990347113,
+      "longitude": 1.91552061429413,
+      "name": {
+        "en": "Église Saint-Aignan",
+        "fr": "Église Saint-Aignan"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien fort des Tourelles is an important witness to the city's history.",
+        "fr": "Ancien fort des Tourelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-fort-des-tourelles-pa45000026",
+      "latitude": 47.8944428941669,
+      "longitude": 1.9061441299741297,
+      "name": {
+        "en": "Ancien fort des Tourelles",
+        "fr": "Ancien fort des Tourelles"
+      }
+    }
+  ]
+}

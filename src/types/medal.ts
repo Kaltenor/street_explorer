@@ -11,13 +11,14 @@ export type LocalizedMedalText = {
 };
 
 export type MedalExternalIdentity = {
-  source: "openstreetmap";
-  type: "node" | "relation" | "way";
-  id: number;
+  source: "merimee" | "museofile" | "openstreetmap" | "wikidata";
+  type: "item" | "node" | "record" | "relation" | "way";
+  id: number | string;
 };
 
 export type LandmarkMedalDefinition = {
   id: string;
+  arrondissement?: number;
   category: MedalCategory;
   name: LocalizedMedalText;
   description: LocalizedMedalText;
@@ -29,6 +30,7 @@ export type LandmarkMedalDefinition = {
 export type MedalAlbumDefinition = {
   id: string;
   cityId: string;
+  cityZoneId: string;
   cityName: LocalizedMedalText;
   version: number;
   publishedAt: string;

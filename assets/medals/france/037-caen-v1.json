@@ -1,0 +1,166 @@
+{
+  "id": "caen-v1",
+  "cityId": "caen-fr",
+  "cityZoneId": "relation/149197",
+  "cityName": {
+    "en": "Caen",
+    "fr": "Caen"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye aux Hommes is an important witness to the city's history.",
+        "fr": "Ancien abbaye aux Hommes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111124",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-abbaye-aux-hommes-pa00111124",
+      "latitude": 49.1812074040447,
+      "longitude": -0.373115286982476,
+      "name": {
+        "en": "Ancien abbaye aux Hommes",
+        "fr": "Ancien abbaye aux Hommes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Château, actuellement musées de Caen is one of the city's notable cultural landmarks.",
+        "fr": "Château, actuellement musées de Caen compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111127",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-chateau-actuellement-musees-de-caen-pa00111127",
+      "latitude": 49.1865009032439,
+      "longitude": -0.362916271476441,
+      "name": {
+        "en": "Château, actuellement musées de Caen",
+        "fr": "Château, actuellement musées de Caen"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie is an important witness to the city's history.",
+        "fr": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111123",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-abbaye-aux-dames-actuellement-siege-du-conseil-regional-de-basse-normandie-pa00111123",
+      "latitude": 49.1866643228144,
+      "longitude": -0.352730492501435,
+      "name": {
+        "en": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie",
+        "fr": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Réservoir ou château d'eau de la Guérinière is an important witness to the city's history.",
+        "fr": "Réservoir ou château d'eau de la Guérinière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA14000087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-reservoir-ou-chateau-d-eau-de-la-gueriniere-pa14000087",
+      "latitude": 49.1620490795072,
+      "longitude": -0.34395279295161,
+      "name": {
+        "en": "Réservoir ou château d'eau de la Guérinière",
+        "fr": "Réservoir ou château d'eau de la Guérinière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la société des antiquaires is one of the city's notable cultural landmarks.",
+        "fr": "musée de la société des antiquaires compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0660",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-de-la-societe-des-antiquaires-m0660",
+      "latitude": 49.18130160203962,
+      "longitude": -0.37215112920134513,
+      "name": {
+        "en": "musée de la société des antiquaires",
+        "fr": "musée de la société des antiquaires"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0657",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-des-beaux-arts-m0657",
+      "latitude": 49.18615122825814,
+      "longitude": -0.36122381941157106,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111132",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-eglise-de-saint-etienne-le-vieux-actuellement-magasin-communal-pa00111132",
+      "latitude": 49.1812516632964,
+      "longitude": -0.369219715973056,
+      "name": {
+        "en": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal",
+        "fr": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre) is a distinctive architectural landmark in the city.",
+        "fr": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111140",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-eglise-du-vieux-saint-sauveur-ou-eglise-saint-sauveur-du-marche-ancienne-halle-au-beurre-pa00111140",
+      "latitude": 49.1833785877139,
+      "longitude": -0.367691193522597,
+      "name": {
+        "en": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre)",
+        "fr": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre)"
+      }
+    }
+  ]
+}

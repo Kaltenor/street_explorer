@@ -1,0 +1,166 @@
+{
+  "id": "cherbourg-en-cotentin-v1",
+  "cityId": "cherbourg-en-cotentin-fr",
+  "cityZoneId": "relation/5812062",
+  "cityName": {
+    "en": "Cherbourg-en-Cotentin",
+    "fr": "Cherbourg-en-Cotentin"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Thomas Henry is one of the city's notable cultural landmarks.",
+        "fr": "musée Thomas Henry compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0677",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-musee-thomas-henry-m0677",
+      "latitude": 49.638452,
+      "longitude": -1.625439,
+      "name": {
+        "en": "musée Thomas Henry",
+        "fr": "musée Thomas Henry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Emmanuel Liais is one of the city's notable cultural landmarks.",
+        "fr": "musée Emmanuel Liais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0678",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-musee-emmanuel-liais-m0678",
+      "latitude": 49.6429,
+      "longitude": -1.630729,
+      "name": {
+        "en": "musée Emmanuel Liais",
+        "fr": "musée Emmanuel Liais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Libération is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Libération compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0679",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-musee-de-la-liberation-m0679",
+      "latitude": 49.630736,
+      "longitude": -1.616324,
+      "name": {
+        "en": "musée de la Libération",
+        "fr": "musée de la Libération"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de l'ancienne église abbatiale de Notre-Dame du Voeu is an important witness to the city's history.",
+        "fr": "Porte de l'ancienne église abbatiale de Notre-Dame du Voeu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110364",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-porte-de-l-ancienne-eglise-abbatiale-de-notre-dame-du-voeu-pa00110364",
+      "latitude": 49.646829338289,
+      "longitude": -1.64161271315485,
+      "name": {
+        "en": "Porte de l'ancienne église abbatiale de Notre-Dame du Voeu",
+        "fr": "Porte de l'ancienne église abbatiale de Notre-Dame du Voeu"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort de l’Ouest de la digue du Large is an important witness to the city's history.",
+        "fr": "Fort de l’Ouest de la digue du Large est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA50000102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-fort-de-l-ouest-de-la-digue-du-large-pa50000102",
+      "latitude": 49.67425584905759,
+      "longitude": -1.6475054076171878,
+      "name": {
+        "en": "Fort de l’Ouest de la digue du Large",
+        "fr": "Fort de l’Ouest de la digue du Large"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "basilica located in Manche, in France",
+        "fr": "basilique située dans la Manche, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2887094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cherbourg-en-cotentin-basilique-sainte-trinite-de-cherbourg-q2887094",
+      "latitude": 49.64206,
+      "longitude": -1.62303,
+      "name": {
+        "en": "basilique Sainte-Trinité de Cherbourg",
+        "fr": "basilique Sainte-Trinité de Cherbourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA50000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cherbourg-en-cotentin-hotel-de-ville-pa50000028",
+      "latitude": 49.6427100563799,
+      "longitude": -1.62570466251363,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fortifications in Cherbourg-Octeville, France",
+        "fr": "fort à Cherbourg-en-Cotentin (Manche)"
+      },
+      "externalIdentity": {
+        "id": "Q20724645",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cherbourg-en-cotentin-fort-du-roule-q20724645",
+      "latitude": 49.630589,
+      "longitude": -1.613767,
+      "name": {
+        "en": "fort du Roule",
+        "fr": "fort du Roule"
+      }
+    }
+  ]
+}

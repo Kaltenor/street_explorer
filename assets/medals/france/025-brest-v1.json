@@ -1,0 +1,166 @@
+{
+  "id": "brest-v1",
+  "cityId": "brest-fr",
+  "cityZoneId": "relation/1076124",
+  "cityName": {
+    "en": "Brest",
+    "fr": "Brest"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château, actuellement préfecture maritime is an important witness to the city's history.",
+        "fr": "Château, actuellement préfecture maritime est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brest-chateau-actuellement-prefecture-maritime-pa00089847",
+      "latitude": 48.3816122465216,
+      "longitude": -4.49292963428356,
+      "name": {
+        "en": "Château, actuellement préfecture maritime",
+        "fr": "Château, actuellement préfecture maritime"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0197",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "brest-musee-des-beaux-arts-m0197",
+      "latitude": 48.38529,
+      "longitude": -4.489963,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Brest, Finistère, France",
+        "fr": "château français situé à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q2633625",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-chateau-de-brest-q2633625",
+      "latitude": 48.381255555,
+      "longitude": -4.494708333,
+      "name": {
+        "en": "château de Brest",
+        "fr": "château de Brest"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "medieval tower and museum in Brest, France",
+        "fr": "tour à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q3533195",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-tour-tanguy-q3533195",
+      "latitude": 48.383376861,
+      "longitude": -4.497121638,
+      "name": {
+        "en": "tour Tanguy",
+        "fr": "tour Tanguy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium in Brest, France",
+        "fr": "stade de football à Brest, France"
+      },
+      "externalIdentity": {
+        "id": "Q1432517",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-stade-francis-le-ble-q1432517",
+      "latitude": 48.40293,
+      "longitude": -4.46148,
+      "name": {
+        "en": "stade Francis-Le Blé",
+        "fr": "stade Francis-Le Blé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "fort in France",
+        "fr": "fort breton du XVIIIe siècle utilisé pendant la Seconde guerre mondiale"
+      },
+      "externalIdentity": {
+        "id": "Q3077950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-fort-montbarey-q3077950",
+      "latitude": 48.378215361,
+      "longitude": -4.548361388,
+      "name": {
+        "en": "fort Montbarey",
+        "fr": "fort Montbarey"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort de Brest, en France"
+      },
+      "externalIdentity": {
+        "id": "Q643013",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-fort-du-questel-q643013",
+      "latitude": 48.400604861,
+      "longitude": -4.533577,
+      "name": {
+        "en": "fort du Questel",
+        "fr": "fort du Questel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Brest, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q936501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-pont-de-recouvrance-q936501",
+      "latitude": 48.384381,
+      "longitude": -4.496541,
+      "name": {
+        "en": "pont de Recouvrance",
+        "fr": "pont de Recouvrance"
+      }
+    }
+  ]
+}

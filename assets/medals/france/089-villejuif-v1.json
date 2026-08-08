@@ -1,0 +1,166 @@
+{
+  "id": "villejuif-v1",
+  "cityId": "villejuif-fr",
+  "cityZoneId": "relation/105146",
+  "cityName": {
+    "en": "Villejuif",
+    "fr": "Villejuif"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église française située à Villejuif"
+      },
+      "externalIdentity": {
+        "id": "Q2366561",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-saint-cyr-sainte-julitte-de-villejuif-q2366561",
+      "latitude": 48.7922,
+      "longitude": 2.3636,
+      "name": {
+        "en": "église Saint-Cyr-Sainte-Julitte de Villejuif",
+        "fr": "église Saint-Cyr-Sainte-Julitte de Villejuif"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Villejuif is an important witness to the city's history.",
+        "fr": "château situé à Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q78657067",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-chateau-de-villejuif-q78657067",
+      "latitude": 48.79455,
+      "longitude": 2.362023,
+      "name": {
+        "en": "château de Villejuif",
+        "fr": "château de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-notre-dame-des-apotres-de-villejuif-q60385430",
+      "latitude": 48.78844,
+      "longitude": 2.37392,
+      "name": {
+        "en": "église Notre-Dame-des-Apôtres de Villejuif",
+        "fr": "église Notre-Dame-des-Apôtres de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21509605",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-sainte-therese-de-l-enfant-jesus-de-villejuif-q21509605",
+      "latitude": 48.802827,
+      "longitude": 2.361962,
+      "name": {
+        "en": "église Sainte-Thérèse-de-l'Enfant-Jésus de Villejuif",
+        "fr": "église Sainte-Thérèse-de-l'Enfant-Jésus de Villejuif"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Villejuif, France",
+        "fr": "parc de Villejuif, France"
+      },
+      "externalIdentity": {
+        "id": "Q3364366",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-parc-departemental-des-hautes-bruyeres-q3364366",
+      "latitude": 48.7911,
+      "longitude": 2.34889,
+      "name": {
+        "en": "parc départemental des Hautes-Bruyères",
+        "fr": "parc départemental des Hautes-Bruyères"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "réservoirs dits Les Flûtes is an important witness to the city's history.",
+        "fr": "ensemble de châteaux d'eau de Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q99005222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-reservoirs-dits-les-flutes-q99005222",
+      "latitude": 48.79555,
+      "longitude": 2.3514,
+      "name": {
+        "en": "réservoirs dits Les Flûtes",
+        "fr": "réservoirs dits Les Flûtes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument in Villejuif, France",
+        "fr": "monument de Villejuif, France"
+      },
+      "externalIdentity": {
+        "id": "Q3411268",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-pyramide-de-cassini-q3411268",
+      "latitude": 48.7984,
+      "longitude": 2.36614,
+      "name": {
+        "en": "pyramide de Cassini",
+        "fr": "pyramide de Cassini"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Villejuif is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88485627",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-monument-aux-morts-de-villejuif-q88485627",
+      "latitude": 48.79201,
+      "longitude": 2.36334,
+      "name": {
+        "en": "monument aux morts de Villejuif",
+        "fr": "monument aux morts de Villejuif"
+      }
+    }
+  ]
+}

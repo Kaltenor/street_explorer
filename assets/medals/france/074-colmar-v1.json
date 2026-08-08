@@ -1,0 +1,166 @@
+{
+  "id": "colmar-v1",
+  "cityId": "colmar-fr",
+  "cityZoneId": "relation/61423",
+  "cityName": {
+    "en": "Colmar",
+    "fr": "Colmar"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Unterlinden is one of the city's notable cultural landmarks.",
+        "fr": "musée Unterlinden compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0028",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-musee-unterlinden-m0028",
+      "latitude": 48.079918,
+      "longitude": 7.355464,
+      "name": {
+        "en": "musée Unterlinden",
+        "fr": "musée Unterlinden"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bartholdi is one of the city's notable cultural landmarks.",
+        "fr": "musée Bartholdi compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0027",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-musee-bartholdi-m0027",
+      "latitude": 48.076747,
+      "longitude": 7.357746,
+      "name": {
+        "en": "musée Bartholdi",
+        "fr": "musée Bartholdi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle et d'ethnographie is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle et d'ethnographie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7033",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-museum-d-histoire-naturelle-et-d-ethnographie-m7033",
+      "latitude": 48.073594,
+      "longitude": 7.35872,
+      "name": {
+        "en": "muséum d'histoire naturelle et d'ethnographie",
+        "fr": "muséum d'histoire naturelle et d'ethnographie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais du Conseil Souverain d'Alsace is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais du Conseil Souverain d'Alsace est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-ancien-palais-du-conseil-souverain-d-alsace-pa00085404",
+      "latitude": 48.0757090669732,
+      "longitude": 7.357992148669579,
+      "name": {
+        "en": "Ancien palais du Conseil Souverain d'Alsace",
+        "fr": "Ancien palais du Conseil Souverain d'Alsace"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église protestante Saint-Matthieu, ancienne église des Franciscains is a distinctive architectural landmark in the city.",
+        "fr": "Église protestante Saint-Matthieu, ancienne église des Franciscains est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085367",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-eglise-protestante-saint-matthieu-ancienne-eglise-des-franciscains-pa00085367",
+      "latitude": 48.0770899808328,
+      "longitude": 7.36067236812413,
+      "name": {
+        "en": "Église protestante Saint-Matthieu, ancienne église des Franciscains",
+        "fr": "Église protestante Saint-Matthieu, ancienne église des Franciscains"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau is an important witness to the city's history.",
+        "fr": "Château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125232",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-chateau-d-eau-pa00125232",
+      "latitude": 48.0712605415437,
+      "longitude": 7.352693567114361,
+      "name": {
+        "en": "Château d'eau",
+        "fr": "Château d'eau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085373",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-hotel-de-ville-pa00085373",
+      "latitude": 48.0790692040378,
+      "longitude": 7.35850394868308,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Schwendi is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Schwendi compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3076094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colmar-fontaine-schwendi-q3076094",
+      "latitude": 48.0759,
+      "longitude": 7.35955,
+      "name": {
+        "en": "fontaine Schwendi",
+        "fr": "fontaine Schwendi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "ajaccio-v1",
+  "cityId": "ajaccio-fr",
+  "cityZoneId": "relation/73283",
+  "cityName": {
+    "en": "Ajaccio",
+    "fr": "Ajaccio"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-cathedrale-santa-maria-assunta-ou-cathedrale-notre-dame-pa00099058",
+      "latitude": 41.917393872149,
+      "longitude": 8.73785050436549,
+      "name": {
+        "en": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame",
+        "fr": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée palais Fesch is one of the city's notable cultural landmarks.",
+        "fr": "musée palais Fesch compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0324",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-palais-fesch-m0324",
+      "latitude": 41.922406,
+      "longitude": 8.738487,
+      "name": {
+        "en": "musée palais Fesch",
+        "fr": "musée palais Fesch"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national de la maison Bonaparte is one of the city's notable cultural landmarks.",
+        "fr": "musée national de la maison Bonaparte compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5046",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-national-de-la-maison-bonaparte-m5046",
+      "latitude": 41.917701,
+      "longitude": 8.73795,
+      "name": {
+        "en": "musée national de la maison Bonaparte",
+        "fr": "musée national de la maison Bonaparte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée napoléonien is one of the city's notable cultural landmarks.",
+        "fr": "musée napoléonien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0325",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-napoleonien-m0325",
+      "latitude": 41.92499,
+      "longitude": 8.735937,
+      "name": {
+        "en": "musée napoléonien",
+        "fr": "musée napoléonien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Corse-du-Sud, in France",
+        "fr": "cathédrale située à Ajaccio en Corse-du-Sud, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2437680",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-cathedrale-notre-dame-de-l-assomption-d-ajaccio-q2437680",
+      "latitude": 41.917495,
+      "longitude": 8.737961,
+      "name": {
+        "en": "cathédrale Notre-Dame-de-l'Assomption d'Ajaccio",
+        "fr": "cathédrale Notre-Dame-de-l'Assomption d'Ajaccio"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-citadelle-pa00099062",
+      "latitude": 41.916952542892,
+      "longitude": 8.7401792917107,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fortress at Ajaccio, France",
+        "fr": "citadelle à Ajaccio (Corse-du-Sud)"
+      },
+      "externalIdentity": {
+        "id": "Q5122393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-citadelle-d-ajaccio-q5122393",
+      "latitude": 41.91666667,
+      "longitude": 8.74027778,
+      "name": {
+        "en": "citadelle d'Ajaccio",
+        "fr": "citadelle d'Ajaccio"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium in Ajaccio, France",
+        "fr": "stade de football situé à Ajaccio"
+      },
+      "externalIdentity": {
+        "id": "Q1807356",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-stade-michel-moretti-q1807356",
+      "latitude": 41.93157,
+      "longitude": 8.77887,
+      "name": {
+        "en": "stade Michel-Moretti",
+        "fr": "stade Michel-Moretti"
+      }
+    }
+  ]
+}

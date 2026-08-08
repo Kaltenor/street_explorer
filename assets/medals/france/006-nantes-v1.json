@@ -1,0 +1,166 @@
+{
+  "id": "nantes-v1",
+  "cityId": "nantes-fr",
+  "cityZoneId": "relation/59874",
+  "cityName": {
+    "en": "Nantes",
+    "fr": "Nantes"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des ducs de Bretagne is an important witness to the city's history.",
+        "fr": "Château des ducs de Bretagne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108657",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-chateau-des-ducs-de-bretagne-pa00108657",
+      "latitude": 47.2160947099898,
+      "longitude": -1.54932138645949,
+      "name": {
+        "en": "Château des ducs de Bretagne",
+        "fr": "Château des ducs de Bretagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108654",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-cathedrale-saint-pierre-saint-paul-pa00108654",
+      "latitude": 47.2183754550806,
+      "longitude": -1.55018038896678,
+      "name": {
+        "en": "Cathédrale Saint-Pierre Saint-Paul",
+        "fr": "Cathédrale Saint-Pierre Saint-Paul"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Dobrée is one of the city's notable cultural landmarks.",
+        "fr": "musée Dobrée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0745",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nantes-musee-dobree-m0745",
+      "latitude": 47.211788,
+      "longitude": -1.566123,
+      "name": {
+        "en": "musée Dobrée",
+        "fr": "musée Dobrée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0743",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nantes-musee-des-beaux-arts-m0743",
+      "latitude": 47.219276,
+      "longitude": -1.547096,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7049",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nantes-museum-d-histoire-naturelle-m7049",
+      "latitude": 47.212385,
+      "longitude": -1.564652,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stadium in Nantes, France",
+        "fr": "stade français"
+      },
+      "externalIdentity": {
+        "id": "Q1053455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nantes-stade-de-la-beaujoire-q1053455",
+      "latitude": 47.2561,
+      "longitude": -1.52466,
+      "name": {
+        "en": "stade de la Beaujoire",
+        "fr": "stade de la Beaujoire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic church in Nantes, France",
+        "fr": "église catholique de Nantes, France"
+      },
+      "externalIdentity": {
+        "id": "Q2886987",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nantes-basilique-saint-donatien-et-saint-rogatien-de-nantes-q2886987",
+      "latitude": 47.2292588,
+      "longitude": -1.5424418,
+      "name": {
+        "en": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes",
+        "fr": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché is an important witness to the city's history.",
+        "fr": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108757",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-porte-gallo-romaine-dite-du-bastion-saint-pierre-dependant-de-l-ancien-eveche-pa00108757",
+      "latitude": 47.2188715244991,
+      "longitude": -1.55029025896058,
+      "name": {
+        "en": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché",
+        "fr": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché"
+      }
+    }
+  ]
+}

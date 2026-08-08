@@ -1,0 +1,166 @@
+{
+  "id": "beziers-v1",
+  "cityId": "beziers-fr",
+  "cityZoneId": "relation/70070",
+  "cityName": {
+    "en": "Béziers",
+    "fr": "Béziers"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Saint-Nazaire et cloître Saint-Nazaire is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Saint-Nazaire et cloître Saint-Nazaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103374",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beziers-ancien-cathedrale-saint-nazaire-et-cloitre-saint-nazaire-pa00103374",
+      "latitude": 43.3413537250795,
+      "longitude": 3.20985701536941,
+      "name": {
+        "en": "Ancien cathédrale Saint-Nazaire et cloître Saint-Nazaire",
+        "fr": "Ancien cathédrale Saint-Nazaire et cloître Saint-Nazaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Aphrodise is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Aphrodise est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103373",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beziers-ancien-abbaye-saint-aphrodise-pa00103373",
+      "latitude": 43.3471688079593,
+      "longitude": 3.21472873468095,
+      "name": {
+        "en": "Ancien abbaye Saint-Aphrodise",
+        "fr": "Ancien abbaye Saint-Aphrodise"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0467",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "beziers-musee-des-beaux-arts-m0467",
+      "latitude": 43.341429,
+      "longitude": 3.210533,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du biterrois is one of the city's notable cultural landmarks.",
+        "fr": "musée du biterrois compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0468",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "beziers-musee-du-biterrois-m0468",
+      "latitude": 43.338908,
+      "longitude": 3.215208,
+      "name": {
+        "en": "musée du biterrois",
+        "fr": "musée du biterrois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal, aujourd'hui palais de justice de Béziers is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal, aujourd'hui palais de justice de Béziers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103392",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beziers-ancien-palais-episcopal-aujourd-hui-palais-de-justice-de-beziers-pa00103392",
+      "latitude": 43.3411308313506,
+      "longitude": 3.21040100358895,
+      "name": {
+        "en": "Ancien palais épiscopal, aujourd'hui palais de justice de Béziers",
+        "fr": "Ancien palais épiscopal, aujourd'hui palais de justice de Béziers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canal in Southern France",
+        "fr": "canal français"
+      },
+      "externalIdentity": {
+        "id": "Q202494",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beziers-canal-du-midi-q202494",
+      "latitude": 43.61111111,
+      "longitude": 1.41833333,
+      "name": {
+        "en": "canal du Midi",
+        "fr": "canal du Midi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Libouriac is an important witness to the city's history.",
+        "fr": "Château de Libouriac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135388",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beziers-chateau-de-libouriac-pa00135388",
+      "latitude": 43.3702485916005,
+      "longitude": 3.26678378395931,
+      "name": {
+        "en": "Château de Libouriac",
+        "fr": "Château de Libouriac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Saint-Bauzille is an important witness to the city's history.",
+        "fr": "Château Saint-Bauzille est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000068",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beziers-chateau-saint-bauzille-pa34000068",
+      "latitude": 43.354403202891,
+      "longitude": 3.3225570982787,
+      "name": {
+        "en": "Château Saint-Bauzille",
+        "fr": "Château Saint-Bauzille"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "meaux-v1",
+  "cityId": "meaux-fr",
+  "cityZoneId": "relation/86609",
+  "cityName": {
+    "en": "Meaux",
+    "fr": "Meaux"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meaux-cathedrale-saint-etienne-pa00087087",
+      "latitude": 48.96019400781,
+      "longitude": 2.87890195109398,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bossuet is one of the city's notable cultural landmarks.",
+        "fr": "musée Bossuet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0378",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "meaux-musee-bossuet-m0378",
+      "latitude": 48.938016,
+      "longitude": 2.87061,
+      "name": {
+        "en": "musée Bossuet",
+        "fr": "musée Bossuet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Grande Guerre is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Grande Guerre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1171",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "meaux-musee-de-la-grande-guerre-m1171",
+      "latitude": 48.955281,
+      "longitude": 2.901461,
+      "name": {
+        "en": "musée de la Grande Guerre",
+        "fr": "musée de la Grande Guerre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Cité épiscopale is an important witness to the city's history.",
+        "fr": "Cité épiscopale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087093",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meaux-cite-episcopale-pa00087093",
+      "latitude": 48.96057336097331,
+      "longitude": 2.87832780602926,
+      "name": {
+        "en": "Cité épiscopale",
+        "fr": "Cité épiscopale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre antique is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre antique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA77000007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meaux-theatre-antique-pa77000007",
+      "latitude": 48.967425061849,
+      "longitude": 2.8822723202729,
+      "name": {
+        "en": "Théâtre antique",
+        "fr": "Théâtre antique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Seine-et-Marne, in France",
+        "fr": "ancienne abbaye bénédictine et île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q111362622",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meaux-abbaye-saint-faron-de-meaux-q111362622",
+      "latitude": 48.965066,
+      "longitude": 2.884063,
+      "name": {
+        "en": "abbaye Saint-Faron de Meaux",
+        "fr": "abbaye Saint-Faron de Meaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Christophe (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Christophe (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087088",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meaux-eglise-saint-christophe-ancienne-pa00087088",
+      "latitude": 48.958900846046,
+      "longitude": 2.88013838154413,
+      "name": {
+        "en": "Église Saint-Christophe (ancienne)",
+        "fr": "Église Saint-Christophe (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel Macé de Montoury is an important witness to the city's history.",
+        "fr": "Hôtel Macé de Montoury est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087089",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meaux-hotel-mace-de-montoury-pa00087089",
+      "latitude": 48.9599550182843,
+      "longitude": 2.87620739219055,
+      "name": {
+        "en": "Hôtel Macé de Montoury",
+        "fr": "Hôtel Macé de Montoury"
+      }
+    }
+  ]
+}

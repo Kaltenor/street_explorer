@@ -1,0 +1,166 @@
+{
+  "id": "saint-etienne-v1",
+  "cityId": "saint-etienne-fr",
+  "cityZoneId": "relation/18937048",
+  "cityName": {
+    "en": "Saint-Étienne",
+    "fr": "Saint-Étienne"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'industrie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'industrie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1023",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-etienne-musee-d-art-et-d-industrie-m1023",
+      "latitude": 45.431538,
+      "longitude": 4.387485,
+      "name": {
+        "en": "musée d'art et d'industrie",
+        "fr": "musée d'art et d'industrie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art moderne et contemporain de Saint-Étienne Métropole is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art moderne et contemporain de Saint-Étienne Métropole compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1024",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-etienne-musee-d-art-moderne-et-contemporain-de-saint-etienne-metropole-m1024",
+      "latitude": 45.46964793515552,
+      "longitude": 4.374526863293208,
+      "name": {
+        "en": "musée d'art moderne et contemporain de Saint-Étienne Métropole",
+        "fr": "musée d'art moderne et contemporain de Saint-Étienne Métropole"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la mine is one of the city's notable cultural landmarks.",
+        "fr": "musée de la mine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1025",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-etienne-musee-de-la-mine-m1025",
+      "latitude": 45.438944,
+      "longitude": 4.376487,
+      "name": {
+        "en": "musée de la mine",
+        "fr": "musée de la mine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Villeneuve (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Villeneuve (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117600",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-hotel-de-villeneuve-ancien-pa00117600",
+      "latitude": 45.4349168614534,
+      "longitude": 4.388515667724121,
+      "name": {
+        "en": "Hôtel de Villeneuve (ancien)",
+        "fr": "Hôtel de Villeneuve (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dit Palais Mimard is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dit Palais Mimard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117701",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-immeuble-dit-palais-mimard-pa00117701",
+      "latitude": 45.4311495125829,
+      "longitude": 4.39006905157643,
+      "name": {
+        "en": "Immeuble dit Palais Mimard",
+        "fr": "Immeuble dit Palais Mimard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais des spectacles is a distinctive architectural landmark in the city.",
+        "fr": "Palais des spectacles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-palais-des-spectacles-pa42000059",
+      "latitude": 45.45105740807077,
+      "longitude": 4.392724040466299,
+      "name": {
+        "en": "Palais des spectacles",
+        "fr": "Palais des spectacles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Rochetaillée (restes) is an important witness to the city's history.",
+        "fr": "Château de Rochetaillée (restes) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117597",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-chateau-de-rochetaillee-restes-pa00117597",
+      "latitude": 45.4101862449604,
+      "longitude": 4.44612188358956,
+      "name": {
+        "en": "Château de Rochetaillée (restes)",
+        "fr": "Château de Rochetaillée (restes)"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA42000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-monument-aux-morts-pa42000051",
+      "latitude": 45.439570160110726,
+      "longitude": 4.396307874875326,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    }
+  ]
+}

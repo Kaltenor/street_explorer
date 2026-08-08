@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createAppearanceStyles } from "../constants/appearance";
 import {
   ActivityIndicator,
+  GestureResponderEvent,
   Modal,
   ScrollView,
   StyleSheet,
@@ -15,6 +16,10 @@ import { AtlasModalHeader, AtlasScreen, AtlasSectionLabel } from "./AtlasCabinet
 import { APP_COLORS } from "../constants/theme";
 import { AppLanguage } from "../i18n";
 import { CollectedMedal, MedalAlbumProgress, MedalCategory } from "../types/medal";
+import {
+  MedalWikipediaReader,
+  WikipediaReaderOrigin
+} from "./MedalWikipediaReader";
 
 type CategoryFilter = "all" | MedalCategory;
 
@@ -48,6 +53,10 @@ export function MedalCollectionModal({
   onRunRetroScan
 }: MedalCollectionModalProps) {
   const [category, setCategory] = useState<CategoryFilter>("all");
+  const [wikipediaSelection, setWikipediaSelection] = useState<{
+    medal: CollectedMedal;
+    origin: WikipediaReaderOrigin;
+  } | null>(null);
   const text = getText(language);
   const filteredMedals = useMemo(
     () =>
@@ -59,15 +68,40 @@ export function MedalCollectionModal({
   const collectedMedals = filteredMedals.filter((medal) => medal.isCollected);
   const lockedMedals = filteredMedals.filter((medal) => !medal.isCollected);
 
+  useEffect(() => {
+    if (!visible) {
+      setWikipediaSelection(null);
+    }
+  }, [visible]);
+
+  const openWikipedia = (
+    medal: CollectedMedal,
+    event: GestureResponderEvent
+  ) => {
+    setWikipediaSelection({
+      medal,
+      origin: {
+        x: event.nativeEvent.pageX,
+        y: event.nativeEvent.pageY
+      }
+    });
+  };
+
   return (
     <Modal
       animationType="none"
-      onRequestClose={onClose}
+      onRequestClose={wikipediaSelection ? () => setWikipediaSelection(null) : onClose}
       presentationStyle="overFullScreen"
       transparent
       visible={visible}
     >
-      <AtlasScreen onSwipeBack={onClose} visible={visible}>
+      <View style={styles.modalRoot}>
+        <View
+          accessibilityElementsHidden={Boolean(wikipediaSelection)}
+          importantForAccessibility={wikipediaSelection ? "no-hide-descendants" : "auto"}
+          style={styles.modalRoot}
+        >
+          <AtlasScreen onSwipeBack={onClose} visible={visible}>
         <AtlasModalHeader
           emblem="ribbon-outline"
           eyebrow={text.collection}
@@ -108,6 +142,7 @@ export function MedalCollectionModal({
             language={language}
             medals={collectedMedals}
             onFocusMedal={onFocusMedal}
+            onOpenWikipedia={openWikipedia}
             title={text.unlockedSection}
           />
           <MedalSection
@@ -115,6 +150,7 @@ export function MedalCollectionModal({
             language={language}
             medals={lockedMedals}
             onFocusMedal={onFocusMedal}
+            onOpenWikipedia={openWikipedia}
             title={text.lockedSection}
           />
 
@@ -139,7 +175,18 @@ export function MedalCollectionModal({
 
           <Text style={styles.attribution}>{progress?.album.sourceAttribution}</Text>
         </ScrollView>
-      </AtlasScreen>
+          </AtlasScreen>
+        </View>
+        {wikipediaSelection && progress ? (
+          <MedalWikipediaReader
+            cityName={progress.album.cityName}
+            language={language}
+            medal={wikipediaSelection.medal}
+            onClosed={() => setWikipediaSelection(null)}
+            origin={wikipediaSelection.origin}
+          />
+        ) : null}
+      </View>
     </Modal>
   );
 }
@@ -149,12 +196,14 @@ function MedalSection({
   language,
   medals,
   onFocusMedal,
+  onOpenWikipedia,
   title
 }: {
   emptyLabel: string;
   language: AppLanguage;
   medals: CollectedMedal[];
   onFocusMedal: (medal: CollectedMedal) => void;
+  onOpenWikipedia: (medal: CollectedMedal, event: GestureResponderEvent) => void;
   title: string;
 }) {
   const text = getText(language);
@@ -167,34 +216,51 @@ function MedalSection({
       </View>
       {medals.length === 0 ? <Text style={styles.emptySection}>{emptyLabel}</Text> : null}
       {medals.map((medal) => (
-        <TouchableOpacity
-          accessibilityHint={text.mapHint}
-          accessibilityLabel={medal.name[language] + ", " + (medal.isCollected ? text.unlocked : text.locked)}
-          accessibilityRole="button"
+        <View
           key={medal.id}
-          onPress={() => onFocusMedal(medal)}
           style={[styles.card, medal.isCollected ? styles.cardCollected : styles.cardLocked]}
         >
-          <View style={[styles.medal, medal.isCollected ? styles.medalCollected : null]}>
-            <Ionicons
-              color={medal.isCollected ? APP_COLORS.parchment : APP_COLORS.textMuted}
-              name={medal.isCollected ? CATEGORY_ICONS[medal.category] : "lock-closed"}
-              size={28}
-            />
-          </View>
-          <View style={styles.cardText}>
-            <Text style={[styles.medalName, !medal.isCollected ? styles.lockedText : null]}>
-              {medal.name[language]}
-            </Text>
-            {medal.isCollected ? (
+          <TouchableOpacity
+            accessibilityHint={text.mapHint}
+            accessibilityLabel={medal.name[language] + ", " + (medal.isCollected ? text.unlocked : text.locked)}
+            accessibilityRole="button"
+            onPress={() => onFocusMedal(medal)}
+            style={styles.cardMapAction}
+          >
+            <View style={[styles.medal, medal.isCollected ? styles.medalCollected : null]}>
+              <Ionicons
+                color={medal.isCollected ? APP_COLORS.parchment : APP_COLORS.textMuted}
+                name={medal.isCollected ? CATEGORY_ICONS[medal.category] : "lock-closed"}
+                size={28}
+              />
+            </View>
+            <View style={styles.cardText}>
+              <Text style={[styles.medalName, !medal.isCollected ? styles.lockedText : null]}>
+                {medal.name[language]}
+              </Text>
+              <Text style={styles.category}>{text.categories[medal.category]}</Text>
+            </View>
+            <Ionicons color={APP_COLORS.textMuted} name="locate-outline" size={20} />
+          </TouchableOpacity>
+          {medal.isCollected ? (
+            <TouchableOpacity
+              accessibilityHint={text.wikipediaHint}
+              accessibilityLabel={`${text.wikipedia}: ${medal.name[language]}`}
+              accessibilityRole="link"
+              onPress={(event) => onOpenWikipedia(medal, event)}
+              style={styles.wikipediaAction}
+            >
               <Text numberOfLines={3} style={styles.description}>
                 {medal.description[language]}
               </Text>
-            ) : null}
-            <Text style={styles.category}>{text.categories[medal.category]}</Text>
-          </View>
-          <Ionicons color={APP_COLORS.textMuted} name="locate-outline" size={20} />
-        </TouchableOpacity>
+              <View style={styles.wikipediaLabelRow}>
+                <Ionicons color={APP_COLORS.gold} name="book-outline" size={13} />
+                <Text style={styles.wikipediaLabel}>{text.wikipedia}</Text>
+                <Ionicons color={APP_COLORS.gold} name="expand-outline" size={12} />
+              </View>
+            </TouchableOpacity>
+          ) : null}
+        </View>
       ))}
     </View>
   );
@@ -216,6 +282,8 @@ function getText(language: AppLanguage) {
       pastWalks: "Parcours pr\u00e9c\u00e9dents", scan: "Analyser mes parcours",
       scanAgain: "Analyser \u00e0 nouveau", scanComplete: "Vos parcours pr\u00e9c\u00e9dents ont \u00e9t\u00e9 analys\u00e9s avec les m\u00eames r\u00e8gles GPS strictes.",
       scanDescription: "Optionnel : recherchez les m\u00e9dailles d\u00e9j\u00e0 encercl\u00e9es par vos parcours enregistr\u00e9s.",
+      wikipedia: "Lire sur Wikipédia",
+      wikipediaHint: "Ouvre l'article dans le lecteur intégré"
     };
   }
 
@@ -232,7 +300,9 @@ function getText(language: AppLanguage) {
     unlocked: "collected", unlockedSection: "UNLOCKED",
     pastWalks: "Past walks", scan: "Scan my walks", scanAgain: "Scan again",
     scanComplete: "Your past walks have been scanned with the same strict GPS rules.",
-    scanDescription: "Optional: find medals already enclosed by your saved walks."
+    scanDescription: "Optional: find medals already enclosed by your saved walks.",
+    wikipedia: "Read on Wikipedia",
+    wikipediaHint: "Opens the article in the built-in reader"
   };
 }
 
@@ -254,6 +324,7 @@ const styles = createAppearanceStyles({
   filterText: { color: APP_COLORS.parchment, fontSize: 13, fontWeight: "700", lineHeight: 18 },
   filterTextActive: { color: "#151006" },
   medalGrid: { gap: 24, padding: 16, paddingBottom: 48 },
+  modalRoot: { flex: 1 },
   section: { gap: 10 },
   sectionHeader: { alignItems: "center", flexDirection: "row", gap: 8 },
   sectionTitle: { color: APP_COLORS.gold, fontSize: 11, fontWeight: "900", letterSpacing: 1.5 },
@@ -273,15 +344,13 @@ const styles = createAppearanceStyles({
   },
   emptySection: { color: "#64748b", fontSize: 12, fontStyle: "italic", paddingVertical: 8 },
   card: {
-    alignItems: "center",
     backgroundColor: APP_COLORS.card,
     borderColor: APP_COLORS.border,
     borderRadius: 18,
     borderWidth: 1,
-    flexDirection: "row",
-    gap: 14,
-    padding: 14
+    overflow: "hidden"
   },
+  cardMapAction: { alignItems: "center", flexDirection: "row", gap: 14, padding: 14 },
   cardCollected: { backgroundColor: "rgba(19, 35, 42, 0.96)" },
   cardLocked: { backgroundColor: "rgba(9, 19, 27, 0.9)", opacity: 0.78 },
   medal: { alignItems: "center", backgroundColor: "#202c35", borderColor: "#43515c", borderRadius: 29, borderWidth: 2, height: 58, justifyContent: "center", width: 58 },
@@ -289,7 +358,7 @@ const styles = createAppearanceStyles({
   cardText: { flex: 1 },
   medalName: { color: APP_COLORS.parchment, fontSize: 16, fontWeight: "800" },
   lockedText: { color: "#94a3b8" },
-  description: { color: "#94a3b8", fontSize: 12, lineHeight: 17, marginTop: 3 },
+  description: { color: "#b7c2ca", fontSize: 12, lineHeight: 17 },
   category: { color: APP_COLORS.gold, fontSize: 10, fontWeight: "800", letterSpacing: 0.7, marginTop: 7, textTransform: "uppercase" },
   retroCard: { backgroundColor: APP_COLORS.card, borderColor: APP_COLORS.border, borderRadius: 18, borderWidth: 1, marginTop: 6, padding: 18 },
   retroTitle: { color: APP_COLORS.parchment, fontSize: 17, fontWeight: "800" },
@@ -297,5 +366,17 @@ const styles = createAppearanceStyles({
   scanButton: { alignItems: "center", backgroundColor: APP_COLORS.gold, borderRadius: 12, marginTop: 14, minHeight: 44, justifyContent: "center", paddingHorizontal: 16 },
   scanButtonDisabled: { opacity: 0.65 },
   scanButtonText: { color: "#151006", fontSize: 14, fontWeight: "900" },
-  attribution: { color: "#64748b", fontSize: 10, lineHeight: 15, textAlign: "center" }
+  attribution: { color: "#64748b", fontSize: 10, lineHeight: 15, textAlign: "center" },
+  wikipediaAction: {
+    backgroundColor: "rgba(231, 181, 65, 0.055)",
+    borderTopColor: APP_COLORS.goldBorder,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    gap: 7,
+    minHeight: 58,
+    paddingBottom: 12,
+    paddingHorizontal: 14,
+    paddingTop: 10
+  },
+  wikipediaLabel: { color: APP_COLORS.gold, fontSize: 10, fontWeight: "900", letterSpacing: 0.6 },
+  wikipediaLabelRow: { alignItems: "center", flexDirection: "row", gap: 5 }
 });

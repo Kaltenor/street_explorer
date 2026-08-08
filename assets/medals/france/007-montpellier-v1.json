@@ -1,0 +1,166 @@
+{
+  "id": "montpellier-v1",
+  "cityId": "montpellier-fr",
+  "cityZoneId": "relation/28722",
+  "cityName": {
+    "en": "Montpellier",
+    "fr": "Montpellier"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Flaugergue is an important witness to the city's history.",
+        "fr": "Domaine du château de Flaugergue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103525",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-domaine-du-chateau-de-flaugergue-pa00103525",
+      "latitude": 43.609297583608,
+      "longitude": 3.92135131522378,
+      "name": {
+        "en": "Domaine du château de Flaugergue",
+        "fr": "Domaine du château de Flaugergue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Bonnier de la Mosson is an important witness to the city's history.",
+        "fr": "Domaine du château de Bonnier de la Mosson est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103528",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-domaine-du-chateau-de-bonnier-de-la-mosson-pa00103528",
+      "latitude": 43.6122275537253,
+      "longitude": 3.8203415227299202,
+      "name": {
+        "en": "Domaine du château de Bonnier de la Mosson",
+        "fr": "Domaine du château de Bonnier de la Mosson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103522",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-cathedrale-saint-pierre-pa00103522",
+      "latitude": 43.6133021712476,
+      "longitude": 3.8740506359931706,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château et Parc de la Piscine is an important witness to the city's history.",
+        "fr": "Château et Parc de la Piscine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103524",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-chateau-et-parc-de-la-piscine-pa00103524",
+      "latitude": 43.6114370499712,
+      "longitude": 3.84155663489334,
+      "name": {
+        "en": "Château et Parc de la Piscine",
+        "fr": "Château et Parc de la Piscine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hôtel d'Espeyran is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hôtel d'Espeyran compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0477",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montpellier-musee-de-l-hotel-d-espeyran-m0477",
+      "latitude": 43.611112,
+      "longitude": 3.880183,
+      "name": {
+        "en": "musée de l'hôtel d'Espeyran",
+        "fr": "musée de l'hôtel d'Espeyran"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Fabre is one of the city's notable cultural landmarks.",
+        "fr": "musée Fabre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0476",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montpellier-musee-fabre-m0476",
+      "latitude": 43.61135,
+      "longitude": 3.880685,
+      "name": {
+        "en": "musée Fabre",
+        "fr": "musée Fabre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée languedocien is one of the city's notable cultural landmarks.",
+        "fr": "musée languedocien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0479",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montpellier-musee-languedocien-m0479",
+      "latitude": 43.609524,
+      "longitude": 3.879151,
+      "name": {
+        "en": "musée languedocien",
+        "fr": "musée languedocien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium",
+        "fr": "stade de football situé à Montpellier"
+      },
+      "externalIdentity": {
+        "id": "Q815833",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montpellier-stade-de-la-mosson-q815833",
+      "latitude": 43.62061,
+      "longitude": 3.81279,
+      "name": {
+        "en": "stade de la Mosson",
+        "fr": "stade de la Mosson"
+      }
+    }
+  ]
+}

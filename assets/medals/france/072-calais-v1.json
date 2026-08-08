@@ -1,0 +1,166 @@
+{
+  "id": "calais-v1",
+  "cityId": "calais-fr",
+  "cityZoneId": "relation/286380",
+  "cityName": {
+    "en": "Calais",
+    "fr": "Calais"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et de la dentelle is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et de la dentelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0644",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "calais-musee-des-beaux-arts-et-de-la-dentelle-m0644",
+      "latitude": 50.956724,
+      "longitude": 1.851871,
+      "name": {
+        "en": "musée des beaux-arts et de la dentelle",
+        "fr": "musée des beaux-arts et de la dentelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cité internationale de la dentelle et de la mode is one of the city's notable cultural landmarks.",
+        "fr": "cité internationale de la dentelle et de la mode compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1177",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "calais-cite-internationale-de-la-dentelle-et-de-la-mode-m1177",
+      "latitude": 50.950474,
+      "longitude": 1.860013,
+      "name": {
+        "en": "cité internationale de la dentelle et de la mode",
+        "fr": "cité internationale de la dentelle et de la mode"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108246",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-eglise-notre-dame-pa00108246",
+      "latitude": 50.9581928102272,
+      "longitude": 1.85325191456334,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Guet is an important witness to the city's history.",
+        "fr": "Tour du Guet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108248",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-tour-du-guet-pa00108248",
+      "latitude": 50.9589374991357,
+      "longitude": 1.84950362039273,
+      "name": {
+        "en": "Tour du Guet",
+        "fr": "Tour du Guet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108247",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-citadelle-pa00108247",
+      "latitude": 50.9570561848112,
+      "longitude": 1.8412509251867701,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Crypte souterraine sous l'emplacement du Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Crypte souterraine sous l'emplacement du Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108245",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-crypte-souterraine-sous-l-emplacement-du-beffroi-pa00108245",
+      "latitude": 50.95292377895213,
+      "longitude": 1.8543243991421838,
+      "name": {
+        "en": "Crypte souterraine sous l'emplacement du Beffroi",
+        "fr": "Crypte souterraine sous l'emplacement du Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "the seat of the city council in Calais, France",
+        "fr": "mairie à Calais (Pas-de-Calais)"
+      },
+      "externalIdentity": {
+        "id": "Q17175490",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-hotel-de-ville-de-calais-q17175490",
+      "latitude": 50.952583333,
+      "longitude": 1.854388888,
+      "name": {
+        "en": "hôtel de ville de Calais",
+        "fr": "hôtel de ville de Calais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "16th-century citadel in Calais, France",
+        "fr": "citadelle à Calais (Pas-de-Calais)"
+      },
+      "externalIdentity": {
+        "id": "Q2974382",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-citadelle-de-calais-q2974382",
+      "latitude": 50.9578,
+      "longitude": 1.8452,
+      "name": {
+        "en": "citadelle de Calais",
+        "fr": "citadelle de Calais"
+      }
+    }
+  ]
+}

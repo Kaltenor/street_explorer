@@ -1,0 +1,166 @@
+{
+  "id": "colombes-v1",
+  "cityId": "colombes-fr",
+  "cityZoneId": "relation/91738",
+  "cityName": {
+    "en": "Colombes",
+    "fr": "Colombes"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0409",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colombes-musee-municipal-d-art-et-d-histoire-m0409",
+      "latitude": 48.923321,
+      "longitude": 2.252039,
+      "name": {
+        "en": "musée municipal d'art et d'histoire",
+        "fr": "musée municipal d'art et d'histoire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Multi-purpose stadium at Colombes, France",
+        "fr": "complexe sportif"
+      },
+      "externalIdentity": {
+        "id": "Q754502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-stade-departemental-yves-du-manoir-q754502",
+      "latitude": 48.93145,
+      "longitude": 2.24961,
+      "name": {
+        "en": "stade départemental Yves-du-Manoir",
+        "fr": "stade départemental Yves-du-Manoir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Colombes, France",
+        "fr": "édifice de Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412747",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-hotel-de-ville-de-colombes-q83412747",
+      "latitude": 48.9225,
+      "longitude": 2.2545,
+      "name": {
+        "en": "hôtel de ville de Colombes",
+        "fr": "hôtel de ville de Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église à Colombes (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q15945096",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-ancien-eglise-saint-pierre-saint-paul-de-colombes-q15945096",
+      "latitude": 48.9234,
+      "longitude": 2.25262,
+      "name": {
+        "en": "Ancien église Saint-Pierre-Saint-Paul de Colombes",
+        "fr": "Ancien église Saint-Pierre-Saint-Paul de Colombes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Colombes, France",
+        "fr": "parc de Colombes, Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q16668900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-parc-pierre-lagravere-q16668900",
+      "latitude": 48.9254,
+      "longitude": 2.23047,
+      "name": {
+        "en": "parc Pierre-Lagravère",
+        "fr": "parc Pierre-Lagravère"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Colombes, France",
+        "fr": "cinéma à Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-mjc-theatre-de-colombes-q61860910",
+      "latitude": 48.92499,
+      "longitude": 2.25073,
+      "name": {
+        "en": "MJC Théâtre de Colombes",
+        "fr": "MJC Théâtre de Colombes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Caillebotte is one of the city's notable green or natural landmarks.",
+        "fr": "parc de Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q120254270",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-parc-caillebotte-q120254270",
+      "latitude": 48.93184,
+      "longitude": 2.27026,
+      "name": {
+        "en": "parc Caillebotte",
+        "fr": "parc Caillebotte"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Colombes is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602265",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-monument-aux-morts-de-colombes-q96602265",
+      "latitude": 48.92333,
+      "longitude": 2.25032,
+      "name": {
+        "en": "monument aux morts de Colombes",
+        "fr": "monument aux morts de Colombes"
+      }
+    }
+  ]
+}

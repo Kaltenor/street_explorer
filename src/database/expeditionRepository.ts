@@ -251,6 +251,15 @@ export async function getDistrictExpeditionSeals() {
   return rows.map(mapSealRow);
 }
 
+export async function getDistrictExpeditionSealCount() {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ count: number }>(
+    "SELECT COUNT(*) AS count FROM district_expedition_seals"
+  );
+
+  return row?.count ?? 0;
+}
+
 export function mapExpeditionRow(row: ExpeditionRow): DistrictExpedition {
   return {
     abandonedAt: row.abandoned_at,

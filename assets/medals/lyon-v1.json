@@ -1,6 +1,7 @@
 {
   "id": "lyon-v1",
   "cityId": "lyon-fr",
+  "cityZoneId": "relation/120965",
   "cityName": { "en": "Lyon", "fr": "Lyon" },
   "version": 1,
   "publishedAt": "2026-07-29",

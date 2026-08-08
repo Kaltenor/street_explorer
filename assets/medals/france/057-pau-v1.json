@@ -1,0 +1,166 @@
+{
+  "id": "pau-v1",
+  "cityId": "pau-fr",
+  "cityZoneId": "relation/162431",
+  "cityName": {
+    "en": "Pau",
+    "fr": "Pau"
+  },
+  "version": 1,
+  "publishedAt": "2026-08-08",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Pau ou château Henri IV is an important witness to the city's history.",
+        "fr": "Domaine du château de Pau ou château Henri IV est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084483",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-domaine-du-chateau-de-pau-ou-chateau-henri-iv-pa00084483",
+      "latitude": 43.2966153028094,
+      "longitude": -0.388712473444269,
+      "name": {
+        "en": "Domaine du château de Pau ou château Henri IV",
+        "fr": "Domaine du château de Pau ou château Henri IV"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bernadotte is one of the city's notable cultural landmarks.",
+        "fr": "musée Bernadotte compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0099",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-bernadotte-m0099",
+      "latitude": 43.297209,
+      "longitude": -0.372526,
+      "name": {
+        "en": "musée Bernadotte",
+        "fr": "musée Bernadotte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée béarnais is one of the city's notable cultural landmarks.",
+        "fr": "musée béarnais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0100",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-bearnais-m0100",
+      "latitude": 43.18818,
+      "longitude": -0.604752,
+      "name": {
+        "en": "musée béarnais",
+        "fr": "musée béarnais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0098",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-des-beaux-arts-m0098",
+      "latitude": 43.297254,
+      "longitude": -0.364384,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Castle in Pau, France",
+        "fr": "château français situé à Pau"
+      },
+      "externalIdentity": {
+        "id": "Q1480604",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pau-chateau-de-pau-q1480604",
+      "latitude": 43.294722222,
+      "longitude": -0.375,
+      "name": {
+        "en": "château de Pau",
+        "fr": "château de Pau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000107",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-saint-martin-pa64000107",
+      "latitude": 43.2941917391955,
+      "longitude": -0.372570362503552,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "architectural structure",
+        "fr": "Salle omnisports à Pau"
+      },
+      "externalIdentity": {
+        "id": "Q778495",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pau-palais-des-sports-de-pau-q778495",
+      "latitude": 43.3345351,
+      "longitude": -0.3627098,
+      "name": {
+        "en": "palais des sports de Pau",
+        "fr": "palais des sports de Pau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Sorrento, dit aussi Castet de l'Array is a distinctive architectural landmark in the city.",
+        "fr": "Palais Sorrento, dit aussi Castet de l'Array est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-palais-sorrento-dit-aussi-castet-de-l-array-pa64000097",
+      "latitude": 43.2969528130029,
+      "longitude": -0.337363593115043,
+      "name": {
+        "en": "Palais Sorrento, dit aussi Castet de l'Array",
+        "fr": "Palais Sorrento, dit aussi Castet de l'Array"
+      }
+    }
+  ]
+}
