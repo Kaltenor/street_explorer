@@ -1,5 +1,79 @@
 # Testing
 
+## Player-Gated Launch Sequence V0.27.2 Manual Test
+
+Prerequisites: install version 0.27.2 in a portrait physical-device development build. Test once in English and once in French, once with application preparation deliberately slow, once with preparation already complete before the prompt, and once with iOS Reduce Motion enabled. No network or location permission is required for the presentation itself; a populated profile provides the strongest loading branch.
+
+1. Cold-launch and observe the shared artwork through its native-to-React handoff. Expected: the root overlay appears before database, font, or map readiness can gate it and receives one clean 1000ms budget from the JavaScript runtime launch epoch—no subtitle, version, spinner, loading row, or start prompt during that budget. If a slow development bundle or native handoff already consumes the second, the subtitle starts immediately when the React artwork decodes; there is no second post-handoff pause.
+2. After the hold, watch the subtitle. Expected: cyan Walk fades/rises first, gold Explore overlaps shortly afterward, and the parchment Reveal phrase completes the native sequence in roughly 1050ms. There is no random-letter pause or whole-sentence pop.
+3. After the subtitle completes, count the quiet beat. Expected: approximately 500ms later, Press to start fades in and begins its restrained pulse. The six-point version is independently visible in the safe bottom-right corner. No loading message has appeared.
+4. With preparation still incomplete, press once. Expected: the prompt immediately becomes the localized loading row on the same retained splash. Further taps do nothing. When readiness completes, the entire splash—including subtitle, loading row, and version—fades slowly over roughly 800ms to reveal the prepared map automatically.
+5. Relaunch with preparation already complete before pressing. Expected: pressing skips the loading row and begins the same 800ms fade immediately. The map accepts input only after the fading overlay has been dismissed, and the transition occurs exactly once.
+6. Repeat with readiness completing just before, during, and just after the press. Expected: each race takes exactly one branch, produces exactly one fade and dismissal, and never flashes the loading row before player input.
+7. Enable Reduce Motion and relaunch. Expected: the one-second launch-wide clean-background budget and half-second quiet beat remain; the subtitle appears in its complete state, Press to start remains steady rather than pulsing, and either readiness branch still uses the requested opacity fade into the map.
+8. Repeat on the narrowest supported iPhone and an iPad portrait canvas with larger text and VoiceOver. Expected: the phrase row remains fitted and unclipped, the version stays above the safe-area inset at the extreme right, focus cannot reach the prompt before it is visible, and the loading row is announced only after activation.
+
+Automated checks cover root ownership before the application-content gate, upward MapScreen readiness, the shared JPEG and dimensions, image-decode gate, runtime-origin 1000ms budget and zero-remaining-time branch, three real native phrase nodes, 1050ms native-driver stagger, 500ms prompt delay, post-press-only loading state, ready/unready press branches, idempotent 800ms root fade, responsive phrase sizing, independent six-point safe-corner version, pulse gating, Reduce Motion wiring, type safety, and the iOS Expo bundle. Physical-device verification remains required for perceived timing under real startup load, fade compositing over MapKit, VoiceOver announcement timing, safe-area placement, and native-to-React continuity.
+
+## District Expedition Variety V0.25.0 Manual Test
+
+Prerequisites: install version 0.25.0 in a physical-device development build with foreground location allowed. Select an exact official level-9 district with at least two unfinished cached OSM streets and two uncollected cached landmark medals; also prepare a district with no cached street or medal opportunities. Stop any active recording before accepting missions. Network access is needed only to cache missing boundary, street, MapKit, or medal data; repeat the persistence portion offline.
+
+1. Open Expeditions in the opportunity-rich district. Expected: Today's Choices contains exactly five cards with unique titles, each rule is stated explicitly in the selected language, and every card still advertises one seal worth 200 Explorer Points.
+2. Close and reopen the journal, then force-close and relaunch on the same local date. Expected: the same five kinds, targets, order, and district/date heading return offline because the shuffle is deterministic.
+3. Accept all five choices. Expected: all five move independently into Active Expeditions; accepting remains disabled during a recording, and missions retained from previous days or other districts remain listed rather than being replaced.
+4. Complete the available qualifying evidence in finalized walks. For cell variants, verify only genuinely new post-acceptance district cells count and that adjacency, direction, sector, boundary, central, or outer-area wording matches the credited cells. For a staged card, satisfy only one requirement and reopen the journal. Expected: progress advances by exactly one stage and does not complete until every stated stage is satisfied.
+5. Complete a loop-based card, then Stop and save. Expected: provisional live enclosure evidence does not finish the mission before finalization; afterward the loop stage advances once. Repeat with a discarded underfilled recording. Expected: discarded evidence does not count. A Double Enclosure card requires qualifying loops on two finalized walks.
+6. Complete a street and collect a medal after acceptance. Expected: only a street reaching its durable 90% timestamp and only a newly acquired medal anchored inside the selected district count. Completing one piece of evidence may advance multiple accepted combination cards, but each card awards at most one permanent seal.
+7. Finish one complete mission. Expected: its seal is added once, Explorer Score rises by exactly 200, and the `EXPEDITION COMPLETE` stamp shows `+200 PTS`. Reopening and relaunching neither removes the seal nor repeats the award.
+8. Change the device date to the next local day or repeat after local midnight, then reopen Expeditions. Expected: five newly shuffled choices appear for the selected district while every unfinished accepted mission from the prior day remains active with unchanged progress.
+9. Open the district with no cached street or medal opportunities. Expected: it still receives five unique viable cell/loop choices; street, medal, Field Triad, and Grand Tour cards are absent. A district with exactly one unfinished street or medal never offers the corresponding pair mission.
+10. Upgrade a profile that already opened a three-choice day on an older build. Expected: the original choices and any accepted progress remain intact, two non-duplicate choices fill slots four and five, and no seal or progress is reset.
+11. Export and verify Backup V5 with several new kinds active and at least one completed, restore it, then relaunch offline. Expected: all kind names, choices, progress stages, loop evidence, seals, and Explorer Points return exactly once.
+
+Automated checks cover type safety, the exact 25-kind catalogue, deterministic five-choice generation, day-to-day reshuffling, unique kinds and slots, opportunity filtering, migration-safe filling of older three-choice days, catalogue reachability, expanded finalized-loop evidence, backup kind validation, geometry regressions, documentation consistency, and the iOS Expo bundle. Physical-device verification remains required for GPS evidence, native journal scrolling/layout, local-midnight behavior, reward audio/haptics, real MapKit/OSM opportunity data, and Files-based Backup V5 restore.
+
+## Map Return and Active-Walk HUD V0.24.0 Manual Test
+
+Prerequisites: install version 0.24.0 on a portrait iPhone development build. Keep one objective selected, allow the app to begin a short test walk, and repeat the motion checks once with iOS Reduce Motion enabled.
+
+1. Launch, enter the map, and touch the map once. Expected: the enlarged title contracts to its compact state.
+2. Open each main Atlas destination in turn and return through the Map tab, page Back action, selected-tab return, and one completed edge swipe. Expected: every genuine return enlarges the map title again; it stays enlarged until the next direct map touch, which contracts it. Tapping the already-selected Map tab while the map is visible does not replay the effect.
+3. Start a walk while the title is either enlarged or compact. Expected: over one coordinated roughly 280ms transition, the title fades and collapses completely, the medal rail with its objective flag and the visible objective ledger move upward, and the Field Log moves down until it meets the fixed tab dock. The dock stays usable and no HUD surface overlaps another.
+4. Navigate to an Atlas page and back while the walk remains active. Expected: the title remains hidden and the compact active-walk layout remains stable; returning does not reserve blank title space.
+5. Stop and save the walk. Expected: the normal idle spacing returns and the compact title reappears rather than expanding. A later Atlas-to-map return enlarges it normally.
+6. Repeat steps 2–5 with Reduce Motion enabled and with the objective ledger both shown and hidden. Expected: the same final layouts appear immediately without transition travel, the objective flag remains usable, and the map-centered stamp stays within the measured free space.
+
+Automated coverage verifies Atlas-return reset gating, already-selected Map behavior, recording-forced compact state, coordinated 280ms layout progress, zero-height/zero-opacity active title, Field Log dock-gap removal, Reduce Motion wiring, type safety, and iOS bundling. Physical-device verification remains required for perceived animation smoothness, safe-area placement, MapKit touch timing, and the exact map-space gain.
+
+## Mapbound Splash Visual Baseline
+
+Prerequisites: install the current version on a portrait iPhone development build. Test once in English and once in French; no location permission or network is required to inspect the initial presentation. Use the Player-Gated Launch Sequence test above for exact timing and readiness branches.
+
+1. Cold-launch the app. Expected: the native splash uses the new dark Mapbound coastline artwork without showing the former Street Explorer image, distorting or cropping the baked logo, or flashing a mismatched background color.
+2. Wait for the in-app launch layer. Expected: the same aspect-ratio-preserving artwork remains visually stable without a width change while the localized subtitle appears beneath the Mapbound title bar. English reads `Walk. Explore. Reveal your city.`; French reads `Marchez. Explorez. Révélez votre ville.`
+3. Inspect the subtitle at normal and larger system text sizes. Expected: Walk/Marchez is cyan, Explore/Explorez is gold, the final phrase is parchment, and the phrases have balanced spacing. The full sentence stays centered below the decorative rule rather than overlapping the title or rule, remains on one line through bounded font scaling, and its shadow stays legible without covering the skyline.
+4. Confirm the artwork receives one clean launch-wide second without restarting that delay when React takes over, then the localized subtitle reveals and Press to start appears after the half-second quiet beat. Expected: preparation remains silent and no loading row appears before the player presses.
+5. Press once. Expected: an already prepared map begins the slow fade immediately; unfinished preparation replaces the prompt with the localized loading row, retains the splash, and begins the same fade automatically when ready. The independent half-size version remains inside the safe bottom-right corner throughout.
+6. Repeat on the narrowest supported phone and an iPad portrait layout. Expected: the logo, subtitle, coastline, bottom action, and version remain visible; note any unacceptable stretch or crop for a later device-specific asset pass.
+
+Automated coverage verifies the JPEG signature and 1320x2868 dimensions, shared native/in-app asset wiring, localized subtitle keys, type safety, and iOS bundling. Physical-device verification remains required for native-to-React visual continuity, exact typography placement, safe-area behavior, and perceived JPEG quality on a real display.
+
+## Quality Settings V0.23.13 Manual Test
+
+Prerequisites: install version 0.23.13 on a physical iPhone, begin with device sound and haptics available, and keep one selectable district plus one pending or testable reward available. No network is required once the map area is cached.
+
+1. Open Options. Expected: Appearance offers only Explorator and Daylight; Custom is absent. Feedback offers separate Sound effects and Haptics switches, both enabled on a new or upgraded installation that has never changed them.
+2. Switch between Explorator and Daylight. Expected: system status-bar icons use a light foreground over Explorator and a dark foreground over Daylight, while the native map and all app-owned surfaces retain their established palettes.
+3. Disable Sound effects, close Options, navigate into and out of Atlas pages, focus a saved route, select a district, and trigger a reward where practical. Expected: no page, ink, reward, or medal cue plays; every navigation, animation, stamp, award, and Continue action still completes normally.
+4. Re-enable Sound effects and repeat one page transition plus one stamp or reward. Expected: their normal cues resume immediately without restarting the app or replaying feedback suppressed while disabled.
+5. Disable Haptics, long-press a district, trigger a stamp or medal presentation, and complete the associated action. Expected: no selection, impact, or success haptic occurs and the complete visual/gameplay flow remains available. Re-enable Haptics and confirm the next eligible action vibrates normally.
+6. Set the two switches to different values, force-close, and relaunch. Expected: each value restores independently. Repeat with the inverse pair and confirm persistence again.
+7. With VoiceOver enabled, revisit Feedback. Expected: each full row is announced as a switch with its localized label and checked state; the rows remain usable at larger text sizes.
+8. Run `npm test`. Expected: typecheck and every focused regression suite run in sequence, stop on the first failure, and complete successfully when the tree is healthy.
+
+Automated coverage verifies default-enabled persistence, immediate feedback gates, themed status-bar wiring, the two-mode appearance contract, accessible switches, the repaired Wikipedia reader assertion, and the fail-fast aggregate command. Physical-device verification remains required for actual sound suppression, haptic suppression, status-bar contrast, and persistence across native relaunch.
+
 ## Medal Unlock Orchestral Cue V0.23.12 Manual Test
 
 Prerequisites: use a physical-device development build upgraded to v0.23.12, enable device audio and haptics, choose a safe listening volume, and prepare at least two pending medal celebrations or test landmarks that can be unlocked. Have headphones or a stereo speaker available, and optionally play a podcast or music in another app.
@@ -258,6 +332,9 @@ For development-build setup, see [Development Build](DEVELOPMENT_BUILD.md).
 ## Automated Checks
 
 ```powershell
+npm test
+
+# Focused checks can also be run individually:
 npm run typecheck
 npm run test:backup
 npm run test:docs
@@ -269,6 +346,8 @@ npm run test:player
 npm run test:wikipedia
 npx expo install --check
 ```
+
+`npm test` is the standard fail-fast aggregate: it runs typecheck plus every focused regression command below and stops at the first failure. `npx expo install --check` remains a separate SDK/dependency compatibility check because it may consult Expo package metadata.
 
 `test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map annotation, the 170ms opacity-only frame cadence, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the disabled native location cursor and game-owned player presentation, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
@@ -283,11 +362,11 @@ npx expo install --check
 
 `test:docs` verifies synchronized package/lock/Expo versions and platform build declarations, the newest README/changelog release, required context files and links, recent catalogue/reader/score/appearance/backup claims, current development-build guidance, and the historical warning plus shipped-contract summary in the original medal design record.
 
-`test:expeditions` verifies deterministic three-choice generation, local-day rollover, viable fallback choices, one-active database enforcement, finalized-walk loop evidence, the aggregate permanent-seal query, retroactive 200-point scoring and reward-stamp wiring, map/HUD behavior, and backup/restore/delete-all preservation.
+`test:expeditions` verifies the 25-kind catalogue, deterministic five-choice generation and day-to-day reshuffling, unique slots/kinds, opportunity-aware fallback choices, upgrade filling for older three-choice days, catalogue reachability, multiple-active database behavior, expanded finalized-walk loop evidence, the aggregate permanent-seal query, retroactive 200-point scoring and reward-stamp wiring, map/HUD behavior, and backup/restore/delete-all preservation.
 
-`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, all three persisted appearance choices, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, explicit Daylight gold/parchment stamp contrast overrides, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
+`test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, the persisted Explorator/Daylight appearance choices, themed status-bar foreground, default-enabled persisted sound/haptic preferences, immediate feedback gates, accessible switch semantics, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, explicit Daylight gold/parchment stamp contrast overrides, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
 
-`test:medals` verifies the configured replacement splash PNG, active-city real-time/pending-recording safety wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the complete metropolitan top-100 whole-commune ranking, Paris's 20-arrondissement coverage, Lyon's balanced outer-district expansion, 875-medal integrity, lazy manifest loading, unique city relations and medal ids, finite reviewed anchors, spatial/versioned historical scans, no eager startup seeding, direct expedition queries, objective-city and parent-district mapping, gameplay-equivalent closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
+`test:medals` verifies the configured lightweight 1320x2868 splash JPEG plus localized live subtitle wiring, active-city real-time/pending-recording safety wiring, the 3D flight-to-tab presentation, permanent Unlocked/Locked collection sections, the city medal HUD, the complete metropolitan top-100 whole-commune ranking, Paris's 20-arrondissement coverage, Lyon's balanced outer-district expansion, 875-medal integrity, lazy manifest loading, unique city relations and medal ids, finite reviewed anchors, spatial/versioned historical scans, no eager startup seeding, direct expedition queries, objective-city and parent-district mapping, gameplay-equivalent closure, the 80m minimum, strict interior anchors, the 150,000m2 cap, missing-accuracy compatibility, and eligibility over previously mapped ground.
 
 `test:wikipedia` verifies selected-language and alternate-language Wikidata sitelinks, conservative title confidence, same-language search fallback, HTTPS Wikipedia-only navigation, edit/Special/external blocking, unlocked-only interaction wiring, lazy native-module guarding, default-browser fallback, and Reduce Motion support.
 
@@ -330,15 +409,15 @@ Automated coverage already validates the exact supplied GPX endpoints against th
 
 Prerequisites: run the 0.16.18 bundle on an iPhone with foreground location allowed and at least one saved route. Keep network access for uncached MapKit tiles, then repeat the core switch once offline with an already cached area. Test at normal and larger text sizes and enable VoiceOver for the accessibility step.
 
-1. Launch an upgraded install and open Options. Expected: Appearance offers Explorator, Daylight, and Custom as radio choices; Explorator is selected unless another valid mode was previously saved, and its map/HUD remain visually identical to the established dark atlas.
+1. Launch an upgraded install and open Options. Expected: Appearance offers Explorator and Daylight as radio choices; Explorator is selected unless Daylight was previously saved, and a removed legacy Custom value safely falls back to Explorator. The map/HUD remain visually identical to the established dark atlas.
 2. Choose Daylight without closing Options. Expected: the Options page immediately becomes a warm high-contrast light surface, the status bar and every label remain readable, and returning to the map shows light standard MapKit with darker high-contrast routes, exploration fills, boundaries, controls, and markers.
 3. Open Details, History and a saved recording, Completion, Medals, diagnostics, Stop confirmation, and the post-recording summary where practical. Expected: every screen, card, button, text hierarchy, loading state, and dialog uses the Daylight palette; semantic red/green/orange GPS and destructive states remain distinct and legible.
-4. Return to Options and choose Custom. Expected: Custom is marked selected and its explanation says the palette will be defined later; the app intentionally displays Explorator visuals rather than an incomplete third color scheme. Switch among all three modes repeatedly and confirm there is no stale mixed light/dark surface.
-5. Leave Custom selected, force-close, and relaunch. Expected: Custom remains selected and the Explorator fallback renders from the first mounted map screen. Select Daylight, force-close again, and confirm Daylight and the light native map are restored on the next launch.
+4. Switch repeatedly between Explorator and Daylight. Expected: no stale mixed light/dark surface appears and the status-bar foreground remains readable after each change.
+5. Leave Daylight selected, force-close, and relaunch. Expected: Daylight and the light native map are restored before the map becomes interactive. Repeat with Explorator.
 6. Enable VoiceOver and revisit Appearance. Expected: each choice is announced as a radio control with its label, description, and checked state; the complete row is tappable. With larger text, descriptions wrap without clipping or overlapping the checkmark.
 7. Disable network access over a cached map area and switch modes. Expected: all app-owned UI and cached map presentation still switch immediately; missing uncached tiles may remain a normal MapKit/network limitation, but the selector stays responsive and the saved choice survives reopening.
 
-Automated coverage checks the three-mode contract, SQLite persistence wiring, app-wide paired style registration, accessible selector semantics, and native map mode/remount logic. Physical-device verification remains required for direct-sunlight readability, native MapKit tile appearance, texture contrast, font rasterization, and relaunch behavior.
+Automated coverage checks the two-mode contract, legacy Custom fallback, SQLite persistence wiring, themed status-bar foreground, app-wide paired style registration, accessible selector semantics, and native map mode/remount logic. Physical-device verification remains required for direct-sunlight readability, native MapKit tile appearance, texture contrast, font rasterization, status-bar contrast, and relaunch behavior.
 
 ## Lightly Inset Map Stripes V0.16.17 iPhone Manual Test
 
@@ -571,13 +650,13 @@ Prerequisites: run the Street Explorer 0.15.1 JavaScript bundle in a compatible 
 Startup regressions: when testing an older development binary against the current JavaScript bundle, confirm startup succeeds even if medal sound or haptics are unavailable. In a diagnostic build where database initialization is deliberately made to fail, confirm a dark retry screen appears instead of an indefinite white screen.
 
 1. Open the Street Explorer development build.
-2. Confirm the `loading-screen2.png` artwork appears for the native splash and remains as the branded loading overlay while the native map, saved records, unfinished-recording check, permission state, and bounded initial-location attempt are pending.
-3. Confirm `Press here to start` appears only after preloading completes and the launch screen remains visible until it is tapped.
-4. Tap `Press here to start` and confirm the preloaded map opens immediately.
+2. Confirm the `loading-screen3.jpg` Mapbound artwork appears for the native splash and remains as the branded in-app launch layer while the native map, saved records, unfinished-recording check, permission state, and bounded initial-location attempt prepare underneath it.
+3. Confirm the complete artwork receives one text-free second across launch without repeating the delay at the React handoff, the localized Walk/Explore/Reveal subtitle reveals beneath the logo, and `Press here to start` appears after the half-second quiet beat regardless of whether preparation has completed. No loading message appears before interaction.
+4. Tap `Press here to start`. Expected: a ready launch skips the loading row and slowly fades to the map immediately; an unfinished launch shows the localized loading row on the retained splash, then automatically performs the same slow fade as soon as preparation completes.
 5. Open and close Details, History, Completion, and Options in turn; after each one, confirm the map gestures and bottom controls still respond.
 6. With foreground permission granted, confirm the player icon appears before recording and the map centers on the current location.
 7. If no fix is available, confirm startup resolves after the bounded attempt; a later fix may center the map unless you already moved it.
-8. Confirm the version number appears under the transparent `title.png` logo.
+8. Confirm the half-size version number remains independently aligned to the safe bottom-right corner and the matching transparent `title.png` Mapbound logo appears on the map.
 9. Tap Start and confirm the button immediately shows Starting, then changes to Stop without waiting for step or background-service setup.
 10. Confirm repeated taps while Starting do not create duplicate recordings.
 11. Move at least 20-30 meters.
@@ -700,7 +779,7 @@ Prerequisites: run Street Explorer 0.16.25 in a compatible iOS development clien
 1. Inspect the bottom icon bar. Expected: a permanent compass Expeditions target appears directly with Details, History, Completion, and Medals; Options remains separated at the far edge, and every inactive target remains at least 44 points.
 2. Tap Expeditions with no district objective. Expected: its icon alone gains the engraved gold selected state and localized label, the full-screen Atlas journal opens over the map, and an explicit no-district explanation appears instead of a blank or loading screen.
 3. Tap Select a district. Expected: Expeditions closes and Completion opens, preserving the normal Atlas transition and back behavior. Select an official district objective.
-4. Tap Expeditions again. Expected: the journal opens directly with that district’s three daily choices. Close it using both the header Back action and the iOS left-edge swipe; each returns to the live map and collapses the compass destination to its icon.
+4. Tap Expeditions again. Expected: the journal opens directly with that district’s five daily choices. Close it using both the header Back action and the iOS left-edge swipe; each returns to the live map and collapses the compass destination to its icon.
 5. Tap the expedition progress line in the district objective HUD. Expected: it opens the same journal and state as the permanent compass destination, with no duplicate modal or divergent progress.
 
 Automated UI coverage verifies permanent dock wiring, selected-state styling, the shared Atlas gesture, and the no-district Completion handoff. Physical-device verification remains required for icon spacing, localized expanded-label fit, touch comfort, and native modal gestures across supported iPhone widths.

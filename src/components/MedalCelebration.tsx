@@ -14,6 +14,10 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { AppLanguage } from "../i18n";
+import {
+  isSoundFeedbackEnabled,
+  playSuccessHaptic
+} from "../services/feedbackPreferences";
 import { CollectedMedal } from "../types/medal";
 
 export type MedalFlightTarget = {
@@ -62,23 +66,21 @@ export function MedalCelebration({
     );
 
     let audioPlayer: { play: () => void; release: () => void } | null = null;
-    void import("expo-audio")
-      .then(({ createAudioPlayer }) => {
-        if (!active) {
-          return;
-        }
+    if (isSoundFeedbackEnabled()) {
+      void import("expo-audio")
+        .then(({ createAudioPlayer }) => {
+          if (!active || !isSoundFeedbackEnabled()) {
+            return;
+          }
 
-        audioPlayer = createAudioPlayer(
-          require("../../assets/sounds/medal-chime.wav")
-        );
-        audioPlayer.play();
-      })
-      .catch(() => undefined);
-    void import("expo-haptics")
-      .then((Haptics) =>
-        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
-      )
-      .catch(() => undefined);
+          audioPlayer = createAudioPlayer(
+            require("../../assets/sounds/medal-chime.wav")
+          );
+          audioPlayer.play();
+        })
+        .catch(() => undefined);
+    }
+    void playSuccessHaptic();
     void AccessibilityInfo.isReduceMotionEnabled().then((reduced) => {
       if (!active) {
         return;

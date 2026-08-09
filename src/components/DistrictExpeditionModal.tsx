@@ -89,8 +89,8 @@ export function DistrictExpeditionModal({
               </Text>
               <Text style={styles.helpText}>
                 {isFrench
-                  ? "Sélectionnez un quartier officiel dans Progression pour consulter ses trois expéditions du jour."
-                  : "Select an official district in Completion to see its three daily expeditions."}
+                  ? "Sélectionnez un quartier officiel dans Progression pour consulter ses cinq expéditions du jour."
+                  : "Select an official district in Completion to see its five daily expeditions."}
               </Text>
               <TouchableOpacity
                 accessibilityRole="button"
@@ -273,12 +273,54 @@ export function getExpeditionTitle(
   switch (expedition.kind) {
     case "explore_cells":
       return isFrench ? "Tracer de nouvelles cases" : "Chart new cells";
+    case "frontier_push":
+      return isFrench ? "Repousser la frontière" : "Push the frontier";
+    case "seal_breach":
+      return isFrench ? "Combler la brèche" : "Seal the breach";
+    case "dense_survey":
+      return isFrench ? "Relevé dense" : "Dense survey";
+    case "sector_sweep":
+      return isFrench ? "Mosaïque du quartier" : "District mosaic";
+    case "northward_scout":
+      return isFrench ? "Éclaireur du nord" : "Northward scout";
+    case "southward_scout":
+      return isFrench ? "Éclaireur du sud" : "Southward scout";
+    case "eastward_scout":
+      return isFrench ? "Éclaireur de l'est" : "Eastward scout";
+    case "westward_scout":
+      return isFrench ? "Éclaireur de l'ouest" : "Westward scout";
+    case "boundary_scout":
+      return isFrench ? "Patrouille frontalière" : "Border scout";
+    case "district_heart":
+      return isFrench ? "Cœur du quartier" : "District heart";
+    case "outer_reach":
+      return isFrench ? "Confins du quartier" : "Outer reach";
     case "complete_street":
       return isFrench ? "Achever une rue" : "Complete a street";
+    case "complete_street_pair":
+      return isFrench ? "Deux rues à achever" : "Finish two streets";
+    case "street_and_cells":
+      return isFrench ? "Rue et territoire" : "Street and territory";
     case "close_loop":
       return isFrench ? "Fermer une boucle" : "Close an exploration loop";
+    case "double_loop":
+      return isFrench ? "Double enceinte" : "Double enclosure";
+    case "loop_and_cells":
+      return isFrench ? "Boucle et horizon" : "Loop and horizon";
+    case "loop_and_frontier":
+      return isFrench ? "Boucle frontalière" : "Frontier loop";
+    case "street_and_loop":
+      return isFrench ? "Rue en circuit" : "Street circuit";
     case "collect_medal":
       return isFrench ? "Découvrir un repère" : "Discover a landmark";
+    case "collect_medal_pair":
+      return isFrench ? "Deux repères" : "Two landmarks";
+    case "medal_and_cells":
+      return isFrench ? "Repère et territoire" : "Landmark and territory";
+    case "field_triad":
+      return isFrench ? "Triade de terrain" : "Field triad";
+    case "grand_tour":
+      return isFrench ? "Grand tour du cartographe" : "Cartographer's grand tour";
   }
 }
 
@@ -288,25 +330,98 @@ function getExpeditionDescription(expedition: DistrictExpedition, isFrench: bool
       return isFrench
         ? `${expedition.target} nouvelles cases dans ce quartier`
         : `${expedition.target} new cells inside this district`;
+    case "frontier_push":
+      return isFrench ? `${expedition.target} nouvelles cases adjacentes au territoire connu` : `${expedition.target} new cells beside known territory`;
+    case "seal_breach":
+      return isFrench ? `${expedition.target} cases entourées par au moins trois cases connues` : `${expedition.target} cells with at least three known neighbors`;
+    case "dense_survey":
+      return isFrench ? `${expedition.target} nouvelles cases reliées à deux nouvelles voisines` : `${expedition.target} new cells linked to two new neighbors`;
+    case "sector_sweep":
+      return isFrench ? `Explorez ${expedition.target} des neuf secteurs du quartier` : `Explore ${expedition.target} of the district's nine sectors`;
+    case "northward_scout":
+      return isFrench ? `${expedition.target} nouvelles cases au nord du centre` : `${expedition.target} new cells north of the district center`;
+    case "southward_scout":
+      return isFrench ? `${expedition.target} nouvelles cases au sud du centre` : `${expedition.target} new cells south of the district center`;
+    case "eastward_scout":
+      return isFrench ? `${expedition.target} nouvelles cases à l'est du centre` : `${expedition.target} new cells east of the district center`;
+    case "westward_scout":
+      return isFrench ? `${expedition.target} nouvelles cases à l'ouest du centre` : `${expedition.target} new cells west of the district center`;
+    case "boundary_scout":
+      return isFrench ? `${expedition.target} nouvelles cases à moins de 45 m de la limite` : `${expedition.target} new cells within 45 m of the boundary`;
+    case "district_heart":
+      return isFrench ? `${expedition.target} nouvelles cases dans la zone centrale` : `${expedition.target} new cells in the central district area`;
+    case "outer_reach":
+      return isFrench ? `${expedition.target} nouvelles cases dans la ceinture extérieure` : `${expedition.target} new cells in the district's outer belt`;
     case "complete_street":
       return isFrench ? "Atteignez 90 % d'une rue du quartier" : "Reach 90% on a district street";
+    case "complete_street_pair":
+      return isFrench ? "Atteignez 90 % sur deux rues du quartier" : "Reach 90% on two district streets";
+    case "street_and_cells":
+      return isFrench ? "12 nouvelles cases et une rue achevée" : "Chart 12 cells and complete one street";
     case "close_loop":
       return isFrench ? "Créez une nouvelle zone fermée valide" : "Create one new valid enclosed area";
+    case "double_loop":
+      return isFrench ? "Fermez une boucle lors de deux marches finalisées" : "Close a loop on two finalized walks";
+    case "loop_and_cells":
+      return isFrench ? "12 nouvelles cases et une boucle valide" : "Chart 12 cells and close one valid loop";
+    case "loop_and_frontier":
+      return isFrench ? "8 cases frontalières et une boucle valide" : "Chart 8 frontier cells and close one valid loop";
+    case "street_and_loop":
+      return isFrench ? "Achevez une rue et fermez une boucle" : "Complete one street and close one loop";
     case "collect_medal":
       return isFrench ? "Obtenez une médaille située dans ce quartier" : "Earn a medal located in this district";
+    case "collect_medal_pair":
+      return isFrench ? "Obtenez deux médailles situées dans ce quartier" : "Earn two medals located in this district";
+    case "medal_and_cells":
+      return isFrench ? "12 nouvelles cases et une médaille" : "Chart 12 cells and earn one medal";
+    case "field_triad":
+      return isFrench ? "15 cases, une rue et une boucle" : "Chart 15 cells, complete a street, and close a loop";
+    case "grand_tour":
+      return isFrench ? "20 cases, une rue, une boucle et une médaille" : "Chart 20 cells, finish a street, close a loop, and earn a medal";
   }
 }
 
 function getExpeditionIcon(kind: DistrictExpeditionKind) {
   switch (kind) {
     case "explore_cells":
+    case "dense_survey":
       return "grid-outline" as const;
+    case "frontier_push":
+    case "outer_reach":
+      return "expand-outline" as const;
+    case "seal_breach":
+      return "scan-circle-outline" as const;
+    case "sector_sweep":
+    case "district_heart":
+      return "map-outline" as const;
+    case "northward_scout":
+      return "arrow-up-outline" as const;
+    case "southward_scout":
+      return "arrow-down-outline" as const;
+    case "eastward_scout":
+      return "arrow-forward-outline" as const;
+    case "westward_scout":
+      return "arrow-back-outline" as const;
+    case "boundary_scout":
+      return "navigate-outline" as const;
     case "complete_street":
+    case "complete_street_pair":
+    case "street_and_cells":
       return "trail-sign-outline" as const;
     case "close_loop":
+    case "double_loop":
+    case "loop_and_cells":
+    case "loop_and_frontier":
+    case "street_and_loop":
       return "sync-circle-outline" as const;
     case "collect_medal":
+    case "collect_medal_pair":
+    case "medal_and_cells":
       return "medal-outline" as const;
+    case "field_triad":
+      return "layers-outline" as const;
+    case "grand_tour":
+      return "trophy-outline" as const;
   }
 }
 

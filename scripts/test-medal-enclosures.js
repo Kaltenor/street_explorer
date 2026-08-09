@@ -99,7 +99,15 @@ const launchOverlaySource = fs.readFileSync(
   path.resolve(__dirname, "../src/components/LaunchLoadingOverlay.tsx"),
   "utf8"
 );
-const splashPath = path.resolve(__dirname, "../assets/loading-screen2.png");
+const appSource = fs.readFileSync(
+  path.resolve(__dirname, "../App.tsx"),
+  "utf8"
+);
+const i18nSource = fs.readFileSync(
+  path.resolve(__dirname, "../src/i18n.ts"),
+  "utf8"
+);
+const splashPath = path.resolve(__dirname, "../assets/loading-screen3.jpg");
 const splashBytes = fs.readFileSync(splashPath);
 const medalServiceSource = fs.readFileSync(
   path.resolve(__dirname, "../src/services/medalEnclosure.ts"),
@@ -130,13 +138,103 @@ function assert(condition, message) {
   console.log("PASS " + message);
 }
 
+function readJpegDimensions(bytes) {
+  let offset = 2;
+
+  while (offset + 9 < bytes.length) {
+    if (bytes[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marker = bytes[offset + 1];
+    const segmentLength = bytes.readUInt16BE(offset + 2);
+
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+      return {
+        height: bytes.readUInt16BE(offset + 5),
+        width: bytes.readUInt16BE(offset + 7)
+      };
+    }
+
+    offset += 2 + segmentLength;
+  }
+
+  return null;
+}
+
+const splashDimensions = readJpegDimensions(splashBytes);
+
 assert(
-  appConfig.expo.splash.image === "./assets/loading-screen2.png" &&
-    launchOverlaySource.includes('require("../../assets/loading-screen2.png")') &&
-    splashBytes.subarray(0, 8).toString("hex") === "89504e470d0a1a0a" &&
-    splashBytes.readUInt32BE(16) === 1320 &&
-    splashBytes.readUInt32BE(20) === 2868,
-  "the updated portrait PNG is imported as the Expo splash asset"
+  appConfig.expo.splash.image === "./assets/loading-screen3.jpg" &&
+    launchOverlaySource.includes('require("../../assets/loading-screen3.jpg")') &&
+    splashBytes.subarray(0, 2).toString("hex") === "ffd8" &&
+    splashDimensions?.width === 1320 &&
+    splashDimensions?.height === 2868 &&
+    launchOverlaySource.includes("strings.launch.taglineWalk") &&
+    launchOverlaySource.includes("strings.launch.taglineExplore") &&
+    launchOverlaySource.includes("strings.launch.taglineReveal") &&
+    launchOverlaySource.includes('left: "31%"') &&
+    launchOverlaySource.includes('right: "5%"') &&
+    launchOverlaySource.includes('top: "17%"') &&
+    launchOverlaySource.includes('resizeMode="contain"') &&
+    launchOverlaySource.includes('letterSpacing: 1.1') &&
+    launchOverlaySource.includes("numberOfLines={1}") &&
+    launchOverlaySource.includes("windowWidth * 0.028") &&
+    launchOverlaySource.includes('color: "#67c8c2"') &&
+    launchOverlaySource.includes('color: "#f5c451"') &&
+    launchOverlaySource.includes('color: "#f3e5bd"') &&
+    i18nSource.includes('taglineWalk: "Walk."') &&
+    i18nSource.includes('taglineWalk: "Marchez."'),
+  "the lightweight portrait splash and localized live tagline are wired"
+);
+assert(
+  launchOverlaySource.includes("BACKGROUND_HOLD_DURATION_MS = 1000") &&
+    launchOverlaySource.includes("TAGLINE_REVEAL_DURATION_MS = 1050") &&
+    launchOverlaySource.includes("START_PROMPT_DELAY_MS = 500") &&
+    launchOverlaySource.includes("SPLASH_FADE_DURATION_MS = 800") &&
+    launchOverlaySource.includes("LAUNCH_SEQUENCE_STARTED_AT_MS") &&
+    launchOverlaySource.includes("globalThis.performance?.timeOrigin") &&
+    launchOverlaySource.includes("onLoad={() => setBackgroundLoaded(true)}") &&
+    launchOverlaySource.includes("BACKGROUND_HOLD_DURATION_MS - elapsedLaunchTimeMs") &&
+    launchOverlaySource.includes("remainingHoldTimeMs === 0") &&
+    launchOverlaySource.includes("setBackgroundHoldComplete(true)") &&
+    launchOverlaySource.includes("if (!backgroundHoldComplete)") &&
+    launchOverlaySource.includes("taglineProgress") &&
+    launchOverlaySource.includes("duration: TAGLINE_REVEAL_DURATION_MS") &&
+    launchOverlaySource.includes("toValue: 1") &&
+    launchOverlaySource.includes("useNativeDriver: true") &&
+    (launchOverlaySource.match(/<Animated\.Text/g) ?? []).length === 3 &&
+    launchOverlaySource.includes("getTaglineRevealStyle(taglineProgress, 0, 0.28)") &&
+    launchOverlaySource.includes("getTaglineRevealStyle(taglineProgress, 0.25, 0.58)") &&
+    launchOverlaySource.includes("getTaglineRevealStyle(taglineProgress, 0.55, 0.92)") &&
+    !launchOverlaySource.includes("Array.from(fullTagline).map") &&
+    !launchOverlaySource.includes("setInterval(() =>") &&
+    launchOverlaySource.includes("setStartPromptVisible(true)") &&
+    launchOverlaySource.includes("Animated.timing(footerOpacity") &&
+    launchOverlaySource.includes("Animated.loop(") &&
+    launchOverlaySource.includes("startRequested ? (") &&
+    appSource.includes("<LaunchLoadingOverlay") &&
+    appSource.includes("isReady={isAppContentReady && isMapLaunchReady}") &&
+    appSource.includes("onLaunchReadyChange={setIsMapLaunchReady}") &&
+    !mapScreenSource.includes("<LaunchLoadingOverlay") &&
+    mapScreenSource.includes("onLaunchReadyChange(isLaunchReady)") &&
+    launchOverlaySource.includes("if (isReady) {") &&
+    launchOverlaySource.includes("if (startRequested && isReady)") &&
+    launchOverlaySource.includes("Animated.timing(splashOpacity") &&
+    launchOverlaySource.includes("duration: SPLASH_FADE_DURATION_MS") &&
+    launchOverlaySource.includes("onStartRef.current()") &&
+    launchOverlaySource.includes("useReducedMotionPreference()"),
+  "the in-app splash sequences background, tagline, start prompt, post-press loading, and fade"
+);
+assert(
+  launchOverlaySource.includes("fontSize: 6") &&
+    launchOverlaySource.includes("position: \"absolute\"") &&
+    launchOverlaySource.includes("right: 10") &&
+    launchOverlaySource.includes("Math.max(safeAreaInsets.bottom, 8)") &&
+    launchOverlaySource.indexOf("v{APP_VERSION}") >
+      launchOverlaySource.indexOf("</Animated.View>"),
+  "the half-size version label is independent in the safe bottom-right corner"
 );
 assert(
     mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&

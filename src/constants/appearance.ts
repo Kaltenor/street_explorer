@@ -1,11 +1,10 @@
 import { StyleSheet } from "react-native";
 
-export type AppearanceMode = "explorator" | "daylight" | "custom";
+export type AppearanceMode = "explorator" | "daylight";
 
 export const APPEARANCE_MODES: AppearanceMode[] = [
   "explorator",
-  "daylight",
-  "custom"
+  "daylight"
 ];
 
 let activeAppearanceMode: AppearanceMode = "explorator";

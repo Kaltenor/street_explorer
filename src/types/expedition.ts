@@ -1,8 +1,32 @@
-export type DistrictExpeditionKind =
-  | "close_loop"
-  | "collect_medal"
-  | "complete_street"
-  | "explore_cells";
+export const DISTRICT_EXPEDITION_KINDS = [
+  "explore_cells",
+  "frontier_push",
+  "seal_breach",
+  "dense_survey",
+  "sector_sweep",
+  "northward_scout",
+  "southward_scout",
+  "eastward_scout",
+  "westward_scout",
+  "boundary_scout",
+  "district_heart",
+  "outer_reach",
+  "complete_street",
+  "complete_street_pair",
+  "street_and_cells",
+  "close_loop",
+  "double_loop",
+  "loop_and_cells",
+  "loop_and_frontier",
+  "street_and_loop",
+  "collect_medal",
+  "collect_medal_pair",
+  "medal_and_cells",
+  "field_triad",
+  "grand_tour"
+] as const;
+
+export type DistrictExpeditionKind = typeof DISTRICT_EXPEDITION_KINDS[number];
 
 export type DistrictExpedition = {
   abandonedAt: string | null;

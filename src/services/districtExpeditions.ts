@@ -1,5 +1,8 @@
 import type { CachedZone } from "../database/completionRepository";
-import { getNewExploredCellKeysSince } from "../database/completionRepository";
+import {
+  getExploredCellKeys,
+  getNewExploredCellKeysSince
+} from "../database/completionRepository";
 import {
   countFinalizedLoopEvidence,
   ensureDailyDistrictExpeditions,
@@ -20,11 +23,16 @@ import type {
   DistrictExpeditionDashboard
 } from "../types/expedition";
 import type { OsmStreetSegment } from "../types/street";
-import { explorationCellKeyToCenterCoordinate } from "./explorationArea";
 import {
   buildDailyExpeditionDefinitions,
+  DAILY_DISTRICT_EXPEDITION_COUNT,
   getLocalExpeditionDate
 } from "./expeditionDefinitions";
+import {
+  calculateCellExpeditionProgress,
+  countFrontierCells,
+  countNewCellsInsideDistrict
+} from "./expeditionProgress";
 import { isPointInsideZone } from "./zoneCompletion";
 
 export async function loadDistrictExpeditionDashboard(
@@ -37,14 +45,21 @@ export async function loadDistrictExpeditionDashboard(
   const localDate = getLocalExpeditionDate();
   let choices = await getDailyDistrictExpeditions(district.id, localDate);
 
-  if (choices.length === 0) {
+  if (choices.length < DAILY_DISTRICT_EXPEDITION_COUNT) {
     const opportunities = await getDistrictOpportunities(district);
+    const occupiedSlots = new Set(choices.map((choice) => choice.slot));
+    const missingSlots = Array.from(
+      { length: DAILY_DISTRICT_EXPEDITION_COUNT },
+      (_, index) => index
+    ).filter((slot) => !occupiedSlots.has(slot));
     await ensureDailyDistrictExpeditions({
       definitions: buildDailyExpeditionDefinitions({
         districtId: district.id,
-        hasMedalOpportunity: opportunities.hasMedalOpportunity,
-        hasStreetOpportunity: opportunities.hasStreetOpportunity,
-        localDate
+        excludedKinds: choices.map((choice) => choice.kind),
+        localDate,
+        medalOpportunityCount: opportunities.medalOpportunityCount,
+        slots: missingSlots,
+        streetOpportunityCount: opportunities.streetOpportunityCount
       }),
       districtId: district.id,
       districtName: district.name,
@@ -90,15 +105,19 @@ async function getDistrictOpportunities(district: CachedZone) {
   const stateByStreetId = new Map(
     streetStates.map((state) => [state.streetId, state])
   );
-  const hasStreetOpportunity = streetSegments.some((segment) => {
-    const state = stateByStreetId.get(getStreetId(segment));
-    return state && !state.isComplete && isStreetInsideDistrict(segment, district);
-  });
-  const hasMedalOpportunity = medalCandidates.some((medal) =>
+  const streetOpportunityCount = new Set(
+    streetSegments
+      .filter((segment) => {
+        const state = stateByStreetId.get(getStreetId(segment));
+        return state && !state.isComplete && isStreetInsideDistrict(segment, district);
+      })
+      .map(getStreetId)
+  ).size;
+  const medalOpportunityCount = medalCandidates.filter((medal) =>
     isMedalInsideDistrict(medal, district)
-  );
+  ).length;
 
-  return { hasMedalOpportunity, hasStreetOpportunity };
+  return { medalOpportunityCount, streetOpportunityCount };
 }
 
 async function calculateDistrictExpeditionProgress(
@@ -110,56 +129,142 @@ async function calculateDistrictExpeditionProgress(
   }
 
   switch (expedition.kind) {
-    case "explore_cells": {
-      const cellKeys = await getNewExploredCellKeysSince("walk", expedition.acceptedAt);
-      return cellKeys.filter((cellKey) =>
-        isPointInsideZone(explorationCellKeyToCenterCoordinate(cellKey), district)
-      ).length;
+    case "explore_cells":
+    case "frontier_push":
+    case "seal_breach":
+    case "dense_survey":
+    case "sector_sweep":
+    case "northward_scout":
+    case "southward_scout":
+    case "eastward_scout":
+    case "westward_scout":
+    case "boundary_scout":
+    case "district_heart":
+    case "outer_reach": {
+      const evidence = await getCellEvidence(expedition.acceptedAt);
+      return calculateCellExpeditionProgress({
+        ...evidence,
+        district,
+        kind: expedition.kind
+      });
     }
-    case "complete_street": {
-      const [states, segments] = await Promise.all([
-        getStreetCompletionStreetStates(),
-        getAllStreetSegments()
-      ]);
-      const completedSinceAcceptance = new Set(
-        states
-          .filter(
-            (state) =>
-              state.isComplete &&
-              state.completedAt !== null &&
-              state.completedAt >= expedition.acceptedAt!
-          )
-          .map((state) => state.streetId)
-      );
-      const completedInDistrict = new Set(
-        segments
-          .filter(
-            (segment) =>
-              completedSinceAcceptance.has(getStreetId(segment)) &&
-              isStreetInsideDistrict(segment, district)
-          )
-          .map(getStreetId)
-      );
-      return completedInDistrict.size;
-    }
-    case "collect_medal": {
-      const albumId = getMedalAlbumIdForZone(district);
-      const bounds = getZoneBounds(district);
-
-      if (!albumId || !bounds) {
-        return 0;
-      }
-
-      const medals = await getCollectedMedalsSinceInBounds(
-        albumId,
-        expedition.acceptedAt,
-        bounds
-      );
-      return medals.filter((medal) => isMedalInsideDistrict(medal, district)).length;
-    }
+    case "complete_street":
+    case "complete_street_pair":
+      return getCompletedStreetCount(expedition.acceptedAt, district);
+    case "collect_medal":
+    case "collect_medal_pair":
+      return getCollectedMedalCount(expedition.acceptedAt, district);
     case "close_loop":
+    case "double_loop":
       return countFinalizedLoopEvidence(expedition.id);
+    case "street_and_cells": {
+      const [cellEvidence, streetCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        getCompletedStreetCount(expedition.acceptedAt, district)
+      ]);
+      const cellCount = countNewCellsInsideDistrict(cellEvidence.newCellKeys, district);
+      return Number(cellCount >= 12) + Number(streetCount >= 1);
+    }
+    case "loop_and_cells": {
+      const [cellEvidence, loopCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        countFinalizedLoopEvidence(expedition.id)
+      ]);
+      const cellCount = countNewCellsInsideDistrict(cellEvidence.newCellKeys, district);
+      return Number(cellCount >= 12) + Number(loopCount >= 1);
+    }
+    case "loop_and_frontier": {
+      const [cellEvidence, loopCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        countFinalizedLoopEvidence(expedition.id)
+      ]);
+      const frontierCount = countFrontierCells({ ...cellEvidence, district });
+      return Number(frontierCount >= 8) + Number(loopCount >= 1);
+    }
+    case "street_and_loop": {
+      const [streetCount, loopCount] = await Promise.all([
+        getCompletedStreetCount(expedition.acceptedAt, district),
+        countFinalizedLoopEvidence(expedition.id)
+      ]);
+      return Number(streetCount >= 1) + Number(loopCount >= 1);
+    }
+    case "medal_and_cells": {
+      const [cellEvidence, medalCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        getCollectedMedalCount(expedition.acceptedAt, district)
+      ]);
+      const cellCount = countNewCellsInsideDistrict(cellEvidence.newCellKeys, district);
+      return Number(cellCount >= 12) + Number(medalCount >= 1);
+    }
+    case "field_triad": {
+      const [cellEvidence, streetCount, loopCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        getCompletedStreetCount(expedition.acceptedAt, district),
+        countFinalizedLoopEvidence(expedition.id)
+      ]);
+      const cellCount = countNewCellsInsideDistrict(cellEvidence.newCellKeys, district);
+      return Number(cellCount >= 15) + Number(streetCount >= 1) + Number(loopCount >= 1);
+    }
+    case "grand_tour": {
+      const [cellEvidence, streetCount, loopCount, medalCount] = await Promise.all([
+        getCellEvidence(expedition.acceptedAt),
+        getCompletedStreetCount(expedition.acceptedAt, district),
+        countFinalizedLoopEvidence(expedition.id),
+        getCollectedMedalCount(expedition.acceptedAt, district)
+      ]);
+      const cellCount = countNewCellsInsideDistrict(cellEvidence.newCellKeys, district);
+      return Number(cellCount >= 20) +
+        Number(streetCount >= 1) +
+        Number(loopCount >= 1) +
+        Number(medalCount >= 1);
+    }
   }
+}
+
+async function getCellEvidence(acceptedAt: string) {
+  const [allCellKeys, newCellKeys] = await Promise.all([
+    getExploredCellKeys("walk"),
+    getNewExploredCellKeysSince("walk", acceptedAt)
+  ]);
+  return { allCellKeys, newCellKeys };
+}
+
+async function getCompletedStreetCount(acceptedAt: string, district: CachedZone) {
+  const [states, segments] = await Promise.all([
+    getStreetCompletionStreetStates(),
+    getAllStreetSegments()
+  ]);
+  const completedSinceAcceptance = new Set(
+    states
+      .filter(
+        (state) =>
+          state.isComplete &&
+          state.completedAt !== null &&
+          state.completedAt >= acceptedAt
+      )
+      .map((state) => state.streetId)
+  );
+  return new Set(
+    segments
+      .filter(
+        (segment) =>
+          completedSinceAcceptance.has(getStreetId(segment)) &&
+          isStreetInsideDistrict(segment, district)
+      )
+      .map(getStreetId)
+  ).size;
+}
+
+async function getCollectedMedalCount(acceptedAt: string, district: CachedZone) {
+  const albumId = getMedalAlbumIdForZone(district);
+  const bounds = getZoneBounds(district);
+
+  if (!albumId || !bounds) {
+    return 0;
+  }
+
+  const medals = await getCollectedMedalsSinceInBounds(albumId, acceptedAt, bounds);
+  return medals.filter((medal) => isMedalInsideDistrict(medal, district)).length;
 }
 
 function isStreetInsideDistrict(segment: OsmStreetSegment, district: CachedZone) {

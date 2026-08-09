@@ -7,7 +7,7 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.23.12)
+## Current shipped medal contract (v0.27.2)
 
 - The frozen offline catalogue contains 875 medals across metropolitan France's INSEE 2023 top 100 communes. Paris v2 contains 60 reviewed landmarks covering every arrondissement; Lyon album version 2 contains 44, including four additions in each of arrondissements 3, 4, 6, 7, 8, and 9; Villeurbanne v1 contains 14.
 - Belgium, Germany, Italy, the Netherlands, and Spain are versioned downloadable country packs. Their compact pinned manifest ships with the app; gzip payloads are size- and SHA-256-verified, schema-validated, atomically cached, and reusable offline. A failed download leaves non-medal map hydration available and exposes an explicit retry state.

@@ -1,5 +1,127 @@
 # Changelog
 
+## v0.27.2
+
+Fixed:
+
+- Lifted the React launch presentation above the database, font, and map mount gates, preventing startup preparation from adding several blank seconds before the subtitle and Press to start sequence.
+- Moved launch dismissal ownership to `App` while `MapScreen` reports readiness upward, keeping the map hidden and non-interactive until the same guarded fade completes.
+- Kept all loading feedback strictly player-gated: the loading row can only replace Press to start after a tap, while preparation may continue invisibly underneath the immediate presentation.
+- Prevented a saved-language update during early startup from restarting the subtitle animation and reintroducing delay.
+- Added regression coverage for the root-owned overlay, upward readiness signal, and removal of the late MapScreen-owned overlay.
+- Synchronized version 0.27.2 with iOS build 189 and Android version code 189.
+
+## v0.27.1
+
+Fixed:
+
+- Replaced the post-decode one-second splash hold with a single launch-epoch budget, so time already spent displaying the native artwork is not charged again when the React overlay mounts.
+- Kept the image-decode safety gate while allowing the localized subtitle reveal to begin immediately at handoff whenever startup has already consumed the clean-background second.
+- Added regression coverage for the runtime-origin timestamp, remaining-time calculation, and zero-delay slow-start branch.
+- Synchronized version 0.27.1 with iOS build 188 and Android version code 188.
+
+## v0.27.0
+
+Added:
+
+- Rebuilt the launch presentation as the requested player-gated sequence: one second of clean decoded artwork, the 1050ms localized phrase reveal, a half-second quiet beat, then the pulsing Press to start prompt.
+- Delayed all preparation feedback until player intent. Pressing while preparation is incomplete now replaces the prompt with the localized loading row on the retained splash and automatically continues when ready; pressing after readiness skips that row.
+- Added one guarded 800ms full-splash opacity transition into the already mounted map for both readiness branches, with dismissal and map input occurring only after the fade completes.
+- Preserved the clean timing and final fade under Reduce Motion while publishing subtitle and prompt motion in their accessible final states.
+- Added regression coverage for every sequence duration, prompt/loading gate, readiness race, and idempotent fade path.
+- Synchronized version 0.27.0 with iOS build 187 and Android version code 187.
+
+## v0.26.2
+
+Fixed:
+
+- Replaced the unreliable nested-character launch animation with three real native phrase nodes and a 1050ms staggered opacity/rise reveal, preventing React Native virtual-text batching from withholding the entire sentence until completion.
+- Started the subtitle animation from `useLayoutEffect` without waiting on an image-load callback queued behind startup work, eliminating the observed multi-second blank pause once the React launch overlay mounts.
+- Scaled phrase typography and spacing from the available device width while retaining the established cyan, gold, and parchment hierarchy and centered single-line lockup.
+- Updated launch regressions to require real phrase nodes, early native-driver start, responsive sizing, and removal of both prior delay mechanisms.
+- Synchronized version 0.26.2 with iOS build 186 and Android version code 186.
+
+## v0.26.1
+
+Fixed:
+
+- Replaced the launch subtitle's JavaScript `setInterval` typing loop with one native-driver progress animation over pre-laid-out characters, preventing database and map initialization from pausing the reveal at unpredictable letters while retaining the 40ms cadence and stable final line width.
+- Removed the version from the readiness footer, halved it from 12 to 6 points, and anchored it independently in the safe bottom-right corner.
+- Added launch regressions for native-thread animation wiring, removal of the interval loop, and safe-corner version placement.
+- Synchronized version 0.26.1 with iOS build 185 and Android version code 185.
+
+## v0.26.0
+
+Added:
+
+- Gated the in-app launch text and footer on the complete local Mapbound background-image decode, preventing React-owned copy from appearing over a partially loaded launch picture.
+- Added a stable 40ms-per-character typewriter reveal for the localized cyan/gold/parchment tagline. Transparent unrevealed glyphs reserve the final line width so partial text never shifts or re-centers.
+- Added a subsequent 360ms footer fade and a restrained native-driver opacity/scale pulse for Press to start once readiness is reached.
+- Added Reduce Motion behavior that publishes the complete tagline and fully opaque neutral-scale footer immediately after image load without continuous pulsing.
+- Added focused source regressions and an English/French, slow-readiness, early-readiness, accessibility, and device-layout manual protocol.
+
+Changed:
+
+- Synchronized version 0.26.0 with iOS build 184 and Android version code 184.
+
+## v0.25.0
+
+Added:
+
+- Expanded District Expeditions from four basic goal kinds to a catalogue of 25 distinct archetypes spanning fresh cells, frontier adjacency, gap sealing, dense clusters, district sectors, directional surveys, borders, central and outer areas, streets, enclosures, landmarks, and staged combinations.
+- Increased each district's daily journal from three to five non-duplicate choices. A deterministic district-and-local-date shuffle changes the set at local midnight while reproducing the same choices offline for the same district and date.
+- Added opportunity-aware generation so street-pair and medal-pair missions require enough unfinished district candidates, while districts without cached street or medal opportunities still receive five viable cell/loop choices.
+- Preserved accepted missions across daily reshuffles, relaunches, district changes, and Backup V5 restore; every completed archetype continues to award one permanent seal and 200 Explorer Points.
+- Added deterministic catalogue, daily rollover, upgrade-fill, viability, all-kind reachability, and expanded loop-evidence regression coverage.
+
+Changed:
+
+- Synchronized version 0.25.0 with iOS build 183 and Android version code 183.
+
+## v0.24.0
+
+Added:
+
+- Restored the enlarged Mapbound map title whenever the user genuinely returns from another Atlas page; the next direct map interaction contracts it again, while tapping Map on the already-visible map does not replay it.
+- Added a coordinated active-walk HUD transition: the title fades and collapses away, the medal/objective stack rises, and the Field Log closes down to the fixed usable tab dock to maximize the visible map. Stopping restores the compact idle layout, and Reduce Motion applies each state immediately.
+- Added focused source regressions for navigation reset gating, recording-state title suppression, animation timing, and bottom-panel placement.
+- Synchronized version 0.24.0 with iOS build 182 and Android version code 182.
+
+## v0.23.16
+
+Fixed:
+
+- Preserved the supplied splash artwork's aspect ratio in the in-app launch layer so the Mapbound logo is no longer subtly stretched on iPhones whose screen ratio differs from the 1320x2868 source.
+- Moved the localized subtitle fully below the Mapbound title bar while keeping it centered with balanced phrase spacing.
+- Synchronized version 0.23.16 with iOS build 181 and Android version code 181.
+
+## v0.23.15
+
+Changed:
+
+- Centered the localized launch subtitle within the decorative rule directly beneath the Mapbound title, with slightly increased tracking and balanced spacing between its three colored phrases.
+- Synchronized version 0.23.15 with iOS build 180 and Android version code 180.
+
+## v0.23.14
+
+Changed:
+
+- Replaced the shared native and in-app launch artwork with the user-supplied 1320x2868 `loading-screen3.jpg`, retaining the visually equivalent lighter JPEG to reduce the bundled splash asset by roughly 3.2 MB versus its PNG source.
+- Added a live localized subtitle directly beneath the Mapbound logo: `Walk. Explore. Reveal your city.` in English and `Marchez. Explorez. Révélez votre ville.` in French, using the former cyan, gold, and parchment word treatment with single-line scaling.
+- Preserved the established readiness-gated loading/Press to start footer and version label at the bottom of the launch presentation.
+- Synchronized version 0.23.14 with iOS build 179 and Android version code 179.
+
+## v0.23.13
+
+Changed:
+
+- Added separate persisted Sound effects and Haptics switches to Options. Both remain enabled by default, apply immediately across Atlas navigation, map/objective stamps, selection feedback, reward jingles, and medal celebrations, and fail quietly when native feedback is unavailable.
+- Removed the selectable Custom appearance placeholder; upgraded installations that had saved Custom now safely fall back to Explorator.
+- Matched the status-bar foreground to Explorator and Daylight so system icons remain legible in both appearances.
+- Added one fail-fast `npm test` command covering typecheck and every existing focused regression suite, repaired the stale unlocked-Wikipedia source assertion, and expanded UI regression coverage for appearance and feedback preferences.
+- Left the existing splash artwork and launch presentation unchanged for the separately planned artwork replacement.
+- Synchronized version 0.23.13 with iOS build 178 and Android version code 178.
+
 ## v0.23.12
 
 Changed:

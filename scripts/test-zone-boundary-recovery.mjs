@@ -91,7 +91,7 @@ assert.match(mapSource, /objectiveStatsRequestRef\.current === requestId/);
 assert.match(mapSource, /doesDistrictBelongToCity\(zone, currentCity\)/);
 assert.match(mapSource, /setPlayerFocusRequestId\(\(requestId\) => requestId \+ 1\)/);
 assert.match(mapSource, /const handleMapLongPress = useCallback/);
-assert.match(mapSource, /await Haptics\.selectionAsync\(\)/);
+assert.match(mapSource, /await playSelectionHaptic\(\)/);
 assert.match(mapSource, /mapZoneSelectionRequestRef\.current !== requestId/);
 assert.match(mapSource, /shouldOfferMapZoneScopeChoice/);
 assert.match(mapSource, /setMapZoneSelection\(shouldOfferScopeChoice \? choices : null\)/);

@@ -2,12 +2,12 @@
   "expo": {
     "name": "Street Explorer",
     "slug": "street-explorer",
-    "version": "0.23.12",
+    "version": "0.27.2",
     "orientation": "portrait",
     "scheme": "street-explorer",
     "splash": {
       "backgroundColor": "#02060a",
-      "image": "./assets/loading-screen2.png",
+      "image": "./assets/loading-screen3.jpg",
       "resizeMode": "contain"
     },
     "userInterfaceStyle": "light",
@@ -15,7 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "177",
+      "buildNumber": "189",
       "bundleIdentifier": "com.kaltenor.streetexplorer",
       "supportsTablet": true,
       "infoPlist": {
@@ -31,7 +31,7 @@
     },
     "android": {
       "package": "com.kaltenor.streetexplorer",
-      "versionCode": 177,
+      "versionCode": 189,
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",

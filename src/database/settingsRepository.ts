@@ -10,6 +10,8 @@ import {
 
 const APP_LANGUAGE_KEY = "app_language";
 const APPEARANCE_MODE_KEY = "appearance_mode";
+const HAPTICS_ENABLED_KEY = "haptics_enabled";
+const SOUND_ENABLED_KEY = "sound_enabled";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
 const ACTIVE_RECORDING_MODE_KEY = "active_recording_mode";
 const COMPLETION_OBJECTIVE_KEY = "completion_objective";
@@ -19,6 +21,11 @@ const ACTIVITY_MODES: ActivityMode[] = ["walk"];
 const APP_LANGUAGES: AppLanguage[] = ["en", "fr"];
 const COMPLETION_MODES: ActivityMode[] = ["walk"];
 type CompletionMode = ActivityMode;
+
+export type SavedFeedbackPreferences = {
+  hapticsEnabled: boolean;
+  soundEnabled: boolean;
+};
 
 export type SavedCompletionObjective = {
   mode: CompletionMode;
@@ -79,6 +86,43 @@ export async function saveAppearanceMode(mode: AppearanceMode) {
     APPEARANCE_MODE_KEY,
     mode
   );
+}
+
+export async function getFeedbackPreferences(): Promise<SavedFeedbackPreferences> {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<{ key: string; value: string }>(
+    "SELECT key, value FROM app_settings WHERE key IN (?, ?)",
+    HAPTICS_ENABLED_KEY,
+    SOUND_ENABLED_KEY
+  );
+  const values = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+
+  return {
+    hapticsEnabled: values[HAPTICS_ENABLED_KEY] !== "false",
+    soundEnabled: values[SOUND_ENABLED_KEY] !== "false"
+  };
+}
+
+async function saveBooleanSetting(key: string, enabled: boolean) {
+  const db = await getDatabase();
+
+  await db.runAsync(
+    `
+      INSERT INTO app_settings (key, value)
+      VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `,
+    key,
+    String(enabled)
+  );
+}
+
+export function saveHapticsEnabled(enabled: boolean) {
+  return saveBooleanSetting(HAPTICS_ENABLED_KEY, enabled);
+}
+
+export function saveSoundEnabled(enabled: boolean) {
+  return saveBooleanSetting(SOUND_ENABLED_KEY, enabled);
 }
 
 export async function getSavedPlayerLocation(): Promise<GpsPoint | null> {

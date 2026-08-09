@@ -41,6 +41,10 @@ import {
   shouldCompleteAtlasSwipeBack,
   shouldStartAtlasSwipeBack
 } from "../services/atlasSwipeBack";
+import {
+  isSoundFeedbackEnabled,
+  playImpactHaptic
+} from "../services/feedbackPreferences";
 
 type AtlasSound = "ink" | "page" | "reward";
 type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
@@ -71,6 +75,8 @@ const ATLAS_SOUND_PLAYERS: Record<AtlasSound, AtlasAudioPlayer> = {
 ATLAS_SOUND_PLAYERS.page.volume = ATLAS_PAGE_SOUND_VOLUME;
 
 function playPreloadedAtlasSound(sound: AtlasSound) {
+  if (!isSoundFeedbackEnabled()) return;
+
   const player = ATLAS_SOUND_PLAYERS[sound];
 
   if (player.currentTime <= 0) {
@@ -106,6 +112,8 @@ export function useReducedMotionPreference() {
 }
 
 export function playAtlasSound(sound: AtlasSound) {
+  if (!isSoundFeedbackEnabled()) return;
+
   if (sound !== "reward") {
     playPreloadedAtlasSound(sound);
     return;
@@ -644,9 +652,7 @@ export function AtlasStamp({
     if (stampedMessageIdRef.current !== message.id) {
       stampedMessageIdRef.current = message.id;
       playAtlasSound(message.sound ?? "ink");
-      void import("expo-haptics")
-        .then((Haptics) => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium))
-        .catch(() => undefined);
+      void playImpactHaptic();
     }
     const strikeAnimation = reducedMotion
       ? null

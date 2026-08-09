@@ -204,7 +204,15 @@ export async function recordDistrictExpeditionLoopEvidence(
     ) SELECT id, ?, ?
       FROM district_expeditions
       WHERE id = ?
-        AND kind = 'close_loop'
+        AND kind IN (
+          'close_loop',
+          'double_loop',
+          'loop_and_cells',
+          'loop_and_frontier',
+          'street_and_loop',
+          'field_triad',
+          'grand_tour'
+        )
         AND accepted_at IS NOT NULL
         AND abandoned_at IS NULL
         AND completed_at IS NULL`,

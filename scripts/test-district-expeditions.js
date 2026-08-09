@@ -16,8 +16,13 @@ require.extensions[".ts"] = (module, filename) => {
 
 const {
   buildDailyExpeditionDefinitions,
+  DAILY_DISTRICT_EXPEDITION_COUNT,
+  DISTRICT_EXPEDITION_CATALOG,
   getLocalExpeditionDate
 } = require("../src/services/expeditionDefinitions.ts");
+const {
+  calculateCellExpeditionProgress
+} = require("../src/services/expeditionProgress.ts");
 
 function assert(condition, message) {
   if (!condition) {
@@ -29,42 +34,142 @@ function assert(condition, message) {
 
 const full = buildDailyExpeditionDefinitions({
   districtId: "relation/123",
-  hasMedalOpportunity: true,
-  hasStreetOpportunity: true,
-  localDate: "2026-08-07"
+  localDate: "2026-08-07",
+  medalOpportunityCount: 4,
+  streetOpportunityCount: 4
 });
 const repeated = buildDailyExpeditionDefinitions({
   districtId: "relation/123",
-  hasMedalOpportunity: true,
-  hasStreetOpportunity: true,
-  localDate: "2026-08-07"
+  localDate: "2026-08-07",
+  medalOpportunityCount: 4,
+  streetOpportunityCount: 4
 });
 
-assert(full.length === 3, "each district receives exactly three daily choices");
+assert(
+  DISTRICT_EXPEDITION_CATALOG.length === 25 &&
+    new Set(DISTRICT_EXPEDITION_CATALOG.map((entry) => entry.kind)).size === 25,
+  "the expedition catalogue contains exactly 25 unique mission archetypes"
+);
+assert(
+  full.length === DAILY_DISTRICT_EXPEDITION_COUNT && full.length === 5,
+  "each district receives exactly five daily choices"
+);
 assert(
   JSON.stringify(full) === JSON.stringify(repeated),
   "daily choices are deterministic for a district and local date"
 );
 assert(
-  full[0].kind === "explore_cells" && [15, 20, 25].includes(full[0].target),
-  "every day includes an attainable explored-cell expedition"
+  new Set(full.map((definition) => definition.slot)).size === 5 &&
+    new Set(full.map((definition) => definition.kind)).size === 5,
+  "daily expedition slots and archetypes remain unique"
 );
+
+const nextDay = buildDailyExpeditionDefinitions({
+  districtId: "relation/123",
+  localDate: "2026-08-08",
+  medalOpportunityCount: 4,
+  streetOpportunityCount: 4
+});
 assert(
-  new Set(full.map((definition) => definition.slot)).size === 3,
-  "daily expedition slots remain unique"
+  JSON.stringify(full) !== JSON.stringify(nextDay),
+  "the deterministic shuffle changes with the local calendar day"
 );
 
 const limited = buildDailyExpeditionDefinitions({
   districtId: "relation/456",
-  hasMedalOpportunity: false,
-  hasStreetOpportunity: false,
-  localDate: "2026-08-07"
+  localDate: "2026-08-07",
+  medalOpportunityCount: 0,
+  streetOpportunityCount: 0
 });
 assert(
-  limited.length === 3 &&
-    limited.filter((definition) => definition.kind === "explore_cells").length === 2 &&
-    limited.some((definition) => definition.kind === "close_loop"),
-  "districts without street or medal opportunities still get three viable choices"
+  limited.length === 5 &&
+    limited.every(
+      (definition) =>
+        !definition.kind.includes("street") &&
+        !definition.kind.includes("medal") &&
+        definition.kind !== "grand_tour" &&
+        definition.kind !== "field_triad"
+    ),
+  "districts without street or medal opportunities still get five viable choices"
+);
+
+const migrated = buildDailyExpeditionDefinitions({
+  districtId: "relation/456",
+  excludedKinds: limited.slice(0, 3).map((definition) => definition.kind),
+  localDate: "2026-08-07",
+  medalOpportunityCount: 0,
+  slots: [3, 4],
+  streetOpportunityCount: 0
+});
+assert(
+  migrated.length === 2 &&
+    migrated.map((definition) => definition.slot).join(",") === "3,4" &&
+    migrated.every(
+      (definition) => !limited.slice(0, 3).some((existing) => existing.kind === definition.kind)
+    ),
+  "upgrades retain existing choices and fill missing slots without duplicate archetypes"
+);
+
+const observedKinds = new Set();
+for (let day = 1; day <= 120; day += 1) {
+  const localDate = `2027-01-${String(day).padStart(3, "0")}`;
+  for (const definition of buildDailyExpeditionDefinitions({
+    districtId: "relation/catalogue",
+    localDate,
+    medalOpportunityCount: 4,
+    streetOpportunityCount: 4
+  })) {
+    observedKinds.add(definition.kind);
+  }
+}
+assert(
+  observedKinds.size === 25,
+  "the daily shuffle can surface every expedition archetype"
+);
+
+const testDistrict = {
+  adminLevel: 9,
+  fetchedAt: "2026-08-07T00:00:00.000Z",
+  geometry: [[
+    { latitude: -0.01, longitude: -0.01 },
+    { latitude: -0.01, longitude: 0.01 },
+    { latitude: 0.01, longitude: 0.01 },
+    { latitude: 0.01, longitude: -0.01 },
+    { latitude: -0.01, longitude: -0.01 }
+  ]],
+  holes: [],
+  id: "relation/test",
+  name: "Test District",
+  parentZoneId: "relation/city",
+  source: "osm",
+  type: "district"
+};
+assert(
+  calculateCellExpeditionProgress({
+    allCellKeys: ["-1:0", "0:-1", "0:0", "1:0"],
+    district: testDistrict,
+    kind: "seal_breach",
+    newCellKeys: ["0:0"]
+  }) === 1,
+  "gap-sealing progress requires three previously explored cardinal neighbors"
+);
+assert(
+  calculateCellExpeditionProgress({
+    allCellKeys: ["0:0", "1:0", "2:0"],
+    district: testDistrict,
+    kind: "dense_survey",
+    newCellKeys: ["0:0", "1:0", "2:0"]
+  }) === 1,
+  "dense-survey progress credits cells linked to two new cardinal neighbors"
+);
+assert(
+  calculateCellExpeditionProgress({
+    allCellKeys: ["0:0", "1:0"],
+    district: testDistrict,
+    kind: "frontier_push",
+    newCellKeys: ["1:0"]
+  }) === 1,
+  "frontier progress requires adjacency to territory explored before acceptance"
 );
 
 const localDate = new Date(2026, 0, 2, 23, 59, 0);
@@ -102,8 +207,10 @@ assert(
 );
 assert(
   repositorySource.includes("countFinalizedLoopEvidence") &&
-    repositorySource.includes("sessions.ended_at > sessions.started_at"),
-  "loop progress only counts evidence from finalized walks"
+    repositorySource.includes("sessions.ended_at > sessions.started_at") &&
+    repositorySource.includes("'double_loop'") &&
+    mapSource.includes("isLoopExpeditionKind(expedition.kind)"),
+  "all loop-based variants preserve evidence that only counts finalized walks"
 );
 assert(
   repositorySource.includes("getDistrictExpeditionSealCount") &&

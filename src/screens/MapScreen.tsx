@@ -58,7 +58,6 @@ import {
   MedalFlightTarget
 } from "../components/MedalCelebration";
 import { MedalCollectionModal } from "../components/MedalCollectionModal";
-import { LaunchLoadingOverlay } from "../components/LaunchLoadingOverlay";
 import { MapLegend } from "../components/MapLegend";
 import { ModeProfilePanel } from "../components/ModeProfilePanel";
 import {
@@ -144,6 +143,7 @@ import {
   startBackgroundLocationTracking,
   stopBackgroundLocationTracking
 } from "../services/backgroundLocationTask";
+import { playSelectionHaptic } from "../services/feedbackPreferences";
 import {
   collectExploredCellIdsByRouteSegments,
   collectFillableEnclosedExplorationCellIds
@@ -184,6 +184,7 @@ import {
 } from "../services/zoneCompletion";
 import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
 import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
+import { isLoopExpeditionKind } from "../services/expeditionDefinitions";
 import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import {
@@ -298,9 +299,15 @@ function getGpsTimestamp(point: GpsPoint) {
 
 type MapScreenProps = {
   appearanceMode: AppearanceMode;
+  hapticsEnabled: boolean;
+  isLaunchDismissed: boolean;
   language: AppLanguage;
   onChangeAppearanceMode: (mode: AppearanceMode) => void;
+  onChangeHapticsEnabled: (enabled: boolean) => void;
   onChangeLanguage: (language: AppLanguage) => void;
+  onChangeSoundEnabled: (enabled: boolean) => void;
+  onLaunchReadyChange: (isReady: boolean) => void;
+  soundEnabled: boolean;
 };
 
 type MapZoneSelection = {
@@ -521,9 +528,15 @@ function returnToMapFromAtlas(onReturn: () => void) {
 
 export function MapScreen({
   appearanceMode,
+  hapticsEnabled,
+  isLaunchDismissed,
   language,
   onChangeAppearanceMode,
-  onChangeLanguage
+  onChangeHapticsEnabled,
+  onChangeLanguage,
+  onChangeSoundEnabled,
+  onLaunchReadyChange,
+  soundEnabled
 }: MapScreenProps) {
   usePerformanceRenderCounter("MapScreen");
   const activityMode: ActivityMode = "walk";
@@ -532,12 +545,14 @@ export function MapScreen({
   const safeAreaInsets = useSafeAreaInsets();
   const reducedMotion = useReducedMotionPreference();
   const wordmarkCollapseProgress = useRef(new Animated.Value(0)).current;
+  const recordingLayoutProgress = useRef(new Animated.Value(0)).current;
   const [permissionState, setPermissionState] = useState<LocationPermissionState>("unknown");
   const [currentLocation, setCurrentLocation] = useState<GpsPoint | null>(null);
   const [launchObjectiveLocation, setLaunchObjectiveLocation] = useState<GpsPoint | null>(null);
   const [walks, setWalks] = useState<WalkWithPoints[]>([]);
   const [history, setHistory] = useState<WalkSession[]>([]);
   const [activeWalk, setActiveWalk] = useState<ActiveWalk | null>(null);
+  const isRecording = Boolean(activeWalk);
   const [stats, setStats] = useState<LifetimeStats>(EMPTY_STATS);
   const [streetSegments, setStreetSegments] = useState<OsmStreetSegment[]>([]);
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
@@ -623,7 +638,6 @@ export function MapScreen({
   const [backgroundTrackingMessage, setBackgroundTrackingMessage] = useState<string | null>(null);
   const [backgroundTrackingStatus, setBackgroundTrackingStatus] =
     useState<BackgroundTrackingStatus>("idle");
-  const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
   const [isMapWordmarkCollapsed, setIsMapWordmarkCollapsed] = useState(false);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isSavedDataReady, setIsSavedDataReady] = useState(false);
@@ -674,6 +688,28 @@ export function MapScreen({
     animation.start();
     return () => animation.stop();
   }, [isMapWordmarkCollapsed, reducedMotion, wordmarkCollapseProgress]);
+
+  useEffect(() => {
+    recordingLayoutProgress.stopAnimation();
+
+    if (isRecording) {
+      setIsMapWordmarkCollapsed(true);
+    }
+
+    if (reducedMotion) {
+      recordingLayoutProgress.setValue(isRecording ? 1 : 0);
+      return;
+    }
+
+    const animation = Animated.timing(recordingLayoutProgress, {
+      duration: 280,
+      easing: Easing.inOut(Easing.cubic),
+      toValue: isRecording ? 1 : 0,
+      useNativeDriver: false
+    });
+    animation.start();
+    return () => animation.stop();
+  }, [isRecording, recordingLayoutProgress, reducedMotion]);
 
   const activeSessionIdRef = useRef<number | null>(null);
   const activeWalkRef = useRef<ActiveWalk | null>(null);
@@ -1027,6 +1063,9 @@ export function MapScreen({
     isRecoveryCheckComplete &&
     permissionState !== "unknown" &&
     (permissionState !== "granted" || initialLocationResolved);
+  useEffect(() => {
+    onLaunchReadyChange(isLaunchReady);
+  }, [isLaunchReady, onLaunchReadyChange]);
   const todayObjectiveCellCount = useMemo(
     () => objective
       ? countExploredCellKeysInsideZone(objective.zone, todayNewCellIds)
@@ -1888,13 +1927,8 @@ export function MapScreen({
     setMapZoneSelection(null);
 
     try {
-      try {
-        objectiveScopePairRef.current = null;
-        const Haptics = await import("expo-haptics");
-        await Haptics.selectionAsync();
-      } catch {
-        // Haptics are optional in older or restricted development clients.
-      }
+      objectiveScopePairRef.current = null;
+      await playSelectionHaptic();
 
       let [cities, districts] = await Promise.all([
         getCachedZones("city"),
@@ -2198,7 +2232,7 @@ export function MapScreen({
     if (newlyEnclosedCellIds.length > 0) {
       const activeLoopExpeditions = expeditionDashboard?.active.filter(
         (expedition) =>
-          expedition.kind === "close_loop" &&
+          isLoopExpeditionKind(expedition.kind) &&
           expedition.districtId === objective?.zone.id
       ) ?? [];
 
@@ -2512,6 +2546,9 @@ export function MapScreen({
     setDiagnosticsVisible(false);
   }, [publishCurrentLocation]);
   const handleReturnToMapFromAtlas = useCallback(() => {
+    if (!activeWalkRef.current) {
+      setIsMapWordmarkCollapsed(false);
+    }
     returnToMapFromAtlas(closeAllAtlasPages);
   }, [closeAllAtlasPages]);
   const navigateAtlasPage = useCallback((page: AtlasPageId) => {
@@ -4789,10 +4826,16 @@ export function MapScreen({
             style={[
               styles.logoFrame,
               {
-                height: wordmarkCollapseProgress.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [98, 38]
-                })
+                height: Animated.multiply(
+                  wordmarkCollapseProgress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [98, 38]
+                  }),
+                  recordingLayoutProgress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [1, 0]
+                  })
+                )
               }
             ]}
           >
@@ -4802,7 +4845,10 @@ export function MapScreen({
               style={[
                 styles.logo,
                 {
-                  opacity: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.9] }),
+                  opacity: Animated.multiply(
+                    wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.9] }),
+                    recordingLayoutProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0] })
+                  ),
                   transform: [{ scale: wordmarkCollapseProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 0.385] }) }]
                 }
               ]}
@@ -4876,7 +4922,18 @@ export function MapScreen({
           </View>
         ) : null}
 
-        <View onLayout={handleMapBottomPanelLayout} style={styles.bottomPanel}>
+        <Animated.View
+          onLayout={handleMapBottomPanelLayout}
+          style={[
+            styles.bottomPanel,
+            {
+              paddingBottom: recordingLayoutProgress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [ATLAS_NAVIGATION_DOCK_HEIGHT + 6, ATLAS_NAVIGATION_DOCK_HEIGHT]
+              })
+            }
+          ]}
+        >
           <WalkControls
             activityMode={activeWalk?.activityMode ?? activityMode}
             acceptedGpsPointCount={activeWalk?.acceptedGpsPointCount ?? 0}
@@ -4903,7 +4960,7 @@ export function MapScreen({
             onStart={handleStartWalk}
             onStop={handleRequestStopWalk}
           />
-        </View>
+        </Animated.View>
       </SafeAreaView>
 
       <AtlasNavigationDockLayer
@@ -4917,16 +4974,20 @@ export function MapScreen({
 
       {optionsVisible ? <OptionsModal
         appearanceMode={appearanceMode}
+        hapticsEnabled={hapticsEnabled}
         language={language}
         layers={layers}
         mode={pathDisplayMode}
         onChangeAppearanceMode={onChangeAppearanceMode}
+        onChangeHapticsEnabled={onChangeHapticsEnabled}
         onChangeLanguage={onChangeLanguage}
+        onChangeSoundEnabled={onChangeSoundEnabled}
         onChangePathDisplayMode={setPathDisplayMode}
         onClose={handleReturnToMapFromAtlas}
         onToggleLayer={toggleLayer}
         onReprocessRecordings={handleReprocessRecordings}
         selectedSessionId={selectedSessionId}
+        soundEnabled={soundEnabled}
         visible={optionsVisible}
       /> : null}
       {dashboardExpanded ? <DetailsModal
@@ -5091,13 +5152,6 @@ export function MapScreen({
         summary={recordingSummary}
       />
       <ReprocessingModal language={language} progress={reprocessProgress} />
-      {!isLaunchDismissed ? (
-        <LaunchLoadingOverlay
-          isReady={isLaunchReady}
-          language={language}
-          onStart={() => setIsLaunchDismissed(true)}
-        />
-      ) : null}
     </View>
     </AtlasNavigationProvider>
   );
@@ -5954,29 +6008,37 @@ function formatLoopResultShort(result: LoopProcessingResult, language: AppLangua
 
 function OptionsModal({
   appearanceMode,
+  hapticsEnabled,
   language,
   layers,
   mode,
   onChangeAppearanceMode,
+  onChangeHapticsEnabled,
   onChangeLanguage,
   onChangePathDisplayMode,
+  onChangeSoundEnabled,
   onClose,
   onToggleLayer,
   onReprocessRecordings,
   selectedSessionId,
+  soundEnabled,
   visible
 }: {
   appearanceMode: AppearanceMode;
+  hapticsEnabled: boolean;
   language: AppLanguage;
   layers: MapLayerState;
   mode: PathDisplayMode;
   onChangeAppearanceMode: (mode: AppearanceMode) => void;
+  onChangeHapticsEnabled: (enabled: boolean) => void;
   onChangeLanguage: (language: AppLanguage) => void;
   onChangePathDisplayMode: (mode: PathDisplayMode) => void;
+  onChangeSoundEnabled: (enabled: boolean) => void;
   onClose: () => void;
   onToggleLayer: (layer: keyof MapLayerState) => void;
   onReprocessRecordings: () => void;
   selectedSessionId: number | null;
+  soundEnabled: boolean;
   visible: boolean;
 }) {
   const strings = getStrings(language);
@@ -5991,17 +6053,6 @@ function OptionsModal({
         value
       };
     }
-    if (value === "custom") {
-      return {
-        description: language === "fr"
-          ? "Palette personnalis\u00e9e \u00e0 d\u00e9finir lors d'une prochaine mise \u00e0 jour."
-          : "Custom palette to be defined in a future update.",
-        icon: "color-palette-outline" as const,
-        label: "Custom",
-        value
-      };
-    }
-
     return {
       description: language === "fr"
         ? "Palette sombre actuelle de l'atlas."
@@ -6089,6 +6140,31 @@ function OptionsModal({
                 );
               })}
             </View>
+          </View>
+
+          <View style={styles.optionPanel}>
+            <Text style={styles.pathDisplayTitle}>
+              {language === "fr" ? "Retour sensoriel" : "Feedback"}
+            </Text>
+            <View style={styles.optionRows}>
+              <OptionToggle
+                active={soundEnabled}
+                icon="volume-high-outline"
+                label={language === "fr" ? "Effets sonores" : "Sound effects"}
+                onPress={() => onChangeSoundEnabled(!soundEnabled)}
+              />
+              <OptionToggle
+                active={hapticsEnabled}
+                icon="phone-portrait-outline"
+                label={language === "fr" ? "Vibrations" : "Haptics"}
+                onPress={() => onChangeHapticsEnabled(!hapticsEnabled)}
+              />
+            </View>
+            <Text style={styles.optionHelpText}>
+              {language === "fr"
+                ? "Contrôle les sons et vibrations de navigation et de récompense."
+                : "Controls navigation and reward sounds and haptics."}
+            </Text>
           </View>
 
           <View style={styles.optionPanel}>
@@ -6185,7 +6261,8 @@ function OptionToggle({
 }) {
   return (
     <TouchableOpacity
-      accessibilityRole="button"
+      accessibilityRole="switch"
+      accessibilityState={{ checked: active }}
       onPress={onPress}
       style={[styles.optionButton, active ? styles.selectedPathDisplayButton : null]}
     >
@@ -6771,8 +6848,7 @@ const styles = createAppearanceStyles({
     marginBottom: 2
   },
   bottomPanel: {
-    marginTop: "auto",
-    paddingBottom: ATLAS_NAVIGATION_DOCK_HEIGHT + 6
+    marginTop: "auto"
   },
   computingDialog: {
     alignItems: "center",

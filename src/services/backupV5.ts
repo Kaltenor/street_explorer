@@ -7,7 +7,10 @@ import type {
   RouteBridgeEvidence,
   WalkSession
 } from "../types/walk";
-import type { BackupDistrictExpeditionSystem } from "../types/expedition";
+import {
+  DISTRICT_EXPEDITION_KINDS,
+  type BackupDistrictExpeditionSystem
+} from "../types/expedition";
 
 export const BACKUP_V5_EXTENSION = "streetexplorer";
 export const BACKUP_V5_FORMAT = "street-explorer";
@@ -988,12 +991,7 @@ function assertBackupV5ExpeditionSystem(
     throw new Error("V5 backup contains invalid expedition data.");
   }
 
-  const kinds = new Set([
-    "close_loop",
-    "collect_medal",
-    "complete_street",
-    "explore_cells"
-  ]);
+  const kinds = new Set<string>(DISTRICT_EXPEDITION_KINDS);
   const expeditionIds = new Set<string>();
   for (const expedition of expeditionSystem.expeditions as unknown[]) {
     if (

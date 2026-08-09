@@ -55,9 +55,9 @@ const readerSource = fs.readFileSync(
   new URL("../src/components/MedalWikipediaReader.tsx", import.meta.url),
   "utf8"
 );
-assert(collectionSource.includes("medal.isCollected ? ("));
+assert(collectionSource.includes("medal.isCollected && cityName ? ("));
 assert(collectionSource.includes('accessibilityRole="link"'));
-assert(collectionSource.includes("onOpenWikipedia(medal, event)"));
+assert(collectionSource.includes("onOpenWikipedia(cityName, medal, event)"));
 assert(readerSource.includes("react-native-webview"));
 assert(!readerSource.includes('import { WebView } from "react-native-webview"'));
 assert(!readerSource.includes('UIManager.getViewManagerConfig?.("RNCWebView")'));

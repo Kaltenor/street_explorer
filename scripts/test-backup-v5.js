@@ -260,11 +260,11 @@ const expeditionManifest = createBackupV5Manifest({
       districtId: "relation/9",
       districtName: "Test District",
       id: "expedition-1",
-      kind: "close_loop",
+      kind: "grand_tour",
       localDate: "2026-08-02",
-      progress: 1,
+      progress: 4,
       slot: 1,
-      target: 1,
+      target: 4,
       updatedAt: "2026-08-02T09:00:00.000Z"
     }],
     loopEvidence: [{
@@ -278,7 +278,7 @@ const expeditionManifest = createBackupV5Manifest({
       earnedAt: "2026-08-02T09:00:00.000Z",
       expeditionId: "expedition-1",
       id: "seal-expedition-1",
-      kind: "close_loop",
+      kind: "grand_tour",
       localDate: "2026-08-02"
     }]
   },
@@ -294,7 +294,7 @@ const expeditionManifest = createBackupV5Manifest({
 assertBackupV5Manifest(expeditionManifest);
 assert(
   expeditionManifest.expeditionSystem.seals.length === 1,
-  "V5 manifests preserve district expedition choices, loop evidence, and seals"
+  "V5 manifests preserve new expedition kinds, loop evidence, and seals"
 );
 
 let rejectedOrphanedExpeditionEvidence = false;

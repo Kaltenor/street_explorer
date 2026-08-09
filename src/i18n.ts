@@ -76,7 +76,10 @@ export const STRINGS = {
     },
     launch: {
       loadingMap: "Loading current area map",
-      pressToStart: "Press here to start"
+      pressToStart: "Press here to start",
+      taglineExplore: "Explore.",
+      taglineReveal: "Reveal your city.",
+      taglineWalk: "Walk."
     },
     walkControls: {
       gps: "GPS",
@@ -293,7 +296,10 @@ export const STRINGS = {
     },
     launch: {
       loadingMap: "Chargement de la carte locale",
-      pressToStart: "Appuyez ici pour commencer"
+      pressToStart: "Appuyez ici pour commencer",
+      taglineExplore: "Explorez.",
+      taglineReveal: "Révélez votre ville.",
+      taglineWalk: "Marchez."
     },
     walkControls: {
       gps: "GPS",

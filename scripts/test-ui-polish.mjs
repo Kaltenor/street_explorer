@@ -11,8 +11,25 @@ import {
   shouldStartAtlasSwipeBack
 } from "../src/services/atlasSwipeBack.ts";
 import { AREA_COMPARISONS } from "../src/data/areaComparisons.ts";
+import {
+  isHapticFeedbackEnabled,
+  isSoundFeedbackEnabled,
+  setFeedbackPreferences,
+  setHapticFeedbackEnabled,
+  setSoundFeedbackEnabled
+} from "../src/services/feedbackPreferences.ts";
 
 const NOW = Date.parse("2026-08-02T12:00:00.000Z");
+
+assert.equal(isHapticFeedbackEnabled(), true);
+assert.equal(isSoundFeedbackEnabled(), true);
+setFeedbackPreferences({ hapticsEnabled: false, soundEnabled: false });
+assert.equal(isHapticFeedbackEnabled(), false);
+assert.equal(isSoundFeedbackEnabled(), false);
+setHapticFeedbackEnabled(true);
+setSoundFeedbackEnabled(true);
+assert.equal(isHapticFeedbackEnabled(), true);
+assert.equal(isSoundFeedbackEnabled(), true);
 
 function status(overrides = {}) {
   return classifyGpsUiStatus({
@@ -94,6 +111,8 @@ const walkControlsSource = readFileSync(new URL("../src/components/WalkControls.
 const explorerScorePanelSource = readFileSync(new URL("../src/components/ExplorerScorePanel.tsx", import.meta.url), "utf8");
 const diagnosticsModalSource = readFileSync(new URL("../src/components/RecordingDiagnosticsModal.tsx", import.meta.url), "utf8");
 const routeSnapshotSource = readFileSync(new URL("../src/services/routeSnapshot.ts", import.meta.url), "utf8");
+const feedbackSource = readFileSync(new URL("../src/services/feedbackPreferences.ts", import.meta.url), "utf8");
+const medalCelebrationSource = readFileSync(new URL("../src/components/MedalCelebration.tsx", import.meta.url), "utf8");
 const soundAssetReadme = readFileSync(new URL("../assets/sounds/README.md", import.meta.url), "utf8");
 
 assert.ok(existsSync(new URL("../assets/ui/atlas-paper-texture.png", import.meta.url)));
@@ -145,7 +164,8 @@ assert.match(themeSource, /districtBoundary: "#c28a45"/);
 assert.match(themeSource, /districtBoundaryMuted: "rgba\(194, 138, 69, 0\.64\)"/);
 assert.match(mapSource, /cityZone\.geometry/);
 assert.match(themeSource, /selectedZoneFill: "rgba\(242, 217, 166, 0\.12\)"/);
-assert.match(appearanceSource, /"explorator",\s+"daylight",\s+"custom"/);
+assert.match(appearanceSource, /"explorator",\s+"daylight"/);
+assert.doesNotMatch(appearanceSource, /"custom"/);
 assert.match(appearanceSource, /export function createAppearanceStyles/);
 assert.match(themeSource, /DAYLIGHT_APP_COLORS/);
 assert.match(settingsSource, /APPEARANCE_MODE_KEY = "appearance_mode"/);
@@ -154,9 +174,28 @@ assert.match(settingsSource, /saveAppearanceMode/);
 assert.match(appSource, /setActiveAppearanceMode\(savedAppearanceMode\)/);
 assert.match(summarySource, /label: "Explorator"/);
 assert.match(summarySource, /label: "Daylight"/);
-assert.match(summarySource, /label: "Custom"/);
+assert.doesNotMatch(summarySource, /label: "Custom"/);
 assert.match(summarySource, /accessibilityRole="radio"/);
 assert.match(summarySource, /onChangeAppearanceMode\(option\.value\)/);
+assert.match(settingsSource, /HAPTICS_ENABLED_KEY = "haptics_enabled"/);
+assert.match(settingsSource, /SOUND_ENABLED_KEY = "sound_enabled"/);
+assert.match(settingsSource, /getFeedbackPreferences/);
+assert.match(settingsSource, /saveHapticsEnabled/);
+assert.match(settingsSource, /saveSoundEnabled/);
+assert.match(feedbackSource, /hapticsEnabled: true/);
+assert.match(feedbackSource, /soundEnabled: true/);
+assert.match(feedbackSource, /isHapticFeedbackEnabled/);
+assert.match(feedbackSource, /isSoundFeedbackEnabled/);
+assert.match(appSource, /setFeedbackPreferences\(savedFeedbackPreferences\)/);
+assert.match(appSource, /appearanceMode === "daylight" \? "dark" : "light"/);
+assert.match(summarySource, /label=\{language === "fr" \? "Effets sonores" : "Sound effects"\}/);
+assert.match(summarySource, /label=\{language === "fr" \? "Vibrations" : "Haptics"\}/);
+assert.match(summarySource, /accessibilityRole="switch"/);
+assert.match(summarySource, /accessibilityState=\{\{ checked: active \}\}/);
+assert.match(atlasSource, /isSoundFeedbackEnabled/);
+assert.match(atlasSource, /playImpactHaptic/);
+assert.match(medalCelebrationSource, /isSoundFeedbackEnabled/);
+assert.match(medalCelebrationSource, /playSuccessHaptic/);
 assert.match(mapSource, /city-boundary-/);
 assert.match(mapSource, /WALKING_COLORS\.cityBoundaryMuted/);
 assert.match(mapSource, /selectedZone\?\.type === "district"/);
@@ -191,8 +230,26 @@ assert.match(appSource, /Cinzel-Variable\.ttf/);
 assert.match(atlasSource, /fontFamily: ATLAS_DISPLAY_FONT/);
 assert.match(mapSource, /onTouchStart=\{onMapInteraction\}/);
 assert.match(summarySource, /wordmarkCollapseProgress/);
+assert.match(summarySource, /recordingLayoutProgress/);
 assert.match(summarySource, /outputRange: \[98, 38\]/);
 assert.match(summarySource, /outputRange: \[1, 0\.385\]/);
+assert.match(
+  summarySource,
+  /if \(!activeWalkRef\.current\) \{\s*setIsMapWordmarkCollapsed\(false\);\s*\}/
+);
+assert.match(
+  summarySource,
+  /if \(isRecording\) \{\s*setIsMapWordmarkCollapsed\(true\);\s*\}/
+);
+assert.match(
+  summarySource,
+  /recordingLayoutProgress[\s\S]*duration: 280,[\s\S]*toValue: isRecording \? 1 : 0/
+);
+assert.match(summarySource, /height: Animated\.multiply\(/);
+assert.match(
+  summarySource,
+  /outputRange: \[ATLAS_NAVIGATION_DOCK_HEIGHT \+ 6, ATLAS_NAVIGATION_DOCK_HEIGHT\]/
+);
 assert.match(summarySource, /logo: \{[\s\S]*height: 98,[\s\S]*width: "86%"/);
 assert.doesNotMatch(summarySource, /styles\.mapHudRow/);
 assert.match(summarySource, /function CityMedalProgress[\s\S]*<ObjectiveToggleButton[\s\S]*function ObjectiveToggleButton/);
