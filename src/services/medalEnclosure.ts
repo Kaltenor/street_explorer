@@ -7,7 +7,7 @@ import {
   getMedalRetroScanCursor,
   markMedalRetroScanCompleted
 } from "../database/medalRepository";
-import { getBundledMedalAlbum } from "../data/medalAlbums";
+import { getMedalAlbumDefinition } from "./medalCountryPackStore";
 import {
   collectExploredCellIdsByRouteSegments,
   coordinateToExplorationCellKey
@@ -108,7 +108,7 @@ export async function evaluateLiveMedalCollection(input: {
   walkedDistanceMeters: number;
   eligibleMedalIds?: readonly string[];
 }): Promise<MedalCollectionResult> {
-  const album = getBundledMedalAlbum(input.albumId);
+  const album = await getMedalAlbumDefinition(input.albumId);
 
   if (!album) {
     return buildCollectionResult([], input.boundaryCellIds.length, 0);
@@ -136,7 +136,7 @@ export async function evaluateMedalCollectionForRecording(
   sessionId: number,
   albumId: string | null
 ): Promise<MedalCollectionResult> {
-  const album = albumId ? getBundledMedalAlbum(albumId) : null;
+  const album = albumId ? await getMedalAlbumDefinition(albumId) : null;
 
   if (!album) {
     return buildCollectionResult([], 0, 0);
@@ -177,7 +177,7 @@ async function runIncrementalAlbumScan(
   albumId: string,
   reason: "retro_scan"
 ) {
-  const album = getBundledMedalAlbum(albumId);
+  const album = await getMedalAlbumDefinition(albumId);
 
   if (!album) {
     return buildCollectionResult([], 0, 0);

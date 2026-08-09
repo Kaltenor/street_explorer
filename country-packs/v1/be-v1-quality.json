@@ -1,0 +1,3115 @@
+{
+  "countryCode": "be",
+  "generatedAt": "2026-08-09T00:51:36.209Z",
+  "methodology": {
+    "coverageTarget": 0.5,
+    "maximumCityCount": 100,
+    "minimumMedalsPerCity": 5,
+    "populationDefinition": "Statbel municipality population on 1 January 2025",
+    "officialSourceSelection": "Official regional inventory objects near the municipality centre, ranked for landmark specificity and category balance",
+    "sparseCityFallback": "Coordinate-bearing Wikidata landmarks within the municipality hierarchy, queried only when fewer than 12 official candidates were available; a bounded 6 km Wikidata proximity query and then named OpenStreetMap features inside the exact municipality relation provide the final five-medal floor"
+  },
+  "pilot": {
+    "candidateCount": 7391,
+    "cityCount": 30,
+    "medalCount": 302,
+    "population": 3590198,
+    "populationCoverage": 0.30359667807445084
+  },
+  "expansion": {
+    "cityCount": 91,
+    "nationalPopulation": 11825551,
+    "population": 5921023,
+    "populationCoverage": 0.5006974305045068
+  },
+  "sources": {
+    "officialFailures": [],
+    "selectedMedalsBySource": {
+      "flanders-inventaris": 493,
+      "wallonia-awap": 87,
+      "wikidata": 202
+    },
+    "statbelFile": "TF_SOC_POP_STRUCT_2025.txt",
+    "statbelUrl": "https://statbel.fgov.be/en/open-data/population-place-residence-nationality-marital-status-age-and-sex-16",
+    "flandersInventory": "Agentschap Onroerend Erfgoed WFS, vioe_geoportaal:bouwkundig_element",
+    "flandersInventoryUrl": "https://geo.onroerenderfgoed.be/downloads",
+    "flandersReuseUrl": "https://inventaris.onroerenderfgoed.be/hergebruik",
+    "walloniaInventory": "SPW/AWaP ArcGIS service, AMENAGEMENT_TERRITOIRE/IPIC layer 0",
+    "walloniaInventoryUrl": "https://geodata.wallonie.be/id/a25cdf65-d35b-4883-beaf-5f89713726db",
+    "brusselsInventoryLimitation": "The Brussels official inventory does not expose a comparable bulk point feed in this builder; Brussels municipalities use the bounded Wikidata fallback."
+  },
+  "cities": [
+    {
+      "albumId": "be-antwerp",
+      "candidateCount": 624,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 7,
+        "history": 7,
+        "nature": 3
+      },
+      "cityId": "antwerp-be",
+      "cityName": {
+        "en": "Antwerp",
+        "fr": "Anvers",
+        "nl": "Antwerpen"
+      },
+      "cityZoneId": "relation/59518",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 624,
+      "population": 562002,
+      "rank": 1,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 21,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "flanders-inventaris": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-ghent",
+      "candidateCount": 419,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 7,
+        "history": 7,
+        "nature": 4
+      },
+      "cityId": "ghent-be",
+      "cityName": {
+        "en": "Ghent",
+        "fr": "Gand",
+        "nl": "Gent"
+      },
+      "cityZoneId": "relation/897671",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 419,
+      "population": 272657,
+      "rank": 2,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "flanders-inventaris": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-charleroi",
+      "candidateCount": 51,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 6,
+        "culture": 7,
+        "history": 2,
+        "nature": 3
+      },
+      "cityId": "charleroi-be",
+      "cityName": {
+        "en": "Charleroi",
+        "fr": "Charleroi",
+        "nl": "Charleroi"
+      },
+      "cityZoneId": "relation/2113725",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 205763,
+      "rank": 3,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 51
+    },
+    {
+      "albumId": "be-brussels",
+      "candidateCount": 38,
+      "categoryCounts": {
+        "art": 4,
+        "culture": 4,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "brussels-be",
+      "cityName": {
+        "en": "Brussels",
+        "fr": "Bruxelles",
+        "nl": "Brussel"
+      },
+      "cityZoneId": "relation/58274",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 198314,
+      "rank": 4,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 38
+    },
+    {
+      "albumId": "be-liege",
+      "candidateCount": 540,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "liege-be",
+      "cityName": {
+        "en": "Liège",
+        "fr": "Liège",
+        "nl": "Luik"
+      },
+      "cityZoneId": "relation/1681788",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 540,
+      "population": 197323,
+      "rank": 5,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 30,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wallonia-awap": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-schaerbeek",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "culture": 2,
+        "history": 1,
+        "nature": 3
+      },
+      "cityId": "schaerbeek-be",
+      "cityName": {
+        "en": "Schaerbeek",
+        "fr": "Schaerbeek",
+        "nl": "Schaarbeek"
+      },
+      "cityZoneId": "relation/58260",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 129775,
+      "rank": 6,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 13
+    },
+    {
+      "albumId": "be-anderlecht",
+      "candidateCount": 51,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 4,
+        "culture": 4,
+        "nature": 3
+      },
+      "cityId": "anderlecht-be",
+      "cityName": {
+        "en": "Anderlecht",
+        "fr": "Anderlecht",
+        "nl": "Anderlecht"
+      },
+      "cityZoneId": "relation/58254",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 128724,
+      "rank": 7,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 51
+    },
+    {
+      "albumId": "be-bruges",
+      "candidateCount": 312,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 4,
+        "nature": 4
+      },
+      "cityId": "bruges-be",
+      "cityName": {
+        "en": "Bruges",
+        "fr": "Bruges",
+        "nl": "Brugge"
+      },
+      "cityZoneId": "relation/562654",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 312,
+      "population": 120283,
+      "rank": 8,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "flanders-inventaris": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-namur",
+      "candidateCount": 480,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 4,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "namur-be",
+      "cityName": {
+        "en": "Namur",
+        "fr": "Namur",
+        "nl": "Namen"
+      },
+      "cityZoneId": "relation/1405439",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 480,
+      "population": 115029,
+      "rank": 9,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 56,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wallonia-awap": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-leuven",
+      "candidateCount": 515,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 4,
+        "nature": 3
+      },
+      "cityId": "leuven-be",
+      "cityName": {
+        "en": "Leuven",
+        "fr": "Louvain",
+        "nl": "Leuven"
+      },
+      "cityZoneId": "relation/196311",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 515,
+      "population": 104906,
+      "rank": 10,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "flanders-inventaris": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-molenbeek-saint-jean",
+      "candidateCount": 31,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "molenbeek-saint-jean-be",
+      "cityName": {
+        "en": "Molenbeek-Saint-Jean",
+        "fr": "Molenbeek-Saint-Jean",
+        "nl": "Sint-Jans-Molenbeek"
+      },
+      "cityZoneId": "relation/58255",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 98713,
+      "rank": 11,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 31
+    },
+    {
+      "albumId": "be-mons",
+      "candidateCount": 435,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "mons-be",
+      "cityName": {
+        "en": "Mons",
+        "fr": "Mons",
+        "nl": "Bergen"
+      },
+      "cityZoneId": "relation/1949374",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 435,
+      "population": 97120,
+      "rank": 12,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 14,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-aalst",
+      "candidateCount": 323,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "aalst-be",
+      "cityName": {
+        "en": "Aalst",
+        "fr": "Alost",
+        "nl": "Aalst"
+      },
+      "cityZoneId": "relation/912312",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 323,
+      "population": 92131,
+      "rank": 13,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-hasselt",
+      "candidateCount": 101,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "hasselt-be",
+      "cityName": {
+        "en": "Hasselt",
+        "fr": "Hasselt",
+        "nl": "Hasselt"
+      },
+      "cityZoneId": "relation/9521606",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 101,
+      "population": 90249,
+      "rank": 14,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-ixelles",
+      "candidateCount": 68,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "ixelles-be",
+      "cityName": {
+        "en": "Ixelles",
+        "fr": "Ixelles",
+        "nl": "Elsene"
+      },
+      "cityZoneId": "relation/58250",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 89897,
+      "rank": 15,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 68
+    },
+    {
+      "albumId": "be-mechelen",
+      "candidateCount": 457,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "mechelen-be",
+      "cityName": {
+        "en": "Mechelen",
+        "fr": "Malines",
+        "nl": "Mechelen"
+      },
+      "cityZoneId": "relation/412864",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 457,
+      "population": 89655,
+      "rank": 16,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-beveren-kruibeke-zwijndrecht",
+      "candidateCount": 341,
+      "categoryCounts": {
+        "culture": 2,
+        "history": 3,
+        "nature": 3
+      },
+      "cityId": "beveren-kruibeke-zwijndrecht-be",
+      "cityName": {
+        "en": "Beveren-Kruibeke-Zwijndrecht",
+        "fr": "Beveren-Kruibeke-Zwijndrecht",
+        "nl": "Beveren-Kruibeke-Zwijndrecht"
+      },
+      "cityZoneId": "relation/18493532",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 341,
+      "population": 87927,
+      "rank": 17,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-uccle",
+      "candidateCount": 39,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "uccle-be",
+      "cityName": {
+        "en": "Uccle",
+        "fr": "Uccle",
+        "nl": "Ukkel"
+      },
+      "cityZoneId": "relation/58253",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 87194,
+      "rank": 18,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 39
+    },
+    {
+      "albumId": "be-sint-niklaas",
+      "candidateCount": 181,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "sint-niklaas-be",
+      "cityName": {
+        "en": "Sint-Niklaas",
+        "fr": "Sint-Niklaas",
+        "nl": "Sint-Niklaas"
+      },
+      "cityZoneId": "relation/913866",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 181,
+      "population": 82661,
+      "rank": 19,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-la-louviere",
+      "candidateCount": 6,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "culture": 1
+      },
+      "cityId": "la-louviere-be",
+      "cityName": {
+        "en": "La Louvière",
+        "fr": "La Louvière",
+        "nl": "La Louvière"
+      },
+      "cityZoneId": "relation/2083031",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 81674,
+      "rank": 20,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 6
+    },
+    {
+      "albumId": "be-kortrijk",
+      "candidateCount": 268,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "kortrijk-be",
+      "cityName": {
+        "en": "Kortrijk",
+        "fr": "Courtrai",
+        "nl": "Kortrijk"
+      },
+      "cityZoneId": "relation/961284",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 268,
+      "population": 80776,
+      "rank": 21,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 15,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-oostende",
+      "candidateCount": 461,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "oostende-be",
+      "cityName": {
+        "en": "Oostende",
+        "fr": "Ostende",
+        "nl": "Oostende"
+      },
+      "cityZoneId": "relation/1292909",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 461,
+      "population": 72817,
+      "rank": 22,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-tournai",
+      "candidateCount": 990,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "tournai-be",
+      "cityName": {
+        "en": "Tournai",
+        "fr": "Tournai",
+        "nl": "Doornik"
+      },
+      "cityZoneId": "relation/2162970",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 990,
+      "population": 68991,
+      "rank": 23,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 25,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-genk",
+      "candidateCount": 104,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "nature": 3
+      },
+      "cityId": "genk-be",
+      "cityName": {
+        "en": "Genk",
+        "fr": "Genk",
+        "nl": "Genk"
+      },
+      "cityZoneId": "relation/405711",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 104,
+      "population": 68058,
+      "rank": 24,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-roeselare",
+      "candidateCount": 287,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "roeselare-be",
+      "cityName": {
+        "en": "Roeselare",
+        "fr": "Roulers",
+        "nl": "Roeselare"
+      },
+      "cityZoneId": "relation/901849",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 287,
+      "population": 66888,
+      "rank": 25,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-seraing",
+      "candidateCount": 149,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "seraing-be",
+      "cityName": {
+        "en": "Seraing",
+        "fr": "Seraing",
+        "nl": "Seraing"
+      },
+      "cityZoneId": "relation/2435417",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 149,
+      "population": 64609,
+      "rank": 26,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 26,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-woluwe-saint-lambert",
+      "candidateCount": 31,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "woluwe-saint-lambert-be",
+      "cityName": {
+        "en": "Woluwe-Saint-Lambert",
+        "fr": "Woluwe-Saint-Lambert",
+        "nl": "Sint-Lambrechts-Woluwe"
+      },
+      "cityZoneId": "relation/60167",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 60956,
+      "rank": 27,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 31
+    },
+    {
+      "albumId": "be-mouscron",
+      "candidateCount": 16,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "mouscron-be",
+      "cityName": {
+        "en": "Mouscron",
+        "fr": "Mouscron",
+        "nl": "Moeskroen"
+      },
+      "cityZoneId": "relation/1920616",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 60304,
+      "rank": 28,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 16
+    },
+    {
+      "albumId": "be-forest",
+      "candidateCount": 23,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "nature": 3
+      },
+      "cityId": "forest-be",
+      "cityName": {
+        "en": "Forest",
+        "fr": "Forest",
+        "nl": "Vorst"
+      },
+      "cityZoneId": "relation/58249",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 58675,
+      "rank": 29,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 23
+    },
+    {
+      "albumId": "be-verviers",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "verviers-be",
+      "cityName": {
+        "en": "Verviers",
+        "fr": "Verviers",
+        "nl": "Verviers"
+      },
+      "cityZoneId": "relation/2396836",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 56127,
+      "rank": 30,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 37
+    },
+    {
+      "albumId": "be-jette",
+      "candidateCount": 15,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "nature": 3
+      },
+      "cityId": "jette-be",
+      "cityName": {
+        "en": "Jette",
+        "fr": "Jette",
+        "nl": "Jette"
+      },
+      "cityZoneId": "relation/58258",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 54390,
+      "rank": 31,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 15
+    },
+    {
+      "albumId": "be-lokeren",
+      "candidateCount": 252,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "lokeren-be",
+      "cityName": {
+        "en": "Lokeren",
+        "fr": "Lokeren",
+        "nl": "Lokeren"
+      },
+      "cityZoneId": "relation/1325552",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 252,
+      "population": 50606,
+      "rank": 32,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-etterbeek",
+      "candidateCount": 21,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "etterbeek-be",
+      "cityName": {
+        "en": "Etterbeek",
+        "fr": "Etterbeek",
+        "nl": "Etterbeek"
+      },
+      "cityZoneId": "relation/58252",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 49131,
+      "rank": 33,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 21
+    },
+    {
+      "albumId": "be-saint-gilles",
+      "candidateCount": 16,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 2,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "saint-gilles-be",
+      "cityName": {
+        "en": "Saint-Gilles",
+        "fr": "Saint-Gilles",
+        "nl": "Sint-Gillis"
+      },
+      "cityZoneId": "relation/58248",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 48827,
+      "rank": 34,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 16
+    },
+    {
+      "albumId": "be-beringen",
+      "candidateCount": 85,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "beringen-be",
+      "cityName": {
+        "en": "Beringen",
+        "fr": "Beringen",
+        "nl": "Beringen"
+      },
+      "cityZoneId": "relation/1229559",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 85,
+      "population": 48755,
+      "rank": 35,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 66,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-vilvoorde",
+      "candidateCount": 212,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "vilvoorde-be",
+      "cityName": {
+        "en": "Vilvoorde",
+        "fr": "Vilvorde",
+        "nl": "Vilvoorde"
+      },
+      "cityZoneId": "relation/195697",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 212,
+      "population": 48040,
+      "rank": 36,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-turnhout",
+      "candidateCount": 449,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "turnhout-be",
+      "cityName": {
+        "en": "Turnhout",
+        "fr": "Turnhout",
+        "nl": "Turnhout"
+      },
+      "cityZoneId": "relation/1274122",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 449,
+      "population": 47965,
+      "rank": 37,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-dendermonde",
+      "candidateCount": 247,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "dendermonde-be",
+      "cityName": {
+        "en": "Dendermonde",
+        "fr": "Termonde",
+        "nl": "Dendermonde"
+      },
+      "cityZoneId": "relation/913765",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 247,
+      "population": 47539,
+      "rank": 38,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-deinze",
+      "candidateCount": 432,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "deinze-be",
+      "cityName": {
+        "en": "Deinze",
+        "fr": "Deinze",
+        "nl": "Deinze"
+      },
+      "cityZoneId": "relation/611321",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 432,
+      "population": 46026,
+      "rank": 39,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-evere",
+      "candidateCount": 29,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 3
+      },
+      "cityId": "evere-be",
+      "cityName": {
+        "en": "Evere",
+        "fr": "Evere",
+        "nl": "Evere"
+      },
+      "cityZoneId": "relation/60144",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 45892,
+      "rank": 40,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 29
+    },
+    {
+      "albumId": "be-dilbeek",
+      "candidateCount": 261,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "dilbeek-be",
+      "cityName": {
+        "en": "Dilbeek",
+        "fr": "Dilbeek",
+        "nl": "Dilbeek"
+      },
+      "cityZoneId": "relation/225045",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 261,
+      "population": 45069,
+      "rank": 41,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-heist-op-den-berg",
+      "candidateCount": 233,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "heist-op-den-berg-be",
+      "cityName": {
+        "en": "Heist-op-den-Berg",
+        "fr": "Heist-op-den-Berg",
+        "nl": "Heist-op-den-Berg"
+      },
+      "cityZoneId": "relation/1178384",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 233,
+      "population": 44723,
+      "rank": 42,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-tongeren-borgloon",
+      "candidateCount": 441,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "tongeren-borgloon-be",
+      "cityName": {
+        "en": "Tongeren-Borgloon",
+        "fr": "Tongres-Looz",
+        "nl": "Tongeren-Borgloon"
+      },
+      "cityZoneId": "relation/1244996",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 441,
+      "population": 43980,
+      "rank": 43,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 35,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-bilzen-hoeselt",
+      "candidateCount": 317,
+      "categoryCounts": {
+        "culture": 2,
+        "history": 3,
+        "nature": 3
+      },
+      "cityId": "bilzen-hoeselt-be",
+      "cityName": {
+        "en": "Bilzen-Hoeselt",
+        "fr": "Bilzen-Hoeselt",
+        "nl": "Bilzen-Hoeselt"
+      },
+      "cityZoneId": "relation/1246112",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 317,
+      "population": 43052,
+      "rank": 44,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-halle",
+      "candidateCount": 177,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "halle-be",
+      "cityName": {
+        "en": "Halle",
+        "fr": "Hal",
+        "nl": "Halle"
+      },
+      "cityZoneId": "relation/206480",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 177,
+      "population": 42884,
+      "rank": 45,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-woluwe-saint-pierre",
+      "candidateCount": 21,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 3
+      },
+      "cityId": "woluwe-saint-pierre-be",
+      "cityName": {
+        "en": "Woluwe-Saint-Pierre",
+        "fr": "Woluwe-Saint-Pierre",
+        "nl": "Sint-Pieters-Woluwe"
+      },
+      "cityZoneId": "relation/60168",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 42549,
+      "rank": 46,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 21
+    },
+    {
+      "albumId": "be-geel",
+      "candidateCount": 158,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "geel-be",
+      "cityName": {
+        "en": "Geel",
+        "fr": "Geel",
+        "nl": "Geel"
+      },
+      "cityZoneId": "relation/1263541",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 158,
+      "population": 42427,
+      "rank": 47,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-sint-truiden",
+      "candidateCount": 379,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "sint-truiden-be",
+      "cityName": {
+        "en": "Sint-Truiden",
+        "fr": "Saint-Trond",
+        "nl": "Sint-Truiden"
+      },
+      "cityZoneId": "relation/1245886",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 379,
+      "population": 41743,
+      "rank": 48,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-herstal",
+      "candidateCount": 59,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "herstal-be",
+      "cityName": {
+        "en": "Herstal",
+        "fr": "Herstal",
+        "nl": "Herstal"
+      },
+      "cityZoneId": "relation/2399230",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 59,
+      "population": 40834,
+      "rank": 49,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-braine-l-alleud",
+      "candidateCount": 122,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "braine-l-alleud-be",
+      "cityName": {
+        "en": "Braine-l’Alleud",
+        "fr": "Braine-l’Alleud",
+        "nl": "Eigenbrakel"
+      },
+      "cityZoneId": "relation/216218",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 122,
+      "population": 40756,
+      "rank": 50,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 72,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-ninove",
+      "candidateCount": 257,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "ninove-be",
+      "cityName": {
+        "en": "Ninove",
+        "fr": "Ninove",
+        "nl": "Ninove"
+      },
+      "cityZoneId": "relation/912035",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 257,
+      "population": 40580,
+      "rank": 51,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-maasmechelen",
+      "candidateCount": 188,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "maasmechelen-be",
+      "cityName": {
+        "en": "Maasmechelen",
+        "fr": "Maasmechelen",
+        "nl": "Maasmechelen"
+      },
+      "cityZoneId": "relation/965489",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 188,
+      "population": 40486,
+      "rank": 52,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-waregem",
+      "candidateCount": 224,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "waregem-be",
+      "cityName": {
+        "en": "Waregem",
+        "fr": "Waregem",
+        "nl": "Waregem"
+      },
+      "cityZoneId": "relation/898562",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 224,
+      "population": 40436,
+      "rank": 53,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-grimbergen",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "grimbergen-be",
+      "cityName": {
+        "en": "Grimbergen",
+        "fr": "Grimbergen",
+        "nl": "Grimbergen"
+      },
+      "cityZoneId": "relation/112011",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 178,
+      "population": 40062,
+      "rank": 54,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-mol",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "mol-be",
+      "cityName": {
+        "en": "Mol",
+        "fr": "Mol",
+        "nl": "Mol"
+      },
+      "cityZoneId": "relation/1263864",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 178,
+      "population": 38701,
+      "rank": 55,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-lier",
+      "candidateCount": 329,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "lier-be",
+      "cityName": {
+        "en": "Lier",
+        "fr": "Lierre",
+        "nl": "Lier"
+      },
+      "cityZoneId": "relation/964259",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 329,
+      "population": 38517,
+      "rank": 56,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-brasschaat",
+      "candidateCount": 113,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "brasschaat-be",
+      "cityName": {
+        "en": "Brasschaat",
+        "fr": "Brasschaat",
+        "nl": "Brasschaat"
+      },
+      "cityZoneId": "relation/408294",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 113,
+      "population": 38416,
+      "rank": 57,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-merelbeke-melle",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "merelbeke-melle-be",
+      "cityName": {
+        "en": "Merelbeke-Melle",
+        "fr": "Merelbeke-Melle",
+        "nl": "Merelbeke-Melle"
+      },
+      "cityZoneId": "relation/18493670",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 178,
+      "population": 37369,
+      "rank": 58,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 4
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-zaventem",
+      "candidateCount": 143,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "zaventem-be",
+      "cityName": {
+        "en": "Zaventem",
+        "fr": "Zaventem",
+        "nl": "Zaventem"
+      },
+      "cityZoneId": "relation/196184",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 143,
+      "population": 37271,
+      "rank": 59,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-evergem",
+      "candidateCount": 38,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 1
+      },
+      "cityId": "evergem-be",
+      "cityName": {
+        "en": "Evergem",
+        "fr": "Evergem",
+        "nl": "Evergem"
+      },
+      "cityZoneId": "relation/1373256",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 38,
+      "population": 37254,
+      "rank": 60,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 27,
+        "duplicateCoordinate": 0,
+        "duplicateName": 6
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "flanders-inventaris": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-tienen",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "tienen-be",
+      "cityName": {
+        "en": "Tienen",
+        "fr": "Tirlemont",
+        "nl": "Tienen"
+      },
+      "cityZoneId": "relation/454227",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 178,
+      "population": 36890,
+      "rank": 61,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-sint-pieters-leeuw",
+      "candidateCount": 200,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "sint-pieters-leeuw-be",
+      "cityName": {
+        "en": "Sint-Pieters-Leeuw",
+        "fr": "Sint-Pieters-Leeuw",
+        "nl": "Sint-Pieters-Leeuw"
+      },
+      "cityZoneId": "relation/199135",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 200,
+      "population": 36732,
+      "rank": 62,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-chatelet",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "chatelet-be",
+      "cityName": {
+        "en": "Châtelet",
+        "fr": "Châtelet",
+        "nl": "Châtelet"
+      },
+      "cityZoneId": "relation/2147711",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 35979,
+      "rank": 63,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 37
+    },
+    {
+      "albumId": "be-asse",
+      "candidateCount": 220,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "asse-be",
+      "cityName": {
+        "en": "Asse",
+        "fr": "Asse",
+        "nl": "Asse"
+      },
+      "cityZoneId": "relation/225173",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 220,
+      "population": 35882,
+      "rank": 64,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-auderghem",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "history": 3,
+        "nature": 3
+      },
+      "cityId": "auderghem-be",
+      "cityName": {
+        "en": "Auderghem",
+        "fr": "Auderghem",
+        "nl": "Oudergem"
+      },
+      "cityZoneId": "relation/58263",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 35698,
+      "rank": 65,
+      "regionCode": "04000",
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 13
+    },
+    {
+      "albumId": "be-ieper",
+      "candidateCount": 632,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "ieper-be",
+      "cityName": {
+        "en": "Ieper",
+        "fr": "Ypres",
+        "nl": "Ieper"
+      },
+      "cityZoneId": "relation/1169202",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 632,
+      "population": 35587,
+      "rank": 66,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-wavre",
+      "candidateCount": 139,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "wavre-be",
+      "cityName": {
+        "en": "Wavre",
+        "fr": "Wavre",
+        "nl": "Waver"
+      },
+      "cityZoneId": "relation/224757",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 139,
+      "population": 35581,
+      "rank": 67,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-geraardsbergen",
+      "candidateCount": 307,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "geraardsbergen-be",
+      "cityName": {
+        "en": "Geraardsbergen",
+        "fr": "Grammont",
+        "nl": "Geraardsbergen"
+      },
+      "cityZoneId": "relation/414561",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 307,
+      "population": 35236,
+      "rank": 68,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-lommel",
+      "candidateCount": 87,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "lommel-be",
+      "cityName": {
+        "en": "Lommel",
+        "fr": "Lommel",
+        "nl": "Lommel"
+      },
+      "cityZoneId": "relation/1225860",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 87,
+      "population": 35208,
+      "rank": 69,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-heusden-zolder",
+      "candidateCount": 48,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "heusden-zolder-be",
+      "cityName": {
+        "en": "Heusden-Zolder",
+        "fr": "Heusden-Zolder",
+        "nl": "Heusden-Zolder"
+      },
+      "cityZoneId": "relation/1245638",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 48,
+      "population": 34985,
+      "rank": 70,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-schoten",
+      "candidateCount": 63,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "schoten-be",
+      "cityName": {
+        "en": "Schoten",
+        "fr": "Schoten",
+        "nl": "Schoten"
+      },
+      "cityZoneId": "relation/408297",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 63,
+      "population": 34926,
+      "rank": 71,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-pelt",
+      "candidateCount": 177,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "pelt-be",
+      "cityName": {
+        "en": "Pelt",
+        "fr": "Pelt",
+        "nl": "Pelt"
+      },
+      "cityZoneId": "relation/1225888",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 177,
+      "population": 34635,
+      "rank": 72,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 25,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-menen",
+      "candidateCount": 213,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "menen-be",
+      "cityName": {
+        "en": "Menen",
+        "fr": "Menin",
+        "nl": "Menen"
+      },
+      "cityZoneId": "relation/1335275",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 213,
+      "population": 34585,
+      "rank": 73,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-binche",
+      "candidateCount": 6,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 1,
+        "history": 3
+      },
+      "cityId": "binche-be",
+      "cityName": {
+        "en": "Binche",
+        "fr": "Binche",
+        "nl": "Binche"
+      },
+      "cityZoneId": "relation/2077347",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 33784,
+      "rank": 74,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 6
+    },
+    {
+      "albumId": "be-oudenaarde",
+      "candidateCount": 293,
+      "categoryCounts": {
+        "culture": 2,
+        "history": 3,
+        "nature": 3
+      },
+      "cityId": "oudenaarde-be",
+      "cityName": {
+        "en": "Oudenaarde",
+        "fr": "Audenarde",
+        "nl": "Oudenaarde"
+      },
+      "cityZoneId": "relation/416207",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 293,
+      "population": 32930,
+      "rank": 75,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-knokke-heist",
+      "candidateCount": 534,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "knokke-heist-be",
+      "cityName": {
+        "en": "Knokke-Heist",
+        "fr": "Knokke-Heist",
+        "nl": "Knokke-Heist"
+      },
+      "cityZoneId": "relation/4569",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 534,
+      "population": 32415,
+      "rank": 76,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 15,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-wevelgem",
+      "candidateCount": 98,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "wevelgem-be",
+      "cityName": {
+        "en": "Wevelgem",
+        "fr": "Wevelgem",
+        "nl": "Wevelgem"
+      },
+      "cityZoneId": "relation/1334826",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 98,
+      "population": 31940,
+      "rank": 77,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-tielt",
+      "candidateCount": 372,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "tielt-be",
+      "cityName": {
+        "en": "Tielt",
+        "fr": "Tielt",
+        "nl": "Tielt"
+      },
+      "cityZoneId": "relation/1322971",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 372,
+      "population": 31908,
+      "rank": 78,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-ottignies-louvain-la-neuve",
+      "candidateCount": 107,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "ottignies-louvain-la-neuve-be",
+      "cityName": {
+        "en": "Ottignies-Louvain-la-Neuve",
+        "fr": "Ottignies-Louvain-la-Neuve",
+        "nl": "Ottignies-Louvain-la-Neuve"
+      },
+      "cityZoneId": "relation/222516",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 107,
+      "population": 31766,
+      "rank": 79,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 16,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wallonia-awap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-temse",
+      "candidateCount": 97,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "temse-be",
+      "cityName": {
+        "en": "Temse",
+        "fr": "Tamise",
+        "nl": "Temse"
+      },
+      "cityZoneId": "relation/391217",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 97,
+      "population": 31613,
+      "rank": 80,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-aarschot",
+      "candidateCount": 101,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "aarschot-be",
+      "cityName": {
+        "en": "Aarschot",
+        "fr": "Aarschot",
+        "nl": "Aarschot"
+      },
+      "cityZoneId": "relation/929868",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 101,
+      "population": 31514,
+      "rank": 81,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-arlon",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "arlon-be",
+      "cityName": {
+        "en": "Arlon",
+        "fr": "Arlon",
+        "nl": "Aarlen"
+      },
+      "cityZoneId": "relation/2431399",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 31492,
+      "rank": 82,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 13
+    },
+    {
+      "albumId": "be-courcelles",
+      "candidateCount": 24,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 2,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "courcelles-be",
+      "cityName": {
+        "en": "Courcelles",
+        "fr": "Courcelles",
+        "nl": "Courcelles"
+      },
+      "cityZoneId": "relation/2153672",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 31436,
+      "rank": 83,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 24
+    },
+    {
+      "albumId": "be-houthalen-helchteren",
+      "candidateCount": 91,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "houthalen-helchteren-be",
+      "cityName": {
+        "en": "Houthalen-Helchteren",
+        "fr": "Houthalen-Helchteren",
+        "nl": "Houthalen-Helchteren"
+      },
+      "cityZoneId": "relation/1245642",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 91,
+      "population": 30945,
+      "rank": 84,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-lochristi",
+      "candidateCount": 194,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "lochristi-be",
+      "cityName": {
+        "en": "Lochristi",
+        "fr": "Lochristi",
+        "nl": "Lochristi"
+      },
+      "cityZoneId": "relation/1335100",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 194,
+      "population": 30916,
+      "rank": 85,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-brecht",
+      "candidateCount": 69,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "brecht-be",
+      "cityName": {
+        "en": "Brecht",
+        "fr": "Brecht",
+        "nl": "Brecht"
+      },
+      "cityZoneId": "relation/1277957",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 69,
+      "population": 30664,
+      "rank": 86,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-tessenderlo-ham",
+      "candidateCount": 35,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "tessenderlo-ham-be",
+      "cityName": {
+        "en": "Tessenderlo-Ham",
+        "fr": "Tessenderlo-Ham",
+        "nl": "Tessenderlo-Ham"
+      },
+      "cityZoneId": "relation/1229644",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 35,
+      "population": 30645,
+      "rank": 87,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-waterloo",
+      "candidateCount": 30,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "waterloo-be",
+      "cityName": {
+        "en": "Waterloo",
+        "fr": "Waterloo",
+        "nl": "Waterloo"
+      },
+      "cityZoneId": "relation/191673",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 30,
+      "population": 30389,
+      "rank": 88,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "wallonia-awap": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-harelbeke",
+      "candidateCount": 80,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "harelbeke-be",
+      "cityName": {
+        "en": "Harelbeke",
+        "fr": "Harelbeke",
+        "nl": "Harelbeke"
+      },
+      "cityZoneId": "relation/960123",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 80,
+      "population": 30311,
+      "rank": 89,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "be-ath",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 1,
+        "history": 3
+      },
+      "cityId": "ath-be",
+      "cityName": {
+        "en": "Ath",
+        "fr": "Ath",
+        "nl": "Aat"
+      },
+      "cityZoneId": "relation/2165493",
+      "curated": false,
+      "localLanguage": "fr",
+      "officialCandidateCount": 0,
+      "population": 30123,
+      "rank": 90,
+      "regionCode": "03000",
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 13
+    },
+    {
+      "albumId": "be-aalter",
+      "candidateCount": 366,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "aalter-be",
+      "cityName": {
+        "en": "Aalter",
+        "fr": "Aalter",
+        "nl": "Aalter"
+      },
+      "cityZoneId": "relation/721879",
+      "curated": false,
+      "localLanguage": "nl",
+      "officialCandidateCount": 366,
+      "population": 29830,
+      "rank": 91,
+      "regionCode": "02000",
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "flanders-inventaris": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    }
+  ],
+  "artifact": {
+    "compressedBytes": 66511,
+    "medalCount": 782,
+    "sha256": "fde5911931337c375d67283e6ce93911fc43caf9119c63a464f9428f06aa9d7f",
+    "uncompressedBytes": 762005,
+    "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/be-v1.json.gz"
+  }
+}

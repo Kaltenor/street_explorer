@@ -1,0 +1,106 @@
+{
+  "cityCode": "0599",
+  "reviewedAt": "2026-08-09",
+  "medals": [
+    {
+      "source": "dutch-rce", "id": "32783", "category": "culture",
+      "name": { "en": "Grote or Saint Lawrence Church", "fr": "Grande église Saint-Laurent", "nl": "Grote of Sint-Laurenskerk" },
+      "description": { "en": "Rotterdam’s principal medieval church survived as a central monument after the destruction of the old city.", "fr": "La principale église médiévale de Rotterdam demeura un monument central après la destruction de la vieille ville.", "nl": "De belangrijkste middeleeuwse kerk van Rotterdam bleef na de verwoesting van de oude stad als centraal monument behouden." }
+    },
+    {
+      "source": "dutch-rce", "id": "513763", "category": "history",
+      "name": { "en": "Rotterdam City Hall", "fr": "Hôtel de ville de Rotterdam", "nl": "Stadhuis Rotterdam" },
+      "description": { "en": "The monumental early-twentieth-century city hall is one of the prominent historic buildings on Coolsingel.", "fr": "Ce monumental hôtel de ville du début du XXe siècle est l’un des édifices historiques majeurs du Coolsingel.", "nl": "Het monumentale vroegtwintigste-eeuwse stadhuis is een van de beeldbepalende historische gebouwen aan de Coolsingel." }
+    },
+    {
+      "source": "dutch-rce", "id": "334003", "category": "architecture",
+      "name": { "en": "White House", "fr": "Maison Blanche", "nl": "Witte Huis" },
+      "description": { "en": "Completed in 1898, the White House was an unusually tall European office building for its period.", "fr": "Achevée en 1898, la Maison Blanche était un immeuble de bureaux exceptionnellement élevé pour l’Europe de son époque.", "nl": "Het Witte Huis uit 1898 was voor zijn tijd een uitzonderlijk hoog Europees kantoorgebouw." }
+    },
+    {
+      "source": "dutch-rce", "id": "521881", "category": "architecture",
+      "name": { "en": "Van Nelle Factory", "fr": "Usine Van Nelle", "nl": "Van Nellefabriek" },
+      "description": { "en": "This light-filled modernist factory complex became an international landmark of industrial architecture.", "fr": "Ce complexe industriel moderniste baigné de lumière est devenu une référence internationale de l’architecture industrielle.", "nl": "Dit lichte modernistische fabriekscomplex groeide uit tot een internationaal icoon van de industriële architectuur." }
+    },
+    {
+      "source": "dutch-rce", "id": "513922", "category": "architecture",
+      "name": { "en": "De Hef", "fr": "De Hef", "nl": "De Hef" },
+      "description": { "en": "The former railway lift bridge remains a powerful monument to Rotterdam’s harbour and engineering history.", "fr": "Cet ancien pont levant ferroviaire demeure un puissant symbole de l’histoire portuaire et technique de Rotterdam.", "nl": "De voormalige spoorhefbrug blijft een krachtig monument van de Rotterdamse haven- en techniekgeschiedenis." }
+    },
+    {
+      "source": "dutch-rce", "id": "513878", "category": "art",
+      "name": { "en": "Museum Boijmans Van Beuningen", "fr": "Musée Boijmans Van Beuningen", "nl": "Museum Boijmans Van Beuningen" },
+      "description": { "en": "The purpose-built museum is a major Rotterdam landmark for collections spanning historic to modern art.", "fr": "Ce musée construit pour sa fonction est un haut lieu de Rotterdam, avec des collections de l’art ancien à l’art moderne.", "nl": "Het speciaal ontworpen museum is een belangrijk Rotterdams herkenningspunt voor collecties van oude tot moderne kunst." }
+    },
+    {
+      "source": "dutch-rce", "id": "513886", "category": "art",
+      "name": { "en": "Chabot Museum", "fr": "Musée Chabot", "nl": "Chabot Museum" },
+      "description": { "en": "A modernist white villa in Museumpark houses a museum devoted to Dutch expressionist art.", "fr": "Une villa moderniste blanche du Museumpark abrite un musée consacré à l’expressionnisme néerlandais.", "nl": "Een witte modernistische villa in het Museumpark huisvest een museum voor Nederlandse expressionistische kunst." }
+    },
+    {
+      "source": "dutch-rce", "id": "513906", "category": "culture",
+      "name": { "en": "Norwegian Seamen’s Church", "fr": "Église norvégienne des marins", "nl": "Noorse Zeemanskerk" },
+      "description": { "en": "The wooden church reflects Rotterdam’s maritime connections and historic Norwegian seafaring community.", "fr": "Cette église en bois témoigne des liens maritimes de Rotterdam et de son ancienne communauté norvégienne de marins.", "nl": "De houten kerk weerspiegelt de maritieme banden van Rotterdam en de historische Noorse zeemansgemeenschap." }
+    },
+    {
+      "source": "dutch-rce", "id": "513882", "category": "culture",
+      "name": { "en": "Remonstrant Church", "fr": "Église remontrante", "nl": "Remonstrantse Kerk" },
+      "description": { "en": "This richly composed church is a surviving religious landmark on Rotterdam’s Westersingel.", "fr": "Cette église à la composition riche est un monument religieux préservé du Westersingel.", "nl": "Deze rijk vormgegeven kerk is een bewaard religieus monument aan de Rotterdamse Westersingel." }
+    },
+    {
+      "source": "dutch-rce", "id": "528423", "category": "nature",
+      "name": { "en": "Het Park", "fr": "Het Park", "nl": "Het Park" },
+      "description": { "en": "The nineteenth-century landscape park near the Maas provides a historic green counterpoint to the harbour city.", "fr": "Ce parc paysager du XIXe siècle près de la Meuse offre un contrepoint historique et verdoyant à la ville portuaire.", "nl": "Het negentiende-eeuwse landschapspark bij de Maas vormt een historische groene tegenhanger van de havenstad." }
+    },
+    {
+      "source": "dutch-rce", "id": "513889", "category": "nature",
+      "name": { "en": "Schoonoord Historic Garden", "fr": "Jardin historique Schoonoord", "nl": "Historische Tuin Schoonoord" },
+      "description": { "en": "This enclosed historic garden preserves a quiet nineteenth-century landscape design near Museumpark.", "fr": "Ce jardin historique clos conserve un paisible aménagement paysager du XIXe siècle près du Museumpark.", "nl": "Deze besloten historische tuin bewaart een rustig negentiende-eeuws landschapsontwerp bij het Museumpark." }
+    },
+    {
+      "source": "dutch-rce", "id": "32869", "category": "history",
+      "name": { "en": "Historic Delfshaven Town Hall", "fr": "Ancien hôtel de ville de Delfshaven", "nl": "Historisch Stadhuis Delfshaven" },
+      "description": { "en": "The former Delfshaven town hall recalls the period when the harbour settlement was an independent municipality.", "fr": "L’ancien hôtel de ville rappelle l’époque où le port de Delfshaven formait une commune indépendante.", "nl": "Het voormalige stadhuis herinnert aan de tijd dat de havenplaats Delfshaven een zelfstandige gemeente was." }
+    },
+    {
+      "source": "dutch-rce", "id": "32871", "category": "culture",
+      "name": { "en": "Pilgrim Fathers Church", "fr": "Église des Pères pèlerins", "nl": "Pelgrimvaderskerk" },
+      "description": { "en": "The historic church in Delfshaven is associated with the English Separatists who departed for America.", "fr": "Cette église historique de Delfshaven est liée aux séparatistes anglais partis vers l’Amérique.", "nl": "De historische kerk in Delfshaven is verbonden met de Engelse separatisten die naar Amerika vertrokken." }
+    },
+    {
+      "source": "dutch-rce", "id": "32880", "category": "architecture",
+      "name": { "en": "De Distilleerketel Windmill", "fr": "Moulin De Distilleerketel", "nl": "Molen De Distilleerketel" },
+      "description": { "en": "The reconstructed tower mill at Delfshaven continues Rotterdam’s historic grain-milling landscape.", "fr": "Ce moulin-tour reconstruit à Delfshaven perpétue le paysage historique de la meunerie rotterdamoise.", "nl": "De herbouwde stellingmolen in Delfshaven zet het historische Rotterdamse molenlandschap voort." }
+    },
+    {
+      "source": "dutch-rce", "id": "524305", "category": "culture",
+      "name": { "en": "Sparta Castle", "fr": "Château du Sparta", "nl": "Spartakasteel" },
+      "description": { "en": "The distinctive clubhouse forms the historic heart of Sparta Rotterdam’s Het Kasteel stadium.", "fr": "Ce pavillon caractéristique forme le cœur historique du stade Het Kasteel du Sparta Rotterdam.", "nl": "Het karakteristieke clubgebouw vormt het historische hart van Sparta Rotterdams stadion Het Kasteel." }
+    },
+    {
+      "source": "dutch-rce", "id": "532212", "category": "culture",
+      "name": { "en": "De Doelen", "fr": "De Doelen", "nl": "De Doelen" },
+      "description": { "en": "The post-war concert and congress building is a key cultural monument of reconstructed Rotterdam.", "fr": "Cette salle de concert et de congrès d’après-guerre est un monument culturel majeur de la reconstruction de Rotterdam.", "nl": "Het naoorlogse concert- en congresgebouw is een belangrijk cultuurmonument van de Rotterdamse wederopbouw." }
+    },
+    {
+      "source": "dutch-rce", "id": "530841", "category": "culture",
+      "name": { "en": "Thalia Theatre", "fr": "Cinéma Thalia", "nl": "Thalia Theater" },
+      "description": { "en": "The former cinema preserves an expressive example of Rotterdam’s twentieth-century entertainment architecture.", "fr": "Cet ancien cinéma conserve un exemple expressif de l’architecture de loisirs rotterdamoise du XXe siècle.", "nl": "De voormalige bioscoop bewaart een expressief voorbeeld van de twintigste-eeuwse Rotterdamse uitgaansarchitectuur." }
+    },
+    {
+      "source": "dutch-rce", "id": "513925", "category": "architecture",
+      "name": { "en": "Koninginnebrug", "fr": "Koninginnebrug", "nl": "Koninginnebrug" },
+      "description": { "en": "The bascule bridge links Noordereiland with the south bank as part of Rotterdam’s historic river infrastructure.", "fr": "Ce pont basculant relie Noordereiland à la rive sud dans le réseau fluvial historique de Rotterdam.", "nl": "De basculebrug verbindt het Noordereiland met de zuidoever als onderdeel van de historische rivierinfrastructuur." }
+    },
+    {
+      "source": "dutch-rce", "id": "513927", "category": "history",
+      "name": { "en": "De Vijf Werelddelen", "fr": "De Vijf Werelddelen", "nl": "De Vijf Werelddelen" },
+      "description": { "en": "The former bonded warehouse complex records the trading history of Rotterdam’s Entrepothaven.", "fr": "Cet ancien complexe d’entrepôts sous douane témoigne de l’histoire commerciale de l’Entrepothaven.", "nl": "Het voormalige vrije-entrepotcomplex vertelt de handelsgeschiedenis van de Rotterdamse Entrepothaven." }
+    },
+    {
+      "source": "dutch-rce", "id": "527208", "category": "history",
+      "name": { "en": "Fort aan den Hoek van Holland", "fr": "Fort de Hoek van Holland", "nl": "Fort aan den Hoek van Holland" },
+      "description": { "en": "The coastal fort guarded the Nieuwe Waterweg and represents the military history of greater Rotterdam.", "fr": "Ce fort côtier protégeait la Nieuwe Waterweg et représente l’histoire militaire du territoire rotterdamois.", "nl": "Het kustfort bewaakte de Nieuwe Waterweg en vertegenwoordigt de militaire geschiedenis van de gemeente Rotterdam." }
+    }
+  ]
+}

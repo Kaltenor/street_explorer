@@ -1,0 +1,106 @@
+{
+  "cityCode": "0363",
+  "reviewedAt": "2026-08-09",
+  "medals": [
+    {
+      "source": "dutch-rce", "id": "5941", "category": "history",
+      "name": { "en": "Royal Palace Amsterdam", "fr": "Palais royal d’Amsterdam", "nl": "Koninklijk Paleis Amsterdam" },
+      "description": { "en": "The seventeenth-century former city hall on Dam Square later became Amsterdam’s royal palace.", "fr": "L’ancien hôtel de ville du XVIIe siècle sur la place du Dam devint ensuite le palais royal d’Amsterdam.", "nl": "Het zeventiende-eeuwse stadhuis op de Dam werd later het Koninklijk Paleis van Amsterdam." }
+    },
+    {
+      "source": "dutch-rce", "id": "5680", "category": "art",
+      "name": { "en": "Rijksmuseum", "fr": "Rijksmuseum", "nl": "Rijksmuseum" },
+      "description": { "en": "Pierre Cuypers designed this national museum building for the Dutch art and history collections.", "fr": "Pierre Cuypers conçut ce musée national consacré aux collections d’art et d’histoire des Pays-Bas.", "nl": "Pierre Cuypers ontwierp dit nationale museumgebouw voor de Nederlandse kunst- en geschiedeniscollecties." }
+    },
+    {
+      "source": "dutch-rce", "id": "4296", "category": "history",
+      "name": { "en": "Anne Frank House", "fr": "Maison Anne Frank", "nl": "Anne Frank Huis" },
+      "description": { "en": "The canal house preserves the Secret Annex where Anne Frank and seven others hid during the occupation.", "fr": "Cette maison de canal conserve l’Annexe où Anne Frank et sept autres personnes se cachèrent pendant l’Occupation.", "nl": "Het grachtenpand bewaart het Achterhuis waar Anne Frank en zeven anderen tijdens de bezetting ondergedoken zaten." }
+    },
+    {
+      "source": "dutch-rce", "id": "3990", "category": "culture",
+      "name": { "en": "Oude Kerk", "fr": "Oude Kerk", "nl": "Oude Kerk" },
+      "description": { "en": "Amsterdam’s oldest surviving building grew from a medieval parish church beside the Oudezijds Voorburgwal.", "fr": "Le plus ancien bâtiment conservé d’Amsterdam s’est développé autour d’une église paroissiale médiévale.", "nl": "Het oudste bewaard gebleven gebouw van Amsterdam groeide uit een middeleeuwse parochiekerk aan de Oudezijds Voorburgwal." }
+    },
+    {
+      "source": "dutch-rce", "id": "5940", "category": "culture",
+      "name": { "en": "Nieuwe Kerk", "fr": "Nieuwe Kerk", "nl": "Nieuwe Kerk" },
+      "description": { "en": "This late-Gothic church on Dam Square is associated with Dutch royal inaugurations and national ceremonies.", "fr": "Cette église gothique tardive du Dam accueille des investitures royales et des cérémonies nationales.", "nl": "Deze laatgotische kerk op de Dam is verbonden met koninklijke inhuldigingen en nationale plechtigheden." }
+    },
+    {
+      "source": "dutch-rce", "id": "4298", "category": "culture",
+      "name": { "en": "Westerkerk", "fr": "Westerkerk", "nl": "Westerkerk" },
+      "description": { "en": "The seventeenth-century Westerkerk and its Westertoren form a defining landmark of the Jordaan skyline.", "fr": "La Westerkerk du XVIIe siècle et sa tour dominent la silhouette du Jordaan.", "nl": "De zeventiende-eeuwse Westerkerk en haar Westertoren bepalen de skyline van de Jordaan." }
+    },
+    {
+      "source": "dutch-rce", "id": "3716", "category": "culture",
+      "name": { "en": "Portuguese Synagogue", "fr": "Synagogue portugaise", "nl": "Portugese Synagoge" },
+      "description": { "en": "The monumental seventeenth-century synagogue reflects Amsterdam’s historic Portuguese-Jewish community.", "fr": "Cette synagogue monumentale du XVIIe siècle témoigne de l’histoire de la communauté juive portugaise d’Amsterdam.", "nl": "De monumentale zeventiende-eeuwse synagoge weerspiegelt de geschiedenis van de Portugees-Joodse gemeenschap van Amsterdam." }
+    },
+    {
+      "source": "dutch-rce", "id": "3848", "category": "history",
+      "name": { "en": "De Waag", "fr": "De Waag", "nl": "De Waag" },
+      "description": { "en": "Originally a medieval city gate, De Waag later served Amsterdam’s weigh house and craft guilds.", "fr": "D’abord porte médiévale, De Waag devint ensuite la maison de pesage et le siège de corporations.", "nl": "De Waag was eerst een middeleeuwse stadspoort en diende later als waaggebouw en gildehuis." }
+    },
+    {
+      "source": "dutch-rce", "id": "3729", "category": "history",
+      "name": { "en": "Munttoren", "fr": "Munttoren", "nl": "Munttoren" },
+      "description": { "en": "The Mint Tower incorporates a surviving gate tower from Amsterdam’s former city wall.", "fr": "La tour de la Monnaie intègre une ancienne tour-porte des fortifications d’Amsterdam.", "nl": "De Munttoren bevat een bewaard gebleven poorttoren van de voormalige Amsterdamse stadsmuur." }
+    },
+    {
+      "source": "dutch-rce", "id": "2205", "category": "history",
+      "name": { "en": "National Maritime Museum", "fr": "Musée maritime national", "nl": "Het Scheepvaartmuseum" },
+      "description": { "en": "The museum occupies the seventeenth-century Admiralty storehouse beside Amsterdam’s former harbour.", "fr": "Le musée occupe l’ancien arsenal de l’Amirauté du XVIIe siècle près du vieux port.", "nl": "Het museum is gevestigd in het zeventiende-eeuwse magazijn van de Admiraliteit bij de voormalige haven." }
+    },
+    {
+      "source": "dutch-rce", "id": "288", "category": "culture",
+      "name": { "en": "Royal Concertgebouw", "fr": "Concertgebouw royal", "nl": "Koninklijk Concertgebouw" },
+      "description": { "en": "Opened in 1888, the Concertgebouw is internationally known for its concert halls and acoustics.", "fr": "Ouvert en 1888, le Concertgebouw est réputé dans le monde entier pour ses salles et leur acoustique.", "nl": "Het Concertgebouw opende in 1888 en is internationaal bekend om zijn concertzalen en akoestiek." }
+    },
+    {
+      "source": "dutch-rce", "id": "505840", "category": "art",
+      "name": { "en": "Stedelijk Museum Amsterdam", "fr": "Stedelijk Museum Amsterdam", "nl": "Stedelijk Museum Amsterdam" },
+      "description": { "en": "The historic Museumplein building houses Amsterdam’s museum of modern and contemporary art and design.", "fr": "Le bâtiment historique du Museumplein abrite le musée d’art moderne, contemporain et de design d’Amsterdam.", "nl": "Het historische gebouw aan het Museumplein huisvest Amsterdams museum voor moderne en hedendaagse kunst en vormgeving." }
+    },
+    {
+      "source": "dutch-rce", "id": "526987", "category": "culture",
+      "name": { "en": "Tropenmuseum", "fr": "Tropenmuseum", "nl": "Tropenmuseum" },
+      "description": { "en": "This monumental museum and institute building was created for collections concerning cultures around the world.", "fr": "Ce monumental musée et institut fut créé pour présenter des collections consacrées aux cultures du monde.", "nl": "Dit monumentale museum- en instituutsgebouw werd opgericht voor collecties over culturen uit de hele wereld." }
+    },
+    {
+      "source": "dutch-rce", "id": "6107", "category": "culture",
+      "name": { "en": "Our Lord in the Attic", "fr": "Notre-Seigneur au grenier", "nl": "Ons’ Lieve Heer op Solder" },
+      "description": { "en": "A complete seventeenth-century hidden Catholic church survives in the upper floors of these canal houses.", "fr": "Une église catholique clandestine complète du XVIIe siècle subsiste dans les étages de ces maisons de canal.", "nl": "In de bovenverdiepingen van deze grachtenpanden bleef een complete zeventiende-eeuwse schuilkerk bewaard." }
+    },
+    {
+      "source": "dutch-rce", "id": "518383", "category": "architecture",
+      "name": { "en": "Magere Brug", "fr": "Magere Brug", "nl": "Magere Brug" },
+      "description": { "en": "The traditional white wooden drawbridge across the Amstel is one of Amsterdam’s best-known bridges.", "fr": "Ce pont-levis traditionnel en bois blanc sur l’Amstel est l’un des ponts les plus célèbres d’Amsterdam.", "nl": "De traditionele witte houten ophaalbrug over de Amstel is een van de bekendste bruggen van Amsterdam." }
+    },
+    {
+      "source": "dutch-rce", "id": "504839", "category": "nature",
+      "name": { "en": "Vondelpark", "fr": "Vondelpark", "nl": "Vondelpark" },
+      "description": { "en": "Amsterdam’s nineteenth-century landscape park combines winding paths, water, lawns, and historic structures.", "fr": "Ce parc paysager du XIXe siècle réunit chemins sinueux, plans d’eau, pelouses et constructions historiques.", "nl": "Dit negentiende-eeuwse landschapspark combineert slingerpaden, waterpartijen, grasvelden en historische bouwwerken." }
+    },
+    {
+      "source": "dutch-rce", "id": "518276", "category": "nature",
+      "name": { "en": "Hortus Botanicus Amsterdam", "fr": "Jardin botanique d’Amsterdam", "nl": "Hortus Botanicus Amsterdam" },
+      "description": { "en": "Amsterdam’s historic botanical garden preserves a long tradition of plant study and cultivation.", "fr": "Le jardin botanique historique d’Amsterdam perpétue une longue tradition d’étude et de culture des plantes.", "nl": "De historische botanische tuin van Amsterdam bewaart een lange traditie van plantenstudie en -teelt." }
+    },
+    {
+      "source": "dutch-rce", "id": "532241", "category": "history",
+      "name": { "en": "Hollandsche Schouwburg", "fr": "Hollandsche Schouwburg", "nl": "Hollandsche Schouwburg" },
+      "description": { "en": "The former theatre is a memorial site connected with the persecution and deportation of Amsterdam’s Jewish population.", "fr": "Cet ancien théâtre est un lieu de mémoire lié à la persécution et à la déportation de la population juive d’Amsterdam.", "nl": "De voormalige schouwburg is een herdenkingsplaats voor de vervolging en deportatie van de Joodse bevolking van Amsterdam." }
+    },
+    {
+      "source": "dutch-rce", "id": "1107", "category": "architecture",
+      "name": { "en": "De Gooyer Windmill", "fr": "Moulin De Gooyer", "nl": "Molen De Gooyer" },
+      "description": { "en": "The tall wooden smock mill is a prominent survivor of Amsterdam’s historic windmill landscape.", "fr": "Ce haut moulin-tour en bois est un témoin majeur du paysage historique des moulins d’Amsterdam.", "nl": "De hoge houten stellingmolen is een markante overlever van het historische Amsterdamse molenlandschap." }
+    },
+    {
+      "source": "dutch-rce", "id": "6400", "category": "culture",
+      "name": { "en": "Paradiso", "fr": "Paradiso", "nl": "Paradiso" },
+      "description": { "en": "A former nineteenth-century church became one of Amsterdam’s defining music and cultural venues.", "fr": "Cette ancienne église du XIXe siècle est devenue l’une des salles musicales et culturelles emblématiques d’Amsterdam.", "nl": "Een voormalige negentiende-eeuwse kerk werd een van de bepalende muziek- en cultuurpodia van Amsterdam." }
+    }
+  ]
+}

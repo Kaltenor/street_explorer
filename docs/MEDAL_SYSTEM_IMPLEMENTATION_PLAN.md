@@ -7,9 +7,10 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.22.3)
+## Current shipped medal contract (v0.23.1)
 
 - The frozen offline catalogue contains 851 medals across metropolitan France's INSEE 2023 top 100 communes. Paris v2 contains 60 reviewed landmarks covering every arrondissement; Lyon v1 contains 20 and Villeurbanne v1 contains 14.
+- Belgium, Germany, Italy, the Netherlands, and Spain are versioned downloadable country packs. Their compact pinned manifest ships with the app; gzip payloads are size- and SHA-256-verified, schema-validated, atomically cached, and reusable offline. A failed download leaves non-medal map hydration available and exposes an explicit retry state.
 - City and parent-district objectives resolve one active album through the lazy generated manifest. Definitions seed only when that city is opened; unsupported cities receive no fallback album.
 - Live, Stop, and recovery evaluation is active-city scoped and uses normal gameplay closure: an 80m minimum, exact-contour-first plus one-cell seam tolerance, accepted finalized inferred geometry, a strict-interior anchor, and the 150,000m2 walking cap. Previously mapped ground does not invalidate a newly walked qualifying loop.
 - Historical scans are explicit, per-album, spatial, incremental, and definition-versioned. An unchanged scan loads zero walks; new albums never scan silently.

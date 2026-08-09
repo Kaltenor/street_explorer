@@ -1,0 +1,3964 @@
+{
+  "countryCode": "it",
+  "generatedAt": "2026-08-09T01:30:44.392Z",
+  "methodology": {
+    "citySelection": "Top 100 municipalities by official ISTAT 2025 resident population",
+    "maximumCityCount": 100,
+    "minimumMedalsPerCity": 5,
+    "coordinateBounds": "35..48 latitude and 6..19 longitude",
+    "populationDefinition": "ISTAT resident population at 1 January 2025; age 999 aggregate rows only",
+    "primaryCandidateSource": "MiC/ICCD ArCo coordinate-bearing immovable cultural properties",
+    "sparseCityFallback": "Coordinate-bearing Wikidata landmarks when fewer than 12 eligible ICCD candidates were available"
+  },
+  "expansion": {
+    "capReached": true,
+    "cityCount": 100,
+    "nationalMunicipalityCount": 7896,
+    "nationalPopulation": 58943464,
+    "population": 17965321,
+    "populationCoverage": 0.30478902631172133
+  },
+  "sources": {
+    "arco": {
+      "attemptedBatchCount": 20,
+      "endpoint": "https://dati.cultura.gov.it/sparql",
+      "failedBatches": [
+        {
+          "cityCodes": [
+            "058091",
+            "015146",
+            "063049",
+            "001272",
+            "082053"
+          ],
+          "error": "Official ArCo endpoint unavailable during generation (request timeout)."
+        },
+        {
+          "cityCodes": [
+            "010025",
+            "037006",
+            "048017",
+            "072006",
+            "087015"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "023091",
+            "027042",
+            "083048",
+            "028060",
+            "017029"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "034027",
+            "032006",
+            "100005",
+            "073027",
+            "036023"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "035033",
+            "080063",
+            "054039",
+            "039014",
+            "049009"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "099014",
+            "092009",
+            "071024",
+            "038008",
+            "059011"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "065116",
+            "063034",
+            "108033",
+            "090064",
+            "016024"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "022205",
+            "068028",
+            "040012",
+            "089017",
+            "024116"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "021008",
+            "055032",
+            "033032",
+            "003106",
+            "042002"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "030129",
+            "110001",
+            "051002",
+            "040007",
+            "041044"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "075035",
+            "011015",
+            "006003",
+            "110002",
+            "050026"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "058047",
+            "046017",
+            "047014",
+            "026086",
+            "012026"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "079023",
+            "013075",
+            "058120",
+            "074001",
+            "053011"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "081011",
+            "063084",
+            "012133",
+            "015209",
+            "063060"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "015077",
+            "059001",
+            "078157",
+            "088009",
+            "063023"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "005005",
+            "036005",
+            "061022",
+            "018110",
+            "019036"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "085007",
+            "066049",
+            "072004",
+            "037032",
+            "092051"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "079160",
+            "056059",
+            "088012",
+            "045010",
+            "058079"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "076063",
+            "078045",
+            "018177",
+            "063024",
+            "063002"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        },
+        {
+          "cityCodes": [
+            "090047",
+            "015118",
+            "046033",
+            "041013",
+            "058007"
+          ],
+          "error": "Skipped after the official ArCo endpoint failed its first batch."
+        }
+      ],
+      "license": "CC BY-SA 4.0",
+      "requestCount": 1,
+      "skippedBatchCount": 19,
+      "successfulBatchCount": 0
+    },
+    "istat": {
+      "dataset": "Popolazione residente per eta, sesso e stato civile al 1 gennaio 2025 - Comuni",
+      "inputFile": "POSAS_2025_it_Comuni.csv",
+      "municipalityCount": 7896
+    },
+    "wikidata": {
+      "fallbackCityCount": 100,
+      "license": "CC0"
+    },
+    "openstreetmap": {
+      "fallbackCityCount": 2,
+      "license": "ODbL 1.0"
+    }
+  },
+  "limitations": [
+    "The official MiC/ICCD ArCo endpoint failed its first bounded batch during this build, so the remaining 19 batches were skipped rather than delaying generation.",
+    "Italy v1 therefore uses community-source Wikidata candidates for every city, with OpenStreetMap used only for Aprilia and Olbia to satisfy the five-medal floor.",
+    "The top-100 cap reaches 30.48% rather than the 50% population target; 420 municipalities would be required."
+  ],
+  "candidateSourceCounts": {
+    "openstreetmap": 136,
+    "wikidata": 10654
+  },
+  "selectedSourceCounts": {
+    "openstreetmap": 16,
+    "wikidata": 838
+  },
+  "cities": [
+    {
+      "albumId": "it-roma",
+      "candidateCount": 206,
+      "candidateSourceCounts": {
+        "wikidata": 206
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 5,
+        "culture": 7,
+        "history": 7
+      },
+      "cityId": "roma-it",
+      "cityName": {
+        "en": "Rome",
+        "fr": "Rome",
+        "it": "Roma"
+      },
+      "cityZoneId": "relation/41485",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 2747290,
+      "rank": 1,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 206
+    },
+    {
+      "albumId": "it-milano",
+      "candidateCount": 180,
+      "candidateSourceCounts": {
+        "wikidata": 180
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 5,
+        "culture": 7,
+        "history": 5
+      },
+      "cityId": "milano-it",
+      "cityName": {
+        "en": "Milan",
+        "fr": "Milan",
+        "it": "Milano"
+      },
+      "cityZoneId": "relation/44915",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 1365698,
+      "rank": 2,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 180
+    },
+    {
+      "albumId": "it-napoli",
+      "candidateCount": 260,
+      "candidateSourceCounts": {
+        "wikidata": 260
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 6,
+        "culture": 7,
+        "history": 6
+      },
+      "cityId": "napoli-it",
+      "cityName": {
+        "en": "Naples",
+        "fr": "Naples",
+        "it": "Napoli"
+      },
+      "cityZoneId": "relation/40767",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 909013,
+      "rank": 3,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 260
+    },
+    {
+      "albumId": "it-torino",
+      "candidateCount": 226,
+      "candidateSourceCounts": {
+        "wikidata": 226
+      },
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 2,
+        "culture": 2,
+        "history": 4
+      },
+      "cityId": "torino-it",
+      "cityName": {
+        "en": "Turin",
+        "fr": "Turin",
+        "it": "Torino"
+      },
+      "cityZoneId": "relation/43992",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 853196,
+      "rank": 4,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 226
+    },
+    {
+      "albumId": "it-palermo",
+      "candidateCount": 254,
+      "candidateSourceCounts": {
+        "wikidata": 254
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "palermo-it",
+      "cityName": {
+        "en": "Palermo",
+        "fr": "Palermo",
+        "it": "Palermo"
+      },
+      "cityZoneId": "relation/39513",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 628693,
+      "rank": 5,
+      "rejected": {
+        "categoryLimit": 14,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 254
+    },
+    {
+      "albumId": "it-genova",
+      "candidateCount": 194,
+      "candidateSourceCounts": {
+        "wikidata": 194
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 4,
+        "history": 4,
+        "nature": 1
+      },
+      "cityId": "genova-it",
+      "cityName": {
+        "en": "Genoa",
+        "fr": "Genes",
+        "it": "Genova"
+      },
+      "cityZoneId": "relation/44875",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 564080,
+      "rank": 6,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 194
+    },
+    {
+      "albumId": "it-bologna",
+      "candidateCount": 265,
+      "candidateSourceCounts": {
+        "wikidata": 265
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "bologna-it",
+      "cityName": {
+        "en": "Bologna",
+        "fr": "Bologna",
+        "it": "Bologna"
+      },
+      "cityZoneId": "relation/43172",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 390151,
+      "rank": 7,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 265
+    },
+    {
+      "albumId": "it-firenze",
+      "candidateCount": 289,
+      "candidateSourceCounts": {
+        "wikidata": 289
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 4,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "firenze-it",
+      "cityName": {
+        "en": "Florence",
+        "fr": "Florence",
+        "it": "Firenze"
+      },
+      "cityZoneId": "relation/42602",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 361705,
+      "rank": 8,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 289
+    },
+    {
+      "albumId": "it-bari",
+      "candidateCount": 159,
+      "candidateSourceCounts": {
+        "wikidata": 159
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 4,
+        "history": 4,
+        "nature": 1
+      },
+      "cityId": "bari-it",
+      "cityName": {
+        "en": "Bari",
+        "fr": "Bari",
+        "it": "Bari"
+      },
+      "cityZoneId": "relation/41038",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 315831,
+      "rank": 9,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 159
+    },
+    {
+      "albumId": "it-catania",
+      "candidateCount": 226,
+      "candidateSourceCounts": {
+        "wikidata": 226
+      },
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "catania-it",
+      "cityName": {
+        "en": "Catania",
+        "fr": "Catania",
+        "it": "Catania"
+      },
+      "cityZoneId": "relation/39230",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 298054,
+      "rank": 10,
+      "rejected": {
+        "categoryLimit": 21,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 226
+    },
+    {
+      "albumId": "it-verona",
+      "candidateCount": 219,
+      "candidateSourceCounts": {
+        "wikidata": 219
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "verona-it",
+      "cityName": {
+        "en": "Verona",
+        "fr": "Verona",
+        "it": "Verona"
+      },
+      "cityZoneId": "relation/44830",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 255039,
+      "rank": 11,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 219
+    },
+    {
+      "albumId": "it-venezia",
+      "candidateCount": 247,
+      "candidateSourceCounts": {
+        "wikidata": 247
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "venezia-it",
+      "cityName": {
+        "en": "Venice",
+        "fr": "Venise",
+        "it": "Venezia"
+      },
+      "cityZoneId": "relation/44741",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 249490,
+      "rank": 12,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 247
+    },
+    {
+      "albumId": "it-messina",
+      "candidateCount": 127,
+      "candidateSourceCounts": {
+        "wikidata": 127
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "messina-it",
+      "cityName": {
+        "en": "Messina",
+        "fr": "Messina",
+        "it": "Messina"
+      },
+      "cityZoneId": "relation/39514",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 217033,
+      "rank": 13,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 127
+    },
+    {
+      "albumId": "it-padova",
+      "candidateCount": 240,
+      "candidateSourceCounts": {
+        "wikidata": 240
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "padova-it",
+      "cityName": {
+        "en": "Padua",
+        "fr": "Padoue",
+        "it": "Padova"
+      },
+      "cityZoneId": "relation/44836",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 207412,
+      "rank": 14,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 240
+    },
+    {
+      "albumId": "it-brescia",
+      "candidateCount": 254,
+      "candidateSourceCounts": {
+        "wikidata": 254
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "brescia-it",
+      "cityName": {
+        "en": "Brescia",
+        "fr": "Brescia",
+        "it": "Brescia"
+      },
+      "cityZoneId": "relation/45144",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 199853,
+      "rank": 15,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 254
+    },
+    {
+      "albumId": "it-parma",
+      "candidateCount": 245,
+      "candidateSourceCounts": {
+        "wikidata": 245
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "parma-it",
+      "cityName": {
+        "en": "Parma",
+        "fr": "Parma",
+        "it": "Parma"
+      },
+      "cityZoneId": "relation/43452",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 198693,
+      "rank": 16,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 245
+    },
+    {
+      "albumId": "it-trieste",
+      "candidateCount": 147,
+      "candidateSourceCounts": {
+        "wikidata": 147
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "trieste-it",
+      "cityName": {
+        "en": "Trieste",
+        "fr": "Trieste",
+        "it": "Trieste"
+      },
+      "cityZoneId": "relation/179180",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 198388,
+      "rank": 17,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 147
+    },
+    {
+      "albumId": "it-prato",
+      "candidateCount": 229,
+      "candidateSourceCounts": {
+        "wikidata": 229
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "prato-it",
+      "cityName": {
+        "en": "Prato",
+        "fr": "Prato",
+        "it": "Prato"
+      },
+      "cityZoneId": "relation/280245",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 197057,
+      "rank": 18,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 229
+    },
+    {
+      "albumId": "it-taranto",
+      "candidateCount": 66,
+      "candidateSourceCounts": {
+        "wikidata": 66
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "taranto-it",
+      "cityName": {
+        "en": "Taranto",
+        "fr": "Taranto",
+        "it": "Taranto"
+      },
+      "cityZoneId": "relation/40452",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 186011,
+      "rank": 19,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 66
+    },
+    {
+      "albumId": "it-modena",
+      "candidateCount": 91,
+      "candidateSourceCounts": {
+        "wikidata": 91
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "modena-it",
+      "cityName": {
+        "en": "Modena",
+        "fr": "Modena",
+        "it": "Modena"
+      },
+      "cityZoneId": "relation/43336",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 184074,
+      "rank": 20,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 91
+    },
+    {
+      "albumId": "it-reggio-nell-emilia",
+      "candidateCount": 135,
+      "candidateSourceCounts": {
+        "wikidata": 135
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "reggio-nell-emilia-it",
+      "cityName": {
+        "en": "Reggio nell'Emilia",
+        "fr": "Reggio nell'Emilia",
+        "it": "Reggio nell'Emilia"
+      },
+      "cityZoneId": "relation/43415",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 172284,
+      "rank": 21,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 135
+    },
+    {
+      "albumId": "it-reggio-di-calabria",
+      "candidateCount": 100,
+      "candidateSourceCounts": {
+        "wikidata": 100
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "reggio-di-calabria-it",
+      "cityName": {
+        "en": "Reggio di Calabria",
+        "fr": "Reggio di Calabria",
+        "it": "Reggio di Calabria"
+      },
+      "cityZoneId": "relation/39503",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 168779,
+      "rank": 22,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 100
+    },
+    {
+      "albumId": "it-perugia",
+      "candidateCount": 139,
+      "candidateSourceCounts": {
+        "wikidata": 139
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "perugia-it",
+      "cityName": {
+        "en": "Perugia",
+        "fr": "Perugia",
+        "it": "Perugia"
+      },
+      "cityZoneId": "relation/42278",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 162050,
+      "rank": 23,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 139
+    },
+    {
+      "albumId": "it-ravenna",
+      "candidateCount": 137,
+      "candidateSourceCounts": {
+        "wikidata": 137
+      },
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "ravenna-it",
+      "cityName": {
+        "en": "Ravenna",
+        "fr": "Ravenna",
+        "it": "Ravenna"
+      },
+      "cityZoneId": "relation/42955",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 156340,
+      "rank": 24,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 137
+    },
+    {
+      "albumId": "it-livorno",
+      "candidateCount": 183,
+      "candidateSourceCounts": {
+        "wikidata": 183
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "livorno-it",
+      "cityName": {
+        "en": "Livorno",
+        "fr": "Livorno",
+        "it": "Livorno"
+      },
+      "cityZoneId": "relation/42481",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 153154,
+      "rank": 25,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 183
+    },
+    {
+      "albumId": "it-rimini",
+      "candidateCount": 71,
+      "candidateSourceCounts": {
+        "wikidata": 71
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "rimini-it",
+      "cityName": {
+        "en": "Rimini",
+        "fr": "Rimini",
+        "it": "Rimini"
+      },
+      "cityZoneId": "relation/42791",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 150333,
+      "rank": 26,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 71
+    },
+    {
+      "albumId": "it-cagliari",
+      "candidateCount": 180,
+      "candidateSourceCounts": {
+        "wikidata": 180
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "cagliari-it",
+      "cityName": {
+        "en": "Cagliari",
+        "fr": "Cagliari",
+        "it": "Cagliari"
+      },
+      "cityZoneId": "relation/39837",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 146692,
+      "rank": 27,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 180
+    },
+    {
+      "albumId": "it-foggia",
+      "candidateCount": 63,
+      "candidateSourceCounts": {
+        "wikidata": 63
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "foggia-it",
+      "cityName": {
+        "en": "Foggia",
+        "fr": "Foggia",
+        "it": "Foggia"
+      },
+      "cityZoneId": "relation/41243",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 145198,
+      "rank": 28,
+      "rejected": {
+        "categoryLimit": 22,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 63
+    },
+    {
+      "albumId": "it-ferrara",
+      "candidateCount": 175,
+      "candidateSourceCounts": {
+        "wikidata": 175
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "ferrara-it",
+      "cityName": {
+        "en": "Ferrara",
+        "fr": "Ferrara",
+        "it": "Ferrara"
+      },
+      "cityZoneId": "relation/43512",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 129081,
+      "rank": 29,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 175
+    },
+    {
+      "albumId": "it-latina",
+      "candidateCount": 20,
+      "candidateSourceCounts": {
+        "wikidata": 20
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "latina-it",
+      "cityName": {
+        "en": "Latina",
+        "fr": "Latina",
+        "it": "Latina"
+      },
+      "cityZoneId": "relation/41289",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 127796,
+      "rank": 30,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 20
+    },
+    {
+      "albumId": "it-salerno",
+      "candidateCount": 102,
+      "candidateSourceCounts": {
+        "wikidata": 102
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "salerno-it",
+      "cityName": {
+        "en": "Salerno",
+        "fr": "Salerno",
+        "it": "Salerno"
+      },
+      "cityZoneId": "relation/40671",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 126000,
+      "rank": 31,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 102
+    },
+    {
+      "albumId": "it-giugliano-in-campania",
+      "candidateCount": 31,
+      "candidateSourceCounts": {
+        "wikidata": 31
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "giugliano-in-campania-it",
+      "cityName": {
+        "en": "Giugliano in Campania",
+        "fr": "Giugliano in Campania",
+        "it": "Giugliano in Campania"
+      },
+      "cityZoneId": "relation/40849",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 125032,
+      "rank": 32,
+      "rejected": {
+        "categoryLimit": 16,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 31
+    },
+    {
+      "albumId": "it-monza",
+      "candidateCount": 125,
+      "candidateSourceCounts": {
+        "wikidata": 125
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "monza-it",
+      "cityName": {
+        "en": "Monza",
+        "fr": "Monza",
+        "it": "Monza"
+      },
+      "cityZoneId": "relation/45319",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 123032,
+      "rank": 33,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 125
+    },
+    {
+      "albumId": "it-sassari",
+      "candidateCount": 111,
+      "candidateSourceCounts": {
+        "wikidata": 111
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "sassari-it",
+      "cityName": {
+        "en": "Sassari",
+        "fr": "Sassari",
+        "it": "Sassari"
+      },
+      "cityZoneId": "relation/40683",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 120510,
+      "rank": 34,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 111
+    },
+    {
+      "albumId": "it-bergamo",
+      "candidateCount": 223,
+      "candidateSourceCounts": {
+        "wikidata": 223
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "bergamo-it",
+      "cityName": {
+        "en": "Bergamo",
+        "fr": "Bergamo",
+        "it": "Bergamo"
+      },
+      "cityZoneId": "relation/45681",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 120389,
+      "rank": 35,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 223
+    },
+    {
+      "albumId": "it-trento",
+      "candidateCount": 227,
+      "candidateSourceCounts": {
+        "wikidata": 227
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "trento-it",
+      "cityName": {
+        "en": "Trento",
+        "fr": "Trento",
+        "it": "Trento"
+      },
+      "cityZoneId": "relation/46663",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 118640,
+      "rank": 36,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 227
+    },
+    {
+      "albumId": "it-pescara",
+      "candidateCount": 47,
+      "candidateSourceCounts": {
+        "wikidata": 47
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "pescara-it",
+      "cityName": {
+        "en": "Pescara",
+        "fr": "Pescara",
+        "it": "Pescara"
+      },
+      "cityZoneId": "relation/42014",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 118313,
+      "rank": 37,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 47
+    },
+    {
+      "albumId": "it-forli",
+      "candidateCount": 126,
+      "candidateSourceCounts": {
+        "wikidata": 126
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "forli-it",
+      "cityName": {
+        "en": "Forlì",
+        "fr": "Forlì",
+        "it": "Forlì"
+      },
+      "cityZoneId": "relation/42907",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 117535,
+      "rank": 38,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 126
+    },
+    {
+      "albumId": "it-siracusa",
+      "candidateCount": 100,
+      "candidateSourceCounts": {
+        "wikidata": 100
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "siracusa-it",
+      "cityName": {
+        "en": "Siracusa",
+        "fr": "Siracusa",
+        "it": "Siracusa"
+      },
+      "cityZoneId": "relation/39169",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 115776,
+      "rank": 39,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 100
+    },
+    {
+      "albumId": "it-vicenza",
+      "candidateCount": 199,
+      "candidateSourceCounts": {
+        "wikidata": 199
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "vicenza-it",
+      "cityName": {
+        "en": "Vicenza",
+        "fr": "Vicenza",
+        "it": "Vicenza"
+      },
+      "cityZoneId": "relation/45159",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 110468,
+      "rank": 40,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 199
+    },
+    {
+      "albumId": "it-bolzano-bozen",
+      "candidateCount": 125,
+      "candidateSourceCounts": {
+        "wikidata": 125
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "bolzano-bozen-it",
+      "cityName": {
+        "en": "Bolzano/Bozen",
+        "fr": "Bolzano/Bozen",
+        "it": "Bolzano/Bozen"
+      },
+      "cityZoneId": "relation/47207",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 106568,
+      "rank": 41,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 125
+    },
+    {
+      "albumId": "it-terni",
+      "candidateCount": 107,
+      "candidateSourceCounts": {
+        "wikidata": 107
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "terni-it",
+      "cityName": {
+        "en": "Terni",
+        "fr": "Terni",
+        "it": "Terni"
+      },
+      "cityZoneId": "relation/42064",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 106310,
+      "rank": 42,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 107
+    },
+    {
+      "albumId": "it-piacenza",
+      "candidateCount": 105,
+      "candidateSourceCounts": {
+        "wikidata": 105
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "piacenza-it",
+      "cityName": {
+        "en": "Piacenza",
+        "fr": "Piacenza",
+        "it": "Piacenza"
+      },
+      "cityZoneId": "relation/43981",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 103406,
+      "rank": 43,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 105
+    },
+    {
+      "albumId": "it-novara",
+      "candidateCount": 54,
+      "candidateSourceCounts": {
+        "wikidata": 54
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "novara-it",
+      "cityName": {
+        "en": "Novara",
+        "fr": "Novara",
+        "it": "Novara"
+      },
+      "cityZoneId": "relation/44898",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 102231,
+      "rank": 44,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 54
+    },
+    {
+      "albumId": "it-ancona",
+      "candidateCount": 109,
+      "candidateSourceCounts": {
+        "wikidata": 109
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "ancona-it",
+      "cityName": {
+        "en": "Ancona",
+        "fr": "Ancona",
+        "it": "Ancona"
+      },
+      "cityZoneId": "relation/42499",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 99533,
+      "rank": 45,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 109
+    },
+    {
+      "albumId": "it-udine",
+      "candidateCount": 72,
+      "candidateSourceCounts": {
+        "wikidata": 72
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "udine-it",
+      "cityName": {
+        "en": "Udine",
+        "fr": "Udine",
+        "it": "Udine"
+      },
+      "cityZoneId": "relation/179272",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 98279,
+      "rank": 46,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 72
+    },
+    {
+      "albumId": "it-andria",
+      "candidateCount": 16,
+      "candidateSourceCounts": {
+        "wikidata": 16
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "andria-it",
+      "cityName": {
+        "en": "Andria",
+        "fr": "Andria",
+        "it": "Andria"
+      },
+      "cityZoneId": "relation/41034",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 96750,
+      "rank": 47,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 16
+    },
+    {
+      "albumId": "it-arezzo",
+      "candidateCount": 135,
+      "candidateSourceCounts": {
+        "wikidata": 135
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "arezzo-it",
+      "cityName": {
+        "en": "Arezzo",
+        "fr": "Arezzo",
+        "it": "Arezzo"
+      },
+      "cityZoneId": "relation/42414",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 96479,
+      "rank": 48,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 135
+    },
+    {
+      "albumId": "it-cesena",
+      "candidateCount": 71,
+      "candidateSourceCounts": {
+        "wikidata": 71
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "cesena-it",
+      "cityName": {
+        "en": "Cesena",
+        "fr": "Cesena",
+        "it": "Cesena"
+      },
+      "cityZoneId": "relation/42809",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 95730,
+      "rank": 49,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 71
+    },
+    {
+      "albumId": "it-pesaro",
+      "candidateCount": 79,
+      "candidateSourceCounts": {
+        "wikidata": 79
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "pesaro-it",
+      "cityName": {
+        "en": "Pesaro",
+        "fr": "Pesaro",
+        "it": "Pesaro"
+      },
+      "cityZoneId": "relation/42672",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 95266,
+      "rank": 50,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 79
+    },
+    {
+      "albumId": "it-lecce",
+      "candidateCount": 91,
+      "candidateSourceCounts": {
+        "wikidata": 91
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "lecce-it",
+      "cityName": {
+        "en": "Lecce",
+        "fr": "Lecce",
+        "it": "Lecce"
+      },
+      "cityZoneId": "relation/40442",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 94187,
+      "rank": 51,
+      "rejected": {
+        "categoryLimit": 18,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 91
+    },
+    {
+      "albumId": "it-la-spezia",
+      "candidateCount": 67,
+      "candidateSourceCounts": {
+        "wikidata": 67
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "culture": 1,
+        "history": 2
+      },
+      "cityId": "la-spezia-it",
+      "cityName": {
+        "en": "La Spezia",
+        "fr": "La Spezia",
+        "it": "La Spezia"
+      },
+      "cityZoneId": "relation/42842",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 92706,
+      "rank": 52,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 67
+    },
+    {
+      "albumId": "it-alessandria",
+      "candidateCount": 71,
+      "candidateSourceCounts": {
+        "wikidata": 71
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "alessandria-it",
+      "cityName": {
+        "en": "Alessandria",
+        "fr": "Alessandria",
+        "it": "Alessandria"
+      },
+      "cityZoneId": "relation/43747",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 92522,
+      "rank": 53,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 71
+    },
+    {
+      "albumId": "it-barletta",
+      "candidateCount": 53,
+      "candidateSourceCounts": {
+        "wikidata": 53
+      },
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "barletta-it",
+      "cityName": {
+        "en": "Barletta",
+        "fr": "Barletta",
+        "it": "Barletta"
+      },
+      "cityZoneId": "relation/41200",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 92191,
+      "rank": 54,
+      "rejected": {
+        "categoryLimit": 14,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 53
+    },
+    {
+      "albumId": "it-pisa",
+      "candidateCount": 204,
+      "candidateSourceCounts": {
+        "wikidata": 204
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "pisa-it",
+      "cityName": {
+        "en": "Pisa",
+        "fr": "Pisa",
+        "it": "Pisa"
+      },
+      "cityZoneId": "relation/42527",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 89422,
+      "rank": 55,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 204
+    },
+    {
+      "albumId": "it-guidonia-montecelio",
+      "candidateCount": 5,
+      "candidateSourceCounts": {
+        "wikidata": 5
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 2,
+        "nature": 2
+      },
+      "cityId": "guidonia-montecelio-it",
+      "cityName": {
+        "en": "Guidonia Montecelio",
+        "fr": "Guidonia Montecelio",
+        "it": "Guidonia Montecelio"
+      },
+      "cityZoneId": "relation/41687",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 89011,
+      "rank": 56,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "wikidata": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 5
+    },
+    {
+      "albumId": "it-lucca",
+      "candidateCount": 218,
+      "candidateSourceCounts": {
+        "wikidata": 218
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "lucca-it",
+      "cityName": {
+        "en": "Lucca",
+        "fr": "Lucca",
+        "it": "Lucca"
+      },
+      "cityZoneId": "relation/42659",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 89002,
+      "rank": 57,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 218
+    },
+    {
+      "albumId": "it-pistoia",
+      "candidateCount": 171,
+      "candidateSourceCounts": {
+        "wikidata": 171
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "pistoia-it",
+      "cityName": {
+        "en": "Pistoia",
+        "fr": "Pistoia",
+        "it": "Pistoia"
+      },
+      "cityZoneId": "relation/42722",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 88889,
+      "rank": 58,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 1,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 171
+    },
+    {
+      "albumId": "it-treviso",
+      "candidateCount": 95,
+      "candidateSourceCounts": {
+        "wikidata": 95
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "treviso-it",
+      "cityName": {
+        "en": "Treviso",
+        "fr": "Treviso",
+        "it": "Treviso"
+      },
+      "cityZoneId": "relation/45511",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 85652,
+      "rank": 59,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 95
+    },
+    {
+      "albumId": "it-busto-arsizio",
+      "candidateCount": 100,
+      "candidateSourceCounts": {
+        "wikidata": 100
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "busto-arsizio-it",
+      "cityName": {
+        "en": "Busto Arsizio",
+        "fr": "Busto Arsizio",
+        "it": "Busto Arsizio"
+      },
+      "cityZoneId": "relation/45376",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 84005,
+      "rank": 60,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 100
+    },
+    {
+      "albumId": "it-catanzaro",
+      "candidateCount": 47,
+      "candidateSourceCounts": {
+        "wikidata": 47
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "catanzaro-it",
+      "cityName": {
+        "en": "Catanzaro",
+        "fr": "Catanzaro",
+        "it": "Catanzaro"
+      },
+      "cityZoneId": "relation/39727",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 83313,
+      "rank": 61,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 47
+    },
+    {
+      "albumId": "it-como",
+      "candidateCount": 135,
+      "candidateSourceCounts": {
+        "wikidata": 135
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "como-it",
+      "cityName": {
+        "en": "Como",
+        "fr": "Como",
+        "it": "Como"
+      },
+      "cityZoneId": "relation/46085",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 83135,
+      "rank": 62,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 135
+    },
+    {
+      "albumId": "it-fiumicino",
+      "candidateCount": 17,
+      "candidateSourceCounts": {
+        "wikidata": 17
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "history": 3,
+        "nature": 3
+      },
+      "cityId": "fiumicino-it",
+      "cityName": {
+        "en": "Fiumicino",
+        "fr": "Fiumicino",
+        "it": "Fiumicino"
+      },
+      "cityZoneId": "relation/41575",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 82829,
+      "rank": 63,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 17
+    },
+    {
+      "albumId": "it-brindisi",
+      "candidateCount": 56,
+      "candidateSourceCounts": {
+        "wikidata": 56
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "brindisi-it",
+      "cityName": {
+        "en": "Brindisi",
+        "fr": "Brindisi",
+        "it": "Brindisi"
+      },
+      "cityZoneId": "relation/40545",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 81723,
+      "rank": 64,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 56
+    },
+    {
+      "albumId": "it-grosseto",
+      "candidateCount": 179,
+      "candidateSourceCounts": {
+        "wikidata": 179
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "grosseto-it",
+      "cityName": {
+        "en": "Grosseto",
+        "fr": "Grosseto",
+        "it": "Grosseto"
+      },
+      "cityZoneId": "relation/42153",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 81264,
+      "rank": 65,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 179
+    },
+    {
+      "albumId": "it-marsala",
+      "candidateCount": 29,
+      "candidateSourceCounts": {
+        "wikidata": 29
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "marsala-it",
+      "cityName": {
+        "en": "Marsala",
+        "fr": "Marsala",
+        "it": "Marsala"
+      },
+      "cityZoneId": "relation/39348",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 79571,
+      "rank": 66,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 29
+    },
+    {
+      "albumId": "it-torre-del-greco",
+      "candidateCount": 21,
+      "candidateSourceCounts": {
+        "wikidata": 21
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "torre-del-greco-it",
+      "cityName": {
+        "en": "Torre del Greco",
+        "fr": "Torre del Greco",
+        "it": "Torre del Greco"
+      },
+      "cityZoneId": "relation/40755",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 79397,
+      "rank": 67,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "wikidata": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 21
+    },
+    {
+      "albumId": "it-varese",
+      "candidateCount": 89,
+      "candidateSourceCounts": {
+        "wikidata": 89
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "varese-it",
+      "cityName": {
+        "en": "Varese",
+        "fr": "Varese",
+        "it": "Varese"
+      },
+      "cityZoneId": "relation/46116",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 78992,
+      "rank": 68,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 89
+    },
+    {
+      "albumId": "it-sesto-san-giovanni",
+      "candidateCount": 33,
+      "candidateSourceCounts": {
+        "wikidata": 33
+      },
+      "categoryCounts": {
+        "architecture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "sesto-san-giovanni-it",
+      "cityName": {
+        "en": "Sesto San Giovanni",
+        "fr": "Sesto San Giovanni",
+        "it": "Sesto San Giovanni"
+      },
+      "cityZoneId": "relation/45245",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 78792,
+      "rank": 69,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 33
+    },
+    {
+      "albumId": "it-pozzuoli",
+      "candidateCount": 27,
+      "candidateSourceCounts": {
+        "wikidata": 27
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "pozzuoli-it",
+      "cityName": {
+        "en": "Pozzuoli",
+        "fr": "Pozzuoli",
+        "it": "Pozzuoli"
+      },
+      "cityZoneId": "relation/40808",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 75375,
+      "rank": 70,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 27
+    },
+    {
+      "albumId": "it-cinisello-balsamo",
+      "candidateCount": 24,
+      "candidateSourceCounts": {
+        "wikidata": 24
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "cinisello-balsamo-it",
+      "cityName": {
+        "en": "Cinisello Balsamo",
+        "fr": "Cinisello Balsamo",
+        "it": "Cinisello Balsamo"
+      },
+      "cityZoneId": "relation/45288",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 74702,
+      "rank": 71,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 24
+    },
+    {
+      "albumId": "it-aprilia",
+      "candidateCount": 69,
+      "candidateSourceCounts": {
+        "openstreetmap": 66,
+        "wikidata": 3
+      },
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "aprilia-it",
+      "cityName": {
+        "en": "Aprilia",
+        "fr": "Aprilia",
+        "it": "Aprilia"
+      },
+      "cityZoneId": "relation/41371",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 74586,
+      "rank": 72,
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 3
+    },
+    {
+      "albumId": "it-corigliano-rossano",
+      "candidateCount": 29,
+      "candidateSourceCounts": {
+        "wikidata": 29
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "corigliano-rossano-it",
+      "cityName": {
+        "en": "Corigliano-Rossano",
+        "fr": "Corigliano-Rossano",
+        "it": "Corigliano-Rossano"
+      },
+      "cityZoneId": "relation/8164150",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 74332,
+      "rank": 73,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 29
+    },
+    {
+      "albumId": "it-ragusa",
+      "candidateCount": 54,
+      "candidateSourceCounts": {
+        "wikidata": 54
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "ragusa-it",
+      "cityName": {
+        "en": "Ragusa",
+        "fr": "Ragusa",
+        "it": "Ragusa"
+      },
+      "cityZoneId": "relation/39162",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 73878,
+      "rank": 74,
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 54
+    },
+    {
+      "albumId": "it-casoria",
+      "candidateCount": 5,
+      "candidateSourceCounts": {
+        "wikidata": 5
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3
+      },
+      "cityId": "casoria-it",
+      "cityName": {
+        "en": "Casoria",
+        "fr": "Casoria",
+        "it": "Casoria"
+      },
+      "cityZoneId": "relation/40866",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 73724,
+      "rank": 75,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "wikidata": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 5
+    },
+    {
+      "albumId": "it-asti",
+      "candidateCount": 84,
+      "candidateSourceCounts": {
+        "wikidata": 84
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "asti-it",
+      "cityName": {
+        "en": "Asti",
+        "fr": "Asti",
+        "it": "Asti"
+      },
+      "cityZoneId": "relation/43724",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 73440,
+      "rank": 76,
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 84
+    },
+    {
+      "albumId": "it-carpi",
+      "candidateCount": 33,
+      "candidateSourceCounts": {
+        "wikidata": 33
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "carpi-it",
+      "cityName": {
+        "en": "Carpi",
+        "fr": "Carpi",
+        "it": "Carpi"
+      },
+      "cityZoneId": "relation/43534",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 73297,
+      "rank": 77,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 33
+    },
+    {
+      "albumId": "it-caserta",
+      "candidateCount": 47,
+      "candidateSourceCounts": {
+        "wikidata": 47
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "caserta-it",
+      "cityName": {
+        "en": "Caserta",
+        "fr": "Caserta",
+        "it": "Caserta"
+      },
+      "cityZoneId": "relation/41056",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 72793,
+      "rank": 78,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 47
+    },
+    {
+      "albumId": "it-pavia",
+      "candidateCount": 206,
+      "candidateSourceCounts": {
+        "wikidata": 206
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "pavia-it",
+      "cityName": {
+        "en": "Pavia",
+        "fr": "Pavia",
+        "it": "Pavia"
+      },
+      "cityZoneId": "relation/44383",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 71610,
+      "rank": 79,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 206
+    },
+    {
+      "albumId": "it-cremona",
+      "candidateCount": 49,
+      "candidateSourceCounts": {
+        "wikidata": 49
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "cremona-it",
+      "cityName": {
+        "en": "Cremona",
+        "fr": "Cremona",
+        "it": "Cremona"
+      },
+      "cityZoneId": "relation/44189",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 70922,
+      "rank": 80,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 49
+    },
+    {
+      "albumId": "it-gela",
+      "candidateCount": 21,
+      "candidateSourceCounts": {
+        "wikidata": 21
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "gela-it",
+      "cityName": {
+        "en": "Gela",
+        "fr": "Gela",
+        "it": "Gela"
+      },
+      "cityZoneId": "relation/39177",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 70451,
+      "rank": 81,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 21
+    },
+    {
+      "albumId": "it-l-aquila",
+      "candidateCount": 198,
+      "candidateSourceCounts": {
+        "wikidata": 198
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "l-aquila-it",
+      "cityName": {
+        "en": "L'Aquila",
+        "fr": "L'Aquila",
+        "it": "L'Aquila"
+      },
+      "cityZoneId": "relation/41842",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 70425,
+      "rank": 82,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 198
+    },
+    {
+      "albumId": "it-altamura",
+      "candidateCount": 65,
+      "candidateSourceCounts": {
+        "wikidata": 65
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "altamura-it",
+      "cityName": {
+        "en": "Altamura",
+        "fr": "Altamura",
+        "it": "Altamura"
+      },
+      "cityZoneId": "relation/40743",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 70163,
+      "rank": 83,
+      "rejected": {
+        "categoryLimit": 20,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 65
+    },
+    {
+      "albumId": "it-imola",
+      "candidateCount": 70,
+      "candidateSourceCounts": {
+        "wikidata": 70
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "imola-it",
+      "cityName": {
+        "en": "Imola",
+        "fr": "Imola",
+        "it": "Imola"
+      },
+      "cityZoneId": "relation/43020",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 69403,
+      "rank": 84,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 70
+    },
+    {
+      "albumId": "it-quartu-sant-elena",
+      "candidateCount": 16,
+      "candidateSourceCounts": {
+        "wikidata": 16
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "quartu-sant-elena-it",
+      "cityName": {
+        "en": "Quartu Sant'Elena",
+        "fr": "Quartu Sant'Elena",
+        "it": "Quartu Sant'Elena"
+      },
+      "cityZoneId": "relation/39848",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 68237,
+      "rank": 85,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 16
+    },
+    {
+      "albumId": "it-lamezia-terme",
+      "candidateCount": 24,
+      "candidateSourceCounts": {
+        "wikidata": 24
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "lamezia-terme-it",
+      "cityName": {
+        "en": "Lamezia Terme",
+        "fr": "Lamezia Terme",
+        "it": "Lamezia Terme"
+      },
+      "cityZoneId": "relation/39729",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 67269,
+      "rank": 86,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 24
+    },
+    {
+      "albumId": "it-viterbo",
+      "candidateCount": 70,
+      "candidateSourceCounts": {
+        "wikidata": 70
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "viterbo-it",
+      "cityName": {
+        "en": "Viterbo",
+        "fr": "Viterbo",
+        "it": "Viterbo"
+      },
+      "cityZoneId": "relation/41946",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 66393,
+      "rank": 87,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 70
+    },
+    {
+      "albumId": "it-vittoria",
+      "candidateCount": 8,
+      "candidateSourceCounts": {
+        "wikidata": 8
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "vittoria-it",
+      "cityName": {
+        "en": "Vittoria",
+        "fr": "Vittoria",
+        "it": "Vittoria"
+      },
+      "cityZoneId": "relation/39167",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 65873,
+      "rank": 88,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "wikidata": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 8
+    },
+    {
+      "albumId": "it-massa",
+      "candidateCount": 83,
+      "candidateSourceCounts": {
+        "wikidata": 83
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "massa-it",
+      "cityName": {
+        "en": "Massa",
+        "fr": "Massa",
+        "it": "Massa"
+      },
+      "cityZoneId": "relation/42813",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 65814,
+      "rank": 89,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 83
+    },
+    {
+      "albumId": "it-pomezia",
+      "candidateCount": 11,
+      "candidateSourceCounts": {
+        "wikidata": 11
+      },
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "pomezia-it",
+      "cityName": {
+        "en": "Pomezia",
+        "fr": "Pomezia",
+        "it": "Pomezia"
+      },
+      "cityZoneId": "relation/41455",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 64665,
+      "rank": 90,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 3,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 11
+    },
+    {
+      "albumId": "it-potenza",
+      "candidateCount": 53,
+      "candidateSourceCounts": {
+        "wikidata": 53
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "potenza-it",
+      "cityName": {
+        "en": "Potenza",
+        "fr": "Potenza",
+        "it": "Potenza"
+      },
+      "cityZoneId": "relation/40613",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 63864,
+      "rank": 91,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 53
+    },
+    {
+      "albumId": "it-cosenza",
+      "candidateCount": 38,
+      "candidateSourceCounts": {
+        "wikidata": 38
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "cosenza-it",
+      "cityName": {
+        "en": "Cosenza",
+        "fr": "Cosenza",
+        "it": "Cosenza"
+      },
+      "cityZoneId": "relation/39859",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 63240,
+      "rank": 92,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 38
+    },
+    {
+      "albumId": "it-vigevano",
+      "candidateCount": 56,
+      "candidateSourceCounts": {
+        "wikidata": 56
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "vigevano-it",
+      "cityName": {
+        "en": "Vigevano",
+        "fr": "Vigevano",
+        "it": "Vigevano"
+      },
+      "cityZoneId": "relation/44586",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 62771,
+      "rank": 93,
+      "rejected": {
+        "categoryLimit": 24,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 56
+    },
+    {
+      "albumId": "it-castellammare-di-stabia",
+      "candidateCount": 39,
+      "candidateSourceCounts": {
+        "wikidata": 39
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "castellammare-di-stabia-it",
+      "cityName": {
+        "en": "Castellammare di Stabia",
+        "fr": "Castellammare di Stabia",
+        "it": "Castellammare di Stabia"
+      },
+      "cityZoneId": "relation/40689",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 62320,
+      "rank": 94,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 39
+    },
+    {
+      "albumId": "it-afragola",
+      "candidateCount": 6,
+      "candidateSourceCounts": {
+        "wikidata": 6
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "afragola-it",
+      "cityName": {
+        "en": "Afragola",
+        "fr": "Afragola",
+        "it": "Afragola"
+      },
+      "cityZoneId": "relation/40907",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 61786,
+      "rank": 95,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 6
+    },
+    {
+      "albumId": "it-olbia",
+      "candidateCount": 70,
+      "candidateSourceCounts": {
+        "openstreetmap": 70
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "olbia-it",
+      "cityName": {
+        "en": "Olbia",
+        "fr": "Olbia",
+        "it": "Olbia"
+      },
+      "cityZoneId": "relation/40735",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 61681,
+      "rank": 96,
+      "rejected": {
+        "categoryLimit": 39,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "it-legnano",
+      "candidateCount": 46,
+      "candidateSourceCounts": {
+        "wikidata": 46
+      },
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "legnano-it",
+      "cityName": {
+        "en": "Legnano",
+        "fr": "Legnano",
+        "it": "Legnano"
+      },
+      "cityZoneId": "relation/45380",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 60679,
+      "rank": 97,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 46
+    },
+    {
+      "albumId": "it-viareggio",
+      "candidateCount": 39,
+      "candidateSourceCounts": {
+        "wikidata": 39
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "viareggio-it",
+      "cityName": {
+        "en": "Viareggio",
+        "fr": "Viareggio",
+        "it": "Viareggio"
+      },
+      "cityZoneId": "relation/42664",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 60618,
+      "rank": 98,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 39
+    },
+    {
+      "albumId": "it-fano",
+      "candidateCount": 67,
+      "candidateSourceCounts": {
+        "wikidata": 67
+      },
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "fano-it",
+      "cityName": {
+        "en": "Fano",
+        "fr": "Fano",
+        "it": "Fano"
+      },
+      "cityZoneId": "relation/42616",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 59903,
+      "rank": 99,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 67
+    },
+    {
+      "albumId": "it-anzio",
+      "candidateCount": 11,
+      "candidateSourceCounts": {
+        "wikidata": 11
+      },
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "anzio-it",
+      "cityName": {
+        "en": "Anzio",
+        "fr": "Anzio",
+        "it": "Anzio"
+      },
+      "cityZoneId": "relation/41363",
+      "curated": false,
+      "eligibleIccdCount": 0,
+      "fallbackUsed": true,
+      "localLanguage": "it",
+      "population": 59789,
+      "rank": 100,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 11
+    }
+  ],
+  "artifact": {
+    "compressedBytes": 70980,
+    "medalCount": 854,
+    "sha256": "c9e1ac5a378d75de63c7b530d675e160751e6ead52b6e7fded5479f7377b2ee9",
+    "uncompressedBytes": 665823,
+    "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/it-v1.json.gz"
+  }
+}

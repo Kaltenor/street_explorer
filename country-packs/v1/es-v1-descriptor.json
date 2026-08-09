@@ -1,0 +1,1618 @@
+{
+  "albums": [
+    {
+      "albumId": "es-madrid",
+      "cityId": "madrid-es",
+      "cityName": {
+        "en": "Madrid",
+        "fr": "Madrid",
+        "es": "Madrid"
+      },
+      "cityZoneId": "relation/5326784",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 20,
+      "population": 3332035,
+      "rank": 1,
+      "version": 1
+    },
+    {
+      "albumId": "es-barcelona",
+      "cityId": "barcelona-es",
+      "cityName": {
+        "en": "Barcelona",
+        "fr": "Barcelone",
+        "es": "Barcelona"
+      },
+      "cityZoneId": "relation/347950",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 20,
+      "population": 1660122,
+      "rank": 2,
+      "version": 1
+    },
+    {
+      "albumId": "es-valencia",
+      "cityId": "valencia-es",
+      "cityName": {
+        "en": "Valencia",
+        "fr": "Valence",
+        "es": "Valencia"
+      },
+      "cityZoneId": "relation/344953",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 20,
+      "population": 807693,
+      "rank": 3,
+      "version": 1
+    },
+    {
+      "albumId": "es-sevilla",
+      "cityId": "sevilla-es",
+      "cityName": {
+        "en": "Seville",
+        "fr": "Séville",
+        "es": "Sevilla"
+      },
+      "cityZoneId": "relation/342563",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 684025,
+      "rank": 4,
+      "version": 1
+    },
+    {
+      "albumId": "es-zaragoza",
+      "cityId": "zaragoza-es",
+      "cityName": {
+        "en": "Zaragoza",
+        "fr": "Saragosse",
+        "es": "Zaragoza"
+      },
+      "cityZoneId": "relation/345740",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 682513,
+      "rank": 5,
+      "version": 1
+    },
+    {
+      "albumId": "es-malaga",
+      "cityId": "malaga-es",
+      "cityName": {
+        "en": "Málaga",
+        "fr": "Malaga",
+        "es": "Málaga"
+      },
+      "cityZoneId": "relation/340746",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 586384,
+      "rank": 6,
+      "version": 1
+    },
+    {
+      "albumId": "es-murcia",
+      "cityId": "murcia-es",
+      "cityName": {
+        "en": "Murcia",
+        "fr": "Murcie",
+        "es": "Murcia"
+      },
+      "cityZoneId": "relation/340611",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 469177,
+      "rank": 7,
+      "version": 1
+    },
+    {
+      "albumId": "es-palma-de-mallorca",
+      "cityId": "palma-de-mallorca-es",
+      "cityName": {
+        "en": "Palma",
+        "fr": "Palma",
+        "es": "Palma de Mallorca"
+      },
+      "cityZoneId": "relation/341321",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 423350,
+      "rank": 8,
+      "version": 1
+    },
+    {
+      "albumId": "es-las-palmas-de-gran-canaria",
+      "cityId": "las-palmas-de-gran-canaria-es",
+      "cityName": {
+        "en": "Las Palmas de Gran Canaria",
+        "fr": "Las Palmas de Grande Canarie",
+        "es": "Las Palmas de Gran Canaria"
+      },
+      "cityZoneId": "relation/340783",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 378027,
+      "rank": 9,
+      "version": 1
+    },
+    {
+      "albumId": "es-alicante",
+      "cityId": "alicante-es",
+      "cityName": {
+        "en": "Alicante",
+        "fr": "Alicante",
+        "es": "Alicante"
+      },
+      "cityZoneId": "relation/342792",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 12,
+      "population": 349282,
+      "rank": 10,
+      "version": 1
+    },
+    {
+      "albumId": "es-bilbao",
+      "cityId": "bilbao-es",
+      "cityName": {
+        "en": "Bilbao",
+        "fr": "Bilbao",
+        "es": "Bilbao"
+      },
+      "cityZoneId": "relation/339549",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 346096,
+      "rank": 11,
+      "version": 1
+    },
+    {
+      "albumId": "es-cordoba",
+      "cityId": "cordoba-es",
+      "cityName": {
+        "en": "Córdoba",
+        "fr": "Cordoue",
+        "es": "Córdoba"
+      },
+      "cityZoneId": "relation/343207",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 323763,
+      "rank": 12,
+      "version": 1
+    },
+    {
+      "albumId": "es-valladolid",
+      "cityId": "valladolid-es",
+      "cityName": {
+        "en": "Valladolid",
+        "fr": "Valladolid",
+        "es": "Valladolid"
+      },
+      "cityZoneId": "relation/348849",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 297459,
+      "rank": 13,
+      "version": 1
+    },
+    {
+      "albumId": "es-vigo",
+      "cityId": "vigo-es",
+      "cityName": {
+        "en": "Vigo",
+        "fr": "Vigo",
+        "es": "Vigo"
+      },
+      "cityZoneId": "relation/341381",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 293652,
+      "rank": 14,
+      "version": 1
+    },
+    {
+      "albumId": "es-hospitalet-de-llobregat",
+      "cityId": "hospitalet-de-llobregat-es",
+      "cityName": {
+        "en": "L'Hospitalet de Llobregat",
+        "fr": "L'Hospitalet de Llobregat",
+        "es": "Hospitalet de Llobregat"
+      },
+      "cityZoneId": "relation/345401",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 274455,
+      "rank": 15,
+      "version": 1
+    },
+    {
+      "albumId": "es-gijon",
+      "cityId": "gijon-es",
+      "cityName": {
+        "en": "Gijón",
+        "fr": "Gijón",
+        "es": "Gijón"
+      },
+      "cityZoneId": "relation/345576",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 268313,
+      "rank": 16,
+      "version": 1
+    },
+    {
+      "albumId": "es-vitoria",
+      "cityId": "vitoria-es",
+      "cityName": {
+        "en": "Vitoria-Gasteiz",
+        "fr": "Vitoria-Gasteiz",
+        "es": "Vitoria"
+      },
+      "cityZoneId": "relation/344337",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 255886,
+      "rank": 17,
+      "version": 1
+    },
+    {
+      "albumId": "es-la-coruna",
+      "cityId": "la-coruna-es",
+      "cityName": {
+        "en": "A Coruña",
+        "fr": "La Corogne",
+        "es": "La Coruña"
+      },
+      "cityZoneId": "relation/346810",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 247376,
+      "rank": 18,
+      "version": 1
+    },
+    {
+      "albumId": "es-elche",
+      "cityId": "elche-es",
+      "cityName": {
+        "en": "Elche",
+        "fr": "Elche",
+        "es": "Elche"
+      },
+      "cityZoneId": "relation/347684",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 238293,
+      "rank": 19,
+      "version": 1
+    },
+    {
+      "albumId": "es-granada",
+      "cityId": "granada-es",
+      "cityName": {
+        "en": "Granada",
+        "fr": "Grenade",
+        "es": "Granada"
+      },
+      "cityZoneId": "relation/344685",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 230595,
+      "rank": 20,
+      "version": 1
+    },
+    {
+      "albumId": "es-badalona",
+      "cityId": "badalona-es",
+      "cityName": {
+        "en": "Badalona",
+        "fr": "Badalone",
+        "es": "Badalona"
+      },
+      "cityZoneId": "relation/347954",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 225957,
+      "rank": 21,
+      "version": 1
+    },
+    {
+      "albumId": "es-tarrasa",
+      "cityId": "tarrasa-es",
+      "cityName": {
+        "en": "Terrassa",
+        "fr": "Terrassa",
+        "es": "Tarrasa"
+      },
+      "cityZoneId": "relation/342210",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 225277,
+      "rank": 22,
+      "version": 1
+    },
+    {
+      "albumId": "es-sabadell",
+      "cityId": "sabadell-es",
+      "cityName": {
+        "en": "Sabadell",
+        "fr": "Sabadell",
+        "es": "Sabadell"
+      },
+      "cityZoneId": "relation/344202",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 218300,
+      "rank": 23,
+      "version": 1
+    },
+    {
+      "albumId": "es-cartagena",
+      "cityId": "cartagena-es",
+      "cityName": {
+        "en": "Cartagena",
+        "fr": "Carthagène",
+        "es": "Cartagena"
+      },
+      "cityZoneId": "relation/344228",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 218050,
+      "rank": 24,
+      "version": 1
+    },
+    {
+      "albumId": "es-oviedo",
+      "cityId": "oviedo-es",
+      "cityName": {
+        "en": "Oviedo",
+        "fr": "Oviedo",
+        "es": "Oviedo"
+      },
+      "cityZoneId": "relation/346397",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 217584,
+      "rank": 25,
+      "version": 1
+    },
+    {
+      "albumId": "es-jerez-de-la-frontera",
+      "cityId": "jerez-de-la-frontera-es",
+      "cityName": {
+        "en": "Jerez de la Frontera",
+        "fr": "Jerez de la Frontera",
+        "es": "Jerez de la Frontera"
+      },
+      "cityZoneId": "relation/342097",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 213231,
+      "rank": 26,
+      "version": 1
+    },
+    {
+      "albumId": "es-mostoles",
+      "cityId": "mostoles-es",
+      "cityName": {
+        "en": "Móstoles",
+        "fr": "Móstoles",
+        "es": "Móstoles"
+      },
+      "cityZoneId": "relation/340288",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 211265,
+      "rank": 27,
+      "version": 1
+    },
+    {
+      "albumId": "es-santa-cruz-de-tenerife",
+      "cityId": "santa-cruz-de-tenerife-es",
+      "cityName": {
+        "en": "Santa Cruz de Tenerife",
+        "fr": "Santa Cruz de Ténérife",
+        "es": "Santa Cruz de Tenerife"
+      },
+      "cityZoneId": "relation/340727",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 209395,
+      "rank": 28,
+      "version": 1
+    },
+    {
+      "albumId": "es-pamplona",
+      "cityId": "pamplona-es",
+      "cityName": {
+        "en": "Pamplona",
+        "fr": "Pampelune",
+        "es": "Pamplona"
+      },
+      "cityZoneId": "relation/344401",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 205762,
+      "rank": 29,
+      "version": 1
+    },
+    {
+      "albumId": "es-almeria",
+      "cityId": "almeria-es",
+      "cityName": {
+        "en": "Almería",
+        "fr": "Almería",
+        "es": "Almería"
+      },
+      "cityZoneId": "relation/347796",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 200578,
+      "rank": 30,
+      "version": 1
+    },
+    {
+      "albumId": "es-alcala-de-henares",
+      "cityId": "alcala-de-henares-es",
+      "cityName": {
+        "en": "Alcalá de Henares",
+        "fr": "Alcalá de Henares",
+        "es": "Alcalá de Henares"
+      },
+      "cityZoneId": "relation/345879",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 199184,
+      "rank": 31,
+      "version": 1
+    },
+    {
+      "albumId": "es-leganes",
+      "cityId": "leganes-es",
+      "cityName": {
+        "en": "Leganés",
+        "fr": "Leganés",
+        "es": "Leganés"
+      },
+      "cityZoneId": "relation/342087",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 190665,
+      "rank": 32,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-sebastian",
+      "cityId": "san-sebastian-es",
+      "cityName": {
+        "en": "San Sebastián",
+        "fr": "Saint-Sébastien",
+        "es": "San Sebastián"
+      },
+      "cityZoneId": "relation/346465",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 188743,
+      "rank": 33,
+      "version": 1
+    },
+    {
+      "albumId": "es-fuenlabrada",
+      "cityId": "fuenlabrada-es",
+      "cityName": {
+        "en": "Fuenlabrada",
+        "fr": "Fuenlabrada",
+        "es": "Fuenlabrada"
+      },
+      "cityZoneId": "relation/340945",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 6,
+      "population": 188736,
+      "rank": 34,
+      "version": 1
+    },
+    {
+      "albumId": "es-getafe",
+      "cityId": "getafe-es",
+      "cityName": {
+        "en": "Getafe",
+        "fr": "Getafe",
+        "es": "Getafe"
+      },
+      "cityZoneId": "relation/345003",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 185899,
+      "rank": 35,
+      "version": 1
+    },
+    {
+      "albumId": "es-castellon-de-la-plana",
+      "cityId": "castellon-de-la-plana-es",
+      "cityName": {
+        "en": "Castellón de la Plana",
+        "fr": "Castelló de la Plana",
+        "es": "Castellón de la Plana"
+      },
+      "cityZoneId": "relation/344858",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 176238,
+      "rank": 36,
+      "version": 1
+    },
+    {
+      "albumId": "es-burgos",
+      "cityId": "burgos-es",
+      "cityName": {
+        "en": "Burgos",
+        "fr": "Burgos",
+        "es": "Burgos"
+      },
+      "cityZoneId": "relation/344165",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 174451,
+      "rank": 37,
+      "version": 1
+    },
+    {
+      "albumId": "es-albacete",
+      "cityId": "albacete-es",
+      "cityName": {
+        "en": "Albacete",
+        "fr": "Albacete",
+        "es": "Albacete"
+      },
+      "cityZoneId": "relation/346317",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 173206,
+      "rank": 38,
+      "version": 1
+    },
+    {
+      "albumId": "es-santander",
+      "cityId": "santander-es",
+      "cityName": {
+        "en": "Santander",
+        "fr": "Santander",
+        "es": "Santander"
+      },
+      "cityZoneId": "relation/340797",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 172726,
+      "rank": 39,
+      "version": 1
+    },
+    {
+      "albumId": "es-alcorcon",
+      "cityId": "alcorcon-es",
+      "cityName": {
+        "en": "Alcorcón",
+        "fr": "Alcorcón",
+        "es": "Alcorcón"
+      },
+      "cityZoneId": "relation/345877",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 171772,
+      "rank": 40,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-cristobal-de-la-laguna",
+      "cityId": "san-cristobal-de-la-laguna-es",
+      "cityName": {
+        "en": "San Cristóbal de La Laguna",
+        "fr": "San Cristóbal de La Laguna",
+        "es": "San Cristóbal de La Laguna"
+      },
+      "cityZoneId": "relation/345393",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 159034,
+      "rank": 41,
+      "version": 1
+    },
+    {
+      "albumId": "es-marbella",
+      "cityId": "marbella-es",
+      "cityName": {
+        "en": "Marbella",
+        "fr": "Marbella",
+        "es": "Marbella"
+      },
+      "cityZoneId": "relation/340756",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 156295,
+      "rank": 42,
+      "version": 1
+    },
+    {
+      "albumId": "es-logrono",
+      "cityId": "logrono-es",
+      "cityName": {
+        "en": "Logroño",
+        "fr": "Logroño",
+        "es": "Logroño"
+      },
+      "cityZoneId": "relation/340516",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 150583,
+      "rank": 43,
+      "version": 1
+    },
+    {
+      "albumId": "es-badajoz",
+      "cityId": "badajoz-es",
+      "cityName": {
+        "en": "Badajoz",
+        "fr": "Badajoz",
+        "es": "Badajoz"
+      },
+      "cityZoneId": "relation/342316",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 150190,
+      "rank": 44,
+      "version": 1
+    },
+    {
+      "albumId": "es-salamanca",
+      "cityId": "salamanca-es",
+      "cityName": {
+        "en": "Salamanca",
+        "fr": "Salamanque",
+        "es": "Salamanca"
+      },
+      "cityZoneId": "relation/344342",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 143954,
+      "rank": 45,
+      "version": 1
+    },
+    {
+      "albumId": "es-lerida",
+      "cityId": "lerida-es",
+      "cityName": {
+        "en": "Lleida",
+        "fr": "Lérida",
+        "es": "Lérida"
+      },
+      "cityZoneId": "relation/346345",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 143094,
+      "rank": 46,
+      "version": 1
+    },
+    {
+      "albumId": "es-huelva",
+      "cityId": "huelva-es",
+      "cityName": {
+        "en": "Huelva",
+        "fr": "Huelva",
+        "es": "Huelva"
+      },
+      "cityZoneId": "relation/347727",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 142532,
+      "rank": 47,
+      "version": 1
+    },
+    {
+      "albumId": "es-dos-hermanas",
+      "cityId": "dos-hermanas-es",
+      "cityName": {
+        "en": "Dos Hermanas",
+        "fr": "Dos Hermanas",
+        "es": "Dos Hermanas"
+      },
+      "cityZoneId": "relation/341615",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 7,
+      "population": 138981,
+      "rank": 48,
+      "version": 1
+    },
+    {
+      "albumId": "es-tarragona",
+      "cityId": "tarragona-es",
+      "cityName": {
+        "en": "Tarragona",
+        "fr": "Tarragone",
+        "es": "Tarragona"
+      },
+      "cityZoneId": "relation/339887",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 138262,
+      "rank": 49,
+      "version": 1
+    },
+    {
+      "albumId": "es-torrejon-de-ardoz",
+      "cityId": "torrejon-de-ardoz-es",
+      "cityName": {
+        "en": "Torrejón de Ardoz",
+        "fr": "Torrejón de Ardoz",
+        "es": "Torrejón de Ardoz"
+      },
+      "cityZoneId": "relation/343606",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 7,
+      "population": 137711,
+      "rank": 50,
+      "version": 1
+    },
+    {
+      "albumId": "es-parla",
+      "cityId": "parla-es",
+      "cityName": {
+        "en": "Parla",
+        "fr": "Parla",
+        "es": "Parla"
+      },
+      "cityZoneId": "relation/342965",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 133004,
+      "rank": 51,
+      "version": 1
+    },
+    {
+      "albumId": "es-mataro",
+      "cityId": "mataro-es",
+      "cityName": {
+        "en": "Mataró",
+        "fr": "Mataró",
+        "es": "Mataró"
+      },
+      "cityZoneId": "relation/345587",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 129870,
+      "rank": 52,
+      "version": 1
+    },
+    {
+      "albumId": "es-algeciras",
+      "cityId": "algeciras-es",
+      "cityName": {
+        "en": "Algeciras",
+        "fr": "Algésiras",
+        "es": "Algeciras"
+      },
+      "cityZoneId": "relation/342446",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 123639,
+      "rank": 53,
+      "version": 1
+    },
+    {
+      "albumId": "es-leon",
+      "cityId": "leon-es",
+      "cityName": {
+        "en": "León",
+        "fr": "León",
+        "es": "León"
+      },
+      "cityZoneId": "relation/339984",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 121281,
+      "rank": 54,
+      "version": 1
+    },
+    {
+      "albumId": "es-santa-coloma-de-gramanet",
+      "cityId": "santa-coloma-de-gramanet-es",
+      "cityName": {
+        "en": "Santa Coloma de Gramenet",
+        "fr": "Santa Coloma de Gramenet",
+        "es": "Santa Coloma de Gramanet"
+      },
+      "cityZoneId": "relation/347480",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 119862,
+      "rank": 55,
+      "version": 1
+    },
+    {
+      "albumId": "es-alcobendas",
+      "cityId": "alcobendas-es",
+      "cityName": {
+        "en": "Alcobendas",
+        "fr": "Alcobendas",
+        "es": "Alcobendas"
+      },
+      "cityZoneId": "relation/345878",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 119416,
+      "rank": 56,
+      "version": 1
+    },
+    {
+      "albumId": "es-jaen",
+      "cityId": "jaen-es",
+      "cityName": {
+        "en": "Jaén",
+        "fr": "Jaén",
+        "es": "Jaén"
+      },
+      "cityZoneId": "relation/339631",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 111888,
+      "rank": 57,
+      "version": 1
+    },
+    {
+      "albumId": "es-cadiz",
+      "cityId": "cadiz-es",
+      "cityName": {
+        "en": "Cádiz",
+        "fr": "Cadix",
+        "es": "Cádiz"
+      },
+      "cityZoneId": "relation/346956",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 111811,
+      "rank": 58,
+      "version": 1
+    },
+    {
+      "albumId": "es-reus",
+      "cityId": "reus-es",
+      "cityName": {
+        "en": "Reus",
+        "fr": "Reus",
+        "es": "Reus"
+      },
+      "cityZoneId": "relation/340853",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 108479,
+      "rank": 59,
+      "version": 1
+    },
+    {
+      "albumId": "es-roquetas-de-mar",
+      "cityId": "roquetas-de-mar-es",
+      "cityName": {
+        "en": "Roquetas de Mar",
+        "fr": "Roquetas de Mar",
+        "es": "Roquetas de Mar"
+      },
+      "cityZoneId": "relation/347557",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 106510,
+      "rank": 60,
+      "version": 1
+    },
+    {
+      "albumId": "es-gerona",
+      "cityId": "gerona-es",
+      "cityName": {
+        "en": "Girona",
+        "fr": "Gérone",
+        "es": "Gerona"
+      },
+      "cityZoneId": "relation/343535",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 104320,
+      "rank": 61,
+      "version": 1
+    },
+    {
+      "albumId": "es-orense",
+      "cityId": "orense-es",
+      "cityName": {
+        "en": "Ourense",
+        "fr": "Ourense",
+        "es": "Orense"
+      },
+      "cityZoneId": "relation/343932",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 104250,
+      "rank": 62,
+      "version": 1
+    },
+    {
+      "albumId": "es-telde",
+      "cityId": "telde-es",
+      "cityName": {
+        "en": "Telde",
+        "fr": "Telde",
+        "es": "Telde"
+      },
+      "cityZoneId": "relation/345437",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 102487,
+      "rank": 63,
+      "version": 1
+    },
+    {
+      "albumId": "es-baracaldo",
+      "cityId": "baracaldo-es",
+      "cityName": {
+        "en": "Barakaldo",
+        "fr": "Barakaldo",
+        "es": "Baracaldo"
+      },
+      "cityZoneId": "relation/340585",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 101229,
+      "rank": 64,
+      "version": 1
+    },
+    {
+      "albumId": "es-rivas-vaciamadrid",
+      "cityId": "rivas-vaciamadrid-es",
+      "cityName": {
+        "en": "Rivas-Vaciamadrid",
+        "fr": "Rivas-Vaciamadrid",
+        "es": "Rivas-Vaciamadrid"
+      },
+      "cityZoneId": "relation/343293",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 100275,
+      "rank": 65,
+      "version": 1
+    },
+    {
+      "albumId": "es-santiago-de-compostela",
+      "cityId": "santiago-de-compostela-es",
+      "cityName": {
+        "en": "Santiago de Compostela",
+        "fr": "Saint-Jacques-de-Compostelle",
+        "es": "Santiago de Compostela"
+      },
+      "cityZoneId": "relation/346204",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 98687,
+      "rank": 66,
+      "version": 1
+    },
+    {
+      "albumId": "es-lorca",
+      "cityId": "lorca-es",
+      "cityName": {
+        "en": "Lorca",
+        "fr": "Lorca",
+        "es": "Lorca"
+      },
+      "cityZoneId": "relation/346913",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 98447,
+      "rank": 67,
+      "version": 1
+    },
+    {
+      "albumId": "es-lugo",
+      "cityId": "lugo-es",
+      "cityName": {
+        "en": "Lugo",
+        "fr": "Lugo",
+        "es": "Lugo"
+      },
+      "cityZoneId": "relation/345264",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 98214,
+      "rank": 68,
+      "version": 1
+    },
+    {
+      "albumId": "es-las-rozas-de-madrid",
+      "cityId": "las-rozas-de-madrid-es",
+      "cityName": {
+        "en": "Las Rozas de Madrid",
+        "fr": "Las Rozas de Madrid",
+        "es": "Las Rozas de Madrid"
+      },
+      "cityZoneId": "relation/343285",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 6,
+      "population": 98086,
+      "rank": 69,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-cugat-del-valles",
+      "cityId": "san-cugat-del-valles-es",
+      "cityName": {
+        "en": "Sant Cugat del Vallès",
+        "fr": "Sant Cugat del Vallès",
+        "es": "San Cugat del Vallés"
+      },
+      "cityZoneId": "relation/347540",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 97530,
+      "rank": 70,
+      "version": 1
+    },
+    {
+      "albumId": "es-caceres",
+      "cityId": "caceres-es",
+      "cityName": {
+        "en": "Cáceres",
+        "fr": "Cáceres",
+        "es": "Cáceres"
+      },
+      "cityZoneId": "relation/1899973",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 96215,
+      "rank": 71,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-fernando",
+      "cityId": "san-fernando-es",
+      "cityName": {
+        "en": "San Fernando",
+        "fr": "San Fernando",
+        "es": "San Fernando"
+      },
+      "cityZoneId": "relation/346652",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 93927,
+      "rank": 72,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-sebastian-de-los-reyes",
+      "cityId": "san-sebastian-de-los-reyes-es",
+      "cityName": {
+        "en": "San Sebastián de los Reyes",
+        "fr": "San Sebastián de los Reyes",
+        "es": "San Sebastián de los Reyes"
+      },
+      "cityZoneId": "relation/347596",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 92734,
+      "rank": 73,
+      "version": 1
+    },
+    {
+      "albumId": "es-mijas",
+      "cityId": "mijas-es",
+      "cityName": {
+        "en": "Mijas",
+        "fr": "Mijas",
+        "es": "Mijas"
+      },
+      "cityZoneId": "relation/345097",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 91691,
+      "rank": 74,
+      "version": 1
+    },
+    {
+      "albumId": "es-cornella-de-llobregat",
+      "cityId": "cornella-de-llobregat-es",
+      "cityName": {
+        "en": "Cornellà de Llobregat",
+        "fr": "Cornellà de Llobregat",
+        "es": "Cornellá de Llobregat"
+      },
+      "cityZoneId": "relation/339968",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 90303,
+      "rank": 75,
+      "version": 1
+    },
+    {
+      "albumId": "es-el-ejido",
+      "cityId": "el-ejido-es",
+      "cityName": {
+        "en": "El Ejido",
+        "fr": "El Ejido",
+        "es": "El Ejido"
+      },
+      "cityZoneId": "relation/345425",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 89975,
+      "rank": 76,
+      "version": 1
+    },
+    {
+      "albumId": "es-el-puerto-de-santa-maria",
+      "cityId": "el-puerto-de-santa-maria-es",
+      "cityName": {
+        "en": "El Puerto de Santa María",
+        "fr": "El Puerto de Santa María",
+        "es": "El Puerto de Santa María"
+      },
+      "cityZoneId": "relation/342093",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 89813,
+      "rank": 77,
+      "version": 1
+    },
+    {
+      "albumId": "es-torrevieja",
+      "cityId": "torrevieja-es",
+      "cityName": {
+        "en": "Torrevieja",
+        "fr": "Torrevieja",
+        "es": "Torrevieja"
+      },
+      "cityZoneId": "relation/341237",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 89290,
+      "rank": 78,
+      "version": 1
+    },
+    {
+      "albumId": "es-guadalajara",
+      "cityId": "guadalajara-es",
+      "cityName": {
+        "en": "Guadalajara",
+        "fr": "Guadalajara",
+        "es": "Guadalajara"
+      },
+      "cityZoneId": "relation/342800",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 89010,
+      "rank": 79,
+      "version": 1
+    },
+    {
+      "albumId": "es-pozuelo-de-alarcon",
+      "cityId": "pozuelo-de-alarcon-es",
+      "cityName": {
+        "en": "Pozuelo de Alarcón",
+        "fr": "Pozuelo de Alarcón",
+        "es": "Pozuelo de Alarcón"
+      },
+      "cityZoneId": "relation/347315",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 88784,
+      "rank": 80,
+      "version": 1
+    },
+    {
+      "albumId": "es-chiclana-de-la-frontera",
+      "cityId": "chiclana-de-la-frontera-es",
+      "cityName": {
+        "en": "Chiclana de la Frontera",
+        "fr": "Chiclana de la Frontera",
+        "es": "Chiclana de la Frontera"
+      },
+      "cityZoneId": "relation/346951",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 88709,
+      "rank": 81,
+      "version": 1
+    },
+    {
+      "albumId": "es-torrente",
+      "cityId": "torrente-es",
+      "cityName": {
+        "en": "Torrent",
+        "fr": "Torrent",
+        "es": "Torrente"
+      },
+      "cityZoneId": "relation/340538",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 87295,
+      "rank": 82,
+      "version": 1
+    },
+    {
+      "albumId": "es-toledo",
+      "cityId": "toledo-es",
+      "cityName": {
+        "en": "Toledo",
+        "fr": "Tolède",
+        "es": "Toledo"
+      },
+      "cityZoneId": "relation/342999",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 86070,
+      "rank": 83,
+      "version": 1
+    },
+    {
+      "albumId": "es-fuengirola",
+      "cityId": "fuengirola-es",
+      "cityName": {
+        "en": "Fuengirola",
+        "fr": "Fuengirola",
+        "es": "Fuengirola"
+      },
+      "cityZoneId": "relation/345414",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 85598,
+      "rank": 84,
+      "version": 1
+    },
+    {
+      "albumId": "es-melilla",
+      "cityId": "melilla-es",
+      "cityName": {
+        "en": "Melilla",
+        "fr": "Melilla",
+        "es": "Melilla"
+      },
+      "cityZoneId": "relation/1154757",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 85491,
+      "rank": 85,
+      "version": 1
+    },
+    {
+      "albumId": "es-velez-malaga",
+      "cityId": "velez-malaga-es",
+      "cityName": {
+        "en": "Vélez-Málaga",
+        "fr": "Vélez-Málaga",
+        "es": "Vélez-Málaga"
+      },
+      "cityZoneId": "relation/347397",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 85377,
+      "rank": 86,
+      "version": 1
+    },
+    {
+      "albumId": "es-arona",
+      "cityId": "arona-es",
+      "cityName": {
+        "en": "Arona",
+        "fr": "Arona",
+        "es": "Arona"
+      },
+      "cityZoneId": "relation/345076",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 85249,
+      "rank": 87,
+      "version": 1
+    },
+    {
+      "albumId": "es-talavera-de-la-reina",
+      "cityId": "talavera-de-la-reina-es",
+      "cityName": {
+        "en": "Talavera de la Reina",
+        "fr": "Talavera de la Reina",
+        "es": "Talavera de la Reina"
+      },
+      "cityZoneId": "relation/343000",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 84137,
+      "rank": 88,
+      "version": 1
+    },
+    {
+      "albumId": "es-san-baudilio-de-llobregat",
+      "cityId": "san-baudilio-de-llobregat-es",
+      "cityName": {
+        "en": "Sant Boi de Llobregat",
+        "fr": "Sant Boi de Llobregat",
+        "es": "San Baudilio de Llobregat"
+      },
+      "cityZoneId": "relation/347545",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 83919,
+      "rank": 89,
+      "version": 1
+    },
+    {
+      "albumId": "es-ceuta",
+      "cityId": "ceuta-es",
+      "cityName": {
+        "en": "Ceuta",
+        "fr": "Ceuta",
+        "es": "Ceuta"
+      },
+      "cityZoneId": "relation/1822781",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 83039,
+      "rank": 90,
+      "version": 1
+    },
+    {
+      "albumId": "es-pontevedra",
+      "cityId": "pontevedra-es",
+      "cityName": {
+        "en": "Pontevedra",
+        "fr": "Pontevedra",
+        "es": "Pontevedra"
+      },
+      "cityZoneId": "relation/341736",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 82535,
+      "rank": 91,
+      "version": 1
+    },
+    {
+      "albumId": "es-orihuela",
+      "cityId": "orihuela-es",
+      "cityName": {
+        "en": "Orihuela",
+        "fr": "Orihuela",
+        "es": "Orihuela"
+      },
+      "cityZoneId": "relation/341472",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 82449,
+      "rank": 92,
+      "version": 1
+    },
+    {
+      "albumId": "es-valdemoro",
+      "cityId": "valdemoro-es",
+      "cityName": {
+        "en": "Valdemoro",
+        "fr": "Valdemoro",
+        "es": "Valdemoro"
+      },
+      "cityZoneId": "relation/343923",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 81394,
+      "rank": 93,
+      "version": 1
+    },
+    {
+      "albumId": "es-coslada",
+      "cityId": "coslada-es",
+      "cityName": {
+        "en": "Coslada",
+        "fr": "Coslada",
+        "es": "Coslada"
+      },
+      "cityZoneId": "relation/345295",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 80171,
+      "rank": 94,
+      "version": 1
+    },
+    {
+      "albumId": "es-rubi",
+      "cityId": "rubi-es",
+      "cityName": {
+        "en": "Rubí",
+        "fr": "Rubí",
+        "es": "Rubí"
+      },
+      "cityZoneId": "relation/344200",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 80044,
+      "rank": 95,
+      "version": 1
+    },
+    {
+      "albumId": "es-manresa",
+      "cityId": "manresa-es",
+      "cityName": {
+        "en": "Manresa",
+        "fr": "Manrèse",
+        "es": "Manresa"
+      },
+      "cityZoneId": "relation/346721",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 78877,
+      "rank": 96,
+      "version": 1
+    },
+    {
+      "albumId": "es-gandia",
+      "cityId": "gandia-es",
+      "cityName": {
+        "en": "Gandia",
+        "fr": "Gandia",
+        "es": "Gandía"
+      },
+      "cityZoneId": "relation/339514",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 78108,
+      "rank": 97,
+      "version": 1
+    },
+    {
+      "albumId": "es-estepona",
+      "cityId": "estepona-es",
+      "cityName": {
+        "en": "Estepona",
+        "fr": "Estepona",
+        "es": "Estepona"
+      },
+      "cityZoneId": "relation/345409",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 76975,
+      "rank": 98,
+      "version": 1
+    },
+    {
+      "albumId": "es-alcala-de-guadaira",
+      "cityId": "alcala-de-guadaira-es",
+      "cityName": {
+        "en": "Alcalá de Guadaíra",
+        "fr": "Alcalá de Guadaíra",
+        "es": "Alcalá de Guadaíra"
+      },
+      "cityZoneId": "relation/345821",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 76547,
+      "rank": 99,
+      "version": 1
+    },
+    {
+      "albumId": "es-palencia",
+      "cityId": "palencia-es",
+      "cityName": {
+        "en": "Palencia",
+        "fr": "Palencia",
+        "es": "Palencia"
+      },
+      "cityZoneId": "relation/347573",
+      "countryCode": "es",
+      "localLanguage": "es",
+      "medalCount": 8,
+      "population": 76331,
+      "rank": 100,
+      "version": 1
+    }
+  ],
+  "compressedBytes": 75940,
+  "countryCode": "es",
+  "formatVersion": 1,
+  "languages": [
+    "en",
+    "fr",
+    "es"
+  ],
+  "medalCount": 858,
+  "publishedAt": "2026-08-09",
+  "sha256": "2dea0f6c8d596338af9feb0409475b950e8944be6c60fceb9cbcc8cebdbbae36",
+  "uncompressedBytes": 709974,
+  "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/es-v1.json.gz",
+  "version": 1
+}

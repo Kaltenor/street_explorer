@@ -23,6 +23,7 @@ const contextFiles = [
   "README.md",
   "docs/ARCHITECTURE.md",
   "docs/CHANGELOG.md",
+  "docs/COUNTRY_PACKS.md",
   "docs/DEVELOPMENT_BUILD.md",
   "docs/MEDAL_SYSTEM_IMPLEMENTATION_PLAN.md",
   "docs/PROJECT_OVERVIEW.md",
@@ -64,6 +65,9 @@ const currentContext = [
 for (const claim of [
   "851",
   "top 100",
+  "downloadable",
+  "Netherlands",
+  "checksum",
   "Wikipedia",
   "200",
   "Explorer Points",
@@ -77,7 +81,8 @@ console.log("PASS current context covers recent catalogue, reader, score, appear
 const developmentBuild = read("docs/DEVELOPMENT_BUILD.md");
 for (const claim of [
   "clean-cache build 159",
-  "France top-100",
+  "bundled France",
+  "offline-cache",
   "+200 PTS",
   "Daylight",
   "Wikipedia"
@@ -90,7 +95,26 @@ const medalHistory = read("docs/MEDAL_SYSTEM_IMPLEMENTATION_PLAN.md");
 assert(medalHistory.includes("HISTORICAL DECISION RECORD"));
 assert(medalHistory.includes(`Current shipped medal contract (v${version})`));
 assert(medalHistory.includes("851 medals"));
+assert(medalHistory.includes("downloadable country packs"));
 console.log("PASS the legacy medal plan is clearly historical and points to the shipped contract");
+
+const countryPacks = read("docs/COUNTRY_PACKS.md");
+for (const claim of [
+  "SHA-256",
+  "50%",
+  "Amsterdam",
+  "Rotterdam",
+  "Maastricht",
+  "3,850 medals",
+  "286,643 compressed bytes",
+  "wave-1-size-estimate.json",
+  "wave-1-results.json",
+  "npm run test:country-packs",
+  "A valid installed pack requires no network"
+]) {
+  assert(countryPacks.includes(claim), `Country-pack context is missing: ${claim}`);
+}
+console.log("PASS country-pack architecture, pilot, budget, workflow, and offline contract are documented");
 
 const agentInstructions = read("AGENTS.md");
 for (const requirement of [

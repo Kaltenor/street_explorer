@@ -1,0 +1,611 @@
+{
+  "source": "INE official municipal population workbook, 1 January 2023",
+  "sourceUrl": "https://www.ine.es/en/pob_xls/pobmun_en.zip",
+  "municipalityCount": 8131,
+  "nationalPopulation": 48022515,
+  "citiesNeededForHalf": 125,
+  "top100Population": 22325493,
+  "top100Share": 0.4648963720454874,
+  "municipalities": [
+    {
+      "code": "28079",
+      "name": "Madrid",
+      "population": 3332035,
+      "province": "Madrid"
+    },
+    {
+      "code": "08019",
+      "name": "Barcelona",
+      "population": 1660122,
+      "province": "Barcelona"
+    },
+    {
+      "code": "46250",
+      "name": "València",
+      "population": 807693,
+      "province": "Valencia/València"
+    },
+    {
+      "code": "41091",
+      "name": "Sevilla",
+      "population": 684025,
+      "province": "Sevilla"
+    },
+    {
+      "code": "50297",
+      "name": "Zaragoza",
+      "population": 682513,
+      "province": "Zaragoza"
+    },
+    {
+      "code": "29067",
+      "name": "Málaga",
+      "population": 586384,
+      "province": "Málaga"
+    },
+    {
+      "code": "30030",
+      "name": "Murcia",
+      "population": 469177,
+      "province": "Murcia"
+    },
+    {
+      "code": "07040",
+      "name": "Palma",
+      "population": 423350,
+      "province": "Balears, Illes"
+    },
+    {
+      "code": "35016",
+      "name": "Palmas de Gran Canaria, Las",
+      "population": 378027,
+      "province": "Palmas, Las"
+    },
+    {
+      "code": "03014",
+      "name": "Alacant/Alicante",
+      "population": 349282,
+      "province": "Alicante/Alacant"
+    },
+    {
+      "code": "48020",
+      "name": "Bilbao",
+      "population": 346096,
+      "province": "Bizkaia"
+    },
+    {
+      "code": "14021",
+      "name": "Córdoba",
+      "population": 323763,
+      "province": "Córdoba"
+    },
+    {
+      "code": "47186",
+      "name": "Valladolid",
+      "population": 297459,
+      "province": "Valladolid"
+    },
+    {
+      "code": "36057",
+      "name": "Vigo",
+      "population": 293652,
+      "province": "Pontevedra"
+    },
+    {
+      "code": "08101",
+      "name": "Hospitalet de Llobregat, L'",
+      "population": 274455,
+      "province": "Barcelona"
+    },
+    {
+      "code": "33024",
+      "name": "Gijón",
+      "population": 268313,
+      "province": "Asturias"
+    },
+    {
+      "code": "01059",
+      "name": "Vitoria-Gasteiz",
+      "population": 255886,
+      "province": "Araba/Álava"
+    },
+    {
+      "code": "15030",
+      "name": "Coruña, A",
+      "population": 247376,
+      "province": "Coruña, A"
+    },
+    {
+      "code": "03065",
+      "name": "Elx/Elche",
+      "population": 238293,
+      "province": "Alicante/Alacant"
+    },
+    {
+      "code": "18087",
+      "name": "Granada",
+      "population": 230595,
+      "province": "Granada"
+    },
+    {
+      "code": "08015",
+      "name": "Badalona",
+      "population": 225957,
+      "province": "Barcelona"
+    },
+    {
+      "code": "08279",
+      "name": "Terrassa",
+      "population": 225277,
+      "province": "Barcelona"
+    },
+    {
+      "code": "08187",
+      "name": "Sabadell",
+      "population": 218300,
+      "province": "Barcelona"
+    },
+    {
+      "code": "30016",
+      "name": "Cartagena",
+      "population": 218050,
+      "province": "Murcia"
+    },
+    {
+      "code": "33044",
+      "name": "Oviedo",
+      "population": 217584,
+      "province": "Asturias"
+    },
+    {
+      "code": "11020",
+      "name": "Jerez de la Frontera",
+      "population": 213231,
+      "province": "Cádiz"
+    },
+    {
+      "code": "28092",
+      "name": "Móstoles",
+      "population": 211265,
+      "province": "Madrid"
+    },
+    {
+      "code": "38038",
+      "name": "Santa Cruz de Tenerife",
+      "population": 209395,
+      "province": "Santa Cruz de Tenerife"
+    },
+    {
+      "code": "31201",
+      "name": "Pamplona/Iruña",
+      "population": 205762,
+      "province": "Navarra"
+    },
+    {
+      "code": "04013",
+      "name": "Almería",
+      "population": 200578,
+      "province": "Almería"
+    },
+    {
+      "code": "28005",
+      "name": "Alcalá de Henares",
+      "population": 199184,
+      "province": "Madrid"
+    },
+    {
+      "code": "28074",
+      "name": "Leganés",
+      "population": 190665,
+      "province": "Madrid"
+    },
+    {
+      "code": "20069",
+      "name": "Donostia/San Sebastián",
+      "population": 188743,
+      "province": "Gipuzkoa"
+    },
+    {
+      "code": "28058",
+      "name": "Fuenlabrada",
+      "population": 188736,
+      "province": "Madrid"
+    },
+    {
+      "code": "28065",
+      "name": "Getafe",
+      "population": 185899,
+      "province": "Madrid"
+    },
+    {
+      "code": "12040",
+      "name": "Castelló de la Plana",
+      "population": 176238,
+      "province": "Castellón/Castelló"
+    },
+    {
+      "code": "09059",
+      "name": "Burgos",
+      "population": 174451,
+      "province": "Burgos"
+    },
+    {
+      "code": "02003",
+      "name": "Albacete",
+      "population": 173206,
+      "province": "Albacete"
+    },
+    {
+      "code": "39075",
+      "name": "Santander",
+      "population": 172726,
+      "province": "Cantabria"
+    },
+    {
+      "code": "28007",
+      "name": "Alcorcón",
+      "population": 171772,
+      "province": "Madrid"
+    },
+    {
+      "code": "38023",
+      "name": "San Cristóbal de La Laguna",
+      "population": 159034,
+      "province": "Santa Cruz de Tenerife"
+    },
+    {
+      "code": "29069",
+      "name": "Marbella",
+      "population": 156295,
+      "province": "Málaga"
+    },
+    {
+      "code": "26089",
+      "name": "Logroño",
+      "population": 150583,
+      "province": "Rioja, La"
+    },
+    {
+      "code": "06015",
+      "name": "Badajoz",
+      "population": 150190,
+      "province": "Badajoz"
+    },
+    {
+      "code": "37274",
+      "name": "Salamanca",
+      "population": 143954,
+      "province": "Salamanca"
+    },
+    {
+      "code": "25120",
+      "name": "Lleida",
+      "population": 143094,
+      "province": "Lleida"
+    },
+    {
+      "code": "21041",
+      "name": "Huelva",
+      "population": 142532,
+      "province": "Huelva"
+    },
+    {
+      "code": "41038",
+      "name": "Dos Hermanas",
+      "population": 138981,
+      "province": "Sevilla"
+    },
+    {
+      "code": "43148",
+      "name": "Tarragona",
+      "population": 138262,
+      "province": "Tarragona"
+    },
+    {
+      "code": "28148",
+      "name": "Torrejón de Ardoz",
+      "population": 137711,
+      "province": "Madrid"
+    },
+    {
+      "code": "28106",
+      "name": "Parla",
+      "population": 133004,
+      "province": "Madrid"
+    },
+    {
+      "code": "08121",
+      "name": "Mataró",
+      "population": 129870,
+      "province": "Barcelona"
+    },
+    {
+      "code": "11004",
+      "name": "Algeciras",
+      "population": 123639,
+      "province": "Cádiz"
+    },
+    {
+      "code": "24089",
+      "name": "León",
+      "population": 121281,
+      "province": "León"
+    },
+    {
+      "code": "08245",
+      "name": "Santa Coloma de Gramenet",
+      "population": 119862,
+      "province": "Barcelona"
+    },
+    {
+      "code": "28006",
+      "name": "Alcobendas",
+      "population": 119416,
+      "province": "Madrid"
+    },
+    {
+      "code": "23050",
+      "name": "Jaén",
+      "population": 111888,
+      "province": "Jaén"
+    },
+    {
+      "code": "11012",
+      "name": "Cádiz",
+      "population": 111811,
+      "province": "Cádiz"
+    },
+    {
+      "code": "43123",
+      "name": "Reus",
+      "population": 108479,
+      "province": "Tarragona"
+    },
+    {
+      "code": "04079",
+      "name": "Roquetas de Mar",
+      "population": 106510,
+      "province": "Almería"
+    },
+    {
+      "code": "17079",
+      "name": "Girona",
+      "population": 104320,
+      "province": "Girona"
+    },
+    {
+      "code": "32054",
+      "name": "Ourense",
+      "population": 104250,
+      "province": "Ourense"
+    },
+    {
+      "code": "35026",
+      "name": "Telde",
+      "population": 102487,
+      "province": "Palmas, Las"
+    },
+    {
+      "code": "48013",
+      "name": "Barakaldo",
+      "population": 101229,
+      "province": "Bizkaia"
+    },
+    {
+      "code": "28123",
+      "name": "Rivas-Vaciamadrid",
+      "population": 100275,
+      "province": "Madrid"
+    },
+    {
+      "code": "15078",
+      "name": "Santiago de Compostela",
+      "population": 98687,
+      "province": "Coruña, A"
+    },
+    {
+      "code": "30024",
+      "name": "Lorca",
+      "population": 98447,
+      "province": "Murcia"
+    },
+    {
+      "code": "27028",
+      "name": "Lugo",
+      "population": 98214,
+      "province": "Lugo"
+    },
+    {
+      "code": "28127",
+      "name": "Rozas de Madrid, Las",
+      "population": 98086,
+      "province": "Madrid"
+    },
+    {
+      "code": "08205",
+      "name": "Sant Cugat del Vallès",
+      "population": 97530,
+      "province": "Barcelona"
+    },
+    {
+      "code": "10037",
+      "name": "Cáceres",
+      "population": 96215,
+      "province": "Cáceres"
+    },
+    {
+      "code": "11031",
+      "name": "San Fernando",
+      "population": 93927,
+      "province": "Cádiz"
+    },
+    {
+      "code": "28134",
+      "name": "San Sebastián de los Reyes",
+      "population": 92734,
+      "province": "Madrid"
+    },
+    {
+      "code": "29070",
+      "name": "Mijas",
+      "population": 91691,
+      "province": "Málaga"
+    },
+    {
+      "code": "08073",
+      "name": "Cornellà de Llobregat",
+      "population": 90303,
+      "province": "Barcelona"
+    },
+    {
+      "code": "04902",
+      "name": "Ejido, El",
+      "population": 89975,
+      "province": "Almería"
+    },
+    {
+      "code": "11027",
+      "name": "Puerto de Santa María, El",
+      "population": 89813,
+      "province": "Cádiz"
+    },
+    {
+      "code": "03133",
+      "name": "Torrevieja",
+      "population": 89290,
+      "province": "Alicante/Alacant"
+    },
+    {
+      "code": "19130",
+      "name": "Guadalajara",
+      "population": 89010,
+      "province": "Guadalajara"
+    },
+    {
+      "code": "28115",
+      "name": "Pozuelo de Alarcón",
+      "population": 88784,
+      "province": "Madrid"
+    },
+    {
+      "code": "11015",
+      "name": "Chiclana de la Frontera",
+      "population": 88709,
+      "province": "Cádiz"
+    },
+    {
+      "code": "46244",
+      "name": "Torrent",
+      "population": 87295,
+      "province": "Valencia/València"
+    },
+    {
+      "code": "45168",
+      "name": "Toledo",
+      "population": 86070,
+      "province": "Toledo"
+    },
+    {
+      "code": "29054",
+      "name": "Fuengirola",
+      "population": 85598,
+      "province": "Málaga"
+    },
+    {
+      "code": "52001",
+      "name": "Melilla",
+      "population": 85491,
+      "province": "Melilla"
+    },
+    {
+      "code": "29094",
+      "name": "Vélez-Málaga",
+      "population": 85377,
+      "province": "Málaga"
+    },
+    {
+      "code": "38006",
+      "name": "Arona",
+      "population": 85249,
+      "province": "Santa Cruz de Tenerife"
+    },
+    {
+      "code": "45165",
+      "name": "Talavera de la Reina",
+      "population": 84137,
+      "province": "Toledo"
+    },
+    {
+      "code": "08200",
+      "name": "Sant Boi de Llobregat",
+      "population": 83919,
+      "province": "Barcelona"
+    },
+    {
+      "code": "51001",
+      "name": "Ceuta",
+      "population": 83039,
+      "province": "Ceuta"
+    },
+    {
+      "code": "36038",
+      "name": "Pontevedra",
+      "population": 82535,
+      "province": "Pontevedra"
+    },
+    {
+      "code": "03099",
+      "name": "Orihuela",
+      "population": 82449,
+      "province": "Alicante/Alacant"
+    },
+    {
+      "code": "28161",
+      "name": "Valdemoro",
+      "population": 81394,
+      "province": "Madrid"
+    },
+    {
+      "code": "28049",
+      "name": "Coslada",
+      "population": 80171,
+      "province": "Madrid"
+    },
+    {
+      "code": "08184",
+      "name": "Rubí",
+      "population": 80044,
+      "province": "Barcelona"
+    },
+    {
+      "code": "08113",
+      "name": "Manresa",
+      "population": 78877,
+      "province": "Barcelona"
+    },
+    {
+      "code": "46131",
+      "name": "Gandia",
+      "population": 78108,
+      "province": "Valencia/València"
+    },
+    {
+      "code": "29051",
+      "name": "Estepona",
+      "population": 76975,
+      "province": "Málaga"
+    },
+    {
+      "code": "41004",
+      "name": "Alcalá de Guadaíra",
+      "population": 76547,
+      "province": "Sevilla"
+    },
+    {
+      "code": "34120",
+      "name": "Palencia",
+      "population": 76331,
+      "province": "Palencia"
+    }
+  ]
+}

@@ -1,0 +1,1618 @@
+{
+  "albums": [
+    {
+      "albumId": "de-berlin-11000000",
+      "cityId": "berlin-de-11000000",
+      "cityName": {
+        "de": "Berlin",
+        "en": "Berlin",
+        "fr": "Berlin"
+      },
+      "cityZoneId": "relation/62422",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 20,
+      "population": 3685265,
+      "rank": 1,
+      "version": 1
+    },
+    {
+      "albumId": "de-hamburg-02000000",
+      "cityId": "hamburg-de-02000000",
+      "cityName": {
+        "de": "Hamburg",
+        "en": "Hamburg",
+        "fr": "Hamburg"
+      },
+      "cityZoneId": "relation/62782",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 20,
+      "population": 1862565,
+      "rank": 2,
+      "version": 1
+    },
+    {
+      "albumId": "de-munchen-09162000",
+      "cityId": "munchen-de-09162000",
+      "cityName": {
+        "de": "München",
+        "en": "München",
+        "fr": "München"
+      },
+      "cityZoneId": "relation/62428",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 20,
+      "population": 1505005,
+      "rank": 3,
+      "version": 1
+    },
+    {
+      "albumId": "de-koln-05315000",
+      "cityId": "koln-de-05315000",
+      "cityName": {
+        "de": "Köln",
+        "en": "Köln",
+        "fr": "Köln"
+      },
+      "cityZoneId": "relation/62578",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 1024621,
+      "rank": 4,
+      "version": 1
+    },
+    {
+      "albumId": "de-frankfurt-am-main-06412000",
+      "cityId": "frankfurt-am-main-de-06412000",
+      "cityName": {
+        "de": "Frankfurt am Main",
+        "en": "Frankfurt am Main",
+        "fr": "Frankfurt am Main"
+      },
+      "cityZoneId": "relation/62400",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 756021,
+      "rank": 5,
+      "version": 1
+    },
+    {
+      "albumId": "de-dusseldorf-05111000",
+      "cityId": "dusseldorf-de-05111000",
+      "cityName": {
+        "de": "Düsseldorf",
+        "en": "Düsseldorf",
+        "fr": "Düsseldorf"
+      },
+      "cityZoneId": "relation/62539",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 618685,
+      "rank": 6,
+      "version": 1
+    },
+    {
+      "albumId": "de-stuttgart-08111000",
+      "cityId": "stuttgart-de-08111000",
+      "cityName": {
+        "de": "Stuttgart",
+        "en": "Stuttgart",
+        "fr": "Stuttgart"
+      },
+      "cityZoneId": "relation/2793104",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 612663,
+      "rank": 7,
+      "version": 1
+    },
+    {
+      "albumId": "de-leipzig-14713000",
+      "cityId": "leipzig-de-14713000",
+      "cityName": {
+        "de": "Leipzig",
+        "en": "Leipzig",
+        "fr": "Leipzig"
+      },
+      "cityZoneId": "relation/62649",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 611850,
+      "rank": 8,
+      "version": 1
+    },
+    {
+      "albumId": "de-dortmund-05913000",
+      "cityId": "dortmund-de-05913000",
+      "cityName": {
+        "de": "Dortmund",
+        "en": "Dortmund",
+        "fr": "Dortmund"
+      },
+      "cityZoneId": "relation/1829065",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 603462,
+      "rank": 9,
+      "version": 1
+    },
+    {
+      "albumId": "de-bremen-04011000",
+      "cityId": "bremen-de-04011000",
+      "cityName": {
+        "de": "Bremen",
+        "en": "Bremen",
+        "fr": "Bremen"
+      },
+      "cityZoneId": "relation/62559",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 12,
+      "population": 586271,
+      "rank": 10,
+      "version": 1
+    },
+    {
+      "albumId": "de-essen-05113000",
+      "cityId": "essen-de-05113000",
+      "cityName": {
+        "de": "Essen",
+        "en": "Essen",
+        "fr": "Essen"
+      },
+      "cityZoneId": "relation/62713",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 574682,
+      "rank": 11,
+      "version": 1
+    },
+    {
+      "albumId": "de-dresden-14612000",
+      "cityId": "dresden-de-14612000",
+      "cityName": {
+        "de": "Dresden",
+        "en": "Dresden",
+        "fr": "Dresden"
+      },
+      "cityZoneId": "relation/191645",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 564904,
+      "rank": 12,
+      "version": 1
+    },
+    {
+      "albumId": "de-nurnberg-09564000",
+      "cityId": "nurnberg-de-09564000",
+      "cityName": {
+        "de": "Nürnberg",
+        "en": "Nürnberg",
+        "fr": "Nürnberg"
+      },
+      "cityZoneId": "relation/62780",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 529508,
+      "rank": 13,
+      "version": 1
+    },
+    {
+      "albumId": "de-hannover-03241001",
+      "cityId": "hannover-de-03241001",
+      "cityName": {
+        "de": "Hannover",
+        "en": "Hannover",
+        "fr": "Hannover"
+      },
+      "cityZoneId": "relation/59418",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 522131,
+      "rank": 14,
+      "version": 1
+    },
+    {
+      "albumId": "de-duisburg-05112000",
+      "cityId": "duisburg-de-05112000",
+      "cityName": {
+        "de": "Duisburg",
+        "en": "Duisburg",
+        "fr": "Duisburg"
+      },
+      "cityZoneId": "relation/62456",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 502270,
+      "rank": 15,
+      "version": 1
+    },
+    {
+      "albumId": "de-bochum-05911000",
+      "cityId": "bochum-de-05911000",
+      "cityName": {
+        "de": "Bochum",
+        "en": "Bochum",
+        "fr": "Bochum"
+      },
+      "cityZoneId": "relation/62644",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 358676,
+      "rank": 16,
+      "version": 1
+    },
+    {
+      "albumId": "de-wuppertal-05124000",
+      "cityId": "wuppertal-de-05124000",
+      "cityName": {
+        "de": "Wuppertal",
+        "en": "Wuppertal",
+        "fr": "Wuppertal"
+      },
+      "cityZoneId": "relation/62478",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 358193,
+      "rank": 17,
+      "version": 1
+    },
+    {
+      "albumId": "de-bielefeld-05711000",
+      "cityId": "bielefeld-de-05711000",
+      "cityName": {
+        "de": "Bielefeld",
+        "en": "Bielefeld",
+        "fr": "Bielefeld"
+      },
+      "cityZoneId": "relation/62646",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 331605,
+      "rank": 18,
+      "version": 1
+    },
+    {
+      "albumId": "de-bonn-05314000",
+      "cityId": "bonn-de-05314000",
+      "cityName": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "fr": "Bonn"
+      },
+      "cityZoneId": "relation/62508",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 323336,
+      "rank": 19,
+      "version": 1
+    },
+    {
+      "albumId": "de-mannheim-08222000",
+      "cityId": "mannheim-de-08222000",
+      "cityName": {
+        "de": "Mannheim",
+        "en": "Mannheim",
+        "fr": "Mannheim"
+      },
+      "cityZoneId": "relation/62691",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 318035,
+      "rank": 20,
+      "version": 1
+    },
+    {
+      "albumId": "de-karlsruhe-08212000",
+      "cityId": "karlsruhe-de-08212000",
+      "cityName": {
+        "de": "Karlsruhe",
+        "en": "Karlsruhe",
+        "fr": "Karlsruhe"
+      },
+      "cityZoneId": "relation/62518",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 309050,
+      "rank": 21,
+      "version": 1
+    },
+    {
+      "albumId": "de-munster-05515000",
+      "cityId": "munster-de-05515000",
+      "cityName": {
+        "de": "Münster",
+        "en": "Münster",
+        "fr": "Münster"
+      },
+      "cityZoneId": "relation/62591",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 308258,
+      "rank": 22,
+      "version": 1
+    },
+    {
+      "albumId": "de-augsburg-09761000",
+      "cityId": "augsburg-de-09761000",
+      "cityName": {
+        "de": "Augsburg",
+        "en": "Augsburg",
+        "fr": "Augsburg"
+      },
+      "cityZoneId": "relation/62407",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 301105,
+      "rank": 23,
+      "version": 1
+    },
+    {
+      "albumId": "de-wiesbaden-06414000",
+      "cityId": "wiesbaden-de-06414000",
+      "cityName": {
+        "de": "Wiesbaden",
+        "en": "Wiesbaden",
+        "fr": "Wiesbaden"
+      },
+      "cityZoneId": "relation/62496",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 288850,
+      "rank": 24,
+      "version": 1
+    },
+    {
+      "albumId": "de-gelsenkirchen-05513000",
+      "cityId": "gelsenkirchen-de-05513000",
+      "cityName": {
+        "de": "Gelsenkirchen",
+        "en": "Gelsenkirchen",
+        "fr": "Gelsenkirchen"
+      },
+      "cityZoneId": "relation/62522",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 267930,
+      "rank": 25,
+      "version": 1
+    },
+    {
+      "albumId": "de-monchengladbach-05116000",
+      "cityId": "monchengladbach-de-05116000",
+      "cityName": {
+        "de": "Mönchengladbach",
+        "en": "Mönchengladbach",
+        "fr": "Mönchengladbach"
+      },
+      "cityZoneId": "relation/62410",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 267213,
+      "rank": 26,
+      "version": 1
+    },
+    {
+      "albumId": "de-aachen-05334002",
+      "cityId": "aachen-de-05334002",
+      "cityName": {
+        "de": "Aachen",
+        "en": "Aachen",
+        "fr": "Aachen"
+      },
+      "cityZoneId": "relation/62564",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 262670,
+      "rank": 27,
+      "version": 1
+    },
+    {
+      "albumId": "de-braunschweig-03101000",
+      "cityId": "braunschweig-de-03101000",
+      "cityName": {
+        "de": "Braunschweig",
+        "en": "Braunschweig",
+        "fr": "Braunschweig"
+      },
+      "cityZoneId": "relation/62531",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 252962,
+      "rank": 28,
+      "version": 1
+    },
+    {
+      "albumId": "de-kiel-01002000",
+      "cityId": "kiel-de-01002000",
+      "cityName": {
+        "de": "Kiel",
+        "en": "Kiel",
+        "fr": "Kiel"
+      },
+      "cityZoneId": "relation/27021",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 252668,
+      "rank": 29,
+      "version": 1
+    },
+    {
+      "albumId": "de-chemnitz-14511000",
+      "cityId": "chemnitz-de-14511000",
+      "cityName": {
+        "de": "Chemnitz",
+        "en": "Chemnitz",
+        "fr": "Chemnitz"
+      },
+      "cityZoneId": "relation/62594",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 245618,
+      "rank": 30,
+      "version": 1
+    },
+    {
+      "albumId": "de-magdeburg-15003000",
+      "cityId": "magdeburg-de-15003000",
+      "cityName": {
+        "de": "Magdeburg",
+        "en": "Magdeburg",
+        "fr": "Magdeburg"
+      },
+      "cityZoneId": "relation/62481",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 244329,
+      "rank": 31,
+      "version": 1
+    },
+    {
+      "albumId": "de-freiburg-im-breisgau-08311000",
+      "cityId": "freiburg-im-breisgau-de-08311000",
+      "cityName": {
+        "de": "Freiburg im Breisgau",
+        "en": "Freiburg im Breisgau",
+        "fr": "Freiburg im Breisgau"
+      },
+      "cityZoneId": "relation/62768",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 237460,
+      "rank": 32,
+      "version": 1
+    },
+    {
+      "albumId": "de-krefeld-05114000",
+      "cityId": "krefeld-de-05114000",
+      "cityName": {
+        "de": "Krefeld",
+        "en": "Krefeld",
+        "fr": "Krefeld"
+      },
+      "cityZoneId": "relation/62748",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 231406,
+      "rank": 33,
+      "version": 1
+    },
+    {
+      "albumId": "de-halle-saale-15002000",
+      "cityId": "halle-saale-de-15002000",
+      "cityName": {
+        "de": "Halle (Saale)",
+        "en": "Halle (Saale)",
+        "fr": "Halle (Saale)"
+      },
+      "cityZoneId": "relation/62638",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 226767,
+      "rank": 34,
+      "version": 1
+    },
+    {
+      "albumId": "de-mainz-07315000",
+      "cityId": "mainz-de-07315000",
+      "cityName": {
+        "de": "Mainz",
+        "en": "Mainz",
+        "fr": "Mainz"
+      },
+      "cityZoneId": "relation/62630",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 224684,
+      "rank": 35,
+      "version": 1
+    },
+    {
+      "albumId": "de-erfurt-16051000",
+      "cityId": "erfurt-de-16051000",
+      "cityName": {
+        "de": "Erfurt",
+        "en": "Erfurt",
+        "fr": "Erfurt"
+      },
+      "cityZoneId": "relation/62745",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 218793,
+      "rank": 36,
+      "version": 1
+    },
+    {
+      "albumId": "de-lubeck-01003000",
+      "cityId": "lubeck-de-01003000",
+      "cityName": {
+        "de": "Lübeck",
+        "en": "Lübeck",
+        "fr": "Lübeck"
+      },
+      "cityZoneId": "relation/27027",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 216889,
+      "rank": 37,
+      "version": 1
+    },
+    {
+      "albumId": "de-oberhausen-05119000",
+      "cityId": "oberhausen-de-05119000",
+      "cityName": {
+        "de": "Oberhausen",
+        "en": "Oberhausen",
+        "fr": "Oberhausen"
+      },
+      "cityZoneId": "relation/62734",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 213646,
+      "rank": 38,
+      "version": 1
+    },
+    {
+      "albumId": "de-rostock-hanse-und-universitatsstadt-13003000",
+      "cityId": "rostock-hanse-und-universitatsstadt-de-13003000",
+      "cityName": {
+        "de": "Rostock, Hanse- und Universitätsstadt",
+        "en": "Rostock, Hanse- und Universitätsstadt",
+        "fr": "Rostock, Hanse- und Universitätsstadt"
+      },
+      "cityZoneId": "relation/62405",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 205307,
+      "rank": 39,
+      "version": 1
+    },
+    {
+      "albumId": "de-kassel-06611000",
+      "cityId": "kassel-de-06611000",
+      "cityName": {
+        "de": "Kassel",
+        "en": "Kassel",
+        "fr": "Kassel"
+      },
+      "cityZoneId": "relation/62598",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 197230,
+      "rank": 40,
+      "version": 1
+    },
+    {
+      "albumId": "de-hagen-stadt-der-fernuniversitat-05914000",
+      "cityId": "hagen-stadt-der-fernuniversitat-de-05914000",
+      "cityName": {
+        "de": "Hagen, Stadt der FernUniversität",
+        "en": "Hagen, Stadt der FernUniversität",
+        "fr": "Hagen, Stadt der FernUniversität"
+      },
+      "cityZoneId": "relation/1800297",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 190384,
+      "rank": 41,
+      "version": 1
+    },
+    {
+      "albumId": "de-potsdam-12054000",
+      "cityId": "potsdam-de-12054000",
+      "cityName": {
+        "de": "Potsdam",
+        "en": "Potsdam",
+        "fr": "Potsdam"
+      },
+      "cityZoneId": "relation/62369",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 184754,
+      "rank": 42,
+      "version": 1
+    },
+    {
+      "albumId": "de-saarbrucken-10041100",
+      "cityId": "saarbrucken-de-10041100",
+      "cityName": {
+        "de": "Saarbrücken",
+        "en": "Saarbrücken",
+        "fr": "Saarbrücken"
+      },
+      "cityZoneId": "relation/1187159",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 182971,
+      "rank": 43,
+      "version": 1
+    },
+    {
+      "albumId": "de-hamm-05915000",
+      "cityId": "hamm-de-05915000",
+      "cityName": {
+        "de": "Hamm",
+        "en": "Hamm",
+        "fr": "Hamm"
+      },
+      "cityZoneId": "relation/62499",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 179968,
+      "rank": 44,
+      "version": 1
+    },
+    {
+      "albumId": "de-ludwigshafen-am-rhein-07314000",
+      "cityId": "ludwigshafen-am-rhein-de-07314000",
+      "cityName": {
+        "de": "Ludwigshafen am Rhein",
+        "en": "Ludwigshafen am Rhein",
+        "fr": "Ludwigshafen am Rhein"
+      },
+      "cityZoneId": "relation/62347",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 177222,
+      "rank": 45,
+      "version": 1
+    },
+    {
+      "albumId": "de-oldenburg-oldenburg-03403000",
+      "cityId": "oldenburg-oldenburg-de-03403000",
+      "cityName": {
+        "de": "Oldenburg (Oldenburg)",
+        "en": "Oldenburg (Oldenburg)",
+        "fr": "Oldenburg (Oldenburg)"
+      },
+      "cityZoneId": "relation/62409",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 176614,
+      "rank": 46,
+      "version": 1
+    },
+    {
+      "albumId": "de-mulheim-an-der-ruhr-05117000",
+      "cityId": "mulheim-an-der-ruhr-de-05117000",
+      "cityName": {
+        "de": "Mülheim an der Ruhr",
+        "en": "Mülheim an der Ruhr",
+        "fr": "Mülheim an der Ruhr"
+      },
+      "cityZoneId": "relation/62385",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 173050,
+      "rank": 47,
+      "version": 1
+    },
+    {
+      "albumId": "de-leverkusen-05316000",
+      "cityId": "leverkusen-de-05316000",
+      "cityName": {
+        "de": "Leverkusen",
+        "en": "Leverkusen",
+        "fr": "Leverkusen"
+      },
+      "cityZoneId": "relation/62449",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 168581,
+      "rank": 48,
+      "version": 1
+    },
+    {
+      "albumId": "de-darmstadt-wissenschaftsstadt-06411000",
+      "cityId": "darmstadt-wissenschaftsstadt-de-06411000",
+      "cityName": {
+        "de": "Darmstadt, Wissenschaftsstadt",
+        "en": "Darmstadt, Wissenschaftsstadt",
+        "fr": "Darmstadt, Wissenschaftsstadt"
+      },
+      "cityZoneId": "relation/62581",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 167029,
+      "rank": 49,
+      "version": 1
+    },
+    {
+      "albumId": "de-osnabruck-03404000",
+      "cityId": "osnabruck-de-03404000",
+      "cityName": {
+        "de": "Osnabrück",
+        "en": "Osnabrück",
+        "fr": "Osnabrück"
+      },
+      "cityZoneId": "relation/62631",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 166057,
+      "rank": 50,
+      "version": 1
+    },
+    {
+      "albumId": "de-solingen-klingenstadt-05122000",
+      "cityId": "solingen-klingenstadt-de-05122000",
+      "cityName": {
+        "de": "Solingen, Klingenstadt",
+        "en": "Solingen, Klingenstadt",
+        "fr": "Solingen, Klingenstadt"
+      },
+      "cityZoneId": "relation/62699",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 165626,
+      "rank": 51,
+      "version": 1
+    },
+    {
+      "albumId": "de-paderborn-05774032",
+      "cityId": "paderborn-de-05774032",
+      "cityName": {
+        "de": "Paderborn",
+        "en": "Paderborn",
+        "fr": "Paderborn"
+      },
+      "cityZoneId": "relation/148074",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 156378,
+      "rank": 52,
+      "version": 1
+    },
+    {
+      "albumId": "de-herne-05916000",
+      "cityId": "herne-de-05916000",
+      "cityName": {
+        "de": "Herne",
+        "en": "Herne",
+        "fr": "Herne"
+      },
+      "cityZoneId": "relation/62396",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 155851,
+      "rank": 53,
+      "version": 1
+    },
+    {
+      "albumId": "de-heidelberg-08221000",
+      "cityId": "heidelberg-de-08221000",
+      "cityName": {
+        "de": "Heidelberg",
+        "en": "Heidelberg",
+        "fr": "Heidelberg"
+      },
+      "cityZoneId": "relation/285864",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 155756,
+      "rank": 54,
+      "version": 1
+    },
+    {
+      "albumId": "de-neuss-05162024",
+      "cityId": "neuss-de-05162024",
+      "cityName": {
+        "de": "Neuss",
+        "en": "Neuss",
+        "fr": "Neuss"
+      },
+      "cityZoneId": "relation/163307",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 154317,
+      "rank": 55,
+      "version": 1
+    },
+    {
+      "albumId": "de-regensburg-09362000",
+      "cityId": "regensburg-de-09362000",
+      "cityName": {
+        "de": "Regensburg",
+        "en": "Regensburg",
+        "fr": "Regensburg"
+      },
+      "cityZoneId": "relation/62411",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 151389,
+      "rank": 56,
+      "version": 1
+    },
+    {
+      "albumId": "de-ingolstadt-09161000",
+      "cityId": "ingolstadt-de-09161000",
+      "cityName": {
+        "de": "Ingolstadt",
+        "en": "Ingolstadt",
+        "fr": "Ingolstadt"
+      },
+      "cityZoneId": "relation/62381",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 141185,
+      "rank": 57,
+      "version": 1
+    },
+    {
+      "albumId": "de-pforzheim-08231000",
+      "cityId": "pforzheim-de-08231000",
+      "cityName": {
+        "de": "Pforzheim",
+        "en": "Pforzheim",
+        "fr": "Pforzheim"
+      },
+      "cityZoneId": "relation/62471",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 134912,
+      "rank": 58,
+      "version": 1
+    },
+    {
+      "albumId": "de-wurzburg-09663000",
+      "cityId": "wurzburg-de-09663000",
+      "cityName": {
+        "de": "Würzburg",
+        "en": "Würzburg",
+        "fr": "Würzburg"
+      },
+      "cityZoneId": "relation/62464",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 133258,
+      "rank": 59,
+      "version": 1
+    },
+    {
+      "albumId": "de-offenbach-am-main-06413000",
+      "cityId": "offenbach-am-main-de-06413000",
+      "cityName": {
+        "de": "Offenbach am Main",
+        "en": "Offenbach am Main",
+        "fr": "Offenbach am Main"
+      },
+      "cityZoneId": "relation/62695",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 132746,
+      "rank": 60,
+      "version": 1
+    },
+    {
+      "albumId": "de-furth-09563000",
+      "cityId": "furth-de-09563000",
+      "cityName": {
+        "de": "Fürth",
+        "en": "Fürth",
+        "fr": "Fürth"
+      },
+      "cityZoneId": "relation/62374",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 132036,
+      "rank": 61,
+      "version": 1
+    },
+    {
+      "albumId": "de-heilbronn-08121000",
+      "cityId": "heilbronn-de-08121000",
+      "cityName": {
+        "de": "Heilbronn",
+        "en": "Heilbronn",
+        "fr": "Heilbronn"
+      },
+      "cityZoneId": "relation/62751",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 131986,
+      "rank": 62,
+      "version": 1
+    },
+    {
+      "albumId": "de-ulm-08421000",
+      "cityId": "ulm-de-08421000",
+      "cityName": {
+        "de": "Ulm",
+        "en": "Ulm",
+        "fr": "Ulm"
+      },
+      "cityZoneId": "relation/62495",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 129882,
+      "rank": 63,
+      "version": 1
+    },
+    {
+      "albumId": "de-wolfsburg-03103000",
+      "cityId": "wolfsburg-de-03103000",
+      "cityName": {
+        "de": "Wolfsburg",
+        "en": "Wolfsburg",
+        "fr": "Wolfsburg"
+      },
+      "cityZoneId": "relation/62418",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 129560,
+      "rank": 64,
+      "version": 1
+    },
+    {
+      "albumId": "de-gottingen-03159016",
+      "cityId": "gottingen-de-03159016",
+      "cityName": {
+        "de": "Göttingen",
+        "en": "Göttingen",
+        "fr": "Göttingen"
+      },
+      "cityZoneId": "relation/191361",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 127259,
+      "rank": 65,
+      "version": 1
+    },
+    {
+      "albumId": "de-reutlingen-08415061",
+      "cityId": "reutlingen-de-08415061",
+      "cityName": {
+        "de": "Reutlingen",
+        "en": "Reutlingen",
+        "fr": "Reutlingen"
+      },
+      "cityZoneId": "relation/2772661",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 118852,
+      "rank": 66,
+      "version": 1
+    },
+    {
+      "albumId": "de-bremerhaven-04012000",
+      "cityId": "bremerhaven-de-04012000",
+      "cityName": {
+        "de": "Bremerhaven",
+        "en": "Bremerhaven",
+        "fr": "Bremerhaven"
+      },
+      "cityZoneId": "relation/62658",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 118610,
+      "rank": 67,
+      "version": 1
+    },
+    {
+      "albumId": "de-bottrop-05512000",
+      "cityId": "bottrop-de-05512000",
+      "cityName": {
+        "de": "Bottrop",
+        "en": "Bottrop",
+        "fr": "Bottrop"
+      },
+      "cityZoneId": "relation/62634",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 118535,
+      "rank": 68,
+      "version": 1
+    },
+    {
+      "albumId": "de-erlangen-09562000",
+      "cityId": "erlangen-de-09562000",
+      "cityName": {
+        "de": "Erlangen",
+        "en": "Erlangen",
+        "fr": "Erlangen"
+      },
+      "cityZoneId": "relation/62403",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 115928,
+      "rank": 69,
+      "version": 1
+    },
+    {
+      "albumId": "de-recklinghausen-05562032",
+      "cityId": "recklinghausen-de-05562032",
+      "cityName": {
+        "de": "Recklinghausen",
+        "en": "Recklinghausen",
+        "fr": "Recklinghausen"
+      },
+      "cityZoneId": "relation/56665",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 115344,
+      "rank": 70,
+      "version": 1
+    },
+    {
+      "albumId": "de-remscheid-05120000",
+      "cityId": "remscheid-de-05120000",
+      "cityName": {
+        "de": "Remscheid",
+        "en": "Remscheid",
+        "fr": "Remscheid"
+      },
+      "cityZoneId": "relation/62455",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 113828,
+      "rank": 71,
+      "version": 1
+    },
+    {
+      "albumId": "de-koblenz-07111000",
+      "cityId": "koblenz-de-07111000",
+      "cityName": {
+        "de": "Koblenz",
+        "en": "Koblenz",
+        "fr": "Koblenz"
+      },
+      "cityZoneId": "relation/62512",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 113378,
+      "rank": 72,
+      "version": 1
+    },
+    {
+      "albumId": "de-bergisch-gladbach-05378004",
+      "cityId": "bergisch-gladbach-de-05378004",
+      "cityName": {
+        "de": "Bergisch Gladbach",
+        "en": "Bergisch Gladbach",
+        "fr": "Bergisch Gladbach"
+      },
+      "cityZoneId": "relation/173103",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 111361,
+      "rank": 73,
+      "version": 1
+    },
+    {
+      "albumId": "de-jena-16053000",
+      "cityId": "jena-de-16053000",
+      "cityName": {
+        "de": "Jena",
+        "en": "Jena",
+        "fr": "Jena"
+      },
+      "cityZoneId": "relation/62693",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 109725,
+      "rank": 74,
+      "version": 1
+    },
+    {
+      "albumId": "de-salzgitter-03102000",
+      "cityId": "salzgitter-de-03102000",
+      "cityName": {
+        "de": "Salzgitter",
+        "en": "Salzgitter",
+        "fr": "Salzgitter"
+      },
+      "cityZoneId": "relation/62659",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 104970,
+      "rank": 75,
+      "version": 1
+    },
+    {
+      "albumId": "de-trier-07211000",
+      "cityId": "trier-de-07211000",
+      "cityName": {
+        "de": "Trier",
+        "en": "Trier",
+        "fr": "Trier"
+      },
+      "cityZoneId": "relation/172679",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 104342,
+      "rank": 76,
+      "version": 1
+    },
+    {
+      "albumId": "de-siegen-05970040",
+      "cityId": "siegen-de-05970040",
+      "cityName": {
+        "de": "Siegen",
+        "en": "Siegen",
+        "fr": "Siegen"
+      },
+      "cityZoneId": "relation/163256",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 102685,
+      "rank": 77,
+      "version": 1
+    },
+    {
+      "albumId": "de-moers-05170024",
+      "cityId": "moers-de-05170024",
+      "cityName": {
+        "de": "Moers",
+        "en": "Moers",
+        "fr": "Moers"
+      },
+      "cityZoneId": "relation/58623",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 101503,
+      "rank": 78,
+      "version": 1
+    },
+    {
+      "albumId": "de-gutersloh-05754008",
+      "cityId": "gutersloh-de-05754008",
+      "cityName": {
+        "de": "Gütersloh",
+        "en": "Gütersloh",
+        "fr": "Gütersloh"
+      },
+      "cityZoneId": "relation/138119",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 100479,
+      "rank": 79,
+      "version": 1
+    },
+    {
+      "albumId": "de-kaiserslautern-07312000",
+      "cityId": "kaiserslautern-de-07312000",
+      "cityName": {
+        "de": "Kaiserslautern",
+        "en": "Kaiserslautern",
+        "fr": "Kaiserslautern"
+      },
+      "cityZoneId": "relation/62652",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 100426,
+      "rank": 80,
+      "version": 1
+    },
+    {
+      "albumId": "de-hildesheim-03254021",
+      "cityId": "hildesheim-de-03254021",
+      "cityName": {
+        "de": "Hildesheim",
+        "en": "Hildesheim",
+        "fr": "Hildesheim"
+      },
+      "cityZoneId": "relation/1176503",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 98510,
+      "rank": 81,
+      "version": 1
+    },
+    {
+      "albumId": "de-schwerin-13004000",
+      "cityId": "schwerin-de-13004000",
+      "cityName": {
+        "de": "Schwerin",
+        "en": "Schwerin",
+        "fr": "Schwerin"
+      },
+      "cityZoneId": "relation/62685",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 98308,
+      "rank": 82,
+      "version": 1
+    },
+    {
+      "albumId": "de-hanau-bruder-grimm-stadt-06435014",
+      "cityId": "hanau-bruder-grimm-stadt-de-06435014",
+      "cityName": {
+        "de": "Hanau, Brüder-Grimm-Stadt",
+        "en": "Hanau, Brüder-Grimm-Stadt",
+        "fr": "Hanau, Brüder-Grimm-Stadt"
+      },
+      "cityZoneId": "relation/535895",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 97956,
+      "rank": 83,
+      "version": 1
+    },
+    {
+      "albumId": "de-flensburg-01001000",
+      "cityId": "flensburg-de-01001000",
+      "cityName": {
+        "de": "Flensburg",
+        "en": "Flensburg",
+        "fr": "Flensburg"
+      },
+      "cityZoneId": "relation/27020",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 96326,
+      "rank": 84,
+      "version": 1
+    },
+    {
+      "albumId": "de-esslingen-am-neckar-08116019",
+      "cityId": "esslingen-am-neckar-de-08116019",
+      "cityName": {
+        "de": "Esslingen am Neckar",
+        "en": "Esslingen am Neckar",
+        "fr": "Esslingen am Neckar"
+      },
+      "cityZoneId": "relation/2792882",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 96182,
+      "rank": 85,
+      "version": 1
+    },
+    {
+      "albumId": "de-gera-16052000",
+      "cityId": "gera-de-16052000",
+      "cityName": {
+        "de": "Gera",
+        "en": "Gera",
+        "fr": "Gera"
+      },
+      "cityZoneId": "relation/62671",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 95608,
+      "rank": 86,
+      "version": 1
+    },
+    {
+      "albumId": "de-cottbus-chosebuz-12052000",
+      "cityId": "cottbus-chosebuz-de-12052000",
+      "cityName": {
+        "de": "Cottbus/Chóśebuz",
+        "en": "Cottbus/Chóśebuz",
+        "fr": "Cottbus/Chóśebuz"
+      },
+      "cityZoneId": "relation/62430",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 95123,
+      "rank": 87,
+      "version": 1
+    },
+    {
+      "albumId": "de-duren-05358008",
+      "cityId": "duren-de-05358008",
+      "cityName": {
+        "de": "Düren",
+        "en": "Düren",
+        "fr": "Düren"
+      },
+      "cityZoneId": "relation/163046",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 94568,
+      "rank": 88,
+      "version": 1
+    },
+    {
+      "albumId": "de-ludwigsburg-08118048",
+      "cityId": "ludwigsburg-de-08118048",
+      "cityName": {
+        "de": "Ludwigsburg",
+        "en": "Ludwigsburg",
+        "fr": "Ludwigsburg"
+      },
+      "cityZoneId": "relation/405292",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 92858,
+      "rank": 89,
+      "version": 1
+    },
+    {
+      "albumId": "de-tubingen-08416041",
+      "cityId": "tubingen-de-08416041",
+      "cityName": {
+        "de": "Tübingen",
+        "en": "Tübingen",
+        "fr": "Tübingen"
+      },
+      "cityZoneId": "relation/2778914",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 92322,
+      "rank": 90,
+      "version": 1
+    },
+    {
+      "albumId": "de-iserlohn-05962024",
+      "cityId": "iserlohn-de-05962024",
+      "cityName": {
+        "de": "Iserlohn",
+        "en": "Iserlohn",
+        "fr": "Iserlohn"
+      },
+      "cityZoneId": "relation/1800165",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 91811,
+      "rank": 91,
+      "version": 1
+    },
+    {
+      "albumId": "de-witten-05954036",
+      "cityId": "witten-de-05954036",
+      "cityName": {
+        "de": "Witten",
+        "en": "Witten",
+        "fr": "Witten"
+      },
+      "cityZoneId": "relation/162826",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 91808,
+      "rank": 92,
+      "version": 1
+    },
+    {
+      "albumId": "de-villingen-schwenningen-08326074",
+      "cityId": "villingen-schwenningen-de-08326074",
+      "cityName": {
+        "de": "Villingen-Schwenningen",
+        "en": "Villingen-Schwenningen",
+        "fr": "Villingen-Schwenningen"
+      },
+      "cityZoneId": "relation/1242298",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 89756,
+      "rank": 93,
+      "version": 1
+    },
+    {
+      "albumId": "de-ratingen-05158028",
+      "cityId": "ratingen-de-05158028",
+      "cityName": {
+        "de": "Ratingen",
+        "en": "Ratingen",
+        "fr": "Ratingen"
+      },
+      "cityZoneId": "relation/56682",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 89368,
+      "rank": 94,
+      "version": 1
+    },
+    {
+      "albumId": "de-gie-en-06531005",
+      "cityId": "gie-en-de-06531005",
+      "cityName": {
+        "de": "Gießen",
+        "en": "Gießen",
+        "fr": "Gießen"
+      },
+      "cityZoneId": "relation/418617",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 89179,
+      "rank": 95,
+      "version": 1
+    },
+    {
+      "albumId": "de-zwickau-stadt-hochschulstadt-14524330",
+      "cityId": "zwickau-stadt-hochschulstadt-de-14524330",
+      "cityName": {
+        "de": "Zwickau, Stadt, Hochschulstadt",
+        "en": "Zwickau, Stadt, Hochschulstadt",
+        "fr": "Zwickau, Stadt, Hochschulstadt"
+      },
+      "cityZoneId": "relation/397076",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 87410,
+      "rank": 96,
+      "version": 1
+    },
+    {
+      "albumId": "de-konstanz-08335043",
+      "cityId": "konstanz-de-08335043",
+      "cityName": {
+        "de": "Konstanz",
+        "en": "Konstanz",
+        "fr": "Konstanz"
+      },
+      "cityZoneId": "relation/2784842",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 86919,
+      "rank": 97,
+      "version": 1
+    },
+    {
+      "albumId": "de-marl-05562024",
+      "cityId": "marl-de-05562024",
+      "cityName": {
+        "de": "Marl",
+        "en": "Marl",
+        "fr": "Marl"
+      },
+      "cityZoneId": "relation/63460",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 86766,
+      "rank": 98,
+      "version": 1
+    },
+    {
+      "albumId": "de-worms-07319000",
+      "cityId": "worms-de-07319000",
+      "cityName": {
+        "de": "Worms",
+        "en": "Worms",
+        "fr": "Worms"
+      },
+      "cityZoneId": "relation/62453",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 86753,
+      "rank": 99,
+      "version": 1
+    },
+    {
+      "albumId": "de-lunen-05978024",
+      "cityId": "lunen-de-05978024",
+      "cityName": {
+        "de": "Lünen",
+        "en": "Lünen",
+        "fr": "Lünen"
+      },
+      "cityZoneId": "relation/158454",
+      "countryCode": "de",
+      "localLanguage": "de",
+      "medalCount": 8,
+      "population": 86163,
+      "rank": 100,
+      "version": 1
+    }
+  ],
+  "compressedBytes": 73212,
+  "countryCode": "de",
+  "formatVersion": 1,
+  "languages": [
+    "en",
+    "fr",
+    "de"
+  ],
+  "medalCount": 864,
+  "publishedAt": "2026-08-09",
+  "sha256": "ecb4ac7ae8c2b8603518d191338f0b2b8f5c2574250161746b0bab3fd0411afc",
+  "uncompressedBytes": 687040,
+  "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/de-v1.json.gz",
+  "version": 1
+}

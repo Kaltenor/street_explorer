@@ -1,5 +1,41 @@
 # Changelog
 
+## v0.23.1
+
+Fixed:
+
+- Latched a failed country-pack request until the user explicitly taps retry, preventing automatic saved-data refreshes from repeatedly requesting the same known-missing artifact.
+- Started country download, validation, and catalogue seeding only after core saved History, exploration, objective, and recording queries finish, avoiding SQLite contention during first selection.
+- Coalesced identical in-flight saved-data refreshes so simultaneous objective and lifecycle effects share one query operation instead of producing duplicate multi-second query batches.
+- Synchronized version 0.23.1 with iOS build 166 and Android version code 166.
+
+## v0.23.0
+
+Added:
+
+- Added a versioned country-pack architecture that keeps France's 851 medals bundled while delivering Belgium, Germany, Italy, the Netherlands, and Spain as checksum-pinned gzip downloads with a compact generated city-zone manifest.
+- Piloted the workflow against official Netherlands population and heritage data, manually curated Amsterdam, Rotterdam, and Maastricht, measured candidate quality and catalogue size, and expanded to 58 municipalities, 492 medals, and 50.26% population coverage.
+- Added reproducible official-population coverage and pre-expansion size gates, per-country descriptors and quality reports, source/limitation accounting, a wave summary, and integrity/budget regression checks. The four-country wave contains 391 albums and 3,358 medals in 286,643 compressed bytes; all five downloadable packs contain 449 albums and 3,850 medals.
+- Added persistent document-directory caching with HTTPS enforcement, compressed-size and SHA-256 verification, expanded-schema validation, atomic installation, corrupt-cache recovery, same-country obsolete-version pruning, and offline reuse.
+- Added Downloading and Album unavailable/tap-to-retry medal-rail states while isolating country fetches and repaired-recording medal evaluation from normal saved-map hydration, and preserving pending presentations from available albums.
+
+Changed:
+
+- Kept long-recording route polylines stable except for the changing tail, lazily derived the initial map region, batched raw-fix publication with persisted-walk state, and moved finalized History point totals onto frozen snapshots with an exact indexed repair fallback.
+- Extended medal, country-pack, geometry, zone, and documentation regressions plus a physical-device protocol covering first download, failed download, retry, cache persistence, corrupt data, language copy, and historical scans.
+- Synchronized version 0.23.0 with iOS build 165 and Android version code 165.
+
+## v0.22.4
+
+Changed:
+
+- Isolated each MapKit route polyline behind stable point references so accepted fixes regenerate native coordinates only for the open tail instead of every frozen chunk in a long recording.
+- Made initial-region derivation a true one-time state initializer and batched recording-time raw GPS publication with the canonical persisted active-walk update.
+- Replaced History's full GPS-ledger count join with finalized route-snapshot totals, retaining an exact indexed fallback for missing snapshots and sessions with a durable pending-repair marker.
+- Added development slow-query labels for saved-data hydration, scoped path-history loading, and selected-walk loading.
+- Extended performance regressions for tail-only polylines, lazy camera initialization, batched GPS state, and the History snapshot fast path.
+- Synchronized version 0.22.4 with iOS build 164 and Android version code 164.
+
 ## v0.22.3
 
 Changed:

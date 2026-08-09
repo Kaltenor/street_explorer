@@ -104,7 +104,7 @@ assert.doesNotMatch(mapSource, /shouldFetchAutoObjectiveZones/);
 assert.doesNotMatch(mapSource, /Failed to auto-switch completion objective/);
 assert.match(explorationMapSource, /districtZones\.flatMap/);
 assert.match(explorationMapSource, /const isSelectedDistrict/);
-assert.match(explorationMapSource, /administrative-boundaries-/);
+assert.match(explorationMapSource, /memo\(function AdministrativeBoundaryOverlay/);
 assert.doesNotMatch(explorationMapSource, /unselectedDistrictZones/);
 assert.match(mapSource, /const commitMapBoundaryContext = useCallback/);
 assert.match(mapSource, /setMapBoundaryContext\(EMPTY_MAP_BOUNDARY_CONTEXT\)/);

@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-08-09T01:32:19.740Z",
+  "estimateDecision": "go",
+  "budgets": {
+    "maximumCompressedBytesPerCountry": 250000,
+    "maximumCompressedBytesForWave": 1000000,
+    "maximumExpandedBytesForWave": 8000000
+  },
+  "countries": [
+    {
+      "countryCode": "be",
+      "cityCount": 91,
+      "medalCount": 782,
+      "candidateCount": 17980,
+      "populationCoverage": 0.5006974305045068,
+      "compressedBytes": 66511,
+      "uncompressedBytes": 762005,
+      "projectedCompressedBytes": 72306,
+      "compressedEstimateRatio": 0.919854507233148,
+      "sourceCounts": {
+        "flanders-inventaris": 493,
+        "wikidata": 202,
+        "wallonia-awap": 87
+      }
+    },
+    {
+      "countryCode": "de",
+      "cityCount": 100,
+      "medalCount": 864,
+      "candidateCount": 11490,
+      "populationCoverage": 0.34237847813409267,
+      "compressedBytes": 73212,
+      "uncompressedBytes": 687040,
+      "projectedCompressedBytes": 79457,
+      "compressedEstimateRatio": 0.9214040298526247,
+      "sourceCounts": {
+        "wikidata": 864
+      }
+    },
+    {
+      "countryCode": "it",
+      "cityCount": 100,
+      "medalCount": 854,
+      "candidateCount": 10790,
+      "populationCoverage": 0.30478902631172133,
+      "compressedBytes": 70980,
+      "uncompressedBytes": 665823,
+      "projectedCompressedBytes": 79457,
+      "compressedEstimateRatio": 0.893313364461281,
+      "sourceCounts": {
+        "wikidata": 838,
+        "openstreetmap": 16
+      }
+    },
+    {
+      "countryCode": "es",
+      "cityCount": 100,
+      "medalCount": 858,
+      "candidateCount": 6630,
+      "populationCoverage": 0.4648963720454874,
+      "compressedBytes": 75940,
+      "uncompressedBytes": 709974,
+      "projectedCompressedBytes": 79457,
+      "compressedEstimateRatio": 0.9557370653309337,
+      "sourceCounts": {
+        "wikidata": 832,
+        "openstreetmap": 26
+      }
+    }
+  ],
+  "totals": {
+    "cityCount": 391,
+    "medalCount": 3358,
+    "candidateCount": 46890,
+    "compressedBytes": 286643,
+    "uncompressedBytes": 2824842,
+    "compressedBudgetUtilization": 0.286643,
+    "expandedBudgetUtilization": 0.35310525
+  }
+}

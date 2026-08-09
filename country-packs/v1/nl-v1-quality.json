@@ -1,0 +1,1943 @@
+{
+  "countryCode": "nl",
+  "generatedAt": "2026-08-09T00:52:14.364Z",
+  "methodology": {
+    "coverageTarget": 0.5,
+    "maximumCityCount": 100,
+    "minimumMedalsPerCity": 5,
+    "populationDefinition": "CBS 2025 municipality population",
+    "sparseCityFallback": "Reviewed coordinate-bearing Wikidata landmarks"
+  },
+  "pilot": {
+    "candidateCount": 2758,
+    "cityCount": 30,
+    "medalCount": 306,
+    "population": 6668559,
+    "populationCoverage": 0.3695715485240628
+  },
+  "expansion": {
+    "cityCount": 58,
+    "nationalPopulation": 18044027,
+    "population": 9069361,
+    "populationCoverage": 0.5026239985120838
+  },
+  "sources": {
+    "cbsDataset": "86059NED",
+    "rceExtract": "Extract_MRS_V11.0.05.mdb",
+    "rceExtractedAt": "2026-08-09T00:07:55.4009023Z",
+    "rceGeocodedRecordCount": 63245
+  },
+  "cities": [
+    {
+      "albumId": "nl-amsterdam",
+      "candidateCount": 430,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 8,
+        "history": 6,
+        "nature": 2
+      },
+      "cityId": "amsterdam-nl",
+      "cityName": {
+        "en": "Amsterdam",
+        "fr": "Amsterdam",
+        "nl": "Amsterdam"
+      },
+      "cityZoneId": "relation/47811",
+      "curated": true,
+      "eligibleRceCount": 430,
+      "localLanguage": "nl",
+      "population": 934526,
+      "rank": 1,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "dutch-rce": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-rotterdam",
+      "candidateCount": 192,
+      "categoryCounts": {
+        "architecture": 5,
+        "art": 2,
+        "culture": 7,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "rotterdam-nl",
+      "cityName": {
+        "en": "Rotterdam",
+        "fr": "Rotterdam",
+        "nl": "Rotterdam"
+      },
+      "cityZoneId": "relation/324431",
+      "curated": true,
+      "eligibleRceCount": 192,
+      "localLanguage": "nl",
+      "population": 672960,
+      "rank": 2,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "dutch-rce": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-s-gravenhage",
+      "candidateCount": 141,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 3,
+        "culture": 7,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "s-gravenhage-nl",
+      "cityName": {
+        "en": "The Hague",
+        "fr": "La Haye",
+        "nl": "Den Haag"
+      },
+      "cityZoneId": "relation/192736",
+      "curated": false,
+      "eligibleRceCount": 141,
+      "localLanguage": "nl",
+      "population": 568945,
+      "rank": 3,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "dutch-rce": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-utrecht",
+      "candidateCount": 193,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 4,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "utrecht-nl",
+      "cityName": {
+        "en": "Utrecht",
+        "fr": "Utrecht",
+        "nl": "Utrecht"
+      },
+      "cityZoneId": "relation/419203",
+      "curated": false,
+      "eligibleRceCount": 193,
+      "localLanguage": "nl",
+      "population": 376757,
+      "rank": 4,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-eindhoven",
+      "candidateCount": 95,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "culture": 4,
+        "nature": 2
+      },
+      "cityId": "eindhoven-nl",
+      "cityName": {
+        "en": "Eindhoven",
+        "fr": "Eindhoven",
+        "nl": "Eindhoven"
+      },
+      "cityZoneId": "relation/296014",
+      "curated": false,
+      "eligibleRceCount": 95,
+      "localLanguage": "nl",
+      "population": 249035,
+      "rank": 5,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 4
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-groningen",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 1,
+        "culture": 4,
+        "nature": 3
+      },
+      "cityId": "groningen-nl",
+      "cityName": {
+        "en": "Groningen",
+        "fr": "Groningen",
+        "nl": "Groningen"
+      },
+      "cityZoneId": "relation/409862",
+      "curated": false,
+      "eligibleRceCount": 105,
+      "localLanguage": "nl",
+      "population": 244441,
+      "rank": 6,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-tilburg",
+      "candidateCount": 89,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 4,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "tilburg-nl",
+      "cityName": {
+        "en": "Tilburg",
+        "fr": "Tilburg",
+        "nl": "Tilburg"
+      },
+      "cityZoneId": "relation/299231",
+      "curated": false,
+      "eligibleRceCount": 89,
+      "localLanguage": "nl",
+      "population": 230357,
+      "rank": 7,
+      "rejected": {
+        "categoryLimit": 39,
+        "duplicateCoordinate": 1,
+        "duplicateName": 4
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-almere",
+      "candidateCount": 52,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 4,
+        "culture": 2,
+        "nature": 4
+      },
+      "cityId": "almere-nl",
+      "cityName": {
+        "en": "Almere",
+        "fr": "Almere",
+        "nl": "Almere"
+      },
+      "cityZoneId": "relation/409764",
+      "curated": false,
+      "eligibleRceCount": 0,
+      "localLanguage": "nl",
+      "population": 229574,
+      "rank": 8,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 52
+    },
+    {
+      "albumId": "nl-nijmegen",
+      "candidateCount": 74,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "nijmegen-nl",
+      "cityName": {
+        "en": "Nijmegen",
+        "fr": "Nijmegen",
+        "nl": "Nijmegen"
+      },
+      "cityZoneId": "relation/1201020",
+      "curated": false,
+      "eligibleRceCount": 74,
+      "localLanguage": "nl",
+      "population": 189007,
+      "rank": 9,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-breda",
+      "candidateCount": 114,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 1,
+        "culture": 4,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "breda-nl",
+      "cityName": {
+        "en": "Breda",
+        "fr": "Breda",
+        "nl": "Breda"
+      },
+      "cityZoneId": "relation/297129",
+      "curated": false,
+      "eligibleRceCount": 114,
+      "localLanguage": "nl",
+      "population": 188779,
+      "rank": 10,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "dutch-rce": 12
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-arnhem",
+      "candidateCount": 90,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "arnhem-nl",
+      "cityName": {
+        "en": "Arnhem",
+        "fr": "Arnhem",
+        "nl": "Arnhem"
+      },
+      "cityZoneId": "relation/418700",
+      "curated": false,
+      "eligibleRceCount": 90,
+      "localLanguage": "nl",
+      "population": 169364,
+      "rank": 11,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-haarlem",
+      "candidateCount": 89,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 2,
+        "history": 1,
+        "nature": 3
+      },
+      "cityId": "haarlem-nl",
+      "cityName": {
+        "en": "Haarlem",
+        "fr": "Haarlem",
+        "nl": "Haarlem"
+      },
+      "cityZoneId": "relation/2712154",
+      "curated": false,
+      "eligibleRceCount": 89,
+      "localLanguage": "nl",
+      "population": 168743,
+      "rank": 12,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-apeldoorn",
+      "candidateCount": 66,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "apeldoorn-nl",
+      "cityName": {
+        "en": "Apeldoorn",
+        "fr": "Apeldoorn",
+        "nl": "Apeldoorn"
+      },
+      "cityZoneId": "relation/417457",
+      "curated": false,
+      "eligibleRceCount": 66,
+      "localLanguage": "nl",
+      "population": 168551,
+      "rank": 13,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-haarlemmermeer",
+      "candidateCount": 14,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 1
+      },
+      "cityId": "haarlemmermeer-nl",
+      "cityName": {
+        "en": "Haarlemmermeer",
+        "fr": "Haarlemmermeer",
+        "nl": "Haarlemmermeer"
+      },
+      "cityZoneId": "relation/443890",
+      "curated": false,
+      "eligibleRceCount": 14,
+      "localLanguage": "nl",
+      "population": 165255,
+      "rank": 14,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-amersfoort",
+      "candidateCount": 62,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "amersfoort-nl",
+      "cityName": {
+        "en": "Amersfoort",
+        "fr": "Amersfoort",
+        "nl": "Amersfoort"
+      },
+      "cityZoneId": "relation/419152",
+      "curated": false,
+      "eligibleRceCount": 62,
+      "localLanguage": "nl",
+      "population": 163298,
+      "rank": 15,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-zaanstad",
+      "candidateCount": 32,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2
+      },
+      "cityId": "zaanstad-nl",
+      "cityName": {
+        "en": "Zaanstad",
+        "fr": "Zaanstad",
+        "nl": "Zaanstad"
+      },
+      "cityZoneId": "relation/337720",
+      "curated": false,
+      "eligibleRceCount": 32,
+      "localLanguage": "nl",
+      "population": 162828,
+      "rank": 16,
+      "rejected": {
+        "categoryLimit": 26,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "dutch-rce": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-enschede",
+      "candidateCount": 54,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "nature": 3
+      },
+      "cityId": "enschede-nl",
+      "cityName": {
+        "en": "Enschede",
+        "fr": "Enschede",
+        "nl": "Enschede"
+      },
+      "cityZoneId": "relation/415473",
+      "curated": false,
+      "eligibleRceCount": 54,
+      "localLanguage": "nl",
+      "population": 162317,
+      "rank": 17,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-s-hertogenbosch",
+      "candidateCount": 102,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "s-hertogenbosch-nl",
+      "cityName": {
+        "en": "'s-Hertogenbosch",
+        "fr": "Bois-le-Duc",
+        "nl": "'s-Hertogenbosch"
+      },
+      "cityZoneId": "relation/162800",
+      "curated": false,
+      "eligibleRceCount": 102,
+      "localLanguage": "nl",
+      "population": 161530,
+      "rank": 18,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-zwolle",
+      "candidateCount": 67,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "zwolle-nl",
+      "cityName": {
+        "en": "Zwolle",
+        "fr": "Zwolle",
+        "nl": "Zwolle"
+      },
+      "cityZoneId": "relation/1433721",
+      "curated": false,
+      "eligibleRceCount": 11,
+      "localLanguage": "nl",
+      "population": 133810,
+      "rank": 19,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 2,
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 56
+    },
+    {
+      "albumId": "nl-leiden",
+      "candidateCount": 39,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "leiden-nl",
+      "cityName": {
+        "en": "Leiden",
+        "fr": "Leiden",
+        "nl": "Leiden"
+      },
+      "cityZoneId": "relation/295092",
+      "curated": false,
+      "eligibleRceCount": 39,
+      "localLanguage": "nl",
+      "population": 130638,
+      "rank": 20,
+      "rejected": {
+        "categoryLimit": 31,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "dutch-rce": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-leeuwarden",
+      "candidateCount": 69,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "leeuwarden-nl",
+      "cityName": {
+        "en": "Leeuwarden",
+        "fr": "Leeuwarden",
+        "nl": "Leeuwarden"
+      },
+      "cityZoneId": "relation/162074",
+      "curated": false,
+      "eligibleRceCount": 69,
+      "localLanguage": "nl",
+      "population": 129973,
+      "rank": 21,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-zoetermeer",
+      "candidateCount": 32,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "zoetermeer-nl",
+      "cityName": {
+        "en": "Zoetermeer",
+        "fr": "Zoetermeer",
+        "nl": "Zoetermeer"
+      },
+      "cityZoneId": "relation/444099",
+      "curated": false,
+      "eligibleRceCount": 1,
+      "localLanguage": "nl",
+      "population": 129862,
+      "rank": 22,
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 1,
+        "wikidata": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 31
+    },
+    {
+      "albumId": "nl-maastricht",
+      "candidateCount": 149,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 2,
+        "culture": 6,
+        "history": 6,
+        "nature": 2
+      },
+      "cityId": "maastricht-nl",
+      "cityName": {
+        "en": "Maastricht",
+        "fr": "Maastricht",
+        "nl": "Maastricht"
+      },
+      "cityZoneId": "relation/2078292",
+      "curated": true,
+      "eligibleRceCount": 149,
+      "localLanguage": "nl",
+      "population": 125563,
+      "rank": 23,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "dutch-rce": 20
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-ede",
+      "candidateCount": 45,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "ede-nl",
+      "cityName": {
+        "en": "Ede",
+        "fr": "Ede",
+        "nl": "Ede"
+      },
+      "cityZoneId": "relation/418760",
+      "curated": false,
+      "eligibleRceCount": 45,
+      "localLanguage": "nl",
+      "population": 124214,
+      "rank": 24,
+      "rejected": {
+        "categoryLimit": 29,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-dordrecht",
+      "candidateCount": 100,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "dordrecht-nl",
+      "cityName": {
+        "en": "Dordrecht",
+        "fr": "Dordrecht",
+        "nl": "Dordrecht"
+      },
+      "cityZoneId": "relation/309478",
+      "curated": false,
+      "eligibleRceCount": 100,
+      "localLanguage": "nl",
+      "population": 122796,
+      "rank": 25,
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-westland",
+      "candidateCount": 54,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "westland-nl",
+      "cityName": {
+        "en": "Westland",
+        "fr": "Westland",
+        "nl": "Westland"
+      },
+      "cityZoneId": "relation/324389",
+      "curated": false,
+      "eligibleRceCount": 9,
+      "localLanguage": "nl",
+      "population": 116916,
+      "rank": 26,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 5,
+        "wikidata": 3
+      },
+      "version": 1,
+      "wikidataCandidateCount": 45
+    },
+    {
+      "albumId": "nl-alphen-aan-den-rijn",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "nature": 1
+      },
+      "cityId": "alphen-aan-den-rijn-nl",
+      "cityName": {
+        "en": "Alphen aan den Rijn",
+        "fr": "Alphen aan den Rijn",
+        "nl": "Alphen aan den Rijn"
+      },
+      "cityZoneId": "relation/443831",
+      "curated": false,
+      "eligibleRceCount": 27,
+      "localLanguage": "nl",
+      "population": 115773,
+      "rank": 27,
+      "rejected": {
+        "categoryLimit": 22,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-alkmaar",
+      "candidateCount": 47,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "alkmaar-nl",
+      "cityName": {
+        "en": "Alkmaar",
+        "fr": "Alkmaar",
+        "nl": "Alkmaar"
+      },
+      "cityZoneId": "relation/337391",
+      "curated": false,
+      "eligibleRceCount": 47,
+      "localLanguage": "nl",
+      "population": 112896,
+      "rank": 28,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-delft",
+      "candidateCount": 55,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "delft-nl",
+      "cityName": {
+        "en": "Delft",
+        "fr": "Delft",
+        "nl": "Delft"
+      },
+      "cityZoneId": "relation/324269",
+      "curated": false,
+      "eligibleRceCount": 55,
+      "localLanguage": "nl",
+      "population": 110173,
+      "rank": 29,
+      "rejected": {
+        "categoryLimit": 47,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "dutch-rce": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-emmen",
+      "candidateCount": 80,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "emmen-nl",
+      "cityName": {
+        "en": "Emmen",
+        "fr": "Emmen",
+        "nl": "Emmen"
+      },
+      "cityZoneId": "relation/413536",
+      "curated": false,
+      "eligibleRceCount": 11,
+      "localLanguage": "nl",
+      "population": 109678,
+      "rank": 30,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 4,
+        "wikidata": 4
+      },
+      "version": 1,
+      "wikidataCandidateCount": 69
+    },
+    {
+      "albumId": "nl-deventer",
+      "candidateCount": 30,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "nature": 1
+      },
+      "cityId": "deventer-nl",
+      "cityName": {
+        "en": "Deventer",
+        "fr": "Deventer",
+        "nl": "Deventer"
+      },
+      "cityZoneId": "relation/1002142",
+      "curated": false,
+      "eligibleRceCount": 30,
+      "localLanguage": "nl",
+      "population": 104301,
+      "rank": 31,
+      "rejected": {
+        "categoryLimit": 25,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-venlo",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "venlo-nl",
+      "cityName": {
+        "en": "Venlo",
+        "fr": "Venlo",
+        "nl": "Venlo"
+      },
+      "cityZoneId": "relation/405106",
+      "curated": false,
+      "eligibleRceCount": 105,
+      "localLanguage": "nl",
+      "population": 103984,
+      "rank": 32,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-helmond",
+      "candidateCount": 62,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "helmond-nl",
+      "cityName": {
+        "en": "Helmond",
+        "fr": "Helmond",
+        "nl": "Helmond"
+      },
+      "cityZoneId": "relation/286685",
+      "curated": false,
+      "eligibleRceCount": 7,
+      "localLanguage": "nl",
+      "population": 96551,
+      "rank": 33,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 4,
+        "wikidata": 4
+      },
+      "version": 1,
+      "wikidataCandidateCount": 55
+    },
+    {
+      "albumId": "nl-purmerend",
+      "candidateCount": 18,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 1
+      },
+      "cityId": "purmerend-nl",
+      "cityName": {
+        "en": "Purmerend",
+        "fr": "Purmerend",
+        "nl": "Purmerend"
+      },
+      "cityZoneId": "relation/289103",
+      "curated": false,
+      "eligibleRceCount": 18,
+      "localLanguage": "nl",
+      "population": 95912,
+      "rank": 34,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-amstelveen",
+      "candidateCount": 15,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "nature": 2
+      },
+      "cityId": "amstelveen-nl",
+      "cityName": {
+        "en": "Amstelveen",
+        "fr": "Amstelveen",
+        "nl": "Amstelveen"
+      },
+      "cityZoneId": "relation/157955",
+      "curated": false,
+      "eligibleRceCount": 15,
+      "localLanguage": "nl",
+      "population": 95822,
+      "rank": 35,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "dutch-rce": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-oss",
+      "candidateCount": 48,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "oss-nl",
+      "cityName": {
+        "en": "Oss",
+        "fr": "Oss",
+        "nl": "Oss"
+      },
+      "cityZoneId": "relation/300631",
+      "curated": false,
+      "eligibleRceCount": 48,
+      "localLanguage": "nl",
+      "population": 95239,
+      "rank": 36,
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 6
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-hilversum",
+      "candidateCount": 58,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "hilversum-nl",
+      "cityName": {
+        "en": "Hilversum",
+        "fr": "Hilversum",
+        "nl": "Hilversum"
+      },
+      "cityZoneId": "relation/419190",
+      "curated": false,
+      "eligibleRceCount": 58,
+      "localLanguage": "nl",
+      "population": 94393,
+      "rank": 37,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-land-van-cuijk",
+      "candidateCount": 217,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "land-van-cuijk-nl",
+      "cityName": {
+        "en": "Land van Cuijk",
+        "fr": "Land van Cuijk",
+        "nl": "Land van Cuijk"
+      },
+      "cityZoneId": "relation/13621786",
+      "curated": false,
+      "eligibleRceCount": 217,
+      "localLanguage": "nl",
+      "population": 92817,
+      "rank": 38,
+      "rejected": {
+        "categoryLimit": 8,
+        "duplicateCoordinate": 1,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-sittard-geleen",
+      "candidateCount": 50,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "sittard-geleen-nl",
+      "cityName": {
+        "en": "Sittard-Geleen",
+        "fr": "Sittard-Geleen",
+        "nl": "Sittard-Geleen"
+      },
+      "cityZoneId": "relation/405681",
+      "curated": false,
+      "eligibleRceCount": 50,
+      "localLanguage": "nl",
+      "population": 92491,
+      "rank": 39,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-dijk-en-waard",
+      "candidateCount": 15,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 3
+      },
+      "cityId": "dijk-en-waard-nl",
+      "cityName": {
+        "en": "Dijk en Waard",
+        "fr": "Dijk en Waard",
+        "nl": "Dijk en Waard"
+      },
+      "cityZoneId": "relation/13621788",
+      "curated": false,
+      "eligibleRceCount": 4,
+      "localLanguage": "nl",
+      "population": 90747,
+      "rank": 40,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 3,
+        "wikidata": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 11
+    },
+    {
+      "albumId": "nl-hoeksche-waard",
+      "candidateCount": 32,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 1
+      },
+      "cityId": "hoeksche-waard-nl",
+      "cityName": {
+        "en": "Hoeksche Waard",
+        "fr": "Hoeksche Waard",
+        "nl": "Hoeksche Waard"
+      },
+      "cityZoneId": "relation/9172183",
+      "curated": false,
+      "eligibleRceCount": 32,
+      "localLanguage": "nl",
+      "population": 90747,
+      "rank": 41,
+      "rejected": {
+        "categoryLimit": 27,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-sudwest-fryslan",
+      "candidateCount": 73,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "sudwest-fryslan-nl",
+      "cityName": {
+        "en": "Súdwest-Fryslân",
+        "fr": "Súdwest-Fryslân",
+        "nl": "Súdwest-Fryslân"
+      },
+      "cityZoneId": "relation/1357943",
+      "curated": false,
+      "eligibleRceCount": 73,
+      "localLanguage": "nl",
+      "population": 90534,
+      "rank": 42,
+      "rejected": {
+        "categoryLimit": 14,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-nissewaard",
+      "candidateCount": 47,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "nissewaard-nl",
+      "cityName": {
+        "en": "Nissewaard",
+        "fr": "Nissewaard",
+        "nl": "Nissewaard"
+      },
+      "cityZoneId": "relation/4446174",
+      "curated": false,
+      "eligibleRceCount": 8,
+      "localLanguage": "nl",
+      "population": 88341,
+      "rank": 43,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 3,
+        "wikidata": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 39
+    },
+    {
+      "albumId": "nl-heerlen",
+      "candidateCount": 45,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "heerlen-nl",
+      "cityName": {
+        "en": "Heerlen",
+        "fr": "Heerlen",
+        "nl": "Heerlen"
+      },
+      "cityZoneId": "relation/406105",
+      "curated": false,
+      "eligibleRceCount": 45,
+      "localLanguage": "nl",
+      "population": 87522,
+      "rank": 44,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 8
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-lelystad",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "culture": 1,
+        "nature": 1
+      },
+      "cityId": "lelystad-nl",
+      "cityName": {
+        "en": "Lelystad",
+        "fr": "Lelystad",
+        "nl": "Lelystad"
+      },
+      "cityZoneId": "relation/409806",
+      "curated": false,
+      "eligibleRceCount": 2,
+      "localLanguage": "nl",
+      "population": 84713,
+      "rank": 45,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 1,
+        "wikidata": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 25
+    },
+    {
+      "albumId": "nl-meierijstad",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "meierijstad-nl",
+      "cityName": {
+        "en": "Meierijstad",
+        "fr": "Meierijstad",
+        "nl": "Meierijstad"
+      },
+      "cityZoneId": "relation/6838008",
+      "curated": false,
+      "eligibleRceCount": 37,
+      "localLanguage": "nl",
+      "population": 84711,
+      "rank": 46,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 23
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "dutch-rce": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-hengelo-o",
+      "candidateCount": 17,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 2,
+        "history": 1
+      },
+      "cityId": "hengelo-o-nl",
+      "cityName": {
+        "en": "Hengelo (O.)",
+        "fr": "Hengelo (O.)",
+        "nl": "Hengelo (O.)"
+      },
+      "cityZoneId": "relation/404388",
+      "curated": false,
+      "eligibleRceCount": 17,
+      "localLanguage": "nl",
+      "population": 83655,
+      "rank": 47,
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "dutch-rce": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-schiedam",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 1
+      },
+      "cityId": "schiedam-nl",
+      "cityName": {
+        "en": "Schiedam",
+        "fr": "Schiedam",
+        "nl": "Schiedam"
+      },
+      "cityZoneId": "relation/324296",
+      "curated": false,
+      "eligibleRceCount": 27,
+      "localLanguage": "nl",
+      "population": 82232,
+      "rank": 48,
+      "rejected": {
+        "categoryLimit": 20,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-leidschendam-voorburg",
+      "candidateCount": 14,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 2,
+        "nature": 1
+      },
+      "cityId": "leidschendam-voorburg-nl",
+      "cityName": {
+        "en": "Leidschendam-Voorburg",
+        "fr": "Leidschendam-Voorburg",
+        "nl": "Leidschendam-Voorburg"
+      },
+      "cityZoneId": "relation/444355",
+      "curated": false,
+      "eligibleRceCount": 14,
+      "localLanguage": "nl",
+      "population": 78318,
+      "rank": 49,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "dutch-rce": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-roosendaal",
+      "candidateCount": 17,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 2
+      },
+      "cityId": "roosendaal-nl",
+      "cityName": {
+        "en": "Roosendaal",
+        "fr": "Roosendaal",
+        "nl": "Roosendaal"
+      },
+      "cityZoneId": "relation/2078302",
+      "curated": false,
+      "eligibleRceCount": 17,
+      "localLanguage": "nl",
+      "population": 77721,
+      "rank": 50,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 5
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "dutch-rce": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-vlaardingen",
+      "candidateCount": 14,
+      "categoryCounts": {
+        "architecture": 4,
+        "history": 1
+      },
+      "cityId": "vlaardingen-nl",
+      "cityName": {
+        "en": "Vlaardingen",
+        "fr": "Vlaardingen",
+        "nl": "Vlaardingen"
+      },
+      "cityZoneId": "relation/272279",
+      "curated": false,
+      "eligibleRceCount": 14,
+      "localLanguage": "nl",
+      "population": 77260,
+      "rank": 51,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 4
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-gouda",
+      "candidateCount": 17,
+      "categoryCounts": {
+        "architecture": 5
+      },
+      "cityId": "gouda-nl",
+      "cityName": {
+        "en": "Gouda",
+        "fr": "Gouda",
+        "nl": "Gouda"
+      },
+      "cityZoneId": "relation/300795",
+      "curated": false,
+      "eligibleRceCount": 17,
+      "localLanguage": "nl",
+      "population": 76514,
+      "rank": 52,
+      "rejected": {
+        "categoryLimit": 14,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-hoorn",
+      "candidateCount": 47,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "hoorn-nl",
+      "cityName": {
+        "en": "Hoorn",
+        "fr": "Hoorn",
+        "nl": "Hoorn"
+      },
+      "cityZoneId": "relation/291667",
+      "curated": false,
+      "eligibleRceCount": 11,
+      "localLanguage": "nl",
+      "population": 76036,
+      "rank": 53,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "dutch-rce": 5,
+        "wikidata": 3
+      },
+      "version": 1,
+      "wikidataCandidateCount": 36
+    },
+    {
+      "albumId": "nl-almelo",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 1
+      },
+      "cityId": "almelo-nl",
+      "cityName": {
+        "en": "Almelo",
+        "fr": "Almelo",
+        "nl": "Almelo"
+      },
+      "cityZoneId": "relation/386411",
+      "curated": false,
+      "eligibleRceCount": 13,
+      "localLanguage": "nl",
+      "population": 74776,
+      "rank": 54,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-voorne-aan-zee",
+      "candidateCount": 24,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 1
+      },
+      "cityId": "voorne-aan-zee-nl",
+      "cityName": {
+        "en": "Voorne aan Zee",
+        "fr": "Voorne aan Zee",
+        "nl": "Voorne aan Zee"
+      },
+      "cityZoneId": "relation/15070820",
+      "curated": false,
+      "eligibleRceCount": 24,
+      "localLanguage": "nl",
+      "population": 74527,
+      "rank": 55,
+      "rejected": {
+        "categoryLimit": 19,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-assen",
+      "candidateCount": 26,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "assen-nl",
+      "cityName": {
+        "en": "Assen",
+        "fr": "Assen",
+        "nl": "Assen"
+      },
+      "cityZoneId": "relation/412268",
+      "curated": false,
+      "eligibleRceCount": 26,
+      "localLanguage": "nl",
+      "population": 70392,
+      "rank": 56,
+      "rejected": {
+        "categoryLimit": 19,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "dutch-rce": 7
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    },
+    {
+      "albumId": "nl-veenendaal",
+      "candidateCount": 12,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "veenendaal-nl",
+      "cityName": {
+        "en": "Veenendaal",
+        "fr": "Veenendaal",
+        "nl": "Veenendaal"
+      },
+      "cityZoneId": "relation/418793",
+      "curated": false,
+      "eligibleRceCount": 1,
+      "localLanguage": "nl",
+      "population": 70352,
+      "rank": 57,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "dutch-rce": 1,
+        "wikidata": 6
+      },
+      "version": 1,
+      "wikidataCandidateCount": 11
+    },
+    {
+      "albumId": "nl-bergen-op-zoom",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 4,
+        "culture": 1
+      },
+      "cityId": "bergen-op-zoom-nl",
+      "cityName": {
+        "en": "Bergen op Zoom",
+        "fr": "Bergen op Zoom",
+        "nl": "Bergen op Zoom"
+      },
+      "cityZoneId": "relation/296882",
+      "curated": false,
+      "eligibleRceCount": 27,
+      "localLanguage": "nl",
+      "population": 70194,
+      "rank": 58,
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 5,
+      "sourceCounts": {
+        "dutch-rce": 5
+      },
+      "version": 1,
+      "wikidataCandidateCount": 0
+    }
+  ],
+  "artifact": {
+    "compressedBytes": 46085,
+    "medalCount": 492,
+    "sha256": "909ebb65546f75af5629fe65cce28d0c7e21b35d6b917e3467ee5fbac8e6dba1",
+    "uncompressedBytes": 436982,
+    "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/nl-v1.json.gz"
+  }
+}

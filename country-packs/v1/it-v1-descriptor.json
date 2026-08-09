@@ -1,0 +1,1618 @@
+{
+  "albums": [
+    {
+      "albumId": "it-roma",
+      "cityId": "roma-it",
+      "cityName": {
+        "en": "Rome",
+        "fr": "Rome",
+        "it": "Roma"
+      },
+      "cityZoneId": "relation/41485",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 20,
+      "population": 2747290,
+      "rank": 1,
+      "version": 1
+    },
+    {
+      "albumId": "it-milano",
+      "cityId": "milano-it",
+      "cityName": {
+        "en": "Milan",
+        "fr": "Milan",
+        "it": "Milano"
+      },
+      "cityZoneId": "relation/44915",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 20,
+      "population": 1365698,
+      "rank": 2,
+      "version": 1
+    },
+    {
+      "albumId": "it-napoli",
+      "cityId": "napoli-it",
+      "cityName": {
+        "en": "Naples",
+        "fr": "Naples",
+        "it": "Napoli"
+      },
+      "cityZoneId": "relation/40767",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 20,
+      "population": 909013,
+      "rank": 3,
+      "version": 1
+    },
+    {
+      "albumId": "it-torino",
+      "cityId": "torino-it",
+      "cityName": {
+        "en": "Turin",
+        "fr": "Turin",
+        "it": "Torino"
+      },
+      "cityZoneId": "relation/43992",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 853196,
+      "rank": 4,
+      "version": 1
+    },
+    {
+      "albumId": "it-palermo",
+      "cityId": "palermo-it",
+      "cityName": {
+        "en": "Palermo",
+        "fr": "Palermo",
+        "it": "Palermo"
+      },
+      "cityZoneId": "relation/39513",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 628693,
+      "rank": 5,
+      "version": 1
+    },
+    {
+      "albumId": "it-genova",
+      "cityId": "genova-it",
+      "cityName": {
+        "en": "Genoa",
+        "fr": "Genes",
+        "it": "Genova"
+      },
+      "cityZoneId": "relation/44875",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 564080,
+      "rank": 6,
+      "version": 1
+    },
+    {
+      "albumId": "it-bologna",
+      "cityId": "bologna-it",
+      "cityName": {
+        "en": "Bologna",
+        "fr": "Bologna",
+        "it": "Bologna"
+      },
+      "cityZoneId": "relation/43172",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 390151,
+      "rank": 7,
+      "version": 1
+    },
+    {
+      "albumId": "it-firenze",
+      "cityId": "firenze-it",
+      "cityName": {
+        "en": "Florence",
+        "fr": "Florence",
+        "it": "Firenze"
+      },
+      "cityZoneId": "relation/42602",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 361705,
+      "rank": 8,
+      "version": 1
+    },
+    {
+      "albumId": "it-bari",
+      "cityId": "bari-it",
+      "cityName": {
+        "en": "Bari",
+        "fr": "Bari",
+        "it": "Bari"
+      },
+      "cityZoneId": "relation/41038",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 315831,
+      "rank": 9,
+      "version": 1
+    },
+    {
+      "albumId": "it-catania",
+      "cityId": "catania-it",
+      "cityName": {
+        "en": "Catania",
+        "fr": "Catania",
+        "it": "Catania"
+      },
+      "cityZoneId": "relation/39230",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 12,
+      "population": 298054,
+      "rank": 10,
+      "version": 1
+    },
+    {
+      "albumId": "it-verona",
+      "cityId": "verona-it",
+      "cityName": {
+        "en": "Verona",
+        "fr": "Verona",
+        "it": "Verona"
+      },
+      "cityZoneId": "relation/44830",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 255039,
+      "rank": 11,
+      "version": 1
+    },
+    {
+      "albumId": "it-venezia",
+      "cityId": "venezia-it",
+      "cityName": {
+        "en": "Venice",
+        "fr": "Venise",
+        "it": "Venezia"
+      },
+      "cityZoneId": "relation/44741",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 249490,
+      "rank": 12,
+      "version": 1
+    },
+    {
+      "albumId": "it-messina",
+      "cityId": "messina-it",
+      "cityName": {
+        "en": "Messina",
+        "fr": "Messina",
+        "it": "Messina"
+      },
+      "cityZoneId": "relation/39514",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 217033,
+      "rank": 13,
+      "version": 1
+    },
+    {
+      "albumId": "it-padova",
+      "cityId": "padova-it",
+      "cityName": {
+        "en": "Padua",
+        "fr": "Padoue",
+        "it": "Padova"
+      },
+      "cityZoneId": "relation/44836",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 207412,
+      "rank": 14,
+      "version": 1
+    },
+    {
+      "albumId": "it-brescia",
+      "cityId": "brescia-it",
+      "cityName": {
+        "en": "Brescia",
+        "fr": "Brescia",
+        "it": "Brescia"
+      },
+      "cityZoneId": "relation/45144",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 199853,
+      "rank": 15,
+      "version": 1
+    },
+    {
+      "albumId": "it-parma",
+      "cityId": "parma-it",
+      "cityName": {
+        "en": "Parma",
+        "fr": "Parma",
+        "it": "Parma"
+      },
+      "cityZoneId": "relation/43452",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 198693,
+      "rank": 16,
+      "version": 1
+    },
+    {
+      "albumId": "it-trieste",
+      "cityId": "trieste-it",
+      "cityName": {
+        "en": "Trieste",
+        "fr": "Trieste",
+        "it": "Trieste"
+      },
+      "cityZoneId": "relation/179180",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 198388,
+      "rank": 17,
+      "version": 1
+    },
+    {
+      "albumId": "it-prato",
+      "cityId": "prato-it",
+      "cityName": {
+        "en": "Prato",
+        "fr": "Prato",
+        "it": "Prato"
+      },
+      "cityZoneId": "relation/280245",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 197057,
+      "rank": 18,
+      "version": 1
+    },
+    {
+      "albumId": "it-taranto",
+      "cityId": "taranto-it",
+      "cityName": {
+        "en": "Taranto",
+        "fr": "Taranto",
+        "it": "Taranto"
+      },
+      "cityZoneId": "relation/40452",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 186011,
+      "rank": 19,
+      "version": 1
+    },
+    {
+      "albumId": "it-modena",
+      "cityId": "modena-it",
+      "cityName": {
+        "en": "Modena",
+        "fr": "Modena",
+        "it": "Modena"
+      },
+      "cityZoneId": "relation/43336",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 184074,
+      "rank": 20,
+      "version": 1
+    },
+    {
+      "albumId": "it-reggio-nell-emilia",
+      "cityId": "reggio-nell-emilia-it",
+      "cityName": {
+        "en": "Reggio nell'Emilia",
+        "fr": "Reggio nell'Emilia",
+        "it": "Reggio nell'Emilia"
+      },
+      "cityZoneId": "relation/43415",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 172284,
+      "rank": 21,
+      "version": 1
+    },
+    {
+      "albumId": "it-reggio-di-calabria",
+      "cityId": "reggio-di-calabria-it",
+      "cityName": {
+        "en": "Reggio di Calabria",
+        "fr": "Reggio di Calabria",
+        "it": "Reggio di Calabria"
+      },
+      "cityZoneId": "relation/39503",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 168779,
+      "rank": 22,
+      "version": 1
+    },
+    {
+      "albumId": "it-perugia",
+      "cityId": "perugia-it",
+      "cityName": {
+        "en": "Perugia",
+        "fr": "Perugia",
+        "it": "Perugia"
+      },
+      "cityZoneId": "relation/42278",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 162050,
+      "rank": 23,
+      "version": 1
+    },
+    {
+      "albumId": "it-ravenna",
+      "cityId": "ravenna-it",
+      "cityName": {
+        "en": "Ravenna",
+        "fr": "Ravenna",
+        "it": "Ravenna"
+      },
+      "cityZoneId": "relation/42955",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 156340,
+      "rank": 24,
+      "version": 1
+    },
+    {
+      "albumId": "it-livorno",
+      "cityId": "livorno-it",
+      "cityName": {
+        "en": "Livorno",
+        "fr": "Livorno",
+        "it": "Livorno"
+      },
+      "cityZoneId": "relation/42481",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 153154,
+      "rank": 25,
+      "version": 1
+    },
+    {
+      "albumId": "it-rimini",
+      "cityId": "rimini-it",
+      "cityName": {
+        "en": "Rimini",
+        "fr": "Rimini",
+        "it": "Rimini"
+      },
+      "cityZoneId": "relation/42791",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 150333,
+      "rank": 26,
+      "version": 1
+    },
+    {
+      "albumId": "it-cagliari",
+      "cityId": "cagliari-it",
+      "cityName": {
+        "en": "Cagliari",
+        "fr": "Cagliari",
+        "it": "Cagliari"
+      },
+      "cityZoneId": "relation/39837",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 146692,
+      "rank": 27,
+      "version": 1
+    },
+    {
+      "albumId": "it-foggia",
+      "cityId": "foggia-it",
+      "cityName": {
+        "en": "Foggia",
+        "fr": "Foggia",
+        "it": "Foggia"
+      },
+      "cityZoneId": "relation/41243",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 145198,
+      "rank": 28,
+      "version": 1
+    },
+    {
+      "albumId": "it-ferrara",
+      "cityId": "ferrara-it",
+      "cityName": {
+        "en": "Ferrara",
+        "fr": "Ferrara",
+        "it": "Ferrara"
+      },
+      "cityZoneId": "relation/43512",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 129081,
+      "rank": 29,
+      "version": 1
+    },
+    {
+      "albumId": "it-latina",
+      "cityId": "latina-it",
+      "cityName": {
+        "en": "Latina",
+        "fr": "Latina",
+        "it": "Latina"
+      },
+      "cityZoneId": "relation/41289",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 127796,
+      "rank": 30,
+      "version": 1
+    },
+    {
+      "albumId": "it-salerno",
+      "cityId": "salerno-it",
+      "cityName": {
+        "en": "Salerno",
+        "fr": "Salerno",
+        "it": "Salerno"
+      },
+      "cityZoneId": "relation/40671",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 126000,
+      "rank": 31,
+      "version": 1
+    },
+    {
+      "albumId": "it-giugliano-in-campania",
+      "cityId": "giugliano-in-campania-it",
+      "cityName": {
+        "en": "Giugliano in Campania",
+        "fr": "Giugliano in Campania",
+        "it": "Giugliano in Campania"
+      },
+      "cityZoneId": "relation/40849",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 125032,
+      "rank": 32,
+      "version": 1
+    },
+    {
+      "albumId": "it-monza",
+      "cityId": "monza-it",
+      "cityName": {
+        "en": "Monza",
+        "fr": "Monza",
+        "it": "Monza"
+      },
+      "cityZoneId": "relation/45319",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 123032,
+      "rank": 33,
+      "version": 1
+    },
+    {
+      "albumId": "it-sassari",
+      "cityId": "sassari-it",
+      "cityName": {
+        "en": "Sassari",
+        "fr": "Sassari",
+        "it": "Sassari"
+      },
+      "cityZoneId": "relation/40683",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 120510,
+      "rank": 34,
+      "version": 1
+    },
+    {
+      "albumId": "it-bergamo",
+      "cityId": "bergamo-it",
+      "cityName": {
+        "en": "Bergamo",
+        "fr": "Bergamo",
+        "it": "Bergamo"
+      },
+      "cityZoneId": "relation/45681",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 120389,
+      "rank": 35,
+      "version": 1
+    },
+    {
+      "albumId": "it-trento",
+      "cityId": "trento-it",
+      "cityName": {
+        "en": "Trento",
+        "fr": "Trento",
+        "it": "Trento"
+      },
+      "cityZoneId": "relation/46663",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 118640,
+      "rank": 36,
+      "version": 1
+    },
+    {
+      "albumId": "it-pescara",
+      "cityId": "pescara-it",
+      "cityName": {
+        "en": "Pescara",
+        "fr": "Pescara",
+        "it": "Pescara"
+      },
+      "cityZoneId": "relation/42014",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 118313,
+      "rank": 37,
+      "version": 1
+    },
+    {
+      "albumId": "it-forli",
+      "cityId": "forli-it",
+      "cityName": {
+        "en": "Forlì",
+        "fr": "Forlì",
+        "it": "Forlì"
+      },
+      "cityZoneId": "relation/42907",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 117535,
+      "rank": 38,
+      "version": 1
+    },
+    {
+      "albumId": "it-siracusa",
+      "cityId": "siracusa-it",
+      "cityName": {
+        "en": "Siracusa",
+        "fr": "Siracusa",
+        "it": "Siracusa"
+      },
+      "cityZoneId": "relation/39169",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 115776,
+      "rank": 39,
+      "version": 1
+    },
+    {
+      "albumId": "it-vicenza",
+      "cityId": "vicenza-it",
+      "cityName": {
+        "en": "Vicenza",
+        "fr": "Vicenza",
+        "it": "Vicenza"
+      },
+      "cityZoneId": "relation/45159",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 110468,
+      "rank": 40,
+      "version": 1
+    },
+    {
+      "albumId": "it-bolzano-bozen",
+      "cityId": "bolzano-bozen-it",
+      "cityName": {
+        "en": "Bolzano/Bozen",
+        "fr": "Bolzano/Bozen",
+        "it": "Bolzano/Bozen"
+      },
+      "cityZoneId": "relation/47207",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 106568,
+      "rank": 41,
+      "version": 1
+    },
+    {
+      "albumId": "it-terni",
+      "cityId": "terni-it",
+      "cityName": {
+        "en": "Terni",
+        "fr": "Terni",
+        "it": "Terni"
+      },
+      "cityZoneId": "relation/42064",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 106310,
+      "rank": 42,
+      "version": 1
+    },
+    {
+      "albumId": "it-piacenza",
+      "cityId": "piacenza-it",
+      "cityName": {
+        "en": "Piacenza",
+        "fr": "Piacenza",
+        "it": "Piacenza"
+      },
+      "cityZoneId": "relation/43981",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 103406,
+      "rank": 43,
+      "version": 1
+    },
+    {
+      "albumId": "it-novara",
+      "cityId": "novara-it",
+      "cityName": {
+        "en": "Novara",
+        "fr": "Novara",
+        "it": "Novara"
+      },
+      "cityZoneId": "relation/44898",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 102231,
+      "rank": 44,
+      "version": 1
+    },
+    {
+      "albumId": "it-ancona",
+      "cityId": "ancona-it",
+      "cityName": {
+        "en": "Ancona",
+        "fr": "Ancona",
+        "it": "Ancona"
+      },
+      "cityZoneId": "relation/42499",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 99533,
+      "rank": 45,
+      "version": 1
+    },
+    {
+      "albumId": "it-udine",
+      "cityId": "udine-it",
+      "cityName": {
+        "en": "Udine",
+        "fr": "Udine",
+        "it": "Udine"
+      },
+      "cityZoneId": "relation/179272",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 98279,
+      "rank": 46,
+      "version": 1
+    },
+    {
+      "albumId": "it-andria",
+      "cityId": "andria-it",
+      "cityName": {
+        "en": "Andria",
+        "fr": "Andria",
+        "it": "Andria"
+      },
+      "cityZoneId": "relation/41034",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 96750,
+      "rank": 47,
+      "version": 1
+    },
+    {
+      "albumId": "it-arezzo",
+      "cityId": "arezzo-it",
+      "cityName": {
+        "en": "Arezzo",
+        "fr": "Arezzo",
+        "it": "Arezzo"
+      },
+      "cityZoneId": "relation/42414",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 96479,
+      "rank": 48,
+      "version": 1
+    },
+    {
+      "albumId": "it-cesena",
+      "cityId": "cesena-it",
+      "cityName": {
+        "en": "Cesena",
+        "fr": "Cesena",
+        "it": "Cesena"
+      },
+      "cityZoneId": "relation/42809",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 95730,
+      "rank": 49,
+      "version": 1
+    },
+    {
+      "albumId": "it-pesaro",
+      "cityId": "pesaro-it",
+      "cityName": {
+        "en": "Pesaro",
+        "fr": "Pesaro",
+        "it": "Pesaro"
+      },
+      "cityZoneId": "relation/42672",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 95266,
+      "rank": 50,
+      "version": 1
+    },
+    {
+      "albumId": "it-lecce",
+      "cityId": "lecce-it",
+      "cityName": {
+        "en": "Lecce",
+        "fr": "Lecce",
+        "it": "Lecce"
+      },
+      "cityZoneId": "relation/40442",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 94187,
+      "rank": 51,
+      "version": 1
+    },
+    {
+      "albumId": "it-la-spezia",
+      "cityId": "la-spezia-it",
+      "cityName": {
+        "en": "La Spezia",
+        "fr": "La Spezia",
+        "it": "La Spezia"
+      },
+      "cityZoneId": "relation/42842",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 92706,
+      "rank": 52,
+      "version": 1
+    },
+    {
+      "albumId": "it-alessandria",
+      "cityId": "alessandria-it",
+      "cityName": {
+        "en": "Alessandria",
+        "fr": "Alessandria",
+        "it": "Alessandria"
+      },
+      "cityZoneId": "relation/43747",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 92522,
+      "rank": 53,
+      "version": 1
+    },
+    {
+      "albumId": "it-barletta",
+      "cityId": "barletta-it",
+      "cityName": {
+        "en": "Barletta",
+        "fr": "Barletta",
+        "it": "Barletta"
+      },
+      "cityZoneId": "relation/41200",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 92191,
+      "rank": 54,
+      "version": 1
+    },
+    {
+      "albumId": "it-pisa",
+      "cityId": "pisa-it",
+      "cityName": {
+        "en": "Pisa",
+        "fr": "Pisa",
+        "it": "Pisa"
+      },
+      "cityZoneId": "relation/42527",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 89422,
+      "rank": 55,
+      "version": 1
+    },
+    {
+      "albumId": "it-guidonia-montecelio",
+      "cityId": "guidonia-montecelio-it",
+      "cityName": {
+        "en": "Guidonia Montecelio",
+        "fr": "Guidonia Montecelio",
+        "it": "Guidonia Montecelio"
+      },
+      "cityZoneId": "relation/41687",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 5,
+      "population": 89011,
+      "rank": 56,
+      "version": 1
+    },
+    {
+      "albumId": "it-lucca",
+      "cityId": "lucca-it",
+      "cityName": {
+        "en": "Lucca",
+        "fr": "Lucca",
+        "it": "Lucca"
+      },
+      "cityZoneId": "relation/42659",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 89002,
+      "rank": 57,
+      "version": 1
+    },
+    {
+      "albumId": "it-pistoia",
+      "cityId": "pistoia-it",
+      "cityName": {
+        "en": "Pistoia",
+        "fr": "Pistoia",
+        "it": "Pistoia"
+      },
+      "cityZoneId": "relation/42722",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 88889,
+      "rank": 58,
+      "version": 1
+    },
+    {
+      "albumId": "it-treviso",
+      "cityId": "treviso-it",
+      "cityName": {
+        "en": "Treviso",
+        "fr": "Treviso",
+        "it": "Treviso"
+      },
+      "cityZoneId": "relation/45511",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 85652,
+      "rank": 59,
+      "version": 1
+    },
+    {
+      "albumId": "it-busto-arsizio",
+      "cityId": "busto-arsizio-it",
+      "cityName": {
+        "en": "Busto Arsizio",
+        "fr": "Busto Arsizio",
+        "it": "Busto Arsizio"
+      },
+      "cityZoneId": "relation/45376",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 84005,
+      "rank": 60,
+      "version": 1
+    },
+    {
+      "albumId": "it-catanzaro",
+      "cityId": "catanzaro-it",
+      "cityName": {
+        "en": "Catanzaro",
+        "fr": "Catanzaro",
+        "it": "Catanzaro"
+      },
+      "cityZoneId": "relation/39727",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 83313,
+      "rank": 61,
+      "version": 1
+    },
+    {
+      "albumId": "it-como",
+      "cityId": "como-it",
+      "cityName": {
+        "en": "Como",
+        "fr": "Como",
+        "it": "Como"
+      },
+      "cityZoneId": "relation/46085",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 83135,
+      "rank": 62,
+      "version": 1
+    },
+    {
+      "albumId": "it-fiumicino",
+      "cityId": "fiumicino-it",
+      "cityName": {
+        "en": "Fiumicino",
+        "fr": "Fiumicino",
+        "it": "Fiumicino"
+      },
+      "cityZoneId": "relation/41575",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 82829,
+      "rank": 63,
+      "version": 1
+    },
+    {
+      "albumId": "it-brindisi",
+      "cityId": "brindisi-it",
+      "cityName": {
+        "en": "Brindisi",
+        "fr": "Brindisi",
+        "it": "Brindisi"
+      },
+      "cityZoneId": "relation/40545",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 81723,
+      "rank": 64,
+      "version": 1
+    },
+    {
+      "albumId": "it-grosseto",
+      "cityId": "grosseto-it",
+      "cityName": {
+        "en": "Grosseto",
+        "fr": "Grosseto",
+        "it": "Grosseto"
+      },
+      "cityZoneId": "relation/42153",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 81264,
+      "rank": 65,
+      "version": 1
+    },
+    {
+      "albumId": "it-marsala",
+      "cityId": "marsala-it",
+      "cityName": {
+        "en": "Marsala",
+        "fr": "Marsala",
+        "it": "Marsala"
+      },
+      "cityZoneId": "relation/39348",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 79571,
+      "rank": 66,
+      "version": 1
+    },
+    {
+      "albumId": "it-torre-del-greco",
+      "cityId": "torre-del-greco-it",
+      "cityName": {
+        "en": "Torre del Greco",
+        "fr": "Torre del Greco",
+        "it": "Torre del Greco"
+      },
+      "cityZoneId": "relation/40755",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 7,
+      "population": 79397,
+      "rank": 67,
+      "version": 1
+    },
+    {
+      "albumId": "it-varese",
+      "cityId": "varese-it",
+      "cityName": {
+        "en": "Varese",
+        "fr": "Varese",
+        "it": "Varese"
+      },
+      "cityZoneId": "relation/46116",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 78992,
+      "rank": 68,
+      "version": 1
+    },
+    {
+      "albumId": "it-sesto-san-giovanni",
+      "cityId": "sesto-san-giovanni-it",
+      "cityName": {
+        "en": "Sesto San Giovanni",
+        "fr": "Sesto San Giovanni",
+        "it": "Sesto San Giovanni"
+      },
+      "cityZoneId": "relation/45245",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 78792,
+      "rank": 69,
+      "version": 1
+    },
+    {
+      "albumId": "it-pozzuoli",
+      "cityId": "pozzuoli-it",
+      "cityName": {
+        "en": "Pozzuoli",
+        "fr": "Pozzuoli",
+        "it": "Pozzuoli"
+      },
+      "cityZoneId": "relation/40808",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 75375,
+      "rank": 70,
+      "version": 1
+    },
+    {
+      "albumId": "it-cinisello-balsamo",
+      "cityId": "cinisello-balsamo-it",
+      "cityName": {
+        "en": "Cinisello Balsamo",
+        "fr": "Cinisello Balsamo",
+        "it": "Cinisello Balsamo"
+      },
+      "cityZoneId": "relation/45288",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 74702,
+      "rank": 71,
+      "version": 1
+    },
+    {
+      "albumId": "it-aprilia",
+      "cityId": "aprilia-it",
+      "cityName": {
+        "en": "Aprilia",
+        "fr": "Aprilia",
+        "it": "Aprilia"
+      },
+      "cityZoneId": "relation/41371",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 74586,
+      "rank": 72,
+      "version": 1
+    },
+    {
+      "albumId": "it-corigliano-rossano",
+      "cityId": "corigliano-rossano-it",
+      "cityName": {
+        "en": "Corigliano-Rossano",
+        "fr": "Corigliano-Rossano",
+        "it": "Corigliano-Rossano"
+      },
+      "cityZoneId": "relation/8164150",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 74332,
+      "rank": 73,
+      "version": 1
+    },
+    {
+      "albumId": "it-ragusa",
+      "cityId": "ragusa-it",
+      "cityName": {
+        "en": "Ragusa",
+        "fr": "Ragusa",
+        "it": "Ragusa"
+      },
+      "cityZoneId": "relation/39162",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 73878,
+      "rank": 74,
+      "version": 1
+    },
+    {
+      "albumId": "it-casoria",
+      "cityId": "casoria-it",
+      "cityName": {
+        "en": "Casoria",
+        "fr": "Casoria",
+        "it": "Casoria"
+      },
+      "cityZoneId": "relation/40866",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 5,
+      "population": 73724,
+      "rank": 75,
+      "version": 1
+    },
+    {
+      "albumId": "it-asti",
+      "cityId": "asti-it",
+      "cityName": {
+        "en": "Asti",
+        "fr": "Asti",
+        "it": "Asti"
+      },
+      "cityZoneId": "relation/43724",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 73440,
+      "rank": 76,
+      "version": 1
+    },
+    {
+      "albumId": "it-carpi",
+      "cityId": "carpi-it",
+      "cityName": {
+        "en": "Carpi",
+        "fr": "Carpi",
+        "it": "Carpi"
+      },
+      "cityZoneId": "relation/43534",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 73297,
+      "rank": 77,
+      "version": 1
+    },
+    {
+      "albumId": "it-caserta",
+      "cityId": "caserta-it",
+      "cityName": {
+        "en": "Caserta",
+        "fr": "Caserta",
+        "it": "Caserta"
+      },
+      "cityZoneId": "relation/41056",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 72793,
+      "rank": 78,
+      "version": 1
+    },
+    {
+      "albumId": "it-pavia",
+      "cityId": "pavia-it",
+      "cityName": {
+        "en": "Pavia",
+        "fr": "Pavia",
+        "it": "Pavia"
+      },
+      "cityZoneId": "relation/44383",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 71610,
+      "rank": 79,
+      "version": 1
+    },
+    {
+      "albumId": "it-cremona",
+      "cityId": "cremona-it",
+      "cityName": {
+        "en": "Cremona",
+        "fr": "Cremona",
+        "it": "Cremona"
+      },
+      "cityZoneId": "relation/44189",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 70922,
+      "rank": 80,
+      "version": 1
+    },
+    {
+      "albumId": "it-gela",
+      "cityId": "gela-it",
+      "cityName": {
+        "en": "Gela",
+        "fr": "Gela",
+        "it": "Gela"
+      },
+      "cityZoneId": "relation/39177",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 70451,
+      "rank": 81,
+      "version": 1
+    },
+    {
+      "albumId": "it-l-aquila",
+      "cityId": "l-aquila-it",
+      "cityName": {
+        "en": "L'Aquila",
+        "fr": "L'Aquila",
+        "it": "L'Aquila"
+      },
+      "cityZoneId": "relation/41842",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 70425,
+      "rank": 82,
+      "version": 1
+    },
+    {
+      "albumId": "it-altamura",
+      "cityId": "altamura-it",
+      "cityName": {
+        "en": "Altamura",
+        "fr": "Altamura",
+        "it": "Altamura"
+      },
+      "cityZoneId": "relation/40743",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 70163,
+      "rank": 83,
+      "version": 1
+    },
+    {
+      "albumId": "it-imola",
+      "cityId": "imola-it",
+      "cityName": {
+        "en": "Imola",
+        "fr": "Imola",
+        "it": "Imola"
+      },
+      "cityZoneId": "relation/43020",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 69403,
+      "rank": 84,
+      "version": 1
+    },
+    {
+      "albumId": "it-quartu-sant-elena",
+      "cityId": "quartu-sant-elena-it",
+      "cityName": {
+        "en": "Quartu Sant'Elena",
+        "fr": "Quartu Sant'Elena",
+        "it": "Quartu Sant'Elena"
+      },
+      "cityZoneId": "relation/39848",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 68237,
+      "rank": 85,
+      "version": 1
+    },
+    {
+      "albumId": "it-lamezia-terme",
+      "cityId": "lamezia-terme-it",
+      "cityName": {
+        "en": "Lamezia Terme",
+        "fr": "Lamezia Terme",
+        "it": "Lamezia Terme"
+      },
+      "cityZoneId": "relation/39729",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 67269,
+      "rank": 86,
+      "version": 1
+    },
+    {
+      "albumId": "it-viterbo",
+      "cityId": "viterbo-it",
+      "cityName": {
+        "en": "Viterbo",
+        "fr": "Viterbo",
+        "it": "Viterbo"
+      },
+      "cityZoneId": "relation/41946",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 66393,
+      "rank": 87,
+      "version": 1
+    },
+    {
+      "albumId": "it-vittoria",
+      "cityId": "vittoria-it",
+      "cityName": {
+        "en": "Vittoria",
+        "fr": "Vittoria",
+        "it": "Vittoria"
+      },
+      "cityZoneId": "relation/39167",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 7,
+      "population": 65873,
+      "rank": 88,
+      "version": 1
+    },
+    {
+      "albumId": "it-massa",
+      "cityId": "massa-it",
+      "cityName": {
+        "en": "Massa",
+        "fr": "Massa",
+        "it": "Massa"
+      },
+      "cityZoneId": "relation/42813",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 65814,
+      "rank": 89,
+      "version": 1
+    },
+    {
+      "albumId": "it-pomezia",
+      "cityId": "pomezia-it",
+      "cityName": {
+        "en": "Pomezia",
+        "fr": "Pomezia",
+        "it": "Pomezia"
+      },
+      "cityZoneId": "relation/41455",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 64665,
+      "rank": 90,
+      "version": 1
+    },
+    {
+      "albumId": "it-potenza",
+      "cityId": "potenza-it",
+      "cityName": {
+        "en": "Potenza",
+        "fr": "Potenza",
+        "it": "Potenza"
+      },
+      "cityZoneId": "relation/40613",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 63864,
+      "rank": 91,
+      "version": 1
+    },
+    {
+      "albumId": "it-cosenza",
+      "cityId": "cosenza-it",
+      "cityName": {
+        "en": "Cosenza",
+        "fr": "Cosenza",
+        "it": "Cosenza"
+      },
+      "cityZoneId": "relation/39859",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 63240,
+      "rank": 92,
+      "version": 1
+    },
+    {
+      "albumId": "it-vigevano",
+      "cityId": "vigevano-it",
+      "cityName": {
+        "en": "Vigevano",
+        "fr": "Vigevano",
+        "it": "Vigevano"
+      },
+      "cityZoneId": "relation/44586",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 62771,
+      "rank": 93,
+      "version": 1
+    },
+    {
+      "albumId": "it-castellammare-di-stabia",
+      "cityId": "castellammare-di-stabia-it",
+      "cityName": {
+        "en": "Castellammare di Stabia",
+        "fr": "Castellammare di Stabia",
+        "it": "Castellammare di Stabia"
+      },
+      "cityZoneId": "relation/40689",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 62320,
+      "rank": 94,
+      "version": 1
+    },
+    {
+      "albumId": "it-afragola",
+      "cityId": "afragola-it",
+      "cityName": {
+        "en": "Afragola",
+        "fr": "Afragola",
+        "it": "Afragola"
+      },
+      "cityZoneId": "relation/40907",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 6,
+      "population": 61786,
+      "rank": 95,
+      "version": 1
+    },
+    {
+      "albumId": "it-olbia",
+      "cityId": "olbia-it",
+      "cityName": {
+        "en": "Olbia",
+        "fr": "Olbia",
+        "it": "Olbia"
+      },
+      "cityZoneId": "relation/40735",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 61681,
+      "rank": 96,
+      "version": 1
+    },
+    {
+      "albumId": "it-legnano",
+      "cityId": "legnano-it",
+      "cityName": {
+        "en": "Legnano",
+        "fr": "Legnano",
+        "it": "Legnano"
+      },
+      "cityZoneId": "relation/45380",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 60679,
+      "rank": 97,
+      "version": 1
+    },
+    {
+      "albumId": "it-viareggio",
+      "cityId": "viareggio-it",
+      "cityName": {
+        "en": "Viareggio",
+        "fr": "Viareggio",
+        "it": "Viareggio"
+      },
+      "cityZoneId": "relation/42664",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 60618,
+      "rank": 98,
+      "version": 1
+    },
+    {
+      "albumId": "it-fano",
+      "cityId": "fano-it",
+      "cityName": {
+        "en": "Fano",
+        "fr": "Fano",
+        "it": "Fano"
+      },
+      "cityZoneId": "relation/42616",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 59903,
+      "rank": 99,
+      "version": 1
+    },
+    {
+      "albumId": "it-anzio",
+      "cityId": "anzio-it",
+      "cityName": {
+        "en": "Anzio",
+        "fr": "Anzio",
+        "it": "Anzio"
+      },
+      "cityZoneId": "relation/41363",
+      "countryCode": "it",
+      "localLanguage": "it",
+      "medalCount": 8,
+      "population": 59789,
+      "rank": 100,
+      "version": 1
+    }
+  ],
+  "compressedBytes": 70980,
+  "countryCode": "it",
+  "formatVersion": 1,
+  "languages": [
+    "en",
+    "fr",
+    "it"
+  ],
+  "medalCount": 854,
+  "publishedAt": "2026-08-09",
+  "sha256": "c9e1ac5a378d75de63c7b530d675e160751e6ead52b6e7fded5479f7377b2ee9",
+  "uncompressedBytes": 665823,
+  "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/it-v1.json.gz",
+  "version": 1
+}

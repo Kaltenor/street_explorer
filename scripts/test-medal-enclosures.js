@@ -1,6 +1,8 @@
 const fs = require("fs");
+const crypto = require("crypto");
 const path = require("path");
 const ts = require("typescript");
+const zlib = require("zlib");
 
 require.extensions[".ts"] = (module, filename) => {
   const source = fs.readFileSync(filename, "utf8");
@@ -17,7 +19,8 @@ require.extensions[".ts"] = (module, filename) => {
 
 for (const relativePath of [
   "../src/database/walkRepository.ts",
-  "../src/database/medalRepository.ts"
+  "../src/database/medalRepository.ts",
+  "../src/services/medalCountryPackStore.ts"
 ]) {
   const filename = path.resolve(__dirname, relativePath);
   require.cache[filename] = {
@@ -25,12 +28,20 @@ for (const relativePath of [
   };
 }
 
+require.cache[path.resolve(__dirname, "../src/services/medalCountryPackStore.ts")].exports = {
+  getMedalAlbumDefinition: async () => null
+};
+
 const explorationArea = require("../src/services/explorationArea.ts");
 const medalEnclosure = require("../src/services/medalEnclosure.ts");
 const lyonAlbum = require("../assets/medals/lyon-v1.json");
 const parisAlbum = require("../assets/medals/paris-v1.json");
 const villeurbanneAlbum = require("../assets/medals/villeurbanne-v1.json");
 const medalAlbums = require("../src/data/medalAlbums.ts");
+const downloadableManifest = require(
+  "../src/data/generated/downloadableMedalCountryPackManifest.ts"
+);
+const sha256 = require("../src/services/sha256.ts");
 const franceSources = require("../assets/medals/france-top-100-sources.json");
 const franceAlbumDirectory = path.resolve(__dirname, "../assets/medals/france");
 const generatedFranceAlbums = fs.readdirSync(franceAlbumDirectory)
@@ -44,6 +55,10 @@ const mapScreenSource = fs.readFileSync(
 const liveMedalEffectSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const evaluation = liveMedalEvaluationRef.current"),
   mapScreenSource.indexOf("const handleCompleteMedalCelebration")
+);
+const coreSavedDataHydrationSource = mapScreenSource.slice(
+  mapScreenSource.indexOf('"map.saved-data-queries"'),
+  mapScreenSource.indexOf('"map.saved-data-queries"') + 800
 );
 const medalCelebrationSource = fs.readFileSync(
   path.resolve(__dirname, "../src/components/MedalCelebration.tsx"),
@@ -87,6 +102,10 @@ const expeditionSource = fs.readFileSync(
   path.resolve(__dirname, "../src/services/districtExpeditions.ts"),
   "utf8"
 );
+const countryPackStoreSource = fs.readFileSync(
+  path.resolve(__dirname, "../src/services/medalCountryPackStore.ts"),
+  "utf8"
+);
 
 function assert(condition, message) {
   if (!condition) {
@@ -106,7 +125,7 @@ assert(
 );
 assert(
   mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&
-    mapScreenSource.includes("repairPendingRecordingCaches(activeMedalAlbumId)"),
+    mapScreenSource.includes("repairPendingRecordingCaches()"),
   "live awards and active-city pending-recording safety checks are wired into the map screen"
 );
 assert(
@@ -197,7 +216,7 @@ assert(
 );
 assert(
   mapScreenSource.includes(
-    "savedMedalProgress?.album.id === activeMedalAlbumIdRef.current"
+    "medalData.savedMedalProgress?.album.id === activeMedalAlbumIdRef.current"
   ) &&
     mapScreenSource.includes(
       "progress?.album.id === activeMedalAlbumIdRef.current"
@@ -271,6 +290,79 @@ assert(
     medalAlbums.BUNDLED_MEDAL_COUNT === bundledMedals.length &&
     medalAlbums.getBundledMedalAlbum("paris-v1").cityName.fr === "Paris",
   "the manifest resolves one requested city album without an eager album array"
+);
+
+const netherlandsDescriptor = downloadableManifest.DOWNLOADABLE_MEDAL_COUNTRY_PACKS.find(
+  (pack) => pack.countryCode === "nl"
+);
+const netherlandsPackPath = path.resolve(
+  __dirname,
+  "../country-packs/v1/nl-v1.json.gz"
+);
+const netherlandsCompressed = fs.readFileSync(netherlandsPackPath);
+const netherlandsPack = JSON.parse(zlib.gunzipSync(netherlandsCompressed));
+const netherlandsQuality = require("../country-packs/v1/nl-v1-quality.json");
+const curatedDutchCities = new Set(
+  netherlandsQuality.cities
+    .filter((city) => city.curated)
+    .map((city) => city.cityName.nl)
+);
+assert(
+  netherlandsDescriptor &&
+  netherlandsDescriptor.countryCode === "nl" &&
+    netherlandsDescriptor.albums.length === 58 &&
+    netherlandsDescriptor.medalCount === 492 &&
+    netherlandsDescriptor.compressedBytes === netherlandsCompressed.length &&
+    netherlandsDescriptor.uncompressedBytes === zlib.gunzipSync(netherlandsCompressed).length &&
+    netherlandsDescriptor.sha256 === crypto.createHash("sha256").update(netherlandsCompressed).digest("hex") &&
+    netherlandsPack.albums.length === 58 &&
+    netherlandsQuality.pilot.cityCount === 30 &&
+    netherlandsQuality.expansion.populationCoverage >= 0.5 &&
+    ["Amsterdam", "Rotterdam", "Maastricht"].every((city) => curatedDutchCities.has(city)),
+  "the measured Dutch pilot expands to a checksum-pinned 58-city downloadable pack with three curated rosters"
+);
+assert(
+  netherlandsPack.albums.every(
+    (album) =>
+      album.countryCode === "nl" &&
+      album.localLanguage === "nl" &&
+      album.medals.length >= 5 &&
+      album.medals.every(
+        (medal) =>
+          medal.name.en && medal.name.fr && medal.name.nl &&
+          medal.description.en && medal.description.fr && medal.description.nl &&
+          ["dutch-rce", "wikidata"].includes(medal.externalIdentity.source)
+      )
+  ) &&
+    new Set(netherlandsPack.albums.flatMap((album) => album.medals.map((medal) => medal.id))).size === 492 &&
+    medalAlbums.getMedalAlbumIdForZone({ id: "relation/47811" }) === "nl-amsterdam",
+  "Dutch country-pack albums retain local-language copy, stable zone resolution, source provenance, and globally unique medals"
+);
+assert(
+  sha256.sha256Hex(Buffer.from("abc")) ===
+    "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad" &&
+    countryPackStoreSource.includes("File.downloadFileAsync") &&
+    countryPackStoreSource.includes("sha256Hex(compressed)") &&
+    countryPackStoreSource.includes("temporaryFile.rename") &&
+    countryPackStoreSource.includes("Paths.document") &&
+    countryPackStoreSource.includes("removeObsoleteCountryPackFiles") &&
+    countryPackStoreSource.includes("failedPackLoads.set(operationKey, error)") &&
+    countryPackStoreSource.includes("resetMedalCountryPackFailure"),
+  "country-pack downloads use persistent atomic installation and a verified SHA-256 payload"
+);
+assert(
+    mapScreenSource.includes('type MedalPackLoadState = "idle" | "loading" | "ready" | "unavailable"') &&
+    mapScreenSource.includes("medalDataPromise.then") &&
+    mapScreenSource.indexOf("const medalDataPromise = loadMedalData()") >
+      mapScreenSource.indexOf('"map.saved-data-queries"') &&
+    mapScreenSource.includes('medalPackLoadState === "unavailable"') &&
+    mapScreenSource.includes("resetMedalCountryPackFailure(activeMedalAlbumId)") &&
+    mapScreenSource.includes("existingOperation?.key === operationKey") &&
+    mapScreenSource.includes('console.warn("Failed to retry medal country pack"') &&
+    medalRepositorySource.includes("ensureMedalAlbumSeeded") &&
+    medalRepositorySource.includes("continue;") &&
+    coreSavedDataHydrationSource.includes("getTodayNewExploredCellKeys(activityMode)"),
+  "downloadable medal loading is retryable and cannot block the core saved-map hydration path"
 );
 assert(
   medalServiceSource.includes("albumId: string") &&

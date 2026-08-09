@@ -1,5 +1,20 @@
 # Testing
 
+## Downloadable Country Packs V0.23.1 Manual Test
+
+Prerequisites: publish the immutable v1 gzip artifacts at the HTTPS URLs recorded in their descriptors, then use a physical-device development build with foreground location allowed, enough free document storage, and a test objective in France plus one supported city in each of Belgium, Germany, Italy, the Netherlands, and Spain. Begin online, and preserve one unlocked medal plus one qualifying finalized walk if persistence and retroactive scanning are to be exercised.
+
+1. Start in a bundled French city, then open Medals. Expected: its album appears immediately without a country download and existing unlocks remain intact.
+2. Select Amsterdam while online. Expected: the rail reports downloading only while the Netherlands gzip is fetched; the app verifies it, displays the Amsterdam total and markers, and normal History, exploration, objective, and recording state remain interactive during the fetch.
+3. Inspect Amsterdam, Rotterdam, and Maastricht in English, French, and Dutch. Expected: each manually curated 20-medal roster has complete localized names and descriptions, stable categories and source identities, and no previous-city markers after a switch.
+4. Select one supported Belgian, German, Italian, and Spanish city in turn. Expected: each first selection fetches at most one versioned country file, resolves a city objective or its parented district to the correct album, and never exposes another country's fallback catalogue.
+5. Force-close, disable networking, and reopen each previously installed country. Expected: its validated cached gzip loads offline with unchanged album totals, collected state, and markers.
+6. Still offline, select a supported city from a country that was never installed, or temporarily make its published artifact unavailable. Expected: the medal rail reports that the album is unavailable and offers tap-to-retry; History, map hydration, saved routes, objectives, and recording remain usable. Trigger ordinary objective/lifecycle refreshes without tapping the rail. Expected: no repeated network requests or duplicate saved-data query batches occur. Restore networking and tap the rail once. Expected: that explicit retry clears the failure latch, installs the pack, and opens the album.
+7. Replace a cached gzip with invalid or truncated bytes in a controlled development profile, then reopen online. Expected: checksum validation rejects and removes the corrupt cache before a clean redownload; no partial file is treated as installed. Repeat offline. Expected: the album stays unavailable rather than parsing unverified data.
+8. Run a past-walk scan for a newly installed album, then run it again unchanged. Expected: only spatially overlapping unscanned walks are processed on the first run, unlocks are preserved after relaunch, and the unchanged second scan processes zero walks. An unavailable different country must not suppress pending presentations from installed albums.
+
+Automated checks run `test:country-packs` for gzip byte counts, SHA-256 values, schema/locales, city and medal identity uniqueness, minimum rosters, coverage reports, and download budgets; `test:medals` covers cache installation, retry/error isolation, album resolution, and active-city evaluation. Physical-device validation remains required for native HTTPS installation, document-directory persistence, live marker switching, offline relaunch, and corrupt-cache recovery.
+
 ## Expedition Explorer Points and Daylight Stamp V0.22.0 Manual Test
 
 Prerequisites: use a profile with at least one existing completed expedition seal, select an official level-9 district, keep network/location permissions available for the chosen expedition type, and test once in Explorator and once in Daylight. For the three-award path, use a local day where all three generated expedition choices can be completed with durable evidence.
@@ -516,7 +531,7 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 1. Use a device database with many long recordings and a large explored-cell ledger.
 2. Cold-launch the app and confirm the native map appears before saved red exploration contours.
 3. Confirm startup does not freeze while route history is unopened and the Paths layer is off.
-4. Open History and confirm the list appears without loading every route; tap one recording and confirm only that recording's detailed GPS and route data loads.
+4. Open History and confirm the list appears without loading every route or pausing to count the complete GPS ledger; tap one recording and confirm only that recording's detailed GPS and route data loads. Repeat immediately after stopping a walk while its durable cache repair is pending and confirm the row still shows the exact point count.
 5. Close History, restart, enable Paths, and confirm detailed routes load on demand.
 6. Start a recording and confirm live distance, cells, and the complete route advance without progressively worsening input lag.
 7. Stop and confirm the report and Start control return after the durable session save, without waiting for route inference, exact step reconciliation, medals, objectives, or the complete saved-history refresh. For a continuous short route, confirm the direct snapshot fast path avoids street-corridor graph work.
@@ -525,8 +540,8 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 10. Scroll a history containing at least 100 recordings and confirm rows stay responsive instead of mounting the complete list at once.
 11. Switch Paths through Today, Last 7 days, Selected, and All and confirm only that scope is loaded and displayed.
 12. During recording, keep moving through several rapid GPS fixes and confirm the player and active route move immediately while red/today contours refresh repeatedly at roughly 650ms intervals instead of waiting for GPS delivery to pause; medal collection may use the same short settle interval.
-13. With the 0.22.3 development bundle, pan repeatedly across a city with many district outlines and a 60-marker Paris album, then remain idle and walk through several fixes. Confirm static medals and boundaries do not flicker or continuously redraw, medal taps still open the correct item, and the animated player continues updating.
-14. Inspect development logs. Confirm idle time does not continuously increase MapScreen/ExplorationMap render counts, and investigate recurring `[performance] map.live-enclosure`, `[performance] map.explorer-score`, `[performance] map.exploration-surface`, or `[performance] map.today-surface` entries above their printed thresholds.
+13. With the 0.22.4 development bundle, pan repeatedly across a city with many district outlines and a 60-marker Paris album, then remain idle and walk through several fixes. Confirm static medals and boundaries do not flicker or continuously redraw, medal taps still open the correct item, and the animated player continues updating.
+14. Inspect development logs. Confirm idle time does not continuously increase MapScreen/ExplorationMap render counts, and investigate recurring `[performance] map.live-enclosure`, `[performance] map.explorer-score`, `[performance] map.exploration-surface`, or `[performance] map.today-surface` entries above their printed thresholds. During launch, History opening, path-scope changes, and recording selection, separately note `map.saved-data-queries`, `map.path-history-load`, and `map.selected-walk-load` so database/hydration latency is not mistaken for map-render latency.
 15. Close a qualifying loop during the recording. Confirm the enclosure stamp, live Explorer Score, filled surface, and final persisted score agree; this verifies that the shared enclosure result did not change behavior.
 16. Export a large V5 backup and confirm bounded block compression completes without an iOS memory warning or empty file, then reselect the Files copy and confirm verification succeeds.
 
@@ -534,7 +549,7 @@ Prerequisites: run the 0.15.1 JavaScript bundle in a compatible iOS development 
 
 1. Start outdoors with a reliable fix and record more than 1,000 accepted points.
 2. Confirm the beginning of the route stays visible, including when zoomed far out, while distance and explored cells continue increasing.
-3. Confirm stable chunk boundaries do not create visual holes in a continuous observed route.
+3. Confirm stable chunk boundaries do not create visual holes, flash, or repaint while the open tail grows; input responsiveness should remain stable after several frozen chunks accumulate.
 4. Temporarily disable location services or otherwise interrupt fixes.
 5. Confirm the player icon remains at the newest accepted route position and the already-drawn route remains intact.
 6. Restore location service and leave the app active.

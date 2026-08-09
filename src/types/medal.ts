@@ -5,13 +5,30 @@ export type MedalCategory =
   | "history"
   | "nature";
 
+export type MedalLanguage = "de" | "en" | "es" | "fr" | "it" | "nl";
+
 export type LocalizedMedalText = {
   en: string;
   fr: string;
-};
+} & Partial<Record<Exclude<MedalLanguage, "en" | "fr">, string>>;
+
+export type MedalCountryCode = "be" | "de" | "es" | "fr" | "it" | "nl";
+
+export type MedalExternalSource =
+  | "dgamn"
+  | "dutch-rce"
+  | "flanders-inventaris"
+  | "german-state-heritage"
+  | "icc"
+  | "merimee"
+  | "museofile"
+  | "openstreetmap"
+  | "spanish-culture-ministry"
+  | "wallonia-awap"
+  | "wikidata";
 
 export type MedalExternalIdentity = {
-  source: "merimee" | "museofile" | "openstreetmap" | "wikidata";
+  source: MedalExternalSource;
   type: "item" | "node" | "record" | "relation" | "way";
   id: number | string;
 };
@@ -32,10 +49,23 @@ export type MedalAlbumDefinition = {
   cityId: string;
   cityZoneId: string;
   cityName: LocalizedMedalText;
+  countryCode?: MedalCountryCode;
+  localLanguage?: MedalLanguage;
   version: number;
   publishedAt: string;
   sourceAttribution: string;
   medals: LandmarkMedalDefinition[];
+};
+
+export type MedalCountryPack = {
+  albums: MedalAlbumDefinition[];
+  countryCode: Exclude<MedalCountryCode, "fr">;
+  formatVersion: 1;
+  generatedAt: string;
+  languages: MedalLanguage[];
+  publishedAt: string;
+  sourceAttribution: string;
+  version: number;
 };
 
 export type MedalAcquisitionReason = "recording" | "retro_scan";

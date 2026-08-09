@@ -1,0 +1,3650 @@
+{
+  "countryCode": "de",
+  "generatedAt": "2026-08-09T01:19:00.655Z",
+  "methodology": {
+    "citySelection": "Top 100 municipalities by official population; the 50% target is not reached before the catalogue cap.",
+    "maximumCityCount": 100,
+    "minimumMedalsPerCity": 5,
+    "populationDefinition": "Destatis GV100AD municipality population at 31 December 2024 (Census 2022 basis)",
+    "sparseCityFallback": "Up to 250 coordinate-bearing Wikidata places administratively located in each municipality; heritage-designated candidates are prioritized, with bounded OSM fallback only below five eligible results.",
+    "stateRegisterConstraint": "Germany has no single normalized national monument register with complete coordinates; direct state-register ingestion is deferred and fallback usage is reported per city."
+  },
+  "expansion": {
+    "cityCount": 100,
+    "nationalPopulation": 83577140,
+    "population": 28615014,
+    "populationCoverage": 0.34237847813409267
+  },
+  "candidateQuality": {
+    "candidateCount": 11490,
+    "heritageDesignatedCandidateCount": 5600,
+    "heritageDesignatedSelectedCount": 848,
+    "selectedMedalCount": 864,
+    "openStreetMapCandidateCount": 0,
+    "openStreetMapSelectedCount": 0,
+    "wikidataFallbackCandidateCount": 11490,
+    "wikidataFallbackSelectedCount": 864
+  },
+  "sources": {
+    "destatisDataset": "GV100AD_31122024",
+    "destatisPublisher": "Statistisches Bundesamt (Destatis)",
+    "destatisReferenceDate": "2024-12-31",
+    "landmarkSource": "Wikidata (CC0), with bounded OpenStreetMap (ODbL) sparse-city fallback",
+    "municipalityBoundarySource": "OpenStreetMap relation IDs via Wikidata P402 or de:amtlicher_gemeindeschluessel",
+    "municipalityBoundaryOverrides": {
+      "06435014": "relation/535895 (Hanau; OSM relation cross-checked through Wikidata P402)"
+    }
+  },
+  "limitations": [
+    "German v1 candidates are community-source records rather than direct state monument-register extracts.",
+    "Wikidata administrative-location and heritage statements vary in completeness; sparse cities may use OpenStreetMap features.",
+    "Descriptions are localized templates when Wikidata lacks a suitable English, French, or German description.",
+    "The top-100 cap covers less than half of Germany's population because the population is distributed across many municipalities."
+  ],
+  "cities": [
+    {
+      "albumId": "de-berlin-11000000",
+      "candidateCount": 138,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 7,
+        "culture": 6,
+        "history": 2,
+        "nature": 4
+      },
+      "cityId": "berlin-de-11000000",
+      "cityName": {
+        "de": "Berlin",
+        "en": "Berlin",
+        "fr": "Berlin"
+      },
+      "cityZoneId": "relation/62422",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 59,
+      "heritageDesignatedSelectedCount": 20,
+      "localLanguage": "de",
+      "population": 3685265,
+      "rank": 1,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 20,
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 138
+    },
+    {
+      "albumId": "de-hamburg-02000000",
+      "candidateCount": 129,
+      "categoryCounts": {
+        "art": 5,
+        "culture": 7,
+        "history": 7,
+        "nature": 1
+      },
+      "cityId": "hamburg-de-02000000",
+      "cityName": {
+        "de": "Hamburg",
+        "en": "Hamburg",
+        "fr": "Hamburg"
+      },
+      "cityZoneId": "relation/62782",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 41,
+      "heritageDesignatedSelectedCount": 20,
+      "localLanguage": "de",
+      "population": 1862565,
+      "rank": 2,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 20,
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 129
+    },
+    {
+      "albumId": "de-munchen-09162000",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 7,
+        "culture": 6,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "munchen-de-09162000",
+      "cityName": {
+        "de": "München",
+        "en": "München",
+        "fr": "München"
+      },
+      "cityZoneId": "relation/62428",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 61,
+      "heritageDesignatedSelectedCount": 20,
+      "localLanguage": "de",
+      "population": 1505005,
+      "rank": 3,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 20,
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 105
+    },
+    {
+      "albumId": "de-koln-05315000",
+      "candidateCount": 94,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 2,
+        "culture": 4,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "koln-de-05315000",
+      "cityName": {
+        "de": "Köln",
+        "en": "Köln",
+        "fr": "Köln"
+      },
+      "cityZoneId": "relation/62578",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 43,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 1024621,
+      "rank": 4,
+      "rejected": {
+        "categoryLimit": 13,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 94
+    },
+    {
+      "albumId": "de-frankfurt-am-main-06412000",
+      "candidateCount": 100,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 4,
+        "culture": 4,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "frankfurt-am-main-de-06412000",
+      "cityName": {
+        "de": "Frankfurt am Main",
+        "en": "Frankfurt am Main",
+        "fr": "Frankfurt am Main"
+      },
+      "cityZoneId": "relation/62400",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 22,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 756021,
+      "rank": 5,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 100
+    },
+    {
+      "albumId": "de-dusseldorf-05111000",
+      "candidateCount": 96,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 4,
+        "history": 4,
+        "nature": 1
+      },
+      "cityId": "dusseldorf-de-05111000",
+      "cityName": {
+        "de": "Düsseldorf",
+        "en": "Düsseldorf",
+        "fr": "Düsseldorf"
+      },
+      "cityZoneId": "relation/62539",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 52,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 618685,
+      "rank": 6,
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 96
+    },
+    {
+      "albumId": "de-stuttgart-08111000",
+      "candidateCount": 180,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 4,
+        "nature": 2
+      },
+      "cityId": "stuttgart-de-08111000",
+      "cityName": {
+        "de": "Stuttgart",
+        "en": "Stuttgart",
+        "fr": "Stuttgart"
+      },
+      "cityZoneId": "relation/2793104",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 22,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 612663,
+      "rank": 7,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 180
+    },
+    {
+      "albumId": "de-leipzig-14713000",
+      "candidateCount": 113,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 4,
+        "culture": 4,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "leipzig-de-14713000",
+      "cityName": {
+        "de": "Leipzig",
+        "en": "Leipzig",
+        "fr": "Leipzig"
+      },
+      "cityZoneId": "relation/62649",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 53,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 611850,
+      "rank": 8,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 113
+    },
+    {
+      "albumId": "de-dortmund-05913000",
+      "candidateCount": 71,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "dortmund-de-05913000",
+      "cityName": {
+        "de": "Dortmund",
+        "en": "Dortmund",
+        "fr": "Dortmund"
+      },
+      "cityZoneId": "relation/1829065",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 32,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 603462,
+      "rank": 9,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 71
+    },
+    {
+      "albumId": "de-bremen-04011000",
+      "candidateCount": 104,
+      "categoryCounts": {
+        "art": 4,
+        "culture": 4,
+        "history": 4
+      },
+      "cityId": "bremen-de-04011000",
+      "cityName": {
+        "de": "Bremen",
+        "en": "Bremen",
+        "fr": "Bremen"
+      },
+      "cityZoneId": "relation/62559",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 61,
+      "heritageDesignatedSelectedCount": 12,
+      "localLanguage": "de",
+      "population": 586271,
+      "rank": 10,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 12,
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 104
+    },
+    {
+      "albumId": "de-essen-05113000",
+      "candidateCount": 117,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "essen-de-05113000",
+      "cityName": {
+        "de": "Essen",
+        "en": "Essen",
+        "fr": "Essen"
+      },
+      "cityZoneId": "relation/62713",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 60,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 574682,
+      "rank": 11,
+      "rejected": {
+        "categoryLimit": 18,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 117
+    },
+    {
+      "albumId": "de-dresden-14612000",
+      "candidateCount": 126,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "dresden-de-14612000",
+      "cityName": {
+        "de": "Dresden",
+        "en": "Dresden",
+        "fr": "Dresden"
+      },
+      "cityZoneId": "relation/191645",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 68,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 564904,
+      "rank": 12,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 126
+    },
+    {
+      "albumId": "de-nurnberg-09564000",
+      "candidateCount": 100,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "nurnberg-de-09564000",
+      "cityName": {
+        "de": "Nürnberg",
+        "en": "Nürnberg",
+        "fr": "Nürnberg"
+      },
+      "cityZoneId": "relation/62780",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 65,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 529508,
+      "rank": 13,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 100
+    },
+    {
+      "albumId": "de-hannover-03241001",
+      "candidateCount": 123,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "hannover-de-03241001",
+      "cityName": {
+        "de": "Hannover",
+        "en": "Hannover",
+        "fr": "Hannover"
+      },
+      "cityZoneId": "relation/59418",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 66,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 522131,
+      "rank": 14,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 123
+    },
+    {
+      "albumId": "de-duisburg-05112000",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "duisburg-de-05112000",
+      "cityName": {
+        "de": "Duisburg",
+        "en": "Duisburg",
+        "fr": "Duisburg"
+      },
+      "cityZoneId": "relation/62456",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 54,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 502270,
+      "rank": 15,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 178
+    },
+    {
+      "albumId": "de-bochum-05911000",
+      "candidateCount": 77,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "bochum-de-05911000",
+      "cityName": {
+        "de": "Bochum",
+        "en": "Bochum",
+        "fr": "Bochum"
+      },
+      "cityZoneId": "relation/62644",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 18,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 358676,
+      "rank": 16,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 77
+    },
+    {
+      "albumId": "de-wuppertal-05124000",
+      "candidateCount": 61,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "wuppertal-de-05124000",
+      "cityName": {
+        "de": "Wuppertal",
+        "en": "Wuppertal",
+        "fr": "Wuppertal"
+      },
+      "cityZoneId": "relation/62478",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 32,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 358193,
+      "rank": 17,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 61
+    },
+    {
+      "albumId": "de-bielefeld-05711000",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "bielefeld-de-05711000",
+      "cityName": {
+        "de": "Bielefeld",
+        "en": "Bielefeld",
+        "fr": "Bielefeld"
+      },
+      "cityZoneId": "relation/62646",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 42,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 331605,
+      "rank": 18,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 105
+    },
+    {
+      "albumId": "de-bonn-05314000",
+      "candidateCount": 91,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "bonn-de-05314000",
+      "cityName": {
+        "de": "Bonn",
+        "en": "Bonn",
+        "fr": "Bonn"
+      },
+      "cityZoneId": "relation/62508",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 44,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 323336,
+      "rank": 19,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 91
+    },
+    {
+      "albumId": "de-mannheim-08222000",
+      "candidateCount": 128,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "mannheim-de-08222000",
+      "cityName": {
+        "de": "Mannheim",
+        "en": "Mannheim",
+        "fr": "Mannheim"
+      },
+      "cityZoneId": "relation/62691",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 54,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 318035,
+      "rank": 20,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 128
+    },
+    {
+      "albumId": "de-karlsruhe-08212000",
+      "candidateCount": 111,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 2,
+        "history": 2,
+        "nature": 3
+      },
+      "cityId": "karlsruhe-de-08212000",
+      "cityName": {
+        "de": "Karlsruhe",
+        "en": "Karlsruhe",
+        "fr": "Karlsruhe"
+      },
+      "cityZoneId": "relation/62518",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 57,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 309050,
+      "rank": 21,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 111
+    },
+    {
+      "albumId": "de-munster-05515000",
+      "candidateCount": 120,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "munster-de-05515000",
+      "cityName": {
+        "de": "Münster",
+        "en": "Münster",
+        "fr": "Münster"
+      },
+      "cityZoneId": "relation/62591",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 45,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 308258,
+      "rank": 22,
+      "rejected": {
+        "categoryLimit": 37,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 120
+    },
+    {
+      "albumId": "de-augsburg-09761000",
+      "candidateCount": 202,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "augsburg-de-09761000",
+      "cityName": {
+        "de": "Augsburg",
+        "en": "Augsburg",
+        "fr": "Augsburg"
+      },
+      "cityZoneId": "relation/62407",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 129,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 301105,
+      "rank": 23,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 202
+    },
+    {
+      "albumId": "de-wiesbaden-06414000",
+      "candidateCount": 102,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "wiesbaden-de-06414000",
+      "cityName": {
+        "de": "Wiesbaden",
+        "en": "Wiesbaden",
+        "fr": "Wiesbaden"
+      },
+      "cityZoneId": "relation/62496",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 32,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 288850,
+      "rank": 24,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 102
+    },
+    {
+      "albumId": "de-gelsenkirchen-05513000",
+      "candidateCount": 151,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "gelsenkirchen-de-05513000",
+      "cityName": {
+        "de": "Gelsenkirchen",
+        "en": "Gelsenkirchen",
+        "fr": "Gelsenkirchen"
+      },
+      "cityZoneId": "relation/62522",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 32,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 267930,
+      "rank": 25,
+      "rejected": {
+        "categoryLimit": 26,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 151
+    },
+    {
+      "albumId": "de-monchengladbach-05116000",
+      "candidateCount": 119,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 2,
+        "nature": 3
+      },
+      "cityId": "monchengladbach-de-05116000",
+      "cityName": {
+        "de": "Mönchengladbach",
+        "en": "Mönchengladbach",
+        "fr": "Mönchengladbach"
+      },
+      "cityZoneId": "relation/62410",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 65,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 267213,
+      "rank": 26,
+      "rejected": {
+        "categoryLimit": 31,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 119
+    },
+    {
+      "albumId": "de-aachen-05334002",
+      "candidateCount": 149,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "aachen-de-05334002",
+      "cityName": {
+        "de": "Aachen",
+        "en": "Aachen",
+        "fr": "Aachen"
+      },
+      "cityZoneId": "relation/62564",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 70,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 262670,
+      "rank": 27,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 149
+    },
+    {
+      "albumId": "de-braunschweig-03101000",
+      "candidateCount": 104,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "braunschweig-de-03101000",
+      "cityName": {
+        "de": "Braunschweig",
+        "en": "Braunschweig",
+        "fr": "Braunschweig"
+      },
+      "cityZoneId": "relation/62531",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 47,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 252962,
+      "rank": 28,
+      "rejected": {
+        "categoryLimit": 18,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 104
+    },
+    {
+      "albumId": "de-kiel-01002000",
+      "candidateCount": 88,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 2,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "kiel-de-01002000",
+      "cityName": {
+        "de": "Kiel",
+        "en": "Kiel",
+        "fr": "Kiel"
+      },
+      "cityZoneId": "relation/27021",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 19,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 252668,
+      "rank": 29,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 88
+    },
+    {
+      "albumId": "de-chemnitz-14511000",
+      "candidateCount": 117,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 1,
+        "history": 3
+      },
+      "cityId": "chemnitz-de-14511000",
+      "cityName": {
+        "de": "Chemnitz",
+        "en": "Chemnitz",
+        "fr": "Chemnitz"
+      },
+      "cityZoneId": "relation/62594",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 80,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 245618,
+      "rank": 30,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 117
+    },
+    {
+      "albumId": "de-magdeburg-15003000",
+      "candidateCount": 183,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "magdeburg-de-15003000",
+      "cityName": {
+        "de": "Magdeburg",
+        "en": "Magdeburg",
+        "fr": "Magdeburg"
+      },
+      "cityZoneId": "relation/62481",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 88,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 244329,
+      "rank": 31,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 183
+    },
+    {
+      "albumId": "de-freiburg-im-breisgau-08311000",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 3,
+        "nature": 2
+      },
+      "cityId": "freiburg-im-breisgau-de-08311000",
+      "cityName": {
+        "de": "Freiburg im Breisgau",
+        "en": "Freiburg im Breisgau",
+        "fr": "Freiburg im Breisgau"
+      },
+      "cityZoneId": "relation/62768",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 26,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 237460,
+      "rank": 32,
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 169
+    },
+    {
+      "albumId": "de-krefeld-05114000",
+      "candidateCount": 123,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "krefeld-de-05114000",
+      "cityName": {
+        "de": "Krefeld",
+        "en": "Krefeld",
+        "fr": "Krefeld"
+      },
+      "cityZoneId": "relation/62748",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 62,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 231406,
+      "rank": 33,
+      "rejected": {
+        "categoryLimit": 16,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 123
+    },
+    {
+      "albumId": "de-halle-saale-15002000",
+      "candidateCount": 124,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "halle-saale-de-15002000",
+      "cityName": {
+        "de": "Halle (Saale)",
+        "en": "Halle (Saale)",
+        "fr": "Halle (Saale)"
+      },
+      "cityZoneId": "relation/62638",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 70,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 226767,
+      "rank": 34,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 124
+    },
+    {
+      "albumId": "de-mainz-07315000",
+      "candidateCount": 130,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "mainz-de-07315000",
+      "cityName": {
+        "de": "Mainz",
+        "en": "Mainz",
+        "fr": "Mainz"
+      },
+      "cityZoneId": "relation/62630",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 71,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 224684,
+      "rank": 35,
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 130
+    },
+    {
+      "albumId": "de-erfurt-16051000",
+      "candidateCount": 143,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "erfurt-de-16051000",
+      "cityName": {
+        "de": "Erfurt",
+        "en": "Erfurt",
+        "fr": "Erfurt"
+      },
+      "cityZoneId": "relation/62745",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 89,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 218793,
+      "rank": 36,
+      "rejected": {
+        "categoryLimit": 24,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 143
+    },
+    {
+      "albumId": "de-lubeck-01003000",
+      "candidateCount": 133,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "lubeck-de-01003000",
+      "cityName": {
+        "de": "Lübeck",
+        "en": "Lübeck",
+        "fr": "Lübeck"
+      },
+      "cityZoneId": "relation/27027",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 86,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 216889,
+      "rank": 37,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 133
+    },
+    {
+      "albumId": "de-oberhausen-05119000",
+      "candidateCount": 87,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "oberhausen-de-05119000",
+      "cityName": {
+        "de": "Oberhausen",
+        "en": "Oberhausen",
+        "fr": "Oberhausen"
+      },
+      "cityZoneId": "relation/62734",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 19,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 213646,
+      "rank": 38,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 87
+    },
+    {
+      "albumId": "de-rostock-hanse-und-universitatsstadt-13003000",
+      "candidateCount": 87,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "rostock-hanse-und-universitatsstadt-de-13003000",
+      "cityName": {
+        "de": "Rostock, Hanse- und Universitätsstadt",
+        "en": "Rostock, Hanse- und Universitätsstadt",
+        "fr": "Rostock, Hanse- und Universitätsstadt"
+      },
+      "cityZoneId": "relation/62405",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 37,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 205307,
+      "rank": 39,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 87
+    },
+    {
+      "albumId": "de-kassel-06611000",
+      "candidateCount": 134,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 1,
+        "history": 2,
+        "nature": 3
+      },
+      "cityId": "kassel-de-06611000",
+      "cityName": {
+        "de": "Kassel",
+        "en": "Kassel",
+        "fr": "Kassel"
+      },
+      "cityZoneId": "relation/62598",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 36,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 197230,
+      "rank": 40,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 134
+    },
+    {
+      "albumId": "de-hagen-stadt-der-fernuniversitat-05914000",
+      "candidateCount": 60,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "history": 2
+      },
+      "cityId": "hagen-stadt-der-fernuniversitat-de-05914000",
+      "cityName": {
+        "de": "Hagen, Stadt der FernUniversität",
+        "en": "Hagen, Stadt der FernUniversität",
+        "fr": "Hagen, Stadt der FernUniversität"
+      },
+      "cityZoneId": "relation/1800297",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 26,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 190384,
+      "rank": 41,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 60
+    },
+    {
+      "albumId": "de-potsdam-12054000",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "potsdam-de-12054000",
+      "cityName": {
+        "de": "Potsdam",
+        "en": "Potsdam",
+        "fr": "Potsdam"
+      },
+      "cityZoneId": "relation/62369",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 79,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 184754,
+      "rank": 42,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 169
+    },
+    {
+      "albumId": "de-saarbrucken-10041100",
+      "candidateCount": 178,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "saarbrucken-de-10041100",
+      "cityName": {
+        "de": "Saarbrücken",
+        "en": "Saarbrücken",
+        "fr": "Saarbrücken"
+      },
+      "cityZoneId": "relation/1187159",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 85,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 182971,
+      "rank": 43,
+      "rejected": {
+        "categoryLimit": 27,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 178
+    },
+    {
+      "albumId": "de-hamm-05915000",
+      "candidateCount": 75,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "hamm-de-05915000",
+      "cityName": {
+        "de": "Hamm",
+        "en": "Hamm",
+        "fr": "Hamm"
+      },
+      "cityZoneId": "relation/62499",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 37,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 179968,
+      "rank": 44,
+      "rejected": {
+        "categoryLimit": 31,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 75
+    },
+    {
+      "albumId": "de-ludwigshafen-am-rhein-07314000",
+      "candidateCount": 63,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "ludwigshafen-am-rhein-de-07314000",
+      "cityName": {
+        "de": "Ludwigshafen am Rhein",
+        "en": "Ludwigshafen am Rhein",
+        "fr": "Ludwigshafen am Rhein"
+      },
+      "cityZoneId": "relation/62347",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 31,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 177222,
+      "rank": 45,
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 63
+    },
+    {
+      "albumId": "de-oldenburg-oldenburg-03403000",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "oldenburg-oldenburg-de-03403000",
+      "cityName": {
+        "de": "Oldenburg (Oldenburg)",
+        "en": "Oldenburg (Oldenburg)",
+        "fr": "Oldenburg (Oldenburg)"
+      },
+      "cityZoneId": "relation/62409",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 15,
+      "heritageDesignatedSelectedCount": 5,
+      "localLanguage": "de",
+      "population": 176614,
+      "rank": 46,
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 169
+    },
+    {
+      "albumId": "de-mulheim-an-der-ruhr-05117000",
+      "candidateCount": 78,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "mulheim-an-der-ruhr-de-05117000",
+      "cityName": {
+        "de": "Mülheim an der Ruhr",
+        "en": "Mülheim an der Ruhr",
+        "fr": "Mülheim an der Ruhr"
+      },
+      "cityZoneId": "relation/62385",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 36,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 173050,
+      "rank": 47,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 78
+    },
+    {
+      "albumId": "de-leverkusen-05316000",
+      "candidateCount": 94,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "leverkusen-de-05316000",
+      "cityName": {
+        "de": "Leverkusen",
+        "en": "Leverkusen",
+        "fr": "Leverkusen"
+      },
+      "cityZoneId": "relation/62449",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 41,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 168581,
+      "rank": 48,
+      "rejected": {
+        "categoryLimit": 33,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 94
+    },
+    {
+      "albumId": "de-darmstadt-wissenschaftsstadt-06411000",
+      "candidateCount": 132,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "darmstadt-wissenschaftsstadt-de-06411000",
+      "cityName": {
+        "de": "Darmstadt, Wissenschaftsstadt",
+        "en": "Darmstadt, Wissenschaftsstadt",
+        "fr": "Darmstadt, Wissenschaftsstadt"
+      },
+      "cityZoneId": "relation/62581",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 98,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 167029,
+      "rank": 49,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 132
+    },
+    {
+      "albumId": "de-osnabruck-03404000",
+      "candidateCount": 109,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 2,
+        "history": 3
+      },
+      "cityId": "osnabruck-de-03404000",
+      "cityName": {
+        "de": "Osnabrück",
+        "en": "Osnabrück",
+        "fr": "Osnabrück"
+      },
+      "cityZoneId": "relation/62631",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 25,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 166057,
+      "rank": 50,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 109
+    },
+    {
+      "albumId": "de-solingen-klingenstadt-05122000",
+      "candidateCount": 77,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "solingen-klingenstadt-de-05122000",
+      "cityName": {
+        "de": "Solingen, Klingenstadt",
+        "en": "Solingen, Klingenstadt",
+        "fr": "Solingen, Klingenstadt"
+      },
+      "cityZoneId": "relation/62699",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 28,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 165626,
+      "rank": 51,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 77
+    },
+    {
+      "albumId": "de-paderborn-05774032",
+      "candidateCount": 119,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "paderborn-de-05774032",
+      "cityName": {
+        "de": "Paderborn",
+        "en": "Paderborn",
+        "fr": "Paderborn"
+      },
+      "cityZoneId": "relation/148074",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 41,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 156378,
+      "rank": 52,
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 119
+    },
+    {
+      "albumId": "de-herne-05916000",
+      "candidateCount": 99,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "herne-de-05916000",
+      "cityName": {
+        "de": "Herne",
+        "en": "Herne",
+        "fr": "Herne"
+      },
+      "cityZoneId": "relation/62396",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 60,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 155851,
+      "rank": 53,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 99
+    },
+    {
+      "albumId": "de-heidelberg-08221000",
+      "candidateCount": 118,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "heidelberg-de-08221000",
+      "cityName": {
+        "de": "Heidelberg",
+        "en": "Heidelberg",
+        "fr": "Heidelberg"
+      },
+      "cityZoneId": "relation/285864",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 68,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 155756,
+      "rank": 54,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 118
+    },
+    {
+      "albumId": "de-neuss-05162024",
+      "candidateCount": 99,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "neuss-de-05162024",
+      "cityName": {
+        "de": "Neuss",
+        "en": "Neuss",
+        "fr": "Neuss"
+      },
+      "cityZoneId": "relation/163307",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 30,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 154317,
+      "rank": 55,
+      "rejected": {
+        "categoryLimit": 11,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 99
+    },
+    {
+      "albumId": "de-regensburg-09362000",
+      "candidateCount": 213,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "regensburg-de-09362000",
+      "cityName": {
+        "de": "Regensburg",
+        "en": "Regensburg",
+        "fr": "Regensburg"
+      },
+      "cityZoneId": "relation/62411",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 135,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 151389,
+      "rank": 56,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 213
+    },
+    {
+      "albumId": "de-ingolstadt-09161000",
+      "candidateCount": 177,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "ingolstadt-de-09161000",
+      "cityName": {
+        "de": "Ingolstadt",
+        "en": "Ingolstadt",
+        "fr": "Ingolstadt"
+      },
+      "cityZoneId": "relation/62381",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 135,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 141185,
+      "rank": 57,
+      "rejected": {
+        "categoryLimit": 18,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 177
+    },
+    {
+      "albumId": "de-pforzheim-08231000",
+      "candidateCount": 57,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "pforzheim-de-08231000",
+      "cityName": {
+        "de": "Pforzheim",
+        "en": "Pforzheim",
+        "fr": "Pforzheim"
+      },
+      "cityZoneId": "relation/62471",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 27,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 134912,
+      "rank": 58,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 57
+    },
+    {
+      "albumId": "de-wurzburg-09663000",
+      "candidateCount": 223,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "wurzburg-de-09663000",
+      "cityName": {
+        "de": "Würzburg",
+        "en": "Würzburg",
+        "fr": "Würzburg"
+      },
+      "cityZoneId": "relation/62464",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 156,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 133258,
+      "rank": 59,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 223
+    },
+    {
+      "albumId": "de-offenbach-am-main-06413000",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "offenbach-am-main-de-06413000",
+      "cityName": {
+        "de": "Offenbach am Main",
+        "en": "Offenbach am Main",
+        "fr": "Offenbach am Main"
+      },
+      "cityZoneId": "relation/62695",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 132,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 132746,
+      "rank": 60,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 169
+    },
+    {
+      "albumId": "de-furth-09563000",
+      "candidateCount": 193,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "furth-de-09563000",
+      "cityName": {
+        "de": "Fürth",
+        "en": "Fürth",
+        "fr": "Fürth"
+      },
+      "cityZoneId": "relation/62374",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 179,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 132036,
+      "rank": 61,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 193
+    },
+    {
+      "albumId": "de-heilbronn-08121000",
+      "candidateCount": 209,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "heilbronn-de-08121000",
+      "cityName": {
+        "de": "Heilbronn",
+        "en": "Heilbronn",
+        "fr": "Heilbronn"
+      },
+      "cityZoneId": "relation/62751",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 134,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 131986,
+      "rank": 62,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 209
+    },
+    {
+      "albumId": "de-ulm-08421000",
+      "candidateCount": 86,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "ulm-de-08421000",
+      "cityName": {
+        "de": "Ulm",
+        "en": "Ulm",
+        "fr": "Ulm"
+      },
+      "cityZoneId": "relation/62495",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 26,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 129882,
+      "rank": 63,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 86
+    },
+    {
+      "albumId": "de-wolfsburg-03103000",
+      "candidateCount": 146,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "wolfsburg-de-03103000",
+      "cityName": {
+        "de": "Wolfsburg",
+        "en": "Wolfsburg",
+        "fr": "Wolfsburg"
+      },
+      "cityZoneId": "relation/62418",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 57,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 129560,
+      "rank": 64,
+      "rejected": {
+        "categoryLimit": 46,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 146
+    },
+    {
+      "albumId": "de-gottingen-03159016",
+      "candidateCount": 132,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "gottingen-de-03159016",
+      "cityName": {
+        "de": "Göttingen",
+        "en": "Göttingen",
+        "fr": "Göttingen"
+      },
+      "cityZoneId": "relation/191361",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 51,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 127259,
+      "rank": 65,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 132
+    },
+    {
+      "albumId": "de-reutlingen-08415061",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "reutlingen-de-08415061",
+      "cityName": {
+        "de": "Reutlingen",
+        "en": "Reutlingen",
+        "fr": "Reutlingen"
+      },
+      "cityZoneId": "relation/2772661",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 13,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 118852,
+      "rank": 66,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 105
+    },
+    {
+      "albumId": "de-bremerhaven-04012000",
+      "candidateCount": 118,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityId": "bremerhaven-de-04012000",
+      "cityName": {
+        "de": "Bremerhaven",
+        "en": "Bremerhaven",
+        "fr": "Bremerhaven"
+      },
+      "cityZoneId": "relation/62658",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 62,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 118610,
+      "rank": 67,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 118
+    },
+    {
+      "albumId": "de-bottrop-05512000",
+      "candidateCount": 51,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityId": "bottrop-de-05512000",
+      "cityName": {
+        "de": "Bottrop",
+        "en": "Bottrop",
+        "fr": "Bottrop"
+      },
+      "cityZoneId": "relation/62634",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 14,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 118535,
+      "rank": 68,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 51
+    },
+    {
+      "albumId": "de-erlangen-09562000",
+      "candidateCount": 183,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "erlangen-de-09562000",
+      "cityName": {
+        "de": "Erlangen",
+        "en": "Erlangen",
+        "fr": "Erlangen"
+      },
+      "cityZoneId": "relation/62403",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 168,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 115928,
+      "rank": 69,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 183
+    },
+    {
+      "albumId": "de-recklinghausen-05562032",
+      "candidateCount": 45,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "recklinghausen-de-05562032",
+      "cityName": {
+        "de": "Recklinghausen",
+        "en": "Recklinghausen",
+        "fr": "Recklinghausen"
+      },
+      "cityZoneId": "relation/56665",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 16,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 115344,
+      "rank": 70,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 45
+    },
+    {
+      "albumId": "de-remscheid-05120000",
+      "candidateCount": 93,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 3
+      },
+      "cityId": "remscheid-de-05120000",
+      "cityName": {
+        "de": "Remscheid",
+        "en": "Remscheid",
+        "fr": "Remscheid"
+      },
+      "cityZoneId": "relation/62455",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 16,
+      "heritageDesignatedSelectedCount": 7,
+      "localLanguage": "de",
+      "population": 113828,
+      "rank": 71,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 93
+    },
+    {
+      "albumId": "de-koblenz-07111000",
+      "candidateCount": 154,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "koblenz-de-07111000",
+      "cityName": {
+        "de": "Koblenz",
+        "en": "Koblenz",
+        "fr": "Koblenz"
+      },
+      "cityZoneId": "relation/62512",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 103,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 113378,
+      "rank": 72,
+      "rejected": {
+        "categoryLimit": 9,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 154
+    },
+    {
+      "albumId": "de-bergisch-gladbach-05378004",
+      "candidateCount": 89,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "bergisch-gladbach-de-05378004",
+      "cityName": {
+        "de": "Bergisch Gladbach",
+        "en": "Bergisch Gladbach",
+        "fr": "Bergisch Gladbach"
+      },
+      "cityZoneId": "relation/173103",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 31,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 111361,
+      "rank": 73,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 89
+    },
+    {
+      "albumId": "de-jena-16053000",
+      "candidateCount": 109,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "jena-de-16053000",
+      "cityName": {
+        "de": "Jena",
+        "en": "Jena",
+        "fr": "Jena"
+      },
+      "cityZoneId": "relation/62693",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 72,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 109725,
+      "rank": 74,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 109
+    },
+    {
+      "albumId": "de-salzgitter-03102000",
+      "candidateCount": 64,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "salzgitter-de-03102000",
+      "cityName": {
+        "de": "Salzgitter",
+        "en": "Salzgitter",
+        "fr": "Salzgitter"
+      },
+      "cityZoneId": "relation/62659",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 15,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 104970,
+      "rank": 75,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 64
+    },
+    {
+      "albumId": "de-trier-07211000",
+      "candidateCount": 108,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "trier-de-07211000",
+      "cityName": {
+        "de": "Trier",
+        "en": "Trier",
+        "fr": "Trier"
+      },
+      "cityZoneId": "relation/172679",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 61,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 104342,
+      "rank": 76,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 108
+    },
+    {
+      "albumId": "de-siegen-05970040",
+      "candidateCount": 38,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "siegen-de-05970040",
+      "cityName": {
+        "de": "Siegen",
+        "en": "Siegen",
+        "fr": "Siegen"
+      },
+      "cityZoneId": "relation/163256",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 11,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 102685,
+      "rank": 77,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 38
+    },
+    {
+      "albumId": "de-moers-05170024",
+      "candidateCount": 31,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "moers-de-05170024",
+      "cityName": {
+        "de": "Moers",
+        "en": "Moers",
+        "fr": "Moers"
+      },
+      "cityZoneId": "relation/58623",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 11,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 101503,
+      "rank": 78,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 31
+    },
+    {
+      "albumId": "de-gutersloh-05754008",
+      "candidateCount": 51,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "gutersloh-de-05754008",
+      "cityName": {
+        "de": "Gütersloh",
+        "en": "Gütersloh",
+        "fr": "Gütersloh"
+      },
+      "cityZoneId": "relation/138119",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 14,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 100479,
+      "rank": 79,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 51
+    },
+    {
+      "albumId": "de-kaiserslautern-07312000",
+      "candidateCount": 60,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "kaiserslautern-de-07312000",
+      "cityName": {
+        "de": "Kaiserslautern",
+        "en": "Kaiserslautern",
+        "fr": "Kaiserslautern"
+      },
+      "cityZoneId": "relation/62652",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 30,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 100426,
+      "rank": 80,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 60
+    },
+    {
+      "albumId": "de-hildesheim-03254021",
+      "candidateCount": 108,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "hildesheim-de-03254021",
+      "cityName": {
+        "de": "Hildesheim",
+        "en": "Hildesheim",
+        "fr": "Hildesheim"
+      },
+      "cityZoneId": "relation/1176503",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 19,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 98510,
+      "rank": 81,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 108
+    },
+    {
+      "albumId": "de-schwerin-13004000",
+      "candidateCount": 134,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "schwerin-de-13004000",
+      "cityName": {
+        "de": "Schwerin",
+        "en": "Schwerin",
+        "fr": "Schwerin"
+      },
+      "cityZoneId": "relation/62685",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 70,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 98308,
+      "rank": 82,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 134
+    },
+    {
+      "albumId": "de-hanau-bruder-grimm-stadt-06435014",
+      "candidateCount": 90,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "hanau-bruder-grimm-stadt-de-06435014",
+      "cityName": {
+        "de": "Hanau, Brüder-Grimm-Stadt",
+        "en": "Hanau, Brüder-Grimm-Stadt",
+        "fr": "Hanau, Brüder-Grimm-Stadt"
+      },
+      "cityZoneId": "relation/535895",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 57,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 97956,
+      "rank": 83,
+      "rejected": {
+        "categoryLimit": 10,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 90
+    },
+    {
+      "albumId": "de-flensburg-01001000",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "flensburg-de-01001000",
+      "cityName": {
+        "de": "Flensburg",
+        "en": "Flensburg",
+        "fr": "Flensburg"
+      },
+      "cityZoneId": "relation/27020",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 66,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 96326,
+      "rank": 84,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 169
+    },
+    {
+      "albumId": "de-esslingen-am-neckar-08116019",
+      "candidateCount": 173,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityId": "esslingen-am-neckar-de-08116019",
+      "cityName": {
+        "de": "Esslingen am Neckar",
+        "en": "Esslingen am Neckar",
+        "fr": "Esslingen am Neckar"
+      },
+      "cityZoneId": "relation/2792882",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 69,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 96182,
+      "rank": 85,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 173
+    },
+    {
+      "albumId": "de-gera-16052000",
+      "candidateCount": 108,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityId": "gera-de-16052000",
+      "cityName": {
+        "de": "Gera",
+        "en": "Gera",
+        "fr": "Gera"
+      },
+      "cityZoneId": "relation/62671",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 67,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 95608,
+      "rank": 86,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 108
+    },
+    {
+      "albumId": "de-cottbus-chosebuz-12052000",
+      "candidateCount": 121,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityId": "cottbus-chosebuz-de-12052000",
+      "cityName": {
+        "de": "Cottbus/Chóśebuz",
+        "en": "Cottbus/Chóśebuz",
+        "fr": "Cottbus/Chóśebuz"
+      },
+      "cityZoneId": "relation/62430",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 65,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 95123,
+      "rank": 87,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 121
+    },
+    {
+      "albumId": "de-duren-05358008",
+      "candidateCount": 88,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "duren-de-05358008",
+      "cityName": {
+        "de": "Düren",
+        "en": "Düren",
+        "fr": "Düren"
+      },
+      "cityZoneId": "relation/163046",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 53,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 94568,
+      "rank": 88,
+      "rejected": {
+        "categoryLimit": 15,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 88
+    },
+    {
+      "albumId": "de-ludwigsburg-08118048",
+      "candidateCount": 228,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "ludwigsburg-de-08118048",
+      "cityName": {
+        "de": "Ludwigsburg",
+        "en": "Ludwigsburg",
+        "fr": "Ludwigsburg"
+      },
+      "cityZoneId": "relation/405292",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 175,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 92858,
+      "rank": 89,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 228
+    },
+    {
+      "albumId": "de-tubingen-08416041",
+      "candidateCount": 122,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "tubingen-de-08416041",
+      "cityName": {
+        "de": "Tübingen",
+        "en": "Tübingen",
+        "fr": "Tübingen"
+      },
+      "cityZoneId": "relation/2778914",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 28,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 92322,
+      "rank": 90,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 122
+    },
+    {
+      "albumId": "de-iserlohn-05962024",
+      "candidateCount": 60,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "culture": 3
+      },
+      "cityId": "iserlohn-de-05962024",
+      "cityName": {
+        "de": "Iserlohn",
+        "en": "Iserlohn",
+        "fr": "Iserlohn"
+      },
+      "cityZoneId": "relation/1800165",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 29,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 91811,
+      "rank": 91,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 60
+    },
+    {
+      "albumId": "de-witten-05954036",
+      "candidateCount": 52,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityId": "witten-de-05954036",
+      "cityName": {
+        "de": "Witten",
+        "en": "Witten",
+        "fr": "Witten"
+      },
+      "cityZoneId": "relation/162826",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 30,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 91808,
+      "rank": 92,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 52
+    },
+    {
+      "albumId": "de-villingen-schwenningen-08326074",
+      "candidateCount": 84,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "villingen-schwenningen-de-08326074",
+      "cityName": {
+        "de": "Villingen-Schwenningen",
+        "en": "Villingen-Schwenningen",
+        "fr": "Villingen-Schwenningen"
+      },
+      "cityZoneId": "relation/1242298",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 35,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 89756,
+      "rank": 93,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 84
+    },
+    {
+      "albumId": "de-ratingen-05158028",
+      "candidateCount": 32,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "ratingen-de-05158028",
+      "cityName": {
+        "de": "Ratingen",
+        "en": "Ratingen",
+        "fr": "Ratingen"
+      },
+      "cityZoneId": "relation/56682",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 19,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 89368,
+      "rank": 94,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 32
+    },
+    {
+      "albumId": "de-gie-en-06531005",
+      "candidateCount": 155,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityId": "gie-en-de-06531005",
+      "cityName": {
+        "de": "Gießen",
+        "en": "Gießen",
+        "fr": "Gießen"
+      },
+      "cityZoneId": "relation/418617",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 126,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 89179,
+      "rank": 95,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 155
+    },
+    {
+      "albumId": "de-zwickau-stadt-hochschulstadt-14524330",
+      "candidateCount": 139,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "zwickau-stadt-hochschulstadt-de-14524330",
+      "cityName": {
+        "de": "Zwickau, Stadt, Hochschulstadt",
+        "en": "Zwickau, Stadt, Hochschulstadt",
+        "fr": "Zwickau, Stadt, Hochschulstadt"
+      },
+      "cityZoneId": "relation/397076",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 113,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 87410,
+      "rank": 96,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 139
+    },
+    {
+      "albumId": "de-konstanz-08335043",
+      "candidateCount": 61,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityId": "konstanz-de-08335043",
+      "cityName": {
+        "de": "Konstanz",
+        "en": "Konstanz",
+        "fr": "Konstanz"
+      },
+      "cityZoneId": "relation/2784842",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 3,
+      "heritageDesignatedSelectedCount": 3,
+      "localLanguage": "de",
+      "population": 86919,
+      "rank": 97,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 61
+    },
+    {
+      "albumId": "de-marl-05562024",
+      "candidateCount": 42,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 1
+      },
+      "cityId": "marl-de-05562024",
+      "cityName": {
+        "de": "Marl",
+        "en": "Marl",
+        "fr": "Marl"
+      },
+      "cityZoneId": "relation/63460",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 8,
+      "heritageDesignatedSelectedCount": 6,
+      "localLanguage": "de",
+      "population": 86766,
+      "rank": 98,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 42
+    },
+    {
+      "albumId": "de-worms-07319000",
+      "candidateCount": 127,
+      "categoryCounts": {
+        "culture": 3,
+        "history": 2,
+        "nature": 3
+      },
+      "cityId": "worms-de-07319000",
+      "cityName": {
+        "de": "Worms",
+        "en": "Worms",
+        "fr": "Worms"
+      },
+      "cityZoneId": "relation/62453",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 69,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 86753,
+      "rank": 99,
+      "rejected": {
+        "categoryLimit": 12,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 127
+    },
+    {
+      "albumId": "de-lunen-05978024",
+      "candidateCount": 42,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityId": "lunen-de-05978024",
+      "cityName": {
+        "de": "Lünen",
+        "en": "Lünen",
+        "fr": "Lünen"
+      },
+      "cityZoneId": "relation/158454",
+      "curated": false,
+      "heritageDesignatedCandidateCount": 21,
+      "heritageDesignatedSelectedCount": 8,
+      "localLanguage": "de",
+      "population": 86163,
+      "rank": 100,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "requestedMedalCount": 8,
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1,
+      "openStreetMapCandidateCount": 0,
+      "wikidataCandidateCount": 42
+    }
+  ],
+  "artifact": {
+    "compressedBytes": 73212,
+    "medalCount": 864,
+    "sha256": "ecb4ac7ae8c2b8603518d191338f0b2b8f5c2574250161746b0bab3fd0411afc",
+    "uncompressedBytes": 687040,
+    "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/de-v1.json.gz"
+  }
+}

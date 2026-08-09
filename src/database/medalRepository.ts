@@ -1,5 +1,5 @@
 import { getDatabase } from "./db";
-import { getBundledMedalAlbum } from "../data/medalAlbums";
+import { getMedalAlbumDefinition } from "../services/medalCountryPackStore";
 import {
   CollectedMedal,
   MedalAcquisitionReason,
@@ -35,8 +35,8 @@ type MedalRetroScanCursor = {
   lastSessionId: number;
 };
 
-export async function ensureBundledMedalAlbumSeeded(albumId: string) {
-  const album = getBundledMedalAlbum(albumId);
+export async function ensureMedalAlbumSeeded(albumId: string) {
+  const album = await getMedalAlbumDefinition(albumId);
 
   if (!album) {
     return null;
@@ -145,7 +145,7 @@ export async function ensureBundledMedalAlbumSeeded(albumId: string) {
 export async function getMedalAlbumProgress(
   albumId: string
 ): Promise<MedalAlbumProgress | null> {
-  const album = await ensureBundledMedalAlbumSeeded(albumId);
+  const album = await ensureMedalAlbumSeeded(albumId);
 
   if (!album) {
     return null;
@@ -199,7 +199,17 @@ export async function getPendingMedalPresentations() {
     WHERE presentation_state = 'pending'`
   );
   const albums = await Promise.all(
-    rows.map((row) => getMedalAlbumProgress(row.album_id))
+    rows.map(async (row) => {
+      try {
+        return await getMedalAlbumProgress(row.album_id);
+      } catch (error) {
+        console.warn(
+          `Pending medal album ${row.album_id} is not available yet`,
+          error
+        );
+        return null;
+      }
+    })
   );
 
   return albums.flatMap((album) =>
@@ -216,7 +226,7 @@ export async function getUncollectedMedalsInBounds(
     minLongitude: number;
   }
 ) {
-  const album = await ensureBundledMedalAlbumSeeded(albumId);
+  const album = await ensureMedalAlbumSeeded(albumId);
 
   if (!album) {
     return [];
@@ -252,7 +262,7 @@ export async function getCollectedMedalsSinceInBounds(
     minLongitude: number;
   }
 ) {
-  const album = await ensureBundledMedalAlbumSeeded(albumId);
+  const album = await ensureMedalAlbumSeeded(albumId);
 
   if (!album) {
     return [];
@@ -288,7 +298,7 @@ export async function collectMedalCandidates(input: {
 
   await Promise.all(
     [...new Set(input.candidates.map((candidate) => candidate.albumId))].map(
-      ensureBundledMedalAlbumSeeded
+      ensureMedalAlbumSeeded
     )
   );
   const db = await getDatabase();
@@ -399,7 +409,7 @@ export async function markMedalRecordingRepairCompleted() {
 }
 
 export async function hasCompletedMedalRetroScan(albumId: string) {
-  const album = getBundledMedalAlbum(albumId);
+  const album = await getMedalAlbumDefinition(albumId);
 
   if (!album) {
     return false;

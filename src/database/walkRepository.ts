@@ -1,7 +1,7 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
-import { ensureBundledMedalAlbumSeeded } from "./medalRepository";
+import { ensureMedalAlbumSeeded } from "./medalRepository";
 import {
   mapExpeditionRow,
   mapLoopEvidenceRow,
@@ -900,9 +900,23 @@ export async function getWalkHistory(activityMode: ActivityMode): Promise<WalkSe
         walk_sessions.distance_meters,
         walk_sessions.duration_seconds,
         walk_sessions.step_count,
-        COUNT(gps_points.id) AS point_count
+        CASE
+          WHEN route_snapshots.session_id IS NOT NULL
+            AND NOT EXISTS (
+              SELECT 1
+              FROM pending_recording_repairs
+              WHERE session_id = walk_sessions.id
+            )
+          THEN route_snapshots.source_point_count
+          ELSE (
+            SELECT COUNT(*)
+            FROM gps_points
+            WHERE gps_points.session_id = walk_sessions.id
+          )
+        END AS point_count
       FROM walk_sessions
-      LEFT JOIN gps_points ON gps_points.session_id = walk_sessions.id
+      LEFT JOIN route_snapshots
+        ON route_snapshots.session_id = walk_sessions.id
       WHERE walk_sessions.activity_mode = ?
         AND walk_sessions.ended_at > walk_sessions.started_at
         AND NOT EXISTS (
@@ -910,7 +924,6 @@ export async function getWalkHistory(activityMode: ActivityMode): Promise<WalkSe
           FROM pending_recording_discards
           WHERE session_id = walk_sessions.id
         )
-      GROUP BY walk_sessions.id
       ORDER BY walk_sessions.started_at DESC
     `,
     activityMode
@@ -1297,7 +1310,7 @@ export async function restoreBackupV5Data(
     ])
   ];
   const availableAlbums = await Promise.all(
-    medalAlbumIds.map(ensureBundledMedalAlbumSeeded)
+    medalAlbumIds.map(ensureMedalAlbumSeeded)
   );
 
   if (availableAlbums.some((album) => album === null)) {

@@ -1,0 +1,3246 @@
+{
+  "countryCode": "es",
+  "generatedAt": "2026-08-09T00:48:57.632Z",
+  "methodology": {
+    "coverageTarget": 0.5,
+    "maximumCityCount": 100,
+    "minimumMedalsPerCity": 5,
+    "populationDefinition": "INE official municipal population workbook, 1 January 2023",
+    "selectionResult": "Maximum city cap reached before the population coverage target.",
+    "landmarkSource": "Bounded coordinate-bearing Wikidata landmark candidates"
+  },
+  "expansion": {
+    "cityCount": 100,
+    "citiesNeededForCoverageTarget": 125,
+    "nationalPopulation": 48022515,
+    "population": 22325493,
+    "populationCoverage": 0.4648963720454874
+  },
+  "sources": {
+    "inePopulation": "https://www.ine.es/en/pob_xls/pobmun_en.zip",
+    "wikidata": "https://query.wikidata.org/",
+    "openStreetMap": "https://www.openstreetmap.org/"
+  },
+  "limitations": [
+    "Spain v1 uses the official INE population ranking but does not ingest a normalized national heritage point feed; landmark records are community-source candidates.",
+    "Wikidata coverage and classification vary by municipality, and five sparse cities require bounded OpenStreetMap fallback.",
+    "The top-100 cap reaches 46.49% rather than the 50% population target; 125 municipalities would be required."
+  ],
+  "cities": [
+    {
+      "albumId": "es-madrid",
+      "candidateCount": 74,
+      "categoryCounts": {
+        "architecture": 7,
+        "art": 7,
+        "history": 4,
+        "nature": 2
+      },
+      "cityCode": "28079",
+      "cityId": "madrid-es",
+      "cityName": {
+        "en": "Madrid",
+        "fr": "Madrid",
+        "es": "Madrid"
+      },
+      "cityZoneId": "relation/5326784",
+      "localLanguage": "es",
+      "population": 3332035,
+      "province": "Madrid",
+      "rank": 1,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-barcelona",
+      "candidateCount": 81,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 7,
+        "culture": 5,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "08019",
+      "cityId": "barcelona-es",
+      "cityName": {
+        "en": "Barcelona",
+        "fr": "Barcelone",
+        "es": "Barcelona"
+      },
+      "cityZoneId": "relation/347950",
+      "localLanguage": "es",
+      "population": 1660122,
+      "province": "Barcelona",
+      "rank": 2,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-valencia",
+      "candidateCount": 115,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 7,
+        "culture": 5,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "46250",
+      "cityId": "valencia-es",
+      "cityName": {
+        "en": "Valencia",
+        "fr": "Valence",
+        "es": "Valencia"
+      },
+      "cityZoneId": "relation/344953",
+      "localLanguage": "es",
+      "population": 807693,
+      "province": "Valencia/València",
+      "rank": 3,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 20,
+      "sourceCounts": {
+        "wikidata": 20
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-sevilla",
+      "candidateCount": 169,
+      "categoryCounts": {
+        "architecture": 4,
+        "art": 2,
+        "culture": 1,
+        "history": 4,
+        "nature": 1
+      },
+      "cityCode": "41091",
+      "cityId": "sevilla-es",
+      "cityName": {
+        "en": "Seville",
+        "fr": "Séville",
+        "es": "Sevilla"
+      },
+      "cityZoneId": "relation/342563",
+      "localLanguage": "es",
+      "population": 684025,
+      "province": "Sevilla",
+      "rank": 4,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-zaragoza",
+      "candidateCount": 176,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 4,
+        "history": 1,
+        "nature": 2
+      },
+      "cityCode": "50297",
+      "cityId": "zaragoza-es",
+      "cityName": {
+        "en": "Zaragoza",
+        "fr": "Saragosse",
+        "es": "Zaragoza"
+      },
+      "cityZoneId": "relation/345740",
+      "localLanguage": "es",
+      "population": 682513,
+      "province": "Zaragoza",
+      "rank": 5,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-malaga",
+      "candidateCount": 111,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 4,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "29067",
+      "cityId": "malaga-es",
+      "cityName": {
+        "en": "Málaga",
+        "fr": "Malaga",
+        "es": "Málaga"
+      },
+      "cityZoneId": "relation/340746",
+      "localLanguage": "es",
+      "population": 586384,
+      "province": "Málaga",
+      "rank": 6,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-murcia",
+      "candidateCount": 90,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "30030",
+      "cityId": "murcia-es",
+      "cityName": {
+        "en": "Murcia",
+        "fr": "Murcie",
+        "es": "Murcia"
+      },
+      "cityZoneId": "relation/340611",
+      "localLanguage": "es",
+      "population": 469177,
+      "province": "Murcia",
+      "rank": 7,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-palma-de-mallorca",
+      "candidateCount": 110,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 4,
+        "nature": 1
+      },
+      "cityCode": "07040",
+      "cityId": "palma-de-mallorca-es",
+      "cityName": {
+        "en": "Palma",
+        "fr": "Palma",
+        "es": "Palma de Mallorca"
+      },
+      "cityZoneId": "relation/341321",
+      "localLanguage": "es",
+      "population": 423350,
+      "province": "Balears, Illes",
+      "rank": 8,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-las-palmas-de-gran-canaria",
+      "candidateCount": 84,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 4,
+        "culture": 1,
+        "history": 4
+      },
+      "cityCode": "35016",
+      "cityId": "las-palmas-de-gran-canaria-es",
+      "cityName": {
+        "en": "Las Palmas de Gran Canaria",
+        "fr": "Las Palmas de Grande Canarie",
+        "es": "Las Palmas de Gran Canaria"
+      },
+      "cityZoneId": "relation/340783",
+      "localLanguage": "es",
+      "population": 378027,
+      "province": "Palmas, Las",
+      "rank": 9,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-alicante",
+      "candidateCount": 87,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 4,
+        "history": 3,
+        "nature": 2
+      },
+      "cityCode": "03014",
+      "cityId": "alicante-es",
+      "cityName": {
+        "en": "Alicante",
+        "fr": "Alicante",
+        "es": "Alicante"
+      },
+      "cityZoneId": "relation/342792",
+      "localLanguage": "es",
+      "population": 349282,
+      "province": "Alicante/Alacant",
+      "rank": 10,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 12,
+      "sourceCounts": {
+        "wikidata": 12
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-bilbao",
+      "candidateCount": 99,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "48020",
+      "cityId": "bilbao-es",
+      "cityName": {
+        "en": "Bilbao",
+        "fr": "Bilbao",
+        "es": "Bilbao"
+      },
+      "cityZoneId": "relation/339549",
+      "localLanguage": "es",
+      "population": 346096,
+      "province": "Bizkaia",
+      "rank": 11,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-cordoba",
+      "candidateCount": 214,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "history": 2
+      },
+      "cityCode": "14021",
+      "cityId": "cordoba-es",
+      "cityName": {
+        "en": "Córdoba",
+        "fr": "Cordoue",
+        "es": "Córdoba"
+      },
+      "cityZoneId": "relation/343207",
+      "localLanguage": "es",
+      "population": 323763,
+      "province": "Córdoba",
+      "rank": 12,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-valladolid",
+      "candidateCount": 139,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 1,
+        "history": 3
+      },
+      "cityCode": "47186",
+      "cityId": "valladolid-es",
+      "cityName": {
+        "en": "Valladolid",
+        "fr": "Valladolid",
+        "es": "Valladolid"
+      },
+      "cityZoneId": "relation/348849",
+      "localLanguage": "es",
+      "population": 297459,
+      "province": "Valladolid",
+      "rank": 13,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-vigo",
+      "candidateCount": 61,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityCode": "36057",
+      "cityId": "vigo-es",
+      "cityName": {
+        "en": "Vigo",
+        "fr": "Vigo",
+        "es": "Vigo"
+      },
+      "cityZoneId": "relation/341381",
+      "localLanguage": "es",
+      "population": 293652,
+      "province": "Pontevedra",
+      "rank": 14,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-hospitalet-de-llobregat",
+      "candidateCount": 24,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "nature": 3
+      },
+      "cityCode": "08101",
+      "cityId": "hospitalet-de-llobregat-es",
+      "cityName": {
+        "en": "L'Hospitalet de Llobregat",
+        "fr": "L'Hospitalet de Llobregat",
+        "es": "Hospitalet de Llobregat"
+      },
+      "cityZoneId": "relation/345401",
+      "localLanguage": "es",
+      "population": 274455,
+      "province": "Barcelona",
+      "rank": 15,
+      "rejected": {
+        "categoryLimit": 15,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-gijon",
+      "candidateCount": 55,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 2,
+        "history": 2
+      },
+      "cityCode": "33024",
+      "cityId": "gijon-es",
+      "cityName": {
+        "en": "Gijón",
+        "fr": "Gijón",
+        "es": "Gijón"
+      },
+      "cityZoneId": "relation/345576",
+      "localLanguage": "es",
+      "population": 268313,
+      "province": "Asturias",
+      "rank": 16,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-vitoria",
+      "candidateCount": 105,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "01059",
+      "cityId": "vitoria-es",
+      "cityName": {
+        "en": "Vitoria-Gasteiz",
+        "fr": "Vitoria-Gasteiz",
+        "es": "Vitoria"
+      },
+      "cityZoneId": "relation/344337",
+      "localLanguage": "es",
+      "population": 255886,
+      "province": "Araba/Álava",
+      "rank": 17,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-la-coruna",
+      "candidateCount": 87,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "15030",
+      "cityId": "la-coruna-es",
+      "cityName": {
+        "en": "A Coruña",
+        "fr": "La Corogne",
+        "es": "La Coruña"
+      },
+      "cityZoneId": "relation/346810",
+      "localLanguage": "es",
+      "population": 247376,
+      "province": "Coruña, A",
+      "rank": 18,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-elche",
+      "candidateCount": 33,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 1,
+        "history": 2,
+        "nature": 3
+      },
+      "cityCode": "03065",
+      "cityId": "elche-es",
+      "cityName": {
+        "en": "Elche",
+        "fr": "Elche",
+        "es": "Elche"
+      },
+      "cityZoneId": "relation/347684",
+      "localLanguage": "es",
+      "population": 238293,
+      "province": "Alicante/Alacant",
+      "rank": 19,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-granada",
+      "candidateCount": 183,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "18087",
+      "cityId": "granada-es",
+      "cityName": {
+        "en": "Granada",
+        "fr": "Grenade",
+        "es": "Granada"
+      },
+      "cityZoneId": "relation/344685",
+      "localLanguage": "es",
+      "population": 230595,
+      "province": "Granada",
+      "rank": 20,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-badalona",
+      "candidateCount": 69,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "nature": 3
+      },
+      "cityCode": "08015",
+      "cityId": "badalona-es",
+      "cityName": {
+        "en": "Badalona",
+        "fr": "Badalone",
+        "es": "Badalona"
+      },
+      "cityZoneId": "relation/347954",
+      "localLanguage": "es",
+      "population": 225957,
+      "province": "Barcelona",
+      "rank": 21,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 1,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-tarrasa",
+      "candidateCount": 75,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 2,
+        "history": 2,
+        "nature": 1
+      },
+      "cityCode": "08279",
+      "cityId": "tarrasa-es",
+      "cityName": {
+        "en": "Terrassa",
+        "fr": "Terrassa",
+        "es": "Tarrasa"
+      },
+      "cityZoneId": "relation/342210",
+      "localLanguage": "es",
+      "population": 225277,
+      "province": "Barcelona",
+      "rank": 22,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-sabadell",
+      "candidateCount": 82,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 1,
+        "history": 1,
+        "nature": 1
+      },
+      "cityCode": "08187",
+      "cityId": "sabadell-es",
+      "cityName": {
+        "en": "Sabadell",
+        "fr": "Sabadell",
+        "es": "Sabadell"
+      },
+      "cityZoneId": "relation/344202",
+      "localLanguage": "es",
+      "population": 218300,
+      "province": "Barcelona",
+      "rank": 23,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-cartagena",
+      "candidateCount": 123,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "30016",
+      "cityId": "cartagena-es",
+      "cityName": {
+        "en": "Cartagena",
+        "fr": "Carthagène",
+        "es": "Cartagena"
+      },
+      "cityZoneId": "relation/344228",
+      "localLanguage": "es",
+      "population": 218050,
+      "province": "Murcia",
+      "rank": 24,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-oviedo",
+      "candidateCount": 193,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "33044",
+      "cityId": "oviedo-es",
+      "cityName": {
+        "en": "Oviedo",
+        "fr": "Oviedo",
+        "es": "Oviedo"
+      },
+      "cityZoneId": "relation/346397",
+      "localLanguage": "es",
+      "population": 217584,
+      "province": "Asturias",
+      "rank": 25,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-jerez-de-la-frontera",
+      "candidateCount": 177,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "11020",
+      "cityId": "jerez-de-la-frontera-es",
+      "cityName": {
+        "en": "Jerez de la Frontera",
+        "fr": "Jerez de la Frontera",
+        "es": "Jerez de la Frontera"
+      },
+      "cityZoneId": "relation/342097",
+      "localLanguage": "es",
+      "population": 213231,
+      "province": "Cádiz",
+      "rank": 26,
+      "rejected": {
+        "categoryLimit": 5,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-mostoles",
+      "candidateCount": 18,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityCode": "28092",
+      "cityId": "mostoles-es",
+      "cityName": {
+        "en": "Móstoles",
+        "fr": "Móstoles",
+        "es": "Móstoles"
+      },
+      "cityZoneId": "relation/340288",
+      "localLanguage": "es",
+      "population": 211265,
+      "province": "Madrid",
+      "rank": 27,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-santa-cruz-de-tenerife",
+      "candidateCount": 155,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "38038",
+      "cityId": "santa-cruz-de-tenerife-es",
+      "cityName": {
+        "en": "Santa Cruz de Tenerife",
+        "fr": "Santa Cruz de Ténérife",
+        "es": "Santa Cruz de Tenerife"
+      },
+      "cityZoneId": "relation/340727",
+      "localLanguage": "es",
+      "population": 209395,
+      "province": "Santa Cruz de Tenerife",
+      "rank": 28,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-pamplona",
+      "candidateCount": 153,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 1,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "31201",
+      "cityId": "pamplona-es",
+      "cityName": {
+        "en": "Pamplona",
+        "fr": "Pampelune",
+        "es": "Pamplona"
+      },
+      "cityZoneId": "relation/344401",
+      "localLanguage": "es",
+      "population": 205762,
+      "province": "Navarra",
+      "rank": 29,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-almeria",
+      "candidateCount": 140,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityCode": "04013",
+      "cityId": "almeria-es",
+      "cityName": {
+        "en": "Almería",
+        "fr": "Almería",
+        "es": "Almería"
+      },
+      "cityZoneId": "relation/347796",
+      "localLanguage": "es",
+      "population": 200578,
+      "province": "Almería",
+      "rank": 30,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-alcala-de-henares",
+      "candidateCount": 104,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 2,
+        "history": 2
+      },
+      "cityCode": "28005",
+      "cityId": "alcala-de-henares-es",
+      "cityName": {
+        "en": "Alcalá de Henares",
+        "fr": "Alcalá de Henares",
+        "es": "Alcalá de Henares"
+      },
+      "cityZoneId": "relation/345879",
+      "localLanguage": "es",
+      "population": 199184,
+      "province": "Madrid",
+      "rank": 31,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-leganes",
+      "candidateCount": 9,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "28074",
+      "cityId": "leganes-es",
+      "cityName": {
+        "en": "Leganés",
+        "fr": "Leganés",
+        "es": "Leganés"
+      },
+      "cityZoneId": "relation/342087",
+      "localLanguage": "es",
+      "population": 190665,
+      "province": "Madrid",
+      "rank": 32,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-sebastian",
+      "candidateCount": 108,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 2,
+        "history": 1
+      },
+      "cityCode": "20069",
+      "cityId": "san-sebastian-es",
+      "cityName": {
+        "en": "San Sebastián",
+        "fr": "Saint-Sébastien",
+        "es": "San Sebastián"
+      },
+      "cityZoneId": "relation/346465",
+      "localLanguage": "es",
+      "population": 188743,
+      "province": "Gipuzkoa",
+      "rank": 33,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-fuenlabrada",
+      "candidateCount": 8,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 1,
+        "nature": 1
+      },
+      "cityCode": "28058",
+      "cityId": "fuenlabrada-es",
+      "cityName": {
+        "en": "Fuenlabrada",
+        "fr": "Fuenlabrada",
+        "es": "Fuenlabrada"
+      },
+      "cityZoneId": "relation/340945",
+      "localLanguage": "es",
+      "population": 188736,
+      "province": "Madrid",
+      "rank": 34,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-getafe",
+      "candidateCount": 9,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "28065",
+      "cityId": "getafe-es",
+      "cityName": {
+        "en": "Getafe",
+        "fr": "Getafe",
+        "es": "Getafe"
+      },
+      "cityZoneId": "relation/345003",
+      "localLanguage": "es",
+      "population": 185899,
+      "province": "Madrid",
+      "rank": 35,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-castellon-de-la-plana",
+      "candidateCount": 52,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "12040",
+      "cityId": "castellon-de-la-plana-es",
+      "cityName": {
+        "en": "Castellón de la Plana",
+        "fr": "Castelló de la Plana",
+        "es": "Castellón de la Plana"
+      },
+      "cityZoneId": "relation/344858",
+      "localLanguage": "es",
+      "population": 176238,
+      "province": "Castellón/Castelló",
+      "rank": 36,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-burgos",
+      "candidateCount": 83,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "09059",
+      "cityId": "burgos-es",
+      "cityName": {
+        "en": "Burgos",
+        "fr": "Burgos",
+        "es": "Burgos"
+      },
+      "cityZoneId": "relation/344165",
+      "localLanguage": "es",
+      "population": 174451,
+      "province": "Burgos",
+      "rank": 37,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-albacete",
+      "candidateCount": 81,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "02003",
+      "cityId": "albacete-es",
+      "cityName": {
+        "en": "Albacete",
+        "fr": "Albacete",
+        "es": "Albacete"
+      },
+      "cityZoneId": "relation/346317",
+      "localLanguage": "es",
+      "population": 173206,
+      "province": "Albacete",
+      "rank": 38,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-santander",
+      "candidateCount": 50,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "culture": 2,
+        "history": 1
+      },
+      "cityCode": "39075",
+      "cityId": "santander-es",
+      "cityName": {
+        "en": "Santander",
+        "fr": "Santander",
+        "es": "Santander"
+      },
+      "cityZoneId": "relation/340797",
+      "localLanguage": "es",
+      "population": 172726,
+      "province": "Cantabria",
+      "rank": 39,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-alcorcon",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "nature": 3
+      },
+      "cityCode": "28007",
+      "cityId": "alcorcon-es",
+      "cityName": {
+        "en": "Alcorcón",
+        "fr": "Alcorcón",
+        "es": "Alcorcón"
+      },
+      "cityZoneId": "relation/345877",
+      "localLanguage": "es",
+      "population": 171772,
+      "province": "Madrid",
+      "rank": 40,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-cristobal-de-la-laguna",
+      "candidateCount": 72,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "38023",
+      "cityId": "san-cristobal-de-la-laguna-es",
+      "cityName": {
+        "en": "San Cristóbal de La Laguna",
+        "fr": "San Cristóbal de La Laguna",
+        "es": "San Cristóbal de La Laguna"
+      },
+      "cityZoneId": "relation/345393",
+      "localLanguage": "es",
+      "population": 159034,
+      "province": "Santa Cruz de Tenerife",
+      "rank": 41,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-marbella",
+      "candidateCount": 40,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "29069",
+      "cityId": "marbella-es",
+      "cityName": {
+        "en": "Marbella",
+        "fr": "Marbella",
+        "es": "Marbella"
+      },
+      "cityZoneId": "relation/340756",
+      "localLanguage": "es",
+      "population": 156295,
+      "province": "Málaga",
+      "rank": 42,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-logrono",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "architecture": 1,
+        "culture": 3,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "26089",
+      "cityId": "logrono-es",
+      "cityName": {
+        "en": "Logroño",
+        "fr": "Logroño",
+        "es": "Logroño"
+      },
+      "cityZoneId": "relation/340516",
+      "localLanguage": "es",
+      "population": 150583,
+      "province": "Rioja, La",
+      "rank": 43,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-badajoz",
+      "candidateCount": 41,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "history": 3
+      },
+      "cityCode": "06015",
+      "cityId": "badajoz-es",
+      "cityName": {
+        "en": "Badajoz",
+        "fr": "Badajoz",
+        "es": "Badajoz"
+      },
+      "cityZoneId": "relation/342316",
+      "localLanguage": "es",
+      "population": 150190,
+      "province": "Badajoz",
+      "rank": 44,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-salamanca",
+      "candidateCount": 88,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "37274",
+      "cityId": "salamanca-es",
+      "cityName": {
+        "en": "Salamanca",
+        "fr": "Salamanque",
+        "es": "Salamanca"
+      },
+      "cityZoneId": "relation/344342",
+      "localLanguage": "es",
+      "population": 143954,
+      "province": "Salamanca",
+      "rank": 45,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-lerida",
+      "candidateCount": 81,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 2,
+        "history": 1,
+        "nature": 1
+      },
+      "cityCode": "25120",
+      "cityId": "lerida-es",
+      "cityName": {
+        "en": "Lleida",
+        "fr": "Lérida",
+        "es": "Lérida"
+      },
+      "cityZoneId": "relation/346345",
+      "localLanguage": "es",
+      "population": 143094,
+      "province": "Lleida",
+      "rank": 46,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-huelva",
+      "candidateCount": 47,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "21041",
+      "cityId": "huelva-es",
+      "cityName": {
+        "en": "Huelva",
+        "fr": "Huelva",
+        "es": "Huelva"
+      },
+      "cityZoneId": "relation/347727",
+      "localLanguage": "es",
+      "population": 142532,
+      "province": "Huelva",
+      "rank": 47,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-dos-hermanas",
+      "candidateCount": 10,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityCode": "41038",
+      "cityId": "dos-hermanas-es",
+      "cityName": {
+        "en": "Dos Hermanas",
+        "fr": "Dos Hermanas",
+        "es": "Dos Hermanas"
+      },
+      "cityZoneId": "relation/341615",
+      "localLanguage": "es",
+      "population": 138981,
+      "province": "Sevilla",
+      "rank": 48,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "wikidata": 7
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-tarragona",
+      "candidateCount": 99,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "history": 3
+      },
+      "cityCode": "43148",
+      "cityId": "tarragona-es",
+      "cityName": {
+        "en": "Tarragona",
+        "fr": "Tarragone",
+        "es": "Tarragona"
+      },
+      "cityZoneId": "relation/339887",
+      "localLanguage": "es",
+      "population": 138262,
+      "province": "Tarragona",
+      "rank": 49,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-torrejon-de-ardoz",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 1,
+        "nature": 1
+      },
+      "cityCode": "28148",
+      "cityId": "torrejon-de-ardoz-es",
+      "cityName": {
+        "en": "Torrejón de Ardoz",
+        "fr": "Torrejón de Ardoz",
+        "es": "Torrejón de Ardoz"
+      },
+      "cityZoneId": "relation/343606",
+      "localLanguage": "es",
+      "population": 137711,
+      "province": "Madrid",
+      "rank": 50,
+      "rejected": {
+        "categoryLimit": 6,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 7,
+      "sourceCounts": {
+        "wikidata": 7
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-parla",
+      "candidateCount": 49,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 1,
+        "nature": 3
+      },
+      "cityCode": "28106",
+      "cityId": "parla-es",
+      "cityName": {
+        "en": "Parla",
+        "fr": "Parla",
+        "es": "Parla"
+      },
+      "cityZoneId": "relation/342965",
+      "localLanguage": "es",
+      "population": 133004,
+      "province": "Madrid",
+      "rank": 51,
+      "rejected": {
+        "categoryLimit": 23,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 5,
+        "wikidata": 3
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-mataro",
+      "candidateCount": 44,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "nature": 2
+      },
+      "cityCode": "08121",
+      "cityId": "mataro-es",
+      "cityName": {
+        "en": "Mataró",
+        "fr": "Mataró",
+        "es": "Mataró"
+      },
+      "cityZoneId": "relation/345587",
+      "localLanguage": "es",
+      "population": 129870,
+      "province": "Barcelona",
+      "rank": 52,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-algeciras",
+      "candidateCount": 36,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "nature": 3
+      },
+      "cityCode": "11004",
+      "cityId": "algeciras-es",
+      "cityName": {
+        "en": "Algeciras",
+        "fr": "Algésiras",
+        "es": "Algeciras"
+      },
+      "cityZoneId": "relation/342446",
+      "localLanguage": "es",
+      "population": 123639,
+      "province": "Cádiz",
+      "rank": 53,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-leon",
+      "candidateCount": 49,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "24089",
+      "cityId": "leon-es",
+      "cityName": {
+        "en": "León",
+        "fr": "León",
+        "es": "León"
+      },
+      "cityZoneId": "relation/339984",
+      "localLanguage": "es",
+      "population": 121281,
+      "province": "León",
+      "rank": 54,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-santa-coloma-de-gramanet",
+      "candidateCount": 25,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 1,
+        "history": 1,
+        "nature": 3
+      },
+      "cityCode": "08245",
+      "cityId": "santa-coloma-de-gramanet-es",
+      "cityName": {
+        "en": "Santa Coloma de Gramenet",
+        "fr": "Santa Coloma de Gramenet",
+        "es": "Santa Coloma de Gramanet"
+      },
+      "cityZoneId": "relation/347480",
+      "localLanguage": "es",
+      "population": 119862,
+      "province": "Barcelona",
+      "rank": 55,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-alcobendas",
+      "candidateCount": 63,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 1,
+        "nature": 3
+      },
+      "cityCode": "28006",
+      "cityId": "alcobendas-es",
+      "cityName": {
+        "en": "Alcobendas",
+        "fr": "Alcobendas",
+        "es": "Alcobendas"
+      },
+      "cityZoneId": "relation/345878",
+      "localLanguage": "es",
+      "population": 119416,
+      "province": "Madrid",
+      "rank": 56,
+      "rejected": {
+        "categoryLimit": 30,
+        "duplicateCoordinate": 0,
+        "duplicateName": 3
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 4,
+        "wikidata": 4
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-jaen",
+      "candidateCount": 67,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "23050",
+      "cityId": "jaen-es",
+      "cityName": {
+        "en": "Jaén",
+        "fr": "Jaén",
+        "es": "Jaén"
+      },
+      "cityZoneId": "relation/339631",
+      "localLanguage": "es",
+      "population": 111888,
+      "province": "Jaén",
+      "rank": 57,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-cadiz",
+      "candidateCount": 148,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "11012",
+      "cityId": "cadiz-es",
+      "cityName": {
+        "en": "Cádiz",
+        "fr": "Cadix",
+        "es": "Cádiz"
+      },
+      "cityZoneId": "relation/346956",
+      "localLanguage": "es",
+      "population": 111811,
+      "province": "Cádiz",
+      "rank": 58,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-reus",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "43123",
+      "cityId": "reus-es",
+      "cityName": {
+        "en": "Reus",
+        "fr": "Reus",
+        "es": "Reus"
+      },
+      "cityZoneId": "relation/340853",
+      "localLanguage": "es",
+      "population": 108479,
+      "province": "Tarragona",
+      "rank": 59,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-roquetas-de-mar",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "04079",
+      "cityId": "roquetas-de-mar-es",
+      "cityName": {
+        "en": "Roquetas de Mar",
+        "fr": "Roquetas de Mar",
+        "es": "Roquetas de Mar"
+      },
+      "cityZoneId": "relation/347557",
+      "localLanguage": "es",
+      "population": 106510,
+      "province": "Almería",
+      "rank": 60,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-gerona",
+      "candidateCount": 78,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "17079",
+      "cityId": "gerona-es",
+      "cityName": {
+        "en": "Girona",
+        "fr": "Gérone",
+        "es": "Gerona"
+      },
+      "cityZoneId": "relation/343535",
+      "localLanguage": "es",
+      "population": 104320,
+      "province": "Girona",
+      "rank": 61,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-orense",
+      "candidateCount": 44,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "32054",
+      "cityId": "orense-es",
+      "cityName": {
+        "en": "Ourense",
+        "fr": "Ourense",
+        "es": "Orense"
+      },
+      "cityZoneId": "relation/343932",
+      "localLanguage": "es",
+      "population": 104250,
+      "province": "Ourense",
+      "rank": 62,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-telde",
+      "candidateCount": 13,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 1,
+        "nature": 2
+      },
+      "cityCode": "35026",
+      "cityId": "telde-es",
+      "cityName": {
+        "en": "Telde",
+        "fr": "Telde",
+        "es": "Telde"
+      },
+      "cityZoneId": "relation/345437",
+      "localLanguage": "es",
+      "population": 102487,
+      "province": "Palmas, Las",
+      "rank": 63,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-baracaldo",
+      "candidateCount": 21,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 2,
+        "history": 2,
+        "nature": 1
+      },
+      "cityCode": "48013",
+      "cityId": "baracaldo-es",
+      "cityName": {
+        "en": "Barakaldo",
+        "fr": "Barakaldo",
+        "es": "Baracaldo"
+      },
+      "cityZoneId": "relation/340585",
+      "localLanguage": "es",
+      "population": 101229,
+      "province": "Bizkaia",
+      "rank": 64,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-rivas-vaciamadrid",
+      "candidateCount": 9,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "28123",
+      "cityId": "rivas-vaciamadrid-es",
+      "cityName": {
+        "en": "Rivas-Vaciamadrid",
+        "fr": "Rivas-Vaciamadrid",
+        "es": "Rivas-Vaciamadrid"
+      },
+      "cityZoneId": "relation/343293",
+      "localLanguage": "es",
+      "population": 100275,
+      "province": "Madrid",
+      "rank": 65,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-santiago-de-compostela",
+      "candidateCount": 69,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "15078",
+      "cityId": "santiago-de-compostela-es",
+      "cityName": {
+        "en": "Santiago de Compostela",
+        "fr": "Saint-Jacques-de-Compostelle",
+        "es": "Santiago de Compostela"
+      },
+      "cityZoneId": "relation/346204",
+      "localLanguage": "es",
+      "population": 98687,
+      "province": "Coruña, A",
+      "rank": 66,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-lorca",
+      "candidateCount": 29,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "30024",
+      "cityId": "lorca-es",
+      "cityName": {
+        "en": "Lorca",
+        "fr": "Lorca",
+        "es": "Lorca"
+      },
+      "cityZoneId": "relation/346913",
+      "localLanguage": "es",
+      "population": 98447,
+      "province": "Murcia",
+      "rank": 67,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-lugo",
+      "candidateCount": 24,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "27028",
+      "cityId": "lugo-es",
+      "cityName": {
+        "en": "Lugo",
+        "fr": "Lugo",
+        "es": "Lugo"
+      },
+      "cityZoneId": "relation/345264",
+      "localLanguage": "es",
+      "population": 98214,
+      "province": "Lugo",
+      "rank": 68,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-las-rozas-de-madrid",
+      "candidateCount": 8,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 1,
+        "nature": 2
+      },
+      "cityCode": "28127",
+      "cityId": "las-rozas-de-madrid-es",
+      "cityName": {
+        "en": "Las Rozas de Madrid",
+        "fr": "Las Rozas de Madrid",
+        "es": "Las Rozas de Madrid"
+      },
+      "cityZoneId": "relation/343285",
+      "localLanguage": "es",
+      "population": 98086,
+      "province": "Madrid",
+      "rank": 69,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 6,
+      "sourceCounts": {
+        "wikidata": 6
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-cugat-del-valles",
+      "candidateCount": 51,
+      "categoryCounts": {
+        "art": 1,
+        "culture": 3,
+        "history": 3,
+        "nature": 1
+      },
+      "cityCode": "08205",
+      "cityId": "san-cugat-del-valles-es",
+      "cityName": {
+        "en": "Sant Cugat del Vallès",
+        "fr": "Sant Cugat del Vallès",
+        "es": "San Cugat del Vallés"
+      },
+      "cityZoneId": "relation/347540",
+      "localLanguage": "es",
+      "population": 97530,
+      "province": "Barcelona",
+      "rank": 70,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-caceres",
+      "candidateCount": 70,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "history": 3
+      },
+      "cityCode": "10037",
+      "cityId": "caceres-es",
+      "cityName": {
+        "en": "Cáceres",
+        "fr": "Cáceres",
+        "es": "Cáceres"
+      },
+      "cityZoneId": "relation/1899973",
+      "localLanguage": "es",
+      "population": 96215,
+      "province": "Cáceres",
+      "rank": 71,
+      "rejected": {
+        "categoryLimit": 7,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-fernando",
+      "candidateCount": 36,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "history": 2
+      },
+      "cityCode": "11031",
+      "cityId": "san-fernando-es",
+      "cityName": {
+        "en": "San Fernando",
+        "fr": "San Fernando",
+        "es": "San Fernando"
+      },
+      "cityZoneId": "relation/346652",
+      "localLanguage": "es",
+      "population": 93927,
+      "province": "Cádiz",
+      "rank": 72,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-sebastian-de-los-reyes",
+      "candidateCount": 56,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "nature": 3
+      },
+      "cityCode": "28134",
+      "cityId": "san-sebastian-de-los-reyes-es",
+      "cityName": {
+        "en": "San Sebastián de los Reyes",
+        "fr": "San Sebastián de los Reyes",
+        "es": "San Sebastián de los Reyes"
+      },
+      "cityZoneId": "relation/347596",
+      "localLanguage": "es",
+      "population": 92734,
+      "province": "Madrid",
+      "rank": 73,
+      "rejected": {
+        "categoryLimit": 20,
+        "duplicateCoordinate": 0,
+        "duplicateName": 14
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 6,
+        "wikidata": 2
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-mijas",
+      "candidateCount": 16,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 2,
+        "culture": 2,
+        "history": 2
+      },
+      "cityCode": "29070",
+      "cityId": "mijas-es",
+      "cityName": {
+        "en": "Mijas",
+        "fr": "Mijas",
+        "es": "Mijas"
+      },
+      "cityZoneId": "relation/345097",
+      "localLanguage": "es",
+      "population": 91691,
+      "province": "Málaga",
+      "rank": 74,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-cornella-de-llobregat",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "history": 1,
+        "nature": 2
+      },
+      "cityCode": "08073",
+      "cityId": "cornella-de-llobregat-es",
+      "cityName": {
+        "en": "Cornellà de Llobregat",
+        "fr": "Cornellà de Llobregat",
+        "es": "Cornellá de Llobregat"
+      },
+      "cityZoneId": "relation/339968",
+      "localLanguage": "es",
+      "population": 90303,
+      "province": "Barcelona",
+      "rank": 75,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-el-ejido",
+      "candidateCount": 11,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "history": 2,
+        "nature": 1
+      },
+      "cityCode": "04902",
+      "cityId": "el-ejido-es",
+      "cityName": {
+        "en": "El Ejido",
+        "fr": "El Ejido",
+        "es": "El Ejido"
+      },
+      "cityZoneId": "relation/345425",
+      "localLanguage": "es",
+      "population": 89975,
+      "province": "Almería",
+      "rank": 76,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-el-puerto-de-santa-maria",
+      "candidateCount": 40,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "11027",
+      "cityId": "el-puerto-de-santa-maria-es",
+      "cityName": {
+        "en": "El Puerto de Santa María",
+        "fr": "El Puerto de Santa María",
+        "es": "El Puerto de Santa María"
+      },
+      "cityZoneId": "relation/342093",
+      "localLanguage": "es",
+      "population": 89813,
+      "province": "Cádiz",
+      "rank": 77,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-torrevieja",
+      "candidateCount": 19,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 3,
+        "nature": 2
+      },
+      "cityCode": "03133",
+      "cityId": "torrevieja-es",
+      "cityName": {
+        "en": "Torrevieja",
+        "fr": "Torrevieja",
+        "es": "Torrevieja"
+      },
+      "cityZoneId": "relation/341237",
+      "localLanguage": "es",
+      "population": 89290,
+      "province": "Alicante/Alacant",
+      "rank": 78,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 1,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-guadalajara",
+      "candidateCount": 45,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "19130",
+      "cityId": "guadalajara-es",
+      "cityName": {
+        "en": "Guadalajara",
+        "fr": "Guadalajara",
+        "es": "Guadalajara"
+      },
+      "cityZoneId": "relation/342800",
+      "localLanguage": "es",
+      "population": 89010,
+      "province": "Guadalajara",
+      "rank": 79,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-pozuelo-de-alarcon",
+      "candidateCount": 10,
+      "categoryCounts": {
+        "architecture": 3,
+        "culture": 3,
+        "nature": 2
+      },
+      "cityCode": "28115",
+      "cityId": "pozuelo-de-alarcon-es",
+      "cityName": {
+        "en": "Pozuelo de Alarcón",
+        "fr": "Pozuelo de Alarcón",
+        "es": "Pozuelo de Alarcón"
+      },
+      "cityZoneId": "relation/347315",
+      "localLanguage": "es",
+      "population": 88784,
+      "province": "Madrid",
+      "rank": 80,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-chiclana-de-la-frontera",
+      "candidateCount": 28,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 3,
+        "culture": 3
+      },
+      "cityCode": "11015",
+      "cityId": "chiclana-de-la-frontera-es",
+      "cityName": {
+        "en": "Chiclana de la Frontera",
+        "fr": "Chiclana de la Frontera",
+        "es": "Chiclana de la Frontera"
+      },
+      "cityZoneId": "relation/346951",
+      "localLanguage": "es",
+      "population": 88709,
+      "province": "Cádiz",
+      "rank": 81,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 2
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-torrente",
+      "candidateCount": 73,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 3,
+        "history": 1,
+        "nature": 1
+      },
+      "cityCode": "46244",
+      "cityId": "torrente-es",
+      "cityName": {
+        "en": "Torrent",
+        "fr": "Torrent",
+        "es": "Torrente"
+      },
+      "cityZoneId": "relation/340538",
+      "localLanguage": "es",
+      "population": 87295,
+      "province": "Valencia/València",
+      "rank": 82,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-toledo",
+      "candidateCount": 134,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 2,
+        "history": 2
+      },
+      "cityCode": "45168",
+      "cityId": "toledo-es",
+      "cityName": {
+        "en": "Toledo",
+        "fr": "Tolède",
+        "es": "Toledo"
+      },
+      "cityZoneId": "relation/342999",
+      "localLanguage": "es",
+      "population": 86070,
+      "province": "Toledo",
+      "rank": 83,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-fuengirola",
+      "candidateCount": 31,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 1,
+        "history": 1,
+        "nature": 2
+      },
+      "cityCode": "29054",
+      "cityId": "fuengirola-es",
+      "cityName": {
+        "en": "Fuengirola",
+        "fr": "Fuengirola",
+        "es": "Fuengirola"
+      },
+      "cityZoneId": "relation/345414",
+      "localLanguage": "es",
+      "population": 85598,
+      "province": "Málaga",
+      "rank": 84,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-melilla",
+      "candidateCount": 204,
+      "categoryCounts": {
+        "art": 3,
+        "culture": 1,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "52001",
+      "cityId": "melilla-es",
+      "cityName": {
+        "en": "Melilla",
+        "fr": "Melilla",
+        "es": "Melilla"
+      },
+      "cityZoneId": "relation/1154757",
+      "localLanguage": "es",
+      "population": 85491,
+      "province": "Melilla",
+      "rank": 85,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-velez-malaga",
+      "candidateCount": 37,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "29094",
+      "cityId": "velez-malaga-es",
+      "cityName": {
+        "en": "Vélez-Málaga",
+        "fr": "Vélez-Málaga",
+        "es": "Vélez-Málaga"
+      },
+      "cityZoneId": "relation/347397",
+      "localLanguage": "es",
+      "population": 85377,
+      "province": "Málaga",
+      "rank": 86,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 1
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-arona",
+      "candidateCount": 15,
+      "categoryCounts": {
+        "architecture": 2,
+        "culture": 2,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "38006",
+      "cityId": "arona-es",
+      "cityName": {
+        "en": "Arona",
+        "fr": "Arona",
+        "es": "Arona"
+      },
+      "cityZoneId": "relation/345076",
+      "localLanguage": "es",
+      "population": 85249,
+      "province": "Santa Cruz de Tenerife",
+      "rank": 87,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-talavera-de-la-reina",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "culture": 3,
+        "nature": 1
+      },
+      "cityCode": "45165",
+      "cityId": "talavera-de-la-reina-es",
+      "cityName": {
+        "en": "Talavera de la Reina",
+        "fr": "Talavera de la Reina",
+        "es": "Talavera de la Reina"
+      },
+      "cityZoneId": "relation/343000",
+      "localLanguage": "es",
+      "population": 84137,
+      "province": "Toledo",
+      "rank": 88,
+      "rejected": {
+        "categoryLimit": 2,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-san-baudilio-de-llobregat",
+      "candidateCount": 25,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 2,
+        "history": 1,
+        "nature": 3
+      },
+      "cityCode": "08200",
+      "cityId": "san-baudilio-de-llobregat-es",
+      "cityName": {
+        "en": "Sant Boi de Llobregat",
+        "fr": "Sant Boi de Llobregat",
+        "es": "San Baudilio de Llobregat"
+      },
+      "cityZoneId": "relation/347545",
+      "localLanguage": "es",
+      "population": 83919,
+      "province": "Barcelona",
+      "rank": 89,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-ceuta",
+      "candidateCount": 91,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 1,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "51001",
+      "cityId": "ceuta-es",
+      "cityName": {
+        "en": "Ceuta",
+        "fr": "Ceuta",
+        "es": "Ceuta"
+      },
+      "cityZoneId": "relation/1822781",
+      "localLanguage": "es",
+      "population": 83039,
+      "province": "Ceuta",
+      "rank": 90,
+      "rejected": {
+        "categoryLimit": 1,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-pontevedra",
+      "candidateCount": 85,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "36038",
+      "cityId": "pontevedra-es",
+      "cityName": {
+        "en": "Pontevedra",
+        "fr": "Pontevedra",
+        "es": "Pontevedra"
+      },
+      "cityZoneId": "relation/341736",
+      "localLanguage": "es",
+      "population": 82535,
+      "province": "Pontevedra",
+      "rank": 91,
+      "rejected": {
+        "categoryLimit": 4,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-orihuela",
+      "candidateCount": 40,
+      "categoryCounts": {
+        "art": 2,
+        "culture": 3,
+        "history": 3
+      },
+      "cityCode": "03099",
+      "cityId": "orihuela-es",
+      "cityName": {
+        "en": "Orihuela",
+        "fr": "Orihuela",
+        "es": "Orihuela"
+      },
+      "cityZoneId": "relation/341472",
+      "localLanguage": "es",
+      "population": 82449,
+      "province": "Alicante/Alacant",
+      "rank": 92,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-valdemoro",
+      "candidateCount": 54,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "nature": 3
+      },
+      "cityCode": "28161",
+      "cityId": "valdemoro-es",
+      "cityName": {
+        "en": "Valdemoro",
+        "fr": "Valdemoro",
+        "es": "Valdemoro"
+      },
+      "cityZoneId": "relation/343923",
+      "localLanguage": "es",
+      "population": 81394,
+      "province": "Madrid",
+      "rank": 93,
+      "rejected": {
+        "categoryLimit": 28,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 3,
+        "wikidata": 5
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-coslada",
+      "candidateCount": 58,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "history": 1,
+        "nature": 3
+      },
+      "cityCode": "28049",
+      "cityId": "coslada-es",
+      "cityName": {
+        "en": "Coslada",
+        "fr": "Coslada",
+        "es": "Coslada"
+      },
+      "cityZoneId": "relation/345295",
+      "localLanguage": "es",
+      "population": 80171,
+      "province": "Madrid",
+      "rank": 94,
+      "rejected": {
+        "categoryLimit": 26,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "openstreetmap": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-rubi",
+      "candidateCount": 31,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 3,
+        "history": 1
+      },
+      "cityCode": "08184",
+      "cityId": "rubi-es",
+      "cityName": {
+        "en": "Rubí",
+        "fr": "Rubí",
+        "es": "Rubí"
+      },
+      "cityZoneId": "relation/344200",
+      "localLanguage": "es",
+      "population": 80044,
+      "province": "Barcelona",
+      "rank": 95,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-manresa",
+      "candidateCount": 70,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 2,
+        "culture": 2,
+        "nature": 1
+      },
+      "cityCode": "08113",
+      "cityId": "manresa-es",
+      "cityName": {
+        "en": "Manresa",
+        "fr": "Manrèse",
+        "es": "Manresa"
+      },
+      "cityZoneId": "relation/346721",
+      "localLanguage": "es",
+      "population": 78877,
+      "province": "Barcelona",
+      "rank": 96,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-gandia",
+      "candidateCount": 27,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 2,
+        "culture": 3,
+        "history": 2
+      },
+      "cityCode": "46131",
+      "cityId": "gandia-es",
+      "cityName": {
+        "en": "Gandia",
+        "fr": "Gandia",
+        "es": "Gandía"
+      },
+      "cityZoneId": "relation/339514",
+      "localLanguage": "es",
+      "population": 78108,
+      "province": "Valencia/València",
+      "rank": 97,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-estepona",
+      "candidateCount": 16,
+      "categoryCounts": {
+        "architecture": 3,
+        "art": 1,
+        "history": 2,
+        "nature": 2
+      },
+      "cityCode": "29051",
+      "cityId": "estepona-es",
+      "cityName": {
+        "en": "Estepona",
+        "fr": "Estepona",
+        "es": "Estepona"
+      },
+      "cityZoneId": "relation/345409",
+      "localLanguage": "es",
+      "population": 76975,
+      "province": "Málaga",
+      "rank": 98,
+      "rejected": {
+        "categoryLimit": 3,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-alcala-de-guadaira",
+      "candidateCount": 18,
+      "categoryCounts": {
+        "architecture": 2,
+        "art": 1,
+        "culture": 2,
+        "history": 3
+      },
+      "cityCode": "41004",
+      "cityId": "alcala-de-guadaira-es",
+      "cityName": {
+        "en": "Alcalá de Guadaíra",
+        "fr": "Alcalá de Guadaíra",
+        "es": "Alcalá de Guadaíra"
+      },
+      "cityZoneId": "relation/345821",
+      "localLanguage": "es",
+      "population": 76547,
+      "province": "Sevilla",
+      "rank": 99,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    },
+    {
+      "albumId": "es-palencia",
+      "candidateCount": 32,
+      "categoryCounts": {
+        "architecture": 1,
+        "art": 3,
+        "culture": 1,
+        "history": 3
+      },
+      "cityCode": "34120",
+      "cityId": "palencia-es",
+      "cityName": {
+        "en": "Palencia",
+        "fr": "Palencia",
+        "es": "Palencia"
+      },
+      "cityZoneId": "relation/347573",
+      "localLanguage": "es",
+      "population": 76331,
+      "province": "Palencia",
+      "rank": 100,
+      "rejected": {
+        "categoryLimit": 0,
+        "duplicateCoordinate": 0,
+        "duplicateName": 0
+      },
+      "selectedCount": 8,
+      "sourceCounts": {
+        "wikidata": 8
+      },
+      "version": 1
+    }
+  ],
+  "artifact": {
+    "compressedBytes": 75940,
+    "medalCount": 858,
+    "sha256": "2dea0f6c8d596338af9feb0409475b950e8944be6c60fceb9cbcc8cebdbbae36",
+    "uncompressedBytes": 709974,
+    "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/es-v1.json.gz"
+  }
+}

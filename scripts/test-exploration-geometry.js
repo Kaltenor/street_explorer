@@ -1064,6 +1064,10 @@ const tailSyncSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const syncActiveWalkTailFromDatabase"),
   mapScreenSource.indexOf("const enableBackgroundTracking")
 );
+const walkHistoryQuerySource = walkRepositorySource.slice(
+  walkRepositorySource.indexOf("export async function getWalkHistory"),
+  walkRepositorySource.indexOf("export async function deleteWalkSession")
+);
 const activeRouteRenderStart = explorationMapSource.indexOf(
   "{activeRouteStartPoint"
 );
@@ -1086,6 +1090,9 @@ assert(
   handleLocationPointSource.includes("persistAcceptedGpsPoint") &&
     handleLocationPointSource.includes("appendPersistedGpsPoint") &&
     handleLocationPointSource.includes("result.point") &&
+    handleLocationPointSource.includes(
+      "React batches this raw-fix publication"
+    ) &&
     !handleLocationPointSource.includes("points.length"),
   "canonical persisted GPS points drive foreground drawing instead of optimistic array length"
 );
@@ -1392,6 +1399,11 @@ assert(
     explorationMapSource.includes("settledActiveExplorationCellIds") &&
     explorationMapSource.includes("settledTodayNewCellIds") &&
     explorationMapSource.includes("memo(function ExplorationSurfaceOverlay") &&
+    explorationMapSource.includes("const RoutePolyline = memo") &&
+    explorationMapSource.includes("const coordinates = useMemo") &&
+    explorationMapSource.includes(
+      "const [visibleRegion, setVisibleRegion] = useState(() =>"
+    ) &&
     explorationMapSource.includes("memo(function AdministrativeBoundaryOverlay") &&
     explorationMapSource.includes("const AtlasMedalMarker = memo") &&
     explorationMapSource.includes("tracksViewChanges={false}") &&
@@ -1403,10 +1415,17 @@ assert(
     mapScreenSource.includes("}, 650);") &&
     mapScreenSource.includes("onMapLongPress={handleMapLongPressEvent}") &&
     mapScreenSource.includes('"map.live-enclosure"') &&
+    mapScreenSource.includes('"map.saved-data-queries"') &&
+    mapScreenSource.includes('"map.path-history-load"') &&
+    mapScreenSource.includes('"map.selected-walk-load"') &&
     mapScreenSource.includes("derivedEnclosedCellIds: activeWalk") &&
     performanceSource.includes("usePerformanceRenderCounter") &&
     performanceSource.includes("[performance]") &&
-    !performanceSource.includes("useEffect"),
+    !performanceSource.includes("useEffect") &&
+    walkHistoryQuerySource.includes("LEFT JOIN route_snapshots") &&
+    walkHistoryQuerySource.includes("route_snapshots.source_point_count") &&
+    walkHistoryQuerySource.includes("pending_recording_repairs") &&
+    !walkHistoryQuerySource.includes("COUNT(gps_points.id) AS point_count"),
   "map timers, polling, non-starving surfaces, medals, and render diagnostics use bounded performance paths"
 );
 assert(

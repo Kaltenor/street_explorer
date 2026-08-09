@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-08-09",
+  "decision": "go",
+  "selectionPolicy": {
+    "coverageTarget": 0.5,
+    "minimumCityCount": 30,
+    "maximumCityCount": 100,
+    "reason": "Reach 50% of national population where possible without allowing one country to dominate catalogue and editorial cost."
+  },
+  "budgets": {
+    "maximumCompressedBytesPerCountry": 250000,
+    "maximumCompressedBytesForWave": 1000000,
+    "maximumExpandedBytesForWave": 8000000
+  },
+  "dutchMeasuredBaseline": {
+    "cityCount": 58,
+    "medalCount": 492,
+    "compressedBytes": 46085,
+    "uncompressedBytes": 436982,
+    "compressedBytesPerCity": 794.5689655172414,
+    "uncompressedBytesPerCity": 7534.172413793103,
+    "medalsPerCity": 8.482758620689655
+  },
+  "countries": [
+    {
+      "countryCode": "be",
+      "populationReferenceDate": "2025",
+      "municipalityCount": 565,
+      "nationalPopulation": 11825551,
+      "citiesNeededForCoverageTarget": 91,
+      "selectedCityCount": 91,
+      "selectedPopulationShare": 0.5227197447290194,
+      "projectedMedalCount": 772,
+      "projectedCompressedBytes": 72306,
+      "projectedUncompressedBytes": 685610,
+      "source": "https://statbel.fgov.be/en/open-data/population-place-residence-nationality-marital-status-age-and-sex-16"
+    },
+    {
+      "countryCode": "de",
+      "populationReferenceDate": "2024-12-31",
+      "municipalityCount": 10754,
+      "nationalPopulation": 83577140,
+      "citiesNeededForCoverageTarget": 375,
+      "selectedCityCount": 100,
+      "selectedPopulationShare": 0.34237847813409267,
+      "projectedMedalCount": 848,
+      "projectedCompressedBytes": 79457,
+      "projectedUncompressedBytes": 753417,
+      "source": "https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html"
+    },
+    {
+      "countryCode": "it",
+      "populationReferenceDate": "2025-01-01",
+      "municipalityCount": 7896,
+      "nationalPopulation": 58943464,
+      "citiesNeededForCoverageTarget": 420,
+      "selectedCityCount": 100,
+      "selectedPopulationShare": 0.30478902631172133,
+      "projectedMedalCount": 848,
+      "projectedCompressedBytes": 79457,
+      "projectedUncompressedBytes": 753417,
+      "source": "https://demo.istat.it/app/?a=2025&i=POS&l=it"
+    },
+    {
+      "countryCode": "es",
+      "populationReferenceDate": "2023-01-01",
+      "municipalityCount": 8131,
+      "nationalPopulation": 48022515,
+      "citiesNeededForCoverageTarget": 125,
+      "selectedCityCount": 100,
+      "selectedPopulationShare": 0.4648963720454874,
+      "projectedMedalCount": 848,
+      "projectedCompressedBytes": 79457,
+      "projectedUncompressedBytes": 753417,
+      "source": "https://www.ine.es/dynt3/inebase/en/index.htm?capsel=525&padre=9041"
+    }
+  ],
+  "waveProjection": {
+    "countryCount": 4,
+    "cityCount": 391,
+    "medalCount": 3316,
+    "compressedBytes": 310677,
+    "uncompressedBytes": 2945861,
+    "compressedBudgetUtilization": 0.310677,
+    "expandedBudgetUtilization": 0.368232625
+  },
+  "catalogueAfterWaveProjection": {
+    "countryCount": 5,
+    "cityCount": 449,
+    "medalCount": 3808,
+    "compressedBytes": 356762,
+    "uncompressedBytes": 3382843
+  },
+  "notes": [
+    "The projections scale the measured Netherlands v1 payload linearly and are a planning estimate, not an output guarantee.",
+    "Germany and Italy stop at the 100-city cap because reaching 50% would require 375 and 420 municipalities respectively.",
+    "Spain also stops at 100 cities; its projected coverage is 46.5%, close to the 50% target.",
+    "All projections are comfortably inside the download and offline-cache budgets, so the wave is reasonable to build."
+  ]
+}

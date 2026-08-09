@@ -16,7 +16,7 @@ Street Explorer needs a development build to test:
 - persistent Atlas footer navigation, direct page switching, map hold previews, and safe-area/Reduce Motion behavior
 - live and retroactive Explorer Score presentation in Details and the idle Field Log, including 200 points per permanent expedition seal and exact enclosure/expedition stamp awards
 - Daylight-specific stamp lettering contrast against the unchanged navy seal artwork
-- active-city loading and evaluation across the frozen 851-medal France top-100 catalogue
+- active-city loading across bundled France and the checksum-verified Belgium, Germany, Italy, Netherlands, and Spain country packs, including first-download, retry, and offline-cache behavior
 - the configured portrait `assets/loading-screen2.png` splash asset
 
 Whenever a native dependency is added or changed, rebuild and reinstall the development build to exercise it. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Version 0.21.0 added `react-native-webview`; the clean-cache build 159 is the validated baseline for the embedded Wikipedia frame. Version 0.21.1 made that package lazy so older clients start safely, while version 0.21.3 uses a non-throwing `RNCWebViewModule` TurboModule preflight before the guarded package load. Genuinely older binaries therefore keep the quiet default-browser fallback without surfacing a native-module LogBox. Street Explorer also treats unavailable medal/reward sound and haptics as optional.

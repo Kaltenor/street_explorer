@@ -1,0 +1,946 @@
+{
+  "albums": [
+    {
+      "albumId": "nl-amsterdam",
+      "cityId": "amsterdam-nl",
+      "cityName": {
+        "en": "Amsterdam",
+        "fr": "Amsterdam",
+        "nl": "Amsterdam"
+      },
+      "cityZoneId": "relation/47811",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 20,
+      "population": 934526,
+      "rank": 1,
+      "version": 1
+    },
+    {
+      "albumId": "nl-rotterdam",
+      "cityId": "rotterdam-nl",
+      "cityName": {
+        "en": "Rotterdam",
+        "fr": "Rotterdam",
+        "nl": "Rotterdam"
+      },
+      "cityZoneId": "relation/324431",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 20,
+      "population": 672960,
+      "rank": 2,
+      "version": 1
+    },
+    {
+      "albumId": "nl-s-gravenhage",
+      "cityId": "s-gravenhage-nl",
+      "cityName": {
+        "en": "The Hague",
+        "fr": "La Haye",
+        "nl": "Den Haag"
+      },
+      "cityZoneId": "relation/192736",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 20,
+      "population": 568945,
+      "rank": 3,
+      "version": 1
+    },
+    {
+      "albumId": "nl-utrecht",
+      "cityId": "utrecht-nl",
+      "cityName": {
+        "en": "Utrecht",
+        "fr": "Utrecht",
+        "nl": "Utrecht"
+      },
+      "cityZoneId": "relation/419203",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 376757,
+      "rank": 4,
+      "version": 1
+    },
+    {
+      "albumId": "nl-eindhoven",
+      "cityId": "eindhoven-nl",
+      "cityName": {
+        "en": "Eindhoven",
+        "fr": "Eindhoven",
+        "nl": "Eindhoven"
+      },
+      "cityZoneId": "relation/296014",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 249035,
+      "rank": 5,
+      "version": 1
+    },
+    {
+      "albumId": "nl-groningen",
+      "cityId": "groningen-nl",
+      "cityName": {
+        "en": "Groningen",
+        "fr": "Groningen",
+        "nl": "Groningen"
+      },
+      "cityZoneId": "relation/409862",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 244441,
+      "rank": 6,
+      "version": 1
+    },
+    {
+      "albumId": "nl-tilburg",
+      "cityId": "tilburg-nl",
+      "cityName": {
+        "en": "Tilburg",
+        "fr": "Tilburg",
+        "nl": "Tilburg"
+      },
+      "cityZoneId": "relation/299231",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 230357,
+      "rank": 7,
+      "version": 1
+    },
+    {
+      "albumId": "nl-almere",
+      "cityId": "almere-nl",
+      "cityName": {
+        "en": "Almere",
+        "fr": "Almere",
+        "nl": "Almere"
+      },
+      "cityZoneId": "relation/409764",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 229574,
+      "rank": 8,
+      "version": 1
+    },
+    {
+      "albumId": "nl-nijmegen",
+      "cityId": "nijmegen-nl",
+      "cityName": {
+        "en": "Nijmegen",
+        "fr": "Nijmegen",
+        "nl": "Nijmegen"
+      },
+      "cityZoneId": "relation/1201020",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 189007,
+      "rank": 9,
+      "version": 1
+    },
+    {
+      "albumId": "nl-breda",
+      "cityId": "breda-nl",
+      "cityName": {
+        "en": "Breda",
+        "fr": "Breda",
+        "nl": "Breda"
+      },
+      "cityZoneId": "relation/297129",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 12,
+      "population": 188779,
+      "rank": 10,
+      "version": 1
+    },
+    {
+      "albumId": "nl-arnhem",
+      "cityId": "arnhem-nl",
+      "cityName": {
+        "en": "Arnhem",
+        "fr": "Arnhem",
+        "nl": "Arnhem"
+      },
+      "cityZoneId": "relation/418700",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 169364,
+      "rank": 11,
+      "version": 1
+    },
+    {
+      "albumId": "nl-haarlem",
+      "cityId": "haarlem-nl",
+      "cityName": {
+        "en": "Haarlem",
+        "fr": "Haarlem",
+        "nl": "Haarlem"
+      },
+      "cityZoneId": "relation/2712154",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 168743,
+      "rank": 12,
+      "version": 1
+    },
+    {
+      "albumId": "nl-apeldoorn",
+      "cityId": "apeldoorn-nl",
+      "cityName": {
+        "en": "Apeldoorn",
+        "fr": "Apeldoorn",
+        "nl": "Apeldoorn"
+      },
+      "cityZoneId": "relation/417457",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 168551,
+      "rank": 13,
+      "version": 1
+    },
+    {
+      "albumId": "nl-haarlemmermeer",
+      "cityId": "haarlemmermeer-nl",
+      "cityName": {
+        "en": "Haarlemmermeer",
+        "fr": "Haarlemmermeer",
+        "nl": "Haarlemmermeer"
+      },
+      "cityZoneId": "relation/443890",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 165255,
+      "rank": 14,
+      "version": 1
+    },
+    {
+      "albumId": "nl-amersfoort",
+      "cityId": "amersfoort-nl",
+      "cityName": {
+        "en": "Amersfoort",
+        "fr": "Amersfoort",
+        "nl": "Amersfoort"
+      },
+      "cityZoneId": "relation/419152",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 163298,
+      "rank": 15,
+      "version": 1
+    },
+    {
+      "albumId": "nl-zaanstad",
+      "cityId": "zaanstad-nl",
+      "cityName": {
+        "en": "Zaanstad",
+        "fr": "Zaanstad",
+        "nl": "Zaanstad"
+      },
+      "cityZoneId": "relation/337720",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 6,
+      "population": 162828,
+      "rank": 16,
+      "version": 1
+    },
+    {
+      "albumId": "nl-enschede",
+      "cityId": "enschede-nl",
+      "cityName": {
+        "en": "Enschede",
+        "fr": "Enschede",
+        "nl": "Enschede"
+      },
+      "cityZoneId": "relation/415473",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 162317,
+      "rank": 17,
+      "version": 1
+    },
+    {
+      "albumId": "nl-s-hertogenbosch",
+      "cityId": "s-hertogenbosch-nl",
+      "cityName": {
+        "en": "'s-Hertogenbosch",
+        "fr": "Bois-le-Duc",
+        "nl": "'s-Hertogenbosch"
+      },
+      "cityZoneId": "relation/162800",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 161530,
+      "rank": 18,
+      "version": 1
+    },
+    {
+      "albumId": "nl-zwolle",
+      "cityId": "zwolle-nl",
+      "cityName": {
+        "en": "Zwolle",
+        "fr": "Zwolle",
+        "nl": "Zwolle"
+      },
+      "cityZoneId": "relation/1433721",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 133810,
+      "rank": 19,
+      "version": 1
+    },
+    {
+      "albumId": "nl-leiden",
+      "cityId": "leiden-nl",
+      "cityName": {
+        "en": "Leiden",
+        "fr": "Leiden",
+        "nl": "Leiden"
+      },
+      "cityZoneId": "relation/295092",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 7,
+      "population": 130638,
+      "rank": 20,
+      "version": 1
+    },
+    {
+      "albumId": "nl-leeuwarden",
+      "cityId": "leeuwarden-nl",
+      "cityName": {
+        "en": "Leeuwarden",
+        "fr": "Leeuwarden",
+        "nl": "Leeuwarden"
+      },
+      "cityZoneId": "relation/162074",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 129973,
+      "rank": 21,
+      "version": 1
+    },
+    {
+      "albumId": "nl-zoetermeer",
+      "cityId": "zoetermeer-nl",
+      "cityName": {
+        "en": "Zoetermeer",
+        "fr": "Zoetermeer",
+        "nl": "Zoetermeer"
+      },
+      "cityZoneId": "relation/444099",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 129862,
+      "rank": 22,
+      "version": 1
+    },
+    {
+      "albumId": "nl-maastricht",
+      "cityId": "maastricht-nl",
+      "cityName": {
+        "en": "Maastricht",
+        "fr": "Maastricht",
+        "nl": "Maastricht"
+      },
+      "cityZoneId": "relation/2078292",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 20,
+      "population": 125563,
+      "rank": 23,
+      "version": 1
+    },
+    {
+      "albumId": "nl-ede",
+      "cityId": "ede-nl",
+      "cityName": {
+        "en": "Ede",
+        "fr": "Ede",
+        "nl": "Ede"
+      },
+      "cityZoneId": "relation/418760",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 124214,
+      "rank": 24,
+      "version": 1
+    },
+    {
+      "albumId": "nl-dordrecht",
+      "cityId": "dordrecht-nl",
+      "cityName": {
+        "en": "Dordrecht",
+        "fr": "Dordrecht",
+        "nl": "Dordrecht"
+      },
+      "cityZoneId": "relation/309478",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 122796,
+      "rank": 25,
+      "version": 1
+    },
+    {
+      "albumId": "nl-westland",
+      "cityId": "westland-nl",
+      "cityName": {
+        "en": "Westland",
+        "fr": "Westland",
+        "nl": "Westland"
+      },
+      "cityZoneId": "relation/324389",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 116916,
+      "rank": 26,
+      "version": 1
+    },
+    {
+      "albumId": "nl-alphen-aan-den-rijn",
+      "cityId": "alphen-aan-den-rijn-nl",
+      "cityName": {
+        "en": "Alphen aan den Rijn",
+        "fr": "Alphen aan den Rijn",
+        "nl": "Alphen aan den Rijn"
+      },
+      "cityZoneId": "relation/443831",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 115773,
+      "rank": 27,
+      "version": 1
+    },
+    {
+      "albumId": "nl-alkmaar",
+      "cityId": "alkmaar-nl",
+      "cityName": {
+        "en": "Alkmaar",
+        "fr": "Alkmaar",
+        "nl": "Alkmaar"
+      },
+      "cityZoneId": "relation/337391",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 112896,
+      "rank": 28,
+      "version": 1
+    },
+    {
+      "albumId": "nl-delft",
+      "cityId": "delft-nl",
+      "cityName": {
+        "en": "Delft",
+        "fr": "Delft",
+        "nl": "Delft"
+      },
+      "cityZoneId": "relation/324269",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 7,
+      "population": 110173,
+      "rank": 29,
+      "version": 1
+    },
+    {
+      "albumId": "nl-emmen",
+      "cityId": "emmen-nl",
+      "cityName": {
+        "en": "Emmen",
+        "fr": "Emmen",
+        "nl": "Emmen"
+      },
+      "cityZoneId": "relation/413536",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 109678,
+      "rank": 30,
+      "version": 1
+    },
+    {
+      "albumId": "nl-deventer",
+      "cityId": "deventer-nl",
+      "cityName": {
+        "en": "Deventer",
+        "fr": "Deventer",
+        "nl": "Deventer"
+      },
+      "cityZoneId": "relation/1002142",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 104301,
+      "rank": 31,
+      "version": 1
+    },
+    {
+      "albumId": "nl-venlo",
+      "cityId": "venlo-nl",
+      "cityName": {
+        "en": "Venlo",
+        "fr": "Venlo",
+        "nl": "Venlo"
+      },
+      "cityZoneId": "relation/405106",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 103984,
+      "rank": 32,
+      "version": 1
+    },
+    {
+      "albumId": "nl-helmond",
+      "cityId": "helmond-nl",
+      "cityName": {
+        "en": "Helmond",
+        "fr": "Helmond",
+        "nl": "Helmond"
+      },
+      "cityZoneId": "relation/286685",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 96551,
+      "rank": 33,
+      "version": 1
+    },
+    {
+      "albumId": "nl-purmerend",
+      "cityId": "purmerend-nl",
+      "cityName": {
+        "en": "Purmerend",
+        "fr": "Purmerend",
+        "nl": "Purmerend"
+      },
+      "cityZoneId": "relation/289103",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 95912,
+      "rank": 34,
+      "version": 1
+    },
+    {
+      "albumId": "nl-amstelveen",
+      "cityId": "amstelveen-nl",
+      "cityName": {
+        "en": "Amstelveen",
+        "fr": "Amstelveen",
+        "nl": "Amstelveen"
+      },
+      "cityZoneId": "relation/157955",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 6,
+      "population": 95822,
+      "rank": 35,
+      "version": 1
+    },
+    {
+      "albumId": "nl-oss",
+      "cityId": "oss-nl",
+      "cityName": {
+        "en": "Oss",
+        "fr": "Oss",
+        "nl": "Oss"
+      },
+      "cityZoneId": "relation/300631",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 95239,
+      "rank": 36,
+      "version": 1
+    },
+    {
+      "albumId": "nl-hilversum",
+      "cityId": "hilversum-nl",
+      "cityName": {
+        "en": "Hilversum",
+        "fr": "Hilversum",
+        "nl": "Hilversum"
+      },
+      "cityZoneId": "relation/419190",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 94393,
+      "rank": 37,
+      "version": 1
+    },
+    {
+      "albumId": "nl-land-van-cuijk",
+      "cityId": "land-van-cuijk-nl",
+      "cityName": {
+        "en": "Land van Cuijk",
+        "fr": "Land van Cuijk",
+        "nl": "Land van Cuijk"
+      },
+      "cityZoneId": "relation/13621786",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 92817,
+      "rank": 38,
+      "version": 1
+    },
+    {
+      "albumId": "nl-sittard-geleen",
+      "cityId": "sittard-geleen-nl",
+      "cityName": {
+        "en": "Sittard-Geleen",
+        "fr": "Sittard-Geleen",
+        "nl": "Sittard-Geleen"
+      },
+      "cityZoneId": "relation/405681",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 92491,
+      "rank": 39,
+      "version": 1
+    },
+    {
+      "albumId": "nl-dijk-en-waard",
+      "cityId": "dijk-en-waard-nl",
+      "cityName": {
+        "en": "Dijk en Waard",
+        "fr": "Dijk en Waard",
+        "nl": "Dijk en Waard"
+      },
+      "cityZoneId": "relation/13621788",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 90747,
+      "rank": 40,
+      "version": 1
+    },
+    {
+      "albumId": "nl-hoeksche-waard",
+      "cityId": "hoeksche-waard-nl",
+      "cityName": {
+        "en": "Hoeksche Waard",
+        "fr": "Hoeksche Waard",
+        "nl": "Hoeksche Waard"
+      },
+      "cityZoneId": "relation/9172183",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 90747,
+      "rank": 41,
+      "version": 1
+    },
+    {
+      "albumId": "nl-sudwest-fryslan",
+      "cityId": "sudwest-fryslan-nl",
+      "cityName": {
+        "en": "Súdwest-Fryslân",
+        "fr": "Súdwest-Fryslân",
+        "nl": "Súdwest-Fryslân"
+      },
+      "cityZoneId": "relation/1357943",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 90534,
+      "rank": 42,
+      "version": 1
+    },
+    {
+      "albumId": "nl-nissewaard",
+      "cityId": "nissewaard-nl",
+      "cityName": {
+        "en": "Nissewaard",
+        "fr": "Nissewaard",
+        "nl": "Nissewaard"
+      },
+      "cityZoneId": "relation/4446174",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 88341,
+      "rank": 43,
+      "version": 1
+    },
+    {
+      "albumId": "nl-heerlen",
+      "cityId": "heerlen-nl",
+      "cityName": {
+        "en": "Heerlen",
+        "fr": "Heerlen",
+        "nl": "Heerlen"
+      },
+      "cityZoneId": "relation/406105",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 87522,
+      "rank": 44,
+      "version": 1
+    },
+    {
+      "albumId": "nl-lelystad",
+      "cityId": "lelystad-nl",
+      "cityName": {
+        "en": "Lelystad",
+        "fr": "Lelystad",
+        "nl": "Lelystad"
+      },
+      "cityZoneId": "relation/409806",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 84713,
+      "rank": 45,
+      "version": 1
+    },
+    {
+      "albumId": "nl-meierijstad",
+      "cityId": "meierijstad-nl",
+      "cityName": {
+        "en": "Meierijstad",
+        "fr": "Meierijstad",
+        "nl": "Meierijstad"
+      },
+      "cityZoneId": "relation/6838008",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 7,
+      "population": 84711,
+      "rank": 46,
+      "version": 1
+    },
+    {
+      "albumId": "nl-hengelo-o",
+      "cityId": "hengelo-o-nl",
+      "cityName": {
+        "en": "Hengelo (O.)",
+        "fr": "Hengelo (O.)",
+        "nl": "Hengelo (O.)"
+      },
+      "cityZoneId": "relation/404388",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 6,
+      "population": 83655,
+      "rank": 47,
+      "version": 1
+    },
+    {
+      "albumId": "nl-schiedam",
+      "cityId": "schiedam-nl",
+      "cityName": {
+        "en": "Schiedam",
+        "fr": "Schiedam",
+        "nl": "Schiedam"
+      },
+      "cityZoneId": "relation/324296",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 82232,
+      "rank": 48,
+      "version": 1
+    },
+    {
+      "albumId": "nl-leidschendam-voorburg",
+      "cityId": "leidschendam-voorburg-nl",
+      "cityName": {
+        "en": "Leidschendam-Voorburg",
+        "fr": "Leidschendam-Voorburg",
+        "nl": "Leidschendam-Voorburg"
+      },
+      "cityZoneId": "relation/444355",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 6,
+      "population": 78318,
+      "rank": 49,
+      "version": 1
+    },
+    {
+      "albumId": "nl-roosendaal",
+      "cityId": "roosendaal-nl",
+      "cityName": {
+        "en": "Roosendaal",
+        "fr": "Roosendaal",
+        "nl": "Roosendaal"
+      },
+      "cityZoneId": "relation/2078302",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 6,
+      "population": 77721,
+      "rank": 50,
+      "version": 1
+    },
+    {
+      "albumId": "nl-vlaardingen",
+      "cityId": "vlaardingen-nl",
+      "cityName": {
+        "en": "Vlaardingen",
+        "fr": "Vlaardingen",
+        "nl": "Vlaardingen"
+      },
+      "cityZoneId": "relation/272279",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 77260,
+      "rank": 51,
+      "version": 1
+    },
+    {
+      "albumId": "nl-gouda",
+      "cityId": "gouda-nl",
+      "cityName": {
+        "en": "Gouda",
+        "fr": "Gouda",
+        "nl": "Gouda"
+      },
+      "cityZoneId": "relation/300795",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 76514,
+      "rank": 52,
+      "version": 1
+    },
+    {
+      "albumId": "nl-hoorn",
+      "cityId": "hoorn-nl",
+      "cityName": {
+        "en": "Hoorn",
+        "fr": "Hoorn",
+        "nl": "Hoorn"
+      },
+      "cityZoneId": "relation/291667",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 8,
+      "population": 76036,
+      "rank": 53,
+      "version": 1
+    },
+    {
+      "albumId": "nl-almelo",
+      "cityId": "almelo-nl",
+      "cityName": {
+        "en": "Almelo",
+        "fr": "Almelo",
+        "nl": "Almelo"
+      },
+      "cityZoneId": "relation/386411",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 74776,
+      "rank": 54,
+      "version": 1
+    },
+    {
+      "albumId": "nl-voorne-aan-zee",
+      "cityId": "voorne-aan-zee-nl",
+      "cityName": {
+        "en": "Voorne aan Zee",
+        "fr": "Voorne aan Zee",
+        "nl": "Voorne aan Zee"
+      },
+      "cityZoneId": "relation/15070820",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 74527,
+      "rank": 55,
+      "version": 1
+    },
+    {
+      "albumId": "nl-assen",
+      "cityId": "assen-nl",
+      "cityName": {
+        "en": "Assen",
+        "fr": "Assen",
+        "nl": "Assen"
+      },
+      "cityZoneId": "relation/412268",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 7,
+      "population": 70392,
+      "rank": 56,
+      "version": 1
+    },
+    {
+      "albumId": "nl-veenendaal",
+      "cityId": "veenendaal-nl",
+      "cityName": {
+        "en": "Veenendaal",
+        "fr": "Veenendaal",
+        "nl": "Veenendaal"
+      },
+      "cityZoneId": "relation/418793",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 7,
+      "population": 70352,
+      "rank": 57,
+      "version": 1
+    },
+    {
+      "albumId": "nl-bergen-op-zoom",
+      "cityId": "bergen-op-zoom-nl",
+      "cityName": {
+        "en": "Bergen op Zoom",
+        "fr": "Bergen op Zoom",
+        "nl": "Bergen op Zoom"
+      },
+      "cityZoneId": "relation/296882",
+      "countryCode": "nl",
+      "localLanguage": "nl",
+      "medalCount": 5,
+      "population": 70194,
+      "rank": 58,
+      "version": 1
+    }
+  ],
+  "compressedBytes": 46085,
+  "countryCode": "nl",
+  "formatVersion": 1,
+  "languages": [
+    "en",
+    "fr",
+    "nl"
+  ],
+  "medalCount": 492,
+  "publishedAt": "2026-08-09",
+  "sha256": "909ebb65546f75af5629fe65cce28d0c7e21b35d6b917e3467ee5fbac8e6dba1",
+  "uncompressedBytes": 436982,
+  "url": "https://raw.githubusercontent.com/Kaltenor/street_explorer/main/country-packs/v1/nl-v1.json.gz",
+  "version": 1
+}

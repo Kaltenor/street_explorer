@@ -205,8 +205,9 @@ export const ExplorationMap = memo(function ExplorationMap({
       ),
     [activeMode, activeRouteEndPoint, playerLocation]
   );
-  const region = getInitialRegion(startupCenter?.point ?? null, walks);
-  const [visibleRegion, setVisibleRegion] = useState(region);
+  const [visibleRegion, setVisibleRegion] = useState(() =>
+    getInitialRegion(startupCenter?.point ?? null, walks)
+  );
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
 
@@ -1315,36 +1316,62 @@ const PathSegmentLines = memo(function PathSegmentLines({
   return (
     <>
       {visibleSegments.map(({ points: visiblePoints, segment }, index) => {
-        if (visiblePoints.length < 2) {
-          return null;
-        }
-
-        const strokeColor = getSegmentStrokeColor({
-          color,
-          isDimmed,
-          isInferred: segment.type === "inferred"
-        });
-
         return (
-          <Polyline
-            coordinates={simplifyGpsPointsForRender(
-              visiblePoints,
-              simplificationToleranceMeters
-            ).map(pointToCoordinate)}
+          <RoutePolyline
+            color={color}
+            isDimmed={isDimmed}
+            isHighlighted={isHighlighted}
+            isInferred={segment.type === "inferred"}
             key={
               "id" in segment
                 ? segment.id
                 : `${segment.type}-${index}-${segment.points[0]?.timestamp ?? "route"}`
             }
-            lineCap="round"
-            lineDashPattern={undefined}
-            lineJoin="round"
-            strokeColor={strokeColor}
-            strokeWidth={isHighlighted ? 8 : 5}
+            points={visiblePoints}
+            simplificationToleranceMeters={simplificationToleranceMeters}
           />
         );
       })}
     </>
+  );
+});
+
+const RoutePolyline = memo(function RoutePolyline({
+  color,
+  isDimmed,
+  isHighlighted,
+  isInferred,
+  points,
+  simplificationToleranceMeters
+}: {
+  color: string;
+  isDimmed: boolean;
+  isHighlighted: boolean;
+  isInferred: boolean;
+  points: GpsPoint[];
+  simplificationToleranceMeters: number;
+}) {
+  const coordinates = useMemo(
+    () => simplifyGpsPointsForRender(
+      points,
+      simplificationToleranceMeters
+    ).map(pointToCoordinate),
+    [points, simplificationToleranceMeters]
+  );
+
+  if (coordinates.length < 2) {
+    return null;
+  }
+
+  return (
+    <Polyline
+      coordinates={coordinates}
+      lineCap="round"
+      lineDashPattern={undefined}
+      lineJoin="round"
+      strokeColor={getSegmentStrokeColor({ color, isDimmed, isInferred })}
+      strokeWidth={isHighlighted ? 8 : 5}
+    />
   );
 });
 
@@ -1358,12 +1385,11 @@ const ROUTE_RENDER_MAX_VERTICES = 256;
 
 function coalesceRouteSegmentsForRender(
   segments: readonly RouteLineSegment[]
-): DrawableRouteLineSegment[] {
-  if (segments.some((segment) => "id" in segment)) {
-    return segments.filter(
-      (segment): segment is DrawableRouteLineSegment =>
-        segment.type !== "rejected"
-    );
+): readonly DrawableRouteLineSegment[] {
+  if (
+    segments.every((segment) => "id" in segment)
+  ) {
+    return segments as readonly LiveRouteChunk[];
   }
 
   const result: DrawableRouteLineSegment[] = [];

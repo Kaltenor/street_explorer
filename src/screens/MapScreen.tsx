@@ -157,6 +157,7 @@ import {
   MEDAL_MIN_BOUNDARY_LENGTH_METERS,
   runMedalRetroScan
 } from "../services/medalEnclosure";
+import { resetMedalCountryPackFailure } from "../services/medalCountryPackStore";
 import {
   analyzeLoopFillsForCells,
   LOOP_FILL_CONFIG
@@ -184,6 +185,7 @@ import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions
 import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import {
+  measureAsyncPerformance,
   measurePerformance,
   usePerformanceRenderCounter
 } from "../services/performance";
@@ -323,6 +325,7 @@ const GPS_STORAGE_PAUSED_REASON =
 type PathDisplayMode = "today" | "last7" | "all" | "selected";
 
 type DataOperation = "backup" | "bulkGpx" | "restorePreview" | "restore" | null;
+type MedalPackLoadState = "idle" | "loading" | "ready" | "unavailable";
 
 type LoopProcessingResult =
   | {
@@ -437,15 +440,17 @@ async function persistRecordingExplorationDelta(
   return [...new Set([...cellIdsBySource.gps, ...cellIdsBySource.inferred])];
 }
 
-async function repairPendingRecordingCaches(activeMedalAlbumId: string | null) {
+async function repairPendingRecordingCaches() {
   let sessionIds: number[];
 
   try {
     sessionIds = await getPendingRecordingRepairSessionIds();
   } catch (error) {
     console.warn("Failed to inspect pending recording repairs", error);
-    return;
+    return [];
   }
+
+  const repairedSessionIds: number[] = [];
 
   for (const sessionId of sessionIds) {
     try {
@@ -466,11 +471,13 @@ async function repairPendingRecordingCaches(activeMedalAlbumId: string | null) {
         session.activityMode,
         points
       );
-      await evaluateMedalCollectionForRecording(sessionId, activeMedalAlbumId);
+      repairedSessionIds.push(sessionId);
     } catch (error) {
       console.warn(`Failed to repair finalized recording ${sessionId}`, error);
     }
   }
+
+  return repairedSessionIds;
 }
 
 function createRecoveredActiveWalk(
@@ -539,6 +546,7 @@ export function MapScreen({
   const [expeditionSealCount, setExpeditionSealCount] = useState(0);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
+  const [medalPackLoadState, setMedalPackLoadState] = useState<MedalPackLoadState>("idle");
   const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
   const [celebrationMedal, setCelebrationMedal] = useState<CollectedMedal | null>(null);
   const [medalFlightTarget, setMedalFlightTarget] = useState<MedalFlightTarget | null>(null);
@@ -729,13 +737,15 @@ export function MapScreen({
   pathDisplayModeRef.current = pathDisplayMode;
   selectedSessionIdRef.current = selectedSessionId;
 
-  const handleLocationPoint = useCallback((point: GpsPoint) => {
+  const publishCurrentLocation = useCallback((point: GpsPoint) => {
     setCurrentLocation((currentPoint) =>
       !currentPoint || getGpsTimestamp(point) >= getGpsTimestamp(currentPoint)
         ? point
         : currentPoint
     );
+  }, []);
 
+  const handleLocationPoint = useCallback((point: GpsPoint) => {
     const walk = activeWalkRef.current;
     const transition = recoveryResumeTransitionRef.current;
     const recordingTarget = walk
@@ -743,10 +753,12 @@ export function MapScreen({
       : transition;
 
     if (!recordingTarget) {
+      publishCurrentLocation(point);
       return;
     }
 
     if (!canQueueAcceptedGpsPoint(recordingTarget.sessionId)) {
+      publishCurrentLocation(point);
       void persistDeliveredBackgroundLocationBatch(
         [point],
         recordingTarget.sessionId
@@ -783,6 +795,10 @@ export function MapScreen({
       point
     )
       .then((result) => {
+        // React batches this raw-fix publication with the canonical persisted
+        // walk update, avoiding two complete map-screen renders per GPS fix.
+        publishCurrentLocation(point);
+
         if (!walk) {
           return;
         }
@@ -805,6 +821,7 @@ export function MapScreen({
         });
       })
       .catch((error) => {
+        publishCurrentLocation(point);
         console.warn("Failed to persist GPS point", error);
         void persistDeliveredBackgroundLocationBatch(
           [point],
@@ -1075,11 +1092,15 @@ export function MapScreen({
   }, []);
 
   const loadDetailedWalk = useCallback(async (sessionId: number) => {
-    const [session, points, routeSegments] = await Promise.all([
-      getWalkSessionById(sessionId),
-      getGpsPointsForSession(sessionId),
-      getRouteSnapshot(sessionId)
-    ]);
+    const [session, points, routeSegments] = await measureAsyncPerformance(
+      "map.selected-walk-load",
+      () => Promise.all([
+        getWalkSessionById(sessionId),
+        getGpsPointsForSession(sessionId),
+        getRouteSnapshot(sessionId)
+      ]),
+      50
+    );
 
     if (!session) {
       return;
@@ -1113,26 +1134,86 @@ export function MapScreen({
       mode,
       options?.selectedSessionId ?? selectedSessionIdRef.current
     );
-    const savedWalks = await getAllWalksWithPoints(activityMode, scope);
+    const savedWalks = await measureAsyncPerformance(
+      "map.path-history-load",
+      () => getAllWalksWithPoints(activityMode, scope),
+      100
+    );
     detailedWalksModeRef.current = activityMode;
     setWalks(savedWalks);
   }, [activityMode]);
 
-  const refreshSavedData = useCallback(async (options: {
+  const savedDataRefreshOperationRef = useRef<{
+    key: string;
+    promise: Promise<void>;
+  } | null>(null);
+
+  const refreshSavedData = useCallback((options: {
     hideExplorationDuringRefresh?: boolean;
     repairPendingCaches?: boolean;
   } = {}) => {
     const hideExplorationDuringRefresh =
       options.hideExplorationDuringRefresh ?? true;
+    const repairPendingCaches = options.repairPendingCaches ?? true;
+    const operationKey = [
+      activityMode,
+      activeMedalAlbumId ?? "none",
+      hideExplorationDuringRefresh ? "hide" : "show",
+      repairPendingCaches ? "repair" : "skip-repair"
+    ].join(":");
+    const existingOperation = savedDataRefreshOperationRef.current;
 
-    if (hideExplorationDuringRefresh) {
-      setIsExplorationEnabled(false);
+    if (existingOperation?.key === operationKey) {
+      return existingOperation.promise;
     }
 
-    try {
-      if (options.repairPendingCaches ?? true) {
-        await repairPendingRecordingCaches(activeMedalAlbumId);
+    const operation = (async () => {
+
+      if (hideExplorationDuringRefresh) {
+        setIsExplorationEnabled(false);
       }
+
+      try {
+        setMedalPackLoadState(activeMedalAlbumId ? "loading" : "idle");
+        const repairedSessionIds = repairPendingCaches
+        ? await repairPendingRecordingCaches()
+        : [];
+      const loadMedalData = async () => {
+        try {
+          if (activeMedalAlbumId) {
+            for (const sessionId of repairedSessionIds) {
+              await evaluateMedalCollectionForRecording(
+                sessionId,
+                activeMedalAlbumId
+              );
+            }
+          }
+          const [savedMedalProgress, pendingMedalPresentations, retroScanComplete] =
+            await Promise.all([
+              activeMedalAlbumId
+                ? getMedalAlbumProgress(activeMedalAlbumId)
+                : Promise.resolve(null),
+              getPendingMedalPresentations(),
+              activeMedalAlbumId
+                ? hasCompletedMedalRetroScan(activeMedalAlbumId)
+                : Promise.resolve(false)
+            ]);
+
+          return {
+            pendingMedalPresentations,
+            retroScanComplete,
+            savedMedalProgress,
+            state: activeMedalAlbumId ? "ready" : "idle"
+          } as const;
+        } catch (error) {
+          return {
+            pendingMedalPresentations: [] as CollectedMedal[],
+            retroScanComplete: false,
+            savedMedalProgress: null,
+            state: activeMedalAlbumId ? "unavailable" : "idle"
+          } as const;
+        }
+      };
       const [
         lifetimeStats,
         savedHistory,
@@ -1140,26 +1221,21 @@ export function MapScreen({
         savedLoopFillSummaries,
         savedExpeditionSealCount,
         exploredCellIds,
-        todayNewExploredCellIds,
-        savedMedalProgress,
-        pendingMedalPresentations,
-        retroScanComplete
-      ] = await Promise.all([
-        getLifetimeStats(activityMode),
-        getWalkHistory(activityMode),
-        getLoopFillCellKeys(activityMode),
-        getLoopFillSessionSummaries(activityMode),
-        getDistrictExpeditionSealCount(),
-        getExploredCellKeys(activityMode),
-        getTodayNewExploredCellKeys(activityMode),
-        activeMedalAlbumId
-          ? getMedalAlbumProgress(activeMedalAlbumId)
-          : Promise.resolve(null),
-        getPendingMedalPresentations(),
-        activeMedalAlbumId
-          ? hasCompletedMedalRetroScan(activeMedalAlbumId)
-          : Promise.resolve(false)
-      ]);
+        todayNewExploredCellIds
+      ] = await measureAsyncPerformance(
+        "map.saved-data-queries",
+        () => Promise.all([
+          getLifetimeStats(activityMode),
+          getWalkHistory(activityMode),
+          getLoopFillCellKeys(activityMode),
+          getLoopFillSessionSummaries(activityMode),
+          getDistrictExpeditionSealCount(),
+          getExploredCellKeys(activityMode),
+          getTodayNewExploredCellKeys(activityMode)
+        ]),
+        100
+      );
+      const medalDataPromise = loadMedalData();
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
         (longest, walk) => {
@@ -1184,12 +1260,21 @@ export function MapScreen({
       setExpeditionSealCount(savedExpeditionSealCount);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
-      setMedalPresentationQueue(pendingMedalPresentations);
+      medalDataPromise.then((medalData) => {
+        if (activeMedalAlbumId !== activeMedalAlbumIdRef.current) {
+          return;
+        }
 
-      if (savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
-        setMedalProgress(savedMedalProgress);
-        setMedalRetroScanComplete(retroScanComplete);
-      }
+        setMedalPresentationQueue(medalData.pendingMedalPresentations);
+        setMedalPackLoadState(medalData.state);
+        if (medalData.savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
+          setMedalProgress(medalData.savedMedalProgress);
+          setMedalRetroScanComplete(medalData.retroScanComplete);
+        } else if (medalData.state === "unavailable") {
+          setMedalProgress(null);
+          setMedalRetroScanComplete(false);
+        }
+      });
       setStats({
         ...lifetimeStats,
         approximateExploredAreaSquareMeters: exploredCellIds.length * 15 * 15,
@@ -1222,16 +1307,27 @@ export function MapScreen({
           console.warn("Failed to refresh detailed recordings", error)
         );
       }
-    } finally {
-      if (hideExplorationDuringRefresh) {
-        // A failed cache refresh must never leave already valid exploration hidden.
-        await new Promise<void>((resolve) => setTimeout(resolve, 0));
+      } finally {
+        if (hideExplorationDuringRefresh) {
+          // A failed cache refresh must never leave already valid exploration hidden.
+          await new Promise<void>((resolve) => setTimeout(resolve, 0));
 
-        if (isMapReadyRef.current) {
-          setIsExplorationEnabled(true);
+          if (isMapReadyRef.current) {
+            setIsExplorationEnabled(true);
+          }
         }
       }
-    }
+    })();
+    const trackedOperation = operation.finally(() => {
+      if (savedDataRefreshOperationRef.current?.promise === trackedOperation) {
+        savedDataRefreshOperationRef.current = null;
+      }
+    });
+    savedDataRefreshOperationRef.current = {
+      key: operationKey,
+      promise: trackedOperation
+    };
+    return trackedOperation;
   }, [activeMedalAlbumId, activityMode, loadDetailedWalks]);
 
   useEffect(() => {
@@ -2297,7 +2393,7 @@ export function MapScreen({
     setMedalsVisible(false);
     setOptionsVisible(false);
     setDiagnosticsVisible(false);
-  }, []);
+  }, [publishCurrentLocation]);
   const handleReturnToMapFromAtlas = useCallback(() => {
     returnToMapFromAtlas(closeAllAtlasPages);
   }, [closeAllAtlasPages]);
@@ -4590,6 +4686,7 @@ export function MapScreen({
           <CityMedalProgress
             hasObjective={Boolean(objective)}
             language={language}
+            loadState={medalPackLoadState}
             objectiveVisible={Boolean(objective && objectiveHudVisible)}
             onObjectivePress={() => {
               if (!objective) {
@@ -4599,7 +4696,19 @@ export function MapScreen({
 
               setObjectiveHudVisible((visible) => !visible);
             }}
-            onPress={() => navigateAtlasPage("medals")}
+            onPress={() => {
+              if (medalPackLoadState === "unavailable") {
+                if (activeMedalAlbumId) {
+                  resetMedalCountryPackFailure(activeMedalAlbumId);
+                }
+                refreshSavedData({ hideExplorationDuringRefresh: false }).catch((error) =>
+                  console.warn("Failed to retry medal country pack", error)
+                );
+                return;
+              }
+
+              navigateAtlasPage("medals");
+            }}
             progress={activeMedalProgress}
           />
           {objective && objectiveHudVisible ? (
@@ -5109,6 +5218,7 @@ function ObjectiveHud({
 function CityMedalProgress({
   hasObjective,
   language,
+  loadState,
   objectiveVisible,
   onObjectivePress,
   onPress,
@@ -5116,6 +5226,7 @@ function CityMedalProgress({
 }: {
   hasObjective: boolean;
   language: AppLanguage;
+  loadState: MedalPackLoadState;
   objectiveVisible: boolean;
   onObjectivePress: () => void;
   onPress: () => void;
@@ -5124,8 +5235,18 @@ function CityMedalProgress({
   const collected = progress?.collectedCount ?? 0;
   const total = progress?.medals.length ?? 0;
   const ratio = total > 0 ? Math.min(100, (collected / total) * 100) : 0;
-  const city = progress?.album.cityName[language] ??
-    (language === "fr" ? "Aucun album local" : "No local album");
+  const city = progress?.album.cityName[language] ?? (
+    loadState === "loading"
+      ? language === "fr" ? "Téléchargement de l’album…" : "Downloading city album…"
+      : loadState === "unavailable"
+        ? language === "fr" ? "Album indisponible — toucher pour réessayer" : "Album unavailable — tap to retry"
+        : language === "fr" ? "Aucun album local" : "No local album"
+  );
+  const count = loadState === "loading"
+    ? "…"
+    : loadState === "unavailable"
+      ? "!"
+      : `${collected}/${total}`;
 
   return (
     <View style={styles.cityMedalHud}>
@@ -5133,6 +5254,7 @@ function CityMedalProgress({
       <TouchableOpacity
         accessibilityLabel={language === "fr" ? "Progression des m\u00e9dailles de la ville" : "City medal progress"}
         accessibilityRole="button"
+        disabled={loadState === "loading"}
         onPress={onPress}
         style={styles.cityMedalMain}
       >
@@ -5142,7 +5264,7 @@ function CityMedalProgress({
         <View style={styles.cityMedalContent}>
           <View style={styles.cityMedalHeader}>
             <Text numberOfLines={1} style={styles.cityMedalName}>{city}</Text>
-            <Text style={styles.cityMedalCount}>{collected}/{total}</Text>
+            <Text style={styles.cityMedalCount}>{count}</Text>
           </View>
           <View style={styles.cityMedalTrack}>
             <View style={[styles.cityMedalFill, { width: (ratio + "%") as DimensionValue }]} />

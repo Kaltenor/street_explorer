@@ -1,0 +1,106 @@
+{
+  "cityCode": "0935",
+  "reviewedAt": "2026-08-09",
+  "medals": [
+    {
+      "source": "dutch-rce", "id": "27168", "category": "culture",
+      "name": { "en": "Basilica of Saint Servatius", "fr": "Basilique Saint-Servais", "nl": "Sint-Servaasbasiliek" },
+      "description": { "en": "The Romanesque basilica at Vrijthof developed around the traditional burial place of Saint Servatius.", "fr": "La basilique romane du Vrijthof s’est développée autour du lieu de sépulture traditionnel de saint Servais.", "nl": "De romaanse basiliek aan het Vrijthof groeide rond de traditionele grafplaats van Sint Servaas." }
+    },
+    {
+      "source": "dutch-rce", "id": "27454", "category": "culture",
+      "name": { "en": "Basilica of Our Lady", "fr": "Basilique Notre-Dame", "nl": "Onze-Lieve-Vrouwebasiliek" },
+      "description": { "en": "This Romanesque basilica is distinguished by its massive westwork and intimate historic interior.", "fr": "Cette basilique romane se distingue par son imposant massif occidental et son intérieur historique intime.", "nl": "Deze romaanse basiliek valt op door haar massieve westwerk en intieme historische interieur." }
+    },
+    {
+      "source": "dutch-rce", "id": "27997", "category": "history",
+      "name": { "en": "Helpoort", "fr": "Helpoort", "nl": "Helpoort" },
+      "description": { "en": "The thirteenth-century gate is the oldest surviving city gate in the Netherlands.", "fr": "Cette porte du XIIIe siècle est la plus ancienne porte urbaine conservée des Pays-Bas.", "nl": "De dertiende-eeuwse poort is de oudste bewaard gebleven stadspoort van Nederland." }
+    },
+    {
+      "source": "dutch-rce", "id": "27382", "category": "history",
+      "name": { "en": "Maastricht City Hall", "fr": "Hôtel de ville de Maastricht", "nl": "Stadhuis Maastricht" },
+      "description": { "en": "The seventeenth-century city hall stands prominently at the centre of Maastricht’s Markt.", "fr": "L’hôtel de ville du XVIIe siècle occupe une position centrale sur le Markt de Maastricht.", "nl": "Het zeventiende-eeuwse stadhuis staat prominent in het midden van de Markt van Maastricht." }
+    },
+    {
+      "source": "dutch-rce", "id": "27223", "category": "history",
+      "name": { "en": "Dinghuis", "fr": "Dinghuis", "nl": "Dinghuis" },
+      "description": { "en": "The tall late-Gothic civic building formerly housed Maastricht’s courts and administrative functions.", "fr": "Ce haut édifice civil gothique tardif abritait autrefois les tribunaux et l’administration de Maastricht.", "nl": "Het hoge laatgotische bestuursgebouw huisvestte vroeger de rechtspraak en bestuurlijke functies van Maastricht." }
+    },
+    {
+      "source": "dutch-rce", "id": "28026", "category": "architecture",
+      "name": { "en": "Saint Servatius Bridge", "fr": "Pont Saint-Servais", "nl": "Sint Servaasbrug" },
+      "description": { "en": "The historic stone bridge across the Maas connects the old city with Wyck.", "fr": "Ce pont historique en pierre sur la Meuse relie la vieille ville au quartier de Wyck.", "nl": "De historische stenen brug over de Maas verbindt de oude stad met Wyck." }
+    },
+    {
+      "source": "dutch-rce", "id": "27253", "category": "culture",
+      "name": { "en": "Crosier Monastery Church", "fr": "Église du monastère des Croisiers", "nl": "Kruisherenkerk" },
+      "description": { "en": "The Gothic monastery church forms the spiritual centre of Maastricht’s former Crosier complex.", "fr": "Cette église gothique constitue le centre spirituel de l’ancien couvent des Croisiers de Maastricht.", "nl": "De gotische kloosterkerk vormt het geestelijke middelpunt van het voormalige Maastrichtse Kruisherencomplex." }
+    },
+    {
+      "source": "dutch-rce", "id": "27386", "category": "culture",
+      "name": { "en": "Old Friars Minor Church", "fr": "Ancienne église des Frères mineurs", "nl": "Oude Minderbroederskerk" },
+      "description": { "en": "The former medieval monastery church is an important survivor of Maastricht’s religious history.", "fr": "Cette ancienne église conventuelle médiévale est un témoin majeur de l’histoire religieuse de Maastricht.", "nl": "De voormalige middeleeuwse kloosterkerk is een belangrijk overblijfsel van de religieuze geschiedenis van Maastricht." }
+    },
+    {
+      "source": "dutch-rce", "id": "27486", "category": "architecture",
+      "name": { "en": "Bishop’s Mill", "fr": "Moulin de l’Évêque", "nl": "Bisschopsmolen" },
+      "description": { "en": "The historic watermill on the Jeker preserves a working element of Maastricht’s medieval urban economy.", "fr": "Ce moulin à eau historique sur le Jeker conserve un élément actif de l’économie urbaine médiévale.", "nl": "De historische watermolen aan de Jeker bewaart een werkend onderdeel van de middeleeuwse stadseconomie." }
+    },
+    {
+      "source": "dutch-rce", "id": "527161", "category": "art",
+      "name": { "en": "Museum Cellar Derlon", "fr": "Cave-musée Derlon", "nl": "Museumkelder Derlon" },
+      "description": { "en": "The museum cellar preserves Roman archaeological remains discovered beneath the modern hotel.", "fr": "La cave-musée conserve des vestiges archéologiques romains découverts sous l’hôtel moderne.", "nl": "De museumkelder bewaart Romeinse archeologische resten die onder het moderne hotel zijn ontdekt." }
+    },
+    {
+      "source": "dutch-rce", "id": "527874", "category": "history",
+      "name": { "en": "Château Neercanne", "fr": "Château Neercanne", "nl": "Kasteel Neercanne" },
+      "description": { "en": "The terraced baroque château overlooks the Jeker valley at the southern edge of Maastricht.", "fr": "Ce château baroque en terrasses domine la vallée du Jeker à l’extrémité sud de Maastricht.", "nl": "Het terrasvormige barokkasteel kijkt uit over het Jekerdal aan de zuidrand van Maastricht." }
+    },
+    {
+      "source": "dutch-rce", "id": "28018", "category": "history",
+      "name": { "en": "Fort Willem I", "fr": "Fort Guillaume Ier", "nl": "Fort Willem I" },
+      "description": { "en": "The nineteenth-century fort formed part of Maastricht’s strategic defensive landscape.", "fr": "Ce fort du XIXe siècle appartenait au paysage défensif stratégique de Maastricht.", "nl": "Het negentiende-eeuwse fort maakte deel uit van het strategische verdedigingslandschap van Maastricht." }
+    },
+    {
+      "source": "dutch-rce", "id": "27976", "category": "history",
+      "name": { "en": "Lichtenberg Castle Ruins", "fr": "Ruines du château de Lichtenberg", "nl": "Kasteelruïne Lichtenberg" },
+      "description": { "en": "The hilltop ruins preserve remains of a medieval castle above the Sint-Pietersberg landscape.", "fr": "Ces ruines sur les hauteurs conservent les vestiges d’un château médiéval dominant le Sint-Pietersberg.", "nl": "De ruïne op de heuvel bewaart resten van een middeleeuws kasteel boven het landschap van de Sint-Pietersberg." }
+    },
+    {
+      "source": "dutch-rce", "id": "27704", "category": "culture",
+      "name": { "en": "Saint John’s Church", "fr": "Église Saint-Jean", "nl": "Sint-Janskerk" },
+      "description": { "en": "The Gothic church and its red tower form a defining ensemble beside Saint Servatius at Vrijthof.", "fr": "L’église gothique et sa tour rouge forment un ensemble emblématique avec Saint-Servais sur le Vrijthof.", "nl": "De gotische kerk en haar rode toren vormen samen met de Sint-Servaas een beeldbepalend ensemble aan het Vrijthof." }
+    },
+    {
+      "source": "dutch-rce", "id": "506705", "category": "culture",
+      "name": { "en": "Bonbonnière Theatre", "fr": "Théâtre Bonbonnière", "nl": "Theater de Bonbonnière" },
+      "description": { "en": "The intimate historic theatre recalls Maastricht’s long tradition of urban performance and entertainment.", "fr": "Ce théâtre historique intime rappelle la longue tradition de spectacles et de divertissements de Maastricht.", "nl": "Het intieme historische theater herinnert aan Maastrichts lange traditie van toneel en stedelijk vermaak." }
+    },
+    {
+      "source": "dutch-rce", "id": "506644", "category": "architecture",
+      "name": { "en": "Sacred Heart Dome Church", "fr": "Église du Sacré-Cœur à coupole", "nl": "Koepelkerk Heilig Hart" },
+      "description": { "en": "The twentieth-century domed church is a striking landmark of Maastricht’s interwar architecture.", "fr": "Cette église à coupole du XXe siècle est un repère remarquable de l’architecture maastrichtoise de l’entre-deux-guerres.", "nl": "De twintigste-eeuwse koepelkerk is een opvallend herkenningspunt van de Maastrichtse architectuur uit het interbellum." }
+    },
+    {
+      "source": "dutch-rce", "id": "506709", "category": "art",
+      "name": { "en": "Jesuit Caves", "fr": "Grottes des Jésuites", "nl": "Jezuïetenberg" },
+      "description": { "en": "Students and artists created an extensive underground collection of carvings and drawings in the marl quarries.", "fr": "Étudiants et artistes ont créé dans les carrières de marne un vaste ensemble souterrain de sculptures et de dessins.", "nl": "Studenten en kunstenaars maakten in de mergelgroeven een uitgebreide ondergrondse verzameling beeldhouwwerken en tekeningen." }
+    },
+    {
+      "source": "dutch-rce", "id": "506843", "category": "nature",
+      "name": { "en": "Villa Kruisdonk Landscape Park", "fr": "Parc paysager de la villa Kruisdonk", "nl": "Landschapspark Villa Kruisdonk" },
+      "description": { "en": "The English-style landscape park preserves historic planting and spatial design around Villa Kruisdonk.", "fr": "Ce parc paysager à l’anglaise conserve plantations et composition historiques autour de la villa Kruisdonk.", "nl": "Het landschapspark in Engelse stijl bewaart historische beplanting en ruimtelijke opzet rond Villa Kruisdonk." }
+    },
+    {
+      "source": "dutch-rce", "id": "506881", "category": "nature",
+      "name": { "en": "Petite Suisse Park", "fr": "Parc Petite Suisse", "nl": "Park Petite Suisse" },
+      "description": { "en": "The historic park layout uses Maastricht’s varied terrain to create a compact romantic landscape.", "fr": "Ce parc historique exploite le relief varié de Maastricht pour former un paysage romantique compact.", "nl": "De historische parkaanleg benut het gevarieerde Maastrichtse reliëf voor een compact romantisch landschap." }
+    },
+    {
+      "source": "dutch-rce", "id": "27956", "category": "architecture",
+      "name": { "en": "Sint Servaas Watermill", "fr": "Moulin à eau Saint-Servais", "nl": "Watermolen Sint Servaas" },
+      "description": { "en": "This historic watermill on the Jeker illustrates the use of flowing water in Maastricht’s built landscape.", "fr": "Ce moulin historique sur le Jeker illustre l’utilisation de l’eau courante dans le paysage bâti de Maastricht.", "nl": "Deze historische watermolen aan de Jeker toont het gebruik van stromend water in het gebouwde landschap van Maastricht." }
+    }
+  ]
+}
