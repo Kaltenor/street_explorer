@@ -67,6 +67,7 @@ type ExplorationMapProps = {
   activeMode: ActivityMode;
   focusedMedal: CollectedMedal | null;
   medalFocusRequestId: number;
+  lockedMedalLabel: string;
   medals: CollectedMedal[];
   onMedalPress?: (medal: CollectedMedal) => void;
   currentLocation: GpsPoint | null;
@@ -140,6 +141,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   currentLocation,
   focusedMedal,
   medalFocusRequestId,
+  lockedMedalLabel,
   medals,
   onMedalPress,
   highlightedSessionId,
@@ -641,6 +643,7 @@ export const ExplorationMap = memo(function ExplorationMap({
             key={`medal-${medal.albumId}-${medal.id}-${
               medal.isCollected ? "collected" : "locked"
             }`}
+            lockedLabel={lockedMedalLabel}
             medal={medal}
             onMedalPress={onMedalPress}
           />
@@ -765,20 +768,27 @@ const AtlasRouteMarker = memo(function AtlasRouteMarker({
 });
 
 const AtlasMedalMarker = memo(function AtlasMedalMarker({
+  lockedLabel,
   medal,
   onMedalPress
 }: {
+  lockedLabel: string;
   medal: CollectedMedal;
   onMedalPress?: (medal: CollectedMedal) => void;
 }) {
   return (
     <Marker
       accessibilityLabel={
-        medal.name.en + ", " + (medal.isCollected ? "collected" : "locked")
+        medal.name.en + ", " + (medal.isCollected ? "collected" : lockedLabel)
       }
       anchor={{ x: 0.5, y: 0.5 }}
       coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
-      onPress={onMedalPress ? () => onMedalPress(medal) : undefined}
+      description={medal.isCollected ? undefined : lockedLabel}
+      onPress={
+        medal.isCollected && onMedalPress
+          ? () => onMedalPress(medal)
+          : undefined
+      }
       title={medal.name.en}
       tracksViewChanges={false}
     >

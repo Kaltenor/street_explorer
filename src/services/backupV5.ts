@@ -30,7 +30,7 @@ export type BackupMedalSystem = {
     albumId: string;
     medalId: string;
     sessionId: number | null;
-    reason: "recording" | "retro_scan";
+    reason: "discovered_area" | "recording" | "retro_scan";
     enclosureId: string;
     anchorCellId: string;
     enclosureAreaSquareMeters: number;
@@ -907,7 +907,7 @@ function assertBackupV5MedalSystem(
       typeof event.albumId !== "string" ||
       typeof event.medalId !== "string" ||
       (event.sessionId !== null && !sessionIds.has(event.sessionId)) ||
-      !["recording", "retro_scan"].includes(event.reason) ||
+      !["discovered_area", "recording", "retro_scan"].includes(event.reason) ||
       typeof event.enclosureId !== "string" ||
       typeof event.anchorCellId !== "string" ||
       !isFiniteNumber(event.enclosureAreaSquareMeters) ||
@@ -995,8 +995,6 @@ function assertBackupV5ExpeditionSystem(
     "explore_cells"
   ]);
   const expeditionIds = new Set<string>();
-  let activeCount = 0;
-
   for (const expedition of expeditionSystem.expeditions as unknown[]) {
     if (
       !isRecord(expedition) ||
@@ -1022,18 +1020,7 @@ function assertBackupV5ExpeditionSystem(
       throw new Error("V5 backup contains an invalid district expedition.");
     }
 
-    if (
-      expedition.acceptedAt !== null &&
-      expedition.abandonedAt === null &&
-      expedition.completedAt === null
-    ) {
-      activeCount += 1;
-    }
     expeditionIds.add(expedition.id);
-  }
-
-  if (activeCount > 1) {
-    throw new Error("V5 backup contains multiple active expeditions.");
   }
 
   const sealIds = new Set<string>();

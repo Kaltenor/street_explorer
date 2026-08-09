@@ -14,16 +14,34 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { AtlasModalHeader, AtlasScreen, AtlasSectionLabel } from "./AtlasCabinet";
 import { APP_COLORS } from "../constants/theme";
+import type { CachedZone } from "../database/completionRepository";
 import { AppLanguage } from "../i18n";
-import { CollectedMedal, MedalAlbumProgress, MedalCategory } from "../types/medal";
+import { isPointInsideZone } from "../services/zoneCompletion";
+import {
+  CollectedMedal,
+  CollectedMedalCity,
+  LocalizedMedalText,
+  MedalAlbumProgress,
+  MedalCategory
+} from "../types/medal";
 import {
   MedalWikipediaReader,
   WikipediaReaderOrigin
 } from "./MedalWikipediaReader";
 
-type CategoryFilter = "all" | MedalCategory;
+type DistrictFilter = "all" | string;
+type MedalScope = "city" | "allCities";
+
+type MedalDistrictOption = {
+  fallbackNumber: number | null;
+  id: string;
+  label: string;
+  zone: CachedZone | null;
+};
 
 type MedalCollectionModalProps = {
+  collectedCities: CollectedMedalCity[];
+  districtZones: CachedZone[];
   language: AppLanguage;
   progress: MedalAlbumProgress | null;
   retroScanComplete: boolean;
@@ -43,6 +61,8 @@ const CATEGORY_ICONS: Record<MedalCategory, keyof typeof Ionicons.glyphMap> = {
 };
 
 export function MedalCollectionModal({
+  collectedCities,
+  districtZones,
   language,
   progress,
   retroScanComplete,
@@ -52,21 +72,51 @@ export function MedalCollectionModal({
   onFocusMedal,
   onRunRetroScan
 }: MedalCollectionModalProps) {
-  const [category, setCategory] = useState<CategoryFilter>("all");
+  const [district, setDistrict] = useState<DistrictFilter>("all");
+  const [scope, setScope] = useState<MedalScope>("city");
   const [wikipediaSelection, setWikipediaSelection] = useState<{
+    cityName: LocalizedMedalText;
     medal: CollectedMedal;
     origin: WikipediaReaderOrigin;
   } | null>(null);
   const text = getText(language);
+  const districtOptions = useMemo(
+    () => buildDistrictOptions({
+      districtLabel: text.district,
+      language,
+      medals: progress?.medals ?? [],
+      zones: districtZones
+    }),
+    [districtZones, language, progress?.medals, text.district]
+  );
+  const districtByMedalId = useMemo(
+    () => new Map(
+      (progress?.medals ?? []).map((medal) => [
+        medal.id,
+        districtOptions.find((option) => medalMatchesDistrict(medal, option)) ?? null
+      ])
+    ),
+    [districtOptions, progress?.medals]
+  );
   const filteredMedals = useMemo(
     () =>
       progress?.medals.filter(
-        (medal) => category === "all" || medal.category === category
+        (medal) => district === "all" || districtByMedalId.get(medal.id)?.id === district
       ) ?? [],
-    [category, progress]
+    [district, districtByMedalId, progress]
   );
   const collectedMedals = filteredMedals.filter((medal) => medal.isCollected);
   const lockedMedals = filteredMedals.filter((medal) => !medal.isCollected);
+  const sortedCollectedCities = useMemo(
+    () => [...collectedCities].sort((left, right) =>
+      left.cityName[language].localeCompare(right.cityName[language], language)
+    ),
+    [collectedCities, language]
+  );
+  const allCitiesCollectedCount = sortedCollectedCities.reduce(
+    (total, city) => total + city.medals.length,
+    0
+  );
 
   useEffect(() => {
     if (!visible) {
@@ -74,11 +124,22 @@ export function MedalCollectionModal({
     }
   }, [visible]);
 
+  useEffect(() => {
+    if (
+      district !== "all" &&
+      !districtOptions.some((option) => option.id === district)
+    ) {
+      setDistrict("all");
+    }
+  }, [district, districtOptions]);
+
   const openWikipedia = (
+    cityName: LocalizedMedalText,
     medal: CollectedMedal,
     event: GestureResponderEvent
   ) => {
     setWikipediaSelection({
+      cityName,
       medal,
       origin: {
         x: event.nativeEvent.pageX,
@@ -106,51 +167,85 @@ export function MedalCollectionModal({
           emblem="ribbon-outline"
           eyebrow={text.collection}
           onBack={onClose}
-          subtitle={`${progress?.collectedCount ?? 0}/${progress?.medals.length ?? 0} ${text.collected}`}
-          title={progress?.album.cityName[language] ?? "Lyon"}
+          subtitle={scope === "allCities"
+            ? `${allCitiesCollectedCount} ${text.collected} · ${sortedCollectedCities.length} ${text.cities}`
+            : `${progress?.collectedCount ?? 0}/${progress?.medals.length ?? 0} ${text.collected}`}
+          title={scope === "allCities"
+            ? text.allCities
+            : progress?.album.cityName[language] ?? text.medals}
         />
 
         <View style={styles.filterPanel}>
-          <AtlasSectionLabel icon="albums-outline" title={text.browse} />
+          <AtlasSectionLabel icon="earth-outline" title={text.scope} />
           <ScrollView
             horizontal
             contentContainerStyle={styles.filters}
             showsHorizontalScrollIndicator={false}
             style={styles.filterScroller}
           >
-            {(["all", "architecture", "history", "art", "culture", "nature"] as CategoryFilter[]).map(
-              (filter) => (
+            {(["city", "allCities"] as MedalScope[]).map((nextScope) => (
+              <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityState={{ selected: scope === nextScope }}
+                key={nextScope}
+                onPress={() => setScope(nextScope)}
+                style={[styles.filter, scope === nextScope ? styles.filterActive : null]}
+              >
+                <Text style={[styles.filterText, scope === nextScope ? styles.filterTextActive : null]}>
+                  {nextScope === "allCities"
+                    ? text.allCities
+                    : progress?.album.cityName[language] ?? text.currentCity}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+          {scope === "city" ? <>
+            <AtlasSectionLabel icon="map-outline" title={text.browse} />
+            <ScrollView
+              horizontal
+              contentContainerStyle={styles.filters}
+              showsHorizontalScrollIndicator={false}
+              style={styles.filterScroller}
+            >
+              {(["all", ...districtOptions.map((option) => option.id)] as DistrictFilter[]).map((filter) => (
                 <TouchableOpacity
                   accessibilityRole="button"
-                  accessibilityState={{ selected: category === filter }}
+                  accessibilityState={{ selected: district === filter }}
                   key={filter}
-                  onPress={() => setCategory(filter)}
-                  style={[styles.filter, category === filter ? styles.filterActive : null]}
+                  onPress={() => setDistrict(filter)}
+                  style={[styles.filter, district === filter ? styles.filterActive : null]}
                 >
-                  <Text style={[styles.filterText, category === filter ? styles.filterTextActive : null]}>
-                    {text.categories[filter]}
+                  <Text style={[styles.filterText, district === filter ? styles.filterTextActive : null]}>
+                    {filter === "all"
+                      ? text.all
+                      : districtOptions.find((option) => option.id === filter)?.label ?? filter}
                   </Text>
                 </TouchableOpacity>
-              )
-            )}
-          </ScrollView>
+              ))}
+            </ScrollView>
+          </> : null}
         </View>
 
         <ScrollView contentContainerStyle={styles.medalGrid}>
-          <MedalSection
+          {scope === "city" ? <>
+            <MedalSection
+            cityName={progress?.album.cityName}
             emptyLabel={text.noUnlocked}
             language={language}
             medals={collectedMedals}
             onFocusMedal={onFocusMedal}
             onOpenWikipedia={openWikipedia}
+            districtByMedalId={districtByMedalId}
             title={text.unlockedSection}
           />
           <MedalSection
+            cityName={progress?.album.cityName}
             emptyLabel={text.noLocked}
             language={language}
             medals={lockedMedals}
             onFocusMedal={onFocusMedal}
             onOpenWikipedia={openWikipedia}
+            districtByMedalId={districtByMedalId}
             title={text.lockedSection}
           />
 
@@ -174,12 +269,27 @@ export function MedalCollectionModal({
           </View>
 
           <Text style={styles.attribution}>{progress?.album.sourceAttribution}</Text>
+          </> : sortedCollectedCities.length === 0 ? (
+            <Text style={styles.emptySection}>{text.noAllCities}</Text>
+          ) : sortedCollectedCities.map((city) => (
+            <MedalSection
+              cityName={city.cityName}
+              emptyLabel={text.noUnlocked}
+              key={city.albumId}
+              language={language}
+              medals={city.medals}
+              onFocusMedal={onFocusMedal}
+              onOpenWikipedia={openWikipedia}
+              sourceAttribution={city.sourceAttribution}
+              title={city.cityName[language].toUpperCase()}
+            />
+          ))}
         </ScrollView>
           </AtlasScreen>
         </View>
-        {wikipediaSelection && progress ? (
+        {wikipediaSelection ? (
           <MedalWikipediaReader
-            cityName={progress.album.cityName}
+            cityName={wikipediaSelection.cityName}
             language={language}
             medal={wikipediaSelection.medal}
             onClosed={() => setWikipediaSelection(null)}
@@ -192,18 +302,28 @@ export function MedalCollectionModal({
 }
 
 function MedalSection({
+  cityName,
+  districtByMedalId,
   emptyLabel,
   language,
   medals,
   onFocusMedal,
   onOpenWikipedia,
+  sourceAttribution,
   title
 }: {
+  cityName?: LocalizedMedalText;
+  districtByMedalId?: Map<string, MedalDistrictOption | null>;
   emptyLabel: string;
   language: AppLanguage;
   medals: CollectedMedal[];
   onFocusMedal: (medal: CollectedMedal) => void;
-  onOpenWikipedia: (medal: CollectedMedal, event: GestureResponderEvent) => void;
+  onOpenWikipedia: (
+    cityName: LocalizedMedalText,
+    medal: CollectedMedal,
+    event: GestureResponderEvent
+  ) => void;
+  sourceAttribution?: string;
   title: string;
 }) {
   const text = getText(language);
@@ -238,16 +358,22 @@ function MedalSection({
               <Text style={[styles.medalName, !medal.isCollected ? styles.lockedText : null]}>
                 {medal.name[language]}
               </Text>
-              <Text style={styles.category}>{text.categories[medal.category]}</Text>
+              <Text style={styles.category}>
+                {districtByMedalId?.get(medal.id)?.label ?? (
+                  medal.arrondissement
+                    ? `${text.district} ${medal.arrondissement}`
+                    : text.citywide
+                )}
+              </Text>
             </View>
             <Ionicons color={APP_COLORS.textMuted} name="locate-outline" size={20} />
           </TouchableOpacity>
-          {medal.isCollected ? (
+          {medal.isCollected && cityName ? (
             <TouchableOpacity
               accessibilityHint={text.wikipediaHint}
               accessibilityLabel={`${text.wikipedia}: ${medal.name[language]}`}
               accessibilityRole="link"
-              onPress={(event) => onOpenWikipedia(medal, event)}
+              onPress={(event) => onOpenWikipedia(cityName, medal, event)}
               style={styles.wikipediaAction}
             >
               <Text numberOfLines={3} style={styles.description}>
@@ -262,22 +388,110 @@ function MedalSection({
           ) : null}
         </View>
       ))}
+      {sourceAttribution ? (
+        <Text style={styles.attribution}>{sourceAttribution}</Text>
+      ) : null}
     </View>
   );
+}
+
+function buildDistrictOptions({
+  districtLabel,
+  language,
+  medals,
+  zones
+}: {
+  districtLabel: string;
+  language: AppLanguage;
+  medals: CollectedMedal[];
+  zones: CachedZone[];
+}): MedalDistrictOption[] {
+  if (zones.length > 0) {
+    return zones
+      .map((zone) => {
+        const number = getDistrictNumber(zone.name);
+
+        return {
+          fallbackNumber: number,
+          id: zone.id,
+          label: number === null ? zone.name : `${districtLabel} ${number}`,
+          zone
+        };
+      })
+      .sort((left, right) => {
+        if (left.fallbackNumber !== null && right.fallbackNumber !== null) {
+          return left.fallbackNumber - right.fallbackNumber;
+        }
+
+        if (left.fallbackNumber !== null) {
+          return -1;
+        }
+
+        if (right.fallbackNumber !== null) {
+          return 1;
+        }
+
+        return left.label.localeCompare(right.label, language);
+      });
+  }
+
+  const highestNumber = medals.reduce(
+    (highest, medal) => Math.max(highest, medal.arrondissement ?? 0),
+    0
+  );
+
+  return Array.from({ length: highestNumber }, (_, index) => {
+    const number = index + 1;
+
+    return {
+      fallbackNumber: number,
+      id: `district-number:${number}`,
+      label: `${districtLabel} ${number}`,
+      zone: null
+    };
+  });
+}
+
+function medalMatchesDistrict(
+  medal: CollectedMedal,
+  district: MedalDistrictOption
+) {
+  if (district.zone) {
+    return isPointInsideZone(
+      { latitude: medal.latitude, longitude: medal.longitude },
+      district.zone
+    );
+  }
+
+  return medal.arrondissement === district.fallbackNumber;
+}
+
+function getDistrictNumber(name: string) {
+  const match = /(?:^|\D)(\d{1,2})(?:er|e|eme|ème|st|nd|rd|th)?\s*(?:arrondissement|district)(?:\D|$)/i.exec(
+    name
+  ) ?? /(?:arrondissement|district)\D*(\d{1,2})(?:\D|$)/i.exec(name);
+  const number = match?.[1] ? Number(match[1]) : Number.NaN;
+
+  return Number.isInteger(number) && number > 0 ? number : null;
 }
 
 function getText(language: AppLanguage) {
   if (language === "fr") {
     return {
-      categories: {
-        all: "Toutes", architecture: "Architecture", art: "Art",
-        culture: "Culture", history: "Histoire", nature: "Nature"
-      } as Record<CategoryFilter, string>,
+      all: "Toutes",
+      allCities: "Toutes les villes",
+      cities: "villes",
+      citywide: "Toute la ville",
       close: "Fermer", collected: "collect\u00e9es", collection: "M\u00c9DAILLES DE LIEUX",
+      currentCity: "Ville actuelle",
+      district: "Arrondissement",
       locked: "verrouill\u00e9e", lockedSection: "VERROUILL\u00c9ES", mapHint: "Afficher ce lieu sur la carte",
-      noLocked: "Toutes les m\u00e9dailles de cette cat\u00e9gorie sont collect\u00e9es.",
-      noUnlocked: "Aucune m\u00e9daille collect\u00e9e dans cette cat\u00e9gorie.",
-      browse: "CAT\u00c9GORIES DE L'ATLAS",
+      medals: "M\u00e9dailles",
+      noAllCities: "Aucune m\u00e9daille n'a encore \u00e9t\u00e9 collect\u00e9e dans les villes visit\u00e9es.",
+      noLocked: "Toutes les m\u00e9dailles de cette zone sont collect\u00e9es.",
+      noUnlocked: "Aucune m\u00e9daille collect\u00e9e dans cette zone.",
+      browse: "ARRONDISSEMENTS",
+      scope: "ALBUM",
       unlocked: "collect\u00e9e", unlockedSection: "COLLECT\u00c9ES",
       pastWalks: "Parcours pr\u00e9c\u00e9dents", scan: "Analyser mes parcours",
       scanAgain: "Analyser \u00e0 nouveau", scanComplete: "Vos parcours pr\u00e9c\u00e9dents ont \u00e9t\u00e9 analys\u00e9s avec les m\u00eames r\u00e8gles GPS strictes.",
@@ -288,15 +502,20 @@ function getText(language: AppLanguage) {
   }
 
   return {
-    categories: {
-      all: "All", architecture: "Architecture", art: "Art",
-      culture: "Culture", history: "History", nature: "Nature"
-    } as Record<CategoryFilter, string>,
+    all: "All",
+    allCities: "All Cities",
+    cities: "cities",
+    citywide: "Citywide",
     close: "Close", collected: "collected", collection: "LANDMARK MEDALS",
+    currentCity: "Current city",
+    district: "District",
     locked: "locked", lockedSection: "LOCKED", mapHint: "Show this landmark on the map",
-    noLocked: "Every medal in this category is collected.",
-    noUnlocked: "No collected medals in this category yet.",
-    browse: "ATLAS CATEGORIES",
+    medals: "Medals",
+    noAllCities: "No medals have been collected in visited cities yet.",
+    noLocked: "Every medal in this area is collected.",
+    noUnlocked: "No collected medals in this area yet.",
+    browse: "DISTRICTS",
+    scope: "ALBUM",
     unlocked: "collected", unlockedSection: "UNLOCKED",
     pastWalks: "Past walks", scan: "Scan my walks", scanAgain: "Scan again",
     scanComplete: "Your past walks have been scanned with the same strict GPS rules.",

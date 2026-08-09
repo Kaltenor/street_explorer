@@ -1,0 +1,29 @@
+Erscheinungsmonat: August 2025
+
+Ihr Kontakt zu uns:
+www.destatis.de/kontakt
+
+
+(c) Daten (im Auftrag der Herausgebergemeinschaft Statistische Ämter des Bundes und der Länder)
+    Statistisches Bundesamt (Destatis), 2025
+    Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.
+
+Die Bevölkerungsangaben basieren für alle Bundesländer auf dem Stichtag 31.12.2024 (ZENSUS 2022).
+
+Da die Bevölkerung ab Berichtsjahr 2024 auf der Grundlage des Zensus 2022 basiert,
+ist die Bevölkerung nur bedingt mit den Vorjahreswerten vergleichbar.
+Erläuterungen dazu finden Sie unter www.destatis.de beim Bevölkerungsstand.
+
+Die Flächenangaben basieren für alle Bundesländer auf dem Stichtag 31.12.2024.
+
+Aufgrund fachlicher und methodischer Umstellungen in der Vermessungsverwaltung 
+auf das "Amtliche Liegenschaftskataster-Informationssystem" (ALKIS®) ist der 
+Vergleich der Flächendaten ab 2016 mit den Flächendaten vorangegangener 
+Jahre nur eingeschränkt möglich.		
+
+Abweichungen zu den Fläche- und Bevölkerungsangaben zur letzten
+Ausgabe des GV100AD sind bei den Gemeinden möglich,
+deren Fläche und/oder Bevölkerung im Zuge einer Gebietsänderung geändert wurde(n).
+
+Durch die Aufnahme der sorbischen Schreibweise in den amtlichen Gemeindenamen ist es 
+notwendig geworden, die Daten mit UTF-8 zu kodieren.

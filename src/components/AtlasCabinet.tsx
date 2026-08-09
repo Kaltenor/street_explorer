@@ -26,7 +26,8 @@ import {
   type TextStyle,
   TouchableOpacity,
   type ViewStyle,
-  View
+  View,
+  useWindowDimensions
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAudioPlayer } from "expo-audio";
@@ -46,7 +47,8 @@ type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
 
 const ATLAS_REWARD_JINGLE_DELAY_MS = 90;
 const ATLAS_PAGE_SOUND_VOLUME = 0.5;
-const ATLAS_DOCK_HIT_SLOP = { bottom: 3, left: 3, right: 3, top: 3 } as const;
+const ATLAS_DOCK_HIT_SLOP = { bottom: 2, left: 2, right: 2, top: 2 } as const;
+const ATLAS_DOCK_COMPACT_HIT_SLOP = { bottom: 5, left: 5, right: 5, top: 5 } as const;
 const DAYLIGHT_STAMP_DROP_STYLE: TextStyle = { color: "rgba(1, 7, 11, 0.95)" };
 const DAYLIGHT_STAMP_GOLD_FACE_STYLE: TextStyle = {
   color: "#f5c451",
@@ -60,7 +62,7 @@ const DAYLIGHT_STAMP_PARCHMENT_FACE_STYLE: TextStyle = {
   textShadowOffset: { height: 0, width: 0 },
   textShadowRadius: 1.5
 };
-const ATLAS_PAGE_DOCK_HEIGHT = 44;
+export const ATLAS_NAVIGATION_DOCK_HEIGHT = 56;
 const ATLAS_SOUND_PLAYERS: Record<AtlasSound, AtlasAudioPlayer> = {
   ink: createAudioPlayer(require("../../assets/sounds/atlas-stamp.wav")),
   page: createAudioPlayer(require("../../assets/sounds/atlas-page.wav")),
@@ -117,6 +119,7 @@ export function playAtlasSound(sound: AtlasSound) {
 }
 
 export type AtlasPageId =
+  | "map"
   | "completion"
   | "details"
   | "expeditions"
@@ -150,6 +153,7 @@ const ATLAS_DOCK_ITEMS: Array<{
   icon: keyof typeof Ionicons.glyphMap;
   id: AtlasPageId;
 }> = [
+  { icon: "map-outline", id: "map" },
   { icon: "footsteps-outline", id: "details" },
   { icon: "time-outline", id: "history" },
   { icon: "trophy-outline", id: "completion" },
@@ -176,14 +180,13 @@ export function AtlasNavigationDock({
   placement: "map" | "page";
 }) {
   const strings = getStrings(language);
+  const isCompactDock = useWindowDimensions().width < 360;
   const [previewPage, setPreviewPage] = useState<AtlasPageId | null>(null);
   const previewPageRef = useRef<AtlasPageId | null>(null);
   const previewOpacity = useRef(new Animated.Value(0)).current;
   const previewDismissTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const suppressNextPressRef = useRef(false);
-  const expandedPage = placement === "page"
-    ? activePage
-    : previewPage ?? (medalPulse ? "medals" : null);
+  const expandedPage = previewPage ?? activePage ?? (medalPulse ? "medals" : null);
 
   useEffect(() => () => {
     if (previewDismissTimerRef.current) {
@@ -192,6 +195,7 @@ export function AtlasNavigationDock({
   }, []);
 
   const labels: Record<AtlasPageId, string> = {
+    map: strings.common.map,
     completion: strings.common.completion,
     details: strings.common.details,
     expeditions: language === "fr" ? "Expéditions" : "Expeditions",
@@ -243,12 +247,7 @@ export function AtlasNavigationDock({
   };
 
   return (
-    <View
-      style={[
-        styles.navigationDock,
-        placement === "page" ? styles.pageNavigationDock : styles.mapNavigationDock
-      ]}
-    >
+    <View style={styles.navigationDock}>
       <View pointerEvents="none" style={styles.navigationDockFrame}>
         <AtlasHudTexture opacity={0.07} />
       </View>
@@ -256,6 +255,7 @@ export function AtlasNavigationDock({
         const expanded = expandedPage === item.id;
         const active = activePage === item.id || (item.id === "medals" && medalPulse);
         const highlighted = active || expanded;
+        const previewing = placement === "map" && previewPage === item.id;
 
         return (
             <TouchableOpacity
@@ -264,7 +264,7 @@ export function AtlasNavigationDock({
               accessibilityState={{ disabled, selected: active }}
               delayLongPress={320}
               disabled={disabled}
-              hitSlop={ATLAS_DOCK_HIT_SLOP}
+              hitSlop={isCompactDock ? ATLAS_DOCK_COMPACT_HIT_SLOP : ATLAS_DOCK_HIT_SLOP}
               onLongPress={placement === "map" ? () => beginPreview(item.id) : undefined}
               onPress={() => {
                 if (suppressNextPressRef.current) {
@@ -278,8 +278,10 @@ export function AtlasNavigationDock({
               key={item.id}
               style={[
                 styles.navigationDockItem,
+                isCompactDock ? styles.navigationDockItemCompact : null,
                 highlighted ? styles.navigationDockItemActive : null,
                 expanded ? styles.navigationDockItemExpanded : null,
+                expanded && isCompactDock ? styles.navigationDockItemExpandedCompact : null,
                 index === ATLAS_DOCK_ITEMS.length - 1
                   ? styles.navigationDockOptionsItem
                   : null,
@@ -289,14 +291,15 @@ export function AtlasNavigationDock({
               <Ionicons
                 color={highlighted ? APP_COLORS.gold : APP_COLORS.text}
                 name={item.id === "medals" && medalPulse ? "medal" : item.icon}
-                size={19}
+                size={21}
               />
               {expanded ? (
                 <Animated.Text
                   numberOfLines={1}
                   style={[
                     styles.navigationDockLabel,
-                    { opacity: placement === "page" || medalPulse ? 1 : previewOpacity }
+                    isCompactDock ? styles.navigationDockLabelCompact : null,
+                    { opacity: previewing ? previewOpacity : 1 }
                   ]}
                 >
                   {labels[item.id]}
@@ -305,6 +308,45 @@ export function AtlasNavigationDock({
             </TouchableOpacity>
         );
       })}
+    </View>
+  );
+}
+
+export function AtlasNavigationDockLayer({
+  activePage,
+  disabled = false,
+  language,
+  medalPulse = false,
+  medalTabRef,
+  onNavigate,
+  placement
+}: {
+  activePage: AtlasPageId;
+  disabled?: boolean;
+  language: AppLanguage;
+  medalPulse?: boolean;
+  medalTabRef?: Ref<ComponentRef<typeof TouchableOpacity>>;
+  onNavigate: (page: AtlasPageId) => void;
+  placement: "map" | "page";
+}) {
+  const safeAreaInsets = useSafeAreaInsets();
+
+  return (
+    <View
+      style={[
+        styles.navigationDockLayer,
+        { paddingBottom: Math.max(safeAreaInsets.bottom, 6) }
+      ]}
+    >
+      <AtlasNavigationDock
+        activePage={activePage}
+        disabled={disabled}
+        language={language}
+        medalPulse={medalPulse}
+        medalTabRef={medalTabRef}
+        onNavigate={onNavigate}
+        placement={placement}
+      />
     </View>
   );
 }
@@ -469,7 +511,10 @@ export function AtlasScreen({
           style={[
             styles.screenContent,
             navigation
-              ? { paddingBottom: ATLAS_PAGE_DOCK_HEIGHT + Math.max(safeAreaInsets.bottom, 6) }
+              ? {
+                  paddingBottom:
+                    ATLAS_NAVIGATION_DOCK_HEIGHT + Math.max(safeAreaInsets.bottom, 6)
+                }
               : null,
             {
               opacity: entrance,
@@ -485,29 +530,13 @@ export function AtlasScreen({
           {children}
         </Animated.View>
         {navigation ? (
-          <Animated.View
-            style={[
-              styles.pageDockLayer,
-              {
-                opacity: entrance,
-                paddingBottom: Math.max(safeAreaInsets.bottom, 6),
-                transform: [{
-                  translateY: entrance.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: reducedMotion ? [0, 0] : [28, 0]
-                  })
-                }]
-              }
-            ]}
-          >
-            <AtlasNavigationDock
-              activePage={navigation.activePage}
-              disabled={swipeBackDisabled}
-              language={navigation.language}
-              onNavigate={navigation.onNavigate}
-              placement="page"
-            />
-          </Animated.View>
+          <AtlasNavigationDockLayer
+            activePage={navigation.activePage ?? "map"}
+            disabled={swipeBackDisabled}
+            language={navigation.language}
+            onNavigate={navigation.onNavigate}
+            placement="page"
+          />
         ) : null}
       </ImageBackground>
     </Animated.View>
@@ -855,9 +884,10 @@ const styles = createAppearanceStyles({
     alignItems: "center",
     flexDirection: "row",
     gap: 1,
-    minHeight: 44,
+    marginHorizontal: 8,
+    minHeight: ATLAS_NAVIGATION_DOCK_HEIGHT,
     paddingHorizontal: 1,
-    paddingVertical: 3
+    paddingVertical: 4
   },
   navigationDockFrame: {
     backgroundColor: "rgba(7, 16, 24, 0.96)",
@@ -880,19 +910,27 @@ const styles = createAppearanceStyles({
     borderRadius: 12,
     borderWidth: 1,
     flexDirection: "row",
-    height: 38,
+    height: 48,
     justifyContent: "center",
-    minWidth: 38,
-    width: 38
+    minWidth: 40,
+    width: 40
   },
   navigationDockItemActive: {
     backgroundColor: "rgba(245, 196, 81, 0.13)",
     borderColor: "rgba(245, 196, 81, 0.52)"
   },
+  navigationDockItemCompact: {
+    minWidth: 34,
+    width: 34
+  },
   navigationDockItemExpanded: {
     gap: 4,
     paddingHorizontal: 8,
     width: "auto"
+  },
+  navigationDockItemExpandedCompact: {
+    gap: 3,
+    paddingHorizontal: 5
   },
   navigationDockLabel: {
     color: APP_COLORS.gold,
@@ -901,16 +939,18 @@ const styles = createAppearanceStyles({
     fontWeight: "900",
     letterSpacing: 0.3
   },
+  navigationDockLabelCompact: {
+    fontSize: 8,
+    letterSpacing: 0
+  },
   navigationDockOptionsItem: { marginLeft: "auto" },
-  mapNavigationDock: { marginBottom: 8, marginHorizontal: -7 },
-  pageDockLayer: {
+  navigationDockLayer: {
     bottom: 0,
     left: 0,
     position: "absolute",
     right: 0,
     zIndex: 20
   },
-  pageNavigationDock: { marginHorizontal: 8 },
   paperTexture: { opacity: 0.3 },
   screen: { backgroundColor: APP_COLORS.background, flex: 1 },
   screenContent: { flex: 1 },

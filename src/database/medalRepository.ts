@@ -2,9 +2,12 @@ import { getDatabase } from "./db";
 import { getMedalAlbumDefinition } from "../services/medalCountryPackStore";
 import {
   CollectedMedal,
+  CollectedMedalCity,
+  LocalizedMedalText,
   MedalAcquisitionReason,
   MedalAlbumProgress,
   MedalCollectionCandidate,
+  MedalExternalIdentity,
   MedalPresentationState
 } from "../types/medal";
 
@@ -27,6 +30,19 @@ type MedalCoordinateRow = {
   latitude: number;
   longitude: number;
   medal_id: string;
+};
+
+type CollectedMedalCityRow = CollectedMedalRow & {
+  category: CollectedMedal["category"];
+  city_name_json: string;
+  description_json: string;
+  external_id: string | number;
+  external_source: MedalExternalIdentity["source"];
+  external_type: MedalExternalIdentity["type"];
+  latitude: number;
+  longitude: number;
+  name_json: string;
+  source_attribution: string;
 };
 
 type MedalRetroScanCursor = {
@@ -190,6 +206,76 @@ export async function getMedalAlbumProgress(
     collectedCount: rows.length,
     medals
   };
+}
+
+export async function getCollectedMedalCities(): Promise<CollectedMedalCity[]> {
+  const db = await getDatabase();
+  const rows = await db.getAllAsync<CollectedMedalCityRow>(`
+    SELECT
+      collected_medals.album_id,
+      collected_medals.medal_id,
+      collected_medals.presentation_state,
+      medal_albums.city_name_json,
+      medal_albums.source_attribution,
+      medals.category,
+      medals.name_json,
+      medals.description_json,
+      medals.latitude,
+      medals.longitude,
+      medals.external_source,
+      medals.external_type,
+      medals.external_id,
+      medal_acquisition_events.acquired_at,
+      medal_acquisition_events.enclosure_area_m2,
+      medal_acquisition_events.enclosure_id,
+      medal_acquisition_events.reason,
+      medal_acquisition_events.session_id
+    FROM collected_medals
+    JOIN medal_albums ON medal_albums.id = collected_medals.album_id
+    JOIN medals ON medals.id = collected_medals.medal_id
+    JOIN medal_acquisition_events
+      ON medal_acquisition_events.id = collected_medals.acquisition_event_id
+    ORDER BY medal_albums.city_name_json, medal_acquisition_events.acquired_at DESC
+  `);
+  const cities = new Map<string, CollectedMedalCity>();
+
+  for (const row of rows) {
+    let city = cities.get(row.album_id);
+
+    if (!city) {
+      city = {
+        albumId: row.album_id,
+        cityName: JSON.parse(row.city_name_json) as LocalizedMedalText,
+        medals: [],
+        sourceAttribution: row.source_attribution
+      };
+      cities.set(row.album_id, city);
+    }
+
+    city.medals.push({
+      albumId: row.album_id,
+      category: row.category,
+      collectedAt: row.acquired_at,
+      collectionReason: row.reason,
+      description: JSON.parse(row.description_json) as LocalizedMedalText,
+      enclosureAreaSquareMeters: row.enclosure_area_m2,
+      enclosureId: row.enclosure_id,
+      externalIdentity: {
+        id: row.external_id,
+        source: row.external_source,
+        type: row.external_type
+      },
+      id: row.medal_id,
+      isCollected: true,
+      latitude: row.latitude,
+      longitude: row.longitude,
+      name: JSON.parse(row.name_json) as LocalizedMedalText,
+      presentationState: row.presentation_state,
+      sessionId: row.session_id
+    });
+  }
+
+  return [...cities.values()];
 }
 
 export async function getPendingMedalPresentations() {

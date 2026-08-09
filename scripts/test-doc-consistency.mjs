@@ -63,7 +63,7 @@ const currentContext = [
   read("docs/ROADMAP.md")
 ].join("\n");
 for (const claim of [
-  "851",
+  "875",
   "top 100",
   "downloadable",
   "Netherlands",
@@ -94,7 +94,7 @@ console.log("PASS development-build context covers current native and physical-d
 const medalHistory = read("docs/MEDAL_SYSTEM_IMPLEMENTATION_PLAN.md");
 assert(medalHistory.includes("HISTORICAL DECISION RECORD"));
 assert(medalHistory.includes(`Current shipped medal contract (v${version})`));
-assert(medalHistory.includes("851 medals"));
+assert(medalHistory.includes("875 medals"));
 assert(medalHistory.includes("downloadable country packs"));
 console.log("PASS the legacy medal plan is clearly historical and points to the shipped contract");
 

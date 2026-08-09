@@ -1,5 +1,11 @@
 const fs = require("fs");
+const path = require("path");
 const ts = require("typescript");
+
+const backupSource = fs.readFileSync(
+  path.resolve(__dirname, "../src/services/backupV5.ts"),
+  "utf8"
+);
 
 require.extensions[".ts"] = (module, filename) => {
   const source = fs.readFileSync(filename, "utf8");
@@ -307,6 +313,12 @@ try {
 } catch {
   rejectedOrphanedExpeditionEvidence = true;
 }
+
+assert(
+  backupSource.includes('reason: "discovered_area" | "recording" | "retro_scan"') &&
+    backupSource.includes('["discovered_area", "recording", "retro_scan"].includes'),
+  "V5 backup preserves discovered-area medal acquisition events"
+);
 assert(
   rejectedOrphanedExpeditionEvidence,
   "V5 validation rejects expedition evidence for a missing walk"

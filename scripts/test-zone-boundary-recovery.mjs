@@ -98,10 +98,16 @@ assert.match(mapSource, /setMapZoneSelection\(shouldOfferScopeChoice \? choices 
 assert.match(mapSource, /shouldOfferScopeChoice && objective\?\.zone\.type === "city"/);
 assert.match(mapSource, /applyMapObjective\(preferredZone\)/);
 assert.match(mapSource, /function MapZoneScopePicker/);
-assert.match(mapSource, /const preloadCurrentCityDistricts = async/);
-assert.match(mapSource, /if \(objective \|\| !currentLocation\)/);
+assert.match(mapSource, /setLaunchObjectiveLocation\(\(launchPoint\) => launchPoint \?\? point\)/);
+assert.match(mapSource, /const selectLaunchObjective = async/);
+assert.match(mapSource, /permissionState !== "granted" \|\| !launchObjectiveLocation/);
+assert.match(mapSource, /boundaryContext\.currentDistrict \?\? boundaryContext\.currentCity/);
+assert.match(mapSource, /commitMapObjective\(preferredZone, \{ showSelectionStamp: false \}\)/);
+assert.match(mapSource, /await objectiveSaveChainRef\.current/);
+assert.match(mapSource, /isLaunchObjectiveResolved/);
+assert.match(mapSource, /keeping the saved objective/);
+assert.doesNotMatch(mapSource, /const preloadCurrentCityDistricts = async/);
 assert.doesNotMatch(mapSource, /shouldFetchAutoObjectiveZones/);
-assert.doesNotMatch(mapSource, /Failed to auto-switch completion objective/);
 assert.match(explorationMapSource, /districtZones\.flatMap/);
 assert.match(explorationMapSource, /const isSelectedDistrict/);
 assert.match(explorationMapSource, /memo\(function AdministrativeBoundaryOverlay/);
@@ -221,6 +227,7 @@ console.log("PASS official level-9 districts stay selectable while level-10 neig
 console.log("PASS local OSM boundaries request complete relation-member geometry");
 console.log("PASS exact cached boundaries reject incomplete-response downgrades");
 console.log("PASS saved objectives reload after boundary caches are repopulated");
+console.log("PASS launch GPS selects the official district before its city and preserves the saved fallback");
 console.log("PASS long press switches same-city districts directly and reserves the scope chooser for cross-city holds");
 console.log("PASS recording Start restores walking-scale zoom around the persistent player");
 assert.equal(OFFICIAL_DISTRICT_ADMIN_LEVEL, 9);

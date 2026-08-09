@@ -7,15 +7,21 @@ import {
   getMedalRetroScanCursor,
   markMedalRetroScanCompleted
 } from "../database/medalRepository";
-import { getMedalAlbumDefinition } from "./medalCountryPackStore";
 import {
+  getLocallyAvailableMedalAlbumDefinitions,
+  getMedalAlbumDefinition
+} from "./medalCountryPackStore";
+import {
+  collectFillableEnclosedExplorationCellIds,
   collectExploredCellIdsByRouteSegments,
-  coordinateToExplorationCellKey
+  coordinateToExplorationCellKey,
+  EXPLORATION_CELL_SIZE_METERS
 } from "./explorationArea";
 import { analyzeLoopFillsForCells, LOOP_FILL_CONFIG } from "./loopFill";
 import { buildPathSegments } from "./pathInference";
 import { measurePerformance } from "./performance";
 import {
+  CollectedMedal,
   MedalAlbumDefinition,
   MedalCollectionCandidate,
   MedalCollectionResult
@@ -37,18 +43,26 @@ export type MedalCandidateEvaluationInput = {
   album: MedalAlbumDefinition;
   boundaryCellIds: ReadonlySet<string>;
   eligibleMedalIds?: ReadonlySet<string>;
+  validatedSurfaceCellIds?: ReadonlySet<string>;
   walkedDistanceMeters: number;
 };
 
 export function findMedalCollectionCandidates(
   input: MedalCandidateEvaluationInput
 ): MedalCollectionCandidate[] {
+  const eligibleDiscoveredCellIds = input.validatedSurfaceCellIds
+    ? new Set([...input.boundaryCellIds, ...input.validatedSurfaceCellIds])
+    : input.boundaryCellIds;
+  const candidates = findDiscoveredCellMedalCandidates({
+    ...input,
+    boundaryCellIds: eligibleDiscoveredCellIds
+  });
+  const candidateMedalIds = new Set(candidates.map((candidate) => candidate.medalId));
+
   if (input.walkedDistanceMeters < LOOP_FILL_CONFIG.minLoopDistanceMeters) {
-    return [];
+    return candidates;
   }
 
-  const candidates: MedalCollectionCandidate[] = [];
-  const candidateMedalIds = new Set<string>();
   const nearbyMedals = getMedalsInsideBoundaryBounds(input);
 
   if (nearbyMedals.length === 0) {
@@ -101,10 +115,85 @@ export function findMedalCollectionCandidates(
   return candidates;
 }
 
+export function findDiscoveredCellMedalCandidates(
+  input: Pick<
+    MedalCandidateEvaluationInput,
+    "album" | "boundaryCellIds" | "eligibleMedalIds"
+  >
+): MedalCollectionCandidate[] {
+  const cellAreaSquareMeters =
+    EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS;
+
+  return input.album.medals.flatMap((medal) => {
+    if (input.eligibleMedalIds && !input.eligibleMedalIds.has(medal.id)) {
+      return [];
+    }
+
+    const anchorCellId = coordinateToExplorationCellKey(medal);
+
+    if (!input.boundaryCellIds.has(anchorCellId)) {
+      return [];
+    }
+
+    return [{
+      albumId: input.album.id,
+      medalId: medal.id,
+      anchorCellId,
+      enclosureAreaSquareMeters: cellAreaSquareMeters,
+      enclosureCellIds: [anchorCellId],
+      enclosureId: `discovered-cell-v1:${anchorCellId}`
+    }];
+  });
+}
+
+export async function awardMedalsInDiscoveredCells(
+  discoveredCellIds: readonly string[]
+): Promise<MedalCollectionResult> {
+  const discoveredCellIdSet = new Set(discoveredCellIds);
+
+  if (discoveredCellIdSet.size === 0) {
+    return buildCollectionResult([], 0, 0);
+  }
+
+  const validatedSurfaceCellIdSet = new Set([
+    ...discoveredCellIdSet,
+    ...collectFillableEnclosedExplorationCellIds(
+      discoveredCellIds,
+      LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode.walk
+    )
+  ]);
+  const albums = await getLocallyAvailableMedalAlbumDefinitions();
+  const collected: CollectedMedal[] = [];
+
+  for (const album of albums) {
+    const candidates = findDiscoveredCellMedalCandidates({
+      album,
+      boundaryCellIds: validatedSurfaceCellIdSet
+    });
+
+    if (candidates.length === 0) {
+      continue;
+    }
+
+    collected.push(...await collectMedalCandidates({
+      candidates,
+      reason: "discovered_area",
+      sessionId: null
+    }));
+  }
+
+  return buildCollectionResult(
+    collected,
+    validatedSurfaceCellIdSet.size,
+    albums.reduce((total, album) => total + album.medals.length, 0)
+  );
+}
+
 export async function evaluateLiveMedalCollection(input: {
   albumId: string;
   boundaryCellIds: readonly string[];
   sessionId: number;
+  validatedSurfaceCellIds?: readonly string[];
   walkedDistanceMeters: number;
   eligibleMedalIds?: readonly string[];
 }): Promise<MedalCollectionResult> {
@@ -121,6 +210,7 @@ export async function evaluateLiveMedalCollection(input: {
     album,
     boundaryCellIds: new Set(input.boundaryCellIds),
     eligibleMedalIds,
+    validatedSurfaceCellIds: new Set(input.validatedSurfaceCellIds ?? []),
     walkedDistanceMeters: input.walkedDistanceMeters
   });
   const collected = await collectMedalCandidates({

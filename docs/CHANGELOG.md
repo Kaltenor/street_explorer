@@ -1,5 +1,110 @@
 # Changelog
 
+## v0.23.12
+
+Changed:
+
+- Replaced the 0.62-second mono single-tone medal chime with a two-second stereo orchestral reward cue built from a rising brass call, sustained string-and-brass resolution, timpani impacts, bell shimmer, and restrained synthetic hall reflections.
+- Added a deterministic in-repository generator and executable WAV-format/provenance coverage. The original cue contains no third-party samples or melodies and is dedicated to CC0/public domain.
+- Synchronized version 0.23.12 with iOS build 177 and Android version code 177.
+
+## v0.23.11
+
+Fixed:
+
+- Medal eligibility now uses the complete validated exploration surface rendered by the map, including enclosed fill cells within the walking area cap, instead of requiring every medal anchor cell to have its own persisted row.
+- The all-city launch pass reconstructs validated historical surfaces before matching medal anchors, so already-visible enclosed landmarks unlock on upgrade.
+- Live active-city checks combine saved and current-walk exploration before validating the surface, allowing a newly closed area to unlock every contained medal immediately while retaining the existing direct-cell and traditional route checks.
+- Synchronized version 0.23.11 with iOS build 176 and Android version code 176.
+
+## v0.23.10
+
+Fixed:
+
+- Launch readiness now awaits the discovered-area medal pass, so already-earned medals and their presentation queue are committed before the ready screen can be dismissed.
+- The discovered-area pass is keyed to the persisted exploration revision and clears failed work for retry instead of caching an early or transiently failed result for the process lifetime.
+- Matching albums are seeded and awarded sequentially, preventing concurrent SQLite catalogue transactions when discovered medals span multiple cities.
+- Synchronized version 0.23.10 with iOS build 175 and Android version code 175.
+
+## v0.23.9
+
+Added:
+
+- Added discovered-area medal collection: a landmark now unlocks when its anchor falls in any persisted 15 m discovered tile, including directly walked and loop-filled cells.
+- Added one automatic launch scan across all bundled city albums and every already-installed country pack, with missing or invalid packs skipped offline-safely and without delaying core saved-map hydration.
+- Added live direct-tile awards for the active city without requiring the 80 m loop threshold; enclosure-based awards remain supported.
+- Added the durable `discovered_area` acquisition reason and Backup V5 validation/round-trip support.
+- Synchronized version 0.23.9 with iOS build 174 and Android version code 174.
+
+## v0.23.8
+
+Changed:
+
+- Replaced the separate map and page footer positioning paths with one shared absolute `AtlasNavigationDockLayer`, giving the dynamic menu identical safe-area coordinates on every destination.
+- Removed dock entrance and map-return movement so page content transitions behind a stationary footer whose selected icon and label update in place.
+- Increased the navigation surface to 56 points with 48-point-high controls while retaining a narrow-screen compact layout and effective 44-point touch targets.
+- Synchronized version 0.23.8 with iOS build 173 and Android version code 173.
+
+## v0.23.7
+
+Changed:
+
+- Promoted Map into the shared Atlas navigation as a permanent localized destination with its own map icon and selected label.
+- Moved the map's Field Log and recording controls above the shared navigation so the seven-tab dock occupies the same true-bottom position used on every other page.
+- Synchronized version 0.23.7 with iOS build 172 and Android version code 172.
+
+## v0.23.6
+
+Fixed:
+
+- Medal district filters now come from the complete loaded city subdivision set instead of only arrondissement values present on medal definitions, so Lyon always lists districts 1 through 9 and other subdivided cities expose every available district, including districts with zero medals.
+- Medals without legacy district metadata are assigned to loaded districts by their coordinates; numeric albums fall back to the complete sequential district range when boundary geometry is temporarily unavailable.
+- Synchronized version 0.23.6 with iOS build 171 and Android version code 171.
+
+## v0.23.5
+
+Added:
+
+- Added an offline-safe All Cities medal scope that groups every locally unlocked medal by city and keeps map focus and Wikipedia context attached to the medal's own city.
+- Added concurrent expedition selection, including active missions retained across districts and app relaunches.
+
+Changed:
+
+- Replaced medal category filters with All and the active album's available numbered districts; city-wide medals remain visible under All.
+- Updated the expedition journal and objective HUD to list or summarize multiple active missions while preserving independent progress, abandonment, completion seals, and 200-point rewards.
+- Removed the former database and Backup V5 validation restriction that allowed only one active expedition; existing V5 archives remain compatible and can now preserve concurrent active selections.
+- Synchronized version 0.23.5 with iOS build 170 and Android version code 170.
+
+## v0.23.4
+
+Changed:
+
+- Locked medal markers now show only the landmark name and a localized Locked callout instead of opening the Medals page.
+- Collected medal markers remain interactive and continue opening their medal detail.
+- Synchronized version 0.23.4 with iOS build 169 and Android version code 169.
+
+## v0.23.3
+
+Added:
+
+- Expanded Lyon's bundled album from 20 to 44 reviewed medals with exactly four new points of interest in each of arrondissements 3, 4, 6, 7, 8, and 9.
+- Added outer-district architecture, art, culture, history, and nature anchors spanning Montchat, Croix-Rousse, Brotteaux, Gerland, États-Unis, Vaise, Saint-Rambert, and La Duchère.
+- Added regression and physical-device protocols for the balanced district counts, localized catalogue integrity, upgrade preservation, marker placement, collection, persistence, and offline reuse.
+
+Changed:
+
+- Advanced the Lyon album definition to version 2 so explicit historical scans can consider the new anchors without rewriting existing unlocks.
+- Updated the bundled France catalogue total from 851 to 875 medals and synchronized version 0.23.3 with iOS build 168 and Android version code 168.
+
+## v0.23.2
+
+Changed:
+
+- Cold launch now replaces the saved completion objective with the official level-9 district containing the initial foreground GPS fix, or its containing city when no playable district applies.
+- Location denial, an unavailable initial fix, and failed administrative-boundary resolution leave the previous saved objective unchanged.
+- The tappable launch presentation waits for the one-shot objective resolution, and automatic launch selection remains quiet without replaying the manual-selection stamp.
+- Synchronized version 0.23.2 with iOS build 167 and Android version code 167.
+
 ## v0.23.1
 
 Fixed:

@@ -1056,7 +1056,7 @@ export async function withBackupV5Snapshot<T>(
       album_id: string;
       medal_id: string;
       session_id: number | null;
-      reason: "recording" | "retro_scan";
+      reason: "discovered_area" | "recording" | "retro_scan";
       enclosure_id: string;
       anchor_cell_id: string;
       enclosure_area_m2: number;

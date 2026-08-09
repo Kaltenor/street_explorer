@@ -33,7 +33,7 @@ export const FRANCE_MEDAL_ALBUM_MANIFEST: readonly FranceMedalAlbumManifestEntry
     albumId: "lyon-v1", cityId: "lyon-fr",
     cityName: { en: "Lyon", fr: "Lyon" },
     cityZoneId: "relation/120965", inseeCode: "69123",
-    medalCount: 20, population: 519127, rank: 3, version: 1,
+    medalCount: 44, population: 519127, rank: 3, version: 2,
     load: () => require("../../../assets/medals/france/../lyon-v1.json") as MedalAlbumDefinition
   },
   {

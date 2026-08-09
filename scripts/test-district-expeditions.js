@@ -82,6 +82,10 @@ const walkRepositorySource = fs.readFileSync(
   require.resolve("../src/database/walkRepository.ts"),
   "utf8"
 );
+const backupSource = fs.readFileSync(
+  require.resolve("../src/services/backupV5.ts"),
+  "utf8"
+);
 const mapSource = fs.readFileSync(
   require.resolve("../src/screens/MapScreen.tsx"),
   "utf8"
@@ -89,8 +93,12 @@ const mapSource = fs.readFileSync(
 
 assert(
   dbSource.includes('applyMigration(27, "add_district_expeditions"') &&
-    dbSource.includes("idx_district_expeditions_one_active"),
-  "database migration enforces one globally active expedition"
+    dbSource.includes('applyMigration(30, "allow_multiple_active_district_expeditions"') &&
+    dbSource.includes("DROP INDEX IF EXISTS idx_district_expeditions_one_active") &&
+    repositorySource.includes("getActiveDistrictExpeditions") &&
+    !repositorySource.includes("Finish or abandon the active expedition first.") &&
+    !backupSource.includes("V5 backup contains multiple active expeditions."),
+  "database migration, repository, and Backup V5 allow multiple durable active expeditions"
 );
 assert(
   repositorySource.includes("countFinalizedLoopEvidence") &&

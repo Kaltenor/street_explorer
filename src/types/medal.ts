@@ -68,7 +68,10 @@ export type MedalCountryPack = {
   version: number;
 };
 
-export type MedalAcquisitionReason = "recording" | "retro_scan";
+export type MedalAcquisitionReason =
+  | "discovered_area"
+  | "recording"
+  | "retro_scan";
 export type MedalPresentationState = "pending" | "presenting" | "presented";
 
 export type CollectedMedal = LandmarkMedalDefinition & {
@@ -86,6 +89,13 @@ export type MedalAlbumProgress = {
   album: MedalAlbumDefinition;
   collectedCount: number;
   medals: CollectedMedal[];
+};
+
+export type CollectedMedalCity = {
+  albumId: string;
+  cityName: LocalizedMedalText;
+  medals: CollectedMedal[];
+  sourceAttribution: string;
 };
 
 export type MedalCollectionCandidate = {

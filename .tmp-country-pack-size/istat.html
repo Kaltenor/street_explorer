@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Include 1: font/CSS/Javascript comuni -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="/ruxitagentjs_ICA7NVfqrux_10341260622154106.js" data-dtconfig="rid=RID_-1285307217|rpid=-1025665031|domain=istat.it|reportUrl=/rb_a34aa096-4709-4067-be2f-3b68462892d0|app=e518b0ad93d025b4|cuc=lwetihge|owasp=1|mel=100000|featureHash=ICA7NVfqrux|dpvc=1|lastModification=1785268762555|tp=500,50,0|rdnt=1|uxrgce=1|srbbv=2|agentUri=/ruxitagentjs_ICA7NVfqrux_10341260622154106.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="../css/demo-def01.css">
+        <!-- Include 1: FINE -->
+        <!-- CSS e script per l'applicazione -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.8/css/responsive.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/keytable/2.6.2/css/keyTable.dataTables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.8/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/keytable/2.6.2/js/dataTables.keyTable.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
+        <script src="./navigazione.js"></script>
+        <!-- Include 2: font/CSS/Javascript personalizzati -->
+        <link rel="stylesheet" href="../css/modulare.css"/>
+        <script src="./cambia_anno.js"></script>
+        <script src="./gest_territorio.js"></script>
+        <script src="./cerca.js"></script>
+        <!-- Include 2: FINE -->
+        <title>Popolazione residente</title>
+    </head>
+    <body class="app">
+        <div class="w3-container w3-card-4 full-height"><!-- Container e card esterna -->
+                <!-- Intestazione -->
+                <header id="header" class="w3-row w3-padding">
+                    <a class="skip-link" href='#main'>Vai ai contenuti</a>
+                    <nav id="headernav" class="w3-bar">
+                        <div class="w3-bar-item w3-right w3-border-left">
+                            <a href="?i=POS&a=2025&l=en" lang="en" title="English version" class="linkhead" aria-label="Go to the English version">EN</a>
+                        </div>
+                        <div class="w3-bar-item w3-right w3-border-left w3-istat-red linkhead" aria-hidden="true">
+                            IT
+                        </div>
+                        <div class="w3-bar-item w3-right w3-border-left">
+                            <a href="https://www.istat.it/it/note-legali" class="linkhead">Note legali</a>
+                        </div>
+                        <div class="w3-bar-item w3-right w3-border-left">
+                            <a href="https://www.istat.it/it/contatti" class="linkhead">Contatti</a>
+                        </div>
+                    </nav>
+                    <div class="w3-bar w3-border-bottom" id="titoloSito">
+                        <h1 class="w3-bar-item" id="headertext"><a id="linkdemo" href="../?l=it">demo</a></h1>
+                        <a href="https://www.istat.it/" class="linkapp w3-right">
+                            <img alt="Vai al sito Istat" id="logoistat" src="../images/logoIstat.png" class="w3-hide-small w3-bar-item no-pad" aria-label="Vai al sito Istat">
+                            <img alt="Vai al sito Istat" id="logoistatsmall" src="../images/logoIstat-sm.png" class="w3-hide-medium w3-hide-large w3-bar-item w3-right no-pad" aria-label="Vai al sito Istat">
+                        </a>
+                    </div>
+                    <div id="sublogo">
+                        demografia in cifre
+                    </div>
+                </header>
+                <!-- Fine intestazione -->
+                <!-- Corpo applicazione -->
+                <div class="w3-container"><!-- Container corpo applicazione -->
+                    <header role="banner" id="bannerapp">
+                        <div class="w3-panel w3-istat-titolo"><!-- Titolo applicazione -->
+                            <div class="w3-cell w3-hide-small">
+                                <img src="../images/HomeIconaRossa.png" height="80" id="logoapp" alt="">
+                            </div>
+                            <div class="w3-cell" id="cellatitolo">
+                                <h2 class="h2app">
+                                    <span class="h2titolo">Popolazione residente</span><br><span class="h2stitolo">per sesso, età e stato civile al 1° gennaio 2025</span>
+                                </h2>
+                            </div>
+                        </div><!-- Fine titolo applicazione -->
+                    </header>
+                    <nav aria-label="Menu principale">
+                    <div class="w3-row"><!-- Riga 1 (navigazione) -->
+                        <div class="w3-bar w3-light-grey"><!-- Wrapper barra di navigazione -->
+<!-- Navigazione -->
+                                <!-- Tab 0: Prima sezione-->
+                                <button id="tab-0" class="w3-bar-item w3-button btnsx w3-istat-default w3-istat-selected" title="">Vista per singola area</button>
+                                <!-- Tab 1: Seconda sezione-->
+                                <button id="tab-1" class="w3-bar-item w3-button btnsx w3-istat-default" title="">Vista territoriale</button>
+                                <!-- Tab 2: Sezione download-->
+                                <button id="tab-2" class="w3-bar-item w3-button btnsx w3-istat-default" title="">Area download</button>
+                                <!-- Tab 3: Sezione descrizione-->
+                                <button id="tab-3" class="w3-bar-item w3-button btnsx w3-istat-default" title="">Descrizione</button>
+                                <!-- Tab 4: Sezione glossario-->
+                                <button id="tab-4" class="w3-bar-item w3-button btnsx w3-istat-default" title="">Glossario</button>
+                                <!-- Tab 5: Sezione note-->
+                                <button id="tab-5" class="w3-bar-item w3-button btnsx w3-istat-default" title="">Note</button>
+<!-- Fine: Navigazione -->
+                        </div><!-- Fine wrapper barra di navigazione -->
+                    </div><!-- Fine riga 1 (navigazione) -->
+                    </nav>
+                    <main role="main" id="main">
+                        <!-- Sezione 0: Prima sezione -->
+                        <section id="sezione-0">
+                            <div id="div-sezione-0">
+                                <div class="w3-row sezioni" id="s-0_r-1"><!-- Sezione 0 riga 1 -->
+                                    <form id="form-0" action="RPCCerca.php" method="POST"><!-- Form ricerca 0 -->
+                                        <!-- Area inclusa -->
+                                    <div class="w3-cell w3-padding w3-third"><!-- Anno -->
+                                        <label for="a0">Anno</label>
+                                        <select class="w3-select" name="a" id="a0" title="Selezionare l'anno di indagine">
+                                            
+<option value="2026">2026</option>
+<option value="2025" selected="selected">2025</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+                                        </select>
+                                    </div>
+          <!-- Combo eta1 -->
+          <div class="w3-mobile w3-padding eta w3-third" title="Selezionare l'età iniziale">
+            <label for="etaini">Età iniziale</label>
+            <select class="w3-select" name="eta1" id="etaini">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+<option value="60">60</option>
+<option value="61">61</option>
+<option value="62">62</option>
+<option value="63">63</option>
+<option value="64">64</option>
+<option value="65">65</option>
+<option value="66">66</option>
+<option value="67">67</option>
+<option value="68">68</option>
+<option value="69">69</option>
+<option value="70">70</option>
+<option value="71">71</option>
+<option value="72">72</option>
+<option value="73">73</option>
+<option value="74">74</option>
+<option value="75">75</option>
+<option value="76">76</option>
+<option value="77">77</option>
+<option value="78">78</option>
+<option value="79">79</option>
+<option value="80">80</option>
+<option value="81">81</option>
+<option value="82">82</option>
+<option value="83">83</option>
+<option value="84">84</option>
+<option value="85">85</option>
+<option value="86">86</option>
+<option value="87">87</option>
+<option value="88">88</option>
+<option value="89">89</option>
+<option value="90">90</option>
+<option value="91">91</option>
+<option value="92">92</option>
+<option value="93">93</option>
+<option value="94">94</option>
+<option value="95">95</option>
+<option value="96">96</option>
+<option value="97">97</option>
+<option value="98">98</option>
+<option value="99">99</option>
+<option value="100">100 e oltre</option>
+            </select>
+          </div>
+          <!-- Fine Combo eta1 -->
+          <!-- Combo eta2 -->
+          <div class="w3-mobile w3-padding eta w3-third" title="Selezionare l'età finale">
+            <label for="etafin">Età finale</label>
+            <select class="w3-select" name="eta2" id="etafin">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+<option value="60">60</option>
+<option value="61">61</option>
+<option value="62">62</option>
+<option value="63">63</option>
+<option value="64">64</option>
+<option value="65">65</option>
+<option value="66">66</option>
+<option value="67">67</option>
+<option value="68">68</option>
+<option value="69">69</option>
+<option value="70">70</option>
+<option value="71">71</option>
+<option value="72">72</option>
+<option value="73">73</option>
+<option value="74">74</option>
+<option value="75">75</option>
+<option value="76">76</option>
+<option value="77">77</option>
+<option value="78">78</option>
+<option value="79">79</option>
+<option value="80">80</option>
+<option value="81">81</option>
+<option value="82">82</option>
+<option value="83">83</option>
+<option value="84">84</option>
+<option value="85">85</option>
+<option value="86">86</option>
+<option value="87">87</option>
+<option value="88">88</option>
+<option value="89">89</option>
+<option value="90">90</option>
+<option value="91">91</option>
+<option value="92">92</option>
+<option value="93">93</option>
+<option value="94">94</option>
+<option value="95">95</option>
+<option value="96">96</option>
+<option value="97">97</option>
+<option value="98">98</option>
+<option value="99">99</option>
+<option value="100" selected>100 e oltre</option>
+            </select>
+          </div>
+          <!-- Fine Combo eta2 -->
+<!-- Rip/Reg/Pro/Com -->
+                                <div class="w3-quarter w3-mobile w3-padding"><!-- Ripartizione -->
+                                    <label for="ripartizione-0">Ripartizione</label>
+                                    <select class="w3-select" name="ripartizione" id="ripartizione-0" required>
+<option value="IT" selected>Italia</option>
+<option value="1">Nord-ovest</option>
+<option value="2">Nord-est</option>
+<option value="3">Centro</option>
+<option value="4">Sud</option>
+<option value="5">Isole</option>
+                                    </select>
+                                </div>
+                                <div class="w3-quarter w3-mobile w3-padding"><!-- Regione -->
+                                    <label for="regione-0">Regione</label>
+                                    <select class="w3-select" name="regione" id="regione-0">
+<option selected>-</option>
+                                    </select>
+                                </div>
+                                <div class="w3-quarter w3-mobile w3-padding"><!-- Provincia -->
+                                    <label for="provincia-0">Provincia</label>
+                                    <select class="w3-select" name="provincia" id="provincia-0">
+<option selected>-</option>
+                                    </select>
+                                </div>
+                                <div class="w3-quarter w3-mobile w3-padding"><!-- Comune -->
+                                    <label for="comune-0">Comune</label>
+                                    <select class="w3-select" name="comune" id="comune-0">
+<option selected>-</option>
+                                    </select>
+                                </div>
+<!-- Fine: Rip/Reg/Pro/Com -->
+                                        <!-- Include bottoni -->
+                                        <div class="w3-col w3-padding"><!-- Pulsanti -->
+                                            <input type="submit" id="btnricerca-0" class="w3-btn w3-istat-buttonsearch" name="btnricerca-0" value="Cerca">
+                                            <input type="reset" id="reset-0" class="w3-btn w3-light-gray" name="reset-0" value="Pulisci dati di ricerca">
+                                        </div>
+                                        <!-- Campi nascosti -->
+                                        <input type="hidden" name="hid-i" id="hid-i-0" value="POS">
+                                        <input type="hidden" name="hid-a" id="hid-a-0" value="2025">
+                                        <input type="hidden" name="hid-l" id="hid-l-0" value="it">
+                                        <input type="hidden" name="hid-cat" id="hid-cat-0" value="POS">
+                                        <input type="hidden" name="hid-dati" id="hid-dati-0" value="dati-form-0">
+                                        <input type="hidden" name="hid-tavola" id="hid-tavola-0" value="tavola-form-0">
+                                        <!-- Fine: Campi nascosti -->
+                                    </form>
+                                </div><!-- Fine Sezione 0 riga 1 (form ricerca 0) -->
+                                <div class="w3-row"  id="s-0_r-2"><!-- Sezione 0 riga 2 (risultati) -->
+                                    <div id="dati-form-0" class="w3-responsive w3-small w3-margin-top w3-margin-bottom"><!-- Tavola 0 -->
+
+                                        <table id="tavola-form-0" style="width: auto; float: left;">
+
+                                        </table>                                        <div class="notatavola" id="dati-form-0-nota">
+                                        </div>
+                                    </div><!-- Fine tavola 0 -->
+                                </div><!-- Fine Sezione 0 riga 2 (risultati) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                        <!-- Sezione 1: Seconda sezione -->
+                        <section id="sezione-1">
+                            <div id="div-sezione-1">
+                                <div class="w3-row sezioni" id="s-1_r-1"><!-- Sezione 1 riga 1 -->
+                                    <form id="form-1" action="RPCCerca.php" method="POST"><!-- Form ricerca 1 -->
+                                        <!-- Area inclusa -->
+
+                                        <div class="w3-cell w3-mobile w3-padding"><!-- Ripartizioni -->
+                                            <input class="w3-radio" type="radio" name="territorio" id="radiorip-1" value="rip" checked>
+                                            <label for="radiorip-1">Tutte le ripartizioni</label>
+                                        </div>
+                                        <div class="w3-cell w3-mobile w3-padding"><!-- Regioni -->
+                                            <input class="w3-radio" type="radio" name="territorio" id="radioreg-1" value="reg">
+                                            <label for="radioreg-1">Tutte le regioni</label>
+                                        </div>
+                                        <div class="w3-cell w3-mobile w3-padding"><!-- Province -->
+                                            <input class="w3-radio" type="radio" name="territorio" id="radiopro-1" value="pro">
+                                            <label for="radiopro-1">Tutte le province</label>
+                                        </div>
+                                        <div class="w3-cell w3-mobile w3-padding"><!-- Comuni -->
+                                            <input class="w3-radio" type="radio" name="territorio" value="procom" id="provincerb-1">
+                                            <label for="provincerb-1">Tutti i comuni della provincia selezionata</label>
+                                            <label for="province-1"> (Seleziona la provincia)</label>
+                                            <select class="w3-select" name="province" id="province-1" title="Seleziona la provincia" required disabled>
+                                                <option value="084">Agrigento</option>
+<option value="006">Alessandria</option>
+<option value="042">Ancona</option>
+<option value="051">Arezzo</option>
+<option value="044">Ascoli Piceno</option>
+<option value="005">Asti</option>
+<option value="064">Avellino</option>
+<option value="072">Bari</option>
+<option value="110">Barletta-Andria-Trani</option>
+<option value="025">Belluno</option>
+<option value="062">Benevento</option>
+<option value="016">Bergamo</option>
+<option value="096">Biella</option>
+<option value="037">Bologna</option>
+<option value="021">Bolzano/Bozen</option>
+<option value="017">Brescia</option>
+<option value="074">Brindisi</option>
+<option value="092">Cagliari</option>
+<option value="085">Caltanissetta</option>
+<option value="070">Campobasso</option>
+<option value="061">Caserta</option>
+<option value="087">Catania</option>
+<option value="079">Catanzaro</option>
+<option value="069">Chieti</option>
+<option value="013">Como</option>
+<option value="078">Cosenza</option>
+<option value="019">Cremona</option>
+<option value="101">Crotone</option>
+<option value="004">Cuneo</option>
+<option value="086">Enna</option>
+<option value="109">Fermo</option>
+<option value="038">Ferrara</option>
+<option value="048">Firenze</option>
+<option value="071">Foggia</option>
+<option value="040">Forlì-Cesena</option>
+<option value="060">Frosinone</option>
+<option value="010">Genova</option>
+<option value="031">Gorizia</option>
+<option value="053">Grosseto</option>
+<option value="008">Imperia</option>
+<option value="094">Isernia</option>
+<option value="066">L'Aquila</option>
+<option value="011">La Spezia</option>
+<option value="059">Latina</option>
+<option value="075">Lecce</option>
+<option value="097">Lecco</option>
+<option value="049">Livorno</option>
+<option value="098">Lodi</option>
+<option value="046">Lucca</option>
+<option value="043">Macerata</option>
+<option value="020">Mantova</option>
+<option value="045">Massa-Carrara</option>
+<option value="077">Matera</option>
+<option value="083">Messina</option>
+<option value="015">Milano</option>
+<option value="036">Modena</option>
+<option value="108">Monza e della Brianza</option>
+<option value="063">Napoli</option>
+<option value="003">Novara</option>
+<option value="091">Nuoro</option>
+<option value="095">Oristano</option>
+<option value="028">Padova</option>
+<option value="082">Palermo</option>
+<option value="034">Parma</option>
+<option value="018">Pavia</option>
+<option value="054">Perugia</option>
+<option value="041">Pesaro e Urbino</option>
+<option value="068">Pescara</option>
+<option value="033">Piacenza</option>
+<option value="050">Pisa</option>
+<option value="047">Pistoia</option>
+<option value="093">Pordenone</option>
+<option value="076">Potenza</option>
+<option value="100">Prato</option>
+<option value="088">Ragusa</option>
+<option value="039">Ravenna</option>
+<option value="080">Reggio di Calabria</option>
+<option value="035">Reggio nell'Emilia</option>
+<option value="057">Rieti</option>
+<option value="099">Rimini</option>
+<option value="058">Roma</option>
+<option value="029">Rovigo</option>
+<option value="065">Salerno</option>
+<option value="090">Sassari</option>
+<option value="009">Savona</option>
+<option value="052">Siena</option>
+<option value="089">Siracusa</option>
+<option value="014">Sondrio</option>
+<option value="111">Sud Sardegna</option>
+<option value="073">Taranto</option>
+<option value="067">Teramo</option>
+<option value="055">Terni</option>
+<option value="001">Torino</option>
+<option value="081">Trapani</option>
+<option value="022">Trento</option>
+<option value="026">Treviso</option>
+<option value="032">Trieste</option>
+<option value="030">Udine</option>
+<option value="007">Valle d'Aosta/Vallée d'Aoste</option>
+<option value="012">Varese</option>
+<option value="027">Venezia</option>
+<option value="103">Verbano-Cusio-Ossola</option>
+<option value="002">Vercelli</option>
+<option value="023">Verona</option>
+<option value="102">Vibo Valentia</option>
+<option value="024">Vicenza</option>
+<option value="056">Viterbo</option>
+                                            </select>
+                                        </div>
+                                        <!-- Include bottoni -->
+                                        <div class="w3-col w3-padding"><!-- Pulsanti -->
+                                            <input type="submit" id="btnricerca-1" class="w3-btn w3-istat-buttonsearch" name="btnricerca-1" value="Cerca">
+                                            <input type="reset" id="reset-1" class="w3-btn w3-light-gray" name="reset-1" value="Pulisci dati di ricerca">
+                                        </div>
+                                        <!-- Campi nascosti -->
+                                        <input type="hidden" name="hid-i" id="hid-i-1" value="POS">
+                                        <input type="hidden" name="hid-a" id="hid-a-1" value="2025">
+                                        <input type="hidden" name="hid-l" id="hid-l-1" value="it">
+                                        <input type="hidden" name="hid-cat" id="hid-cat-1" value="POS">
+                                        <input type="hidden" name="hid-dati" id="hid-dati-1" value="dati-form-1">
+                                        <input type="hidden" name="hid-tavola" id="hid-tavola-1" value="tavola-form-1">
+                                        <!-- Fine: Campi nascosti -->
+                                    </form>
+                                </div><!-- Fine Sezione 1 riga 1 (form ricerca 1) -->
+                                <div class="w3-row"  id="s-1_r-2"><!-- Sezione 1 riga 2 (risultati) -->
+                                    <div id="dati-form-1" class="w3-responsive w3-small w3-margin-top w3-margin-bottom"><!-- Tavola 1 -->
+
+                                        <table id="tavola-form-1" style="width: auto; float: left;">
+
+                                        </table>                                        <div class="notatavola" id="dati-form-1-nota">
+                                        </div>
+                                    </div><!-- Fine tavola 1 -->
+                                </div><!-- Fine Sezione 1 riga 2 (risultati) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                        <!-- Sezione 2: Sezione download -->
+                        <section id="sezione-2">
+                            <div id="div-sezione-2">
+                                <div class="w3-row sezioni" id="s-2_r-1"><!-- Sezione 2 riga 1 -->
+                                        <!-- Area inclusa -->
+<table id="areadownload" class="w3-table w3-left-align">
+  <caption class="w3-left-align">
+    I file sono in formato csv per essere facilmente elaborati attraverso l'uso di fogli elettronici e possono essere prelevati nel formato compresso ZIP.<br>
+L'elenco dei file è ordinato per codice regione e codice provincia.  </caption>
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">01 - Piemonte</th>
+    </tr>
+    <tr>
+      <td class="w100">001 - Torino</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_001_Torino.zip" title="Torino"><img src="../images/zip.png" width="32" height="32" alt="Torino"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">002 - Vercelli</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_002_Vercelli.zip" title="Vercelli"><img src="../images/zip.png" width="32" height="32" alt="Vercelli"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">003 - Novara</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_003_Novara.zip" title="Novara"><img src="../images/zip.png" width="32" height="32" alt="Novara"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">004 - Cuneo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_004_Cuneo.zip" title="Cuneo"><img src="../images/zip.png" width="32" height="32" alt="Cuneo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">005 - Asti</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_005_Asti.zip" title="Asti"><img src="../images/zip.png" width="32" height="32" alt="Asti"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">006 - Alessandria</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_006_Alessandria.zip" title="Alessandria"><img src="../images/zip.png" width="32" height="32" alt="Alessandria"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">096 - Biella</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_096_Biella.zip" title="Biella"><img src="../images/zip.png" width="32" height="32" alt="Biella"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">103 - Verbano-Cusio-Ossola</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_103_Verbano-Cusio-Ossola.zip" title="Verbano-Cusio-Ossola"><img src="../images/zip.png" width="32" height="32" alt="Verbano-Cusio-Ossola"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">02 - Valle d'Aosta/Vallée d'Aoste</th>
+    </tr>
+    <tr>
+      <td class="w100">007 - Valle d'Aosta/Vallée d'Aoste</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_007_Valle_dAosta-Vallee_dAoste.zip" title="Valle d'Aosta/Vallée d'Aoste"><img src="../images/zip.png" width="32" height="32" alt="Valle d'Aosta/Vallée d'Aoste"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">03 - Lombardia</th>
+    </tr>
+    <tr>
+      <td class="w100">012 - Varese</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_012_Varese.zip" title="Varese"><img src="../images/zip.png" width="32" height="32" alt="Varese"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">013 - Como</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_013_Como.zip" title="Como"><img src="../images/zip.png" width="32" height="32" alt="Como"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">014 - Sondrio</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_014_Sondrio.zip" title="Sondrio"><img src="../images/zip.png" width="32" height="32" alt="Sondrio"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">015 - Milano</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_015_Milano.zip" title="Milano"><img src="../images/zip.png" width="32" height="32" alt="Milano"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">016 - Bergamo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_016_Bergamo.zip" title="Bergamo"><img src="../images/zip.png" width="32" height="32" alt="Bergamo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">017 - Brescia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_017_Brescia.zip" title="Brescia"><img src="../images/zip.png" width="32" height="32" alt="Brescia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">018 - Pavia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_018_Pavia.zip" title="Pavia"><img src="../images/zip.png" width="32" height="32" alt="Pavia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">019 - Cremona</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_019_Cremona.zip" title="Cremona"><img src="../images/zip.png" width="32" height="32" alt="Cremona"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">020 - Mantova</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_020_Mantova.zip" title="Mantova"><img src="../images/zip.png" width="32" height="32" alt="Mantova"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">097 - Lecco</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_097_Lecco.zip" title="Lecco"><img src="../images/zip.png" width="32" height="32" alt="Lecco"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">098 - Lodi</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_098_Lodi.zip" title="Lodi"><img src="../images/zip.png" width="32" height="32" alt="Lodi"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">108 - Monza e della Brianza</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_108_Monza_e_della_Brianza.zip" title="Monza e della Brianza"><img src="../images/zip.png" width="32" height="32" alt="Monza e della Brianza"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">04 - Trentino-Alto Adige/Südtirol</th>
+    </tr>
+    <tr>
+      <td class="w100">021 - Bolzano/Bozen</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_021_Bolzano-Bozen.zip" title="Bolzano/Bozen"><img src="../images/zip.png" width="32" height="32" alt="Bolzano/Bozen"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">022 - Trento</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_022_Trento.zip" title="Trento"><img src="../images/zip.png" width="32" height="32" alt="Trento"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">05 - Veneto</th>
+    </tr>
+    <tr>
+      <td class="w100">023 - Verona</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_023_Verona.zip" title="Verona"><img src="../images/zip.png" width="32" height="32" alt="Verona"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">024 - Vicenza</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_024_Vicenza.zip" title="Vicenza"><img src="../images/zip.png" width="32" height="32" alt="Vicenza"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">025 - Belluno</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_025_Belluno.zip" title="Belluno"><img src="../images/zip.png" width="32" height="32" alt="Belluno"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">026 - Treviso</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_026_Treviso.zip" title="Treviso"><img src="../images/zip.png" width="32" height="32" alt="Treviso"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">027 - Venezia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_027_Venezia.zip" title="Venezia"><img src="../images/zip.png" width="32" height="32" alt="Venezia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">028 - Padova</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_028_Padova.zip" title="Padova"><img src="../images/zip.png" width="32" height="32" alt="Padova"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">029 - Rovigo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_029_Rovigo.zip" title="Rovigo"><img src="../images/zip.png" width="32" height="32" alt="Rovigo"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">06 - Friuli-Venezia Giulia</th>
+    </tr>
+    <tr>
+      <td class="w100">030 - Udine</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_030_Udine.zip" title="Udine"><img src="../images/zip.png" width="32" height="32" alt="Udine"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">031 - Gorizia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_031_Gorizia.zip" title="Gorizia"><img src="../images/zip.png" width="32" height="32" alt="Gorizia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">032 - Trieste</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_032_Trieste.zip" title="Trieste"><img src="../images/zip.png" width="32" height="32" alt="Trieste"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">093 - Pordenone</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_093_Pordenone.zip" title="Pordenone"><img src="../images/zip.png" width="32" height="32" alt="Pordenone"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">07 - Liguria</th>
+    </tr>
+    <tr>
+      <td class="w100">008 - Imperia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_008_Imperia.zip" title="Imperia"><img src="../images/zip.png" width="32" height="32" alt="Imperia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">009 - Savona</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_009_Savona.zip" title="Savona"><img src="../images/zip.png" width="32" height="32" alt="Savona"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">010 - Genova</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_010_Genova.zip" title="Genova"><img src="../images/zip.png" width="32" height="32" alt="Genova"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">011 - La Spezia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_011_La_Spezia.zip" title="La Spezia"><img src="../images/zip.png" width="32" height="32" alt="La Spezia"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">08 - Emilia-Romagna</th>
+    </tr>
+    <tr>
+      <td class="w100">033 - Piacenza</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_033_Piacenza.zip" title="Piacenza"><img src="../images/zip.png" width="32" height="32" alt="Piacenza"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">034 - Parma</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_034_Parma.zip" title="Parma"><img src="../images/zip.png" width="32" height="32" alt="Parma"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">035 - Reggio nell'Emilia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_035_Reggio_nellEmilia.zip" title="Reggio nell'Emilia"><img src="../images/zip.png" width="32" height="32" alt="Reggio nell'Emilia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">036 - Modena</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_036_Modena.zip" title="Modena"><img src="../images/zip.png" width="32" height="32" alt="Modena"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">037 - Bologna</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_037_Bologna.zip" title="Bologna"><img src="../images/zip.png" width="32" height="32" alt="Bologna"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">038 - Ferrara</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_038_Ferrara.zip" title="Ferrara"><img src="../images/zip.png" width="32" height="32" alt="Ferrara"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">039 - Ravenna</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_039_Ravenna.zip" title="Ravenna"><img src="../images/zip.png" width="32" height="32" alt="Ravenna"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">040 - Forlì-Cesena</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_040_Forli-Cesena.zip" title="Forlì-Cesena"><img src="../images/zip.png" width="32" height="32" alt="Forlì-Cesena"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">099 - Rimini</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_099_Rimini.zip" title="Rimini"><img src="../images/zip.png" width="32" height="32" alt="Rimini"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">09 - Toscana</th>
+    </tr>
+    <tr>
+      <td class="w100">045 - Massa-Carrara</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_045_Massa-Carrara.zip" title="Massa-Carrara"><img src="../images/zip.png" width="32" height="32" alt="Massa-Carrara"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">046 - Lucca</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_046_Lucca.zip" title="Lucca"><img src="../images/zip.png" width="32" height="32" alt="Lucca"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">047 - Pistoia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_047_Pistoia.zip" title="Pistoia"><img src="../images/zip.png" width="32" height="32" alt="Pistoia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">048 - Firenze</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_048_Firenze.zip" title="Firenze"><img src="../images/zip.png" width="32" height="32" alt="Firenze"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">049 - Livorno</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_049_Livorno.zip" title="Livorno"><img src="../images/zip.png" width="32" height="32" alt="Livorno"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">050 - Pisa</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_050_Pisa.zip" title="Pisa"><img src="../images/zip.png" width="32" height="32" alt="Pisa"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">051 - Arezzo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_051_Arezzo.zip" title="Arezzo"><img src="../images/zip.png" width="32" height="32" alt="Arezzo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">052 - Siena</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_052_Siena.zip" title="Siena"><img src="../images/zip.png" width="32" height="32" alt="Siena"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">053 - Grosseto</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_053_Grosseto.zip" title="Grosseto"><img src="../images/zip.png" width="32" height="32" alt="Grosseto"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">100 - Prato</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_100_Prato.zip" title="Prato"><img src="../images/zip.png" width="32" height="32" alt="Prato"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">10 - Umbria</th>
+    </tr>
+    <tr>
+      <td class="w100">054 - Perugia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_054_Perugia.zip" title="Perugia"><img src="../images/zip.png" width="32" height="32" alt="Perugia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">055 - Terni</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_055_Terni.zip" title="Terni"><img src="../images/zip.png" width="32" height="32" alt="Terni"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">11 - Marche</th>
+    </tr>
+    <tr>
+      <td class="w100">041 - Pesaro e Urbino</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_041_Pesaro_e_Urbino.zip" title="Pesaro e Urbino"><img src="../images/zip.png" width="32" height="32" alt="Pesaro e Urbino"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">042 - Ancona</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_042_Ancona.zip" title="Ancona"><img src="../images/zip.png" width="32" height="32" alt="Ancona"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">043 - Macerata</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_043_Macerata.zip" title="Macerata"><img src="../images/zip.png" width="32" height="32" alt="Macerata"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">044 - Ascoli Piceno</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_044_Ascoli_Piceno.zip" title="Ascoli Piceno"><img src="../images/zip.png" width="32" height="32" alt="Ascoli Piceno"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">109 - Fermo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_109_Fermo.zip" title="Fermo"><img src="../images/zip.png" width="32" height="32" alt="Fermo"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">12 - Lazio</th>
+    </tr>
+    <tr>
+      <td class="w100">056 - Viterbo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_056_Viterbo.zip" title="Viterbo"><img src="../images/zip.png" width="32" height="32" alt="Viterbo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">057 - Rieti</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_057_Rieti.zip" title="Rieti"><img src="../images/zip.png" width="32" height="32" alt="Rieti"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">058 - Roma</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_058_Roma.zip" title="Roma"><img src="../images/zip.png" width="32" height="32" alt="Roma"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">059 - Latina</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_059_Latina.zip" title="Latina"><img src="../images/zip.png" width="32" height="32" alt="Latina"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">060 - Frosinone</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_060_Frosinone.zip" title="Frosinone"><img src="../images/zip.png" width="32" height="32" alt="Frosinone"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">13 - Abruzzo</th>
+    </tr>
+    <tr>
+      <td class="w100">066 - L'Aquila</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_066_LAquila.zip" title="L'Aquila"><img src="../images/zip.png" width="32" height="32" alt="L'Aquila"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">067 - Teramo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_067_Teramo.zip" title="Teramo"><img src="../images/zip.png" width="32" height="32" alt="Teramo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">068 - Pescara</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_068_Pescara.zip" title="Pescara"><img src="../images/zip.png" width="32" height="32" alt="Pescara"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">069 - Chieti</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_069_Chieti.zip" title="Chieti"><img src="../images/zip.png" width="32" height="32" alt="Chieti"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">14 - Molise</th>
+    </tr>
+    <tr>
+      <td class="w100">070 - Campobasso</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_070_Campobasso.zip" title="Campobasso"><img src="../images/zip.png" width="32" height="32" alt="Campobasso"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">094 - Isernia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_094_Isernia.zip" title="Isernia"><img src="../images/zip.png" width="32" height="32" alt="Isernia"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">15 - Campania</th>
+    </tr>
+    <tr>
+      <td class="w100">061 - Caserta</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_061_Caserta.zip" title="Caserta"><img src="../images/zip.png" width="32" height="32" alt="Caserta"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">062 - Benevento</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_062_Benevento.zip" title="Benevento"><img src="../images/zip.png" width="32" height="32" alt="Benevento"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">063 - Napoli</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_063_Napoli.zip" title="Napoli"><img src="../images/zip.png" width="32" height="32" alt="Napoli"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">064 - Avellino</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_064_Avellino.zip" title="Avellino"><img src="../images/zip.png" width="32" height="32" alt="Avellino"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">065 - Salerno</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_065_Salerno.zip" title="Salerno"><img src="../images/zip.png" width="32" height="32" alt="Salerno"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">16 - Puglia</th>
+    </tr>
+    <tr>
+      <td class="w100">071 - Foggia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_071_Foggia.zip" title="Foggia"><img src="../images/zip.png" width="32" height="32" alt="Foggia"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">072 - Bari</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_072_Bari.zip" title="Bari"><img src="../images/zip.png" width="32" height="32" alt="Bari"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">073 - Taranto</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_073_Taranto.zip" title="Taranto"><img src="../images/zip.png" width="32" height="32" alt="Taranto"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">074 - Brindisi</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_074_Brindisi.zip" title="Brindisi"><img src="../images/zip.png" width="32" height="32" alt="Brindisi"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">075 - Lecce</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_075_Lecce.zip" title="Lecce"><img src="../images/zip.png" width="32" height="32" alt="Lecce"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">110 - Barletta-Andria-Trani</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_110_Barletta-Andria-Trani.zip" title="Barletta-Andria-Trani"><img src="../images/zip.png" width="32" height="32" alt="Barletta-Andria-Trani"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">17 - Basilicata</th>
+    </tr>
+    <tr>
+      <td class="w100">076 - Potenza</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_076_Potenza.zip" title="Potenza"><img src="../images/zip.png" width="32" height="32" alt="Potenza"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">077 - Matera</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_077_Matera.zip" title="Matera"><img src="../images/zip.png" width="32" height="32" alt="Matera"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">18 - Calabria</th>
+    </tr>
+    <tr>
+      <td class="w100">078 - Cosenza</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_078_Cosenza.zip" title="Cosenza"><img src="../images/zip.png" width="32" height="32" alt="Cosenza"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">079 - Catanzaro</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_079_Catanzaro.zip" title="Catanzaro"><img src="../images/zip.png" width="32" height="32" alt="Catanzaro"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">080 - Reggio di Calabria</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_080_Reggio_di_Calabria.zip" title="Reggio di Calabria"><img src="../images/zip.png" width="32" height="32" alt="Reggio di Calabria"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">101 - Crotone</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_101_Crotone.zip" title="Crotone"><img src="../images/zip.png" width="32" height="32" alt="Crotone"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">102 - Vibo Valentia</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_102_Vibo_Valentia.zip" title="Vibo Valentia"><img src="../images/zip.png" width="32" height="32" alt="Vibo Valentia"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">19 - Sicilia</th>
+    </tr>
+    <tr>
+      <td class="w100">081 - Trapani</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_081_Trapani.zip" title="Trapani"><img src="../images/zip.png" width="32" height="32" alt="Trapani"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">082 - Palermo</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_082_Palermo.zip" title="Palermo"><img src="../images/zip.png" width="32" height="32" alt="Palermo"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">083 - Messina</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_083_Messina.zip" title="Messina"><img src="../images/zip.png" width="32" height="32" alt="Messina"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">084 - Agrigento</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_084_Agrigento.zip" title="Agrigento"><img src="../images/zip.png" width="32" height="32" alt="Agrigento"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">085 - Caltanissetta</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_085_Caltanissetta.zip" title="Caltanissetta"><img src="../images/zip.png" width="32" height="32" alt="Caltanissetta"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">086 - Enna</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_086_Enna.zip" title="Enna"><img src="../images/zip.png" width="32" height="32" alt="Enna"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">087 - Catania</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_087_Catania.zip" title="Catania"><img src="../images/zip.png" width="32" height="32" alt="Catania"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">088 - Ragusa</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_088_Ragusa.zip" title="Ragusa"><img src="../images/zip.png" width="32" height="32" alt="Ragusa"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">089 - Siracusa</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_089_Siracusa.zip" title="Siracusa"><img src="../images/zip.png" width="32" height="32" alt="Siracusa"></a></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" class="t_red" scope="colgroup">20 - Sardegna</th>
+    </tr>
+    <tr>
+      <td class="w100">090 - Sassari</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_090_Sassari.zip" title="Sassari"><img src="../images/zip.png" width="32" height="32" alt="Sassari"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">091 - Nuoro</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_091_Nuoro.zip" title="Nuoro"><img src="../images/zip.png" width="32" height="32" alt="Nuoro"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">092 - Cagliari</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_092_Cagliari.zip" title="Cagliari"><img src="../images/zip.png" width="32" height="32" alt="Cagliari"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">095 - Oristano</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_095_Oristano.zip" title="Oristano"><img src="../images/zip.png" width="32" height="32" alt="Oristano"></a></td>
+    </tr>
+
+    <tr>
+      <td class="w100">111 - Sud Sardegna</td>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_111_Sud_Sardegna.zip" title="Sud Sardegna"><img src="../images/zip.png" width="32" height="32" alt="Sud Sardegna"></a></td>
+    </tr>
+
+    <tr><td colspan="2"><hr></td></tr>
+    <tr>
+      <th class="w100 t_red" scope="row">Ripartizioni</th>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_Ripartizioni.zip" title="Ripartizioni"><img src="../images/zip.png" width="32" height="32" alt="Ripartizioni"></a></td>
+    </tr>
+    <tr>
+      <th class="w100 t_red" scope="row">Regioni</th>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_Regioni.zip" title="Regioni"><img src="../images/zip.png" width="32" height="32" alt="Regioni"></a></td>
+    </tr>
+    <tr>
+      <th class="w100 t_red" scope="row">Province</th>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_Province.zip" title="Province"><img src="../images/zip.png" width="32" height="32" alt="Province"></a></td>
+    </tr>
+    <tr>
+      <th class="w100 t_red" scope="row">Comuni</th>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_Comuni.zip" title="Comuni"><img src="../images/zip.png" width="32" height="32" alt="Comuni"></a></td>
+    </tr>
+    <tr>
+      <th class="w100 t_red" scope="row">Tutti i file</th>
+      <td class=" w3-center"><a href="../data/posas/POSAS_2025_it_Tutti_i_file.zip" title="Tutti i file"><img src="../images/zip.png" width="32" height="32" alt="Tutti i file"></a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    
+  </tfoot>
+</table>
+
+                                </div><!-- Fine Sezione 2 riga 1 (form ricerca 2) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                        <!-- Sezione 3: Sezione descrizione -->
+                        <section id="sezione-3">
+                            <div id="div-sezione-3">
+                                <div class="w3-row sezioni" id="s-3_r-1"><!-- Sezione 3 riga 1 -->
+                                        <!-- Area inclusa -->
+<div id="ad_area-3" class="w3-container"><!-- Inizio area note -->
+    <div class="l12 m12 s12 testonote">
+    <h3>Popolazione residente per età, sesso e stato civile al 1° gennaio</h3>
+    <p>&Egrave; una elaborazione che, a partire dai dati del Censimento permanente della popolazione, calcola la popolazione residente comunale per sesso, anno di nascita e stato civile al 31 dicembre di ogni anno e viene diffusa al 1&deg;gennaio dell&#39;anno successivo. La popolazione residente &egrave; costituita dalle persone, di cittadinanza italiana e straniera, aventi dimora abituale nel territorio nazionale anche se temporaneamente assenti.</p>    </div>
+</div><!-- Fine area note -->
+                                </div><!-- Fine Sezione 3 riga 1 (form ricerca 3) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                        <!-- Sezione 4: Sezione glossario -->
+                        <section id="sezione-4">
+                            <div id="div-sezione-4">
+                                <div class="w3-row sezioni" id="s-4_r-1"><!-- Sezione 4 riga 1 -->
+                                        <!-- Area inclusa -->
+<div id="ad_area-4" class="w3-container"><!-- Inizio area note -->
+    <div class="l12 m12 s12 testonote">
+    <h3>Popolazione residente per età, sesso e stato civile al 1° gennaio</h3>
+    <p><strong>Popolazione residente</strong>:&nbsp;&egrave; costituita dalle persone aventi dimora abituale in un Comune, anche se alla data considerata sono assenti perch&eacute; temporaneamente presenti in altro Comune italiano o all&rsquo;estero. Non cessano di appartenere alla popolazione residente le persone temporaneamente dimoranti, in altro Comune o all&rsquo;estero, per l&rsquo;esercizio di occupazioni stagionali o per causa di durata limitata.</p>
+
+<p><strong>Sesso</strong>: caratteristiche biologiche che concorrono a definire una persona maschio o femmina, come registrata in anagrafe.</p>
+
+<p><strong>Stato civile</strong>: condizione di ogni cittadino nei confronti dello stato per quanto attiene alle leggi sul matrimonio e sulle unioni civili in vigore al momento dell&rsquo;indagine nel Paese. Si definisce celibe o nubile il cittadino rispettivamente di sesso maschile o femminile che non ha mai contratto matrimonio o unione civile; coniugato/a il cittadino sposato che non ha ottenuto lo scioglimento o la cessazione degli effetti civili del matrimonio; divorziato/a il cittadino coniugato che ha ottenuto lo scioglimento o la cessazione degli effetti civili del matrimonio; vedovo/a il cittadino il cui matrimonio &egrave; cessato per decesso del coniuge.</p>
+    </div>
+</div><!-- Fine area note -->
+                                </div><!-- Fine Sezione 4 riga 1 (form ricerca 4) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                        <!-- Sezione 5: Sezione note -->
+                        <section id="sezione-5">
+                            <div id="div-sezione-5">
+                                <div class="w3-row sezioni" id="s-5_r-1"><!-- Sezione 5 riga 1 -->
+                                        <!-- Area inclusa -->
+<div id="ad_area-5" class="w3-container"><!-- Inizio area note -->
+    <div class="l12 m12 s12 testonote">
+    <h3>Popolazione residente per età, sesso e stato civile al 1° gennaio</h3>
+    <p>Per la tutela del segreto statistico, per i Comuni con meno di 20.000 abitanti i dati per le modalit&agrave; dello stato civile uniti\e civilmente, gi&agrave; in unione civile (per scioglimento dell&rsquo;unione) e gi&agrave; in unione civile (per decesso del partner), non sono diffusi e sono stati sommati rispettivamente alle modalit&agrave; dello stato civile coniugati\e, divorziati\e e vedovi\e. Pertanto la somma dei singoli dati comunali, per alcune modalit&agrave; dello stato civile, pu&ograve; differire dal dato provinciale, regionale o ripartizionale.</p>
+    </div>
+</div><!-- Fine area note -->
+                                </div><!-- Fine Sezione 5 riga 1 (form ricerca 5) -->
+                                
+                            </div>
+                        </section><!-- Fine sezione -->
+                    </main>
+                </div><!-- Container corpo applicazione -->
+        </div><!-- Fine container e card esterna -->
+        <!-- Finestra ERRORE -->
+        <div id="errore" class="w3-modal">
+          <div class="w3-modal-content">
+            <header class="w3-container w3-border-bottom w3-red">
+                <p>Errore<span onclick="document.getElementById('errore').style.display='none'" class="w3-button w3-display-topright">&times;</span></p>
+            </header>
+            <div id="erroretesto" class="w3-container w3-responsive w3-margin-right w3-padding-16">
+            </div>
+            <footer class="w3-padding"><div onclick="document.getElementById('errore').style.display='none'" class="w3-button w3-border">Chiudi</div></footer>
+          </div>
+        </div>
+        <!-- Fine ERRORE -->
+        <div class="overlay"></div>
+    </body>
+</html>

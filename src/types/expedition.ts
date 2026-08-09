@@ -42,7 +42,7 @@ export type DistrictExpeditionDefinition = {
 };
 
 export type DistrictExpeditionDashboard = {
-  active: DistrictExpedition | null;
+  active: DistrictExpedition[];
   choices: DistrictExpedition[];
   localDate: string;
   seals: DistrictExpeditionSeal[];

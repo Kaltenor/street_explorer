@@ -52,6 +52,10 @@ const mapScreenSource = fs.readFileSync(
   path.resolve(__dirname, "../src/screens/MapScreen.tsx"),
   "utf8"
 );
+const explorationMapSource = fs.readFileSync(
+  path.resolve(__dirname, "../src/components/ExplorationMap.tsx"),
+  "utf8"
+);
 const liveMedalEffectSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const evaluation = liveMedalEvaluationRef.current"),
   mapScreenSource.indexOf("const handleCompleteMedalCelebration")
@@ -62,6 +66,17 @@ const coreSavedDataHydrationSource = mapScreenSource.slice(
 );
 const medalCelebrationSource = fs.readFileSync(
   path.resolve(__dirname, "../src/components/MedalCelebration.tsx"),
+  "utf8"
+);
+const medalChimeBytes = fs.readFileSync(
+  path.resolve(__dirname, "../assets/sounds/medal-chime.wav")
+);
+const medalChimeGeneratorSource = fs.readFileSync(
+  path.resolve(__dirname, "../scripts/generate-medal-chime.js"),
+  "utf8"
+);
+const soundAssetReadmeSource = fs.readFileSync(
+  path.resolve(__dirname, "../assets/sounds/README.md"),
   "utf8"
 );
 const medalCollectionSource = fs.readFileSync(
@@ -124,20 +139,23 @@ assert(
   "the updated portrait PNG is imported as the Expo splash asset"
 );
 assert(
-  mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&
-    mapScreenSource.includes("repairPendingRecordingCaches()"),
-  "live awards and active-city pending-recording safety checks are wired into the map screen"
+    mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&
+    mapScreenSource.includes("repairPendingRecordingCaches()") &&
+    liveMedalEffectSource.includes("activeBoundaryCellCount < 1") &&
+    liveMedalEffectSource.includes("validatedSurfaceCellIds: activeClosureFillCellIds") &&
+    !liveMedalEffectSource.includes("MEDAL_MIN_BOUNDARY_LENGTH_METERS"),
+  "live direct-cell and validated-surface awards plus active-city pending-recording safety checks are wired into the map screen"
 );
 assert(
   liveMedalEffectSource.includes("evaluation.latestBoundaryCellCount = boundaryCellCount") &&
     liveMedalEffectSource.includes(
-      "evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length"
+      "evaluation.evaluatedBoundaryCellCount = boundaryCellCount"
     ) &&
     liveMedalEffectSource.indexOf(
-      "evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length"
+      "evaluation.evaluatedBoundaryCellCount = boundaryCellCount"
     ) > liveMedalEffectSource.indexOf("evaluateLiveMedalCollection(input)") &&
     !liveMedalEffectSource.includes(
-      "evaluation.evaluatedBoundaryCellCount = boundaryCellCount"
+      "evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length"
     ),
   "cancelled live medal checks remain retryable until an evaluation actually completes"
 );
@@ -146,12 +164,44 @@ assert(
     medalCelebrationSource.includes("flightTarget.y - originY"),
   "the medal reveal rotates in 3D and flies to the measured Medal tab"
 );
+const medalChimeChannels = medalChimeBytes.readUInt16LE(22);
+const medalChimeSampleRate = medalChimeBytes.readUInt32LE(24);
+const medalChimeBitsPerSample = medalChimeBytes.readUInt16LE(34);
+const medalChimeDataBytes = medalChimeBytes.readUInt32LE(40);
+const medalChimeDurationSeconds =
+  medalChimeDataBytes /
+  (medalChimeSampleRate * medalChimeChannels * (medalChimeBitsPerSample / 8));
+assert(
+  medalCelebrationSource.includes('require("../../assets/sounds/medal-chime.wav")') &&
+    medalChimeBytes.toString("ascii", 0, 4) === "RIFF" &&
+    medalChimeBytes.toString("ascii", 8, 12) === "WAVE" &&
+    medalChimeChannels === 2 &&
+    medalChimeSampleRate === 44100 &&
+    medalChimeBitsPerSample === 16 &&
+    Math.abs(medalChimeDurationSeconds - 2) < 0.001 &&
+    medalChimeBytes.length > 300000 &&
+    medalChimeGeneratorSource.includes("addBrassNote") &&
+    medalChimeGeneratorSource.includes("addTimpani") &&
+    medalChimeGeneratorSource.includes("addBell") &&
+    medalChimeGeneratorSource.includes("Creative Commons Zero 1.0") &&
+    soundAssetReadmeSource.includes("medal-chime.wav") &&
+    soundAssetReadmeSource.includes("public-domain dedication") &&
+    soundAssetReadmeSource.includes("no third-party samples or melodies"),
+  "medal unlocks use the two-second stereo CC0 orchestral reward cue"
+);
 assert(
   medalCollectionSource.includes("const collectedMedals = filteredMedals.filter") &&
     medalCollectionSource.includes("const lockedMedals = filteredMedals.filter") &&
     medalCollectionSource.includes("title={text.unlockedSection}") &&
     medalCollectionSource.includes("title={text.lockedSection}"),
-  "every category view renders permanent unlocked and locked medal sections"
+  "every active-city district view renders permanent unlocked and locked medal sections"
+);
+assert(
+  explorationMapSource.includes("description={medal.isCollected ? undefined : lockedLabel}") &&
+    explorationMapSource.includes("medal.isCollected && onMedalPress") &&
+    mapScreenSource.includes("if (!medal.isCollected)") &&
+    mapScreenSource.includes('lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}'),
+  "locked map medals show a localized locked callout without opening Medals"
 );
 assert(
   mapScreenSource.includes("function CityMedalProgress") &&
@@ -222,7 +272,10 @@ assert(
       "progress?.album.id === activeMedalAlbumIdRef.current"
     ) &&
     mapScreenSource.includes(
-      "medals={activeMedalProgress?.medals ?? EMPTY_MEDALS}"
+      "const activeMedals = activeMedalProgress?.medals ?? EMPTY_MEDALS"
+    ) &&
+    mapScreenSource.includes(
+      "medals={visibleMapMedals}"
     ),
   "rapid city switches cannot publish stale album progress or markers"
 );
@@ -237,6 +290,10 @@ const bundledMedals = top100Albums.flatMap((album) => album.medals);
 const parisArrondissements = new Set(
   parisAlbum.medals.map((medal) => medal.arrondissement)
 );
+const lyonExpansionDistricts = [3, 4, 6, 7, 8, 9];
+const lyonExpandedMedals = lyonAlbum.medals.filter((medal) =>
+  lyonExpansionDistricts.includes(medal.arrondissement)
+);
 assert(
   parisAlbum.version === 2 &&
     parisAlbum.medals.length === 60 &&
@@ -249,6 +306,18 @@ assert(
       (medal) => !/\b(?:metro|métro)\b/i.test(`${medal.name.en} ${medal.name.fr}`)
     ),
   "the expanded Paris v2 album has 60 relevant non-metro landmarks covering all 20 arrondissements and five categories"
+);
+assert(
+  lyonAlbum.version === 2 &&
+    lyonAlbum.medals.length === 44 &&
+    lyonExpandedMedals.length === 24 &&
+    lyonExpansionDistricts.every(
+      (arrondissement) =>
+        lyonExpandedMedals.filter((medal) => medal.arrondissement === arrondissement)
+          .length === 4
+    ) &&
+    new Set(lyonExpandedMedals.map((medal) => medal.category)).size === 5,
+  "the expanded Lyon v2 album adds four landmarks in each requested outer district and retains all five categories"
 );
 assert(
   franceSources.cities.length === 100 &&
@@ -272,7 +341,7 @@ assert(
     bundledMedals.every((medal) =>
       Number.isFinite(medal.latitude) && Number.isFinite(medal.longitude)
     ),
-  "all 851 bundled medals use globally unique ids and finite reviewed anchors"
+  "all 875 bundled medals use globally unique ids and finite reviewed anchors"
 );
 const obviousNonLandmarkName = /^(?:rue|avenue|boulevard|route|chemin|arrêt|allée(?! couverte))\b|\bstation\b/i;
 assert(
@@ -286,10 +355,11 @@ assert(
 );
 assert(
   medalAlbums.BUNDLED_MEDAL_ALBUM_COUNT === 100 &&
-    medalAlbums.BUNDLED_MEDAL_COUNT === 851 &&
+    medalAlbums.BUNDLED_MEDAL_COUNT === 875 &&
     medalAlbums.BUNDLED_MEDAL_COUNT === bundledMedals.length &&
+    medalAlbums.getAllBundledMedalAlbums().length === 100 &&
     medalAlbums.getBundledMedalAlbum("paris-v1").cityName.fr === "Paris",
-  "the manifest resolves one requested city album without an eager album array"
+  "the manifest resolves one requested city album and the launch scan can load all bundled albums"
 );
 
 const netherlandsDescriptor = downloadableManifest.DOWNLOADABLE_MEDAL_COUNTRY_PACKS.find(
@@ -352,8 +422,8 @@ assert(
 );
 assert(
     mapScreenSource.includes('type MedalPackLoadState = "idle" | "loading" | "ready" | "unavailable"') &&
-    mapScreenSource.includes("medalDataPromise.then") &&
-    mapScreenSource.indexOf("const medalDataPromise = loadMedalData()") >
+    mapScreenSource.includes("const medalData = await loadMedalData(") &&
+    mapScreenSource.indexOf("const medalData = await loadMedalData(") >
       mapScreenSource.indexOf('"map.saved-data-queries"') &&
     mapScreenSource.includes('medalPackLoadState === "unavailable"') &&
     mapScreenSource.includes("resetMedalCountryPackFailure(activeMedalAlbumId)") &&
@@ -374,7 +444,22 @@ assert(
     databaseSource.includes("INNER JOIN walk_sessions") &&
     databaseSource.includes("ON walk_sessions.id = gps_points.session_id") &&
     !databaseSource.includes("seedBundledMedalAlbums"),
-  "live and historical checks stay active-city scoped, spatial, incremental, lazily seeded, and upgrade-safe with orphan GPS rows"
+  "live and historical recording checks stay spatial, incremental, lazily seeded, and upgrade-safe with orphan GPS rows"
+);
+assert(
+  medalServiceSource.includes("awardMedalsInDiscoveredCells") &&
+    medalServiceSource.includes("findDiscoveredCellMedalCandidates") &&
+    medalServiceSource.includes("collectFillableEnclosedExplorationCellIds") &&
+    medalServiceSource.includes('reason: "discovered_area"') &&
+    medalServiceSource.includes("for (const album of albums)") &&
+    countryPackStoreSource.includes("getLocallyAvailableMedalAlbumDefinitions") &&
+    countryPackStoreSource.includes("if (!installedFile.exists)") &&
+    mapScreenSource.includes("discoveredMedalAwardOperationRef") &&
+    mapScreenSource.includes("getExplorationRevision(activityMode)") &&
+    mapScreenSource.includes("validatedSurfaceCellIds: activeClosureFillCellIds") &&
+    mapScreenSource.includes("the next refresh will retry") &&
+    mapScreenSource.includes("awardMedalsInDiscoveredCells(discoveredCellIds)"),
+  "launch and live checks award the validated exploration surface, serialize album writes, and retry changed or failed exploration revisions"
 );
 assert(
   medalRepositorySource.includes("getUncollectedMedalsInBounds") &&
@@ -382,6 +467,19 @@ assert(
     expeditionSource.includes("getMedalAlbumIdForZone(district)") &&
     !expeditionSource.includes("getAllMedalAlbumProgress"),
   "district expedition medal checks use direct indexed active-city queries"
+);
+assert(
+  medalRepositorySource.includes("getCollectedMedalCities") &&
+    medalRepositorySource.includes("JOIN medal_albums ON medal_albums.id = collected_medals.album_id") &&
+    medalCollectionSource.includes('type DistrictFilter = "all" | string') &&
+    medalCollectionSource.includes('type MedalScope = "city" | "allCities"') &&
+    medalCollectionSource.includes("buildDistrictOptions") &&
+    medalCollectionSource.includes("zones.length > 0") &&
+    medalCollectionSource.includes("Array.from({ length: highestNumber }") &&
+    medalCollectionSource.includes("isPointInsideZone") &&
+    mapScreenSource.includes("districtZones={visibleMapBoundaryContext.districts}") &&
+    medalCollectionSource.includes("sortedCollectedCities.map"),
+  "Medals lists every available city district and keeps an offline grouped All Cities collection"
 );
 
 function perimeter(size) {
@@ -449,13 +547,41 @@ assert(
   "a gameplay loop shorter than 80 meters earns nothing"
 );
 
+const validatedSurfaceCellIds = new Set(
+  explorationArea.collectFillableEnclosedExplorationCellIds(
+    [...completeBoundary],
+    150000
+  )
+);
+assert(
+  medalEnclosure.findMedalCollectionCandidates({
+    album: albumWithAnchor("3:3"),
+    boundaryCellIds: completeBoundary,
+    validatedSurfaceCellIds,
+    walkedDistanceMeters: 0
+  }).length === 1,
+  "a medal contained by the validated rendered surface unlocks even when its anchor cell was not walked"
+);
+
 assert(
   medalEnclosure.findMedalCollectionCandidates({
     album: albumWithAnchor("0:0"),
     boundaryCellIds: completeBoundary,
     walkedDistanceMeters: 80
-  }).length === 0,
-  "an anchor on the occupied boundary is not treated as inside"
+  }).length === 1,
+  "a medal anchored on an already discovered boundary cell is awarded"
+);
+
+const discoveredCellCandidates = medalEnclosure.findMedalCollectionCandidates({
+  album: albumWithAnchor("3:3"),
+  boundaryCellIds: new Set(["3:3"]),
+  walkedDistanceMeters: 0
+});
+assert(
+  discoveredCellCandidates.length === 1 &&
+    discoveredCellCandidates[0].enclosureAreaSquareMeters === 225 &&
+    discoveredCellCandidates[0].enclosureId === "discovered-cell-v1:3:3",
+  "a medal in any discovered tile is eligible without an enclosure or minimum-distance loop"
 );
 
 assert(

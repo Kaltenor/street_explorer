@@ -3,7 +3,7 @@ import { getNewExploredCellKeysSince } from "../database/completionRepository";
 import {
   countFinalizedLoopEvidence,
   ensureDailyDistrictExpeditions,
-  getActiveDistrictExpedition,
+  getActiveDistrictExpeditions,
   getDailyDistrictExpeditions,
   getDistrictExpeditionSeals,
   updateDistrictExpeditionProgress
@@ -53,12 +53,19 @@ export async function loadDistrictExpeditionDashboard(
     choices = await getDailyDistrictExpeditions(district.id, localDate);
   }
 
-  let active = await getActiveDistrictExpedition();
+  let active = await getActiveDistrictExpeditions();
+  const activeInDistrict = active.filter(
+    (expedition) => expedition.districtId === district.id && expedition.acceptedAt
+  );
 
-  if (active?.districtId === district.id && active.acceptedAt) {
-    const progress = await calculateDistrictExpeditionProgress(active, district);
-    await updateDistrictExpeditionProgress(active.id, progress);
-    active = await getActiveDistrictExpedition();
+  if (activeInDistrict.length > 0) {
+    await Promise.all(
+      activeInDistrict.map(async (expedition) => {
+        const progress = await calculateDistrictExpeditionProgress(expedition, district);
+        await updateDistrictExpeditionProgress(expedition.id, progress);
+      })
+    );
+    active = await getActiveDistrictExpeditions();
     choices = await getDailyDistrictExpeditions(district.id, localDate);
   }
 

@@ -79,18 +79,17 @@ export async function getDailyDistrictExpeditions(
   return rows.map(mapExpeditionRow);
 }
 
-export async function getActiveDistrictExpedition() {
+export async function getActiveDistrictExpeditions() {
   const db = await getDatabase();
-  const row = await db.getFirstAsync<ExpeditionRow>(`
+  const rows = await db.getAllAsync<ExpeditionRow>(`
     SELECT * FROM district_expeditions
     WHERE accepted_at IS NOT NULL
       AND abandoned_at IS NULL
       AND completed_at IS NULL
-    ORDER BY accepted_at DESC
-    LIMIT 1
+    ORDER BY accepted_at, district_id, slot
   `);
 
-  return row ? mapExpeditionRow(row) : null;
+  return rows.map(mapExpeditionRow);
 }
 
 export async function acceptDistrictExpedition(expeditionId: string) {
@@ -102,18 +101,6 @@ export async function acceptDistrictExpedition(expeditionId: string) {
 
     if (!expedition || expedition.completed_at) {
       throw new Error("This expedition is no longer available.");
-    }
-
-    const active = await transaction.getFirstAsync<{ id: string }>(`
-      SELECT id FROM district_expeditions
-      WHERE accepted_at IS NOT NULL
-        AND abandoned_at IS NULL
-        AND completed_at IS NULL
-      LIMIT 1
-    `);
-
-    if (active && active.id !== expeditionId) {
-      throw new Error("Finish or abandon the active expedition first.");
     }
 
     const acceptedAt = new Date().toISOString();

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T00:00:00.000Z",
+  "generatedAt": "2026-08-09T00:00:00.000Z",
   "ranking": {
     "definition": "Metropolitan French communes ranked by 2023 municipal population",
     "effectiveDate": "2026-01-01",
@@ -56,11 +56,12 @@
       "cityName": "Lyon",
       "cityZoneId": "relation/120965",
       "inseeCode": "69123",
-      "medalCount": 20,
+      "medalCount": 44,
       "population": 519127,
       "rank": 3,
       "sourceCounts": {
-        "openstreetmap": 20
+        "openstreetmap": 42,
+        "wikidata": 2
       }
     },
     {

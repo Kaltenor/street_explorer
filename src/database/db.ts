@@ -842,6 +842,12 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(30, "allow_multiple_active_district_expeditions", async () => {
+    await db.execAsync(`
+      DROP INDEX IF EXISTS idx_district_expeditions_one_active;
+    `);
+  });
+
   await db.runAsync(`
     UPDATE collected_medals
     SET presentation_state = 'pending'

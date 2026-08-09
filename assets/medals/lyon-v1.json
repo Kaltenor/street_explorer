@@ -3,9 +3,9 @@
   "cityId": "lyon-fr",
   "cityZoneId": "relation/120965",
   "cityName": { "en": "Lyon", "fr": "Lyon" },
-  "version": 1,
-  "publishedAt": "2026-07-29",
-  "sourceAttribution": "Landmark identities and anchor coordinates: OpenStreetMap contributors, ODbL 1.0.",
+  "version": 2,
+  "publishedAt": "2026-08-09",
+  "sourceAttribution": "Landmark identities and anchor coordinates: OpenStreetMap contributors, ODbL 1.0, and Wikidata, CC0.",
   "medals": [
     {
       "id": "fourviere-basilica", "category": "architecture",
@@ -146,6 +146,174 @@
       "description": { "en": "A museum of film effects, props and miniature scenes in Vieux Lyon.", "fr": "Un musée d'effets de cinéma, d'accessoires et de scènes miniatures." },
       "latitude": 45.7618753, "longitude": 4.8272985,
       "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 1421012868 }
+    },
+    {
+      "id": "tour-part-dieu", "arrondissement": 3, "category": "architecture",
+      "name": { "en": "Tour Part-Dieu", "fr": "Tour Part-Dieu" },
+      "description": { "en": "The pencil-shaped skyscraper that has marked Lyon's eastern skyline since 1977.", "fr": "Le gratte-ciel en forme de crayon qui marque l'horizon oriental de Lyon depuis 1977." },
+      "latitude": 45.7610694, "longitude": 4.8537548,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62337459 }
+    },
+    {
+      "id": "montluc-prison-memorial", "arrondissement": 3, "category": "history",
+      "name": { "en": "Montluc Prison Memorial", "fr": "Mémorial national de la prison de Montluc" },
+      "description": { "en": "A national memorial preserving the prison where the Nazi occupation confined resistance members and persecuted people.", "fr": "Un mémorial national conservant la prison où l'Occupation nazie enferma résistants et personnes persécutées." },
+      "latitude": 45.7503889, "longitude": 4.8618333,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 252758400 }
+    },
+    {
+      "id": "chateau-de-montchat", "arrondissement": 3, "category": "architecture",
+      "name": { "en": "Château de Montchat", "fr": "Château de Montchat" },
+      "description": { "en": "A historic château and neighborhood landmark in the eastern Montchat quarter.", "fr": "Un château historique et repère du quartier oriental de Montchat." },
+      "latitude": 45.7502072, "longitude": 4.8889974,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62337307 }
+    },
+    {
+      "id": "auditorium-maurice-ravel", "arrondissement": 3, "category": "culture",
+      "name": { "en": "Maurice Ravel Auditorium", "fr": "Auditorium Maurice-Ravel" },
+      "description": { "en": "Part-Dieu's monumental concert hall and home of the National Orchestra of Lyon.", "fr": "La salle de concert monumentale de la Part-Dieu et résidence de l'Orchestre national de Lyon." },
+      "latitude": 45.7616372, "longitude": 4.8528067,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62336964 }
+    },
+    {
+      "id": "maison-des-canuts", "arrondissement": 4, "category": "culture",
+      "name": { "en": "Maison des Canuts", "fr": "Maison des Canuts" },
+      "description": { "en": "A living museum of Croix-Rousse silk weaving and the craft of the canuts.", "fr": "Un musée vivant du tissage de la soie à la Croix-Rousse et du savoir-faire des canuts." },
+      "latitude": 45.777106, "longitude": 4.8336847,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 4885281682 }
+    },
+    {
+      "id": "gros-caillou", "arrondissement": 4, "category": "nature",
+      "name": { "en": "Gros Caillou", "fr": "Gros Caillou" },
+      "description": { "en": "A glacial boulder uncovered by the Croix-Rousse funicular works and adopted as a neighborhood emblem.", "fr": "Un bloc erratique découvert lors des travaux du funiculaire et devenu emblème de la Croix-Rousse." },
+      "latitude": 45.7747478, "longitude": 4.8348308,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 9443115576 }
+    },
+    {
+      "id": "jardin-rosa-mir", "arrondissement": 4, "category": "art",
+      "name": { "en": "Rosa Mir Garden", "fr": "Jardin Rosa Mir" },
+      "description": { "en": "Jules Senis's extraordinary hidden garden assembled from shells, stones and Mediterranean plants.", "fr": "L'extraordinaire jardin caché de Jules Senis, composé de coquillages, de pierres et de plantes méditerranéennes." },
+      "latitude": 45.7805239, "longitude": 4.8320743,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 217776961 }
+    },
+    {
+      "id": "villa-gillet", "arrondissement": 4, "category": "culture",
+      "name": { "en": "Villa Gillet", "fr": "Villa Gillet" },
+      "description": { "en": "A literary and cultural house set among the wooded slopes of Parc de la Cerisaie.", "fr": "Une maison littéraire et culturelle installée sur les pentes boisées du parc de la Cerisaie." },
+      "latitude": 45.775259, "longitude": 4.8166188,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 90109533 }
+    },
+    {
+      "id": "ancienne-gare-des-brotteaux", "arrondissement": 6, "category": "architecture",
+      "name": { "en": "Former Brotteaux Station", "fr": "Ancienne Gare des Brotteaux" },
+      "description": { "en": "The ornate former PLM railway station, completed in 1908 and preserved after Part-Dieu replaced it.", "fr": "L'ancienne gare ouvragée du PLM, achevée en 1908 et conservée après son remplacement par la Part-Dieu." },
+      "latitude": 45.7672798, "longitude": 4.8597791,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62308677 }
+    },
+    {
+      "id": "mac-lyon", "arrondissement": 6, "category": "culture",
+      "name": { "en": "Museum of Contemporary Art of Lyon", "fr": "Musée d'Art Contemporain de Lyon" },
+      "description": { "en": "A Renzo Piano-designed museum at the Cité Internationale dedicated to changing contemporary-art exhibitions.", "fr": "Un musée conçu par Renzo Piano à la Cité Internationale, consacré aux expositions d'art contemporain." },
+      "latitude": 45.7842186, "longitude": 4.8524698,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62277312 }
+    },
+    {
+      "id": "ile-du-souvenir-memorial", "arrondissement": 6, "category": "art",
+      "name": { "en": "Île du Souvenir War Memorial", "fr": "Monument aux morts de l'Île du Souvenir" },
+      "description": { "en": "Tony Garnier's solemn First World War memorial standing on an island in the Tête d'Or lake.", "fr": "Le solennel monument aux morts de la Première Guerre mondiale conçu par Tony Garnier sur une île du lac de la Tête d'Or." },
+      "latitude": 45.780675, "longitude": 4.8519531,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q17341711" }
+    },
+    {
+      "id": "musee-guimet-lyon", "arrondissement": 6, "category": "history",
+      "name": { "en": "Guimet Museum", "fr": "Musée Guimet" },
+      "description": { "en": "Émile Guimet's 1879 museum building, later Lyon's natural-history museum and now an exhibition venue.", "fr": "Le musée fondé par Émile Guimet en 1879, devenu muséum d'histoire naturelle puis lieu d'exposition." },
+      "latitude": 45.774489, "longitude": 4.8484697,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 1851239924 }
+    },
+    {
+      "id": "halle-tony-garnier", "arrondissement": 7, "category": "architecture",
+      "name": { "en": "Halle Tony Garnier", "fr": "Halle Tony Garnier" },
+      "description": { "en": "A vast pillar-free industrial hall transformed into one of Lyon's largest event venues.", "fr": "Une vaste halle industrielle sans piliers transformée en l'une des plus grandes salles événementielles de Lyon." },
+      "latitude": 45.729885, "longitude": 4.8250128,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 439376756 }
+    },
+    {
+      "id": "resistance-deportation-history-centre", "arrondissement": 7, "category": "history",
+      "name": { "en": "Resistance and Deportation History Centre", "fr": "Centre d'Histoire de la Résistance et de la Déportation" },
+      "description": { "en": "A museum of Lyon during the Second World War in the former military health-school buildings.", "fr": "Un musée consacré à Lyon pendant la Seconde Guerre mondiale dans l'ancienne École de santé militaire." },
+      "latitude": 45.7464479, "longitude": 4.8359222,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 26131828 }
+    },
+    {
+      "id": "parc-blandan", "arrondissement": 7, "category": "nature",
+      "name": { "en": "Parc Blandan", "fr": "Parc Blandan" },
+      "description": { "en": "A large urban park woven through the ramparts and grounds of the former Fort Lamothe.", "fr": "Un grand parc urbain aménagé parmi les remparts et les terrains de l'ancien fort Lamothe." },
+      "latitude": 45.7459541, "longitude": 4.8512155,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 2461964056 }
+    },
+    {
+      "id": "stade-de-gerland", "arrondissement": 7, "category": "architecture",
+      "name": { "en": "Stade de Gerland", "fr": "Stade de Gerland" },
+      "description": { "en": "Tony Garnier's landmark stadium, now the home ground of Lyon's LOU rugby club.", "fr": "Le stade emblématique de Tony Garnier, aujourd'hui terrain du club de rugby lyonnais LOU." },
+      "latitude": 45.7237756, "longitude": 4.8322517,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 4585967 }
+    },
+    {
+      "id": "cite-musee-tony-garnier", "arrondissement": 8, "category": "art",
+      "name": { "en": "Tony Garnier Urban Museum", "fr": "Cité Musée Tony Garnier" },
+      "description": { "en": "An open-air museum of monumental murals spread across Tony Garnier's États-Unis housing estate.", "fr": "Un musée à ciel ouvert de peintures monumentales déployées dans la cité des États-Unis de Tony Garnier." },
+      "latitude": 45.7336111, "longitude": 4.8630556,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 26132213 }
+    },
+    {
+      "id": "maison-de-la-danse", "arrondissement": 8, "category": "culture",
+      "name": { "en": "Maison de la Danse", "fr": "Maison de la Danse" },
+      "description": { "en": "Lyon's major stage devoted to choreography, housed in the former Théâtre du 8e at Le Bachut.", "fr": "La grande scène lyonnaise consacrée à la chorégraphie, installée dans l'ancien Théâtre du 8e au Bachut." },
+      "latitude": 45.7351198, "longitude": 4.8719967,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 62352162 }
+    },
+    {
+      "id": "grande-mosquee-de-lyon", "arrondissement": 8, "category": "architecture",
+      "name": { "en": "Great Mosque of Lyon", "fr": "Grande Mosquée de Lyon" },
+      "description": { "en": "A major Lyon mosque whose contemporary design combines a white façade, calligraphy and a Persian-inspired dome.", "fr": "Une grande mosquée lyonnaise dont l'architecture contemporaine associe façade blanche, calligraphie et dôme d'inspiration persane." },
+      "latitude": 45.7367889, "longitude": 4.8902417,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q9466" }
+    },
+    {
+      "id": "parc-du-clos-layat", "arrondissement": 8, "category": "nature",
+      "name": { "en": "Parc du Clos Layat", "fr": "Parc du Clos Layat" },
+      "description": { "en": "A broad southern neighborhood park with lawns, mature trees and sports grounds.", "fr": "Un vaste parc de quartier au sud, avec pelouses, arbres adultes et terrains de sport." },
+      "latitude": 45.7261185, "longitude": 4.8528458,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 290389093 }
+    },
+    {
+      "id": "ile-barbe", "arrondissement": 9, "category": "history",
+      "name": { "en": "Île Barbe", "fr": "Île Barbe" },
+      "description": { "en": "A wooded Saône island preserving traces of one of Lyon's oldest and most powerful abbeys.", "fr": "Une île boisée de la Saône conservant les traces de l'une des plus anciennes et puissantes abbayes lyonnaises." },
+      "latitude": 45.7979541, "longitude": 4.8337823,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 447939578 }
+    },
+    {
+      "id": "musee-jean-couty", "arrondissement": 9, "category": "culture",
+      "name": { "en": "Jean Couty Museum", "fr": "Musée Jean Couty" },
+      "description": { "en": "A Saint-Rambert museum dedicated to the Lyon painter Jean Couty and his views of the city.", "fr": "Un musée de Saint-Rambert consacré au peintre lyonnais Jean Couty et à ses vues de la ville." },
+      "latitude": 45.7979945, "longitude": 4.8292025,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 125014288 }
+    },
+    {
+      "id": "fort-de-vaise", "arrondissement": 9, "category": "history",
+      "name": { "en": "Fort de Vaise", "fr": "Fort de Vaise" },
+      "description": { "en": "A restored nineteenth-century fort overlooking Vaise from Lyon's first defensive belt.", "fr": "Un fort restauré du XIXe siècle dominant Vaise, vestige de la première ceinture défensive de Lyon." },
+      "latitude": 45.7711256, "longitude": 4.8098197,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 104656778 }
+    },
+    {
+      "id": "parc-du-vallon", "arrondissement": 9, "category": "nature",
+      "name": { "en": "Parc du Vallon", "fr": "Parc du Vallon" },
+      "description": { "en": "A long green valley in La Duchère shaped around the restored Ruisseau des Gorges stream.", "fr": "Un long vallon verdoyant de la Duchère aménagé autour du ruisseau des Gorges restauré." },
+      "latitude": 45.7819008, "longitude": 4.7910628,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 288704209 }
     }
   ]
 }

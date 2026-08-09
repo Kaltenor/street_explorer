@@ -45,7 +45,8 @@ export function DistrictExpeditionModal({
   visible
 }: Props) {
   const isFrench = language === "fr";
-  const active = dashboard?.active ?? null;
+  const active = dashboard?.active ?? [];
+  const activeIds = new Set(active.map((expedition) => expedition.id));
 
   return (
     <Modal
@@ -62,7 +63,7 @@ export function DistrictExpeditionModal({
           onBack={onClose}
           subtitle={
             dashboard
-              ? `${dashboard.choices[0]?.districtName ?? active?.districtName ?? ""} · ${dashboard.localDate}`
+              ? `${dashboard.choices[0]?.districtName ?? active[0]?.districtName ?? ""} · ${dashboard.localDate}`
               : districtAvailable
                 ? isFrench ? "Chargement du registre local" : "Loading local registry"
                 : isFrench ? "Choisissez d’abord un quartier" : "Select a district first"
@@ -103,22 +104,25 @@ export function DistrictExpeditionModal({
             </View>
           ) : null}
 
-          {districtAvailable && active ? (
+          {districtAvailable && active.length > 0 ? (
             <>
               <AtlasSectionLabel
                 icon="navigate-circle-outline"
-                title={isFrench ? "EXPÉDITION ACTIVE" : "ACTIVE EXPEDITION"}
+                title={isFrench ? "EXPÉDITIONS ACTIVES" : "ACTIVE EXPEDITIONS"}
               />
-              <ExpeditionCard
-                activeExpedition={active}
-                expedition={active}
-                isBusy={isBusy}
-                isFrench={isFrench}
-                isRecording={isRecording}
-                onAbandon={onAbandon}
-                onAccept={onAccept}
-                showDistrict
-              />
+              {active.map((expedition) => (
+                <ExpeditionCard
+                  expedition={expedition}
+                  isActive
+                  isBusy={isBusy}
+                  isFrench={isFrench}
+                  isRecording={isRecording}
+                  key={expedition.id}
+                  onAbandon={onAbandon}
+                  onAccept={onAccept}
+                  showDistrict
+                />
+              ))}
             </>
           ) : null}
 
@@ -128,16 +132,16 @@ export function DistrictExpeditionModal({
           />
           <Text style={styles.helpText}>
             {isFrench
-              ? "Choisissez une mission. Une seule expédition peut être active à la fois."
-              : "Choose one field mission. Only one expedition can be active at a time."}
+              ? "Choisissez une ou plusieurs missions. Vos sélections restent actives après la fermeture de l’application."
+              : "Choose one or more field missions. Your selections remain active after the app closes."}
           </Text>
 
           {dashboard?.choices
-            .filter((expedition) => expedition.id !== active?.id)
+            .filter((expedition) => !activeIds.has(expedition.id))
             .map((expedition) => (
             <ExpeditionCard
-              activeExpedition={active}
               expedition={expedition}
+              isActive={false}
               isBusy={isBusy}
               isFrench={isFrench}
               isRecording={isRecording}
@@ -175,8 +179,8 @@ export function DistrictExpeditionModal({
 }
 
 function ExpeditionCard({
-  activeExpedition,
   expedition,
+  isActive,
   isBusy,
   isFrench,
   isRecording,
@@ -184,8 +188,8 @@ function ExpeditionCard({
   onAccept,
   showDistrict = false
 }: {
-  activeExpedition: DistrictExpedition | null;
   expedition: DistrictExpedition;
+  isActive: boolean;
   isBusy: boolean;
   isFrench: boolean;
   isRecording: boolean;
@@ -193,12 +197,10 @@ function ExpeditionCard({
   onAccept: (expedition: DistrictExpedition) => void;
   showDistrict?: boolean;
 }) {
-  const isActive = activeExpedition?.id === expedition.id;
   const isCompleted = expedition.completedAt !== null;
-  const anotherIsActive = activeExpedition !== null && !isActive;
   const progress = Math.min(expedition.progress, expedition.target);
   const ratio = Math.max(0, Math.min(100, (progress / expedition.target) * 100));
-  const acceptDisabled = isBusy || isRecording || anotherIsActive || isCompleted || isActive;
+  const acceptDisabled = isBusy || isRecording || isCompleted || isActive;
 
   return (
     <View style={[styles.card, isActive ? styles.activeCard : null]}>
@@ -252,9 +254,7 @@ function ExpeditionCard({
           <Text style={styles.acceptButtonText}>
             {isCompleted
               ? isFrench ? "Sceau obtenu" : "Seal earned"
-              : anotherIsActive
-                ? isFrench ? "Une mission est active" : "Another mission is active"
-                : isRecording
+              : isRecording
                   ? isFrench ? "Terminez la marche" : "Finish the walk first"
                   : expedition.abandonedAt
                     ? isFrench ? "Reprendre" : "Restart"

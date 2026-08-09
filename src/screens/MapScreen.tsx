@@ -34,7 +34,8 @@ import type { Region } from "react-native-maps";
 
 import {
   AtlasModalHeader,
-  AtlasNavigationDock,
+  ATLAS_NAVIGATION_DOCK_HEIGHT,
+  AtlasNavigationDockLayer,
   AtlasNavigationProvider,
   AtlasScreen,
   AtlasSectionLabel,
@@ -100,6 +101,7 @@ import {
   saveCompletionObjective
 } from "../database/settingsRepository";
 import {
+  getCollectedMedalCities,
   getMedalAlbumProgress,
   getPendingMedalPresentations,
   hasCompletedMedalRetroScan,
@@ -152,9 +154,9 @@ import {
   type ExplorerScore
 } from "../services/explorerScore";
 import {
+  awardMedalsInDiscoveredCells,
   evaluateLiveMedalCollection,
   evaluateMedalCollectionForRecording,
-  MEDAL_MIN_BOUNDARY_LENGTH_METERS,
   runMedalRetroScan
 } from "../services/medalEnclosure";
 import { resetMedalCountryPackFailure } from "../services/medalCountryPackStore";
@@ -251,7 +253,11 @@ import {
 import { MapLayerState } from "../types/mapLayers";
 import { OsmStreetSegment } from "../types/street";
 
-import { CollectedMedal, MedalAlbumProgress } from "../types/medal";
+import {
+  CollectedMedal,
+  CollectedMedalCity,
+  MedalAlbumProgress
+} from "../types/medal";
 import type {
   DistrictExpedition,
   DistrictExpeditionDashboard
@@ -282,8 +288,6 @@ const OSM_STREET_RADIUS_METERS = 1600;
 const OSM_STREET_FETCH_RADIUS_METERS = 800;
 const OSM_STREET_LOCAL_COVERAGE_RADIUS_METERS = 200;
 const OSM_STREET_CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-const CITY_BOUNDARY_PRELOAD_DISTANCE_METERS = 500;
-const CITY_BOUNDARY_PRELOAD_INTERVAL_MS = 10 * 60 * 1000;
 const OSM_STREET_RETRY_DELAY_MS = 30_000;
 
 function getGpsTimestamp(point: GpsPoint) {
@@ -530,6 +534,7 @@ export function MapScreen({
   const wordmarkCollapseProgress = useRef(new Animated.Value(0)).current;
   const [permissionState, setPermissionState] = useState<LocationPermissionState>("unknown");
   const [currentLocation, setCurrentLocation] = useState<GpsPoint | null>(null);
+  const [launchObjectiveLocation, setLaunchObjectiveLocation] = useState<GpsPoint | null>(null);
   const [walks, setWalks] = useState<WalkWithPoints[]>([]);
   const [history, setHistory] = useState<WalkSession[]>([]);
   const [activeWalk, setActiveWalk] = useState<ActiveWalk | null>(null);
@@ -546,6 +551,7 @@ export function MapScreen({
   const [expeditionSealCount, setExpeditionSealCount] = useState(0);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
+  const [collectedMedalCities, setCollectedMedalCities] = useState<CollectedMedalCity[]>([]);
   const [medalPackLoadState, setMedalPackLoadState] = useState<MedalPackLoadState>("idle");
   const [medalPresentationQueue, setMedalPresentationQueue] = useState<CollectedMedal[]>([]);
   const [celebrationMedal, setCelebrationMedal] = useState<CollectedMedal | null>(null);
@@ -592,6 +598,20 @@ export function MapScreen({
   const activeMedalProgress = medalProgress?.album.id === activeMedalAlbumId
     ? medalProgress
     : null;
+  const visibleMapMedals = useMemo(() => {
+    const activeMedals = activeMedalProgress?.medals ?? EMPTY_MEDALS;
+
+    if (
+      !focusedMedal ||
+      activeMedals.some((medal) =>
+        medal.albumId === focusedMedal.albumId && medal.id === focusedMedal.id
+      )
+    ) {
+      return activeMedals;
+    }
+
+    return [...activeMedals, focusedMedal];
+  }, [activeMedalProgress?.medals, focusedMedal]);
   const [selectedSessionId, setSelectedSessionId] = useState<number | null>(null);
   const [routeFocusRequestId, setRouteFocusRequestId] = useState(0);
   const [mapViewportCenter, setMapViewportCenter] = useState<GpsPoint | null>(null);
@@ -607,6 +627,8 @@ export function MapScreen({
   const [isMapWordmarkCollapsed, setIsMapWordmarkCollapsed] = useState(false);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isSavedDataReady, setIsSavedDataReady] = useState(false);
+  const [isSavedObjectiveReady, setIsSavedObjectiveReady] = useState(false);
+  const [isLaunchObjectiveResolved, setIsLaunchObjectiveResolved] = useState(false);
   const [isExplorationEnabled, setIsExplorationEnabled] = useState(false);
   const [savedExplorationCellIds, setSavedExplorationCellIds] = useState<string[]>([]);
   const [savedTodayNewCellIds, setSavedTodayNewCellIds] = useState<string[]>([]);
@@ -635,38 +657,7 @@ export function MapScreen({
               : optionsVisible
                 ? "options"
                 : null;
-  const mapDockReturnProgress = useRef(new Animated.Value(1)).current;
-  const previousAtlasPageRef = useRef<AtlasPageId | null>(null);
   const stepSubscriptionRef = useRef<StepSubscription | null>(null);
-  useEffect(() => {
-    if (activeAtlasPage) {
-      previousAtlasPageRef.current = activeAtlasPage;
-      mapDockReturnProgress.stopAnimation();
-      mapDockReturnProgress.setValue(0);
-      return;
-    }
-
-    if (!previousAtlasPageRef.current) {
-      mapDockReturnProgress.setValue(1);
-      return;
-    }
-
-    previousAtlasPageRef.current = null;
-    mapDockReturnProgress.stopAnimation();
-    if (reducedMotion) {
-      mapDockReturnProgress.setValue(1);
-      return;
-    }
-
-    mapDockReturnProgress.setValue(0);
-    Animated.spring(mapDockReturnProgress, {
-      damping: 18,
-      mass: 0.65,
-      stiffness: 220,
-      toValue: 1,
-      useNativeDriver: true
-    }).start();
-  }, [activeAtlasPage, mapDockReturnProgress, reducedMotion]);
   useEffect(() => {
     wordmarkCollapseProgress.stopAnimation();
     if (reducedMotion) {
@@ -700,8 +691,7 @@ export function MapScreen({
   const mapBoundaryContextRef = useRef<MapBoundaryContext>(EMPTY_MAP_BOUNDARY_CONTEXT);
   const mapBoundarySwapChainRef = useRef(Promise.resolve());
   const mapBoundarySwapGenerationRef = useRef(0);
-  const cityBoundaryPreloadCenterRef = useRef<GpsPoint | null>(null);
-  const cityBoundaryPreloadTimestampRef = useRef(0);
+  const launchObjectiveSelectionStartedRef = useRef(false);
   const mapZoneSelectionRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
@@ -746,6 +736,7 @@ export function MapScreen({
   }, []);
 
   const handleLocationPoint = useCallback((point: GpsPoint) => {
+    setLaunchObjectiveLocation((launchPoint) => launchPoint ?? point);
     const walk = activeWalkRef.current;
     const transition = recoveryResumeTransitionRef.current;
     const recordingTarget = walk
@@ -1032,6 +1023,7 @@ export function MapScreen({
   const isLaunchReady =
     isMapReady &&
     isSavedDataReady &&
+    isLaunchObjectiveResolved &&
     isRecoveryCheckComplete &&
     permissionState !== "unknown" &&
     (permissionState !== "granted" || initialLocationResolved);
@@ -1081,6 +1073,10 @@ export function MapScreen({
   }, []);
 
   const handleMapMedalPress = useCallback((medal: CollectedMedal) => {
+    if (!medal.isCollected) {
+      return;
+    }
+
     setFocusedMedal(medal);
     setMedalsVisible(true);
   }, []);
@@ -1147,6 +1143,10 @@ export function MapScreen({
     key: string;
     promise: Promise<void>;
   } | null>(null);
+  const discoveredMedalAwardOperationRef = useRef<{
+    key: string;
+    promise: Promise<void>;
+  } | null>(null);
 
   const refreshSavedData = useCallback((options: {
     hideExplorationDuringRefresh?: boolean;
@@ -1178,8 +1178,37 @@ export function MapScreen({
         const repairedSessionIds = repairPendingCaches
         ? await repairPendingRecordingCaches()
         : [];
-      const loadMedalData = async () => {
+      const loadMedalData = async (
+        discoveredCellIds: readonly string[],
+        explorationRevision: number
+      ) => {
         try {
+          const awardOperationKey = `${activityMode}:${explorationRevision}`;
+
+          if (
+            discoveredMedalAwardOperationRef.current?.key !== awardOperationKey
+          ) {
+            discoveredMedalAwardOperationRef.current = {
+              key: awardOperationKey,
+              promise: awardMedalsInDiscoveredCells(discoveredCellIds).then(
+                () => undefined
+              )
+            };
+          }
+          const awardOperation = discoveredMedalAwardOperationRef.current;
+
+          try {
+            await awardOperation.promise;
+          } catch (error) {
+            if (discoveredMedalAwardOperationRef.current === awardOperation) {
+              discoveredMedalAwardOperationRef.current = null;
+            }
+            console.warn(
+              "Failed to award medals from discovered areas; the next refresh will retry",
+              error
+            );
+          }
+
           if (activeMedalAlbumId) {
             for (const sessionId of repairedSessionIds) {
               await evaluateMedalCollectionForRecording(
@@ -1188,8 +1217,17 @@ export function MapScreen({
               );
             }
           }
-          const [savedMedalProgress, pendingMedalPresentations, retroScanComplete] =
+          const [
+            savedCollectedMedalCities,
+            savedMedalProgress,
+            pendingMedalPresentations,
+            retroScanComplete
+          ] =
             await Promise.all([
+              getCollectedMedalCities().catch((error) => {
+                console.warn("Failed to load the all-cities medal collection", error);
+                return [];
+              }),
               activeMedalAlbumId
                 ? getMedalAlbumProgress(activeMedalAlbumId)
                 : Promise.resolve(null),
@@ -1200,6 +1238,7 @@ export function MapScreen({
             ]);
 
           return {
+            savedCollectedMedalCities,
             pendingMedalPresentations,
             retroScanComplete,
             savedMedalProgress,
@@ -1207,6 +1246,7 @@ export function MapScreen({
           } as const;
         } catch (error) {
           return {
+            savedCollectedMedalCities: [] as CollectedMedalCity[],
             pendingMedalPresentations: [] as CollectedMedal[],
             retroScanComplete: false,
             savedMedalProgress: null,
@@ -1221,7 +1261,8 @@ export function MapScreen({
         savedLoopFillSummaries,
         savedExpeditionSealCount,
         exploredCellIds,
-        todayNewExploredCellIds
+        todayNewExploredCellIds,
+        explorationRevision
       ] = await measureAsyncPerformance(
         "map.saved-data-queries",
         () => Promise.all([
@@ -1231,11 +1272,15 @@ export function MapScreen({
           getLoopFillSessionSummaries(activityMode),
           getDistrictExpeditionSealCount(),
           getExploredCellKeys(activityMode),
-          getTodayNewExploredCellKeys(activityMode)
+          getTodayNewExploredCellKeys(activityMode),
+          getExplorationRevision(activityMode)
         ]),
         100
       );
-      const medalDataPromise = loadMedalData();
+      const medalData = await loadMedalData(
+        exploredCellIds,
+        explorationRevision
+      );
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
         (longest, walk) => {
@@ -1260,12 +1305,9 @@ export function MapScreen({
       setExpeditionSealCount(savedExpeditionSealCount);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
-      medalDataPromise.then((medalData) => {
-        if (activeMedalAlbumId !== activeMedalAlbumIdRef.current) {
-          return;
-        }
-
-        setMedalPresentationQueue(medalData.pendingMedalPresentations);
+      setMedalPresentationQueue(medalData.pendingMedalPresentations);
+      setCollectedMedalCities(medalData.savedCollectedMedalCities);
+      if (activeMedalAlbumId === activeMedalAlbumIdRef.current) {
         setMedalPackLoadState(medalData.state);
         if (medalData.savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
           setMedalProgress(medalData.savedMedalProgress);
@@ -1274,7 +1316,7 @@ export function MapScreen({
           setMedalProgress(null);
           setMedalRetroScanComplete(false);
         }
-      });
+      }
       setStats({
         ...lifetimeStats,
         approximateExploredAreaSquareMeters: exploredCellIds.length * 15 * 15,
@@ -1494,13 +1536,16 @@ export function MapScreen({
       evaluation.sessionId = activeWalk.sessionId;
     }
 
-    const boundaryCellCount = activeWalk.exploredCellIds.length;
+    const activeBoundaryCellCount = activeWalk.exploredCellIds.length;
+    const validatedSurfaceBoundaryCellIds = [
+      ...new Set([...savedExplorationCellIds, ...activeWalk.exploredCellIds])
+    ];
+    const boundaryCellCount = validatedSurfaceBoundaryCellIds.length;
     evaluation.latestBoundaryCellCount = boundaryCellCount;
 
     if (
       !activeMedalProgress ||
-      activeWalk.distanceMeters < MEDAL_MIN_BOUNDARY_LENGTH_METERS ||
-      boundaryCellCount < 4 ||
+      activeBoundaryCellCount < 1 ||
       evaluation.evaluatedBoundaryCellCount === boundaryCellCount ||
       evaluation.inFlight
     ) {
@@ -1514,6 +1559,7 @@ export function MapScreen({
         .filter((medal) => !medal.isCollected)
         .map((medal) => medal.id),
       sessionId: activeWalk.sessionId,
+      validatedSurfaceCellIds: activeClosureFillCellIds,
       walkedDistanceMeters: activeWalk.distanceMeters
     };
     const timerId = setTimeout(() => {
@@ -1525,20 +1571,22 @@ export function MapScreen({
             return;
           }
 
-          const [progress, pendingPresentations] = await Promise.all([
+          const [progress, pendingPresentations, collectedCities] = await Promise.all([
             getMedalAlbumProgress(input.albumId),
-            getPendingMedalPresentations()
+            getPendingMedalPresentations(),
+            getCollectedMedalCities()
           ]);
           if (progress?.album.id === activeMedalAlbumIdRef.current) {
             setMedalProgress(progress);
           }
           setMedalPresentationQueue(pendingPresentations);
+          setCollectedMedalCities(collectedCities);
         })
         .catch((error) =>
           console.warn("Live medal evaluation failed", error)
         )
         .finally(() => {
-          evaluation.evaluatedBoundaryCellCount = input.boundaryCellIds.length;
+          evaluation.evaluatedBoundaryCellCount = boundaryCellCount;
           evaluation.inFlight = false;
 
           if (
@@ -1558,7 +1606,9 @@ export function MapScreen({
     activeMedalAlbumId,
     liveMedalEvaluationRevision,
     activeMedalProgress?.album.id,
-    activeMedalProgress?.collectedCount
+    activeMedalProgress?.collectedCount,
+    activeClosureFillCellKey,
+    savedExplorationCellIds.length
   ]);
   const handleCompleteMedalCelebration = useCallback(async () => {
     if (!celebrationMedal) {
@@ -1571,13 +1621,17 @@ export function MapScreen({
         celebrationMedal.id,
         "presented"
       );
-      const progress = activeMedalAlbumId
-        ? await getMedalAlbumProgress(activeMedalAlbumId)
-        : null;
+      const [progress, collectedCities] = await Promise.all([
+        activeMedalAlbumId
+          ? getMedalAlbumProgress(activeMedalAlbumId)
+          : Promise.resolve(null),
+        getCollectedMedalCities()
+      ]);
 
       if (progress?.album.id === activeMedalAlbumIdRef.current) {
         setMedalProgress(progress);
       }
+      setCollectedMedalCities(collectedCities);
     } catch (error) {
       console.warn("Failed to finish medal presentation", error);
     } finally {
@@ -1782,7 +1836,10 @@ export function MapScreen({
     return nextDistrictZones;
   }, [commitMapBoundaryContext]);
 
-  const applyMapObjective = useCallback((zone: CachedZone) => {
+  const commitMapObjective = useCallback((
+    zone: CachedZone,
+    options: { showSelectionStamp?: boolean } = {}
+  ) => {
     if (!isSelectableMapObjectiveZone(zone)) {
       return;
     }
@@ -1797,23 +1854,29 @@ export function MapScreen({
     setSelectedZone(zone);
     const cachedStats = objectiveStatsCacheRef.current.get(`walk:${zone.id}`)?.stats ?? null;
     setObjectiveStats(cachedStats);
-    setAtlasStampMessage({
-      detail: cachedStats ? `${zone.name} - ${formatObjectiveCompletion(cachedStats)}` : zone.name,
-      id: Date.now(),
-      presentation: "map-selection",
-      title: zone.type === "city"
-        ? language === "fr" ? "VILLE CHOISIE" : "CITY SELECTED"
-        : language === "fr" ? "QUARTIER CHOISI" : "DISTRICT SELECTED"
-    });
+    if (options.showSelectionStamp !== false) {
+      setAtlasStampMessage({
+        detail: cachedStats ? `${zone.name} - ${formatObjectiveCompletion(cachedStats)}` : zone.name,
+        id: Date.now(),
+        presentation: "map-selection",
+        title: zone.type === "city"
+          ? language === "fr" ? "VILLE CHOISIE" : "CITY SELECTED"
+          : language === "fr" ? "QUARTIER CHOISI" : "DISTRICT SELECTED"
+      });
+    }
     objectiveSaveChainRef.current = objectiveSaveChainRef.current
       .then(() => saveCompletionObjective({
         mode: nextObjective.mode,
         zoneId: nextObjective.zone.id
       }))
       .catch((error) => {
-        console.warn("Failed to save long-press completion objective", error);
+        console.warn("Failed to save completion objective", error);
       });
   }, [language]);
+
+  const applyMapObjective = useCallback((zone: CachedZone) => {
+    commitMapObjective(zone);
+  }, [commitMapObjective]);
 
   const handleMapLongPress = useCallback(async (coordinate: {
     latitude: number;
@@ -1938,8 +2001,19 @@ export function MapScreen({
   ]);
 
   useEffect(() => {
+    let isMounted = true;
+
     reloadSavedCompletionObjective()
-      .catch((error) => console.warn("Failed to load saved completion objective", error));
+      .catch((error) => console.warn("Failed to load saved completion objective", error))
+      .finally(() => {
+        if (isMounted) {
+          setIsSavedObjectiveReady(true);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, [reloadSavedCompletionObjective]);
   useEffect(() => {
     const zone = objective?.zone;
@@ -2001,54 +2075,97 @@ export function MapScreen({
   ]);
 
   useEffect(() => {
-    if (objective || !currentLocation) {
-      return;
-    }
-
-    const previousCenter = cityBoundaryPreloadCenterRef.current;
-    const wasRecentlyChecked =
-      Date.now() - cityBoundaryPreloadTimestampRef.current <
-        CITY_BOUNDARY_PRELOAD_INTERVAL_MS;
-
     if (
-      wasRecentlyChecked &&
-      previousCenter &&
-      calculatePathDistanceMeters([previousCenter, currentLocation]) <
-        CITY_BOUNDARY_PRELOAD_DISTANCE_METERS
+      !isSavedObjectiveReady ||
+      launchObjectiveSelectionStartedRef.current ||
+      permissionState === "unknown" ||
+      (permissionState === "granted" && !initialLocationResolved)
     ) {
       return;
     }
 
-    cityBoundaryPreloadCenterRef.current = currentLocation;
-    cityBoundaryPreloadTimestampRef.current = Date.now();
-    let isMounted = true;
+    launchObjectiveSelectionStartedRef.current = true;
 
-    const preloadCurrentCityDistricts = async () => {
-      const cachedDistricts = await loadVisibleDistrictZones(currentLocation);
+    if (permissionState !== "granted" || !launchObjectiveLocation) {
+      setIsLaunchObjectiveResolved(true);
+      return;
+    }
 
-      if (!isMounted || cachedDistricts.length > 0) {
+    const selectLaunchObjective = async () => {
+      let [cities, districts] = await Promise.all([
+        getCachedZones("city"),
+        getCachedZones("district")
+      ]);
+
+      const resolveBoundaryContext = () => {
+        const currentCity = findContainingZone(launchObjectiveLocation, cities);
+        const cityDistricts = currentCity
+          ? districts.filter(
+              (district) =>
+                isZoneCompletionEligible(district) &&
+                doesDistrictBelongToCity(district, currentCity)
+            )
+          : [];
+        const currentDistrict = findContainingZone(
+          launchObjectiveLocation,
+          cityDistricts
+        );
+
+        return { currentCity, currentDistrict, cityDistricts };
+      };
+
+      let boundaryContext = resolveBoundaryContext();
+
+      if (!boundaryContext.currentCity || boundaryContext.cityDistricts.length === 0) {
+        const result = await fetchNearbyOsmZonesWithDebug(launchObjectiveLocation);
+        await upsertZones(result.zones);
+        [cities, districts] = await Promise.all([
+          getCachedZones("city"),
+          getCachedZones("district")
+        ]);
+        boundaryContext = resolveBoundaryContext();
+      }
+
+      if (!boundaryContext.currentCity) {
         return;
       }
 
-      try {
-        const result = await fetchNearbyOsmZonesWithDebug(currentLocation);
-        await upsertZones(result.zones);
+      const preferredZone =
+        boundaryContext.currentDistrict ?? boundaryContext.currentCity;
 
-        if (isMounted) {
-          await loadVisibleDistrictZones(currentLocation);
-        }
-      } catch (error) {
-        console.warn("Failed to preload current-city boundaries", error);
-      }
+      await commitMapBoundaryContext({
+        city: boundaryContext.currentCity,
+        districts: boundaryContext.cityDistricts
+      });
+
+      objectiveScopePairRef.current = boundaryContext.currentDistrict
+        ? {
+            city: boundaryContext.currentCity,
+            district: boundaryContext.currentDistrict
+          }
+        : null;
+      commitMapObjective(preferredZone, { showSelectionStamp: false });
+      await objectiveSaveChainRef.current;
     };
 
-    preloadCurrentCityDistricts()
-      .catch((error) => console.warn("Failed to show current-city boundaries", error));
-
-    return () => {
-      isMounted = false;
-    };
-  }, [currentLocation, loadVisibleDistrictZones, objective]);
+    selectLaunchObjective()
+      .catch((error) => {
+        console.warn(
+          "Failed to auto-select the launch completion objective; keeping the saved objective",
+          error
+        );
+      })
+      .finally(() => {
+        setIsLaunchObjectiveResolved(true);
+      });
+  }, [
+    commitMapBoundaryContext,
+    commitMapObjective,
+    initialLocationResolved,
+    isSavedObjectiveReady,
+    launchObjectiveLocation,
+    permissionState
+  ]);
 
   useEffect(() => {
     const previousMonitor = activeClosureMonitorRef.current;
@@ -2079,7 +2196,11 @@ export function MapScreen({
     };
 
     if (newlyEnclosedCellIds.length > 0) {
-      const activeExpedition = expeditionDashboard?.active;
+      const activeLoopExpeditions = expeditionDashboard?.active.filter(
+        (expedition) =>
+          expedition.kind === "close_loop" &&
+          expedition.districtId === objective?.zone.id
+      ) ?? [];
 
       setAtlasStampMessage({
         detail: language === "fr"
@@ -2092,17 +2213,15 @@ export function MapScreen({
         title: language === "fr" ? "ZONE ENCLOSE" : "AREA ENCLOSED"
       });
 
-      if (
-        activeExpedition?.kind === "close_loop" &&
-        activeExpedition.districtId === objective?.zone.id &&
-        activeWalk?.sessionId
-      ) {
-        void recordDistrictExpeditionLoopEvidence(
-          activeExpedition.id,
-          activeWalk.sessionId
-        ).catch((error) =>
-          console.warn("Failed to preserve expedition loop evidence", error)
-        );
+      if (activeLoopExpeditions.length > 0 && activeWalk?.sessionId) {
+        for (const expedition of activeLoopExpeditions) {
+          void recordDistrictExpeditionLoopEvidence(
+            expedition.id,
+            activeWalk.sessionId
+          ).catch((error) =>
+            console.warn("Failed to preserve expedition loop evidence", error)
+          );
+        }
       }
 
       if (objective?.mode === activeWalk?.activityMode) {
@@ -2114,9 +2233,7 @@ export function MapScreen({
     activeClosureFillCellKey,
     activeWalk?.activityMode,
     activeWalk?.sessionId,
-    expeditionDashboard?.active?.districtId,
-    expeditionDashboard?.active?.id,
-    expeditionDashboard?.active?.kind,
+    expeditionDashboard?.active,
     language,
     objective?.mode,
     objective?.zone.id
@@ -2398,6 +2515,13 @@ export function MapScreen({
     returnToMapFromAtlas(closeAllAtlasPages);
   }, [closeAllAtlasPages]);
   const navigateAtlasPage = useCallback((page: AtlasPageId) => {
+    if (page === "map") {
+      if (activeAtlasPage) {
+        handleReturnToMapFromAtlas();
+      }
+      return;
+    }
+
     if (activeAtlasPage === page) {
       handleReturnToMapFromAtlas();
       return;
@@ -4616,7 +4740,7 @@ export function MapScreen({
   return (
     <AtlasNavigationProvider
       value={{
-        activePage: activeAtlasPage,
+        activePage: activeAtlasPage ?? "map",
         language,
         onNavigate: navigateAtlasPage
       }}
@@ -4633,7 +4757,8 @@ export function MapScreen({
         activeMode={activeWalk?.activityMode ?? activityMode}
         focusedMedal={focusedMedal}
         medalFocusRequestId={medalFocusRequestId}
-        medals={activeMedalProgress?.medals ?? EMPTY_MEDALS}
+        lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}
+        medals={visibleMapMedals}
         onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
         cityZone={visibleMapBoundaryContext.city}
@@ -4713,7 +4838,7 @@ export function MapScreen({
           />
           {objective && objectiveHudVisible ? (
             <ObjectiveHud
-              activeExpedition={expeditionDashboard?.active ?? null}
+              activeExpeditions={expeditionDashboard?.active ?? []}
               isCalculating={isObjectiveStatsCalculating}
               objective={objective}
               language={language}
@@ -4752,26 +4877,6 @@ export function MapScreen({
         ) : null}
 
         <View onLayout={handleMapBottomPanelLayout} style={styles.bottomPanel}>
-          <Animated.View
-            style={{
-              opacity: mapDockReturnProgress,
-              transform: [{
-                translateY: mapDockReturnProgress.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [30, 0]
-                })
-              }]
-            }}
-          >
-            <AtlasNavigationDock
-              activePage={null}
-              language={language}
-              medalPulse={medalTabPulse}
-              medalTabRef={medalTabRef}
-              onNavigate={navigateAtlasPage}
-              placement="map"
-            />
-          </Animated.View>
           <WalkControls
             activityMode={activeWalk?.activityMode ?? activityMode}
             acceptedGpsPointCount={activeWalk?.acceptedGpsPointCount ?? 0}
@@ -4800,6 +4905,15 @@ export function MapScreen({
           />
         </View>
       </SafeAreaView>
+
+      <AtlasNavigationDockLayer
+        activePage="map"
+        language={language}
+        medalPulse={medalTabPulse}
+        medalTabRef={medalTabRef}
+        onNavigate={navigateAtlasPage}
+        placement="map"
+      />
 
       {optionsVisible ? <OptionsModal
         appearanceMode={appearanceMode}
@@ -4908,6 +5022,8 @@ export function MapScreen({
         visible={expeditionsVisible}
       /> : null}
       {medalsVisible ? <MedalCollectionModal
+        collectedCities={collectedMedalCities}
+        districtZones={visibleMapBoundaryContext.districts}
         language={language}
         onClose={handleReturnToMapFromAtlas}
         onFocusMedal={(medal) => {
@@ -5119,7 +5235,7 @@ function MapZoneScopePicker({
 }
 
 function ObjectiveHud({
-  activeExpedition,
+  activeExpeditions,
   isCalculating,
   objective,
   language,
@@ -5127,7 +5243,7 @@ function ObjectiveHud({
   stats,
   todayCellCount
 }: {
-  activeExpedition: DistrictExpedition | null;
+  activeExpeditions: DistrictExpedition[];
   isCalculating: boolean;
   objective: CompletionObjective;
   language: AppLanguage;
@@ -5140,8 +5256,10 @@ function ObjectiveHud({
     stats?.completionPercent === null || stats?.completionPercent === undefined
       ? 0
       : Math.max(0, Math.min(100, stats.completionPercent));
-  const activeExpeditionMatchesDistrict =
-    activeExpedition?.districtId === objective.zone.id;
+  const activeInDistrict = activeExpeditions.filter(
+    (expedition) => expedition.districtId === objective.zone.id
+  );
+  const activeExpedition = activeInDistrict[0] ?? null;
 
   return (
     <TouchableOpacity
@@ -5195,15 +5313,19 @@ function ObjectiveHud({
         <View style={styles.objectiveExpeditionLink}>
           <Ionicons color={APP_COLORS.gold} name="compass-outline" size={15} />
           <Text numberOfLines={1} style={styles.objectiveExpeditionText}>
-            {activeExpeditionMatchesDistrict && activeExpedition
+            {activeInDistrict.length === 1 && activeExpedition
               ? `${getExpeditionTitle(activeExpedition, language === "fr")} · ${Math.min(
                   activeExpedition.progress,
                   activeExpedition.target
                 )}/${activeExpedition.target}`
-              : activeExpedition
+              : activeInDistrict.length > 1
                 ? language === "fr"
-                  ? `Expédition active · ${activeExpedition.districtName}`
-                  : `Active expedition · ${activeExpedition.districtName}`
+                  ? `${activeInDistrict.length} expéditions actives dans ce quartier`
+                  : `${activeInDistrict.length} active expeditions in this district`
+              : activeExpeditions.length > 0
+                ? language === "fr"
+                  ? `${activeExpeditions.length} expédition${activeExpeditions.length === 1 ? "" : "s"} active${activeExpeditions.length === 1 ? "" : "s"} ailleurs`
+                  : `${activeExpeditions.length} active expedition${activeExpeditions.length === 1 ? "" : "s"} elsewhere`
                 : language === "fr"
                   ? "Ouvrir les expéditions du jour"
                   : "Open today's expeditions"}
@@ -6649,7 +6771,8 @@ const styles = createAppearanceStyles({
     marginBottom: 2
   },
   bottomPanel: {
-    marginTop: "auto"
+    marginTop: "auto",
+    paddingBottom: ATLAS_NAVIGATION_DOCK_HEIGHT + 6
   },
   computingDialog: {
     alignItems: "center",

@@ -42,6 +42,14 @@ export function getBundledMedalAlbumMetadata(albumId: string) {
   return manifestByAlbumId.get(albumId) ?? null;
 }
 
+export function getAllBundledMedalAlbums() {
+  return FRANCE_MEDAL_ALBUM_MANIFEST.map((entry) => entry.load());
+}
+
+export function getDownloadableMedalCountryPacks() {
+  return DOWNLOADABLE_MEDAL_COUNTRY_PACKS;
+}
+
 export function getDownloadableMedalCountryPack(
   albumId: string
 ): DownloadableMedalCountryPackDescriptor | null {

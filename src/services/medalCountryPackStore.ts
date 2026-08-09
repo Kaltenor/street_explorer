@@ -2,8 +2,10 @@ import { Directory, File, Paths } from "expo-file-system";
 import { gunzipSync, strFromU8 } from "fflate";
 
 import {
+  getAllBundledMedalAlbums,
   getBundledMedalAlbum,
-  getDownloadableMedalCountryPack
+  getDownloadableMedalCountryPack,
+  getDownloadableMedalCountryPacks
 } from "../data/medalAlbums";
 import type {
   DownloadableMedalCountryPackDescriptor
@@ -57,6 +59,31 @@ export function isMedalCountryPackInstalled(
 ) {
   ensureCountryPackDirectory();
   return getCountryPackFile(descriptor).exists;
+}
+
+export async function getLocallyAvailableMedalAlbumDefinitions() {
+  const albums = getAllBundledMedalAlbums();
+
+  for (const descriptor of getDownloadableMedalCountryPacks()) {
+    try {
+      ensureCountryPackDirectory();
+      const installedFile = getCountryPackFile(descriptor);
+
+      if (!installedFile.exists) {
+        continue;
+      }
+
+      const pack = await readAndValidateCountryPack(installedFile, descriptor);
+      albums.push(...pack.albums);
+    } catch (error) {
+      console.warn(
+        `Skipping invalid installed ${descriptor.countryCode} medal pack during discovery scan`,
+        error
+      );
+    }
+  }
+
+  return albums;
 }
 
 export async function loadCountryPack(
