@@ -120,7 +120,12 @@ assert(
     mapSource.includes("getMovementBetween") &&
     mapSource.includes("MODE_LOCATION_CONFIG.walk.maxAcceptedAccuracyMeters") &&
     mapSource.includes("PLAYER_SPRITES[direction].stale") &&
-    mapSource.includes("opacity: frame.source === visibleSpriteSource ? 1 : 0") &&
+    mapSource.includes("PLAYER_SPRITE_HANDOFF_MS = 60") &&
+    mapSource.includes("setVisibleSpriteSources") &&
+    mapSource.includes("sources.includes(targetSpriteSource)") &&
+    mapSource.includes("[...sources, targetSpriteSource]") &&
+    mapSource.includes("setVisibleSpriteSources([targetSpriteSource])") &&
+    mapSource.includes("opacity: visibleSpriteSources.includes(frame.source) ? 1 : 0") &&
     !mapSource.includes("Marker.Animated") &&
     !mapSource.includes("new AnimatedRegion") &&
     !mapSource.includes("image={") &&

@@ -1,10 +1,10 @@
 {
   "name": "street-explorer",
-  "version": "0.27.2",
+  "version": "0.28.9",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
-    "test": "npm run typecheck && npm run test:geometry && npm run test:zones && npm run test:ui && npm run test:player && npm run test:wikipedia && npm run test:medals && npm run test:expeditions && npm run test:backup && npm run test:gpx && npm run test:country-packs && npm run test:docs",
+    "test": "npm run typecheck && npm run test:geometry && npm run test:zones && npm run test:ui && npm run test:player && npm run test:player-speech && npm run test:wikipedia && npm run test:medals && npm run test:expeditions && npm run test:backup && npm run test:gpx && npm run test:country-packs && npm run test:docs",
     "postinstall": "node scripts/patch-react-native-maps-poi-filter.js",
     "start": "expo start",
     "start:dev": "expo start --dev-client",
@@ -26,7 +26,8 @@
     "test:zones": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-boundary-recovery.mjs",
     "build:ios:dev": "eas build --platform ios --profile development",
     "build:ios:sim": "eas build --platform ios --profile development-simulator",
-    "test:player": "node scripts/test-player-marker.js"
+    "test:player": "node scripts/test-player-marker.js",
+    "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs"
   },
   "dependencies": {
     "@expo/vector-icons": "latest",

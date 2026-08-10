@@ -4792,6 +4792,10 @@ export function MapScreen({
         pathWalks={displayedWalks}
         activePoints={activeWalk?.points ?? EMPTY_GPS_POINTS}
         activeMode={activeWalk?.activityMode ?? activityMode}
+        gpsAccuracyMeters={currentLocation?.accuracy ?? null}
+        gpsStatus={activeWalk?.lastRejectedPointReason ?? null}
+        isRecording={Boolean(activeWalk)}
+        language={language}
         focusedMedal={focusedMedal}
         medalFocusRequestId={medalFocusRequestId}
         lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}
@@ -4809,6 +4813,9 @@ export function MapScreen({
         onVisibleRegionChange={handleVisibleRegionChange}
         playerFocusRequestId={playerFocusRequestId}
         playerVisible={isLaunchDismissed}
+        recordingDistanceMeters={activeWalk?.distanceMeters ?? 0}
+        recordingExploredCellCount={activeNewCellIds.length}
+        recordingSpeedMetersPerSecond={activeWalk?.currentSpeedMetersPerSecond ?? 0}
         selectedZone={selectedZone}
         savedExplorationCellIds={savedExplorationCellIds}
         todayNewCellIds={todayNewCellIds}

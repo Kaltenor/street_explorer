@@ -199,7 +199,15 @@ const mapSource = fs.readFileSync(
 assert(
   dbSource.includes('applyMigration(27, "add_district_expeditions"') &&
     dbSource.includes('applyMigration(30, "allow_multiple_active_district_expeditions"') &&
+    dbSource.includes('applyMigration(31, "expand_and_refresh_district_expeditions"') &&
+    dbSource.includes("DISTRICT_EXPEDITION_KIND_SQL") &&
     dbSource.includes("DROP INDEX IF EXISTS idx_district_expeditions_one_active") &&
+    dbSource.includes('table?.sql?.includes("\'grand_tour\'")') &&
+    dbSource.includes('PRAGMA foreign_keys = OFF') &&
+    dbSource.includes('PRAGMA foreign_keys = ON') &&
+    dbSource.includes('PRAGMA foreign_key_check(district_expedition_seals)') &&
+    dbSource.includes("local_date = date('now', 'localtime')") &&
+    dbSource.includes("accepted_at IS NULL") &&
     repositorySource.includes("getActiveDistrictExpeditions") &&
     !repositorySource.includes("Finish or abandon the active expedition first.") &&
     !backupSource.includes("V5 backup contains multiple active expeditions."),

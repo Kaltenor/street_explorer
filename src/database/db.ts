@@ -1,4 +1,9 @@
 import * as SQLite from "expo-sqlite";
+import { DISTRICT_EXPEDITION_KINDS } from "../types/expedition";
+
+const DISTRICT_EXPEDITION_KIND_SQL = DISTRICT_EXPEDITION_KINDS
+  .map((kind) => `'${kind}'`)
+  .join(", ");
 
 let database: SQLite.SQLiteDatabase | null = null;
 let databaseOpenPromise: Promise<SQLite.SQLiteDatabase> | null = null;
@@ -712,9 +717,7 @@ async function initializeDatabase() {
         district_name TEXT NOT NULL,
         local_date TEXT NOT NULL,
         slot INTEGER NOT NULL,
-        kind TEXT NOT NULL CHECK (
-          kind IN ('explore_cells', 'complete_street', 'close_loop', 'collect_medal')
-        ),
+        kind TEXT NOT NULL CHECK (kind IN (${DISTRICT_EXPEDITION_KIND_SQL})),
         target INTEGER NOT NULL CHECK (target > 0),
         progress INTEGER NOT NULL DEFAULT 0 CHECK (progress >= 0),
         accepted_at TEXT,
@@ -845,6 +848,76 @@ async function initializeDatabase() {
   await applyMigration(30, "allow_multiple_active_district_expeditions", async () => {
     await db.execAsync(`
       DROP INDEX IF EXISTS idx_district_expeditions_one_active;
+    `);
+  });
+
+  await applyMigration(31, "expand_and_refresh_district_expeditions", async () => {
+    const table = await db.getFirstAsync<{ sql: string | null }>(
+      "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'district_expeditions'"
+    );
+
+    if (!table?.sql?.includes("'grand_tour'")) {
+      await db.execAsync("PRAGMA foreign_keys = OFF;");
+      try {
+        await db.withExclusiveTransactionAsync(async (transaction) => {
+          await transaction.execAsync(`
+            DROP TABLE IF EXISTS district_expeditions_next;
+
+            CREATE TABLE district_expeditions_next (
+              id TEXT PRIMARY KEY NOT NULL,
+              district_id TEXT NOT NULL,
+              district_name TEXT NOT NULL,
+              local_date TEXT NOT NULL,
+              slot INTEGER NOT NULL,
+              kind TEXT NOT NULL CHECK (kind IN (${DISTRICT_EXPEDITION_KIND_SQL})),
+              target INTEGER NOT NULL CHECK (target > 0),
+              progress INTEGER NOT NULL DEFAULT 0 CHECK (progress >= 0),
+              accepted_at TEXT,
+              abandoned_at TEXT,
+              completed_at TEXT,
+              updated_at TEXT NOT NULL,
+              UNIQUE (district_id, local_date, slot)
+            );
+
+            INSERT INTO district_expeditions_next (
+              id, district_id, district_name, local_date, slot, kind, target,
+              progress, accepted_at, abandoned_at, completed_at, updated_at
+            )
+            SELECT
+              id, district_id, district_name, local_date, slot, kind, target,
+              progress, accepted_at, abandoned_at, completed_at, updated_at
+            FROM district_expeditions;
+
+            DROP TABLE district_expeditions;
+            ALTER TABLE district_expeditions_next RENAME TO district_expeditions;
+
+            CREATE INDEX district_expeditions_daily_index
+              ON district_expeditions (district_id, local_date, slot);
+            CREATE INDEX district_expeditions_active_index
+              ON district_expeditions (accepted_at, completed_at, abandoned_at);
+          `);
+        });
+      } finally {
+        await db.execAsync("PRAGMA foreign_keys = ON;");
+      }
+    }
+
+    const foreignKeyViolations = [
+      ...await db.getAllAsync("PRAGMA foreign_key_check(district_expedition_seals)"),
+      ...await db.getAllAsync("PRAGMA foreign_key_check(district_expedition_loop_evidence)")
+    ];
+    if (foreignKeyViolations.length > 0) {
+      throw new Error("District expedition migration left invalid evidence references.");
+    }
+
+    // Force the expanded catalogue into today's journal on upgrade. Accepted,
+    // abandoned, and completed missions remain durable; only untouched offers
+    // are cleared and deterministically regenerated when their district loads.
+    await db.runAsync(`
+      DELETE FROM district_expeditions
+      WHERE local_date = date('now', 'localtime')
+        AND accepted_at IS NULL
+        AND completed_at IS NULL
     `);
   });
 

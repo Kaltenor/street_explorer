@@ -12,7 +12,11 @@ import {
   createAppearanceStyles,
   isDaylightAppearance
 } from "../constants/appearance";
-import type { ComponentProps, ForwardRefExoticComponent, RefAttributes } from "react";
+import type {
+  ComponentProps,
+  ForwardRefExoticComponent,
+  RefAttributes
+} from "react";
 import MapView, {
   type LongPressEvent,
   Marker,
@@ -20,7 +24,7 @@ import MapView, {
   Polyline,
   Region
 } from "react-native-maps";
-import { Image, Platform, StyleSheet, View } from "react-native";
+import { Image, Platform, StyleSheet, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import {
@@ -42,11 +46,18 @@ import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
 import {
+  createPlayerSpeechMessage,
+  getPlayerSpeechCharacterCount,
+  PLAYER_SPEECH_CONFIG,
+  type PlayerSpeechBehavior
+} from "../services/playerSpeech";
+import {
   measurePerformance,
   usePerformanceRenderCounter
 } from "../services/performance";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
 import { MapLayerState } from "../types/mapLayers";
+import type { AppLanguage } from "../i18n";
 import { CollectedMedal } from "../types/medal";
 import {
   ActivityMode,
@@ -71,6 +82,13 @@ type ExplorationMapProps = {
   medals: CollectedMedal[];
   onMedalPress?: (medal: CollectedMedal) => void;
   currentLocation: GpsPoint | null;
+  language: AppLanguage;
+  isRecording: boolean;
+  recordingDistanceMeters: number;
+  recordingExploredCellCount: number;
+  recordingSpeedMetersPerSecond: number;
+  gpsAccuracyMeters: number | null;
+  gpsStatus: string | null;
   highlightedSessionId: number | null;
   routeFocusRequestId: number;
   layers: MapLayerState;
@@ -139,6 +157,13 @@ export const ExplorationMap = memo(function ExplorationMap({
   activeRouteChunks,
   activeMode,
   currentLocation,
+  language,
+  isRecording,
+  recordingDistanceMeters,
+  recordingExploredCellCount,
+  recordingSpeedMetersPerSecond,
+  gpsAccuracyMeters,
+  gpsStatus,
   focusedMedal,
   medalFocusRequestId,
   lockedMedalLabel,
@@ -650,7 +675,24 @@ export const ExplorationMap = memo(function ExplorationMap({
         )) : null}
 
         {playerVisible && playerLocation ? (
-          <PlayerLocationMarker location={playerLocation} />
+          <PlayerLocationMarker
+            language={language}
+            location={playerLocation}
+          />
+        ) : null}
+
+        {playerVisible && playerLocation ? (
+          <PlayerSpeechMarker
+            gpsAccuracyMeters={gpsAccuracyMeters}
+            gpsStatus={gpsStatus}
+            isRecording={isRecording}
+            language={language}
+            location={playerLocation}
+            recordingDistanceMeters={recordingDistanceMeters}
+            recordingExploredCellCount={recordingExploredCellCount}
+            recordingSpeedMetersPerSecond={recordingSpeedMetersPerSecond}
+            reducedMotion={reducedMotion}
+          />
         ) : null}
 
       </ApplePoiFilteredMapView>
@@ -910,6 +952,8 @@ const PLAYER_MOTION_FRESHNESS_MS = 10_000;
 const PLAYER_MOVEMENT_SETTLE_MS = 4_000;
 const LOCATION_TIMESTAMP_FUTURE_TOLERANCE_MS = 5_000;
 const PLAYER_WALK_FRAME_INTERVAL_MS = 170;
+const PLAYER_SPRITE_HANDOFF_MS = 60;
+const PLAYER_SPEECH_IOS_CENTER_OFFSET_Y = -58;
 
 type PlayerDirection = "east" | "north" | "south" | "west";
 
@@ -978,9 +1022,30 @@ const PLAYER_SPRITE_LAYERS = PLAYER_DIRECTIONS.flatMap((direction) => {
   ];
 });
 
+type PlayerSpeechRequest = {
+  behavior: PlayerSpeechBehavior;
+  id: number;
+  priority: number;
+  text: string;
+};
+
+const PLAYER_SPEECH_PRIORITIES: Record<PlayerSpeechBehavior, number> = {
+  cheer: 10,
+  distanceMilestone: 80,
+  explorationStreak: 85,
+  newArea: 70,
+  poorGps: 90,
+  revisit: 55,
+  standingStill: 60,
+  walkStarted: 100,
+  walkStopped: 100
+};
+
 const PlayerLocationMarker = memo(function PlayerLocationMarker({
+  language,
   location
 }: {
+  language: AppLanguage;
   location: GpsPoint;
 }) {
   const movementAnchorRef = useRef(location);
@@ -1008,6 +1073,14 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     Math.max(liveSpeed, movement?.speedMetersPerSecond ?? 0) >=
       PLAYER_MOVING_SPEED_METERS_PER_SECOND;
   const heading = getPlayerHeading(location, movement);
+  const targetSpriteSource = !isGpsFresh
+    ? PLAYER_SPRITES[direction].stale
+    : isMoving
+    ? PLAYER_SPRITES[direction].walk[walkFrameIndex] ?? PLAYER_SPRITES[direction].idle
+    : PLAYER_SPRITES[direction].idle;
+  const [visibleSpriteSources, setVisibleSpriteSources] = useState<readonly number[]>(
+    () => [targetSpriteSource]
+  );
 
   useEffect(() => {
     const anchor = movementAnchorRef.current;
@@ -1067,14 +1140,25 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     return () => clearInterval(frameTimer);
   }, [isMoving]);
 
+  useEffect(() => {
+    setVisibleSpriteSources((sources) =>
+      sources.includes(targetSpriteSource)
+        ? sources
+        : [...sources, targetSpriteSource]
+    );
+
+    const handoffTimer = setTimeout(() => {
+      setVisibleSpriteSources([targetSpriteSource]);
+    }, PLAYER_SPRITE_HANDOFF_MS);
+
+    return () => clearTimeout(handoffTimer);
+  }, [targetSpriteSource]);
+
   const accessibilityLabel = isGpsFresh
-    ? "Current player location"
+    ? language === "fr" ? "Position actuelle du joueur" : "Current player location"
+    : language === "fr"
+    ? "Dernière position connue du joueur, signal GPS obsolète"
     : "Last known player location, GPS signal stale";
-  const visibleSpriteSource = !isGpsFresh
-    ? PLAYER_SPRITES[direction].stale
-    : isMoving
-    ? PLAYER_SPRITES[direction].walk[walkFrameIndex]
-    : PLAYER_SPRITES[direction].idle;
 
   return (
     <Marker
@@ -1082,7 +1166,6 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
       anchor={{ x: 0.5, y: 0.5 }}
       coordinate={pointToCoordinate(location)}
       identifier="street-explorer-player"
-      title={isGpsFresh ? "Current player location" : "Last known location"}
       tracksViewChanges
       zIndex={1000}
     >
@@ -1102,10 +1185,350 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
             source={frame.source}
             style={[
               styles.playerSpriteImage,
-              { opacity: frame.source === visibleSpriteSource ? 1 : 0 }
+              { opacity: visibleSpriteSources.includes(frame.source) ? 1 : 0 }
             ]}
           />
         ))}
+      </View>
+    </Marker>
+  );
+});
+
+const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
+  gpsAccuracyMeters,
+  gpsStatus,
+  isRecording,
+  language,
+  location,
+  recordingDistanceMeters,
+  recordingExploredCellCount,
+  recordingSpeedMetersPerSecond,
+  reducedMotion
+}: {
+  gpsAccuracyMeters: number | null;
+  gpsStatus: string | null;
+  isRecording: boolean;
+  language: AppLanguage;
+  location: GpsPoint;
+  recordingDistanceMeters: number;
+  recordingExploredCellCount: number;
+  recordingSpeedMetersPerSecond: number;
+  reducedMotion: boolean;
+}) {
+  const [activeSpeech, setActiveSpeech] = useState<PlayerSpeechRequest | null>(null);
+  const [isSpeechVisible, setIsSpeechVisible] = useState(false);
+  const [typedSpeech, setTypedSpeech] = useState("");
+  const activeSpeechRef = useRef<PlayerSpeechRequest | null>(null);
+  const pendingSpeechRef = useRef<PlayerSpeechRequest | null>(null);
+  const nextSpeechIdRef = useRef(1);
+  const previousRecordingRef = useRef(false);
+  const previousExploredCellCountRef = useRef(recordingExploredCellCount);
+  const lastDistanceMilestoneRef = useRef(0);
+  const lastNewAreaCellMilestoneRef = useRef(0);
+  const lastNewAreaDistanceRef = useRef(recordingDistanceMeters);
+  const revisitMilestoneRef = useRef(0);
+  const recentExplorationRef = useRef<Array<{ at: number; count: number }>>([]);
+  const lastStreakSpeechAtRef = useRef(0);
+  const lastMovementAtRef = useRef(Date.now());
+  const hasStandingSpeechRef = useRef(false);
+  const hasPoorGpsSpeechRef = useRef(false);
+
+  const enqueueSpeech = useCallback((
+    behavior: PlayerSpeechBehavior,
+    options: { distanceMeters?: number } = {}
+  ) => {
+    const request: PlayerSpeechRequest = {
+      behavior,
+      id: nextSpeechIdRef.current,
+      priority: PLAYER_SPEECH_PRIORITIES[behavior],
+      text: createPlayerSpeechMessage(behavior, language, options)
+    };
+    nextSpeechIdRef.current += 1;
+
+    if (!activeSpeechRef.current) {
+      activeSpeechRef.current = request;
+      setActiveSpeech(request);
+      return;
+    }
+
+    if (
+      activeSpeechRef.current.behavior === behavior ||
+      pendingSpeechRef.current?.behavior === behavior
+    ) {
+      return;
+    }
+
+    if (
+      !pendingSpeechRef.current ||
+      request.priority > pendingSpeechRef.current.priority
+    ) {
+      pendingSpeechRef.current = request;
+    }
+  }, [language]);
+
+  useEffect(() => {
+    if (!activeSpeech) {
+      return;
+    }
+
+    let characterTimer: ReturnType<typeof setInterval> | null = null;
+    let completionTimer: ReturnType<typeof setTimeout> | null = null;
+    let advanceTimer: ReturnType<typeof setTimeout> | null = null;
+    setIsSpeechVisible(true);
+
+    const finishSpeech = () => {
+      setIsSpeechVisible(false);
+      setTypedSpeech("");
+      advanceTimer = setTimeout(() => {
+        const nextSpeech = pendingSpeechRef.current;
+        pendingSpeechRef.current = null;
+        activeSpeechRef.current = nextSpeech;
+        setActiveSpeech(nextSpeech);
+      }, 360);
+    };
+
+    if (reducedMotion) {
+      setTypedSpeech(activeSpeech.text);
+      completionTimer = setTimeout(
+        finishSpeech,
+        PLAYER_SPEECH_CONFIG.visiblePauseMs
+      );
+    } else {
+      const typingStartedAt = Date.now();
+      setTypedSpeech("");
+      characterTimer = setInterval(() => {
+        const characterCount = getPlayerSpeechCharacterCount(
+          Date.now() - typingStartedAt,
+          activeSpeech.text.length
+        );
+        setTypedSpeech(activeSpeech.text.slice(0, characterCount));
+
+        if (characterCount >= activeSpeech.text.length && characterTimer) {
+          clearInterval(characterTimer);
+          characterTimer = null;
+          completionTimer = setTimeout(
+            finishSpeech,
+            PLAYER_SPEECH_CONFIG.visiblePauseMs
+          );
+        }
+      }, PLAYER_SPEECH_CONFIG.typewriterIntervalMs);
+    }
+
+    return () => {
+      if (characterTimer) clearInterval(characterTimer);
+      if (completionTimer) clearTimeout(completionTimer);
+      if (advanceTimer) clearTimeout(advanceTimer);
+    };
+  }, [activeSpeech?.id, reducedMotion]);
+
+  useEffect(() => {
+    const wasRecording = previousRecordingRef.current;
+    previousRecordingRef.current = isRecording;
+
+    if (isRecording && !wasRecording) {
+      const now = Date.now();
+      lastDistanceMilestoneRef.current = Math.floor(
+        recordingDistanceMeters / PLAYER_SPEECH_CONFIG.distanceMilestoneMeters
+      );
+      lastNewAreaCellMilestoneRef.current = Math.floor(
+        recordingExploredCellCount / PLAYER_SPEECH_CONFIG.newAreaCellInterval
+      );
+      previousExploredCellCountRef.current = recordingExploredCellCount;
+      lastNewAreaDistanceRef.current = recordingDistanceMeters;
+      revisitMilestoneRef.current = 0;
+      recentExplorationRef.current = [];
+      lastMovementAtRef.current = now;
+      hasStandingSpeechRef.current = false;
+      hasPoorGpsSpeechRef.current = false;
+      enqueueSpeech("walkStarted");
+    } else if (!isRecording && wasRecording) {
+      enqueueSpeech("walkStopped");
+    }
+  }, [
+    enqueueSpeech,
+    isRecording,
+    recordingDistanceMeters,
+    recordingExploredCellCount
+  ]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      return;
+    }
+
+    const milestone = Math.floor(
+      recordingDistanceMeters / PLAYER_SPEECH_CONFIG.distanceMilestoneMeters
+    );
+
+    if (milestone > lastDistanceMilestoneRef.current) {
+      lastDistanceMilestoneRef.current = milestone;
+      enqueueSpeech("distanceMilestone", {
+        distanceMeters: milestone * PLAYER_SPEECH_CONFIG.distanceMilestoneMeters
+      });
+    }
+  }, [enqueueSpeech, isRecording, recordingDistanceMeters]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      previousExploredCellCountRef.current = recordingExploredCellCount;
+      return;
+    }
+
+    const previousCount = previousExploredCellCountRef.current;
+    previousExploredCellCountRef.current = recordingExploredCellCount;
+    const addedCellCount = Math.max(0, recordingExploredCellCount - previousCount);
+
+    if (addedCellCount <= 0) {
+      return;
+    }
+
+    const now = Date.now();
+    lastNewAreaDistanceRef.current = recordingDistanceMeters;
+    revisitMilestoneRef.current = 0;
+    recentExplorationRef.current = [
+      ...recentExplorationRef.current,
+      { at: now, count: addedCellCount }
+    ].filter(({ at }) => now - at <= PLAYER_SPEECH_CONFIG.streakWindowMs);
+
+    const recentCellCount = recentExplorationRef.current.reduce(
+      (sum, item) => sum + item.count,
+      0
+    );
+    const cellMilestone = Math.floor(
+      recordingExploredCellCount / PLAYER_SPEECH_CONFIG.newAreaCellInterval
+    );
+
+    if (
+      recentCellCount >= PLAYER_SPEECH_CONFIG.streakCellCount &&
+      now - lastStreakSpeechAtRef.current >= PLAYER_SPEECH_CONFIG.streakWindowMs
+    ) {
+      lastStreakSpeechAtRef.current = now;
+      recentExplorationRef.current = [];
+      lastNewAreaCellMilestoneRef.current = cellMilestone;
+      enqueueSpeech("explorationStreak");
+    } else if (cellMilestone > lastNewAreaCellMilestoneRef.current) {
+      lastNewAreaCellMilestoneRef.current = cellMilestone;
+      enqueueSpeech("newArea");
+    }
+  }, [
+    enqueueSpeech,
+    isRecording,
+    recordingDistanceMeters,
+    recordingExploredCellCount
+  ]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      return;
+    }
+
+    const revisitMilestone = Math.floor(
+      (recordingDistanceMeters - lastNewAreaDistanceRef.current) /
+        PLAYER_SPEECH_CONFIG.revisitDistanceMeters
+    );
+
+    if (revisitMilestone > revisitMilestoneRef.current) {
+      revisitMilestoneRef.current = revisitMilestone;
+      enqueueSpeech("revisit");
+    }
+  }, [enqueueSpeech, isRecording, recordingDistanceMeters]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      return;
+    }
+
+    if (recordingSpeedMetersPerSecond >= PLAYER_MOVING_SPEED_METERS_PER_SECOND) {
+      lastMovementAtRef.current = Date.now();
+      hasStandingSpeechRef.current = false;
+    }
+  }, [isRecording, recordingSpeedMetersPerSecond]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      return;
+    }
+
+    const standingTimer = setInterval(() => {
+      if (
+        !hasStandingSpeechRef.current &&
+        Date.now() - lastMovementAtRef.current >=
+          PLAYER_SPEECH_CONFIG.standingStillDelayMs
+      ) {
+        hasStandingSpeechRef.current = true;
+        enqueueSpeech("standingStill");
+      }
+    }, 1_000);
+
+    return () => clearInterval(standingTimer);
+  }, [enqueueSpeech, isRecording]);
+
+  useEffect(() => {
+    const hasPoorGps = isRecording && (
+      Boolean(gpsStatus) ||
+      (gpsAccuracyMeters !== null &&
+        gpsAccuracyMeters > PLAYER_SPEECH_CONFIG.poorGpsAccuracyMeters)
+    );
+
+    if (hasPoorGps && !hasPoorGpsSpeechRef.current) {
+      hasPoorGpsSpeechRef.current = true;
+      enqueueSpeech("poorGps");
+    } else if (!hasPoorGps) {
+      hasPoorGpsSpeechRef.current = false;
+    }
+  }, [enqueueSpeech, gpsAccuracyMeters, gpsStatus, isRecording]);
+
+  useEffect(() => {
+    if (!isRecording) {
+      return;
+    }
+
+    let cheerTimer: ReturnType<typeof setTimeout> | null = null;
+    const scheduleCheer = () => {
+      const delayRange =
+        PLAYER_SPEECH_CONFIG.cheerMaximumDelayMs -
+        PLAYER_SPEECH_CONFIG.cheerMinimumDelayMs;
+      cheerTimer = setTimeout(() => {
+        enqueueSpeech("cheer");
+        scheduleCheer();
+      }, PLAYER_SPEECH_CONFIG.cheerMinimumDelayMs + Math.random() * delayRange);
+    };
+    scheduleCheer();
+
+    return () => {
+      if (cheerTimer) clearTimeout(cheerTimer);
+    };
+  }, [enqueueSpeech, isRecording]);
+
+  return (
+    <Marker
+      anchor={{ x: 0.5, y: 1 }}
+      centerOffset={
+        Platform.OS === "ios"
+          ? { x: 0, y: PLAYER_SPEECH_IOS_CENTER_OFFSET_Y }
+          : undefined
+      }
+      coordinate={pointToCoordinate(location)}
+      identifier="street-explorer-player-speech"
+      tappable={false}
+      tracksViewChanges
+      zIndex={1001}
+    >
+      <View
+        accessibilityElementsHidden={!isSpeechVisible}
+        accessibilityLabel={activeSpeech?.text}
+        accessible={isSpeechVisible}
+        collapsable={false}
+        pointerEvents="none"
+        style={[
+          styles.playerSpeechMarker,
+          !isSpeechVisible ? styles.playerSpeechMarkerHidden : null
+        ]}
+      >
+        <View style={styles.playerSpeechBubble}>
+          <Text style={styles.playerSpeechText}>{typedSpeech || " "}</Text>
+        </View>
+        <View style={styles.playerSpeechArrow} />
       </View>
     </Marker>
   );
@@ -1786,6 +2209,51 @@ const styles = createAppearanceStyles({
   playerCompassHaloStale: {
     backgroundColor: "rgba(20, 27, 29, 0.88)",
     borderColor: "rgba(223, 202, 153, 0.82)"
+  },
+  playerSpeechArrow: {
+    alignSelf: "center",
+    backgroundColor: "#f4ecd8",
+    borderBottomColor: "#302719",
+    borderBottomWidth: 1,
+    borderRightColor: "#302719",
+    borderRightWidth: 1,
+    height: 15,
+    marginTop: -8,
+    transform: [{ rotate: "45deg" }],
+    width: 15
+  },
+  playerSpeechBubble: {
+    alignItems: "center",
+    backgroundColor: "#f4ecd8",
+    borderColor: "#302719",
+    borderRadius: 13,
+    borderWidth: 1,
+    justifyContent: "center",
+    height: 84,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    shadowColor: "#02060a",
+    shadowOffset: { height: 3, width: 0 },
+    shadowOpacity: 0.42,
+    shadowRadius: 5,
+    width: 238
+  },
+  playerSpeechMarker: {
+    alignItems: "center",
+    height: 128,
+    justifyContent: "flex-start",
+    width: 244
+  },
+  playerSpeechMarkerHidden: {
+    opacity: 0
+  },
+  playerSpeechText: {
+    color: "#17140f",
+    fontSize: 15,
+    fontWeight: "700",
+    lineHeight: 20,
+    minHeight: 20,
+    textAlign: "center"
   },
   playerMarker: {
     alignItems: "center",

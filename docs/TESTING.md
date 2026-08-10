@@ -1,5 +1,134 @@
 # Testing
 
+## Expanded Player Speech V0.28.9 Manual Test
+
+Prerequisites: install version 0.28.9, select English and then French, and start several short walks. For faster manual coverage, temporarily reduce the standing, revisit, and cheer thresholds only in a local development session.
+
+1. Start several walks. Expected: Start chooses among nine localized reactions, never uses “The map has been warned” or its former French counterpart, and all copy fits within the fixed bubble.
+2. Stop several walks. Expected: Stop chooses among nine localized reactions and completes each typewriter sequence before dismissal.
+3. Trigger standing still, revisited-ground, and random-cheer behaviors repeatedly. Expected: each language exposes eight standing reactions, eight revisit reactions, and thirteen cheers without blank or untranslated text.
+4. Restore the normal thresholds and repeat one ordinary walk. Expected: trigger timing, priority, queueing, arrow placement, sprite visibility, and automatic dismissal are unchanged.
+
+Automated coverage requires the exact expanded catalogue sizes in both languages and rejects the replaced Start sentence. Physical-device verification remains required for final line wrapping in the rendered bubble.
+
+## Apple Maps Speech Offset V0.28.8 Manual Test
+
+Prerequisites: install version 0.28.8 in a portrait physical-device iOS development build, start a walk, and wait for a speech message at normal walking zoom. Repeat with both fresh and stale GPS poses.
+
+1. Observe the complete bubble and player. Expected: the sprite is fully visible below the bubble; the panel no longer sits over or hides the hat, face, coat, or feet.
+2. Inspect the pointer against the artwork. Expected: the unchanged arrow's lower point touches the first visible pixel at the top center of the hat, without a gap or overlap.
+3. Walk, change direction, pan and zoom, then trigger Stop while a message is active. Expected: the fixed relationship survives every frame and route teardown without an upper-left flash or camera movement.
+
+Automated coverage requires Apple Maps' explicit -58-point native center offset, the unchanged fixed 244-by-128 speech marker, the original panel and arrow geometry, and the Android/Google Maps bottom anchor. Physical-device verification remains required for final pixel-level contact.
+
+## Rigid Bubble Placement V0.28.7 Manual Test
+
+Prerequisites: install version 0.28.7 in a portrait physical-device development build, start a walk, and wait for a speech message at normal walking zoom.
+
+1. Observe the complete bubble and sprite. Expected: the original parchment panel and arrow shape are unchanged and move as one piece; the panel remains above the character instead of covering it.
+2. Inspect the pointer against the player artwork. Expected: the arrow's lower point touches the top center of the hat indicated in the device reference, with no visible gap and no overlap across the hat, face, or body.
+3. Walk, change direction, pan and zoom the map, then trigger the Stop message. Expected: the complete bubble retains the same head contact through every pose and route teardown, without an upper-left flash or automatic camera movement.
+
+Automated coverage requires the fixed 244-by-128 marker, unchanged 84-point panel, unchanged 15-point arrow with its original overlap and rotation, and no independent arrow-position offset. Physical-device verification remains required for pixel-level contact against the rendered hat.
+
+## Arrow-Only Placement Correction V0.28.6 Manual Test
+
+Prerequisites: install version 0.28.6 in a portrait physical-device development build, start a walk, and wait for a speech message at normal walking zoom.
+
+1. Observe the complete bubble and sprite. Expected: the parchment panel is restored to its original position entirely above the character; it does not cover the hat, face, coat, or walking animation.
+2. Inspect the arrow separately. Expected: only the small diamond arrow extends downward, with its bottom tip touching the top center of the hat and no visible gap.
+3. Change direction, pan, and trigger the Stop message. Expected: the panel remains fixed above the sprite and only the arrow maintains head contact across every pose, without upper-left flashes or camera movement.
+
+Automated coverage requires the restored 132-point marker height, unchanged 84-point panel, unchanged 15-point arrow, and the arrow-only 8-point visual offset. Physical-device verification remains required for pixel-level contact against the rendered hat.
+
+## Speech Arrow Placement V0.28.5 Manual Test
+
+Prerequisites: install version 0.28.5 in a portrait physical-device development build, start a walk, and wait for a speech message. Check at normal walking zoom in both north- and south-facing poses.
+
+1. Observe the bubble while the player is stationary. Expected: the panel remains entirely above the sprite and the arrow tip touches the top center of the parchment hat; there is no floating gap and the arrow does not cover the face or body.
+2. Change direction and walk while text types. Expected: the speech marker retains its fixed anchor at the shared coordinate, so the arrow stays attached to the head across every animation frame without bobbing or shifting the map.
+3. Pan and zoom, then trigger the Stop reaction. Expected: the same head contact is preserved through projection and route teardown, with no upper-left flash or camera movement.
+
+Automated coverage retains the fixed 84-point panel and requires the 121-point speech-marker height that places the arrow tip 30 points above the shared coordinate. Physical-device verification remains required for perceived contact against the artwork at native scale.
+
+## Speech Layout and Timer Repair V0.28.4 Manual Test
+
+Prerequisites: install version 0.28.4 in a portrait physical-device development build with foreground location allowed. Use a profile whose launch performs noticeable saved-data/background hydration, start a walk as soon as the map becomes available, and later Stop while a speech message is active or queued. Repeat once in French and once with Reduce Motion.
+
+1. Start immediately while background work is still visible in development timing logs. Expected: the opening message advances according to roughly 38ms of elapsed time per character. It may update in small batches if JavaScript is briefly busy, but it catches up after each delay and does not spend many seconds adding one character per delayed callback.
+2. Observe short and long English/French messages. Expected: the parchment panel retains one fixed size, line wrapping does not move its bottom anchor, and text remains centered and unclipped across up to three lines.
+3. Let a message dismiss, wait while the speech marker is hidden, then trigger another message. Expected: the annotation reappears above the player immediately; neither the panel nor any fragment of it flashes at screen coordinate `(0,0)` or the upper-left corner.
+4. Stop while a message is typing, then Stop again when no message is visible. Expected: the closing reaction uses the same stable location through active-route teardown, types at elapsed-time speed, and dismisses without an upper-left flash.
+5. Pan and zoom during typing and between messages. Expected: the continuously tracked invisible annotation retains the player coordinate and fixed anchor, becomes visible only through child opacity, and never initiates camera movement.
+6. Enable Reduce Motion and repeat Start/Stop. Expected: complete text appears immediately in the same fixed panel, pauses, and hides without positional artifacts.
+
+Automated checks verify elapsed-time character counts at 0ms, 38ms, 380ms, and after the nominal total duration; clamping at message length; continuous speech `tracksViewChanges`; absence of native marker-opacity toggling; fixed marker/panel geometry; child-only hidden opacity; isolated player ownership; and all prior message triggers. Physical-device verification remains required for MapKit annotation snapshot placement under real startup and Stop load.
+
+## Player Speech/Marker Isolation Repair V0.28.3 Manual Test
+
+Prerequisites: install version 0.28.3 in a portrait physical-device development build with foreground location allowed. Use a safe route where you can walk and turn for at least two minutes. Test once in Explorator, once in Daylight, and once with Reduce Motion enabled.
+
+1. Start a walk and observe the opening message from its first typed character through dismissal. Expected: the parchment bubble stays centered above the player, never appears at a screen corner, and the player icon remains continuously visible beneath it.
+2. Walk and turn north, east, south, and west while several messages type. Expected: the three-frame directional animation continues without a blank frame, flash, duplicate sprite, or interruption caused by the bubble's per-character updates.
+3. Pan, zoom, and rotate while a message is typing, including with the player near every viewport edge. Expected: sprite and bubble remain attached to the same geographic coordinate; the map does not recenter and neither annotation jumps to the top-left.
+4. Wait for one message to dismiss and another queued message to appear. Expected: the speech annotation hides cleanly between messages while the player marker remains unchanged and visible throughout the visibility transition.
+5. Stop, Start again, switch appearance, and repeat with Reduce Motion. Expected: the closing/opening messages remain above the retained player, complete text appears immediately under Reduce Motion, and no Stop/Start lifecycle path removes the sprite.
+
+Automated checks require separate `PlayerLocationMarker` and `PlayerSpeechMarker` components, exactly one annotation returned by each, no speech/typewriter state in the player component, a permanently mounted non-tappable speech annotation, native opacity hiding, and speech-only view tracking. Physical-device MapKit verification remains required for final placement and continuous sprite visibility.
+
+## Player Speech Viewport-Jump Repair V0.28.2 Manual Test
+
+Prerequisites: install version 0.28.2 in a portrait physical-device development build with foreground location allowed. Start a recording and position the player near the top, bottom, left, and right edges by panning the map; keep automatic speech active. Test in both Explorator and Daylight, once with Reduce Motion.
+
+1. Note the visible map center and nearby street labels, then wait for a speech message with the player near each screen edge. Expected: the bubble may clip naturally at an extreme edge, but the map center, streets, player coordinate, and camera zoom do not animate or jump to make room for it.
+2. Observe a complete long message from first character through dismissal. Expected: the speech annotation stays above the character at the same geographic coordinate; typing and dismissal never move the underlying map or throw the sprite toward a corner.
+3. Pan continuously while a message types. Expected: player and speech move together with MapKit's geographic projection, the bubble remains offset above the head, and releasing the pan causes no delayed recenter.
+4. Cross a 250m milestone and trigger a GPS warning near an edge so a high-priority message queues behind an active one. Expected: both messages appear sequentially without annotation selection, camera motion, overlap, or a stale bubble.
+5. Stop, Start again, switch appearance, and repeat with Reduce Motion. Expected: the player retains its single stable 64×64 sprite annotation, the speech annotation becomes transparent between messages, and no lifecycle path initiates an unsolicited camera animation.
+
+Automated checks require the independent `street-explorer-player-speech` annotation, bottom anchoring, explicit visibility state, typewriter timing, and the absence of native `Callout`/show/hide commands. Player tests retain the sprite handoff and exact single player-identifier contract. Physical-device verification remains required for native MapKit camera behavior and edge clipping.
+
+## Player Marker Blink Repair V0.28.1 Manual Test
+
+Prerequisites: install version 0.28.1 in a portrait physical-device development build with foreground location allowed. Use a safe route that permits repeated direction changes and at least two minutes of continuous walking; enable the speech behavior from v0.28.0 by starting a normal recording. Repeat once in Explorator and once in Daylight.
+
+1. Start a walk and watch the player continuously through at least 30 walking-frame cycles. Expected: every 170ms animation transition retains a visible character; no full-frame blink, empty halo, or missing annotation appears.
+2. Turn through north, east, south, and west several times, then stop and resume. Expected: each direction/walk/idle transition uses a nearly imperceptible overlap rather than a blank intermediate snapshot; the character remains anchored and does not leave duplicate lasting silhouettes.
+3. Wait for several automatic speech messages, including one long enough to exercise many character updates. Expected: showing, typing, and hiding the callout never removes or flashes the player beneath it, and the bubble still dismisses automatically.
+4. Temporarily degrade GPS until the stale sprite appears, then restore a fresh moving fix. Expected: fresh-to-stale and stale-to-walking transitions remain continuously visible with the correct final pose.
+5. Pan, zoom, rotate, switch appearance, Stop, and Start again. Expected: MapKit anchoring and the single 64×64 player contract remain intact; only the intentional native-map appearance remount may replace the map, and subsequent sprite/callout updates do not blank the player.
+
+Automated checks require the 60ms two-phase visible-source handoff, incoming-frame staging before outgoing retirement, permanently mounted callout, retained preloaded directional frames, single annotation identity, typewriter behavior, and type safety. Physical-device verification remains required because the original symptom occurs in MapKit's native annotation snapshot timing.
+
+## Player Adventurer Speech V0.28.0 Manual Test
+
+Prerequisites: install version 0.28.0 in a portrait physical-device development build, grant foreground location and Motion access, and use a safe route containing both unmapped and previously explored streets. Test once in English and once in French, then repeat the presentation check with iOS Reduce Motion enabled. Keep GPS available; a shielded indoor position or temporarily reduced Location precision is useful for the weak-signal case.
+
+1. Launch to the map while idle and wait at least one minute. Expected: the player remains visible and accessible but does not produce random speech outside an active recording.
+2. Tap Start. Expected: a localized witty-adventurer opening appears automatically above the same geographically anchored player. Its parchment text types smoothly from left to right at roughly 38ms per character, remains fully readable for about 1.9 seconds, then dismisses without a tap.
+3. Walk through genuinely unmapped cells. Expected: every ten newly discovered cells can produce a fresh-ground reaction; discovering at least 24 new cells inside 90 seconds produces an exploration-streak reaction. Messages vary, never overlap, and higher-value events keep at most one pending place ahead of random encouragement.
+4. Continue past 250m and 500m. Expected: a localized message names each crossed 250m milestone with correct English/French metre or kilometre formatting. During an uninterrupted walk, randomized cheering also appears approximately every 26–42 seconds without resetting distance or exploration progress.
+5. Move for at least 180m entirely across previously explored ground without adding a new cell. Expected: a revisit reaction appears. Entering new ground resets that revisit interval rather than immediately repeating the same behavior message.
+6. After moving normally, stand still for 45 seconds while the recording remains active. Expected: one strategic-pause reaction appears and does not repeat while still stationary. Resume moving, stop again for 45 seconds, and expect one new stationary reaction.
+7. Degrade GPS beyond 25m accuracy or provoke a rejected-fix status. Expected: one satellite-themed warning appears for that poor-signal episode. Restore a good fix, then degrade it again and expect one new warning; the marker's stale pose and accessible last-known wording continue to work independently.
+8. Tap Stop and save. Expected: a localized closing reaction is queued above the retained player, types and dismisses normally, and no further cheers occur after recording stops. Force-close and reopen; expected: no abandoned bubble or timer survives, the saved walk is intact, and starting a new walk begins a clean message cycle.
+9. Enable Reduce Motion and start another walk. Expected: the complete localized message appears immediately instead of typing character-by-character, remains for the same short reading pause, then dismisses; all trigger and priority behavior remains functional.
+
+Automated checks cover both complete localized catalogues, deterministic message selection, English/French distance formatting, 250m/new-cell/streak/revisit/standing/GPS/cheer thresholds, every behavior trigger, automatic custom-callout show/hide, character slicing, dismissal timing, native-title replacement, Reduce Motion, and live MapScreen inputs. Type safety, the retained 64×64 marker regression, geometry checks, and the iOS Expo bundle are covered by the release validation commands. Physical-device verification remains required for MapKit callout refresh during per-character updates, bubble placement at screen edges, real GPS/standing timing, VoiceOver announcement behavior, and perceived frequency.
+
+## Expedition Catalogue Repair V0.27.3 Manual Test
+
+Prerequisites: install version 0.27.3 over a profile that showed only three choices for the current local day. Keep any accepted expedition active so preservation can be checked, and select an official level-9 district objective. No network or location permission is required when the district geometry is already cached.
+
+1. Force-close the previous build, install or reload v0.27.3, and launch once. Expected: migration 31 completes without a startup error, all walks, explored cells, accepted expeditions, completed seals, and Explorer Score remain intact.
+2. Open the compass Expeditions destination for the selected district. Expected: the journal contains five current-day missions in total; an accepted current-day mission remains under Active Expeditions and the remaining slots appear under Today's Choices.
+3. Inspect the refreshed untouched offers. Expected: they come from the expanded catalogue rather than being limited to Chart cells, Complete street, Close loop, and Discover landmark. Street/medal variants may be absent when the district lacks viable unfinished opportunities.
+4. Close and reopen the journal, then force-close and relaunch. Expected: the same five deterministic district/date choices return without another rotation, duplicate slots, or lost active progress.
+5. Switch to another official district. Expected: it independently generates five viable choices. Return to the first district and confirm its choices and active mission remain unchanged.
+6. Complete or abandon the preserved active mission where practical. Expected: completion still awards one seal and 200 points exactly once; abandonment remains restartable and no migrated evidence or seal is orphaned.
+
+Automated checks cover the shared 25-kind schema source, migration-31 table rebuild, foreign-key disable/restore and post-migration verification, current-local-day untouched-offer refresh, deterministic five-choice generation, accepted-history preservation contract, type safety, and the iOS bundle. Physical-device validation remains required for migration against the affected on-device SQLite file and visual confirmation of all five journal cards.
+
 ## Player-Gated Launch Sequence V0.27.2 Manual Test
 
 Prerequisites: install version 0.27.2 in a portrait physical-device development build. Test once in English and once in French, once with application preparation deliberately slow, once with preparation already complete before the prompt, and once with iOS Reduce Motion enabled. No network or location permission is required for the presentation itself; a populated profile provides the strongest loading branch.
@@ -343,13 +472,14 @@ npm run test:geometry
 npm run test:ui
 npm run test:medals
 npm run test:player
+npm run test:player-speech
 npm run test:wikipedia
 npx expo install --check
 ```
 
 `npm test` is the standard fail-fast aggregate: it runs typecheck plus every focused regression command below and stops at the first failure. `npx expo install --check` remains a separate SDK/dependency compatibility check because it may consult Expo package metadata.
 
-`test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map annotation, the 170ms opacity-only frame cadence, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the disabled native location cursor and game-owned player presentation, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
+`test:player` verifies retained source/player assets, in-memory and durable trustworthy-location retention, all four directional idle and twelve walking frames inside one stable 64×64-point native map sprite annotation, the 170ms cadence with a 60ms incoming/outgoing opacity overlap, reliable GPS movement/heading fallback, launch gating, direct geographic anchoring during camera movement, camera-independent panning, background position flush, cold-launch restore, the disabled native location cursor and game-owned player presentation, removal of screen-space projection/auto-follow/animated coordinates/marker-image replacement, stale-GPS accessibility, and removal of the legacy player artwork. `test:player-speech` verifies the complete English/French witty-adventurer catalogues, localized milestone formatting, trigger/timing constants, isolated single-annotation player/speech component ownership, the permanently mounted non-tappable same-coordinate speech marker, continuously tracked fixed geometry with child-only hiding, elapsed-time typewriter catch-up, absence of native Callout selection, pause/dismissal, Reduce Motion fallback, and live distance/new-cell/speed/GPS/language wiring. `test:geometry` also verifies that Stop presents the summary before deferred route/cache reconciliation.
 
 `test:geometry` verifies Zone Boundary Completion V2 ring assembly, malformed-fragment rejection, refresh staleness, display-only fallback eligibility, denominator fingerprints, durable achievement/refresh schemas, rollups, and Backup V5 wiring.
 `test:zones` additionally verifies persisted admin levels, level-9 district eligibility, strict interior parent sampling for shared-edge and detached-component relations, level-10 neighborhood retention/exclusion, automatic legacy-objective classification, hidden historical rollups, refresh invalidation, direct same-city district switching, and cross-city scope-choice decisions.
@@ -362,7 +492,7 @@ npx expo install --check
 
 `test:docs` verifies synchronized package/lock/Expo versions and platform build declarations, the newest README/changelog release, required context files and links, recent catalogue/reader/score/appearance/backup claims, current development-build guidance, and the historical warning plus shipped-contract summary in the original medal design record.
 
-`test:expeditions` verifies the 25-kind catalogue, deterministic five-choice generation and day-to-day reshuffling, unique slots/kinds, opportunity-aware fallback choices, upgrade filling for older three-choice days, catalogue reachability, multiple-active database behavior, expanded finalized-walk loop evidence, the aggregate permanent-seal query, retroactive 200-point scoring and reward-stamp wiring, map/HUD behavior, and backup/restore/delete-all preservation.
+`test:expeditions` verifies the shared 25-kind database constraint, migration-31 rebuild and forced current-day untouched-offer refresh, deterministic five-choice generation and day-to-day reshuffling, unique slots/kinds, opportunity-aware fallback choices, accepted-history preservation, catalogue reachability, multiple-active database behavior, expanded finalized-walk loop evidence, the aggregate permanent-seal query, retroactive 200-point scoring and reward-stamp wiring, map/HUD behavior, and backup/restore/delete-all preservation.
 
 `test:ui` verifies the five GPS presentation states and their accuracy/age boundaries, shared map path semantics, the persisted Explorator/Daylight appearance choices, themed status-bar foreground, default-enabled persisted sound/haptic preferences, immediate feedback gates, accessible switch semantics, the Explorator/Daylight native-map switch, app-wide paired style wiring, accessible radio semantics, custom atlas markers, burnt-orange/gold territory, single-pass district selection, two-phase MapKit city teardown, muted copper/wine administrative hierarchy, the bundled Cinzel display font and license, roughly 20%-enlarged first-launch wordmark and unchanged compact endpoint, four separate Atlas HUD stripes with 7px side gutters and 10px corners, the uniformly textured flag action integrated into the medal stripe, handled reprocess failures kept out of development LogBox, caller-owned street-repair logging, Cinzel identity/system-data typography separation, engraved selected tabs including the permanent Expedition destination and its no-district Completion handoff, objective controls, neutral GPS framing, compact 44-point-safe walking controls, quiet ordinary-card borders, textured recording dialogs, the bundled hand-inked seal, explicit Daylight gold/parchment stamp contrast overrides, reward-jingle asset/provenance and event wiring, retained preloaded players, ink-before-jingle ordering, external-audio mixing configuration, 20%-smaller measured presentations, fitted 7.5/7-point wording, per-message image-load gating, synchronized attached-text strike sequence, the player contrast halo, shared Medals/Expeditions Atlas shells, interactive iOS edge-swipe activation/completion/cancellation thresholds, and summary-first route/report wiring.
 

@@ -1,5 +1,108 @@
 # Changelog
 
+## v0.28.9
+
+Changed:
+
+- Replaced the unclear “The map has been warned” Start reaction with “Boots laced. Adventure awaits!” and its natural French counterpart.
+- Expanded both localized speech catalogues with six additional Start reactions, six Stop reactions, and five additional reactions each for standing still, revisiting ground, and random encouragement.
+- Added catalogue-size and removed-copy regression checks for all expanded behaviors.
+- Synchronized version 0.28.9 with iOS build 200 and Android version code 200.
+
+## v0.28.8
+
+Fixed:
+
+- Corrected the iOS speech placement with Apple Maps' native `centerOffset`; its renderer does not support the normalized `anchor` prop used by Android and Google Maps.
+- Shifted the complete, unchanged bubble-and-arrow annotation upward by 58 points. The arrow tip now meets the first opaque row at the top of the 64-point player artwork instead of leaving the bubble centered over and hiding the sprite.
+- Added regression coverage for the iOS-specific native offset while retaining the stable 244-by-128 annotation, original panel geometry, and Android bottom anchor.
+- Synchronized version 0.28.8 with iOS build 199 and Android version code 199.
+
+## v0.28.7
+
+Fixed:
+
+- Restored the speech bubble panel and its 15-point arrow to their original geometry, removing the independent arrow offset introduced in v0.28.6.
+- Kept the bubble and arrow together as one rigid unit and moved that complete unit down by four points. The arrow's lower tip now meets the top of the cartographer's hat indicated in the device reference without lowering the panel over the sprite.
+- Updated placement regression coverage to require the fixed 244-by-128 marker and reject a separate arrow-position override.
+- Synchronized version 0.28.7 with iOS build 198 and Android version code 198.
+
+## v0.28.6
+
+Fixed:
+
+- Restored the speech panel to its original 244×132 marker geometry after v0.28.5 incorrectly lowered the entire bubble over the player sprite.
+- Kept the panel fully above the character and moved only the existing 15-point arrow diamond down by 8 visual points. Its rotated tip now reaches the hat while the bubble body retains its previous position.
+- Updated placement regression coverage to require both the restored marker height and arrow-only offset.
+- Synchronized version 0.28.6 with iOS build 197 and Android version code 197.
+
+## v0.28.5
+
+Changed:
+
+- Lowered the stable speech panel by 11 points without changing its coordinate or bottom anchor. With the fixed 84-point panel and 15-point overlapping arrow, the tip now ends 30 points above the shared player coordinate and touches the top of the 64-point cartographer hat.
+- Updated placement regression coverage to retain the fixed 244×121 speech-marker geometry.
+- Synchronized version 0.28.5 with iOS build 196 and Android version code 196.
+
+## v0.28.4
+
+Fixed:
+
+- Prevented the speech bubble from occasionally flashing at the upper-left corner, especially during Stop, by keeping its native annotation continuously tracked and fully laid out instead of toggling marker opacity and view tracking at message boundaries.
+- Gave the speech annotation a fixed 244×132-point outer layout and 238×84-point parchment panel. Hidden messages now make only that stable child view transparent, so typed copy and line wrapping cannot change the marker's native anchor geometry.
+- Replaced callback-count typewriter progress with elapsed wall-clock progress. If background hydration or Stop reconciliation delays JavaScript timers, the next callback catches up to the correct character instead of advancing by only one and stretching the sentence indefinitely.
+- Added deterministic elapsed-time typing checks and regression assertions for stable child-only hiding, fixed marker geometry, and continuous speech view tracking.
+- Synchronized version 0.28.4 with iOS build 195 and Android version code 195.
+
+## v0.28.3
+
+Fixed:
+
+- Fixed the parchment speech marker appearing near a screen corner instead of above the player by removing the fragment that returned two native map annotations from one component.
+- Isolated `PlayerLocationMarker` from `PlayerSpeechMarker`, so 38ms typewriter updates, speech visibility changes, and message queue state no longer re-render or re-snapshot the animated player annotation and cannot make its icon blink or disappear.
+- Kept one stable speech annotation mounted at the player coordinate, using native opacity and disabling speech view tracking between messages while preserving bottom anchoring, panning, typewriter text, localization, priority, dismissal, and Reduce Motion.
+- Expanded focused regressions to require single-annotation component ownership and reject speech state inside the player-marker component.
+- Synchronized version 0.28.3 with iOS build 194 and Android version code 194.
+
+## v0.28.2
+
+Fixed:
+
+- Fixed the player apparently jumping toward a screen corner when speech appeared. The installed iOS map implementation selects an annotation for `showCallout()` and animates the map center whenever the callout needs room, so the player coordinate was valid while the viewport moved underneath it.
+- Removed native callout selection from player speech. Messages now render in a separate non-interactive, non-selected annotation at the exact player coordinate with a bottom anchor and fixed head clearance; the original 64×64 sprite annotation never receives speech children or selection commands.
+- Preserved the complete typewriter, priority, localization, auto-dismissal, Reduce Motion, sprite-overlap, and accessibility behavior while ensuring speech cannot invoke MapKit's callout reposition delegate.
+- Updated focused regressions to reject `Callout`, `showCallout()`, and `hideCallout()` in player speech and require the independent speech annotation instead.
+- Synchronized version 0.28.2 with iOS build 193 and Android version code 193.
+
+## v0.28.1
+
+Fixed:
+
+- Prevented intermittent player-icon blinking by changing every idle/walk/direction/stale sprite transition into a two-phase 60ms overlap: the incoming preloaded frame becomes opaque before the outgoing frame is retired, so MapKit never receives an intentionally blank annotation snapshot.
+- Kept the speech callout permanently mounted inside the single player annotation and now changes only its programmatic native visibility, removing another marker-child hierarchy transition during message opening and dismissal.
+- Expanded the focused player and speech regressions to require the overlap handoff and permanently mounted callout architecture.
+- Synchronized version 0.28.1 with iOS build 192 and Android version code 192.
+
+## v0.28.0
+
+Added:
+
+- Added an automatic localized parchment speech bubble to the player during recorded walks, with varied witty-adventurer reactions to Start/Stop, 250m distance milestones, newly explored cells, rapid exploration streaks, revisited ground, standing still, degraded GPS, and randomized encouragement.
+- Added a 38ms-per-character typewriter presentation followed by a short reading pause and automatic dismissal. One pending message is retained by priority so important walk or GPS events displace random chatter without stacking bubbles.
+- Added English and French message catalogues, localized distance formatting and accessibility labels, plus a Reduce Motion fallback that reveals each complete message immediately.
+- Added focused message-catalogue, timing, trigger, typewriter, automatic-callout, dismissal, priority-input, and localization regression coverage through `npm run test:player-speech`.
+- Synchronized version 0.28.0 with iOS build 191 and Android version code 191.
+
+## v0.27.3
+
+Fixed:
+
+- Repaired the expedition database schema, whose original four-kind `CHECK` constraint rejected the expanded 25-archetype catalogue and could leave upgraded districts with only their three legacy daily choices.
+- Added migration 31 to rebuild the expedition table with the complete shared kind list while preserving accepted, abandoned, completed, progress, loop-evidence, and seal records and verifying their foreign keys afterward.
+- Forced untouched offers for the current local day to rotate once on upgrade, so reopening a district journal immediately generates five choices from the expanded catalogue; accepted or historical missions are not discarded.
+- Updated the fresh-install schema to use the same shared 25-kind constraint and expanded focused regression coverage for the upgrade migration and forced local-day refresh.
+- Synchronized version 0.27.3 with iOS build 190 and Android version code 190.
+
 ## v0.27.2
 
 Fixed:

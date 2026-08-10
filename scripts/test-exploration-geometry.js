@@ -1704,9 +1704,13 @@ assert(
     explorationMapSource.includes("source={frame.source}") &&
     explorationMapSource.includes("styles.playerSpriteImage") &&
     explorationMapSource.includes("PLAYER_WALK_FRAME_INTERVAL_MS = 170") &&
+    explorationMapSource.includes("PLAYER_SPRITE_HANDOFF_MS = 60") &&
     explorationMapSource.includes("getPlayerDirection") &&
     explorationMapSource.includes("getPlayerHeading") &&
-    explorationMapSource.includes("opacity: frame.source === visibleSpriteSource ? 1 : 0") &&
+    explorationMapSource.includes("setVisibleSpriteSources") &&
+    explorationMapSource.includes("[...sources, targetSpriteSource]") &&
+    explorationMapSource.includes("setVisibleSpriteSources([targetSpriteSource])") &&
+    explorationMapSource.includes("opacity: visibleSpriteSources.includes(frame.source) ? 1 : 0") &&
     !explorationMapSource.includes("pointForCoordinate") &&
     !explorationMapSource.includes("schedulePlayerProjection") &&
     !explorationMapSource.includes("playerScreenPoint") &&
