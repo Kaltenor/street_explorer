@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.28.11
+
+Fixed:
+
+- Replaced Expo's deprecated top-level splash configuration with the SDK 54 `expo-splash-screen` native config plugin and its compatible PNG asset.
+- Renamed the native Mapbound artwork to `mapbound-native-splash.png`, forcing native generation to use a new asset identity instead of a cached launch-screen resource.
+- Added a preview-build command because Expo development clients can display their own conflicting startup screen and cannot reliably validate the installed release launch screen.
+- Expanded regression coverage to require the explicit light/dark native plugin configuration, current Mapbound dimensions, and removal of the legacy configuration path.
+- Synchronized version 0.28.11 with iOS build 202 and Android version code 202.
+
+## v0.28.10
+
+Fixed:
+
+- Removed every obsolete Street Explorer launch and logo bitmap from the bundled assets so a rebuilt native app cannot package the former splash menu.
+- Added regression coverage that fails if any retired launch asset is restored.
+- Synchronized version 0.28.10 with iOS build 201 and Android version code 201.
+
 ## v0.28.9
 
 Changed:

@@ -39,7 +39,7 @@
 - Recording quality summary after stopping a recording.
 - Device step counting for walks.
 - Full-screen Details, History, and Completion views.
-- Lightweight 1320x2868 `loading-screen3.jpg` Mapbound artwork shared by the static native splash and root-owned in-app launch presentation, mounted before database/font/map startup gates, with one launch-wide clean-background second that is not restarted at the React handoff, native-thread stagger across real cyan/gold/parchment phrase nodes, a half-second beat before the restrained Press to start pulse, post-press-only loading feedback, an automatic slow map fade on readiness, an independent half-size safe-corner version, Reduce Motion fallbacks, and the matching transparent `title.png` map logo HUD.
+- Explicit SDK 54 `expo-splash-screen` native configuration using the 1320x2868 `mapbound-native-splash.png`, paired with the lightweight `loading-screen3.jpg` root-owned in-app launch presentation, mounted before database/font/map startup gates, with one launch-wide clean-background second that is not restarted at the React handoff, native-thread stagger across real cyan/gold/parchment phrase nodes, a half-second beat before the restrained Press to start pulse, post-press-only loading feedback, an automatic slow map fade on readiness, an independent half-size safe-corner version, Reduce Motion fallbacks, and the matching transparent `title.png` map logo HUD.
 - Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.

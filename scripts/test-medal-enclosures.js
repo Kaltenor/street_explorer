@@ -109,6 +109,21 @@ const i18nSource = fs.readFileSync(
 );
 const splashPath = path.resolve(__dirname, "../assets/loading-screen3.jpg");
 const splashBytes = fs.readFileSync(splashPath);
+const nativeSplashPath = path.resolve(
+  __dirname,
+  "../assets/mapbound-native-splash.png"
+);
+const nativeSplashBytes = fs.readFileSync(nativeSplashPath);
+const splashPluginEntry = appConfig.expo.plugins.find(
+  (plugin) => Array.isArray(plugin) && plugin[0] === "expo-splash-screen"
+);
+const nativeSplashConfig = splashPluginEntry?.[1];
+const legacyLaunchAssetPaths = [
+  "loading-screen.png",
+  "loading-screen2.png",
+  "splash.png",
+  "transplogo.png"
+].map((fileName) => path.resolve(__dirname, "../assets", fileName));
 const medalServiceSource = fs.readFileSync(
   path.resolve(__dirname, "../src/services/medalEnclosure.ts"),
   "utf8"
@@ -163,10 +178,30 @@ function readJpegDimensions(bytes) {
   return null;
 }
 
+function readPngDimensions(bytes) {
+  if (bytes.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") {
+    return null;
+  }
+
+  return {
+    height: bytes.readUInt32BE(20),
+    width: bytes.readUInt32BE(16)
+  };
+}
+
 const splashDimensions = readJpegDimensions(splashBytes);
+const nativeSplashDimensions = readPngDimensions(nativeSplashBytes);
 
 assert(
-  appConfig.expo.splash.image === "./assets/loading-screen3.jpg" &&
+  appConfig.expo.splash === undefined &&
+    nativeSplashConfig?.image === "./assets/mapbound-native-splash.png" &&
+    nativeSplashConfig?.dark?.image === "./assets/mapbound-native-splash.png" &&
+    nativeSplashConfig?.backgroundColor === "#02060a" &&
+    nativeSplashConfig?.dark?.backgroundColor === "#02060a" &&
+    nativeSplashConfig?.resizeMode === "contain" &&
+    nativeSplashConfig?.enableFullScreenImage_legacy === true &&
+    nativeSplashDimensions?.width === 1320 &&
+    nativeSplashDimensions?.height === 2868 &&
     launchOverlaySource.includes('require("../../assets/loading-screen3.jpg")') &&
     splashBytes.subarray(0, 2).toString("hex") === "ffd8" &&
     splashDimensions?.width === 1320 &&
@@ -186,7 +221,11 @@ assert(
     launchOverlaySource.includes('color: "#f3e5bd"') &&
     i18nSource.includes('taglineWalk: "Walk."') &&
     i18nSource.includes('taglineWalk: "Marchez."'),
-  "the lightweight portrait splash and localized live tagline are wired"
+  "the explicit native Mapbound splash and localized React launch layer are wired"
+);
+assert(
+  legacyLaunchAssetPaths.every((assetPath) => !fs.existsSync(assetPath)),
+  "legacy Street Explorer launch and logo bitmaps are absent from the bundle"
 );
 assert(
   launchOverlaySource.includes("BACKGROUND_HOLD_DURATION_MS = 1000") &&

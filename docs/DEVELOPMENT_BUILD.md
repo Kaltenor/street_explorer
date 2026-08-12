@@ -21,7 +21,7 @@ Street Explorer needs a development build to test:
 - active-city loading across bundled France and the checksum-verified Belgium, Germany, Italy, Netherlands, and Spain country packs, including first-download, retry, and offline-cache behavior
 - migration 31 on an affected profile with three legacy current-day expedition offers: the database must retain active/history/seals while the selected district immediately regenerates five viable choices
 - automatic all-available-city discovered-area medal awards, complete boundary-backed active-city district filters, the offline All Cities unlocked collection, and persisted concurrent expedition selection
-- the configured lightweight portrait `assets/loading-screen3.jpg` splash asset, root-level presentation before database/font/map readiness gates, one launch-wide clean-background second without a repeated React-handoff delay, native-thread localized phrase reveal, delayed Press to start pulse, strictly post-press loading state, independent safe-corner version, slow map fade, and Reduce Motion behavior
+- the lightweight React `assets/loading-screen3.jpg`, root-level presentation before database/font/map readiness gates, one launch-wide clean-background second without a repeated React-handoff delay, native-thread localized phrase reveal, delayed Press to start pulse, strictly post-press loading state, independent safe-corner version, slow map fade, and Reduce Motion behavior
 
 Whenever a native dependency is added or changed, rebuild and reinstall the development build to exercise it. Restarting Metro updates JavaScript and assets only; it cannot add a native module to an already-installed binary. Version 0.21.0 added `react-native-webview`; the clean-cache build 159 is the validated baseline for the embedded Wikipedia frame. Version 0.21.1 made that package lazy so older clients start safely, while version 0.21.3 uses a non-throwing `RNCWebViewModule` TurboModule preflight before the guarded package load. Genuinely older binaries therefore keep the quiet default-browser fallback without surfacing a native-module LogBox. Street Explorer also treats unavailable medal/reward sound and haptics as optional.
 
@@ -66,6 +66,17 @@ npx expo start --dev-client
 ```
 
 Open the installed Street Explorer development build on the iPhone and connect to the local dev server.
+
+## Validate The Native Launch Screen
+
+Expo development clients can display their own startup screen and cannot reliably prove what the OS-owned preview/production launch frame contains. To validate the explicit `expo-splash-screen` configuration and `assets/mapbound-native-splash.png`, remove the older app from the phone and install a fresh preview build:
+
+```powershell
+cd W:\street_explorer
+npm run build:ios:preview
+```
+
+Cold-launch that installed build directly from its icon without connecting Metro. Build 202 or newer must show Mapbound immediately and must never show the retired Street Explorer artwork. Use a production build for final release approval.
 
 ## Build For iOS Simulator
 

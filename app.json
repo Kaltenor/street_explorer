@@ -2,20 +2,15 @@
   "expo": {
     "name": "Street Explorer",
     "slug": "street-explorer",
-    "version": "0.28.9",
+    "version": "0.28.11",
     "orientation": "portrait",
     "scheme": "street-explorer",
-    "splash": {
-      "backgroundColor": "#02060a",
-      "image": "./assets/loading-screen3.jpg",
-      "resizeMode": "contain"
-    },
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "buildNumber": "200",
+      "buildNumber": "202",
       "bundleIdentifier": "com.kaltenor.streetexplorer",
       "supportsTablet": true,
       "infoPlist": {
@@ -31,7 +26,7 @@
     },
     "android": {
       "package": "com.kaltenor.streetexplorer",
-      "versionCode": 200,
+      "versionCode": 202,
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
@@ -42,6 +37,19 @@
       ]
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#02060a",
+          "image": "./assets/mapbound-native-splash.png",
+          "resizeMode": "contain",
+          "enableFullScreenImage_legacy": true,
+          "dark": {
+            "backgroundColor": "#02060a",
+            "image": "./assets/mapbound-native-splash.png"
+          }
+        }
+      ],
       "expo-sqlite",
       "expo-font",
       [

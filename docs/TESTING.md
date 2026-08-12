@@ -1,8 +1,8 @@
 # Testing
 
-## Expanded Player Speech V0.28.9 Manual Test
+## Expanded Player Speech Manual Test
 
-Prerequisites: install version 0.28.9, select English and then French, and start several short walks. For faster manual coverage, temporarily reduce the standing, revisit, and cheer thresholds only in a local development session.
+Prerequisites: install the current version, select English and then French, and start several short walks. For faster manual coverage, temporarily reduce the standing, revisit, and cheer thresholds only in a local development session.
 
 1. Start several walks. Expected: Start chooses among nine localized reactions, never uses “The map has been warned” or its former French counterpart, and all copy fits within the fixed bubble.
 2. Stop several walks. Expected: Stop chooses among nine localized reactions and completes each typewriter sequence before dismissal.
@@ -177,16 +177,16 @@ Automated coverage verifies Atlas-return reset gating, already-selected Map beha
 
 ## Mapbound Splash Visual Baseline
 
-Prerequisites: install the current version on a portrait iPhone development build. Test once in English and once in French; no location permission or network is required to inspect the initial presentation. Use the Player-Gated Launch Sequence test above for exact timing and readiness branches.
+Prerequisites: install a freshly generated preview or production build on a portrait iPhone. Do not use Expo Go or a development build to approve the native frame because `expo-dev-client` can display its own conflicting startup screen. Test once in English and once in French; no location permission or network is required to inspect the React presentation. Use the Player-Gated Launch Sequence test above for exact timing and readiness branches.
 
-1. Cold-launch the app. Expected: the native splash uses the new dark Mapbound coastline artwork without showing the former Street Explorer image, distorting or cropping the baked logo, or flashing a mismatched background color.
+1. Remove the older app from the phone, install build 202 or newer from the preview/production profile, then cold-launch it. Expected: the explicit native splash uses the dark Mapbound coastline artwork without showing the former Street Explorer image, distorting or cropping the baked logo, or flashing a mismatched background color. An over-the-air JavaScript update alone cannot replace a launch screen baked into an older installed binary.
 2. Wait for the in-app launch layer. Expected: the same aspect-ratio-preserving artwork remains visually stable without a width change while the localized subtitle appears beneath the Mapbound title bar. English reads `Walk. Explore. Reveal your city.`; French reads `Marchez. Explorez. Révélez votre ville.`
 3. Inspect the subtitle at normal and larger system text sizes. Expected: Walk/Marchez is cyan, Explore/Explorez is gold, the final phrase is parchment, and the phrases have balanced spacing. The full sentence stays centered below the decorative rule rather than overlapping the title or rule, remains on one line through bounded font scaling, and its shadow stays legible without covering the skyline.
 4. Confirm the artwork receives one clean launch-wide second without restarting that delay when React takes over, then the localized subtitle reveals and Press to start appears after the half-second quiet beat. Expected: preparation remains silent and no loading row appears before the player presses.
 5. Press once. Expected: an already prepared map begins the slow fade immediately; unfinished preparation replaces the prompt with the localized loading row, retains the splash, and begins the same fade automatically when ready. The independent half-size version remains inside the safe bottom-right corner throughout.
 6. Repeat on the narrowest supported phone and an iPad portrait layout. Expected: the logo, subtitle, coastline, bottom action, and version remain visible; note any unacceptable stretch or crop for a later device-specific asset pass.
 
-Automated coverage verifies the JPEG signature and 1320x2868 dimensions, shared native/in-app asset wiring, localized subtitle keys, type safety, and iOS bundling. Physical-device verification remains required for native-to-React visual continuity, exact typography placement, safe-area behavior, and perceived JPEG quality on a real display.
+Automated coverage verifies the PNG/JPEG signatures and 1320x2868 dimensions, explicit native plugin and in-app asset wiring, removal of the deprecated native path, localized subtitle keys, type safety, and iOS bundling. Physical preview/production-device verification remains required for the OS-owned first frame, native-to-React visual continuity, exact typography placement, safe-area behavior, and perceived image quality.
 
 ## Quality Settings V0.23.13 Manual Test
 
@@ -780,7 +780,7 @@ Prerequisites: run the Street Explorer 0.15.1 JavaScript bundle in a compatible 
 Startup regressions: when testing an older development binary against the current JavaScript bundle, confirm startup succeeds even if medal sound or haptics are unavailable. In a diagnostic build where database initialization is deliberately made to fail, confirm a dark retry screen appears instead of an indefinite white screen.
 
 1. Open the Street Explorer development build.
-2. Confirm the `loading-screen3.jpg` Mapbound artwork appears for the native splash and remains as the branded in-app launch layer while the native map, saved records, unfinished-recording check, permission state, and bounded initial-location attempt prepare underneath it.
+2. Confirm the `mapbound-native-splash.png` Mapbound artwork appears for the native splash and transitions into the visually matching `loading-screen3.jpg` branded in-app launch layer while the native map, saved records, unfinished-recording check, permission state, and bounded initial-location attempt prepare underneath it.
 3. Confirm the complete artwork receives one text-free second across launch without repeating the delay at the React handoff, the localized Walk/Explore/Reveal subtitle reveals beneath the logo, and `Press here to start` appears after the half-second quiet beat regardless of whether preparation has completed. No loading message appears before interaction.
 4. Tap `Press here to start`. Expected: a ready launch skips the loading row and slowly fades to the map immediately; an unfinished launch shows the localized loading row on the retained splash, then automatically performs the same slow fade as soon as preparation completes.
 5. Open and close Details, History, Completion, and Options in turn; after each one, confirm the map gestures and bottom controls still respond.

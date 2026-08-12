@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.28.9",
+  "version": "0.28.11",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "test:zones": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-boundary-recovery.mjs",
     "build:ios:dev": "eas build --platform ios --profile development",
     "build:ios:sim": "eas build --platform ios --profile development-simulator",
+    "build:ios:preview": "eas build --platform ios --profile preview",
     "test:player": "node scripts/test-player-marker.js",
     "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs"
   },
@@ -43,6 +44,7 @@
     "expo-location": "~19.0.8",
     "expo-sensors": "~15.0.8",
     "expo-sharing": "~14.0.8",
+    "expo-splash-screen": "~31.0.13",
     "expo-sqlite": "~16.0.10",
     "expo-status-bar": "~3.0.9",
     "expo-task-manager": "~14.0.9",
