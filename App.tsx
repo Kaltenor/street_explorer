@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { setAudioModeAsync } from "expo-audio";
 import { createAppearanceStyles } from "./src/constants/appearance";
 import { useFonts } from "expo-font";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -37,6 +37,7 @@ import {
   setHapticFeedbackEnabled,
   setSoundFeedbackEnabled
 } from "./src/services/feedbackPreferences";
+import { prefetchLaunchCompletion } from "./src/services/launchCompletionPrefetch";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -51,9 +52,14 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
   const [isMapLaunchReady, setIsMapLaunchReady] = useState(false);
+  const [isLaunchCompletionPrefetchReady, setIsLaunchCompletionPrefetchReady] =
+    useState(false);
+  const launchCompletionPrefetchStartedRef = useRef(false);
 
   const initializeApp = () => {
     setDatabaseFailed(false);
+    setIsLaunchCompletionPrefetchReady(false);
+    launchCompletionPrefetchStartedRef.current = false;
     initDatabase()
       .then(async () => {
         const [savedLanguage, savedAppearanceMode, savedFeedbackPreferences] = await Promise.all([
@@ -93,6 +99,28 @@ export default function App() {
     );
     initializeApp();
   }, []);
+
+  useEffect(() => {
+    if (
+      !databaseReady ||
+      !isMapLaunchReady ||
+      launchCompletionPrefetchStartedRef.current
+    ) {
+      return;
+    }
+
+    launchCompletionPrefetchStartedRef.current = true;
+    void prefetchLaunchCompletion()
+      .then((result) => {
+        console.info("[launch] completion prefetch ready", result);
+      })
+      .catch((error) => {
+        console.warn("Launch completion prefetch failed", error);
+      })
+      .finally(() => {
+        setIsLaunchCompletionPrefetchReady(true);
+      });
+  }, [databaseReady, isMapLaunchReady]);
 
   const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
     setLanguage(nextLanguage);
@@ -161,7 +189,11 @@ export default function App() {
         )}
         {!isLaunchDismissed && !databaseFailed ? (
           <LaunchLoadingOverlay
-            isReady={isAppContentReady && isMapLaunchReady}
+            isReady={
+              isAppContentReady &&
+              isMapLaunchReady &&
+              isLaunchCompletionPrefetchReady
+            }
             language={language}
             onStart={() => setIsLaunchDismissed(true)}
           />
