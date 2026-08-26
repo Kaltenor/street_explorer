@@ -113,14 +113,10 @@ import { getMedalAlbumIdForZone } from "../data/medalAlbums";
 import {
   CachedZone,
   commitPendingRecordingRepair,
-  type ExploredCellRecord,
   getCachedZones,
   getExploredCellKeys,
   getExploredCellRecords,
-  getExploredCellRecordsWithinBounds,
   getExplorationRevision,
-  getZoneCompletionSnapshot,
-  saveZoneCompletionSnapshot,
   type ZoneCompletionSnapshot,
   getLoopFillCellKeys,
   getLoopFillSessionSummaries,
@@ -181,21 +177,29 @@ import { matchGpsPointsToStreetSegments } from "../services/streetCompletion";
 import { rebuildStreetCompletionV2 } from "../services/streetCompletionV2";
 import { getStreetCompletionState } from "../database/streetCompletionRepository";
 import {
-  calculateZoneCompletionStats,
+  calculateZoneCompletionSnapshot,
   countExploredCellKeysInsideZone,
   fetchNearbyOsmZonesWithDebug,
   getZoneGeometryFingerprint,
   getZoneBounds,
+  hydrateZoneCompletionSnapshots,
   isZoneCompletionEligible,
   isOfficialDistrictZone,
   ZoneCompletionStats
 } from "../services/zoneCompletion";
+import {
+  buildCompletionHydrationZones,
+  getPresentedCompletionPercent,
+  getPresentedRemainingCells,
+  shouldRunExpensiveCompletionMaintenance
+} from "../services/zoneCompletionLifecycle";
 import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
 import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
 import { isLoopExpeditionKind } from "../services/expeditionDefinitions";
 import {
   buildMapZoneSelectionProbeCoordinates,
-  shouldOfferMapZoneScopeChoice
+  shouldOfferMapZoneScopeChoice,
+  shouldSelectCountryside
 } from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import {
@@ -624,6 +628,7 @@ export function MapScreen({
   const [isForbiddenZoneProcessing, setIsForbiddenZoneProcessing] = useState(false);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
+  const [isCountrysideSelected, setIsCountrysideSelected] = useState(false);
   const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
@@ -632,7 +637,7 @@ export function MapScreen({
     bottom: 0,
     top: 0
   });
-  const [objectiveClosureRevision, setObjectiveClosureRevision] = useState(0);
+  const [objectiveMaintenanceRevision, setObjectiveMaintenanceRevision] = useState(0);
   const [mapBoundaryContext, setMapBoundaryContext] = useState<MapBoundaryContext>(
     EMPTY_MAP_BOUNDARY_CONTEXT
   );
@@ -640,6 +645,7 @@ export function MapScreen({
   const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
+  const [knownCityZones, setKnownCityZones] = useState<CachedZone[]>([]);
   const activeDistrictObjectiveId = objective?.zone.type === "district"
     ? objective.zone.id
     : null;
@@ -709,6 +715,7 @@ export function MapScreen({
   const [isSavedDataReady, setIsSavedDataReady] = useState(false);
   const [isSavedObjectiveReady, setIsSavedObjectiveReady] = useState(false);
   const [isLaunchObjectiveResolved, setIsLaunchObjectiveResolved] = useState(false);
+  const [isObjectiveCacheHydrated, setIsObjectiveCacheHydrated] = useState(false);
   const [isExplorationEnabled, setIsExplorationEnabled] = useState(false);
   const [savedExplorationCellIds, setSavedExplorationCellIds] = useState<string[]>([]);
   const [savedTodayNewCellIds, setSavedTodayNewCellIds] = useState<string[]>([]);
@@ -801,6 +808,8 @@ export function MapScreen({
   const forbiddenZoneRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
+  const objectiveFinalizationAbortRef = useRef<AbortController | null>(null);
+  const objectiveRef = useRef<CompletionObjective | null>(null);
   const legacyObjectiveRefreshIdsRef = useRef(new Set<string>());
   const objectiveScopePairRef = useRef<MapZoneSelection | null>(null);
   const objectiveStatsCacheRef = useRef(new Map<string, ZoneCompletionSnapshot>());
@@ -831,6 +840,7 @@ export function MapScreen({
   const detailedWalksModeRef = useRef<ActivityMode | null>(null);
   const pathDisplayModeRef = useRef<PathDisplayMode>(pathDisplayMode);
   const selectedSessionIdRef = useRef<number | null>(selectedSessionId);
+  objectiveRef.current = objective;
   pathDisplayModeRef.current = pathDisplayMode;
   selectedSessionIdRef.current = selectedSessionId;
 
@@ -842,6 +852,11 @@ export function MapScreen({
     const timer = setTimeout(() => setRecordingResumeNotice(null), 4000);
     return () => clearTimeout(timer);
   }, [recordingResumeNotice]);
+
+  useEffect(() => {
+    objectiveFinalizationAbortRef.current?.abort();
+    objectiveFinalizationAbortRef.current = null;
+  }, [objective?.mode, objective?.zone.id]);
 
   const publishCurrentLocation = useCallback((point: GpsPoint) => {
     setCurrentLocation((currentPoint) =>
@@ -1050,17 +1065,6 @@ export function MapScreen({
     () => activeWalk ? [...new Set(activeWalk.exploredCellIds)] : [],
     [activeWalk?.exploredCellIds]
   );
-  const activeObjectiveCellIds = useMemo(
-    () =>
-      objective && activeWalk?.activityMode === objective.mode
-        ? activeClosureBoundaryCellIds
-        : [],
-    [
-      activeClosureBoundaryCellIds,
-      activeWalk?.activityMode,
-      objective?.mode
-    ]
-  );
   const activeClosureContextKey = activeWalk
     ? `${activeWalk.sessionId}:${activeWalk.activityMode}`
     : null;
@@ -1146,6 +1150,7 @@ export function MapScreen({
     isMapReady &&
     isSavedDataReady &&
     isLaunchObjectiveResolved &&
+    isObjectiveCacheHydrated &&
     isRecoveryCheckComplete &&
     permissionState !== "unknown" &&
     (permissionState !== "granted" || initialLocationResolved);
@@ -1392,7 +1397,8 @@ export function MapScreen({
         savedExpeditionSealCount,
         exploredCellIds,
         todayNewExploredCellIds,
-        explorationRevision
+        explorationRevision,
+        savedCityZones
       ] = await measureAsyncPerformance(
         "map.saved-data-queries",
         () => Promise.all([
@@ -1403,7 +1409,8 @@ export function MapScreen({
           getDistrictExpeditionSealCount(),
           getExploredCellKeys(activityMode),
           getTodayNewExploredCellKeys(activityMode),
-          getExplorationRevision(activityMode)
+          getExplorationRevision(activityMode),
+          getCachedZones("city")
         ]),
         100
       );
@@ -1435,6 +1442,7 @@ export function MapScreen({
       setExpeditionSealCount(savedExpeditionSealCount);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
+      setKnownCityZones(savedCityZones.filter(isZoneCompletionEligible));
       setMedalPresentationQueue(medalData.pendingMedalPresentations);
       setCollectedMedalCities(medalData.savedCollectedMedalCities);
       if (activeMedalAlbumId === activeMedalAlbumIdRef.current) {
@@ -1881,8 +1889,24 @@ export function MapScreen({
       return null;
     }
 
+    setIsCountrysideSelected(false);
     setObjective(savedObjective);
     setSelectedZone(savedObjective.zone);
+    const cachedSnapshot = objectiveStatsCacheRef.current.get(
+      `${savedObjective.mode}:${savedObjective.zone.id}`
+    );
+    const cachedStats = cachedSnapshot?.geometryFingerprint ===
+      getZoneGeometryFingerprint(savedObjective.zone)
+        ? cachedSnapshot.stats
+        : null;
+    setObjectiveStats((currentStats) =>
+      cachedStats ??
+      (objectiveRef.current?.mode === savedObjective.mode &&
+      objectiveRef.current.zone.id === savedObjective.zone.id &&
+      currentStats?.permanentlyCompleted
+        ? currentStats
+        : null)
+    );
     return savedObjective;
   }, []);
 
@@ -1927,6 +1951,7 @@ export function MapScreen({
       getCachedZones("city"),
       getCachedZones("district")
     ]);
+    setKnownCityZones(cities.filter(isZoneCompletionEligible));
     const currentCity = findContainingZone(referenceLocation, cities);
     const nextDistrictZones = currentCity
       ? districts.filter(
@@ -1953,6 +1978,7 @@ export function MapScreen({
       getCachedZones("city"),
       getCachedZones("district")
     ]);
+    setKnownCityZones(cities.filter(isZoneCompletionEligible));
     const currentCity = zone.type === "city"
       ? cities.find((city) => city.id === zone.id) ?? zone
       : cities.find((city) => doesDistrictBelongToCity(zone, city)) ?? null;
@@ -1986,6 +2012,25 @@ export function MapScreen({
     return nextDistrictZones;
   }, [commitMapBoundaryContext]);
 
+  const hydrateObjectiveZonesIntoCache = useCallback(async (
+    zones: CachedZone[],
+    mode: ActivityMode,
+    signal?: AbortSignal
+  ) => {
+    const hydration = await hydrateZoneCompletionSnapshots(zones, mode, signal);
+
+    for (const entry of hydration.hydrated) {
+      if (entry.authoritativeSnapshot) {
+        objectiveStatsCacheRef.current.set(
+          `${mode}:${entry.zone.id}`,
+          entry.authoritativeSnapshot
+        );
+      }
+    }
+
+    return hydration;
+  }, []);
+
   const commitMapObjective = useCallback((
     zone: CachedZone,
     options: { showSelectionStamp?: boolean } = {}
@@ -1999,11 +2044,23 @@ export function MapScreen({
       zone
     };
 
+    setIsCountrysideSelected(false);
     setObjective(nextObjective);
     setObjectiveHudVisible(true);
     setSelectedZone(zone);
-    const cachedStats = objectiveStatsCacheRef.current.get(`walk:${zone.id}`)?.stats ?? null;
-    setObjectiveStats(cachedStats);
+    const cachedSnapshot = objectiveStatsCacheRef.current.get(`walk:${zone.id}`);
+    const cachedStats = cachedSnapshot?.geometryFingerprint ===
+      getZoneGeometryFingerprint(zone)
+        ? cachedSnapshot.stats
+        : null;
+    setObjectiveStats((currentStats) =>
+      cachedStats ??
+      (objectiveRef.current?.mode === nextObjective.mode &&
+      objectiveRef.current.zone.id === nextObjective.zone.id &&
+      currentStats?.permanentlyCompleted
+        ? currentStats
+        : null)
+    );
     if (options.showSelectionStamp !== false) {
       setAtlasStampMessage({
         detail: cachedStats ? `${zone.name} - ${formatObjectiveCompletion(cachedStats)}` : zone.name,
@@ -2028,6 +2085,32 @@ export function MapScreen({
     commitMapObjective(zone);
   }, [commitMapObjective]);
 
+  const commitCountrysideSelection = useCallback(async () => {
+    setIsCountrysideSelected(true);
+    setObjective(null);
+    setObjectiveHudVisible(true);
+    setObjectiveStats(null);
+    setIsObjectiveStatsCalculating(false);
+    setSelectedZone(null);
+    setMapZoneSelection(null);
+    objectiveScopePairRef.current = null;
+    districtZoneLoadRequestRef.current += 1;
+    await commitMapBoundaryContext(EMPTY_MAP_BOUNDARY_CONTEXT);
+    setAtlasStampMessage({
+      detail: language === "fr"
+        ? "Exploration de la campagne"
+        : "Exploring the countryside",
+      id: Date.now(),
+      presentation: "map-selection",
+      title: language === "fr" ? "HORS DE LA VILLE" : "OUT OF THE CITY"
+    });
+    objectiveSaveChainRef.current = objectiveSaveChainRef.current
+      .then(() => saveCompletionObjective(null))
+      .catch((error) => {
+        console.warn("Failed to clear completion objective for countryside", error);
+      });
+  }, [commitMapBoundaryContext, language]);
+
   const handleMapLongPress = useCallback(async (coordinate: {
     latitude: number;
     longitude: number;
@@ -2041,11 +2124,13 @@ export function MapScreen({
       objectiveScopePairRef.current = null;
       await playSelectionHaptic();
 
-      let [cities, districts] = await Promise.all([
+      let [countries, cities, districts] = await Promise.all([
+        getCachedZones("country"),
         getCachedZones("city"),
         getCachedZones("district")
       ]);
       const resolveHeldZones = () => {
+        const eligibleCountries = countries.filter(isZoneCompletionEligible);
         const eligibleCities = cities.filter(isZoneCompletionEligible);
         const city = findContainingZoneForMapHold(
           coordinate,
@@ -2063,19 +2148,22 @@ export function MapScreen({
           mapViewportRegionRef.current
         );
 
-        return { city, district };
+        const country = findContainingZone(coordinate, eligibleCountries);
+
+        return { city, country, district };
       };
-      let { city, district } = resolveHeldZones();
+      let { city, country, district } = resolveHeldZones();
 
       if (!city || !district) {
         try {
           const result = await fetchNearbyOsmZonesWithDebug(coordinate);
           await upsertZones(result.zones);
-          [cities, districts] = await Promise.all([
+          [countries, cities, districts] = await Promise.all([
+            getCachedZones("country"),
             getCachedZones("city"),
             getCachedZones("district")
           ]);
-          ({ city, district } = resolveHeldZones());
+          ({ city, country, district } = resolveHeldZones());
         } catch (error) {
           console.warn("Failed to load boundaries for map long press", error);
         }
@@ -2085,13 +2173,19 @@ export function MapScreen({
         return;
       }
 
+      setKnownCityZones(cities.filter(isZoneCompletionEligible));
+
+      if (shouldSelectCountryside({
+        hasContainingCity: Boolean(city),
+        hasContainingCountry: Boolean(country),
+        hasContainingDistrict: Boolean(district)
+      })) {
+        await commitCountrysideSelection();
+        return;
+      }
+
       if (!city && !district) {
-        Alert.alert(
-          language === "fr" ? "Zone indisponible" : "Area unavailable",
-          language === "fr"
-            ? "Aucune limite exacte de ville ou de quartier n’a été trouvée à cet endroit."
-            : "No exact city or district boundary was found at that location."
-        );
+        // Open ocean has neither an exact city nor country boundary and is not selectable.
         return;
       }
 
@@ -2127,6 +2221,15 @@ export function MapScreen({
         heldCityId: city?.id ?? null
       });
       setMapZoneSelection(shouldOfferScopeChoice ? choices : null);
+      await hydrateObjectiveZonesIntoCache(
+        buildCompletionHydrationZones(null, choices),
+        "walk"
+      );
+
+      if (mapZoneSelectionRequestRef.current !== requestId) {
+        return;
+      }
+
       const preferredZone = shouldOfferScopeChoice && objective?.zone.type === "city"
         ? city ?? district
         : district ?? city;
@@ -2142,7 +2245,9 @@ export function MapScreen({
     }
   }, [
     applyMapObjective,
+    commitCountrysideSelection,
     commitMapBoundaryContext,
+    hydrateObjectiveZonesIntoCache,
     language,
     objective?.zone.id,
     objective?.zone.type
@@ -2221,7 +2326,7 @@ export function MapScreen({
                       current?.zoneId === existingZone.id ? null : current
                     );
                     objectiveStatsCacheRef.current.clear();
-                    setObjectiveClosureRevision((revision) => revision + 1);
+                    setObjectiveMaintenanceRevision((revision) => revision + 1);
                     setIsForbiddenZoneModeActive(false);
                   })
                   .catch((error) => {
@@ -2301,7 +2406,7 @@ export function MapScreen({
 
       setForbiddenZones((zones) => [...zones, created]);
       objectiveStatsCacheRef.current.clear();
-      setObjectiveClosureRevision((revision) => revision + 1);
+      setObjectiveMaintenanceRevision((revision) => revision + 1);
       setIsForbiddenZoneModeActive(false);
       const districtId = objective?.zone.type === "district"
         ? objective.zone.id
@@ -2369,6 +2474,8 @@ export function MapScreen({
     const zone = objective?.zone;
 
     if (
+      !isLaunchDismissed ||
+      isRecording ||
       !zone ||
       zone.type === "country" ||
       (zone.adminLevel !== null && zone.adminLevel !== undefined) ||
@@ -2385,11 +2492,12 @@ export function MapScreen({
 
     legacyObjectiveRefreshIdsRef.current.add(zone.id);
     let cancelled = false;
+    const abortController = new AbortController();
 
     fetchNearbyOsmZonesWithDebug({
       latitude: (bounds.minLatitude + bounds.maxLatitude) / 2,
       longitude: (bounds.minLongitude + bounds.maxLongitude) / 2
-    })
+    }, abortController.signal)
       .then(async (result) => {
         await upsertZones(result.zones);
 
@@ -2398,13 +2506,18 @@ export function MapScreen({
         }
       })
       .catch((error) => {
-        console.warn("Failed to classify legacy objective boundaries", error);
+        if (!abortController.signal.aborted) {
+          console.warn("Failed to classify legacy objective boundaries", error);
+        }
       });
 
     return () => {
       cancelled = true;
+      abortController.abort();
     };
   }, [
+    isLaunchDismissed,
+    isRecording,
     objective?.zone.adminLevel,
     objective?.zone.id,
     objective?.zone.type,
@@ -2436,66 +2549,60 @@ export function MapScreen({
 
     launchObjectiveSelectionStartedRef.current = true;
 
-    if (permissionState !== "granted" || !launchObjectiveLocation) {
-      setIsLaunchObjectiveResolved(true);
-      return;
-    }
-
     const selectLaunchObjective = async () => {
-      let [cities, districts] = await Promise.all([
+      const savedZone = objective?.zone ?? null;
+      const canResolveNearbyZones =
+        permissionState === "granted" && Boolean(launchObjectiveLocation);
+      const [cities, districts] = canResolveNearbyZones
+        ? await Promise.all([
         getCachedZones("city"),
         getCachedZones("district")
-      ]);
+      ])
+        : [[], []];
+      if (canResolveNearbyZones) {
+        setKnownCityZones(cities.filter(isZoneCompletionEligible));
+      }
+      const currentCity = launchObjectiveLocation
+        ? findContainingZone(launchObjectiveLocation, cities)
+        : null;
+      const cityDistricts = currentCity
+        ? districts.filter(
+            (district) =>
+              isZoneCompletionEligible(district) &&
+              doesDistrictBelongToCity(district, currentCity)
+          )
+        : [];
+      const currentDistrict = launchObjectiveLocation
+        ? findContainingZone(launchObjectiveLocation, cityDistricts)
+        : null;
+      const pair = currentCity
+        ? { city: currentCity, district: currentDistrict }
+        : null;
+      const preferredZone = currentDistrict ?? currentCity ?? savedZone;
+      const hydrationZones = buildCompletionHydrationZones(savedZone, pair);
+      const hydration = await hydrateObjectiveZonesIntoCache(
+        hydrationZones,
+        objective?.mode ?? "walk"
+      );
 
-      const resolveBoundaryContext = () => {
-        const currentCity = findContainingZone(launchObjectiveLocation, cities);
-        const cityDistricts = currentCity
-          ? districts.filter(
-              (district) =>
-                isZoneCompletionEligible(district) &&
-                doesDistrictBelongToCity(district, currentCity)
-            )
-          : [];
-        const currentDistrict = findContainingZone(
-          launchObjectiveLocation,
-          cityDistricts
+      if (currentCity) {
+        await commitMapBoundaryContext({ city: currentCity, districts: cityDistricts });
+      }
+
+      objectiveScopePairRef.current = pair;
+
+      if (preferredZone) {
+        commitMapObjective(preferredZone, { showSelectionStamp: false });
+        const preferredHydration = hydration.hydrated.find(
+          (entry) => entry.zone.id === preferredZone.id
         );
 
-        return { currentCity, currentDistrict, cityDistricts };
-      };
+        if (preferredHydration?.fallbackStats) {
+          setObjectiveStats(preferredHydration.fallbackStats);
+        }
 
-      let boundaryContext = resolveBoundaryContext();
-
-      if (!boundaryContext.currentCity || boundaryContext.cityDistricts.length === 0) {
-        const result = await fetchNearbyOsmZonesWithDebug(launchObjectiveLocation);
-        await upsertZones(result.zones);
-        [cities, districts] = await Promise.all([
-          getCachedZones("city"),
-          getCachedZones("district")
-        ]);
-        boundaryContext = resolveBoundaryContext();
+        await objectiveSaveChainRef.current;
       }
-
-      if (!boundaryContext.currentCity) {
-        return;
-      }
-
-      const preferredZone =
-        boundaryContext.currentDistrict ?? boundaryContext.currentCity;
-
-      await commitMapBoundaryContext({
-        city: boundaryContext.currentCity,
-        districts: boundaryContext.cityDistricts
-      });
-
-      objectiveScopePairRef.current = boundaryContext.currentDistrict
-        ? {
-            city: boundaryContext.currentCity,
-            district: boundaryContext.currentDistrict
-          }
-        : null;
-      commitMapObjective(preferredZone, { showSelectionStamp: false });
-      await objectiveSaveChainRef.current;
     };
 
     selectLaunchObjective()
@@ -2506,14 +2613,17 @@ export function MapScreen({
         );
       })
       .finally(() => {
+        setIsObjectiveCacheHydrated(true);
         setIsLaunchObjectiveResolved(true);
       });
   }, [
     commitMapBoundaryContext,
     commitMapObjective,
+    hydrateObjectiveZonesIntoCache,
     initialLocationResolved,
     isSavedObjectiveReady,
     launchObjectiveLocation,
+    objective,
     permissionState
   ]);
 
@@ -2574,9 +2684,6 @@ export function MapScreen({
         }
       }
 
-      if (objective?.mode === activeWalk?.activityMode) {
-        setObjectiveClosureRevision((currentRevision) => currentRevision + 1);
-      }
     }
   }, [
     activeClosureContextKey,
@@ -2667,8 +2774,6 @@ export function MapScreen({
     const requestId = objectiveStatsRequestRef.current + 1;
     objectiveStatsRequestRef.current = requestId;
 
-    // A missing snapshot can require a large district scan. Keep that work off
-    // the launch overlay so pressing Start can never wait behind completion.
     if (!isLaunchDismissed) {
       setIsObjectiveStatsCalculating(false);
       return;
@@ -2681,161 +2786,70 @@ export function MapScreen({
     }
 
     const abortController = new AbortController();
-    const pair = objectiveScopePairRef.current;
-    const pairIncludesObjective = Boolean(
-      pair?.city?.id === objective.zone.id ||
-      pair?.district?.id === objective.zone.id
-    );
-    const zones = [
-      objective.zone,
-      ...(pairIncludesObjective ? [pair?.city, pair?.district] : [])
-    ].filter((zone, index, candidates): zone is CachedZone =>
-      Boolean(zone) &&
-      candidates.findIndex((candidate) => candidate?.id === zone?.id) === index
-    );
-    const fingerprints = new Map(
-      zones.map((zone) => [zone.id, getZoneGeometryFingerprint(zone)])
-    );
     const selectedCacheKey = `${objective.mode}:${objective.zone.id}`;
     const immediateSnapshot = objectiveStatsCacheRef.current.get(selectedCacheKey);
+    const geometryFingerprint = getZoneGeometryFingerprint(objective.zone);
+    const immediateStats = immediateSnapshot?.geometryFingerprint === geometryFingerprint
+      ? immediateSnapshot.stats
+      : null;
 
-    setObjectiveStats(
-      immediateSnapshot &&
-      immediateSnapshot.geometryFingerprint === fingerprints.get(objective.zone.id)
-        ? immediateSnapshot.stats
-        : null
-    );
-    setIsObjectiveStatsCalculating(true);
+    if (immediateStats) {
+      setObjectiveStats(immediateStats);
+    }
+    setIsObjectiveStatsCalculating(false);
 
-    const refreshCompletionSnapshots = async () => {
-      const explorationRevision = await getExplorationRevision(objective.mode);
-      const durableSnapshots = await Promise.all(
-        zones.map((zone) => getZoneCompletionSnapshot(zone.id, objective.mode))
+    const refreshCompletionSnapshot = async () => {
+      const hydration = await hydrateObjectiveZonesIntoCache(
+        [objective.zone],
+        objective.mode,
+        abortController.signal
       );
-      const validSnapshots = new Map<string, ZoneCompletionSnapshot>();
-
-      for (let index = 0; index < zones.length; index += 1) {
-        const zone = zones[index];
-        const snapshot = durableSnapshots[index];
-
-        if (
-          zone &&
-          snapshot &&
-          snapshot.explorationRevision === explorationRevision &&
-          snapshot.geometryFingerprint === fingerprints.get(zone.id)
-        ) {
-          validSnapshots.set(zone.id, snapshot);
-
-          if (
-            zone.id !== objective.zone.id ||
-            activeObjectiveCellIds.length === 0
-          ) {
-            objectiveStatsCacheRef.current.set(
-              `${objective.mode}:${zone.id}`,
-              snapshot
-            );
-          }
-        }
-      }
-
-      const selectedSnapshot = validSnapshots.get(objective.zone.id);
-      const needsLivePreview = activeObjectiveCellIds.length > 0;
+      const hydrated = hydration.hydrated[0];
+      const usableStats = hydrated?.fallbackStats ?? immediateStats;
 
       if (
-        selectedSnapshot &&
-        (!needsLivePreview || !immediateSnapshot) &&
+        usableStats &&
         !abortController.signal.aborted &&
         objectiveStatsRequestRef.current === requestId
       ) {
-        setObjectiveStats(selectedSnapshot.stats);
+        setObjectiveStats(usableStats);
       }
 
-      if (
-        selectedSnapshot &&
-        !needsLivePreview &&
-        objectiveStatsRequestRef.current === requestId
-      ) {
-        setIsObjectiveStatsCalculating(false);
-      }
-
-      const zonesToCalculate = zones.filter((zone) =>
-        zone.id === objective.zone.id
-          ? needsLivePreview || !validSnapshots.has(zone.id)
-          : !validSnapshots.has(zone.id)
-      );
-
-      if (zonesToCalculate.length === 0) {
+      if (hydrated?.authoritativeSnapshot) {
         return;
       }
 
-      const calculationResults = await Promise.all(
-        zonesToCalculate.map(async (zone) => {
-          const bounds = getZoneBounds(zone);
-          const persistedCells = bounds
-            ? await getExploredCellRecordsWithinBounds(objective.mode, bounds)
-            : await getExploredCellRecords(objective.mode);
-          const isSelectedZone = zone.id === objective.zone.id;
-          const usesLivePreview = isSelectedZone && needsLivePreview;
-          const completionCells = usesLivePreview
-            ? mergeActiveExplorationCells(
-                persistedCells,
-                activeObjectiveCellIds,
-                objective.mode
-              )
-            : persistedCells;
-          const stats = await calculateZoneCompletionStats(
-            zone,
-            completionCells,
-            abortController.signal,
-            { persistAchievement: !usesLivePreview }
-          );
-          const snapshot: ZoneCompletionSnapshot = {
-            calculatedAt: new Date().toISOString(),
-            explorationRevision,
-            geometryFingerprint: fingerprints.get(zone.id) ?? "",
-            mode: objective.mode,
-            stats,
-            zoneId: zone.id
-          };
+      if (!shouldRunExpensiveCompletionMaintenance(
+        isRecording || isComputingRecording
+      )) {
+        return;
+      }
 
-          objectiveStatsCacheRef.current.set(
-            `${objective.mode}:${zone.id}`,
-            snapshot
-          );
+      if (!usableStats) {
+        setIsObjectiveStatsCalculating(true);
+      }
 
-          if (
-            isSelectedZone &&
-            !abortController.signal.aborted &&
-            objectiveStatsRequestRef.current === requestId
-          ) {
-            setObjectiveStats(stats);
-          }
-
-          if (!usesLivePreview) {
-            const currentRevision = await getExplorationRevision(objective.mode);
-
-            if (currentRevision === explorationRevision) {
-              await saveZoneCompletionSnapshot(snapshot);
-            }
-          }
-
-          return { isSelectedZone, stats };
-        })
+      const snapshot = await calculateZoneCompletionSnapshot(
+        objective.zone,
+        objective.mode,
+        hydration.explorationRevision,
+        abortController.signal
       );
-      const selectedResult = calculationResults.find(
-        (result) => result.isSelectedZone
-      );
+      const currentRevision = await getExplorationRevision(objective.mode);
 
       if (
-        selectedResult &&
-        !abortController.signal.aborted &&
-        objectiveStatsRequestRef.current === requestId
+        currentRevision !== snapshot.explorationRevision ||
+        abortController.signal.aborted ||
+        objectiveStatsRequestRef.current !== requestId
       ) {
-        setObjectiveStats(selectedResult.stats);
+        return;
       }
+
+      objectiveStatsCacheRef.current.set(selectedCacheKey, snapshot);
+      setObjectiveStats(snapshot.stats);
     };
 
-    refreshCompletionSnapshots()
+    refreshCompletionSnapshot()
       .catch((error) => {
         if (!abortController.signal.aborted) {
           console.warn("Failed to refresh objective completion cache", error);
@@ -2848,7 +2862,15 @@ export function MapScreen({
       });
 
     return () => abortController.abort();
-  }, [isLaunchDismissed, loopFillCellIds, objective, objectiveClosureRevision, walks]);
+  }, [
+    hydrateObjectiveZonesIntoCache,
+    isComputingRecording,
+    isLaunchDismissed,
+    isRecording,
+    objective?.mode,
+    objective?.zone,
+    objectiveMaintenanceRevision
+  ]);
 
   useEffect(() => {
     if (!objective || !objectiveStats?.permanentlyCompleted) {
@@ -4394,13 +4416,35 @@ export function MapScreen({
         let objectiveAfter: ZoneCompletionStats | null = null;
 
         if (objective) {
+          const objectiveAbortController = new AbortController();
+          objectiveFinalizationAbortRef.current?.abort();
+          objectiveFinalizationAbortRef.current = objectiveAbortController;
+
           try {
-            objectiveAfter = await calculateObjectiveStats(objective);
-            objectiveStatsRequestRef.current += 1;
-            setObjectiveStats(objectiveAfter);
-            setIsObjectiveStatsCalculating(false);
+            objectiveAfter = await calculateObjectiveStats(
+              objective,
+              objectiveAbortController.signal
+            );
+            const currentObjective = objectiveRef.current;
+
+            if (
+              currentObjective?.mode === objective.mode &&
+              currentObjective.zone.id === objective.zone.id &&
+              getZoneGeometryFingerprint(currentObjective.zone) ===
+                getZoneGeometryFingerprint(objective.zone)
+            ) {
+              objectiveStatsRequestRef.current += 1;
+              setObjectiveStats(objectiveAfter);
+              setIsObjectiveStatsCalculating(false);
+            }
           } catch (error) {
-            console.warn("Recording saved but deferred objective refresh failed", error);
+            if (!objectiveAbortController.signal.aborted) {
+              console.warn("Recording saved but deferred objective refresh failed", error);
+            }
+          } finally {
+            if (objectiveFinalizationAbortRef.current === objectiveAbortController) {
+              objectiveFinalizationAbortRef.current = null;
+            }
           }
         }
 
@@ -5453,6 +5497,7 @@ export function MapScreen({
         onMedalPress={handleMapMedalPress}
         currentLocation={currentLocation}
         cityZone={visibleMapBoundaryContext.city}
+        knownCityZones={knownCityZones}
         districtZones={visibleMapBoundaryContext.districts}
         highlightedSessionId={selectedSessionId}
         routeFocusRequestId={routeFocusRequestId}
@@ -5526,35 +5571,39 @@ export function MapScreen({
               ]}
             />
           </Animated.View>
-          <CityMedalProgress
-            hasObjective={Boolean(objective)}
-            language={language}
-            loadState={medalPackLoadState}
-            objectiveVisible={Boolean(objective && objectiveHudVisible)}
-            onObjectivePress={() => {
-              if (!objective) {
-                navigateAtlasPage("completion");
-                return;
-              }
-
-              setObjectiveHudVisible((visible) => !visible);
-            }}
-            onPress={() => {
-              if (medalPackLoadState === "unavailable") {
-                if (activeMedalAlbumId) {
-                  resetMedalCountryPackFailure(activeMedalAlbumId);
+          {isCountrysideSelected ? (
+            <CountrysideStatus language={language} />
+          ) : (
+            <CityMedalProgress
+              hasObjective={Boolean(objective)}
+              language={language}
+              loadState={medalPackLoadState}
+              objectiveVisible={Boolean(objective && objectiveHudVisible)}
+              onObjectivePress={() => {
+                if (!objective) {
+                  navigateAtlasPage("completion");
+                  return;
                 }
-                refreshSavedData({ hideExplorationDuringRefresh: false }).catch((error) =>
-                  console.warn("Failed to retry medal country pack", error)
-                );
-                return;
-              }
 
-              navigateAtlasPage("medals");
-            }}
-            progress={activeMedalProgress}
-          />
-          {objective && objectiveHudVisible ? (
+                setObjectiveHudVisible((visible) => !visible);
+              }}
+              onPress={() => {
+                if (medalPackLoadState === "unavailable") {
+                  if (activeMedalAlbumId) {
+                    resetMedalCountryPackFailure(activeMedalAlbumId);
+                  }
+                  refreshSavedData({ hideExplorationDuringRefresh: false }).catch((error) =>
+                    console.warn("Failed to retry medal country pack", error)
+                  );
+                  return;
+                }
+
+                navigateAtlasPage("medals");
+              }}
+              progress={activeMedalProgress}
+            />
+          )}
+          {!isCountrysideSelected && objective && objectiveHudVisible ? (
             <ObjectiveHud
               activeExpeditions={expeditionDashboard?.active ?? []}
               isCalculating={isObjectiveStatsCalculating}
@@ -5739,6 +5788,7 @@ export function MapScreen({
         currentObjectiveStats={objectiveStats}
         currentObjectiveTodayCells={todayObjectiveCellCount}
         currentLocation={completionReferenceLocation}
+        isRecording={isRecording}
         language={language}
         onClose={handleReturnToMapFromAtlas}
         onFocusZone={(zone) => {
@@ -5991,11 +6041,11 @@ function ObjectiveHud({
   stats: ZoneCompletionStats | null;
   todayCellCount: number;
 }) {
-  const remainingCells = getObjectiveRemainingCells(stats);
-  const objectiveProgress =
-    stats?.completionPercent === null || stats?.completionPercent === undefined
-      ? 0
-      : Math.max(0, Math.min(100, stats.completionPercent));
+  const remainingCells = getPresentedRemainingCells(stats);
+  const presentedPercent = getPresentedCompletionPercent(stats);
+  const objectiveProgress = presentedPercent === null
+    ? 0
+    : Math.max(0, Math.min(100, presentedPercent));
   const activeInDistrict = activeExpeditions.filter(
     (expedition) => expedition.districtId === objective.zone.id
   );
@@ -6259,6 +6309,8 @@ function ReprocessingModal({
 }
 
 const STOP_CONFIRM_HOLD_MS = 1300;
+const STOP_CONFIRM_BORDEAUX = "#6b1029";
+const STOP_CONFIRM_HOLD_ORANGE = "#c2410c";
 
 function StopRecordingConfirmationModal({
   activityMode,
@@ -6606,14 +6658,14 @@ function getObjectiveProgressDelta(
   before: ZoneCompletionStats | null,
   after: ZoneCompletionStats | null
 ) {
+  const beforePercent = getPresentedCompletionPercent(before);
+  const afterPercent = getPresentedCompletionPercent(after);
+
   return {
     cells: (after?.exploredCells ?? 0) - (before?.exploredCells ?? 0),
     percent:
-      after?.completionPercent !== null &&
-      after?.completionPercent !== undefined &&
-      before?.completionPercent !== null &&
-      before?.completionPercent !== undefined
-        ? Math.round((after.completionPercent - before.completionPercent) * 10) / 10
+      afterPercent !== null && beforePercent !== null
+        ? Math.round((afterPercent - beforePercent) * 10) / 10
         : null
   };
 }
@@ -6644,13 +6696,12 @@ function formatObjectiveProgressLine(
       : "No active objective during this recording.";
   }
 
-  const remainingCells = after.totalZoneCells === null
-    ? null
-    : Math.max(0, after.totalZoneCells - after.exploredCells);
+  const remainingCells = getPresentedRemainingCells(after);
   const delta = getObjectiveProgressDelta(before, after);
-  const completion = after.completionPercent === null
+  const presentedPercent = getPresentedCompletionPercent(after);
+  const completion = presentedPercent === null
     ? getStrings(language).common.pending
-    : `${after.completionPercent}%`;
+    : `${presentedPercent}%`;
 
   if (language === "fr") {
     return `${completion} sur l'objectif, ${remainingCells ?? "?"} cellules restantes, ${delta.cells >= 0 ? "+" : ""}${delta.cells} cellules sur cette sortie.`;
@@ -6707,7 +6758,7 @@ function getRecordingMilestones(summary: RecordingSummary, language: AppLanguage
     milestones.push({ icon: "map-outline", label: "5 km" });
   }
 
-  if ((summary.objectiveAfter?.completionPercent ?? 0) >= 5) {
+  if ((getPresentedCompletionPercent(summary.objectiveAfter) ?? 0) >= 5) {
     milestones.push({
       icon: "flag-outline",
       label: isFrench ? "Quartier 5%" : "District 5%"
@@ -7118,9 +7169,7 @@ function GameProgressPanel({
   const weekDistanceMeters = getRecentDistanceMeters(sessions, 7);
   const dailyCellGoal = 50;
   const weeklyDistanceGoalMeters = 10000;
-  const objectivePercent = objectiveStats?.permanentlyCompleted
-    ? 100
-    : objectiveStats?.completionPercent ?? null;
+  const objectivePercent = getPresentedCompletionPercent(objectiveStats);
 
   return (
     <View style={styles.gamePanel}>
@@ -7282,41 +7331,44 @@ function filterWalksForPathDisplay(
   return walks.filter((walk) => doesWalkOverlapToday(walk));
 }
 
-async function calculateObjectiveStats(objective: CompletionObjective) {
-  const bounds = getZoneBounds(objective.zone);
-  const cells = bounds
-    ? await getExploredCellRecordsWithinBounds(objective.mode, bounds)
-    : await getExploredCellRecords(objective.mode);
-
-  return calculateZoneCompletionStats(objective.zone, cells);
-}
-
-function mergeActiveExplorationCells(
-  persistedCells: ExploredCellRecord[],
-  activeCellIds: string[],
-  mode: ActivityMode
+async function calculateObjectiveStats(
+  objective: CompletionObjective,
+  signal?: AbortSignal
 ) {
-  if (activeCellIds.length === 0) {
-    return persistedCells;
-  }
-
-  const mergedCells = [...persistedCells];
-  const existingCellIds = new Set(
-    persistedCells.map((cell) => `${cell.mode}:${cell.cellKey}`)
+  const explorationRevision = await getExplorationRevision(objective.mode);
+  const snapshot = await calculateZoneCompletionSnapshot(
+    objective.zone,
+    objective.mode,
+    explorationRevision,
+    signal
   );
 
-  for (const cellKey of activeCellIds) {
-    const modeCellKey = `${mode}:${cellKey}`;
+  return snapshot.stats;
+}
 
-    if (existingCellIds.has(modeCellKey)) {
-      continue;
-    }
+function CountrysideStatus({ language }: { language: AppLanguage }) {
+  const title = language === "fr" ? "HORS DE LA VILLE" : "OUT OF THE CITY";
+  const detail = language === "fr"
+    ? "Exploration de la campagne"
+    : "Exploring the countryside";
 
-    existingCellIds.add(modeCellKey);
-    mergedCells.push({ cellKey, mode, source: "gps" });
-  }
-
-  return mergedCells;
+  return (
+    <View
+      accessibilityLabel={`${title}. ${detail}`}
+      style={styles.cityMedalHud}
+    >
+      <AtlasHudTexture opacity={0.07} />
+      <View style={styles.cityMedalMain}>
+        <View style={styles.cityMedalIcon}>
+          <Ionicons color="#f4e08a" name="leaf-outline" size={18} />
+        </View>
+        <View style={styles.cityMedalContent}>
+          <Text numberOfLines={1} style={styles.cityMedalName}>{title}</Text>
+          <Text numberOfLines={1} style={styles.countrysideDetail}>{detail}</Text>
+        </View>
+      </View>
+    </View>
+  );
 }
 
 
@@ -7361,15 +7413,13 @@ function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLan
 }
 
 function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
-  if (stats?.permanentlyCompleted && stats.completionPercent === 100) {
-    return "100%";
-  }
+  const presentedPercent = getPresentedCompletionPercent(stats);
 
-  if (!stats || stats.completionPercent === null) {
+  if (presentedPercent === null) {
     return "pending";
   }
 
-  return `${stats.completionPercent}%`;
+  return `${presentedPercent}%`;
 }
 
 function showRecordingResultAlert({
@@ -7436,14 +7486,6 @@ function formatBackgroundStatus(status: BackgroundTrackingStatus) {
     default:
       return "idle";
   }
-}
-
-function getObjectiveRemainingCells(stats: ZoneCompletionStats | null) {
-  if (!stats || stats.totalZoneCells === null) {
-    return null;
-  }
-
-  return Math.max(0, stats.totalZoneCells - stats.exploredCells);
 }
 
 function formatLoopRejectionReason(reason: string | null) {
@@ -7979,6 +8021,11 @@ const styles = createAppearanceStyles({
     fontWeight: "900"
   },
   cityMedalCount: { color: "#f5c451", fontSize: 12, fontWeight: "900" },
+  countrysideDetail: {
+    color: "#f4e08a",
+    fontSize: 11,
+    fontWeight: "700"
+  },
   cityMedalTrack: {
     backgroundColor: "rgba(148, 163, 184, 0.22)",
     borderRadius: 999,
@@ -8303,8 +8350,8 @@ const styles = createAppearanceStyles({
   },
   stopConfirmQuit: {
     alignItems: "center",
-    backgroundColor: "#260d13",
-    borderColor: "#fca5a5",
+    backgroundColor: STOP_CONFIRM_BORDEAUX,
+    borderColor: "#f4b4c4",
     borderRadius: 14,
     borderWidth: 2,
     flex: 1,
@@ -8319,8 +8366,8 @@ const styles = createAppearanceStyles({
     justifyContent: "center"
   },
   stopConfirmQuitFill: {
-    backgroundColor: "#ef4444",
-    borderRightColor: "#fff7ed",
+    backgroundColor: STOP_CONFIRM_HOLD_ORANGE,
+    borderRightColor: "#ffedd5",
     bottom: 0,
     left: 0,
     position: "absolute",

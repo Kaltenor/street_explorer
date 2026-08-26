@@ -12,6 +12,7 @@
 - Saved paths and active paths on the map.
 - Route history with details, rename, delete, and highlight.
 - 15m x 15m deduplicated explored cells.
+- Countryside map state with exact-country land gating, ignored open-ocean holds, localized out-of-city status, and pale-yellow explored cells outside all exact cached city boundaries while city territory remains burnt orange.
 - Walking-focused GPS filtering.
 - Basic background tracking setup.
 - Development build background recording verified on iPhone.
@@ -35,7 +36,7 @@
 - Completion screen foundation.
 - Conservative closed-loop fill V1.
 - Forbidden Zones: an idle Field Log map-with-slash mode with exclusive map-long-press priority, shared oversized-enclosure classification, a configurable 2 km² safety ceiling, exact immutable 15 m cell snapshots, merged non-interactive purple rendering, optional editable 120-character comments with district-lifetime direct map labels, confirmed child-first removal with migration-35 orphan repair, denominator-only district/city overlap exclusion, explicit exclusion from every Explorer Score cell source, dedicated migration-32/34/35 persistence, and backward-compatible Backup V5 support.
-- OSM boundary fetching and zone completion V1 with durable achievements and live active-recording objective previews.
+- OSM boundary fetching and zone completion V1 with durable achievements and recording-safe persisted objective presentation.
 - Zone polish with exact/fallback labels and cached denominators.
 - Recording quality summary after stopping a recording.
 - Device step counting for walks.
@@ -62,7 +63,7 @@
 - Performance pass V3: per-polyline memoization with tail-only long-recording coordinate refresh, one-time lazy initial-region derivation, persistence-batched recording fixes, and snapshot-backed History point totals with exact repair fallback.
 - Zone Boundary Completion V2: full local and containing-city district retrieval, robust unordered/reversed multipolygon assembly, strict all-component interior parent validation that ignores stale cached associations, persistent city-wide district outlines, haptic long-press selection with direct same-city district switching and cross-city scope controls, objective-preserving panning, race-safe boundary and percentage scans, display-only invalid-boundary fallbacks, exact-cache downgrade protection, saved-objective recovery, geometry-fingerprinted denominator caching, automatic 30-day refresh with persisted status, permanent zone achievements, district/city rollups, and Backup V5 preservation.
 - Administrative hierarchy preservation: retain source OSM levels, use level 9 as the minimum and final playable District tier, keep level 10 internal only for source fidelity and backup compatibility, automatically reclassify legacy caches, and clear invalid old neighborhood objectives without deleting historical rows.
-- Objective completion snapshot cache: immediate memory/SQLite scope restoration, boundary-and-exploration validity keys, cached-value Updating feedback, and paired city/district background precomputation.
+- Objective completion snapshot cache: launch-time saved/containing city/district SQLite hydration, boundary-and-exploration validity keys, stale-while-revalidate presentation, permanent 100% semantics, selected-zone lazy maintenance, active-recording deferral, and single-flight duplicate suppression.
 - Street-Aware Path Inference V3: encoded identifiable topology refresh, metadata-safe crossings and sub-8m endpoint joins, bounded ambiguous-snap routing that excludes `foot=use_sidepath`, immutable evidence-rich bridge snapshots, inferred-cell attribution, concise History review, and selected-walk reprocessing.
 - OpenStreetMap Street Completion V2: frozen-route proportional metre coverage, nearest direction-compatible matching, repeated-bin deduplication, 90% OSM-way completion records, V1 evidence migration, durable SQLite state, Completion metrics, and active-walk-safe asynchronous rebuilding.
 - Saved-path focus polish: one-action Selected/layer activation and overlap-based Today visibility for midnight-crossing recordings.

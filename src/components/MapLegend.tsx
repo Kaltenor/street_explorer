@@ -28,6 +28,12 @@ export function MapLegend({ language, showExploredCells, showPaths }: MapLegendP
       {showExploredCells ? (
         <LegendItem color={WALKING_COLORS.exploredArea} label={strings.mapLegend.exploredCells} />
       ) : null}
+      {showExploredCells ? (
+        <LegendItem
+          color={WALKING_COLORS.countrysideArea}
+          label={strings.mapLegend.countrysideCells}
+        />
+      ) : null}
     </View>
   );
 }

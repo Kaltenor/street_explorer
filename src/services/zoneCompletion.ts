@@ -10,7 +10,14 @@ import {
   ExploredCellRecord,
   ExploredCellSource,
   getCachedZoneTotal,
+  getExploredCellRecords,
+  getExploredCellRecordsWithinBounds,
+  getExplorationRevision,
   getZoneAchievement,
+  getZoneCompletionSnapshot,
+  saveZoneCompletionSnapshot,
+  type ZoneAchievement,
+  type ZoneCompletionSnapshot,
   recordZoneAchievement,
   saveCachedZoneTotal
 } from "../database/completionRepository";
@@ -23,6 +30,11 @@ import {
 } from "./zoneBoundaryPolicy";
 import { ActivityMode, GpsPoint } from "../types/walk";
 import { getForbiddenCellKeysWithinBounds } from "../database/forbiddenZoneRepository";
+import {
+  getZoneCompletionRequestKey,
+  isZoneCompletionSnapshotValid,
+  runZoneCompletionSingleFlight
+} from "./zoneCompletionLifecycle";
 
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
@@ -81,6 +93,133 @@ export type ZoneFetchResult = {
   zones: CachedZone[];
 };
 
+export type HydratedZoneCompletion = {
+  authoritativeSnapshot: ZoneCompletionSnapshot | null;
+  cachedTotalZoneCells: number | null;
+  fallbackStats: ZoneCompletionStats | null;
+  zone: CachedZone;
+};
+
+function applyPermanentZoneAchievement(
+  stats: ZoneCompletionStats | null,
+  achievement: ZoneAchievement | null
+) {
+  if (!stats || !achievement) {
+    return stats;
+  }
+
+  return {
+    ...stats,
+    completedAt: achievement.completedAt,
+    permanentlyCompleted: true
+  };
+}
+
+function createPermanentAchievementFallback(
+  achievement: ZoneAchievement | null
+): ZoneCompletionStats | null {
+  if (!achievement) {
+    return null;
+  }
+
+  return {
+    completedAt: achievement.completedAt,
+    completionPercent: null,
+    completionStatus: "available",
+    directlyWalkedCells: 0,
+    exploredCells: achievement.exploredCells,
+    forbiddenCells: 0,
+    inferredCells: 0,
+    loopFilledCells: 0,
+    permanentlyCompleted: true,
+    totalZoneCells: achievement.totalZoneCells
+  };
+}
+
+export async function hydrateZoneCompletionSnapshots(
+  zones: CachedZone[],
+  mode: ActivityMode,
+  signal?: AbortSignal
+) {
+  throwIfCompletionCancelled(signal);
+  const explorationRevision = await getExplorationRevision(mode);
+  throwIfCompletionCancelled(signal);
+  const hydrated = await Promise.all(zones.map(async (zone) => {
+    const geometryFingerprint = getZoneGeometryFingerprint(zone);
+    const [snapshot, achievement, cachedTotalZoneCells] = await Promise.all([
+      getZoneCompletionSnapshot(zone.id, mode),
+      getZoneAchievement(zone.id),
+      getCachedZoneTotal(zone.id, geometryFingerprint)
+    ]);
+    throwIfCompletionCancelled(signal);
+    const stats = applyPermanentZoneAchievement(snapshot?.stats ?? null, achievement);
+    const authoritativeSnapshot = isZoneCompletionSnapshotValid({
+      explorationRevision,
+      geometryFingerprint,
+      mode,
+      snapshot,
+      zoneId: zone.id
+    }) && snapshot
+      ? { ...snapshot, stats: stats ?? snapshot.stats }
+      : null;
+    const geometryCompatibleFallback =
+      snapshot?.mode === mode &&
+      snapshot.zoneId === zone.id &&
+      snapshot.geometryFingerprint === geometryFingerprint
+        ? stats
+        : null;
+
+    return {
+      authoritativeSnapshot,
+      cachedTotalZoneCells,
+      fallbackStats: authoritativeSnapshot?.stats ??
+        geometryCompatibleFallback ??
+        createPermanentAchievementFallback(achievement),
+      zone
+    } satisfies HydratedZoneCompletion;
+  }));
+
+  return { explorationRevision, hydrated };
+}
+
+export async function calculateZoneCompletionSnapshot(
+  zone: CachedZone,
+  mode: ActivityMode,
+  explorationRevision: number,
+  signal?: AbortSignal
+) {
+  const geometryFingerprint = getZoneGeometryFingerprint(zone);
+  const key = getZoneCompletionRequestKey({
+    explorationRevision,
+    geometryFingerprint,
+    mode,
+    zoneId: zone.id
+  });
+
+  return runZoneCompletionSingleFlight(key, signal, async (sharedSignal) => {
+    const bounds = getZoneBounds(zone);
+    const cells = bounds
+      ? await getExploredCellRecordsWithinBounds(mode, bounds)
+      : await getExploredCellRecords(mode);
+    const stats = await calculateZoneCompletionStats(zone, cells, sharedSignal);
+    const snapshot: ZoneCompletionSnapshot = {
+      calculatedAt: new Date().toISOString(),
+      explorationRevision,
+      geometryFingerprint,
+      mode,
+      stats,
+      zoneId: zone.id
+    };
+    const currentRevision = await getExplorationRevision(mode);
+
+    if (currentRevision === explorationRevision) {
+      await saveZoneCompletionSnapshot(snapshot);
+    }
+
+    return snapshot;
+  });
+}
+
 export function calculateCompletionWithForbiddenCells(input: {
   exploredCells: number;
   forbiddenCells: number;
@@ -103,22 +242,25 @@ export function calculateCompletionWithForbiddenCells(input: {
 }
 
 export async function fetchNearbyOsmZones(
-  center: Pick<GpsPoint, "latitude" | "longitude">
+  center: Pick<GpsPoint, "latitude" | "longitude">,
+  signal?: AbortSignal
 ): Promise<CachedZone[]> {
-  const result = await fetchNearbyOsmZonesWithDebug(center);
+  const result = await fetchNearbyOsmZonesWithDebug(center, signal);
 
   return result.zones;
 }
 
 export async function fetchNearbyOsmZonesWithDebug(
-  center: Pick<GpsPoint, "latitude" | "longitude">
+  center: Pick<GpsPoint, "latitude" | "longitude">,
+  signal?: AbortSignal
 ): Promise<ZoneFetchResult> {
   const response = await fetch(OVERPASS_ENDPOINT, {
     body: buildBoundaryQuery(center.latitude, center.longitude),
     headers: {
       "Content-Type": "text/plain"
     },
-    method: "POST"
+    method: "POST",
+    signal
   });
 
   if (!response.ok) {

@@ -42,8 +42,10 @@ import { CachedZone } from "../database/completionRepository";
 import type { ForbiddenZone } from "../database/forbiddenZoneRepository";
 import {
   buildExplorationPolygonOutlineSegments,
-  buildMergedExplorationPolygons
+  buildMergedExplorationPolygons,
+  explorationCellKeyToCenterCoordinate
 } from "../services/explorationArea";
+import { partitionExplorationCellIdsByCity } from "../services/countrysideExploration";
 import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
@@ -109,6 +111,7 @@ type ExplorationMapProps = {
   onVisibleRegionChange?: (region: Region) => void;
   districtZones: CachedZone[];
   cityZone: CachedZone | null;
+  knownCityZones: CachedZone[];
   playerFocusRequestId: number;
   playerVisible: boolean;
   selectedZone: CachedZone | null;
@@ -193,6 +196,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   onVisibleRegionChange,
   districtZones,
   cityZone,
+  knownCityZones,
   playerFocusRequestId,
   playerVisible,
   selectedZone,
@@ -251,6 +255,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   );
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
+  const countrysideAreaStyle = getCountrysideExploredAreaStyle(visibleRegion.latitudeDelta);
 
   // Preserve every finalized street corner so rendered routes never cut through buildings.
   const pathSimplificationToleranceMeters = 0;
@@ -285,21 +290,47 @@ export const ExplorationMap = memo(function ExplorationMap({
       shouldBuildExploredArea
     ]
   );
+  const explorationCellPartition = useMemo(
+    () => partitionExplorationCellIdsByCity({
+      cellIds: renderedExplorationCellIds,
+      cityBoundaries: knownCityZones,
+      getCellCenter: explorationCellKeyToCenterCoordinate
+    }),
+    [knownCityZones, renderedExplorationCellIds]
+  );
   const explorationPolygons = useMemo(
     () =>
       shouldShowCompletedArea
         ? measurePerformance(
             "map.exploration-surface",
             () =>
-              buildMergedExplorationPolygons(renderedExplorationCellIds, {
+              buildMergedExplorationPolygons(explorationCellPartition.cityCellIds, {
                 maxFilledHoleAreaSquareMeters
               }),
             12
           )
         : [],
     [
+      explorationCellPartition.cityCellIds,
       maxFilledHoleAreaSquareMeters,
-      renderedExplorationCellIds,
+      shouldShowCompletedArea
+    ]
+  );
+  const countrysideExplorationPolygons = useMemo(
+    () =>
+      shouldShowCompletedArea
+        ? measurePerformance(
+            "map.countryside-exploration-surface",
+            () =>
+              buildMergedExplorationPolygons(explorationCellPartition.countrysideCellIds, {
+                maxFilledHoleAreaSquareMeters
+              }),
+            12
+          )
+        : [],
+    [
+      explorationCellPartition.countrysideCellIds,
+      maxFilledHoleAreaSquareMeters,
       shouldShowCompletedArea
     ]
   );
@@ -310,14 +341,29 @@ export const ExplorationMap = memo(function ExplorationMap({
         : [],
     [explorationPolygons, shouldShowOutline]
   );
+  const countrysideExplorationOutlineSegments = useMemo(
+    () =>
+      shouldShowOutline
+        ? buildExplorationPolygonOutlineSegments(countrysideExplorationPolygons)
+        : [],
+    [countrysideExplorationPolygons, shouldShowOutline]
+  );
   const settledTodayNewCellIds = useCoalescedValue(todayNewCellIds, 650);
+  const todayCellPartition = useMemo(
+    () => partitionExplorationCellIdsByCity({
+      cellIds: settledTodayNewCellIds,
+      cityBoundaries: knownCityZones,
+      getCellCenter: explorationCellKeyToCenterCoordinate
+    }),
+    [knownCityZones, settledTodayNewCellIds]
+  );
   const todayNewPolygons = useMemo(
     () =>
       explorationEnabled && shouldShowCompletedArea
         ? measurePerformance(
             "map.today-surface",
             () =>
-              buildMergedExplorationPolygons(settledTodayNewCellIds, {
+              buildMergedExplorationPolygons(todayCellPartition.cityCellIds, {
                 maxFilledHoleAreaSquareMeters
               }),
             8
@@ -327,7 +373,26 @@ export const ExplorationMap = memo(function ExplorationMap({
       explorationEnabled,
       maxFilledHoleAreaSquareMeters,
       shouldShowCompletedArea,
-      settledTodayNewCellIds
+      todayCellPartition.cityCellIds
+    ]
+  );
+  const countrysideTodayNewPolygons = useMemo(
+    () =>
+      explorationEnabled && shouldShowCompletedArea
+        ? measurePerformance(
+            "map.countryside-today-surface",
+            () =>
+              buildMergedExplorationPolygons(todayCellPartition.countrysideCellIds, {
+                maxFilledHoleAreaSquareMeters
+              }),
+            8
+          )
+        : [],
+    [
+      explorationEnabled,
+      maxFilledHoleAreaSquareMeters,
+      shouldShowCompletedArea,
+      todayCellPartition.countrysideCellIds
     ]
   );
 
@@ -604,6 +669,10 @@ export const ExplorationMap = memo(function ExplorationMap({
       >
         <ExplorationSurfaceOverlay
           areaStyle={areaStyle}
+          countrysideAreaStyle={countrysideAreaStyle}
+          countrysideExplorationPolygons={countrysideExplorationPolygons}
+          countrysideOutlineSegments={countrysideExplorationOutlineSegments}
+          countrysideTodayPolygons={countrysideTodayNewPolygons}
           explorationPolygons={explorationPolygons}
           isInkRevealing={isInkRevealing}
           outlineSegments={explorationOutlineSegments}
@@ -956,6 +1025,10 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
 
 type ExplorationSurfaceOverlayProps = {
   areaStyle: ReturnType<typeof getExploredAreaStyle>;
+  countrysideAreaStyle: ReturnType<typeof getCountrysideExploredAreaStyle>;
+  countrysideExplorationPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
+  countrysideOutlineSegments: ReturnType<typeof buildExplorationPolygonOutlineSegments>;
+  countrysideTodayPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
   explorationPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
   isInkRevealing: boolean;
   outlineSegments: ReturnType<typeof buildExplorationPolygonOutlineSegments>;
@@ -966,6 +1039,10 @@ type ExplorationSurfaceOverlayProps = {
 
 const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
   areaStyle,
+  countrysideAreaStyle,
+  countrysideExplorationPolygons,
+  countrysideOutlineSegments,
+  countrysideTodayPolygons,
   explorationPolygons,
   isInkRevealing,
   outlineSegments,
@@ -988,6 +1065,26 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
           ))
         : null}
       {shouldShowCompletedArea
+        ? countrysideExplorationPolygons.map((polygon) => (
+            <Polygon
+              key={`countryside-${polygon.id}`}
+              coordinates={polygon.coordinates}
+              holes={polygon.holes}
+              fillColor={
+                isInkRevealing
+                  ? countrysideAreaStyle.revealFillColor
+                  : countrysideAreaStyle.fillColor
+              }
+              strokeColor={
+                isInkRevealing
+                  ? countrysideAreaStyle.revealFillColor
+                  : countrysideAreaStyle.fillColor
+              }
+              strokeWidth={1}
+            />
+          ))
+        : null}
+      {shouldShowCompletedArea
         ? todayPolygons.map((polygon) => (
             <Polygon
               key={`today-${polygon.id}`}
@@ -995,6 +1092,18 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
               holes={polygon.holes}
               fillColor={areaStyle.todayFillColor}
               strokeColor={areaStyle.todayFillColor}
+              strokeWidth={1}
+            />
+          ))
+        : null}
+      {shouldShowCompletedArea
+        ? countrysideTodayPolygons.map((polygon) => (
+            <Polygon
+              key={`countryside-today-${polygon.id}`}
+              coordinates={polygon.coordinates}
+              holes={polygon.holes}
+              fillColor={countrysideAreaStyle.todayFillColor}
+              strokeColor={countrysideAreaStyle.todayFillColor}
               strokeWidth={1}
             />
           ))
@@ -1008,6 +1117,18 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
               lineJoin="round"
               strokeColor={areaStyle.outlineColor}
               strokeWidth={areaStyle.outlineWidth}
+            />
+          ))
+        : null}
+      {shouldShowOutline
+        ? countrysideOutlineSegments.map((segment) => (
+            <Polyline
+              coordinates={segment.coordinates}
+              key={`countryside-outline-${segment.id}`}
+              lineCap="round"
+              lineJoin="round"
+              strokeColor={countrysideAreaStyle.outlineColor}
+              strokeWidth={countrysideAreaStyle.outlineWidth}
             />
           ))
         : null}
@@ -1757,6 +1878,35 @@ const CLOSE_EXPLORED_AREA_STYLE = {
   todayFillColor: "rgba(245, 196, 81, 0.58)"
 };
 
+const FAR_COUNTRYSIDE_AREA_STYLE = {
+  fillColor: "rgba(244, 224, 138, 0.60)",
+  outlineColor: "rgba(127, 99, 37, 0.52)",
+  outlineWidth: 1,
+  revealFillColor: "rgba(255, 242, 181, 0.78)",
+  todayFillColor: "rgba(255, 231, 122, 0.68)"
+};
+const MEDIUM_FAR_COUNTRYSIDE_AREA_STYLE = {
+  fillColor: "rgba(244, 224, 138, 0.54)",
+  outlineColor: "rgba(127, 99, 37, 0.64)",
+  outlineWidth: 1.5,
+  revealFillColor: "rgba(255, 242, 181, 0.74)",
+  todayFillColor: "rgba(255, 231, 122, 0.64)"
+};
+const MEDIUM_CLOSE_COUNTRYSIDE_AREA_STYLE = {
+  fillColor: "rgba(244, 224, 138, 0.48)",
+  outlineColor: "rgba(106, 81, 27, 0.76)",
+  outlineWidth: 2.4,
+  revealFillColor: "rgba(255, 242, 181, 0.70)",
+  todayFillColor: "rgba(255, 231, 122, 0.60)"
+};
+const CLOSE_COUNTRYSIDE_AREA_STYLE = {
+  fillColor: "rgba(244, 224, 138, 0.42)",
+  outlineColor: "rgba(85, 64, 20, 0.88)",
+  outlineWidth: 3.5,
+  revealFillColor: "rgba(255, 242, 181, 0.66)",
+  todayFillColor: "rgba(255, 231, 122, 0.56)"
+};
+
 function getExploredAreaStyle(latitudeDelta: number) {
   if (latitudeDelta > 0.07) {
     return FAR_EXPLORED_AREA_STYLE;
@@ -1771,6 +1921,22 @@ function getExploredAreaStyle(latitudeDelta: number) {
   }
 
   return CLOSE_EXPLORED_AREA_STYLE;
+}
+
+function getCountrysideExploredAreaStyle(latitudeDelta: number) {
+  if (latitudeDelta > 0.07) {
+    return FAR_COUNTRYSIDE_AREA_STYLE;
+  }
+
+  if (latitudeDelta > 0.035) {
+    return MEDIUM_FAR_COUNTRYSIDE_AREA_STYLE;
+  }
+
+  if (latitudeDelta > 0.015) {
+    return MEDIUM_CLOSE_COUNTRYSIDE_AREA_STYLE;
+  }
+
+  return CLOSE_COUNTRYSIDE_AREA_STYLE;
 }
 
 function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {

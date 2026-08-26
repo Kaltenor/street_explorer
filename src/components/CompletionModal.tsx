@@ -26,8 +26,6 @@ import {
   CachedZone,
   CompletionScope,
   CompletionStats,
-  getExploredCellRecords,
-  getExploredCellRecordsWithinBounds,
   getCachedZones,
   getCompletionStats,
   getZoneAchievementRollup,
@@ -40,12 +38,17 @@ import {
 } from "../database/completionRepository";
 import {
   ZoneCompletionStats,
-  calculateZoneCompletionStats,
+  calculateZoneCompletionSnapshot,
   fetchNearbyOsmZonesWithDebug,
-  getZoneBounds,
+  hydrateZoneCompletionSnapshots,
   isBoundaryRefreshStale,
   isZoneCompletionEligible
 } from "../services/zoneCompletion";
+import {
+  getPresentedCompletionPercent,
+  getPresentedRemainingCells,
+  shouldRunExpensiveCompletionMaintenance
+} from "../services/zoneCompletionLifecycle";
 import { ActivityMode, GpsPoint } from "../types/walk";
 
 type CompletionMode = ActivityMode;
@@ -60,6 +63,7 @@ type CompletionModalProps = {
   currentObjectiveStats: ZoneCompletionStats | null;
   currentObjectiveTodayCells: number;
   currentLocation: GpsPoint | null;
+  isRecording: boolean;
   language: AppLanguage;
   onFocusZone: (zone: CachedZone) => void;
   onSetObjective: (objective: CompletionObjective) => void;
@@ -86,6 +90,7 @@ export function CompletionModal({
   currentObjectiveStats,
   currentObjectiveTodayCells,
   currentLocation,
+  isRecording,
   language,
   onClose,
   onFocusZone,
@@ -207,6 +212,27 @@ export function CompletionModal({
   }, [loadZones, visible]);
 
   useEffect(() => {
+    if (!selectedZone) {
+      setZoneStats(null);
+      return;
+    }
+
+    const currentObjectiveFallback =
+      currentObjective?.mode === mode &&
+      currentObjective.zone.id === selectedZone.id
+        ? currentObjectiveStats
+        : null;
+
+    setZoneStats(zoneStatsById[selectedZone.id] ?? currentObjectiveFallback);
+  }, [
+    currentObjective?.mode,
+    currentObjective?.zone.id,
+    currentObjectiveStats,
+    mode,
+    selectedZone?.id
+  ]);
+
+  useEffect(() => {
     if (!visible) {
       return;
     }
@@ -220,48 +246,107 @@ export function CompletionModal({
     const abortController = new AbortController();
     const interactionTask = InteractionManager.runAfterInteractions(() => {
       void (async () => {
-        const orderedZones = [
-          selectedZone,
-          ...zones.filter((zone) => zone.id !== selectedZone.id)
-        ];
-        const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
+        const currentObjectiveFallback =
+          currentObjective?.mode === mode &&
+          currentObjective.zone.id === selectedZone.id
+            ? currentObjectiveStats
+            : null;
+        const existingSelectedStats =
+          zoneStatsById[selectedZone.id] ?? currentObjectiveFallback;
 
-        for (const zone of orderedZones) {
-          if (abortController.signal.aborted) {
-            return;
-          }
-
-          const bounds = getZoneBounds(zone);
-          const cells = bounds
-            ? await getExploredCellRecordsWithinBounds(mode, bounds)
-            : await getExploredCellRecords(mode);
-          const statsForZone = await calculateZoneCompletionStats(
-            zone,
-            cells,
-            abortController.signal
-          );
-
-          nextZoneStatsById[zone.id] = statsForZone;
-
-          if (!abortController.signal.aborted) {
-            setZoneStatsById((current) => ({
-              ...current,
-              [zone.id]: statsForZone
-            }));
-
-            if (zone.id === selectedZone.id) {
-              setZoneStats(statsForZone);
-            }
-          }
+        if (existingSelectedStats) {
+          setZoneStats(existingSelectedStats);
         }
+
+        const hydration = await hydrateZoneCompletionSnapshots(
+          [selectedZone],
+          mode,
+          abortController.signal
+        );
+        const selectedHydration = hydration.hydrated[0];
+        const hydratedSelectedStats =
+          selectedHydration?.fallbackStats ?? existingSelectedStats;
 
         if (abortController.signal.aborted) {
           return;
         }
 
-        setZoneStats(nextZoneStatsById[selectedZone.id] ?? null);
-        setZoneStatsById(nextZoneStatsById);
-        setAchievementRollup(await getZoneAchievementRollup());
+        if (hydratedSelectedStats) {
+          setZoneStats(hydratedSelectedStats);
+          setZoneStatsById((current) => ({
+            ...current,
+            [selectedZone.id]: hydratedSelectedStats
+          }));
+        }
+
+        const pickerZones = zones.filter((zone) => zone.id !== selectedZone.id);
+        const hydratePickerSnapshots = () => {
+          if (pickerZones.length === 0) {
+            return;
+          }
+
+          void hydrateZoneCompletionSnapshots(
+            pickerZones,
+            mode,
+            abortController.signal
+          ).then((pickerHydration) => {
+            if (abortController.signal.aborted) {
+              return;
+            }
+
+            const pickerStats = Object.fromEntries(
+              pickerHydration.hydrated
+                .filter((entry) => entry.fallbackStats)
+                .map((entry) => [
+                  entry.zone.id,
+                  entry.fallbackStats as ZoneCompletionStats
+                ])
+            );
+            setZoneStatsById((current) => ({ ...current, ...pickerStats }));
+          }).catch((error) => {
+            if (!abortController.signal.aborted) {
+              console.warn("Failed to hydrate completion picker snapshots", error);
+            }
+          });
+        };
+
+        void getZoneAchievementRollup()
+          .then((rollup) => {
+            if (!abortController.signal.aborted) {
+              setAchievementRollup(rollup);
+            }
+          })
+          .catch((error) => {
+            if (!abortController.signal.aborted) {
+              console.warn("Failed to load completion achievement rollup", error);
+            }
+          });
+
+        if (
+          selectedHydration?.authoritativeSnapshot ||
+          !shouldRunExpensiveCompletionMaintenance(isRecording)
+        ) {
+          hydratePickerSnapshots();
+          return;
+        }
+
+        const snapshot = await calculateZoneCompletionSnapshot(
+          selectedZone,
+          mode,
+          hydration.explorationRevision,
+          abortController.signal
+        );
+
+        if (abortController.signal.aborted) {
+          return;
+        }
+
+        setZoneStats(snapshot.stats);
+        setZoneStatsById((current) => ({
+          ...current,
+          [selectedZone.id]: snapshot.stats
+        }));
+        hydratePickerSnapshots();
       })()
         .catch((error) => {
           if (!abortController.signal.aborted) {
@@ -274,7 +359,16 @@ export function CompletionModal({
       abortController.abort();
       interactionTask.cancel();
     };
-  }, [mode, selectedZone, visible, zones]);
+  }, [
+    currentObjective?.mode,
+    currentObjective?.zone.id,
+    currentObjectiveStats,
+    isRecording,
+    mode,
+    selectedZone,
+    visible,
+    zones
+  ]);
 
   const refreshBoundaries = useCallback(
     async (showResult: boolean) => {
@@ -380,6 +474,7 @@ export function CompletionModal({
 
           if (
             hasCurrentLocation &&
+            !isRecording &&
             !autoRefreshAttemptedRef.current &&
             isBoundaryRefreshStale(storedRefreshState.lastSucceededAt)
           ) {
@@ -391,7 +486,7 @@ export function CompletionModal({
     });
 
     return () => interactionTask.cancel();
-  }, [hasCurrentLocation, refreshBoundaries, visible]);
+  }, [hasCurrentLocation, isRecording, refreshBoundaries, visible]);
   const handleClearBoundaries = () => {
     Alert.alert(completionStrings.clearCachedZones, completionStrings.clearCachedZonesMessage, [
       {
@@ -730,19 +825,17 @@ function formatDistance(distanceMeters: number) {
 function formatCompletion(stats: ZoneCompletionStats | null, language: AppLanguage) {
   const strings = getStrings(language).completionMenu;
 
-  if (stats?.permanentlyCompleted && stats.completionPercent === 100) {
-    return strings.completed;
-  }
-
   if (stats?.completionStatus === "invalid_boundary") {
     return strings.unavailable;
   }
 
-  if (!stats || stats.completionPercent === null) {
+  const presentedPercent = getPresentedCompletionPercent(stats);
+
+  if (presentedPercent === null) {
     return getStrings(language).common.pending;
   }
 
-  return `${stats.completionPercent}%`;
+  return `${presentedPercent}%`;
 }
 
 function formatZoneCells(stats: ZoneCompletionStats | null, language: AppLanguage) {
@@ -770,14 +863,17 @@ function formatObjectiveCells(stats: ZoneCompletionStats | null, language: AppLa
     return strings.unavailable;
   }
 
+  if (stats.permanentlyCompleted) {
+    return `${stats.exploredCells} ${strings.explored}, 0 ${strings.left}`;
+  }
+
   if (stats.totalZoneCells === null) {
     return `${stats.exploredCells} ${strings.explored}`;
   }
 
-  return `${stats.exploredCells} ${strings.explored}, ${Math.max(
-    0,
-    stats.totalZoneCells - stats.exploredCells
-  )} ${strings.left}`;
+  const remainingCells = getPresentedRemainingCells(stats);
+
+  return `${stats.exploredCells} ${strings.explored}, ${remainingCells ?? 0} ${strings.left}`;
 }
 
 function formatNearbyIncompleteZoneText(

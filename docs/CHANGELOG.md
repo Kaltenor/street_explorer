@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.34.0
+
+- Added an explicit countryside selection state for map holds that fall inside an exact country boundary but outside every exact city and district boundary. It clears the city objective, replaces the city medal rail with localized “Out of the city / Exploring the countryside” status, and leaves open-ocean holds ignored.
+- Split explored and newly explored map surfaces against all exact cached city boundaries: city cells retain the burnt-orange palette, while countryside cells and their outlines use a pale-yellow cartographic palette, including city-boundary holes.
+- Added a matching countryside legend entry plus regression coverage for land/ocean selection policy and city/countryside cell partitioning.
+- Synchronized version 0.34.0 with iOS build 221 and Android version code 221.
+
+## v0.33.1
+
+- Changed the Stop Walk hold action to a clearly visible bordeaux base with a dark-orange HOLD progress overlay and a light leading edge for outdoor readability.
+- Preserved the shared 1.3-second automatic confirmation deadline, early-release reset, finger-drift tolerance, completion haptic, and VoiceOver confirmation action.
+- Prefetched valid saved-objective and cached containing city/district completion snapshots, permanent achievements, and geometry-bound denominators during launch so known progress is ready before map interaction.
+- Changed objective completion to stale-while-revalidate behavior: usable percentages stay visible until an atomically validated replacement is ready, while stale revisions and changed geometry remain non-authoritative.
+- Made permanent zone achievements authoritative for player-facing percentages, progress bars, and remaining-cell counts, preventing later raw denominator changes from displaying less than 100%.
+- Deferred full-zone completion scans during active recording and recording finalization, removed walk/loop state churn from completion dependencies, limited Completion to selected-zone calculation, and single-flighted equivalent zone/revision/fingerprint work.
+- Added focused regression coverage for launch snapshot validity, stale revisions, nearby city/district hydration, permanent completion presentation, active-walk deferral, denominator changes, and duplicate requests.
+- Synchronized version 0.33.1 with iOS build 220 and Android version code 220.
+
 ## v0.33.0
 
 - Expanded the bundled France catalogue to the 500 largest communes, including departments and collectivities overseas, with 20 medals minimum for ranks 1–100 and 10 for ranks 101–500; the frozen result contains 500 albums and 6,082 medals.

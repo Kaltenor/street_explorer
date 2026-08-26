@@ -158,6 +158,7 @@ export const STRINGS = {
       today: "Today"
     },
     mapLegend: {
+      countrysideCells: "Countryside exploration",
       exploredCells: "Explored cells",
       recording: "Recording",
       savedRoute: "Saved route"
@@ -377,6 +378,7 @@ export const STRINGS = {
       today: "Aujourd'hui"
     },
     mapLegend: {
+      countrysideCells: "Exploration de la campagne",
       exploredCells: "Cellules explorées",
       recording: "En cours",
       savedRoute: "Trace enregistrée"

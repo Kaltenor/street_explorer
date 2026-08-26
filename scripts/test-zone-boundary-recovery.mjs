@@ -12,7 +12,8 @@ import {
 import {
   buildMapZoneSelectionProbeCoordinates,
   MAP_ZONE_SELECTION_CONFIG,
-  shouldOfferMapZoneScopeChoice
+  shouldOfferMapZoneScopeChoice,
+  shouldSelectCountryside
 } from "../src/services/mapZoneSelection.ts";
 
 const query = buildBoundaryQuery(45.7555548, 4.8622856);
@@ -56,6 +57,30 @@ assert.equal(
 );
 assert.equal(
   shouldOfferMapZoneScopeChoice({ currentCityId: "lyon", hasHeldDistrict: false, heldCityId: "lyon" }),
+  false
+);
+assert.equal(
+  shouldSelectCountryside({
+    hasContainingCity: false,
+    hasContainingCountry: true,
+    hasContainingDistrict: false
+  }),
+  true
+);
+assert.equal(
+  shouldSelectCountryside({
+    hasContainingCity: false,
+    hasContainingCountry: false,
+    hasContainingDistrict: false
+  }),
+  false
+);
+assert.equal(
+  shouldSelectCountryside({
+    hasContainingCity: true,
+    hasContainingCountry: true,
+    hasContainingDistrict: false
+  }),
   false
 );
 
@@ -144,8 +169,10 @@ assert.match(mapSource, /applyMapObjective\(preferredZone\)/);
 assert.match(mapSource, /function MapZoneScopePicker/);
 assert.match(mapSource, /setLaunchObjectiveLocation\(\(launchPoint\) => launchPoint \?\? point\)/);
 assert.match(mapSource, /const selectLaunchObjective = async/);
-assert.match(mapSource, /permissionState !== "granted" \|\| !launchObjectiveLocation/);
-assert.match(mapSource, /boundaryContext\.currentDistrict \?\? boundaryContext\.currentCity/);
+assert.match(mapSource, /const canResolveNearbyZones =/);
+assert.match(mapSource, /const preferredZone = currentDistrict \?\? currentCity \?\? savedZone/);
+assert.match(mapSource, /buildCompletionHydrationZones\(savedZone, pair\)/);
+assert.match(mapSource, /setIsObjectiveCacheHydrated\(true\)/);
 assert.match(mapSource, /commitMapObjective\(preferredZone, \{ showSelectionStamp: false \}\)/);
 assert.match(mapSource, /await objectiveSaveChainRef\.current/);
 assert.match(mapSource, /isLaunchObjectiveResolved/);
@@ -213,8 +240,9 @@ assert.ok(
   "zone completion can query the indexed explored-cell subset inside one boundary"
 );
 assert.ok(
-  completionSource.includes("getExploredCellRecordsWithinBounds(mode, bounds)") &&
-    mapSource.includes("getExploredCellRecordsWithinBounds(objective.mode, bounds)"),
+  zoneCompletionSource.includes("getExploredCellRecordsWithinBounds(mode, bounds)") &&
+    completionSource.includes("calculateZoneCompletionSnapshot(") &&
+    mapSource.includes("calculateZoneCompletionSnapshot("),
   "the completion catalogue and active objective avoid full-ledger scans for bounded zones"
 );
 

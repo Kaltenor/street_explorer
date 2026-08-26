@@ -1144,10 +1144,10 @@ assert(
   !forbiddenMigrationSource.includes("DELETE FROM zone_completion_snapshots") &&
     refreshSavedDataSource.indexOf("setIsSavedDataReady(true)") <
       refreshSavedDataSource.indexOf("setForbiddenZones(await getForbiddenZones())") &&
-    mapScreenSource.includes("if (!isLaunchDismissed)") &&
-    mapScreenSource.includes("Keep that work off") &&
-    mapScreenSource.includes("the launch overlay"),
-  "Forbidden Zone hydration and completion rebuilding stay outside the launch gate"
+    mapScreenSource.includes("isObjectiveCacheHydrated") &&
+    mapScreenSource.includes("hydrateObjectiveZonesIntoCache") &&
+    mapScreenSource.includes("shouldRunExpensiveCompletionMaintenance"),
+  "Forbidden Zone hydration stays outside launch while cached completion hydration participates in readiness"
 );
 const handleLocationPointStart = mapScreenSource.indexOf(
   "const handleLocationPoint"
@@ -1603,10 +1603,13 @@ assert(
     ) &&
     mapScreenSource.includes("objectiveStatsCacheRef") &&
     mapScreenSource.includes("objectiveScopePairRef") &&
-    mapScreenSource.includes("const durableSnapshots = await Promise.all") &&
-    mapScreenSource.includes("const calculationResults = await Promise.all") &&
+    mapScreenSource.includes("buildCompletionHydrationZones") &&
+    mapScreenSource.includes("hydrateObjectiveZonesIntoCache") &&
+    zoneCompletionSource.includes("hydrateZoneCompletionSnapshots") &&
+    zoneCompletionSource.includes("getCachedZoneTotal") &&
+    zoneCompletionSource.includes("isZoneCompletionSnapshotValid") &&
     mapScreenSource.includes("isCalculating && !stats"),
-  "objective scope switching restores valid memory/SQLite snapshots and precomputes paired city/district stats"
+  "objective scope switching restores valid memory/SQLite snapshots and hydrates paired city/district stats"
 );
 assert(
   databaseSource.includes('applyMigration(24, "add_street_completion_v2"') &&
@@ -1670,26 +1673,22 @@ assert(
   "completion zone scans yield to navigation and cancel when the menu closes"
 );
 assert(
-  mapScreenSource.includes("activeObjectiveCellIds") &&
-    mapScreenSource.includes("collectFillableEnclosedExplorationCellIds(") &&
+  mapScreenSource.includes("collectFillableEnclosedExplorationCellIds(") &&
     mapScreenSource.includes("activeClosureFillCellKey") &&
-    mapScreenSource.includes("objectiveClosureRevision") &&
     mapScreenSource.includes("newlyEnclosedCellIds") &&
     mapScreenSource.includes(
       "`${activeWalk.sessionId}:${activeWalk.activityMode}`"
     ) &&
     mapScreenSource.includes('sound: "reward"') &&
-    mapScreenSource.includes(
-      "[isLaunchDismissed, loopFillCellIds, objective, objectiveClosureRevision, walks]"
-    ) &&
-    !mapScreenSource.includes("activeObjectiveCellKey") &&
-    mapScreenSource.includes("mergeActiveExplorationCells(") &&
-    mapScreenSource.includes("{ persistAchievement: !usesLivePreview }") &&
+    !mapScreenSource.includes("activeObjectiveCellIds") &&
+    !mapScreenSource.includes("mergeActiveExplorationCells(") &&
+    mapScreenSource.includes("isRecording || isComputingRecording") &&
+    mapScreenSource.includes("calculateZoneCompletionSnapshot(") &&
     /objectiveStatsRequestRef\.current \+= 1;\r?\n\s+setObjectiveStats\(objectiveAfter\)/.test(
       mapScreenSource
     ) &&
     zoneCompletionSource.includes("options.persistAchievement !== false"),
-  "district objective progress refreshes on new live closures and Stop without recalculating for open-line cells"
+  "district objective refreshes authoritatively after Stop without full-zone live-walk recalculation"
 );
 assert(
   routeSnapshotSource.includes("getRouteSnapshot(sessionId)") &&

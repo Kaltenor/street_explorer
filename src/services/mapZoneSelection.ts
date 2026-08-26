@@ -21,6 +21,18 @@ type MapSelectionViewport = MapSelectionCoordinate & {
   longitudeDelta: number;
 };
 
+export function shouldSelectCountryside(input: {
+  hasContainingCity: boolean;
+  hasContainingCountry: boolean;
+  hasContainingDistrict: boolean;
+}) {
+  return (
+    input.hasContainingCountry &&
+    !input.hasContainingCity &&
+    !input.hasContainingDistrict
+  );
+}
+
 export function buildMapZoneSelectionProbeCoordinates(input: {
   coordinate: MapSelectionCoordinate;
   viewport: MapSelectionViewport | null;

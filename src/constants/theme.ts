@@ -21,6 +21,7 @@ type WalkingColorPalette = {
   activeRoute: string;
   cityBoundary: string;
   cityBoundaryMuted: string;
+  countrysideArea: string;
   dimmedRoute: string;
   districtBoundary: string;
   districtBoundaryMuted: string;
@@ -97,6 +98,7 @@ const EXPLORATOR_WALKING_COLORS: WalkingColorPalette = {
   inferredRoute: "rgba(103, 232, 223, 0.78)",
   dimmedRoute: "rgba(86, 111, 115, 0.34)",
   exploredArea: "rgba(229, 122, 50, 0.46)",
+  countrysideArea: "rgba(244, 224, 138, 0.54)",
   todayArea: "rgba(245, 196, 81, 0.46)"
 };
 
@@ -119,6 +121,7 @@ const DAYLIGHT_WALKING_COLORS: WalkingColorPalette = {
   inferredRoute: "rgba(0, 105, 110, 0.86)",
   dimmedRoute: "rgba(55, 70, 75, 0.42)",
   exploredArea: "rgba(207, 79, 18, 0.48)",
+  countrysideArea: "rgba(205, 172, 63, 0.52)",
   todayArea: "rgba(168, 101, 0, 0.48)"
 };
 

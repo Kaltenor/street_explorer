@@ -1,8 +1,37 @@
 # Testing
 
-## France Top-500 Medal Catalogue V0.33.0 Manual Test
+## Countryside Selection and Surface Color V0.34.0 Manual Test
 
-Prerequisites: install development build 219 or newer on a physical iPhone with foreground location allowed and Markers enabled. Cache boundaries for Paris, Fréjus (rank 100), Neuilly-sur-Seine (rank 101), Chevilly-Larue (rank 500), Mamoudzou, Nouméa, Papeete, Saint-Martin, Thonon-les-Bains, and one commune outside the top 500. Keep an existing collected French medal for upgrade/persistence coverage; network is required only for uncached map tiles and boundaries because all 500 albums are bundled.
+Prerequisites: install development build 221 or newer on a physical iPhone with foreground location allowed. Keep networking available for the first selection, enable explored cells, and prepare mapped walking cells inside a city, on rural land outside every city boundary, and—only with safe simulated/test data—over open ocean. Cache the city and containing country boundaries before repeating the offline checks.
+
+1. Long-press mapped rural land outside every city and district. Expected: the selection stamp says “Out of the city / Exploring the countryside” (localized in French), the city objective is cleared, the medal/objective rail is replaced by the persistent countryside status, and no country-wide completion percentage starts calculating.
+2. Inspect all visible explored surfaces. Expected: explored cells inside exact cached city boundaries remain translucent burnt orange; every explored cell outside those boundaries, including a true city-boundary hole, is pale yellow with an ochre outline. Today's rural cells use the brighter countryside-yellow treatment rather than the city gold/orange treatment.
+3. Long-press open ocean well away from a coastline. Expected: no countryside selection, stamp, objective clear, or new overlay appears; the previously displayed state remains unchanged.
+4. Select a city or district again. Expected: the normal city medal rail and objective HUD return, the chosen city/district persists normally, and countryside explored surfaces remain pale yellow instead of being recolored by the current objective.
+5. Disable networking and repeat rural and city selections within cached exact country/city geometry. Expected: both classifications still work from SQLite. Try uncached land while offline; expected: no false countryside claim is made without an exact containing-country result.
+6. Force-close and reopen after selecting a city/district. Expected: the saved city objective restores normally. Select countryside again and reopen; expected: no stale city objective or city name is restored, while map-surface colors remain derived from cached exact boundaries.
+
+Automated coverage in `npm run test:geometry` verifies city/countryside partitioning, boundary holes, and the no-known-city fallback. `npm run test:zones` verifies that countryside requires a containing exact country and that open-ocean/no-country and city-contained holds do not enter countryside state. Physical-device testing remains required for live Overpass land/ocean responses, MapKit polygon colors, the native map remount, localization fit, and perceived long-press behavior.
+
+## Objective Launch Cache and Recording Responsiveness V0.33.1 Manual Test
+
+Prerequisites: install development build 220 or newer on a physical iPhone with foreground location allowed. Cache the containing city and district boundaries. Prepare one district objective with a permanent 100% achievement, plus a non-completed district near 50%. Keep networking optional: the launch assertions must pass from SQLite state alone.
+
+1. Select the completed district and confirm the objective HUD shows 100% with 0 cells remaining. Fully close the app. Expected: the achievement and valid completion snapshot remain persisted.
+2. Relaunch and wait for the launch screen to report readiness, then enter the map. Expected: the objective immediately shows 100%, never `Calculating…`, and its progress bar is full.
+3. Immediately start a Walk and leave it active for at least 30 seconds. Expected: the timer and GPS status continue updating, map panning remains normal, the objective stays at 100% with 0 remaining, and no 98.x regression or long freeze occurs even with 0 m travelled initially.
+4. Stop and save the walk. Expected: recording finalization remains responsive, then one authoritative objective refresh runs against finalized exploration data without blanking the HUD.
+5. Fully close and relaunch again. Expected: the refreshed cached value is restored immediately before map interaction.
+6. Select the approximately 50% district, fully close, relaunch, and enter the map. Expected: the last usable percentage appears immediately; a quiet refresh may replace it only after a valid newer result is ready, never through an intermediate blank or `Calculating…` state.
+7. Start another Walk immediately on the non-completed district, wait at least 30 seconds, pan the map, and watch the timer/GPS status. Expected: the cached percentage remains stable and the recording UI stays responsive; no full district/city scan runs because GPS points, walk state, or loop state changed.
+8. Stop the walk and switch between the cached containing district and city in Completion. Expected: the selected zone is ready from its snapshot when valid; a missing selected zone calculates lazily, while opening the picker does not scan every district.
+9. Create or remove a Forbidden Zone while idle. Expected: the action returns without a synchronous administrative-zone scan; the current objective refreshes asynchronously. A permanently completed objective remains 100% and 0 remaining throughout.
+
+Automated coverage in `npm run test:completion` verifies permanent 100%/zero-remaining presentation, matching and stale snapshot revisions, active-recording deferral, mode/zone/revision/fingerprint single-flight behavior, saved plus containing city/district hydration, denominator-change presentation, and source wiring that excludes broad active-walk/all-zone scans. The geometry, zone, UI, documentation, typecheck, and iOS export commands remain part of release validation. Physical-device testing is still required for real MapKit responsiveness, GPS/timer cadence, and perceived launch/finalization performance.
+
+## France Top-500 Medal Catalogue V0.33.1 Manual Test
+
+Prerequisites: install development build 220 or newer on a physical iPhone with foreground location allowed and Markers enabled. Cache boundaries for Paris, Fréjus (rank 100), Neuilly-sur-Seine (rank 101), Chevilly-Larue (rank 500), Mamoudzou, Nouméa, Papeete, Saint-Martin, Thonon-les-Bains, and one commune outside the top 500. Keep an existing collected French medal for upgrade/persistence coverage; network is required only for uncached map tiles and boundaries because all 500 albums are bundled.
 
 1. Upgrade without deleting app data, open the previously used French city, and inspect its collection. Expected: the existing album and collected medals remain intact, its expanded definition version loads once, and no duplicate collected item or album appears.
 2. Select Paris, Fréjus, Neuilly-sur-Seine, and Chevilly-Larue in turn. Expected: each selection shows only its own markers and progress; ranks 1 and 100 expose at least 20 medals, while ranks 101 and 500 expose at least 10.
@@ -28,17 +57,17 @@ Prerequisites: install development build 218 or newer on a physical device, sele
 
 Automated coverage validates the exact roster, five-way two-per-category balance, finite OSM anchors, unique identities, commune and parent-zone lookup, official rank 211 metadata, generator permanence, and the 500-album/6,082-medal bundled totals. Physical-device validation remains required for MapKit marker placement, real boundary containment, GPS collection, persistence, and offline presentation.
 
-## Reliable Stop Hold V0.31.1 Manual Test
+## Reliable Stop Hold V0.33.1 Manual Test
 
-Prerequisites: install development build 217 or newer on a physical device, enable haptics in Options, start a valid recording, and test once outdoors in bright sunlight. Repeat with English and French; VoiceOver should be tested where available.
+Prerequisites: install development build 220 or newer on a physical device, enable haptics in Options, start a valid recording, and test once outdoors in bright sunlight. Repeat with English and French; VoiceOver should be tested where available.
 
-1. Tap Stop, press Hold Quit for less than 1.3 seconds, and release. Expected: the bright-red fill follows the finger hold, its light leading edge remains visible against the near-black burgundy base, releasing early resets the fill, and the recording continues.
+1. Tap Stop, press Hold Quit for less than 1.3 seconds, and release. Expected: the dark-orange fill follows the finger hold, its light leading edge remains visible against the bordeaux base, releasing early resets the fill, and the recording continues.
 2. Press and keep holding Hold Quit. Expected: the fill reaches the end and the recording begins finishing automatically without requiring release or a separate native long-press event; one completion haptic occurs and the action never remains visibly full in the dialog.
 3. Repeat while moving the held finger slightly within and just around the button. Expected: normal walking finger drift does not cancel the hold; deliberately moving well away or releasing early cancels safely.
 4. Repeat several times under simulated JavaScript load, releasing immediately when the fill reaches the far edge. Expected: every completed hold registers once, no double finalization occurs, and a delayed timer is recovered by the elapsed-time check on release.
 5. With VoiceOver, invoke the Finish recording accessibility action. Expected: recording finishes once without requiring a physical hold. Disable haptics and repeat a completed hold; expected: completion remains reliable and no haptic is played.
 
-Automated coverage verifies the dedicated completion deadline, elapsed-time release fallback, single-confirm guard, expanded press-retention area, completion haptic wiring, removal of the separate native long-press dependency, and the high-contrast fill colors. Physical-device validation remains required for native touch cancellation behavior, outdoor contrast, haptic perception, and timing under real device load.
+Automated coverage verifies the dedicated completion deadline, elapsed-time release fallback, single-confirm guard, expanded press-retention area, completion haptic wiring, removal of the separate native long-press dependency, and the exact bordeaux/dark-orange high-contrast colors. Physical-device validation remains required for native touch cancellation behavior, outdoor contrast, haptic perception, and timing under real device load.
 
 ## Marseille 38-Medal Catalogue V0.31.0 Manual Test
 
@@ -58,7 +87,7 @@ Automated coverage validates the frozen definition version, exact count, preserv
 Prerequisites: install development build 215 or newer on a physical iPhone, cache Marseille and its official arrondissement boundaries, and use a profile with a large exploration history (the reported profile had about 155,000 explored cells). Keep Marseille's bundled album available; network access is needed only for uncached map or boundary data. Do not start a recording.
 
 1. Open Completion, choose Marseille 7e Arrondissement, and set it as the objective. Expected: Completion closes promptly, the district-selection stamp dismisses after its normal brief animation, and the map remains responsive while completion finishes calculating.
-2. Observe the objective HUD. Expected: `Calculating…`/`Updating district…` resolves to saved or newly calculated Marseille 7e statistics; switching immediately to another Marseille arrondissement cancels obsolete work and publishes only the latest selection.
+2. Observe the objective HUD. Expected: a valid or usable saved Marseille 7e percentage remains visible while any refresh runs; `Calculating…` appears only when no usable snapshot or permanent achievement exists. Switching immediately to another Marseille arrondissement cancels obsolete work and publishes only the latest selection.
 3. Observe the medal rail and open Medals. Expected: the bundled Marseille album loads once, shows Marseille's 38 medals and saved progress, and never reports `Album unavailable` because the district expedition dashboard requested the same album concurrently.
 4. Switch Marseille district → Paris district → Marseille district several times. Expected: each stamp dismisses, map gestures remain responsive, the correct parent-city album and markers replace the previous city, and no stale completion result is shown.
 5. Force-close and reopen with Marseille 7e still selected. Expected: the objective, cached completion snapshot, Marseille album, and medal markers restore without a catalogue rewrite or a long full-history pause.
@@ -808,7 +837,7 @@ Prerequisites: run the 0.16.12 JavaScript bundle in a compatible iOS development
 4. Open Details, History, Completion, Medals, and Options in turn; observe the navigation surface during each opening/closing transition or a partially completed edge swipe. Expected: only the selected destination expands to reveal its localized label, inactive destinations remain icon-only, every target is at least 44 points, and no English or French label clips the pill.
 5. Inspect the five Atlas screens in English and French. Expected: Cinzel is restricted to display titles and section headings, accents render correctly, system typography remains on metrics/body copy, ordinary cards use quiet neutral edges, and gold remains concentrated on selection, progress, emblems, rewards, and primary actions.
 6. Select a district, then use Completion to select its containing city. Expected: unselected districts use quiet 1.5-point copper strokes, the selected district strengthens to 3 points with the parchment selection wash, the city perimeter uses muted wine at 3 points, and selecting City strengthens it to 4 points without resembling an error or obscuring gold routes.
-7. Start a valid recording, tap Stop, choose Continue, then return and hold Quit to finish. Expected: Stop confirmation uses textured navy paper, a Cinzel heading, gold ornamental divider, and red only for Hold Quit; Continue remains visually secondary. The resulting recording summary uses the matching Atlas treatment while keeping quality, four metrics, naming, Skip, and Save readable and operable.
+7. Start a valid recording, tap Stop, choose Continue, then return and hold Quit to finish. Expected: Stop confirmation uses textured navy paper, a Cinzel heading, gold ornamental divider, and the bordeaux/dark-orange treatment only for Hold Quit; Continue remains visually secondary. The resulting recording summary uses the matching Atlas treatment while keeping quality, four metrics, naming, Skip, and Save readable and operable.
 8. Enable larger text and VoiceOver, then repeat the map header, selected-tab, Stop, and summary checks on the smallest available supported iPhone. Expected: labels remain readable, controls remain reachable and announced correctly, and the map retains useful unobstructed space without clipped dialog content.
 9. Enable Reduce Motion and relaunch. Expected: the first map touch publishes the compact wordmark directly without the 220ms transition; Atlas screens and dialogs retain their final visual hierarchy and all navigation remains functional.
 
@@ -823,7 +852,7 @@ Automated checks cover font/asset wiring, collapse signaling, selected-tab expan
 5. Open Details and confirm everyday statistics and goals appear in consistent dark cards without map legends or GPS diagnostics. Open History, choose a recording, and confirm the route-quality summary is immediately visible while bridge, loop, and diagnostic evidence remains hidden until Technical details is expanded.
 6. Confirm Completion keeps the compact zone measures, adds the Street Completion V2 card, and still omits fetched-source metadata and the old V1 rules explanation from the default flow.
 7. With no active walk, confirm only today's steps and Start Walk are shown. During a walk, confirm distance, duration, steps, Stop, and the existing double-tap health details remain accessible.
-8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces. Expected: Stop and summary use textured Atlas cards, Cinzel display headings, and ornamental dividers; recovery and diagnostics remain specialized, contrast stays readable, and only the destructive action is red.
+8. Open recovery, diagnostics, stop confirmation, and recording summary surfaces. Expected: Stop and summary use textured Atlas cards, Cinzel display headings, and ornamental dividers; recovery and diagnostics remain specialized, contrast stays readable, and only the destructive action uses bordeaux with dark-orange hold progress.
 
 ## UI Polish and Map Semantics Regression Test
 
