@@ -53,6 +53,7 @@ import {
 } from "../components/DistrictExpeditionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import { ExplorerScorePanel } from "../components/ExplorerScorePanel";
+import { ForbiddenZoneCommentModal } from "../components/ForbiddenZoneCommentModal";
 import {
   MedalCelebration,
   MedalFlightTarget
@@ -146,7 +147,8 @@ import {
 import { playSelectionHaptic } from "../services/feedbackPreferences";
 import {
   collectExploredCellIdsByRouteSegments,
-  collectFillableEnclosedExplorationCellIds
+  collectFillableEnclosedExplorationCellIds,
+  coordinateToExplorationCellKey
 } from "../services/explorationArea";
 import {
   calculateExplorerScore,
@@ -185,7 +187,10 @@ import {
 import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
 import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
 import { isLoopExpeditionKind } from "../services/expeditionDefinitions";
-import { shouldOfferMapZoneScopeChoice } from "../services/mapZoneSelection";
+import {
+  buildMapZoneSelectionProbeCoordinates,
+  shouldOfferMapZoneScopeChoice
+} from "../services/mapZoneSelection";
 import { buildPathSegments } from "../services/pathInference";
 import {
   measureAsyncPerformance,
@@ -264,6 +269,18 @@ import type {
   DistrictExpeditionDashboard
 } from "../types/expedition";
 import { MODE_LOCATION_CONFIG } from "../constants/config";
+import {
+  createForbiddenZone,
+  deleteForbiddenZone,
+  getForbiddenZonePersistenceFailureReason,
+  getForbiddenZones,
+  updateForbiddenZoneComment,
+  type ForbiddenZone
+} from "../database/forbiddenZoneRepository";
+import {
+  analyzeForbiddenZoneSelection,
+  formatForbiddenZoneArea
+} from "../services/forbiddenZones";
 
 const PLAYER_LOCATION_PERSIST_INTERVAL_MS = 5_000;
 const EMPTY_STATS: LifetimeStats = {
@@ -586,6 +603,18 @@ export function MapScreen({
   const [stopConfirmationVisible, setStopConfirmationVisible] = useState(false);
   const [recordingSummary, setRecordingSummary] = useState<RecordingSummary | null>(null);
   const [loopFillCellIds, setLoopFillCellIds] = useState<string[]>([]);
+  const [forbiddenZones, setForbiddenZones] = useState<ForbiddenZone[]>([]);
+  const [visibleForbiddenZoneLabel, setVisibleForbiddenZoneLabel] = useState<{
+    coordinate: { latitude: number; longitude: number };
+    districtId: string;
+    zoneId: number;
+  } | null>(null);
+  const [forbiddenZoneCommentEditor, setForbiddenZoneCommentEditor] = useState<{
+    isCreation: boolean;
+    zoneId: number;
+  } | null>(null);
+  const [isForbiddenZoneModeActive, setIsForbiddenZoneModeActive] = useState(false);
+  const [isForbiddenZoneProcessing, setIsForbiddenZoneProcessing] = useState(false);
   const [loopFillSummaries, setLoopFillSummaries] = useState<Record<number, LoopFillSessionSummary>>({});
   const [objective, setObjective] = useState<CompletionObjective | null>(null);
   const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
@@ -604,6 +633,35 @@ export function MapScreen({
   const [isMapZoneSelectionLoading, setIsMapZoneSelectionLoading] = useState(false);
   const [pathDisplayMode, setPathDisplayMode] = useState<PathDisplayMode>("today");
   const [selectedZone, setSelectedZone] = useState<CachedZone | null>(null);
+  const activeDistrictObjectiveId = objective?.zone.type === "district"
+    ? objective.zone.id
+    : null;
+  const visibleForbiddenZoneLabelData = useMemo(() => {
+    if (
+      !visibleForbiddenZoneLabel ||
+      visibleForbiddenZoneLabel.districtId !== activeDistrictObjectiveId
+    ) {
+      return null;
+    }
+
+    const zone = forbiddenZones.find(
+      (candidate) => candidate.id === visibleForbiddenZoneLabel.zoneId
+    );
+
+    return zone
+      ? { coordinate: visibleForbiddenZoneLabel.coordinate, zone }
+      : null;
+  }, [activeDistrictObjectiveId, forbiddenZones, visibleForbiddenZoneLabel]);
+  const forbiddenZoneCommentEditorZone = forbiddenZoneCommentEditor
+    ? forbiddenZones.find((zone) => zone.id === forbiddenZoneCommentEditor.zoneId) ?? null
+    : null;
+
+  useEffect(() => {
+    setVisibleForbiddenZoneLabel((current) =>
+      current?.districtId === activeDistrictObjectiveId ? current : null
+    );
+  }, [activeDistrictObjectiveId]);
+
   const activeMedalAlbumId = useMemo(
     () => getMedalAlbumIdForZone(objective?.zone),
     [objective?.zone.id, objective?.zone.parentZoneId]
@@ -651,6 +709,9 @@ export function MapScreen({
   const [recoveryCheckRevision, setRecoveryCheckRevision] = useState(0);
   const [streetRetryRevision, setStreetRetryRevision] = useState(0);
   const [isAppActive, setIsAppActive] = useState(AppState.currentState === "active");
+  const isLaunchDismissedRef = useRef(isLaunchDismissed);
+  isLaunchDismissedRef.current = isLaunchDismissed;
+  const mapViewportRegionRef = useRef<Region | null>(null);
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
@@ -729,6 +790,7 @@ export function MapScreen({
   const mapBoundarySwapGenerationRef = useRef(0);
   const launchObjectiveSelectionStartedRef = useRef(false);
   const mapZoneSelectionRequestRef = useRef(0);
+  const forbiddenZoneRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
   const legacyObjectiveRefreshIdsRef = useRef(new Set<string>());
@@ -1008,6 +1070,10 @@ export function MapScreen({
     savedExplorationCellIds
   ]);
   const activeClosureFillCellKey = activeClosureFillCellIds.join("|");
+  const forbiddenZoneCellIds = useMemo(
+    () => [...new Set(forbiddenZones.flatMap((zone) => zone.cellIds))],
+    [forbiddenZones]
+  );
   const explorerScore = useMemo(
     () => measurePerformance(
       "map.explorer-score",
@@ -1020,6 +1086,7 @@ export function MapScreen({
           ...(activeWalk?.exploredCellIds ?? [])
         ],
         expeditionSealCount,
+        forbiddenCellIds: forbiddenZoneCellIds,
         loopFillCellIds,
         maxEnclosedAreaSquareMeters:
           LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[
@@ -1034,6 +1101,7 @@ export function MapScreen({
       activeWalk?.exploredCellIds,
       activityMode,
       expeditionSealCount,
+      forbiddenZoneCellIds,
       loopFillCellIds,
       savedExplorationCellIds
     ]
@@ -1102,6 +1170,7 @@ export function MapScreen({
   }, []);
 
   const handleVisibleRegionChange = useCallback((region: Region) => {
+    mapViewportRegionRef.current = region;
     setMapViewportCenter({
       accuracy: null,
       latitude: region.latitude,
@@ -1383,6 +1452,16 @@ export function MapScreen({
       );
       setIsSavedDataReady(true);
 
+      // Once launch is complete, refreshes also hydrate independent world state.
+      // The initial refresh skips this query so it cannot hold the launch gate.
+      if (isLaunchDismissedRef.current) {
+        try {
+          setForbiddenZones(await getForbiddenZones());
+        } catch (error) {
+          console.warn("Failed to load Forbidden Zones", error);
+        }
+      }
+
       if (detailedWalksModeRef.current === activityMode) {
         loadDetailedWalks().catch((error) =>
           console.warn("Failed to refresh detailed recordings", error)
@@ -1497,6 +1576,16 @@ export function MapScreen({
       console.warn("Failed to refresh saved map data", error)
     );
   }, [refreshSavedData]);
+
+  useEffect(() => {
+    if (!isLaunchDismissed || !isSavedDataReady) {
+      return;
+    }
+
+    getForbiddenZones()
+      .then(setForbiddenZones)
+      .catch((error) => console.warn("Failed to load Forbidden Zones", error));
+  }, [isLaunchDismissed, isSavedDataReady]);
 
   useEffect(() => {
     if (!layers.showPaths) {
@@ -1934,8 +2023,27 @@ export function MapScreen({
         getCachedZones("city"),
         getCachedZones("district")
       ]);
-      let city = findContainingZone(coordinate, cities);
-      let district = findContainingZone(coordinate, districts);
+      const resolveHeldZones = () => {
+        const eligibleCities = cities.filter(isZoneCompletionEligible);
+        const city = findContainingZoneForMapHold(
+          coordinate,
+          eligibleCities,
+          mapViewportRegionRef.current
+        );
+        const eligibleDistricts = districts.filter(
+          (candidate) =>
+            isZoneCompletionEligible(candidate) &&
+            (!city || doesDistrictBelongToCity(candidate, city))
+        );
+        const district = findContainingZoneForMapHold(
+          coordinate,
+          eligibleDistricts,
+          mapViewportRegionRef.current
+        );
+
+        return { city, district };
+      };
+      let { city, district } = resolveHeldZones();
 
       if (!city || !district) {
         try {
@@ -1945,8 +2053,7 @@ export function MapScreen({
             getCachedZones("city"),
             getCachedZones("district")
           ]);
-          city = findContainingZone(coordinate, cities);
-          district = findContainingZone(coordinate, districts);
+          ({ city, district } = resolveHeldZones());
         } catch (error) {
           console.warn("Failed to load boundaries for map long press", error);
         }
@@ -2014,6 +2121,193 @@ export function MapScreen({
   }, [
     applyMapObjective,
     commitMapBoundaryContext,
+    language,
+    objective?.zone.id,
+    objective?.zone.type
+  ]);
+
+  const handleToggleForbiddenZoneMode = useCallback(() => {
+    if (activeWalkRef.current) {
+      return;
+    }
+
+    forbiddenZoneRequestRef.current += 1;
+    setIsForbiddenZoneProcessing(false);
+    setMapZoneSelection(null);
+    mapZoneSelectionRequestRef.current += 1;
+    setIsMapZoneSelectionLoading(false);
+    setIsForbiddenZoneModeActive((active) => !active);
+  }, []);
+
+  useEffect(() => {
+    if (!activeWalk) {
+      return;
+    }
+
+    forbiddenZoneRequestRef.current += 1;
+    setIsForbiddenZoneModeActive(false);
+    setIsForbiddenZoneProcessing(false);
+  }, [activeWalk?.sessionId]);
+
+  const handleForbiddenZoneLongPress = useCallback(async (coordinate: {
+    latitude: number;
+    longitude: number;
+  }) => {
+    if (activeWalkRef.current || isForbiddenZoneProcessing) {
+      return;
+    }
+
+    const requestId = forbiddenZoneRequestRef.current + 1;
+    forbiddenZoneRequestRef.current = requestId;
+    setIsForbiddenZoneProcessing(true);
+
+    try {
+      await playSelectionHaptic();
+      await waitForMapRenderCommit();
+
+      if (forbiddenZoneRequestRef.current !== requestId) {
+        return;
+      }
+
+      const targetCellId = coordinateToExplorationCellKey(coordinate);
+      const existingZone = forbiddenZones.find((zone) =>
+        zone.cellIds.includes(targetCellId)
+      );
+
+      if (existingZone) {
+        Alert.alert(
+          language === "fr" ? "Supprimer la Zone interdite ?" : "Remove Forbidden Zone?",
+          language === "fr"
+            ? "Cette zone comptera de nouveau dans la progression d’exploration."
+            : "This area will once again count toward exploration completion.",
+          [
+            { text: language === "fr" ? "Annuler" : "Cancel", style: "cancel" },
+            {
+              text: language === "fr" ? "Supprimer" : "Remove",
+              style: "destructive",
+              onPress: () => {
+                setIsForbiddenZoneProcessing(true);
+                void deleteForbiddenZone(existingZone.id)
+                  .then(() => {
+                    setForbiddenZones((zones) =>
+                      zones.filter((zone) => zone.id !== existingZone.id)
+                    );
+                    setVisibleForbiddenZoneLabel((current) =>
+                      current?.zoneId === existingZone.id ? null : current
+                    );
+                    setForbiddenZoneCommentEditor((current) =>
+                      current?.zoneId === existingZone.id ? null : current
+                    );
+                    objectiveStatsCacheRef.current.clear();
+                    setObjectiveClosureRevision((revision) => revision + 1);
+                    setIsForbiddenZoneModeActive(false);
+                  })
+                  .catch((error) => {
+                    console.warn("Failed to remove Forbidden Zone", error);
+                    Alert.alert(
+                      language === "fr" ? "Suppression impossible" : "Removal failed",
+                      language === "fr"
+                        ? "Mapbound a conservé la Zone interdite."
+                        : "Mapbound kept the Forbidden Zone."
+                    );
+                  })
+                  .finally(() => setIsForbiddenZoneProcessing(false));
+              }
+            }
+          ]
+        );
+        return;
+      }
+
+      const records = await getExploredCellRecords("walk");
+
+      if (
+        forbiddenZoneRequestRef.current !== requestId ||
+        activeWalkRef.current
+      ) {
+        return;
+      }
+
+      const boundaryCellIds = [
+        ...new Set(
+          records
+            .filter((record) => record.source !== "loop_fill")
+            .map((record) => record.cellKey)
+        )
+      ];
+      const selection = analyzeForbiddenZoneSelection({
+        activityMode: "walk",
+        boundaryCellIds,
+        coordinate
+      });
+
+      if (selection.classification === "not_enclosed") {
+        Alert.alert(
+          language === "fr" ? "Zone interdite impossible" : "Cannot create Forbidden Zone",
+          language === "fr"
+            ? "Cette zone n’a pas encore été complètement entourée."
+            : "This area has not been completely surrounded yet."
+        );
+        return;
+      }
+
+      if (selection.classification === "normal_loop_candidate") {
+        Alert.alert(
+          language === "fr" ? "Zone interdite impossible" : "Cannot create Forbidden Zone",
+          language === "fr"
+            ? "Cette zone entourée est assez petite pour être capturée normalement."
+            : "This enclosed area is small enough to be captured normally."
+        );
+        return;
+      }
+
+      if (selection.classification === "too_large") {
+        Alert.alert(
+          language === "fr" ? "Zone interdite impossible" : "Cannot create Forbidden Zone",
+          language === "fr"
+            ? "La zone sélectionnée est trop grande."
+            : "The selected area is too large."
+        );
+        return;
+      }
+
+      const created = await createForbiddenZone({
+        areaM2: selection.areaM2,
+        cellIds: selection.cellIds,
+        polygons: selection.polygons
+      });
+
+      setForbiddenZones((zones) => [...zones, created]);
+      objectiveStatsCacheRef.current.clear();
+      setObjectiveClosureRevision((revision) => revision + 1);
+      setIsForbiddenZoneModeActive(false);
+      const districtId = objective?.zone.type === "district"
+        ? objective.zone.id
+        : null;
+
+      if (districtId) {
+        setVisibleForbiddenZoneLabel({ coordinate, districtId, zoneId: created.id });
+      }
+
+      setForbiddenZoneCommentEditor({ isCreation: true, zoneId: created.id });
+    } catch (error) {
+      const failureReason = getForbiddenZonePersistenceFailureReason(error);
+      console.warn("Failed to process Forbidden Zone selection", {
+        error,
+        failureReason
+      });
+      Alert.alert(
+        language === "fr" ? "Zone interdite impossible" : "Cannot create Forbidden Zone",
+        getForbiddenZonePersistenceFailureMessage(failureReason, language)
+      );
+    } finally {
+      if (forbiddenZoneRequestRef.current === requestId) {
+        setIsForbiddenZoneProcessing(false);
+      }
+    }
+  }, [
+    forbiddenZones,
+    isForbiddenZoneProcessing,
     language,
     objective?.zone.id,
     objective?.zone.type
@@ -2273,18 +2567,90 @@ export function MapScreen({
     objective?.zone.id
   ]);
 
+  const handleMapPressEvent = useCallback((coordinate: {
+    latitude: number;
+    longitude: number;
+  }) => {
+    if (isForbiddenZoneModeActive || !activeDistrictObjectiveId) {
+      return;
+    }
+
+    const cellId = coordinateToExplorationCellKey(coordinate);
+    const zone = forbiddenZones.find((candidate) =>
+      candidate.cellIds.includes(cellId)
+    );
+
+    if (!zone) {
+      return;
+    }
+
+    setVisibleForbiddenZoneLabel({
+      coordinate,
+      districtId: activeDistrictObjectiveId,
+      zoneId: zone.id
+    });
+    void playSelectionHaptic();
+  }, [activeDistrictObjectiveId, forbiddenZones, isForbiddenZoneModeActive]);
+
+  const handleForbiddenZoneLabelPress = useCallback((zone: ForbiddenZone) => {
+    setForbiddenZoneCommentEditor({ isCreation: false, zoneId: zone.id });
+  }, []);
+
+  const handleSaveForbiddenZoneComment = useCallback(async (comment: string) => {
+    if (!forbiddenZoneCommentEditor) {
+      return;
+    }
+
+    try {
+      const update = await updateForbiddenZoneComment(
+        forbiddenZoneCommentEditor.zoneId,
+        comment
+      );
+      setForbiddenZones((zones) => zones.map((zone) =>
+        zone.id === forbiddenZoneCommentEditor.zoneId
+          ? { ...zone, comment: update.comment, updatedAt: update.updatedAt }
+          : zone
+      ));
+      setForbiddenZoneCommentEditor(null);
+    } catch (error) {
+      console.warn("Failed to save Forbidden Zone comment", error);
+      Alert.alert(
+        language === "fr" ? "Commentaire non enregistré" : "Comment not saved",
+        language === "fr"
+          ? "Mapbound a conservé le commentaire précédent."
+          : "Mapbound kept the previous comment."
+      );
+    }
+  }, [forbiddenZoneCommentEditor, language]);
+
   const handleMapLongPressEvent = useCallback((coordinate: {
     latitude: number;
     longitude: number;
   }) => {
+    if (isForbiddenZoneModeActive) {
+      void handleForbiddenZoneLongPress(coordinate);
+      return;
+    }
+
     void handleMapLongPress(coordinate).catch((error) =>
       console.warn("Failed to select map objective", error)
     );
-  }, [handleMapLongPress]);
+  }, [
+    handleForbiddenZoneLongPress,
+    handleMapLongPress,
+    isForbiddenZoneModeActive
+  ]);
 
   useEffect(() => {
     const requestId = objectiveStatsRequestRef.current + 1;
     objectiveStatsRequestRef.current = requestId;
+
+    // A missing snapshot can require a large district scan. Keep that work off
+    // the launch overlay so pressing Start can never wait behind completion.
+    if (!isLaunchDismissed) {
+      setIsObjectiveStatsCalculating(false);
+      return;
+    }
 
     if (!objective) {
       setObjectiveStats(null);
@@ -2457,7 +2823,7 @@ export function MapScreen({
       });
 
     return () => abortController.abort();
-  }, [loopFillCellIds, objective, objectiveClosureRevision, walks]);
+  }, [isLaunchDismissed, loopFillCellIds, objective, objectiveClosureRevision, walks]);
 
   useEffect(() => {
     if (!objective || !objectiveStats?.permanentlyCompleted) {
@@ -4797,6 +5163,10 @@ export function MapScreen({
         isRecording={Boolean(activeWalk)}
         language={language}
         focusedMedal={focusedMedal}
+        forbiddenZoneLabel={
+          isForbiddenZoneModeActive ? null : visibleForbiddenZoneLabelData
+        }
+        forbiddenZones={forbiddenZones}
         medalFocusRequestId={medalFocusRequestId}
         lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}
         medals={visibleMapMedals}
@@ -4807,6 +5177,8 @@ export function MapScreen({
         highlightedSessionId={selectedSessionId}
         routeFocusRequestId={routeFocusRequestId}
         layers={layers}
+        onForbiddenZoneLabelPress={handleForbiddenZoneLabelPress}
+        onMapPress={handleMapPressEvent}
         onMapLongPress={handleMapLongPressEvent}
         onMapReady={handleMapReady}
         onMapInteraction={handleMapInteraction}
@@ -4826,6 +5198,19 @@ export function MapScreen({
         mapContentInsets={mapStampInsets}
         message={atlasStampMessage}
         onDismiss={clearAtlasStamp}
+      />
+      <ForbiddenZoneCommentModal
+        areaLabel={
+          forbiddenZoneCommentEditorZone
+            ? `${language === "fr" ? "Surface" : "Area"}: ${formatForbiddenZoneArea(forbiddenZoneCommentEditorZone.areaM2)}`
+            : ""
+        }
+        initialComment={forbiddenZoneCommentEditorZone?.comment ?? null}
+        isCreation={forbiddenZoneCommentEditor?.isCreation ?? false}
+        language={language}
+        onCancel={() => setForbiddenZoneCommentEditor(null)}
+        onSave={handleSaveForbiddenZoneComment}
+        visible={Boolean(forbiddenZoneCommentEditorZone)}
       />
       <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
         <View onLayout={handleMapTopPanelLayout} style={styles.topPanel}>
@@ -4900,11 +5285,13 @@ export function MapScreen({
               todayCellCount={todayObjectiveCellCount}
             />
           ) : null}
-          {isMapZoneSelectionLoading ? (
+          {isForbiddenZoneProcessing || isMapZoneSelectionLoading ? (
             <View style={styles.mapZoneSelectionLoading}>
               <ActivityIndicator color={APP_COLORS.gold} size="small" />
               <Text style={styles.mapZoneSelectionLoadingText}>
-                {language === "fr" ? "Recherche de la zone…" : "Finding area…"}
+                {isForbiddenZoneProcessing
+                  ? language === "fr" ? "Analyse de la Zone interdite…" : "Checking Forbidden Zone…"
+                  : language === "fr" ? "Recherche de la zone…" : "Finding area…"}
               </Text>
             </View>
           ) : null}
@@ -4949,6 +5336,8 @@ export function MapScreen({
             isRecording={Boolean(activeWalk)}
             isStarting={isStartingRecording}
             explorerScore={explorerScore.points}
+            forbiddenZoneModeActive={isForbiddenZoneModeActive}
+            forbiddenZoneModeDisabled={Boolean(activeWalk)}
             distanceMeters={activeWalk?.distanceMeters ?? 0}
             startedAt={activeWalk?.startedAt ?? null}
             gpsAccuracyMeters={currentLocation?.accuracy}
@@ -4966,6 +5355,7 @@ export function MapScreen({
             recordingQuality={recordingQuality}
             onStart={handleStartWalk}
             onStop={handleRequestStopWalk}
+            onToggleForbiddenZoneMode={handleToggleForbiddenZoneMode}
           />
         </Animated.View>
       </SafeAreaView>
@@ -6601,12 +6991,39 @@ function getRecentDistanceMeters(sessions: WalkSession[], dayCount: number) {
     .reduce((total, session) => total + session.distanceMeters, 0);
 }
 
+function getForbiddenZonePersistenceFailureMessage(
+  reason: ReturnType<typeof getForbiddenZonePersistenceFailureReason>,
+  language: AppLanguage
+) {
+  if (reason === "database_busy") {
+    return language === "fr"
+      ? "Les données locales de Mapbound sont occupées. Réessayez dans un instant."
+      : "Mapbound’s local data is busy. Please try again in a moment.";
+  }
+
+  if (reason === "schema_unavailable") {
+    return language === "fr"
+      ? "Le stockage des Zones interdites n’est pas encore prêt. Fermez complètement Mapbound, puis relancez-le."
+      : "Forbidden Zone storage is not ready yet. Fully close Mapbound, then reopen it.";
+  }
+
+  if (reason === "overlapping_zone") {
+    return language === "fr"
+      ? "Cette zone chevauche une Zone interdite existante."
+      : "This area overlaps an existing Forbidden Zone.";
+  }
+
+  return language === "fr"
+    ? "Mapbound n’a pas pu enregistrer cette zone."
+    : "Mapbound could not save this area.";
+}
+
 function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLanguage) {
   return ACTIVITY_MODE_TEXT[language].labels[mode];
 }
 
 function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
-  if (stats?.permanentlyCompleted) {
+  if (stats?.permanentlyCompleted && stats.completionPercent === 100) {
     return "100%";
   }
 
@@ -6684,10 +7101,6 @@ function formatBackgroundStatus(status: BackgroundTrackingStatus) {
 }
 
 function getObjectiveRemainingCells(stats: ZoneCompletionStats | null) {
-  if (stats?.permanentlyCompleted) {
-    return 0;
-  }
-
   if (!stats || stats.totalZoneCells === null) {
     return null;
   }
@@ -6767,6 +7180,25 @@ function findContainingZone(
   return zones.find((zone) =>
     zone.source === "openstreetmap" && isPointInsideZone(point, zone)
   ) ?? null;
+}
+
+function findContainingZoneForMapHold(
+  point: Pick<GpsPoint, "latitude" | "longitude">,
+  zones: CachedZone[],
+  viewport: Region | null
+) {
+  for (const probe of buildMapZoneSelectionProbeCoordinates({
+    coordinate: point,
+    viewport
+  })) {
+    const zone = findContainingZone(probe, zones);
+
+    if (zone) {
+      return zone;
+    }
+  }
+
+  return null;
 }
 
 function doesDistrictBelongToCity(district: CachedZone, city: CachedZone) {

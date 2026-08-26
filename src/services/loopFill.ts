@@ -39,6 +39,19 @@ export type LoopFillResult = {
   unwalkedWalkableStreetLengthM: number;
 };
 
+export type EnclosedAreaLoopClassification =
+  | "normal_loop_candidate"
+  | "oversized_enclosed_area";
+
+export function classifyEnclosedAreaForLoop(
+  activityMode: ActivityMode,
+  enclosedCellCount: number
+): EnclosedAreaLoopClassification {
+  return enclosedCellCount > getMaxEnclosedCellCount(activityMode)
+    ? "oversized_enclosed_area"
+    : "normal_loop_candidate";
+}
+
 const WALKABLE_HIGHWAYS = new Set([
   "footway",
   "living_street",
@@ -116,7 +129,10 @@ function analyzeEnclosedCellGroup(input: {
     return rejectedLoop(polygon, areaM2, "loop_area_too_small");
   }
 
-  if (input.cellIds.length > getMaxEnclosedCellCount(input.activityMode)) {
+  if (
+    classifyEnclosedAreaForLoop(input.activityMode, input.cellIds.length) ===
+    "oversized_enclosed_area"
+  ) {
     return rejectedLoop(polygon, areaM2, "loop_area_too_large");
   }
 

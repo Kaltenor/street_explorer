@@ -1,6 +1,8 @@
 import { gunzipSync, gzipSync, strFromU8, strToU8 } from "fflate";
 
 import type { ZoneAchievement } from "../database/completionRepository";
+import type { ForbiddenZoneSnapshot } from "../database/forbiddenZoneRepository";
+import { FORBIDDEN_ZONE_COMMENT_MAX_LENGTH } from "./forbiddenZones";
 import type {
   GpsPoint,
   RenderedRouteSegment,
@@ -57,6 +59,7 @@ export type BackupV5Metadata = {
   appVersion: string;
   expeditionSystem?: BackupDistrictExpeditionSystem;
   exportedAt: string;
+  forbiddenZones?: ForbiddenZoneSnapshot[];
   medalSystem: BackupMedalSystem;
   sessions: WalkSession[];
   zoneAchievements: ZoneAchievement[];
@@ -528,6 +531,7 @@ export function assertBackupV5Manifest(
   assertBackupV5MedalSystem(value.medalSystem, sessionIds);
   assertBackupV5ZoneAchievements(value.zoneAchievements);
   assertBackupV5ExpeditionSystem(value.expeditionSystem, sessionIds);
+  assertBackupV5ForbiddenZones(value.forbiddenZones);
 }
 
 export function assertBackupV5Footer(
@@ -972,6 +976,95 @@ function assertBackupV5ZoneAchievements(achievements: unknown[]) {
       throw new Error("V5 backup contains invalid zone achievement data.");
     }
   }
+}
+
+function assertBackupV5ForbiddenZones(zones: unknown) {
+  if (zones === undefined) {
+    return;
+  }
+
+  if (!Array.isArray(zones)) {
+    throw new Error("V5 backup contains invalid Forbidden Zone data.");
+  }
+
+  const ids = new Set<number>();
+  const claimedCells = new Set<string>();
+
+  for (const zone of zones) {
+    if (
+      !isRecord(zone) ||
+      !Number.isInteger(zone.id) ||
+      zone.id <= 0 ||
+      ids.has(zone.id) ||
+      !isFiniteNumber(zone.areaM2) ||
+      zone.areaM2 <= 0 ||
+      typeof zone.createdAt !== "string" ||
+      !Number.isFinite(new Date(zone.createdAt).getTime()) ||
+      typeof zone.updatedAt !== "string" ||
+      !Number.isFinite(new Date(zone.updatedAt).getTime()) ||
+      (zone.comment !== undefined &&
+        zone.comment !== null &&
+        (typeof zone.comment !== "string" ||
+          zone.comment.length === 0 ||
+          zone.comment.length > FORBIDDEN_ZONE_COMMENT_MAX_LENGTH ||
+          zone.comment.trim() !== zone.comment ||
+          /\r|\n/.test(zone.comment))) ||
+      !Array.isArray(zone.cellIds) ||
+      zone.cellIds.length === 0 ||
+      !Array.isArray(zone.polygons)
+    ) {
+      throw new Error("V5 backup contains invalid Forbidden Zone data.");
+    }
+
+    const zoneCells = new Set<string>();
+
+    for (const cellId of zone.cellIds) {
+      if (
+        typeof cellId !== "string" ||
+        !/^-?\d+:-?\d+$/.test(cellId) ||
+        zoneCells.has(cellId) ||
+        claimedCells.has(cellId)
+      ) {
+        throw new Error("V5 backup contains invalid Forbidden Zone cells.");
+      }
+
+      zoneCells.add(cellId);
+      claimedCells.add(cellId);
+    }
+
+    if (Math.abs(zone.areaM2 - zoneCells.size * 225) > 0.001) {
+      throw new Error("V5 backup contains an inconsistent Forbidden Zone area.");
+    }
+
+    for (const polygon of zone.polygons) {
+      if (
+        !isRecord(polygon) ||
+        typeof polygon.id !== "string" ||
+        !Array.isArray(polygon.coordinates) ||
+        !polygon.coordinates.every(isBackupCoordinate) ||
+        !Array.isArray(polygon.holes) ||
+        !polygon.holes.every(
+          (hole) => Array.isArray(hole) && hole.every(isBackupCoordinate)
+        )
+      ) {
+        throw new Error("V5 backup contains invalid Forbidden Zone geometry.");
+      }
+    }
+
+    ids.add(zone.id);
+  }
+}
+
+function isBackupCoordinate(value: unknown) {
+  return (
+    isRecord(value) &&
+    isFiniteNumber(value.latitude) &&
+    value.latitude >= -90 &&
+    value.latitude <= 90 &&
+    isFiniteNumber(value.longitude) &&
+    value.longitude >= -180 &&
+    value.longitude <= 180
+  );
 }
 
 function assertBackupV5ExpeditionSystem(

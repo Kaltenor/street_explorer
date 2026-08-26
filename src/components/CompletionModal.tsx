@@ -611,6 +611,14 @@ export function CompletionModal({
             <Stat label={strings.common.distance} value={formatDistance(stats.walkedDistanceMeters)} />
           </View>
 
+          {zoneStats && zoneStats.forbiddenCells > 0 ? (
+            <Text style={styles.zoneNotice}>
+              {language === "fr"
+                ? `${zoneStats.forbiddenCells} cellules de Zones interdites exclues ; ${zoneStats.totalZoneCells ?? 0} cellules restent admissibles.`
+                : `${zoneStats.forbiddenCells} Forbidden Zone cells excluded; ${zoneStats.totalZoneCells ?? 0} eligible cells remain.`}
+            </Text>
+          ) : null}
+
           {nearestIncompleteZone ? (
             <View style={styles.panel}>
               <Text style={styles.panelTitle}>{completionStrings.nearbyIncompleteArea}</Text>
@@ -702,7 +710,7 @@ function formatDistance(distanceMeters: number) {
 function formatCompletion(stats: ZoneCompletionStats | null, language: AppLanguage) {
   const strings = getStrings(language).completionMenu;
 
-  if (stats?.permanentlyCompleted) {
+  if (stats?.permanentlyCompleted && stats.completionPercent === 100) {
     return strings.completed;
   }
 

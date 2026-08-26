@@ -17,6 +17,10 @@ import type {
 } from "../services/backupV5";
 import { BACKGROUND_LOCATION_RECOVERY_GRACE_MS } from "../constants/config";
 import {
+  getForbiddenZones,
+  replaceForbiddenZonesFromBackup
+} from "./forbiddenZoneRepository";
+import {
   ActivityMode,
   GpsPoint,
   LifetimeStats,
@@ -1180,6 +1184,7 @@ export async function withBackupV5Snapshot<T>(
         )
       ORDER BY evidence.expedition_id, evidence.session_id
     `);
+    const forbiddenZones = await getForbiddenZones(transaction);
 
     const metadata: BackupV5Metadata = {
       appVersion: APP_VERSION,
@@ -1189,6 +1194,7 @@ export async function withBackupV5Snapshot<T>(
         seals: expeditionSealRows.map(mapSealRow)
       },
       exportedAt: new Date().toISOString(),
+      forbiddenZones,
       medalSystem: {
         acquisitionEvents: medalEventRows.map((row) => ({
           acquiredAt: row.acquired_at,
@@ -1613,6 +1619,11 @@ export async function restoreBackupV5Data(
         evidence.detectedAt
       );
     }
+
+    await replaceForbiddenZonesFromBackup(
+      transaction,
+      manifest.forbiddenZones ?? []
+    );
   });
 }
 
@@ -1644,6 +1655,8 @@ export async function deleteAllData() {
       DELETE FROM pending_recording_discards;
       DELETE FROM explored_cells;
       DELETE FROM loop_fills;
+      DELETE FROM forbidden_zone_cells;
+      DELETE FROM forbidden_zones;
       DELETE FROM route_snapshots;
       DELETE FROM gps_points;
       DELETE FROM app_settings WHERE key LIKE 'medal_retro_scan:%';

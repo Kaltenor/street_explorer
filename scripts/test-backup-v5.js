@@ -250,6 +250,61 @@ assert(
   "manifest totals describe logical sessions and physical archive blocks"
 );
 
+const forbiddenZoneManifest = {
+  ...manifest,
+  forbiddenZones: [{
+    areaM2: 225,
+    cellIds: ["1:1"],
+    comment: "Inaccessible railway facility",
+    createdAt: "2026-08-02T10:00:00.000Z",
+    id: 1,
+    polygons: [{
+      coordinates: [
+        { latitude: 45.75, longitude: 4.8 },
+        { latitude: 45.75, longitude: 4.801 },
+        { latitude: 45.751, longitude: 4.801 },
+        { latitude: 45.751, longitude: 4.8 }
+      ],
+      holes: [],
+      id: "forbidden-fixture"
+    }],
+    updatedAt: "2026-08-02T10:00:00.000Z"
+  }]
+};
+assertBackupV5Manifest(forbiddenZoneManifest);
+assert(
+  forbiddenZoneManifest.forbiddenZones[0].cellIds[0] === "1:1" &&
+    forbiddenZoneManifest.forbiddenZones[0].comment === "Inaccessible railway facility",
+  "V5 manifests preserve Forbidden Zone geometry, exact cells, and optional comments"
+);
+const legacyForbiddenZoneManifest = JSON.parse(JSON.stringify(forbiddenZoneManifest));
+delete legacyForbiddenZoneManifest.forbiddenZones[0].comment;
+assertBackupV5Manifest(legacyForbiddenZoneManifest);
+assert(
+  !Object.hasOwn(legacyForbiddenZoneManifest.forbiddenZones[0], "comment"),
+  "older V5 Forbidden Zones without comments remain valid"
+);
+let oversizedCommentRejected = false;
+try {
+  assertBackupV5Manifest({
+    ...forbiddenZoneManifest,
+    forbiddenZones: [{
+      ...forbiddenZoneManifest.forbiddenZones[0],
+      comment: "x".repeat(121)
+    }]
+  });
+} catch (error) {
+  oversizedCommentRejected = /invalid Forbidden Zone data/.test(String(error));
+}
+assert(
+  oversizedCommentRejected,
+  "Forbidden Zone backup comments enforce the 120-character limit"
+);
+assert(
+  !Object.hasOwn(manifest, "forbiddenZones"),
+  "older V5 manifests without Forbidden Zones remain valid"
+);
+
 const expeditionManifest = createBackupV5Manifest({
   appVersion: "0.16.24",
   expeditionSystem: {

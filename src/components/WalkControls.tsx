@@ -34,11 +34,14 @@ type WalkControlsProps = {
   speedMetersPerSecond?: number;
   stepCount: number;
   explorerScore: number;
+  forbiddenZoneModeActive: boolean;
+  forbiddenZoneModeDisabled: boolean;
   todayStepCount: number;
   language: AppLanguage;
   recordingQuality: RecordingQuality;
   onStart: () => void;
   onStop: () => void;
+  onToggleForbiddenZoneMode: () => void;
 };
 
 export function WalkControls({
@@ -61,11 +64,14 @@ export function WalkControls({
   speedMetersPerSecond = 0,
   stepCount,
   explorerScore,
+  forbiddenZoneModeActive,
+  forbiddenZoneModeDisabled,
   todayStepCount,
   language,
   recordingQuality,
   onStart,
-  onStop
+  onStop,
+  onToggleForbiddenZoneMode
 }: WalkControlsProps) {
   const [detailsExpanded, setDetailsExpanded] = useState(false);
   const [healthExpanded, setHealthExpanded] = useState(false);
@@ -133,6 +139,46 @@ export function WalkControls({
           <Text numberOfLines={1} style={styles.ledgerEyebrow}>
             {language === "fr" ? "CARNET" : "FIELD LOG"}
           </Text>
+          <TouchableOpacity
+            accessibilityHint={
+              forbiddenZoneModeDisabled
+                ? language === "fr"
+                  ? "Disponible après la fin de la marche"
+                  : "Available after the walk ends"
+                : language === "fr"
+                  ? "Maintenez ensuite une zone inaccessible entourée sur la carte"
+                  : "Then long-press a surrounded inaccessible map area"
+            }
+            accessibilityLabel={
+              language === "fr" ? "Zone interdite" : "Forbidden Zone"
+            }
+            accessibilityRole="button"
+            accessibilityState={{
+              disabled: forbiddenZoneModeDisabled,
+              selected: forbiddenZoneModeActive
+            }}
+            disabled={forbiddenZoneModeDisabled}
+            hitSlop={6}
+            onPress={onToggleForbiddenZoneMode}
+            style={[
+              styles.forbiddenZoneButton,
+              forbiddenZoneModeActive ? styles.forbiddenZoneButtonActive : null,
+              forbiddenZoneModeDisabled ? styles.forbiddenZoneButtonDisabled : null
+            ]}
+          >
+            <Ionicons
+              color={forbiddenZoneModeActive ? "#ffffff" : APP_COLORS.gold}
+              name="map-outline"
+              size={18}
+            />
+            <View
+              pointerEvents="none"
+              style={[
+                styles.forbiddenZoneSlash,
+                forbiddenZoneModeActive ? styles.forbiddenZoneSlashActive : null
+              ]}
+            />
+          </TouchableOpacity>
         </View>
         {isRecording ? (
           <>
@@ -157,6 +203,17 @@ export function WalkControls({
           </View>
         )}
       </View>
+
+      {forbiddenZoneModeActive ? (
+        <View style={styles.forbiddenModeNotice}>
+          <Ionicons color="#d8b4fe" name="ban-outline" size={15} />
+          <Text style={styles.forbiddenModeNoticeText}>
+            {language === "fr"
+              ? "Mode Zone interdite · Maintenez une zone inaccessible entourée."
+              : "Forbidden Zone mode · Long-press a surrounded inaccessible area."}
+          </Text>
+        </View>
+      ) : null}
 
       <TouchableOpacity
         accessibilityRole="button"
@@ -507,6 +564,54 @@ const styles = createAppearanceStyles({
     flexBasis: "100%",
     fontSize: 12,
     fontWeight: "700"
+  },
+  forbiddenModeNotice: {
+    alignItems: "center",
+    backgroundColor: "rgba(88, 28, 135, 0.42)",
+    borderColor: "rgba(216, 180, 254, 0.62)",
+    borderRadius: 9,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    minHeight: 30,
+    paddingHorizontal: 9
+  },
+  forbiddenModeNoticeText: {
+    color: "#f3e8ff",
+    flex: 1,
+    fontSize: 10,
+    fontWeight: "800"
+  },
+  forbiddenZoneButton: {
+    alignItems: "center",
+    backgroundColor: "rgba(19, 33, 43, 0.82)",
+    borderColor: APP_COLORS.goldBorder,
+    borderRadius: 8,
+    borderWidth: 1,
+    height: 32,
+    justifyContent: "center",
+    marginTop: 4,
+    overflow: "hidden",
+    width: 38
+  },
+  forbiddenZoneButtonActive: {
+    backgroundColor: "rgba(126, 58, 176, 0.92)",
+    borderColor: "#e9d5ff",
+    borderWidth: 2
+  },
+  forbiddenZoneButtonDisabled: {
+    opacity: 0.38
+  },
+  forbiddenZoneSlash: {
+    backgroundColor: "#c084fc",
+    height: 2,
+    position: "absolute",
+    transform: [{ rotate: "-42deg" }],
+    width: 24
+  },
+  forbiddenZoneSlashActive: {
+    backgroundColor: "#ffffff",
+    height: 3
   },
   gpsState: {
     alignItems: "center",

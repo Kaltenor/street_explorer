@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.28.11",
+  "version": "0.30.2",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {

@@ -15,6 +15,7 @@ require.extensions[".ts"] = (module, filename) => {
 };
 
 const explorationArea = require("../src/services/explorationArea.ts");
+const forbiddenZones = require("../src/services/forbiddenZones.ts");
 const explorerScore = require("../src/services/explorerScore.ts");
 const loopFill = require("../src/services/loopFill.ts");
 const osmStreetService = require("../src/services/osmStreetService.ts");
@@ -88,6 +89,51 @@ function analyzeWalkingLoop(size) {
     streetSegments: []
   });
 }
+
+function analyzeForbiddenSelection(size, targetCellId, boundary = perimeter(size)) {
+  return forbiddenZones.analyzeForbiddenZoneSelection({
+    activityMode: "walk",
+    boundaryCellIds: boundary,
+    coordinate: explorationArea.explorationCellKeyToCenterCoordinate(targetCellId)
+  });
+}
+
+const normalForbiddenCandidate = analyzeForbiddenSelection(10, "4:4");
+assert(
+  normalForbiddenCandidate.classification === "normal_loop_candidate",
+  "Forbidden Zone selection delegates normal-sized enclosures to loop filling"
+);
+
+const oversizedForbiddenCandidate = analyzeForbiddenSelection(28, "14:14");
+assert(
+  oversizedForbiddenCandidate.classification === "oversized_enclosed_area" &&
+    oversizedForbiddenCandidate.areaM2 >
+      loopFill.LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode.walk,
+  "Forbidden Zone selection accepts only an enclosure rejected by the shared loop limit"
+);
+
+const openBoundary = perimeter(28).filter((cellId) => cellId !== "0:14");
+assert(
+  analyzeForbiddenSelection(28, "14:14", openBoundary).classification === "not_enclosed",
+  "Forbidden Zone selection rejects a region connected to outside space"
+);
+
+assert(
+  analyzeForbiddenSelection(97, "48:48").classification === "too_large" &&
+    forbiddenZones.FORBIDDEN_ZONE_CONFIG.maxAreaSquareMeters === 2_000_000,
+  "Forbidden Zone selection enforces the named 2 km2 safety ceiling"
+);
+
+const forbiddenCompletion = zoneCompletion.calculateCompletionWithForbiddenCells({
+  exploredCells: 2000,
+  forbiddenCells: 500,
+  totalZoneCells: 10000
+});
+assert(
+  forbiddenCompletion.eligibleZoneCells === 9500 &&
+    forbiddenCompletion.completionPercent === 21.1,
+  "Forbidden Zones reduce only the completion denominator"
+);
 function gpsPoint(longitudeOffset, pointIndex, seconds = pointIndex * 5) {
   return {
     accuracy: 5,
@@ -394,7 +440,7 @@ const completionContourCells = new Set(
 assert(
   completionContourCells.size === authoritativeContourCells.size &&
     [...completionContourCells].every((cellId) => authoritativeContourCells.has(cellId)),
-  "completion includes every qualifying enclosed cell rendered as solid burnt orange"
+  "completion includes every qualifying enclosed cell rendered as solid orange"
 );
 
 const scoreBoundary = perimeter(5);
@@ -442,6 +488,22 @@ assert(
     expeditionExplorerScore.expeditionPoints === 600 &&
     expeditionExplorerScore.points === liveExplorerScore.points + 600,
   "each permanent expedition seal adds 200 retroactive Explorer Points"
+);
+
+const forbiddenExplorerScore = explorerScore.calculateExplorerScore({
+  derivedEnclosedCellIds: ["4:4", "5:5"],
+  exploredCellIds: ["0:0", "1:1", "2:2"],
+  forbiddenCellIds: ["1:1", "3:3", "5:5"],
+  loopFillCellIds: ["2:2", "3:3"],
+  maxEnclosedAreaSquareMeters: 150_000
+});
+assert(
+  forbiddenExplorerScore.walkedCellCount === 1 &&
+    forbiddenExplorerScore.enclosedCellCount === 2 &&
+    forbiddenExplorerScore.discoveredCellCount === 3 &&
+    forbiddenExplorerScore.points === 5 &&
+    forbiddenExplorerScore.surfaceAreaSquareMeters === 675,
+  "Forbidden Zone cells never contribute walked, enclosed, discovered-area, or Explorer Score credit"
 );
 assert(
   explorerScore.getAreaComparisonProgress(7140).current.id === "football-pitch" &&
@@ -961,6 +1023,10 @@ const completionRepositorySource = fs.readFileSync(
   require.resolve("../src/database/completionRepository.ts"),
   "utf8"
 );
+const forbiddenZoneRepositorySource = fs.readFileSync(
+  require.resolve("../src/database/forbiddenZoneRepository.ts"),
+  "utf8"
+);
 const streetCompletionRepositorySource = fs.readFileSync(
   require.resolve("../src/database/streetCompletionRepository.ts"),
   "utf8"
@@ -1030,6 +1096,32 @@ const performanceSource = fs.readFileSync(
   require.resolve("../src/services/performance.ts"),
   "utf8"
 );
+assert(
+  databaseSource.includes('applyMigration(32, "add_forbidden_zones"') &&
+    databaseSource.includes('applyMigration(33, "repair_forbidden_zone_schema"') &&
+    databaseSource.includes('applyMigration(34, "add_forbidden_zone_comments"') &&
+    databaseSource.includes('applyMigration(35, "remove_orphaned_forbidden_zone_cells"') &&
+    databaseSource.includes("async function ensureForbiddenZoneSchema") &&
+    databaseSource.includes("async function ensureForbiddenZoneCommentColumn") &&
+    databaseSource.includes("async function ensureNoOrphanedForbiddenZoneCells") &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS forbidden_zones") &&
+    databaseSource.includes("CREATE TABLE IF NOT EXISTS forbidden_zone_cells") &&
+    forbiddenZoneRepositorySource.includes("DELETE FROM zone_completion_snapshots") &&
+    forbiddenZoneRepositorySource.includes("cell_x BETWEEN ? AND ?") &&
+    forbiddenZoneRepositorySource.includes("await initDatabase()") &&
+    forbiddenZoneRepositorySource.includes("FORBIDDEN_ZONE_WRITE_RETRY_DELAYS_MS") &&
+    forbiddenZoneRepositorySource.includes('message.includes("database is locked")') &&
+    forbiddenZoneRepositorySource.includes("FORBIDDEN_ZONE_CELL_INSERT_BATCH_SIZE = 50") &&
+    forbiddenZones.FORBIDDEN_ZONE_COMMENT_MAX_LENGTH === 120 &&
+    forbiddenZoneRepositorySource.includes("updateForbiddenZoneComment") &&
+    forbiddenZoneRepositorySource.includes(
+      '"DELETE FROM forbidden_zone_cells WHERE forbidden_zone_id = ?"'
+    ) &&
+    forbiddenZoneRepositorySource.indexOf('"DELETE FROM forbidden_zone_cells"') <
+      forbiddenZoneRepositorySource.indexOf('"DELETE FROM forbidden_zones"') &&
+    walkRepositorySource.includes("manifest.forbiddenZones ?? []"),
+  "Forbidden Zones repair schema state, persist optional comments, separate cells, invalidate snapshots, and restore backups"
+);
 const backupDataSource = walkRepositorySource.slice(
   walkRepositorySource.indexOf("export async function withBackupV5Snapshot"),
   walkRepositorySource.indexOf("export async function restoreBackupV5Data")
@@ -1037,6 +1129,22 @@ const backupDataSource = walkRepositorySource.slice(
 const refreshSavedDataSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const refreshSavedData"),
   mapScreenSource.indexOf("const toggleLayer")
+);
+const forbiddenMigrationStart = databaseSource.indexOf(
+  'applyMigration(32, "add_forbidden_zones"'
+);
+const forbiddenMigrationSource = databaseSource.slice(
+  forbiddenMigrationStart,
+  databaseSource.indexOf("await db.runAsync", forbiddenMigrationStart)
+);
+assert(
+  !forbiddenMigrationSource.includes("DELETE FROM zone_completion_snapshots") &&
+    refreshSavedDataSource.indexOf("setIsSavedDataReady(true)") <
+      refreshSavedDataSource.indexOf("setForbiddenZones(await getForbiddenZones())") &&
+    mapScreenSource.includes("if (!isLaunchDismissed)") &&
+    mapScreenSource.includes("Keep that work off") &&
+    mapScreenSource.includes("the launch overlay"),
+  "Forbidden Zone hydration and completion rebuilding stay outside the launch gate"
 );
 const handleLocationPointStart = mapScreenSource.indexOf(
   "const handleLocationPoint"
@@ -1560,7 +1668,7 @@ assert(
     ) &&
     mapScreenSource.includes('sound: "reward"') &&
     mapScreenSource.includes(
-      "[loopFillCellIds, objective, objectiveClosureRevision, walks]"
+      "[isLaunchDismissed, loopFillCellIds, objective, objectiveClosureRevision, walks]"
     ) &&
     !mapScreenSource.includes("activeObjectiveCellKey") &&
     mapScreenSource.includes("mergeActiveExplorationCells(") &&

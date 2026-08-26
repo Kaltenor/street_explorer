@@ -19,6 +19,7 @@ import type {
 } from "react";
 import MapView, {
   type LongPressEvent,
+  type MapPressEvent,
   Marker,
   Polygon,
   Polyline,
@@ -38,6 +39,7 @@ import {
 } from "../constants/config";
 import { APP_COLORS, WALKING_COLORS } from "../constants/theme";
 import { CachedZone } from "../database/completionRepository";
+import type { ForbiddenZone } from "../database/forbiddenZoneRepository";
 import {
   buildExplorationPolygonOutlineSegments,
   buildMergedExplorationPolygons
@@ -45,6 +47,7 @@ import {
 import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
 import { LOOP_FILL_CONFIG } from "../services/loopFill";
+import { formatForbiddenZoneArea } from "../services/forbiddenZones";
 import {
   createPlayerSpeechMessage,
   getPlayerSpeechCharacterCount,
@@ -77,6 +80,11 @@ type ExplorationMapProps = {
   explorationEnabled: boolean;
   activeMode: ActivityMode;
   focusedMedal: CollectedMedal | null;
+  forbiddenZones: ForbiddenZone[];
+  forbiddenZoneLabel: {
+    coordinate: { latitude: number; longitude: number };
+    zone: ForbiddenZone;
+  } | null;
   medalFocusRequestId: number;
   lockedMedalLabel: string;
   medals: CollectedMedal[];
@@ -94,7 +102,9 @@ type ExplorationMapProps = {
   layers: MapLayerState;
   savedExplorationCellIds: string[];
   onMapReady?: () => void;
+  onMapPress?: (coordinate: { latitude: number; longitude: number }) => void;
   onMapLongPress?: (coordinate: { latitude: number; longitude: number }) => void;
+  onForbiddenZoneLabelPress?: (zone: ForbiddenZone) => void;
   onMapInteraction?: () => void;
   onVisibleRegionChange?: (region: Region) => void;
   districtZones: CachedZone[];
@@ -165,6 +175,8 @@ export const ExplorationMap = memo(function ExplorationMap({
   gpsAccuracyMeters,
   gpsStatus,
   focusedMedal,
+  forbiddenZones,
+  forbiddenZoneLabel,
   medalFocusRequestId,
   lockedMedalLabel,
   medals,
@@ -174,7 +186,9 @@ export const ExplorationMap = memo(function ExplorationMap({
   layers,
   savedExplorationCellIds,
   onMapReady,
+  onMapPress,
   onMapLongPress,
+  onForbiddenZoneLabelPress,
   onMapInteraction,
   onVisibleRegionChange,
   districtZones,
@@ -535,6 +549,10 @@ export const ExplorationMap = memo(function ExplorationMap({
     onMapLongPress?.(event.nativeEvent.coordinate);
   }, [onMapLongPress]);
 
+  const handleMapPress = useCallback((event: MapPressEvent) => {
+    onMapPress?.(event.nativeEvent.coordinate);
+  }, [onMapPress]);
+
   const handleNativeMapReady = useCallback(() => {
     setIsNativeMapReady(true);
     onMapReady?.();
@@ -570,6 +588,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         initialRegion={visibleRegion}
         onPanDrag={handleMapPan}
         onMapReady={handleNativeMapReady}
+        onPress={handleMapPress}
         onLongPress={handleMapLongPress}
         onRegionChangeComplete={handleRegionChangeComplete}
         onTouchStart={onMapInteraction}
@@ -593,11 +612,22 @@ export const ExplorationMap = memo(function ExplorationMap({
           todayPolygons={todayNewPolygons}
         />
 
+        <ForbiddenZoneOverlay zones={forbiddenZones} />
+
         <AdministrativeBoundaryOverlay
           cityZone={cityZone}
           districtZones={districtZones}
           selectedZone={selectedZone}
         />
+
+        {forbiddenZoneLabel ? (
+          <ForbiddenZoneMapLabel
+            coordinate={forbiddenZoneLabel.coordinate}
+            language={language}
+            onPress={onForbiddenZoneLabelPress}
+            zone={forbiddenZoneLabel.zone}
+          />
+        ) : null}
 
         {shouldShowRoutes ? pathWalks.map((walk) => {
           const isHighlighted = highlightedSessionId === walk.id;
@@ -697,6 +727,75 @@ export const ExplorationMap = memo(function ExplorationMap({
 
       </ApplePoiFilteredMapView>
     </View>
+  );
+});
+
+const ForbiddenZoneOverlay = memo(function ForbiddenZoneOverlay({
+  zones
+}: {
+  zones: ForbiddenZone[];
+}) {
+  return (
+    <>
+      {zones.flatMap((zone) =>
+        zone.polygons.map((polygon) => (
+          <Polygon
+            coordinates={polygon.coordinates}
+            fillColor="rgba(126, 58, 176, 0.42)"
+            holes={polygon.holes}
+            key={`forbidden-zone-${zone.id}-${polygon.id}`}
+            pointerEvents="none"
+            strokeColor="rgba(77, 31, 116, 0.88)"
+            strokeWidth={2}
+            tappable={false}
+          />
+        ))
+      )}
+    </>
+  );
+});
+
+const ForbiddenZoneMapLabel = memo(function ForbiddenZoneMapLabel({
+  coordinate,
+  language,
+  onPress,
+  zone
+}: {
+  coordinate: { latitude: number; longitude: number };
+  language: AppLanguage;
+  onPress?: (zone: ForbiddenZone) => void;
+  zone: ForbiddenZone;
+}) {
+  const visibleComment = zone.comment ?? (
+    language === "fr" ? "Ajouter un commentaire" : "Add a comment"
+  );
+
+  return (
+    <Marker
+      accessibilityLabel={visibleComment}
+      anchor={{ x: 0.5, y: 1.08 }}
+      coordinate={coordinate}
+      onPress={(event) => {
+        event.stopPropagation();
+        onPress?.(zone);
+      }}
+      tracksViewChanges
+      zIndex={900}
+    >
+      <View collapsable={false} style={styles.forbiddenZoneLabel}>
+        <View style={styles.forbiddenZoneLabelRow}>
+          <Ionicons color="#ead7f5" name="ban-outline" size={14} />
+          <Text numberOfLines={3} style={styles.forbiddenZoneLabelText}>
+            {visibleComment}
+          </Text>
+          <Ionicons color="#d5a5ee" name="pencil" size={13} />
+        </View>
+        <Text style={styles.forbiddenZoneLabelArea}>
+          {formatForbiddenZoneArea(zone.areaM2)}
+        </Text>
+        <View style={styles.forbiddenZoneLabelPointer} />
+      </View>
+    </Marker>
   );
 });
 
@@ -2209,6 +2308,52 @@ const styles = createAppearanceStyles({
   playerCompassHaloStale: {
     backgroundColor: "rgba(20, 27, 29, 0.88)",
     borderColor: "rgba(223, 202, 153, 0.82)"
+  },
+  forbiddenZoneLabel: {
+    alignItems: "center",
+    backgroundColor: "rgba(54, 20, 78, 0.96)",
+    borderColor: "rgba(213, 165, 238, 0.92)",
+    borderRadius: 12,
+    borderWidth: 1,
+    maxWidth: 250,
+    minWidth: 130,
+    paddingHorizontal: 11,
+    paddingTop: 8,
+    shadowColor: "#16081f",
+    shadowOffset: { height: 3, width: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5
+  },
+  forbiddenZoneLabelArea: {
+    color: "#d5a5ee",
+    fontSize: 10,
+    fontWeight: "800",
+    marginBottom: 6,
+    marginTop: 3
+  },
+  forbiddenZoneLabelPointer: {
+    backgroundColor: "rgba(54, 20, 78, 0.96)",
+    borderBottomColor: "rgba(213, 165, 238, 0.92)",
+    borderBottomWidth: 1,
+    borderRightColor: "rgba(213, 165, 238, 0.92)",
+    borderRightWidth: 1,
+    height: 10,
+    marginBottom: -6,
+    transform: [{ rotate: "45deg" }],
+    width: 10
+  },
+  forbiddenZoneLabelRow: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 6
+  },
+  forbiddenZoneLabelText: {
+    color: "#f4eaf9",
+    flexShrink: 1,
+    fontSize: 12,
+    fontWeight: "800",
+    lineHeight: 16,
+    textAlign: "center"
   },
   playerSpeechArrow: {
     alignSelf: "center",

@@ -9,7 +9,11 @@ import {
   OFFICIAL_DISTRICT_ADMIN_LEVEL,
   shouldReplaceCachedZone
 } from "../src/services/zoneBoundaryPolicy.ts";
-import { shouldOfferMapZoneScopeChoice } from "../src/services/mapZoneSelection.ts";
+import {
+  buildMapZoneSelectionProbeCoordinates,
+  MAP_ZONE_SELECTION_CONFIG,
+  shouldOfferMapZoneScopeChoice
+} from "../src/services/mapZoneSelection.ts";
 
 const query = buildBoundaryQuery(45.7555548, 4.8622856);
 
@@ -55,6 +59,43 @@ assert.equal(
   false
 );
 
+const zoomedOutProbes = buildMapZoneSelectionProbeCoordinates({
+  coordinate: { latitude: 45.758, longitude: 4.86 },
+  viewport: {
+    latitude: 45.758,
+    latitudeDelta: 0.5,
+    longitude: 4.86,
+    longitudeDelta: 0.5
+  }
+});
+assert.equal(
+  zoomedOutProbes.length,
+  1 + MAP_ZONE_SELECTION_CONFIG.radialSteps * MAP_ZONE_SELECTION_CONFIG.angleSteps
+);
+assert.deepEqual(zoomedOutProbes[0], { latitude: 45.758, longitude: 4.86 });
+assert.ok(
+  Math.max(...zoomedOutProbes.map((probe) =>
+    Math.abs(probe.latitude - 45.758) * 111_320
+  )) <=
+    MAP_ZONE_SELECTION_CONFIG.maxHitSlopMeters + 0.001
+);
+assert.ok(
+  Math.abs((zoomedOutProbes[1]?.latitude ?? 45.758) - 45.758) * 111_320 <=
+    MAP_ZONE_SELECTION_CONFIG.maxHitSlopMeters / MAP_ZONE_SELECTION_CONFIG.radialSteps + 0.001
+);
+const zoomedInProbes = buildMapZoneSelectionProbeCoordinates({
+  coordinate: { latitude: 45.758, longitude: 4.86 },
+  viewport: {
+    latitude: 45.758,
+    latitudeDelta: 0.005,
+    longitude: 4.86,
+    longitudeDelta: 0.005
+  }
+});
+assert.ok(
+  Math.abs((zoomedInProbes[1]?.latitude ?? 45.758) - 45.758) * 111_320 < 10
+);
+
 const completionSource = readFileSync(
   new URL("../src/components/CompletionModal.tsx", import.meta.url),
   "utf8"
@@ -91,6 +132,9 @@ assert.match(mapSource, /objectiveStatsRequestRef\.current === requestId/);
 assert.match(mapSource, /doesDistrictBelongToCity\(zone, currentCity\)/);
 assert.match(mapSource, /setPlayerFocusRequestId\(\(requestId\) => requestId \+ 1\)/);
 assert.match(mapSource, /const handleMapLongPress = useCallback/);
+assert.match(mapSource, /findContainingZoneForMapHold/);
+assert.match(mapSource, /mapViewportRegionRef\.current/);
+assert.match(mapSource, /isZoneCompletionEligible\(candidate\)/);
 assert.match(mapSource, /await playSelectionHaptic\(\)/);
 assert.match(mapSource, /mapZoneSelectionRequestRef\.current !== requestId/);
 assert.match(mapSource, /shouldOfferMapZoneScopeChoice/);
@@ -229,6 +273,7 @@ console.log("PASS exact cached boundaries reject incomplete-response downgrades"
 console.log("PASS saved objectives reload after boundary caches are repopulated");
 console.log("PASS launch GPS selects the official district before its city and preserves the saved fallback");
 console.log("PASS long press switches same-city districts directly and reserves the scope chooser for cross-city holds");
+console.log("PASS low-zoom district holds use bounded city-consistent map-space probes");
 console.log("PASS recording Start restores walking-scale zoom around the persistent player");
 assert.equal(OFFICIAL_DISTRICT_ADMIN_LEVEL, 9);
 assert.equal(NEIGHBORHOOD_ADMIN_LEVEL, 10);

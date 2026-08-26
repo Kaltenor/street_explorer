@@ -22,6 +22,7 @@ import {
   EXACT_ZONE_BOUNDARY_SOURCE
 } from "./zoneBoundaryPolicy";
 import { ActivityMode, GpsPoint } from "../types/walk";
+import { getForbiddenCellKeysWithinBounds } from "../database/forbiddenZoneRepository";
 
 const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
@@ -66,6 +67,7 @@ export type ZoneCompletionStats = {
   completionStatus: "available" | "invalid_boundary" | "too_large";
   directlyWalkedCells: number;
   exploredCells: number;
+  forbiddenCells: number;
   inferredCells: number;
   loopFilledCells: number;
   permanentlyCompleted: boolean;
@@ -78,6 +80,27 @@ export type ZoneFetchResult = {
   usableZoneCount: number;
   zones: CachedZone[];
 };
+
+export function calculateCompletionWithForbiddenCells(input: {
+  exploredCells: number;
+  forbiddenCells: number;
+  totalZoneCells: number;
+}) {
+  const eligibleZoneCells = Math.max(
+    0,
+    input.totalZoneCells - input.forbiddenCells
+  );
+  const completionPercent = eligibleZoneCells > 0
+    ? Math.min(
+        100,
+        Math.round((input.exploredCells / eligibleZoneCells) * 1000) / 10
+      )
+    : input.totalZoneCells > 0
+      ? 100
+      : null;
+
+  return { completionPercent, eligibleZoneCells };
+}
 
 export async function fetchNearbyOsmZones(
   center: Pick<GpsPoint, "latitude" | "longitude">
@@ -158,13 +181,21 @@ export async function calculateZoneCompletionStats(
     exploredInside.filter((cell) => cell.source === "loop_fill")
   );
   const completionEligible = isZoneCompletionEligible(zone);
-  const totalZoneCells = completionEligible
+  const rawTotalZoneCells = completionEligible
     ? await calculateTotalZoneCells(zone, signal)
     : null;
-  const completionPercent =
-    totalZoneCells && totalZoneCells > 0
-      ? Math.min(100, Math.round((uniqueExplored / totalZoneCells) * 1000) / 10)
-      : null;
+  const forbiddenCells = rawTotalZoneCells === null
+    ? 0
+    : await countForbiddenCellsInsideZone(zone, signal);
+  const adjustedCompletion = rawTotalZoneCells === null
+    ? null
+    : calculateCompletionWithForbiddenCells({
+        exploredCells: uniqueExplored,
+        forbiddenCells,
+        totalZoneCells: rawTotalZoneCells
+      });
+  const totalZoneCells = adjustedCompletion?.eligibleZoneCells ?? null;
+  const completionPercent = adjustedCompletion?.completionPercent ?? null;
   const geometryFingerprint = getZoneGeometryFingerprint(zone);
   let achievement = await getZoneAchievement(zone.id);
 
@@ -196,16 +227,61 @@ export async function calculateZoneCompletionStats(
     completionPercent,
     completionStatus: !completionEligible
       ? "invalid_boundary"
-      : totalZoneCells === null
+      : rawTotalZoneCells === null
         ? "too_large"
         : "available",
     directlyWalkedCells,
     exploredCells: uniqueExplored,
+    forbiddenCells,
     inferredCells,
     loopFilledCells,
     permanentlyCompleted: Boolean(achievement),
     totalZoneCells
   };
+}
+
+async function countForbiddenCellsInsideZone(
+  zone: CachedZone,
+  signal?: AbortSignal
+) {
+  const bounds = getZoneBounds(zone);
+
+  if (!bounds) {
+    return 0;
+  }
+
+  const cornerKeys = [
+    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.minLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.minLatitude, longitude: bounds.maxLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.minLongitude }),
+    coordinateToExplorationCellKey({ latitude: bounds.maxLatitude, longitude: bounds.maxLongitude })
+  ].map(parseCellKey);
+  const cellKeys = await getForbiddenCellKeysWithinBounds({
+    maxX: Math.max(...cornerKeys.map((key) => key.x)),
+    maxY: Math.max(...cornerKeys.map((key) => key.y)),
+    minX: Math.min(...cornerKeys.map((key) => key.x)),
+    minY: Math.min(...cornerKeys.map((key) => key.y))
+  });
+  let count = 0;
+
+  for (let index = 0; index < cellKeys.length; index += 1) {
+    if (index > 0 && index % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
+      throwIfCompletionCancelled(signal);
+      await yieldToEventLoop();
+    }
+
+    const cellKey = cellKeys[index];
+
+    if (
+      cellKey &&
+      isPointInsideZone(explorationCellKeyToCenterCoordinate(cellKey), zone)
+    ) {
+      count += 1;
+    }
+  }
+
+  throwIfCompletionCancelled(signal);
+  return count;
 }
 
 export function isBoundaryRefreshStale(

@@ -1,5 +1,81 @@
 # Changelog
 
+## v0.30.2
+
+- Restored explored and normal loop-filled map polygons to the original translucent burnt-orange palette at every zoom level instead of blue.
+- Restored the matching orange map-legend swatches in both Explorator and Daylight appearances while preserving gold for today's discoveries and purple for Forbidden Zones.
+- Synchronized version 0.30.2 with iOS build 213 and Android version code 213.
+
+## v0.30.1
+
+- Fixed Forbidden Zone removal so its exact child-cell rows are deleted explicitly, allowing the same surrounded area to be recreated immediately instead of reporting a false overlap.
+- Added migration 35 and a startup catalogue repair that remove orphaned Forbidden Zone cells left by affected earlier builds and invalidate completion snapshots only when repaired data changed.
+- Made Forbidden Zone creation, Backup V5 replacement, and full local-data deletion defensively clean stale or child cell rows without relying solely on SQLite foreign-key cascade enforcement.
+- Synchronized version 0.30.1 with iOS build 212 and Android version code 212.
+
+## v0.30.0
+
+- Added optional player-authored Forbidden Zone comments, editable immediately after creation or later from the map, with a strict single-line 120-character limit.
+- Added a direct purple on-map comment label at the tapped zone position; it remains visible while the same district objective is active and disappears when the district changes, without using a map dialog or weakening long-press priority.
+- Added migration 34 for the nullable `forbidden_zones.comment` column and extended Backup V5 validation/restore while keeping older Forbidden Zone backups without comments importable.
+- Synchronized version 0.30.0 with iOS build 211 and Android version code 211.
+
+## v0.29.6
+
+- Made Forbidden Zone exclusion an explicit Explorer Score invariant: forbidden cells are removed from walked tiles, persisted and live enclosure bonuses, discovered surface, and total points even if overlapping data exists later or arrives through restore.
+- Added regression coverage proving Forbidden Zone cells cannot contribute through GPS/inferred inputs, loop-fill inputs, or live derived-enclosure inputs.
+- Synchronized version 0.29.6 with iOS build 210 and Android version code 210.
+
+## v0.29.5
+
+- Made Forbidden Zone polygons explicitly non-tappable and non-pointer-interactive so normal map long-presses pass through large purple areas to district/city selection.
+- Replaced the low-zoom tolerance's single outer probe ring with four concentric 16-direction rings, preserving the 120-metre cap while eliminating zoom-dependent gaps that could skip Lyon's 3rd arrondissement.
+- Synchronized version 0.29.5 with iOS build 209 and Android version code 209.
+
+## v0.29.4
+
+- Made normal district/city long-press selection reliable at lower zoom with an exact-first, zoom-aware hit tolerance capped at 120 metres.
+- Restricted tolerant district probes to exact, selectable districts belonging to the detected city, preventing a forgiving Lyon hold from jumping across the Villeurbanne boundary; Forbidden Zone mode priority remains unchanged.
+- Synchronized version 0.29.4 with iOS build 208 and Android version code 208.
+
+## v0.29.3
+
+- Fixed devices whose migration ledger already contained numeric ID 32 while the physical Forbidden Zone tables were absent, which made valid selections report that storage was not ready after every relaunch.
+- Added migration 33 and a startup schema invariant that idempotently verifies/recreates `forbidden_zones`, `forbidden_zone_cells`, and their spatial index instead of trusting migration history alone.
+- Synchronized version 0.29.3 with iOS build 207 and Android version code 207.
+
+## v0.29.2
+
+- Fixed valid oversized Forbidden Zones failing at the persistence step when Expo SQLite’s dedicated write connection briefly conflicts with another local write; zone creation/removal now retry bounded transient `SQLITE_BUSY`/locked errors.
+- Ensured Forbidden Zone repositories await schema initialization before native reads or writes, including development Fast Refresh paths, and reduced cell-insert batch size for conservative iOS SQLite binding limits.
+- Replaced the generic save failure with actionable messages for busy storage, unapplied schema, and overlap constraints while retaining atomic rollback on failure.
+- Synchronized version 0.29.2 with iOS build 206 and Android version code 206.
+
+## v0.29.1
+
+- Fixed launch-map stalling after pressing Start by keeping Forbidden Zone hydration and uncached completion scans outside the launch-critical readiness path.
+- Removed unnecessary completion-snapshot invalidation from the first-time Forbidden Zone schema migration; actual Forbidden Zone creation, removal, and restore still invalidate affected completion state immediately.
+- Synchronized version 0.29.1 with iOS build 205 and Android version code 205.
+
+## v0.29.0
+
+- Added an accessible Forbidden Zone tool to the Field Log with an obvious purple selected state, contextual hold guidance, cancellation on a second tap, and automatic disabling while a walk is active.
+- Added manual selection of completely enclosed unexplored regions that exceed the shared 150,000 m² automatic loop-fill limit, with explicit open-area, normal-loop, and 2 km² safety-ceiling rejection messages.
+- Added efficient translucent-purple merged-polygon rendering, long-press removal confirmation, immediate map updates, and preservation of all GPS, explored-cell, and loop-fill data during removal.
+- Excluded each Forbidden Zone’s exact stored 15 m cells from district/city completion denominators by geometric overlap without adding them to the explored numerator; cross-boundary zones exclude only their portion inside each administrative polygon.
+- Added migration 32 with dedicated `forbidden_zones` and `forbidden_zone_cells` tables, bounded overlap queries, and separation from recordings, explored cells, loop fills, and administrative caches.
+- Extended Backup V5 export/restore with optional Forbidden Zone snapshots while retaining compatibility with older V5 files that omit the field; recording deletion and reprocessing leave zones untouched.
+- Preserved permanent completion achievements after Forbidden Zone removal while recalculating and displaying current percentage and remaining cells.
+- Synchronized version 0.29.0 with iOS build 204 and Android version code 204.
+
+## v0.28.12
+
+Changed:
+
+- Changed cumulative explored-surface polygons from burnt orange to translucent blue at every zoom level, including the new-cell reveal and dark blue contour treatment.
+- Updated both appearance palettes and the map legend to use the new blue explored-surface color while retaining gold for today's discoveries.
+- Synchronized version 0.28.12 with iOS build 203 and Android version code 203.
+
 ## v0.28.11
 
 Fixed:

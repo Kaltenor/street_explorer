@@ -34,6 +34,7 @@
 - Street-completion V1.
 - Completion screen foundation.
 - Conservative closed-loop fill V1.
+- Forbidden Zones: an idle Field Log map-with-slash mode with exclusive map-long-press priority, shared oversized-enclosure classification, a configurable 2 km² safety ceiling, exact immutable 15 m cell snapshots, merged non-interactive purple rendering, optional editable 120-character comments with district-lifetime direct map labels, confirmed child-first removal with migration-35 orphan repair, denominator-only district/city overlap exclusion, explicit exclusion from every Explorer Score cell source, dedicated migration-32/34/35 persistence, and backward-compatible Backup V5 support.
 - OSM boundary fetching and zone completion V1 with durable achievements and live active-recording objective previews.
 - Zone polish with exact/fallback labels and cached denominators.
 - Recording quality summary after stopping a recording.

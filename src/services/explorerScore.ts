@@ -32,11 +32,17 @@ export function calculateExplorerScore(input: {
   derivedEnclosedCellIds?: readonly string[];
   exploredCellIds: readonly string[];
   expeditionSealCount?: number;
+  forbiddenCellIds?: readonly string[];
   loopFillCellIds?: readonly string[];
   maxEnclosedAreaSquareMeters: number;
 }): ExplorerScore {
-  const persistedEnclosedCellIds = new Set(input.loopFillCellIds ?? []);
-  const walkedCellIds = new Set(input.exploredCellIds);
+  const forbiddenCellIds = new Set(input.forbiddenCellIds ?? []);
+  const persistedEnclosedCellIds = new Set(
+    (input.loopFillCellIds ?? []).filter((cellId) => !forbiddenCellIds.has(cellId))
+  );
+  const walkedCellIds = new Set(
+    input.exploredCellIds.filter((cellId) => !forbiddenCellIds.has(cellId))
+  );
 
   for (const cellId of persistedEnclosedCellIds) {
     walkedCellIds.delete(cellId);
@@ -48,10 +54,11 @@ export function calculateExplorerScore(input: {
       [...contourCellIds],
       input.maxEnclosedAreaSquareMeters
     );
-  const enclosedCellIds = new Set([
-    ...persistedEnclosedCellIds,
-    ...derivedEnclosedCellIds
-  ]);
+  const enclosedCellIds = new Set(
+    [...persistedEnclosedCellIds, ...derivedEnclosedCellIds].filter(
+      (cellId) => !forbiddenCellIds.has(cellId)
+    )
+  );
   const discoveredCellIds = new Set([...walkedCellIds, ...enclosedCellIds]);
   const expeditionSealCount = Math.max(
     0,

@@ -219,6 +219,50 @@ export function collectEnclosedExplorationCellGroups(
   return groups;
 }
 
+export type EnclosedExplorationRegion = {
+  cellIds: string[];
+  truncated: boolean;
+};
+
+export function findEnclosedExplorationRegionContainingCell(input: {
+  boundaryCells: readonly ExplorationCellReference[];
+  maxCellCount?: number;
+  targetCellId: string;
+}): EnclosedExplorationRegion | null {
+  const occupiedCellIds = new Set(input.boundaryCells.map(getExplorationCellId));
+
+  if (occupiedCellIds.has(input.targetCellId)) {
+    return null;
+  }
+
+  const targetCell = stringToCellKey(input.targetCellId);
+  const containingHole = buildGridContours(input.boundaryCells)
+    .filter((contour) => contour.area < 0)
+    .filter((contour) =>
+      isPointInsideGridPath(
+        { x: targetCell.x + 0.5, y: targetCell.y + 0.5 },
+        contour.path
+      )
+    )
+    .sort((left, right) => Math.abs(left.area) - Math.abs(right.area))[0];
+
+  if (!containingHole) {
+    return null;
+  }
+
+  const cellIds = collectUnoccupiedCellsInsideGridContour(
+    containingHole,
+    occupiedCellIds,
+    input.maxCellCount
+  );
+
+  return {
+    cellIds,
+    truncated:
+      input.maxCellCount !== undefined && cellIds.length > input.maxCellCount
+  };
+}
+
 export function collectFillableEnclosedExplorationCellIds(
   cells: readonly ExplorationCellReference[],
   maxFilledAreaSquareMeters: number
@@ -234,7 +278,8 @@ export function collectFillableEnclosedExplorationCellIds(
 }
 function collectUnoccupiedCellsInsideGridContour(
   contour: GridContour,
-  occupiedCellIds: Set<string>
+  occupiedCellIds: Set<string>,
+  maxCellCount?: number
 ) {
   const xValues = contour.path.map((point) => point.x);
   const yValues = contour.path.map((point) => point.y);
@@ -253,6 +298,13 @@ function collectUnoccupiedCellsInsideGridContour(
         isPointInsideGridPath({ x: x + 0.5, y: y + 0.5 }, contour.path)
       ) {
         enclosedCellIds.push(cellId);
+
+        if (
+          maxCellCount !== undefined &&
+          enclosedCellIds.length > maxCellCount
+        ) {
+          return enclosedCellIds;
+        }
       }
     }
   }

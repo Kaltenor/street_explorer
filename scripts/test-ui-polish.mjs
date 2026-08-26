@@ -109,6 +109,7 @@ const settingsSource = readFileSync(new URL("../src/database/settingsRepository.
 const hudDecorSource = readFileSync(new URL("../src/components/AtlasHudDecor.tsx", import.meta.url), "utf8");
 const walkControlsSource = readFileSync(new URL("../src/components/WalkControls.tsx", import.meta.url), "utf8");
 const explorerScorePanelSource = readFileSync(new URL("../src/components/ExplorerScorePanel.tsx", import.meta.url), "utf8");
+const forbiddenZoneCommentSource = readFileSync(new URL("../src/components/ForbiddenZoneCommentModal.tsx", import.meta.url), "utf8");
 const diagnosticsModalSource = readFileSync(new URL("../src/components/RecordingDiagnosticsModal.tsx", import.meta.url), "utf8");
 const routeSnapshotSource = readFileSync(new URL("../src/services/routeSnapshot.ts", import.meta.url), "utf8");
 const feedbackSource = readFileSync(new URL("../src/services/feedbackPreferences.ts", import.meta.url), "utf8");
@@ -202,6 +203,23 @@ assert.match(mapSource, /selectedZone\?\.type === "district"/);
 assert.match(mapSource, /WALKING_COLORS\.districtBoundaryMuted/);
 assert.equal([...mapSource.matchAll(/WALKING_COLORS\.selectedZoneFill/g)].length, 2);
 assert.equal([...mapSource.matchAll(/rgba\(229, 122, 50, 0\.(?:54|48|42|36)\)/g)].length, 4);
+assert.match(mapSource, /rgba\(126, 58, 176, 0\.42\)/);
+assert.match(mapSource, /ForbiddenZoneOverlay/);
+assert.match(
+  mapSource,
+  /ForbiddenZoneOverlay[\s\S]*pointerEvents="none"[\s\S]*tappable=\{false\}/
+);
+assert.match(mapSource, /ForbiddenZoneMapLabel/);
+assert.match(mapSource, /formatForbiddenZoneArea\(zone\.areaM2\)/);
+assert.match(summarySource, /onMapPress=\{handleMapPressEvent\}/);
+assert.match(summarySource, /visibleForbiddenZoneLabel\.districtId !== activeDistrictObjectiveId/);
+assert.match(summarySource, /updateForbiddenZoneComment/);
+assert.match(forbiddenZoneCommentSource, /maxLength=\{FORBIDDEN_ZONE_COMMENT_MAX_LENGTH\}/);
+assert.match(forbiddenZoneCommentSource, /multiline=\{false\}/);
+assert.match(walkControlsSource, /forbiddenZoneModeActive/);
+assert.match(walkControlsSource, /accessibilityState=\{\{[\s\S]*selected: forbiddenZoneModeActive/);
+assert.match(summarySource, /if \(isForbiddenZoneModeActive\)[\s\S]*handleForbiddenZoneLongPress/);
+assert.match(summarySource, /forbiddenZoneModeDisabled=\{Boolean\(activeWalk\)\}/);
 assert.match(summarySource, /mapBoundaryContext/);
 assert.match(summarySource, /setMapBoundaryContext/);
 assert.doesNotMatch(summarySource, /cityBoundaryZone|setDistrictZones/);

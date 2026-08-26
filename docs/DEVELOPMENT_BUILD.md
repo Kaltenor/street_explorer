@@ -20,6 +20,8 @@ Street Explorer needs a development build to test:
 - Daylight-specific stamp lettering contrast against the unchanged navy seal artwork
 - active-city loading across bundled France and the checksum-verified Belgium, Germany, Italy, Netherlands, and Spain country packs, including first-download, retry, and offline-cache behavior
 - migration 31 on an affected profile with three legacy current-day expedition offers: the database must retain active/history/seals while the selected district immediately regenerates five viable choices
+- migrations 32–35 and native MapKit verification for Forbidden Zones: schema-ledger collision/orphan-cell repair, idle-only Field Log selection, exclusive long-press routing, merged purple rendering, confirmed child-first removal/recreation, and immediate district/city denominator refresh
+- native MapKit palette verification that walked and normal loop-filled surfaces use the original zoom-aware burnt-orange fill in both appearances, while today's cells remain gold and Forbidden Zones remain purple
 - automatic all-available-city discovered-area medal awards, complete boundary-backed active-city district filters, the offline All Cities unlocked collection, and persisted concurrent expedition selection
 - the lightweight React `assets/loading-screen3.jpg`, root-level presentation before database/font/map readiness gates, one launch-wide clean-background second without a repeated React-handoff delay, native-thread localized phrase reveal, delayed Press to start pulse, strictly post-press loading state, independent safe-corner version, slow map fade, and Reduce Motion behavior
 

@@ -921,11 +921,92 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(32, "add_forbidden_zones", async () => {
+    await ensureForbiddenZoneSchema(db);
+  });
+
+  // Development builds can carry a migration id written by another branch.
+  // Repair the actual schema under a new ledger entry, then enforce the same
+  // idempotent invariant even if that numeric id is already present as well.
+  await applyMigration(33, "repair_forbidden_zone_schema", async () => {
+    await ensureForbiddenZoneSchema(db);
+  });
+  await ensureForbiddenZoneSchema(db);
+  await applyMigration(34, "add_forbidden_zone_comments", async () => {
+    await ensureForbiddenZoneCommentColumn(db);
+  });
+  await ensureForbiddenZoneCommentColumn(db);
+  await applyMigration(35, "remove_orphaned_forbidden_zone_cells", async () => {
+    await ensureNoOrphanedForbiddenZoneCells(db);
+  });
+  // Development migration ledgers can collide across branches, so enforce the
+  // repair invariant even if migration id 35 was already claimed elsewhere.
+  await ensureNoOrphanedForbiddenZoneCells(db);
+
   await db.runAsync(`
     UPDATE collected_medals
     SET presentation_state = 'pending'
     WHERE presentation_state = 'presenting'
   `);
+}
+
+async function ensureForbiddenZoneSchema(db: SQLite.SQLiteDatabase) {
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS forbidden_zones (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      geometry_json TEXT NOT NULL,
+      area_m2 REAL NOT NULL,
+      comment TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS forbidden_zone_cells (
+      forbidden_zone_id INTEGER NOT NULL,
+      cell_size_m INTEGER NOT NULL,
+      cell_x INTEGER NOT NULL,
+      cell_y INTEGER NOT NULL,
+      PRIMARY KEY (forbidden_zone_id, cell_x, cell_y),
+      UNIQUE (cell_x, cell_y),
+      FOREIGN KEY (forbidden_zone_id) REFERENCES forbidden_zones (id)
+        ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS forbidden_zone_cells_bounds_index
+      ON forbidden_zone_cells (cell_x, cell_y);
+  `);
+}
+
+async function ensureForbiddenZoneCommentColumn(db: SQLite.SQLiteDatabase) {
+  const columns = await db.getAllAsync<{ name: string }>(
+    "PRAGMA table_info(forbidden_zones)"
+  );
+
+  if (!columns.some((column) => column.name === "comment")) {
+    await db.execAsync("ALTER TABLE forbidden_zones ADD COLUMN comment TEXT;");
+  }
+}
+
+async function ensureNoOrphanedForbiddenZoneCells(
+  db: SQLite.SQLiteDatabase
+) {
+  const result = await db.runAsync(`
+    DELETE FROM forbidden_zone_cells
+    WHERE NOT EXISTS (
+      SELECT 1
+      FROM forbidden_zones
+      WHERE forbidden_zones.id = forbidden_zone_cells.forbidden_zone_id
+    )
+  `);
+
+  if (result.changes > 0) {
+    await db.runAsync("DELETE FROM zone_completion_snapshots");
+    await db.runAsync(`
+      UPDATE exploration_revisions
+      SET revision = revision + 1
+      WHERE mode = 'walk'
+    `);
+  }
 }
 
 async function applyMigration(id: number, name: string, migration: () => Promise<void>) {

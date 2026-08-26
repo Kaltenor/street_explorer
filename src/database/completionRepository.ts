@@ -94,6 +94,7 @@ export type CachedZoneCompletionStats = {
   completionStatus: "available" | "invalid_boundary" | "too_large";
   directlyWalkedCells: number;
   exploredCells: number;
+  forbiddenCells: number;
   inferredCells: number;
   loopFilledCells: number;
   permanentlyCompleted: boolean;
