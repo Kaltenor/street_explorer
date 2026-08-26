@@ -6,6 +6,10 @@ const prefetchSource = readFileSync(
   new URL("../src/services/launchCompletionPrefetch.ts", import.meta.url),
   "utf8"
 );
+const zoneCompletionSource = readFileSync(
+  new URL("../src/services/zoneCompletion.ts", import.meta.url),
+  "utf8"
+);
 
 assert.match(appSource, /prefetchLaunchCompletion/);
 assert.match(appSource, /!isMapLaunchReady/);
@@ -18,9 +22,12 @@ assert.match(prefetchSource, /getSavedCompletionObjective/);
 assert.match(prefetchSource, /getSavedPlayerLocation/);
 assert.match(prefetchSource, /getZoneCompletionSnapshot/);
 assert.match(prefetchSource, /getZoneAchievement/);
-assert.match(prefetchSource, /saveCachedZoneTotal/);
 assert.match(prefetchSource, /completionPercent: 100/);
 assert.match(prefetchSource, /getExploredCellRecordsWithinBounds/);
+assert.doesNotMatch(prefetchSource, /saveCachedZoneTotal/);
 assert.doesNotMatch(prefetchSource, /fetchNearbyOsmZones/);
+assert.match(zoneCompletionSource, /completionPercent: achievement \? 100 : completionPercent/);
+assert.match(zoneCompletionSource, /totalZoneCells: displayedTotalZoneCells/);
+assert.match(zoneCompletionSource, /displayedExploredCells = achievement/);
 
 console.log("Launch completion prefetch regression checks passed.");
