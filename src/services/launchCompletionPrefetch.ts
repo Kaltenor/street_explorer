@@ -9,20 +9,16 @@ import {
   saveZoneCompletionSnapshot,
   type ZoneCompletionSnapshot
 } from "../database/completionRepository";
-import {
-  getSavedCompletionObjective,
-  getSavedPlayerLocation
-} from "../database/settingsRepository";
+import { getSavedCompletionObjective } from "../database/settingsRepository";
 import {
   calculateZoneCompletionStats,
   getZoneBounds,
   getZoneGeometryFingerprint,
-  isPointInsideZone,
   isZoneCompletionEligible,
   type ZoneCompletionStats
 } from "./zoneCompletion";
 import { doesDistrictGeometryBelongToCity } from "./zoneBoundaryPolicy";
-import type { ActivityMode, GpsPoint } from "../types/walk";
+import type { ActivityMode } from "../types/walk";
 
 const PREFETCH_MODE: ActivityMode = "walk";
 
@@ -33,20 +29,15 @@ export type LaunchCompletionPrefetchResult = {
 };
 
 export async function prefetchLaunchCompletion(): Promise<LaunchCompletionPrefetchResult> {
-  const [savedObjective, savedLocation, cities, districts, explorationRevision] =
-    await Promise.all([
-      getSavedCompletionObjective(),
-      getSavedPlayerLocation(),
-      getCachedZones("city"),
-      getCachedZones("district"),
-      getExplorationRevision(PREFETCH_MODE)
-    ]);
-  const targetZones = collectLaunchZones({
-    cities,
-    districts,
-    savedLocation,
-    savedObjectiveZone: savedObjective?.zone ?? null
-  });
+  // MapScreen reports launch-ready only after it has resolved the foreground GPS
+  // objective and awaited its save chain, so this is the final district/city the
+  // first interactive map frame will use.
+  const [savedObjective, cities, explorationRevision] = await Promise.all([
+    getSavedCompletionObjective(),
+    getCachedZones("city"),
+    getExplorationRevision(PREFETCH_MODE)
+  ]);
+  const targetZones = collectLaunchZones(savedObjective?.zone ?? null, cities);
   let calculatedZoneCount = 0;
   let reusedZoneCount = 0;
 
@@ -67,63 +58,35 @@ export async function prefetchLaunchCompletion(): Promise<LaunchCompletionPrefet
   };
 }
 
-function collectLaunchZones(input: {
-  cities: CachedZone[];
-  districts: CachedZone[];
-  savedLocation: GpsPoint | null;
-  savedObjectiveZone: CachedZone | null;
-}) {
-  const zonesById = new Map<string, CachedZone>();
-  const citiesById = new Map(input.cities.map((city) => [city.id, city]));
-  const addZone = (zone: CachedZone | null | undefined) => {
-    if (zone && isZoneCompletionEligible(zone)) {
-      zonesById.set(zone.id, zone);
-    }
-  };
-  const addCityPair = (city: CachedZone | null, district?: CachedZone | null) => {
-    addZone(city);
-    addZone(district);
-  };
-
-  const savedZone = input.savedObjectiveZone;
-
-  if (savedZone) {
-    addZone(savedZone);
-
-    if (savedZone.type === "district") {
-      const savedCity =
-        (savedZone.parentZoneId ? citiesById.get(savedZone.parentZoneId) : null) ??
-        input.cities.find((city) => doesDistrictGeometryBelongToCity(savedZone, city)) ??
-        null;
-      addCityPair(savedCity, savedZone);
-    } else if (savedZone.type === "city") {
-      addZone(savedZone);
-    }
+function collectLaunchZones(
+  savedObjectiveZone: CachedZone | null,
+  cities: CachedZone[]
+) {
+  if (!savedObjectiveZone || !isZoneCompletionEligible(savedObjectiveZone)) {
+    return [];
   }
 
-  if (input.savedLocation) {
-    const locationCity = findContainingZone(input.savedLocation, input.cities);
-    const locationDistrict = locationCity
-      ? findContainingZone(
-          input.savedLocation,
-          input.districts.filter((district) =>
-            doesDistrictGeometryBelongToCity(district, locationCity)
-          )
-        )
-      : null;
-    addCityPair(locationCity, locationDistrict);
+  const zonesById = new Map<string, CachedZone>([
+    [savedObjectiveZone.id, savedObjectiveZone]
+  ]);
+
+  if (savedObjectiveZone.type === "district") {
+    const parentCity =
+      (savedObjectiveZone.parentZoneId
+        ? cities.find((city) => city.id === savedObjectiveZone.parentZoneId)
+        : null) ??
+      cities.find((city) =>
+        isZoneCompletionEligible(city) &&
+        doesDistrictGeometryBelongToCity(savedObjectiveZone, city)
+      ) ??
+      null;
+
+    if (parentCity && isZoneCompletionEligible(parentCity)) {
+      zonesById.set(parentCity.id, parentCity);
+    }
   }
 
   return [...zonesById.values()];
-}
-
-function findContainingZone(
-  point: Pick<GpsPoint, "latitude" | "longitude">,
-  zones: CachedZone[]
-) {
-  return zones.find(
-    (zone) => isZoneCompletionEligible(zone) && isPointInsideZone(point, zone)
-  ) ?? null;
 }
 
 async function prefetchZoneCompletion(
