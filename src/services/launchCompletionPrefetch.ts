@@ -6,7 +6,6 @@ import {
   getExploredCellRecordsWithinBounds,
   getZoneAchievement,
   getZoneCompletionSnapshot,
-  saveCachedZoneTotal,
   saveZoneCompletionSnapshot,
   type ZoneCompletionSnapshot
 } from "../database/completionRepository";
@@ -138,24 +137,18 @@ async function prefetchZoneCompletion(
   ]);
 
   if (achievement) {
-    const permanentStats = buildPermanentCompletionStats(snapshot?.stats, achievement);
     const permanentSnapshot: ZoneCompletionSnapshot = {
       calculatedAt: new Date().toISOString(),
       explorationRevision,
       geometryFingerprint,
       mode: PREFETCH_MODE,
-      stats: permanentStats,
+      stats: buildPermanentCompletionStats(snapshot?.stats, achievement),
       zoneId: zone.id
     };
 
-    // A completed administrative area is an earned permanent state. Freeze the
-    // denominator at the earned value under the current geometry fingerprint so
-    // later unrelated exploration or a boundary refresh cannot visually demote it.
-    await saveCachedZoneTotal(
-      zone.id,
-      achievement.totalZoneCells,
-      geometryFingerprint
-    );
+    // Completion achievements are immutable game progress. Refresh only the
+    // derived snapshot here. Do not rewrite zone_cell_totals because that table
+    // stores the raw geometry denominator before Forbidden Zone deductions.
     await saveZoneCompletionSnapshot(permanentSnapshot);
     return "reused";
   }
@@ -203,10 +196,6 @@ function buildPermanentCompletionStats(
     stats?.exploredCells ?? 0,
     achievement.exploredCells
   );
-  const totalZoneCells = Math.min(
-    exploredCells,
-    stats?.totalZoneCells ?? achievement.totalZoneCells
-  );
 
   return {
     completedAt: achievement.completedAt,
@@ -218,6 +207,6 @@ function buildPermanentCompletionStats(
     inferredCells: stats?.inferredCells ?? 0,
     loopFilledCells: stats?.loopFilledCells ?? 0,
     permanentlyCompleted: true,
-    totalZoneCells
+    totalZoneCells: achievement.totalZoneCells
   };
 }
