@@ -124,6 +124,11 @@ const settingsSource = readFileSync(
   new URL("../src/database/settingsRepository.ts", import.meta.url),
   "utf8"
 );
+const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
+const launchCompletionPrefetchSource = readFileSync(
+  new URL("../src/services/launchCompletionPrefetch.ts", import.meta.url),
+  "utf8"
+);
 
 assert.match(completionSource, /await onZonesUpdated\(\)/);
 assert.match(mapSource, /const reloadSavedCompletionObjective = useCallback/);
@@ -217,6 +222,24 @@ assert.ok(
     mapSource.includes("getExploredCellRecordsWithinBounds(objective.mode, bounds)"),
   "the completion catalogue and active objective avoid full-ledger scans for bounded zones"
 );
+assert.match(appSource, /prefetchLaunchCompletion/);
+assert.match(appSource, /!isMapLaunchReady/);
+assert.match(appSource, /isLaunchCompletionPrefetchReady/);
+assert.match(
+  appSource,
+  /isReady=\{[\s\S]*isMapLaunchReady &&[\s\S]*isLaunchCompletionPrefetchReady[\s\S]*\}/
+);
+assert.match(launchCompletionPrefetchSource, /getSavedCompletionObjective/);
+assert.match(launchCompletionPrefetchSource, /getSavedPlayerLocation/);
+assert.match(launchCompletionPrefetchSource, /getZoneCompletionSnapshot/);
+assert.match(launchCompletionPrefetchSource, /getZoneAchievement/);
+assert.match(launchCompletionPrefetchSource, /completionPercent: 100/);
+assert.match(launchCompletionPrefetchSource, /getExploredCellRecordsWithinBounds/);
+assert.doesNotMatch(launchCompletionPrefetchSource, /saveCachedZoneTotal/);
+assert.doesNotMatch(launchCompletionPrefetchSource, /fetchNearbyOsmZones/);
+assert.match(zoneCompletionSource, /completionPercent: achievement \? 100 : completionPercent/);
+assert.match(zoneCompletionSource, /totalZoneCells: displayedTotalZoneCells/);
+assert.match(zoneCompletionSource, /displayedExploredCells = achievement/);
 
 function boundarySquare(minLatitude, minLongitude, maxLatitude, maxLongitude) {
   return [
@@ -283,6 +306,8 @@ console.log("PASS local OSM boundaries request complete relation-member geometry
 console.log("PASS exact cached boundaries reject incomplete-response downgrades");
 console.log("PASS saved objectives reload after boundary caches are repopulated");
 console.log("PASS launch GPS selects the official district before its city and preserves the saved fallback");
+console.log("PASS launch completion prefetch keeps district and city work behind the branded overlay");
+console.log("PASS earned zone achievements stay presented at 100 percent");
 console.log("PASS long press switches same-city districts directly and reserves the scope chooser for cross-city holds");
 console.log("PASS low-zoom district holds use bounded city-consistent map-space probes");
 console.log("PASS recording Start restores walking-scale zoom around the persistent player");
