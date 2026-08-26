@@ -1,0 +1,204 @@
+{
+  "id": "decines-charpieu-v1",
+  "cityId": "decines-charpieu-fr",
+  "cityZoneId": "relation/121827",
+  "cityName": {
+    "en": "Décines-Charpieu",
+    "fr": "Décines-Charpieu"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "library in France",
+        "fr": "centre culturel arménien en France"
+      },
+      "externalIdentity": {
+        "id": "Q16507430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-centre-national-de-la-memoire-armenienne-q16507430",
+      "latitude": 45.7681,
+      "longitude": 4.9469,
+      "name": {
+        "en": "centre national de la mémoire arménienne",
+        "fr": "centre national de la mémoire arménienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41794898",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-eglise-saint-pierre-de-decines-charpieu-q41794898",
+      "latitude": 45.76313,
+      "longitude": 4.96585,
+      "name": {
+        "en": "église Saint-Pierre de Décines-Charpieu",
+        "fr": "église Saint-Pierre de Décines-Charpieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in Lyon, France",
+        "fr": "parc de l'agglomération lyonnaise"
+      },
+      "externalIdentity": {
+        "id": "Q8387",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-grand-parc-de-miribel-jonage-q8387",
+      "latitude": 45.80583,
+      "longitude": 4.93639,
+      "name": {
+        "en": "Grand Parc de Miribel-Jonage",
+        "fr": "Grand Parc de Miribel-Jonage"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-purpose indoor arena in Lyon, France",
+        "fr": "salle de spectacles et de compétititions sportives à Décines-Charpieu"
+      },
+      "externalIdentity": {
+        "id": "Q107719069",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-ldlc-arena-q107719069",
+      "latitude": 45.769148,
+      "longitude": 4.980463,
+      "name": {
+        "en": "LDLC Arena",
+        "fr": "LDLC Arena"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Décines-Charpieu, France",
+        "fr": "cinéma à Décines-Charpieu, France"
+      },
+      "externalIdentity": {
+        "id": "Q43051358",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-le-toboggan-q43051358",
+      "latitude": 45.768775,
+      "longitude": 4.955586111,
+      "name": {
+        "en": "Le Toboggan",
+        "fr": "Le Toboggan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "organization",
+        "fr": "centre culturel dédié à la culture arménienne en France"
+      },
+      "externalIdentity": {
+        "id": "Q3279764",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-maison-de-la-culture-armenienne-de-decines-q3279764",
+      "latitude": 45.7682,
+      "longitude": 4.944529722,
+      "name": {
+        "en": "maison de la culture arménienne de Décines",
+        "fr": "maison de la culture arménienne de Décines"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136052707",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-monument-aux-morts-de-decines-charpieu-q136052707",
+      "latitude": 45.763,
+      "longitude": 4.96528,
+      "name": {
+        "en": "monument aux morts de Décines-Charpieu",
+        "fr": "monument aux morts de Décines-Charpieu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q54392919",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-ol-le-musee-q54392919",
+      "latitude": 45.766807,
+      "longitude": 4.982323,
+      "name": {
+        "en": "OL Le Musée",
+        "fr": "OL Le Musée"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "stadium",
+        "fr": "stade de football situé à Décines-Charpieu, dans la métropole de Lyon, France"
+      },
+      "externalIdentity": {
+        "id": "Q8507",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-parc-olympique-lyonnais-q8507",
+      "latitude": 45.765224,
+      "longitude": 4.982131,
+      "name": {
+        "en": "Parc Olympique lyonnais",
+        "fr": "Parc Olympique lyonnais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "monument in Décines-Charpieu, France",
+        "fr": "monument situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15961059",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "decines-charpieu-memorial-du-genocide-armenien-de-decines-charpieu-q15961059",
+      "latitude": 45.768579,
+      "longitude": 4.947296,
+      "name": {
+        "en": "mémorial du génocide arménien de Décines-Charpieu",
+        "fr": "mémorial du génocide arménien de Décines-Charpieu"
+      }
+    }
+  ]
+}

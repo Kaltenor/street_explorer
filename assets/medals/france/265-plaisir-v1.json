@@ -1,0 +1,204 @@
+{
+  "id": "plaisir-v1",
+  "cityId": "plaisir-fr",
+  "cityZoneId": "relation/51912",
+  "cityName": {
+    "en": "Plaisir",
+    "fr": "Plaisir"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Plaisir is an important witness to the city's history.",
+        "fr": "château à Plaisir (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q22923737",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-chateau-de-plaisir-q22923737",
+      "latitude": 48.81465,
+      "longitude": 1.95319,
+      "name": {
+        "en": "château de Plaisir",
+        "fr": "château de Plaisir"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087565",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "plaisir-chateau-pa00087565",
+      "latitude": 48.813413510797,
+      "longitude": 1.9526734035580402,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087566",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "plaisir-eglise-pa00087566",
+      "latitude": 48.8163663237787,
+      "longitude": 1.9491676960718,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q22923738",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-eglise-saint-pierre-de-plaisir-q22923738",
+      "latitude": 48.81638,
+      "longitude": 1.94918,
+      "name": {
+        "en": "église Saint-Pierre de Plaisir",
+        "fr": "église Saint-Pierre de Plaisir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q3078957",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-foret-de-sainte-apolline-q3078957",
+      "latitude": 48.8062,
+      "longitude": 1.9318,
+      "name": {
+        "en": "forêt de Sainte-Apolline",
+        "fr": "forêt de Sainte-Apolline"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Yvelines department, France",
+        "fr": "siège municipal de Plaisir, dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119321980",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-mairie-de-plaisir-q119321980",
+      "latitude": 48.817350723,
+      "longitude": 1.947191473,
+      "name": {
+        "en": "mairie de Plaisir",
+        "fr": "mairie de Plaisir"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Yvelines department, France",
+        "fr": "monument aux morts des Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136068565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-monument-aux-morts-de-plaisir-q136068565",
+      "latitude": 48.8165395,
+      "longitude": 1.9490765,
+      "name": {
+        "en": "monument aux morts de Plaisir",
+        "fr": "monument aux morts de Plaisir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "shopping mall in Plaisir",
+        "fr": "centre commercial situé à Plaisir"
+      },
+      "externalIdentity": {
+        "id": "Q113840052",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-mon-grand-plaisir-q113840052",
+      "latitude": 48.826867568,
+      "longitude": 1.959121971,
+      "name": {
+        "en": "Mon Grand Plaisir",
+        "fr": "Mon Grand Plaisir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Plaisir, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2096833",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-plaisir-grignon-q2096833",
+      "latitude": 48.83183,
+      "longitude": 1.943338,
+      "name": {
+        "en": "Plaisir - Grignon",
+        "fr": "Plaisir - Grignon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Plaisir, France",
+        "fr": "gare française"
+      },
+      "externalIdentity": {
+        "id": "Q3097278",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisir-plaisir-les-clayes-q3097278",
+      "latitude": 48.830796,
+      "longitude": 1.960008,
+      "name": {
+        "en": "Plaisir - Les Clayes",
+        "fr": "Plaisir - Les Clayes"
+      }
+    }
+  ]
+}

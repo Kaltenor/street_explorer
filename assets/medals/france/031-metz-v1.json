@@ -1,0 +1,394 @@
+{
+  "id": "metz-v1",
+  "cityId": "metz-fr",
+  "cityZoneId": "relation/450381",
+  "cityName": {
+    "en": "Metz",
+    "fr": "Metz"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Arnould (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Arnould (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106809",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-abbaye-saint-arnould-ancienne-pa00106809",
+      "latitude": 49.1181158868968,
+      "longitude": 6.17154495141807,
+      "name": {
+        "en": "Abbaye Saint-Arnould (ancienne)",
+        "fr": "Abbaye Saint-Arnould (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Pierre is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Pierre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106812",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-ancien-abbaye-saint-pierre-pa00106812",
+      "latitude": 49.1150654649795,
+      "longitude": 6.16933713140274,
+      "name": {
+        "en": "Ancien abbaye Saint-Pierre",
+        "fr": "Ancien abbaye Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Sainte-Glossinde is an important witness to the city's history.",
+        "fr": "Ancien abbaye Sainte-Glossinde est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106811",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-ancien-abbaye-sainte-glossinde-pa00106811",
+      "latitude": 49.1129029701587,
+      "longitude": 6.17265206125233,
+      "name": {
+        "en": "Ancien abbaye Sainte-Glossinde",
+        "fr": "Ancien abbaye Sainte-Glossinde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Etienne-le-Dépensié ou Dépenné is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Etienne-le-Dépensié ou Dépenné est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106830",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-ancien-eglise-saint-etienne-le-depensie-ou-depenne-pa00106830",
+      "latitude": 49.1149541637949,
+      "longitude": 6.18355961153556,
+      "name": {
+        "en": "Ancien église Saint-Etienne-le-Dépensié ou Dépenné",
+        "fr": "Ancien église Saint-Etienne-le-Dépensié ou Dépenné"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106817",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-cathedrale-saint-etienne-pa00106817",
+      "latitude": 49.1202106131118,
+      "longitude": 6.17569268081582,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Metz, France",
+        "fr": "musée de Metz, France"
+      },
+      "externalIdentity": {
+        "id": "Q1054169",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "metz-centre-pompidou-metz-q1054169",
+      "latitude": 49.108056,
+      "longitude": 6.18,
+      "name": {
+        "en": "centre Pompidou-Metz",
+        "fr": "centre Pompidou-Metz"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église des Grands Carmes (ruines de l'ancienne) is an important witness to the city's history.",
+        "fr": "Église des Grands Carmes (ruines de l'ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106828",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-eglise-des-grands-carmes-ruines-de-l-ancienne-pa00106828",
+      "latitude": 49.1224431022819,
+      "longitude": 6.18255755253714,
+      "name": {
+        "en": "Église des Grands Carmes (ruines de l'ancienne)",
+        "fr": "Église des Grands Carmes (ruines de l'ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église des Trinitaires (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église des Trinitaires (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-eglise-des-trinitaires-ancienne-pa00106836",
+      "latitude": 49.1206908788343,
+      "longitude": 6.1789101205582,
+      "name": {
+        "en": "Église des Trinitaires (ancienne)",
+        "fr": "Église des Trinitaires (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106829",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-eglise-notre-dame-pa00106829",
+      "latitude": 49.1166272521109,
+      "longitude": 6.1775223707772,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Eucaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Eucaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106831",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-eglise-saint-eucaire-pa00106831",
+      "latitude": 49.1180303607992,
+      "longitude": 6.184129123012,
+      "name": {
+        "en": "Église Saint-Eucaire",
+        "fr": "Église Saint-Eucaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106832",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-eglise-saint-martin-pa00106832",
+      "latitude": 49.1145039783473,
+      "longitude": 6.17711691236506,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Coislin is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Coislin compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106838",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-fontaine-coislin-pa00106838",
+      "latitude": 49.1143922339041,
+      "longitude": 6.18076659501277,
+      "name": {
+        "en": "Fontaine Coislin",
+        "fr": "Fontaine Coislin"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106839",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-fontaine-pa00106839",
+      "latitude": 49.1198575080835,
+      "longitude": 6.17863629208727,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort de Queuleu is an important witness to the city's history.",
+        "fr": "Fort de Queuleu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106840",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-fort-de-queuleu-pa00106840",
+      "latitude": 49.09571736576021,
+      "longitude": 6.204364388773205,
+      "name": {
+        "en": "Fort de Queuleu",
+        "fr": "Fort de Queuleu"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications is an important witness to the city's history.",
+        "fr": "Fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106841",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-fortifications-pa00106841",
+      "latitude": 49.1207945902433,
+      "longitude": 6.19110849068801,
+      "name": {
+        "en": "Fortifications",
+        "fr": "Fortifications"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106852",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-hotel-de-ville-pa00106852",
+      "latitude": 49.1196277445923,
+      "longitude": 6.17647725295417,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble dit Grand magasin de la Citadelle is an important witness to the city's history.",
+        "fr": "Immeuble dit Grand magasin de la Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106861",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-immeuble-dit-grand-magasin-de-la-citadelle-pa00106861",
+      "latitude": 49.1141329514084,
+      "longitude": 6.16958981798689,
+      "name": {
+        "en": "Immeuble dit Grand magasin de la Citadelle",
+        "fr": "Immeuble dit Grand magasin de la Citadelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musées de la Cour d'or is one of the city's notable cultural landmarks.",
+        "fr": "musées de la Cour d'or compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0529",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "metz-musees-de-la-cour-d-or-m0529",
+      "latitude": 49.121051,
+      "longitude": 6.177978,
+      "name": {
+        "en": "musées de la Cour d'or",
+        "fr": "musées de la Cour d'or"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106920",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-theatre-municipal-pa00106920",
+      "latitude": 49.1217217165961,
+      "longitude": 6.17269572792837,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00106913",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "metz-palais-de-justice-pa00106913",
+      "latitude": 49.1170546633378,
+      "longitude": 6.17070352138588,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

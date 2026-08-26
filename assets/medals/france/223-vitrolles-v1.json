@@ -1,0 +1,204 @@
+{
+  "id": "vitrolles-v1",
+  "cityId": "vitrolles-fr",
+  "cityZoneId": "relation/71321",
+  "cityName": {
+    "en": "Vitrolles",
+    "fr": "Vitrolles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Bouches-du-Rhône, in France",
+        "fr": "chapelle située dans les Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q49217445",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-chapelle-notre-dame-de-vie-des-penitents-bleus-q49217445",
+      "latitude": 43.4611,
+      "longitude": 5.2487,
+      "name": {
+        "en": "chapelle Notre-Dame-de-Vie, des Pénitents bleus",
+        "fr": "chapelle Notre-Dame-de-Vie, des Pénitents bleus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38389496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-eglise-notre-dame-de-pentecote-de-vitrolles-q38389496",
+      "latitude": 43.4486,
+      "longitude": 5.2477,
+      "name": {
+        "en": "église Notre-Dame-de-Pentecôte de Vitrolles",
+        "fr": "église Notre-Dame-de-Pentecôte de Vitrolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38589568",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-eglise-saint-gerard-tencque-de-vitrolles-q38589568",
+      "latitude": 43.46,
+      "longitude": 5.249,
+      "name": {
+        "en": "église Saint-Gérard-Tencque de Vitrolles",
+        "fr": "église Saint-Gérard-Tencque de Vitrolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Bouches-du-Rhône department, France",
+        "fr": "hôtel de ville de Vitrolles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q115942341",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-hotel-de-ville-de-vitrolles-q115942341",
+      "latitude": 43.44797,
+      "longitude": 5.24974,
+      "name": {
+        "en": "hôtel de ville de Vitrolles",
+        "fr": "hôtel de ville de Vitrolles"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Bouches-du-Rhône department, France",
+        "fr": "monument aux morts des Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136082809",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-monument-aux-morts-de-vitrolles-q136082809",
+      "latitude": 43.4480895,
+      "longitude": 5.249421,
+      "name": {
+        "en": "monument aux morts de Vitrolles",
+        "fr": "monument aux morts de Vitrolles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "télégraphe Chappe de Vitrolles is an important witness to the city's history.",
+        "fr": "station de ligne télégraphique Chappe"
+      },
+      "externalIdentity": {
+        "id": "Q141146015",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-telegraphe-chappe-de-vitrolles-q141146015",
+      "latitude": 43.477222222,
+      "longitude": 5.253055555,
+      "name": {
+        "en": "télégraphe Chappe de Vitrolles",
+        "fr": "télégraphe Chappe de Vitrolles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tower in Vitrolles (Bouches-du-Rhône)",
+        "fr": "tour à Vitrolles (Bouches-du-Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q22916311",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-tour-sarrasine-de-vitrolles-q22916311",
+      "latitude": 43.4608,
+      "longitude": 5.2488,
+      "name": {
+        "en": "tour sarrasine de Vitrolles",
+        "fr": "tour sarrasine de Vitrolles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Sarrasine (vestiges) is an important witness to the city's history.",
+        "fr": "Tour Sarrasine (vestiges) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081495",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vitrolles-tour-sarrasine-vestiges-pa00081495",
+      "latitude": 43.4608116388009,
+      "longitude": 5.24873897005359,
+      "name": {
+        "en": "Tour Sarrasine (vestiges)",
+        "fr": "Tour Sarrasine (vestiges)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Jules-Ladoumègue is a distinctive architectural landmark in the city.",
+        "fr": "stade à Vitrolles, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3495671",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-stade-jules-ladoumegue-q3495671",
+      "latitude": 43.4578,
+      "longitude": 5.24369,
+      "name": {
+        "en": "stade Jules-Ladoumègue",
+        "fr": "stade Jules-Ladoumègue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Vitrolles, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2462992",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitrolles-vitrolles-aeroport-marseille-provence-q2462992",
+      "latitude": 43.4425,
+      "longitude": 5.23722,
+      "name": {
+        "en": "Vitrolles-Aéroport-Marseille-Provence",
+        "fr": "Vitrolles-Aéroport-Marseille-Provence"
+      }
+    }
+  ]
+}

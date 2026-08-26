@@ -1,0 +1,204 @@
+{
+  "id": "gonesse-v1",
+  "cityId": "gonesse-fr",
+  "cityZoneId": "relation/138541",
+  "cityName": {
+    "en": "Gonesse",
+    "fr": "Gonesse"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "hôtel-Dieu à Gonesse (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q15660354",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-ancien-hotel-dieu-de-gonesse-q15660354",
+      "latitude": 48.9883,
+      "longitude": 2.4488,
+      "name": {
+        "en": "Ancien hôtel-Dieu de Gonesse",
+        "fr": "Ancien hôtel-Dieu de Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106146265",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-cimetiere-de-gonesse-q106146265",
+      "latitude": 48.9902,
+      "longitude": 2.4534,
+      "name": {
+        "en": "cimetière de Gonesse",
+        "fr": "cimetière de Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20857500",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-eglise-saint-francois-d-assise-de-gonesse-q20857500",
+      "latitude": 49.001739,
+      "longitude": 2.423246,
+      "name": {
+        "en": "église Saint-François-d'Assise de Gonesse",
+        "fr": "église Saint-François-d'Assise de Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gonesse-eglise-saint-pierre-saint-paul-pa00080071",
+      "latitude": 48.9879875149869,
+      "longitude": 2.44749531121623,
+      "name": {
+        "en": "Église Saint-Pierre Saint-Paul",
+        "fr": "Église Saint-Pierre Saint-Paul"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136055745",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-monument-aux-morts-de-gonesse-q136055745",
+      "latitude": 48.98593,
+      "longitude": 2.45026,
+      "name": {
+        "en": "monument aux morts de Gonesse",
+        "fr": "monument aux morts de Gonesse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire et de société is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire et de société compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1217",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "gonesse-musee-d-histoire-et-de-societe-m1217",
+      "latitude": 48.98648627101257,
+      "longitude": 2.4498761711643406,
+      "name": {
+        "en": "musée d'histoire et de société",
+        "fr": "musée d'histoire et de société"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de l'ancien hôtel-Dieu is an important witness to the city's history.",
+        "fr": "Vestiges de l'ancien hôtel-Dieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080072",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gonesse-vestiges-de-l-ancien-hotel-dieu-pa00080072",
+      "latitude": 48.9882240100472,
+      "longitude": 2.44817285372706,
+      "name": {
+        "en": "Vestiges de l'ancien hôtel-Dieu",
+        "fr": "Vestiges de l'ancien hôtel-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future shopping mall near Paris",
+        "fr": "projet commercial et immobilier en Ile-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q3060702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-europacity-q3060702",
+      "latitude": 48.9717,
+      "longitude": 2.4729,
+      "name": {
+        "en": "EuropaCity",
+        "fr": "EuropaCity"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q61039668",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-gonesse-q61039668",
+      "latitude": 48.978414,
+      "longitude": 2.475833,
+      "name": {
+        "en": "Gonesse",
+        "fr": "Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Gonesse, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119311062",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gonesse-mairie-de-gonesse-q119311062",
+      "latitude": 48.98636,
+      "longitude": 2.44989,
+      "name": {
+        "en": "mairie de Gonesse",
+        "fr": "mairie de Gonesse"
+      }
+    }
+  ]
+}

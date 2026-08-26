@@ -1,0 +1,204 @@
+{
+  "id": "fontenay-aux-roses-v1",
+  "cityId": "fontenay-aux-roses-fr",
+  "cityZoneId": "relation/37021",
+  "cityName": {
+    "en": "Fontenay-aux-Roses",
+    "fr": "Fontenay-aux-Roses"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château Boucicaut is an important witness to the city's history.",
+        "fr": "château situé à Fontenay-aux-Roses, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96605382",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-chateau-boucicaut-q96605382",
+      "latitude": 48.79026,
+      "longitude": 2.29008,
+      "name": {
+        "en": "château Boucicaut",
+        "fr": "château Boucicaut"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Laboissière is an important witness to the city's history.",
+        "fr": "château à Fontenay-aux-Roses (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q22924334",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-chateau-laboissiere-q22924334",
+      "latitude": 48.791839,
+      "longitude": 2.287959,
+      "name": {
+        "en": "château Laboissière",
+        "fr": "château Laboissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861587",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-eglise-saint-pierre-saint-paul-de-fontenay-aux-roses-q29861587",
+      "latitude": 48.79095,
+      "longitude": 2.28988,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de Fontenay-aux-Roses",
+        "fr": "église Saint-Pierre-Saint-Paul de Fontenay-aux-Roses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584489",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-eglise-saint-stanislas-des-blagis-q3584489",
+      "latitude": 48.78554,
+      "longitude": 2.30254,
+      "name": {
+        "en": "église Saint-Stanislas des Blagis",
+        "fr": "église Saint-Stanislas des Blagis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Fontenay-aux-Roses, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2443290",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-fontenay-aux-roses-q2443290",
+      "latitude": 48.7875,
+      "longitude": 2.291667,
+      "name": {
+        "en": "Fontenay-aux-Roses",
+        "fr": "Fontenay-aux-Roses"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Châtillon is an important witness to the city's history.",
+        "fr": "édifice militaire au sud de Paris puis premier centre de recherche du CEA"
+      },
+      "externalIdentity": {
+        "id": "Q3078166",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-fort-de-chatillon-q3078166",
+      "latitude": 48.79056,
+      "longitude": 2.27611,
+      "name": {
+        "en": "fort de Châtillon",
+        "fr": "fort de Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Fontenay-aux-Roses, France",
+        "fr": "édifice de Fontenay-aux-Roses, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412762",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-hotel-de-ville-de-fontenay-aux-roses-q83412762",
+      "latitude": 48.7913,
+      "longitude": 2.2865,
+      "name": {
+        "en": "hôtel de ville de Fontenay-aux-Roses",
+        "fr": "hôtel de ville de Fontenay-aux-Roses"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Fontenay-aux-Roses is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Fontenay-aux-Roses, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602260",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-monument-aux-morts-de-fontenay-aux-roses-q96602260",
+      "latitude": 48.79187,
+      "longitude": 2.28719,
+      "name": {
+        "en": "monument aux morts de Fontenay-aux-Roses",
+        "fr": "monument aux morts de Fontenay-aux-Roses"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Fontenay-aux-Roses, France",
+        "fr": "parc situé à Fontenay-aux-Roses, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601944",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-aux-roses-parc-sainte-barbe-q96601944",
+      "latitude": 48.79228,
+      "longitude": 2.29101,
+      "name": {
+        "en": "parc Sainte-Barbe",
+        "fr": "parc Sainte-Barbe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Propriété dite Laboissière is an important witness to the city's history.",
+        "fr": "Propriété dite Laboissière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088108",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fontenay-aux-roses-propriete-dite-laboissiere-pa00088108",
+      "latitude": 48.7918371763646,
+      "longitude": 2.28828117912717,
+      "name": {
+        "en": "Propriété dite Laboissière",
+        "fr": "Propriété dite Laboissière"
+      }
+    }
+  ]
+}

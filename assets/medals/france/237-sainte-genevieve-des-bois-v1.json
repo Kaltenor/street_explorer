@@ -1,0 +1,204 @@
+{
+  "id": "sainte-genevieve-des-bois-v1",
+  "cityId": "sainte-genevieve-des-bois-fr",
+  "cityZoneId": "relation/33338",
+  "cityName": {
+    "en": "Sainte-Geneviève-des-Bois",
+    "fr": "Sainte-Geneviève-des-Bois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "borne à fleur de lys n° 13 is a distinctive architectural landmark in the city.",
+        "fr": "borne frontière à Sainte-Geneviève-des-Bois (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924266",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-borne-a-fleur-de-lys-n-13-q22924266",
+      "latitude": 48.64512,
+      "longitude": 2.33508,
+      "name": {
+        "en": "borne à fleur de lys n° 13",
+        "fr": "borne à fleur de lys n° 13"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Sainte-Geneviève-des-Bois is an important witness to the city's history.",
+        "fr": "château à Sainte-Geneviève-des-Bois (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924259",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-chateau-de-sainte-genevieve-des-bois-q22924259",
+      "latitude": 48.63983,
+      "longitude": 2.33185,
+      "name": {
+        "en": "château de Sainte-Geneviève-des-Bois",
+        "fr": "château de Sainte-Geneviève-des-Bois"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-genevieve-des-bois-chateau-pa00088002",
+      "latitude": 48.6400993836511,
+      "longitude": 2.33227581175218,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Essonne, in France",
+        "fr": "cimetière en Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q631270",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-cimetiere-russe-de-sainte-genevieve-des-bois-q631270",
+      "latitude": 48.6312,
+      "longitude": 2.3457,
+      "name": {
+        "en": "cimetière russe de Sainte-Geneviève-des-Bois",
+        "fr": "cimetière russe de Sainte-Geneviève-des-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église orthodoxe russe Notre-Dame-de-l'Assomption is a distinctive architectural landmark in the city.",
+        "fr": "Église orthodoxe russe Notre-Dame-de-l'Assomption est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-genevieve-des-bois-eglise-orthodoxe-russe-notre-dame-de-l-assomption-pa00088003",
+      "latitude": 48.6318405397477,
+      "longitude": 2.34360291910324,
+      "name": {
+        "en": "Église orthodoxe russe Notre-Dame-de-l'Assomption",
+        "fr": "Église orthodoxe russe Notre-Dame-de-l'Assomption"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Essonne, in France",
+        "fr": "bâtiment de l'église située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109803880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-eglise-reformee-de-sainte-genevieve-des-bois-q109803880",
+      "latitude": 48.6446,
+      "longitude": 2.34643,
+      "name": {
+        "en": "église réformée de Sainte-Geneviève-des-Bois",
+        "fr": "église réformée de Sainte-Geneviève-des-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux combattants russes is a notable work of public art and local memory.",
+        "fr": "Monument aux combattants russes est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "Q33133991",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-monument-aux-combattants-russes-q33133991",
+      "latitude": 48.631,
+      "longitude": 2.34545,
+      "name": {
+        "en": "Monument aux combattants russes",
+        "fr": "Monument aux combattants russes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136077944",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-monument-aux-morts-de-sainte-genevieve-des-bois-q136077944",
+      "latitude": 48.633933,
+      "longitude": 2.334818,
+      "name": {
+        "en": "monument aux morts de Sainte-Geneviève-des-Bois",
+        "fr": "monument aux morts de Sainte-Geneviève-des-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux Russes blancs de Gallipoli is a notable work of public art and local memory.",
+        "fr": "monument aux Russes blancs de Gallipoli est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "Q16635624",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-monument-aux-russes-blancs-de-gallipoli-q16635624",
+      "latitude": 48.63180278,
+      "longitude": 2.34456944,
+      "name": {
+        "en": "monument aux Russes blancs de Gallipoli",
+        "fr": "monument aux Russes blancs de Gallipoli"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Sainte-Geneviève-des-Bois, Seine-et-Marne, France",
+        "fr": "édifice religieux catholique à Sainte-Geneviève-des-Bois (Essonne), en France"
+      },
+      "externalIdentity": {
+        "id": "Q38642676",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-genevieve-des-bois-eglise-saint-jean-marie-vianney-de-sainte-genevieve-des-bois-q38642676",
+      "latitude": 48.64977,
+      "longitude": 2.31412,
+      "name": {
+        "en": "église Saint-Jean-Marie-Vianney de Sainte-Geneviève-des-Bois",
+        "fr": "église Saint-Jean-Marie-Vianney de Sainte-Geneviève-des-Bois"
+      }
+    }
+  ]
+}

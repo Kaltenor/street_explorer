@@ -1,0 +1,204 @@
+{
+  "id": "cahors-v1",
+  "cityId": "cahors-fr",
+  "cityZoneId": "relation/122324",
+  "cityName": {
+    "en": "Cahors",
+    "fr": "Cahors"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien évêché concordataire, actuellement musée is one of the city's notable cultural landmarks.",
+        "fr": "Ancien évêché concordataire, actuellement musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA46000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-ancien-eveche-concordataire-actuellement-musee-pa46000015",
+      "latitude": 44.44836397158771,
+      "longitude": 1.43859717508166,
+      "name": {
+        "en": "Ancien évêché concordataire, actuellement musée",
+        "fr": "Ancien évêché concordataire, actuellement musée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien palais de Via connu sous l'appellation Château du Roi, actuelle prison d’État is an important witness to the city's history.",
+        "fr": "Ancien palais de Via connu sous l'appellation Château du Roi, actuelle prison d’État est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094998",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-ancien-palais-de-via-connu-sous-l-appellation-chateau-du-roi-actuelle-prison-d-etat-pa00094998",
+      "latitude": 44.4498901314437,
+      "longitude": 1.4421812250473103,
+      "name": {
+        "en": "Ancien palais de Via connu sous l'appellation Château du Roi, actuelle prison d’État",
+        "fr": "Ancien palais de Via connu sous l'appellation Château du Roi, actuelle prison d’État"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Anciens remparts is an important witness to the city's history.",
+        "fr": "Anciens remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-anciens-remparts-pa00095029",
+      "latitude": 44.45367058294081,
+      "longitude": 1.43037521684784,
+      "name": {
+        "en": "Anciens remparts",
+        "fr": "Anciens remparts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Laroque is an important witness to the city's history.",
+        "fr": "Château de Laroque est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095127",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-chateau-de-laroque-pa00095127",
+      "latitude": 44.4724970715507,
+      "longitude": 1.45156637517512,
+      "name": {
+        "en": "Château de Laroque",
+        "fr": "Château de Laroque"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Barthélémy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Barthélémy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095000",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-eglise-saint-barthelemy-pa00095000",
+      "latitude": 44.4520579961803,
+      "longitude": 1.44046796286989,
+      "name": {
+        "en": "Église Saint-Barthélémy",
+        "fr": "Église Saint-Barthélémy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Urcisse is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Urcisse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-eglise-saint-urcisse-pa00095001",
+      "latitude": 44.4461547529949,
+      "longitude": 1.4448173475597503,
+      "name": {
+        "en": "Église Saint-Urcisse",
+        "fr": "Église Saint-Urcisse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée Henri-Martin is one of the city's notable cultural landmarks.",
+        "fr": "Musée Henri-Martin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0576",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cahors-musee-henri-martin-m0576",
+      "latitude": 44.448506,
+      "longitude": 1.438286,
+      "name": {
+        "en": "Musée Henri-Martin",
+        "fr": "Musée Henri-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Jean XXII is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Jean XXII est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-palais-de-jean-xxii-pa00095025",
+      "latitude": 44.4517256441959,
+      "longitude": 1.44076633678366,
+      "name": {
+        "en": "Palais de Jean XXII",
+        "fr": "Palais de Jean XXII"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Valentré is a distinctive architectural landmark in the city.",
+        "fr": "Pont Valentré est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-pont-valentre-pa00095027",
+      "latitude": 44.4450771854859,
+      "longitude": 1.43175403338503,
+      "name": {
+        "en": "Pont Valentré",
+        "fr": "Pont Valentré"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Vestiges de l'amphithéâtre romain is one of the city's notable cultural landmarks.",
+        "fr": "Vestiges de l'amphithéâtre romain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA46000041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cahors-vestiges-de-l-amphitheatre-romain-pa46000041",
+      "latitude": 44.4454474524714,
+      "longitude": 1.44077626993961,
+      "name": {
+        "en": "Vestiges de l'amphithéâtre romain",
+        "fr": "Vestiges de l'amphithéâtre romain"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "la-teste-de-buch-v1",
+  "cityId": "la-teste-de-buch-fr",
+  "cityZoneId": "relation/109392",
+  "cityName": {
+    "en": "La Teste-de-Buch",
+    "fr": "La Teste-de-Buch"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in La Teste-de-Buch, France",
+        "fr": "Aérodrome d'Arcachon - La Teste-de-Buch, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2875379",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-aerodrome-d-arcachon-la-teste-de-buch-q2875379",
+      "latitude": 44.598612,
+      "longitude": -1.114722,
+      "name": {
+        "en": "aérodrome d'Arcachon - La Teste-de-Buch",
+        "fr": "aérodrome d'Arcachon - La Teste-de-Buch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Air Force base near Cazaux, Gironde, France",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q973830",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-base-aerienne-120-cazaux-q973830",
+      "latitude": 44.53222222,
+      "longitude": -1.12861111,
+      "name": {
+        "en": "base aérienne 120 Cazaux",
+        "fr": "base aérienne 120 Cazaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cabane tchanquée is a distinctive architectural landmark in the city.",
+        "fr": "cabane en bois perchée sur pilotis typique du bassin d'Arcachon"
+      },
+      "externalIdentity": {
+        "id": "Q2932236",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-cabane-tchanquee-q2932236",
+      "latitude": 44.694166666,
+      "longitude": -1.166388888,
+      "name": {
+        "en": "cabane tchanquée",
+        "fr": "cabane tchanquée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41764602",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-eglise-saint-pierre-es-liens-de-cazaux-q41764602",
+      "latitude": 44.5382,
+      "longitude": -1.1518,
+      "name": {
+        "en": "église Saint-Pierre-ès-Liens de Cazaux",
+        "fr": "église Saint-Pierre-ès-Liens de Cazaux"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Gironde department, France",
+        "fr": "monument aux morts de la Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136058578",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-monument-aux-morts-de-la-teste-de-buch-q136058578",
+      "latitude": 44.6310935,
+      "longitude": -1.1485868,
+      "name": {
+        "en": "monument aux morts de La Teste-de-Buch",
+        "fr": "monument aux morts de La Teste-de-Buch"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du pays de Buch et du bassin d’Arcachon is one of the city's notable cultural landmarks.",
+        "fr": "musée du pays de Buch et du bassin d’Arcachon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1223",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-teste-de-buch-musee-du-pays-de-buch-et-du-bassin-d-arcachon-m1223",
+      "latitude": 44.63166,
+      "longitude": -1.14812,
+      "name": {
+        "en": "musée du pays de Buch et du bassin d’Arcachon",
+        "fr": "musée du pays de Buch et du bassin d’Arcachon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41764600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-eglise-saint-vincent-de-la-teste-de-buch-q41764600",
+      "latitude": 44.63258,
+      "longitude": -1.14939,
+      "name": {
+        "en": "église Saint-Vincent de La Teste-de-Buch",
+        "fr": "église Saint-Vincent de La Teste-de-Buch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Teste-de-Buch, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2274288",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-la-teste-q2274288",
+      "latitude": 44.637045,
+      "longitude": -1.142729,
+      "name": {
+        "en": "La Teste",
+        "fr": "La Teste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "village dépendant de La Teste-de-Buch"
+      },
+      "externalIdentity": {
+        "id": "Q3411222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-pyla-sur-mer-q3411222",
+      "latitude": 44.633711,
+      "longitude": -1.201715,
+      "name": {
+        "en": "Pyla-sur-Mer",
+        "fr": "Pyla-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "zoo du Bassin d'Arcachon is a distinctive architectural landmark in the city.",
+        "fr": "parc zoologique français"
+      },
+      "externalIdentity": {
+        "id": "Q17462011",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-teste-de-buch-zoo-du-bassin-d-arcachon-q17462011",
+      "latitude": 44.5862,
+      "longitude": -1.13695,
+      "name": {
+        "en": "zoo du Bassin d'Arcachon",
+        "fr": "zoo du Bassin d'Arcachon"
+      }
+    }
+  ]
+}

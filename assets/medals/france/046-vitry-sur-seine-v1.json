@@ -1,0 +1,394 @@
+{
+  "id": "vitry-sur-seine-v1",
+  "cityId": "vitry-sur-seine-fr",
+  "cityZoneId": "relation/104768",
+  "cityName": {
+    "en": "Vitry-sur-Seine",
+    "fr": "Vitry-sur-Seine"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21030021",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-ancien-cimetiere-de-vitry-sur-seine-q21030021",
+      "latitude": 48.81036,
+      "longitude": 2.38125,
+      "name": {
+        "en": "Ancien cimetière de Vitry-sur-Seine",
+        "fr": "Ancien cimetière de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "artwork by Claude Viseux in Vitry-sur-Seine, France",
+        "fr": "œuvre de Claude Viseux à Vitry-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q23898612",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-capsulaire-f1-q23898612",
+      "latitude": 48.7941,
+      "longitude": 2.4155,
+      "name": {
+        "en": "Capsulaire f1",
+        "fr": "Capsulaire f1"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Vitry-sur-Seine is an important witness to the city's history.",
+        "fr": "château dans le Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q86118624",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-chateau-de-vitry-sur-seine-q86118624",
+      "latitude": 48.791639,
+      "longitude": 2.395944,
+      "name": {
+        "en": "château de Vitry-sur-Seine",
+        "fr": "château de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monumental sculpture by Jean Dubuffet, located in Vitry-sur-Seine, France",
+        "fr": "sculpture monumentale de Jean Dubuffet, située à Vitry-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q15716339",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-chaufferie-avec-cheminee-q15716339",
+      "latitude": 48.7924,
+      "longitude": 2.3869,
+      "name": {
+        "en": "Chaufferie avec cheminée",
+        "fr": "Chaufferie avec cheminée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Vitry-sur-Seine, France",
+        "fr": "ancien cinéma situé à Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88412961",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-cinema-le-rex-q88412961",
+      "latitude": 48.789512,
+      "longitude": 2.4018,
+      "name": {
+        "en": "cinéma Le Rex",
+        "fr": "cinéma Le Rex"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819896",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-eglise-notre-dame-de-nazareth-de-vitry-sur-seine-q29819896",
+      "latitude": 48.77687,
+      "longitude": 2.37727,
+      "name": {
+        "en": "église Notre-Dame-de-Nazareth de Vitry-sur-Seine",
+        "fr": "église Notre-Dame-de-Nazareth de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079921",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vitry-sur-seine-eglise-saint-germain-pa00079921",
+      "latitude": 48.7916164025761,
+      "longitude": 2.39434207632424,
+      "name": {
+        "en": "Église Saint-Germain",
+        "fr": "Église Saint-Germain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-eglise-saint-paul-de-vitry-sur-seine-q29819901",
+      "latitude": 48.77891,
+      "longitude": 2.39873,
+      "name": {
+        "en": "église Saint-Paul de Vitry-sur-Seine",
+        "fr": "église Saint-Paul de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée des sciences et du numérique"
+      },
+      "externalIdentity": {
+        "id": "Q3062141",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-exploradome-q3062141",
+      "latitude": 48.793145,
+      "longitude": 2.393114,
+      "name": {
+        "en": "Exploradôme",
+        "fr": "Exploradôme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Vitry-sur-Seine, Val-de-Marne, France",
+        "fr": "édifice de Vitry-sur-Seine, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409723",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-hotel-de-ville-de-vitry-sur-seine-q83409723",
+      "latitude": 48.78856,
+      "longitude": 2.38845,
+      "name": {
+        "en": "Hôtel de ville de Vitry-sur-Seine",
+        "fr": "Hôtel de ville de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bicycle-sharing station of Vélib’ Métropole network",
+        "fr": "station de vélopartage du réseau Vélib' Métropole"
+      },
+      "externalIdentity": {
+        "id": "Q86256188",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-jules-guesde-pont-du-port-a-l-anglais-q86256188",
+      "latitude": 48.79628807,
+      "longitude": 2.417212128,
+      "name": {
+        "en": "Jules Guesde - Pont du Port à l'Anglais",
+        "fr": "Jules Guesde - Pont du Port à l'Anglais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Vitry-sur-Seine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3098149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-les-ardoines-q3098149",
+      "latitude": 48.7825,
+      "longitude": 2.40944,
+      "name": {
+        "en": "Les Ardoines",
+        "fr": "Les Ardoines"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Vitry-sur-Seine is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88413317",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-monument-aux-morts-de-vitry-sur-seine-q88413317",
+      "latitude": 48.79078,
+      "longitude": 2.39868,
+      "name": {
+        "en": "monument aux morts de Vitry-sur-Seine",
+        "fr": "monument aux morts de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art contemporain du Val-de-Marne is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art contemporain du Val-de-Marne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0431",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vitry-sur-seine-musee-d-art-contemporain-du-val-de-marne-m0431",
+      "latitude": 48.792821,
+      "longitude": 2.387072,
+      "name": {
+        "en": "musée d'art contemporain du Val-de-Marne",
+        "fr": "musée d'art contemporain du Val-de-Marne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Île-de-France tramway station",
+        "fr": "station du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q77341613",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-musee-mac-val-q77341613",
+      "latitude": 48.792899,
+      "longitude": 2.386242,
+      "name": {
+        "en": "Musée MAC-VAL",
+        "fr": "Musée MAC-VAL"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Vitry-sur-Seine, France",
+        "fr": "parc situé à Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88413082",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-parc-du-coteau-marcel-rosette-q88413082",
+      "latitude": 48.78961,
+      "longitude": 2.38597,
+      "name": {
+        "en": "parc du Coteau - Marcel Rosette",
+        "fr": "parc du Coteau - Marcel Rosette"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "viaduc de la darse d'Alfortville is an important witness to the city's history.",
+        "fr": "pont sur la Seine reliant Choisy-le-Roi et Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17640445",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-viaduc-de-la-darse-d-alfortville-q17640445",
+      "latitude": 48.7758,
+      "longitude": 2.41358,
+      "name": {
+        "en": "viaduc de la darse d'Alfortville",
+        "fr": "viaduc de la darse d'Alfortville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q18745537",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-mairie-de-vitry-sur-seine-q18745537",
+      "latitude": 48.7899222,
+      "longitude": 2.38721944,
+      "name": {
+        "en": "Mairie de Vitry-sur-Seine",
+        "fr": "Mairie de Vitry-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Vitry-sur-Seine, France",
+        "fr": "place de Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q101029632",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-place-de-l-eglise-q101029632",
+      "latitude": 48.791650209,
+      "longitude": 2.39400619,
+      "name": {
+        "en": "place de l'Église",
+        "fr": "place de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge that spans the Seine river in Paris, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vitry-sur-seine-pont-du-port-a-l-anglais-q3397487",
+      "latitude": 48.797222222,
+      "longitude": 2.418888888,
+      "name": {
+        "en": "pont du Port-à-l'Anglais",
+        "fr": "pont du Port-à-l'Anglais"
+      }
+    }
+  ]
+}

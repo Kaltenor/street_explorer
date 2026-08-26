@@ -1,0 +1,204 @@
+{
+  "id": "gagny-v1",
+  "cityId": "gagny-fr",
+  "cityZoneId": "relation/162542",
+  "cityName": {
+    "en": "Gagny",
+    "fr": "Gagny"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Maison-Blanche is an important witness to the city's history.",
+        "fr": "château de Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q83716055",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-chateau-de-maison-blanche-q83716055",
+      "latitude": 48.87528,
+      "longitude": 2.54461,
+      "name": {
+        "en": "château de Maison-Blanche",
+        "fr": "château de Maison-Blanche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Gagny, France",
+        "fr": "château de Gagny en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q83717047",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-chateau-de-montguichet-q83717047",
+      "latitude": 48.885145,
+      "longitude": 2.554993,
+      "name": {
+        "en": "château de Montguichet",
+        "fr": "château de Montguichet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38590824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-eglise-saint-germain-de-gagny-q38590824",
+      "latitude": 48.884881,
+      "longitude": 2.535639,
+      "name": {
+        "en": "église Saint-Germain de Gagny",
+        "fr": "église Saint-Germain de Gagny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38506918",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-eglise-sainte-bernadette-de-gagny-q38506918",
+      "latitude": 48.8991,
+      "longitude": 2.54001,
+      "name": {
+        "en": "église Sainte-Bernadette de Gagny",
+        "fr": "église Sainte-Bernadette de Gagny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gagny, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2187463",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-gagny-q2187463",
+      "latitude": 48.88333,
+      "longitude": 2.52611,
+      "name": {
+        "en": "Gagny",
+        "fr": "Gagny"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Gagny, France",
+        "fr": "hôtel de ville dans la Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q33232359",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-hotel-de-ville-de-gagny-q33232359",
+      "latitude": 48.884865,
+      "longitude": 2.536629,
+      "name": {
+        "en": "hôtel de ville de Gagny",
+        "fr": "hôtel de ville de Gagny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gagny, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2393856",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-le-chenay-gagny-q2393856",
+      "latitude": 48.87715149,
+      "longitude": 2.5528481,
+      "name": {
+        "en": "Le Chénay - Gagny",
+        "fr": "Le Chénay - Gagny"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial located in Gagny, Seine-Saint-Denis (France)",
+        "fr": "monument érigé à Gagny, France"
+      },
+      "externalIdentity": {
+        "id": "Q33191733",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-monument-aux-morts-de-gagny-q33191733",
+      "latitude": 48.884967,
+      "longitude": 2.535881,
+      "name": {
+        "en": "monument aux morts de Gagny",
+        "fr": "monument aux morts de Gagny"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-monument-aux-morts-de-la-premiere-guerre-mondiale-de-gagny-q136096296",
+      "latitude": 48.890675,
+      "longitude": 2.537954,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale de Gagny",
+        "fr": "monument aux morts de la Première Guerre mondiale de Gagny"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Gagny, France",
+        "fr": "cinéma à Gagny, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860977",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gagny-theatre-andre-malraux-q61860977",
+      "latitude": 48.88409,
+      "longitude": 2.52965,
+      "name": {
+        "en": "théâtre André Malraux",
+        "fr": "théâtre André Malraux"
+      }
+    }
+  ]
+}

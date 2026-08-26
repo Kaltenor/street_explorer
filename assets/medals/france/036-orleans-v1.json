@@ -1,0 +1,394 @@
+{
+  "id": "orleans-v1",
+  "cityId": "orleans-fr",
+  "cityZoneId": "relation/147559",
+  "cityName": {
+    "en": "Orléans",
+    "fr": "Orléans"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région is an important witness to the city's history.",
+        "fr": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-abbaye-notre-dame-de-bonne-nouvelle-actuellement-prefecture-de-region-pa45000024",
+      "latitude": 47.8997619211674,
+      "longitude": 1.91050361250961,
+      "name": {
+        "en": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région",
+        "fr": "Ancien abbaye Notre-Dame de Bonne-Nouvelle, actuellement préfecture de région"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien évêché, puis bibliothèque municipale, actuellement annexe de la médiathèque is one of the city's notable cultural landmarks.",
+        "fr": "Ancien évêché, puis bibliothèque municipale, actuellement annexe de la médiathèque compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098848",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-eveche-puis-bibliotheque-municipale-actuellement-annexe-de-la-mediatheque-pa00098848",
+      "latitude": 47.9023772432605,
+      "longitude": 1.91214057898837,
+      "name": {
+        "en": "Ancien évêché, puis bibliothèque municipale, actuellement annexe de la médiathèque",
+        "fr": "Ancien évêché, puis bibliothèque municipale, actuellement annexe de la médiathèque"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien fort des Tourelles is an important witness to the city's history.",
+        "fr": "Ancien fort des Tourelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-fort-des-tourelles-pa45000026",
+      "latitude": 47.8944428941669,
+      "longitude": 1.9061441299741297,
+      "name": {
+        "en": "Ancien fort des Tourelles",
+        "fr": "Ancien fort des Tourelles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôtel de ville ou hôtel des Créneaux, ancien Musée des Beaux-Arts et Sciences naturelles, actuellement annexe du Conservatoire municipal de musique is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôtel de ville ou hôtel des Créneaux, ancien Musée des Beaux-Arts et Sciences naturelles, actuellement annexe du Conservatoire municipal de musique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098855",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-ancien-hotel-de-ville-ou-hotel-des-creneaux-ancien-musee-des-beaux-arts-et-sciences-naturelles-actuellement-annexe-du-conservatoire-municipal-de-musique-pa00098855",
+      "latitude": 47.90088171176,
+      "longitude": 1.90554571506094,
+      "name": {
+        "en": "Ancien hôtel de ville ou hôtel des Créneaux, ancien Musée des Beaux-Arts et Sciences naturelles, actuellement annexe du Conservatoire municipal de musique",
+        "fr": "Ancien hôtel de ville ou hôtel des Créneaux, ancien Musée des Beaux-Arts et Sciences naturelles, actuellement annexe du Conservatoire municipal de musique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Croix is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Croix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-cathedrale-sainte-croix-pa00098836",
+      "latitude": 47.9018958921136,
+      "longitude": 1.91038654964121,
+      "name": {
+        "en": "Cathédrale Sainte-Croix",
+        "fr": "Cathédrale Sainte-Croix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Conservatoire de musique dit Institut musical is one of the city's notable cultural landmarks.",
+        "fr": "Conservatoire de musique dit Institut musical compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098890",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-conservatoire-de-musique-dit-institut-musical-pa00098890",
+      "latitude": 47,
+      "longitude": 1,
+      "name": {
+        "en": "Conservatoire de musique dit Institut musical",
+        "fr": "Conservatoire de musique dit Institut musical"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de Recouvrance is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de Recouvrance est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098842",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-notre-dame-de-recouvrance-pa00098842",
+      "latitude": 47.89876572469841,
+      "longitude": 1.90097607095836,
+      "name": {
+        "en": "Église Notre-Dame de Recouvrance",
+        "fr": "Église Notre-Dame de Recouvrance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Aignan is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Aignan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098843",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-saint-aignan-pa00098843",
+      "latitude": 47.8989990347113,
+      "longitude": 1.91552061429413,
+      "name": {
+        "en": "Église Saint-Aignan",
+        "fr": "Église Saint-Aignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Euverte is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Euverte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098844",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-saint-euverte-pa00098844",
+      "latitude": 47.9027566496626,
+      "longitude": 1.9178933105885898,
+      "name": {
+        "en": "Église Saint-Euverte",
+        "fr": "Église Saint-Euverte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre du Martroi is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre du Martroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098846",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-saint-pierre-du-martroi-pa00098846",
+      "latitude": 47.9023700518508,
+      "longitude": 1.90576330252512,
+      "name": {
+        "en": "Église Saint-Pierre du Martroi",
+        "fr": "Église Saint-Pierre du Martroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-le-Puellier is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-le-Puellier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-eglise-saint-pierre-le-puellier-pa00098847",
+      "latitude": 47.8987646139844,
+      "longitude": 1.91174526983484,
+      "name": {
+        "en": "Église Saint-Pierre-le-Puellier",
+        "fr": "Église Saint-Pierre-le-Puellier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine monumentale dite « La Source humaine » is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine monumentale dite « La Source humaine » compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000050",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-fontaine-monumentale-dite-la-source-humaine-pa45000050",
+      "latitude": 47.90772817781978,
+      "longitude": 1.9118599062723542,
+      "name": {
+        "en": "Fontaine monumentale dite « La Source humaine »",
+        "fr": "Fontaine monumentale dite « La Source humaine »"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "hôtel Cabu, musée d'histoire et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "hôtel Cabu, musée d'histoire et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0287",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-hotel-cabu-musee-d-histoire-et-d-archeologie-m0287",
+      "latitude": 47.900952,
+      "longitude": 1.905193,
+      "name": {
+        "en": "hôtel Cabu, musée d'histoire et d'archéologie",
+        "fr": "hôtel Cabu, musée d'histoire et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Hôtel Cabu ou maison dite de Diane de Poitiers, actuellement Musée archéologique et historique de l'Orléanais is one of the city's notable cultural landmarks.",
+        "fr": "Hôtel Cabu ou maison dite de Diane de Poitiers, actuellement Musée archéologique et historique de l'Orléanais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098850",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-hotel-cabu-ou-maison-dite-de-diane-de-poitiers-actuellement-musee-archeologique-et-historique-de-l-orleanais-pa00098850",
+      "latitude": 47.9009981515347,
+      "longitude": 1.9047788804159,
+      "name": {
+        "en": "Hôtel Cabu ou maison dite de Diane de Poitiers, actuellement Musée archéologique et historique de l'Orléanais",
+        "fr": "Hôtel Cabu ou maison dite de Diane de Poitiers, actuellement Musée archéologique et historique de l'Orléanais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Groslot, actuellement Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Groslot, actuellement Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098851",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-hotel-groslot-actuellement-hotel-de-ville-pa00098851",
+      "latitude": 47.9027866383333,
+      "longitude": 1.90819457711978,
+      "name": {
+        "en": "Hôtel Groslot, actuellement Hôtel de ville",
+        "fr": "Hôtel Groslot, actuellement Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0286",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-musee-des-beaux-arts-m0286",
+      "latitude": 47.901573,
+      "longitude": 1.90861,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'Orléans pour la biodiversité et l'environnement is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'Orléans pour la biodiversité et l'environnement compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7053",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orleans-museum-d-orleans-pour-la-biodiversite-et-l-environnement-m7053",
+      "latitude": 47.907734,
+      "longitude": 1.909578,
+      "name": {
+        "en": "muséum d'Orléans pour la biodiversité et l'environnement",
+        "fr": "muséum d'Orléans pour la biodiversité et l'environnement"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc floral de la Source is one of the city's notable green or natural landmarks.",
+        "fr": "Parc floral de la Source compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-parc-floral-de-la-source-pa45000028",
+      "latitude": 47.8492919542912,
+      "longitude": 1.9365610246582903,
+      "name": {
+        "en": "Parc floral de la Source",
+        "fr": "Parc floral de la Source"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de la chapelle Saint-Jacques is an important witness to the city's history.",
+        "fr": "Vestiges de la chapelle Saint-Jacques est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098838",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-vestiges-de-la-chapelle-saint-jacques-pa00098838",
+      "latitude": 47.9027743341641,
+      "longitude": 1.9073967391580697,
+      "name": {
+        "en": "Vestiges de la chapelle Saint-Jacques",
+        "fr": "Vestiges de la chapelle Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099057",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orleans-palais-de-justice-pa00099057",
+      "latitude": 47.9048280337577,
+      "longitude": 1.9058240394885901,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

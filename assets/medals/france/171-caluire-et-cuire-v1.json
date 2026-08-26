@@ -1,0 +1,204 @@
+{
+  "id": "caluire-et-cuire-v1",
+  "cityId": "caluire-et-cuire-fr",
+  "cityZoneId": "relation/90737",
+  "cityName": {
+    "en": "Caluire-et-Cuire",
+    "fr": "Caluire-et-Cuire"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Caluire-et-Cuire, France",
+        "fr": "parc urbain à Caluire-et-Cuire, France"
+      },
+      "externalIdentity": {
+        "id": "Q117803064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-bois-de-la-caille-q117803064",
+      "latitude": 45.78739,
+      "longitude": 4.82485,
+      "name": {
+        "en": "Bois de la Caille",
+        "fr": "Bois de la Caille"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Cuire is an important witness to the city's history.",
+        "fr": "château de Cuire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2969094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-chateau-de-cuire-q2969094",
+      "latitude": 45.7942,
+      "longitude": 4.8288,
+      "name": {
+        "en": "château de Cuire",
+        "fr": "château de Cuire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castel located in Rhône, in France",
+        "fr": "château situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2971378",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-chateau-de-la-rochette-q2971378",
+      "latitude": 45.7897,
+      "longitude": 4.8263,
+      "name": {
+        "en": "château de la Rochette",
+        "fr": "château de la Rochette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38380376",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-eglise-de-l-immaculee-conception-de-caluire-q38380376",
+      "latitude": 45.79973,
+      "longitude": 4.84867,
+      "name": {
+        "en": "église de l'Immaculée-Conception de Caluire",
+        "fr": "église de l'Immaculée-Conception de Caluire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Caluire is an important witness to the city's history.",
+        "fr": "fortification disparue de la périphérie de Lyon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3078147",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-fort-de-caluire-q3078147",
+      "latitude": 45.793,
+      "longitude": 4.83673,
+      "name": {
+        "en": "fort de Caluire",
+        "fr": "fort de Caluire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Montessuy is an important witness to the city's history.",
+        "fr": "fort de Montessuy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3078202",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-fort-de-montessuy-q3078202",
+      "latitude": 45.7919,
+      "longitude": 4.84754,
+      "name": {
+        "en": "fort de Montessuy",
+        "fr": "fort de Montessuy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former railway station",
+        "fr": "ancienne gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q10154",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-lyon-saint-clair-q10154",
+      "latitude": 45.790562,
+      "longitude": 4.861592,
+      "name": {
+        "en": "Lyon-Saint-Clair",
+        "fr": "Lyon-Saint-Clair"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "house in Caluire-et-Cuire, France",
+        "fr": "maison à Caluire-et-Cuire (Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q3279851",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-maison-des-freres-des-ecoles-chretiennes-q3279851",
+      "latitude": 45.7986,
+      "longitude": 4.84495,
+      "name": {
+        "en": "maison des Frères des Écoles chrétiennes",
+        "fr": "maison des Frères des Écoles chrétiennes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Lyon, France",
+        "fr": "jardin public situé à Caluire-et-Cuire"
+      },
+      "externalIdentity": {
+        "id": "Q3363900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-parc-saint-clair-q3363900",
+      "latitude": 45.788,
+      "longitude": 4.85711,
+      "name": {
+        "en": "parc Saint-Clair",
+        "fr": "parc Saint-Clair"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont de Lyon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3368308",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "caluire-et-cuire-passerelle-de-la-paix-q3368308",
+      "latitude": 45.7869,
+      "longitude": 4.85423,
+      "name": {
+        "en": "passerelle de la Paix",
+        "fr": "passerelle de la Paix"
+      }
+    }
+  ]
+}

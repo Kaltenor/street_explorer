@@ -1,0 +1,204 @@
+{
+  "id": "le-chesnay-rocquencourt-v1",
+  "cityId": "le-chesnay-rocquencourt-fr",
+  "cityZoneId": "relation/9067505",
+  "cityName": {
+    "en": "Le Chesnay-Rocquencourt",
+    "fr": "Le Chesnay-Rocquencourt"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q2011703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-arboretum-de-chevreloup-q2011703",
+      "latitude": 48.83027778,
+      "longitude": 2.11166667,
+      "name": {
+        "en": "arboretum de Chèvreloup",
+        "fr": "arboretum de Chèvreloup"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Bellevue is an important witness to the city's history.",
+        "fr": "château à Chesnay"
+      },
+      "externalIdentity": {
+        "id": "Q9705137",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-chateau-de-bellevue-q9705137",
+      "latitude": 48.817103,
+      "longitude": 2.132445,
+      "name": {
+        "en": "château de Bellevue",
+        "fr": "château de Bellevue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in France",
+        "fr": "château à Rocquencourt (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q22923766",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-chateau-de-rocquencourt-q22923766",
+      "latitude": 48.8378,
+      "longitude": 2.115,
+      "name": {
+        "en": "château de Rocquencourt",
+        "fr": "château de Rocquencourt"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Le Chesnay, Yvelines",
+        "fr": "château à Le Chesnay, Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q125744427",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-chateau-du-grand-chesnay-q125744427",
+      "latitude": 48.83117,
+      "longitude": 2.12374,
+      "name": {
+        "en": "château du Grand-Chesnay",
+        "fr": "château du Grand-Chesnay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38388483",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-eglise-notre-dame-de-la-resurrection-du-chesnay-q38388483",
+      "latitude": 48.825803,
+      "longitude": 2.123417,
+      "name": {
+        "en": "église Notre-Dame-de-la-Résurrection du Chesnay",
+        "fr": "église Notre-Dame-de-la-Résurrection du Chesnay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "healthcare organization in Le Chesnay, France",
+        "fr": "hôpital français"
+      },
+      "externalIdentity": {
+        "id": "Q30279724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-hopital-andre-mignot-q30279724",
+      "latitude": 48.830554,
+      "longitude": 2.126925,
+      "name": {
+        "en": "hôpital André-Mignot",
+        "fr": "hôpital André-Mignot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "ancienne commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q237281",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-le-chesnay-q237281",
+      "latitude": 48.820277777,
+      "longitude": 2.130277777,
+      "name": {
+        "en": "Le Chesnay",
+        "fr": "Le Chesnay"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Yvelines department, France",
+        "fr": "monument aux morts des Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136059767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-monument-aux-morts-du-chesnay-q136059767",
+      "latitude": 48.83178,
+      "longitude": 2.12227,
+      "name": {
+        "en": "monument aux morts du Chesnay",
+        "fr": "monument aux morts du Chesnay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "ancienne commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q1418760",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-rocquencourt-q1418760",
+      "latitude": 48.836666666,
+      "longitude": 2.110833333,
+      "name": {
+        "en": "Rocquencourt",
+        "fr": "Rocquencourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "temple of the LDS Church located in Yvelines, in France",
+        "fr": "temple mormon situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q7137286",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-chesnay-rocquencourt-temple-mormon-de-paris-q7137286",
+      "latitude": 48.81789167,
+      "longitude": 2.12317222,
+      "name": {
+        "en": "temple mormon de Paris",
+        "fr": "temple mormon de Paris"
+      }
+    }
+  ]
+}

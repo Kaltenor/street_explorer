@@ -6,10 +6,67 @@
     "en": "Strasbourg",
     "fr": "Strasbourg"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de ville dit Neue Bau, actuellement Hôtel de la Chambre de Commerce et d'Industrie de Strasbourg et du Bas-Rhin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de ville dit Neue Bau, actuellement Hôtel de la Chambre de Commerce et d'Industrie de Strasbourg et du Bas-Rhin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085050",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-ancien-hotel-de-ville-dit-neue-bau-actuellement-hotel-de-la-chambre-de-commerce-et-d-industrie-de-strasbourg-et-du-bas-rhin-pa00085050",
+      "latitude": 48.58083193272691,
+      "longitude": 7.7483924225409,
+      "name": {
+        "en": "Ancien hôtel de ville dit Neue Bau, actuellement Hôtel de la Chambre de Commerce et d'Industrie de Strasbourg et du Bas-Rhin",
+        "fr": "Ancien hôtel de ville dit Neue Bau, actuellement Hôtel de la Chambre de Commerce et d'Industrie de Strasbourg et du Bas-Rhin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085183",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-ancien-palais-imperial-allemand-ou-kaiserpalast-dit-palais-du-rhin-pa00085183",
+      "latitude": 48.5877240606553,
+      "longitude": 7.752363074098011,
+      "name": {
+        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin",
+        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cabinet des estampes et des dessins is one of the city's notable cultural landmarks.",
+        "fr": "cabinet des estampes et des dessins compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0013",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-cabinet-des-estampes-et-des-dessins-m0013",
+      "latitude": 48.5812366410149,
+      "longitude": 7.750544327135451,
+      "name": {
+        "en": "cabinet des estampes et des dessins",
+        "fr": "cabinet des estampes et des dessins"
+      }
+    },
     {
       "category": "architecture",
       "description": {
@@ -32,6 +89,44 @@
     {
       "category": "history",
       "description": {
+        "en": "Château d'eau is an important witness to the city's history.",
+        "fr": "Château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-chateau-d-eau-pa00085017",
+      "latitude": 48.5804147803121,
+      "longitude": 7.72869916267316,
+      "name": {
+        "en": "Château d'eau",
+        "fr": "Château d'eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Pourtalès is an important witness to the city's history.",
+        "fr": "Château de Pourtalès est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-chateau-de-pourtales-pa00085018",
+      "latitude": 48.608428874588,
+      "longitude": 7.799961348851309,
+      "name": {
+        "en": "Château de Pourtalès",
+        "fr": "Château de Pourtalès"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
         "en": "Citadelle et abords is an important witness to the city's history.",
         "fr": "Citadelle et abords est un témoin important de l’histoire de la ville."
       },
@@ -49,22 +144,136 @@
       }
     },
     {
-      "category": "culture",
+      "category": "architecture",
       "description": {
-        "en": "cabinet des estampes et des dessins is one of the city's notable cultural landmarks.",
-        "fr": "cabinet des estampes et des dessins compte parmi les lieux culturels marquants de la ville."
+        "en": "Église protestante Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église protestante Saint-Nicolas est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "M0013",
+        "id": "PA00135152",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-eglise-protestante-saint-nicolas-pa00135152",
+      "latitude": 48.5783584379022,
+      "longitude": 7.74848360564959,
+      "name": {
+        "en": "Église protestante Saint-Nicolas",
+        "fr": "Église protestante Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église protestante Saint-Pierre-le-Jeune is a distinctive architectural landmark in the city.",
+        "fr": "Église protestante Saint-Pierre-le-Jeune est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-eglise-protestante-saint-pierre-le-jeune-pa00085030",
+      "latitude": 48.5855286897081,
+      "longitude": 7.7464309492888495,
+      "name": {
+        "en": "Église protestante Saint-Pierre-le-Jeune",
+        "fr": "Église protestante Saint-Pierre-le-Jeune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville, ancien Hôtel de Hanau is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville, ancien Hôtel de Hanau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085061",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-hotel-de-ville-ancien-hotel-de-hanau-pa00085061",
+      "latitude": 48.5846610188455,
+      "longitude": 7.7503304580394206,
+      "name": {
+        "en": "Hôtel de ville, ancien Hôtel de Hanau",
+        "fr": "Hôtel de ville, ancien Hôtel de Hanau"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin botanique is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin botanique compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085285",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "strasbourg-jardin-botanique-pa00085285",
+      "latitude": 48.5835835411796,
+      "longitude": 7.767529670116479,
+      "name": {
+        "en": "Jardin botanique",
+        "fr": "Jardin botanique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée alsacien is one of the city's notable cultural landmarks.",
+        "fr": "musée alsacien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0014",
         "source": "museofile",
         "type": "record"
       },
-      "id": "strasbourg-cabinet-des-estampes-et-des-dessins-m0013",
-      "latitude": 48.5812366410149,
-      "longitude": 7.750544327135451,
+      "id": "strasbourg-musee-alsacien-m0014",
+      "latitude": 48.579075,
+      "longitude": 7.750484,
       "name": {
-        "en": "cabinet des estampes et des dessins",
-        "fr": "cabinet des estampes et des dessins"
+        "en": "musée alsacien",
+        "fr": "musée alsacien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0015",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-musee-archeologique-m0015",
+      "latitude": 48.581229,
+      "longitude": 7.751984,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art moderne et contemporain de Strasbourg is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art moderne et contemporain de Strasbourg compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0016",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-musee-d-art-moderne-et-contemporain-de-strasbourg-m0016",
+      "latitude": 48.579654,
+      "longitude": 7.736231,
+      "name": {
+        "en": "musée d'art moderne et contemporain de Strasbourg",
+        "fr": "musée d'art moderne et contemporain de Strasbourg"
       }
     },
     {
@@ -89,58 +298,77 @@
     {
       "category": "culture",
       "description": {
-        "en": "musée archéologique is one of the city's notable cultural landmarks.",
-        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+        "en": "musée historique is one of the city's notable cultural landmarks.",
+        "fr": "musée historique compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0015",
+        "id": "M0020",
         "source": "museofile",
         "type": "record"
       },
-      "id": "strasbourg-musee-archeologique-m0015",
-      "latitude": 48.581229,
-      "longitude": 7.751984,
+      "id": "strasbourg-musee-historique-m0020",
+      "latitude": 48.580579,
+      "longitude": 7.749714,
       "name": {
-        "en": "musée archéologique",
-        "fr": "musée archéologique"
+        "en": "musée historique",
+        "fr": "musée historique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Tomi Ungerer is one of the city's notable cultural landmarks.",
+        "fr": "musée Tomi Ungerer compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1098",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "strasbourg-musee-tomi-ungerer-m1098",
+      "latitude": 48.585747,
+      "longitude": 7.755028,
+      "name": {
+        "en": "musée Tomi Ungerer",
+        "fr": "musée Tomi Ungerer"
       }
     },
     {
       "category": "architecture",
       "description": {
-        "en": "Hôtel de ville, ancien Hôtel de Hanau is a distinctive architectural landmark in the city.",
-        "fr": "Hôtel de ville, ancien Hôtel de Hanau est un repère architectural remarquable de la ville."
+        "en": "Palais Universitaire is a distinctive architectural landmark in the city.",
+        "fr": "Palais Universitaire est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00085061",
+        "id": "PA00085185",
         "source": "merimee",
         "type": "record"
       },
-      "id": "strasbourg-hotel-de-ville-ancien-hotel-de-hanau-pa00085061",
-      "latitude": 48.5846610188455,
-      "longitude": 7.7503304580394206,
+      "id": "strasbourg-palais-universitaire-pa00085185",
+      "latitude": 48.5848477325085,
+      "longitude": 7.76240091933336,
       "name": {
-        "en": "Hôtel de ville, ancien Hôtel de Hanau",
-        "fr": "Hôtel de ville, ancien Hôtel de Hanau"
+        "en": "Palais Universitaire",
+        "fr": "Palais Universitaire"
       }
     },
     {
-      "category": "architecture",
+      "category": "nature",
       "description": {
-        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin is a distinctive architectural landmark in the city.",
-        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin est un repère architectural remarquable de la ville."
+        "en": "Parc de l'Orangerie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de l'Orangerie compte parmi les repères naturels ou paysagers de la ville."
       },
       "externalIdentity": {
-        "id": "PA00085183",
+        "id": "PA00085186",
         "source": "merimee",
         "type": "record"
       },
-      "id": "strasbourg-ancien-palais-imperial-allemand-ou-kaiserpalast-dit-palais-du-rhin-pa00085183",
-      "latitude": 48.5877240606553,
-      "longitude": 7.752363074098011,
+      "id": "strasbourg-parc-de-l-orangerie-pa00085186",
+      "latitude": 48.5917242897645,
+      "longitude": 7.774505378530041,
       "name": {
-        "en": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin",
-        "fr": "Ancien Palais impérial allemand ou Kaiserpalast, dit Palais du Rhin"
+        "en": "Parc de l'Orangerie",
+        "fr": "Parc de l'Orangerie"
       }
     },
     {

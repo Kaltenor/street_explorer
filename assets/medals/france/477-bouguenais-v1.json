@@ -1,0 +1,204 @@
+{
+  "id": "bouguenais-v1",
+  "cityId": "bouguenais-fr",
+  "cityZoneId": "relation/65561",
+  "cityName": {
+    "en": "Bouguenais",
+    "fr": "Bouguenais"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Nantes, France",
+        "fr": "aéroport desservant Nantes (Loire-Atlantique, Pays de la Loire, France)"
+      },
+      "externalIdentity": {
+        "id": "Q1432144",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-aeroport-de-nantes-atlantique-q1432144",
+      "latitude": 47.156944444,
+      "longitude": -1.607777777,
+      "name": {
+        "en": "aéroport de Nantes Atlantique",
+        "fr": "aéroport de Nantes Atlantique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "arrondissement of France",
+        "fr": "arrondissement français"
+      },
+      "externalIdentity": {
+        "id": "Q596603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-arrondissement-de-nantes-q596603",
+      "latitude": 47.16667,
+      "longitude": -1.58333,
+      "name": {
+        "en": "arrondissement de Nantes",
+        "fr": "arrondissement de Nantes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Loire-Atlantique, France",
+        "fr": "commune française du département de la Loire-Atlantique près de Nantes"
+      },
+      "externalIdentity": {
+        "id": "Q291197",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-bouguenais-q291197",
+      "latitude": 47.1775,
+      "longitude": -1.621388888,
+      "name": {
+        "en": "Bouguenais",
+        "fr": "Bouguenais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1726929",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-canton-de-reze-q1726929",
+      "latitude": 47.1816665,
+      "longitude": -1.58680556,
+      "name": {
+        "en": "canton de Rezé",
+        "fr": "canton de Rezé"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Bougon is an important witness to the city's history.",
+        "fr": "château à Bouguenais, France"
+      },
+      "externalIdentity": {
+        "id": "Q105711664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-chateau-de-bougon-q105711664",
+      "latitude": 47.157724383,
+      "longitude": -1.620467305,
+      "name": {
+        "en": "château de Bougon",
+        "fr": "château de Bougon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Île de la Fourche is one of the city's notable green or natural landmarks.",
+        "fr": "secteur géographique de Bouguenais"
+      },
+      "externalIdentity": {
+        "id": "Q110066064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-ile-de-la-fourche-q110066064",
+      "latitude": 47.18987629,
+      "longitude": -1.6479223,
+      "name": {
+        "en": "Île de la Fourche",
+        "fr": "Île de la Fourche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "porte de Retz is an important witness to the city's history.",
+        "fr": "porte de Retz est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q125133566",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-porte-de-retz-q125133566",
+      "latitude": 47.16916,
+      "longitude": -1.58005,
+      "name": {
+        "en": "porte de Retz",
+        "fr": "porte de Retz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église à Bouguenais, située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41766700",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-eglise-saint-pierre-q41766700",
+      "latitude": 47.17909,
+      "longitude": -1.62341,
+      "name": {
+        "en": "église Saint-Pierre",
+        "fr": "église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Roche Ballue is a distinctive architectural landmark in the city.",
+        "fr": "base de plein air et de loisir à Bouguenais"
+      },
+      "externalIdentity": {
+        "id": "Q110068205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-la-roche-ballue-q110068205",
+      "latitude": 47.18381757,
+      "longitude": -1.65285377,
+      "name": {
+        "en": "La Roche Ballue",
+        "fr": "La Roche Ballue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French village",
+        "fr": "village de la commune de Bouguenais"
+      },
+      "externalIdentity": {
+        "id": "Q125565592",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bouguenais-port-lavigne-q125565592",
+      "latitude": 47.18753633,
+      "longitude": -1.63632692,
+      "name": {
+        "en": "Port Lavigne",
+        "fr": "Port Lavigne"
+      }
+    }
+  ]
+}

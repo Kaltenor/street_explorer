@@ -1,0 +1,204 @@
+{
+  "id": "agde-v1",
+  "cityId": "agde-fr",
+  "cityZoneId": "relation/254843",
+  "cityName": {
+    "en": "Agde",
+    "fr": "Agde"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Saint-Etienne is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Saint-Etienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103340",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-ancien-cathedrale-saint-etienne-pa00103340",
+      "latitude": 43.3139985042078,
+      "longitude": 3.46912297882712,
+      "name": {
+        "en": "Ancien cathédrale Saint-Etienne",
+        "fr": "Ancien cathédrale Saint-Etienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103341",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-ancien-eglise-saint-andre-pa00103341",
+      "latitude": 43.3115497575514,
+      "longitude": 3.4698451455294,
+      "name": {
+        "en": "Ancien église Saint-André",
+        "fr": "Ancien église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché ou ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché ou ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103342",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-ancien-eveche-ou-ancien-palais-episcopal-pa00103342",
+      "latitude": 43.3144514336276,
+      "longitude": 3.46946826148801,
+      "name": {
+        "en": "Ancien évêché ou ancien palais épiscopal",
+        "fr": "Ancien évêché ou ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103345",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-ancien-hotel-de-ville-pa00103345",
+      "latitude": 43.3134140780849,
+      "longitude": 3.46849309183964,
+      "name": {
+        "en": "Ancien hôtel de ville",
+        "fr": "Ancien hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Anciens remparts is an important witness to the city's history.",
+        "fr": "Anciens remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103349",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-anciens-remparts-pa00103349",
+      "latitude": 43.3146199076744,
+      "longitude": 3.47137574727296,
+      "name": {
+        "en": "Anciens remparts",
+        "fr": "Anciens remparts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Brescou is an important witness to the city's history.",
+        "fr": "Fort Brescou est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-fort-brescou-pa34000001",
+      "latitude": 43.2632584000091,
+      "longitude": 3.5017572386373903,
+      "name": {
+        "en": "Fort Brescou",
+        "fr": "Fort Brescou"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée agathois is one of the city's notable cultural landmarks.",
+        "fr": "musée agathois compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0466",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "agde-musee-agathois-m0466",
+      "latitude": 43.311837,
+      "longitude": 3.468587,
+      "name": {
+        "en": "musée agathois",
+        "fr": "musée agathois"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Ephèbe is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Ephèbe compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0465",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "agde-musee-de-l-ephebe-m0465",
+      "latitude": 43.298047,
+      "longitude": 3.476702,
+      "name": {
+        "en": "musée de l'Ephèbe",
+        "fr": "musée de l'Ephèbe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite des Anglais is an important witness to the city's history.",
+        "fr": "Tour dite des Anglais est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103350",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-tour-dite-des-anglais-pa00103350",
+      "latitude": 43.2975029735764,
+      "longitude": 3.50347723223009,
+      "name": {
+        "en": "Tour dite des Anglais",
+        "fr": "Tour dite des Anglais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Villa dite château Laurens is an important witness to the city's history.",
+        "fr": "Villa dite château Laurens est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135387",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "agde-villa-dite-chateau-laurens-pa00135387",
+      "latitude": 43.3173254428468,
+      "longitude": 3.47122451393145,
+      "name": {
+        "en": "Villa dite château Laurens",
+        "fr": "Villa dite château Laurens"
+      }
+    }
+  ]
+}

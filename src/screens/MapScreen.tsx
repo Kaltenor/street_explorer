@@ -87,6 +87,7 @@ import {
   getWalkSessionById,
   getWalkHistory,
   type WalkPointLoadScope,
+  updateActiveWalkDistance,
   updateWalkSessionName,
   updateWalkSessionStepCount
 } from "../database/walkRepository";
@@ -95,6 +96,7 @@ import {
   clearActiveRecordingSettings,
   createActiveRecordingSession,
   getActiveRecordingSettings,
+  type InvalidActiveRecordingDiagnostic,
   getSavedPlayerLocation,
   getSavedCompletionObjective,
   savePlayerLocation,
@@ -115,6 +117,7 @@ import {
   getCachedZones,
   getExploredCellKeys,
   getExploredCellRecords,
+  getExploredCellRecordsWithinBounds,
   getExplorationRevision,
   getZoneCompletionSnapshot,
   saveZoneCompletionSnapshot,
@@ -144,7 +147,10 @@ import {
   startBackgroundLocationTracking,
   stopBackgroundLocationTracking
 } from "../services/backgroundLocationTask";
-import { playSelectionHaptic } from "../services/feedbackPreferences";
+import {
+  playImpactHaptic,
+  playSelectionHaptic
+} from "../services/feedbackPreferences";
 import {
   collectExploredCellIdsByRouteSegments,
   collectFillableEnclosedExplorationCellIds,
@@ -224,6 +230,7 @@ import {
   acknowledgeGpsPersistenceFullSyncRequest,
   appendPersistedGpsPoint,
   applyRejectedGpsEvaluation,
+  calculateTrustedGpsDistanceMeters,
   canQueueAcceptedGpsPoint,
   collectConfirmedLiveExploredCellIds,
   consumeGpsPersistenceFullSyncRequest,
@@ -521,9 +528,9 @@ function createRecoveredActiveWalk(
     activityMode: session.activityMode,
     acceptedGpsPointCount: nextPointIndex,
     currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
-    distanceMeters: Math.max(
-      session.distanceMeters,
-      calculatePathDistanceMeters(points)
+    distanceMeters: calculateTrustedGpsDistanceMeters(
+      points,
+      session.activityMode
     ),
     exploredCellIds: collectConfirmedLiveExploredCellIds(points, session.activityMode),
     gpsPausedEventCount: 0,
@@ -694,6 +701,7 @@ export function MapScreen({
     null
   );
   const [backgroundTrackingMessage, setBackgroundTrackingMessage] = useState<string | null>(null);
+  const [recordingResumeNotice, setRecordingResumeNotice] = useState<string | null>(null);
   const [backgroundTrackingStatus, setBackgroundTrackingStatus] =
     useState<BackgroundTrackingStatus>("idle");
   const [isMapWordmarkCollapsed, setIsMapWordmarkCollapsed] = useState(false);
@@ -803,6 +811,7 @@ export function MapScreen({
     fillCellIds: Set<string>;
   }>({ contextKey: null, fillCellIds: new Set() });
   const recoveryPromptedSessionRef = useRef<number | null>(null);
+  const recoveryFailureAlertShownRef = useRef(false);
   const recoveryResumeTransitionRef = useRef<{
     activityMode: ActivityMode;
     sessionId: number;
@@ -824,6 +833,15 @@ export function MapScreen({
   const selectedSessionIdRef = useRef<number | null>(selectedSessionId);
   pathDisplayModeRef.current = pathDisplayMode;
   selectedSessionIdRef.current = selectedSessionId;
+
+  useEffect(() => {
+    if (!recordingResumeNotice) {
+      return;
+    }
+
+    const timer = setTimeout(() => setRecordingResumeNotice(null), 4000);
+    return () => clearTimeout(timer);
+  }, [recordingResumeNotice]);
 
   const publishCurrentLocation = useCallback((point: GpsPoint) => {
     setCurrentLocation((currentPoint) =>
@@ -1353,6 +1371,10 @@ export function MapScreen({
             state: activeMedalAlbumId ? "ready" : "idle"
           } as const;
         } catch (error) {
+          console.warn(
+            `Failed to load medal data for ${activeMedalAlbumId ?? "no active album"}`,
+            error
+          );
           return {
             savedCollectedMedalCities: [] as CollectedMedalCity[],
             pendingMedalPresentations: [] as CollectedMedal[],
@@ -2746,9 +2768,12 @@ export function MapScreen({
         return;
       }
 
-      const persistedCells = await getExploredCellRecords(objective.mode);
       const calculationResults = await Promise.all(
         zonesToCalculate.map(async (zone) => {
+          const bounds = getZoneBounds(zone);
+          const persistedCells = bounds
+            ? await getExploredCellRecordsWithinBounds(objective.mode, bounds)
+            : await getExploredCellRecords(objective.mode);
           const isSelectedZone = zone.id === objective.zone.id;
           const usesLivePreview = isSelectedZone && needsLivePreview;
           const completionCells = usesLivePreview
@@ -3243,10 +3268,7 @@ export function MapScreen({
   );
 
   const syncActiveWalkFromDatabase = useCallback(async (sessionId: number) => {
-    const [persistedPoints, session] = await Promise.all([
-      getGpsPointsForSession(sessionId),
-      getWalkSessionById(sessionId)
-    ]);
+    const persistedPoints = await getGpsPointsForSession(sessionId);
     const latestPoint = persistedPoints.at(-1);
 
     if (latestPoint) {
@@ -3274,8 +3296,10 @@ export function MapScreen({
           0
         ),
         currentSpeedMetersPerSecond: calculateLastSpeedMetersPerSecond(points),
-        distanceMeters:
-          session?.distanceMeters ?? calculatePathDistanceMeters(points),
+        distanceMeters: calculateTrustedGpsDistanceMeters(
+          points,
+          currentWalk.activityMode
+        ),
         exploredCellIds: collectConfirmedLiveExploredCellIds(
           points,
           currentWalk.activityMode
@@ -3306,8 +3330,6 @@ export function MapScreen({
       return;
     }
 
-    const session = await getWalkSessionById(sessionId);
-
     setActiveWalk((currentWalk) => {
       if (!currentWalk || currentWalk.sessionId !== sessionId) {
         return currentWalk;
@@ -3317,15 +3339,8 @@ export function MapScreen({
         (walkState, point) => appendPersistedGpsPoint(walkState, point),
         currentWalk
       );
-      const synchronizedWalk = {
-        ...nextWalk,
-        distanceMeters: Math.max(
-          nextWalk.distanceMeters,
-          session?.distanceMeters ?? 0
-        )
-      };
-      activeWalkRef.current = synchronizedWalk;
-      return synchronizedWalk;
+      activeWalkRef.current = nextWalk;
+      return nextWalk;
     });
   }, []);
 
@@ -3386,6 +3401,10 @@ export function MapScreen({
       }
 
       if (!canUseBackgroundTasks) {
+        console.info("[recording] background task status", {
+          sessionId,
+          status: "unavailable"
+        });
         setBackgroundTrackingStatus("unavailable");
         setBackgroundTrackingMessage(strings.map.backgroundNeedsDevelopmentBuild);
         return;
@@ -3417,10 +3436,18 @@ export function MapScreen({
 
         setBackgroundTrackingStatus("enabled");
         setBackgroundTrackingMessage(strings.map.backgroundEnabled);
+        console.info("[recording] background task status", {
+          sessionId,
+          status: "enabled"
+        });
         return;
       }
 
       setBackgroundTrackingStatus("foreground-only");
+      console.info("[recording] background task status", {
+        sessionId,
+        status: "foreground-only"
+      });
       const settingsHint = backgroundPermission.backgroundCanAskAgain
         ? strings.map.foregroundHintAskAgain
         : strings.map.foregroundHintSettings;
@@ -3434,6 +3461,10 @@ export function MapScreen({
       }
 
       console.warn("Background tracking setup failed", error);
+      console.info("[recording] background task status", {
+        sessionId,
+        status: "unavailable"
+      });
       setBackgroundTrackingStatus("unavailable");
       setBackgroundTrackingMessage(strings.map.backgroundUnavailable);
     }
@@ -3442,8 +3473,15 @@ export function MapScreen({
   useEffect(() => {
     let claimedSessionId: number | null = null;
     let didCommitRecovery = false;
+    let recoveryCheckFailed = false;
     let isMounted = true;
     setIsRecoveryCheckComplete(false);
+
+    if (permissionState === "unknown") {
+      return () => {
+        isMounted = false;
+      };
+    }
 
     const detectRecoverableRecording = async () => {
       if (
@@ -3454,7 +3492,25 @@ export function MapScreen({
       }
 
       await drainPendingBackgroundLocationBatches();
-      const activeRecording = await getActiveRecordingSettings();
+      const invalidActiveRecordings: InvalidActiveRecordingDiagnostic[] = [];
+      const activeRecording = await getActiveRecordingSettings((diagnostic) => {
+        invalidActiveRecordings.push(diagnostic);
+      });
+      const invalidActiveRecording = invalidActiveRecordings[0];
+
+      if (
+        invalidActiveRecording &&
+        invalidActiveRecording.reason !== "finalized_session"
+      ) {
+        console.warn("[recording] invalid active recording metadata cleared", {
+          reason: invalidActiveRecording.reason,
+          sessionId: invalidActiveRecording.sessionId
+        });
+        Alert.alert(
+          "Recording recovery unavailable",
+          "The active recording metadata was unusable and has been cleared. Existing saved walks were not changed."
+        );
+      }
 
       if (
         !isMounted ||
@@ -3468,8 +3524,14 @@ export function MapScreen({
         return;
       }
 
+      recoveryFailureAlertShownRef.current = false;
+
       recoveryPromptedSessionRef.current = activeRecording.sessionId;
       claimedSessionId = activeRecording.sessionId;
+      console.info("[recording] startup detected unfinished session", {
+        activityMode: activeRecording.activityMode,
+        sessionId: activeRecording.sessionId
+      });
       const [session, points, recoveryStatus] = await Promise.all([
         getWalkSessionById(activeRecording.sessionId),
         getGpsPointsForSession(activeRecording.sessionId),
@@ -3485,8 +3547,15 @@ export function MapScreen({
       }
 
       if (!session) {
+        console.warn("[recording] recovery failed: active session row is missing", {
+          sessionId: activeRecording.sessionId
+        });
         await clearActiveRecordingSettings(activeRecording.sessionId);
         recoveryPromptedSessionRef.current = null;
+        Alert.alert(
+          "Recording recovery unavailable",
+          "The saved active recording referred to a missing session. Its invalid active marker was cleared without changing other saved walks."
+        );
         return;
       }
 
@@ -3494,25 +3563,188 @@ export function MapScreen({
         new Date(session.endedAt).getTime() >
         new Date(session.startedAt).getTime()
       ) {
+        console.info("[recording] stale active marker referenced a finalized session", {
+          sessionId: activeRecording.sessionId
+        });
         await clearActiveRecordingSettings(activeRecording.sessionId);
         recoveryPromptedSessionRef.current = null;
         await refreshSavedData();
         return;
       }
 
-      setRecoverableRecording({
+      const fallbackRecording: RecoverableRecording = {
         points,
         recoveryStatus,
         session,
         totalPointCount: points.length
+      };
+
+      console.info("[recording] persisted GPS points restored", {
+        backgroundTaskStatus: recoveryStatus,
+        pointCount: points.length,
+        sessionId: session.id
       });
-      didCommitRecovery = true;
+
+      if (permissionState !== "granted") {
+        setRecoverableRecording({
+          ...fallbackRecording,
+          recoveryStatus: "uncertain"
+        });
+        setBackgroundTrackingStatus("unavailable");
+        setBackgroundTrackingMessage(
+          "Location permission is required before this walk can resume."
+        );
+        didCommitRecovery = true;
+        return;
+      }
+
+      const resumeTransition = {
+        activityMode: session.activityMode,
+        sessionId: session.id
+      };
+      recoveryResumeTransitionRef.current = resumeTransition;
+      console.info("[recording] automatic recovery started", {
+        backgroundTaskStatus: recoveryStatus,
+        sessionId: session.id
+      });
+
+      try {
+        // Establish one coherent checkpoint before the foreground watcher
+        // switches from idle tracking to recording mode.
+        await stopBackgroundLocationTracking();
+        await flushPendingGpsPoints(session.id);
+        await drainPendingBackgroundLocationBatches();
+
+        const [currentSession, currentPoints] = await Promise.all([
+          getWalkSessionById(session.id),
+          getGpsPointsForSession(session.id)
+        ]);
+
+        if (!currentSession) {
+          throw new Error("The active session disappeared during recovery.");
+        }
+
+        if (
+          new Date(currentSession.endedAt).getTime() >
+          new Date(currentSession.startedAt).getTime()
+        ) {
+          throw new Error("The active session finalized during recovery.");
+        }
+
+        const trustedDistanceMeters = calculateTrustedGpsDistanceMeters(
+          currentPoints,
+          currentSession.activityMode
+        );
+        await updateActiveWalkDistance(
+          currentSession.id,
+          trustedDistanceMeters
+        );
+
+        if (!isMounted) {
+          return;
+        }
+
+        const resumedWalk = createRecoveredActiveWalk(
+          { ...currentSession, distanceMeters: trustedDistanceMeters },
+          currentPoints
+        );
+        const lifecycleGeneration = beginRecordingLifecycle(currentSession.id);
+        const latestPoint = currentPoints.at(-1);
+
+        if (latestPoint) {
+          publishCurrentLocation(latestPoint);
+        }
+
+        activeWalkRef.current = resumedWalk;
+        setActiveWalk(resumedWalk);
+        setRecoverableRecording(null);
+        setBackgroundTrackingStatus("starting");
+        setBackgroundTrackingMessage("Walk resumed after interruption.");
+        setRecordingResumeNotice(
+          language === "fr"
+            ? "Marche reprise après interruption"
+            : "Walk resumed after interruption"
+        );
+        setPlayerFocusRequestId((requestId) => requestId + 1);
+        didCommitRecovery = true;
+
+        void startStepWatch(
+          currentSession.startedAt,
+          currentSession.id,
+          lifecycleGeneration
+        ).catch((error) =>
+          console.warn("Failed to restore step counting", error)
+        );
+        void enableBackgroundTracking(
+          currentSession.activityMode,
+          currentSession.id,
+          lifecycleGeneration
+        );
+        void refreshCurrentLocation({ allowLastKnown: false }).catch((error) =>
+          console.warn("Failed to refresh recovered GPS fix", error)
+        );
+        console.info("[recording] automatic recovery completed", {
+          distanceMeters: trustedDistanceMeters,
+          pointCount: currentPoints.length,
+          sessionId: currentSession.id,
+          startedAt: currentSession.startedAt
+        });
+      } catch (error) {
+        console.warn("[recording] automatic recovery failed", {
+          error,
+          sessionId: session.id
+        });
+
+        if (isMounted) {
+          setRecoverableRecording({
+            ...fallbackRecording,
+            recoveryStatus: "uncertain"
+          });
+          setBackgroundTrackingStatus("foreground-only");
+          setBackgroundTrackingMessage(
+            "Automatic resume failed. The unfinished walk was kept for recovery."
+          );
+          didCommitRecovery = true;
+        }
+
+        void startBackgroundLocationTracking(
+          session.activityMode,
+          `recovery:${session.id}`
+        ).catch((protectionError) =>
+          console.warn(
+            "Failed to restore background protection after automatic recovery",
+            protectionError
+          )
+        );
+      } finally {
+        if (recoveryResumeTransitionRef.current === resumeTransition) {
+          recoveryResumeTransitionRef.current = null;
+        }
+      }
     };
 
     detectRecoverableRecording()
-      .catch((error) =>
-        console.warn("Failed to recover active recording", error)
-      )
+      .catch((error) => {
+        recoveryCheckFailed = true;
+        console.warn("[recording] startup recovery check failed", error);
+
+        if (isMounted && !recoveryFailureAlertShownRef.current) {
+          recoveryFailureAlertShownRef.current = true;
+          Alert.alert(
+            "Recording check failed",
+            "Mapbound could not safely verify whether a walk is active. Starting another walk remains disabled until the check succeeds.",
+            [
+              {
+                onPress: () => {
+                  recoveryFailureAlertShownRef.current = false;
+                  setRecoveryCheckRevision((revision) => revision + 1);
+                },
+                text: "Retry"
+              }
+            ]
+          );
+        }
+      })
       .finally(() => {
         if (
           claimedSessionId !== null &&
@@ -3523,7 +3755,7 @@ export function MapScreen({
         }
 
         if (isMounted) {
-          setIsRecoveryCheckComplete(true);
+          setIsRecoveryCheckComplete(!recoveryCheckFailed);
         }
       });
 
@@ -3532,9 +3764,16 @@ export function MapScreen({
     };
   }, [
     activeWalk?.sessionId,
+    beginRecordingLifecycle,
+    enableBackgroundTracking,
+    language,
+    permissionState,
+    publishCurrentLocation,
     recoverableRecording?.session.id,
+    refreshCurrentLocation,
     recoveryCheckRevision,
-    refreshSavedData
+    refreshSavedData,
+    startStepWatch
   ]);
 
   const handleStartWalk = useCallback(async () => {
@@ -3574,6 +3813,11 @@ export function MapScreen({
 
       activeWalkRef.current = nextWalk;
       setActiveWalk(nextWalk);
+      console.info("[recording] recording started", {
+        activityMode,
+        sessionId,
+        startedAt
+      });
       setBackgroundTrackingStatus("starting");
       setPlayerFocusRequestId((requestId) => requestId + 1);
 
@@ -3997,6 +4241,11 @@ export function MapScreen({
         );
         return;
       }
+
+      console.info("[recording] recording finalized", {
+        endedAt,
+        sessionId: walkToStop.sessionId
+      });
 
       try {
         await clearActiveRecordingSettings(walkToStop.sessionId);
@@ -4461,9 +4710,24 @@ export function MapScreen({
     isStartingRecordingRef.current = true;
     recoveryResumeTransitionRef.current = resumeTransition;
     setIsStartingRecording(true);
-    setRecoverableRecording(null);
 
     try {
+      let permission = permissionState;
+
+      if (permission !== "granted") {
+        permission = await requestForegroundLocationPermission();
+        setPermissionState(permission);
+      }
+
+      if (permission !== "granted") {
+        Alert.alert(
+          strings.map.locationOff,
+          "Location permission is required before the unfinished walk can resume."
+        );
+        return;
+      }
+
+      setRecoverableRecording(null);
       const session = await getWalkSessionById(sessionId);
 
       if (!session) {
@@ -4504,7 +4768,15 @@ export function MapScreen({
       await stopBackgroundLocationTracking();
       await flushPendingGpsPoints(sessionId);
       const points = await getGpsPointsForSession(sessionId);
-      const resumedWalk = createRecoveredActiveWalk(session, points);
+      const trustedDistanceMeters = calculateTrustedGpsDistanceMeters(
+        points,
+        session.activityMode
+      );
+      await updateActiveWalkDistance(session.id, trustedDistanceMeters);
+      const resumedWalk = createRecoveredActiveWalk(
+        { ...session, distanceMeters: trustedDistanceMeters },
+        points
+      );
       const lifecycleGeneration = beginRecordingLifecycle(session.id);
       const latestPoint = points.at(-1);
 
@@ -4519,7 +4791,12 @@ export function MapScreen({
 
       activeWalkRef.current = resumedWalk;
       setActiveWalk(resumedWalk);
-      setBackgroundTrackingMessage("Recovered unfinished recording.");
+      setBackgroundTrackingMessage("Walk resumed after interruption.");
+      setRecordingResumeNotice(
+        language === "fr"
+          ? "Marche reprise après interruption"
+          : "Walk resumed after interruption"
+      );
       setBackgroundTrackingStatus("starting");
       setPlayerFocusRequestId((requestId) => requestId + 1);
 
@@ -4565,11 +4842,14 @@ export function MapScreen({
   }, [
     beginRecordingLifecycle,
     enableBackgroundTracking,
+    language,
+    permissionState,
     recoverableRecording,
     refreshCurrentLocation,
     refreshSavedData,
     restoreRecoverableRecordingProtection,
-    startStepWatch
+    startStepWatch,
+    strings
   ]);
 
   const handleFinishRecoveredRecording = useCallback(async (displayName: string) => {
@@ -5316,6 +5596,15 @@ export function MapScreen({
           </View>
         ) : null}
 
+        {recordingResumeNotice ? (
+          <View accessibilityLiveRegion="polite" style={styles.recordingResumeNotice}>
+            <Ionicons color="#86efac" name="refresh-circle" size={18} />
+            <Text style={styles.recordingResumeNoticeText}>
+              {recordingResumeNotice}
+            </Text>
+          </View>
+        ) : null}
+
         <Animated.View
           onLayout={handleMapBottomPanelLayout}
           style={[
@@ -5334,7 +5623,7 @@ export function MapScreen({
             backgroundStatus={backgroundTrackingStatus}
             isFinalizing={isComputingRecording}
             isRecording={Boolean(activeWalk)}
-            isStarting={isStartingRecording}
+            isStarting={isStartingRecording || !isRecoveryCheckComplete}
             explorerScore={explorerScore.points}
             forbiddenZoneModeActive={isForbiddenZoneModeActive}
             forbiddenZoneModeDisabled={Boolean(activeWalk)}
@@ -5987,28 +6276,57 @@ function StopRecordingConfirmationModal({
   const [holdProgress, setHoldProgress] = useState(0);
   const holdStartedAtRef = useRef<number | null>(null);
   const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const completionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isConfirmingRef = useRef(false);
   const isFrench = language === "fr";
   const recordingNoun = ACTIVITY_MODE_TEXT[language].recordingNouns[activityMode];
 
-  const clearHold = useCallback(() => {
+  const clearHoldTimers = useCallback(() => {
     if (progressTimerRef.current) {
       clearInterval(progressTimerRef.current);
       progressTimerRef.current = null;
     }
 
+    if (completionTimerRef.current) {
+      clearTimeout(completionTimerRef.current);
+      completionTimerRef.current = null;
+    }
+  }, []);
+
+  const clearHold = useCallback(() => {
+    clearHoldTimers();
     holdStartedAtRef.current = null;
     setHoldProgress(0);
-  }, []);
+  }, [clearHoldTimers]);
 
   useEffect(() => {
     if (!visible) {
       clearHold();
+    } else {
+      isConfirmingRef.current = false;
     }
 
     return clearHold;
   }, [clearHold, visible]);
 
+  const confirmQuit = useCallback(() => {
+    if (isConfirmingRef.current) {
+      return;
+    }
+
+    isConfirmingRef.current = true;
+    clearHoldTimers();
+    holdStartedAtRef.current = null;
+    setHoldProgress(1);
+    void playImpactHaptic();
+    onConfirm();
+  }, [clearHoldTimers, onConfirm]);
+
   const startHold = useCallback(() => {
+    if (isConfirmingRef.current) {
+      return;
+    }
+
     clearHold();
     holdStartedAtRef.current = Date.now();
     setHoldProgress(0);
@@ -6019,14 +6337,30 @@ function StopRecordingConfirmationModal({
       }
 
       const elapsed = Date.now() - holdStartedAtRef.current;
-      setHoldProgress(Math.min(1, elapsed / STOP_CONFIRM_HOLD_MS));
-    }, 40);
-  }, [clearHold]);
+      if (elapsed >= STOP_CONFIRM_HOLD_MS) {
+        confirmQuit();
+        return;
+      }
 
-  const confirmQuit = useCallback(() => {
+      setHoldProgress(elapsed / STOP_CONFIRM_HOLD_MS);
+    }, 40);
+
+    completionTimerRef.current = setTimeout(confirmQuit, STOP_CONFIRM_HOLD_MS);
+  }, [clearHold, confirmQuit]);
+
+  const finishOrCancelHold = useCallback(() => {
+    const startedAt = holdStartedAtRef.current;
+
+    if (
+      startedAt !== null &&
+      Date.now() - startedAt >= STOP_CONFIRM_HOLD_MS
+    ) {
+      confirmQuit();
+      return;
+    }
+
     clearHold();
-    onConfirm();
-  }, [clearHold, onConfirm]);
+  }, [clearHold, confirmQuit]);
 
   if (!visible) {
     return null;
@@ -6084,23 +6418,24 @@ function StopRecordingConfirmationModal({
                 isFrench ? "Maintenir Quitter" : "Hold Quit"
               }
               accessibilityRole="button"
-              delayLongPress={STOP_CONFIRM_HOLD_MS}
               onAccessibilityAction={(event) => {
                 if (event.nativeEvent.actionName === "confirmQuit") {
                   confirmQuit();
                 }
               }}
-              onLongPress={confirmQuit}
-              onPress={clearHold}
               onPressIn={startHold}
-              onPressOut={clearHold}
+              onPressOut={finishOrCancelHold}
+              pressRetentionOffset={{ bottom: 32, left: 32, right: 32, top: 32 }}
               style={styles.stopConfirmQuit}
             >
               <View
                 pointerEvents="none"
                 style={[
                   styles.stopConfirmQuitFill,
-                  { width: `${Math.round(holdProgress * 100)}%` }
+                  {
+                    borderRightWidth: holdProgress > 0 && holdProgress < 1 ? 3 : 0,
+                    width: `${Math.round(holdProgress * 100)}%`
+                  }
                 ]}
               />
               <View style={styles.stopConfirmQuitContent}>
@@ -6948,7 +7283,10 @@ function filterWalksForPathDisplay(
 }
 
 async function calculateObjectiveStats(objective: CompletionObjective) {
-  const cells = await getExploredCellRecords(objective.mode);
+  const bounds = getZoneBounds(objective.zone);
+  const cells = bounds
+    ? await getExploredCellRecordsWithinBounds(objective.mode, bounds)
+    : await getExploredCellRecords(objective.mode);
 
   return calculateZoneCompletionStats(objective.zone, cells);
 }
@@ -7874,6 +8212,24 @@ const styles = createAppearanceStyles({
     fontSize: 14,
     fontWeight: "700"
   },
+  recordingResumeNotice: {
+    alignItems: "center",
+    alignSelf: "center",
+    backgroundColor: "rgba(5, 46, 22, 0.94)",
+    borderColor: "rgba(134, 239, 172, 0.5)",
+    borderRadius: 999,
+    borderWidth: 1,
+    flexDirection: "row",
+    gap: 7,
+    marginTop: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 7
+  },
+  recordingResumeNoticeText: {
+    color: "#dcfce7",
+    fontSize: 12,
+    fontWeight: "700"
+  },
   screen: {
     backgroundColor: "#071018",
     flex: 1
@@ -7947,8 +8303,10 @@ const styles = createAppearanceStyles({
   },
   stopConfirmQuit: {
     alignItems: "center",
-    backgroundColor: "#dc2626",
+    backgroundColor: "#260d13",
+    borderColor: "#fca5a5",
     borderRadius: 14,
+    borderWidth: 2,
     flex: 1,
     justifyContent: "center",
     minHeight: 46,
@@ -7961,7 +8319,8 @@ const styles = createAppearanceStyles({
     justifyContent: "center"
   },
   stopConfirmQuitFill: {
-    backgroundColor: "#991b1b",
+    backgroundColor: "#ef4444",
+    borderRightColor: "#fff7ed",
     bottom: 0,
     left: 0,
     position: "absolute",
@@ -7970,7 +8329,10 @@ const styles = createAppearanceStyles({
   stopConfirmQuitText: {
     color: "#ffffff",
     fontSize: 14,
-    fontWeight: "900"
+    fontWeight: "900",
+    textShadowColor: "rgba(0, 0, 0, 0.9)",
+    textShadowOffset: { height: 1, width: 0 },
+    textShadowRadius: 2
   },
   stopConfirmText: {
     color: "#cbd5e1",

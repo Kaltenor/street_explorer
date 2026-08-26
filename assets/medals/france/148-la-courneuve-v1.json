@@ -1,0 +1,204 @@
+{
+  "id": "la-courneuve-v1",
+  "cityId": "la-courneuve-fr",
+  "cityZoneId": "relation/138211",
+  "cityName": {
+    "en": "La Courneuve",
+    "fr": "La Courneuve"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "centre des archives diplomatiques de La Courneuve is one of the city's notable cultural landmarks.",
+        "fr": "bâtiment d'archives principal du service d'archives du ministère des Affaires étrangères"
+      },
+      "externalIdentity": {
+        "id": "Q65933868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-centre-des-archives-diplomatiques-de-la-courneuve-q65933868",
+      "latitude": 48.9237145,
+      "longitude": 2.3862001,
+      "name": {
+        "en": "centre des archives diplomatiques de La Courneuve",
+        "fr": "centre des archives diplomatiques de La Courneuve"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Yves-des-Quatre-Routes is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Yves-des-Quatre-Routes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000075",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-courneuve-eglise-saint-yves-des-quatre-routes-pa93000075",
+      "latitude": 48.91951951501639,
+      "longitude": 2.412273498400651,
+      "name": {
+        "en": "Église Saint-Yves-des-Quatre-Routes",
+        "fr": "Église Saint-Yves-des-Quatre-Routes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in La Courneuve, France",
+        "fr": "mairie en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q33248556",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-hotel-de-ville-de-la-courneuve-q33248556",
+      "latitude": 48.926647,
+      "longitude": 2.38954,
+      "name": {
+        "en": "hôtel de ville de La Courneuve",
+        "fr": "hôtel de ville de La Courneuve"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Courneuve, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2875299",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-la-courneuve-aubervilliers-q2875299",
+      "latitude": 48.923889,
+      "longitude": 2.384444,
+      "name": {
+        "en": "La Courneuve - Aubervilliers",
+        "fr": "La Courneuve - Aubervilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q75880160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-la-courneuve-six-routes-q75880160",
+      "latitude": 48.929289054,
+      "longitude": 2.384496805,
+      "name": {
+        "en": "La Courneuve - Six Routes",
+        "fr": "La Courneuve - Six Routes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096345",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-monument-aux-morts-de-la-courneuve-q136096345",
+      "latitude": 48.92965,
+      "longitude": 2.38667,
+      "name": {
+        "en": "monument aux morts de La Courneuve",
+        "fr": "monument aux morts de La Courneuve"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3363820",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-parc-georges-valbon-q3363820",
+      "latitude": 48.9426,
+      "longitude": 2.39897,
+      "name": {
+        "en": "parc Georges-Valbon",
+        "fr": "parc Georges-Valbon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in La Courneuve, France",
+        "fr": "place de La Courneuve, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113026525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-place-du-chateau-d-eau-q113026525",
+      "latitude": 48.92555814,
+      "longitude": 2.38419102,
+      "name": {
+        "en": "place du Château d'Eau",
+        "fr": "place du Château d'Eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "footway in La Courneuve, France",
+        "fr": "sente de La Courneuve, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113026722",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-sente-de-montfort-q113026722",
+      "latitude": 48.92219605,
+      "longitude": 2.4062486,
+      "name": {
+        "en": "sente de Montfort",
+        "fr": "sente de Montfort"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Entrepose is an important witness to the city's history.",
+        "fr": "tour Entrepose est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q125378994",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-courneuve-tour-entrepose-q125378994",
+      "latitude": 48.93073,
+      "longitude": 2.38465,
+      "name": {
+        "en": "tour Entrepose",
+        "fr": "tour Entrepose"
+      }
+    }
+  ]
+}

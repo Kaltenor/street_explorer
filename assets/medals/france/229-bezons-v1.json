@@ -1,0 +1,204 @@
+{
+  "id": "bezons-v1",
+  "cityId": "bezons-fr",
+  "cityZoneId": "relation/103270",
+  "cityName": {
+    "en": "Bezons",
+    "fr": "Bezons"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q238429",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-bezons-q238429",
+      "latitude": 48.925555555,
+      "longitude": 2.216944444,
+      "name": {
+        "en": "Bezons",
+        "fr": "Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1519567",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-canton-de-bezons-q1519567",
+      "latitude": 48.933333,
+      "longitude": 2.216667,
+      "name": {
+        "en": "canton de Bezons",
+        "fr": "canton de Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q62900726",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-cimetiere-de-bezons-q62900726",
+      "latitude": 48.92731,
+      "longitude": 2.21891,
+      "name": {
+        "en": "cimetière de Bezons",
+        "fr": "cimetière de Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647527",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-eglise-saint-martin-de-bezons-q29647527",
+      "latitude": 48.92676,
+      "longitude": 2.21546,
+      "name": {
+        "en": "église Saint-Martin de Bezons",
+        "fr": "église Saint-Martin de Bezons"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136045744",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-monument-aux-morts-de-bezons-q136045744",
+      "latitude": 48.9274356,
+      "longitude": 2.2191443,
+      "name": {
+        "en": "monument aux morts de Bezons",
+        "fr": "monument aux morts de Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bezons, France",
+        "fr": "édifice de Bezons, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412700",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-hotel-de-ville-de-bezons-q83412700",
+      "latitude": 48.9279,
+      "longitude": 2.2162,
+      "name": {
+        "en": "hôtel de ville de Bezons",
+        "fr": "hôtel de ville de Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "oratory located in Val-d'Oise, in France",
+        "fr": "oratoire situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q22916066",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-oratoire-du-val-notre-dame-q22916066",
+      "latitude": 48.93746,
+      "longitude": 2.20657,
+      "name": {
+        "en": "oratoire du Val-Notre-Dame",
+        "fr": "oratoire du Val-Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Bezons, France",
+        "fr": "place de Bezons, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16670308",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-place-du-grand-cerf-q16670308",
+      "latitude": 48.9234,
+      "longitude": 2.2078,
+      "name": {
+        "en": "place du Grand-Cerf",
+        "fr": "place du Grand-Cerf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont de Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3396868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-pont-de-bezons-q3396868",
+      "latitude": 48.9206,
+      "longitude": 2.22031,
+      "name": {
+        "en": "pont de Bezons",
+        "fr": "pont de Bezons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont ferroviaire des Anglais is a distinctive architectural landmark in the city.",
+        "fr": "pont sur la Seine reliant Bezons et Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3397540",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bezons-pont-ferroviaire-des-anglais-q3397540",
+      "latitude": 48.9111,
+      "longitude": 2.20435,
+      "name": {
+        "en": "pont ferroviaire des Anglais",
+        "fr": "pont ferroviaire des Anglais"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "poissy-v1",
+  "cityId": "poissy-fr",
+  "cityZoneId": "relation/911088",
+  "cityName": {
+    "en": "Poissy",
+    "fr": "Poissy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087567",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-abbaye-ancienne-pa00087567",
+      "latitude": 48.9285649824613,
+      "longitude": 2.03795773133208,
+      "name": {
+        "en": "Abbaye (ancienne)",
+        "fr": "Abbaye (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de la Maladrerie is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de la Maladrerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087568",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-chapelle-de-la-maladrerie-pa00087568",
+      "latitude": 48.9154357306222,
+      "longitude": 2.01716581375361,
+      "name": {
+        "en": "Chapelle de la Maladrerie",
+        "fr": "Chapelle de la Maladrerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Collégiale Notre-Dame (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Collégiale Notre-Dame (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087569",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-collegiale-notre-dame-ancienne-pa00087569",
+      "latitude": 48.9299293179873,
+      "longitude": 2.03814806311439,
+      "name": {
+        "en": "Collégiale Notre-Dame (ancienne)",
+        "fr": "Collégiale Notre-Dame (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine des Migneaux is a distinctive architectural landmark in the city.",
+        "fr": "Domaine des Migneaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-domaine-des-migneaux-pa78000029",
+      "latitude": 48.9185076038009,
+      "longitude": 2.01794036589044,
+      "name": {
+        "en": "Domaine des Migneaux",
+        "fr": "Domaine des Migneaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-hotel-de-ville-pa78000002",
+      "latitude": 48.9273802459432,
+      "longitude": 2.04278456632988,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0393",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poissy-musee-d-art-et-d-histoire-m0393",
+      "latitude": 48.92797,
+      "longitude": 2.044648,
+      "name": {
+        "en": "musée d'art et d'histoire",
+        "fr": "musée d'art et d'histoire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du jouet Pierre Pinel is one of the city's notable cultural landmarks.",
+        "fr": "musée du jouet Pierre Pinel compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0394",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poissy-musee-du-jouet-pierre-pinel-m0394",
+      "latitude": 48.928429,
+      "longitude": 2.037892,
+      "name": {
+        "en": "musée du jouet Pierre Pinel",
+        "fr": "musée du jouet Pierre Pinel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison métallique is a distinctive architectural landmark in the city.",
+        "fr": "Maison métallique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087570",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-maison-metallique-pa00087570",
+      "latitude": 48.9164748605147,
+      "longitude": 2.02379766561257,
+      "name": {
+        "en": "Maison métallique",
+        "fr": "Maison métallique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Propriété des Meissonnier is a distinctive architectural landmark in the city.",
+        "fr": "Propriété des Meissonnier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087796",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-propriete-des-meissonnier-pa00087796",
+      "latitude": 48.9287810864383,
+      "longitude": 2.03629061174566,
+      "name": {
+        "en": "Propriété des Meissonnier",
+        "fr": "Propriété des Meissonnier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Savoye is a distinctive architectural landmark in the city.",
+        "fr": "Villa Savoye est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087573",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poissy-villa-savoye-pa00087573",
+      "latitude": 48.9244255147709,
+      "longitude": 2.02827831615821,
+      "name": {
+        "en": "Villa Savoye",
+        "fr": "Villa Savoye"
+      }
+    }
+  ]
+}

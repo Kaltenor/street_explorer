@@ -1,0 +1,394 @@
+{
+  "id": "champigny-sur-marne-v1",
+  "cityId": "champigny-sur-marne-fr",
+  "cityZoneId": "relation/106735",
+  "cityName": {
+    "en": "Champigny-sur-Marne",
+    "fr": "Champigny-sur-Marne"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q19406860",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-champigny-centre-q19406860",
+      "latitude": 48.8161,
+      "longitude": 2.50216,
+      "name": {
+        "en": "Champigny Centre",
+        "fr": "Champigny Centre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Cœuilly is an important witness to the city's history.",
+        "fr": "château à Champigny-sur-Marne (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22985970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-chateau-de-c-uilly-q22985970",
+      "latitude": 48.8117528,
+      "longitude": 2.5440249,
+      "name": {
+        "en": "château de Cœuilly",
+        "fr": "château de Cœuilly"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Coeuilly is an important witness to the city's history.",
+        "fr": "Château de Coeuilly est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079857",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "champigny-sur-marne-chateau-de-coeuilly-pa00079857",
+      "latitude": 48.8115119413584,
+      "longitude": 2.5444555364383,
+      "name": {
+        "en": "Château de Coeuilly",
+        "fr": "Château de Coeuilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-eglise-notre-dame-du-sacre-c-ur-de-c-uilly-q29819674",
+      "latitude": 48.81187,
+      "longitude": 2.54433,
+      "name": {
+        "en": "église Notre-Dame-du-Sacré-Cœur de Cœuilly",
+        "fr": "église Notre-Dame-du-Sacré-Cœur de Cœuilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38646399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-eglise-saint-joseph-du-tremblay-q38646399",
+      "latitude": 48.82692,
+      "longitude": 2.49851,
+      "name": {
+        "en": "église Saint-Joseph du Tremblay",
+        "fr": "église Saint-Joseph du Tremblay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21083846",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-eglise-saint-saturnin-de-champigny-sur-marne-q21083846",
+      "latitude": 48.81243,
+      "longitude": 2.51215,
+      "name": {
+        "en": "église Saint-Saturnin de Champigny-sur-Marne",
+        "fr": "église Saint-Saturnin de Champigny-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Saturnin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Saturnin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079858",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "champigny-sur-marne-eglise-saint-saturnin-pa00079858",
+      "latitude": 48.812421930580506,
+      "longitude": 2.51213596495903,
+      "name": {
+        "en": "Église Saint-Saturnin",
+        "fr": "Église Saint-Saturnin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-eglise-sainte-bernadette-de-champigny-sur-marne-q29819665",
+      "latitude": 48.82102,
+      "longitude": 2.51405,
+      "name": {
+        "en": "église Sainte-Bernadette de Champigny-sur-Marne",
+        "fr": "église Sainte-Bernadette de Champigny-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38496409",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-eglise-sainte-marie-du-plant-de-champigny-sur-marne-q38496409",
+      "latitude": 48.82021,
+      "longitude": 2.49196,
+      "name": {
+        "en": "église Sainte-Marie-du-Plant de Champigny-sur-Marne",
+        "fr": "église Sainte-Marie-du-Plant de Champigny-sur-Marne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "jardin in Champigny-sur-Marne, France",
+        "fr": "jardin de Champigny-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106504563",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-jardin-des-hesperides-q106504563",
+      "latitude": 48.809556207,
+      "longitude": 2.51886833,
+      "name": {
+        "en": "jardin des Hespérides",
+        "fr": "jardin des Hespérides"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Champigny-sur-Marne is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q129870266",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-monument-aux-morts-de-champigny-sur-marne-q129870266",
+      "latitude": 48.813791,
+      "longitude": 2.510937,
+      "name": {
+        "en": "monument aux morts de Champigny-sur-Marne",
+        "fr": "monument aux morts de Champigny-sur-Marne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la résistance nationale is one of the city's notable cultural landmarks.",
+        "fr": "musée de la résistance nationale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0425",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "champigny-sur-marne-musee-de-la-resistance-nationale-m0425",
+      "latitude": 48.807483493456196,
+      "longitude": 2.525362870676448,
+      "name": {
+        "en": "musée de la résistance nationale",
+        "fr": "musée de la résistance nationale"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de loisirs, à Champigny-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q3364361",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-parc-du-tremblay-q3364361",
+      "latitude": 48.8258,
+      "longitude": 2.48806,
+      "name": {
+        "en": "parc du Tremblay",
+        "fr": "parc du Tremblay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Champigny-sur-Marne, France",
+        "fr": "place de Champigny-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106503191",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-place-de-chateaudun-q106503191",
+      "latitude": 48.81252347,
+      "longitude": 2.55196779,
+      "name": {
+        "en": "place de Châteaudun",
+        "fr": "place de Châteaudun"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "roundabout in Champigny-sur-Marne, France",
+        "fr": "rond-point de Champigny-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106503387",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-rond-point-du-chateau-q106503387",
+      "latitude": 48.81089118,
+      "longitude": 2.5457288,
+      "name": {
+        "en": "rond-point du Château",
+        "fr": "rond-point du Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Champigny-sur-Marne, France",
+        "fr": "hôtel de ville à Champigny-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q71820791",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-hotel-de-ville-de-champigny-sur-marne-q71820791",
+      "latitude": 48.8134,
+      "longitude": 2.5109,
+      "name": {
+        "en": "hôtel de ville de Champigny-sur-Marne",
+        "fr": "hôtel de ville de Champigny-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Champigny-sur-Marne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2318807",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-les-boullereaux-champigny-q2318807",
+      "latitude": 48.82472,
+      "longitude": 2.51167,
+      "name": {
+        "en": "Les Boullereaux - Champigny",
+        "fr": "Les Boullereaux - Champigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q14628947",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-pont-de-champigny-q14628947",
+      "latitude": 48.8101,
+      "longitude": 2.50997,
+      "name": {
+        "en": "pont de Champigny",
+        "fr": "pont de Champigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q14628943",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-pont-de-nogent-q14628943",
+      "latitude": 48.8313,
+      "longitude": 2.49311,
+      "name": {
+        "en": "pont de Nogent",
+        "fr": "pont de Nogent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q14628946",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champigny-sur-marne-pont-du-petit-parc-q14628946",
+      "latitude": 48.8135,
+      "longitude": 2.4801,
+      "name": {
+        "en": "pont du petit Parc",
+        "fr": "pont du petit Parc"
+      }
+    }
+  ]
+}

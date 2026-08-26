@@ -1,0 +1,394 @@
+{
+  "id": "caen-v1",
+  "cityId": "caen-fr",
+  "cityZoneId": "relation/149197",
+  "cityName": {
+    "en": "Caen",
+    "fr": "Caen"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie is an important witness to the city's history.",
+        "fr": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111123",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-abbaye-aux-dames-actuellement-siege-du-conseil-regional-de-basse-normandie-pa00111123",
+      "latitude": 49.1866643228144,
+      "longitude": -0.352730492501435,
+      "name": {
+        "en": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie",
+        "fr": "Ancien abbaye aux Dames, actuellement siège du conseil régional de Basse-Normandie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye aux Hommes is an important witness to the city's history.",
+        "fr": "Ancien abbaye aux Hommes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111124",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-abbaye-aux-hommes-pa00111124",
+      "latitude": 49.1812074040447,
+      "longitude": -0.373115286982476,
+      "name": {
+        "en": "Ancien abbaye aux Hommes",
+        "fr": "Ancien abbaye aux Hommes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111132",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-eglise-de-saint-etienne-le-vieux-actuellement-magasin-communal-pa00111132",
+      "latitude": 49.1812516632964,
+      "longitude": -0.369219715973056,
+      "name": {
+        "en": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal",
+        "fr": "Ancien église de Saint-Etienne-le-Vieux, actuellement magasin communal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Notre-Dame-de-Froide-Rue ou église Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Notre-Dame-de-Froide-Rue ou église Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111131",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-eglise-notre-dame-de-froide-rue-ou-eglise-saint-sauveur-pa00111131",
+      "latitude": 49.1830482795767,
+      "longitude": -0.36471059865200905,
+      "name": {
+        "en": "Ancien église Notre-Dame-de-Froide-Rue ou église Saint-Sauveur",
+        "fr": "Ancien église Notre-Dame-de-Froide-Rue ou église Saint-Sauveur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111137",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-ancien-eglise-saint-nicolas-pa00111137",
+      "latitude": 49.1838362880276,
+      "longitude": -0.374977212465771,
+      "name": {
+        "en": "Ancien église Saint-Nicolas",
+        "fr": "Ancien église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Château, actuellement musées de Caen is one of the city's notable cultural landmarks.",
+        "fr": "Château, actuellement musées de Caen compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111127",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-chateau-actuellement-musees-de-caen-pa00111127",
+      "latitude": 49.1865009032439,
+      "longitude": -0.362916271476441,
+      "name": {
+        "en": "Château, actuellement musées de Caen",
+        "fr": "Château, actuellement musées de Caen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre) is a distinctive architectural landmark in the city.",
+        "fr": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111140",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-eglise-du-vieux-saint-sauveur-ou-eglise-saint-sauveur-du-marche-ancienne-halle-au-beurre-pa00111140",
+      "latitude": 49.1833785877139,
+      "longitude": -0.367691193522597,
+      "name": {
+        "en": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre)",
+        "fr": "Église du Vieux-Saint-Sauveur ou église Saint-Sauveur-du-Marché (ancienne halle au beurre)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame ou de la Gloriette is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame ou de la Gloriette est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-eglise-notre-dame-ou-de-la-gloriette-pa00111130",
+      "latitude": 49.1806311090425,
+      "longitude": -0.366587868428087,
+      "name": {
+        "en": "Église Notre-Dame ou de la Gloriette",
+        "fr": "Église Notre-Dame ou de la Gloriette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111134",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-eglise-saint-jean-pa00111134",
+      "latitude": 49.1805774622385,
+      "longitude": -0.357675679676209,
+      "name": {
+        "en": "Église Saint-Jean",
+        "fr": "Église Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Julien is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Julien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA14000061",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-eglise-saint-julien-pa14000061",
+      "latitude": 49.1895419824024,
+      "longitude": -0.368870470123309,
+      "name": {
+        "en": "Église Saint-Julien",
+        "fr": "Église Saint-Julien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte de la ville is an important witness to the city's history.",
+        "fr": "Enceinte de la ville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111141",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-enceinte-de-la-ville-pa00111141",
+      "latitude": 49.1842423452022,
+      "longitude": -0.36895766000511104,
+      "name": {
+        "en": "Enceinte de la ville",
+        "fr": "Enceinte de la ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Immeuble, ancien musée de la Poste is one of the city's notable cultural landmarks.",
+        "fr": "Immeuble, ancien musée de la Poste compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111163",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-immeuble-ancien-musee-de-la-poste-pa00111163",
+      "latitude": 49.1834774434262,
+      "longitude": -0.363712321930098,
+      "name": {
+        "en": "Immeuble, ancien musée de la Poste",
+        "fr": "Immeuble, ancien musée de la Poste"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "mémorial de Caen, un musée pour la paix is one of the city's notable cultural landmarks.",
+        "fr": "mémorial de Caen, un musée pour la paix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0659",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-memorial-de-caen-un-musee-pour-la-paix-m0659",
+      "latitude": 49.19751133869485,
+      "longitude": -0.3838400268165697,
+      "name": {
+        "en": "mémorial de Caen, un musée pour la paix",
+        "fr": "mémorial de Caen, un musée pour la paix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'initiation à la nature is one of the city's notable cultural landmarks.",
+        "fr": "musée d'initiation à la nature compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7072",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-d-initiation-a-la-nature-m7072",
+      "latitude": 49.180590097599044,
+      "longitude": -0.37218715643821,
+      "name": {
+        "en": "musée d'initiation à la nature",
+        "fr": "musée d'initiation à la nature"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la société des antiquaires is one of the city's notable cultural landmarks.",
+        "fr": "musée de la société des antiquaires compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0660",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-de-la-societe-des-antiquaires-m0660",
+      "latitude": 49.18130160203962,
+      "longitude": -0.37215112920134513,
+      "name": {
+        "en": "musée de la société des antiquaires",
+        "fr": "musée de la société des antiquaires"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Normandie is one of the city's notable cultural landmarks.",
+        "fr": "musée de Normandie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0658",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-de-normandie-m0658",
+      "latitude": 49.18578,
+      "longitude": -0.36257,
+      "name": {
+        "en": "musée de Normandie",
+        "fr": "musée de Normandie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0657",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "caen-musee-des-beaux-arts-m0657",
+      "latitude": 49.18615122825814,
+      "longitude": -0.36122381941157106,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Réservoir ou château d'eau de la Guérinière is an important witness to the city's history.",
+        "fr": "Réservoir ou château d'eau de la Guérinière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA14000087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-reservoir-ou-chateau-d-eau-de-la-gueriniere-pa14000087",
+      "latitude": 49.1620490795072,
+      "longitude": -0.34395279295161,
+      "name": {
+        "en": "Réservoir ou château d'eau de la Guérinière",
+        "fr": "Réservoir ou château d'eau de la Guérinière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Guillaume-le-Roy is an important witness to the city's history.",
+        "fr": "Tour Guillaume-le-Roy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111194",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-tour-guillaume-le-roy-pa00111194",
+      "latitude": 49.1842627351245,
+      "longitude": -0.359051536534621,
+      "name": {
+        "en": "Tour Guillaume-le-Roy",
+        "fr": "Tour Guillaume-le-Roy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de l'ancienne église Saint-Gilles is an important witness to the city's history.",
+        "fr": "Vestiges de l'ancienne église Saint-Gilles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00111133",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "caen-vestiges-de-l-ancienne-eglise-saint-gilles-pa00111133",
+      "latitude": 49.1866211378992,
+      "longitude": -0.354867606488639,
+      "name": {
+        "en": "Vestiges de l'ancienne église Saint-Gilles",
+        "fr": "Vestiges de l'ancienne église Saint-Gilles"
+      }
+    }
+  ]
+}

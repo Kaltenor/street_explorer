@@ -1,0 +1,204 @@
+{
+  "id": "henin-beaumont-v1",
+  "cityId": "henin-beaumont-fr",
+  "cityZoneId": "relation/1164845",
+  "cityName": {
+    "en": "Hénin-Beaumont",
+    "fr": "Hénin-Beaumont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in France",
+        "fr": "ancienne commune du Pas-de-Calais"
+      },
+      "externalIdentity": {
+        "id": "Q2893227",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-beaumont-en-artois-q2893227",
+      "latitude": 50.390555555,
+      "longitude": 2.968888888,
+      "name": {
+        "en": "Beaumont-en-Artois",
+        "fr": "Beaumont-en-Artois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel in Hénin-Beaumont, France",
+        "fr": "chapelle à Hénin-Beaumont"
+      },
+      "externalIdentity": {
+        "id": "Q110441647",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-chapelle-saint-joseph-q110441647",
+      "latitude": 50.42488,
+      "longitude": 2.94398,
+      "name": {
+        "en": "chapelle Saint-Joseph",
+        "fr": "chapelle Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel in Pas-de-Calais, France",
+        "fr": "chapelle située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119294782",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-chapelle-saint-roch-d-henin-beaumont-q119294782",
+      "latitude": 50.424921,
+      "longitude": 2.952363,
+      "name": {
+        "en": "chapelle Saint-Roch d'Hénin-Beaumont",
+        "fr": "chapelle Saint-Roch d'Hénin-Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Pas-de-Calais, in France",
+        "fr": "cimetière situé dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2004308",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-cimetiere-communal-de-beaumont-q2004308",
+      "latitude": 50.394434,
+      "longitude": 2.971637,
+      "name": {
+        "en": "cimetière communal de Beaumont",
+        "fr": "cimetière communal de Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Pas-de-Calais, in France",
+        "fr": "cimetière situé dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2803246",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-cimetiere-du-centre-d-henin-beaumont-q2803246",
+      "latitude": 50.422824,
+      "longitude": 2.95359,
+      "name": {
+        "en": "cimetière du Centre d'Hénin-Beaumont",
+        "fr": "cimetière du Centre d'Hénin-Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pas-de-Calais, in France",
+        "fr": "église située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38598211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-eglise-saint-henri-d-henin-beaumont-q38598211",
+      "latitude": 50.4088,
+      "longitude": 2.94333,
+      "name": {
+        "en": "église Saint-Henri d'Hénin-Beaumont",
+        "fr": "église Saint-Henri d'Hénin-Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "henin-beaumont-eglise-saint-martin-pa62000002",
+      "latitude": 50.4208995972855,
+      "longitude": 2.94816958751125,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "destroyed church located in Pas-de-Calais, in France",
+        "fr": "église détruite située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38496189",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-eglise-sainte-marie-d-henin-beaumont-q38496189",
+      "latitude": 50.423489,
+      "longitude": 2.959198,
+      "name": {
+        "en": "église Sainte-Marie d'Hénin-Beaumont",
+        "fr": "église Sainte-Marie d'Hénin-Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Hénin-Beaumont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2466148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-henin-beaumont-q2466148",
+      "latitude": 50.416854,
+      "longitude": 2.952381,
+      "name": {
+        "en": "Hénin-Beaumont",
+        "fr": "Hénin-Beaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French football stadium",
+        "fr": "stade Gustave-Delmotte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3495609",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "henin-beaumont-stade-gustave-delmotte-q3495609",
+      "latitude": 50.406569,
+      "longitude": 2.940022,
+      "name": {
+        "en": "stade Gustave-Delmotte",
+        "fr": "stade Gustave-Delmotte"
+      }
+    }
+  ]
+}

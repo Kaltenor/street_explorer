@@ -208,6 +208,11 @@ export type ActiveRecordingSettings = {
   sessionId: number;
 };
 
+export type InvalidActiveRecordingDiagnostic = {
+  reason: "finalized_session" | "invalid_metadata" | "missing_session" | "unsupported_mode";
+  sessionId: number | null;
+};
+
 export class ActiveRecordingConflictError extends Error {
   constructor(readonly activeRecording: ActiveRecordingSettings) {
     super("An unfinished recording already exists.");
@@ -305,10 +310,18 @@ export async function createActiveRecordingSession(input: {
     throw new Error("Active recording transaction completed without a session.");
   }
 
+  console.info("[recording] active session persisted", {
+    activityMode: input.activityMode,
+    sessionId,
+    startedAt: input.startedAt
+  });
+
   return sessionId;
 }
 
-export async function getActiveRecordingSettings(): Promise<ActiveRecordingSettings | null> {
+export async function getActiveRecordingSettings(
+  onInvalid?: (diagnostic: InvalidActiveRecordingDiagnostic) => void
+): Promise<ActiveRecordingSettings | null> {
   const db = await getDatabase();
   let activeRecording: ActiveRecordingSettings | null = null;
 
@@ -323,6 +336,7 @@ export async function getActiveRecordingSettings(): Promise<ActiveRecordingSetti
 
     if (!Number.isFinite(sessionId) || sessionId <= 0) {
       if (rows.length > 0) {
+        onInvalid?.({ reason: "invalid_metadata", sessionId: null });
         await transaction.runAsync(
           "DELETE FROM app_settings WHERE key IN (?, ?)",
           ACTIVE_RECORDING_SESSION_ID_KEY,
@@ -346,11 +360,28 @@ export async function getActiveRecordingSettings(): Promise<ActiveRecordingSetti
       sessionId
     );
 
-    if (
-      !session ||
-      session.ended_at !== session.started_at ||
-      !ACTIVITY_MODES.includes(session.activity_mode)
-    ) {
+    if (!session) {
+      onInvalid?.({ reason: "missing_session", sessionId });
+      await transaction.runAsync(
+        "DELETE FROM app_settings WHERE key IN (?, ?)",
+        ACTIVE_RECORDING_SESSION_ID_KEY,
+        ACTIVE_RECORDING_MODE_KEY
+      );
+      return;
+    }
+
+    if (session.ended_at !== session.started_at) {
+      onInvalid?.({ reason: "finalized_session", sessionId });
+      await transaction.runAsync(
+        "DELETE FROM app_settings WHERE key IN (?, ?)",
+        ACTIVE_RECORDING_SESSION_ID_KEY,
+        ACTIVE_RECORDING_MODE_KEY
+      );
+      return;
+    }
+
+    if (!ACTIVITY_MODES.includes(session.activity_mode)) {
+      onInvalid?.({ reason: "unsupported_mode", sessionId });
       await transaction.runAsync(
         "DELETE FROM app_settings WHERE key IN (?, ?)",
         ACTIVE_RECORDING_SESSION_ID_KEY,
@@ -387,6 +418,7 @@ export async function clearActiveRecordingSettings(
   expectedSessionId?: number
 ) {
   const db = await getDatabase();
+  let didClear = false;
 
   await db.withExclusiveTransactionAsync(async (transaction) => {
     if (expectedSessionId !== undefined) {
@@ -400,12 +432,19 @@ export async function clearActiveRecordingSettings(
       }
     }
 
-    await transaction.runAsync(
+    const result = await transaction.runAsync(
       "DELETE FROM app_settings WHERE key IN (?, ?)",
       ACTIVE_RECORDING_SESSION_ID_KEY,
       ACTIVE_RECORDING_MODE_KEY
     );
+    didClear = result.changes > 0;
   });
+
+  if (didClear) {
+    console.info("[recording] active session settings cleared", {
+      sessionId: expectedSessionId ?? null
+    });
+  }
 }
 
 export async function getSavedCompletionObjective() {

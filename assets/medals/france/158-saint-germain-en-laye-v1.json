@@ -1,0 +1,204 @@
+{
+  "id": "saint-germain-en-laye-v1",
+  "cityId": "saint-germain-en-laye-fr",
+  "cityZoneId": "relation/75454",
+  "cityName": {
+    "en": "Saint-Germain-en-Laye",
+    "fr": "Saint-Germain-en-Laye"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Val is an important witness to the city's history.",
+        "fr": "Château du Val est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087605",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-chateau-du-val-pa00087605",
+      "latitude": 48.9209493100075,
+      "longitude": 2.10644155571796,
+      "name": {
+        "en": "Château du Val",
+        "fr": "Château du Val"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Dépendances du Parc aux Lièvres is a distinctive architectural landmark in the city.",
+        "fr": "Dépendances du Parc aux Lièvres est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000507",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-dependances-du-parc-aux-lievres-pa78000507",
+      "latitude": 48.920349,
+      "longitude": 2.109936,
+      "name": {
+        "en": "Dépendances du Parc aux Lièvres",
+        "fr": "Dépendances du Parc aux Lièvres"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Saint-Germain-en-Laye is an important witness to the city's history.",
+        "fr": "Domaine de Saint-Germain-en-Laye est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087611",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-domaine-de-saint-germain-en-laye-pa00087611",
+      "latitude": 48.907740916169,
+      "longitude": 2.10390770048503,
+      "name": {
+        "en": "Domaine de Saint-Germain-en-Laye",
+        "fr": "Domaine de Saint-Germain-en-Laye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087613",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-eglise-saint-louis-pa00087613",
+      "latitude": 48.8977130277262,
+      "longitude": 2.09421912848722,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Villeroy (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Villeroy (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087620",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-hotel-de-villeroy-ancien-pa00087620",
+      "latitude": 48.8970852665321,
+      "longitude": 2.0945069917308503,
+      "name": {
+        "en": "Hôtel de Villeroy (ancien)",
+        "fr": "Hôtel de Villeroy (ancien)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'archéologie nationale (des origines à l'an mille) - château de Saint-Germain-en-Laye is one of the city's notable cultural landmarks.",
+        "fr": "musée d'archéologie nationale (des origines à l'an mille) - château de Saint-Germain-en-Laye compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5001",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-musee-d-archeologie-nationale-des-origines-a-l-an-mille-chateau-de-saint-germain-en-laye-m5001",
+      "latitude": 48.897879,
+      "longitude": 2.094936,
+      "name": {
+        "en": "musée d'archéologie nationale (des origines à l'an mille) - château de Saint-Germain-en-Laye",
+        "fr": "musée d'archéologie nationale (des origines à l'an mille) - château de Saint-Germain-en-Laye"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental Maurice Denis is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental Maurice Denis compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0396",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-musee-departemental-maurice-denis-m0396",
+      "latitude": 48.892495,
+      "longitude": 2.087541,
+      "name": {
+        "en": "musée départemental Maurice Denis",
+        "fr": "musée départemental Maurice Denis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal Ducastel-Vera de Saint-Germain-en-Laye is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal Ducastel-Vera de Saint-Germain-en-Laye compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0397",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-musee-municipal-ducastel-vera-de-saint-germain-en-laye-m0397",
+      "latitude": 48.794403,
+      "longitude": 2.127681,
+      "name": {
+        "en": "musée municipal Ducastel-Vera de Saint-Germain-en-Laye",
+        "fr": "musée municipal Ducastel-Vera de Saint-Germain-en-Laye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Pavillons de Sully et Henri IV et vestiges du Château-Neuf is an important witness to the city's history.",
+        "fr": "Pavillons de Sully et Henri IV et vestiges du Château-Neuf est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087604",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-pavillons-de-sully-et-henri-iv-et-vestiges-du-chateau-neuf-pa00087604",
+      "latitude": 48.8971375051382,
+      "longitude": 2.10275244300508,
+      "name": {
+        "en": "Pavillons de Sully et Henri IV et vestiges du Château-Neuf",
+        "fr": "Pavillons de Sully et Henri IV et vestiges du Château-Neuf"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Chambourcy is an important witness to the city's history.",
+        "fr": "Porte de Chambourcy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087627",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-germain-en-laye-porte-de-chambourcy-pa00087627",
+      "latitude": 48.9132609809511,
+      "longitude": 2.04502132390292,
+      "name": {
+        "en": "Porte de Chambourcy",
+        "fr": "Porte de Chambourcy"
+      }
+    }
+  ]
+}

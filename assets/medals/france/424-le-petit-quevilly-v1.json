@@ -1,0 +1,204 @@
+{
+  "id": "le-petit-quevilly-v1",
+  "cityId": "le-petit-quevilly-fr",
+  "cityZoneId": "relation/93030",
+  "cityName": {
+    "en": "Le Petit-Quevilly",
+    "fr": "Le Petit-Quevilly"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien chartreuse Saint-Julien-lès-Rouen is an important witness to the city's history.",
+        "fr": "Ancien chartreuse Saint-Julien-lès-Rouen est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100793",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-petit-quevilly-ancien-chartreuse-saint-julien-les-rouen-pa00100793",
+      "latitude": 49.4232607608787,
+      "longitude": 1.06365683069761,
+      "name": {
+        "en": "Ancien chartreuse Saint-Julien-lès-Rouen",
+        "fr": "Ancien chartreuse Saint-Julien-lès-Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Maritime, in France",
+        "fr": "chapelle située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1534236",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-chapelle-saint-julien-q1534236",
+      "latitude": 49.420833333,
+      "longitude": 1.058055555,
+      "name": {
+        "en": "chapelle Saint-Julien",
+        "fr": "chapelle Saint-Julien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Maritime, in France",
+        "fr": "cimetière situé en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21619059",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-cimetiere-saint-sever-q21619059",
+      "latitude": 49.4105,
+      "longitude": 1.0666,
+      "name": {
+        "en": "cimetière Saint-Sever",
+        "fr": "cimetière Saint-Sever"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Antoine-de-Padoue is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Antoine-de-Padoue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-petit-quevilly-eglise-saint-antoine-de-padoue-pa76000051",
+      "latitude": 49.4304063457615,
+      "longitude": 1.06497211216431,
+      "name": {
+        "en": "Église Saint-Antoine-de-Padoue",
+        "fr": "Église Saint-Antoine-de-Padoue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60391579",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-eglise-saint-pierre-du-petit-quevilly-q60391579",
+      "latitude": 49.431538,
+      "longitude": 1.049031,
+      "name": {
+        "en": "église Saint-Pierre du Petit-Quevilly",
+        "fr": "église Saint-Pierre du Petit-Quevilly"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre 1914-1918 dit Casque couronné is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre 1914-1918 dit Casque couronné est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA76000123",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-petit-quevilly-monument-aux-morts-de-la-guerre-1914-1918-dit-casque-couronne-pa76000123",
+      "latitude": 49.41119574524194,
+      "longitude": 1.0665049761605045,
+      "name": {
+        "en": "Monument aux morts de la guerre 1914-1918 dit Casque couronné",
+        "fr": "Monument aux morts de la guerre 1914-1918 dit Casque couronné"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "building in Le Petit-Quevilly, France",
+        "fr": "bảtiment"
+      },
+      "externalIdentity": {
+        "id": "Q3064850",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-theatre-de-la-foudre-q3064850",
+      "latitude": 49.426485,
+      "longitude": 1.062954,
+      "name": {
+        "en": "Théâtre de la Foudre",
+        "fr": "Théâtre de la Foudre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-Maritime department, France",
+        "fr": "siège municipal du Petit-Quevilly, en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119342235",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-mairie-du-petit-quevilly-q119342235",
+      "latitude": 49.430280446,
+      "longitude": 1.052697131,
+      "name": {
+        "en": "mairie du Petit-Quevilly",
+        "fr": "mairie du Petit-Quevilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-purpose stadium in Le Petit-Quevilly, France",
+        "fr": "stade Amable-et-Micheline-Lozai est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3495502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-stade-amable-et-micheline-lozai-q3495502",
+      "latitude": 49.42765,
+      "longitude": 1.05115,
+      "name": {
+        "en": "stade Amable-et-Micheline-Lozai",
+        "fr": "stade Amable-et-Micheline-Lozai"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium",
+        "fr": "stade de football"
+      },
+      "externalIdentity": {
+        "id": "Q1128618",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-petit-quevilly-stade-robert-diochon-q1128618",
+      "latitude": 49.411106407,
+      "longitude": 1.070777714,
+      "name": {
+        "en": "stade Robert-Diochon",
+        "fr": "stade Robert-Diochon"
+      }
+    }
+  ]
+}

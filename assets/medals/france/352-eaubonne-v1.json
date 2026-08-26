@@ -1,0 +1,204 @@
+{
+  "id": "eaubonne-v1",
+  "cityId": "eaubonne-fr",
+  "cityZoneId": "relation/76341",
+  "cityName": {
+    "en": "Eaubonne",
+    "fr": "Eaubonne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Chesnaye dit aussi de Meaux is an important witness to the city's history.",
+        "fr": "Château de la Chesnaye dit aussi de Meaux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "eaubonne-chateau-de-la-chesnaye-dit-aussi-de-meaux-pa00080042",
+      "latitude": 48.9951350181528,
+      "longitude": 2.2773263162081,
+      "name": {
+        "en": "Château de la Chesnaye dit aussi de Meaux",
+        "fr": "Château de la Chesnaye dit aussi de Meaux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Chesnaye is an important witness to the city's history.",
+        "fr": "château à Eaubonne (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q15526233",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-chateau-de-la-chesnaye-q15526233",
+      "latitude": 48.99512,
+      "longitude": 2.27731,
+      "name": {
+        "en": "château de la Chesnaye",
+        "fr": "château de la Chesnaye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Cèdres is an important witness to the city's history.",
+        "fr": "château français situé à Eaubonne"
+      },
+      "externalIdentity": {
+        "id": "Q78658909",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-chateau-des-cedres-q78658909",
+      "latitude": 48.992656,
+      "longitude": 2.285459,
+      "name": {
+        "en": "château des Cèdres",
+        "fr": "château des Cèdres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20080497",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-eglise-du-sacre-c-ur-q20080497",
+      "latitude": 48.985166,
+      "longitude": 2.276369,
+      "name": {
+        "en": "église du Sacré-Cœur",
+        "fr": "église du Sacré-Cœur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20064961",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-eglise-notre-dame-de-l-assomption-d-eaubonne-q20064961",
+      "latitude": 48.994387,
+      "longitude": 2.2747,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption d'Eaubonne",
+        "fr": "église Notre-Dame-de-l'Assomption d'Eaubonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20064962",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-eglise-sainte-marie-d-eaubonne-q20064962",
+      "latitude": 48.992919,
+      "longitude": 2.2787,
+      "name": {
+        "en": "église Sainte-Marie d'Eaubonne",
+        "fr": "église Sainte-Marie d'Eaubonne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Mézières (ancien) , dit Château Goguel ou ancienne mairie is an important witness to the city's history.",
+        "fr": "Hôtel de Mézières (ancien) , dit Château Goguel ou ancienne mairie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "eaubonne-hotel-de-mezieres-ancien-dit-chateau-goguel-ou-ancienne-mairie-pa00080043",
+      "latitude": 48.9909304010969,
+      "longitude": 2.2760140582128,
+      "name": {
+        "en": "Hôtel de Mézières (ancien) , dit Château Goguel ou ancienne mairie",
+        "fr": "Hôtel de Mézières (ancien) , dit Château Goguel ou ancienne mairie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "house in Eaubonne, France",
+        "fr": "monument historique"
+      },
+      "externalIdentity": {
+        "id": "Q15526224",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-hotel-de-mezieres-q15526224",
+      "latitude": 48.99255,
+      "longitude": 2.28213,
+      "name": {
+        "en": "hôtel de Mézières",
+        "fr": "hôtel de Mézières"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053272",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eaubonne-monument-aux-morts-d-eaubonne-q136053272",
+      "latitude": 48.995806,
+      "longitude": 2.270699,
+      "name": {
+        "en": "monument aux morts d'Eaubonne",
+        "fr": "monument aux morts d'Eaubonne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Petit Château is an important witness to the city's history.",
+        "fr": "Petit Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "eaubonne-petit-chateau-pa00080041",
+      "latitude": 48.9905082332679,
+      "longitude": 2.27353568697883,
+      "name": {
+        "en": "Petit Château",
+        "fr": "Petit Château"
+      }
+    }
+  ]
+}

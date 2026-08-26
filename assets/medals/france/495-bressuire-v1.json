@@ -1,0 +1,204 @@
+{
+  "id": "bressuire-v1",
+  "cityId": "bressuire-fr",
+  "cityZoneId": "relation/337985",
+  "cityName": {
+    "en": "Bressuire",
+    "fr": "Bressuire"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château de Noirlieu is an important witness to the city's history.",
+        "fr": "Ancien château de Noirlieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135589",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bressuire-ancien-chateau-de-noirlieu-pa00135589",
+      "latitude": 46.92087341680531,
+      "longitude": -0.432625183849428,
+      "name": {
+        "en": "Ancien château de Noirlieu",
+        "fr": "Ancien château de Noirlieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bressuire, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096060",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bressuire-bressuire-q3096060",
+      "latitude": 46.838359,
+      "longitude": -0.496381,
+      "name": {
+        "en": "Bressuire",
+        "fr": "Bressuire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bressuire castel",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2968664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bressuire-chateau-de-bressuire-q2968664",
+      "latitude": 46.841666666,
+      "longitude": -0.498888888,
+      "name": {
+        "en": "château de Bressuire",
+        "fr": "château de Bressuire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Dubrie is an important witness to the city's history.",
+        "fr": "château à Bressuire (Deux-Sèvres)"
+      },
+      "externalIdentity": {
+        "id": "Q22952838",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bressuire-chateau-de-la-dubrie-q22952838",
+      "latitude": 46.89834,
+      "longitude": -0.504894,
+      "name": {
+        "en": "château de la Dubrie",
+        "fr": "château de la Dubrie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101200",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bressuire-chateau-pa00101200",
+      "latitude": 46.8420081092812,
+      "longitude": -0.498905475548649,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Saint-Sauveur-de-Givre-en-Mai is a distinctive architectural landmark in the city.",
+        "fr": "Église de Saint-Sauveur-de-Givre-en-Mai est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101202",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bressuire-eglise-de-saint-sauveur-de-givre-en-mai-pa00101202",
+      "latitude": 46.8221515878495,
+      "longitude": -0.419498398686498,
+      "name": {
+        "en": "Église de Saint-Sauveur-de-Givre-en-Mai",
+        "fr": "Église de Saint-Sauveur-de-Givre-en-Mai"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101201",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bressuire-eglise-notre-dame-pa00101201",
+      "latitude": 46.8418666669519,
+      "longitude": -0.491601294640046,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Deux-Sèvres department, France",
+        "fr": "monument aux morts des Deux-Sèvres, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067045",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bressuire-monument-aux-morts-de-noirlieu-q136067045",
+      "latitude": 46.922031,
+      "longitude": -0.430296,
+      "name": {
+        "en": "monument aux morts de Noirlieu",
+        "fr": "monument aux morts de Noirlieu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0840",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bressuire-musee-municipal-m0840",
+      "latitude": 46.841873,
+      "longitude": -0.493243,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q62003870",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bressuire-noirterre-q62003870",
+      "latitude": 46.869722222,
+      "longitude": -0.393611111,
+      "name": {
+        "en": "Noirterre",
+        "fr": "Noirterre"
+      }
+    }
+  ]
+}

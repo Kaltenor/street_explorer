@@ -1,0 +1,204 @@
+{
+  "id": "saint-michel-sur-orge-v1",
+  "cityId": "saint-michel-sur-orge-fr",
+  "cityZoneId": "relation/33366",
+  "cityName": {
+    "en": "Saint-Michel-sur-Orge",
+    "fr": "Saint-Michel-sur-Orge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Centre culturel Baschet is a distinctive architectural landmark in the city.",
+        "fr": "Centre culturel Baschet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/323127447",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-michel-sur-orge-centre-culturel-baschet-way-323127447",
+      "latitude": 48.6372488,
+      "longitude": 2.3120247,
+      "name": {
+        "en": "Centre culturel Baschet",
+        "fr": "Centre culturel Baschet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/143694474",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-michel-sur-orge-eglise-saint-michel-way-143694474",
+      "latitude": 48.631983,
+      "longitude": 2.303482,
+      "name": {
+        "en": "Église Saint-Michel",
+        "fr": "Église Saint-Michel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grande Salle de la Fontaine de l'Orme is a distinctive architectural landmark in the city.",
+        "fr": "Grande Salle de la Fontaine de l'Orme est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3294976862",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-michel-sur-orge-grande-salle-de-la-fontaine-de-l-orme-node-3294976862",
+      "latitude": 48.6278074,
+      "longitude": 2.3152247,
+      "name": {
+        "en": "Grande Salle de la Fontaine de l'Orme",
+        "fr": "Grande Salle de la Fontaine de l'Orme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maurice Marais is a distinctive architectural landmark in the city.",
+        "fr": "Maurice Marais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/333274016",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-michel-sur-orge-maurice-marais-node-333274016",
+      "latitude": 48.6262791,
+      "longitude": 2.2966887,
+      "name": {
+        "en": "Maurice Marais",
+        "fr": "Maurice Marais"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136076655",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-michel-sur-orge-monument-aux-morts-de-saint-michel-sur-orge-q136076655",
+      "latitude": 48.628804,
+      "longitude": 2.30564,
+      "name": {
+        "en": "monument aux morts de Saint-Michel-sur-Orge",
+        "fr": "monument aux morts de Saint-Michel-sur-Orge"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des glaises is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des glaises compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/813899107",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-michel-sur-orge-parc-des-glaises-way-813899107",
+      "latitude": 48.6265531,
+      "longitude": 2.3018238,
+      "name": {
+        "en": "Parc des glaises",
+        "fr": "Parc des glaises"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Jean Vilar is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Jean Vilar compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/721626637",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-michel-sur-orge-parc-jean-vilar-way-721626637",
+      "latitude": 48.630561,
+      "longitude": 2.3011002,
+      "name": {
+        "en": "Parc Jean Vilar",
+        "fr": "Parc Jean Vilar"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mont Pipau is a distinctive architectural landmark in the city.",
+        "fr": "Mont Pipau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2587201263",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-michel-sur-orge-mont-pipau-node-2587201263",
+      "latitude": 48.6403713,
+      "longitude": 2.3126347,
+      "name": {
+        "en": "Mont Pipau",
+        "fr": "Mont Pipau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Petite salle de la Fontaine de l'Orme is a distinctive architectural landmark in the city.",
+        "fr": "Petite salle de la Fontaine de l'Orme est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3294976861",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-michel-sur-orge-petite-salle-de-la-fontaine-de-l-orme-node-3294976861",
+      "latitude": 48.6277329,
+      "longitude": 2.3149377,
+      "name": {
+        "en": "Petite salle de la Fontaine de l'Orme",
+        "fr": "Petite salle de la Fontaine de l'Orme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Essonne, France",
+        "fr": "commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q275562",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-michel-sur-orge-saint-michel-sur-orge-q275562",
+      "latitude": 48.6325,
+      "longitude": 2.302777777,
+      "name": {
+        "en": "Saint-Michel-sur-Orge",
+        "fr": "Saint-Michel-sur-Orge"
+      }
+    }
+  ]
+}

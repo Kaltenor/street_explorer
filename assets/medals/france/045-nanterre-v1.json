@@ -1,0 +1,394 @@
+{
+  "id": "nanterre-v1",
+  "cityId": "nanterre-fr",
+  "cityZoneId": "relation/85799",
+  "cityName": {
+    "en": "Nanterre",
+    "fr": "Nanterre"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Geneviève - Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Geneviève - Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088126",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nanterre-cathedrale-sainte-genevieve-saint-maurice-pa00088126",
+      "latitude": 48.8908526082466,
+      "longitude": 2.1961729508584305,
+      "name": {
+        "en": "Cathédrale Sainte-Geneviève - Saint-Maurice",
+        "fr": "Cathédrale Sainte-Geneviève - Saint-Maurice"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "thoroughfare in Nanterre, France",
+        "fr": "jardin de Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135356632",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-jardin-des-bels-ebats-q135356632",
+      "latitude": 48.8986301,
+      "longitude": 2.2232757,
+      "name": {
+        "en": "jardin des Bels Ébats",
+        "fr": "jardin des Bels Ébats"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "thoroughfare in Nanterre, France",
+        "fr": "jardin de Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135356607",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-jardin-des-rails-q135356607",
+      "latitude": 48.9020826,
+      "longitude": 2.2230804,
+      "name": {
+        "en": "jardin des Rails",
+        "fr": "jardin des Rails"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "office skyscraper under construction located in the business district of La Defense near Paris",
+        "fr": "gratte-ciel de bureaux en construction situé dans le quartier d'affaires de La Défense près de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q104327182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-l-archipel-q104327182",
+      "latitude": 48.89727195,
+      "longitude": 2.22669743,
+      "name": {
+        "en": "L'archipel",
+        "fr": "L'archipel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "French library, archive center and museum",
+        "fr": "bibliothèque, centre d'archives et musée français"
+      },
+      "externalIdentity": {
+        "id": "Q856640",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-la-contemporaine-q856640",
+      "latitude": 48.901720944,
+      "longitude": 2.211276863,
+      "name": {
+        "en": "La Contemporaine",
+        "fr": "La Contemporaine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de La Garenne-Colombes is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à La Garenne-Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602230",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-monument-aux-morts-de-la-garenne-colombes-q96602230",
+      "latitude": 48.9020057,
+      "longitude": 2.2311525,
+      "name": {
+        "en": "monument aux morts de La Garenne-Colombes",
+        "fr": "monument aux morts de La Garenne-Colombes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Nanterre is a notable work of public art and local memory.",
+        "fr": "monument aux morts des Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116847887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-monument-aux-morts-de-nanterre-q116847887",
+      "latitude": 48.89152,
+      "longitude": 2.19649,
+      "name": {
+        "en": "monument aux morts de Nanterre",
+        "fr": "monument aux morts de Nanterre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Nanterre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2556326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-nanterre-prefecture-q2556326",
+      "latitude": 48.895556,
+      "longitude": 2.223056,
+      "name": {
+        "en": "Nanterre-Préfecture",
+        "fr": "Nanterre-Préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Nanterre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2414148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-nanterre-universite-q2414148",
+      "latitude": 48.901388888,
+      "longitude": 2.214722222,
+      "name": {
+        "en": "Nanterre-Université",
+        "fr": "Nanterre-Université"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q581559",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-nanterre-ville-q581559",
+      "latitude": 48.895099397,
+      "longitude": 2.19558893,
+      "name": {
+        "en": "Nanterre-Ville",
+        "fr": "Nanterre-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "indoor sports arena",
+        "fr": "arène sportive couverte"
+      },
+      "externalIdentity": {
+        "id": "Q14931634",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-palais-des-sports-maurice-thorez-q14931634",
+      "latitude": 48.8927441,
+      "longitude": 2.2103631,
+      "name": {
+        "en": "palais des sports Maurice-Thorez",
+        "fr": "palais des sports Maurice-Thorez"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Nanterre, France",
+        "fr": "parc situé à Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3363764",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-parc-andre-malraux-q3363764",
+      "latitude": 48.8921,
+      "longitude": 2.21954,
+      "name": {
+        "en": "parc André-Malraux",
+        "fr": "parc André-Malraux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Nanterre, France",
+        "fr": "parc situé à Nanterre, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601841",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-parc-des-anciennes-mairies-q96601841",
+      "latitude": 48.89149,
+      "longitude": 2.19695,
+      "name": {
+        "en": "parc des Anciennes Mairies",
+        "fr": "parc des Anciennes Mairies"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont de Nanterre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3396868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-pont-de-bezons-q3396868",
+      "latitude": 48.9206,
+      "longitude": 2.22031,
+      "name": {
+        "en": "pont de Bezons",
+        "fr": "pont de Bezons"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre Bernard-Marie Koltès is one of the city's notable cultural landmarks.",
+        "fr": "théâtre Bernard-Marie Koltès compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q16680072",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-theatre-bernard-marie-koltes-q16680072",
+      "latitude": 48.903785,
+      "longitude": 2.216959,
+      "name": {
+        "en": "théâtre Bernard-Marie Koltès",
+        "fr": "théâtre Bernard-Marie Koltès"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater in Nanterre, France",
+        "fr": "salle de théâtre à Nanterre"
+      },
+      "externalIdentity": {
+        "id": "Q2430631",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-theatre-nanterre-amandiers-q2430631",
+      "latitude": 48.8932,
+      "longitude": 2.214,
+      "name": {
+        "en": "théâtre Nanterre-Amandiers",
+        "fr": "théâtre Nanterre-Amandiers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Chassagne is an important witness to the city's history.",
+        "fr": "tour du quartier de la Défense en région parisienne, jumelle de la tour Alicante"
+      },
+      "externalIdentity": {
+        "id": "Q9360324",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-tour-chassagne-q9360324",
+      "latitude": 48.8917,
+      "longitude": 2.2311,
+      "name": {
+        "en": "tour Chassagne",
+        "fr": "tour Chassagne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "206-meter skyscraper project located in Nanterre, in the business district of La Défense",
+        "fr": "projet de gratte-ciel de 206 mètres situé à Nanterre, dans le quartier d'affaires de La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q30738616",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-tour-des-jardins-de-l-arche-q30738616",
+      "latitude": 48.895833333,
+      "longitude": 2.2325,
+      "name": {
+        "en": "Tour des Jardins de l'Arche",
+        "fr": "Tour des Jardins de l'Arche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in La Défense, France",
+        "fr": "Gratte-ciel"
+      },
+      "externalIdentity": {
+        "id": "Q666483",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-tour-granite-q666483",
+      "latitude": 48.8918,
+      "longitude": 2.22959,
+      "name": {
+        "en": "Tour Granite",
+        "fr": "Tour Granite"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "two office skyscrapers located in La Défense",
+        "fr": "Bâtiments notables"
+      },
+      "externalIdentity": {
+        "id": "Q3052184",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nanterre-tours-chassagne-et-alicante-q3052184",
+      "latitude": 48.891944444,
+      "longitude": 2.230555555,
+      "name": {
+        "en": "Tours Chassagne et Alicante",
+        "fr": "Tours Chassagne et Alicante"
+      }
+    }
+  ]
+}

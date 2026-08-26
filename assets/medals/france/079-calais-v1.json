@@ -1,0 +1,394 @@
+{
+  "id": "calais-v1",
+  "cityId": "calais-fr",
+  "cityZoneId": "relation/286380",
+  "cityName": {
+    "en": "Calais",
+    "fr": "Calais"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Calais, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2109280",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-beau-marais-q2109280",
+      "latitude": 50.945351,
+      "longitude": 1.898156,
+      "name": {
+        "en": "Beau Marais",
+        "fr": "Beau Marais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Calais, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q15971875",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-calais-maritime-q15971875",
+      "latitude": 50.9657,
+      "longitude": 1.8527,
+      "name": {
+        "en": "Calais-Maritime",
+        "fr": "Calais-Maritime"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "16th-century citadel in Calais, France",
+        "fr": "citadelle à Calais (Pas-de-Calais)"
+      },
+      "externalIdentity": {
+        "id": "Q2974382",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-citadelle-de-calais-q2974382",
+      "latitude": 50.9578,
+      "longitude": 1.8452,
+      "name": {
+        "en": "citadelle de Calais",
+        "fr": "citadelle de Calais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108247",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-citadelle-pa00108247",
+      "latitude": 50.9570561848112,
+      "longitude": 1.8412509251867701,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cité internationale de la dentelle et de la mode is one of the city's notable cultural landmarks.",
+        "fr": "cité internationale de la dentelle et de la mode compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1177",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "calais-cite-internationale-de-la-dentelle-et-de-la-mode-m1177",
+      "latitude": 50.950474,
+      "longitude": 1.860013,
+      "name": {
+        "en": "cité internationale de la dentelle et de la mode",
+        "fr": "cité internationale de la dentelle et de la mode"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Crypte souterraine sous l'emplacement du Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Crypte souterraine sous l'emplacement du Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108245",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-crypte-souterraine-sous-l-emplacement-du-beffroi-pa00108245",
+      "latitude": 50.95292377895213,
+      "longitude": 1.8543243991421838,
+      "name": {
+        "en": "Crypte souterraine sous l'emplacement du Beffroi",
+        "fr": "Crypte souterraine sous l'emplacement du Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108246",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-eglise-notre-dame-pa00108246",
+      "latitude": 50.9581928102272,
+      "longitude": 1.85325191456334,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Nieulay is an important witness to the city's history.",
+        "fr": "Fort Nieulay est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000181",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-fort-nieulay-pa62000181",
+      "latitude": 50.9460759153663,
+      "longitude": 1.8161946584074862,
+      "name": {
+        "en": "Fort Nieulay",
+        "fr": "Fort Nieulay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Risban is an important witness to the city's history.",
+        "fr": "Fort Risban est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108459",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-fort-risban-pa00108459",
+      "latitude": 50.9641028699379,
+      "longitude": 1.84706370200998,
+      "name": {
+        "en": "Fort Risban",
+        "fr": "Fort Risban"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "the seat of the city council in Calais, France",
+        "fr": "mairie à Calais (Pas-de-Calais)"
+      },
+      "externalIdentity": {
+        "id": "Q17175490",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-hotel-de-ville-de-calais-q17175490",
+      "latitude": 50.952583333,
+      "longitude": 1.854388888,
+      "name": {
+        "en": "hôtel de ville de Calais",
+        "fr": "hôtel de ville de Calais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater in Calais, France",
+        "fr": "salle de spectacle, Calais"
+      },
+      "externalIdentity": {
+        "id": "Q3220990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-le-channel-q3220990",
+      "latitude": 50.9454,
+      "longitude": 1.83975,
+      "name": {
+        "en": "Le Channel",
+        "fr": "Le Channel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Calais, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2729495",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-les-fontinettes-q2729495",
+      "latitude": 50.940881,
+      "longitude": 1.849919,
+      "name": {
+        "en": "Les Fontinettes",
+        "fr": "Les Fontinettes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Pas-de-Calais department, France",
+        "fr": "monument aux morts du Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097073",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-monument-aux-morts-des-deux-guerres-mondiales-de-calais-q136097073",
+      "latitude": 50.95601,
+      "longitude": 1.85027,
+      "name": {
+        "en": "monument aux morts des deux guerres mondiales de Calais",
+        "fr": "monument aux morts des deux guerres mondiales de Calais"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "memorial in bronze to lifeboat rescuers who died at sea",
+        "fr": "statue en bronze dédiée aux sauveteurs en mer"
+      },
+      "externalIdentity": {
+        "id": "Q117866010",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-monument-des-sauveteurs-q117866010",
+      "latitude": 50.962607222,
+      "longitude": 1.851009722,
+      "name": {
+        "en": "Monument des sauveteurs",
+        "fr": "Monument des sauveteurs"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q85124143",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-musee-de-la-guerre-de-calais-q85124143",
+      "latitude": 50.952392,
+      "longitude": 1.851425,
+      "name": {
+        "en": "musée de la Guerre de Calais",
+        "fr": "musée de la Guerre de Calais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et de la dentelle is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et de la dentelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0644",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "calais-musee-des-beaux-arts-et-de-la-dentelle-m0644",
+      "latitude": 50.956724,
+      "longitude": 1.851871,
+      "name": {
+        "en": "musée des beaux-arts et de la dentelle",
+        "fr": "musée des beaux-arts et de la dentelle"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Calais, France",
+        "fr": "parc à Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q85123153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-parc-richelieu-q85123153",
+      "latitude": 50.956078,
+      "longitude": 1.851953,
+      "name": {
+        "en": "parc Richelieu",
+        "fr": "parc Richelieu"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Calais, France",
+        "fr": "parc Saint-Pierre compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q85316684",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-parc-saint-pierre-q85316684",
+      "latitude": 50.951744,
+      "longitude": 1.850864,
+      "name": {
+        "en": "parc Saint-Pierre",
+        "fr": "parc Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse in Pas-de-Calais, France",
+        "fr": "phare français"
+      },
+      "externalIdentity": {
+        "id": "Q2839983",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "calais-phare-de-calais-q2839983",
+      "latitude": 50.96133,
+      "longitude": 1.85368,
+      "name": {
+        "en": "phare de Calais",
+        "fr": "phare de Calais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Guet is an important witness to the city's history.",
+        "fr": "Tour du Guet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108248",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "calais-tour-du-guet-pa00108248",
+      "latitude": 50.9589374991357,
+      "longitude": 1.84950362039273,
+      "name": {
+        "en": "Tour du Guet",
+        "fr": "Tour du Guet"
+      }
+    }
+  ]
+}

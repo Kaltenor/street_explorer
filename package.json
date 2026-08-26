@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.30.2",
+  "version": "0.33.0",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "ios": "expo start --ios",
     "build:country-pack-manifest": "node scripts/country-packs/build-downloadable-manifest.mjs",
     "build:country-pack-report": "node scripts/country-packs/build-wave-report.mjs",
+    "measure:medal-storage": "python scripts/measure-medal-storage.py",
     "test:medals": "node scripts/test-medal-enclosures.js",
     "test:country-packs": "node scripts/test-country-packs.mjs",
     "test:backup": "node scripts/test-backup-v5.js",

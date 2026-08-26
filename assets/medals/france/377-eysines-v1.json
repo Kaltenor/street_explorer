@@ -1,0 +1,204 @@
+{
+  "id": "eysines-v1",
+  "cityId": "eysines-fr",
+  "cityZoneId": "relation/105280",
+  "cityName": {
+    "en": "Eysines",
+    "fr": "Eysines"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Eysines, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573693",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-cantinolle-q98573693",
+      "latitude": 44.89202,
+      "longitude": -0.667467,
+      "name": {
+        "en": "Cantinolle",
+        "fr": "Cantinolle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lescombes is an important witness to the city's history.",
+        "fr": "Château de Lescombes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083908",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "eysines-chateau-de-lescombes-pa00083908",
+      "latitude": 44.8811214121613,
+      "longitude": -0.654500462829116,
+      "name": {
+        "en": "Château de Lescombes",
+        "fr": "Château de Lescombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60388010",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-eglise-saint-martin-d-eysines-q60388010",
+      "latitude": 44.88542,
+      "longitude": -0.64849,
+      "name": {
+        "en": "église Saint-Martin d'Eysines",
+        "fr": "église Saint-Martin d'Eysines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Eysines, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-eysines-centre-q98573696",
+      "latitude": 44.884014,
+      "longitude": -0.650044,
+      "name": {
+        "en": "Eysines Centre",
+        "fr": "Eysines Centre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tram stop in Eysines, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573699",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-les-sources-q98573699",
+      "latitude": 44.888153,
+      "longitude": -0.660114,
+      "name": {
+        "en": "Les Sources",
+        "fr": "Les Sources"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Gironde department, France",
+        "fr": "monument aux morts de la Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136054097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-monument-aux-morts-d-eysines-q136054097",
+      "latitude": 44.8856092,
+      "longitude": -0.6492732,
+      "name": {
+        "en": "monument aux morts d'Eysines",
+        "fr": "monument aux morts d'Eysines"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q21099765",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-musee-du-maraichage-q21099765",
+      "latitude": 44.88111,
+      "longitude": -0.65383,
+      "name": {
+        "en": "musée du maraîchage",
+        "fr": "musée du maraîchage"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Gironde department, France",
+        "fr": "siège municipal d'Eysines, en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119297006",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-mairie-d-eysines-q119297006",
+      "latitude": 44.885833877,
+      "longitude": -0.64866215,
+      "name": {
+        "en": "mairie d'Eysines",
+        "fr": "mairie d'Eysines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Eysines, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573701",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-picot-q98573701",
+      "latitude": 44.881456,
+      "longitude": -0.641485,
+      "name": {
+        "en": "Picot",
+        "fr": "Picot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Eysines, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573661",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "eysines-simone-veil-q98573661",
+      "latitude": 44.879756,
+      "longitude": -0.636963,
+      "name": {
+        "en": "Simone Veil",
+        "fr": "Simone Veil"
+      }
+    }
+  ]
+}

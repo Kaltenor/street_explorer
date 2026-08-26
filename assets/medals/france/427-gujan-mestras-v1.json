@@ -1,0 +1,204 @@
+{
+  "id": "gujan-mestras-v1",
+  "cityId": "gujan-mestras-fr",
+  "cityZoneId": "relation/111073",
+  "cityName": {
+    "en": "Gujan-Mestras",
+    "fr": "Gujan-Mestras"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in La Teste-de-Buch, France",
+        "fr": "Aérodrome d'Arcachon - La Teste-de-Buch, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2875379",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gujan-mestras-aerodrome-d-arcachon-la-teste-de-buch-q2875379",
+      "latitude": 44.598612,
+      "longitude": -1.114722,
+      "name": {
+        "en": "aérodrome d'Arcachon - La Teste-de-Buch",
+        "fr": "aérodrome d'Arcachon - La Teste-de-Buch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Gironde, in France",
+        "fr": "cimetière situé en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110341365",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gujan-mestras-cimetiere-de-l-eglise-de-gujan-mestras-q110341365",
+      "latitude": 44.6379,
+      "longitude": -1.0747,
+      "name": {
+        "en": "cimetière de l'église de Gujan-Mestras",
+        "fr": "cimetière de l'église de Gujan-Mestras"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Cocci Tour is an important witness to the city's history.",
+        "fr": "Cocci Tour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/4025861233",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "gujan-mestras-cocci-tour-node-4025861233",
+      "latitude": 44.6215618,
+      "longitude": -1.1049313,
+      "name": {
+        "en": "Cocci Tour",
+        "fr": "Cocci Tour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/211609219",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "gujan-mestras-eglise-saint-maurice-way-211609219",
+      "latitude": 44.6377394,
+      "longitude": -1.0744341,
+      "name": {
+        "en": "Église Saint-Maurice",
+        "fr": "Église Saint-Maurice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Gironde, France",
+        "fr": "commune française du département de la Gironde"
+      },
+      "externalIdentity": {
+        "id": "Q623481",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gujan-mestras-gujan-mestras-q623481",
+      "latitude": 44.635277777,
+      "longitude": -1.067777777,
+      "name": {
+        "en": "Gujan-Mestras",
+        "fr": "Gujan-Mestras"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux Morts is a notable work of public art and local memory.",
+        "fr": "Monument aux Morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "node/2895019811",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "gujan-mestras-monument-aux-morts-node-2895019811",
+      "latitude": 44.6361774,
+      "longitude": -1.0713924,
+      "name": {
+        "en": "Monument aux Morts",
+        "fr": "Monument aux Morts"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Magdeleine is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Magdeleine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/55987450",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "gujan-mestras-parc-de-la-magdeleine-way-55987450",
+      "latitude": 44.6161084,
+      "longitude": -1.0900985,
+      "name": {
+        "en": "Parc de la Magdeleine",
+        "fr": "Parc de la Magdeleine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la mairie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la mairie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/285866003",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "gujan-mestras-parc-de-la-mairie-way-285866003",
+      "latitude": 44.6360996,
+      "longitude": -1.071395,
+      "name": {
+        "en": "Parc de la mairie",
+        "fr": "Parc de la mairie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q579347",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gujan-mestras-la-hume-q579347",
+      "latitude": 44.63998,
+      "longitude": -1.116073,
+      "name": {
+        "en": "La Hume",
+        "fr": "La Hume"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Salle du Vieux Marché is a distinctive architectural landmark in the city.",
+        "fr": "Salle du Vieux Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/211579054",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "gujan-mestras-salle-du-vieux-marche-way-211579054",
+      "latitude": 44.6390291,
+      "longitude": -1.1121374,
+      "name": {
+        "en": "Salle du Vieux Marché",
+        "fr": "Salle du Vieux Marché"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "le-mont-dore-v1",
+  "cityId": "le-mont-dore-fr",
+  "cityZoneId": "relation/377754",
+  "cityName": {
+    "en": "Le Mont-Dore",
+    "fr": "Le Mont-Dore"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q52818562",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-eglise-de-la-conception-q52818562",
+      "latitude": -22.225277777,
+      "longitude": 166.499722222,
+      "name": {
+        "en": "église de la Conception",
+        "fr": "église de la Conception"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38509540",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-eglise-sainte-cecile-de-saint-louis-q38509540",
+      "latitude": -22.226944444,
+      "longitude": 166.545,
+      "name": {
+        "en": "église Sainte-Cécile de Saint-Louis",
+        "fr": "église Sainte-Cécile de Saint-Louis"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "îlot de Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q24932366",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-ile-atire-q24932366",
+      "latitude": -22.5208138,
+      "longitude": 166.5566882,
+      "name": {
+        "en": "île Atire",
+        "fr": "île Atire"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "îlot de Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q24932443",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-ile-bailly-q24932443",
+      "latitude": -22.3015212,
+      "longitude": 166.5758512,
+      "name": {
+        "en": "île Bailly",
+        "fr": "île Bailly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in New Caledonia",
+        "fr": "île de Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q3593160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-ile-ouen-q3593160",
+      "latitude": -22.4333,
+      "longitude": 166.811,
+      "name": {
+        "en": "île Ouen",
+        "fr": "île Ouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q6462008",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-la-coulee-q6462008",
+      "latitude": -22.215,
+      "longitude": 166.6,
+      "name": {
+        "en": "La Coulée",
+        "fr": "La Coulée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in New Caledonia, France",
+        "fr": "commune française de la collectivité sui generis de la Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q9732",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-le-mont-dore-q9732",
+      "latitude": -22.283333333,
+      "longitude": 166.583333333,
+      "name": {
+        "en": "Le Mont-Dore",
+        "fr": "Le Mont-Dore"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Monts des Koghis is a distinctive architectural landmark in the city.",
+        "fr": "Monts des Koghis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31790461",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-monts-des-koghis-q31790461",
+      "latitude": -22.166666666,
+      "longitude": 166.533333333,
+      "name": {
+        "en": "Monts des Koghis",
+        "fr": "Monts des Koghis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Monts Kouanénoa is a distinctive architectural landmark in the city.",
+        "fr": "Monts Kouanénoa est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31790287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-monts-kouanenoa-q31790287",
+      "latitude": -22.2,
+      "longitude": 166.7,
+      "name": {
+        "en": "Monts Kouanénoa",
+        "fr": "Monts Kouanénoa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Victorin-Boewa is a distinctive architectural landmark in the city.",
+        "fr": "stade français situé en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q7596094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-mont-dore-stade-victorin-boewa-q7596094",
+      "latitude": -22.22824,
+      "longitude": 166.51715,
+      "name": {
+        "en": "stade Victorin-Boewa",
+        "fr": "stade Victorin-Boewa"
+      }
+    }
+  ]
+}

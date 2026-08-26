@@ -1,0 +1,394 @@
+{
+  "id": "rouen-v1",
+  "cityId": "rouen-fr",
+  "cityZoneId": "relation/75628",
+  "cityName": {
+    "en": "Rouen",
+    "fr": "Rouen"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Amand is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Amand est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-abbaye-de-saint-amand-pa00100798",
+      "latitude": 49.4496802938452,
+      "longitude": 1.08974408577627,
+      "name": {
+        "en": "Ancien abbaye de Saint-Amand",
+        "fr": "Ancien abbaye de Saint-Amand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100812",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-eglise-saint-andre-pa00100812",
+      "latitude": 49.4409349214333,
+      "longitude": 1.0896545372122002,
+      "name": {
+        "en": "Ancien église Saint-André",
+        "fr": "Ancien église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Eloi is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Eloi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100815",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-eglise-saint-eloi-pa00100815",
+      "latitude": 49.4417806901947,
+      "longitude": 1.08729556810432,
+      "name": {
+        "en": "Ancien église Saint-Eloi",
+        "fr": "Ancien église Saint-Eloi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100818",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-eglise-saint-laurent-pa00100818",
+      "latitude": 49.4444341637503,
+      "longitude": 1.09529547971357,
+      "name": {
+        "en": "Ancien église Saint-Laurent",
+        "fr": "Ancien église Saint-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100825",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ancien-eglise-saint-paul-pa00100825",
+      "latitude": 49.4338948067928,
+      "longitude": 1.10635034813389,
+      "name": {
+        "en": "Ancien église Saint-Paul",
+        "fr": "Ancien église Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Seine-Maritime, in France",
+        "fr": "cathédrale située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q476516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rouen-cathedrale-notre-dame-de-rouen-q476516",
+      "latitude": 49.4402,
+      "longitude": 1.095,
+      "name": {
+        "en": "cathédrale Notre-Dame de Rouen",
+        "fr": "cathédrale Notre-Dame de Rouen"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau-marégraphe is an important witness to the city's history.",
+        "fr": "Château d'eau-marégraphe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-chateau-d-eau-maregraphe-pa76000030",
+      "latitude": 49.4417151046005,
+      "longitude": 1.07845494037731,
+      "name": {
+        "en": "Château d'eau-marégraphe",
+        "fr": "Château d'eau-marégraphe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble archiépiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble archiépiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100800",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-ensemble-archiepiscopal-pa00100800",
+      "latitude": 49.4402597948152,
+      "longitude": 1.09523586915939,
+      "name": {
+        "en": "Ensemble archiépiscopal",
+        "fr": "Ensemble archiépiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fierte Saint-Romain ou chapelle Saint-Romain, à la Haute-Vieille-Tour is an important witness to the city's history.",
+        "fr": "Fierte Saint-Romain ou chapelle Saint-Romain, à la Haute-Vieille-Tour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100829",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-fierte-saint-romain-ou-chapelle-saint-romain-a-la-haute-vieille-tour-pa00100829",
+      "latitude": 49.438183736413,
+      "longitude": 1.09514703962946,
+      "name": {
+        "en": "Fierte Saint-Romain ou chapelle Saint-Romain, à la Haute-Vieille-Tour",
+        "fr": "Fierte Saint-Romain ou chapelle Saint-Romain, à la Haute-Vieille-Tour"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la céramique is one of the city's notable cultural landmarks.",
+        "fr": "musée de la céramique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0730",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-de-la-ceramique-m0730",
+      "latitude": 49.445543,
+      "longitude": 1.093846,
+      "name": {
+        "en": "musée de la céramique",
+        "fr": "musée de la céramique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des antiquités de la Seine-Maritime is one of the city's notable cultural landmarks.",
+        "fr": "musée des antiquités de la Seine-Maritime compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0733",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-des-antiquites-de-la-seine-maritime-m0733",
+      "latitude": 49.447268,
+      "longitude": 1.098932,
+      "name": {
+        "en": "musée des antiquités de la Seine-Maritime",
+        "fr": "musée des antiquités de la Seine-Maritime"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0729",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-des-beaux-arts-m0729",
+      "latitude": 49.444957582036025,
+      "longitude": 1.093907740011714,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Flaubert et d'histoire de la médecine is one of the city's notable cultural landmarks.",
+        "fr": "musée Flaubert et d'histoire de la médecine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0734",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-flaubert-et-d-histoire-de-la-medecine-m0734",
+      "latitude": 49.445232,
+      "longitude": 1.081736,
+      "name": {
+        "en": "musée Flaubert et d'histoire de la médecine",
+        "fr": "musée Flaubert et d'histoire de la médecine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Le Secq des Tournelles is one of the city's notable cultural landmarks.",
+        "fr": "musée Le Secq des Tournelles compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0732",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-le-secq-des-tournelles-m0732",
+      "latitude": 49.445148,
+      "longitude": 1.094521,
+      "name": {
+        "en": "musée Le Secq des Tournelles",
+        "fr": "musée Le Secq des Tournelles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Rouen, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q104314",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rouen-musee-maritime-fluvial-et-portuaire-de-rouen-q104314",
+      "latitude": 49.444705,
+      "longitude": 1.060739,
+      "name": {
+        "en": "musée maritime fluvial et portuaire de Rouen",
+        "fr": "musée maritime fluvial et portuaire de Rouen"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Pierre Corneille is one of the city's notable cultural landmarks.",
+        "fr": "musée Pierre Corneille compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0731",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rouen-musee-pierre-corneille-m0731",
+      "latitude": 49.443051,
+      "longitude": 1.086748,
+      "name": {
+        "en": "musée Pierre Corneille",
+        "fr": "musée Pierre Corneille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-palais-de-justice-pa00101007",
+      "latitude": 49.4423060298057,
+      "longitude": 1.09183535929218,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Guillaume-Lion, fontaine et ancienne église des Augustins is an important witness to the city's history.",
+        "fr": "Porte Guillaume-Lion, fontaine et ancienne église des Augustins est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-porte-guillaume-lion-fontaine-et-ancienne-eglise-des-augustins-pa00101008",
+      "latitude": 49.4370641131292,
+      "longitude": 1.0984649528594101,
+      "name": {
+        "en": "Porte Guillaume-Lion, fontaine et ancienne église des Augustins",
+        "fr": "Porte Guillaume-Lion, fontaine et ancienne église des Augustins"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste is an important witness to the city's history.",
+        "fr": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-tour-dite-de-jeanne-d-arc-ou-ancien-donjon-du-chateau-de-philippe-auguste-pa00101011",
+      "latitude": 49.4464687405549,
+      "longitude": 1.09439385885525,
+      "name": {
+        "en": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste",
+        "fr": "Tour dite de Jeanne d'Arc ou ancien donjon du château de Philippe-Auguste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Beffroi is an important witness to the city's history.",
+        "fr": "Tour du Beffroi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rouen-tour-du-beffroi-pa00101010",
+      "latitude": 49.4414788839741,
+      "longitude": 1.09118071337295,
+      "name": {
+        "en": "Tour du Beffroi",
+        "fr": "Tour du Beffroi"
+      }
+    }
+  ]
+}

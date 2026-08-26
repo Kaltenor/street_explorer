@@ -1,0 +1,204 @@
+{
+  "id": "sainte-marie-v1",
+  "cityId": "sainte-marie-fr",
+  "cityZoneId": "relation/280212",
+  "cityName": {
+    "en": "Sainte-Marie",
+    "fr": "Sainte-Marie"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in Réunion, France",
+        "fr": "aéroport desservant Sainte-Marie (La Réunion, France)"
+      },
+      "externalIdentity": {
+        "id": "Q17430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-aeroport-de-la-reunion-roland-garros-q17430",
+      "latitude": -20.89,
+      "longitude": 55.516388888,
+      "name": {
+        "en": "aéroport de La Réunion-Roland-Garros",
+        "fr": "aéroport de La Réunion-Roland-Garros"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in La Réunion, in France",
+        "fr": "chapelle située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2956623",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-chapelle-notre-dame-de-la-salette-q2956623",
+      "latitude": -20.895611,
+      "longitude": 55.552556,
+      "name": {
+        "en": "chapelle Notre-Dame-de-la-Salette",
+        "fr": "chapelle Notre-Dame-de-la-Salette"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cinema in Sainte-Marie, La Réunion, France",
+        "fr": "cinéma à Sainte-Marie, La Réunion, France"
+      },
+      "externalIdentity": {
+        "id": "Q2973257",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-cinepalmes-q2973257",
+      "latitude": -20.90180556,
+      "longitude": 55.51583333,
+      "name": {
+        "en": "Cinépalmes",
+        "fr": "Cinépalmes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38385423",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-eglise-notre-dame-auxilliatrice-de-la-ressource-q38385423",
+      "latitude": -20.932933,
+      "longitude": 55.533858,
+      "name": {
+        "en": "église Notre-Dame-Auxilliatrice de la Ressource",
+        "fr": "église Notre-Dame-Auxilliatrice de la Ressource"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-eglise-notre-dame-de-l-assomption-q3580714",
+      "latitude": -20.896444,
+      "longitude": 55.554528,
+      "name": {
+        "en": "église Notre-Dame de l'Assomption",
+        "fr": "église Notre-Dame de l'Assomption"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400117",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-marie-eglise-pa97400117",
+      "latitude": -20.8964396626868,
+      "longitude": 55.5545210766182,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38582845",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-eglise-saint-francois-xavier-de-riviere-des-pluies-q38582845",
+      "latitude": -20.9134,
+      "longitude": 55.5102,
+      "name": {
+        "en": "église Saint-François-Xavier de Rivière des Pluies",
+        "fr": "église Saint-François-Xavier de Rivière des Pluies"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet en France, à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3389359",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-piton-bemassoune-q3389359",
+      "latitude": -21.0082,
+      "longitude": 55.5169,
+      "name": {
+        "en": "piton Bémassoune",
+        "fr": "piton Bémassoune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Plaine des Fougères est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389369",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-piton-plaine-des-fougeres-q3389369",
+      "latitude": -21.0036,
+      "longitude": 55.489,
+      "name": {
+        "en": "piton Plaine des Fougères",
+        "fr": "piton Plaine des Fougères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3433900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-marie-riviere-des-pluies-q3433900",
+      "latitude": -20.88277778,
+      "longitude": 55.50222222,
+      "name": {
+        "en": "rivière des Pluies",
+        "fr": "rivière des Pluies"
+      }
+    }
+  ]
+}

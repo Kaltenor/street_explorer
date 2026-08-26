@@ -1,0 +1,204 @@
+{
+  "id": "grigny-v1",
+  "cityId": "grigny-fr",
+  "cityZoneId": "relation/29369",
+  "cityName": {
+    "en": "Grigny",
+    "fr": "Grigny"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Essonne, in France",
+        "fr": "cimetière situé dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110338391",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-cimetiere-ancien-de-grigny-q110338391",
+      "latitude": 48.6591,
+      "longitude": 2.3894,
+      "name": {
+        "en": "cimetière ancien de Grigny",
+        "fr": "cimetière ancien de Grigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Essonne, in France",
+        "fr": "cimetière situé dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110338392",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-cimetiere-du-clotay-q110338392",
+      "latitude": 48.6633,
+      "longitude": 2.3869,
+      "name": {
+        "en": "cimetière du Clotay",
+        "fr": "cimetière du Clotay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Grigny, Seine-et-Marne, France",
+        "fr": "édifice religieux catholique à Grigny (Essonne), en France"
+      },
+      "externalIdentity": {
+        "id": "Q29898950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-eglise-notre-dame-de-toute-joie-de-grigny-q29898950",
+      "latitude": 48.65518,
+      "longitude": 2.39238,
+      "name": {
+        "en": "église Notre-Dame-de-Toute-Joie de Grigny",
+        "fr": "église Notre-Dame-de-Toute-Joie de Grigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Grigny, Seine-et-Marne, France",
+        "fr": "édifice religieux catholique à Grigny (Essonne), en France"
+      },
+      "externalIdentity": {
+        "id": "Q29898952",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-eglise-saint-antoine-et-saint-sulpice-de-grigny-q29898952",
+      "latitude": 48.65927,
+      "longitude": 2.38932,
+      "name": {
+        "en": "église Saint-Antoine-et-Saint-Sulpice de Grigny",
+        "fr": "église Saint-Antoine-et-Saint-Sulpice de Grigny"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136056088",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-monument-aux-morts-de-grigny-q136056088",
+      "latitude": 48.65602,
+      "longitude": 2.38713,
+      "name": {
+        "en": "monument aux morts de Grigny",
+        "fr": "monument aux morts de Grigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "station of the T12 Express line of the Île-de-France tramway",
+        "fr": "station de la ligne T12 Express du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q85980166",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-ferme-neuve-q85980166",
+      "latitude": 48.652128692,
+      "longitude": 2.383402377,
+      "name": {
+        "en": "Ferme Neuve",
+        "fr": "Ferme Neuve"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grigny 2 is a distinctive architectural landmark in the city.",
+        "fr": "quartier de la commune française de Grigny"
+      },
+      "externalIdentity": {
+        "id": "Q3116653",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-grigny-2-q3116653",
+      "latitude": 48.6545,
+      "longitude": 2.39388,
+      "name": {
+        "en": "Grigny 2",
+        "fr": "Grigny 2"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Grigny, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096584",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-grigny-centre-q3096584",
+      "latitude": 48.65333,
+      "longitude": 2.39556,
+      "name": {
+        "en": "Grigny-Centre",
+        "fr": "Grigny-Centre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Grigny, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096580",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-grigny-val-de-seine-q3096580",
+      "latitude": 48.6681,
+      "longitude": 2.39718,
+      "name": {
+        "en": "Grigny-Val-de-Seine",
+        "fr": "Grigny-Val-de-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-et-Oise department, France",
+        "fr": "siège municipal de Grigny, en Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119311475",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grigny-mairie-de-grigny-q119311475",
+      "latitude": 48.656292179,
+      "longitude": 2.384863601,
+      "name": {
+        "en": "mairie de Grigny",
+        "fr": "mairie de Grigny"
+      }
+    }
+  ]
+}

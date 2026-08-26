@@ -1,0 +1,204 @@
+{
+  "id": "colomiers-v1",
+  "cityId": "colomiers-fr",
+  "cityZoneId": "relation/35078",
+  "cityName": {
+    "en": "Colomiers",
+    "fr": "Colomiers"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Raspaud is an important witness to the city's history.",
+        "fr": "château français situé à Colomiers"
+      },
+      "externalIdentity": {
+        "id": "Q2971543",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-chateau-des-raspaud-q2971543",
+      "latitude": 43.6144578,
+      "longitude": 1.337745,
+      "name": {
+        "en": "château des Raspaud",
+        "fr": "château des Raspaud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Colomiers Gare is a distinctive architectural landmark in the city.",
+        "fr": "station du métro de Toulouse"
+      },
+      "externalIdentity": {
+        "id": "Q56308729",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-colomiers-gare-q56308729",
+      "latitude": 43.6005,
+      "longitude": 1.3354,
+      "name": {
+        "en": "Colomiers Gare",
+        "fr": "Colomiers Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Colomiers, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2804370",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-colomiers-lycee-international-q2804370",
+      "latitude": 43.616398,
+      "longitude": 1.314121,
+      "name": {
+        "en": "Colomiers-Lycée International",
+        "fr": "Colomiers-Lycée International"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Colomiers, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096269",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-colomiers-q3096269",
+      "latitude": 43.60356,
+      "longitude": 1.333949,
+      "name": {
+        "en": "Colomiers",
+        "fr": "Colomiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "German international school in France",
+        "fr": "école internationale allemande"
+      },
+      "externalIdentity": {
+        "id": "Q1203957",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-ecole-allemande-de-toulouse-q1203957",
+      "latitude": 43.614799125,
+      "longitude": 1.303262805,
+      "name": {
+        "en": "École allemande de Toulouse",
+        "fr": "École allemande de Toulouse"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Lumineuse is one of the city's notable green or natural landmarks.",
+        "fr": "station du métro de Toulouse"
+      },
+      "externalIdentity": {
+        "id": "Q56308731",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-fontaine-lumineuse-q56308731",
+      "latitude": 43.6086194,
+      "longitude": 1.35403889,
+      "name": {
+        "en": "Fontaine Lumineuse",
+        "fr": "Fontaine Lumineuse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Pavillon Blanc Henri Molina is one of the city's notable cultural landmarks.",
+        "fr": "médiathèque et centre d'art de Colomiers"
+      },
+      "externalIdentity": {
+        "id": "Q3373011",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-pavillon-blanc-henri-molina-q3373011",
+      "latitude": 43.6096,
+      "longitude": 1.33476,
+      "name": {
+        "en": "Pavillon Blanc Henri Molina",
+        "fr": "Pavillon Blanc Henri Molina"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haute-Garonne, in France",
+        "fr": "église située en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958350",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-eglise-sainte-radegonde-de-colomiers-q15958350",
+      "latitude": 43.6127,
+      "longitude": 1.33954,
+      "name": {
+        "en": "église Sainte-Radegonde de Colomiers",
+        "fr": "église Sainte-Radegonde de Colomiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Haute-Garonne department, France",
+        "fr": "siège municipal de Colomiers, en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119306849",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-mairie-de-colomiers-q119306849",
+      "latitude": 43.610897059,
+      "longitude": 1.33471251,
+      "name": {
+        "en": "mairie de Colomiers",
+        "fr": "mairie de Colomiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports venue in Colomiers, France",
+        "fr": "stade de rugby à XV situé à Colomiers"
+      },
+      "externalIdentity": {
+        "id": "Q3495766",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colomiers-stade-michel-bendichou-q3495766",
+      "latitude": 43.61981,
+      "longitude": 1.3273,
+      "name": {
+        "en": "stade Michel-Bendichou",
+        "fr": "stade Michel-Bendichou"
+      }
+    }
+  ]
+}

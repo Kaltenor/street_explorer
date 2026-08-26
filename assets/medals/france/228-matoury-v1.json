@@ -1,0 +1,204 @@
+{
+  "id": "matoury-v1",
+  "cityId": "matoury-fr",
+  "cityZoneId": "relation/1663798",
+  "cityName": {
+    "en": "Matoury",
+    "fr": "Matoury"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving French Guyana",
+        "fr": "aéroport desservant Cayenne (Guyane, France)"
+      },
+      "externalIdentity": {
+        "id": "Q794542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-aeroport-international-felix-eboue-q794542",
+      "latitude": 4.819722222,
+      "longitude": -52.361944444,
+      "name": {
+        "en": "aéroport international Félix-Éboué",
+        "fr": "aéroport international Félix-Éboué"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airline in French Guyana",
+        "fr": "compagnie aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q407287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-air-guyane-express-q407287",
+      "latitude": 4.8197,
+      "longitude": -52.3619,
+      "name": {
+        "en": "Air Guyane Express",
+        "fr": "Air Guyane Express"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien fort Trio is an important witness to the city's history.",
+        "fr": "Ancien fort Trio est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "matoury-ancien-fort-trio-pa00135689",
+      "latitude": 4.847263977653709,
+      "longitude": -52.28844308170852,
+      "name": {
+        "en": "Ancien fort Trio",
+        "fr": "Ancien fort Trio"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Air Force base on Cayenne Felix Eboue Airport in French Guinea",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q2886500",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-base-aerienne-367-capitaine-francois-masse-q2886500",
+      "latitude": 4.81594,
+      "longitude": -52.3757,
+      "name": {
+        "en": "Base aérienne 367 Capitaine François Massé",
+        "fr": "Base aérienne 367 Capitaine François Massé"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1329861",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-canton-de-matoury-q1329861",
+      "latitude": 4.84822222,
+      "longitude": -52.33011111,
+      "name": {
+        "en": "canton de Matoury",
+        "fr": "canton de Matoury"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "communauté d'agglomération in French Guiana, France",
+        "fr": "communauté d'agglomération du Centre Littoral compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2986979",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-communaute-d-agglomeration-du-centre-littoral-q2986979",
+      "latitude": 4.83333333,
+      "longitude": -52.33333333,
+      "name": {
+        "en": "communauté d'agglomération du Centre Littoral",
+        "fr": "communauté d'agglomération du Centre Littoral"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "commune in French Guiana",
+        "fr": "commune française du département d'outre-mer de la Guyane"
+      },
+      "externalIdentity": {
+        "id": "Q816739",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-matoury-q816739",
+      "latitude": 4.850555555,
+      "longitude": -52.331111111,
+      "name": {
+        "en": "Matoury",
+        "fr": "Matoury"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q30739172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-pont-du-larivot-q30739172",
+      "latitude": 4.9069553,
+      "longitude": -52.3674636,
+      "name": {
+        "en": "pont du Larivot",
+        "fr": "pont du Larivot"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "protected area in France",
+        "fr": "réserve naturelle nationale située en Guyane"
+      },
+      "externalIdentity": {
+        "id": "Q15439452",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-reserve-naturelle-nationale-du-mont-grand-matoury-q15439452",
+      "latitude": 4.857777777,
+      "longitude": -52.368611111,
+      "name": {
+        "en": "réserve naturelle nationale du mont Grand Matoury",
+        "fr": "réserve naturelle nationale du mont Grand Matoury"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "stadium in Matoury, France",
+        "fr": "stade omnisports de Guyane"
+      },
+      "externalIdentity": {
+        "id": "Q7596159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "matoury-stade-municipal-de-matoury-q7596159",
+      "latitude": 4.84718,
+      "longitude": -52.32982,
+      "name": {
+        "en": "Stade municipal de Matoury",
+        "fr": "Stade municipal de Matoury"
+      }
+    }
+  ]
+}

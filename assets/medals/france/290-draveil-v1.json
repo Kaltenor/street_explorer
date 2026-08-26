@@ -1,0 +1,204 @@
+{
+  "id": "draveil-v1",
+  "cityId": "draveil-fr",
+  "cityZoneId": "relation/421704",
+  "cityName": {
+    "en": "Draveil",
+    "fr": "Draveil"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Essonne, in France",
+        "fr": "cathédrale située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116739387",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-cathedrale-de-la-vierge-marie-et-l-archange-raphael-q116739387",
+      "latitude": 48.665493546,
+      "longitude": 2.419176414,
+      "name": {
+        "en": "cathédrale de la Vierge-Marie-et-l'Archange-Raphaël",
+        "fr": "cathédrale de la Vierge-Marie-et-l'Archange-Raphaël"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Champrosay is an important witness to the city's history.",
+        "fr": "château français situé à Draveil"
+      },
+      "externalIdentity": {
+        "id": "Q78653859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-chateau-de-champrosay-q78653859",
+      "latitude": 48.66093,
+      "longitude": 2.42793,
+      "name": {
+        "en": "château de Champrosay",
+        "fr": "château de Champrosay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Draveil is an important witness to the city's history.",
+        "fr": "château situé à Draveil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q123164070",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-chateau-de-draveil-q123164070",
+      "latitude": 48.68729,
+      "longitude": 2.40743,
+      "name": {
+        "en": "château de Draveil",
+        "fr": "château de Draveil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Villiers is an important witness to the city's history.",
+        "fr": "Château de Villiers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087888",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draveil-chateau-de-villiers-pa00087888",
+      "latitude": 48.6823825965702,
+      "longitude": 2.40526629413823,
+      "name": {
+        "en": "Château de Villiers",
+        "fr": "Château de Villiers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Bergeries is an important witness to the city's history.",
+        "fr": "château français situé à Draveil"
+      },
+      "externalIdentity": {
+        "id": "Q78658859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-chateau-des-bergeries-q78658859",
+      "latitude": 48.68884,
+      "longitude": 2.43427,
+      "name": {
+        "en": "château des Bergeries",
+        "fr": "château des Bergeries"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cité coopérative Paris-Jardins is one of the city's notable cultural landmarks.",
+        "fr": "cité-jardin à Draveil, France"
+      },
+      "externalIdentity": {
+        "id": "Q109717139",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-cite-cooperative-paris-jardins-q109717139",
+      "latitude": 48.6874,
+      "longitude": 2.4068,
+      "name": {
+        "en": "cité coopérative Paris-Jardins",
+        "fr": "cité coopérative Paris-Jardins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville de Draveil is a distinctive architectural landmark in the city.",
+        "fr": "siège municipal de la commune française de Draveil, Essonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q31271082",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-hotel-de-ville-de-draveil-q31271082",
+      "latitude": 48.68516667,
+      "longitude": 2.40802778,
+      "name": {
+        "en": "hôtel de ville de Draveil",
+        "fr": "hôtel de ville de Draveil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située en Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q2886615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-ile-de-loisirs-du-port-aux-cerises-q2886615",
+      "latitude": 48.693611111,
+      "longitude": 2.400555555,
+      "name": {
+        "en": "Île de loisirs du Port-aux-Cerises",
+        "fr": "Île de loisirs du Port-aux-Cerises"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont de la Première-Armée-Française is a distinctive architectural landmark in the city.",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q19945221",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "draveil-pont-de-la-premiere-armee-francaise-q19945221",
+      "latitude": 48.6891,
+      "longitude": 2.38796,
+      "name": {
+        "en": "pont de la Première-Armée-Française",
+        "fr": "pont de la Première-Armée-Française"
+      }
+    }
+  ]
+}

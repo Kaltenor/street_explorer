@@ -1,0 +1,394 @@
+{
+  "id": "la-rochelle-v1",
+  "cityId": "la-rochelle-fr",
+  "cityZoneId": "relation/117858",
+  "cityName": {
+    "en": "La Rochelle",
+    "fr": "La Rochelle"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église des Carmes, marché aux poissons is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église des Carmes, marché aux poissons est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104879",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-ancien-eglise-des-carmes-marche-aux-poissons-pa00104879",
+      "latitude": 46.1567148337931,
+      "longitude": -1.15460879957248,
+      "name": {
+        "en": "Ancien église des Carmes, marché aux poissons",
+        "fr": "Ancien église des Carmes, marché aux poissons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Pierre-de-Laleu, actuellement salle de sport is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Pierre-de-Laleu, actuellement salle de sport est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104880",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-ancien-eglise-saint-pierre-de-laleu-actuellement-salle-de-sport-pa00104880",
+      "latitude": 46.1703025310255,
+      "longitude": -1.20228944503265,
+      "name": {
+        "en": "Ancien église Saint-Pierre-de-Laleu, actuellement salle de sport",
+        "fr": "Ancien église Saint-Pierre-de-Laleu, actuellement salle de sport"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104876",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-cathedrale-saint-louis-pa00104876",
+      "latitude": 46.1613799858061,
+      "longitude": -1.15333059463621,
+      "name": {
+        "en": "Cathédrale Saint-Louis",
+        "fr": "Cathédrale Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104881",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-eglise-saint-sauveur-pa00104881",
+      "latitude": 46.1588603071473,
+      "longitude": -1.15030790635016,
+      "name": {
+        "en": "Église Saint-Sauveur",
+        "fr": "Église Saint-Sauveur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications maritimes is an important witness to the city's history.",
+        "fr": "Fortifications maritimes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104883",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-fortifications-maritimes-pa00104883",
+      "latitude": 46.155727055011,
+      "longitude": -1.15566688066453,
+      "name": {
+        "en": "Fortifications maritimes",
+        "fr": "Fortifications maritimes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Hôtel de la Bibliothèque et du Musée is one of the city's notable cultural landmarks.",
+        "fr": "Hôtel de la Bibliothèque et du Musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104887",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-hotel-de-la-bibliotheque-et-du-musee-pa00104887",
+      "latitude": 46.162104464237,
+      "longitude": -1.1516659160331,
+      "name": {
+        "en": "Hôtel de la Bibliothèque et du Musée",
+        "fr": "Hôtel de la Bibliothèque et du Musée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104890",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-hotel-de-ville-pa00104890",
+      "latitude": 46.1596160902639,
+      "longitude": -1.15134384165317,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'Orbigny-Bernon is one of the city's notable cultural landmarks.",
+        "fr": "musée d'Orbigny-Bernon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0826",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-rochelle-musee-d-orbigny-bernon-m0826",
+      "latitude": 46.160752,
+      "longitude": -1.155429,
+      "name": {
+        "en": "musée d'Orbigny-Bernon",
+        "fr": "musée d'Orbigny-Bernon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0825",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-rochelle-musee-des-beaux-arts-m0825",
+      "latitude": 46.161969,
+      "longitude": -1.151552,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du nouveau monde is one of the city's notable cultural landmarks.",
+        "fr": "musée du nouveau monde compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0827",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-rochelle-musee-du-nouveau-monde-m0827",
+      "latitude": 46.161435,
+      "longitude": -1.151157,
+      "name": {
+        "en": "musée du nouveau monde",
+        "fr": "musée du nouveau monde"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée protestant is one of the city's notable cultural landmarks.",
+        "fr": "musée protestant compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0828",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-rochelle-musee-protestant-m0828",
+      "latitude": 46.159482,
+      "longitude": -1.150024,
+      "name": {
+        "en": "musée protestant",
+        "fr": "musée protestant"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle et d'ethnographie is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle et d'ethnographie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7040",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-rochelle-museum-d-histoire-naturelle-et-d-ethnographie-m7040",
+      "latitude": 46.164822,
+      "longitude": -1.151488,
+      "name": {
+        "en": "muséum d'histoire naturelle et d'ethnographie",
+        "fr": "muséum d'histoire naturelle et d'ethnographie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105143",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-palais-de-justice-pa00105143",
+      "latitude": 46.1598312096184,
+      "longitude": -1.15392085755314,
+      "name": {
+        "en": "Palais de justice",
+        "fr": "Palais de justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Dauphine is an important witness to the city's history.",
+        "fr": "Porte Dauphine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105144",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-porte-dauphine-pa00105144",
+      "latitude": 46.1680398851756,
+      "longitude": -1.15087739658021,
+      "name": {
+        "en": "Porte Dauphine",
+        "fr": "Porte Dauphine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de la Grosse-Horloge is an important witness to the city's history.",
+        "fr": "Porte de la Grosse-Horloge est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105145",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-porte-de-la-grosse-horloge-pa00105145",
+      "latitude": 46.1581267635107,
+      "longitude": -1.15369556744457,
+      "name": {
+        "en": "Porte de la Grosse-Horloge",
+        "fr": "Porte de la Grosse-Horloge"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Maubec is an important witness to the city's history.",
+        "fr": "Porte Maubec est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA17000014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-porte-maubec-pa17000014",
+      "latitude": 46.1590601121434,
+      "longitude": -1.14590044567392,
+      "name": {
+        "en": "Porte Maubec",
+        "fr": "Porte Maubec"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Royale, avant-porte Royale et remparts avoisinants is an important witness to the city's history.",
+        "fr": "Porte Royale, avant-porte Royale et remparts avoisinants est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105146",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-porte-royale-avant-porte-royale-et-remparts-avoisinants-pa00105146",
+      "latitude": 46.1623161279762,
+      "longitude": -1.1431600424502,
+      "name": {
+        "en": "Porte Royale, avant-porte Royale et remparts avoisinants",
+        "fr": "Porte Royale, avant-porte Royale et remparts avoisinants"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105147",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-temple-protestant-pa00105147",
+      "latitude": 46.1595838539783,
+      "longitude": -1.15001925710956,
+      "name": {
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de la Chaîne is an important witness to the city's history.",
+        "fr": "Tour de la Chaîne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105148",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-tour-de-la-chaine-pa00105148",
+      "latitude": 46.1557484150395,
+      "longitude": -1.15410288510166,
+      "name": {
+        "en": "Tour de la Chaîne",
+        "fr": "Tour de la Chaîne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de la Lanterne is an important witness to the city's history.",
+        "fr": "Tour de la Lanterne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105149",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-rochelle-tour-de-la-lanterne-pa00105149",
+      "latitude": 46.1557822135993,
+      "longitude": -1.15711268743475,
+      "name": {
+        "en": "Tour de la Lanterne",
+        "fr": "Tour de la Lanterne"
+      }
+    }
+  ]
+}

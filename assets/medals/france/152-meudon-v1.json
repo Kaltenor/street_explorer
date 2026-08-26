@@ -1,0 +1,204 @@
+{
+  "id": "meudon-v1",
+  "cityId": "meudon-fr",
+  "cityZoneId": "relation/31341",
+  "cityName": {
+    "en": "Meudon",
+    "fr": "Meudon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Bellevue : ancien château is an important witness to the city's history.",
+        "fr": "Domaine de Bellevue : ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088116",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-domaine-de-bellevue-ancien-chateau-pa00088116",
+      "latitude": 48.8222738414191,
+      "longitude": 2.22754226419105,
+      "name": {
+        "en": "Domaine de Bellevue : ancien château",
+        "fr": "Domaine de Bellevue : ancien château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Meudon is an important witness to the city's history.",
+        "fr": "Domaine de Meudon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088117",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-domaine-de-meudon-pa00088117",
+      "latitude": 48.8079910119216,
+      "longitude": 2.23007666438813,
+      "name": {
+        "en": "Domaine de Meudon",
+        "fr": "Domaine de Meudon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088118",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-eglise-saint-martin-pa00088118",
+      "latitude": 48.8071164322625,
+      "longitude": 2.23639489213169,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088119",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-immeuble-pa00088119",
+      "latitude": 48.814155774666006,
+      "longitude": 2.22965995915001,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison André-Bloc is a distinctive architectural landmark in the city.",
+        "fr": "Maison André-Bloc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088120",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-maison-andre-bloc-pa00088120",
+      "latitude": 48.8132555360198,
+      "longitude": 2.22885525989816,
+      "name": {
+        "en": "Maison André-Bloc",
+        "fr": "Maison André-Bloc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison d'Armande Béjart is a distinctive architectural landmark in the city.",
+        "fr": "Maison d'Armande Béjart est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088121",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-maison-d-armande-bejart-pa00088121",
+      "latitude": 48.8062848105733,
+      "longitude": 2.23476171711343,
+      "name": {
+        "en": "Maison d'Armande Béjart",
+        "fr": "Maison d'Armande Béjart"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0412",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "meudon-musee-d-art-et-d-histoire-m0412",
+      "latitude": 48.806412,
+      "longitude": 2.234894,
+      "name": {
+        "en": "musée d'art et d'histoire",
+        "fr": "musée d'art et d'histoire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée Rodin ou Villa les Brillants is one of the city's notable cultural landmarks.",
+        "fr": "Musée Rodin ou Villa les Brillants compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088123",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-musee-rodin-ou-villa-les-brillants-pa00088123",
+      "latitude": 48.8146441834978,
+      "longitude": 2.2515437647842,
+      "name": {
+        "en": "Musée Rodin ou Villa les Brillants",
+        "fr": "Musée Rodin ou Villa les Brillants"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Berthelot is an important witness to the city's history.",
+        "fr": "Tour Berthelot est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000178",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-tour-berthelot-pa92000178",
+      "latitude": 48.811218,
+      "longitude": 2.228673,
+      "name": {
+        "en": "Tour Berthelot",
+        "fr": "Tour Berthelot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de plaisance de J.-J. Huvé is a distinctive architectural landmark in the city.",
+        "fr": "Maison de plaisance de J.-J. Huvé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088122",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "meudon-maison-de-plaisance-de-j-j-huve-pa00088122",
+      "latitude": 48.8196201380609,
+      "longitude": 2.24167564761323,
+      "name": {
+        "en": "Maison de plaisance de J.-J. Huvé",
+        "fr": "Maison de plaisance de J.-J. Huvé"
+      }
+    }
+  ]
+}

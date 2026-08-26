@@ -1,0 +1,394 @@
+{
+  "id": "ivry-sur-seine-v1",
+  "cityId": "ivry-sur-seine-fr",
+  "cityZoneId": "relation/105748",
+  "cityName": {
+    "en": "Ivry-sur-Seine",
+    "fr": "Ivry-sur-Seine"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "bicycle-sharing station of Vélib’ Métropole network",
+        "fr": "station de vélopartage du réseau Vélib' Métropole"
+      },
+      "externalIdentity": {
+        "id": "Q86256291",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-amedee-huon-fort-d-ivry-q86256291",
+      "latitude": 48.805131376,
+      "longitude": 2.388489693,
+      "name": {
+        "en": "Amédée Huon - Fort d'Ivry",
+        "fr": "Amédée Huon - Fort d'Ivry"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Ivry is an important witness to the city's history.",
+        "fr": "château situé à Ivry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q78652123",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-chateau-d-ivry-q78652123",
+      "latitude": 48.80742,
+      "longitude": 2.39228,
+      "name": {
+        "en": "château d'Ivry",
+        "fr": "château d'Ivry"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Île-de-France tramway station",
+        "fr": "station du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q77341584",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-chateaudun-barbes-q77341584",
+      "latitude": 48.815427,
+      "longitude": 2.368368,
+      "name": {
+        "en": "Châteaudun - Barbès",
+        "fr": "Châteaudun - Barbès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery in Val-de-Marne, France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2081077",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-cimetiere-parisien-d-ivry-q2081077",
+      "latitude": 48.8118,
+      "longitude": 2.36781,
+      "name": {
+        "en": "cimetière parisien d'Ivry",
+        "fr": "cimetière parisien d'Ivry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "coopérative laitière centrale de Paris is one of the city's notable cultural landmarks.",
+        "fr": "usine située à Ivry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88403243",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-cooperative-laitiere-centrale-de-paris-q88403243",
+      "latitude": 48.81851,
+      "longitude": 2.38977,
+      "name": {
+        "en": "coopérative laitière centrale de Paris",
+        "fr": "coopérative laitière centrale de Paris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French private university in computer science",
+        "fr": "établissement d'enseignement privé français de formation en informatique"
+      },
+      "externalIdentity": {
+        "id": "Q636818",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-ecole-des-technologies-numeriques-avancees-q636818",
+      "latitude": 48.813536111,
+      "longitude": 2.392875,
+      "name": {
+        "en": "École des technologies numériques avancées",
+        "fr": "École des technologies numériques avancées"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "École internationale de création audiovisuelle et de réalisation is one of the city's notable cultural landmarks.",
+        "fr": "école de cinéma en France"
+      },
+      "externalIdentity": {
+        "id": "Q3578027",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-ecole-internationale-de-creation-audiovisuelle-et-de-realisation-q3578027",
+      "latitude": 48.8425,
+      "longitude": 2.99278,
+      "name": {
+        "en": "École internationale de création audiovisuelle et de réalisation",
+        "fr": "École internationale de création audiovisuelle et de réalisation"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20991518",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-eglise-saint-jean-baptiste-du-plateau-q20991518",
+      "latitude": 48.8039,
+      "longitude": 2.37804,
+      "name": {
+        "en": "église Saint Jean-Baptiste du Plateau",
+        "fr": "église Saint Jean-Baptiste du Plateau"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, square des Alliés is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Ivry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920449",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-fontaine-wallace-square-des-allies-q128920449",
+      "latitude": 48.812782,
+      "longitude": 2.388056,
+      "name": {
+        "en": "fontaine Wallace, square des Alliés",
+        "fr": "fontaine Wallace, square des Alliés"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort à Ivry-sur-Seine (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q1203691",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-fort-d-ivry-q1203691",
+      "latitude": 48.80222,
+      "longitude": 2.39,
+      "name": {
+        "en": "fort d'Ivry",
+        "fr": "fort d'Ivry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Ivry-sur-Seine, France",
+        "fr": "édifice à Ivry-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q61914026",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-hotel-de-ville-d-ivry-sur-seine-q61914026",
+      "latitude": 48.81195,
+      "longitude": 2.38755,
+      "name": {
+        "en": "hôtel de ville d'Ivry-sur-Seine",
+        "fr": "hôtel de ville d'Ivry-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering college in aerospace",
+        "fr": "grande école d'ingénieurs en aéronautique"
+      },
+      "externalIdentity": {
+        "id": "Q183213",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-institut-polytechnique-des-sciences-avancees-q183213",
+      "latitude": 48.814556111,
+      "longitude": 2.396805,
+      "name": {
+        "en": "Institut polytechnique des sciences avancées",
+        "fr": "Institut polytechnique des sciences avancées"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French private graduate school in information technology, computer science, energy, biotechnology and management",
+        "fr": "Grande école de commerce et technologie"
+      },
+      "externalIdentity": {
+        "id": "Q1150561",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-ionis-school-of-technology-and-management-q1150561",
+      "latitude": 48.813532777,
+      "longitude": 2.392854444,
+      "name": {
+        "en": "IONIS School of Technology and Management",
+        "fr": "IONIS School of Technology and Management"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ivry-sur-Seine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095813",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-ivry-sur-seine-q3095813",
+      "latitude": 48.81417,
+      "longitude": 2.39111,
+      "name": {
+        "en": "Ivry-sur-Seine",
+        "fr": "Ivry-sur-Seine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "jardin in Ivry-sur-Seine, France",
+        "fr": "jardin d'Ivry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q100735559",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-jardin-de-l-insurrection-q100735559",
+      "latitude": 48.815348245,
+      "longitude": 2.397659177,
+      "name": {
+        "en": "jardin de l'Insurrection",
+        "fr": "jardin de l'Insurrection"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "windmill in Ivry-sur-Seine, Val-de-Marne, France",
+        "fr": "moulin à vent à Ivry-sur-Seine (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q3325697",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-moulin-de-la-tour-q3325697",
+      "latitude": 48.8179,
+      "longitude": 2.3735,
+      "name": {
+        "en": "moulin de la Tour",
+        "fr": "moulin de la Tour"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc départemental des Cormailles is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3364365",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-parc-departemental-des-cormailles-q3364365",
+      "latitude": 48.81643,
+      "longitude": 2.38794,
+      "name": {
+        "en": "parc départemental des Cormailles",
+        "fr": "parc départemental des Cormailles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in France",
+        "fr": "théâtre municipal à Ivry-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q42894289",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-theatre-antoine-vitez-scene-d-ivry-q42894289",
+      "latitude": 48.81054,
+      "longitude": 2.38629,
+      "name": {
+        "en": "théâtre Antoine-Vitez - scène d’Ivry",
+        "fr": "théâtre Antoine-Vitez - scène d’Ivry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre des Quartiers d'Ivry is one of the city's notable cultural landmarks.",
+        "fr": "centre dramatique national à Ivry-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3527764",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ivry-sur-seine-theatre-des-quartiers-d-ivry-q3527764",
+      "latitude": 48.80962,
+      "longitude": 2.39089,
+      "name": {
+        "en": "théâtre des Quartiers d'Ivry",
+        "fr": "théâtre des Quartiers d'Ivry"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Raspail is an important witness to the city's history.",
+        "fr": "Tour Raspail est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA94000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ivry-sur-seine-tour-raspail-pa94000028",
+      "latitude": 48.81189520024945,
+      "longitude": 2.3864909900482534,
+      "name": {
+        "en": "Tour Raspail",
+        "fr": "Tour Raspail"
+      }
+    }
+  ]
+}

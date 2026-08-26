@@ -1,0 +1,204 @@
+{
+  "id": "neuilly-sur-marne-v1",
+  "cityId": "neuilly-sur-marne-fr",
+  "cityZoneId": "relation/162562",
+  "cityName": {
+    "en": "Neuilly-sur-Marne",
+    "fr": "Neuilly-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Neuilly-sur-Marne, France",
+        "fr": "château à Neuilly-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q61829178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-chateau-guerin-q61829178",
+      "latitude": 48.8562,
+      "longitude": 2.528,
+      "name": {
+        "en": "château Guérin",
+        "fr": "château Guérin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-eglise-saint-baudile-de-neuilly-sur-marne-q3584928",
+      "latitude": 48.8562,
+      "longitude": 2.53234,
+      "name": {
+        "en": "église Saint-Baudile de Neuilly-sur-Marne",
+        "fr": "église Saint-Baudile de Neuilly-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Baudile is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Baudile est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079940",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "neuilly-sur-marne-eglise-saint-baudile-pa00079940",
+      "latitude": 48.8562376602717,
+      "longitude": 2.53241327595402,
+      "name": {
+        "en": "Église Saint-Baudile",
+        "fr": "Église Saint-Baudile"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Neuilly-sur-Marne, France",
+        "fr": "édifice de Neuilly-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412792",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-hotel-de-ville-de-neuilly-sur-marne-q83412792",
+      "latitude": 48.8567,
+      "longitude": 2.5285,
+      "name": {
+        "en": "hôtel de ville de Neuilly-sur-Marne",
+        "fr": "hôtel de ville de Neuilly-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136098127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-monument-aux-morts-de-neuilly-sur-marne-q136098127",
+      "latitude": 48.85764,
+      "longitude": 2.52616,
+      "name": {
+        "en": "monument aux morts de Neuilly-sur-Marne",
+        "fr": "monument aux morts de Neuilly-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Neuilly-sur-Marne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q19945185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-neuilly-sur-marne-q19945185",
+      "latitude": 48.86,
+      "longitude": 2.52128,
+      "name": {
+        "en": "Neuilly-sur-Marne",
+        "fr": "Neuilly-sur-Marne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc situé dans la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3364363",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-parc-departemental-de-la-haute-ile-q3364363",
+      "latitude": 48.8582,
+      "longitude": 2.56115,
+      "name": {
+        "en": "parc départemental de la Haute-Île",
+        "fr": "parc départemental de la Haute-Île"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Neuilly-sur-Marne, France",
+        "fr": "parc de Neuilly-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915202",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-parc-des-fauvettes-q108915202",
+      "latitude": 48.866627206,
+      "longitude": 2.536506425,
+      "name": {
+        "en": "parc des Fauvettes",
+        "fr": "parc des Fauvettes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Neuilly-sur-Marne, France",
+        "fr": "parc de Neuilly-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915203",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-parc-du-croissant-vert-q108915203",
+      "latitude": 48.868621109,
+      "longitude": 2.543904904,
+      "name": {
+        "en": "parc du Croissant Vert",
+        "fr": "parc du Croissant Vert"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Neuilly-sur-Marne, France",
+        "fr": "parc de Neuilly-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-marne-parc-guerin-q108915204",
+      "latitude": 48.856341515,
+      "longitude": 2.527234153,
+      "name": {
+        "en": "parc Guérin",
+        "fr": "parc Guérin"
+      }
+    }
+  ]
+}

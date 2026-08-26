@@ -1,0 +1,394 @@
+{
+  "id": "antony-v1",
+  "cityId": "antony-fr",
+  "cityZoneId": "relation/57750",
+  "cityName": {
+    "en": "Antony",
+    "fr": "Antony"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Antony, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2341704",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-antony-q2341704",
+      "latitude": 48.754444,
+      "longitude": 2.300833,
+      "name": {
+        "en": "Antony",
+        "fr": "Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q65225808",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-antonypole-wissous-centre-q65225808",
+      "latitude": 48.735555555,
+      "longitude": 2.309444444,
+      "name": {
+        "en": "Antonypole - Wissous Centre",
+        "fr": "Antonypole - Wissous Centre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Antony is an important witness to the city's history.",
+        "fr": "château situé à Antony, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q78651557",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-chateau-d-antony-q78651557",
+      "latitude": 48.749036162,
+      "longitude": 2.293535232,
+      "name": {
+        "en": "château d'Antony",
+        "fr": "château d'Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088057",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "antony-eglise-pa00088057",
+      "latitude": 48.7531543493911,
+      "longitude": 2.29738929531718,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861557",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-eglise-saint-francois-d-assise-d-antony-q29861557",
+      "latitude": 48.76816,
+      "longitude": 2.3116,
+      "name": {
+        "en": "église Saint-Francois-d'Assise d'Antony",
+        "fr": "église Saint-Francois-d'Assise d'Antony"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861562",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-eglise-saint-jean-porte-latine-d-antony-q29861562",
+      "latitude": 48.73888,
+      "longitude": 2.29072,
+      "name": {
+        "en": "église Saint-Jean-Porte-Latine d'Antony",
+        "fr": "église Saint-Jean-Porte-Latine d'Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861559",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-eglise-saint-maxime-d-antony-q29861559",
+      "latitude": 48.74089,
+      "longitude": 2.30402,
+      "name": {
+        "en": "église Saint-Maxime d'Antony",
+        "fr": "église Saint-Maxime d'Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-eglise-saint-saturnin-d-antony-q3584399",
+      "latitude": 48.75318,
+      "longitude": 2.29739,
+      "name": {
+        "en": "église Saint-Saturnin d'Antony",
+        "fr": "église Saint-Saturnin d'Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38514937",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-eglise-sainte-jeanne-de-chantal-d-antony-q38514937",
+      "latitude": 48.739897,
+      "longitude": 2.281527,
+      "name": {
+        "en": "église Sainte-Jeanne-de-Chantal d'Antony",
+        "fr": "église Sainte-Jeanne-de-Chantal d'Antony"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine de la ruelle Riou is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à Antony, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96604899",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-fontaine-de-la-ruelle-riou-q96604899",
+      "latitude": 48.75481,
+      "longitude": 2.29476,
+      "name": {
+        "en": "fontaine de la ruelle Riou",
+        "fr": "fontaine de la ruelle Riou"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q591952",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-fontaine-michalon-q591952",
+      "latitude": 48.743611,
+      "longitude": 2.296667,
+      "name": {
+        "en": "Fontaine Michalon",
+        "fr": "Fontaine Michalon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Antony, France",
+        "fr": "impasse d'Antony, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116241437",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-impasse-sous-la-tour-q116241437",
+      "latitude": 48.7575722,
+      "longitude": 2.2946693,
+      "name": {
+        "en": "impasse Sous-la Tour",
+        "fr": "impasse Sous-la Tour"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Hauts-de-Seine department, France",
+        "fr": "monument aux morts des Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136041175",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-monument-aux-morts-d-antony-q136041175",
+      "latitude": 48.75337,
+      "longitude": 2.29591,
+      "name": {
+        "en": "monument aux morts d'Antony",
+        "fr": "monument aux morts d'Antony"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc situé à Antony, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3363796",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-parc-bourdeau-q3363796",
+      "latitude": 48.75509,
+      "longitude": 2.3028,
+      "name": {
+        "en": "parc Bourdeau",
+        "fr": "parc Bourdeau"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc à Antony, Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q2406858",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-parc-heller-q2406858",
+      "latitude": 48.7462,
+      "longitude": 2.2902,
+      "name": {
+        "en": "parc Heller",
+        "fr": "parc Heller"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q3363886",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-parc-raymond-sibille-q3363886",
+      "latitude": 48.7559,
+      "longitude": 2.29889,
+      "name": {
+        "en": "parc Raymond-Sibille",
+        "fr": "parc Raymond-Sibille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine department, France",
+        "fr": "siège municipal d'Antony, dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111889286",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-hotel-de-ville-d-antony-q111889286",
+      "latitude": 48.75365,
+      "longitude": 2.29585,
+      "name": {
+        "en": "hôtel de ville d'Antony",
+        "fr": "hôtel de ville d'Antony"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Antony, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2893718",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-la-croix-de-berny-q2893718",
+      "latitude": 48.761944,
+      "longitude": 2.304167,
+      "name": {
+        "en": "La Croix de Berny",
+        "fr": "La Croix de Berny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Antony, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3010543",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-le-parc-de-sceaux-q3010543",
+      "latitude": 48.770278,
+      "longitude": 2.31,
+      "name": {
+        "en": "Le Parc de Sceaux",
+        "fr": "Le Parc de Sceaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Antony, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2118852",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antony-les-baconnets-q2118852",
+      "latitude": 48.739444,
+      "longitude": 2.287222,
+      "name": {
+        "en": "Les Baconnets",
+        "fr": "Les Baconnets"
+      }
+    }
+  ]
+}

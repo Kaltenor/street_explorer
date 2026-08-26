@@ -1,0 +1,204 @@
+{
+  "id": "macouria-v1",
+  "cityId": "macouria-fr",
+  "cityZoneId": "relation/1663795",
+  "cityName": {
+    "en": "Macouria",
+    "fr": "Macouria"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q601541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-canton-de-macouria-q601541",
+      "latitude": 5.014876,
+      "longitude": -52.47324,
+      "name": {
+        "en": "canton de Macouria",
+        "fr": "canton de Macouria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stadium in Macouria",
+        "fr": "Complexe Sportif Municipal de Macouria est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q7596157",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-complexe-sportif-municipal-de-macouria-q7596157",
+      "latitude": 5.01296,
+      "longitude": -52.47635,
+      "name": {
+        "en": "Complexe Sportif Municipal de Macouria",
+        "fr": "Complexe Sportif Municipal de Macouria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q24693726",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-crique-carapa-q24693726",
+      "latitude": 4.906944444,
+      "longitude": -52.431111111,
+      "name": {
+        "en": "Crique Carapa",
+        "fr": "Crique Carapa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q24695986",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-crique-couleuvre-q24695986",
+      "latitude": 4.953888888,
+      "longitude": -52.539722222,
+      "name": {
+        "en": "Crique Couleuvre",
+        "fr": "Crique Couleuvre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q18785665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-jardin-botanique-de-guyane-q18785665",
+      "latitude": 5.02108,
+      "longitude": -52.5256,
+      "name": {
+        "en": "jardin botanique de Guyane",
+        "fr": "jardin botanique de Guyane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q24694769",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-crique-eau-gogo-q24694769",
+      "latitude": 4.964444444,
+      "longitude": -52.486111111,
+      "name": {
+        "en": "Crique Eau Gogo",
+        "fr": "Crique Eau Gogo"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guyane, in France",
+        "fr": "église située en Guyane, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38631832",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-eglise-saint-jean-baptiste-de-macouria-q38631832",
+      "latitude": 5.013977,
+      "longitude": -52.4738,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Macouria",
+        "fr": "église Saint-Jean-Baptiste de Macouria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q5436042",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-farnous-q5436042",
+      "latitude": 4.95,
+      "longitude": -52.41666667,
+      "name": {
+        "en": "Farnous",
+        "fr": "Farnous"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Guyane, France",
+        "fr": "commune française du département d'outre-mer de la Guyane"
+      },
+      "externalIdentity": {
+        "id": "Q938040",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-macouria-q938040",
+      "latitude": 5.013611111,
+      "longitude": -52.473888888,
+      "name": {
+        "en": "Macouria",
+        "fr": "Macouria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q30739172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "macouria-pont-du-larivot-q30739172",
+      "latitude": 4.9069553,
+      "longitude": -52.3674636,
+      "name": {
+        "en": "pont du Larivot",
+        "fr": "pont du Larivot"
+      }
+    }
+  ]
+}

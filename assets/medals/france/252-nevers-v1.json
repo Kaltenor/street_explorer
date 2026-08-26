@@ -1,0 +1,204 @@
+{
+  "id": "nevers-v1",
+  "cityId": "nevers-fr",
+  "cityZoneId": "relation/161753",
+  "cityName": {
+    "en": "Nevers",
+    "fr": "Nevers"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Notre-Dame dite église Saint-Genest is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Notre-Dame dite église Saint-Genest est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112941",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-ancien-eglise-notre-dame-dite-eglise-saint-genest-pa00112941",
+      "latitude": 46.985928704297,
+      "longitude": 3.15516805801815,
+      "name": {
+        "en": "Ancien église Notre-Dame dite église Saint-Genest",
+        "fr": "Ancien église Notre-Dame dite église Saint-Genest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Cyr et Sainte-Julitte is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Cyr et Sainte-Julitte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112936",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-cathedrale-saint-cyr-et-sainte-julitte-pa00112936",
+      "latitude": 46.9871502154479,
+      "longitude": 3.15718939394376,
+      "name": {
+        "en": "Cathédrale Saint-Cyr et Sainte-Julitte",
+        "fr": "Cathédrale Saint-Cyr et Sainte-Julitte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Évêché (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Évêché (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112944",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-eveche-ancien-pa00112944",
+      "latitude": 46.9863272916206,
+      "longitude": 3.15684698724679,
+      "name": {
+        "en": "Évêché (ancien)",
+        "fr": "Évêché (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble dénommé Avant-Porte du Croux is an important witness to the city's history.",
+        "fr": "Immeuble dénommé Avant-Porte du Croux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112949",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-immeuble-denomme-avant-porte-du-croux-pa00112949",
+      "latitude": 46.9865792950612,
+      "longitude": 3.15344836914416,
+      "name": {
+        "en": "Immeuble dénommé Avant-Porte du Croux",
+        "fr": "Immeuble dénommé Avant-Porte du Croux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique de la porte du Croux is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique de la porte du Croux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0156",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nevers-musee-archeologique-de-la-porte-du-croux-m0156",
+      "latitude": 46.986949,
+      "longitude": 3.154223,
+      "name": {
+        "en": "musée archéologique de la porte du Croux",
+        "fr": "musée archéologique de la porte du Croux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la faïence Frédéric Blandin is one of the city's notable cultural landmarks.",
+        "fr": "musée de la faïence Frédéric Blandin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0155",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nevers-musee-de-la-faience-frederic-blandin-m0155",
+      "latitude": 46.98629,
+      "longitude": 3.155037,
+      "name": {
+        "en": "musée de la faïence Frédéric Blandin",
+        "fr": "musée de la faïence Frédéric Blandin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Ducal (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais Ducal (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112964",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-palais-ducal-ancien-pa00112964",
+      "latitude": 46.9882137497236,
+      "longitude": 3.15862884477718,
+      "name": {
+        "en": "Palais Ducal (ancien)",
+        "fr": "Palais Ducal (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Paris is an important witness to the city's history.",
+        "fr": "Porte de Paris est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112967",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-porte-de-paris-pa00112967",
+      "latitude": 46.9923833924293,
+      "longitude": 3.1608080059326302,
+      "name": {
+        "en": "Porte de Paris",
+        "fr": "Porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte du Croux is an important witness to the city's history.",
+        "fr": "Porte du Croux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112966",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-porte-du-croux-pa00112966",
+      "latitude": 46.9867819276275,
+      "longitude": 3.15379954437733,
+      "name": {
+        "en": "Porte du Croux",
+        "fr": "Porte du Croux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Cuffy dite tour Goguin is an important witness to the city's history.",
+        "fr": "Tour de Cuffy dite tour Goguin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112973",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nevers-tour-de-cuffy-dite-tour-goguin-pa00112973",
+      "latitude": 46.9844097328168,
+      "longitude": 3.1555956516593,
+      "name": {
+        "en": "Tour de Cuffy dite tour Goguin",
+        "fr": "Tour de Cuffy dite tour Goguin"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "maurepas-v1",
+  "cityId": "maurepas-fr",
+  "cityZoneId": "relation/49717",
+  "cityName": {
+    "en": "Maurepas",
+    "fr": "Maurepas"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "ruins of a mediaeval castle in Yvelines, France",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q5296211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-donjon-de-maurepas-q5296211",
+      "latitude": 48.77261111,
+      "longitude": 1.92063889,
+      "name": {
+        "en": "donjon de Maurepas",
+        "fr": "donjon de Maurepas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Donjon is an important witness to the city's history.",
+        "fr": "Donjon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087531",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maurepas-donjon-pa00087531",
+      "latitude": 48.7725644013432,
+      "longitude": 1.9205345010376298,
+      "name": {
+        "en": "Donjon",
+        "fr": "Donjon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "école élémentaire La Tour de Maurepas is an important witness to the city's history.",
+        "fr": "établissement d'enseignement primaire en France"
+      },
+      "externalIdentity": {
+        "id": "Q119639549",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-ecole-elementaire-la-tour-de-maurepas-q119639549",
+      "latitude": 48.769784137,
+      "longitude": 1.914031721,
+      "name": {
+        "en": "école élémentaire La Tour de Maurepas",
+        "fr": "école élémentaire La Tour de Maurepas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38400346",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-eglise-notre-dame-de-maurepas-q38400346",
+      "latitude": 48.76124,
+      "longitude": 1.94245,
+      "name": {
+        "en": "église Notre-Dame de Maurepas",
+        "fr": "église Notre-Dame de Maurepas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q48550292",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-eglise-saint-sauveur-de-maurepas-q48550292",
+      "latitude": 48.773188,
+      "longitude": 1.920982,
+      "name": {
+        "en": "église Saint-Sauveur de Maurepas",
+        "fr": "église Saint-Sauveur de Maurepas"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Élodie is a notable work of public art and local memory.",
+        "fr": "sculpture d'Yves Pirès à Maurepas, France"
+      },
+      "externalIdentity": {
+        "id": "Q127113496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-elodie-q127113496",
+      "latitude": 48.75946,
+      "longitude": 1.93652,
+      "name": {
+        "en": "Élodie",
+        "fr": "Élodie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "halle des sports de la Malmedonne is a distinctive architectural landmark in the city.",
+        "fr": "halle des sports de la Malmedonne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120249000",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-halle-des-sports-de-la-malmedonne-q120249000",
+      "latitude": 48.7601,
+      "longitude": 1.94046,
+      "name": {
+        "en": "halle des sports de la Malmedonne",
+        "fr": "halle des sports de la Malmedonne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Le peuple en marche is a notable work of public art and local memory.",
+        "fr": "mosaïque de Gérard Ramon à Maurepas, France"
+      },
+      "externalIdentity": {
+        "id": "Q127127228",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-le-peuple-en-marche-q127127228",
+      "latitude": 48.76208,
+      "longitude": 1.9454,
+      "name": {
+        "en": "Le peuple en marche",
+        "fr": "Le peuple en marche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q94477",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-maurepas-q94477",
+      "latitude": 48.762777777,
+      "longitude": 1.945555555,
+      "name": {
+        "en": "Maurepas",
+        "fr": "Maurepas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des sports du Bout des Clos is one of the city's notable green or natural landmarks.",
+        "fr": "parc des sports du Bout des Clos compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120166242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "maurepas-parc-des-sports-du-bout-des-clos-q120166242",
+      "latitude": 48.76676,
+      "longitude": 1.9146,
+      "name": {
+        "en": "parc des sports du Bout des Clos",
+        "fr": "parc des sports du Bout des Clos"
+      }
+    }
+  ]
+}

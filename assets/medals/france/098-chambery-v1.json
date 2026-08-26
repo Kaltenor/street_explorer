@@ -1,0 +1,394 @@
+{
+  "id": "chambery-v1",
+  "cityId": "chambery-fr",
+  "cityZoneId": "relation/74386",
+  "cityName": {
+    "en": "Chambéry",
+    "fr": "Chambéry"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Archevêché (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Archevêché (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118222",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-archeveche-ancien-pa00118222",
+      "latitude": 45.5653841768047,
+      "longitude": 5.92253802872384,
+      "name": {
+        "en": "Archevêché (ancien)",
+        "fr": "Archevêché (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-François de Sales is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-François de Sales est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118223",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-cathedrale-saint-francois-de-sales-pa00118223",
+      "latitude": 45.5652447264213,
+      "longitude": 5.923108825678221,
+      "name": {
+        "en": "Cathédrale Saint-François de Sales",
+        "fr": "Cathédrale Saint-François de Sales"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Buisson Rond is an important witness to the city's history.",
+        "fr": "Château de Buisson Rond est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118225",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-chateau-de-buisson-rond-pa00118225",
+      "latitude": 45.56428087681441,
+      "longitude": 5.93736232254314,
+      "name": {
+        "en": "Château de Buisson Rond",
+        "fr": "Château de Buisson Rond"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Caramagne is an important witness to the city's history.",
+        "fr": "Château de Caramagne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118226",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-chateau-de-caramagne-pa00118226",
+      "latitude": 45.586627754425,
+      "longitude": 5.91478497352906,
+      "name": {
+        "en": "Château de Caramagne",
+        "fr": "Château de Caramagne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Ducs de Savoie (ancien) is an important witness to the city's history.",
+        "fr": "Château des Ducs de Savoie (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118227",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-chateau-des-ducs-de-savoie-ancien-pa00118227",
+      "latitude": 45.56469973479088,
+      "longitude": 5.917244974143275,
+      "name": {
+        "en": "Château des Ducs de Savoie (ancien)",
+        "fr": "Château des Ducs de Savoie (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118231",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-eglise-notre-dame-pa00118231",
+      "latitude": 45.5675308444306,
+      "longitude": 5.92076434229803,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des deux Bourneaux is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des deux Bourneaux compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118232",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-fontaine-des-deux-bourneaux-pa00118232",
+      "latitude": 45.5648499236424,
+      "longitude": 5.9148883741391,
+      "name": {
+        "en": "Fontaine des deux Bourneaux",
+        "fr": "Fontaine des deux Bourneaux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des Eléphants is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des Eléphants compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118233",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-fontaine-des-elephants-pa00118233",
+      "latitude": 45.5665894735966,
+      "longitude": 5.92289835916931,
+      "name": {
+        "en": "Fontaine des Eléphants",
+        "fr": "Fontaine des Eléphants"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Chateauneuf is an important witness to the city's history.",
+        "fr": "Hôtel de Chateauneuf est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118234",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-de-chateauneuf-pa00118234",
+      "latitude": 45.5650479849982,
+      "longitude": 5.92351760859405,
+      "name": {
+        "en": "Hôtel de Chateauneuf",
+        "fr": "Hôtel de Chateauneuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Montjoie is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Montjoie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118238",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-de-montjoie-pa00118238",
+      "latitude": 45.564872094676,
+      "longitude": 5.92038364732703,
+      "name": {
+        "en": "Hôtel de Montjoie",
+        "fr": "Hôtel de Montjoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Douanes is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Douanes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118236",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-des-douanes-pa00118236",
+      "latitude": 45.5679755665587,
+      "longitude": 5.91853409685586,
+      "name": {
+        "en": "Hôtel des Douanes",
+        "fr": "Hôtel des Douanes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Marches (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Marches (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118237",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-des-marches-ancien-pa00118237",
+      "latitude": 45.5646260355487,
+      "longitude": 5.92401974535345,
+      "name": {
+        "en": "Hôtel des Marches (ancien)",
+        "fr": "Hôtel des Marches (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel-Dieu (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel-Dieu (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118235",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-dieu-ancien-pa00118235",
+      "latitude": 45.5641699971301,
+      "longitude": 5.91473146832365,
+      "name": {
+        "en": "Hôtel-Dieu (ancien)",
+        "fr": "Hôtel-Dieu (ancien)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1048",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-des-beaux-arts-m1048",
+      "latitude": 45.567896,
+      "longitude": 5.919306,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Charmettes is one of the city's notable cultural landmarks.",
+        "fr": "musée des Charmettes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1049",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-des-charmettes-m1049",
+      "latitude": 45.552732,
+      "longitude": 5.93011,
+      "name": {
+        "en": "musée des Charmettes",
+        "fr": "musée des Charmettes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Savoisien is one of the city's notable cultural landmarks.",
+        "fr": "musée Savoisien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1050",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-musee-savoisien-m1050",
+      "latitude": 45.571174,
+      "longitude": 5.875158,
+      "name": {
+        "en": "musée Savoisien",
+        "fr": "musée Savoisien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7029",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chambery-museum-d-histoire-naturelle-m7029",
+      "latitude": 45.563911,
+      "longitude": 5.916266,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel du Bourget (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel du Bourget (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118320",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-hotel-du-bourget-ancien-pa00118320",
+      "latitude": 45.5645350494215,
+      "longitude": 5.92150523825825,
+      "name": {
+        "en": "Hôtel du Bourget (ancien)",
+        "fr": "Hôtel du Bourget (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison des Charmettes is a distinctive architectural landmark in the city.",
+        "fr": "Maison des Charmettes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118240",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-maison-des-charmettes-pa00118240",
+      "latitude": 45.5532168225668,
+      "longitude": 5.92969002431558,
+      "name": {
+        "en": "Maison des Charmettes",
+        "fr": "Maison des Charmettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118241",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chambery-palais-de-justice-pa00118241",
+      "latitude": 45.5685797465298,
+      "longitude": 5.918786804668791,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

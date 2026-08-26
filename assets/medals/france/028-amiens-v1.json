@@ -1,0 +1,394 @@
+{
+  "id": "amiens-v1",
+  "cityId": "amiens-fr",
+  "cityZoneId": "relation/114347",
+  "cityName": {
+    "en": "Amiens",
+    "fr": "Amiens"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évéché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évéché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116054",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-ancien-eveche-pa00116054",
+      "latitude": 49.8951174826399,
+      "longitude": 2.30236251298847,
+      "name": {
+        "en": "Ancien évéché",
+        "fr": "Ancien évéché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôtel des Trésoriers de France, ou hôtel de Berny, actuellement Musée d'Art local et d'Histoire régionale is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôtel des Trésoriers de France, ou hôtel de Berny, actuellement Musée d'Art local et d'Histoire régionale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-ancien-hotel-des-tresoriers-de-france-ou-hotel-de-berny-actuellement-musee-d-art-local-et-d-histoire-regionale-pa00116062",
+      "latitude": 49.89274875062801,
+      "longitude": 2.30303029091235,
+      "name": {
+        "en": "Ancien hôtel des Trésoriers de France, ou hôtel de Berny, actuellement Musée d'Art local et d'Histoire régionale",
+        "fr": "Ancien hôtel des Trésoriers de France, ou hôtel de Berny, actuellement Musée d'Art local et d'Histoire régionale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-beffroi-pa00116043",
+      "latitude": 49.8954559812932,
+      "longitude": 2.29603280790222,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque municipale is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque municipale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116044",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-bibliotheque-municipale-pa00116044",
+      "latitude": 49.8899725911768,
+      "longitude": 2.2946469800556,
+      "name": {
+        "en": "Bibliothèque municipale",
+        "fr": "Bibliothèque municipale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Somme, in France",
+        "fr": "cathédrale située dans la Somme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106934",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "amiens-cathedrale-notre-dame-d-amiens-q106934",
+      "latitude": 49.89457,
+      "longitude": 2.3021,
+      "name": {
+        "en": "cathédrale Notre-Dame d'Amiens",
+        "fr": "cathédrale Notre-Dame d'Amiens"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau is an important witness to the city's history.",
+        "fr": "Château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-chateau-d-eau-pa80000100",
+      "latitude": 49.8979227649094,
+      "longitude": 2.29388572373166,
+      "name": {
+        "en": "Château d'eau",
+        "fr": "Château d'eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-citadelle-pa00116049",
+      "latitude": 49.903567413303506,
+      "longitude": 2.29952071108129,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain-l'Ecossais is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain-l'Ecossais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116052",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-eglise-saint-germain-l-ecossais-pa00116052",
+      "latitude": 49.8963957101014,
+      "longitude": 2.29657784395259,
+      "name": {
+        "en": "Église Saint-Germain-l'Ecossais",
+        "fr": "Église Saint-Germain-l'Ecossais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Leu is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Leu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116053",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-eglise-saint-leu-pa00116053",
+      "latitude": 49.8977046185416,
+      "longitude": 2.30123975425979,
+      "name": {
+        "en": "Église Saint-Leu",
+        "fr": "Église Saint-Leu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Anne is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Anne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000053",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-eglise-sainte-anne-pa80000053",
+      "latitude": 49.8874191170964,
+      "longitude": 2.30767705215899,
+      "name": {
+        "en": "Église Sainte-Anne",
+        "fr": "Église Sainte-Anne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Saint-Julien is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Saint-Julien compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116055",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-fontaine-saint-julien-pa00116055",
+      "latitude": 49.9011071705492,
+      "longitude": 2.30166731514394,
+      "name": {
+        "en": "Fontaine Saint-Julien",
+        "fr": "Fontaine Saint-Julien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Gisement de Saint-Acheul is an important witness to the city's history.",
+        "fr": "Gisement de Saint-Acheul est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116057",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-gisement-de-saint-acheul-pa00116057",
+      "latitude": 49.8774957866413,
+      "longitude": 2.33122949267023,
+      "name": {
+        "en": "Gisement de Saint-Acheul",
+        "fr": "Gisement de Saint-Acheul"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Gisement quaternaire is an important witness to the city's history.",
+        "fr": "Gisement quaternaire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-gisement-quaternaire-pa00116056",
+      "latitude": 49.9025248831581,
+      "longitude": 2.23611939310104,
+      "name": {
+        "en": "Gisement quaternaire",
+        "fr": "Gisement quaternaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble du Courrier Picard et vestiges du Couvent de la Visitation is an important witness to the city's history.",
+        "fr": "Immeuble du Courrier Picard et vestiges du Couvent de la Visitation est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000106",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-immeuble-du-courrier-picard-et-vestiges-du-couvent-de-la-visitation-pa80000106",
+      "latitude": 49.89135505691679,
+      "longitude": 2.2974101378023164,
+      "name": {
+        "en": "Immeuble du Courrier Picard et vestiges du Couvent de la Visitation",
+        "fr": "Immeuble du Courrier Picard et vestiges du Couvent de la Visitation"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7016",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "amiens-musee-d-histoire-naturelle-m7016",
+      "latitude": 49.89079127287645,
+      "longitude": 2.2962542880135013,
+      "name": {
+        "en": "musée d'histoire naturelle",
+        "fr": "musée d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hôtel de Berny is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hôtel de Berny compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0813",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "amiens-musee-de-l-hotel-de-berny-m0813",
+      "latitude": 49.892882,
+      "longitude": 2.302463,
+      "name": {
+        "en": "musée de l'hôtel de Berny",
+        "fr": "musée de l'hôtel de Berny"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Picardie is one of the city's notable cultural landmarks.",
+        "fr": "musée de Picardie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0812",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "amiens-musee-de-picardie-m0812",
+      "latitude": 49.890413,
+      "longitude": 2.295968,
+      "name": {
+        "en": "musée de Picardie",
+        "fr": "musée de Picardie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132918",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-palais-de-justice-pa00132918",
+      "latitude": 49.892702470246,
+      "longitude": 2.30149385236199,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Restes de l'abbaye Saint-Jean-des-Prémontrés is an important witness to the city's history.",
+        "fr": "Restes de l'abbaye Saint-Jean-des-Prémontrés est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-restes-de-l-abbaye-saint-jean-des-premontres-pa00116042",
+      "latitude": 49.8925883612146,
+      "longitude": 2.2905363408113,
+      "name": {
+        "en": "Restes de l'abbaye Saint-Jean-des-Prémontrés",
+        "fr": "Restes de l'abbaye Saint-Jean-des-Prémontrés"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "amiens-theatre-pa00116078",
+      "latitude": 49.8924642104538,
+      "longitude": 2.29995763430105,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    }
+  ]
+}

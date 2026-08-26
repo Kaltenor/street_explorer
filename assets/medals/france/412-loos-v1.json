@@ -1,0 +1,204 @@
+{
+  "id": "loos-v1",
+  "cityId": "loos-fr",
+  "cityZoneId": "relation/58402",
+  "cityName": {
+    "en": "Loos",
+    "fr": "Loos"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Nord, in France",
+        "fr": "abbaye située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1775545",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-abbaye-notre-dame-de-loos-q1775545",
+      "latitude": 50.61611111,
+      "longitude": 2.99833333,
+      "name": {
+        "en": "abbaye Notre-Dame de Loos",
+        "fr": "abbaye Notre-Dame de Loos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Belgium",
+        "fr": "centre de valorisation organique de Sequedin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2945519",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-centre-de-valorisation-organique-de-sequedin-q2945519",
+      "latitude": 50.624740873,
+      "longitude": 2.999449388,
+      "name": {
+        "en": "centre de valorisation organique de Sequedin",
+        "fr": "centre de valorisation organique de Sequedin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Landas is an important witness to the city's history.",
+        "fr": "Château de Landas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107733",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "loos-chateau-de-landas-pa00107733",
+      "latitude": 50.6205369436316,
+      "longitude": 3.01722018138728,
+      "name": {
+        "en": "Château de Landas",
+        "fr": "Château de Landas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110355139",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-cimetiere-leclerc-de-loos-q110355139",
+      "latitude": 50.6081,
+      "longitude": 3.0187,
+      "name": {
+        "en": "cimetière Leclerc de Loos",
+        "fr": "cimetière Leclerc de Loos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38386121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-eglise-notre-dame-de-grace-de-loos-q38386121",
+      "latitude": 50.61725,
+      "longitude": 3.01426,
+      "name": {
+        "en": "église Notre-Dame-de-Grâce de Loos",
+        "fr": "église Notre-Dame-de-Grâce de Loos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38504073",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-eglise-sainte-anne-de-loos-q38504073",
+      "latitude": 50.61111,
+      "longitude": 3.02113,
+      "name": {
+        "en": "église Sainte-Anne de Loos",
+        "fr": "église Sainte-Anne de Loos"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument et crypte aux morts is a notable work of public art and local memory.",
+        "fr": "monument et crypte aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA59000213",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "loos-monument-et-crypte-aux-morts-pa59000213",
+      "latitude": 50,
+      "longitude": 3.0000000000000004,
+      "name": {
+        "en": "monument et crypte aux morts",
+        "fr": "monument et crypte aux morts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Kennedy is an important witness to the city's history.",
+        "fr": "immeuble de grande hauteur à Loos (Nord)"
+      },
+      "externalIdentity": {
+        "id": "Q135427761",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-tour-kennedy-q135427761",
+      "latitude": 50.606636642,
+      "longitude": 3.008839181,
+      "name": {
+        "en": "tour Kennedy",
+        "fr": "tour Kennedy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000070",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "loos-hotel-de-ville-pa59000070",
+      "latitude": 50.6150600092573,
+      "longitude": 3.0147679941848,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Loos, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096906",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "loos-loos-lez-lille-q3096906",
+      "latitude": 50.612797,
+      "longitude": 3.017007,
+      "name": {
+        "en": "Loos lez Lille",
+        "fr": "Loos lez Lille"
+      }
+    }
+  ]
+}

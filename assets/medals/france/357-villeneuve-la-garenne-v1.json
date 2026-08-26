@@ -1,0 +1,204 @@
+{
+  "id": "villeneuve-la-garenne-v1",
+  "cityId": "villeneuve-la-garenne-fr",
+  "cityZoneId": "relation/90080",
+  "cityName": {
+    "en": "Villeneuve-la-Garenne",
+    "fr": "Villeneuve-la-Garenne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q75850515",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-ancien-cimetiere-de-villeneuve-la-garenne-q75850515",
+      "latitude": 48.93554,
+      "longitude": 2.32537,
+      "name": {
+        "en": "Ancien cimetière de Villeneuve-la-Garenne",
+        "fr": "Ancien cimetière de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958320",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-eglise-saint-joseph-de-villeneuve-la-garenne-q15958320",
+      "latitude": 48.9364,
+      "longitude": 2.33133,
+      "name": {
+        "en": "église Saint-Joseph de Villeneuve-la-Garenne",
+        "fr": "église Saint-Joseph de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Villeneuve-la-Garenne, France",
+        "fr": "édifice de Villeneuve-la-Garenne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412813",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-hotel-de-ville-de-villeneuve-la-garenne-q83412813",
+      "latitude": 48.9359,
+      "longitude": 2.3333,
+      "name": {
+        "en": "hôtel de ville de Villeneuve-la-Garenne",
+        "fr": "hôtel de ville de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "educational facility in Villeneuve-la-Garenne, France",
+        "fr": "lycée Charles Petiet de Villeneuve-la-Garenne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q18747236",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-lycee-charles-petiet-de-villeneuve-la-garenne-q18747236",
+      "latitude": 48.927247,
+      "longitude": 2.329965,
+      "name": {
+        "en": "lycée Charles Petiet de Villeneuve-la-Garenne",
+        "fr": "lycée Charles Petiet de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Villeneuve-la-Garenne, France",
+        "fr": "cinéma à Villeneuve-la-Garenne, France"
+      },
+      "externalIdentity": {
+        "id": "Q3332800",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-megarama-q3332800",
+      "latitude": 48.93,
+      "longitude": 2.3213,
+      "name": {
+        "en": "Mégarama",
+        "fr": "Mégarama"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "espace vert départemental situé à Villeneuve-la-Garenne (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q3364251",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-parc-des-chanteraines-q3364251",
+      "latitude": 48.936,
+      "longitude": 2.3124,
+      "name": {
+        "en": "parc des Chanteraines",
+        "fr": "parc des Chanteraines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T1 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28655401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-mairie-de-villeneuve-la-garenne-q28655401",
+      "latitude": 48.935523,
+      "longitude": 2.333274,
+      "name": {
+        "en": "Mairie de Villeneuve-la-Garenne",
+        "fr": "Mairie de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26720073",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-mosquee-de-villeneuve-la-garenne-q26720073",
+      "latitude": 48.930539,
+      "longitude": 2.332308,
+      "name": {
+        "en": "mosquée de Villeneuve-la-Garenne",
+        "fr": "mosquée de Villeneuve-la-Garenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397238",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-pont-de-l-ile-saint-denis-q3397238",
+      "latitude": 48.9358,
+      "longitude": 2.34167,
+      "name": {
+        "en": "pont de l'île Saint-Denis",
+        "fr": "pont de l'île Saint-Denis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc autoroutier de L'Île-Saint-Denis is a distinctive architectural landmark in the city.",
+        "fr": "pont sur la Seine reliant Villeneuve-la-Garenne à Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q17640441",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-la-garenne-viaduc-autoroutier-de-l-ile-saint-denis-q17640441",
+      "latitude": 48.926944444,
+      "longitude": 2.335,
+      "name": {
+        "en": "viaduc autoroutier de L'Île-Saint-Denis",
+        "fr": "viaduc autoroutier de L'Île-Saint-Denis"
+      }
+    }
+  ]
+}

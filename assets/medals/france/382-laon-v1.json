@@ -1,0 +1,204 @@
+{
+  "id": "laon-v1",
+  "cityId": "laon-fr",
+  "cityZoneId": "relation/74127",
+  "cityName": {
+    "en": "Laon",
+    "fr": "Laon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Jean is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Jean est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115705",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-abbaye-de-saint-jean-pa00115705",
+      "latitude": 49.56181404523366,
+      "longitude": 3.6219564700395956,
+      "name": {
+        "en": "Ancien abbaye de Saint-Jean",
+        "fr": "Ancien abbaye de Saint-Jean"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien Bibliothèque Municipale is one of the city's notable cultural landmarks.",
+        "fr": "Ancien Bibliothèque Municipale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115708",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-bibliotheque-municipale-pa00115708",
+      "latitude": 49.564353104011396,
+      "longitude": 3.6197192436635284,
+      "name": {
+        "en": "Ancien Bibliothèque Municipale",
+        "fr": "Ancien Bibliothèque Municipale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale, actuellement église Notre-Dame, et cloître is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale, actuellement église Notre-Dame, et cloître est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115710",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-cathedrale-actuellement-eglise-notre-dame-et-cloitre-pa00115710",
+      "latitude": 49.56437757380474,
+      "longitude": 3.624996850125362,
+      "name": {
+        "en": "Ancien cathédrale, actuellement église Notre-Dame, et cloître",
+        "fr": "Ancien cathédrale, actuellement église Notre-Dame, et cloître"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Remy-au-Velours is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Remy-au-Velours est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115722",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-eglise-saint-remy-au-velours-pa00115722",
+      "latitude": 49.564908107497104,
+      "longitude": 3.6211074483011125,
+      "name": {
+        "en": "Ancien église Saint-Remy-au-Velours",
+        "fr": "Ancien église Saint-Remy-au-Velours"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évéché et chapelle is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évéché et chapelle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115725",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-eveche-et-chapelle-pa00115725",
+      "latitude": 49.56453726988394,
+      "longitude": 3.626405199753406,
+      "name": {
+        "en": "Ancien évéché et chapelle",
+        "fr": "Ancien évéché et chapelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115731",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-ancien-hotel-de-ville-pa00115731",
+      "latitude": 49.56483062235088,
+      "longitude": 3.6225410629259,
+      "name": {
+        "en": "Ancien Hôtel de ville",
+        "fr": "Ancien Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0790",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "laon-musee-archeologique-municipal-m0790",
+      "latitude": 49.563206,
+      "longitude": 3.626781,
+      "name": {
+        "en": "musée archéologique municipal",
+        "fr": "musée archéologique municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Ardon is an important witness to the city's history.",
+        "fr": "Porte d'Ardon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115766",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-porte-d-ardon-pa00115766",
+      "latitude": 49.562491675853394,
+      "longitude": 3.624507007708231,
+      "name": {
+        "en": "Porte d'Ardon",
+        "fr": "Porte d'Ardon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Chenizelles is an important witness to the city's history.",
+        "fr": "Porte de Chenizelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115767",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-porte-de-chenizelles-pa00115767",
+      "latitude": 49.564262539879394,
+      "longitude": 3.6201803724424657,
+      "name": {
+        "en": "Porte de Chenizelles",
+        "fr": "Porte de Chenizelles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Soissons ou de Saint-Martin is an important witness to the city's history.",
+        "fr": "Porte de Soissons ou de Saint-Martin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115769",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laon-porte-de-soissons-ou-de-saint-martin-pa00115769",
+      "latitude": 49.56045980508665,
+      "longitude": 3.610539127514799,
+      "name": {
+        "en": "Porte de Soissons ou de Saint-Martin",
+        "fr": "Porte de Soissons ou de Saint-Martin"
+      }
+    }
+  ]
+}

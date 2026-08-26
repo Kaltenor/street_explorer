@@ -1,0 +1,204 @@
+{
+  "id": "oyonnax-v1",
+  "cityId": "oyonnax-fr",
+  "cityZoneId": "relation/21541",
+  "cityName": {
+    "en": "Oyonnax",
+    "fr": "Oyonnax"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien mairie de Bouvent is a distinctive architectural landmark in the city.",
+        "fr": "mairie située dans l'Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q114680732",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-ancien-mairie-de-bouvent-q114680732",
+      "latitude": 46.2865,
+      "longitude": 5.64026,
+      "name": {
+        "en": "Ancien mairie de Bouvent",
+        "fr": "Ancien mairie de Bouvent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Ain, in France",
+        "fr": "église située dans l'Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27306043",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-eglise-notre-dame-de-la-plaine-d-oyonnax-q27306043",
+      "latitude": 46.25721,
+      "longitude": 5.64339,
+      "name": {
+        "en": "église Notre-Dame-de-la-Plaine d'Oyonnax",
+        "fr": "église Notre-Dame-de-la-Plaine d'Oyonnax"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "body of water",
+        "fr": "lac situé dans l’Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3214899",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-lac-genin-q3214899",
+      "latitude": 46.220555555,
+      "longitude": 5.698055555,
+      "name": {
+        "en": "lac Genin",
+        "fr": "lac Genin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial located in Ain department, France",
+        "fr": "monument aux morts situé dans l'Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q90853864",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-le-francois-q90853864",
+      "latitude": 46.2626673,
+      "longitude": 5.6653901,
+      "name": {
+        "en": "Le François",
+        "fr": "Le François"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial located in Ain department, France",
+        "fr": "monument aux morts situé dans l'Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q90853229",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-monument-aux-morts-d-oyonnax-q90853229",
+      "latitude": 46.25953,
+      "longitude": 5.6579,
+      "name": {
+        "en": "monument aux morts d'Oyonnax",
+        "fr": "monument aux morts d'Oyonnax"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du peigne et de la plasturgie is one of the city's notable cultural landmarks.",
+        "fr": "musée du peigne et de la plasturgie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0969",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "oyonnax-musee-du-peigne-et-de-la-plasturgie-m0969",
+      "latitude": 46.261019379136016,
+      "longitude": 5.648075546904289,
+      "name": {
+        "en": "musée du peigne et de la plasturgie",
+        "fr": "musée du peigne et de la plasturgie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2151859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-oyonnax-q2151859",
+      "latitude": 46.259688,
+      "longitude": 5.653335,
+      "name": {
+        "en": "Oyonnax",
+        "fr": "Oyonnax"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc René-Nicod is one of the city's notable green or natural landmarks.",
+        "fr": "parc à Oyonnax (Ain)"
+      },
+      "externalIdentity": {
+        "id": "Q104627872",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-parc-rene-nicod-q104627872",
+      "latitude": 46.259856,
+      "longitude": 5.65931,
+      "name": {
+        "en": "Parc René-Nicod",
+        "fr": "Parc René-Nicod"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports stadium in Oyonnax, France",
+        "fr": "stade de rugby dans l'Ain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3495553",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oyonnax-stade-charles-mathon-q3495553",
+      "latitude": 46.2536,
+      "longitude": 5.645,
+      "name": {
+        "en": "stade Charles-Mathon",
+        "fr": "stade Charles-Mathon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Usine électrique la Grande Vapeur, actuellement musée du Peigne is one of the city's notable cultural landmarks.",
+        "fr": "Usine électrique la Grande Vapeur, actuellement musée du Peigne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116445",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "oyonnax-usine-electrique-la-grande-vapeur-actuellement-musee-du-peigne-pa00116445",
+      "latitude": 46.25920409018814,
+      "longitude": 5.657235539654938,
+      "name": {
+        "en": "Usine électrique la Grande Vapeur, actuellement musée du Peigne",
+        "fr": "Usine électrique la Grande Vapeur, actuellement musée du Peigne"
+      }
+    }
+  ]
+}

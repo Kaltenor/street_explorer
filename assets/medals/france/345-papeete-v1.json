@@ -1,0 +1,204 @@
+{
+  "id": "papeete-v1",
+  "cityId": "papeete-fr",
+  "cityZoneId": "relation/5829526",
+  "cityName": {
+    "en": "Papeete",
+    "fr": "Papeete"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Polynésie française, in France",
+        "fr": "cathédrale située en Polynésie française, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-cathedrale-notre-dame-de-papeete-q2942287",
+      "latitude": -17.5403,
+      "longitude": -149.567,
+      "name": {
+        "en": "cathédrale Notre-Dame de Papeete",
+        "fr": "cathédrale Notre-Dame de Papeete"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "healthcare organization in Papeete, French Polynesia",
+        "fr": "institut de recherche en France"
+      },
+      "externalIdentity": {
+        "id": "Q19375720",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-institut-louis-malarde-q19375720",
+      "latitude": -17.544534,
+      "longitude": -149.573386,
+      "name": {
+        "en": "Institut Louis-Malardé",
+        "fr": "Institut Louis-Malardé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "istituzione scolastica della Polinesia Francese",
+        "fr": "Institut supérieur de l'enseignement privé de Polynésie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3152567",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-institut-superieur-de-l-enseignement-prive-de-polynesie-q3152567",
+      "latitude": -17.54587,
+      "longitude": -149.5563,
+      "name": {
+        "en": "Institut supérieur de l'enseignement privé de Polynésie",
+        "fr": "Institut supérieur de l'enseignement privé de Polynésie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "senior high school in French Polynesia",
+        "fr": "établissement scolaire de Papeete (Polynésie française)"
+      },
+      "externalIdentity": {
+        "id": "Q16661610",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-lycee-paul-gauguin-q16661610",
+      "latitude": -17.5467,
+      "longitude": -149.577,
+      "name": {
+        "en": "lycée Paul-Gauguin",
+        "fr": "lycée Paul-Gauguin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q16899356",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-musee-de-la-perle-de-tahiti-q16899356",
+      "latitude": -17.54,
+      "longitude": -149.568,
+      "name": {
+        "en": "musée de la perle de Tahiti",
+        "fr": "musée de la perle de Tahiti"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "palais présidentiel de la Polynésie française is a distinctive architectural landmark in the city.",
+        "fr": "siège de la Présidence de la Polynésie française"
+      },
+      "externalIdentity": {
+        "id": "Q27603000",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-palais-presidentiel-de-la-polynesie-francaise-q27603000",
+      "latitude": -17.544333,
+      "longitude": -149.569448,
+      "name": {
+        "en": "palais présidentiel de la Polynésie française",
+        "fr": "palais présidentiel de la Polynésie française"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports venue",
+        "fr": "stade Hamuta est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q1546510",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-stade-hamuta-q1546510",
+      "latitude": -17.533895,
+      "longitude": -149.551628,
+      "name": {
+        "en": "stade Hamuta",
+        "fr": "stade Hamuta"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Willy-Bambridge is a distinctive architectural landmark in the city.",
+        "fr": "stade français situé à Tahiti"
+      },
+      "externalIdentity": {
+        "id": "Q11836154",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-stade-willy-bambridge-q11836154",
+      "latitude": -17.545602,
+      "longitude": -149.580125,
+      "name": {
+        "en": "stade Willy-Bambridge",
+        "fr": "stade Willy-Bambridge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mormon temple located in Tahiti, in France",
+        "fr": "temple mormon situé à Tahiti, en France"
+      },
+      "externalIdentity": {
+        "id": "Q925963",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-temple-mormon-de-tahiti-q925963",
+      "latitude": -17.5366,
+      "longitude": -149.556,
+      "name": {
+        "en": "temple mormon de Tahiti",
+        "fr": "temple mormon de Tahiti"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Polynésie française, in France",
+        "fr": "temple protestant à Papeete, Polynésie française"
+      },
+      "externalIdentity": {
+        "id": "Q60427378",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "papeete-temple-protestant-de-paofai-q60427378",
+      "latitude": -17.543376554,
+      "longitude": -149.574200524,
+      "name": {
+        "en": "temple protestant de Paofai",
+        "fr": "temple protestant de Paofai"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "chatenay-malabry-v1",
+  "cityId": "chatenay-malabry-fr",
+  "cityZoneId": "relation/33914",
+  "cityName": {
+    "en": "Châtenay-Malabry",
+    "fr": "Châtenay-Malabry"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q2859716",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-arboretum-de-la-vallee-aux-loups-q2859716",
+      "latitude": 48.77165,
+      "longitude": 2.27049,
+      "name": {
+        "en": "arboretum de la Vallée-aux-Loups",
+        "fr": "arboretum de la Vallée-aux-Loups"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Petite Roseraie is an important witness to the city's history.",
+        "fr": "château à Châtenay-Malabry (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q15944259",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-chateau-de-la-petite-roseraie-q15944259",
+      "latitude": 48.766388888,
+      "longitude": 2.278888888,
+      "name": {
+        "en": "château de la Petite Roseraie",
+        "fr": "château de la Petite Roseraie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19406897",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-communaute-de-robinson-q19406897",
+      "latitude": 48.770973,
+      "longitude": 2.280366,
+      "name": {
+        "en": "Communauté de Robinson",
+        "fr": "Communauté de Robinson"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de la Petite Roseraie is an important witness to the city's history.",
+        "fr": "Domaine de la Petite Roseraie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088086",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatenay-malabry-domaine-de-la-petite-roseraie-pa00088086",
+      "latitude": 48.7654268013371,
+      "longitude": 2.27572407419958,
+      "name": {
+        "en": "Domaine de la Petite Roseraie",
+        "fr": "Domaine de la Petite Roseraie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "French estate",
+        "fr": "lieu culturel et de nature ouvert au public, ancienne propriété de François-René de Chateaubriand, à Châtenay-Malabry, dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2509432",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-domaine-de-la-vallee-aux-loups-q2509432",
+      "latitude": 48.77268,
+      "longitude": 2.264409,
+      "name": {
+        "en": "domaine de la Vallée-aux-Loups",
+        "fr": "domaine de la Vallée-aux-Loups"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering grande école (selective higher education institution)",
+        "fr": "grande école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q273447",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-ecole-centrale-paris-q273447",
+      "latitude": 48.765777777,
+      "longitude": 2.288416666,
+      "name": {
+        "en": "École centrale Paris",
+        "fr": "École centrale Paris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088088",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatenay-malabry-eglise-pa00088088",
+      "latitude": 48.7657923988622,
+      "longitude": 2.27986955814716,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Châtenay-Malabry, France",
+        "fr": "édifice de Châtenay-Malabry, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412743",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-hotel-de-ville-de-chatenay-malabry-q83412743",
+      "latitude": 48.7673,
+      "longitude": 2.2777,
+      "name": {
+        "en": "hôtel de ville de Châtenay-Malabry",
+        "fr": "hôtel de ville de Châtenay-Malabry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330324",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-musee-du-bonsai-q3330324",
+      "latitude": 48.76882553,
+      "longitude": 2.27040696,
+      "name": {
+        "en": "musée du Bonsaï",
+        "fr": "musée du Bonsaï"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "tram stop in the Ile-de-France",
+        "fr": "station du tramway d’Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q77350695",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatenay-malabry-theatre-la-piscine-q77350695",
+      "latitude": 48.76283,
+      "longitude": 2.279919,
+      "name": {
+        "en": "Théâtre La Piscine",
+        "fr": "Théâtre La Piscine"
+      }
+    }
+  ]
+}

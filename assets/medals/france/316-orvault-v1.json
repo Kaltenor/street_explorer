@@ -1,0 +1,204 @@
+{
+  "id": "orvault-v1",
+  "cityId": "orvault-fr",
+  "cityZoneId": "relation/60972",
+  "cityName": {
+    "en": "Orvault",
+    "fr": "Orvault"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60341082",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-chapelle-notre-dame-des-anges-q60341082",
+      "latitude": 47.27509,
+      "longitude": -1.63675,
+      "name": {
+        "en": "chapelle Notre-Dame des Anges",
+        "fr": "chapelle Notre-Dame des Anges"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Gobinière is an important witness to the city's history.",
+        "fr": "château à Orvault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83715626",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-chateau-de-la-gobiniere-q83715626",
+      "latitude": 47.249316666,
+      "longitude": -1.58465,
+      "name": {
+        "en": "château de la Gobinière",
+        "fr": "château de la Gobinière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Morlière is an important witness to the city's history.",
+        "fr": "Château de la Morlière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA44000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orvault-chateau-de-la-morliere-pa44000051",
+      "latitude": 47.25553630890398,
+      "longitude": -1.5965943068158,
+      "name": {
+        "en": "Château de la Morlière",
+        "fr": "Château de la Morlière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958297",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-eglise-saint-leger-d-orvault-q15958297",
+      "latitude": 47.2707,
+      "longitude": -1.62361,
+      "name": {
+        "en": "église Saint-Léger d'Orvault",
+        "fr": "église Saint-Léger d'Orvault"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38507275",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-eglise-sainte-bernadette-du-petit-chantilly-q38507275",
+      "latitude": 47.24847,
+      "longitude": -1.59865,
+      "name": {
+        "en": "église Sainte-Bernadette du Petit Chantilly",
+        "fr": "église Sainte-Bernadette du Petit Chantilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Orvault, France",
+        "fr": "hôtel de ville, Orvault, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-hotel-de-ville-d-orvault-q105341714",
+      "latitude": 47.2709,
+      "longitude": -1.6243,
+      "name": {
+        "en": "hôtel de ville d'Orvault",
+        "fr": "hôtel de ville d'Orvault"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc public à Nantes, France"
+      },
+      "externalIdentity": {
+        "id": "Q3364211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-parc-de-la-gaudiniere-q3364211",
+      "latitude": 47.2442,
+      "longitude": -1.57778,
+      "name": {
+        "en": "parc de la Gaudinière",
+        "fr": "parc de la Gaudinière"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Michel-Baudry is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public d'Orvault, France"
+      },
+      "externalIdentity": {
+        "id": "Q99432927",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-parc-michel-baudry-q99432927",
+      "latitude": 47.248169444,
+      "longitude": -1.585202777,
+      "name": {
+        "en": "parc Michel-Baudry",
+        "fr": "parc Michel-Baudry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Orvault Grand Val is a distinctive architectural landmark in the city.",
+        "fr": "station du réseau de transports urbains de Nantes"
+      },
+      "externalIdentity": {
+        "id": "Q110598897",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-orvault-grand-val-q110598897",
+      "latitude": 47.2619667,
+      "longitude": -1.59231746,
+      "name": {
+        "en": "Orvault Grand Val",
+        "fr": "Orvault Grand Val"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont du Cens is a distinctive architectural landmark in the city.",
+        "fr": "pont sur le Cens à Nantes et Orvault"
+      },
+      "externalIdentity": {
+        "id": "Q128791646",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orvault-pont-du-cens-q128791646",
+      "latitude": 47.24715,
+      "longitude": -1.57743,
+      "name": {
+        "en": "pont du Cens",
+        "fr": "pont du Cens"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "sarreguemines-v1",
+  "cityId": "sarreguemines-fr",
+  "cityZoneId": "relation/90243",
+  "cityName": {
+    "en": "Sarreguemines",
+    "fr": "Sarreguemines"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "casino de la Faïencerie is one of the city's notable cultural landmarks.",
+        "fr": "casino avec une salle de spectacles à Sarreguemines (Moselle)"
+      },
+      "externalIdentity": {
+        "id": "Q22979659",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-casino-de-la-faiencerie-q22979659",
+      "latitude": 49.110737,
+      "longitude": 7.072995,
+      "name": {
+        "en": "casino de la Faïencerie",
+        "fr": "casino de la Faïencerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "manor house in Sarreguemines, France",
+        "fr": "château français situé à Sarreguemines"
+      },
+      "externalIdentity": {
+        "id": "Q26257919",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-chateau-utzschneider-q26257919",
+      "latitude": 49.11803,
+      "longitude": 7.082096,
+      "name": {
+        "en": "Château Utzschneider",
+        "fr": "Château Utzschneider"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "église située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38386134",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-eglise-du-sacre-c-ur-de-sarreguemines-q38386134",
+      "latitude": 49.11617,
+      "longitude": 7.07461,
+      "name": {
+        "en": "église du Sacré-Cœur de Sarreguemines",
+        "fr": "église du Sacré-Cœur de Sarreguemines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "église située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38388947",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-eglise-lutherienne-de-sarreguemines-q38388947",
+      "latitude": 49.1143655,
+      "longitude": 7.0728924,
+      "name": {
+        "en": "église luthérienne de Sarreguemines",
+        "fr": "église luthérienne de Sarreguemines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Sarreguemines, France",
+        "fr": "édifice religieux de Sarreguemines, France"
+      },
+      "externalIdentity": {
+        "id": "Q29569548",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-eglise-saint-nicolas-de-sarreguemines-q29569548",
+      "latitude": 49.1108,
+      "longitude": 7.0658,
+      "name": {
+        "en": "église Saint-Nicolas de Sarreguemines",
+        "fr": "église Saint-Nicolas de Sarreguemines"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Sarreguemines, France",
+        "fr": "Jardin des Faïenciers compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3162541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-jardin-des-faienciers-q3162541",
+      "latitude": 49.1269,
+      "longitude": 7.08043,
+      "name": {
+        "en": "Jardin des Faïenciers",
+        "fr": "Jardin des Faïenciers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q20971749",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-moulin-de-la-blies-musee-des-techniques-faiencieres-q20971749",
+      "latitude": 49.12611,
+      "longitude": 7.07712,
+      "name": {
+        "en": "moulin de la Blies - Musée des techniques faïencières",
+        "fr": "moulin de la Blies - Musée des techniques faïencières"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la faïence et des techniques faïencières is one of the city's notable cultural landmarks.",
+        "fr": "musée de la faïence et des techniques faïencières compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0533",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "sarreguemines-musee-de-la-faience-et-des-techniques-faiencieres-m0533",
+      "latitude": 49.109069,
+      "longitude": 7.070473,
+      "name": {
+        "en": "musée de la faïence et des techniques faïencières",
+        "fr": "musée de la faïence et des techniques faïencières"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée régional is one of the city's notable cultural landmarks.",
+        "fr": "Musée régional compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sarreguemines-musee-regional-pa00107001",
+      "latitude": 49.109352050022,
+      "longitude": 7.070439517990531,
+      "name": {
+        "en": "Musée régional",
+        "fr": "Musée régional"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q801400",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarreguemines-sarreguemines-q801400",
+      "latitude": 49.107197,
+      "longitude": 7.0685863,
+      "name": {
+        "en": "Sarreguemines",
+        "fr": "Sarreguemines"
+      }
+    }
+  ]
+}

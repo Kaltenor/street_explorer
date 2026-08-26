@@ -1,0 +1,204 @@
+{
+  "id": "bondy-v1",
+  "cityId": "bondy-fr",
+  "cityZoneId": "relation/158667",
+  "cityName": {
+    "en": "Bondy",
+    "fr": "Bondy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bondy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2802702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-bondy-q2802702",
+      "latitude": 48.89389,
+      "longitude": 2.47889,
+      "name": {
+        "en": "Bondy",
+        "fr": "Bondy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20030186",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-eglise-saint-louis-de-bondy-q20030186",
+      "latitude": 48.8932,
+      "longitude": 2.4776,
+      "name": {
+        "en": "église Saint-Louis de Bondy",
+        "fr": "église Saint-Louis de Bondy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20030188",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-eglise-saint-pierre-q20030188",
+      "latitude": 48.9029,
+      "longitude": 2.48063,
+      "name": {
+        "en": "église Saint-Pierre",
+        "fr": "église Saint-Pierre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, parc de la Mare à la Veuve is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Bondy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-fontaine-wallace-parc-de-la-mare-a-la-veuve-q128920401",
+      "latitude": 48.890065,
+      "longitude": 2.481005,
+      "name": {
+        "en": "fontaine Wallace, parc de la Mare à la Veuve",
+        "fr": "fontaine Wallace, parc de la Mare à la Veuve"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place de la République is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Bondy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920404",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-fontaine-wallace-place-de-la-republique-q128920404",
+      "latitude": 48.894989,
+      "longitude": 2.478287,
+      "name": {
+        "en": "fontaine Wallace, place de la République",
+        "fr": "fontaine Wallace, place de la République"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Hélène-Boucher is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Bondy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920408",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-fontaine-wallace-rue-helene-boucher-q128920408",
+      "latitude": 48.90453,
+      "longitude": 2.48127,
+      "name": {
+        "en": "fontaine Wallace, rue Hélène-Boucher",
+        "fr": "fontaine Wallace, rue Hélène-Boucher"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bondy, France",
+        "fr": "édifice de Bondy, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412709",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-hotel-de-ville-de-bondy-q83412709",
+      "latitude": 48.9018,
+      "longitude": 2.4811,
+      "name": {
+        "en": "hôtel de ville de Bondy",
+        "fr": "hôtel de ville de Bondy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136046590",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-monument-aux-morts-de-bondy-q136046590",
+      "latitude": 48.90115,
+      "longitude": 2.47771,
+      "name": {
+        "en": "monument aux morts de Bondy",
+        "fr": "monument aux morts de Bondy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "piscine tournesol de Bondy is an important witness to the city's history.",
+        "fr": "piscine tournesol de Bondy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q118532093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-piscine-tournesol-de-bondy-q118532093",
+      "latitude": 48.89286,
+      "longitude": 2.48525,
+      "name": {
+        "en": "piscine tournesol de Bondy",
+        "fr": "piscine tournesol de Bondy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q76467149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bondy-pont-de-bondy-q76467149",
+      "latitude": 48.9049,
+      "longitude": 2.4705,
+      "name": {
+        "en": "Pont de Bondy",
+        "fr": "Pont de Bondy"
+      }
+    }
+  ]
+}

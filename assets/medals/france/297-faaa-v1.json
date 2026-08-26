@@ -1,0 +1,204 @@
+{
+  "id": "faaa-v1",
+  "cityId": "faaa-fr",
+  "cityZoneId": "relation/6093624",
+  "cityName": {
+    "en": "Faaa",
+    "fr": "Faaa"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport",
+        "fr": "aéroport desservant Papeete (Polynésie française, France)"
+      },
+      "externalIdentity": {
+        "id": "Q1049719",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-aeroport-international-de-tahiti-fa-a-a-q1049719",
+      "latitude": -17.556666666,
+      "longitude": -149.611388888,
+      "name": {
+        "en": "aéroport international de Tahiti-Fa'a'ā",
+        "fr": "aéroport international de Tahiti-Fa'a'ā"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre pénitentiaire de Faa'a-Nuutania is a distinctive architectural landmark in the city.",
+        "fr": "établissement pénitentiaire français"
+      },
+      "externalIdentity": {
+        "id": "Q59771860",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-centre-penitentiaire-de-faa-a-nuutania-q59771860",
+      "latitude": -17.556297703,
+      "longitude": -149.5899775,
+      "name": {
+        "en": "centre pénitentiaire de Faa'a-Nuutania",
+        "fr": "centre pénitentiaire de Faa'a-Nuutania"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French military airbase in French Polynesia",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q2886489",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-detachement-air-190-tahiti-faa-a-q2886489",
+      "latitude": -17.5532,
+      "longitude": -149.607,
+      "name": {
+        "en": "Détachement air 190 Tahiti-Faa'a",
+        "fr": "Détachement air 190 Tahiti-Faa'a"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tahitian commune in French Polynesia, France",
+        "fr": "commune française de la collectivité d'outre-mer de la Polynésie française"
+      },
+      "externalIdentity": {
+        "id": "Q1022934",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-faaa-q1022934",
+      "latitude": -17.55,
+      "longitude": -149.6,
+      "name": {
+        "en": "Faaa",
+        "fr": "Faaa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "Le Pic Rouge est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31745355",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-le-pic-rouge-q31745355",
+      "latitude": -17.566666666,
+      "longitude": -149.583333333,
+      "name": {
+        "en": "Le Pic Rouge",
+        "fr": "Le Pic Rouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "Mamanu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q34926891",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-mamanu-q34926891",
+      "latitude": -17.6017,
+      "longitude": -149.5608,
+      "name": {
+        "en": "Mamanu",
+        "fr": "Mamanu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q31929807",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-manuai-q31929807",
+      "latitude": -17.566666666,
+      "longitude": -149.6,
+      "name": {
+        "en": "Manuai",
+        "fr": "Manuai"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "mont Marau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q34927596",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-mont-marau-q34927596",
+      "latitude": -17.615,
+      "longitude": -149.5283,
+      "name": {
+        "en": "mont Marau",
+        "fr": "mont Marau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plateau du Rata is a distinctive architectural landmark in the city.",
+        "fr": "plateau du Rata est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31930564",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-plateau-du-rata-q31930564",
+      "latitude": -17.616666666,
+      "longitude": -149.516666666,
+      "name": {
+        "en": "plateau du Rata",
+        "fr": "plateau du Rata"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-use stadium in Faaa, Tahiti, French Polynesia",
+        "fr": "stade Louis-Ganivet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q7596133",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "faaa-stade-louis-ganivet-q7596133",
+      "latitude": -17.556534,
+      "longitude": -149.595305,
+      "name": {
+        "en": "stade Louis-Ganivet",
+        "fr": "stade Louis-Ganivet"
+      }
+    }
+  ]
+}

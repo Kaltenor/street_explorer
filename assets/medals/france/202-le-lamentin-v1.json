@@ -1,0 +1,204 @@
+{
+  "id": "le-lamentin-v1",
+  "cityId": "le-lamentin-fr",
+  "cityZoneId": "relation/299032",
+  "cityName": {
+    "en": "Le Lamentin",
+    "fr": "Le Lamentin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Airport in Martinique",
+        "fr": "aéroport desservant Fort-De-France (Martinique, France)"
+      },
+      "externalIdentity": {
+        "id": "Q651330",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-aeroport-international-de-martinique-aime-cesaire-q651330",
+      "latitude": 14.592222222,
+      "longitude": -60.996388888,
+      "name": {
+        "en": "aéroport international de Martinique Aimé-Césaire",
+        "fr": "aéroport international de Martinique Aimé-Césaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "controlled-access highway in Martinique",
+        "fr": "autoroute française en Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q2872903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-autoroute-a1-q2872903",
+      "latitude": 14.617337,
+      "longitude": -61.017369,
+      "name": {
+        "en": "autoroute A1",
+        "fr": "autoroute A1"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bay in Martinique, France",
+        "fr": "baie de France"
+      },
+      "externalIdentity": {
+        "id": "Q5470690",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-baie-de-fort-de-france-q5470690",
+      "latitude": 14.577,
+      "longitude": -61.05,
+      "name": {
+        "en": "baie de Fort-de-France",
+        "fr": "baie de Fort-de-France"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q778525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-canton-du-lamentin-1-sud-bourg-q778525",
+      "latitude": 14.601,
+      "longitude": -60.999,
+      "name": {
+        "en": "canton du Lamentin-1-Sud-Bourg",
+        "fr": "canton du Lamentin-1-Sud-Bourg"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "communauté d'agglomération in Martinique, France",
+        "fr": "intercommunalité française de la Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q2986980",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-communaute-d-agglomeration-du-centre-de-la-martinique-q2986980",
+      "latitude": 14.6436,
+      "longitude": -61.0319,
+      "name": {
+        "en": "communauté d’agglomération du Centre de la Martinique",
+        "fr": "communauté d’agglomération du Centre de la Martinique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église paroissiale Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "église paroissiale Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135668",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-lamentin-eglise-paroissiale-saint-laurent-pa00135668",
+      "latitude": 14.615726293236301,
+      "longitude": -61.0020477029806,
+      "name": {
+        "en": "église paroissiale Saint-Laurent",
+        "fr": "église paroissiale Saint-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Martinique, in France",
+        "fr": "église au Lamentin (Martinique)"
+      },
+      "externalIdentity": {
+        "id": "Q22995367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-eglise-saint-laurent-du-lamentin-q22995367",
+      "latitude": 14.615761,
+      "longitude": -61.002156,
+      "name": {
+        "en": "église Saint-Laurent du Lamentin",
+        "fr": "église Saint-Laurent du Lamentin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune and city in Martinique",
+        "fr": "commune française du département d'outre-mer de la Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q947069",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-le-lamentin-q947069",
+      "latitude": 14.615277777,
+      "longitude": -61.001944444,
+      "name": {
+        "en": "Le Lamentin",
+        "fr": "Le Lamentin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché is a distinctive architectural landmark in the city.",
+        "fr": "Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200053",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-lamentin-marche-pa97200053",
+      "latitude": 14.616619120138395,
+      "longitude": -61.00297581833622,
+      "name": {
+        "en": "Marché",
+        "fr": "Marché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in the Lesser Antilles, overseas region and department of France",
+        "fr": "région et département français d'outre-mer numéro 972, correspondant géographiquement à l'île de la Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q17054",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-lamentin-martinique-q17054",
+      "latitude": 14.65,
+      "longitude": -61.015,
+      "name": {
+        "en": "Martinique",
+        "fr": "Martinique"
+      }
+    }
+  ]
+}

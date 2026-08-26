@@ -1,0 +1,204 @@
+{
+  "id": "chartres-v1",
+  "cityId": "chartres-fr",
+  "cityZoneId": "relation/276905",
+  "cityName": {
+    "en": "Chartres",
+    "fr": "Chartres"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Père-en-Vallée, actuellement annexe du lycée Marceau is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Père-en-Vallée, actuellement annexe du lycée Marceau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096991",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-ancien-abbaye-de-saint-pere-en-vallee-actuellement-annexe-du-lycee-marceau-pa00096991",
+      "latitude": 48.4428529371812,
+      "longitude": 1.49037503873849,
+      "name": {
+        "en": "Ancien abbaye de Saint-Père-en-Vallée, actuellement annexe du lycée Marceau",
+        "fr": "Ancien abbaye de Saint-Père-en-Vallée, actuellement annexe du lycée Marceau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096997",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-ancien-eglise-saint-andre-pa00096997",
+      "latitude": 48.450087314902106,
+      "longitude": 1.48993218713169,
+      "name": {
+        "en": "Ancien église Saint-André",
+        "fr": "Ancien église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Sainte-Foy is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Sainte-Foy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096998",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-ancien-eglise-sainte-foy-pa00096998",
+      "latitude": 48.4456307303079,
+      "longitude": 1.48445113774329,
+      "name": {
+        "en": "Ancien église Sainte-Foy",
+        "fr": "Ancien église Sainte-Foy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien évêché et ses jardins, actuellement Musée des Beaux-Arts is one of the city's notable cultural landmarks.",
+        "fr": "Ancien évêché et ses jardins, actuellement Musée des Beaux-Arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097000",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-ancien-eveche-et-ses-jardins-actuellement-musee-des-beaux-arts-pa00097000",
+      "latitude": 48.448854375348,
+      "longitude": 1.48793900188279,
+      "name": {
+        "en": "Ancien évêché et ses jardins, actuellement Musée des Beaux-Arts",
+        "fr": "Ancien évêché et ses jardins, actuellement Musée des Beaux-Arts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096993",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-cathedrale-notre-dame-pa00096993",
+      "latitude": 48.4478392510111,
+      "longitude": 1.48799342623013,
+      "name": {
+        "en": "Cathédrale Notre-Dame",
+        "fr": "Cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "\"Maison dite aussi ancienne salle de justice et hôtel de ville ou \"du Perron\" ou \"le Parloir aux Bourgeois\" ou \"des Trois Rois\"\" is a distinctive architectural landmark in the city.",
+        "fr": "\"Maison dite aussi ancienne salle de justice et hôtel de ville ou \"du Perron\" ou \"le Parloir aux Bourgeois\" ou \"des Trois Rois\"\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097004",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-maison-dite-aussi-ancienne-salle-de-justice-et-hotel-de-ville-ou-du-perron-ou-le-parloir-aux-bourgeois-ou-des-trois-rois-pa00097004",
+      "latitude": 48.4460161945465,
+      "longitude": 1.48904756318947,
+      "name": {
+        "en": "\"Maison dite aussi ancienne salle de justice et hôtel de ville ou \"du Perron\" ou \"le Parloir aux Bourgeois\" ou \"des Trois Rois\"\"",
+        "fr": "\"Maison dite aussi ancienne salle de justice et hôtel de ville ou \"du Perron\" ou \"le Parloir aux Bourgeois\" ou \"des Trois Rois\"\""
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison Picassiette, actuellement musée Picassiette is one of the city's notable cultural landmarks.",
+        "fr": "Maison Picassiette, actuellement musée Picassiette compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-maison-picassiette-actuellement-musee-picassiette-pa00097013",
+      "latitude": 48.442166503380605,
+      "longitude": 1.5070297443566432,
+      "name": {
+        "en": "Maison Picassiette, actuellement musée Picassiette",
+        "fr": "Maison Picassiette, actuellement musée Picassiette"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison sise place de la Cathédrale, en face de la tour Nord de la cathédrale is an important witness to the city's history.",
+        "fr": "Maison sise place de la Cathédrale, en face de la tour Nord de la cathédrale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chartres-maison-sise-place-de-la-cathedrale-en-face-de-la-tour-nord-de-la-cathedrale-pa00097007",
+      "latitude": 48.4473319092184,
+      "longitude": 1.4868811942143,
+      "name": {
+        "en": "Maison sise place de la Cathédrale, en face de la tour Nord de la cathédrale",
+        "fr": "Maison sise place de la Cathédrale, en face de la tour Nord de la cathédrale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0238",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chartres-musee-des-beaux-arts-m0238",
+      "latitude": 48.447624,
+      "longitude": 1.486763,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum des sciences naturelles et de Préhistoire is one of the city's notable cultural landmarks.",
+        "fr": "muséum des sciences naturelles et de Préhistoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7030",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chartres-museum-des-sciences-naturelles-et-de-prehistoire-m7030",
+      "latitude": 48.441822,
+      "longitude": 1.490983,
+      "name": {
+        "en": "muséum des sciences naturelles et de Préhistoire",
+        "fr": "muséum des sciences naturelles et de Préhistoire"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "croix-v1",
+  "cityId": "croix-fr",
+  "cityZoneId": "relation/58677",
+  "cityName": {
+    "en": "Croix",
+    "fr": "Croix"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Fontaine is an important witness to the city's history.",
+        "fr": "Château de Fontaine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107442",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "croix-chateau-de-fontaine-pa00107442",
+      "latitude": 50.66058556008671,
+      "longitude": 3.16066057089206,
+      "name": {
+        "en": "Château de Fontaine",
+        "fr": "Château de Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2347661",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-cimetiere-de-croix-q2347661",
+      "latitude": 50.681855,
+      "longitude": 3.148807,
+      "name": {
+        "en": "cimetière de Croix",
+        "fr": "cimetière de Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096324",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-croix-l-allumette-q3096324",
+      "latitude": 50.695714,
+      "longitude": 3.163069,
+      "name": {
+        "en": "Croix l'Allumette",
+        "fr": "Croix l'Allumette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "croix-eglise-saint-martin-pa59000109",
+      "latitude": 50.6752442831925,
+      "longitude": 3.14874085686856,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60389976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-eglise-saint-pierre-de-croix-q60389976",
+      "latitude": 50.68403,
+      "longitude": 3.15322,
+      "name": {
+        "en": "église Saint-Pierre de Croix",
+        "fr": "église Saint-Pierre de Croix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "large mansion built in 1932 for Paul Cavrois by French architect Robert Mallet-Stevens",
+        "fr": "villa à Croix (Nord)"
+      },
+      "externalIdentity": {
+        "id": "Q518747",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-villa-cavrois-q518747",
+      "latitude": 50.666736111,
+      "longitude": 3.164052777,
+      "name": {
+        "en": "villa Cavrois",
+        "fr": "villa Cavrois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "villa in Croix, France",
+        "fr": "villa à Croix (Nord)"
+      },
+      "externalIdentity": {
+        "id": "Q17347122",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-maison-delcourt-q17347122",
+      "latitude": 50.6786,
+      "longitude": 3.15761,
+      "name": {
+        "en": "maison Delcourt",
+        "fr": "maison Delcourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "priory located in Nord, in France",
+        "fr": "prieuré situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958597",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-prieure-de-la-sainte-croix-q15958597",
+      "latitude": 50.6759,
+      "longitude": 3.14348,
+      "name": {
+        "en": "prieuré de la Sainte-Croix",
+        "fr": "prieuré de la Sainte-Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "temple located in Nord, in France",
+        "fr": "temple situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113814899",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-temple-antoiniste-de-croix-q113814899",
+      "latitude": 50.68992,
+      "longitude": 3.15033,
+      "name": {
+        "en": "temple antoiniste de Croix",
+        "fr": "temple antoiniste de Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vélodrome roubaisien is a distinctive architectural landmark in the city.",
+        "fr": "vélodrome installé sur la commune de Croix, en France (1895-1924)"
+      },
+      "externalIdentity": {
+        "id": "Q3564115",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "croix-velodrome-roubaisien-q3564115",
+      "latitude": 50.6679,
+      "longitude": 3.15411,
+      "name": {
+        "en": "Vélodrome roubaisien",
+        "fr": "Vélodrome roubaisien"
+      }
+    }
+  ]
+}

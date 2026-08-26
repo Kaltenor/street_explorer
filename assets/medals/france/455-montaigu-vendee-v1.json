@@ -1,0 +1,204 @@
+{
+  "id": "montaigu-vendee-v1",
+  "cityId": "montaigu-vendee-fr",
+  "cityZoneId": "relation/167248",
+  "cityName": {
+    "en": "Montaigu-Vendée",
+    "fr": "Montaigu-Vendée"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château is an important witness to the city's history.",
+        "fr": "Ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA85000042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montaigu-vendee-ancien-chateau-pa85000042",
+      "latitude": 46.9743246249948,
+      "longitude": -1.31333727677809,
+      "name": {
+        "en": "Ancien château",
+        "fr": "Ancien château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Caillauderie is an important witness to the city's history.",
+        "fr": "Château de la Caillauderie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/76080399",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montaigu-vendee-chateau-de-la-caillauderie-way-76080399",
+      "latitude": 46.9734793,
+      "longitude": -1.311535,
+      "name": {
+        "en": "Château de la Caillauderie",
+        "fr": "Château de la Caillauderie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Montaigu is an important witness to the city's history.",
+        "fr": "Château de Montaigu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2634828842",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "montaigu-vendee-chateau-de-montaigu-node-2634828842",
+      "latitude": 46.9740296,
+      "longitude": -1.3137261,
+      "name": {
+        "en": "Château de Montaigu",
+        "fr": "Château de Montaigu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "1793 battle",
+        "fr": "bataille de la guerre de Vendée"
+      },
+      "externalIdentity": {
+        "id": "Q3025054",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montaigu-vendee-deuxieme-bataille-de-montaigu-q3025054",
+      "latitude": 46.9736,
+      "longitude": -1.3086,
+      "name": {
+        "en": "deuxième bataille de Montaigu",
+        "fr": "deuxième bataille de Montaigu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville de Montaigu-Vendée is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville de Montaigu-Vendée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/76079966",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montaigu-vendee-hotel-de-ville-de-montaigu-vendee-way-76079966",
+      "latitude": 46.9742778,
+      "longitude": -1.3137773,
+      "name": {
+        "en": "Hôtel de Ville de Montaigu-Vendée",
+        "fr": "Hôtel de Ville de Montaigu-Vendée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Vendée, France",
+        "fr": "ancienne commune française du département de la Vendée"
+      },
+      "externalIdentity": {
+        "id": "Q831401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montaigu-vendee-montaigu-q831401",
+      "latitude": 46.972777777,
+      "longitude": -1.31,
+      "name": {
+        "en": "Montaigu",
+        "fr": "Montaigu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Vendée, France",
+        "fr": "commune française de Vendée"
+      },
+      "externalIdentity": {
+        "id": "Q29650249",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montaigu-vendee-montaigu-vendee-q29650249",
+      "latitude": 46.97416667,
+      "longitude": -1.31361111,
+      "name": {
+        "en": "Montaigu-Vendée",
+        "fr": "Montaigu-Vendée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Moulin de la Tour is an important witness to the city's history.",
+        "fr": "Moulin de la Tour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3920317518",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "montaigu-vendee-moulin-de-la-tour-node-3920317518",
+      "latitude": 46.9757361,
+      "longitude": -1.3146851,
+      "name": {
+        "en": "Moulin de la Tour",
+        "fr": "Moulin de la Tour"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc du château is one of the city's notable green or natural landmarks.",
+        "fr": "Parc du château compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/547028933",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montaigu-vendee-parc-du-chateau-way-547028933",
+      "latitude": 46.9740015,
+      "longitude": -1.3131911,
+      "name": {
+        "en": "Parc du château",
+        "fr": "Parc du château"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre de Thalie is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre de Thalie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/184872229",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montaigu-vendee-theatre-de-thalie-way-184872229",
+      "latitude": 46.9811356,
+      "longitude": -1.3082324,
+      "name": {
+        "en": "Théâtre de Thalie",
+        "fr": "Théâtre de Thalie"
+      }
+    }
+  ]
+}

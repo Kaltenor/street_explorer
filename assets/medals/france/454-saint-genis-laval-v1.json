@@ -1,0 +1,204 @@
+{
+  "id": "saint-genis-laval-v1",
+  "cityId": "saint-genis-laval-fr",
+  "cityZoneId": "relation/192374",
+  "cityName": {
+    "en": "Saint-Genis-Laval",
+    "fr": "Saint-Genis-Laval"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Rhône, in France",
+        "fr": "chapelle située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q129571626",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-chapelle-a-saint-genis-laval-34-rue-francisque-darcieux-q129571626",
+      "latitude": 45.699129,
+      "longitude": 4.801543,
+      "name": {
+        "en": "chapelle à Saint-Genis-Laval, 34 rue Francisque Darcieux",
+        "fr": "chapelle à Saint-Genis-Laval, 34 rue Francisque Darcieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Rhône, in France",
+        "fr": "chapelle située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60341379",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-chapelle-des-maristes-de-clos-du-montet-q60341379",
+      "latitude": 45.69689,
+      "longitude": 4.797919,
+      "name": {
+        "en": "chapelle des Maristes de Clos du Montet",
+        "fr": "chapelle des Maristes de Clos du Montet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Rhône, in France",
+        "fr": "chapelle située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60342280",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-chapelle-du-centre-hospitalier-lyon-sud-secteur-sainte-eugenie-de-saint-genis-laval-q60342280",
+      "latitude": 45.70433,
+      "longitude": 4.79789,
+      "name": {
+        "en": "chapelle du centre hospitalier Lyon Sud, secteur Sainte-Eugénie de Saint-Genis-Laval",
+        "fr": "chapelle du centre hospitalier Lyon Sud, secteur Sainte-Eugénie de Saint-Genis-Laval"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Beauregard is an important witness to the city's history.",
+        "fr": "Château de Beauregard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-genis-laval-chateau-de-beauregard-pa00118034",
+      "latitude": 45.6930390008798,
+      "longitude": 4.78760499102528,
+      "name": {
+        "en": "Château de Beauregard",
+        "fr": "Château de Beauregard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de La Tour is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2795436",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-chateau-de-la-tour-q2795436",
+      "latitude": 45.6936,
+      "longitude": 4.7929,
+      "name": {
+        "en": "château de La Tour",
+        "fr": "château de La Tour"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Longchêne is an important witness to the city's history.",
+        "fr": "château français situé à Saint-Genis-Laval"
+      },
+      "externalIdentity": {
+        "id": "Q2969724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-chateau-de-longchene-q2969724",
+      "latitude": 45.7043,
+      "longitude": 4.79872,
+      "name": {
+        "en": "château de Longchêne",
+        "fr": "château de Longchêne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lumagne is an important witness to the city's history.",
+        "fr": "Château de Lumagne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118035",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-genis-laval-chateau-de-lumagne-pa00118035",
+      "latitude": 45.6865542465581,
+      "longitude": 4.79802364180342,
+      "name": {
+        "en": "Château de Lumagne",
+        "fr": "Château de Lumagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38584322",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-eglise-saint-genes-de-saint-genis-laval-q38584322",
+      "latitude": 45.69519,
+      "longitude": 4.79529,
+      "name": {
+        "en": "église Saint-Genès de Saint-Genis-Laval",
+        "fr": "église Saint-Genès de Saint-Genis-Laval"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Côte-Lorette is an important witness to the city's history.",
+        "fr": "fort en France"
+      },
+      "externalIdentity": {
+        "id": "Q3078164",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-fort-de-cote-lorette-q3078164",
+      "latitude": 45.6985,
+      "longitude": 4.78395,
+      "name": {
+        "en": "fort de Côte-Lorette",
+        "fr": "fort de Côte-Lorette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "school in France",
+        "fr": "observatoire des sciences de l'univers de Lyon et école interne de l'université Lyon 1"
+      },
+      "externalIdentity": {
+        "id": "Q3348374",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-genis-laval-observatoire-de-lyon-q3348374",
+      "latitude": 45.6947,
+      "longitude": 4.7825,
+      "name": {
+        "en": "observatoire de Lyon",
+        "fr": "observatoire de Lyon"
+      }
+    }
+  ]
+}

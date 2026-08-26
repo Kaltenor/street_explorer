@@ -1,0 +1,204 @@
+{
+  "id": "aubagne-v1",
+  "cityId": "aubagne-fr",
+  "cityZoneId": "relation/74272",
+  "cityName": {
+    "en": "Aubagne",
+    "fr": "Aubagne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q959669",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-aubagne-q959669",
+      "latitude": 43.296134,
+      "longitude": 5.566409,
+      "name": {
+        "en": "Aubagne",
+        "fr": "Aubagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Bouches-du-Rhône, in France",
+        "fr": "chapelle située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2957412",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-chapelle-des-penitents-noirs-d-aubagne-q2957412",
+      "latitude": 43.2928,
+      "longitude": 5.5722,
+      "name": {
+        "en": "chapelle des Pénitents noirs d'Aubagne",
+        "fr": "chapelle des Pénitents noirs d'Aubagne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Creissauds is an important witness to the city's history.",
+        "fr": "château français situé à Aubagne"
+      },
+      "externalIdentity": {
+        "id": "Q2971478",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-chateau-des-creissauds-q2971478",
+      "latitude": 43.2786,
+      "longitude": 5.53528,
+      "name": {
+        "en": "château des Creissauds",
+        "fr": "château des Creissauds"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27680485",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-eglise-saint-sauveur-d-aubagne-q27680485",
+      "latitude": 43.29321,
+      "longitude": 5.57053,
+      "name": {
+        "en": "église Saint-Sauveur d'Aubagne",
+        "fr": "église Saint-Sauveur d'Aubagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet en France"
+      },
+      "externalIdentity": {
+        "id": "Q3098391",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-garlaban-q3098391",
+      "latitude": 43.331388888,
+      "longitude": 5.553611111,
+      "name": {
+        "en": "Garlaban",
+        "fr": "Garlaban"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial in Aubagne, France",
+        "fr": "monument aux morts à Aubagne (Bouches-du-Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q22995722",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-monument-aux-morts-d-aubagne-q22995722",
+      "latitude": 43.293809,
+      "longitude": 5.567574,
+      "name": {
+        "en": "monument aux morts d'Aubagne",
+        "fr": "monument aux morts d'Aubagne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument de la Victoire is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument de la Victoire est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA13000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aubagne-monument-aux-morts-de-la-guerre-de-1914-1918-dit-aussi-monument-de-la-victoire-pa13000059",
+      "latitude": 43.2937982958498,
+      "longitude": 5.56756610750039,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument de la Victoire",
+        "fr": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument de la Victoire"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Légion étrangère is a notable work of public art and local memory.",
+        "fr": "monument aux morts à Aubagne (Bouches-du-Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q98635301",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-monument-aux-morts-de-la-legion-etrangere-q98635301",
+      "latitude": 43.289,
+      "longitude": 5.5531,
+      "name": {
+        "en": "monument aux morts de la Légion étrangère",
+        "fr": "monument aux morts de la Légion étrangère"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "military museum in Aubagne, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329911",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-musee-de-la-legion-etrangere-q3329911",
+      "latitude": 43.29055556,
+      "longitude": 5.55722222,
+      "name": {
+        "en": "musée de la Légion étrangère",
+        "fr": "musée de la Légion étrangère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Bouches-du-Rhône department, France",
+        "fr": "hôtel de ville d'Aubagne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q115942329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubagne-hotel-de-ville-d-aubagne-q115942329",
+      "latitude": 43.29235,
+      "longitude": 5.56949,
+      "name": {
+        "en": "hôtel de ville d'Aubagne",
+        "fr": "hôtel de ville d'Aubagne"
+      }
+    }
+  ]
+}

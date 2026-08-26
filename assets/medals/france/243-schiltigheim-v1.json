@@ -1,0 +1,204 @@
+{
+  "id": "schiltigheim-v1",
+  "cityId": "schiltigheim-fr",
+  "cityZoneId": "relation/69730",
+  "cityName": {
+    "en": "Schiltigheim",
+    "fr": "Schiltigheim"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Bas-Rhin, in France",
+        "fr": "cimetière situé dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110330996",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-ancien-cimetiere-de-schiltigheim-eglise-catholique-de-la-sainte-famille-q110330996",
+      "latitude": 48.608,
+      "longitude": 7.7451,
+      "name": {
+        "en": "Ancien cimetière de Schiltigheim (église catholique de la Sainte-Famille)",
+        "fr": "Ancien cimetière de Schiltigheim (église catholique de la Sainte-Famille)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Old town hall of Schiltigheim",
+        "fr": "Ancien mairie de Schiltigheim est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q136528813",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-ancien-mairie-de-schiltigheim-q136528813",
+      "latitude": 48.60424,
+      "longitude": 7.75069,
+      "name": {
+        "en": "Ancien mairie de Schiltigheim",
+        "fr": "Ancien mairie de Schiltigheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Schiltigheim, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095991",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-bischheim-q3095991",
+      "latitude": 48.6112,
+      "longitude": 7.74116,
+      "name": {
+        "en": "Bischheim",
+        "fr": "Bischheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Bas-Rhin, in France",
+        "fr": "cimetière situé dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2972478",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-cimetiere-sainte-helene-de-strasbourg-q2972478",
+      "latitude": 48.5987,
+      "longitude": 7.74129,
+      "name": {
+        "en": "cimetière Sainte-Hélène de Strasbourg",
+        "fr": "cimetière Sainte-Hélène de Strasbourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bas-Rhin, in France",
+        "fr": "église située dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38369390",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-eglise-de-jesus-christ-des-saints-des-derniers-jours-de-schiltigheim-q38369390",
+      "latitude": 48.61106,
+      "longitude": 7.73406,
+      "name": {
+        "en": "église de Jésus-Christ-des-Saints-des-Derniers-Jours de Schiltigheim",
+        "fr": "église de Jésus-Christ-des-Saints-des-Derniers-Jours de Schiltigheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église protestante is a distinctive architectural landmark in the city.",
+        "fr": "Église protestante est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125226",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "schiltigheim-eglise-protestante-pa00125226",
+      "latitude": 48.6060366796521,
+      "longitude": 7.75131579397998,
+      "name": {
+        "en": "Église protestante",
+        "fr": "Église protestante"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Schiltigheim, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096614",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-gare-de-hausbergen-q3096614",
+      "latitude": 48.6191,
+      "longitude": 7.7235,
+      "name": {
+        "en": "gare de Hausbergen",
+        "fr": "gare de Hausbergen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Bas-Rhin, in France",
+        "fr": "cimetière situé dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110330998",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-nouveau-cimetiere-de-schiltigheim-q110330998",
+      "latitude": 48.6093,
+      "longitude": 7.7381,
+      "name": {
+        "en": "nouveau cimetière de Schiltigheim",
+        "fr": "nouveau cimetière de Schiltigheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "100 kW thermal Argonaut-class reactor built at the University Louis-Pasteur near Strasbourg. It went critical on 22 November 1966 and ended operations on 31 May 1995.",
+        "fr": "Réacteur universitaire de Strasbourg est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q16040282",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-reacteur-universitaire-de-strasbourg-q16040282",
+      "latitude": 48.6055,
+      "longitude": 7.71722,
+      "name": {
+        "en": "Réacteur universitaire de Strasbourg",
+        "fr": "Réacteur universitaire de Strasbourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Schiltigheim, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q17628898",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "schiltigheim-schiltigheim-q17628898",
+      "latitude": 48.6074,
+      "longitude": 7.74031,
+      "name": {
+        "en": "Schiltigheim",
+        "fr": "Schiltigheim"
+      }
+    }
+  ]
+}

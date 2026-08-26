@@ -1,0 +1,204 @@
+{
+  "id": "cachan-v1",
+  "cityId": "cachan-fr",
+  "cityZoneId": "relation/48862",
+  "cityName": {
+    "en": "Cachan",
+    "fr": "Cachan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "group of aqueducts in Paris, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q2859246",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-aqueducs-d-arcueil-et-de-cachan-q2859246",
+      "latitude": 48.799316,
+      "longitude": 2.332857,
+      "name": {
+        "en": "aqueducs d'Arcueil et de Cachan",
+        "fr": "aqueducs d'Arcueil et de Cachan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Cachan, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1958487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-bagneux-q1958487",
+      "latitude": 48.793056,
+      "longitude": 2.321111,
+      "name": {
+        "en": "Bagneux",
+        "fr": "Bagneux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31143530",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-eglise-saint-jean-l-evangeliste-de-cachan-q31143530",
+      "latitude": 48.79196,
+      "longitude": 2.322338,
+      "name": {
+        "en": "église Saint-Jean l'Évangéliste de Cachan",
+        "fr": "église Saint-Jean l'Évangéliste de Cachan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819649",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-eglise-sainte-germaine-de-cachan-q29819649",
+      "latitude": 48.792039,
+      "longitude": 2.334447,
+      "name": {
+        "en": "église Sainte-Germaine de Cachan",
+        "fr": "église Sainte-Germaine de Cachan"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine, rue Gallieni is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à Cachan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88692669",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-fontaine-rue-gallieni-q88692669",
+      "latitude": 48.79501,
+      "longitude": 2.33339,
+      "name": {
+        "en": "fontaine, rue Gallieni",
+        "fr": "fontaine, rue Gallieni"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136048936",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-monument-aux-morts-de-cachan-q136048936",
+      "latitude": 48.7942976,
+      "longitude": 2.3333959,
+      "name": {
+        "en": "monument aux morts de Cachan",
+        "fr": "monument aux morts de Cachan"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Cachan, France",
+        "fr": "place de Cachan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111917176",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-place-chateaubriand-q111917176",
+      "latitude": 48.791052137,
+      "longitude": 2.324511287,
+      "name": {
+        "en": "place Chateaubriand",
+        "fr": "place Chateaubriand"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa in Cachan, France",
+        "fr": "villa de Cachan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111917275",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cachan-villa-de-chateaubriand-q111917275",
+      "latitude": 48.798946033,
+      "longitude": 2.325188366,
+      "name": {
+        "en": "villa de Chateaubriand",
+        "fr": "villa de Chateaubriand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA94000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cachan-hotel-de-ville-pa94000015",
+      "latitude": 48.7944211396892,
+      "longitude": 2.33395559151173,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Renaissance (ancien Fief des Arcs) is a distinctive architectural landmark in the city.",
+        "fr": "Maison Renaissance (ancien Fief des Arcs) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079856",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cachan-maison-renaissance-ancien-fief-des-arcs-pa00079856",
+      "latitude": 48.7993862171877,
+      "longitude": 2.33216372567369,
+      "name": {
+        "en": "Maison Renaissance (ancien Fief des Arcs)",
+        "fr": "Maison Renaissance (ancien Fief des Arcs)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "villepinte-v1",
+  "cityId": "villepinte-fr",
+  "cityZoneId": "relation/162261",
+  "cityName": {
+    "en": "Villepinte",
+    "fr": "Villepinte"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20155859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-eglise-notre-dame-de-l-assomption-de-villepinte-q20155859",
+      "latitude": 48.96364,
+      "longitude": 2.53526,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Villepinte",
+        "fr": "église Notre-Dame-de-l'Assomption de Villepinte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20182331",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-eglise-saint-vincent-de-paul-q20182331",
+      "latitude": 48.94667,
+      "longitude": 2.56086,
+      "name": {
+        "en": "église Saint-Vincent-de-Paul",
+        "fr": "église Saint-Vincent-de-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Villepinte, France",
+        "fr": "hôtel de ville situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96186505",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-hotel-de-ville-de-villepinte-q96186505",
+      "latitude": 48.96375,
+      "longitude": 2.53479,
+      "name": {
+        "en": "hôtel de ville de Villepinte",
+        "fr": "hôtel de ville de Villepinte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villepinte, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2048659",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-le-parc-des-expositions-q2048659",
+      "latitude": 48.973611,
+      "longitude": 2.514444,
+      "name": {
+        "en": "Le Parc des Expositions",
+        "fr": "Le Parc des Expositions"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136082373",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-monument-aux-morts-de-villepinte-q136082373",
+      "latitude": 48.96645,
+      "longitude": 2.53908,
+      "name": {
+        "en": "monument aux morts de Villepinte",
+        "fr": "monument aux morts de Villepinte"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des expositions de Paris-Le Bourget is one of the city's notable green or natural landmarks.",
+        "fr": "parc des expositions de Paris-Le Bourget compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q46145258",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-parc-des-expositions-de-paris-le-bourget-q46145258",
+      "latitude": 48.944054,
+      "longitude": 2.429993,
+      "name": {
+        "en": "parc des expositions de Paris-Le Bourget",
+        "fr": "parc des expositions de Paris-Le Bourget"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "convention centre near Paris in France",
+        "fr": "ensemble de bâtiments destiné à accueillir des salons d’exposition, à Villepinte au nord de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q3364312",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-parc-des-expositions-de-paris-nord-villepinte-q3364312",
+      "latitude": 48.97111111,
+      "longitude": 2.5175,
+      "name": {
+        "en": "Parc des expositions de Paris-Nord Villepinte",
+        "fr": "Parc des expositions de Paris-Nord Villepinte"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc forestier de la Poudrerie is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q97367948",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-parc-forestier-de-la-poudrerie-q97367948",
+      "latitude": 48.938204,
+      "longitude": 2.557583,
+      "name": {
+        "en": "parc forestier de la Poudrerie",
+        "fr": "parc forestier de la Poudrerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villepinte, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2453871",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-le-vert-galant-q2453871",
+      "latitude": 48.944167,
+      "longitude": 2.566944,
+      "name": {
+        "en": "Le Vert-Galant",
+        "fr": "Le Vert-Galant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villepinte, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2619128",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villepinte-villepinte-q2619128",
+      "latitude": 48.962778,
+      "longitude": 2.512222,
+      "name": {
+        "en": "Villepinte",
+        "fr": "Villepinte"
+      }
+    }
+  ]
+}

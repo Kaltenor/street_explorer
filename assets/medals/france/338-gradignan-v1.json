@@ -1,0 +1,204 @@
+{
+  "id": "gradignan-v1",
+  "cityId": "gradignan-fr",
+  "cityZoneId": "relation/105268",
+  "cityName": {
+    "en": "Gradignan",
+    "fr": "Gradignan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Gradignan, France",
+        "fr": "château français situé à Gradignan"
+      },
+      "externalIdentity": {
+        "id": "Q15940548",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-chateau-de-laurenzane-q15940548",
+      "latitude": 44.7724547,
+      "longitude": -0.6083188,
+      "name": {
+        "en": "château de Laurenzane",
+        "fr": "château de Laurenzane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Tauzia is an important witness to the city's history.",
+        "fr": "Château de Tauzia est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083563",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gradignan-chateau-de-tauzia-pa00083563",
+      "latitude": 44.7612682303105,
+      "longitude": -0.61667531160736,
+      "name": {
+        "en": "Château de Tauzia",
+        "fr": "Château de Tauzia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "campus of University of Bordeaux",
+        "fr": "campus universitaire français"
+      },
+      "externalIdentity": {
+        "id": "Q13348",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-domaine-universitaire-de-talence-pessac-gradignan-q13348",
+      "latitude": 44.7985,
+      "longitude": -0.615385,
+      "name": {
+        "en": "Domaine universitaire de Talence Pessac Gradignan",
+        "fr": "Domaine universitaire de Talence Pessac Gradignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41764415",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-eglise-saint-pierre-de-gradignan-q41764415",
+      "latitude": 44.77394,
+      "longitude": -0.61496,
+      "name": {
+        "en": "église Saint-Pierre de Gradignan",
+        "fr": "église Saint-Pierre de Gradignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Institut national de jeunes sourds de Bordeaux-Gradignan is a distinctive architectural landmark in the city.",
+        "fr": "école d'enseignement spécialisé"
+      },
+      "externalIdentity": {
+        "id": "Q3152389",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-institut-national-de-jeunes-sourds-de-bordeaux-gradignan-q3152389",
+      "latitude": 44.7868,
+      "longitude": -0.608255,
+      "name": {
+        "en": "Institut national de jeunes sourds de Bordeaux-Gradignan",
+        "fr": "Institut national de jeunes sourds de Bordeaux-Gradignan"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Gradignan, France",
+        "fr": "jardin de Pierral compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3162461",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-jardin-de-pierral-q3162461",
+      "latitude": 44.7857,
+      "longitude": -0.609449,
+      "name": {
+        "en": "jardin de Pierral",
+        "fr": "jardin de Pierral"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "motte Saint-Albe is an important witness to the city's history.",
+        "fr": "château fort français situé à Gradignan"
+      },
+      "externalIdentity": {
+        "id": "Q3325349",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-motte-saint-albe-q3325349",
+      "latitude": 44.7691,
+      "longitude": -0.6277,
+      "name": {
+        "en": "motte Saint-Albe",
+        "fr": "motte Saint-Albe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "priory located in Gironde, in France",
+        "fr": "prieuré situé en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3402973",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-prieure-de-cayac-q3402973",
+      "latitude": 44.765,
+      "longitude": -0.619444,
+      "name": {
+        "en": "prieuré de Cayac",
+        "fr": "prieuré de Cayac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "semaphore tower in Gradignan, France",
+        "fr": "tour télégraphe de Gradignan, France"
+      },
+      "externalIdentity": {
+        "id": "Q19850662",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gradignan-tour-chappe-de-laburthe-q19850662",
+      "latitude": 44.785,
+      "longitude": -0.6075,
+      "name": {
+        "en": "tour Chappe de Laburthe",
+        "fr": "tour Chappe de Laburthe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du télégraphe Chappe is an important witness to the city's history.",
+        "fr": "Tour du télégraphe Chappe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000160",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gradignan-tour-du-telegraphe-chappe-pa33000160",
+      "latitude": 44.784943699431004,
+      "longitude": -0.60752793475693,
+      "name": {
+        "en": "Tour du télégraphe Chappe",
+        "fr": "Tour du télégraphe Chappe"
+      }
+    }
+  ]
+}

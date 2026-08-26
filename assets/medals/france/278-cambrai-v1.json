@@ -1,0 +1,204 @@
+{
+  "id": "cambrai-v1",
+  "cityId": "cambrai-fr",
+  "cityZoneId": "relation/55938",
+  "cityName": {
+    "en": "Cambrai",
+    "fr": "Cambrai"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château de Selles is an important witness to the city's history.",
+        "fr": "Ancien château de Selles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107398",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-ancien-chateau-de-selles-pa00107398",
+      "latitude": 50.1814859405758,
+      "longitude": 3.23078635853423,
+      "name": {
+        "en": "Ancien château de Selles",
+        "fr": "Ancien château de Selles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôpital Saint-Julien, théâtre puis école de musique is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôpital Saint-Julien, théâtre puis école de musique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107403",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-ancien-hopital-saint-julien-theatre-puis-ecole-de-musique-pa00107403",
+      "latitude": 50.1751406562406,
+      "longitude": 3.2288666826232304,
+      "name": {
+        "en": "Ancien hôpital Saint-Julien, théâtre puis école de musique",
+        "fr": "Ancien hôpital Saint-Julien, théâtre puis école de musique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame de Grâce is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame de Grâce est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107395",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-cathedrale-notre-dame-de-grace-pa00107395",
+      "latitude": 50.1721312728182,
+      "longitude": 3.23350312790059,
+      "name": {
+        "en": "Cathédrale Notre-Dame de Grâce",
+        "fr": "Cathédrale Notre-Dame de Grâce"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107399",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-citadelle-pa00107399",
+      "latitude": 50.1720432019427,
+      "longitude": 3.24077547657276,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Géry is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Géry est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107402",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-eglise-saint-gery-pa00107402",
+      "latitude": 50.1766334900307,
+      "longitude": 3.23103991706302,
+      "name": {
+        "en": "Église Saint-Géry",
+        "fr": "Église Saint-Géry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée diocésain d'art sacré is one of the city's notable cultural landmarks.",
+        "fr": "musée diocésain d'art sacré compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0616",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cambrai-musee-diocesain-d-art-sacre-m0616",
+      "latitude": 50.173179880939635,
+      "longitude": 3.231397169508298,
+      "name": {
+        "en": "musée diocésain d'art sacré",
+        "fr": "musée diocésain d'art sacré"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0615",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cambrai-musee-municipal-m0615",
+      "latitude": 50.17347,
+      "longitude": 3.229635,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107411",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-palais-episcopal-pa00107411",
+      "latitude": 50.1764099429692,
+      "longitude": 3.2291973826333,
+      "name": {
+        "en": "Palais épiscopal",
+        "fr": "Palais épiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Paris is an important witness to the city's history.",
+        "fr": "Porte de Paris est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107413",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-porte-de-paris-pa00107413",
+      "latitude": 50.1711393806898,
+      "longitude": 3.2317011130290703,
+      "name": {
+        "en": "Porte de Paris",
+        "fr": "Porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Notre-Dame is an important witness to the city's history.",
+        "fr": "Porte Notre-Dame est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107412",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cambrai-porte-notre-dame-pa00107412",
+      "latitude": 50.1778956319412,
+      "longitude": 3.2365380901719902,
+      "name": {
+        "en": "Porte Notre-Dame",
+        "fr": "Porte Notre-Dame"
+      }
+    }
+  ]
+}

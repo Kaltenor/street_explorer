@@ -1,0 +1,204 @@
+{
+  "id": "saint-mande-v1",
+  "cityId": "saint-mande-fr",
+  "cityZoneId": "relation/108318",
+  "cityName": {
+    "en": "Saint-Mandé",
+    "fr": "Saint-Mandé"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "art",
+      "description": {
+        "en": "statue in Saint-Mandé, France",
+        "fr": "statue monument historique (PM94000156) située à Saint-Mandé (Val-de-Marne, France)"
+      },
+      "externalIdentity": {
+        "id": "Q29223171",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-armand-carrel-en-pied-q29223171",
+      "latitude": 48.84862,
+      "longitude": 2.41865,
+      "name": {
+        "en": "Armand Carrel en pied",
+        "fr": "Armand Carrel en pied"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre sportif Alain-Mimoun is a distinctive architectural landmark in the city.",
+        "fr": "installation sportive à Paris"
+      },
+      "externalIdentity": {
+        "id": "Q3496053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-centre-sportif-alain-mimoun-q3496053",
+      "latitude": 48.83963,
+      "longitude": 2.41173,
+      "name": {
+        "en": "centre sportif Alain-Mimoun",
+        "fr": "centre sportif Alain-Mimoun"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetère à Saint-Mandé, France"
+      },
+      "externalIdentity": {
+        "id": "Q72163178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-cimetiere-nord-de-saint-mande-q72163178",
+      "latitude": 48.8489,
+      "longitude": 2.4184,
+      "name": {
+        "en": "cimetière Nord de Saint-Mandé",
+        "fr": "cimetière Nord de Saint-Mandé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Saint-Mandé, France",
+        "fr": "salle de cinéma située à Saint-Mandé, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88210443",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-cinema-69-avenue-du-general-de-gaulle-q88210443",
+      "latitude": 48.83836,
+      "longitude": 2.41785,
+      "name": {
+        "en": "cinéma, 69 avenue du Général de Gaulle",
+        "fr": "cinéma, 69 avenue du Général de Gaulle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église à Saint-Mandé (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q20882469",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-eglise-notre-dame-de-saint-mande-q20882469",
+      "latitude": 48.839545,
+      "longitude": 2.417175,
+      "name": {
+        "en": "église Notre-Dame de Saint-Mandé",
+        "fr": "église Notre-Dame de Saint-Mandé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "military teaching hospital near Paris, France",
+        "fr": "hôpital militaire situé à Saint-Mandé, France"
+      },
+      "externalIdentity": {
+        "id": "Q3145267",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-hopital-d-instruction-des-armees-begin-q3145267",
+      "latitude": 48.8436,
+      "longitude": 2.42656,
+      "name": {
+        "en": "hôpital d'instruction des armées Bégin",
+        "fr": "hôpital d'instruction des armées Bégin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Guerre de 1870 de Saint-Mandé is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé dans le cimetière nord de Saint-Mandé, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88208277",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-monument-aux-morts-de-la-guerre-de-1870-de-saint-mande-q88208277",
+      "latitude": 48.8485867,
+      "longitude": 2.4184278,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1870 de Saint-Mandé",
+        "fr": "monument aux morts de la Guerre de 1870 de Saint-Mandé"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts situé à Saint-Mandé, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88210455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-monument-aux-morts-de-la-guerre-de-1914-1918-q88210455",
+      "latitude": 48.843284,
+      "longitude": 2.418133,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1914-1918",
+        "fr": "monument aux morts de la Guerre de 1914-1918"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Saint-Mandé, France",
+        "fr": "édifice à Saint-Mandé, France"
+      },
+      "externalIdentity": {
+        "id": "Q61914031",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-hotel-de-ville-de-saint-mande-q61914031",
+      "latitude": 48.843238,
+      "longitude": 2.419133,
+      "name": {
+        "en": "hôtel de ville de Saint-Mandé",
+        "fr": "hôtel de ville de Saint-Mandé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Mandé, France",
+        "fr": "ancienne gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q88211333",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-mande-saint-mande-q88211333",
+      "latitude": 48.84398,
+      "longitude": 2.4196,
+      "name": {
+        "en": "Saint-Mandé",
+        "fr": "Saint-Mandé"
+      }
+    }
+  ]
+}

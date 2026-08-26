@@ -1,0 +1,204 @@
+{
+  "id": "perigueux-v1",
+  "cityId": "perigueux-fr",
+  "cityZoneId": "relation/76351",
+  "cityName": {
+    "en": "Périgueux",
+    "fr": "Périgueux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Amphithéâtre is one of the city's notable cultural landmarks.",
+        "fr": "Amphithéâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082724",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-amphitheatre-pa00082724",
+      "latitude": 45.1827624634886,
+      "longitude": 0.713276890377827,
+      "name": {
+        "en": "Amphithéâtre",
+        "fr": "Amphithéâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Front is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Front est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082725",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-cathedrale-saint-front-pa00082725",
+      "latitude": 45.1836359706256,
+      "longitude": 0.7227889089407,
+      "name": {
+        "en": "Cathédrale Saint-Front",
+        "fr": "Cathédrale Saint-Front"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Barrière is an important witness to the city's history.",
+        "fr": "Château Barrière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082726",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-chateau-barriere-pa00082726",
+      "latitude": 45.1813378451076,
+      "longitude": 0.712305257446871,
+      "name": {
+        "en": "Château Barrière",
+        "fr": "Château Barrière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Etienne-de-la-Cité is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Etienne-de-la-Cité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082729",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-eglise-saint-etienne-de-la-cite-pa00082729",
+      "latitude": 45.181742652554306,
+      "longitude": 0.714760137186049,
+      "name": {
+        "en": "Église Saint-Etienne-de-la-Cité",
+        "fr": "Église Saint-Etienne-de-la-Cité"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'archéologie du Périgord is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'archéologie du Périgord compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0057",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perigueux-musee-d-art-et-d-archeologie-du-perigord-m0057",
+      "latitude": 45.186039,
+      "longitude": 0.72395,
+      "name": {
+        "en": "musée d'art et d'archéologie du Périgord",
+        "fr": "musée d'art et d'archéologie du Périgord"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée gallo-romain de Vesunna is one of the city's notable cultural landmarks.",
+        "fr": "musée gallo-romain de Vesunna compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1188",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perigueux-musee-gallo-romain-de-vesunna-m1188",
+      "latitude": 45.179999,
+      "longitude": 0.71269,
+      "name": {
+        "en": "musée gallo-romain de Vesunna",
+        "fr": "musée gallo-romain de Vesunna"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée militaire - souvenirs du Périgord is one of the city's notable cultural landmarks.",
+        "fr": "musée militaire - souvenirs du Périgord compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0056",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perigueux-musee-militaire-souvenirs-du-perigord-m0056",
+      "latitude": 45.183285,
+      "longitude": 0.720943,
+      "name": {
+        "en": "musée militaire - souvenirs du Périgord",
+        "fr": "musée militaire - souvenirs du Périgord"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Vésone is an important witness to the city's history.",
+        "fr": "Tour de Vésone est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082762",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-tour-de-vesone-pa00082762",
+      "latitude": 45.1794458662123,
+      "longitude": 0.714283507219232,
+      "name": {
+        "en": "Tour de Vésone",
+        "fr": "Tour de Vésone"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Mataguerre is an important witness to the city's history.",
+        "fr": "Tour Mataguerre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082761",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-tour-mataguerre-pa00082761",
+      "latitude": 45.1827258730424,
+      "longitude": 0.719182337957665,
+      "name": {
+        "en": "Tour Mataguerre",
+        "fr": "Tour Mataguerre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de la citadelle gallo-romaine de Vésone is an important witness to the city's history.",
+        "fr": "Vestiges de la citadelle gallo-romaine de Vésone est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082727",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perigueux-vestiges-de-la-citadelle-gallo-romaine-de-vesone-pa00082727",
+      "latitude": 45.180529402045124,
+      "longitude": 0.7146053979121613,
+      "name": {
+        "en": "Vestiges de la citadelle gallo-romaine de Vésone",
+        "fr": "Vestiges de la citadelle gallo-romaine de Vésone"
+      }
+    }
+  ]
+}

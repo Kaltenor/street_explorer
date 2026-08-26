@@ -63,8 +63,9 @@ const currentContext = [
   read("docs/ROADMAP.md")
 ].join("\n");
 for (const claim of [
-  "875",
-  "top 100",
+  "6,082",
+  "Thonon-les-Bains",
+  "500 largest",
   "downloadable",
   "Netherlands",
   "checksum",
@@ -94,7 +95,8 @@ console.log("PASS development-build context covers current native and physical-d
 const medalHistory = read("docs/MEDAL_SYSTEM_IMPLEMENTATION_PLAN.md");
 assert(medalHistory.includes("HISTORICAL DECISION RECORD"));
 assert(medalHistory.includes(`Current shipped medal contract (v${version})`));
-assert(medalHistory.includes("875 medals"));
+assert(medalHistory.includes("6,082 medals"));
+assert(medalHistory.includes("Thonon-les-Bains"));
 assert(medalHistory.includes("downloadable country packs"));
 console.log("PASS the legacy medal plan is clearly historical and points to the shipped contract");
 
@@ -114,6 +116,8 @@ for (const claim of [
 ]) {
   assert(countryPacks.includes(claim), `Country-pack context is missing: ${claim}`);
 }
+assert(countryPacks.includes("medal-storage-report.json"));
+assert(countryPacks.includes("3,682,304 B"));
 console.log("PASS country-pack architecture, pilot, budget, workflow, and offline contract are documented");
 
 const agentInstructions = read("AGENTS.md");

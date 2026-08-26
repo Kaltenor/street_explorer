@@ -1,0 +1,204 @@
+{
+  "id": "brive-la-gaillarde-v1",
+  "cityId": "brive-la-gaillarde-fr",
+  "cityZoneId": "relation/120557",
+  "cityName": {
+    "en": "Brive-la-Gaillarde",
+    "fr": "Brive-la-Gaillarde"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château d'eau is an important witness to the city's history.",
+        "fr": "Ancien château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-ancien-chateau-d-eau-pa00099689",
+      "latitude": 45.1618592803484,
+      "longitude": 1.53384881586597,
+      "name": {
+        "en": "Ancien château d'eau",
+        "fr": "Ancien château d'eau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Collège des Doctrinaires ou ancien collège de jeunes filles is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Collège des Doctrinaires ou ancien collège de jeunes filles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099690",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-ancien-college-des-doctrinaires-ou-ancien-college-de-jeunes-filles-pa00099690",
+      "latitude": 45.1596187873591,
+      "longitude": 1.5339825053291,
+      "name": {
+        "en": "Ancien Collège des Doctrinaires ou ancien collège de jeunes filles",
+        "fr": "Ancien Collège des Doctrinaires ou ancien collège de jeunes filles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien musée Ernest Rupin, actuellement Archives municipales is one of the city's notable cultural landmarks.",
+        "fr": "Ancien musée Ernest Rupin, actuellement Archives municipales compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099701",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-ancien-musee-ernest-rupin-actuellement-archives-municipales-pa00099701",
+      "latitude": 45.1594077096196,
+      "longitude": 1.53507911913895,
+      "name": {
+        "en": "Ancien musée Ernest Rupin, actuellement Archives municipales",
+        "fr": "Ancien musée Ernest Rupin, actuellement Archives municipales"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château et parc de Puymège is an important witness to the city's history.",
+        "fr": "Château et parc de Puymège est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099966",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-chateau-et-parc-de-puymege-pa00099966",
+      "latitude": 45.1204007396006,
+      "longitude": 1.47005084513781,
+      "name": {
+        "en": "Château et parc de Puymège",
+        "fr": "Château et parc de Puymège"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099691",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-eglise-saint-martin-pa00099691",
+      "latitude": 45.158773319727,
+      "longitude": 1.53317354007137,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Enval is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Enval est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099692",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-hotel-d-enval-pa00099692",
+      "latitude": 45.1586965659452,
+      "longitude": 1.53496040978189,
+      "name": {
+        "en": "Hôtel d'Enval",
+        "fr": "Hôtel d'Enval"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Jumilhac is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Jumilhac est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA19000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-hotel-de-jumilhac-pa19000017",
+      "latitude": 45.15912009579921,
+      "longitude": 1.5322874239445101,
+      "name": {
+        "en": "Hôtel de Jumilhac",
+        "fr": "Hôtel de Jumilhac"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "hôtel Labenche devenu séminaire (aujourd'hui, musée d'art et d'histoire) is one of the city's notable cultural landmarks.",
+        "fr": "hôtel Labenche devenu séminaire (aujourd'hui, musée d'art et d'histoire) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099702",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-hotel-labenche-devenu-seminaire-aujourd-hui-musee-d-art-et-d-histoire-pa00099702",
+      "latitude": 45.1583075284874,
+      "longitude": 1.53532219310628,
+      "name": {
+        "en": "hôtel Labenche devenu séminaire (aujourd'hui, musée d'art et d'histoire)",
+        "fr": "hôtel Labenche devenu séminaire (aujourd'hui, musée d'art et d'histoire)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison à tourelle ou tour des Echevins is an important witness to the city's history.",
+        "fr": "Maison à tourelle ou tour des Echevins est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099694",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-maison-a-tourelle-ou-tour-des-echevins-pa00099694",
+      "latitude": 45.15841503906,
+      "longitude": 1.53297449448542,
+      "name": {
+        "en": "Maison à tourelle ou tour des Echevins",
+        "fr": "Maison à tourelle ou tour des Echevins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Labenche is one of the city's notable cultural landmarks.",
+        "fr": "musée Labenche compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0499",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "brive-la-gaillarde-musee-labenche-m0499",
+      "latitude": 45.158512,
+      "longitude": 1.535911,
+      "name": {
+        "en": "musée Labenche",
+        "fr": "musée Labenche"
+      }
+    }
+  ]
+}

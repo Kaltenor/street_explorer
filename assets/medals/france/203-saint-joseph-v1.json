@@ -1,0 +1,204 @@
+{
+  "id": "saint-joseph-v1",
+  "cityId": "saint-joseph-fr",
+  "cityZoneId": "relation/1282272",
+  "cityName": {
+    "en": "Saint-Joseph",
+    "fr": "Saint-Joseph"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cave in France",
+        "fr": "Caverne des Lataniers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2943292",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-caverne-des-lataniers-q2943292",
+      "latitude": -21.2057,
+      "longitude": 55.6514,
+      "name": {
+        "en": "Caverne des Lataniers",
+        "fr": "Caverne des Lataniers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in La Réunion, in France",
+        "fr": "chapelle située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60357662",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-chapelle-notre-dame-de-pontmain-de-jean-petit-q60357662",
+      "latitude": -21.343262,
+      "longitude": 55.631093,
+      "name": {
+        "en": "chapelle Notre-Dame-de-Pontmain de Jean-Petit",
+        "fr": "chapelle Notre-Dame-de-Pontmain de Jean-Petit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38513011",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-eglise-de-la-sainte-famille-de-butor-q38513011",
+      "latitude": -21.3814,
+      "longitude": 55.6135,
+      "name": {
+        "en": "église de la Sainte-Famille de Butor",
+        "fr": "église de la Sainte-Famille de Butor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38423607",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-eglise-saint-athanase-de-vincendo-q38423607",
+      "latitude": -21.373578,
+      "longitude": 55.667592,
+      "name": {
+        "en": "église Saint-Athanase de Vincendo",
+        "fr": "église Saint-Athanase de Vincendo"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "river in Réunion",
+        "fr": "cours d'eau de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3433902",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-riviere-des-remparts-q3433902",
+      "latitude": -21.385555555,
+      "longitude": 55.618611111,
+      "name": {
+        "en": "rivière des Remparts",
+        "fr": "rivière des Remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet montagneux de l'île de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3324192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-morne-langevin-q3324192",
+      "latitude": -21.2578,
+      "longitude": 55.6564,
+      "name": {
+        "en": "Morne Langevin",
+        "fr": "Morne Langevin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet à La Réunion, dans le massif du Piton de la Fournaise"
+      },
+      "externalIdentity": {
+        "id": "Q3339228",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-nez-de-b-uf-q3339228",
+      "latitude": -21.2056,
+      "longitude": 55.6206,
+      "name": {
+        "en": "Nez de Bœuf",
+        "fr": "Nez de Bœuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Chisny est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389362",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-piton-chisny-q3389362",
+      "latitude": -21.239,
+      "longitude": 55.67,
+      "name": {
+        "en": "piton Chisny",
+        "fr": "piton Chisny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Saint-Joseph, Réunion, France",
+        "fr": "Town hall of Saint-Joseph (Réunion) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q140985907",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-town-hall-of-saint-joseph-reunion-q140985907",
+      "latitude": -21.37854,
+      "longitude": 55.61918,
+      "name": {
+        "en": "Town hall of Saint-Joseph (Réunion)",
+        "fr": "Town hall of Saint-Joseph (Réunion)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q614830",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-joseph-vincendo-q614830",
+      "latitude": -21.37138889,
+      "longitude": 55.67055556,
+      "name": {
+        "en": "Vincendo",
+        "fr": "Vincendo"
+      }
+    }
+  ]
+}

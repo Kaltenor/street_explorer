@@ -1,0 +1,204 @@
+{
+  "id": "fresnes-v1",
+  "cityId": "fresnes-fr",
+  "cityZoneId": "relation/103395",
+  "cityName": {
+    "en": "Fresnes",
+    "fr": "Fresnes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre horticole de la Ville de Paris is a distinctive architectural landmark in the city.",
+        "fr": "centre horticole situé dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2945663",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-centre-horticole-de-la-ville-de-paris-q2945663",
+      "latitude": 48.7486,
+      "longitude": 2.3389,
+      "name": {
+        "en": "centre horticole de la Ville de Paris",
+        "fr": "centre horticole de la Ville de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Berny is an important witness to the city's history.",
+        "fr": "Château de Berny est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079876",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fresnes-chateau-de-berny-pa00079876",
+      "latitude": 48.75934211467651,
+      "longitude": 2.3130206353345,
+      "name": {
+        "en": "Château de Berny",
+        "fr": "Château de Berny"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "écomusée is one of the city's notable cultural landmarks.",
+        "fr": "écomusée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0426",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "fresnes-ecomusee-m0426",
+      "latitude": 48.75525,
+      "longitude": 2.326389,
+      "name": {
+        "en": "écomusée",
+        "fr": "écomusée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819730",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-eglise-notre-dame-de-la-merci-de-fresnes-q29819730",
+      "latitude": 48.75507,
+      "longitude": 2.32345,
+      "name": {
+        "en": "église Notre-Dame-de-la-Merci de Fresnes",
+        "fr": "église Notre-Dame-de-la-Merci de Fresnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38516608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-eglise-saint-eloi-de-fresnes-q38516608",
+      "latitude": 48.75458,
+      "longitude": 2.32227,
+      "name": {
+        "en": "église Saint-Éloi de Fresnes",
+        "fr": "église Saint-Éloi de Fresnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q22095558",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-eglise-saint-paul-de-la-vallee-aux-renards-q22095558",
+      "latitude": 48.766231,
+      "longitude": 2.324203,
+      "name": {
+        "en": "église Saint-Paul de La-Vallée-aux-Renards",
+        "fr": "église Saint-Paul de La-Vallée-aux-Renards"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "cave in France",
+        "fr": "grotte dans le Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q96483605",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-grotte-de-jardin-q96483605",
+      "latitude": 48.75201,
+      "longitude": 2.31511,
+      "name": {
+        "en": "grotte de Jardin",
+        "fr": "grotte de Jardin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136055048",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-monument-aux-morts-de-fresnes-q136055048",
+      "latitude": 48.75763,
+      "longitude": 2.3319,
+      "name": {
+        "en": "monument aux morts de Fresnes",
+        "fr": "monument aux morts de Fresnes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park of Fresnes, France",
+        "fr": "parc de Fresnes, France"
+      },
+      "externalIdentity": {
+        "id": "Q106287009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-parc-des-aulnes-q106287009",
+      "latitude": 48.75018,
+      "longitude": 2.319094,
+      "name": {
+        "en": "parc des Aulnes",
+        "fr": "parc des Aulnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Fresnes, Val-de-Marne, France",
+        "fr": "mairie de Fresnes, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83488752",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fresnes-hotel-de-ville-de-fresnes-q83488752",
+      "latitude": 48.7551,
+      "longitude": 2.322,
+      "name": {
+        "en": "hôtel de ville de Fresnes",
+        "fr": "hôtel de ville de Fresnes"
+      }
+    }
+  ]
+}

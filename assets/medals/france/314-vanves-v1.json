@@ -1,0 +1,204 @@
+{
+  "id": "vanves-v1",
+  "cityId": "vanves-fr",
+  "cityZoneId": "relation/59321",
+  "cityName": {
+    "en": "Vanves",
+    "fr": "Vanves"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q19829153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-clamart-q19829153",
+      "latitude": 48.8141,
+      "longitude": 2.2734,
+      "name": {
+        "en": "Clamart",
+        "fr": "Clamart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3586111",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-eglise-de-la-sainte-trinite-de-vanves-q3586111",
+      "latitude": 48.82619,
+      "longitude": 2.29118,
+      "name": {
+        "en": "église de la Sainte-Trinité de Vanves",
+        "fr": "église de la Sainte-Trinité de Vanves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24641085",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-eglise-saint-francois-d-assise-de-vanves-q24641085",
+      "latitude": 48.8244,
+      "longitude": 2.29502,
+      "name": {
+        "en": "église Saint-François-d'Assise de Vanves",
+        "fr": "église Saint-François-d'Assise de Vanves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Remy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Remy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088158",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vanves-eglise-saint-remy-pa00088158",
+      "latitude": 48.8210232677296,
+      "longitude": 2.28623807411353,
+      "name": {
+        "en": "Église Saint-Remy",
+        "fr": "Église Saint-Remy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Hauts-de-Seine department, France",
+        "fr": "monument aux morts situé à Vanves, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602284",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-monument-aux-morts-de-vanves-q96602284",
+      "latitude": 48.82192,
+      "longitude": 2.29063,
+      "name": {
+        "en": "monument aux morts de Vanves",
+        "fr": "monument aux morts de Vanves"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Vanves, France",
+        "fr": "parc situé à Vanves, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-parc-frederic-pic-q96601889",
+      "latitude": 48.81878,
+      "longitude": 2.28206,
+      "name": {
+        "en": "parc Frédéric-Pic",
+        "fr": "parc Frédéric-Pic"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Vanves, France",
+        "fr": "édifice à Vanves, France"
+      },
+      "externalIdentity": {
+        "id": "Q61914033",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-hotel-de-ville-de-vanves-q61914033",
+      "latitude": 48.8214,
+      "longitude": 2.2895,
+      "name": {
+        "en": "hôtel de ville de Vanves",
+        "fr": "hôtel de ville de Vanves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French high school",
+        "fr": "établissement scolaire public de Vanves (Hauts-de-Seine, académie de Versailles) France"
+      },
+      "externalIdentity": {
+        "id": "Q3268847",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-lycee-michelet-de-vanves-q3268847",
+      "latitude": 48.824959,
+      "longitude": 2.287063,
+      "name": {
+        "en": "lycée Michelet de Vanves",
+        "fr": "lycée Michelet de Vanves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "priory located in Hauts-de-Seine, in France",
+        "fr": "prieuré situé à Vanves, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q63148213",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-prieure-sainte-bathilde-de-vanves-q63148213",
+      "latitude": 48.822316,
+      "longitude": 2.283473,
+      "name": {
+        "en": "prieuré Sainte-Bathilde de Vanves",
+        "fr": "prieuré Sainte-Bathilde de Vanves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Vanves, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2782616",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vanves-vanves-malakoff-q2782616",
+      "latitude": 48.818056,
+      "longitude": 2.291667,
+      "name": {
+        "en": "Vanves - Malakoff",
+        "fr": "Vanves - Malakoff"
+      }
+    }
+  ]
+}

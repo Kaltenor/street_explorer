@@ -1,0 +1,204 @@
+{
+  "id": "miramas-v1",
+  "cityId": "miramas-fr",
+  "cityZoneId": "relation/70525",
+  "cityName": {
+    "en": "Miramas",
+    "fr": "Miramas"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Julien is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Julien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/86087315",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-chapelle-saint-julien-way-86087315",
+      "latitude": 43.5619028,
+      "longitude": 5.0252859,
+      "name": {
+        "en": "Chapelle Saint-Julien",
+        "fr": "Chapelle Saint-Julien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Cabasse is an important witness to the city's history.",
+        "fr": "Château de Cabasse est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/86084732",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-chateau-de-cabasse-way-86084732",
+      "latitude": 43.5890213,
+      "longitude": 5.0262359,
+      "name": {
+        "en": "Château de Cabasse",
+        "fr": "Château de Cabasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Néo-Apostolique is a distinctive architectural landmark in the city.",
+        "fr": "Église Néo-Apostolique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/86075878",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-eglise-neo-apostolique-way-86075878",
+      "latitude": 43.5847789,
+      "longitude": 5.0048516,
+      "name": {
+        "en": "Église Néo-Apostolique",
+        "fr": "Église Néo-Apostolique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Julien is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Julien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081385",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "miramas-eglise-saint-julien-pa00081385",
+      "latitude": 43.5619050186817,
+      "longitude": 5.0252887256796,
+      "name": {
+        "en": "Église Saint-Julien",
+        "fr": "Église Saint-Julien"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin Gerard-Simian is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin Gerard-Simian compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/965726973",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-jardin-gerard-simian-way-965726973",
+      "latitude": 43.5872274,
+      "longitude": 5.0085115,
+      "name": {
+        "en": "Jardin Gerard-Simian",
+        "fr": "Jardin Gerard-Simian"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "jardin public is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1043540034",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-jardin-public-way-1043540034",
+      "latitude": 43.562833,
+      "longitude": 5.024781,
+      "name": {
+        "en": "jardin public",
+        "fr": "jardin public"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bouches-du-Rhône, France",
+        "fr": "commune française du département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q235865",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "miramas-miramas-q235865",
+      "latitude": 43.581388888,
+      "longitude": 5.001388888,
+      "name": {
+        "en": "Miramas",
+        "fr": "Miramas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Borie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Borie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1431442910",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-parc-de-la-borie-way-1431442910",
+      "latitude": 43.5845515,
+      "longitude": 5.0148879,
+      "name": {
+        "en": "Parc de la Borie",
+        "fr": "Parc de la Borie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre de verdure is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre de verdure compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1319287289",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-theatre-de-verdure-way-1319287289",
+      "latitude": 43.5862276,
+      "longitude": 5.0086281,
+      "name": {
+        "en": "Théâtre de verdure",
+        "fr": "Théâtre de verdure"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre La Colonne is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre La Colonne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/86079661",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "miramas-theatre-la-colonne-way-86079661",
+      "latitude": 43.5864674,
+      "longitude": 5.0085729,
+      "name": {
+        "en": "Théâtre La Colonne",
+        "fr": "Théâtre La Colonne"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "taverny-v1",
+  "cityId": "taverny-fr",
+  "cityZoneId": "relation/115248",
+  "cityName": {
+    "en": "Taverny",
+    "fr": "Taverny"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sepulchral chapel located in Val-d'Oise, in France",
+        "fr": "chapelle funéraire à Taverny, France"
+      },
+      "externalIdentity": {
+        "id": "Q109772045",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-chapelle-funeraire-rohan-chabot-q109772045",
+      "latitude": 49.0304,
+      "longitude": 2.227,
+      "name": {
+        "en": "chapelle funéraire Rohan-Chabot",
+        "fr": "chapelle funéraire Rohan-Chabot"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Boissy is an important witness to the city's history.",
+        "fr": "château à Taverny"
+      },
+      "externalIdentity": {
+        "id": "Q58492009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-chateau-de-boissy-q58492009",
+      "latitude": 49.01086,
+      "longitude": 2.21755,
+      "name": {
+        "en": "château de Boissy",
+        "fr": "château de Boissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110358060",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-cimetiere-de-taverny-q110358060",
+      "latitude": 49.0313,
+      "longitude": 2.2289,
+      "name": {
+        "en": "cimetière de Taverny",
+        "fr": "cimetière de Taverny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Boissy is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Boissy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA95000021",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "taverny-domaine-de-boissy-pa95000021",
+      "latitude": 49.010810369646975,
+      "longitude": 2.2176292048758666,
+      "name": {
+        "en": "Domaine de Boissy",
+        "fr": "Domaine de Boissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1256537",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-eglise-notre-dame-de-taverny-q1256537",
+      "latitude": 49.0304,
+      "longitude": 2.22779,
+      "name": {
+        "en": "église Notre-Dame de Taverny",
+        "fr": "église Notre-Dame de Taverny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080211",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "taverny-eglise-pa00080211",
+      "latitude": 49.0306045826307,
+      "longitude": 2.2274269684478,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forêt de Maubuisson is a distinctive architectural landmark in the city.",
+        "fr": "forêt créée au XXIe siècle en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q131379285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-foret-de-maubuisson-q131379285",
+      "latitude": 49.037277,
+      "longitude": 2.175346,
+      "name": {
+        "en": "forêt de Maubuisson",
+        "fr": "forêt de Maubuisson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Seine-et-Oise, France",
+        "fr": "ancienne commune de Seine-et-Oise, France"
+      },
+      "externalIdentity": {
+        "id": "Q2212555",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-saint-leu-taverny-q2212555",
+      "latitude": 49.023071,
+      "longitude": 2.234578,
+      "name": {
+        "en": "Saint-Leu-Taverny",
+        "fr": "Saint-Leu-Taverny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q275589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-taverny-q275589",
+      "latitude": 49.025833333,
+      "longitude": 2.226666666,
+      "name": {
+        "en": "Taverny",
+        "fr": "Taverny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Taverny, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2031137",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "taverny-vaucelles-q2031137",
+      "latitude": 49.021389,
+      "longitude": 2.230556,
+      "name": {
+        "en": "Vaucelles",
+        "fr": "Vaucelles"
+      }
+    }
+  ]
+}

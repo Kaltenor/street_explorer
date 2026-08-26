@@ -1,0 +1,204 @@
+{
+  "id": "les-ulis-v1",
+  "cityId": "les-ulis-fr",
+  "cityZoneId": "relation/1174036",
+  "cityName": {
+    "en": "Les Ulis",
+    "fr": "Les Ulis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Centre culturel Boris Vian is one of the city's notable cultural landmarks.",
+        "fr": "Centre culturel Boris Vian compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/77574300",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-centre-culturel-boris-vian-way-77574300",
+      "latitude": 48.6821545,
+      "longitude": 2.1698498,
+      "name": {
+        "en": "Centre culturel Boris Vian",
+        "fr": "Centre culturel Boris Vian"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Essonne, France",
+        "fr": "commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q216844",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-ulis-les-ulis-q216844",
+      "latitude": 48.682222222,
+      "longitude": 2.1675,
+      "name": {
+        "en": "Les Ulis",
+        "fr": "Les Ulis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché is a distinctive architectural landmark in the city.",
+        "fr": "Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/1241512106",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "les-ulis-marche-node-1241512106",
+      "latitude": 48.6830407,
+      "longitude": 2.1701132,
+      "name": {
+        "en": "Marché",
+        "fr": "Marché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée des Ulis is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée des Ulis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/131293940",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-mosquee-des-ulis-way-131293940",
+      "latitude": 48.6795357,
+      "longitude": 2.1636754,
+      "name": {
+        "en": "Mosquée des Ulis",
+        "fr": "Mosquée des Ulis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée El Andalous is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée El Andalous est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/599399893",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-mosquee-el-andalous-way-599399893",
+      "latitude": 48.6788401,
+      "longitude": 2.166885,
+      "name": {
+        "en": "Mosquée El Andalous",
+        "fr": "Mosquée El Andalous"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de l'Équinoxe is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de l'Équinoxe compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/841274367",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-parc-de-l-equinoxe-way-841274367",
+      "latitude": 48.6863607,
+      "longitude": 2.1670531,
+      "name": {
+        "en": "Parc de l'Équinoxe",
+        "fr": "Parc de l'Équinoxe"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Nord is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Nord compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/147125921",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-parc-nord-way-147125921",
+      "latitude": 48.6898997,
+      "longitude": 2.1677512,
+      "name": {
+        "en": "Parc Nord",
+        "fr": "Parc Nord"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc urbain is one of the city's notable green or natural landmarks.",
+        "fr": "Parc urbain compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/279140216",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-parc-urbain-way-279140216",
+      "latitude": 48.6794429,
+      "longitude": 2.1696494,
+      "name": {
+        "en": "Parc urbain",
+        "fr": "Parc urbain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Radazik is one of the city's notable cultural landmarks.",
+        "fr": "Radazik compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/10299245709",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "les-ulis-radazik-node-10299245709",
+      "latitude": 48.6826214,
+      "longitude": 2.1705695,
+      "name": {
+        "en": "Radazik",
+        "fr": "Radazik"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre de verdure is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre de verdure compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/89666346",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "les-ulis-theatre-de-verdure-way-89666346",
+      "latitude": 48.6796781,
+      "longitude": 2.1699741,
+      "name": {
+        "en": "Théâtre de verdure",
+        "fr": "Théâtre de verdure"
+      }
+    }
+  ]
+}

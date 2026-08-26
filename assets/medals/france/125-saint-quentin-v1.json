@@ -1,0 +1,204 @@
+{
+  "id": "saint-quentin-v1",
+  "cityId": "saint-quentin-fr",
+  "cityZoneId": "relation/153656",
+  "cityName": {
+    "en": "Saint-Quentin",
+    "fr": "Saint-Quentin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien chambre de commerce et ancienne église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chambre de commerce et ancienne église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA02000102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-ancien-chambre-de-commerce-et-ancienne-eglise-saint-jacques-pa02000102",
+      "latitude": 49.84601996654857,
+      "longitude": 3.2890396273811686,
+      "name": {
+        "en": "Ancien chambre de commerce et ancienne église Saint-Jacques",
+        "fr": "Ancien chambre de commerce et ancienne église Saint-Jacques"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Pilule is an important witness to the city's history.",
+        "fr": "Château de la Pilule est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA02000085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-chateau-de-la-pilule-pa02000085",
+      "latitude": 49.86025530702409,
+      "longitude": 3.3065986089684642,
+      "name": {
+        "en": "Château de la Pilule",
+        "fr": "Château de la Pilule"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Thérèse de l’Enfant Jésus is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Thérèse de l’Enfant Jésus est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA02000101",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-eglise-sainte-therese-de-l-enfant-jesus-pa02000101",
+      "latitude": 49.83406645672302,
+      "longitude": 3.308207045199359,
+      "name": {
+        "en": "Église Sainte-Thérèse de l’Enfant Jésus",
+        "fr": "Église Sainte-Thérèse de l’Enfant Jésus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare is a distinctive architectural landmark in the city.",
+        "fr": "Gare est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA02000049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-gare-pa02000049",
+      "latitude": 49.83995307807264,
+      "longitude": 3.297046528839701,
+      "name": {
+        "en": "Gare",
+        "fr": "Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115913",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-hotel-de-ville-pa00115913",
+      "latitude": 49.846968195798496,
+      "longitude": 3.287197618552843,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts Antoine Lécuyer is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts Antoine Lécuyer compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0793",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-quentin-musee-des-beaux-arts-antoine-lecuyer-m0793",
+      "latitude": 49.849891,
+      "longitude": 3.285398,
+      "name": {
+        "en": "musée des beaux-arts Antoine Lécuyer",
+        "fr": "musée des beaux-arts Antoine Lécuyer"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée entomologique is one of the city's notable cultural landmarks.",
+        "fr": "musée entomologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7060",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-quentin-musee-entomologique-m7060",
+      "latitude": 49.84595,
+      "longitude": 3.288944,
+      "name": {
+        "en": "musée entomologique",
+        "fr": "musée entomologique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte dite des Canonniers is an important witness to the city's history.",
+        "fr": "Porte dite des Canonniers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115914",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-porte-dite-des-canonniers-pa00115914",
+      "latitude": 49.844886252811165,
+      "longitude": 3.2857430982032545,
+      "name": {
+        "en": "Porte dite des Canonniers",
+        "fr": "Porte dite des Canonniers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135570",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-theatre-municipal-pa00135570",
+      "latitude": 49.84614512885635,
+      "longitude": 3.286875026847963,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Joly de Bammeville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Joly de Bammeville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115912",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-quentin-hotel-joly-de-bammeville-pa00115912",
+      "latitude": 49.84511882403988,
+      "longitude": 3.2862929565666157,
+      "name": {
+        "en": "Hôtel Joly de Bammeville",
+        "fr": "Hôtel Joly de Bammeville"
+      }
+    }
+  ]
+}

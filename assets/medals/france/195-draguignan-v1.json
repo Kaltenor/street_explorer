@@ -1,0 +1,204 @@
+{
+  "id": "draguignan-v1",
+  "cityId": "draguignan-fr",
+  "cityZoneId": "relation/125329",
+  "cityName": {
+    "en": "Draguignan",
+    "fr": "Draguignan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Capucins, ancien hôpital civil is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Capucins, ancien hôpital civil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000032",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-ancien-couvent-des-capucins-ancien-hopital-civil-pa83000032",
+      "latitude": 43.5422050940442,
+      "longitude": 6.46412981103126,
+      "name": {
+        "en": "Ancien couvent des Capucins, ancien hôpital civil",
+        "fr": "Ancien couvent des Capucins, ancien hôpital civil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de Saint-Hermentaire is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de Saint-Hermentaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081790",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-chapelle-de-saint-hermentaire-pa00081790",
+      "latitude": 43.5289416437084,
+      "longitude": 6.45474627115765,
+      "name": {
+        "en": "Chapelle de Saint-Hermentaire",
+        "fr": "Chapelle de Saint-Hermentaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Dolmen dit La pierre de la Fée is an important witness to the city's history.",
+        "fr": "Dolmen dit La pierre de la Fée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081588",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-dolmen-dit-la-pierre-de-la-fee-pa00081588",
+      "latitude": 43.5447996136355,
+      "longitude": 6.45310320402318,
+      "name": {
+        "en": "Dolmen dit La pierre de la Fée",
+        "fr": "Dolmen dit La pierre de la Fée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite de la Reine Jeanne is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite de la Reine Jeanne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081589",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-maison-dite-de-la-reine-jeanne-pa00081589",
+      "latitude": 43.5375002523794,
+      "longitude": 6.46765886524417,
+      "name": {
+        "en": "Maison dite de la Reine Jeanne",
+        "fr": "Maison dite de la Reine Jeanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maisons médiévales is a distinctive architectural landmark in the city.",
+        "fr": "Maisons médiévales est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-maisons-medievales-pa83000002",
+      "latitude": 43.5401543093519,
+      "longitude": 6.46497169586488,
+      "name": {
+        "en": "Maisons médiévales",
+        "fr": "Maisons médiévales"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'artillerie is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'artillerie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M9007",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "draguignan-musee-de-l-artillerie-m9007",
+      "latitude": 43.529648,
+      "longitude": 6.495058,
+      "name": {
+        "en": "musée de l'artillerie",
+        "fr": "musée de l'artillerie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la société d'études scientifiques et archéologiques is one of the city's notable cultural landmarks.",
+        "fr": "musée de la société d'études scientifiques et archéologiques compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0934",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "draguignan-musee-de-la-societe-d-etudes-scientifiques-et-archeologiques-m0934",
+      "latitude": 43.536558,
+      "longitude": 6.461588,
+      "name": {
+        "en": "musée de la société d'études scientifiques et archéologiques",
+        "fr": "musée de la société d'études scientifiques et archéologiques"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts et traditions populaires de moyenne Provence is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts et traditions populaires de moyenne Provence compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0935",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "draguignan-musee-des-arts-et-traditions-populaires-de-moyenne-provence-m0935",
+      "latitude": 43.538282,
+      "longitude": 6.463862,
+      "name": {
+        "en": "musée des arts et traditions populaires de moyenne Provence",
+        "fr": "musée des arts et traditions populaires de moyenne Provence"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Beaux-Arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des Beaux-Arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0933",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "draguignan-musee-des-beaux-arts-m0933",
+      "latitude": 43.537982,
+      "longitude": 6.464818,
+      "name": {
+        "en": "musée des Beaux-Arts",
+        "fr": "musée des Beaux-Arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de l'Horloge is an important witness to the city's history.",
+        "fr": "Tour de l'Horloge est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081591",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "draguignan-tour-de-l-horloge-pa00081591",
+      "latitude": 43.5399450315952,
+      "longitude": 6.46637806176544,
+      "name": {
+        "en": "Tour de l'Horloge",
+        "fr": "Tour de l'Horloge"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "l-isle-sur-la-sorgue-v1",
+  "cityId": "l-isle-sur-la-sorgue-fr",
+  "cityZoneId": "relation/108057",
+  "cityName": {
+    "en": "L'Isle-sur-la-Sorgue",
+    "fr": "L'Isle-sur-la-Sorgue"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien cinéma is one of the city's notable cultural landmarks.",
+        "fr": "Ancien cinéma compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-ancien-cinema-pa84000065",
+      "latitude": 43.9192834218542,
+      "longitude": 5.05234701628038,
+      "name": {
+        "en": "Ancien cinéma",
+        "fr": "Ancien cinéma"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église paroissiale Notre-Dame-des-Anges is a distinctive architectural landmark in the city.",
+        "fr": "Église paroissiale Notre-Dame-des-Anges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-eglise-paroissiale-notre-dame-des-anges-pa00082048",
+      "latitude": 43.9198331313774,
+      "longitude": 5.05185774550161,
+      "name": {
+        "en": "Église paroissiale Notre-Dame-des-Anges",
+        "fr": "Église paroissiale Notre-Dame-des-Anges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Palerne is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Palerne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-hotel-de-palerne-pa00082051",
+      "latitude": 43.9191375093016,
+      "longitude": 5.05257459005529,
+      "name": {
+        "en": "Hôtel de Palerne",
+        "fr": "Hôtel de Palerne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Varvarenne is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Varvarenne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-hotel-de-varvarenne-pa84000078",
+      "latitude": 43.920158939210815,
+      "longitude": 5.050758896579762,
+      "name": {
+        "en": "Hôtel de Varvarenne",
+        "fr": "Hôtel de Varvarenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel-Dieu (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel-Dieu (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082050",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-hotel-dieu-ancien-pa00082050",
+      "latitude": 43.920014576473505,
+      "longitude": 5.04864650102394,
+      "name": {
+        "en": "Hôtel-Dieu (ancien)",
+        "fr": "Hôtel-Dieu (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Tour d'Argent is an important witness to the city's history.",
+        "fr": "La Tour d'Argent est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-la-tour-d-argent-pa84000058",
+      "latitude": 43.919614815698,
+      "longitude": 5.0523415542238,
+      "name": {
+        "en": "La Tour d'Argent",
+        "fr": "La Tour d'Argent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble « Beaucaire », ancienne carrière de la communauté juive is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble « Beaucaire », ancienne carrière de la communauté juive est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-immeuble-beaucaire-ancienne-carriere-de-la-communaute-juive-pa84000085",
+      "latitude": 43.91932601526541,
+      "longitude": 5.050383837230745,
+      "name": {
+        "en": "Immeuble « Beaucaire », ancienne carrière de la communauté juive",
+        "fr": "Immeuble « Beaucaire », ancienne carrière de la communauté juive"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble ou hôtel Donadei de Campredon is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble ou hôtel Donadei de Campredon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082054",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-immeuble-ou-hotel-donadei-de-campredon-pa00082054",
+      "latitude": 43.9208730255045,
+      "longitude": 5.05242115077929,
+      "name": {
+        "en": "Immeuble ou hôtel Donadei de Campredon",
+        "fr": "Immeuble ou hôtel Donadei de Campredon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082052",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-immeuble-pa00082052",
+      "latitude": 43.9186442038907,
+      "longitude": 5.0501817919309,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Renaissance is a distinctive architectural landmark in the city.",
+        "fr": "Maison Renaissance est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-isle-sur-la-sorgue-maison-renaissance-pa00082056",
+      "latitude": 43.9192495550656,
+      "longitude": 5.05125245657467,
+      "name": {
+        "en": "Maison Renaissance",
+        "fr": "Maison Renaissance"
+      }
+    }
+  ]
+}

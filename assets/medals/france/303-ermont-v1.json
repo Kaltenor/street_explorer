@@ -1,0 +1,204 @@
+{
+  "id": "ermont-v1",
+  "cityId": "ermont-fr",
+  "cityZoneId": "relation/76381",
+  "cityName": {
+    "en": "Ermont",
+    "fr": "Ermont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110357972",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-ancien-cimetiere-d-ermont-q110357972",
+      "latitude": 48.9949,
+      "longitude": 2.2564,
+      "name": {
+        "en": "Ancien cimetière d'Ermont",
+        "fr": "Ancien cimetière d'Ermont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ermont, France",
+        "fr": "Gare ferroviaire française, Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q3096168",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-cernay-val-d-oise-q3096168",
+      "latitude": 48.985,
+      "longitude": 2.257222,
+      "name": {
+        "en": "Cernay Val d’Oise",
+        "fr": "Cernay Val d’Oise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Ermont, France",
+        "fr": "bâtiment à Ermont (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q2980173",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-club-des-esperances-q2980173",
+      "latitude": 48.992,
+      "longitude": 2.24785,
+      "name": {
+        "en": "club des Espérances",
+        "fr": "club des Espérances"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q131392080",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-eglise-evangelique-d-ermont-q131392080",
+      "latitude": 48.997299,
+      "longitude": 2.259241,
+      "name": {
+        "en": "église évangélique d'Ermont",
+        "fr": "église évangélique d'Ermont"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-monument-aux-morts-d-ermont-q136053664",
+      "latitude": 48.990556,
+      "longitude": 2.256408,
+      "name": {
+        "en": "monument aux morts d'Ermont",
+        "fr": "monument aux morts d'Ermont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958327",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-eglise-saint-flaive-d-ermont-q15958327",
+      "latitude": 48.9898,
+      "longitude": 2.2589,
+      "name": {
+        "en": "église Saint-Flaive d'Ermont",
+        "fr": "église Saint-Flaive d'Ermont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ermont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2683164",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-ermont-eaubonne-q2683164",
+      "latitude": 48.980555555,
+      "longitude": 2.271666666,
+      "name": {
+        "en": "Ermont - Eaubonne",
+        "fr": "Ermont - Eaubonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ermont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1968530",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-ermont-halte-q1968530",
+      "latitude": 48.989722,
+      "longitude": 2.263333,
+      "name": {
+        "en": "Ermont-Halte",
+        "fr": "Ermont-Halte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ermont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2355230",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-gros-noyer-saint-prix-q2355230",
+      "latitude": 48.996944,
+      "longitude": 2.258611,
+      "name": {
+        "en": "Gros Noyer Saint-Prix",
+        "fr": "Gros Noyer Saint-Prix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal d'Ermont, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119296887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ermont-mairie-d-ermont-q119296887",
+      "latitude": 48.99188,
+      "longitude": 2.25877,
+      "name": {
+        "en": "mairie d'Ermont",
+        "fr": "mairie d'Ermont"
+      }
+    }
+  ]
+}

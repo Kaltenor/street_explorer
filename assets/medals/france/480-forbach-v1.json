@@ -1,0 +1,204 @@
+{
+  "id": "forbach-v1",
+  "cityId": "forbach-fr",
+  "cityZoneId": "relation/1162548",
+  "cityName": {
+    "en": "Forbach",
+    "fr": "Forbach"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château Adt is an important witness to the city's history.",
+        "fr": "château Adt est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q114059367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-chateau-adt-q114059367",
+      "latitude": 49.184563,
+      "longitude": 6.908501,
+      "name": {
+        "en": "château Adt",
+        "fr": "château Adt"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Barrabino is an important witness to the city's history.",
+        "fr": "château français de Moselle"
+      },
+      "externalIdentity": {
+        "id": "Q26257857",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-chateau-barrabino-q26257857",
+      "latitude": 49.18575,
+      "longitude": 6.894972,
+      "name": {
+        "en": "château Barrabino",
+        "fr": "château Barrabino"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in the commune of Forbach, in the Moselle Department, France",
+        "fr": "château français situé à Forbach"
+      },
+      "externalIdentity": {
+        "id": "Q2971825",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-chateau-du-schlossberg-q2971825",
+      "latitude": 49.1832,
+      "longitude": 6.900444,
+      "name": {
+        "en": "château du Schlossberg",
+        "fr": "château du Schlossberg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "église située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q14545088",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-eglise-protestante-de-forbach-q14545088",
+      "latitude": 49.185,
+      "longitude": 6.90555556,
+      "name": {
+        "en": "église protestante de Forbach",
+        "fr": "église protestante de Forbach"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "église située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584333",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-eglise-saint-remi-de-forbach-q3584333",
+      "latitude": 49.1855,
+      "longitude": 6.89997,
+      "name": {
+        "en": "église Saint-Rémi de Forbach",
+        "fr": "église Saint-Rémi de Forbach"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in the Moselle department, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2717025",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-forbach-q2717025",
+      "latitude": 49.189534,
+      "longitude": 6.901277,
+      "name": {
+        "en": "Forbach",
+        "fr": "Forbach"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Forbach, France",
+        "fr": "salle de spectacle de Forbach, France"
+      },
+      "externalIdentity": {
+        "id": "Q58006375",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-le-carreau-scene-nationale-de-forbach-q58006375",
+      "latitude": 49.185,
+      "longitude": 6.89348,
+      "name": {
+        "en": "Le Carreau, Scène Nationale de Forbach",
+        "fr": "Le Carreau, Scène Nationale de Forbach"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Multi-purpose stadium in Forbach, France",
+        "fr": "stade à Forbach (Moselle)"
+      },
+      "externalIdentity": {
+        "id": "Q3496093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-stade-du-schlossberg-q3496093",
+      "latitude": 49.1808011,
+      "longitude": 6.9042224,
+      "name": {
+        "en": "stade du Schlossberg",
+        "fr": "stade du Schlossberg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tower in Forbach, France",
+        "fr": "Tour du Schlossberg est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q103955159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-tour-du-schlossberg-q103955159",
+      "latitude": 49.18328,
+      "longitude": 6.90035,
+      "name": {
+        "en": "Tour du Schlossberg",
+        "fr": "Tour du Schlossberg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "synagogue located in Moselle, in France",
+        "fr": "synagogue située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16008878",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "forbach-synagogue-de-forbach-q16008878",
+      "latitude": 49.1889,
+      "longitude": 6.90083,
+      "name": {
+        "en": "synagogue de Forbach",
+        "fr": "synagogue de Forbach"
+      }
+    }
+  ]
+}

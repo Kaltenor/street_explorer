@@ -1,0 +1,204 @@
+{
+  "id": "saint-benoit-v1",
+  "cityId": "saint-benoit-fr",
+  "cityZoneId": "relation/280168",
+  "cityName": {
+    "en": "Saint-Benoît",
+    "fr": "Saint-Benoît"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "cliff in Salazie, France",
+        "fr": "rempart montagneux à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q2936993",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-cap-anglais-q2936993",
+      "latitude": -21.094478,
+      "longitude": 55.512229,
+      "name": {
+        "en": "Cap Anglais",
+        "fr": "Cap Anglais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Coteau Kervéguen is an important witness to the city's history.",
+        "fr": "sommet à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q2998534",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-coteau-kerveguen-q2998534",
+      "latitude": -21.12386,
+      "longitude": 55.50396,
+      "name": {
+        "en": "Coteau Kervéguen",
+        "fr": "Coteau Kervéguen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581075",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-eglise-saint-benoit-de-saint-benoit-q3581075",
+      "latitude": -21.0339,
+      "longitude": 55.7122,
+      "name": {
+        "en": "église Saint-Benoît de Saint-Benoît",
+        "fr": "église Saint-Benoît de Saint-Benoît"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Anne is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Anne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105811",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-benoit-eglise-sainte-anne-pa00105811",
+      "latitude": -21.0799017987034,
+      "longitude": 55.7429577974037,
+      "name": {
+        "en": "Église Sainte-Anne",
+        "fr": "Église Sainte-Anne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "pic des Chèvres is an important witness to the city's history.",
+        "fr": "rempart montagneux et sommet à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q49753145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-pic-des-chevres-q49753145",
+      "latitude": -21.081632,
+      "longitude": 55.524077,
+      "name": {
+        "en": "pic des Chèvres",
+        "fr": "pic des Chèvres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont de la Rivière de l'Est is a distinctive architectural landmark in the city.",
+        "fr": "pont routier à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q108914985",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-pont-de-la-riviere-de-l-est-q108914985",
+      "latitude": -21.124215658,
+      "longitude": 55.747638321,
+      "name": {
+        "en": "pont de la Rivière de l'Est",
+        "fr": "pont de la Rivière de l'Est"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "cours d'eau de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3433898",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-riviere-des-marsouins-q3433898",
+      "latitude": -21.030833333,
+      "longitude": 55.715833333,
+      "name": {
+        "en": "rivière des Marsouins",
+        "fr": "rivière des Marsouins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre les Bambous is one of the city's notable cultural landmarks.",
+        "fr": "salle de théâtre française"
+      },
+      "externalIdentity": {
+        "id": "Q3527854",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-theatre-les-bambous-q3527854",
+      "latitude": -21.039,
+      "longitude": 55.718,
+      "name": {
+        "en": "théâtre les Bambous",
+        "fr": "théâtre les Bambous"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q3433903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-riviere-des-roches-q3433903",
+      "latitude": -21.005277777,
+      "longitude": 55.700833333,
+      "name": {
+        "en": "rivière des Roches",
+        "fr": "rivière des Roches"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hindu temple located in La Réunion, in France",
+        "fr": "temple hindou situé à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3517589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-benoit-temple-de-morange-q3517589",
+      "latitude": -21.100028,
+      "longitude": 55.733167,
+      "name": {
+        "en": "temple de Morange",
+        "fr": "temple de Morange"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "sevres-v1",
+  "cityId": "sevres-fr",
+  "cityZoneId": "relation/31340",
+  "cityName": {
+    "en": "Sèvres",
+    "fr": "Sèvres"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "French manufactory",
+        "fr": "manufacture à Sèvres (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q653307",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-manufacture-nationale-de-sevres-q653307",
+      "latitude": 48.82861111,
+      "longitude": 2.2225,
+      "name": {
+        "en": "manufacture nationale de Sèvres",
+        "fr": "manufacture nationale de Sèvres"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "railway station in Sèvres, France",
+        "fr": "ancienne gare française, station de la ligne T2 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28379655",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-musee-de-sevres-q28379655",
+      "latitude": 48.828333333,
+      "longitude": 2.225555555,
+      "name": {
+        "en": "Musée de Sèvres",
+        "fr": "Musée de Sèvres"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national de céramique is one of the city's notable cultural landmarks.",
+        "fr": "musée national de céramique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5019",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "sevres-musee-national-de-ceramique-m5019",
+      "latitude": 48.817037,
+      "longitude": 2.205733,
+      "name": {
+        "en": "musée national de céramique",
+        "fr": "musée national de céramique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pagoda located in Hauts-de-Seine, in France",
+        "fr": "pagode située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3360463",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-pagode-tinh-tam-q3360463",
+      "latitude": 48.8214,
+      "longitude": 2.20708,
+      "name": {
+        "en": "pagode Tinh Tam",
+        "fr": "pagode Tinh Tam"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc situé à Sèvres, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3364124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-parc-de-brimborion-q3364124",
+      "latitude": 48.8247,
+      "longitude": 2.22333,
+      "name": {
+        "en": "parc de Brimborion",
+        "fr": "parc de Brimborion"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park is located on the site of the Château de Saint-Cloud",
+        "fr": "parc à Saint-Cloud, Marnes-la-Coquette et à Ville-d'Avray (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q2030715",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-parc-de-saint-cloud-q2030715",
+      "latitude": 48.8333,
+      "longitude": 2.2,
+      "name": {
+        "en": "parc de Saint-Cloud",
+        "fr": "parc de Saint-Cloud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q782870",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-pont-de-sevres-q782870",
+      "latitude": 48.828531,
+      "longitude": 2.227178,
+      "name": {
+        "en": "pont de Sèvres",
+        "fr": "pont de Sèvres"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q767164",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-sevres-cite-de-la-ceramique-q767164",
+      "latitude": 48.8286,
+      "longitude": 2.22306,
+      "name": {
+        "en": "Sèvres - Cité de la céramique",
+        "fr": "Sèvres - Cité de la céramique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Sèvres, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2206901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-sevres-rive-gauche-q2206901",
+      "latitude": 48.821371,
+      "longitude": 2.214755,
+      "name": {
+        "en": "Sèvres-Rive-Gauche",
+        "fr": "Sèvres-Rive-Gauche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "train station in the commune of Sèvres (department Hauts-de-Seine).",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2344785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevres-sevres-ville-d-avray-q2344785",
+      "latitude": 48.827778,
+      "longitude": 2.201389,
+      "name": {
+        "en": "Sèvres - Ville-d'Avray",
+        "fr": "Sèvres - Ville-d'Avray"
+      }
+    }
+  ]
+}

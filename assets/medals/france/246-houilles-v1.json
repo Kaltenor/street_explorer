@@ -1,0 +1,204 @@
+{
+  "id": "houilles-v1",
+  "cityId": "houilles-fr",
+  "cityZoneId": "relation/75003",
+  "cityName": {
+    "en": "Houilles",
+    "fr": "Houilles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Yvelines, in France",
+        "fr": "cimetière situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110360080",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-cimetiere-du-bel-air-q110360080",
+      "latitude": 48.9334,
+      "longitude": 2.1831,
+      "name": {
+        "en": "cimetière du Bel Air",
+        "fr": "cimetière du Bel Air"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60389395",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-eglise-saint-nicolas-de-houilles-q60389395",
+      "latitude": 48.926361,
+      "longitude": 2.187827,
+      "name": {
+        "en": "église Saint-Nicolas de Houilles",
+        "fr": "église Saint-Nicolas de Houilles"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place des Arts is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Houilles, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140056091",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-fontaine-wallace-place-des-arts-q140056091",
+      "latitude": 48.925948,
+      "longitude": 2.189181,
+      "name": {
+        "en": "fontaine Wallace, place des Arts",
+        "fr": "fontaine Wallace, place des Arts"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Gambetta is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Wallace située à Houilles, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140056297",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-fontaine-wallace-rue-gambetta-q140056297",
+      "latitude": 48.922725,
+      "longitude": 2.187154,
+      "name": {
+        "en": "fontaine Wallace, rue Gambetta",
+        "fr": "fontaine Wallace, rue Gambetta"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Houilles, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2468330",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-houilles-carrieres-sur-seine-q2468330",
+      "latitude": 48.920556,
+      "longitude": 2.184444,
+      "name": {
+        "en": "Houilles - Carrières-sur-Seine",
+        "fr": "Houilles - Carrières-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "La Graineterie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q131923940",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-la-graineterie-q131923940",
+      "latitude": 48.926,
+      "longitude": 2.1892,
+      "name": {
+        "en": "La Graineterie",
+        "fr": "La Graineterie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Yvelines department, France",
+        "fr": "siège municipal de Houilles, dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119312417",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-mairie-de-houilles-q119312417",
+      "latitude": 48.923175181,
+      "longitude": 2.186522055,
+      "name": {
+        "en": "mairie de Houilles",
+        "fr": "mairie de Houilles"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Yvelines department, France",
+        "fr": "monument aux morts des Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136056867",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-monument-aux-morts-de-houilles-q136056867",
+      "latitude": 48.922605,
+      "longitude": 2.185134,
+      "name": {
+        "en": "monument aux morts de Houilles",
+        "fr": "monument aux morts de Houilles"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Yvelines department, France",
+        "fr": "monument aux morts des Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095653",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-monument-aux-morts-de-la-guerre-franco-prussienne-de-houilles-q136095653",
+      "latitude": 48.932033,
+      "longitude": 2.18519,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Houilles",
+        "fr": "monument aux morts de la guerre franco-prussienne de Houilles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Yvelines, in France",
+        "fr": "temple protestant situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60427250",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "houilles-temple-de-houilles-q60427250",
+      "latitude": 48.928419,
+      "longitude": 2.185047,
+      "name": {
+        "en": "temple de Houilles",
+        "fr": "temple de Houilles"
+      }
+    }
+  ]
+}

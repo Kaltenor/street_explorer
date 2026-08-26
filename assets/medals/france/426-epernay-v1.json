@@ -1,0 +1,204 @@
+{
+  "id": "epernay-v1",
+  "cityId": "epernay-fr",
+  "cityZoneId": "relation/417327",
+  "cityName": {
+    "en": "Épernay",
+    "fr": "Épernay"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "\"Ancien établissement de viticulture de la maison Moët-et-Chandon, dit \" Le Fort Chabrol \"\" is an important witness to the city's history.",
+        "fr": "\"Ancien établissement de viticulture de la maison Moët-et-Chandon, dit \" Le Fort Chabrol \"\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA51000021",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epernay-ancien-etablissement-de-viticulture-de-la-maison-moet-et-chandon-dit-le-fort-chabrol-pa51000021",
+      "latitude": 49.0521844505526,
+      "longitude": 3.9487876792743704,
+      "name": {
+        "en": "\"Ancien établissement de viticulture de la maison Moët-et-Chandon, dit \" Le Fort Chabrol \"\"",
+        "fr": "\"Ancien établissement de viticulture de la maison Moët-et-Chandon, dit \" Le Fort Chabrol \"\""
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Perrier is an important witness to the city's history.",
+        "fr": "Château Perrier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA51000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epernay-chateau-perrier-pa51000019",
+      "latitude": 49.0434568952138,
+      "longitude": 3.9616845795996096,
+      "name": {
+        "en": "Château Perrier",
+        "fr": "Château Perrier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078699",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epernay-eglise-saint-martin-ancienne-pa00078699",
+      "latitude": 49.0438844446031,
+      "longitude": 3.9544839261481695,
+      "name": {
+        "en": "Église Saint-Martin (ancienne)",
+        "fr": "Église Saint-Martin (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Épernay, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2085979",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epernay-epernay-q2085979",
+      "latitude": 49.04653,
+      "longitude": 3.960157,
+      "name": {
+        "en": "Épernay",
+        "fr": "Épernay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort in Épernay, France",
+        "fr": "fort à Épernay (Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q19753095",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epernay-fort-chabrol-q19753095",
+      "latitude": 49.052244,
+      "longitude": 3.948822,
+      "name": {
+        "en": "fort Chabrol",
+        "fr": "fort Chabrol"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville, ancien hôtel Auban-Moët is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville, ancien hôtel Auban-Moët est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA51000018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epernay-hotel-de-ville-ancien-hotel-auban-moet-pa51000018",
+      "latitude": 49.0439306097397,
+      "longitude": 3.95903260806292,
+      "name": {
+        "en": "Hôtel de Ville, ancien hôtel Auban-Moët",
+        "fr": "Hôtel de Ville, ancien hôtel Auban-Moët"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall of Épernay, France",
+        "fr": "mairie à Épernay (Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q15950757",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epernay-hotel-de-ville-d-epernay-q15950757",
+      "latitude": 49.0437,
+      "longitude": 3.95867,
+      "name": {
+        "en": "hôtel de ville d'Épernay",
+        "fr": "hôtel de ville d'Épernay"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vin de Champagne et d’archéologie régionale is one of the city's notable cultural landmarks.",
+        "fr": "musée du vin de Champagne et d’archéologie régionale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0309",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "epernay-musee-du-vin-de-champagne-et-d-archeologie-regionale-m0309",
+      "latitude": 49.042901,
+      "longitude": 3.961379,
+      "name": {
+        "en": "musée du vin de Champagne et d’archéologie régionale",
+        "fr": "musée du vin de Champagne et d’archéologie régionale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Épernay, France",
+        "fr": "théâtre à Épernay (Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q19631705",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epernay-theatre-d-epernay-q19631705",
+      "latitude": 49.044972222,
+      "longitude": 3.959166666,
+      "name": {
+        "en": "théâtre d'Épernay",
+        "fr": "théâtre d'Épernay"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078701",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epernay-theatre-pa00078701",
+      "latitude": 49.0449258867481,
+      "longitude": 3.9594748001783704,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    }
+  ]
+}

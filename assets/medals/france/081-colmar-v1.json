@@ -1,0 +1,394 @@
+{
+  "id": "colmar-v1",
+  "cityId": "colmar-fr",
+  "cityZoneId": "relation/61423",
+  "cityName": {
+    "en": "Colmar",
+    "fr": "Colmar"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien collégiale Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien collégiale Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085368",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-ancien-collegiale-saint-martin-pa00085368",
+      "latitude": 48.077347279103904,
+      "longitude": 7.35811095220891,
+      "name": {
+        "en": "Ancien collégiale Saint-Martin",
+        "fr": "Ancien collégiale Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien corps de garde ou ancienne maison de police is a distinctive architectural landmark in the city.",
+        "fr": "Ancien corps de garde ou ancienne maison de police est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085361",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-ancien-corps-de-garde-ou-ancienne-maison-de-police-pa00085361",
+      "latitude": 48.0768728100321,
+      "longitude": 7.35780287891912,
+      "name": {
+        "en": "Ancien corps de garde ou ancienne maison de police",
+        "fr": "Ancien corps de garde ou ancienne maison de police"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais du Conseil Souverain d'Alsace is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais du Conseil Souverain d'Alsace est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-ancien-palais-du-conseil-souverain-d-alsace-pa00085404",
+      "latitude": 48.0757090669732,
+      "longitude": 7.357992148669579,
+      "name": {
+        "en": "Ancien palais du Conseil Souverain d'Alsace",
+        "fr": "Ancien palais du Conseil Souverain d'Alsace"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau is an important witness to the city's history.",
+        "fr": "Château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125232",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-chateau-d-eau-pa00125232",
+      "latitude": 48.0712605415437,
+      "longitude": 7.352693567114361,
+      "name": {
+        "en": "Château d'eau",
+        "fr": "Château d'eau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église protestante Saint-Matthieu, ancienne église des Franciscains is a distinctive architectural landmark in the city.",
+        "fr": "Église protestante Saint-Matthieu, ancienne église des Franciscains est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085367",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-eglise-protestante-saint-matthieu-ancienne-eglise-des-franciscains-pa00085367",
+      "latitude": 48.0770899808328,
+      "longitude": 7.36067236812413,
+      "name": {
+        "en": "Église protestante Saint-Matthieu, ancienne église des Franciscains",
+        "fr": "Église protestante Saint-Matthieu, ancienne église des Franciscains"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Schwendi is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Schwendi compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3076094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colmar-fontaine-schwendi-q3076094",
+      "latitude": 48.0759,
+      "longitude": 7.35955,
+      "name": {
+        "en": "fontaine Schwendi",
+        "fr": "fontaine Schwendi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare centrale des voyageurs is a distinctive architectural landmark in the city.",
+        "fr": "Gare centrale des voyageurs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085370",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-gare-centrale-des-voyageurs-pa00085370",
+      "latitude": 48.0724742021899,
+      "longitude": 7.346931623053129,
+      "name": {
+        "en": "Gare centrale des voyageurs",
+        "fr": "Gare centrale des voyageurs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085373",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-hotel-de-ville-pa00085373",
+      "latitude": 48.0790692040378,
+      "longitude": 7.35850394868308,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Loge maçonnique de Colmar is a distinctive architectural landmark in the city.",
+        "fr": "Loge maçonnique de Colmar est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA68000048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-loge-maconnique-de-colmar-pa68000048",
+      "latitude": 48.0696849702823,
+      "longitude": 7.359507916279121,
+      "name": {
+        "en": "Loge maçonnique de Colmar",
+        "fr": "Loge maçonnique de Colmar"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bartholdi is one of the city's notable cultural landmarks.",
+        "fr": "musée Bartholdi compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0027",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-musee-bartholdi-m0027",
+      "latitude": 48.076747,
+      "longitude": 7.357746,
+      "name": {
+        "en": "musée Bartholdi",
+        "fr": "musée Bartholdi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Unterlinden is one of the city's notable cultural landmarks.",
+        "fr": "musée Unterlinden compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0028",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-musee-unterlinden-m0028",
+      "latitude": 48.079918,
+      "longitude": 7.355464,
+      "name": {
+        "en": "musée Unterlinden",
+        "fr": "musée Unterlinden"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle et d'ethnographie is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle et d'ethnographie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7033",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colmar-museum-d-histoire-naturelle-et-d-ethnographie-m7033",
+      "latitude": 48.073594,
+      "longitude": 7.35872,
+      "name": {
+        "en": "muséum d'histoire naturelle et d'ethnographie",
+        "fr": "muséum d'histoire naturelle et d'ethnographie"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue de l'amiral Bruat is a notable work of public art and local memory.",
+        "fr": "Statue de l'amiral Bruat est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA00085407",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-statue-de-l-amiral-bruat-pa00085407",
+      "latitude": 48.075578898417,
+      "longitude": 7.35275827301661,
+      "name": {
+        "en": "Statue de l'amiral Bruat",
+        "fr": "Statue de l'amiral Bruat"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue du Général Rapp is a notable work of public art and local memory.",
+        "fr": "Statue du Général Rapp est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA00085408",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-statue-du-general-rapp-pa00085408",
+      "latitude": 48.0770255424072,
+      "longitude": 7.354190911670391,
+      "name": {
+        "en": "Statue du Général Rapp",
+        "fr": "Statue du Général Rapp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison des Têtes is a distinctive architectural landmark in the city.",
+        "fr": "Maison des Têtes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085380",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-maison-des-tetes-pa00085380",
+      "latitude": 48.0786208459136,
+      "longitude": 7.35555466772773,
+      "name": {
+        "en": "Maison des Têtes",
+        "fr": "Maison des Têtes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085382",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-maison-pa00085382",
+      "latitude": 48.0771703759674,
+      "longitude": 7.355525149952769,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Pfister is a distinctive architectural landmark in the city.",
+        "fr": "Maison Pfister est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085378",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-maison-pfister-pa00085378",
+      "latitude": 48.0767493944335,
+      "longitude": 7.35814955304712,
+      "name": {
+        "en": "Maison Pfister",
+        "fr": "Maison Pfister"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Maison Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085394",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-maison-saint-jean-pa00085394",
+      "latitude": 48.0749299984276,
+      "longitude": 7.357624419017031,
+      "name": {
+        "en": "Maison Saint-Jean",
+        "fr": "Maison Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maisonnette Bohn is a distinctive architectural landmark in the city.",
+        "fr": "Maisonnette Bohn est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085395",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-maisonnette-bohn-pa00085395",
+      "latitude": 48.0765184715784,
+      "longitude": 7.358898245967801,
+      "name": {
+        "en": "Maisonnette Bohn",
+        "fr": "Maisonnette Bohn"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085409",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colmar-synagogue-pa00085409",
+      "latitude": 48.0769765169284,
+      "longitude": 7.36250132196461,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

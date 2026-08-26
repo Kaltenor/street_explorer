@@ -1,0 +1,204 @@
+{
+  "id": "villiers-sur-marne-v1",
+  "cityId": "villiers-sur-marne-fr",
+  "cityZoneId": "relation/108300",
+  "cityName": {
+    "en": "Villiers-sur-Marne",
+    "fr": "Villiers-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "conservatoire Claude Debussy is one of the city's notable cultural landmarks.",
+        "fr": "conservatoire situé à Villiers-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719028",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-conservatoire-claude-debussy-q88719028",
+      "latitude": 48.827149,
+      "longitude": 2.542252,
+      "name": {
+        "en": "conservatoire Claude Debussy",
+        "fr": "conservatoire Claude Debussy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819865",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-eglise-saint-jacques-saint-christophe-de-villiers-sur-marne-q29819865",
+      "latitude": 48.82697,
+      "longitude": 2.54249,
+      "name": {
+        "en": "église Saint-Jacques-Saint-Christophe de Villiers-sur-Marne",
+        "fr": "église Saint-Jacques-Saint-Christophe de Villiers-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Villiers-sur-Marne, France",
+        "fr": "édifice de Villiers-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412817",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-hotel-de-ville-de-villiers-sur-marne-q83412817",
+      "latitude": 48.8261,
+      "longitude": 2.5408,
+      "name": {
+        "en": "hôtel de ville de Villiers-sur-Marne",
+        "fr": "hôtel de ville de Villiers-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la guerre 1870-1871 de Villiers-sur-Marne is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Villiers-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719396",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-monument-aux-morts-de-la-guerre-1870-1871-de-villiers-sur-marne-q88719396",
+      "latitude": 48.833881,
+      "longitude": 2.54415,
+      "name": {
+        "en": "monument aux morts de la guerre 1870-1871 de Villiers-sur-Marne",
+        "fr": "monument aux morts de la guerre 1870-1871 de Villiers-sur-Marne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Emile Jean is one of the city's notable cultural landmarks.",
+        "fr": "musée Emile Jean compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0430",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "villiers-sur-marne-musee-emile-jean-m0430",
+      "latitude": 48.826701,
+      "longitude": 2.543144,
+      "name": {
+        "en": "musée Emile Jean",
+        "fr": "musée Emile Jean"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "street in Villiers-sur-Marne, France",
+        "fr": "voie de Villiers-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111204929",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-parc-victoria-q111204929",
+      "latitude": 48.81818689,
+      "longitude": 2.53801275,
+      "name": {
+        "en": "parc Victoria",
+        "fr": "parc Victoria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Villiers-sur-Marne, France",
+        "fr": "place de Villiers-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111205142",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-place-de-l-eglise-q111205142",
+      "latitude": 48.827169762,
+      "longitude": 2.54228375,
+      "name": {
+        "en": "place de l'Église",
+        "fr": "place de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Villiers-sur-Marne, France",
+        "fr": "place de Villiers-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111226569",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-place-de-l-hotel-de-ville-q111226569",
+      "latitude": 48.82611,
+      "longitude": 2.54099,
+      "name": {
+        "en": "place de l'Hôtel de Ville",
+        "fr": "place de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q18745100",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-villiers-champigny-bry-q18745100",
+      "latitude": 48.824,
+      "longitude": 2.52621,
+      "name": {
+        "en": "Villiers - Champigny - Bry",
+        "fr": "Villiers - Champigny - Bry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villiers-sur-Marne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1859401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-sur-marne-villiers-sur-marne-le-plessis-trevise-q1859401",
+      "latitude": 48.82306,
+      "longitude": 2.54222,
+      "name": {
+        "en": "Villiers-sur-Marne - Le Plessis-Trévise",
+        "fr": "Villiers-sur-Marne - Le Plessis-Trévise"
+      }
+    }
+  ]
+}

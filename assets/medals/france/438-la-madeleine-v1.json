@@ -1,0 +1,204 @@
+{
+  "id": "la-madeleine-v1",
+  "cityId": "la-madeleine-fr",
+  "cityZoneId": "relation/58617",
+  "cityName": {
+    "en": "La Madeleine",
+    "fr": "La Madeleine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Botanique is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-botanique-q106541887",
+      "latitude": 50.64901944,
+      "longitude": 3.078863889,
+      "name": {
+        "en": "Botanique",
+        "fr": "Botanique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre d'incendie et de secours de La Madeleine is a distinctive architectural landmark in the city.",
+        "fr": "centre d'incendie et de secours de La Madeleine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q97143456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-centre-d-incendie-et-de-secours-de-la-madeleine-q97143456",
+      "latitude": 50.65329,
+      "longitude": 3.06877,
+      "name": {
+        "en": "centre d'incendie et de secours de La Madeleine",
+        "fr": "centre d'incendie et de secours de La Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41784541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-eglise-notre-dame-de-lourdes-de-la-madeleine-q41784541",
+      "latitude": 50.64921,
+      "longitude": 3.07673,
+      "name": {
+        "en": "église Notre-Dame-de-Lourdes de La Madeleine",
+        "fr": "église Notre-Dame-de-Lourdes de La Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41784542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-eglise-sainte-marie-madeleine-de-la-madeleine-q41784542",
+      "latitude": 50.65422,
+      "longitude": 3.07448,
+      "name": {
+        "en": "église Sainte-Marie-Madeleine de La Madeleine",
+        "fr": "église Sainte-Marie-Madeleine de La Madeleine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in La Madeleine, France",
+        "fr": "jardin public français"
+      },
+      "externalIdentity": {
+        "id": "Q2412116",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-jardin-des-geants-q2412116",
+      "latitude": 50.6434,
+      "longitude": 3.07482,
+      "name": {
+        "en": "jardin des Géants",
+        "fr": "jardin des Géants"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Lille, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2406603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-la-madeleine-q2406603",
+      "latitude": 50.660766,
+      "longitude": 3.072475,
+      "name": {
+        "en": "La Madeleine",
+        "fr": "La Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Nord department, France",
+        "fr": "siège municipal de La Madeleine, dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119313807",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-mairie-de-la-madeleine-q119313807",
+      "latitude": 50.65404439,
+      "longitude": 3.073883313,
+      "name": {
+        "en": "mairie de La Madeleine",
+        "fr": "mairie de La Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Romarin is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541886",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-romarin-q106541886",
+      "latitude": 50.64539444,
+      "longitude": 3.075033333,
+      "name": {
+        "en": "Romarin",
+        "fr": "Romarin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Saint-Maur is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541888",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-saint-maur-q106541888",
+      "latitude": 50.651775,
+      "longitude": 3.081841667,
+      "name": {
+        "en": "Saint-Maur",
+        "fr": "Saint-Maur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square botanique is a distinctive architectural landmark in the city.",
+        "fr": "square botanique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120273372",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-madeleine-square-botanique-q120273372",
+      "latitude": 50.64727,
+      "longitude": 3.08162,
+      "name": {
+        "en": "square botanique",
+        "fr": "square botanique"
+      }
+    }
+  ]
+}

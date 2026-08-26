@@ -1,0 +1,394 @@
+{
+  "id": "cergy-v1",
+  "cityId": "cergy-fr",
+  "cityZoneId": "relation/120955",
+  "cityName": {
+    "en": "Cergy",
+    "fr": "Cergy"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-purpose arena in France primarily used as an ice rink",
+        "fr": "patinoire"
+      },
+      "externalIdentity": {
+        "id": "Q18785454",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-aren-ice-q18785454",
+      "latitude": 49.051637,
+      "longitude": 2.056275,
+      "name": {
+        "en": "Aren'ice",
+        "fr": "Aren'ice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "monumental artwork by Dani Karavan",
+        "fr": "œuvre monumentale conçue par Dani Karavan"
+      },
+      "externalIdentity": {
+        "id": "Q15063077",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-axe-majeur-q15063077",
+      "latitude": 49.043101,
+      "longitude": 2.036762,
+      "name": {
+        "en": "Axe majeur",
+        "fr": "Axe majeur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q723572",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-cergy-le-haut-q723572",
+      "latitude": 49.048333,
+      "longitude": 2.011667,
+      "name": {
+        "en": "Cergy-le-Haut",
+        "fr": "Cergy-le-Haut"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q377811",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-cergy-prefecture-q377811",
+      "latitude": 49.036111,
+      "longitude": 2.080278,
+      "name": {
+        "en": "Cergy-Préfecture",
+        "fr": "Cergy-Préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1617169",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-cergy-saint-christophe-q1617169",
+      "latitude": 49.049444,
+      "longitude": 2.034167,
+      "name": {
+        "en": "Cergy-Saint-Christophe",
+        "fr": "Cergy-Saint-Christophe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Val-d'Oise, in France",
+        "fr": "chapelle située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q121366909",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-chapelle-saint-louis-de-cergy-q121366909",
+      "latitude": 49.03185,
+      "longitude": 2.076,
+      "name": {
+        "en": "chapelle Saint-Louis de Cergy",
+        "fr": "chapelle Saint-Louis de Cergy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Christophe is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Christophe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cergy-eglise-saint-christophe-pa00080012",
+      "latitude": 49.0334391362437,
+      "longitude": 2.0617378566879,
+      "name": {
+        "en": "Église Saint-Christophe",
+        "fr": "Église Saint-Christophe"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans le Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q2886599",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-ile-de-loisirs-de-cergy-pontoise-q2886599",
+      "latitude": 49.0308,
+      "longitude": 2.0486,
+      "name": {
+        "en": "Île de loisirs de Cergy-Pontoise",
+        "fr": "Île de loisirs de Cergy-Pontoise"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136049677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-monument-aux-morts-de-cergy-q136049677",
+      "latitude": 49.03411,
+      "longitude": 2.06203,
+      "name": {
+        "en": "monument aux morts de Cergy",
+        "fr": "monument aux morts de Cergy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour des Cerclades is an important witness to the city's history.",
+        "fr": "Immeuble à Cergy"
+      },
+      "externalIdentity": {
+        "id": "Q140051657",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-tour-des-cerclades-q140051657",
+      "latitude": 49.037156,
+      "longitude": 2.081512,
+      "name": {
+        "en": "Tour des Cerclades",
+        "fr": "Tour des Cerclades"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour EDF-GDF is an important witness to the city's history.",
+        "fr": "Immeuble à Cergy"
+      },
+      "externalIdentity": {
+        "id": "Q3533064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-tour-edf-gdf-q3533064",
+      "latitude": 49.03555556,
+      "longitude": 2.07916667,
+      "name": {
+        "en": "Tour EDF-GDF",
+        "fr": "Tour EDF-GDF"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26816946",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-grande-mosquee-de-cergy-q26816946",
+      "latitude": 49.050262,
+      "longitude": 2.016856,
+      "name": {
+        "en": "Grande mosquée de Cergy",
+        "fr": "Grande mosquée de Cergy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in France",
+        "fr": "quartier de Cergy"
+      },
+      "externalIdentity": {
+        "id": "Q3126289",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-ham-q3126289",
+      "latitude": 49.02749,
+      "longitude": 2.05753,
+      "name": {
+        "en": "Ham",
+        "fr": "Ham"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French administrative building, Prefecture hotel",
+        "fr": "bâtiment administratif"
+      },
+      "externalIdentity": {
+        "id": "Q3146106",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-hotel-de-prefecture-du-val-d-oise-q3146106",
+      "latitude": 49.0353,
+      "longitude": 2.07792,
+      "name": {
+        "en": "hôtel de préfecture du Val-d'Oise",
+        "fr": "hôtel de préfecture du Val-d'Oise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Institut des techniques informatiques is a distinctive architectural landmark in the city.",
+        "fr": "Institut des techniques informatiques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2129713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-institut-des-techniques-informatiques-q2129713",
+      "latitude": 49.0412,
+      "longitude": 2.02912,
+      "name": {
+        "en": "Institut des techniques informatiques",
+        "fr": "Institut des techniques informatiques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lavoir de la Rousselette is a distinctive architectural landmark in the city.",
+        "fr": "Lavoir de la Rousselette est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q27513277",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-lavoir-de-la-rousselette-q27513277",
+      "latitude": 49.037513,
+      "longitude": 2.059008,
+      "name": {
+        "en": "Lavoir de la Rousselette",
+        "fr": "Lavoir de la Rousselette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "shopping mall in Cergy, France",
+        "fr": "centre commercial à Cergy-Pontoise"
+      },
+      "externalIdentity": {
+        "id": "Q3230329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-les-3-fontaines-q3230329",
+      "latitude": 49.0383,
+      "longitude": 2.08204,
+      "name": {
+        "en": "Les 3 Fontaines",
+        "fr": "Les 3 Fontaines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Menhir dit la Pierre-Fouret is a distinctive architectural landmark in the city.",
+        "fr": "Menhir dit la Pierre-Fouret est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cergy-menhir-dit-la-pierre-fouret-pa00080014",
+      "latitude": 49.0424806295522,
+      "longitude": 2.04548453955149,
+      "name": {
+        "en": "Menhir dit la Pierre-Fouret",
+        "fr": "Menhir dit la Pierre-Fouret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "artificial whitewater course in Cergy-Pontoise, France",
+        "fr": "stade d'eau vive située à Cergy-Pontoise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q104159657",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-stade-d-eaux-vives-de-cergy-pontoise-q104159657",
+      "latitude": 49.0317,
+      "longitude": 2.0523,
+      "name": {
+        "en": "Stade d'eaux vives de Cergy-Pontoise",
+        "fr": "Stade d'eaux vives de Cergy-Pontoise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Cergy, France",
+        "fr": "Town hall of Cergy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q133271617",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cergy-town-hall-of-cergy-q133271617",
+      "latitude": 49.05258,
+      "longitude": 2.03531,
+      "name": {
+        "en": "Town hall of Cergy",
+        "fr": "Town hall of Cergy"
+      }
+    }
+  ]
+}

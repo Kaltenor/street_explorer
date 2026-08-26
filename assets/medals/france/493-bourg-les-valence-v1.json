@@ -1,0 +1,204 @@
+{
+  "id": "bourg-les-valence-v1",
+  "cityId": "bourg-les-valence-fr",
+  "cityZoneId": "relation/63570",
+  "cityName": {
+    "en": "Bourg-lès-Valence",
+    "fr": "Bourg-lès-Valence"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "municipal archive in France",
+        "fr": "service d'archives communales de Bourg-lès-Valence"
+      },
+      "externalIdentity": {
+        "id": "Q64160129",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-archives-municipales-de-bourg-les-valence-q64160129",
+      "latitude": 44.947322,
+      "longitude": 4.894038,
+      "name": {
+        "en": "archives municipales de Bourg-lès-Valence",
+        "fr": "archives municipales de Bourg-lès-Valence"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "association d'arts martiaux Interne Chinois is a distinctive architectural landmark in the city.",
+        "fr": "association d'arts martiaux Interne Chinois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120295422",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-association-d-arts-martiaux-interne-chinois-q120295422",
+      "latitude": 44.9408,
+      "longitude": 4.89861,
+      "name": {
+        "en": "association d'arts martiaux Interne Chinois",
+        "fr": "association d'arts martiaux Interne Chinois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "boucle PDIPR de Bourg-lès-Valence is a distinctive architectural landmark in the city.",
+        "fr": "boucle PDIPR de Bourg-lès-Valence est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120295337",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-boucle-pdipr-de-bourg-les-valence-q120295337",
+      "latitude": 44.940044,
+      "longitude": 4.892742,
+      "name": {
+        "en": "boucle PDIPR de Bourg-lès-Valence",
+        "fr": "boucle PDIPR de Bourg-lès-Valence"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Drôme, France",
+        "fr": "commune française du département de la Drôme"
+      },
+      "externalIdentity": {
+        "id": "Q269430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-bourg-les-valence-q269430",
+      "latitude": 44.9475,
+      "longitude": 4.895277777,
+      "name": {
+        "en": "Bourg-lès-Valence",
+        "fr": "Bourg-lès-Valence"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centrale électrique de Bourg-lès-Valence is a distinctive architectural landmark in the city.",
+        "fr": "centrale hydroélectrique sur le Rhône en France"
+      },
+      "externalIdentity": {
+        "id": "Q11962030",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-centrale-electrique-de-bourg-les-valence-q11962030",
+      "latitude": 44.9612888,
+      "longitude": 4.8721763,
+      "name": {
+        "en": "centrale électrique de Bourg-lès-Valence",
+        "fr": "centrale électrique de Bourg-lès-Valence"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Le Rhône is one of the city's notable cultural landmarks.",
+        "fr": "théâtre municipal à Bourg-lès-Valence, France"
+      },
+      "externalIdentity": {
+        "id": "Q3226459",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-le-rhone-q3226459",
+      "latitude": 44.9439223,
+      "longitude": 4.8868777,
+      "name": {
+        "en": "Le Rhône",
+        "fr": "Le Rhône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Drôme, in France",
+        "fr": "église située dans la Drôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41750715",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-eglise-saint-pierre-de-bourg-les-valence-q41750715",
+      "latitude": 44.9400295,
+      "longitude": 4.8919241,
+      "name": {
+        "en": "église Saint-Pierre de Bourg-lès-Valence",
+        "fr": "église Saint-Pierre de Bourg-lès-Valence"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "EHPAD les Jardins de Lallet is a distinctive architectural landmark in the city.",
+        "fr": "EHPAD situé en France"
+      },
+      "externalIdentity": {
+        "id": "Q112965471",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-ehpad-les-jardins-de-lallet-q112965471",
+      "latitude": 44.956455,
+      "longitude": 4.905165,
+      "name": {
+        "en": "EHPAD les Jardins de Lallet",
+        "fr": "EHPAD les Jardins de Lallet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "gare de péage de Valence Nord is a distinctive architectural landmark in the city.",
+        "fr": "gare de péage située en France"
+      },
+      "externalIdentity": {
+        "id": "Q127731828",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-gare-de-peage-de-valence-nord-q127731828",
+      "latitude": 44.9701995,
+      "longitude": 4.88755045,
+      "name": {
+        "en": "gare de péage de Valence Nord",
+        "fr": "gare de péage de Valence Nord"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hotel in Bourg-lès-Valence, France",
+        "fr": "Kyriad Valence Nord Bourg-Les-Valence est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q111877060",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-les-valence-kyriad-valence-nord-bourg-les-valence-q111877060",
+      "latitude": 44.95859,
+      "longitude": 4.88897,
+      "name": {
+        "en": "Kyriad Valence Nord Bourg-Les-Valence",
+        "fr": "Kyriad Valence Nord Bourg-Les-Valence"
+      }
+    }
+  ]
+}

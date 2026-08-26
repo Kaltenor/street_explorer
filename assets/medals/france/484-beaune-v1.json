@@ -1,0 +1,204 @@
+{
+  "id": "beaune-v1",
+  "cityId": "beaune-fr",
+  "cityZoneId": "relation/74091",
+  "cityName": {
+    "en": "Beaune",
+    "fr": "Beaune"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastion Saint-Martin is an important witness to the city's history.",
+        "fr": "Bastion Saint-Martin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-bastion-saint-martin-pa00112099",
+      "latitude": 47.025369148955605,
+      "longitude": 4.83452288270796,
+      "name": {
+        "en": "Bastion Saint-Martin",
+        "fr": "Bastion Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-beffroi-pa00112102",
+      "latitude": 47.0245990386611,
+      "longitude": 4.83769025655916,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame et son presbytère is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame et son presbytère est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112108",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-eglise-notre-dame-et-son-presbytere-pa00112108",
+      "latitude": 47.0242404343198,
+      "longitude": 4.83653267726465,
+      "name": {
+        "en": "Église Notre-Dame et son presbytère",
+        "fr": "Église Notre-Dame et son presbytère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-eglise-saint-nicolas-pa00112109",
+      "latitude": 47.0311852497258,
+      "longitude": 4.8429204046417,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications (anciennes) is an important witness to the city's history.",
+        "fr": "Fortifications (anciennes) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112110",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-fortifications-anciennes-pa00112110",
+      "latitude": 47.024698644996,
+      "longitude": 4.84265844672271,
+      "name": {
+        "en": "Fortifications (anciennes)",
+        "fr": "Fortifications (anciennes)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Saulx (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Saulx (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112116",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-hotel-de-saulx-ancien-pa00112116",
+      "latitude": 47.02264863586911,
+      "longitude": 4.83581204219163,
+      "name": {
+        "en": "Hôtel de Saulx (ancien)",
+        "fr": "Hôtel de Saulx (ancien)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0134",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "beaune-musee-des-beaux-arts-m0134",
+      "latitude": 47.02097,
+      "longitude": 4.839393,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vin de Bourgogne is one of the city's notable cultural landmarks.",
+        "fr": "musée du vin de Bourgogne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0133",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "beaune-musee-du-vin-de-bourgogne-m0133",
+      "latitude": 47.023618,
+      "longitude": 4.837574,
+      "name": {
+        "en": "musée du vin de Bourgogne",
+        "fr": "musée du vin de Bourgogne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Saint-Nicolas is an important witness to the city's history.",
+        "fr": "Porte Saint-Nicolas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-porte-saint-nicolas-pa00112130",
+      "latitude": 47.0272464381437,
+      "longitude": 4.83947928598412,
+      "name": {
+        "en": "Porte Saint-Nicolas",
+        "fr": "Porte Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Ducs de Bourgogne (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Ducs de Bourgogne (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112113",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaune-hotel-des-ducs-de-bourgogne-ancien-pa00112113",
+      "latitude": 47.0233844072095,
+      "longitude": 4.83706646273381,
+      "name": {
+        "en": "Hôtel des Ducs de Bourgogne (ancien)",
+        "fr": "Hôtel des Ducs de Bourgogne (ancien)"
+      }
+    }
+  ]
+}

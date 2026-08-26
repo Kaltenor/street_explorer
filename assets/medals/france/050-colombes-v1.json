@@ -1,0 +1,394 @@
+{
+  "id": "colombes-v1",
+  "cityId": "colombes-fr",
+  "cityZoneId": "relation/91738",
+  "cityName": {
+    "en": "Colombes",
+    "fr": "Colombes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église à Colombes (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q15945096",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-ancien-eglise-saint-pierre-saint-paul-de-colombes-q15945096",
+      "latitude": 48.9234,
+      "longitude": 2.25262,
+      "name": {
+        "en": "Ancien église Saint-Pierre-Saint-Paul de Colombes",
+        "fr": "Ancien église Saint-Pierre-Saint-Paul de Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Hauts-de-Seine, in France",
+        "fr": "chapelle située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21029455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-chapelle-saint-etienne-saint-henri-de-colombes-q21029455",
+      "latitude": 48.929924,
+      "longitude": 2.26182,
+      "name": {
+        "en": "chapelle Saint-Étienne-Saint-Henri de Colombes",
+        "fr": "chapelle Saint-Étienne-Saint-Henri de Colombes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Colombes, France",
+        "fr": "ancien cinéma situé à Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96605393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-colombes-palace-q96605393",
+      "latitude": 48.92371,
+      "longitude": 2.25799,
+      "name": {
+        "en": "Colombes Palace",
+        "fr": "Colombes Palace"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2696932",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-colombes-q2696932",
+      "latitude": 48.923476,
+      "longitude": 2.259512,
+      "name": {
+        "en": "Colombes",
+        "fr": "Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21029458",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-eglise-du-sacre-c-ur-du-petit-colombes-q21029458",
+      "latitude": 48.916827,
+      "longitude": 2.234014,
+      "name": {
+        "en": "église du Sacré-Cœur du Petit-Colombes",
+        "fr": "église du Sacré-Cœur du Petit-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "colombes-eglise-pa00088100",
+      "latitude": 48.9234002710983,
+      "longitude": 2.25266263022333,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21029457",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-eglise-sainte-marie-des-vallees-q21029457",
+      "latitude": 48.915076,
+      "longitude": 2.26047,
+      "name": {
+        "en": "église Sainte-Marie-des-Vallées",
+        "fr": "église Sainte-Marie-des-Vallées"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place Rhin-et-Danube is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Wallace située à Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140052917",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-fontaine-wallace-place-rhin-et-danube-q140052917",
+      "latitude": 48.923705,
+      "longitude": 2.257057,
+      "name": {
+        "en": "fontaine Wallace, place Rhin-et-Danube",
+        "fr": "fontaine Wallace, place Rhin-et-Danube"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Colombes, France",
+        "fr": "édifice de Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412747",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-hotel-de-ville-de-colombes-q83412747",
+      "latitude": 48.9225,
+      "longitude": 2.2545,
+      "name": {
+        "en": "hôtel de ville de Colombes",
+        "fr": "hôtel de ville de Colombes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Colombes, France",
+        "fr": "cinéma à Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-mjc-theatre-de-colombes-q61860910",
+      "latitude": 48.92499,
+      "longitude": 2.25073,
+      "name": {
+        "en": "MJC Théâtre de Colombes",
+        "fr": "MJC Théâtre de Colombes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Colombes is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602265",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-monument-aux-morts-de-colombes-q96602265",
+      "latitude": 48.92333,
+      "longitude": 2.25032,
+      "name": {
+        "en": "monument aux morts de Colombes",
+        "fr": "monument aux morts de Colombes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0409",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "colombes-musee-municipal-d-art-et-d-histoire-m0409",
+      "latitude": 48.923321,
+      "longitude": 2.252039,
+      "name": {
+        "en": "musée municipal d'art et d'histoire",
+        "fr": "musée municipal d'art et d'histoire"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Caillebotte is one of the city's notable green or natural landmarks.",
+        "fr": "parc de Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q120254270",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-parc-caillebotte-q120254270",
+      "latitude": 48.93184,
+      "longitude": 2.27026,
+      "name": {
+        "en": "parc Caillebotte",
+        "fr": "parc Caillebotte"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Colombes, France",
+        "fr": "parc de Colombes, Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q16668900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-parc-pierre-lagravere-q16668900",
+      "latitude": 48.9254,
+      "longitude": 2.23047,
+      "name": {
+        "en": "parc Pierre-Lagravère",
+        "fr": "parc Pierre-Lagravère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3035039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-le-stade-q3035039",
+      "latitude": 48.931431,
+      "longitude": 2.260668,
+      "name": {
+        "en": "Le Stade",
+        "fr": "Le Stade"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q14628936",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-pont-aqueduc-de-colombes-q14628936",
+      "latitude": 48.9331,
+      "longitude": 2.24167,
+      "name": {
+        "en": "pont-aqueduc de Colombes",
+        "fr": "pont-aqueduc de Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Colombes",
+        "fr": "pont à Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109676696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-pont-de-charlebourg-q109676696",
+      "latitude": 48.90879,
+      "longitude": 2.23706,
+      "name": {
+        "en": "pont de Charlebourg",
+        "fr": "pont de Charlebourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Colombes, France",
+        "fr": "pont à Colombes"
+      },
+      "externalIdentity": {
+        "id": "Q96644754",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-pont-de-la-puce-q96644754",
+      "latitude": 48.91354,
+      "longitude": 2.25316,
+      "name": {
+        "en": "pont de la Puce",
+        "fr": "pont de la Puce"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square Edgar-Quinet is a distinctive architectural landmark in the city.",
+        "fr": "square situé à Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96605956",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-square-edgar-quinet-q96605956",
+      "latitude": 48.92397,
+      "longitude": 2.2475,
+      "name": {
+        "en": "square Edgar-Quinet",
+        "fr": "square Edgar-Quinet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Multi-purpose stadium at Colombes, France",
+        "fr": "complexe sportif"
+      },
+      "externalIdentity": {
+        "id": "Q754502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "colombes-stade-departemental-yves-du-manoir-q754502",
+      "latitude": 48.93145,
+      "longitude": 2.24961,
+      "name": {
+        "en": "stade départemental Yves-du-Manoir",
+        "fr": "stade départemental Yves-du-Manoir"
+      }
+    }
+  ]
+}

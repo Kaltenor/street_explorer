@@ -1,0 +1,204 @@
+{
+  "id": "marignane-v1",
+  "cityId": "marignane-fr",
+  "cityZoneId": "relation/72113",
+  "cityName": {
+    "en": "Marignane",
+    "fr": "Marignane"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Marseille, France",
+        "fr": "aéroport desservant Marseille et Aix-en-Provence (Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France)"
+      },
+      "externalIdentity": {
+        "id": "Q651190",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-aeroport-marseille-provence-q651190",
+      "latitude": 43.436666666,
+      "longitude": 5.215,
+      "name": {
+        "en": "aéroport Marseille-Provence",
+        "fr": "aéroport Marseille-Provence"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château des Covet de Marignane, actuel hôtel de ville is an important witness to the city's history.",
+        "fr": "Ancien château des Covet de Marignane, actuel hôtel de ville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081322",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marignane-ancien-chateau-des-covet-de-marignane-actuel-hotel-de-ville-pa00081322",
+      "latitude": 43.4171511982837,
+      "longitude": 5.21553164263022,
+      "name": {
+        "en": "Ancien château des Covet de Marignane, actuel hôtel de ville",
+        "fr": "Ancien château des Covet de Marignane, actuel hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Bouches-du-Rhône, in France",
+        "fr": "chapelle située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2956591",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-chapelle-notre-dame-de-pitie-de-marignane-q2956591",
+      "latitude": 43.4057,
+      "longitude": 5.23405,
+      "name": {
+        "en": "chapelle Notre-Dame-de-Pitié de Marignane",
+        "fr": "chapelle Notre-Dame-de-Pitié de Marignane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Marignane, France",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2969801",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-chateau-de-marignane-q2969801",
+      "latitude": 43.4169,
+      "longitude": 5.21472,
+      "name": {
+        "en": "château de Marignane",
+        "fr": "château de Marignane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081511",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marignane-eglise-saint-nicolas-pa00081511",
+      "latitude": 43.4163201176046,
+      "longitude": 5.214357114493,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bouches-du-Rhône, France",
+        "fr": "commune française du département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q243317",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-marignane-q243317",
+      "latitude": 43.416944444,
+      "longitude": 5.214722222,
+      "name": {
+        "en": "Marignane",
+        "fr": "Marignane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Oppidum de Notre-Dame de Pitié is an important witness to the city's history.",
+        "fr": "Oppidum de Notre-Dame de Pitié est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125710",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marignane-oppidum-de-notre-dame-de-pitie-pa00125710",
+      "latitude": 43.4059244011368,
+      "longitude": 5.23429498577665,
+      "name": {
+        "en": "Oppidum de Notre-Dame de Pitié",
+        "fr": "Oppidum de Notre-Dame de Pitié"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "hijacking of an Air France commercial airliner by a terrorist group in 1994",
+        "fr": "prise d'otages en 1994"
+      },
+      "externalIdentity": {
+        "id": "Q1574009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-prise-d-otages-du-vol-8969-air-france-q1574009",
+      "latitude": 43.43972222,
+      "longitude": 5.215,
+      "name": {
+        "en": "prise d'otages du Vol 8969 Air France",
+        "fr": "prise d'otages du Vol 8969 Air France"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Marignane, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2471508",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-pas-des-lanciers-q2471508",
+      "latitude": 43.409722222,
+      "longitude": 5.253611111,
+      "name": {
+        "en": "Pas-des-Lanciers",
+        "fr": "Pas-des-Lanciers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canal tunnel",
+        "fr": "canal de Marseille, Provence-Alpes-Côte d'Azur, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1032676",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marignane-tunnel-du-rove-q1032676",
+      "latitude": 43.39955,
+      "longitude": 5.22482,
+      "name": {
+        "en": "tunnel du Rove",
+        "fr": "tunnel du Rove"
+      }
+    }
+  ]
+}

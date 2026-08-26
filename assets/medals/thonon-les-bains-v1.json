@@ -1,0 +1,131 @@
+{
+  "id": "thonon-les-bains-v1",
+  "cityId": "thonon-les-bains-fr",
+  "cityZoneId": "relation/105786",
+  "cityName": { "en": "Thonon-les-Bains", "fr": "Thonon-les-Bains" },
+  "version": 1,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Landmark identities and anchor coordinates: OpenStreetMap contributors, ODbL 1.0. Roster and localized copy reviewed against Ville de Thonon-les-Bains culture, heritage, parks and cartography resources and Thonon-les-Bains Tourist Office.",
+  "medals": [
+    {
+      "id": "thonon-les-bains-chateau-de-ripaille",
+      "category": "history",
+      "name": { "en": "Château de Ripaille", "fr": "Château de Ripaille" },
+      "description": {
+        "en": "The lakeside retreat of Amédée VIII, first Duke of Savoy, later became a Carthusian house within the historic Ripaille estate.",
+        "fr": "La retraite lémanique d’Amédée VIII, premier duc de Savoie, devint ensuite une chartreuse au cœur du domaine historique de Ripaille."
+      },
+      "latitude": 46.38775,
+      "longitude": 6.48687,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 67052413 }
+    },
+    {
+      "id": "thonon-les-bains-chateau-de-rives",
+      "category": "history",
+      "name": { "en": "Château de Rives", "fr": "Château de Rives" },
+      "description": {
+        "en": "This fourteenth-century former priory, also known as Château de Montjoux, watches over the traditional Rives fishing quarter.",
+        "fr": "Cet ancien prieuré du XIVe siècle, aussi appelé château de Montjoux, domine le quartier traditionnel des pêcheurs de Rives."
+      },
+      "latitude": 46.37536,
+      "longitude": 6.47829,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 67044468 }
+    },
+    {
+      "id": "thonon-les-bains-eglise-saint-hippolyte",
+      "category": "architecture",
+      "name": { "en": "Saint-Hippolyte Church", "fr": "Église Saint-Hippolyte" },
+      "description": {
+        "en": "Thonon’s oldest church preserves a medieval core enriched by exuberant Savoyard Baroque decoration.",
+        "fr": "La plus ancienne église de Thonon conserve un noyau médiéval enrichi d’un décor baroque savoyard exubérant."
+      },
+      "latitude": 46.37272,
+      "longitude": 6.47939,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 67052541 }
+    },
+    {
+      "id": "thonon-les-bains-basilique-saint-francois-de-sales",
+      "category": "architecture",
+      "name": { "en": "Saint-François-de-Sales Basilica", "fr": "Basilique Saint-François-de-Sales" },
+      "description": {
+        "en": "The early-twentieth-century basilica is distinguished by monumental sacred murals painted by Maurice Denis.",
+        "fr": "La basilique du début du XXe siècle se distingue par les grandes peintures murales sacrées de Maurice Denis."
+      },
+      "latitude": 46.37297,
+      "longitude": 6.47956,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 67043285 }
+    },
+    {
+      "id": "thonon-les-bains-musee-du-chablais",
+      "category": "culture",
+      "name": { "en": "Musée du Chablais", "fr": "Musée du Chablais" },
+      "description": {
+        "en": "Founded in 1863 and housed beneath Château de Sonnaz, the museum traces seven thousand years of Chablais history.",
+        "fr": "Fondé en 1863 et installé sous le château de Sonnaz, le musée retrace sept mille ans d’histoire du Chablais."
+      },
+      "latitude": 46.37359,
+      "longitude": 6.47822,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 5537445278 }
+    },
+    {
+      "id": "thonon-les-bains-ecomusee-peche-lac",
+      "category": "culture",
+      "name": { "en": "Lake Fishing Ecomuseum", "fr": "Écomusée de la Pêche et du Lac" },
+      "description": {
+        "en": "Three traditional fishermen’s huts preserve the techniques, boats and memory of professional fishing on Lake Geneva.",
+        "fr": "Trois guérites traditionnelles de pêcheurs conservent les techniques, les embarcations et la mémoire de la pêche professionnelle sur le Léman."
+      },
+      "latitude": 46.3751,
+      "longitude": 6.47757,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 67045504 }
+    },
+    {
+      "id": "thonon-les-bains-fontaine-hotel-de-ville",
+      "category": "art",
+      "name": { "en": "Town Hall Fountain", "fr": "Fontaine de l’Hôtel de Ville" },
+      "description": {
+        "en": "The 1737 town-hall fountain is a protected civic ornament at the heart of historic Thonon.",
+        "fr": "La fontaine de l’Hôtel de Ville, datée de 1737, est un ornement civique classé au cœur du Thonon historique."
+      },
+      "latitude": 46.37303,
+      "longitude": 6.47802,
+      "externalIdentity": { "source": "openstreetmap", "type": "node", "id": 6918343478 }
+    },
+    {
+      "id": "thonon-les-bains-monument-des-allobroges",
+      "category": "art",
+      "name": { "en": "Allobroges Monument", "fr": "Monument des Allobroges" },
+      "description": {
+        "en": "Inaugurated in 1923, this sculpted memorial honours both Thonon’s war dead and the revolutionary Allobroges Legion.",
+        "fr": "Inauguré en 1923, ce monument sculpté honore les morts de Thonon et la légion révolutionnaire des Allobroges."
+      },
+      "latitude": 46.36954,
+      "longitude": 6.48121,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 741280648 }
+    },
+    {
+      "id": "thonon-les-bains-parc-de-la-chataigneraie",
+      "category": "nature",
+      "name": { "en": "Châtaigneraie Park", "fr": "Parc de la Châtaigneraie" },
+      "description": {
+        "en": "This broad lakeside park at Saint-Disdille links chestnut-shaded lawns with the shore and nearby Dranse delta.",
+        "fr": "Ce vaste parc lacustre de Saint-Disdille relie ses pelouses ombragées de châtaigniers à la rive et au proche delta de la Dranse."
+      },
+      "latitude": 46.39989,
+      "longitude": 6.50077,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 202086200 }
+    },
+    {
+      "id": "thonon-les-bains-foret-de-ripaille",
+      "category": "nature",
+      "name": { "en": "Ripaille Forest", "fr": "Forêt de Ripaille" },
+      "description": {
+        "en": "Fifty-three hectares of woodland and arboretum extend the historic Ripaille estate along Lake Geneva.",
+        "fr": "Cinquante-trois hectares de forêt et d’arboretum prolongent le domaine historique de Ripaille au bord du Léman."
+      },
+      "latitude": 46.3947,
+      "longitude": 6.495,
+      "externalIdentity": { "source": "openstreetmap", "type": "way", "id": 514910260 }
+    }
+  ]
+}

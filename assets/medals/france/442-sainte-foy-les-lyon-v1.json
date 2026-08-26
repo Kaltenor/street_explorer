@@ -1,0 +1,204 @@
+{
+  "id": "sainte-foy-les-lyon-v1",
+  "cityId": "sainte-foy-les-lyon-fr",
+  "cityZoneId": "relation/192369",
+  "cityName": {
+    "en": "Sainte-Foy-lès-Lyon",
+    "fr": "Sainte-Foy-lès-Lyon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vélo'v bicycle-sharing station, Lyon region, France",
+        "fr": "station de vélopartage Vélo'v, région lyonnaise, France"
+      },
+      "externalIdentity": {
+        "id": "Q72273134",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-22001-ste-foy-place-st-luc-q72273134",
+      "latitude": 45.749565,
+      "longitude": 4.800896,
+      "name": {
+        "en": "22001 - Ste Foy - Place St Luc",
+        "fr": "22001 - Ste Foy - Place St Luc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Rhône, in France",
+        "fr": "chapelle située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110211513",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-chapelle-de-sainte-foy-les-lyon-q110211513",
+      "latitude": 45.73716,
+      "longitude": 4.80063,
+      "name": {
+        "en": "chapelle de Sainte-Foy-lès-Lyon",
+        "fr": "chapelle de Sainte-Foy-lès-Lyon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Bachasse is an important witness to the city's history.",
+        "fr": "château français situé à Sainte-Foy-lès-Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q2971122",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-chateau-de-la-bachasse-q2971122",
+      "latitude": 45.7242,
+      "longitude": 4.79151,
+      "name": {
+        "en": "château de la Bachasse",
+        "fr": "château de la Bachasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située à Sainte-Foy-lès-Lyon, France"
+      },
+      "externalIdentity": {
+        "id": "Q66817604",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-eglise-saint-luc-de-sainte-foy-les-lyon-q66817604",
+      "latitude": 45.75038,
+      "longitude": 4.80017,
+      "name": {
+        "en": "église Saint-Luc de Sainte-Foy-lès-Lyon",
+        "fr": "église Saint-Luc de Sainte-Foy-lès-Lyon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église Sainte-Foy is an important witness to the city's history.",
+        "fr": "Église Sainte-Foy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA69000079",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-foy-les-lyon-eglise-sainte-foy-pa69000079",
+      "latitude": 45.73686028858992,
+      "longitude": 4.80540307373966,
+      "name": {
+        "en": "Église Sainte-Foy",
+        "fr": "Église Sainte-Foy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q68165670",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-eglise-sainte-therese-de-la-plaine-de-sainte-foy-les-lyon-q68165670",
+      "latitude": 45.74587,
+      "longitude": 4.78839,
+      "name": {
+        "en": "église Sainte-Thérèse de la Plaine de Sainte-Foy-lès-Lyon",
+        "fr": "église Sainte-Thérèse de la Plaine de Sainte-Foy-lès-Lyon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Sainte-Foy is an important witness to the city's history.",
+        "fr": "fort de Sainte-Foy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3078234",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-fort-de-sainte-foy-q3078234",
+      "latitude": 45.7431,
+      "longitude": 4.80429,
+      "name": {
+        "en": "fort de Sainte-Foy",
+        "fr": "fort de Sainte-Foy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136077916",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-monument-aux-morts-de-sainte-foy-les-lyon-q136077916",
+      "latitude": 45.73405,
+      "longitude": 4.803772,
+      "name": {
+        "en": "monument aux morts de Sainte-Foy-lès-Lyon",
+        "fr": "monument aux morts de Sainte-Foy-lès-Lyon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q3364335",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-foy-les-lyon-parc-du-brulet-q3364335",
+      "latitude": 45.7461,
+      "longitude": 4.80528,
+      "name": {
+        "en": "parc du Brûlet",
+        "fr": "parc du Brûlet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du télégraphe is an important witness to the city's history.",
+        "fr": "Tour du télégraphe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118033",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-foy-les-lyon-tour-du-telegraphe-pa00118033",
+      "latitude": 45.735052511158656,
+      "longitude": 4.802191467900082,
+      "name": {
+        "en": "Tour du télégraphe",
+        "fr": "Tour du télégraphe"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "saint-jean-de-braye-v1",
+  "cityId": "saint-jean-de-braye-fr",
+  "cityZoneId": "relation/147554",
+  "cityName": {
+    "en": "Saint-Jean-de-Braye",
+    "fr": "Saint-Jean-de-Braye"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loiret, in France",
+        "fr": "chapelle à Saint-Jean-de-Braye (Loiret)"
+      },
+      "externalIdentity": {
+        "id": "Q22997025",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-chapelle-saint-michel-de-saint-jean-de-braye-q22997025",
+      "latitude": 47.9198,
+      "longitude": 1.9841,
+      "name": {
+        "en": "chapelle Saint-Michel de Saint-Jean-de-Braye",
+        "fr": "chapelle Saint-Michel de Saint-Jean-de-Braye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle Saint-Michel dépendant du château de Coquille is an important witness to the city's history.",
+        "fr": "Chapelle Saint-Michel dépendant du château de Coquille est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA45000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-jean-de-braye-chapelle-saint-michel-dependant-du-chateau-de-coquille-pa45000038",
+      "latitude": 47.9197788908097,
+      "longitude": 1.98414355064729,
+      "name": {
+        "en": "Chapelle Saint-Michel dépendant du château de Coquille",
+        "fr": "Chapelle Saint-Michel dépendant du château de Coquille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Loiret, in France",
+        "fr": "cimetière situé dans le Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110348656",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-cimetiere-communal-rue-de-fredeville-q110348656",
+      "latitude": 47.9123,
+      "longitude": 1.9843,
+      "name": {
+        "en": "cimetière communal, Rue de Frédeville",
+        "fr": "cimetière communal, Rue de Frédeville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Loiret, in France",
+        "fr": "cimetière situé dans le Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110348655",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-cimetiere-du-bourg-de-saint-jean-de-braye-q110348655",
+      "latitude": 47.9058,
+      "longitude": 1.9644,
+      "name": {
+        "en": "cimetière du Bourg de Saint-Jean-de-Braye",
+        "fr": "cimetière du Bourg de Saint-Jean-de-Braye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tramway stop in Orléans",
+        "fr": "station du tramway d'Orléans"
+      },
+      "externalIdentity": {
+        "id": "Q93095226",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-clos-du-hameau-q93095226",
+      "latitude": 47.910945797,
+      "longitude": 1.976263376,
+      "name": {
+        "en": "Clos du Hameau",
+        "fr": "Clos du Hameau"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Loiret department, France",
+        "fr": "monument aux morts du Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136074738",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-monument-aux-morts-de-saint-jean-de-braye-q136074738",
+      "latitude": 47.9058501,
+      "longitude": 1.9652435,
+      "name": {
+        "en": "monument aux morts de Saint-Jean-de-Braye",
+        "fr": "monument aux morts de Saint-Jean-de-Braye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-jean-de-braye-eglise-saint-jean-baptiste-pa00099011",
+      "latitude": 47.9039244770935,
+      "longitude": 1.9640750374539697,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eolienne Bollée is a distinctive architectural landmark in the city.",
+        "fr": "Eolienne Bollée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099047",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-jean-de-braye-eolienne-bollee-pa00099047",
+      "latitude": 47.90302231839769,
+      "longitude": 1.9379946640266708,
+      "name": {
+        "en": "Eolienne Bollée",
+        "fr": "Eolienne Bollée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "monastery located in Loiret, in France",
+        "fr": "monastère situé dans le Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56293326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-prieure-saint-loup-de-saint-jean-de-braye-q56293326",
+      "latitude": 47.903162,
+      "longitude": 1.943394,
+      "name": {
+        "en": "prieuré Saint-Loup de Saint-Jean-de-Braye",
+        "fr": "prieuré Saint-Loup de Saint-Jean-de-Braye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Jean-de-Braye, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097547",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-jean-de-braye-saint-jean-de-braye-q3097547",
+      "latitude": 47.909875,
+      "longitude": 1.977828,
+      "name": {
+        "en": "Saint-Jean-de-Braye",
+        "fr": "Saint-Jean-de-Braye"
+      }
+    }
+  ]
+}

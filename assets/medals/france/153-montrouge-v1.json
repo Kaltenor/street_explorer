@@ -1,0 +1,204 @@
+{
+  "id": "montrouge-v1",
+  "cityId": "montrouge-fr",
+  "cityZoneId": "relation/37026",
+  "cityName": {
+    "en": "Montrouge",
+    "fr": "Montrouge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Hauts-de-Seine, in France",
+        "fr": "chapelle située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q23001284",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-chapelle-saint-luc-de-montrouge-q23001284",
+      "latitude": 48.81083,
+      "longitude": 2.32317,
+      "name": {
+        "en": "chapelle Saint-Luc de Montrouge",
+        "fr": "chapelle Saint-Luc de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church building located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581836",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-eglise-saint-jacques-le-majeur-de-montrouge-q3581836",
+      "latitude": 48.8181,
+      "longitude": 2.32043,
+      "name": {
+        "en": "église Saint-Jacques-le-Majeur de Montrouge",
+        "fr": "église Saint-Jacques-le-Majeur de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q23001285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-eglise-saint-joseph-saint-raymond-de-montrouge-q23001285",
+      "latitude": 48.81459,
+      "longitude": 2.30957,
+      "name": {
+        "en": "église Saint-Joseph-Saint-Raymond de Montrouge",
+        "fr": "église Saint-Joseph-Saint-Raymond de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Montrouge, France",
+        "fr": "édifice à Montrouge, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913571",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-hotel-de-ville-de-montrouge-q61913571",
+      "latitude": 48.81874,
+      "longitude": 2.32051,
+      "name": {
+        "en": "hôtel de ville de Montrouge",
+        "fr": "hôtel de ville de Montrouge"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Hauts-de-Seine department, France",
+        "fr": "monument aux morts des Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136064359",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-monument-aux-morts-de-montrouge-q136064359",
+      "latitude": 48.8172,
+      "longitude": 2.31879,
+      "name": {
+        "en": "monument aux morts de Montrouge",
+        "fr": "monument aux morts de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cul-de-sac of Montrouge, in France",
+        "fr": "impasse de Montrouge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116307867",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-impasse-de-l-eglise-q116307867",
+      "latitude": 48.816138,
+      "longitude": 2.318787,
+      "name": {
+        "en": "impasse de l'Église",
+        "fr": "impasse de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cultural and congress centre in Montrouge, France",
+        "fr": "centre culturel et de congrès de Montrouge, France"
+      },
+      "externalIdentity": {
+        "id": "Q15054400",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-le-beffroi-de-montrouge-q15054400",
+      "latitude": 48.81946,
+      "longitude": 2.31987,
+      "name": {
+        "en": "Le Beffroi de Montrouge",
+        "fr": "Le Beffroi de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Montrouge, France",
+        "fr": "place de Montrouge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q101413718",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-place-du-marechal-leclerc-q101413718",
+      "latitude": 48.81723,
+      "longitude": 2.3188,
+      "name": {
+        "en": "place du Maréchal-Leclerc",
+        "fr": "place du Maréchal-Leclerc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Montrouge, France",
+        "fr": "place de Montrouge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q101252611",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-place-jules-ferry-q101252611",
+      "latitude": 48.812702,
+      "longitude": 2.323864,
+      "name": {
+        "en": "place Jules-Ferry",
+        "fr": "place Jules-Ferry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French sports centre",
+        "fr": "stade français"
+      },
+      "externalIdentity": {
+        "id": "Q1001907",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montrouge-stade-buffalo-q1001907",
+      "latitude": 48.811583,
+      "longitude": 2.322038,
+      "name": {
+        "en": "stade Buffalo",
+        "fr": "stade Buffalo"
+      }
+    }
+  ]
+}

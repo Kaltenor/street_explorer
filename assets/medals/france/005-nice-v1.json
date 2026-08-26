@@ -6,29 +6,10 @@
     "en": "Nice",
     "fr": "Nice"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Cathédrale Sainte-Reparate is a distinctive architectural landmark in the city.",
-        "fr": "Cathédrale Sainte-Reparate est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00080779",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "nice-cathedrale-sainte-reparate-pa00080779",
-      "latitude": 43.6970573043453,
-      "longitude": 7.27571442204675,
-      "name": {
-        "en": "Cathédrale Sainte-Reparate",
-        "fr": "Cathédrale Sainte-Reparate"
-      }
-    },
     {
       "category": "history",
       "description": {
@@ -46,25 +27,6 @@
       "name": {
         "en": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur",
         "fr": "Ancien abbaye de Saint-Pons, actuellement hôpital Pasteur"
-      }
-    },
-    {
-      "category": "history",
-      "description": {
-        "en": "Villa de Châteauneuf, dans le quartier de Gairaut is an important witness to the city's history.",
-        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut est un témoin important de l’histoire de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00080967",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "nice-villa-de-chateauneuf-dans-le-quartier-de-gairaut-pa00080967",
-      "latitude": 43.7311573042581,
-      "longitude": 7.26261301204554,
-      "name": {
-        "en": "Villa de Châteauneuf, dans le quartier de Gairaut",
-        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut"
       }
     },
     {
@@ -87,6 +49,25 @@
       }
     },
     {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Reparate is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Reparate est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080779",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-cathedrale-sainte-reparate-pa00080779",
+      "latitude": 43.6970573043453,
+      "longitude": 7.27571442204675,
+      "name": {
+        "en": "Cathédrale Sainte-Reparate",
+        "fr": "Cathédrale Sainte-Reparate"
+      }
+    },
+    {
       "category": "history",
       "description": {
         "en": "Châteaux de Valrose, actuellement Université de Nice (Faculté des Sciences) is an important witness to the city's history.",
@@ -106,22 +87,155 @@
       }
     },
     {
-      "category": "culture",
+      "category": "history",
       "description": {
-        "en": "musée Masséna is one of the city's notable cultural landmarks.",
-        "fr": "musée Masséna compte parmi les lieux culturels marquants de la ville."
+        "en": "Demeure dite abbaye de Roseland, quartier de Fabron is an important witness to the city's history.",
+        "fr": "Demeure dite abbaye de Roseland, quartier de Fabron est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "M0881",
+        "id": "PA00132715",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-demeure-dite-abbaye-de-roseland-quartier-de-fabron-pa00132715",
+      "latitude": 43.6897652096781,
+      "longitude": 7.22963601608424,
+      "name": {
+        "en": "Demeure dite abbaye de Roseland, quartier de Fabron",
+        "fr": "Demeure dite abbaye de Roseland, quartier de Fabron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-Auxiliatrice is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-Auxiliatrice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-eglise-notre-dame-auxiliatrice-pa06000013",
+      "latitude": 43.7092476076451,
+      "longitude": 7.2810495025995,
+      "name": {
+        "en": "Église Notre-Dame-Auxiliatrice",
+        "fr": "Église Notre-Dame-Auxiliatrice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques-le-Majeur dite du Gesù is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques-le-Majeur dite du Gesù est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080791",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-eglise-saint-jacques-le-majeur-dite-du-gesu-pa00080791",
+      "latitude": 43.69675589608718,
+      "longitude": 7.277368091879986,
+      "name": {
+        "en": "Église Saint-Jacques-le-Majeur dite du Gesù",
+        "fr": "Église Saint-Jacques-le-Majeur dite du Gesù"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort du Mont-Alban is an important witness to the city's history.",
+        "fr": "Fort du Mont-Alban est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080795",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-fort-du-mont-alban-pa00080795",
+      "latitude": 43.70083980584,
+      "longitude": 7.3004013411707405,
+      "name": {
+        "en": "Fort du Mont-Alban",
+        "fr": "Fort du Mont-Alban"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications de la porte Pairolière is an important witness to the city's history.",
+        "fr": "Fortifications de la porte Pairolière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-fortifications-de-la-porte-pairoliere-pa06000038",
+      "latitude": 43.7004761033812,
+      "longitude": 7.27904297448165,
+      "name": {
+        "en": "Fortifications de la porte Pairolière",
+        "fr": "Fortifications de la porte Pairolière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique de Cimiez is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique de Cimiez compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0883",
         "source": "museofile",
         "type": "record"
       },
-      "id": "nice-musee-massena-m0881",
-      "latitude": 43.695672,
-      "longitude": 7.259251,
+      "id": "nice-musee-archeologique-de-cimiez-m0883",
+      "latitude": 43.719221,
+      "longitude": 7.275115,
       "name": {
-        "en": "musée Masséna",
-        "fr": "musée Masséna"
+        "en": "musée archéologique de Cimiez",
+        "fr": "musée archéologique de Cimiez"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art moderne et d'art contemporain is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art moderne et d'art contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0888",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-d-art-moderne-et-d-art-contemporain-m0888",
+      "latitude": 43.701774652556004,
+      "longitude": 7.278984299489203,
+      "name": {
+        "en": "musée d'art moderne et d'art contemporain",
+        "fr": "musée d'art moderne et d'art contemporain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art naïf Anatole Jakovsky is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art naïf Anatole Jakovsky compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0886",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-d-art-naif-anatole-jakovsky-m0886",
+      "latitude": 43.68784,
+      "longitude": 7.231462,
+      "name": {
+        "en": "musée d'art naïf Anatole Jakovsky",
+        "fr": "musée d'art naïf Anatole Jakovsky"
       }
     },
     {
@@ -146,6 +260,25 @@
     {
       "category": "culture",
       "description": {
+        "en": "musée départemental des arts asiatiques is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental des arts asiatiques compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0889",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-departemental-des-arts-asiatiques-m0889",
+      "latitude": 43.66829,
+      "longitude": 7.21605,
+      "name": {
+        "en": "musée départemental des arts asiatiques",
+        "fr": "musée départemental des arts asiatiques"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
         "en": "musée des beaux-arts Jules Chéret is one of the city's notable cultural landmarks.",
         "fr": "musée des beaux-arts Jules Chéret compte parmi les lieux culturels marquants de la ville."
       },
@@ -160,6 +293,101 @@
       "name": {
         "en": "musée des beaux-arts Jules Chéret",
         "fr": "musée des beaux-arts Jules Chéret"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Masséna is one of the city's notable cultural landmarks.",
+        "fr": "musée Masséna compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0881",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nice-musee-massena-m0881",
+      "latitude": 43.695672,
+      "longitude": 7.259251,
+      "name": {
+        "en": "musée Masséna",
+        "fr": "musée Masséna"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de la Méditerranée is a distinctive architectural landmark in the city.",
+        "fr": "Palais de la Méditerranée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080807",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-palais-de-la-mediterranee-pa00080807",
+      "latitude": 43.6953544031477,
+      "longitude": 7.26332938911098,
+      "name": {
+        "en": "Palais de la Méditerranée",
+        "fr": "Palais de la Méditerranée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de la Préfecture, ancien palais des rois de Sardaigne is a distinctive architectural landmark in the city.",
+        "fr": "Palais de la Préfecture, ancien palais des rois de Sardaigne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132718",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-palais-de-la-prefecture-ancien-palais-des-rois-de-sardaigne-pa00132718",
+      "latitude": 43.6962903556326,
+      "longitude": 7.27504843510974,
+      "name": {
+        "en": "Palais de la Préfecture, ancien palais des rois de Sardaigne",
+        "fr": "Palais de la Préfecture, ancien palais des rois de Sardaigne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Lascaris is a distinctive architectural landmark in the city.",
+        "fr": "Palais Lascaris est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080806",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-palais-lascaris-pa00080806",
+      "latitude": 43.6976631180328,
+      "longitude": 7.27714878271995,
+      "name": {
+        "en": "Palais Lascaris",
+        "fr": "Palais Lascaris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Villa de Châteauneuf, dans le quartier de Gairaut is an important witness to the city's history.",
+        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080967",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nice-villa-de-chateauneuf-dans-le-quartier-de-gairaut-pa00080967",
+      "latitude": 43.7311573042581,
+      "longitude": 7.26261301204554,
+      "name": {
+        "en": "Villa de Châteauneuf, dans le quartier de Gairaut",
+        "fr": "Villa de Châteauneuf, dans le quartier de Gairaut"
       }
     }
   ]

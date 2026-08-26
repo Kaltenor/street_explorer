@@ -1,0 +1,204 @@
+{
+  "id": "champs-sur-marne-v1",
+  "cityId": "champs-sur-marne-fr",
+  "cityZoneId": "relation/402751",
+  "cityName": {
+    "en": "Champs-sur-Marne",
+    "fr": "Champs-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "bois de Grâce is one of the city's notable green or natural landmarks.",
+        "fr": "bois de Champs-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q122700862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-bois-de-grace-q122700862",
+      "latitude": 48.8458,
+      "longitude": 2.5948,
+      "name": {
+        "en": "bois de Grâce",
+        "fr": "bois de Grâce"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "bois de l'Étang is one of the city's notable green or natural landmarks.",
+        "fr": "forêt française à Champs-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q131010267",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-bois-de-l-etang-q131010267",
+      "latitude": 48.8360385,
+      "longitude": 2.5965758,
+      "name": {
+        "en": "bois de l'Étang",
+        "fr": "bois de l'Étang"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château",
+        "fr": "château français situé à Champs-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q161787",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-chateau-de-champs-sur-marne-q161787",
+      "latitude": 48.85388889,
+      "longitude": 2.60416667,
+      "name": {
+        "en": "château de Champs-sur-Marne",
+        "fr": "château de Champs-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cité Descartes is a distinctive architectural landmark in the city.",
+        "fr": "quartier à Champs-sur-Marne et Noisy-le-Grand"
+      },
+      "externalIdentity": {
+        "id": "Q56315812",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-cite-descartes-q56315812",
+      "latitude": 48.8399,
+      "longitude": 2.5879,
+      "name": {
+        "en": "cité Descartes",
+        "fr": "cité Descartes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Champs-sur-Marne is an important witness to the city's history.",
+        "fr": "Domaine de Champs-sur-Marne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00086861",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "champs-sur-marne-domaine-de-champs-sur-marne-pa00086861",
+      "latitude": 48.85925066055681,
+      "longitude": 2.60096641826462,
+      "name": {
+        "en": "Domaine de Champs-sur-Marne",
+        "fr": "Domaine de Champs-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French institution of higher education and research",
+        "fr": "grande école d'ingénieurs publique française"
+      },
+      "externalIdentity": {
+        "id": "Q273523",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-ecole-nationale-des-ponts-et-chaussees-q273523",
+      "latitude": 48.841111111,
+      "longitude": 2.587777777,
+      "name": {
+        "en": "École nationale des ponts et chaussées",
+        "fr": "École nationale des ponts et chaussées"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering College",
+        "fr": "école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q3578152",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-ecole-nationale-des-sciences-geographiques-q3578152",
+      "latitude": 48.841277,
+      "longitude": 2.587187,
+      "name": {
+        "en": "École nationale des sciences géographiques",
+        "fr": "École nationale des sciences géographiques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Champs-sur-Marne, France",
+        "fr": "édifice religieux catholique à Champs-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41801379",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-eglise-saint-loup-de-sens-de-champs-sur-marne-q41801379",
+      "latitude": 48.85257,
+      "longitude": 2.60286,
+      "name": {
+        "en": "église Saint-Loup-de-Sens de Champs-sur-Marne",
+        "fr": "église Saint-Loup-de-Sens de Champs-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136050075",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-monument-aux-morts-de-champs-sur-marne-q136050075",
+      "latitude": 48.8530455,
+      "longitude": 2.5981872,
+      "name": {
+        "en": "monument aux morts de Champs-sur-Marne",
+        "fr": "monument aux morts de Champs-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French institute for higher education and research",
+        "fr": "composante de l'Université Gustave-Eiffel de Champs-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q6038970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "champs-sur-marne-institut-d-electronique-et-d-informatique-gaspard-monge-q6038970",
+      "latitude": 48.8392,
+      "longitude": 2.58692,
+      "name": {
+        "en": "Institut d'électronique et d'informatique Gaspard-Monge",
+        "fr": "Institut d'électronique et d'informatique Gaspard-Monge"
+      }
+    }
+  ]
+}

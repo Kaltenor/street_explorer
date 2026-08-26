@@ -1,0 +1,204 @@
+{
+  "id": "kourou-v1",
+  "cityId": "kourou-fr",
+  "cityZoneId": "relation/1663794",
+  "cityName": {
+    "en": "Kourou",
+    "fr": "Kourou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in French Guiana, France",
+        "fr": "centre hospitalier de Kourou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q104874937",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-centre-hospitalier-de-kourou-q104874937",
+      "latitude": 5.16353,
+      "longitude": -52.6448,
+      "name": {
+        "en": "centre hospitalier de Kourou",
+        "fr": "centre hospitalier de Kourou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "agricultural school in Nancy, France",
+        "fr": "réseau d'écoles forestières"
+      },
+      "externalIdentity": {
+        "id": "Q3578164",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-ecole-nationale-du-genie-rural-des-eaux-et-des-forets-q3578164",
+      "latitude": 48.6937,
+      "longitude": 6.1879,
+      "name": {
+        "en": "École nationale du génie rural, des eaux et des forêts",
+        "fr": "École nationale du génie rural, des eaux et des forêts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guyane, in France",
+        "fr": "église située en Guyane, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38396847",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-eglise-notre-dame-de-l-assomption-de-kourou-q38396847",
+      "latitude": 5.15907,
+      "longitude": -52.64258,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Kourou",
+        "fr": "église Notre-Dame-de-l'Assomption de Kourou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guyane, in France",
+        "fr": "église située en Guyane, en France"
+      },
+      "externalIdentity": {
+        "id": "Q32067225",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-eglise-sainte-catherine-de-kourou-q32067225",
+      "latitude": 5.152638,
+      "longitude": -52.64387,
+      "name": {
+        "en": "église Sainte-Catherine de Kourou",
+        "fr": "église Sainte-Catherine de Kourou"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "roches gravées de la Carapa is a notable work of public art and local memory.",
+        "fr": "sculpture à Kourou (Guyane)"
+      },
+      "externalIdentity": {
+        "id": "Q3437652",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-roches-gravees-de-la-carapa-q3437652",
+      "latitude": 5.158169,
+      "longitude": -52.664562463,
+      "name": {
+        "en": "roches gravées de la Carapa",
+        "fr": "roches gravées de la Carapa"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "lighthouse in French Guiana, France",
+        "fr": "tour de télégraphe"
+      },
+      "externalIdentity": {
+        "id": "Q28374564",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-tour-dreyfus-q28374564",
+      "latitude": 5.15961,
+      "longitude": -52.62665,
+      "name": {
+        "en": "tour Dreyfus",
+        "fr": "tour Dreyfus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Kourou, French Guiana",
+        "fr": "siège municipal de Kourou, en Guyane, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119312961",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-mairie-de-kourou-q119312961",
+      "latitude": 5.158,
+      "longitude": -52.6427,
+      "name": {
+        "en": "mairie de Kourou",
+        "fr": "mairie de Kourou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "place de l'Europe is a distinctive architectural landmark in the city.",
+        "fr": "place de Kourou, en Guyane française"
+      },
+      "externalIdentity": {
+        "id": "Q48747481",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-place-de-l-europe-q48747481",
+      "latitude": 5.16668,
+      "longitude": -52.64241,
+      "name": {
+        "en": "place de l'Europe",
+        "fr": "place de l'Europe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont de Kourou is a distinctive architectural landmark in the city.",
+        "fr": "pont de Kourou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q125591589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-pont-de-kourou-q125591589",
+      "latitude": 5.14994,
+      "longitude": -52.6715,
+      "name": {
+        "en": "pont de Kourou",
+        "fr": "pont de Kourou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "neighbourhood in Kourou, French Guiana, France",
+        "fr": "Saramaka (village) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q110128197",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "kourou-saramaka-village-q110128197",
+      "latitude": 5.1153,
+      "longitude": -52.7112,
+      "name": {
+        "en": "Saramaka (village)",
+        "fr": "Saramaka (village)"
+      }
+    }
+  ]
+}

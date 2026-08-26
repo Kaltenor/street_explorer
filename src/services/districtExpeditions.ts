@@ -17,7 +17,7 @@ import {
 } from "../database/medalRepository";
 import { getMedalAlbumIdForZone } from "../data/medalAlbums";
 import { getStreetCompletionStreetStates } from "../database/streetCompletionRepository";
-import { getAllStreetSegments } from "../database/streetRepository";
+import { getStreetSegmentsWithinBounds } from "../database/streetRepository";
 import type {
   DistrictExpedition,
   DistrictExpeditionDashboard
@@ -97,7 +97,7 @@ async function getDistrictOpportunities(district: CachedZone) {
   const bounds = getZoneBounds(district);
   const [streetStates, streetSegments, medalCandidates] = await Promise.all([
     getStreetCompletionStreetStates(),
-    getAllStreetSegments(),
+    bounds ? getStreetSegmentsWithinBounds(bounds) : Promise.resolve([]),
     albumId && bounds
       ? getUncollectedMedalsInBounds(albumId, bounds)
       : Promise.resolve([])
@@ -230,9 +230,10 @@ async function getCellEvidence(acceptedAt: string) {
 }
 
 async function getCompletedStreetCount(acceptedAt: string, district: CachedZone) {
+  const bounds = getZoneBounds(district);
   const [states, segments] = await Promise.all([
     getStreetCompletionStreetStates(),
-    getAllStreetSegments()
+    bounds ? getStreetSegmentsWithinBounds(bounds) : Promise.resolve([])
   ]);
   const completedSinceAcceptance = new Set(
     states

@@ -1,0 +1,204 @@
+{
+  "id": "lambersart-v1",
+  "cityId": "lambersart-fr",
+  "cityZoneId": "relation/58897",
+  "cityName": {
+    "en": "Lambersart",
+    "fr": "Lambersart"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "monastery located in Nord, in France",
+        "fr": "monastère français"
+      },
+      "externalIdentity": {
+        "id": "Q25380649",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-abbaye-notre-dame-de-la-plaine-q25380649",
+      "latitude": 50.66242,
+      "longitude": 3.03111,
+      "name": {
+        "en": "abbaye Notre-Dame de la Plaine",
+        "fr": "abbaye Notre-Dame de la Plaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q104620066",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-ancien-eglise-saint-gerard-de-lambersart-q104620066",
+      "latitude": 50.651073,
+      "longitude": 3.042803,
+      "name": {
+        "en": "Ancien église Saint-Gérard de Lambersart",
+        "fr": "Ancien église Saint-Gérard de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q104771551",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-ancien-eglise-saint-sepulcre-de-lambersart-q104771551",
+      "latitude": 50.63932,
+      "longitude": 3.02421,
+      "name": {
+        "en": "Ancien église Saint-Sépulcre de Lambersart",
+        "fr": "Ancien église Saint-Sépulcre de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56434205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-cimetiere-de-canteleu-de-lambersart-q56434205",
+      "latitude": 50.643316,
+      "longitude": 3.025974,
+      "name": {
+        "en": "cimetière de Canteleu de Lambersart",
+        "fr": "cimetière de Canteleu de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56434204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-cimetiere-de-verlinghem-de-lambersart-q56434204",
+      "latitude": 50.656161,
+      "longitude": 3.017973,
+      "name": {
+        "en": "cimetière de Verlinghem de Lambersart",
+        "fr": "cimetière de Verlinghem de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56434207",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-cimetiere-des-ormes-de-lambersart-q56434207",
+      "latitude": 50.658057,
+      "longitude": 3.027755,
+      "name": {
+        "en": "cimetière des Ormes de Lambersart",
+        "fr": "cimetière des Ormes de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56434203",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-cimetiere-du-bourg-de-lambersart-q56434203",
+      "latitude": 50.651201,
+      "longitude": 3.020336,
+      "name": {
+        "en": "cimetière du Bourg de Lambersart",
+        "fr": "cimetière du Bourg de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2171274",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-cimetiere-militaire-allemand-de-lambersart-q2171274",
+      "latitude": 50.65722,
+      "longitude": 3.01806,
+      "name": {
+        "en": "cimetière militaire allemand de Lambersart",
+        "fr": "cimetière militaire allemand de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38386068",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-eglise-notre-dame-de-fatima-de-lambersart-q38386068",
+      "latitude": 50.642879,
+      "longitude": 3.0349684,
+      "name": {
+        "en": "église Notre-Dame-de-Fatima de Lambersart",
+        "fr": "église Notre-Dame-de-Fatima de Lambersart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38473397",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lambersart-eglise-saint-calixte-de-lambersart-q38473397",
+      "latitude": 50.65245,
+      "longitude": 3.02567,
+      "name": {
+        "en": "église Saint-Calixte de Lambersart",
+        "fr": "église Saint-Calixte de Lambersart"
+      }
+    }
+  ]
+}

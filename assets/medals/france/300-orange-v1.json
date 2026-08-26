@@ -1,0 +1,204 @@
+{
+  "id": "orange-v1",
+  "cityId": "orange-fr",
+  "cityZoneId": "relation/187038",
+  "cityName": {
+    "en": "Orange",
+    "fr": "Orange"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Amphithéâtre (temple dans un hémicycle précédé d'un nymphée) is one of the city's notable cultural landmarks.",
+        "fr": "Amphithéâtre (temple dans un hémicycle précédé d'un nymphée) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082096",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-amphitheatre-temple-dans-un-hemicycle-precede-d-un-nymphee-pa00082096",
+      "latitude": 44.1357726573292,
+      "longitude": 4.80789524654632,
+      "name": {
+        "en": "Amphithéâtre (temple dans un hémicycle précédé d'un nymphée)",
+        "fr": "Amphithéâtre (temple dans un hémicycle précédé d'un nymphée)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Arc antique is an important witness to the city's history.",
+        "fr": "Arc antique est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-arc-antique-pa00082097",
+      "latitude": 44.1422156869149,
+      "longitude": 4.80366085297559,
+      "name": {
+        "en": "Arc antique",
+        "fr": "Arc antique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Colline Saint-Eutrope is an important witness to the city's history.",
+        "fr": "Colline Saint-Eutrope est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082108",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-colline-saint-eutrope-pa00082108",
+      "latitude": 44.133486938522,
+      "longitude": 4.80830480114622,
+      "name": {
+        "en": "Colline Saint-Eutrope",
+        "fr": "Colline Saint-Eutrope"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-Nazareth (ancienne cathédrale) is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-Nazareth (ancienne cathédrale) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-eglise-notre-dame-de-nazareth-ancienne-cathedrale-pa00082100",
+      "latitude": 44.1380527936056,
+      "longitude": 4.80739470243455,
+      "name": {
+        "en": "Église Notre-Dame-de-Nazareth (ancienne cathédrale)",
+        "fr": "Église Notre-Dame-de-Nazareth (ancienne cathédrale)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine publique is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine publique compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082101",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-fontaine-publique-pa00082101",
+      "latitude": 44.1365798109115,
+      "longitude": 4.80947676487371,
+      "name": {
+        "en": "Fontaine publique",
+        "fr": "Fontaine publique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082105",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-hotel-de-ville-pa00082105",
+      "latitude": 44.1375459546572,
+      "longitude": 4.80734414158147,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ilot Pontillac is an important witness to the city's history.",
+        "fr": "Ilot Pontillac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-ilot-pontillac-pa84000038",
+      "latitude": 44.135869909006104,
+      "longitude": 4.80654719391584,
+      "name": {
+        "en": "Ilot Pontillac",
+        "fr": "Ilot Pontillac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison médiévale, dite Maison romane is a distinctive architectural landmark in the city.",
+        "fr": "Maison médiévale, dite Maison romane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-maison-medievale-dite-maison-romane-pa00082099",
+      "latitude": 44.1385170367376,
+      "longitude": 4.80663192464124,
+      "name": {
+        "en": "Maison médiévale, dite Maison romane",
+        "fr": "Maison médiévale, dite Maison romane"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0959",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "orange-musee-municipal-m0959",
+      "latitude": 44.135887,
+      "longitude": 4.807526,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orange-theatre-municipal-pa00082109",
+      "latitude": 44.1349393916959,
+      "longitude": 4.80577118240672,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    }
+  ]
+}

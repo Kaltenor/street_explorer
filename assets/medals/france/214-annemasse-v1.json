@@ -1,0 +1,204 @@
+{
+  "id": "annemasse-v1",
+  "cityId": "annemasse-fr",
+  "cityZoneId": "relation/104959",
+  "cityName": {
+    "en": "Annemasse",
+    "fr": "Annemasse"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Annemasse-Parc Montessuit is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Genève à Annemasse, en France"
+      },
+      "externalIdentity": {
+        "id": "Q107032164",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-annemasse-parc-montessuit-q107032164",
+      "latitude": 46.1942667,
+      "longitude": 6.2313,
+      "name": {
+        "en": "Annemasse-Parc Montessuit",
+        "fr": "Annemasse-Parc Montessuit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Haute-Savoie, France",
+        "fr": "commune française du département de la Haute-Savoie"
+      },
+      "externalIdentity": {
+        "id": "Q212901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-annemasse-q212901",
+      "latitude": 46.195,
+      "longitude": 6.235555555,
+      "name": {
+        "en": "Annemasse",
+        "fr": "Annemasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haute-Savoie, in France",
+        "fr": "église de Haute-Savoie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580863",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-eglise-saint-andre-d-annemasse-q3580863",
+      "latitude": 46.18976,
+      "longitude": 6.23347,
+      "name": {
+        "en": "église Saint-André d'Annemasse",
+        "fr": "église Saint-André d'Annemasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haute-Savoie, in France",
+        "fr": "église située en Haute-Savoie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-eglise-saint-joseph-d-annemasse-q15958399",
+      "latitude": 46.19475,
+      "longitude": 6.23888,
+      "name": {
+        "en": "église Saint-Joseph d'Annemasse",
+        "fr": "église Saint-Joseph d'Annemasse"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "jardin Claudius Montessuit is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public à Annemasse (France)"
+      },
+      "externalIdentity": {
+        "id": "Q3162309",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-jardin-claudius-montessuit-q3162309",
+      "latitude": 46.1935,
+      "longitude": 6.23112,
+      "name": {
+        "en": "jardin Claudius Montessuit",
+        "fr": "jardin Claudius Montessuit"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "archaeological site in France",
+        "fr": "Namascae est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3335416",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-namascae-q3335416",
+      "latitude": 46.19583333,
+      "longitude": 6.23638889,
+      "name": {
+        "en": "Namascae",
+        "fr": "Namascae"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "statue de Michel Servet is a notable work of public art and local memory.",
+        "fr": "statue de Clotilde Roch à Annemasse, en France"
+      },
+      "externalIdentity": {
+        "id": "Q139256600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-statue-de-michel-servet-q139256600",
+      "latitude": 46.1930421,
+      "longitude": 6.2338478,
+      "name": {
+        "en": "statue de Michel Servet",
+        "fr": "statue de Michel Servet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Annemasse, France",
+        "fr": "mairie de la ville d'Annemasse"
+      },
+      "externalIdentity": {
+        "id": "Q111733969",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-hotel-de-ville-d-annemasse-q111733969",
+      "latitude": 46.19326,
+      "longitude": 6.23416,
+      "name": {
+        "en": "hôtel de ville d'Annemasse",
+        "fr": "hôtel de ville d'Annemasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "synagogue located in Haute-Savoie, in France",
+        "fr": "synagogue située en Haute-Savoie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3508012",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-synagogue-d-annemasse-q3508012",
+      "latitude": 46.1958,
+      "longitude": 6.23639,
+      "name": {
+        "en": "synagogue d'Annemasse",
+        "fr": "synagogue d'Annemasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haute-Savoie, in France",
+        "fr": "édifice religieux situé à Annemasse, Haute-Savoie"
+      },
+      "externalIdentity": {
+        "id": "Q51159688",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "annemasse-temple-de-l-eglise-reformee-de-france-d-annemasse-q51159688",
+      "latitude": 46.19556,
+      "longitude": 6.235,
+      "name": {
+        "en": "temple de l'Église réformée de France d'Annemasse",
+        "fr": "temple de l'Église réformée de France d'Annemasse"
+      }
+    }
+  ]
+}

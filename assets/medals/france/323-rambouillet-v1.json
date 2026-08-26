@@ -1,0 +1,204 @@
+{
+  "id": "rambouillet-v1",
+  "cityId": "rambouillet-fr",
+  "cityZoneId": "relation/959295",
+  "cityName": {
+    "en": "Rambouillet",
+    "fr": "Rambouillet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciennes bergeries de la Pommeraie is a distinctive architectural landmark in the city.",
+        "fr": "Anciennes bergeries de la Pommeraie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000495",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-anciennes-bergeries-de-la-pommeraie-pa78000495",
+      "latitude": 48.666057,
+      "longitude": 1.798194,
+      "name": {
+        "en": "Anciennes bergeries de la Pommeraie",
+        "fr": "Anciennes bergeries de la Pommeraie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Dépendances de l'ancienne vénerie is a distinctive architectural landmark in the city.",
+        "fr": "Dépendances de l'ancienne vénerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000492",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-dependances-de-l-ancienne-venerie-pa78000492",
+      "latitude": 48.651781,
+      "longitude": 1.8178170000000002,
+      "name": {
+        "en": "Dépendances de l'ancienne vénerie",
+        "fr": "Dépendances de l'ancienne vénerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Rambouillet is an important witness to the city's history.",
+        "fr": "Domaine de Rambouillet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087581",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-domaine-de-rambouillet-pa00087581",
+      "latitude": 48.6443274811552,
+      "longitude": 1.8135276744378297,
+      "name": {
+        "en": "Domaine de Rambouillet",
+        "fr": "Domaine de Rambouillet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Lubin et Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Lubin et Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-eglise-saint-lubin-et-saint-jean-baptiste-pa78000017",
+      "latitude": 48.6466025110304,
+      "longitude": 1.82396644736462,
+      "name": {
+        "en": "Église Saint-Lubin et Saint-Jean-Baptiste",
+        "fr": "Église Saint-Lubin et Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ferme de Mocquesouris is a distinctive architectural landmark in the city.",
+        "fr": "Ferme de Mocquesouris est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000496",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-ferme-de-mocquesouris-pa78000496",
+      "latitude": 48.641331,
+      "longitude": 1.797895,
+      "name": {
+        "en": "Ferme de Mocquesouris",
+        "fr": "Ferme de Mocquesouris"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Rambolitrain is one of the city's notable cultural landmarks.",
+        "fr": "musée Rambolitrain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0395",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rambouillet-musee-rambolitrain-m0395",
+      "latitude": 48.646025,
+      "longitude": 1.823892,
+      "name": {
+        "en": "musée Rambolitrain",
+        "fr": "musée Rambolitrain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Pavillons de la Porte des Lapins is an important witness to the city's history.",
+        "fr": "Pavillons de la Porte des Lapins est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000494",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-pavillons-de-la-porte-des-lapins-pa78000494",
+      "latitude": 48.660858,
+      "longitude": 1.815986,
+      "name": {
+        "en": "Pavillons de la Porte des Lapins",
+        "fr": "Pavillons de la Porte des Lapins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087583",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-hotel-de-ville-pa00087583",
+      "latitude": 48.6451424654315,
+      "longitude": 1.81971553445004,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Couverie is a distinctive architectural landmark in the city.",
+        "fr": "La Couverie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000499",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-la-couverie-pa78000499",
+      "latitude": 48.648198,
+      "longitude": 1.8038970000000003,
+      "name": {
+        "en": "La Couverie",
+        "fr": "La Couverie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pavillon du Roi de Rome dit Palais du Roi de Rome is a distinctive architectural landmark in the city.",
+        "fr": "Pavillon du Roi de Rome dit Palais du Roi de Rome est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087584",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rambouillet-pavillon-du-roi-de-rome-dit-palais-du-roi-de-rome-pa00087584",
+      "latitude": 48.6445530849571,
+      "longitude": 1.8222551108913603,
+      "name": {
+        "en": "Pavillon du Roi de Rome dit Palais du Roi de Rome",
+        "fr": "Pavillon du Roi de Rome dit Palais du Roi de Rome"
+      }
+    }
+  ]
+}

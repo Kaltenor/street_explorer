@@ -1,0 +1,204 @@
+{
+  "id": "conflans-sainte-honorine-v1",
+  "cityId": "conflans-sainte-honorine-fr",
+  "cityZoneId": "relation/75461",
+  "cityName": {
+    "en": "Conflans-Sainte-Honorine",
+    "fr": "Conflans-Sainte-Honorine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Conflans-Sainte-Honorine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2532157",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-conflans-fin-d-oise-q2532157",
+      "latitude": 48.990556,
+      "longitude": 2.073611,
+      "name": {
+        "en": "Conflans-Fin-d'Oise",
+        "fr": "Conflans-Fin-d'Oise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Conflans-Sainte-Honorine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1961242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-conflans-sainte-honorine-q1961242",
+      "latitude": 48.9969,
+      "longitude": 2.098366,
+      "name": {
+        "en": "Conflans-Sainte-Honorine",
+        "fr": "Conflans-Sainte-Honorine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582478",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-eglise-saint-maclou-de-conflans-sainte-honorine-q3582478",
+      "latitude": 48.9921,
+      "longitude": 2.0947,
+      "name": {
+        "en": "église Saint-Maclou de Conflans-Sainte-Honorine",
+        "fr": "église Saint-Maclou de Conflans-Sainte-Honorine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maclou is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maclou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087411",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "conflans-sainte-honorine-eglise-saint-maclou-pa00087411",
+      "latitude": 48.9921696566897,
+      "longitude": 2.09482423392199,
+      "name": {
+        "en": "Église Saint-Maclou",
+        "fr": "Église Saint-Maclou"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Batellerie is a notable work of public art and local memory.",
+        "fr": "monument aux morts à Conflans-Sainte-Honorine"
+      },
+      "externalIdentity": {
+        "id": "Q104732119",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-monument-aux-morts-de-la-batellerie-q104732119",
+      "latitude": 48.987597019,
+      "longitude": 2.072358965,
+      "name": {
+        "en": "monument aux morts de la Batellerie",
+        "fr": "monument aux morts de la Batellerie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Conflans-Sainte-Honorine, France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3329993",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-musee-de-la-batellerie-et-des-voies-navigables-de-conflans-sainte-honorine-q3329993",
+      "latitude": 48.9925,
+      "longitude": 2.09556,
+      "name": {
+        "en": "musée de la batellerie et des voies navigables de Conflans-Sainte-Honorine",
+        "fr": "musée de la batellerie et des voies navigables de Conflans-Sainte-Honorine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la batellerie is one of the city's notable cultural landmarks.",
+        "fr": "musée de la batellerie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0387",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "conflans-sainte-honorine-musee-de-la-batellerie-m0387",
+      "latitude": 48.992445,
+      "longitude": 2.095621,
+      "name": {
+        "en": "musée de la batellerie",
+        "fr": "musée de la batellerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Montjoie is an important witness to the city's history.",
+        "fr": "Tour Montjoie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087410",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "conflans-sainte-honorine-tour-montjoie-pa00087410",
+      "latitude": 48.9918394014929,
+      "longitude": 2.09222474974618,
+      "name": {
+        "en": "Tour Montjoie",
+        "fr": "Tour Montjoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall of a French commune",
+        "fr": "hôtel de ville à Conflans-Sainte-Honorine"
+      },
+      "externalIdentity": {
+        "id": "Q110511274",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-hotel-de-ville-de-conflans-sainte-honorine-q110511274",
+      "latitude": 48.993774985,
+      "longitude": 2.094739377,
+      "name": {
+        "en": "hôtel de ville de Conflans-Sainte-Honorine",
+        "fr": "hôtel de ville de Conflans-Sainte-Honorine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Conflans-Sainte-Honorine, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396477",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "conflans-sainte-honorine-pont-boussiron-q3396477",
+      "latitude": 48.9889,
+      "longitude": 2.07194,
+      "name": {
+        "en": "pont Boussiron",
+        "fr": "pont Boussiron"
+      }
+    }
+  ]
+}

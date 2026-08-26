@@ -1,0 +1,204 @@
+{
+  "id": "gap-v1",
+  "cityId": "gap-fr",
+  "cityZoneId": "relation/367142",
+  "cityName": {
+    "en": "Gap",
+    "fr": "Gap"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame-et-Saint-Arnoux is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame-et-Saint-Arnoux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080566",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gap-cathedrale-notre-dame-et-saint-arnoux-pa00080566",
+      "latitude": 44.5582086783955,
+      "longitude": 6.07813470830962,
+      "name": {
+        "en": "Cathédrale Notre-Dame-et-Saint-Arnoux",
+        "fr": "Cathédrale Notre-Dame-et-Saint-Arnoux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "chapel located in Hautes-Alpes, in France",
+        "fr": "chapelle située dans les Hautes-Alpes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60375057",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-chapelle-saint-jacques-le-mineur-de-la-tourronde-q60375057",
+      "latitude": 44.519118,
+      "longitude": 6.051081,
+      "name": {
+        "en": "chapelle Saint-Jacques-le-Mineur de la Tourronde",
+        "fr": "chapelle Saint-Jacques-le-Mineur de la Tourronde"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Charance is an important witness to the city's history.",
+        "fr": "château situé à Gap, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109037868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-chateau-de-charance-q109037868",
+      "latitude": 44.576666666,
+      "longitude": 6.053333333,
+      "name": {
+        "en": "château de Charance",
+        "fr": "château de Charance"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Charance is an important witness to the city's history.",
+        "fr": "Domaine de Charance est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080568",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gap-domaine-de-charance-pa00080568",
+      "latitude": 44.5776836751131,
+      "longitude": 6.05408535943435,
+      "name": {
+        "en": "Domaine de Charance",
+        "fr": "Domaine de Charance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hautes-Alpes, in France",
+        "fr": "église située dans les Hautes-Alpes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15918464",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-eglise-notre-dame-d-esperance-de-gap-q15918464",
+      "latitude": 44.568151,
+      "longitude": 6.086099,
+      "name": {
+        "en": "église Notre-Dame-d'Espérance de Gap",
+        "fr": "église Notre-Dame-d'Espérance de Gap"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gap, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2842615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-gap-q2842615",
+      "latitude": 44.564,
+      "longitude": 6.0855,
+      "name": {
+        "en": "Gap",
+        "fr": "Gap"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080569",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gap-hotel-de-ville-pa00080569",
+      "latitude": 44.5587917028373,
+      "longitude": 6.07942192472408,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental des Hautes-Alpes is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental des Hautes-Alpes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0866",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "gap-musee-departemental-des-hautes-alpes-m0866",
+      "latitude": 44.562625,
+      "longitude": 6.085573,
+      "name": {
+        "en": "musée départemental des Hautes-Alpes",
+        "fr": "musée départemental des Hautes-Alpes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc de la Pépinière is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public à Gap (Hautes-Alpes)"
+      },
+      "externalIdentity": {
+        "id": "Q123821159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-parc-de-la-pepiniere-q123821159",
+      "latitude": 44.562597222,
+      "longitude": 6.087225,
+      "name": {
+        "en": "parc de la Pépinière",
+        "fr": "parc de la Pépinière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de l'Horloge de Gap is an important witness to the city's history.",
+        "fr": "Tour de l'Horloge de Gap est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q65153746",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gap-tour-de-l-horloge-de-gap-q65153746",
+      "latitude": 44.558865,
+      "longitude": 6.079516,
+      "name": {
+        "en": "Tour de l'Horloge de Gap",
+        "fr": "Tour de l'Horloge de Gap"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "versailles-v1",
+  "cityId": "versailles-fr",
+  "cityZoneId": "relation/30295",
+  "cityName": {
+    "en": "Versailles",
+    "fr": "Versailles"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de la Surintendance des Bâtiments du Roi, puis ancien petit séminaire, puis Caserne Vauban is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de la Surintendance des Bâtiments du Roi, puis ancien petit séminaire, puis Caserne Vauban est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087773",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-ancien-hotel-de-la-surintendance-des-batiments-du-roi-puis-ancien-petit-seminaire-puis-caserne-vauban-pa00087773",
+      "latitude": 48.8009941459665,
+      "longitude": 2.12112760521292,
+      "name": {
+        "en": "Ancien hôtel de la Surintendance des Bâtiments du Roi, puis ancien petit séminaire, puis Caserne Vauban",
+        "fr": "Ancien hôtel de la Surintendance des Bâtiments du Roi, puis ancien petit séminaire, puis Caserne Vauban"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel du Grand Contrôle is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel du Grand Contrôle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087694",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-ancien-hotel-du-grand-controle-pa00087694",
+      "latitude": 48.8013917242227,
+      "longitude": 2.11996946523679,
+      "name": {
+        "en": "Ancien Hôtel du Grand Contrôle",
+        "fr": "Ancien Hôtel du Grand Contrôle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel ou Quartier de Noailles ou ancienne Caserne de Monsieur ou anciennes écuries de la Du Barry is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel ou Quartier de Noailles ou ancienne Caserne de Monsieur ou anciennes écuries de la Du Barry est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087699",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-ancien-hotel-ou-quartier-de-noailles-ou-ancienne-caserne-de-monsieur-ou-anciennes-ecuries-de-la-du-barry-pa00087699",
+      "latitude": 48.8018218729703,
+      "longitude": 2.13429424352901,
+      "name": {
+        "en": "Ancien hôtel ou Quartier de Noailles ou ancienne Caserne de Monsieur ou anciennes écuries de la Du Barry",
+        "fr": "Ancien hôtel ou Quartier de Noailles ou ancienne Caserne de Monsieur ou anciennes écuries de la Du Barry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien potager du Roi et parc de Balbi is a distinctive architectural landmark in the city.",
+        "fr": "Ancien potager du Roi et parc de Balbi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087681",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-ancien-potager-du-roi-et-parc-de-balbi-pa00087681",
+      "latitude": 48.7979219024289,
+      "longitude": 2.12085140973768,
+      "name": {
+        "en": "Ancien potager du Roi et parc de Balbi",
+        "fr": "Ancien potager du Roi et parc de Balbi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087667",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-cathedrale-saint-louis-pa00087667",
+      "latitude": 48.7982876362686,
+      "longitude": 2.12425526832494,
+      "name": {
+        "en": "Cathédrale Saint-Louis",
+        "fr": "Cathédrale Saint-Louis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau et hôtel des fontainiers is an important witness to the city's history.",
+        "fr": "Château d'eau et hôtel des fontainiers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000515",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-chateau-d-eau-et-hotel-des-fontainiers-pa78000515",
+      "latitude": 48.80513880000001,
+      "longitude": 2.1238134,
+      "name": {
+        "en": "Château d'eau et hôtel des fontainiers",
+        "fr": "Château d'eau et hôtel des fontainiers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "former French château near Versailles",
+        "fr": "château français situé à Versailles"
+      },
+      "externalIdentity": {
+        "id": "Q2062903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "versailles-chateau-de-clagny-q2062903",
+      "latitude": 48.808888888,
+      "longitude": 2.137222222,
+      "name": {
+        "en": "château de Clagny",
+        "fr": "château de Clagny"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "palace in Versailles, France and location of the Museum of the History of France",
+        "fr": "château à Versailles, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2946",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "versailles-chateau-de-versailles-q2946",
+      "latitude": 48.804722222,
+      "longitude": 2.120277777,
+      "name": {
+        "en": "château de Versailles",
+        "fr": "château de Versailles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine national de Versailles is an important witness to the city's history.",
+        "fr": "Domaine national de Versailles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087673",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-domaine-national-de-versailles-pa00087673",
+      "latitude": 48.8186489724536,
+      "longitude": 2.098725330858,
+      "name": {
+        "en": "Domaine national de Versailles",
+        "fr": "Domaine national de Versailles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087687",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-eglise-notre-dame-pa00087687",
+      "latitude": 48.8079600171431,
+      "longitude": 2.12902193362211,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Symphorien is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Symphorien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087688",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-eglise-saint-symphorien-pa00087688",
+      "latitude": 48.8041243676996,
+      "longitude": 2.14609290214696,
+      "name": {
+        "en": "Église Saint-Symphorien",
+        "fr": "Église Saint-Symphorien"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des Quatre Pavés is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des Quatre Pavés compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-fontaine-des-quatre-paves-pa00087689",
+      "latitude": 48.7965394557324,
+      "longitude": 2.1265493392598,
+      "name": {
+        "en": "Fontaine des Quatre Pavés",
+        "fr": "Fontaine des Quatre Pavés"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine sur la place is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine sur la place compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087690",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-fontaine-sur-la-place-pa00087690",
+      "latitude": 48.7989853195791,
+      "longitude": 2.12424470517641,
+      "name": {
+        "en": "Fontaine sur la place",
+        "fr": "Fontaine sur la place"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Lambinet is one of the city's notable cultural landmarks.",
+        "fr": "musée Lambinet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0400",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "versailles-musee-lambinet-m0400",
+      "latitude": 48.808966,
+      "longitude": 2.130624,
+      "name": {
+        "en": "musée Lambinet",
+        "fr": "musée Lambinet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national des châteaux de Versailles et de Trianon is one of the city's notable cultural landmarks.",
+        "fr": "musée national des châteaux de Versailles et de Trianon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5077",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "versailles-musee-national-des-chateaux-de-versailles-et-de-trianon-m5077",
+      "latitude": 48.804537,
+      "longitude": 2.134053,
+      "name": {
+        "en": "musée national des châteaux de Versailles et de Trianon",
+        "fr": "musée national des châteaux de Versailles et de Trianon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte des Gendarmes ou Pavillon des Gendarmes ou ancien hôtel des Gendarmes de la Garde is an important witness to the city's history.",
+        "fr": "Porte des Gendarmes ou Pavillon des Gendarmes ou ancien hôtel des Gendarmes de la Garde est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087769",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-porte-des-gendarmes-ou-pavillon-des-gendarmes-ou-ancien-hotel-des-gendarmes-de-la-garde-pa00087769",
+      "latitude": 48.8013532732268,
+      "longitude": 2.13069194871324,
+      "name": {
+        "en": "Porte des Gendarmes ou Pavillon des Gendarmes ou ancien hôtel des Gendarmes de la Garde",
+        "fr": "Porte des Gendarmes ou Pavillon des Gendarmes ou ancien hôtel des Gendarmes de la Garde"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal ou Théâtre Montansier is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal ou Théâtre Montansier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087775",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-theatre-municipal-ou-theatre-montansier-pa00087775",
+      "latitude": 48.8081349748449,
+      "longitude": 2.12410639510566,
+      "name": {
+        "en": "Théâtre municipal ou Théâtre Montansier",
+        "fr": "Théâtre municipal ou Théâtre Montansier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Laiterie de Madame (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Laiterie de Madame (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087755",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-laiterie-de-madame-ancienne-pa00087755",
+      "latitude": 48.7990102776503,
+      "longitude": 2.15494888225486,
+      "name": {
+        "en": "Laiterie de Madame (ancienne)",
+        "fr": "Laiterie de Madame (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domain in the park of the Palace of Versailles",
+        "fr": "domaine dans le parc du château de Versailles"
+      },
+      "externalIdentity": {
+        "id": "Q8044",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "versailles-petit-trianon-q8044",
+      "latitude": 48.81569,
+      "longitude": 2.10972,
+      "name": {
+        "en": "Petit Trianon",
+        "fr": "Petit Trianon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "versailles-synagogue-pa78000027",
+      "latitude": 48.8104206597115,
+      "longitude": 2.13609060122862,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

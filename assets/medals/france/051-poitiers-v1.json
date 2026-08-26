@@ -1,0 +1,394 @@
+{
+  "id": "poitiers-v1",
+  "cityId": "poitiers-fr",
+  "cityZoneId": "relation/132348",
+  "cityName": {
+    "en": "Poitiers",
+    "fr": "Poitiers"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien Hôtel de Jean Du Moulin de Rochefort, actuellement siège de la DRAC (direction régionale des affaires culturelles) de Poitou-Charentes is an important witness to the city's history.",
+        "fr": "Ancien Hôtel de Jean Du Moulin de Rochefort, actuellement siège de la DRAC (direction régionale des affaires culturelles) de Poitou-Charentes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105612",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-ancien-hotel-de-jean-du-moulin-de-rochefort-actuellement-siege-de-la-drac-direction-regionale-des-affaires-culturelles-de-poitou-charentes-pa00105612",
+      "latitude": 46.5824255216058,
+      "longitude": 0.348398218035347,
+      "name": {
+        "en": "Ancien Hôtel de Jean Du Moulin de Rochefort, actuellement siège de la DRAC (direction régionale des affaires culturelles) de Poitou-Charentes",
+        "fr": "Ancien Hôtel de Jean Du Moulin de Rochefort, actuellement siège de la DRAC (direction régionale des affaires culturelles) de Poitou-Charentes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Palais des Comtes de Poitiers is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Palais des Comtes de Poitiers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105653",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-ancien-palais-des-comtes-de-poitiers-pa00105653",
+      "latitude": 46.5828051308214,
+      "longitude": 0.342576260004704,
+      "name": {
+        "en": "Ancien Palais des Comtes de Poitiers",
+        "fr": "Ancien Palais des Comtes de Poitiers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Arènes is one of the city's notable cultural landmarks.",
+        "fr": "Arènes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105584",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-arenes-pa00105584",
+      "latitude": 46.5786161338374,
+      "longitude": 0.339321674948907,
+      "name": {
+        "en": "Arènes",
+        "fr": "Arènes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105586",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-cathedrale-saint-pierre-pa00105586",
+      "latitude": 46.5803219500349,
+      "longitude": 0.349440824239724,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Chantrerie Saint-Hilaire is one of the city's notable cultural landmarks.",
+        "fr": "Chantrerie Saint-Hilaire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105587",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-chantrerie-saint-hilaire-pa00105587",
+      "latitude": 46.5782549965269,
+      "longitude": 0.33482002892543,
+      "name": {
+        "en": "Chantrerie Saint-Hilaire",
+        "fr": "Chantrerie Saint-Hilaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau is an important witness to the city's history.",
+        "fr": "Château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA86000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-chateau-d-eau-pa86000059",
+      "latitude": 46.57645498595832,
+      "longitude": 0.3347379006572982,
+      "name": {
+        "en": "Château d'eau",
+        "fr": "Château d'eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château La Minauderie is an important witness to the city's history.",
+        "fr": "Château La Minauderie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105590",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-chateau-la-minauderie-pa00105590",
+      "latitude": 46.5861120684746,
+      "longitude": 0.407882250167711,
+      "name": {
+        "en": "Château La Minauderie",
+        "fr": "Château La Minauderie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "collection d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "collection d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7057",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poitiers-collection-d-histoire-naturelle-m7057",
+      "latitude": 46.580584,
+      "longitude": 0.348113,
+      "name": {
+        "en": "collection d'histoire naturelle",
+        "fr": "collection d'histoire naturelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Dolmen dit La Pierre-Levée is an important witness to the city's history.",
+        "fr": "Dolmen dit La Pierre-Levée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105592",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-dolmen-dit-la-pierre-levee-pa00105592",
+      "latitude": 46.5746237691868,
+      "longitude": 0.362039993474073,
+      "name": {
+        "en": "Dolmen dit La Pierre-Levée",
+        "fr": "Dolmen dit La Pierre-Levée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-la-Grande is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-la-Grande est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105596",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-eglise-notre-dame-la-grande-pa00105596",
+      "latitude": 46.5832244503899,
+      "longitude": 0.344083031028466,
+      "name": {
+        "en": "Église Notre-Dame-la-Grande",
+        "fr": "Église Notre-Dame-la-Grande"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Hilaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Hilaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105598",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-eglise-saint-hilaire-pa00105598",
+      "latitude": 46.5773049471878,
+      "longitude": 0.332733194362761,
+      "name": {
+        "en": "Église Saint-Hilaire",
+        "fr": "Église Saint-Hilaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean de Montierneuf is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean de Montierneuf est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105595",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-eglise-saint-jean-de-montierneuf-pa00105595",
+      "latitude": 46.5892686919479,
+      "longitude": 0.345363252040574,
+      "name": {
+        "en": "Église Saint-Jean de Montierneuf",
+        "fr": "Église Saint-Jean de Montierneuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Porchaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Porchaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105600",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-eglise-saint-porchaire-pa00105600",
+      "latitude": 46.5812960460409,
+      "longitude": 0.340094510138961,
+      "name": {
+        "en": "Église Saint-Porchaire",
+        "fr": "Église Saint-Porchaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Radegonde is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Radegonde est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105601",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-eglise-sainte-radegonde-pa00105601",
+      "latitude": 46.579759936918,
+      "longitude": 0.351980737029872,
+      "name": {
+        "en": "Église Sainte-Radegonde",
+        "fr": "Église Sainte-Radegonde"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine en pierre sur les bords du Clain, près du pont Joubert is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine en pierre sur les bords du Clain, près du pont Joubert compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-fontaine-en-pierre-sur-les-bords-du-clain-pres-du-pont-joubert-pa00105603",
+      "latitude": 46.5811458289386,
+      "longitude": 0.353975599874815,
+      "name": {
+        "en": "Fontaine en pierre sur les bords du Clain, près du pont Joubert",
+        "fr": "Fontaine en pierre sur les bords du Clain, près du pont Joubert"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hypogée des Dunes is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hypogée des Dunes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0853",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poitiers-musee-de-l-hypogee-des-dunes-m0853",
+      "latitude": 46.575749,
+      "longitude": 0.359509,
+      "name": {
+        "en": "musée de l'hypogée des Dunes",
+        "fr": "musée de l'hypogée des Dunes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du baptistère Saint-Jean is one of the city's notable cultural landmarks.",
+        "fr": "musée du baptistère Saint-Jean compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0855",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poitiers-musee-du-baptistere-saint-jean-m0855",
+      "latitude": 46.580519,
+      "longitude": 0.346104,
+      "name": {
+        "en": "musée du baptistère Saint-Jean",
+        "fr": "musée du baptistère Saint-Jean"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Rupert de Chièvres is one of the city's notable cultural landmarks.",
+        "fr": "musée Rupert de Chièvres compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0854",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poitiers-musee-rupert-de-chievres-m0854",
+      "latitude": 46.580602,
+      "longitude": 0.337972,
+      "name": {
+        "en": "musée Rupert de Chièvres",
+        "fr": "musée Rupert de Chièvres"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Sainte-Croix is one of the city's notable cultural landmarks.",
+        "fr": "musée Sainte-Croix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0852",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "poitiers-musee-sainte-croix-m0852",
+      "latitude": 46.581142,
+      "longitude": 0.344434,
+      "name": {
+        "en": "musée Sainte-Croix",
+        "fr": "musée Sainte-Croix"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges des thermes publics gallo-romains is an important witness to the city's history.",
+        "fr": "Vestiges des thermes publics gallo-romains est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105658",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "poitiers-vestiges-des-thermes-publics-gallo-romains-pa00105658",
+      "latitude": 46.582832039646,
+      "longitude": 0.337247041405643,
+      "name": {
+        "en": "Vestiges des thermes publics gallo-romains",
+        "fr": "Vestiges des thermes publics gallo-romains"
+      }
+    }
+  ]
+}

@@ -6,27 +6,46 @@
     "en": "Nantes",
     "fr": "Nantes"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "history",
+      "category": "architecture",
       "description": {
-        "en": "Château des ducs de Bretagne is an important witness to the city's history.",
-        "fr": "Château des ducs de Bretagne est un témoin important de l’histoire de la ville."
+        "en": "catholic church in Nantes, France",
+        "fr": "église catholique de Nantes, France"
       },
       "externalIdentity": {
-        "id": "PA00108657",
+        "id": "Q2886987",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nantes-basilique-saint-donatien-et-saint-rogatien-de-nantes-q2886987",
+      "latitude": 47.2292588,
+      "longitude": -1.5424418,
+      "name": {
+        "en": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes",
+        "fr": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bâtiment dit La Psallette is one of the city's notable cultural landmarks.",
+        "fr": "Bâtiment dit La Psallette compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108651",
         "source": "merimee",
         "type": "record"
       },
-      "id": "nantes-chateau-des-ducs-de-bretagne-pa00108657",
-      "latitude": 47.2160947099898,
-      "longitude": -1.54932138645949,
+      "id": "nantes-batiment-dit-la-psallette-pa00108651",
+      "latitude": 47.2179563553201,
+      "longitude": -1.54996227056645,
       "name": {
-        "en": "Château des ducs de Bretagne",
-        "fr": "Château des ducs de Bretagne"
+        "en": "Bâtiment dit La Psallette",
+        "fr": "Bâtiment dit La Psallette"
       }
     },
     {
@@ -49,22 +68,136 @@
       }
     },
     {
-      "category": "culture",
+      "category": "history",
       "description": {
-        "en": "musée Dobrée is one of the city's notable cultural landmarks.",
-        "fr": "musée Dobrée compte parmi les lieux culturels marquants de la ville."
+        "en": "Château des ducs de Bretagne is an important witness to the city's history.",
+        "fr": "Château des ducs de Bretagne est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "M0745",
-        "source": "museofile",
+        "id": "PA00108657",
+        "source": "merimee",
         "type": "record"
       },
-      "id": "nantes-musee-dobree-m0745",
-      "latitude": 47.211788,
-      "longitude": -1.566123,
+      "id": "nantes-chateau-des-ducs-de-bretagne-pa00108657",
+      "latitude": 47.2160947099898,
+      "longitude": -1.54932138645949,
       "name": {
-        "en": "musée Dobrée",
-        "fr": "musée Dobrée"
+        "en": "Château des ducs de Bretagne",
+        "fr": "Château des ducs de Bretagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église des Minimes (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église des Minimes (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108850",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-eglise-des-minimes-ancienne-pa00108850",
+      "latitude": 47.2181656027307,
+      "longitude": -1.54637155501892,
+      "name": {
+        "en": "Église des Minimes (ancienne)",
+        "fr": "Église des Minimes (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-du-Bon-Port is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-du-Bon-Port est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108660",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-eglise-notre-dame-du-bon-port-pa00108660",
+      "latitude": 47.210377078953805,
+      "longitude": -1.568910552125,
+      "name": {
+        "en": "Église Notre-Dame-du-Bon-Port",
+        "fr": "Église Notre-Dame-du-Bon-Port"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques de Pirmil is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques de Pirmil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA44000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-eglise-saint-jacques-de-pirmil-pa44000011",
+      "latitude": 47.1964834618198,
+      "longitude": -1.53818994310256,
+      "name": {
+        "en": "Église Saint-Jacques de Pirmil",
+        "fr": "Église Saint-Jacques de Pirmil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin-de-Chantenay is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin-de-Chantenay est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108844",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-eglise-saint-martin-de-chantenay-pa00108844",
+      "latitude": 47.1993233872822,
+      "longitude": -1.59276177562633,
+      "name": {
+        "en": "Église Saint-Martin-de-Chantenay",
+        "fr": "Église Saint-Martin-de-Chantenay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte gallo-romaine (vestiges) is an important witness to the city's history.",
+        "fr": "Enceinte gallo-romaine (vestiges) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108662",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-enceinte-gallo-romaine-vestiges-pa00108662",
+      "latitude": 47.2189531132051,
+      "longitude": -1.55005366393523,
+      "name": {
+        "en": "Enceinte gallo-romaine (vestiges)",
+        "fr": "Enceinte gallo-romaine (vestiges)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Scheult is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Scheult est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108671",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-hotel-scheult-pa00108671",
+      "latitude": 47.212073457825404,
+      "longitude": -1.56228895375558,
+      "name": {
+        "en": "Hôtel Scheult",
+        "fr": "Hôtel Scheult"
       }
     },
     {
@@ -89,6 +222,25 @@
     {
       "category": "culture",
       "description": {
+        "en": "musée Dobrée is one of the city's notable cultural landmarks.",
+        "fr": "musée Dobrée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0745",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nantes-musee-dobree-m0745",
+      "latitude": 47.211788,
+      "longitude": -1.566123,
+      "name": {
+        "en": "musée Dobrée",
+        "fr": "musée Dobrée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
         "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
         "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
       },
@@ -103,44 +255,6 @@
       "name": {
         "en": "muséum d'histoire naturelle",
         "fr": "muséum d'histoire naturelle"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "stadium in Nantes, France",
-        "fr": "stade français"
-      },
-      "externalIdentity": {
-        "id": "Q1053455",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "nantes-stade-de-la-beaujoire-q1053455",
-      "latitude": 47.2561,
-      "longitude": -1.52466,
-      "name": {
-        "en": "stade de la Beaujoire",
-        "fr": "stade de la Beaujoire"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "catholic church in Nantes, France",
-        "fr": "église catholique de Nantes, France"
-      },
-      "externalIdentity": {
-        "id": "Q2886987",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "nantes-basilique-saint-donatien-et-saint-rogatien-de-nantes-q2886987",
-      "latitude": 47.2292588,
-      "longitude": -1.5424418,
-      "name": {
-        "en": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes",
-        "fr": "basilique Saint-Donatien-et-Saint-Rogatien de Nantes"
       }
     },
     {
@@ -160,6 +274,120 @@
       "name": {
         "en": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché",
         "fr": "Porte gallo-romaine, dite du Bastion Saint-Pierre, dépendant de l'ancien évêché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre Graslin is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre Graslin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108760",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-theatre-graslin-pa00108760",
+      "latitude": 47.2136761578306,
+      "longitude": -1.56222385287047,
+      "name": {
+        "en": "Théâtre Graslin",
+        "fr": "Théâtre Graslin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Usine des Batignolles is a notable work of public art and local memory.",
+        "fr": "Usine des Batignolles est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA44000070",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-usine-des-batignolles-pa44000070",
+      "latitude": 47.24709901399367,
+      "longitude": -1.5240458364050842,
+      "name": {
+        "en": "Usine des Batignolles",
+        "fr": "Usine des Batignolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dit le Temple du Goût is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dit le Temple du Goût est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-immeuble-dit-le-temple-du-gout-pa00108689",
+      "latitude": 47.2125745289647,
+      "longitude": -1.55680397564111,
+      "name": {
+        "en": "Immeuble dit le Temple du Goût",
+        "fr": "Immeuble dit le Temple du Goût"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108747",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-maison-pa00108747",
+      "latitude": 47.2158522144195,
+      "longitude": -1.55488497731109,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Passage Pommeraye is a distinctive architectural landmark in the city.",
+        "fr": "Passage Pommeraye est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108756",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nantes-passage-pommeraye-pa00108756",
+      "latitude": 47.2134586206347,
+      "longitude": -1.55956808883248,
+      "name": {
+        "en": "Passage Pommeraye",
+        "fr": "Passage Pommeraye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stadium in Nantes, France",
+        "fr": "stade français"
+      },
+      "externalIdentity": {
+        "id": "Q1053455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nantes-stade-de-la-beaujoire-q1053455",
+      "latitude": 47.2561,
+      "longitude": -1.52466,
+      "name": {
+        "en": "stade de la Beaujoire",
+        "fr": "stade de la Beaujoire"
       }
     }
   ]

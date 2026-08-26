@@ -1,0 +1,394 @@
+{
+  "id": "montreuil-v1",
+  "cityId": "montreuil-fr",
+  "cityZoneId": "relation/129423",
+  "cityName": {
+    "en": "Montreuil",
+    "fr": "Montreuil"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Montreau is an important witness to the city's history.",
+        "fr": "bâtiment situé à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q82001156",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-chateau-de-montreau-q82001156",
+      "latitude": 48.86916,
+      "longitude": 2.471,
+      "name": {
+        "en": "château de Montreau",
+        "fr": "château de Montreau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Tillemont is an important witness to the city's history.",
+        "fr": "bâtiment situé à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q18649326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-chateau-de-tillemont-q18649326",
+      "latitude": 48.86152,
+      "longitude": 2.45623,
+      "name": {
+        "en": "château de Tillemont",
+        "fr": "château de Tillemont"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "building in Montreuil, France",
+        "fr": "bâtiment situé à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q82002112",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-conservatoire-pina-bausch-q82002112",
+      "latitude": 48.85911,
+      "longitude": 2.43558,
+      "name": {
+        "en": "conservatoire Pina Bausch",
+        "fr": "conservatoire Pina Bausch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20828456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-eglise-notre-dame-des-foyers-q20828456",
+      "latitude": 48.86173,
+      "longitude": 2.45864,
+      "name": {
+        "en": "église Notre-Dame des Foyers",
+        "fr": "église Notre-Dame des Foyers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18602878",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-eglise-saint-andre-du-bas-montreuil-q18602878",
+      "latitude": 48.85386,
+      "longitude": 2.42273,
+      "name": {
+        "en": "église Saint-André du Bas-Montreuil",
+        "fr": "église Saint-André du Bas-Montreuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385915",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-eglise-saint-charles-des-ruffins-q60385915",
+      "latitude": 48.862012,
+      "longitude": 2.478359,
+      "name": {
+        "en": "église Saint-Charles des Ruffins",
+        "fr": "église Saint-Charles des Ruffins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18609472",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-eglise-saint-maurice-de-la-boissiere-q18609472",
+      "latitude": 48.87061,
+      "longitude": 2.46003,
+      "name": {
+        "en": "église Saint-Maurice de la Boissière",
+        "fr": "église Saint-Maurice de la Boissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montreuil-eglise-saint-pierre-et-saint-paul-du-haut-montreuil-pa00079938",
+      "latitude": 48.8637547438455,
+      "longitude": 2.44474109239755,
+      "name": {
+        "en": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil",
+        "fr": "Église Saint-Pierre et Saint-Paul-du-Haut-Montreuil"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cinema in Montreuil, France",
+        "fr": "cinéma public"
+      },
+      "externalIdentity": {
+        "id": "Q3103249",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-georges-melies-q3103249",
+      "latitude": 48.8585,
+      "longitude": 2.43576,
+      "name": {
+        "en": "Georges Méliès",
+        "fr": "Georges Méliès"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "habitations à bon marché Chateaudun is an important witness to the city's history.",
+        "fr": "bâtiment situé à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q82001664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-habitations-a-bon-marche-chateaudun-q82001664",
+      "latitude": 48.87717,
+      "longitude": 2.45624,
+      "name": {
+        "en": "habitations à bon marché Chateaudun",
+        "fr": "habitations à bon marché Chateaudun"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000077",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montreuil-hotel-de-ville-pa93000077",
+      "latitude": 48.86237716935935,
+      "longitude": 2.4410501535301607,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Montreuil, France",
+        "fr": "jardin de Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q108915214",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-jardin-django-reinhardt-q108915214",
+      "latitude": 48.851322608,
+      "longitude": 2.421262853,
+      "name": {
+        "en": "jardin Django Reinhardt",
+        "fr": "jardin Django Reinhardt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q32835247",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-la-grande-mosquee-de-montreuil-masjid-al-oumma-q32835247",
+      "latitude": 48.869125,
+      "longitude": 2.461675,
+      "name": {
+        "en": "La grande Mosquée de Montreuil - Masjid Al Oumma",
+        "fr": "La grande Mosquée de Montreuil - Masjid Al Oumma"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'histoire vivante is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'histoire vivante compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0420",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montreuil-musee-de-l-histoire-vivante-m0420",
+      "latitude": 48.866151,
+      "longitude": 2.469481,
+      "name": {
+        "en": "musée de l'histoire vivante",
+        "fr": "musée de l'histoire vivante"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Montreuil, arrondissement of Bobigny, Seine-Saint-Denis, Île-de-France, France",
+        "fr": "parc à Montreuil"
+      },
+      "externalIdentity": {
+        "id": "Q24258370",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-parc-des-beaumonts-q24258370",
+      "latitude": 48.8576,
+      "longitude": 2.4532,
+      "name": {
+        "en": "parc des Beaumonts",
+        "fr": "parc des Beaumonts"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Jean-Moulin-Les Guilands is one of the city's notable green or natural landmarks.",
+        "fr": "espace vert à Bagnolet et à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q24258376",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-parc-jean-moulin-les-guilands-q24258376",
+      "latitude": 48.8627,
+      "longitude": 2.4254,
+      "name": {
+        "en": "parc Jean-Moulin-Les Guilands",
+        "fr": "parc Jean-Moulin-Les Guilands"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Montreuil, France",
+        "fr": "parc situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q60852892",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-parc-montreau-q60852892",
+      "latitude": 48.86555,
+      "longitude": 2.47213,
+      "name": {
+        "en": "parc Montreau",
+        "fr": "parc Montreau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "passageway of Montreuil in Seine-Saint-Denis, France",
+        "fr": "passage de Montreuil en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q87746155",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-passage-de-chateaudun-q87746155",
+      "latitude": 48.876175733,
+      "longitude": 2.45527895,
+      "name": {
+        "en": "passage de Châteaudun",
+        "fr": "passage de Châteaudun"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Altaïs Evolution is an important witness to the city's history.",
+        "fr": "bâtiment double situé à Montreui, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q23906199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-tour-altais-evolution-q23906199",
+      "latitude": 48.860516,
+      "longitude": 2.441976,
+      "name": {
+        "en": "tour Altaïs Evolution",
+        "fr": "tour Altaïs Evolution"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Cityscope is an important witness to the city's history.",
+        "fr": "immeuble à Montreuil, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q23906181",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montreuil-tour-cityscope-q23906181",
+      "latitude": 48.86079,
+      "longitude": 2.443106,
+      "name": {
+        "en": "tour Cityscope",
+        "fr": "tour Cityscope"
+      }
+    }
+  ]
+}

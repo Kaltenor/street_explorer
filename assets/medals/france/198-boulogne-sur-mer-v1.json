@@ -1,0 +1,204 @@
+{
+  "id": "boulogne-sur-mer-v1",
+  "cityId": "boulogne-sur-mer-fr",
+  "cityZoneId": "relation/240377",
+  "cityName": {
+    "en": "Boulogne-sur-Mer",
+    "fr": "Boulogne-sur-Mer"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye et église Saint-Wilmer is an important witness to the city's history.",
+        "fr": "Abbaye et église Saint-Wilmer est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108211",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-abbaye-et-eglise-saint-wilmer-pa00108211",
+      "latitude": 50.7245717474586,
+      "longitude": 1.61375607748706,
+      "name": {
+        "en": "Abbaye et église Saint-Wilmer",
+        "fr": "Abbaye et église Saint-Wilmer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108227",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-ancien-cathedrale-notre-dame-pa00108227",
+      "latitude": 50.7262579877051,
+      "longitude": 1.61511741337824,
+      "name": {
+        "en": "Ancien cathédrale Notre-Dame",
+        "fr": "Ancien cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108226",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-beffroi-pa00108226",
+      "latitude": 50.7250564700654,
+      "longitude": 1.61319215493804,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'Aumont is an important witness to the city's history.",
+        "fr": "Château d'Aumont est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108228",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-chateau-d-aumont-pa00108228",
+      "latitude": 50.7256634936262,
+      "longitude": 1.61741524267528,
+      "name": {
+        "en": "Château d'Aumont",
+        "fr": "Château d'Aumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108229",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-eglise-saint-nicolas-pa00108229",
+      "latitude": 50.7233931181711,
+      "longitude": 1.60746111647606,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Desandrouins, dit aussi Palais Impérial is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Desandrouins, dit aussi Palais Impérial est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108232",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-hotel-desandrouins-dit-aussi-palais-imperial-pa00108232",
+      "latitude": 50.7244708028316,
+      "longitude": 1.61307388746928,
+      "name": {
+        "en": "Hôtel Desandrouins, dit aussi Palais Impérial",
+        "fr": "Hôtel Desandrouins, dit aussi Palais Impérial"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Boulogne-sur-Mer is one of the city's notable cultural landmarks.",
+        "fr": "musée de Boulogne-sur-Mer compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0643",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-musee-de-boulogne-sur-mer-m0643",
+      "latitude": 50.725617,
+      "longitude": 1.616349,
+      "name": {
+        "en": "musée de Boulogne-sur-Mer",
+        "fr": "musée de Boulogne-sur-Mer"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7027",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-museum-d-histoire-naturelle-m7027",
+      "latitude": 50.723535472588935,
+      "longitude": 1.6171474769293122,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte des Degrés is an important witness to the city's history.",
+        "fr": "Porte des Degrés est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108234",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-porte-des-degres-pa00108234",
+      "latitude": 50.7237388234919,
+      "longitude": 1.61230834432025,
+      "name": {
+        "en": "Porte des Degrés",
+        "fr": "Porte des Degrés"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Gayolle is an important witness to the city's history.",
+        "fr": "Porte Gayolle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108235",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-sur-mer-porte-gayolle-pa00108235",
+      "latitude": 50.723536122912,
+      "longitude": 1.61513379721347,
+      "name": {
+        "en": "Porte Gayolle",
+        "fr": "Porte Gayolle"
+      }
+    }
+  ]
+}

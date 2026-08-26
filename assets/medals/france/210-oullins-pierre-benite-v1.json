@@ -1,0 +1,204 @@
+{
+  "id": "oullins-pierre-benite-v1",
+  "cityId": "oullins-pierre-benite-fr",
+  "cityZoneId": "relation/186363",
+  "cityName": {
+    "en": "Oullins-Pierre-Bénite",
+    "fr": "Oullins-Pierre-Bénite"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vélo'v bicycle-sharing station, Lyon region, France",
+        "fr": "station de vélopartage Vélo'v, région lyonnaise, France"
+      },
+      "externalIdentity": {
+        "id": "Q120721602",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-20003-oullins-pont-blanc-q120721602",
+      "latitude": 45.720158,
+      "longitude": 4.798332,
+      "name": {
+        "en": "20003 - Oullins - Pont Blanc",
+        "fr": "20003 - Oullins - Pont Blanc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116259349",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-ancien-eglise-saint-jean-marie-vianney-d-oullins-q116259349",
+      "latitude": 45.71709,
+      "longitude": 4.81737,
+      "name": {
+        "en": "Ancien église Saint-Jean-Marie-Vianney d'Oullins",
+        "fr": "Ancien église Saint-Jean-Marie-Vianney d'Oullins"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Oullins, France",
+        "fr": "château situé à Oullins (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2969523",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-chateau-de-la-bussiere-q2969523",
+      "latitude": 45.717,
+      "longitude": 4.80245,
+      "name": {
+        "en": "château de La Bussière",
+        "fr": "château de La Bussière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41794871",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-eglise-saint-martin-d-oullins-q41794871",
+      "latitude": 45.71495,
+      "longitude": 4.80508,
+      "name": {
+        "en": "église Saint-Martin d'Oullins",
+        "fr": "église Saint-Martin d'Oullins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392943",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-eglise-saint-viateur-de-la-claveliere-q60392943",
+      "latitude": 45.70898,
+      "longitude": 4.81501,
+      "name": {
+        "en": "église Saint-Viateur de la Clavelière",
+        "fr": "église Saint-Viateur de la Clavelière"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts d'Oullins is a notable work of public art and local memory.",
+        "fr": "monument aux morts dans le Rhône, France"
+      },
+      "externalIdentity": {
+        "id": "Q66024971",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-monument-aux-morts-d-oullins-q66024971",
+      "latitude": 45.71974,
+      "longitude": 4.80575,
+      "name": {
+        "en": "monument aux morts d'Oullins",
+        "fr": "monument aux morts d'Oullins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Oullins-Pierre-Bénite",
+        "fr": "salle de spectacle à Oullins"
+      },
+      "externalIdentity": {
+        "id": "Q3527852",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-theatre-la-renaissance-q3527852",
+      "latitude": 45.7165,
+      "longitude": 4.81077,
+      "name": {
+        "en": "théâtre la Renaissance",
+        "fr": "théâtre la Renaissance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble Le Castel is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble Le Castel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "oullins-pierre-benite-immeuble-le-castel-pa00118012",
+      "latitude": 45.7145946511113,
+      "longitude": 4.80432207495741,
+      "name": {
+        "en": "Immeuble Le Castel",
+        "fr": "Immeuble Le Castel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Rhône department, France",
+        "fr": "siège municipal d'Oullins, dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119297136",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-mairie-d-oullins-q119297136",
+      "latitude": 45.71406,
+      "longitude": 4.80702,
+      "name": {
+        "en": "mairie d'Oullins",
+        "fr": "mairie d'Oullins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Oullins, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1920677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "oullins-pierre-benite-oullins-q1920677",
+      "latitude": 45.717425,
+      "longitude": 4.813196,
+      "name": {
+        "en": "Oullins",
+        "fr": "Oullins"
+      }
+    }
+  ]
+}

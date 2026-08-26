@@ -1,0 +1,204 @@
+{
+  "id": "fleury-les-aubrais-v1",
+  "cityId": "fleury-les-aubrais-fr",
+  "cityZoneId": "relation/148479",
+  "cityName": {
+    "en": "Fleury-les-Aubrais",
+    "fr": "Fleury-les-Aubrais"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bustière is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway d'Orléans"
+      },
+      "externalIdentity": {
+        "id": "Q110610752",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-bustiere-q110610752",
+      "latitude": 47.929241193,
+      "longitude": 1.912969081,
+      "name": {
+        "en": "Bustière",
+        "fr": "Bustière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Loiret, in France",
+        "fr": "cimetière situé dans le Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110348501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-cimetiere-de-fleury-les-aubrais-q110348501",
+      "latitude": 47.9332,
+      "longitude": 1.9202,
+      "name": {
+        "en": "cimetière de Fleury-les-Aubrais",
+        "fr": "cimetière de Fleury-les-Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Fleury-les-Aubrais, France",
+        "fr": "édifice religieux catholique à Fleury-les-Aubrais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38414664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-eglise-saint-andre-de-fleury-les-aubrais-q38414664",
+      "latitude": 47.931570253,
+      "longitude": 1.920715971,
+      "name": {
+        "en": "église Saint-André de Fleury-les-Aubrais",
+        "fr": "église Saint-André de Fleury-les-Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare des Aubrais is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway d'Orléans"
+      },
+      "externalIdentity": {
+        "id": "Q110610769",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-gare-des-aubrais-q110610769",
+      "latitude": 47.926537558,
+      "longitude": 1.906973522,
+      "name": {
+        "en": "Gare des Aubrais",
+        "fr": "Gare des Aubrais"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Loiret department, France",
+        "fr": "monument aux morts du Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136054514",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-monument-aux-morts-de-fleury-les-aubrais-q136054514",
+      "latitude": 47.9314038,
+      "longitude": 1.9198598,
+      "name": {
+        "en": "monument aux morts de Fleury-les-Aubrais",
+        "fr": "monument aux morts de Fleury-les-Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Passerelle de Fleury-les-Aubrais is a distinctive architectural landmark in the city.",
+        "fr": "La Passerelle de Fleury-les-Aubrais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q104874724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-la-passerelle-de-fleury-les-aubrais-q104874724",
+      "latitude": 47.9249,
+      "longitude": 1.92074,
+      "name": {
+        "en": "La Passerelle de Fleury-les-Aubrais",
+        "fr": "La Passerelle de Fleury-les-Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Fleury-les-Aubrais, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2544309",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-les-aubrais-q2544309",
+      "latitude": 47.926667,
+      "longitude": 1.906667,
+      "name": {
+        "en": "Les Aubrais",
+        "fr": "Les Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Loiret department, France",
+        "fr": "siège municipal de Fleury-les-Aubrais, dans le Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119309538",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-mairie-de-fleury-les-aubrais-q119309538",
+      "latitude": 47.931246207,
+      "longitude": 1.92090178,
+      "name": {
+        "en": "mairie de Fleury-les-Aubrais",
+        "fr": "mairie de Fleury-les-Aubrais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "place Abbé Pasty is a distinctive architectural landmark in the city.",
+        "fr": "place de Fleury-les-Aubrais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q141164414",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-place-abbe-pasty-q141164414",
+      "latitude": 47.928527191,
+      "longitude": 1.917092455,
+      "name": {
+        "en": "place Abbé Pasty",
+        "fr": "place Abbé Pasty"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "place de la République is a distinctive architectural landmark in the city.",
+        "fr": "place à Fleury-les-Aubrais dans le Loiret"
+      },
+      "externalIdentity": {
+        "id": "Q140667526",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fleury-les-aubrais-place-de-la-republique-q140667526",
+      "latitude": 47.931409705,
+      "longitude": 1.920364763,
+      "name": {
+        "en": "place de la République",
+        "fr": "place de la République"
+      }
+    }
+  ]
+}

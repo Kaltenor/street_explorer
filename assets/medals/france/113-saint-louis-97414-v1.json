@@ -1,0 +1,204 @@
+{
+  "id": "saint-louis-97414-v1",
+  "cityId": "saint-louis-97414-fr",
+  "cityZoneId": "relation/1282229",
+  "cityName": {
+    "en": "Saint-Louis",
+    "fr": "Saint-Louis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Domaine agricole de Maison Rouge, actuellement musée des arts décoratifs de l'Océan Indien (MADOI) is one of the city's notable cultural landmarks.",
+        "fr": "Domaine agricole de Maison Rouge, actuellement musée des arts décoratifs de l'Océan Indien (MADOI) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105825",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-louis-97414-domaine-agricole-de-maison-rouge-actuellement-musee-des-arts-decoratifs-de-l-ocean-indien-madoi-pa00105825",
+      "latitude": -21.2715351100253,
+      "longitude": 55.4100925555688,
+      "name": {
+        "en": "Domaine agricole de Maison Rouge, actuellement musée des arts décoratifs de l'Océan Indien (MADOI)",
+        "fr": "Domaine agricole de Maison Rouge, actuellement musée des arts décoratifs de l'Océan Indien (MADOI)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former French colonial plantation in Saint-Louis, Reunion Islande",
+        "fr": "ancienne plantation coloniale à Saint-Louis (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q3034481",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-domaine-de-maison-rouge-q3034481",
+      "latitude": -21.266,
+      "longitude": 55.412139,
+      "name": {
+        "en": "domaine de Maison Rouge",
+        "fr": "domaine de Maison Rouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise paroissiale Notre-Dame-du-Rosaire is a distinctive architectural landmark in the city.",
+        "fr": "Eglise paroissiale Notre-Dame-du-Rosaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-louis-97414-eglise-paroissiale-notre-dame-du-rosaire-pa97400043",
+      "latitude": -21.2629421225651,
+      "longitude": 55.43772506447301,
+      "name": {
+        "en": "Eglise paroissiale Notre-Dame-du-Rosaire",
+        "fr": "Eglise paroissiale Notre-Dame-du-Rosaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise paroissiale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Eglise paroissiale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105824",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-louis-97414-eglise-paroissiale-saint-louis-pa00105824",
+      "latitude": -21.2884118498022,
+      "longitude": 55.4077348120908,
+      "name": {
+        "en": "Eglise paroissiale Saint-Louis",
+        "fr": "Eglise paroissiale Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Rivière is a distinctive architectural landmark in the city.",
+        "fr": "lieu-dit de Saint-Louis, la Réunion, France"
+      },
+      "externalIdentity": {
+        "id": "Q1655811",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-la-riviere-q1655811",
+      "latitude": -21.25833333,
+      "longitude": 55.44166667,
+      "name": {
+        "en": "La Rivière",
+        "fr": "La Rivière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330173",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-musee-des-arts-decoratifs-de-l-ocean-indien-q3330173",
+      "latitude": -21.2669,
+      "longitude": 55.4114,
+      "name": {
+        "en": "musée des arts décoratifs de l'océan Indien",
+        "fr": "musée des arts décoratifs de l'océan Indien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le Petit Serré is a distinctive architectural landmark in the city.",
+        "fr": "îlet à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q131605364",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-le-petit-serre-q131605364",
+      "latitude": -21.214722222,
+      "longitude": 55.454722222,
+      "name": {
+        "en": "Le Petit Serré",
+        "fr": "Le Petit Serré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3324906",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-mosquee-de-saint-louis-q3324906",
+      "latitude": -21.2856,
+      "longitude": 55.4069,
+      "name": {
+        "en": "mosquée de Saint-Louis",
+        "fr": "mosquée de Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hindu temple located in La Réunion, in France",
+        "fr": "temple hindou situé à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3517666",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-97414-temple-du-gol-q3517666",
+      "latitude": -21.275722,
+      "longitude": 55.401,
+      "name": {
+        "en": "temple du Gol",
+        "fr": "temple du Gol"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple hindouiste dit Pendiali, situé au Gol is a distinctive architectural landmark in the city.",
+        "fr": "Temple hindouiste dit Pendiali, situé au Gol est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-louis-97414-temple-hindouiste-dit-pendiali-situe-au-gol-pa97400010",
+      "latitude": -21.2757615504318,
+      "longitude": 55.4010215496153,
+      "name": {
+        "en": "Temple hindouiste dit Pendiali, situé au Gol",
+        "fr": "Temple hindouiste dit Pendiali, situé au Gol"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "velizy-villacoublay-v1",
+  "cityId": "velizy-villacoublay-fr",
+  "cityZoneId": "relation/27685",
+  "cityName": {
+    "en": "Vélizy-Villacoublay",
+    "fr": "Vélizy-Villacoublay"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Air Force base near Velizy-Villacoublay in Yvelines, France",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q1894366",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-base-aerienne-107-villacoublay-q1894366",
+      "latitude": 48.77305556,
+      "longitude": 2.19972222,
+      "name": {
+        "en": "base aérienne 107 Villacoublay",
+        "fr": "base aérienne 107 Villacoublay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Dewoitine is a distinctive architectural landmark in the city.",
+        "fr": "station de la ligne T6 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28739877",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-dewoitine-q28739877",
+      "latitude": 48.783888888,
+      "longitude": 2.215555555,
+      "name": {
+        "en": "Dewoitine",
+        "fr": "Dewoitine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38498131",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-eglise-saint-denis-de-velizy-villacoublay-q38498131",
+      "latitude": 48.78471,
+      "longitude": 2.19048,
+      "name": {
+        "en": "église Saint-Denis de Vélizy-Villacoublay",
+        "fr": "église Saint-Denis de Vélizy-Villacoublay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38637687",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-eglise-saint-jean-baptiste-de-velizy-villacoublay-q38637687",
+      "latitude": 48.785598,
+      "longitude": 2.180415,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Vélizy-Villacoublay",
+        "fr": "église Saint-Jean-Baptiste de Vélizy-Villacoublay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Vélizy-Villacoublay, France",
+        "fr": "édifice de Vélizy-Villacoublay, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-hotel-de-ville-de-velizy-villacoublay-q83412824",
+      "latitude": 48.7828,
+      "longitude": 2.1906,
+      "name": {
+        "en": "hôtel de ville de Vélizy-Villacoublay",
+        "fr": "hôtel de ville de Vélizy-Villacoublay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T6 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28739879",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-inovel-parc-nord-q28739879",
+      "latitude": 48.780833333,
+      "longitude": 2.207777777,
+      "name": {
+        "en": "Inovel Parc Nord",
+        "fr": "Inovel Parc Nord"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French public engineering school",
+        "fr": "école d'ingénieurs publique"
+      },
+      "externalIdentity": {
+        "id": "Q3152185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-institut-des-sciences-et-techniques-des-yvelines-q3152185",
+      "latitude": 48.984626,
+      "longitude": 1.701644,
+      "name": {
+        "en": "Institut des sciences et techniques des Yvelines",
+        "fr": "Institut des sciences et techniques des Yvelines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "division of the University of Versailles in France",
+        "fr": "Institut universitaire de technologie de Vélizy - Rambouillet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3152758",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-institut-universitaire-de-technologie-de-velizy-rambouillet-q3152758",
+      "latitude": 48.78,
+      "longitude": 2.2178113,
+      "name": {
+        "en": "Institut universitaire de technologie de Vélizy - Rambouillet",
+        "fr": "Institut universitaire de technologie de Vélizy - Rambouillet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Yvelines, in France",
+        "fr": "temple protestant situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60428525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-temple-protestant-de-velizy-villacoublay-q60428525",
+      "latitude": 48.78612,
+      "longitude": 2.18089,
+      "name": {
+        "en": "temple protestant de Vélizy-Villacoublay",
+        "fr": "temple protestant de Vélizy-Villacoublay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "shopping mall in Vélizy",
+        "fr": "centre commercial à Vélizy"
+      },
+      "externalIdentity": {
+        "id": "Q3564063",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "velizy-villacoublay-westfield-velizy-2-q3564063",
+      "latitude": 48.781,
+      "longitude": 2.2204,
+      "name": {
+        "en": "Westfield Vélizy 2",
+        "fr": "Westfield Vélizy 2"
+      }
+    }
+  ]
+}

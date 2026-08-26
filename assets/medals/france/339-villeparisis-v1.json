@@ -1,0 +1,204 @@
+{
+  "id": "villeparisis-v1",
+  "cityId": "villeparisis-fr",
+  "cityZoneId": "relation/953247",
+  "cityName": {
+    "en": "Villeparisis",
+    "fr": "Villeparisis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Centre Culturel Jacques Prévert is one of the city's notable cultural landmarks.",
+        "fr": "Centre Culturel Jacques Prévert compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2442520280",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "villeparisis-centre-culturel-jacques-prevert-node-2442520280",
+      "latitude": 48.9427925,
+      "longitude": 2.6143914,
+      "name": {
+        "en": "Centre Culturel Jacques Prévert",
+        "fr": "Centre Culturel Jacques Prévert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de la Paix is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de la Paix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/237356376",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "villeparisis-eglise-notre-dame-de-la-paix-way-237356376",
+      "latitude": 48.9462183,
+      "longitude": 2.6067335,
+      "name": {
+        "en": "Église Notre-Dame de la Paix",
+        "fr": "Église Notre-Dame de la Paix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/237517309",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "villeparisis-eglise-saint-martin-way-237517309",
+      "latitude": 48.9385572,
+      "longitude": 2.6153728,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville de Villeparisis is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville de Villeparisis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2282193050",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "villeparisis-hotel-de-ville-de-villeparisis-node-2282193050",
+      "latitude": 48.9397688,
+      "longitude": 2.6171866,
+      "name": {
+        "en": "Hôtel de ville de Villeparisis",
+        "fr": "Hôtel de ville de Villeparisis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136082367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeparisis-monument-aux-morts-de-villeparisis-q136082367",
+      "latitude": 48.94439,
+      "longitude": 2.60882,
+      "name": {
+        "en": "monument aux morts de Villeparisis",
+        "fr": "monument aux morts de Villeparisis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée Othman Ibn Affan is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée Othman Ibn Affan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/433227787",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "villeparisis-mosquee-othman-ibn-affan-way-433227787",
+      "latitude": 48.9518086,
+      "longitude": 2.6224215,
+      "name": {
+        "en": "Mosquée Othman Ibn Affan",
+        "fr": "Mosquée Othman Ibn Affan"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc François Mitterrand is one of the city's notable green or natural landmarks.",
+        "fr": "Parc François Mitterrand compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1444765147",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "villeparisis-parc-francois-mitterrand-way-1444765147",
+      "latitude": 48.939465,
+      "longitude": 2.6176617,
+      "name": {
+        "en": "Parc François Mitterrand",
+        "fr": "Parc François Mitterrand"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Honoré de Balzac is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Honoré de Balzac compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/111506970",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "villeparisis-parc-honore-de-balzac-way-111506970",
+      "latitude": 48.9402956,
+      "longitude": 2.6102283,
+      "name": {
+        "en": "Parc Honoré de Balzac",
+        "fr": "Parc Honoré de Balzac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q16672539",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeparisis-reneuse-q16672539",
+      "latitude": 48.95155,
+      "longitude": 2.59936,
+      "name": {
+        "en": "Reneuse",
+        "fr": "Reneuse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-et-Marne, France",
+        "fr": "commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q387433",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeparisis-villeparisis-q387433",
+      "latitude": 48.942777777,
+      "longitude": 2.606388888,
+      "name": {
+        "en": "Villeparisis",
+        "fr": "Villeparisis"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "deuil-la-barre-v1",
+  "cityId": "deuil-la-barre-fr",
+  "cityZoneId": "relation/115245",
+  "cityName": {
+    "en": "Deuil-la-Barre",
+    "fr": "Deuil-la-Barre"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Chevrette is an important witness to the city's history.",
+        "fr": "château à Deuil-la-Barre"
+      },
+      "externalIdentity": {
+        "id": "Q100605731",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-chateau-de-la-chevrette-q100605731",
+      "latitude": 48.968055555,
+      "longitude": 2.321388888,
+      "name": {
+        "en": "château de la Chevrette",
+        "fr": "château de la Chevrette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110357960",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-cimetiere-de-deuil-la-barre-q110357960",
+      "latitude": 48.9772,
+      "longitude": 2.3176,
+      "name": {
+        "en": "cimetière de Deuil-la-Barre",
+        "fr": "cimetière de Deuil-la-Barre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Deuil-la-Barre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2060285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-deuil-montmagny-q2060285",
+      "latitude": 48.9758,
+      "longitude": 2.3377,
+      "name": {
+        "en": "Deuil - Montmagny",
+        "fr": "Deuil - Montmagny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1666408",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-eglise-notre-dame-et-saint-eugene-de-deuil-la-barre-q1666408",
+      "latitude": 48.97619444,
+      "longitude": 2.32591667,
+      "name": {
+        "en": "église Notre-Dame-et-Saint-Eugène de Deuil-la-Barre",
+        "fr": "église Notre-Dame-et-Saint-Eugène de Deuil-la-Barre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église prieurale et paroissiale de Saint-Eugène is a distinctive architectural landmark in the city.",
+        "fr": "Église prieurale et paroissiale de Saint-Eugène est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "deuil-la-barre-eglise-prieurale-et-paroissiale-de-saint-eugene-pa00080039",
+      "latitude": 48.9761965849838,
+      "longitude": 2.3259276091474,
+      "name": {
+        "en": "Église prieurale et paroissiale de Saint-Eugène",
+        "fr": "Église prieurale et paroissiale de Saint-Eugène"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Victor Labarrière is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Deuil-la-Barre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920431",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-fontaine-wallace-rue-victor-labarriere-q128920431",
+      "latitude": 48.973474,
+      "longitude": 2.324206,
+      "name": {
+        "en": "fontaine Wallace, rue Victor Labarrière",
+        "fr": "fontaine Wallace, rue Victor Labarrière"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136052771",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-monument-aux-morts-de-deuil-la-barre-q136052771",
+      "latitude": 48.976712,
+      "longitude": 2.318437,
+      "name": {
+        "en": "monument aux morts de Deuil-la-Barre",
+        "fr": "monument aux morts de Deuil-la-Barre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647553",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-eglise-saint-louis-de-deuil-la-barre-q29647553",
+      "latitude": 48.9671,
+      "longitude": 2.31864,
+      "name": {
+        "en": "église Saint-Louis de Deuil-la-Barre",
+        "fr": "église Saint-Louis de Deuil-la-Barre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Deuil-la-Barre, France",
+        "fr": "édifice de Deuil-la-Barre, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412755",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-hotel-de-ville-de-deuil-la-barre-q83412755",
+      "latitude": 48.9753,
+      "longitude": 2.3284,
+      "name": {
+        "en": "hôtel de ville de Deuil-la-Barre",
+        "fr": "hôtel de ville de Deuil-la-Barre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Deuil-la-Barre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2161509",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "deuil-la-barre-la-barre-ormesson-q2161509",
+      "latitude": 48.966389,
+      "longitude": 2.316389,
+      "name": {
+        "en": "La Barre - Ormesson",
+        "fr": "La Barre - Ormesson"
+      }
+    }
+  ]
+}

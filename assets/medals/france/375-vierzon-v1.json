@@ -1,0 +1,204 @@
+{
+  "id": "vierzon-v1",
+  "cityId": "vierzon-fr",
+  "cityZoneId": "relation/191434",
+  "cityName": {
+    "en": "Vierzon",
+    "fr": "Vierzon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ateliers Célestin Gérard, devenus Société française de matériel agricole et industriel, puis usine Case is a distinctive architectural landmark in the city.",
+        "fr": "Ateliers Célestin Gérard, devenus Société française de matériel agricole et industriel, puis usine Case est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA18000012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-ateliers-celestin-gerard-devenus-societe-francaise-de-materiel-agricole-et-industriel-puis-usine-case-pa18000012",
+      "latitude": 47.2241175195686,
+      "longitude": 2.06040342353292,
+      "name": {
+        "en": "Ateliers Célestin Gérard, devenus Société française de matériel agricole et industriel, puis usine Case",
+        "fr": "Ateliers Célestin Gérard, devenus Société française de matériel agricole et industriel, puis usine Case"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096921",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-beffroi-pa00096921",
+      "latitude": 47.2227185793051,
+      "longitude": 2.07135519659513,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Noue is an important witness to the city's history.",
+        "fr": "Château de la Noue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096922",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-chateau-de-la-noue-pa00096922",
+      "latitude": 47.2107171022203,
+      "longitude": 2.06080772942854,
+      "name": {
+        "en": "Château de la Noue",
+        "fr": "Château de la Noue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096923",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-eglise-notre-dame-pa00096923",
+      "latitude": 47.221737688116704,
+      "longitude": 2.07174086016469,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin de l'Abbaye, dit aussi square Lucien Beaufrère is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin de l'Abbaye, dit aussi square Lucien Beaufrère compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096924",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-jardin-de-l-abbaye-dit-aussi-square-lucien-beaufrere-pa00096924",
+      "latitude": 47.2209030634092,
+      "longitude": 2.06963536963742,
+      "name": {
+        "en": "Jardin de l'Abbaye, dit aussi square Lucien Beaufrère",
+        "fr": "Jardin de l'Abbaye, dit aussi square Lucien Beaufrère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison à pans de bois is a distinctive architectural landmark in the city.",
+        "fr": "Maison à pans de bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096928",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-maison-a-pans-de-bois-pa00096928",
+      "latitude": 47.222879480654,
+      "longitude": 2.07042182218682,
+      "name": {
+        "en": "Maison à pans de bois",
+        "fr": "Maison à pans de bois"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0236",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vierzon-musee-municipal-m0236",
+      "latitude": 47.225192,
+      "longitude": 2.060639,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison, dite logis des Monnayeurs is a distinctive architectural landmark in the city.",
+        "fr": "Maison, dite logis des Monnayeurs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096925",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-maison-dite-logis-des-monnayeurs-pa00096925",
+      "latitude": 47.2223144104996,
+      "longitude": 2.06984800234808,
+      "name": {
+        "en": "Maison, dite logis des Monnayeurs",
+        "fr": "Maison, dite logis des Monnayeurs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison, dite logis Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Maison, dite logis Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096926",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-maison-dite-logis-saint-jean-pa00096926",
+      "latitude": 47.223733832882,
+      "longitude": 2.070136643416,
+      "name": {
+        "en": "Maison, dite logis Saint-Jean",
+        "fr": "Maison, dite logis Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096927",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vierzon-maison-pa00096927",
+      "latitude": 47.2213185620666,
+      "longitude": 2.07166842611726,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

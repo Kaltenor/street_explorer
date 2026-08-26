@@ -1,0 +1,204 @@
+{
+  "id": "lingolsheim-v1",
+  "cityId": "lingolsheim-fr",
+  "cityZoneId": "relation/71030",
+  "cityName": {
+    "en": "Lingolsheim",
+    "fr": "Lingolsheim"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Néo-Apostolique is a distinctive architectural landmark in the city.",
+        "fr": "Église Néo-Apostolique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/95774605",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-eglise-neo-apostolique-way-95774605",
+      "latitude": 48.5551338,
+      "longitude": 7.6798563,
+      "name": {
+        "en": "Église Néo-Apostolique",
+        "fr": "Église Néo-Apostolique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Protestante de Lingolsheim is a distinctive architectural landmark in the city.",
+        "fr": "Église Protestante de Lingolsheim est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/95794826",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-eglise-protestante-de-lingolsheim-way-95794826",
+      "latitude": 48.5538186,
+      "longitude": 7.6813219,
+      "name": {
+        "en": "Église Protestante de Lingolsheim",
+        "fr": "Église Protestante de Lingolsheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Protestante Libre de Strasbourg (Saint-Marc) is a distinctive architectural landmark in the city.",
+        "fr": "Église Protestante Libre de Strasbourg (Saint-Marc) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/97287156",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-eglise-protestante-libre-de-strasbourg-saint-marc-way-97287156",
+      "latitude": 48.5653032,
+      "longitude": 7.6877511,
+      "name": {
+        "en": "Église Protestante Libre de Strasbourg (Saint-Marc)",
+        "fr": "Église Protestante Libre de Strasbourg (Saint-Marc)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/95990395",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-eglise-saint-jean-baptiste-way-95990395",
+      "latitude": 48.5574057,
+      "longitude": 7.6820069,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Grotte de Lourdes is one of the city's notable green or natural landmarks.",
+        "fr": "Grotte de Lourdes compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/9308040958",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "lingolsheim-grotte-de-lourdes-node-9308040958",
+      "latitude": 48.5579117,
+      "longitude": 7.6814394,
+      "name": {
+        "en": "Grotte de Lourdes",
+        "fr": "Grotte de Lourdes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Olympe de Gouges is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Olympe de Gouges compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/753418532",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-parc-olympe-de-gouges-way-753418532",
+      "latitude": 48.5585248,
+      "longitude": 7.6985726,
+      "name": {
+        "en": "Parc Olympe de Gouges",
+        "fr": "Parc Olympe de Gouges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Croix is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Croix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74876977",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-eglise-sainte-croix-way-74876977",
+      "latitude": 48.5651988,
+      "longitude": 7.694944,
+      "name": {
+        "en": "Église Sainte-Croix",
+        "fr": "Église Sainte-Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bas-Rhin, France",
+        "fr": "commune française du département du Bas-Rhin"
+      },
+      "externalIdentity": {
+        "id": "Q21388",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lingolsheim-lingolsheim-q21388",
+      "latitude": 48.5575,
+      "longitude": 7.683055555,
+      "name": {
+        "en": "Lingolsheim",
+        "fr": "Lingolsheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lumière des Nations - église protestante évangélique foursquare is a distinctive architectural landmark in the city.",
+        "fr": "Lumière des Nations - église protestante évangélique foursquare est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/97247144",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "lingolsheim-lumiere-des-nations-eglise-protestante-evangelique-foursquare-way-97247144",
+      "latitude": 48.5639767,
+      "longitude": 7.694053,
+      "name": {
+        "en": "Lumière des Nations - église protestante évangélique foursquare",
+        "fr": "Lumière des Nations - église protestante évangélique foursquare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Strasbourg, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2406053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lingolsheim-strasbourg-roethig-q2406053",
+      "latitude": 48.563059,
+      "longitude": 7.693304,
+      "name": {
+        "en": "Strasbourg-Roethig",
+        "fr": "Strasbourg-Roethig"
+      }
+    }
+  ]
+}

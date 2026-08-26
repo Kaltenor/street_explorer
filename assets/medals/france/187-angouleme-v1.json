@@ -1,0 +1,204 @@
+{
+  "id": "angouleme-v1",
+  "cityId": "angouleme-fr",
+  "cityZoneId": "relation/85809",
+  "cityName": {
+    "en": "Angoulême",
+    "fr": "Angoulême"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Cybard is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Cybard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA16000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-ancien-abbaye-saint-cybard-pa16000038",
+      "latitude": 45.6532228232779,
+      "longitude": 0.149569722137217,
+      "name": {
+        "en": "Ancien abbaye Saint-Cybard",
+        "fr": "Ancien abbaye Saint-Cybard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104208",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-ancien-eveche-pa00104208",
+      "latitude": 45.6492257920619,
+      "longitude": 0.152557910275852,
+      "name": {
+        "en": "Ancien évêché",
+        "fr": "Ancien évêché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "atelier-musée du papier is one of the city's notable cultural landmarks.",
+        "fr": "atelier-musée du papier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0819",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angouleme-atelier-musee-du-papier-m0819",
+      "latitude": 45.653356,
+      "longitude": 0.149932,
+      "name": {
+        "en": "atelier-musée du papier",
+        "fr": "atelier-musée du papier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastion is an important witness to the city's history.",
+        "fr": "Bastion est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104201",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-bastion-pa00104201",
+      "latitude": 45.6469450095818,
+      "longitude": 0.156477768701348,
+      "name": {
+        "en": "Bastion",
+        "fr": "Bastion"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104203",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-cathedrale-saint-pierre-pa00104203",
+      "latitude": 45.6489605028009,
+      "longitude": 0.151669366171247,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église dite chapelle Notre-Dame d'Obézine (ou de Bézines) is a distinctive architectural landmark in the city.",
+        "fr": "Église dite chapelle Notre-Dame d'Obézine (ou de Bézines) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA16000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-eglise-dite-chapelle-notre-dame-d-obezine-ou-de-bezines-pa16000019",
+      "latitude": 45.6467603277541,
+      "longitude": 0.159695684621309,
+      "name": {
+        "en": "Église dite chapelle Notre-Dame d'Obézine (ou de Bézines)",
+        "fr": "Église dite chapelle Notre-Dame d'Obézine (ou de Bézines)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104211",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angouleme-hotel-de-ville-pa00104211",
+      "latitude": 45.6484715793722,
+      "longitude": 0.156183873915707,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique et historique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique et historique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0821",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angouleme-musee-archeologique-et-historique-m0821",
+      "latitude": 45.647813,
+      "longitude": 0.160838,
+      "name": {
+        "en": "musée archéologique et historique",
+        "fr": "musée archéologique et historique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la bande dessinée - centre national de la bande dessinée et de l'image is one of the city's notable cultural landmarks.",
+        "fr": "musée de la bande dessinée - centre national de la bande dessinée et de l'image compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0820",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angouleme-musee-de-la-bande-dessinee-centre-national-de-la-bande-dessinee-et-de-l-image-m0820",
+      "latitude": 45.65559977477438,
+      "longitude": 0.15122268049296822,
+      "name": {
+        "en": "musée de la bande dessinée - centre national de la bande dessinée et de l'image",
+        "fr": "musée de la bande dessinée - centre national de la bande dessinée et de l'image"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0818",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angouleme-musee-des-beaux-arts-m0818",
+      "latitude": 45.6493,
+      "longitude": 0.152569,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    }
+  ]
+}

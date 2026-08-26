@@ -1,0 +1,204 @@
+{
+  "id": "halluin-v1",
+  "cityId": "halluin-fr",
+  "cityZoneId": "relation/59877",
+  "cityName": {
+    "en": "Halluin",
+    "fr": "Halluin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2540273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-cimetiere-allemand-d-halluin-q2540273",
+      "latitude": 50.78056,
+      "longitude": 3.13278,
+      "name": {
+        "en": "cimetière allemand d'Halluin",
+        "fr": "cimetière allemand d'Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2472658",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-cimetiere-communal-d-halluin-q2472658",
+      "latitude": 50.77944,
+      "longitude": 3.13111,
+      "name": {
+        "en": "cimetière communal d'Halluin",
+        "fr": "cimetière communal d'Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q47012440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-eglise-notre-dame-des-fievres-d-halluin-q47012440",
+      "latitude": 50.78395278,
+      "longitude": 3.11211389,
+      "name": {
+        "en": "église Notre-Dame-des-Fièvres d'Halluin",
+        "fr": "église Notre-Dame-des-Fièvres d'Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38410456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-eglise-saint-alphonse-de-liguori-de-triez-cailloux-q38410456",
+      "latitude": 50.77412,
+      "longitude": 3.1447,
+      "name": {
+        "en": "église Saint-Alphonse-de-Liguori de Triez-Cailloux",
+        "fr": "église Saint-Alphonse-de-Liguori de Triez-Cailloux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q7136364",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-parc-arboretum-du-manoir-aux-loups-q7136364",
+      "latitude": 50.7624,
+      "longitude": 3.1442,
+      "name": {
+        "en": "Parc arboretum du manoir aux loups",
+        "fr": "Parc arboretum du manoir aux loups"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q47009233",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-eglise-saint-hilaire-d-halluin-q47009233",
+      "latitude": 50.78256,
+      "longitude": 3.12795,
+      "name": {
+        "en": "église Saint-Hilaire d'Halluin",
+        "fr": "église Saint-Hilaire d'Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Halluin, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095758",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-halluin-q3095758",
+      "latitude": 50.781,
+      "longitude": 3.11966,
+      "name": {
+        "en": "Halluin",
+        "fr": "Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Nord department, France",
+        "fr": "siège municipal de Halluin, dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119311818",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-mairie-de-halluin-q119311818",
+      "latitude": 50.782677877,
+      "longitude": 3.124600691,
+      "name": {
+        "en": "mairie de Halluin",
+        "fr": "mairie de Halluin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Halluin, Nord, France",
+        "fr": "mosquée située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3324881",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-mosquee-tawhid-q3324881",
+      "latitude": 50.785142,
+      "longitude": 3.118608,
+      "name": {
+        "en": "mosquée Tawhid",
+        "fr": "mosquée Tawhid"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "moulin d'Halluin is a distinctive architectural landmark in the city.",
+        "fr": "moulin à Halluin (Nord)"
+      },
+      "externalIdentity": {
+        "id": "Q15952823",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "halluin-moulin-d-halluin-q15952823",
+      "latitude": 50.7772,
+      "longitude": 3.13452,
+      "name": {
+        "en": "moulin d'Halluin",
+        "fr": "moulin d'Halluin"
+      }
+    }
+  ]
+}

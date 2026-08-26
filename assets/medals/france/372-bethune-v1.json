@@ -1,0 +1,204 @@
+{
+  "id": "bethune-v1",
+  "cityId": "bethune-fr",
+  "cityZoneId": "relation/1016146",
+  "cityName": {
+    "en": "Béthune",
+    "fr": "Béthune"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église des Récollets is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église des Récollets est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108202",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-ancien-eglise-des-recollets-pa00108202",
+      "latitude": 50.5288427807204,
+      "longitude": 2.63842688491336,
+      "name": {
+        "en": "Ancien église des Récollets",
+        "fr": "Ancien église des Récollets"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien tour Saint-Ignace is an important witness to the city's history.",
+        "fr": "Ancien tour Saint-Ignace est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108206",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-ancien-tour-saint-ignace-pa00108206",
+      "latitude": 50.5299332765968,
+      "longitude": 2.64146194645482,
+      "name": {
+        "en": "Ancien tour Saint-Ignace",
+        "fr": "Ancien tour Saint-Ignace"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108200",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-beffroi-pa00108200",
+      "latitude": 50.5310032043383,
+      "longitude": 2.63922714834972,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vaast is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vaast est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000157",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-eglise-saint-vaast-pa62000157",
+      "latitude": 50.53217284037537,
+      "longitude": 2.638229373828372,
+      "name": {
+        "en": "Église Saint-Vaast",
+        "fr": "Église Saint-Vaast"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000040",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-hotel-de-ville-pa62000040",
+      "latitude": 50.5307319828279,
+      "longitude": 2.63856734077932,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin public is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin public compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108204",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-jardin-public-pa00108204",
+      "latitude": 50.5289179743493,
+      "longitude": 2.6311341914335,
+      "name": {
+        "en": "Jardin public",
+        "fr": "Jardin public"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA62000158",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-monument-aux-morts-pa62000158",
+      "latitude": 50.5315205231026,
+      "longitude": 2.637084212377067,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'ethnologie régionale is one of the city's notable cultural landmarks.",
+        "fr": "musée d'ethnologie régionale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0642",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bethune-musee-d-ethnologie-regionale-m0642",
+      "latitude": 50.53621,
+      "longitude": 2.648177,
+      "name": {
+        "en": "musée d'ethnologie régionale",
+        "fr": "musée d'ethnologie régionale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000175",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-theatre-municipal-pa62000175",
+      "latitude": 50.53021227279497,
+      "longitude": 2.6422523119453647,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000159",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bethune-palais-de-justice-pa62000159",
+      "latitude": 50.535007647568676,
+      "longitude": 2.6372339020807,
+      "name": {
+        "en": "Palais de justice",
+        "fr": "Palais de justice"
+      }
+    }
+  ]
+}

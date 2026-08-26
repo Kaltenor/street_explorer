@@ -1,0 +1,204 @@
+{
+  "id": "thiais-v1",
+  "cityId": "thiais-fr",
+  "cityZoneId": "relation/104767",
+  "cityName": {
+    "en": "Thiais",
+    "fr": "Thiais"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "académie des Arts de Thiais is a distinctive architectural landmark in the city.",
+        "fr": "académie des arts et ancienne mairie dans le Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q72470849",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-academie-des-arts-de-thiais-q72470849",
+      "latitude": 48.76543,
+      "longitude": 2.3937,
+      "name": {
+        "en": "académie des Arts de Thiais",
+        "fr": "académie des Arts de Thiais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T7 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q61082344",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-auguste-perret-q61082344",
+      "latitude": 48.763611111,
+      "longitude": 2.368055555,
+      "name": {
+        "en": "Auguste Perret",
+        "fr": "Auguste Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2972677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-cimetiere-parisien-de-thiais-q2972677",
+      "latitude": 48.763,
+      "longitude": 2.375,
+      "name": {
+        "en": "cimetière parisien de Thiais",
+        "fr": "cimetière parisien de Thiais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Leu-Saint-Gilles is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Leu-Saint-Gilles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079910",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thiais-eglise-saint-leu-saint-gilles-pa00079910",
+      "latitude": 48.7640505574281,
+      "longitude": 2.38927916523229,
+      "name": {
+        "en": "Église Saint-Leu-Saint-Gilles",
+        "fr": "Église Saint-Leu-Saint-Gilles"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine-lavoir de Thiais is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine et lavoir dans le Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q72472769",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-fontaine-lavoir-de-thiais-q72472769",
+      "latitude": 48.76433,
+      "longitude": 2.38988,
+      "name": {
+        "en": "fontaine-lavoir de Thiais",
+        "fr": "fontaine-lavoir de Thiais"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Maurepas is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à Thiais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88807575",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-fontaine-maurepas-q88807575",
+      "latitude": 48.764232,
+      "longitude": 2.390059,
+      "name": {
+        "en": "fontaine Maurepas",
+        "fr": "fontaine Maurepas"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Guerre de 1870 de Thiais is a notable work of public art and local memory.",
+        "fr": "monument aux morts dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q72474540",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-monument-aux-morts-de-la-guerre-de-1870-de-thiais-q72474540",
+      "latitude": 48.766,
+      "longitude": 2.39243,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1870 de Thiais",
+        "fr": "monument aux morts de la Guerre de 1870 de Thiais"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-monument-aux-morts-de-la-guerre-franco-prussienne-du-cimetiere-de-thiais-q136095824",
+      "latitude": 48.76751,
+      "longitude": 2.38341,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne du cimetière de Thiais",
+        "fr": "monument aux morts de la guerre franco-prussienne du cimetière de Thiais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Thiais, France",
+        "fr": "hôtel de ville à Thiais, France"
+      },
+      "externalIdentity": {
+        "id": "Q72591567",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-hotel-de-ville-de-thiais-q72591567",
+      "latitude": 48.7642,
+      "longitude": 2.391,
+      "name": {
+        "en": "hôtel de ville de Thiais",
+        "fr": "hôtel de ville de Thiais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Thiais, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1858099",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "thiais-pont-de-rungis-aeroport-d-orly-q1858099",
+      "latitude": 48.74778,
+      "longitude": 2.37167,
+      "name": {
+        "en": "Pont de Rungis - Aéroport d'Orly",
+        "fr": "Pont de Rungis - Aéroport d'Orly"
+      }
+    }
+  ]
+}

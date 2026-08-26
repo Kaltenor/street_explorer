@@ -1,0 +1,394 @@
+{
+  "id": "roubaix-v1",
+  "cityId": "roubaix-fr",
+  "cityZoneId": "relation/59043",
+  "cityName": {
+    "en": "Roubaix",
+    "fr": "Roubaix"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre and former cinema in Roubaix, France",
+        "fr": "salle de spectacle à Roubaix"
+      },
+      "externalIdentity": {
+        "id": "Q42295242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-colisee-theatre-de-roubaix-q42295242",
+      "latitude": 50.6911705,
+      "longitude": 3.1627867,
+      "name": {
+        "en": "Colisée - Théâtre de Roubaix",
+        "fr": "Colisée - Théâtre de Roubaix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107789",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-notre-dame-pa00107789",
+      "latitude": 50.6949610181645,
+      "longitude": 3.17024240396589,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000188",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-saint-jean-baptiste-pa59000188",
+      "latitude": 50.67942485093904,
+      "longitude": 3.1788612838115107,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107928",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-saint-joseph-pa00107928",
+      "latitude": 50.7026902151965,
+      "longitude": 3.16695470386026,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000153",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-saint-martin-pa59000153",
+      "latitude": 50.692089090630404,
+      "longitude": 3.17424039516213,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Elisabeth de Hongrie is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Elisabeth de Hongrie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000187",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-eglise-sainte-elisabeth-de-hongrie-pa59000187",
+      "latitude": 50.687936943178414,
+      "longitude": 3.184430800072409,
+      "name": {
+        "en": "Église Sainte-Elisabeth de Hongrie",
+        "fr": "Église Sainte-Elisabeth de Hongrie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Auguste-Lepoutre (ancien commissariat de police) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Auguste-Lepoutre (ancien commissariat de police) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-auguste-lepoutre-ancien-commissariat-de-police-pa59000042",
+      "latitude": 50.6937693937142,
+      "longitude": 3.17665926274138,
+      "name": {
+        "en": "Hôtel Auguste-Lepoutre (ancien commissariat de police)",
+        "fr": "Hôtel Auguste-Lepoutre (ancien commissariat de police)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-de-ville-pa59000020",
+      "latitude": 50.690929674858,
+      "longitude": 3.1740857167685,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix is one of the city's notable cultural landmarks.",
+        "fr": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0634",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "roubaix-la-piscine-musee-d-art-et-d-industrie-andre-diligent-de-roubaix-m0634",
+      "latitude": 50.693026,
+      "longitude": 3.16791,
+      "name": {
+        "en": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix",
+        "fr": "La Piscine - musée d'art et d'industrie André Diligent de Roubaix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Roubaix, France",
+        "fr": "musée français à Roubaix"
+      },
+      "externalIdentity": {
+        "id": "Q1955748",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-la-piscine-musee-d-art-et-d-industrie-q1955748",
+      "latitude": 50.69229323,
+      "longitude": 3.16782027,
+      "name": {
+        "en": "La Piscine, musée d'art et d'industrie",
+        "fr": "La Piscine, musée d'art et d'industrie"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Nord department, France",
+        "fr": "monument aux morts du Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136071452",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-monument-aux-morts-de-roubaix-q136071452",
+      "latitude": 50.688289422,
+      "longitude": 3.176205315,
+      "name": {
+        "en": "monument aux morts de Roubaix",
+        "fr": "monument aux morts de Roubaix"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de la commune de Roubaix, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2051944",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roubaix-parc-barbieux-q2051944",
+      "latitude": 50.67594296,
+      "longitude": 3.16149831,
+      "name": {
+        "en": "parc Barbieux",
+        "fr": "parc Barbieux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Usine Motte-Bossut, actuellement centre des archives du monde du travail is one of the city's notable cultural landmarks.",
+        "fr": "Usine Motte-Bossut, actuellement centre des archives du monde du travail compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107791",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-usine-motte-bossut-actuellement-centre-des-archives-du-monde-du-travail-pa00107791",
+      "latitude": 50.6900341841016,
+      "longitude": 3.1790578680605,
+      "name": {
+        "en": "Usine Motte-Bossut, actuellement centre des archives du monde du travail",
+        "fr": "Usine Motte-Bossut, actuellement centre des archives du monde du travail"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Motte-Lagache is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Motte-Lagache est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000031",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-motte-lagache-pa59000031",
+      "latitude": 50.6841723857682,
+      "longitude": 3.1701987951529,
+      "name": {
+        "en": "Hôtel Motte-Lagache",
+        "fr": "Hôtel Motte-Lagache"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel particulier is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel particulier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-particulier-pa59000028",
+      "latitude": 50.6844577056846,
+      "longitude": 3.17093216458664,
+      "name": {
+        "en": "Hôtel particulier",
+        "fr": "Hôtel particulier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Pierre Catteau, actuel palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Pierre Catteau, actuel palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-pierre-catteau-actuel-palais-de-justice-pa59000026",
+      "latitude": 50.6908509443156,
+      "longitude": 3.16531823260918,
+      "name": {
+        "en": "Hôtel Pierre Catteau, actuel palais de justice",
+        "fr": "Hôtel Pierre Catteau, actuel palais de justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Prouvost, actuelle caisse primaire d'assurance maladie is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Prouvost, actuelle caisse primaire d'assurance maladie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-hotel-prouvost-actuelle-caisse-primaire-d-assurance-maladie-pa59000027",
+      "latitude": 50.6911999269964,
+      "longitude": 3.16838629822245,
+      "name": {
+        "en": "Hôtel Prouvost, actuelle caisse primaire d'assurance maladie",
+        "fr": "Hôtel Prouvost, actuelle caisse primaire d'assurance maladie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de Pierre Neveux is a distinctive architectural landmark in the city.",
+        "fr": "Maison de Pierre Neveux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-maison-de-pierre-neveux-pa59000023",
+      "latitude": 50.6774748110027,
+      "longitude": 3.17019291170651,
+      "name": {
+        "en": "Maison de Pierre Neveux",
+        "fr": "Maison de Pierre Neveux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du peintre Rémy Cogghe is a distinctive architectural landmark in the city.",
+        "fr": "Maison du peintre Rémy Cogghe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-maison-du-peintre-remy-cogghe-pa59000022",
+      "latitude": 50.690078678027106,
+      "longitude": 3.16605546316116,
+      "name": {
+        "en": "Maison du peintre Rémy Cogghe",
+        "fr": "Maison du peintre Rémy Cogghe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000174",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "roubaix-temple-protestant-pa59000174",
+      "latitude": 50.6868078395984,
+      "longitude": 3.16750094763213,
+      "name": {
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
+      }
+    }
+  ]
+}

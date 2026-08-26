@@ -1,0 +1,204 @@
+{
+  "id": "lanester-v1",
+  "cityId": "lanester-fr",
+  "cityZoneId": "relation/107969",
+  "cityName": {
+    "en": "Lanester",
+    "fr": "Lanester"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Morbihan, in France",
+        "fr": "chapelle située dans le Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60365894",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-chapelle-saint-cornelli-de-lanester-q60365894",
+      "latitude": 47.75415,
+      "longitude": -3.328102,
+      "name": {
+        "en": "chapelle Saint-Cornelli de Lanester",
+        "fr": "chapelle Saint-Cornelli de Lanester"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Morbihan, in France",
+        "fr": "chapelle située dans le Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60372886",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-chapelle-saint-guenael-de-lanester-q60372886",
+      "latitude": 47.75895,
+      "longitude": -3.31485,
+      "name": {
+        "en": "chapelle Saint-Guénaël de Lanester",
+        "fr": "chapelle Saint-Guénaël de Lanester"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "ship graveyard in Lanester, Britanny, France",
+        "fr": "cimetière de bateaux à Lanester, Bretagne"
+      },
+      "externalIdentity": {
+        "id": "Q95732188",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-cimetiere-de-bateaux-kerhervy-q95732188",
+      "latitude": 47.77314,
+      "longitude": -3.29692,
+      "name": {
+        "en": "Cimetière de bateaux Kerhervy",
+        "fr": "Cimetière de bateaux Kerhervy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Morbihan, in France",
+        "fr": "église située dans le Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38646327",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-eglise-saint-joseph-du-plessis-q38646327",
+      "latitude": 47.757569,
+      "longitude": -3.336447,
+      "name": {
+        "en": "église Saint-Joseph du Plessis",
+        "fr": "église Saint-Joseph du Plessis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Morbihan department, France",
+        "fr": "monument aux morts du Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136059159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-monument-aux-morts-de-lanester-q136059159",
+      "latitude": 47.7632083,
+      "longitude": -3.3512954,
+      "name": {
+        "en": "monument aux morts de Lanester",
+        "fr": "monument aux morts de Lanester"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des expositions du pays de Lorient is one of the city's notable green or natural landmarks.",
+        "fr": "parc des expositions en France"
+      },
+      "externalIdentity": {
+        "id": "Q16510048",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-parc-des-expositions-du-pays-de-lorient-q16510048",
+      "latitude": 47.7776,
+      "longitude": -3.34727,
+      "name": {
+        "en": "parc des expositions du pays de Lorient",
+        "fr": "parc des expositions du pays de Lorient"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de l'usine de salaison gallo-romaine du Resto is an important witness to the city's history.",
+        "fr": "Vestiges de l'usine de salaison gallo-romaine du Resto est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA56000031",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lanester-vestiges-de-l-usine-de-salaison-gallo-romaine-du-resto-pa56000031",
+      "latitude": 47.7729947355574,
+      "longitude": -3.29158707992406,
+      "name": {
+        "en": "Vestiges de l'usine de salaison gallo-romaine du Resto",
+        "fr": "Vestiges de l'usine de salaison gallo-romaine du Resto"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Morbihan department, France",
+        "fr": "siège municipal de Lanester, dans le Morbihan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119314819",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-mairie-de-lanester-q119314819",
+      "latitude": 47.76362069,
+      "longitude": -3.347306568,
+      "name": {
+        "en": "mairie de Lanester",
+        "fr": "mairie de Lanester"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tide mill in Lanester, France",
+        "fr": "moulin à marée de Lanester, France"
+      },
+      "externalIdentity": {
+        "id": "Q28879938",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-minoterie-du-plessis-q28879938",
+      "latitude": 47.75944,
+      "longitude": -3.32528,
+      "name": {
+        "en": "minoterie du Plessis",
+        "fr": "minoterie du Plessis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont franchissant le Blavet, ouvert en 1904 et démoli partiellement en 1979"
+      },
+      "externalIdentity": {
+        "id": "Q3397418",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lanester-pont-du-bonhomme-q3397418",
+      "latitude": 47.76478,
+      "longitude": -3.30187,
+      "name": {
+        "en": "pont du Bonhomme",
+        "fr": "pont du Bonhomme"
+      }
+    }
+  ]
+}

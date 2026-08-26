@@ -1,0 +1,204 @@
+{
+  "id": "manosque-v1",
+  "cityId": "manosque-fr",
+  "cityZoneId": "relation/365373",
+  "cityName": {
+    "en": "Manosque",
+    "fr": "Manosque"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Couvent de la Présentation (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Couvent de la Présentation (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080420",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-couvent-de-la-presentation-ancien-pa00080420",
+      "latitude": 43.8312772551952,
+      "longitude": 5.78267218477624,
+      "name": {
+        "en": "Couvent de la Présentation (ancien)",
+        "fr": "Couvent de la Présentation (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-Romigier is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-Romigier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080422",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-eglise-notre-dame-de-romigier-pa00080422",
+      "latitude": 43.8337747694119,
+      "longitude": 5.78313365885974,
+      "name": {
+        "en": "Église Notre-Dame-de-Romigier",
+        "fr": "Église Notre-Dame-de-Romigier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080423",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-eglise-saint-sauveur-pa00080423",
+      "latitude": 43.8327671565185,
+      "longitude": 5.78375210544676,
+      "name": {
+        "en": "Église Saint-Sauveur",
+        "fr": "Église Saint-Sauveur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Gassaud is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Gassaud est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080424",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-hotel-de-gassaud-pa00080424",
+      "latitude": 43.8323883508484,
+      "longitude": 5.78327396601143,
+      "name": {
+        "en": "Hôtel de Gassaud",
+        "fr": "Hôtel de Gassaud"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de la Saunerie is an important witness to the city's history.",
+        "fr": "Porte de la Saunerie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080427",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-porte-de-la-saunerie-pa00080427",
+      "latitude": 43.831739590949,
+      "longitude": 5.78400988644067,
+      "name": {
+        "en": "Porte de la Saunerie",
+        "fr": "Porte de la Saunerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Mont d'Or (restes) is an important witness to the city's history.",
+        "fr": "Tour du Mont d'Or (restes) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080429",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-tour-du-mont-d-or-restes-pa00080429",
+      "latitude": 43.8376141500949,
+      "longitude": 5.79423650192125,
+      "name": {
+        "en": "Tour du Mont d'Or (restes)",
+        "fr": "Tour du Mont d'Or (restes)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080425",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-hotel-de-ville-pa00080425",
+      "latitude": 43.8337600550834,
+      "longitude": 5.78231165469177,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Isaac-Bourdin is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Isaac-Bourdin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135599",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-hotel-isaac-bourdin-pa00135599",
+      "latitude": 43.8345807242489,
+      "longitude": 5.78219967447182,
+      "name": {
+        "en": "Hôtel Isaac-Bourdin",
+        "fr": "Hôtel Isaac-Bourdin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080426",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-immeuble-pa00080426",
+      "latitude": 43.8319406616231,
+      "longitude": 5.78366610241241,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de Jean Giono, dénommée Le Paraïs is a distinctive architectural landmark in the city.",
+        "fr": "Maison de Jean Giono, dénommée Le Paraïs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA04000006",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "manosque-maison-de-jean-giono-denommee-le-parais-pa04000006",
+      "latitude": 43.8335860874036,
+      "longitude": 5.789573724264271,
+      "name": {
+        "en": "Maison de Jean Giono, dénommée Le Paraïs",
+        "fr": "Maison de Jean Giono, dénommée Le Paraïs"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "gardanne-v1",
+  "cityId": "gardanne-fr",
+  "cityZoneId": "relation/71243",
+  "cityName": {
+    "en": "Gardanne",
+    "fr": "Gardanne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "hameau de la commune de Gardanne dans le département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q879163",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-biver-q879163",
+      "latitude": 43.43388889,
+      "longitude": 5.46611111,
+      "name": {
+        "en": "Biver",
+        "fr": "Biver"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Bouches-du-Rhône, in France",
+        "fr": "cimetière situé dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110331226",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-cimetiere-de-gardanne-q110331226",
+      "latitude": 43.46,
+      "longitude": 5.4689,
+      "name": {
+        "en": "cimetière de Gardanne",
+        "fr": "cimetière de Gardanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "graduate engineering school (Grande École) in Saint-Étienne, France",
+        "fr": "établissement français d'enseignement supérieur et de recherche"
+      },
+      "externalIdentity": {
+        "id": "Q3578252",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-ecole-nationale-superieure-des-mines-de-saint-etienne-q3578252",
+      "latitude": 45.4279,
+      "longitude": 4.40382,
+      "name": {
+        "en": "École nationale supérieure des mines de Saint-Étienne",
+        "fr": "École nationale supérieure des mines de Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38384932",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-eglise-du-sacre-c-ur-de-biver-q38384932",
+      "latitude": 43.434475,
+      "longitude": 5.464649,
+      "name": {
+        "en": "église du Sacré-Cœur de Biver",
+        "fr": "église du Sacré-Cœur de Biver"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q52668645",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-eglise-notre-dame-de-l-assomption-de-gardanne-q52668645",
+      "latitude": 43.453616,
+      "longitude": 5.46869,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Gardanne",
+        "fr": "église Notre-Dame-de-l'Assomption de Gardanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q52668824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-eglise-saint-pierre-de-gardanne-q52668824",
+      "latitude": 43.455002,
+      "longitude": 5.469233,
+      "name": {
+        "en": "église Saint-Pierre de Gardanne",
+        "fr": "église Saint-Pierre de Gardanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bouches-du-Rhône, France",
+        "fr": "commune française du département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q318085",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-gardanne-q318085",
+      "latitude": 43.454444444,
+      "longitude": 5.476111111,
+      "name": {
+        "en": "Gardanne",
+        "fr": "Gardanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Puits Yvon Morandat is a distinctive architectural landmark in the city.",
+        "fr": "Puits Yvon Morandat est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q21619192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-puits-yvon-morandat-q21619192",
+      "latitude": 43.451992,
+      "longitude": 5.4482,
+      "name": {
+        "en": "Puits Yvon Morandat",
+        "fr": "Puits Yvon Morandat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Puits Z is a distinctive architectural landmark in the city.",
+        "fr": "Puits d'extraction de charbon désaffecté"
+      },
+      "externalIdentity": {
+        "id": "Q21619193",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-puits-z-q21619193",
+      "latitude": 43.467267,
+      "longitude": 5.473855,
+      "name": {
+        "en": "Puits Z",
+        "fr": "Puits Z"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q3553463",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gardanne-valabre-q3553463",
+      "latitude": 43.4716,
+      "longitude": 5.4439,
+      "name": {
+        "en": "Valabre",
+        "fr": "Valabre"
+      }
+    }
+  ]
+}

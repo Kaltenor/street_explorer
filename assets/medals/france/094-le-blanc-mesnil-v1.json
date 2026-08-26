@@ -1,0 +1,394 @@
+{
+  "id": "le-blanc-mesnil-v1",
+  "cityId": "le-blanc-mesnil-fr",
+  "cityZoneId": "relation/162209",
+  "cityName": {
+    "en": "Le Blanc-Mesnil",
+    "fr": "Le Blanc-Mesnil"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cité d'Habitations Bon Marché is a distinctive architectural landmark in the city.",
+        "fr": "Cité d'Habitations Bon Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-blanc-mesnil-cite-d-habitations-bon-marche-pa93000001",
+      "latitude": 48.9527422701433,
+      "longitude": 2.44261746368378,
+      "name": {
+        "en": "Cité d'Habitations Bon Marché",
+        "fr": "Cité d'Habitations Bon Marché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "complexe Jean Bouin de Blanc-Mesnil is a distinctive architectural landmark in the city.",
+        "fr": "complexe Jean Bouin de Blanc-Mesnil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120168715",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-complexe-jean-bouin-de-blanc-mesnil-q120168715",
+      "latitude": 48.94166,
+      "longitude": 2.45513,
+      "name": {
+        "en": "complexe Jean Bouin de Blanc-Mesnil",
+        "fr": "complexe Jean Bouin de Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20064975",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-eglise-du-sacre-c-ur-du-blanc-mesnil-q20064975",
+      "latitude": 48.927078,
+      "longitude": 2.463506,
+      "name": {
+        "en": "église du Sacré-Cœur du Blanc-Mesnil",
+        "fr": "église du Sacré-Cœur du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20055185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-eglise-notre-dame-de-l-annonciation-du-blanc-mesnil-q20055185",
+      "latitude": 48.936894,
+      "longitude": 2.465386,
+      "name": {
+        "en": "église Notre-Dame-de-l'Annonciation du Blanc-Mesnil",
+        "fr": "église Notre-Dame-de-l'Annonciation du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Charles-Borromée is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Charles-Borromée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000076",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-blanc-mesnil-eglise-saint-charles-borromee-pa93000076",
+      "latitude": 48.94590832939534,
+      "longitude": 2.4473930458548057,
+      "name": {
+        "en": "Église Saint-Charles-Borromée",
+        "fr": "Église Saint-Charles-Borromée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20064972",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-eglise-saint-charles-du-blanc-mesnil-q20064972",
+      "latitude": 48.9459,
+      "longitude": 2.44741,
+      "name": {
+        "en": "église Saint-Charles du Blanc-Mesnil",
+        "fr": "église Saint-Charles du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20064973",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-eglise-sainte-therese-de-montillet-q20064973",
+      "latitude": 48.9243,
+      "longitude": 2.47265,
+      "name": {
+        "en": "église Sainte-Thérèse de Montillet",
+        "fr": "église Sainte-Thérèse de Montillet"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136059632",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-monument-aux-morts-du-blanc-mesnil-q136059632",
+      "latitude": 48.95235,
+      "longitude": 2.4606,
+      "name": {
+        "en": "monument aux morts du Blanc-Mesnil",
+        "fr": "monument aux morts du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Garonor is a distinctive architectural landmark in the city.",
+        "fr": "parc d'activités situé à Aulnay-sous-Bois et au Blanc-Mesnil"
+      },
+      "externalIdentity": {
+        "id": "Q596875",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-garonor-q596875",
+      "latitude": 48.9562,
+      "longitude": 2.4624,
+      "name": {
+        "en": "Garonor",
+        "fr": "Garonor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Le Blanc-Mesnil, France",
+        "fr": "hôtel de ville situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96186527",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-hotel-de-ville-du-blanc-mesnil-q96186527",
+      "latitude": 48.9388,
+      "longitude": 2.46382,
+      "name": {
+        "en": "hôtel de ville du Blanc-Mesnil",
+        "fr": "hôtel de ville du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Le Blanc-Mesnil, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3098177",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-le-blanc-mesnil-q3098177",
+      "latitude": 48.932222,
+      "longitude": 2.476111,
+      "name": {
+        "en": "Le Blanc-Mesnil",
+        "fr": "Le Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future Paris metro station",
+        "fr": "station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q61039296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-le-bourget-aeroport-q61039296",
+      "latitude": 48.946666666,
+      "longitude": 2.436111111,
+      "name": {
+        "en": "Le Bourget - Aéroport",
+        "fr": "Le Bourget - Aéroport"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "educational facility in Le Blanc-Mesnil, France",
+        "fr": "lycée français au Blanc-Mesnil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3268743",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-lycee-polyvalent-jean-moulin-du-blanc-mesnil-q3268743",
+      "latitude": 48.943606,
+      "longitude": 2.468682,
+      "name": {
+        "en": "lycée polyvalent Jean-Moulin du Blanc-Mesnil",
+        "fr": "lycée polyvalent Jean-Moulin du Blanc-Mesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "street in Le Blanc-Mesnil, France",
+        "fr": "mail du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413175",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-mail-jeanne-fontaine-q113413175",
+      "latitude": 48.953327266,
+      "longitude": 2.443259166,
+      "name": {
+        "en": "mail Jeanne-Fontaine",
+        "fr": "mail Jeanne-Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "passageway in Le Blanc-Mesnil, France",
+        "fr": "passage du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413403",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-passage-la-fontaine-q113413403",
+      "latitude": 48.9386977,
+      "longitude": 2.4582332,
+      "name": {
+        "en": "passage la Fontaine",
+        "fr": "passage la Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Le Blanc-Mesnil, France",
+        "fr": "square du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113474412",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-square-jacques-decour-q113474412",
+      "latitude": 48.926290018,
+      "longitude": 2.47340475,
+      "name": {
+        "en": "square Jacques Decour",
+        "fr": "square Jacques Decour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Le Blanc-Mesnil, France",
+        "fr": "square du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-square-jean-mermoz-q113413287",
+      "latitude": 48.939870942,
+      "longitude": 2.450787268,
+      "name": {
+        "en": "square Jean-Mermoz",
+        "fr": "square Jean-Mermoz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Le Blanc-Mesnil, France",
+        "fr": "square du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413335",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-square-louis-kotas-q113413335",
+      "latitude": 48.946462133,
+      "longitude": 2.4497873,
+      "name": {
+        "en": "square Louis Kotas",
+        "fr": "square Louis Kotas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Le Blanc-Mesnil, France",
+        "fr": "square du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413231",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-square-maurice-audin-q113413231",
+      "latitude": 48.948847328,
+      "longitude": 2.452650157,
+      "name": {
+        "en": "square Maurice Audin",
+        "fr": "square Maurice Audin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Le Blanc-Mesnil, France",
+        "fr": "square du Blanc-Mesnil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113413219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-blanc-mesnil-square-stalingrad-q113413219",
+      "latitude": 48.929198503,
+      "longitude": 2.467485163,
+      "name": {
+        "en": "square Stalingrad",
+        "fr": "square Stalingrad"
+      }
+    }
+  ]
+}

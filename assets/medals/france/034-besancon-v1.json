@@ -1,0 +1,394 @@
+{
+  "id": "besancon-v1",
+  "cityId": "besancon-fr",
+  "cityZoneId": "relation/103599",
+  "cityName": {
+    "en": "Besançon",
+    "fr": "Besançon"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Paul (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Paul (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101453",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-abbaye-saint-paul-ancienne-pa00101453",
+      "latitude": 47.2390884514278,
+      "longitude": 6.02930956418957,
+      "name": {
+        "en": "Abbaye Saint-Paul (ancienne)",
+        "fr": "Abbaye Saint-Paul (ancienne)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Amphithéâtre romain is one of the city's notable cultural landmarks.",
+        "fr": "Amphithéâtre romain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101454",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-amphitheatre-romain-pa00101454",
+      "latitude": 47.239155929008,
+      "longitude": 6.01633474829472,
+      "name": {
+        "en": "Amphithéâtre romain",
+        "fr": "Amphithéâtre romain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien collège des Jésuites, collège Victor-Hugo-Centre is a distinctive architectural landmark in the city.",
+        "fr": "Ancien collège des Jésuites, collège Victor-Hugo-Centre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101471",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-ancien-college-des-jesuites-college-victor-hugo-centre-pa00101471",
+      "latitude": 47.23736853286011,
+      "longitude": 6.0203548686568,
+      "name": {
+        "en": "Ancien collège des Jésuites, collège Victor-Hugo-Centre",
+        "fr": "Ancien collège des Jésuites, collège Victor-Hugo-Centre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Jean et Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Jean et Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101462",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-cathedrale-saint-jean-et-saint-etienne-pa00101462",
+      "latitude": 47.2337407664707,
+      "longitude": 6.03040628609094,
+      "name": {
+        "en": "Cathédrale Saint-Jean et Saint-Étienne",
+        "fr": "Cathédrale Saint-Jean et Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle et enceinte urbaine is an important witness to the city's history.",
+        "fr": "Citadelle et enceinte urbaine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101466",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-citadelle-et-enceinte-urbaine-pa00101466",
+      "latitude": 47.2454441277623,
+      "longitude": 6.02199688443861,
+      "name": {
+        "en": "Citadelle et enceinte urbaine",
+        "fr": "Citadelle et enceinte urbaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Madeleine is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Madeleine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101468",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-eglise-de-la-madeleine-pa00101468",
+      "latitude": 47.2399808729742,
+      "longitude": 6.019165228497381,
+      "name": {
+        "en": "Église de la Madeleine",
+        "fr": "Église de la Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101473",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-eglise-saint-pierre-pa00101473",
+      "latitude": 47.2382706117646,
+      "longitude": 6.02474239818816,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101510",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-hotel-de-ville-pa00101510",
+      "latitude": 47.2377115341935,
+      "longitude": 6.02406258036891,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Lunette de Trois-Châtels is an important witness to the city's history.",
+        "fr": "Lunette de Trois-Châtels est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135329",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-lunette-de-trois-chatels-pa00135329",
+      "latitude": 47.2255631145437,
+      "longitude": 6.03873408805747,
+      "name": {
+        "en": "Lunette de Trois-Châtels",
+        "fr": "Lunette de Trois-Châtels"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison d'époque romaine is one of the city's notable cultural landmarks.",
+        "fr": "Maison d'époque romaine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA25000040",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-maison-d-epoque-romaine-pa25000040",
+      "latitude": 47.2333652334599,
+      "longitude": 6.02553596241788,
+      "name": {
+        "en": "Maison d'époque romaine",
+        "fr": "Maison d'époque romaine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée comtois is one of the city's notable cultural landmarks.",
+        "fr": "musée comtois compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0334",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-comtois-m0334",
+      "latitude": 47.236687,
+      "longitude": 6.022095,
+      "name": {
+        "en": "musée comtois",
+        "fr": "musée comtois"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la résistance et de la déportation is one of the city's notable cultural landmarks.",
+        "fr": "musée de la résistance et de la déportation compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0335",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-de-la-resistance-et-de-la-deportation-m0335",
+      "latitude": 47.22933847661575,
+      "longitude": 6.0352366087194325,
+      "name": {
+        "en": "musée de la résistance et de la déportation",
+        "fr": "musée de la résistance et de la déportation"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0332",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-des-beaux-arts-et-d-archeologie-m0332",
+      "latitude": 47.240055,
+      "longitude": 6.022938,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du temps is one of the city's notable cultural landmarks.",
+        "fr": "musée du temps compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0333",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "besancon-musee-du-temps-m0333",
+      "latitude": 47.235978,
+      "longitude": 6.0268,
+      "name": {
+        "en": "musée du temps",
+        "fr": "musée du temps"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101606",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-palais-de-justice-pa00101606",
+      "latitude": 47.2373087349659,
+      "longitude": 6.0234632044617,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Palais Granvelle, actuellement musée is one of the city's notable cultural landmarks.",
+        "fr": "Palais Granvelle, actuellement musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101605",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-palais-granvelle-actuellement-musee-pa00101605",
+      "latitude": 47.2357420889341,
+      "longitude": 6.026812946559861,
+      "name": {
+        "en": "Palais Granvelle, actuellement musée",
+        "fr": "Palais Granvelle, actuellement musée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Noire is an important witness to the city's history.",
+        "fr": "Porte Noire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101607",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-porte-noire-pa00101607",
+      "latitude": 47.2341296125531,
+      "longitude": 6.03022806741037,
+      "name": {
+        "en": "Porte Noire",
+        "fr": "Porte Noire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts de Vauban (anciens) is an important witness to the city's history.",
+        "fr": "Remparts de Vauban (anciens) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101608",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-remparts-de-vauban-anciens-pa00101608",
+      "latitude": 47.240160741661704,
+      "longitude": 6.030271373662622,
+      "name": {
+        "en": "Remparts de Vauban (anciens)",
+        "fr": "Remparts de Vauban (anciens)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101610",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-synagogue-pa00101610",
+      "latitude": 47.2413555467216,
+      "longitude": 6.02138193630327,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de la Pelote is an important witness to the city's history.",
+        "fr": "Tour de la Pelote est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101612",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "besancon-tour-de-la-pelote-pa00101612",
+      "latitude": 47.2426484337668,
+      "longitude": 6.0241906398998,
+      "name": {
+        "en": "Tour de la Pelote",
+        "fr": "Tour de la Pelote"
+      }
+    }
+  ]
+}

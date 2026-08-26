@@ -1,0 +1,204 @@
+{
+  "id": "salon-de-provence-v1",
+  "cityId": "salon-de-provence-fr",
+  "cityZoneId": "relation/70295",
+  "cityName": {
+    "en": "Salon-de-Provence",
+    "fr": "Salon-de-Provence"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Jean-de-Bernasse is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Jean-de-Bernasse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081458",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-chapelle-saint-jean-de-bernasse-pa00081458",
+      "latitude": 43.6188938338767,
+      "longitude": 5.12506058311606,
+      "name": {
+        "en": "Chapelle Saint-Jean-de-Bernasse",
+        "fr": "Chapelle Saint-Jean-de-Bernasse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de l'Empéri is an important witness to the city's history.",
+        "fr": "Château de l'Empéri est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081459",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-chateau-de-l-emperi-pa00081459",
+      "latitude": 43.639797822973,
+      "longitude": 5.09706662709692,
+      "name": {
+        "en": "Château de l'Empéri",
+        "fr": "Château de l'Empéri"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081461",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-eglise-saint-laurent-pa00081461",
+      "latitude": 43.6435227833024,
+      "longitude": 5.0970432708219,
+      "name": {
+        "en": "Église Saint-Laurent",
+        "fr": "Église Saint-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081462",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-eglise-saint-michel-pa00081462",
+      "latitude": 43.64050146818321,
+      "longitude": 5.09827067114187,
+      "name": {
+        "en": "Église Saint-Michel",
+        "fr": "Église Saint-Michel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081463",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-immeuble-pa00081463",
+      "latitude": 43.640644739622,
+      "longitude": 5.09691780912631,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument du Sublime Réveil ou monument d'Eugène Piron is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument du Sublime Réveil ou monument d'Eugène Piron est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA13000062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-monument-aux-morts-de-la-guerre-de-1914-1918-dit-aussi-monument-du-sublime-reveil-ou-monument-d-eugene-piron-pa13000062",
+      "latitude": 43.6374089861293,
+      "longitude": 5.09393577442276,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument du Sublime Réveil ou monument d'Eugène Piron",
+        "fr": "Monument aux morts de la guerre de 1914-1918, dit aussi Monument du Sublime Réveil ou monument d'Eugène Piron"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Emperi is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Emperi compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0929",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "salon-de-provence-musee-de-l-emperi-m0929",
+      "latitude": 43.640227,
+      "longitude": 5.096576,
+      "name": {
+        "en": "musée de l'Emperi",
+        "fr": "musée de l'Emperi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Salon et de la Crau is one of the city's notable cultural landmarks.",
+        "fr": "musée de Salon et de la Crau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0928",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "salon-de-provence-musee-de-salon-et-de-la-crau-m0928",
+      "latitude": 43.64095,
+      "longitude": 5.104363,
+      "name": {
+        "en": "musée de Salon et de la Crau",
+        "fr": "musée de Salon et de la Crau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Bourgneuf is an important witness to the city's history.",
+        "fr": "Porte de Bourgneuf est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081464",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-porte-de-bourgneuf-pa00081464",
+      "latitude": 43.6409270149665,
+      "longitude": 5.09897093567406,
+      "name": {
+        "en": "Porte de Bourgneuf",
+        "fr": "Porte de Bourgneuf"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de l'Horloge is an important witness to the city's history.",
+        "fr": "Tour de l'Horloge est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081466",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "salon-de-provence-tour-de-l-horloge-pa00081466",
+      "latitude": 43.6413088544597,
+      "longitude": 5.09701274822624,
+      "name": {
+        "en": "Tour de l'Horloge",
+        "fr": "Tour de l'Horloge"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "cavaillon-v1",
+  "cityId": "cavaillon-fr",
+  "cityZoneId": "relation/73936",
+  "cityName": {
+    "en": "Cavaillon",
+    "fr": "Cavaillon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale, puis église paroissiale Saint-Véran is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale, puis église paroissiale Saint-Véran est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-ancien-cathedrale-puis-eglise-paroissiale-saint-veran-pa00082019",
+      "latitude": 43.8362344452132,
+      "longitude": 5.03629706551603,
+      "name": {
+        "en": "Ancien cathédrale, puis église paroissiale Saint-Véran",
+        "fr": "Ancien cathédrale, puis église paroissiale Saint-Véran"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôpital, actuellement musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôpital, actuellement musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-ancien-hopital-actuellement-musee-archeologique-pa00082023",
+      "latitude": 43.8387742087937,
+      "longitude": 5.03782994423924,
+      "name": {
+        "en": "Ancien hôpital, actuellement musée archéologique",
+        "fr": "Ancien hôpital, actuellement musée archéologique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien hôtel d'Agar is an important witness to the city's history.",
+        "fr": "Ancien hôtel d'Agar est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-ancien-hotel-d-agar-pa84000059",
+      "latitude": 43.835621672531,
+      "longitude": 5.03607048752293,
+      "name": {
+        "en": "Ancien hôtel d'Agar",
+        "fr": "Ancien hôtel d'Agar"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Pérussis is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Pérussis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-hotel-de-perussis-pa00082024",
+      "latitude": 43.8355503319044,
+      "longitude": 5.03634011839059,
+      "name": {
+        "en": "Hôtel de Pérussis",
+        "fr": "Hôtel de Pérussis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hôtel-Dieu is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hôtel-Dieu compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0952",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cavaillon-musee-de-l-hotel-dieu-m0952",
+      "latitude": 43.836985,
+      "longitude": 5.037862,
+      "name": {
+        "en": "musée de l'hôtel-Dieu",
+        "fr": "musée de l'hôtel-Dieu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jouve is one of the city's notable cultural landmarks.",
+        "fr": "musée Jouve compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0953",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cavaillon-musee-jouve-m0953",
+      "latitude": 43.837324,
+      "longitude": 5.038776,
+      "name": {
+        "en": "musée Jouve",
+        "fr": "musée Jouve"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont aqueduc de la Canaù, ouvrage d'art du canal Saint-Julien sur la rivière le Coulon, situé au quartier Entre-Deux-Vallats is a distinctive architectural landmark in the city.",
+        "fr": "Pont aqueduc de la Canaù, ouvrage d'art du canal Saint-Julien sur la rivière le Coulon, situé au quartier Entre-Deux-Vallats est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-pont-aqueduc-de-la-canau-ouvrage-d-art-du-canal-saint-julien-sur-la-riviere-le-coulon-situe-au-quartier-entre-deux-vallats-pa84000056",
+      "latitude": 43.8571844364481,
+      "longitude": 5.03738839762516,
+      "name": {
+        "en": "Pont aqueduc de la Canaù, ouvrage d'art du canal Saint-Julien sur la rivière le Coulon, situé au quartier Entre-Deux-Vallats",
+        "fr": "Pont aqueduc de la Canaù, ouvrage d'art du canal Saint-Julien sur la rivière le Coulon, situé au quartier Entre-Deux-Vallats"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Avignon is an important witness to the city's history.",
+        "fr": "Porte d'Avignon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-porte-d-avignon-pa00082025",
+      "latitude": 43.8389638334863,
+      "longitude": 5.03771020762341,
+      "name": {
+        "en": "Porte d'Avignon",
+        "fr": "Porte d'Avignon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "synagogue musée juif comtadin is one of the city's notable cultural landmarks.",
+        "fr": "synagogue musée juif comtadin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0954",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cavaillon-synagogue-musee-juif-comtadin-m0954",
+      "latitude": 43.836842,
+      "longitude": 5.038553,
+      "name": {
+        "en": "synagogue musée juif comtadin",
+        "fr": "synagogue musée juif comtadin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cavaillon-synagogue-pa00082026",
+      "latitude": 43.8371009440218,
+      "longitude": 5.03851826369465,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

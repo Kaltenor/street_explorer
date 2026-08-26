@@ -1,0 +1,204 @@
+{
+  "id": "armentieres-v1",
+  "cityId": "armentieres-fr",
+  "cityZoneId": "relation/68000",
+  "cityName": {
+    "en": "Armentières",
+    "fr": "Armentières"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Armentières, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2456935",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-armentieres-q2456935",
+      "latitude": 50.680561,
+      "longitude": 2.877494,
+      "name": {
+        "en": "Armentières",
+        "fr": "Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "beffroi d'Armentières is a distinctive architectural landmark in the city.",
+        "fr": "beffroi d'Armentières est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2391905",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-beffroi-d-armentieres-q2391905",
+      "latitude": 50.68667,
+      "longitude": 2.8825,
+      "name": {
+        "en": "beffroi d'Armentières",
+        "fr": "beffroi d'Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery of the First World War in Armentières, Nord, Hauts-de-France, France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1846046",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-cite-bonjean-military-cemetery-q1846046",
+      "latitude": 50.685816,
+      "longitude": 2.863048,
+      "name": {
+        "en": "Cité Bonjean Military Cemetery",
+        "fr": "Cité Bonjean Military Cemetery"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "military cemetery located in Nord, in France",
+        "fr": "cimetière militaire situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19829012",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-cite-bonjean-new-zealand-memorial-q19829012",
+      "latitude": 50.686389,
+      "longitude": 2.863028,
+      "name": {
+        "en": "Cite Bonjean (New Zealand) Memorial",
+        "fr": "Cite Bonjean (New Zealand) Memorial"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "école de natation - Bains et lavoir publics is a distinctive architectural landmark in the city.",
+        "fr": "piscine à Armentières (ancienne)"
+      },
+      "externalIdentity": {
+        "id": "Q22979791",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-ecole-de-natation-bains-et-lavoir-publics-q22979791",
+      "latitude": 50.682215,
+      "longitude": 2.881022,
+      "name": {
+        "en": "école de natation - Bains et lavoir publics",
+        "fr": "école de natation - Bains et lavoir publics"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Armentiers, France",
+        "fr": "église paroissiale d'Armentières"
+      },
+      "externalIdentity": {
+        "id": "Q2065940",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-eglise-notre-dame-du-sacre-c-ur-d-armentieres-q2065940",
+      "latitude": 50.685278,
+      "longitude": 2.873889,
+      "name": {
+        "en": "église Notre-Dame-du-Sacré-Cœur d'Armentières",
+        "fr": "église Notre-Dame-du-Sacré-Cœur d'Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église française située à Armentières"
+      },
+      "externalIdentity": {
+        "id": "Q15884278",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-eglise-saint-louis-d-armentieres-q15884278",
+      "latitude": 50.693472222,
+      "longitude": 2.874166666,
+      "name": {
+        "en": "église Saint-Louis d'Armentières",
+        "fr": "église Saint-Louis d'Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Armentiers, France",
+        "fr": "église détruite située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1858033",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-eglise-saint-roch-d-armentieres-q1858033",
+      "latitude": 50.680556,
+      "longitude": 2.885417,
+      "name": {
+        "en": "église Saint-Roch d'Armentières",
+        "fr": "église Saint-Roch d'Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392835",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "armentieres-eglise-saint-vaast-d-armentieres-q60392835",
+      "latitude": 50.687308,
+      "longitude": 2.88414,
+      "name": {
+        "en": "église Saint-Vaast d'Armentières",
+        "fr": "église Saint-Vaast d'Armentières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "armentieres-hotel-de-ville-pa59000085",
+      "latitude": 50.6866932554912,
+      "longitude": 2.88251099124772,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

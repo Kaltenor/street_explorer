@@ -1,0 +1,394 @@
+{
+  "id": "evry-courcouronnes-v1",
+  "cityId": "evry-courcouronnes-fr",
+  "cityZoneId": "relation/90335",
+  "cityName": {
+    "en": "Évry-Courcouronnes",
+    "fr": "Évry-Courcouronnes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "arrondissement of France",
+        "fr": "arrondissement français"
+      },
+      "externalIdentity": {
+        "id": "Q702873",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-arrondissement-d-evry-q702873",
+      "latitude": 48.6275,
+      "longitude": 2.44138889,
+      "name": {
+        "en": "arrondissement d'Évry",
+        "fr": "arrondissement d'Évry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "canton français"
+      },
+      "externalIdentity": {
+        "id": "Q20647734",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-canton-d-evry-courcouronnes-q20647734",
+      "latitude": 48.623832,
+      "longitude": 2.4295664,
+      "name": {
+        "en": "canton d'Évry-Courcouronnes",
+        "fr": "canton d'Évry-Courcouronnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic church in Évry, France",
+        "fr": "église française située à Évry"
+      },
+      "externalIdentity": {
+        "id": "Q749525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-cathedrale-de-la-resurrection-d-evry-q749525",
+      "latitude": 48.62358333,
+      "longitude": 2.42872222,
+      "name": {
+        "en": "cathédrale de la Résurrection d'Évry",
+        "fr": "cathédrale de la Résurrection d'Évry"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Beauvoir is an important witness to the city's history.",
+        "fr": "château français à Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q2968511",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-chateau-de-beauvoir-q2968511",
+      "latitude": 48.6288,
+      "longitude": 2.45587,
+      "name": {
+        "en": "château de Beauvoir",
+        "fr": "château de Beauvoir"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French castle",
+        "fr": "château français situé à Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q2970208",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-chateau-de-petit-bourg-q2970208",
+      "latitude": 48.63944444,
+      "longitude": 2.44111111,
+      "name": {
+        "en": "château de Petit-Bourg",
+        "fr": "château de Petit-Bourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "trade union of France",
+        "fr": "centrale syndicale française"
+      },
+      "externalIdentity": {
+        "id": "Q1125610",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-confederation-francaise-des-travailleurs-chretiens-q1125610",
+      "latitude": 48.635237712,
+      "longitude": 2.429233273,
+      "name": {
+        "en": "Confédération française des travailleurs chrétiens",
+        "fr": "Confédération française des travailleurs chrétiens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grande école in Computer Science",
+        "fr": "école d'ingénieurs française en informatique"
+      },
+      "externalIdentity": {
+        "id": "Q3578204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-ecole-nationale-superieure-d-informatique-pour-l-industrie-et-l-entreprise-q3578204",
+      "latitude": 48.6267,
+      "longitude": 2.43191,
+      "name": {
+        "en": "École nationale supérieure d'informatique pour l'industrie et l'entreprise",
+        "fr": "École nationale supérieure d'informatique pour l'industrie et l'entreprise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Essonne, France",
+        "fr": "ancienne commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q192393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-evry-q192393",
+      "latitude": 48.623888888,
+      "longitude": 2.429444444,
+      "name": {
+        "en": "Évry",
+        "fr": "Évry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Évry, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2612260",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-evry-val-de-seine-q2612260",
+      "latitude": 48.63444,
+      "longitude": 2.45194,
+      "name": {
+        "en": "Évry-Val-de-Seine",
+        "fr": "Évry-Val-de-Seine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place des Aunettes is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Évry-Courcouronnes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-fontaine-wallace-place-des-aunettes-q128920440",
+      "latitude": 48.618623,
+      "longitude": 2.433032,
+      "name": {
+        "en": "fontaine Wallace, place des Aunettes",
+        "fr": "fontaine Wallace, place des Aunettes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, square de la Table Ronde is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Wallace située à Évry-Courcouronnes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140061572",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-fontaine-wallace-square-de-la-table-ronde-q140061572",
+      "latitude": 48.640175,
+      "longitude": 2.42345,
+      "name": {
+        "en": "fontaine Wallace, square de la Table Ronde",
+        "fr": "fontaine Wallace, square de la Table Ronde"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136054064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-monument-aux-morts-d-evry-petit-bourg-q136054064",
+      "latitude": 48.63193,
+      "longitude": 2.44777,
+      "name": {
+        "en": "monument aux morts d'Évry-Petit-Bourg",
+        "fr": "monument aux morts d'Évry-Petit-Bourg"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée situé à Évry, Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3329304",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-musee-paul-delouvrier-q3329304",
+      "latitude": 48.6234,
+      "longitude": 2.42889,
+      "name": {
+        "en": "musée Paul-Delouvrier",
+        "fr": "musée Paul-Delouvrier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc aux Lièvres is one of the city's notable green or natural landmarks.",
+        "fr": "quartier d'Évry-Courcouronnes"
+      },
+      "externalIdentity": {
+        "id": "Q123157245",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-parc-aux-lievres-q123157245",
+      "latitude": 48.6263,
+      "longitude": 2.4489,
+      "name": {
+        "en": "Parc aux Lièvres",
+        "fr": "Parc aux Lièvres"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne is one of the city's notable cultural landmarks.",
+        "fr": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3527654",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-theatre-de-l-agora-scene-nationale-d-evry-et-de-l-essonne-q3527654",
+      "latitude": 48.629051,
+      "longitude": 2.430124,
+      "name": {
+        "en": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne",
+        "fr": "théâtre de l'Agora, scène nationale d'Évry et de l'Essonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "halles de Méréville is a distinctive architectural landmark in the city.",
+        "fr": "halle à Méréville (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924220",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-halles-de-mereville-q22924220",
+      "latitude": 48.31936,
+      "longitude": 2.08917,
+      "name": {
+        "en": "halles de Méréville",
+        "fr": "halles de Méréville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French business school",
+        "fr": "établissement d'enseignement français"
+      },
+      "externalIdentity": {
+        "id": "Q3546588",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-institut-mines-telecom-business-school-q3546588",
+      "latitude": 48.625,
+      "longitude": 2.443,
+      "name": {
+        "en": "Institut Mines-Télécom Business School",
+        "fr": "Institut Mines-Télécom Business School"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Évry, Paris, France",
+        "fr": "mosquée située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q268798",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-mosquee-d-evry-courcouronnes-q268798",
+      "latitude": 48.625911111,
+      "longitude": 2.421663888,
+      "name": {
+        "en": "mosquée d'Évry-Courcouronnes",
+        "fr": "mosquée d'Évry-Courcouronnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "higher education institution",
+        "fr": "école d'ingénieurs à Evry"
+      },
+      "externalIdentity": {
+        "id": "Q43305",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-telecom-sudparis-q43305",
+      "latitude": 48.624,
+      "longitude": 2.44397,
+      "name": {
+        "en": "Télécom SudParis",
+        "fr": "Télécom SudParis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French public university located in Évry member of the Université Paris-Saclay",
+        "fr": "université publique française, membre-associé de l'université Paris-Saclay"
+      },
+      "externalIdentity": {
+        "id": "Q1531014",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "evry-courcouronnes-universite-evry-paris-saclay-q1531014",
+      "latitude": 48.6229,
+      "longitude": 2.42577,
+      "name": {
+        "en": "université Évry Paris-Saclay",
+        "fr": "université Évry Paris-Saclay"
+      }
+    }
+  ]
+}

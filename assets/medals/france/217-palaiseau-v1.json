@@ -1,0 +1,204 @@
+{
+  "id": "palaiseau-v1",
+  "cityId": "palaiseau-fr",
+  "cityZoneId": "relation/33504",
+  "cityName": {
+    "en": "Palaiseau",
+    "fr": "Palaiseau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Ardenay is an important witness to the city's history.",
+        "fr": "château français situé sur la commune de Palaiseau"
+      },
+      "externalIdentity": {
+        "id": "Q2968106",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-chateau-d-ardenay-q2968106",
+      "latitude": 48.7158,
+      "longitude": 2.24047,
+      "name": {
+        "en": "château d'Ardenay",
+        "fr": "château d'Ardenay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087986",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "palaiseau-eglise-pa00087986",
+      "latitude": 48.7125487077922,
+      "longitude": 2.24033220174625,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Grande École",
+        "fr": "école publique d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q1275372",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-ensae-paris-q1275372",
+      "latitude": 48.711068333,
+      "longitude": 2.207658333,
+      "name": {
+        "en": "ENSAE Paris",
+        "fr": "ENSAE Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Palaiseau is an important witness to the city's history.",
+        "fr": "fort de Palaiseau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3078207",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-fort-de-palaiseau-q3078207",
+      "latitude": 48.7134,
+      "longitude": 2.23174,
+      "name": {
+        "en": "fort de Palaiseau",
+        "fr": "fort de Palaiseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French research university of engineering schools in Paris-Saclay",
+        "fr": "université française créée en 2019 autour de l'École Polytechnique fondée en 1794"
+      },
+      "externalIdentity": {
+        "id": "Q48759778",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-institut-polytechnique-de-paris-q48759778",
+      "latitude": 48.710709,
+      "longitude": 2.219011,
+      "name": {
+        "en": "Institut polytechnique de Paris",
+        "fr": "Institut polytechnique de Paris"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067800",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-monument-aux-morts-de-palaiseau-q136067800",
+      "latitude": 48.710576,
+      "longitude": 2.235975,
+      "name": {
+        "en": "monument aux morts de Palaiseau",
+        "fr": "monument aux morts de Palaiseau"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "science museum in France",
+        "fr": "musée scientifique français"
+      },
+      "externalIdentity": {
+        "id": "Q134559817",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-mus-x-q134559817",
+      "latitude": 48.712,
+      "longitude": 2.2099,
+      "name": {
+        "en": "Mus’X",
+        "fr": "Mus’X"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330355",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-musee-du-hurepoix-q3330355",
+      "latitude": 48.712,
+      "longitude": 2.24275,
+      "name": {
+        "en": "musée du Hurepoix",
+        "fr": "musée du Hurepoix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Palaiseau, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2596452",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-palaiseau-q2596452",
+      "latitude": 48.7175,
+      "longitude": 2.246389,
+      "name": {
+        "en": "Palaiseau",
+        "fr": "Palaiseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "engineering school in Paris-Saclay, specialized in telecoms",
+        "fr": "grande école d'ingénieurs de l'Institut polytechnique de Paris située à Paris-Saclay"
+      },
+      "externalIdentity": {
+        "id": "Q2311820",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "palaiseau-telecom-paris-q2311820",
+      "latitude": 48.7131,
+      "longitude": 2.1996,
+      "name": {
+        "en": "Télécom Paris",
+        "fr": "Télécom Paris"
+      }
+    }
+  ]
+}

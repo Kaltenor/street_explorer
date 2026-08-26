@@ -1,0 +1,204 @@
+{
+  "id": "bastia-v1",
+  "cityId": "bastia-fr",
+  "cityZoneId": "relation/73444",
+  "cityName": {
+    "en": "Bastia",
+    "fr": "Bastia"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099179",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-ancien-eglise-pa00099179",
+      "latitude": 42.6871000200589,
+      "longitude": 9.41667327057935,
+      "name": {
+        "en": "Ancien église",
+        "fr": "Ancien église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Conception is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Conception est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099159",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-de-la-conception-pa00099159",
+      "latitude": 42.6974492176511,
+      "longitude": 9.45009794719833,
+      "name": {
+        "en": "Église de la Conception",
+        "fr": "Église de la Conception"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de Montserato is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de Montserato est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135318",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-notre-dame-de-montserato-pa00135318",
+      "latitude": 42.6906671193582,
+      "longitude": 9.43811608001141,
+      "name": {
+        "en": "Église Notre-Dame de Montserato",
+        "fr": "Église Notre-Dame de Montserato"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église ou oratoire Saint-Roch is a distinctive architectural landmark in the city.",
+        "fr": "Église ou oratoire Saint-Roch est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA2B000007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-ou-oratoire-saint-roch-pa2b000007",
+      "latitude": 42.69826949948761,
+      "longitude": 9.45032888973714,
+      "name": {
+        "en": "Église ou oratoire Saint-Roch",
+        "fr": "Église ou oratoire Saint-Roch"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Enceinte fortifiée dite citadelle et palais du Gouverneur, partiellement aménagé en Musée d'Ethnographie is one of the city's notable cultural landmarks.",
+        "fr": "Enceinte fortifiée dite citadelle et palais du Gouverneur, partiellement aménagé en Musée d'Ethnographie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099158",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-enceinte-fortifiee-dite-citadelle-et-palais-du-gouverneur-partiellement-amenage-en-musee-d-ethnographie-pa00099158",
+      "latitude": 42.6936342279969,
+      "longitude": 9.45125925562733,
+      "name": {
+        "en": "Enceinte fortifiée dite citadelle et palais du Gouverneur, partiellement aménagé en Musée d'Ethnographie",
+        "fr": "Enceinte fortifiée dite citadelle et palais du Gouverneur, partiellement aménagé en Musée d'Ethnographie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'ethnographie corse is one of the city's notable cultural landmarks.",
+        "fr": "musée d'ethnographie corse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0329",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bastia-musee-d-ethnographie-corse-m0329",
+      "latitude": 42.693145,
+      "longitude": 9.450578,
+      "name": {
+        "en": "musée d'ethnographie corse",
+        "fr": "musée d'ethnographie corse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099160",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-saint-jean-baptiste-pa00099160",
+      "latitude": 42.6969628890772,
+      "longitude": 9.45031723976199,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Croix is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Croix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099161",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-sainte-croix-pa00099161",
+      "latitude": 42.6923284780159,
+      "longitude": 9.45210181092186,
+      "name": {
+        "en": "Église Sainte-Croix",
+        "fr": "Église Sainte-Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Marie, ancienne cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Marie, ancienne cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099162",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-eglise-sainte-marie-ancienne-cathedrale-pa00099162",
+      "latitude": 42.6923590265812,
+      "longitude": 9.45176596101826,
+      "name": {
+        "en": "Église Sainte-Marie, ancienne cathédrale",
+        "fr": "Église Sainte-Marie, ancienne cathédrale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099163",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bastia-palais-de-justice-pa00099163",
+      "latitude": 42.6952738241123,
+      "longitude": 9.44605386000648,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

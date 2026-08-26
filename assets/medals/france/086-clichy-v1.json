@@ -1,0 +1,394 @@
+{
+  "id": "clichy-v1",
+  "cityId": "clichy-fr",
+  "cityZoneId": "relation/86999",
+  "cityName": {
+    "en": "Clichy",
+    "fr": "Clichy"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83376015",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-cimetiere-nord-de-clichy-q83376015",
+      "latitude": 48.9082,
+      "longitude": 2.3148,
+      "name": {
+        "en": "cimetière nord de Clichy",
+        "fr": "cimetière nord de Clichy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21013156",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-eglise-notre-dame-auxiliatrice-de-clichy-q21013156",
+      "latitude": 48.901205,
+      "longitude": 2.314046,
+      "name": {
+        "en": "église Notre-Dame-Auxiliatrice de Clichy",
+        "fr": "église Notre-Dame-Auxiliatrice de Clichy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Médard (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Médard (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clichy-eglise-saint-medard-ancienne-pa00088097",
+      "latitude": 48.9039183063871,
+      "longitude": 2.30338697285501,
+      "name": {
+        "en": "Église Saint-Médard (ancienne)",
+        "fr": "Église Saint-Médard (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Clichy, France",
+        "fr": "édifice religieux catholique de Clichy, dans le diocèse de Nanterre, France"
+      },
+      "externalIdentity": {
+        "id": "Q29569446",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-eglise-saint-vincent-de-paul-de-clichy-q29569446",
+      "latitude": 48.9039,
+      "longitude": 2.3037,
+      "name": {
+        "en": "église Saint-Vincent-de-Paul de Clichy",
+        "fr": "église Saint-Vincent-de-Paul de Clichy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "églises Saint-Médard et Saint-Vincent-de-Paul de Clichy is a distinctive architectural landmark in the city.",
+        "fr": "deux églises contiguës à Clichy, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96604846",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-eglises-saint-medard-et-saint-vincent-de-paul-de-clichy-q96604846",
+      "latitude": 48.903984087,
+      "longitude": 2.303766207,
+      "name": {
+        "en": "églises Saint-Médard et Saint-Vincent-de-Paul de Clichy",
+        "fr": "églises Saint-Médard et Saint-Vincent-de-Paul de Clichy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in Clichy (Hauts-de-Seine) near Paris, France",
+        "fr": "hôpital à Clichy (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q2690409",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-hopital-beaujon-q2690409",
+      "latitude": 48.90833333,
+      "longitude": 2.31027778,
+      "name": {
+        "en": "hôpital Beaujon",
+        "fr": "hôpital Beaujon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Clichy, France",
+        "fr": "édifice à Clichy, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913617",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-hotel-de-ville-de-clichy-q61913617",
+      "latitude": 48.9028,
+      "longitude": 2.3049,
+      "name": {
+        "en": "hôtel de ville de Clichy",
+        "fr": "hôtel de ville de Clichy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Clichy is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Clichy, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602272",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-monument-aux-morts-de-clichy-q96602272",
+      "latitude": 48.89678,
+      "longitude": 2.30292,
+      "name": {
+        "en": "monument aux morts de Clichy",
+        "fr": "monument aux morts de Clichy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Hauts-de-Seine department, France",
+        "fr": "monument aux morts des Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-monument-aux-morts-de-la-seconde-guerre-mondiale-de-clichy-q136097862",
+      "latitude": 48.90353,
+      "longitude": 2.31275,
+      "name": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Clichy",
+        "fr": "monument aux morts de la Seconde Guerre mondiale de Clichy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des Impressionnistes (Clichy) is one of the city's notable green or natural landmarks.",
+        "fr": "parc des Impressionnistes (Clichy) compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q117006121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-parc-des-impressionnistes-clichy-q117006121",
+      "latitude": 48.902299,
+      "longitude": 2.292857,
+      "name": {
+        "en": "parc des Impressionnistes (Clichy)",
+        "fr": "parc des Impressionnistes (Clichy)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Clichy, France",
+        "fr": "parc situé à Clichy, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-parc-mozart-q96601910",
+      "latitude": 48.90485,
+      "longitude": 2.3175,
+      "name": {
+        "en": "parc Mozart",
+        "fr": "parc Mozart"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park",
+        "fr": "parc situé à Clichy, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q65158951",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-parc-roger-salengro-q65158951",
+      "latitude": 48.90474,
+      "longitude": 2.31225,
+      "name": {
+        "en": "parc Roger-Salengro",
+        "fr": "parc Roger-Salengro"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre and cinema in Clichy, France",
+        "fr": "salle de spectacle et de cinéma à Clichy, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860623",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-theatre-rutebeuf-q61860623",
+      "latitude": 48.901984,
+      "longitude": 2.309298,
+      "name": {
+        "en": "théâtre Rutebeuf",
+        "fr": "théâtre Rutebeuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "imprimerie Paul Dupont is a distinctive architectural landmark in the city.",
+        "fr": "imprimerie située à Clichy, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96606093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-imprimerie-paul-dupont-q96606093",
+      "latitude": 48.903711467,
+      "longitude": 2.295172534,
+      "name": {
+        "en": "imprimerie Paul Dupont",
+        "fr": "imprimerie Paul Dupont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du Peuple is a distinctive architectural landmark in the city.",
+        "fr": "Maison du Peuple est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clichy-maison-du-peuple-pa00088098",
+      "latitude": 48.901306865127,
+      "longitude": 2.31466023335666,
+      "name": {
+        "en": "Maison du Peuple",
+        "fr": "Maison du Peuple"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pavillon de Vendôme is a distinctive architectural landmark in the city.",
+        "fr": "Pavillon de Vendôme est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clichy-pavillon-de-vendome-pa00088099",
+      "latitude": 48.904743962952,
+      "longitude": 2.30400313925749,
+      "name": {
+        "en": "Pavillon de Vendôme",
+        "fr": "Pavillon de Vendôme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-pont-d-asnieres-q3396824",
+      "latitude": 48.9042,
+      "longitude": 2.28833,
+      "name": {
+        "en": "pont d'Asnières",
+        "fr": "pont d'Asnières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Asnières-sur-Seine, France",
+        "fr": "pont sur la Seine reliant Asnières-sur-Seine et Clichy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3396928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-pont-de-clichy-q3396928",
+      "latitude": 48.909724,
+      "longitude": 2.299499,
+      "name": {
+        "en": "pont de Clichy",
+        "fr": "pont de Clichy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-pont-de-gennevilliers-q3396970",
+      "latitude": 48.9131,
+      "longitude": 2.31083,
+      "name": {
+        "en": "pont de Gennevilliers",
+        "fr": "pont de Gennevilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tramway, light or metro rail bridge in Clichy, Hauts-de-Seine (92), Île-de-France, France; Clichy, Hauts-de-Seine (92), Île-de-France, France",
+        "fr": "pont permettant au métro de franchir la Seine entre Clichy et Asnières-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21115111",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-viaduc-ferroviaire-de-clichy-q21115111",
+      "latitude": 48.90968,
+      "longitude": 2.299353,
+      "name": {
+        "en": "viaduc ferroviaire de Clichy",
+        "fr": "viaduc ferroviaire de Clichy"
+      }
+    }
+  ]
+}

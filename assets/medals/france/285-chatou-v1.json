@@ -1,0 +1,204 @@
+{
+  "id": "chatou-v1",
+  "cityId": "chatou-fr",
+  "cityZoneId": "relation/73610",
+  "cityName": {
+    "en": "Chatou",
+    "fr": "Chatou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Yvelines, in France",
+        "fr": "chapelle située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q44010127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-chapelle-saint-jean-de-chatou-q44010127",
+      "latitude": 48.90166,
+      "longitude": 2.14203,
+      "name": {
+        "en": "chapelle Saint-Jean de Chatou",
+        "fr": "chapelle Saint-Jean de Chatou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Faisanderie (ancien) is an important witness to the city's history.",
+        "fr": "Château de la Faisanderie (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087400",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatou-chateau-de-la-faisanderie-ancien-pa00087400",
+      "latitude": 48.8909510690571,
+      "longitude": 2.15033323044105,
+      "name": {
+        "en": "Château de la Faisanderie (ancien)",
+        "fr": "Château de la Faisanderie (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Chatou, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2415549",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-chatou-croissy-q2415549",
+      "latitude": 48.885278,
+      "longitude": 2.156111,
+      "name": {
+        "en": "Chatou - Croissy",
+        "fr": "Chatou - Croissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Yvelines, in France",
+        "fr": "cimetière situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110360053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-cimetiere-ancien-de-chatou-q110360053",
+      "latitude": 48.895,
+      "longitude": 2.1491,
+      "name": {
+        "en": "cimetière ancien de Chatou",
+        "fr": "cimetière ancien de Chatou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087401",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatou-eglise-notre-dame-pa00087401",
+      "latitude": 48.8890724958811,
+      "longitude": 2.15986039261927,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "art museum in Chatou, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q1640215",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-maison-fournaise-q1640215",
+      "latitude": 48.8896,
+      "longitude": 2.1633,
+      "name": {
+        "en": "maison Fournaise",
+        "fr": "maison Fournaise"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "art museum",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q30356366",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-musee-fournaise-q30356366",
+      "latitude": 48.88947,
+      "longitude": 2.1631,
+      "name": {
+        "en": "musée Fournaise",
+        "fr": "musée Fournaise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Chatou, France",
+        "fr": "édifice de Chatou, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412725",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-hotel-de-ville-de-chatou-q83412725",
+      "latitude": 48.8899,
+      "longitude": 2.1575,
+      "name": {
+        "en": "hôtel de ville de Chatou",
+        "fr": "hôtel de ville de Chatou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Nymphée is a distinctive architectural landmark in the city.",
+        "fr": "Nymphée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087402",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatou-nymphee-pa00087402",
+      "latitude": 48.8922985167984,
+      "longitude": 2.16129458198261,
+      "name": {
+        "en": "Nymphée",
+        "fr": "Nymphée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396920",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatou-pont-de-chatou-q3396920",
+      "latitude": 48.8881,
+      "longitude": 2.16278,
+      "name": {
+        "en": "pont de Chatou",
+        "fr": "pont de Chatou"
+      }
+    }
+  ]
+}

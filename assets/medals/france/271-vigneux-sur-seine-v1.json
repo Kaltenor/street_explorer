@@ -1,0 +1,204 @@
+{
+  "id": "vigneux-sur-seine-v1",
+  "cityId": "vigneux-sur-seine-fr",
+  "cityZoneId": "relation/150551",
+  "cityName": {
+    "en": "Vigneux-sur-Seine",
+    "fr": "Vigneux-sur-Seine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Essonne, in France",
+        "fr": "chapelle située dans l'Essonne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29899028",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-chapelle-notre-dame-des-sables-de-vigneux-sur-seine-q29899028",
+      "latitude": 48.69626,
+      "longitude": 2.43327,
+      "name": {
+        "en": "chapelle Notre-Dame-des-Sables de Vigneux-sur-Seine",
+        "fr": "chapelle Notre-Dame-des-Sables de Vigneux-sur-Seine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Vigneux, France",
+        "fr": "château français situé à Vigneux-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q101244410",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-chateau-de-port-courcel-q101244410",
+      "latitude": 48.709603994,
+      "longitude": 2.409537404,
+      "name": {
+        "en": "château de Port-Courcel",
+        "fr": "château de Port-Courcel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Vigneux-sur-Seine, France",
+        "fr": "édifice religieux catholique à Vigneux-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29899027",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-eglise-saint-pierre-es-liens-de-vigneux-sur-seine-q29899027",
+      "latitude": 48.70672,
+      "longitude": 2.42602,
+      "name": {
+        "en": "église Saint-Pierre-ès-Liens de Vigneux-sur-Seine",
+        "fr": "église Saint-Pierre-ès-Liens de Vigneux-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située en Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q2886615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-ile-de-loisirs-du-port-aux-cerises-q2886615",
+      "latitude": 48.693611111,
+      "longitude": 2.400555555,
+      "name": {
+        "en": "Île de loisirs du Port-aux-Cerises",
+        "fr": "Île de loisirs du Port-aux-Cerises"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Menhir dit La Pierre à Mousseaux is a distinctive architectural landmark in the city.",
+        "fr": "Menhir dit La Pierre à Mousseaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088033",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vigneux-sur-seine-menhir-dit-la-pierre-a-mousseaux-pa00088033",
+      "latitude": 48.7002212597944,
+      "longitude": 2.40527088106061,
+      "name": {
+        "en": "Menhir dit La Pierre à Mousseaux",
+        "fr": "Menhir dit La Pierre à Mousseaux"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Vigneux-sur-Seine is a notable work of public art and local memory.",
+        "fr": "monument aux morts en Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q104506476",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-monument-aux-morts-de-vigneux-sur-seine-q104506476",
+      "latitude": 48.70038,
+      "longitude": 2.42247,
+      "name": {
+        "en": "monument aux morts de Vigneux-sur-Seine",
+        "fr": "monument aux morts de Vigneux-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pierre à Mousseau is a distinctive architectural landmark in the city.",
+        "fr": "menhir à Vigneux-sur-Seine (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924283",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-pierre-a-mousseau-q22924283",
+      "latitude": 48.70023,
+      "longitude": 2.40496,
+      "name": {
+        "en": "pierre à Mousseau",
+        "fr": "pierre à Mousseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont d'Athis-Mons is a distinctive architectural landmark in the city.",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q19945220",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-pont-d-athis-mons-q19945220",
+      "latitude": 48.7046,
+      "longitude": 2.40205,
+      "name": {
+        "en": "pont d'Athis-Mons",
+        "fr": "pont d'Athis-Mons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Essonne, France",
+        "fr": "commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q842037",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vigneux-sur-seine-vigneux-sur-seine-q842037",
+      "latitude": 48.700277777,
+      "longitude": 2.417222222,
+      "name": {
+        "en": "Vigneux-sur-Seine",
+        "fr": "Vigneux-sur-Seine"
+      }
+    }
+  ]
+}

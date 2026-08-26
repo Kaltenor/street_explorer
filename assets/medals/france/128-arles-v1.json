@@ -1,0 +1,204 @@
+{
+  "id": "arles-v1",
+  "cityId": "arles-fr",
+  "cityZoneId": "relation/73911",
+  "cityName": {
+    "en": "Arles",
+    "fr": "Arles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Montmajour is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Montmajour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081117",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-ancien-abbaye-de-montmajour-pa00081117",
+      "latitude": 43.7055899020344,
+      "longitude": 4.664136818905,
+      "name": {
+        "en": "Ancien abbaye de Montmajour",
+        "fr": "Ancien abbaye de Montmajour"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Césaire is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Césaire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081118",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-ancien-abbaye-saint-cesaire-pa00081118",
+      "latitude": 43.6758228210122,
+      "longitude": 4.6319480906348,
+      "name": {
+        "en": "Ancien abbaye Saint-Césaire",
+        "fr": "Ancien abbaye Saint-Césaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Jansonne is an important witness to the city's history.",
+        "fr": "Château de la Jansonne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081125",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-chateau-de-la-jansonne-pa00081125",
+      "latitude": 43.6545237053803,
+      "longitude": 4.70060851026186,
+      "name": {
+        "en": "Château de la Jansonne",
+        "fr": "Château de la Jansonne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de l'Armeillère ou l'Armeillière is an important witness to the city's history.",
+        "fr": "Domaine de l'Armeillère ou l'Armeillière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081131",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-domaine-de-l-armeillere-ou-l-armeilliere-pa00081131",
+      "latitude": 43.5692785837496,
+      "longitude": 4.67903257587791,
+      "name": {
+        "en": "Domaine de l'Armeillère ou l'Armeillière",
+        "fr": "Domaine de l'Armeillère ou l'Armeillière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Major is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Major est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081134",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-eglise-de-la-major-pa00081134",
+      "latitude": 43.677616253221906,
+      "longitude": 4.63276826436367,
+      "name": {
+        "en": "Église de la Major",
+        "fr": "Église de la Major"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081155",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arles-hotel-de-ville-pa00081155",
+      "latitude": 43.67683754255961,
+      "longitude": 4.62757586544745,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée camarguais is one of the city's notable cultural landmarks.",
+        "fr": "musée camarguais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0903",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "arles-musee-camarguais-m0903",
+      "latitude": 43.67679,
+      "longitude": 4.61542,
+      "name": {
+        "en": "musée camarguais",
+        "fr": "musée camarguais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Arles antique is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Arles antique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0901",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "arles-musee-de-l-arles-antique-m0901",
+      "latitude": 43.672753063626814,
+      "longitude": 4.617175830175759,
+      "name": {
+        "en": "musée de l'Arles antique",
+        "fr": "musée de l'Arles antique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Réattu is one of the city's notable cultural landmarks.",
+        "fr": "musée Réattu compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0900",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "arles-musee-reattu-m0900",
+      "latitude": 43.679186,
+      "longitude": 4.627903,
+      "name": {
+        "en": "musée Réattu",
+        "fr": "musée Réattu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museon Arlaten is one of the city's notable cultural landmarks.",
+        "fr": "museon Arlaten compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0902",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "arles-museon-arlaten-m0902",
+      "latitude": 43.54073,
+      "longitude": 4.676089,
+      "name": {
+        "en": "museon Arlaten",
+        "fr": "museon Arlaten"
+      }
+    }
+  ]
+}

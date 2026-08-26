@@ -1,0 +1,204 @@
+{
+  "id": "castelnau-le-lez-v1",
+  "cityId": "castelnau-le-lez-fr",
+  "cityZoneId": "relation/28810",
+  "cityName": {
+    "en": "Castelnau-le-Lez",
+    "fr": "Castelnau-le-Lez"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Charles de Gaulle is a distinctive architectural landmark in the city.",
+        "fr": "station sur la ligne 2 du tramway de Montpellier"
+      },
+      "externalIdentity": {
+        "id": "Q107290442",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-charles-de-gaulle-q107290442",
+      "latitude": 43.628627777,
+      "longitude": 3.897755555,
+      "name": {
+        "en": "Charles de Gaulle",
+        "fr": "Charles de Gaulle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Verchant is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q1886059",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-chateau-de-verchant-q1886059",
+      "latitude": 43.6369,
+      "longitude": 3.90194,
+      "name": {
+        "en": "château de Verchant",
+        "fr": "château de Verchant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Verchant is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Verchant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castelnau-le-lez-domaine-de-verchant-pa34000042",
+      "latitude": 43.6229391435577,
+      "longitude": 3.9219547298193596,
+      "name": {
+        "en": "Domaine de Verchant",
+        "fr": "Domaine de Verchant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103407",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castelnau-le-lez-eglise-saint-jean-baptiste-pa00103407",
+      "latitude": 43.6330761136996,
+      "longitude": 3.89488579924227,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Georges Pompidou is a distinctive architectural landmark in the city.",
+        "fr": "station sur la ligne 2 du tramway de Montpellier"
+      },
+      "externalIdentity": {
+        "id": "Q107290435",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-georges-pompidou-q107290435",
+      "latitude": 43.64932,
+      "longitude": 3.92103,
+      "name": {
+        "en": "Georges Pompidou",
+        "fr": "Georges Pompidou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "glacière de Castelnau-le-Lez is a distinctive architectural landmark in the city.",
+        "fr": "glacière à Castelnau-le-Lez (Hérault)"
+      },
+      "externalIdentity": {
+        "id": "Q22976836",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-glaciere-de-castelnau-le-lez-q22976836",
+      "latitude": 43.6312,
+      "longitude": 3.8972,
+      "name": {
+        "en": "glacière de Castelnau-le-Lez",
+        "fr": "glacière de Castelnau-le-Lez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Hérault department, France",
+        "fr": "siège municipal de Castelnau-le-Lez, dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119304571",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-mairie-de-castelnau-le-lez-q119304571",
+      "latitude": 43.63273695,
+      "longitude": 3.897511474,
+      "name": {
+        "en": "mairie de Castelnau-le-Lez",
+        "fr": "mairie de Castelnau-le-Lez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Notre-Dame de Sablassou is a distinctive architectural landmark in the city.",
+        "fr": "station sur la ligne 2 du tramway de Montpellier"
+      },
+      "externalIdentity": {
+        "id": "Q107290438",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-notre-dame-de-sablassou-q107290438",
+      "latitude": 43.63424,
+      "longitude": 3.92222,
+      "name": {
+        "en": "Notre-Dame de Sablassou",
+        "fr": "Notre-Dame de Sablassou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont à Montpellier, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3397256",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-pont-de-la-concorde-q3397256",
+      "latitude": 43.628742,
+      "longitude": 3.894527,
+      "name": {
+        "en": "pont de la Concorde",
+        "fr": "pont de la Concorde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tram stop",
+        "fr": "station sur la ligne 2 du tramway de Montpellier"
+      },
+      "externalIdentity": {
+        "id": "Q107290436",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "castelnau-le-lez-via-domitia-q107290436",
+      "latitude": 43.64673,
+      "longitude": 3.92947,
+      "name": {
+        "en": "Via Domitia",
+        "fr": "Via Domitia"
+      }
+    }
+  ]
+}

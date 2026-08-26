@@ -1,0 +1,204 @@
+{
+  "id": "albi-v1",
+  "cityId": "albi-fr",
+  "cityZoneId": "relation/135628",
+  "cityName": {
+    "en": "Albi",
+    "fr": "Albi"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Cécile is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Cécile est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095453",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-cathedrale-sainte-cecile-pa00095453",
+      "latitude": 43.928522788109,
+      "longitude": 2.14255694787345,
+      "name": {
+        "en": "Cathédrale Sainte-Cécile",
+        "fr": "Cathédrale Sainte-Cécile"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Bellevue is an important witness to the city's history.",
+        "fr": "Château Bellevue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA81000044",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-chateau-bellevue-pa81000044",
+      "latitude": 43.9197448866153,
+      "longitude": 2.15737862635675,
+      "name": {
+        "en": "Château Bellevue",
+        "fr": "Château Bellevue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Cantepau is an important witness to the city's history.",
+        "fr": "Château de Cantepau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095454",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-chateau-de-cantepau-pa00095454",
+      "latitude": 43.9448753295771,
+      "longitude": 2.16231317751988,
+      "name": {
+        "en": "Château de Cantepau",
+        "fr": "Château de Cantepau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Gô is an important witness to the city's history.",
+        "fr": "Château du Gô est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095455",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-chateau-du-go-pa00095455",
+      "latitude": 43.9502959554704,
+      "longitude": 2.16195481964498,
+      "name": {
+        "en": "Château du Gô",
+        "fr": "Château du Gô"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-la-Drèche (également sur communes de Cagnac-les-Mines et Lescure-d'Albigeois) is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-la-Drèche (également sur communes de Cagnac-les-Mines et Lescure-d'Albigeois) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135474",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-eglise-notre-dame-de-la-dreche-egalement-sur-communes-de-cagnac-les-mines-et-lescure-d-albigeois-pa00135474",
+      "latitude": 43.9695752562547,
+      "longitude": 2.15415127107338,
+      "name": {
+        "en": "Église Notre-Dame-de-la-Drèche (également sur communes de Cagnac-les-Mines et Lescure-d'Albigeois)",
+        "fr": "Église Notre-Dame-de-la-Drèche (également sur communes de Cagnac-les-Mines et Lescure-d'Albigeois)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Salvy et son cloître is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Salvy et son cloître est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095457",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-eglise-saint-salvy-et-son-cloitre-pa00095457",
+      "latitude": 43.92791832309481,
+      "longitude": 2.1445396525362606,
+      "name": {
+        "en": "Église Saint-Salvy et son cloître",
+        "fr": "Église Saint-Salvy et son cloître"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Toulouse-Lautrec is one of the city's notable cultural landmarks.",
+        "fr": "musée Toulouse-Lautrec compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0592",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "albi-musee-toulouse-lautrec-m0592",
+      "latitude": 43.928096,
+      "longitude": 2.143551,
+      "name": {
+        "en": "musée Toulouse-Lautrec",
+        "fr": "musée Toulouse-Lautrec"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Palais de l'Archevêché ou de la Berbie is one of the city's notable cultural landmarks.",
+        "fr": "Palais de l'Archevêché ou de la Berbie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095480",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-palais-de-l-archeveche-ou-de-la-berbie-pa00095480",
+      "latitude": 43.9293346111245,
+      "longitude": 2.14287188306409,
+      "name": {
+        "en": "Palais de l'Archevêché ou de la Berbie",
+        "fr": "Palais de l'Archevêché ou de la Berbie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA81000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-theatre-pa81000011",
+      "latitude": 43.9256133056474,
+      "longitude": 2.148947465916,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vieux pont is a distinctive architectural landmark in the city.",
+        "fr": "Vieux pont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095481",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albi-vieux-pont-pa00095481",
+      "latitude": 43.9312356353936,
+      "longitude": 2.14455313671971,
+      "name": {
+        "en": "Vieux pont",
+        "fr": "Vieux pont"
+      }
+    }
+  ]
+}

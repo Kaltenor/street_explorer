@@ -1,0 +1,204 @@
+{
+  "id": "tarbes-v1",
+  "cityId": "tarbes-fr",
+  "cityZoneId": "relation/159060",
+  "cityName": {
+    "en": "Tarbes",
+    "fr": "Tarbes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame-de-la-Sède is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame-de-la-Sède est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095426",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-cathedrale-notre-dame-de-la-sede-pa00095426",
+      "latitude": 43.2336764943456,
+      "longitude": 0.0689897319144366,
+      "name": {
+        "en": "Cathédrale Notre-Dame-de-la-Sède",
+        "fr": "Cathédrale Notre-Dame-de-la-Sède"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Thérèse ou des Carmes is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Thérèse ou des Carmes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095427",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-eglise-sainte-therese-ou-des-carmes-pa00095427",
+      "latitude": 43.2319514876947,
+      "longitude": 0.0828330216527751,
+      "name": {
+        "en": "Église Sainte-Thérèse ou des Carmes",
+        "fr": "Église Sainte-Thérèse ou des Carmes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Duvignau-Bousigues dite « des Quatre-Vallées » is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Duvignau-Bousigues dite « des Quatre-Vallées » compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA65000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-fontaine-duvignau-bousigues-dite-des-quatre-vallees-pa65000027",
+      "latitude": 43.23117425072327,
+      "longitude": 0.08317603265639419,
+      "name": {
+        "en": "Fontaine Duvignau-Bousigues dite « des Quatre-Vallées »",
+        "fr": "Fontaine Duvignau-Bousigues dite « des Quatre-Vallées »"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Haras nationaux is a distinctive architectural landmark in the city.",
+        "fr": "Haras nationaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095428",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-haras-nationaux-pa00095428",
+      "latitude": 43.2304940311144,
+      "longitude": 0.069308964649342,
+      "name": {
+        "en": "Haras nationaux",
+        "fr": "Haras nationaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôpital is a distinctive architectural landmark in the city.",
+        "fr": "Hôpital est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095429",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-hopital-pa00095429",
+      "latitude": 43.2344554235356,
+      "longitude": 0.0667699570734602,
+      "name": {
+        "en": "Hôpital",
+        "fr": "Hôpital"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin Massey is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin Massey compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095432",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-jardin-massey-pa00095432",
+      "latitude": 43.2378831937417,
+      "longitude": 0.076113723658573,
+      "name": {
+        "en": "Jardin Massey",
+        "fr": "Jardin Massey"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison natale du maréchal Foch, actuellement Musée Foch is one of the city's notable cultural landmarks.",
+        "fr": "Maison natale du maréchal Foch, actuellement Musée Foch compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095430",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-maison-natale-du-marechal-foch-actuellement-musee-foch-pa00095430",
+      "latitude": 43.2343444152794,
+      "longitude": 0.0712479970046358,
+      "name": {
+        "en": "Maison natale du maréchal Foch, actuellement Musée Foch",
+        "fr": "Maison natale du maréchal Foch, actuellement Musée Foch"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Massey is one of the city's notable cultural landmarks.",
+        "fr": "musée Massey compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0591",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tarbes-musee-massey-m0591",
+      "latitude": 43.232141,
+      "longitude": 0.073892,
+      "name": {
+        "en": "musée Massey",
+        "fr": "musée Massey"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite de la Semi is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite de la Semi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA65000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-maison-dite-de-la-semi-pa65000015",
+      "latitude": 43.2335634199636,
+      "longitude": 0.0781015124815609,
+      "name": {
+        "en": "Maison dite de la Semi",
+        "fr": "Maison dite de la Semi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095431",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tarbes-maison-pa00095431",
+      "latitude": 43.2344788597414,
+      "longitude": 0.0707443362539545,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

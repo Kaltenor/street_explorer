@@ -1,0 +1,204 @@
+{
+  "id": "montbeliard-v1",
+  "cityId": "montbeliard-fr",
+  "cityZoneId": "relation/115177",
+  "cityName": {
+    "en": "Montbéliard",
+    "fr": "Montbéliard"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101673",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-chateau-pa00101673",
+      "latitude": 47.5090219038163,
+      "longitude": 6.79947340542729,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église catholique Saint-Maimboeuf is a distinctive architectural landmark in the city.",
+        "fr": "Église catholique Saint-Maimboeuf est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101784",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-eglise-catholique-saint-maimboeuf-pa00101784",
+      "latitude": 47.5097934415898,
+      "longitude": 6.791785388915491,
+      "name": {
+        "en": "Église catholique Saint-Maimboeuf",
+        "fr": "Église catholique Saint-Maimboeuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Halles (anciennes) is a distinctive architectural landmark in the city.",
+        "fr": "Halles (anciennes) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101674",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-halles-anciennes-pa00101674",
+      "latitude": 47.5094405056651,
+      "longitude": 6.795395337868671,
+      "name": {
+        "en": "Halles (anciennes)",
+        "fr": "Halles (anciennes)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101677",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-hotel-de-ville-pa00101677",
+      "latitude": 47.5102687420533,
+      "longitude": 6.79825539022764,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts is a notable work of public art and local memory.",
+        "fr": "monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA25000098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-monument-aux-morts-pa25000098",
+      "latitude": 47.508171339998924,
+      "longitude": 6.800042435376226,
+      "name": {
+        "en": "monument aux morts",
+        "fr": "monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Beurnier-Rossel is one of the city's notable cultural landmarks.",
+        "fr": "musée Beurnier-Rossel compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0336",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montbeliard-musee-beurnier-rossel-m0336",
+      "latitude": 47.509957,
+      "longitude": 6.797684,
+      "name": {
+        "en": "musée Beurnier-Rossel",
+        "fr": "musée Beurnier-Rossel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du château is one of the city's notable cultural landmarks.",
+        "fr": "musée du château compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0337",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montbeliard-musee-du-chateau-m0337",
+      "latitude": 47.509529802783824,
+      "longitude": 6.800857556367602,
+      "name": {
+        "en": "musée du château",
+        "fr": "musée du château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101796",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-synagogue-pa00101796",
+      "latitude": 47.5073763545943,
+      "longitude": 6.79706538401646,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théatre is one of the city's notable cultural landmarks.",
+        "fr": "Théatre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101788",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-theatre-pa00101788",
+      "latitude": 47.5103291672701,
+      "longitude": 6.79857293780646,
+      "name": {
+        "en": "Théatre",
+        "fr": "Théatre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101684",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montbeliard-temple-protestant-saint-martin-pa00101684",
+      "latitude": 47.5101585075649,
+      "longitude": 6.79733773135457,
+      "name": {
+        "en": "Temple protestant Saint-Martin",
+        "fr": "Temple protestant Saint-Martin"
+      }
+    }
+  ]
+}

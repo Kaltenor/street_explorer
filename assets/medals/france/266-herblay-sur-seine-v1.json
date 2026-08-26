@@ -1,0 +1,204 @@
+{
+  "id": "herblay-sur-seine-v1",
+  "cityId": "herblay-sur-seine-fr",
+  "cityZoneId": "relation/398232",
+  "cityName": {
+    "en": "Herblay-sur-Seine",
+    "fr": "Herblay-sur-Seine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église évangélique is a distinctive architectural landmark in the city.",
+        "fr": "Église évangélique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/85299310",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "herblay-sur-seine-eglise-evangelique-way-85299310",
+      "latitude": 48.9903588,
+      "longitude": 2.1648471,
+      "name": {
+        "en": "Église évangélique",
+        "fr": "Église évangélique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/85301687",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "herblay-sur-seine-eglise-saint-martin-way-85301687",
+      "latitude": 48.9874511,
+      "longitude": 2.1601232,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "EMA - Espace André Malraux is one of the city's notable cultural landmarks.",
+        "fr": "EMA - Espace André Malraux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/459252306",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "herblay-sur-seine-ema-espace-andre-malraux-way-459252306",
+      "latitude": 48.9917234,
+      "longitude": 2.1753868,
+      "name": {
+        "en": "EMA - Espace André Malraux",
+        "fr": "EMA - Espace André Malraux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Espace Jacqueline Danno is one of the city's notable cultural landmarks.",
+        "fr": "Espace Jacqueline Danno compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1501418827",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "herblay-sur-seine-espace-jacqueline-danno-way-1501418827",
+      "latitude": 48.9982877,
+      "longitude": 2.1410618,
+      "name": {
+        "en": "Espace Jacqueline Danno",
+        "fr": "Espace Jacqueline Danno"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Herblay, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2697336",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herblay-sur-seine-herblay-q2697336",
+      "latitude": 48.990344,
+      "longitude": 2.16188,
+      "name": {
+        "en": "Herblay",
+        "fr": "Herblay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q318078",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herblay-sur-seine-herblay-sur-seine-q318078",
+      "latitude": 48.990277777,
+      "longitude": 2.165555555,
+      "name": {
+        "en": "Herblay-sur-Seine",
+        "fr": "Herblay-sur-Seine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island on the Seine in Herblay-sur-Seine, France",
+        "fr": "île sur la Seine à Herblay, France"
+      },
+      "externalIdentity": {
+        "id": "Q3593321",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herblay-sur-seine-ile-d-herblay-q3593321",
+      "latitude": 48.9886,
+      "longitude": 2.14336,
+      "name": {
+        "en": "île d'Herblay",
+        "fr": "île d'Herblay"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des Femmes Savantes is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des Femmes Savantes compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/86755819",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "herblay-sur-seine-parc-des-femmes-savantes-way-86755819",
+      "latitude": 49.0007361,
+      "longitude": 2.1248531,
+      "name": {
+        "en": "Parc des Femmes Savantes",
+        "fr": "Parc des Femmes Savantes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre Roger Barat is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre Roger Barat compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/664201492",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "herblay-sur-seine-theatre-roger-barat-node-664201492",
+      "latitude": 48.9919047,
+      "longitude": 2.1663775,
+      "name": {
+        "en": "Théâtre Roger Barat",
+        "fr": "Théâtre Roger Barat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Salle de Prière (mosquée) is a distinctive architectural landmark in the city.",
+        "fr": "Salle de Prière (mosquée) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/6192592598",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "herblay-sur-seine-salle-de-priere-mosquee-node-6192592598",
+      "latitude": 48.99623,
+      "longitude": 2.1511918,
+      "name": {
+        "en": "Salle de Prière (mosquée)",
+        "fr": "Salle de Prière (mosquée)"
+      }
+    }
+  ]
+}

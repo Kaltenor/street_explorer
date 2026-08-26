@@ -1,0 +1,204 @@
+{
+  "id": "lunel-v1",
+  "cityId": "lunel-fr",
+  "cityZoneId": "relation/277425",
+  "cityName": {
+    "en": "Lunel",
+    "fr": "Lunel"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "arènes Francis San Juan is a distinctive architectural landmark in the city.",
+        "fr": "arènes Francis San Juan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q16303862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-arenes-francis-san-juan-q16303862",
+      "latitude": 43.67356,
+      "longitude": 4.13049,
+      "name": {
+        "en": "arènes Francis San Juan",
+        "fr": "arènes Francis San Juan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Lunel, France",
+        "fr": "édifice religieux de Lunel, France"
+      },
+      "externalIdentity": {
+        "id": "Q29569453",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-eglise-notre-dame-du-lac-de-lunel-q29569453",
+      "latitude": 43.6752,
+      "longitude": 4.1337,
+      "name": {
+        "en": "église Notre-Dame-du-Lac de Lunel",
+        "fr": "église Notre-Dame-du-Lac de Lunel"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "\"Ensemble dit \"\" château des Gaucelm \"\"\" is an important witness to the city's history.",
+        "fr": "\"Ensemble dit \"\" château des Gaucelm \"\"\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lunel-ensemble-dit-chateau-des-gaucelm-pa34000017",
+      "latitude": 43.6746040976733,
+      "longitude": 4.13418283460928,
+      "name": {
+        "en": "\"Ensemble dit \"\" château des Gaucelm \"\"\"",
+        "fr": "\"Ensemble dit \"\" château des Gaucelm \"\"\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Lunel, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2277923",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-lunel-q2277923",
+      "latitude": 43.679393,
+      "longitude": 4.131062,
+      "name": {
+        "en": "Lunel",
+        "fr": "Lunel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Hérault department, France",
+        "fr": "siège municipal de Lunel, dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119316525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-mairie-de-lunel-q119316525",
+      "latitude": 43.678759499,
+      "longitude": 4.1322711,
+      "name": {
+        "en": "mairie de Lunel",
+        "fr": "mairie de Lunel"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument de la liberté is a notable work of public art and local memory.",
+        "fr": "sculpture de Frédéric-Auguste Bartholdi"
+      },
+      "externalIdentity": {
+        "id": "Q106878111",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-monument-de-la-liberte-q106878111",
+      "latitude": 43.675716666,
+      "longitude": 4.131875,
+      "name": {
+        "en": "Monument de la liberté",
+        "fr": "Monument de la liberté"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q106695295",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-musee-de-la-tour-des-prisons-q106695295",
+      "latitude": 43.674722222,
+      "longitude": 4.134222222,
+      "name": {
+        "en": "musée de la Tour des Prisons",
+        "fr": "musée de la Tour des Prisons"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Louis Médard is one of the city's notable cultural landmarks.",
+        "fr": "musée Louis Médard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1205",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lunel-musee-louis-medard-m1205",
+      "latitude": 43.675458,
+      "longitude": 4.133656,
+      "name": {
+        "en": "musée Louis Médard",
+        "fr": "musée Louis Médard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Hérault, France",
+        "fr": "pont de Lunel sur le Vidourle"
+      },
+      "externalIdentity": {
+        "id": "Q123138687",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-pont-de-lunel-q123138687",
+      "latitude": 43.692917509,
+      "longitude": 4.164210474,
+      "name": {
+        "en": "pont de Lunel",
+        "fr": "pont de Lunel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc du Vidourle is a distinctive architectural landmark in the city.",
+        "fr": "viaduc ferroviaire en France"
+      },
+      "externalIdentity": {
+        "id": "Q109368520",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lunel-viaduc-du-vidourle-q109368520",
+      "latitude": 43.703555447,
+      "longitude": 4.163409365,
+      "name": {
+        "en": "viaduc du Vidourle",
+        "fr": "viaduc du Vidourle"
+      }
+    }
+  ]
+}

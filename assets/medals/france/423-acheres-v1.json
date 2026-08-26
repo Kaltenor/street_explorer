@@ -1,0 +1,204 @@
+{
+  "id": "acheres-v1",
+  "cityId": "acheres-fr",
+  "cityZoneId": "relation/75458",
+  "cityName": {
+    "en": "Achères",
+    "fr": "Achères"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future station of the Île-de-France line 13 Express",
+        "fr": "future station de la ligne 13 Express d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q3095585",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "acheres-acheres-chene-feuillu-q3095585",
+      "latitude": 48.949380191,
+      "longitude": 2.076641264,
+      "name": {
+        "en": "Achères - Chêne Feuillu",
+        "fr": "Achères - Chêne Feuillu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q245504",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "acheres-acheres-q245504",
+      "latitude": 48.962222222,
+      "longitude": 2.068611111,
+      "name": {
+        "en": "Achères",
+        "fr": "Achères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Achères, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2014875",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "acheres-acheres-ville-q2014875",
+      "latitude": 48.97,
+      "longitude": 2.0775,
+      "name": {
+        "en": "Achères-Ville",
+        "fr": "Achères-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41801950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "acheres-eglise-saint-martin-d-acheres-q41801950",
+      "latitude": 48.96041,
+      "longitude": 2.06904,
+      "name": {
+        "en": "église Saint-Martin d'Achères",
+        "fr": "église Saint-Martin d'Achères"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin d'Amarante is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin d'Amarante compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/636677004",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "acheres-jardin-d-amarante-way-636677004",
+      "latitude": 48.9606201,
+      "longitude": 2.0698161,
+      "name": {
+        "en": "Jardin d'Amarante",
+        "fr": "Jardin d'Amarante"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin d'Herblay is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin d'Herblay compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/76114302",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "acheres-jardin-d-herblay-way-76114302",
+      "latitude": 48.9836246,
+      "longitude": 2.1566069,
+      "name": {
+        "en": "Jardin d'Herblay",
+        "fr": "Jardin d'Herblay"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux Morts is a notable work of public art and local memory.",
+        "fr": "Monument aux Morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "node/6018464188",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "acheres-monument-aux-morts-node-6018464188",
+      "latitude": 48.962952,
+      "longitude": 2.0711311,
+      "name": {
+        "en": "Monument aux Morts",
+        "fr": "Monument aux Morts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le Sax is a distinctive architectural landmark in the city.",
+        "fr": "Le Sax est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/110339359",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "acheres-le-sax-way-110339359",
+      "latitude": 48.9588843,
+      "longitude": 2.0656757,
+      "name": {
+        "en": "Le Sax",
+        "fr": "Le Sax"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Yvelines department, France",
+        "fr": "siège municipal d'Achères, dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119297243",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "acheres-mairie-d-acheres-q119297243",
+      "latitude": 48.9608014,
+      "longitude": 2.069791,
+      "name": {
+        "en": "mairie d'Achères",
+        "fr": "mairie d'Achères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée de la Paix is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée de la Paix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/110340141",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "acheres-mosquee-de-la-paix-way-110340141",
+      "latitude": 48.9656941,
+      "longitude": 2.0571748,
+      "name": {
+        "en": "Mosquée de la Paix",
+        "fr": "Mosquée de la Paix"
+      }
+    }
+  ]
+}

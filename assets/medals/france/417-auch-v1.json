@@ -1,0 +1,204 @@
+{
+  "id": "auch-v1",
+  "cityId": "auch-fr",
+  "cityZoneId": "relation/128184",
+  "cityName": {
+    "en": "Auch",
+    "fr": "Auch"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Cordeliers is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Cordeliers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094706",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-ancien-couvent-des-cordeliers-pa00094706",
+      "latitude": 43.6474374571695,
+      "longitude": 0.584478862595098,
+      "name": {
+        "en": "Ancien couvent des Cordeliers",
+        "fr": "Ancien couvent des Cordeliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Marie is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Marie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094702",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-cathedrale-sainte-marie-pa00094702",
+      "latitude": 43.6461836826379,
+      "longitude": 0.586038033891815,
+      "name": {
+        "en": "Cathédrale Sainte-Marie",
+        "fr": "Cathédrale Sainte-Marie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Marin is an important witness to the city's history.",
+        "fr": "Château de Marin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094703",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-chateau-de-marin-pa00094703",
+      "latitude": 43.6306628271533,
+      "longitude": 0.6088626905939432,
+      "name": {
+        "en": "Château de Marin",
+        "fr": "Château de Marin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Saint-Cricq is an important witness to the city's history.",
+        "fr": "Château de Saint-Cricq est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094704",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-chateau-de-saint-cricq-pa00094704",
+      "latitude": 43.6624801623696,
+      "longitude": 0.631585388464909,
+      "name": {
+        "en": "Château de Saint-Cricq",
+        "fr": "Château de Saint-Cricq"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ferme fortifiée de Peypoc is an important witness to the city's history.",
+        "fr": "Ferme fortifiée de Peypoc est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125585",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-ferme-fortifiee-de-peypoc-pa00125585",
+      "latitude": 43.68469385555031,
+      "longitude": 0.616594215700766,
+      "name": {
+        "en": "Ferme fortifiée de Peypoc",
+        "fr": "Ferme fortifiée de Peypoc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Halle aux grains is a distinctive architectural landmark in the city.",
+        "fr": "Halle aux grains est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094709",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-halle-aux-grains-pa00094709",
+      "latitude": 43.6480230474421,
+      "longitude": 0.584880790577424,
+      "name": {
+        "en": "Halle aux grains",
+        "fr": "Halle aux grains"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094710",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-hotel-de-ville-pa00094710",
+      "latitude": 43.6468995291582,
+      "longitude": 0.583102632345824,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Amériques - Auch is one of the city's notable cultural landmarks.",
+        "fr": "musée des Amériques - Auch compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0569",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "auch-musee-des-ameriques-auch-m0569",
+      "latitude": 43.647171,
+      "longitude": 0.587482,
+      "name": {
+        "en": "musée des Amériques - Auch",
+        "fr": "musée des Amériques - Auch"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Sénéchal ou d'Armagnac is an important witness to the city's history.",
+        "fr": "Tour du Sénéchal ou d'Armagnac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094720",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-tour-du-senechal-ou-d-armagnac-pa00094720",
+      "latitude": 43.6458992385802,
+      "longitude": 0.586721519979941,
+      "name": {
+        "en": "Tour du Sénéchal ou d'Armagnac",
+        "fr": "Tour du Sénéchal ou d'Armagnac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du 15e siècle is a distinctive architectural landmark in the city.",
+        "fr": "Maison du 15e siècle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094715",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auch-maison-du-15e-siecle-pa00094715",
+      "latitude": 43.646786662993,
+      "longitude": 0.58486701339152,
+      "name": {
+        "en": "Maison du 15e siècle",
+        "fr": "Maison du 15e siècle"
+      }
+    }
+  ]
+}

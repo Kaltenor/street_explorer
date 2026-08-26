@@ -1,0 +1,204 @@
+{
+  "id": "sete-v1",
+  "cityId": "sete-fr",
+  "cityZoneId": "relation/255450",
+  "cityName": {
+    "en": "Sète",
+    "fr": "Sète"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciens entrepôts Dubonnet is a distinctive architectural landmark in the city.",
+        "fr": "Anciens entrepôts Dubonnet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000074",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-anciens-entrepots-dubonnet-pa34000074",
+      "latitude": 43.415668282032,
+      "longitude": 3.7174295413947305,
+      "name": {
+        "en": "Anciens entrepôts Dubonnet",
+        "fr": "Anciens entrepôts Dubonnet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église décanale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église décanale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103726",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-eglise-decanale-saint-louis-pa00103726",
+      "latitude": 43.3996024175722,
+      "longitude": 3.6944305444803005,
+      "name": {
+        "en": "Église décanale Saint-Louis",
+        "fr": "Église décanale Saint-Louis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Richelieu is an important witness to the city's history.",
+        "fr": "Fort Richelieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-fort-richelieu-pa34000008",
+      "latitude": 43.3970847639595,
+      "longitude": 3.69234810907391,
+      "name": {
+        "en": "Fort Richelieu",
+        "fr": "Fort Richelieu"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA34000125",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-monument-aux-morts-de-la-guerre-de-1914-1918-pa34000125",
+      "latitude": 43.4038104606056,
+      "longitude": 3.6924781448836415,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914-1918",
+        "fr": "Monument aux morts de la guerre de 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Paul Valéry is one of the city's notable cultural landmarks.",
+        "fr": "musée Paul Valéry compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0484",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "sete-musee-paul-valery-m0484",
+      "latitude": 43.395512,
+      "longitude": 3.691204,
+      "name": {
+        "en": "musée Paul Valéry",
+        "fr": "musée Paul Valéry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Consulaire is a distinctive architectural landmark in the city.",
+        "fr": "Palais Consulaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000132",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-palais-consulaire-pa34000132",
+      "latitude": 43.40648847900316,
+      "longitude": 3.6972851985363615,
+      "name": {
+        "en": "Palais Consulaire",
+        "fr": "Palais Consulaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Phare du Mont-Saint-Clair is a distinctive architectural landmark in the city.",
+        "fr": "Phare du Mont-Saint-Clair est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-phare-du-mont-saint-clair-pa34000085",
+      "latitude": 43.3956491239374,
+      "longitude": 3.6895553061690305,
+      "name": {
+        "en": "Phare du Mont-Saint-Clair",
+        "fr": "Phare du Mont-Saint-Clair"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal Molière is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal Molière compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-theatre-municipal-moliere-pa34000043",
+      "latitude": 43.4097179315037,
+      "longitude": 3.6983633469120702,
+      "name": {
+        "en": "Théâtre municipal Molière",
+        "fr": "Théâtre municipal Molière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite Redoute du Castellas is an important witness to the city's history.",
+        "fr": "Tour dite Redoute du Castellas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103727",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-tour-dite-redoute-du-castellas-pa00103727",
+      "latitude": 43.3361957528958,
+      "longitude": 3.57607390949463,
+      "name": {
+        "en": "Tour dite Redoute du Castellas",
+        "fr": "Tour dite Redoute du Castellas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa de Pierre Soulages is a distinctive architectural landmark in the city.",
+        "fr": "Villa de Pierre Soulages est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000129",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sete-villa-de-pierre-soulages-pa34000129",
+      "latitude": 43.394597904376354,
+      "longitude": 3.6898044335320184,
+      "name": {
+        "en": "Villa de Pierre Soulages",
+        "fr": "Villa de Pierre Soulages"
+      }
+    }
+  ]
+}

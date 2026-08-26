@@ -1,0 +1,394 @@
+{
+  "id": "argenteuil-v1",
+  "cityId": "argenteuil-fr",
+  "cityZoneId": "relation/103245",
+  "cityName": {
+    "en": "Argenteuil",
+    "fr": "Argenteuil"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Allée couverte des Déserts is an important witness to the city's history.",
+        "fr": "Allée couverte des Déserts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079977",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-allee-couverte-des-deserts-pa00079977",
+      "latitude": 48.9522262464595,
+      "longitude": 2.28261178528263,
+      "name": {
+        "en": "Allée couverte des Déserts",
+        "fr": "Allée couverte des Déserts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Notre-Dame d'Argenteuil is an important witness to the city's history.",
+        "fr": "Ancien abbaye Notre-Dame d'Argenteuil est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA95000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-ancien-abbaye-notre-dame-d-argenteuil-pa95000001",
+      "latitude": 48.940877870583705,
+      "longitude": 2.24852256884527,
+      "name": {
+        "en": "Ancien abbaye Notre-Dame d'Argenteuil",
+        "fr": "Ancien abbaye Notre-Dame d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Argenteuil, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q16303866",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-argenteuil-grande-ceinture-q16303866",
+      "latitude": 48.9489,
+      "longitude": 2.25796,
+      "name": {
+        "en": "Argenteuil-Grande-Ceinture",
+        "fr": "Argenteuil-Grande-Ceinture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Argenteuil, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-argenteuil-q3095674",
+      "latitude": 48.946944444,
+      "longitude": 2.257222222,
+      "name": {
+        "en": "Argenteuil",
+        "fr": "Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Argenteuil",
+        "fr": "église d'Argenteuil"
+      },
+      "externalIdentity": {
+        "id": "Q22442779",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-basilique-saint-denys-d-argenteuil-q22442779",
+      "latitude": 48.942462,
+      "longitude": 2.246492,
+      "name": {
+        "en": "basilique Saint-Denys d'Argenteuil",
+        "fr": "basilique Saint-Denys d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Val-d'Oise, in France",
+        "fr": "chapelle située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2315515",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-chapelle-saint-jean-d-argenteuil-q2315515",
+      "latitude": 48.94115639,
+      "longitude": 2.24846083,
+      "name": {
+        "en": "chapelle Saint-Jean d'Argenteuil",
+        "fr": "chapelle Saint-Jean d'Argenteuil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Marais is an important witness to the city's history.",
+        "fr": "Château du Marais est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079979",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "argenteuil-chateau-du-marais-pa00079979",
+      "latitude": 48.9352889914199,
+      "longitude": 2.23047733987094,
+      "name": {
+        "en": "Château du Marais",
+        "fr": "Château du Marais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38387696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-eglise-evangelique-reformee-d-argenteuil-q38387696",
+      "latitude": 48.9493,
+      "longitude": 2.24698,
+      "name": {
+        "en": "église évangélique réformée d'Argenteuil",
+        "fr": "église évangélique réformée d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647519",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-eglise-notre-dame-de-lourdes-d-argenteuil-q29647519",
+      "latitude": 48.94018,
+      "longitude": 2.23328,
+      "name": {
+        "en": "église Notre-Dame-de-Lourdes d'Argenteuil",
+        "fr": "église Notre-Dame-de-Lourdes d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-eglise-saint-ferdinand-d-argenteuil-q29647516",
+      "latitude": 48.95484,
+      "longitude": 2.28601,
+      "name": {
+        "en": "église Saint-Ferdinand d'Argenteuil",
+        "fr": "église Saint-Ferdinand d'Argenteuil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Paul-Vaillant-Couturier is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Argenteuil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920396",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-fontaine-wallace-rue-paul-vaillant-couturier-q128920396",
+      "latitude": 48.94376,
+      "longitude": 2.24991,
+      "name": {
+        "en": "fontaine Wallace, rue Paul-Vaillant-Couturier",
+        "fr": "fontaine Wallace, rue Paul-Vaillant-Couturier"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "house of Claude Monet at Argenteuil, museum",
+        "fr": "maison impressionniste compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q118868954",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-maison-impressionniste-q118868954",
+      "latitude": 48.945599499,
+      "longitude": 2.257407445,
+      "name": {
+        "en": "maison impressionniste",
+        "fr": "maison impressionniste"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136041553",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-monument-aux-morts-d-argenteuil-q136041553",
+      "latitude": 48.94496,
+      "longitude": 2.24039,
+      "name": {
+        "en": "monument aux morts d'Argenteuil",
+        "fr": "monument aux morts d'Argenteuil"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieil Argenteuil is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieil Argenteuil compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0432",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "argenteuil-musee-du-vieil-argenteuil-m0432",
+      "latitude": 48.946909,
+      "longitude": 2.249331,
+      "name": {
+        "en": "musée du vieil Argenteuil",
+        "fr": "musée du vieil Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Argenteuil, France",
+        "fr": "édifice d'Argenteuil, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412698",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-hotel-de-ville-d-argenteuil-q83412698",
+      "latitude": 48.9476,
+      "longitude": 2.2489,
+      "name": {
+        "en": "hôtel de ville d'Argenteuil",
+        "fr": "hôtel de ville d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26792296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-mosquee-al-ihsan-d-argenteuil-q26792296",
+      "latitude": 48.952184,
+      "longitude": 2.234931,
+      "name": {
+        "en": "mosquée Al Ihsan d'Argenteuil",
+        "fr": "mosquée Al Ihsan d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q14628936",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-pont-aqueduc-de-colombes-q14628936",
+      "latitude": 48.9331,
+      "longitude": 2.24167,
+      "name": {
+        "en": "pont-aqueduc de Colombes",
+        "fr": "pont-aqueduc de Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "road bridge over the River Seine in France",
+        "fr": "pont sur la Seine"
+      },
+      "externalIdentity": {
+        "id": "Q1306697",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-pont-d-argenteuil-q1306697",
+      "latitude": 48.940275,
+      "longitude": 2.255003,
+      "name": {
+        "en": "pont d'Argenteuil",
+        "fr": "pont d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Argenteuil, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2498496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-val-d-argenteuil-q2498496",
+      "latitude": 48.950385,
+      "longitude": 2.231329,
+      "name": {
+        "en": "Val d'Argenteuil",
+        "fr": "Val d'Argenteuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont routier sur la Seine reliant Argenteuil à Gennevilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3556573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "argenteuil-viaduc-de-gennevilliers-q3556573",
+      "latitude": 48.9492,
+      "longitude": 2.28035,
+      "name": {
+        "en": "viaduc de Gennevilliers",
+        "fr": "viaduc de Gennevilliers"
+      }
+    }
+  ]
+}

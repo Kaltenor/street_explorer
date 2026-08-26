@@ -1,0 +1,204 @@
+{
+  "id": "lievin-v1",
+  "cityId": "lievin-fr",
+  "cityZoneId": "relation/1175407",
+  "cityName": {
+    "en": "Liévin",
+    "fr": "Liévin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "event venue",
+        "fr": "complexe sportif polyvalent et événementiel"
+      },
+      "externalIdentity": {
+        "id": "Q2860822",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-arena-stade-couvert-de-lievin-q2860822",
+      "latitude": 50.411658,
+      "longitude": 2.764918,
+      "name": {
+        "en": "Arena stade couvert de Liévin",
+        "fr": "Arena stade couvert de Liévin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "conservation and research center of the Louvre Museum in Liévin, France",
+        "fr": "centre de conservation et de recherche du musée du Louvre situé à Liévin"
+      },
+      "externalIdentity": {
+        "id": "Q18413921",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-centre-de-conservation-du-louvre-q18413921",
+      "latitude": 50.4227,
+      "longitude": 2.7786,
+      "name": {
+        "en": "Centre de conservation du Louvre",
+        "fr": "Centre de conservation du Louvre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Pas-de-Calais, in France",
+        "fr": "cimetière situé dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2329109",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-cimetiere-communal-de-lievin-extension-q2329109",
+      "latitude": 50.412066,
+      "longitude": 2.776594,
+      "name": {
+        "en": "cimetière communal de Lievin, extension",
+        "fr": "cimetière communal de Lievin, extension"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pas-de-Calais, in France",
+        "fr": "église située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38386113",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-eglise-notre-dame-de-grace-de-lievin-q38386113",
+      "latitude": 50.41938,
+      "longitude": 2.798061,
+      "name": {
+        "en": "église Notre-Dame-de-Grâce de Liévin",
+        "fr": "église Notre-Dame-de-Grâce de Liévin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pas-de-Calais, in France",
+        "fr": "église située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38412703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-eglise-saint-ame-de-lievin-q38412703",
+      "latitude": 50.42565,
+      "longitude": 2.77761,
+      "name": {
+        "en": "église Saint-Amé de Liévin",
+        "fr": "église Saint-Amé de Liévin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pas-de-Calais, in France",
+        "fr": "église située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60388226",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-eglise-saint-martin-de-lievin-q60388226",
+      "latitude": 50.41668,
+      "longitude": 2.77772,
+      "name": {
+        "en": "église Saint-Martin de Liévin",
+        "fr": "église Saint-Martin de Liévin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Liévin CEN is a distinctive architectural landmark in the city.",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q61741595",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-lievin-cen-q61741595",
+      "latitude": 50.420126,
+      "longitude": 2.77286,
+      "name": {
+        "en": "Liévin CEN",
+        "fr": "Liévin CEN"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Liévin, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2624678",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-lievin-q2624678",
+      "latitude": 50.434168,
+      "longitude": 2.771763,
+      "name": {
+        "en": "Liévin",
+        "fr": "Liévin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sanctuary located in Pas-de-Calais, in France",
+        "fr": "institution religieuse située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q365027",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lievin-riaumont-q365027",
+      "latitude": 50.41648,
+      "longitude": 2.78732,
+      "name": {
+        "en": "Riaumont",
+        "fr": "Riaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000095",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lievin-temple-protestant-pa62000095",
+      "latitude": 50.421968179462205,
+      "longitude": 2.78203673244155,
+      "name": {
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
+      }
+    }
+  ]
+}

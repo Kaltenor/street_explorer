@@ -1,0 +1,204 @@
+{
+  "id": "montereau-fault-yonne-v1",
+  "cityId": "montereau-fault-yonne-fr",
+  "cityZoneId": "relation/1383106",
+  "cityName": {
+    "en": "Montereau-Fault-Yonne",
+    "fr": "Montereau-Fault-Yonne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) is an important witness to the city's history.",
+        "fr": "Château (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087116",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montereau-fault-yonne-chateau-ancien-pa00087116",
+      "latitude": 48.3878726048922,
+      "longitude": 2.96011238437077,
+      "name": {
+        "en": "Château (ancien)",
+        "fr": "Château (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Montereau-Fault-Yonne is an important witness to the city's history.",
+        "fr": "château à Montereau-Fault-Yonne (Seine-et-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22922910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-chateau-de-montereau-fault-yonne-q22922910",
+      "latitude": 48.38777283,
+      "longitude": 2.96026445,
+      "name": {
+        "en": "château de Montereau-Fault-Yonne",
+        "fr": "château de Montereau-Fault-Yonne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Montereau-Fault-Yonne, France",
+        "fr": "demeure à Montereau-Fault-Yonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q124499828",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-chateau-des-amendes-q124499828",
+      "latitude": 48.3852,
+      "longitude": 2.95131,
+      "name": {
+        "en": "château des Amendes",
+        "fr": "château des Amendes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Montereau-Fault-Yonne, France",
+        "fr": "édifice religieux catholique à Montereau-Fault-Yonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2983923",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-collegiale-notre-dame-et-saint-loup-de-montereau-fault-yonne-q2983923",
+      "latitude": 48.3866,
+      "longitude": 2.9581,
+      "name": {
+        "en": "collégiale Notre-Dame-et-Saint-Loup de Montereau-Fault-Yonne",
+        "fr": "collégiale Notre-Dame-et-Saint-Loup de Montereau-Fault-Yonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087117",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montereau-fault-yonne-eglise-notre-dame-pa00087117",
+      "latitude": 48.3866605868286,
+      "longitude": 2.95821367908772,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "municipal building in Montereau-Fault-Yonne, Seine-et-Marne, France",
+        "fr": "hôtel de ville en France"
+      },
+      "externalIdentity": {
+        "id": "Q83890174",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-hotel-de-ville-de-montereau-fault-yonne-q83890174",
+      "latitude": 48.384769,
+      "longitude": 2.956111,
+      "name": {
+        "en": "hôtel de ville de Montereau-Fault-Yonne",
+        "fr": "hôtel de ville de Montereau-Fault-Yonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Montereau-Fault-Yonne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2117756",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-montereau-q2117756",
+      "latitude": 48.379444,
+      "longitude": 2.943056,
+      "name": {
+        "en": "Montereau",
+        "fr": "Montereau"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136063976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-monument-aux-morts-de-montereau-fault-yonne-q136063976",
+      "latitude": 48.3827185,
+      "longitude": 2.9541568,
+      "name": {
+        "en": "monument aux morts de Montereau-Fault-Yonne",
+        "fr": "monument aux morts de Montereau-Fault-Yonne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "statue by Charles-Pierre-Victor Pajol in Montereau-Fault-Yonne, France",
+        "fr": "statue de Charles-Pierre-Victor Pajol à Montereau-Fault-Yonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q20800319",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-statue-equestre-de-napoleon-q20800319",
+      "latitude": 48.3883,
+      "longitude": 2.9595,
+      "name": {
+        "en": "statue équestre de Napoléon",
+        "fr": "statue équestre de Napoléon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19921943",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montereau-fault-yonne-mosquee-de-montereau-fault-yonne-q19921943",
+      "latitude": 48.392866,
+      "longitude": 2.952492,
+      "name": {
+        "en": "mosquée de Montereau-Fault-Yonne",
+        "fr": "mosquée de Montereau-Fault-Yonne"
+      }
+    }
+  ]
+}

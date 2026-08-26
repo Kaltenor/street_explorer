@@ -1,0 +1,204 @@
+{
+  "id": "bois-colombes-v1",
+  "cityId": "bois-colombes-fr",
+  "cityZoneId": "relation/91746",
+  "cityName": {
+    "en": "Bois-Colombes",
+    "fr": "Bois-Colombes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "railway station in Bois-Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2519406",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-bois-colombes-q2519406",
+      "latitude": 48.913778,
+      "longitude": 2.272217,
+      "name": {
+        "en": "Bois-Colombes",
+        "fr": "Bois-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "carrefour des Quatre-Routes is a distinctive architectural landmark in the city.",
+        "fr": "voie de circulation entre Asnières-sur-Seine, Bois-Colombes et Colombes"
+      },
+      "externalIdentity": {
+        "id": "Q16536243",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-carrefour-des-quatre-routes-q16536243",
+      "latitude": 48.92682,
+      "longitude": 2.27332,
+      "name": {
+        "en": "carrefour des Quatre-Routes",
+        "fr": "carrefour des Quatre-Routes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21027141",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-eglise-notre-dame-de-bon-secours-de-bois-colombes-q21027141",
+      "latitude": 48.914007,
+      "longitude": 2.270678,
+      "name": {
+        "en": "église Notre-Dame-de-Bon-Secours de Bois-Colombes",
+        "fr": "église Notre-Dame-de-Bon-Secours de Bois-Colombes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place de la Belle Hispano is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Bois-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-fontaine-wallace-place-de-la-belle-hispano-q128920399",
+      "latitude": 48.90826,
+      "longitude": 2.26104,
+      "name": {
+        "en": "fontaine Wallace, place de la Belle Hispano",
+        "fr": "fontaine Wallace, place de la Belle Hispano"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bois-Colombes, France",
+        "fr": "édifice de Bois-Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-hotel-de-ville-de-bois-colombes-q83412706",
+      "latitude": 48.9143,
+      "longitude": 2.2678,
+      "name": {
+        "en": "hôtel de ville de Bois-Colombes",
+        "fr": "hôtel de ville de Bois-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Garenne-Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2382862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-les-vallees-q2382862",
+      "latitude": 48.913489,
+      "longitude": 2.257937,
+      "name": {
+        "en": "Les Vallées",
+        "fr": "Les Vallées"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Première Guerre mondiale de Bois-Colombes is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Bois-Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602286",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-monument-aux-morts-de-la-premiere-guerre-mondiale-de-bois-colombes-q96602286",
+      "latitude": 48.9158,
+      "longitude": 2.26808,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale de Bois-Colombes",
+        "fr": "monument aux morts de la Première Guerre mondiale de Bois-Colombes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "street in Bois-Colombes, France",
+        "fr": "villa de Bois-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q114860706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-villa-du-chateau-q114860706",
+      "latitude": 48.91415984,
+      "longitude": 2.26944194,
+      "name": {
+        "en": "villa du Château",
+        "fr": "villa du Château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa in Bois-Colombes, arrondissement of Nanterre, Hauts-de-Seine, Île-de-France, France",
+        "fr": "villa de Bois-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q125340488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-villa-fortunee-q125340488",
+      "latitude": 48.91809,
+      "longitude": 2.27119,
+      "name": {
+        "en": "villa Fortunée",
+        "fr": "villa Fortunée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Bois-Colombes, France",
+        "fr": "place de Bois-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109706124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bois-colombes-place-de-la-republique-q109706124",
+      "latitude": 48.915,
+      "longitude": 2.268611111,
+      "name": {
+        "en": "place de la République",
+        "fr": "place de la République"
+      }
+    }
+  ]
+}

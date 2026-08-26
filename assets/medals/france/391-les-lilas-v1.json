@@ -1,0 +1,204 @@
+{
+  "id": "les-lilas-v1",
+  "cityId": "les-lilas-fr",
+  "cityZoneId": "relation/130544",
+  "cityName": {
+    "en": "Les Lilas",
+    "fr": "Les Lilas"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q78391221",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-cimetiere-communal-des-lilas-q78391221",
+      "latitude": 48.8822304,
+      "longitude": 2.4125561,
+      "name": {
+        "en": "cimetière communal des Lilas",
+        "fr": "cimetière communal des Lilas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église des Lilas"
+      },
+      "externalIdentity": {
+        "id": "Q30016928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-eglise-notre-dame-du-rosaire-des-lilas-q30016928",
+      "latitude": 48.87988,
+      "longitude": 2.41461,
+      "name": {
+        "en": "église Notre-Dame-du-Rosaire des Lilas",
+        "fr": "église Notre-Dame-du-Rosaire des Lilas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, cité Saint-Germain is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située aux Lilas, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920459",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-fontaine-wallace-cite-saint-germain-q128920459",
+      "latitude": 48.883105,
+      "longitude": 2.41631,
+      "name": {
+        "en": "fontaine Wallace, cité Saint-Germain",
+        "fr": "fontaine Wallace, cité Saint-Germain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort situé aux Lilas, en France"
+      },
+      "externalIdentity": {
+        "id": "Q803523",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-fort-de-romainville-q803523",
+      "latitude": 48.885126,
+      "longitude": 2.422718,
+      "name": {
+        "en": "fort de Romainville",
+        "fr": "fort de Romainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Les Lilas, France",
+        "fr": "hôtel de ville, Les Lilas, France"
+      },
+      "externalIdentity": {
+        "id": "Q33294271",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-hotel-de-ville-des-lilas-q33294271",
+      "latitude": 48.881182,
+      "longitude": 2.419902,
+      "name": {
+        "en": "hôtel de ville des Lilas",
+        "fr": "hôtel de ville des Lilas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "project of outdoor and leisure center in French region of in Île-de-France",
+        "fr": "projet de base de plein air et de loisirs en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q48752145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-ile-de-loisirs-de-la-corniche-des-forts-q48752145",
+      "latitude": 48.8879,
+      "longitude": 2.4317,
+      "name": {
+        "en": "Île de loisirs de la Corniche des Forts",
+        "fr": "Île de loisirs de la Corniche des Forts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "public high school",
+        "fr": "lycée des Lilas, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28155499",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-lycee-paul-robert-q28155499",
+      "latitude": 48.88283,
+      "longitude": 2.4223,
+      "name": {
+        "en": "lycée Paul Robert",
+        "fr": "lycée Paul Robert"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bicycle-sharing station of Vélib’ Métropole network",
+        "fr": "station de vélopartage du réseau Vélib' Métropole"
+      },
+      "externalIdentity": {
+        "id": "Q86256533",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-porte-des-lilas-faidherbe-q86256533",
+      "latitude": 48.878618556,
+      "longitude": 2.412032783,
+      "name": {
+        "en": "Porte des Lilas - Faidherbe",
+        "fr": "Porte des Lilas - Faidherbe"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre and cinema in Les Lilas, France",
+        "fr": "cinéma aux Lilas, France"
+      },
+      "externalIdentity": {
+        "id": "Q17347237",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-theatre-du-garde-chasse-q17347237",
+      "latitude": 48.8817,
+      "longitude": 2.42002,
+      "name": {
+        "en": "théâtre du Garde-Chasse",
+        "fr": "théâtre du Garde-Chasse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour hertzienne de Romainville is an important witness to the city's history.",
+        "fr": "tour de télévision située au Lilas, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1407323",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-lilas-tour-hertzienne-de-romainville-q1407323",
+      "latitude": 48.8851,
+      "longitude": 2.4222,
+      "name": {
+        "en": "tour hertzienne de Romainville",
+        "fr": "tour hertzienne de Romainville"
+      }
+    }
+  ]
+}

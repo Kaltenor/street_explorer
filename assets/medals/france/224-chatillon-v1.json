@@ -1,0 +1,204 @@
+{
+  "id": "chatillon-v1",
+  "cityId": "chatillon-fr",
+  "cityZoneId": "relation/37020",
+  "cityName": {
+    "en": "Châtillon",
+    "fr": "Châtillon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame du Calvaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame du Calvaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatillon-eglise-notre-dame-du-calvaire-pa92000012",
+      "latitude": 48.8077746779637,
+      "longitude": 2.28425208832059,
+      "name": {
+        "en": "Église Notre-Dame du Calvaire",
+        "fr": "Église Notre-Dame du Calvaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatillon-eglise-pa00088090",
+      "latitude": 48.7998761238178,
+      "longitude": 2.29015842090976,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18120469",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-eglise-saint-philippe-et-saint-jacques-de-chatillon-q18120469",
+      "latitude": 48.799857,
+      "longitude": 2.290231,
+      "name": {
+        "en": "église Saint-Philippe-et-Saint-Jacques de Châtillon",
+        "fr": "église Saint-Philippe-et-Saint-Jacques de Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "folie Desmares is a distinctive architectural landmark in the city.",
+        "fr": "domaine à Châtillon (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q16008573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-folie-desmares-q16008573",
+      "latitude": 48.801122,
+      "longitude": 2.28992,
+      "name": {
+        "en": "folie Desmares",
+        "fr": "folie Desmares"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Châtillon is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Châtillon, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-monument-aux-morts-de-chatillon-q96602287",
+      "latitude": 48.80456,
+      "longitude": 2.29021,
+      "name": {
+        "en": "monument aux morts de Châtillon",
+        "fr": "monument aux morts de Châtillon"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Guerre de 1870 du cimetière de Châtillon is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Châtillon, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-monument-aux-morts-de-la-guerre-de-1870-du-cimetiere-de-chatillon-q96602182",
+      "latitude": 48.80122,
+      "longitude": 2.28305,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1870 du cimetière de Châtillon",
+        "fr": "monument aux morts de la Guerre de 1870 du cimetière de Châtillon"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Châtillon is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Châtillon, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602188",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-monument-aux-morts-de-la-seconde-guerre-mondiale-de-chatillon-q96602188",
+      "latitude": 48.80132,
+      "longitude": 2.28226,
+      "name": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Châtillon",
+        "fr": "monument aux morts de la Seconde Guerre mondiale de Châtillon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T6 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q61082449",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-parc-andre-malraux-q61082449",
+      "latitude": 48.800833333,
+      "longitude": 2.283333333,
+      "name": {
+        "en": "Parc André Malraux",
+        "fr": "Parc André Malraux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Châtillon, France",
+        "fr": "parc situé à Châtillon, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601853",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-parc-des-sarments-q96601853",
+      "latitude": 48.80156,
+      "longitude": 2.28951,
+      "name": {
+        "en": "parc des Sarments",
+        "fr": "parc des Sarments"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Châtillon, France",
+        "fr": "édifice de Châtillon, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409704",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chatillon-hotel-de-ville-de-chatillon-q83409704",
+      "latitude": 48.799679,
+      "longitude": 2.289769,
+      "name": {
+        "en": "hôtel de ville de Châtillon",
+        "fr": "hôtel de ville de Châtillon"
+      }
+    }
+  ]
+}

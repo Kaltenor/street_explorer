@@ -1,0 +1,394 @@
+{
+  "id": "saint-pierre-v1",
+  "cityId": "saint-pierre-fr",
+  "cityZoneId": "relation/315484",
+  "cityName": {
+    "en": "Saint-Pierre",
+    "fr": "Saint-Pierre"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien gare de chemin de fer is a distinctive architectural landmark in the city.",
+        "fr": "Ancien gare de chemin de fer est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400121",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-ancien-gare-de-chemin-de-fer-pa97400121",
+      "latitude": -21.343780957234003,
+      "longitude": 55.4742861857626,
+      "name": {
+        "en": "Ancien gare de chemin de fer",
+        "fr": "Ancien gare de chemin de fer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien gendarmerie is a distinctive architectural landmark in the city.",
+        "fr": "Ancien gendarmerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400083",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-ancien-gendarmerie-pa97400083",
+      "latitude": -21.3428589243093,
+      "longitude": 55.4773712683514,
+      "name": {
+        "en": "Ancien gendarmerie",
+        "fr": "Ancien gendarmerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien tribunal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien tribunal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400082",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-ancien-tribunal-pa97400082",
+      "latitude": -21.3387148039423,
+      "longitude": 55.475011450783,
+      "name": {
+        "en": "Ancien tribunal",
+        "fr": "Ancien tribunal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien usine de Pierrefonds is a distinctive architectural landmark in the city.",
+        "fr": "Ancien usine de Pierrefonds est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-ancien-usine-de-pierrefonds-pa97400036",
+      "latitude": -21.3021797288005,
+      "longitude": 55.42836431139,
+      "name": {
+        "en": "Ancien usine de Pierrefonds",
+        "fr": "Ancien usine de Pierrefonds"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bassin de radoub, situé dans le port de Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Bassin de radoub, situé dans le port de Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400080",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-bassin-de-radoub-situe-dans-le-port-de-saint-pierre-pa97400080",
+      "latitude": -21.3441988722123,
+      "longitude": 55.4746190335682,
+      "name": {
+        "en": "Bassin de radoub, situé dans le port de Saint-Pierre",
+        "fr": "Bassin de radoub, situé dans le port de Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-eglise-pa97400029",
+      "latitude": -21.3380938699995,
+      "longitude": 55.4802299714831,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105829",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-hotel-de-ville-pa00105829",
+      "latitude": -21.3418286113773,
+      "longitude": 55.4778461152321,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Arche is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Arche compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1071",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-pierre-musee-de-l-arche-m1071",
+      "latitude": 46.777283,
+      "longitude": -56.175795,
+      "name": {
+        "en": "musée de l'Arche",
+        "fr": "musée de l'Arche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble Beldame is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble Beldame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400138",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-immeuble-beldame-pa97400138",
+      "latitude": -21.3416224790068,
+      "longitude": 55.4782172716547,
+      "name": {
+        "en": "Immeuble Beldame",
+        "fr": "Immeuble Beldame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Adam-de-Villiers is a distinctive architectural landmark in the city.",
+        "fr": "Maison Adam-de-Villiers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105831",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-adam-de-villiers-pa00105831",
+      "latitude": -21.3386401015457,
+      "longitude": 55.4773461321642,
+      "name": {
+        "en": "Maison Adam-de-Villiers",
+        "fr": "Maison Adam-de-Villiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Canonville is a distinctive architectural landmark in the city.",
+        "fr": "Maison Canonville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400032",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-canonville-pa97400032",
+      "latitude": -21.3402484424058,
+      "longitude": 55.4788074281889,
+      "name": {
+        "en": "Maison Canonville",
+        "fr": "Maison Canonville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison en bois (école Saint-Charles) is a distinctive architectural landmark in the city.",
+        "fr": "Maison en bois (école Saint-Charles) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105830",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-en-bois-ecole-saint-charles-pa00105830",
+      "latitude": -21.337946127917,
+      "longitude": 55.47757041038831,
+      "name": {
+        "en": "Maison en bois (école Saint-Charles)",
+        "fr": "Maison en bois (école Saint-Charles)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Frappier de Montbenoît dite aussi maison Loupy is a distinctive architectural landmark in the city.",
+        "fr": "Maison Frappier de Montbenoît dite aussi maison Loupy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400033",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-frappier-de-montbenoit-dite-aussi-maison-loupy-pa97400033",
+      "latitude": -21.3380737905582,
+      "longitude": 55.478808789787,
+      "name": {
+        "en": "Maison Frappier de Montbenoît dite aussi maison Loupy",
+        "fr": "Maison Frappier de Montbenoît dite aussi maison Loupy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Levesque is a distinctive architectural landmark in the city.",
+        "fr": "Maison Levesque est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400044",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-levesque-pa97400044",
+      "latitude": -21.3384908070208,
+      "longitude": 55.4786766065772,
+      "name": {
+        "en": "Maison Levesque",
+        "fr": "Maison Levesque"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Orré is a distinctive architectural landmark in the city.",
+        "fr": "Maison Orré est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-maison-orre-pa97400034",
+      "latitude": -21.3392599973736,
+      "longitude": 55.477283298375,
+      "name": {
+        "en": "Maison Orré",
+        "fr": "Maison Orré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché is a distinctive architectural landmark in the city.",
+        "fr": "Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400031",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-marche-pa97400031",
+      "latitude": -21.340825395762,
+      "longitude": 55.4736476245597,
+      "name": {
+        "en": "Marché",
+        "fr": "Marché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Propriété \" Mon Repos \" is a distinctive architectural landmark in the city.",
+        "fr": "Propriété \" Mon Repos \" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-propriete-mon-repos-pa97400071",
+      "latitude": -21.312245140469003,
+      "longitude": 55.4596604180244,
+      "name": {
+        "en": "Propriété \" Mon Repos \"",
+        "fr": "Propriété \" Mon Repos \""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple des Casernes is a distinctive architectural landmark in the city.",
+        "fr": "Temple des Casernes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400104",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-temple-des-casernes-pa97400104",
+      "latitude": -21.3308088282696,
+      "longitude": 55.4822718739269,
+      "name": {
+        "en": "Temple des Casernes",
+        "fr": "Temple des Casernes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa créole is a distinctive architectural landmark in the city.",
+        "fr": "Villa créole est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105839",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-villa-creole-pa00105839",
+      "latitude": -21.3057098277058,
+      "longitude": 55.4554292947258,
+      "name": {
+        "en": "Villa créole",
+        "fr": "Villa créole"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Motais-de-Narbonne is a distinctive architectural landmark in the city.",
+        "fr": "Villa Motais-de-Narbonne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105832",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-pierre-villa-motais-de-narbonne-pa00105832",
+      "latitude": -21.3384443276267,
+      "longitude": 55.4781976699876,
+      "name": {
+        "en": "Villa Motais-de-Narbonne",
+        "fr": "Villa Motais-de-Narbonne"
+      }
+    }
+  ]
+}

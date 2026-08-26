@@ -1,0 +1,204 @@
+{
+  "id": "cournon-d-auvergne-v1",
+  "cityId": "cournon-d-auvergne-fr",
+  "cityZoneId": "relation/135795",
+  "cityName": {
+    "en": "Cournon-d'Auvergne",
+    "fr": "Cournon-d'Auvergne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Ribeyre is an important witness to the city's history.",
+        "fr": "Château de la Ribeyre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00092090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cournon-d-auvergne-chateau-de-la-ribeyre-pa00092090",
+      "latitude": 45.7231367980982,
+      "longitude": 3.2013168129537006,
+      "name": {
+        "en": "Château de la Ribeyre",
+        "fr": "Château de la Ribeyre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Sarlièves is an important witness to the city's history.",
+        "fr": "Château de Sarlièves est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00092552",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cournon-d-auvergne-chateau-de-sarlieves-pa00092552",
+      "latitude": 45.7397041979807,
+      "longitude": 3.16270946253547,
+      "name": {
+        "en": "Château de Sarlièves",
+        "fr": "Château de Sarlièves"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Puy-de-Dôme, in France",
+        "fr": "église située dans le Puy-de-Dôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582748",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-eglise-saint-martin-de-cournon-d-auvergne-q3582748",
+      "latitude": 45.7424,
+      "longitude": 3.19704,
+      "name": {
+        "en": "église Saint-Martin de Cournon-d'Auvergne",
+        "fr": "église Saint-Martin de Cournon-d'Auvergne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00092091",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cournon-d-auvergne-eglise-saint-martin-pa00092091",
+      "latitude": 45.7424431946612,
+      "longitude": 3.19707353254134,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grande Halle d'Auvergne is a distinctive architectural landmark in the city.",
+        "fr": "espace multifonction à Cournon-d'Auvergne"
+      },
+      "externalIdentity": {
+        "id": "Q3114949",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-grande-halle-d-auvergne-q3114949",
+      "latitude": 45.741111111,
+      "longitude": 3.154877777,
+      "name": {
+        "en": "Grande Halle d'Auvergne",
+        "fr": "Grande Halle d'Auvergne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Puy-de-Dôme department, France",
+        "fr": "siège municipal de Cournon-d'Auvergne, dans le Puy-de-Dôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119307560",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-mairie-de-cournon-d-auvergne-q119307560",
+      "latitude": 45.741856,
+      "longitude": 3.199358,
+      "name": {
+        "en": "mairie de Cournon-d'Auvergne",
+        "fr": "mairie de Cournon-d'Auvergne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Cournon-d'Auvergne and Pérignat-sur-Allier, France",
+        "fr": "pont franchissant l'Allier entre Cournon-d'Auvergne et Pérignat-sur-Allier, en France"
+      },
+      "externalIdentity": {
+        "id": "Q117478066",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-pont-de-cournon-q117478066",
+      "latitude": 45.72975,
+      "longitude": 3.21295,
+      "name": {
+        "en": "pont de Cournon",
+        "fr": "pont de Cournon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "puy de Bane is a distinctive architectural landmark in the city.",
+        "fr": "montagne dans le Puy-de-Dôme"
+      },
+      "externalIdentity": {
+        "id": "Q31394903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-puy-de-bane-q31394903",
+      "latitude": 45.75351,
+      "longitude": 3.19492,
+      "name": {
+        "en": "puy de Bane",
+        "fr": "puy de Bane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Cournon-d'Auvergne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097675",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-sarlieve-cournon-q3097675",
+      "latitude": 45.7383,
+      "longitude": 3.16843,
+      "name": {
+        "en": "Sarliève - Cournon",
+        "fr": "Sarliève - Cournon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-purpose hall in Cournon-d'Auvergne in the agglomeration of Clermont-Ferrand, France",
+        "fr": "salle de spectacle de Counon-d'Auvergne près de Clermont-Ferrand, France"
+      },
+      "externalIdentity": {
+        "id": "Q3576478",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cournon-d-auvergne-zenith-d-auvergne-q3576478",
+      "latitude": 45.73887,
+      "longitude": 3.15408,
+      "name": {
+        "en": "Zénith d'Auvergne",
+        "fr": "Zénith d'Auvergne"
+      }
+    }
+  ]
+}

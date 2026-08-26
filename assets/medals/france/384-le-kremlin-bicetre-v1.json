@@ -1,0 +1,204 @@
+{
+  "id": "le-kremlin-bicetre-v1",
+  "cityId": "le-kremlin-bicetre-fr",
+  "cityZoneId": "relation/105122",
+  "cityName": {
+    "en": "Le Kremlin-Bicêtre",
+    "fr": "Le Kremlin-Bicêtre"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital",
+        "fr": "domaine français"
+      },
+      "externalIdentity": {
+        "id": "Q856882",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-bicetre-q856882",
+      "latitude": 48.809517,
+      "longitude": 2.355114,
+      "name": {
+        "en": "Bicêtre",
+        "fr": "Bicêtre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue du Général-Leclerc is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située au Kremlin-Bicêtre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-fontaine-wallace-rue-du-general-leclerc-q128920456",
+      "latitude": 48.812556,
+      "longitude": 2.358151,
+      "name": {
+        "en": "fontaine Wallace, rue du Général-Leclerc",
+        "fr": "fontaine Wallace, rue du Général-Leclerc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Bicêtre is an important witness to the city's history.",
+        "fr": "fort français au Kremlin-Bicêtre"
+      },
+      "externalIdentity": {
+        "id": "Q3078143",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-fort-de-bicetre-q3078143",
+      "latitude": 48.80558,
+      "longitude": 2.35498,
+      "name": {
+        "en": "fort de Bicêtre",
+        "fr": "fort de Bicêtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in Paris, France",
+        "fr": "centre hospitalier universitaire au Kremlin-Bicêtre (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q15217751",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-hopital-bicetre-q15217751",
+      "latitude": 48.81,
+      "longitude": 2.356111111,
+      "name": {
+        "en": "hôpital Bicêtre",
+        "fr": "hôpital Bicêtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Le Kremlin-Bicêtre, Val-de-Marne, France",
+        "fr": "mairie du Kremlin-Bicêtre, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q61914028",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-hotel-de-ville-du-kremlin-bicetre-q61914028",
+      "latitude": 48.81232,
+      "longitude": 2.35687,
+      "name": {
+        "en": "hôtel de ville du Kremlin-Bicêtre",
+        "fr": "hôtel de ville du Kremlin-Bicêtre"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la guerre 1870-1871 du Kremlin-Bicêtre is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé au Kremlin-Bicêtre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88485602",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-monument-aux-morts-de-la-guerre-1870-1871-du-kremlin-bicetre-q88485602",
+      "latitude": 48.81365,
+      "longitude": 2.36297,
+      "name": {
+        "en": "monument aux morts de la guerre 1870-1871 du Kremlin-Bicêtre",
+        "fr": "monument aux morts de la guerre 1870-1871 du Kremlin-Bicêtre"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136059933",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-monument-aux-morts-du-kremlin-bicetre-q136059933",
+      "latitude": 48.81359,
+      "longitude": 2.35748,
+      "name": {
+        "en": "monument aux morts du Kremlin-Bicêtre",
+        "fr": "monument aux morts du Kremlin-Bicêtre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Le Kremlin-Bicêtre, France",
+        "fr": "parc du Kremlin-Bicêtre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109247043",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-parc-de-bicetre-q109247043",
+      "latitude": 48.81008,
+      "longitude": 2.35775,
+      "name": {
+        "en": "parc de Bicêtre",
+        "fr": "parc de Bicêtre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Le Kremlin-Bicêtre, France",
+        "fr": "parc du Kremlin-Bicêtre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109247090",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-parc-philippe-pinel-q109247090",
+      "latitude": 48.81175,
+      "longitude": 2.35538,
+      "name": {
+        "en": "parc Philippe-Pinel",
+        "fr": "parc Philippe-Pinel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Private, computer programming school",
+        "fr": "école privée d'informatique"
+      },
+      "externalIdentity": {
+        "id": "Q27887255",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-kremlin-bicetre-web-cademie-q27887255",
+      "latitude": 48.815277777,
+      "longitude": 2.363055555,
+      "name": {
+        "en": "Web@cademie",
+        "fr": "Web@cademie"
+      }
+    }
+  ]
+}

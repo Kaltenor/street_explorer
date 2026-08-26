@@ -1,0 +1,204 @@
+{
+  "id": "sevran-v1",
+  "cityId": "sevran-fr",
+  "cityZoneId": "relation/162527",
+  "cityName": {
+    "en": "Sevran",
+    "fr": "Sevran"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall of the French town of Sevran",
+        "fr": "château situé à Sevran, France"
+      },
+      "externalIdentity": {
+        "id": "Q83715329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-chateau-de-la-fossee-q83715329",
+      "latitude": 48.93944,
+      "longitude": 2.52579,
+      "name": {
+        "en": "château de la Fossée",
+        "fr": "château de la Fossée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in France",
+        "fr": "château et ancienne mairie de Sevran, ancienne résidence d'Alfred Nobel"
+      },
+      "externalIdentity": {
+        "id": "Q2413199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-chateau-de-sevran-q2413199",
+      "latitude": 48.9389,
+      "longitude": 2.52833,
+      "name": {
+        "en": "château de Sevran",
+        "fr": "château de Sevran"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19863245",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-eglise-saint-martin-de-sevran-q19863245",
+      "latitude": 48.937,
+      "longitude": 2.53046,
+      "name": {
+        "en": "église Saint-Martin de Sevran",
+        "fr": "église Saint-Martin de Sevran"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19863247",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-eglise-sainte-elisabeth-de-freinville-q19863247",
+      "latitude": 48.926334,
+      "longitude": 2.518058,
+      "name": {
+        "en": "église Sainte-Élisabeth de Freinville",
+        "fr": "église Sainte-Élisabeth de Freinville"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Sevran is a notable work of public art and local memory.",
+        "fr": "monument aux morts à Sevran, en France"
+      },
+      "externalIdentity": {
+        "id": "Q97143905",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-monument-aux-morts-de-sevran-q97143905",
+      "latitude": 48.94089,
+      "longitude": 2.52462,
+      "name": {
+        "en": "monument aux morts de Sevran",
+        "fr": "monument aux morts de Sevran"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des Sœurs is one of the city's notable green or natural landmarks.",
+        "fr": "parc urbain à Sevran"
+      },
+      "externalIdentity": {
+        "id": "Q56307585",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-parc-des-s-urs-q56307585",
+      "latitude": 48.93718,
+      "longitude": 2.53324,
+      "name": {
+        "en": "parc des Sœurs",
+        "fr": "parc des Sœurs"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc forestier de la Poudrerie is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q97367948",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-parc-forestier-de-la-poudrerie-q97367948",
+      "latitude": 48.938204,
+      "longitude": 2.557583,
+      "name": {
+        "en": "parc forestier de la Poudrerie",
+        "fr": "parc forestier de la Poudrerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Sevran, France",
+        "fr": "pont de Sevran"
+      },
+      "externalIdentity": {
+        "id": "Q108911883",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-pont-de-la-gare-q108911883",
+      "latitude": 48.93516,
+      "longitude": 2.53445,
+      "name": {
+        "en": "pont de la Gare",
+        "fr": "pont de la Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q39144423",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-sevran-beaudottes-q39144423",
+      "latitude": 48.947166994,
+      "longitude": 2.525543212,
+      "name": {
+        "en": "Sevran - Beaudottes",
+        "fr": "Sevran - Beaudottes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q927440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevran-sevran-livry-q927440",
+      "latitude": 48.936111,
+      "longitude": 2.534167,
+      "name": {
+        "en": "Sevran - Livry",
+        "fr": "Sevran - Livry"
+      }
+    }
+  ]
+}

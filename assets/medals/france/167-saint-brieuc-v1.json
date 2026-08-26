@@ -1,0 +1,204 @@
+{
+  "id": "saint-brieuc-v1",
+  "cityId": "saint-brieuc-fr",
+  "cityZoneId": "relation/301829",
+  "cityName": {
+    "en": "Saint-Brieuc",
+    "fr": "Saint-Brieuc"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de Bellecyse is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de Bellecyse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089585",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-ancien-hotel-de-bellecyse-pa00089585",
+      "latitude": 48.5137388639431,
+      "longitude": -2.76335370881451,
+      "name": {
+        "en": "Ancien hôtel de Bellecyse",
+        "fr": "Ancien hôtel de Bellecyse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089582",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-cathedrale-saint-etienne-pa00089582",
+      "latitude": 48.5141826369776,
+      "longitude": -2.76389887271289,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA22000043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-eglise-saint-michel-pa22000043",
+      "latitude": 48.5163450874425,
+      "longitude": -2.75643946570258,
+      "name": {
+        "en": "Église Saint-Michel",
+        "fr": "Église Saint-Michel"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Saint-Brieuc, ou Notre-Dame is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Saint-Brieuc, ou Notre-Dame compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089584",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-fontaine-saint-brieuc-ou-notre-dame-pa00089584",
+      "latitude": 48.5164098898703,
+      "longitude": -2.76860782957135,
+      "name": {
+        "en": "Fontaine Saint-Brieuc, ou Notre-Dame",
+        "fr": "Fontaine Saint-Brieuc, ou Notre-Dame"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0196",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-brieuc-musee-d-art-et-d-histoire-m0196",
+      "latitude": 48.512139,
+      "longitude": -2.762171,
+      "name": {
+        "en": "musée d'art et d'histoire",
+        "fr": "musée d'art et d'histoire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tertre Aubé is an important witness to the city's history.",
+        "fr": "Tertre Aubé est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA22000037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-tertre-aube-pa22000037",
+      "latitude": 48.52124614904961,
+      "longitude": -2.7536551425211817,
+      "name": {
+        "en": "Tertre Aubé",
+        "fr": "Tertre Aubé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA22000002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-theatre-pa22000002",
+      "latitude": 48.5138244874604,
+      "longitude": -2.76111986064819,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Cesson is an important witness to the city's history.",
+        "fr": "Tour de Cesson est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-tour-de-cesson-pa00089603",
+      "latitude": 48.5288543080688,
+      "longitude": -2.72304839411922,
+      "name": {
+        "en": "Tour de Cesson",
+        "fr": "Tour de Cesson"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Saint-Esprit is an important witness to the city's history.",
+        "fr": "Tour du Saint-Esprit est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089602",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-tour-du-saint-esprit-pa00089602",
+      "latitude": 48.5138894609065,
+      "longitude": -2.7652793266373,
+      "name": {
+        "en": "Tour du Saint-Esprit",
+        "fr": "Tour du Saint-Esprit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Viaduc de Toupin is a distinctive architectural landmark in the city.",
+        "fr": "Viaduc de Toupin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA22000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-brieuc-viaduc-de-toupin-pa22000046",
+      "latitude": 48.5175472487833,
+      "longitude": -2.74720254633299,
+      "name": {
+        "en": "Viaduc de Toupin",
+        "fr": "Viaduc de Toupin"
+      }
+    }
+  ]
+}

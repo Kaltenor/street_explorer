@@ -1,0 +1,204 @@
+{
+  "id": "bayonne-v1",
+  "cityId": "bayonne-fr",
+  "cityZoneId": "relation/166713",
+  "cityName": {
+    "en": "Bayonne",
+    "fr": "Bayonne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084329",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-cathedrale-notre-dame-pa00084329",
+      "latitude": 43.4903428476999,
+      "longitude": -1.4770873619019,
+      "name": {
+        "en": "Cathédrale Notre-Dame",
+        "fr": "Cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Marracq is an important witness to the city's history.",
+        "fr": "Château de Marracq est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084330",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-chateau-de-marracq-pa00084330",
+      "latitude": 43.479843358630006,
+      "longitude": -1.48347518309657,
+      "name": {
+        "en": "Château de Marracq",
+        "fr": "Château de Marracq"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Vigneau is an important witness to the city's history.",
+        "fr": "Château du Vigneau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-chateau-du-vigneau-pa64000071",
+      "latitude": 43.5056030171481,
+      "longitude": -1.46964079019254,
+      "name": {
+        "en": "Château du Vigneau",
+        "fr": "Château du Vigneau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château-Vieux is an important witness to the city's history.",
+        "fr": "Château-Vieux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084332",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-chateau-vieux-pa00084332",
+      "latitude": 43.491852069564,
+      "longitude": -1.47816135149924,
+      "name": {
+        "en": "Château-Vieux",
+        "fr": "Château-Vieux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications is an important witness to the city's history.",
+        "fr": "Fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084336",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-fortifications-pa00084336",
+      "latitude": 43.4896865119259,
+      "longitude": -1.4793152753180303,
+      "name": {
+        "en": "Fortifications",
+        "fr": "Fortifications"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison dite de Dagourette ou Musée Basque is one of the city's notable cultural landmarks.",
+        "fr": "Maison dite de Dagourette ou Musée Basque compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084542",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-maison-dite-de-dagourette-ou-musee-basque-pa00084542",
+      "latitude": 43.4911822947308,
+      "longitude": -1.47357264206165,
+      "name": {
+        "en": "Maison dite de Dagourette ou Musée Basque",
+        "fr": "Maison dite de Dagourette ou Musée Basque"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée basque is one of the city's notable cultural landmarks.",
+        "fr": "musée basque compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0093",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bayonne-musee-basque-m0093",
+      "latitude": 43.491093,
+      "longitude": -1.473823,
+      "name": {
+        "en": "musée basque",
+        "fr": "musée basque"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bonnat - Helleu, musée des beaux-arts de Bayonne is one of the city's notable cultural landmarks.",
+        "fr": "musée Bonnat - Helleu, musée des beaux-arts de Bayonne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0094",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bayonne-musee-bonnat-helleu-musee-des-beaux-arts-de-bayonne-m0094",
+      "latitude": 43.492108,
+      "longitude": -1.472299,
+      "name": {
+        "en": "musée Bonnat - Helleu, musée des beaux-arts de Bayonne",
+        "fr": "musée Bonnat - Helleu, musée des beaux-arts de Bayonne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7065",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bayonne-museum-d-histoire-naturelle-m7065",
+      "latitude": 43.49364187649409,
+      "longitude": -1.4751693306701943,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135192",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bayonne-synagogue-pa00135192",
+      "latitude": 43.497015084638,
+      "longitude": -1.46907738249858,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

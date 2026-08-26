@@ -1,0 +1,204 @@
+{
+  "id": "le-plessis-trevise-v1",
+  "cityId": "le-plessis-trevise-fr",
+  "cityZoneId": "relation/108284",
+  "cityName": {
+    "en": "Le Plessis-Trévise",
+    "fr": "Le Plessis-Trévise"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Lande is an important witness to the city's history.",
+        "fr": "château situé au Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-chateau-de-la-lande-q88719009",
+      "latitude": 48.816363,
+      "longitude": 2.562294,
+      "name": {
+        "en": "château de la Lande",
+        "fr": "château de la Lande"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Tourelles is an important witness to the city's history.",
+        "fr": "château du XIXe siècle en France"
+      },
+      "externalIdentity": {
+        "id": "Q122899925",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-chateau-des-tourelles-q122899925",
+      "latitude": 48.81915,
+      "longitude": 2.56612,
+      "name": {
+        "en": "château des Tourelles",
+        "fr": "château des Tourelles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château du Plessis Saint-Antoine is an important witness to the city's history.",
+        "fr": "château situé au Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719021",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-chateau-du-plessis-saint-antoine-q88719021",
+      "latitude": 48.801661,
+      "longitude": 2.582623,
+      "name": {
+        "en": "château du Plessis Saint-Antoine",
+        "fr": "château du Plessis Saint-Antoine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q81945506",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-cimetiere-du-plessis-trevise-q81945506",
+      "latitude": 48.80645,
+      "longitude": 2.58919,
+      "name": {
+        "en": "cimetière du Plessis-Trévise",
+        "fr": "cimetière du Plessis-Trévise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31146173",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-eglise-saint-jean-baptiste-du-plessis-trevise-q31146173",
+      "latitude": 48.808439,
+      "longitude": 2.575019,
+      "name": {
+        "en": "église Saint-Jean-Baptiste du Plessis-Trévise",
+        "fr": "église Saint-Jean-Baptiste du Plessis-Trévise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "groupe scolaire Marie-Louise et Marcel Salmon is a distinctive architectural landmark in the city.",
+        "fr": "école située au Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719042",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-groupe-scolaire-marie-louise-et-marcel-salmon-q88719042",
+      "latitude": 48.80888,
+      "longitude": 2.57591,
+      "name": {
+        "en": "groupe scolaire Marie-Louise et Marcel Salmon",
+        "fr": "groupe scolaire Marie-Louise et Marcel Salmon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Le Plessis-Trévise, France",
+        "fr": "édifice du Plessis-Trévise, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412784",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-hotel-de-ville-du-plessis-trevise-q83412784",
+      "latitude": 48.809,
+      "longitude": 2.5728,
+      "name": {
+        "en": "hôtel de ville du Plessis-Trévise",
+        "fr": "hôtel de ville du Plessis-Trévise"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts du Plessis-Trévise is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé au Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719063",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-monument-aux-morts-du-plessis-trevise-q88719063",
+      "latitude": 48.804175,
+      "longitude": 2.583331,
+      "name": {
+        "en": "monument aux morts du Plessis-Trévise",
+        "fr": "monument aux morts du Plessis-Trévise"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Pentray is an important witness to the city's history.",
+        "fr": "tour située au Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88719084",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-tour-pentray-q88719084",
+      "latitude": 48.80768,
+      "longitude": 2.55854,
+      "name": {
+        "en": "tour Pentray",
+        "fr": "tour Pentray"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "street in Le Plessis-Trévise, France",
+        "fr": "voie du Plessis-Trévise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111243373",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-trevise-l-oree-du-parc-q111243373",
+      "latitude": 48.81020365,
+      "longitude": 2.5786101,
+      "name": {
+        "en": "l'Orée du Parc",
+        "fr": "l'Orée du Parc"
+      }
+    }
+  ]
+}

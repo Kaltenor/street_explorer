@@ -1,0 +1,204 @@
+{
+  "id": "etampes-v1",
+  "cityId": "etampes-fr",
+  "cityZoneId": "relation/1229908",
+  "cityName": {
+    "en": "Étampes",
+    "fr": "Étampes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087892",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-eglise-notre-dame-pa00087892",
+      "latitude": 48.4350408207409,
+      "longitude": 2.16412083097176,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Basile is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Basile est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087893",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-eglise-saint-basile-pa00087893",
+      "latitude": 48.4358991883833,
+      "longitude": 2.16111637296792,
+      "name": {
+        "en": "Église Saint-Basile",
+        "fr": "Église Saint-Basile"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Gilles is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Gilles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087894",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-eglise-saint-gilles-pa00087894",
+      "latitude": 48.432140649195,
+      "longitude": 2.15365265866761,
+      "name": {
+        "en": "Église Saint-Gilles",
+        "fr": "Église Saint-Gilles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087895",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-eglise-saint-martin-pa00087895",
+      "latitude": 48.4261994126244,
+      "longitude": 2.13948514019344,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Menhir dit Pierrefitte ou Pierre Fritte is an important witness to the city's history.",
+        "fr": "Menhir dit Pierrefitte ou Pierre Fritte est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087902",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-menhir-dit-pierrefitte-ou-pierre-fritte-pa00087902",
+      "latitude": 48.4290564868129,
+      "longitude": 2.1059207947904803,
+      "name": {
+        "en": "Menhir dit Pierrefitte ou Pierre Fritte",
+        "fr": "Menhir dit Pierrefitte ou Pierre Fritte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0405",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "etampes-musee-municipal-m0405",
+      "latitude": 48.434307,
+      "longitude": 2.161909,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts (anciens) is an important witness to the city's history.",
+        "fr": "Remparts (anciens) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087905",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-remparts-anciens-pa00087905",
+      "latitude": 48.4285387833537,
+      "longitude": 2.15139504999698,
+      "name": {
+        "en": "Remparts (anciens)",
+        "fr": "Remparts (anciens)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087906",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-theatre-municipal-pa00087906",
+      "latitude": 48.4340033553504,
+      "longitude": 2.15787057937803,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Guinette is an important witness to the city's history.",
+        "fr": "Tour Guinette est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087907",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-tour-guinette-pa00087907",
+      "latitude": 48.43761974390841,
+      "longitude": 2.15836446525174,
+      "name": {
+        "en": "Tour Guinette",
+        "fr": "Tour Guinette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087899",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "etampes-hotel-de-ville-pa00087899",
+      "latitude": 48.4344047004648,
+      "longitude": 2.1612237880093,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

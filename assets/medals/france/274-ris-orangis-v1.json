@@ -1,0 +1,204 @@
+{
+  "id": "ris-orangis-v1",
+  "cityId": "ris-orangis-fr",
+  "cityZoneId": "relation/150543",
+  "cityName": {
+    "en": "Ris-Orangis",
+    "fr": "Ris-Orangis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "station of the T12 Express line of the Île-de-France tramway",
+        "fr": "station de la ligne T12 Express du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q85980095",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-bois-de-saint-eutrope-q85980095",
+      "latitude": 48.633958974,
+      "longitude": 2.395341508,
+      "name": {
+        "en": "Bois de Saint-Eutrope",
+        "fr": "Bois de Saint-Eutrope"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Ris-Orangis, France",
+        "fr": "château français situé à Ris-Orangis"
+      },
+      "externalIdentity": {
+        "id": "Q2969273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-chateau-de-fromont-q2969273",
+      "latitude": 48.6538,
+      "longitude": 2.41595,
+      "name": {
+        "en": "château de Fromont",
+        "fr": "château de Fromont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Trousseau is an important witness to the city's history.",
+        "fr": "Château de Trousseau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087989",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ris-orangis-chateau-de-trousseau-pa00087989",
+      "latitude": 48.6505836775412,
+      "longitude": 2.42842315091644,
+      "name": {
+        "en": "Château de Trousseau",
+        "fr": "Château de Trousseau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Dranem is an important witness to the city's history.",
+        "fr": "château situé à Ris-Orangis (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2967868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-chateau-dranem-q2967868",
+      "latitude": 48.6569,
+      "longitude": 2.40315,
+      "name": {
+        "en": "château Dranem",
+        "fr": "château Dranem"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Gomel is an important witness to the city's history.",
+        "fr": "château situé à Ris-Orangis (France)"
+      },
+      "externalIdentity": {
+        "id": "Q17624819",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-chateau-gomel-q17624819",
+      "latitude": 48.640676,
+      "longitude": 2.406661,
+      "name": {
+        "en": "château Gomel",
+        "fr": "château Gomel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Ris-Orangis, France",
+        "fr": "édifice religieux catholique à Ris-Orangis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q107034949",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-eglise-du-sacre-c-ur-de-ris-orangis-q107034949",
+      "latitude": 48.649653,
+      "longitude": 2.409169,
+      "name": {
+        "en": "église du Sacré-Cœur de Ris-Orangis",
+        "fr": "église du Sacré-Cœur de Ris-Orangis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ris-Orangis, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2804825",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-grand-bourg-q2804825",
+      "latitude": 48.64806,
+      "longitude": 2.43556,
+      "name": {
+        "en": "Grand Bourg",
+        "fr": "Grand Bourg"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136071037",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-monument-aux-morts-de-ris-orangis-q136071037",
+      "latitude": 48.65848,
+      "longitude": 2.40455,
+      "name": {
+        "en": "monument aux morts de Ris-Orangis",
+        "fr": "monument aux morts de Ris-Orangis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Ris-Orangis, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2041479",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-orangis-bois-de-l-epine-q2041479",
+      "latitude": 48.63611,
+      "longitude": 2.4075,
+      "name": {
+        "en": "Orangis - Bois de l'Épine",
+        "fr": "Orangis - Bois de l'Épine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q527543",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ris-orangis-ris-orangis-q527543",
+      "latitude": 48.65917,
+      "longitude": 2.41444,
+      "name": {
+        "en": "Ris-Orangis",
+        "fr": "Ris-Orangis"
+      }
+    }
+  ]
+}

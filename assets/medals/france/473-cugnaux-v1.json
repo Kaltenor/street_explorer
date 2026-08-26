@@ -1,0 +1,204 @@
+{
+  "id": "cugnaux-v1",
+  "cityId": "cugnaux-fr",
+  "cityZoneId": "relation/79480",
+  "cityName": {
+    "en": "Cugnaux",
+    "fr": "Cugnaux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in France",
+        "fr": "aérodrome toulousain"
+      },
+      "externalIdentity": {
+        "id": "Q2875822",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cugnaux-aeroport-de-francazal-q2875822",
+      "latitude": 43.5419,
+      "longitude": 1.36522,
+      "name": {
+        "en": "aéroport de Francazal",
+        "fr": "aéroport de Francazal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque municipale is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque municipale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/4158577989",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "cugnaux-bibliotheque-municipale-node-4158577989",
+      "latitude": 43.5358129,
+      "longitude": 1.3487969,
+      "name": {
+        "en": "Bibliothèque municipale",
+        "fr": "Bibliothèque municipale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Cassagnère is an important witness to the city's history.",
+        "fr": "Château de la Cassagnère est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/70495119",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cugnaux-chateau-de-la-cassagnere-way-70495119",
+      "latitude": 43.5546843,
+      "longitude": 1.341626,
+      "name": {
+        "en": "Château de la Cassagnère",
+        "fr": "Château de la Cassagnère"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Maurens is an important witness to the city's history.",
+        "fr": "Château de Maurens est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/12106376772",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "cugnaux-chateau-de-maurens-node-12106376772",
+      "latitude": 43.5345548,
+      "longitude": 1.3356766,
+      "name": {
+        "en": "Château de Maurens",
+        "fr": "Château de Maurens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Haute-Garonne, France",
+        "fr": "commune française du département de la Haute-Garonne"
+      },
+      "externalIdentity": {
+        "id": "Q632107",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cugnaux-cugnaux-q632107",
+      "latitude": 43.537777777,
+      "longitude": 1.343611111,
+      "name": {
+        "en": "Cugnaux",
+        "fr": "Cugnaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/70488091",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cugnaux-eglise-saint-laurent-way-70488091",
+      "latitude": 43.5366615,
+      "longitude": 1.3448106,
+      "name": {
+        "en": "Église Saint-Laurent",
+        "fr": "Église Saint-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville de Cugnaux is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville de Cugnaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/70494648",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cugnaux-hotel-de-ville-de-cugnaux-way-70494648",
+      "latitude": 43.5370846,
+      "longitude": 1.3449636,
+      "name": {
+        "en": "Hôtel de ville de Cugnaux",
+        "fr": "Hôtel de ville de Cugnaux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de Bazardens is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de Bazardens compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/22965553",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cugnaux-parc-de-bazardens-way-22965553",
+      "latitude": 43.5514204,
+      "longitude": 1.3432672,
+      "name": {
+        "en": "Parc de Bazardens",
+        "fr": "Parc de Bazardens"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de l'Agora is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de l'Agora compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/70993627",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cugnaux-parc-de-l-agora-way-70993627",
+      "latitude": 43.531974,
+      "longitude": 1.3498433,
+      "name": {
+        "en": "Parc de l'Agora",
+        "fr": "Parc de l'Agora"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre des Grands Enfants is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre des Grands Enfants compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/844770087",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "cugnaux-theatre-des-grands-enfants-node-844770087",
+      "latitude": 43.5372694,
+      "longitude": 1.3436319,
+      "name": {
+        "en": "Théâtre des Grands Enfants",
+        "fr": "Théâtre des Grands Enfants"
+      }
+    }
+  ]
+}

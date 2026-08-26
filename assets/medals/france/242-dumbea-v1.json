@@ -1,0 +1,204 @@
+{
+  "id": "dumbea-v1",
+  "cityId": "dumbea-fr",
+  "cityZoneId": "relation/377753",
+  "cityName": {
+    "en": "Dumbéa",
+    "fr": "Dumbéa"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bight in New Caledonia, France",
+        "fr": "Baie Taa est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q33540263",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-baie-taa-q33540263",
+      "latitude": -22.183333333,
+      "longitude": 166.433333333,
+      "name": {
+        "en": "Baie Taa",
+        "fr": "Baie Taa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Located in the southeastern part of the country, the country 's capital is 18 km northeast of Nouméa . 340 meters above sea level lies Casse-Cou.",
+        "fr": "Casse-Cou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31791347",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-casse-cou-q31791347",
+      "latitude": -22.15,
+      "longitude": 166.566666666,
+      "name": {
+        "en": "Casse-Cou",
+        "fr": "Casse-Cou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in New Caledonia, France",
+        "fr": "commune de la collectivité sui generis de la Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q9712",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-dumbea-q9712",
+      "latitude": -22.15,
+      "longitude": 166.45,
+      "name": {
+        "en": "Dumbéa",
+        "fr": "Dumbéa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital",
+        "fr": "hôpital en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q3332671",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-medipole-de-koutio-q3332671",
+      "latitude": -22.20972,
+      "longitude": 166.4525,
+      "name": {
+        "en": "Médipôle de Koutio",
+        "fr": "Médipôle de Koutio"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia, France",
+        "fr": "Mont Moné est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31789539",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-mont-mone-q31789539",
+      "latitude": -22.1683,
+      "longitude": 166.5158,
+      "name": {
+        "en": "Mont Moné",
+        "fr": "Mont Moné"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia, France",
+        "fr": "Mont Piditéré est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31787703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-mont-piditere-q31787703",
+      "latitude": -22.1083,
+      "longitude": 166.4883,
+      "name": {
+        "en": "Mont Piditéré",
+        "fr": "Mont Piditéré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia, France",
+        "fr": "Mont Poudehoume est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31787239",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-mont-poudehoume-q31787239",
+      "latitude": -22.1125,
+      "longitude": 166.53,
+      "name": {
+        "en": "Mont Poudehoume",
+        "fr": "Mont Poudehoume"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia, France",
+        "fr": "Mont Ta est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31786852",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-mont-ta-q31786852",
+      "latitude": -22.17,
+      "longitude": 166.565,
+      "name": {
+        "en": "Mont Ta",
+        "fr": "Mont Ta"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia, France",
+        "fr": "Montagne des Sources est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31786881",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-montagne-des-sources-q31786881",
+      "latitude": -22.1125,
+      "longitude": 166.6042,
+      "name": {
+        "en": "Montagne des Sources",
+        "fr": "Montagne des Sources"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pic Buse is a distinctive architectural landmark in the city.",
+        "fr": "Pic Buse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31791371",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dumbea-pic-buse-q31791371",
+      "latitude": -22.1425,
+      "longitude": 166.59,
+      "name": {
+        "en": "Pic Buse",
+        "fr": "Pic Buse"
+      }
+    }
+  ]
+}

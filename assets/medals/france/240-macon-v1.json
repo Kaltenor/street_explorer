@@ -1,0 +1,204 @@
+{
+  "id": "macon-v1",
+  "cityId": "macon-fr",
+  "cityZoneId": "relation/912201",
+  "cityName": {
+    "en": "Mâcon",
+    "fr": "Mâcon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien église Saint-Clément is an important witness to the city's history.",
+        "fr": "Ancien église Saint-Clément est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125330",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-ancien-eglise-saint-clement-pa00125330",
+      "latitude": 46.2975389143416,
+      "longitude": 4.8209547231469,
+      "name": {
+        "en": "Ancien église Saint-Clément",
+        "fr": "Ancien église Saint-Clément"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Vincent (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Vincent (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113319",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-cathedrale-saint-vincent-ancienne-pa00113319",
+      "latitude": 46.3063383033463,
+      "longitude": 4.83452409053496,
+      "name": {
+        "en": "Cathédrale Saint-Vincent (ancienne)",
+        "fr": "Cathédrale Saint-Vincent (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Vincent (nouvelle église Saint-Vincent) is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Vincent (nouvelle église Saint-Vincent) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113557",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-cathedrale-saint-vincent-nouvelle-eglise-saint-vincent-pa00113557",
+      "latitude": 46.3072168319373,
+      "longitude": 4.83122244675093,
+      "name": {
+        "en": "Cathédrale Saint-Vincent (nouvelle église Saint-Vincent)",
+        "fr": "Cathédrale Saint-Vincent (nouvelle église Saint-Vincent)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113310",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-eglise-pa00113310",
+      "latitude": 46.2778766274569,
+      "longitude": 4.76668606968575,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA71000104",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-eglise-saint-pierre-pa71000104",
+      "latitude": 46.30395413202038,
+      "longitude": 4.83176544818703,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison dite \" du Bailli \" et tour gallo-romaine contiguë is an important witness to the city's history.",
+        "fr": "Maison dite \" du Bailli \" et tour gallo-romaine contiguë est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA71000045",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-maison-dite-du-bailli-et-tour-gallo-romaine-contigue-pa71000045",
+      "latitude": 46.3060020694787,
+      "longitude": 4.83268617452444,
+      "name": {
+        "en": "Maison dite \" du Bailli \" et tour gallo-romaine contiguë",
+        "fr": "Maison dite \" du Bailli \" et tour gallo-romaine contiguë"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA71000083",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-monument-aux-morts-pa71000083",
+      "latitude": 46.30779780958936,
+      "longitude": 4.831064640671613,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des ursulines is one of the city's notable cultural landmarks.",
+        "fr": "musée des ursulines compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0172",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "macon-musee-des-ursulines-m0172",
+      "latitude": 46.307508,
+      "longitude": 4.833156,
+      "name": {
+        "en": "musée des ursulines",
+        "fr": "musée des ursulines"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Lamartine is one of the city's notable cultural landmarks.",
+        "fr": "musée Lamartine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0173",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "macon-musee-lamartine-m0173",
+      "latitude": 46.305431,
+      "longitude": 4.832454,
+      "name": {
+        "en": "musée Lamartine",
+        "fr": "musée Lamartine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113327",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "macon-hotel-de-ville-pa00113327",
+      "latitude": 46.3031315174382,
+      "longitude": 4.83287535457797,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

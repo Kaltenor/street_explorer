@@ -1,0 +1,204 @@
+{
+  "id": "vincennes-v1",
+  "cityId": "vincennes-fr",
+  "cityZoneId": "relation/108346",
+  "cityName": {
+    "en": "Vincennes",
+    "fr": "Vincennes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abords du château de Vincennes is an important witness to the city's history.",
+        "fr": "Abords du château de Vincennes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125475",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vincennes-abords-du-chateau-de-vincennes-pa00125475",
+      "latitude": 48.842999839901104,
+      "longitude": 2.43639214815993,
+      "name": {
+        "en": "Abords du château de Vincennes",
+        "fr": "Abords du château de Vincennes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Vincennes, France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-eglise-notre-dame-de-vincennes-q29819880",
+      "latitude": 48.84749,
+      "longitude": 2.43882,
+      "name": {
+        "en": "église Notre-Dame de Vincennes",
+        "fr": "église Notre-Dame de Vincennes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis de Vincennes is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis de Vincennes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00133019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vincennes-eglise-saint-louis-de-vincennes-pa00133019",
+      "latitude": 48.8480406128536,
+      "longitude": 2.41917959566618,
+      "name": {
+        "en": "Église Saint-Louis de Vincennes",
+        "fr": "Église Saint-Louis de Vincennes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Vincennes, France",
+        "fr": "salle de spectacle à Vincennes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q65126569",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-espace-daniel-sorano-q65126569",
+      "latitude": 48.84989,
+      "longitude": 2.43575,
+      "name": {
+        "en": "espace Daniel-Sorano",
+        "fr": "espace Daniel-Sorano"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville de Vincennes is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville de Vincennes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA94000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vincennes-hotel-de-ville-de-vincennes-pa94000011",
+      "latitude": 48.847676207788005,
+      "longitude": 2.4397776246047704,
+      "name": {
+        "en": "Hôtel de ville de Vincennes",
+        "fr": "Hôtel de ville de Vincennes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Guerre de 1870 de Vincennes is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Vincennes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q86691838",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-monument-aux-morts-de-la-guerre-de-1870-de-vincennes-q86691838",
+      "latitude": 48.84743,
+      "longitude": 2.44398,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1870 de Vincennes",
+        "fr": "monument aux morts de la Guerre de 1870 de Vincennes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Val-de-Marne, in France",
+        "fr": "chapelle située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3464208",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-sainte-chapelle-de-vincennes-q3464208",
+      "latitude": 48.842333333,
+      "longitude": 2.436444444,
+      "name": {
+        "en": "Sainte-Chapelle de Vincennes",
+        "fr": "Sainte-Chapelle de Vincennes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Service historique de la Défense - site de Vincennes is one of the city's notable cultural landmarks.",
+        "fr": "centre des archives du ministère de la Défense, site principal du château de Vincennes"
+      },
+      "externalIdentity": {
+        "id": "Q93121712",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-service-historique-de-la-defense-site-de-vincennes-q93121712",
+      "latitude": 48.8417723,
+      "longitude": 2.4260787,
+      "name": {
+        "en": "Service historique de la Défense - site de Vincennes",
+        "fr": "Service historique de la Défense - site de Vincennes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "statue du général Daumesnil is a notable work of public art and local memory.",
+        "fr": "statue à Vincennes, France"
+      },
+      "externalIdentity": {
+        "id": "Q77894919",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-statue-du-general-daumesnil-q77894919",
+      "latitude": 48.84672,
+      "longitude": 2.43955,
+      "name": {
+        "en": "statue du général Daumesnil",
+        "fr": "statue du général Daumesnil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "synagogue located in Val-de-Marne, in France",
+        "fr": "synagogue située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2375542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vincennes-synagogue-de-vincennes-q2375542",
+      "latitude": 48.84768,
+      "longitude": 2.419558,
+      "name": {
+        "en": "synagogue de Vincennes",
+        "fr": "synagogue de Vincennes"
+      }
+    }
+  ]
+}

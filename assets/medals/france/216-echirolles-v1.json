@@ -1,0 +1,204 @@
+{
+  "id": "echirolles-v1",
+  "cityId": "echirolles-fr",
+  "cityZoneId": "relation/105162",
+  "cityName": {
+    "en": "Échirolles",
+    "fr": "Échirolles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Échirolles, Isère, France",
+        "fr": "ancienne siège municipal d'Échirolles, en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q123454970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-ancien-mairie-d-echirolles-q123454970",
+      "latitude": 45.14211,
+      "longitude": 5.71788,
+      "name": {
+        "en": "Ancien mairie d'Échirolles",
+        "fr": "Ancien mairie d'Échirolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1618394",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-canton-d-echirolles-est-q1618394",
+      "latitude": 45.14071506,
+      "longitude": 5.73329017,
+      "name": {
+        "en": "canton d'Échirolles-Est",
+        "fr": "canton d'Échirolles-Est"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q614075",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-canton-d-echirolles-ouest-q614075",
+      "latitude": 45.133333,
+      "longitude": 5.716667,
+      "name": {
+        "en": "canton d'Échirolles-Ouest",
+        "fr": "canton d'Échirolles-Ouest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q637492",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-canton-d-eybens-q637492",
+      "latitude": 45.14920196,
+      "longitude": 5.7160756,
+      "name": {
+        "en": "canton d'Eybens",
+        "fr": "canton d'Eybens"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Isère department, France",
+        "fr": "monument aux morts de l'Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-monument-aux-morts-d-echirolles-q136053326",
+      "latitude": 45.1417764,
+      "longitude": 5.7180475,
+      "name": {
+        "en": "monument aux morts d'Échirolles",
+        "fr": "monument aux morts d'Échirolles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum on the local past viscose industry",
+        "fr": "musée traitant de l'industrie locale passée de la viscose"
+      },
+      "externalIdentity": {
+        "id": "Q3330086",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-musee-de-la-viscose-q3330086",
+      "latitude": 45.1573,
+      "longitude": 5.7028,
+      "name": {
+        "en": "musée de la viscose",
+        "fr": "musée de la viscose"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Géo-Charles is one of the city's notable cultural landmarks.",
+        "fr": "musée Géo-Charles compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0992",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "echirolles-musee-geo-charles-m0992",
+      "latitude": 45.14935,
+      "longitude": 5.699614,
+      "name": {
+        "en": "musée Géo-Charles",
+        "fr": "musée Géo-Charles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Isère, France",
+        "fr": "commune française du département de l'Isère"
+      },
+      "externalIdentity": {
+        "id": "Q211134",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-echirolles-q211134",
+      "latitude": 45.142777777,
+      "longitude": 5.717777777,
+      "name": {
+        "en": "Échirolles",
+        "fr": "Échirolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38621149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-eglise-saint-jacques-d-echirolles-q38621149",
+      "latitude": 45.139574,
+      "longitude": 5.719522,
+      "name": {
+        "en": "église Saint-Jacques d'Échirolles",
+        "fr": "église Saint-Jacques d'Échirolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "shopping mall in Grenoble",
+        "fr": "centre commercial et culture régional"
+      },
+      "externalIdentity": {
+        "id": "Q3113431",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "echirolles-grand-place-q3113431",
+      "latitude": 45.15722222,
+      "longitude": 5.73138889,
+      "name": {
+        "en": "Grand'Place",
+        "fr": "Grand'Place"
+      }
+    }
+  ]
+}

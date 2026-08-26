@@ -1,0 +1,394 @@
+{
+  "id": "la-seyne-sur-mer-v1",
+  "cityId": "la-seyne-sur-mer-fr",
+  "cityZoneId": "relation/29188",
+  "cityName": {
+    "en": "La Seyne-sur-Mer",
+    "fr": "La Seyne-sur-Mer"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Amphitria is a distinctive architectural landmark in the city.",
+        "fr": "station d'épuration des eaux en France"
+      },
+      "externalIdentity": {
+        "id": "Q2844424",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-amphitria-q2844424",
+      "latitude": 43.049767,
+      "longitude": 5.851086,
+      "name": {
+        "en": "Amphitria",
+        "fr": "Amphitria"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "batterie de Peyras is an important witness to the city's history.",
+        "fr": "fort de la rade de Toulon"
+      },
+      "externalIdentity": {
+        "id": "Q15154172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-batterie-de-peyras-q15154172",
+      "latitude": 43.0632,
+      "longitude": 5.8609,
+      "name": {
+        "en": "batterie de Peyras",
+        "fr": "batterie de Peyras"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q28040657",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-berthe-q28040657",
+      "latitude": 43.112179,
+      "longitude": 5.865113,
+      "name": {
+        "en": "Berthe",
+        "fr": "Berthe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cape in Provence-Alpes-Côte d'Azur, France",
+        "fr": "cap en France"
+      },
+      "externalIdentity": {
+        "id": "Q34828877",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-cap-sicie-q34828877",
+      "latitude": 43.046852,
+      "longitude": 5.858127,
+      "name": {
+        "en": "cap Sicié",
+        "fr": "cap Sicié"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Var, in France",
+        "fr": "cimetière situé dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2972629",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-cimetiere-marin-de-toulon-q2972629",
+      "latitude": 43.080861111,
+      "longitude": 5.901722222,
+      "name": {
+        "en": "cimetière marin de Toulon",
+        "fr": "cimetière marin de Toulon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in La Seyne-sur-Mer, France",
+        "fr": "île de La Seyne-sur-Mer, France"
+      },
+      "externalIdentity": {
+        "id": "Q3024883",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-deux-freres-q3024883",
+      "latitude": 43.0486,
+      "longitude": 5.86833,
+      "name": {
+        "en": "Deux Frères",
+        "fr": "Deux Frères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Var, in France",
+        "fr": "église située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580404",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-eglise-notre-dame-du-bon-voyage-de-la-seyne-sur-mer-q3580404",
+      "latitude": 43.10048,
+      "longitude": 5.88017,
+      "name": {
+        "en": "église Notre-Dame-du-Bon-Voyage de La Seyne-sur-Mer",
+        "fr": "église Notre-Dame-du-Bon-Voyage de La Seyne-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-du-Bon-Voyage is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-du-Bon-Voyage est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081735",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-eglise-notre-dame-du-bon-voyage-pa00081735",
+      "latitude": 43.100493178461,
+      "longitude": 5.88017386553581,
+      "name": {
+        "en": "Église Notre-Dame-du-Bon-Voyage",
+        "fr": "Église Notre-Dame-du-Bon-Voyage"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place Jean-Lurçat is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Wallace située à La Seyne-sur-Mer, en France"
+      },
+      "externalIdentity": {
+        "id": "Q140315976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-fontaine-wallace-place-jean-lurcat-q140315976",
+      "latitude": 43.079048,
+      "longitude": 5.89362,
+      "name": {
+        "en": "fontaine Wallace, place Jean-Lurçat",
+        "fr": "fontaine Wallace, place Jean-Lurçat"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Seyne-sur-Mer, France",
+        "fr": "fort à La Seyne-sur-Mer (Var)"
+      },
+      "externalIdentity": {
+        "id": "Q3077770",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-fort-balaguier-q3077770",
+      "latitude": 43.0944,
+      "longitude": 5.91103,
+      "name": {
+        "en": "fort Balaguier",
+        "fr": "fort Balaguier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort in Toulon harbour",
+        "fr": "ouvrage militaire"
+      },
+      "externalIdentity": {
+        "id": "Q15972148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-fort-de-l-eguillette-q15972148",
+      "latitude": 43.100323,
+      "longitude": 5.910087,
+      "name": {
+        "en": "fort de l'Éguillette",
+        "fr": "fort de l'Éguillette"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Napoléon is an important witness to the city's history.",
+        "fr": "Fort Napoléon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-fort-napoleon-pa83000048",
+      "latitude": 43.09421893465412,
+      "longitude": 5.893274764690117,
+      "name": {
+        "en": "Fort Napoléon",
+        "fr": "Fort Napoléon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hotel in La Seyne-sur-Mer, France",
+        "fr": "Hôtel"
+      },
+      "externalIdentity": {
+        "id": "Q56522910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-grand-hotel-des-sablettes-plage-curio-collection-by-hilton-q56522910",
+      "latitude": 43.078861,
+      "longitude": 5.891555,
+      "name": {
+        "en": "Grand Hotel des Sablettes Plage, Curio Collection by Hilton",
+        "fr": "Grand Hotel des Sablettes Plage, Curio Collection by Hilton"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "religious building located in Var, in France",
+        "fr": "édifice religieux situé dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24534171",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-grande-mosquee-et-centre-culturel-musulman-de-la-seyne-sur-mer-q24534171",
+      "latitude": 43.115147,
+      "longitude": 5.860529,
+      "name": {
+        "en": "Grande Mosquée et Centre Culturel Musulman de La Seyne-sur-Mer",
+        "fr": "Grande Mosquée et Centre Culturel Musulman de La Seyne-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Institut de biologie marine Michel-Pacha is a distinctive architectural landmark in the city.",
+        "fr": "centre de recherche en biologie et physiologie"
+      },
+      "externalIdentity": {
+        "id": "Q3151976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-institut-de-biologie-marine-michel-pacha-q3151976",
+      "latitude": 43.0881,
+      "longitude": 5.89857,
+      "name": {
+        "en": "Institut de biologie marine Michel-Pacha",
+        "fr": "Institut de biologie marine Michel-Pacha"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Seyne-sur-Mer, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2333352",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-la-seyne-six-fours-q2333352",
+      "latitude": 43.117031,
+      "longitude": 5.876923,
+      "name": {
+        "en": "La Seyne - Six-Fours",
+        "fr": "La Seyne - Six-Fours"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Var, France",
+        "fr": "commune française du département du Var"
+      },
+      "externalIdentity": {
+        "id": "Q208866",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-la-seyne-sur-mer-q208866",
+      "latitude": 43.103055555,
+      "longitude": 5.878333333,
+      "name": {
+        "en": "La Seyne-sur-Mer",
+        "fr": "La Seyne-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "neighborhood in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q19951340",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-les-sablettes-q19951340",
+      "latitude": 43.0814,
+      "longitude": 5.89113,
+      "name": {
+        "en": "Les Sablettes",
+        "fr": "Les Sablettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q2103646",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-seyne-sur-mer-pont-levant-de-la-seyne-sur-mer-q2103646",
+      "latitude": 43.1026,
+      "longitude": 5.883138888,
+      "name": {
+        "en": "pont levant de La Seyne-sur-Mer",
+        "fr": "pont levant de La Seyne-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont-levant is a distinctive architectural landmark in the city.",
+        "fr": "Pont-levant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081737",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-seyne-sur-mer-pont-levant-pa00081737",
+      "latitude": 43.1025834178906,
+      "longitude": 5.88317077658226,
+      "name": {
+        "en": "Pont-levant",
+        "fr": "Pont-levant"
+      }
+    }
+  ]
+}

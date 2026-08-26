@@ -1,0 +1,204 @@
+{
+  "id": "montigny-le-bretonneux-v1",
+  "cityId": "montigny-le-bretonneux-fr",
+  "cityZoneId": "relation/49538",
+  "cityName": {
+    "en": "Montigny-le-Bretonneux",
+    "fr": "Montigny-le-Bretonneux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "ensemble of apartment buildings in the outer Paris ville nouvelle of Saint-Quentin-en-Yvelines, France, near Versailles",
+        "fr": "ensemble architectural"
+      },
+      "externalIdentity": {
+        "id": "Q16303807",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-arcades-du-lac-q16303807",
+      "latitude": 48.767648,
+      "longitude": 2.044338,
+      "name": {
+        "en": "Arcades du Lac",
+        "fr": "Arcades du Lac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort de Saint-Cyr is an important witness to the city's history.",
+        "fr": "Fort de Saint-Cyr est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087791",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montigny-le-bretonneux-fort-de-saint-cyr-pa00087791",
+      "latitude": 48.7930014218469,
+      "longitude": 2.03132296027461,
+      "name": {
+        "en": "Fort de Saint-Cyr",
+        "fr": "Fort de Saint-Cyr"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in France",
+        "fr": "ancien parc dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q3114740",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-grand-parc-de-chasse-de-louis-xiv-q3114740",
+      "latitude": 48.7479,
+      "longitude": 2.0783,
+      "name": {
+        "en": "grand parc de chasse de Louis XIV",
+        "fr": "grand parc de chasse de Louis XIV"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q2886606",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-ile-de-loisirs-de-saint-quentin-en-yvelines-q2886606",
+      "latitude": 48.7875,
+      "longitude": 2.007777777,
+      "name": {
+        "en": "Île de loisirs de Saint-Quentin-en-Yvelines",
+        "fr": "Île de loisirs de Saint-Quentin-en-Yvelines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "primary & middle school in Montigny-le-Bretonneux, France",
+        "fr": "Institut culturel franco-japonais - École japonaise de Paris est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q15520417",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-institut-culturel-franco-japonais-ecole-japonaise-de-paris-q15520417",
+      "latitude": 48.79133,
+      "longitude": 2.03457,
+      "name": {
+        "en": "Institut culturel franco-japonais - École japonaise de Paris",
+        "fr": "Institut culturel franco-japonais - École japonaise de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Porte de Paris is an important witness to the city's history.",
+        "fr": "œuvre d'art de Piotr Kowalski à Montigny-le-Bretonneux, France"
+      },
+      "externalIdentity": {
+        "id": "Q109772773",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-la-porte-de-paris-q109772773",
+      "latitude": 48.7902,
+      "longitude": 2.0352,
+      "name": {
+        "en": "La Porte de Paris",
+        "fr": "La Porte de Paris"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "La Voilure is a notable work of public art and local memory.",
+        "fr": "sculpture en France, à Montigny-le-Bretonneux"
+      },
+      "externalIdentity": {
+        "id": "Q136074236",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-la-voilure-q136074236",
+      "latitude": 48.766881,
+      "longitude": 2.046237,
+      "name": {
+        "en": "La Voilure",
+        "fr": "La Voilure"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330084",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-musee-de-la-ville-de-saint-quentin-en-yvelines-q3330084",
+      "latitude": 48.7832,
+      "longitude": 2.04249,
+      "name": {
+        "en": "musée de la ville de Saint-Quentin-en-Yvelines",
+        "fr": "musée de la ville de Saint-Quentin-en-Yvelines"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la ville is one of the city's notable cultural landmarks.",
+        "fr": "musée de la ville compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0398",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montigny-le-bretonneux-musee-de-la-ville-m0398",
+      "latitude": 48.782594,
+      "longitude": 2.042664,
+      "name": {
+        "en": "musée de la ville",
+        "fr": "musée de la ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Montigny-le-Bretonneux, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097620",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-le-bretonneux-saint-quentin-en-yvelines-q3097620",
+      "latitude": 48.787222222,
+      "longitude": 2.044444444,
+      "name": {
+        "en": "Saint-Quentin-en-Yvelines",
+        "fr": "Saint-Quentin-en-Yvelines"
+      }
+    }
+  ]
+}

@@ -6,46 +6,46 @@
     "en": "Montpellier",
     "fr": "Montpellier"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "history",
+      "category": "architecture",
       "description": {
-        "en": "Domaine du château de Flaugergue is an important witness to the city's history.",
-        "fr": "Domaine du château de Flaugergue est un témoin important de l’histoire de la ville."
+        "en": "Ancien hôtel de Belleval, dit aussi Richer de Belleval ou Boulhaco, ou ancien hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de Belleval, dit aussi Richer de Belleval ou Boulhaco, ou ancien hôtel de ville est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00103525",
+        "id": "PA00103551",
         "source": "merimee",
         "type": "record"
       },
-      "id": "montpellier-domaine-du-chateau-de-flaugergue-pa00103525",
-      "latitude": 43.609297583608,
-      "longitude": 3.92135131522378,
+      "id": "montpellier-ancien-hotel-de-belleval-dit-aussi-richer-de-belleval-ou-boulhaco-ou-ancien-hotel-de-ville-pa00103551",
+      "latitude": 43.611854718784,
+      "longitude": 3.8750243177164005,
       "name": {
-        "en": "Domaine du château de Flaugergue",
-        "fr": "Domaine du château de Flaugergue"
+        "en": "Ancien hôtel de Belleval, dit aussi Richer de Belleval ou Boulhaco, ou ancien hôtel de ville",
+        "fr": "Ancien hôtel de Belleval, dit aussi Richer de Belleval ou Boulhaco, ou ancien hôtel de ville"
       }
     },
     {
       "category": "history",
       "description": {
-        "en": "Domaine du château de Bonnier de la Mosson is an important witness to the city's history.",
-        "fr": "Domaine du château de Bonnier de la Mosson est un témoin important de l’histoire de la ville."
+        "en": "Ancien observatoire dit Tour de la Babotte is an important witness to the city's history.",
+        "fr": "Ancien observatoire dit Tour de la Babotte est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "PA00103528",
+        "id": "PA00103606",
         "source": "merimee",
         "type": "record"
       },
-      "id": "montpellier-domaine-du-chateau-de-bonnier-de-la-mosson-pa00103528",
-      "latitude": 43.6122275537253,
-      "longitude": 3.8203415227299202,
+      "id": "montpellier-ancien-observatoire-dit-tour-de-la-babotte-pa00103606",
+      "latitude": 43.6064542940112,
+      "longitude": 3.87726900097128,
       "name": {
-        "en": "Domaine du château de Bonnier de la Mosson",
-        "fr": "Domaine du château de Bonnier de la Mosson"
+        "en": "Ancien observatoire dit Tour de la Babotte",
+        "fr": "Ancien observatoire dit Tour de la Babotte"
       }
     },
     {
@@ -70,6 +70,44 @@
     {
       "category": "history",
       "description": {
+        "en": "Château d'O is an important witness to the city's history.",
+        "fr": "Château d'O est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103529",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-chateau-d-o-pa00103529",
+      "latitude": 43.6335502742631,
+      "longitude": 3.83828470037182,
+      "name": {
+        "en": "Château d'O",
+        "fr": "Château d'O"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Mogère is an important witness to the city's history.",
+        "fr": "Château de la Mogère est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103527",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-chateau-de-la-mogere-pa00103527",
+      "latitude": 43.6005504126699,
+      "longitude": 3.9264778090363994,
+      "name": {
+        "en": "Château de la Mogère",
+        "fr": "Château de la Mogère"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
         "en": "Château et Parc de la Piscine is an important witness to the city's history.",
         "fr": "Château et Parc de la Piscine est un témoin important de l’histoire de la ville."
       },
@@ -84,6 +122,158 @@
       "name": {
         "en": "Château et Parc de la Piscine",
         "fr": "Château et Parc de la Piscine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Levat is an important witness to the city's history.",
+        "fr": "Château Levat est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103526",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-chateau-levat-pa00103526",
+      "latitude": 43.6227512936595,
+      "longitude": 3.8893431438333,
+      "name": {
+        "en": "Château Levat",
+        "fr": "Château Levat"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Bonnier de la Mosson is an important witness to the city's history.",
+        "fr": "Domaine du château de Bonnier de la Mosson est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103528",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-domaine-du-chateau-de-bonnier-de-la-mosson-pa00103528",
+      "latitude": 43.6122275537253,
+      "longitude": 3.8203415227299202,
+      "name": {
+        "en": "Domaine du château de Bonnier de la Mosson",
+        "fr": "Domaine du château de Bonnier de la Mosson"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Flaugergue is an important witness to the city's history.",
+        "fr": "Domaine du château de Flaugergue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103525",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-domaine-du-chateau-de-flaugergue-pa00103525",
+      "latitude": 43.609297583608,
+      "longitude": 3.92135131522378,
+      "name": {
+        "en": "Domaine du château de Flaugergue",
+        "fr": "Domaine du château de Flaugergue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église des Pénitents Blancs is a distinctive architectural landmark in the city.",
+        "fr": "Église des Pénitents Blancs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103523",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-eglise-des-penitents-blancs-pa00103523",
+      "latitude": 43.60964541039431,
+      "longitude": 3.87950521294717,
+      "name": {
+        "en": "Église des Pénitents Blancs",
+        "fr": "Église des Pénitents Blancs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Croix de Celleneuve is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Croix de Celleneuve est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103537",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-eglise-sainte-croix-de-celleneuve-pa00103537",
+      "latitude": 43.6131868923611,
+      "longitude": 3.8286389581409197,
+      "name": {
+        "en": "Église Sainte-Croix de Celleneuve",
+        "fr": "Église Sainte-Croix de Celleneuve"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ensemble immobilier désigné comme \"faculté de médecine\" (ancien couvent Saint-Benoît, ancien évêché et faculté de médecine avec le musée d'anatomie) is one of the city's notable cultural landmarks.",
+        "fr": "Ensemble immobilier désigné comme \"faculté de médecine\" (ancien couvent Saint-Benoît, ancien évêché et faculté de médecine avec le musée d'anatomie) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103539",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-ensemble-immobilier-designe-comme-faculte-de-medecine-ancien-couvent-saint-benoit-ancien-eveche-et-faculte-de-medecine-avec-le-musee-d-anatomie-pa00103539",
+      "latitude": 43.6131773677964,
+      "longitude": 3.8734387988030194,
+      "name": {
+        "en": "Ensemble immobilier désigné comme \"faculté de médecine\" (ancien couvent Saint-Benoît, ancien évêché et faculté de médecine avec le musée d'anatomie)",
+        "fr": "Ensemble immobilier désigné comme \"faculté de médecine\" (ancien couvent Saint-Benoît, ancien évêché et faculté de médecine avec le musée d'anatomie)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Évêché is a distinctive architectural landmark in the city.",
+        "fr": "Évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000073",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-eveche-pa34000073",
+      "latitude": 43.61357757830551,
+      "longitude": 3.8753148478318504,
+      "name": {
+        "en": "Évêché",
+        "fr": "Évêché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble, ancienne synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble, ancienne synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103772",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-immeuble-ancienne-synagogue-pa00103772",
+      "latitude": 43.611179677587,
+      "longitude": 3.8756086480070207,
+      "name": {
+        "en": "Immeuble, ancienne synagogue",
+        "fr": "Immeuble, ancienne synagogue"
       }
     },
     {
@@ -103,6 +293,25 @@
       "name": {
         "en": "musée de l'hôtel d'Espeyran",
         "fr": "musée de l'hôtel d'Espeyran"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieux Montpellier is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieux Montpellier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0478",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montpellier-musee-du-vieux-montpellier-m0478",
+      "latitude": 43.610788,
+      "longitude": 3.878349,
+      "name": {
+        "en": "musée du vieux Montpellier",
+        "fr": "musée du vieux Montpellier"
       }
     },
     {
@@ -160,6 +369,25 @@
       "name": {
         "en": "stade de la Mosson",
         "fr": "stade de la Mosson"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal dit Théâtre Opéra Comédie is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal dit Théâtre Opéra Comédie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA34000131",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montpellier-theatre-municipal-dit-theatre-opera-comedie-pa34000131",
+      "latitude": 43.60784699521854,
+      "longitude": 3.8787233348293917,
+      "name": {
+        "en": "Théâtre municipal dit Théâtre Opéra Comédie",
+        "fr": "Théâtre municipal dit Théâtre Opéra Comédie"
       }
     }
   ]

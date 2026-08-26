@@ -1,0 +1,204 @@
+{
+  "id": "saint-martin-v1",
+  "cityId": "saint-martin-fr",
+  "cityZoneId": "relation/299354",
+  "cityName": {
+    "en": "Saint-Martin",
+    "fr": "Saint-Martin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport",
+        "fr": "aéroport desservant Grand-Case (Saint-Martin, France)"
+      },
+      "externalIdentity": {
+        "id": "Q1432662",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-aeroport-de-grand-case-esperance-q1432662",
+      "latitude": 18.099913888,
+      "longitude": -63.047197222,
+      "name": {
+        "en": "aéroport de Grand-Case Espérance",
+        "fr": "aéroport de Grand-Case Espérance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "strait",
+        "fr": "canal d'Anguilla est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q1215241",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-canal-d-anguilla-q1215241",
+      "latitude": 18.145526,
+      "longitude": -63.050537,
+      "name": {
+        "en": "canal d'Anguilla",
+        "fr": "canal d'Anguilla"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "island in France",
+        "fr": "Caye Chateau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q27572555",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-caye-chateau-q27572555",
+      "latitude": 18.068611111,
+      "longitude": -63.010833333,
+      "name": {
+        "en": "Caye Chateau",
+        "fr": "Caye Chateau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Saint-Martin, in France",
+        "fr": "église située à Saint-Martin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28653516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-eglise-marie-etoile-de-la-mer-de-grand-case-q28653516",
+      "latitude": 18.101068,
+      "longitude": -63.056974,
+      "name": {
+        "en": "église Marie-Étoile-de-la-Mer de Grand-Case",
+        "fr": "église Marie-Étoile-de-la-Mer de Grand-Case"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Saint-Martin, in France",
+        "fr": "église située à Saint-Martin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28653426",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-eglise-saint-martin-de-tours-de-marigot-q28653426",
+      "latitude": 18.069363,
+      "longitude": -63.08411,
+      "name": {
+        "en": "église Saint-Martin-de-Tours de Marigot",
+        "fr": "église Saint-Martin-de-Tours de Marigot"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "former military fort in Marigot, St. Martin",
+        "fr": "fort Louis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3077924",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-fort-louis-q3077924",
+      "latitude": 18.0708,
+      "longitude": -63.0854,
+      "name": {
+        "en": "fort Louis",
+        "fr": "fort Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "capital of the French Collectivity of Saint Martin",
+        "fr": "commune française de la collectivité d'outre-mer de Saint-Martin (chef-lieu)"
+      },
+      "externalIdentity": {
+        "id": "Q200605",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-marigot-q200605",
+      "latitude": 18.066666666,
+      "longitude": -63.084722222,
+      "name": {
+        "en": "Marigot",
+        "fr": "Marigot"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "hill in Saint Martin, France",
+        "fr": "Mont Fortune est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q27572599",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-mont-fortune-q27572599",
+      "latitude": 18.04972,
+      "longitude": -63.09371,
+      "name": {
+        "en": "Mont Fortune",
+        "fr": "Mont Fortune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "montagne française"
+      },
+      "externalIdentity": {
+        "id": "Q5919800",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-pic-paradis-q5919800",
+      "latitude": 18.075277777,
+      "longitude": -63.06,
+      "name": {
+        "en": "pic Paradis",
+        "fr": "pic Paradis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hamlet in Saint-Martin",
+        "fr": "village de Saint-Martin"
+      },
+      "externalIdentity": {
+        "id": "Q3413022",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-quartier-d-orleans-q3413022",
+      "latitude": 18.071,
+      "longitude": -63.032,
+      "name": {
+        "en": "Quartier-d'Orléans",
+        "fr": "Quartier-d'Orléans"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "l-hay-les-roses-v1",
+  "cityId": "l-hay-les-roses-fr",
+  "cityZoneId": "relation/79593",
+  "cityName": {
+    "en": "L'Haÿ-les-Roses",
+    "fr": "L'Haÿ-les-Roses"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in L'Haÿ-les-Roses, France",
+        "fr": "château français situé à L'Haÿ-les-Roses"
+      },
+      "externalIdentity": {
+        "id": "Q78661663",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-chateau-des-tournelles-q78661663",
+      "latitude": 48.776264,
+      "longitude": 2.338629,
+      "name": {
+        "en": "château des Tournelles",
+        "fr": "château des Tournelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q81945522",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-cimetiere-de-l-hay-les-roses-q81945522",
+      "latitude": 48.78099,
+      "longitude": 2.33831,
+      "name": {
+        "en": "cimetière de L'Haÿ-les-Roses",
+        "fr": "cimetière de L'Haÿ-les-Roses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31431786",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-eglise-saint-leonard-de-l-hay-les-roses-q31431786",
+      "latitude": 48.778147,
+      "longitude": 2.334973,
+      "name": {
+        "en": "église Saint-Léonard de L'Haÿ-les-Roses",
+        "fr": "église Saint-Léonard de L'Haÿ-les-Roses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38518268",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-eglise-sainte-louise-de-l-hay-les-roses-q38518268",
+      "latitude": 48.77186,
+      "longitude": 2.32956,
+      "name": {
+        "en": "église Sainte-Louise de L'Haÿ-les-Roses",
+        "fr": "église Sainte-Louise de L'Haÿ-les-Roses"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Bronzac is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à L'Haÿ-les-Roses, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88807573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-fontaine-bronzac-q88807573",
+      "latitude": 48.777849,
+      "longitude": 2.333881,
+      "name": {
+        "en": "fontaine Bronzac",
+        "fr": "fontaine Bronzac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in L'Haÿ-les-Roses, Val-de-Marne, France",
+        "fr": "édifice de L'Haÿ-les-Roses, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412772",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-hotel-de-ville-de-l-hay-les-roses-q83412772",
+      "latitude": 48.7793,
+      "longitude": 2.3374,
+      "name": {
+        "en": "hôtel de ville de L'Haÿ-les-Roses",
+        "fr": "hôtel de ville de L'Haÿ-les-Roses"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de L'Haÿ-les-Roses is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à L'Haÿ-les-Roses, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88807797",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-monument-aux-morts-de-l-hay-les-roses-q88807797",
+      "latitude": 48.77633,
+      "longitude": 2.3306,
+      "name": {
+        "en": "monument aux morts de L'Haÿ-les-Roses",
+        "fr": "monument aux morts de L'Haÿ-les-Roses"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument commémoratif du 35e de Ligne is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à L'Haÿ-les-Roses, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88807800",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-monument-commemoratif-du-35e-de-ligne-q88807800",
+      "latitude": 48.77629,
+      "longitude": 2.35826,
+      "name": {
+        "en": "monument commémoratif du 35e de Ligne",
+        "fr": "monument commémoratif du 35e de Ligne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc départemental de la Roseraie is one of the city's notable green or natural landmarks.",
+        "fr": "espace vert en France"
+      },
+      "externalIdentity": {
+        "id": "Q111517631",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "l-hay-les-roses-parc-departemental-de-la-roseraie-q111517631",
+      "latitude": 48.775443,
+      "longitude": 2.333767,
+      "name": {
+        "en": "parc départemental de la Roseraie",
+        "fr": "parc départemental de la Roseraie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roseraie du conseil général du Val-de-Marne, ancienne roseraie Gravereaux is a distinctive architectural landmark in the city.",
+        "fr": "Roseraie du conseil général du Val-de-Marne, ancienne roseraie Gravereaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA94000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "l-hay-les-roses-roseraie-du-conseil-general-du-val-de-marne-ancienne-roseraie-gravereaux-pa94000020",
+      "latitude": 48.776213697962,
+      "longitude": 2.33514478185055,
+      "name": {
+        "en": "Roseraie du conseil général du Val-de-Marne, ancienne roseraie Gravereaux",
+        "fr": "Roseraie du conseil général du Val-de-Marne, ancienne roseraie Gravereaux"
+      }
+    }
+  ]
+}

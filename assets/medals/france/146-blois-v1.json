@@ -1,0 +1,204 @@
+{
+  "id": "blois-v1",
+  "cityId": "blois-fr",
+  "cityZoneId": "relation/273622",
+  "cityName": {
+    "en": "Blois",
+    "fr": "Blois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Lomer, ou ancien Hôtel-Dieu is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Lomer, ou ancien Hôtel-Dieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098334",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-ancien-abbaye-saint-lomer-ou-ancien-hotel-dieu-pa00098334",
+      "latitude": 47.5835234371326,
+      "longitude": 1.3316706149784001,
+      "name": {
+        "en": "Ancien abbaye Saint-Lomer, ou ancien Hôtel-Dieu",
+        "fr": "Ancien abbaye Saint-Lomer, ou ancien Hôtel-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098346",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-ancien-eveche-pa00098346",
+      "latitude": 47.5892430379916,
+      "longitude": 1.33806261872284,
+      "name": {
+        "en": "Ancien évêché",
+        "fr": "Ancien évêché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Notre-Dame de la Trinité is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Notre-Dame de la Trinité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132568",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-basilique-notre-dame-de-la-trinite-pa00132568",
+      "latitude": 47.5939019586774,
+      "longitude": 1.34310650058959,
+      "name": {
+        "en": "Basilique Notre-Dame de la Trinité",
+        "fr": "Basilique Notre-Dame de la Trinité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098336",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-cathedrale-saint-louis-pa00098336",
+      "latitude": 47.5884971644133,
+      "longitude": 1.33650911302478,
+      "name": {
+        "en": "Cathédrale Saint-Louis",
+        "fr": "Cathédrale Saint-Louis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Blois is an important witness to the city's history.",
+        "fr": "Château de Blois est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098337",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-chateau-de-blois-pa00098337",
+      "latitude": 47.5855223590881,
+      "longitude": 1.3304168933164,
+      "name": {
+        "en": "Château de Blois",
+        "fr": "Château de Blois"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Vicomté is an important witness to the city's history.",
+        "fr": "Château de la Vicomté est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098338",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-chateau-de-la-vicomte-pa00098338",
+      "latitude": 47.5448957380079,
+      "longitude": 1.28061755937374,
+      "name": {
+        "en": "Château de la Vicomté",
+        "fr": "Château de la Vicomté"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "château musées is one of the city's notable cultural landmarks.",
+        "fr": "château musées compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0271",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "blois-chateau-musees-m0271",
+      "latitude": 47.585598,
+      "longitude": 1.331665,
+      "name": {
+        "en": "château musées",
+        "fr": "château musées"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas-Saint-Lomer is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas-Saint-Lomer est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blois-eglise-saint-nicolas-saint-lomer-pa00098343",
+      "latitude": 47.5841760020367,
+      "longitude": 1.33141797384602,
+      "name": {
+        "en": "Église Saint-Nicolas-Saint-Lomer",
+        "fr": "Église Saint-Nicolas-Saint-Lomer"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "maison de la magie is one of the city's notable cultural landmarks.",
+        "fr": "maison de la magie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1083",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "blois-maison-de-la-magie-m1083",
+      "latitude": 47.586566,
+      "longitude": 1.332917,
+      "name": {
+        "en": "maison de la magie",
+        "fr": "maison de la magie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7024",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "blois-museum-d-histoire-naturelle-m7024",
+      "latitude": 47.585122,
+      "longitude": 1.33302,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    }
+  ]
+}

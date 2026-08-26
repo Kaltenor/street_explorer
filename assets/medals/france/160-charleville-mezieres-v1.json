@@ -1,0 +1,204 @@
+{
+  "id": "charleville-mezieres-v1",
+  "cityId": "charleville-mezieres-fr",
+  "cityZoneId": "relation/153838",
+  "cityName": {
+    "en": "Charleville-Mézières",
+    "fr": "Charleville-Mézières"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Notre-Dame de l'Espérance is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Notre-Dame de l'Espérance est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078361",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-basilique-notre-dame-de-l-esperance-pa00078361",
+      "latitude": 49.7610567473514,
+      "longitude": 4.71582151418212,
+      "name": {
+        "en": "Basilique Notre-Dame de l'Espérance",
+        "fr": "Basilique Notre-Dame de l'Espérance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Lie de Mohon is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Lie de Mohon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078362",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-eglise-saint-lie-de-mohon-pa00078362",
+      "latitude": 49.7526462586358,
+      "longitude": 4.73222756207128,
+      "name": {
+        "en": "Église Saint-Lie de Mohon",
+        "fr": "Église Saint-Lie de Mohon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078365",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-hotel-de-ville-pa00078365",
+      "latitude": 49.7735277479754,
+      "longitude": 4.71985939072498,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078366",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-immeuble-pa00078366",
+      "latitude": 49.7738170264767,
+      "longitude": 4.72002713357169,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison Fortan (ancienne) is an important witness to the city's history.",
+        "fr": "Maison Fortan (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078414",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-maison-fortan-ancienne-pa00078414",
+      "latitude": 49.760772100229616,
+      "longitude": 4.719459053747838,
+      "name": {
+        "en": "Maison Fortan (ancienne)",
+        "fr": "Maison Fortan (ancienne)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Arthur Rimbaud is one of the city's notable cultural landmarks.",
+        "fr": "musée Arthur Rimbaud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0291",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-musee-arthur-rimbaud-m0291",
+      "latitude": 49.776034,
+      "longitude": 4.720613,
+      "name": {
+        "en": "musée Arthur Rimbaud",
+        "fr": "musée Arthur Rimbaud"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Ardenne is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Ardenne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0292",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-musee-de-l-ardenne-m0292",
+      "latitude": 49.773836,
+      "longitude": 4.721238,
+      "name": {
+        "en": "musée de l'Ardenne",
+        "fr": "musée de l'Ardenne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts (anciens) is an important witness to the city's history.",
+        "fr": "Remparts (anciens) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078418",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-remparts-anciens-pa00078418",
+      "latitude": 49.759761,
+      "longitude": 4.720058,
+      "name": {
+        "en": "Remparts (anciens)",
+        "fr": "Remparts (anciens)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Vieux moulin, actuellement musées Rimbaud et de l'Ardenne is one of the city's notable cultural landmarks.",
+        "fr": "Vieux moulin, actuellement musées Rimbaud et de l'Ardenne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078419",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-vieux-moulin-actuellement-musees-rimbaud-et-de-l-ardenne-pa00078419",
+      "latitude": 49.7757286892089,
+      "longitude": 4.72205469767537,
+      "name": {
+        "en": "Vieux moulin, actuellement musées Rimbaud et de l'Ardenne",
+        "fr": "Vieux moulin, actuellement musées Rimbaud et de l'Ardenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de l'Ardenne, ancienne maison Blairon is a distinctive architectural landmark in the city.",
+        "fr": "Maison de l'Ardenne, ancienne maison Blairon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078413",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charleville-mezieres-maison-de-l-ardenne-ancienne-maison-blairon-pa00078413",
+      "latitude": 49.7679994717825,
+      "longitude": 4.72185053339941,
+      "name": {
+        "en": "Maison de l'Ardenne, ancienne maison Blairon",
+        "fr": "Maison de l'Ardenne, ancienne maison Blairon"
+      }
+    }
+  ]
+}

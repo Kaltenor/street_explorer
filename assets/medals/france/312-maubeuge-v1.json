@@ -1,0 +1,204 @@
+{
+  "id": "maubeuge-v1",
+  "cityId": "maubeuge-fr",
+  "cityZoneId": "relation/55074",
+  "cityName": {
+    "en": "Maubeuge",
+    "fr": "Maubeuge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien CAF-CPAM is a distinctive architectural landmark in the city.",
+        "fr": "Ancien CAF-CPAM est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000227",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-ancien-caf-cpam-pa59000227",
+      "latitude": 50.27500049380807,
+      "longitude": 3.969700972226031,
+      "name": {
+        "en": "Ancien CAF-CPAM",
+        "fr": "Ancien CAF-CPAM"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien chapelle du collège des Jésuites, actuellement salle Sthrau is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chapelle du collège des Jésuites, actuellement salle Sthrau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107747",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-ancien-chapelle-du-college-des-jesuites-actuellement-salle-sthrau-pa00107747",
+      "latitude": 50.2781298794133,
+      "longitude": 3.9718897122633905,
+      "name": {
+        "en": "Ancien chapelle du collège des Jésuites, actuellement salle Sthrau",
+        "fr": "Ancien chapelle du collège des Jésuites, actuellement salle Sthrau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien chapitre des Chanoinesses is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chapitre des Chanoinesses est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107746",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-ancien-chapitre-des-chanoinesses-pa00107746",
+      "latitude": 50.277182287184,
+      "longitude": 3.97566299799694,
+      "name": {
+        "en": "Ancien chapitre des Chanoinesses",
+        "fr": "Ancien chapitre des Chanoinesses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Arsenal, quai de Jemmapes is a distinctive architectural landmark in the city.",
+        "fr": "Arsenal, quai de Jemmapes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000222",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-arsenal-quai-de-jemmapes-pa59000222",
+      "latitude": 50.276067771906696,
+      "longitude": 3.9759286519310986,
+      "name": {
+        "en": "Arsenal, quai de Jemmapes",
+        "fr": "Arsenal, quai de Jemmapes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications is an important witness to the city's history.",
+        "fr": "Fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107748",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-fortifications-pa00107748",
+      "latitude": 50.2808653298635,
+      "longitude": 3.973417759873818,
+      "name": {
+        "en": "Fortifications",
+        "fr": "Fortifications"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Henri Boez is one of the city's notable cultural landmarks.",
+        "fr": "musée Henri Boez compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0633",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "maubeuge-musee-henri-boez-m0633",
+      "latitude": 50.28041196902142,
+      "longitude": 3.9676830573373683,
+      "name": {
+        "en": "musée Henri Boez",
+        "fr": "musée Henri Boez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Béguinage des Cantuaines is a distinctive architectural landmark in the city.",
+        "fr": "Béguinage des Cantuaines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107745",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-beguinage-des-cantuaines-pa00107745",
+      "latitude": 50.276886537698,
+      "longitude": 3.97780516523852,
+      "name": {
+        "en": "Béguinage des Cantuaines",
+        "fr": "Béguinage des Cantuaines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame du Tilleul ou église de Sous-le-Bois is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame du Tilleul ou église de Sous-le-Bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000094",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-eglise-notre-dame-du-tilleul-ou-eglise-de-sous-le-bois-pa59000094",
+      "latitude": 50.2703168970544,
+      "longitude": 3.94598752347652,
+      "name": {
+        "en": "Église Notre-Dame du Tilleul ou église de Sous-le-Bois",
+        "fr": "Église Notre-Dame du Tilleul ou église de Sous-le-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000089",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-eglise-saint-pierre-saint-paul-pa59000089",
+      "latitude": 50.2791539904308,
+      "longitude": 3.9728577932633797,
+      "name": {
+        "en": "Église Saint-Pierre-Saint-Paul",
+        "fr": "Église Saint-Pierre-Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôpital Militaire is a distinctive architectural landmark in the city.",
+        "fr": "Hôpital Militaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107749",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maubeuge-hopital-militaire-pa00107749",
+      "latitude": 50.2778280357031,
+      "longitude": 3.97546064969689,
+      "name": {
+        "en": "Hôpital Militaire",
+        "fr": "Hôpital Militaire"
+      }
+    }
+  ]
+}

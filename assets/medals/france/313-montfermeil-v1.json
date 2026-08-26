@@ -1,0 +1,204 @@
+{
+  "id": "montfermeil-v1",
+  "cityId": "montfermeil-fr",
+  "cityZoneId": "relation/162851",
+  "cityName": {
+    "en": "Montfermeil",
+    "fr": "Montfermeil"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) ou Château des Cèdres is an important witness to the city's history.",
+        "fr": "Château (ancien) ou Château des Cèdres est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079936",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montfermeil-chateau-ancien-ou-chateau-des-cedres-pa00079936",
+      "latitude": 48.898600616370004,
+      "longitude": 2.56726396549054,
+      "name": {
+        "en": "Château (ancien) ou Château des Cèdres",
+        "fr": "Château (ancien) ou Château des Cèdres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20011781",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-eglise-notre-dame-de-lourdes-des-coudreaux-q20011781",
+      "latitude": 48.90413,
+      "longitude": 2.5847,
+      "name": {
+        "en": "église Notre-Dame-de-Lourdes des Coudreaux",
+        "fr": "église Notre-Dame-de-Lourdes des Coudreaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958323",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-eglise-saint-pierre-saint-paul-de-montfermeil-q15958323",
+      "latitude": 48.89908,
+      "longitude": 2.56856,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de Montfermeil",
+        "fr": "église Saint-Pierre-Saint-Paul de Montfermeil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Jean-Valjean is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine de Montfermeil, France"
+      },
+      "externalIdentity": {
+        "id": "Q3076020",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-fontaine-jean-valjean-q3076020",
+      "latitude": 48.897,
+      "longitude": 2.56758,
+      "name": {
+        "en": "fontaine Jean-Valjean",
+        "fr": "fontaine Jean-Valjean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Montfermeil, France",
+        "fr": "hôtel de ville de la Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q33657033",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-hotel-de-ville-de-montfermeil-q33657033",
+      "latitude": 48.90225,
+      "longitude": 2.57091667,
+      "name": {
+        "en": "hôtel de ville de Montfermeil",
+        "fr": "hôtel de ville de Montfermeil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison Bourlon (ancienne) ou Petit Château is an important witness to the city's history.",
+        "fr": "Maison Bourlon (ancienne) ou Petit Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079937",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montfermeil-maison-bourlon-ancienne-ou-petit-chateau-pa00079937",
+      "latitude": 48.8984508318035,
+      "longitude": 2.56359855254125,
+      "name": {
+        "en": "Maison Bourlon (ancienne) ou Petit Château",
+        "fr": "Maison Bourlon (ancienne) ou Petit Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "windmill in Montfermeil, France",
+        "fr": "moulin situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3325640",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-moulin-de-montfermeil-q3325640",
+      "latitude": 48.89625,
+      "longitude": 2.58532,
+      "name": {
+        "en": "moulin de Montfermeil",
+        "fr": "moulin de Montfermeil"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-musee-du-travail-q3330393",
+      "latitude": 48.8984,
+      "longitude": 2.56355,
+      "name": {
+        "en": "musée du Travail",
+        "fr": "musée du Travail"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q944730",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-parc-arboretum-de-montfermeil-q944730",
+      "latitude": 48.896631,
+      "longitude": 2.569706,
+      "name": {
+        "en": "parc arboretum de Montfermeil",
+        "fr": "parc arboretum de Montfermeil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Petit Château is an important witness to the city's history.",
+        "fr": "château à Montfermeil (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q3377127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montfermeil-petit-chateau-q3377127",
+      "latitude": 48.8988,
+      "longitude": 2.5641,
+      "name": {
+        "en": "Petit Château",
+        "fr": "Petit Château"
+      }
+    }
+  ]
+}

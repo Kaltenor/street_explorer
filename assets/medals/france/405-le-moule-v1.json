@@ -1,0 +1,204 @@
+{
+  "id": "le-moule-v1",
+  "cityId": "le-moule-fr",
+  "cityZoneId": "relation/254386",
+  "cityName": {
+    "en": "Le Moule",
+    "fr": "Le Moule"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "\"Abri Patate\" is an important witness to the city's history.",
+        "fr": "\"Abri Patate\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97100046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-moule-abri-patate-pa97100046",
+      "latitude": 16.3487034763768,
+      "longitude": -61.3892111728057,
+      "name": {
+        "en": "\"Abri Patate\"",
+        "fr": "\"Abri Patate\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q165703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-canton-du-moule-1-q165703",
+      "latitude": 16.334333,
+      "longitude": -61.349,
+      "name": {
+        "en": "canton du Moule-1",
+        "fr": "canton du Moule-1"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "distillerie Damoiseau is a distinctive architectural landmark in the city.",
+        "fr": "distillerie  de rhum"
+      },
+      "externalIdentity": {
+        "id": "Q3030719",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-distillerie-damoiseau-q3030719",
+      "latitude": 16.329231,
+      "longitude": -61.353699,
+      "name": {
+        "en": "distillerie Damoiseau",
+        "fr": "distillerie Damoiseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105861",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-moule-eglise-pa00105861",
+      "latitude": 16.3311211072396,
+      "longitude": -61.344551488447905,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15953716",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-eglise-saint-jean-baptiste-du-moule-q15953716",
+      "latitude": 16.3311,
+      "longitude": -61.3444,
+      "name": {
+        "en": "église Saint-Jean-Baptiste du Moule",
+        "fr": "église Saint-Jean-Baptiste du Moule"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée précolombien Edgar Clerc is one of the city's notable cultural landmarks.",
+        "fr": "musée précolombien Edgar Clerc compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1060",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-moule-musee-precolombien-edgar-clerc-m1060",
+      "latitude": 15.850088,
+      "longitude": -61.646677,
+      "name": {
+        "en": "musée précolombien Edgar Clerc",
+        "fr": "musée précolombien Edgar Clerc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Petite Porte is an important witness to the city's history.",
+        "fr": "détroit de Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q24855438",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-petite-porte-q24855438",
+      "latitude": 16.31667,
+      "longitude": -61.28333,
+      "name": {
+        "en": "Petite Porte",
+        "fr": "Petite Porte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "habitation Zévallos is a distinctive architectural landmark in the city.",
+        "fr": "ancienne plantation coloniale au Moule (Guadeloupe)"
+      },
+      "externalIdentity": {
+        "id": "Q15950320",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-habitation-zevallos-q15950320",
+      "latitude": 16.3056,
+      "longitude": -61.3022,
+      "name": {
+        "en": "habitation Zévallos",
+        "fr": "habitation Zévallos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Guadeloupe, France",
+        "fr": "commune française du département d'outre-mer de la Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q845039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-le-moule-q845039",
+      "latitude": 16.331111111,
+      "longitude": -61.343611111,
+      "name": {
+        "en": "Le Moule",
+        "fr": "Le Moule"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de l'Autre Bord is a distinctive architectural landmark in the city.",
+        "fr": "plage de sable fin en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q24878700",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-moule-plage-de-l-autre-bord-q24878700",
+      "latitude": 16.3335,
+      "longitude": -61.3371,
+      "name": {
+        "en": "plage de l'Autre Bord",
+        "fr": "plage de l'Autre Bord"
+      }
+    }
+  ]
+}

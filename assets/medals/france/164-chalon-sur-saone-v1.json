@@ -1,0 +1,204 @@
+{
+  "id": "chalon-sur-saone-v1",
+  "cityId": "chalon-sur-saone-fr",
+  "cityZoneId": "relation/2078971",
+  "cityName": {
+    "en": "Chalon-sur-Saône",
+    "fr": "Chalon-sur-Saône"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Pierre (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Pierre (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113147",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-abbaye-saint-pierre-ancienne-pa00113147",
+      "latitude": 46.7866936697858,
+      "longitude": 4.85196471670265,
+      "name": {
+        "en": "Abbaye Saint-Pierre (ancienne)",
+        "fr": "Abbaye Saint-Pierre (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113153",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-ancien-palais-episcopal-pa00113153",
+      "latitude": 46.78307766085,
+      "longitude": 4.85837772131713,
+      "name": {
+        "en": "Ancien palais épiscopal",
+        "fr": "Ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Vincent (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Vincent (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113149",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-cathedrale-saint-vincent-ancienne-pa00113149",
+      "latitude": 46.7825035782079,
+      "longitude": 4.85903912614974,
+      "name": {
+        "en": "Cathédrale Saint-Vincent (ancienne)",
+        "fr": "Cathédrale Saint-Vincent (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113152",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-eglise-saint-pierre-pa00113152",
+      "latitude": 46.7804550710445,
+      "longitude": 4.85280697141649,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Nicéphore Niépce is one of the city's notable cultural landmarks.",
+        "fr": "musée Nicéphore Niépce compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0166",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-musee-nicephore-niepce-m0166",
+      "latitude": 46.780045,
+      "longitude": 4.855727,
+      "name": {
+        "en": "musée Nicéphore Niépce",
+        "fr": "musée Nicéphore Niépce"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Vivant Denon is one of the city's notable cultural landmarks.",
+        "fr": "musée Vivant Denon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0165",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-musee-vivant-denon-m0165",
+      "latitude": 46.78105,
+      "longitude": 4.853082,
+      "name": {
+        "en": "musée Vivant Denon",
+        "fr": "musée Vivant Denon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113179",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-theatre-pa00113179",
+      "latitude": 46.7833074788072,
+      "longitude": 4.85716573202481,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Coco-l'ouvrier is an important witness to the city's history.",
+        "fr": "Tour de Coco-l'ouvrier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113181",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-tour-de-coco-l-ouvrier-pa00113181",
+      "latitude": 46.7811883696128,
+      "longitude": 4.85745448059192,
+      "name": {
+        "en": "Tour de Coco-l'ouvrier",
+        "fr": "Tour de Coco-l'ouvrier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Saudon is an important witness to the city's history.",
+        "fr": "Tour de Saudon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113183",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-tour-de-saudon-pa00113183",
+      "latitude": 46.7817778773354,
+      "longitude": 4.85458242820768,
+      "name": {
+        "en": "Tour de Saudon",
+        "fr": "Tour de Saudon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Beffroi is an important witness to the city's history.",
+        "fr": "Tour du Beffroi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113180",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalon-sur-saone-tour-du-beffroi-pa00113180",
+      "latitude": 46.7815476311098,
+      "longitude": 4.85577369274284,
+      "name": {
+        "en": "Tour du Beffroi",
+        "fr": "Tour du Beffroi"
+      }
+    }
+  ]
+}

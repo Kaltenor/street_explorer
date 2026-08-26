@@ -1,0 +1,204 @@
+{
+  "id": "martigues-v1",
+  "cityId": "martigues-fr",
+  "cityZoneId": "relation/74266",
+  "cityName": {
+    "en": "Martigues",
+    "fr": "Martigues"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Ponteau is an important witness to the city's history.",
+        "fr": "Château de Ponteau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081377",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "martigues-chateau-de-ponteau-pa00081377",
+      "latitude": 43.4028211514148,
+      "longitude": 5.04887739281967,
+      "name": {
+        "en": "Château de Ponteau",
+        "fr": "Château de Ponteau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French train station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096325",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-croix-sainte-q3096325",
+      "latitude": 43.408896,
+      "longitude": 5.019657,
+      "name": {
+        "en": "Croix-Sainte",
+        "fr": "Croix-Sainte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Madeleine de l'Ile is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Madeleine de l'Ile est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081378",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "martigues-eglise-sainte-madeleine-de-l-ile-pa00081378",
+      "latitude": 43.405369811547,
+      "longitude": 5.05465523390686,
+      "name": {
+        "en": "Église Sainte-Madeleine de l'Ile",
+        "fr": "Église Sainte-Madeleine de l'Ile"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Bouc is an important witness to the city's history.",
+        "fr": "fort à Martigues (Bouches-du-Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q22986404",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-fort-de-bouc-q22986404",
+      "latitude": 43.3936,
+      "longitude": 4.9859,
+      "name": {
+        "en": "fort de Bouc",
+        "fr": "fort de Bouc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Gisement de plein air néolithique du Collet Redon is an important witness to the city's history.",
+        "fr": "Gisement de plein air néolithique du Collet Redon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081380",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "martigues-gisement-de-plein-air-neolithique-du-collet-redon-pa00081380",
+      "latitude": 43.34182255492901,
+      "longitude": 5.06360129921114,
+      "name": {
+        "en": "Gisement de plein air néolithique du Collet Redon",
+        "fr": "Gisement de plein air néolithique du Collet Redon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Île de Martigues is one of the city's notable green or natural landmarks.",
+        "fr": "site historique français"
+      },
+      "externalIdentity": {
+        "id": "Q3593388",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-ile-de-martigues-q3593388",
+      "latitude": 43.40583,
+      "longitude": 5.05417,
+      "name": {
+        "en": "Île de Martigues",
+        "fr": "Île de Martigues"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French train station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2438242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-la-couronne-carro-q2438242",
+      "latitude": 43.339957,
+      "longitude": 5.051813,
+      "name": {
+        "en": "La Couronne-Carro",
+        "fr": "La Couronne-Carro"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Martigues, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2203403",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-martigues-q2203403",
+      "latitude": 43.392889,
+      "longitude": 5.025607,
+      "name": {
+        "en": "Martigues",
+        "fr": "Martigues"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Ziem is one of the city's notable cultural landmarks.",
+        "fr": "musée Ziem compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0923",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "martigues-musee-ziem-m0923",
+      "latitude": 43.408336,
+      "longitude": 5.054107,
+      "name": {
+        "en": "musée Ziem",
+        "fr": "musée Ziem"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "pont de Caronte is an important witness to the city's history.",
+        "fr": "pont ferroviaire situé dans la commune de Martigues,Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q3396895",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "martigues-pont-de-caronte-q3396895",
+      "latitude": 43.4025,
+      "longitude": 5.02444,
+      "name": {
+        "en": "pont de Caronte",
+        "fr": "pont de Caronte"
+      }
+    }
+  ]
+}

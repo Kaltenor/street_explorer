@@ -1,0 +1,204 @@
+{
+  "id": "hazebrouck-v1",
+  "cityId": "hazebrouck-fr",
+  "cityZoneId": "relation/78593",
+  "cityName": {
+    "en": "Hazebrouck",
+    "fr": "Hazebrouck"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2092328",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-carre-britannique-du-cimetiere-d-hazebrouck-q2092328",
+      "latitude": 50.71625,
+      "longitude": 2.53196,
+      "name": {
+        "en": "carré britannique du cimetière d'Hazebrouck",
+        "fr": "carré britannique du cimetière d'Hazebrouck"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church building in Hazebrouck (Nord), France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385374",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-eglise-notre-dame-de-lourdes-de-hazebrouck-q60385374",
+      "latitude": 50.72855,
+      "longitude": 2.54183,
+      "name": {
+        "en": "église Notre-Dame-de-Lourdes de Hazebrouck",
+        "fr": "église Notre-Dame-de-Lourdes de Hazebrouck"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église française située à Hazebrouck"
+      },
+      "externalIdentity": {
+        "id": "Q3584714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-eglise-saint-eloi-d-hazebrouck-q3584714",
+      "latitude": 50.7192614,
+      "longitude": 2.535568,
+      "name": {
+        "en": "église Saint-Éloi d'Hazebrouck",
+        "fr": "église Saint-Éloi d'Hazebrouck"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095766",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-hazebrouck-q3095766",
+      "latitude": 50.725193,
+      "longitude": 2.54136,
+      "name": {
+        "en": "Hazebrouck",
+        "fr": "Hazebrouck"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Hazebroek in Nord, France",
+        "fr": "jardin public de Hazebrouck compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q88082000",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-jardin-public-de-hazebrouck-q88082000",
+      "latitude": 50.719469,
+      "longitude": 2.537136,
+      "name": {
+        "en": "jardin public de Hazebrouck",
+        "fr": "jardin public de Hazebrouck"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Motte féodale is an important witness to the city's history.",
+        "fr": "Motte féodale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107550",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hazebrouck-motte-feodale-pa00107550",
+      "latitude": 50.7288940138443,
+      "longitude": 2.56032619564936,
+      "name": {
+        "en": "Motte féodale",
+        "fr": "Motte féodale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-musee-de-l-abbe-lemire-d-hazebrouck-q3329767",
+      "latitude": 50.719,
+      "longitude": 2.53589,
+      "name": {
+        "en": "musée de l'Abbé-Lemire d'Hazebrouck",
+        "fr": "musée de l'Abbé-Lemire d'Hazebrouck"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330117",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-musee-des-augustins-d-hazebrouck-q3330117",
+      "latitude": 50.7214,
+      "longitude": 2.53439,
+      "name": {
+        "en": "musée des Augustins d'Hazebrouck",
+        "fr": "musée des Augustins d'Hazebrouck"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0626",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "hazebrouck-musee-municipal-m0626",
+      "latitude": 50.721177,
+      "longitude": 2.535346,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de Ville de Hazebrouck is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de Ville de Hazebrouck est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q87902194",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "hazebrouck-hotel-de-ville-de-hazebrouck-q87902194",
+      "latitude": 50.72263889,
+      "longitude": 2.53673056,
+      "name": {
+        "en": "hôtel de Ville de Hazebrouck",
+        "fr": "hôtel de Ville de Hazebrouck"
+      }
+    }
+  ]
+}

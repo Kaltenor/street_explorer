@@ -1,0 +1,394 @@
+{
+  "id": "fort-de-france-v1",
+  "cityId": "fort-de-france-fr",
+  "cityZoneId": "relation/290031",
+  "cityName": {
+    "en": "Fort-de-France",
+    "fr": "Fort-de-France"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Schoelcher is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Schoelcher compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105941",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-bibliotheque-schoelcher-pa00105941",
+      "latitude": 14.6048776747209,
+      "longitude": -61.0680053992946,
+      "name": {
+        "en": "Bibliothèque Schoelcher",
+        "fr": "Bibliothèque Schoelcher"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105958",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-cathedrale-saint-louis-pa00105958",
+      "latitude": 14.604265582555,
+      "longitude": -61.0699603846343,
+      "name": {
+        "en": "Cathédrale Saint-Louis",
+        "fr": "Cathédrale Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame du Rosaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame du Rosaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-eglise-notre-dame-du-rosaire-pa97200014",
+      "latitude": 14.6323446511422,
+      "longitude": -61.0542929882822,
+      "name": {
+        "en": "Église Notre-Dame du Rosaire",
+        "fr": "Église Notre-Dame du Rosaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise Sacré-Coeur de Balata is a distinctive architectural landmark in the city.",
+        "fr": "Eglise Sacré-Coeur de Balata est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-eglise-sacre-coeur-de-balata-pa97200036",
+      "latitude": 14.649158679839902,
+      "longitude": -61.07887669925199,
+      "name": {
+        "en": "Eglise Sacré-Coeur de Balata",
+        "fr": "Eglise Sacré-Coeur de Balata"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Antoine-de-Padoue is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Antoine-de-Padoue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-eglise-saint-antoine-de-padoue-pa97200049",
+      "latitude": 14.611837853853377,
+      "longitude": -61.07064876034621,
+      "name": {
+        "en": "Église Saint-Antoine-de-Padoue",
+        "fr": "Église Saint-Antoine-de-Padoue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Christophe is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Christophe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-eglise-saint-christophe-pa97200037",
+      "latitude": 14.611455091768901,
+      "longitude": -61.0528598412625,
+      "name": {
+        "en": "Église Saint-Christophe",
+        "fr": "Église Saint-Christophe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Thérèse is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Thérèse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-eglise-sainte-therese-pa97200023",
+      "latitude": 14.6080443578099,
+      "longitude": -61.05918396629821,
+      "name": {
+        "en": "Église Sainte-Thérèse",
+        "fr": "Église Sainte-Thérèse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Feu à secteurs du Fort Saint-Louis is an important witness to the city's history.",
+        "fr": "Feu à secteurs du Fort Saint-Louis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-feu-a-secteurs-du-fort-saint-louis-pa97200030",
+      "latitude": 14.598431133888601,
+      "longitude": -61.06659808411399,
+      "name": {
+        "en": "Feu à secteurs du Fort Saint-Louis",
+        "fr": "Feu à secteurs du Fort Saint-Louis"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Gueydon is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Gueydon compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-fontaine-gueydon-pa97200010",
+      "latitude": 14.6065106035537,
+      "longitude": -61.0737521590576,
+      "name": {
+        "en": "Fontaine Gueydon",
+        "fr": "Fontaine Gueydon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Saint-Louis is an important witness to the city's history.",
+        "fr": "Fort Saint-Louis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105942",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-fort-saint-louis-pa00105942",
+      "latitude": 14.6000141419649,
+      "longitude": -61.0662314325037,
+      "name": {
+        "en": "Fort Saint-Louis",
+        "fr": "Fort Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105944",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-hotel-de-ville-pa00105944",
+      "latitude": 14.606614699712301,
+      "longitude": -61.0699103528894,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1065",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "fort-de-france-musee-departemental-d-archeologie-m1065",
+      "latitude": 14.60331,
+      "longitude": -61.068675,
+      "name": {
+        "en": "musée départemental d'archéologie",
+        "fr": "musée départemental d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée départemental de la Martinique is one of the city's notable cultural landmarks.",
+        "fr": "Musée départemental de la Martinique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105969",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-musee-departemental-de-la-martinique-pa00105969",
+      "latitude": 14.6033431024747,
+      "longitude": -61.068747153535604,
+      "name": {
+        "en": "Musée départemental de la Martinique",
+        "fr": "Musée départemental de la Martinique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Père Pinchon is one of the city's notable cultural landmarks.",
+        "fr": "musée du Père Pinchon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1181",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "fort-de-france-musee-du-pere-pinchon-m1181",
+      "latitude": 14.649226,
+      "longitude": -61.070648,
+      "name": {
+        "en": "musée du Père Pinchon",
+        "fr": "musée du Père Pinchon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée régional d'histoire et d'ethnologie is one of the city's notable cultural landmarks.",
+        "fr": "musée régional d'histoire et d'ethnologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1066",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "fort-de-france-musee-regional-d-histoire-et-d-ethnologie-m1066",
+      "latitude": 14.606106,
+      "longitude": -61.065619,
+      "name": {
+        "en": "musée régional d'histoire et d'ethnologie",
+        "fr": "musée régional d'histoire et d'ethnologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7036",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "fort-de-france-museum-d-histoire-naturelle-m7036",
+      "latitude": 14.624376,
+      "longitude": -61.049824,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Résidence \"les Tourelles\" dite résidence du Gouverneur Félix Eboué is an important witness to the city's history.",
+        "fr": "Résidence \"les Tourelles\" dite résidence du Gouverneur Félix Eboué est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105960",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-residence-les-tourelles-dite-residence-du-gouverneur-felix-eboue-pa00105960",
+      "latitude": 14.620730425619072,
+      "longitude": -61.076753125111125,
+      "name": {
+        "en": "Résidence \"les Tourelles\" dite résidence du Gouverneur Félix Eboué",
+        "fr": "Résidence \"les Tourelles\" dite résidence du Gouverneur Félix Eboué"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue de l'Impératrice Joséphine, située sur la savane is a notable work of public art and local memory.",
+        "fr": "Statue de l'Impératrice Joséphine, située sur la savane est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA00105984",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-statue-de-l-imperatrice-josephine-situee-sur-la-savane-pa00105984",
+      "latitude": 14.6040954773122,
+      "longitude": -61.067745244691196,
+      "name": {
+        "en": "Statue de l'Impératrice Joséphine, située sur la savane",
+        "fr": "Statue de l'Impératrice Joséphine, située sur la savane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison d'Aimé Césaire is a distinctive architectural landmark in the city.",
+        "fr": "Maison d'Aimé Césaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97200029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-maison-d-aime-cesaire-pa97200029",
+      "latitude": 14.6251405996823,
+      "longitude": -61.06145673613871,
+      "name": {
+        "en": "Maison d'Aimé Césaire",
+        "fr": "Maison d'Aimé Césaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105970",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fort-de-france-palais-de-justice-pa00105970",
+      "latitude": 14.6052999479283,
+      "longitude": -61.0696937765839,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "chelles-v1",
+  "cityId": "chelles-fr",
+  "cityZoneId": "relation/402614",
+  "cityName": {
+    "en": "Chelles",
+    "fr": "Chelles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye royale is an important witness to the city's history.",
+        "fr": "Ancien abbaye royale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00086886",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chelles-ancien-abbaye-royale-pa00086886",
+      "latitude": 48.8778562077974,
+      "longitude": 2.59068970007727,
+      "name": {
+        "en": "Ancien abbaye royale",
+        "fr": "Ancien abbaye royale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Chelles, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2602800",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-chelles-gournay-q2602800",
+      "latitude": 48.87417,
+      "longitude": 2.5825,
+      "name": {
+        "en": "Chelles - Gournay",
+        "fr": "Chelles - Gournay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Chelles, France",
+        "fr": "édifice religieux catholique à Chelles, en France"
+      },
+      "externalIdentity": {
+        "id": "Q42955367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-eglise-saint-andre-de-chelles-q42955367",
+      "latitude": 48.880303,
+      "longitude": 2.597021,
+      "name": {
+        "en": "église Saint-André de Chelles",
+        "fr": "église Saint-André de Chelles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Chelles is an important witness to the city's history.",
+        "fr": "fortification en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3078161",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-fort-de-chelles-q3078161",
+      "latitude": 48.8849,
+      "longitude": 2.59494,
+      "name": {
+        "en": "fort de Chelles",
+        "fr": "fort de Chelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Chelles, Seine-et-Marne, France",
+        "fr": "hôtel de ville en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96145710",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-hotel-de-ville-de-chelles-q96145710",
+      "latitude": 48.8777,
+      "longitude": 2.59002,
+      "name": {
+        "en": "hôtel de ville de Chelles",
+        "fr": "hôtel de ville de Chelles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Alfred Bonno is one of the city's notable cultural landmarks.",
+        "fr": "musée Alfred Bonno compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0371",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chelles-musee-alfred-bonno-m0371",
+      "latitude": 48.87766,
+      "longitude": 2.591845,
+      "name": {
+        "en": "musée Alfred Bonno",
+        "fr": "musée Alfred Bonno"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des transports urbains, interurbains et ruraux is one of the city's notable cultural landmarks.",
+        "fr": "musée des transports urbains, interurbains et ruraux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0428",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chelles-musee-des-transports-urbains-interurbains-et-ruraux-m0428",
+      "latitude": 48.87682,
+      "longitude": 2.603374,
+      "name": {
+        "en": "musée des transports urbains, interurbains et ruraux",
+        "fr": "musée des transports urbains, interurbains et ruraux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "thoroughfare in Chelles, Seine-et-Marne",
+        "fr": "place de Chelles, en Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q132203237",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-place-des-martyrs-de-chateaubriant-q132203237",
+      "latitude": 48.877591,
+      "longitude": 2.595818,
+      "name": {
+        "en": "place des Martyrs de Châteaubriant",
+        "fr": "place des Martyrs de Châteaubriant"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "thoroughfare in Chelles, Seine-et-Marne",
+        "fr": "ruelle de Chelles, en Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q132202757",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-ruelle-du-fort-q132202757",
+      "latitude": 48.882158,
+      "longitude": 2.595469,
+      "name": {
+        "en": "ruelle du Fort",
+        "fr": "ruelle du Fort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canoeing and rowing facilities near Paris",
+        "fr": "stade de Vaires-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q116692951",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chelles-stade-nautique-de-vaires-sur-marne-q116692951",
+      "latitude": 48.86429,
+      "longitude": 2.63682,
+      "name": {
+        "en": "stade nautique de Vaires-sur-Marne",
+        "fr": "stade nautique de Vaires-sur-Marne"
+      }
+    }
+  ]
+}

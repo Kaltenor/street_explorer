@@ -1,0 +1,204 @@
+{
+  "id": "grande-synthe-v1",
+  "cityId": "grande-synthe-fr",
+  "cityZoneId": "relation/139537",
+  "cityName": {
+    "en": "Grande-Synthe",
+    "fr": "Grande-Synthe"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "steel mill in Dunkerque, France",
+        "fr": "usine sidérurgique à Dunkerque"
+      },
+      "externalIdentity": {
+        "id": "Q21164927",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-arcelormittal-dunkerque-q21164927",
+      "latitude": 51.032392,
+      "longitude": 2.283794,
+      "name": {
+        "en": "ArcelorMittal Dunkerque",
+        "fr": "ArcelorMittal Dunkerque"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Grande-Synthe, France",
+        "fr": "gare française"
+      },
+      "externalIdentity": {
+        "id": "Q2407254",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-courghain-q2407254",
+      "latitude": 50.996958,
+      "longitude": 2.293838,
+      "name": {
+        "en": "Courghain",
+        "fr": "Courghain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Dunkerque-Port-Est is a distinctive architectural landmark in the city.",
+        "fr": "Dunkerque-Port-Est est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120769303",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-dunkerque-port-est-q120769303",
+      "latitude": 51.032444444,
+      "longitude": 2.276916666,
+      "name": {
+        "en": "Dunkerque-Port-Est",
+        "fr": "Dunkerque-Port-Est"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38620590",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-eglise-saint-jacques-de-saint-jacques-q38620590",
+      "latitude": 51.0133,
+      "longitude": 2.29484,
+      "name": {
+        "en": "église Saint-Jacques de Saint-Jacques",
+        "fr": "église Saint-Jacques de Saint-Jacques"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Faces of Steel - statue in Grande-Synthe, France - Bruno Maillard - 2003",
+        "fr": "Les Visages de l'Acier est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "Q108628534",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-les-visages-de-l-acier-q108628534",
+      "latitude": 51.023888888,
+      "longitude": 2.294722222,
+      "name": {
+        "en": "Les Visages de l'Acier",
+        "fr": "Les Visages de l'Acier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38644724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-eglise-saint-joseph-de-l-europe-q38644724",
+      "latitude": 51.01656,
+      "longitude": 2.30597,
+      "name": {
+        "en": "église Saint-Joseph de l'Europe",
+        "fr": "église Saint-Joseph de l'Europe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Nord, France",
+        "fr": "commune française du département du Nord"
+      },
+      "externalIdentity": {
+        "id": "Q769160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-grande-synthe-q769160",
+      "latitude": 51.013055555,
+      "longitude": 2.302222222,
+      "name": {
+        "en": "Grande-Synthe",
+        "fr": "Grande-Synthe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "halle de sports de Noordover is a distinctive architectural landmark in the city.",
+        "fr": "halle de sports de Noordover est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120254999",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-halle-de-sports-de-noordover-q120254999",
+      "latitude": 51.00963,
+      "longitude": 2.30285,
+      "name": {
+        "en": "halle de sports de Noordover",
+        "fr": "halle de sports de Noordover"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "halle de sports Debussy is a distinctive architectural landmark in the city.",
+        "fr": "halle de sports Debussy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120161565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-halle-de-sports-debussy-q120161565",
+      "latitude": 51.01119,
+      "longitude": 2.28856,
+      "name": {
+        "en": "halle de sports Debussy",
+        "fr": "halle de sports Debussy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "protected area in France",
+        "fr": "réserve naturelle régionale"
+      },
+      "externalIdentity": {
+        "id": "Q22248514",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grande-synthe-reserve-naturelle-regionale-de-grande-synthe-q22248514",
+      "latitude": 51.0137,
+      "longitude": 2.27735,
+      "name": {
+        "en": "réserve naturelle régionale de Grande-Synthe",
+        "fr": "réserve naturelle régionale de Grande-Synthe"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "saint-martin-d-heres-v1",
+  "cityId": "saint-martin-d-heres-fr",
+  "cityZoneId": "relation/80349",
+  "cityName": {
+    "en": "Saint-Martin-d'Hères",
+    "fr": "Saint-Martin-d'Hères"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèques Universitaires is one of the city's notable cultural landmarks.",
+        "fr": "station du tramway de Grenoble"
+      },
+      "externalIdentity": {
+        "id": "Q110620980",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-bibliotheques-universitaires-q110620980",
+      "latitude": 45.192525654,
+      "longitude": 5.770921573,
+      "name": {
+        "en": "Bibliothèques Universitaires",
+        "fr": "Bibliothèques Universitaires"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38388608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-eglise-notre-dame-de-la-salette-de-saint-martin-d-heres-q38388608",
+      "latitude": 45.18234,
+      "longitude": 5.75476,
+      "name": {
+        "en": "église Notre-Dame-de-la-Salette de Saint-Martin-d'Hères",
+        "fr": "église Notre-Dame-de-la-Salette de Saint-Martin-d'Hères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38436713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-eglise-saint-bernard-de-saint-martin-d-heres-q38436713",
+      "latitude": 45.17201,
+      "longitude": 5.75812,
+      "name": {
+        "en": "église Saint-Bernard de Saint-Martin-d'Hères",
+        "fr": "église Saint-Bernard de Saint-Martin-d'Hères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église orthodoxe roumaine située à Saint-Martin-d'Hères, Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60389110",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-eglise-saint-maurice-q60389110",
+      "latitude": 45.16528,
+      "longitude": 5.748,
+      "name": {
+        "en": "église Saint-Maurice",
+        "fr": "église Saint-Maurice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international research organisation",
+        "fr": "institut de recherche international"
+      },
+      "externalIdentity": {
+        "id": "Q921803",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-institut-de-radioastronomie-millimetrique-q921803",
+      "latitude": 45.193583333,
+      "longitude": 5.760694444,
+      "name": {
+        "en": "Institut de radioastronomie millimétrique",
+        "fr": "Institut de radioastronomie millimétrique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "former fortified castle in Saint-Martin-d'Hères, France",
+        "fr": "ancien château fort à Saint-Martin-d'Hères, France"
+      },
+      "externalIdentity": {
+        "id": "Q117428449",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-le-bon-pasteur-q117428449",
+      "latitude": 45.17858,
+      "longitude": 5.75318,
+      "name": {
+        "en": "Le Bon Pasteur",
+        "fr": "Le Bon Pasteur"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Médiathèque départementale de l'Isère is one of the city's notable cultural landmarks.",
+        "fr": "Médiathèque départementale de l'Isère compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q26257804",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-mediatheque-departementale-de-l-isere-q26257804",
+      "latitude": 45.5924078,
+      "longitude": 5.2749677,
+      "name": {
+        "en": "Médiathèque départementale de l'Isère",
+        "fr": "Médiathèque départementale de l'Isère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque located in Isère, in France",
+        "fr": "mosquée à Saint-Martin-d'Hères, France"
+      },
+      "externalIdentity": {
+        "id": "Q60647296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-mosquee-omar-ibn-al-khattab-q60647296",
+      "latitude": 45.1727,
+      "longitude": 5.75459,
+      "name": {
+        "en": "mosquée Omar ibn al Khattab",
+        "fr": "mosquée Omar ibn al Khattab"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3368288",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-passerelle-de-meylan-q3368288",
+      "latitude": 45.1986,
+      "longitude": 5.76992,
+      "name": {
+        "en": "passerelle de Meylan",
+        "fr": "passerelle de Meylan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont des Taillées is a distinctive architectural landmark in the city.",
+        "fr": "pont des Taillées est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q125225479",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-martin-d-heres-pont-des-taillees-q125225479",
+      "latitude": 45.19648,
+      "longitude": 5.75412,
+      "name": {
+        "en": "pont des Taillées",
+        "fr": "pont des Taillées"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "brest-v1",
+  "cityId": "brest-fr",
+  "cityZoneId": "relation/1076124",
+  "cityName": {
+    "en": "Brest",
+    "fr": "Brest"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château, actuellement préfecture maritime is an important witness to the city's history.",
+        "fr": "Château, actuellement préfecture maritime est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brest-chateau-actuellement-prefecture-maritime-pa00089847",
+      "latitude": 48.3816122465216,
+      "longitude": -4.49292963428356,
+      "name": {
+        "en": "Château, actuellement préfecture maritime",
+        "fr": "Château, actuellement préfecture maritime"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Brest, Finistère, France",
+        "fr": "château français situé à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q2633625",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-chateau-de-brest-q2633625",
+      "latitude": 48.381255555,
+      "longitude": -4.494708333,
+      "name": {
+        "en": "château de Brest",
+        "fr": "château de Brest"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "France's National Botanical Conservatory in Brest",
+        "fr": "jardin botanique à Brest (Finistère)"
+      },
+      "externalIdentity": {
+        "id": "Q2994486",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-conservatoire-botanique-national-de-brest-q2994486",
+      "latitude": 48.4021,
+      "longitude": -4.4473,
+      "name": {
+        "en": "conservatoire botanique national de Brest",
+        "fr": "conservatoire botanique national de Brest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French business school",
+        "fr": "établissement d'enseignement français"
+      },
+      "externalIdentity": {
+        "id": "Q3578429",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-ecole-superieure-de-commerce-bretagne-brest-q3578429",
+      "latitude": 48.40611111,
+      "longitude": -4.52138889,
+      "name": {
+        "en": "École supérieure de commerce Bretagne Brest",
+        "fr": "École supérieure de commerce Bretagne Brest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Finistère, in France",
+        "fr": "église située à Brest, dans le Finistère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582362",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-eglise-saint-louis-de-brest-q3582362",
+      "latitude": 48.389,
+      "longitude": -4.49068,
+      "name": {
+        "en": "église Saint-Louis de Brest",
+        "fr": "église Saint-Louis de Brest"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort du Portzic is an important witness to the city's history.",
+        "fr": "fort à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q3078223",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-fort-du-portzic-q3078223",
+      "latitude": 48.35861111,
+      "longitude": -4.53555556,
+      "name": {
+        "en": "fort du Portzic",
+        "fr": "fort du Portzic"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort de Brest, en France"
+      },
+      "externalIdentity": {
+        "id": "Q643013",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-fort-du-questel-q643013",
+      "latitude": 48.400604861,
+      "longitude": -4.533577,
+      "name": {
+        "en": "fort du Questel",
+        "fr": "fort du Questel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "fort in France",
+        "fr": "fort breton du XVIIIe siècle utilisé pendant la Seconde guerre mondiale"
+      },
+      "externalIdentity": {
+        "id": "Q3077950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-fort-montbarey-q3077950",
+      "latitude": 48.378215361,
+      "longitude": -4.548361388,
+      "name": {
+        "en": "fort Montbarey",
+        "fr": "fort Montbarey"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "technological university, internationally recognized for its research, it is part of the Institut Mines-Télécom",
+        "fr": "grande école d’ingénieurs généraliste, reconnue internationalement pour sa recherche, elle appartient à l’Institut Mines-Télécom"
+      },
+      "externalIdentity": {
+        "id": "Q27962533",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-imt-atlantique-q27962533",
+      "latitude": 48.120194166,
+      "longitude": -1.628826111,
+      "name": {
+        "en": "IMT Atlantique",
+        "fr": "IMT Atlantique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "gallery, formerly theatre and cinema, in Brest, France",
+        "fr": "ancien théâtre à Brest, France, devenu espace d'art"
+      },
+      "externalIdentity": {
+        "id": "Q65128339",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-le-com-dia-q65128339",
+      "latitude": 48.385313,
+      "longitude": -4.4883,
+      "name": {
+        "en": "Le Comœdia",
+        "fr": "Le Comœdia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "theatre in Brest, France",
+        "fr": "palais des congrès et salle de spectacle à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q3226191",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-le-quartz-q3226191",
+      "latitude": 48.389127944,
+      "longitude": -4.485330694,
+      "name": {
+        "en": "Le Quartz",
+        "fr": "Le Quartz"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "médiathèque François Mitterrand - Les Capucins is one of the city's notable cultural landmarks.",
+        "fr": "médiathèque municipale de Brest"
+      },
+      "externalIdentity": {
+        "id": "Q28040369",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-mediatheque-francois-mitterrand-les-capucins-q28040369",
+      "latitude": 48.388790916,
+      "longitude": -4.497528083,
+      "name": {
+        "en": "médiathèque François Mitterrand - Les Capucins",
+        "fr": "médiathèque François Mitterrand - Les Capucins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0197",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "brest-musee-des-beaux-arts-m0197",
+      "latitude": 48.38529,
+      "longitude": -4.489963,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Brest branch of the French National naval Museum",
+        "fr": "antenne de Brest du Musée national de la Marine"
+      },
+      "externalIdentity": {
+        "id": "Q3330709",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-musee-national-de-la-marine-de-brest-q3330709",
+      "latitude": 48.38135,
+      "longitude": -4.49238,
+      "name": {
+        "en": "musée national de la Marine de Brest",
+        "fr": "musée national de la Marine de Brest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397342",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-pont-de-l-harteloire-q3397342",
+      "latitude": 48.3925,
+      "longitude": -4.50055556,
+      "name": {
+        "en": "pont de l'Harteloire",
+        "fr": "pont de l'Harteloire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Brest, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q936501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-pont-de-recouvrance-q936501",
+      "latitude": 48.384381,
+      "longitude": -4.496541,
+      "name": {
+        "en": "pont de Recouvrance",
+        "fr": "pont de Recouvrance"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bridge in Brittany, France",
+        "fr": "pont de Brest"
+      },
+      "externalIdentity": {
+        "id": "Q3396667",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-pont-national-q3396667",
+      "latitude": 48.383971,
+      "longitude": -4.496053,
+      "name": {
+        "en": "pont National",
+        "fr": "pont National"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "port in France",
+        "fr": "port de plaisance à Brest, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3398645",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-port-du-chateau-q3398645",
+      "latitude": 48.3794,
+      "longitude": -4.49006,
+      "name": {
+        "en": "port du Château",
+        "fr": "port du Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium in Brest, France",
+        "fr": "stade de football à Brest, France"
+      },
+      "externalIdentity": {
+        "id": "Q1432517",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-stade-francis-le-ble-q1432517",
+      "latitude": 48.40293,
+      "longitude": -4.46148,
+      "name": {
+        "en": "stade Francis-Le Blé",
+        "fr": "stade Francis-Le Blé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "medieval tower and museum in Brest, France",
+        "fr": "tour à Brest"
+      },
+      "externalIdentity": {
+        "id": "Q3533195",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brest-tour-tanguy-q3533195",
+      "latitude": 48.383376861,
+      "longitude": -4.497121638,
+      "name": {
+        "en": "tour Tanguy",
+        "fr": "tour Tanguy"
+      }
+    }
+  ]
+}

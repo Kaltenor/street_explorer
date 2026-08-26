@@ -1,0 +1,204 @@
+{
+  "id": "dammarie-les-lys-v1",
+  "cityId": "dammarie-les-lys-fr",
+  "cityZoneId": "relation/80063",
+  "cityName": {
+    "en": "Dammarie-les-Lys",
+    "fr": "Dammarie-les-Lys"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye du Lys (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye du Lys (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00086923",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dammarie-les-lys-abbaye-du-lys-ancienne-pa00086923",
+      "latitude": 48.518325368364,
+      "longitude": 2.63186758838048,
+      "name": {
+        "en": "Abbaye du Lys (ancienne)",
+        "fr": "Abbaye du Lys (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-et-Marne, in France",
+        "fr": "cimetière situé en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110356933",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-ancien-cimetiere-de-dammarie-les-lys-q110356933",
+      "latitude": 48.5185,
+      "longitude": 2.6349,
+      "name": {
+        "en": "Ancien cimetière de Dammarie-les-Lys",
+        "fr": "Ancien cimetière de Dammarie-les-Lys"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Dammarie-lès-Lys, France",
+        "fr": "château français situé à Dammarie-les-Lys"
+      },
+      "externalIdentity": {
+        "id": "Q83719959",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-chateau-de-soubiran-q83719959",
+      "latitude": 48.513171,
+      "longitude": 2.633074,
+      "name": {
+        "en": "château de Soubiran",
+        "fr": "château de Soubiran"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Vives-Eaux is an important witness to the city's history.",
+        "fr": "château français situé à Dammarie-les-Lys"
+      },
+      "externalIdentity": {
+        "id": "Q2971571",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-chateau-des-vives-eaux-q2971571",
+      "latitude": 48.5131,
+      "longitude": 2.60431,
+      "name": {
+        "en": "château des Vives-Eaux",
+        "fr": "château des Vives-Eaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Dammarie-lès-Lys, France",
+        "fr": "édifice religieux catholique à Dammarie-lès-Lys, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17553728",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-eglise-notre-dame-de-dammarie-les-lys-q17553728",
+      "latitude": 48.514563,
+      "longitude": 2.635054,
+      "name": {
+        "en": "église Notre-Dame de Dammarie-lès-Lys",
+        "fr": "église Notre-Dame de Dammarie-lès-Lys"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-et-Marne department, France",
+        "fr": "siège municipal de Dammarie-les-Lys, en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119308258",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-mairie-de-dammarie-les-lys-q119308258",
+      "latitude": 48.515276,
+      "longitude": 2.63476,
+      "name": {
+        "en": "mairie de Dammarie-les-Lys",
+        "fr": "mairie de Dammarie-les-Lys"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26722161",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-mosquee-al-salam-de-dammarie-les-lys-q26722161",
+      "latitude": 48.524338,
+      "longitude": 2.64596,
+      "name": {
+        "en": "mosquée Al Salam de Dammarie-les-Lys",
+        "fr": "mosquée Al Salam de Dammarie-les-Lys"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "ice rink in France",
+        "fr": "patinoire de la Cartonnerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3368795",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-patinoire-de-la-cartonnerie-q3368795",
+      "latitude": 48.5175,
+      "longitude": 2.62389,
+      "name": {
+        "en": "patinoire de la Cartonnerie",
+        "fr": "patinoire de la Cartonnerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont du Mée is a distinctive architectural landmark in the city.",
+        "fr": "pont sur la Seine en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q95622081",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-pont-du-mee-q95622081",
+      "latitude": 48.531944444,
+      "longitude": 2.639444444,
+      "name": {
+        "en": "pont du Mée",
+        "fr": "pont du Mée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Dammarie-lès-Lys, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3098041",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dammarie-les-lys-vosves-q3098041",
+      "latitude": 48.515,
+      "longitude": 2.59889,
+      "name": {
+        "en": "Vosves",
+        "fr": "Vosves"
+      }
+    }
+  ]
+}

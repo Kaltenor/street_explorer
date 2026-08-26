@@ -1,0 +1,204 @@
+{
+  "id": "sens-v1",
+  "cityId": "sens-fr",
+  "cityZoneId": "relation/946433",
+  "cityName": {
+    "en": "Sens",
+    "fr": "Sens"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien archevêché ou ancien palais archiépiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien archevêché ou ancien palais archiépiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113852",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-ancien-archeveche-ou-ancien-palais-archiepiscopal-pa00113852",
+      "latitude": 48.1979053120277,
+      "longitude": 3.28440112932275,
+      "name": {
+        "en": "Ancien archevêché ou ancien palais archiépiscopal",
+        "fr": "Ancien archevêché ou ancien palais archiépiscopal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113853",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-cathedrale-saint-etienne-pa00113853",
+      "latitude": 48.1980840313301,
+      "longitude": 3.28404061151642,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113855",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-eglise-saint-maurice-pa00113855",
+      "latitude": 48.1977547951964,
+      "longitude": 3.27559880764881,
+      "name": {
+        "en": "Église Saint-Maurice",
+        "fr": "Église Saint-Maurice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-le-Rond is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-le-Rond est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113856",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-eglise-saint-pierre-le-rond-pa00113856",
+      "latitude": 48.1963429692174,
+      "longitude": 3.28138152656388,
+      "name": {
+        "en": "Église Saint-Pierre-le-Rond",
+        "fr": "Église Saint-Pierre-le-Rond"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de l'arrondissement de Sens is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de l'arrondissement de Sens est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA89000068",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-monument-aux-morts-de-l-arrondissement-de-sens-pa89000068",
+      "latitude": 48.19850056701335,
+      "longitude": 3.289983486483227,
+      "name": {
+        "en": "Monument aux morts de l'arrondissement de Sens",
+        "fr": "Monument aux morts de l'arrondissement de Sens"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée Jean-Cousin is one of the city's notable cultural landmarks.",
+        "fr": "Musée Jean-Cousin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113882",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-musee-jean-cousin-pa00113882",
+      "latitude": 48.1956735388835,
+      "longitude": 3.28082288819789,
+      "name": {
+        "en": "Musée Jean-Cousin",
+        "fr": "Musée Jean-Cousin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0189",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "sens-musee-municipal-m0189",
+      "latitude": 48.197828,
+      "longitude": 3.284505,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Rempart gallo-romain is an important witness to the city's history.",
+        "fr": "Rempart gallo-romain est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113884",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-rempart-gallo-romain-pa00113884",
+      "latitude": 48.1951791518201,
+      "longitude": 3.28265513395176,
+      "name": {
+        "en": "Rempart gallo-romain",
+        "fr": "Rempart gallo-romain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113885",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-theatre-municipal-pa00113885",
+      "latitude": 48.2000332969606,
+      "longitude": 3.28174574251795,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113862",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sens-hotel-de-ville-pa00113862",
+      "latitude": 48.19891815432751,
+      "longitude": 3.28283667655935,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

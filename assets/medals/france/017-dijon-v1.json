@@ -6,8 +6,8 @@
     "en": "Dijon",
     "fr": "Dijon"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
@@ -49,22 +49,174 @@
       }
     },
     {
-      "category": "culture",
+      "category": "history",
       "description": {
-        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
-        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+        "en": "Ancien hôtel de Rochefort ou hôtel Morel-Sauvegrain is an important witness to the city's history.",
+        "fr": "Ancien hôtel de Rochefort ou hôtel Morel-Sauvegrain est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "M0137",
+        "id": "PA00112323",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-ancien-hotel-de-rochefort-ou-hotel-morel-sauvegrain-pa00112323",
+      "latitude": 47.3224220934944,
+      "longitude": 5.03964797845792,
+      "name": {
+        "en": "Ancien hôtel de Rochefort ou hôtel Morel-Sauvegrain",
+        "fr": "Ancien hôtel de Rochefort ou hôtel Morel-Sauvegrain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Dijon, Burgundy, France",
+        "fr": "cathédrale située à Dijon en Côte-d'Or, en France"
+      },
+      "externalIdentity": {
+        "id": "Q1711691",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "dijon-cathedrale-saint-benigne-de-dijon-q1711691",
+      "latitude": 47.321388888,
+      "longitude": 5.034444444,
+      "name": {
+        "en": "cathédrale Saint-Bénigne de Dijon",
+        "fr": "cathédrale Saint-Bénigne de Dijon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Montmusard is an important witness to the city's history.",
+        "fr": "Château de Montmusard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112258",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-chateau-de-montmusard-pa00112258",
+      "latitude": 47.3246296271673,
+      "longitude": 5.05930814859175,
+      "name": {
+        "en": "Château de Montmusard",
+        "fr": "Château de Montmusard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Cœur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Cœur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA21000071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-eglise-du-sacre-c-ur-pa21000071",
+      "latitude": 47.3355865154828,
+      "longitude": 5.05271177757722,
+      "name": {
+        "en": "Église du Sacré-Cœur",
+        "fr": "Église du Sacré-Cœur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112267",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-eglise-notre-dame-pa00112267",
+      "latitude": 47.3225478220946,
+      "longitude": 5.04154204756685,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112268",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-eglise-saint-etienne-ancienne-pa00112268",
+      "latitude": 47.3209370198549,
+      "longitude": 5.04406942297074,
+      "name": {
+        "en": "église Saint-Étienne (ancienne)",
+        "fr": "église Saint-Étienne (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112269",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-eglise-saint-jean-pa00112269",
+      "latitude": 47.3203314694037,
+      "longitude": 5.03621690751876,
+      "name": {
+        "en": "Église Saint-Jean",
+        "fr": "Église Saint-Jean"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0138",
         "source": "museofile",
         "type": "record"
       },
-      "id": "dijon-musee-des-beaux-arts-m0137",
-      "latitude": 47.321356,
-      "longitude": 5.042873,
+      "id": "dijon-musee-archeologique-m0138",
+      "latitude": 47.321873,
+      "longitude": 5.034107,
       "name": {
-        "en": "musée des beaux-arts",
-        "fr": "musée des beaux-arts"
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art sacré is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art sacré compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1208",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-d-art-sacre-m1208",
+      "latitude": 47.317559,
+      "longitude": 5.037282,
+      "name": {
+        "en": "musée d'art sacré",
+        "fr": "musée d'art sacré"
       }
     },
     {
@@ -89,6 +241,44 @@
     {
       "category": "culture",
       "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0137",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-des-beaux-arts-m0137",
+      "latitude": 47.321356,
+      "longitude": 5.042873,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national Magnin is one of the city's notable cultural landmarks.",
+        "fr": "musée national Magnin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5011",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dijon-musee-national-magnin-m5011",
+      "latitude": 47.320958,
+      "longitude": 5.042189,
+      "name": {
+        "en": "musée national Magnin",
+        "fr": "musée national Magnin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
         "en": "musée Rude is one of the city's notable cultural landmarks.",
         "fr": "musée Rude compte parmi les lieux culturels marquants de la ville."
       },
@@ -106,22 +296,22 @@
       }
     },
     {
-      "category": "architecture",
+      "category": "culture",
       "description": {
-        "en": "Palais des Ducs et des Etats de Bourgogne (ancien) is a distinctive architectural landmark in the city.",
-        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien) est un repère architectural remarquable de la ville."
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "PA00112427",
-        "source": "merimee",
+        "id": "M7035",
+        "source": "museofile",
         "type": "record"
       },
-      "id": "dijon-palais-des-ducs-et-des-etats-de-bourgogne-ancien-pa00112427",
-      "latitude": 47.3217569344674,
-      "longitude": 5.04264602064686,
+      "id": "dijon-museum-d-histoire-naturelle-m7035",
+      "latitude": 47.322357,
+      "longitude": 5.025636,
       "name": {
-        "en": "Palais des Ducs et des Etats de Bourgogne (ancien)",
-        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien)"
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
       }
     },
     {
@@ -146,20 +336,58 @@
     {
       "category": "architecture",
       "description": {
-        "en": "cathedral located in Dijon, Burgundy, France",
-        "fr": "cathédrale située à Dijon en Côte-d'Or, en France"
+        "en": "Palais des Ducs et des Etats de Bourgogne (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien) est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "Q1711691",
-        "source": "wikidata",
-        "type": "item"
+        "id": "PA00112427",
+        "source": "merimee",
+        "type": "record"
       },
-      "id": "dijon-cathedrale-saint-benigne-de-dijon-q1711691",
-      "latitude": 47.321388888,
-      "longitude": 5.034444444,
+      "id": "dijon-palais-des-ducs-et-des-etats-de-bourgogne-ancien-pa00112427",
+      "latitude": 47.3217569344674,
+      "longitude": 5.04264602064686,
       "name": {
-        "en": "cathédrale Saint-Bénigne de Dijon",
-        "fr": "cathédrale Saint-Bénigne de Dijon"
+        "en": "Palais des Ducs et des Etats de Bourgogne (ancien)",
+        "fr": "Palais des Ducs et des Etats de Bourgogne (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Guillaume is an important witness to the city's history.",
+        "fr": "Porte Guillaume est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112433",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-porte-guillaume-pa00112433",
+      "latitude": 47.32328848008971,
+      "longitude": 5.03477583733848,
+      "name": {
+        "en": "Porte Guillaume",
+        "fr": "Porte Guillaume"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite du Petit Saint-Benigne is an important witness to the city's history.",
+        "fr": "Tour dite du Petit Saint-Benigne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00112436",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dijon-tour-dite-du-petit-saint-benigne-pa00112436",
+      "latitude": 47.319426223288,
+      "longitude": 5.0401067581802,
+      "name": {
+        "en": "Tour dite du Petit Saint-Benigne",
+        "fr": "Tour dite du Petit Saint-Benigne"
       }
     }
   ]

@@ -1,0 +1,204 @@
+{
+  "id": "savigny-le-temple-v1",
+  "cityId": "savigny-le-temple-fr",
+  "cityZoneId": "relation/80143",
+  "cityName": {
+    "en": "Savigny-le-Temple",
+    "fr": "Savigny-le-Temple"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Grange is an important witness to the city's history.",
+        "fr": "château à Savigny-le-Temple"
+      },
+      "externalIdentity": {
+        "id": "Q66793647",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-le-temple-chateau-de-la-grange-q66793647",
+      "latitude": 48.5997,
+      "longitude": 2.5578,
+      "name": {
+        "en": "château de la Grange",
+        "fr": "château de la Grange"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3578591",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-le-temple-ecomusee-ferme-du-coulevrain-q3578591",
+      "latitude": 48.5741,
+      "longitude": 2.58262,
+      "name": {
+        "en": "écomusée - Ferme du Coulevrain",
+        "fr": "écomusée - Ferme du Coulevrain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "écomusée is one of the city's notable cultural landmarks.",
+        "fr": "écomusée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0385",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "savigny-le-temple-ecomusee-m0385",
+      "latitude": 48.599142,
+      "longitude": 2.570872,
+      "name": {
+        "en": "écomusée",
+        "fr": "écomusée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Adventiste du 7e Jour is a distinctive architectural landmark in the city.",
+        "fr": "Église Adventiste du 7e Jour est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2666710170",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "savigny-le-temple-eglise-adventiste-du-7e-jour-node-2666710170",
+      "latitude": 48.6036592,
+      "longitude": 2.5772609,
+      "name": {
+        "en": "Église Adventiste du 7e Jour",
+        "fr": "Église Adventiste du 7e Jour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Savigny-le-Temple, France",
+        "fr": "édifice religieux catholique à Savigny-le-Temple, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-le-temple-eglise-saint-germain-d-auxerre-de-savigny-le-temple-q3581615",
+      "latitude": 48.5756,
+      "longitude": 2.5832,
+      "name": {
+        "en": "église Saint-Germain-d'Auxerre de Savigny-le-Temple",
+        "fr": "église Saint-Germain-d'Auxerre de Savigny-le-Temple"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087283",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "savigny-le-temple-eglise-saint-germain-pa00087283",
+      "latitude": 48.5756231737407,
+      "longitude": 2.58311686860673,
+      "name": {
+        "en": "Église Saint-Germain",
+        "fr": "Église Saint-Germain"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des Tourailles is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des Tourailles compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/60813027",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "savigny-le-temple-parc-des-tourailles-way-60813027",
+      "latitude": 48.6016293,
+      "longitude": 2.5518909,
+      "name": {
+        "en": "Parc des Tourailles",
+        "fr": "Parc des Tourailles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Saint-Germain d'Auxerre is a distinctive architectural landmark in the city.",
+        "fr": "Saint-Germain d'Auxerre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112249182",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "savigny-le-temple-saint-germain-d-auxerre-way-112249182",
+      "latitude": 48.5756245,
+      "longitude": 2.5831375,
+      "name": {
+        "en": "Saint-Germain d'Auxerre",
+        "fr": "Saint-Germain d'Auxerre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Scène du monde - Espace Prévert is one of the city's notable cultural landmarks.",
+        "fr": "Scène du monde - Espace Prévert compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/7040772278",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "savigny-le-temple-scene-du-monde-espace-prevert-node-7040772278",
+      "latitude": 48.6018281,
+      "longitude": 2.5667847,
+      "name": {
+        "en": "Scène du monde - Espace Prévert",
+        "fr": "Scène du monde - Espace Prévert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-et-Marne, France",
+        "fr": "commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q328010",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-le-temple-savigny-le-temple-q328010",
+      "latitude": 48.595833333,
+      "longitude": 2.580555555,
+      "name": {
+        "en": "Savigny-le-Temple",
+        "fr": "Savigny-le-Temple"
+      }
+    }
+  ]
+}

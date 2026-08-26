@@ -1,0 +1,204 @@
+{
+  "id": "pontoise-v1",
+  "cityId": "pontoise-fr",
+  "cityZoneId": "relation/120958",
+  "cityName": {
+    "en": "Pontoise",
+    "fr": "Pontoise"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Maclou is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Maclou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080163",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-cathedrale-saint-maclou-pa00080163",
+      "latitude": 49.0505779802521,
+      "longitude": 2.09718007494368,
+      "name": {
+        "en": "Cathédrale Saint-Maclou",
+        "fr": "Cathédrale Saint-Maclou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Caves anciennes de l'immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Caves anciennes de l'immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080169",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-caves-anciennes-de-l-immeuble-pa00080169",
+      "latitude": 49.0504660780275,
+      "longitude": 2.09569285113735,
+      "name": {
+        "en": "Caves anciennes de l'immeuble",
+        "fr": "Caves anciennes de l'immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle des Cordeliers (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle des Cordeliers (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080164",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-chapelle-des-cordeliers-ancienne-pa00080164",
+      "latitude": 49.0504672283585,
+      "longitude": 2.10079395939114,
+      "name": {
+        "en": "Chapelle des Cordeliers (ancienne)",
+        "fr": "Chapelle des Cordeliers (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080166",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-eglise-notre-dame-pa00080166",
+      "latitude": 49.0494114477903,
+      "longitude": 2.09236041429823,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin Public is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin Public compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080171",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-jardin-public-pa00080171",
+      "latitude": 49.0508946971487,
+      "longitude": 2.09652978347245,
+      "name": {
+        "en": "Jardin Public",
+        "fr": "Jardin Public"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Pissarro is one of the city's notable cultural landmarks.",
+        "fr": "musée Pissarro compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0439",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pontoise-musee-pissarro-m0439",
+      "latitude": 49.048396,
+      "longitude": 2.099887,
+      "name": {
+        "en": "musée Pissarro",
+        "fr": "musée Pissarro"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Tavet-Delacour is one of the city's notable cultural landmarks.",
+        "fr": "musée Tavet-Delacour compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0438",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pontoise-musee-tavet-delacour-m0438",
+      "latitude": 49.050929,
+      "longitude": 2.099776,
+      "name": {
+        "en": "musée Tavet-Delacour",
+        "fr": "musée Tavet-Delacour"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts is an important witness to the city's history.",
+        "fr": "Remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080173",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-remparts-pa00080173",
+      "latitude": 49.0512122158747,
+      "longitude": 2.09964620869356,
+      "name": {
+        "en": "Remparts",
+        "fr": "Remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Estouteville (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Estouteville (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080168",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-hotel-d-estouteville-ancien-pa00080168",
+      "latitude": 49.0511030487305,
+      "longitude": 2.09965820083953,
+      "name": {
+        "en": "Hôtel d'Estouteville (ancien)",
+        "fr": "Hôtel d'Estouteville (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Sous-préfecture (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Sous-préfecture (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080174",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pontoise-sous-prefecture-ancienne-pa00080174",
+      "latitude": 49.0499550163284,
+      "longitude": 2.09446795589561,
+      "name": {
+        "en": "Sous-préfecture (ancienne)",
+        "fr": "Sous-préfecture (ancienne)"
+      }
+    }
+  ]
+}

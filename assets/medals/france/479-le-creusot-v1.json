@@ -1,0 +1,204 @@
+{
+  "id": "le-creusot-v1",
+  "cityId": "le-creusot-fr",
+  "cityZoneId": "relation/2086964",
+  "cityName": {
+    "en": "Le Creusot",
+    "fr": "Le Creusot"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Verrerie is an important witness to the city's history.",
+        "fr": "Château de la Verrerie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113251",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-creusot-chateau-de-la-verrerie-pa00113251",
+      "latitude": 46.8056404504389,
+      "longitude": 4.4242932857359,
+      "name": {
+        "en": "Château de la Verrerie",
+        "fr": "Château de la Verrerie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "écomusée de la communauté Le Creusot - Montceau-les-Mines is one of the city's notable cultural landmarks.",
+        "fr": "écomusée de la communauté Le Creusot - Montceau-les-Mines compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0170",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-creusot-ecomusee-de-la-communaute-le-creusot-montceau-les-mines-m0170",
+      "latitude": 46.80448,
+      "longitude": 4.428059,
+      "name": {
+        "en": "écomusée de la communauté Le Creusot - Montceau-les-Mines",
+        "fr": "écomusée de la communauté Le Creusot - Montceau-les-Mines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Saône-et-Loire, in France",
+        "fr": "église située en Saône-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38479641",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-eglise-saint-charles-du-creusot-q38479641",
+      "latitude": 46.80567,
+      "longitude": 4.43654,
+      "name": {
+        "en": "église Saint-Charles du Creusot",
+        "fr": "église Saint-Charles du Creusot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Saône-et-Loire, in France",
+        "fr": "église située en Saône-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18114696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-eglise-saint-henri-du-creusot-q18114696",
+      "latitude": 46.79659,
+      "longitude": 4.42187,
+      "name": {
+        "en": "église Saint-Henri du Creusot",
+        "fr": "église Saint-Henri du Creusot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Saône-et-Loire, in France",
+        "fr": "église située en Saône-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38662702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-eglise-saint-laurent-du-creusot-q38662702",
+      "latitude": 46.80573,
+      "longitude": 4.42206,
+      "name": {
+        "en": "église Saint-Laurent du Creusot",
+        "fr": "église Saint-Laurent du Creusot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville du Creusot is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de ville situé en Saône-et-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q107407736",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-hotel-de-ville-du-creusot-q107407736",
+      "latitude": 46.80535,
+      "longitude": 4.42828,
+      "name": {
+        "en": "hôtel de ville du Creusot",
+        "fr": "hôtel de ville du Creusot"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Saône-et-Loire department, France",
+        "fr": "monument aux morts situé en Saône-et-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q136032978",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-monument-aux-morts-du-creusot-q136032978",
+      "latitude": 46.80762,
+      "longitude": 4.432202,
+      "name": {
+        "en": "monument aux morts du Creusot",
+        "fr": "monument aux morts du Creusot"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Le Creusot, Burgundy, France",
+        "fr": "parc d'attractions français"
+      },
+      "externalIdentity": {
+        "id": "Q20669825",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-parc-touristique-des-combes-q20669825",
+      "latitude": 46.8124,
+      "longitude": 4.41166,
+      "name": {
+        "en": "Parc touristique des Combes",
+        "fr": "Parc touristique des Combes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Le Creusot, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3098193",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-creusot-le-creusot-q3098193",
+      "latitude": 46.807816,
+      "longitude": 4.430493,
+      "name": {
+        "en": "Le Creusot",
+        "fr": "Le Creusot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Usines Schneider (anciennes) , ou ancienne halle aux grues et aux machines is a distinctive architectural landmark in the city.",
+        "fr": "Usines Schneider (anciennes) , ou ancienne halle aux grues et aux machines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113253",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-creusot-usines-schneider-anciennes-ou-ancienne-halle-aux-grues-et-aux-machines-pa00113253",
+      "latitude": 46.8081552507562,
+      "longitude": 4.42386104559907,
+      "name": {
+        "en": "Usines Schneider (anciennes) , ou ancienne halle aux grues et aux machines",
+        "fr": "Usines Schneider (anciennes) , ou ancienne halle aux grues et aux machines"
+      }
+    }
+  ]
+}

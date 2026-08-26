@@ -1,0 +1,204 @@
+{
+  "id": "mont-saint-aignan-v1",
+  "cityId": "mont-saint-aignan-fr",
+  "cityZoneId": "relation/102870",
+  "cityName": {
+    "en": "Mont-Saint-Aignan",
+    "fr": "Mont-Saint-Aignan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église à Mont-Saint-Aignan (Seine-Maritime)"
+      },
+      "externalIdentity": {
+        "id": "Q2212473",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-ancien-eglise-saint-jacques-du-mont-aux-malades-q2212473",
+      "latitude": 49.457444444,
+      "longitude": 1.081416666,
+      "name": {
+        "en": "Ancien église Saint-Jacques du Mont-aux-Malades",
+        "fr": "Ancien église Saint-Jacques du Mont-aux-Malades"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Maritime, in France",
+        "fr": "chapelle située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60338457",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-chapelle-de-l-hopital-du-belvedere-de-mont-aux-malades-q60338457",
+      "latitude": 49.458161,
+      "longitude": 1.081881,
+      "name": {
+        "en": "chapelle de l'hôpital du Belvédère de Mont-aux-Malades",
+        "fr": "chapelle de l'hôpital du Belvédère de Mont-aux-Malades"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "École supérieure d’ingénieurs et de techniciens pour l’agriculture is a distinctive architectural landmark in the city.",
+        "fr": "École supérieure d’ingénieurs et de techniciens pour l’agriculture est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q22248409",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-ecole-superieure-d-ingenieurs-et-de-techniciens-pour-l-agriculture-q22248409",
+      "latitude": 49.467286,
+      "longitude": 1.073108,
+      "name": {
+        "en": "École supérieure d’ingénieurs et de techniciens pour l’agriculture",
+        "fr": "École supérieure d’ingénieurs et de techniciens pour l’agriculture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385400",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-eglise-notre-dame-de-misericorde-des-coquets-q60385400",
+      "latitude": 49.463636,
+      "longitude": 1.076306,
+      "name": {
+        "en": "église Notre-Dame-de-Miséricorde des Coquets",
+        "fr": "église Notre-Dame-de-Miséricorde des Coquets"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38408843",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-eglise-saint-aignan-de-saint-aignan-village-q38408843",
+      "latitude": 49.470974,
+      "longitude": 1.084524,
+      "name": {
+        "en": "église Saint-Aignan de Saint-Aignan-Village",
+        "fr": "église Saint-Aignan de Saint-Aignan-Village"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38416693",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-eglise-saint-andre-de-saint-andre-q38416693",
+      "latitude": 49.455938,
+      "longitude": 1.090219,
+      "name": {
+        "en": "église Saint-André de Saint-André",
+        "fr": "église Saint-André de Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église à Mont-Saint-Aignan (Seine-Maritime)"
+      },
+      "externalIdentity": {
+        "id": "Q22951906",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-eglise-saint-thomas-du-mont-aux-malades-de-mont-saint-aignan-q22951906",
+      "latitude": 49.45817,
+      "longitude": 1.08186,
+      "name": {
+        "en": "église Saint-Thomas du Mont-aux-Malades de Mont-Saint-Aignan",
+        "fr": "église Saint-Thomas du Mont-aux-Malades de Mont-Saint-Aignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "édifice cultuel de la Seine-Maritime"
+      },
+      "externalIdentity": {
+        "id": "Q11745091",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-eglise-sainte-marie-de-mont-saint-aignan-q11745091",
+      "latitude": 49.473194444,
+      "longitude": 1.1,
+      "name": {
+        "en": "église Sainte-Marie de Mont-Saint-Aignan",
+        "fr": "église Sainte-Marie de Mont-Saint-Aignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Mont-Saint-Aignan, France",
+        "fr": "équipement culturel situé à Mont-Saint-Aignan, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109024078",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-espace-marc-sangnier-q109024078",
+      "latitude": 49.46332,
+      "longitude": 1.071499,
+      "name": {
+        "en": "espace Marc-Sangnier",
+        "fr": "espace Marc-Sangnier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "business school",
+        "fr": "école de commerce"
+      },
+      "externalIdentity": {
+        "id": "Q3443135",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mont-saint-aignan-rouen-business-school-q3443135",
+      "latitude": 49.4634,
+      "longitude": 1.06391,
+      "name": {
+        "en": "Rouen Business School",
+        "fr": "Rouen Business School"
+      }
+    }
+  ]
+}

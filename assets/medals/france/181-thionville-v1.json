@@ -1,0 +1,204 @@
+{
+  "id": "thionville-v1",
+  "cityId": "thionville-fr",
+  "cityZoneId": "relation/123302",
+  "cityName": {
+    "en": "Thionville",
+    "fr": "Thionville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Autel de la Patrie is a distinctive architectural landmark in the city.",
+        "fr": "Autel de la Patrie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-autel-de-la-patrie-pa00107039",
+      "latitude": 49.3590077293908,
+      "longitude": 6.16723649825385,
+      "name": {
+        "en": "Autel de la Patrie",
+        "fr": "Autel de la Patrie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-beffroi-ancien-pa00107010",
+      "latitude": 49.3575842678346,
+      "longitude": 6.16726246575627,
+      "name": {
+        "en": "Beffroi (ancien)",
+        "fr": "Beffroi (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) is an important witness to the city's history.",
+        "fr": "Château (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-chateau-ancien-pa00107011",
+      "latitude": 49.35806234659611,
+      "longitude": 6.16849522695716,
+      "name": {
+        "en": "Château (ancien)",
+        "fr": "Château (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Volkrange et ses communs is an important witness to the city's history.",
+        "fr": "Château de Volkrange et ses communs est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-chateau-de-volkrange-et-ses-communs-pa00107012",
+      "latitude": 49.3596736566873,
+      "longitude": 6.08899293169581,
+      "name": {
+        "en": "Château de Volkrange et ses communs",
+        "fr": "Château de Volkrange et ses communs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château dit Le Hof, à Guentrange is an important witness to the city's history.",
+        "fr": "Château dit Le Hof, à Guentrange est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107077",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-chateau-dit-le-hof-a-guentrange-pa00107077",
+      "latitude": 49.3692328208016,
+      "longitude": 6.14331311387282,
+      "name": {
+        "en": "Château dit Le Hof, à Guentrange",
+        "fr": "Château dit Le Hof, à Guentrange"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maximin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maximin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-eglise-saint-maximin-pa00107013",
+      "latitude": 49.3566974851945,
+      "longitude": 6.16705869769846,
+      "name": {
+        "en": "Église Saint-Maximin",
+        "fr": "Église Saint-Maximin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Enceinte is a distinctive architectural landmark in the city.",
+        "fr": "Enceinte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-enceinte-pa00107014",
+      "latitude": 49.3532383763879,
+      "longitude": 6.17709917386731,
+      "name": {
+        "en": "Enceinte",
+        "fr": "Enceinte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Tour-aux-Puces is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Tour-aux-Puces compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0534",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "thionville-musee-de-la-tour-aux-puces-m0534",
+      "latitude": 49.35817096733886,
+      "longitude": 6.169267003245504,
+      "name": {
+        "en": "musée de la Tour-aux-Puces",
+        "fr": "musée de la Tour-aux-Puces"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Eltz (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Eltz (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-hotel-d-eltz-ancien-pa00107015",
+      "latitude": 49.3581971194265,
+      "longitude": 6.16927612208159,
+      "name": {
+        "en": "Hôtel d'Eltz (ancien)",
+        "fr": "Hôtel d'Eltz (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont-écluse Sud du Couronné d'Yutz is a distinctive architectural landmark in the city.",
+        "fr": "Pont-écluse Sud du Couronné d'Yutz est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "thionville-pont-ecluse-sud-du-couronne-d-yutz-pa00107017",
+      "latitude": 49.352519479592,
+      "longitude": 6.171249906876461,
+      "name": {
+        "en": "Pont-écluse Sud du Couronné d'Yutz",
+        "fr": "Pont-écluse Sud du Couronné d'Yutz"
+      }
+    }
+  ]
+}

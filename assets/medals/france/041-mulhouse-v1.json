@@ -1,0 +1,394 @@
+{
+  "id": "mulhouse-v1",
+  "cityId": "mulhouse-fr",
+  "cityZoneId": "relation/38246",
+  "cityName": {
+    "en": "Mulhouse",
+    "fr": "Mulhouse"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôtel de ville, actuellement Musée historique is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôtel de ville, actuellement Musée historique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085528",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-ancien-hotel-de-ville-actuellement-musee-historique-pa00085528",
+      "latitude": 47.7466488068446,
+      "longitude": 7.3392833683037,
+      "name": {
+        "en": "Ancien hôtel de ville, actuellement Musée historique",
+        "fr": "Ancien hôtel de ville, actuellement Musée historique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Anciennes fortifications is an important witness to the city's history.",
+        "fr": "Anciennes fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085527",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-anciennes-fortifications-pa00085527",
+      "latitude": 47.748552229251,
+      "longitude": 7.34209312480987,
+      "name": {
+        "en": "Anciennes fortifications",
+        "fr": "Anciennes fortifications"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cour des Chaînes is a distinctive architectural landmark in the city.",
+        "fr": "Cour des Chaînes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085524",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-cour-des-chaines-pa00085524",
+      "latitude": 47.7477012454744,
+      "longitude": 7.333598794462611,
+      "name": {
+        "en": "Cour des Chaînes",
+        "fr": "Cour des Chaînes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise catholique Saint-Etienne de Mulhouse is a distinctive architectural landmark in the city.",
+        "fr": "Eglise catholique Saint-Etienne de Mulhouse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA68000049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-eglise-catholique-saint-etienne-de-mulhouse-pa68000049",
+      "latitude": 47.7437446821706,
+      "longitude": 7.33652803482224,
+      "name": {
+        "en": "Eglise catholique Saint-Etienne de Mulhouse",
+        "fr": "Eglise catholique Saint-Etienne de Mulhouse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église catholique Sainte-Jeanne-d'Arc is a distinctive architectural landmark in the city.",
+        "fr": "Église catholique Sainte-Jeanne-d'Arc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085759",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-eglise-catholique-sainte-jeanne-d-arc-pa00085759",
+      "latitude": 47.7588790101863,
+      "longitude": 7.341801949666521,
+      "name": {
+        "en": "Église catholique Sainte-Jeanne-d'Arc",
+        "fr": "Église catholique Sainte-Jeanne-d'Arc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église médiévale Saint-Etienne is a distinctive architectural landmark in the city.",
+        "fr": "Église médiévale Saint-Etienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-eglise-medievale-saint-etienne-pa00085782",
+      "latitude": 47.7469908295058,
+      "longitude": 7.33867097725948,
+      "name": {
+        "en": "Église médiévale Saint-Etienne",
+        "fr": "Église médiévale Saint-Etienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Mulhouse, France",
+        "fr": "mairie à Mulhouse (Haut-Rhin)"
+      },
+      "externalIdentity": {
+        "id": "Q13142664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mulhouse-hotel-de-ville-de-mulhouse-q13142664",
+      "latitude": 47.7466,
+      "longitude": 7.3393,
+      "name": {
+        "en": "hôtel de ville de Mulhouse",
+        "fr": "hôtel de ville de Mulhouse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Haut-Rhin, in France",
+        "fr": "église située dans le Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q375297",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mulhouse-mission-du-plein-evangile-la-porte-ouverte-chretienne-q375297",
+      "latitude": 47.77035,
+      "longitude": 7.32784,
+      "name": {
+        "en": "Mission du Plein Évangile - La Porte Ouverte Chrétienne",
+        "fr": "Mission du Plein Évangile - La Porte Ouverte Chrétienne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'impression sur étoffes is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'impression sur étoffes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0037",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-de-l-impression-sur-etoffes-m0037",
+      "latitude": 47.74501942419962,
+      "longitude": 7.345379580548642,
+      "name": {
+        "en": "musée de l'impression sur étoffes",
+        "fr": "musée de l'impression sur étoffes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0033",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-des-beaux-arts-m0033",
+      "latitude": 47.745774,
+      "longitude": 7.338271,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Electropolis is one of the city's notable cultural landmarks.",
+        "fr": "musée Electropolis compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0039",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-electropolis-m0039",
+      "latitude": 47.749441,
+      "longitude": 7.295058,
+      "name": {
+        "en": "musée Electropolis",
+        "fr": "musée Electropolis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée français du chemin de fer is one of the city's notable cultural landmarks.",
+        "fr": "musée français du chemin de fer compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0036",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-francais-du-chemin-de-fer-m0036",
+      "latitude": 47.732372,
+      "longitude": 7.312824,
+      "name": {
+        "en": "musée français du chemin de fer",
+        "fr": "musée français du chemin de fer"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée historique is one of the city's notable cultural landmarks.",
+        "fr": "musée historique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0034",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-historique-m0034",
+      "latitude": 47.746642,
+      "longitude": 7.338434,
+      "name": {
+        "en": "musée historique",
+        "fr": "musée historique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée minéralogique de la société industrielle de Mulhouse is one of the city's notable cultural landmarks.",
+        "fr": "musée minéralogique de la société industrielle de Mulhouse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7047",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-mineralogique-de-la-societe-industrielle-de-mulhouse-m7047",
+      "latitude": 47.73132,
+      "longitude": 7.310303,
+      "name": {
+        "en": "musée minéralogique de la société industrielle de Mulhouse",
+        "fr": "musée minéralogique de la société industrielle de Mulhouse"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue monumentale dite Schweissdissi is a notable work of public art and local memory.",
+        "fr": "Statue monumentale dite Schweissdissi est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA68000054",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-statue-monumentale-dite-schweissdissi-pa68000054",
+      "latitude": 47.7429358200421,
+      "longitude": 7.34773644030195,
+      "name": {
+        "en": "Statue monumentale dite Schweissdissi",
+        "fr": "Statue monumentale dite Schweissdissi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085547",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-synagogue-pa00085547",
+      "latitude": 47.7450844417269,
+      "longitude": 7.33385542260132,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple réformé Saint-Etienne is a distinctive architectural landmark in the city.",
+        "fr": "Temple réformé Saint-Etienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085526",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-temple-reforme-saint-etienne-pa00085526",
+      "latitude": 47.747182739348,
+      "longitude": 7.33878485286121,
+      "name": {
+        "en": "Temple réformé Saint-Etienne",
+        "fr": "Temple réformé Saint-Etienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Diable is an important witness to the city's history.",
+        "fr": "Tour du Diable est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00085548",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mulhouse-tour-du-diable-pa00085548",
+      "latitude": 47.7434778751668,
+      "longitude": 7.33067384928245,
+      "name": {
+        "en": "Tour du Diable",
+        "fr": "Tour du Diable"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national de l'automobile - collection Schlumpf is one of the city's notable cultural landmarks.",
+        "fr": "musée national de l'automobile - collection Schlumpf compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0035",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mulhouse-musee-national-de-l-automobile-collection-schlumpf-m0035",
+      "latitude": 47.76161416701042,
+      "longitude": 7.327893525261629,
+      "name": {
+        "en": "musée national de l'automobile - collection Schlumpf",
+        "fr": "musée national de l'automobile - collection Schlumpf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haut-Rhin, in France",
+        "fr": "église située dans le Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2402982",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mulhouse-temple-saint-etienne-de-mulhouse-q2402982",
+      "latitude": 47.747222222,
+      "longitude": 7.338888888,
+      "name": {
+        "en": "temple Saint-Étienne de Mulhouse",
+        "fr": "temple Saint-Étienne de Mulhouse"
+      }
+    }
+  ]
+}

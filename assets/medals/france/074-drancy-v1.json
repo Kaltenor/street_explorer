@@ -1,0 +1,394 @@
+{
+  "id": "drancy-v1",
+  "cityId": "drancy-fr",
+  "cityZoneId": "relation/158481",
+  "cityName": {
+    "en": "Drancy",
+    "fr": "Drancy"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "hospital",
+        "fr": "hôpital à Drancy (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q22915888",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-asile-de-drancy-q22915888",
+      "latitude": 48.925603,
+      "longitude": 2.442888,
+      "name": {
+        "en": "asile de Drancy",
+        "fr": "asile de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Avenir is a distinctive architectural landmark in the city.",
+        "fr": "centre commercial à Drancy"
+      },
+      "externalIdentity": {
+        "id": "Q2873441",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-avenir-q2873441",
+      "latitude": 48.918467,
+      "longitude": 2.423215,
+      "name": {
+        "en": "Avenir",
+        "fr": "Avenir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q80834810",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-cimetiere-communal-de-drancy-q80834810",
+      "latitude": 48.92494,
+      "longitude": 2.44991,
+      "name": {
+        "en": "cimetière communal de Drancy",
+        "fr": "cimetière communal de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Drancy-Avenir is a distinctive architectural landmark in the city.",
+        "fr": "station de la ligne T1 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28655773",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-drancy-avenir-q28655773",
+      "latitude": 48.917798,
+      "longitude": 2.417705,
+      "name": {
+        "en": "Drancy-Avenir",
+        "fr": "Drancy-Avenir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Paris Métro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q31190670",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-drancy-bobigny-q31190670",
+      "latitude": 48.915914,
+      "longitude": 2.426364,
+      "name": {
+        "en": "Drancy - Bobigny",
+        "fr": "Drancy - Bobigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Drancy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2380502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-drancy-q2380502",
+      "latitude": 48.9325,
+      "longitude": 2.454722,
+      "name": {
+        "en": "Drancy",
+        "fr": "Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église détruite située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q65096057",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-eglise-saint-germain-l-auxerrois-de-drancy-q65096057",
+      "latitude": 48.922832,
+      "longitude": 2.445346,
+      "name": {
+        "en": "église Saint-Germain-l'Auxerrois de Drancy",
+        "fr": "église Saint-Germain-l'Auxerrois de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20054608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-eglise-saint-jean-l-evangeliste-de-drancy-q20054608",
+      "latitude": 48.93026,
+      "longitude": 2.43039,
+      "name": {
+        "en": "église Saint-Jean-l'Évangéliste de Drancy",
+        "fr": "église Saint-Jean-l'Évangéliste de Drancy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Holocaust museum",
+        "fr": "musée de l'Holocauste, près de Paris, en France"
+      },
+      "externalIdentity": {
+        "id": "Q85854201",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-memorial-de-la-shoah-a-drancy-q85854201",
+      "latitude": 48.9187956,
+      "longitude": 2.4519749,
+      "name": {
+        "en": "mémorial de la Shoah à Drancy",
+        "fr": "mémorial de la Shoah à Drancy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-monument-aux-morts-de-drancy-q136053153",
+      "latitude": 48.92537,
+      "longitude": 2.44978,
+      "name": {
+        "en": "monument aux morts de Drancy",
+        "fr": "monument aux morts de Drancy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-monument-aux-morts-de-la-guerre-franco-prussienne-de-drancy-q136095603",
+      "latitude": 48.92463,
+      "longitude": 2.44842,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Drancy",
+        "fr": "monument aux morts de la guerre franco-prussienne de Drancy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Drancy, France",
+        "fr": "parc situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q60849143",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-parc-de-ladoucette-q60849143",
+      "latitude": 48.92526,
+      "longitude": 2.44434,
+      "name": {
+        "en": "parc de Ladoucette",
+        "fr": "parc de Ladoucette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20054609",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-eglise-saint-louis-du-progres-q20054609",
+      "latitude": 48.93442,
+      "longitude": 2.45018,
+      "name": {
+        "en": "église Saint-Louis-du-Progrès",
+        "fr": "église Saint-Louis-du-Progrès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958322",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-eglise-sainte-louise-de-marillac-de-drancy-q15958322",
+      "latitude": 48.923883,
+      "longitude": 2.44597,
+      "name": {
+        "en": "église Sainte-Louise-de-Marillac de Drancy",
+        "fr": "église Sainte-Louise-de-Marillac de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Drancy, France",
+        "fr": "édifice de Drancy, France"
+      },
+      "externalIdentity": {
+        "id": "Q33229032",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-hotel-de-ville-de-drancy-q33229032",
+      "latitude": 48.923333,
+      "longitude": 2.445,
+      "name": {
+        "en": "hôtel de ville de Drancy",
+        "fr": "hôtel de ville de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le Bourget is a distinctive architectural landmark in the city.",
+        "fr": "station de la ligne T11 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q78112151",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-le-bourget-q78112151",
+      "latitude": 48.93025,
+      "longitude": 2.42342,
+      "name": {
+        "en": "Le Bourget",
+        "fr": "Le Bourget"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T1 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q31190674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-maurice-lachatre-q31190674",
+      "latitude": 48.919197,
+      "longitude": 2.413805,
+      "name": {
+        "en": "Maurice Lachâtre",
+        "fr": "Maurice Lachâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26816948",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-mosquee-de-drancy-q26816948",
+      "latitude": 48.919901,
+      "longitude": 2.425224,
+      "name": {
+        "en": "mosquée de Drancy",
+        "fr": "mosquée de Drancy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Drancy, France",
+        "fr": "place de Drancy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113369535",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-place-de-l-hotel-de-ville-q113369535",
+      "latitude": 48.92308,
+      "longitude": 2.4455,
+      "name": {
+        "en": "place de l'Hôtel de Ville",
+        "fr": "place de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Drancy, France",
+        "fr": "square de Drancy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113368305",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "drancy-square-de-la-liberation-q113368305",
+      "latitude": 48.919988188,
+      "longitude": 2.4552621,
+      "name": {
+        "en": "square de la Libération",
+        "fr": "square de la Libération"
+      }
+    }
+  ]
+}

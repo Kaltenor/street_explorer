@@ -907,8 +907,11 @@ assert(
   outageBridgeOnlyCellIds.length > 0 &&
     outageBridgeOnlyCellIds.every(
       (cellId) => !outageWalk.exploredCellIds.includes(cellId)
-    ),
-  "location recovery leaves the unexplored outage corridor empty"
+    ) &&
+    outageWalk.distanceMeters < 10 &&
+    outageWalk.distanceMeters ===
+      recordingState.calculateTrustedGpsDistanceMeters(outagePoints, "walk"),
+  "location recovery leaves the unexplored outage corridor empty and out of trusted distance"
 );
 
 const fragmentedOuterRing = zoneCompletion.assembleWaysIntoRings([
@@ -1271,10 +1274,19 @@ assert(
   "recovery rebuilds the complete chunked route while bounding only the raw point tail"
 );
 assert(
-  recordingStateSource.includes("activeWalk.distanceMeters +") &&
-    recordingStateSource.includes("haversineDistanceMeters") &&
+  recordingStateSource.includes("getTrustedGpsDistanceIncrementMeters") &&
+    recordingStateSource.includes("isConfirmedLiveRouteStep") &&
     walkRepositorySource.includes("distance_meters = distance_meters + ?"),
-  "recording distance advances incrementally in memory and persistent storage"
+  "recording distance advances only across confirmed segments in memory and persistent storage"
+);
+assert(
+  mapScreenSource.includes("automatic recovery started") &&
+    mapScreenSource.includes("createRecoveredActiveWalk(") &&
+    mapScreenSource.includes("setActiveWalk(resumedWalk)") &&
+    mapScreenSource.includes("Walk resumed after interruption") &&
+    mapScreenSource.includes("updateActiveWalkDistance(") &&
+    mapScreenSource.includes("isStartingRecording || !isRecoveryCheckComplete"),
+  "startup restores the persisted session directly into the active HUD before Start becomes available"
 );
 assert(
   walkRecorderSource.includes("queue.jobs.push(job)") &&
@@ -1311,16 +1323,15 @@ assert(
     backgroundLocationOutboxSource.includes(
       "replaceFinalizedWalkGpsPointsFromObservations"
     ) &&
-    backgroundLocationTaskSource.includes(
-      "getBackgroundTrackingSessionId()"
-    ) &&
+    backgroundLocationTaskSource.includes("resolveBackgroundTrackingSessionId") &&
+    backgroundLocationTaskSource.includes("getActiveRecordingSettings") &&
     backgroundLocationOutboxSource.includes(
       "allowUniqueSessionFallback"
     ) &&
     backgroundLocationOutboxSource.includes(
       "matchingSessions.length === 1"
     ),
-  "queued batches route each point to its recording and late Stop events rebuild finalized routes"
+  "cold background callbacks resolve the persisted active recording and late Stop events rebuild finalized routes"
 );
 assert(
   backgroundLocationTaskSource.includes(
@@ -1343,6 +1354,7 @@ assert(
 );
 assert(
   walkRecorderSource.includes("GPS_PERSISTENCE_REORDER_WINDOW_MS") &&
+    walkRecorderSource.includes("GPS_PERSISTENCE_REORDER_WINDOW_MS = 0") &&
     walkRecorderSource.includes("arrivalSequence") &&
     walkRecorderSource.includes("orderPersistenceJobs(queue.jobs)") &&
     walkRecorderSource.includes(
@@ -1361,7 +1373,7 @@ assert(
       "retain_order-independent_gps_observations"
     ) &&
     !foregroundResumeSyncSource.includes("flushPendingGpsPoints"),
-  "raw observations make late GPS arrival order-independent while the bounded queue remains a fast path"
+  "raw observations make late GPS arrival order-independent without an in-memory durability delay"
 );
 assert(
   backgroundLocationOutboxSource.includes(
@@ -1499,8 +1511,8 @@ assert(
   !mapScreenSource.includes("setElapsedSeconds") &&
     walkControlsSource.includes("setInterval(updateDuration, 1000)") &&
     mapScreenSource.includes("setInterval(synchronizeTail, 3000)") &&
-    tailSyncSource.indexOf("if (persistedPoints.length === 0)") <
-      tailSyncSource.indexOf("const session = await getWalkSessionById(sessionId)") &&
+    tailSyncSource.includes("if (persistedPoints.length === 0)") &&
+    !tailSyncSource.includes("getWalkSessionById(sessionId)") &&
     explorationMapSource.includes("useCoalescedValue(") &&
     explorationMapSource.includes("latestValueRef.current") &&
     explorationMapSource.includes("timerRef.current") &&
@@ -1850,7 +1862,11 @@ assert(
       "Failed to refresh a late finalized GPS merge"
     ) &&
     mapScreenSource.includes('name: "confirmQuit"') &&
-    mapScreenSource.includes("onLongPress={confirmQuit}") &&
+    mapScreenSource.includes(
+      "completionTimerRef.current = setTimeout(confirmQuit, STOP_CONFIRM_HOLD_MS)"
+    ) &&
+    mapScreenSource.includes("onPressOut={finishOrCancelHold}") &&
+    !mapScreenSource.includes("onLongPress={confirmQuit}") &&
     mapScreenSource.includes("} finally {") &&
     mapScreenSource.includes(
       "A failed cache refresh must never leave already valid exploration hidden"

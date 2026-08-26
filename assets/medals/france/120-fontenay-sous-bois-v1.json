@@ -1,0 +1,204 @@
+{
+  "id": "fontenay-sous-bois-v1",
+  "cityId": "fontenay-sous-bois-fr",
+  "cityZoneId": "relation/109366",
+  "cityName": {
+    "en": "Fontenay-sous-Bois",
+    "fr": "Fontenay-sous-Bois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain-l'Auxerrois is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain-l'Auxerrois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079874",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fontenay-sous-bois-eglise-saint-germain-l-auxerrois-pa00079874",
+      "latitude": 48.8476930968803,
+      "longitude": 2.47204596930442,
+      "name": {
+        "en": "Église Saint-Germain-l'Auxerrois",
+        "fr": "Église Saint-Germain-l'Auxerrois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Fontenay-sous-Bois, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1923411",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-fontenay-sous-bois-q1923411",
+      "latitude": 48.843611111,
+      "longitude": 2.463888888,
+      "name": {
+        "en": "Fontenay-sous-Bois",
+        "fr": "Fontenay-sous-Bois"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French fort",
+        "fr": "fort français à Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q3078208",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-fort-de-nogent-q3078208",
+      "latitude": 48.84479,
+      "longitude": 2.4818,
+      "name": {
+        "en": "fort de Nogent",
+        "fr": "fort de Nogent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Fontenay-sous-Bois, France",
+        "fr": "édifice de Fontenay-sous-Bois, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913666",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-hotel-de-ville-de-fontenay-sous-bois-q61913666",
+      "latitude": 48.848879,
+      "longitude": 2.474555,
+      "name": {
+        "en": "hôtel de ville de Fontenay-sous-Bois",
+        "fr": "hôtel de ville de Fontenay-sous-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "La baigneuse de soleil se retournant is a notable work of public art and local memory.",
+        "fr": "œuvre d'art à Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q93103487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-la-baigneuse-de-soleil-se-retournant-q93103487",
+      "latitude": 48.8485408,
+      "longitude": 2.4743759,
+      "name": {
+        "en": "La baigneuse de soleil se retournant",
+        "fr": "La baigneuse de soleil se retournant"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Redoute - Le Fort - Michelet is an important witness to the city's history.",
+        "fr": "quartier de Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q79251617",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-la-redoute-le-fort-michelet-q79251617",
+      "latitude": 48.847498888,
+      "longitude": 2.480156111,
+      "name": {
+        "en": "La Redoute - Le Fort - Michelet",
+        "fr": "La Redoute - Le Fort - Michelet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "maison du Citoyen et de la Vie Associative is an important witness to the city's history.",
+        "fr": "ancien château de Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q73192488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-maison-du-citoyen-et-de-la-vie-associative-q73192488",
+      "latitude": 48.8466,
+      "longitude": 2.47577,
+      "name": {
+        "en": "maison du Citoyen et de la Vie Associative",
+        "fr": "maison du Citoyen et de la Vie Associative"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Fontenay-sous-Bois, France",
+        "fr": "parc à Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q73073802",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-parc-de-l-hotel-de-ville-q73073802",
+      "latitude": 48.84862,
+      "longitude": 2.47376,
+      "name": {
+        "en": "parc de l'Hôtel de Ville",
+        "fr": "parc de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "stade André-Laurent is an important witness to the city's history.",
+        "fr": "stade de Fontenay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q78655227",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-stade-andre-laurent-q78655227",
+      "latitude": 48.850125,
+      "longitude": 2.470438,
+      "name": {
+        "en": "stade André-Laurent",
+        "fr": "stade André-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q61084127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontenay-sous-bois-val-de-fontenay-q61084127",
+      "latitude": 48.8556,
+      "longitude": 2.48967,
+      "name": {
+        "en": "Val de Fontenay",
+        "fr": "Val de Fontenay"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "castres-v1",
+  "cityId": "castres-fr",
+  "cityZoneId": "relation/135627",
+  "cityName": {
+    "en": "Castres",
+    "fr": "Castres"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien chartreuse de Saix is an important witness to the city's history.",
+        "fr": "Ancien chartreuse de Saix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095504",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-ancien-chartreuse-de-saix-pa00095504",
+      "latitude": 43.5904650234044,
+      "longitude": 2.18301693544194,
+      "name": {
+        "en": "Ancien chartreuse de Saix",
+        "fr": "Ancien chartreuse de Saix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095519",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-ancien-palais-episcopal-pa00095519",
+      "latitude": 43.6037151022175,
+      "longitude": 2.24207571339219,
+      "name": {
+        "en": "Ancien palais épiscopal",
+        "fr": "Ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'Hauterive is an important witness to the city's history.",
+        "fr": "Château d'Hauterive est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA81000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-chateau-d-hauterive-pa81000039",
+      "latitude": 43.5590399054706,
+      "longitude": 2.26040899477098,
+      "name": {
+        "en": "Château d'Hauterive",
+        "fr": "Château d'Hauterive"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Causse is an important witness to the city's history.",
+        "fr": "Château du Causse est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA81000065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-chateau-du-causse-pa81000065",
+      "latitude": 43.563448481688425,
+      "longitude": 2.2707571770103656,
+      "name": {
+        "en": "Château du Causse",
+        "fr": "Château du Causse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-la-Platé is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-la-Platé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095506",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-eglise-notre-dame-de-la-plate-pa00095506",
+      "latitude": 43.6046856671714,
+      "longitude": 2.2390808007164402,
+      "name": {
+        "en": "Église Notre-Dame-de-la-Platé",
+        "fr": "Église Notre-Dame-de-la-Platé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Benoît (ancienne cathédrale) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Benoît (ancienne cathédrale) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095507",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-eglise-saint-benoit-ancienne-cathedrale-pa00095507",
+      "latitude": 43.604250190126,
+      "longitude": 2.24167595894276,
+      "name": {
+        "en": "Église Saint-Benoît (ancienne cathédrale)",
+        "fr": "Église Saint-Benoît (ancienne cathédrale)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin de l'Evêché is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin de l'Evêché compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095670",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-jardin-de-l-eveche-pa00095670",
+      "latitude": 43.6025660183444,
+      "longitude": 2.24160790084986,
+      "name": {
+        "en": "Jardin de l'Evêché",
+        "fr": "Jardin de l'Evêché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Goya is one of the city's notable cultural landmarks.",
+        "fr": "musée Goya compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0594",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "castres-musee-goya-m0594",
+      "latitude": 43.604813,
+      "longitude": 2.239888,
+      "name": {
+        "en": "musée Goya",
+        "fr": "musée Goya"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jean Jaurès is one of the city's notable cultural landmarks.",
+        "fr": "musée Jean Jaurès compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0595",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "castres-musee-jean-jaures-m0595",
+      "latitude": 43.607135,
+      "longitude": 2.240474,
+      "name": {
+        "en": "musée Jean Jaurès",
+        "fr": "musée Jean Jaurès"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA81000010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "castres-theatre-municipal-pa81000010",
+      "latitude": 43.6034412970896,
+      "longitude": 2.24084499871769,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    }
+  ]
+}

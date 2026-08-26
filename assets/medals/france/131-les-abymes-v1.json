@@ -1,0 +1,204 @@
+{
+  "id": "les-abymes-v1",
+  "cityId": "les-abymes-fr",
+  "cityZoneId": "relation/239133",
+  "cityName": {
+    "en": "Les Abymes",
+    "fr": "Les Abymes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport",
+        "fr": "aéroport desservant Pointe-à-Pitre (Guadeloupe, France)"
+      },
+      "externalIdentity": {
+        "id": "Q1156872",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-aeroport-guadeloupe-maryse-conde-q1156872",
+      "latitude": 16.264166666,
+      "longitude": -61.525833333,
+      "name": {
+        "en": "aéroport Guadeloupe - Maryse Condé",
+        "fr": "aéroport Guadeloupe - Maryse Condé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Guadeloupe, in France",
+        "fr": "chapelle aux Abymes en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q138868516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-chapelle-notre-dame-de-la-guadeloupe-des-abymes-q138868516",
+      "latitude": 16.271919,
+      "longitude": -61.505656,
+      "name": {
+        "en": "chapelle Notre-Dame-de-la-Guadeloupe des Abymes",
+        "fr": "chapelle Notre-Dame-de-la-Guadeloupe des Abymes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église aux Abymes, en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q26263070",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-eglise-de-l-immaculee-conception-des-abymes-q26263070",
+      "latitude": 16.271227,
+      "longitude": -61.504627,
+      "name": {
+        "en": "église de l'Immaculée-Conception des Abymes",
+        "fr": "église de l'Immaculée-Conception des Abymes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située à la Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136527999",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-eglise-saint-luc-des-abymes-q136527999",
+      "latitude": 16.250188,
+      "longitude": -61.522287,
+      "name": {
+        "en": "église Saint-Luc des Abymes",
+        "fr": "église Saint-Luc des Abymes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts des Abymes is a notable work of public art and local memory.",
+        "fr": "cénotaphe aux Abymes (Guadeloupe)"
+      },
+      "externalIdentity": {
+        "id": "Q18736768",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-monument-aux-morts-des-abymes-q18736768",
+      "latitude": 16.2708,
+      "longitude": -61.505,
+      "name": {
+        "en": "monument aux morts des Abymes",
+        "fr": "monument aux morts des Abymes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA97100045",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "les-abymes-monument-aux-morts-pa97100045",
+      "latitude": 16.270931263175,
+      "longitude": -61.50498170985891,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Les Abymes, Guadeloupe, France",
+        "fr": "siège municipal des Abymes, en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119340607",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-mairie-des-abymes-q119340607",
+      "latitude": 16.271,
+      "longitude": -61.5053,
+      "name": {
+        "en": "mairie des Abymes",
+        "fr": "mairie des Abymes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français sur la Rivière Salée en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q14628932",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-pont-de-la-gabarre-q14628932",
+      "latitude": 16.2537,
+      "longitude": -61.549,
+      "name": {
+        "en": "pont de la Gabarre",
+        "fr": "pont de la Gabarre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français sur la Rivière Salée en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q14628933",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-pont-mobile-de-l-alliance-q14628933",
+      "latitude": 16.2715,
+      "longitude": -61.5484,
+      "name": {
+        "en": "pont mobile de l'Alliance",
+        "fr": "pont mobile de l'Alliance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-use stadium in Les Abymes, Guadeloupe",
+        "fr": "stade René-Serge-Nabajoth est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2325931",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-abymes-stade-rene-serge-nabajoth-q2325931",
+      "latitude": 16.26888,
+      "longitude": -61.50881,
+      "name": {
+        "en": "stade René-Serge-Nabajoth",
+        "fr": "stade René-Serge-Nabajoth"
+      }
+    }
+  ]
+}

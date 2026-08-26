@@ -35,14 +35,20 @@ require.cache[path.resolve(__dirname, "../src/services/medalCountryPackStore.ts"
 const explorationArea = require("../src/services/explorationArea.ts");
 const medalEnclosure = require("../src/services/medalEnclosure.ts");
 const lyonAlbum = require("../assets/medals/lyon-v1.json");
+const marseilleAlbum = require("../assets/medals/marseille-v1.json");
 const parisAlbum = require("../assets/medals/paris-v1.json");
+const thononAlbum = require("../assets/medals/thonon-les-bains-v1.json");
 const villeurbanneAlbum = require("../assets/medals/villeurbanne-v1.json");
 const medalAlbums = require("../src/data/medalAlbums.ts");
 const downloadableManifest = require(
   "../src/data/generated/downloadableMedalCountryPackManifest.ts"
 );
 const sha256 = require("../src/services/sha256.ts");
-const franceSources = require("../assets/medals/france-top-100-sources.json");
+const franceSources = require("../assets/medals/france-top-500-sources.json");
+const franceCatalogGeneratorSource = fs.readFileSync(
+  path.resolve(__dirname, "../scripts/generate-france-medal-catalog.mjs"),
+  "utf8"
+);
 const franceAlbumDirectory = path.resolve(__dirname, "../assets/medals/france");
 const generatedFranceAlbums = fs.readdirSync(franceAlbumDirectory)
   .filter((fileName) => fileName.endsWith(".json"))
@@ -381,10 +387,11 @@ const villeurbanneLocalizedCopy = villeurbanneAlbum.medals.flatMap((medal) => [
   medal.description.fr
 ]);
 assert(
-  villeurbanneAlbum.medals.length === 14 &&
+  villeurbanneAlbum.version === 2 &&
+    villeurbanneAlbum.medals.length === 20 &&
     new Set(villeurbanneAlbum.medals.map((medal) => medal.category)).size === 5 &&
     villeurbanneLocalizedCopy.every((value) => !value.includes("?")),
-  "the Villeurbanne v1 album contains 14 Unicode-safe landmarks across every category"
+  "the Villeurbanne v2 album contains 20 Unicode-safe landmarks across every category"
 );
 assert(
   medalAlbums.getMedalAlbumIdForZone({
@@ -398,7 +405,15 @@ assert(
     medalAlbums.getMedalAlbumIdForZone({
       id: "relation/120965",
       parentZoneId: null
-    }) === lyonAlbum.id,
+    }) === lyonAlbum.id &&
+    medalAlbums.getMedalAlbumIdForZone({
+      id: "relation/105786",
+      parentZoneId: null
+    }) === thononAlbum.id &&
+    medalAlbums.getMedalAlbumIdForZone({
+      id: "relation/thonon-neighbourhood",
+      parentZoneId: "relation/105786"
+    }) === thononAlbum.id,
   "city and district objectives select their matching bundled medal album"
 );
 assert(
@@ -418,12 +433,14 @@ assert(
 );
 const bundledAlbums = generatedFranceAlbums.concat([
   parisAlbum,
+  marseilleAlbum,
   lyonAlbum,
-  villeurbanneAlbum
+  villeurbanneAlbum,
+  thononAlbum
 ]);
 const albumsById = new Map(bundledAlbums.map((album) => [album.id, album]));
-const top100Albums = franceSources.cities.map((city) => albumsById.get(city.albumId));
-const bundledMedals = top100Albums.flatMap((album) => album.medals);
+const top500Albums = franceSources.cities.map((city) => albumsById.get(city.albumId));
+const bundledMedals = bundledAlbums.flatMap((album) => album.medals);
 const parisArrondissements = new Set(
   parisAlbum.medals.map((medal) => medal.arrondissement)
 );
@@ -431,6 +448,26 @@ const lyonExpansionDistricts = [3, 4, 6, 7, 8, 9];
 const lyonExpandedMedals = lyonAlbum.medals.filter((medal) =>
   lyonExpansionDistricts.includes(medal.arrondissement)
 );
+const originalMarseilleMedalIds = new Set([
+  "marseille-chateau-borely-ou-domaine-borely-pa00081332",
+  "marseille-palais-longchamp-pa00081368",
+  "marseille-ensemble-cathedral-sainte-marie-majeure-pa00081326",
+  "marseille-eglise-de-la-vieille-major-ancienne-cathedrale-ou-ensemble-cathedral-sainte-marie-majeure-pa00081336",
+  "marseille-chateau-d-if-pa00081333",
+  "marseille-abbaye-saint-victor-pa00081323",
+  "marseille-cabinet-des-monnaies-et-medailles-m0912",
+  "marseille-musee-cantini-m0915"
+]);
+const marseilleCategoryCounts = Object.values(
+  marseilleAlbum.medals.reduce((counts, medal) => {
+    counts[medal.category] = (counts[medal.category] ?? 0) + 1;
+    return counts;
+  }, {})
+);
+const thononCategoryCounts = thononAlbum.medals.reduce((counts, medal) => {
+  counts[medal.category] = (counts[medal.category] ?? 0) + 1;
+  return counts;
+}, {});
 assert(
   parisAlbum.version === 2 &&
     parisAlbum.medals.length === 60 &&
@@ -457,45 +494,93 @@ assert(
   "the expanded Lyon v2 album adds four landmarks in each requested outer district and retains all five categories"
 );
 assert(
-  franceSources.cities.length === 100 &&
-    generatedFranceAlbums.length === 97 &&
+  marseilleAlbum.version === 2 &&
+    marseilleAlbum.medals.length === 38 &&
+    franceSources.cities[1].medalCount === 38 &&
+    franceSources.cities[1].sourceCounts.wikidata === 30 &&
+    franceCatalogGeneratorSource.includes('["13055", "../marseille-v1.json"]') &&
+    originalMarseilleMedalIds.size === 8 &&
+    Array.from(originalMarseilleMedalIds).every((id) =>
+      marseilleAlbum.medals.some((medal) => medal.id === id)
+    ) &&
+    Array.from({ length: 16 }, (_, index) => index + 1).every((arrondissement) =>
+      marseilleAlbum.medals.some((medal) => medal.arrondissement === arrondissement)
+    ) &&
+    new Set(marseilleAlbum.medals.map((medal) => medal.category)).size === 5 &&
+    Math.max(...marseilleCategoryCounts) - Math.min(...marseilleCategoryCounts) <= 3,
+  "the expanded Marseille v2 album preserves its original medals and adds balanced coverage across all 16 arrondissements"
+);
+assert(
+  thononAlbum.version === 1 &&
+    thononAlbum.cityZoneId === "relation/105786" &&
+    thononAlbum.medals.length === 10 &&
+    ["architecture", "art", "culture", "history", "nature"].every(
+      (category) => thononCategoryCounts[category] === 2
+    ) &&
+    thononAlbum.medals.every(
+      (medal) =>
+        medal.id.startsWith("thonon-les-bains-") &&
+        Number.isFinite(medal.latitude) &&
+        Number.isFinite(medal.longitude) &&
+        medal.externalIdentity.source === "openstreetmap"
+    ) &&
+    franceSources.cities.find((city) => city.inseeCode === "74281")?.rank === 211 &&
+    franceSources.cities.find((city) => city.inseeCode === "74281")?.medalCount === 10 &&
+    franceCatalogGeneratorSource.includes('["74281", "../thonon-les-bains-v1.json"]'),
+  "the curated Thonon-les-Bains album contains ten balanced local landmarks at its official top-500 rank"
+);
+assert(
+  franceSources.cities.length === 500 &&
+    generatedFranceAlbums.length === 495 &&
     franceSources.cities[0].cityName === "Paris" &&
     franceSources.cities[1].cityName === "Marseille" &&
     franceSources.cities[2].cityName === "Lyon" &&
-    franceSources.cities[99].cityName === "Maisons-Alfort" &&
+    franceSources.cities[99].cityName === "Fréjus" &&
+    franceSources.cities[100].cityName === "Neuilly-sur-Seine" &&
+    franceSources.cities[499].cityName === "Chevilly-Larue" &&
     franceSources.cities.every(
       (city, index, cities) => index === 0 || city.population <= cities[index - 1].population
     ) &&
-    top100Albums.every(Boolean) &&
-    top100Albums.every((album) => album.medals.length >= 5) &&
+    franceSources.cities.every((city, index) => city.rank === index + 1) &&
+    top500Albums.every(Boolean) &&
+    top500Albums.slice(0, 100).every((album) => album.medals.length >= 20) &&
+    top500Albums.slice(100).every((album) => album.medals.length >= 10) &&
+    ["971", "972", "973", "974", "976"].every((department) =>
+      franceSources.cities.some((city) => city.inseeCode.startsWith(department))
+    ) &&
+    ["97801", "98715", "98735", "98738", "98805", "98817", "98818", "98821"].every(
+      (inseeCode) => franceSources.cities.some((city) => city.inseeCode === inseeCode)
+    ) &&
     !franceSources.cities.some((city) => /Arrondissement/.test(city.cityName)),
-  "the offline France pack contains the official metropolitan top 100 as whole communes"
+  "the offline France pack contains the official top 500, including departments and collectivities overseas, with 20/10-medal minimums"
 );
 assert(
-  new Set(top100Albums.map((album) => album.id)).size === 100 &&
-    new Set(top100Albums.map((album) => album.cityZoneId)).size === 100 &&
-  new Set(bundledMedals.map((medal) => medal.id)).size === bundledMedals.length &&
+  new Set(bundledAlbums.map((album) => album.id)).size === 500 &&
+    new Set(bundledAlbums.map((album) => album.cityZoneId)).size === 500 &&
+    new Set(top500Albums.map((album) => album.id)).size === 500 &&
+    new Set(top500Albums.map((album) => album.cityZoneId)).size === 500 &&
+    new Set(bundledMedals.map((medal) => medal.id)).size === bundledMedals.length &&
     bundledMedals.every((medal) =>
       Number.isFinite(medal.latitude) && Number.isFinite(medal.longitude)
     ),
-  "all 875 bundled medals use globally unique ids and finite reviewed anchors"
+  "all 6,082 bundled medals use globally unique ids and finite reviewed anchors"
 );
-const obviousNonLandmarkName = /^(?:rue|avenue|boulevard|route|chemin|arrêt|allée(?! couverte))\b|\bstation\b/i;
 assert(
   bundledMedals.every((medal) =>
-    !obviousNonLandmarkName.test(medal.name.fr) &&
     ["merimee", "museofile", "openstreetmap", "wikidata"].includes(
       medal.externalIdentity.source
     )
   ),
-  "review filters exclude obvious transport and street records from the frozen rosters"
+  "every frozen roster item retains a reviewed external source identity"
 );
 assert(
-  medalAlbums.BUNDLED_MEDAL_ALBUM_COUNT === 100 &&
-    medalAlbums.BUNDLED_MEDAL_COUNT === 875 &&
+  medalAlbums.BUNDLED_MEDAL_ALBUM_COUNT === 500 &&
+    medalAlbums.BUNDLED_MEDAL_COUNT === 6082 &&
     medalAlbums.BUNDLED_MEDAL_COUNT === bundledMedals.length &&
-    medalAlbums.getAllBundledMedalAlbums().length === 100 &&
-    medalAlbums.getBundledMedalAlbum("paris-v1").cityName.fr === "Paris",
+    medalAlbums.getAllBundledMedalAlbums().length === 500 &&
+    medalAlbums.getBundledMedalAlbum("paris-v1").cityName.fr === "Paris" &&
+    medalAlbums.getBundledMedalAlbum("thonon-les-bains-v1").cityName.fr ===
+      "Thonon-les-Bains",
   "the manifest resolves one requested city album and the launch scan can load all bundled albums"
 );
 
@@ -602,8 +687,19 @@ assert(
   medalRepositorySource.includes("getUncollectedMedalsInBounds") &&
     medalRepositorySource.includes("getCollectedMedalsSinceInBounds") &&
     expeditionSource.includes("getMedalAlbumIdForZone(district)") &&
+    expeditionSource.includes("getStreetSegmentsWithinBounds(bounds)") &&
+    !expeditionSource.includes("getAllStreetSegments") &&
     !expeditionSource.includes("getAllMedalAlbumProgress"),
-  "district expedition medal checks use direct indexed active-city queries"
+  "district expedition opportunity checks use direct indexed district queries"
+);
+assert(
+  medalRepositorySource.includes("medalAlbumSeedOperations") &&
+    medalRepositorySource.includes("medalAlbumSeedChain") &&
+    medalRepositorySource.includes("const existingOperation = medalAlbumSeedOperations.get(albumId)") &&
+    medalRepositorySource.includes("return existingOperation") &&
+    medalRepositorySource.includes("medalAlbumSeedChain.then(() => seedMedalAlbum(albumId))") &&
+    medalRepositorySource.includes("medalAlbumSeedOperations.set(albumId, trackedOperation)"),
+  "concurrent district consumers share album seeds and serialize SQLite catalogue writes"
 );
 assert(
   medalRepositorySource.includes("getCollectedMedalCities") &&

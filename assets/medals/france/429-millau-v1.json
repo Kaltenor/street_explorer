@@ -1,0 +1,204 @@
+{
+  "id": "millau-v1",
+  "cityId": "millau-fr",
+  "cityZoneId": "relation/74109",
+  "cityName": {
+    "en": "Millau",
+    "fr": "Millau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de l'Espinasse is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de l'Espinasse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-eglise-notre-dame-de-l-espinasse-pa00094059",
+      "latitude": 44.0981043843524,
+      "longitude": 3.08126751815271,
+      "name": {
+        "en": "Église Notre-Dame de l'Espinasse",
+        "fr": "Église Notre-Dame de l'Espinasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Halle is a distinctive architectural landmark in the city.",
+        "fr": "Halle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094061",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-halle-pa00094061",
+      "latitude": 44.0982066958439,
+      "longitude": 3.0795972578609803,
+      "name": {
+        "en": "Halle",
+        "fr": "Halle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Sambucy is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Sambucy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094063",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-hotel-de-sambucy-pa00094063",
+      "latitude": 44.097685003724,
+      "longitude": 3.0754152754215904,
+      "name": {
+        "en": "Hôtel de Sambucy",
+        "fr": "Hôtel de Sambucy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lavoir de l'Ayrolle is a distinctive architectural landmark in the city.",
+        "fr": "Lavoir de l'Ayrolle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-lavoir-de-l-ayrolle-pa00094064",
+      "latitude": 44.0964459419799,
+      "longitude": 3.07636749233089,
+      "name": {
+        "en": "Lavoir de l'Ayrolle",
+        "fr": "Lavoir de l'Ayrolle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0549",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "millau-musee-municipal-m0549",
+      "latitude": 44.097895,
+      "longitude": 3.080595,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Site archéologique de la Graufesenque is an important witness to the city's history.",
+        "fr": "Site archéologique de la Graufesenque est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094060",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-site-archeologique-de-la-graufesenque-pa00094060",
+      "latitude": 44.0976346065443,
+      "longitude": 3.09441194305515,
+      "name": {
+        "en": "Site archéologique de la Graufesenque",
+        "fr": "Site archéologique de la Graufesenque"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Site archéologique du dolmen 3 de Saint-Martin-du-Larzac is an important witness to the city's history.",
+        "fr": "Site archéologique du dolmen 3 de Saint-Martin-du-Larzac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA12000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-site-archeologique-du-dolmen-3-de-saint-martin-du-larzac-pa12000015",
+      "latitude": 44.0771045339088,
+      "longitude": 3.16890137394578,
+      "name": {
+        "en": "Site archéologique du dolmen 3 de Saint-Martin-du-Larzac",
+        "fr": "Site archéologique du dolmen 3 de Saint-Martin-du-Larzac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Beffroi is an important witness to the city's history.",
+        "fr": "Tour du Beffroi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094066",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-tour-du-beffroi-pa00094066",
+      "latitude": 44.0980098487204,
+      "longitude": 3.07897099067805,
+      "name": {
+        "en": "Tour du Beffroi",
+        "fr": "Tour du Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont-Vieux is a distinctive architectural landmark in the city.",
+        "fr": "Pont-Vieux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-pont-vieux-pa00094065",
+      "latitude": 44.093518762563,
+      "longitude": 3.0750995257844,
+      "name": {
+        "en": "Pont-Vieux",
+        "fr": "Pont-Vieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA12000070",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "millau-temple-protestant-pa12000070",
+      "latitude": 44.09691893526377,
+      "longitude": 3.079498285083613,
+      "name": {
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
+      }
+    }
+  ]
+}

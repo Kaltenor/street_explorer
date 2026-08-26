@@ -1,0 +1,204 @@
+{
+  "id": "roanne-v1",
+  "cityId": "roanne-fr",
+  "cityZoneId": "relation/134383",
+  "cityName": {
+    "en": "Roanne",
+    "fr": "Roanne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Matel is an important witness to the city's history.",
+        "fr": "château situé à Roanne (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2969833",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-chateau-de-matel-q2969833",
+      "latitude": 46.0583,
+      "longitude": 4.1,
+      "name": {
+        "en": "château de Matel",
+        "fr": "château de Matel"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Roanne is an important witness to the city's history.",
+        "fr": "château à Roanne (Loire)"
+      },
+      "externalIdentity": {
+        "id": "Q22967293",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-chateau-de-roanne-q22967293",
+      "latitude": 46.040148,
+      "longitude": 4.071942,
+      "name": {
+        "en": "château de Roanne",
+        "fr": "château de Roanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Roanne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3055385",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-gare-de-roanne-q3055385",
+      "latitude": 46.039508,
+      "longitude": 4.062728,
+      "name": {
+        "en": "gare de Roanne",
+        "fr": "gare de Roanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "indoor sporting arena in Roanne, France",
+        "fr": "Halle André Vacheresse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3126058",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-halle-andre-vacheresse-q3126058",
+      "latitude": 46.03083,
+      "longitude": 4.05136,
+      "name": {
+        "en": "Halle André Vacheresse",
+        "fr": "Halle André Vacheresse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Roanne, France",
+        "fr": "hôtel particulier abritant la sous-préfecture de Roanne (Loire, France)"
+      },
+      "externalIdentity": {
+        "id": "Q42296915",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-hotel-de-la-sous-prefecture-q42296915",
+      "latitude": 46.035757004,
+      "longitude": 4.069835684,
+      "name": {
+        "en": "hôtel de la Sous-Préfecture",
+        "fr": "hôtel de la Sous-Préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "house in Roanne, France",
+        "fr": "maison à Roanne (Loire)"
+      },
+      "externalIdentity": {
+        "id": "Q22967295",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-maison-a-pans-de-bois-q22967295",
+      "latitude": 46.03977,
+      "longitude": 4.071679,
+      "name": {
+        "en": "maison à pans de bois",
+        "fr": "maison à pans de bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument du centenaire is a notable work of public art and local memory.",
+        "fr": "monument de Roanne, France"
+      },
+      "externalIdentity": {
+        "id": "Q61819390",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-monument-du-centenaire-q61819390",
+      "latitude": 46.03455,
+      "longitude": 4.07292,
+      "name": {
+        "en": "monument du centenaire",
+        "fr": "monument du centenaire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330228",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-musee-des-beaux-arts-et-d-archeologie-joseph-dechelette-q3330228",
+      "latitude": 46.035,
+      "longitude": 4.06979,
+      "name": {
+        "en": "musée des Beaux-Arts et d'Archéologie Joseph-Déchelette",
+        "fr": "musée des Beaux-Arts et d'Archéologie Joseph-Déchelette"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Joseph Déchelette is one of the city's notable cultural landmarks.",
+        "fr": "musée Joseph Déchelette compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1020",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "roanne-musee-joseph-dechelette-m1020",
+      "latitude": 46.034953,
+      "longitude": 4.069842,
+      "name": {
+        "en": "musée Joseph Déchelette",
+        "fr": "musée Joseph Déchelette"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Roanne, France",
+        "fr": "salle de spectacle à Roanne, France"
+      },
+      "externalIdentity": {
+        "id": "Q46699487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roanne-theatre-municipal-de-roanne-q46699487",
+      "latitude": 46.03394,
+      "longitude": 4.073,
+      "name": {
+        "en": "théâtre municipal de Roanne",
+        "fr": "théâtre municipal de Roanne"
+      }
+    }
+  ]
+}

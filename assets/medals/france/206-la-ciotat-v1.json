@@ -1,0 +1,204 @@
+{
+  "id": "la-ciotat-v1",
+  "cityId": "la-ciotat-fr",
+  "cityZoneId": "relation/67741",
+  "cityName": {
+    "en": "La Ciotat",
+    "fr": "La Ciotat"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien Eden-Concert is one of the city's notable cultural landmarks.",
+        "fr": "Ancien Eden-Concert compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000005",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-ancien-eden-concert-pa13000005",
+      "latitude": 43.1773730255891,
+      "longitude": 5.61041483747819,
+      "name": {
+        "en": "Ancien Eden-Concert",
+        "fr": "Ancien Eden-Concert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de Grimaldi-Régusse is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de Grimaldi-Régusse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-ancien-hotel-de-grimaldi-regusse-pa13000027",
+      "latitude": 43.1739496750318,
+      "longitude": 5.60934365225675,
+      "name": {
+        "en": "Ancien hôtel de Grimaldi-Régusse",
+        "fr": "Ancien hôtel de Grimaldi-Régusse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000113",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-ancien-hotel-de-ville-pa13000113",
+      "latitude": 43.173702632874566,
+      "longitude": 5.609917648998758,
+      "name": {
+        "en": "Ancien hôtel de ville",
+        "fr": "Ancien hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciennes Villas des frères Lumière is a distinctive architectural landmark in the city.",
+        "fr": "Anciennes Villas des frères Lumière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-anciennes-villas-des-freres-lumiere-pa13000024",
+      "latitude": 43.1856392836034,
+      "longitude": 5.61963529142317,
+      "name": {
+        "en": "Anciennes Villas des frères Lumière",
+        "fr": "Anciennes Villas des frères Lumière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bastide Marin, située au quartier de Garoutier is a distinctive architectural landmark in the city.",
+        "fr": "Bastide Marin, située au quartier de Garoutier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000069",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-bastide-marin-situee-au-quartier-de-garoutier-pa13000069",
+      "latitude": 43.2010260937408,
+      "longitude": 5.6182245612552,
+      "name": {
+        "en": "Bastide Marin, située au quartier de Garoutier",
+        "fr": "Bastide Marin, située au quartier de Garoutier"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée ciotaden is one of the city's notable cultural landmarks.",
+        "fr": "musée ciotaden compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0907",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-ciotat-musee-ciotaden-m0907",
+      "latitude": 43.173755,
+      "longitude": 5.60973,
+      "name": {
+        "en": "musée ciotaden",
+        "fr": "musée ciotaden"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Palais Lumière is an important witness to the city's history.",
+        "fr": "Palais Lumière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000006",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-palais-lumiere-pa13000006",
+      "latitude": 43.1879370401198,
+      "longitude": 5.61686127519244,
+      "name": {
+        "en": "Palais Lumière",
+        "fr": "Palais Lumière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle des Pénitents Bleus (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle des Pénitents Bleus (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081239",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-chapelle-des-penitents-bleus-ancienne-pa00081239",
+      "latitude": 43.1769674108809,
+      "longitude": 5.61039034888016,
+      "name": {
+        "en": "Chapelle des Pénitents Bleus (ancienne)",
+        "fr": "Chapelle des Pénitents Bleus (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-l'Assomption is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-l'Assomption est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000111",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-eglise-notre-dame-de-l-assomption-pa13000111",
+      "latitude": 43.17446356426555,
+      "longitude": 5.608395718728785,
+      "name": {
+        "en": "Église Notre-Dame-de-l'Assomption",
+        "fr": "Église Notre-Dame-de-l'Assomption"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-ciotat-maison-pa13000028",
+      "latitude": 43.1741327688205,
+      "longitude": 5.60892969862441,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

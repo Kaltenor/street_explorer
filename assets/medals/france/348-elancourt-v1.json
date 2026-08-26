@@ -1,0 +1,204 @@
+{
+  "id": "elancourt-v1",
+  "cityId": "elancourt-fr",
+  "cityZoneId": "relation/49544",
+  "cityName": {
+    "en": "Élancourt",
+    "fr": "Élancourt"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Yvelines, in France",
+        "fr": "Élancourt, Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q68157516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-centre-paroissial-saint-pierre-d-elancourt-q68157516",
+      "latitude": 48.7946,
+      "longitude": 1.9684,
+      "name": {
+        "en": "centre paroissial Saint-Pierre d'Élancourt",
+        "fr": "centre paroissial Saint-Pierre d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Yvelines, in France",
+        "fr": "chapelle située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60337251",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-chapelle-de-la-commanderie-de-la-villedieu-d-elancourt-q60337251",
+      "latitude": 48.7652,
+      "longitude": 1.96547,
+      "name": {
+        "en": "chapelle de la Commanderie de la Villedieu d'Élancourt",
+        "fr": "chapelle de la Commanderie de la Villedieu d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de la Ville-Dieu is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de la Ville-Dieu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087425",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "elancourt-chapelle-de-la-ville-dieu-pa00087425",
+      "latitude": 48.7652206461025,
+      "longitude": 1.96547357536513,
+      "name": {
+        "en": "Chapelle de la Ville-Dieu",
+        "fr": "Chapelle de la Ville-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Yvelines, in France",
+        "fr": "cimetière situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q62391093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-cimetiere-saint-medard-d-elancourt-q62391093",
+      "latitude": 48.78303,
+      "longitude": 1.95941,
+      "name": {
+        "en": "cimetière Saint-Médard d'Élancourt",
+        "fr": "cimetière Saint-Médard d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "point culminant de toute la région Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q2983430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-colline-d-elancourt-q2983430",
+      "latitude": 48.7883,
+      "longitude": 1.96806,
+      "name": {
+        "en": "colline d'Élancourt",
+        "fr": "colline d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60389178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-eglise-saint-medard-d-elancourt-q60389178",
+      "latitude": 48.78342,
+      "longitude": 1.95936,
+      "name": {
+        "en": "église Saint-Médard d'Élancourt",
+        "fr": "église Saint-Médard d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "miniature park",
+        "fr": "parc reproduisant des lieux célèbres en miniature dans les Yvelines, en IDF, depuis 1991"
+      },
+      "externalIdentity": {
+        "id": "Q627915",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-france-miniature-q627915",
+      "latitude": 48.77638889,
+      "longitude": 1.96222222,
+      "name": {
+        "en": "France miniature",
+        "fr": "France miniature"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French institution of higher education specialized in the cinema and audiovisual industry in Paris",
+        "fr": "institution française privée d'enseignement supérieur spécialisée dans le cinéma et l'audiovisuel située à Élancourt"
+      },
+      "externalIdentity": {
+        "id": "Q3152331",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-institut-international-de-l-image-et-du-son-q3152331",
+      "latitude": 48.7933,
+      "longitude": 1.97902,
+      "name": {
+        "en": "Institut international de l'image et du son",
+        "fr": "Institut international de l'image et du son"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Yvelines department, France",
+        "fr": "siège municipal d'Élancourt, dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119298950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-mairie-d-elancourt-q119298950",
+      "latitude": 48.768308162,
+      "longitude": 1.949342776,
+      "name": {
+        "en": "mairie d'Élancourt",
+        "fr": "mairie d'Élancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Yvelines, in France",
+        "fr": "temple protestant situé dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60428419",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "elancourt-temple-d-elancourt-q60428419",
+      "latitude": 48.77568,
+      "longitude": 1.9465,
+      "name": {
+        "en": "temple d'Élancourt",
+        "fr": "temple d'Élancourt"
+      }
+    }
+  ]
+}

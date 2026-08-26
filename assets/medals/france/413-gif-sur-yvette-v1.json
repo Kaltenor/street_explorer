@@ -1,0 +1,204 @@
+{
+  "id": "gif-sur-yvette-v1",
+  "cityId": "gif-sur-yvette-fr",
+  "cityZoneId": "relation/53650",
+  "cityName": {
+    "en": "Gif-sur-Yvette",
+    "fr": "Gif-sur-Yvette"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Laboratory and headquarters of the Commissariat à l'énergie atomique (CEA)",
+        "fr": "laboratoire du Commissariat à l'énergie atomique (CEA)"
+      },
+      "externalIdentity": {
+        "id": "Q4393524",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-centre-de-recherche-cea-paris-saclay-q4393524",
+      "latitude": 48.7247,
+      "longitude": 2.14876,
+      "name": {
+        "en": "Centre de recherche CEA Paris-Saclay",
+        "fr": "Centre de recherche CEA Paris-Saclay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Button is an important witness to the city's history.",
+        "fr": "château à Gif-sur-Yvette"
+      },
+      "externalIdentity": {
+        "id": "Q59641392",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-chateau-de-button-q59641392",
+      "latitude": 48.70332,
+      "longitude": 2.13482,
+      "name": {
+        "en": "château de Button",
+        "fr": "château de Button"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de l'Ermitage is an important witness to the city's history.",
+        "fr": "château situé à Gif-sur-Yvette (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2971092",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-chateau-de-l-ermitage-q2971092",
+      "latitude": 48.7019,
+      "longitude": 2.1339,
+      "name": {
+        "en": "château de l'Ermitage",
+        "fr": "château de l'Ermitage"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château du Val Fleuri is an important witness to the city's history.",
+        "fr": "château à Gif-sur-Yvette"
+      },
+      "externalIdentity": {
+        "id": "Q108699285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-chateau-du-val-fleuri-q108699285",
+      "latitude": 48.702,
+      "longitude": 2.13614,
+      "name": {
+        "en": "château du Val Fleuri",
+        "fr": "château du Val Fleuri"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q764920",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-courcelle-sur-yvette-q764920",
+      "latitude": 48.700833,
+      "longitude": 2.098889,
+      "name": {
+        "en": "Courcelle-sur-Yvette",
+        "fr": "Courcelle-sur-Yvette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former French graduate school of engineering",
+        "fr": "école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q273493",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-ecole-superieure-d-electricite-q273493",
+      "latitude": 48.708333,
+      "longitude": 2.163889,
+      "name": {
+        "en": "École supérieure d'électricité",
+        "fr": "École supérieure d'électricité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Gif-sur-Yvette, France",
+        "fr": "édifice religieux catholique à Gif-sur-Yvette, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584334",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-eglise-saint-remi-de-gif-sur-yvette-q3584334",
+      "latitude": 48.7029,
+      "longitude": 2.13543,
+      "name": {
+        "en": "église Saint-Rémi de Gif-sur-Yvette",
+        "fr": "église Saint-Rémi de Gif-sur-Yvette"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136055560",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-monument-aux-morts-de-gif-sur-yvette-q136055560",
+      "latitude": 48.70181,
+      "longitude": 2.13366,
+      "name": {
+        "en": "monument aux morts de Gif-sur-Yvette",
+        "fr": "monument aux morts de Gif-sur-Yvette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Rémi is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Rémi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087916",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gif-sur-yvette-eglise-saint-remi-pa00087916",
+      "latitude": 48.702882867835,
+      "longitude": 2.1354224118249,
+      "name": {
+        "en": "Église Saint-Rémi",
+        "fr": "Église Saint-Rémi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gif-sur-Yvette, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2276723",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gif-sur-yvette-gif-sur-yvette-q2276723",
+      "latitude": 48.698333,
+      "longitude": 2.1375,
+      "name": {
+        "en": "Gif-sur-Yvette",
+        "fr": "Gif-sur-Yvette"
+      }
+    }
+  ]
+}

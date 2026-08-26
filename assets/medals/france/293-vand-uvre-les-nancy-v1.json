@@ -1,0 +1,204 @@
+{
+  "id": "vand-uvre-les-nancy-v1",
+  "cityId": "vand-uvre-les-nancy-fr",
+  "cityZoneId": "relation/52395",
+  "cityName": {
+    "en": "Vandœuvre-lès-Nancy",
+    "fr": "Vandœuvre-lès-Nancy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden in France",
+        "fr": "jardin botanique en France"
+      },
+      "externalIdentity": {
+        "id": "Q4784861",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-arboretum-de-la-sivrite-q4784861",
+      "latitude": 48.67,
+      "longitude": 6.07,
+      "name": {
+        "en": "arboretum de la Sivrite",
+        "fr": "arboretum de la Sivrite"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Anthoine is an important witness to the city's history.",
+        "fr": "Château Anthoine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA54000006",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vand-uvre-les-nancy-chateau-anthoine-pa54000006",
+      "latitude": 48.6569100152283,
+      "longitude": 6.17016251490393,
+      "name": {
+        "en": "Château Anthoine",
+        "fr": "Château Anthoine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Vandœuvre-lès-Nancy, France",
+        "fr": "château à Vandœuvre-lès-Nancy"
+      },
+      "externalIdentity": {
+        "id": "Q15944328",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-chateau-du-montet-q15944328",
+      "latitude": 48.65853,
+      "longitude": 6.15373,
+      "name": {
+        "en": "château du Montet",
+        "fr": "château du Montet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "domaine du Charmois is an important witness to the city's history.",
+        "fr": "domaine du Charmois est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q28041070",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-domaine-du-charmois-q28041070",
+      "latitude": 48.66806,
+      "longitude": 6.17417,
+      "name": {
+        "en": "domaine du Charmois",
+        "fr": "domaine du Charmois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "engineering school in Nancy",
+        "fr": "école d'ingénieurs établie à Nancy"
+      },
+      "externalIdentity": {
+        "id": "Q3578212",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-ecole-nationale-superieure-d-electricite-et-de-mecanique-q3578212",
+      "latitude": 48.6523,
+      "longitude": 6.14812,
+      "name": {
+        "en": "École nationale supérieure d'électricité et de mécanique",
+        "fr": "École nationale supérieure d'électricité et de mécanique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-François-d'Assise is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-François-d'Assise est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA54000076",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vand-uvre-les-nancy-eglise-saint-francois-d-assise-pa54000076",
+      "latitude": 48.6669470060586,
+      "longitude": 6.18967521785351,
+      "name": {
+        "en": "Église Saint-François-d'Assise",
+        "fr": "Église Saint-François-d'Assise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Melaine is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Melaine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA54000098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vand-uvre-les-nancy-eglise-saint-melaine-pa54000098",
+      "latitude": 48.65504826543186,
+      "longitude": 6.167358561171097,
+      "name": {
+        "en": "Église Saint-Melaine",
+        "fr": "Église Saint-Melaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French research Institute",
+        "fr": "institut français de recherche"
+      },
+      "externalIdentity": {
+        "id": "Q3152021",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-institut-de-l-information-scientifique-et-technique-q3152021",
+      "latitude": 48.6556,
+      "longitude": 6.15028,
+      "name": {
+        "en": "Institut de l'information scientifique et technique",
+        "fr": "Institut de l'information scientifique et technique"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des sports de Vandœuvre-lès-Nancy is one of the city's notable green or natural landmarks.",
+        "fr": "complexe omnisports en Meurthe-et-Moselle"
+      },
+      "externalIdentity": {
+        "id": "Q130596598",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-parc-des-sports-de-vand-uvre-les-nancy-q130596598",
+      "latitude": 48.662927777,
+      "longitude": 6.178327777,
+      "name": {
+        "en": "Parc des sports de Vandœuvre-lès-Nancy",
+        "fr": "Parc des sports de Vandœuvre-lès-Nancy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc Richard-Pouille compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q23013081",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vand-uvre-les-nancy-parc-richard-pouille-q23013081",
+      "latitude": 48.665,
+      "longitude": 6.17889,
+      "name": {
+        "en": "parc Richard-Pouille",
+        "fr": "parc Richard-Pouille"
+      }
+    }
+  ]
+}

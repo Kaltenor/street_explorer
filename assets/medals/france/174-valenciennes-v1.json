@@ -1,0 +1,204 @@
+{
+  "id": "valenciennes-v1",
+  "cityId": "valenciennes-fr",
+  "cityZoneId": "relation/53355",
+  "cityName": {
+    "en": "Valenciennes",
+    "fr": "Valenciennes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien fosse Dutemple is a distinctive architectural landmark in the city.",
+        "fr": "Ancien fosse Dutemple est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107922",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-ancien-fosse-dutemple-pa00107922",
+      "latitude": 50.361490850870595,
+      "longitude": 3.4803258047533183,
+      "name": {
+        "en": "Ancien fosse Dutemple",
+        "fr": "Ancien fosse Dutemple"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau de la Place Verte is an important witness to the city's history.",
+        "fr": "Château d'eau de la Place Verte est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000181",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-chateau-d-eau-de-la-place-verte-pa59000181",
+      "latitude": 50.359290647045604,
+      "longitude": 3.530953416848964,
+      "name": {
+        "en": "Château d'eau de la Place Verte",
+        "fr": "Château d'eau de la Place Verte"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-citadelle-pa00107847",
+      "latitude": 50,
+      "longitude": 3.0000000000000004,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame du Saint-Cordon is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame du Saint-Cordon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000004",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-eglise-notre-dame-du-saint-cordon-pa59000004",
+      "latitude": 50.355327291524404,
+      "longitude": 3.5260193212485413,
+      "name": {
+        "en": "Église Notre-Dame du Saint-Cordon",
+        "fr": "Église Notre-Dame du Saint-Cordon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Géry is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Géry est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107849",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-eglise-saint-gery-pa00107849",
+      "latitude": 50.35872941944534,
+      "longitude": 3.520399873301247,
+      "name": {
+        "en": "Église Saint-Géry",
+        "fr": "Église Saint-Géry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000073",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-hotel-de-ville-pa59000073",
+      "latitude": 50.35786715886683,
+      "longitude": 3.5238810547163464,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Arts et de l'Archéologie de Valenciennes is one of the city's notable cultural landmarks.",
+        "fr": "musée des Arts et de l'Archéologie de Valenciennes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0638",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "valenciennes-musee-des-arts-et-de-l-archeologie-de-valenciennes-m0638",
+      "latitude": 50.35582,
+      "longitude": 3.53105,
+      "name": {
+        "en": "musée des Arts et de l'Archéologie de Valenciennes",
+        "fr": "musée des Arts et de l'Archéologie de Valenciennes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée des Beaux-Arts is one of the city's notable cultural landmarks.",
+        "fr": "Musée des Beaux-Arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000224",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-musee-des-beaux-arts-pa59000224",
+      "latitude": 50.35761273219176,
+      "longitude": 3.5307807063390397,
+      "name": {
+        "en": "Musée des Beaux-Arts",
+        "fr": "Musée des Beaux-Arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Dodenne is an important witness to the city's history.",
+        "fr": "Tour de Dodenne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107842",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-tour-de-dodenne-pa00107842",
+      "latitude": 50.35379824604166,
+      "longitude": 3.527099125536476,
+      "name": {
+        "en": "Tour de Dodenne",
+        "fr": "Tour de Dodenne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Floréal, dit aussi Hôtel de Desfontaine de Fresnoy is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Floréal, dit aussi Hôtel de Desfontaine de Fresnoy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107854",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valenciennes-hotel-floreal-dit-aussi-hotel-de-desfontaine-de-fresnoy-pa00107854",
+      "latitude": 50.3595606519594,
+      "longitude": 3.520377877743622,
+      "name": {
+        "en": "Hôtel Floréal, dit aussi Hôtel de Desfontaine de Fresnoy",
+        "fr": "Hôtel Floréal, dit aussi Hôtel de Desfontaine de Fresnoy"
+      }
+    }
+  ]
+}

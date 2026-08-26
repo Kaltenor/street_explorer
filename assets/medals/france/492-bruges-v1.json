@@ -1,0 +1,204 @@
+{
+  "id": "bruges-v1",
+  "cityId": "bruges-fr",
+  "cityZoneId": "relation/105271",
+  "cityName": {
+    "en": "Bruges",
+    "fr": "Bruges"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Bruges, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573663",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-ausone-q98573663",
+      "latitude": 44.879296,
+      "longitude": -0.603011,
+      "name": {
+        "en": "Ausone",
+        "fr": "Ausone"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "quartier de Bordeaux, France"
+      },
+      "externalIdentity": {
+        "id": "Q2910678",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-bordeaux-lac-q2910678",
+      "latitude": 44.8808551,
+      "longitude": -0.6043925,
+      "name": {
+        "en": "Bordeaux-Lac",
+        "fr": "Bordeaux-Lac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in Gironde, New Aquitaine",
+        "fr": "commune française du département de la Gironde"
+      },
+      "externalIdentity": {
+        "id": "Q327025",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-bruges-q327025",
+      "latitude": 44.882777777,
+      "longitude": -0.6125,
+      "name": {
+        "en": "Bruges",
+        "fr": "Bruges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "camping Village du Lac is a distinctive architectural landmark in the city.",
+        "fr": "camping à Bruges, Gironde, France"
+      },
+      "externalIdentity": {
+        "id": "Q138849992",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-camping-village-du-lac-q138849992",
+      "latitude": 44.896425,
+      "longitude": -0.583944,
+      "name": {
+        "en": "camping Village du Lac",
+        "fr": "camping Village du Lac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Treulon is an important witness to the city's history.",
+        "fr": "Château de Treulon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083492",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruges-chateau-de-treulon-pa00083492",
+      "latitude": 44.8824719165868,
+      "longitude": -0.617017692623239,
+      "name": {
+        "en": "Château de Treulon",
+        "fr": "Château de Treulon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "protected area in France",
+        "fr": "Marais de Bruges, Blanquefort et Parampuyre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q128544240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-marais-de-bruges-blanquefort-et-parampuyre-q128544240",
+      "latitude": 44.90194,
+      "longitude": -0.5975,
+      "name": {
+        "en": "Marais de Bruges, Blanquefort et Parampuyre",
+        "fr": "Marais de Bruges, Blanquefort et Parampuyre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573640",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-champ-de-courses-treulon-q98573640",
+      "latitude": 44.876251,
+      "longitude": -0.621512,
+      "name": {
+        "en": "Champ de Courses - Treulon",
+        "fr": "Champ de Courses - Treulon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Gironde, in France",
+        "fr": "chapelle située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60367992",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-chapelle-sainte-germaine-de-bruges-q60367992",
+      "latitude": 44.87439,
+      "longitude": -0.61456,
+      "name": {
+        "en": "chapelle Sainte-Germaine de Bruges",
+        "fr": "chapelle Sainte-Germaine de Bruges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083493",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruges-eglise-saint-pierre-pa00083493",
+      "latitude": 44.8837905166605,
+      "longitude": -0.611946241859885,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "protected area in France",
+        "fr": "réserve naturelle nationale de France"
+      },
+      "externalIdentity": {
+        "id": "Q3457515",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruges-reserve-naturelle-nationale-des-marais-de-bruges-q3457515",
+      "latitude": 44.9025,
+      "longitude": -0.594899,
+      "name": {
+        "en": "réserve naturelle nationale des marais de Bruges",
+        "fr": "réserve naturelle nationale des marais de Bruges"
+      }
+    }
+  ]
+}

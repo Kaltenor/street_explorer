@@ -6,10 +6,67 @@
     "en": "Rennes",
     "fr": "Rennes"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090671",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-ancien-abbaye-saint-georges-des-benedictins-ou-palais-saint-georges-pa00090671",
+      "latitude": 48.1117708672766,
+      "longitude": -1.67382726823955,
+      "name": {
+        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges",
+        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien manécanterie Saint-Pierre, ou Maison Saint-Pierre is one of the city's notable cultural landmarks.",
+        "fr": "Ancien manécanterie Saint-Pierre, ou Maison Saint-Pierre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090750",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-ancien-manecanterie-saint-pierre-ou-maison-saint-pierre-pa00090750",
+      "latitude": 48.1112891769107,
+      "longitude": -1.68240147756418,
+      "name": {
+        "en": "Ancien manécanterie Saint-Pierre, ou Maison Saint-Pierre",
+        "fr": "Ancien manécanterie Saint-Pierre, ou Maison Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090673",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-basilique-saint-sauveur-pa00090673",
+      "latitude": 48.1118046593545,
+      "longitude": -1.68180140743268,
+      "name": {
+        "en": "Basilique Saint-Sauveur",
+        "fr": "Basilique Saint-Sauveur"
+      }
+    },
     {
       "category": "architecture",
       "description": {
@@ -49,22 +106,117 @@
       }
     },
     {
-      "category": "culture",
+      "category": "architecture",
       "description": {
-        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
-        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+        "en": "Église Notre-Dame-en-Saint-Mélaine is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-en-Saint-Mélaine est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "M0211",
-        "source": "museofile",
+        "id": "PA00090679",
+        "source": "merimee",
         "type": "record"
       },
-      "id": "rennes-musee-des-beaux-arts-m0211",
-      "latitude": 48.109837,
-      "longitude": -1.674981,
+      "id": "rennes-eglise-notre-dame-en-saint-melaine-pa00090679",
+      "latitude": 48.1149187762274,
+      "longitude": -1.67326411692324,
       "name": {
-        "en": "musée des beaux-arts",
-        "fr": "musée des beaux-arts"
+        "en": "Église Notre-Dame-en-Saint-Mélaine",
+        "fr": "Église Notre-Dame-en-Saint-Mélaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090680",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-eglise-saint-etienne-ancienne-pa00090680",
+      "latitude": 48.1156797856118,
+      "longitude": -1.68387454818836,
+      "name": {
+        "en": "église Saint-Étienne (ancienne)",
+        "fr": "église Saint-Étienne (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090682",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-eglise-saint-germain-pa00090682",
+      "latitude": 48.1110657472989,
+      "longitude": -1.67667810530396,
+      "name": {
+        "en": "Église Saint-Germain",
+        "fr": "Église Saint-Germain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Thérèse-de-l'Enfant-Jésus is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Thérèse-de-l'Enfant-Jésus est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA35000071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-eglise-sainte-therese-de-l-enfant-jesus-pa35000071",
+      "latitude": 48.0951731616983,
+      "longitude": -1.66744046277509,
+      "name": {
+        "en": "Église Sainte-Thérèse-de-l'Enfant-Jésus",
+        "fr": "Église Sainte-Thérèse-de-l'Enfant-Jésus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Toussaints is a distinctive architectural landmark in the city.",
+        "fr": "Église Toussaints est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090683",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-eglise-toussaints-pa00090683",
+      "latitude": 48.1091324799094,
+      "longitude": -1.67562728107514,
+      "name": {
+        "en": "Église Toussaints",
+        "fr": "Église Toussaints"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte fortifiée is an important witness to the city's history.",
+        "fr": "Enceinte fortifiée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA35000085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-enceinte-fortifiee-pa35000085",
+      "latitude": 48.1114699196041,
+      "longitude": -1.68516424787516,
+      "name": {
+        "en": "Enceinte fortifiée",
+        "fr": "Enceinte fortifiée"
       }
     },
     {
@@ -84,6 +236,120 @@
       "name": {
         "en": "musée de Bretagne",
         "fr": "musée de Bretagne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0211",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rennes-musee-des-beaux-arts-m0211",
+      "latitude": 48.109837,
+      "longitude": -1.674981,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Ille-et-Vilaine, in France",
+        "fr": "édifice de Rennes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3360922",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rennes-palais-saint-georges-q3360922",
+      "latitude": 48.111666666,
+      "longitude": -1.674166666,
+      "name": {
+        "en": "palais Saint-Georges",
+        "fr": "palais Saint-Georges"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre et immeubles dits Galeries du Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre et immeubles dits Galeries du Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090754",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-theatre-et-immeubles-dits-galeries-du-theatre-pa00090754",
+      "latitude": 48.1113608527445,
+      "longitude": -1.67860053363173,
+      "name": {
+        "en": "Théâtre et immeubles dits Galeries du Théâtre",
+        "fr": "Théâtre et immeubles dits Galeries du Théâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Halles Martenot is a distinctive architectural landmark in the city.",
+        "fr": "Halles Martenot est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090684",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-halles-martenot-pa00090684",
+      "latitude": 48.1124512589153,
+      "longitude": -1.68414039363215,
+      "name": {
+        "en": "Halles Martenot",
+        "fr": "Halles Martenot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Blossac, actuellement Direction régionale des affaires culturelles is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Blossac, actuellement Direction régionale des affaires culturelles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090686",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-hotel-de-blossac-actuellement-direction-regionale-des-affaires-culturelles-pa00090686",
+      "latitude": 48.1113723262773,
+      "longitude": -1.68210571835414,
+      "name": {
+        "en": "Hôtel de Blossac, actuellement Direction régionale des affaires culturelles",
+        "fr": "Hôtel de Blossac, actuellement Direction régionale des affaires culturelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Cuillé is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Cuillé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090693",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rennes-hotel-de-cuille-pa00090693",
+      "latitude": 48.1127233167439,
+      "longitude": -1.67499859626148,
+      "name": {
+        "en": "Hôtel de Cuillé",
+        "fr": "Hôtel de Cuillé"
       }
     },
     {
@@ -122,44 +388,6 @@
       "name": {
         "en": "Palais de Justice",
         "fr": "Palais de Justice"
-      }
-    },
-    {
-      "category": "history",
-      "description": {
-        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges is an important witness to the city's history.",
-        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges est un témoin important de l’histoire de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00090671",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "rennes-ancien-abbaye-saint-georges-des-benedictins-ou-palais-saint-georges-pa00090671",
-      "latitude": 48.1117708672766,
-      "longitude": -1.67382726823955,
-      "name": {
-        "en": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges",
-        "fr": "Ancien abbaye Saint-Georges des Bénédictins, ou Palais Saint-Georges"
-      }
-    },
-    {
-      "category": "history",
-      "description": {
-        "en": "abbey located in Ille-et-Vilaine, in France",
-        "fr": "édifice de Rennes, en France"
-      },
-      "externalIdentity": {
-        "id": "Q3360922",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "rennes-palais-saint-georges-q3360922",
-      "latitude": 48.111666666,
-      "longitude": -1.674166666,
-      "name": {
-        "en": "palais Saint-Georges",
-        "fr": "palais Saint-Georges"
       }
     }
   ]

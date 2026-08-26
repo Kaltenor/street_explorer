@@ -1,0 +1,204 @@
+{
+  "id": "chateauroux-v1",
+  "cityId": "chateauroux-fr",
+  "cityZoneId": "relation/1536593",
+  "cityName": {
+    "en": "Châteauroux",
+    "fr": "Châteauroux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien porte de ville is an important witness to the city's history.",
+        "fr": "Ancien porte de ville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097300",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-ancien-porte-de-ville-pa00097300",
+      "latitude": 46.8127396258902,
+      "longitude": 1.68852342920922,
+      "name": {
+        "en": "Ancien porte de ville",
+        "fr": "Ancien porte de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Touvent is an important witness to the city's history.",
+        "fr": "Château de Touvent est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA36000037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-chateau-de-touvent-pa36000037",
+      "latitude": 46.780451407858,
+      "longitude": 1.69377689102626,
+      "name": {
+        "en": "Château de Touvent",
+        "fr": "Château de Touvent"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Parc et manufacture de drap du château du Parc is an important witness to the city's history.",
+        "fr": "Château du Parc et manufacture de drap du château du Parc est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA36000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-chateau-du-parc-et-manufacture-de-drap-du-chateau-du-parc-pa36000001",
+      "latitude": 46.8124395866582,
+      "longitude": 1.67658951813436,
+      "name": {
+        "en": "Château du Parc et manufacture de drap du château du Parc",
+        "fr": "Château du Parc et manufacture de drap du château du Parc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Raoul is an important witness to the city's history.",
+        "fr": "Château Raoul est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097294",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-chateau-raoul-pa00097294",
+      "latitude": 46.8125932685837,
+      "longitude": 1.68583944737879,
+      "name": {
+        "en": "Château Raoul",
+        "fr": "Château Raoul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA36000023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-eglise-notre-dame-pa36000023",
+      "latitude": 46.8110215435167,
+      "longitude": 1.68887559529752,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église principale Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Église principale Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA36000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-eglise-principale-saint-andre-pa36000024",
+      "latitude": 46.8118059997217,
+      "longitude": 1.69938981236062,
+      "name": {
+        "en": "Église principale Saint-André",
+        "fr": "Église principale Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martial is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martial est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097296",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-eglise-saint-martial-pa00097296",
+      "latitude": 46.813542422202104,
+      "longitude": 1.69478261966645,
+      "name": {
+        "en": "Église Saint-Martial",
+        "fr": "Église Saint-Martial"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison à lucarne de type compagnonnique is a distinctive architectural landmark in the city.",
+        "fr": "Maison à lucarne de type compagnonnique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA36000002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-maison-a-lucarne-de-type-compagnonnique-pa36000002",
+      "latitude": 46.8101440018777,
+      "longitude": 1.69826941510549,
+      "name": {
+        "en": "Maison à lucarne de type compagnonnique",
+        "fr": "Maison à lucarne de type compagnonnique"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA36000052",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chateauroux-monument-aux-morts-de-la-guerre-1914-1918-pa36000052",
+      "latitude": 46.8120327811331,
+      "longitude": 1.6868447643732978,
+      "name": {
+        "en": "Monument aux morts de la guerre 1914-1918",
+        "fr": "Monument aux morts de la guerre 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bertrand is one of the city's notable cultural landmarks.",
+        "fr": "musée Bertrand compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0247",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chateauroux-musee-bertrand-m0247",
+      "latitude": 46.813737,
+      "longitude": 1.694262,
+      "name": {
+        "en": "musée Bertrand",
+        "fr": "musée Bertrand"
+      }
+    }
+  ]
+}

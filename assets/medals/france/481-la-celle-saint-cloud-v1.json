@@ -1,0 +1,204 @@
+{
+  "id": "la-celle-saint-cloud-v1",
+  "cityId": "la-celle-saint-cloud-fr",
+  "cityZoneId": "relation/413447",
+  "cityName": {
+    "en": "La Celle-Saint-Cloud",
+    "fr": "La Celle-Saint-Cloud"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Celle-Saint-Cloud, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096034",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-bougival-q3096034",
+      "latitude": 48.85423,
+      "longitude": 2.13212,
+      "name": {
+        "en": "Bougival",
+        "fr": "Bougival"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "castel Aubert is a distinctive architectural landmark in the city.",
+        "fr": "castel situé à Vaucresson, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96604671",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-castel-aubert-q96604671",
+      "latitude": 48.837012626,
+      "longitude": 2.145855268,
+      "name": {
+        "en": "castel Aubert",
+        "fr": "castel Aubert"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Châtaigniers de Tournebride is an important witness to the city's history.",
+        "fr": "Châtaigniers de Tournebride est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q1283302",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-chataigniers-de-tournebride-q1283302",
+      "latitude": 48.85583333,
+      "longitude": 2.14138889,
+      "name": {
+        "en": "Châtaigniers de Tournebride",
+        "fr": "Châtaigniers de Tournebride"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in La Celle-Saint-Cloud, Paris, in the département of Yvelines",
+        "fr": "château français situé à La Celle-Saint-Cloud"
+      },
+      "externalIdentity": {
+        "id": "Q2968499",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-chateau-de-beauregard-q2968499",
+      "latitude": 48.84080556,
+      "longitude": 2.12427778,
+      "name": {
+        "en": "château de Beauregard",
+        "fr": "château de Beauregard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Celle is an important witness to the city's history.",
+        "fr": "Château de la Celle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087393",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-celle-saint-cloud-chateau-de-la-celle-pa00087393",
+      "latitude": 48.852018785474,
+      "longitude": 2.14054588703109,
+      "name": {
+        "en": "Château de la Celle",
+        "fr": "Château de la Celle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41801969",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-eglise-saint-pierre-saint-paul-de-la-celle-saint-cloud-q41801969",
+      "latitude": 48.85261,
+      "longitude": 2.1442,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de La Celle-Saint-Cloud",
+        "fr": "église Saint-Pierre-Saint-Paul de La Celle-Saint-Cloud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in La Celle-Saint-Cloud, France",
+        "fr": "édifice de La Celle-Saint-Cloud, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412776",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-hotel-de-ville-de-la-celle-saint-cloud-q83412776",
+      "latitude": 48.8486,
+      "longitude": 2.1365,
+      "name": {
+        "en": "hôtel de ville de La Celle-Saint-Cloud",
+        "fr": "hôtel de ville de La Celle-Saint-Cloud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q367553",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-la-celle-saint-cloud-q367553",
+      "latitude": 48.85,
+      "longitude": 2.145,
+      "name": {
+        "en": "La Celle-Saint-Cloud",
+        "fr": "La Celle-Saint-Cloud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "school in La Celle Saint-Cloud France",
+        "fr": "établissement d'enseignement secondaire public français de La Celle-Saint-Cloud"
+      },
+      "externalIdentity": {
+        "id": "Q28155291",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-lycee-corneille-q28155291",
+      "latitude": 48.84622,
+      "longitude": 2.137064,
+      "name": {
+        "en": "lycée Corneille",
+        "fr": "lycée Corneille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in La Celle-Saint-Cloud, France",
+        "fr": "bâtiment à La Celle-Saint-Cloud (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q3373110",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-celle-saint-cloud-pavillon-du-butard-q3373110",
+      "latitude": 48.840041666,
+      "longitude": 2.143097222,
+      "name": {
+        "en": "pavillon du Butard",
+        "fr": "pavillon du Butard"
+      }
+    }
+  ]
+}

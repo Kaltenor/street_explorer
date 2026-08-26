@@ -1,0 +1,204 @@
+{
+  "id": "villeneuve-le-roi-v1",
+  "cityId": "villeneuve-le-roi-fr",
+  "cityZoneId": "relation/102242",
+  "cityName": {
+    "en": "Villeneuve-le-Roi",
+    "fr": "Villeneuve-le-Roi"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60391819",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-eglise-saint-pierre-saint-charles-de-villeneuve-le-roi-q60391819",
+      "latitude": 48.73467,
+      "longitude": 2.41935,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Charles de Villeneuve-le-Roi",
+        "fr": "église Saint-Pierre-Saint-Charles de Villeneuve-le-Roi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079917",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-le-roi-eglise-saint-pierre-saint-paul-pa00079917",
+      "latitude": 48.7351729719721,
+      "longitude": 2.40844420512719,
+      "name": {
+        "en": "Église Saint-Pierre-Saint-Paul",
+        "fr": "Église Saint-Pierre-Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Villeneuve-le-Roi, Val-de-Marne, France",
+        "fr": "édifice de Villeneuve-le-Roi, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83488788",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-hotel-de-ville-de-villeneuve-le-roi-q83488788",
+      "latitude": 48.7352,
+      "longitude": 2.4077,
+      "name": {
+        "en": "hôtel de ville de Villeneuve-le-Roi",
+        "fr": "hôtel de ville de Villeneuve-le-Roi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lavoir du Haut Pays is a distinctive architectural landmark in the city.",
+        "fr": "fontaine-lavoir située à Villeneuve-le-Roi, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483560",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-lavoir-du-haut-pays-q96483560",
+      "latitude": 48.735893006,
+      "longitude": 2.408357479,
+      "name": {
+        "en": "lavoir du Haut Pays",
+        "fr": "lavoir du Haut Pays"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Villeneuve-le-Roi is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Villeneuve-le-Roi, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-monument-aux-morts-de-villeneuve-le-roi-q96483525",
+      "latitude": 48.7342,
+      "longitude": 2.41977,
+      "name": {
+        "en": "monument aux morts de Villeneuve-le-Roi",
+        "fr": "monument aux morts de Villeneuve-le-Roi"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "street in Villeneuve-le-Roi, France",
+        "fr": "voie de Villeneuve-le-Roi, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112065675",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-parc-henri-dunant-q112065675",
+      "latitude": 48.735285406,
+      "longitude": 2.410921453,
+      "name": {
+        "en": "parc Henri-Dunant",
+        "fr": "parc Henri-Dunant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "maison, 1 rue du Pont is a distinctive architectural landmark in the city.",
+        "fr": "maison située à Villeneuve-le-Roi, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483545",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-maison-1-rue-du-pont-q96483545",
+      "latitude": 48.733104549,
+      "longitude": 2.40950902,
+      "name": {
+        "en": "maison, 1 rue du Pont",
+        "fr": "maison, 1 rue du Pont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Villeneuve-le-Roi, France",
+        "fr": "place de Villeneuve-le-Roi, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112265178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-place-de-la-gare-q112265178",
+      "latitude": 48.73982,
+      "longitude": 2.42565,
+      "name": {
+        "en": "place de la Gare",
+        "fr": "place de la Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Villeneuve-le-Roi, France",
+        "fr": "place de Villeneuve-le-Roi, dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112065830",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-place-de-la-vieille-eglise-q112065830",
+      "latitude": 48.735111642,
+      "longitude": 2.407921257,
+      "name": {
+        "en": "place de la Vieille-Église",
+        "fr": "place de la Vieille-Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villeneuve-le-Roi, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2044848",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-le-roi-villeneuve-le-roi-q2044848",
+      "latitude": 48.73944,
+      "longitude": 2.42639,
+      "name": {
+        "en": "Villeneuve-le-Roi",
+        "fr": "Villeneuve-le-Roi"
+      }
+    }
+  ]
+}

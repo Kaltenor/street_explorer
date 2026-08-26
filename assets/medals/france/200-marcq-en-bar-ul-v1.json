@@ -1,0 +1,204 @@
+{
+  "id": "marcq-en-bar-ul-v1",
+  "cityId": "marcq-en-bar-ul-fr",
+  "cityZoneId": "relation/58686",
+  "cityName": {
+    "en": "Marcq-en-Barœul",
+    "fr": "Marcq-en-Barœul"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Acacias is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541893",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-acacias-q106541893",
+      "latitude": 50.66486944,
+      "longitude": 3.110097222,
+      "name": {
+        "en": "Acacias",
+        "fr": "Acacias"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Brossolette is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541890",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-brossolette-q106541890",
+      "latitude": 50.66030833,
+      "longitude": 3.094075,
+      "name": {
+        "en": "Brossolette",
+        "fr": "Brossolette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Buisson is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-buisson-q106541889",
+      "latitude": 50.65655,
+      "longitude": 3.088655556,
+      "name": {
+        "en": "Buisson",
+        "fr": "Buisson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Nord, in France",
+        "fr": "chapelle située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q14628595",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-chapelle-du-lazaro-q14628595",
+      "latitude": 50.6793,
+      "longitude": 3.08335,
+      "name": {
+        "en": "chapelle du Lazaro",
+        "fr": "chapelle du Lazaro"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Rouge is an important witness to the city's history.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541909",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-chateau-rouge-q106541909",
+      "latitude": 50.67966389,
+      "longitude": 3.114419444,
+      "name": {
+        "en": "Château Rouge",
+        "fr": "Château Rouge"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330796",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-musee-regional-des-telecommunications-en-flandres-q3330796",
+      "latitude": 50.6753,
+      "longitude": 3.09118,
+      "name": {
+        "en": "musée régional des télécommunications en Flandres",
+        "fr": "musée régional des télécommunications en Flandres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle octogonale is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle octogonale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107737",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marcq-en-bar-ul-chapelle-octogonale-pa00107737",
+      "latitude": 50.6792343701921,
+      "longitude": 3.0833491512184903,
+      "name": {
+        "en": "Chapelle octogonale",
+        "fr": "Chapelle octogonale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958358",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-eglise-saint-louis-de-marcq-en-bar-ul-q15958358",
+      "latitude": 50.65864,
+      "longitude": 3.0802,
+      "name": {
+        "en": "église Saint-Louis de Marcq-en-Barœul",
+        "fr": "église Saint-Louis de Marcq-en-Barœul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vincent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vincent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107738",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marcq-en-bar-ul-eglise-saint-vincent-pa00107738",
+      "latitude": 50.6764537675553,
+      "longitude": 3.09088881663935,
+      "name": {
+        "en": "Église Saint-Vincent",
+        "fr": "Église Saint-Vincent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Nord department, France",
+        "fr": "siège municipal de Marcq-en-Barœul, dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119317204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "marcq-en-bar-ul-mairie-de-marcq-en-bar-ul-q119317204",
+      "latitude": 50.673233403,
+      "longitude": 3.093594402,
+      "name": {
+        "en": "mairie de Marcq-en-Barœul",
+        "fr": "mairie de Marcq-en-Barœul"
+      }
+    }
+  ]
+}

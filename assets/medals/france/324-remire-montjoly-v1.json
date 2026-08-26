@@ -1,0 +1,204 @@
+{
+  "id": "remire-montjoly-v1",
+  "cityId": "remire-montjoly-fr",
+  "cityZoneId": "relation/1389637",
+  "cityName": {
+    "en": "Remire-Montjoly",
+    "fr": "Remire-Montjoly"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien école du bourg de Remire is a distinctive architectural landmark in the city.",
+        "fr": "Ancien école du bourg de Remire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-ancien-ecole-du-bourg-de-remire-pa97300013",
+      "latitude": 4.886060968404037,
+      "longitude": -52.27610204986546,
+      "name": {
+        "en": "Ancien école du bourg de Remire",
+        "fr": "Ancien école du bourg de Remire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ecole de Montjoly (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Ecole de Montjoly (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105920",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-ecole-de-montjoly-ancienne-pa00105920",
+      "latitude": 4.912883254535974,
+      "longitude": -52.27264507600347,
+      "name": {
+        "en": "Ecole de Montjoly (ancienne)",
+        "fr": "Ecole de Montjoly (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Diamant is an important witness to the city's history.",
+        "fr": "Fort Diamant est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105909",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-fort-diamant-pa00105909",
+      "latitude": 4.871316614620987,
+      "longitude": -52.24750481134731,
+      "name": {
+        "en": "Fort Diamant",
+        "fr": "Fort Diamant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Habitation des Jésuites is a distinctive architectural landmark in the city.",
+        "fr": "Habitation des Jésuites est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125428",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-habitation-des-jesuites-pa00125428",
+      "latitude": 4.899535083807088,
+      "longitude": -52.271069760341035,
+      "name": {
+        "en": "Habitation des Jésuites",
+        "fr": "Habitation des Jésuites"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "L'Abattis Evrard is an important witness to the city's history.",
+        "fr": "L'Abattis Evrard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-l-abattis-evrard-pa97300003",
+      "latitude": 4.879683823398447,
+      "longitude": -52.27623845584634,
+      "name": {
+        "en": "L'Abattis Evrard",
+        "fr": "L'Abattis Evrard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Le Serpent de Pascaud is an important witness to the city's history.",
+        "fr": "Le Serpent de Pascaud est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-le-serpent-de-pascaud-pa97300001",
+      "latitude": 4.859894725086251,
+      "longitude": -52.27034549713195,
+      "name": {
+        "en": "Le Serpent de Pascaud",
+        "fr": "Le Serpent de Pascaud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Moulin à vent is a distinctive architectural landmark in the city.",
+        "fr": "Moulin à vent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132726",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-moulin-a-vent-pa00132726",
+      "latitude": 4.9032997263353515,
+      "longitude": -52.27427463006309,
+      "name": {
+        "en": "Moulin à vent",
+        "fr": "Moulin à vent"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Roche gravée de Grand Beauregard Sud is an important witness to the city's history.",
+        "fr": "Roche gravée de Grand Beauregard Sud est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300002",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-roche-gravee-de-grand-beauregard-sud-pa97300002",
+      "latitude": 4.882260912202549,
+      "longitude": -52.27466618265972,
+      "name": {
+        "en": "Roche gravée de Grand Beauregard Sud",
+        "fr": "Roche gravée de Grand Beauregard Sud"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Roches gravées dites du Mahury, actuellement roches de la Crique Pavée is an important witness to the city's history.",
+        "fr": "Roches gravées dites du Mahury, actuellement roches de la Crique Pavée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105910",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-roches-gravees-dites-du-mahury-actuellement-roches-de-la-crique-pavee-pa00105910",
+      "latitude": 4.858484291493257,
+      "longitude": -52.26925570630364,
+      "name": {
+        "en": "Roches gravées dites du Mahury, actuellement roches de la Crique Pavée",
+        "fr": "Roches gravées dites du Mahury, actuellement roches de la Crique Pavée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges de l'ancienne habitation Vidal ou Mondélice is an important witness to the city's history.",
+        "fr": "Vestiges de l'ancienne habitation Vidal ou Mondélice est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135691",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "remire-montjoly-vestiges-de-l-ancienne-habitation-vidal-ou-mondelice-pa00135691",
+      "latitude": 4.866573260253697,
+      "longitude": -52.29405880315329,
+      "name": {
+        "en": "Vestiges de l'ancienne habitation Vidal ou Mondélice",
+        "fr": "Vestiges de l'ancienne habitation Vidal ou Mondélice"
+      }
+    }
+  ]
+}

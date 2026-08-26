@@ -1,0 +1,204 @@
+{
+  "id": "saint-ouen-sur-seine-v1",
+  "cityId": "saint-ouen-sur-seine-fr",
+  "cityZoneId": "relation/87002",
+  "cityName": {
+    "en": "Saint-Ouen-sur-Seine",
+    "fr": "Saint-Ouen-sur-Seine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079960",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-ouen-sur-seine-chateau-pa00079960",
+      "latitude": 48.9165328534316,
+      "longitude": 2.32951677006667,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, parvis des Bateliers is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Saint-Ouen-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920707",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-fontaine-wallace-parvis-des-bateliers-q128920707",
+      "latitude": 48.913743,
+      "longitude": 2.3263,
+      "name": {
+        "en": "fontaine Wallace, parvis des Bateliers",
+        "fr": "fontaine Wallace, parvis des Bateliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Saint-Ouen-sur-Seine, France",
+        "fr": "édifice de Saint-Ouen-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913652",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-hotel-de-ville-de-saint-ouen-sur-seine-q61913652",
+      "latitude": 48.91165,
+      "longitude": 2.33441,
+      "name": {
+        "en": "hôtel de ville de Saint-Ouen-sur-Seine",
+        "fr": "hôtel de ville de Saint-Ouen-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "complex of flea markets in Saint-Ouen-sur-Seine, France",
+        "fr": "marché aux puces en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q56309501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-marche-aux-puces-de-saint-ouen-q56309501",
+      "latitude": 48.9023,
+      "longitude": 2.3394,
+      "name": {
+        "en": "marché aux puces de Saint-Ouen",
+        "fr": "marché aux puces de Saint-Ouen"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097734",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-monument-aux-morts-de-la-premiere-guerre-mondiale-du-cimetiere-parisien-de-saint-ouen-sur-seine-q136097734",
+      "latitude": 48.91004,
+      "longitude": 2.34492,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale du cimetière parisien de Saint-Ouen-sur-Seine",
+        "fr": "monument aux morts de la Première Guerre mondiale du cimetière parisien de Saint-Ouen-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0423",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-ouen-sur-seine-musee-municipal-m0423",
+      "latitude": 48.915848,
+      "longitude": 2.330639,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Saint-Ouen-sur-Seine, France",
+        "fr": "parc à Saint-Ouen-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q60853024",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-parc-francois-mitterrand-q60853024",
+      "latitude": 48.90291,
+      "longitude": 2.32291,
+      "name": {
+        "en": "parc François-Mitterrand",
+        "fr": "parc François-Mitterrand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Ouen, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2544311",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-saint-ouen-q2544311",
+      "latitude": 48.90556,
+      "longitude": 2.32222,
+      "name": {
+        "en": "Saint-Ouen",
+        "fr": "Saint-Ouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium",
+        "fr": "stade de football français"
+      },
+      "externalIdentity": {
+        "id": "Q1320249",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-stade-bauer-q1320249",
+      "latitude": 48.9061,
+      "longitude": 2.34105,
+      "name": {
+        "en": "stade Bauer",
+        "fr": "stade Bauer"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "old tower and cabaret in the locality known as \"Ile des Vannes\" on L'Ile-Saint-Denis",
+        "fr": "ancienne tour et cabaret dans le lieudit « Ile des Vannes » sur L'Ile-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q139481749",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-sur-seine-tour-mahu-q139481749",
+      "latitude": 48.917809912,
+      "longitude": 2.322894461,
+      "name": {
+        "en": "Tour Mahu",
+        "fr": "Tour Mahu"
+      }
+    }
+  ]
+}

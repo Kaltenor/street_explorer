@@ -27,6 +27,7 @@ import {
   CompletionScope,
   CompletionStats,
   getExploredCellRecords,
+  getExploredCellRecordsWithinBounds,
   getCachedZones,
   getCompletionStats,
   getZoneAchievementRollup,
@@ -41,6 +42,7 @@ import {
   ZoneCompletionStats,
   calculateZoneCompletionStats,
   fetchNearbyOsmZonesWithDebug,
+  getZoneBounds,
   isBoundaryRefreshStale,
   isZoneCompletionEligible
 } from "../services/zoneCompletion";
@@ -217,32 +219,50 @@ export function CompletionModal({
 
     const abortController = new AbortController();
     const interactionTask = InteractionManager.runAfterInteractions(() => {
-      getExploredCellRecords(mode)
-        .then(async (cells) => {
-          const orderedZones = [
-            selectedZone,
-            ...zones.filter((zone) => zone.id !== selectedZone.id)
-          ];
-          const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
+      void (async () => {
+        const orderedZones = [
+          selectedZone,
+          ...zones.filter((zone) => zone.id !== selectedZone.id)
+        ];
+        const nextZoneStatsById: Record<string, ZoneCompletionStats> = {};
 
-          for (const zone of orderedZones) {
-            const statsForZone = await calculateZoneCompletionStats(
-              zone,
-              cells,
-              abortController.signal
-            );
-
-            nextZoneStatsById[zone.id] = statsForZone;
-          }
-
+        for (const zone of orderedZones) {
           if (abortController.signal.aborted) {
             return;
           }
 
-          setZoneStats(nextZoneStatsById[selectedZone.id] ?? null);
-          setZoneStatsById(nextZoneStatsById);
-          setAchievementRollup(await getZoneAchievementRollup());
-        })
+          const bounds = getZoneBounds(zone);
+          const cells = bounds
+            ? await getExploredCellRecordsWithinBounds(mode, bounds)
+            : await getExploredCellRecords(mode);
+          const statsForZone = await calculateZoneCompletionStats(
+            zone,
+            cells,
+            abortController.signal
+          );
+
+          nextZoneStatsById[zone.id] = statsForZone;
+
+          if (!abortController.signal.aborted) {
+            setZoneStatsById((current) => ({
+              ...current,
+              [zone.id]: statsForZone
+            }));
+
+            if (zone.id === selectedZone.id) {
+              setZoneStats(statsForZone);
+            }
+          }
+        }
+
+        if (abortController.signal.aborted) {
+          return;
+        }
+
+        setZoneStats(nextZoneStatsById[selectedZone.id] ?? null);
+        setZoneStatsById(nextZoneStatsById);
+        setAchievementRollup(await getZoneAchievementRollup());
+      })()
         .catch((error) => {
           if (!abortController.signal.aborted) {
             console.warn("Failed to calculate zone completion", error);

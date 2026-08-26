@@ -1,0 +1,394 @@
+{
+  "id": "saint-paul-v1",
+  "cityId": "saint-paul-fr",
+  "cityZoneId": "relation/278308",
+  "cityName": {
+    "en": "Saint-Paul",
+    "fr": "Saint-Paul"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien batterie de Saint-Gilles is a distinctive architectural landmark in the city.",
+        "fr": "Ancien batterie de Saint-Gilles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400151",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-ancien-batterie-de-saint-gilles-pa97400151",
+      "latitude": -21.0563942307411,
+      "longitude": 55.2237217341865,
+      "name": {
+        "en": "Ancien batterie de Saint-Gilles",
+        "fr": "Ancien batterie de Saint-Gilles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien domaine de Savanna is a distinctive architectural landmark in the city.",
+        "fr": "Ancien domaine de Savanna est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-ancien-domaine-de-savanna-pa97400028",
+      "latitude": -20.9892277680387,
+      "longitude": 55.2996541189923,
+      "name": {
+        "en": "Ancien domaine de Savanna",
+        "fr": "Ancien domaine de Savanna"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien marché de Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Ancien marché de Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400120",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-ancien-marche-de-saint-paul-pa97400120",
+      "latitude": -21.0076208276176,
+      "longitude": 55.2723197507067,
+      "name": {
+        "en": "Ancien marché de Saint-Paul",
+        "fr": "Ancien marché de Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bain-Boeuf is a distinctive architectural landmark in the city.",
+        "fr": "Bain-Boeuf est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400137",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-bain-boeuf-pa97400137",
+      "latitude": -21.0444236903558,
+      "longitude": 55.2553156206642,
+      "name": {
+        "en": "Bain-Boeuf",
+        "fr": "Bain-Boeuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Pointue de Saint-Gilles-les-Hauts is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Pointue de Saint-Gilles-les-Hauts est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105826",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-chapelle-pointue-de-saint-gilles-les-hauts-pa00105826",
+      "latitude": -21.0551984486753,
+      "longitude": 55.2660455044586,
+      "name": {
+        "en": "Chapelle Pointue de Saint-Gilles-les-Hauts",
+        "fr": "Chapelle Pointue de Saint-Gilles-les-Hauts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite de \"Bellemène\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite de \"Bellemène\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-cheminee-dite-de-bellemene-pa97400059",
+      "latitude": -21.0171760361199,
+      "longitude": 55.3016484912298,
+      "name": {
+        "en": "Cheminée dite de \"Bellemène\"",
+        "fr": "Cheminée dite de \"Bellemène\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite de \"Grand-Fond\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite de \"Grand-Fond\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-cheminee-dite-de-grand-fond-pa97400064",
+      "latitude": -21.0388980898748,
+      "longitude": 55.2208254292819,
+      "name": {
+        "en": "Cheminée dite de \"Grand-Fond\"",
+        "fr": "Cheminée dite de \"Grand-Fond\""
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de la Vierge is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de la Vierge compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400103",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-fontaine-de-la-vierge-pa97400103",
+      "latitude": -21.0134860701966,
+      "longitude": 55.2703953102815,
+      "name": {
+        "en": "Fontaine de la Vierge",
+        "fr": "Fontaine de la Vierge"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Villèle is one of the city's notable cultural landmarks.",
+        "fr": "musée de Villèle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1070",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-paul-musee-de-villele-m1070",
+      "latitude": -21.055917761556145,
+      "longitude": 55.264409385729984,
+      "name": {
+        "en": "musée de Villèle",
+        "fr": "musée de Villèle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre de plein air de Saint-Gilles-les-Bains is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre de plein air de Saint-Gilles-les-Bains compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400119",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-theatre-de-plein-air-de-saint-gilles-les-bains-pa97400119",
+      "latitude": -21.0485414041048,
+      "longitude": 55.2328671525082,
+      "name": {
+        "en": "Théâtre de plein air de Saint-Gilles-les-Bains",
+        "fr": "Théâtre de plein air de Saint-Gilles-les-Bains"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite de \"L'Eperon\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite de \"L'Eperon\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-cheminee-dite-de-l-eperon-pa97400062",
+      "latitude": -21.0460162430369,
+      "longitude": 55.2549249486821,
+      "name": {
+        "en": "Cheminée dite de \"L'Eperon\"",
+        "fr": "Cheminée dite de \"L'Eperon\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Villèle is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Villèle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-domaine-de-villele-pa97400017",
+      "latitude": -21.0559813445777,
+      "longitude": 55.2637462064965,
+      "name": {
+        "en": "Domaine de Villèle",
+        "fr": "Domaine de Villèle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine Gruchet is a distinctive architectural landmark in the city.",
+        "fr": "Domaine Gruchet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400161",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-domaine-gruchet-pa97400161",
+      "latitude": -21.08724496065208,
+      "longitude": 55.27773563470513,
+      "name": {
+        "en": "Domaine Gruchet",
+        "fr": "Domaine Gruchet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-eglise-pa97400100",
+      "latitude": -21.0139236623532,
+      "longitude": 55.2706378352658,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Laçay is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Laçay est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400101",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-hotel-lacay-pa97400101",
+      "latitude": -21.0085731344835,
+      "longitude": 55.2696523429082,
+      "name": {
+        "en": "Hôtel Laçay",
+        "fr": "Hôtel Laçay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Longère communale is a distinctive architectural landmark in the city.",
+        "fr": "Longère communale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-longere-communale-pa97400102",
+      "latitude": -21.009121220990902,
+      "longitude": 55.2701309350862,
+      "name": {
+        "en": "Longère communale",
+        "fr": "Longère communale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Desbassyns (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Maison Desbassyns (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105827",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-maison-desbassyns-ancienne-pa00105827",
+      "latitude": -21.0026069272889,
+      "longitude": 55.2808927280376,
+      "name": {
+        "en": "Maison Desbassyns (ancienne)",
+        "fr": "Maison Desbassyns (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Bourbon is a distinctive architectural landmark in the city.",
+        "fr": "Villa Bourbon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400147",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-villa-bourbon-pa97400147",
+      "latitude": -21.0628605845756,
+      "longitude": 55.222211364336,
+      "name": {
+        "en": "Villa Bourbon",
+        "fr": "Villa Bourbon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Rivière, anciennement nommée villa Desvignes is a distinctive architectural landmark in the city.",
+        "fr": "Villa Rivière, anciennement nommée villa Desvignes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105843",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-villa-riviere-anciennement-nommee-villa-desvignes-pa00105843",
+      "latitude": -21.0105149706536,
+      "longitude": 55.2720649908655,
+      "name": {
+        "en": "Villa Rivière, anciennement nommée villa Desvignes",
+        "fr": "Villa Rivière, anciennement nommée villa Desvignes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Verguin is a distinctive architectural landmark in the city.",
+        "fr": "Villa Verguin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105828",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-paul-villa-verguin-pa00105828",
+      "latitude": -21.0094096398823,
+      "longitude": 55.2713862335838,
+      "name": {
+        "en": "Villa Verguin",
+        "fr": "Villa Verguin"
+      }
+    }
+  ]
+}

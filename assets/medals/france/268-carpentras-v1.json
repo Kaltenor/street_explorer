@@ -1,0 +1,204 @@
+{
+  "id": "carpentras-v1",
+  "cityId": "carpentras-fr",
+  "cityZoneId": "relation/148157",
+  "cityName": {
+    "en": "Carpentras",
+    "fr": "Carpentras"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Arc romain dans l'enceinte du Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Arc romain dans l'enceinte du Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081996",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-arc-romain-dans-l-enceinte-du-palais-de-justice-pa00081996",
+      "latitude": 44.0543406135114,
+      "longitude": 5.04751061777685,
+      "name": {
+        "en": "Arc romain dans l'enceinte du Palais de Justice",
+        "fr": "Arc romain dans l'enceinte du Palais de Justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081997",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-beffroi-pa00081997",
+      "latitude": 44.0555336534971,
+      "longitude": 5.04757220185892,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "bibliothèque-musée Inguimbertine is one of the city's notable cultural landmarks.",
+        "fr": "bibliothèque-musée Inguimbertine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0949",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "carpentras-bibliotheque-musee-inguimbertine-m0949",
+      "latitude": 44.0543,
+      "longitude": 5.045479,
+      "name": {
+        "en": "bibliothèque-musée Inguimbertine",
+        "fr": "bibliothèque-musée Inguimbertine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Notre-Dame-de-Santé et pont de Serres is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Notre-Dame-de-Santé et pont de Serres est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA84000098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-chapelle-notre-dame-de-sante-et-pont-de-serres-pa84000098",
+      "latitude": 44.05888651944644,
+      "longitude": 5.0488790608106004,
+      "name": {
+        "en": "Chapelle Notre-Dame-de-Santé et pont de Serres",
+        "fr": "Chapelle Notre-Dame-de-Santé et pont de Serres"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Martinet is an important witness to the city's history.",
+        "fr": "Château du Martinet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082000",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-chateau-du-martinet-pa00082000",
+      "latitude": 44.0647504165158,
+      "longitude": 5.07903616238822,
+      "name": {
+        "en": "Château du Martinet",
+        "fr": "Château du Martinet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Siffrein, ou ancienne cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Siffrein, ou ancienne cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-eglise-saint-siffrein-ou-ancienne-cathedrale-pa00082003",
+      "latitude": 44.0541949935152,
+      "longitude": 5.04774445840366,
+      "name": {
+        "en": "Église Saint-Siffrein, ou ancienne cathédrale",
+        "fr": "Église Saint-Siffrein, ou ancienne cathédrale"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082004",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-fontaine-pa00082004",
+      "latitude": 44.0572095018716,
+      "longitude": 5.04791463982179,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Orange is an important witness to the city's history.",
+        "fr": "Porte d'Orange est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-porte-d-orange-pa00082012",
+      "latitude": 44.0564894694629,
+      "longitude": 5.04725513299942,
+      "name": {
+        "en": "Porte d'Orange",
+        "fr": "Porte d'Orange"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais épiscopal (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais épiscopal (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-palais-episcopal-ancien-pa00082011",
+      "latitude": 44.0545148873317,
+      "longitude": 5.04727058225609,
+      "name": {
+        "en": "Palais épiscopal (ancien)",
+        "fr": "Palais épiscopal (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carpentras-synagogue-pa00082014",
+      "latitude": 44.0551249223144,
+      "longitude": 5.04896159563167,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

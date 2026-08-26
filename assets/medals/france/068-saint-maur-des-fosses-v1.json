@@ -1,0 +1,394 @@
+{
+  "id": "saint-maur-des-fosses-v1",
+  "cityId": "saint-maur-des-fosses-fr",
+  "cityZoneId": "relation/50964",
+  "cityName": {
+    "en": "Saint-Maur-des-Fossés",
+    "fr": "Saint-Maur-des-Fossés"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Saint-Maur (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye de Saint-Maur (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079900",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-maur-des-fosses-abbaye-de-saint-maur-ancienne-pa00079900",
+      "latitude": 48.8125254155777,
+      "longitude": 2.47558492895384,
+      "name": {
+        "en": "Abbaye de Saint-Maur (ancienne)",
+        "fr": "Abbaye de Saint-Maur (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Maur-des-Fossés, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2520631",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-champigny-q2520631",
+      "latitude": 48.806944,
+      "longitude": 2.509722,
+      "name": {
+        "en": "Champigny",
+        "fr": "Champigny"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Saint-Maur is an important witness to the city's history.",
+        "fr": "château situé à Saint-Maur-des-Fossés (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2970552",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-chateau-de-saint-maur-q2970552",
+      "latitude": 48.81272,
+      "longitude": 2.47484,
+      "name": {
+        "en": "château de Saint-Maur",
+        "fr": "château de Saint-Maur"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Saint-Maur-des-Fossés, France",
+        "fr": "cinéma à Saint-Maur-des-Fossés, France"
+      },
+      "externalIdentity": {
+        "id": "Q61859818",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-cinema-le-lido-q61859818",
+      "latitude": 48.79859,
+      "longitude": 2.48569,
+      "name": {
+        "en": "cinéma Le Lido",
+        "fr": "cinéma Le Lido"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "conservatoire à rayonnement régional de Saint-Maur-des-Fossés is one of the city's notable cultural landmarks.",
+        "fr": "établissement d'enseignement artistique (musique, chorégraphie et art dramatique)"
+      },
+      "externalIdentity": {
+        "id": "Q2994586",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-conservatoire-a-rayonnement-regional-de-saint-maur-des-fosses-q2994586",
+      "latitude": 48.7991,
+      "longitude": 2.49202,
+      "name": {
+        "en": "conservatoire à rayonnement régional de Saint-Maur-des-Fossés",
+        "fr": "conservatoire à rayonnement régional de Saint-Maur-des-Fossés"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583416",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-eglise-saint-nicolas-de-saint-maur-des-fosses-q3583416",
+      "latitude": 48.8125,
+      "longitude": 2.4726,
+      "name": {
+        "en": "église Saint-Nicolas de Saint-Maur-des-Fossés",
+        "fr": "église Saint-Nicolas de Saint-Maur-des-Fossés"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079901",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-maur-des-fosses-eglise-saint-nicolas-pa00079901",
+      "latitude": 48.8125370394864,
+      "longitude": 2.47257307871185,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine de la place de Stalingrad is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128918361",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-fontaine-de-la-place-de-stalingrad-q128918361",
+      "latitude": 48.79252,
+      "longitude": 2.51576,
+      "name": {
+        "en": "fontaine de la place de Stalingrad",
+        "fr": "fontaine de la place de Stalingrad"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue Lafayette is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128918363",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-fontaine-wallace-rue-lafayette-q128918363",
+      "latitude": 48.806612,
+      "longitude": 2.510451,
+      "name": {
+        "en": "fontaine Wallace, rue Lafayette",
+        "fr": "fontaine Wallace, rue Lafayette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Saint-Maur-des-Fossés, France",
+        "fr": "édifice de Saint-Maur-des-Fossés, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409716",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-hotel-de-ville-de-saint-maur-des-fosses-q83409716",
+      "latitude": 48.80286,
+      "longitude": 2.48533,
+      "name": {
+        "en": "hôtel de ville de Saint-Maur-des-Fossés",
+        "fr": "hôtel de ville de Saint-Maur-des-Fossés"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Saint-Maur-des-Fossés, France",
+        "fr": "impasse de Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105608496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-impasse-de-l-abbaye-q105608496",
+      "latitude": 48.8130798,
+      "longitude": 2.4747455,
+      "name": {
+        "en": "impasse de l'Abbaye",
+        "fr": "impasse de l'Abbaye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Saint-Maur-des-Fossés, France",
+        "fr": "impasse de Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105609048",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-impasse-du-chateau-de-conde-q105609048",
+      "latitude": 48.8116536,
+      "longitude": 2.478015266,
+      "name": {
+        "en": "impasse du Château de Condé",
+        "fr": "impasse du Château de Condé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Maur-des-Fossés, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2411555",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-la-varenne-chennevieres-q2411555",
+      "latitude": 48.795,
+      "longitude": 2.512778,
+      "name": {
+        "en": "La Varenne - Chennevières",
+        "fr": "La Varenne - Chennevières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Maur-des-Fossés, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1962078",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-le-parc-de-saint-maur-q1962078",
+      "latitude": 48.805278,
+      "longitude": 2.485833,
+      "name": {
+        "en": "Le Parc de Saint-Maur",
+        "fr": "Le Parc de Saint-Maur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "maison, 13 rue de l'Abbaye is an important witness to the city's history.",
+        "fr": "maison située à Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88295090",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-maison-13-rue-de-l-abbaye-q88295090",
+      "latitude": 48.81276,
+      "longitude": 2.47371,
+      "name": {
+        "en": "maison, 13 rue de l'Abbaye",
+        "fr": "maison, 13 rue de l'Abbaye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "maison, 14 avenue des Fusillés de Châteaubriant is an important witness to the city's history.",
+        "fr": "maison située à Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88295186",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-maison-14-avenue-des-fusilles-de-chateaubriant-q88295186",
+      "latitude": 48.80349,
+      "longitude": 2.49469,
+      "name": {
+        "en": "maison, 14 avenue des Fusillés de Châteaubriant",
+        "fr": "maison, 14 avenue des Fusillés de Châteaubriant"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "standing stone in Saint-Maur-des-Fossés, France",
+        "fr": "menhir de Saint-Maur-des-Fossés, France"
+      },
+      "externalIdentity": {
+        "id": "Q51276721",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-menhir-de-l-abbaye-q51276721",
+      "latitude": 48.8121,
+      "longitude": 2.4767,
+      "name": {
+        "en": "menhir de l'Abbaye",
+        "fr": "menhir de l'Abbaye"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Saint-Maur - Villa Médicis is one of the city's notable cultural landmarks.",
+        "fr": "musée de Saint-Maur - Villa Médicis compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0429",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-maur-des-fosses-musee-de-saint-maur-villa-medicis-m0429",
+      "latitude": 48.79310937814309,
+      "longitude": 2.5149018357668425,
+      "name": {
+        "en": "musée de Saint-Maur - Villa Médicis",
+        "fr": "musée de Saint-Maur - Villa Médicis"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Saint-Maur-des-Fossés, France",
+        "fr": "parc situé à Saint-Maur-des-Fossés, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88295379",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-parc-de-l-abbaye-q88295379",
+      "latitude": 48.81255,
+      "longitude": 2.47465,
+      "name": {
+        "en": "parc de l'Abbaye",
+        "fr": "parc de l'Abbaye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q738781",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-maur-des-fosses-saint-maur-creteil-q738781",
+      "latitude": 48.806389,
+      "longitude": 2.471944,
+      "name": {
+        "en": "Saint-Maur - Créteil",
+        "fr": "Saint-Maur - Créteil"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "sarcelles-v1",
+  "cityId": "sarcelles-fr",
+  "cityZoneId": "relation/222531",
+  "cityName": {
+    "en": "Sarcelles",
+    "fr": "Sarcelles"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080208",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sarcelles-eglise-saint-pierre-saint-paul-pa00080208",
+      "latitude": 48.9969863732721,
+      "longitude": 2.37911312981781,
+      "name": {
+        "en": "Église Saint-Pierre Saint-Paul",
+        "fr": "Église Saint-Pierre Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située à Sarcelles, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20857501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-eglise-saint-thomas-apotre-de-sarcelles-q20857501",
+      "latitude": 48.993288,
+      "longitude": 2.366573,
+      "name": {
+        "en": "église Saint-Thomas-Apôtre de Sarcelles",
+        "fr": "église Saint-Thomas-Apôtre de Sarcelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20202839",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-eglise-sainte-trinite-de-sarcelles-q20202839",
+      "latitude": 48.97552,
+      "longitude": 2.383451,
+      "name": {
+        "en": "église Sainte-Trinité de Sarcelles",
+        "fr": "église Sainte-Trinité de Sarcelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T5 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28736659",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-garges-sarcelles-q28736659",
+      "latitude": 48.976666666,
+      "longitude": 2.390555555,
+      "name": {
+        "en": "Garges - Sarcelles",
+        "fr": "Garges - Sarcelles"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096694",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-monument-aux-morts-du-cimetiere-de-sarcelles-q136096694",
+      "latitude": 48.99877,
+      "longitude": 2.37912,
+      "name": {
+        "en": "monument aux morts du cimetière de Sarcelles",
+        "fr": "monument aux morts du cimetière de Sarcelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ile-de-France tramway line T5 station",
+        "fr": "station de la ligne T5 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28736703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-les-cholettes-q28736703",
+      "latitude": 48.9775,
+      "longitude": 2.372222222,
+      "name": {
+        "en": "Les Cholettes",
+        "fr": "Les Cholettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T5 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28736706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-les-flanades-q28736706",
+      "latitude": 48.976655555,
+      "longitude": 2.377430555,
+      "name": {
+        "en": "Les Flanades",
+        "fr": "Les Flanades"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T5 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28736710",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-locheres-q28736710",
+      "latitude": 48.978516666,
+      "longitude": 2.385055555,
+      "name": {
+        "en": "Lochères",
+        "fr": "Lochères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "manoir à Sarcelles (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q22980875",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-manoir-de-miraville-q22980875",
+      "latitude": 48.997429,
+      "longitude": 2.378287,
+      "name": {
+        "en": "manoir de Miraville",
+        "fr": "manoir de Miraville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26792298",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sarcelles-mosquee-foi-et-unicite-de-sarcelles-q26792298",
+      "latitude": 48.976144,
+      "longitude": 2.383824,
+      "name": {
+        "en": "mosquée Foi et Unicité de Sarcelles",
+        "fr": "mosquée Foi et Unicité de Sarcelles"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "sainte-anne-v1",
+  "cityId": "sainte-anne-fr",
+  "cityZoneId": "relation/255123",
+  "cityName": {
+    "en": "Sainte-Anne",
+    "fr": "Sainte-Anne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38504630",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-eglise-sainte-anne-de-sainte-anne-q38504630",
+      "latitude": 16.225864,
+      "longitude": -61.385524,
+      "name": {
+        "en": "église Sainte-Anne de Sainte-Anne",
+        "fr": "église Sainte-Anne de Sainte-Anne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Sainte-Anne, Guadeloupe, France",
+        "fr": "siège municipal de Sainte-Anne, en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119331069",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-mairie-de-sainte-anne-q119331069",
+      "latitude": 16.2255,
+      "longitude": -61.3859,
+      "name": {
+        "en": "mairie de Sainte-Anne",
+        "fr": "mairie de Sainte-Anne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Sainte-Anne is a notable work of public art and local memory.",
+        "fr": "monument aux morts à Sainte-Anne, Guadeloupe, France"
+      },
+      "externalIdentity": {
+        "id": "Q66250986",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-monument-aux-morts-de-sainte-anne-q66250986",
+      "latitude": 16.2257,
+      "longitude": -61.3858,
+      "name": {
+        "en": "monument aux morts de Sainte-Anne",
+        "fr": "monument aux morts de Sainte-Anne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA97100072",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-anne-monument-aux-morts-pa97100072",
+      "latitude": 16.2256192676978,
+      "longitude": -61.38580044633404,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet de France"
+      },
+      "externalIdentity": {
+        "id": "Q16665294",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-morne-l-escade-q16665294",
+      "latitude": 16.2531,
+      "longitude": -61.4297,
+      "name": {
+        "en": "Morne l'Escade",
+        "fr": "Morne l'Escade"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de Bois-Jolan is a distinctive architectural landmark in the city.",
+        "fr": "plage de Bois-Jolan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q17175015",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-plage-de-bois-jolan-q17175015",
+      "latitude": 16.236944444,
+      "longitude": -61.3475,
+      "name": {
+        "en": "plage de Bois-Jolan",
+        "fr": "plage de Bois-Jolan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de Gros sable is a distinctive architectural landmark in the city.",
+        "fr": "plage à Sainte-Anne (Guadeloupe)"
+      },
+      "externalIdentity": {
+        "id": "Q53741990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-plage-de-gros-sable-q53741990",
+      "latitude": 16.241693,
+      "longitude": -61.339242,
+      "name": {
+        "en": "plage de Gros sable",
+        "fr": "plage de Gros sable"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de la Caravelle is a distinctive architectural landmark in the city.",
+        "fr": "plage de la Caravelle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3390868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-plage-de-la-caravelle-q3390868",
+      "latitude": 16.2175,
+      "longitude": -61.3942,
+      "name": {
+        "en": "plage de la Caravelle",
+        "fr": "plage de la Caravelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de Sainte Anne is a distinctive architectural landmark in the city.",
+        "fr": "plage de Sainte Anne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q49322682",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-plage-de-sainte-anne-q49322682",
+      "latitude": 48.35298,
+      "longitude": -4.69522,
+      "name": {
+        "en": "plage de Sainte Anne",
+        "fr": "plage de Sainte Anne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage des Galbas is a distinctive architectural landmark in the city.",
+        "fr": "plage des Galbas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q125584566",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-anne-plage-des-galbas-q125584566",
+      "latitude": 16.2234019,
+      "longitude": -61.3916664,
+      "name": {
+        "en": "plage des Galbas",
+        "fr": "plage des Galbas"
+      }
+    }
+  ]
+}

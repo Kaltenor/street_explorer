@@ -1,0 +1,394 @@
+{
+  "id": "noumea-v1",
+  "cityId": "noumea-fr",
+  "cityZoneId": "relation/377752",
+  "cityName": {
+    "en": "Nouméa",
+    "fr": "Nouméa"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport",
+        "fr": "aéroport desservant Noumea (Nouvelle-Calédonie, France)"
+      },
+      "externalIdentity": {
+        "id": "Q656777",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-aeroport-de-magenta-q656777",
+      "latitude": -22.258333333,
+      "longitude": 166.472777777,
+      "name": {
+        "en": "aéroport de Magenta",
+        "fr": "aéroport de Magenta"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Aquarium des lagons is a distinctive architectural landmark in the city.",
+        "fr": "aquarium public français"
+      },
+      "externalIdentity": {
+        "id": "Q2859183",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-aquarium-des-lagons-q2859183",
+      "latitude": -22.30215,
+      "longitude": 166.43815,
+      "name": {
+        "en": "Aquarium des lagons",
+        "fr": "Aquarium des lagons"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "library in Noumea, France",
+        "fr": "bibliothèque en France"
+      },
+      "externalIdentity": {
+        "id": "Q29915162",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-bibliotheque-bernheim-q29915162",
+      "latitude": -22.273636111,
+      "longitude": 166.443369444,
+      "name": {
+        "en": "bibliothèque Bernheim",
+        "fr": "bibliothèque Bernheim"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Nouvelle-Calédonie, in France",
+        "fr": "cathédrale située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942368",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-cathedrale-saint-joseph-de-noumea-q2942368",
+      "latitude": -22.27277778,
+      "longitude": 166.44444444,
+      "name": {
+        "en": "cathédrale Saint-Joseph de Nouméa",
+        "fr": "cathédrale Saint-Joseph de Nouméa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cultural centre promoting Kanak culture in Nouméa, New Caledonia, designed by Renzo Piano",
+        "fr": "établissement public destiné à promouvoir la culture kanak à Nouméa, Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q1521577",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-centre-culturel-tjibaou-q1521577",
+      "latitude": -22.256388888,
+      "longitude": 166.481666666,
+      "name": {
+        "en": "centre culturel Tjibaou",
+        "fr": "centre culturel Tjibaou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa in Nouméa, New Caledonia",
+        "fr": "château Hagen est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q60849968",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-chateau-hagen-q60849968",
+      "latitude": -22.2771,
+      "longitude": 166.4526,
+      "name": {
+        "en": "château Hagen",
+        "fr": "château Hagen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nouvelle-Calédonie, in France",
+        "fr": "cimetière situé à Nouméa, en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q63405515",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-cimetiere-du-5eme-kilometre-q63405515",
+      "latitude": -22.2495857,
+      "longitude": 166.4630618,
+      "name": {
+        "en": "cimetière du 5ème kilomètre",
+        "fr": "cimetière du 5ème kilomètre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38383525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-eglise-du-bon-pasteur-de-noumea-q38383525",
+      "latitude": -22.261,
+      "longitude": 166.4467,
+      "name": {
+        "en": "église du Bon Pasteur de Nouméa",
+        "fr": "église du Bon Pasteur de Nouméa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38387240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-eglise-du-v-u-de-noumea-q38387240",
+      "latitude": -22.2911,
+      "longitude": 166.4459,
+      "name": {
+        "en": "église du Vœu de Nouméa",
+        "fr": "église du Vœu de Nouméa"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "French overseas public institution",
+        "fr": "établissement public français d'outre-mer"
+      },
+      "externalIdentity": {
+        "id": "Q20971750",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-musee-de-nouvelle-caledonie-q20971750",
+      "latitude": -22.275991666,
+      "longitude": 166.443402777,
+      "name": {
+        "en": "musée de Nouvelle-Calédonie",
+        "fr": "musée de Nouvelle-Calédonie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater in Nouméa, France",
+        "fr": "théâtre à Nouméa (Nouvelle-Calédonie)"
+      },
+      "externalIdentity": {
+        "id": "Q3527680",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-theatre-de-l-ile-q3527680",
+      "latitude": -22.262056,
+      "longitude": 166.400944,
+      "name": {
+        "en": "théâtre de l'île",
+        "fr": "théâtre de l'île"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38633319",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-eglise-saint-jean-baptiste-de-noumea-q38633319",
+      "latitude": -22.2715,
+      "longitude": 166.4525,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Nouméa",
+        "fr": "église Saint-Jean-Baptiste de Nouméa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Célières is a distinctive architectural landmark in the city.",
+        "fr": "Maison Célières est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q65158933",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-maison-celieres-q65158933",
+      "latitude": -22.2781121,
+      "longitude": 166.4489857,
+      "name": {
+        "en": "Maison Célières",
+        "fr": "Maison Célières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Nouville is a distinctive architectural landmark in the city.",
+        "fr": "quartier de Nouméa sur l'ancienne île Nou, Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q109040223",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-nouville-q109040223",
+      "latitude": -22.2617,
+      "longitude": 166.398815,
+      "name": {
+        "en": "Nouville",
+        "fr": "Nouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse on Amédée Island in Nouméa lagoon, New Caledonia, built in 1865",
+        "fr": "phare français"
+      },
+      "externalIdentity": {
+        "id": "Q2039568",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-phare-amedee-q2039568",
+      "latitude": -22.477245,
+      "longitude": 166.468131,
+      "name": {
+        "en": "phare Amédée",
+        "fr": "phare Amédée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Nouméa, France",
+        "fr": "place de Nouméa, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3390501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-place-des-cocotiers-q3390501",
+      "latitude": -22.2708,
+      "longitude": 166.442,
+      "name": {
+        "en": "place des Cocotiers",
+        "fr": "place des Cocotiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Football building on the island of Noumea",
+        "fr": "stade situé en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q109312006",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-stade-edouard-pentecost-q109312006",
+      "latitude": -22.298768,
+      "longitude": 166.442727,
+      "name": {
+        "en": "stade Édouard-Pentecost",
+        "fr": "stade Édouard-Pentecost"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stadium in Nouméa",
+        "fr": "stade de Nouméa"
+      },
+      "externalIdentity": {
+        "id": "Q182992",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-stade-numa-daly-q182992",
+      "latitude": -22.26417143,
+      "longitude": 166.4679427,
+      "name": {
+        "en": "stade Numa-Daly",
+        "fr": "stade Numa-Daly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Rivière Salée is a distinctive architectural landmark in the city.",
+        "fr": "stade français situé en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q7596199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-stade-riviere-salee-q7596199",
+      "latitude": -22.23187861,
+      "longitude": 166.4635929,
+      "name": {
+        "en": "stade Rivière Salée",
+        "fr": "stade Rivière Salée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26059022",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noumea-vieux-temple-de-noumea-q26059022",
+      "latitude": -22.2695,
+      "longitude": 166.44457,
+      "name": {
+        "en": "vieux temple de Nouméa",
+        "fr": "vieux temple de Nouméa"
+      }
+    }
+  ]
+}

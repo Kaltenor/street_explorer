@@ -1,0 +1,204 @@
+{
+  "id": "vichy-v1",
+  "cityId": "vichy-fr",
+  "cityZoneId": "relation/79337",
+  "cityName": {
+    "en": "Vichy",
+    "fr": "Vichy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Blaise et Notre-Dame-des-Malades is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Blaise et Notre-Dame-des-Malades est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093413",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-eglise-saint-blaise-et-notre-dame-des-malades-pa00093413",
+      "latitude": 46.1210711952928,
+      "longitude": 3.42195917387626,
+      "name": {
+        "en": "Église Saint-Blaise et Notre-Dame-des-Malades",
+        "fr": "Église Saint-Blaise et Notre-Dame-des-Malades"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Etablissement thermal is a distinctive architectural landmark in the city.",
+        "fr": "Etablissement thermal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-etablissement-thermal-pa00093343",
+      "latitude": 46.1265133417951,
+      "longitude": 3.41868655279333,
+      "name": {
+        "en": "Etablissement thermal",
+        "fr": "Etablissement thermal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093396",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-hotel-de-ville-pa00093396",
+      "latitude": 46.1243652699154,
+      "longitude": 3.42838034795972,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Kiosque du parc des Bourins is a distinctive architectural landmark in the city.",
+        "fr": "Kiosque du parc des Bourins est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093345",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-kiosque-du-parc-des-bourins-pa00093345",
+      "latitude": 46.1176967310346,
+      "longitude": 3.42980945270268,
+      "name": {
+        "en": "Kiosque du parc des Bourins",
+        "fr": "Kiosque du parc des Bourins"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA03000056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-monument-aux-morts-pa03000056",
+      "latitude": 46.122232603666305,
+      "longitude": 3.419309059675273,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts africains et asiatiques (maison du missionnaire) is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts africains et asiatiques (maison du missionnaire) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0109",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vichy-musee-des-arts-africains-et-asiatiques-maison-du-missionnaire-m0109",
+      "latitude": 46.128104,
+      "longitude": 3.419803,
+      "name": {
+        "en": "musée des arts africains et asiatiques (maison du missionnaire)",
+        "fr": "musée des arts africains et asiatiques (maison du missionnaire)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des Sources is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des Sources compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093348",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-parc-des-sources-pa00093348",
+      "latitude": 46.1245575736975,
+      "longitude": 3.4202080621612,
+      "name": {
+        "en": "Parc des Sources",
+        "fr": "Parc des Sources"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre et grand Casino is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre et grand Casino compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093344",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-theatre-et-grand-casino-pa00093344",
+      "latitude": 46.1233119046513,
+      "longitude": 3.41985875369,
+      "name": {
+        "en": "Théâtre et grand Casino",
+        "fr": "Théâtre et grand Casino"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pharmacie du Parc is a distinctive architectural landmark in the city.",
+        "fr": "Pharmacie du Parc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-pharmacie-du-parc-pa00093404",
+      "latitude": 46.12533873503591,
+      "longitude": 3.4208401131452,
+      "name": {
+        "en": "Pharmacie du Parc",
+        "fr": "Pharmacie du Parc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA03000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vichy-temple-protestant-pa03000017",
+      "latitude": 46.1269951980885,
+      "longitude": 3.42092086461965,
+      "name": {
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
+      }
+    }
+  ]
+}

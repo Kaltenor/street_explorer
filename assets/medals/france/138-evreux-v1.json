@@ -1,0 +1,204 @@
+{
+  "id": "evreux-v1",
+  "cityId": "evreux-fr",
+  "cityZoneId": "relation/543082",
+  "cityName": {
+    "en": "Évreux",
+    "fr": "Évreux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Taurin is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Taurin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099403",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-ancien-abbaye-saint-taurin-pa00099403",
+      "latitude": 49.0243475364822,
+      "longitude": 1.14058901694443,
+      "name": {
+        "en": "Ancien abbaye Saint-Taurin",
+        "fr": "Ancien abbaye Saint-Taurin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien immeuble Gomel is a distinctive architectural landmark in the city.",
+        "fr": "Ancien immeuble Gomel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099406",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-ancien-immeuble-gomel-pa00099406",
+      "latitude": 49.0245193593809,
+      "longitude": 1.15145590289149,
+      "name": {
+        "en": "Ancien immeuble Gomel",
+        "fr": "Ancien immeuble Gomel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099400",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-cathedrale-notre-dame-pa00099400",
+      "latitude": 49.0242037652333,
+      "longitude": 1.15092295740758,
+      "name": {
+        "en": "Cathédrale Notre-Dame",
+        "fr": "Cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Couvent des Capucins is a distinctive architectural landmark in the city.",
+        "fr": "Couvent des Capucins est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099401",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-couvent-des-capucins-pa00099401",
+      "latitude": 49.0211430856018,
+      "longitude": 1.15094360993709,
+      "name": {
+        "en": "Couvent des Capucins",
+        "fr": "Couvent des Capucins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Evêché et ses dépendances is a distinctive architectural landmark in the city.",
+        "fr": "Evêché et ses dépendances est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099405",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-eveche-et-ses-dependances-pa00099405",
+      "latitude": 49.0237689332914,
+      "longitude": 1.15091927195271,
+      "name": {
+        "en": "Evêché et ses dépendances",
+        "fr": "Evêché et ses dépendances"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison dite Petit château de Navarre is an important witness to the city's history.",
+        "fr": "Maison dite Petit château de Navarre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA27000097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-maison-dite-petit-chateau-de-navarre-pa27000097",
+      "latitude": 49.018245022882255,
+      "longitude": 1.1248536024195763,
+      "name": {
+        "en": "Maison dite Petit château de Navarre",
+        "fr": "Maison dite Petit château de Navarre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art, histoire et archéologie d'Evreux is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art, histoire et archéologie d'Evreux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0703",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "evreux-musee-d-art-histoire-et-archeologie-d-evreux-m0703",
+      "latitude": 49.023998,
+      "longitude": 1.1502,
+      "name": {
+        "en": "musée d'art, histoire et archéologie d'Evreux",
+        "fr": "musée d'art, histoire et archéologie d'Evreux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Rempart gallo-romain is an important witness to the city's history.",
+        "fr": "Rempart gallo-romain est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099407",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-rempart-gallo-romain-pa00099407",
+      "latitude": 49.0240523965641,
+      "longitude": 1.15207799613945,
+      "name": {
+        "en": "Rempart gallo-romain",
+        "fr": "Rempart gallo-romain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA27000053",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-theatre-municipal-pa27000053",
+      "latitude": 49.0265326036926,
+      "longitude": 1.15166999758033,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de l'Horloge is an important witness to the city's history.",
+        "fr": "Tour de l'Horloge est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099408",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "evreux-tour-de-l-horloge-pa00099408",
+      "latitude": 49.0268940622448,
+      "longitude": 1.15024512212128,
+      "name": {
+        "en": "Tour de l'Horloge",
+        "fr": "Tour de l'Horloge"
+      }
+    }
+  ]
+}

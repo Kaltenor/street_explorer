@@ -1,0 +1,204 @@
+{
+  "id": "stains-v1",
+  "cityId": "stains-fr",
+  "cityZoneId": "relation/158809",
+  "cityName": {
+    "en": "Stains",
+    "fr": "Stains"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Motte (ancien) is an important witness to the city's history.",
+        "fr": "Château de la Motte (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079962",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "stains-chateau-de-la-motte-ancien-pa00079962",
+      "latitude": 48.95839197575351,
+      "longitude": 2.38181493279032,
+      "name": {
+        "en": "Château de la Motte (ancien)",
+        "fr": "Château de la Motte (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q81829246",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-cimetiere-de-stains-q81829246",
+      "latitude": 48.95892,
+      "longitude": 2.38586,
+      "name": {
+        "en": "cimetière de Stains",
+        "fr": "cimetière de Stains"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580309",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-eglise-notre-dame-de-l-assomption-de-stains-q3580309",
+      "latitude": 48.9568,
+      "longitude": 2.38233,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Stains",
+        "fr": "église Notre-Dame-de-l'Assomption de Stains"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Stains, France",
+        "fr": "hôtel de ville à Stains (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q22915942",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-hotel-de-ville-de-stains-q22915942",
+      "latitude": 48.955435,
+      "longitude": 2.38252,
+      "name": {
+        "en": "hôtel de ville de Stains",
+        "fr": "hôtel de ville de Stains"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136079583",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-monument-aux-morts-de-stains-q136079583",
+      "latitude": 48.95685,
+      "longitude": 2.38346,
+      "name": {
+        "en": "monument aux morts de Stains",
+        "fr": "monument aux morts de Stains"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3363820",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-parc-georges-valbon-q3363820",
+      "latitude": 48.9426,
+      "longitude": 2.39897,
+      "name": {
+        "en": "parc Georges-Valbon",
+        "fr": "parc Georges-Valbon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "passageway in Stains, en Seine-Saint-Denis",
+        "fr": "passage de Stains, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q113414135",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-passage-jules-delaporte-q113414135",
+      "latitude": 48.955635033,
+      "longitude": 2.376234841,
+      "name": {
+        "en": "passage Jules Delaporte",
+        "fr": "passage Jules Delaporte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Stains, en Seine-Saint-Denis",
+        "fr": "place de Stains, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q108487365",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-place-henri-barbusse-q108487365",
+      "latitude": 48.95671,
+      "longitude": 2.38345,
+      "name": {
+        "en": "place Henri-Barbusse",
+        "fr": "place Henri-Barbusse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Stains-Grande-Ceinture is a distinctive architectural landmark in the city.",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q30741025",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-stains-grande-ceinture-q30741025",
+      "latitude": 48.959253,
+      "longitude": 2.377917,
+      "name": {
+        "en": "Stains-Grande-Ceinture",
+        "fr": "Stains-Grande-Ceinture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Stains, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097772",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "stains-stains-la-cerisaie-q3097772",
+      "latitude": 48.9545,
+      "longitude": 2.39201,
+      "name": {
+        "en": "Stains-La Cerisaie",
+        "fr": "Stains-La Cerisaie"
+      }
+    }
+  ]
+}

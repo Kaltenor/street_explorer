@@ -1,0 +1,204 @@
+{
+  "id": "mantes-la-jolie-v1",
+  "cityId": "mantes-la-jolie-fr",
+  "cityZoneId": "relation/386602",
+  "cityName": {
+    "en": "Mantes-la-Jolie",
+    "fr": "Mantes-la-Jolie"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien enceinte fortifiée is an important witness to the city's history.",
+        "fr": "Ancien enceinte fortifiée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087510",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-ancien-enceinte-fortifiee-pa00087510",
+      "latitude": 48.9872588317473,
+      "longitude": 1.71844347279705,
+      "name": {
+        "en": "Ancien enceinte fortifiée",
+        "fr": "Ancien enceinte fortifiée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel Carsillier is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel Carsillier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087513",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-ancien-hotel-carsillier-pa00087513",
+      "latitude": 48.9915647395378,
+      "longitude": 1.71712062504583,
+      "name": {
+        "en": "Ancien Hôtel Carsillier",
+        "fr": "Ancien Hôtel Carsillier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087517",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-ancien-hotel-pa00087517",
+      "latitude": 48.9914045941231,
+      "longitude": 1.71675714830029,
+      "name": {
+        "en": "Ancien hôtel",
+        "fr": "Ancien hôtel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel, puis ancienne école paroissiale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel, puis ancienne école paroissiale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087515",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-ancien-hotel-puis-ancienne-ecole-paroissiale-saint-louis-pa00087515",
+      "latitude": 48.9915529842085,
+      "longitude": 1.71727389788826,
+      "name": {
+        "en": "Ancien Hôtel, puis ancienne école paroissiale Saint-Louis",
+        "fr": "Ancien Hôtel, puis ancienne école paroissiale Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame (ancienne collégiale) is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame (ancienne collégiale) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087508",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-eglise-notre-dame-ancienne-collegiale-pa00087508",
+      "latitude": 48.9903253223787,
+      "longitude": 1.72029574018532,
+      "name": {
+        "en": "Église Notre-Dame (ancienne collégiale)",
+        "fr": "Église Notre-Dame (ancienne collégiale)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de l'Hôtel-de-Ville is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de l'Hôtel-de-Ville compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087511",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-fontaine-de-l-hotel-de-ville-pa00087511",
+      "latitude": 48.9896421266447,
+      "longitude": 1.71884384808561,
+      "name": {
+        "en": "Fontaine de l'Hôtel-de-Ville",
+        "fr": "Fontaine de l'Hôtel-de-Ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'hôtel-Dieu is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'hôtel-Dieu compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0389",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-musee-de-l-hotel-dieu-m0389",
+      "latitude": 48.990874,
+      "longitude": 1.719901,
+      "name": {
+        "en": "musée de l'hôtel-Dieu",
+        "fr": "musée de l'hôtel-Dieu"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Saint-Maclou is an important witness to the city's history.",
+        "fr": "Tour Saint-Maclou est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087519",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-tour-saint-maclou-pa00087519",
+      "latitude": 48.9909609306667,
+      "longitude": 1.71736074358433,
+      "name": {
+        "en": "Tour Saint-Maclou",
+        "fr": "Tour Saint-Maclou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Anne-de-Gassicourt is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Anne-de-Gassicourt est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087509",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-eglise-sainte-anne-de-gassicourt-pa00087509",
+      "latitude": 49.0022292123715,
+      "longitude": 1.69784636417619,
+      "name": {
+        "en": "Église Sainte-Anne-de-Gassicourt",
+        "fr": "Église Sainte-Anne-de-Gassicourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Comptes (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Comptes (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087512",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mantes-la-jolie-hotel-des-comptes-ancien-pa00087512",
+      "latitude": 48.9906398220171,
+      "longitude": 1.72004495773233,
+      "name": {
+        "en": "Hôtel des Comptes (ancien)",
+        "fr": "Hôtel des Comptes (ancien)"
+      }
+    }
+  ]
+}

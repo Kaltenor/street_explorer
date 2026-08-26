@@ -1,0 +1,394 @@
+{
+  "id": "nimes-v1",
+  "cityId": "nimes-fr",
+  "cityZoneId": "relation/378685",
+  "cityName": {
+    "en": "Nîmes",
+    "fr": "Nîmes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Amphithéâtre ou Arènes is one of the city's notable cultural landmarks.",
+        "fr": "Amphithéâtre ou Arènes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103091",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-amphitheatre-ou-arenes-pa00103091",
+      "latitude": 43.8348910811836,
+      "longitude": 4.35962455275581,
+      "name": {
+        "en": "Amphithéâtre ou Arènes",
+        "fr": "Amphithéâtre ou Arènes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien collège des Jésuites, actuellement musée d'archéologie ou musée d'Histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "Ancien collège des Jésuites, actuellement musée d'archéologie ou musée d'Histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103094",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-ancien-college-des-jesuites-actuellement-musee-d-archeologie-ou-musee-d-histoire-naturelle-pa00103094",
+      "latitude": 43.837530695936,
+      "longitude": 4.36238219535292,
+      "name": {
+        "en": "Ancien collège des Jésuites, actuellement musée d'archéologie ou musée d'Histoire naturelle",
+        "fr": "Ancien collège des Jésuites, actuellement musée d'archéologie ou musée d'Histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hospice devenu palais des arts, puis agrandi en lycée, actuel lycée Alphonse Daudet is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hospice devenu palais des arts, puis agrandi en lycée, actuel lycée Alphonse Daudet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA30000064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-ancien-hospice-devenu-palais-des-arts-puis-agrandi-en-lycee-actuel-lycee-alphonse-daudet-pa30000064",
+      "latitude": 43.8355151795977,
+      "longitude": 4.35717645391373,
+      "name": {
+        "en": "Ancien hospice devenu palais des arts, puis agrandi en lycée, actuel lycée Alphonse Daudet",
+        "fr": "Ancien hospice devenu palais des arts, puis agrandi en lycée, actuel lycée Alphonse Daudet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103149",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-ancien-palais-episcopal-pa00103149",
+      "latitude": 43.8379142951735,
+      "longitude": 4.36040875342329,
+      "name": {
+        "en": "Ancien palais épiscopal",
+        "fr": "Ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Carré d'art-musée d'art contemporain is one of the city's notable cultural landmarks.",
+        "fr": "Carré d'art-musée d'art contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0459",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nimes-carre-d-art-musee-d-art-contemporain-m0459",
+      "latitude": 43.837904,
+      "longitude": 4.35616,
+      "name": {
+        "en": "Carré d'art-musée d'art contemporain",
+        "fr": "Carré d'art-musée d'art contemporain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame et Saint-Castor is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame et Saint-Castor est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103092",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-cathedrale-notre-dame-et-saint-castor-pa00103092",
+      "latitude": 43.838336618498,
+      "longitude": 4.36040394302352,
+      "name": {
+        "en": "Cathédrale Notre-Dame et Saint-Castor",
+        "fr": "Cathédrale Notre-Dame et Saint-Castor"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau romain ou Castellum Divisorium is an important witness to the city's history.",
+        "fr": "Château d'eau romain ou Castellum Divisorium est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103093",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-chateau-d-eau-romain-ou-castellum-divisorium-pa00103093",
+      "latitude": 43.842364180749,
+      "longitude": 4.35595817464064,
+      "name": {
+        "en": "Château d'eau romain ou Castellum Divisorium",
+        "fr": "Château d'eau romain ou Castellum Divisorium"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103095",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-eglise-saint-paul-pa00103095",
+      "latitude": 43.8364957438405,
+      "longitude": 4.35593188851591,
+      "name": {
+        "en": "Église Saint-Paul",
+        "fr": "Église Saint-Paul"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de l'Esplanade, dite fontaine Pradier is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de l'Esplanade, dite fontaine Pradier compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103096",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-fontaine-de-l-esplanade-dite-fontaine-pradier-pa00103096",
+      "latitude": 43.8348999432876,
+      "longitude": 4.36235359148151,
+      "name": {
+        "en": "Fontaine de l'Esplanade, dite fontaine Pradier",
+        "fr": "Fontaine de l'Esplanade, dite fontaine Pradier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103101",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-hotel-de-ville-pa00103101",
+      "latitude": 43.8365114208811,
+      "longitude": 4.36007758984632,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel dit le Presbytère de la la Cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel dit le Presbytère de la la Cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103103",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-hotel-dit-le-presbytere-de-la-la-cathedrale-pa00103103",
+      "latitude": 43.8386292315396,
+      "longitude": 4.36026919855312,
+      "name": {
+        "en": "Hôtel dit le Presbytère de la la Cathédrale",
+        "fr": "Hôtel dit le Presbytère de la la Cathédrale"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin de la Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin de la Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103124",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-jardin-de-la-fontaine-pa00103124",
+      "latitude": 43.8407129895497,
+      "longitude": 4.34990253216428,
+      "name": {
+        "en": "Jardin de la Fontaine",
+        "fr": "Jardin de la Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Carrée is a distinctive architectural landmark in the city.",
+        "fr": "Maison Carrée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103125",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-maison-carree-pa00103125",
+      "latitude": 43.8382057600258,
+      "longitude": 4.35612785499648,
+      "name": {
+        "en": "Maison Carrée",
+        "fr": "Maison Carrée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Romanité is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Romanité compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0455",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nimes-musee-de-la-romanite-m0455",
+      "latitude": 43.837616,
+      "longitude": 4.362815,
+      "name": {
+        "en": "musée de la Romanité",
+        "fr": "musée de la Romanité"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0457",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nimes-musee-des-beaux-arts-m0457",
+      "latitude": 43.832001,
+      "longitude": 4.36081,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieux Nîmes is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieux Nîmes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0458",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nimes-musee-du-vieux-nimes-m0458",
+      "latitude": 43.838204,
+      "longitude": 4.359619,
+      "name": {
+        "en": "musée du vieux Nîmes",
+        "fr": "musée du vieux Nîmes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle et de préhistoire is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle et de préhistoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7051",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nimes-museum-d-histoire-naturelle-et-de-prehistoire-m7051",
+      "latitude": 43.83798099757179,
+      "longitude": 4.363712139325677,
+      "name": {
+        "en": "muséum d'histoire naturelle et de préhistoire",
+        "fr": "muséum d'histoire naturelle et de préhistoire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Arles dite d'Auguste is an important witness to the city's history.",
+        "fr": "Porte d'Arles dite d'Auguste est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103150",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-porte-d-arles-dite-d-auguste-pa00103150",
+      "latitude": 43.8394551437304,
+      "longitude": 4.36316027186929,
+      "name": {
+        "en": "Porte d'Arles dite d'Auguste",
+        "fr": "Porte d'Arles dite d'Auguste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Espagne dite de France is an important witness to the city's history.",
+        "fr": "Porte d'Espagne dite de France est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103151",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-porte-d-espagne-dite-de-france-pa00103151",
+      "latitude": 43.8326755849434,
+      "longitude": 4.35777416641911,
+      "name": {
+        "en": "Porte d'Espagne dite de France",
+        "fr": "Porte d'Espagne dite de France"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Magne is an important witness to the city's history.",
+        "fr": "Tour Magne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103155",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nimes-tour-magne-pa00103155",
+      "latitude": 43.8430544360273,
+      "longitude": 4.349471644606611,
+      "name": {
+        "en": "Tour Magne",
+        "fr": "Tour Magne"
+      }
+    }
+  ]
+}

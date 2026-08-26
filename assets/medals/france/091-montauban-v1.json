@@ -1,0 +1,394 @@
+{
+  "id": "montauban-v1",
+  "cityId": "montauban-fr",
+  "cityZoneId": "relation/137735",
+  "cityName": {
+    "en": "Montauban",
+    "fr": "Montauban"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Théodard de Montauriol is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Théodard de Montauriol est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-ancien-abbaye-saint-theodard-de-montauriol-pa00095798",
+      "latitude": 44.0053880365558,
+      "longitude": 1.36088224636235,
+      "name": {
+        "en": "Ancien abbaye Saint-Théodard de Montauriol",
+        "fr": "Ancien abbaye Saint-Théodard de Montauriol"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien collège des Jésuites is a distinctive architectural landmark in the city.",
+        "fr": "Ancien collège des Jésuites est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095800",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-ancien-college-des-jesuites-pa00095800",
+      "latitude": 44.0178377973221,
+      "longitude": 1.35672906799248,
+      "name": {
+        "en": "Ancien collège des Jésuites",
+        "fr": "Ancien collège des Jésuites"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien marché de Villebourbon is a distinctive architectural landmark in the city.",
+        "fr": "Ancien marché de Villebourbon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA82000012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-ancien-marche-de-villebourbon-pa82000012",
+      "latitude": 44.01645309874021,
+      "longitude": 1.34490244311291,
+      "name": {
+        "en": "Ancien marché de Villebourbon",
+        "fr": "Ancien marché de Villebourbon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien palais épiscopal, ancien Hôtel de ville, actuellement musée Ingres is one of the city's notable cultural landmarks.",
+        "fr": "Ancien palais épiscopal, ancien Hôtel de ville, actuellement musée Ingres compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095805",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-ancien-palais-episcopal-ancien-hotel-de-ville-actuellement-musee-ingres-pa00095805",
+      "latitude": 44.0168738238343,
+      "longitude": 1.35164512317053,
+      "name": {
+        "en": "Ancien palais épiscopal, ancien Hôtel de ville, actuellement musée Ingres",
+        "fr": "Ancien palais épiscopal, ancien Hôtel de ville, actuellement musée Ingres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien pont is a distinctive architectural landmark in the city.",
+        "fr": "Ancien pont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095834",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-ancien-pont-pa00095834",
+      "latitude": 44.0169710912189,
+      "longitude": 1.34991082317151,
+      "name": {
+        "en": "Ancien pont",
+        "fr": "Ancien pont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame de l'Assomption is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame de l'Assomption est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095799",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-cathedrale-notre-dame-de-l-assomption-pa00095799",
+      "latitude": 44.0153275390764,
+      "longitude": 1.35545242737316,
+      "name": {
+        "en": "Cathédrale Notre-Dame de l'Assomption",
+        "fr": "Cathédrale Notre-Dame de l'Assomption"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Riblaye is an important witness to the city's history.",
+        "fr": "Château de Riblaye est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA82000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-chateau-de-riblaye-pa82000022",
+      "latitude": 43.990030182812,
+      "longitude": 1.3978642589317,
+      "name": {
+        "en": "Château de Riblaye",
+        "fr": "Château de Riblaye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095801",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-eglise-saint-jacques-pa00095801",
+      "latitude": 44.0175209619815,
+      "longitude": 1.35306342782275,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hospice is a distinctive architectural landmark in the city.",
+        "fr": "Hospice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095802",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-hospice-pa00095802",
+      "latitude": 44.0217483744373,
+      "longitude": 1.35121791335124,
+      "name": {
+        "en": "Hospice",
+        "fr": "Hospice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Bar is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Bar est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095803",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-hotel-de-bar-pa00095803",
+      "latitude": 44.01710151379311,
+      "longitude": 1.35306630684469,
+      "name": {
+        "en": "Hôtel de Bar",
+        "fr": "Hôtel de Bar"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914 - 1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914 - 1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA82000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-monument-aux-morts-de-la-guerre-de-1914-1918-pa82000011",
+      "latitude": 44.0226915189929,
+      "longitude": 1.34342750913059,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914 - 1918",
+        "fr": "Monument aux morts de la guerre de 1914 - 1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle Victor-Brun is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle Victor-Brun compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7046",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montauban-musee-d-histoire-naturelle-victor-brun-m7046",
+      "latitude": 44.017099,
+      "longitude": 1.351385,
+      "name": {
+        "en": "musée d'histoire naturelle Victor-Brun",
+        "fr": "musée d'histoire naturelle Victor-Brun"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Ingres Bourdelle is one of the city's notable cultural landmarks.",
+        "fr": "musée Ingres Bourdelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0607",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montauban-musee-ingres-bourdelle-m0607",
+      "latitude": 44.017091,
+      "longitude": 1.35188,
+      "name": {
+        "en": "musée Ingres Bourdelle",
+        "fr": "musée Ingres Bourdelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Le Franc de Pompignan is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Le Franc de Pompignan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095804",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-hotel-le-franc-de-pompignan-pa00095804",
+      "latitude": 44.018420034036,
+      "longitude": 1.35268107811739,
+      "name": {
+        "en": "Hôtel Le Franc de Pompignan",
+        "fr": "Hôtel Le Franc de Pompignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble, ancien hôtel Debia is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble, ancien hôtel Debia est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095806",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-immeuble-ancien-hotel-debia-pa00095806",
+      "latitude": 44.0149583906368,
+      "longitude": 1.34735313829488,
+      "name": {
+        "en": "Immeuble, ancien hôtel Debia",
+        "fr": "Immeuble, ancien hôtel Debia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095807",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-immeuble-pa00095807",
+      "latitude": 44.0176313291211,
+      "longitude": 1.3536947628723701,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite \"maison dorée\" is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite \"maison dorée\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095832",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-maison-dite-maison-doree-pa00095832",
+      "latitude": 44.0206875521977,
+      "longitude": 1.35544030671878,
+      "name": {
+        "en": "Maison dite \"maison dorée\"",
+        "fr": "Maison dite \"maison dorée\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Place Nationale is a distinctive architectural landmark in the city.",
+        "fr": "Place Nationale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095833",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-place-nationale-pa00095833",
+      "latitude": 44.0175917087596,
+      "longitude": 1.35418919944213,
+      "name": {
+        "en": "Place Nationale",
+        "fr": "Place Nationale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Neuf is a distinctive architectural landmark in the city.",
+        "fr": "Pont Neuf est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA82000013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-pont-neuf-pa82000013",
+      "latitude": 44.0140383717057,
+      "longitude": 1.34924924690077,
+      "name": {
+        "en": "Pont Neuf",
+        "fr": "Pont Neuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple des Carmes, ancienne chapelle des Carmes is a distinctive architectural landmark in the city.",
+        "fr": "Temple des Carmes, ancienne chapelle des Carmes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00095835",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montauban-temple-des-carmes-ancienne-chapelle-des-carmes-pa00095835",
+      "latitude": 44.0157094275937,
+      "longitude": 1.35268698641983,
+      "name": {
+        "en": "Temple des Carmes, ancienne chapelle des Carmes",
+        "fr": "Temple des Carmes, ancienne chapelle des Carmes"
+      }
+    }
+  ]
+}

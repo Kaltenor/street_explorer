@@ -1,0 +1,204 @@
+{
+  "id": "rillieux-la-pape-v1",
+  "cityId": "rillieux-la-pape-fr",
+  "cityZoneId": "relation/121775",
+  "cityName": {
+    "en": "Rillieux-la-Pape",
+    "fr": "Rillieux-la-Pape"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'eau des Semailles is an important witness to the city's history.",
+        "fr": "château d'eau à Rillieux-la-Pape, France"
+      },
+      "externalIdentity": {
+        "id": "Q109322974",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-chateau-d-eau-des-semailles-q109322974",
+      "latitude": 45.820926544,
+      "longitude": 4.903312154,
+      "name": {
+        "en": "château d'eau des Semailles",
+        "fr": "château d'eau des Semailles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Pape is an important witness to the city's history.",
+        "fr": "château et bâtiment de lycée, à Rillieux-la-Pape, France"
+      },
+      "externalIdentity": {
+        "id": "Q123966103",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-chateau-de-la-pape-q123966103",
+      "latitude": 45.8021,
+      "longitude": 4.88507,
+      "name": {
+        "en": "château de la Pape",
+        "fr": "château de la Pape"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Rillieux-la-Pape, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1959696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-crepieux-la-pape-q1959696",
+      "latitude": 45.803925,
+      "longitude": 4.89235,
+      "name": {
+        "en": "Crépieux-la-Pape",
+        "fr": "Crépieux-la-Pape"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q64733589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-eglise-saint-denis-de-rillieux-q64733589",
+      "latitude": 45.81976,
+      "longitude": 4.89601,
+      "name": {
+        "en": "église Saint-Denis de Rillieux",
+        "fr": "église Saint-Denis de Rillieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église en France"
+      },
+      "externalIdentity": {
+        "id": "Q20113738",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-eglise-saint-jean-marie-vianney-de-crepieux-la-pape-q20113738",
+      "latitude": 45.80778,
+      "longitude": 4.8931,
+      "name": {
+        "en": "église Saint-Jean-Marie-Vianney de Crépieux-la-Pape",
+        "fr": "église Saint-Jean-Marie-Vianney de Crépieux-la-Pape"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q68165686",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-eglise-saint-pierre-chanel-de-rillieux-la-pape-q68165686",
+      "latitude": 45.812577,
+      "longitude": 4.893086,
+      "name": {
+        "en": "église Saint-Pierre-Chanel de Rillieux-la-Pape",
+        "fr": "église Saint-Pierre-Chanel de Rillieux-la-Pape"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort de la 2e ceinture de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q761624",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-fort-de-vancia-q761624",
+      "latitude": 45.83833333,
+      "longitude": 4.90694444,
+      "name": {
+        "en": "fort de Vancia",
+        "fr": "fort de Vancia"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "medical museum in Lyon",
+        "fr": "musée d’anatomie et d’histoire naturelle médicale à Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q3329362",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-musee-testut-latarjet-q3329362",
+      "latitude": 45.825194444,
+      "longitude": 4.914,
+      "name": {
+        "en": "musée Testut-Latarjet",
+        "fr": "musée Testut-Latarjet"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Brosset is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé à Rillieux-la-Pape en France"
+      },
+      "externalIdentity": {
+        "id": "Q29867456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-parc-brosset-q29867456",
+      "latitude": 45.822364,
+      "longitude": 4.896886,
+      "name": {
+        "en": "parc Brosset",
+        "fr": "parc Brosset"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "cemetery located in Rhône, in France",
+        "fr": "cimetière à Rillieux-la-Pape"
+      },
+      "externalIdentity": {
+        "id": "Q27031047",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rillieux-la-pape-parc-cimetiere-du-funerarium-de-rillieux-la-pape-q27031047",
+      "latitude": 45.824875,
+      "longitude": 4.907219444,
+      "name": {
+        "en": "parc cimetière du funérarium de Rillieux-la-Pape",
+        "fr": "parc cimetière du funérarium de Rillieux-la-Pape"
+      }
+    }
+  ]
+}

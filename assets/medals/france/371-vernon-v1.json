@@ -1,0 +1,204 @@
+{
+  "id": "vernon-v1",
+  "cityId": "vernon-fr",
+  "cityZoneId": "relation/74780",
+  "cityName": {
+    "en": "Vernon",
+    "fr": "Vernon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château de Vernonnet, dit Château des Tourelles is an important witness to the city's history.",
+        "fr": "Ancien château de Vernonnet, dit Château des Tourelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099618",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-ancien-chateau-de-vernonnet-dit-chateau-des-tourelles-pa00099618",
+      "latitude": 49.0981501178059,
+      "longitude": 1.48846018408596,
+      "name": {
+        "en": "Ancien château de Vernonnet, dit Château des Tourelles",
+        "fr": "Ancien château de Vernonnet, dit Château des Tourelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099619",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-ancien-eglise-pa00099619",
+      "latitude": 49.0987308328738,
+      "longitude": 1.49193873480171,
+      "name": {
+        "en": "Ancien église",
+        "fr": "Ancien église"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099616",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-chateau-pa00099616",
+      "latitude": 49.0939820238055,
+      "longitude": 1.48451593379816,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Bizy is an important witness to the city's history.",
+        "fr": "Domaine du château de Bizy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099617",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-domaine-du-chateau-de-bizy-pa00099617",
+      "latitude": 49.0823246348644,
+      "longitude": 1.47061721017483,
+      "name": {
+        "en": "Domaine du château de Bizy",
+        "fr": "Domaine du château de Bizy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame, actuellement collégiale is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame, actuellement collégiale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099620",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-eglise-notre-dame-actuellement-collegiale-pa00099620",
+      "latitude": 49.0933869439166,
+      "longitude": 1.48647058019462,
+      "name": {
+        "en": "Église Notre-Dame, actuellement collégiale",
+        "fr": "Église Notre-Dame, actuellement collégiale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison à pans de bois dite Maison du Temps Jadis is a distinctive architectural landmark in the city.",
+        "fr": "Maison à pans de bois dite Maison du Temps Jadis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099622",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-maison-a-pans-de-bois-dite-maison-du-temps-jadis-pa00099622",
+      "latitude": 49.0933864273642,
+      "longitude": 1.48596461278362,
+      "name": {
+        "en": "Maison à pans de bois dite Maison du Temps Jadis",
+        "fr": "Maison à pans de bois dite Maison du Temps Jadis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison, dite Manoir du Grévarin is a distinctive architectural landmark in the city.",
+        "fr": "Maison, dite Manoir du Grévarin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099623",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-maison-dite-manoir-du-grevarin-pa00099623",
+      "latitude": 49.0877089466212,
+      "longitude": 1.48683455240751,
+      "name": {
+        "en": "Maison, dite Manoir du Grévarin",
+        "fr": "Maison, dite Manoir du Grévarin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Blanche Hoschedé-Monet is one of the city's notable cultural landmarks.",
+        "fr": "musée Blanche Hoschedé-Monet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0708",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vernon-musee-blanche-hoschede-monet-m0708",
+      "latitude": 49.094855,
+      "longitude": 1.484927,
+      "name": {
+        "en": "musée Blanche Hoschedé-Monet",
+        "fr": "musée Blanche Hoschedé-Monet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Tour des Archives is one of the city's notable cultural landmarks.",
+        "fr": "Tour des Archives compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099624",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-tour-des-archives-pa00099624",
+      "latitude": 49.0944932220134,
+      "longitude": 1.48404824897965,
+      "name": {
+        "en": "Tour des Archives",
+        "fr": "Tour des Archives"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges du vieux pont et du moulin is an important witness to the city's history.",
+        "fr": "Vestiges du vieux pont et du moulin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA27000106",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vernon-vestiges-du-vieux-pont-et-du-moulin-pa27000106",
+      "latitude": 49.097351202973265,
+      "longitude": 1.4880670791852735,
+      "name": {
+        "en": "Vestiges du vieux pont et du moulin",
+        "fr": "Vestiges du vieux pont et du moulin"
+      }
+    }
+  ]
+}

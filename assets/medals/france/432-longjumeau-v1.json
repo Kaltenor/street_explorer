@@ -1,0 +1,204 @@
+{
+  "id": "longjumeau-v1",
+  "cityId": "longjumeau-fr",
+  "cityZoneId": "relation/395036",
+  "cityName": {
+    "en": "Longjumeau",
+    "fr": "Longjumeau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commandry located in Essonne, in France",
+        "fr": "commanderie située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2985799",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-commanderie-de-balizy-q2985799",
+      "latitude": 48.6792,
+      "longitude": 2.30807,
+      "name": {
+        "en": "commanderie de Balizy",
+        "fr": "commanderie de Balizy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087940",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "longjumeau-eglise-saint-martin-pa00087940",
+      "latitude": 48.6928783496032,
+      "longitude": 2.29357313387404,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French railway station, station of the T12 Express line of the Île-de-France tramway",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2093838",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-gravigny-balizy-q2093838",
+      "latitude": 48.685278,
+      "longitude": 2.317778,
+      "name": {
+        "en": "Gravigny-Balizy",
+        "fr": "Gravigny-Balizy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bolshevik party school",
+        "fr": "L’école du parti de Longjumeau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q4345937",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-l-ecole-du-parti-de-longjumeau-q4345937",
+      "latitude": 48.699253,
+      "longitude": 2.2962797,
+      "name": {
+        "en": "L’école du parti de Longjumeau",
+        "fr": "L’école du parti de Longjumeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Essonne, France",
+        "fr": "commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q219045",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-longjumeau-q219045",
+      "latitude": 48.696944444,
+      "longitude": 2.295555555,
+      "name": {
+        "en": "Longjumeau",
+        "fr": "Longjumeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-et-Oise department, France",
+        "fr": "siège municipal de Longjumeau, en Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119316136",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-mairie-de-longjumeau-q119316136",
+      "latitude": 48.694240382,
+      "longitude": 2.295829832,
+      "name": {
+        "en": "mairie de Longjumeau",
+        "fr": "mairie de Longjumeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "criminal case in France",
+        "fr": "affaire criminelle française"
+      },
+      "externalIdentity": {
+        "id": "Q132234914",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-meurtre-de-louise-q132234914",
+      "latitude": 48.67848,
+      "longitude": 2.30832,
+      "name": {
+        "en": "meurtre de Louise",
+        "fr": "meurtre de Louise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "cours d'eau français"
+      },
+      "externalIdentity": {
+        "id": "Q3443296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-rouillon-q3443296",
+      "latitude": 48.683333333,
+      "longitude": 2.316666666,
+      "name": {
+        "en": "Rouillon",
+        "fr": "Rouillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vieux pont de Balizy, dit pont des Templiers is a distinctive architectural landmark in the city.",
+        "fr": "Vieux pont de Balizy, dit pont des Templiers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135716",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "longjumeau-vieux-pont-de-balizy-dit-pont-des-templiers-pa00135716",
+      "latitude": 48.679089229562,
+      "longitude": 2.30774831197065,
+      "name": {
+        "en": "Vieux pont de Balizy, dit pont des Templiers",
+        "fr": "Vieux pont de Balizy, dit pont des Templiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont à Longjumeau (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22995422",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "longjumeau-vieux-pont-de-balizy-q22995422",
+      "latitude": 48.67928,
+      "longitude": 2.3087,
+      "name": {
+        "en": "vieux pont de Balizy",
+        "fr": "vieux pont de Balizy"
+      }
+    }
+  ]
+}

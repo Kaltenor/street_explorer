@@ -1,0 +1,204 @@
+{
+  "id": "chemille-en-anjou-v1",
+  "cityId": "chemille-en-anjou-fr",
+  "cityZoneId": "relation/157704",
+  "cityName": {
+    "en": "Chemillé-en-Anjou",
+    "fr": "Chemillé-en-Anjou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Chemillé is an important witness to the city's history.",
+        "fr": "château à Chemillé-Melay (Maine-et-Loire)"
+      },
+      "externalIdentity": {
+        "id": "Q2968913",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chemille-en-anjou-chateau-de-chemille-q2968913",
+      "latitude": 47.219,
+      "longitude": -0.726503,
+      "name": {
+        "en": "château de Chemillé",
+        "fr": "château de Chemillé"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Jumellière is an important witness to the city's history.",
+        "fr": "Château de la Jumellière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000092",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chemille-en-anjou-chateau-de-la-jumelliere-pa49000092",
+      "latitude": 47.2807515493818,
+      "longitude": -0.737093195693611,
+      "name": {
+        "en": "Château de la Jumellière",
+        "fr": "Château de la Jumellière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Sorinière is an important witness to the city's history.",
+        "fr": "Château de la Sorinière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chemille-en-anjou-chateau-de-la-soriniere-pa00109041",
+      "latitude": 47.2210999834529,
+      "longitude": -0.6983083423546191,
+      "name": {
+        "en": "Château de la Sorinière",
+        "fr": "Château de la Sorinière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Cloîtres is an important witness to the city's history.",
+        "fr": "Château des Cloîtres est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chemille-en-anjou-chateau-des-cloitres-pa49000087",
+      "latitude": 47.2183744200125,
+      "longitude": -0.726443520806386,
+      "name": {
+        "en": "Château des Cloîtres",
+        "fr": "Château des Cloîtres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Maine-et-Loire, France",
+        "fr": "commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q21027217",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chemille-en-anjou-chemille-en-anjou-q21027217",
+      "latitude": 47.21,
+      "longitude": -0.7286,
+      "name": {
+        "en": "Chemillé-en-Anjou",
+        "fr": "Chemillé-en-Anjou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Maine-et-Loire, France",
+        "fr": "ancienne commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q2962272",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chemille-en-anjou-chemille-melay-q2962272",
+      "latitude": 47.212222222,
+      "longitude": -0.726944444,
+      "name": {
+        "en": "Chemillé-Melay",
+        "fr": "Chemillé-Melay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Maine-et-Loire, France",
+        "fr": "ancienne commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q624927",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chemille-en-anjou-chemille-q624927",
+      "latitude": 47.2131,
+      "longitude": -0.72583,
+      "name": {
+        "en": "Chemillé",
+        "fr": "Chemillé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chemille-en-anjou-eglise-notre-dame-pa00109042",
+      "latitude": 47.2124550292971,
+      "longitude": -0.730833695697567,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden and park in Chemillé, Maine-et-Loire, Pays de la Loire, France",
+        "fr": "jardin botanique en France"
+      },
+      "externalIdentity": {
+        "id": "Q3890919",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chemille-en-anjou-jardin-camifolia-q3890919",
+      "latitude": 47.2141,
+      "longitude": -0.7336,
+      "name": {
+        "en": "jardin Camifolia",
+        "fr": "jardin Camifolia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132975",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chemille-en-anjou-eglise-saint-pierre-pa00132975",
+      "latitude": 47.219222482573,
+      "longitude": -0.726240779357113,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    }
+  ]
+}

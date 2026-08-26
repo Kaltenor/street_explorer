@@ -1,0 +1,204 @@
+{
+  "id": "suresnes-v1",
+  "cityId": "suresnes-fr",
+  "cityZoneId": "relation/72258",
+  "cityName": {
+    "en": "Suresnes",
+    "fr": "Suresnes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "chapel located in Hauts-de-Seine, in France",
+        "fr": "chapelle située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21072298",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-chapelle-du-fort-du-mont-valerien-de-suresnes-q21072298",
+      "latitude": 48.87283,
+      "longitude": 2.21069,
+      "name": {
+        "en": "chapelle du Fort du Mont-Valérien de Suresnes",
+        "fr": "chapelle du Fort du Mont-Valérien de Suresnes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Forbin Janson is an important witness to the city's history.",
+        "fr": "château français situé à Suresnes"
+      },
+      "externalIdentity": {
+        "id": "Q78655248",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-chateau-de-forbin-janson-q78655248",
+      "latitude": 48.8726,
+      "longitude": 2.21138,
+      "name": {
+        "en": "château de Forbin Janson",
+        "fr": "château de Forbin Janson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "military cemetery in Suresnes, France",
+        "fr": "cimetière militaire de Suresnes, France"
+      },
+      "externalIdentity": {
+        "id": "Q2972491",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-cimetiere-americain-de-suresnes-q2972491",
+      "latitude": 48.871811111,
+      "longitude": 2.218013888,
+      "name": {
+        "en": "cimetière américain de Suresnes",
+        "fr": "cimetière américain de Suresnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in Suresnes, France",
+        "fr": "hôpital à Suresnes (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q3145155",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-hopital-foch-q3145155",
+      "latitude": 48.871,
+      "longitude": 2.2213,
+      "name": {
+        "en": "hôpital Foch",
+        "fr": "hôpital Foch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Suresnes, France",
+        "fr": "édifice de Suresnes, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-hotel-de-ville-de-suresnes-q61913608",
+      "latitude": 48.871111,
+      "longitude": 2.225278,
+      "name": {
+        "en": "hôtel de ville de Suresnes",
+        "fr": "hôtel de ville de Suresnes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument to the combatants, resistants and deportees",
+        "fr": "monument hommage aux combattants, résistants et déportés français"
+      },
+      "externalIdentity": {
+        "id": "Q3333148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-memorial-de-la-france-combattante-q3333148",
+      "latitude": 48.8716,
+      "longitude": 2.21383,
+      "name": {
+        "en": "mémorial de la France combattante",
+        "fr": "mémorial de la France combattante"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "MUS - musée d'histoire urbaine et sociale de Suresnes is one of the city's notable cultural landmarks.",
+        "fr": "MUS - musée d'histoire urbaine et sociale de Suresnes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0418",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "suresnes-mus-musee-d-histoire-urbaine-et-sociale-de-suresnes-m0418",
+      "latitude": 48.868303,
+      "longitude": 2.221944,
+      "name": {
+        "en": "MUS - musée d'histoire urbaine et sociale de Suresnes",
+        "fr": "MUS - musée d'histoire urbaine et sociale de Suresnes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329526",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-musee-colombophile-militaire-q3329526",
+      "latitude": 48.87191,
+      "longitude": 2.21606,
+      "name": {
+        "en": "musée colombophile militaire",
+        "fr": "musée colombophile militaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Suresnes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2424785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-suresnes-mont-valerien-q2424785",
+      "latitude": 48.871709,
+      "longitude": 2.221062,
+      "name": {
+        "en": "Suresnes-Mont-Valérien",
+        "fr": "Suresnes-Mont-Valérien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Suresnes, France",
+        "fr": "théâtre à Suresnes, France"
+      },
+      "externalIdentity": {
+        "id": "Q3527487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "suresnes-theatre-de-suresnes-jean-vilar-q3527487",
+      "latitude": 48.8633,
+      "longitude": 2.20188,
+      "name": {
+        "en": "théâtre de Suresnes Jean Vilar",
+        "fr": "théâtre de Suresnes Jean Vilar"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "mitry-mory-v1",
+  "cityId": "mitry-mory-fr",
+  "cityZoneId": "relation/79338",
+  "cityName": {
+    "en": "Mitry-Mory",
+    "fr": "Mitry-Mory"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Paris, France",
+        "fr": "aéroport desservant Paris (Île-de-France, France)"
+      },
+      "externalIdentity": {
+        "id": "Q46280",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-aeroport-paris-charles-de-gaulle-q46280",
+      "latitude": 49.009722222,
+      "longitude": 2.547777777,
+      "name": {
+        "en": "aéroport Paris-Charles-de-Gaulle",
+        "fr": "aéroport Paris-Charles-de-Gaulle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-et-Marne, in France",
+        "fr": "chapelle située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20202835",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-chapelle-sainte-therese-de-mitry-mory-q20202835",
+      "latitude": 48.974236111,
+      "longitude": 2.641138888,
+      "name": {
+        "en": "chapelle Sainte-Thérèse de Mitry-Mory",
+        "fr": "chapelle Sainte-Thérèse de Mitry-Mory"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-et-Marne, in France",
+        "fr": "cimetière situé en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136290516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-cimetiere-de-mitry-bourg-q136290516",
+      "latitude": 48.989534,
+      "longitude": 2.617332,
+      "name": {
+        "en": "cimetière de Mitry-Bourg",
+        "fr": "cimetière de Mitry-Bourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-et-Marne, in France",
+        "fr": "cimetière situé en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110357077",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-cimetiere-de-mitry-le-neuf-q110357077",
+      "latitude": 48.961,
+      "longitude": 2.6002,
+      "name": {
+        "en": "cimetière de Mitry-le-Neuf",
+        "fr": "cimetière de Mitry-le-Neuf"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097140",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-monument-aux-morts-de-mitry-le-neuf-q136097140",
+      "latitude": 48.9529565,
+      "longitude": 2.6009961,
+      "name": {
+        "en": "monument aux morts de Mitry-le-Neuf",
+        "fr": "monument aux morts de Mitry-le-Neuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Mitry-Mory, France",
+        "fr": "édifice religieux catholique à Mitry-Mory, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20202836",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-eglise-notre-dame-des-saints-anges-de-mitry-mory-q20202836",
+      "latitude": 48.954872,
+      "longitude": 2.592519,
+      "name": {
+        "en": "église Notre-Dame-des-Saints-Anges de Mitry-Mory",
+        "fr": "église Notre-Dame-des-Saints-Anges de Mitry-Mory"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Mitry-Mory, France",
+        "fr": "édifice religieux catholique à Mitry-Mory, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582879",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-eglise-saint-martin-de-mitry-mory-q3582879",
+      "latitude": 48.9847,
+      "longitude": 2.61941,
+      "name": {
+        "en": "église Saint-Martin de Mitry-Mory",
+        "fr": "église Saint-Martin de Mitry-Mory"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087105",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mitry-mory-eglise-saint-martin-pa00087105",
+      "latitude": 48.9847518073276,
+      "longitude": 2.61950754620171,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Mitry-Mory, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2285712",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-mitry-claye-q2285712",
+      "latitude": 48.976,
+      "longitude": 2.642,
+      "name": {
+        "en": "Mitry - Claye",
+        "fr": "Mitry - Claye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Mitry-Mory, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2004898",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mitry-mory-villeparisis-mitry-le-neuf-q2004898",
+      "latitude": 48.952778,
+      "longitude": 2.602222,
+      "name": {
+        "en": "Villeparisis - Mitry-le-Neuf",
+        "fr": "Villeparisis - Mitry-le-Neuf"
+      }
+    }
+  ]
+}

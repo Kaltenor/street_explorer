@@ -1,0 +1,204 @@
+{
+  "id": "joue-les-tours-v1",
+  "cityId": "joue-les-tours-fr",
+  "cityZoneId": "relation/76340",
+  "cityName": {
+    "en": "Joué-lès-Tours",
+    "fr": "Joué-lès-Tours"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont à Joué-lès-Tours (Indre-et-Loire)"
+      },
+      "externalIdentity": {
+        "id": "Q22941829",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-arche-du-pin-q22941829",
+      "latitude": 47.362886,
+      "longitude": 0.66585,
+      "name": {
+        "en": "arche du Pin",
+        "fr": "arche du Pin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Beaulieu is an important witness to the city's history.",
+        "fr": "Château de Beaulieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097787",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "joue-les-tours-chateau-de-beaulieu-pa00097787",
+      "latitude": 47.3627769498984,
+      "longitude": 0.660708480748407,
+      "name": {
+        "en": "Château de Beaulieu",
+        "fr": "Château de Beaulieu"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Crouzillière is an important witness to the city's history.",
+        "fr": "Château de la Crouzillière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097788",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "joue-les-tours-chateau-de-la-crouzilliere-pa00097788",
+      "latitude": 47.36031415543971,
+      "longitude": 0.651620456300255,
+      "name": {
+        "en": "Château de la Crouzillière",
+        "fr": "Château de la Crouzillière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Marbellière is an important witness to the city's history.",
+        "fr": "Château de la Marbellière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097789",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "joue-les-tours-chateau-de-la-marbelliere-pa00097789",
+      "latitude": 47.3588054776713,
+      "longitude": 0.662405035121901,
+      "name": {
+        "en": "Château de la Marbellière",
+        "fr": "Château de la Marbellière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Indre-et-Loire, in France",
+        "fr": "église située en Indre-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60391762",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-eglise-saint-pierre-et-saint-paul-de-joue-les-tours-q60391762",
+      "latitude": 47.352079,
+      "longitude": 0.660994,
+      "name": {
+        "en": "église Saint-Pierre-et-Saint-Paul de Joué-lès-Tours",
+        "fr": "église Saint-Pierre-et-Saint-Paul de Joué-lès-Tours"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Joué-lès-Tours, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096775",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-la-douzillere-q3096775",
+      "latitude": 47.338611,
+      "longitude": 0.653075,
+      "name": {
+        "en": "La Douzillère",
+        "fr": "La Douzillère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Rabière is a distinctive architectural landmark in the city.",
+        "fr": "quartier de la commune de Joué-lès-Tours"
+      },
+      "externalIdentity": {
+        "id": "Q86665472",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-la-rabiere-q86665472",
+      "latitude": 47.344576,
+      "longitude": 0.662401,
+      "name": {
+        "en": "La Rabière",
+        "fr": "La Rabière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "manoir à Joué-lès-Tours (Indre-et-Loire)"
+      },
+      "externalIdentity": {
+        "id": "Q22941825",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-manoir-de-cherizy-q22941825",
+      "latitude": 47.3568,
+      "longitude": 0.6901,
+      "name": {
+        "en": "manoir de Chérizy",
+        "fr": "manoir de Chérizy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q405631",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joue-les-tours-joue-les-tours-q405631",
+      "latitude": 47.354258,
+      "longitude": 0.667761,
+      "name": {
+        "en": "Joué-lès-Tours",
+        "fr": "Joué-lès-Tours"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de la Maucannière, ou du Clos Saint-Victor is an important witness to the city's history.",
+        "fr": "Tour de la Maucannière, ou du Clos Saint-Victor est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097794",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "joue-les-tours-tour-de-la-maucanniere-ou-du-clos-saint-victor-pa00097794",
+      "latitude": 47.36005278680311,
+      "longitude": 0.667860439657907,
+      "name": {
+        "en": "Tour de la Maucannière, ou du Clos Saint-Victor",
+        "fr": "Tour de la Maucannière, ou du Clos Saint-Victor"
+      }
+    }
+  ]
+}

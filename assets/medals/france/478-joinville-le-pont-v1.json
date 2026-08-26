@@ -1,0 +1,204 @@
+{
+  "id": "joinville-le-pont-v1",
+  "cityId": "joinville-le-pont-fr",
+  "cityZoneId": "relation/109400",
+  "cityName": {
+    "en": "Joinville-le-Pont",
+    "fr": "Joinville-le-Pont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Chateau de Parangon is an important witness to the city's history.",
+        "fr": "Chateau de Parangon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079882",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "joinville-le-pont-chateau-de-parangon-pa00079882",
+      "latitude": 48.8137863633812,
+      "longitude": 2.47091374092101,
+      "name": {
+        "en": "Chateau de Parangon",
+        "fr": "Chateau de Parangon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17483814",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-eglise-saint-charles-borromee-q17483814",
+      "latitude": 48.81947,
+      "longitude": 2.46533,
+      "name": {
+        "en": "église Saint-Charles-Borromée",
+        "fr": "église Saint-Charles-Borromée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17483842",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-eglise-sainte-anne-de-polangis-q17483842",
+      "latitude": 48.82194,
+      "longitude": 2.47772,
+      "name": {
+        "en": "église Sainte-Anne de Polangis",
+        "fr": "église Sainte-Anne de Polangis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "train station in Joinville-le-Pont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2785024",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-joinville-le-pont-q2785024",
+      "latitude": 48.821111,
+      "longitude": 2.463889,
+      "name": {
+        "en": "Joinville-le-Pont",
+        "fr": "Joinville-le-Pont"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial in France",
+        "fr": "monument aux morts situé à Joinville-le-Pont"
+      },
+      "externalIdentity": {
+        "id": "Q88231116",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-monument-aux-morts-de-joinville-le-pont-q88231116",
+      "latitude": 48.81746,
+      "longitude": 2.47949,
+      "name": {
+        "en": "monument aux morts de Joinville-le-Pont",
+        "fr": "monument aux morts de Joinville-le-Pont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q85986294",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-pont-de-maisons-alfort-q85986294",
+      "latitude": 48.81092,
+      "longitude": 2.4572,
+      "name": {
+        "en": "pont de Maisons-Alfort",
+        "fr": "pont de Maisons-Alfort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q14628946",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-pont-du-petit-parc-q14628946",
+      "latitude": 48.8135,
+      "longitude": 2.4801,
+      "name": {
+        "en": "pont du petit Parc",
+        "fr": "pont du petit Parc"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "film studios located in Paris",
+        "fr": "anciens studios de cinéma situés en France"
+      },
+      "externalIdentity": {
+        "id": "Q3501085",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-studios-de-joinville-q3501085",
+      "latitude": 48.8194,
+      "longitude": 2.47102,
+      "name": {
+        "en": "studios de Joinville",
+        "fr": "studios de Joinville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Buddhist temple located in Val-de-Marne, in France",
+        "fr": "temple bouddhique situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3517500",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-temple-bouddhique-linh-son-q3517500",
+      "latitude": 48.82081,
+      "longitude": 2.4643,
+      "name": {
+        "en": "temple bouddhique Linh Son",
+        "fr": "temple bouddhique Linh Son"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français à Joinville-le-Pont"
+      },
+      "externalIdentity": {
+        "id": "Q14628945",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "joinville-le-pont-viaduc-de-joinville-q14628945",
+      "latitude": 48.8274,
+      "longitude": 2.46929,
+      "name": {
+        "en": "viaduc de Joinville",
+        "fr": "viaduc de Joinville"
+      }
+    }
+  ]
+}

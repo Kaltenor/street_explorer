@@ -1,0 +1,394 @@
+{
+  "id": "frejus-v1",
+  "cityId": "frejus-fr",
+  "cityZoneId": "relation/186322",
+  "cityName": {
+    "en": "Fréjus",
+    "fr": "Fréjus"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Amphithéâtre is one of the city's notable cultural landmarks.",
+        "fr": "Amphithéâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-amphitheatre-pa00081603",
+      "latitude": 43.4344620216742,
+      "longitude": 6.7287709644755305,
+      "name": {
+        "en": "Amphithéâtre",
+        "fr": "Amphithéâtre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien port romain is an important witness to the city's history.",
+        "fr": "Ancien port romain est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081620",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-ancien-port-romain-pa00081620",
+      "latitude": 43.4310487588818,
+      "longitude": 6.73977719331864,
+      "name": {
+        "en": "Ancien port romain",
+        "fr": "Ancien port romain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-François-de-Paule is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-François-de-Paule est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081608",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-chapelle-saint-francois-de-paule-pa00081608",
+      "latitude": 43.4331795254663,
+      "longitude": 6.7331123701674,
+      "name": {
+        "en": "Chapelle Saint-François-de-Paule",
+        "fr": "Chapelle Saint-François-de-Paule"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Aurélien is an important witness to the city's history.",
+        "fr": "Château Aurélien est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-chateau-aurelien-pa00081782",
+      "latitude": 43.443896104568,
+      "longitude": 6.74345526171038,
+      "name": {
+        "en": "Château Aurélien",
+        "fr": "Château Aurélien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081609",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-citadelle-pa00081609",
+      "latitude": 43.4356129608958,
+      "longitude": 6.74230267278849,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble cathédral Saint-Léonce is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble cathédral Saint-Léonce est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081606",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-ensemble-cathedral-saint-leonce-pa00081606",
+      "latitude": 43.4332354035059,
+      "longitude": 6.7368519673088,
+      "name": {
+        "en": "Ensemble cathédral Saint-Léonce",
+        "fr": "Ensemble cathédral Saint-Léonce"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Evéché is a distinctive architectural landmark in the city.",
+        "fr": "Evéché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081611",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-eveche-pa00081611",
+      "latitude": 43.4330317761021,
+      "longitude": 6.73729224680056,
+      "name": {
+        "en": "Evéché",
+        "fr": "Evéché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Quatre-Saisons is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Quatre-Saisons est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081612",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-hotel-des-quatre-saisons-pa00081612",
+      "latitude": 43.43233881828271,
+      "longitude": 6.73422105413858,
+      "name": {
+        "en": "Hôtel des Quatre-Saisons",
+        "fr": "Hôtel des Quatre-Saisons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Maison Maria is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Maison Maria est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081613",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-maison-dite-maison-maria-pa00081613",
+      "latitude": 43.4337325904524,
+      "longitude": 6.73592023808893,
+      "name": {
+        "en": "Maison dite Maison Maria",
+        "fr": "Maison dite Maison Maria"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081614",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-maison-pa00081614",
+      "latitude": 43.4326170880025,
+      "longitude": 6.73573428874958,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Mausolée de la Tourrache, situé au C.E.S. de la Tourrache is an important witness to the city's history.",
+        "fr": "Mausolée de la Tourrache, situé au C.E.S. de la Tourrache est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135628",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-mausolee-de-la-tourrache-situe-au-c-e-s-de-la-tourrache-pa00135628",
+      "latitude": 43.4291569466659,
+      "longitude": 6.73011633688822,
+      "name": {
+        "en": "Mausolée de la Tourrache, situé au C.E.S. de la Tourrache",
+        "fr": "Mausolée de la Tourrache, situé au C.E.S. de la Tourrache"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée de Missiri is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée de Missiri est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081616",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-mosquee-de-missiri-pa00081616",
+      "latitude": 43.4576565890017,
+      "longitude": 6.72699338815425,
+      "name": {
+        "en": "Mosquée de Missiri",
+        "fr": "Mosquée de Missiri"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Muraille romaine percée de niches is an important witness to the city's history.",
+        "fr": "Muraille romaine percée de niches est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081617",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-muraille-romaine-percee-de-niches-pa00081617",
+      "latitude": 43.4316966246047,
+      "longitude": 6.73473075418521,
+      "name": {
+        "en": "Muraille romaine percée de niches",
+        "fr": "Muraille romaine percée de niches"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0936",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "frejus-musee-archeologique-m0936",
+      "latitude": 43.433569,
+      "longitude": 6.736721,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'archéologie gallo-romaine du Var is one of the city's notable cultural landmarks.",
+        "fr": "musée d'archéologie gallo-romaine du Var compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1182",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "frejus-musee-d-archeologie-gallo-romaine-du-var-m1182",
+      "latitude": 43.43347344413099,
+      "longitude": 6.736489013507804,
+      "name": {
+        "en": "musée d'archéologie gallo-romaine du Var",
+        "fr": "musée d'archéologie gallo-romaine du Var"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des troupes de marine is one of the city's notable cultural landmarks.",
+        "fr": "musée des troupes de marine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M9008",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "frejus-musee-des-troupes-de-marine-m9008",
+      "latitude": 43.47210158572287,
+      "longitude": 6.721402172498896,
+      "name": {
+        "en": "musée des troupes de marine",
+        "fr": "musée des troupes de marine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Dorée is an important witness to the city's history.",
+        "fr": "Porte Dorée est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081619",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-porte-doree-pa00081619",
+      "latitude": 43.43106852444005,
+      "longitude": 6.73687881744904,
+      "name": {
+        "en": "Porte Dorée",
+        "fr": "Porte Dorée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre romain (restes de l'ancien) is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre romain (restes de l'ancien) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081623",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-theatre-romain-restes-de-l-ancien-pa00081623",
+      "latitude": 43.4369782866541,
+      "longitude": 6.73825727766206,
+      "name": {
+        "en": "Théâtre romain (restes de l'ancien)",
+        "fr": "Théâtre romain (restes de l'ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges antiques du site archéologique du Clos de la Tour is an important witness to the city's history.",
+        "fr": "Vestiges antiques du site archéologique du Clos de la Tour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081625",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-vestiges-antiques-du-site-archeologique-du-clos-de-la-tour-pa00081625",
+      "latitude": 43.4361349247632,
+      "longitude": 6.73608660910332,
+      "name": {
+        "en": "Vestiges antiques du site archéologique du Clos de la Tour",
+        "fr": "Vestiges antiques du site archéologique du Clos de la Tour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont des Esclapes is a distinctive architectural landmark in the city.",
+        "fr": "Pont des Esclapes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081618",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frejus-pont-des-esclapes-pa00081618",
+      "latitude": 43.4382252079131,
+      "longitude": 6.7061803737541,
+      "name": {
+        "en": "Pont des Esclapes",
+        "fr": "Pont des Esclapes"
+      }
+    }
+  ]
+}

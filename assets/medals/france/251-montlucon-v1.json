@@ -1,0 +1,204 @@
+{
+  "id": "montlucon-v1",
+  "cityId": "montlucon-fr",
+  "cityZoneId": "relation/110282",
+  "cityName": {
+    "en": "Montluçon",
+    "fr": "Montluçon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien maison du doyenné is a distinctive architectural landmark in the city.",
+        "fr": "Ancien maison du doyenné est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093173",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-ancien-maison-du-doyenne-pa00093173",
+      "latitude": 46.34041576350491,
+      "longitude": 2.60541925058163,
+      "name": {
+        "en": "Ancien maison du doyenné",
+        "fr": "Ancien maison du doyenné"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Bien Assis is an important witness to the city's history.",
+        "fr": "Château de Bien Assis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093167",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-chateau-de-bien-assis-pa00093167",
+      "latitude": 46.3434651966142,
+      "longitude": 2.57577977747466,
+      "name": {
+        "en": "Château de Bien Assis",
+        "fr": "Château de Bien Assis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des ducs de Bourbon is an important witness to the city's history.",
+        "fr": "Château des ducs de Bourbon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093166",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-chateau-des-ducs-de-bourbon-pa00093166",
+      "latitude": 46.3400590926387,
+      "longitude": 2.6035534366692,
+      "name": {
+        "en": "Château des ducs de Bourbon",
+        "fr": "Château des ducs de Bourbon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Etourneaux is an important witness to the city's history.",
+        "fr": "Château des Etourneaux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093168",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-chateau-des-etourneaux-pa00093168",
+      "latitude": 46.3467822496408,
+      "longitude": 2.58221037694792,
+      "name": {
+        "en": "Château des Etourneaux",
+        "fr": "Château des Etourneaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093169",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-eglise-notre-dame-pa00093169",
+      "latitude": 46.3407566692491,
+      "longitude": 2.60514985409984,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093170",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-eglise-saint-paul-pa00093170",
+      "latitude": 46.3465339724991,
+      "longitude": 2.59792770385485,
+      "name": {
+        "en": "Église Saint-Paul",
+        "fr": "Église Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093171",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-eglise-saint-pierre-pa00093171",
+      "latitude": 46.3411631116569,
+      "longitude": 2.60317740616135,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des musiques populaires (vieux château) is one of the city's notable cultural landmarks.",
+        "fr": "musée des musiques populaires (vieux château) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0104",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montlucon-musee-des-musiques-populaires-vieux-chateau-m0104",
+      "latitude": 46.341009,
+      "longitude": 2.605724,
+      "name": {
+        "en": "musée des musiques populaires (vieux château)",
+        "fr": "musée des musiques populaires (vieux château)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare de Montluçon is a distinctive architectural landmark in the city.",
+        "fr": "Gare de Montluçon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA03000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-gare-de-montlucon-pa03000046",
+      "latitude": 46.3333081573211,
+      "longitude": 2.60337372916871,
+      "name": {
+        "en": "Gare de Montluçon",
+        "fr": "Gare de Montluçon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Alexandre is a distinctive architectural landmark in the city.",
+        "fr": "Maison Alexandre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093179",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montlucon-maison-alexandre-pa00093179",
+      "latitude": 46.3389273033038,
+      "longitude": 2.60361745745591,
+      "name": {
+        "en": "Maison Alexandre",
+        "fr": "Maison Alexandre"
+      }
+    }
+  ]
+}

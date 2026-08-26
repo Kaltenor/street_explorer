@@ -1,0 +1,204 @@
+{
+  "id": "lens-v1",
+  "cityId": "lens-fr",
+  "cityZoneId": "relation/1175586",
+  "cityName": {
+    "en": "Lens",
+    "fr": "Lens"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien logement des Soeurs de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard is a distinctive architectural landmark in the city.",
+        "fr": "Ancien logement des Soeurs de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000089",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-ancien-logement-des-soeurs-de-la-cite-n-12-de-la-compagnie-des-mines-de-lens-dite-saint-edouard-pa62000089",
+      "latitude": 50.4422596306302,
+      "longitude": 2.81048153117795,
+      "name": {
+        "en": "Ancien logement des Soeurs de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard",
+        "fr": "Ancien logement des Soeurs de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciens grands bureaux de la compagnie des mines de Lens, aujourd'hui Faculté des Sciences Jean Perrin (Université d'Artois) is a distinctive architectural landmark in the city.",
+        "fr": "Anciens grands bureaux de la compagnie des mines de Lens, aujourd'hui Faculté des Sciences Jean Perrin (Université d'Artois) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000091",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-anciens-grands-bureaux-de-la-compagnie-des-mines-de-lens-aujourd-hui-faculte-des-sciences-jean-perrin-universite-d-artois-pa62000091",
+      "latitude": 50.4335403905597,
+      "longitude": 2.82413631940157,
+      "name": {
+        "en": "Anciens grands bureaux de la compagnie des mines de Lens, aujourd'hui Faculté des Sciences Jean Perrin (Université d'Artois)",
+        "fr": "Anciens grands bureaux de la compagnie des mines de Lens, aujourd'hui Faculté des Sciences Jean Perrin (Université d'Artois)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ecoles maternelles et primaire Louis Pasteur et ancien dispensaire de la cité n° 11 de la compagnie des mines de Lens, situés respectivement rue du Saint-Esprit, square Henri-Noguères et avenue de la Fosse 11 is a distinctive architectural landmark in the city.",
+        "fr": "Ecoles maternelles et primaire Louis Pasteur et ancien dispensaire de la cité n° 11 de la compagnie des mines de Lens, situés respectivement rue du Saint-Esprit, square Henri-Noguères et avenue de la Fosse 11 est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000086",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-ecoles-maternelles-et-primaire-louis-pasteur-et-ancien-dispensaire-de-la-cite-n-11-de-la-compagnie-des-mines-de-lens-situes-respectivement-rue-du-saint-esprit-square-henri-nogueres-et-avenue-de-la-fosse-11-pa62000086",
+      "latitude": 50.4410284458827,
+      "longitude": 2.7891666175792005,
+      "name": {
+        "en": "Ecoles maternelles et primaire Louis Pasteur et ancien dispensaire de la cité n° 11 de la compagnie des mines de Lens, situés respectivement rue du Saint-Esprit, square Henri-Noguères et avenue de la Fosse 11",
+        "fr": "Ecoles maternelles et primaire Louis Pasteur et ancien dispensaire de la cité n° 11 de la compagnie des mines de Lens, situés respectivement rue du Saint-Esprit, square Henri-Noguères et avenue de la Fosse 11"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Millénium is a distinctive architectural landmark in the city.",
+        "fr": "Église du Millénium est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000150",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-eglise-du-millenium-pa62000150",
+      "latitude": 50.4345363137896,
+      "longitude": 2.82032977126632,
+      "name": {
+        "en": "Église du Millénium",
+        "fr": "Église du Millénium"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la compagnie des mines de Lens, situé à l'intersection de la route de Béthune et de l'avenue de la fosse 12 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la compagnie des mines de Lens, situé à l'intersection de la route de Béthune et de l'avenue de la fosse 12 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA62000090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-monument-aux-morts-de-la-compagnie-des-mines-de-lens-situe-a-l-intersection-de-la-route-de-bethune-et-de-l-avenue-de-la-fosse-12-pa62000090",
+      "latitude": 50.4384912421871,
+      "longitude": 2.81197073977011,
+      "name": {
+        "en": "Monument aux morts de la compagnie des mines de Lens, situé à l'intersection de la route de Béthune et de l'avenue de la fosse 12",
+        "fr": "Monument aux morts de la compagnie des mines de Lens, situé à l'intersection de la route de Béthune et de l'avenue de la fosse 12"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la première guerre mondiale is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la première guerre mondiale est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA62000092",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-monument-aux-morts-de-la-premiere-guerre-mondiale-pa62000092",
+      "latitude": 50.4293071360598,
+      "longitude": 2.83729276354929,
+      "name": {
+        "en": "Monument aux morts de la première guerre mondiale",
+        "fr": "Monument aux morts de la première guerre mondiale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Edouard de la cité n° 12 de la compagnie de mines de Lens is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Edouard de la cité n° 12 de la compagnie de mines de Lens est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000084",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-eglise-saint-edouard-de-la-cite-n-12-de-la-compagnie-de-mines-de-lens-pa62000084",
+      "latitude": 50.4425428135701,
+      "longitude": 2.81035163774875,
+      "name": {
+        "en": "Église Saint-Edouard de la cité n° 12 de la compagnie de mines de Lens",
+        "fr": "Église Saint-Edouard de la cité n° 12 de la compagnie de mines de Lens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble des bâtiments formant la maison syndicale des mineurs is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble des bâtiments formant la maison syndicale des mineurs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-ensemble-des-batiments-formant-la-maison-syndicale-des-mineurs-pa62000003",
+      "latitude": 50.4338585688141,
+      "longitude": 2.83216046144567,
+      "name": {
+        "en": "Ensemble des bâtiments formant la maison syndicale des mineurs",
+        "fr": "Ensemble des bâtiments formant la maison syndicale des mineurs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare is a distinctive architectural landmark in the city.",
+        "fr": "Gare est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108328",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-gare-pa00108328",
+      "latitude": 50.4268577802077,
+      "longitude": 2.82815187409915,
+      "name": {
+        "en": "Gare",
+        "fr": "Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Groupe scolaire Jean Macé, ancienne habitation du directeur des écoles et ancien patronage de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard, situés parvis de l'église Saint-Edouard et grand chemin de Loos de part et d'autre de l'église Saint-Edouard is a distinctive architectural landmark in the city.",
+        "fr": "Groupe scolaire Jean Macé, ancienne habitation du directeur des écoles et ancien patronage de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard, situés parvis de l'église Saint-Edouard et grand chemin de Loos de part et d'autre de l'église Saint-Edouard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000088",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lens-groupe-scolaire-jean-mace-ancienne-habitation-du-directeur-des-ecoles-et-ancien-patronage-de-la-cite-n-12-de-la-compagnie-des-mines-de-lens-dite-saint-edouard-situes-parvis-de-l-eglise-saint-edouard-et-grand-chemin-de-loos-de-part-et-d-autre-de-l-eglise-saint-edouard-pa62000088",
+      "latitude": 50.4428345169369,
+      "longitude": 2.80960336965646,
+      "name": {
+        "en": "Groupe scolaire Jean Macé, ancienne habitation du directeur des écoles et ancien patronage de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard, situés parvis de l'église Saint-Edouard et grand chemin de Loos de part et d'autre de l'église Saint-Edouard",
+        "fr": "Groupe scolaire Jean Macé, ancienne habitation du directeur des écoles et ancien patronage de la cité n° 12 de la compagnie des mines de Lens dite Saint-Edouard, situés parvis de l'église Saint-Edouard et grand chemin de Loos de part et d'autre de l'église Saint-Edouard"
+      }
+    }
+  ]
+}

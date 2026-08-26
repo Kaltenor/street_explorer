@@ -1,0 +1,204 @@
+{
+  "id": "yerres-v1",
+  "cityId": "yerres-fr",
+  "cityZoneId": "relation/88968",
+  "cityName": {
+    "en": "Yerres",
+    "fr": "Yerres"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Notre-Dame is an important witness to the city's history.",
+        "fr": "Abbaye Notre-Dame est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "yerres-abbaye-notre-dame-pa00088048",
+      "latitude": 48.7086300174629,
+      "longitude": 2.49864801056414,
+      "name": {
+        "en": "Abbaye Notre-Dame",
+        "fr": "Abbaye Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château d'Yerres is an important witness to the city's history.",
+        "fr": "Ancien château d'Yerres est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "yerres-ancien-chateau-d-yerres-pa00088049",
+      "latitude": 48.7155145015938,
+      "longitude": 2.49082431012163,
+      "name": {
+        "en": "Ancien château d'Yerres",
+        "fr": "Ancien château d'Yerres"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Yerres, France",
+        "fr": "château à Yerres (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q22924291",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-chateau-de-bude-q22924291",
+      "latitude": 48.71581,
+      "longitude": 2.49058,
+      "name": {
+        "en": "château de Budé",
+        "fr": "château de Budé"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Grange is an important witness to the city's history.",
+        "fr": "Château de la Grange est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088050",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "yerres-chateau-de-la-grange-pa00088050",
+      "latitude": 48.72929180255941,
+      "longitude": 2.49197688569785,
+      "name": {
+        "en": "Château de la Grange",
+        "fr": "Château de la Grange"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Yerres, France",
+        "fr": "édifice religieux catholique à Yerres, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581807",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-eglise-saint-honest-q3581807",
+      "latitude": 48.71617,
+      "longitude": 2.49144,
+      "name": {
+        "en": "église Saint-Honest",
+        "fr": "église Saint-Honest"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine dite Fontaine Budé is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine dite Fontaine Budé compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "yerres-fontaine-dite-fontaine-bude-pa00088051",
+      "latitude": 48.7146495970426,
+      "longitude": 2.4917708653813,
+      "name": {
+        "en": "Fontaine dite Fontaine Budé",
+        "fr": "Fontaine dite Fontaine Budé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136083219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-monument-aux-morts-de-yerres-q136083219",
+      "latitude": 48.716277,
+      "longitude": 2.491241,
+      "name": {
+        "en": "monument aux morts de Yerres",
+        "fr": "monument aux morts de Yerres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "propriété Caillebotte is a distinctive architectural landmark in the city.",
+        "fr": "domaine à Yerres (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q3407582",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-propriete-caillebotte-q3407582",
+      "latitude": 48.713716,
+      "longitude": 2.488744,
+      "name": {
+        "en": "propriété Caillebotte",
+        "fr": "propriété Caillebotte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "train station (Paris RER)",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2652954",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "yerres-yerres-q2652954",
+      "latitude": 48.70639,
+      "longitude": 2.48361,
+      "name": {
+        "en": "Yerres",
+        "fr": "Yerres"
+      }
+    }
+  ]
+}

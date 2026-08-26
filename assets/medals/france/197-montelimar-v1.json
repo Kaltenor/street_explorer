@@ -1,0 +1,204 @@
+{
+  "id": "montelimar-v1",
+  "cityId": "montelimar-fr",
+  "cityZoneId": "relation/70292",
+  "cityName": {
+    "en": "Montélimar",
+    "fr": "Montélimar"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Drôme, in France",
+        "fr": "abbaye située dans la Drôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15055996",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-abbaye-de-maubec-q15055996",
+      "latitude": 44.53306568,
+      "longitude": 4.7667527,
+      "name": {
+        "en": "abbaye de Maubec",
+        "fr": "abbaye de Maubec"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Serre-de-Parc is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2970686",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-chateau-de-serre-de-parc-q2970686",
+      "latitude": 44.589367,
+      "longitude": 4.754274,
+      "name": {
+        "en": "château de Serre-de-Parc",
+        "fr": "château de Serre-de-Parc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Adhémar ou des Papes is an important witness to the city's history.",
+        "fr": "Château des Adhémar ou des Papes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116988",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montelimar-chateau-des-adhemar-ou-des-papes-pa00116988",
+      "latitude": 44.5589000123295,
+      "longitude": 4.75418733222135,
+      "name": {
+        "en": "Château des Adhémar ou des Papes",
+        "fr": "Château des Adhémar ou des Papes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097102",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-montelimar-q3097102",
+      "latitude": 44.559166666,
+      "longitude": 4.744722222,
+      "name": {
+        "en": "Montélimar",
+        "fr": "Montélimar"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du château des Adhémar is one of the city's notable cultural landmarks.",
+        "fr": "musée du château des Adhémar compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0984",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montelimar-musee-du-chateau-des-adhemar-m0984",
+      "latitude": 44.556294,
+      "longitude": 4.750056,
+      "name": {
+        "en": "musée du château des Adhémar",
+        "fr": "musée du château des Adhémar"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q20723536",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-musee-europeen-de-l-aviation-de-chasse-q20723536",
+      "latitude": 44.581747903,
+      "longitude": 4.735481997,
+      "name": {
+        "en": "musée européen de l'aviation de chasse",
+        "fr": "musée européen de l'aviation de chasse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q2047273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-palais-des-bonbons-et-du-nougat-q2047273",
+      "latitude": 44.579644,
+      "longitude": 4.754077,
+      "name": {
+        "en": "palais des bonbons et du nougat",
+        "fr": "palais des bonbons et du nougat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Drôme, in France",
+        "fr": "temple protestant situé dans la Drôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56071402",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-temple-protestant-de-montelimar-q56071402",
+      "latitude": 44.55737,
+      "longitude": 4.74853,
+      "name": {
+        "en": "temple protestant de Montélimar",
+        "fr": "temple protestant de Montélimar"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Montélimar, France",
+        "fr": "salle de spectacles à Montélimar, France"
+      },
+      "externalIdentity": {
+        "id": "Q46104778",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montelimar-theatre-communautaire-emile-loubet-q46104778",
+      "latitude": 44.55658,
+      "longitude": 4.74779,
+      "name": {
+        "en": "théâtre communautaire Emile Loubet",
+        "fr": "théâtre communautaire Emile Loubet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Narbonne is an important witness to the city's history.",
+        "fr": "Tour de Narbonne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116993",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montelimar-tour-de-narbonne-pa00116993",
+      "latitude": 44.5597237967258,
+      "longitude": 4.75473729510771,
+      "name": {
+        "en": "Tour de Narbonne",
+        "fr": "Tour de Narbonne"
+      }
+    }
+  ]
+}

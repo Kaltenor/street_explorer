@@ -1,0 +1,204 @@
+{
+  "id": "athis-mons-v1",
+  "cityId": "athis-mons-fr",
+  "cityZoneId": "relation/29366",
+  "cityName": {
+    "en": "Athis-Mons",
+    "fr": "Athis-Mons"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Athis-Mons, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2199402",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-athis-mons-q2199402",
+      "latitude": 48.71222,
+      "longitude": 2.40306,
+      "name": {
+        "en": "Athis-Mons",
+        "fr": "Athis-Mons"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'Athis is an important witness to the city's history.",
+        "fr": "Château d'Athis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087806",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "athis-mons-chateau-d-athis-pa00087806",
+      "latitude": 48.7087153217816,
+      "longitude": 2.39063530687332,
+      "name": {
+        "en": "Château d'Athis",
+        "fr": "Château d'Athis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'eau is an important witness to the city's history.",
+        "fr": "château d'eau situé à Athis-Mons, en France"
+      },
+      "externalIdentity": {
+        "id": "Q123164066",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-chateau-d-eau-q123164066",
+      "latitude": 48.69884,
+      "longitude": 2.37227,
+      "name": {
+        "en": "château d'eau",
+        "fr": "château d'eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Ozonville is an important witness to the city's history.",
+        "fr": "château français situé à Athis-Mons"
+      },
+      "externalIdentity": {
+        "id": "Q78652279",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-chateau-d-ozonville-q78652279",
+      "latitude": 48.70729,
+      "longitude": 2.38685,
+      "name": {
+        "en": "château d'Ozonville",
+        "fr": "château d'Ozonville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Essonne, in France",
+        "fr": "église située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385331",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-eglise-notre-dame-de-la-voie-d-athis-mons-q60385331",
+      "latitude": 48.70039,
+      "longitude": 2.38732,
+      "name": {
+        "en": "église Notre-Dame-de-la-Voie d'Athis-Mons",
+        "fr": "église Notre-Dame-de-la-Voie d'Athis-Mons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087807",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "athis-mons-eglise-pa00087807",
+      "latitude": 48.7083779586992,
+      "longitude": 2.38997727034122,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Athis-Mons, France",
+        "fr": "hôtel de ville dans l'Essonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q63323652",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-hotel-de-ville-d-athis-mons-q63323652",
+      "latitude": 48.70735,
+      "longitude": 2.38895,
+      "name": {
+        "en": "hôtel de ville d'Athis-Mons",
+        "fr": "hôtel de ville d'Athis-Mons"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts situé à Athis-Mons, en France"
+      },
+      "externalIdentity": {
+        "id": "Q123164690",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-monument-aux-morts-d-athis-mons-q123164690",
+      "latitude": 48.71155,
+      "longitude": 2.38785,
+      "name": {
+        "en": "monument aux morts d'Athis-Mons",
+        "fr": "monument aux morts d'Athis-Mons"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "aviation museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329126",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-musee-delta-q3329126",
+      "latitude": 48.7162,
+      "longitude": 2.37142,
+      "name": {
+        "en": "musée Delta",
+        "fr": "musée Delta"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tram stop in d'Île-de-France",
+        "fr": "station de la ligne T7 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28746039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "athis-mons-porte-de-l-essonne-q28746039",
+      "latitude": 48.714166666,
+      "longitude": 2.371666666,
+      "name": {
+        "en": "Porte de l'Essonne",
+        "fr": "Porte de l'Essonne"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "tourcoing-v1",
+  "cityId": "tourcoing-fr",
+  "cityZoneId": "relation/59551",
+  "cityName": {
+    "en": "Tourcoing",
+    "fr": "Tourcoing"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Palais Vaissier is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Palais Vaissier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107841",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-ancien-palais-vaissier-pa00107841",
+      "latitude": 50.695816216327,
+      "longitude": 3.14406949498839,
+      "name": {
+        "en": "Ancien Palais Vaissier",
+        "fr": "Ancien Palais Vaissier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien tissage Louis Lepoutre is a distinctive architectural landmark in the city.",
+        "fr": "Ancien tissage Louis Lepoutre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000063",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-ancien-tissage-louis-lepoutre-pa59000063",
+      "latitude": 50.736225167363244,
+      "longitude": 3.1768510281773317,
+      "name": {
+        "en": "Ancien tissage Louis Lepoutre",
+        "fr": "Ancien tissage Louis Lepoutre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Banque Joire is a distinctive architectural landmark in the city.",
+        "fr": "Banque Joire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-banque-joire-pa59000039",
+      "latitude": 50.72209566105127,
+      "longitude": 3.1554664687845886,
+      "name": {
+        "en": "Banque Joire",
+        "fr": "Banque Joire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bourloire La Concorde is a distinctive architectural landmark in the city.",
+        "fr": "Bourloire La Concorde est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-bourloire-la-concorde-pa59000102",
+      "latitude": 50.7120559701964,
+      "longitude": 3.1686377047611,
+      "name": {
+        "en": "Bourloire La Concorde",
+        "fr": "Bourloire La Concorde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bourloire La Nouvelle Bourloire is a distinctive architectural landmark in the city.",
+        "fr": "Bourloire La Nouvelle Bourloire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-bourloire-la-nouvelle-bourloire-pa59000098",
+      "latitude": 50.7179154301923,
+      "longitude": 3.14542377951758,
+      "name": {
+        "en": "Bourloire La Nouvelle Bourloire",
+        "fr": "Bourloire La Nouvelle Bourloire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Deux pavillons de type Metropole de Jean Prouvé is a distinctive architectural landmark in the city.",
+        "fr": "Deux pavillons de type Metropole de Jean Prouvé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135490",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-deux-pavillons-de-type-metropole-de-jean-prouve-pa00135490",
+      "latitude": 50.7342390938083,
+      "longitude": 3.14269001409933,
+      "name": {
+        "en": "Deux pavillons de type Metropole de Jean Prouvé",
+        "fr": "Deux pavillons de type Metropole de Jean Prouvé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Coeur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Coeur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000204",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-eglise-du-sacre-coeur-pa59000204",
+      "latitude": 50.7148600883714,
+      "longitude": 3.1579873658925477,
+      "name": {
+        "en": "Église du Sacré-Coeur",
+        "fr": "Église du Sacré-Coeur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-eglise-saint-christophe-de-tourcoing-q3581211",
+      "latitude": 50.7221,
+      "longitude": 3.15989,
+      "name": {
+        "en": "église Saint-Christophe de Tourcoing",
+        "fr": "église Saint-Christophe de Tourcoing"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15713503",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-eglise-saint-louis-de-tourcoing-q15713503",
+      "latitude": 50.713194444,
+      "longitude": 3.167916666,
+      "name": {
+        "en": "église Saint-Louis de Tourcoing",
+        "fr": "église Saint-Louis de Tourcoing"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden in France",
+        "fr": "jardin botanique en France"
+      },
+      "externalIdentity": {
+        "id": "Q6159736",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-jardin-botanique-de-tourcoing-q6159736",
+      "latitude": 50.724457539,
+      "longitude": 3.168106223,
+      "name": {
+        "en": "jardin botanique de Tourcoing",
+        "fr": "jardin botanique de Tourcoing"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monuments aux morts dit Monument de la Victoire is a notable work of public art and local memory.",
+        "fr": "Monuments aux morts dit Monument de la Victoire est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA59000143",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-monuments-aux-morts-dit-monument-de-la-victoire-pa59000143",
+      "latitude": 50.7175280348596,
+      "longitude": 3.1582857950527905,
+      "name": {
+        "en": "Monuments aux morts dit Monument de la Victoire",
+        "fr": "Monuments aux morts dit Monument de la Victoire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing is one of the city's notable cultural landmarks.",
+        "fr": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0637",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tourcoing-muba-eugene-leroy-tourcoing-musee-des-beaux-arts-eugene-leroy-de-tourcoing-m0637",
+      "latitude": 50.724594,
+      "longitude": 3.162878,
+      "name": {
+        "en": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing",
+        "fr": "Muba Eugène Leroy Tourcoing / musée des beaux-arts Eugène Leroy de Tourcoing"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3330321",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tourcoing-musee-du-5-juin-1944-q3330321",
+      "latitude": 50.712,
+      "longitude": 3.15488,
+      "name": {
+        "en": "musée du 5 juin 1944",
+        "fr": "musée du 5 juin 1944"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Anges is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Anges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-eglise-notre-dame-des-anges-pa00107836",
+      "latitude": 50.7239548281032,
+      "longitude": 3.15519788444896,
+      "name": {
+        "en": "Église Notre-Dame-des-Anges",
+        "fr": "Église Notre-Dame-des-Anges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare is a distinctive architectural landmark in the city.",
+        "fr": "Gare est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107838",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-gare-pa00107838",
+      "latitude": 50.716760257897704,
+      "longitude": 3.16815376726877,
+      "name": {
+        "en": "Gare",
+        "fr": "Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107840",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-hotel-de-ville-pa00107840",
+      "latitude": 50.72396455879541,
+      "longitude": 3.16101458609175,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel Pollet-De Gottal is a distinctive architectural landmark in the city.",
+        "fr": "hôtel Pollet-De Gottal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000208",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-hotel-pollet-de-gottal-pa59000208",
+      "latitude": 50.72273293909714,
+      "longitude": 3.1520517432549124,
+      "name": {
+        "en": "hôtel Pollet-De Gottal",
+        "fr": "hôtel Pollet-De Gottal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison d'habitation Vendeveegaete is a distinctive architectural landmark in the city.",
+        "fr": "Maison d'habitation Vendeveegaete est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000072",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-maison-d-habitation-vendeveegaete-pa59000072",
+      "latitude": 50.7266624763726,
+      "longitude": 3.1645701871291703,
+      "name": {
+        "en": "Maison d'habitation Vendeveegaete",
+        "fr": "Maison d'habitation Vendeveegaete"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du Broutteux is a distinctive architectural landmark in the city.",
+        "fr": "Maison du Broutteux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000218",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-maison-du-broutteux-pa59000218",
+      "latitude": 50.71957993132882,
+      "longitude": 3.154360540790511,
+      "name": {
+        "en": "Maison du Broutteux",
+        "fr": "Maison du Broutteux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du collectionneur is a distinctive architectural landmark in the city.",
+        "fr": "Maison du collectionneur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000212",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tourcoing-maison-du-collectionneur-pa59000212",
+      "latitude": 50.72293061240253,
+      "longitude": 3.1613398345392687,
+      "name": {
+        "en": "Maison du collectionneur",
+        "fr": "Maison du collectionneur"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "arras-v1",
+  "cityId": "arras-fr",
+  "cityZoneId": "relation/1121015",
+  "cityName": {
+    "en": "Arras",
+    "fr": "Arras"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye d'Henin-Liétard is an important witness to the city's history.",
+        "fr": "Abbaye d'Henin-Liétard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107960",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-abbaye-d-henin-lietard-pa00107960",
+      "latitude": 50.2887317900805,
+      "longitude": 2.76689124199163,
+      "name": {
+        "en": "Abbaye d'Henin-Liétard",
+        "fr": "Abbaye d'Henin-Liétard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Waast is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Waast est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107962",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-ancien-abbaye-de-saint-waast-pa00107962",
+      "latitude": 50.2922124664196,
+      "longitude": 2.7738951636030604,
+      "name": {
+        "en": "Ancien abbaye de Saint-Waast",
+        "fr": "Ancien abbaye de Saint-Waast"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye du Mont-Saint-Eloi is an important witness to the city's history.",
+        "fr": "Ancien abbaye du Mont-Saint-Eloi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107961",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-ancien-abbaye-du-mont-saint-eloi-pa00107961",
+      "latitude": 50.2915657825194,
+      "longitude": 2.76959482114417,
+      "name": {
+        "en": "Ancien abbaye du Mont-Saint-Eloi",
+        "fr": "Ancien abbaye du Mont-Saint-Eloi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien hôtel de Beauffort, aujourd'hui collège Jehan Bodel is an important witness to the city's history.",
+        "fr": "Ancien hôtel de Beauffort, aujourd'hui collège Jehan Bodel est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000132",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-ancien-hotel-de-beauffort-aujourd-hui-college-jehan-bodel-pa62000132",
+      "latitude": 50.2881918229412,
+      "longitude": 2.7695952613907804,
+      "name": {
+        "en": "Ancien hôtel de Beauffort, aujourd'hui collège Jehan Bodel",
+        "fr": "Ancien hôtel de Beauffort, aujourd'hui collège Jehan Bodel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais des Etats d'Artois is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais des Etats d'Artois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107982",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-ancien-palais-des-etats-d-artois-pa00107982",
+      "latitude": 50.2901549198099,
+      "longitude": 2.7763514965891,
+      "name": {
+        "en": "Ancien palais des Etats d'Artois",
+        "fr": "Ancien palais des Etats d'Artois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107963",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-beffroi-pa00107963",
+      "latitude": 50.2911611606936,
+      "longitude": 2.77697148365763,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame et Saint-Vaast is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame et Saint-Vaast est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107964",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-cathedrale-notre-dame-et-saint-vaast-pa00107964",
+      "latitude": 50.2929484522558,
+      "longitude": 2.77493367102448,
+      "name": {
+        "en": "Cathédrale Notre-Dame et Saint-Vaast",
+        "fr": "Cathédrale Notre-Dame et Saint-Vaast"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ensemble théâtral is one of the city's notable cultural landmarks.",
+        "fr": "Ensemble théâtral compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107986",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-ensemble-theatral-pa00107986",
+      "latitude": 50.2902632585187,
+      "longitude": 2.77390409647731,
+      "name": {
+        "en": "Ensemble théâtral",
+        "fr": "Ensemble théâtral"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107978",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arras-hotel-de-ville-pa00107978",
+      "latitude": 50.291192400297845,
+      "longitude": 2.7773290617044077,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0640",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "arras-musee-des-beaux-arts-m0640",
+      "latitude": 50.291759,
+      "longitude": 2.772987,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    }
+  ]
+}

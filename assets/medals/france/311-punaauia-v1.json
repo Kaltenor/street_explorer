@@ -1,0 +1,204 @@
+{
+  "id": "punaauia-v1",
+  "cityId": "punaauia-fr",
+  "cityZoneId": "relation/6093629",
+  "cityName": {
+    "en": "Punaauia",
+    "fr": "Punaauia"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "Diadème est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31929401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-diademe-q31929401",
+      "latitude": -17.633333333,
+      "longitude": -149.516666666,
+      "name": {
+        "en": "Diadème",
+        "fr": "Diadème"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Polynésie française, in France",
+        "fr": "église située en Polynésie française, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38570279",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-eglise-saint-etienne-de-punaauia-q38570279",
+      "latitude": -17.6158,
+      "longitude": -149.6155,
+      "name": {
+        "en": "église Saint-Étienne de Punaauia",
+        "fr": "église Saint-Étienne de Punaauia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "mont Aorai est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3321660",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-mont-aorai-q3321660",
+      "latitude": -17.614313,
+      "longitude": -149.495103,
+      "name": {
+        "en": "mont Aorai",
+        "fr": "mont Aorai"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "mont Mahutaa est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31745607",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-mont-mahutaa-q31745607",
+      "latitude": -17.6575,
+      "longitude": -149.4992,
+      "name": {
+        "en": "mont Mahutaa",
+        "fr": "mont Mahutaa"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "ethnographic museum in Puna'auia, Tahiti",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q1955713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-musee-de-tahiti-et-des-iles-q1955713",
+      "latitude": -17.6323,
+      "longitude": -149.614,
+      "name": {
+        "en": "musée de Tahiti et des Îles",
+        "fr": "musée de Tahiti et des Îles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain on the island of Tahiti",
+        "fr": "montagne française"
+      },
+      "externalIdentity": {
+        "id": "Q512465",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-mont-orohena-q512465",
+      "latitude": -17.623055555,
+      "longitude": -149.476944444,
+      "name": {
+        "en": "mont Orohena",
+        "fr": "mont Orohena"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sound in France",
+        "fr": "passe de Taipari est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31930399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-passe-de-taipari-q31930399",
+      "latitude": -17.6,
+      "longitude": -149.6,
+      "name": {
+        "en": "passe de Taipari",
+        "fr": "passe de Taipari"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Plateau de Tamanu is a distinctive architectural landmark in the city.",
+        "fr": "Plateau de Tamanu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q49174811",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-plateau-de-tamanu-q49174811",
+      "latitude": -17.616666666,
+      "longitude": -149.533333333,
+      "name": {
+        "en": "Plateau de Tamanu",
+        "fr": "Plateau de Tamanu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Polynésie française, France",
+        "fr": "commune de l'île de Tahiti dans l’archipel de la Société, Polynésie française"
+      },
+      "externalIdentity": {
+        "id": "Q1969812",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-punaauia-q1969812",
+      "latitude": -17.600555555,
+      "longitude": -149.609444444,
+      "name": {
+        "en": "Punaauia",
+        "fr": "Punaauia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French university in Tahiti",
+        "fr": "université française à Tahiti"
+      },
+      "externalIdentity": {
+        "id": "Q1695245",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "punaauia-universite-de-la-polynesie-francaise-q1695245",
+      "latitude": -17.576944444,
+      "longitude": -149.609166666,
+      "name": {
+        "en": "université de la Polynésie française",
+        "fr": "université de la Polynésie française"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "aix-les-bains-v1",
+  "cityId": "aix-les-bains-fr",
+  "cityZoneId": "relation/74287",
+  "cityName": {
+    "en": "Aix-les-Bains",
+    "fr": "Aix-les-Bains"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel Excelsior is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel Excelsior est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118168",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-ancien-hotel-excelsior-pa00118168",
+      "latitude": 45.686272887568556,
+      "longitude": 5.917958385296712,
+      "name": {
+        "en": "Ancien Hôtel Excelsior",
+        "fr": "Ancien Hôtel Excelsior"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel Royal ou Palace Royal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel Royal ou Palace Royal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118169",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-ancien-hotel-royal-ou-palace-royal-pa00118169",
+      "latitude": 45.687179288808736,
+      "longitude": 5.918903966715803,
+      "name": {
+        "en": "Ancien Hôtel Royal ou Palace Royal",
+        "fr": "Ancien Hôtel Royal ou Palace Royal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Arc de Campanus is a distinctive architectural landmark in the city.",
+        "fr": "Arc de Campanus est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118163",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-arc-de-campanus-pa00118163",
+      "latitude": 45.6890640513816,
+      "longitude": 5.91544726739472,
+      "name": {
+        "en": "Arc de Campanus",
+        "fr": "Arc de Campanus"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Roche du Roi is an important witness to the city's history.",
+        "fr": "Château de la Roche du Roi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118165",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-chateau-de-la-roche-du-roi-pa00118165",
+      "latitude": 45.6807999393834,
+      "longitude": 5.91234580442231,
+      "name": {
+        "en": "Château de la Roche du Roi",
+        "fr": "Château de la Roche du Roi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de ville (ancien château des Marquis d'Aix) is an important witness to the city's history.",
+        "fr": "Hôtel de ville (ancien château des Marquis d'Aix) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118171",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-hotel-de-ville-ancien-chateau-des-marquis-d-aix-pa00118171",
+      "latitude": 45.68855387917405,
+      "longitude": 5.914778627839927,
+      "name": {
+        "en": "Hôtel de ville (ancien château des Marquis d'Aix)",
+        "fr": "Hôtel de ville (ancien château des Marquis d'Aix)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1044",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-les-bains-musee-archeologique-m1044",
+      "latitude": 45.68863382600499,
+      "longitude": 5.915600925206359,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du docteur Faure is one of the city's notable cultural landmarks.",
+        "fr": "musée du docteur Faure compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1045",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-les-bains-musee-du-docteur-faure-m1045",
+      "latitude": 45.692157,
+      "longitude": 5.915578,
+      "name": {
+        "en": "musée du docteur Faure",
+        "fr": "musée du docteur Faure"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc thermal is one of the city's notable green or natural landmarks.",
+        "fr": "Parc thermal compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA73000014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-parc-thermal-pa73000014",
+      "latitude": 45.6869393979712,
+      "longitude": 5.91521516318095,
+      "name": {
+        "en": "Parc thermal",
+        "fr": "Parc thermal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple romain dit de Diane is a distinctive architectural landmark in the city.",
+        "fr": "Temple romain dit de Diane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118173",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-temple-romain-dit-de-diane-pa00118173",
+      "latitude": 45.6886435456317,
+      "longitude": 5.91466293528119,
+      "name": {
+        "en": "Temple romain dit de Diane",
+        "fr": "Temple romain dit de Diane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges des Thermes romains dans les sous-sols de la maison dite de Lamartine is an important witness to the city's history.",
+        "fr": "Vestiges des Thermes romains dans les sous-sols de la maison dite de Lamartine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118175",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-les-bains-vestiges-des-thermes-romains-dans-les-sous-sols-de-la-maison-dite-de-lamartine-pa00118175",
+      "latitude": 45.688688154633404,
+      "longitude": 5.916496397693078,
+      "name": {
+        "en": "Vestiges des Thermes romains dans les sous-sols de la maison dite de Lamartine",
+        "fr": "Vestiges des Thermes romains dans les sous-sols de la maison dite de Lamartine"
+      }
+    }
+  ]
+}

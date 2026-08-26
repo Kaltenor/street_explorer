@@ -1,0 +1,204 @@
+{
+  "id": "sevremoine-v1",
+  "cityId": "sevremoine-fr",
+  "cityZoneId": "relation/295509",
+  "cityName": {
+    "en": "Sèvremoine",
+    "fr": "Sèvremoine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Macaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Macaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/209149788",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "sevremoine-eglise-saint-macaire-way-209149788",
+      "latitude": 47.1243416,
+      "longitude": -0.9946056,
+      "name": {
+        "en": "Église Saint-Macaire",
+        "fr": "Église Saint-Macaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "menhir in Saint-Macaire-en-Mauges, France",
+        "fr": "menhir de Saint-Macaire-en-Mauges, France"
+      },
+      "externalIdentity": {
+        "id": "Q3115003",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevremoine-grande-pierre-levee-q3115003",
+      "latitude": 47.1042,
+      "longitude": -1.03579,
+      "name": {
+        "en": "grande pierre Levée",
+        "fr": "grande pierre Levée"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin Partagé du Grand cèdre is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin Partagé du Grand cèdre compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1076502430",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "sevremoine-jardin-partage-du-grand-cedre-way-1076502430",
+      "latitude": 47.1243556,
+      "longitude": -0.9973042,
+      "name": {
+        "en": "Jardin Partagé du Grand cèdre",
+        "fr": "Jardin Partagé du Grand cèdre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison des Arts is a distinctive architectural landmark in the city.",
+        "fr": "Maison des Arts est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/9381427895",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "sevremoine-maison-des-arts-node-9381427895",
+      "latitude": 47.1231757,
+      "longitude": -0.9937571,
+      "name": {
+        "en": "Maison des Arts",
+        "fr": "Maison des Arts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché is a distinctive architectural landmark in the city.",
+        "fr": "Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/8544943472",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "sevremoine-marche-node-8544943472",
+      "latitude": 47.1250263,
+      "longitude": -0.9949549,
+      "name": {
+        "en": "Marché",
+        "fr": "Marché"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Girarderie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Girarderie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1006859829",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "sevremoine-parc-de-la-girarderie-way-1006859829",
+      "latitude": 47.1256362,
+      "longitude": -0.9810765,
+      "name": {
+        "en": "Parc de la Girarderie",
+        "fr": "Parc de la Girarderie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc du Roi René is one of the city's notable green or natural landmarks.",
+        "fr": "Parc du Roi René compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1076502428",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "sevremoine-parc-du-roi-rene-way-1076502428",
+      "latitude": 47.1230048,
+      "longitude": -0.9968202,
+      "name": {
+        "en": "Parc du Roi René",
+        "fr": "Parc du Roi René"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Marie-Claire Coiffard is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Marie-Claire Coiffard compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1076502451",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "sevremoine-parc-marie-claire-coiffard-way-1076502451",
+      "latitude": 47.1155081,
+      "longitude": -0.997468,
+      "name": {
+        "en": "Parc Marie-Claire Coiffard",
+        "fr": "Parc Marie-Claire Coiffard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Maine-et-Loire, France",
+        "fr": "ancienne commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q752503",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevremoine-saint-macaire-en-mauges-q752503",
+      "latitude": 47.123888888,
+      "longitude": -0.991666666,
+      "name": {
+        "en": "Saint-Macaire-en-Mauges",
+        "fr": "Saint-Macaire-en-Mauges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Maine-et-Loire, France",
+        "fr": "commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q21027263",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sevremoine-sevremoine-q21027263",
+      "latitude": 47.1231,
+      "longitude": -0.9911,
+      "name": {
+        "en": "Sèvremoine",
+        "fr": "Sèvremoine"
+      }
+    }
+  ]
+}

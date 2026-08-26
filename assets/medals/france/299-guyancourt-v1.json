@@ -1,0 +1,204 @@
+{
+  "id": "guyancourt-v1",
+  "cityId": "guyancourt-fr",
+  "cityZoneId": "relation/30272",
+  "cityName": {
+    "en": "Guyancourt",
+    "fr": "Guyancourt"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "fortress",
+        "fr": "fort type Séré de Rivières"
+      },
+      "externalIdentity": {
+        "id": "Q288612",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-batterie-de-bouviers-q288612",
+      "latitude": 48.783584,
+      "longitude": 2.059764,
+      "name": {
+        "en": "batterie de Bouviers",
+        "fr": "batterie de Bouviers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584627",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-eglise-saint-victor-de-guyancourt-q3584627",
+      "latitude": 48.7714,
+      "longitude": 2.07028,
+      "name": {
+        "en": "église Saint-Victor de Guyancourt",
+        "fr": "église Saint-Victor de Guyancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "golf in Guyancourt",
+        "fr": "golf à Guyancourt"
+      },
+      "externalIdentity": {
+        "id": "Q3058615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-golf-national-q3058615",
+      "latitude": 48.755197,
+      "longitude": 2.075515,
+      "name": {
+        "en": "Golf national",
+        "fr": "Golf national"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q237303",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-guyancourt-q237303",
+      "latitude": 48.770555555,
+      "longitude": 2.073055555,
+      "name": {
+        "en": "Guyancourt",
+        "fr": "Guyancourt"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin des Gogottes compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3162544",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-jardin-des-gogottes-q3162544",
+      "latitude": 48.766,
+      "longitude": 2.07677,
+      "name": {
+        "en": "jardin des Gogottes",
+        "fr": "jardin des Gogottes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "educational facility in Guyancourt, France",
+        "fr": "lycée d'hôtellerie et de tourisme de Guyancourt est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3269003",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-lycee-d-hotellerie-et-de-tourisme-de-guyancourt-q3269003",
+      "latitude": 48.784603,
+      "longitude": 2.049719,
+      "name": {
+        "en": "lycée d'hôtellerie et de tourisme de Guyancourt",
+        "fr": "lycée d'hôtellerie et de tourisme de Guyancourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Astronomical observatory",
+        "fr": "observatoire astronomique"
+      },
+      "externalIdentity": {
+        "id": "Q27825818",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-observatoire-des-sciences-de-l-univers-de-l-uvsq-q27825818",
+      "latitude": 48.777912,
+      "longitude": 2.048576,
+      "name": {
+        "en": "Observatoire des sciences de l'univers de l'UVSQ",
+        "fr": "Observatoire des sciences de l'univers de l'UVSQ"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc des Sources de la Bièvre compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2413688",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-parc-des-sources-de-la-bievre-q2413688",
+      "latitude": 48.7792,
+      "longitude": 2.04856,
+      "name": {
+        "en": "parc des Sources de la Bièvre",
+        "fr": "parc des Sources de la Bièvre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French auto racing team",
+        "fr": "Prost Grand Prix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q173110",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-prost-grand-prix-q173110",
+      "latitude": 48.78361111,
+      "longitude": 2.06722222,
+      "name": {
+        "en": "Prost Grand Prix",
+        "fr": "Prost Grand Prix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Technocentre Renault is a distinctive architectural landmark in the city.",
+        "fr": "bureau d'études"
+      },
+      "externalIdentity": {
+        "id": "Q589473",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "guyancourt-technocentre-renault-q589473",
+      "latitude": 48.7611,
+      "longitude": 2.08194,
+      "name": {
+        "en": "Technocentre Renault",
+        "fr": "Technocentre Renault"
+      }
+    }
+  ]
+}

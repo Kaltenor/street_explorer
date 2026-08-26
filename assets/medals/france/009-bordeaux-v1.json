@@ -6,122 +6,27 @@
     "en": "Bordeaux",
     "fr": "Bordeaux"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "architecture",
-      "description": {
-        "en": "Cathédrale Saint-André is a distinctive architectural landmark in the city.",
-        "fr": "Cathédrale Saint-André est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00083160",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "bordeaux-cathedrale-saint-andre-pa00083160",
-      "latitude": 44.8376562155826,
-      "longitude": -0.5778019976680611,
-      "name": {
-        "en": "Cathédrale Saint-André",
-        "fr": "Cathédrale Saint-André"
-      }
-    },
-    {
       "category": "history",
       "description": {
-        "en": "Chartreuse de Mirande is an important witness to the city's history.",
-        "fr": "Chartreuse de Mirande est un témoin important de l’histoire de la ville."
+        "en": "Ancien château d'eau de la gare Saint-Jean is an important witness to the city's history.",
+        "fr": "Ancien château d'eau de la gare Saint-Jean est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "PA00083162",
+        "id": "PA33000210",
         "source": "merimee",
         "type": "record"
       },
-      "id": "bordeaux-chartreuse-de-mirande-pa00083162",
-      "latitude": 44.8431347886391,
-      "longitude": -0.601879750838816,
+      "id": "bordeaux-ancien-chateau-d-eau-de-la-gare-saint-jean-pa33000210",
+      "latitude": 44.82111763042245,
+      "longitude": -0.5593610123374384,
       "name": {
-        "en": "Chartreuse de Mirande",
-        "fr": "Chartreuse de Mirande"
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "centre national Jean Moulin is one of the city's notable cultural landmarks.",
-        "fr": "centre national Jean Moulin compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "M0068",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "bordeaux-centre-national-jean-moulin-m0068",
-      "latitude": 44.838651,
-      "longitude": -0.577869,
-      "name": {
-        "en": "centre national Jean Moulin",
-        "fr": "centre national Jean Moulin"
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "CAPC - musée d'art contemporain is one of the city's notable cultural landmarks.",
-        "fr": "CAPC - musée d'art contemporain compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "M0067",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "bordeaux-capc-musee-d-art-contemporain-m0067",
-      "latitude": 44.848186,
-      "longitude": -0.572137,
-      "name": {
-        "en": "CAPC - musée d'art contemporain",
-        "fr": "CAPC - musée d'art contemporain"
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "musée d'Aquitaine is one of the city's notable cultural landmarks.",
-        "fr": "musée d'Aquitaine compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "M0064",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "bordeaux-musee-d-aquitaine-m0064",
-      "latitude": 44.835543,
-      "longitude": -0.575205,
-      "name": {
-        "en": "musée d'Aquitaine",
-        "fr": "musée d'Aquitaine"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) is a distinctive architectural landmark in the city.",
-        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00083157",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "bordeaux-palais-de-rohan-ancien-archeveche-actuel-hotel-de-ville-pa00083157",
-      "latitude": 44.8379144007611,
-      "longitude": -0.579414071675413,
-      "name": {
-        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)",
-        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)"
+        "en": "Ancien château d'eau de la gare Saint-Jean",
+        "fr": "Ancien château d'eau de la gare Saint-Jean"
       }
     },
     {
@@ -144,6 +49,310 @@
       }
     },
     {
+      "category": "culture",
+      "description": {
+        "en": "CAPC - musée d'art contemporain is one of the city's notable cultural landmarks.",
+        "fr": "CAPC - musée d'art contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0067",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-capc-musee-d-art-contemporain-m0067",
+      "latitude": 44.848186,
+      "longitude": -0.572137,
+      "name": {
+        "en": "CAPC - musée d'art contemporain",
+        "fr": "CAPC - musée d'art contemporain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083160",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-cathedrale-saint-andre-pa00083160",
+      "latitude": 44.8376562155826,
+      "longitude": -0.5778019976680611,
+      "name": {
+        "en": "Cathédrale Saint-André",
+        "fr": "Cathédrale Saint-André"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "centre national Jean Moulin is one of the city's notable cultural landmarks.",
+        "fr": "centre national Jean Moulin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0068",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-centre-national-jean-moulin-m0068",
+      "latitude": 44.838651,
+      "longitude": -0.577869,
+      "name": {
+        "en": "centre national Jean Moulin",
+        "fr": "centre national Jean Moulin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chartreuse de Mirande is an important witness to the city's history.",
+        "fr": "Chartreuse de Mirande est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083162",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-chartreuse-de-mirande-pa00083162",
+      "latitude": 44.8431347886391,
+      "longitude": -0.601879750838816,
+      "name": {
+        "en": "Chartreuse de Mirande",
+        "fr": "Chartreuse de Mirande"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Bruno is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Bruno est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083169",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-eglise-saint-bruno-pa00083169",
+      "latitude": 44.8376693311814,
+      "longitude": -0.589734169648618,
+      "name": {
+        "en": "Église Saint-Bruno",
+        "fr": "Église Saint-Bruno"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Dominique ou Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Dominique ou Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083170",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-eglise-saint-dominique-ou-notre-dame-pa00083170",
+      "latitude": 44.8425996175415,
+      "longitude": -0.576663118835653,
+      "name": {
+        "en": "Église Saint-Dominique ou Notre-Dame",
+        "fr": "Église Saint-Dominique ou Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Éloi is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Éloi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083171",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-eglise-saint-eloi-pa00083171",
+      "latitude": 44.8354329531635,
+      "longitude": -0.570967372581155,
+      "name": {
+        "en": "Église Saint-Éloi",
+        "fr": "Église Saint-Éloi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083172",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-eglise-saint-michel-pa00083172",
+      "latitude": 44.8343512217972,
+      "longitude": -0.565046544593471,
+      "name": {
+        "en": "Église Saint-Michel",
+        "fr": "Église Saint-Michel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Grand théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Grand théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083188",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-grand-theatre-pa00083188",
+      "latitude": 44.8426504009859,
+      "longitude": -0.573700119433213,
+      "name": {
+        "en": "Grand théâtre",
+        "fr": "Grand théâtre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'Aquitaine is one of the city's notable cultural landmarks.",
+        "fr": "musée d'Aquitaine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0064",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-musee-d-aquitaine-m0064",
+      "latitude": 44.835543,
+      "longitude": -0.575205,
+      "name": {
+        "en": "musée d'Aquitaine",
+        "fr": "musée d'Aquitaine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts décoratifs et du design is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts décoratifs et du design compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0066",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-musee-des-arts-decoratifs-et-du-design-m0066",
+      "latitude": 44.838956,
+      "longitude": -0.579686,
+      "name": {
+        "en": "musée des arts décoratifs et du design",
+        "fr": "musée des arts décoratifs et du design"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0065",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-musee-des-beaux-arts-m0065",
+      "latitude": 44.838056,
+      "longitude": -0.579413,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7026",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bordeaux-museum-d-histoire-naturelle-m7026",
+      "latitude": 44.848154,
+      "longitude": -0.580085,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083157",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-palais-de-rohan-ancien-archeveche-actuel-hotel-de-ville-pa00083157",
+      "latitude": 44.8379144007611,
+      "longitude": -0.579414071675413,
+      "name": {
+        "en": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)",
+        "fr": "Palais de Rohan (ancien archevêché, actuel Hôtel de ville)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Bourgogne is an important witness to the city's history.",
+        "fr": "Porte de Bourgogne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083474",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-porte-de-bourgogne-pa00083474",
+      "latitude": 44.836325751914,
+      "longitude": -0.566256139555833,
+      "name": {
+        "en": "Porte de Bourgogne",
+        "fr": "Porte de Bourgogne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Dijeaux (ou Dauphine) is an important witness to the city's history.",
+        "fr": "Porte Dijeaux (ou Dauphine) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083475",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-porte-dijeaux-ou-dauphine-pa00083475",
+      "latitude": 44.8406440183839,
+      "longitude": -0.579850253449266,
+      "name": {
+        "en": "Porte Dijeaux (ou Dauphine)",
+        "fr": "Porte Dijeaux (ou Dauphine)"
+      }
+    },
+    {
       "category": "history",
       "description": {
         "en": "Porte du Palais (ou Porte Cailhau) is an important witness to the city's history.",
@@ -160,6 +369,25 @@
       "name": {
         "en": "Porte du Palais (ou Porte Cailhau)",
         "fr": "Porte du Palais (ou Porte Cailhau)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Pey-Berland is an important witness to the city's history.",
+        "fr": "Tour Pey-Berland est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083480",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bordeaux-tour-pey-berland-pa00083480",
+      "latitude": 44.8375988109483,
+      "longitude": -0.576613020641831,
+      "name": {
+        "en": "Tour Pey-Berland",
+        "fr": "Tour Pey-Berland"
       }
     }
   ]

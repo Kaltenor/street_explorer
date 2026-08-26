@@ -1,0 +1,204 @@
+{
+  "id": "charenton-le-pont-v1",
+  "cityId": "charenton-le-pont-fr",
+  "cityZoneId": "relation/104868",
+  "cityName": {
+    "en": "Charenton-le-Pont",
+    "fr": "Charenton-le-Pont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Bercy (ancien) is an important witness to the city's history.",
+        "fr": "Château de Bercy (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079859",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charenton-le-pont-chateau-de-bercy-ancien-pa00079859",
+      "latitude": 48.8288138422236,
+      "longitude": 2.40073952242944,
+      "name": {
+        "en": "Château de Bercy (ancien)",
+        "fr": "Château de Bercy (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Conflans (ancien) is an important witness to the city's history.",
+        "fr": "Château de Conflans (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079860",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "charenton-le-pont-chateau-de-conflans-ancien-pa00079860",
+      "latitude": 48.8214575425512,
+      "longitude": 2.40338801015952,
+      "name": {
+        "en": "Château de Conflans (ancien)",
+        "fr": "Château de Conflans (ancien)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "médiathèque du patrimoine et de la photographie is one of the city's notable cultural landmarks.",
+        "fr": "médiathèque du patrimoine et de la photographie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q28493755",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-mediatheque-du-patrimoine-et-de-la-photographie-q28493755",
+      "latitude": 48.8216608,
+      "longitude": 2.4049374,
+      "name": {
+        "en": "médiathèque du patrimoine et de la photographie",
+        "fr": "médiathèque du patrimoine et de la photographie"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Charenton-le-Pont is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Charenton-le-Pont, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88324001",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-monument-aux-morts-de-charenton-le-pont-q88324001",
+      "latitude": 48.8214,
+      "longitude": 2.41446,
+      "name": {
+        "en": "monument aux morts de Charenton-le-Pont",
+        "fr": "monument aux morts de Charenton-le-Pont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bridge over the Marne in Val-de-Marne, France",
+        "fr": "pont au-dessus de la Marne dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21104572",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-passerelle-d-alfortville-q21104572",
+      "latitude": 48.8163,
+      "longitude": 2.413,
+      "name": {
+        "en": "passerelle d'Alfortville",
+        "fr": "passerelle d'Alfortville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont sur la Seine reliant Charenton-le-Pont et Ivry-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3368324",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-passerelle-industrielle-d-ivry-charenton-q3368324",
+      "latitude": 48.8178,
+      "longitude": 2.40694,
+      "name": {
+        "en": "passerelle industrielle d'Ivry-Charenton",
+        "fr": "passerelle industrielle d'Ivry-Charenton"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Charenton-le-Pont, France",
+        "fr": "mairie à Charenton-le-Pont (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q3373053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-pavillon-d-antoine-de-navarre-q3373053",
+      "latitude": 48.8196,
+      "longitude": 2.41584,
+      "name": {
+        "en": "pavillon d'Antoine de Navarre",
+        "fr": "pavillon d'Antoine de Navarre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "pont ferroviaire de Maisons-Alfort is an important witness to the city's history.",
+        "fr": "pont dans le Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q85994510",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-pont-ferroviaire-de-maisons-alfort-q85994510",
+      "latitude": 48.81631,
+      "longitude": 2.41598,
+      "name": {
+        "en": "pont ferroviaire de Maisons-Alfort",
+        "fr": "pont ferroviaire de Maisons-Alfort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397786",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-ponts-nelson-mandela-q3397786",
+      "latitude": 48.82027778,
+      "longitude": 2.39944444,
+      "name": {
+        "en": "ponts Nelson-Mandela",
+        "fr": "ponts Nelson-Mandela"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Charenton-le-Pont",
+        "fr": "pont sur la Marne entre Charenton-le-Pont et Maisons-Alfort"
+      },
+      "externalIdentity": {
+        "id": "Q102047714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "charenton-le-pont-viaduc-metro-de-charenton-q102047714",
+      "latitude": 48.81676,
+      "longitude": 2.41873,
+      "name": {
+        "en": "viaduc-métro de Charenton",
+        "fr": "viaduc-métro de Charenton"
+      }
+    }
+  ]
+}

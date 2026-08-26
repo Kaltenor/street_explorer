@@ -1,0 +1,204 @@
+{
+  "id": "hyeres-v1",
+  "cityId": "hyeres-fr",
+  "cityZoneId": "relation/380060",
+  "cityName": {
+    "en": "Hyères",
+    "fr": "Hyères"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église anglicane Saint Paul’s Church is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église anglicane Saint Paul’s Church est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-ancien-eglise-anglicane-saint-paul-s-church-pa83000049",
+      "latitude": 43.11786341519068,
+      "longitude": 6.122802157991146,
+      "name": {
+        "en": "Ancien église anglicane Saint Paul’s Church",
+        "fr": "Ancien église anglicane Saint Paul’s Church"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle Saint-Blaise dite \"Tour des Templiers\" is an important witness to the city's history.",
+        "fr": "Chapelle Saint-Blaise dite \"Tour des Templiers\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081636",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-chapelle-saint-blaise-dite-tour-des-templiers-pa00081636",
+      "latitude": 43.1214150802105,
+      "longitude": 6.12835065305373,
+      "name": {
+        "en": "Chapelle Saint-Blaise dite \"Tour des Templiers\"",
+        "fr": "Chapelle Saint-Blaise dite \"Tour des Templiers\""
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château dit Fort du Moulin is an important witness to the city's history.",
+        "fr": "Château dit Fort du Moulin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081664",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-chateau-dit-fort-du-moulin-pa00081664",
+      "latitude": 43.0106102215529,
+      "longitude": 6.381111353604181,
+      "name": {
+        "en": "Château dit Fort du Moulin",
+        "fr": "Château dit Fort du Moulin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081637",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-chateau-pa00081637",
+      "latitude": 43.1241784826283,
+      "longitude": 6.12452625166334,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Sainte-Agathe is an important witness to the city's history.",
+        "fr": "Château Sainte-Agathe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081657",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-chateau-sainte-agathe-pa00081657",
+      "latitude": 42.9998406448006,
+      "longitude": 6.20636535466932,
+      "name": {
+        "en": "Château Sainte-Agathe",
+        "fr": "Château Sainte-Agathe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081640",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-eglise-saint-louis-pa00081640",
+      "latitude": 43.1217940567381,
+      "longitude": 6.13072319674262,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081641",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-eglise-saint-paul-pa00081641",
+      "latitude": 43.1215131026363,
+      "longitude": 6.12692482261699,
+      "name": {
+        "en": "Église Saint-Paul",
+        "fr": "Église Saint-Paul"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "La Banque, musée des Cultures et du Paysage is one of the city's notable cultural landmarks.",
+        "fr": "La Banque, musée des Cultures et du Paysage compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0937",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "hyeres-la-banque-musee-des-cultures-et-du-paysage-m0937",
+      "latitude": 43.119997,
+      "longitude": 6.130519,
+      "name": {
+        "en": "La Banque, musée des Cultures et du Paysage",
+        "fr": "La Banque, musée des Cultures et du Paysage"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison romane is a distinctive architectural landmark in the city.",
+        "fr": "Maison romane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081644",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-maison-romane-pa00081644",
+      "latitude": 43.1227100999548,
+      "longitude": 6.12729091626604,
+      "name": {
+        "en": "Maison romane",
+        "fr": "Maison romane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Saint-Paul is an important witness to the city's history.",
+        "fr": "Porte Saint-Paul est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081649",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "hyeres-porte-saint-paul-pa00081649",
+      "latitude": 43.1216301652393,
+      "longitude": 6.12715562702082,
+      "name": {
+        "en": "Porte Saint-Paul",
+        "fr": "Porte Saint-Paul"
+      }
+    }
+  ]
+}

@@ -1,15 +1,186 @@
 {
   "id": "saint-etienne-v1",
   "cityId": "saint-etienne-fr",
-  "cityZoneId": "relation/18937048",
+  "cityZoneId": "relation/117905",
   "cityName": {
     "en": "Saint-Étienne",
     "fr": "Saint-Étienne"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Rochetaillée (restes) is an important witness to the city's history.",
+        "fr": "Château de Rochetaillée (restes) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117597",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-chateau-de-rochetaillee-restes-pa00117597",
+      "latitude": 45.4101862449604,
+      "longitude": 4.44612188358956,
+      "name": {
+        "en": "Château de Rochetaillée (restes)",
+        "fr": "Château de Rochetaillée (restes)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Valbenoite is a distinctive architectural landmark in the city.",
+        "fr": "Église de Valbenoite est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117599",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-eglise-de-valbenoite-pa00117599",
+      "latitude": 45.4216333379058,
+      "longitude": 4.39904474666245,
+      "name": {
+        "en": "Église de Valbenoite",
+        "fr": "Église de Valbenoite"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117662",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-eglise-pa00117662",
+      "latitude": 45.4461537836972,
+      "longitude": 4.25978650522585,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Ennemond is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Ennemond est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-eglise-saint-ennemond-pa42000058",
+      "latitude": 45.434877814100645,
+      "longitude": 4.381706704580629,
+      "name": {
+        "en": "Église Saint-Ennemond",
+        "fr": "Église Saint-Ennemond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-François-Régis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-François-Régis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-eglise-saint-francois-regis-pa42000027",
+      "latitude": 45.4395906845026,
+      "longitude": 4.40243213655418,
+      "name": {
+        "en": "Église Saint-François-Régis",
+        "fr": "Église Saint-François-Régis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Marie is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Marie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132819",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-eglise-sainte-marie-pa00132819",
+      "latitude": 45.438671297156006,
+      "longitude": 4.39246323888458,
+      "name": {
+        "en": "Église Sainte-Marie",
+        "fr": "Église Sainte-Marie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grand'Église ou Église Saint-Etienne is a distinctive architectural landmark in the city.",
+        "fr": "Grand'Église ou Église Saint-Etienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117598",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-grand-eglise-ou-eglise-saint-etienne-pa00117598",
+      "latitude": 45.4364281164433,
+      "longitude": 4.38592264961165,
+      "name": {
+        "en": "Grand'Église ou Église Saint-Etienne",
+        "fr": "Grand'Église ou Église Saint-Etienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Bernou de Rochetaillée is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Bernou de Rochetaillée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000031",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-hotel-bernou-de-rochetaillee-pa42000031",
+      "latitude": 45.4370730327173,
+      "longitude": 4.38830653093666,
+      "name": {
+        "en": "Hôtel Bernou de Rochetaillée",
+        "fr": "Hôtel Bernou de Rochetaillée"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA42000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-monument-aux-morts-pa42000051",
+      "latitude": 45.439570160110726,
+      "longitude": 4.396307874875326,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
     {
       "category": "culture",
       "description": {
@@ -89,6 +260,63 @@
     {
       "category": "architecture",
       "description": {
+        "en": "Hôtel Subit-Gouyon is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Subit-Gouyon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117688",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-hotel-subit-gouyon-pa00117688",
+      "latitude": 45.4390353614044,
+      "longitude": 4.39841208538068,
+      "name": {
+        "en": "Hôtel Subit-Gouyon",
+        "fr": "Hôtel Subit-Gouyon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dénommé \" Hôtel des Ingénieurs \" is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dénommé \" Hôtel des Ingénieurs \" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-immeuble-denomme-hotel-des-ingenieurs-pa42000030",
+      "latitude": 45.4371860072987,
+      "longitude": 4.38937866048131,
+      "name": {
+        "en": "Immeuble dénommé \" Hôtel des Ingénieurs \"",
+        "fr": "Immeuble dénommé \" Hôtel des Ingénieurs \""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dénommé \" Les Nouvelles Galeries \" is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dénommé \" Les Nouvelles Galeries \" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA42000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-immeuble-denomme-les-nouvelles-galeries-pa42000028",
+      "latitude": 45.434088535919,
+      "longitude": 4.38892006047348,
+      "name": {
+        "en": "Immeuble dénommé \" Les Nouvelles Galeries \"",
+        "fr": "Immeuble dénommé \" Les Nouvelles Galeries \""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
         "en": "Immeuble dit Palais Mimard is a distinctive architectural landmark in the city.",
         "fr": "Immeuble dit Palais Mimard est un repère architectural remarquable de la ville."
       },
@@ -103,6 +331,25 @@
       "name": {
         "en": "Immeuble dit Palais Mimard",
         "fr": "Immeuble dit Palais Mimard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite de François Ier is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite de François Ier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-etienne-maison-dite-de-francois-ier-pa00117603",
+      "latitude": 45.4360814309943,
+      "longitude": 4.38557419467103,
+      "name": {
+        "en": "Maison dite de François Ier",
+        "fr": "Maison dite de François Ier"
       }
     },
     {
@@ -125,41 +372,22 @@
       }
     },
     {
-      "category": "history",
+      "category": "architecture",
       "description": {
-        "en": "Château de Rochetaillée (restes) is an important witness to the city's history.",
-        "fr": "Château de Rochetaillée (restes) est un témoin important de l’histoire de la ville."
+        "en": "Temple protestant is a distinctive architectural landmark in the city.",
+        "fr": "Temple protestant est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00117597",
+        "id": "PA42000038",
         "source": "merimee",
         "type": "record"
       },
-      "id": "saint-etienne-chateau-de-rochetaillee-restes-pa00117597",
-      "latitude": 45.4101862449604,
-      "longitude": 4.44612188358956,
+      "id": "saint-etienne-temple-protestant-pa42000038",
+      "latitude": 45.439255055175,
+      "longitude": 4.38308716870487,
       "name": {
-        "en": "Château de Rochetaillée (restes)",
-        "fr": "Château de Rochetaillée (restes)"
-      }
-    },
-    {
-      "category": "art",
-      "description": {
-        "en": "Monument aux morts is a notable work of public art and local memory.",
-        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
-      },
-      "externalIdentity": {
-        "id": "PA42000051",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "saint-etienne-monument-aux-morts-pa42000051",
-      "latitude": 45.439570160110726,
-      "longitude": 4.396307874875326,
-      "name": {
-        "en": "Monument aux morts",
-        "fr": "Monument aux morts"
+        "en": "Temple protestant",
+        "fr": "Temple protestant"
       }
     }
   ]

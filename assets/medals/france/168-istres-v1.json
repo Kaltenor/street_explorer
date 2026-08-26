@@ -1,0 +1,204 @@
+{
+  "id": "istres-v1",
+  "cityId": "istres-fr",
+  "cityZoneId": "relation/96764",
+  "cityName": {
+    "en": "Istres",
+    "fr": "Istres"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "training school for test flight crews involved in test flights",
+        "fr": "école de formation des équipages navigant d'essais impliqués dans les vols d'essais"
+      },
+      "externalIdentity": {
+        "id": "Q3577981",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-ecole-du-personnel-navigant-d-essais-et-de-reception-q3577981",
+      "latitude": 43.5229,
+      "longitude": 4.92351,
+      "name": {
+        "en": "École du personnel navigant d'essais et de réception",
+        "fr": "École du personnel navigant d'essais et de réception"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17177564",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-eglise-de-la-sainte-famille-d-istres-q17177564",
+      "latitude": 43.512863,
+      "longitude": 4.989839,
+      "name": {
+        "en": "église de la Sainte-Famille d'Istres",
+        "fr": "église de la Sainte-Famille d'Istres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15953514",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-eglise-notre-dame-de-beauvoir-q15953514",
+      "latitude": 43.51378,
+      "longitude": 4.98851,
+      "name": {
+        "en": "église Notre-Dame-de-Beauvoir",
+        "fr": "église Notre-Dame-de-Beauvoir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Istres, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q16507926",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-entressen-q16507926",
+      "latitude": 43.589,
+      "longitude": 4.94344,
+      "name": {
+        "en": "Entressen",
+        "fr": "Entressen"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée René Beaucaire is one of the city's notable cultural landmarks.",
+        "fr": "musée René Beaucaire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0906",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "istres-musee-rene-beaucaire-m0906",
+      "latitude": 43.50979987780633,
+      "longitude": 4.9911014111253635,
+      "name": {
+        "en": "musée René Beaucaire",
+        "fr": "musée René Beaucaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "archaeological site in Istres, France",
+        "fr": "oppidum du Castellan est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3354393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-oppidum-du-castellan-q3354393",
+      "latitude": 43.5127,
+      "longitude": 4.98796,
+      "name": {
+        "en": "oppidum du Castellan",
+        "fr": "oppidum du Castellan"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Arles is an important witness to the city's history.",
+        "fr": "Porte d'Arles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081288",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "istres-porte-d-arles-pa00081288",
+      "latitude": 43.5148432427706,
+      "longitude": 4.98768492091363,
+      "name": {
+        "en": "Porte d'Arles",
+        "fr": "Porte d'Arles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour et chapelle d'Entressen is an important witness to the city's history.",
+        "fr": "Tour et chapelle d'Entressen est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA13000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "istres-tour-et-chapelle-d-entressen-pa13000020",
+      "latitude": 43.6036076929257,
+      "longitude": 4.92414957546078,
+      "name": {
+        "en": "Tour et chapelle d'Entressen",
+        "fr": "Tour et chapelle d'Entressen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2130806",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-istres-q2130806",
+      "latitude": 43.515373,
+      "longitude": 4.980268,
+      "name": {
+        "en": "Istres",
+        "fr": "Istres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Istres, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2187498",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "istres-rassuen-q2187498",
+      "latitude": 43.496598,
+      "longitude": 4.973212,
+      "name": {
+        "en": "Rassuen",
+        "fr": "Rassuen"
+      }
+    }
+  ]
+}

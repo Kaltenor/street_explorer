@@ -1,0 +1,204 @@
+{
+  "id": "bourg-la-reine-v1",
+  "cityId": "bourg-la-reine-fr",
+  "cityZoneId": "relation/37041",
+  "cityName": {
+    "en": "Bourg-la-Reine",
+    "fr": "Bourg-la-Reine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bourg-la-Reine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1962846",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-bourg-la-reine-q1962846",
+      "latitude": 48.78,
+      "longitude": 2.311944,
+      "name": {
+        "en": "Bourg-la-Reine",
+        "fr": "Bourg-la-Reine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Notre-Dame du Calvaire is an important witness to the city's history.",
+        "fr": "château situé à Bourg-la-Reine"
+      },
+      "externalIdentity": {
+        "id": "Q78661576",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-chateau-notre-dame-du-calvaire-q78661576",
+      "latitude": 48.78074,
+      "longitude": 2.31659,
+      "name": {
+        "en": "château Notre-Dame du Calvaire",
+        "fr": "château Notre-Dame du Calvaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière français"
+      },
+      "externalIdentity": {
+        "id": "Q42554963",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-cimetiere-paysager-de-bourg-la-reine-q42554963",
+      "latitude": 48.78217,
+      "longitude": 2.32056,
+      "name": {
+        "en": "cimetière paysager de Bourg-la-Reine",
+        "fr": "cimetière paysager de Bourg-la-Reine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38375456",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-eglise-de-la-pentecote-de-bourg-la-reine-q38375456",
+      "latitude": 48.789131,
+      "longitude": 2.313437,
+      "name": {
+        "en": "église de la Pentecôte de Bourg-la-Reine",
+        "fr": "église de la Pentecôte de Bourg-la-Reine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581707",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-eglise-saint-gilles-de-bourg-la-reine-q3581707",
+      "latitude": 48.77881,
+      "longitude": 2.31617,
+      "name": {
+        "en": "église Saint-Gilles de Bourg-la-Reine",
+        "fr": "église Saint-Gilles de Bourg-la-Reine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble dit Villa ou Tour Hennebique is an important witness to the city's history.",
+        "fr": "Immeuble dit Villa ou Tour Hennebique est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-la-reine-immeuble-dit-villa-ou-tour-hennebique-pa00088085",
+      "latitude": 48.777246887122786,
+      "longitude": 2.310084770055756,
+      "name": {
+        "en": "Immeuble dit Villa ou Tour Hennebique",
+        "fr": "Immeuble dit Villa ou Tour Hennebique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "maison historique du céramiste Pierre-Adrien Dalpayrat, partiellement aménagée en musée depuis 2012, située à Bourg-la-Reine, dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96589744",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-maison-dalpayrat-q96589744",
+      "latitude": 48.784037,
+      "longitude": 2.31754,
+      "name": {
+        "en": "maison Dalpayrat",
+        "fr": "maison Dalpayrat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bourg-la-Reine, France",
+        "fr": "édifice de Bourg-la-Reine, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412720",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-hotel-de-ville-de-bourg-la-reine-q83412720",
+      "latitude": 48.779,
+      "longitude": 2.3158,
+      "name": {
+        "en": "hôtel de ville de Bourg-la-Reine",
+        "fr": "hôtel de ville de Bourg-la-Reine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Bourg-la-Reine, France",
+        "fr": "place de Bourg-la-Reine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116227232",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-place-de-la-gare-q116227232",
+      "latitude": 48.78009257,
+      "longitude": 2.313247665,
+      "name": {
+        "en": "place de la Gare",
+        "fr": "place de la Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111271496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourg-la-reine-temple-protestant-de-bourg-la-reine-q111271496",
+      "latitude": 48.7789,
+      "longitude": 2.31993,
+      "name": {
+        "en": "temple protestant de Bourg-la-Reine",
+        "fr": "temple protestant de Bourg-la-Reine"
+      }
+    }
+  ]
+}

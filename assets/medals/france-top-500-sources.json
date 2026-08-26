@@ -1,0 +1,6548 @@
+{
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "ranking": {
+    "definition": "French communes ranked by municipal population, including overseas territories",
+    "effectiveDate": "2026-01-01",
+    "source": "INSEE populations de référence 2023; Mayotte 2017; Nouvelle-Calédonie 2025; Polynésie française 2022; latest official commune censuses",
+    "url": "https://www.insee.fr/fr/statistiques/8680726",
+    "mayotteUrl": "https://www.insee.fr/fr/statistiques/3291775",
+    "overseasCollectivitiesUrl": "https://www.insee.fr/fr/statistiques/8680667",
+    "newCaledoniaUrl": "https://www.insee.fr/fr/statistiques/8658726",
+    "frenchPolynesiaUrl": "https://www.ispf.pf/content/uploads/Chiffres_de_populations_legales_2022_301ac91426.pdf"
+  },
+  "landmarkSources": [
+    {
+      "name": "Ministry of Culture Mérimée",
+      "url": "https://www.data.gouv.fr/datasets/immeubles-proteges-au-titre-des-monuments-historiques-2"
+    },
+    {
+      "name": "Ministry of Culture Muséofile",
+      "url": "https://www.data.gouv.fr/datasets/musees-de-france-base-museofile"
+    },
+    {
+      "name": "Ville de Marseille arrondissement guides",
+      "url": "https://www.marseille.fr/decouvrir-marseille/les111-quartiers"
+    },
+    {
+      "name": "Ville de Thonon-les-Bains culture and heritage",
+      "url": "https://www.ville-thonon.fr/decouvrir-la-ville/culture/"
+    },
+    {
+      "name": "Ville de Thonon-les-Bains parks and forests",
+      "url": "https://www.ville-thonon.fr/plein-air/parcs-et-forets/"
+    },
+    {
+      "name": "Thonon-les-Bains Tourist Office remarkable sites",
+      "url": "https://www.thononlesbains.com/visiter/sites-remarquables/"
+    },
+    {
+      "name": "Wikidata",
+      "url": "https://www.wikidata.org/"
+    },
+    {
+      "name": "OpenStreetMap",
+      "url": "https://www.openstreetmap.org/"
+    }
+  ],
+  "cities": [
+    {
+      "albumId": "paris-v1",
+      "cityName": "Paris",
+      "cityZoneId": "relation/7444",
+      "inseeCode": "75056",
+      "medalCount": 60,
+      "population": 2103778,
+      "rank": 1,
+      "sourceCounts": {
+        "wikidata": 58,
+        "openstreetmap": 2
+      }
+    },
+    {
+      "albumId": "marseille-v1",
+      "cityName": "Marseille",
+      "cityZoneId": "relation/76469",
+      "inseeCode": "13055",
+      "medalCount": 38,
+      "population": 886040,
+      "rank": 2,
+      "sourceCounts": {
+        "merimee": 6,
+        "museofile": 2,
+        "wikidata": 30
+      }
+    },
+    {
+      "albumId": "lyon-v1",
+      "cityName": "Lyon",
+      "cityZoneId": "relation/120965",
+      "inseeCode": "69123",
+      "medalCount": 44,
+      "population": 519127,
+      "rank": 3,
+      "sourceCounts": {
+        "openstreetmap": 42,
+        "wikidata": 2
+      }
+    },
+    {
+      "albumId": "toulouse-v1",
+      "cityName": "Toulouse",
+      "cityZoneId": "relation/35738",
+      "inseeCode": "31555",
+      "medalCount": 20,
+      "population": 514819,
+      "rank": 4,
+      "sourceCounts": {
+        "merimee": 12,
+        "wikidata": 1,
+        "museofile": 7
+      }
+    },
+    {
+      "albumId": "nice-v1",
+      "cityName": "Nice",
+      "cityZoneId": "relation/170100",
+      "inseeCode": "06088",
+      "medalCount": 20,
+      "population": 357737,
+      "rank": 5,
+      "sourceCounts": {
+        "merimee": 13,
+        "museofile": 7
+      }
+    },
+    {
+      "albumId": "nantes-v1",
+      "cityName": "Nantes",
+      "cityZoneId": "relation/59874",
+      "inseeCode": "44109",
+      "medalCount": 20,
+      "population": 327734,
+      "rank": 6,
+      "sourceCounts": {
+        "wikidata": 2,
+        "merimee": 15,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "montpellier-v1",
+      "cityName": "Montpellier",
+      "cityZoneId": "relation/28722",
+      "inseeCode": "34172",
+      "medalCount": 20,
+      "population": 310240,
+      "rank": 7,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 4,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "strasbourg-v1",
+      "cityName": "Strasbourg",
+      "cityZoneId": "relation/71033",
+      "inseeCode": "67482",
+      "medalCount": 20,
+      "population": 293771,
+      "rank": 8,
+      "sourceCounts": {
+        "merimee": 12,
+        "museofile": 7,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "bordeaux-v1",
+      "cityName": "Bordeaux",
+      "cityZoneId": "relation/105270",
+      "inseeCode": "33063",
+      "medalCount": 20,
+      "population": 267991,
+      "rank": 9,
+      "sourceCounts": {
+        "merimee": 14,
+        "museofile": 6
+      }
+    },
+    {
+      "albumId": "lille-v1",
+      "cityName": "Lille",
+      "cityZoneId": "relation/58404",
+      "inseeCode": "59350",
+      "medalCount": 20,
+      "population": 238246,
+      "rank": 10,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "rennes-v1",
+      "cityName": "Rennes",
+      "cityZoneId": "relation/54517",
+      "inseeCode": "35238",
+      "medalCount": 20,
+      "population": 230890,
+      "rank": 11,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 3,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "toulon-v1",
+      "cityName": "Toulon",
+      "cityZoneId": "relation/35280",
+      "inseeCode": "83137",
+      "medalCount": 20,
+      "population": 179116,
+      "rank": 12,
+      "sourceCounts": {
+        "merimee": 18,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "reims-v1",
+      "cityName": "Reims",
+      "cityZoneId": "relation/36458",
+      "inseeCode": "51454",
+      "medalCount": 20,
+      "population": 177674,
+      "rank": 13,
+      "sourceCounts": {
+        "merimee": 14,
+        "wikidata": 2,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "saint-etienne-v1",
+      "cityName": "Saint-Étienne",
+      "cityZoneId": "relation/117905",
+      "inseeCode": "42218",
+      "medalCount": 20,
+      "population": 173136,
+      "rank": 14,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "le-havre-v1",
+      "cityName": "Le Havre",
+      "cityZoneId": "relation/104492",
+      "inseeCode": "76351",
+      "medalCount": 20,
+      "population": 166687,
+      "rank": 15,
+      "sourceCounts": {
+        "merimee": 13,
+        "wikidata": 2,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "villeurbanne-v1",
+      "cityName": "Villeurbanne",
+      "cityZoneId": "relation/120989",
+      "inseeCode": "69266",
+      "medalCount": 20,
+      "population": 163684,
+      "rank": 16,
+      "sourceCounts": {
+        "openstreetmap": 14,
+        "wikidata": 6
+      }
+    },
+    {
+      "albumId": "dijon-v1",
+      "cityName": "Dijon",
+      "cityZoneId": "relation/74090",
+      "inseeCode": "21231",
+      "medalCount": 20,
+      "population": 161830,
+      "rank": 17,
+      "sourceCounts": {
+        "merimee": 12,
+        "wikidata": 1,
+        "museofile": 7
+      }
+    },
+    {
+      "albumId": "angers-v1",
+      "cityName": "Angers",
+      "cityZoneId": "relation/178351",
+      "inseeCode": "49007",
+      "medalCount": 20,
+      "population": 159022,
+      "rank": 18,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "grenoble-v1",
+      "cityName": "Grenoble",
+      "cityZoneId": "relation/80348",
+      "inseeCode": "38185",
+      "medalCount": 20,
+      "population": 156140,
+      "rank": 19,
+      "sourceCounts": {
+        "merimee": 13,
+        "wikidata": 1,
+        "museofile": 6
+      }
+    },
+    {
+      "albumId": "saint-denis-97411-v1",
+      "cityName": "Saint-Denis",
+      "cityZoneId": "relation/192468",
+      "inseeCode": "97411",
+      "medalCount": 20,
+      "population": 155634,
+      "rank": 20,
+      "sourceCounts": {
+        "merimee": 20
+      }
+    },
+    {
+      "albumId": "nimes-v1",
+      "cityName": "Nîmes",
+      "cityZoneId": "relation/378685",
+      "inseeCode": "30189",
+      "medalCount": 20,
+      "population": 151839,
+      "rank": 21,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "aix-en-provence-v1",
+      "cityName": "Aix-en-Provence",
+      "cityZoneId": "relation/70279",
+      "inseeCode": "13001",
+      "medalCount": 20,
+      "population": 149695,
+      "rank": 22,
+      "sourceCounts": {
+        "merimee": 13,
+        "museofile": 7
+      }
+    },
+    {
+      "albumId": "saint-denis-v1",
+      "cityName": "Saint-Denis",
+      "cityZoneId": "relation/87922",
+      "inseeCode": "93066",
+      "medalCount": 20,
+      "population": 149077,
+      "rank": 23,
+      "sourceCounts": {
+        "merimee": 14,
+        "wikidata": 4,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "clermont-ferrand-v1",
+      "cityName": "Clermont-Ferrand",
+      "cityZoneId": "relation/110866",
+      "inseeCode": "63113",
+      "medalCount": 20,
+      "population": 146351,
+      "rank": 24,
+      "sourceCounts": {
+        "merimee": 15,
+        "wikidata": 2,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "le-mans-v1",
+      "cityName": "Le Mans",
+      "cityZoneId": "relation/107435",
+      "inseeCode": "72181",
+      "medalCount": 20,
+      "population": 146249,
+      "rank": 25,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "brest-v1",
+      "cityName": "Brest",
+      "cityZoneId": "relation/1076124",
+      "inseeCode": "29019",
+      "medalCount": 20,
+      "population": 142346,
+      "rank": 26,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 18,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "tours-v1",
+      "cityName": "Tours",
+      "cityZoneId": "relation/76306",
+      "inseeCode": "37261",
+      "medalCount": 20,
+      "population": 139259,
+      "rank": 27,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "amiens-v1",
+      "cityName": "Amiens",
+      "cityZoneId": "relation/114347",
+      "inseeCode": "80021",
+      "medalCount": 20,
+      "population": 136449,
+      "rank": 28,
+      "sourceCounts": {
+        "merimee": 16,
+        "wikidata": 1,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "annecy-v1",
+      "cityName": "Annecy",
+      "cityZoneId": "relation/6791758",
+      "inseeCode": "74010",
+      "medalCount": 20,
+      "population": 132117,
+      "rank": 29,
+      "sourceCounts": {
+        "merimee": 19,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "limoges-v1",
+      "cityName": "Limoges",
+      "cityZoneId": "relation/114172",
+      "inseeCode": "87085",
+      "medalCount": 20,
+      "population": 129937,
+      "rank": 30,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 2,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "metz-v1",
+      "cityName": "Metz",
+      "cityZoneId": "relation/450381",
+      "inseeCode": "57463",
+      "medalCount": 20,
+      "population": 122572,
+      "rank": 31,
+      "sourceCounts": {
+        "merimee": 18,
+        "wikidata": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "perpignan-v1",
+      "cityName": "Perpignan",
+      "cityZoneId": "relation/18000",
+      "inseeCode": "66136",
+      "medalCount": 20,
+      "population": 121616,
+      "rank": 32,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "boulogne-billancourt-v1",
+      "cityName": "Boulogne-Billancourt",
+      "cityZoneId": "relation/72020",
+      "inseeCode": "92012",
+      "medalCount": 20,
+      "population": 119019,
+      "rank": 33,
+      "sourceCounts": {
+        "merimee": 15,
+        "wikidata": 2,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "besancon-v1",
+      "cityName": "Besançon",
+      "cityZoneId": "relation/103599",
+      "inseeCode": "25056",
+      "medalCount": 20,
+      "population": 118489,
+      "rank": 34,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "rouen-v1",
+      "cityName": "Rouen",
+      "cityZoneId": "relation/75628",
+      "inseeCode": "76540",
+      "medalCount": 20,
+      "population": 117662,
+      "rank": 35,
+      "sourceCounts": {
+        "merimee": 12,
+        "wikidata": 2,
+        "museofile": 6
+      }
+    },
+    {
+      "albumId": "orleans-v1",
+      "cityName": "Orléans",
+      "cityZoneId": "relation/147559",
+      "inseeCode": "45234",
+      "medalCount": 20,
+      "population": 116357,
+      "rank": 36,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "montreuil-v1",
+      "cityName": "Montreuil",
+      "cityZoneId": "relation/129423",
+      "inseeCode": "93048",
+      "medalCount": 20,
+      "population": 111934,
+      "rank": 37,
+      "sourceCounts": {
+        "wikidata": 17,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "caen-v1",
+      "cityName": "Caen",
+      "cityZoneId": "relation/149197",
+      "inseeCode": "14118",
+      "medalCount": 20,
+      "population": 109400,
+      "rank": 38,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "saint-paul-v1",
+      "cityName": "Saint-Paul",
+      "cityZoneId": "relation/278308",
+      "inseeCode": "97415",
+      "medalCount": 20,
+      "population": 108088,
+      "rank": 39,
+      "sourceCounts": {
+        "merimee": 19,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "argenteuil-v1",
+      "cityName": "Argenteuil",
+      "cityZoneId": "relation/103245",
+      "inseeCode": "95018",
+      "medalCount": 20,
+      "population": 106130,
+      "rank": 40,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 16,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "mulhouse-v1",
+      "cityName": "Mulhouse",
+      "cityZoneId": "relation/38246",
+      "inseeCode": "68224",
+      "medalCount": 20,
+      "population": 104978,
+      "rank": 41,
+      "sourceCounts": {
+        "merimee": 10,
+        "wikidata": 3,
+        "museofile": 7
+      }
+    },
+    {
+      "albumId": "nancy-v1",
+      "cityName": "Nancy",
+      "cityZoneId": "relation/52399",
+      "inseeCode": "54395",
+      "medalCount": 20,
+      "population": 103671,
+      "rank": 42,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "tourcoing-v1",
+      "cityName": "Tourcoing",
+      "cityZoneId": "relation/59551",
+      "inseeCode": "59599",
+      "medalCount": 20,
+      "population": 98772,
+      "rank": 43,
+      "sourceCounts": {
+        "merimee": 15,
+        "wikidata": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "roubaix-v1",
+      "cityName": "Roubaix",
+      "cityZoneId": "relation/59043",
+      "inseeCode": "59512",
+      "medalCount": 20,
+      "population": 98286,
+      "rank": 44,
+      "sourceCounts": {
+        "wikidata": 4,
+        "merimee": 15,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "nanterre-v1",
+      "cityName": "Nanterre",
+      "cityZoneId": "relation/85799",
+      "inseeCode": "92050",
+      "medalCount": 20,
+      "population": 97783,
+      "rank": 45,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 19
+      }
+    },
+    {
+      "albumId": "vitry-sur-seine-v1",
+      "cityName": "Vitry-sur-Seine",
+      "cityZoneId": "relation/104768",
+      "inseeCode": "94081",
+      "medalCount": 20,
+      "population": 93963,
+      "rank": 46,
+      "sourceCounts": {
+        "wikidata": 18,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "asnieres-sur-seine-v1",
+      "cityName": "Asnières-sur-Seine",
+      "cityZoneId": "relation/91641",
+      "inseeCode": "92004",
+      "medalCount": 20,
+      "population": 93941,
+      "rank": 47,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "creteil-v1",
+      "cityName": "Créteil",
+      "cityZoneId": "relation/105389",
+      "inseeCode": "94028",
+      "medalCount": 20,
+      "population": 93397,
+      "rank": 48,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "avignon-v1",
+      "cityName": "Avignon",
+      "cityZoneId": "relation/102478",
+      "inseeCode": "84007",
+      "medalCount": 20,
+      "population": 92188,
+      "rank": 49,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 3,
+        "wikidata": 2
+      }
+    },
+    {
+      "albumId": "colombes-v1",
+      "cityName": "Colombes",
+      "cityZoneId": "relation/91738",
+      "inseeCode": "92025",
+      "medalCount": 20,
+      "population": 91053,
+      "rank": 50,
+      "sourceCounts": {
+        "wikidata": 18,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "poitiers-v1",
+      "cityName": "Poitiers",
+      "cityZoneId": "relation/132348",
+      "inseeCode": "86194",
+      "medalCount": 20,
+      "population": 89916,
+      "rank": 51,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "aubervilliers-v1",
+      "cityName": "Aubervilliers",
+      "cityZoneId": "relation/87628",
+      "inseeCode": "93001",
+      "medalCount": 20,
+      "population": 88365,
+      "rank": 52,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "aulnay-sous-bois-v1",
+      "cityName": "Aulnay-sous-Bois",
+      "cityZoneId": "relation/162259",
+      "inseeCode": "93005",
+      "medalCount": 20,
+      "population": 87599,
+      "rank": 53,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "dunkerque-v1",
+      "cityName": "Dunkerque",
+      "cityZoneId": "relation/139610",
+      "inseeCode": "59183",
+      "medalCount": 20,
+      "population": 86263,
+      "rank": 54,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "noumea-v1",
+      "cityName": "Nouméa",
+      "cityZoneId": "relation/377752",
+      "inseeCode": "98818",
+      "medalCount": 20,
+      "population": 85976,
+      "rank": 55,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "saint-pierre-v1",
+      "cityName": "Saint-Pierre",
+      "cityZoneId": "relation/315484",
+      "inseeCode": "97416",
+      "medalCount": 20,
+      "population": 85038,
+      "rank": 56,
+      "sourceCounts": {
+        "merimee": 19,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "versailles-v1",
+      "cityName": "Versailles",
+      "cityZoneId": "relation/30295",
+      "inseeCode": "78646",
+      "medalCount": 20,
+      "population": 84095,
+      "rank": 57,
+      "sourceCounts": {
+        "merimee": 15,
+        "wikidata": 3,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "courbevoie-v1",
+      "cityName": "Courbevoie",
+      "cityZoneId": "relation/91768",
+      "inseeCode": "92026",
+      "medalCount": 20,
+      "population": 82902,
+      "rank": 58,
+      "sourceCounts": {
+        "wikidata": 17,
+        "merimee": 1,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "rueil-malmaison-v1",
+      "cityName": "Rueil-Malmaison",
+      "cityZoneId": "relation/72261",
+      "inseeCode": "92063",
+      "medalCount": 20,
+      "population": 82874,
+      "rank": 59,
+      "sourceCounts": {
+        "wikidata": 14,
+        "merimee": 4,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "le-tampon-v1",
+      "cityName": "Le Tampon",
+      "cityZoneId": "relation/317239",
+      "inseeCode": "97422",
+      "medalCount": 20,
+      "population": 82579,
+      "rank": 60,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "beziers-v1",
+      "cityName": "Béziers",
+      "cityZoneId": "relation/70070",
+      "inseeCode": "34032",
+      "medalCount": 20,
+      "population": 81545,
+      "rank": 61,
+      "sourceCounts": {
+        "merimee": 17,
+        "wikidata": 1,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "pau-v1",
+      "cityName": "Pau",
+      "cityZoneId": "relation/162431",
+      "inseeCode": "64445",
+      "medalCount": 20,
+      "population": 80441,
+      "rank": 62,
+      "sourceCounts": {
+        "merimee": 14,
+        "wikidata": 2,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "la-rochelle-v1",
+      "cityName": "La Rochelle",
+      "cityZoneId": "relation/117858",
+      "inseeCode": "17300",
+      "medalCount": 20,
+      "population": 79851,
+      "rank": 63,
+      "sourceCounts": {
+        "merimee": 15,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "cherbourg-en-cotentin-v1",
+      "cityName": "Cherbourg-en-Cotentin",
+      "cityZoneId": "relation/9070",
+      "inseeCode": "50129",
+      "medalCount": 20,
+      "population": 78258,
+      "rank": 64,
+      "sourceCounts": {
+        "merimee": 15,
+        "wikidata": 2,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "merignac-v1",
+      "cityName": "Mérignac",
+      "cityZoneId": "relation/105275",
+      "inseeCode": "33281",
+      "medalCount": 20,
+      "population": 78090,
+      "rank": 65,
+      "sourceCounts": {
+        "wikidata": 15,
+        "merimee": 5
+      }
+    },
+    {
+      "albumId": "champigny-sur-marne-v1",
+      "cityName": "Champigny-sur-Marne",
+      "cityZoneId": "relation/106735",
+      "inseeCode": "94017",
+      "medalCount": 20,
+      "population": 78072,
+      "rank": 66,
+      "sourceCounts": {
+        "wikidata": 17,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "antibes-v1",
+      "cityName": "Antibes",
+      "cityZoneId": "relation/74687",
+      "inseeCode": "06004",
+      "medalCount": 20,
+      "population": 77637,
+      "rank": 67,
+      "sourceCounts": {
+        "wikidata": 15,
+        "merimee": 3,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "saint-maur-des-fosses-v1",
+      "cityName": "Saint-Maur-des-Fossés",
+      "cityZoneId": "relation/50964",
+      "inseeCode": "94068",
+      "medalCount": 20,
+      "population": 76572,
+      "rank": 68,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 17,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "ajaccio-v1",
+      "cityName": "Ajaccio",
+      "cityZoneId": "relation/73283",
+      "inseeCode": "2A004",
+      "medalCount": 20,
+      "population": 76320,
+      "rank": 69,
+      "sourceCounts": {
+        "merimee": 14,
+        "wikidata": 3,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "fort-de-france-v1",
+      "cityName": "Fort-de-France",
+      "cityZoneId": "relation/290031",
+      "inseeCode": "97209",
+      "medalCount": 20,
+      "population": 75506,
+      "rank": 70,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "saint-nazaire-v1",
+      "cityName": "Saint-Nazaire",
+      "cityZoneId": "relation/182415",
+      "inseeCode": "44184",
+      "medalCount": 20,
+      "population": 74568,
+      "rank": 71,
+      "sourceCounts": {
+        "wikidata": 15,
+        "merimee": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "cannes-v1",
+      "cityName": "Cannes",
+      "cityZoneId": "relation/91734",
+      "inseeCode": "06029",
+      "medalCount": 20,
+      "population": 74350,
+      "rank": 72,
+      "sourceCounts": {
+        "wikidata": 3,
+        "merimee": 16,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "noisy-le-grand-v1",
+      "cityName": "Noisy-le-Grand",
+      "cityZoneId": "relation/130492",
+      "inseeCode": "93051",
+      "medalCount": 20,
+      "population": 72978,
+      "rank": 73,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "drancy-v1",
+      "cityName": "Drancy",
+      "cityZoneId": "relation/158481",
+      "inseeCode": "93029",
+      "medalCount": 20,
+      "population": 72390,
+      "rank": 74,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "mamoudzou-v1",
+      "cityName": "Mamoudzou",
+      "cityZoneId": "relation/3366531",
+      "inseeCode": "97611",
+      "medalCount": 20,
+      "population": 71437,
+      "rank": 75,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "cergy-v1",
+      "cityName": "Cergy",
+      "cityZoneId": "relation/120955",
+      "inseeCode": "95127",
+      "medalCount": 20,
+      "population": 70906,
+      "rank": 76,
+      "sourceCounts": {
+        "wikidata": 18,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "levallois-perret-v1",
+      "cityName": "Levallois-Perret",
+      "cityZoneId": "relation/86985",
+      "inseeCode": "92044",
+      "medalCount": 20,
+      "population": 68092,
+      "rank": 77,
+      "sourceCounts": {
+        "wikidata": 18,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "issy-les-moulineaux-v1",
+      "cityName": "Issy-les-Moulineaux",
+      "cityZoneId": "relation/85527",
+      "inseeCode": "92040",
+      "medalCount": 20,
+      "population": 67669,
+      "rank": 78,
+      "sourceCounts": {
+        "wikidata": 14,
+        "merimee": 5,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "calais-v1",
+      "cityName": "Calais",
+      "cityZoneId": "relation/286380",
+      "inseeCode": "62193",
+      "medalCount": 20,
+      "population": 67571,
+      "rank": 79,
+      "sourceCounts": {
+        "wikidata": 12,
+        "merimee": 6,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "pessac-v1",
+      "cityName": "Pessac",
+      "cityZoneId": "relation/105281",
+      "inseeCode": "33318",
+      "medalCount": 20,
+      "population": 67339,
+      "rank": 80,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "colmar-v1",
+      "cityName": "Colmar",
+      "cityZoneId": "relation/61423",
+      "inseeCode": "68066",
+      "medalCount": 20,
+      "population": 66970,
+      "rank": 81,
+      "sourceCounts": {
+        "merimee": 16,
+        "wikidata": 1,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "evry-courcouronnes-v1",
+      "cityName": "Évry-Courcouronnes",
+      "cityZoneId": "relation/90335",
+      "inseeCode": "91228",
+      "medalCount": 20,
+      "population": 66919,
+      "rank": 82,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "venissieux-v1",
+      "cityName": "Vénissieux",
+      "cityZoneId": "relation/164210",
+      "inseeCode": "69259",
+      "medalCount": 20,
+      "population": 65502,
+      "rank": 83,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "ivry-sur-seine-v1",
+      "cityName": "Ivry-sur-Seine",
+      "cityZoneId": "relation/105748",
+      "inseeCode": "94041",
+      "medalCount": 20,
+      "population": 65064,
+      "rank": 84,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "valence-v1",
+      "cityName": "Valence",
+      "cityZoneId": "relation/37586",
+      "inseeCode": "26362",
+      "medalCount": 20,
+      "population": 64458,
+      "rank": 85,
+      "sourceCounts": {
+        "wikidata": 12,
+        "merimee": 7,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "clichy-v1",
+      "cityName": "Clichy",
+      "cityZoneId": "relation/86999",
+      "inseeCode": "92024",
+      "medalCount": 20,
+      "population": 64410,
+      "rank": 86,
+      "sourceCounts": {
+        "wikidata": 17,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "quimper-v1",
+      "cityName": "Quimper",
+      "cityZoneId": "relation/296095",
+      "inseeCode": "29232",
+      "medalCount": 20,
+      "population": 64385,
+      "rank": 87,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 2,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "antony-v1",
+      "cityName": "Antony",
+      "cityZoneId": "relation/57750",
+      "inseeCode": "92002",
+      "medalCount": 20,
+      "population": 64263,
+      "rank": 88,
+      "sourceCounts": {
+        "wikidata": 19,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "bourges-v1",
+      "cityName": "Bourges",
+      "cityZoneId": "relation/50312",
+      "inseeCode": "18033",
+      "medalCount": 20,
+      "population": 64186,
+      "rank": 89,
+      "sourceCounts": {
+        "merimee": 14,
+        "wikidata": 1,
+        "museofile": 5
+      }
+    },
+    {
+      "albumId": "la-seyne-sur-mer-v1",
+      "cityName": "La Seyne-sur-Mer",
+      "cityZoneId": "relation/29188",
+      "inseeCode": "83126",
+      "medalCount": 20,
+      "population": 63732,
+      "rank": 90,
+      "sourceCounts": {
+        "wikidata": 17,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "montauban-v1",
+      "cityName": "Montauban",
+      "cityZoneId": "relation/137735",
+      "inseeCode": "82121",
+      "medalCount": 20,
+      "population": 62945,
+      "rank": 91,
+      "sourceCounts": {
+        "merimee": 18,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "villeneuve-d-ascq-v1",
+      "cityName": "Villeneuve-d'Ascq",
+      "cityZoneId": "relation/58213",
+      "inseeCode": "59009",
+      "medalCount": 20,
+      "population": 62868,
+      "rank": 92,
+      "sourceCounts": {
+        "wikidata": 15,
+        "merimee": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "cayenne-v1",
+      "cityName": "Cayenne",
+      "cityZoneId": "relation/1663791",
+      "inseeCode": "97302",
+      "medalCount": 20,
+      "population": 62675,
+      "rank": 93,
+      "sourceCounts": {
+        "merimee": 18,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "le-blanc-mesnil-v1",
+      "cityName": "Le Blanc-Mesnil",
+      "cityZoneId": "relation/162209",
+      "inseeCode": "93007",
+      "medalCount": 20,
+      "population": 62376,
+      "rank": 94,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 18
+      }
+    },
+    {
+      "albumId": "troyes-v1",
+      "cityName": "Troyes",
+      "cityZoneId": "relation/414972",
+      "inseeCode": "10387",
+      "medalCount": 20,
+      "population": 62088,
+      "rank": 95,
+      "sourceCounts": {
+        "merimee": 14,
+        "museofile": 6
+      }
+    },
+    {
+      "albumId": "pantin-v1",
+      "cityName": "Pantin",
+      "cityZoneId": "relation/67685",
+      "inseeCode": "93055",
+      "medalCount": 20,
+      "population": 61929,
+      "rank": 96,
+      "sourceCounts": {
+        "wikidata": 18,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "villejuif-v1",
+      "cityName": "Villejuif",
+      "cityZoneId": "relation/105146",
+      "inseeCode": "94076",
+      "medalCount": 20,
+      "population": 60183,
+      "rank": 97,
+      "sourceCounts": {
+        "wikidata": 20
+      }
+    },
+    {
+      "albumId": "chambery-v1",
+      "cityName": "Chambéry",
+      "cityZoneId": "relation/74386",
+      "inseeCode": "73065",
+      "medalCount": 20,
+      "population": 59964,
+      "rank": 98,
+      "sourceCounts": {
+        "merimee": 16,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "niort-v1",
+      "cityName": "Niort",
+      "cityZoneId": "relation/150303",
+      "inseeCode": "79191",
+      "medalCount": 20,
+      "population": 59854,
+      "rank": 99,
+      "sourceCounts": {
+        "merimee": 16,
+        "wikidata": 1,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "frejus-v1",
+      "cityName": "Fréjus",
+      "cityZoneId": "relation/186322",
+      "inseeCode": "83061",
+      "medalCount": 20,
+      "population": 59719,
+      "rank": 100,
+      "sourceCounts": {
+        "merimee": 17,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "neuilly-sur-seine-v1",
+      "cityName": "Neuilly-sur-Seine",
+      "cityZoneId": "relation/85802",
+      "inseeCode": "92051",
+      "medalCount": 10,
+      "population": 59538,
+      "rank": 101,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "sarcelles-v1",
+      "cityName": "Sarcelles",
+      "cityZoneId": "relation/222531",
+      "inseeCode": "95585",
+      "medalCount": 10,
+      "population": 59173,
+      "rank": 102,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "saint-andre-v1",
+      "cityName": "Saint-André",
+      "cityZoneId": "relation/280118",
+      "inseeCode": "97409",
+      "medalCount": 10,
+      "population": 58885,
+      "rank": 103,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "clamart-v1",
+      "cityName": "Clamart",
+      "cityZoneId": "relation/29036",
+      "inseeCode": "92023",
+      "medalCount": 10,
+      "population": 58576,
+      "rank": 104,
+      "sourceCounts": {
+        "merimee": 5,
+        "wikidata": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "lorient-v1",
+      "cityName": "Lorient",
+      "cityZoneId": "relation/30305",
+      "inseeCode": "56121",
+      "medalCount": 10,
+      "population": 58329,
+      "rank": 105,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "narbonne-v1",
+      "cityName": "Narbonne",
+      "cityZoneId": "relation/54737",
+      "inseeCode": "11262",
+      "medalCount": 10,
+      "population": 57587,
+      "rank": 106,
+      "sourceCounts": {
+        "merimee": 5,
+        "wikidata": 3,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "bobigny-v1",
+      "cityName": "Bobigny",
+      "cityZoneId": "relation/131240",
+      "inseeCode": "93008",
+      "medalCount": 10,
+      "population": 56927,
+      "rank": 107,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "meaux-v1",
+      "cityName": "Meaux",
+      "cityZoneId": "relation/86609",
+      "inseeCode": "77284",
+      "medalCount": 10,
+      "population": 56905,
+      "rank": 108,
+      "sourceCounts": {
+        "wikidata": 1,
+        "merimee": 7,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "maisons-alfort-v1",
+      "cityName": "Maisons-Alfort",
+      "cityZoneId": "relation/105404",
+      "inseeCode": "94046",
+      "medalCount": 10,
+      "population": 56799,
+      "rank": 109,
+      "sourceCounts": {
+        "merimee": 5,
+        "wikidata": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "hyeres-v1",
+      "cityName": "Hyères",
+      "cityZoneId": "relation/380060",
+      "inseeCode": "83069",
+      "medalCount": 10,
+      "population": 55858,
+      "rank": 110,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "vannes-v1",
+      "cityName": "Vannes",
+      "cityZoneId": "relation/192306",
+      "inseeCode": "56260",
+      "medalCount": 10,
+      "population": 55790,
+      "rank": 111,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "beauvais-v1",
+      "cityName": "Beauvais",
+      "cityZoneId": "relation/158311",
+      "inseeCode": "60057",
+      "medalCount": 10,
+      "population": 55550,
+      "rank": 112,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saint-louis-97414-v1",
+      "cityName": "Saint-Louis",
+      "cityZoneId": "relation/1282229",
+      "inseeCode": "97414",
+      "medalCount": 10,
+      "population": 54941,
+      "rank": 113,
+      "sourceCounts": {
+        "merimee": 4,
+        "wikidata": 6
+      }
+    },
+    {
+      "albumId": "la-roche-sur-yon-v1",
+      "cityName": "La Roche-sur-Yon",
+      "cityZoneId": "relation/166641",
+      "inseeCode": "85191",
+      "medalCount": 10,
+      "population": 54849,
+      "rank": 114,
+      "sourceCounts": {
+        "merimee": 4,
+        "wikidata": 5,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "chelles-v1",
+      "cityName": "Chelles",
+      "cityZoneId": "relation/402614",
+      "inseeCode": "77108",
+      "medalCount": 10,
+      "population": 54620,
+      "rank": 115,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 7,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "corbeil-essonnes-v1",
+      "cityName": "Corbeil-Essonnes",
+      "cityZoneId": "relation/149203",
+      "inseeCode": "91174",
+      "medalCount": 10,
+      "population": 54471,
+      "rank": 116,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "saint-laurent-du-maroni-v1",
+      "cityName": "Saint-Laurent-du-Maroni",
+      "cityZoneId": "relation/1663806",
+      "inseeCode": "97311",
+      "medalCount": 10,
+      "population": 54429,
+      "rank": 117,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "cholet-v1",
+      "cityName": "Cholet",
+      "cityZoneId": "relation/286516",
+      "inseeCode": "49099",
+      "medalCount": 10,
+      "population": 54404,
+      "rank": 118,
+      "sourceCounts": {
+        "wikidata": 5,
+        "merimee": 3,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "bayonne-v1",
+      "cityName": "Bayonne",
+      "cityZoneId": "relation/166713",
+      "inseeCode": "64102",
+      "medalCount": 10,
+      "population": 54306,
+      "rank": 119,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "fontenay-sous-bois-v1",
+      "cityName": "Fontenay-sous-Bois",
+      "cityZoneId": "relation/109366",
+      "inseeCode": "94033",
+      "medalCount": 10,
+      "population": 53757,
+      "rank": 120,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "saint-ouen-sur-seine-v1",
+      "cityName": "Saint-Ouen-sur-Seine",
+      "cityZoneId": "relation/87002",
+      "inseeCode": "93070",
+      "medalCount": 10,
+      "population": 53615,
+      "rank": 121,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 8,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "cagnes-sur-mer-v1",
+      "cityName": "Cagnes-sur-Mer",
+      "cityZoneId": "relation/78617",
+      "inseeCode": "06027",
+      "medalCount": 10,
+      "population": 53354,
+      "rank": 122,
+      "sourceCounts": {
+        "wikidata": 5,
+        "merimee": 3,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "vaulx-en-velin-v1",
+      "cityName": "Vaulx-en-Velin",
+      "cityZoneId": "relation/112529",
+      "inseeCode": "69256",
+      "medalCount": 10,
+      "population": 53069,
+      "rank": 123,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "epinay-sur-seine-v1",
+      "cityName": "Épinay-sur-Seine",
+      "cityZoneId": "relation/162856",
+      "inseeCode": "93031",
+      "medalCount": 10,
+      "population": 52833,
+      "rank": 124,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "saint-quentin-v1",
+      "cityName": "Saint-Quentin",
+      "cityZoneId": "relation/153656",
+      "inseeCode": "02691",
+      "medalCount": 10,
+      "population": 52813,
+      "rank": 125,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "sartrouville-v1",
+      "cityName": "Sartrouville",
+      "cityZoneId": "relation/75022",
+      "inseeCode": "78586",
+      "medalCount": 10,
+      "population": 52763,
+      "rank": 126,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "sevran-v1",
+      "cityName": "Sevran",
+      "cityZoneId": "relation/162527",
+      "inseeCode": "93071",
+      "medalCount": 10,
+      "population": 52535,
+      "rank": 127,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "arles-v1",
+      "cityName": "Arles",
+      "cityZoneId": "relation/73911",
+      "inseeCode": "13004",
+      "medalCount": 10,
+      "population": 51811,
+      "rank": 128,
+      "sourceCounts": {
+        "merimee": 6,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "massy-v1",
+      "cityName": "Massy",
+      "cityZoneId": "relation/29251",
+      "inseeCode": "91377",
+      "medalCount": 10,
+      "population": 51729,
+      "rank": 129,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "albi-v1",
+      "cityName": "Albi",
+      "cityZoneId": "relation/135628",
+      "inseeCode": "81004",
+      "medalCount": 10,
+      "population": 51290,
+      "rank": 130,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "les-abymes-v1",
+      "cityName": "Les Abymes",
+      "cityZoneId": "relation/239133",
+      "inseeCode": "97101",
+      "medalCount": 10,
+      "population": 51055,
+      "rank": 131,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "gennevilliers-v1",
+      "cityName": "Gennevilliers",
+      "cityZoneId": "relation/90082",
+      "inseeCode": "92036",
+      "medalCount": 10,
+      "population": 50979,
+      "rank": 132,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-herblain-v1",
+      "cityName": "Saint-Herblain",
+      "cityZoneId": "relation/64362",
+      "inseeCode": "44162",
+      "medalCount": 10,
+      "population": 50973,
+      "rank": 133,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "grasse-v1",
+      "cityName": "Grasse",
+      "cityZoneId": "relation/102748",
+      "inseeCode": "06069",
+      "medalCount": 10,
+      "population": 50970,
+      "rank": 134,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "bondy-v1",
+      "cityName": "Bondy",
+      "cityZoneId": "relation/158667",
+      "inseeCode": "93010",
+      "medalCount": 10,
+      "population": 50595,
+      "rank": 135,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "les-sables-d-olonne-v1",
+      "cityName": "Les Sables-d'Olonne",
+      "cityZoneId": "relation/156591",
+      "inseeCode": "85194",
+      "medalCount": 10,
+      "population": 49603,
+      "rank": 136,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "laval-v1",
+      "cityName": "Laval",
+      "cityZoneId": "relation/393284",
+      "inseeCode": "53130",
+      "medalCount": 10,
+      "population": 49400,
+      "rank": 137,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "evreux-v1",
+      "cityName": "Évreux",
+      "cityZoneId": "relation/543082",
+      "inseeCode": "27229",
+      "medalCount": 10,
+      "population": 49360,
+      "rank": 138,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saint-priest-v1",
+      "cityName": "Saint-Priest",
+      "cityZoneId": "relation/164199",
+      "inseeCode": "69290",
+      "medalCount": 10,
+      "population": 49229,
+      "rank": 139,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "suresnes-v1",
+      "cityName": "Suresnes",
+      "cityZoneId": "relation/72258",
+      "inseeCode": "92073",
+      "medalCount": 10,
+      "population": 48956,
+      "rank": 140,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "martigues-v1",
+      "cityName": "Martigues",
+      "cityZoneId": "relation/74266",
+      "inseeCode": "13056",
+      "medalCount": 10,
+      "population": 48298,
+      "rank": 141,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 6,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "vincennes-v1",
+      "cityName": "Vincennes",
+      "cityZoneId": "relation/108346",
+      "inseeCode": "94080",
+      "medalCount": 10,
+      "population": 48193,
+      "rank": 142,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "aubagne-v1",
+      "cityName": "Aubagne",
+      "cityZoneId": "relation/74272",
+      "inseeCode": "13005",
+      "medalCount": 10,
+      "population": 47529,
+      "rank": 143,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-malo-v1",
+      "cityName": "Saint-Malo",
+      "cityZoneId": "relation/905534",
+      "inseeCode": "35288",
+      "medalCount": 10,
+      "population": 47439,
+      "rank": 144,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "livry-gargan-v1",
+      "cityName": "Livry-Gargan",
+      "cityZoneId": "relation/162566",
+      "inseeCode": "93046",
+      "medalCount": 10,
+      "population": 47228,
+      "rank": 145,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "blois-v1",
+      "cityName": "Blois",
+      "cityZoneId": "relation/273622",
+      "inseeCode": "41018",
+      "medalCount": 10,
+      "population": 47219,
+      "rank": 146,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "rosny-sous-bois-v1",
+      "cityName": "Rosny-sous-Bois",
+      "cityZoneId": "relation/130580",
+      "inseeCode": "93064",
+      "medalCount": 10,
+      "population": 47180,
+      "rank": 147,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "la-courneuve-v1",
+      "cityName": "La Courneuve",
+      "cityZoneId": "relation/138211",
+      "inseeCode": "93027",
+      "medalCount": 10,
+      "population": 47167,
+      "rank": 148,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "brive-la-gaillarde-v1",
+      "cityName": "Brive-la-Gaillarde",
+      "cityZoneId": "relation/120557",
+      "inseeCode": "19031",
+      "medalCount": 10,
+      "population": 47095,
+      "rank": 149,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "bastia-v1",
+      "cityName": "Bastia",
+      "cityZoneId": "relation/73444",
+      "inseeCode": "2B033",
+      "medalCount": 10,
+      "population": 46867,
+      "rank": 150,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "talence-v1",
+      "cityName": "Talence",
+      "cityZoneId": "relation/105267",
+      "inseeCode": "33522",
+      "medalCount": 10,
+      "population": 46338,
+      "rank": 151,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 4
+      }
+    },
+    {
+      "albumId": "meudon-v1",
+      "cityName": "Meudon",
+      "cityZoneId": "relation/31341",
+      "inseeCode": "92048",
+      "medalCount": 10,
+      "population": 46334,
+      "rank": 152,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montrouge-v1",
+      "cityName": "Montrouge",
+      "cityZoneId": "relation/37026",
+      "inseeCode": "92049",
+      "medalCount": 10,
+      "population": 46324,
+      "rank": 153,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "ales-v1",
+      "cityName": "Alès",
+      "cityZoneId": "relation/76009",
+      "inseeCode": "30007",
+      "medalCount": 10,
+      "population": 46125,
+      "rank": 154,
+      "sourceCounts": {
+        "wikidata": 4,
+        "merimee": 4,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "carcassonne-v1",
+      "cityName": "Carcassonne",
+      "cityZoneId": "relation/37774",
+      "inseeCode": "11069",
+      "medalCount": 10,
+      "population": 46080,
+      "rank": 155,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "melun-v1",
+      "cityName": "Melun",
+      "cityZoneId": "relation/80071",
+      "inseeCode": "77288",
+      "medalCount": 10,
+      "population": 45995,
+      "rank": 156,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "choisy-le-roi-v1",
+      "cityName": "Choisy-le-Roi",
+      "cityZoneId": "relation/104268",
+      "inseeCode": "94022",
+      "medalCount": 10,
+      "population": 45946,
+      "rank": 157,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "saint-germain-en-laye-v1",
+      "cityName": "Saint-Germain-en-Laye",
+      "cityZoneId": "relation/75454",
+      "inseeCode": "78551",
+      "medalCount": 10,
+      "population": 45931,
+      "rank": 158,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "belfort-v1",
+      "cityName": "Belfort",
+      "cityZoneId": "relation/75618",
+      "inseeCode": "90010",
+      "medalCount": 10,
+      "population": 45912,
+      "rank": 159,
+      "sourceCounts": {
+        "museofile": 2,
+        "merimee": 8
+      }
+    },
+    {
+      "albumId": "charleville-mezieres-v1",
+      "cityName": "Charleville-Mézières",
+      "cityZoneId": "relation/153838",
+      "inseeCode": "08105",
+      "medalCount": 10,
+      "population": 45560,
+      "rank": 160,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "alfortville-v1",
+      "cityName": "Alfortville",
+      "cityZoneId": "relation/104271",
+      "inseeCode": "94002",
+      "medalCount": 10,
+      "population": 45531,
+      "rank": 161,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "noisy-le-sec-v1",
+      "cityName": "Noisy-le-Sec",
+      "cityZoneId": "relation/131216",
+      "inseeCode": "93053",
+      "medalCount": 10,
+      "population": 45510,
+      "rank": 162,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "sete-v1",
+      "cityName": "Sète",
+      "cityZoneId": "relation/255450",
+      "inseeCode": "34301",
+      "medalCount": 10,
+      "population": 45337,
+      "rank": 163,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "chalon-sur-saone-v1",
+      "cityName": "Chalon-sur-Saône",
+      "cityZoneId": "relation/2078971",
+      "inseeCode": "71076",
+      "medalCount": 10,
+      "population": 45102,
+      "rank": 164,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "bagneux-v1",
+      "cityName": "Bagneux",
+      "cityZoneId": "relation/37025",
+      "inseeCode": "92007",
+      "medalCount": 10,
+      "population": 44572,
+      "rank": 165,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "tarbes-v1",
+      "cityName": "Tarbes",
+      "cityZoneId": "relation/159060",
+      "inseeCode": "65440",
+      "medalCount": 10,
+      "population": 44399,
+      "rank": 166,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saint-brieuc-v1",
+      "cityName": "Saint-Brieuc",
+      "cityZoneId": "relation/301829",
+      "inseeCode": "22278",
+      "medalCount": 10,
+      "population": 44364,
+      "rank": 167,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "istres-v1",
+      "cityName": "Istres",
+      "cityZoneId": "relation/96764",
+      "inseeCode": "13047",
+      "medalCount": 10,
+      "population": 44292,
+      "rank": 168,
+      "sourceCounts": {
+        "wikidata": 7,
+        "museofile": 1,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "salon-de-provence-v1",
+      "cityName": "Salon-de-Provence",
+      "cityZoneId": "relation/70295",
+      "inseeCode": "13103",
+      "medalCount": 10,
+      "population": 44194,
+      "rank": 169,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "puteaux-v1",
+      "cityName": "Puteaux",
+      "cityZoneId": "relation/91776",
+      "inseeCode": "92062",
+      "medalCount": 10,
+      "population": 44002,
+      "rank": 170,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "caluire-et-cuire-v1",
+      "cityName": "Caluire-et-Cuire",
+      "cityZoneId": "relation/90737",
+      "inseeCode": "69034",
+      "medalCount": 10,
+      "population": 43597,
+      "rank": 171,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "reze-v1",
+      "cityName": "Rezé",
+      "cityZoneId": "relation/60966",
+      "inseeCode": "44143",
+      "medalCount": 10,
+      "population": 43556,
+      "rank": 172,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "mantes-la-jolie-v1",
+      "cityName": "Mantes-la-Jolie",
+      "cityZoneId": "relation/386602",
+      "inseeCode": "78361",
+      "medalCount": 10,
+      "population": 43526,
+      "rank": 173,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "valenciennes-v1",
+      "cityName": "Valenciennes",
+      "cityZoneId": "relation/53355",
+      "inseeCode": "59606",
+      "medalCount": 10,
+      "population": 43468,
+      "rank": 174,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "anglet-v1",
+      "cityName": "Anglet",
+      "cityZoneId": "relation/422124",
+      "inseeCode": "64024",
+      "medalCount": 10,
+      "population": 43271,
+      "rank": 175,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "bagnolet-v1",
+      "cityName": "Bagnolet",
+      "cityZoneId": "relation/129550",
+      "inseeCode": "93006",
+      "medalCount": 10,
+      "population": 43086,
+      "rank": 176,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "bron-v1",
+      "cityName": "Bron",
+      "cityZoneId": "relation/164214",
+      "inseeCode": "69029",
+      "medalCount": 10,
+      "population": 42982,
+      "rank": 177,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "chalons-en-champagne-v1",
+      "cityName": "Châlons-en-Champagne",
+      "cityZoneId": "relation/417365",
+      "inseeCode": "51108",
+      "medalCount": 10,
+      "population": 42971,
+      "rank": 178,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "chateauroux-v1",
+      "cityName": "Châteauroux",
+      "cityZoneId": "relation/1536593",
+      "inseeCode": "36044",
+      "medalCount": 10,
+      "population": 42963,
+      "rank": 179,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "arras-v1",
+      "cityName": "Arras",
+      "cityZoneId": "relation/1121015",
+      "inseeCode": "62041",
+      "medalCount": 10,
+      "population": 42875,
+      "rank": 180,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "thionville-v1",
+      "cityName": "Thionville",
+      "cityZoneId": "relation/123302",
+      "inseeCode": "57672",
+      "medalCount": 10,
+      "population": 42658,
+      "rank": 181,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "villenave-d-ornon-v1",
+      "cityName": "Villenave-d'Ornon",
+      "cityZoneId": "relation/105273",
+      "inseeCode": "33550",
+      "medalCount": 10,
+      "population": 42545,
+      "rank": 182,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "castres-v1",
+      "cityName": "Castres",
+      "cityZoneId": "relation/135627",
+      "inseeCode": "81065",
+      "medalCount": 10,
+      "population": 42505,
+      "rank": 183,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "bourg-en-bresse-v1",
+      "cityName": "Bourg-en-Bresse",
+      "cityZoneId": "relation/140253",
+      "inseeCode": "01053",
+      "medalCount": 10,
+      "population": 42372,
+      "rank": 184,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "gagny-v1",
+      "cityName": "Gagny",
+      "cityZoneId": "relation/162542",
+      "inseeCode": "93032",
+      "medalCount": 10,
+      "population": 42313,
+      "rank": 185,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "le-cannet-v1",
+      "cityName": "Le Cannet",
+      "cityZoneId": "relation/91840",
+      "inseeCode": "06030",
+      "medalCount": 10,
+      "population": 41938,
+      "rank": 186,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 3,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "angouleme-v1",
+      "cityName": "Angoulême",
+      "cityZoneId": "relation/85809",
+      "inseeCode": "16015",
+      "medalCount": 10,
+      "population": 41908,
+      "rank": 187,
+      "sourceCounts": {
+        "merimee": 6,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "garges-les-gonesse-v1",
+      "cityName": "Garges-lès-Gonesse",
+      "cityZoneId": "relation/452532",
+      "inseeCode": "95268",
+      "medalCount": 10,
+      "population": 41791,
+      "rank": 188,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "villepinte-v1",
+      "cityName": "Villepinte",
+      "cityZoneId": "relation/162261",
+      "inseeCode": "93078",
+      "medalCount": 10,
+      "population": 41470,
+      "rank": 189,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "stains-v1",
+      "cityName": "Stains",
+      "cityZoneId": "relation/158809",
+      "inseeCode": "93072",
+      "medalCount": 10,
+      "population": 41388,
+      "rank": 190,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "gap-v1",
+      "cityName": "Gap",
+      "cityZoneId": "relation/367142",
+      "inseeCode": "05061",
+      "medalCount": 10,
+      "population": 41293,
+      "rank": 191,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 6,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "poissy-v1",
+      "cityName": "Poissy",
+      "cityZoneId": "relation/911088",
+      "inseeCode": "78498",
+      "medalCount": 10,
+      "population": 40983,
+      "rank": 192,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "colomiers-v1",
+      "cityName": "Colomiers",
+      "cityZoneId": "relation/35078",
+      "inseeCode": "31149",
+      "medalCount": 10,
+      "population": 40882,
+      "rank": 193,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "wattrelos-v1",
+      "cityName": "Wattrelos",
+      "cityZoneId": "relation/59049",
+      "inseeCode": "59650",
+      "medalCount": 10,
+      "population": 40847,
+      "rank": 194,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "draguignan-v1",
+      "cityName": "Draguignan",
+      "cityZoneId": "relation/125329",
+      "inseeCode": "83050",
+      "medalCount": 10,
+      "population": 40826,
+      "rank": 195,
+      "sourceCounts": {
+        "merimee": 6,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "compiegne-v1",
+      "cityName": "Compiègne",
+      "cityZoneId": "relation/195340",
+      "inseeCode": "60159",
+      "medalCount": 10,
+      "population": 40761,
+      "rank": 196,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "montelimar-v1",
+      "cityName": "Montélimar",
+      "cityZoneId": "relation/70292",
+      "inseeCode": "26198",
+      "medalCount": 10,
+      "population": 40595,
+      "rank": 197,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "boulogne-sur-mer-v1",
+      "cityName": "Boulogne-sur-Mer",
+      "cityZoneId": "relation/240377",
+      "inseeCode": "62160",
+      "medalCount": 10,
+      "population": 40539,
+      "rank": 198,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "douai-v1",
+      "cityName": "Douai",
+      "cityZoneId": "relation/56243",
+      "inseeCode": "59178",
+      "medalCount": 10,
+      "population": 40250,
+      "rank": 199,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "marcq-en-bar-ul-v1",
+      "cityName": "Marcq-en-Barœul",
+      "cityZoneId": "relation/58686",
+      "inseeCode": "59378",
+      "medalCount": 10,
+      "population": 40184,
+      "rank": 200,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "neuilly-sur-marne-v1",
+      "cityName": "Neuilly-sur-Marne",
+      "cityZoneId": "relation/162562",
+      "inseeCode": "93050",
+      "medalCount": 10,
+      "population": 39800,
+      "rank": 201,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "le-lamentin-v1",
+      "cityName": "Le Lamentin",
+      "cityZoneId": "relation/299032",
+      "inseeCode": "97213",
+      "medalCount": 10,
+      "population": 39400,
+      "rank": 202,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "saint-joseph-v1",
+      "cityName": "Saint-Joseph",
+      "cityZoneId": "relation/1282272",
+      "inseeCode": "97412",
+      "medalCount": 10,
+      "population": 39207,
+      "rank": 203,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "pontault-combault-v1",
+      "cityName": "Pontault-Combault",
+      "cityZoneId": "relation/403055",
+      "inseeCode": "77373",
+      "medalCount": 10,
+      "population": 39096,
+      "rank": 204,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "saint-benoit-v1",
+      "cityName": "Saint-Benoît",
+      "cityZoneId": "relation/280168",
+      "inseeCode": "97410",
+      "medalCount": 10,
+      "population": 38604,
+      "rank": 205,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "la-ciotat-v1",
+      "cityName": "La Ciotat",
+      "cityZoneId": "relation/67741",
+      "inseeCode": "13028",
+      "medalCount": 10,
+      "population": 38477,
+      "rank": 206,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "joue-les-tours-v1",
+      "cityName": "Joué-lès-Tours",
+      "cityZoneId": "relation/76340",
+      "inseeCode": "37122",
+      "medalCount": 10,
+      "population": 38423,
+      "rank": 207,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 4
+      }
+    },
+    {
+      "albumId": "tremblay-en-france-v1",
+      "cityName": "Tremblay-en-France",
+      "cityZoneId": "relation/160818",
+      "inseeCode": "93073",
+      "medalCount": 10,
+      "population": 38348,
+      "rank": 208,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "chartres-v1",
+      "cityName": "Chartres",
+      "cityZoneId": "relation/276905",
+      "inseeCode": "28085",
+      "medalCount": 10,
+      "population": 38324,
+      "rank": 209,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "oullins-pierre-benite-v1",
+      "cityName": "Oullins-Pierre-Bénite",
+      "cityZoneId": "relation/186363",
+      "inseeCode": "69149",
+      "medalCount": 10,
+      "population": 38168,
+      "rank": 210,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "thonon-les-bains-v1",
+      "cityName": "Thonon-les-Bains",
+      "cityZoneId": "relation/105786",
+      "inseeCode": "74281",
+      "medalCount": 10,
+      "population": 37928,
+      "rank": 211,
+      "sourceCounts": {
+        "openstreetmap": 10
+      }
+    },
+    {
+      "albumId": "franconville-v1",
+      "cityName": "Franconville",
+      "cityZoneId": "relation/115249",
+      "inseeCode": "95252",
+      "medalCount": 10,
+      "population": 37754,
+      "rank": 212,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-martin-d-heres-v1",
+      "cityName": "Saint-Martin-d'Hères",
+      "cityZoneId": "relation/80349",
+      "inseeCode": "38421",
+      "medalCount": 10,
+      "population": 37695,
+      "rank": 213,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "annemasse-v1",
+      "cityName": "Annemasse",
+      "cityZoneId": "relation/104959",
+      "inseeCode": "74012",
+      "medalCount": 10,
+      "population": 37628,
+      "rank": 214,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "savigny-sur-orge-v1",
+      "cityName": "Savigny-sur-Orge",
+      "cityZoneId": "relation/33429",
+      "inseeCode": "91589",
+      "medalCount": 10,
+      "population": 37601,
+      "rank": 215,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "echirolles-v1",
+      "cityName": "Échirolles",
+      "cityZoneId": "relation/105162",
+      "inseeCode": "38151",
+      "medalCount": 10,
+      "population": 37491,
+      "rank": 216,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "palaiseau-v1",
+      "cityName": "Palaiseau",
+      "cityZoneId": "relation/33504",
+      "inseeCode": "91477",
+      "medalCount": 10,
+      "population": 37471,
+      "rank": 217,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "romainville-v1",
+      "cityName": "Romainville",
+      "cityZoneId": "relation/130632",
+      "inseeCode": "93063",
+      "medalCount": 10,
+      "population": 37152,
+      "rank": 218,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-raphael-v1",
+      "cityName": "Saint-Raphaël",
+      "cityZoneId": "relation/190208",
+      "inseeCode": "83118",
+      "medalCount": 10,
+      "population": 37113,
+      "rank": 219,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "six-fours-les-plages-v1",
+      "cityName": "Six-Fours-les-Plages",
+      "cityZoneId": "relation/194637",
+      "inseeCode": "83129",
+      "medalCount": 10,
+      "population": 37109,
+      "rank": 220,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "sainte-marie-v1",
+      "cityName": "Sainte-Marie",
+      "cityZoneId": "relation/280212",
+      "inseeCode": "97418",
+      "medalCount": 10,
+      "population": 37093,
+      "rank": 221,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "conflans-sainte-honorine-v1",
+      "cityName": "Conflans-Sainte-Honorine",
+      "cityZoneId": "relation/75461",
+      "inseeCode": "78172",
+      "medalCount": 10,
+      "population": 36958,
+      "rank": 222,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "vitrolles-v1",
+      "cityName": "Vitrolles",
+      "cityZoneId": "relation/71321",
+      "inseeCode": "13117",
+      "medalCount": 10,
+      "population": 36758,
+      "rank": 223,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "chatillon-v1",
+      "cityName": "Châtillon",
+      "cityZoneId": "relation/37020",
+      "inseeCode": "92020",
+      "medalCount": 10,
+      "population": 36705,
+      "rank": 224,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "meyzieu-v1",
+      "cityName": "Meyzieu",
+      "cityZoneId": "relation/122349",
+      "inseeCode": "69282",
+      "medalCount": 10,
+      "population": 36687,
+      "rank": 225,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "athis-mons-v1",
+      "cityName": "Athis-Mons",
+      "cityZoneId": "relation/29366",
+      "inseeCode": "91027",
+      "medalCount": 10,
+      "population": 36613,
+      "rank": 226,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "la-possession-v1",
+      "cityName": "La Possession",
+      "cityZoneId": "relation/278304",
+      "inseeCode": "97408",
+      "medalCount": 10,
+      "population": 36568,
+      "rank": 227,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "matoury-v1",
+      "cityName": "Matoury",
+      "cityZoneId": "relation/1663798",
+      "inseeCode": "97307",
+      "medalCount": 10,
+      "population": 36512,
+      "rank": 228,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "bezons-v1",
+      "cityName": "Bezons",
+      "cityZoneId": "relation/103270",
+      "inseeCode": "95063",
+      "medalCount": 10,
+      "population": 36434,
+      "rank": 229,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "haguenau-v1",
+      "cityName": "Haguenau",
+      "cityZoneId": "relation/89859",
+      "inseeCode": "67180",
+      "medalCount": 10,
+      "population": 36391,
+      "rank": 230,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "creil-v1",
+      "cityName": "Creil",
+      "cityZoneId": "relation/142098",
+      "inseeCode": "60175",
+      "medalCount": 10,
+      "population": 36301,
+      "rank": 231,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 6,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "villeneuve-saint-georges-v1",
+      "cityName": "Villeneuve-Saint-Georges",
+      "cityZoneId": "relation/105014",
+      "inseeCode": "94078",
+      "medalCount": 10,
+      "population": 36221,
+      "rank": 232,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "villefranche-sur-saone-v1",
+      "cityName": "Villefranche-sur-Saône",
+      "cityZoneId": "relation/74082",
+      "inseeCode": "69264",
+      "medalCount": 10,
+      "population": 36172,
+      "rank": 233,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 3,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saint-leu-v1",
+      "cityName": "Saint-Leu",
+      "cityZoneId": "relation/289451",
+      "inseeCode": "97413",
+      "medalCount": 10,
+      "population": 36163,
+      "rank": 234,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 8,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "chatenay-malabry-v1",
+      "cityName": "Châtenay-Malabry",
+      "cityZoneId": "relation/33914",
+      "inseeCode": "92019",
+      "medalCount": 10,
+      "population": 35825,
+      "rank": 235,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "saint-chamond-v1",
+      "cityName": "Saint-Chamond",
+      "cityZoneId": "relation/122931",
+      "inseeCode": "42207",
+      "medalCount": 10,
+      "population": 35646,
+      "rank": 236,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "sainte-genevieve-des-bois-v1",
+      "cityName": "Sainte-Geneviève-des-Bois",
+      "cityZoneId": "relation/33338",
+      "inseeCode": "91549",
+      "medalCount": 10,
+      "population": 35438,
+      "rank": 237,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "roanne-v1",
+      "cityName": "Roanne",
+      "cityZoneId": "relation/134383",
+      "inseeCode": "42187",
+      "medalCount": 10,
+      "population": 35409,
+      "rank": 238,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "le-perreux-sur-marne-v1",
+      "cityName": "Le Perreux-sur-Marne",
+      "cityZoneId": "relation/108312",
+      "inseeCode": "94058",
+      "medalCount": 10,
+      "population": 35260,
+      "rank": 239,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "macon-v1",
+      "cityName": "Mâcon",
+      "cityZoneId": "relation/912201",
+      "inseeCode": "71270",
+      "medalCount": 10,
+      "population": 35177,
+      "rank": 240,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "auxerre-v1",
+      "cityName": "Auxerre",
+      "cityZoneId": "relation/282525",
+      "inseeCode": "89024",
+      "medalCount": 10,
+      "population": 35097,
+      "rank": 241,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "dumbea-v1",
+      "cityName": "Dumbéa",
+      "cityZoneId": "relation/377753",
+      "inseeCode": "98805",
+      "medalCount": 10,
+      "population": 34926,
+      "rank": 242,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "schiltigheim-v1",
+      "cityName": "Schiltigheim",
+      "cityZoneId": "relation/69730",
+      "inseeCode": "67447",
+      "medalCount": 10,
+      "population": 34708,
+      "rank": 243,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "trappes-v1",
+      "cityName": "Trappes",
+      "cityZoneId": "relation/49540",
+      "inseeCode": "78621",
+      "medalCount": 10,
+      "population": 34689,
+      "rank": 244,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "les-mureaux-v1",
+      "cityName": "Les Mureaux",
+      "cityZoneId": "relation/444123",
+      "inseeCode": "78440",
+      "medalCount": 10,
+      "population": 34632,
+      "rank": 245,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "houilles-v1",
+      "cityName": "Houilles",
+      "cityZoneId": "relation/75003",
+      "inseeCode": "78311",
+      "medalCount": 10,
+      "population": 33983,
+      "rank": 246,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "le-port-v1",
+      "cityName": "Le Port",
+      "cityZoneId": "relation/278311",
+      "inseeCode": "97407",
+      "medalCount": 10,
+      "population": 33969,
+      "rank": 247,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "marignane-v1",
+      "cityName": "Marignane",
+      "cityZoneId": "relation/72113",
+      "inseeCode": "13054",
+      "medalCount": 10,
+      "population": 33692,
+      "rank": 248,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "romans-sur-isere-v1",
+      "cityName": "Romans-sur-Isère",
+      "cityZoneId": "relation/36664",
+      "inseeCode": "26281",
+      "medalCount": 10,
+      "population": 33464,
+      "rank": 249,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "villiers-sur-marne-v1",
+      "cityName": "Villiers-sur-Marne",
+      "cityZoneId": "relation/108300",
+      "inseeCode": "94079",
+      "medalCount": 10,
+      "population": 33162,
+      "rank": 250,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montlucon-v1",
+      "cityName": "Montluçon",
+      "cityZoneId": "relation/110282",
+      "inseeCode": "03185",
+      "medalCount": 10,
+      "population": 33147,
+      "rank": 251,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "nevers-v1",
+      "cityName": "Nevers",
+      "cityZoneId": "relation/161753",
+      "inseeCode": "58194",
+      "medalCount": 10,
+      "population": 33085,
+      "rank": 252,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "lens-v1",
+      "cityName": "Lens",
+      "cityZoneId": "relation/1175586",
+      "inseeCode": "62498",
+      "medalCount": 10,
+      "population": 32920,
+      "rank": 253,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "thiais-v1",
+      "cityName": "Thiais",
+      "cityZoneId": "relation/104767",
+      "inseeCode": "94073",
+      "medalCount": 10,
+      "population": 32918,
+      "rank": 254,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-medard-en-jalles-v1",
+      "cityName": "Saint-Médard-en-Jalles",
+      "cityZoneId": "relation/110581",
+      "inseeCode": "33449",
+      "medalCount": 10,
+      "population": 32910,
+      "rank": 255,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "agen-v1",
+      "cityName": "Agen",
+      "cityZoneId": "relation/146357",
+      "inseeCode": "47001",
+      "medalCount": 10,
+      "population": 32801,
+      "rank": 256,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montigny-le-bretonneux-v1",
+      "cityName": "Montigny-le-Bretonneux",
+      "cityZoneId": "relation/49538",
+      "inseeCode": "78423",
+      "medalCount": 10,
+      "population": 32465,
+      "rank": 257,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "nogent-sur-marne-v1",
+      "cityName": "Nogent-sur-Marne",
+      "cityZoneId": "relation/109361",
+      "inseeCode": "94052",
+      "medalCount": 10,
+      "population": 32455,
+      "rank": 258,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "aix-les-bains-v1",
+      "cityName": "Aix-les-Bains",
+      "cityZoneId": "relation/74287",
+      "inseeCode": "73008",
+      "medalCount": 10,
+      "population": 32406,
+      "rank": 259,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "epinal-v1",
+      "cityName": "Épinal",
+      "cityZoneId": "relation/78828",
+      "inseeCode": "88160",
+      "medalCount": 10,
+      "population": 32251,
+      "rank": 260,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "saint-laurent-du-var-v1",
+      "cityName": "Saint-Laurent-du-Var",
+      "cityZoneId": "relation/149032",
+      "inseeCode": "06123",
+      "medalCount": 10,
+      "population": 32172,
+      "rank": 261,
+      "sourceCounts": {
+        "wikidata": 5,
+        "openstreetmap": 5
+      }
+    },
+    {
+      "albumId": "koungou-v1",
+      "cityName": "Koungou",
+      "cityZoneId": "relation/3366529",
+      "inseeCode": "97610",
+      "medalCount": 10,
+      "population": 32156,
+      "rank": 262,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "pontoise-v1",
+      "cityName": "Pontoise",
+      "cityZoneId": "relation/120958",
+      "inseeCode": "95500",
+      "medalCount": 10,
+      "population": 31970,
+      "rank": 263,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "begles-v1",
+      "cityName": "Bègles",
+      "cityZoneId": "relation/105278",
+      "inseeCode": "33039",
+      "medalCount": 10,
+      "population": 31831,
+      "rank": 264,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "plaisir-v1",
+      "cityName": "Plaisir",
+      "cityZoneId": "relation/51912",
+      "inseeCode": "78490",
+      "medalCount": 10,
+      "population": 31811,
+      "rank": 265,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "herblay-sur-seine-v1",
+      "cityName": "Herblay-sur-Seine",
+      "cityZoneId": "relation/398232",
+      "inseeCode": "95306",
+      "medalCount": 10,
+      "population": 31779,
+      "rank": 266,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "vienne-v1",
+      "cityName": "Vienne",
+      "cityZoneId": "relation/169848",
+      "inseeCode": "38544",
+      "medalCount": 10,
+      "population": 31778,
+      "rank": 267,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "carpentras-v1",
+      "cityName": "Carpentras",
+      "cityZoneId": "relation/148157",
+      "inseeCode": "84031",
+      "medalCount": 10,
+      "population": 31619,
+      "rank": 268,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "mont-de-marsan-v1",
+      "cityName": "Mont-de-Marsan",
+      "cityZoneId": "relation/150319",
+      "inseeCode": "40192",
+      "medalCount": 10,
+      "population": 31592,
+      "rank": 269,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "dreux-v1",
+      "cityName": "Dreux",
+      "cityZoneId": "relation/70807",
+      "inseeCode": "28134",
+      "medalCount": 10,
+      "population": 31543,
+      "rank": 270,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "vigneux-sur-seine-v1",
+      "cityName": "Vigneux-sur-Seine",
+      "cityZoneId": "relation/150551",
+      "inseeCode": "91657",
+      "medalCount": 10,
+      "population": 31466,
+      "rank": 271,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "rillieux-la-pape-v1",
+      "cityName": "Rillieux-la-Pape",
+      "cityZoneId": "relation/121775",
+      "inseeCode": "69286",
+      "medalCount": 10,
+      "population": 31389,
+      "rank": 272,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "goussainville-v1",
+      "cityName": "Goussainville",
+      "cityZoneId": "relation/161530",
+      "inseeCode": "95280",
+      "medalCount": 10,
+      "population": 31301,
+      "rank": 273,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "ris-orangis-v1",
+      "cityName": "Ris-Orangis",
+      "cityZoneId": "relation/150543",
+      "inseeCode": "91521",
+      "medalCount": 10,
+      "population": 31189,
+      "rank": 274,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "l-hay-les-roses-v1",
+      "cityName": "L'Haÿ-les-Roses",
+      "cityZoneId": "relation/79593",
+      "inseeCode": "94038",
+      "medalCount": 10,
+      "population": 31188,
+      "rank": 275,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-martin-v1",
+      "cityName": "Saint-Martin",
+      "cityZoneId": "relation/299354",
+      "inseeCode": "97801",
+      "medalCount": 10,
+      "population": 31160,
+      "rank": 276,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "savigny-le-temple-v1",
+      "cityName": "Savigny-le-Temple",
+      "cityZoneId": "relation/80143",
+      "inseeCode": "77445",
+      "medalCount": 10,
+      "population": 31148,
+      "rank": 277,
+      "sourceCounts": {
+        "wikidata": 4,
+        "museofile": 1,
+        "openstreetmap": 4,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "cambrai-v1",
+      "cityName": "Cambrai",
+      "cityZoneId": "relation/55938",
+      "inseeCode": "59122",
+      "medalCount": 10,
+      "population": 31134,
+      "rank": 278,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "cachan-v1",
+      "cityName": "Cachan",
+      "cityZoneId": "relation/48862",
+      "inseeCode": "94016",
+      "medalCount": 10,
+      "population": 31103,
+      "rank": 279,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "chatellerault-v1",
+      "cityName": "Châtellerault",
+      "cityZoneId": "relation/135540",
+      "inseeCode": "86066",
+      "medalCount": 10,
+      "population": 31003,
+      "rank": 280,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "baie-mahault-v1",
+      "cityName": "Baie-Mahault",
+      "cityZoneId": "relation/272700",
+      "inseeCode": "97103",
+      "medalCount": 10,
+      "population": 30924,
+      "rank": 281,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "viry-chatillon-v1",
+      "cityName": "Viry-Châtillon",
+      "cityZoneId": "relation/92313",
+      "inseeCode": "91687",
+      "medalCount": 10,
+      "population": 30838,
+      "rank": 282,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "le-chesnay-rocquencourt-v1",
+      "cityName": "Le Chesnay-Rocquencourt",
+      "cityZoneId": "relation/9067505",
+      "inseeCode": "78158",
+      "medalCount": 10,
+      "population": 30689,
+      "rank": 283,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "menton-v1",
+      "cityName": "Menton",
+      "cityZoneId": "relation/74727",
+      "inseeCode": "06083",
+      "medalCount": 10,
+      "population": 30604,
+      "rank": 284,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "chatou-v1",
+      "cityName": "Chatou",
+      "cityZoneId": "relation/73610",
+      "inseeCode": "78146",
+      "medalCount": 10,
+      "population": 30598,
+      "rank": 285,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "malakoff-v1",
+      "cityName": "Malakoff",
+      "cityZoneId": "relation/37027",
+      "inseeCode": "92046",
+      "medalCount": 10,
+      "population": 30557,
+      "rank": 286,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "la-garenne-colombes-v1",
+      "cityName": "La Garenne-Colombes",
+      "cityZoneId": "relation/91775",
+      "inseeCode": "92035",
+      "medalCount": 10,
+      "population": 30197,
+      "rank": 287,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "tournefeuille-v1",
+      "cityName": "Tournefeuille",
+      "cityZoneId": "relation/35735",
+      "inseeCode": "31557",
+      "medalCount": 10,
+      "population": 30168,
+      "rank": 288,
+      "sourceCounts": {
+        "openstreetmap": 6,
+        "merimee": 1,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "bourgoin-jallieu-v1",
+      "cityName": "Bourgoin-Jallieu",
+      "cityZoneId": "relation/78763",
+      "inseeCode": "38053",
+      "medalCount": 10,
+      "population": 30151,
+      "rank": 289,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "draveil-v1",
+      "cityName": "Draveil",
+      "cityZoneId": "relation/421704",
+      "inseeCode": "91201",
+      "medalCount": 10,
+      "population": 30098,
+      "rank": 290,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "lievin-v1",
+      "cityName": "Liévin",
+      "cityZoneId": "relation/1175407",
+      "inseeCode": "62510",
+      "medalCount": 10,
+      "population": 30063,
+      "rank": 291,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "villiers-le-bel-v1",
+      "cityName": "Villiers-le-Bel",
+      "cityZoneId": "relation/534505",
+      "inseeCode": "95680",
+      "medalCount": 10,
+      "population": 30053,
+      "rank": 292,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "vand-uvre-les-nancy-v1",
+      "cityName": "Vandœuvre-lès-Nancy",
+      "cityZoneId": "relation/52395",
+      "inseeCode": "54547",
+      "medalCount": 10,
+      "population": 29942,
+      "rank": 293,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "agde-v1",
+      "cityName": "Agde",
+      "cityZoneId": "relation/254843",
+      "inseeCode": "34003",
+      "medalCount": 10,
+      "population": 29939,
+      "rank": 294,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "decines-charpieu-v1",
+      "cityName": "Décines-Charpieu",
+      "cityZoneId": "relation/121827",
+      "inseeCode": "69275",
+      "medalCount": 10,
+      "population": 29877,
+      "rank": 295,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-cloud-v1",
+      "cityName": "Saint-Cloud",
+      "cityZoneId": "relation/72148",
+      "inseeCode": "92064",
+      "medalCount": 10,
+      "population": 29855,
+      "rank": 296,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "faaa-v1",
+      "cityName": "Faaa",
+      "cityZoneId": "relation/6093624",
+      "inseeCode": "98715",
+      "medalCount": 10,
+      "population": 29826,
+      "rank": 297,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "villemomble-v1",
+      "cityName": "Villemomble",
+      "cityZoneId": "relation/162329",
+      "inseeCode": "93077",
+      "medalCount": 10,
+      "population": 29795,
+      "rank": 298,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "guyancourt-v1",
+      "cityName": "Guyancourt",
+      "cityZoneId": "relation/30272",
+      "inseeCode": "78297",
+      "medalCount": 10,
+      "population": 29778,
+      "rank": 299,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "orange-v1",
+      "cityName": "Orange",
+      "cityZoneId": "relation/187038",
+      "inseeCode": "84087",
+      "medalCount": 10,
+      "population": 29706,
+      "rank": 300,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "fresnes-v1",
+      "cityName": "Fresnes",
+      "cityZoneId": "relation/103395",
+      "inseeCode": "94034",
+      "medalCount": 10,
+      "population": 29528,
+      "rank": 301,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saint-etienne-du-rouvray-v1",
+      "cityName": "Saint-Étienne-du-Rouvray",
+      "cityZoneId": "relation/102144",
+      "inseeCode": "76575",
+      "medalCount": 10,
+      "population": 29518,
+      "rank": 302,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "ermont-v1",
+      "cityName": "Ermont",
+      "cityZoneId": "relation/76381",
+      "inseeCode": "95219",
+      "medalCount": 10,
+      "population": 29489,
+      "rank": 303,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "clichy-sous-bois-v1",
+      "cityName": "Clichy-sous-Bois",
+      "cityZoneId": "relation/162858",
+      "inseeCode": "93014",
+      "medalCount": 10,
+      "population": 29354,
+      "rank": 304,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "vallauris-v1",
+      "cityName": "Vallauris",
+      "cityZoneId": "relation/74689",
+      "inseeCode": "06155",
+      "medalCount": 10,
+      "population": 29259,
+      "rank": 305,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 8,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "perigueux-v1",
+      "cityName": "Périgueux",
+      "cityZoneId": "relation/76351",
+      "inseeCode": "24322",
+      "medalCount": 10,
+      "population": 29055,
+      "rank": 306,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "sotteville-les-rouen-v1",
+      "cityName": "Sotteville-lès-Rouen",
+      "cityZoneId": "relation/93029",
+      "inseeCode": "76681",
+      "medalCount": 10,
+      "population": 29003,
+      "rank": 307,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "bois-colombes-v1",
+      "cityName": "Bois-Colombes",
+      "cityZoneId": "relation/91746",
+      "inseeCode": "92009",
+      "medalCount": 10,
+      "population": 28909,
+      "rank": 308,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "le-plessis-robinson-v1",
+      "cityName": "Le Plessis-Robinson",
+      "cityZoneId": "relation/27694",
+      "inseeCode": "92060",
+      "medalCount": 10,
+      "population": 28848,
+      "rank": 309,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "charenton-le-pont-v1",
+      "cityName": "Charenton-le-Pont",
+      "cityZoneId": "relation/104868",
+      "inseeCode": "94018",
+      "medalCount": 10,
+      "population": 28830,
+      "rank": 310,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "punaauia-v1",
+      "cityName": "Punaauia",
+      "cityZoneId": "relation/6093629",
+      "inseeCode": "98738",
+      "medalCount": 10,
+      "population": 28781,
+      "rank": 311,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "maubeuge-v1",
+      "cityName": "Maubeuge",
+      "cityZoneId": "relation/55074",
+      "inseeCode": "59392",
+      "medalCount": 10,
+      "population": 28767,
+      "rank": 312,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montfermeil-v1",
+      "cityName": "Montfermeil",
+      "cityZoneId": "relation/162851",
+      "inseeCode": "93047",
+      "medalCount": 10,
+      "population": 28703,
+      "rank": 313,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "vanves-v1",
+      "cityName": "Vanves",
+      "cityZoneId": "relation/59321",
+      "inseeCode": "92075",
+      "medalCount": 10,
+      "population": 28622,
+      "rank": 314,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-sebastien-sur-loire-v1",
+      "cityName": "Saint-Sébastien-sur-Loire",
+      "cityZoneId": "relation/61051",
+      "inseeCode": "44190",
+      "medalCount": 10,
+      "population": 28596,
+      "rank": 315,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "orvault-v1",
+      "cityName": "Orvault",
+      "cityZoneId": "relation/60972",
+      "inseeCode": "44114",
+      "medalCount": 10,
+      "population": 28534,
+      "rank": 316,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "dieppe-v1",
+      "cityName": "Dieppe",
+      "cityZoneId": "relation/110435",
+      "inseeCode": "76217",
+      "medalCount": 10,
+      "population": 28496,
+      "rank": 317,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "soissons-v1",
+      "cityName": "Soissons",
+      "cityZoneId": "relation/74004",
+      "inseeCode": "02722",
+      "medalCount": 10,
+      "population": 28046,
+      "rank": 318,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "yerres-v1",
+      "cityName": "Yerres",
+      "cityZoneId": "relation/88968",
+      "inseeCode": "91691",
+      "medalCount": 10,
+      "population": 27906,
+      "rank": 319,
+      "sourceCounts": {
+        "merimee": 4,
+        "wikidata": 6
+      }
+    },
+    {
+      "albumId": "illkirch-graffenstaden-v1",
+      "cityName": "Illkirch-Graffenstaden",
+      "cityZoneId": "relation/75143",
+      "inseeCode": "67218",
+      "medalCount": 10,
+      "population": 27872,
+      "rank": 320,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "sucy-en-brie-v1",
+      "cityName": "Sucy-en-Brie",
+      "cityZoneId": "relation/108129",
+      "inseeCode": "94071",
+      "medalCount": 10,
+      "population": 27764,
+      "rank": 321,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "le-gosier-v1",
+      "cityName": "Le Gosier",
+      "cityZoneId": "relation/255779",
+      "inseeCode": "97113",
+      "medalCount": 10,
+      "population": 27757,
+      "rank": 322,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "rambouillet-v1",
+      "cityName": "Rambouillet",
+      "cityZoneId": "relation/959295",
+      "inseeCode": "78517",
+      "medalCount": 10,
+      "population": 27724,
+      "rank": 323,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "remire-montjoly-v1",
+      "cityName": "Remire-Montjoly",
+      "cityZoneId": "relation/1389637",
+      "inseeCode": "97309",
+      "medalCount": 10,
+      "population": 27723,
+      "rank": 324,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "gonesse-v1",
+      "cityName": "Gonesse",
+      "cityZoneId": "relation/138541",
+      "inseeCode": "95277",
+      "medalCount": 10,
+      "population": 27707,
+      "rank": 325,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "paita-v1",
+      "cityName": "Païta",
+      "cityZoneId": "relation/377755",
+      "inseeCode": "98821",
+      "medalCount": 10,
+      "population": 27609,
+      "rank": 326,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "blagnac-v1",
+      "cityName": "Blagnac",
+      "cityZoneId": "relation/34917",
+      "inseeCode": "31069",
+      "medalCount": 10,
+      "population": 27604,
+      "rank": 327,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "taverny-v1",
+      "cityName": "Taverny",
+      "cityZoneId": "relation/115248",
+      "inseeCode": "95607",
+      "medalCount": 10,
+      "population": 27593,
+      "rank": 328,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "la-teste-de-buch-v1",
+      "cityName": "La Teste-de-Buch",
+      "cityZoneId": "relation/109392",
+      "inseeCode": "33529",
+      "medalCount": 10,
+      "population": 27566,
+      "rank": 329,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "bussy-saint-georges-v1",
+      "cityName": "Bussy-Saint-Georges",
+      "cityZoneId": "relation/403039",
+      "inseeCode": "77058",
+      "medalCount": 10,
+      "population": 27498,
+      "rank": 330,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "champs-sur-marne-v1",
+      "cityName": "Champs-sur-Marne",
+      "cityZoneId": "relation/402751",
+      "inseeCode": "77083",
+      "medalCount": 10,
+      "population": 27451,
+      "rank": 331,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "limeil-brevannes-v1",
+      "cityName": "Limeil-Brévannes",
+      "cityZoneId": "relation/108124",
+      "inseeCode": "94044",
+      "medalCount": 10,
+      "population": 27406,
+      "rank": 332,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "cormeilles-en-parisis-v1",
+      "cityName": "Cormeilles-en-Parisis",
+      "cityZoneId": "relation/402367",
+      "inseeCode": "95176",
+      "medalCount": 10,
+      "population": 27292,
+      "rank": 333,
+      "sourceCounts": {
+        "wikidata": 3,
+        "openstreetmap": 7
+      }
+    },
+    {
+      "albumId": "bergerac-v1",
+      "cityName": "Bergerac",
+      "cityZoneId": "relation/145155",
+      "inseeCode": "24037",
+      "medalCount": 10,
+      "population": 27110,
+      "rank": 334,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "sens-v1",
+      "cityName": "Sens",
+      "cityZoneId": "relation/946433",
+      "inseeCode": "89387",
+      "medalCount": 10,
+      "population": 27106,
+      "rank": 335,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "lambersart-v1",
+      "cityName": "Lambersart",
+      "cityZoneId": "relation/58897",
+      "inseeCode": "59328",
+      "medalCount": 10,
+      "population": 27090,
+      "rank": 336,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "armentieres-v1",
+      "cityName": "Armentières",
+      "cityZoneId": "relation/68000",
+      "inseeCode": "59017",
+      "medalCount": 10,
+      "population": 26998,
+      "rank": 337,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "gradignan-v1",
+      "cityName": "Gradignan",
+      "cityZoneId": "relation/105268",
+      "inseeCode": "33192",
+      "medalCount": 10,
+      "population": 26952,
+      "rank": 338,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "villeparisis-v1",
+      "cityName": "Villeparisis",
+      "cityZoneId": "relation/953247",
+      "inseeCode": "77514",
+      "medalCount": 10,
+      "population": 26946,
+      "rank": 339,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "sannois-v1",
+      "cityName": "Sannois",
+      "cityZoneId": "relation/103051",
+      "inseeCode": "95582",
+      "medalCount": 10,
+      "population": 26924,
+      "rank": 340,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "etampes-v1",
+      "cityName": "Étampes",
+      "cityZoneId": "relation/1229908",
+      "inseeCode": "91223",
+      "medalCount": 10,
+      "population": 26857,
+      "rank": 341,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "grigny-v1",
+      "cityName": "Grigny",
+      "cityZoneId": "relation/29369",
+      "inseeCode": "91286",
+      "medalCount": 10,
+      "population": 26842,
+      "rank": 342,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "cenon-v1",
+      "cityName": "Cenon",
+      "cityZoneId": "relation/88808",
+      "inseeCode": "33119",
+      "medalCount": 10,
+      "population": 26834,
+      "rank": 343,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "bretigny-sur-orge-v1",
+      "cityName": "Brétigny-sur-Orge",
+      "cityZoneId": "relation/280610",
+      "inseeCode": "91103",
+      "medalCount": 10,
+      "population": 26658,
+      "rank": 344,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "papeete-v1",
+      "cityName": "Papeete",
+      "cityZoneId": "relation/5829526",
+      "inseeCode": "98735",
+      "medalCount": 10,
+      "population": 26654,
+      "rank": 345,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "lunel-v1",
+      "cityName": "Lunel",
+      "cityZoneId": "relation/277425",
+      "inseeCode": "34145",
+      "medalCount": 10,
+      "population": 26623,
+      "rank": 346,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "la-garde-v1",
+      "cityName": "La Garde",
+      "cityZoneId": "relation/76462",
+      "inseeCode": "83062",
+      "medalCount": 10,
+      "population": 26476,
+      "rank": 347,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 2,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "elancourt-v1",
+      "cityName": "Élancourt",
+      "cityZoneId": "relation/49544",
+      "inseeCode": "78208",
+      "medalCount": 10,
+      "population": 26365,
+      "rank": 348,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saumur-v1",
+      "cityName": "Saumur",
+      "cityZoneId": "relation/272368",
+      "inseeCode": "49328",
+      "medalCount": 10,
+      "population": 26241,
+      "rank": 349,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "vertou-v1",
+      "cityName": "Vertou",
+      "cityZoneId": "relation/63642",
+      "inseeCode": "44215",
+      "medalCount": 10,
+      "population": 26227,
+      "rank": 350,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "aurillac-v1",
+      "cityName": "Aurillac",
+      "cityZoneId": "relation/115997",
+      "inseeCode": "15014",
+      "medalCount": 10,
+      "population": 26214,
+      "rank": 351,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "eaubonne-v1",
+      "cityName": "Eaubonne",
+      "cityZoneId": "relation/76341",
+      "inseeCode": "95203",
+      "medalCount": 10,
+      "population": 26211,
+      "rank": 352,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "biarritz-v1",
+      "cityName": "Biarritz",
+      "cityZoneId": "relation/166717",
+      "inseeCode": "64122",
+      "medalCount": 10,
+      "population": 26206,
+      "rank": 353,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "miramas-v1",
+      "cityName": "Miramas",
+      "cityZoneId": "relation/70525",
+      "inseeCode": "13063",
+      "medalCount": 10,
+      "population": 26203,
+      "rank": 354,
+      "sourceCounts": {
+        "openstreetmap": 8,
+        "merimee": 1,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "muret-v1",
+      "cityName": "Muret",
+      "cityZoneId": "relation/122800",
+      "inseeCode": "31395",
+      "medalCount": 10,
+      "population": 26079,
+      "rank": 355,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 4
+      }
+    },
+    {
+      "albumId": "castelnau-le-lez-v1",
+      "cityName": "Castelnau-le-Lez",
+      "cityZoneId": "relation/28810",
+      "inseeCode": "34057",
+      "medalCount": 10,
+      "population": 26058,
+      "rank": 356,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "villeneuve-la-garenne-v1",
+      "cityName": "Villeneuve-la-Garenne",
+      "cityZoneId": "relation/90080",
+      "inseeCode": "92078",
+      "medalCount": 10,
+      "population": 26021,
+      "rank": 357,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "les-ulis-v1",
+      "cityName": "Les Ulis",
+      "cityZoneId": "relation/1174036",
+      "inseeCode": "91692",
+      "medalCount": 10,
+      "population": 25886,
+      "rank": 358,
+      "sourceCounts": {
+        "openstreetmap": 9,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "les-pavillons-sous-bois-v1",
+      "cityName": "Les Pavillons-sous-Bois",
+      "cityZoneId": "relation/162521",
+      "inseeCode": "93057",
+      "medalCount": 10,
+      "population": 25804,
+      "rank": 359,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "sevremoine-v1",
+      "cityName": "Sèvremoine",
+      "cityZoneId": "relation/295509",
+      "inseeCode": "49301",
+      "medalCount": 10,
+      "population": 25797,
+      "rank": 360,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "le-grand-quevilly-v1",
+      "cityName": "Le Grand-Quevilly",
+      "cityZoneId": "relation/102145",
+      "inseeCode": "76322",
+      "medalCount": 10,
+      "population": 25789,
+      "rank": 361,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "lormont-v1",
+      "cityName": "Lormont",
+      "cityZoneId": "relation/88807",
+      "inseeCode": "33249",
+      "medalCount": 10,
+      "population": 25769,
+      "rank": 362,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "henin-beaumont-v1",
+      "cityName": "Hénin-Beaumont",
+      "cityZoneId": "relation/1164845",
+      "inseeCode": "62427",
+      "medalCount": 10,
+      "population": 25688,
+      "rank": 363,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "brunoy-v1",
+      "cityName": "Brunoy",
+      "cityZoneId": "relation/114189",
+      "inseeCode": "91114",
+      "medalCount": 10,
+      "population": 25643,
+      "rank": 364,
+      "sourceCounts": {
+        "wikidata": 5,
+        "merimee": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "cavaillon-v1",
+      "cityName": "Cavaillon",
+      "cityZoneId": "relation/73936",
+      "inseeCode": "84035",
+      "medalCount": 10,
+      "population": 25636,
+      "rank": 365,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "saint-ouen-l-aumone-v1",
+      "cityName": "Saint-Ouen-l'Aumône",
+      "cityZoneId": "relation/73899",
+      "inseeCode": "95572",
+      "medalCount": 10,
+      "population": 25578,
+      "rank": 366,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "sainte-suzanne-v1",
+      "cityName": "Sainte-Suzanne",
+      "cityZoneId": "relation/280102",
+      "inseeCode": "97420",
+      "medalCount": 10,
+      "population": 25551,
+      "rank": 367,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "alencon-v1",
+      "cityName": "Alençon",
+      "cityZoneId": "relation/553607",
+      "inseeCode": "61001",
+      "medalCount": 10,
+      "population": 25490,
+      "rank": 368,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "saintes-v1",
+      "cityName": "Saintes",
+      "cityZoneId": "relation/138502",
+      "inseeCode": "17415",
+      "medalCount": 10,
+      "population": 25363,
+      "rank": 369,
+      "sourceCounts": {
+        "merimee": 6,
+        "museofile": 4
+      }
+    },
+    {
+      "albumId": "le-mont-dore-v1",
+      "cityName": "Le Mont-Dore",
+      "cityZoneId": "relation/377754",
+      "inseeCode": "98817",
+      "medalCount": 10,
+      "population": 25303,
+      "rank": 370,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "vernon-v1",
+      "cityName": "Vernon",
+      "cityZoneId": "relation/74780",
+      "inseeCode": "27681",
+      "medalCount": 10,
+      "population": 25290,
+      "rank": 371,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "bethune-v1",
+      "cityName": "Béthune",
+      "cityZoneId": "relation/1016146",
+      "inseeCode": "62119",
+      "medalCount": 10,
+      "population": 25224,
+      "rank": 372,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "vichy-v1",
+      "cityName": "Vichy",
+      "cityZoneId": "relation/79337",
+      "inseeCode": "03310",
+      "medalCount": 10,
+      "population": 25115,
+      "rank": 373,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "le-bouscat-v1",
+      "cityName": "Le Bouscat",
+      "cityZoneId": "relation/105283",
+      "inseeCode": "33069",
+      "medalCount": 10,
+      "population": 25081,
+      "rank": 374,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "vierzon-v1",
+      "cityName": "Vierzon",
+      "cityZoneId": "relation/191434",
+      "inseeCode": "18279",
+      "medalCount": 10,
+      "population": 25068,
+      "rank": 375,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "libourne-v1",
+      "cityName": "Libourne",
+      "cityZoneId": "relation/89255",
+      "inseeCode": "33243",
+      "medalCount": 10,
+      "population": 25036,
+      "rank": 376,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "eysines-v1",
+      "cityName": "Eysines",
+      "cityZoneId": "relation/105280",
+      "inseeCode": "33162",
+      "medalCount": 10,
+      "population": 24825,
+      "rank": 377,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "kourou-v1",
+      "cityName": "Kourou",
+      "cityZoneId": "relation/1663794",
+      "inseeCode": "97304",
+      "medalCount": 10,
+      "population": 24824,
+      "rank": 378,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "montbeliard-v1",
+      "cityName": "Montbéliard",
+      "cityZoneId": "relation/115177",
+      "inseeCode": "25388",
+      "medalCount": 10,
+      "population": 24672,
+      "rank": 379,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "petit-bourg-v1",
+      "cityName": "Petit-Bourg",
+      "cityZoneId": "relation/273827",
+      "inseeCode": "97118",
+      "medalCount": 10,
+      "population": 24665,
+      "rank": 380,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "orly-v1",
+      "cityName": "Orly",
+      "cityZoneId": "relation/55582",
+      "inseeCode": "94054",
+      "medalCount": 10,
+      "population": 24658,
+      "rank": 381,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "laon-v1",
+      "cityName": "Laon",
+      "cityZoneId": "relation/74127",
+      "inseeCode": "02408",
+      "medalCount": 10,
+      "population": 24220,
+      "rank": 382,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "frontignan-v1",
+      "cityName": "Frontignan",
+      "cityZoneId": "relation/255490",
+      "inseeCode": "34108",
+      "medalCount": 10,
+      "population": 24136,
+      "rank": 383,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "le-kremlin-bicetre-v1",
+      "cityName": "Le Kremlin-Bicêtre",
+      "cityZoneId": "relation/105122",
+      "inseeCode": "94043",
+      "medalCount": 10,
+      "population": 24110,
+      "rank": 384,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "coueron-v1",
+      "cityName": "Couëron",
+      "cityZoneId": "relation/77288",
+      "inseeCode": "44047",
+      "medalCount": 10,
+      "population": 24103,
+      "rank": 385,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "fontenay-aux-roses-v1",
+      "cityName": "Fontenay-aux-Roses",
+      "cityZoneId": "relation/37021",
+      "inseeCode": "92032",
+      "medalCount": 10,
+      "population": 24070,
+      "rank": 386,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "montgeron-v1",
+      "cityName": "Montgeron",
+      "cityZoneId": "relation/954184",
+      "inseeCode": "91421",
+      "medalCount": 10,
+      "population": 24022,
+      "rank": 387,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "beaupreau-en-mauges-v1",
+      "cityName": "Beaupréau-en-Mauges",
+      "cityZoneId": "relation/296180",
+      "inseeCode": "49023",
+      "medalCount": 10,
+      "population": 23989,
+      "rank": 388,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "rodez-v1",
+      "cityName": "Rodez",
+      "cityZoneId": "relation/116558",
+      "inseeCode": "12202",
+      "medalCount": 10,
+      "population": 23981,
+      "rank": 389,
+      "sourceCounts": {
+        "merimee": 7,
+        "museofile": 3
+      }
+    },
+    {
+      "albumId": "sainte-anne-v1",
+      "cityName": "Sainte-Anne",
+      "cityZoneId": "relation/255123",
+      "inseeCode": "97128",
+      "medalCount": 10,
+      "population": 23973,
+      "rank": 390,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "les-lilas-v1",
+      "cityName": "Les Lilas",
+      "cityZoneId": "relation/130544",
+      "inseeCode": "93045",
+      "medalCount": 10,
+      "population": 23843,
+      "rank": 391,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "dole-v1",
+      "cityName": "Dole",
+      "cityZoneId": "relation/148676",
+      "inseeCode": "39198",
+      "medalCount": 10,
+      "population": 23840,
+      "rank": 392,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "la-valette-du-var-v1",
+      "cityName": "La Valette-du-Var",
+      "cityZoneId": "relation/76463",
+      "inseeCode": "83144",
+      "medalCount": 10,
+      "population": 23719,
+      "rank": 393,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "dammarie-les-lys-v1",
+      "cityName": "Dammarie-les-Lys",
+      "cityZoneId": "relation/80063",
+      "inseeCode": "77152",
+      "medalCount": 10,
+      "population": 23559,
+      "rank": 394,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "olivet-v1",
+      "cityName": "Olivet",
+      "cityZoneId": "relation/147557",
+      "inseeCode": "45232",
+      "medalCount": 10,
+      "population": 23507,
+      "rank": 395,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "herouville-saint-clair-v1",
+      "cityName": "Hérouville-Saint-Clair",
+      "cityZoneId": "relation/172627",
+      "inseeCode": "14327",
+      "medalCount": 10,
+      "population": 23470,
+      "rank": 396,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "rochefort-v1",
+      "cityName": "Rochefort",
+      "cityZoneId": "relation/117888",
+      "inseeCode": "17299",
+      "medalCount": 10,
+      "population": 23460,
+      "rank": 397,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "combs-la-ville-v1",
+      "cityName": "Combs-la-Ville",
+      "cityZoneId": "relation/80407",
+      "inseeCode": "77122",
+      "medalCount": 10,
+      "population": 23350,
+      "rank": 398,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "lanester-v1",
+      "cityName": "Lanester",
+      "cityZoneId": "relation/107969",
+      "inseeCode": "56098",
+      "medalCount": 10,
+      "population": 23263,
+      "rank": 399,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "roissy-en-brie-v1",
+      "cityName": "Roissy-en-Brie",
+      "cityZoneId": "relation/403963",
+      "inseeCode": "77390",
+      "medalCount": 10,
+      "population": 23229,
+      "rank": 400,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "tassin-la-demi-lune-v1",
+      "cityName": "Tassin-la-Demi-Lune",
+      "cityZoneId": "relation/252642",
+      "inseeCode": "69244",
+      "medalCount": 10,
+      "population": 23200,
+      "rank": 401,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-jean-de-braye-v1",
+      "cityName": "Saint-Jean-de-Braye",
+      "cityZoneId": "relation/147554",
+      "inseeCode": "45284",
+      "medalCount": 10,
+      "population": 23147,
+      "rank": 402,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "deuil-la-barre-v1",
+      "cityName": "Deuil-la-Barre",
+      "cityZoneId": "relation/115245",
+      "inseeCode": "95197",
+      "medalCount": 10,
+      "population": 23099,
+      "rank": 403,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "maisons-laffitte-v1",
+      "cityName": "Maisons-Laffitte",
+      "cityZoneId": "relation/75453",
+      "inseeCode": "78358",
+      "medalCount": 10,
+      "population": 23093,
+      "rank": 404,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "le-moule-v1",
+      "cityName": "Le Moule",
+      "cityZoneId": "relation/254386",
+      "inseeCode": "97117",
+      "medalCount": 10,
+      "population": 23014,
+      "rank": 405,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 7,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "velizy-villacoublay-v1",
+      "cityName": "Vélizy-Villacoublay",
+      "cityZoneId": "relation/27685",
+      "inseeCode": "78640",
+      "medalCount": 10,
+      "population": 23011,
+      "rank": 406,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "challans-v1",
+      "cityName": "Challans",
+      "cityZoneId": "relation/164555",
+      "inseeCode": "85047",
+      "medalCount": 10,
+      "population": 22943,
+      "rank": 407,
+      "sourceCounts": {
+        "wikidata": 2,
+        "openstreetmap": 8
+      }
+    },
+    {
+      "albumId": "saint-dizier-v1",
+      "cityName": "Saint-Dizier",
+      "cityZoneId": "relation/418777",
+      "inseeCode": "52448",
+      "medalCount": 10,
+      "population": 22858,
+      "rank": 408,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "torcy-v1",
+      "cityName": "Torcy",
+      "cityZoneId": "relation/402764",
+      "inseeCode": "77468",
+      "medalCount": 10,
+      "population": 22810,
+      "rank": 409,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-louis-68297-v1",
+      "cityName": "Saint-Louis",
+      "cityZoneId": "relation/85276",
+      "inseeCode": "68297",
+      "medalCount": 10,
+      "population": 22805,
+      "rank": 410,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "manosque-v1",
+      "cityName": "Manosque",
+      "cityZoneId": "relation/365373",
+      "inseeCode": "04112",
+      "medalCount": 10,
+      "population": 22718,
+      "rank": 411,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "loos-v1",
+      "cityName": "Loos",
+      "cityZoneId": "relation/58402",
+      "inseeCode": "59360",
+      "medalCount": 10,
+      "population": 22567,
+      "rank": 412,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "gif-sur-yvette-v1",
+      "cityName": "Gif-sur-Yvette",
+      "cityZoneId": "relation/53650",
+      "inseeCode": "91272",
+      "medalCount": 10,
+      "population": 22544,
+      "rank": 413,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "les-pennes-mirabeau-v1",
+      "cityName": "Les Pennes-Mirabeau",
+      "cityZoneId": "relation/71505",
+      "inseeCode": "13071",
+      "medalCount": 10,
+      "population": 22537,
+      "rank": 414,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "oyonnax-v1",
+      "cityName": "Oyonnax",
+      "cityZoneId": "relation/21541",
+      "inseeCode": "01283",
+      "medalCount": 10,
+      "population": 22480,
+      "rank": 415,
+      "sourceCounts": {
+        "wikidata": 8,
+        "museofile": 1,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "montigny-les-cormeilles-v1",
+      "cityName": "Montigny-lès-Cormeilles",
+      "cityZoneId": "relation/398309",
+      "inseeCode": "95424",
+      "medalCount": 10,
+      "population": 22457,
+      "rank": 416,
+      "sourceCounts": {
+        "openstreetmap": 6,
+        "wikidata": 4
+      }
+    },
+    {
+      "albumId": "auch-v1",
+      "cityName": "Auch",
+      "cityZoneId": "relation/128184",
+      "inseeCode": "32013",
+      "medalCount": 10,
+      "population": 22428,
+      "rank": 417,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "abbeville-v1",
+      "cityName": "Abbeville",
+      "cityZoneId": "relation/114349",
+      "inseeCode": "80001",
+      "medalCount": 10,
+      "population": 22395,
+      "rank": 418,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "villeneuve-sur-lot-v1",
+      "cityName": "Villeneuve-sur-Lot",
+      "cityZoneId": "relation/148985",
+      "inseeCode": "47323",
+      "medalCount": 10,
+      "population": 22350,
+      "rank": 419,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "mantes-la-ville-v1",
+      "cityName": "Mantes-la-Ville",
+      "cityZoneId": "relation/371002",
+      "inseeCode": "78362",
+      "medalCount": 10,
+      "population": 22332,
+      "rank": 420,
+      "sourceCounts": {
+        "wikidata": 5,
+        "openstreetmap": 5
+      }
+    },
+    {
+      "albumId": "sevres-v1",
+      "cityName": "Sèvres",
+      "cityZoneId": "relation/31340",
+      "inseeCode": "92072",
+      "medalCount": 10,
+      "population": 22303,
+      "rank": 421,
+      "sourceCounts": {
+        "wikidata": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montereau-fault-yonne-v1",
+      "cityName": "Montereau-Fault-Yonne",
+      "cityZoneId": "relation/1383106",
+      "inseeCode": "77305",
+      "medalCount": 10,
+      "population": 22279,
+      "rank": 422,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "acheres-v1",
+      "cityName": "Achères",
+      "cityZoneId": "relation/75458",
+      "inseeCode": "78005",
+      "medalCount": 10,
+      "population": 22241,
+      "rank": 423,
+      "sourceCounts": {
+        "wikidata": 5,
+        "openstreetmap": 5
+      }
+    },
+    {
+      "albumId": "le-petit-quevilly-v1",
+      "cityName": "Le Petit-Quevilly",
+      "cityZoneId": "relation/93030",
+      "inseeCode": "76498",
+      "medalCount": 10,
+      "population": 22208,
+      "rank": 424,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "arcueil-v1",
+      "cityName": "Arcueil",
+      "cityZoneId": "relation/103967",
+      "inseeCode": "94003",
+      "medalCount": 10,
+      "population": 22200,
+      "rank": 425,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "epernay-v1",
+      "cityName": "Épernay",
+      "cityZoneId": "relation/417327",
+      "inseeCode": "51230",
+      "medalCount": 10,
+      "population": 22174,
+      "rank": 426,
+      "sourceCounts": {
+        "merimee": 5,
+        "wikidata": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "gujan-mestras-v1",
+      "cityName": "Gujan-Mestras",
+      "cityZoneId": "relation/111073",
+      "inseeCode": "33199",
+      "medalCount": 10,
+      "population": 22153,
+      "rank": 427,
+      "sourceCounts": {
+        "wikidata": 4,
+        "openstreetmap": 6
+      }
+    },
+    {
+      "albumId": "dax-v1",
+      "cityName": "Dax",
+      "cityZoneId": "relation/75879",
+      "inseeCode": "40088",
+      "medalCount": 10,
+      "population": 22109,
+      "rank": 428,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "millau-v1",
+      "cityName": "Millau",
+      "cityZoneId": "relation/74109",
+      "inseeCode": "12145",
+      "medalCount": 10,
+      "population": 22044,
+      "rank": 429,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "fontaine-v1",
+      "cityName": "Fontaine",
+      "cityZoneId": "relation/90862",
+      "inseeCode": "38169",
+      "medalCount": 10,
+      "population": 22020,
+      "rank": 430,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "chemille-en-anjou-v1",
+      "cityName": "Chemillé-en-Anjou",
+      "cityZoneId": "relation/157704",
+      "inseeCode": "49092",
+      "medalCount": 10,
+      "population": 21999,
+      "rank": 431,
+      "sourceCounts": {
+        "wikidata": 5,
+        "merimee": 5
+      }
+    },
+    {
+      "albumId": "longjumeau-v1",
+      "cityName": "Longjumeau",
+      "cityZoneId": "relation/395036",
+      "inseeCode": "91345",
+      "medalCount": 10,
+      "population": 21996,
+      "rank": 432,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "neuilly-plaisance-v1",
+      "cityName": "Neuilly-Plaisance",
+      "cityZoneId": "relation/134947",
+      "inseeCode": "93049",
+      "medalCount": 10,
+      "population": 21941,
+      "rank": 433,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "hazebrouck-v1",
+      "cityName": "Hazebrouck",
+      "cityZoneId": "relation/78593",
+      "inseeCode": "59295",
+      "medalCount": 10,
+      "population": 21912,
+      "rank": 434,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 1,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "nogent-sur-oise-v1",
+      "cityName": "Nogent-sur-Oise",
+      "cityZoneId": "relation/142096",
+      "inseeCode": "60463",
+      "medalCount": 10,
+      "population": 21907,
+      "rank": 435,
+      "sourceCounts": {
+        "wikidata": 4,
+        "openstreetmap": 4,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "voiron-v1",
+      "cityName": "Voiron",
+      "cityZoneId": "relation/184482",
+      "inseeCode": "38563",
+      "medalCount": 10,
+      "population": 21847,
+      "rank": 436,
+      "sourceCounts": {
+        "wikidata": 8,
+        "museofile": 1,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "fleury-les-aubrais-v1",
+      "cityName": "Fleury-les-Aubrais",
+      "cityZoneId": "relation/148479",
+      "inseeCode": "45147",
+      "medalCount": 10,
+      "population": 21804,
+      "rank": 437,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "la-madeleine-v1",
+      "cityName": "La Madeleine",
+      "cityZoneId": "relation/58617",
+      "inseeCode": "59368",
+      "medalCount": 10,
+      "population": 21790,
+      "rank": 438,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "saint-michel-sur-orge-v1",
+      "cityName": "Saint-Michel-sur-Orge",
+      "cityZoneId": "relation/33366",
+      "inseeCode": "91570",
+      "medalCount": 10,
+      "population": 21776,
+      "rank": 439,
+      "sourceCounts": {
+        "openstreetmap": 8,
+        "wikidata": 2
+      }
+    },
+    {
+      "albumId": "montmorency-v1",
+      "cityName": "Montmorency",
+      "cityZoneId": "relation/115244",
+      "inseeCode": "95428",
+      "medalCount": 10,
+      "population": 21763,
+      "rank": 440,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 6,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "montigny-les-metz-v1",
+      "cityName": "Montigny-lès-Metz",
+      "cityZoneId": "relation/106211",
+      "inseeCode": "57480",
+      "medalCount": 10,
+      "population": 21718,
+      "rank": 441,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "sainte-foy-les-lyon-v1",
+      "cityName": "Sainte-Foy-lès-Lyon",
+      "cityZoneId": "relation/192369",
+      "inseeCode": "69202",
+      "medalCount": 10,
+      "population": 21692,
+      "rank": 442,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "morsang-sur-orge-v1",
+      "cityName": "Morsang-sur-Orge",
+      "cityZoneId": "relation/92321",
+      "inseeCode": "91434",
+      "medalCount": 10,
+      "population": 21667,
+      "rank": 443,
+      "sourceCounts": {
+        "merimee": 2,
+        "openstreetmap": 7,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "mandelieu-la-napoule-v1",
+      "cityName": "Mandelieu-la-Napoule",
+      "cityZoneId": "relation/91777",
+      "inseeCode": "06079",
+      "medalCount": 10,
+      "population": 21640,
+      "rank": 444,
+      "sourceCounts": {
+        "wikidata": 4,
+        "merimee": 1,
+        "openstreetmap": 5
+      }
+    },
+    {
+      "albumId": "gardanne-v1",
+      "cityName": "Gardanne",
+      "cityZoneId": "relation/71243",
+      "inseeCode": "13041",
+      "medalCount": 10,
+      "population": 21597,
+      "rank": 445,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "le-robert-v1",
+      "cityName": "Le Robert",
+      "cityZoneId": "relation/289393",
+      "inseeCode": "97222",
+      "medalCount": 10,
+      "population": 21553,
+      "rank": 446,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "lagny-sur-marne-v1",
+      "cityName": "Lagny-sur-Marne",
+      "cityZoneId": "relation/402922",
+      "inseeCode": "77243",
+      "medalCount": 10,
+      "population": 21461,
+      "rank": 447,
+      "sourceCounts": {
+        "merimee": 4,
+        "wikidata": 5,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "allauch-v1",
+      "cityName": "Allauch",
+      "cityZoneId": "relation/74270",
+      "inseeCode": "13002",
+      "medalCount": 10,
+      "population": 21443,
+      "rank": 448,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "bruay-la-buissiere-v1",
+      "cityName": "Bruay-la-Buissière",
+      "cityZoneId": "relation/1140615",
+      "inseeCode": "62178",
+      "medalCount": 10,
+      "population": 21424,
+      "rank": 449,
+      "sourceCounts": {
+        "wikidata": 6,
+        "merimee": 4
+      }
+    },
+    {
+      "albumId": "givors-v1",
+      "cityName": "Givors",
+      "cityZoneId": "relation/139203",
+      "inseeCode": "69091",
+      "medalCount": 10,
+      "population": 21379,
+      "rank": 450,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-gratien-v1",
+      "cityName": "Saint-Gratien",
+      "cityZoneId": "relation/102985",
+      "inseeCode": "95555",
+      "medalCount": 10,
+      "population": 21336,
+      "rank": 451,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "saint-cyr-l-ecole-v1",
+      "cityName": "Saint-Cyr-l'École",
+      "cityZoneId": "relation/27811",
+      "inseeCode": "78545",
+      "medalCount": 10,
+      "population": 21268,
+      "rank": 452,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "ozoir-la-ferriere-v1",
+      "cityName": "Ozoir-la-Ferrière",
+      "cityZoneId": "relation/403076",
+      "inseeCode": "77350",
+      "medalCount": 10,
+      "population": 21238,
+      "rank": 453,
+      "sourceCounts": {
+        "openstreetmap": 9,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "saint-genis-laval-v1",
+      "cityName": "Saint-Genis-Laval",
+      "cityZoneId": "relation/192374",
+      "inseeCode": "69204",
+      "medalCount": 10,
+      "population": 21212,
+      "rank": 454,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "montaigu-vendee-v1",
+      "cityName": "Montaigu-Vendée",
+      "cityZoneId": "relation/167248",
+      "inseeCode": "85146",
+      "medalCount": 10,
+      "population": 21134,
+      "rank": 455,
+      "sourceCounts": {
+        "merimee": 1,
+        "openstreetmap": 6,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "le-plessis-trevise-v1",
+      "cityName": "Le Plessis-Trévise",
+      "cityZoneId": "relation/108284",
+      "inseeCode": "94059",
+      "medalCount": 10,
+      "population": 21112,
+      "rank": 456,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "mons-en-bar-ul-v1",
+      "cityName": "Mons-en-Barœul",
+      "cityZoneId": "relation/58583",
+      "inseeCode": "59410",
+      "medalCount": 10,
+      "population": 21105,
+      "rank": 457,
+      "sourceCounts": {
+        "openstreetmap": 9,
+        "wikidata": 1
+      }
+    },
+    {
+      "albumId": "plaisance-du-touch-v1",
+      "cityName": "Plaisance-du-Touch",
+      "cityZoneId": "relation/158886",
+      "inseeCode": "31424",
+      "medalCount": 10,
+      "population": 21079,
+      "rank": 458,
+      "sourceCounts": {
+        "openstreetmap": 6,
+        "merimee": 2,
+        "wikidata": 2
+      }
+    },
+    {
+      "albumId": "saint-mande-v1",
+      "cityName": "Saint-Mandé",
+      "cityZoneId": "relation/108318",
+      "inseeCode": "94067",
+      "medalCount": 10,
+      "population": 21071,
+      "rank": 459,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "bourg-la-reine-v1",
+      "cityName": "Bourg-la-Reine",
+      "cityZoneId": "relation/37041",
+      "inseeCode": "92014",
+      "medalCount": 10,
+      "population": 21019,
+      "rank": 460,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "villeneuve-le-roi-v1",
+      "cityName": "Villeneuve-le-Roi",
+      "cityZoneId": "relation/102242",
+      "inseeCode": "94077",
+      "medalCount": 10,
+      "population": 21000,
+      "rank": 461,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "carquefou-v1",
+      "cityName": "Carquefou",
+      "cityZoneId": "relation/68336",
+      "inseeCode": "44026",
+      "medalCount": 10,
+      "population": 20921,
+      "rank": 462,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "sceaux-v1",
+      "cityName": "Sceaux",
+      "cityZoneId": "relation/28069",
+      "inseeCode": "92071",
+      "medalCount": 10,
+      "population": 20884,
+      "rank": 463,
+      "sourceCounts": {
+        "museofile": 1,
+        "merimee": 9
+      }
+    },
+    {
+      "albumId": "concarneau-v1",
+      "cityName": "Concarneau",
+      "cityZoneId": "relation/166492",
+      "inseeCode": "29039",
+      "medalCount": 10,
+      "population": 20845,
+      "rank": 464,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 6,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "chaumont-v1",
+      "cityName": "Chaumont",
+      "cityZoneId": "relation/904595",
+      "inseeCode": "52121",
+      "medalCount": 10,
+      "population": 20827,
+      "rank": 465,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "lingolsheim-v1",
+      "cityName": "Lingolsheim",
+      "cityZoneId": "relation/71030",
+      "inseeCode": "67267",
+      "medalCount": 10,
+      "population": 20826,
+      "rank": 466,
+      "sourceCounts": {
+        "openstreetmap": 8,
+        "wikidata": 2
+      }
+    },
+    {
+      "albumId": "carrieres-sous-poissy-v1",
+      "cityName": "Carrières-sous-Poissy",
+      "cityZoneId": "relation/911061",
+      "inseeCode": "78123",
+      "medalCount": 10,
+      "population": 20825,
+      "rank": 467,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "coudekerque-branche-v1",
+      "cityName": "Coudekerque-Branche",
+      "cityZoneId": "relation/139636",
+      "inseeCode": "59155",
+      "medalCount": 10,
+      "population": 20787,
+      "rank": 468,
+      "sourceCounts": {
+        "openstreetmap": 7,
+        "wikidata": 3
+      }
+    },
+    {
+      "albumId": "wasquehal-v1",
+      "cityName": "Wasquehal",
+      "cityZoneId": "relation/59041",
+      "inseeCode": "59646",
+      "medalCount": 10,
+      "population": 20726,
+      "rank": 469,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "halluin-v1",
+      "cityName": "Halluin",
+      "cityZoneId": "relation/59877",
+      "inseeCode": "59279",
+      "medalCount": 10,
+      "population": 20715,
+      "rank": 470,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "la-chapelle-sur-erdre-v1",
+      "cityName": "La Chapelle-sur-Erdre",
+      "cityZoneId": "relation/73554",
+      "inseeCode": "44035",
+      "medalCount": 10,
+      "population": 20690,
+      "rank": 471,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "denain-v1",
+      "cityName": "Denain",
+      "cityZoneId": "relation/53825",
+      "inseeCode": "59172",
+      "medalCount": 10,
+      "population": 20665,
+      "rank": 472,
+      "sourceCounts": {
+        "wikidata": 8,
+        "museofile": 1,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "cugnaux-v1",
+      "cityName": "Cugnaux",
+      "cityZoneId": "relation/79480",
+      "inseeCode": "31157",
+      "medalCount": 10,
+      "population": 20662,
+      "rank": 473,
+      "sourceCounts": {
+        "wikidata": 2,
+        "openstreetmap": 8
+      }
+    },
+    {
+      "albumId": "maurepas-v1",
+      "cityName": "Maurepas",
+      "cityZoneId": "relation/49717",
+      "inseeCode": "78383",
+      "medalCount": 10,
+      "population": 20629,
+      "rank": 474,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "chaville-v1",
+      "cityName": "Chaville",
+      "cityZoneId": "relation/31339",
+      "inseeCode": "92022",
+      "medalCount": 10,
+      "population": 20594,
+      "rank": 475,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "croix-v1",
+      "cityName": "Croix",
+      "cityZoneId": "relation/58677",
+      "inseeCode": "59163",
+      "medalCount": 10,
+      "population": 20566,
+      "rank": 476,
+      "sourceCounts": {
+        "merimee": 2,
+        "wikidata": 8
+      }
+    },
+    {
+      "albumId": "bouguenais-v1",
+      "cityName": "Bouguenais",
+      "cityZoneId": "relation/65561",
+      "inseeCode": "44020",
+      "medalCount": 10,
+      "population": 20530,
+      "rank": 477,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "joinville-le-pont-v1",
+      "cityName": "Joinville-le-Pont",
+      "cityZoneId": "relation/109400",
+      "inseeCode": "94042",
+      "medalCount": 10,
+      "population": 20525,
+      "rank": 478,
+      "sourceCounts": {
+        "merimee": 1,
+        "wikidata": 9
+      }
+    },
+    {
+      "albumId": "le-creusot-v1",
+      "cityName": "Le Creusot",
+      "cityZoneId": "relation/2086964",
+      "inseeCode": "71153",
+      "medalCount": 10,
+      "population": 20509,
+      "rank": 479,
+      "sourceCounts": {
+        "merimee": 2,
+        "museofile": 1,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "forbach-v1",
+      "cityName": "Forbach",
+      "cityZoneId": "relation/1162548",
+      "inseeCode": "57227",
+      "medalCount": 10,
+      "population": 20493,
+      "rank": 480,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "la-celle-saint-cloud-v1",
+      "cityName": "La Celle-Saint-Cloud",
+      "cityZoneId": "relation/413447",
+      "inseeCode": "78126",
+      "medalCount": 10,
+      "population": 20460,
+      "rank": 481,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "mitry-mory-v1",
+      "cityName": "Mitry-Mory",
+      "cityZoneId": "relation/79338",
+      "inseeCode": "77294",
+      "medalCount": 10,
+      "population": 20456,
+      "rank": 482,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "chilly-mazarin-v1",
+      "cityName": "Chilly-Mazarin",
+      "cityZoneId": "relation/395443",
+      "inseeCode": "91161",
+      "medalCount": 10,
+      "population": 20443,
+      "rank": 483,
+      "sourceCounts": {
+        "wikidata": 7,
+        "merimee": 3
+      }
+    },
+    {
+      "albumId": "beaune-v1",
+      "cityName": "Beaune",
+      "cityZoneId": "relation/74091",
+      "inseeCode": "21054",
+      "medalCount": 10,
+      "population": 20352,
+      "rank": 484,
+      "sourceCounts": {
+        "merimee": 8,
+        "museofile": 2
+      }
+    },
+    {
+      "albumId": "lannion-v1",
+      "cityName": "Lannion",
+      "cityZoneId": "relation/409309",
+      "inseeCode": "22113",
+      "medalCount": 10,
+      "population": 20315,
+      "rank": 485,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "fougeres-v1",
+      "cityName": "Fougères",
+      "cityZoneId": "relation/163995",
+      "inseeCode": "35115",
+      "medalCount": 10,
+      "population": 20307,
+      "rank": 486,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "l-isle-sur-la-sorgue-v1",
+      "cityName": "L'Isle-sur-la-Sorgue",
+      "cityZoneId": "relation/108057",
+      "inseeCode": "84054",
+      "medalCount": 10,
+      "population": 20244,
+      "rank": 487,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "grande-synthe-v1",
+      "cityName": "Grande-Synthe",
+      "cityZoneId": "relation/139537",
+      "inseeCode": "59271",
+      "medalCount": 10,
+      "population": 20239,
+      "rank": 488,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "mont-saint-aignan-v1",
+      "cityName": "Mont-Saint-Aignan",
+      "cityZoneId": "relation/102870",
+      "inseeCode": "76451",
+      "medalCount": 10,
+      "population": 20165,
+      "rank": 489,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "sarreguemines-v1",
+      "cityName": "Sarreguemines",
+      "cityZoneId": "relation/90243",
+      "inseeCode": "57631",
+      "medalCount": 10,
+      "population": 20143,
+      "rank": 490,
+      "sourceCounts": {
+        "wikidata": 8,
+        "museofile": 1,
+        "merimee": 1
+      }
+    },
+    {
+      "albumId": "cahors-v1",
+      "cityName": "Cahors",
+      "cityZoneId": "relation/122324",
+      "inseeCode": "46042",
+      "medalCount": 10,
+      "population": 20050,
+      "rank": 491,
+      "sourceCounts": {
+        "merimee": 9,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "bruges-v1",
+      "cityName": "Bruges",
+      "cityZoneId": "relation/105271",
+      "inseeCode": "33075",
+      "medalCount": 10,
+      "population": 20020,
+      "rank": 492,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "bourg-les-valence-v1",
+      "cityName": "Bourg-lès-Valence",
+      "cityZoneId": "relation/63570",
+      "inseeCode": "26058",
+      "medalCount": 10,
+      "population": 19992,
+      "rank": 493,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "albertville-v1",
+      "cityName": "Albertville",
+      "cityZoneId": "relation/111528",
+      "inseeCode": "73011",
+      "medalCount": 10,
+      "population": 19978,
+      "rank": 494,
+      "sourceCounts": {
+        "wikidata": 5,
+        "merimee": 4,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "bressuire-v1",
+      "cityName": "Bressuire",
+      "cityZoneId": "relation/337985",
+      "inseeCode": "79049",
+      "medalCount": 10,
+      "population": 19970,
+      "rank": 495,
+      "sourceCounts": {
+        "merimee": 4,
+        "wikidata": 5,
+        "museofile": 1
+      }
+    },
+    {
+      "albumId": "gentilly-v1",
+      "cityName": "Gentilly",
+      "cityZoneId": "relation/104479",
+      "inseeCode": "94037",
+      "medalCount": 10,
+      "population": 19963,
+      "rank": 496,
+      "sourceCounts": {
+        "wikidata": 8,
+        "merimee": 2
+      }
+    },
+    {
+      "albumId": "cournon-d-auvergne-v1",
+      "cityName": "Cournon-d'Auvergne",
+      "cityZoneId": "relation/135795",
+      "inseeCode": "63124",
+      "medalCount": 10,
+      "population": 19951,
+      "rank": 497,
+      "sourceCounts": {
+        "merimee": 3,
+        "wikidata": 7
+      }
+    },
+    {
+      "albumId": "vence-v1",
+      "cityName": "Vence",
+      "cityZoneId": "relation/78855",
+      "inseeCode": "06157",
+      "medalCount": 10,
+      "population": 19917,
+      "rank": 498,
+      "sourceCounts": {
+        "merimee": 10
+      }
+    },
+    {
+      "albumId": "macouria-v1",
+      "cityName": "Macouria",
+      "cityZoneId": "relation/1663795",
+      "inseeCode": "97305",
+      "medalCount": 10,
+      "population": 19899,
+      "rank": 499,
+      "sourceCounts": {
+        "wikidata": 10
+      }
+    },
+    {
+      "albumId": "chevilly-larue-v1",
+      "cityName": "Chevilly-Larue",
+      "cityZoneId": "relation/34679",
+      "inseeCode": "94021",
+      "medalCount": 10,
+      "population": 19826,
+      "rank": 500,
+      "sourceCounts": {
+        "wikidata": 9,
+        "merimee": 1
+      }
+    }
+  ]
+}

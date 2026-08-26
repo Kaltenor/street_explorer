@@ -1,0 +1,204 @@
+{
+  "id": "soissons-v1",
+  "cityId": "soissons-fr",
+  "cityZoneId": "relation/74004",
+  "cityName": {
+    "en": "Soissons",
+    "fr": "Soissons"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Jean-des-Vignes is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Jean-des-Vignes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-abbaye-de-saint-jean-des-vignes-pa00115938",
+      "latitude": 49.37586670922804,
+      "longitude": 3.324538280372871,
+      "name": {
+        "en": "Ancien abbaye de Saint-Jean-des-Vignes",
+        "fr": "Ancien abbaye de Saint-Jean-des-Vignes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Notre-Dame is an important witness to the city's history.",
+        "fr": "Ancien abbaye Notre-Dame est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115936",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-abbaye-notre-dame-pa00115936",
+      "latitude": 49,
+      "longitude": 3.0000000000000004,
+      "name": {
+        "en": "Ancien abbaye Notre-Dame",
+        "fr": "Ancien abbaye Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Léger is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Léger est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115939",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-abbaye-saint-leger-pa00115939",
+      "latitude": 49.38451868618284,
+      "longitude": 3.3276979825784254,
+      "name": {
+        "en": "Ancien abbaye Saint-Léger",
+        "fr": "Ancien abbaye Saint-Léger"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Médard is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Médard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115940",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-abbaye-saint-medard-pa00115940",
+      "latitude": 49.3831168502954,
+      "longitude": 3.3443466670391055,
+      "name": {
+        "en": "Ancien abbaye Saint-Médard",
+        "fr": "Ancien abbaye Saint-Médard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Pierre-au-Parvis is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Pierre-au-Parvis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115943",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-eglise-saint-pierre-au-parvis-pa00115943",
+      "latitude": 49.38100926530214,
+      "longitude": 3.328436270920429,
+      "name": {
+        "en": "Ancien église Saint-Pierre-au-Parvis",
+        "fr": "Ancien église Saint-Pierre-au-Parvis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115944",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-ancien-eveche-pa00115944",
+      "latitude": 49.38045834129183,
+      "longitude": 3.324757164137628,
+      "name": {
+        "en": "Ancien évêché",
+        "fr": "Ancien évêché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Gervais et Saint-Protais is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Gervais et Saint-Protais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115941",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-cathedrale-saint-gervais-et-saint-protais-pa00115941",
+      "latitude": 49.380898980498046,
+      "longitude": 3.32542716406128,
+      "name": {
+        "en": "Cathédrale Saint-Gervais et Saint-Protais",
+        "fr": "Cathédrale Saint-Gervais et Saint-Protais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Monument à l'oeuvre des sociétés coopératives de reconstruction des régions libérées et à la mémoire de Guy de Lubersac is one of the city's notable cultural landmarks.",
+        "fr": "Monument à l'oeuvre des sociétés coopératives de reconstruction des régions libérées et à la mémoire de Guy de Lubersac compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA02000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-monument-a-l-oeuvre-des-societes-cooperatives-de-reconstruction-des-regions-liberees-et-a-la-memoire-de-guy-de-lubersac-pa02000027",
+      "latitude": 49.38248209540721,
+      "longitude": 3.320933580355199,
+      "name": {
+        "en": "Monument à l'oeuvre des sociétés coopératives de reconstruction des régions libérées et à la mémoire de Guy de Lubersac",
+        "fr": "Monument à l'oeuvre des sociétés coopératives de reconstruction des régions libérées et à la mémoire de Guy de Lubersac"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0794",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "soissons-musee-municipal-m0794",
+      "latitude": 49.384539,
+      "longitude": 3.327233,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre romain is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre romain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00115951",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "soissons-theatre-romain-pa00115951",
+      "latitude": 49.37764772550416,
+      "longitude": 3.3232084094102903,
+      "name": {
+        "en": "Théâtre romain",
+        "fr": "Théâtre romain"
+      }
+    }
+  ]
+}

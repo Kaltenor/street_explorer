@@ -1,0 +1,204 @@
+{
+  "id": "neuilly-sur-seine-v1",
+  "cityId": "neuilly-sur-seine-fr",
+  "cityZoneId": "relation/85802",
+  "cityName": {
+    "en": "Neuilly-sur-Seine",
+    "fr": "Neuilly-sur-Seine"
+  },
+  "version": 4,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Paris",
+        "fr": "château français situé à Neuilly-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q1765935",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-chateau-de-madrid-q1765935",
+      "latitude": 48.87416667,
+      "longitude": 2.255,
+      "name": {
+        "en": "château de Madrid",
+        "fr": "château de Madrid"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Neuilly-sur-Seine",
+        "fr": "château français situé à Neuilly-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q785590",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-chateau-de-neuilly-q785590",
+      "latitude": 48.89,
+      "longitude": 2.2627,
+      "name": {
+        "en": "château de Neuilly",
+        "fr": "château de Neuilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Grande École of journalism and communication",
+        "fr": "grande école de communication et de journalisme de Sorbonne Université"
+      },
+      "externalIdentity": {
+        "id": "Q3577933",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-ecole-des-hautes-etudes-en-sciences-de-l-information-et-de-la-communication-celsa-q3577933",
+      "latitude": 48.894426666,
+      "longitude": 2.274769722,
+      "name": {
+        "en": "École des hautes études en sciences de l'information et de la communication – Celsa",
+        "fr": "École des hautes études en sciences de l'information et de la communication – Celsa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21041862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-eglise-bienheureuse-isabelle-de-france-q21041862",
+      "latitude": 48.87673,
+      "longitude": 2.25125,
+      "name": {
+        "en": "église Bienheureuse Isabelle de France",
+        "fr": "église Bienheureuse Isabelle de France"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église catholique située en France dans les Hauts-de-Seine (diocèse de Nanterre)"
+      },
+      "externalIdentity": {
+        "id": "Q21041860",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-eglise-saint-jean-baptiste-de-neuilly-sur-seine-q21041860",
+      "latitude": 48.88477,
+      "longitude": 2.26241,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Neuilly-sur-Seine",
+        "fr": "église Saint-Jean-Baptiste de Neuilly-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église catholique située à Neuilly-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3583702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-eglise-saint-pierre-de-neuilly-sur-seine-q3583702",
+      "latitude": 48.8842,
+      "longitude": 2.27163,
+      "name": {
+        "en": "église Saint-Pierre de Neuilly-sur-Seine",
+        "fr": "église Saint-Pierre de Neuilly-sur-Seine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, square d'Eau Albienne is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Neuilly-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-fontaine-wallace-square-d-eau-albienne-q128920615",
+      "latitude": 48.888214,
+      "longitude": 2.25839,
+      "name": {
+        "en": "fontaine Wallace, square d'Eau Albienne",
+        "fr": "fontaine Wallace, square d'Eau Albienne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Guerre de 1870 de Neuilly-sur-Seine is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Neuilly-sur-Seine, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-monument-aux-morts-de-la-guerre-de-1870-de-neuilly-sur-seine-q96602285",
+      "latitude": 48.88157,
+      "longitude": 2.26568,
+      "name": {
+        "en": "monument aux morts de la Guerre de 1870 de Neuilly-sur-Seine",
+        "fr": "monument aux morts de la Guerre de 1870 de Neuilly-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français situé à Neuilly-sur-Seine (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q3330182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-musee-des-automates-q3330182",
+      "latitude": 48.8795,
+      "longitude": 2.25301,
+      "name": {
+        "en": "musée des automates",
+        "fr": "musée des automates"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Neuilly-sur-Seine, France",
+        "fr": "parc situé à Neuilly-sur-Seine, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96601828",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-sur-seine-parc-de-la-folie-saint-james-q96601828",
+      "latitude": 48.88252,
+      "longitude": 2.257977,
+      "name": {
+        "en": "parc de la Folie Saint-James",
+        "fr": "parc de la Folie Saint-James"
+      }
+    }
+  ]
+}

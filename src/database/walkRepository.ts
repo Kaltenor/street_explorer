@@ -353,6 +353,24 @@ export async function getGpsPointCountForSession(sessionId: number): Promise<num
   return row?.count ?? 0;
 }
 
+export async function updateActiveWalkDistance(
+  sessionId: number,
+  distanceMeters: number
+) {
+  const db = await getDatabase();
+  const result = await db.runAsync(
+    `
+      UPDATE walk_sessions
+      SET distance_meters = ?
+      WHERE id = ? AND ended_at = started_at
+    `,
+    Math.max(0, distanceMeters),
+    sessionId
+  );
+
+  return result.changes > 0;
+}
+
 export async function finishWalkSession(
   sessionId: number,
   input: FinishWalkInput

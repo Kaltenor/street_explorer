@@ -1,0 +1,204 @@
+{
+  "id": "saint-louis-68297-v1",
+  "cityId": "saint-louis-68297-fr",
+  "cityZoneId": "relation/85276",
+  "cityName": {
+    "en": "Saint-Louis",
+    "fr": "Saint-Louis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in France near the Swiss and German borders",
+        "fr": "aéroport international en France, près des frontières suisses et allemandes, desservant Mulhouse (France), Bâle (Suisse) et Fribourg (Allemagne)"
+      },
+      "externalIdentity": {
+        "id": "Q156971",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-aeroport-de-bale-mulhouse-fribourg-q156971",
+      "latitude": 47.599696,
+      "longitude": 7.5316,
+      "name": {
+        "en": "aéroport de Bâle-Mulhouse-Fribourg",
+        "fr": "aéroport de Bâle-Mulhouse-Fribourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haut-Rhin, in France",
+        "fr": "église située dans le Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38388273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-eglise-notre-dame-de-la-paix-de-saint-louis-q38388273",
+      "latitude": 47.58054,
+      "longitude": 7.5674,
+      "name": {
+        "en": "église Notre-Dame-de-la-Paix de Saint-Louis",
+        "fr": "église Notre-Dame-de-la-Paix de Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haut-Rhin, in France",
+        "fr": "église située dans le Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38478739",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-eglise-saint-charles-de-bourgfelden-q38478739",
+      "latitude": 47.57523,
+      "longitude": 7.55035,
+      "name": {
+        "en": "église Saint-Charles de Bourgfelden",
+        "fr": "église Saint-Charles de Bourgfelden"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "art museum",
+        "fr": "musée français à Saint-Louis en Alsace"
+      },
+      "externalIdentity": {
+        "id": "Q1367990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-fondation-fernet-branca-q1367990",
+      "latitude": 47.5848,
+      "longitude": 7.56097,
+      "name": {
+        "en": "fondation Fernet-Branca",
+        "fr": "fondation Fernet-Branca"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "facility in Saint-Louis, France",
+        "fr": "Institut franco-allemand de recherches de Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q827214",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-institut-franco-allemand-de-recherches-de-saint-louis-q827214",
+      "latitude": 47.591284,
+      "longitude": 7.562052,
+      "name": {
+        "en": "Institut franco-allemand de recherches de Saint-Louis",
+        "fr": "Institut franco-allemand de recherches de Saint-Louis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Saint-Louis, France",
+        "fr": "complexe culturel"
+      },
+      "externalIdentity": {
+        "id": "Q3207869",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-la-coupole-q3207869",
+      "latitude": 47.5857,
+      "longitude": 7.56194,
+      "name": {
+        "en": "La Coupole",
+        "fr": "La Coupole"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Haut-Rhin department, France",
+        "fr": "monument aux morts du Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3323299",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-monument-aux-morts-de-saint-louis-q3323299",
+      "latitude": 47.59068,
+      "longitude": 7.55871,
+      "name": {
+        "en": "monument aux morts de Saint-Louis",
+        "fr": "monument aux morts de Saint-Louis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts décoratifs de l'Océan indien is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts décoratifs de l'Océan indien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1078",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-louis-68297-musee-des-arts-decoratifs-de-l-ocean-indien-m1078",
+      "latitude": -21.26765,
+      "longitude": 55.411839,
+      "name": {
+        "en": "musée des arts décoratifs de l'Océan indien",
+        "fr": "musée des arts décoratifs de l'Océan indien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Louis, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2693953",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-saint-louis-la-chaussee-q2693953",
+      "latitude": 47.609527777,
+      "longitude": 7.531166666,
+      "name": {
+        "en": "Saint-Louis-la-Chaussée",
+        "fr": "Saint-Louis-la-Chaussée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "synagogue located in Haut-Rhin, in France",
+        "fr": "synagogue située dans le Haut-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21980980",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-louis-68297-synagogue-de-saint-louis-q21980980",
+      "latitude": 47.588103,
+      "longitude": 7.566803,
+      "name": {
+        "en": "synagogue de Saint-Louis",
+        "fr": "synagogue de Saint-Louis"
+      }
+    }
+  ]
+}

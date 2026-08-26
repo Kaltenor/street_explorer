@@ -1,0 +1,204 @@
+{
+  "id": "chevilly-larue-v1",
+  "cityId": "chevilly-larue-fr",
+  "cityZoneId": "relation/34679",
+  "cityName": {
+    "en": "Chevilly-Larue",
+    "fr": "Chevilly-Larue"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "library in Chevilly-Larue, France",
+        "fr": "bibliothèque historique du Séminaire du Saint-Esprit"
+      },
+      "externalIdentity": {
+        "id": "Q64052359",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-bibliotheque-lucien-deiss-q64052359",
+      "latitude": 48.77027,
+      "longitude": 2.35372,
+      "name": {
+        "en": "bibliothèque Lucien-Deiss",
+        "fr": "bibliothèque Lucien-Deiss"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Val-de-Marne, in France",
+        "fr": "chapelle située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819684",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-chapelle-du-bon-pasteur-de-chevilly-larue-q29819684",
+      "latitude": 48.76641,
+      "longitude": 2.36386,
+      "name": {
+        "en": "chapelle du Bon-Pasteur de Chevilly-Larue",
+        "fr": "chapelle du Bon-Pasteur de Chevilly-Larue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église à Chevilly-Larue (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22985977",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-eglise-sainte-colombe-de-chevilly-larue-q22985977",
+      "latitude": 48.77109,
+      "longitude": 2.35429,
+      "name": {
+        "en": "église Sainte-Colombe de Chevilly-Larue",
+        "fr": "église Sainte-Colombe de Chevilly-Larue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Colombe is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Colombe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079865",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chevilly-larue-eglise-sainte-colombe-pa00079865",
+      "latitude": 48.77109778063401,
+      "longitude": 2.35427189930958,
+      "name": {
+        "en": "Église Sainte-Colombe",
+        "fr": "Église Sainte-Colombe"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Chevilly-Larue, France",
+        "fr": "jardin situé à Chevilly-Larue, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88807737",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-jardin-du-monastere-de-notre-dame-de-la-charite-q88807737",
+      "latitude": 48.771204,
+      "longitude": 2.353534,
+      "name": {
+        "en": "jardin du monastère de Notre-Dame de la Charité",
+        "fr": "jardin du monastère de Notre-Dame de la Charité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "place in France",
+        "fr": "marché central de Paris en produits frais destiné aux professionnels de toute la région"
+      },
+      "externalIdentity": {
+        "id": "Q2917661",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-marche-international-de-rungis-q2917661",
+      "latitude": 48.75972222,
+      "longitude": 2.35361111,
+      "name": {
+        "en": "marché international de Rungis",
+        "fr": "marché international de Rungis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136050853",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-monument-aux-morts-de-chevilly-larue-q136050853",
+      "latitude": 48.77127,
+      "longitude": 2.35409,
+      "name": {
+        "en": "monument aux morts de Chevilly-Larue",
+        "fr": "monument aux morts de Chevilly-Larue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "city gate in Chevilly-Larue, France",
+        "fr": "porte de Chevilly-Larue, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112064401",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-porte-de-chevilly-larue-q112064401",
+      "latitude": 48.762724629,
+      "longitude": 2.345705658,
+      "name": {
+        "en": "porte de Chevilly-Larue",
+        "fr": "porte de Chevilly-Larue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "city gate in Chevilly-Larue, France",
+        "fr": "porte de Chevilly-Larue, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112220124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-porte-de-thiais-q112220124",
+      "latitude": 48.75951,
+      "longitude": 2.36442,
+      "name": {
+        "en": "porte de Thiais",
+        "fr": "porte de Thiais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "city gate in Chevilly-Larue, France",
+        "fr": "porte de Chevilly-Larue, en France"
+      },
+      "externalIdentity": {
+        "id": "Q112226908",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chevilly-larue-porte-du-delta-q112226908",
+      "latitude": 48.75907,
+      "longitude": 2.34285,
+      "name": {
+        "en": "porte du Delta",
+        "fr": "porte du Delta"
+      }
+    }
+  ]
+}

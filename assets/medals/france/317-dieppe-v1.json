@@ -1,0 +1,204 @@
+{
+  "id": "dieppe-v1",
+  "cityId": "dieppe-fr",
+  "cityZoneId": "relation/110435",
+  "cityName": {
+    "en": "Dieppe",
+    "fr": "Dieppe"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Anciennes fortifications de la ville is an important witness to the city's history.",
+        "fr": "Anciennes fortifications de la ville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101106",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-anciennes-fortifications-de-la-ville-pa00101106",
+      "latitude": 49.9295637341232,
+      "longitude": 1.08353170199005,
+      "name": {
+        "en": "Anciennes fortifications de la ville",
+        "fr": "Anciennes fortifications de la ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "château-musée is one of the city's notable cultural landmarks.",
+        "fr": "château-musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0712",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dieppe-chateau-musee-m0712",
+      "latitude": 49.923908,
+      "longitude": 1.071756,
+      "name": {
+        "en": "château-musée",
+        "fr": "château-musée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100620",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-chateau-pa00100620",
+      "latitude": 49.9243544930848,
+      "longitude": 1.07027191200694,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Coeur de Janval is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Coeur de Janval est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000057",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-eglise-du-sacre-coeur-de-janval-pa76000057",
+      "latitude": 49.9125563483689,
+      "longitude": 1.07246087906048,
+      "name": {
+        "en": "Église du Sacré-Coeur de Janval",
+        "fr": "Église du Sacré-Coeur de Janval"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100621",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-eglise-saint-jacques-pa00100621",
+      "latitude": 49.925560265918,
+      "longitude": 1.07849874632682,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Rémy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Rémy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100622",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-eglise-saint-remy-pa00100622",
+      "latitude": 49.9248445449624,
+      "longitude": 1.07361456948053,
+      "name": {
+        "en": "Église Saint-Rémy",
+        "fr": "Église Saint-Rémy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument à Abraham Duquesne is a notable work of public art and local memory.",
+        "fr": "Monument à Abraham Duquesne est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA76000130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-monument-a-abraham-duquesne-pa76000130",
+      "latitude": 49.926369167850055,
+      "longitude": 1.0783514873720352,
+      "name": {
+        "en": "Monument à Abraham Duquesne",
+        "fr": "Monument à Abraham Duquesne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont Colbert is a distinctive architectural landmark in the city.",
+        "fr": "pont Colbert est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-pont-colbert-pa76000109",
+      "latitude": 49.9265982237609,
+      "longitude": 1.08572039679277,
+      "name": {
+        "en": "pont Colbert",
+        "fr": "pont Colbert"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de la ville is an important witness to the city's history.",
+        "fr": "Porte de la ville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100629",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-porte-de-la-ville-pa00100629",
+      "latitude": 49.9255762151078,
+      "longitude": 1.07206265287078,
+      "name": {
+        "en": "Porte de la ville",
+        "fr": "Porte de la ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théatre is one of the city's notable cultural landmarks.",
+        "fr": "Théatre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101103",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dieppe-theatre-pa00101103",
+      "latitude": 49.9253375884065,
+      "longitude": 1.07193095839203,
+      "name": {
+        "en": "Théatre",
+        "fr": "Théatre"
+      }
+    }
+  ]
+}

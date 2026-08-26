@@ -1,0 +1,204 @@
+{
+  "id": "beauvais-v1",
+  "cityId": "beauvais-fr",
+  "cityZoneId": "relation/158311",
+  "cityName": {
+    "en": "Beauvais",
+    "fr": "Beauvais"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Lucien, à Notre-Dame-du-Thil is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Lucien, à Notre-Dame-du-Thil est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114499",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-ancien-abbaye-saint-lucien-a-notre-dame-du-thil-pa00114499",
+      "latitude": 49.44127169998759,
+      "longitude": 2.0789118318299007,
+      "name": {
+        "en": "Ancien abbaye Saint-Lucien, à Notre-Dame-du-Thil",
+        "fr": "Ancien abbaye Saint-Lucien, à Notre-Dame-du-Thil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Quentin is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Quentin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114500",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-ancien-abbaye-saint-quentin-pa00114500",
+      "latitude": 49.4389566365837,
+      "longitude": 2.07300874642127,
+      "name": {
+        "en": "Ancien abbaye Saint-Quentin",
+        "fr": "Ancien abbaye Saint-Quentin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien palais épiscopal, ancien palais de justice, actuellement musée départemental de l'Oise is one of the city's notable cultural landmarks.",
+        "fr": "Ancien palais épiscopal, ancien palais de justice, actuellement musée départemental de l'Oise compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114516",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-ancien-palais-episcopal-ancien-palais-de-justice-actuellement-musee-departemental-de-l-oise-pa00114516",
+      "latitude": 49.4331864589257,
+      "longitude": 2.07935503729448,
+      "name": {
+        "en": "Ancien palais épiscopal, ancien palais de justice, actuellement musée départemental de l'Oise",
+        "fr": "Ancien palais épiscopal, ancien palais de justice, actuellement musée départemental de l'Oise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114502",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-cathedrale-saint-pierre-pa00114502",
+      "latitude": 49.4326013055941,
+      "longitude": 2.08156021746428,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Cloître de la cathédrale et de l'ancien musée is one of the city's notable cultural landmarks.",
+        "fr": "Cloître de la cathédrale et de l'ancien musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114504",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-cloitre-de-la-cathedrale-et-de-l-ancien-musee-pa00114504",
+      "latitude": 49.432985123099805,
+      "longitude": 2.08097539238176,
+      "name": {
+        "en": "Cloître de la cathédrale et de l'ancien musée",
+        "fr": "Cloître de la cathédrale et de l'ancien musée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Basse-Oeuvre is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Basse-Oeuvre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114505",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-eglise-de-la-basse-oeuvre-pa00114505",
+      "latitude": 49.43273811361351,
+      "longitude": 2.08086535515721,
+      "name": {
+        "en": "Église de la Basse-Oeuvre",
+        "fr": "Église de la Basse-Oeuvre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de Marissel is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de Marissel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114506",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-eglise-notre-dame-de-marissel-pa00114506",
+      "latitude": 49.42976183731081,
+      "longitude": 2.1068389167342,
+      "name": {
+        "en": "Église Notre-Dame de Marissel",
+        "fr": "Église Notre-Dame de Marissel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114509",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-hotel-de-ville-pa00114509",
+      "latitude": 49.4296250076786,
+      "longitude": 2.08204741754236,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "MUDO - musée de l'Oise is one of the city's notable cultural landmarks.",
+        "fr": "MUDO - musée de l'Oise compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0798",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "beauvais-mudo-musee-de-l-oise-m0798",
+      "latitude": 49.432788,
+      "longitude": 2.080444,
+      "name": {
+        "en": "MUDO - musée de l'Oise",
+        "fr": "MUDO - musée de l'Oise"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Boileau is an important witness to the city's history.",
+        "fr": "Tour Boileau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114518",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beauvais-tour-boileau-pa00114518",
+      "latitude": 49.4264328504385,
+      "longitude": 2.07518089928073,
+      "name": {
+        "en": "Tour Boileau",
+        "fr": "Tour Boileau"
+      }
+    }
+  ]
+}

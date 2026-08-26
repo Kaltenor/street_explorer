@@ -250,6 +250,10 @@ export function useReliableForegroundLocation({
 
         localSubscription = subscription;
         subscriptionRef.current = subscription;
+
+        if (isRecording) {
+          console.info("[recording] foreground GPS watcher started");
+        }
       })
       .catch(failWatch);
 

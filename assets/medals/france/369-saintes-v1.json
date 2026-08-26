@@ -1,0 +1,204 @@
+{
+  "id": "saintes-v1",
+  "cityId": "saintes-fr",
+  "cityZoneId": "relation/138502",
+  "cityName": {
+    "en": "Saintes",
+    "fr": "Saintes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye des Dames is an important witness to the city's history.",
+        "fr": "Ancien abbaye des Dames est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105245",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-ancien-abbaye-des-dames-pa00105245",
+      "latitude": 45.744286838303005,
+      "longitude": -0.623895806373279,
+      "name": {
+        "en": "Ancien abbaye des Dames",
+        "fr": "Ancien abbaye des Dames"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Eutrope is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Eutrope est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105249",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-eglise-saint-eutrope-pa00105249",
+      "latitude": 45.7434478420431,
+      "longitude": -0.641350822537204,
+      "name": {
+        "en": "Église Saint-Eutrope",
+        "fr": "Église Saint-Eutrope"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pallais is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pallais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105251",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-eglise-saint-pallais-pa00105251",
+      "latitude": 45.7452277857793,
+      "longitude": -0.624223222333399,
+      "name": {
+        "en": "Église Saint-Pallais",
+        "fr": "Église Saint-Pallais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105252",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-eglise-saint-pierre-pa00105252",
+      "latitude": 45.7444636246872,
+      "longitude": -0.631933292965558,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Marie-aux-Dames is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Marie-aux-Dames est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105250",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-eglise-sainte-marie-aux-dames-pa00105250",
+      "latitude": 45.7448693150248,
+      "longitude": -0.623982498364466,
+      "name": {
+        "en": "Église Sainte-Marie-aux-Dames",
+        "fr": "Église Sainte-Marie-aux-Dames"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0835",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saintes-musee-archeologique-m0835",
+      "latitude": 45.741605,
+      "longitude": -0.627956,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'Echevinage is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'Echevinage compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0837",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saintes-musee-de-l-echevinage-m0837",
+      "latitude": 45.745991,
+      "longitude": -0.633096,
+      "name": {
+        "en": "musée de l'Echevinage",
+        "fr": "musée de l'Echevinage"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Présidial is one of the city's notable cultural landmarks.",
+        "fr": "musée du Présidial compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0836",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saintes-musee-du-presidial-m0836",
+      "latitude": 45.746235,
+      "longitude": -0.632055,
+      "name": {
+        "en": "musée du Présidial",
+        "fr": "musée du Présidial"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Dupuy-Mestreau is one of the city's notable cultural landmarks.",
+        "fr": "musée Dupuy-Mestreau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0838",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saintes-musee-dupuy-mestreau-m0838",
+      "latitude": 45.743294,
+      "longitude": -0.634076,
+      "name": {
+        "en": "musée Dupuy-Mestreau",
+        "fr": "musée Dupuy-Mestreau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Terrain sur lequel est édifié l'immeuble Guinguenaud is an important witness to the city's history.",
+        "fr": "Terrain sur lequel est édifié l'immeuble Guinguenaud est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105264",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saintes-terrain-sur-lequel-est-edifie-l-immeuble-guinguenaud-pa00105264",
+      "latitude": 45.7464621398477,
+      "longitude": -0.631943490096569,
+      "name": {
+        "en": "Terrain sur lequel est édifié l'immeuble Guinguenaud",
+        "fr": "Terrain sur lequel est édifié l'immeuble Guinguenaud"
+      }
+    }
+  ]
+}

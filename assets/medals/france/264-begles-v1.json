@@ -1,0 +1,204 @@
+{
+  "id": "begles-v1",
+  "cityId": "begles-fr",
+  "cityZoneId": "relation/105278",
+  "cityName": {
+    "en": "Bègles",
+    "fr": "Bègles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bègles, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1976042",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-begles-q1976042",
+      "latitude": 44.79935,
+      "longitude": -0.555143,
+      "name": {
+        "en": "Bègles",
+        "fr": "Bègles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tram stop in Bègles, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q7604219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-begles-terres-neuves-q7604219",
+      "latitude": 44.815276,
+      "longitude": -0.550865,
+      "name": {
+        "en": "Bègles Terres Neuves",
+        "fr": "Bègles Terres Neuves"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Francs ou des Douze Portes is an important witness to the city's history.",
+        "fr": "Château de Francs ou des Douze Portes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083135",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "begles-chateau-de-francs-ou-des-douze-portes-pa00083135",
+      "latitude": 44.8076996328021,
+      "longitude": -0.534796866223861,
+      "name": {
+        "en": "Château de Francs ou des Douze Portes",
+        "fr": "Château de Francs ou des Douze Portes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Bègles, France",
+        "fr": "château français situé à Bègles"
+      },
+      "externalIdentity": {
+        "id": "Q2969264",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-chateau-de-francs-q2969264",
+      "latitude": 44.80777778,
+      "longitude": -0.53472222,
+      "name": {
+        "en": "château de Francs",
+        "fr": "château de Francs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083136",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "begles-eglise-saint-pierre-pa00083136",
+      "latitude": 44.8018537565865,
+      "longitude": -0.54318135967162,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Création Franche is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Création Franche compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1222",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "begles-musee-de-la-creation-franche-m1222",
+      "latitude": 44.80598303387724,
+      "longitude": -0.5434896909627212,
+      "name": {
+        "en": "musée de la Création Franche",
+        "fr": "musée de la Création Franche"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Tram stop in Bègles, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573086",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-parc-de-mussonville-q98573086",
+      "latitude": 44.793941,
+      "longitude": -0.559655,
+      "name": {
+        "en": "Parc de Mussonville",
+        "fr": "Parc de Mussonville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in France",
+        "fr": "piscine à Bègles (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q22920415",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-piscine-municipale-de-begles-q22920415",
+      "latitude": 44.80739,
+      "longitude": -0.55395,
+      "name": {
+        "en": "piscine municipale de Bègles",
+        "fr": "piscine municipale de Bègles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français à Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q16510449",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-pont-francois-mitterrand-q16510449",
+      "latitude": 44.8079,
+      "longitude": -0.527197,
+      "name": {
+        "en": "pont François-Mitterrand",
+        "fr": "pont François-Mitterrand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bridge in Bordeaux, France",
+        "fr": "pont à Bordeaux Métropole"
+      },
+      "externalIdentity": {
+        "id": "Q19407192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "begles-pont-simone-veil-q19407192",
+      "latitude": 44.82270871,
+      "longitude": -0.537146532,
+      "name": {
+        "en": "pont Simone-Veil",
+        "fr": "pont Simone-Veil"
+      }
+    }
+  ]
+}

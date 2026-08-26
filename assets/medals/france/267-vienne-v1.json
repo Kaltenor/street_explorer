@@ -1,0 +1,204 @@
+{
+  "id": "vienne-v1",
+  "cityId": "vienne-fr",
+  "cityZoneId": "relation/169848",
+  "cityName": {
+    "en": "Vienne",
+    "fr": "Vienne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maurice, anciennement cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maurice, anciennement cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117325",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-eglise-saint-maurice-anciennement-cathedrale-pa00117325",
+      "latitude": 45.5241889538549,
+      "longitude": 4.8731749785468494,
+      "name": {
+        "en": "Église Saint-Maurice, anciennement cathédrale",
+        "fr": "Église Saint-Maurice, anciennement cathédrale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-le-Bas (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-le-Bas (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117326",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-eglise-saint-pierre-le-bas-ancienne-pa00117326",
+      "latitude": 45.522843119636434,
+      "longitude": 4.871060234717339,
+      "name": {
+        "en": "Église Saint-Pierre-le-Bas (ancienne)",
+        "fr": "Église Saint-Pierre-le-Bas (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte romaine is an important witness to the city's history.",
+        "fr": "Enceinte romaine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132973",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-enceinte-romaine-pa00132973",
+      "latitude": 45.5221398872905,
+      "longitude": 4.87115278777681,
+      "name": {
+        "en": "Enceinte romaine",
+        "fr": "Enceinte romaine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1005",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vienne-musee-des-beaux-arts-et-d-archeologie-m1005",
+      "latitude": 45.524069,
+      "longitude": 4.87462,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du cloître Saint-André-le-Bas is one of the city's notable cultural landmarks.",
+        "fr": "musée du cloître Saint-André-le-Bas compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1007",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vienne-musee-du-cloitre-saint-andre-le-bas-m1007",
+      "latitude": 45.526967,
+      "longitude": 4.873538,
+      "name": {
+        "en": "musée du cloître Saint-André-le-Bas",
+        "fr": "musée du cloître Saint-André-le-Bas"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée lapidaire Saint-Pierre is one of the city's notable cultural landmarks.",
+        "fr": "musée lapidaire Saint-Pierre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1006",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vienne-musee-lapidaire-saint-pierre-m1006",
+      "latitude": 45.523234,
+      "longitude": 4.870694,
+      "name": {
+        "en": "musée lapidaire Saint-Pierre",
+        "fr": "musée lapidaire Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Odéon is one of the city's notable cultural landmarks.",
+        "fr": "Odéon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-odeon-pa00117343",
+      "latitude": 45.5237960895715,
+      "longitude": 4.87780787271499,
+      "name": {
+        "en": "Odéon",
+        "fr": "Odéon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Pont Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117345",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-pont-saint-martin-pa00117345",
+      "latitude": 45.5280617015798,
+      "longitude": 4.87834857271594,
+      "name": {
+        "en": "Pont Saint-Martin",
+        "fr": "Pont Saint-Martin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de la Cour de l'Ambulance is an important witness to the city's history.",
+        "fr": "Porte de la Cour de l'Ambulance est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117346",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-porte-de-la-cour-de-l-ambulance-pa00117346",
+      "latitude": 45.52613984417236,
+      "longitude": 4.878393293847833,
+      "name": {
+        "en": "Porte de la Cour de l'Ambulance",
+        "fr": "Porte de la Cour de l'Ambulance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple d'Auguste et de Livie is a distinctive architectural landmark in the city.",
+        "fr": "Temple d'Auguste et de Livie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117348",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vienne-temple-d-auguste-et-de-livie-pa00117348",
+      "latitude": 45.5254748031018,
+      "longitude": 4.87426895389985,
+      "name": {
+        "en": "Temple d'Auguste et de Livie",
+        "fr": "Temple d'Auguste et de Livie"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "allauch-v1",
+  "cityId": "allauch-fr",
+  "cityZoneId": "relation/74270",
+  "cityName": {
+    "en": "Allauch",
+    "fr": "Allauch"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bouches-du-Rhône, France",
+        "fr": "commune française du département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q269862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-allauch-q269862",
+      "latitude": 43.336111111,
+      "longitude": 5.482222222,
+      "name": {
+        "en": "Allauch",
+        "fr": "Allauch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pagnol family's holiday house",
+        "fr": "maison de vacances de la famille Pagnol"
+      },
+      "externalIdentity": {
+        "id": "Q78336889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-bastide-neuve-q78336889",
+      "latitude": 43.324887,
+      "longitude": 5.513519,
+      "name": {
+        "en": "Bastide Neuve",
+        "fr": "Bastide Neuve"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle Notre-Dame de Beauvois et vestiges du château is an important witness to the city's history.",
+        "fr": "Chapelle Notre-Dame de Beauvois et vestiges du château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081111",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "allauch-chapelle-notre-dame-de-beauvois-et-vestiges-du-chateau-pa00081111",
+      "latitude": 43.3365545118543,
+      "longitude": 5.48629368684847,
+      "name": {
+        "en": "Chapelle Notre-Dame de Beauvois et vestiges du château",
+        "fr": "Chapelle Notre-Dame de Beauvois et vestiges du château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "chapel located in Bouches-du-Rhône, in France",
+        "fr": "chapelle située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2956643",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-chapelle-notre-dame-du-chateau-d-allauch-q2956643",
+      "latitude": 43.3366,
+      "longitude": 5.4863,
+      "name": {
+        "en": "chapelle Notre-Dame-du-Château d'Allauch",
+        "fr": "chapelle Notre-Dame-du-Château d'Allauch"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Fontvieille is an important witness to the city's history.",
+        "fr": "Château de Fontvieille est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081112",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "allauch-chateau-de-fontvieille-pa00081112",
+      "latitude": 43.322684865509,
+      "longitude": 5.491258946404151,
+      "name": {
+        "en": "Château de Fontvieille",
+        "fr": "Château de Fontvieille"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French castle fort",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2970116",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-chateau-de-ners-q2970116",
+      "latitude": 43.36805556,
+      "longitude": 5.52638889,
+      "name": {
+        "en": "château de Ners",
+        "fr": "château de Ners"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sébastien is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sébastien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081113",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "allauch-eglise-saint-sebastien-pa00081113",
+      "latitude": 43.3365009979938,
+      "longitude": 5.482256563688731,
+      "name": {
+        "en": "Église Saint-Sébastien",
+        "fr": "Église Saint-Sébastien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "small mountain range in Provence, southern France",
+        "fr": "chaîne de montagne en Provence, dans le sud de la France"
+      },
+      "externalIdentity": {
+        "id": "Q3297654",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-massif-de-l-etoile-q3297654",
+      "latitude": 43.374722222,
+      "longitude": 5.485,
+      "name": {
+        "en": "massif de l'Étoile",
+        "fr": "massif de l'Étoile"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Historic rural estate now owned by the Bouches-du-Rhône department (France), open to the public free of charge, a place of leisure",
+        "fr": "domaine rural historique devenu propriété du département des Bouches-du-Rhône, ouvert gratuitement au public, lieu de loisirs"
+      },
+      "externalIdentity": {
+        "id": "Q112144147",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-parc-departemental-de-pichauris-q112144147",
+      "latitude": 43.37046,
+      "longitude": 5.53711,
+      "name": {
+        "en": "parc départemental de Pichauris",
+        "fr": "parc départemental de Pichauris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "massif du Garlaban is a distinctive architectural landmark in the city.",
+        "fr": "massif de montagnes en France"
+      },
+      "externalIdentity": {
+        "id": "Q3297679",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "allauch-massif-du-garlaban-q3297679",
+      "latitude": 43.342177,
+      "longitude": 5.551264,
+      "name": {
+        "en": "massif du Garlaban",
+        "fr": "massif du Garlaban"
+      }
+    }
+  ]
+}

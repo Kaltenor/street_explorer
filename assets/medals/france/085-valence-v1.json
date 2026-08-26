@@ -1,0 +1,394 @@
+{
+  "id": "valence-v1",
+  "cityId": "valence-fr",
+  "cityZoneId": "relation/37586",
+  "cityName": {
+    "en": "Valence",
+    "fr": "Valence"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Drôme, in France",
+        "fr": "abbaye située dans la Drôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2820323",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-abbaye-notre-dame-de-soyons-q2820323",
+      "latitude": 44.933288,
+      "longitude": 4.887205,
+      "name": {
+        "en": "abbaye Notre-Dame de Soyons",
+        "fr": "abbaye Notre-Dame de Soyons"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Drôme, in France",
+        "fr": "abbaye française"
+      },
+      "externalIdentity": {
+        "id": "Q2820441",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-abbaye-saint-ruf-de-valence-q2820441",
+      "latitude": 44.934019,
+      "longitude": 4.889399,
+      "name": {
+        "en": "abbaye Saint-Ruf de Valence",
+        "fr": "abbaye Saint-Ruf de Valence"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Ruf-hors-les-murs is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Ruf-hors-les-murs est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA26000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-ancien-abbaye-de-saint-ruf-hors-les-murs-pa26000030",
+      "latitude": 44.9280475697811,
+      "longitude": 4.88328206187045,
+      "name": {
+        "en": "Ancien abbaye de Saint-Ruf-hors-les-murs",
+        "fr": "Ancien abbaye de Saint-Ruf-hors-les-murs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Ruf \"le Haut\" is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Ruf \"le Haut\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117095",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-ancien-abbaye-de-saint-ruf-le-haut-pa00117095",
+      "latitude": 44.9337310639589,
+      "longitude": 4.890100832109131,
+      "name": {
+        "en": "Ancien abbaye de Saint-Ruf \"le Haut\"",
+        "fr": "Ancien abbaye de Saint-Ruf \"le Haut\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Apollinaire is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Apollinaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-cathedrale-saint-apollinaire-pa00117085",
+      "latitude": 44.931597222627,
+      "longitude": 4.889602885747581,
+      "name": {
+        "en": "Cathédrale Saint-Apollinaire",
+        "fr": "Cathédrale Saint-Apollinaire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q8298179",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-centre-du-patrimoine-armenien-de-valence-q8298179",
+      "latitude": 44.9315,
+      "longitude": 4.89373,
+      "name": {
+        "en": "centre du patrimoine arménien de Valence",
+        "fr": "centre du patrimoine arménien de Valence"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Murat-Fontlozier is an important witness to the city's history.",
+        "fr": "Domaine de Murat-Fontlozier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA26000033",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-domaine-de-murat-fontlozier-pa26000033",
+      "latitude": 44.9089365791006,
+      "longitude": 4.88934140022591,
+      "name": {
+        "en": "Domaine de Murat-Fontlozier",
+        "fr": "Domaine de Murat-Fontlozier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Valensolles is an important witness to the city's history.",
+        "fr": "Domaine de Valensolles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA26000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-domaine-de-valensolles-pa26000020",
+      "latitude": 44.9180250864176,
+      "longitude": 4.87960915078251,
+      "name": {
+        "en": "Domaine de Valensolles",
+        "fr": "Domaine de Valensolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering College",
+        "fr": "école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q3578266",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-ecole-nationale-superieure-en-systemes-avances-et-reseaux-q3578266",
+      "latitude": 44.9173,
+      "longitude": 4.91369,
+      "name": {
+        "en": "École nationale supérieure en systèmes avancés et réseaux",
+        "fr": "École nationale supérieure en systèmes avancés et réseaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Drôme, in France",
+        "fr": "église située dans la Drôme, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581899",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-eglise-saint-jean-baptiste-de-valence-q3581899",
+      "latitude": 44.93448,
+      "longitude": 4.89184,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Valence",
+        "fr": "église Saint-Jean-Baptiste de Valence"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine monumentale is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine de Valence"
+      },
+      "externalIdentity": {
+        "id": "Q3076309",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-fontaine-monumentale-q3076309",
+      "latitude": 44.93055,
+      "longitude": 4.894136,
+      "name": {
+        "en": "fontaine monumentale",
+        "fr": "fontaine monumentale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA26000034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-hotel-de-ville-pa26000034",
+      "latitude": 44.9332686909405,
+      "longitude": 4.89211050451121,
+      "name": {
+        "en": "hôtel de ville",
+        "fr": "hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison des Têtes is a distinctive architectural landmark in the city.",
+        "fr": "Maison des Têtes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117093",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "valence-maison-des-tetes-pa00117093",
+      "latitude": 44.9319674093737,
+      "longitude": 4.89092810650813,
+      "name": {
+        "en": "Maison des Têtes",
+        "fr": "Maison des Têtes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "house in Valence, France",
+        "fr": "maison à Valence (Drôme)"
+      },
+      "externalIdentity": {
+        "id": "Q3278702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-maison-dupre-latour-q3278702",
+      "latitude": 44.9323,
+      "longitude": 4.8901,
+      "name": {
+        "en": "maison Dupré-Latour",
+        "fr": "maison Dupré-Latour"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Valence, France",
+        "fr": "musée de Valence, France"
+      },
+      "externalIdentity": {
+        "id": "Q3330224",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-musee-d-art-et-d-archeologie-de-valence-q3330224",
+      "latitude": 44.9317,
+      "longitude": 4.88944,
+      "name": {
+        "en": "musée d'Art et d'Archéologie de Valence",
+        "fr": "musée d'Art et d'Archéologie de Valence"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0988",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "valence-musee-des-beaux-arts-m0988",
+      "latitude": 44.931125,
+      "longitude": 4.889563,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc à Valence, France"
+      },
+      "externalIdentity": {
+        "id": "Q3363838",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-parc-jouvet-q3363838",
+      "latitude": 44.9299,
+      "longitude": 4.8859,
+      "name": {
+        "en": "parc Jouvet",
+        "fr": "parc Jouvet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Drôme, in France",
+        "fr": "temple à Valence (Drôme)"
+      },
+      "externalIdentity": {
+        "id": "Q3517495",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-temple-protestant-saint-ruf-q3517495",
+      "latitude": 44.93357,
+      "longitude": 4.88988,
+      "name": {
+        "en": "temple protestant Saint-Ruf",
+        "fr": "temple protestant Saint-Ruf"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Valence, France",
+        "fr": "salle de spectacle à Valence, France"
+      },
+      "externalIdentity": {
+        "id": "Q46700081",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-theatre-de-la-ville-q46700081",
+      "latitude": 44.9329,
+      "longitude": 4.89191,
+      "name": {
+        "en": "théâtre de la Ville",
+        "fr": "théâtre de la Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Valence, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097931",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "valence-valence-ville-q3097931",
+      "latitude": 44.928055,
+      "longitude": 4.892777,
+      "name": {
+        "en": "Valence-Ville",
+        "fr": "Valence-Ville"
+      }
+    }
+  ]
+}

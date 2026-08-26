@@ -1,0 +1,474 @@
+{
+  "id": "marseille-v1",
+  "cityId": "marseille-fr",
+  "cityZoneId": "relation/76469",
+  "cityName": {
+    "en": "Marseille",
+    "fr": "Marseille"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Original roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets. Marseille v2 additions and arrondissement assignments reviewed against Wikidata (CC0) and Ville de Marseille arrondissement references. Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Borély ou domaine Borély is an important witness to the city's history.",
+        "fr": "Château Borély ou domaine Borély est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081332",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-chateau-borely-ou-domaine-borely-pa00081332",
+      "arrondissement": 8,
+      "latitude": 43.2594298707516,
+      "longitude": 5.3806912648556,
+      "name": {
+        "en": "Château Borély ou domaine Borély",
+        "fr": "Château Borély ou domaine Borély"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Palais Longchamp is one of the city's notable cultural landmarks.",
+        "fr": "Palais Longchamp compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081368",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-palais-longchamp-pa00081368",
+      "arrondissement": 4,
+      "latitude": 43.3059900517822,
+      "longitude": 5.39755768627276,
+      "name": {
+        "en": "Palais Longchamp",
+        "fr": "Palais Longchamp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble cathédral Sainte-Marie-Majeure is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble cathédral Sainte-Marie-Majeure est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081326",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-ensemble-cathedral-sainte-marie-majeure-pa00081326",
+      "arrondissement": 2,
+      "latitude": 43.2997785870589,
+      "longitude": 5.36493879320848,
+      "name": {
+        "en": "Ensemble cathédral Sainte-Marie-Majeure",
+        "fr": "Ensemble cathédral Sainte-Marie-Majeure"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure is a distinctive architectural landmark in the city.",
+        "fr": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081336",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-eglise-de-la-vieille-major-ancienne-cathedrale-ou-ensemble-cathedral-sainte-marie-majeure-pa00081336",
+      "arrondissement": 2,
+      "latitude": 43.2994644275018,
+      "longitude": 5.36532107820901,
+      "name": {
+        "en": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure",
+        "fr": "Église de la vieille Major (ancienne cathédrale) ou ensemble cathédral Sainte-Marie-Majeure"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'If is an important witness to the city's history.",
+        "fr": "Château d'If est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081333",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-chateau-d-if-pa00081333",
+      "arrondissement": 7,
+      "latitude": 43.2798462350654,
+      "longitude": 5.32505577123099,
+      "name": {
+        "en": "Château d'If",
+        "fr": "Château d'If"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Victor is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Victor est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081323",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "marseille-abbaye-saint-victor-pa00081323",
+      "arrondissement": 7,
+      "latitude": 43.2902377423072,
+      "longitude": 5.36555226150343,
+      "name": {
+        "en": "Abbaye Saint-Victor",
+        "fr": "Abbaye Saint-Victor"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "cabinet des monnaies et médailles is one of the city's notable cultural landmarks.",
+        "fr": "cabinet des monnaies et médailles compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0912",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "marseille-cabinet-des-monnaies-et-medailles-m0912",
+      "arrondissement": 1,
+      "latitude": 43.295789,
+      "longitude": 5.383313,
+      "name": {
+        "en": "cabinet des monnaies et médailles",
+        "fr": "cabinet des monnaies et médailles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Cantini is one of the city's notable cultural landmarks.",
+        "fr": "musée Cantini compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0915",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "marseille-musee-cantini-m0915",
+      "arrondissement": 6,
+      "latitude": 43.292383,
+      "longitude": 5.378137,
+      "name": {
+        "en": "musée Cantini",
+        "fr": "musée Cantini"
+      }
+    },
+    {
+      "id": "marseille-opera-municipal-q3085786",
+      "category": "art",
+      "arrondissement": 1,
+      "name": { "en": "Marseille Municipal Opera", "fr": "Opéra municipal de Marseille" },
+      "description": { "en": "The city's historic opera house and a landmark of Marseille's performing arts.", "fr": "L'opéra historique de la ville, repère majeur des arts de la scène marseillais." },
+      "latitude": 43.293333333,
+      "longitude": 5.375833333,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3085786" }
+    },
+    {
+      "id": "marseille-jardin-des-vestiges-q2172329",
+      "category": "history",
+      "arrondissement": 1,
+      "name": { "en": "Jardin des Vestiges", "fr": "Jardin des Vestiges" },
+      "description": { "en": "An archaeological garden preserving remains of ancient Marseille beside the old port district.", "fr": "Un jardin archéologique qui conserve des vestiges de la Marseille antique près du Vieux-Port." },
+      "latitude": 43.29771,
+      "longitude": 5.3748,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2172329" }
+    },
+    {
+      "id": "marseille-fort-saint-jean-q1905802",
+      "category": "history",
+      "arrondissement": 2,
+      "name": { "en": "Fort Saint-Jean", "fr": "Fort Saint-Jean" },
+      "description": { "en": "The historic fort guarding the entrance to Marseille's Old Port.", "fr": "Le fort historique qui garde l'entrée du Vieux-Port de Marseille." },
+      "latitude": 43.29472,
+      "longitude": 5.3625,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1905802" }
+    },
+    {
+      "id": "marseille-vieille-charite-q1065120",
+      "category": "culture",
+      "arrondissement": 2,
+      "name": { "en": "Vieille Charité", "fr": "Vieille Charité" },
+      "description": { "en": "A former charitable hospice that now houses museums and cultural institutions in Le Panier.", "fr": "Un ancien hospice devenu un ensemble de musées et d'institutions culturelles au Panier." },
+      "latitude": 43.300205,
+      "longitude": 5.367774,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1065120" }
+    },
+    {
+      "id": "marseille-porte-d-aix-q2243437",
+      "category": "art",
+      "arrondissement": 3,
+      "name": { "en": "Porte d'Aix", "fr": "Porte d'Aix" },
+      "description": { "en": "A monumental triumphal arch marking Marseille's historic northern gateway.", "fr": "Un arc de triomphe monumental qui marque l'ancienne entrée nord de Marseille." },
+      "latitude": 43.3018,
+      "longitude": 5.3747,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2243437" }
+    },
+    {
+      "id": "marseille-theatre-toursky-q63870314",
+      "category": "culture",
+      "arrondissement": 3,
+      "name": { "en": "Toursky Theatre", "fr": "Théâtre Toursky" },
+      "description": { "en": "A performing-arts venue rooted in the Belle de Mai district.", "fr": "Un lieu de spectacle vivant ancré dans le quartier de la Belle de Mai." },
+      "latitude": 43.315807,
+      "longitude": 5.377603,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q63870314" }
+    },
+    {
+      "id": "marseille-musee-des-beaux-arts-q83013",
+      "category": "art",
+      "arrondissement": 4,
+      "name": { "en": "Marseille Museum of Fine Arts", "fr": "Musée des Beaux-Arts de Marseille" },
+      "description": { "en": "Marseille's fine-arts museum within the Palais Longchamp complex.", "fr": "Le musée des Beaux-Arts de Marseille installé dans l'ensemble du palais Longchamp." },
+      "latitude": 43.304414,
+      "longitude": 5.393873,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q83013" }
+    },
+    {
+      "id": "marseille-monument-a-monticelli-q63341520",
+      "category": "art",
+      "arrondissement": 4,
+      "name": { "en": "Monticelli Monument", "fr": "Monument à Monticelli" },
+      "description": { "en": "A public sculpture honouring Marseille painter Adolphe Monticelli near Palais Longchamp.", "fr": "Une sculpture publique dédiée au peintre marseillais Adolphe Monticelli près du palais Longchamp." },
+      "latitude": 43.305541666,
+      "longitude": 5.396030555,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q63341520" }
+    },
+    {
+      "id": "marseille-eglise-saint-michel-archange-q60389345",
+      "category": "architecture",
+      "arrondissement": 5,
+      "name": { "en": "Saint-Michel-l'Archange Church", "fr": "Église Saint-Michel-l'Archange" },
+      "description": { "en": "A neighbourhood church and architectural landmark in Camas.", "fr": "Une église de quartier et un repère architectural du Camas." },
+      "latitude": 43.296501,
+      "longitude": 5.394271,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q60389345" }
+    },
+    {
+      "id": "marseille-square-francois-maury-q110960120",
+      "category": "nature",
+      "arrondissement": 5,
+      "name": { "en": "François Maury Square", "fr": "Square François Maury" },
+      "description": { "en": "A neighbourhood garden offering a green pause in the fifth arrondissement.", "fr": "Un jardin de quartier qui offre une pause végétale dans le 5e arrondissement." },
+      "latitude": 43.285362,
+      "longitude": 5.391157913,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q110960120" }
+    },
+    {
+      "id": "marseille-notre-dame-de-la-garde-q975925",
+      "category": "architecture",
+      "arrondissement": 6,
+      "name": { "en": "Notre-Dame de la Garde Basilica", "fr": "Basilique Notre-Dame-de-la-Garde" },
+      "description": { "en": "The hilltop basilica whose silhouette watches over Marseille.", "fr": "La basilique au sommet de la colline dont la silhouette veille sur Marseille." },
+      "latitude": 43.283949745,
+      "longitude": 5.371232414,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q975925" }
+    },
+    {
+      "id": "marseille-fontaine-cantini-q17521307",
+      "category": "art",
+      "arrondissement": 6,
+      "name": { "en": "Cantini Fountain", "fr": "Fontaine Cantini" },
+      "description": { "en": "A monumental public fountain anchoring Place Castellane.", "fr": "Une fontaine publique monumentale qui marque la place Castellane." },
+      "latitude": 43.2859,
+      "longitude": 5.3837,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q17521307" }
+    },
+    {
+      "id": "marseille-palais-du-pharo-q1906882",
+      "category": "architecture",
+      "arrondissement": 7,
+      "name": { "en": "Palais du Pharo", "fr": "Palais du Pharo" },
+      "description": { "en": "A landmark palace overlooking the entrance to the Old Port.", "fr": "Un palais emblématique dominant l'entrée du Vieux-Port." },
+      "latitude": 43.29417,
+      "longitude": 5.35806,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q1906882" }
+    },
+    {
+      "id": "marseille-plage-des-catalans-q42727222",
+      "category": "nature",
+      "arrondissement": 7,
+      "name": { "en": "Catalans Beach", "fr": "Plage des Catalans" },
+      "description": { "en": "A city beach opening directly onto the Mediterranean near the Old Port.", "fr": "Une plage urbaine ouverte sur la Méditerranée à proximité du Vieux-Port." },
+      "latitude": 43.2907,
+      "longitude": 5.35542,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q42727222" }
+    },
+    {
+      "id": "marseille-stade-velodrome-q202150",
+      "category": "culture",
+      "arrondissement": 8,
+      "name": { "en": "Orange Vélodrome", "fr": "Stade Vélodrome" },
+      "description": { "en": "Marseille's landmark stadium and a central place in the city's sporting culture.", "fr": "Le stade emblématique de Marseille, au cœur de la culture sportive de la ville." },
+      "latitude": 43.269241,
+      "longitude": 5.394907,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q202150" }
+    },
+    {
+      "id": "marseille-mac-q3329581",
+      "category": "art",
+      "arrondissement": 8,
+      "name": { "en": "Marseille Museum of Contemporary Art", "fr": "Musée d'Art contemporain de Marseille" },
+      "description": { "en": "The city's museum dedicated to modern and contemporary art.", "fr": "Le musée municipal consacré à l'art moderne et contemporain." },
+      "latitude": 43.2505,
+      "longitude": 5.3895,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3329581" }
+    },
+    {
+      "id": "marseille-calanque-de-sormiou-q2269718",
+      "category": "nature",
+      "arrondissement": 9,
+      "name": { "en": "Sormiou Calanque", "fr": "Calanque de Sormiou" },
+      "description": { "en": "A broad limestone calanque on Marseille's southern coast.", "fr": "Une vaste calanque calcaire sur le littoral sud de Marseille." },
+      "latitude": 43.20972,
+      "longitude": 5.42111,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2269718" }
+    },
+    {
+      "id": "marseille-jardin-de-la-magalone-q3162496",
+      "category": "nature",
+      "arrondissement": 9,
+      "name": { "en": "Jardin de la Magalone", "fr": "Jardin de la Magalone" },
+      "description": { "en": "A historic garden surrounding the bastide of La Magalone.", "fr": "Un jardin historique qui entoure la bastide de la Magalone." },
+      "latitude": 43.2616,
+      "longitude": 5.3984,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3162496" }
+    },
+    {
+      "id": "marseille-parc-du-26e-centenaire-q2204151",
+      "category": "nature",
+      "arrondissement": 10,
+      "name": { "en": "26th Centenary Park", "fr": "Parc du 26e Centenaire" },
+      "description": { "en": "A major urban park created on a former railway site.", "fr": "Un grand parc urbain aménagé sur un ancien site ferroviaire." },
+      "latitude": 43.28,
+      "longitude": 5.39611,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2204151" }
+    },
+    {
+      "id": "marseille-cimetiere-saint-pierre-q2972480",
+      "category": "history",
+      "arrondissement": 10,
+      "name": { "en": "Saint-Pierre Cemetery", "fr": "Cimetière Saint-Pierre de Marseille" },
+      "description": { "en": "Marseille's great nineteenth-century cemetery and a place of civic memory.", "fr": "Le grand cimetière marseillais du XIXe siècle, lieu de mémoire de la ville." },
+      "latitude": 43.2891,
+      "longitude": 5.4169,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2972480" }
+    },
+    {
+      "id": "marseille-chateau-de-la-buzine-q2971172",
+      "category": "culture",
+      "arrondissement": 11,
+      "name": { "en": "Château de la Buzine", "fr": "Château de la Buzine" },
+      "description": { "en": "A château now devoted to Mediterranean cinema and cultural programming.", "fr": "Un château aujourd'hui consacré au cinéma méditerranéen et à la programmation culturelle." },
+      "latitude": 43.2953,
+      "longitude": 5.5025,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2971172" }
+    },
+    {
+      "id": "marseille-chateau-de-la-reynarde-q2187991",
+      "category": "architecture",
+      "arrondissement": 11,
+      "name": { "en": "Château de la Reynarde", "fr": "Château de la Reynarde" },
+      "description": { "en": "A historic château and bastide landmark in Marseille's eastern districts.", "fr": "Un château historique et une bastide remarquable des quartiers est de Marseille." },
+      "latitude": 43.2897,
+      "longitude": 5.5056,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2187991" }
+    },
+    {
+      "id": "marseille-domaine-de-la-cavaliere-q3034580",
+      "category": "architecture",
+      "arrondissement": 12,
+      "name": { "en": "Domaine de la Cavalière", "fr": "Domaine de la Cavalière" },
+      "description": { "en": "A surviving bastide estate in the eastern part of Marseille.", "fr": "Un domaine de bastide conservé dans les quartiers est de Marseille." },
+      "latitude": 43.3022,
+      "longitude": 5.4353,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3034580" }
+    },
+    {
+      "id": "marseille-parc-de-la-mirabelle-q120475213",
+      "category": "nature",
+      "arrondissement": 12,
+      "name": { "en": "Parc de la Mirabelle", "fr": "Parc de la Mirabelle" },
+      "description": { "en": "A neighbourhood green space serving the Caillols area.", "fr": "Un espace vert de quartier au service du secteur des Caillols." },
+      "latitude": 43.29695,
+      "longitude": 5.44693,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q120475213" }
+    },
+    {
+      "id": "marseille-musee-du-terroir-q3330386",
+      "category": "culture",
+      "arrondissement": 13,
+      "name": { "en": "Marseille Heritage Museum", "fr": "Musée du Terroir Marseillais" },
+      "description": { "en": "A museum in Château-Gombert devoted to Marseille and Provençal traditions.", "fr": "Un musée de Château-Gombert consacré aux traditions marseillaises et provençales." },
+      "latitude": 43.352105,
+      "longitude": 5.4386437,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3330386" }
+    },
+    {
+      "id": "marseille-bastide-montgolfier-q2887697",
+      "category": "history",
+      "arrondissement": 14,
+      "name": { "en": "Montgolfier–Tour-du-Pin Bastide", "fr": "Bastide de Montgolfier-la-Tour-du-Pin" },
+      "description": { "en": "A historic bastide preserving the memory of Marseille's northern estates.", "fr": "Une bastide historique qui conserve la mémoire des anciens domaines du nord de Marseille." },
+      "latitude": 43.3395873,
+      "longitude": 5.4015358,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q2887697" }
+    },
+    {
+      "id": "marseille-eglise-saint-louis-q3582370",
+      "category": "architecture",
+      "arrondissement": 15,
+      "name": { "en": "Saint-Louis Church", "fr": "Église Saint-Louis de Marseille" },
+      "description": { "en": "A prominent church and neighbourhood landmark in northern Marseille.", "fr": "Une église remarquable et un repère du quartier Saint-Louis au nord de Marseille." },
+      "latitude": 43.3484,
+      "longitude": 5.35798,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3582370" }
+    },
+    {
+      "id": "marseille-grotte-ermitage-aygalades-q3117088",
+      "category": "history",
+      "arrondissement": 15,
+      "name": { "en": "Aygalades Grotto Hermitage", "fr": "Grotte-ermitage des Aygalades" },
+      "description": { "en": "A grotto and hermitage tied to the long history of the Aygalades quarter.", "fr": "Une grotte et un ermitage liés à la longue histoire du quartier des Aygalades." },
+      "latitude": 43.3592,
+      "longitude": 5.36194,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3117088" }
+    },
+    {
+      "id": "marseille-villa-la-palestine-q3558618",
+      "category": "history",
+      "arrondissement": 16,
+      "name": { "en": "Villa La Palestine", "fr": "Villa La Palestine" },
+      "description": { "en": "A historic seaside villa associated with the architectural heritage of L'Estaque.", "fr": "Une villa balnéaire historique liée au patrimoine architectural de l'Estaque." },
+      "latitude": 43.3611,
+      "longitude": 5.31259,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q3558618" }
+    },
+    {
+      "id": "marseille-jardin-de-la-falaise-q120474712",
+      "category": "nature",
+      "arrondissement": 16,
+      "name": { "en": "Jardin de la Falaise", "fr": "Jardin de la Falaise" },
+      "description": { "en": "A hillside neighbourhood garden overlooking the L'Estaque area.", "fr": "Un jardin de quartier en hauteur qui domine le secteur de l'Estaque." },
+      "latitude": 43.36675,
+      "longitude": 5.30639,
+      "externalIdentity": { "source": "wikidata", "type": "item", "id": "Q120474712" }
+    }
+  ]
+}

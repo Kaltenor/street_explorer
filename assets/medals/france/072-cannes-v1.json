@@ -1,0 +1,394 @@
+{
+  "id": "cannes-v1",
+  "cityId": "cannes-fr",
+  "cityZoneId": "relation/91734",
+  "cityName": {
+    "en": "Cannes",
+    "fr": "Cannes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Alpes-Maritimes, in France",
+        "fr": "abbaye située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q334008",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cannes-abbaye-de-lerins-q334008",
+      "latitude": 43.506576961,
+      "longitude": 7.047243911,
+      "name": {
+        "en": "abbaye de Lérins",
+        "fr": "abbaye de Lérins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Batterie de la Convention is a distinctive architectural landmark in the city.",
+        "fr": "Batterie de la Convention est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080695",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-batterie-de-la-convention-pa00080695",
+      "latitude": 43.5169143646469,
+      "longitude": 7.06836654906563,
+      "name": {
+        "en": "Batterie de la Convention",
+        "fr": "Batterie de la Convention"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de la Trinité is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de la Trinité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080692",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-chapelle-de-la-trinite-pa00080692",
+      "latitude": 43.5076991438325,
+      "longitude": 7.05398904952416,
+      "name": {
+        "en": "Chapelle de la Trinité",
+        "fr": "Chapelle de la Trinité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080691",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-chapelle-saint-sauveur-pa00080691",
+      "latitude": 43.5083800118863,
+      "longitude": 7.04085564480089,
+      "name": {
+        "en": "Chapelle Saint-Sauveur",
+        "fr": "Chapelle Saint-Sauveur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château fort ou ancien monastère de Lérins is an important witness to the city's history.",
+        "fr": "Château fort ou ancien monastère de Lérins est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080693",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-chateau-fort-ou-ancien-monastere-de-lerins-pa00080693",
+      "latitude": 43.5052087542114,
+      "longitude": 7.04778861227889,
+      "name": {
+        "en": "Château fort ou ancien monastère de Lérins",
+        "fr": "Château fort ou ancien monastère de Lérins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Russian Orthodox Church in Cannes",
+        "fr": "église orthodoxe russe située à Cannes"
+      },
+      "externalIdentity": {
+        "id": "Q4070555",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cannes-eglise-saint-michel-archange-de-cannes-q4070555",
+      "latitude": 43.546194444,
+      "longitude": 7.039658333,
+      "name": {
+        "en": "église Saint-Michel-Archange de Cannes",
+        "fr": "église Saint-Michel-Archange de Cannes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble orthodoxe Saint-Michel-Archange is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble orthodoxe Saint-Michel-Archange est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000070",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-ensemble-orthodoxe-saint-michel-archange-pa06000070",
+      "latitude": 43.54611385230668,
+      "longitude": 7.0394296306742525,
+      "name": {
+        "en": "Ensemble orthodoxe Saint-Michel-Archange",
+        "fr": "Ensemble orthodoxe Saint-Michel-Archange"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Fort, actuellement Musée de la Mer is one of the city's notable cultural landmarks.",
+        "fr": "Fort, actuellement Musée de la Mer compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080696",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-fort-actuellement-musee-de-la-mer-pa00080696",
+      "latitude": 43.523011843484205,
+      "longitude": 7.04439767437353,
+      "name": {
+        "en": "Fort, actuellement Musée de la Mer",
+        "fr": "Fort, actuellement Musée de la Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Fours à boulets is a distinctive architectural landmark in the city.",
+        "fr": "Fours à boulets est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080694",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-fours-a-boulets-pa00080694",
+      "latitude": 43.5080880454607,
+      "longitude": 7.03773490937569,
+      "name": {
+        "en": "Fours à boulets",
+        "fr": "Fours à boulets"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Carlton is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Carlton est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080929",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-hotel-carlton-pa00080929",
+      "latitude": 43.5498019849999,
+      "longitude": 7.02681959059818,
+      "name": {
+        "en": "Hôtel Carlton",
+        "fr": "Hôtel Carlton"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA06000036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-monument-aux-morts-de-la-guerre-de-1914-1918-pa06000036",
+      "latitude": 43.5511086321221,
+      "longitude": 7.0127684915933,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914-1918",
+        "fr": "Monument aux morts de la guerre de 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des explorations du monde (MEM) is one of the city's notable cultural landmarks.",
+        "fr": "musée des explorations du monde (MEM) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0872",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cannes-musee-des-explorations-du-monde-mem-m0872",
+      "latitude": 43.551515,
+      "longitude": 7.010034,
+      "name": {
+        "en": "musée des explorations du monde (MEM)",
+        "fr": "musée des explorations du monde (MEM)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc et jardins de Champfleuri is one of the city's notable green or natural landmarks.",
+        "fr": "Parc et jardins de Champfleuri compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080931",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-parc-et-jardins-de-champfleuri-pa00080931",
+      "latitude": 43.5504116591964,
+      "longitude": 7.045115147073661,
+      "name": {
+        "en": "Parc et jardins de Champfleuri",
+        "fr": "Parc et jardins de Champfleuri"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Vallembrosa et ancien hôtel du Parc is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Vallembrosa et ancien hôtel du Parc compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125702",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-parc-vallembrosa-et-ancien-hotel-du-parc-pa00125702",
+      "latitude": 43.55224702409401,
+      "longitude": 7.00487045324027,
+      "name": {
+        "en": "Parc Vallembrosa et ancien hôtel du Parc",
+        "fr": "Parc Vallembrosa et ancien hôtel du Parc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Suquet, chapelle Sainte-Anne et église Notre-Dame-de-l'Espérance is an important witness to the city's history.",
+        "fr": "Tour du Suquet, chapelle Sainte-Anne et église Notre-Dame-de-l'Espérance est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-tour-du-suquet-chapelle-sainte-anne-et-eglise-notre-dame-de-l-esperance-pa00080689",
+      "latitude": 43.5502367687603,
+      "longitude": 7.01041760348566,
+      "name": {
+        "en": "Tour du Suquet, chapelle Sainte-Anne et église Notre-Dame-de-l'Espérance",
+        "fr": "Tour du Suquet, chapelle Sainte-Anne et église Notre-Dame-de-l'Espérance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in France",
+        "fr": "siège de la mairie de Cannes"
+      },
+      "externalIdentity": {
+        "id": "Q28947938",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cannes-hotel-de-ville-de-cannes-q28947938",
+      "latitude": 43.551339,
+      "longitude": 7.01257109,
+      "name": {
+        "en": "hôtel de ville de Cannes",
+        "fr": "hôtel de ville de Cannes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Saint George’s church is a distinctive architectural landmark in the city.",
+        "fr": "Saint George’s church est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000057",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-saint-george-s-church-pa06000057",
+      "latitude": 43.55155147415795,
+      "longitude": 7.040834014961014,
+      "name": {
+        "en": "Saint George’s church",
+        "fr": "Saint George’s church"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Domergue is a distinctive architectural landmark in the city.",
+        "fr": "Villa Domergue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080954",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-villa-domergue-pa00080954",
+      "latitude": 43.5597604891978,
+      "longitude": 7.04147057111291,
+      "name": {
+        "en": "Villa Domergue",
+        "fr": "Villa Domergue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Romée is a distinctive architectural landmark in the city.",
+        "fr": "Villa Romée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132714",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-villa-romee-pa00132714",
+      "latitude": 43.5497049211626,
+      "longitude": 6.99569417886275,
+      "name": {
+        "en": "Villa Romée",
+        "fr": "Villa Romée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Rothschild is a distinctive architectural landmark in the city.",
+        "fr": "Villa Rothschild est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080690",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cannes-villa-rothschild-pa00080690",
+      "latitude": 43.5514336891469,
+      "longitude": 7.00246073520326,
+      "name": {
+        "en": "Villa Rothschild",
+        "fr": "Villa Rothschild"
+      }
+    }
+  ]
+}

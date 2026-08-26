@@ -1,0 +1,204 @@
+{
+  "id": "les-pavillons-sous-bois-v1",
+  "cityId": "les-pavillons-sous-bois-fr",
+  "cityZoneId": "relation/162521",
+  "cityName": {
+    "en": "Les Pavillons-sous-Bois",
+    "fr": "Les Pavillons-sous-Bois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située aux Pavillons-sous-Bois en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20033495",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-eglise-notre-dame-de-lourdes-q20033495",
+      "latitude": 48.90883,
+      "longitude": 2.504,
+      "name": {
+        "en": "église Notre-Dame-de-Lourdes",
+        "fr": "église Notre-Dame-de-Lourdes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20033492",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-eglise-saint-augustin-des-coquetiers-q20033492",
+      "latitude": 48.89654,
+      "longitude": 2.49812,
+      "name": {
+        "en": "église Saint-Augustin-des-Coquetiers",
+        "fr": "église Saint-Augustin-des-Coquetiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Les Pavillons-sous-Bois, France",
+        "fr": "hôtel de ville situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96186519",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-hotel-de-ville-des-pavillons-sous-bois-q96186519",
+      "latitude": 48.903,
+      "longitude": 2.506825,
+      "name": {
+        "en": "hôtel de ville des Pavillons-sous-Bois",
+        "fr": "hôtel de ville des Pavillons-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cul-de-sac in Les Pavillons-sous-Bois, France",
+        "fr": "impasse des Pavillons-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111302818",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-impasse-villa-victor-hugo-q111302818",
+      "latitude": 48.90973895,
+      "longitude": 2.5131568,
+      "name": {
+        "en": "impasse Villa-Victor-Hugo",
+        "fr": "impasse Villa-Victor-Hugo"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136060741",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-monument-aux-morts-des-pavillons-sous-bois-q136060741",
+      "latitude": 48.91663,
+      "longitude": 2.49368,
+      "name": {
+        "en": "monument aux morts des Pavillons-sous-Bois",
+        "fr": "monument aux morts des Pavillons-sous-Bois"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc aux Pavillons-sous-Bois et au Raincy (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q22915894",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-parc-a-l-anglaise-du-duc-d-orleans-q22915894",
+      "latitude": 48.8907205,
+      "longitude": 2.5161704,
+      "name": {
+        "en": "parc à l'anglaise du duc d'Orléans",
+        "fr": "parc à l'anglaise du duc d'Orléans"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q81120397",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-nouveau-cimetiere-des-pavillons-sous-bois-q81120397",
+      "latitude": 48.91679,
+      "longitude": 2.49882,
+      "name": {
+        "en": "nouveau cimetière des Pavillons-sous-Bois",
+        "fr": "nouveau cimetière des Pavillons-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "road bridge in Les Pavillons-sous-Bois, France",
+        "fr": "pont routier des Pavillons-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21549088",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-pont-de-l-europe-q21549088",
+      "latitude": 48.91459,
+      "longitude": 2.50208,
+      "name": {
+        "en": "pont de l'Europe",
+        "fr": "pont de l'Europe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont de la Forêt is a distinctive architectural landmark in the city.",
+        "fr": "pont situé à la limite entre Bondy et Les Pavillons-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q108911877",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-pont-de-la-foret-q108911877",
+      "latitude": 48.90933,
+      "longitude": 2.49072,
+      "name": {
+        "en": "pont de la Forêt",
+        "fr": "pont de la Forêt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc de Gargan is a distinctive architectural landmark in the city.",
+        "fr": "pont tramway en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q116742538",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pavillons-sous-bois-viaduc-de-gargan-q116742538",
+      "latitude": 48.91120743,
+      "longitude": 2.516673173,
+      "name": {
+        "en": "viaduc de Gargan",
+        "fr": "viaduc de Gargan"
+      }
+    }
+  ]
+}

@@ -1,7 +1,10 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
-import { EXPLORATION_CELL_SIZE_METERS } from "../services/explorationArea";
-import { MapCoordinate } from "../services/explorationArea";
+import {
+  coordinateToExplorationCellKey,
+  EXPLORATION_CELL_SIZE_METERS,
+  MapCoordinate
+} from "../services/explorationArea";
 import { ActivityMode, RenderedRouteSegment } from "../types/walk";
 import { shouldReplaceCachedZone } from "../services/zoneBoundaryPolicy";
 import { getDatabase } from "./db";
@@ -402,6 +405,63 @@ export async function getExploredCellRecords(mode: ActivityMode) {
     `,
     EXPLORATION_CELL_SIZE_METERS,
     mode
+  );
+
+  return rows.map((row) => ({
+    cellKey: `${row.cell_x}:${row.cell_y}`,
+    mode: row.mode,
+    source: row.source
+  }));
+}
+
+export async function getExploredCellRecordsWithinBounds(
+  mode: ActivityMode,
+  bounds: {
+    maxLatitude: number;
+    maxLongitude: number;
+    minLatitude: number;
+    minLongitude: number;
+  }
+) {
+  const db = await getDatabase();
+  const cornerKeys = [
+    coordinateToExplorationCellKey({
+      latitude: bounds.minLatitude,
+      longitude: bounds.minLongitude
+    }),
+    coordinateToExplorationCellKey({
+      latitude: bounds.minLatitude,
+      longitude: bounds.maxLongitude
+    }),
+    coordinateToExplorationCellKey({
+      latitude: bounds.maxLatitude,
+      longitude: bounds.minLongitude
+    }),
+    coordinateToExplorationCellKey({
+      latitude: bounds.maxLatitude,
+      longitude: bounds.maxLongitude
+    })
+  ].map(parseCellKey);
+  const rows = await db.getAllAsync<{
+    cell_x: number;
+    cell_y: number;
+    mode: ActivityMode;
+    source: ExploredCellSource;
+  }>(
+    `
+      SELECT DISTINCT cell_x, cell_y, mode, source
+      FROM explored_cells
+      WHERE cell_size_m = ?
+        AND mode = ?
+        AND cell_x BETWEEN ? AND ?
+        AND cell_y BETWEEN ? AND ?
+    `,
+    EXPLORATION_CELL_SIZE_METERS,
+    mode,
+    Math.min(...cornerKeys.map((key) => key.x)),
+    Math.max(...cornerKeys.map((key) => key.x)),
+    Math.min(...cornerKeys.map((key) => key.y)),
+    Math.max(...cornerKeys.map((key) => key.y))
   );
 
   return rows.map((row) => ({

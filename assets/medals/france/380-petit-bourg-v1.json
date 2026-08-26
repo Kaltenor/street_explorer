@@ -1,0 +1,204 @@
+{
+  "id": "petit-bourg-v1",
+  "cityId": "petit-bourg-fr",
+  "cityZoneId": "relation/273827",
+  "cityName": {
+    "en": "Petit-Bourg",
+    "fr": "Petit-Bourg"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in Guadeloupe, France",
+        "fr": "île de Guadeloupe, France"
+      },
+      "externalIdentity": {
+        "id": "Q153822",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-basse-terre-q153822",
+      "latitude": 16.15,
+      "longitude": -61.666666666,
+      "name": {
+        "en": "Basse-Terre",
+        "fr": "Basse-Terre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Waterfall in Guadeloupe - France",
+        "fr": "cascade située en Guadeloupe, France"
+      },
+      "externalIdentity": {
+        "id": "Q24874840",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-cascade-aux-ecrevisses-q24874840",
+      "latitude": 16.178333333,
+      "longitude": -61.681388888,
+      "name": {
+        "en": "cascade aux écrevisses",
+        "fr": "cascade aux écrevisses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q37421314",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-eglise-notre-dame-de-l-assomption-de-petit-bourg-q37421314",
+      "latitude": 16.194075,
+      "longitude": -61.591751,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Petit-Bourg",
+        "fr": "église Notre-Dame-de-l'Assomption de Petit-Bourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q118247358",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-eglise-sainte-therese-de-prise-d-eau-q118247358",
+      "latitude": 16.20477,
+      "longitude": -61.65104,
+      "name": {
+        "en": "église Sainte-Thérèse de Prise-d'Eau",
+        "fr": "église Sainte-Thérèse de Prise-d'Eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "émetteur d'Arnouville is an important witness to the city's history.",
+        "fr": "tour de télécommunications à la Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q108903350",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-emetteur-d-arnouville-q108903350",
+      "latitude": 16.225277777,
+      "longitude": -61.593888888,
+      "name": {
+        "en": "émetteur d'Arnouville",
+        "fr": "émetteur d'Arnouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French island of the Caribbean",
+        "fr": "archipel français de la Caraïbe, dans les Petites Antilles"
+      },
+      "externalIdentity": {
+        "id": "Q3118683",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-guadeloupe-q3118683",
+      "latitude": 16.15,
+      "longitude": -61.6667,
+      "name": {
+        "en": "Guadeloupe",
+        "fr": "Guadeloupe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ecoregion (WWF)",
+        "fr": "Leeward Islands moist forests est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q104631326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-leeward-islands-moist-forests-q104631326",
+      "latitude": 16.195,
+      "longitude": -61.69,
+      "name": {
+        "en": "Leeward Islands moist forests",
+        "fr": "Leeward Islands moist forests"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q3272062",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-lezarde-q3272062",
+      "latitude": 16.214166666,
+      "longitude": -61.586111111,
+      "name": {
+        "en": "Lézarde",
+        "fr": "Lézarde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "Mamelles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3284967",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-mamelles-q3284967",
+      "latitude": 16.1775,
+      "longitude": -61.7356,
+      "name": {
+        "en": "Mamelles",
+        "fr": "Mamelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in Guadeloupe",
+        "fr": "commune française du département d'outre-mer de la Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q844987",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "petit-bourg-petit-bourg-q844987",
+      "latitude": 16.191388888,
+      "longitude": -61.590277777,
+      "name": {
+        "en": "Petit-Bourg",
+        "fr": "Petit-Bourg"
+      }
+    }
+  ]
+}

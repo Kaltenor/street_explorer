@@ -1,0 +1,204 @@
+{
+  "id": "bretigny-sur-orge-v1",
+  "cityId": "bretigny-sur-orge-fr",
+  "cityZoneId": "relation/280610",
+  "cityName": {
+    "en": "Brétigny-sur-Orge",
+    "fr": "Brétigny-sur-Orge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "military airbase, France",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q284434",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-base-aerienne-217-de-bretigny-sur-orge-q284434",
+      "latitude": 48.596112,
+      "longitude": 2.332222,
+      "name": {
+        "en": "Base aérienne 217 de Brétigny-sur-Orge",
+        "fr": "Base aérienne 217 de Brétigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Brétigny-sur-Orge, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2209526",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-bretigny-q2209526",
+      "latitude": 48.606389,
+      "longitude": 2.301667,
+      "name": {
+        "en": "Brétigny",
+        "fr": "Brétigny"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Fontaine is an important witness to the city's history.",
+        "fr": "château renaissance à Brétigny sur orge"
+      },
+      "externalIdentity": {
+        "id": "Q2422169",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-chateau-de-la-fontaine-q2422169",
+      "latitude": 48.6191,
+      "longitude": 2.30574,
+      "name": {
+        "en": "château de la Fontaine",
+        "fr": "château de la Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Essonne, in France",
+        "fr": "cimetière situé dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110338342",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-cimetiere-de-bretigny-sur-orge-q110338342",
+      "latitude": 48.6124,
+      "longitude": 2.3095,
+      "name": {
+        "en": "cimetière de Brétigny-sur-Orge",
+        "fr": "cimetière de Brétigny-sur-Orge"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Brétigny-sur-Orge, France",
+        "fr": "cinéma à Brétigny-sur-Orge, France"
+      },
+      "externalIdentity": {
+        "id": "Q28878272",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-cine-220-q28878272",
+      "latitude": 48.60875,
+      "longitude": 2.30425,
+      "name": {
+        "en": "Ciné 220",
+        "fr": "Ciné 220"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "complexe sportif Delaune de Brétigny-sur-Orge is a distinctive architectural landmark in the city.",
+        "fr": "complexe sportif de Brétigny-sur-Orge"
+      },
+      "externalIdentity": {
+        "id": "Q120168459",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-complexe-sportif-delaune-de-bretigny-sur-orge-q120168459",
+      "latitude": 48.60992,
+      "longitude": 2.31804,
+      "name": {
+        "en": "complexe sportif Delaune de Brétigny-sur-Orge",
+        "fr": "complexe sportif Delaune de Brétigny-sur-Orge"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136048413",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-monument-aux-morts-de-bretigny-sur-orge-q136048413",
+      "latitude": 48.612728,
+      "longitude": 2.309605,
+      "name": {
+        "en": "monument aux morts de Brétigny-sur-Orge",
+        "fr": "monument aux morts de Brétigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Brétigny-sur-Orge, France",
+        "fr": "édifice religieux catholique à Brétigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583808",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-eglise-saint-pierre-de-bretigny-sur-orge-q3583808",
+      "latitude": 48.6125,
+      "longitude": 2.30986,
+      "name": {
+        "en": "église Saint-Pierre de Brétigny-sur-Orge",
+        "fr": "église Saint-Pierre de Brétigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087832",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bretigny-sur-orge-eglise-saint-pierre-pa00087832",
+      "latitude": 48.6125493285494,
+      "longitude": 2.30987410117876,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Brétigny-sur-Orge, France",
+        "fr": "hôtel de ville de Brétigny-sur-Orge est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q32069618",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bretigny-sur-orge-hotel-de-ville-de-bretigny-sur-orge-q32069618",
+      "latitude": 48.611446,
+      "longitude": 2.305997,
+      "name": {
+        "en": "hôtel de ville de Brétigny-sur-Orge",
+        "fr": "hôtel de ville de Brétigny-sur-Orge"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "puteaux-v1",
+  "cityId": "puteaux-fr",
+  "cityZoneId": "relation/91776",
+  "cityName": {
+    "en": "Puteaux",
+    "fr": "Puteaux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-la-Pitié is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-la-Pitié est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088134",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "puteaux-eglise-notre-dame-de-la-pitie-pa00088134",
+      "latitude": 48.8795195321096,
+      "longitude": 2.24301976413943,
+      "name": {
+        "en": "Église Notre-Dame-de-la-Pitié",
+        "fr": "Église Notre-Dame-de-la-Pitié"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "sculpture by Louis-Ernest Barrias",
+        "fr": "sculpture de Louis-Ernest Barrias"
+      },
+      "externalIdentity": {
+        "id": "Q3208455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-la-defense-de-paris-q3208455",
+      "latitude": 48.8905,
+      "longitude": 2.24194,
+      "name": {
+        "en": "La Défense de Paris",
+        "fr": "La Défense de Paris"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329845",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-musee-de-l-informatique-q3329845",
+      "latitude": 48.8931,
+      "longitude": 2.23639,
+      "name": {
+        "en": "musée de l'informatique",
+        "fr": "musée de l'informatique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge carrying the Route nationale 13 and Paris Métro Line 1 across the Seine",
+        "fr": "pont sur la Seine (RN 13 et ligne 1 du métro) reliant Neuilly-sur-Seine à Puteaux/Courbevoie (Hauts-de-Seine, Île-de-France)"
+      },
+      "externalIdentity": {
+        "id": "Q1573266",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-pont-de-neuilly-q1573266",
+      "latitude": 48.88666667,
+      "longitude": 2.25472222,
+      "name": {
+        "en": "pont de Neuilly",
+        "fr": "pont de Neuilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Puteaux, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2346162",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-puteaux-q2346162",
+      "latitude": 48.883478,
+      "longitude": 2.233728,
+      "name": {
+        "en": "Puteaux",
+        "fr": "Puteaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "skyscraper under construction located in Puteaux in the business district of La Défense",
+        "fr": "gratte ciel en construction situé à Puteaux dans le quartier d'affaires de La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q30303011",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-the-link-q30303011",
+      "latitude": 48.888094166,
+      "longitude": 2.249304722,
+      "name": {
+        "en": "The Link",
+        "fr": "The Link"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tallest residential buildings in France",
+        "fr": "immeuble d'habitation le plus haut de France"
+      },
+      "externalIdentity": {
+        "id": "Q3142331",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-tour-defense-2000-q3142331",
+      "latitude": 48.887504722,
+      "longitude": 2.2366775,
+      "name": {
+        "en": "Tour Défense 2000",
+        "fr": "Tour Défense 2000"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Residential skyscraper in Puteaux, France",
+        "fr": "ratte-ciel résidentiel situé dans le quartier d'affaires de La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q3090121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-tour-france-q3090121",
+      "latitude": 48.883056,
+      "longitude": 2.247639,
+      "name": {
+        "en": "Tour France",
+        "fr": "Tour France"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French skyscraper",
+        "fr": "gratte-ciel français"
+      },
+      "externalIdentity": {
+        "id": "Q17640070",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-tour-hekla-q17640070",
+      "latitude": 48.8889,
+      "longitude": 2.23528,
+      "name": {
+        "en": "Tour Hekla",
+        "fr": "Tour Hekla"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper near Paris, France",
+        "fr": "immeuble de bureaux de La Défense à Puteaux"
+      },
+      "externalIdentity": {
+        "id": "Q3533127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "puteaux-tour-majunga-q3533127",
+      "latitude": 48.8888,
+      "longitude": 2.24353,
+      "name": {
+        "en": "Tour Majunga",
+        "fr": "Tour Majunga"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "rosny-sous-bois-v1",
+  "cityId": "rosny-sous-bois-fr",
+  "cityZoneId": "relation/130580",
+  "cityName": {
+    "en": "Rosny-sous-Bois",
+    "fr": "Rosny-sous-Bois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Paris metro station",
+        "fr": "station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q16040626",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-coteaux-beauclair-q16040626",
+      "latitude": 48.88224,
+      "longitude": 2.46735,
+      "name": {
+        "en": "Coteaux Beauclair",
+        "fr": "Coteaux Beauclair"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Rosny-sous-Bois, France",
+        "fr": "théâtre et cinéma à Rosny-sous-Bois, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860846",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-espace-georges-simenon-q61860846",
+      "latitude": 48.87306,
+      "longitude": 2.48169,
+      "name": {
+        "en": "espace Georges-Simenon",
+        "fr": "espace Georges-Simenon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Rosny-sous-Bois, France",
+        "fr": "édifice de Rosny-sous-Bois, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-hotel-de-ville-de-rosny-sous-bois-q83409713",
+      "latitude": 48.87198,
+      "longitude": 2.48805,
+      "name": {
+        "en": "hôtel de ville de Rosny-sous-Bois",
+        "fr": "hôtel de ville de Rosny-sous-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136071419",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-monument-aux-morts-de-rosny-sous-bois-q136071419",
+      "latitude": 48.871,
+      "longitude": 2.48514,
+      "name": {
+        "en": "monument aux morts de Rosny-sous-Bois",
+        "fr": "monument aux morts de Rosny-sous-Bois"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Jean Decesari is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public à Rosny-sous-Bois, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q26992298",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-parc-jean-decesari-q26992298",
+      "latitude": 48.8731,
+      "longitude": 2.4892,
+      "name": {
+        "en": "parc Jean Decesari",
+        "fr": "parc Jean Decesari"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc nature du Plateau-d'Avron is one of the city's notable green or natural landmarks.",
+        "fr": "espace vert en France, à Rosny-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q138434717",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-parc-nature-du-plateau-d-avron-q138434717",
+      "latitude": 48.874805,
+      "longitude": 2.503528,
+      "name": {
+        "en": "parc nature du Plateau-d'Avron",
+        "fr": "parc nature du Plateau-d'Avron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "plateau à l'est de Paris, dans la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q1945381",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-plateau-d-avron-q1945381",
+      "latitude": 48.87277778,
+      "longitude": 2.51083333,
+      "name": {
+        "en": "plateau d'Avron",
+        "fr": "plateau d'Avron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Rosny-sous-Bois, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2657885",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-rosny-bois-perrier-q2657885",
+      "latitude": 48.8825,
+      "longitude": 2.48083,
+      "name": {
+        "en": "Rosny-Bois-Perrier",
+        "fr": "Rosny-Bois-Perrier"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3442712",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-rosny-rail-q3442712",
+      "latitude": 48.870551,
+      "longitude": 2.485448,
+      "name": {
+        "en": "Rosny-Rail",
+        "fr": "Rosny-Rail"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Rosny-sous-Bois, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2940664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "rosny-sous-bois-rosny-sous-bois-q2940664",
+      "latitude": 48.87028,
+      "longitude": 2.48583,
+      "name": {
+        "en": "Rosny-sous-Bois",
+        "fr": "Rosny-sous-Bois"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "savigny-sur-orge-v1",
+  "cityId": "savigny-sur-orge-fr",
+  "cityZoneId": "relation/33429",
+  "cityName": {
+    "en": "Savigny-sur-Orge",
+    "fr": "Savigny-sur-Orge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Essonne, in France",
+        "fr": "église située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38387284",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-eglise-evangelique-baptiste-de-savigny-sur-orge-q38387284",
+      "latitude": 48.67344,
+      "longitude": 2.344729,
+      "name": {
+        "en": "église évangélique baptiste de Savigny-sur-Orge",
+        "fr": "église évangélique baptiste de Savigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Savigny-sur-Orge, France",
+        "fr": "édifice religieux catholique à Savigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29899013",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-eglise-notre-dame-d-esperance-de-savigny-sur-orge-q29899013",
+      "latitude": 48.67295,
+      "longitude": 2.33996,
+      "name": {
+        "en": "église Notre-Dame-d'Espérance de Savigny-sur-Orge",
+        "fr": "église Notre-Dame-d'Espérance de Savigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Savigny-sur-Orge, France",
+        "fr": "édifice religieux catholique à Savigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29899009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-eglise-saint-martin-de-savigny-sur-orge-q29899009",
+      "latitude": 48.6739152,
+      "longitude": 2.3539246,
+      "name": {
+        "en": "église Saint-Martin de Savigny-sur-Orge",
+        "fr": "église Saint-Martin de Savigny-sur-Orge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Savigny-sur-Orge, France",
+        "fr": "édifice religieux catholique à Savigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29899012",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-eglise-sainte-therese-de-l-enfant-jesus-de-savigny-sur-orge-q29899012",
+      "latitude": 48.68772,
+      "longitude": 2.35006,
+      "name": {
+        "en": "église Sainte-Thérèse-de-l'Enfant-Jésus de Savigny-sur-Orge",
+        "fr": "église Sainte-Thérèse-de-l'Enfant-Jésus de Savigny-sur-Orge"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "secondary education in Savigny (France)",
+        "fr": "lycée français à Savigny-sur-Orge (Île-de-France)"
+      },
+      "externalIdentity": {
+        "id": "Q55598384",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-lycee-jean-baptiste-corot-le-chateau-q55598384",
+      "latitude": 48.675874,
+      "longitude": 2.353204,
+      "name": {
+        "en": "lycée Jean-Baptiste-Corot - Le Château",
+        "fr": "lycée Jean-Baptiste-Corot - Le Château"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136078636",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-monument-aux-morts-de-savigny-sur-orge-q136078636",
+      "latitude": 48.67381,
+      "longitude": 2.34785,
+      "name": {
+        "en": "monument aux morts de Savigny-sur-Orge",
+        "fr": "monument aux morts de Savigny-sur-Orge"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "street of Savigny-sur-Orge, in France",
+        "fr": "voie de Savigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q120495200",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-parc-des-marronniers-q120495200",
+      "latitude": 48.676967707,
+      "longitude": 2.351756885,
+      "name": {
+        "en": "parc des Marronniers",
+        "fr": "parc des Marronniers"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "street of Savigny-sur-Orge, in France",
+        "fr": "voie de Savigny-sur-Orge, en France"
+      },
+      "externalIdentity": {
+        "id": "Q120495062",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-parc-francois-villon-q120495062",
+      "latitude": 48.6761065,
+      "longitude": 2.346294506,
+      "name": {
+        "en": "parc François-Villon",
+        "fr": "parc François-Villon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont des trois arches (Savigny-sur-Orge) is a distinctive architectural landmark in the city.",
+        "fr": "pont ferroviaire passant l'Yvette dans l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q139769920",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-pont-des-trois-arches-savigny-sur-orge-q139769920",
+      "latitude": 48.669999,
+      "longitude": 2.337964,
+      "name": {
+        "en": "Pont des trois arches (Savigny-sur-Orge)",
+        "fr": "Pont des trois arches (Savigny-sur-Orge)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Savigny-sur-Orge, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2683824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "savigny-sur-orge-savigny-sur-orge-q2683824",
+      "latitude": 48.676111,
+      "longitude": 2.352222,
+      "name": {
+        "en": "Savigny-sur-Orge",
+        "fr": "Savigny-sur-Orge"
+      }
+    }
+  ]
+}

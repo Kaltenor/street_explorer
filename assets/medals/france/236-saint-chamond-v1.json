@@ -1,0 +1,204 @@
+{
+  "id": "saint-chamond-v1",
+  "cityId": "saint-chamond-fr",
+  "cityZoneId": "relation/122931",
+  "cityName": {
+    "en": "Saint-Chamond",
+    "fr": "Saint-Chamond"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18000014",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-collegiale-saint-jean-baptiste-de-saint-chamond-q18000014",
+      "latitude": 45.478463,
+      "longitude": 4.5096231,
+      "name": {
+        "en": "collégiale Saint-Jean-Baptiste de Saint-Chamond",
+        "fr": "collégiale Saint-Jean-Baptiste de Saint-Chamond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, in France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38381636",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-eglise-notre-dame-de-saint-chamond-q38381636",
+      "latitude": 45.4745952,
+      "longitude": 4.5110142,
+      "name": {
+        "en": "église Notre-Dame de Saint-Chamond",
+        "fr": "église Notre-Dame de Saint-Chamond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, in France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38418754",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-eglise-saint-andre-d-izieux-q38418754",
+      "latitude": 45.46372,
+      "longitude": 4.50334,
+      "name": {
+        "en": "église Saint-André d'Izieux",
+        "fr": "église Saint-André d'Izieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, in France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38500089",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-eglise-saint-ennemond-de-saint-chamond-q38500089",
+      "latitude": 45.47837,
+      "longitude": 4.50857,
+      "name": {
+        "en": "église Saint-Ennemond de Saint-Chamond",
+        "fr": "église Saint-Ennemond de Saint-Chamond"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden in France",
+        "fr": "jardin botanique en France"
+      },
+      "externalIdentity": {
+        "id": "Q6159726",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-jardin-botanique-de-saint-chamond-q6159726",
+      "latitude": 45.4775,
+      "longitude": 4.51527778,
+      "name": {
+        "en": "Jardin botanique de Saint-Chamond",
+        "fr": "Jardin botanique de Saint-Chamond"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Loire department, France",
+        "fr": "monument aux morts de la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136075142",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-monument-aux-morts-de-saint-julien-en-jarez-q136075142",
+      "latitude": 45.4785688,
+      "longitude": 4.5241993,
+      "name": {
+        "en": "monument aux morts de Saint-Julien-en-Jarez",
+        "fr": "monument aux morts de Saint-Julien-en-Jarez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, in France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60387603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-eglise-saint-marcellin-champagnat-de-fonsala-q60387603",
+      "latitude": 45.47488,
+      "longitude": 4.53403,
+      "name": {
+        "en": "église Saint-Marcellin Champagnat de Fonsala",
+        "fr": "église Saint-Marcellin Champagnat de Fonsala"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire, in France",
+        "fr": "église située dans la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584077",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-eglise-saint-pierre-de-saint-chamond-q3584077",
+      "latitude": 45.4786,
+      "longitude": 4.51325,
+      "name": {
+        "en": "église Saint-Pierre de Saint-Chamond",
+        "fr": "église Saint-Pierre de Saint-Chamond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "maison des Chanoines is a distinctive architectural landmark in the city.",
+        "fr": "maison des Chanoines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117592",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-chamond-maison-des-chanoines-pa00117592",
+      "latitude": 45.4775446787634,
+      "longitude": 4.50778796419894,
+      "name": {
+        "en": "maison des Chanoines",
+        "fr": "maison des Chanoines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Chamond, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097503",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-chamond-saint-chamond-q3097503",
+      "latitude": 45.472422,
+      "longitude": 4.51709,
+      "name": {
+        "en": "Saint-Chamond",
+        "fr": "Saint-Chamond"
+      }
+    }
+  ]
+}

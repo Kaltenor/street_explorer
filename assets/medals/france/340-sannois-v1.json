@@ -1,0 +1,204 @@
+{
+  "id": "sannois-v1",
+  "cityId": "sannois-fr",
+  "cityZoneId": "relation/103051",
+  "cityName": {
+    "en": "Sannois",
+    "fr": "Sannois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "butte de Sannois is a distinctive architectural landmark in the city.",
+        "fr": "colline en France, dans le Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q140130141",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-butte-de-sannois-q140130141",
+      "latitude": 48.967946,
+      "longitude": 2.244247,
+      "name": {
+        "en": "butte de Sannois",
+        "fr": "butte de Sannois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "butte des Châtaigniers is a distinctive architectural landmark in the city.",
+        "fr": "colline du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q125510817",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-butte-des-chataigniers-q125510817",
+      "latitude": 48.9634,
+      "longitude": 2.2519,
+      "name": {
+        "en": "butte des Châtaigniers",
+        "fr": "butte des Châtaigniers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41804117",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-eglise-saint-pierre-saint-paul-de-sannois-q41804117",
+      "latitude": 48.96875,
+      "longitude": 2.25465,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de Sannois",
+        "fr": "église Saint-Pierre-Saint-Paul de Sannois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Sannois, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119331620",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-mairie-de-sannois-q119331620",
+      "latitude": 48.97166,
+      "longitude": 2.25638,
+      "name": {
+        "en": "mairie de Sannois",
+        "fr": "mairie de Sannois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096693",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-monument-aux-morts-du-cimetiere-de-sannois-q136096693",
+      "latitude": 48.96586,
+      "longitude": 2.25356,
+      "name": {
+        "en": "monument aux morts du cimetière de Sannois",
+        "fr": "monument aux morts du cimetière de Sannois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097313",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-monument-aux-morts-du-square-jean-mermoz-de-sannois-q136097313",
+      "latitude": 48.97226,
+      "longitude": 2.25887,
+      "name": {
+        "en": "monument aux morts du Square Jean Mermoz de Sannois",
+        "fr": "monument aux morts du Square Jean Mermoz de Sannois"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Sannois, France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330001",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-musee-de-la-boxe-q3330001",
+      "latitude": 48.9789,
+      "longitude": 2.24218,
+      "name": {
+        "en": "musée de la boxe",
+        "fr": "musée de la boxe"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q3329372",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-musee-utrillo-valadon-q3329372",
+      "latitude": 48.9716,
+      "longitude": 2.2568,
+      "name": {
+        "en": "musée Utrillo-Valadon",
+        "fr": "musée Utrillo-Valadon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "moulin de Sannois is a distinctive architectural landmark in the city.",
+        "fr": "moulin à Sannois (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q3325665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-moulin-de-sannois-q3325665",
+      "latitude": 48.9687,
+      "longitude": 2.24256,
+      "name": {
+        "en": "moulin de Sannois",
+        "fr": "moulin de Sannois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Sannois, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2387680",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sannois-sannois-q2387680",
+      "latitude": 48.970444,
+      "longitude": 2.263997,
+      "name": {
+        "en": "Sannois",
+        "fr": "Sannois"
+      }
+    }
+  ]
+}

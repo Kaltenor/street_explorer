@@ -1,0 +1,204 @@
+{
+  "id": "malakoff-v1",
+  "cityId": "malakoff-fr",
+  "cityZoneId": "relation/37027",
+  "cityName": {
+    "en": "Malakoff",
+    "fr": "Malakoff"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former town hall in Malakoff, France",
+        "fr": "ancienne mairie de Malakoff, en France, détruite en 2003"
+      },
+      "externalIdentity": {
+        "id": "Q100377533",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-ancien-mairie-de-malakoff-q100377533",
+      "latitude": 48.82244,
+      "longitude": 2.30587,
+      "name": {
+        "en": "Ancien mairie de Malakoff",
+        "fr": "Ancien mairie de Malakoff"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83375993",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-cimetiere-de-malakoff-q83375993",
+      "latitude": 48.81447,
+      "longitude": 2.28453,
+      "name": {
+        "en": "cimetière de Malakoff",
+        "fr": "cimetière de Malakoff"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958318",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-eglise-notre-dame-de-malakoff-q15958318",
+      "latitude": 48.8202,
+      "longitude": 2.30538,
+      "name": {
+        "en": "église Notre-Dame de Malakoff",
+        "fr": "église Notre-Dame de Malakoff"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "training and research unit of the university Paris-Cité (Campus Malakoff)",
+        "fr": "unité de formation et recherche de l'université Paris-Cité créée en 1976 à Malakoff au sein de l'université Paris-Descartes (Paris-V)"
+      },
+      "externalIdentity": {
+        "id": "Q3550813",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-faculte-de-droit-de-l-universite-paris-cite-q3550813",
+      "latitude": 48.824397222,
+      "longitude": 2.301972222,
+      "name": {
+        "en": "faculté de droit de l'université Paris-Cité",
+        "fr": "faculté de droit de l'université Paris-Cité"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort",
+        "fr": "fort d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q1438858",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-fort-de-vanves-q1438858",
+      "latitude": 48.811666666,
+      "longitude": 2.289444444,
+      "name": {
+        "en": "fort de Vanves",
+        "fr": "fort de Vanves"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Malakoff is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Malakoff, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602256",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-monument-aux-morts-de-malakoff-q96602256",
+      "latitude": 48.8197052,
+      "longitude": 2.3015187,
+      "name": {
+        "en": "monument aux morts de Malakoff",
+        "fr": "monument aux morts de Malakoff"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "passageway in Malakoff, France",
+        "fr": "passage de Malakoff, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110863292",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-passage-du-theatre-q110863292",
+      "latitude": 48.81730985,
+      "longitude": 2.3046031,
+      "name": {
+        "en": "passage du Théâtre",
+        "fr": "passage du Théâtre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Malakoff, France",
+        "fr": "salle de spectacles à Malakoff, France"
+      },
+      "externalIdentity": {
+        "id": "Q24938024",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-theatre-71-q24938024",
+      "latitude": 48.82112,
+      "longitude": 2.30132,
+      "name": {
+        "en": "théâtre 71",
+        "fr": "théâtre 71"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour INSEE is an important witness to the city's history.",
+        "fr": "tour située à Malakoff, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q116785422",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-tour-insee-q116785422",
+      "latitude": 48.82436,
+      "longitude": 2.30318,
+      "name": {
+        "en": "tour INSEE",
+        "fr": "tour INSEE"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Malakoff, France",
+        "fr": "mairie à Malakoff, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913559",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "malakoff-hotel-de-ville-de-malakoff-q61913559",
+      "latitude": 48.8208,
+      "longitude": 2.3016,
+      "name": {
+        "en": "hôtel de ville de Malakoff",
+        "fr": "hôtel de ville de Malakoff"
+      }
+    }
+  ]
+}

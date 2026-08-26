@@ -1,0 +1,394 @@
+{
+  "id": "noisy-le-grand-v1",
+  "cityId": "noisy-le-grand-fr",
+  "cityZoneId": "relation/130492",
+  "cityName": {
+    "en": "Noisy-le-Grand",
+    "fr": "Noisy-le-Grand"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "bois Saint-Martin is one of the city's notable green or natural landmarks.",
+        "fr": "bois de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109017569",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-bois-saint-martin-q109017569",
+      "latitude": 48.819,
+      "longitude": 2.5837,
+      "name": {
+        "en": "bois Saint-Martin",
+        "fr": "bois Saint-Martin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Noisy-le-Grand, France",
+        "fr": "cinéma à Noisy-le-Grand, France"
+      },
+      "externalIdentity": {
+        "id": "Q61859568",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-cinema-le-bijou-q61859568",
+      "latitude": 48.848744,
+      "longitude": 2.553002,
+      "name": {
+        "en": "cinéma Le Bijou",
+        "fr": "cinéma Le Bijou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19888785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-eglise-saint-sulpice-de-noisy-le-grand-q19888785",
+      "latitude": 48.8509386,
+      "longitude": 2.54783534,
+      "name": {
+        "en": "église Saint-Sulpice de Noisy-le-Grand",
+        "fr": "église Saint-Sulpice de Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sulpice et Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sulpice et Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079942",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "noisy-le-grand-eglise-saint-sulpice-et-notre-dame-pa00079942",
+      "latitude": 48.8509715069924,
+      "longitude": 2.54791888411361,
+      "name": {
+        "en": "Église Saint-Sulpice et Notre-Dame",
+        "fr": "Église Saint-Sulpice et Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering school founded in 1904 under the name of Ecole Breguet",
+        "fr": "école d'ingénieurs français"
+      },
+      "externalIdentity": {
+        "id": "Q3046113",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-esiee-paris-q3046113",
+      "latitude": 48.837993611,
+      "longitude": 2.583129166,
+      "name": {
+        "en": "ESIEE Paris",
+        "fr": "ESIEE Paris"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue du Docteur Sureau is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920485",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-fontaine-wallace-rue-du-docteur-sureau-q128920485",
+      "latitude": 48.847933,
+      "longitude": 2.54817,
+      "name": {
+        "en": "fontaine Wallace, rue du Docteur Sureau",
+        "fr": "fontaine Wallace, rue du Docteur Sureau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "19th c. French fort near Paris",
+        "fr": "ancien fort du système défensif de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q8564802",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-fort-de-villiers-q8564802",
+      "latitude": 48.833548,
+      "longitude": 2.555085,
+      "name": {
+        "en": "fort de Villiers",
+        "fr": "fort de Villiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall, Noisy-le-Grand, France",
+        "fr": "hôtel de ville, Noisy-le-Grand, France"
+      },
+      "externalIdentity": {
+        "id": "Q72839805",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-hotel-de-ville-de-noisy-le-grand-q72839805",
+      "latitude": 48.8493,
+      "longitude": 2.5525,
+      "name": {
+        "en": "hôtel de ville de Noisy-le-Grand",
+        "fr": "hôtel de ville de Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Noisy-le-Grand, France",
+        "fr": "jardin de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915191",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-jardin-de-la-justice-q108915191",
+      "latitude": 48.843846299,
+      "longitude": 2.56753139,
+      "name": {
+        "en": "jardin de la Justice",
+        "fr": "jardin de la Justice"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Noisy-le-Grand, France",
+        "fr": "jardin de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915187",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-jardin-des-artistes-q108915187",
+      "latitude": 48.845032528,
+      "longitude": 2.551400316,
+      "name": {
+        "en": "jardin des Artistes",
+        "fr": "jardin des Artistes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Noisy-le-Grand, France",
+        "fr": "jardin de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915188",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-jardin-des-sources-q108915188",
+      "latitude": 48.838519271,
+      "longitude": 2.551950756,
+      "name": {
+        "en": "jardin des Sources",
+        "fr": "jardin des Sources"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Noisy-le-Grand, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2607914",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-les-yvris-noisy-le-grand-q2607914",
+      "latitude": 48.82306,
+      "longitude": 2.57944,
+      "name": {
+        "en": "Les Yvris-Noisy-le-Grand",
+        "fr": "Les Yvris-Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067056",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-monument-aux-morts-de-noisy-le-grand-q136067056",
+      "latitude": 48.851009,
+      "longitude": 2.547351,
+      "name": {
+        "en": "monument aux morts de Noisy-le-Grand",
+        "fr": "monument aux morts de Noisy-le-Grand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1881833",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-noisy-champs-q1881833",
+      "latitude": 48.8425,
+      "longitude": 2.57806,
+      "name": {
+        "en": "Noisy - Champs",
+        "fr": "Noisy - Champs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Noisy-le-Grand, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1841795",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-noisy-le-grand-mont-d-est-q1841795",
+      "latitude": 48.84074,
+      "longitude": 2.55178,
+      "name": {
+        "en": "Noisy-le-Grand - Mont d'Est",
+        "fr": "Noisy-le-Grand - Mont d'Est"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Noisy-le-Grand, France",
+        "fr": "parc de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-parc-de-la-butte-verte-q108915192",
+      "latitude": 48.839357081,
+      "longitude": 2.579447453,
+      "name": {
+        "en": "parc de la Butte Verte",
+        "fr": "parc de la Butte Verte"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Noisy-le-Grand, France",
+        "fr": "parc de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108915195",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-parc-louis-antoine-de-bougainville-q108915195",
+      "latitude": 48.841419022,
+      "longitude": 2.539291479,
+      "name": {
+        "en": "parc Louis-Antoine de Bougainville",
+        "fr": "parc Louis-Antoine de Bougainville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Noisy-le-Grand, France",
+        "fr": "place de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108781117",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-porte-de-neuilly-q108781117",
+      "latitude": 48.84316656,
+      "longitude": 2.5439589,
+      "name": {
+        "en": "porte de Neuilly",
+        "fr": "porte de Neuilly"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "street in Noisy-le-Grand, France",
+        "fr": "porte de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108866153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-porte-de-paris-q108866153",
+      "latitude": 48.83760372,
+      "longitude": 2.5430955,
+      "name": {
+        "en": "porte de Paris",
+        "fr": "porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "porte of Noisy-le-Grand, in France",
+        "fr": "porte de Noisy-le-Grand, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108867633",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-grand-porte-des-escoliers-q108867633",
+      "latitude": 48.84323,
+      "longitude": 2.5481,
+      "name": {
+        "en": "porte des Escoliers",
+        "fr": "porte des Escoliers"
+      }
+    }
+  ]
+}

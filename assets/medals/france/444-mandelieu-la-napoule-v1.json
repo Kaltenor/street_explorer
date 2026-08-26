@@ -1,0 +1,204 @@
+{
+  "id": "mandelieu-la-napoule-v1",
+  "cityId": "mandelieu-la-napoule-fr",
+  "cityZoneId": "relation/91777",
+  "cityName": {
+    "en": "Mandelieu-la-Napoule",
+    "fr": "Mandelieu-la-Napoule"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1726063",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mandelieu-la-napoule-canton-de-mandelieu-cannes-ouest-q1726063",
+      "latitude": 43.5463889,
+      "longitude": 6.93805557,
+      "name": {
+        "en": "canton de Mandelieu-Cannes-Ouest",
+        "fr": "canton de Mandelieu-Cannes-Ouest"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Napoule is an important witness to the city's history.",
+        "fr": "Château de la Napoule est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080773",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mandelieu-la-napoule-chateau-de-la-napoule-pa00080773",
+      "latitude": 43.5234176404939,
+      "longitude": 6.9428251819341,
+      "name": {
+        "en": "Château de la Napoule",
+        "fr": "Château de la Napoule"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Alpes-Maritimes, France",
+        "fr": "commune française du département des Alpes-Maritimes"
+      },
+      "externalIdentity": {
+        "id": "Q239317",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mandelieu-la-napoule-mandelieu-la-napoule-q239317",
+      "latitude": 43.545555555,
+      "longitude": 6.9375,
+      "name": {
+        "en": "Mandelieu-la-Napoule",
+        "fr": "Mandelieu-la-Napoule"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de Camille is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de Camille compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/340345700",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mandelieu-la-napoule-parc-de-camille-way-340345700",
+      "latitude": 43.5437472,
+      "longitude": 6.9453608,
+      "name": {
+        "en": "Parc de Camille",
+        "fr": "Parc de Camille"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc départemental du San Peyre is one of the city's notable green or natural landmarks.",
+        "fr": "Parc départemental du San Peyre compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/27805731",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mandelieu-la-napoule-parc-departemental-du-san-peyre-way-27805731",
+      "latitude": 43.5247523,
+      "longitude": 6.9359233,
+      "name": {
+        "en": "Parc départemental du San Peyre",
+        "fr": "Parc départemental du San Peyre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des Oliviers is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des Oliviers compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/28504337",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mandelieu-la-napoule-parc-des-oliviers-way-28504337",
+      "latitude": 43.5394031,
+      "longitude": 6.9450714,
+      "name": {
+        "en": "Parc des Oliviers",
+        "fr": "Parc des Oliviers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Plage du Château is an important witness to the city's history.",
+        "fr": "Plage du Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/26123366",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mandelieu-la-napoule-plage-du-chateau-way-26123366",
+      "latitude": 43.5240152,
+      "longitude": 6.9433454,
+      "name": {
+        "en": "Plage du Château",
+        "fr": "Plage du Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "a cone of volcanic origin located in Esterel, in Mandelieu-la-Napoule, west of the Alpes-Maritimes in France",
+        "fr": "colline en France"
+      },
+      "externalIdentity": {
+        "id": "Q3471599",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mandelieu-la-napoule-san-peyre-q3471599",
+      "latitude": 43.525,
+      "longitude": 6.93722,
+      "name": {
+        "en": "San Peyre",
+        "fr": "San Peyre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "fleuve côtier des Alpes-Maritimes, France"
+      },
+      "externalIdentity": {
+        "id": "Q652329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mandelieu-la-napoule-siagne-q652329",
+      "latitude": 43.53083333,
+      "longitude": 6.94944444,
+      "name": {
+        "en": "Siagne",
+        "fr": "Siagne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre Robinson is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre Robinson compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/277120236",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mandelieu-la-napoule-theatre-robinson-way-277120236",
+      "latitude": 43.5344093,
+      "longitude": 6.9448541,
+      "name": {
+        "en": "Théâtre Robinson",
+        "fr": "Théâtre Robinson"
+      }
+    }
+  ]
+}

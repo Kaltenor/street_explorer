@@ -1,0 +1,204 @@
+{
+  "id": "orly-v1",
+  "cityId": "orly-fr",
+  "cityZoneId": "relation/55582",
+  "cityName": {
+    "en": "Orly",
+    "fr": "Orly"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Paris, France",
+        "fr": "aéroport desservant Paris (Île-de-France, France)"
+      },
+      "externalIdentity": {
+        "id": "Q223416",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-aeroport-de-paris-orly-q223416",
+      "latitude": 48.723333,
+      "longitude": 2.379444,
+      "name": {
+        "en": "aéroport de Paris-Orly",
+        "fr": "aéroport de Paris-Orly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien mairie d'Orly is a distinctive architectural landmark in the city.",
+        "fr": "ancienne mairie située à Orly, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483586",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-ancien-mairie-d-orly-q96483586",
+      "latitude": 48.74238,
+      "longitude": 2.39565,
+      "name": {
+        "en": "Ancien mairie d'Orly",
+        "fr": "Ancien mairie d'Orly"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Grignon is an important witness to the city's history.",
+        "fr": "château situé à Orly, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q78655741",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-chateau-de-grignon-q78655741",
+      "latitude": 48.75021,
+      "longitude": 2.39739,
+      "name": {
+        "en": "château de Grignon",
+        "fr": "château de Grignon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Orly",
+        "fr": "château situé à Orly, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483789",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-chateau-des-tourelles-q96483789",
+      "latitude": 48.74171,
+      "longitude": 2.39647,
+      "name": {
+        "en": "château des Tourelles",
+        "fr": "château des Tourelles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Val-de-Marne, France",
+        "fr": "château situé à Orly, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q78661418",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-chateau-guerin-q78661418",
+      "latitude": 48.74352,
+      "longitude": 2.39268,
+      "name": {
+        "en": "château Guérin",
+        "fr": "château Guérin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain-de-Paris is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain-de-Paris est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079896",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "orly-eglise-saint-germain-de-paris-pa00079896",
+      "latitude": 48.7425610822587,
+      "longitude": 2.39650988782486,
+      "name": {
+        "en": "Église Saint-Germain-de-Paris",
+        "fr": "Église Saint-Germain-de-Paris"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, place du Général Leclerc is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Orly, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-fontaine-wallace-place-du-general-leclerc-q128920488",
+      "latitude": 48.742786,
+      "longitude": 2.396265,
+      "name": {
+        "en": "fontaine Wallace, place du Général Leclerc",
+        "fr": "fontaine Wallace, place du Général Leclerc"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial in Orly, Val-de-Marne, France",
+        "fr": "monument aux morts situé à Orly, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-monument-aux-morts-d-orly-q96483589",
+      "latitude": 48.7427,
+      "longitude": 2.396,
+      "name": {
+        "en": "monument aux morts d'Orly",
+        "fr": "monument aux morts d'Orly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Orly, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2125977",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-orly-ville-q2125977",
+      "latitude": 48.74167,
+      "longitude": 2.40278,
+      "name": {
+        "en": "Orly-Ville",
+        "fr": "Orly-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q21294427",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "orly-pont-ferroviaire-de-choisy-q21294427",
+      "latitude": 48.752768,
+      "longitude": 2.424714,
+      "name": {
+        "en": "pont ferroviaire de Choisy",
+        "fr": "pont ferroviaire de Choisy"
+      }
+    }
+  ]
+}

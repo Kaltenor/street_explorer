@@ -1,0 +1,204 @@
+{
+  "id": "bergerac-v1",
+  "cityId": "bergerac-fr",
+  "cityZoneId": "relation/145155",
+  "cityName": {
+    "en": "Bergerac",
+    "fr": "Bergerac"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Séminaire ou Petite Mission is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Séminaire ou Petite Mission est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082378",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-ancien-seminaire-ou-petite-mission-pa00082378",
+      "latitude": 44.8510937113733,
+      "longitude": 0.482587784990196,
+      "name": {
+        "en": "Ancien Séminaire ou Petite Mission",
+        "fr": "Ancien Séminaire ou Petite Mission"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lespinassat is an important witness to the city's history.",
+        "fr": "Château de Lespinassat est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082373",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-chateau-de-lespinassat-pa00082373",
+      "latitude": 44.8306418444324,
+      "longitude": 0.493942164889682,
+      "name": {
+        "en": "Château de Lespinassat",
+        "fr": "Château de Lespinassat"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Mounet-Sully is an important witness to the city's history.",
+        "fr": "Château de Mounet-Sully est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082374",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-chateau-de-mounet-sully-pa00082374",
+      "latitude": 44.8700644772158,
+      "longitude": 0.457171729750205,
+      "name": {
+        "en": "Château de Mounet-Sully",
+        "fr": "Château de Mounet-Sully"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA24000029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-eglise-notre-dame-pa24000029",
+      "latitude": 44.8540820836725,
+      "longitude": 0.483632547588822,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082375",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-eglise-saint-jacques-pa00082375",
+      "latitude": 44.8514327290331,
+      "longitude": 0.482889309011197,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082376",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-immeuble-pa00082376",
+      "latitude": 44.85002260483691,
+      "longitude": 0.483015692461225,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison dite Château Henri IV is an important witness to the city's history.",
+        "fr": "Maison dite Château Henri IV est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082372",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-maison-dite-chateau-henri-iv-pa00082372",
+      "latitude": 44.84961266006,
+      "longitude": 0.483608699002078,
+      "name": {
+        "en": "Maison dite Château Henri IV",
+        "fr": "Maison dite Château Henri IV"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du tabac is one of the city's notable cultural landmarks.",
+        "fr": "musée du tabac compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0049",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bergerac-musee-du-tabac-m0049",
+      "latitude": 44.84976,
+      "longitude": 0.483469,
+      "name": {
+        "en": "musée du tabac",
+        "fr": "musée du tabac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite La vieille auberge is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite La vieille auberge est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00082377",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-maison-dite-la-vieille-auberge-pa00082377",
+      "latitude": 44.8513381733275,
+      "longitude": 0.484013281433765,
+      "name": {
+        "en": "Maison dite La vieille auberge",
+        "fr": "Maison dite La vieille auberge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Pic is a distinctive architectural landmark in the city.",
+        "fr": "Maison Pic est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA24000065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bergerac-maison-pic-pa24000065",
+      "latitude": 44.8411780546675,
+      "longitude": 0.49380644778025806,
+      "name": {
+        "en": "Maison Pic",
+        "fr": "Maison Pic"
+      }
+    }
+  ]
+}

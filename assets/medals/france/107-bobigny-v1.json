@@ -1,0 +1,204 @@
+{
+  "id": "bobigny-v1",
+  "cityId": "bobigny-fr",
+  "cityZoneId": "relation/131240",
+  "cityName": {
+    "en": "Bobigny",
+    "fr": "Bobigny"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien gare SNCF de la Grande Ceinture is a distinctive architectural landmark in the city.",
+        "fr": "Ancien gare SNCF de la Grande Ceinture est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bobigny-ancien-gare-sncf-de-la-grande-ceinture-pa93000018",
+      "latitude": 48.911149101699905,
+      "longitude": 2.43012709296877,
+      "name": {
+        "en": "Ancien gare SNCF de la Grande Ceinture",
+        "fr": "Ancien gare SNCF de la Grande Ceinture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bourse départementale du Travail is a distinctive architectural landmark in the city.",
+        "fr": "Bourse départementale du Travail est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bobigny-bourse-departementale-du-travail-pa93000023",
+      "latitude": 48.9061431144448,
+      "longitude": 2.43815209863446,
+      "name": {
+        "en": "Bourse départementale du Travail",
+        "fr": "Bourse départementale du Travail"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cimetière musulman is a distinctive architectural landmark in the city.",
+        "fr": "Cimetière musulman est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bobigny-cimetiere-musulman-pa93000020",
+      "latitude": 48.90070518611486,
+      "longitude": 2.4332659220895967,
+      "name": {
+        "en": "Cimetière musulman",
+        "fr": "Cimetière musulman"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bobigny, France",
+        "fr": "édifice de Bobigny, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-hotel-de-ville-de-bobigny-q83409702",
+      "latitude": 48.90614,
+      "longitude": 2.4449,
+      "name": {
+        "en": "hôtel de ville de Bobigny",
+        "fr": "hôtel de ville de Bobigny"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "MC93 is one of the city's notable cultural landmarks.",
+        "fr": "salle de spectacle de Bobigny, France"
+      },
+      "externalIdentity": {
+        "id": "Q57998",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-mc93-q57998",
+      "latitude": 48.9066,
+      "longitude": 2.43951,
+      "name": {
+        "en": "MC93",
+        "fr": "MC93"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136040458",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-monument-aux-morts-de-bobigny-q136040458",
+      "latitude": 48.90731,
+      "longitude": 2.44672,
+      "name": {
+        "en": "monument aux morts de Bobigny",
+        "fr": "monument aux morts de Bobigny"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Bobigny, France",
+        "fr": "parc situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60853987",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-parc-departemental-de-la-bergere-q60853987",
+      "latitude": 48.9033,
+      "longitude": 2.4551,
+      "name": {
+        "en": "parc départemental de la Bergère",
+        "fr": "parc départemental de la Bergère"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Bobigny, France",
+        "fr": "bâtiment à Bobigny, en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q48975502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-tour-de-l-illustration-q48975502",
+      "latitude": 48.9134,
+      "longitude": 2.4188,
+      "name": {
+        "en": "tour de l'Illustration",
+        "fr": "tour de l'Illustration"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396872",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-pont-de-bondy-q3396872",
+      "latitude": 48.905,
+      "longitude": 2.47023,
+      "name": {
+        "en": "pont de Bondy",
+        "fr": "pont de Bondy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Bobigny, France",
+        "fr": "pont de Bobigny"
+      },
+      "externalIdentity": {
+        "id": "Q62108117",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bobigny-pont-de-la-folie-q62108117",
+      "latitude": 48.8994,
+      "longitude": 2.4417,
+      "name": {
+        "en": "pont de la Folie",
+        "fr": "pont de la Folie"
+      }
+    }
+  ]
+}

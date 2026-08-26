@@ -1,0 +1,204 @@
+{
+  "id": "dole-v1",
+  "cityId": "dole-fr",
+  "cityZoneId": "relation/148676",
+  "cityName": {
+    "en": "Dole",
+    "fr": "Dole"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Cordeliers (puis palais de justice) is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Cordeliers (puis palais de justice) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101844",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-ancien-couvent-des-cordeliers-puis-palais-de-justice-pa00101844",
+      "latitude": 47.0904233460042,
+      "longitude": 5.49170330528757,
+      "name": {
+        "en": "Ancien couvent des Cordeliers (puis palais de justice)",
+        "fr": "Ancien couvent des Cordeliers (puis palais de justice)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Collège de l'Arc, actuellement musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "Collège de l'Arc, actuellement musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101843",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-college-de-l-arc-actuellement-musee-archeologique-pa00101843",
+      "latitude": 47.0925140489835,
+      "longitude": 5.49103238520043,
+      "name": {
+        "en": "Collège de l'Arc, actuellement musée archéologique",
+        "fr": "Collège de l'Arc, actuellement musée archéologique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101845",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-eglise-notre-dame-pa00101845",
+      "latitude": 47.0925128773629,
+      "longitude": 5.49473963277867,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-l'Évangéliste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-l'Évangéliste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA39000073",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-eglise-saint-jean-l-evangeliste-pa39000073",
+      "latitude": 47.0870966518538,
+      "longitude": 5.48263395532309,
+      "name": {
+        "en": "Église Saint-Jean-l'Évangéliste",
+        "fr": "Église Saint-Jean-l'Évangéliste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte urbaine is an important witness to the city's history.",
+        "fr": "Enceinte urbaine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-enceinte-urbaine-pa00102090",
+      "latitude": 47.0893374227929,
+      "longitude": 5.49003867054116,
+      "name": {
+        "en": "Enceinte urbaine",
+        "fr": "Enceinte urbaine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine et pont is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine et pont compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-fontaine-et-pont-pa00101847",
+      "latitude": 47.088348869395,
+      "longitude": 5.49814351957376,
+      "name": {
+        "en": "Fontaine et pont",
+        "fr": "Fontaine et pont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Mailly-Château-Renaud is an important witness to the city's history.",
+        "fr": "Hôtel de Mailly-Château-Renaud est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101854",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-hotel-de-mailly-chateau-renaud-pa00101854",
+      "latitude": 47.0917579319969,
+      "longitude": 5.49418005885422,
+      "name": {
+        "en": "Hôtel de Mailly-Château-Renaud",
+        "fr": "Hôtel de Mailly-Château-Renaud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101856",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-hotel-de-ville-pa00101856",
+      "latitude": 47.0921404837758,
+      "longitude": 5.49373433664618,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0347",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dole-musee-des-beaux-arts-et-d-archeologie-m0347",
+      "latitude": 47.089059,
+      "longitude": 5.488205,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101874",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dole-theatre-municipal-pa00101874",
+      "latitude": 47.0921338584723,
+      "longitude": 5.48920388615473,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    }
+  ]
+}

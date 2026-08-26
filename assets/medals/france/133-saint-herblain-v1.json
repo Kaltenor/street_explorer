@@ -1,0 +1,204 @@
+{
+  "id": "saint-herblain-v1",
+  "cityId": "saint-herblain-fr",
+  "cityZoneId": "relation/64362",
+  "cityName": {
+    "en": "Saint-Herblain",
+    "fr": "Saint-Herblain"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de l'Essongère is an important witness to the city's history.",
+        "fr": "château à Saint-Herblain"
+      },
+      "externalIdentity": {
+        "id": "Q64221042",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-chateau-de-l-essongere-q64221042",
+      "latitude": 47.236975699,
+      "longitude": -1.622458752,
+      "name": {
+        "en": "château de l'Essongère",
+        "fr": "château de l'Essongère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-herblain-eglise-pa00108798",
+      "latitude": 47.2103179286506,
+      "longitude": -1.65151098487787,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église française située à Saint-Herblain"
+      },
+      "externalIdentity": {
+        "id": "Q3581754",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-eglise-saint-hermeland-de-saint-herblain-q3581754",
+      "latitude": 47.2103,
+      "longitude": -1.65153,
+      "name": {
+        "en": "église Saint-Hermeland de Saint-Herblain",
+        "fr": "église Saint-Hermeland de Saint-Herblain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60387443",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-eglise-saint-louis-de-monfort-de-la-bouvardiere-q60387443",
+      "latitude": 47.23746,
+      "longitude": -1.59519,
+      "name": {
+        "en": "église Saint-Louis-de-Monfort de la Bouvardière",
+        "fr": "église Saint-Louis-de-Monfort de la Bouvardière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392735",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-eglise-saint-thomas-des-quatre-vents-q60392735",
+      "latitude": 47.2296,
+      "longitude": -1.61765,
+      "name": {
+        "en": "église Saint-Thomas des Quatre Vents",
+        "fr": "église Saint-Thomas des Quatre Vents"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Herblain, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096752",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-la-basse-indre-saint-herblain-q3096752",
+      "latitude": 47.204097,
+      "longitude": -1.660283,
+      "name": {
+        "en": "La Basse-Indre - Saint-Herblain",
+        "fr": "La Basse-Indre - Saint-Herblain"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc de la Bégraisière is one of the city's notable green or natural landmarks.",
+        "fr": "parc urbain à Saint-Herblain, France"
+      },
+      "externalIdentity": {
+        "id": "Q83521153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-parc-de-la-begraisiere-q83521153",
+      "latitude": 47.232339,
+      "longitude": -1.614585,
+      "name": {
+        "en": "parc de la Bégraisière",
+        "fr": "parc de la Bégraisière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre ONYX is one of the city's notable cultural landmarks.",
+        "fr": "théâtre ONYX compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q16511540",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-theatre-onyx-q16511540",
+      "latitude": 47.223888888,
+      "longitude": -1.629166666,
+      "name": {
+        "en": "théâtre ONYX",
+        "fr": "théâtre ONYX"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Saint-Herblain, France",
+        "fr": "mairie annexe de Saint-Herblain, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106833785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-mairie-annexe-de-saint-herblain-q106833785",
+      "latitude": 47.243791603,
+      "longitude": -1.605994105,
+      "name": {
+        "en": "mairie annexe de Saint-Herblain",
+        "fr": "mairie annexe de Saint-Herblain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Buddhist temple located in Loire-Atlantique, in France",
+        "fr": "temple bouddhique situé en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3554406",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-herblain-pagode-van-hanh-q3554406",
+      "latitude": 47.210225,
+      "longitude": -1.62777,
+      "name": {
+        "en": "pagode Van Hanh",
+        "fr": "pagode Van Hanh"
+      }
+    }
+  ]
+}

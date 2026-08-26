@@ -1,0 +1,204 @@
+{
+  "id": "saint-raphael-v1",
+  "cityId": "saint-raphael-fr",
+  "cityZoneId": "relation/190208",
+  "cityName": {
+    "en": "Saint-Raphaël",
+    "fr": "Saint-Raphaël"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Raphaël, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095586",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-agay-q3095586",
+      "latitude": 43.431369,
+      "longitude": 6.85652,
+      "name": {
+        "en": "Agay",
+        "fr": "Agay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Raphaël, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095643",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-antheor-cap-roux-q3095643",
+      "latitude": 43.43504,
+      "longitude": 6.892092,
+      "name": {
+        "en": "Anthéor-Cap-Roux",
+        "fr": "Anthéor-Cap-Roux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q20165600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-arboretum-du-plan-esterel-q20165600",
+      "latitude": 43.492876,
+      "longitude": 6.822166,
+      "name": {
+        "en": "arboretum du Plan Esterel",
+        "fr": "arboretum du Plan Esterel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Notre-Dame-de-la-Victoire is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Notre-Dame-de-la-Victoire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-raphael-basilique-notre-dame-de-la-victoire-pa83000059",
+      "latitude": 43.42267352524753,
+      "longitude": 6.76672867512287,
+      "name": {
+        "en": "Basilique Notre-Dame-de-la-Victoire",
+        "fr": "Basilique Notre-Dame-de-la-Victoire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Raphaël, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2097781",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-boulouris-sur-mer-q2097781",
+      "latitude": 43.416359,
+      "longitude": 6.808335,
+      "name": {
+        "en": "Boulouris-sur-Mer",
+        "fr": "Boulouris-sur-Mer"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église (ancienne) et tour attenante is an important witness to the city's history.",
+        "fr": "Église (ancienne) et tour attenante est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081714",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-raphael-eglise-ancienne-et-tour-attenante-pa00081714",
+      "latitude": 43.4258722023848,
+      "longitude": 6.76942643765936,
+      "name": {
+        "en": "Église (ancienne) et tour attenante",
+        "fr": "Église (ancienne) et tour attenante"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0940",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-raphael-musee-archeologique-m0940",
+      "latitude": 43.42598957834058,
+      "longitude": 6.769881214825955,
+      "name": {
+        "en": "musée archéologique",
+        "fr": "musée archéologique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329530",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-musee-d-archeologie-sous-marine-de-saint-raphael-q3329530",
+      "latitude": 43.4258,
+      "longitude": 6.76938,
+      "name": {
+        "en": "musée d'archéologie sous-marine de Saint-Raphaël",
+        "fr": "musée d'archéologie sous-marine de Saint-Raphaël"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée situé dans le Var"
+      },
+      "externalIdentity": {
+        "id": "Q66095809",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-musee-louis-de-funes-q66095809",
+      "latitude": 43.423186,
+      "longitude": 6.768909,
+      "name": {
+        "en": "musée Louis-de-Funès",
+        "fr": "musée Louis-de-Funès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Raphaël, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1871873",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-raphael-saint-raphael-valescure-q1871873",
+      "latitude": 43.422792,
+      "longitude": 6.770559,
+      "name": {
+        "en": "Saint-Raphaël-Valescure",
+        "fr": "Saint-Raphaël-Valescure"
+      }
+    }
+  ]
+}

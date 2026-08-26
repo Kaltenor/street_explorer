@@ -1,0 +1,204 @@
+{
+  "id": "la-garde-v1",
+  "cityId": "la-garde-fr",
+  "cityZoneId": "relation/76462",
+  "cityName": {
+    "en": "La Garde",
+    "fr": "La Garde"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Var, in France",
+        "fr": "chapelle située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60336758",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-chapelle-de-bon-secours-de-sainte-marguerite-q60336758",
+      "latitude": 43.107146,
+      "longitude": 5.991948,
+      "name": {
+        "en": "chapelle de Bon-Secours de Sainte-Marguerite",
+        "fr": "chapelle de Bon-Secours de Sainte-Marguerite"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de style roman (vieille) is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de style roman (vieille) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081627",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-garde-chapelle-de-style-roman-vieille-pa00081627",
+      "latitude": 43.1249974008607,
+      "longitude": 6.01346017457115,
+      "name": {
+        "en": "Chapelle de style roman (vieille)",
+        "fr": "Chapelle de style roman (vieille)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Charles-Borromée de la Pauline is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Charles-Borromée de la Pauline est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081628",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-garde-chapelle-saint-charles-borromee-de-la-pauline-pa00081628",
+      "latitude": 43.1382101067997,
+      "longitude": 6.03083607921937,
+      "name": {
+        "en": "Chapelle Saint-Charles-Borromée de la Pauline",
+        "fr": "Chapelle Saint-Charles-Borromée de la Pauline"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering school - University of Toulon",
+        "fr": "école d'ingénieurs généraliste experte en sciences et technologies marines - université de Toulon"
+      },
+      "externalIdentity": {
+        "id": "Q17355542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-ecole-d-ingenieurs-de-l-universite-de-toulon-q17355542",
+      "latitude": 43.136246111,
+      "longitude": 6.012521111,
+      "name": {
+        "en": "École d’ingénieurs de l’université de Toulon",
+        "fr": "École d’ingénieurs de l’université de Toulon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jean Aicard is one of the city's notable cultural landmarks.",
+        "fr": "musée Jean Aicard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0938",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-garde-musee-jean-aicard-m0938",
+      "latitude": 43.131242,
+      "longitude": 5.931994,
+      "name": {
+        "en": "musée Jean Aicard",
+        "fr": "musée Jean Aicard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Var, in France",
+        "fr": "chapelle à La Garde (Var)"
+      },
+      "externalIdentity": {
+        "id": "Q22916444",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-eglise-notre-dame-de-la-garde-q22916444",
+      "latitude": 43.125,
+      "longitude": 6.01347,
+      "name": {
+        "en": "église Notre-Dame de La Garde",
+        "fr": "église Notre-Dame de La Garde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Garde, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096782",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-la-garde-q3096782",
+      "latitude": 43.118684,
+      "longitude": 6.010059,
+      "name": {
+        "en": "La Garde",
+        "fr": "La Garde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Garde, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2675705",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-la-pauline-hyeres-q2675705",
+      "latitude": 43.136287,
+      "longitude": 6.034987,
+      "name": {
+        "en": "La Pauline-Hyères",
+        "fr": "La Pauline-Hyères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Var department, France",
+        "fr": "siège municipal de La Garde, dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119313655",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-mairie-de-la-garde-q119313655",
+      "latitude": 43.124121276,
+      "longitude": 6.010214334,
+      "name": {
+        "en": "mairie de La Garde",
+        "fr": "mairie de La Garde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "indoor ice rink in France",
+        "fr": "patinoire de La Garde est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3368786",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garde-patinoire-de-la-garde-q3368786",
+      "latitude": 43.1219,
+      "longitude": 6.00044,
+      "name": {
+        "en": "patinoire de La Garde",
+        "fr": "patinoire de La Garde"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "la-chapelle-sur-erdre-v1",
+  "cityId": "la-chapelle-sur-erdre-fr",
+  "cityZoneId": "relation/73554",
+  "cityName": {
+    "en": "La Chapelle-sur-Erdre",
+    "fr": "La Chapelle-sur-Erdre"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Chapelle-sur-Erdre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-babiniere-q3095887",
+      "latitude": 47.2589,
+      "longitude": -1.54534,
+      "name": {
+        "en": "Babinière",
+        "fr": "Babinière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Desnerie is an important witness to the city's history.",
+        "fr": "château à La Chapelle-sur-Erdre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2971294",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-chateau-de-la-desnerie-q2971294",
+      "latitude": 47.2727,
+      "longitude": -1.53533,
+      "name": {
+        "en": "château de la Desnerie",
+        "fr": "château de la Desnerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Gascherie is an important witness to the city's history.",
+        "fr": "Château de la Gascherie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA44000028",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-chapelle-sur-erdre-chateau-de-la-gascherie-pa44000028",
+      "latitude": 47.29766910885611,
+      "longitude": -1.5349386526703217,
+      "name": {
+        "en": "Château de la Gascherie",
+        "fr": "Château de la Gascherie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Poterie is an important witness to the city's history.",
+        "fr": "château à La Chapelle-sur-Erdre, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56305626",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-chateau-de-la-poterie-q56305626",
+      "latitude": 47.283392267,
+      "longitude": -1.530098319,
+      "name": {
+        "en": "château de la Poterie",
+        "fr": "château de la Poterie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Chapelle-sur-Erdre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095744",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-erdre-active-q3095744",
+      "latitude": 47.283,
+      "longitude": -1.54465,
+      "name": {
+        "en": "Erdre-Active",
+        "fr": "Erdre-Active"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in La Chapelle-sur-Erdre, France",
+        "fr": "hôtel de ville, La Chapelle-sur-Erdre, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-hotel-de-ville-de-la-chapelle-sur-erdre-q105341713",
+      "latitude": 47.2995,
+      "longitude": -1.5513,
+      "name": {
+        "en": "hôtel de ville de La Chapelle-sur-Erdre",
+        "fr": "hôtel de ville de La Chapelle-sur-Erdre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Chapelle-sur-Erdre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096764",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-la-chapelle-aulnay-q3096764",
+      "latitude": 47.3087,
+      "longitude": -1.54134,
+      "name": {
+        "en": "La Chapelle-Aulnay",
+        "fr": "La Chapelle-Aulnay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Chapelle-sur-Erdre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096765",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-la-chapelle-centre-q3096765",
+      "latitude": 47.2974,
+      "longitude": -1.54803,
+      "name": {
+        "en": "La Chapelle-Centre",
+        "fr": "La Chapelle-Centre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Chapelle-sur-Erdre, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q17037253",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-la-chapelle-sur-erdre-q17037253",
+      "latitude": 47.2949,
+      "longitude": -1.54856,
+      "name": {
+        "en": "La Chapelle-sur-Erdre",
+        "fr": "La Chapelle-sur-Erdre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397213",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-chapelle-sur-erdre-pont-de-l-erdre-q3397213",
+      "latitude": 47.2753,
+      "longitude": -1.52806,
+      "name": {
+        "en": "pont de l'Erdre",
+        "fr": "pont de l'Erdre"
+      }
+    }
+  ]
+}

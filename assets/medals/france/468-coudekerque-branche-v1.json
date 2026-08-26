@@ -1,0 +1,204 @@
+{
+  "id": "coudekerque-branche-v1",
+  "cityId": "coudekerque-branche-fr",
+  "cityZoneId": "relation/139636",
+  "cityName": {
+    "en": "Coudekerque-Branche",
+    "fr": "Coudekerque-Branche"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Célestin Freinet is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Célestin Freinet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/9688038026",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "coudekerque-branche-bibliotheque-celestin-freinet-node-9688038026",
+      "latitude": 51.0226872,
+      "longitude": 2.3850941,
+      "name": {
+        "en": "Bibliothèque Célestin Freinet",
+        "fr": "Bibliothèque Célestin Freinet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Émile Verhaeren is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Émile Verhaeren compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/12825860577",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "coudekerque-branche-bibliotheque-emile-verhaeren-node-12825860577",
+      "latitude": 51.0210811,
+      "longitude": 2.4018967,
+      "name": {
+        "en": "Bibliothèque Émile Verhaeren",
+        "fr": "Bibliothèque Émile Verhaeren"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q118758",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coudekerque-branche-canton-de-dunkerque-ouest-q118758",
+      "latitude": 51.03064815,
+      "longitude": 2.40175926,
+      "name": {
+        "en": "canton de Dunkerque-Ouest",
+        "fr": "canton de Dunkerque-Ouest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in the Nord department, Hauts-de-France",
+        "fr": "commune française du département du Nord"
+      },
+      "externalIdentity": {
+        "id": "Q243851",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coudekerque-branche-coudekerque-branche-q243851",
+      "latitude": 51.024722222,
+      "longitude": 2.390833333,
+      "name": {
+        "en": "Coudekerque-Branche",
+        "fr": "Coudekerque-Branche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort in Coudekerque-Branche, France",
+        "fr": "fort Louis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q103905392",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coudekerque-branche-fort-louis-q103905392",
+      "latitude": 51.008094,
+      "longitude": 2.384303,
+      "name": {
+        "en": "fort Louis",
+        "fr": "fort Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville de Coudekerque-Branche is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville de Coudekerque-Branche est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/116274404",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "coudekerque-branche-hotel-de-ville-de-coudekerque-branche-way-116274404",
+      "latitude": 51.018617,
+      "longitude": 2.380977,
+      "name": {
+        "en": "Hôtel de ville de Coudekerque-Branche",
+        "fr": "Hôtel de ville de Coudekerque-Branche"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Opération Dynamo is one of the city's notable cultural landmarks.",
+        "fr": "Opération Dynamo compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3837798260",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "coudekerque-branche-operation-dynamo-node-3837798260",
+      "latitude": 51.008266,
+      "longitude": 2.3822059,
+      "name": {
+        "en": "Opération Dynamo",
+        "fr": "Opération Dynamo"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont de l'Hôtel de Ville is a distinctive architectural landmark in the city.",
+        "fr": "Pont de l'Hôtel de Ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/566283546",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "coudekerque-branche-pont-de-l-hotel-de-ville-way-566283546",
+      "latitude": 51.0174763,
+      "longitude": 2.3775109,
+      "name": {
+        "en": "Pont de l'Hôtel de Ville",
+        "fr": "Pont de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Pont des Coopérateurs is one of the city's notable cultural landmarks.",
+        "fr": "Pont des Coopérateurs compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/566283543",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "coudekerque-branche-pont-des-cooperateurs-way-566283543",
+      "latitude": 51.0236618,
+      "longitude": 2.374606,
+      "name": {
+        "en": "Pont des Coopérateurs",
+        "fr": "Pont des Coopérateurs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Pont du Parc du Fort Louis aux Sept Planètes is an important witness to the city's history.",
+        "fr": "Pont du Parc du Fort Louis aux Sept Planètes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/566286345",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "coudekerque-branche-pont-du-parc-du-fort-louis-aux-sept-planetes-way-566286345",
+      "latitude": 51.0026386,
+      "longitude": 2.3836514,
+      "name": {
+        "en": "Pont du Parc du Fort Louis aux Sept Planètes",
+        "fr": "Pont du Parc du Fort Louis aux Sept Planètes"
+      }
+    }
+  ]
+}

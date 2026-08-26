@@ -1,0 +1,204 @@
+{
+  "id": "saint-gratien-v1",
+  "cityId": "saint-gratien-fr",
+  "cityZoneId": "relation/102985",
+  "cityName": {
+    "en": "Saint-Gratien",
+    "fr": "Saint-Gratien"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "municipal archive in France",
+        "fr": "service d'archives communales de Saint-Gratien"
+      },
+      "externalIdentity": {
+        "id": "Q64160229",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-archives-municipales-de-saint-gratien-q64160229",
+      "latitude": 48.970477,
+      "longitude": 2.284079,
+      "name": {
+        "en": "archives municipales de Saint-Gratien",
+        "fr": "archives municipales de Saint-Gratien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "avenue du Parisis is a distinctive architectural landmark in the city.",
+        "fr": "avenue du Parisis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2874184",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-avenue-du-parisis-q2874184",
+      "latitude": 48.970625,
+      "longitude": 2.275554,
+      "name": {
+        "en": "avenue du Parisis",
+        "fr": "avenue du Parisis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Maréchal de Catinat is an important witness to the city's history.",
+        "fr": "Château du Maréchal de Catinat est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080196",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-gratien-chateau-du-marechal-de-catinat-pa00080196",
+      "latitude": 48.9698632287545,
+      "longitude": 2.28531565137254,
+      "name": {
+        "en": "Château du Maréchal de Catinat",
+        "fr": "Château du Maréchal de Catinat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "EHPAD Les Jardins d'Iroise is a distinctive architectural landmark in the city.",
+        "fr": "EHPAD situé en France à St Gratien"
+      },
+      "externalIdentity": {
+        "id": "Q112990661",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-ehpad-les-jardins-d-iroise-q112990661",
+      "latitude": 48.966345,
+      "longitude": 2.277623,
+      "name": {
+        "en": "EHPAD Les Jardins d'Iroise",
+        "fr": "EHPAD Les Jardins d'Iroise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Saint-Gratien, France",
+        "fr": "édifice de Saint-Gratien, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412796",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-hotel-de-ville-de-saint-gratien-q83412796",
+      "latitude": 48.9707,
+      "longitude": 2.2833,
+      "name": {
+        "en": "hôtel de ville de Saint-Gratien",
+        "fr": "hôtel de ville de Saint-Gratien"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097210",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-monument-aux-morts-de-la-place-gambetta-de-saint-gratien-q136097210",
+      "latitude": 48.97022,
+      "longitude": 2.28376,
+      "name": {
+        "en": "monument aux morts de la place Gambetta de Saint-Gratien",
+        "fr": "monument aux morts de la place Gambetta de Saint-Gratien"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096620",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-monument-aux-morts-du-cimetiere-de-saint-gratien-q136096620",
+      "latitude": 48.97201,
+      "longitude": 2.27745,
+      "name": {
+        "en": "monument aux morts du cimetière de Saint-Gratien",
+        "fr": "monument aux morts du cimetière de Saint-Gratien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "parcours de santé de Saint-Gratien is a distinctive architectural landmark in the city.",
+        "fr": "parcours de santé de Saint-Gratien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120254490",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-parcours-de-sante-de-saint-gratien-q120254490",
+      "latitude": 48.9757,
+      "longitude": 2.28031,
+      "name": {
+        "en": "parcours de santé de Saint-Gratien",
+        "fr": "parcours de santé de Saint-Gratien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q275384",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-saint-gratien-q275384",
+      "latitude": 48.971111111,
+      "longitude": 2.281944444,
+      "name": {
+        "en": "Saint-Gratien",
+        "fr": "Saint-Gratien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-use stadium in Sannois, France",
+        "fr": "stade Michel-Hidalgo est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3495767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-gratien-stade-michel-hidalgo-q3495767",
+      "latitude": 48.9747,
+      "longitude": 2.2755,
+      "name": {
+        "en": "stade Michel-Hidalgo",
+        "fr": "stade Michel-Hidalgo"
+      }
+    }
+  ]
+}

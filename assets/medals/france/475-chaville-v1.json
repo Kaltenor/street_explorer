@@ -1,0 +1,204 @@
+{
+  "id": "chaville-v1",
+  "cityId": "chaville-fr",
+  "cityZoneId": "relation/31339",
+  "cityName": {
+    "en": "Chaville",
+    "fr": "Chaville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108884779",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-ancien-eglise-notre-dame-de-chaville-q108884779",
+      "latitude": 48.803237,
+      "longitude": 2.188794,
+      "name": {
+        "en": "Ancien église Notre-Dame de Chaville",
+        "fr": "Ancien église Notre-Dame de Chaville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Chaville is an important witness to the city's history.",
+        "fr": "château français situé à Chaville"
+      },
+      "externalIdentity": {
+        "id": "Q2968905",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-chateau-de-chaville-q2968905",
+      "latitude": 48.8018887,
+      "longitude": 2.1867943,
+      "name": {
+        "en": "château de Chaville",
+        "fr": "château de Chaville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Chaville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2193360",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-chaville-rive-droite-q2193360",
+      "latitude": 48.8121,
+      "longitude": 2.18783,
+      "name": {
+        "en": "Chaville-Rive-Droite",
+        "fr": "Chaville-Rive-Droite"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Chaville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096214",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-chaville-rive-gauche-q3096214",
+      "latitude": 48.804754,
+      "longitude": 2.188535,
+      "name": {
+        "en": "Chaville-Rive-Gauche",
+        "fr": "Chaville-Rive-Gauche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83375990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-cimetiere-de-chaville-q83375990",
+      "latitude": 48.80458,
+      "longitude": 2.19135,
+      "name": {
+        "en": "cimetière de Chaville",
+        "fr": "cimetière de Chaville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38368832",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-eglise-apostolique-armenienne-saint-gregoire-l-illuminateur-de-chaville-q38368832",
+      "latitude": 48.809781,
+      "longitude": 2.185382,
+      "name": {
+        "en": "église apostolique arménienne Saint-Grégoire-l'Illuminateur de Chaville",
+        "fr": "église apostolique arménienne Saint-Grégoire-l'Illuminateur de Chaville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861581",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-eglise-sainte-bernadette-de-chaville-q29861581",
+      "latitude": 48.800977777,
+      "longitude": 2.188910555,
+      "name": {
+        "en": "église Sainte-Bernadette de Chaville",
+        "fr": "église Sainte-Bernadette de Chaville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Chaville, France",
+        "fr": "édifice de Chaville, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412728",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-hotel-de-ville-de-chaville-q83412728",
+      "latitude": 48.8099,
+      "longitude": 2.1882,
+      "name": {
+        "en": "hôtel de ville de Chaville",
+        "fr": "hôtel de ville de Chaville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Chaville, France",
+        "fr": "square de Chaville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116270524",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-square-de-l-eglise-q116270524",
+      "latitude": 48.80948752,
+      "longitude": 2.18961296,
+      "name": {
+        "en": "square de l'Église",
+        "fr": "square de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tunnel de Meudon is a distinctive architectural landmark in the city.",
+        "fr": "tunnel ferroviaire en France"
+      },
+      "externalIdentity": {
+        "id": "Q19945283",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chaville-tunnel-de-meudon-q19945283",
+      "latitude": 48.8013,
+      "longitude": 2.2213,
+      "name": {
+        "en": "tunnel de Meudon",
+        "fr": "tunnel de Meudon"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "carrieres-sous-poissy-v1",
+  "cityId": "carrieres-sous-poissy-fr",
+  "cityZoneId": "relation/911061",
+  "cityName": {
+    "en": "Carrières-sous-Poissy",
+    "fr": "Carrières-sous-Poissy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "A la mémoire de René et Robert Tissier is a distinctive architectural landmark in the city.",
+        "fr": "A la mémoire de René et Robert Tissier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q114238473",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-a-la-memoire-de-rene-et-robert-tissier-q114238473",
+      "latitude": 48.94436,
+      "longitude": 2.02135,
+      "name": {
+        "en": "A la mémoire de René et Robert Tissier",
+        "fr": "A la mémoire de René et Robert Tissier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q2845811",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-ancien-pont-de-poissy-q2845811",
+      "latitude": 48.93388889,
+      "longitude": 2.03694444,
+      "name": {
+        "en": "Ancien pont de Poissy",
+        "fr": "Ancien pont de Poissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1726747",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-canton-de-poissy-nord-q1726747",
+      "latitude": 48.94363525,
+      "longitude": 2.01983375,
+      "name": {
+        "en": "canton de Poissy-Nord",
+        "fr": "canton de Poissy-Nord"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q399815",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-carrieres-sous-poissy-q399815",
+      "latitude": 48.947777777,
+      "longitude": 2.038611111,
+      "name": {
+        "en": "Carrières-sous-Poissy",
+        "fr": "Carrières-sous-Poissy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Vanderbilt is an important witness to the city's history.",
+        "fr": "château français dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q30737962",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-chateau-vanderbilt-q30737962",
+      "latitude": 48.944315,
+      "longitude": 2.020503,
+      "name": {
+        "en": "château Vanderbilt",
+        "fr": "château Vanderbilt"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in Yvelines, France",
+        "fr": "île des Yvelines, France"
+      },
+      "externalIdentity": {
+        "id": "Q3593440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-ile-de-la-derivation-q3593440",
+      "latitude": 48.9555,
+      "longitude": 2.04731,
+      "name": {
+        "en": "île de la Dérivation",
+        "fr": "île de la Dérivation"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Carrières-sous-Poissy, France",
+        "fr": "parc du Peuple de l'herbe compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q48750187",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-parc-du-peuple-de-l-herbe-q48750187",
+      "latitude": 48.9357697,
+      "longitude": 2.0123493,
+      "name": {
+        "en": "parc du Peuple de l'herbe",
+        "fr": "parc du Peuple de l'herbe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre technique PSA de Carrières-sous-Poissy is a distinctive architectural landmark in the city.",
+        "fr": "centre technique PSA de Carrières-sous-Poissy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2946076",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-centre-technique-psa-de-carrieres-sous-poissy-q2946076",
+      "latitude": 48.9471,
+      "longitude": 2.04131,
+      "name": {
+        "en": "centre technique PSA de Carrières-sous-Poissy",
+        "fr": "centre technique PSA de Carrières-sous-Poissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38643666",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-eglise-saint-joseph-de-carrieres-sous-poissy-q38643666",
+      "latitude": 48.94837,
+      "longitude": 2.04071,
+      "name": {
+        "en": "église Saint-Joseph de Carrières-sous-Poissy",
+        "fr": "église Saint-Joseph de Carrières-sous-Poissy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "étang de la Galiotte is a distinctive architectural landmark in the city.",
+        "fr": "Étang à Carrières-sous-Poissy"
+      },
+      "externalIdentity": {
+        "id": "Q99553783",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carrieres-sous-poissy-etang-de-la-galiotte-q99553783",
+      "latitude": 48.933616,
+      "longitude": 2.026204,
+      "name": {
+        "en": "étang de la Galiotte",
+        "fr": "étang de la Galiotte"
+      }
+    }
+  ]
+}

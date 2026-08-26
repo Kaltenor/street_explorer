@@ -1,0 +1,394 @@
+{
+  "id": "villejuif-v1",
+  "cityId": "villejuif-fr",
+  "cityZoneId": "relation/105146",
+  "cityName": {
+    "en": "Villejuif",
+    "fr": "Villejuif"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "buste de Komitas is a distinctive architectural landmark in the city.",
+        "fr": "buste situé à Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21211821",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-buste-de-komitas-q21211821",
+      "latitude": 48.7900035,
+      "longitude": 2.3580647,
+      "name": {
+        "en": "buste de Komitas",
+        "fr": "buste de Komitas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Villejuif is an important witness to the city's history.",
+        "fr": "château situé à Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q78657067",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-chateau-de-villejuif-q78657067",
+      "latitude": 48.79455,
+      "longitude": 2.362023,
+      "name": {
+        "en": "château de Villejuif",
+        "fr": "château de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q81945547",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-cimetiere-du-pommier-de-bois-q81945547",
+      "latitude": 48.79551,
+      "longitude": 2.356,
+      "name": {
+        "en": "cimetière du Pommier de bois",
+        "fr": "cimetière du Pommier de bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French private engineering school",
+        "fr": "école d'ingénieurs privée française, établissement-composante de l'université Panthéon-Assas"
+      },
+      "externalIdentity": {
+        "id": "Q3578001",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-efrei-paris-q3578001",
+      "latitude": 48.78972222,
+      "longitude": 2.36388889,
+      "name": {
+        "en": "Efrei Paris",
+        "fr": "Efrei Paris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26719982",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-archange-michel-et-saint-georges-q26719982",
+      "latitude": 48.78966,
+      "longitude": 2.368191,
+      "name": {
+        "en": "église Archange Michel et Saint Georges",
+        "fr": "église Archange Michel et Saint Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-notre-dame-des-apotres-de-villejuif-q60385430",
+      "latitude": 48.78844,
+      "longitude": 2.37392,
+      "name": {
+        "en": "église Notre-Dame-des-Apôtres de Villejuif",
+        "fr": "église Notre-Dame-des-Apôtres de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église française située à Villejuif"
+      },
+      "externalIdentity": {
+        "id": "Q2366561",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-saint-cyr-sainte-julitte-de-villejuif-q2366561",
+      "latitude": 48.7922,
+      "longitude": 2.3636,
+      "name": {
+        "en": "église Saint-Cyr-Sainte-Julitte de Villejuif",
+        "fr": "église Saint-Cyr-Sainte-Julitte de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38510766",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-sainte-colombe-de-villejuif-q38510766",
+      "latitude": 48.78003,
+      "longitude": 2.3614,
+      "name": {
+        "en": "église Sainte-Colombe de Villejuif",
+        "fr": "église Sainte-Colombe de Villejuif"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Villejuif is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88485627",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-monument-aux-morts-de-villejuif-q88485627",
+      "latitude": 48.79201,
+      "longitude": 2.36334,
+      "name": {
+        "en": "monument aux morts de Villejuif",
+        "fr": "monument aux morts de Villejuif"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Villejuif, France",
+        "fr": "parc de Villejuif, France"
+      },
+      "externalIdentity": {
+        "id": "Q3364366",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-parc-departemental-des-hautes-bruyeres-q3364366",
+      "latitude": 48.7911,
+      "longitude": 2.34889,
+      "name": {
+        "en": "parc départemental des Hautes-Bruyères",
+        "fr": "parc départemental des Hautes-Bruyères"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument in Villejuif, France",
+        "fr": "monument de Villejuif, France"
+      },
+      "externalIdentity": {
+        "id": "Q3411268",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-pyramide-de-cassini-q3411268",
+      "latitude": 48.7984,
+      "longitude": 2.36614,
+      "name": {
+        "en": "pyramide de Cassini",
+        "fr": "pyramide de Cassini"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "réservoirs dits Les Flûtes is an important witness to the city's history.",
+        "fr": "ensemble de châteaux d'eau de Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q99005222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-reservoirs-dits-les-flutes-q99005222",
+      "latitude": 48.79555,
+      "longitude": 2.3514,
+      "name": {
+        "en": "réservoirs dits Les Flûtes",
+        "fr": "réservoirs dits Les Flûtes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21509605",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-eglise-sainte-therese-de-l-enfant-jesus-de-villejuif-q21509605",
+      "latitude": 48.802827,
+      "longitude": 2.361962,
+      "name": {
+        "en": "église Sainte-Thérèse-de-l'Enfant-Jésus de Villejuif",
+        "fr": "église Sainte-Thérèse-de-l'Enfant-Jésus de Villejuif"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in France",
+        "fr": "hôpital français situé à Villejuif"
+      },
+      "externalIdentity": {
+        "id": "Q586694",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-hopital-paul-brousse-q586694",
+      "latitude": 48.79583333,
+      "longitude": 2.36166667,
+      "name": {
+        "en": "hôpital Paul-Brousse",
+        "fr": "hôpital Paul-Brousse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "historic Monument in Villejuif, France",
+        "fr": "hôtel particulier à Villejuif (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q18214916",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-hotel-de-la-capitainerie-des-chasses-q18214916",
+      "latitude": 48.7921,
+      "longitude": 2.36662,
+      "name": {
+        "en": "hôtel de la Capitainerie des Chasses",
+        "fr": "hôtel de la Capitainerie des Chasses"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in France",
+        "fr": "hôpital spécialisé dans le traitement des cancers à Villejuif (France)"
+      },
+      "externalIdentity": {
+        "id": "Q266227",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-institut-gustave-roussy-q266227",
+      "latitude": 48.794694444,
+      "longitude": 2.348611111,
+      "name": {
+        "en": "Institut Gustave-Roussy",
+        "fr": "Institut Gustave-Roussy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French private engineering school",
+        "fr": "école d'ingénieurs privée française"
+      },
+      "externalIdentity": {
+        "id": "Q1822570",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-institut-superieur-des-biotechnologies-de-paris-q1822570",
+      "latitude": 48.797880277,
+      "longitude": 2.3572475,
+      "name": {
+        "en": "Institut supérieur des biotechnologies de Paris",
+        "fr": "Institut supérieur des biotechnologies de Paris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multidisciplinary research organisation, principally devoted to the study of cultures and languages of oral tradition",
+        "fr": "centre de recherche linguistique français (université Paris III, INALCO, CNRS)"
+      },
+      "externalIdentity": {
+        "id": "Q3217451",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-langues-et-civilisations-a-tradition-orale-q3217451",
+      "latitude": 48.796792194,
+      "longitude": 2.358406888,
+      "name": {
+        "en": "Langues et civilisations à tradition orale",
+        "fr": "Langues et civilisations à tradition orale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "passageway in Villejuif, France",
+        "fr": "passage de Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108938981",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-passage-dupont-q108938981",
+      "latitude": 48.787021125,
+      "longitude": 2.368219025,
+      "name": {
+        "en": "passage Dupont",
+        "fr": "passage Dupont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Villejuif, France",
+        "fr": "place de Villejuif, en France"
+      },
+      "externalIdentity": {
+        "id": "Q108938976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villejuif-place-de-l-eglise-q108938976",
+      "latitude": 48.792061066,
+      "longitude": 2.363935466,
+      "name": {
+        "en": "place de l'Église",
+        "fr": "place de l'Église"
+      }
+    }
+  ]
+}

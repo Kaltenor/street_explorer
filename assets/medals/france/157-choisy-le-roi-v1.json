@@ -1,0 +1,204 @@
+{
+  "id": "choisy-le-roi-v1",
+  "cityId": "choisy-le-roi-fr",
+  "cityZoneId": "relation/104268",
+  "cityName": {
+    "en": "Choisy-le-Roi",
+    "fr": "Choisy-le-Roi"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien Château royal, annexe de la mairie is an important witness to the city's history.",
+        "fr": "Ancien Château royal, annexe de la mairie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079868",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "choisy-le-roi-ancien-chateau-royal-annexe-de-la-mairie-pa00079868",
+      "latitude": 48.76292239322051,
+      "longitude": 2.4074326119376552,
+      "name": {
+        "en": "Ancien Château royal, annexe de la mairie",
+        "fr": "Ancien Château royal, annexe de la mairie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Val-de-Marne, in France",
+        "fr": "cathédrale située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q5104097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-cathedrale-saint-louis-et-saint-nicolas-de-choisy-le-roi-q5104097",
+      "latitude": 48.765833333,
+      "longitude": 2.4075,
+      "name": {
+        "en": "cathédrale Saint-Louis-et-Saint-Nicolas de Choisy-le-Roi",
+        "fr": "cathédrale Saint-Louis-et-Saint-Nicolas de Choisy-le-Roi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle",
+        "fr": "ancien château français"
+      },
+      "externalIdentity": {
+        "id": "Q45677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-chateau-de-choisy-le-roi-q45677",
+      "latitude": 48.762948,
+      "longitude": 2.408826,
+      "name": {
+        "en": "château de Choisy-le-Roi",
+        "fr": "château de Choisy-le-Roi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079867",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "choisy-le-roi-eglise-saint-louis-ancienne-pa00079867",
+      "latitude": 48.7657468595735,
+      "longitude": 2.40755015269493,
+      "name": {
+        "en": "Église Saint-Louis (ancienne)",
+        "fr": "Église Saint-Louis (ancienne)"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "La Fortune is a notable work of public art and local memory.",
+        "fr": "sculpture de Laure Coutan"
+      },
+      "externalIdentity": {
+        "id": "Q133659039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-la-fortune-q133659039",
+      "latitude": 48.762673212,
+      "longitude": 2.408749371,
+      "name": {
+        "en": "La Fortune",
+        "fr": "La Fortune"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de sports entre Créteil et Choisy-le-Roi"
+      },
+      "externalIdentity": {
+        "id": "Q3364385",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-parc-interdepartemental-des-sports-q3364385",
+      "latitude": 48.7682,
+      "longitude": 2.43012,
+      "name": {
+        "en": "parc interdépartemental des sports",
+        "fr": "parc interdépartemental des sports"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont sur la Seine à Choisy-le-Roi, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17636970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-pont-de-choisy-q17636970",
+      "latitude": 48.7664,
+      "longitude": 2.41226,
+      "name": {
+        "en": "pont de Choisy",
+        "fr": "pont de Choisy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Potier à son tour is a notable work of public art and local memory.",
+        "fr": "sculpture de Jean-Baptiste Hugues"
+      },
+      "externalIdentity": {
+        "id": "Q133659718",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-potier-a-son-tour-q133659718",
+      "latitude": 48.76339,
+      "longitude": 2.40942,
+      "name": {
+        "en": "Potier à son tour",
+        "fr": "Potier à son tour"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "viaduc de la darse d'Alfortville is an important witness to the city's history.",
+        "fr": "pont sur la Seine reliant Choisy-le-Roi et Vitry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17640445",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-viaduc-de-la-darse-d-alfortville-q17640445",
+      "latitude": 48.7758,
+      "longitude": 2.41358,
+      "name": {
+        "en": "viaduc de la darse d'Alfortville",
+        "fr": "viaduc de la darse d'Alfortville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Choisy-le-Roi, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2199518",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "choisy-le-roi-villeneuve-prairie-q2199518",
+      "latitude": 48.76528,
+      "longitude": 2.43361,
+      "name": {
+        "en": "Villeneuve-Prairie",
+        "fr": "Villeneuve-Prairie"
+      }
+    }
+  ]
+}

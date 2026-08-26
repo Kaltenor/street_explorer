@@ -1,0 +1,204 @@
+{
+  "id": "bagnolet-v1",
+  "cityId": "bagnolet-fr",
+  "cityZoneId": "relation/129550",
+  "cityName": {
+    "en": "Bagnolet",
+    "fr": "Bagnolet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Saint-Denis, in France",
+        "fr": "chapelle située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28827368",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-chapelle-saint-jacques-de-bagnolet-q28827368",
+      "latitude": 48.875353,
+      "longitude": 2.431301,
+      "name": {
+        "en": "chapelle Saint-Jacques de Bagnolet",
+        "fr": "chapelle Saint-Jacques de Bagnolet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bicycle-sharing station of Vélib’ Métropole network in Bagnolet",
+        "fr": "station de vélopartage du réseau Vélib' Métropole à Bagnolet"
+      },
+      "externalIdentity": {
+        "id": "Q86256657",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-chateau-republique-q86256657",
+      "latitude": 48.8629238,
+      "longitude": 2.415503561,
+      "name": {
+        "en": "Château - République",
+        "fr": "Château - République"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière à Bagnolet, France"
+      },
+      "externalIdentity": {
+        "id": "Q29946609",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-cimetiere-pasteur-q29946609",
+      "latitude": 48.877,
+      "longitude": 2.4251,
+      "name": {
+        "en": "cimetière Pasteur",
+        "fr": "cimetière Pasteur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24576575",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-eglise-notre-dame-de-pontmain-de-bagnolet-q24576575",
+      "latitude": 48.860174,
+      "longitude": 2.420064,
+      "name": {
+        "en": "église Notre-Dame-de-Pontmain de Bagnolet",
+        "fr": "église Notre-Dame-de-Pontmain de Bagnolet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Leu-Saint-Gilles is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Leu-Saint-Gilles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079929",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bagnolet-eglise-saint-leu-saint-gilles-pa00079929",
+      "latitude": 48.8703095358707,
+      "longitude": 2.4206928094468,
+      "name": {
+        "en": "Église Saint-Leu-Saint-Gilles",
+        "fr": "Église Saint-Leu-Saint-Gilles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Bagnolet, France",
+        "fr": "cinéma à Bagnolet, France"
+      },
+      "externalIdentity": {
+        "id": "Q61859638",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-le-cin-hoche-q61859638",
+      "latitude": 48.8693,
+      "longitude": 2.417128,
+      "name": {
+        "en": "Le Cin'Hoche",
+        "fr": "Le Cin'Hoche"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096119",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-monument-aux-morts-de-bagnolet-q136096119",
+      "latitude": 48.87473,
+      "longitude": 2.43131,
+      "name": {
+        "en": "monument aux morts de Bagnolet",
+        "fr": "monument aux morts de Bagnolet"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Jean-Moulin-Les Guilands is one of the city's notable green or natural landmarks.",
+        "fr": "espace vert à Bagnolet et à Montreuil, en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q24258376",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-parc-jean-moulin-les-guilands-q24258376",
+      "latitude": 48.8627,
+      "longitude": 2.4254,
+      "name": {
+        "en": "parc Jean-Moulin-Les Guilands",
+        "fr": "parc Jean-Moulin-Les Guilands"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Bagnolet, France",
+        "fr": "hôtel de ville de la Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q23783437",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-hotel-de-ville-de-bagnolet-q23783437",
+      "latitude": 48.8687,
+      "longitude": 2.4169,
+      "name": {
+        "en": "hôtel de ville de Bagnolet",
+        "fr": "hôtel de ville de Bagnolet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26074045",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagnolet-mosquee-de-bagnolet-q26074045",
+      "latitude": 48.87039,
+      "longitude": 2.414024,
+      "name": {
+        "en": "mosquée de Bagnolet",
+        "fr": "mosquée de Bagnolet"
+      }
+    }
+  ]
+}

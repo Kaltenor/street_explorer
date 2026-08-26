@@ -6,10 +6,48 @@
     "en": "Le Havre",
     "fr": "Le Havre"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château d'eau, dit aussi Rotonde de Graville is an important witness to the city's history.",
+        "fr": "Ancien château d'eau, dit aussi Rotonde de Graville est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-ancien-chateau-d-eau-dit-aussi-rotonde-de-graville-pa76000102",
+      "latitude": 49.5028381278874,
+      "longitude": 0.160411615109781,
+      "name": {
+        "en": "Ancien château d'eau, dit aussi Rotonde de Graville",
+        "fr": "Ancien château d'eau, dit aussi Rotonde de Graville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel des Ingénieurs des Tréfileries is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel des Ingénieurs des Tréfileries est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-ancien-hotel-des-ingenieurs-des-trefileries-pa76000037",
+      "latitude": 49.4901214923059,
+      "longitude": 0.154434106764697,
+      "name": {
+        "en": "Ancien Hôtel des Ingénieurs des Tréfileries",
+        "fr": "Ancien Hôtel des Ingénieurs des Tréfileries"
+      }
+    },
     {
       "category": "history",
       "description": {
@@ -27,6 +65,196 @@
       "name": {
         "en": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine",
         "fr": "Ancien prieuré de Graville ou ancienne abbaye de Sainte-Honorine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic cathedral in Le Havre, France",
+        "fr": "cathédrale située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942295",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-havre-cathedrale-notre-dame-du-havre-q2942295",
+      "latitude": 49.486944444,
+      "longitude": 0.108333333,
+      "name": {
+        "en": "cathédrale Notre-Dame du Havre",
+        "fr": "cathédrale Notre-Dame du Havre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Gadelles (également sur commune de Sainte-Adresse) is an important witness to the city's history.",
+        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-chateau-des-gadelles-egalement-sur-commune-de-sainte-adresse-pa76000029",
+      "latitude": 49.5012224469249,
+      "longitude": 0.0918592666586666,
+      "name": {
+        "en": "Château des Gadelles (également sur commune de Sainte-Adresse)",
+        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100696",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-eglise-notre-dame-pa00100696",
+      "latitude": 49.4870049805838,
+      "longitude": 0.108354351750091,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100697",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-eglise-saint-joseph-pa00100697",
+      "latitude": 49.4909750113494,
+      "longitude": 0.101233298328089,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Jeanne-d'Arc is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Jeanne-d'Arc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000075",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-eglise-sainte-jeanne-d-arc-pa76000075",
+      "latitude": 49.5055532032855,
+      "longitude": 0.11752905888496101,
+      "name": {
+        "en": "Église Sainte-Jeanne-d'Arc",
+        "fr": "Église Sainte-Jeanne-d'Arc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble immobilier ISAI, dénommé Ilot V40 et V41 is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble immobilier ISAI, dénommé Ilot V40 et V41 est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000104",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-ensemble-immobilier-isai-denomme-ilot-v40-et-v41-pa76000104",
+      "latitude": 49.4920759161769,
+      "longitude": 0.10629387833833201,
+      "name": {
+        "en": "Ensemble immobilier ISAI, dénommé Ilot V40 et V41",
+        "fr": "Ensemble immobilier ISAI, dénommé Ilot V40 et V41"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Brocques is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Brocques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100698",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-hotel-de-brocques-pa00100698",
+      "latitude": 49.4890625286453,
+      "longitude": 0.11173590141993102,
+      "name": {
+        "en": "Hôtel de Brocques",
+        "fr": "Hôtel de Brocques"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Immeuble (ancienne maison de l'Armateur, actuellement Musée de l'Armement naval) is one of the city's notable cultural landmarks.",
+        "fr": "Immeuble (ancienne maison de l'Armateur, actuellement Musée de l'Armement naval) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100713",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-immeuble-ancienne-maison-de-l-armateur-actuellement-musee-de-l-armement-naval-pa00100713",
+      "latitude": 49.4869382254862,
+      "longitude": 0.11282283050461801,
+      "name": {
+        "en": "Immeuble (ancienne maison de l'Armateur, actuellement Musée de l'Armement naval)",
+        "fr": "Immeuble (ancienne maison de l'Armateur, actuellement Musée de l'Armement naval)"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA76000120",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-monument-aux-morts-de-la-guerre-1914-1918-pa76000120",
+      "latitude": 49.49046657285152,
+      "longitude": 0.10810152516063214,
+      "name": {
+        "en": "Monument aux morts de la guerre 1914-1918",
+        "fr": "Monument aux morts de la guerre 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'ancien Havre is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'ancien Havre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0718",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-havre-musee-de-l-ancien-havre-m0718",
+      "latitude": 49.488805,
+      "longitude": 0.114474,
+      "name": {
+        "en": "musée de l'ancien Havre",
+        "fr": "musée de l'ancien Havre"
       }
     },
     {
@@ -70,20 +298,39 @@
     {
       "category": "culture",
       "description": {
-        "en": "musée de l'ancien Havre is one of the city's notable cultural landmarks.",
-        "fr": "musée de l'ancien Havre compte parmi les lieux culturels marquants de la ville."
+        "en": "musée Malraux is one of the city's notable cultural landmarks.",
+        "fr": "musée Malraux compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0718",
+        "id": "M0720",
         "source": "museofile",
         "type": "record"
       },
-      "id": "le-havre-musee-de-l-ancien-havre-m0718",
-      "latitude": 49.488805,
-      "longitude": 0.114474,
+      "id": "le-havre-musee-malraux-m0720",
+      "latitude": 49.484796,
+      "longitude": 0.102188,
       "name": {
-        "en": "musée de l'ancien Havre",
-        "fr": "musée de l'ancien Havre"
+        "en": "musée Malraux",
+        "fr": "musée Malraux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7015",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-havre-museum-d-histoire-naturelle-m7015",
+      "latitude": 49.487552,
+      "longitude": 0.108231,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
       }
     },
     {
@@ -108,6 +355,25 @@
     {
       "category": "architecture",
       "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100702",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-havre-immeuble-pa00100702",
+      "latitude": 49.4881064887494,
+      "longitude": 0.11490378339818298,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
         "en": "cable-stayed bridge",
         "fr": "pont français"
       },
@@ -122,44 +388,6 @@
       "name": {
         "en": "pont de Normandie",
         "fr": "pont de Normandie"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Roman Catholic cathedral in Le Havre, France",
-        "fr": "cathédrale située en Seine-Maritime, en France"
-      },
-      "externalIdentity": {
-        "id": "Q2942295",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "le-havre-cathedrale-notre-dame-du-havre-q2942295",
-      "latitude": 49.486944444,
-      "longitude": 0.108333333,
-      "name": {
-        "en": "cathédrale Notre-Dame du Havre",
-        "fr": "cathédrale Notre-Dame du Havre"
-      }
-    },
-    {
-      "category": "history",
-      "description": {
-        "en": "Château des Gadelles (également sur commune de Sainte-Adresse) is an important witness to the city's history.",
-        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse) est un témoin important de l’histoire de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA76000029",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "le-havre-chateau-des-gadelles-egalement-sur-commune-de-sainte-adresse-pa76000029",
-      "latitude": 49.5012224469249,
-      "longitude": 0.0918592666586666,
-      "name": {
-        "en": "Château des Gadelles (également sur commune de Sainte-Adresse)",
-        "fr": "Château des Gadelles (également sur commune de Sainte-Adresse)"
       }
     }
   ]

@@ -1,0 +1,204 @@
+{
+  "id": "vence-v1",
+  "cityId": "vence-fr",
+  "cityZoneId": "relation/78855",
+  "cityName": {
+    "en": "Vence",
+    "fr": "Vence"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale de la Nativité-de-Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale de la Nativité-de-Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080910",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-ancien-cathedrale-de-la-nativite-de-notre-dame-pa00080910",
+      "latitude": 43.7226870913464,
+      "longitude": 7.11390534905158,
+      "name": {
+        "en": "Ancien cathédrale de la Nativité-de-Notre-Dame",
+        "fr": "Ancien cathédrale de la Nativité-de-Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Calvaire is a distinctive architectural landmark in the city.",
+        "fr": "Calvaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080951",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-calvaire-pa00080951",
+      "latitude": 43.7219922251688,
+      "longitude": 7.10377604533271,
+      "name": {
+        "en": "Calvaire",
+        "fr": "Calvaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle des Pénitents Blancs is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle des Pénitents Blancs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080912",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-chapelle-des-penitents-blancs-pa00080912",
+      "latitude": 43.7231175889472,
+      "longitude": 7.109644293412071,
+      "name": {
+        "en": "Chapelle des Pénitents Blancs",
+        "fr": "Chapelle des Pénitents Blancs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Notre-Dame-du-Rosaire is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Notre-Dame-du-Rosaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080911",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-chapelle-notre-dame-du-rosaire-pa00080911",
+      "latitude": 43.7275098869262,
+      "longitude": 7.11286411158364,
+      "name": {
+        "en": "Chapelle Notre-Dame-du-Rosaire",
+        "fr": "Chapelle Notre-Dame-du-Rosaire"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de la Foux is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de la Foux compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080916",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-fontaine-de-la-foux-pa00080916",
+      "latitude": 43.721918088125,
+      "longitude": 7.11455824126261,
+      "name": {
+        "en": "Fontaine de la Foux",
+        "fr": "Fontaine de la Foux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine publique is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine publique compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080917",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-fontaine-publique-pa00080917",
+      "latitude": 43.7227707860565,
+      "longitude": 7.11264675244493,
+      "name": {
+        "en": "Fontaine publique",
+        "fr": "Fontaine publique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Sainte-Elisabeth is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Sainte-Elisabeth est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080913",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-chapelle-sainte-elisabeth-pa00080913",
+      "latitude": 43.7134550660244,
+      "longitude": 7.12672327544617,
+      "name": {
+        "en": "Chapelle Sainte-Elisabeth",
+        "fr": "Chapelle Sainte-Elisabeth"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Colonnes romaines is a distinctive architectural landmark in the city.",
+        "fr": "Colonnes romaines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080914",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-colonnes-romaines-pa00080914",
+      "latitude": 43.7227191196179,
+      "longitude": 7.114242586201,
+      "name": {
+        "en": "Colonnes romaines",
+        "fr": "Colonnes romaines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Commanderie de Saint-Martin (restes de l'ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Commanderie de Saint-Martin (restes de l'ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080915",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-commanderie-de-saint-martin-restes-de-l-ancienne-pa00080915",
+      "latitude": 43.7310219467632,
+      "longitude": 7.10681960096689,
+      "name": {
+        "en": "Commanderie de Saint-Martin (restes de l'ancienne)",
+        "fr": "Commanderie de Saint-Martin (restes de l'ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ecole Freinet is a distinctive architectural landmark in the city.",
+        "fr": "Ecole Freinet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vence-ecole-freinet-pa06000017",
+      "latitude": 43.7257204566267,
+      "longitude": 7.13400393311954,
+      "name": {
+        "en": "Ecole Freinet",
+        "fr": "Ecole Freinet"
+      }
+    }
+  ]
+}

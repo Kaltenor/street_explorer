@@ -1,0 +1,204 @@
+{
+  "id": "coueron-v1",
+  "cityId": "coueron-fr",
+  "cityZoneId": "relation/77288",
+  "cityName": {
+    "en": "Couëron",
+    "fr": "Couëron"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60365582",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-chapelle-saint-blaise-de-saint-blaise-q60365582",
+      "latitude": 47.2517,
+      "longitude": -1.70686,
+      "name": {
+        "en": "chapelle Saint-Blaise de Saint-Blaise",
+        "fr": "chapelle Saint-Blaise de Saint-Blaise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Loire-Atlantique, France",
+        "fr": "commune française du département de la Loire-Atlantique"
+      },
+      "externalIdentity": {
+        "id": "Q631274",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-coueron-q631274",
+      "latitude": 47.214722222,
+      "longitude": -1.723888888,
+      "name": {
+        "en": "Couëron",
+        "fr": "Couëron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38369134",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-eglise-catholique-polonaise-notre-dame-de-misericorde-de-coueron-q38369134",
+      "latitude": 47.21098,
+      "longitude": -1.71344,
+      "name": {
+        "en": "église catholique polonaise Notre-Dame-de-Miséricorde de Couëron",
+        "fr": "église catholique polonaise Notre-Dame-de-Miséricorde de Couëron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-eglise-saint-symphorien-de-coueron-q60392502",
+      "latitude": 47.21011,
+      "longitude": -1.72888,
+      "name": {
+        "en": "église Saint-Symphorien de Couëron",
+        "fr": "église Saint-Symphorien de Couëron"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "île du Grand Pineau is one of the city's notable green or natural landmarks.",
+        "fr": "île fluviale de la Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109039305",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-ile-du-grand-pineau-q109039305",
+      "latitude": 47.2255,
+      "longitude": -1.81592,
+      "name": {
+        "en": "île du Grand Pineau",
+        "fr": "île du Grand Pineau"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "île Thérèse is one of the city's notable green or natural landmarks.",
+        "fr": "île Thérèse compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q109039314",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-ile-therese-q109039314",
+      "latitude": 47.211666666,
+      "longitude": -1.769444444,
+      "name": {
+        "en": "île Thérèse",
+        "fr": "île Thérèse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour à plomb is an important witness to the city's history.",
+        "fr": "Tour à plomb est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108596",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "coueron-tour-a-plomb-pa00108596",
+      "latitude": 47.2092746638311,
+      "longitude": -1.7200336837499903,
+      "name": {
+        "en": "Tour à plomb",
+        "fr": "Tour à plomb"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Gerbetière is a distinctive architectural landmark in the city.",
+        "fr": "maison en France"
+      },
+      "externalIdentity": {
+        "id": "Q35535938",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-la-gerbetiere-q35535938",
+      "latitude": 47.212408,
+      "longitude": -1.746249,
+      "name": {
+        "en": "La Gerbetière",
+        "fr": "La Gerbetière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Loire-Atlantique department, France",
+        "fr": "siège municipal de Couëron, en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119307338",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-mairie-de-coueron-q119307338",
+      "latitude": 47.211839529,
+      "longitude": -1.727615086,
+      "name": {
+        "en": "mairie de Couëron",
+        "fr": "mairie de Couëron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "series of giant floating sculptures of rubber ducks by Florentijn Hofman",
+        "fr": "installation inaugurée lors d'Estuaire 2007"
+      },
+      "externalIdentity": {
+        "id": "Q2936151",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "coueron-rubber-duck-q2936151",
+      "latitude": 47.2086861,
+      "longitude": -1.7289111,
+      "name": {
+        "en": "Rubber Duck",
+        "fr": "Rubber Duck"
+      }
+    }
+  ]
+}

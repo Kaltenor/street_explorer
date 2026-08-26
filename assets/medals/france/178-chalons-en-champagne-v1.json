@@ -1,0 +1,204 @@
+{
+  "id": "chalons-en-champagne-v1",
+  "cityId": "chalons-en-champagne-fr",
+  "cityZoneId": "relation/417365",
+  "cityName": {
+    "en": "Châlons-en-Champagne",
+    "fr": "Châlons-en-Champagne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Toussaint, ancienne école normale d'instituteurs is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Toussaint, ancienne école normale d'instituteurs est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078617",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-ancien-abbaye-de-toussaint-ancienne-ecole-normale-d-instituteurs-pa00078617",
+      "latitude": 48.9585262052597,
+      "longitude": 4.36030614899281,
+      "name": {
+        "en": "Ancien abbaye de Toussaint, ancienne école normale d'instituteurs",
+        "fr": "Ancien abbaye de Toussaint, ancienne école normale d'instituteurs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastion d'Aumale is an important witness to the city's history.",
+        "fr": "Bastion d'Aumale est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078608",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-bastion-d-aumale-pa00078608",
+      "latitude": 48.956787653265,
+      "longitude": 4.37619013799013,
+      "name": {
+        "en": "Bastion d'Aumale",
+        "fr": "Bastion d'Aumale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078610",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-cathedrale-saint-etienne-pa00078610",
+      "latitude": 48.9550559520064,
+      "longitude": 4.35755995870278,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Jacquesson is an important witness to the city's history.",
+        "fr": "Château Jacquesson est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078611",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-chateau-jacquesson-pa00078611",
+      "latitude": 48.9545002510968,
+      "longitude": 4.34230124927093,
+      "name": {
+        "en": "Château Jacquesson",
+        "fr": "Château Jacquesson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-en-Vaux et son cloître is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-en-Vaux et son cloître est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078618",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-eglise-notre-dame-en-vaux-et-son-cloitre-pa00078618",
+      "latitude": 48.9576393181637,
+      "longitude": 4.36360286507991,
+      "name": {
+        "en": "Église Notre-Dame-en-Vaux et son cloître",
+        "fr": "Église Notre-Dame-en-Vaux et son cloître"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Alpin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Alpin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078619",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-eglise-saint-alpin-pa00078619",
+      "latitude": 48.9562200775159,
+      "longitude": 4.36225589340861,
+      "name": {
+        "en": "Église Saint-Alpin",
+        "fr": "Église Saint-Alpin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078623",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-hotel-de-ville-pa00078623",
+      "latitude": 48.9567742129893,
+      "longitude": 4.36298540576767,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du cloître de Notre-Dame-en-Vaux is one of the city's notable cultural landmarks.",
+        "fr": "musée du cloître de Notre-Dame-en-Vaux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1178",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-musee-du-cloitre-de-notre-dame-en-vaux-m1178",
+      "latitude": 48.956391,
+      "longitude": 4.364203,
+      "name": {
+        "en": "musée du cloître de Notre-Dame-en-Vaux",
+        "fr": "musée du cloître de Notre-Dame-en-Vaux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Garinet is one of the city's notable cultural landmarks.",
+        "fr": "musée Garinet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0308",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-musee-garinet-m0308",
+      "latitude": 48.955859,
+      "longitude": 4.366501,
+      "name": {
+        "en": "musée Garinet",
+        "fr": "musée Garinet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Sainte-Croix is an important witness to the city's history.",
+        "fr": "Porte Sainte-Croix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078651",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chalons-en-champagne-porte-sainte-croix-pa00078651",
+      "latitude": 48.9518270680422,
+      "longitude": 4.36814876056218,
+      "name": {
+        "en": "Porte Sainte-Croix",
+        "fr": "Porte Sainte-Croix"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "le-grand-quevilly-v1",
+  "cityId": "le-grand-quevilly-fr",
+  "cityZoneId": "relation/102145",
+  "cityName": {
+    "en": "Le Grand-Quevilly",
+    "fr": "Le Grand-Quevilly"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Maritime, in France",
+        "fr": "cimetière situé en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21619059",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-cimetiere-saint-sever-q21619059",
+      "latitude": 49.4105,
+      "longitude": 1.0666,
+      "name": {
+        "en": "cimetière Saint-Sever",
+        "fr": "cimetière Saint-Sever"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église française située au Grand-Quevilly"
+      },
+      "externalIdentity": {
+        "id": "Q3584187",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-eglise-saint-pierre-du-grand-quevilly-q3584187",
+      "latitude": 49.4161,
+      "longitude": 1.03605,
+      "name": {
+        "en": "église Saint-Pierre du Grand-Quevilly",
+        "fr": "église Saint-Pierre du Grand-Quevilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100683",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-grand-quevilly-eglise-saint-pierre-pa00100683",
+      "latitude": 49.4161163999785,
+      "longitude": 1.03609159861,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38507238",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-eglise-sainte-bernadette-du-grand-quevilly-q38507238",
+      "latitude": 49.411333,
+      "longitude": 1.05977,
+      "name": {
+        "en": "église Sainte-Bernadette du Grand-Quevilly",
+        "fr": "église Sainte-Bernadette du Grand-Quevilly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc des expositions de Rouen is one of the city's notable green or natural landmarks.",
+        "fr": "parc des expositions de Rouen compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3364310",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-parc-des-expositions-de-rouen-q3364310",
+      "latitude": 49.39323,
+      "longitude": 1.05681,
+      "name": {
+        "en": "parc des expositions de Rouen",
+        "fr": "parc des expositions de Rouen"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater founded in 1972, become in 2014 \"Centre Dramatique National de Haute-Normandie\"",
+        "fr": "théâtre fondé en 1972, installé au Centre Marx-Dormoy de Grand-Quevilly (1972-1984), puis à Rouen en 1984, devenu Centre de création dramatique de Haute-Normandie en 1985, a fusionné en 2014 avec la Scène nationale de Petit-Quevilly"
+      },
+      "externalIdentity": {
+        "id": "Q3527733",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-theatre-des-deux-rives-q3527733",
+      "latitude": 49.4467,
+      "longitude": 1.1005,
+      "name": {
+        "en": "théâtre des Deux Rives",
+        "fr": "théâtre des Deux Rives"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Georges-Braque is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Rouen"
+      },
+      "externalIdentity": {
+        "id": "Q109612272",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-georges-braque-q109612272",
+      "latitude": 49.4005295,
+      "longitude": 1.04232095,
+      "name": {
+        "en": "Georges-Braque",
+        "fr": "Georges-Braque"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-Maritime department, France",
+        "fr": "siège municipal du Grand-Quevilly, en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119341785",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-mairie-du-grand-quevilly-q119341785",
+      "latitude": 49.406592223,
+      "longitude": 1.052542636,
+      "name": {
+        "en": "mairie du Grand-Quevilly",
+        "fr": "mairie du Grand-Quevilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de contremaître de la société A. André Fils, dite maison Perret is a distinctive architectural landmark in the city.",
+        "fr": "Maison de contremaître de la société A. André Fils, dite maison Perret est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-grand-quevilly-maison-de-contremaitre-de-la-societe-a-andre-fils-dite-maison-perret-pa76000015",
+      "latitude": 49.4273580440435,
+      "longitude": 1.03086798017429,
+      "name": {
+        "en": "Maison de contremaître de la société A. André Fils, dite maison Perret",
+        "fr": "Maison de contremaître de la société A. André Fils, dite maison Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Zénith de Rouen is a distinctive architectural landmark in the city.",
+        "fr": "salle de spectacle française, située au Grand-Quevilly"
+      },
+      "externalIdentity": {
+        "id": "Q3576487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-grand-quevilly-zenith-de-rouen-q3576487",
+      "latitude": 49.39474,
+      "longitude": 1.05788,
+      "name": {
+        "en": "Zénith de Rouen",
+        "fr": "Zénith de Rouen"
+      }
+    }
+  ]
+}

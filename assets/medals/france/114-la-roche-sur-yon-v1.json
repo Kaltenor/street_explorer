@@ -1,0 +1,204 @@
+{
+  "id": "la-roche-sur-yon-v1",
+  "cityId": "la-roche-sur-yon-fr",
+  "cityZoneId": "relation/166641",
+  "cityName": {
+    "en": "La Roche-sur-Yon",
+    "fr": "La Roche-sur-Yon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye des Fontenelles (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye des Fontenelles (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110211",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-roche-sur-yon-abbaye-des-fontenelles-ancienne-pa00110211",
+      "latitude": 46.6643802643414,
+      "longitude": -1.48643331873612,
+      "name": {
+        "en": "Abbaye des Fontenelles (ancienne)",
+        "fr": "Abbaye des Fontenelles (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Vendée, in France",
+        "fr": "abbaye située dans la Vendée, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2820782",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-roche-sur-yon-abbaye-notre-dame-des-fontenelles-q2820782",
+      "latitude": 46.664279419,
+      "longitude": -1.486544837,
+      "name": {
+        "en": "abbaye Notre-Dame des Fontenelles",
+        "fr": "abbaye Notre-Dame des Fontenelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in France",
+        "fr": "aéroport en France"
+      },
+      "externalIdentity": {
+        "id": "Q2875500",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-roche-sur-yon-aerodrome-de-la-roche-sur-yon-les-ajoncs-q2875500",
+      "latitude": 46.7025,
+      "longitude": -1.38167,
+      "name": {
+        "en": "aérodrome de La Roche-sur-Yon - Les Ajoncs",
+        "fr": "aérodrome de La Roche-sur-Yon - Les Ajoncs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110212",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-roche-sur-yon-eglise-saint-louis-pa00110212",
+      "latitude": 46.6707272600031,
+      "longitude": -1.4248872838759,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Roche-sur-Yon, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2481560",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-roche-sur-yon-la-roche-sur-yon-q2481560",
+      "latitude": 46.672601,
+      "longitude": -1.435604,
+      "name": {
+        "en": "La Roche-sur-Yon",
+        "fr": "La Roche-sur-Yon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in La Roche-sur-Yon, France",
+        "fr": "musée de La Roche-sur-Yon, France"
+      },
+      "externalIdentity": {
+        "id": "Q15818370",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-roche-sur-yon-musee-municipal-de-la-roche-sur-yon-q15818370",
+      "latitude": 46.6698,
+      "longitude": -1.42882,
+      "name": {
+        "en": "musée municipal de La Roche-sur-Yon",
+        "fr": "musée municipal de La Roche-sur-Yon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0776",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "la-roche-sur-yon-musee-municipal-m0776",
+      "latitude": 46.669265,
+      "longitude": -1.428828,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110214",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-roche-sur-yon-palais-de-justice-ancien-pa00110214",
+      "latitude": 46.6705897692149,
+      "longitude": -1.42806749307072,
+      "name": {
+        "en": "Palais de Justice (ancien)",
+        "fr": "Palais de Justice (ancien)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in La Roche-sur-Yon, France",
+        "fr": "théâtre à La Roche-sur-Yon (Vendée)"
+      },
+      "externalIdentity": {
+        "id": "Q15953360",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-roche-sur-yon-theatre-a-l-italienne-de-la-roche-sur-yon-q15953360",
+      "latitude": 46.671,
+      "longitude": -1.42956,
+      "name": {
+        "en": "théâtre à l'italienne de La Roche-sur-Yon",
+        "fr": "théâtre à l'italienne de La Roche-sur-Yon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110217",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-roche-sur-yon-theatre-pa00110217",
+      "latitude": 46.6710271722836,
+      "longitude": -1.42964003355755,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    }
+  ]
+}

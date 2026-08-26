@@ -1,0 +1,204 @@
+{
+  "id": "saint-cloud-v1",
+  "cityId": "saint-cloud-fr",
+  "cityZoneId": "relation/72148",
+  "cityName": {
+    "en": "Saint-Cloud",
+    "fr": "Saint-Cloud"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Saint-Cloud is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Saint-Cloud est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088141",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-domaine-de-saint-cloud-pa00088141",
+      "latitude": 48.833683657536,
+      "longitude": 2.18500075431626,
+      "name": {
+        "en": "Domaine de Saint-Cloud",
+        "fr": "Domaine de Saint-Cloud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Écuries Malaquais et dépendances is a distinctive architectural landmark in the city.",
+        "fr": "Écuries Malaquais et dépendances est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000174",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-ecuries-malaquais-et-dependances-pa92000174",
+      "latitude": 48.839905,
+      "longitude": 2.218923,
+      "name": {
+        "en": "Écuries Malaquais et dépendances",
+        "fr": "Écuries Malaquais et dépendances"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Centre ou Saint-Clodoald is a distinctive architectural landmark in the city.",
+        "fr": "Église du Centre ou Saint-Clodoald est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135376",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-eglise-du-centre-ou-saint-clodoald-pa00135376",
+      "latitude": 48.8434217410813,
+      "longitude": 2.21923182840659,
+      "name": {
+        "en": "Église du Centre ou Saint-Clodoald",
+        "fr": "Église du Centre ou Saint-Clodoald"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôpital de la Reine (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôpital de la Reine (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088143",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-hopital-de-la-reine-ancien-pa00088143",
+      "latitude": 48.8439727237457,
+      "longitude": 2.21817015071908,
+      "name": {
+        "en": "Hôpital de la Reine (ancien)",
+        "fr": "Hôpital de la Reine (ancien)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin des métiers d'Art et du Design is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin des métiers d'Art et du Design compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000175",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-jardin-des-metiers-d-art-et-du-design-pa92000175",
+      "latitude": 48.827308,
+      "longitude": 2.220223,
+      "name": {
+        "en": "Jardin des métiers d'Art et du Design",
+        "fr": "Jardin des métiers d'Art et du Design"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-jardin-pa92000017",
+      "latitude": 48.843981863762,
+      "longitude": 2.21644336391201,
+      "name": {
+        "en": "Jardin",
+        "fr": "Jardin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Avelines - musée d'art et d'histoire de Saint-Cloud is one of the city's notable cultural landmarks.",
+        "fr": "musée des Avelines - musée d'art et d'histoire de Saint-Cloud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0416",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-cloud-musee-des-avelines-musee-d-art-et-d-histoire-de-saint-cloud-m0416",
+      "latitude": 48.842497,
+      "longitude": 2.208286,
+      "name": {
+        "en": "musée des Avelines - musée d'art et d'histoire de Saint-Cloud",
+        "fr": "musée des Avelines - musée d'art et d'histoire de Saint-Cloud"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Grand Siècle is one of the city's notable cultural landmarks.",
+        "fr": "musée du Grand Siècle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1219",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-cloud-musee-du-grand-siecle-m1219",
+      "latitude": 48.77631794031052,
+      "longitude": 2.2958380822382782,
+      "name": {
+        "en": "musée du Grand Siècle",
+        "fr": "musée du Grand Siècle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088144",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-hotel-pa00088144",
+      "latitude": 48.84096524127,
+      "longitude": 2.21846039259592,
+      "name": {
+        "en": "Hôtel",
+        "fr": "Hôtel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000163",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cloud-maison-pa92000163",
+      "latitude": 48.8459181122644,
+      "longitude": 2.22138266161436,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

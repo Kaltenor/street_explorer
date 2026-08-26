@@ -1,0 +1,204 @@
+{
+  "id": "cholet-v1",
+  "cityId": "cholet-fr",
+  "cityZoneId": "relation/286516",
+  "cityName": {
+    "en": "Cholet",
+    "fr": "Cholet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Cholet, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096229",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cholet-cholet-q3096229",
+      "latitude": 47.065975,
+      "longitude": -0.86979,
+      "name": {
+        "en": "Cholet",
+        "fr": "Cholet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Coeur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Coeur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109417",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cholet-eglise-du-sacre-coeur-pa00109417",
+      "latitude": 47.0667809686861,
+      "longitude": -0.887165239325705,
+      "name": {
+        "en": "Église du Sacré-Coeur",
+        "fr": "Église du Sacré-Coeur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cholet-eglise-notre-dame-pa49000020",
+      "latitude": 47.0610411429004,
+      "longitude": -0.880944956174748,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Cholet, France",
+        "fr": "Jardin du Mail compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q97366987",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cholet-jardin-du-mail-q97366987",
+      "latitude": 47.059057,
+      "longitude": -0.881218,
+      "name": {
+        "en": "Jardin du Mail",
+        "fr": "Jardin du Mail"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Cholet, France",
+        "fr": "musée de Cholet, France"
+      },
+      "externalIdentity": {
+        "id": "Q3329613",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cholet-musee-d-art-et-d-histoire-de-cholet-q3329613",
+      "latitude": 47.0581,
+      "longitude": -0.880755,
+      "name": {
+        "en": "musée d'Art et d'Histoire de Cholet",
+        "fr": "musée d'Art et d'Histoire de Cholet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts et d'histoire et des guerres de Vendée is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts et d'histoire et des guerres de Vendée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0754",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cholet-musee-des-arts-et-d-histoire-et-des-guerres-de-vendee-m0754",
+      "latitude": 47.058385,
+      "longitude": -0.882284,
+      "name": {
+        "en": "musée des arts et d'histoire et des guerres de Vendée",
+        "fr": "musée des arts et d'histoire et des guerres de Vendée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du textile is one of the city's notable cultural landmarks.",
+        "fr": "musée du textile compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0756",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cholet-musee-du-textile-m0756",
+      "latitude": 47.069473,
+      "longitude": -0.897677,
+      "name": {
+        "en": "musée du textile",
+        "fr": "musée du textile"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "architectural structure",
+        "fr": "salle de la Meilleraie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q1164904",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cholet-salle-de-la-meilleraie-q1164904",
+      "latitude": 47.05794444,
+      "longitude": -0.89637222,
+      "name": {
+        "en": "salle de la Meilleraie",
+        "fr": "salle de la Meilleraie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "former theatre, converted to a hotel and bookstore, in Cholet, France",
+        "fr": "théâtre municipal de Cholet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q63352348",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cholet-theatre-municipal-de-cholet-q63352348",
+      "latitude": 47.0617,
+      "longitude": -0.88071,
+      "name": {
+        "en": "théâtre municipal de Cholet",
+        "fr": "théâtre municipal de Cholet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour dite du Grenier à sel is an important witness to the city's history.",
+        "fr": "Tour dite du Grenier à sel est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109054",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cholet-tour-dite-du-grenier-a-sel-pa00109054",
+      "latitude": 47.0604864115781,
+      "longitude": -0.880735741084388,
+      "name": {
+        "en": "Tour dite du Grenier à sel",
+        "fr": "Tour dite du Grenier à sel"
+      }
+    }
+  ]
+}

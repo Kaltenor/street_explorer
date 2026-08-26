@@ -1,0 +1,204 @@
+{
+  "id": "blagnac-v1",
+  "cityId": "blagnac-fr",
+  "cityZoneId": "relation/34917",
+  "cityName": {
+    "en": "Blagnac",
+    "fr": "Blagnac"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Toulouse, France",
+        "fr": "aéroport desservant Toulouse (Haute-Garonne, Occitanie, France)"
+      },
+      "externalIdentity": {
+        "id": "Q372615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-aeroport-de-toulouse-blagnac-q372615",
+      "latitude": 43.635,
+      "longitude": 1.367780555,
+      "name": {
+        "en": "aéroport de Toulouse-Blagnac",
+        "fr": "aéroport de Toulouse-Blagnac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tram station in Blagnac, France",
+        "fr": "station de tramway de Toulouse"
+      },
+      "externalIdentity": {
+        "id": "Q66715750",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-aeroport-q66715750",
+      "latitude": 43.631,
+      "longitude": 1.3746,
+      "name": {
+        "en": "Aéroport",
+        "fr": "Aéroport"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "aeronautics museum",
+        "fr": "musée aéronautique"
+      },
+      "externalIdentity": {
+        "id": "Q15714017",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-aeroscopia-q15714017",
+      "latitude": 43.6599,
+      "longitude": 1.36053,
+      "name": {
+        "en": "Aeroscopia",
+        "fr": "Aeroscopia"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "conservatory of French aeronautical cultural heritage",
+        "fr": "conservatoire du patrimoine culturel aéronautique français"
+      },
+      "externalIdentity": {
+        "id": "Q105659527",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-aerotheque-q105659527",
+      "latitude": 43.65757,
+      "longitude": 1.358591111,
+      "name": {
+        "en": "Aérothèque",
+        "fr": "Aérothèque"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "association for the preservation and development of aeronautical and space history",
+        "fr": "association de préservation et de mise en valeur du matériel aéronautique et spatial"
+      },
+      "externalIdentity": {
+        "id": "Q130246608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-ailes-anciennes-toulouse-q130246608",
+      "latitude": 43.6575,
+      "longitude": 1.359444444,
+      "name": {
+        "en": "Ailes Anciennes Toulouse",
+        "fr": "Ailes Anciennes Toulouse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Couvent Sainte-Catherine de Sienne is a distinctive architectural landmark in the city.",
+        "fr": "Couvent Sainte-Catherine de Sienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA31000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blagnac-couvent-sainte-catherine-de-sienne-pa31000046",
+      "latitude": 43.6301213338961,
+      "longitude": 1.39951628097578,
+      "name": {
+        "en": "Couvent Sainte-Catherine de Sienne",
+        "fr": "Couvent Sainte-Catherine de Sienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094291",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blagnac-eglise-saint-pierre-pa00094291",
+      "latitude": 43.6341772714405,
+      "longitude": 1.39932699369826,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Haute-Garonne, in France",
+        "fr": "abbaye à Blagnac"
+      },
+      "externalIdentity": {
+        "id": "Q2820536",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-monastere-de-blagnac-q2820536",
+      "latitude": 43.630159,
+      "longitude": 1.399162,
+      "name": {
+        "en": "monastère de Blagnac",
+        "fr": "monastère de Blagnac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tram station in Blagnac, France",
+        "fr": "station de tramway de Toulouse"
+      },
+      "externalIdentity": {
+        "id": "Q98400131",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "blagnac-odyssud-ritouret-q98400131",
+      "latitude": 43.636244,
+      "longitude": 1.385326,
+      "name": {
+        "en": "Odyssud-Ritouret",
+        "fr": "Odyssud-Ritouret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont sur le Touch is a distinctive architectural landmark in the city.",
+        "fr": "Pont sur le Touch est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094293",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "blagnac-pont-sur-le-touch-pa00094293",
+      "latitude": 43.6208771078031,
+      "longitude": 1.39682993701811,
+      "name": {
+        "en": "Pont sur le Touch",
+        "fr": "Pont sur le Touch"
+      }
+    }
+  ]
+}

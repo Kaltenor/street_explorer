@@ -101,6 +101,10 @@ const atlasSource = readFileSync(new URL("../src/components/AtlasCabinet.tsx", i
 const completionSource = readFileSync(new URL("../src/components/CompletionModal.tsx", import.meta.url), "utf8");
 const historySource = readFileSync(new URL("../src/components/WalkHistoryModal.tsx", import.meta.url), "utf8");
 const summarySource = readFileSync(new URL("../src/screens/MapScreen.tsx", import.meta.url), "utf8");
+const stopConfirmationSource = summarySource.slice(
+  summarySource.indexOf("const STOP_CONFIRM_HOLD_MS"),
+  summarySource.indexOf("function RecordingSummaryModal")
+);
 const medalCollectionSource = readFileSync(new URL("../src/components/MedalCollectionModal.tsx", import.meta.url), "utf8");
 const expeditionSource = readFileSync(new URL("../src/components/DistrictExpeditionModal.tsx", import.meta.url), "utf8");
 const themeSource = readFileSync(new URL("../src/constants/theme.ts", import.meta.url), "utf8");
@@ -146,6 +150,13 @@ assert.match(atlasSource, /pointsAwarded/);
 assert.match(atlasSource, /DAYLIGHT_STAMP_GOLD_FACE_STYLE/);
 assert.match(atlasSource, /DAYLIGHT_STAMP_PARCHMENT_FACE_STYLE/);
 assert.match(summarySource, /calculateExplorerScore/);
+assert.match(stopConfirmationSource, /completionTimerRef\.current = setTimeout\(confirmQuit, STOP_CONFIRM_HOLD_MS\)/);
+assert.match(stopConfirmationSource, /Date\.now\(\) - startedAt >= STOP_CONFIRM_HOLD_MS/);
+assert.match(stopConfirmationSource, /pressRetentionOffset=\{\{ bottom: 32, left: 32, right: 32, top: 32 \}\}/);
+assert.match(stopConfirmationSource, /void playImpactHaptic\(\)/);
+assert.doesNotMatch(stopConfirmationSource, /onLongPress=/);
+assert.match(summarySource, /stopConfirmQuit: \{[\s\S]*backgroundColor: "#260d13"[\s\S]*borderColor: "#fca5a5"/);
+assert.match(summarySource, /stopConfirmQuitFill: \{[\s\S]*backgroundColor: "#ef4444"[\s\S]*borderRightColor: "#fff7ed"/);
 
 assert.match(mapSource, /WALKING_COLORS\.activeRoute/);
 assert.match(mapSource, /WALKING_COLORS\.selectedRoute/);
@@ -408,6 +419,8 @@ assert.match(atlasSource, /if \(!message \|\| !artworkReady\) return/);
 assert.match(atlasSource, /onLoad=\{\(\) => setLoadedArtworkMessageId\(message\.id\)\}/);
 assert.match(atlasSource, /opacity: artworkReady/);
 assert.match(atlasSource, /playAtlasSound\(message\.sound \?\? "ink"\)/);
+assert.match(atlasSource, /ATLAS_STAMP_MAX_VISIBLE_MS = 4_000/);
+assert.match(atlasSource, /setTimeout\(onDismiss, ATLAS_STAMP_MAX_VISIBLE_MS\)/);
 assert.match(summarySource, /title: language === "fr" \? "ZONE ENCLOSE" : "AREA ENCLOSED"/);
 assert.match(summarySource, /sound: "reward"/);
 assert.ok(summarySource.match(/presentation: "map-selection"/g)?.length >= 3);

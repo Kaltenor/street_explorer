@@ -75,6 +75,38 @@ export function collectConfirmedLiveExploredCellIds(
   return [...exploredCellIds];
 }
 
+export function calculateTrustedGpsDistanceMeters(
+  points: readonly GpsPoint[],
+  activityMode: ActivityMode
+) {
+  let distanceMeters = 0;
+
+  for (let pointIndex = 1; pointIndex < points.length; pointIndex += 1) {
+    const previousPoint = points[pointIndex - 1];
+    const point = points[pointIndex];
+
+    if (previousPoint && point) {
+      distanceMeters += getTrustedGpsDistanceIncrementMeters(
+        previousPoint,
+        point,
+        activityMode
+      );
+    }
+  }
+
+  return distanceMeters;
+}
+
+export function getTrustedGpsDistanceIncrementMeters(
+  previousPoint: GpsPoint,
+  point: GpsPoint,
+  activityMode: ActivityMode
+) {
+  return isConfirmedLiveRouteStep(previousPoint, point, activityMode)
+    ? haversineDistanceMeters(previousPoint, point)
+    : 0;
+}
+
 export function appendGpsPoint(
   activeWalk: ActiveWalk,
   rawPoint: GpsPoint
@@ -181,7 +213,11 @@ function appendAcceptedGpsPoint(
       : activeWalk.exploredCellIds;
   const distanceMeters = previousPoint
     ? activeWalk.distanceMeters +
-      haversineDistanceMeters(previousPoint, acceptedPoint)
+      getTrustedGpsDistanceIncrementMeters(
+        previousPoint,
+        acceptedPoint,
+        activeWalk.activityMode
+      )
     : activeWalk.distanceMeters;
 
   return {

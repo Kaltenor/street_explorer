@@ -1,0 +1,204 @@
+{
+  "id": "saint-medard-en-jalles-v1",
+  "cityId": "saint-medard-en-jalles-fr",
+  "cityZoneId": "relation/110581",
+  "cityName": {
+    "en": "Saint-Médard-en-Jalles",
+    "fr": "Saint-Médard-en-Jalles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Castérà de Saint-Médard-en-Jalles is an important witness to the city's history.",
+        "fr": "château français situé à Saint-Médard-en-Jalles"
+      },
+      "externalIdentity": {
+        "id": "Q20669741",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-castera-de-saint-medard-en-jalles-q20669741",
+      "latitude": 44.8878,
+      "longitude": -0.72149,
+      "name": {
+        "en": "Castérà de Saint-Médard-en-Jalles",
+        "fr": "Castérà de Saint-Médard-en-Jalles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Gajac is an important witness to the city's history.",
+        "fr": "Château de Gajac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083786",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-medard-en-jalles-chateau-de-gajac-pa00083786",
+      "latitude": 44.8852935851634,
+      "longitude": -0.6996877700140971,
+      "name": {
+        "en": "Château de Gajac",
+        "fr": "Château de Gajac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Bourdieu is an important witness to the city's history.",
+        "fr": "Château du Bourdieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083785",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-medard-en-jalles-chateau-du-bourdieu-pa00083785",
+      "latitude": 44.8958703979108,
+      "longitude": -0.714172769190291,
+      "name": {
+        "en": "Château du Bourdieu",
+        "fr": "Château du Bourdieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "confessionnal à Saint-Médard-en-Jalles is a distinctive architectural landmark in the city.",
+        "fr": "confessionnal monument historique (PM33000734) situé à Saint-Médard-en-Jalles (Gironde, France)"
+      },
+      "externalIdentity": {
+        "id": "Q29117670",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-confessionnal-a-saint-medard-en-jalles-q29117670",
+      "latitude": 44.895833333,
+      "longitude": -0.718055555,
+      "name": {
+        "en": "confessionnal à Saint-Médard-en-Jalles",
+        "fr": "confessionnal à Saint-Médard-en-Jalles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083787",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-medard-en-jalles-eglise-pa00083787",
+      "latitude": 44.8957016377691,
+      "longitude": -0.718018710489996,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583289",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-eglise-saint-medard-de-saint-medard-en-jalles-q3583289",
+      "latitude": 44.8958,
+      "longitude": -0.718084,
+      "name": {
+        "en": "église Saint-Médard de Saint-Médard-en-Jalles",
+        "fr": "église Saint-Médard de Saint-Médard-en-Jalles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Gironde department, France",
+        "fr": "siège municipal de Saint-Médard-en-Jalles, en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119329633",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-mairie-de-saint-medard-en-jalles-q119329633",
+      "latitude": 44.895893642,
+      "longitude": -0.71736002,
+      "name": {
+        "en": "mairie de Saint-Médard-en-Jalles",
+        "fr": "mairie de Saint-Médard-en-Jalles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "moulin de Caupian is a distinctive architectural landmark in the city.",
+        "fr": "moulin à eau à Saint-Médard-en-Jalles (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q20669812",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-moulin-de-caupian-q20669812",
+      "latitude": 44.881,
+      "longitude": -0.73876,
+      "name": {
+        "en": "moulin de Caupian",
+        "fr": "moulin de Caupian"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "moulin de Gajac is a distinctive architectural landmark in the city.",
+        "fr": "moulin à eau à Saint-Médard-en-Jalles (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q3325620",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-moulin-de-gajac-q3325620",
+      "latitude": 44.8886,
+      "longitude": -0.705158,
+      "name": {
+        "en": "moulin de Gajac",
+        "fr": "moulin de Gajac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Robert-Monseau is a distinctive architectural landmark in the city.",
+        "fr": "stade de rugby à XV"
+      },
+      "externalIdentity": {
+        "id": "Q61731591",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-medard-en-jalles-stade-robert-monseau-q61731591",
+      "latitude": 44.88607,
+      "longitude": -0.70536,
+      "name": {
+        "en": "stade Robert-Monseau",
+        "fr": "stade Robert-Monseau"
+      }
+    }
+  ]
+}

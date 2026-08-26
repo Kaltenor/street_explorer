@@ -1,0 +1,204 @@
+{
+  "id": "mons-en-bar-ul-v1",
+  "cityId": "mons-en-bar-ul-fr",
+  "cityZoneId": "relation/58583",
+  "cityName": {
+    "en": "Mons-en-Barœul",
+    "fr": "Mons-en-Barœul"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque municipale \"Le Fort\" is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque municipale \"Le Fort\" compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3980803409",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "mons-en-bar-ul-bibliotheque-municipale-le-fort-node-3980803409",
+      "latitude": 50.6446892,
+      "longitude": 3.1198745,
+      "name": {
+        "en": "Bibliothèque municipale \"Le Fort\"",
+        "fr": "Bibliothèque municipale \"Le Fort\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean Bosco is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean Bosco est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74895041",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-eglise-saint-jean-bosco-way-74895041",
+      "latitude": 50.6373471,
+      "longitude": 3.1096741,
+      "name": {
+        "en": "Église Saint-Jean Bosco",
+        "fr": "Église Saint-Jean Bosco"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74919018",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-eglise-saint-pierre-way-74919018",
+      "latitude": 50.6449185,
+      "longitude": 3.1028415,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort de Mons is an important witness to the city's history.",
+        "fr": "Fort de Mons est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/7816010937",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "mons-en-bar-ul-fort-de-mons-node-7816010937",
+      "latitude": 50.6448457,
+      "longitude": 3.1201574,
+      "name": {
+        "en": "Fort de Mons",
+        "fr": "Fort de Mons"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin des Acacias is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin des Acacias compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/134658116",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-jardin-des-acacias-way-134658116",
+      "latitude": 50.6416501,
+      "longitude": 3.1018373,
+      "name": {
+        "en": "Jardin des Acacias",
+        "fr": "Jardin des Acacias"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Le Trait d'Union is one of the city's notable cultural landmarks.",
+        "fr": "Le Trait d'Union compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/587286027",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-le-trait-d-union-way-587286027",
+      "latitude": 50.6446692,
+      "longitude": 3.1196095,
+      "name": {
+        "en": "Le Trait d'Union",
+        "fr": "Le Trait d'Union"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison Folie du Fort is an important witness to the city's history.",
+        "fr": "Maison Folie du Fort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74929350",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-maison-folie-du-fort-way-74929350",
+      "latitude": 50.6440687,
+      "longitude": 3.1199982,
+      "name": {
+        "en": "Maison Folie du Fort",
+        "fr": "Maison Folie du Fort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Nord, France",
+        "fr": "commune française du département du Nord"
+      },
+      "externalIdentity": {
+        "id": "Q841686",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mons-en-bar-ul-mons-en-bar-ul-q841686",
+      "latitude": 50.641944444,
+      "longitude": 3.107777777,
+      "name": {
+        "en": "Mons-en-Barœul",
+        "fr": "Mons-en-Barœul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée Al Wifaq is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée Al Wifaq est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74895938",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-mosquee-al-wifaq-way-74895938",
+      "latitude": 50.6348668,
+      "longitude": 3.1076133,
+      "name": {
+        "en": "Mosquée Al Wifaq",
+        "fr": "Mosquée Al Wifaq"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Salle des Fêtes du Fort is an important witness to the city's history.",
+        "fr": "Salle des Fêtes du Fort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74929879",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mons-en-bar-ul-salle-des-fetes-du-fort-way-74929879",
+      "latitude": 50.6440695,
+      "longitude": 3.1190185,
+      "name": {
+        "en": "Salle des Fêtes du Fort",
+        "fr": "Salle des Fêtes du Fort"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "saint-priest-v1",
+  "cityId": "saint-priest-fr",
+  "cityZoneId": "relation/164199",
+  "cityName": {
+    "en": "Saint-Priest",
+    "fr": "Saint-Priest"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in Bron, France",
+        "fr": "aéroport desservant Lyon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q4102",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-aeroport-de-lyon-bron-q4102",
+      "latitude": 45.729444444,
+      "longitude": 4.938888888,
+      "name": {
+        "en": "aéroport de Lyon-Bron",
+        "fr": "aéroport de Lyon-Bron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre culturel Théo Argence is a distinctive architectural landmark in the city.",
+        "fr": "centre culturel à Saint-Priest dans la métropole de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q104650763",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-centre-culturel-theo-argence-q104650763",
+      "latitude": 45.6966,
+      "longitude": 4.94135,
+      "name": {
+        "en": "centre culturel Théo Argence",
+        "fr": "centre culturel Théo Argence"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118053",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-priest-chateau-pa00118053",
+      "latitude": 45.6967119300332,
+      "longitude": 4.94393255308862,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38522225",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-eglise-sainte-marguerite-de-manissieux-q38522225",
+      "latitude": 45.700882,
+      "longitude": 4.980131,
+      "name": {
+        "en": "église Sainte-Marguerite de Manissieux",
+        "fr": "église Sainte-Marguerite de Manissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lyon tramway station",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96193984",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-esplanade-des-arts-q96193984",
+      "latitude": 45.6945021,
+      "longitude": 4.940614,
+      "name": {
+        "en": "Esplanade des Arts",
+        "fr": "Esplanade des Arts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Lyon tramway station",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194005",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-porte-des-alpes-q96194005",
+      "latitude": 45.7184057,
+      "longitude": 4.9257886,
+      "name": {
+        "en": "Porte des Alpes",
+        "fr": "Porte des Alpes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Saint-Priest, France",
+        "fr": "maison des associations à Saint-Priest, France"
+      },
+      "externalIdentity": {
+        "id": "Q64015362",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-maison-des-associations-colonel-arnaud-beltrame-q64015362",
+      "latitude": 45.695135,
+      "longitude": 4.946083,
+      "name": {
+        "en": "maison des associations Colonel Arnaud Beltrame",
+        "fr": "maison des associations Colonel Arnaud Beltrame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "MJC Jean-Cocteau is a distinctive architectural landmark in the city.",
+        "fr": "MJC à Saint-Priest, France"
+      },
+      "externalIdentity": {
+        "id": "Q99693880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-mjc-jean-cocteau-q99693880",
+      "latitude": 45.691339,
+      "longitude": 4.950949,
+      "name": {
+        "en": "MJC Jean-Cocteau",
+        "fr": "MJC Jean-Cocteau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Priest, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2460346",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-saint-priest-q2460346",
+      "latitude": 45.686637,
+      "longitude": 4.933842,
+      "name": {
+        "en": "Saint-Priest",
+        "fr": "Saint-Priest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Priest, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q105422211",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-priest-venissieux-nord-q105422211",
+      "latitude": 45.695833333,
+      "longitude": 4.910833333,
+      "name": {
+        "en": "Vénissieux-Nord",
+        "fr": "Vénissieux-Nord"
+      }
+    }
+  ]
+}

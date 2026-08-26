@@ -1,0 +1,394 @@
+{
+  "id": "creteil-v1",
+  "cityId": "creteil-fr",
+  "cityZoneId": "relation/105389",
+  "cityName": {
+    "en": "Créteil",
+    "fr": "Créteil"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in France",
+        "fr": "groupe hospitalier Albert Chenevier – Henri Mondor. regroupement"
+      },
+      "externalIdentity": {
+        "id": "Q3145126",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-albert-chenevier-henri-mondor-q3145126",
+      "latitude": 48.7885,
+      "longitude": 2.45894,
+      "name": {
+        "en": "Albert Chenevier - Henri Mondor",
+        "fr": "Albert Chenevier - Henri Mondor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Val-de-Marne, in France",
+        "fr": "cathédrale située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111165006",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-cathedrale-ephemere-de-creteil-q111165006",
+      "latitude": 48.7898,
+      "longitude": 2.44134,
+      "name": {
+        "en": "cathédrale éphémère de Créteil",
+        "fr": "cathédrale éphémère de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Val-de-Marne, in France",
+        "fr": "cathédrale située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942281",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-cathedrale-notre-dame-de-creteil-q2942281",
+      "latitude": 48.78972222,
+      "longitude": 2.44416667,
+      "name": {
+        "en": "cathédrale Notre-Dame de Créteil",
+        "fr": "cathédrale Notre-Dame de Créteil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Buttes is an important witness to the city's history.",
+        "fr": "château français à Créteil"
+      },
+      "externalIdentity": {
+        "id": "Q78658894",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-chateau-des-buttes-q78658894",
+      "latitude": 48.80014,
+      "longitude": 2.46056,
+      "name": {
+        "en": "château des Buttes",
+        "fr": "château des Buttes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Créteil, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2000447",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-creteil-pompadour-q2000447",
+      "latitude": 48.7717,
+      "longitude": 2.43528,
+      "name": {
+        "en": "Créteil - Pompadour",
+        "fr": "Créteil - Pompadour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "édifice religieux situé à Créteil, en français"
+      },
+      "externalIdentity": {
+        "id": "Q3581184",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-eglise-saint-christophe-q3581184",
+      "latitude": 48.7942,
+      "longitude": 2.4613,
+      "name": {
+        "en": "église Saint-Christophe",
+        "fr": "église Saint-Christophe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819714",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-eglise-saint-michel-du-mont-mesly-q29819714",
+      "latitude": 48.77758,
+      "longitude": 2.4679,
+      "name": {
+        "en": "église Saint-Michel du Mont-Mesly",
+        "fr": "église Saint-Michel du Mont-Mesly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, allée Max-Ophüls is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Créteil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920428",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-fontaine-wallace-allee-max-ophuls-q128920428",
+      "latitude": 48.776263,
+      "longitude": 2.456986,
+      "name": {
+        "en": "fontaine Wallace, allée Max-Ophüls",
+        "fr": "fontaine Wallace, allée Max-Ophüls"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Créteil, France",
+        "fr": "mosquée située à Créteil, dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3324892",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-grande-mosquee-sahaba-de-creteil-q3324892",
+      "latitude": 48.7813,
+      "longitude": 2.446,
+      "name": {
+        "en": "Grande Mosquée Sahaba de Créteil",
+        "fr": "Grande Mosquée Sahaba de Créteil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2886600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-ile-de-loisirs-de-creteil-q2886600",
+      "latitude": 48.777222222,
+      "longitude": 2.448333333,
+      "name": {
+        "en": "Île de loisirs de Créteil",
+        "fr": "Île de loisirs de Créteil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "lake in Créteil, France",
+        "fr": "lac en France"
+      },
+      "externalIdentity": {
+        "id": "Q3215430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-lac-de-creteil-q3215430",
+      "latitude": 48.7767,
+      "longitude": 2.45081,
+      "name": {
+        "en": "lac de Créteil",
+        "fr": "lac de Créteil"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Créteil is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Créteil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88342039",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-monument-aux-morts-de-creteil-q88342039",
+      "latitude": 48.79972,
+      "longitude": 2.45352,
+      "name": {
+        "en": "monument aux morts de Créteil",
+        "fr": "monument aux morts de Créteil"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Créteil, France",
+        "fr": "place de Créteil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105950512",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-place-de-l-abbaye-q105950512",
+      "latitude": 48.777925975,
+      "longitude": 2.46974303,
+      "name": {
+        "en": "place de l'Abbaye",
+        "fr": "place de l'Abbaye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Créteil, France",
+        "fr": "place de Créteil, dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105950488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-place-de-la-porte-des-champs-q105950488",
+      "latitude": 48.787923504,
+      "longitude": 2.450297866,
+      "name": {
+        "en": "place de la Porte-des-Champs",
+        "fr": "place de la Porte-des-Champs"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Créteil, France",
+        "fr": "cinéma à Créteil, France"
+      },
+      "externalIdentity": {
+        "id": "Q61861005",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-ugc-cine-cite-creteil-q61861005",
+      "latitude": 48.7818866,
+      "longitude": 2.4571879,
+      "name": {
+        "en": "UGC Ciné Cité Créteil",
+        "fr": "UGC Ciné Cité Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Créteil, France",
+        "fr": "hôtel de ville de Créteil est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3146147",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-hotel-de-ville-de-creteil-q3146147",
+      "latitude": 48.7778,
+      "longitude": 2.45306,
+      "name": {
+        "en": "hôtel de ville de Créteil",
+        "fr": "hôtel de ville de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "palais de justice de Créteil is a distinctive architectural landmark in the city.",
+        "fr": "palais de justice dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3361005",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-palais-de-justice-de-creteil-q3361005",
+      "latitude": 48.7857,
+      "longitude": 2.44222,
+      "name": {
+        "en": "palais de justice de Créteil",
+        "fr": "palais de justice de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "palais des sports Robert-Oubron is a distinctive architectural landmark in the city.",
+        "fr": "équipement sportif à Créteil"
+      },
+      "externalIdentity": {
+        "id": "Q3361134",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-palais-des-sports-robert-oubron-q3361134",
+      "latitude": 48.787987,
+      "longitude": 2.441199,
+      "name": {
+        "en": "palais des sports Robert-Oubron",
+        "fr": "palais des sports Robert-Oubron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396943",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-pont-de-creteil-q3396943",
+      "latitude": 48.7997,
+      "longitude": 2.47008,
+      "name": {
+        "en": "pont de Créteil",
+        "fr": "pont de Créteil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium",
+        "fr": "stade de football"
+      },
+      "externalIdentity": {
+        "id": "Q952112",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creteil-stade-dominique-duvauchelle-q952112",
+      "latitude": 48.76762,
+      "longitude": 2.45944,
+      "name": {
+        "en": "stade Dominique-Duvauchelle",
+        "fr": "stade Dominique-Duvauchelle"
+      }
+    }
+  ]
+}

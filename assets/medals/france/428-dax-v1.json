@@ -1,0 +1,204 @@
+{
+  "id": "dax-v1",
+  "cityId": "dax-fr",
+  "cityZoneId": "relation/75879",
+  "cityName": {
+    "en": "Dax",
+    "fr": "Dax"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Cathédrale Sainte-Marie (église Notre-Dame) is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Cathédrale Sainte-Marie (église Notre-Dame) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-ancien-cathedrale-sainte-marie-eglise-notre-dame-pa00083938",
+      "latitude": 43.7084537274656,
+      "longitude": -1.05299703353089,
+      "name": {
+        "en": "Ancien Cathédrale Sainte-Marie (église Notre-Dame)",
+        "fr": "Ancien Cathédrale Sainte-Marie (église Notre-Dame)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Arènes is a distinctive architectural landmark in the city.",
+        "fr": "Arènes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA40000080",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-arenes-pa40000080",
+      "latitude": 43.7130942714325,
+      "longitude": -1.04990779581731,
+      "name": {
+        "en": "Arènes",
+        "fr": "Arènes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine du Sarrat is a distinctive architectural landmark in the city.",
+        "fr": "Domaine du Sarrat est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-domaine-du-sarrat-pa00084025",
+      "latitude": 43.7003183994225,
+      "longitude": -1.04870107029773,
+      "name": {
+        "en": "Domaine du Sarrat",
+        "fr": "Domaine du Sarrat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Enceinte gallo-romaine is a distinctive architectural landmark in the city.",
+        "fr": "Enceinte gallo-romaine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083939",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-enceinte-gallo-romaine-pa00083939",
+      "latitude": 43.709108434111,
+      "longitude": -1.05058481878681,
+      "name": {
+        "en": "Enceinte gallo-romaine",
+        "fr": "Enceinte gallo-romaine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Chaude is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Chaude compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083940",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-fontaine-chaude-pa00083940",
+      "latitude": 43.7109237009052,
+      "longitude": -1.05280023255318,
+      "name": {
+        "en": "Fontaine Chaude",
+        "fr": "Fontaine Chaude"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux Morts de la guerre 14-18 is a notable work of public art and local memory.",
+        "fr": "Monument aux Morts de la guerre 14-18 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA40000091",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-monument-aux-morts-de-la-guerre-14-18-pa40000091",
+      "latitude": 43.7112894186339,
+      "longitude": -1.0517924892432,
+      "name": {
+        "en": "Monument aux Morts de la guerre 14-18",
+        "fr": "Monument aux Morts de la guerre 14-18"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Borda is one of the city's notable cultural landmarks.",
+        "fr": "musée de Borda compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0077",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dax-musee-de-borda-m0077",
+      "latitude": 43.710655,
+      "longitude": -1.054061,
+      "name": {
+        "en": "musée de Borda",
+        "fr": "musée de Borda"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Saint-Martin-d'Agès is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Saint-Martin-d'Agès est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083941",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-hotel-saint-martin-d-ages-pa00083941",
+      "latitude": 43.7094718214274,
+      "longitude": -1.05237053758897,
+      "name": {
+        "en": "Hôtel Saint-Martin-d'Agès",
+        "fr": "Hôtel Saint-Martin-d'Agès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Splendid, actuellement Grand Hôtel Mercure Splendid is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Splendid, actuellement Grand Hôtel Mercure Splendid est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-hotel-splendid-actuellement-grand-hotel-mercure-splendid-pa00084027",
+      "latitude": 43.7113021351627,
+      "longitude": -1.0547803308509,
+      "name": {
+        "en": "Hôtel Splendid, actuellement Grand Hôtel Mercure Splendid",
+        "fr": "Hôtel Splendid, actuellement Grand Hôtel Mercure Splendid"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple gallo-romain is a distinctive architectural landmark in the city.",
+        "fr": "Temple gallo-romain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083942",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dax-temple-gallo-romain-pa00083942",
+      "latitude": 43.7098165641082,
+      "longitude": -1.05260559693986,
+      "name": {
+        "en": "Temple gallo-romain",
+        "fr": "Temple gallo-romain"
+      }
+    }
+  ]
+}

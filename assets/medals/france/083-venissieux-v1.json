@@ -1,0 +1,394 @@
+{
+  "id": "venissieux-v1",
+  "cityId": "venissieux-fr",
+  "cityZoneId": "relation/164210",
+  "cityName": {
+    "en": "Vénissieux",
+    "fr": "Vénissieux"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beauvisage - Pressensé is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-beauvisage-pressense-q96194502",
+      "latitude": 45.7277311,
+      "longitude": 4.8626126,
+      "name": {
+        "en": "Beauvisage - Pressensé",
+        "fr": "Beauvisage - Pressensé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "complexe sportif J.Guimier is a distinctive architectural landmark in the city.",
+        "fr": "complexe sportif J.Guimier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q120164541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-complexe-sportif-j-guimier-q120164541",
+      "latitude": 45.71839,
+      "longitude": 4.88675,
+      "name": {
+        "en": "complexe sportif J.Guimier",
+        "fr": "complexe sportif J.Guimier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38379354",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-eglise-de-l-epiphanie-des-minguettes-q38379354",
+      "latitude": 45.694506,
+      "longitude": 4.875106,
+      "name": {
+        "en": "église de l'Épiphanie des Minguettes",
+        "fr": "église de l'Épiphanie des Minguettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38380782",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-eglise-de-l-immaculee-conception-de-venissieux-q38380782",
+      "latitude": 45.724206,
+      "longitude": 4.85913,
+      "name": {
+        "en": "église de l'Immaculée-Conception de Vénissieux",
+        "fr": "église de l'Immaculée-Conception de Vénissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38592275",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-eglise-saint-germain-de-venissieux-q38592275",
+      "latitude": 45.69967,
+      "longitude": 4.88424,
+      "name": {
+        "en": "église Saint-Germain de Vénissieux",
+        "fr": "église Saint-Germain de Vénissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise Sainte-Jeanne-d'Arc de Parilly is a distinctive architectural landmark in the city.",
+        "fr": "Eglise Sainte-Jeanne-d'Arc de Parilly est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA69000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "venissieux-eglise-sainte-jeanne-d-arc-de-parilly-pa69000026",
+      "latitude": 45.7170086909502,
+      "longitude": 4.88577725444888,
+      "name": {
+        "en": "Eglise Sainte-Jeanne-d'Arc de Parilly",
+        "fr": "Eglise Sainte-Jeanne-d'Arc de Parilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare de Vénissieux is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96199173",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-gare-de-venissieux-q96199173",
+      "latitude": 45.70566,
+      "longitude": 4.88774,
+      "name": {
+        "en": "Gare de Vénissieux",
+        "fr": "Gare de Vénissieux"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097991",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-monument-aux-morts-de-la-seconde-guerre-mondiale-de-venissieux-q136097991",
+      "latitude": 45.69829,
+      "longitude": 4.88505,
+      "name": {
+        "en": "monument aux morts de la Seconde Guerre mondiale de Vénissieux",
+        "fr": "monument aux morts de la Seconde Guerre mondiale de Vénissieux"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en région lyonnaise, France"
+      },
+      "externalIdentity": {
+        "id": "Q116529365",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-musee-communal-de-la-resistance-et-de-la-deportation-de-venissieux-q116529365",
+      "latitude": 45.70004,
+      "longitude": 4.88456,
+      "name": {
+        "en": "musée communal de la Résistance et de la Déportation de Vénissieux",
+        "fr": "musée communal de la Résistance et de la Déportation de Vénissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "groupe scolaire Louis-Pasteur is a distinctive architectural landmark in the city.",
+        "fr": "école à Vénissieux (Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q22997713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-groupe-scolaire-louis-pasteur-q22997713",
+      "latitude": 45.694097,
+      "longitude": 4.889411,
+      "name": {
+        "en": "groupe scolaire Louis-Pasteur",
+        "fr": "groupe scolaire Louis-Pasteur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lycée Jacques-Brel is a distinctive architectural landmark in the city.",
+        "fr": "lycée de Vénissieux (Lyon)"
+      },
+      "externalIdentity": {
+        "id": "Q25397783",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-lycee-jacques-brel-q25397783",
+      "latitude": 45.694604,
+      "longitude": 4.880584,
+      "name": {
+        "en": "lycée Jacques-Brel",
+        "fr": "lycée Jacques-Brel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Vénissieux, France",
+        "fr": "siège municipal de Vénissieux, dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119337254",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-mairie-de-venissieux-q119337254",
+      "latitude": 45.69704,
+      "longitude": 4.88533,
+      "name": {
+        "en": "mairie de Vénissieux",
+        "fr": "mairie de Vénissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marcel Houël - Hôtel de Ville is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194552",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-marcel-houel-hotel-de-ville-q96194552",
+      "latitude": 45.6964885,
+      "longitude": 4.8845462,
+      "name": {
+        "en": "Marcel Houël - Hôtel de Ville",
+        "fr": "Marcel Houël - Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "rugby union stadium",
+        "fr": "stade de rugby à XV"
+      },
+      "externalIdentity": {
+        "id": "Q9491",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-matmut-stadium-q9491",
+      "latitude": 45.721328,
+      "longitude": 4.876014,
+      "name": {
+        "en": "Matmut Stadium",
+        "fr": "Matmut Stadium"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Minguettes is a distinctive architectural landmark in the city.",
+        "fr": "quartier de Vénissieux, dans la métropole de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q3314963",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-minguettes-q3314963",
+      "latitude": 45.695277777,
+      "longitude": 4.874444444,
+      "name": {
+        "en": "Minguettes",
+        "fr": "Minguettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "place Jules Grandclément is a distinctive architectural landmark in the city.",
+        "fr": "voie de Vénissieux, France"
+      },
+      "externalIdentity": {
+        "id": "Q62273641",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-place-jules-grandclement-q62273641",
+      "latitude": 45.71942,
+      "longitude": 4.88764,
+      "name": {
+        "en": "place Jules Grandclément",
+        "fr": "place Jules Grandclément"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Vénissieux, Arrondissement of Lyon, departmental district of the Rhône, Auvergne-Rhône-Alpes, France",
+        "fr": "voie de Vénissieux, France"
+      },
+      "externalIdentity": {
+        "id": "Q116508530",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-place-leon-sublet-q116508530",
+      "latitude": 45.70002,
+      "longitude": 4.88367,
+      "name": {
+        "en": "place Léon-Sublet",
+        "fr": "place Léon-Sublet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports venue in Lyon",
+        "fr": "stade du Rhône est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q14641505",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-stade-du-rhone-q14641505",
+      "latitude": 45.716059,
+      "longitude": 4.897947,
+      "name": {
+        "en": "stade du Rhône",
+        "fr": "stade du Rhône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Vénissieux, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2736094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-venissieux-q2736094",
+      "latitude": 45.705191,
+      "longitude": 4.887974,
+      "name": {
+        "en": "Vénissieux",
+        "fr": "Vénissieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vénissy is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "venissieux-venissy-q96194573",
+      "latitude": 45.6960212,
+      "longitude": 4.871963,
+      "name": {
+        "en": "Vénissy",
+        "fr": "Vénissy"
+      }
+    }
+  ]
+}

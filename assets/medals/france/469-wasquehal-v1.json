@@ -1,0 +1,204 @@
+{
+  "id": "wasquehal-v1",
+  "cityId": "wasquehal-fr",
+  "cityZoneId": "relation/59041",
+  "cityName": {
+    "en": "Wasquehal",
+    "fr": "Wasquehal"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q32474060",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-becque-de-marcq-q32474060",
+      "latitude": 50.666666666,
+      "longitude": 3.116666666,
+      "name": {
+        "en": "Becque de Marcq",
+        "fr": "Becque de Marcq"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canal",
+        "fr": "canal français"
+      },
+      "externalIdentity": {
+        "id": "Q338483",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-canal-de-roubaix-q338483",
+      "latitude": 50.67222222,
+      "longitude": 3.12277778,
+      "name": {
+        "en": "canal de Roubaix",
+        "fr": "canal de Roubaix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106102497",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-cimetiere-du-centre-de-wasquehal-q106102497",
+      "latitude": 50.670498,
+      "longitude": 3.124556,
+      "name": {
+        "en": "cimetière du Centre de Wasquehal",
+        "fr": "cimetière du Centre de Wasquehal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q4024172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-cimetiere-du-plomeux-q4024172",
+      "latitude": 50.67605,
+      "longitude": 3.125026,
+      "name": {
+        "en": "cimetière du Plomeux",
+        "fr": "cimetière du Plomeux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2755422",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-croix-wasquehal-q2755422",
+      "latitude": 50.678646,
+      "longitude": 3.137958,
+      "name": {
+        "en": "Croix - Wasquehal",
+        "fr": "Croix - Wasquehal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16507832",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-eglise-evangelique-de-la-metropole-lilloise-q16507832",
+      "latitude": 50.67722,
+      "longitude": 3.12572,
+      "name": {
+        "en": "église évangélique de la métropole lilloise",
+        "fr": "église évangélique de la métropole lilloise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38489598",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-eglise-saint-clement-de-wasquehal-q38489598",
+      "latitude": 50.68767,
+      "longitude": 3.14412,
+      "name": {
+        "en": "église Saint-Clément de Wasquehal",
+        "fr": "église Saint-Clément de Wasquehal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17522717",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-eglise-saint-nicolas-de-wasquehal-q17522717",
+      "latitude": 50.66933,
+      "longitude": 3.13166,
+      "name": {
+        "en": "église Saint-Nicolas de Wasquehal",
+        "fr": "église Saint-Nicolas de Wasquehal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grand Cottignies is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lille/Roubaix/Tourcoing"
+      },
+      "externalIdentity": {
+        "id": "Q106541911",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-grand-cottignies-q106541911",
+      "latitude": 50.68705833,
+      "longitude": 3.124008333,
+      "name": {
+        "en": "Grand Cottignies",
+        "fr": "Grand Cottignies"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Nord, France",
+        "fr": "commune française du département du Nord"
+      },
+      "externalIdentity": {
+        "id": "Q681563",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wasquehal-wasquehal-q681563",
+      "latitude": 50.668611111,
+      "longitude": 3.13,
+      "name": {
+        "en": "Wasquehal",
+        "fr": "Wasquehal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "trappes-v1",
+  "cityId": "trappes-fr",
+  "cityZoneId": "relation/49540",
+  "cityName": {
+    "en": "Trappes",
+    "fr": "Trappes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Trappes, France",
+        "fr": "cinéma à Trappes, France"
+      },
+      "externalIdentity": {
+        "id": "Q61859790",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-cinema-le-grenier-a-sel-q61859790",
+      "latitude": 48.7769645,
+      "longitude": 2.0030836,
+      "name": {
+        "en": "cinéma le grenier a sel",
+        "fr": "cinéma le grenier a sel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581601",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-eglise-saint-georges-de-trappes-q3581601",
+      "latitude": 48.7783,
+      "longitude": 1.99917,
+      "name": {
+        "en": "église Saint-Georges de Trappes",
+        "fr": "église Saint-Georges de Trappes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "body of water",
+        "fr": "étang de Saint-Quentin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3591718",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-etang-de-saint-quentin-q3591718",
+      "latitude": 48.7878,
+      "longitude": 2.0097,
+      "name": {
+        "en": "étang de Saint-Quentin",
+        "fr": "étang de Saint-Quentin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "ferme du château de Trappes is an important witness to the city's history.",
+        "fr": "château français situé à Trappes"
+      },
+      "externalIdentity": {
+        "id": "Q3068947",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-ferme-du-chateau-de-trappes-q3068947",
+      "latitude": 48.77833,
+      "longitude": 1.99917,
+      "name": {
+        "en": "ferme du château de Trappes",
+        "fr": "ferme du château de Trappes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in France",
+        "fr": "ancien parc dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q3114740",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-grand-parc-de-chasse-de-louis-xiv-q3114740",
+      "latitude": 48.7479,
+      "longitude": 2.0783,
+      "name": {
+        "en": "grand parc de chasse de Louis XIV",
+        "fr": "grand parc de chasse de Louis XIV"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q2886606",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-ile-de-loisirs-de-saint-quentin-en-yvelines-q2886606",
+      "latitude": 48.7875,
+      "longitude": 2.007777777,
+      "name": {
+        "en": "Île de loisirs de Saint-Quentin-en-Yvelines",
+        "fr": "Île de loisirs de Saint-Quentin-en-Yvelines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "cité ouvrière à Trappes (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q3231928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-les-dents-de-scie-q3231928",
+      "latitude": 48.777,
+      "longitude": 2.00684,
+      "name": {
+        "en": "Les Dents de Scie",
+        "fr": "Les Dents de Scie"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "statue de Jean Jaurès is a notable work of public art and local memory.",
+        "fr": "sculpture en France, à Trappes"
+      },
+      "externalIdentity": {
+        "id": "Q136071074",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-statue-de-jean-jaures-q136071074",
+      "latitude": 48.775574,
+      "longitude": 1.999308,
+      "name": {
+        "en": "statue de Jean Jaurès",
+        "fr": "statue de Jean Jaurès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Yvelines department, France",
+        "fr": "siège municipal de Trappes, dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119335373",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-mairie-de-trappes-q119335373",
+      "latitude": 48.776098357,
+      "longitude": 1.999411233,
+      "name": {
+        "en": "mairie de Trappes",
+        "fr": "mairie de Trappes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q363266",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "trappes-trappes-q363266",
+      "latitude": 48.776666666,
+      "longitude": 2.001666666,
+      "name": {
+        "en": "Trappes",
+        "fr": "Trappes"
+      }
+    }
+  ]
+}

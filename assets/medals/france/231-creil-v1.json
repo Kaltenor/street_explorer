@@ -1,0 +1,204 @@
+{
+  "id": "creil-v1",
+  "cityId": "creil-fr",
+  "cityZoneId": "relation/142098",
+  "cityName": {
+    "en": "Creil",
+    "fr": "Creil"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château is an important witness to the city's history.",
+        "fr": "Ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114652",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "creil-ancien-chateau-pa00114652",
+      "latitude": 49.2607995435611,
+      "longitude": 2.47227675394336,
+      "name": {
+        "en": "Ancien château",
+        "fr": "Ancien château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "former castle in Creil, Oise, France",
+        "fr": "château situé à Creil (France)"
+      },
+      "externalIdentity": {
+        "id": "Q20724462",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-chateau-de-creil-q20724462",
+      "latitude": 49.2611248,
+      "longitude": 2.4720039,
+      "name": {
+        "en": "château de Creil",
+        "fr": "château de Creil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q664142",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-creil-q664142",
+      "latitude": 49.263888888,
+      "longitude": 2.469166666,
+      "name": {
+        "en": "Creil",
+        "fr": "Creil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Médard is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Médard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114653",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "creil-eglise-saint-medard-pa00114653",
+      "latitude": 49.25965954216791,
+      "longitude": 2.47657883714388,
+      "name": {
+        "en": "Église Saint-Médard",
+        "fr": "Église Saint-Médard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Oise department, France",
+        "fr": "siège municipal de Creil, dans l'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119307786",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-mairie-de-creil-q119307786",
+      "latitude": 49.260712,
+      "longitude": 2.47297,
+      "name": {
+        "en": "mairie de Creil",
+        "fr": "mairie de Creil"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Oise department, France",
+        "fr": "monument aux morts de l'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136052172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-monument-aux-morts-de-creil-q136052172",
+      "latitude": 49.259756,
+      "longitude": 2.4726376,
+      "name": {
+        "en": "monument aux morts de Creil",
+        "fr": "monument aux morts de Creil"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Gallé-Juillet is one of the city's notable cultural landmarks.",
+        "fr": "musée Gallé-Juillet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0805",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "creil-musee-galle-juillet-m0805",
+      "latitude": 49.260793,
+      "longitude": 2.473388,
+      "name": {
+        "en": "musée Gallé-Juillet",
+        "fr": "musée Gallé-Juillet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pavillon is a distinctive architectural landmark in the city.",
+        "fr": "Pavillon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114654",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "creil-pavillon-pa00114654",
+      "latitude": 49.2616869561357,
+      "longitude": 2.47521462762639,
+      "name": {
+        "en": "Pavillon",
+        "fr": "Pavillon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "former theatre in Creil, France, now used as a nightclub",
+        "fr": "ancienne salle de spectacle à Creil, France, aujourd'hui un dancing"
+      },
+      "externalIdentity": {
+        "id": "Q46698863",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-theatre-de-creil-q46698863",
+      "latitude": 49.261273,
+      "longitude": 2.475486,
+      "name": {
+        "en": "théâtre de Creil",
+        "fr": "théâtre de Creil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "gloriette located in Oise, in France",
+        "fr": "gloriette située à Creil, dans l'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q22966198",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "creil-temple-de-l-amour-q22966198",
+      "latitude": 49.2617,
+      "longitude": 2.4752,
+      "name": {
+        "en": "temple de l'amour",
+        "fr": "temple de l'amour"
+      }
+    }
+  ]
+}

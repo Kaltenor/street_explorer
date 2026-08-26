@@ -1,0 +1,204 @@
+{
+  "id": "vallauris-v1",
+  "cityId": "vallauris-fr",
+  "cityZoneId": "relation/74689",
+  "cityName": {
+    "en": "Vallauris",
+    "fr": "Vallauris"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Château, actuellement Musée Picasso is one of the city's notable cultural landmarks.",
+        "fr": "Château, actuellement Musée Picasso compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080906",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vallauris-chateau-actuellement-musee-picasso-pa00080906",
+      "latitude": 43.580023723168,
+      "longitude": 7.05349282744877,
+      "name": {
+        "en": "Château, actuellement Musée Picasso",
+        "fr": "Château, actuellement Musée Picasso"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa in southern France",
+        "fr": "château de l'Horizon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2971106",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-chateau-de-l-horizon-q2971106",
+      "latitude": 43.554644,
+      "longitude": 7.062222,
+      "name": {
+        "en": "château de l'Horizon",
+        "fr": "château de l'Horizon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Vallauris is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2970886",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-chateau-de-vallauris-q2970886",
+      "latitude": 43.58,
+      "longitude": 7.05345,
+      "name": {
+        "en": "château de Vallauris",
+        "fr": "château de Vallauris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Alpes-Maritimes, in France",
+        "fr": "église située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60390044",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-eglise-saint-pierre-de-golfe-juan-q60390044",
+      "latitude": 43.568899,
+      "longitude": 7.074198,
+      "name": {
+        "en": "église Saint-Pierre de Golfe-Juan",
+        "fr": "église Saint-Pierre de Golfe-Juan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Alpes-Maritimes, in France",
+        "fr": "église située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27346824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-eglise-sainte-anne-saint-martin-de-vallauris-q27346824",
+      "latitude": 43.57981,
+      "longitude": 7.05261,
+      "name": {
+        "en": "église Sainte-Anne-Saint-Martin de Vallauris",
+        "fr": "église Sainte-Anne-Saint-Martin de Vallauris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q423702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-golfe-juan-vallauris-q423702",
+      "latitude": 43.566409,
+      "longitude": 7.073726,
+      "name": {
+        "en": "Golfe-Juan-Vallauris",
+        "fr": "Golfe-Juan-Vallauris"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Alpes-Maritimes department, France",
+        "fr": "monument aux morts des Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136080995",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-monument-aux-morts-de-vallauris-q136080995",
+      "latitude": 43.5798757,
+      "longitude": 7.0530476,
+      "name": {
+        "en": "monument aux morts de Vallauris",
+        "fr": "monument aux morts de Vallauris"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Magnelli - musée de la céramique is one of the city's notable cultural landmarks.",
+        "fr": "musée Magnelli - musée de la céramique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0892",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vallauris-musee-magnelli-musee-de-la-ceramique-m0892",
+      "latitude": 43.579971,
+      "longitude": 7.052887,
+      "name": {
+        "en": "musée Magnelli - musée de la céramique",
+        "fr": "musée Magnelli - musée de la céramique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "oppidum à Vallauris (Alpes-Maritimes)"
+      },
+      "externalIdentity": {
+        "id": "Q15952887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-oppidum-des-encourdoules-q15952887",
+      "latitude": 43.5874,
+      "longitude": 7.06132,
+      "name": {
+        "en": "oppidum des Encourdoules",
+        "fr": "oppidum des Encourdoules"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse in Alpes-Maritimes, France",
+        "fr": "phare français"
+      },
+      "externalIdentity": {
+        "id": "Q13518338",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vallauris-phare-de-vallauris-q13518338",
+      "latitude": 43.5681,
+      "longitude": 7.0616,
+      "name": {
+        "en": "phare de Vallauris",
+        "fr": "phare de Vallauris"
+      }
+    }
+  ]
+}

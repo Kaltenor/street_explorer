@@ -1,0 +1,204 @@
+{
+  "id": "villeneuve-saint-georges-v1",
+  "cityId": "villeneuve-saint-georges-fr",
+  "cityZoneId": "relation/105014",
+  "cityName": {
+    "en": "Villeneuve-Saint-Georges",
+    "fr": "Villeneuve-Saint-Georges"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "castle at Villeneuve-Saint-Georges, France",
+        "fr": "château situé à Villeneuve-Saint-Georges, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483514",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-chateau-de-beauregard-q96483514",
+      "latitude": 48.72749785,
+      "longitude": 2.448308424,
+      "name": {
+        "en": "château de Beauregard",
+        "fr": "château de Beauregard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Belleplace is an important witness to the city's history.",
+        "fr": "château situé à Villeneuve-Saint-Georges, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q78652752",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-chateau-de-belleplace-q78652752",
+      "latitude": 48.72262,
+      "longitude": 2.44487,
+      "name": {
+        "en": "château de Belleplace",
+        "fr": "château de Belleplace"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Bellevue is an important witness to the city's history.",
+        "fr": "château situé à Villeneuve-Saint-Georges, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483464",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-chateau-de-bellevue-q96483464",
+      "latitude": 48.724801434,
+      "longitude": 2.446875245,
+      "name": {
+        "en": "château de Bellevue",
+        "fr": "château de Bellevue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Villeneuve is an important witness to the city's history.",
+        "fr": "fort situé à Villeneuve-Saint-Georges, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483835",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-fort-de-villeneuve-q96483835",
+      "latitude": 48.72698,
+      "longitude": 2.45551,
+      "name": {
+        "en": "fort de Villeneuve",
+        "fr": "fort de Villeneuve"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Villeneuve-Saint-Georges, France",
+        "fr": "édifice de Villeneuve-Saint-Georges, France"
+      },
+      "externalIdentity": {
+        "id": "Q83488792",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-hotel-de-ville-de-villeneuve-saint-georges-q83488792",
+      "latitude": 48.7308,
+      "longitude": 2.4477,
+      "name": {
+        "en": "hôtel de ville de Villeneuve-Saint-Georges",
+        "fr": "hôtel de ville de Villeneuve-Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q19945222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-pont-de-villeneuve-le-roi-q19945222",
+      "latitude": 48.728056,
+      "longitude": 2.443889,
+      "name": {
+        "en": "pont de Villeneuve-le-Roi",
+        "fr": "pont de Villeneuve-le-Roi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "réserve du patrimoine de la RATP compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q123205560",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-reserve-du-patrimoine-de-la-ratp-q123205560",
+      "latitude": 48.7437,
+      "longitude": 2.44139,
+      "name": {
+        "en": "réserve du patrimoine de la RATP",
+        "fr": "réserve du patrimoine de la RATP"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre de plein air de Villeneuve-Saint-Georges is one of the city's notable cultural landmarks.",
+        "fr": "théâtre situé à Villeneuve-Saint-Georges, dans le Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q96483521",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-theatre-de-plein-air-de-villeneuve-saint-georges-q96483521",
+      "latitude": 48.729203024,
+      "longitude": 2.451778516,
+      "name": {
+        "en": "théâtre de plein air de Villeneuve-Saint-Georges",
+        "fr": "théâtre de plein air de Villeneuve-Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villeneuve-Saint-Georges, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2293848",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-villeneuve-saint-georges-q2293848",
+      "latitude": 48.73,
+      "longitude": 2.44583,
+      "name": {
+        "en": "Villeneuve-Saint-Georges",
+        "fr": "Villeneuve-Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villeneuve-Saint-Georges, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2072158",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villeneuve-saint-georges-villeneuve-triage-q2072158",
+      "latitude": 48.74639,
+      "longitude": 2.43778,
+      "name": {
+        "en": "Villeneuve-Triage",
+        "fr": "Villeneuve-Triage"
+      }
+    }
+  ]
+}

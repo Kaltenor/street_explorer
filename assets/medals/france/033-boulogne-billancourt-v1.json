@@ -1,0 +1,394 @@
+{
+  "id": "boulogne-billancourt-v1",
+  "cityId": "boulogne-billancourt-fr",
+  "cityZoneId": "relation/72020",
+  "cityName": {
+    "en": "Boulogne-Billancourt",
+    "fr": "Boulogne-Billancourt"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Marmottan is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Marmottan compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-bibliotheque-marmottan-pa00088071",
+      "latitude": 48.8430945048515,
+      "longitude": 2.24655109822771,
+      "name": {
+        "en": "Bibliothèque Marmottan",
+        "fr": "Bibliothèque Marmottan"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Buchillot is an important witness to the city's history.",
+        "fr": "Château de Buchillot est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088072",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-chateau-de-buchillot-pa00088072",
+      "latitude": 48.8476847649458,
+      "longitude": 2.23273849297985,
+      "name": {
+        "en": "Château de Buchillot",
+        "fr": "Château de Buchillot"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Rothschild is an important witness to the city's history.",
+        "fr": "Château Rothschild est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-chateau-rothschild-pa92000003",
+      "latitude": 48.8497590108196,
+      "longitude": 2.23358409758306,
+      "name": {
+        "en": "Château Rothschild",
+        "fr": "Château Rothschild"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine dit d'Albert Kahn is a distinctive architectural landmark in the city.",
+        "fr": "Domaine dit d'Albert Kahn est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-domaine-dit-d-albert-kahn-pa92000023",
+      "latitude": 48.842269408429004,
+      "longitude": 2.22760930974076,
+      "name": {
+        "en": "Domaine dit d'Albert Kahn",
+        "fr": "Domaine dit d'Albert Kahn"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située à Boulogne-Billancourt dans les Hauts-de-Seine (diocèse de Nanterre), France"
+      },
+      "externalIdentity": {
+        "id": "Q3580380",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "boulogne-billancourt-eglise-notre-dame-de-boulogne-q3580380",
+      "latitude": 48.846,
+      "longitude": 2.2365,
+      "name": {
+        "en": "église Notre-Dame de Boulogne",
+        "fr": "église Notre-Dame de Boulogne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Menus is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Menus est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088073",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-eglise-notre-dame-des-menus-pa00088073",
+      "latitude": 48.8459599428112,
+      "longitude": 2.2365154117046,
+      "name": {
+        "en": "Église Notre-Dame-des-Menus",
+        "fr": "Église Notre-Dame-des-Menus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088077",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-hotel-de-ville-pa00088077",
+      "latitude": 48.8359767878375,
+      "longitude": 2.24078781883242,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Walewska is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Walewska est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088074",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-hotel-walewska-pa00088074",
+      "latitude": 48.845429825718206,
+      "longitude": 2.23286598653542,
+      "name": {
+        "en": "Hôtel Walewska",
+        "fr": "Hôtel Walewska"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088075",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-immeuble-pa00088075",
+      "latitude": 48.8433942395754,
+      "longitude": 2.25128380332607,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "performing arts center in the suburbs of Paris",
+        "fr": "bâtiments de l'île Seguin"
+      },
+      "externalIdentity": {
+        "id": "Q19944990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "boulogne-billancourt-la-seine-musicale-q19944990",
+      "latitude": 48.8238,
+      "longitude": 2.23329,
+      "name": {
+        "en": "La Seine musicale",
+        "fr": "La Seine musicale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental Albert-Kahn is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental Albert-Kahn compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0407",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-musee-departemental-albert-kahn-m0407",
+      "latitude": 48.841354,
+      "longitude": 2.227488,
+      "name": {
+        "en": "musée départemental Albert-Kahn",
+        "fr": "musée départemental Albert-Kahn"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des années trente is one of the city's notable cultural landmarks.",
+        "fr": "musée des années trente compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0406",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-musee-des-annees-trente-m0406",
+      "latitude": 48.834945,
+      "longitude": 2.241177,
+      "name": {
+        "en": "musée des années trente",
+        "fr": "musée des années trente"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée-jardin Paul Landowski is one of the city's notable cultural landmarks.",
+        "fr": "musée-jardin Paul Landowski compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0408",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-musee-jardin-paul-landowski-m0408",
+      "latitude": 48.844261,
+      "longitude": 2.246847,
+      "name": {
+        "en": "musée-jardin Paul Landowski",
+        "fr": "musée-jardin Paul Landowski"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Collinet is a distinctive architectural landmark in the city.",
+        "fr": "Maison Collinet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088079",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-collinet-pa00088079",
+      "latitude": 48.8471194468409,
+      "longitude": 2.24254474931164,
+      "name": {
+        "en": "Maison Collinet",
+        "fr": "Maison Collinet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Cook is a distinctive architectural landmark in the city.",
+        "fr": "Maison Cook est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-cook-pa00088078",
+      "latitude": 48.847194298435305,
+      "longitude": 2.24247036215158,
+      "name": {
+        "en": "Maison Cook",
+        "fr": "Maison Cook"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison cubiste du peintre Alfred Lombard is a distinctive architectural landmark in the city.",
+        "fr": "Maison cubiste du peintre Alfred Lombard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088080",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-cubiste-du-peintre-alfred-lombard-pa00088080",
+      "latitude": 48.84770404205631,
+      "longitude": 2.24166079646334,
+      "name": {
+        "en": "Maison cubiste du peintre Alfred Lombard",
+        "fr": "Maison cubiste du peintre Alfred Lombard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison et atelier du sculpteur Joseph Bernard is a distinctive architectural landmark in the city.",
+        "fr": "Maison et atelier du sculpteur Joseph Bernard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000005",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-et-atelier-du-sculpteur-joseph-bernard-pa92000005",
+      "latitude": 48.8422526841689,
+      "longitude": 2.24814183061943,
+      "name": {
+        "en": "Maison et atelier du sculpteur Joseph Bernard",
+        "fr": "Maison et atelier du sculpteur Joseph Bernard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Mietschaninoff is a distinctive architectural landmark in the city.",
+        "fr": "Maison Mietschaninoff est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088082",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-mietschaninoff-pa00088082",
+      "latitude": 48.8460507367755,
+      "longitude": 2.24467342047469,
+      "name": {
+        "en": "Maison Mietschaninoff",
+        "fr": "Maison Mietschaninoff"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088081",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-maison-pa00088081",
+      "latitude": 48.8451798370755,
+      "longitude": 2.23280745660972,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088084",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "boulogne-billancourt-synagogue-pa00088084",
+      "latitude": 48.8474349194065,
+      "longitude": 2.23015225194507,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

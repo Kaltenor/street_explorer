@@ -1,0 +1,204 @@
+{
+  "id": "le-plessis-robinson-v1",
+  "cityId": "le-plessis-robinson-fr",
+  "cityZoneId": "relation/27694",
+  "cityName": {
+    "en": "Le Plessis-Robinson",
+    "fr": "Le Plessis-Robinson"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien mairie du Plessis-Robinson is a distinctive architectural landmark in the city.",
+        "fr": "ancienne mairie située au Plessis-Robinson, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96599625",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-ancien-mairie-du-plessis-robinson-q96599625",
+      "latitude": 48.782571561,
+      "longitude": 2.262139694,
+      "name": {
+        "en": "Ancien mairie du Plessis-Robinson",
+        "fr": "Ancien mairie du Plessis-Robinson"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Colbert is an important witness to the city's history.",
+        "fr": "château français situé au Plessis-Robinson"
+      },
+      "externalIdentity": {
+        "id": "Q78651354",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-chateau-colbert-q78651354",
+      "latitude": 48.78356,
+      "longitude": 2.26612,
+      "name": {
+        "en": "château Colbert",
+        "fr": "château Colbert"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French castle",
+        "fr": "château français situé au Plessis-Robinson"
+      },
+      "externalIdentity": {
+        "id": "Q2971403",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-chateau-de-la-solitude-q2971403",
+      "latitude": 48.784513,
+      "longitude": 2.257641,
+      "name": {
+        "en": "château de la Solitude",
+        "fr": "château de la Solitude"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Tour Saint-Jacques is an important witness to the city's history.",
+        "fr": "château situé au Plessis-Robinson, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96599554",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-chateau-de-la-tour-saint-jacques-q96599554",
+      "latitude": 48.77697,
+      "longitude": 2.26596,
+      "name": {
+        "en": "château de la Tour Saint-Jacques",
+        "fr": "château de la Tour Saint-Jacques"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Le Plessis-Robinson, France",
+        "fr": "édifice du Plessis-Robinson, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2971880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-chateau-du-plessis-robinson-q2971880",
+      "latitude": 48.7823,
+      "longitude": 2.2623,
+      "name": {
+        "en": "château du Plessis-Robinson",
+        "fr": "château du Plessis-Robinson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088133",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-plessis-robinson-eglise-pa00088133",
+      "latitude": 48.7824009910544,
+      "longitude": 2.26253075515771,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18120468",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-eglise-saint-jean-baptiste-du-plessis-robinson-q18120468",
+      "latitude": 48.782551,
+      "longitude": 2.262556,
+      "name": {
+        "en": "église Saint-Jean-Baptiste du Plessis-Robinson",
+        "fr": "église Saint-Jean-Baptiste du Plessis-Robinson"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "arts center in Le Plessis-Robinson near Paris, France",
+        "fr": "pôle culturel situé au Plessis-Robinson, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q19945219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-maison-des-arts-du-plessis-robinson-q19945219",
+      "latitude": 48.777959,
+      "longitude": 2.253853,
+      "name": {
+        "en": "maison des Arts du Plessis-Robinson",
+        "fr": "maison des Arts du Plessis-Robinson"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "tram stop in the Ile-de-France",
+        "fr": "station du tramway d’Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q77350721",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-parc-des-sports-q77350721",
+      "latitude": 48.779507,
+      "longitude": 2.251687,
+      "name": {
+        "en": "Parc des Sports",
+        "fr": "Parc des Sports"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc situé au Plessis-Robinson, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3363826",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-plessis-robinson-parc-henri-sellier-q3363826",
+      "latitude": 48.78,
+      "longitude": 2.26715,
+      "name": {
+        "en": "parc Henri-Sellier",
+        "fr": "parc Henri-Sellier"
+      }
+    }
+  ]
+}

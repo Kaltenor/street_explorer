@@ -1,0 +1,204 @@
+{
+  "id": "auxerre-v1",
+  "cityId": "auxerre-fr",
+  "cityZoneId": "relation/282525",
+  "cityName": {
+    "en": "Auxerre",
+    "fr": "Auxerre"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Germain (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Germain (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113579",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-abbaye-saint-germain-ancienne-pa00113579",
+      "latitude": 47.8007623183782,
+      "longitude": 3.57258031632941,
+      "name": {
+        "en": "Abbaye Saint-Germain (ancienne)",
+        "fr": "Abbaye Saint-Germain (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Pierre (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Pierre (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113580",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-abbaye-saint-pierre-ancienne-pa00113580",
+      "latitude": 47.7951495466016,
+      "longitude": 3.57518223579219,
+      "name": {
+        "en": "Abbaye Saint-Pierre (ancienne)",
+        "fr": "Abbaye Saint-Pierre (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113586",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-ancien-cathedrale-saint-etienne-pa00113586",
+      "latitude": 47.7978479257749,
+      "longitude": 3.57283785486881,
+      "name": {
+        "en": "Ancien cathédrale Saint-Étienne",
+        "fr": "Ancien cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Vaux is a distinctive architectural landmark in the city.",
+        "fr": "Église de Vaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113590",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-eglise-de-vaux-pa00113590",
+      "latitude": 47.755744458927,
+      "longitude": 3.5902371050120196,
+      "name": {
+        "en": "Église de Vaux",
+        "fr": "Église de Vaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Eusèbe is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Eusèbe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113587",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-eglise-saint-eusebe-pa00113587",
+      "latitude": 47.7942160772293,
+      "longitude": 3.56826460825434,
+      "name": {
+        "en": "Église Saint-Eusèbe",
+        "fr": "Église Saint-Eusèbe"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire Saint-Germain is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire Saint-Germain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0184",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "auxerre-musee-d-art-et-d-histoire-saint-germain-m0184",
+      "latitude": 47.800283,
+      "longitude": 3.571975,
+      "name": {
+        "en": "musée d'art et d'histoire Saint-Germain",
+        "fr": "musée d'art et d'histoire Saint-Germain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7020",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "auxerre-musee-d-histoire-naturelle-m7020",
+      "latitude": 47.796936,
+      "longitude": 3.564362,
+      "name": {
+        "en": "musée d'histoire naturelle",
+        "fr": "musée d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Leblanc-Duvernoy is one of the city's notable cultural landmarks.",
+        "fr": "musée Leblanc-Duvernoy compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0185",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "auxerre-musee-leblanc-duvernoy-m0185",
+      "latitude": 47.795393,
+      "longitude": 3.566248,
+      "name": {
+        "en": "musée Leblanc-Duvernoy",
+        "fr": "musée Leblanc-Duvernoy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais épiscopal (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais épiscopal (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-palais-episcopal-ancien-pa00113603",
+      "latitude": 47.7981141037826,
+      "longitude": 3.57381138376441,
+      "name": {
+        "en": "Palais épiscopal (ancien)",
+        "fr": "Palais épiscopal (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de l'Horloge is an important witness to the city's history.",
+        "fr": "Tour de l'Horloge est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00113607",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "auxerre-tour-de-l-horloge-pa00113607",
+      "latitude": 47.7959321687722,
+      "longitude": 3.56988854004073,
+      "name": {
+        "en": "Tour de l'Horloge",
+        "fr": "Tour de l'Horloge"
+      }
+    }
+  ]
+}

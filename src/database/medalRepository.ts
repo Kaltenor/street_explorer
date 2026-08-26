@@ -24,6 +24,11 @@ type CollectedMedalRow = {
 
 const RETRO_SCAN_SETTING_PREFIX = "medal_retro_scan:";
 const RECORDING_REPAIR_SETTING_KEY = "medal_recording_repair:gameplay-v2";
+const medalAlbumSeedOperations = new Map<
+  string,
+  Promise<Awaited<ReturnType<typeof getMedalAlbumDefinition>>>
+>();
+let medalAlbumSeedChain = Promise.resolve();
 
 type MedalCoordinateRow = {
   acquired_at?: string;
@@ -52,6 +57,27 @@ type MedalRetroScanCursor = {
 };
 
 export async function ensureMedalAlbumSeeded(albumId: string) {
+  const existingOperation = medalAlbumSeedOperations.get(albumId);
+
+  if (existingOperation) {
+    return existingOperation;
+  }
+
+  const operation = medalAlbumSeedChain.then(() => seedMedalAlbum(albumId));
+  medalAlbumSeedChain = operation.then(
+    () => undefined,
+    () => undefined
+  );
+  const trackedOperation = operation.finally(() => {
+    if (medalAlbumSeedOperations.get(albumId) === trackedOperation) {
+      medalAlbumSeedOperations.delete(albumId);
+    }
+  });
+  medalAlbumSeedOperations.set(albumId, trackedOperation);
+  return trackedOperation;
+}
+
+async function seedMedalAlbum(albumId: string) {
   const album = await getMedalAlbumDefinition(albumId);
 
   if (!album) {

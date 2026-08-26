@@ -1,0 +1,204 @@
+{
+  "id": "roissy-en-brie-v1",
+  "cityId": "roissy-en-brie-fr",
+  "cityZoneId": "relation/403963",
+  "cityName": {
+    "en": "Roissy-en-Brie",
+    "fr": "Roissy-en-Brie"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Germain-d'Auxerre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Germain-d'Auxerre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/113021330",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "roissy-en-brie-eglise-saint-germain-d-auxerre-way-113021330",
+      "latitude": 48.791724,
+      "longitude": 2.6504335,
+      "name": {
+        "en": "Église Saint-Germain-d'Auxerre",
+        "fr": "Église Saint-Germain-d'Auxerre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Grande Halle is one of the city's notable cultural landmarks.",
+        "fr": "Grande Halle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/4825915222",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "roissy-en-brie-grande-halle-node-4825915222",
+      "latitude": 48.7930714,
+      "longitude": 2.6501734,
+      "name": {
+        "en": "Grande Halle",
+        "fr": "Grande Halle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mairie Annexe is a distinctive architectural landmark in the city.",
+        "fr": "Mairie Annexe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/8234901153",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "roissy-en-brie-mairie-annexe-node-8234901153",
+      "latitude": 48.7912832,
+      "longitude": 2.655285,
+      "name": {
+        "en": "Mairie Annexe",
+        "fr": "Mairie Annexe"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097237",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roissy-en-brie-monument-aux-morts-de-roissy-en-brie-q136097237",
+      "latitude": 48.794872,
+      "longitude": 2.658246,
+      "name": {
+        "en": "monument aux morts de Roissy-en-Brie",
+        "fr": "monument aux morts de Roissy-en-Brie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Animalier Hi-Han is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Animalier Hi-Han compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/737605912",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "roissy-en-brie-parc-animalier-hi-han-way-737605912",
+      "latitude": 48.8061567,
+      "longitude": 2.637409,
+      "name": {
+        "en": "Parc Animalier Hi-Han",
+        "fr": "Parc Animalier Hi-Han"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Mairie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Mairie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/671909440",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "roissy-en-brie-parc-de-la-mairie-way-671909440",
+      "latitude": 48.7908075,
+      "longitude": 2.6564671,
+      "name": {
+        "en": "Parc de la Mairie",
+        "fr": "Parc de la Mairie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc des Sources is one of the city's notable green or natural landmarks.",
+        "fr": "Parc des Sources compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/287143174",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "roissy-en-brie-parc-des-sources-way-287143174",
+      "latitude": 48.792719,
+      "longitude": 2.6507787,
+      "name": {
+        "en": "Parc des Sources",
+        "fr": "Parc des Sources"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Petit Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Petit Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/8235709675",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "roissy-en-brie-petit-theatre-node-8235709675",
+      "latitude": 48.7927851,
+      "longitude": 2.6499179,
+      "name": {
+        "en": "Petit Théâtre",
+        "fr": "Petit Théâtre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "poste électrique de Morbras is a distinctive architectural landmark in the city.",
+        "fr": "poste électrique de Morbras est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q111287786",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roissy-en-brie-poste-electrique-de-morbras-q111287786",
+      "latitude": 48.77895,
+      "longitude": 2.64804,
+      "name": {
+        "en": "poste électrique de Morbras",
+        "fr": "poste électrique de Morbras"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-et-Marne, France",
+        "fr": "commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q1058168",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "roissy-en-brie-roissy-en-brie-q1058168",
+      "latitude": 48.791111111,
+      "longitude": 2.651388888,
+      "name": {
+        "en": "Roissy-en-Brie",
+        "fr": "Roissy-en-Brie"
+      }
+    }
+  ]
+}

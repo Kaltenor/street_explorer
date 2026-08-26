@@ -1,0 +1,204 @@
+{
+  "id": "frontignan-v1",
+  "cityId": "frontignan-fr",
+  "cityZoneId": "relation/255490",
+  "cityName": {
+    "en": "Frontignan",
+    "fr": "Frontignan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôpital Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôpital Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103456",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frontignan-ancien-hopital-saint-jacques-pa00103456",
+      "latitude": 43.4461097373492,
+      "longitude": 3.7555096371432395,
+      "name": {
+        "en": "Ancien hôpital Saint-Jacques",
+        "fr": "Ancien hôpital Saint-Jacques"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "protected area in France",
+        "fr": "terrain acquis par le Conservatoire du Littoral"
+      },
+      "externalIdentity": {
+        "id": "Q108077095",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-bois-des-aresquiers-q108077095",
+      "latitude": 43.461564,
+      "longitude": 3.804066,
+      "name": {
+        "en": "Bois Des Aresquiers",
+        "fr": "Bois Des Aresquiers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "chapel located in Hérault, in France",
+        "fr": "chapelle située dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2957406",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-chapelle-des-penitents-de-frontignan-q2957406",
+      "latitude": 43.4471,
+      "longitude": 3.75494,
+      "name": {
+        "en": "chapelle des Pénitents de Frontignan",
+        "fr": "chapelle des Pénitents de Frontignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Hérault, in France",
+        "fr": "chapelle située dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60161199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-chapelle-saint-jacques-de-frontignan-q60161199",
+      "latitude": 43.447635,
+      "longitude": 3.752494,
+      "name": {
+        "en": "chapelle Saint-Jacques de Frontignan",
+        "fr": "chapelle Saint-Jacques de Frontignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hérault, in France",
+        "fr": "église située dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38380663",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-eglise-de-l-immaculee-conception-de-la-peyrade-q38380663",
+      "latitude": 43.427613,
+      "longitude": 3.726221,
+      "name": {
+        "en": "église de l'Immaculée-Conception de La Peyrade",
+        "fr": "église de l'Immaculée-Conception de La Peyrade"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00103455",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "frontignan-eglise-saint-paul-pa00103455",
+      "latitude": 43.4473485757106,
+      "longitude": 3.75525648245251,
+      "name": {
+        "en": "Église Saint-Paul",
+        "fr": "Église Saint-Paul"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Hérault department, France",
+        "fr": "monument aux morts de l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136055160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-monument-aux-morts-de-frontignan-q136055160",
+      "latitude": 43.4454995,
+      "longitude": 3.7571857,
+      "name": {
+        "en": "monument aux morts de Frontignan",
+        "fr": "monument aux morts de Frontignan"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "historical monument (PM34001617), Saint-Paul church in Frontignan (Hérault, France)",
+        "fr": "statue monument historique (PM34001617), église Saint-Paul de Frontignan (Hérault, France)"
+      },
+      "externalIdentity": {
+        "id": "Q29234332",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-vierge-a-l-enfant-q29234332",
+      "latitude": 43.447327777,
+      "longitude": 3.755275,
+      "name": {
+        "en": "Vierge à l'Enfant",
+        "fr": "Vierge à l'Enfant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096491",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-frontignan-q3096491",
+      "latitude": 43.444924,
+      "longitude": 3.758909,
+      "name": {
+        "en": "Frontignan",
+        "fr": "Frontignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Frontignan, France",
+        "fr": "siège municipal de Frontignan, dans l'Hérault, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119310329",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "frontignan-mairie-de-frontignan-q119310329",
+      "latitude": 43.445658579,
+      "longitude": 3.756233858,
+      "name": {
+        "en": "mairie de Frontignan",
+        "fr": "mairie de Frontignan"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "paita-v1",
+  "cityId": "paita-fr",
+  "cityZoneId": "relation/377755",
+  "cityName": {
+    "en": "Païta",
+    "fr": "Païta"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "main international airport of New Caledonia, France",
+        "fr": "aéroport desservant Noumea (Nouvelle-Calédonie, France)"
+      },
+      "externalIdentity": {
+        "id": "Q892783",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-aeroport-international-de-noumea-la-tontouta-q892783",
+      "latitude": -22.016388888,
+      "longitude": 166.216111111,
+      "name": {
+        "en": "aéroport international de Nouméa-La Tontouta",
+        "fr": "aéroport international de Nouméa-La Tontouta"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bight in New Caledonia, France",
+        "fr": "Baie de la Tamoa est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q33538898",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-baie-de-la-tamoa-q33538898",
+      "latitude": -22.05,
+      "longitude": 166.166666666,
+      "name": {
+        "en": "Baie de la Tamoa",
+        "fr": "Baie de la Tamoa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Air Force base at La Tontouta International Airport in Noumea, New Caledonia, France",
+        "fr": "base aérienne française"
+      },
+      "externalIdentity": {
+        "id": "Q2886488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-base-aerienne-186-noumea-q2886488",
+      "latitude": -22.016,
+      "longitude": 166.216,
+      "name": {
+        "en": "base aérienne 186 Nouméa",
+        "fr": "base aérienne 186 Nouméa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nouvelle-Calédonie, in France",
+        "fr": "église située en Nouvelle-Calédonie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38385891",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-eglise-du-sacre-c-ur-de-paita-q38385891",
+      "latitude": -22.129283,
+      "longitude": 166.370873,
+      "name": {
+        "en": "église du Sacré-Cœur de Païta",
+        "fr": "église du Sacré-Cœur de Païta"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "Île Caligou compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q34790360",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-ile-caligou-q34790360",
+      "latitude": -22.033333333,
+      "longitude": 166.15,
+      "name": {
+        "en": "Île Caligou",
+        "fr": "Île Caligou"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "Île Konga compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q34792075",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-ile-konga-q34792075",
+      "latitude": -22.033333333,
+      "longitude": 166.183333333,
+      "name": {
+        "en": "Île Konga",
+        "fr": "Île Konga"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Massif du Humboldt is a distinctive architectural landmark in the city.",
+        "fr": "Massif du Humboldt est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31790847",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-massif-du-humboldt-q31790847",
+      "latitude": -21.883333333,
+      "longitude": 166.416666666,
+      "name": {
+        "en": "Massif du Humboldt",
+        "fr": "Massif du Humboldt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in New Caledonia",
+        "fr": "montagne en Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q1547446",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-mont-humboldt-q1547446",
+      "latitude": -21.88388889,
+      "longitude": 166.42027778,
+      "name": {
+        "en": "mont Humboldt",
+        "fr": "mont Humboldt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Monts Kouvélé is a distinctive architectural landmark in the city.",
+        "fr": "Monts Kouvélé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31790124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-monts-kouvele-q31790124",
+      "latitude": -22.066666666,
+      "longitude": 166.433333333,
+      "name": {
+        "en": "Monts Kouvélé",
+        "fr": "Monts Kouvélé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in New Caledonia, France",
+        "fr": "commune française de la collectivité sui generis de la Nouvelle-Calédonie"
+      },
+      "externalIdentity": {
+        "id": "Q9737",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "paita-paita-q9737",
+      "latitude": -22.133333333,
+      "longitude": 166.366666666,
+      "name": {
+        "en": "Païta",
+        "fr": "Païta"
+      }
+    }
+  ]
+}

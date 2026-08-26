@@ -6,122 +6,27 @@
     "en": "Toulon",
     "fr": "Toulon"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "architecture",
-      "description": {
-        "en": "Cathédrale Sainte-Marie-de-la-Seds is a distinctive architectural landmark in the city.",
-        "fr": "Cathédrale Sainte-Marie-de-la-Seds est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00081749",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "toulon-cathedrale-sainte-marie-de-la-seds-pa00081749",
-      "latitude": 43.1216871345097,
-      "longitude": 5.93404061134142,
-      "name": {
-        "en": "Cathédrale Sainte-Marie-de-la-Seds",
-        "fr": "Cathédrale Sainte-Marie-de-la-Seds"
-      }
-    },
-    {
       "category": "culture",
       "description": {
-        "en": "musée d'art de Toulon - M.A.T. is one of the city's notable cultural landmarks.",
-        "fr": "musée d'art de Toulon - M.A.T. compte parmi les lieux culturels marquants de la ville."
+        "en": "Ancien Comédie is one of the city's notable cultural landmarks.",
+        "fr": "Ancien Comédie compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0943",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "toulon-musee-d-art-de-toulon-m-a-t-m0943",
-      "latitude": 43.125971,
-      "longitude": 5.927245,
-      "name": {
-        "en": "musée d'art de Toulon - M.A.T.",
-        "fr": "musée d'art de Toulon - M.A.T."
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
-        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "M7061",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "toulon-museum-d-histoire-naturelle-m7061",
-      "latitude": 43.143305,
-      "longitude": 5.910861,
-      "name": {
-        "en": "muséum d'histoire naturelle",
-        "fr": "muséum d'histoire naturelle"
-      }
-    },
-    {
-      "category": "history",
-      "description": {
-        "en": "Ancien Hôtel de ville, actuellement office de tourisme is an important witness to the city's history.",
-        "fr": "Ancien Hôtel de ville, actuellement office de tourisme est un témoin important de l’histoire de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00081755",
+        "id": "PA83000007",
         "source": "merimee",
         "type": "record"
       },
-      "id": "toulon-ancien-hotel-de-ville-actuellement-office-de-tourisme-pa00081755",
-      "latitude": 43.1201863028288,
-      "longitude": 5.93182814207966,
+      "id": "toulon-ancien-comedie-pa83000007",
+      "latitude": 43.1247980268818,
+      "longitude": 5.92904296159475,
       "name": {
-        "en": "Ancien Hôtel de ville, actuellement office de tourisme",
-        "fr": "Ancien Hôtel de ville, actuellement office de tourisme"
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "Musée de la Marine is one of the city's notable cultural landmarks.",
-        "fr": "Musée de la Marine compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00081748",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "toulon-musee-de-la-marine-pa00081748",
-      "latitude": 43.1218865287553,
-      "longitude": 5.928410320833341,
-      "name": {
-        "en": "Musée de la Marine",
-        "fr": "Musée de la Marine"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
-        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00081751",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "toulon-eglise-saint-louis-pa00081751",
-      "latitude": 43.1231412429899,
-      "longitude": 5.93031902757775,
-      "name": {
-        "en": "Église Saint-Louis",
-        "fr": "Église Saint-Louis"
+        "en": "Ancien Comédie",
+        "fr": "Ancien Comédie"
       }
     },
     {
@@ -146,6 +51,139 @@
     {
       "category": "history",
       "description": {
+        "en": "Ancien Hôtel de ville, actuellement office de tourisme is an important witness to the city's history.",
+        "fr": "Ancien Hôtel de ville, actuellement office de tourisme est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081755",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-ancien-hotel-de-ville-actuellement-office-de-tourisme-pa00081755",
+      "latitude": 43.1201863028288,
+      "longitude": 5.93182814207966,
+      "name": {
+        "en": "Ancien Hôtel de ville, actuellement office de tourisme",
+        "fr": "Ancien Hôtel de ville, actuellement office de tourisme"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Caserne retranchée du Faron is a distinctive architectural landmark in the city.",
+        "fr": "Caserne retranchée du Faron est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-caserne-retranchee-du-faron-pa83000037",
+      "latitude": 43.141566306666,
+      "longitude": 5.95701506858399,
+      "name": {
+        "en": "Caserne retranchée du Faron",
+        "fr": "Caserne retranchée du Faron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Sainte-Marie-de-la-Seds is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Sainte-Marie-de-la-Seds est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081749",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-cathedrale-sainte-marie-de-la-seds-pa00081749",
+      "latitude": 43.1216871345097,
+      "longitude": 5.93404061134142,
+      "name": {
+        "en": "Cathédrale Sainte-Marie-de-la-Seds",
+        "fr": "Cathédrale Sainte-Marie-de-la-Seds"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cercle naval (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Cercle naval (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-cercle-naval-ancien-pa83000042",
+      "latitude": 43.12528512890769,
+      "longitude": 5.9286685198362,
+      "name": {
+        "en": "Cercle naval (ancien)",
+        "fr": "Cercle naval (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-François-de-Paule is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-François-de-Paule est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081750",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-eglise-saint-francois-de-paule-pa00081750",
+      "latitude": 43.1197826440609,
+      "longitude": 5.9334978859292,
+      "name": {
+        "en": "Église Saint-François-de-Paule",
+        "fr": "Église Saint-François-de-Paule"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081751",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-eglise-saint-louis-pa00081751",
+      "latitude": 43.1231412429899,
+      "longitude": 5.93031902757775,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Évêché (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Évêché (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081792",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-eveche-ancien-pa00081792",
+      "latitude": 43.121565264401,
+      "longitude": 5.93458662994434,
+      "name": {
+        "en": "Évêché (ancien)",
+        "fr": "Évêché (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
         "en": "Fort de la Grosse-Tour, dit aussi Tour Royale is an important witness to the city's history.",
         "fr": "Fort de la Grosse-Tour, dit aussi Tour Royale est un témoin important de l’histoire de la ville."
       },
@@ -160,6 +198,196 @@
       "name": {
         "en": "Fort de la Grosse-Tour, dit aussi Tour Royale",
         "fr": "Fort de la Grosse-Tour, dit aussi Tour Royale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort du Grand Saint-Antoine, sis colline du Faron is an important witness to the city's history.",
+        "fr": "Fort du Grand Saint-Antoine, sis colline du Faron est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-fort-du-grand-saint-antoine-sis-colline-du-faron-pa83000034",
+      "latitude": 43.144275015564,
+      "longitude": 5.91620966613355,
+      "name": {
+        "en": "Fort du Grand Saint-Antoine, sis colline du Faron",
+        "fr": "Fort du Grand Saint-Antoine, sis colline du Faron"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Faron is an important witness to the city's history.",
+        "fr": "Fort Faron est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-fort-faron-pa83000051",
+      "latitude": 43.14013324144591,
+      "longitude": 5.958557986080964,
+      "name": {
+        "en": "Fort Faron",
+        "fr": "Fort Faron"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort Saint-Louis is an important witness to the city's history.",
+        "fr": "Fort Saint-Louis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081753",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-fort-saint-louis-pa00081753",
+      "latitude": 43.106862304872,
+      "longitude": 5.938802049162051,
+      "name": {
+        "en": "Fort Saint-Louis",
+        "fr": "Fort Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôpital Chalucet et jardin public Alexandre Ier is a distinctive architectural landmark in the city.",
+        "fr": "Hôpital Chalucet et jardin public Alexandre Ier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125726",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-hopital-chalucet-et-jardin-public-alexandre-ier-pa00125726",
+      "latitude": 43.1269069812016,
+      "longitude": 5.92628259967444,
+      "name": {
+        "en": "Hôpital Chalucet et jardin public Alexandre Ier",
+        "fr": "Hôpital Chalucet et jardin public Alexandre Ier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin de rocaille de la maison Noble is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin de rocaille de la maison Noble compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA83000036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-jardin-de-rocaille-de-la-maison-noble-pa83000036",
+      "latitude": 43.1090411040395,
+      "longitude": 5.9396300509429,
+      "name": {
+        "en": "Jardin de rocaille de la maison Noble",
+        "fr": "Jardin de rocaille de la maison Noble"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art de Toulon - M.A.T. is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art de Toulon - M.A.T. compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0943",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulon-musee-d-art-de-toulon-m-a-t-m0943",
+      "latitude": 43.125971,
+      "longitude": 5.927245,
+      "name": {
+        "en": "musée d'art de Toulon - M.A.T.",
+        "fr": "musée d'art de Toulon - M.A.T."
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée de la Marine is one of the city's notable cultural landmarks.",
+        "fr": "Musée de la Marine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081748",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-musee-de-la-marine-pa00081748",
+      "latitude": 43.1218865287553,
+      "longitude": 5.928410320833341,
+      "name": {
+        "en": "Musée de la Marine",
+        "fr": "Musée de la Marine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7061",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulon-museum-d-histoire-naturelle-m7061",
+      "latitude": 43.143305,
+      "longitude": 5.910861,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Italie is an important witness to the city's history.",
+        "fr": "Porte d'Italie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081757",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-porte-d-italie-pa00081757",
+      "latitude": 43.1212448455682,
+      "longitude": 5.93688997642494,
+      "name": {
+        "en": "Porte d'Italie",
+        "fr": "Porte d'Italie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre-Opéra is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre-Opéra compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081759",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulon-theatre-opera-pa00081759",
+      "latitude": 43.1244850449541,
+      "longitude": 5.93254217566538,
+      "name": {
+        "en": "Théâtre-Opéra",
+        "fr": "Théâtre-Opéra"
       }
     }
   ]

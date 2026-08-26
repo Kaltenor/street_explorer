@@ -1,0 +1,204 @@
+{
+  "id": "menton-v1",
+  "cityId": "menton-fr",
+  "cityZoneId": "relation/74727",
+  "cityName": {
+    "en": "Menton",
+    "fr": "Menton"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle dépositoire russe du cimetière du vieux château is an important witness to the city's history.",
+        "fr": "Chapelle dépositoire russe du cimetière du vieux château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000071",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-chapelle-depositoire-russe-du-cimetiere-du-vieux-chateau-pa06000071",
+      "latitude": 43.777937235604256,
+      "longitude": 7.506051816419171,
+      "name": {
+        "en": "Chapelle dépositoire russe du cimetière du vieux château",
+        "fr": "Chapelle dépositoire russe du cimetière du vieux château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine des Colombières is a distinctive architectural landmark in the city.",
+        "fr": "Domaine des Colombières est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080761",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-domaine-des-colombieres-pa00080761",
+      "latitude": 43.7879623630975,
+      "longitude": 7.517238192941591,
+      "name": {
+        "en": "Domaine des Colombières",
+        "fr": "Domaine des Colombières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel, chapelle de la Conception et leurs abords is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel, chapelle de la Conception et leurs abords est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080762",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-eglise-saint-michel-chapelle-de-la-conception-et-leurs-abords-pa00080762",
+      "latitude": 43.7770084280535,
+      "longitude": 7.507109689322041,
+      "name": {
+        "en": "Église Saint-Michel, chapelle de la Conception et leurs abords",
+        "fr": "Église Saint-Michel, chapelle de la Conception et leurs abords"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Adhémar de Lantagnac is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Adhémar de Lantagnac est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080763",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-hotel-d-adhemar-de-lantagnac-pa00080763",
+      "latitude": 43.775584448379,
+      "longitude": 7.50644196207895,
+      "name": {
+        "en": "Hôtel d'Adhémar de Lantagnac",
+        "fr": "Hôtel d'Adhémar de Lantagnac"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin des Romanciers ou Fontana Rosa is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin des Romanciers ou Fontana Rosa compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080766",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-jardin-des-romanciers-ou-fontana-rosa-pa00080766",
+      "latitude": 43.78565869859,
+      "longitude": 7.516117550885411,
+      "name": {
+        "en": "Jardin des Romanciers ou Fontana Rosa",
+        "fr": "Jardin des Romanciers ou Fontana Rosa"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin dit Serre de la Madone is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin dit Serre de la Madone compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080768",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-jardin-dit-serre-de-la-madone-pa00080768",
+      "latitude": 43.7760253163352,
+      "longitude": 7.47633124053767,
+      "name": {
+        "en": "Jardin dit Serre de la Madone",
+        "fr": "Jardin dit Serre de la Madone"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de préhistoire régionale is one of the city's notable cultural landmarks.",
+        "fr": "musée de préhistoire régionale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0874",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "menton-musee-de-prehistoire-regionale-m0874",
+      "latitude": 43.776334,
+      "longitude": 7.503564,
+      "name": {
+        "en": "musée de préhistoire régionale",
+        "fr": "musée de préhistoire régionale"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0878",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "menton-musee-des-beaux-arts-m0878",
+      "latitude": 43.766659,
+      "longitude": 7.4884,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jean Cocteau is one of the city's notable cultural landmarks.",
+        "fr": "musée Jean Cocteau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0879",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "menton-musee-jean-cocteau-m0879",
+      "latitude": 43.774945,
+      "longitude": 7.508676,
+      "name": {
+        "en": "musée Jean Cocteau",
+        "fr": "musée Jean Cocteau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Propriété dite Le Palais Carnoles is a distinctive architectural landmark in the city.",
+        "fr": "Propriété dite Le Palais Carnoles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080767",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "menton-propriete-dite-le-palais-carnoles-pa00080767",
+      "latitude": 43.7670835099991,
+      "longitude": 7.4878074140286905,
+      "name": {
+        "en": "Propriété dite Le Palais Carnoles",
+        "fr": "Propriété dite Le Palais Carnoles"
+      }
+    }
+  ]
+}

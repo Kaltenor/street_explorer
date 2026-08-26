@@ -1,0 +1,204 @@
+{
+  "id": "brunoy-v1",
+  "cityId": "brunoy-fr",
+  "cityZoneId": "relation/114189",
+  "cityName": {
+    "en": "Brunoy",
+    "fr": "Brunoy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Brunoy is an important witness to the city's history.",
+        "fr": "ancien château de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28494674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brunoy-chateau-de-brunoy-q28494674",
+      "latitude": 48.7005623,
+      "longitude": 2.49764889,
+      "name": {
+        "en": "château de Brunoy",
+        "fr": "château de Brunoy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Médard is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Médard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087836",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brunoy-eglise-saint-medard-pa00087836",
+      "latitude": 48.6974925235361,
+      "longitude": 2.50312839656514,
+      "name": {
+        "en": "Église Saint-Médard",
+        "fr": "Église Saint-Médard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brunoy-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Menhirs de la Haute-Borne is an important witness to the city's history.",
+        "fr": "Menhirs de la Haute-Borne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087838",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brunoy-menhirs-de-la-haute-borne-pa00087838",
+      "latitude": 48.697428238506,
+      "longitude": 2.51310874036277,
+      "name": {
+        "en": "Menhirs de la Haute-Borne",
+        "fr": "Menhirs de la Haute-Borne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136048689",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brunoy-monument-aux-morts-de-brunoy-et-d-epinay-sous-senart-q136048689",
+      "latitude": 48.704291,
+      "longitude": 2.510129,
+      "name": {
+        "en": "monument aux morts de Brunoy et d'Épinay-sous-Sénart",
+        "fr": "monument aux morts de Brunoy et d'Épinay-sous-Sénart"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097322",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brunoy-monument-aux-morts-de-brunoy-q136097322",
+      "latitude": 48.698069444,
+      "longitude": 2.504988888,
+      "name": {
+        "en": "monument aux morts de Brunoy",
+        "fr": "monument aux morts de Brunoy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal Robert Dubois-Corneau is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal Robert Dubois-Corneau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0403",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "brunoy-musee-municipal-robert-dubois-corneau-m0403",
+      "latitude": 48.700308,
+      "longitude": 2.500293,
+      "name": {
+        "en": "musée municipal Robert Dubois-Corneau",
+        "fr": "musée municipal Robert Dubois-Corneau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "obélisque de Brunoy is a distinctive architectural landmark in the city.",
+        "fr": "obélisque à Brunoy (Essonne)"
+      },
+      "externalIdentity": {
+        "id": "Q3348554",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "brunoy-obelisque-de-brunoy-q3348554",
+      "latitude": 48.6836,
+      "longitude": 2.49,
+      "name": {
+        "en": "obélisque de Brunoy",
+        "fr": "obélisque de Brunoy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont de Perronet is a distinctive architectural landmark in the city.",
+        "fr": "Pont de Perronet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087840",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brunoy-pont-de-perronet-pa00087840",
+      "latitude": 48.6960996831627,
+      "longitude": 2.50308561149438,
+      "name": {
+        "en": "Pont de Perronet",
+        "fr": "Pont de Perronet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont de Soulins is a distinctive architectural landmark in the city.",
+        "fr": "Pont de Soulins est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087841",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "brunoy-pont-de-soulins-pa00087841",
+      "latitude": 48.7015373842665,
+      "longitude": 2.49388654394307,
+      "name": {
+        "en": "Pont de Soulins",
+        "fr": "Pont de Soulins"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "les-sables-d-olonne-v1",
+  "cityId": "les-sables-d-olonne-fr",
+  "cityZoneId": "relation/156591",
+  "cityName": {
+    "en": "Les Sables-d'Olonne",
+    "fr": "Les Sables-d'Olonne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Les Sables d'Olonne, France",
+        "fr": "château fort aux Sables-d'Olonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28001405",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-chateau-saint-clair-q28001405",
+      "latitude": 46.4938106,
+      "longitude": -1.7958142,
+      "name": {
+        "en": "château Saint-Clair",
+        "fr": "château Saint-Clair"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-du-Bon-Port is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-du-Bon-Port est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110222",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "les-sables-d-olonne-eglise-notre-dame-du-bon-port-pa00110222",
+      "latitude": 46.4958332066557,
+      "longitude": -1.78602523516709,
+      "name": {
+        "en": "Église Notre-Dame-du-Bon-Port",
+        "fr": "Église Notre-Dame-du-Bon-Port"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Les Sables-d'Olonne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2137593",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-les-sables-d-olonne-q2137593",
+      "latitude": 46.499805,
+      "longitude": -1.781343,
+      "name": {
+        "en": "Les Sables-d'Olonne",
+        "fr": "Les Sables-d'Olonne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'abbaye Sainte-Croix is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'abbaye Sainte-Croix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0778",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "les-sables-d-olonne-musee-de-l-abbaye-sainte-croix-m0778",
+      "latitude": 46.497474,
+      "longitude": -1.777309,
+      "name": {
+        "en": "musée de l'abbaye Sainte-Croix",
+        "fr": "musée de l'abbaye Sainte-Croix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Les Sables-d'Olonne, France",
+        "fr": "musée d'Art moderne et contemporain des Sables-d'Olonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q3329340",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-musee-sainte-croix-des-sables-d-olonne-q3329340",
+      "latitude": 46.496834,
+      "longitude": -1.776796,
+      "name": {
+        "en": "musée Sainte-Croix des Sables-d'Olonne",
+        "fr": "musée Sainte-Croix des Sables-d'Olonne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "zoological parc in France",
+        "fr": "parc zoologique français"
+      },
+      "externalIdentity": {
+        "id": "Q3364797",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-parc-zoologique-des-sables-d-olonne-q3364797",
+      "latitude": 46.48391,
+      "longitude": -1.75562,
+      "name": {
+        "en": "parc zoologique des Sables-d'Olonne",
+        "fr": "parc zoologique des Sables-d'Olonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse in Vendée, France",
+        "fr": "phare français"
+      },
+      "externalIdentity": {
+        "id": "Q3378441",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-phare-de-l-armandeche-q3378441",
+      "latitude": 46.4898261,
+      "longitude": -1.8047688,
+      "name": {
+        "en": "phare de l'Armandèche",
+        "fr": "phare de l'Armandèche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse in Vendée, France",
+        "fr": "phare français"
+      },
+      "externalIdentity": {
+        "id": "Q3378293",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-phare-de-la-chaume-q3378293",
+      "latitude": 46.493864057,
+      "longitude": -1.795695707,
+      "name": {
+        "en": "phare de La Chaume",
+        "fr": "phare de La Chaume"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3558766",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-villa-tamaris-q3558766",
+      "latitude": 46.49318,
+      "longitude": -1.777186,
+      "name": {
+        "en": "villa Tamaris",
+        "fr": "villa Tamaris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in France",
+        "fr": "bâtiment aux Sables-d'Olonne (Vendée)"
+      },
+      "externalIdentity": {
+        "id": "Q32229652",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-sables-d-olonne-villa-blanche-q32229652",
+      "latitude": 46.49492,
+      "longitude": -1.78435,
+      "name": {
+        "en": "villa Blanche",
+        "fr": "villa Blanche"
+      }
+    }
+  ]
+}

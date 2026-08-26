@@ -1,0 +1,204 @@
+{
+  "id": "koungou-v1",
+  "cityId": "koungou-fr",
+  "cityZoneId": "relation/3366529",
+  "cityName": {
+    "en": "Koungou",
+    "fr": "Koungou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Centre pénitentiaire de Majicavo is a distinctive architectural landmark in the city.",
+        "fr": "Etablissement pénitentiaire français"
+      },
+      "externalIdentity": {
+        "id": "Q112574395",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-centre-penitentiaire-de-majicavo-q112574395",
+      "latitude": -12.751463892,
+      "longitude": 45.228099268,
+      "name": {
+        "en": "Centre pénitentiaire de Majicavo",
+        "fr": "Centre pénitentiaire de Majicavo"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "Île Blanche compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q32605377",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-ile-blanche-q32605377",
+      "latitude": -12.718611111,
+      "longitude": 45.173333333,
+      "name": {
+        "en": "Île Blanche",
+        "fr": "Île Blanche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in French municipality of Koungou in Mayotte",
+        "fr": "village de la commune française de Koungou à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q15233480",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-kangani-q15233480",
+      "latitude": -12.73222222,
+      "longitude": 45.1875,
+      "name": {
+        "en": "Kangani",
+        "fr": "Kangani"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Mayotte, France",
+        "fr": "commune française du département et région d'outre-mer de Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q770411",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-koungou-q770411",
+      "latitude": -12.735,
+      "longitude": 45.203611111,
+      "name": {
+        "en": "Koungou",
+        "fr": "Koungou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in the French municipality of Koungou in Mayotte",
+        "fr": "village de la commune française de Koungou à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q6674199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-longoni-q6674199",
+      "latitude": -12.734722222,
+      "longitude": 45.163333333,
+      "name": {
+        "en": "Longoni",
+        "fr": "Longoni"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in the commune of Koungou on Mayotte, France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q6737809",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-majicavo-koropa-q6737809",
+      "latitude": -12.746388888,
+      "longitude": 45.220277777,
+      "name": {
+        "en": "Majicavo Koropa",
+        "fr": "Majicavo Koropa"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Miangani is a distinctive architectural landmark in the city.",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q31954804",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-miangani-q31954804",
+      "latitude": -12.729722222,
+      "longitude": 45.174166666,
+      "name": {
+        "en": "Miangani",
+        "fr": "Miangani"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "port in Mayotte",
+        "fr": "port de commerce à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q31999276",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-port-de-longoni-q31999276",
+      "latitude": -12.723055555,
+      "longitude": 45.167222222,
+      "name": {
+        "en": "port de Longoni",
+        "fr": "port de Longoni"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "protected area on Mayotte",
+        "fr": "réserve naturelle nationale de France située à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q106762351",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-reserve-naturelle-nationale-des-forets-de-mayotte-q106762351",
+      "latitude": -12.763611111,
+      "longitude": 45.172777777,
+      "name": {
+        "en": "réserve naturelle nationale des forêts de Mayotte",
+        "fr": "réserve naturelle nationale des forêts de Mayotte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in the French municipality of Koungou in Mayotte",
+        "fr": "village de la commune française de Koungou à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q7849153",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "koungou-trevani-q7849153",
+      "latitude": -12.734444444,
+      "longitude": 45.198888888,
+      "name": {
+        "en": "Trévani",
+        "fr": "Trévani"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "givors-v1",
+  "cityId": "givors-fr",
+  "cityZoneId": "relation/139203",
+  "cityName": {
+    "en": "Givors",
+    "fr": "Givors"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Rhône, in France",
+        "fr": "chapelle située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60381895",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-chapelle-saint-lazare-de-saint-martin-de-cornas-q60381895",
+      "latitude": 45.586225,
+      "longitude": 4.715529,
+      "name": {
+        "en": "chapelle Saint-Lazare de Saint-Martin-de-Cornas",
+        "fr": "chapelle Saint-Lazare de Saint-Martin-de-Cornas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Givors, France",
+        "fr": "château à Givors"
+      },
+      "externalIdentity": {
+        "id": "Q78661392",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-chateau-saint-gerald-q78661392",
+      "latitude": 45.58069,
+      "longitude": 4.77373,
+      "name": {
+        "en": "château Saint-Gérald",
+        "fr": "château Saint-Gérald"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Rhône, in France",
+        "fr": "cimetière situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83191414",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-cimetiere-de-badin-q83191414",
+      "latitude": 45.57709,
+      "longitude": 4.7784,
+      "name": {
+        "en": "cimetière de Badin",
+        "fr": "cimetière de Badin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "confluent du Gier et du Rhône is a distinctive architectural landmark in the city.",
+        "fr": "lieu de convergence entre deux rivières, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119805570",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-confluent-du-gier-et-du-rhone-q119805570",
+      "latitude": 45.58671,
+      "longitude": 4.77512,
+      "name": {
+        "en": "confluent du Gier et du Rhône",
+        "fr": "confluent du Gier et du Rhône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA69000086",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "givors-eglise-saint-nicolas-pa69000086",
+      "latitude": 45.583153891249665,
+      "longitude": 4.775611915818304,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Givors, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2936724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-givors-canal-q2936724",
+      "latitude": 45.595791,
+      "longitude": 4.77261,
+      "name": {
+        "en": "Givors-Canal",
+        "fr": "Givors-Canal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Givors, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2788094",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-givors-ville-q2788094",
+      "latitude": 45.585232,
+      "longitude": 4.765786,
+      "name": {
+        "en": "Givors-Ville",
+        "fr": "Givors-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Rhône department, France",
+        "fr": "siège municipal de Givors, dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119310942",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-mairie-de-givors-q119310942",
+      "latitude": 45.58245,
+      "longitude": 4.77378,
+      "name": {
+        "en": "mairie de Givors",
+        "fr": "mairie de Givors"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Givors",
+        "fr": "mosquée située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20730290",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-mosquee-khaled-ibn-el-walid-q20730290",
+      "latitude": 45.595155,
+      "longitude": 4.77372,
+      "name": {
+        "en": "mosquée Khaled ibn El Walid",
+        "fr": "mosquée Khaled ibn El Walid"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont autoroutier de Givors is a distinctive architectural landmark in the city.",
+        "fr": "pont de Givors, en France"
+      },
+      "externalIdentity": {
+        "id": "Q61743767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "givors-pont-autoroutier-de-givors-q61743767",
+      "latitude": 45.589444444,
+      "longitude": 4.7775,
+      "name": {
+        "en": "pont autoroutier de Givors",
+        "fr": "pont autoroutier de Givors"
+      }
+    }
+  ]
+}

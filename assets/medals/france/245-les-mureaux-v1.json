@@ -1,0 +1,204 @@
+{
+  "id": "les-mureaux-v1",
+  "cityId": "les-mureaux-fr",
+  "cityZoneId": "relation/444123",
+  "cityName": {
+    "en": "Les Mureaux",
+    "fr": "Les Mureaux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Becheville is an important witness to the city's history.",
+        "fr": "château français situé aux Mureaux"
+      },
+      "externalIdentity": {
+        "id": "Q2968513",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-chateau-de-becheville-q2968513",
+      "latitude": 48.9834845,
+      "longitude": 1.9192265,
+      "name": {
+        "en": "château de Becheville",
+        "fr": "château de Becheville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "dolmen des Mureaux is an important witness to the city's history.",
+        "fr": "dolmen aux Mureaux (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q22923727",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-dolmen-des-mureaux-q22923727",
+      "latitude": 48.99513,
+      "longitude": 1.9051,
+      "name": {
+        "en": "dolmen des Mureaux",
+        "fr": "dolmen des Mureaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41802016",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-eglise-saint-pierre-et-saint-paul-des-mureaux-q41802016",
+      "latitude": 48.992725,
+      "longitude": 1.9076,
+      "name": {
+        "en": "église Saint-Pierre-et-Saint-Paul des Mureaux",
+        "fr": "église Saint-Pierre-et-Saint-Paul des Mureaux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située dans les Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q2886609",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-ile-de-loisirs-du-val-de-seine-q2886609",
+      "latitude": 49.000277777,
+      "longitude": 1.956666666,
+      "name": {
+        "en": "Île de loisirs du Val-de-Seine",
+        "fr": "Île de loisirs du Val-de-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q317433",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-les-mureaux-q317433",
+      "latitude": 48.993055555,
+      "longitude": 1.908333333,
+      "name": {
+        "en": "Les Mureaux",
+        "fr": "Les Mureaux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de l'Oseraie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3364182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-parc-de-l-oseraie-q3364182",
+      "latitude": 48.9983,
+      "longitude": 1.90611,
+      "name": {
+        "en": "parc de l'Oseraie",
+        "fr": "parc de l'Oseraie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de Sautour compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3364160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-parc-de-sautour-q3364160",
+      "latitude": 48.9739,
+      "longitude": 1.92056,
+      "name": {
+        "en": "parc de Sautour",
+        "fr": "parc de Sautour"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Molière is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Molière compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q86666369",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-parc-moliere-q86666369",
+      "latitude": 48.984976815,
+      "longitude": 1.916426307,
+      "name": {
+        "en": "Parc Molière",
+        "fr": "Parc Molière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396702",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-pont-rhin-et-danube-q3396702",
+      "latitude": 49.0011,
+      "longitude": 1.90667,
+      "name": {
+        "en": "pont Rhin et Danube",
+        "fr": "pont Rhin et Danube"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q3446397",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-mureaux-ru-d-orgeval-q3446397",
+      "latitude": 48.983333333,
+      "longitude": 1.916666666,
+      "name": {
+        "en": "ru d'Orgeval",
+        "fr": "ru d'Orgeval"
+      }
+    }
+  ]
+}

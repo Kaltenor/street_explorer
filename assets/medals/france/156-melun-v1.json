@@ -1,0 +1,204 @@
+{
+  "id": "melun-v1",
+  "cityId": "melun-fr",
+  "cityZoneId": "relation/80071",
+  "cityName": {
+    "en": "Melun",
+    "fr": "Melun"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Saint-Père (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye de Saint-Père (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087095",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-abbaye-de-saint-pere-ancienne-pa00087095",
+      "latitude": 48.5411537706151,
+      "longitude": 2.65582944974715,
+      "name": {
+        "en": "Abbaye de Saint-Père (ancienne)",
+        "fr": "Abbaye de Saint-Père (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Récollets is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Récollets est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132994",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-ancien-couvent-des-recollets-pa00132994",
+      "latitude": 48.539011069022,
+      "longitude": 2.6676847038972205,
+      "name": {
+        "en": "Ancien couvent des Récollets",
+        "fr": "Ancien couvent des Récollets"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien Hôtel de la Vicomté, actuellement musée is one of the city's notable cultural landmarks.",
+        "fr": "Ancien Hôtel de la Vicomté, actuellement musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-ancien-hotel-de-la-vicomte-actuellement-musee-pa00087099",
+      "latitude": 48.5366124324352,
+      "longitude": 2.6590008596442103,
+      "name": {
+        "en": "Ancien Hôtel de la Vicomté, actuellement musée",
+        "fr": "Ancien Hôtel de la Vicomté, actuellement musée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien prieuré Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Ancien prieuré Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087102",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-ancien-prieure-saint-sauveur-pa00087102",
+      "latitude": 48.536304457654005,
+      "longitude": 2.6575663492249904,
+      "name": {
+        "en": "Ancien prieuré Saint-Sauveur",
+        "fr": "Ancien prieuré Saint-Sauveur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087096",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-eglise-notre-dame-pa00087096",
+      "latitude": 48.5354321438924,
+      "longitude": 2.6602653435353103,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Aspais is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Aspais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-eglise-saint-aspais-pa00087097",
+      "latitude": 48.5389649658386,
+      "longitude": 2.65931397344503,
+      "name": {
+        "en": "Église Saint-Aspais",
+        "fr": "Église Saint-Aspais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Gendarmerie is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Gendarmerie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M9013",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "melun-musee-de-la-gendarmerie-m9013",
+      "latitude": 48.54648,
+      "longitude": 2.651583,
+      "name": {
+        "en": "musée de la Gendarmerie",
+        "fr": "musée de la Gendarmerie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Melun is one of the city's notable cultural landmarks.",
+        "fr": "musée de Melun compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0379",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "melun-musee-de-melun-m0379",
+      "latitude": 48.536398,
+      "longitude": 2.658972,
+      "name": {
+        "en": "musée de Melun",
+        "fr": "musée de Melun"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Barthélémy (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Barthélémy (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-eglise-saint-barthelemy-ancienne-pa00087098",
+      "latitude": 48.5417264755401,
+      "longitude": 2.65576884263396,
+      "name": {
+        "en": "Église Saint-Barthélémy (ancienne)",
+        "fr": "Église Saint-Barthélémy (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "melun-immeuble-pa00087100",
+      "latitude": 48.5379212233661,
+      "longitude": 2.65856569205128,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "le-tampon-v1",
+  "cityId": "le-tampon-fr",
+  "cityZoneId": "relation/317239",
+  "cityName": {
+    "en": "Le Tampon",
+    "fr": "Le Tampon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "nature",
+      "description": {
+        "en": "Bois Court is one of the city's notable green or natural landmarks.",
+        "fr": "quartier du Tampon, à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q2908934",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-bois-court-q2908934",
+      "latitude": -21.195741698,
+      "longitude": 55.538451978,
+      "name": {
+        "en": "Bois Court",
+        "fr": "Bois Court"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q2923910",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-bras-de-la-plaine-q2923910",
+      "latitude": -21.28512,
+      "longitude": 55.45636,
+      "name": {
+        "en": "Bras de la Plaine",
+        "fr": "Bras de la Plaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cave in France",
+        "fr": "Caverne des Lataniers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2943292",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-caverne-des-lataniers-q2943292",
+      "latitude": -21.2057,
+      "longitude": 55.6514,
+      "name": {
+        "en": "Caverne des Lataniers",
+        "fr": "Caverne des Lataniers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée de La Réunion sur les volcans"
+      },
+      "externalIdentity": {
+        "id": "Q2974801",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-cite-du-volcan-q2974801",
+      "latitude": -21.2029,
+      "longitude": 55.5746,
+      "name": {
+        "en": "Cité du Volcan",
+        "fr": "Cité du Volcan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958381",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-eglise-saint-francois-de-sales-du-tampon-q15958381",
+      "latitude": -21.2818,
+      "longitude": 55.5196,
+      "name": {
+        "en": "église Saint-François de Sales du Tampon",
+        "fr": "église Saint-François de Sales du Tampon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Le Tampon, Réunion, France",
+        "fr": "hôtel de ville du Tampon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q115973479",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-hotel-de-ville-du-tampon-q115973479",
+      "latitude": -21.27821,
+      "longitude": 55.5153,
+      "name": {
+        "en": "hôtel de ville du Tampon",
+        "fr": "hôtel de ville du Tampon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet à La Réunion, dans le massif du Piton de la Fournaise"
+      },
+      "externalIdentity": {
+        "id": "Q3339228",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-nez-de-b-uf-q3339228",
+      "latitude": -21.2056,
+      "longitude": 55.6206,
+      "name": {
+        "en": "Nez de Bœuf",
+        "fr": "Nez de Bœuf"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de l'ile de la Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3364275",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-parc-des-palmiers-q3364275",
+      "latitude": -21.2528755,
+      "longitude": 55.49454,
+      "name": {
+        "en": "parc des Palmiers",
+        "fr": "parc des Palmiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Argamasse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389353",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-argamasse-q3389353",
+      "latitude": -21.1861,
+      "longitude": 55.6278,
+      "name": {
+        "en": "piton Argamasse",
+        "fr": "piton Argamasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton dans l'Bout est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389377",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-dans-l-bout-q3389377",
+      "latitude": -21.1936,
+      "longitude": 55.6367,
+      "name": {
+        "en": "piton dans l'Bout",
+        "fr": "piton dans l'Bout"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre Luc Donat is one of the city's notable cultural landmarks.",
+        "fr": "théâtre à Le Tampon, France"
+      },
+      "externalIdentity": {
+        "id": "Q3527507",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-theatre-luc-donat-q3527507",
+      "latitude": -21.2805,
+      "longitude": 55.5202,
+      "name": {
+        "en": "théâtre Luc Donat",
+        "fr": "théâtre Luc Donat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "piton de la Source is a distinctive architectural landmark in the city.",
+        "fr": "piton de la Source est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q18415063",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-de-la-source-q18415063",
+      "latitude": -21.17306,
+      "longitude": 55.59111,
+      "name": {
+        "en": "piton de la Source",
+        "fr": "piton de la Source"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton des Feux à Mauzac est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389391",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-des-feux-a-mauzac-q3389391",
+      "latitude": -21.200555555,
+      "longitude": 55.650555555,
+      "name": {
+        "en": "piton des Feux à Mauzac",
+        "fr": "piton des Feux à Mauzac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Desforges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389361",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-desforges-q3389361",
+      "latitude": -21.1964,
+      "longitude": 55.5744,
+      "name": {
+        "en": "piton Desforges",
+        "fr": "piton Desforges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Dugain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389364",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-dugain-q3389364",
+      "latitude": -21.2042,
+      "longitude": 55.5878,
+      "name": {
+        "en": "piton Dugain",
+        "fr": "piton Dugain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet de montagne réunionnais"
+      },
+      "externalIdentity": {
+        "id": "Q3389367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-hyacinthe-q3389367",
+      "latitude": -21.2167,
+      "longitude": 55.5392,
+      "name": {
+        "en": "piton Hyacinthe",
+        "fr": "piton Hyacinthe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet du Tampon, à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q18745398",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-rouge-q18745398",
+      "latitude": -21.18917,
+      "longitude": 55.60194,
+      "name": {
+        "en": "piton Rouge",
+        "fr": "piton Rouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Textor est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3389376",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-textor-q3389376",
+      "latitude": -21.18692,
+      "longitude": 55.64124,
+      "name": {
+        "en": "piton Textor",
+        "fr": "piton Textor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "piton Tortue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q16670216",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-piton-tortue-q16670216",
+      "latitude": -21.14987,
+      "longitude": 55.55168,
+      "name": {
+        "en": "piton Tortue",
+        "fr": "piton Tortue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in Réunion",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q3420313",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-tampon-ravine-blanche-q3420313",
+      "latitude": -21.208333,
+      "longitude": 55.616111,
+      "name": {
+        "en": "Ravine Blanche",
+        "fr": "Ravine Blanche"
+      }
+    }
+  ]
+}

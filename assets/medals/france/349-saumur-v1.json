@@ -1,0 +1,204 @@
+{
+  "id": "saumur-v1",
+  "cityId": "saumur-fr",
+  "cityZoneId": "relation/272368",
+  "cityName": {
+    "en": "Saumur",
+    "fr": "Saumur"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Saumur is an important witness to the city's history.",
+        "fr": "Château de Saumur est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109307",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-chateau-de-saumur-pa00109307",
+      "latitude": 47.2568970582335,
+      "longitude": -0.0729003078108734,
+      "name": {
+        "en": "Château de Saumur",
+        "fr": "Château de Saumur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Saint-Hilaire is a distinctive architectural landmark in the city.",
+        "fr": "Église de Saint-Hilaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109319",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-eglise-de-saint-hilaire-pa00109319",
+      "latitude": 47.2745385644707,
+      "longitude": -0.109757159362401,
+      "name": {
+        "en": "Église de Saint-Hilaire",
+        "fr": "Église de Saint-Hilaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Saint-Lambert-des-Levées is a distinctive architectural landmark in the city.",
+        "fr": "Église de Saint-Lambert-des-Levées est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109320",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-eglise-de-saint-lambert-des-levees-pa00109320",
+      "latitude": 47.2778442603724,
+      "longitude": -0.0823352536914411,
+      "name": {
+        "en": "Église de Saint-Lambert-des-Levées",
+        "fr": "Église de Saint-Lambert-des-Levées"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-Nantilly is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-Nantilly est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109317",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-eglise-notre-dame-de-nantilly-pa00109317",
+      "latitude": 47.25318702477921,
+      "longitude": -0.0764148939229884,
+      "name": {
+        "en": "Église Notre-Dame-de-Nantilly",
+        "fr": "Église Notre-Dame-de-Nantilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Ardilliers is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Ardilliers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109316",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-eglise-notre-dame-des-ardilliers-pa00109316",
+      "latitude": 47.2531227414838,
+      "longitude": -0.0632251973897036,
+      "name": {
+        "en": "Église Notre-Dame-des-Ardilliers",
+        "fr": "Église Notre-Dame-des-Ardilliers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fortifications du front Ouest is an important witness to the city's history.",
+        "fr": "Fortifications du front Ouest est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109323",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-fortifications-du-front-ouest-pa00109323",
+      "latitude": 47.25793681053686,
+      "longitude": -0.07807566300334329,
+      "name": {
+        "en": "Fortifications du front Ouest",
+        "fr": "Fortifications du front Ouest"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000088",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-theatre-pa49000088",
+      "latitude": 47.2609013881601,
+      "longitude": -0.0765054658211411,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Bourg is an important witness to the city's history.",
+        "fr": "Tour du Bourg est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-tour-du-bourg-pa00109343",
+      "latitude": 47.2566820834641,
+      "longitude": -0.0774847182720659,
+      "name": {
+        "en": "Tour du Bourg",
+        "fr": "Tour du Bourg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Grénetière is an important witness to the city's history.",
+        "fr": "Tour Grénetière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109344",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-tour-grenetiere-pa00109344",
+      "latitude": 47.256870985284,
+      "longitude": -0.0783934099063787,
+      "name": {
+        "en": "Tour Grénetière",
+        "fr": "Tour Grénetière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109329",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saumur-hotel-de-ville-pa00109329",
+      "latitude": 47.2601165819818,
+      "longitude": -0.0754949407526505,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

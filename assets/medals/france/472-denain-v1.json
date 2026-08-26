@@ -1,0 +1,204 @@
+{
+  "id": "denain-v1",
+  "cityId": "denain-fr",
+  "cityZoneId": "relation/53825",
+  "cityName": {
+    "en": "Denain",
+    "fr": "Denain"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Nord, in France",
+        "fr": "abbaye située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2820571",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-abbaye-de-denain-q2820571",
+      "latitude": 50.19462,
+      "longitude": 3.24207,
+      "name": {
+        "en": "abbaye de Denain",
+        "fr": "abbaye de Denain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q55531194",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-cimetiere-de-l-eglise-sainte-remfroye-de-denain-q55531194",
+      "latitude": 50.32724,
+      "longitude": 3.40129,
+      "name": {
+        "en": "cimetière de l'église Sainte-Remfroye de Denain",
+        "fr": "cimetière de l'église Sainte-Remfroye de Denain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Denain, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q19242666",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-denain-mines-q19242666",
+      "latitude": 50.3294,
+      "longitude": 3.38605,
+      "name": {
+        "en": "Denain-Mines",
+        "fr": "Denain-Mines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Denain, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2186917",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-denain-q2186917",
+      "latitude": 50.334685,
+      "longitude": 3.38869,
+      "name": {
+        "en": "Denain",
+        "fr": "Denain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fosse Chabaud-Latour is an important witness to the city's history.",
+        "fr": "ancien charbonnage du bassin minier du Nord-Pas-de-Calais (1842-1853)"
+      },
+      "externalIdentity": {
+        "id": "Q3079402",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-fosse-chabaud-latour-q3079402",
+      "latitude": 50.3345,
+      "longitude": 3.39954,
+      "name": {
+        "en": "Fosse Chabaud-Latour",
+        "fr": "Fosse Chabaud-Latour"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la guerre de 1870 de Denain is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q55527726",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-monument-aux-morts-de-la-guerre-de-1870-de-denain-q55527726",
+      "latitude": 50.33455,
+      "longitude": 3.409012,
+      "name": {
+        "en": "monument aux morts de la guerre de 1870 de Denain",
+        "fr": "monument aux morts de la guerre de 1870 de Denain"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de la Première Guerre mondiale de Denain is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q55528015",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-monument-aux-morts-de-la-premiere-guerre-mondiale-de-denain-q55528015",
+      "latitude": 50.33408,
+      "longitude": 3.388781,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale de Denain",
+        "fr": "monument aux morts de la Première Guerre mondiale de Denain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'archéologie et d'histoire locale is one of the city's notable cultural landmarks.",
+        "fr": "musée d'archéologie et d'histoire locale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0618",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "denain-musee-d-archeologie-et-d-histoire-locale-m0618",
+      "latitude": 50.327614,
+      "longitude": 3.400973,
+      "name": {
+        "en": "musée d'archéologie et d'histoire locale",
+        "fr": "musée d'archéologie et d'histoire locale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q61934584",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "denain-section-du-commonwealth-du-cimetiere-communal-de-denain-q61934584",
+      "latitude": 50.33343,
+      "longitude": 3.40821,
+      "name": {
+        "en": "section du Commonwealth du cimetière communal de Denain",
+        "fr": "section du Commonwealth du cimetière communal de Denain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "denain-theatre-municipal-pa59000056",
+      "latitude": 50.3271557742754,
+      "longitude": 3.3964566867663306,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    }
+  ]
+}

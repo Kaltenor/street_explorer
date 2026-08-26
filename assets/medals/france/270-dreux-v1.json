@@ -1,0 +1,204 @@
+{
+  "id": "dreux-v1",
+  "cityId": "dreux-fr",
+  "cityZoneId": "relation/70807",
+  "cityName": {
+    "en": "Dreux",
+    "fr": "Dreux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien arsenal des pompiers is a distinctive architectural landmark in the city.",
+        "fr": "Ancien arsenal des pompiers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA28000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-ancien-arsenal-des-pompiers-pa28000001",
+      "latitude": 48.7356076377963,
+      "longitude": 1.36409379130316,
+      "name": {
+        "en": "Ancien arsenal des pompiers",
+        "fr": "Ancien arsenal des pompiers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de ville, dit Le Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de ville, dit Le Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-ancien-hotel-de-ville-dit-le-beffroi-pa00097100",
+      "latitude": 48.7355227752732,
+      "longitude": 1.36729869872352,
+      "name": {
+        "en": "Ancien hôtel de ville, dit Le Beffroi",
+        "fr": "Ancien hôtel de ville, dit Le Beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel-Dieu de Dreux is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel-Dieu de Dreux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-ancien-hotel-dieu-de-dreux-pa00097099",
+      "latitude": 48.7359050372312,
+      "longitude": 1.36624725347219,
+      "name": {
+        "en": "Ancien Hôtel-Dieu de Dreux",
+        "fr": "Ancien Hôtel-Dieu de Dreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciennes imprimeries Lefèbvre et ancienne librairie Broult-Dividis is a distinctive architectural landmark in the city.",
+        "fr": "Anciennes imprimeries Lefèbvre et ancienne librairie Broult-Dividis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA28000003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-anciennes-imprimeries-lefebvre-et-ancienne-librairie-broult-dividis-pa28000003",
+      "latitude": 48.7356032130557,
+      "longitude": 1.36677506175725,
+      "name": {
+        "en": "Anciennes imprimeries Lefèbvre et ancienne librairie Broult-Dividis",
+        "fr": "Anciennes imprimeries Lefèbvre et ancienne librairie Broult-Dividis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire de Dreux is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire de Dreux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0241",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dreux-musee-d-art-et-d-histoire-de-dreux-m0241",
+      "latitude": 48.733472,
+      "longitude": 1.368066,
+      "name": {
+        "en": "musée d'art et d'histoire de Dreux",
+        "fr": "musée d'art et d'histoire de Dreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de la chapelle royale Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de la chapelle royale Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-domaine-de-la-chapelle-royale-saint-louis-pa00097097",
+      "latitude": 48.7388197687734,
+      "longitude": 1.36440581233857,
+      "name": {
+        "en": "Domaine de la chapelle royale Saint-Louis",
+        "fr": "Domaine de la chapelle royale Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00097098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-eglise-saint-pierre-pa00097098",
+      "latitude": 48.7361127322196,
+      "longitude": 1.3684119056222,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Caisse d'Epargne is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Caisse d'Epargne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA28000007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-hotel-de-caisse-d-epargne-pa28000007",
+      "latitude": 48.735485535901304,
+      "longitude": 1.36852076549422,
+      "name": {
+        "en": "Hôtel de Caisse d'Epargne",
+        "fr": "Hôtel de Caisse d'Epargne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Salvat-Duhalde is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Salvat-Duhalde est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA28000008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-hotel-de-salvat-duhalde-pa28000008",
+      "latitude": 48.7382988280697,
+      "longitude": 1.36708076411675,
+      "name": {
+        "en": "Hôtel de Salvat-Duhalde",
+        "fr": "Hôtel de Salvat-Duhalde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison romane is a distinctive architectural landmark in the city.",
+        "fr": "Maison romane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA28000025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dreux-maison-romane-pa28000025",
+      "latitude": 48.7366583994441,
+      "longitude": 1.36870777883748,
+      "name": {
+        "en": "Maison romane",
+        "fr": "Maison romane"
+      }
+    }
+  ]
+}

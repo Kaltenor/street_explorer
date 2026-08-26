@@ -1,0 +1,204 @@
+{
+  "id": "plaisance-du-touch-v1",
+  "cityId": "plaisance-du-touch-fr",
+  "cityZoneId": "relation/158886",
+  "cityName": {
+    "en": "Plaisance-du-Touch",
+    "fr": "Plaisance-du-Touch"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Vitarelles is an important witness to the city's history.",
+        "fr": "Château des Vitarelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74291440",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "plaisance-du-touch-chateau-des-vitarelles-way-74291440",
+      "latitude": 43.5655113,
+      "longitude": 1.3205826,
+      "name": {
+        "en": "Château des Vitarelles",
+        "fr": "Château des Vitarelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094421",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "plaisance-du-touch-eglise-pa00094421",
+      "latitude": 43.5655387283979,
+      "longitude": 1.29547271760049,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Barthélemy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Barthélemy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74306619",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "plaisance-du-touch-eglise-saint-barthelemy-way-74306619",
+      "latitude": 43.5656177,
+      "longitude": 1.2956663,
+      "name": {
+        "en": "Église Saint-Barthélemy",
+        "fr": "Église Saint-Barthélemy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Onyx is one of the city's notable cultural landmarks.",
+        "fr": "Onyx compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/6055960944",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "plaisance-du-touch-onyx-node-6055960944",
+      "latitude": 43.5625544,
+      "longitude": 1.2915847,
+      "name": {
+        "en": "Onyx",
+        "fr": "Onyx"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de Terris is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de Terris compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/945106634",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "plaisance-du-touch-parc-de-terris-way-945106634",
+      "latitude": 43.5608453,
+      "longitude": 1.2706976,
+      "name": {
+        "en": "Parc de Terris",
+        "fr": "Parc de Terris"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc du Pigeonnier is one of the city's notable green or natural landmarks.",
+        "fr": "Parc du Pigeonnier compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1234570213",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "plaisance-du-touch-parc-du-pigeonnier-way-1234570213",
+      "latitude": 43.5632269,
+      "longitude": 1.3098568,
+      "name": {
+        "en": "Parc du Pigeonnier",
+        "fr": "Parc du Pigeonnier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc zoologique de Plaisance du Touch is one of the city's notable green or natural landmarks.",
+        "fr": "parc zoologique français"
+      },
+      "externalIdentity": {
+        "id": "Q3364791",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisance-du-touch-parc-zoologique-de-plaisance-du-touch-q3364791",
+      "latitude": 43.55945206,
+      "longitude": 1.26495004,
+      "name": {
+        "en": "parc zoologique de Plaisance du Touch",
+        "fr": "parc zoologique de Plaisance du Touch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Haute-Garonne, France",
+        "fr": "commune française du département de la Haute-Garonne"
+      },
+      "externalIdentity": {
+        "id": "Q608231",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "plaisance-du-touch-plaisance-du-touch-q608231",
+      "latitude": 43.565555555,
+      "longitude": 1.296388888,
+      "name": {
+        "en": "Plaisance-du-Touch",
+        "fr": "Plaisance-du-Touch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont sur le Touch is a distinctive architectural landmark in the city.",
+        "fr": "Pont sur le Touch est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094422",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "plaisance-du-touch-pont-sur-le-touch-pa00094422",
+      "latitude": 43.5613692092783,
+      "longitude": 1.29686094575311,
+      "name": {
+        "en": "Pont sur le Touch",
+        "fr": "Pont sur le Touch"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre du Visiteur is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre du Visiteur compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/11698050761",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "plaisance-du-touch-theatre-du-visiteur-node-11698050761",
+      "latitude": 43.5706193,
+      "longitude": 1.3127221,
+      "name": {
+        "en": "Théâtre du Visiteur",
+        "fr": "Théâtre du Visiteur"
+      }
+    }
+  ]
+}

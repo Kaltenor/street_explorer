@@ -85,6 +85,29 @@ assert(results.totals.expandedBudgetUtilization <= 1, "the actual wave fits its 
 assert(totalAlbums === results.totals.cityCount + 58, "catalogue album rollup includes the Dutch pilot");
 assert(totalMedals === results.totals.medalCount + 492, "catalogue medal rollup includes the Dutch pilot");
 
+const storageReport = JSON.parse(
+  fs.readFileSync(path.join(packDirectory, "medal-storage-report.json"), "utf8")
+);
+assert(
+  storageReport.countries.fr.albumCount === 500 &&
+    storageReport.countries.fr.medalCount === 6082 &&
+    storageReport.countries.fr.sqliteBytes === 3682304,
+  "France storage report matches the frozen top-500 catalogue"
+);
+for (const countryCode of expectedCountries) {
+  const descriptor = JSON.parse(
+    fs.readFileSync(path.join(packDirectory, `${countryCode}-v1-descriptor.json`), "utf8")
+  );
+  const storage = storageReport.countries[countryCode];
+  assert(
+    storage.albumCount === descriptor.albums.length &&
+      storage.medalCount === descriptor.medalCount &&
+      storage.distributedBytes === descriptor.compressedBytes &&
+      storage.sqliteBytes > storage.sqliteEmptySchemaBytes,
+    `${countryCode} storage report matches the published pack`
+  );
+}
+
 console.log(`All country-pack checks passed for ${totalAlbums} albums and ${totalMedals} medals.`);
 
 function assert(condition, message) {

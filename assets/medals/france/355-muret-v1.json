@@ -1,0 +1,204 @@
+{
+  "id": "muret-v1",
+  "cityId": "muret-fr",
+  "cityZoneId": "relation/122800",
+  "cityName": {
+    "en": "Muret",
+    "fr": "Muret"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Haute-Garonne, in France",
+        "fr": "chapelle située en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60364895",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-chapelle-saint-amans-d-estantens-q60364895",
+      "latitude": 43.403614,
+      "longitude": 1.311418,
+      "name": {
+        "en": "chapelle Saint-Amans d'Estantens",
+        "fr": "chapelle Saint-Amans d'Estantens"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Cadeilhac is an important witness to the city's history.",
+        "fr": "Château de Cadeilhac est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA31000062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "muret-chateau-de-cadeilhac-pa31000062",
+      "latitude": 43.4351116330486,
+      "longitude": 1.31949832909863,
+      "name": {
+        "en": "Château de Cadeilhac",
+        "fr": "Château de Cadeilhac"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Rudelle is an important witness to the city's history.",
+        "fr": "Château de Rudelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "muret-chateau-de-rudelle-pa00094404",
+      "latitude": 43.4518066031244,
+      "longitude": 1.31061095697135,
+      "name": {
+        "en": "Château de Rudelle",
+        "fr": "Château de Rudelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Haute-Garonne, in France",
+        "fr": "cimetière situé en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109567966",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-cimetiere-de-muret-q109567966",
+      "latitude": 43.46662,
+      "longitude": 1.32248,
+      "name": {
+        "en": "cimetière de Muret",
+        "fr": "cimetière de Muret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094405",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "muret-eglise-saint-jacques-pa00094405",
+      "latitude": 43.4607513814198,
+      "longitude": 1.32655713300933,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Haute-Garonne, in France",
+        "fr": "église située en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60389008",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-eglise-saint-martin-d-ox-q60389008",
+      "latitude": 43.442057,
+      "longitude": 1.291712,
+      "name": {
+        "en": "église Saint-Martin d'Ox",
+        "fr": "église Saint-Martin d'Ox"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en Haute-Garonne, France"
+      },
+      "externalIdentity": {
+        "id": "Q23727193",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-musee-clement-ader-q23727193",
+      "latitude": 43.461863,
+      "longitude": 1.328122,
+      "name": {
+        "en": "musée Clément-Ader",
+        "fr": "musée Clément-Ader"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Clément Ader is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Clément Ader compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA31000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "muret-parc-clement-ader-pa31000039",
+      "latitude": 43.4612678729494,
+      "longitude": 1.32318469055144,
+      "name": {
+        "en": "Parc Clément Ader",
+        "fr": "Parc Clément Ader"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Haute-Garonne department, France",
+        "fr": "siège municipal de Muret, en Haute-Garonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119320156",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-mairie-de-muret-q119320156",
+      "latitude": 43.461498947,
+      "longitude": 1.330559924,
+      "name": {
+        "en": "mairie de Muret",
+        "fr": "mairie de Muret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Muret, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2611740",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "muret-muret-q2611740",
+      "latitude": 43.464722,
+      "longitude": 1.323889,
+      "name": {
+        "en": "Muret",
+        "fr": "Muret"
+      }
+    }
+  ]
+}

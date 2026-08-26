@@ -1,0 +1,204 @@
+{
+  "id": "chilly-mazarin-v1",
+  "cityId": "chilly-mazarin-fr",
+  "cityZoneId": "relation/395443",
+  "cityName": {
+    "en": "Chilly-Mazarin",
+    "fr": "Chilly-Mazarin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Bel Abord is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2968515",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-chateau-de-bel-abord-q2968515",
+      "latitude": 48.7064,
+      "longitude": 2.31313,
+      "name": {
+        "en": "château de Bel Abord",
+        "fr": "château de Bel Abord"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Chilly-Mazarin is an important witness to the city's history.",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q2968931",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-chateau-de-chilly-mazarin-q2968931",
+      "latitude": 48.7024,
+      "longitude": 2.31256,
+      "name": {
+        "en": "château de Chilly-Mazarin",
+        "fr": "château de Chilly-Mazarin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087857",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chilly-mazarin-chateau-pa00087857",
+      "latitude": 48.701741114709,
+      "longitude": 2.31337774073031,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Bel Abord is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Bel Abord est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087859",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chilly-mazarin-domaine-de-bel-abord-pa00087859",
+      "latitude": 48.7052782079608,
+      "longitude": 2.31520386150345,
+      "name": {
+        "en": "Domaine de Bel Abord",
+        "fr": "Domaine de Bel Abord"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Chilly-Mazarin, France",
+        "fr": "édifice religieux catholique à Chilly-Mazarin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29898925",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-eglise-notre-dame-du-concile-de-chilly-mazarin-q29898925",
+      "latitude": 48.69545,
+      "longitude": 2.31225,
+      "name": {
+        "en": "église Notre-Dame-du-Concile de Chilly-Mazarin",
+        "fr": "église Notre-Dame-du-Concile de Chilly-Mazarin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Chilly-Mazarin, France",
+        "fr": "édifice religieux catholique à Chilly-Mazarin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584775",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-eglise-saint-etienne-de-chilly-mazarin-q3584775",
+      "latitude": 48.70307,
+      "longitude": 2.31268,
+      "name": {
+        "en": "église Saint-Étienne de Chilly-Mazarin",
+        "fr": "église Saint-Étienne de Chilly-Mazarin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087858",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chilly-mazarin-eglise-saint-etienne-pa00087858",
+      "latitude": 48.7030725193411,
+      "longitude": 2.31271683985891,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136050909",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-monument-aux-morts-de-chilly-mazarin-q136050909",
+      "latitude": 48.70328,
+      "longitude": 2.31558,
+      "name": {
+        "en": "monument aux morts de Chilly-Mazarin",
+        "fr": "monument aux morts de Chilly-Mazarin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville de Chilly-Mazarin is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de ville de Chilly-Mazarin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31204132",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-hotel-de-ville-de-chilly-mazarin-q31204132",
+      "latitude": 48.702516,
+      "longitude": 2.312508,
+      "name": {
+        "en": "hôtel de ville de Chilly-Mazarin",
+        "fr": "hôtel de ville de Chilly-Mazarin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "priory located in Essonne, in France",
+        "fr": "prieuré situé dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21018615",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "chilly-mazarin-prieure-du-val-saint-eloi-q21018615",
+      "latitude": 48.702521,
+      "longitude": 2.3125201,
+      "name": {
+        "en": "prieuré du Val-Saint-Éloi",
+        "fr": "prieuré du Val-Saint-Éloi"
+      }
+    }
+  ]
+}

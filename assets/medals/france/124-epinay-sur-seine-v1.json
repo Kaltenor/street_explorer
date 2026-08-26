@@ -1,0 +1,204 @@
+{
+  "id": "epinay-sur-seine-v1",
+  "cityId": "epinay-sur-seine-fr",
+  "cityZoneId": "relation/162856",
+  "cityName": {
+    "en": "Épinay-sur-Seine",
+    "fr": "Épinay-sur-Seine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580385",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-eglise-notre-dame-des-missions-d-epinay-sur-seine-q3580385",
+      "latitude": 48.960921,
+      "longitude": 2.297695,
+      "name": {
+        "en": "église Notre-Dame-des-Missions d'Épinay-sur-Seine",
+        "fr": "église Notre-Dame-des-Missions d'Épinay-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Missions is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Missions est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079970",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinay-sur-seine-eglise-notre-dame-des-missions-pa00079970",
+      "latitude": 48.9609069643231,
+      "longitude": 2.29774313901886,
+      "name": {
+        "en": "Église Notre-Dame-des-Missions",
+        "fr": "Église Notre-Dame-des-Missions"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Épinay-sur-Seine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-epinay-sur-seine-q3095880",
+      "latitude": 48.954213,
+      "longitude": 2.30228,
+      "name": {
+        "en": "Épinay-sur-Seine",
+        "fr": "Épinay-sur-Seine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Épinay-sur-Seine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2106165",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-epinay-villetaneuse-q2106165",
+      "latitude": 48.958333,
+      "longitude": 2.328333,
+      "name": {
+        "en": "Épinay - Villetaneuse",
+        "fr": "Épinay - Villetaneuse"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, avenue de Jarrow is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Épinay-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920434",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-fontaine-wallace-avenue-de-jarrow-q128920434",
+      "latitude": 48.952107,
+      "longitude": 2.332054,
+      "name": {
+        "en": "fontaine Wallace, avenue de Jarrow",
+        "fr": "fontaine Wallace, avenue de Jarrow"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de ville, ancien hôtel seigneurial is an important witness to the city's history.",
+        "fr": "Hôtel de ville, ancien hôtel seigneurial est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079933",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinay-sur-seine-hotel-de-ville-ancien-hotel-seigneurial-pa00079933",
+      "latitude": 48.951520668015,
+      "longitude": 2.3134096256382,
+      "name": {
+        "en": "Hôtel de ville, ancien hôtel seigneurial",
+        "fr": "Hôtel de ville, ancien hôtel seigneurial"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Épinay-sur-Seine, France",
+        "fr": "hôtel de ville à Épinay-sur-Seine (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q22915889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-hotel-de-ville-d-epinay-sur-seine-q22915889",
+      "latitude": 48.9517971,
+      "longitude": 2.3139712,
+      "name": {
+        "en": "hôtel de ville d'Épinay-sur-Seine",
+        "fr": "hôtel de ville d'Épinay-sur-Seine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053585",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-monument-aux-morts-d-epinay-sur-seine-q136053585",
+      "latitude": 48.95294,
+      "longitude": 2.31044,
+      "name": {
+        "en": "monument aux morts d'Épinay-sur-Seine",
+        "fr": "monument aux morts d'Épinay-sur-Seine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097448",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-monument-aux-morts-de-la-premiere-guerre-mondiale-du-cimetiere-d-epinay-sur-seine-q136097448",
+      "latitude": 48.95685,
+      "longitude": 2.3069,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale du cimetière d'Épinay-sur-Seine",
+        "fr": "monument aux morts de la Première Guerre mondiale du cimetière d'Épinay-sur-Seine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Obélisque is an important witness to the city's history.",
+        "fr": "gratte-ciel résidentiel situé à Épinay-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q2375479",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "epinay-sur-seine-tour-obelisque-q2375479",
+      "latitude": 48.9563,
+      "longitude": 2.2955,
+      "name": {
+        "en": "Tour Obélisque",
+        "fr": "Tour Obélisque"
+      }
+    }
+  ]
+}

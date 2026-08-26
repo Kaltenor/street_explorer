@@ -1,0 +1,204 @@
+{
+  "id": "reze-v1",
+  "cityId": "reze-fr",
+  "cityZoneId": "relation/60966",
+  "cityName": {
+    "en": "Rezé",
+    "fr": "Rezé"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38384677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-eglise-du-rosaire-de-pont-rousseau-q38384677",
+      "latitude": 47.19258,
+      "longitude": -1.54644,
+      "name": {
+        "en": "église du Rosaire de Pont Rousseau",
+        "fr": "église du Rosaire de Pont Rousseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38418859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-eglise-saint-andre-du-bas-landreau-q38418859",
+      "latitude": 47.18215,
+      "longitude": -1.56386,
+      "name": {
+        "en": "église Saint-André du Bas Landreau",
+        "fr": "église Saint-André du Bas Landreau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17500461",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-eglise-saint-pierre-de-reze-q17500461",
+      "latitude": 47.1909337,
+      "longitude": -1.5700954,
+      "name": {
+        "en": "église Saint-Pierre de Rezé",
+        "fr": "église Saint-Pierre de Rezé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Rezé, France",
+        "fr": "hôtel de ville, Rezé, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341715",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-hotel-de-ville-de-reze-q105341715",
+      "latitude": 47.1908,
+      "longitude": -1.5697,
+      "name": {
+        "en": "hôtel de ville de Rezé",
+        "fr": "hôtel de ville de Rezé"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "jardin Hubertine-Auclert is one of the city's notable green or natural landmarks.",
+        "fr": "jardin à Rezé, en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105704716",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-jardin-hubertine-auclert-q105704716",
+      "latitude": 47.190919115,
+      "longitude": -1.570470929,
+      "name": {
+        "en": "jardin Hubertine-Auclert",
+        "fr": "jardin Hubertine-Auclert"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "archaeological museum in Rezé, France",
+        "fr": "musée archéologique à Rezé, France"
+      },
+      "externalIdentity": {
+        "id": "Q105707154",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-le-chronographe-q105707154",
+      "latitude": 47.191786721,
+      "longitude": -1.564800739,
+      "name": {
+        "en": "Le Chronographe",
+        "fr": "Le Chronographe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison radieuse is a distinctive architectural landmark in the city.",
+        "fr": "Maison radieuse est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108783",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reze-maison-radieuse-pa00108783",
+      "latitude": 47.1885309975365,
+      "longitude": -1.56827180175783,
+      "name": {
+        "en": "Maison radieuse",
+        "fr": "Maison radieuse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q68159447",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-nouvelle-eglise-saint-vincent-de-paul-de-reze-q68159447",
+      "latitude": 47.16743,
+      "longitude": -1.54331,
+      "name": {
+        "en": "nouvelle église Saint-Vincent-de-Paul de Rezé",
+        "fr": "nouvelle église Saint-Vincent-de-Paul de Rezé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Rezé, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1900901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-reze-pont-rousseau-q1900901",
+      "latitude": 47.193224,
+      "longitude": -1.549383,
+      "name": {
+        "en": "Rezé-Pont-Rousseau",
+        "fr": "Rezé-Pont-Rousseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "village in Rezé, France",
+        "fr": "quartier à Rezé et ancien village de pêcheurs et de marins, en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2451654",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reze-trentemoult-q2451654",
+      "latitude": 47.19472222,
+      "longitude": -1.58194444,
+      "name": {
+        "en": "Trentemoult",
+        "fr": "Trentemoult"
+      }
+    }
+  ]
+}

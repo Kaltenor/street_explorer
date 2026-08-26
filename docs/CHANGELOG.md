@@ -1,5 +1,48 @@
 # Changelog
 
+## v0.33.0
+
+- Expanded the bundled France catalogue to the 500 largest communes, including departments and collectivities overseas, with 20 medals minimum for ranks 1–100 and 10 for ranks 101–500; the frozen result contains 500 albums and 6,082 medals.
+- Added the latest official commune populations for Mayotte (2017), New Caledonia (2025), French Polynesia (2022), and Saint-Martin (2023) where the main INSEE file is incomplete, preserved published curated identities, and added polygon-validated Wikidata/OpenStreetMap fallbacks for sparse communes.
+- Added a reproducible per-country storage report covering actual distributed bytes, expanded definitions, and freshly seeded SQLite catalogue size.
+- Synchronized version 0.33.0 with iOS build 219 and Android version code 219.
+
+## v0.32.0
+
+- Added a bundled, hand-curated Thonon-les-Bains album with 10 landmarks strictly assigned to commune relation `105786`, balanced with two History, Architecture, Art, Culture, and Nature medals.
+- Extended the frozen France manifest and release generator to preserve explicitly curated communes outside the INSEE top-100 ranking without changing that ranking or generating runtime collectibles.
+- Added regression coverage for the Thonon city and parent-district lookup, stable OSM identities, category balance, source snapshot, generator permanence, 101 bundled albums, and 915 bundled medals.
+- Synchronized version 0.32.0 with iOS build 218 and Android version code 218.
+
+## v0.31.1
+
+- Made Hold Quit finish automatically from the same 1.3-second deadline that drives its fill, with an elapsed-time release fallback, single-confirm guard, and expanded finger-drift tolerance instead of depending on a separate native long-press callback.
+- Increased outdoor visibility with a near-black burgundy base, vivid-red progress fill, light leading edge, stronger border/text contrast, and an enabled-preference completion haptic.
+- Added focused UI regression coverage and a physical-device protocol for early release, timer delay, finger drift, bright sunlight, haptics, and VoiceOver.
+- Synchronized version 0.31.1 with iOS build 217 and Android version code 217.
+
+## v0.31.0
+
+- Expanded Marseille's bundled medal album from 8 to 38 landmarks while preserving the original album and medal IDs, with at least one medal in every arrondissement and a balanced history, architecture, art, culture, and nature roster.
+- Promoted Marseille to a frozen hand-reviewed v2 catalogue, added explicit arrondissement metadata and stable Wikidata identities for all 30 additions, and kept the release generator from replacing it with the generic eight-item output.
+- Added regression coverage for the 38-medal total, all 16 arrondissement assignments, category balance, original-ID continuity, catalogue totals, and generated-source metadata.
+- Synchronized version 0.31.0 with iOS build 216 and Android version code 216.
+
+## v0.30.4
+
+- Fixed large-history city and district switches blocking the JavaScript thread by querying only explored cells and cached streets intersecting the selected boundary instead of repeatedly processing the complete local catalogue; selection stamps also have a defensive maximum display lifetime.
+- Made concurrent medal-rail and district-expedition requests share one SQLite album-seeding operation, preventing bundled Marseille medals from being reported as unavailable because two consumers raced the same transaction.
+- Added development diagnostics for album hydration failures plus regression coverage for bounded completion/expedition queries and single-flight album seeding.
+- Synchronized version 0.30.4 with iOS build 215 and Android version code 215.
+
+## v0.30.3
+
+- Fixed active walks disappearing into manual recovery after process death: launch now restores the authoritative SQLite session, complete persisted route, original start time, activity mode, trusted distance, steps where available, and the normal active recording HUD before Start can become available.
+- Kept every resumed fix on the original session ID, restarted the single managed foreground watcher, re-established background tracking when permitted, and retained Recovery V2 as the safe fallback for permission, metadata, or service failures.
+- Made cold background callbacks resolve the persisted active session instead of depending on module memory, removed the foreground GPS reorder delay, and made live/rebuilt distance exclude the same unsafe gap segments already excluded from route drawing and exploration.
+- Added regression coverage for automatic restoration wiring, persistent cold-callback ownership, immediate durable queue admission, and rejected outage gaps contributing neither cells nor trusted distance.
+- Synchronized version 0.30.3 with iOS build 214 and Android version code 214.
+
 ## v0.30.2
 
 - Restored explored and normal loop-filled map polygons to the original translucent burnt-orange palette at every zoom level instead of blue.

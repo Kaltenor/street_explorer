@@ -1,0 +1,394 @@
+{
+  "id": "dunkerque-v1",
+  "cityId": "dunkerque-fr",
+  "cityZoneId": "relation/139610",
+  "cityName": {
+    "en": "Dunkerque",
+    "fr": "Dunkerque"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bâtiment de la Subdivision des Phares et Balises is a distinctive architectural landmark in the city.",
+        "fr": "Bâtiment de la Subdivision des Phares et Balises est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000164",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-batiment-de-la-subdivision-des-phares-et-balises-pa59000164",
+      "latitude": 51.0430278466451,
+      "longitude": 2.3765176916165203,
+      "name": {
+        "en": "Bâtiment de la Subdivision des Phares et Balises",
+        "fr": "Bâtiment de la Subdivision des Phares et Balises"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Éloi is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Éloi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107488",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-eglise-saint-eloi-pa00107488",
+      "latitude": 51.0356528475333,
+      "longitude": 2.37716582134051,
+      "name": {
+        "en": "Église Saint-Éloi",
+        "fr": "Église Saint-Éloi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de l'Armateur is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de l'Armateur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107490",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-hotel-de-l-armateur-pa00107490",
+      "latitude": 51.0373453656012,
+      "longitude": 2.37551734137211,
+      "name": {
+        "en": "Hôtel de l'Armateur",
+        "fr": "Hôtel de l'Armateur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107900",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-hotel-de-ville-pa00107900",
+      "latitude": 51.0377228509066,
+      "longitude": 2.37679810270748,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Les Cicognes is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Les Cicognes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107501",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-maison-dite-les-cicognes-pa00107501",
+      "latitude": 51.0371552096834,
+      "longitude": 2.39237684712359,
+      "name": {
+        "en": "Maison dite Les Cicognes",
+        "fr": "Maison dite Les Cicognes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Les Cubes is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Les Cubes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107502",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-maison-dite-les-cubes-pa00107502",
+      "latitude": 51.0371972396649,
+      "longitude": 2.39235615985837,
+      "name": {
+        "en": "Maison dite Les Cubes",
+        "fr": "Maison dite Les Cubes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Ma Coquille is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Ma Coquille est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107500",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-maison-dite-ma-coquille-pa00107500",
+      "latitude": 51.0380287301164,
+      "longitude": 2.3917976626629,
+      "name": {
+        "en": "Maison dite Ma Coquille",
+        "fr": "Maison dite Ma Coquille"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art contemporain is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0620",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dunkerque-musee-d-art-contemporain-m0620",
+      "latitude": 51.045271604249905,
+      "longitude": 2.383243784876889,
+      "name": {
+        "en": "musée d'art contemporain",
+        "fr": "musée d'art contemporain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0621",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dunkerque-musee-des-beaux-arts-m0621",
+      "latitude": 51.037327,
+      "longitude": 2.375518,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée maritime et portuaire is one of the city's notable cultural landmarks.",
+        "fr": "musée maritime et portuaire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0622",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "dunkerque-musee-maritime-et-portuaire-m0622",
+      "latitude": 51.037914,
+      "longitude": 2.372174,
+      "name": {
+        "en": "musée maritime et portuaire",
+        "fr": "musée maritime et portuaire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Propriété (vestiges de L'excentric Moulins) is an important witness to the city's history.",
+        "fr": "Propriété (vestiges de L'excentric Moulins) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107506",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-propriete-vestiges-de-l-excentric-moulins-pa00107506",
+      "latitude": 51.038181673921706,
+      "longitude": 2.39246958863732,
+      "name": {
+        "en": "Propriété (vestiges de L'excentric Moulins)",
+        "fr": "Propriété (vestiges de L'excentric Moulins)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ruines de la vieille écluse de Mardyck is an important witness to the city's history.",
+        "fr": "Ruines de la vieille écluse de Mardyck est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107773",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-ruines-de-la-vieille-ecluse-de-mardyck-pa00107773",
+      "latitude": 51.0272505490778,
+      "longitude": 2.32227425341937,
+      "name": {
+        "en": "Ruines de la vieille écluse de Mardyck",
+        "fr": "Ruines de la vieille écluse de Mardyck"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Leughenaer is an important witness to the city's history.",
+        "fr": "Tour du Leughenaer est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107495",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-tour-du-leughenaer-pa00107495",
+      "latitude": 51.040155386918,
+      "longitude": 2.37856833091645,
+      "name": {
+        "en": "Tour du Leughenaer",
+        "fr": "Tour du Leughenaer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107491",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-maison-pa00107491",
+      "latitude": 51.039503806396304,
+      "longitude": 2.38049284050669,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Phare du Risban is a distinctive architectural landmark in the city.",
+        "fr": "Phare du Risban est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000173",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-phare-du-risban-pa59000173",
+      "latitude": 51.0488581999025,
+      "longitude": 2.36440103950816,
+      "name": {
+        "en": "Phare du Risban",
+        "fr": "Phare du Risban"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Les Disques is a distinctive architectural landmark in the city.",
+        "fr": "Villa Les Disques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000195",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-villa-les-disques-pa59000195",
+      "latitude": 51.037252271073974,
+      "longitude": 2.3923556419509318,
+      "name": {
+        "en": "Villa Les Disques",
+        "fr": "Villa Les Disques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa les Sourires is a distinctive architectural landmark in the city.",
+        "fr": "Villa les Sourires est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107498",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-villa-les-sourires-pa00107498",
+      "latitude": 51.0504596102916,
+      "longitude": 2.39630193400842,
+      "name": {
+        "en": "Villa les Sourires",
+        "fr": "Villa les Sourires"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Moscovite ou Castel Joly is a distinctive architectural landmark in the city.",
+        "fr": "Villa Moscovite ou Castel Joly est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107507",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-villa-moscovite-ou-castel-joly-pa00107507",
+      "latitude": 51.04058711768631,
+      "longitude": 2.3947775704298904,
+      "name": {
+        "en": "Villa Moscovite ou Castel Joly",
+        "fr": "Villa Moscovite ou Castel Joly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Myosotis is a distinctive architectural landmark in the city.",
+        "fr": "Villa Myosotis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107496",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-villa-myosotis-pa00107496",
+      "latitude": 51.0363388893883,
+      "longitude": 2.3940111445804,
+      "name": {
+        "en": "Villa Myosotis",
+        "fr": "Villa Myosotis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Quo Vadis is a distinctive architectural landmark in the city.",
+        "fr": "Villa Quo Vadis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107499",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "dunkerque-villa-quo-vadis-pa00107499",
+      "latitude": 51.05074500971481,
+      "longitude": 2.39877193086494,
+      "name": {
+        "en": "Villa Quo Vadis",
+        "fr": "Villa Quo Vadis"
+      }
+    }
+  ]
+}

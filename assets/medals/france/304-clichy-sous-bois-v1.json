@@ -1,0 +1,204 @@
+{
+  "id": "clichy-sous-bois-v1",
+  "cityId": "clichy-sous-bois-fr",
+  "cityZoneId": "relation/162858",
+  "cityName": {
+    "en": "Clichy-sous-Bois",
+    "fr": "Clichy-sous-Bois"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château, actuellement mairie is an important witness to the city's history.",
+        "fr": "Ancien château, actuellement mairie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079931",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "clichy-sous-bois-ancien-chateau-actuellement-mairie-pa00079931",
+      "latitude": 48.9111782637896,
+      "longitude": 2.54367820344478,
+      "name": {
+        "en": "Ancien château, actuellement mairie",
+        "fr": "Ancien château, actuellement mairie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Saint-Denis, in France",
+        "fr": "chapelle située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20055176",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-chapelle-notre-dame-des-anges-q20055176",
+      "latitude": 48.905631595,
+      "longitude": 2.545422251,
+      "name": {
+        "en": "chapelle Notre-Dame-des-Anges",
+        "fr": "chapelle Notre-Dame-des-Anges"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Terrasse is an important witness to the city's history.",
+        "fr": "château de Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q83714665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-chateau-de-la-terrasse-q83714665",
+      "latitude": 48.91271,
+      "longitude": 2.54944,
+      "name": {
+        "en": "château de la Terrasse",
+        "fr": "château de la Terrasse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q22248250",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-clichy-montfermeil-q22248250",
+      "latitude": 48.904425,
+      "longitude": 2.55656667,
+      "name": {
+        "en": "Clichy - Montfermeil",
+        "fr": "Clichy - Montfermeil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20055178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-eglise-saint-denis-q20055178",
+      "latitude": 48.91115,
+      "longitude": 2.5488,
+      "name": {
+        "en": "église Saint-Denis",
+        "fr": "église Saint-Denis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "town hall in Clichy-sous-Bois, France",
+        "fr": "ancien château, devenu mairie de Clichy-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q19362031",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-hotel-de-ville-de-clichy-sous-bois-q19362031",
+      "latitude": 48.9107,
+      "longitude": 2.5461,
+      "name": {
+        "en": "hôtel de ville de Clichy-sous-Bois",
+        "fr": "hôtel de ville de Clichy-sous-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136051212",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-monument-aux-morts-de-clichy-sous-bois-q136051212",
+      "latitude": 48.91116,
+      "longitude": 2.54627,
+      "name": {
+        "en": "monument aux morts de Clichy-sous-Bois",
+        "fr": "monument aux morts de Clichy-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in Clichy-sous-Bois, Paris, France",
+        "fr": "mosquée située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3324891",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-mosquee-de-clichy-sous-bois-q3324891",
+      "latitude": 48.904915,
+      "longitude": 2.55482,
+      "name": {
+        "en": "mosquée de Clichy-sous-Bois",
+        "fr": "mosquée de Clichy-sous-Bois"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Clichy-sous-Bois, France",
+        "fr": "parc situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16668922",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-parc-departemental-de-la-fosse-maussoin-q16668922",
+      "latitude": 48.9036,
+      "longitude": 2.5364,
+      "name": {
+        "en": "parc départemental de la Fosse-Maussoin",
+        "fr": "parc départemental de la Fosse-Maussoin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in Clichy-sous-Bois, France",
+        "fr": "place de Clichy-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q116199145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "clichy-sous-bois-place-du-chateau-q116199145",
+      "latitude": 48.91037,
+      "longitude": 2.5503,
+      "name": {
+        "en": "place du Château",
+        "fr": "place du Château"
+      }
+    }
+  ]
+}

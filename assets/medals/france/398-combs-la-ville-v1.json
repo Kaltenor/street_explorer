@@ -1,0 +1,204 @@
+{
+  "id": "combs-la-ville-v1",
+  "cityId": "combs-la-ville-fr",
+  "cityZoneId": "relation/80407",
+  "cityName": {
+    "en": "Combs-la-Ville",
+    "fr": "Combs-la-Ville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-et-Marne, in France",
+        "fr": "chapelle située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60349213",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-chapelle-notre-dame-de-lourdes-de-combs-la-ville-q60349213",
+      "latitude": 48.66549,
+      "longitude": 2.55142,
+      "name": {
+        "en": "chapelle Notre-Dame-de Lourdes de Combs-la-Ville",
+        "fr": "chapelle Notre-Dame-de Lourdes de Combs-la-Ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Combs-la-Ville, France",
+        "fr": "château français situé à Combs-la-Ville"
+      },
+      "externalIdentity": {
+        "id": "Q83715393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-chateau-de-la-fresnaye-q83715393",
+      "latitude": 48.665194,
+      "longitude": 2.563189,
+      "name": {
+        "en": "château de la Fresnaye",
+        "fr": "château de la Fresnaye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-et-Marne, in France",
+        "fr": "cimetière situé en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110356900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-cimetiere-de-combs-la-ville-q110356900",
+      "latitude": 48.6639,
+      "longitude": 2.5751,
+      "name": {
+        "en": "cimetière de Combs-la-Ville",
+        "fr": "cimetière de Combs-la-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Combs-la-Ville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2348110",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-combs-la-ville-quincy-q2348110",
+      "latitude": 48.66722,
+      "longitude": 2.54778,
+      "name": {
+        "en": "Combs-la-Ville - Quincy",
+        "fr": "Combs-la-Ville - Quincy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "monumental cross located in Seine-et-Marne, in France",
+        "fr": "croix monumentale située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q131442586",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-croix-de-la-place-pere-andre-jarlan-de-combs-la-ville-q131442586",
+      "latitude": 48.66411,
+      "longitude": 2.569,
+      "name": {
+        "en": "croix de la Place Père-André-Jarlan de Combs-la-Ville",
+        "fr": "croix de la Place Père-André-Jarlan de Combs-la-Ville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, cour du Château de la Fresnaye is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Combs-la-Ville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920416",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-fontaine-wallace-cour-du-chateau-de-la-fresnaye-q128920416",
+      "latitude": 48.665071,
+      "longitude": 2.563194,
+      "name": {
+        "en": "fontaine Wallace, cour du Château de la Fresnaye",
+        "fr": "fontaine Wallace, cour du Château de la Fresnaye"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136051415",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-monument-aux-morts-de-combs-la-ville-q136051415",
+      "latitude": 48.665098,
+      "longitude": 2.561705,
+      "name": {
+        "en": "monument aux morts de Combs-la-Ville",
+        "fr": "monument aux morts de Combs-la-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Combs-la-Ville, France",
+        "fr": "édifice religieux catholique à Combs-la-Ville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41801398",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-eglise-saint-vincent-de-combs-la-ville-q41801398",
+      "latitude": 48.664015594,
+      "longitude": 2.569265617,
+      "name": {
+        "en": "église Saint-Vincent de Combs-la-Ville",
+        "fr": "église Saint-Vincent de Combs-la-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Combs-la-Ville, Seine-et-Marne, France",
+        "fr": "édifice de Combs-la-Ville, Seine-et-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q113891774",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "combs-la-ville-mairie-de-combs-la-ville-q113891774",
+      "latitude": 48.6649,
+      "longitude": 2.5653,
+      "name": {
+        "en": "mairie de Combs-la-Ville",
+        "fr": "mairie de Combs-la-Ville"
+      }
+    }
+  ]
+}

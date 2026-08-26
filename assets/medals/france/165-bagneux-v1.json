@@ -1,0 +1,204 @@
+{
+  "id": "bagneux-v1",
+  "cityId": "bagneux-fr",
+  "cityZoneId": "relation/37025",
+  "cityName": {
+    "en": "Bagneux",
+    "fr": "Bagneux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien mairie de Bagneux is a distinctive architectural landmark in the city.",
+        "fr": "ancienne mairie située à Bagneux, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96599689",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-ancien-mairie-de-bagneux-q96599689",
+      "latitude": 48.7949,
+      "longitude": 2.30291,
+      "name": {
+        "en": "Ancien mairie de Bagneux",
+        "fr": "Ancien mairie de Bagneux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Garlande is an important witness to the city's history.",
+        "fr": "château de Garlande est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q65123795",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-chateau-de-garlande-q65123795",
+      "latitude": 48.79934012,
+      "longitude": 2.30600425,
+      "name": {
+        "en": "château de Garlande",
+        "fr": "château de Garlande"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery in Bagneux, France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2482942",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-cimetiere-parisien-de-bagneux-q2482942",
+      "latitude": 48.805833333,
+      "longitude": 2.309166666,
+      "name": {
+        "en": "cimetière parisien de Bagneux",
+        "fr": "cimetière parisien de Bagneux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Hermeland is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Hermeland est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088067",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bagneux-eglise-saint-hermeland-pa00088067",
+      "latitude": 48.79645105350411,
+      "longitude": 2.30241168103838,
+      "name": {
+        "en": "Église Saint-Hermeland",
+        "fr": "Église Saint-Hermeland"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q29861565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-eglise-sainte-monique-de-bagneux-q29861565",
+      "latitude": 48.80284,
+      "longitude": 2.31967,
+      "name": {
+        "en": "église Sainte-Monique de Bagneux",
+        "fr": "église Sainte-Monique de Bagneux"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Bagneux is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Bagneux, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602278",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-monument-aux-morts-de-bagneux-q96602278",
+      "latitude": 48.79521,
+      "longitude": 2.30272,
+      "name": {
+        "en": "monument aux morts de Bagneux",
+        "fr": "monument aux morts de Bagneux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "alley in Bagneux, dans les Hauts-de-Seine",
+        "fr": "rond-point de Bagneux, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q115856644",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-rond-point-des-martyrs-de-chateaubriant-q115856644",
+      "latitude": 48.803781747,
+      "longitude": 2.319817195,
+      "name": {
+        "en": "rond-point des Martyrs de Châteaubriant",
+        "fr": "rond-point des Martyrs de Châteaubriant"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater in Bagneux, France",
+        "fr": "salle de théâtre à Bagneux, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-theatre-victor-hugo-q61860713",
+      "latitude": 48.803963336,
+      "longitude": 2.321729147,
+      "name": {
+        "en": "théâtre Victor-Hugo",
+        "fr": "théâtre Victor-Hugo"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Bagneux, Hauts-de-Seine, France",
+        "fr": "édifice de Bagneux, Hauts-de-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409700",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bagneux-hotel-de-ville-de-bagneux-q83409700",
+      "latitude": 48.79911,
+      "longitude": 2.30415,
+      "name": {
+        "en": "hôtel de ville de Bagneux",
+        "fr": "hôtel de ville de Bagneux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite de Richelieu is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite de Richelieu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088068",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bagneux-maison-dite-de-richelieu-pa00088068",
+      "latitude": 48.7960927316642,
+      "longitude": 2.30468823528164,
+      "name": {
+        "en": "Maison dite de Richelieu",
+        "fr": "Maison dite de Richelieu"
+      }
+    }
+  ]
+}

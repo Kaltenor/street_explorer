@@ -1,0 +1,204 @@
+{
+  "id": "wattrelos-v1",
+  "cityId": "wattrelos-fr",
+  "cityZoneId": "relation/59049",
+  "cityName": {
+    "en": "Wattrelos",
+    "fr": "Wattrelos"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q101500017",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-ancien-eglise-saint-vincent-de-paul-du-cretinier-q101500017",
+      "latitude": 50.707478055,
+      "longitude": 3.197216111,
+      "name": {
+        "en": "Ancien église Saint-Vincent-de-Paul du Crétinier",
+        "fr": "Ancien église Saint-Vincent-de-Paul du Crétinier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Nord, in France",
+        "fr": "cimetière situé dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2179864",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-cimetiere-du-cretinier-q2179864",
+      "latitude": 50.712156,
+      "longitude": 3.189752,
+      "name": {
+        "en": "cimetière du Crétinier",
+        "fr": "cimetière du Crétinier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38383991",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-eglise-du-christ-roi-de-wattrelos-q38383991",
+      "latitude": 50.712267722,
+      "longitude": 3.179944374,
+      "name": {
+        "en": "église du Christ-Roi de Wattrelos",
+        "fr": "église du Christ-Roi de Wattrelos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église détruite située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15884276",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-eglise-notre-dame-du-bon-conseil-de-wattrelos-q15884276",
+      "latitude": 50.704166666,
+      "longitude": 3.240972222,
+      "name": {
+        "en": "église Notre-Dame-du-Bon-Conseil de Wattrelos",
+        "fr": "église Notre-Dame-du-Bon-Conseil de Wattrelos"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3330112",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-musee-des-arts-et-traditions-populaires-q3330112",
+      "latitude": 50.699,
+      "longitude": 3.22111,
+      "name": {
+        "en": "musée des arts et traditions populaires",
+        "fr": "musée des arts et traditions populaires"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38589528",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-eglise-saint-gerard-de-wattrelos-q38589528",
+      "latitude": 50.72287,
+      "longitude": 3.18577,
+      "name": {
+        "en": "église Saint-Gérard de Wattrelos",
+        "fr": "église Saint-Gérard de Wattrelos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église située dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q46083596",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-eglise-saint-maclou-de-wattrelos-q46083596",
+      "latitude": 50.701913914,
+      "longitude": 3.214465566,
+      "name": {
+        "en": "église Saint-Maclou de Wattrelos",
+        "fr": "église Saint-Maclou de Wattrelos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Nord, in France",
+        "fr": "église française située à Wattrelos"
+      },
+      "externalIdentity": {
+        "id": "Q15647009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-eglise-sainte-therese-de-l-enfant-jesus-de-wattrelos-q15647009",
+      "latitude": 50.6988,
+      "longitude": 3.20398,
+      "name": {
+        "en": "église Sainte-Thérèse-de-l'Enfant-Jésus de Wattrelos",
+        "fr": "église Sainte-Thérèse-de-l'Enfant-Jésus de Wattrelos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Nord department, France",
+        "fr": "siège municipal de Wattrelos, dans le Nord, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119340220",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-mairie-de-wattrelos-q119340220",
+      "latitude": 50.701673276,
+      "longitude": 3.215585686,
+      "name": {
+        "en": "mairie de Wattrelos",
+        "fr": "mairie de Wattrelos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Wattrelos, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q19407023",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "wattrelos-wattrelos-q19407023",
+      "latitude": 50.703,
+      "longitude": 3.21348,
+      "name": {
+        "en": "Wattrelos",
+        "fr": "Wattrelos"
+      }
+    }
+  ]
+}

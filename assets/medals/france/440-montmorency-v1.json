@@ -1,0 +1,204 @@
+{
+  "id": "montmorency-v1",
+  "cityId": "montmorency-fr",
+  "cityZoneId": "relation/115244",
+  "cityName": {
+    "en": "Montmorency",
+    "fr": "Montmorency"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) is an important witness to the city's history.",
+        "fr": "Château (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080129",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montmorency-chateau-ancien-pa00080129",
+      "latitude": 48.98370430156281,
+      "longitude": 2.31658488973445,
+      "name": {
+        "en": "Château (ancien)",
+        "fr": "Château (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French country estate in Val-d'Oise, France",
+        "fr": "château français dans le Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q30740362",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-chateau-de-montmorency-q30740362",
+      "latitude": 48.9816,
+      "longitude": 2.31896,
+      "name": {
+        "en": "château de Montmorency",
+        "fr": "château de Montmorency"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du duc de Dino, de son parc et ses dépendances is an important witness to the city's history.",
+        "fr": "Château du duc de Dino, de son parc et ses dépendances est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA95000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montmorency-chateau-du-duc-de-dino-de-son-parc-et-ses-dependances-pa95000024",
+      "latitude": 48.98207141168543,
+      "longitude": 2.3210279445517137,
+      "name": {
+        "en": "Château du duc de Dino, de son parc et ses dépendances",
+        "fr": "Château du duc de Dino, de son parc et ses dépendances"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24545",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-cimetiere-des-champeaux-de-montmorency-q24545",
+      "latitude": 48.99362,
+      "longitude": 2.323514,
+      "name": {
+        "en": "cimetière des Champeaux de Montmorency",
+        "fr": "cimetière des Champeaux de Montmorency"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "collegiate church located in Val-d'Oise, in France",
+        "fr": "collégiale située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2983993",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-collegiale-saint-martin-de-montmorency-q2983993",
+      "latitude": 48.98499,
+      "longitude": 2.31925,
+      "name": {
+        "en": "collégiale Saint-Martin de Montmorency",
+        "fr": "collégiale Saint-Martin de Montmorency"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montmorency-eglise-saint-martin-pa00080130",
+      "latitude": 48.9849723493936,
+      "longitude": 2.31925096543791,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Montmorency is an important witness to the city's history.",
+        "fr": "fort dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q5472459",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-fort-de-montmorency-q5472459",
+      "latitude": 49.00017,
+      "longitude": 2.32462,
+      "name": {
+        "en": "fort de Montmorency",
+        "fr": "fort de Montmorency"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Montmorency (Île-de-France)",
+        "fr": "musée à Montmorency (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q22985993",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-maison-de-jean-jacques-rousseau-et-maison-des-commeres-q22985993",
+      "latitude": 48.98694,
+      "longitude": 2.32139,
+      "name": {
+        "en": "maison de Jean-Jacques Rousseau et Maison des Commères",
+        "fr": "maison de Jean-Jacques Rousseau et Maison des Commères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Montmorency, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q16508052",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montmorency-montmorency-q16508052",
+      "latitude": 48.9935,
+      "longitude": 2.31994,
+      "name": {
+        "en": "Montmorency",
+        "fr": "Montmorency"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Jean-Jacques Rousseau is one of the city's notable cultural landmarks.",
+        "fr": "musée Jean-Jacques Rousseau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0437",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "montmorency-musee-jean-jacques-rousseau-m0437",
+      "latitude": 48.986892,
+      "longitude": 2.320916,
+      "name": {
+        "en": "musée Jean-Jacques Rousseau",
+        "fr": "musée Jean-Jacques Rousseau"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "issy-les-moulineaux-v1",
+  "cityId": "issy-les-moulineaux-fr",
+  "cityZoneId": "relation/85527",
+  "cityName": {
+    "en": "Issy-les-Moulineaux",
+    "fr": "Issy-les-Moulineaux"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Centre national des archives de l'Église de France is one of the city's notable cultural landmarks.",
+        "fr": "Centre national des archives de l'Église de France compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q78224096",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-centre-national-des-archives-de-l-eglise-de-france-q78224096",
+      "latitude": 48.825246876,
+      "longitude": 2.276186539,
+      "name": {
+        "en": "Centre national des archives de l'Église de France",
+        "fr": "Centre national des archives de l'Église de France"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) is an important witness to the city's history.",
+        "fr": "Château (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088111",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-chateau-ancien-pa00088111",
+      "latitude": 48.822364266931,
+      "longitude": 2.27303117479644,
+      "name": {
+        "en": "Château (ancien)",
+        "fr": "Château (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Issy is an important witness to the city's history.",
+        "fr": "château à Issy-les-Moulineaux (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q22924337",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-chateau-d-issy-q22924337",
+      "latitude": 48.822641,
+      "longitude": 2.273212,
+      "name": {
+        "en": "château d'Issy",
+        "fr": "château d'Issy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Armenian church in Issy-les-Moulineaux",
+        "fr": "église arménienne à Issy-les-Moulineaux"
+      },
+      "externalIdentity": {
+        "id": "Q106860687",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-eglise-apostolique-armenienne-sainte-marie-mere-de-dieu-q106860687",
+      "latitude": 48.82157,
+      "longitude": 2.26412,
+      "name": {
+        "en": "église apostolique arménienne Sainte-Marie-Mère-de-Dieu",
+        "fr": "église apostolique arménienne Sainte-Marie-Mère-de-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame des Pauvres is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame des Pauvres est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-eglise-notre-dame-des-pauvres-pa92000018",
+      "latitude": 48.8271366218386,
+      "longitude": 2.26799534513646,
+      "name": {
+        "en": "Église Notre-Dame des Pauvres",
+        "fr": "Église Notre-Dame des Pauvres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088112",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-eglise-saint-etienne-pa00088112",
+      "latitude": 48.8228985217448,
+      "longitude": 2.27674868127939,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort d'Issy is an important witness to the city's history.",
+        "fr": "fort de défense de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q3078131",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-fort-d-issy-q3078131",
+      "latitude": 48.816944,
+      "longitude": 2.268889,
+      "name": {
+        "en": "fort d'Issy",
+        "fr": "fort d'Issy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in the Seine River, in Issy-les-Moulineaux",
+        "fr": "île sur la Seine, en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q292122",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-ile-saint-germain-q292122",
+      "latitude": 48.822237,
+      "longitude": 2.246346,
+      "name": {
+        "en": "île Saint-Germain",
+        "fr": "île Saint-Germain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Issy-les-Moulineaux, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095806",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-issy-q3095806",
+      "latitude": 48.819722,
+      "longitude": 2.258889,
+      "name": {
+        "en": "Issy",
+        "fr": "Issy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Issy-les-Moulineaux, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3065321",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-issy-val-de-seine-q3065321",
+      "latitude": 48.829444,
+      "longitude": 2.262778,
+      "name": {
+        "en": "Issy-Val de Seine",
+        "fr": "Issy-Val de Seine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Tour aux figures, de Jean Dubuffet is an important witness to the city's history.",
+        "fr": "La Tour aux figures, de Jean Dubuffet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088178",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-la-tour-aux-figures-de-jean-dubuffet-pa00088178",
+      "latitude": 48.8284328167457,
+      "longitude": 2.25843912786594,
+      "name": {
+        "en": "La Tour aux figures, de Jean Dubuffet",
+        "fr": "La Tour aux figures, de Jean Dubuffet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée français de la carte à jouer et galerie d'histoire de la ville is one of the city's notable cultural landmarks.",
+        "fr": "musée français de la carte à jouer et galerie d'histoire de la ville compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0411",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-musee-francais-de-la-carte-a-jouer-et-galerie-d-histoire-de-la-ville-m0411",
+      "latitude": 48.822771,
+      "longitude": 2.273453,
+      "name": {
+        "en": "musée français de la carte à jouer et galerie d'histoire de la ville",
+        "fr": "musée français de la carte à jouer et galerie d'histoire de la ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum",
+        "fr": "musée de la carte à jouer"
+      },
+      "externalIdentity": {
+        "id": "Q1530976",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-musee-francais-de-la-carte-a-jouer-q1530976",
+      "latitude": 48.82278,
+      "longitude": 2.27333,
+      "name": {
+        "en": "musée français de la carte à jouer",
+        "fr": "musée français de la carte à jouer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais des Arts et des Congrès is a distinctive architectural landmark in the city.",
+        "fr": "Palais des Arts et des Congrès est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000021",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "issy-les-moulineaux-palais-des-arts-et-des-congres-pa92000021",
+      "latitude": 48.8229567617448,
+      "longitude": 2.26981521456881,
+      "name": {
+        "en": "Palais des Arts et des Congrès",
+        "fr": "Palais des Arts et des Congrès"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Issy-les-Moulineaux, France",
+        "fr": "parc situé à Issy-les-Moulineaux, dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q65156087",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-parc-departemental-de-l-ile-saint-germain-q65156087",
+      "latitude": 48.8265,
+      "longitude": 2.2563,
+      "name": {
+        "en": "parc départemental de l'île Saint-Germain",
+        "fr": "parc départemental de l'île Saint-Germain"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Issy-les-Moulineaux, France",
+        "fr": "parc municipal à Issy-les-Moulineaux, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q49537621",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-parc-henri-barbusse-q49537621",
+      "latitude": 48.8203,
+      "longitude": 2.26643,
+      "name": {
+        "en": "parc Henri-Barbusse",
+        "fr": "parc Henri-Barbusse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397789",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-ponts-de-billancourt-q3397789",
+      "latitude": 48.82453,
+      "longitude": 2.24887,
+      "name": {
+        "en": "ponts de Billancourt",
+        "fr": "ponts de Billancourt"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monumental sculpture by Jean Dubuffet",
+        "fr": "sculpture monumentale de Jean Dubuffet"
+      },
+      "externalIdentity": {
+        "id": "Q3533222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-tour-aux-figures-q3533222",
+      "latitude": 48.8285,
+      "longitude": 2.25847,
+      "name": {
+        "en": "tour aux figures",
+        "fr": "tour aux figures"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour Les Terrasses Rodin is an important witness to the city's history.",
+        "fr": "immeuble d'Issy-les-Moulineaux, Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3533113",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-tour-les-terrasses-rodin-q3533113",
+      "latitude": 48.8169,
+      "longitude": 2.25948,
+      "name": {
+        "en": "tour Les Terrasses Rodin",
+        "fr": "tour Les Terrasses Rodin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tower located in Issy-les-Moulineaux, in the business district of Val de Seine, close to Paris",
+        "fr": "immeuble de bureau d'Ile de France"
+      },
+      "externalIdentity": {
+        "id": "Q2376935",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "issy-les-moulineaux-tour-sequana-q2376935",
+      "latitude": 48.8334,
+      "longitude": 2.26886,
+      "name": {
+        "en": "Tour Sequana",
+        "fr": "Tour Sequana"
+      }
+    }
+  ]
+}

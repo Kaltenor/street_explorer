@@ -1,0 +1,394 @@
+{
+  "id": "levallois-perret-v1",
+  "cityId": "levallois-perret-fr",
+  "cityZoneId": "relation/86985",
+  "cityName": {
+    "en": "Levallois-Perret",
+    "fr": "Levallois-Perret"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Hauts-de-Seine, in France",
+        "fr": "cimetière situé dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2972531",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-cimetiere-de-levallois-perret-q2972531",
+      "latitude": 48.9,
+      "longitude": 2.289,
+      "name": {
+        "en": "cimetière de Levallois-Perret",
+        "fr": "cimetière de Levallois-Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Clichy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2533437",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-clichy-levallois-q2533437",
+      "latitude": 48.8968,
+      "longitude": 2.2982,
+      "name": {
+        "en": "Clichy - Levallois",
+        "fr": "Clichy - Levallois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église réformée La Petite Etoile is a distinctive architectural landmark in the city.",
+        "fr": "Église réformée La Petite Etoile est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125465",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "levallois-perret-eglise-reformee-la-petite-etoile-pa00125465",
+      "latitude": 48.8927933079431,
+      "longitude": 2.28414852648039,
+      "name": {
+        "en": "Église réformée La Petite Etoile",
+        "fr": "Église réformée La Petite Etoile"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21041859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-eglise-saint-justin-de-levallois-perret-q21041859",
+      "latitude": 48.89435,
+      "longitude": 2.29004,
+      "name": {
+        "en": "église Saint-Justin de Levallois-Perret",
+        "fr": "église Saint-Justin de Levallois-Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21041855",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-eglise-sainte-bernadette-de-levallois-perret-q21041855",
+      "latitude": 48.89438,
+      "longitude": 2.27833,
+      "name": {
+        "en": "église Sainte-Bernadette de Levallois-Perret",
+        "fr": "église Sainte-Bernadette de Levallois-Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Levallois-Perret, France",
+        "fr": "édifice à Levallois-Perret, France"
+      },
+      "externalIdentity": {
+        "id": "Q61914029",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-hotel-de-ville-de-levallois-perret-q61914029",
+      "latitude": 48.8928,
+      "longitude": 2.2878,
+      "name": {
+        "en": "hôtel de ville de Levallois-Perret",
+        "fr": "hôtel de ville de Levallois-Perret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in France",
+        "fr": "hôpital à Levallois-Perret (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q3152318",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-institut-hospitalier-franco-britannique-q3152318",
+      "latitude": 48.8901,
+      "longitude": 2.28026,
+      "name": {
+        "en": "institut hospitalier franco-britannique",
+        "fr": "institut hospitalier franco-britannique"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Levallois-Perret is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Levallois-Perret, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602263",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-monument-aux-morts-de-levallois-perret-q96602263",
+      "latitude": 48.90197,
+      "longitude": 2.28831,
+      "name": {
+        "en": "monument aux morts de Levallois-Perret",
+        "fr": "monument aux morts de Levallois-Perret"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Levallois-Perret, France",
+        "fr": "parc à Levallois-Perret"
+      },
+      "externalIdentity": {
+        "id": "Q66661597",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-parc-de-la-planchette-q66661597",
+      "latitude": 48.89517,
+      "longitude": 2.28613,
+      "name": {
+        "en": "parc de la Planchette",
+        "fr": "parc de la Planchette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports hall in Levallois",
+        "fr": "salle omnisports à Levallois"
+      },
+      "externalIdentity": {
+        "id": "Q3361127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-palais-des-sports-marcel-cerdan-q3361127",
+      "latitude": 48.8961,
+      "longitude": 2.27834,
+      "name": {
+        "en": "palais des sports Marcel-Cerdan",
+        "fr": "palais des sports Marcel-Cerdan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3368327",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-passerelle-pietonne-de-levallois-q3368327",
+      "latitude": 48.8982,
+      "longitude": 2.27524,
+      "name": {
+        "en": "passerelle piétonne de Levallois",
+        "fr": "passerelle piétonne de Levallois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Levallois-Perret, France",
+        "fr": "place de Levallois-Perret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96649413",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-place-de-la-liberation-q96649413",
+      "latitude": 48.89327,
+      "longitude": 2.27644,
+      "name": {
+        "en": "place de la Libération",
+        "fr": "place de la Libération"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont de Levallois-Perret et Courbevoie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3397027",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-pont-de-levallois-q3397027",
+      "latitude": 48.900074233,
+      "longitude": 2.277570666,
+      "name": {
+        "en": "pont de Levallois",
+        "fr": "pont de Levallois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont ferroviaire d'Asnières is a distinctive architectural landmark in the city.",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397528",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-pont-ferroviaire-d-asnieres-q3397528",
+      "latitude": 48.9036,
+      "longitude": 2.28723,
+      "name": {
+        "en": "pont ferroviaire d'Asnières",
+        "fr": "pont ferroviaire d'Asnières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "So Ouest is a distinctive architectural landmark in the city.",
+        "fr": "centre commercial à Levallois-Perret, dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3487247",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-so-ouest-q3487247",
+      "latitude": 48.8929,
+      "longitude": 2.29808,
+      "name": {
+        "en": "So Ouest",
+        "fr": "So Ouest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Levallois-Perret, France",
+        "fr": "square de Levallois-Perret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110806545",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-square-andre-malraux-q110806545",
+      "latitude": 48.897312375,
+      "longitude": 2.276731075,
+      "name": {
+        "en": "square André-Malraux",
+        "fr": "square André-Malraux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "garden square in Levallois-Perret, France",
+        "fr": "square de Levallois-Perret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110806551",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-square-valentin-q110806551",
+      "latitude": 48.8902327,
+      "longitude": 2.294720275,
+      "name": {
+        "en": "square Valentin",
+        "fr": "square Valentin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Levallois-Perret, France",
+        "fr": "square de Levallois-Perret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110806550",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-square-victor-hugo-q110806550",
+      "latitude": 48.89481485,
+      "longitude": 2.29838915,
+      "name": {
+        "en": "square Victor-Hugo",
+        "fr": "square Victor-Hugo"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3517641",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "levallois-perret-temple-protestant-de-la-petite-etoile-q3517641",
+      "latitude": 48.8928,
+      "longitude": 2.28413,
+      "name": {
+        "en": "temple protestant de la Petite Étoile",
+        "fr": "temple protestant de la Petite Étoile"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa mauresque is a distinctive architectural landmark in the city.",
+        "fr": "Villa mauresque est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125466",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "levallois-perret-villa-mauresque-pa00125466",
+      "latitude": 48.8920017763809,
+      "longitude": 2.28047554322362,
+      "name": {
+        "en": "Villa mauresque",
+        "fr": "Villa mauresque"
+      }
+    }
+  ]
+}

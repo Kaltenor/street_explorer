@@ -1,0 +1,204 @@
+{
+  "id": "biarritz-v1",
+  "cityId": "biarritz-fr",
+  "cityZoneId": "relation/166717",
+  "cityName": {
+    "en": "Biarritz",
+    "fr": "Biarritz"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Impériale is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Impériale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084355",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-chapelle-imperiale-pa00084355",
+      "latitude": 43.4849400192613,
+      "longitude": -1.55490618427995,
+      "name": {
+        "en": "Chapelle Impériale",
+        "fr": "Chapelle Impériale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Boulard is an important witness to the city's history.",
+        "fr": "Château Boulard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084356",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-chateau-boulard-pa00084356",
+      "latitude": 43.4749837557539,
+      "longitude": -1.55894692826349,
+      "name": {
+        "en": "Château Boulard",
+        "fr": "Château Boulard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine de Françon is a distinctive architectural landmark in the city.",
+        "fr": "Domaine de Françon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132940",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-domaine-de-francon-pa00132940",
+      "latitude": 43.4606138719409,
+      "longitude": -1.5595351899023,
+      "name": {
+        "en": "Domaine de Françon",
+        "fr": "Domaine de Françon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église orthodoxe is a distinctive architectural landmark in the city.",
+        "fr": "Église orthodoxe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000105",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-eglise-orthodoxe-pa64000105",
+      "latitude": 43.4861976293604,
+      "longitude": -1.55505136702899,
+      "name": {
+        "en": "Église orthodoxe",
+        "fr": "Église orthodoxe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084357",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-eglise-saint-martin-pa00084357",
+      "latitude": 43.4742088126008,
+      "longitude": -1.55559872694684,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA64000088",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-monument-aux-morts-de-la-guerre-1914-1918-pa64000088",
+      "latitude": 43.483527600301,
+      "longitude": -1.56843040551997,
+      "name": {
+        "en": "Monument aux morts de la guerre 1914-1918",
+        "fr": "Monument aux morts de la guerre 1914-1918"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel du Palais is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel du Palais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125254",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-hotel-du-palais-pa00125254",
+      "latitude": 43.4867337167626,
+      "longitude": -1.55632590016244,
+      "name": {
+        "en": "Hôtel du Palais",
+        "fr": "Hôtel du Palais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Plaza is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Plaza est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084543",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-hotel-plaza-pa00084543",
+      "latitude": 43.4827727968298,
+      "longitude": -1.55846803178325,
+      "name": {
+        "en": "Hôtel Plaza",
+        "fr": "Hôtel Plaza"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pâtisserie Miremont is a distinctive architectural landmark in the city.",
+        "fr": "Pâtisserie Miremont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000060",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-patisserie-miremont-pa64000060",
+      "latitude": 43.482518549239,
+      "longitude": -1.56184659005876,
+      "name": {
+        "en": "Pâtisserie Miremont",
+        "fr": "Pâtisserie Miremont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Natacha is a distinctive architectural landmark in the city.",
+        "fr": "Villa Natacha est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125255",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "biarritz-villa-natacha-pa00125255",
+      "latitude": 43.4729939410862,
+      "longitude": -1.55845045810927,
+      "name": {
+        "en": "Villa Natacha",
+        "fr": "Villa Natacha"
+      }
+    }
+  ]
+}

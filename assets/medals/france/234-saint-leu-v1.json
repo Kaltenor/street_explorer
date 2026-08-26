@@ -1,0 +1,204 @@
+{
+  "id": "saint-leu-v1",
+  "cityId": "saint-leu-fr",
+  "cityZoneId": "relation/289451",
+  "cityName": {
+    "en": "Saint-Leu",
+    "fr": "Saint-Leu"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église des Colimaçons is a distinctive architectural landmark in the city.",
+        "fr": "Église des Colimaçons est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-leu-eglise-des-colimacons-pa97400008",
+      "latitude": -21.1376769204185,
+      "longitude": 55.2942005510073,
+      "name": {
+        "en": "Église des Colimaçons",
+        "fr": "Église des Colimaçons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "édifice religieux français (Saint-Leu)"
+      },
+      "externalIdentity": {
+        "id": "Q3585970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-eglise-du-sacre-c-ur-de-saint-leu-q3585970",
+      "latitude": -21.137611,
+      "longitude": 55.294444,
+      "name": {
+        "en": "église du Sacré-Cœur de Saint-Leu",
+        "fr": "église du Sacré-Cœur de Saint-Leu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "aquarium in Saint-Leu, Réunion, specializing in marine turtles",
+        "fr": "aquarium public, centre de soins et musée français"
+      },
+      "externalIdentity": {
+        "id": "Q259897",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-kelonia-q259897",
+      "latitude": -21.152469,
+      "longitude": 55.280206,
+      "name": {
+        "en": "Kélonia",
+        "fr": "Kélonia"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French botanical garden",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q104177082",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-mascarin-jardin-botanique-de-la-reunion-q104177082",
+      "latitude": -21.137531457,
+      "longitude": 55.295686109,
+      "name": {
+        "en": "Mascarin, jardin botanique de La Réunion",
+        "fr": "Mascarin, jardin botanique de La Réunion"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée agricole et industriel Stella Matutina is one of the city's notable cultural landmarks.",
+        "fr": "musée agricole et industriel Stella Matutina compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1068",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-leu-musee-agricole-et-industriel-stella-matutina-m1068",
+      "latitude": -21.201257,
+      "longitude": 55.296082,
+      "name": {
+        "en": "musée agricole et industriel Stella Matutina",
+        "fr": "musée agricole et industriel Stella Matutina"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Museum in Saint-Leu, Réunion",
+        "fr": "musée français situé à Saint-Leu (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q3330383",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-musee-du-sel-q3330383",
+      "latitude": -21.2031,
+      "longitude": 55.2822,
+      "name": {
+        "en": "musée du Sel",
+        "fr": "musée du Sel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q3329353",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-musee-stella-matutina-q3329353",
+      "latitude": -21.2026,
+      "longitude": 55.2956,
+      "name": {
+        "en": "musée Stella Matutina",
+        "fr": "musée Stella Matutina"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "pointe des Châteaux is an important witness to the city's history.",
+        "fr": "situé à la Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3393693",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-pointe-des-chateaux-q3393693",
+      "latitude": -21.1496,
+      "longitude": 55.2718,
+      "name": {
+        "en": "pointe des Châteaux",
+        "fr": "pointe des Châteaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former railway station in Saint-Leu, France",
+        "fr": "gare française"
+      },
+      "externalIdentity": {
+        "id": "Q3097556",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-saint-leu-q3097556",
+      "latitude": -21.1677,
+      "longitude": 55.2866,
+      "name": {
+        "en": "Saint-Leu",
+        "fr": "Saint-Leu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3556686",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-leu-viaduc-de-la-ravine-fontaine-q3556686",
+      "latitude": -21.1642,
+      "longitude": 55.2978,
+      "name": {
+        "en": "viaduc de la ravine Fontaine",
+        "fr": "viaduc de la ravine Fontaine"
+      }
+    }
+  ]
+}

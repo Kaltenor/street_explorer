@@ -1,0 +1,204 @@
+{
+  "id": "challans-v1",
+  "cityId": "challans-fr",
+  "cityZoneId": "relation/164555",
+  "cityName": {
+    "en": "Challans",
+    "fr": "Challans"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "1793 battle",
+        "fr": "bataille de la guerre de Vendée (1793)"
+      },
+      "externalIdentity": {
+        "id": "Q2888290",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "challans-bataille-de-challans-q2888290",
+      "latitude": 46.846666666,
+      "longitude": -1.878055555,
+      "name": {
+        "en": "bataille de Challans",
+        "fr": "bataille de Challans"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque pour Tous is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque pour Tous compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/6499181572",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "challans-bibliotheque-pour-tous-node-6499181572",
+      "latitude": 46.846494,
+      "longitude": -1.8818767,
+      "name": {
+        "en": "Bibliothèque pour Tous",
+        "fr": "Bibliothèque pour Tous"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Vendée, France",
+        "fr": "commune française du département de la Vendée"
+      },
+      "externalIdentity": {
+        "id": "Q7148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "challans-challans-q7148",
+      "latitude": 46.845833333,
+      "longitude": -1.879166666,
+      "name": {
+        "en": "Challans",
+        "fr": "Challans"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Coursaudière is an important witness to the city's history.",
+        "fr": "Château de la Coursaudière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/71181079",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "challans-chateau-de-la-coursaudiere-way-71181079",
+      "latitude": 46.8484994,
+      "longitude": -1.8819072,
+      "name": {
+        "en": "Château de la Coursaudière",
+        "fr": "Château de la Coursaudière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Vérie is an important witness to the city's history.",
+        "fr": "Château de la Vérie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/3918807033",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "challans-chateau-de-la-verie-node-3918807033",
+      "latitude": 46.8244314,
+      "longitude": -1.9030079,
+      "name": {
+        "en": "Château de la Vérie",
+        "fr": "Château de la Vérie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-l'Assomption is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-l'Assomption est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/71180393",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "challans-eglise-notre-dame-de-l-assomption-way-71180393",
+      "latitude": 46.8461774,
+      "longitude": -1.8831005,
+      "name": {
+        "en": "Église Notre-Dame-de-l'Assomption",
+        "fr": "Église Notre-Dame-de-l'Assomption"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville et de l'Intercommunalité is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville et de l'Intercommunalité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/72151556",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "challans-hotel-de-ville-et-de-l-intercommunalite-way-72151556",
+      "latitude": 46.844752,
+      "longitude": -1.87916,
+      "name": {
+        "en": "Hôtel de Ville et de l'Intercommunalité",
+        "fr": "Hôtel de Ville et de l'Intercommunalité"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Coursaudière is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Coursaudière compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/693164022",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "challans-parc-de-la-coursaudiere-way-693164022",
+      "latitude": 46.8485018,
+      "longitude": -1.8823354,
+      "name": {
+        "en": "Parc de la Coursaudière",
+        "fr": "Parc de la Coursaudière"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Juisière is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Juisière compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/493252040",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "challans-parc-de-la-juisiere-way-493252040",
+      "latitude": 46.8545253,
+      "longitude": -1.8861971,
+      "name": {
+        "en": "Parc de la Juisière",
+        "fr": "Parc de la Juisière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre Le Marais is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre Le Marais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/6172903085",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "challans-theatre-le-marais-node-6172903085",
+      "latitude": 46.8468014,
+      "longitude": -1.8822812,
+      "name": {
+        "en": "Théâtre Le Marais",
+        "fr": "Théâtre Le Marais"
+      }
+    }
+  ]
+}

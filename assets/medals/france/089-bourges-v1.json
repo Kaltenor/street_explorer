@@ -1,0 +1,394 @@
+{
+  "id": "bourges-v1",
+  "cityId": "bourges-fr",
+  "cityZoneId": "relation/50312",
+  "cityName": {
+    "en": "Bourges",
+    "fr": "Bourges"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "\"Abbaye de Saint-Sulpice située \"enclos des Bénédictins\"\" is an important witness to the city's history.",
+        "fr": "\"Abbaye de Saint-Sulpice située \"enclos des Bénédictins\"\" est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096672",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-abbaye-de-saint-sulpice-situee-enclos-des-benedictins-pa00096672",
+      "latitude": 47.0856676560211,
+      "longitude": 2.38541776987196,
+      "name": {
+        "en": "\"Abbaye de Saint-Sulpice située \"enclos des Bénédictins\"\"",
+        "fr": "\"Abbaye de Saint-Sulpice située \"enclos des Bénédictins\"\""
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Ambroix, puis hôtel de Bourbon is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Ambroix, puis hôtel de Bourbon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096654",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-abbaye-saint-ambroix-puis-hotel-de-bourbon-pa00096654",
+      "latitude": 47.090126293786305,
+      "longitude": 2.39391617764113,
+      "name": {
+        "en": "Ancien abbaye Saint-Ambroix, puis hôtel de Bourbon",
+        "fr": "Ancien abbaye Saint-Ambroix, puis hôtel de Bourbon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château d'eau is an important witness to the city's history.",
+        "fr": "Ancien château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096658",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-chateau-d-eau-pa00096658",
+      "latitude": 47.0759802778885,
+      "longitude": 2.40077208929357,
+      "name": {
+        "en": "Ancien château d'eau",
+        "fr": "Ancien château d'eau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château de Lazenay is an important witness to the city's history.",
+        "fr": "Ancien château de Lazenay est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096946",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-chateau-de-lazenay-pa00096946",
+      "latitude": 47.0534757441923,
+      "longitude": 2.40531720164296,
+      "name": {
+        "en": "Ancien château de Lazenay",
+        "fr": "Ancien château de Lazenay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096742",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-couvent-des-ursulines-ou-ancien-grand-seminaire-actuel-palais-de-justice-pa00096742",
+      "latitude": 47.0850103210187,
+      "longitude": 2.39174272565226,
+      "name": {
+        "en": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice",
+        "fr": "Ancien couvent des Ursulines, ou ancien Grand Séminaire, actuel Palais de Justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien rempart gallo-romain is an important witness to the city's history.",
+        "fr": "Ancien rempart gallo-romain est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096671",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-ancien-rempart-gallo-romain-pa00096671",
+      "latitude": 47.08297537766451,
+      "longitude": 2.39966870404618,
+      "name": {
+        "en": "Ancien rempart gallo-romain",
+        "fr": "Ancien rempart gallo-romain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral in Bourges, Cher, France",
+        "fr": "cathédrale de Bourges, en France"
+      },
+      "externalIdentity": {
+        "id": "Q207985",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourges-cathedrale-saint-etienne-de-bourges-q207985",
+      "latitude": 47.08222,
+      "longitude": 2.39917,
+      "name": {
+        "en": "cathédrale Saint-Étienne de Bourges",
+        "fr": "cathédrale Saint-Étienne de Bourges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cloître de la cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Cloître de la cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096659",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-cloitre-de-la-cathedrale-pa00096659",
+      "latitude": 47.0820142017717,
+      "longitude": 2.40013478828404,
+      "name": {
+        "en": "Cloître de la cathédrale",
+        "fr": "Cloître de la cathédrale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096665",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-eglise-notre-dame-pa00096665",
+      "latitude": 47.086896134621,
+      "longitude": 2.39378292041604,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Bonnet is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Bonnet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096668",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-eglise-saint-bonnet-pa00096668",
+      "latitude": 47.0861411299779,
+      "longitude": 2.4000544715441303,
+      "name": {
+        "en": "Église Saint-Bonnet",
+        "fr": "Église Saint-Bonnet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Echevins (ancien Hôtel de ville) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Echevins (ancien Hôtel de ville) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096685",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-hotel-des-echevins-ancien-hotel-de-ville-pa00096685",
+      "latitude": 47.0861253208337,
+      "longitude": 2.39608396509685,
+      "name": {
+        "en": "Hôtel des Echevins (ancien Hôtel de ville)",
+        "fr": "Hôtel des Echevins (ancien Hôtel de ville)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel ou Palais Jacques-Coeur is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel ou Palais Jacques-Coeur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096686",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-hotel-ou-palais-jacques-coeur-pa00096686",
+      "latitude": 47.0842140159839,
+      "longitude": 2.3935462367963,
+      "name": {
+        "en": "Hôtel ou Palais Jacques-Coeur",
+        "fr": "Hôtel ou Palais Jacques-Coeur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison du Château et porte romane is an important witness to the city's history.",
+        "fr": "Maison du Château et porte romane est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096938",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-maison-du-chateau-et-porte-romane-pa00096938",
+      "latitude": 47.0776329926889,
+      "longitude": 2.40303546688769,
+      "name": {
+        "en": "Maison du Château et porte romane",
+        "fr": "Maison du Château et porte romane"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts décoratifs is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts décoratifs compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0229",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-des-arts-decoratifs-m0229",
+      "latitude": 47.084683,
+      "longitude": 2.398383,
+      "name": {
+        "en": "musée des arts décoratifs",
+        "fr": "musée des arts décoratifs"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des meilleurs ouvriers de France is one of the city's notable cultural landmarks.",
+        "fr": "musée des meilleurs ouvriers de France compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0232",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-des-meilleurs-ouvriers-de-france-m0232",
+      "latitude": 47.081774,
+      "longitude": 2.398494,
+      "name": {
+        "en": "musée des meilleurs ouvriers de France",
+        "fr": "musée des meilleurs ouvriers de France"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Berry is one of the city's notable cultural landmarks.",
+        "fr": "musée du Berry compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0230",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-du-berry-m0230",
+      "latitude": 47.083735,
+      "longitude": 2.39325,
+      "name": {
+        "en": "musée du Berry",
+        "fr": "musée du Berry"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Estève is one of the city's notable cultural landmarks.",
+        "fr": "musée Estève compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0231",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-musee-esteve-m0231",
+      "latitude": 47.085951,
+      "longitude": 2.396195,
+      "name": {
+        "en": "musée Estève",
+        "fr": "musée Estève"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle Gabriel Foucher is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle Gabriel Foucher compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7028",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourges-museum-d-histoire-naturelle-gabriel-foucher-m7028",
+      "latitude": 47.081055,
+      "longitude": 2.392284,
+      "name": {
+        "en": "muséum d'histoire naturelle Gabriel Foucher",
+        "fr": "muséum d'histoire naturelle Gabriel Foucher"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Saint-Ours, provenant de la collégiale Saint-Ursin is an important witness to the city's history.",
+        "fr": "Porte Saint-Ours, provenant de la collégiale Saint-Ursin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00096737",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-porte-saint-ours-provenant-de-la-collegiale-saint-ursin-pa00096737",
+      "latitude": 47.0796009705001,
+      "longitude": 2.39787176702433,
+      "name": {
+        "en": "Porte Saint-Ours, provenant de la collégiale Saint-Ursin",
+        "fr": "Porte Saint-Ours, provenant de la collégiale Saint-Ursin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal Jacques-Coeur is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal Jacques-Coeur compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA18000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourges-theatre-municipal-jacques-coeur-pa18000030",
+      "latitude": 47.083757128691,
+      "longitude": 2.39396937070574,
+      "name": {
+        "en": "Théâtre municipal Jacques-Coeur",
+        "fr": "Théâtre municipal Jacques-Coeur"
+      }
+    }
+  ]
+}

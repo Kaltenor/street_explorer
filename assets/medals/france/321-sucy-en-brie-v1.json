@@ -1,0 +1,204 @@
+{
+  "id": "sucy-en-brie-v1",
+  "cityId": "sucy-en-brie-fr",
+  "cityZoneId": "relation/108129",
+  "cityName": {
+    "en": "Sucy-en-Brie",
+    "fr": "Sucy-en-Brie"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Haute-Maison is an important witness to the city's history.",
+        "fr": "Château de Haute-Maison est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079908",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sucy-en-brie-chateau-de-haute-maison-pa00079908",
+      "latitude": 48.7707050417478,
+      "longitude": 2.5233943397766,
+      "name": {
+        "en": "Château de Haute-Maison",
+        "fr": "Château de Haute-Maison"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Sucy-en-Brie, France",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q15940250",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-chateau-de-sucy-en-brie-q15940250",
+      "latitude": 48.77154,
+      "longitude": 2.52177,
+      "name": {
+        "en": "château de Sucy-en-Brie",
+        "fr": "château de Sucy-en-Brie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079907",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sucy-en-brie-chateau-pa00079907",
+      "latitude": 48.7715176431461,
+      "longitude": 2.5215923113194,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q22915880",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-eglise-saint-martin-de-sucy-en-brie-q22915880",
+      "latitude": 48.768928,
+      "longitude": 2.521239,
+      "name": {
+        "en": "église Saint-Martin de Sucy-en-Brie",
+        "fr": "église Saint-Martin de Sucy-en-Brie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079909",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sucy-en-brie-eglise-saint-martin-pa00079909",
+      "latitude": 48.7689366829317,
+      "longitude": 2.52130349536391,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, rue du Temple is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à Sucy-en-Brie, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920535",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-fontaine-wallace-rue-du-temple-q128920535",
+      "latitude": 48.770821,
+      "longitude": 2.520949,
+      "name": {
+        "en": "fontaine Wallace, rue du Temple",
+        "fr": "fontaine Wallace, rue du Temple"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "historical fort around Paris",
+        "fr": "ancien fort à la porte de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q3078251",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-fort-de-sucy-q3078251",
+      "latitude": 48.76861111,
+      "longitude": 2.53166667,
+      "name": {
+        "en": "fort de Sucy",
+        "fr": "fort de Sucy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Sucy-en-Brie, Val-de-Marne, France",
+        "fr": "édifice de Sucy-en-Brie, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412803",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-hotel-de-ville-de-sucy-en-brie-q83412803",
+      "latitude": 48.7705,
+      "longitude": 2.5182,
+      "name": {
+        "en": "hôtel de ville de Sucy-en-Brie",
+        "fr": "hôtel de ville de Sucy-en-Brie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc départemental du Morbras is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15984177",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-parc-departemental-du-morbras-q15984177",
+      "latitude": 48.77812,
+      "longitude": 2.5281,
+      "name": {
+        "en": "parc départemental du Morbras",
+        "fr": "parc départemental du Morbras"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Sucy-en-Brie, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2218079",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sucy-en-brie-sucy-bonneuil-q2218079",
+      "latitude": 48.770833,
+      "longitude": 2.5075,
+      "name": {
+        "en": "Sucy - Bonneuil",
+        "fr": "Sucy - Bonneuil"
+      }
+    }
+  ]
+}

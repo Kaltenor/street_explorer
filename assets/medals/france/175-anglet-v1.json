@@ -1,0 +1,204 @@
+{
+  "id": "anglet-v1",
+  "cityId": "anglet-fr",
+  "cityZoneId": "relation/422124",
+  "cityName": {
+    "en": "Anglet",
+    "fr": "Anglet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport serving Biarritz, France",
+        "fr": "aéroport desservant Biarritz (Pyrénées-Atlantiques, Nouvelle-Aquitaine, France)"
+      },
+      "externalIdentity": {
+        "id": "Q620101",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-aeroport-de-biarritz-pays-basque-q620101",
+      "latitude": 43.468333333,
+      "longitude": -1.523333333,
+      "name": {
+        "en": "aéroport de Biarritz-Pays basque",
+        "fr": "aéroport de Biarritz-Pays basque"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "chapel located in Pyrénées-Atlantiques, in France",
+        "fr": "chapelle située dans les Pyrénées-Atlantiques, en France"
+      },
+      "externalIdentity": {
+        "id": "Q51159664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-ancien-chapelle-du-chateau-de-brindos-q51159664",
+      "latitude": 43.462784,
+      "longitude": -1.530043,
+      "name": {
+        "en": "Ancien chapelle du château de Brindos",
+        "fr": "Ancien chapelle du château de Brindos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chambre d’Amour is a distinctive architectural landmark in the city.",
+        "fr": "littoral en France"
+      },
+      "externalIdentity": {
+        "id": "Q2948420",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-chambre-d-amour-q2948420",
+      "latitude": 43.494,
+      "longitude": -1.5474,
+      "name": {
+        "en": "chambre d’Amour",
+        "fr": "chambre d’Amour"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pyrénées-Atlantiques, in France",
+        "fr": "église située dans les Pyrénées-Atlantiques, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29912862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-eglise-saint-leon-d-anglet-q29912862",
+      "latitude": 43.48186111,
+      "longitude": -1.51412222,
+      "name": {
+        "en": "église Saint-Léon d'Anglet",
+        "fr": "église Saint-Léon d'Anglet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Marie is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Marie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000084",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "anglet-eglise-sainte-marie-pa64000084",
+      "latitude": 43.4947670493057,
+      "longitude": -1.53529058006086,
+      "name": {
+        "en": "Église Sainte-Marie",
+        "fr": "Église Sainte-Marie"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "lac de Chiberta is one of the city's notable green or natural landmarks.",
+        "fr": "lac de Chiberta compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q127694541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-lac-de-chiberta-q127694541",
+      "latitude": 43.51311,
+      "longitude": -1.52189,
+      "name": {
+        "en": "lac de Chiberta",
+        "fr": "lac de Chiberta"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc du Maharin is one of the city's notable green or natural landmarks.",
+        "fr": "parc du Maharin compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q137552634",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-parc-du-maharin-q137552634",
+      "latitude": 43.50029,
+      "longitude": -1.51352,
+      "name": {
+        "en": "parc du Maharin",
+        "fr": "parc du Maharin"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc écologique d'Izadia is one of the city's notable green or natural landmarks.",
+        "fr": "espace naturel protégé à Anglet, France"
+      },
+      "externalIdentity": {
+        "id": "Q17496204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-parc-ecologique-d-izadia-q17496204",
+      "latitude": 43.52632778,
+      "longitude": -1.51974722,
+      "name": {
+        "en": "Parc écologique d'Izadia",
+        "fr": "Parc écologique d'Izadia"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour de Lannes is an important witness to the city's history.",
+        "fr": "tour de Lannes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q64373569",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-tour-de-lannes-q64373569",
+      "latitude": 43.47126,
+      "longitude": -1.51219,
+      "name": {
+        "en": "tour de Lannes",
+        "fr": "tour de Lannes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "villa Prinkipo is a distinctive architectural landmark in the city.",
+        "fr": "villa Prinkipo est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31187878",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "anglet-villa-prinkipo-q31187878",
+      "latitude": 43.50968333,
+      "longitude": -1.52892778,
+      "name": {
+        "en": "villa Prinkipo",
+        "fr": "villa Prinkipo"
+      }
+    }
+  ]
+}

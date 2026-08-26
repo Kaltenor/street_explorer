@@ -26,8 +26,8 @@ export const FRANCE_MEDAL_ALBUM_MANIFEST: readonly FranceMedalAlbumManifestEntry
     albumId: "marseille-v1", cityId: "marseille-fr",
     cityName: { en: "Marseille", fr: "Marseille" },
     cityZoneId: "relation/76469", inseeCode: "13055",
-    medalCount: 8, population: 886040, rank: 2, version: 1,
-    load: () => require("../../../assets/medals/france/002-marseille-v1.json") as MedalAlbumDefinition
+    medalCount: 38, population: 886040, rank: 2, version: 2,
+    load: () => require("../../../assets/medals/france/../marseille-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "lyon-v1", cityId: "lyon-fr",
@@ -40,679 +40,3479 @@ export const FRANCE_MEDAL_ALBUM_MANIFEST: readonly FranceMedalAlbumManifestEntry
     albumId: "toulouse-v1", cityId: "toulouse-fr",
     cityName: { en: "Toulouse", fr: "Toulouse" },
     cityZoneId: "relation/35738", inseeCode: "31555",
-    medalCount: 8, population: 514819, rank: 4, version: 1,
+    medalCount: 20, population: 514819, rank: 4, version: 3,
     load: () => require("../../../assets/medals/france/004-toulouse-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "nice-v1", cityId: "nice-fr",
     cityName: { en: "Nice", fr: "Nice" },
     cityZoneId: "relation/170100", inseeCode: "06088",
-    medalCount: 8, population: 357737, rank: 5, version: 1,
+    medalCount: 20, population: 357737, rank: 5, version: 3,
     load: () => require("../../../assets/medals/france/005-nice-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "nantes-v1", cityId: "nantes-fr",
     cityName: { en: "Nantes", fr: "Nantes" },
     cityZoneId: "relation/59874", inseeCode: "44109",
-    medalCount: 8, population: 327734, rank: 6, version: 1,
+    medalCount: 20, population: 327734, rank: 6, version: 3,
     load: () => require("../../../assets/medals/france/006-nantes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "montpellier-v1", cityId: "montpellier-fr",
     cityName: { en: "Montpellier", fr: "Montpellier" },
     cityZoneId: "relation/28722", inseeCode: "34172",
-    medalCount: 8, population: 310240, rank: 7, version: 1,
+    medalCount: 20, population: 310240, rank: 7, version: 3,
     load: () => require("../../../assets/medals/france/007-montpellier-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "strasbourg-v1", cityId: "strasbourg-fr",
     cityName: { en: "Strasbourg", fr: "Strasbourg" },
     cityZoneId: "relation/71033", inseeCode: "67482",
-    medalCount: 8, population: 293771, rank: 8, version: 1,
+    medalCount: 20, population: 293771, rank: 8, version: 3,
     load: () => require("../../../assets/medals/france/008-strasbourg-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "bordeaux-v1", cityId: "bordeaux-fr",
     cityName: { en: "Bordeaux", fr: "Bordeaux" },
     cityZoneId: "relation/105270", inseeCode: "33063",
-    medalCount: 8, population: 267991, rank: 9, version: 1,
+    medalCount: 20, population: 267991, rank: 9, version: 3,
     load: () => require("../../../assets/medals/france/009-bordeaux-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "lille-v1", cityId: "lille-fr",
     cityName: { en: "Lille", fr: "Lille" },
     cityZoneId: "relation/58404", inseeCode: "59350",
-    medalCount: 8, population: 238246, rank: 10, version: 1,
+    medalCount: 20, population: 238246, rank: 10, version: 3,
     load: () => require("../../../assets/medals/france/010-lille-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "rennes-v1", cityId: "rennes-fr",
     cityName: { en: "Rennes", fr: "Rennes" },
     cityZoneId: "relation/54517", inseeCode: "35238",
-    medalCount: 8, population: 230890, rank: 11, version: 1,
+    medalCount: 20, population: 230890, rank: 11, version: 3,
     load: () => require("../../../assets/medals/france/011-rennes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "toulon-v1", cityId: "toulon-fr",
     cityName: { en: "Toulon", fr: "Toulon" },
     cityZoneId: "relation/35280", inseeCode: "83137",
-    medalCount: 8, population: 179116, rank: 12, version: 1,
+    medalCount: 20, population: 179116, rank: 12, version: 3,
     load: () => require("../../../assets/medals/france/012-toulon-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "reims-v1", cityId: "reims-fr",
     cityName: { en: "Reims", fr: "Reims" },
     cityZoneId: "relation/36458", inseeCode: "51454",
-    medalCount: 8, population: 177674, rank: 13, version: 1,
+    medalCount: 20, population: 177674, rank: 13, version: 3,
     load: () => require("../../../assets/medals/france/013-reims-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "saint-etienne-v1", cityId: "saint-etienne-fr",
     cityName: { en: "Saint-Étienne", fr: "Saint-Étienne" },
-    cityZoneId: "relation/18937048", inseeCode: "42218",
-    medalCount: 8, population: 173136, rank: 14, version: 1,
+    cityZoneId: "relation/117905", inseeCode: "42218",
+    medalCount: 20, population: 173136, rank: 14, version: 3,
     load: () => require("../../../assets/medals/france/014-saint-etienne-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "le-havre-v1", cityId: "le-havre-fr",
     cityName: { en: "Le Havre", fr: "Le Havre" },
     cityZoneId: "relation/104492", inseeCode: "76351",
-    medalCount: 8, population: 166687, rank: 15, version: 1,
+    medalCount: 20, population: 166687, rank: 15, version: 3,
     load: () => require("../../../assets/medals/france/015-le-havre-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "villeurbanne-v1", cityId: "villeurbanne-fr",
     cityName: { en: "Villeurbanne", fr: "Villeurbanne" },
     cityZoneId: "relation/120989", inseeCode: "69266",
-    medalCount: 14, population: 163684, rank: 16, version: 1,
+    medalCount: 20, population: 163684, rank: 16, version: 2,
     load: () => require("../../../assets/medals/france/../villeurbanne-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "dijon-v1", cityId: "dijon-fr",
     cityName: { en: "Dijon", fr: "Dijon" },
     cityZoneId: "relation/74090", inseeCode: "21231",
-    medalCount: 8, population: 161830, rank: 17, version: 1,
+    medalCount: 20, population: 161830, rank: 17, version: 3,
     load: () => require("../../../assets/medals/france/017-dijon-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "angers-v1", cityId: "angers-fr",
     cityName: { en: "Angers", fr: "Angers" },
     cityZoneId: "relation/178351", inseeCode: "49007",
-    medalCount: 8, population: 159022, rank: 18, version: 1,
+    medalCount: 20, population: 159022, rank: 18, version: 3,
     load: () => require("../../../assets/medals/france/018-angers-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "grenoble-v1", cityId: "grenoble-fr",
     cityName: { en: "Grenoble", fr: "Grenoble" },
     cityZoneId: "relation/80348", inseeCode: "38185",
-    medalCount: 8, population: 156140, rank: 19, version: 1,
+    medalCount: 20, population: 156140, rank: 19, version: 3,
     load: () => require("../../../assets/medals/france/019-grenoble-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-denis-97411-v1", cityId: "saint-denis-97411-fr",
+    cityName: { en: "Saint-Denis", fr: "Saint-Denis" },
+    cityZoneId: "relation/192468", inseeCode: "97411",
+    medalCount: 20, population: 155634, rank: 20, version: 2,
+    load: () => require("../../../assets/medals/france/020-saint-denis-97411-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "nimes-v1", cityId: "nimes-fr",
     cityName: { en: "Nîmes", fr: "Nîmes" },
     cityZoneId: "relation/378685", inseeCode: "30189",
-    medalCount: 8, population: 151839, rank: 20, version: 1,
-    load: () => require("../../../assets/medals/france/020-nimes-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 151839, rank: 21, version: 3,
+    load: () => require("../../../assets/medals/france/021-nimes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "aix-en-provence-v1", cityId: "aix-en-provence-fr",
     cityName: { en: "Aix-en-Provence", fr: "Aix-en-Provence" },
     cityZoneId: "relation/70279", inseeCode: "13001",
-    medalCount: 8, population: 149695, rank: 21, version: 1,
-    load: () => require("../../../assets/medals/france/021-aix-en-provence-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 149695, rank: 22, version: 3,
+    load: () => require("../../../assets/medals/france/022-aix-en-provence-v1.json") as MedalAlbumDefinition
   },
   {
-    albumId: "saint-denis-v1", cityId: "saint-denis-fr",
+    albumId: "saint-denis-v1", cityId: "saint-denis-93066-fr",
     cityName: { en: "Saint-Denis", fr: "Saint-Denis" },
-    cityZoneId: "relation/18476624", inseeCode: "93066",
-    medalCount: 8, population: 149077, rank: 22, version: 1,
-    load: () => require("../../../assets/medals/france/022-saint-denis-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/87922", inseeCode: "93066",
+    medalCount: 20, population: 149077, rank: 23, version: 3,
+    load: () => require("../../../assets/medals/france/023-saint-denis-93066-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "clermont-ferrand-v1", cityId: "clermont-ferrand-fr",
     cityName: { en: "Clermont-Ferrand", fr: "Clermont-Ferrand" },
     cityZoneId: "relation/110866", inseeCode: "63113",
-    medalCount: 8, population: 146351, rank: 23, version: 1,
-    load: () => require("../../../assets/medals/france/023-clermont-ferrand-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 146351, rank: 24, version: 3,
+    load: () => require("../../../assets/medals/france/024-clermont-ferrand-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "le-mans-v1", cityId: "le-mans-fr",
     cityName: { en: "Le Mans", fr: "Le Mans" },
     cityZoneId: "relation/107435", inseeCode: "72181",
-    medalCount: 8, population: 146249, rank: 24, version: 1,
-    load: () => require("../../../assets/medals/france/024-le-mans-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 146249, rank: 25, version: 3,
+    load: () => require("../../../assets/medals/france/025-le-mans-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "brest-v1", cityId: "brest-fr",
     cityName: { en: "Brest", fr: "Brest" },
     cityZoneId: "relation/1076124", inseeCode: "29019",
-    medalCount: 8, population: 142346, rank: 25, version: 1,
-    load: () => require("../../../assets/medals/france/025-brest-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 142346, rank: 26, version: 3,
+    load: () => require("../../../assets/medals/france/026-brest-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "tours-v1", cityId: "tours-fr",
     cityName: { en: "Tours", fr: "Tours" },
     cityZoneId: "relation/76306", inseeCode: "37261",
-    medalCount: 8, population: 139259, rank: 26, version: 1,
-    load: () => require("../../../assets/medals/france/026-tours-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 139259, rank: 27, version: 3,
+    load: () => require("../../../assets/medals/france/027-tours-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "amiens-v1", cityId: "amiens-fr",
     cityName: { en: "Amiens", fr: "Amiens" },
     cityZoneId: "relation/114347", inseeCode: "80021",
-    medalCount: 8, population: 136449, rank: 27, version: 1,
-    load: () => require("../../../assets/medals/france/027-amiens-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 136449, rank: 28, version: 3,
+    load: () => require("../../../assets/medals/france/028-amiens-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "annecy-v1", cityId: "annecy-fr",
     cityName: { en: "Annecy", fr: "Annecy" },
-    cityZoneId: "relation/102480", inseeCode: "74010",
-    medalCount: 8, population: 132117, rank: 28, version: 1,
-    load: () => require("../../../assets/medals/france/028-annecy-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/6791758", inseeCode: "74010",
+    medalCount: 20, population: 132117, rank: 29, version: 3,
+    load: () => require("../../../assets/medals/france/029-annecy-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "limoges-v1", cityId: "limoges-fr",
     cityName: { en: "Limoges", fr: "Limoges" },
     cityZoneId: "relation/114172", inseeCode: "87085",
-    medalCount: 8, population: 129937, rank: 29, version: 1,
-    load: () => require("../../../assets/medals/france/029-limoges-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 129937, rank: 30, version: 3,
+    load: () => require("../../../assets/medals/france/030-limoges-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "metz-v1", cityId: "metz-fr",
     cityName: { en: "Metz", fr: "Metz" },
     cityZoneId: "relation/450381", inseeCode: "57463",
-    medalCount: 8, population: 122572, rank: 30, version: 1,
-    load: () => require("../../../assets/medals/france/030-metz-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 122572, rank: 31, version: 3,
+    load: () => require("../../../assets/medals/france/031-metz-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "perpignan-v1", cityId: "perpignan-fr",
     cityName: { en: "Perpignan", fr: "Perpignan" },
     cityZoneId: "relation/18000", inseeCode: "66136",
-    medalCount: 8, population: 121616, rank: 31, version: 1,
-    load: () => require("../../../assets/medals/france/031-perpignan-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 121616, rank: 32, version: 3,
+    load: () => require("../../../assets/medals/france/032-perpignan-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "boulogne-billancourt-v1", cityId: "boulogne-billancourt-fr",
     cityName: { en: "Boulogne-Billancourt", fr: "Boulogne-Billancourt" },
     cityZoneId: "relation/72020", inseeCode: "92012",
-    medalCount: 8, population: 119019, rank: 32, version: 1,
-    load: () => require("../../../assets/medals/france/032-boulogne-billancourt-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 119019, rank: 33, version: 3,
+    load: () => require("../../../assets/medals/france/033-boulogne-billancourt-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "besancon-v1", cityId: "besancon-fr",
     cityName: { en: "Besançon", fr: "Besançon" },
     cityZoneId: "relation/103599", inseeCode: "25056",
-    medalCount: 8, population: 118489, rank: 33, version: 1,
-    load: () => require("../../../assets/medals/france/033-besancon-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 118489, rank: 34, version: 3,
+    load: () => require("../../../assets/medals/france/034-besancon-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "rouen-v1", cityId: "rouen-fr",
     cityName: { en: "Rouen", fr: "Rouen" },
     cityZoneId: "relation/75628", inseeCode: "76540",
-    medalCount: 8, population: 117662, rank: 34, version: 1,
-    load: () => require("../../../assets/medals/france/034-rouen-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 117662, rank: 35, version: 3,
+    load: () => require("../../../assets/medals/france/035-rouen-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "orleans-v1", cityId: "orleans-fr",
     cityName: { en: "Orléans", fr: "Orléans" },
     cityZoneId: "relation/147559", inseeCode: "45234",
-    medalCount: 8, population: 116357, rank: 35, version: 1,
-    load: () => require("../../../assets/medals/france/035-orleans-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 116357, rank: 36, version: 3,
+    load: () => require("../../../assets/medals/france/036-orleans-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "montreuil-v1", cityId: "montreuil-fr",
     cityName: { en: "Montreuil", fr: "Montreuil" },
     cityZoneId: "relation/129423", inseeCode: "93048",
-    medalCount: 8, population: 111934, rank: 36, version: 1,
-    load: () => require("../../../assets/medals/france/036-montreuil-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 111934, rank: 37, version: 3,
+    load: () => require("../../../assets/medals/france/037-montreuil-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "caen-v1", cityId: "caen-fr",
     cityName: { en: "Caen", fr: "Caen" },
     cityZoneId: "relation/149197", inseeCode: "14118",
-    medalCount: 8, population: 109400, rank: 37, version: 1,
-    load: () => require("../../../assets/medals/france/037-caen-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 109400, rank: 38, version: 3,
+    load: () => require("../../../assets/medals/france/038-caen-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-paul-v1", cityId: "saint-paul-fr",
+    cityName: { en: "Saint-Paul", fr: "Saint-Paul" },
+    cityZoneId: "relation/278308", inseeCode: "97415",
+    medalCount: 20, population: 108088, rank: 39, version: 2,
+    load: () => require("../../../assets/medals/france/039-saint-paul-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "argenteuil-v1", cityId: "argenteuil-fr",
     cityName: { en: "Argenteuil", fr: "Argenteuil" },
     cityZoneId: "relation/103245", inseeCode: "95018",
-    medalCount: 8, population: 106130, rank: 38, version: 1,
-    load: () => require("../../../assets/medals/france/038-argenteuil-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 106130, rank: 40, version: 3,
+    load: () => require("../../../assets/medals/france/040-argenteuil-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "mulhouse-v1", cityId: "mulhouse-fr",
     cityName: { en: "Mulhouse", fr: "Mulhouse" },
     cityZoneId: "relation/38246", inseeCode: "68224",
-    medalCount: 8, population: 104978, rank: 39, version: 1,
-    load: () => require("../../../assets/medals/france/039-mulhouse-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 104978, rank: 41, version: 3,
+    load: () => require("../../../assets/medals/france/041-mulhouse-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "nancy-v1", cityId: "nancy-fr",
     cityName: { en: "Nancy", fr: "Nancy" },
     cityZoneId: "relation/52399", inseeCode: "54395",
-    medalCount: 8, population: 103671, rank: 40, version: 1,
-    load: () => require("../../../assets/medals/france/040-nancy-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 103671, rank: 42, version: 3,
+    load: () => require("../../../assets/medals/france/042-nancy-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "tourcoing-v1", cityId: "tourcoing-fr",
     cityName: { en: "Tourcoing", fr: "Tourcoing" },
     cityZoneId: "relation/59551", inseeCode: "59599",
-    medalCount: 8, population: 98772, rank: 41, version: 1,
-    load: () => require("../../../assets/medals/france/041-tourcoing-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 98772, rank: 43, version: 3,
+    load: () => require("../../../assets/medals/france/043-tourcoing-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "roubaix-v1", cityId: "roubaix-fr",
     cityName: { en: "Roubaix", fr: "Roubaix" },
     cityZoneId: "relation/59043", inseeCode: "59512",
-    medalCount: 8, population: 98286, rank: 42, version: 1,
-    load: () => require("../../../assets/medals/france/042-roubaix-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 98286, rank: 44, version: 3,
+    load: () => require("../../../assets/medals/france/044-roubaix-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "nanterre-v1", cityId: "nanterre-fr",
     cityName: { en: "Nanterre", fr: "Nanterre" },
     cityZoneId: "relation/85799", inseeCode: "92050",
-    medalCount: 8, population: 97783, rank: 43, version: 1,
-    load: () => require("../../../assets/medals/france/043-nanterre-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 97783, rank: 45, version: 3,
+    load: () => require("../../../assets/medals/france/045-nanterre-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "vitry-sur-seine-v1", cityId: "vitry-sur-seine-fr",
     cityName: { en: "Vitry-sur-Seine", fr: "Vitry-sur-Seine" },
     cityZoneId: "relation/104768", inseeCode: "94081",
-    medalCount: 8, population: 93963, rank: 44, version: 1,
-    load: () => require("../../../assets/medals/france/044-vitry-sur-seine-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 93963, rank: 46, version: 3,
+    load: () => require("../../../assets/medals/france/046-vitry-sur-seine-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "asnieres-sur-seine-v1", cityId: "asnieres-sur-seine-fr",
     cityName: { en: "Asnières-sur-Seine", fr: "Asnières-sur-Seine" },
     cityZoneId: "relation/91641", inseeCode: "92004",
-    medalCount: 8, population: 93941, rank: 45, version: 1,
-    load: () => require("../../../assets/medals/france/045-asnieres-sur-seine-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 93941, rank: 47, version: 3,
+    load: () => require("../../../assets/medals/france/047-asnieres-sur-seine-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "creteil-v1", cityId: "creteil-fr",
     cityName: { en: "Créteil", fr: "Créteil" },
     cityZoneId: "relation/105389", inseeCode: "94028",
-    medalCount: 7, population: 93397, rank: 46, version: 1,
-    load: () => require("../../../assets/medals/france/046-creteil-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 93397, rank: 48, version: 3,
+    load: () => require("../../../assets/medals/france/048-creteil-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "avignon-v1", cityId: "avignon-fr",
     cityName: { en: "Avignon", fr: "Avignon" },
     cityZoneId: "relation/102478", inseeCode: "84007",
-    medalCount: 8, population: 92188, rank: 47, version: 1,
-    load: () => require("../../../assets/medals/france/047-avignon-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 92188, rank: 49, version: 3,
+    load: () => require("../../../assets/medals/france/049-avignon-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "colombes-v1", cityId: "colombes-fr",
     cityName: { en: "Colombes", fr: "Colombes" },
     cityZoneId: "relation/91738", inseeCode: "92025",
-    medalCount: 8, population: 91053, rank: 48, version: 1,
-    load: () => require("../../../assets/medals/france/048-colombes-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 91053, rank: 50, version: 3,
+    load: () => require("../../../assets/medals/france/050-colombes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "poitiers-v1", cityId: "poitiers-fr",
     cityName: { en: "Poitiers", fr: "Poitiers" },
     cityZoneId: "relation/132348", inseeCode: "86194",
-    medalCount: 8, population: 89916, rank: 49, version: 1,
-    load: () => require("../../../assets/medals/france/049-poitiers-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 89916, rank: 51, version: 3,
+    load: () => require("../../../assets/medals/france/051-poitiers-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "aubervilliers-v1", cityId: "aubervilliers-fr",
     cityName: { en: "Aubervilliers", fr: "Aubervilliers" },
     cityZoneId: "relation/87628", inseeCode: "93001",
-    medalCount: 8, population: 88365, rank: 50, version: 1,
-    load: () => require("../../../assets/medals/france/050-aubervilliers-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 88365, rank: 52, version: 3,
+    load: () => require("../../../assets/medals/france/052-aubervilliers-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "aulnay-sous-bois-v1", cityId: "aulnay-sous-bois-fr",
     cityName: { en: "Aulnay-sous-Bois", fr: "Aulnay-sous-Bois" },
     cityZoneId: "relation/162259", inseeCode: "93005",
-    medalCount: 8, population: 87599, rank: 51, version: 1,
-    load: () => require("../../../assets/medals/france/051-aulnay-sous-bois-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 87599, rank: 53, version: 3,
+    load: () => require("../../../assets/medals/france/053-aulnay-sous-bois-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "dunkerque-v1", cityId: "dunkerque-fr",
     cityName: { en: "Dunkerque", fr: "Dunkerque" },
-    cityZoneId: "relation/8760149", inseeCode: "59183",
-    medalCount: 8, population: 86263, rank: 52, version: 1,
-    load: () => require("../../../assets/medals/france/052-dunkerque-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/139610", inseeCode: "59183",
+    medalCount: 20, population: 86263, rank: 54, version: 3,
+    load: () => require("../../../assets/medals/france/054-dunkerque-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "noumea-v1", cityId: "noumea-fr",
+    cityName: { en: "Nouméa", fr: "Nouméa" },
+    cityZoneId: "relation/377752", inseeCode: "98818",
+    medalCount: 20, population: 85976, rank: 55, version: 2,
+    load: () => require("../../../assets/medals/france/055-noumea-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-pierre-v1", cityId: "saint-pierre-fr",
+    cityName: { en: "Saint-Pierre", fr: "Saint-Pierre" },
+    cityZoneId: "relation/315484", inseeCode: "97416",
+    medalCount: 20, population: 85038, rank: 56, version: 2,
+    load: () => require("../../../assets/medals/france/056-saint-pierre-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "versailles-v1", cityId: "versailles-fr",
     cityName: { en: "Versailles", fr: "Versailles" },
     cityZoneId: "relation/30295", inseeCode: "78646",
-    medalCount: 8, population: 84095, rank: 53, version: 1,
-    load: () => require("../../../assets/medals/france/053-versailles-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 84095, rank: 57, version: 3,
+    load: () => require("../../../assets/medals/france/057-versailles-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "courbevoie-v1", cityId: "courbevoie-fr",
     cityName: { en: "Courbevoie", fr: "Courbevoie" },
     cityZoneId: "relation/91768", inseeCode: "92026",
-    medalCount: 8, population: 82902, rank: 54, version: 1,
-    load: () => require("../../../assets/medals/france/054-courbevoie-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 82902, rank: 58, version: 3,
+    load: () => require("../../../assets/medals/france/058-courbevoie-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "rueil-malmaison-v1", cityId: "rueil-malmaison-fr",
     cityName: { en: "Rueil-Malmaison", fr: "Rueil-Malmaison" },
     cityZoneId: "relation/72261", inseeCode: "92063",
-    medalCount: 8, population: 82874, rank: 55, version: 1,
-    load: () => require("../../../assets/medals/france/055-rueil-malmaison-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 82874, rank: 59, version: 3,
+    load: () => require("../../../assets/medals/france/059-rueil-malmaison-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-tampon-v1", cityId: "le-tampon-fr",
+    cityName: { en: "Le Tampon", fr: "Le Tampon" },
+    cityZoneId: "relation/317239", inseeCode: "97422",
+    medalCount: 20, population: 82579, rank: 60, version: 2,
+    load: () => require("../../../assets/medals/france/060-le-tampon-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "beziers-v1", cityId: "beziers-fr",
     cityName: { en: "Béziers", fr: "Béziers" },
     cityZoneId: "relation/70070", inseeCode: "34032",
-    medalCount: 8, population: 81545, rank: 56, version: 1,
-    load: () => require("../../../assets/medals/france/056-beziers-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 81545, rank: 61, version: 3,
+    load: () => require("../../../assets/medals/france/061-beziers-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "pau-v1", cityId: "pau-fr",
     cityName: { en: "Pau", fr: "Pau" },
     cityZoneId: "relation/162431", inseeCode: "64445",
-    medalCount: 8, population: 80441, rank: 57, version: 1,
-    load: () => require("../../../assets/medals/france/057-pau-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 80441, rank: 62, version: 3,
+    load: () => require("../../../assets/medals/france/062-pau-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "la-rochelle-v1", cityId: "la-rochelle-fr",
     cityName: { en: "La Rochelle", fr: "La Rochelle" },
     cityZoneId: "relation/117858", inseeCode: "17300",
-    medalCount: 8, population: 79851, rank: 58, version: 1,
-    load: () => require("../../../assets/medals/france/058-la-rochelle-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 79851, rank: 63, version: 3,
+    load: () => require("../../../assets/medals/france/063-la-rochelle-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "cherbourg-en-cotentin-v1", cityId: "cherbourg-en-cotentin-fr",
     cityName: { en: "Cherbourg-en-Cotentin", fr: "Cherbourg-en-Cotentin" },
-    cityZoneId: "relation/5812062", inseeCode: "50129",
-    medalCount: 8, population: 78258, rank: 59, version: 1,
-    load: () => require("../../../assets/medals/france/059-cherbourg-en-cotentin-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/9070", inseeCode: "50129",
+    medalCount: 20, population: 78258, rank: 64, version: 3,
+    load: () => require("../../../assets/medals/france/064-cherbourg-en-cotentin-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "merignac-v1", cityId: "merignac-fr",
     cityName: { en: "Mérignac", fr: "Mérignac" },
     cityZoneId: "relation/105275", inseeCode: "33281",
-    medalCount: 8, population: 78090, rank: 60, version: 1,
-    load: () => require("../../../assets/medals/france/060-merignac-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 78090, rank: 65, version: 3,
+    load: () => require("../../../assets/medals/france/065-merignac-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "champigny-sur-marne-v1", cityId: "champigny-sur-marne-fr",
     cityName: { en: "Champigny-sur-Marne", fr: "Champigny-sur-Marne" },
     cityZoneId: "relation/106735", inseeCode: "94017",
-    medalCount: 8, population: 78072, rank: 61, version: 1,
-    load: () => require("../../../assets/medals/france/061-champigny-sur-marne-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 78072, rank: 66, version: 3,
+    load: () => require("../../../assets/medals/france/066-champigny-sur-marne-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "antibes-v1", cityId: "antibes-fr",
     cityName: { en: "Antibes", fr: "Antibes" },
     cityZoneId: "relation/74687", inseeCode: "06004",
-    medalCount: 8, population: 77637, rank: 62, version: 1,
-    load: () => require("../../../assets/medals/france/062-antibes-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 77637, rank: 67, version: 3,
+    load: () => require("../../../assets/medals/france/067-antibes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "saint-maur-des-fosses-v1", cityId: "saint-maur-des-fosses-fr",
     cityName: { en: "Saint-Maur-des-Fossés", fr: "Saint-Maur-des-Fossés" },
     cityZoneId: "relation/50964", inseeCode: "94068",
-    medalCount: 8, population: 76572, rank: 63, version: 1,
-    load: () => require("../../../assets/medals/france/063-saint-maur-des-fosses-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 76572, rank: 68, version: 3,
+    load: () => require("../../../assets/medals/france/068-saint-maur-des-fosses-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "ajaccio-v1", cityId: "ajaccio-fr",
     cityName: { en: "Ajaccio", fr: "Ajaccio" },
     cityZoneId: "relation/73283", inseeCode: "2A004",
-    medalCount: 8, population: 76320, rank: 64, version: 1,
-    load: () => require("../../../assets/medals/france/064-ajaccio-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 76320, rank: 69, version: 3,
+    load: () => require("../../../assets/medals/france/069-ajaccio-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fort-de-france-v1", cityId: "fort-de-france-fr",
+    cityName: { en: "Fort-de-France", fr: "Fort-de-France" },
+    cityZoneId: "relation/290031", inseeCode: "97209",
+    medalCount: 20, population: 75506, rank: 70, version: 2,
+    load: () => require("../../../assets/medals/france/070-fort-de-france-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "saint-nazaire-v1", cityId: "saint-nazaire-fr",
     cityName: { en: "Saint-Nazaire", fr: "Saint-Nazaire" },
     cityZoneId: "relation/182415", inseeCode: "44184",
-    medalCount: 8, population: 74568, rank: 65, version: 1,
-    load: () => require("../../../assets/medals/france/065-saint-nazaire-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 74568, rank: 71, version: 3,
+    load: () => require("../../../assets/medals/france/071-saint-nazaire-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "cannes-v1", cityId: "cannes-fr",
     cityName: { en: "Cannes", fr: "Cannes" },
     cityZoneId: "relation/91734", inseeCode: "06029",
-    medalCount: 8, population: 74350, rank: 66, version: 1,
-    load: () => require("../../../assets/medals/france/066-cannes-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 74350, rank: 72, version: 3,
+    load: () => require("../../../assets/medals/france/072-cannes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "noisy-le-grand-v1", cityId: "noisy-le-grand-fr",
     cityName: { en: "Noisy-le-Grand", fr: "Noisy-le-Grand" },
     cityZoneId: "relation/130492", inseeCode: "93051",
-    medalCount: 8, population: 72978, rank: 67, version: 1,
-    load: () => require("../../../assets/medals/france/067-noisy-le-grand-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 72978, rank: 73, version: 3,
+    load: () => require("../../../assets/medals/france/073-noisy-le-grand-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "drancy-v1", cityId: "drancy-fr",
     cityName: { en: "Drancy", fr: "Drancy" },
     cityZoneId: "relation/158481", inseeCode: "93029",
-    medalCount: 7, population: 72390, rank: 68, version: 1,
-    load: () => require("../../../assets/medals/france/068-drancy-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 72390, rank: 74, version: 3,
+    load: () => require("../../../assets/medals/france/074-drancy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mamoudzou-v1", cityId: "mamoudzou-fr",
+    cityName: { en: "Mamoudzou", fr: "Mamoudzou" },
+    cityZoneId: "relation/3366531", inseeCode: "97611",
+    medalCount: 20, population: 71437, rank: 75, version: 2,
+    load: () => require("../../../assets/medals/france/075-mamoudzou-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "cergy-v1", cityId: "cergy-fr",
     cityName: { en: "Cergy", fr: "Cergy" },
     cityZoneId: "relation/120955", inseeCode: "95127",
-    medalCount: 7, population: 70906, rank: 69, version: 1,
-    load: () => require("../../../assets/medals/france/069-cergy-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 70906, rank: 76, version: 3,
+    load: () => require("../../../assets/medals/france/076-cergy-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "levallois-perret-v1", cityId: "levallois-perret-fr",
     cityName: { en: "Levallois-Perret", fr: "Levallois-Perret" },
     cityZoneId: "relation/86985", inseeCode: "92044",
-    medalCount: 5, population: 68092, rank: 70, version: 1,
-    load: () => require("../../../assets/medals/france/070-levallois-perret-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 68092, rank: 77, version: 3,
+    load: () => require("../../../assets/medals/france/077-levallois-perret-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "issy-les-moulineaux-v1", cityId: "issy-les-moulineaux-fr",
     cityName: { en: "Issy-les-Moulineaux", fr: "Issy-les-Moulineaux" },
     cityZoneId: "relation/85527", inseeCode: "92040",
-    medalCount: 8, population: 67669, rank: 71, version: 1,
-    load: () => require("../../../assets/medals/france/071-issy-les-moulineaux-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 67669, rank: 78, version: 3,
+    load: () => require("../../../assets/medals/france/078-issy-les-moulineaux-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "calais-v1", cityId: "calais-fr",
     cityName: { en: "Calais", fr: "Calais" },
     cityZoneId: "relation/286380", inseeCode: "62193",
-    medalCount: 8, population: 67571, rank: 72, version: 1,
-    load: () => require("../../../assets/medals/france/072-calais-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 67571, rank: 79, version: 3,
+    load: () => require("../../../assets/medals/france/079-calais-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "pessac-v1", cityId: "pessac-fr",
     cityName: { en: "Pessac", fr: "Pessac" },
     cityZoneId: "relation/105281", inseeCode: "33318",
-    medalCount: 8, population: 67339, rank: 73, version: 1,
-    load: () => require("../../../assets/medals/france/073-pessac-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 67339, rank: 80, version: 3,
+    load: () => require("../../../assets/medals/france/080-pessac-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "colmar-v1", cityId: "colmar-fr",
     cityName: { en: "Colmar", fr: "Colmar" },
     cityZoneId: "relation/61423", inseeCode: "68066",
-    medalCount: 8, population: 66970, rank: 74, version: 1,
-    load: () => require("../../../assets/medals/france/074-colmar-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 66970, rank: 81, version: 3,
+    load: () => require("../../../assets/medals/france/081-colmar-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "evry-courcouronnes-v1", cityId: "evry-courcouronnes-fr",
     cityName: { en: "Évry-Courcouronnes", fr: "Évry-Courcouronnes" },
-    cityZoneId: "relation/8851788", inseeCode: "91228",
-    medalCount: 8, population: 66919, rank: 75, version: 1,
-    load: () => require("../../../assets/medals/france/075-evry-courcouronnes-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/90335", inseeCode: "91228",
+    medalCount: 20, population: 66919, rank: 82, version: 3,
+    load: () => require("../../../assets/medals/france/082-evry-courcouronnes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "venissieux-v1", cityId: "venissieux-fr",
     cityName: { en: "Vénissieux", fr: "Vénissieux" },
     cityZoneId: "relation/164210", inseeCode: "69259",
-    medalCount: 5, population: 65502, rank: 76, version: 1,
-    load: () => require("../../../assets/medals/france/076-venissieux-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 65502, rank: 83, version: 3,
+    load: () => require("../../../assets/medals/france/083-venissieux-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "ivry-sur-seine-v1", cityId: "ivry-sur-seine-fr",
     cityName: { en: "Ivry-sur-Seine", fr: "Ivry-sur-Seine" },
     cityZoneId: "relation/105748", inseeCode: "94041",
-    medalCount: 8, population: 65064, rank: 77, version: 1,
-    load: () => require("../../../assets/medals/france/077-ivry-sur-seine-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 65064, rank: 84, version: 3,
+    load: () => require("../../../assets/medals/france/084-ivry-sur-seine-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "valence-v1", cityId: "valence-fr",
     cityName: { en: "Valence", fr: "Valence" },
     cityZoneId: "relation/37586", inseeCode: "26362",
-    medalCount: 8, population: 64458, rank: 78, version: 1,
-    load: () => require("../../../assets/medals/france/078-valence-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 64458, rank: 85, version: 3,
+    load: () => require("../../../assets/medals/france/085-valence-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "clichy-v1", cityId: "clichy-fr",
     cityName: { en: "Clichy", fr: "Clichy" },
     cityZoneId: "relation/86999", inseeCode: "92024",
-    medalCount: 8, population: 64410, rank: 79, version: 1,
-    load: () => require("../../../assets/medals/france/079-clichy-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 64410, rank: 86, version: 3,
+    load: () => require("../../../assets/medals/france/086-clichy-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "quimper-v1", cityId: "quimper-fr",
     cityName: { en: "Quimper", fr: "Quimper" },
     cityZoneId: "relation/296095", inseeCode: "29232",
-    medalCount: 8, population: 64385, rank: 80, version: 1,
-    load: () => require("../../../assets/medals/france/080-quimper-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 64385, rank: 87, version: 3,
+    load: () => require("../../../assets/medals/france/087-quimper-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "antony-v1", cityId: "antony-fr",
     cityName: { en: "Antony", fr: "Antony" },
     cityZoneId: "relation/57750", inseeCode: "92002",
-    medalCount: 8, population: 64263, rank: 81, version: 1,
-    load: () => require("../../../assets/medals/france/081-antony-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 64263, rank: 88, version: 3,
+    load: () => require("../../../assets/medals/france/088-antony-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "bourges-v1", cityId: "bourges-fr",
     cityName: { en: "Bourges", fr: "Bourges" },
     cityZoneId: "relation/50312", inseeCode: "18033",
-    medalCount: 8, population: 64186, rank: 82, version: 1,
-    load: () => require("../../../assets/medals/france/082-bourges-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 64186, rank: 89, version: 3,
+    load: () => require("../../../assets/medals/france/089-bourges-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "la-seyne-sur-mer-v1", cityId: "la-seyne-sur-mer-fr",
     cityName: { en: "La Seyne-sur-Mer", fr: "La Seyne-sur-Mer" },
     cityZoneId: "relation/29188", inseeCode: "83126",
-    medalCount: 7, population: 63732, rank: 83, version: 1,
-    load: () => require("../../../assets/medals/france/083-la-seyne-sur-mer-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 63732, rank: 90, version: 3,
+    load: () => require("../../../assets/medals/france/090-la-seyne-sur-mer-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "montauban-v1", cityId: "montauban-fr",
     cityName: { en: "Montauban", fr: "Montauban" },
     cityZoneId: "relation/137735", inseeCode: "82121",
-    medalCount: 8, population: 62945, rank: 84, version: 1,
-    load: () => require("../../../assets/medals/france/084-montauban-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 62945, rank: 91, version: 3,
+    load: () => require("../../../assets/medals/france/091-montauban-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "villeneuve-d-ascq-v1", cityId: "villeneuve-d-ascq-fr",
     cityName: { en: "Villeneuve-d'Ascq", fr: "Villeneuve-d'Ascq" },
-    cityZoneId: "relation/7944799", inseeCode: "59009",
-    medalCount: 6, population: 62868, rank: 85, version: 1,
-    load: () => require("../../../assets/medals/france/085-villeneuve-d-ascq-v1.json") as MedalAlbumDefinition
+    cityZoneId: "relation/58213", inseeCode: "59009",
+    medalCount: 20, population: 62868, rank: 92, version: 3,
+    load: () => require("../../../assets/medals/france/092-villeneuve-d-ascq-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cayenne-v1", cityId: "cayenne-fr",
+    cityName: { en: "Cayenne", fr: "Cayenne" },
+    cityZoneId: "relation/1663791", inseeCode: "97302",
+    medalCount: 20, population: 62675, rank: 93, version: 2,
+    load: () => require("../../../assets/medals/france/093-cayenne-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "le-blanc-mesnil-v1", cityId: "le-blanc-mesnil-fr",
     cityName: { en: "Le Blanc-Mesnil", fr: "Le Blanc-Mesnil" },
     cityZoneId: "relation/162209", inseeCode: "93007",
-    medalCount: 5, population: 62376, rank: 86, version: 1,
-    load: () => require("../../../assets/medals/france/086-le-blanc-mesnil-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 62376, rank: 94, version: 3,
+    load: () => require("../../../assets/medals/france/094-le-blanc-mesnil-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "troyes-v1", cityId: "troyes-fr",
     cityName: { en: "Troyes", fr: "Troyes" },
     cityZoneId: "relation/414972", inseeCode: "10387",
-    medalCount: 8, population: 62088, rank: 87, version: 1,
-    load: () => require("../../../assets/medals/france/087-troyes-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 62088, rank: 95, version: 3,
+    load: () => require("../../../assets/medals/france/095-troyes-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "pantin-v1", cityId: "pantin-fr",
     cityName: { en: "Pantin", fr: "Pantin" },
     cityZoneId: "relation/67685", inseeCode: "93055",
-    medalCount: 8, population: 61929, rank: 88, version: 1,
-    load: () => require("../../../assets/medals/france/088-pantin-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 61929, rank: 96, version: 3,
+    load: () => require("../../../assets/medals/france/096-pantin-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "villejuif-v1", cityId: "villejuif-fr",
     cityName: { en: "Villejuif", fr: "Villejuif" },
     cityZoneId: "relation/105146", inseeCode: "94076",
-    medalCount: 8, population: 60183, rank: 89, version: 1,
-    load: () => require("../../../assets/medals/france/089-villejuif-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 60183, rank: 97, version: 3,
+    load: () => require("../../../assets/medals/france/097-villejuif-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "chambery-v1", cityId: "chambery-fr",
     cityName: { en: "Chambéry", fr: "Chambéry" },
     cityZoneId: "relation/74386", inseeCode: "73065",
-    medalCount: 8, population: 59964, rank: 90, version: 1,
-    load: () => require("../../../assets/medals/france/090-chambery-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 59964, rank: 98, version: 3,
+    load: () => require("../../../assets/medals/france/098-chambery-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "niort-v1", cityId: "niort-fr",
     cityName: { en: "Niort", fr: "Niort" },
     cityZoneId: "relation/150303", inseeCode: "79191",
-    medalCount: 8, population: 59854, rank: 91, version: 1,
-    load: () => require("../../../assets/medals/france/091-niort-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 59854, rank: 99, version: 3,
+    load: () => require("../../../assets/medals/france/099-niort-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "frejus-v1", cityId: "frejus-fr",
     cityName: { en: "Fréjus", fr: "Fréjus" },
     cityZoneId: "relation/186322", inseeCode: "83061",
-    medalCount: 8, population: 59719, rank: 92, version: 1,
-    load: () => require("../../../assets/medals/france/092-frejus-v1.json") as MedalAlbumDefinition
+    medalCount: 20, population: 59719, rank: 100, version: 3,
+    load: () => require("../../../assets/medals/france/100-frejus-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "neuilly-sur-seine-v1", cityId: "neuilly-sur-seine-fr",
     cityName: { en: "Neuilly-sur-Seine", fr: "Neuilly-sur-Seine" },
     cityZoneId: "relation/85802", inseeCode: "92051",
-    medalCount: 8, population: 59538, rank: 93, version: 1,
-    load: () => require("../../../assets/medals/france/093-neuilly-sur-seine-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 59538, rank: 101, version: 4,
+    load: () => require("../../../assets/medals/france/101-neuilly-sur-seine-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "sarcelles-v1", cityId: "sarcelles-fr",
     cityName: { en: "Sarcelles", fr: "Sarcelles" },
     cityZoneId: "relation/222531", inseeCode: "95585",
-    medalCount: 5, population: 59173, rank: 94, version: 1,
-    load: () => require("../../../assets/medals/france/094-sarcelles-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 59173, rank: 102, version: 3,
+    load: () => require("../../../assets/medals/france/102-sarcelles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-andre-v1", cityId: "saint-andre-fr",
+    cityName: { en: "Saint-André", fr: "Saint-André" },
+    cityZoneId: "relation/280118", inseeCode: "97409",
+    medalCount: 10, population: 58885, rank: 103, version: 2,
+    load: () => require("../../../assets/medals/france/103-saint-andre-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "clamart-v1", cityId: "clamart-fr",
     cityName: { en: "Clamart", fr: "Clamart" },
     cityZoneId: "relation/29036", inseeCode: "92023",
-    medalCount: 8, population: 58576, rank: 95, version: 1,
-    load: () => require("../../../assets/medals/france/095-clamart-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 58576, rank: 104, version: 3,
+    load: () => require("../../../assets/medals/france/104-clamart-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "lorient-v1", cityId: "lorient-fr",
     cityName: { en: "Lorient", fr: "Lorient" },
     cityZoneId: "relation/30305", inseeCode: "56121",
-    medalCount: 8, population: 58329, rank: 96, version: 1,
-    load: () => require("../../../assets/medals/france/096-lorient-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 58329, rank: 105, version: 3,
+    load: () => require("../../../assets/medals/france/105-lorient-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "narbonne-v1", cityId: "narbonne-fr",
     cityName: { en: "Narbonne", fr: "Narbonne" },
     cityZoneId: "relation/54737", inseeCode: "11262",
-    medalCount: 8, population: 57587, rank: 97, version: 1,
-    load: () => require("../../../assets/medals/france/097-narbonne-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 57587, rank: 106, version: 3,
+    load: () => require("../../../assets/medals/france/106-narbonne-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "bobigny-v1", cityId: "bobigny-fr",
     cityName: { en: "Bobigny", fr: "Bobigny" },
     cityZoneId: "relation/131240", inseeCode: "93008",
-    medalCount: 7, population: 56927, rank: 98, version: 1,
-    load: () => require("../../../assets/medals/france/098-bobigny-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 56927, rank: 107, version: 3,
+    load: () => require("../../../assets/medals/france/107-bobigny-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "meaux-v1", cityId: "meaux-fr",
     cityName: { en: "Meaux", fr: "Meaux" },
     cityZoneId: "relation/86609", inseeCode: "77284",
-    medalCount: 8, population: 56905, rank: 99, version: 1,
-    load: () => require("../../../assets/medals/france/099-meaux-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 56905, rank: 108, version: 3,
+    load: () => require("../../../assets/medals/france/108-meaux-v1.json") as MedalAlbumDefinition
   },
   {
     albumId: "maisons-alfort-v1", cityId: "maisons-alfort-fr",
     cityName: { en: "Maisons-Alfort", fr: "Maisons-Alfort" },
     cityZoneId: "relation/105404", inseeCode: "94046",
-    medalCount: 8, population: 56799, rank: 100, version: 1,
-    load: () => require("../../../assets/medals/france/100-maisons-alfort-v1.json") as MedalAlbumDefinition
+    medalCount: 10, population: 56799, rank: 109, version: 3,
+    load: () => require("../../../assets/medals/france/109-maisons-alfort-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "hyeres-v1", cityId: "hyeres-fr",
+    cityName: { en: "Hyères", fr: "Hyères" },
+    cityZoneId: "relation/380060", inseeCode: "83069",
+    medalCount: 10, population: 55858, rank: 110, version: 2,
+    load: () => require("../../../assets/medals/france/110-hyeres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vannes-v1", cityId: "vannes-fr",
+    cityName: { en: "Vannes", fr: "Vannes" },
+    cityZoneId: "relation/192306", inseeCode: "56260",
+    medalCount: 10, population: 55790, rank: 111, version: 2,
+    load: () => require("../../../assets/medals/france/111-vannes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "beauvais-v1", cityId: "beauvais-fr",
+    cityName: { en: "Beauvais", fr: "Beauvais" },
+    cityZoneId: "relation/158311", inseeCode: "60057",
+    medalCount: 10, population: 55550, rank: 112, version: 2,
+    load: () => require("../../../assets/medals/france/112-beauvais-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-louis-97414-v1", cityId: "saint-louis-97414-fr",
+    cityName: { en: "Saint-Louis", fr: "Saint-Louis" },
+    cityZoneId: "relation/1282229", inseeCode: "97414",
+    medalCount: 10, population: 54941, rank: 113, version: 2,
+    load: () => require("../../../assets/medals/france/113-saint-louis-97414-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-roche-sur-yon-v1", cityId: "la-roche-sur-yon-fr",
+    cityName: { en: "La Roche-sur-Yon", fr: "La Roche-sur-Yon" },
+    cityZoneId: "relation/166641", inseeCode: "85191",
+    medalCount: 10, population: 54849, rank: 114, version: 2,
+    load: () => require("../../../assets/medals/france/114-la-roche-sur-yon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chelles-v1", cityId: "chelles-fr",
+    cityName: { en: "Chelles", fr: "Chelles" },
+    cityZoneId: "relation/402614", inseeCode: "77108",
+    medalCount: 10, population: 54620, rank: 115, version: 2,
+    load: () => require("../../../assets/medals/france/115-chelles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "corbeil-essonnes-v1", cityId: "corbeil-essonnes-fr",
+    cityName: { en: "Corbeil-Essonnes", fr: "Corbeil-Essonnes" },
+    cityZoneId: "relation/149203", inseeCode: "91174",
+    medalCount: 10, population: 54471, rank: 116, version: 2,
+    load: () => require("../../../assets/medals/france/116-corbeil-essonnes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-laurent-du-maroni-v1", cityId: "saint-laurent-du-maroni-fr",
+    cityName: { en: "Saint-Laurent-du-Maroni", fr: "Saint-Laurent-du-Maroni" },
+    cityZoneId: "relation/1663806", inseeCode: "97311",
+    medalCount: 10, population: 54429, rank: 117, version: 2,
+    load: () => require("../../../assets/medals/france/117-saint-laurent-du-maroni-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cholet-v1", cityId: "cholet-fr",
+    cityName: { en: "Cholet", fr: "Cholet" },
+    cityZoneId: "relation/286516", inseeCode: "49099",
+    medalCount: 10, population: 54404, rank: 118, version: 2,
+    load: () => require("../../../assets/medals/france/118-cholet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bayonne-v1", cityId: "bayonne-fr",
+    cityName: { en: "Bayonne", fr: "Bayonne" },
+    cityZoneId: "relation/166713", inseeCode: "64102",
+    medalCount: 10, population: 54306, rank: 119, version: 2,
+    load: () => require("../../../assets/medals/france/119-bayonne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fontenay-sous-bois-v1", cityId: "fontenay-sous-bois-fr",
+    cityName: { en: "Fontenay-sous-Bois", fr: "Fontenay-sous-Bois" },
+    cityZoneId: "relation/109366", inseeCode: "94033",
+    medalCount: 10, population: 53757, rank: 120, version: 2,
+    load: () => require("../../../assets/medals/france/120-fontenay-sous-bois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-ouen-sur-seine-v1", cityId: "saint-ouen-sur-seine-fr",
+    cityName: { en: "Saint-Ouen-sur-Seine", fr: "Saint-Ouen-sur-Seine" },
+    cityZoneId: "relation/87002", inseeCode: "93070",
+    medalCount: 10, population: 53615, rank: 121, version: 2,
+    load: () => require("../../../assets/medals/france/121-saint-ouen-sur-seine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cagnes-sur-mer-v1", cityId: "cagnes-sur-mer-fr",
+    cityName: { en: "Cagnes-sur-Mer", fr: "Cagnes-sur-Mer" },
+    cityZoneId: "relation/78617", inseeCode: "06027",
+    medalCount: 10, population: 53354, rank: 122, version: 2,
+    load: () => require("../../../assets/medals/france/122-cagnes-sur-mer-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vaulx-en-velin-v1", cityId: "vaulx-en-velin-fr",
+    cityName: { en: "Vaulx-en-Velin", fr: "Vaulx-en-Velin" },
+    cityZoneId: "relation/112529", inseeCode: "69256",
+    medalCount: 10, population: 53069, rank: 123, version: 2,
+    load: () => require("../../../assets/medals/france/123-vaulx-en-velin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "epinay-sur-seine-v1", cityId: "epinay-sur-seine-fr",
+    cityName: { en: "Épinay-sur-Seine", fr: "Épinay-sur-Seine" },
+    cityZoneId: "relation/162856", inseeCode: "93031",
+    medalCount: 10, population: 52833, rank: 124, version: 2,
+    load: () => require("../../../assets/medals/france/124-epinay-sur-seine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-quentin-v1", cityId: "saint-quentin-fr",
+    cityName: { en: "Saint-Quentin", fr: "Saint-Quentin" },
+    cityZoneId: "relation/153656", inseeCode: "02691",
+    medalCount: 10, population: 52813, rank: 125, version: 2,
+    load: () => require("../../../assets/medals/france/125-saint-quentin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sartrouville-v1", cityId: "sartrouville-fr",
+    cityName: { en: "Sartrouville", fr: "Sartrouville" },
+    cityZoneId: "relation/75022", inseeCode: "78586",
+    medalCount: 10, population: 52763, rank: 126, version: 2,
+    load: () => require("../../../assets/medals/france/126-sartrouville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sevran-v1", cityId: "sevran-fr",
+    cityName: { en: "Sevran", fr: "Sevran" },
+    cityZoneId: "relation/162527", inseeCode: "93071",
+    medalCount: 10, population: 52535, rank: 127, version: 2,
+    load: () => require("../../../assets/medals/france/127-sevran-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "arles-v1", cityId: "arles-fr",
+    cityName: { en: "Arles", fr: "Arles" },
+    cityZoneId: "relation/73911", inseeCode: "13004",
+    medalCount: 10, population: 51811, rank: 128, version: 2,
+    load: () => require("../../../assets/medals/france/128-arles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "massy-v1", cityId: "massy-fr",
+    cityName: { en: "Massy", fr: "Massy" },
+    cityZoneId: "relation/29251", inseeCode: "91377",
+    medalCount: 10, population: 51729, rank: 129, version: 2,
+    load: () => require("../../../assets/medals/france/129-massy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "albi-v1", cityId: "albi-fr",
+    cityName: { en: "Albi", fr: "Albi" },
+    cityZoneId: "relation/135628", inseeCode: "81004",
+    medalCount: 10, population: 51290, rank: 130, version: 2,
+    load: () => require("../../../assets/medals/france/130-albi-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-abymes-v1", cityId: "les-abymes-fr",
+    cityName: { en: "Les Abymes", fr: "Les Abymes" },
+    cityZoneId: "relation/239133", inseeCode: "97101",
+    medalCount: 10, population: 51055, rank: 131, version: 2,
+    load: () => require("../../../assets/medals/france/131-les-abymes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gennevilliers-v1", cityId: "gennevilliers-fr",
+    cityName: { en: "Gennevilliers", fr: "Gennevilliers" },
+    cityZoneId: "relation/90082", inseeCode: "92036",
+    medalCount: 10, population: 50979, rank: 132, version: 2,
+    load: () => require("../../../assets/medals/france/132-gennevilliers-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-herblain-v1", cityId: "saint-herblain-fr",
+    cityName: { en: "Saint-Herblain", fr: "Saint-Herblain" },
+    cityZoneId: "relation/64362", inseeCode: "44162",
+    medalCount: 10, population: 50973, rank: 133, version: 2,
+    load: () => require("../../../assets/medals/france/133-saint-herblain-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "grasse-v1", cityId: "grasse-fr",
+    cityName: { en: "Grasse", fr: "Grasse" },
+    cityZoneId: "relation/102748", inseeCode: "06069",
+    medalCount: 10, population: 50970, rank: 134, version: 2,
+    load: () => require("../../../assets/medals/france/134-grasse-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bondy-v1", cityId: "bondy-fr",
+    cityName: { en: "Bondy", fr: "Bondy" },
+    cityZoneId: "relation/158667", inseeCode: "93010",
+    medalCount: 10, population: 50595, rank: 135, version: 2,
+    load: () => require("../../../assets/medals/france/135-bondy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-sables-d-olonne-v1", cityId: "les-sables-d-olonne-fr",
+    cityName: { en: "Les Sables-d'Olonne", fr: "Les Sables-d'Olonne" },
+    cityZoneId: "relation/156591", inseeCode: "85194",
+    medalCount: 10, population: 49603, rank: 136, version: 2,
+    load: () => require("../../../assets/medals/france/136-les-sables-d-olonne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "laval-v1", cityId: "laval-fr",
+    cityName: { en: "Laval", fr: "Laval" },
+    cityZoneId: "relation/393284", inseeCode: "53130",
+    medalCount: 10, population: 49400, rank: 137, version: 2,
+    load: () => require("../../../assets/medals/france/137-laval-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "evreux-v1", cityId: "evreux-fr",
+    cityName: { en: "Évreux", fr: "Évreux" },
+    cityZoneId: "relation/543082", inseeCode: "27229",
+    medalCount: 10, population: 49360, rank: 138, version: 2,
+    load: () => require("../../../assets/medals/france/138-evreux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-priest-v1", cityId: "saint-priest-fr",
+    cityName: { en: "Saint-Priest", fr: "Saint-Priest" },
+    cityZoneId: "relation/164199", inseeCode: "69290",
+    medalCount: 10, population: 49229, rank: 139, version: 2,
+    load: () => require("../../../assets/medals/france/139-saint-priest-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "suresnes-v1", cityId: "suresnes-fr",
+    cityName: { en: "Suresnes", fr: "Suresnes" },
+    cityZoneId: "relation/72258", inseeCode: "92073",
+    medalCount: 10, population: 48956, rank: 140, version: 2,
+    load: () => require("../../../assets/medals/france/140-suresnes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "martigues-v1", cityId: "martigues-fr",
+    cityName: { en: "Martigues", fr: "Martigues" },
+    cityZoneId: "relation/74266", inseeCode: "13056",
+    medalCount: 10, population: 48298, rank: 141, version: 2,
+    load: () => require("../../../assets/medals/france/141-martigues-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vincennes-v1", cityId: "vincennes-fr",
+    cityName: { en: "Vincennes", fr: "Vincennes" },
+    cityZoneId: "relation/108346", inseeCode: "94080",
+    medalCount: 10, population: 48193, rank: 142, version: 2,
+    load: () => require("../../../assets/medals/france/142-vincennes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "aubagne-v1", cityId: "aubagne-fr",
+    cityName: { en: "Aubagne", fr: "Aubagne" },
+    cityZoneId: "relation/74272", inseeCode: "13005",
+    medalCount: 10, population: 47529, rank: 143, version: 2,
+    load: () => require("../../../assets/medals/france/143-aubagne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-malo-v1", cityId: "saint-malo-fr",
+    cityName: { en: "Saint-Malo", fr: "Saint-Malo" },
+    cityZoneId: "relation/905534", inseeCode: "35288",
+    medalCount: 10, population: 47439, rank: 144, version: 2,
+    load: () => require("../../../assets/medals/france/144-saint-malo-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "livry-gargan-v1", cityId: "livry-gargan-fr",
+    cityName: { en: "Livry-Gargan", fr: "Livry-Gargan" },
+    cityZoneId: "relation/162566", inseeCode: "93046",
+    medalCount: 10, population: 47228, rank: 145, version: 2,
+    load: () => require("../../../assets/medals/france/145-livry-gargan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "blois-v1", cityId: "blois-fr",
+    cityName: { en: "Blois", fr: "Blois" },
+    cityZoneId: "relation/273622", inseeCode: "41018",
+    medalCount: 10, population: 47219, rank: 146, version: 2,
+    load: () => require("../../../assets/medals/france/146-blois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "rosny-sous-bois-v1", cityId: "rosny-sous-bois-fr",
+    cityName: { en: "Rosny-sous-Bois", fr: "Rosny-sous-Bois" },
+    cityZoneId: "relation/130580", inseeCode: "93064",
+    medalCount: 10, population: 47180, rank: 147, version: 2,
+    load: () => require("../../../assets/medals/france/147-rosny-sous-bois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-courneuve-v1", cityId: "la-courneuve-fr",
+    cityName: { en: "La Courneuve", fr: "La Courneuve" },
+    cityZoneId: "relation/138211", inseeCode: "93027",
+    medalCount: 10, population: 47167, rank: 148, version: 2,
+    load: () => require("../../../assets/medals/france/148-la-courneuve-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "brive-la-gaillarde-v1", cityId: "brive-la-gaillarde-fr",
+    cityName: { en: "Brive-la-Gaillarde", fr: "Brive-la-Gaillarde" },
+    cityZoneId: "relation/120557", inseeCode: "19031",
+    medalCount: 10, population: 47095, rank: 149, version: 2,
+    load: () => require("../../../assets/medals/france/149-brive-la-gaillarde-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bastia-v1", cityId: "bastia-fr",
+    cityName: { en: "Bastia", fr: "Bastia" },
+    cityZoneId: "relation/73444", inseeCode: "2B033",
+    medalCount: 10, population: 46867, rank: 150, version: 2,
+    load: () => require("../../../assets/medals/france/150-bastia-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "talence-v1", cityId: "talence-fr",
+    cityName: { en: "Talence", fr: "Talence" },
+    cityZoneId: "relation/105267", inseeCode: "33522",
+    medalCount: 10, population: 46338, rank: 151, version: 2,
+    load: () => require("../../../assets/medals/france/151-talence-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "meudon-v1", cityId: "meudon-fr",
+    cityName: { en: "Meudon", fr: "Meudon" },
+    cityZoneId: "relation/31341", inseeCode: "92048",
+    medalCount: 10, population: 46334, rank: 152, version: 2,
+    load: () => require("../../../assets/medals/france/152-meudon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montrouge-v1", cityId: "montrouge-fr",
+    cityName: { en: "Montrouge", fr: "Montrouge" },
+    cityZoneId: "relation/37026", inseeCode: "92049",
+    medalCount: 10, population: 46324, rank: 153, version: 2,
+    load: () => require("../../../assets/medals/france/153-montrouge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "ales-v1", cityId: "ales-fr",
+    cityName: { en: "Alès", fr: "Alès" },
+    cityZoneId: "relation/76009", inseeCode: "30007",
+    medalCount: 10, population: 46125, rank: 154, version: 2,
+    load: () => require("../../../assets/medals/france/154-ales-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "carcassonne-v1", cityId: "carcassonne-fr",
+    cityName: { en: "Carcassonne", fr: "Carcassonne" },
+    cityZoneId: "relation/37774", inseeCode: "11069",
+    medalCount: 10, population: 46080, rank: 155, version: 2,
+    load: () => require("../../../assets/medals/france/155-carcassonne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "melun-v1", cityId: "melun-fr",
+    cityName: { en: "Melun", fr: "Melun" },
+    cityZoneId: "relation/80071", inseeCode: "77288",
+    medalCount: 10, population: 45995, rank: 156, version: 2,
+    load: () => require("../../../assets/medals/france/156-melun-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "choisy-le-roi-v1", cityId: "choisy-le-roi-fr",
+    cityName: { en: "Choisy-le-Roi", fr: "Choisy-le-Roi" },
+    cityZoneId: "relation/104268", inseeCode: "94022",
+    medalCount: 10, population: 45946, rank: 157, version: 2,
+    load: () => require("../../../assets/medals/france/157-choisy-le-roi-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-germain-en-laye-v1", cityId: "saint-germain-en-laye-fr",
+    cityName: { en: "Saint-Germain-en-Laye", fr: "Saint-Germain-en-Laye" },
+    cityZoneId: "relation/75454", inseeCode: "78551",
+    medalCount: 10, population: 45931, rank: 158, version: 2,
+    load: () => require("../../../assets/medals/france/158-saint-germain-en-laye-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "belfort-v1", cityId: "belfort-fr",
+    cityName: { en: "Belfort", fr: "Belfort" },
+    cityZoneId: "relation/75618", inseeCode: "90010",
+    medalCount: 10, population: 45912, rank: 159, version: 2,
+    load: () => require("../../../assets/medals/france/159-belfort-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "charleville-mezieres-v1", cityId: "charleville-mezieres-fr",
+    cityName: { en: "Charleville-Mézières", fr: "Charleville-Mézières" },
+    cityZoneId: "relation/153838", inseeCode: "08105",
+    medalCount: 10, population: 45560, rank: 160, version: 2,
+    load: () => require("../../../assets/medals/france/160-charleville-mezieres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "alfortville-v1", cityId: "alfortville-fr",
+    cityName: { en: "Alfortville", fr: "Alfortville" },
+    cityZoneId: "relation/104271", inseeCode: "94002",
+    medalCount: 10, population: 45531, rank: 161, version: 2,
+    load: () => require("../../../assets/medals/france/161-alfortville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "noisy-le-sec-v1", cityId: "noisy-le-sec-fr",
+    cityName: { en: "Noisy-le-Sec", fr: "Noisy-le-Sec" },
+    cityZoneId: "relation/131216", inseeCode: "93053",
+    medalCount: 10, population: 45510, rank: 162, version: 2,
+    load: () => require("../../../assets/medals/france/162-noisy-le-sec-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sete-v1", cityId: "sete-fr",
+    cityName: { en: "Sète", fr: "Sète" },
+    cityZoneId: "relation/255450", inseeCode: "34301",
+    medalCount: 10, population: 45337, rank: 163, version: 2,
+    load: () => require("../../../assets/medals/france/163-sete-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chalon-sur-saone-v1", cityId: "chalon-sur-saone-fr",
+    cityName: { en: "Chalon-sur-Saône", fr: "Chalon-sur-Saône" },
+    cityZoneId: "relation/2078971", inseeCode: "71076",
+    medalCount: 10, population: 45102, rank: 164, version: 2,
+    load: () => require("../../../assets/medals/france/164-chalon-sur-saone-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bagneux-v1", cityId: "bagneux-fr",
+    cityName: { en: "Bagneux", fr: "Bagneux" },
+    cityZoneId: "relation/37025", inseeCode: "92007",
+    medalCount: 10, population: 44572, rank: 165, version: 2,
+    load: () => require("../../../assets/medals/france/165-bagneux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "tarbes-v1", cityId: "tarbes-fr",
+    cityName: { en: "Tarbes", fr: "Tarbes" },
+    cityZoneId: "relation/159060", inseeCode: "65440",
+    medalCount: 10, population: 44399, rank: 166, version: 2,
+    load: () => require("../../../assets/medals/france/166-tarbes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-brieuc-v1", cityId: "saint-brieuc-fr",
+    cityName: { en: "Saint-Brieuc", fr: "Saint-Brieuc" },
+    cityZoneId: "relation/301829", inseeCode: "22278",
+    medalCount: 10, population: 44364, rank: 167, version: 2,
+    load: () => require("../../../assets/medals/france/167-saint-brieuc-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "istres-v1", cityId: "istres-fr",
+    cityName: { en: "Istres", fr: "Istres" },
+    cityZoneId: "relation/96764", inseeCode: "13047",
+    medalCount: 10, population: 44292, rank: 168, version: 2,
+    load: () => require("../../../assets/medals/france/168-istres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "salon-de-provence-v1", cityId: "salon-de-provence-fr",
+    cityName: { en: "Salon-de-Provence", fr: "Salon-de-Provence" },
+    cityZoneId: "relation/70295", inseeCode: "13103",
+    medalCount: 10, population: 44194, rank: 169, version: 2,
+    load: () => require("../../../assets/medals/france/169-salon-de-provence-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "puteaux-v1", cityId: "puteaux-fr",
+    cityName: { en: "Puteaux", fr: "Puteaux" },
+    cityZoneId: "relation/91776", inseeCode: "92062",
+    medalCount: 10, population: 44002, rank: 170, version: 2,
+    load: () => require("../../../assets/medals/france/170-puteaux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "caluire-et-cuire-v1", cityId: "caluire-et-cuire-fr",
+    cityName: { en: "Caluire-et-Cuire", fr: "Caluire-et-Cuire" },
+    cityZoneId: "relation/90737", inseeCode: "69034",
+    medalCount: 10, population: 43597, rank: 171, version: 2,
+    load: () => require("../../../assets/medals/france/171-caluire-et-cuire-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "reze-v1", cityId: "reze-fr",
+    cityName: { en: "Rezé", fr: "Rezé" },
+    cityZoneId: "relation/60966", inseeCode: "44143",
+    medalCount: 10, population: 43556, rank: 172, version: 2,
+    load: () => require("../../../assets/medals/france/172-reze-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mantes-la-jolie-v1", cityId: "mantes-la-jolie-fr",
+    cityName: { en: "Mantes-la-Jolie", fr: "Mantes-la-Jolie" },
+    cityZoneId: "relation/386602", inseeCode: "78361",
+    medalCount: 10, population: 43526, rank: 173, version: 2,
+    load: () => require("../../../assets/medals/france/173-mantes-la-jolie-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "valenciennes-v1", cityId: "valenciennes-fr",
+    cityName: { en: "Valenciennes", fr: "Valenciennes" },
+    cityZoneId: "relation/53355", inseeCode: "59606",
+    medalCount: 10, population: 43468, rank: 174, version: 2,
+    load: () => require("../../../assets/medals/france/174-valenciennes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "anglet-v1", cityId: "anglet-fr",
+    cityName: { en: "Anglet", fr: "Anglet" },
+    cityZoneId: "relation/422124", inseeCode: "64024",
+    medalCount: 10, population: 43271, rank: 175, version: 2,
+    load: () => require("../../../assets/medals/france/175-anglet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bagnolet-v1", cityId: "bagnolet-fr",
+    cityName: { en: "Bagnolet", fr: "Bagnolet" },
+    cityZoneId: "relation/129550", inseeCode: "93006",
+    medalCount: 10, population: 43086, rank: 176, version: 2,
+    load: () => require("../../../assets/medals/france/176-bagnolet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bron-v1", cityId: "bron-fr",
+    cityName: { en: "Bron", fr: "Bron" },
+    cityZoneId: "relation/164214", inseeCode: "69029",
+    medalCount: 10, population: 42982, rank: 177, version: 2,
+    load: () => require("../../../assets/medals/france/177-bron-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chalons-en-champagne-v1", cityId: "chalons-en-champagne-fr",
+    cityName: { en: "Châlons-en-Champagne", fr: "Châlons-en-Champagne" },
+    cityZoneId: "relation/417365", inseeCode: "51108",
+    medalCount: 10, population: 42971, rank: 178, version: 2,
+    load: () => require("../../../assets/medals/france/178-chalons-en-champagne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chateauroux-v1", cityId: "chateauroux-fr",
+    cityName: { en: "Châteauroux", fr: "Châteauroux" },
+    cityZoneId: "relation/1536593", inseeCode: "36044",
+    medalCount: 10, population: 42963, rank: 179, version: 2,
+    load: () => require("../../../assets/medals/france/179-chateauroux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "arras-v1", cityId: "arras-fr",
+    cityName: { en: "Arras", fr: "Arras" },
+    cityZoneId: "relation/1121015", inseeCode: "62041",
+    medalCount: 10, population: 42875, rank: 180, version: 2,
+    load: () => require("../../../assets/medals/france/180-arras-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "thionville-v1", cityId: "thionville-fr",
+    cityName: { en: "Thionville", fr: "Thionville" },
+    cityZoneId: "relation/123302", inseeCode: "57672",
+    medalCount: 10, population: 42658, rank: 181, version: 2,
+    load: () => require("../../../assets/medals/france/181-thionville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villenave-d-ornon-v1", cityId: "villenave-d-ornon-fr",
+    cityName: { en: "Villenave-d'Ornon", fr: "Villenave-d'Ornon" },
+    cityZoneId: "relation/105273", inseeCode: "33550",
+    medalCount: 10, population: 42545, rank: 182, version: 2,
+    load: () => require("../../../assets/medals/france/182-villenave-d-ornon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "castres-v1", cityId: "castres-fr",
+    cityName: { en: "Castres", fr: "Castres" },
+    cityZoneId: "relation/135627", inseeCode: "81065",
+    medalCount: 10, population: 42505, rank: 183, version: 2,
+    load: () => require("../../../assets/medals/france/183-castres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bourg-en-bresse-v1", cityId: "bourg-en-bresse-fr",
+    cityName: { en: "Bourg-en-Bresse", fr: "Bourg-en-Bresse" },
+    cityZoneId: "relation/140253", inseeCode: "01053",
+    medalCount: 10, population: 42372, rank: 184, version: 2,
+    load: () => require("../../../assets/medals/france/184-bourg-en-bresse-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gagny-v1", cityId: "gagny-fr",
+    cityName: { en: "Gagny", fr: "Gagny" },
+    cityZoneId: "relation/162542", inseeCode: "93032",
+    medalCount: 10, population: 42313, rank: 185, version: 2,
+    load: () => require("../../../assets/medals/france/185-gagny-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-cannet-v1", cityId: "le-cannet-fr",
+    cityName: { en: "Le Cannet", fr: "Le Cannet" },
+    cityZoneId: "relation/91840", inseeCode: "06030",
+    medalCount: 10, population: 41938, rank: 186, version: 2,
+    load: () => require("../../../assets/medals/france/186-le-cannet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "angouleme-v1", cityId: "angouleme-fr",
+    cityName: { en: "Angoulême", fr: "Angoulême" },
+    cityZoneId: "relation/85809", inseeCode: "16015",
+    medalCount: 10, population: 41908, rank: 187, version: 2,
+    load: () => require("../../../assets/medals/france/187-angouleme-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "garges-les-gonesse-v1", cityId: "garges-les-gonesse-fr",
+    cityName: { en: "Garges-lès-Gonesse", fr: "Garges-lès-Gonesse" },
+    cityZoneId: "relation/452532", inseeCode: "95268",
+    medalCount: 10, population: 41791, rank: 188, version: 2,
+    load: () => require("../../../assets/medals/france/188-garges-les-gonesse-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villepinte-v1", cityId: "villepinte-fr",
+    cityName: { en: "Villepinte", fr: "Villepinte" },
+    cityZoneId: "relation/162261", inseeCode: "93078",
+    medalCount: 10, population: 41470, rank: 189, version: 2,
+    load: () => require("../../../assets/medals/france/189-villepinte-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "stains-v1", cityId: "stains-fr",
+    cityName: { en: "Stains", fr: "Stains" },
+    cityZoneId: "relation/158809", inseeCode: "93072",
+    medalCount: 10, population: 41388, rank: 190, version: 2,
+    load: () => require("../../../assets/medals/france/190-stains-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gap-v1", cityId: "gap-fr",
+    cityName: { en: "Gap", fr: "Gap" },
+    cityZoneId: "relation/367142", inseeCode: "05061",
+    medalCount: 10, population: 41293, rank: 191, version: 2,
+    load: () => require("../../../assets/medals/france/191-gap-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "poissy-v1", cityId: "poissy-fr",
+    cityName: { en: "Poissy", fr: "Poissy" },
+    cityZoneId: "relation/911088", inseeCode: "78498",
+    medalCount: 10, population: 40983, rank: 192, version: 2,
+    load: () => require("../../../assets/medals/france/192-poissy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "colomiers-v1", cityId: "colomiers-fr",
+    cityName: { en: "Colomiers", fr: "Colomiers" },
+    cityZoneId: "relation/35078", inseeCode: "31149",
+    medalCount: 10, population: 40882, rank: 193, version: 2,
+    load: () => require("../../../assets/medals/france/193-colomiers-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "wattrelos-v1", cityId: "wattrelos-fr",
+    cityName: { en: "Wattrelos", fr: "Wattrelos" },
+    cityZoneId: "relation/59049", inseeCode: "59650",
+    medalCount: 10, population: 40847, rank: 194, version: 2,
+    load: () => require("../../../assets/medals/france/194-wattrelos-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "draguignan-v1", cityId: "draguignan-fr",
+    cityName: { en: "Draguignan", fr: "Draguignan" },
+    cityZoneId: "relation/125329", inseeCode: "83050",
+    medalCount: 10, population: 40826, rank: 195, version: 2,
+    load: () => require("../../../assets/medals/france/195-draguignan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "compiegne-v1", cityId: "compiegne-fr",
+    cityName: { en: "Compiègne", fr: "Compiègne" },
+    cityZoneId: "relation/195340", inseeCode: "60159",
+    medalCount: 10, population: 40761, rank: 196, version: 2,
+    load: () => require("../../../assets/medals/france/196-compiegne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montelimar-v1", cityId: "montelimar-fr",
+    cityName: { en: "Montélimar", fr: "Montélimar" },
+    cityZoneId: "relation/70292", inseeCode: "26198",
+    medalCount: 10, population: 40595, rank: 197, version: 2,
+    load: () => require("../../../assets/medals/france/197-montelimar-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "boulogne-sur-mer-v1", cityId: "boulogne-sur-mer-fr",
+    cityName: { en: "Boulogne-sur-Mer", fr: "Boulogne-sur-Mer" },
+    cityZoneId: "relation/240377", inseeCode: "62160",
+    medalCount: 10, population: 40539, rank: 198, version: 2,
+    load: () => require("../../../assets/medals/france/198-boulogne-sur-mer-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "douai-v1", cityId: "douai-fr",
+    cityName: { en: "Douai", fr: "Douai" },
+    cityZoneId: "relation/56243", inseeCode: "59178",
+    medalCount: 10, population: 40250, rank: 199, version: 2,
+    load: () => require("../../../assets/medals/france/199-douai-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "marcq-en-bar-ul-v1", cityId: "marcq-en-bar-ul-fr",
+    cityName: { en: "Marcq-en-Barœul", fr: "Marcq-en-Barœul" },
+    cityZoneId: "relation/58686", inseeCode: "59378",
+    medalCount: 10, population: 40184, rank: 200, version: 2,
+    load: () => require("../../../assets/medals/france/200-marcq-en-bar-ul-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "neuilly-sur-marne-v1", cityId: "neuilly-sur-marne-fr",
+    cityName: { en: "Neuilly-sur-Marne", fr: "Neuilly-sur-Marne" },
+    cityZoneId: "relation/162562", inseeCode: "93050",
+    medalCount: 10, population: 39800, rank: 201, version: 2,
+    load: () => require("../../../assets/medals/france/201-neuilly-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-lamentin-v1", cityId: "le-lamentin-fr",
+    cityName: { en: "Le Lamentin", fr: "Le Lamentin" },
+    cityZoneId: "relation/299032", inseeCode: "97213",
+    medalCount: 10, population: 39400, rank: 202, version: 2,
+    load: () => require("../../../assets/medals/france/202-le-lamentin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-joseph-v1", cityId: "saint-joseph-fr",
+    cityName: { en: "Saint-Joseph", fr: "Saint-Joseph" },
+    cityZoneId: "relation/1282272", inseeCode: "97412",
+    medalCount: 10, population: 39207, rank: 203, version: 2,
+    load: () => require("../../../assets/medals/france/203-saint-joseph-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "pontault-combault-v1", cityId: "pontault-combault-fr",
+    cityName: { en: "Pontault-Combault", fr: "Pontault-Combault" },
+    cityZoneId: "relation/403055", inseeCode: "77373",
+    medalCount: 10, population: 39096, rank: 204, version: 2,
+    load: () => require("../../../assets/medals/france/204-pontault-combault-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-benoit-v1", cityId: "saint-benoit-fr",
+    cityName: { en: "Saint-Benoît", fr: "Saint-Benoît" },
+    cityZoneId: "relation/280168", inseeCode: "97410",
+    medalCount: 10, population: 38604, rank: 205, version: 2,
+    load: () => require("../../../assets/medals/france/205-saint-benoit-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-ciotat-v1", cityId: "la-ciotat-fr",
+    cityName: { en: "La Ciotat", fr: "La Ciotat" },
+    cityZoneId: "relation/67741", inseeCode: "13028",
+    medalCount: 10, population: 38477, rank: 206, version: 2,
+    load: () => require("../../../assets/medals/france/206-la-ciotat-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "joue-les-tours-v1", cityId: "joue-les-tours-fr",
+    cityName: { en: "Joué-lès-Tours", fr: "Joué-lès-Tours" },
+    cityZoneId: "relation/76340", inseeCode: "37122",
+    medalCount: 10, population: 38423, rank: 207, version: 2,
+    load: () => require("../../../assets/medals/france/207-joue-les-tours-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "tremblay-en-france-v1", cityId: "tremblay-en-france-fr",
+    cityName: { en: "Tremblay-en-France", fr: "Tremblay-en-France" },
+    cityZoneId: "relation/160818", inseeCode: "93073",
+    medalCount: 10, population: 38348, rank: 208, version: 2,
+    load: () => require("../../../assets/medals/france/208-tremblay-en-france-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chartres-v1", cityId: "chartres-fr",
+    cityName: { en: "Chartres", fr: "Chartres" },
+    cityZoneId: "relation/276905", inseeCode: "28085",
+    medalCount: 10, population: 38324, rank: 209, version: 2,
+    load: () => require("../../../assets/medals/france/209-chartres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "oullins-pierre-benite-v1", cityId: "oullins-pierre-benite-fr",
+    cityName: { en: "Oullins-Pierre-Bénite", fr: "Oullins-Pierre-Bénite" },
+    cityZoneId: "relation/186363", inseeCode: "69149",
+    medalCount: 10, population: 38168, rank: 210, version: 2,
+    load: () => require("../../../assets/medals/france/210-oullins-pierre-benite-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "thonon-les-bains-v1", cityId: "thonon-les-bains-fr",
+    cityName: { en: "Thonon-les-Bains", fr: "Thonon-les-Bains" },
+    cityZoneId: "relation/105786", inseeCode: "74281",
+    medalCount: 10, population: 37928, rank: 211, version: 1,
+    load: () => require("../../../assets/medals/france/../thonon-les-bains-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "franconville-v1", cityId: "franconville-fr",
+    cityName: { en: "Franconville", fr: "Franconville" },
+    cityZoneId: "relation/115249", inseeCode: "95252",
+    medalCount: 10, population: 37754, rank: 212, version: 2,
+    load: () => require("../../../assets/medals/france/212-franconville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-martin-d-heres-v1", cityId: "saint-martin-d-heres-fr",
+    cityName: { en: "Saint-Martin-d'Hères", fr: "Saint-Martin-d'Hères" },
+    cityZoneId: "relation/80349", inseeCode: "38421",
+    medalCount: 10, population: 37695, rank: 213, version: 2,
+    load: () => require("../../../assets/medals/france/213-saint-martin-d-heres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "annemasse-v1", cityId: "annemasse-fr",
+    cityName: { en: "Annemasse", fr: "Annemasse" },
+    cityZoneId: "relation/104959", inseeCode: "74012",
+    medalCount: 10, population: 37628, rank: 214, version: 2,
+    load: () => require("../../../assets/medals/france/214-annemasse-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "savigny-sur-orge-v1", cityId: "savigny-sur-orge-fr",
+    cityName: { en: "Savigny-sur-Orge", fr: "Savigny-sur-Orge" },
+    cityZoneId: "relation/33429", inseeCode: "91589",
+    medalCount: 10, population: 37601, rank: 215, version: 2,
+    load: () => require("../../../assets/medals/france/215-savigny-sur-orge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "echirolles-v1", cityId: "echirolles-fr",
+    cityName: { en: "Échirolles", fr: "Échirolles" },
+    cityZoneId: "relation/105162", inseeCode: "38151",
+    medalCount: 10, population: 37491, rank: 216, version: 2,
+    load: () => require("../../../assets/medals/france/216-echirolles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "palaiseau-v1", cityId: "palaiseau-fr",
+    cityName: { en: "Palaiseau", fr: "Palaiseau" },
+    cityZoneId: "relation/33504", inseeCode: "91477",
+    medalCount: 10, population: 37471, rank: 217, version: 2,
+    load: () => require("../../../assets/medals/france/217-palaiseau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "romainville-v1", cityId: "romainville-fr",
+    cityName: { en: "Romainville", fr: "Romainville" },
+    cityZoneId: "relation/130632", inseeCode: "93063",
+    medalCount: 10, population: 37152, rank: 218, version: 2,
+    load: () => require("../../../assets/medals/france/218-romainville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-raphael-v1", cityId: "saint-raphael-fr",
+    cityName: { en: "Saint-Raphaël", fr: "Saint-Raphaël" },
+    cityZoneId: "relation/190208", inseeCode: "83118",
+    medalCount: 10, population: 37113, rank: 219, version: 2,
+    load: () => require("../../../assets/medals/france/219-saint-raphael-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "six-fours-les-plages-v1", cityId: "six-fours-les-plages-fr",
+    cityName: { en: "Six-Fours-les-Plages", fr: "Six-Fours-les-Plages" },
+    cityZoneId: "relation/194637", inseeCode: "83129",
+    medalCount: 10, population: 37109, rank: 220, version: 2,
+    load: () => require("../../../assets/medals/france/220-six-fours-les-plages-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sainte-marie-v1", cityId: "sainte-marie-fr",
+    cityName: { en: "Sainte-Marie", fr: "Sainte-Marie" },
+    cityZoneId: "relation/280212", inseeCode: "97418",
+    medalCount: 10, population: 37093, rank: 221, version: 2,
+    load: () => require("../../../assets/medals/france/221-sainte-marie-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "conflans-sainte-honorine-v1", cityId: "conflans-sainte-honorine-fr",
+    cityName: { en: "Conflans-Sainte-Honorine", fr: "Conflans-Sainte-Honorine" },
+    cityZoneId: "relation/75461", inseeCode: "78172",
+    medalCount: 10, population: 36958, rank: 222, version: 2,
+    load: () => require("../../../assets/medals/france/222-conflans-sainte-honorine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vitrolles-v1", cityId: "vitrolles-fr",
+    cityName: { en: "Vitrolles", fr: "Vitrolles" },
+    cityZoneId: "relation/71321", inseeCode: "13117",
+    medalCount: 10, population: 36758, rank: 223, version: 2,
+    load: () => require("../../../assets/medals/france/223-vitrolles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chatillon-v1", cityId: "chatillon-fr",
+    cityName: { en: "Châtillon", fr: "Châtillon" },
+    cityZoneId: "relation/37020", inseeCode: "92020",
+    medalCount: 10, population: 36705, rank: 224, version: 2,
+    load: () => require("../../../assets/medals/france/224-chatillon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "meyzieu-v1", cityId: "meyzieu-fr",
+    cityName: { en: "Meyzieu", fr: "Meyzieu" },
+    cityZoneId: "relation/122349", inseeCode: "69282",
+    medalCount: 10, population: 36687, rank: 225, version: 2,
+    load: () => require("../../../assets/medals/france/225-meyzieu-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "athis-mons-v1", cityId: "athis-mons-fr",
+    cityName: { en: "Athis-Mons", fr: "Athis-Mons" },
+    cityZoneId: "relation/29366", inseeCode: "91027",
+    medalCount: 10, population: 36613, rank: 226, version: 2,
+    load: () => require("../../../assets/medals/france/226-athis-mons-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-possession-v1", cityId: "la-possession-fr",
+    cityName: { en: "La Possession", fr: "La Possession" },
+    cityZoneId: "relation/278304", inseeCode: "97408",
+    medalCount: 10, population: 36568, rank: 227, version: 2,
+    load: () => require("../../../assets/medals/france/227-la-possession-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "matoury-v1", cityId: "matoury-fr",
+    cityName: { en: "Matoury", fr: "Matoury" },
+    cityZoneId: "relation/1663798", inseeCode: "97307",
+    medalCount: 10, population: 36512, rank: 228, version: 2,
+    load: () => require("../../../assets/medals/france/228-matoury-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bezons-v1", cityId: "bezons-fr",
+    cityName: { en: "Bezons", fr: "Bezons" },
+    cityZoneId: "relation/103270", inseeCode: "95063",
+    medalCount: 10, population: 36434, rank: 229, version: 2,
+    load: () => require("../../../assets/medals/france/229-bezons-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "haguenau-v1", cityId: "haguenau-fr",
+    cityName: { en: "Haguenau", fr: "Haguenau" },
+    cityZoneId: "relation/89859", inseeCode: "67180",
+    medalCount: 10, population: 36391, rank: 230, version: 2,
+    load: () => require("../../../assets/medals/france/230-haguenau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "creil-v1", cityId: "creil-fr",
+    cityName: { en: "Creil", fr: "Creil" },
+    cityZoneId: "relation/142098", inseeCode: "60175",
+    medalCount: 10, population: 36301, rank: 231, version: 2,
+    load: () => require("../../../assets/medals/france/231-creil-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villeneuve-saint-georges-v1", cityId: "villeneuve-saint-georges-fr",
+    cityName: { en: "Villeneuve-Saint-Georges", fr: "Villeneuve-Saint-Georges" },
+    cityZoneId: "relation/105014", inseeCode: "94078",
+    medalCount: 10, population: 36221, rank: 232, version: 2,
+    load: () => require("../../../assets/medals/france/232-villeneuve-saint-georges-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villefranche-sur-saone-v1", cityId: "villefranche-sur-saone-fr",
+    cityName: { en: "Villefranche-sur-Saône", fr: "Villefranche-sur-Saône" },
+    cityZoneId: "relation/74082", inseeCode: "69264",
+    medalCount: 10, population: 36172, rank: 233, version: 2,
+    load: () => require("../../../assets/medals/france/233-villefranche-sur-saone-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-leu-v1", cityId: "saint-leu-fr",
+    cityName: { en: "Saint-Leu", fr: "Saint-Leu" },
+    cityZoneId: "relation/289451", inseeCode: "97413",
+    medalCount: 10, population: 36163, rank: 234, version: 2,
+    load: () => require("../../../assets/medals/france/234-saint-leu-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chatenay-malabry-v1", cityId: "chatenay-malabry-fr",
+    cityName: { en: "Châtenay-Malabry", fr: "Châtenay-Malabry" },
+    cityZoneId: "relation/33914", inseeCode: "92019",
+    medalCount: 10, population: 35825, rank: 235, version: 2,
+    load: () => require("../../../assets/medals/france/235-chatenay-malabry-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-chamond-v1", cityId: "saint-chamond-fr",
+    cityName: { en: "Saint-Chamond", fr: "Saint-Chamond" },
+    cityZoneId: "relation/122931", inseeCode: "42207",
+    medalCount: 10, population: 35646, rank: 236, version: 2,
+    load: () => require("../../../assets/medals/france/236-saint-chamond-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sainte-genevieve-des-bois-v1", cityId: "sainte-genevieve-des-bois-fr",
+    cityName: { en: "Sainte-Geneviève-des-Bois", fr: "Sainte-Geneviève-des-Bois" },
+    cityZoneId: "relation/33338", inseeCode: "91549",
+    medalCount: 10, population: 35438, rank: 237, version: 2,
+    load: () => require("../../../assets/medals/france/237-sainte-genevieve-des-bois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "roanne-v1", cityId: "roanne-fr",
+    cityName: { en: "Roanne", fr: "Roanne" },
+    cityZoneId: "relation/134383", inseeCode: "42187",
+    medalCount: 10, population: 35409, rank: 238, version: 2,
+    load: () => require("../../../assets/medals/france/238-roanne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-perreux-sur-marne-v1", cityId: "le-perreux-sur-marne-fr",
+    cityName: { en: "Le Perreux-sur-Marne", fr: "Le Perreux-sur-Marne" },
+    cityZoneId: "relation/108312", inseeCode: "94058",
+    medalCount: 10, population: 35260, rank: 239, version: 2,
+    load: () => require("../../../assets/medals/france/239-le-perreux-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "macon-v1", cityId: "macon-fr",
+    cityName: { en: "Mâcon", fr: "Mâcon" },
+    cityZoneId: "relation/912201", inseeCode: "71270",
+    medalCount: 10, population: 35177, rank: 240, version: 2,
+    load: () => require("../../../assets/medals/france/240-macon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "auxerre-v1", cityId: "auxerre-fr",
+    cityName: { en: "Auxerre", fr: "Auxerre" },
+    cityZoneId: "relation/282525", inseeCode: "89024",
+    medalCount: 10, population: 35097, rank: 241, version: 2,
+    load: () => require("../../../assets/medals/france/241-auxerre-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dumbea-v1", cityId: "dumbea-fr",
+    cityName: { en: "Dumbéa", fr: "Dumbéa" },
+    cityZoneId: "relation/377753", inseeCode: "98805",
+    medalCount: 10, population: 34926, rank: 242, version: 2,
+    load: () => require("../../../assets/medals/france/242-dumbea-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "schiltigheim-v1", cityId: "schiltigheim-fr",
+    cityName: { en: "Schiltigheim", fr: "Schiltigheim" },
+    cityZoneId: "relation/69730", inseeCode: "67447",
+    medalCount: 10, population: 34708, rank: 243, version: 2,
+    load: () => require("../../../assets/medals/france/243-schiltigheim-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "trappes-v1", cityId: "trappes-fr",
+    cityName: { en: "Trappes", fr: "Trappes" },
+    cityZoneId: "relation/49540", inseeCode: "78621",
+    medalCount: 10, population: 34689, rank: 244, version: 2,
+    load: () => require("../../../assets/medals/france/244-trappes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-mureaux-v1", cityId: "les-mureaux-fr",
+    cityName: { en: "Les Mureaux", fr: "Les Mureaux" },
+    cityZoneId: "relation/444123", inseeCode: "78440",
+    medalCount: 10, population: 34632, rank: 245, version: 2,
+    load: () => require("../../../assets/medals/france/245-les-mureaux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "houilles-v1", cityId: "houilles-fr",
+    cityName: { en: "Houilles", fr: "Houilles" },
+    cityZoneId: "relation/75003", inseeCode: "78311",
+    medalCount: 10, population: 33983, rank: 246, version: 2,
+    load: () => require("../../../assets/medals/france/246-houilles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-port-v1", cityId: "le-port-fr",
+    cityName: { en: "Le Port", fr: "Le Port" },
+    cityZoneId: "relation/278311", inseeCode: "97407",
+    medalCount: 10, population: 33969, rank: 247, version: 2,
+    load: () => require("../../../assets/medals/france/247-le-port-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "marignane-v1", cityId: "marignane-fr",
+    cityName: { en: "Marignane", fr: "Marignane" },
+    cityZoneId: "relation/72113", inseeCode: "13054",
+    medalCount: 10, population: 33692, rank: 248, version: 2,
+    load: () => require("../../../assets/medals/france/248-marignane-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "romans-sur-isere-v1", cityId: "romans-sur-isere-fr",
+    cityName: { en: "Romans-sur-Isère", fr: "Romans-sur-Isère" },
+    cityZoneId: "relation/36664", inseeCode: "26281",
+    medalCount: 10, population: 33464, rank: 249, version: 2,
+    load: () => require("../../../assets/medals/france/249-romans-sur-isere-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villiers-sur-marne-v1", cityId: "villiers-sur-marne-fr",
+    cityName: { en: "Villiers-sur-Marne", fr: "Villiers-sur-Marne" },
+    cityZoneId: "relation/108300", inseeCode: "94079",
+    medalCount: 10, population: 33162, rank: 250, version: 2,
+    load: () => require("../../../assets/medals/france/250-villiers-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montlucon-v1", cityId: "montlucon-fr",
+    cityName: { en: "Montluçon", fr: "Montluçon" },
+    cityZoneId: "relation/110282", inseeCode: "03185",
+    medalCount: 10, population: 33147, rank: 251, version: 2,
+    load: () => require("../../../assets/medals/france/251-montlucon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "nevers-v1", cityId: "nevers-fr",
+    cityName: { en: "Nevers", fr: "Nevers" },
+    cityZoneId: "relation/161753", inseeCode: "58194",
+    medalCount: 10, population: 33085, rank: 252, version: 2,
+    load: () => require("../../../assets/medals/france/252-nevers-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lens-v1", cityId: "lens-fr",
+    cityName: { en: "Lens", fr: "Lens" },
+    cityZoneId: "relation/1175586", inseeCode: "62498",
+    medalCount: 10, population: 32920, rank: 253, version: 2,
+    load: () => require("../../../assets/medals/france/253-lens-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "thiais-v1", cityId: "thiais-fr",
+    cityName: { en: "Thiais", fr: "Thiais" },
+    cityZoneId: "relation/104767", inseeCode: "94073",
+    medalCount: 10, population: 32918, rank: 254, version: 2,
+    load: () => require("../../../assets/medals/france/254-thiais-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-medard-en-jalles-v1", cityId: "saint-medard-en-jalles-fr",
+    cityName: { en: "Saint-Médard-en-Jalles", fr: "Saint-Médard-en-Jalles" },
+    cityZoneId: "relation/110581", inseeCode: "33449",
+    medalCount: 10, population: 32910, rank: 255, version: 2,
+    load: () => require("../../../assets/medals/france/255-saint-medard-en-jalles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "agen-v1", cityId: "agen-fr",
+    cityName: { en: "Agen", fr: "Agen" },
+    cityZoneId: "relation/146357", inseeCode: "47001",
+    medalCount: 10, population: 32801, rank: 256, version: 2,
+    load: () => require("../../../assets/medals/france/256-agen-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montigny-le-bretonneux-v1", cityId: "montigny-le-bretonneux-fr",
+    cityName: { en: "Montigny-le-Bretonneux", fr: "Montigny-le-Bretonneux" },
+    cityZoneId: "relation/49538", inseeCode: "78423",
+    medalCount: 10, population: 32465, rank: 257, version: 2,
+    load: () => require("../../../assets/medals/france/257-montigny-le-bretonneux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "nogent-sur-marne-v1", cityId: "nogent-sur-marne-fr",
+    cityName: { en: "Nogent-sur-Marne", fr: "Nogent-sur-Marne" },
+    cityZoneId: "relation/109361", inseeCode: "94052",
+    medalCount: 10, population: 32455, rank: 258, version: 2,
+    load: () => require("../../../assets/medals/france/258-nogent-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "aix-les-bains-v1", cityId: "aix-les-bains-fr",
+    cityName: { en: "Aix-les-Bains", fr: "Aix-les-Bains" },
+    cityZoneId: "relation/74287", inseeCode: "73008",
+    medalCount: 10, population: 32406, rank: 259, version: 2,
+    load: () => require("../../../assets/medals/france/259-aix-les-bains-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "epinal-v1", cityId: "epinal-fr",
+    cityName: { en: "Épinal", fr: "Épinal" },
+    cityZoneId: "relation/78828", inseeCode: "88160",
+    medalCount: 10, population: 32251, rank: 260, version: 2,
+    load: () => require("../../../assets/medals/france/260-epinal-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-laurent-du-var-v1", cityId: "saint-laurent-du-var-fr",
+    cityName: { en: "Saint-Laurent-du-Var", fr: "Saint-Laurent-du-Var" },
+    cityZoneId: "relation/149032", inseeCode: "06123",
+    medalCount: 10, population: 32172, rank: 261, version: 2,
+    load: () => require("../../../assets/medals/france/261-saint-laurent-du-var-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "koungou-v1", cityId: "koungou-fr",
+    cityName: { en: "Koungou", fr: "Koungou" },
+    cityZoneId: "relation/3366529", inseeCode: "97610",
+    medalCount: 10, population: 32156, rank: 262, version: 2,
+    load: () => require("../../../assets/medals/france/262-koungou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "pontoise-v1", cityId: "pontoise-fr",
+    cityName: { en: "Pontoise", fr: "Pontoise" },
+    cityZoneId: "relation/120958", inseeCode: "95500",
+    medalCount: 10, population: 31970, rank: 263, version: 2,
+    load: () => require("../../../assets/medals/france/263-pontoise-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "begles-v1", cityId: "begles-fr",
+    cityName: { en: "Bègles", fr: "Bègles" },
+    cityZoneId: "relation/105278", inseeCode: "33039",
+    medalCount: 10, population: 31831, rank: 264, version: 2,
+    load: () => require("../../../assets/medals/france/264-begles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "plaisir-v1", cityId: "plaisir-fr",
+    cityName: { en: "Plaisir", fr: "Plaisir" },
+    cityZoneId: "relation/51912", inseeCode: "78490",
+    medalCount: 10, population: 31811, rank: 265, version: 2,
+    load: () => require("../../../assets/medals/france/265-plaisir-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "herblay-sur-seine-v1", cityId: "herblay-sur-seine-fr",
+    cityName: { en: "Herblay-sur-Seine", fr: "Herblay-sur-Seine" },
+    cityZoneId: "relation/398232", inseeCode: "95306",
+    medalCount: 10, population: 31779, rank: 266, version: 2,
+    load: () => require("../../../assets/medals/france/266-herblay-sur-seine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vienne-v1", cityId: "vienne-fr",
+    cityName: { en: "Vienne", fr: "Vienne" },
+    cityZoneId: "relation/169848", inseeCode: "38544",
+    medalCount: 10, population: 31778, rank: 267, version: 2,
+    load: () => require("../../../assets/medals/france/267-vienne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "carpentras-v1", cityId: "carpentras-fr",
+    cityName: { en: "Carpentras", fr: "Carpentras" },
+    cityZoneId: "relation/148157", inseeCode: "84031",
+    medalCount: 10, population: 31619, rank: 268, version: 2,
+    load: () => require("../../../assets/medals/france/268-carpentras-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mont-de-marsan-v1", cityId: "mont-de-marsan-fr",
+    cityName: { en: "Mont-de-Marsan", fr: "Mont-de-Marsan" },
+    cityZoneId: "relation/150319", inseeCode: "40192",
+    medalCount: 10, population: 31592, rank: 269, version: 2,
+    load: () => require("../../../assets/medals/france/269-mont-de-marsan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dreux-v1", cityId: "dreux-fr",
+    cityName: { en: "Dreux", fr: "Dreux" },
+    cityZoneId: "relation/70807", inseeCode: "28134",
+    medalCount: 10, population: 31543, rank: 270, version: 2,
+    load: () => require("../../../assets/medals/france/270-dreux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vigneux-sur-seine-v1", cityId: "vigneux-sur-seine-fr",
+    cityName: { en: "Vigneux-sur-Seine", fr: "Vigneux-sur-Seine" },
+    cityZoneId: "relation/150551", inseeCode: "91657",
+    medalCount: 10, population: 31466, rank: 271, version: 2,
+    load: () => require("../../../assets/medals/france/271-vigneux-sur-seine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "rillieux-la-pape-v1", cityId: "rillieux-la-pape-fr",
+    cityName: { en: "Rillieux-la-Pape", fr: "Rillieux-la-Pape" },
+    cityZoneId: "relation/121775", inseeCode: "69286",
+    medalCount: 10, population: 31389, rank: 272, version: 2,
+    load: () => require("../../../assets/medals/france/272-rillieux-la-pape-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "goussainville-v1", cityId: "goussainville-fr",
+    cityName: { en: "Goussainville", fr: "Goussainville" },
+    cityZoneId: "relation/161530", inseeCode: "95280",
+    medalCount: 10, population: 31301, rank: 273, version: 2,
+    load: () => require("../../../assets/medals/france/273-goussainville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "ris-orangis-v1", cityId: "ris-orangis-fr",
+    cityName: { en: "Ris-Orangis", fr: "Ris-Orangis" },
+    cityZoneId: "relation/150543", inseeCode: "91521",
+    medalCount: 10, population: 31189, rank: 274, version: 2,
+    load: () => require("../../../assets/medals/france/274-ris-orangis-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "l-hay-les-roses-v1", cityId: "l-hay-les-roses-fr",
+    cityName: { en: "L'Haÿ-les-Roses", fr: "L'Haÿ-les-Roses" },
+    cityZoneId: "relation/79593", inseeCode: "94038",
+    medalCount: 10, population: 31188, rank: 275, version: 2,
+    load: () => require("../../../assets/medals/france/275-l-hay-les-roses-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-martin-v1", cityId: "saint-martin-fr",
+    cityName: { en: "Saint-Martin", fr: "Saint-Martin" },
+    cityZoneId: "relation/299354", inseeCode: "97801",
+    medalCount: 10, population: 31160, rank: 276, version: 2,
+    load: () => require("../../../assets/medals/france/276-saint-martin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "savigny-le-temple-v1", cityId: "savigny-le-temple-fr",
+    cityName: { en: "Savigny-le-Temple", fr: "Savigny-le-Temple" },
+    cityZoneId: "relation/80143", inseeCode: "77445",
+    medalCount: 10, population: 31148, rank: 277, version: 2,
+    load: () => require("../../../assets/medals/france/277-savigny-le-temple-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cambrai-v1", cityId: "cambrai-fr",
+    cityName: { en: "Cambrai", fr: "Cambrai" },
+    cityZoneId: "relation/55938", inseeCode: "59122",
+    medalCount: 10, population: 31134, rank: 278, version: 2,
+    load: () => require("../../../assets/medals/france/278-cambrai-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cachan-v1", cityId: "cachan-fr",
+    cityName: { en: "Cachan", fr: "Cachan" },
+    cityZoneId: "relation/48862", inseeCode: "94016",
+    medalCount: 10, population: 31103, rank: 279, version: 2,
+    load: () => require("../../../assets/medals/france/279-cachan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chatellerault-v1", cityId: "chatellerault-fr",
+    cityName: { en: "Châtellerault", fr: "Châtellerault" },
+    cityZoneId: "relation/135540", inseeCode: "86066",
+    medalCount: 10, population: 31003, rank: 280, version: 2,
+    load: () => require("../../../assets/medals/france/280-chatellerault-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "baie-mahault-v1", cityId: "baie-mahault-fr",
+    cityName: { en: "Baie-Mahault", fr: "Baie-Mahault" },
+    cityZoneId: "relation/272700", inseeCode: "97103",
+    medalCount: 10, population: 30924, rank: 281, version: 2,
+    load: () => require("../../../assets/medals/france/281-baie-mahault-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "viry-chatillon-v1", cityId: "viry-chatillon-fr",
+    cityName: { en: "Viry-Châtillon", fr: "Viry-Châtillon" },
+    cityZoneId: "relation/92313", inseeCode: "91687",
+    medalCount: 10, population: 30838, rank: 282, version: 2,
+    load: () => require("../../../assets/medals/france/282-viry-chatillon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-chesnay-rocquencourt-v1", cityId: "le-chesnay-rocquencourt-fr",
+    cityName: { en: "Le Chesnay-Rocquencourt", fr: "Le Chesnay-Rocquencourt" },
+    cityZoneId: "relation/9067505", inseeCode: "78158",
+    medalCount: 10, population: 30689, rank: 283, version: 2,
+    load: () => require("../../../assets/medals/france/283-le-chesnay-rocquencourt-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "menton-v1", cityId: "menton-fr",
+    cityName: { en: "Menton", fr: "Menton" },
+    cityZoneId: "relation/74727", inseeCode: "06083",
+    medalCount: 10, population: 30604, rank: 284, version: 2,
+    load: () => require("../../../assets/medals/france/284-menton-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chatou-v1", cityId: "chatou-fr",
+    cityName: { en: "Chatou", fr: "Chatou" },
+    cityZoneId: "relation/73610", inseeCode: "78146",
+    medalCount: 10, population: 30598, rank: 285, version: 2,
+    load: () => require("../../../assets/medals/france/285-chatou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "malakoff-v1", cityId: "malakoff-fr",
+    cityName: { en: "Malakoff", fr: "Malakoff" },
+    cityZoneId: "relation/37027", inseeCode: "92046",
+    medalCount: 10, population: 30557, rank: 286, version: 2,
+    load: () => require("../../../assets/medals/france/286-malakoff-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-garenne-colombes-v1", cityId: "la-garenne-colombes-fr",
+    cityName: { en: "La Garenne-Colombes", fr: "La Garenne-Colombes" },
+    cityZoneId: "relation/91775", inseeCode: "92035",
+    medalCount: 10, population: 30197, rank: 287, version: 2,
+    load: () => require("../../../assets/medals/france/287-la-garenne-colombes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "tournefeuille-v1", cityId: "tournefeuille-fr",
+    cityName: { en: "Tournefeuille", fr: "Tournefeuille" },
+    cityZoneId: "relation/35735", inseeCode: "31557",
+    medalCount: 10, population: 30168, rank: 288, version: 2,
+    load: () => require("../../../assets/medals/france/288-tournefeuille-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bourgoin-jallieu-v1", cityId: "bourgoin-jallieu-fr",
+    cityName: { en: "Bourgoin-Jallieu", fr: "Bourgoin-Jallieu" },
+    cityZoneId: "relation/78763", inseeCode: "38053",
+    medalCount: 10, population: 30151, rank: 289, version: 2,
+    load: () => require("../../../assets/medals/france/289-bourgoin-jallieu-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "draveil-v1", cityId: "draveil-fr",
+    cityName: { en: "Draveil", fr: "Draveil" },
+    cityZoneId: "relation/421704", inseeCode: "91201",
+    medalCount: 10, population: 30098, rank: 290, version: 2,
+    load: () => require("../../../assets/medals/france/290-draveil-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lievin-v1", cityId: "lievin-fr",
+    cityName: { en: "Liévin", fr: "Liévin" },
+    cityZoneId: "relation/1175407", inseeCode: "62510",
+    medalCount: 10, population: 30063, rank: 291, version: 2,
+    load: () => require("../../../assets/medals/france/291-lievin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villiers-le-bel-v1", cityId: "villiers-le-bel-fr",
+    cityName: { en: "Villiers-le-Bel", fr: "Villiers-le-Bel" },
+    cityZoneId: "relation/534505", inseeCode: "95680",
+    medalCount: 10, population: 30053, rank: 292, version: 2,
+    load: () => require("../../../assets/medals/france/292-villiers-le-bel-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vand-uvre-les-nancy-v1", cityId: "vand-uvre-les-nancy-fr",
+    cityName: { en: "Vandœuvre-lès-Nancy", fr: "Vandœuvre-lès-Nancy" },
+    cityZoneId: "relation/52395", inseeCode: "54547",
+    medalCount: 10, population: 29942, rank: 293, version: 2,
+    load: () => require("../../../assets/medals/france/293-vand-uvre-les-nancy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "agde-v1", cityId: "agde-fr",
+    cityName: { en: "Agde", fr: "Agde" },
+    cityZoneId: "relation/254843", inseeCode: "34003",
+    medalCount: 10, population: 29939, rank: 294, version: 2,
+    load: () => require("../../../assets/medals/france/294-agde-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "decines-charpieu-v1", cityId: "decines-charpieu-fr",
+    cityName: { en: "Décines-Charpieu", fr: "Décines-Charpieu" },
+    cityZoneId: "relation/121827", inseeCode: "69275",
+    medalCount: 10, population: 29877, rank: 295, version: 2,
+    load: () => require("../../../assets/medals/france/295-decines-charpieu-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-cloud-v1", cityId: "saint-cloud-fr",
+    cityName: { en: "Saint-Cloud", fr: "Saint-Cloud" },
+    cityZoneId: "relation/72148", inseeCode: "92064",
+    medalCount: 10, population: 29855, rank: 296, version: 2,
+    load: () => require("../../../assets/medals/france/296-saint-cloud-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "faaa-v1", cityId: "faaa-fr",
+    cityName: { en: "Faaa", fr: "Faaa" },
+    cityZoneId: "relation/6093624", inseeCode: "98715",
+    medalCount: 10, population: 29826, rank: 297, version: 2,
+    load: () => require("../../../assets/medals/france/297-faaa-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villemomble-v1", cityId: "villemomble-fr",
+    cityName: { en: "Villemomble", fr: "Villemomble" },
+    cityZoneId: "relation/162329", inseeCode: "93077",
+    medalCount: 10, population: 29795, rank: 298, version: 2,
+    load: () => require("../../../assets/medals/france/298-villemomble-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "guyancourt-v1", cityId: "guyancourt-fr",
+    cityName: { en: "Guyancourt", fr: "Guyancourt" },
+    cityZoneId: "relation/30272", inseeCode: "78297",
+    medalCount: 10, population: 29778, rank: 299, version: 2,
+    load: () => require("../../../assets/medals/france/299-guyancourt-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "orange-v1", cityId: "orange-fr",
+    cityName: { en: "Orange", fr: "Orange" },
+    cityZoneId: "relation/187038", inseeCode: "84087",
+    medalCount: 10, population: 29706, rank: 300, version: 2,
+    load: () => require("../../../assets/medals/france/300-orange-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fresnes-v1", cityId: "fresnes-fr",
+    cityName: { en: "Fresnes", fr: "Fresnes" },
+    cityZoneId: "relation/103395", inseeCode: "94034",
+    medalCount: 10, population: 29528, rank: 301, version: 2,
+    load: () => require("../../../assets/medals/france/301-fresnes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-etienne-du-rouvray-v1", cityId: "saint-etienne-du-rouvray-fr",
+    cityName: { en: "Saint-Étienne-du-Rouvray", fr: "Saint-Étienne-du-Rouvray" },
+    cityZoneId: "relation/102144", inseeCode: "76575",
+    medalCount: 10, population: 29518, rank: 302, version: 2,
+    load: () => require("../../../assets/medals/france/302-saint-etienne-du-rouvray-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "ermont-v1", cityId: "ermont-fr",
+    cityName: { en: "Ermont", fr: "Ermont" },
+    cityZoneId: "relation/76381", inseeCode: "95219",
+    medalCount: 10, population: 29489, rank: 303, version: 2,
+    load: () => require("../../../assets/medals/france/303-ermont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "clichy-sous-bois-v1", cityId: "clichy-sous-bois-fr",
+    cityName: { en: "Clichy-sous-Bois", fr: "Clichy-sous-Bois" },
+    cityZoneId: "relation/162858", inseeCode: "93014",
+    medalCount: 10, population: 29354, rank: 304, version: 2,
+    load: () => require("../../../assets/medals/france/304-clichy-sous-bois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vallauris-v1", cityId: "vallauris-fr",
+    cityName: { en: "Vallauris", fr: "Vallauris" },
+    cityZoneId: "relation/74689", inseeCode: "06155",
+    medalCount: 10, population: 29259, rank: 305, version: 2,
+    load: () => require("../../../assets/medals/france/305-vallauris-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "perigueux-v1", cityId: "perigueux-fr",
+    cityName: { en: "Périgueux", fr: "Périgueux" },
+    cityZoneId: "relation/76351", inseeCode: "24322",
+    medalCount: 10, population: 29055, rank: 306, version: 2,
+    load: () => require("../../../assets/medals/france/306-perigueux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sotteville-les-rouen-v1", cityId: "sotteville-les-rouen-fr",
+    cityName: { en: "Sotteville-lès-Rouen", fr: "Sotteville-lès-Rouen" },
+    cityZoneId: "relation/93029", inseeCode: "76681",
+    medalCount: 10, population: 29003, rank: 307, version: 2,
+    load: () => require("../../../assets/medals/france/307-sotteville-les-rouen-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bois-colombes-v1", cityId: "bois-colombes-fr",
+    cityName: { en: "Bois-Colombes", fr: "Bois-Colombes" },
+    cityZoneId: "relation/91746", inseeCode: "92009",
+    medalCount: 10, population: 28909, rank: 308, version: 2,
+    load: () => require("../../../assets/medals/france/308-bois-colombes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-plessis-robinson-v1", cityId: "le-plessis-robinson-fr",
+    cityName: { en: "Le Plessis-Robinson", fr: "Le Plessis-Robinson" },
+    cityZoneId: "relation/27694", inseeCode: "92060",
+    medalCount: 10, population: 28848, rank: 309, version: 2,
+    load: () => require("../../../assets/medals/france/309-le-plessis-robinson-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "charenton-le-pont-v1", cityId: "charenton-le-pont-fr",
+    cityName: { en: "Charenton-le-Pont", fr: "Charenton-le-Pont" },
+    cityZoneId: "relation/104868", inseeCode: "94018",
+    medalCount: 10, population: 28830, rank: 310, version: 2,
+    load: () => require("../../../assets/medals/france/310-charenton-le-pont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "punaauia-v1", cityId: "punaauia-fr",
+    cityName: { en: "Punaauia", fr: "Punaauia" },
+    cityZoneId: "relation/6093629", inseeCode: "98738",
+    medalCount: 10, population: 28781, rank: 311, version: 2,
+    load: () => require("../../../assets/medals/france/311-punaauia-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "maubeuge-v1", cityId: "maubeuge-fr",
+    cityName: { en: "Maubeuge", fr: "Maubeuge" },
+    cityZoneId: "relation/55074", inseeCode: "59392",
+    medalCount: 10, population: 28767, rank: 312, version: 2,
+    load: () => require("../../../assets/medals/france/312-maubeuge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montfermeil-v1", cityId: "montfermeil-fr",
+    cityName: { en: "Montfermeil", fr: "Montfermeil" },
+    cityZoneId: "relation/162851", inseeCode: "93047",
+    medalCount: 10, population: 28703, rank: 313, version: 2,
+    load: () => require("../../../assets/medals/france/313-montfermeil-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vanves-v1", cityId: "vanves-fr",
+    cityName: { en: "Vanves", fr: "Vanves" },
+    cityZoneId: "relation/59321", inseeCode: "92075",
+    medalCount: 10, population: 28622, rank: 314, version: 2,
+    load: () => require("../../../assets/medals/france/314-vanves-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-sebastien-sur-loire-v1", cityId: "saint-sebastien-sur-loire-fr",
+    cityName: { en: "Saint-Sébastien-sur-Loire", fr: "Saint-Sébastien-sur-Loire" },
+    cityZoneId: "relation/61051", inseeCode: "44190",
+    medalCount: 10, population: 28596, rank: 315, version: 2,
+    load: () => require("../../../assets/medals/france/315-saint-sebastien-sur-loire-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "orvault-v1", cityId: "orvault-fr",
+    cityName: { en: "Orvault", fr: "Orvault" },
+    cityZoneId: "relation/60972", inseeCode: "44114",
+    medalCount: 10, population: 28534, rank: 316, version: 2,
+    load: () => require("../../../assets/medals/france/316-orvault-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dieppe-v1", cityId: "dieppe-fr",
+    cityName: { en: "Dieppe", fr: "Dieppe" },
+    cityZoneId: "relation/110435", inseeCode: "76217",
+    medalCount: 10, population: 28496, rank: 317, version: 2,
+    load: () => require("../../../assets/medals/france/317-dieppe-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "soissons-v1", cityId: "soissons-fr",
+    cityName: { en: "Soissons", fr: "Soissons" },
+    cityZoneId: "relation/74004", inseeCode: "02722",
+    medalCount: 10, population: 28046, rank: 318, version: 2,
+    load: () => require("../../../assets/medals/france/318-soissons-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "yerres-v1", cityId: "yerres-fr",
+    cityName: { en: "Yerres", fr: "Yerres" },
+    cityZoneId: "relation/88968", inseeCode: "91691",
+    medalCount: 10, population: 27906, rank: 319, version: 2,
+    load: () => require("../../../assets/medals/france/319-yerres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "illkirch-graffenstaden-v1", cityId: "illkirch-graffenstaden-fr",
+    cityName: { en: "Illkirch-Graffenstaden", fr: "Illkirch-Graffenstaden" },
+    cityZoneId: "relation/75143", inseeCode: "67218",
+    medalCount: 10, population: 27872, rank: 320, version: 2,
+    load: () => require("../../../assets/medals/france/320-illkirch-graffenstaden-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sucy-en-brie-v1", cityId: "sucy-en-brie-fr",
+    cityName: { en: "Sucy-en-Brie", fr: "Sucy-en-Brie" },
+    cityZoneId: "relation/108129", inseeCode: "94071",
+    medalCount: 10, population: 27764, rank: 321, version: 2,
+    load: () => require("../../../assets/medals/france/321-sucy-en-brie-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-gosier-v1", cityId: "le-gosier-fr",
+    cityName: { en: "Le Gosier", fr: "Le Gosier" },
+    cityZoneId: "relation/255779", inseeCode: "97113",
+    medalCount: 10, population: 27757, rank: 322, version: 2,
+    load: () => require("../../../assets/medals/france/322-le-gosier-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "rambouillet-v1", cityId: "rambouillet-fr",
+    cityName: { en: "Rambouillet", fr: "Rambouillet" },
+    cityZoneId: "relation/959295", inseeCode: "78517",
+    medalCount: 10, population: 27724, rank: 323, version: 2,
+    load: () => require("../../../assets/medals/france/323-rambouillet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "remire-montjoly-v1", cityId: "remire-montjoly-fr",
+    cityName: { en: "Remire-Montjoly", fr: "Remire-Montjoly" },
+    cityZoneId: "relation/1389637", inseeCode: "97309",
+    medalCount: 10, population: 27723, rank: 324, version: 2,
+    load: () => require("../../../assets/medals/france/324-remire-montjoly-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gonesse-v1", cityId: "gonesse-fr",
+    cityName: { en: "Gonesse", fr: "Gonesse" },
+    cityZoneId: "relation/138541", inseeCode: "95277",
+    medalCount: 10, population: 27707, rank: 325, version: 2,
+    load: () => require("../../../assets/medals/france/325-gonesse-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "paita-v1", cityId: "paita-fr",
+    cityName: { en: "Païta", fr: "Païta" },
+    cityZoneId: "relation/377755", inseeCode: "98821",
+    medalCount: 10, population: 27609, rank: 326, version: 2,
+    load: () => require("../../../assets/medals/france/326-paita-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "blagnac-v1", cityId: "blagnac-fr",
+    cityName: { en: "Blagnac", fr: "Blagnac" },
+    cityZoneId: "relation/34917", inseeCode: "31069",
+    medalCount: 10, population: 27604, rank: 327, version: 2,
+    load: () => require("../../../assets/medals/france/327-blagnac-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "taverny-v1", cityId: "taverny-fr",
+    cityName: { en: "Taverny", fr: "Taverny" },
+    cityZoneId: "relation/115248", inseeCode: "95607",
+    medalCount: 10, population: 27593, rank: 328, version: 2,
+    load: () => require("../../../assets/medals/france/328-taverny-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-teste-de-buch-v1", cityId: "la-teste-de-buch-fr",
+    cityName: { en: "La Teste-de-Buch", fr: "La Teste-de-Buch" },
+    cityZoneId: "relation/109392", inseeCode: "33529",
+    medalCount: 10, population: 27566, rank: 329, version: 2,
+    load: () => require("../../../assets/medals/france/329-la-teste-de-buch-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bussy-saint-georges-v1", cityId: "bussy-saint-georges-fr",
+    cityName: { en: "Bussy-Saint-Georges", fr: "Bussy-Saint-Georges" },
+    cityZoneId: "relation/403039", inseeCode: "77058",
+    medalCount: 10, population: 27498, rank: 330, version: 2,
+    load: () => require("../../../assets/medals/france/330-bussy-saint-georges-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "champs-sur-marne-v1", cityId: "champs-sur-marne-fr",
+    cityName: { en: "Champs-sur-Marne", fr: "Champs-sur-Marne" },
+    cityZoneId: "relation/402751", inseeCode: "77083",
+    medalCount: 10, population: 27451, rank: 331, version: 2,
+    load: () => require("../../../assets/medals/france/331-champs-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "limeil-brevannes-v1", cityId: "limeil-brevannes-fr",
+    cityName: { en: "Limeil-Brévannes", fr: "Limeil-Brévannes" },
+    cityZoneId: "relation/108124", inseeCode: "94044",
+    medalCount: 10, population: 27406, rank: 332, version: 2,
+    load: () => require("../../../assets/medals/france/332-limeil-brevannes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cormeilles-en-parisis-v1", cityId: "cormeilles-en-parisis-fr",
+    cityName: { en: "Cormeilles-en-Parisis", fr: "Cormeilles-en-Parisis" },
+    cityZoneId: "relation/402367", inseeCode: "95176",
+    medalCount: 10, population: 27292, rank: 333, version: 2,
+    load: () => require("../../../assets/medals/france/333-cormeilles-en-parisis-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bergerac-v1", cityId: "bergerac-fr",
+    cityName: { en: "Bergerac", fr: "Bergerac" },
+    cityZoneId: "relation/145155", inseeCode: "24037",
+    medalCount: 10, population: 27110, rank: 334, version: 2,
+    load: () => require("../../../assets/medals/france/334-bergerac-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sens-v1", cityId: "sens-fr",
+    cityName: { en: "Sens", fr: "Sens" },
+    cityZoneId: "relation/946433", inseeCode: "89387",
+    medalCount: 10, population: 27106, rank: 335, version: 2,
+    load: () => require("../../../assets/medals/france/335-sens-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lambersart-v1", cityId: "lambersart-fr",
+    cityName: { en: "Lambersart", fr: "Lambersart" },
+    cityZoneId: "relation/58897", inseeCode: "59328",
+    medalCount: 10, population: 27090, rank: 336, version: 2,
+    load: () => require("../../../assets/medals/france/336-lambersart-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "armentieres-v1", cityId: "armentieres-fr",
+    cityName: { en: "Armentières", fr: "Armentières" },
+    cityZoneId: "relation/68000", inseeCode: "59017",
+    medalCount: 10, population: 26998, rank: 337, version: 2,
+    load: () => require("../../../assets/medals/france/337-armentieres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gradignan-v1", cityId: "gradignan-fr",
+    cityName: { en: "Gradignan", fr: "Gradignan" },
+    cityZoneId: "relation/105268", inseeCode: "33192",
+    medalCount: 10, population: 26952, rank: 338, version: 2,
+    load: () => require("../../../assets/medals/france/338-gradignan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villeparisis-v1", cityId: "villeparisis-fr",
+    cityName: { en: "Villeparisis", fr: "Villeparisis" },
+    cityZoneId: "relation/953247", inseeCode: "77514",
+    medalCount: 10, population: 26946, rank: 339, version: 2,
+    load: () => require("../../../assets/medals/france/339-villeparisis-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sannois-v1", cityId: "sannois-fr",
+    cityName: { en: "Sannois", fr: "Sannois" },
+    cityZoneId: "relation/103051", inseeCode: "95582",
+    medalCount: 10, population: 26924, rank: 340, version: 2,
+    load: () => require("../../../assets/medals/france/340-sannois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "etampes-v1", cityId: "etampes-fr",
+    cityName: { en: "Étampes", fr: "Étampes" },
+    cityZoneId: "relation/1229908", inseeCode: "91223",
+    medalCount: 10, population: 26857, rank: 341, version: 2,
+    load: () => require("../../../assets/medals/france/341-etampes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "grigny-v1", cityId: "grigny-fr",
+    cityName: { en: "Grigny", fr: "Grigny" },
+    cityZoneId: "relation/29369", inseeCode: "91286",
+    medalCount: 10, population: 26842, rank: 342, version: 2,
+    load: () => require("../../../assets/medals/france/342-grigny-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cenon-v1", cityId: "cenon-fr",
+    cityName: { en: "Cenon", fr: "Cenon" },
+    cityZoneId: "relation/88808", inseeCode: "33119",
+    medalCount: 10, population: 26834, rank: 343, version: 2,
+    load: () => require("../../../assets/medals/france/343-cenon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bretigny-sur-orge-v1", cityId: "bretigny-sur-orge-fr",
+    cityName: { en: "Brétigny-sur-Orge", fr: "Brétigny-sur-Orge" },
+    cityZoneId: "relation/280610", inseeCode: "91103",
+    medalCount: 10, population: 26658, rank: 344, version: 2,
+    load: () => require("../../../assets/medals/france/344-bretigny-sur-orge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "papeete-v1", cityId: "papeete-fr",
+    cityName: { en: "Papeete", fr: "Papeete" },
+    cityZoneId: "relation/5829526", inseeCode: "98735",
+    medalCount: 10, population: 26654, rank: 345, version: 2,
+    load: () => require("../../../assets/medals/france/345-papeete-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lunel-v1", cityId: "lunel-fr",
+    cityName: { en: "Lunel", fr: "Lunel" },
+    cityZoneId: "relation/277425", inseeCode: "34145",
+    medalCount: 10, population: 26623, rank: 346, version: 2,
+    load: () => require("../../../assets/medals/france/346-lunel-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-garde-v1", cityId: "la-garde-fr",
+    cityName: { en: "La Garde", fr: "La Garde" },
+    cityZoneId: "relation/76462", inseeCode: "83062",
+    medalCount: 10, population: 26476, rank: 347, version: 2,
+    load: () => require("../../../assets/medals/france/347-la-garde-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "elancourt-v1", cityId: "elancourt-fr",
+    cityName: { en: "Élancourt", fr: "Élancourt" },
+    cityZoneId: "relation/49544", inseeCode: "78208",
+    medalCount: 10, population: 26365, rank: 348, version: 2,
+    load: () => require("../../../assets/medals/france/348-elancourt-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saumur-v1", cityId: "saumur-fr",
+    cityName: { en: "Saumur", fr: "Saumur" },
+    cityZoneId: "relation/272368", inseeCode: "49328",
+    medalCount: 10, population: 26241, rank: 349, version: 2,
+    load: () => require("../../../assets/medals/france/349-saumur-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vertou-v1", cityId: "vertou-fr",
+    cityName: { en: "Vertou", fr: "Vertou" },
+    cityZoneId: "relation/63642", inseeCode: "44215",
+    medalCount: 10, population: 26227, rank: 350, version: 2,
+    load: () => require("../../../assets/medals/france/350-vertou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "aurillac-v1", cityId: "aurillac-fr",
+    cityName: { en: "Aurillac", fr: "Aurillac" },
+    cityZoneId: "relation/115997", inseeCode: "15014",
+    medalCount: 10, population: 26214, rank: 351, version: 2,
+    load: () => require("../../../assets/medals/france/351-aurillac-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "eaubonne-v1", cityId: "eaubonne-fr",
+    cityName: { en: "Eaubonne", fr: "Eaubonne" },
+    cityZoneId: "relation/76341", inseeCode: "95203",
+    medalCount: 10, population: 26211, rank: 352, version: 2,
+    load: () => require("../../../assets/medals/france/352-eaubonne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "biarritz-v1", cityId: "biarritz-fr",
+    cityName: { en: "Biarritz", fr: "Biarritz" },
+    cityZoneId: "relation/166717", inseeCode: "64122",
+    medalCount: 10, population: 26206, rank: 353, version: 2,
+    load: () => require("../../../assets/medals/france/353-biarritz-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "miramas-v1", cityId: "miramas-fr",
+    cityName: { en: "Miramas", fr: "Miramas" },
+    cityZoneId: "relation/70525", inseeCode: "13063",
+    medalCount: 10, population: 26203, rank: 354, version: 2,
+    load: () => require("../../../assets/medals/france/354-miramas-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "muret-v1", cityId: "muret-fr",
+    cityName: { en: "Muret", fr: "Muret" },
+    cityZoneId: "relation/122800", inseeCode: "31395",
+    medalCount: 10, population: 26079, rank: 355, version: 2,
+    load: () => require("../../../assets/medals/france/355-muret-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "castelnau-le-lez-v1", cityId: "castelnau-le-lez-fr",
+    cityName: { en: "Castelnau-le-Lez", fr: "Castelnau-le-Lez" },
+    cityZoneId: "relation/28810", inseeCode: "34057",
+    medalCount: 10, population: 26058, rank: 356, version: 2,
+    load: () => require("../../../assets/medals/france/356-castelnau-le-lez-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villeneuve-la-garenne-v1", cityId: "villeneuve-la-garenne-fr",
+    cityName: { en: "Villeneuve-la-Garenne", fr: "Villeneuve-la-Garenne" },
+    cityZoneId: "relation/90080", inseeCode: "92078",
+    medalCount: 10, population: 26021, rank: 357, version: 2,
+    load: () => require("../../../assets/medals/france/357-villeneuve-la-garenne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-ulis-v1", cityId: "les-ulis-fr",
+    cityName: { en: "Les Ulis", fr: "Les Ulis" },
+    cityZoneId: "relation/1174036", inseeCode: "91692",
+    medalCount: 10, population: 25886, rank: 358, version: 2,
+    load: () => require("../../../assets/medals/france/358-les-ulis-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-pavillons-sous-bois-v1", cityId: "les-pavillons-sous-bois-fr",
+    cityName: { en: "Les Pavillons-sous-Bois", fr: "Les Pavillons-sous-Bois" },
+    cityZoneId: "relation/162521", inseeCode: "93057",
+    medalCount: 10, population: 25804, rank: 359, version: 2,
+    load: () => require("../../../assets/medals/france/359-les-pavillons-sous-bois-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sevremoine-v1", cityId: "sevremoine-fr",
+    cityName: { en: "Sèvremoine", fr: "Sèvremoine" },
+    cityZoneId: "relation/295509", inseeCode: "49301",
+    medalCount: 10, population: 25797, rank: 360, version: 2,
+    load: () => require("../../../assets/medals/france/360-sevremoine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-grand-quevilly-v1", cityId: "le-grand-quevilly-fr",
+    cityName: { en: "Le Grand-Quevilly", fr: "Le Grand-Quevilly" },
+    cityZoneId: "relation/102145", inseeCode: "76322",
+    medalCount: 10, population: 25789, rank: 361, version: 2,
+    load: () => require("../../../assets/medals/france/361-le-grand-quevilly-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lormont-v1", cityId: "lormont-fr",
+    cityName: { en: "Lormont", fr: "Lormont" },
+    cityZoneId: "relation/88807", inseeCode: "33249",
+    medalCount: 10, population: 25769, rank: 362, version: 2,
+    load: () => require("../../../assets/medals/france/362-lormont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "henin-beaumont-v1", cityId: "henin-beaumont-fr",
+    cityName: { en: "Hénin-Beaumont", fr: "Hénin-Beaumont" },
+    cityZoneId: "relation/1164845", inseeCode: "62427",
+    medalCount: 10, population: 25688, rank: 363, version: 2,
+    load: () => require("../../../assets/medals/france/363-henin-beaumont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "brunoy-v1", cityId: "brunoy-fr",
+    cityName: { en: "Brunoy", fr: "Brunoy" },
+    cityZoneId: "relation/114189", inseeCode: "91114",
+    medalCount: 10, population: 25643, rank: 364, version: 2,
+    load: () => require("../../../assets/medals/france/364-brunoy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cavaillon-v1", cityId: "cavaillon-fr",
+    cityName: { en: "Cavaillon", fr: "Cavaillon" },
+    cityZoneId: "relation/73936", inseeCode: "84035",
+    medalCount: 10, population: 25636, rank: 365, version: 2,
+    load: () => require("../../../assets/medals/france/365-cavaillon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-ouen-l-aumone-v1", cityId: "saint-ouen-l-aumone-fr",
+    cityName: { en: "Saint-Ouen-l'Aumône", fr: "Saint-Ouen-l'Aumône" },
+    cityZoneId: "relation/73899", inseeCode: "95572",
+    medalCount: 10, population: 25578, rank: 366, version: 2,
+    load: () => require("../../../assets/medals/france/366-saint-ouen-l-aumone-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sainte-suzanne-v1", cityId: "sainte-suzanne-fr",
+    cityName: { en: "Sainte-Suzanne", fr: "Sainte-Suzanne" },
+    cityZoneId: "relation/280102", inseeCode: "97420",
+    medalCount: 10, population: 25551, rank: 367, version: 2,
+    load: () => require("../../../assets/medals/france/367-sainte-suzanne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "alencon-v1", cityId: "alencon-fr",
+    cityName: { en: "Alençon", fr: "Alençon" },
+    cityZoneId: "relation/553607", inseeCode: "61001",
+    medalCount: 10, population: 25490, rank: 368, version: 2,
+    load: () => require("../../../assets/medals/france/368-alencon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saintes-v1", cityId: "saintes-fr",
+    cityName: { en: "Saintes", fr: "Saintes" },
+    cityZoneId: "relation/138502", inseeCode: "17415",
+    medalCount: 10, population: 25363, rank: 369, version: 2,
+    load: () => require("../../../assets/medals/france/369-saintes-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-mont-dore-v1", cityId: "le-mont-dore-fr",
+    cityName: { en: "Le Mont-Dore", fr: "Le Mont-Dore" },
+    cityZoneId: "relation/377754", inseeCode: "98817",
+    medalCount: 10, population: 25303, rank: 370, version: 2,
+    load: () => require("../../../assets/medals/france/370-le-mont-dore-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vernon-v1", cityId: "vernon-fr",
+    cityName: { en: "Vernon", fr: "Vernon" },
+    cityZoneId: "relation/74780", inseeCode: "27681",
+    medalCount: 10, population: 25290, rank: 371, version: 2,
+    load: () => require("../../../assets/medals/france/371-vernon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bethune-v1", cityId: "bethune-fr",
+    cityName: { en: "Béthune", fr: "Béthune" },
+    cityZoneId: "relation/1016146", inseeCode: "62119",
+    medalCount: 10, population: 25224, rank: 372, version: 2,
+    load: () => require("../../../assets/medals/france/372-bethune-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vichy-v1", cityId: "vichy-fr",
+    cityName: { en: "Vichy", fr: "Vichy" },
+    cityZoneId: "relation/79337", inseeCode: "03310",
+    medalCount: 10, population: 25115, rank: 373, version: 2,
+    load: () => require("../../../assets/medals/france/373-vichy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-bouscat-v1", cityId: "le-bouscat-fr",
+    cityName: { en: "Le Bouscat", fr: "Le Bouscat" },
+    cityZoneId: "relation/105283", inseeCode: "33069",
+    medalCount: 10, population: 25081, rank: 374, version: 2,
+    load: () => require("../../../assets/medals/france/374-le-bouscat-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vierzon-v1", cityId: "vierzon-fr",
+    cityName: { en: "Vierzon", fr: "Vierzon" },
+    cityZoneId: "relation/191434", inseeCode: "18279",
+    medalCount: 10, population: 25068, rank: 375, version: 2,
+    load: () => require("../../../assets/medals/france/375-vierzon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "libourne-v1", cityId: "libourne-fr",
+    cityName: { en: "Libourne", fr: "Libourne" },
+    cityZoneId: "relation/89255", inseeCode: "33243",
+    medalCount: 10, population: 25036, rank: 376, version: 2,
+    load: () => require("../../../assets/medals/france/376-libourne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "eysines-v1", cityId: "eysines-fr",
+    cityName: { en: "Eysines", fr: "Eysines" },
+    cityZoneId: "relation/105280", inseeCode: "33162",
+    medalCount: 10, population: 24825, rank: 377, version: 2,
+    load: () => require("../../../assets/medals/france/377-eysines-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "kourou-v1", cityId: "kourou-fr",
+    cityName: { en: "Kourou", fr: "Kourou" },
+    cityZoneId: "relation/1663794", inseeCode: "97304",
+    medalCount: 10, population: 24824, rank: 378, version: 2,
+    load: () => require("../../../assets/medals/france/378-kourou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montbeliard-v1", cityId: "montbeliard-fr",
+    cityName: { en: "Montbéliard", fr: "Montbéliard" },
+    cityZoneId: "relation/115177", inseeCode: "25388",
+    medalCount: 10, population: 24672, rank: 379, version: 2,
+    load: () => require("../../../assets/medals/france/379-montbeliard-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "petit-bourg-v1", cityId: "petit-bourg-fr",
+    cityName: { en: "Petit-Bourg", fr: "Petit-Bourg" },
+    cityZoneId: "relation/273827", inseeCode: "97118",
+    medalCount: 10, population: 24665, rank: 380, version: 2,
+    load: () => require("../../../assets/medals/france/380-petit-bourg-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "orly-v1", cityId: "orly-fr",
+    cityName: { en: "Orly", fr: "Orly" },
+    cityZoneId: "relation/55582", inseeCode: "94054",
+    medalCount: 10, population: 24658, rank: 381, version: 2,
+    load: () => require("../../../assets/medals/france/381-orly-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "laon-v1", cityId: "laon-fr",
+    cityName: { en: "Laon", fr: "Laon" },
+    cityZoneId: "relation/74127", inseeCode: "02408",
+    medalCount: 10, population: 24220, rank: 382, version: 2,
+    load: () => require("../../../assets/medals/france/382-laon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "frontignan-v1", cityId: "frontignan-fr",
+    cityName: { en: "Frontignan", fr: "Frontignan" },
+    cityZoneId: "relation/255490", inseeCode: "34108",
+    medalCount: 10, population: 24136, rank: 383, version: 2,
+    load: () => require("../../../assets/medals/france/383-frontignan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-kremlin-bicetre-v1", cityId: "le-kremlin-bicetre-fr",
+    cityName: { en: "Le Kremlin-Bicêtre", fr: "Le Kremlin-Bicêtre" },
+    cityZoneId: "relation/105122", inseeCode: "94043",
+    medalCount: 10, population: 24110, rank: 384, version: 2,
+    load: () => require("../../../assets/medals/france/384-le-kremlin-bicetre-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "coueron-v1", cityId: "coueron-fr",
+    cityName: { en: "Couëron", fr: "Couëron" },
+    cityZoneId: "relation/77288", inseeCode: "44047",
+    medalCount: 10, population: 24103, rank: 385, version: 2,
+    load: () => require("../../../assets/medals/france/385-coueron-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fontenay-aux-roses-v1", cityId: "fontenay-aux-roses-fr",
+    cityName: { en: "Fontenay-aux-Roses", fr: "Fontenay-aux-Roses" },
+    cityZoneId: "relation/37021", inseeCode: "92032",
+    medalCount: 10, population: 24070, rank: 386, version: 2,
+    load: () => require("../../../assets/medals/france/386-fontenay-aux-roses-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montgeron-v1", cityId: "montgeron-fr",
+    cityName: { en: "Montgeron", fr: "Montgeron" },
+    cityZoneId: "relation/954184", inseeCode: "91421",
+    medalCount: 10, population: 24022, rank: 387, version: 2,
+    load: () => require("../../../assets/medals/france/387-montgeron-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "beaupreau-en-mauges-v1", cityId: "beaupreau-en-mauges-fr",
+    cityName: { en: "Beaupréau-en-Mauges", fr: "Beaupréau-en-Mauges" },
+    cityZoneId: "relation/296180", inseeCode: "49023",
+    medalCount: 10, population: 23989, rank: 388, version: 2,
+    load: () => require("../../../assets/medals/france/388-beaupreau-en-mauges-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "rodez-v1", cityId: "rodez-fr",
+    cityName: { en: "Rodez", fr: "Rodez" },
+    cityZoneId: "relation/116558", inseeCode: "12202",
+    medalCount: 10, population: 23981, rank: 389, version: 2,
+    load: () => require("../../../assets/medals/france/389-rodez-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sainte-anne-v1", cityId: "sainte-anne-fr",
+    cityName: { en: "Sainte-Anne", fr: "Sainte-Anne" },
+    cityZoneId: "relation/255123", inseeCode: "97128",
+    medalCount: 10, population: 23973, rank: 390, version: 2,
+    load: () => require("../../../assets/medals/france/390-sainte-anne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-lilas-v1", cityId: "les-lilas-fr",
+    cityName: { en: "Les Lilas", fr: "Les Lilas" },
+    cityZoneId: "relation/130544", inseeCode: "93045",
+    medalCount: 10, population: 23843, rank: 391, version: 2,
+    load: () => require("../../../assets/medals/france/391-les-lilas-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dole-v1", cityId: "dole-fr",
+    cityName: { en: "Dole", fr: "Dole" },
+    cityZoneId: "relation/148676", inseeCode: "39198",
+    medalCount: 10, population: 23840, rank: 392, version: 2,
+    load: () => require("../../../assets/medals/france/392-dole-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-valette-du-var-v1", cityId: "la-valette-du-var-fr",
+    cityName: { en: "La Valette-du-Var", fr: "La Valette-du-Var" },
+    cityZoneId: "relation/76463", inseeCode: "83144",
+    medalCount: 10, population: 23719, rank: 393, version: 2,
+    load: () => require("../../../assets/medals/france/393-la-valette-du-var-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dammarie-les-lys-v1", cityId: "dammarie-les-lys-fr",
+    cityName: { en: "Dammarie-les-Lys", fr: "Dammarie-les-Lys" },
+    cityZoneId: "relation/80063", inseeCode: "77152",
+    medalCount: 10, population: 23559, rank: 394, version: 2,
+    load: () => require("../../../assets/medals/france/394-dammarie-les-lys-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "olivet-v1", cityId: "olivet-fr",
+    cityName: { en: "Olivet", fr: "Olivet" },
+    cityZoneId: "relation/147557", inseeCode: "45232",
+    medalCount: 10, population: 23507, rank: 395, version: 2,
+    load: () => require("../../../assets/medals/france/395-olivet-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "herouville-saint-clair-v1", cityId: "herouville-saint-clair-fr",
+    cityName: { en: "Hérouville-Saint-Clair", fr: "Hérouville-Saint-Clair" },
+    cityZoneId: "relation/172627", inseeCode: "14327",
+    medalCount: 10, population: 23470, rank: 396, version: 2,
+    load: () => require("../../../assets/medals/france/396-herouville-saint-clair-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "rochefort-v1", cityId: "rochefort-fr",
+    cityName: { en: "Rochefort", fr: "Rochefort" },
+    cityZoneId: "relation/117888", inseeCode: "17299",
+    medalCount: 10, population: 23460, rank: 397, version: 2,
+    load: () => require("../../../assets/medals/france/397-rochefort-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "combs-la-ville-v1", cityId: "combs-la-ville-fr",
+    cityName: { en: "Combs-la-Ville", fr: "Combs-la-Ville" },
+    cityZoneId: "relation/80407", inseeCode: "77122",
+    medalCount: 10, population: 23350, rank: 398, version: 2,
+    load: () => require("../../../assets/medals/france/398-combs-la-ville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lanester-v1", cityId: "lanester-fr",
+    cityName: { en: "Lanester", fr: "Lanester" },
+    cityZoneId: "relation/107969", inseeCode: "56098",
+    medalCount: 10, population: 23263, rank: 399, version: 2,
+    load: () => require("../../../assets/medals/france/399-lanester-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "roissy-en-brie-v1", cityId: "roissy-en-brie-fr",
+    cityName: { en: "Roissy-en-Brie", fr: "Roissy-en-Brie" },
+    cityZoneId: "relation/403963", inseeCode: "77390",
+    medalCount: 10, population: 23229, rank: 400, version: 2,
+    load: () => require("../../../assets/medals/france/400-roissy-en-brie-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "tassin-la-demi-lune-v1", cityId: "tassin-la-demi-lune-fr",
+    cityName: { en: "Tassin-la-Demi-Lune", fr: "Tassin-la-Demi-Lune" },
+    cityZoneId: "relation/252642", inseeCode: "69244",
+    medalCount: 10, population: 23200, rank: 401, version: 2,
+    load: () => require("../../../assets/medals/france/401-tassin-la-demi-lune-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-jean-de-braye-v1", cityId: "saint-jean-de-braye-fr",
+    cityName: { en: "Saint-Jean-de-Braye", fr: "Saint-Jean-de-Braye" },
+    cityZoneId: "relation/147554", inseeCode: "45284",
+    medalCount: 10, population: 23147, rank: 402, version: 2,
+    load: () => require("../../../assets/medals/france/402-saint-jean-de-braye-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "deuil-la-barre-v1", cityId: "deuil-la-barre-fr",
+    cityName: { en: "Deuil-la-Barre", fr: "Deuil-la-Barre" },
+    cityZoneId: "relation/115245", inseeCode: "95197",
+    medalCount: 10, population: 23099, rank: 403, version: 2,
+    load: () => require("../../../assets/medals/france/403-deuil-la-barre-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "maisons-laffitte-v1", cityId: "maisons-laffitte-fr",
+    cityName: { en: "Maisons-Laffitte", fr: "Maisons-Laffitte" },
+    cityZoneId: "relation/75453", inseeCode: "78358",
+    medalCount: 10, population: 23093, rank: 404, version: 2,
+    load: () => require("../../../assets/medals/france/404-maisons-laffitte-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-moule-v1", cityId: "le-moule-fr",
+    cityName: { en: "Le Moule", fr: "Le Moule" },
+    cityZoneId: "relation/254386", inseeCode: "97117",
+    medalCount: 10, population: 23014, rank: 405, version: 2,
+    load: () => require("../../../assets/medals/france/405-le-moule-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "velizy-villacoublay-v1", cityId: "velizy-villacoublay-fr",
+    cityName: { en: "Vélizy-Villacoublay", fr: "Vélizy-Villacoublay" },
+    cityZoneId: "relation/27685", inseeCode: "78640",
+    medalCount: 10, population: 23011, rank: 406, version: 2,
+    load: () => require("../../../assets/medals/france/406-velizy-villacoublay-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "challans-v1", cityId: "challans-fr",
+    cityName: { en: "Challans", fr: "Challans" },
+    cityZoneId: "relation/164555", inseeCode: "85047",
+    medalCount: 10, population: 22943, rank: 407, version: 2,
+    load: () => require("../../../assets/medals/france/407-challans-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-dizier-v1", cityId: "saint-dizier-fr",
+    cityName: { en: "Saint-Dizier", fr: "Saint-Dizier" },
+    cityZoneId: "relation/418777", inseeCode: "52448",
+    medalCount: 10, population: 22858, rank: 408, version: 2,
+    load: () => require("../../../assets/medals/france/408-saint-dizier-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "torcy-v1", cityId: "torcy-fr",
+    cityName: { en: "Torcy", fr: "Torcy" },
+    cityZoneId: "relation/402764", inseeCode: "77468",
+    medalCount: 10, population: 22810, rank: 409, version: 2,
+    load: () => require("../../../assets/medals/france/409-torcy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-louis-68297-v1", cityId: "saint-louis-68297-fr",
+    cityName: { en: "Saint-Louis", fr: "Saint-Louis" },
+    cityZoneId: "relation/85276", inseeCode: "68297",
+    medalCount: 10, population: 22805, rank: 410, version: 2,
+    load: () => require("../../../assets/medals/france/410-saint-louis-68297-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "manosque-v1", cityId: "manosque-fr",
+    cityName: { en: "Manosque", fr: "Manosque" },
+    cityZoneId: "relation/365373", inseeCode: "04112",
+    medalCount: 10, population: 22718, rank: 411, version: 2,
+    load: () => require("../../../assets/medals/france/411-manosque-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "loos-v1", cityId: "loos-fr",
+    cityName: { en: "Loos", fr: "Loos" },
+    cityZoneId: "relation/58402", inseeCode: "59360",
+    medalCount: 10, population: 22567, rank: 412, version: 2,
+    load: () => require("../../../assets/medals/france/412-loos-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gif-sur-yvette-v1", cityId: "gif-sur-yvette-fr",
+    cityName: { en: "Gif-sur-Yvette", fr: "Gif-sur-Yvette" },
+    cityZoneId: "relation/53650", inseeCode: "91272",
+    medalCount: 10, population: 22544, rank: 413, version: 2,
+    load: () => require("../../../assets/medals/france/413-gif-sur-yvette-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "les-pennes-mirabeau-v1", cityId: "les-pennes-mirabeau-fr",
+    cityName: { en: "Les Pennes-Mirabeau", fr: "Les Pennes-Mirabeau" },
+    cityZoneId: "relation/71505", inseeCode: "13071",
+    medalCount: 10, population: 22537, rank: 414, version: 2,
+    load: () => require("../../../assets/medals/france/414-les-pennes-mirabeau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "oyonnax-v1", cityId: "oyonnax-fr",
+    cityName: { en: "Oyonnax", fr: "Oyonnax" },
+    cityZoneId: "relation/21541", inseeCode: "01283",
+    medalCount: 10, population: 22480, rank: 415, version: 2,
+    load: () => require("../../../assets/medals/france/415-oyonnax-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montigny-les-cormeilles-v1", cityId: "montigny-les-cormeilles-fr",
+    cityName: { en: "Montigny-lès-Cormeilles", fr: "Montigny-lès-Cormeilles" },
+    cityZoneId: "relation/398309", inseeCode: "95424",
+    medalCount: 10, population: 22457, rank: 416, version: 2,
+    load: () => require("../../../assets/medals/france/416-montigny-les-cormeilles-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "auch-v1", cityId: "auch-fr",
+    cityName: { en: "Auch", fr: "Auch" },
+    cityZoneId: "relation/128184", inseeCode: "32013",
+    medalCount: 10, population: 22428, rank: 417, version: 2,
+    load: () => require("../../../assets/medals/france/417-auch-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "abbeville-v1", cityId: "abbeville-fr",
+    cityName: { en: "Abbeville", fr: "Abbeville" },
+    cityZoneId: "relation/114349", inseeCode: "80001",
+    medalCount: 10, population: 22395, rank: 418, version: 2,
+    load: () => require("../../../assets/medals/france/418-abbeville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villeneuve-sur-lot-v1", cityId: "villeneuve-sur-lot-fr",
+    cityName: { en: "Villeneuve-sur-Lot", fr: "Villeneuve-sur-Lot" },
+    cityZoneId: "relation/148985", inseeCode: "47323",
+    medalCount: 10, population: 22350, rank: 419, version: 2,
+    load: () => require("../../../assets/medals/france/419-villeneuve-sur-lot-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mantes-la-ville-v1", cityId: "mantes-la-ville-fr",
+    cityName: { en: "Mantes-la-Ville", fr: "Mantes-la-Ville" },
+    cityZoneId: "relation/371002", inseeCode: "78362",
+    medalCount: 10, population: 22332, rank: 420, version: 2,
+    load: () => require("../../../assets/medals/france/420-mantes-la-ville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sevres-v1", cityId: "sevres-fr",
+    cityName: { en: "Sèvres", fr: "Sèvres" },
+    cityZoneId: "relation/31340", inseeCode: "92072",
+    medalCount: 10, population: 22303, rank: 421, version: 2,
+    load: () => require("../../../assets/medals/france/421-sevres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montereau-fault-yonne-v1", cityId: "montereau-fault-yonne-fr",
+    cityName: { en: "Montereau-Fault-Yonne", fr: "Montereau-Fault-Yonne" },
+    cityZoneId: "relation/1383106", inseeCode: "77305",
+    medalCount: 10, population: 22279, rank: 422, version: 2,
+    load: () => require("../../../assets/medals/france/422-montereau-fault-yonne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "acheres-v1", cityId: "acheres-fr",
+    cityName: { en: "Achères", fr: "Achères" },
+    cityZoneId: "relation/75458", inseeCode: "78005",
+    medalCount: 10, population: 22241, rank: 423, version: 2,
+    load: () => require("../../../assets/medals/france/423-acheres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-petit-quevilly-v1", cityId: "le-petit-quevilly-fr",
+    cityName: { en: "Le Petit-Quevilly", fr: "Le Petit-Quevilly" },
+    cityZoneId: "relation/93030", inseeCode: "76498",
+    medalCount: 10, population: 22208, rank: 424, version: 2,
+    load: () => require("../../../assets/medals/france/424-le-petit-quevilly-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "arcueil-v1", cityId: "arcueil-fr",
+    cityName: { en: "Arcueil", fr: "Arcueil" },
+    cityZoneId: "relation/103967", inseeCode: "94003",
+    medalCount: 10, population: 22200, rank: 425, version: 2,
+    load: () => require("../../../assets/medals/france/425-arcueil-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "epernay-v1", cityId: "epernay-fr",
+    cityName: { en: "Épernay", fr: "Épernay" },
+    cityZoneId: "relation/417327", inseeCode: "51230",
+    medalCount: 10, population: 22174, rank: 426, version: 2,
+    load: () => require("../../../assets/medals/france/426-epernay-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gujan-mestras-v1", cityId: "gujan-mestras-fr",
+    cityName: { en: "Gujan-Mestras", fr: "Gujan-Mestras" },
+    cityZoneId: "relation/111073", inseeCode: "33199",
+    medalCount: 10, population: 22153, rank: 427, version: 2,
+    load: () => require("../../../assets/medals/france/427-gujan-mestras-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "dax-v1", cityId: "dax-fr",
+    cityName: { en: "Dax", fr: "Dax" },
+    cityZoneId: "relation/75879", inseeCode: "40088",
+    medalCount: 10, population: 22109, rank: 428, version: 2,
+    load: () => require("../../../assets/medals/france/428-dax-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "millau-v1", cityId: "millau-fr",
+    cityName: { en: "Millau", fr: "Millau" },
+    cityZoneId: "relation/74109", inseeCode: "12145",
+    medalCount: 10, population: 22044, rank: 429, version: 2,
+    load: () => require("../../../assets/medals/france/429-millau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fontaine-v1", cityId: "fontaine-fr",
+    cityName: { en: "Fontaine", fr: "Fontaine" },
+    cityZoneId: "relation/90862", inseeCode: "38169",
+    medalCount: 10, population: 22020, rank: 430, version: 2,
+    load: () => require("../../../assets/medals/france/430-fontaine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chemille-en-anjou-v1", cityId: "chemille-en-anjou-fr",
+    cityName: { en: "Chemillé-en-Anjou", fr: "Chemillé-en-Anjou" },
+    cityZoneId: "relation/157704", inseeCode: "49092",
+    medalCount: 10, population: 21999, rank: 431, version: 2,
+    load: () => require("../../../assets/medals/france/431-chemille-en-anjou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "longjumeau-v1", cityId: "longjumeau-fr",
+    cityName: { en: "Longjumeau", fr: "Longjumeau" },
+    cityZoneId: "relation/395036", inseeCode: "91345",
+    medalCount: 10, population: 21996, rank: 432, version: 2,
+    load: () => require("../../../assets/medals/france/432-longjumeau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "neuilly-plaisance-v1", cityId: "neuilly-plaisance-fr",
+    cityName: { en: "Neuilly-Plaisance", fr: "Neuilly-Plaisance" },
+    cityZoneId: "relation/134947", inseeCode: "93049",
+    medalCount: 10, population: 21941, rank: 433, version: 2,
+    load: () => require("../../../assets/medals/france/433-neuilly-plaisance-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "hazebrouck-v1", cityId: "hazebrouck-fr",
+    cityName: { en: "Hazebrouck", fr: "Hazebrouck" },
+    cityZoneId: "relation/78593", inseeCode: "59295",
+    medalCount: 10, population: 21912, rank: 434, version: 2,
+    load: () => require("../../../assets/medals/france/434-hazebrouck-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "nogent-sur-oise-v1", cityId: "nogent-sur-oise-fr",
+    cityName: { en: "Nogent-sur-Oise", fr: "Nogent-sur-Oise" },
+    cityZoneId: "relation/142096", inseeCode: "60463",
+    medalCount: 10, population: 21907, rank: 435, version: 2,
+    load: () => require("../../../assets/medals/france/435-nogent-sur-oise-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "voiron-v1", cityId: "voiron-fr",
+    cityName: { en: "Voiron", fr: "Voiron" },
+    cityZoneId: "relation/184482", inseeCode: "38563",
+    medalCount: 10, population: 21847, rank: 436, version: 2,
+    load: () => require("../../../assets/medals/france/436-voiron-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fleury-les-aubrais-v1", cityId: "fleury-les-aubrais-fr",
+    cityName: { en: "Fleury-les-Aubrais", fr: "Fleury-les-Aubrais" },
+    cityZoneId: "relation/148479", inseeCode: "45147",
+    medalCount: 10, population: 21804, rank: 437, version: 2,
+    load: () => require("../../../assets/medals/france/437-fleury-les-aubrais-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-madeleine-v1", cityId: "la-madeleine-fr",
+    cityName: { en: "La Madeleine", fr: "La Madeleine" },
+    cityZoneId: "relation/58617", inseeCode: "59368",
+    medalCount: 10, population: 21790, rank: 438, version: 2,
+    load: () => require("../../../assets/medals/france/438-la-madeleine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-michel-sur-orge-v1", cityId: "saint-michel-sur-orge-fr",
+    cityName: { en: "Saint-Michel-sur-Orge", fr: "Saint-Michel-sur-Orge" },
+    cityZoneId: "relation/33366", inseeCode: "91570",
+    medalCount: 10, population: 21776, rank: 439, version: 2,
+    load: () => require("../../../assets/medals/france/439-saint-michel-sur-orge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montmorency-v1", cityId: "montmorency-fr",
+    cityName: { en: "Montmorency", fr: "Montmorency" },
+    cityZoneId: "relation/115244", inseeCode: "95428",
+    medalCount: 10, population: 21763, rank: 440, version: 2,
+    load: () => require("../../../assets/medals/france/440-montmorency-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montigny-les-metz-v1", cityId: "montigny-les-metz-fr",
+    cityName: { en: "Montigny-lès-Metz", fr: "Montigny-lès-Metz" },
+    cityZoneId: "relation/106211", inseeCode: "57480",
+    medalCount: 10, population: 21718, rank: 441, version: 2,
+    load: () => require("../../../assets/medals/france/441-montigny-les-metz-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sainte-foy-les-lyon-v1", cityId: "sainte-foy-les-lyon-fr",
+    cityName: { en: "Sainte-Foy-lès-Lyon", fr: "Sainte-Foy-lès-Lyon" },
+    cityZoneId: "relation/192369", inseeCode: "69202",
+    medalCount: 10, population: 21692, rank: 442, version: 2,
+    load: () => require("../../../assets/medals/france/442-sainte-foy-les-lyon-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "morsang-sur-orge-v1", cityId: "morsang-sur-orge-fr",
+    cityName: { en: "Morsang-sur-Orge", fr: "Morsang-sur-Orge" },
+    cityZoneId: "relation/92321", inseeCode: "91434",
+    medalCount: 10, population: 21667, rank: 443, version: 2,
+    load: () => require("../../../assets/medals/france/443-morsang-sur-orge-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mandelieu-la-napoule-v1", cityId: "mandelieu-la-napoule-fr",
+    cityName: { en: "Mandelieu-la-Napoule", fr: "Mandelieu-la-Napoule" },
+    cityZoneId: "relation/91777", inseeCode: "06079",
+    medalCount: 10, population: 21640, rank: 444, version: 2,
+    load: () => require("../../../assets/medals/france/444-mandelieu-la-napoule-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gardanne-v1", cityId: "gardanne-fr",
+    cityName: { en: "Gardanne", fr: "Gardanne" },
+    cityZoneId: "relation/71243", inseeCode: "13041",
+    medalCount: 10, population: 21597, rank: 445, version: 2,
+    load: () => require("../../../assets/medals/france/445-gardanne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-robert-v1", cityId: "le-robert-fr",
+    cityName: { en: "Le Robert", fr: "Le Robert" },
+    cityZoneId: "relation/289393", inseeCode: "97222",
+    medalCount: 10, population: 21553, rank: 446, version: 2,
+    load: () => require("../../../assets/medals/france/446-le-robert-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lagny-sur-marne-v1", cityId: "lagny-sur-marne-fr",
+    cityName: { en: "Lagny-sur-Marne", fr: "Lagny-sur-Marne" },
+    cityZoneId: "relation/402922", inseeCode: "77243",
+    medalCount: 10, population: 21461, rank: 447, version: 2,
+    load: () => require("../../../assets/medals/france/447-lagny-sur-marne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "allauch-v1", cityId: "allauch-fr",
+    cityName: { en: "Allauch", fr: "Allauch" },
+    cityZoneId: "relation/74270", inseeCode: "13002",
+    medalCount: 10, population: 21443, rank: 448, version: 2,
+    load: () => require("../../../assets/medals/france/448-allauch-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bruay-la-buissiere-v1", cityId: "bruay-la-buissiere-fr",
+    cityName: { en: "Bruay-la-Buissière", fr: "Bruay-la-Buissière" },
+    cityZoneId: "relation/1140615", inseeCode: "62178",
+    medalCount: 10, population: 21424, rank: 449, version: 2,
+    load: () => require("../../../assets/medals/france/449-bruay-la-buissiere-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "givors-v1", cityId: "givors-fr",
+    cityName: { en: "Givors", fr: "Givors" },
+    cityZoneId: "relation/139203", inseeCode: "69091",
+    medalCount: 10, population: 21379, rank: 450, version: 2,
+    load: () => require("../../../assets/medals/france/450-givors-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-gratien-v1", cityId: "saint-gratien-fr",
+    cityName: { en: "Saint-Gratien", fr: "Saint-Gratien" },
+    cityZoneId: "relation/102985", inseeCode: "95555",
+    medalCount: 10, population: 21336, rank: 451, version: 2,
+    load: () => require("../../../assets/medals/france/451-saint-gratien-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-cyr-l-ecole-v1", cityId: "saint-cyr-l-ecole-fr",
+    cityName: { en: "Saint-Cyr-l'École", fr: "Saint-Cyr-l'École" },
+    cityZoneId: "relation/27811", inseeCode: "78545",
+    medalCount: 10, population: 21268, rank: 452, version: 2,
+    load: () => require("../../../assets/medals/france/452-saint-cyr-l-ecole-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "ozoir-la-ferriere-v1", cityId: "ozoir-la-ferriere-fr",
+    cityName: { en: "Ozoir-la-Ferrière", fr: "Ozoir-la-Ferrière" },
+    cityZoneId: "relation/403076", inseeCode: "77350",
+    medalCount: 10, population: 21238, rank: 453, version: 2,
+    load: () => require("../../../assets/medals/france/453-ozoir-la-ferriere-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-genis-laval-v1", cityId: "saint-genis-laval-fr",
+    cityName: { en: "Saint-Genis-Laval", fr: "Saint-Genis-Laval" },
+    cityZoneId: "relation/192374", inseeCode: "69204",
+    medalCount: 10, population: 21212, rank: 454, version: 2,
+    load: () => require("../../../assets/medals/france/454-saint-genis-laval-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "montaigu-vendee-v1", cityId: "montaigu-vendee-fr",
+    cityName: { en: "Montaigu-Vendée", fr: "Montaigu-Vendée" },
+    cityZoneId: "relation/167248", inseeCode: "85146",
+    medalCount: 10, population: 21134, rank: 455, version: 2,
+    load: () => require("../../../assets/medals/france/455-montaigu-vendee-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-plessis-trevise-v1", cityId: "le-plessis-trevise-fr",
+    cityName: { en: "Le Plessis-Trévise", fr: "Le Plessis-Trévise" },
+    cityZoneId: "relation/108284", inseeCode: "94059",
+    medalCount: 10, population: 21112, rank: 456, version: 2,
+    load: () => require("../../../assets/medals/france/456-le-plessis-trevise-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mons-en-bar-ul-v1", cityId: "mons-en-bar-ul-fr",
+    cityName: { en: "Mons-en-Barœul", fr: "Mons-en-Barœul" },
+    cityZoneId: "relation/58583", inseeCode: "59410",
+    medalCount: 10, population: 21105, rank: 457, version: 2,
+    load: () => require("../../../assets/medals/france/457-mons-en-bar-ul-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "plaisance-du-touch-v1", cityId: "plaisance-du-touch-fr",
+    cityName: { en: "Plaisance-du-Touch", fr: "Plaisance-du-Touch" },
+    cityZoneId: "relation/158886", inseeCode: "31424",
+    medalCount: 10, population: 21079, rank: 458, version: 2,
+    load: () => require("../../../assets/medals/france/458-plaisance-du-touch-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "saint-mande-v1", cityId: "saint-mande-fr",
+    cityName: { en: "Saint-Mandé", fr: "Saint-Mandé" },
+    cityZoneId: "relation/108318", inseeCode: "94067",
+    medalCount: 10, population: 21071, rank: 459, version: 2,
+    load: () => require("../../../assets/medals/france/459-saint-mande-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bourg-la-reine-v1", cityId: "bourg-la-reine-fr",
+    cityName: { en: "Bourg-la-Reine", fr: "Bourg-la-Reine" },
+    cityZoneId: "relation/37041", inseeCode: "92014",
+    medalCount: 10, population: 21019, rank: 460, version: 2,
+    load: () => require("../../../assets/medals/france/460-bourg-la-reine-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "villeneuve-le-roi-v1", cityId: "villeneuve-le-roi-fr",
+    cityName: { en: "Villeneuve-le-Roi", fr: "Villeneuve-le-Roi" },
+    cityZoneId: "relation/102242", inseeCode: "94077",
+    medalCount: 10, population: 21000, rank: 461, version: 2,
+    load: () => require("../../../assets/medals/france/461-villeneuve-le-roi-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "carquefou-v1", cityId: "carquefou-fr",
+    cityName: { en: "Carquefou", fr: "Carquefou" },
+    cityZoneId: "relation/68336", inseeCode: "44026",
+    medalCount: 10, population: 20921, rank: 462, version: 2,
+    load: () => require("../../../assets/medals/france/462-carquefou-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sceaux-v1", cityId: "sceaux-fr",
+    cityName: { en: "Sceaux", fr: "Sceaux" },
+    cityZoneId: "relation/28069", inseeCode: "92071",
+    medalCount: 10, population: 20884, rank: 463, version: 2,
+    load: () => require("../../../assets/medals/france/463-sceaux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "concarneau-v1", cityId: "concarneau-fr",
+    cityName: { en: "Concarneau", fr: "Concarneau" },
+    cityZoneId: "relation/166492", inseeCode: "29039",
+    medalCount: 10, population: 20845, rank: 464, version: 2,
+    load: () => require("../../../assets/medals/france/464-concarneau-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chaumont-v1", cityId: "chaumont-fr",
+    cityName: { en: "Chaumont", fr: "Chaumont" },
+    cityZoneId: "relation/904595", inseeCode: "52121",
+    medalCount: 10, population: 20827, rank: 465, version: 2,
+    load: () => require("../../../assets/medals/france/465-chaumont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lingolsheim-v1", cityId: "lingolsheim-fr",
+    cityName: { en: "Lingolsheim", fr: "Lingolsheim" },
+    cityZoneId: "relation/71030", inseeCode: "67267",
+    medalCount: 10, population: 20826, rank: 466, version: 2,
+    load: () => require("../../../assets/medals/france/466-lingolsheim-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "carrieres-sous-poissy-v1", cityId: "carrieres-sous-poissy-fr",
+    cityName: { en: "Carrières-sous-Poissy", fr: "Carrières-sous-Poissy" },
+    cityZoneId: "relation/911061", inseeCode: "78123",
+    medalCount: 10, population: 20825, rank: 467, version: 2,
+    load: () => require("../../../assets/medals/france/467-carrieres-sous-poissy-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "coudekerque-branche-v1", cityId: "coudekerque-branche-fr",
+    cityName: { en: "Coudekerque-Branche", fr: "Coudekerque-Branche" },
+    cityZoneId: "relation/139636", inseeCode: "59155",
+    medalCount: 10, population: 20787, rank: 468, version: 2,
+    load: () => require("../../../assets/medals/france/468-coudekerque-branche-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "wasquehal-v1", cityId: "wasquehal-fr",
+    cityName: { en: "Wasquehal", fr: "Wasquehal" },
+    cityZoneId: "relation/59041", inseeCode: "59646",
+    medalCount: 10, population: 20726, rank: 469, version: 2,
+    load: () => require("../../../assets/medals/france/469-wasquehal-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "halluin-v1", cityId: "halluin-fr",
+    cityName: { en: "Halluin", fr: "Halluin" },
+    cityZoneId: "relation/59877", inseeCode: "59279",
+    medalCount: 10, population: 20715, rank: 470, version: 2,
+    load: () => require("../../../assets/medals/france/470-halluin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-chapelle-sur-erdre-v1", cityId: "la-chapelle-sur-erdre-fr",
+    cityName: { en: "La Chapelle-sur-Erdre", fr: "La Chapelle-sur-Erdre" },
+    cityZoneId: "relation/73554", inseeCode: "44035",
+    medalCount: 10, population: 20690, rank: 471, version: 2,
+    load: () => require("../../../assets/medals/france/471-la-chapelle-sur-erdre-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "denain-v1", cityId: "denain-fr",
+    cityName: { en: "Denain", fr: "Denain" },
+    cityZoneId: "relation/53825", inseeCode: "59172",
+    medalCount: 10, population: 20665, rank: 472, version: 2,
+    load: () => require("../../../assets/medals/france/472-denain-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cugnaux-v1", cityId: "cugnaux-fr",
+    cityName: { en: "Cugnaux", fr: "Cugnaux" },
+    cityZoneId: "relation/79480", inseeCode: "31157",
+    medalCount: 10, population: 20662, rank: 473, version: 2,
+    load: () => require("../../../assets/medals/france/473-cugnaux-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "maurepas-v1", cityId: "maurepas-fr",
+    cityName: { en: "Maurepas", fr: "Maurepas" },
+    cityZoneId: "relation/49717", inseeCode: "78383",
+    medalCount: 10, population: 20629, rank: 474, version: 2,
+    load: () => require("../../../assets/medals/france/474-maurepas-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chaville-v1", cityId: "chaville-fr",
+    cityName: { en: "Chaville", fr: "Chaville" },
+    cityZoneId: "relation/31339", inseeCode: "92022",
+    medalCount: 10, population: 20594, rank: 475, version: 2,
+    load: () => require("../../../assets/medals/france/475-chaville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "croix-v1", cityId: "croix-fr",
+    cityName: { en: "Croix", fr: "Croix" },
+    cityZoneId: "relation/58677", inseeCode: "59163",
+    medalCount: 10, population: 20566, rank: 476, version: 2,
+    load: () => require("../../../assets/medals/france/476-croix-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bouguenais-v1", cityId: "bouguenais-fr",
+    cityName: { en: "Bouguenais", fr: "Bouguenais" },
+    cityZoneId: "relation/65561", inseeCode: "44020",
+    medalCount: 10, population: 20530, rank: 477, version: 2,
+    load: () => require("../../../assets/medals/france/477-bouguenais-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "joinville-le-pont-v1", cityId: "joinville-le-pont-fr",
+    cityName: { en: "Joinville-le-Pont", fr: "Joinville-le-Pont" },
+    cityZoneId: "relation/109400", inseeCode: "94042",
+    medalCount: 10, population: 20525, rank: 478, version: 2,
+    load: () => require("../../../assets/medals/france/478-joinville-le-pont-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "le-creusot-v1", cityId: "le-creusot-fr",
+    cityName: { en: "Le Creusot", fr: "Le Creusot" },
+    cityZoneId: "relation/2086964", inseeCode: "71153",
+    medalCount: 10, population: 20509, rank: 479, version: 2,
+    load: () => require("../../../assets/medals/france/479-le-creusot-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "forbach-v1", cityId: "forbach-fr",
+    cityName: { en: "Forbach", fr: "Forbach" },
+    cityZoneId: "relation/1162548", inseeCode: "57227",
+    medalCount: 10, population: 20493, rank: 480, version: 2,
+    load: () => require("../../../assets/medals/france/480-forbach-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "la-celle-saint-cloud-v1", cityId: "la-celle-saint-cloud-fr",
+    cityName: { en: "La Celle-Saint-Cloud", fr: "La Celle-Saint-Cloud" },
+    cityZoneId: "relation/413447", inseeCode: "78126",
+    medalCount: 10, population: 20460, rank: 481, version: 2,
+    load: () => require("../../../assets/medals/france/481-la-celle-saint-cloud-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mitry-mory-v1", cityId: "mitry-mory-fr",
+    cityName: { en: "Mitry-Mory", fr: "Mitry-Mory" },
+    cityZoneId: "relation/79338", inseeCode: "77294",
+    medalCount: 10, population: 20456, rank: 482, version: 2,
+    load: () => require("../../../assets/medals/france/482-mitry-mory-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chilly-mazarin-v1", cityId: "chilly-mazarin-fr",
+    cityName: { en: "Chilly-Mazarin", fr: "Chilly-Mazarin" },
+    cityZoneId: "relation/395443", inseeCode: "91161",
+    medalCount: 10, population: 20443, rank: 483, version: 2,
+    load: () => require("../../../assets/medals/france/483-chilly-mazarin-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "beaune-v1", cityId: "beaune-fr",
+    cityName: { en: "Beaune", fr: "Beaune" },
+    cityZoneId: "relation/74091", inseeCode: "21054",
+    medalCount: 10, population: 20352, rank: 484, version: 2,
+    load: () => require("../../../assets/medals/france/484-beaune-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "lannion-v1", cityId: "lannion-fr",
+    cityName: { en: "Lannion", fr: "Lannion" },
+    cityZoneId: "relation/409309", inseeCode: "22113",
+    medalCount: 10, population: 20315, rank: 485, version: 2,
+    load: () => require("../../../assets/medals/france/485-lannion-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "fougeres-v1", cityId: "fougeres-fr",
+    cityName: { en: "Fougères", fr: "Fougères" },
+    cityZoneId: "relation/163995", inseeCode: "35115",
+    medalCount: 10, population: 20307, rank: 486, version: 2,
+    load: () => require("../../../assets/medals/france/486-fougeres-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "l-isle-sur-la-sorgue-v1", cityId: "l-isle-sur-la-sorgue-fr",
+    cityName: { en: "L'Isle-sur-la-Sorgue", fr: "L'Isle-sur-la-Sorgue" },
+    cityZoneId: "relation/108057", inseeCode: "84054",
+    medalCount: 10, population: 20244, rank: 487, version: 2,
+    load: () => require("../../../assets/medals/france/487-l-isle-sur-la-sorgue-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "grande-synthe-v1", cityId: "grande-synthe-fr",
+    cityName: { en: "Grande-Synthe", fr: "Grande-Synthe" },
+    cityZoneId: "relation/139537", inseeCode: "59271",
+    medalCount: 10, population: 20239, rank: 488, version: 2,
+    load: () => require("../../../assets/medals/france/488-grande-synthe-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "mont-saint-aignan-v1", cityId: "mont-saint-aignan-fr",
+    cityName: { en: "Mont-Saint-Aignan", fr: "Mont-Saint-Aignan" },
+    cityZoneId: "relation/102870", inseeCode: "76451",
+    medalCount: 10, population: 20165, rank: 489, version: 2,
+    load: () => require("../../../assets/medals/france/489-mont-saint-aignan-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "sarreguemines-v1", cityId: "sarreguemines-fr",
+    cityName: { en: "Sarreguemines", fr: "Sarreguemines" },
+    cityZoneId: "relation/90243", inseeCode: "57631",
+    medalCount: 10, population: 20143, rank: 490, version: 2,
+    load: () => require("../../../assets/medals/france/490-sarreguemines-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cahors-v1", cityId: "cahors-fr",
+    cityName: { en: "Cahors", fr: "Cahors" },
+    cityZoneId: "relation/122324", inseeCode: "46042",
+    medalCount: 10, population: 20050, rank: 491, version: 2,
+    load: () => require("../../../assets/medals/france/491-cahors-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bruges-v1", cityId: "bruges-fr",
+    cityName: { en: "Bruges", fr: "Bruges" },
+    cityZoneId: "relation/105271", inseeCode: "33075",
+    medalCount: 10, population: 20020, rank: 492, version: 2,
+    load: () => require("../../../assets/medals/france/492-bruges-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bourg-les-valence-v1", cityId: "bourg-les-valence-fr",
+    cityName: { en: "Bourg-lès-Valence", fr: "Bourg-lès-Valence" },
+    cityZoneId: "relation/63570", inseeCode: "26058",
+    medalCount: 10, population: 19992, rank: 493, version: 2,
+    load: () => require("../../../assets/medals/france/493-bourg-les-valence-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "albertville-v1", cityId: "albertville-fr",
+    cityName: { en: "Albertville", fr: "Albertville" },
+    cityZoneId: "relation/111528", inseeCode: "73011",
+    medalCount: 10, population: 19978, rank: 494, version: 2,
+    load: () => require("../../../assets/medals/france/494-albertville-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "bressuire-v1", cityId: "bressuire-fr",
+    cityName: { en: "Bressuire", fr: "Bressuire" },
+    cityZoneId: "relation/337985", inseeCode: "79049",
+    medalCount: 10, population: 19970, rank: 495, version: 2,
+    load: () => require("../../../assets/medals/france/495-bressuire-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "gentilly-v1", cityId: "gentilly-fr",
+    cityName: { en: "Gentilly", fr: "Gentilly" },
+    cityZoneId: "relation/104479", inseeCode: "94037",
+    medalCount: 10, population: 19963, rank: 496, version: 2,
+    load: () => require("../../../assets/medals/france/496-gentilly-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "cournon-d-auvergne-v1", cityId: "cournon-d-auvergne-fr",
+    cityName: { en: "Cournon-d'Auvergne", fr: "Cournon-d'Auvergne" },
+    cityZoneId: "relation/135795", inseeCode: "63124",
+    medalCount: 10, population: 19951, rank: 497, version: 2,
+    load: () => require("../../../assets/medals/france/497-cournon-d-auvergne-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "vence-v1", cityId: "vence-fr",
+    cityName: { en: "Vence", fr: "Vence" },
+    cityZoneId: "relation/78855", inseeCode: "06157",
+    medalCount: 10, population: 19917, rank: 498, version: 2,
+    load: () => require("../../../assets/medals/france/498-vence-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "macouria-v1", cityId: "macouria-fr",
+    cityName: { en: "Macouria", fr: "Macouria" },
+    cityZoneId: "relation/1663795", inseeCode: "97305",
+    medalCount: 10, population: 19899, rank: 499, version: 2,
+    load: () => require("../../../assets/medals/france/499-macouria-v1.json") as MedalAlbumDefinition
+  },
+  {
+    albumId: "chevilly-larue-v1", cityId: "chevilly-larue-fr",
+    cityName: { en: "Chevilly-Larue", fr: "Chevilly-Larue" },
+    cityZoneId: "relation/34679", inseeCode: "94021",
+    medalCount: 10, population: 19826, rank: 500, version: 2,
+    load: () => require("../../../assets/medals/france/500-chevilly-larue-v1.json") as MedalAlbumDefinition
   }
 ];

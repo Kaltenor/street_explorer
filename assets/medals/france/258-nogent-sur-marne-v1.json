@@ -1,0 +1,204 @@
+{
+  "id": "nogent-sur-marne-v1",
+  "cityId": "nogent-sur-marne-fr",
+  "cityZoneId": "relation/109361",
+  "cityName": {
+    "en": "Nogent-sur-Marne",
+    "fr": "Nogent-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Beauté-sur-Marne is an important witness to the city's history.",
+        "fr": "château français situé à Nogent-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2240223",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-chateau-de-beaute-sur-marne-q2240223",
+      "latitude": 48.831944444,
+      "longitude": 2.471111111,
+      "name": {
+        "en": "château de Beauté-sur-Marne",
+        "fr": "château de Beauté-sur-Marne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Faulotte is an important witness to the city's history.",
+        "fr": "ancien hôtel particulier situé sur la commune de Nogent-sur-Marne, dans le département du Val-de-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2971218",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-chateau-de-la-faulotte-q2971218",
+      "latitude": 48.83676,
+      "longitude": 2.48689,
+      "name": {
+        "en": "château de la Faulotte",
+        "fr": "château de la Faulotte"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "ancien château de Nogent-sur-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q28493745",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-chateau-de-plaisance-q28493745",
+      "latitude": 48.8367,
+      "longitude": 2.4825,
+      "name": {
+        "en": "château de Plaisance",
+        "fr": "château de Plaisance"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château Smith-Champion is an important witness to the city's history.",
+        "fr": "château à Nogent-sur-Marne (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q2967996",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-chateau-smith-champion-q2967996",
+      "latitude": 48.836,
+      "longitude": 2.487,
+      "name": {
+        "en": "château Smith-Champion",
+        "fr": "château Smith-Champion"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Saturnin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Saturnin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079894",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nogent-sur-marne-eglise-saint-saturnin-pa00079894",
+      "latitude": 48.8371655119725,
+      "longitude": 2.48751125133793,
+      "name": {
+        "en": "Église Saint-Saturnin",
+        "fr": "Église Saint-Saturnin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "MABA is one of the city's notable cultural landmarks.",
+        "fr": "centre d'art contemporain dédié au graphisme et à la photographie"
+      },
+      "externalIdentity": {
+        "id": "Q3280136",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-maba-q3280136",
+      "latitude": 48.836144,
+      "longitude": 2.486986,
+      "name": {
+        "en": "MABA",
+        "fr": "MABA"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée is one of the city's notable cultural landmarks.",
+        "fr": "musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0427",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "nogent-sur-marne-musee-m0427",
+      "latitude": 48.84026,
+      "longitude": 2.484292,
+      "name": {
+        "en": "musée",
+        "fr": "musée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q592514",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-nogent-le-perreux-q592514",
+      "latitude": 48.83861,
+      "longitude": 2.49417,
+      "name": {
+        "en": "Nogent - Le Perreux",
+        "fr": "Nogent - Le Perreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Nogent-sur-Marne, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2329670",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-marne-nogent-sur-marne-q2329670",
+      "latitude": 48.835151,
+      "longitude": 2.471766,
+      "name": {
+        "en": "Nogent-sur-Marne",
+        "fr": "Nogent-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pavillon Baltard is a distinctive architectural landmark in the city.",
+        "fr": "Pavillon Baltard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079895",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nogent-sur-marne-pavillon-baltard-pa00079895",
+      "latitude": 48.8329059312374,
+      "longitude": 2.47523753598777,
+      "name": {
+        "en": "Pavillon Baltard",
+        "fr": "Pavillon Baltard"
+      }
+    }
+  ]
+}

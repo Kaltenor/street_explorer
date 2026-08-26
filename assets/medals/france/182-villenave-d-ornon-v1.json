@@ -1,0 +1,204 @@
+{
+  "id": "villenave-d-ornon-v1",
+  "cityId": "villenave-d-ornon-fr",
+  "cityZoneId": "relation/105273",
+  "cityName": {
+    "en": "Villenave-d'Ornon",
+    "fr": "Villenave-d'Ornon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château Carbonnieux is an important witness to the city's history.",
+        "fr": "château et domaine viticole français"
+      },
+      "externalIdentity": {
+        "id": "Q2967865",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-chateau-carbonnieux-q2967865",
+      "latitude": 44.74533,
+      "longitude": -0.56894,
+      "name": {
+        "en": "château Carbonnieux",
+        "fr": "château Carbonnieux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Sallegourde is an important witness to the city's history.",
+        "fr": "Château de Sallegourde est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villenave-d-ornon-chateau-de-sallegourde-pa33000064",
+      "latitude": 44.7703202453718,
+      "longitude": -0.55326341043938,
+      "name": {
+        "en": "Château de Sallegourde",
+        "fr": "Château de Sallegourde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q3046649",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-eau-blanche-q3046649",
+      "latitude": 44.776666666,
+      "longitude": -0.515555555,
+      "name": {
+        "en": "Eau Blanche",
+        "fr": "Eau Blanche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église à Villenave-d'Ornon (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q22920396",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-eglise-saint-martin-de-villenave-d-ornon-q22920396",
+      "latitude": 44.771624,
+      "longitude": -0.541876,
+      "name": {
+        "en": "église Saint-Martin de Villenave-d'Ornon",
+        "fr": "église Saint-Martin de Villenave-d'Ornon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083863",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villenave-d-ornon-eglise-saint-martin-pa00083863",
+      "latitude": 44.7715977760668,
+      "longitude": -0.541895235037323,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38515480",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-eglise-sainte-jeanne-de-lestonnac-de-chambery-q38515480",
+      "latitude": 44.76444,
+      "longitude": -0.5844,
+      "name": {
+        "en": "église Sainte-Jeanne-de-Lestonnac de Chambéry",
+        "fr": "église Sainte-Jeanne-de-Lestonnac de Chambéry"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "lake in Villenave-d'Ornon, France",
+        "fr": "lac Versein compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q107310773",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-lac-versein-q107310773",
+      "latitude": 44.77298,
+      "longitude": -0.58157,
+      "name": {
+        "en": "lac Versein",
+        "fr": "lac Versein"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Gironde department, France",
+        "fr": "monument aux morts de la Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-monument-aux-morts-du-vieux-bourg-de-villenave-d-ornon-q136097053",
+      "latitude": 44.7695964,
+      "longitude": -0.5443979,
+      "name": {
+        "en": "monument aux morts du vieux bourg de Villenave-d'Ornon",
+        "fr": "monument aux morts du vieux bourg de Villenave-d'Ornon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Villenave-d'Ornon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-villenave-centre-pont-de-la-maye-q98573093",
+      "latitude": 44.782392,
+      "longitude": -0.566213,
+      "name": {
+        "en": "Villenave-Centre Pont de la Maye",
+        "fr": "Villenave-Centre Pont de la Maye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Gironde, France",
+        "fr": "commune française du département de la Gironde"
+      },
+      "externalIdentity": {
+        "id": "Q235733",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villenave-d-ornon-villenave-d-ornon-q235733",
+      "latitude": 44.779444444,
+      "longitude": -0.566944444,
+      "name": {
+        "en": "Villenave-d'Ornon",
+        "fr": "Villenave-d'Ornon"
+      }
+    }
+  ]
+}

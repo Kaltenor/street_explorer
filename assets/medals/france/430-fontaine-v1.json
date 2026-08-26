@@ -1,0 +1,204 @@
+{
+  "id": "fontaine-v1",
+  "cityId": "fontaine-fr",
+  "cityZoneId": "relation/90862",
+  "cityName": {
+    "en": "Fontaine",
+    "fr": "Fontaine"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Rochette is an important witness to the city's history.",
+        "fr": "château français situé à Fontaine"
+      },
+      "externalIdentity": {
+        "id": "Q86681160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-chateau-de-la-rochette-q86681160",
+      "latitude": 45.19505,
+      "longitude": 5.67325,
+      "name": {
+        "en": "château de la Rochette",
+        "fr": "château de la Rochette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Isère, in France",
+        "fr": "cimetière situé en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110346370",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-cimetiere-de-la-poya-q110346370",
+      "latitude": 45.1928,
+      "longitude": 5.6763,
+      "name": {
+        "en": "cimetière de La Poya",
+        "fr": "cimetière de La Poya"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38370450",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-eglise-de-la-nativite-de-la-poyat-q38370450",
+      "latitude": 45.19331,
+      "longitude": 5.67588,
+      "name": {
+        "en": "église de la Nativité de la Poyat",
+        "fr": "église de la Nativité de la Poyat"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "commune in Isère, France",
+        "fr": "commune française du département de l'Isère"
+      },
+      "externalIdentity": {
+        "id": "Q838235",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-fontaine-q838235",
+      "latitude": 45.193055555,
+      "longitude": 5.684722222,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Poya is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Grenoble"
+      },
+      "externalIdentity": {
+        "id": "Q110630413",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-la-poya-q110630413",
+      "latitude": 45.197045945,
+      "longitude": 5.672348427,
+      "name": {
+        "en": "La Poya",
+        "fr": "La Poya"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Louis Maisonnat is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Grenoble"
+      },
+      "externalIdentity": {
+        "id": "Q110630427",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-louis-maisonnat-q110630427",
+      "latitude": 45.189205769,
+      "longitude": 5.694303621,
+      "name": {
+        "en": "Louis Maisonnat",
+        "fr": "Louis Maisonnat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Isère department, France",
+        "fr": "siège municipal de Fontaine, en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119309652",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-mairie-de-fontaine-q119309652",
+      "latitude": 45.191801483,
+      "longitude": 5.688230552,
+      "name": {
+        "en": "mairie de Fontaine",
+        "fr": "mairie de Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pont du Drac is a distinctive architectural landmark in the city.",
+        "fr": "pont à Grenoble"
+      },
+      "externalIdentity": {
+        "id": "Q65126347",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-pont-du-drac-q65126347",
+      "latitude": 45.189034942,
+      "longitude": 5.701708695,
+      "name": {
+        "en": "pont du Drac",
+        "fr": "pont du Drac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397503",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-pont-du-vercors-q3397503",
+      "latitude": 45.1925,
+      "longitude": 5.70139,
+      "name": {
+        "en": "pont du Vercors",
+        "fr": "pont du Vercors"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396523",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "fontaine-pont-esclangon-q3396523",
+      "latitude": 45.1894,
+      "longitude": 5.70139,
+      "name": {
+        "en": "pont Esclangon",
+        "fr": "pont Esclangon"
+      }
+    }
+  ]
+}

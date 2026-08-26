@@ -1,0 +1,204 @@
+{
+  "id": "bruay-la-buissiere-v1",
+  "cityId": "bruay-la-buissiere-fr",
+  "cityZoneId": "relation/1140615",
+  "cityName": {
+    "en": "Bruay-la-Buissière",
+    "fr": "Bruay-la-Buissière"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bruay-la-Buissière, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q24700623",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-bruay-en-artois-q24700623",
+      "latitude": 50.476136,
+      "longitude": 2.557657,
+      "name": {
+        "en": "Bruay-en-Artois",
+        "fr": "Bruay-en-Artois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Pas-de-Calais, in France",
+        "fr": "chapelle située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38506005",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-chapelle-sainte-barbe-de-bruay-la-buissiere-q38506005",
+      "latitude": 50.482466,
+      "longitude": 2.54744,
+      "name": {
+        "en": "chapelle Sainte-Barbe de Bruay-la-Buissière",
+        "fr": "chapelle Sainte-Barbe de Bruay-la-Buissière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Buissière is an important witness to the city's history.",
+        "fr": "Château de la Buissière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108239",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruay-la-buissiere-chateau-de-la-buissiere-pa00108239",
+      "latitude": 50.4923058872222,
+      "longitude": 2.55982630645658,
+      "name": {
+        "en": "Château de la Buissière",
+        "fr": "Château de la Buissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Pas-de-Calais, in France",
+        "fr": "église située dans le Pas-de-Calais, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38643537",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-eglise-saint-joseph-de-bruay-la-buissiere-q38643537",
+      "latitude": 50.46959,
+      "longitude": 2.55939,
+      "name": {
+        "en": "église Saint-Joseph de Bruay-la-Buissière",
+        "fr": "église Saint-Joseph de Bruay-la-Buissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruay-la-buissiere-eglise-saint-martin-pa62000034",
+      "latitude": 50.4897815650547,
+      "longitude": 2.5654885976023,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville de Bruay-la-Buissière is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de ville à Bruay-la-Buissière (Pas-de-Calais)"
+      },
+      "externalIdentity": {
+        "id": "Q22997377",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-hotel-de-ville-de-bruay-la-buissiere-q22997377",
+      "latitude": 50.482168,
+      "longitude": 2.545585,
+      "name": {
+        "en": "hôtel de ville de Bruay-la-Buissière",
+        "fr": "hôtel de ville de Bruay-la-Buissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000007",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruay-la-buissiere-hotel-de-ville-pa62000007",
+      "latitude": 50.48210290671361,
+      "longitude": 2.5457836965757,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town in Bruay-la-Buissière",
+        "fr": "village de Bruay-la-Buissière"
+      },
+      "externalIdentity": {
+        "id": "Q18397104",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-labuissiere-q18397104",
+      "latitude": 50.4897,
+      "longitude": 2.56556,
+      "name": {
+        "en": "Labuissière",
+        "fr": "Labuissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "piscine Roger-Salengro de Bruay-la-Buissière is a distinctive architectural landmark in the city.",
+        "fr": "piscine à Bruay-la-Buissière"
+      },
+      "externalIdentity": {
+        "id": "Q24933940",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bruay-la-buissiere-piscine-roger-salengro-de-bruay-la-buissiere-q24933940",
+      "latitude": 50.47277,
+      "longitude": 2.54114,
+      "name": {
+        "en": "piscine Roger-Salengro de Bruay-la-Buissière",
+        "fr": "piscine Roger-Salengro de Bruay-la-Buissière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Stade-parc et école de natation is a distinctive architectural landmark in the city.",
+        "fr": "Stade-parc et école de natation est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA62000008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bruay-la-buissiere-stade-parc-et-ecole-de-natation-pa62000008",
+      "latitude": 50.4714522541818,
+      "longitude": 2.54066981982154,
+      "name": {
+        "en": "Stade-parc et école de natation",
+        "fr": "Stade-parc et école de natation"
+      }
+    }
+  ]
+}

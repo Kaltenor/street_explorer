@@ -1,0 +1,204 @@
+{
+  "id": "ales-v1",
+  "cityId": "ales-fr",
+  "cityZoneId": "relation/76009",
+  "cityName": {
+    "en": "Alès",
+    "fr": "Alès"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Alès, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095618",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ales-ales-q3095618",
+      "latitude": 44.128024,
+      "longitude": 4.084916,
+      "name": {
+        "en": "Alès",
+        "fr": "Alès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102948",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ales-ancien-cathedrale-saint-jean-baptiste-pa00102948",
+      "latitude": 44.1235511704635,
+      "longitude": 4.07661871399862,
+      "name": {
+        "en": "Ancien cathédrale Saint-Jean-Baptiste",
+        "fr": "Ancien cathédrale Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien citadelle is an important witness to the city's history.",
+        "fr": "Ancien citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102949",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ales-ancien-citadelle-pa00102949",
+      "latitude": 44.1258330293644,
+      "longitude": 4.07446340702302,
+      "name": {
+        "en": "Ancien citadelle",
+        "fr": "Ancien citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102952",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ales-ancien-palais-episcopal-pa00102952",
+      "latitude": 44.1241298485048,
+      "longitude": 4.07773204103622,
+      "name": {
+        "en": "Ancien palais épiscopal",
+        "fr": "Ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort d'Alès is an important witness to the city's history.",
+        "fr": "fort à Alès (Gard)"
+      },
+      "externalIdentity": {
+        "id": "Q3078123",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ales-fort-d-ales-q3078123",
+      "latitude": 44.1258,
+      "longitude": 4.07492,
+      "name": {
+        "en": "fort d'Alès",
+        "fr": "fort d'Alès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102950",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ales-hotel-de-ville-pa00102950",
+      "latitude": 44.1251008648626,
+      "longitude": 4.07754345292587,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Mine témoin d'Alès is one of the city's notable cultural landmarks.",
+        "fr": "ancien site minier visitable du Gard (Cévennes)"
+      },
+      "externalIdentity": {
+        "id": "Q3314860",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ales-mine-temoin-d-ales-q3314860",
+      "latitude": 44.1319,
+      "longitude": 4.06632,
+      "name": {
+        "en": "Mine témoin d'Alès",
+        "fr": "Mine témoin d'Alès"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée-bibliothèque Pierre-André Benoit is one of the city's notable cultural landmarks.",
+        "fr": "musée-bibliothèque Pierre-André Benoit compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0448",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ales-musee-bibliotheque-pierre-andre-benoit-m0448",
+      "latitude": 44.130014,
+      "longitude": 4.070265,
+      "name": {
+        "en": "musée-bibliothèque Pierre-André Benoit",
+        "fr": "musée-bibliothèque Pierre-André Benoit"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du Colombier is one of the city's notable cultural landmarks.",
+        "fr": "musée du Colombier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0449",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ales-musee-du-colombier-m0449",
+      "latitude": 44.129352,
+      "longitude": 4.080982,
+      "name": {
+        "en": "musée du Colombier",
+        "fr": "musée du Colombier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q7136395",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ales-parc-de-la-tour-vieille-q7136395",
+      "latitude": 44.1117,
+      "longitude": 4.079,
+      "name": {
+        "en": "parc de la Tour Vieille",
+        "fr": "parc de la Tour Vieille"
+      }
+    }
+  ]
+}

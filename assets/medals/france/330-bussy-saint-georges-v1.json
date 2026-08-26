@@ -1,0 +1,204 @@
+{
+  "id": "bussy-saint-georges-v1",
+  "cityId": "bussy-saint-georges-fr",
+  "cityZoneId": "relation/403039",
+  "cityName": {
+    "en": "Bussy-Saint-Georges",
+    "fr": "Bussy-Saint-Georges"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2181033",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-bussy-saint-georges-q2181033",
+      "latitude": 48.836389,
+      "longitude": 2.709444,
+      "name": {
+        "en": "Bussy-Saint-Georges",
+        "fr": "Bussy-Saint-Georges"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château du Génitoy is an important witness to the city's history.",
+        "fr": "château à Bussy-Saint-Georges (Seine-et-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22980508",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-chateau-du-genitoy-q22980508",
+      "latitude": 48.8363,
+      "longitude": 2.7301,
+      "name": {
+        "en": "château du Génitoy",
+        "fr": "château du Génitoy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "colombier du château de Bussy-Saint-Georges is an important witness to the city's history.",
+        "fr": "colombier à Bussy-Saint-Georges (Seine-et-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22922355",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-colombier-du-chateau-de-bussy-saint-georges-q22922355",
+      "latitude": 48.8438,
+      "longitude": 2.6975,
+      "name": {
+        "en": "colombier du château de Bussy-Saint-Georges",
+        "fr": "colombier du château de Bussy-Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "thoroughfare in Bussy-Saint-Georges, France",
+        "fr": "cour de Bussy-Saint-Georges, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135093726",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-cour-du-pont-rene-q135093726",
+      "latitude": 48.8376655,
+      "longitude": 2.7009417,
+      "name": {
+        "en": "cour du Pont René",
+        "fr": "cour du Pont René"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du Génitoy is an important witness to the city's history.",
+        "fr": "Domaine du Génitoy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA77000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bussy-saint-georges-domaine-du-genitoy-pa77000001",
+      "latitude": 48.8370444873752,
+      "longitude": 2.72925029123711,
+      "name": {
+        "en": "Domaine du Génitoy",
+        "fr": "Domaine du Génitoy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Bussy-Saint-Georges, France",
+        "fr": "édifice religieux catholique à Bussy-Saint-Georges, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38395509",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-eglise-notre-dame-du-val-de-bussy-saint-georges-q38395509",
+      "latitude": 48.8398,
+      "longitude": 2.71619,
+      "name": {
+        "en": "église Notre-Dame-du-Val de Bussy-Saint-Georges",
+        "fr": "église Notre-Dame-du-Val de Bussy-Saint-Georges"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136048870",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-monument-aux-morts-de-bussy-saint-georges-q136048870",
+      "latitude": 48.842067,
+      "longitude": 2.701289,
+      "name": {
+        "en": "monument aux morts de Bussy-Saint-Georges",
+        "fr": "monument aux morts de Bussy-Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "moulin Russon is a distinctive architectural landmark in the city.",
+        "fr": "moulin situé à Bussy-Saint-Georges"
+      },
+      "externalIdentity": {
+        "id": "Q3325591",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-moulin-russon-q3325591",
+      "latitude": 48.843,
+      "longitude": 2.69134,
+      "name": {
+        "en": "moulin Russon",
+        "fr": "moulin Russon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour-pigeonnier is an important witness to the city's history.",
+        "fr": "Tour-pigeonnier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00086842",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bussy-saint-georges-tour-pigeonnier-pa00086842",
+      "latitude": 48.8437349258251,
+      "longitude": 2.69755436162732,
+      "name": {
+        "en": "Tour-pigeonnier",
+        "fr": "Tour-pigeonnier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "thoroughfare in Bussy-Saint-Georges, France",
+        "fr": "sente de Bussy-Saint-Georges, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135094019",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bussy-saint-georges-sente-du-pont-couve-q135094019",
+      "latitude": 48.8385677,
+      "longitude": 2.7002948,
+      "name": {
+        "en": "sente du Pont Couvé",
+        "fr": "sente du Pont Couvé"
+      }
+    }
+  ]
+}

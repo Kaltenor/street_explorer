@@ -1,0 +1,204 @@
+{
+  "id": "lannion-v1",
+  "cityId": "lannion-fr",
+  "cityZoneId": "relation/409309",
+  "cityName": {
+    "en": "Lannion",
+    "fr": "Lannion"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Roch is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Roch est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089278",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-chapelle-saint-roch-pa00089278",
+      "latitude": 48.741944858449,
+      "longitude": -3.46951131311113,
+      "name": {
+        "en": "Chapelle Saint-Roch",
+        "fr": "Chapelle Saint-Roch"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Kerivon is an important witness to the city's history.",
+        "fr": "Château de Kerivon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089280",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-chateau-de-kerivon-pa00089280",
+      "latitude": 48.7296686493473,
+      "longitude": -3.42741199744164,
+      "name": {
+        "en": "Château de Kerivon",
+        "fr": "Château de Kerivon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Deux maisons à pans de bois is a distinctive architectural landmark in the city.",
+        "fr": "Deux maisons à pans de bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089267",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-deux-maisons-a-pans-de-bois-pa00089267",
+      "latitude": 48.731072680616,
+      "longitude": -3.45665188723885,
+      "name": {
+        "en": "Deux maisons à pans de bois",
+        "fr": "Deux maisons à pans de bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Trinité de Brélévenez is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Trinité de Brélévenez est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089279",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-eglise-de-la-trinite-de-brelevenez-pa00089279",
+      "latitude": 48.7360189885317,
+      "longitude": -3.45855462894516,
+      "name": {
+        "en": "Église de la Trinité de Brélévenez",
+        "fr": "Église de la Trinité de Brélévenez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-du-Baly is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-du-Baly est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089266",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-eglise-saint-jean-du-baly-pa00089266",
+      "latitude": 48.7325767804935,
+      "longitude": -3.4601326529556,
+      "name": {
+        "en": "Église Saint-Jean-du-Baly",
+        "fr": "Église Saint-Jean-du-Baly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des Cinq-Plaies is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des Cinq-Plaies compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089286",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-fontaine-des-cinq-plaies-pa00089286",
+      "latitude": 48.7454619611747,
+      "longitude": -3.48662036338717,
+      "name": {
+        "en": "Fontaine des Cinq-Plaies",
+        "fr": "Fontaine des Cinq-Plaies"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Yvi de Loguivy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Yvi de Loguivy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089309",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-eglise-saint-yvi-de-loguivy-pa00089309",
+      "latitude": 48.7356161567849,
+      "longitude": -3.4827239241436,
+      "name": {
+        "en": "Église Saint-Yvi de Loguivy",
+        "fr": "Église Saint-Yvi de Loguivy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089270",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-immeuble-pa00089270",
+      "latitude": 48.731575955832,
+      "longitude": -3.4600312786499905,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du 16e siècle, dite Maison du Chapelier is a distinctive architectural landmark in the city.",
+        "fr": "Maison du 16e siècle, dite Maison du Chapelier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089273",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-maison-du-16e-siecle-dite-maison-du-chapelier-pa00089273",
+      "latitude": 48.7320989175017,
+      "longitude": -3.45813321083517,
+      "name": {
+        "en": "Maison du 16e siècle, dite Maison du Chapelier",
+        "fr": "Maison du 16e siècle, dite Maison du Chapelier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Manoir de Langonaval is a distinctive architectural landmark in the city.",
+        "fr": "Manoir de Langonaval est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089277",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lannion-manoir-de-langonaval-pa00089277",
+      "latitude": 48.7293852307135,
+      "longitude": -3.46222643042851,
+      "name": {
+        "en": "Manoir de Langonaval",
+        "fr": "Manoir de Langonaval"
+      }
+    }
+  ]
+}

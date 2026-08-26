@@ -1,0 +1,204 @@
+{
+  "id": "rodez-v1",
+  "cityId": "rodez-fr",
+  "cityZoneId": "relation/116558",
+  "cityName": {
+    "en": "Rodez",
+    "fr": "Rodez"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien chartreuse is an important witness to the city's history.",
+        "fr": "Ancien chartreuse est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-ancien-chartreuse-pa00094109",
+      "latitude": 44.3525480867572,
+      "longitude": 2.56165918345243,
+      "name": {
+        "en": "Ancien chartreuse",
+        "fr": "Ancien chartreuse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094113",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-ancien-eveche-pa00094113",
+      "latitude": 44.3519753278397,
+      "longitude": 2.57445344593952,
+      "name": {
+        "en": "Ancien évêché",
+        "fr": "Ancien évêché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094108",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-cathedrale-notre-dame-pa00094108",
+      "latitude": 44.3507870247534,
+      "longitude": 2.57412006199288,
+      "name": {
+        "en": "Cathédrale Notre-Dame",
+        "fr": "Cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Saint-Félix is an important witness to the city's history.",
+        "fr": "Château de Saint-Félix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094110",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-chateau-de-saint-felix-pa00094110",
+      "latitude": 44.3657231893736,
+      "longitude": 2.56679505096213,
+      "name": {
+        "en": "Château de Saint-Félix",
+        "fr": "Château de Saint-Félix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Coeur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Coeur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA12000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-eglise-du-sacre-coeur-pa12000039",
+      "latitude": 44.3564800765319,
+      "longitude": 2.5778626600535,
+      "name": {
+        "en": "Église du Sacré-Coeur",
+        "fr": "Église du Sacré-Coeur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Amans is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Amans est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094112",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-eglise-saint-amans-pa00094112",
+      "latitude": 44.3479392998814,
+      "longitude": 2.57482948108239,
+      "name": {
+        "en": "Église Saint-Amans",
+        "fr": "Église Saint-Amans"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts Denys Puech is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts Denys Puech compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0550",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rodez-musee-des-beaux-arts-denys-puech-m0550",
+      "latitude": 44.349287,
+      "longitude": 2.578079,
+      "name": {
+        "en": "musée des beaux-arts Denys Puech",
+        "fr": "musée des beaux-arts Denys Puech"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Fenaille is one of the city's notable cultural landmarks.",
+        "fr": "musée Fenaille compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0551",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rodez-musee-fenaille-m0551",
+      "latitude": 44.349201,
+      "longitude": 2.576408,
+      "name": {
+        "en": "musée Fenaille",
+        "fr": "musée Fenaille"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Soulages is one of the city's notable cultural landmarks.",
+        "fr": "musée Soulages compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1129",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rodez-musee-soulages-m1129",
+      "latitude": 44.35313045450826,
+      "longitude": 2.5679787878647,
+      "name": {
+        "en": "musée Soulages",
+        "fr": "musée Soulages"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Presbytère de la cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Presbytère de la cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094133",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rodez-presbytere-de-la-cathedrale-pa00094133",
+      "latitude": 44.3518260225054,
+      "longitude": 2.5750189390986,
+      "name": {
+        "en": "Presbytère de la cathédrale",
+        "fr": "Presbytère de la cathédrale"
+      }
+    }
+  ]
+}

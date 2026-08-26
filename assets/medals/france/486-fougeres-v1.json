@@ -1,0 +1,204 @@
+{
+  "id": "fougeres-v1",
+  "cityId": "fougeres-fr",
+  "cityZoneId": "relation/163995",
+  "cityName": {
+    "en": "Fougères",
+    "fr": "Fougères"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090555",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-beffroi-pa00090555",
+      "latitude": 48.3538698849207,
+      "longitude": -1.20432418313573,
+      "name": {
+        "en": "Beffroi",
+        "fr": "Beffroi"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090557",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-chateau-pa00090557",
+      "latitude": 48.3538925419377,
+      "longitude": -1.20953921238566,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Léonard is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Léonard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090559",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-eglise-saint-leonard-pa00090559",
+      "latitude": 48.3518905899231,
+      "longitude": -1.20482262342973,
+      "name": {
+        "en": "Église Saint-Léonard",
+        "fr": "Église Saint-Léonard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sulpice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sulpice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090560",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-eglise-saint-sulpice-pa00090560",
+      "latitude": 48.3528780472496,
+      "longitude": -1.20917667526276,
+      "name": {
+        "en": "Église Saint-Sulpice",
+        "fr": "Église Saint-Sulpice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090562",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-hotel-de-ville-pa00090562",
+      "latitude": 48.3515261859631,
+      "longitude": -1.20451685045334,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison du 16e siècle, actuellement musée is one of the city's notable cultural landmarks.",
+        "fr": "Maison du 16e siècle, actuellement musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090569",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-maison-du-16e-siecle-actuellement-musee-pa00090569",
+      "latitude": 48.3525850708549,
+      "longitude": -1.20418037339776,
+      "name": {
+        "en": "Maison du 16e siècle, actuellement musée",
+        "fr": "Maison du 16e siècle, actuellement musée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090572",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-theatre-municipal-pa00090572",
+      "latitude": 48.3546730398371,
+      "longitude": -1.20350156596543,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Desnos is an important witness to the city's history.",
+        "fr": "Tour Desnos est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090573",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-tour-desnos-pa00090573",
+      "latitude": 48.3550929486179,
+      "longitude": -1.20454359193671,
+      "name": {
+        "en": "Tour Desnos",
+        "fr": "Tour Desnos"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour du Four is an important witness to the city's history.",
+        "fr": "Tour du Four est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090574",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-tour-du-four-pa00090574",
+      "latitude": 48.3534726518753,
+      "longitude": -1.20242556373352,
+      "name": {
+        "en": "Tour du Four",
+        "fr": "Tour du Four"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Nichot is an important witness to the city's history.",
+        "fr": "Tour Nichot est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090576",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "fougeres-tour-nichot-pa00090576",
+      "latitude": 48.3544358719398,
+      "longitude": -1.20718656228072,
+      "name": {
+        "en": "Tour Nichot",
+        "fr": "Tour Nichot"
+      }
+    }
+  ]
+}

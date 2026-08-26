@@ -1,0 +1,204 @@
+{
+  "id": "montigny-les-metz-v1",
+  "cityId": "montigny-les-metz-fr",
+  "cityZoneId": "relation/106211",
+  "cityName": {
+    "en": "Montigny-lès-Metz",
+    "fr": "Montigny-lès-Metz"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Moselle, in France",
+        "fr": "chapelle située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60337525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-chapelle-de-la-maison-de-retraite-de-la-sainte-famille-de-montigny-les-metz-q60337525",
+      "latitude": 49.10183,
+      "longitude": 6.1549,
+      "name": {
+        "en": "chapelle de la maison de retraite de la Sainte-Famille de Montigny-lès-Metz",
+        "fr": "chapelle de la maison de retraite de la Sainte-Famille de Montigny-lès-Metz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Moselle, in France",
+        "fr": "chapelle située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60340273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-chapelle-du-pensionnat-des-religieuses-du-sacre-c-ur-de-montigny-les-metz-q60340273",
+      "latitude": 49.10307397,
+      "longitude": 6.15471208,
+      "name": {
+        "en": "chapelle du pensionnat des religieuses du Sacré-Cœur de Montigny-lès-Metz",
+        "fr": "chapelle du pensionnat des religieuses du Sacré-Cœur de Montigny-lès-Metz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Moselle, in France",
+        "fr": "chapelle située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385749",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-chapelle-saint-privat-de-saint-privat-q60385749",
+      "latitude": 49.08766,
+      "longitude": 6.15248,
+      "name": {
+        "en": "chapelle Saint-Privat de Saint-Privat",
+        "fr": "chapelle Saint-Privat de Saint-Privat"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Courcelles (Montigny-lès-Metz) is an important witness to the city's history.",
+        "fr": "Château de Courcelles (Montigny-lès-Metz) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q72401839",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-chateau-de-courcelles-montigny-les-metz-q72401839",
+      "latitude": 49.103027,
+      "longitude": 6.157939,
+      "name": {
+        "en": "Château de Courcelles (Montigny-lès-Metz)",
+        "fr": "Château de Courcelles (Montigny-lès-Metz)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Horgne is an important witness to the city's history.",
+        "fr": "Château de la Horgne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA57000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montigny-les-metz-chateau-de-la-horgne-pa57000046",
+      "latitude": 49.08941860707112,
+      "longitude": 6.175196339230967,
+      "name": {
+        "en": "Château de la Horgne",
+        "fr": "Château de la Horgne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "École normale d'instituteurs de Metz is a distinctive architectural landmark in the city.",
+        "fr": "École normale d'instituteurs de Metz est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3578278",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-ecole-normale-d-instituteurs-de-metz-q3578278",
+      "latitude": 49.1008,
+      "longitude": 6.14999,
+      "name": {
+        "en": "École normale d'instituteurs de Metz",
+        "fr": "École normale d'instituteurs de Metz"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "French botanical garden",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q3162403",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-jardin-botanique-de-metz-q3162403",
+      "latitude": 49.104480833,
+      "longitude": 6.162610277,
+      "name": {
+        "en": "jardin botanique de Metz",
+        "fr": "jardin botanique de Metz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "église située en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582144",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-eglise-saint-joseph-de-montigny-les-metz-q3582144",
+      "latitude": 49.1005,
+      "longitude": 6.1561,
+      "name": {
+        "en": "église Saint-Joseph de Montigny-lès-Metz",
+        "fr": "église Saint-Joseph de Montigny-lès-Metz"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "school in France",
+        "fr": "école maternelle, école primaire, collège, lycée et pôle supérieur"
+      },
+      "externalIdentity": {
+        "id": "Q28026124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-ensemble-scolaire-jean-xxiii-q28026124",
+      "latitude": 49.09811,
+      "longitude": 6.15933,
+      "name": {
+        "en": "ensemble scolaire Jean-XXIII",
+        "fr": "ensemble scolaire Jean-XXIII"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Moselle, in France",
+        "fr": "temple protestant situé en Moselle, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3517691",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-metz-temple-protestant-de-montigny-les-metz-q3517691",
+      "latitude": 49.10299,
+      "longitude": 6.16128,
+      "name": {
+        "en": "temple protestant de Montigny-lès-Metz",
+        "fr": "temple protestant de Montigny-lès-Metz"
+      }
+    }
+  ]
+}

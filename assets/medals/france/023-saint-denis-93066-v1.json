@@ -1,0 +1,394 @@
+{
+  "id": "saint-denis-v1",
+  "cityId": "saint-denis-93066-fr",
+  "cityZoneId": "relation/87922",
+  "cityName": {
+    "en": "Saint-Denis",
+    "fr": "Saint-Denis"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien couvent des Ursulines is a distinctive architectural landmark in the city.",
+        "fr": "Ancien couvent des Ursulines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079954",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-ancien-couvent-des-ursulines-pa00079954",
+      "latitude": 48.934835142432,
+      "longitude": 2.35293546829722,
+      "name": {
+        "en": "Ancien couvent des Ursulines",
+        "fr": "Ancien couvent des Ursulines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Pharmacie centrale is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Pharmacie centrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00133017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-ancien-pharmacie-centrale-pa00133017",
+      "latitude": 48.9256908269987,
+      "longitude": 2.3552895727029,
+      "name": {
+        "en": "Ancien Pharmacie centrale",
+        "fr": "Ancien Pharmacie centrale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien usine Coignet is a distinctive architectural landmark in the city.",
+        "fr": "Ancien usine Coignet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-ancien-usine-coignet-pa93000011",
+      "latitude": 48.9314906094338,
+      "longitude": 2.34279344745867,
+      "name": {
+        "en": "Ancien usine Coignet",
+        "fr": "Ancien usine Coignet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anciens ateliers de réparation SNCF de La Plaine is a distinctive architectural landmark in the city.",
+        "fr": "Anciens ateliers de réparation SNCF de La Plaine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-anciens-ateliers-de-reparation-sncf-de-la-plaine-pa93000017",
+      "latitude": 48.9102661635529,
+      "longitude": 2.35537408346689,
+      "name": {
+        "en": "Anciens ateliers de réparation SNCF de La Plaine",
+        "fr": "Anciens ateliers de réparation SNCF de La Plaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Carmel (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Carmel (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079953",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-carmel-ancien-pa00079953",
+      "latitude": 48.9321388697859,
+      "longitude": 2.35651242487272,
+      "name": {
+        "en": "Carmel (ancien)",
+        "fr": "Carmel (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église des Trois-Patrons (ancienne) et vestiges du cimetière mérovingien is an important witness to the city's history.",
+        "fr": "Église des Trois-Patrons (ancienne) et vestiges du cimetière mérovingien est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079956",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-eglise-des-trois-patrons-ancienne-et-vestiges-du-cimetiere-merovingien-pa00079956",
+      "latitude": 48.9360762575776,
+      "longitude": 2.35919714889137,
+      "name": {
+        "en": "Église des Trois-Patrons (ancienne) et vestiges du cimetière mérovingien",
+        "fr": "Église des Trois-Patrons (ancienne) et vestiges du cimetière mérovingien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble Coignet ou immeuble d'habitation de l'ancienne usine Coignet is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble Coignet ou immeuble d'habitation de l'ancienne usine Coignet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-immeuble-coignet-ou-immeuble-d-habitation-de-l-ancienne-usine-coignet-pa93000012",
+      "latitude": 48.9323043049125,
+      "longitude": 2.3432046247108,
+      "name": {
+        "en": "Immeuble Coignet ou immeuble d'habitation de l'ancienne usine Coignet",
+        "fr": "Immeuble Coignet ou immeuble d'habitation de l'ancienne usine Coignet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079957",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-immeuble-pa00079957",
+      "latitude": 48.936092579281095,
+      "longitude": 2.361429756073021,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in France",
+        "fr": "abbaye située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3603203",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-denis-abbaye-royale-de-saint-denis-q3603203",
+      "latitude": 48.9356,
+      "longitude": 2.35972,
+      "name": {
+        "en": "abbaye royale de Saint-Denis",
+        "fr": "abbaye royale de Saint-Denis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Denis, actuellement maison d'éducation de la Légion d'Honneur is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Denis, actuellement maison d'éducation de la Légion d'Honneur est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079951",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-ancien-abbaye-saint-denis-actuellement-maison-d-education-de-la-legion-d-honneur-pa00079951",
+      "latitude": 48.9335263447688,
+      "longitude": 2.3624541954587204,
+      "name": {
+        "en": "Ancien abbaye Saint-Denis, actuellement maison d'éducation de la Légion d'Honneur",
+        "fr": "Ancien abbaye Saint-Denis, actuellement maison d'éducation de la Légion d'Honneur"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire Paul Eluard is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire Paul Eluard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0422",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-denis-musee-d-art-et-d-histoire-paul-eluard-m0422",
+      "latitude": 48.932336,
+      "longitude": 2.355796,
+      "name": {
+        "en": "musée d'art et d'histoire Paul Eluard",
+        "fr": "musée d'art et d'histoire Paul Eluard"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Léon Dierx is one of the city's notable cultural landmarks.",
+        "fr": "musée Léon Dierx compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1069",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-denis-musee-leon-dierx-m1069",
+      "latitude": -20.883698,
+      "longitude": 55.450251,
+      "name": {
+        "en": "musée Léon Dierx",
+        "fr": "musée Léon Dierx"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper of mixed use, both residential and commercial",
+        "fr": "gratte-ciel situé au Carrefour Pleyel à Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3090112",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-denis-tour-pleyel-q3090112",
+      "latitude": 48.92,
+      "longitude": 2.345,
+      "name": {
+        "en": "tour Pleyel",
+        "fr": "tour Pleyel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La maison du directeur de l'ancienne usine Coignet dite maison Coignet is a distinctive architectural landmark in the city.",
+        "fr": "La maison du directeur de l'ancienne usine Coignet dite maison Coignet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000010",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-la-maison-du-directeur-de-l-ancienne-usine-coignet-dite-maison-coignet-pa93000010",
+      "latitude": 48.9308245728553,
+      "longitude": 2.34180015857052,
+      "name": {
+        "en": "La maison du directeur de l'ancienne usine Coignet dite maison Coignet",
+        "fr": "La maison du directeur de l'ancienne usine Coignet dite maison Coignet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison des Arbalétriers (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Maison des Arbalétriers (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079959",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-maison-des-arbaletriers-ancienne-pa00079959",
+      "latitude": 48.9379395254089,
+      "longitude": 2.35758732315754,
+      "name": {
+        "en": "Maison des Arbalétriers (ancienne)",
+        "fr": "Maison des Arbalétriers (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Maison des Masques ou Maison des Quatre-Saisons is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Maison des Masques ou Maison des Quatre-Saisons est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-maison-dite-maison-des-masques-ou-maison-des-quatre-saisons-pa93000022",
+      "latitude": 48.9340657864361,
+      "longitude": 2.35610792972285,
+      "name": {
+        "en": "Maison dite Maison des Masques ou Maison des Quatre-Saisons",
+        "fr": "Maison dite Maison des Masques ou Maison des Quatre-Saisons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Siège du Journal l'Humanité is a distinctive architectural landmark in the city.",
+        "fr": "Siège du Journal l'Humanité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-93066-siege-du-journal-l-humanite-pa93000025",
+      "latitude": 48.9362221802675,
+      "longitude": 2.36112420092529,
+      "name": {
+        "en": "Siège du Journal l'Humanité",
+        "fr": "Siège du Journal l'Humanité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "basilica located in Seine-Saint-Denis, in France",
+        "fr": "basilique située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q184407",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-denis-basilique-saint-denis-q184407",
+      "latitude": 48.935555555,
+      "longitude": 2.359722222,
+      "name": {
+        "en": "basilique Saint-Denis",
+        "fr": "basilique Saint-Denis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Denys-de-l'Estrée is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Denys-de-l'Estrée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079955",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-eglise-saint-denys-de-l-estree-pa00079955",
+      "latitude": 48.9371419440612,
+      "longitude": 2.34945134026123,
+      "name": {
+        "en": "Église Saint-Denys-de-l'Estrée",
+        "fr": "Église Saint-Denys-de-l'Estrée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "national stadium of France",
+        "fr": "stade situé à Saint-Denis, en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q13205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-denis-stade-de-france-q13205",
+      "latitude": 48.924444444,
+      "longitude": 2.36,
+      "name": {
+        "en": "stade de France",
+        "fr": "stade de France"
+      }
+    }
+  ]
+}

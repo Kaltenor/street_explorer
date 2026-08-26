@@ -1,0 +1,204 @@
+{
+  "id": "illkirch-graffenstaden-v1",
+  "cityId": "illkirch-graffenstaden-fr",
+  "cityZoneId": "relation/75143",
+  "cityName": {
+    "en": "Illkirch-Graffenstaden",
+    "fr": "Illkirch-Graffenstaden"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château Klinglin is an important witness to the city's history.",
+        "fr": "Ancien château Klinglin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084754",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "illkirch-graffenstaden-ancien-chateau-klinglin-pa00084754",
+      "latitude": 48.5324034453491,
+      "longitude": 7.71553036270987,
+      "name": {
+        "en": "Ancien château Klinglin",
+        "fr": "Ancien château Klinglin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "school",
+        "fr": "École supérieure de biotechnologie Strasbourg est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q273630",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-ecole-superieure-de-biotechnologie-strasbourg-q273630",
+      "latitude": 48.5256,
+      "longitude": 7.73768,
+      "name": {
+        "en": "École supérieure de biotechnologie Strasbourg",
+        "fr": "École supérieure de biotechnologie Strasbourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bas-Rhin, in France",
+        "fr": "église située dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q47086966",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-eglise-protestante-d-illkirch-q47086966",
+      "latitude": 48.53172,
+      "longitude": 7.72055,
+      "name": {
+        "en": "église protestante d'Illkirch",
+        "fr": "église protestante d'Illkirch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bas-Rhin, in France",
+        "fr": "église située dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3584534",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-eglise-saint-symphorien-d-illkirch-graffenstaden-q3584534",
+      "latitude": 48.5290575,
+      "longitude": 7.7116165,
+      "name": {
+        "en": "église Saint-Symphorien d'Illkirch-Graffenstaden",
+        "fr": "église Saint-Symphorien d'Illkirch-Graffenstaden"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Space university in France.",
+        "fr": "université à Strasbourg"
+      },
+      "externalIdentity": {
+        "id": "Q766034",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-international-space-university-q766034",
+      "latitude": 48.521448,
+      "longitude": 7.73871,
+      "name": {
+        "en": "International Space University",
+        "fr": "International Space University"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "lake",
+        "fr": "lac français"
+      },
+      "externalIdentity": {
+        "id": "Q771407",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-lac-du-baggersee-q771407",
+      "latitude": 48.543333333,
+      "longitude": 7.745277777,
+      "name": {
+        "en": "lac du Baggersee",
+        "fr": "lac du Baggersee"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc d’innovation d’Illkirch is one of the city's notable green or natural landmarks.",
+        "fr": "parc d’innovation d’Illkirch compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3364368",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-parc-d-innovation-d-illkirch-q3364368",
+      "latitude": 48.5297,
+      "longitude": 7.73596,
+      "name": {
+        "en": "parc d’innovation d’Illkirch",
+        "fr": "parc d’innovation d’Illkirch"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Bas-Rhin department, France",
+        "fr": "siège municipal d'Illkirch-Graffenstaden, dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119299609",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-mairie-d-illkirch-graffenstaden-q119299609",
+      "latitude": 48.528443899,
+      "longitude": 7.710893176,
+      "name": {
+        "en": "mairie d'Illkirch-Graffenstaden",
+        "fr": "mairie d'Illkirch-Graffenstaden"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering College",
+        "fr": "école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q3546584",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-telecom-physique-strasbourg-q3546584",
+      "latitude": 48.5258,
+      "longitude": 7.73772,
+      "name": {
+        "en": "Télécom Physique Strasbourg",
+        "fr": "Télécom Physique Strasbourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Bas-Rhin, in France",
+        "fr": "temple protestant situé dans le Bas-Rhin, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60428458",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "illkirch-graffenstaden-temple-lutherien-de-graffenstaden-q60428458",
+      "latitude": 48.51943,
+      "longitude": 7.71035,
+      "name": {
+        "en": "temple luthérien de Graffenstaden",
+        "fr": "temple luthérien de Graffenstaden"
+      }
+    }
+  ]
+}

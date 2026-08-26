@@ -1,0 +1,204 @@
+{
+  "id": "vaulx-en-velin-v1",
+  "cityId": "vaulx-en-velin-fr",
+  "cityZoneId": "relation/112529",
+  "cityName": {
+    "en": "Vaulx-en-Velin",
+    "fr": "Vaulx-en-Velin"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée scientifique et pédagogie active à Vaulx-en-Velin en France"
+      },
+      "externalIdentity": {
+        "id": "Q3046886",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-ebulliscience-q3046886",
+      "latitude": 45.780368,
+      "longitude": 4.928843,
+      "name": {
+        "en": "ÉbulliScience",
+        "fr": "ÉbulliScience"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385282",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-eglise-notre-dame-de-l-assomption-de-vaulx-en-velin-q60385282",
+      "latitude": 45.78583,
+      "longitude": 4.92873,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Vaulx-en-Velin",
+        "fr": "église Notre-Dame-de-l'Assomption de Vaulx-en-Velin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église française située à Vaulx-en-Velin"
+      },
+      "externalIdentity": {
+        "id": "Q3584574",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-eglise-saint-thomas-q3584574",
+      "latitude": 45.7758,
+      "longitude": 4.91659,
+      "name": {
+        "en": "église Saint-Thomas",
+        "fr": "église Saint-Thomas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in Lyon, France",
+        "fr": "parc de l'agglomération lyonnaise"
+      },
+      "externalIdentity": {
+        "id": "Q8387",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-grand-parc-de-miribel-jonage-q8387",
+      "latitude": 45.80583,
+      "longitude": 4.93639,
+      "name": {
+        "en": "Grand Parc de Miribel-Jonage",
+        "fr": "Grand Parc de Miribel-Jonage"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "fountain in Vaulx-en-Velin, France",
+        "fr": "sculpture-fontaine d'Ugo Rondinone en France"
+      },
+      "externalIdentity": {
+        "id": "Q20653418",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-ici-q20653418",
+      "latitude": 45.8053,
+      "longitude": 4.9342,
+      "name": {
+        "en": "Ici",
+        "fr": "Ici"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "animated miniature park in Vaulx-en-Velin, metropolis of Lyon, France",
+        "fr": "parc de miniatures animées à Vaulx-en-Velin (métropole de Lyon)"
+      },
+      "externalIdentity": {
+        "id": "Q17327772",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-mini-world-lyon-q17327772",
+      "latitude": 45.763928519,
+      "longitude": 4.923936673,
+      "name": {
+        "en": "Mini World Lyon",
+        "fr": "Mini World Lyon"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136081242",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-monument-aux-morts-de-vaulx-en-velin-q136081242",
+      "latitude": 45.786885,
+      "longitude": 4.920432,
+      "name": {
+        "en": "monument aux morts de Vaulx-en-Velin",
+        "fr": "monument aux morts de Vaulx-en-Velin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Vaulx-en-Velin, France",
+        "fr": "cinéma à Vaulx-en-Velin, France"
+      },
+      "externalIdentity": {
+        "id": "Q61860451",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-pathe-carre-de-soie-q61860451",
+      "latitude": 45.76437,
+      "longitude": 4.92112,
+      "name": {
+        "en": "Pathé Carré de Soie",
+        "fr": "Pathé Carré de Soie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français à Vaulx-en-Velin"
+      },
+      "externalIdentity": {
+        "id": "Q18011053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-pont-de-la-sucrerie-q18011053",
+      "latitude": 45.7712,
+      "longitude": 4.9354,
+      "name": {
+        "en": "pont de la Sucrerie",
+        "fr": "pont de la Sucrerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Patrick Berhault is an important witness to the city's history.",
+        "fr": "Tour Patrick Berhault est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q17640071",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vaulx-en-velin-tour-patrick-berhault-q17640071",
+      "latitude": 45.785555555,
+      "longitude": 4.910277777,
+      "name": {
+        "en": "Tour Patrick Berhault",
+        "fr": "Tour Patrick Berhault"
+      }
+    }
+  ]
+}

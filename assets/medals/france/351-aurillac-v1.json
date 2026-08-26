@@ -1,0 +1,204 @@
+{
+  "id": "aurillac-v1",
+  "cityId": "aurillac-fr",
+  "cityZoneId": "relation/115997",
+  "cityName": {
+    "en": "Aurillac",
+    "fr": "Aurillac"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Abbatiale Saint-Géraud is a distinctive architectural landmark in the city.",
+        "fr": "Abbatiale Saint-Géraud est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093448",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-abbatiale-saint-geraud-pa00093448",
+      "latitude": 44.9311803522166,
+      "longitude": 2.44822074376606,
+      "name": {
+        "en": "Abbatiale Saint-Géraud",
+        "fr": "Abbatiale Saint-Géraud"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château fort Saint-Etienne is an important witness to the city's history.",
+        "fr": "Ancien château fort Saint-Etienne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093450",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-ancien-chateau-fort-saint-etienne-pa00093450",
+      "latitude": 44.9344318706708,
+      "longitude": 2.44591566138475,
+      "name": {
+        "en": "Ancien château fort Saint-Etienne",
+        "fr": "Ancien château fort Saint-Etienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Fabrègues is an important witness to the city's history.",
+        "fr": "Château de Fabrègues est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093745",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-chateau-de-fabregues-pa00093745",
+      "latitude": 44.9481479759899,
+      "longitude": 2.46241508374241,
+      "name": {
+        "en": "Château de Fabrègues",
+        "fr": "Château de Fabrègues"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré Coeur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré Coeur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA15000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-eglise-du-sacre-coeur-pa15000030",
+      "latitude": 44.9229486659125,
+      "longitude": 2.43496653813928,
+      "name": {
+        "en": "Église du Sacré Coeur",
+        "fr": "Église du Sacré Coeur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-aux-Neiges is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-aux-Neiges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093451",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-eglise-notre-dame-aux-neiges-pa00093451",
+      "latitude": 44.9275561293259,
+      "longitude": 2.4433744097604206,
+      "name": {
+        "en": "Église Notre-Dame-aux-Neiges",
+        "fr": "Église Notre-Dame-aux-Neiges"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA15000051",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-monument-aux-morts-pa15000051",
+      "latitude": 44.928613677296426,
+      "longitude": 2.4432129861997907,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0110",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aurillac-musee-d-art-et-d-archeologie-m0110",
+      "latitude": 44.925394,
+      "longitude": 2.441947,
+      "name": {
+        "en": "musée d'art et d'archéologie",
+        "fr": "musée d'art et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des sciences is one of the city's notable cultural landmarks.",
+        "fr": "musée des sciences compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7018",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aurillac-musee-des-sciences-m7018",
+      "latitude": 44.932919,
+      "longitude": 2.444912,
+      "name": {
+        "en": "musée des sciences",
+        "fr": "musée des sciences"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée is one of the city's notable cultural landmarks.",
+        "fr": "Musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093465",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-musee-pa00093465",
+      "latitude": 44.9311901123658,
+      "longitude": 2.44646318275188,
+      "name": {
+        "en": "Musée",
+        "fr": "Musée"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple gallo-romain de type fanum is a distinctive architectural landmark in the city.",
+        "fr": "Temple gallo-romain de type fanum est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00093469",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aurillac-temple-gallo-romain-de-type-fanum-pa00093469",
+      "latitude": 44.9157046858995,
+      "longitude": 2.42143083615666,
+      "name": {
+        "en": "Temple gallo-romain de type fanum",
+        "fr": "Temple gallo-romain de type fanum"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "bourgoin-jallieu-v1",
+  "cityId": "bourgoin-jallieu-fr",
+  "cityZoneId": "relation/78763",
+  "cityName": {
+    "en": "Bourgoin-Jallieu",
+    "fr": "Bourgoin-Jallieu"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Isère, in France",
+        "fr": "chapelle située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60337253",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-chapelle-de-la-commanderie-des-antonins-de-bourgoin-jallieu-q60337253",
+      "latitude": 45.58668,
+      "longitude": 5.27898,
+      "name": {
+        "en": "chapelle de la commanderie des Antonins de Bourgoin-Jallieu",
+        "fr": "chapelle de la commanderie des Antonins de Bourgoin-Jallieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church in Bourgoin-Jallieu, France",
+        "fr": "édifice religieux de Bourgoin-Jallieu, France"
+      },
+      "externalIdentity": {
+        "id": "Q29569463",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-eglise-saint-jean-baptiste-de-bourgoin-jallieu-q29569463",
+      "latitude": 45.5861,
+      "longitude": 5.2763,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Bourgoin-Jallieu",
+        "fr": "église Saint-Jean-Baptiste de Bourgoin-Jallieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Bourgoin-Jallieu, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q28041425",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-jallieu-q28041425",
+      "latitude": 45.60193,
+      "longitude": 5.271293,
+      "name": {
+        "en": "Jallieu",
+        "fr": "Jallieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Isère department, France",
+        "fr": "siège municipal de Bourgoin-Jallieu, en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119303004",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-mairie-de-bourgoin-jallieu-q119303004",
+      "latitude": 45.59378908,
+      "longitude": 5.276734921,
+      "name": {
+        "en": "mairie de Bourgoin-Jallieu",
+        "fr": "mairie de Bourgoin-Jallieu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Médiathèque départementale de l'Isère is one of the city's notable cultural landmarks.",
+        "fr": "Médiathèque départementale de l'Isère compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q26257804",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-mediatheque-departementale-de-l-isere-q26257804",
+      "latitude": 45.5924078,
+      "longitude": 5.2749677,
+      "name": {
+        "en": "Médiathèque départementale de l'Isère",
+        "fr": "Médiathèque départementale de l'Isère"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Isère department, France",
+        "fr": "monument aux morts de l'Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136047372",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-monument-aux-morts-de-bourgoin-jallieu-q136047372",
+      "latitude": 45.5889727,
+      "longitude": 5.2720764,
+      "name": {
+        "en": "monument aux morts de Bourgoin-Jallieu",
+        "fr": "monument aux morts de Bourgoin-Jallieu"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Mur de terrasse antique is an important witness to the city's history.",
+        "fr": "Mur de terrasse antique est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117127",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourgoin-jallieu-mur-de-terrasse-antique-pa00117127",
+      "latitude": 45.60316261573696,
+      "longitude": 5.229244770869448,
+      "name": {
+        "en": "Mur de terrasse antique",
+        "fr": "Mur de terrasse antique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Bourgoin-Jallieu is one of the city's notable cultural landmarks.",
+        "fr": "musée de Bourgoin-Jallieu compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0991",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourgoin-jallieu-musee-de-bourgoin-jallieu-m0991",
+      "latitude": 45.586588,
+      "longitude": 5.279159,
+      "name": {
+        "en": "musée de Bourgoin-Jallieu",
+        "fr": "musée de Bourgoin-Jallieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-purpose stadium in Bourgoin-Jallieu, France",
+        "fr": "stade de rugby à XV en France"
+      },
+      "externalIdentity": {
+        "id": "Q3495821",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-stade-pierre-rajon-q3495821",
+      "latitude": 45.59043,
+      "longitude": 5.28783,
+      "name": {
+        "en": "stade Pierre-Rajon",
+        "fr": "stade Pierre-Rajon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "meeting house located in Isère, in France",
+        "fr": "temple protestant situé en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60427427",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bourgoin-jallieu-temple-de-l-eglise-protestante-unie-de-france-de-bourgoin-jallieu-q60427427",
+      "latitude": 45.5909736,
+      "longitude": 5.2774106,
+      "name": {
+        "en": "temple de l'église protestante unie de France de Bourgoin-Jallieu",
+        "fr": "temple de l'église protestante unie de France de Bourgoin-Jallieu"
+      }
+    }
+  ]
+}

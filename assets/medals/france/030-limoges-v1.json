@@ -1,0 +1,394 @@
+{
+  "id": "limoges-v1",
+  "cityId": "limoges-fr",
+  "cityZoneId": "relation/114172",
+  "cityName": {
+    "en": "Limoges",
+    "fr": "Limoges"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Martial is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Martial est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100328",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-ancien-abbaye-saint-martial-pa00100328",
+      "latitude": 45.8315104156475,
+      "longitude": 1.2599698229179903,
+      "name": {
+        "en": "Ancien abbaye Saint-Martial",
+        "fr": "Ancien abbaye Saint-Martial"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Ancien atelier de sculpture-marbrerie Boirlaud is a notable work of public art and local memory.",
+        "fr": "Ancien atelier de sculpture-marbrerie Boirlaud est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA00100522",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-ancien-atelier-de-sculpture-marbrerie-boirlaud-pa00100522",
+      "latitude": 45.8358435070681,
+      "longitude": 1.25294407039803,
+      "name": {
+        "en": "Ancien atelier de sculpture-marbrerie Boirlaud",
+        "fr": "Ancien atelier de sculpture-marbrerie Boirlaud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100345",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-ancien-eveche-pa00100345",
+      "latitude": 45.8280172677598,
+      "longitude": 1.26638273457047,
+      "name": {
+        "en": "Ancien évêché",
+        "fr": "Ancien évêché"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100333",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-cathedrale-saint-etienne-pa00100333",
+      "latitude": 45.8289149822083,
+      "longitude": 1.26669913182407,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Beauvais is an important witness to the city's history.",
+        "fr": "Château de Beauvais est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100336",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-chateau-de-beauvais-pa00100336",
+      "latitude": 45.8564679226981,
+      "longitude": 1.18973707230378,
+      "name": {
+        "en": "Château de Beauvais",
+        "fr": "Château de Beauvais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Essarts, à Beaune-les-Mines is an important witness to the city's history.",
+        "fr": "Château des Essarts, à Beaune-les-Mines est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA87000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-chateau-des-essarts-a-beaune-les-mines-pa87000001",
+      "latitude": 45.8986821480118,
+      "longitude": 1.30533047164188,
+      "name": {
+        "en": "Château des Essarts, à Beaune-les-Mines",
+        "fr": "Château des Essarts, à Beaune-les-Mines"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Eglise et baptistère Saint-Jean is an important witness to the city's history.",
+        "fr": "Eglise et baptistère Saint-Jean est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA87000029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-eglise-et-baptistere-saint-jean-pa87000029",
+      "latitude": 45.8292284818853,
+      "longitude": 1.26655703940059,
+      "name": {
+        "en": "Eglise et baptistère Saint-Jean",
+        "fr": "Eglise et baptistère Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel-des-Lions is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel-des-Lions est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-eglise-saint-michel-des-lions-pa00100343",
+      "latitude": 45.8306063581201,
+      "longitude": 1.25695364940237,
+      "name": {
+        "en": "Église Saint-Michel-des-Lions",
+        "fr": "Église Saint-Michel-des-Lions"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-du-Queyroix is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-du-Queyroix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100344",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-eglise-saint-pierre-du-queyroix-pa00100344",
+      "latitude": 45.8311796244446,
+      "longitude": 1.2616106694362,
+      "name": {
+        "en": "Église Saint-Pierre-du-Queyroix",
+        "fr": "Église Saint-Pierre-du-Queyroix"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine d'Aigoulène is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine d'Aigoulène compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100346",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-fontaine-d-aigoulene-pa00100346",
+      "latitude": 45.8302385813394,
+      "longitude": 1.25730879102705,
+      "name": {
+        "en": "Fontaine d'Aigoulène",
+        "fr": "Fontaine d'Aigoulène"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des Barres is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des Barres compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100347",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-fontaine-des-barres-pa00100347",
+      "latitude": 45.8319935867296,
+      "longitude": 1.25688347964306,
+      "name": {
+        "en": "Fontaine des Barres",
+        "fr": "Fontaine des Barres"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fragment du mur gallo-romain is an important witness to the city's history.",
+        "fr": "Fragment du mur gallo-romain est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100374",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-fragment-du-mur-gallo-romain-pa00100374",
+      "latitude": 45.8205575780714,
+      "longitude": 1.25673249026625,
+      "name": {
+        "en": "Fragment du mur gallo-romain",
+        "fr": "Fragment du mur gallo-romain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la porcelaine Adrien Dubouché is one of the city's notable cultural landmarks.",
+        "fr": "musée de la porcelaine Adrien Dubouché compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5015",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "limoges-musee-de-la-porcelaine-adrien-dubouche-m5015",
+      "latitude": 45.832531,
+      "longitude": 1.252114,
+      "name": {
+        "en": "musée de la porcelaine Adrien Dubouché",
+        "fr": "musée de la porcelaine Adrien Dubouché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts de Limoges - Palais de l'évêché is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts de Limoges - Palais de l'évêché compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0505",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "limoges-musee-des-beaux-arts-de-limoges-palais-de-l-eveche-m0505",
+      "latitude": 45.828784,
+      "longitude": 1.265445,
+      "name": {
+        "en": "musée des beaux-arts de Limoges - Palais de l'évêché",
+        "fr": "musée des beaux-arts de Limoges - Palais de l'évêché"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée national Adrien Dubouché et Ecole des Arts Décoratifs is one of the city's notable cultural landmarks.",
+        "fr": "Musée national Adrien Dubouché et Ecole des Arts Décoratifs compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100375",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-musee-national-adrien-dubouche-et-ecole-des-arts-decoratifs-pa00100375",
+      "latitude": 45.8325365632219,
+      "longitude": 1.25261495135613,
+      "name": {
+        "en": "Musée national Adrien Dubouché et Ecole des Arts Décoratifs",
+        "fr": "Musée national Adrien Dubouché et Ecole des Arts Décoratifs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "indoor sporting arena in France",
+        "fr": "équipement sportif"
+      },
+      "externalIdentity": {
+        "id": "Q3361141",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "limoges-palais-des-sports-de-beaublanc-q3361141",
+      "latitude": 45.84746389,
+      "longitude": 1.24335833,
+      "name": {
+        "en": "Palais des Sports de Beaublanc",
+        "fr": "Palais des Sports de Beaublanc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Saint-Etienne is a distinctive architectural landmark in the city.",
+        "fr": "Pont Saint-Etienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100380",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-pont-saint-etienne-pa00100380",
+      "latitude": 45.8290291628041,
+      "longitude": 1.27067158683857,
+      "name": {
+        "en": "Pont Saint-Etienne",
+        "fr": "Pont Saint-Etienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Saint-Martial is a distinctive architectural landmark in the city.",
+        "fr": "Pont Saint-Martial est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100381",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-pont-saint-martial-pa00100381",
+      "latitude": 45.8206507224852,
+      "longitude": 1.26553602094259,
+      "name": {
+        "en": "Pont Saint-Martial",
+        "fr": "Pont Saint-Martial"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Substructions gallo-romaines et vestiges de thermes is an important witness to the city's history.",
+        "fr": "Substructions gallo-romaines et vestiges de thermes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100382",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-substructions-gallo-romaines-et-vestiges-de-thermes-pa00100382",
+      "latitude": 45.8706617063897,
+      "longitude": 1.27326097576236,
+      "name": {
+        "en": "Substructions gallo-romaines et vestiges de thermes",
+        "fr": "Substructions gallo-romaines et vestiges de thermes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Villa gallo-romaine de Sainte-Claire is an important witness to the city's history.",
+        "fr": "Villa gallo-romaine de Sainte-Claire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00100536",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "limoges-villa-gallo-romaine-de-sainte-claire-pa00100536",
+      "latitude": 45.822448599937,
+      "longitude": 1.2404606747691902,
+      "name": {
+        "en": "Villa gallo-romaine de Sainte-Claire",
+        "fr": "Villa gallo-romaine de Sainte-Claire"
+      }
+    }
+  ]
+}

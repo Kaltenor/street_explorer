@@ -1,0 +1,204 @@
+{
+  "id": "douai-v1",
+  "cityId": "douai-fr",
+  "cityZoneId": "relation/56243",
+  "cityName": {
+    "en": "Douai",
+    "fr": "Douai"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel-Dieu is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel-Dieu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107457",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-ancien-hotel-dieu-pa00107457",
+      "latitude": 50.373156611921694,
+      "longitude": 3.0768698645291055,
+      "name": {
+        "en": "Ancien Hôtel-Dieu",
+        "fr": "Ancien Hôtel-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107452",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-eglise-notre-dame-pa00107452",
+      "latitude": 50.3666445191101,
+      "longitude": 3.08629424243032,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125620",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-eglise-saint-jacques-pa00125620",
+      "latitude": 50.3711586868889,
+      "longitude": 3.07524861669324,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la Tramerie ou Hôtel Renaissance is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la Tramerie ou Hôtel Renaissance est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107459",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-hotel-de-la-tramerie-ou-hotel-renaissance-pa00107459",
+      "latitude": 50.3673396843199,
+      "longitude": 3.07788172282766,
+      "name": {
+        "en": "Hôtel de la Tramerie ou Hôtel Renaissance",
+        "fr": "Hôtel de la Tramerie ou Hôtel Renaissance"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Chartreuse is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Chartreuse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0619",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "douai-musee-de-la-chartreuse-m0619",
+      "latitude": 50.374404,
+      "longitude": 3.07548,
+      "name": {
+        "en": "musée de la Chartreuse",
+        "fr": "musée de la Chartreuse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte d'Arras is an important witness to the city's history.",
+        "fr": "Porte d'Arras est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107485",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-porte-d-arras-pa00107485",
+      "latitude": 50.3659645008824,
+      "longitude": 3.07058991396012,
+      "name": {
+        "en": "Porte d'Arras",
+        "fr": "Porte d'Arras"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Valenciennes ou Porte Vacqueresse is an important witness to the city's history.",
+        "fr": "Porte de Valenciennes ou Porte Vacqueresse est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107486",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-porte-de-valenciennes-ou-porte-vacqueresse-pa00107486",
+      "latitude": 50.3668567934961,
+      "longitude": 3.08768264886807,
+      "name": {
+        "en": "Porte de Valenciennes ou Porte Vacqueresse",
+        "fr": "Porte de Valenciennes ou Porte Vacqueresse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-theatre-municipal-pa59000058",
+      "latitude": 50.3660923445359,
+      "longitude": 3.07889531767862,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville et beffroi is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville et beffroi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107461",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-hotel-de-ville-et-beffroi-pa00107461",
+      "latitude": 50.3677097284845,
+      "longitude": 3.08045743322601,
+      "name": {
+        "en": "Hôtel de ville et beffroi",
+        "fr": "Hôtel de ville et beffroi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107483",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "douai-palais-de-justice-pa00107483",
+      "latitude": 50.3700729491328,
+      "longitude": 3.07805007303414,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "courbevoie-v1",
+  "cityId": "courbevoie-fr",
+  "cityZoneId": "relation/91768",
+  "cityName": {
+    "en": "Courbevoie",
+    "fr": "Courbevoie"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "art",
+      "description": {
+        "en": "sculpture by Alexander Calder",
+        "fr": "sculpture d'Alexander Calder"
+      },
+      "externalIdentity": {
+        "id": "Q2391488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-araignee-rouge-q2391488",
+      "latitude": 48.89127778,
+      "longitude": 2.24161111,
+      "name": {
+        "en": "Araignée rouge",
+        "fr": "Araignée rouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2455851",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-becon-les-bruyeres-q2455851",
+      "latitude": 48.905464,
+      "longitude": 2.268806,
+      "name": {
+        "en": "Bécon-les-Bruyères",
+        "fr": "Bécon-les-Bruyères"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "former theatre and cinema in Bécon-les-Bruyères, Courbevoie, France",
+        "fr": "ancienne salle de spectacle et de cinéma de Bécon-les-Bruyéres, Courbevoie, France"
+      },
+      "externalIdentity": {
+        "id": "Q111794960",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-becon-palace-q111794960",
+      "latitude": 48.905141084,
+      "longitude": 2.270508856,
+      "name": {
+        "en": "Bécon-Palace",
+        "fr": "Bécon-Palace"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "office towers located in the business district of La Défense, Courbevoie, France",
+        "fr": "tours de bureaux située dans le quartier d'affaires de La Défense, Courbevoie, France"
+      },
+      "externalIdentity": {
+        "id": "Q2349903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-c-ur-defense-q2349903",
+      "latitude": 48.89095,
+      "longitude": 2.24413,
+      "name": {
+        "en": "Cœur Défense",
+        "fr": "Cœur Défense"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Courbevoie, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096304",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-courbevoie-q3096304",
+      "latitude": 48.898412,
+      "longitude": 2.248528,
+      "name": {
+        "en": "Courbevoie",
+        "fr": "Courbevoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38387480",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-eglise-lutherienne-de-courbevoie-q38387480",
+      "latitude": 48.900338,
+      "longitude": 2.251888,
+      "name": {
+        "en": "église luthérienne de Courbevoie",
+        "fr": "église luthérienne de Courbevoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19860446",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-eglise-saint-maurice-de-becon-les-bruyeres-q19860446",
+      "latitude": 48.90507,
+      "longitude": 2.27628,
+      "name": {
+        "en": "église Saint-Maurice de Bécon-les-Bruyères",
+        "fr": "église Saint-Maurice de Bécon-les-Bruyères"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583540",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-eglise-saint-pierre-saint-paul-de-courbevoie-q3583540",
+      "latitude": 48.8966,
+      "longitude": 2.25734,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de Courbevoie",
+        "fr": "église Saint-Pierre-Saint-Paul de Courbevoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088104",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "courbevoie-hotel-de-ville-pa00088104",
+      "latitude": 48.8951861904892,
+      "longitude": 2.25607586360028,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "sculpture by Louis-Ernest Barrias",
+        "fr": "sculpture de Louis-Ernest Barrias"
+      },
+      "externalIdentity": {
+        "id": "Q3208455",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-la-defense-de-paris-q3208455",
+      "latitude": 48.8905,
+      "longitude": 2.24194,
+      "name": {
+        "en": "La Défense de Paris",
+        "fr": "La Défense de Paris"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des travaux publics is one of the city's notable cultural landmarks.",
+        "fr": "musée des travaux publics compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1149",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "courbevoie-musee-des-travaux-publics-m1149",
+      "latitude": 48.89817715987157,
+      "longitude": 2.2579850008669635,
+      "name": {
+        "en": "musée des travaux publics",
+        "fr": "musée des travaux publics"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Roybet-Fould is one of the city's notable cultural landmarks.",
+        "fr": "musée Roybet-Fould compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0410",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "courbevoie-musee-roybet-fould-m0410",
+      "latitude": 48.900998,
+      "longitude": 2.271279,
+      "name": {
+        "en": "musée Roybet-Fould",
+        "fr": "musée Roybet-Fould"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc à Courbevoie (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q16510000",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-parc-de-becon-q16510000",
+      "latitude": 48.8998,
+      "longitude": 2.2702,
+      "name": {
+        "en": "parc de Bécon",
+        "fr": "parc de Bécon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396944",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-pont-de-courbevoie-q3396944",
+      "latitude": 48.895,
+      "longitude": 2.26583,
+      "name": {
+        "en": "pont de Courbevoie",
+        "fr": "pont de Courbevoie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in Paris La Défense",
+        "fr": "gratte-ciel à Paris La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q735913",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-areva-q735913",
+      "latitude": 48.892222222,
+      "longitude": 2.241944444,
+      "name": {
+        "en": "tour Areva",
+        "fr": "tour Areva"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in Paris La Défense",
+        "fr": "gratte-ciel à Paris La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q995371",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-cb21-q995371",
+      "latitude": 48.88888889,
+      "longitude": 2.24980556,
+      "name": {
+        "en": "Tour CB21",
+        "fr": "Tour CB21"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in La Défense",
+        "fr": "Gratte-ciel à La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q3090088",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-egee-q3090088",
+      "latitude": 48.8965,
+      "longitude": 2.23847,
+      "name": {
+        "en": "Tour Égée",
+        "fr": "Tour Égée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "office skyscraper in La Défense's Courbevoie",
+        "fr": "gratte-ciel de la Défense, Paris"
+      },
+      "externalIdentity": {
+        "id": "Q1509747",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-first-q1509747",
+      "latitude": 48.8889,
+      "longitude": 2.2517,
+      "name": {
+        "en": "tour First",
+        "fr": "tour First"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in Paris, France",
+        "fr": "gratte-ciel de bureaux situé sur la commune de Courbevoie (dans le quartier de La Défense)"
+      },
+      "externalIdentity": {
+        "id": "Q278518",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-t1-q278518",
+      "latitude": 48.896111111,
+      "longitude": 2.239444444,
+      "name": {
+        "en": "Tour T1",
+        "fr": "Tour T1"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "skyscraper in Paris La Défense",
+        "fr": "gratte-ciel de bureaux situé dans le quartier d'affaires de La Défense"
+      },
+      "externalIdentity": {
+        "id": "Q743683",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "courbevoie-tour-total-q743683",
+      "latitude": 48.892777777,
+      "longitude": 2.243055555,
+      "name": {
+        "en": "Tour Total",
+        "fr": "Tour Total"
+      }
+    }
+  ]
+}

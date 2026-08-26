@@ -1,0 +1,204 @@
+{
+  "id": "saint-sebastien-sur-loire-v1",
+  "cityId": "saint-sebastien-sur-loire-fr",
+  "cityZoneId": "relation/61051",
+  "cityName": {
+    "en": "Saint-Sébastien-sur-Loire",
+    "fr": "Saint-Sébastien-sur-Loire"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "centre commercial Auchan is a distinctive architectural landmark in the city.",
+        "fr": "centre commercial à Saint-Sébastien-sur-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q105713901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-centre-commercial-auchan-q105713901",
+      "latitude": 47.19058738,
+      "longitude": -1.49362564,
+      "name": {
+        "en": "centre commercial Auchan",
+        "fr": "centre commercial Auchan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle à Saint-Sébastien-sur-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q107411015",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-chapelle-de-la-persagotiere-q107411015",
+      "latitude": 47.192703573,
+      "longitude": -1.538573607,
+      "name": {
+        "en": "chapelle de la Persagotière",
+        "fr": "chapelle de la Persagotière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2957332",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-chapelle-de-la-savariere-q2957332",
+      "latitude": 47.2086,
+      "longitude": -1.49102,
+      "name": {
+        "en": "chapelle de la Savarière",
+        "fr": "chapelle de la Savarière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Loire-Atlantique, in France",
+        "fr": "cimetière à Saint-Sébastien-sur-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q105712502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-cimetiere-paysage-q105712502",
+      "latitude": 47.201187301,
+      "longitude": -1.485160589,
+      "name": {
+        "en": "cimetière paysagé",
+        "fr": "cimetière paysagé"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "folie de la Gibraye is an important witness to the city's history.",
+        "fr": "château à Saint-Sébastien-sur-Loire (Loire-Atlantique)"
+      },
+      "externalIdentity": {
+        "id": "Q3074960",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-folie-de-la-gibraye-q3074960",
+      "latitude": 47.2073,
+      "longitude": -1.51651,
+      "name": {
+        "en": "folie de la Gibraye",
+        "fr": "folie de la Gibraye"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Saint-Sébastien-sur-Loire is a notable work of public art and local memory.",
+        "fr": "monument aux morts à Saint-Sébastien-sur-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q105712422",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-monument-aux-morts-de-saint-sebastien-sur-loire-q105712422",
+      "latitude": 47.207725536,
+      "longitude": -1.503367424,
+      "name": {
+        "en": "monument aux morts de Saint-Sébastien-sur-Loire",
+        "fr": "monument aux morts de Saint-Sébastien-sur-Loire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392293",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-eglise-saint-sebastien-de-saint-sebastien-sur-loire-q60392293",
+      "latitude": 47.20863,
+      "longitude": -1.50296,
+      "name": {
+        "en": "église Saint-Sébastien de Saint-Sébastien-sur-Loire",
+        "fr": "église Saint-Sébastien de Saint-Sébastien-sur-Loire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Saint-Sébastien-sur-Loire, France",
+        "fr": "hôtel de ville, Saint-Sébastien-sur-Loire, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341717",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-hotel-de-ville-de-saint-sebastien-sur-loire-q105341717",
+      "latitude": 47.2061,
+      "longitude": -1.5021,
+      "name": {
+        "en": "hôtel de ville de Saint-Sébastien-sur-Loire",
+        "fr": "hôtel de ville de Saint-Sébastien-sur-Loire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Sébastien-sur-Loire, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2675849",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-saint-sebastien-frene-rond-q2675849",
+      "latitude": 47.190278,
+      "longitude": -1.496111,
+      "name": {
+        "en": "Saint-Sébastien-Frêne-Rond",
+        "fr": "Saint-Sébastien-Frêne-Rond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Sébastien-sur-Loire, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1884909",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-sebastien-sur-loire-saint-sebastien-pas-enchantes-q1884909",
+      "latitude": 47.206667,
+      "longitude": -1.510833,
+      "name": {
+        "en": "Saint-Sébastien-Pas-Enchantés",
+        "fr": "Saint-Sébastien-Pas-Enchantés"
+      }
+    }
+  ]
+}

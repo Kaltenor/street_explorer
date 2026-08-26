@@ -1,0 +1,204 @@
+{
+  "id": "chatellerault-v1",
+  "cityId": "chatellerault-fr",
+  "cityZoneId": "relation/135540",
+  "cityName": {
+    "en": "Châtellerault",
+    "fr": "Châtellerault"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105399",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-ancien-eglise-notre-dame-pa00105399",
+      "latitude": 46.8187426654213,
+      "longitude": 0.542445305436787,
+      "name": {
+        "en": "Ancien église Notre-Dame",
+        "fr": "Ancien église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Romain is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Romain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105400",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-ancien-eglise-saint-romain-pa00105400",
+      "latitude": 46.8189959434877,
+      "longitude": 0.542888633606847,
+      "name": {
+        "en": "Ancien église Saint-Romain",
+        "fr": "Ancien église Saint-Romain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105738",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-chateau-pa00105738",
+      "latitude": 46.7888507664129,
+      "longitude": 0.575747329014927,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA86000056",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-eglise-saint-jacques-pa86000056",
+      "latitude": 46.81589891188717,
+      "longitude": 0.5429914884888296,
+      "name": {
+        "en": "église Saint-Jacques",
+        "fr": "église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel des Sibylles is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel des Sibylles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125691",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-hotel-des-sibylles-pa00125691",
+      "latitude": 46.8200145669123,
+      "longitude": 0.544308149466041,
+      "name": {
+        "en": "Hôtel des Sibylles",
+        "fr": "Hôtel des Sibylles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Manufacture d'armes, actuellement Musée de l'automobile is one of the city's notable cultural landmarks.",
+        "fr": "Manufacture d'armes, actuellement Musée de l'automobile compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105790",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-manufacture-d-armes-actuellement-musee-de-l-automobile-pa00105790",
+      "latitude": 46.8133620348954,
+      "longitude": 0.535508142091676,
+      "name": {
+        "en": "Manufacture d'armes, actuellement Musée de l'automobile",
+        "fr": "Manufacture d'armes, actuellement Musée de l'automobile"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la moto, de l'automobile et du vélo is one of the city's notable cultural landmarks.",
+        "fr": "musée de la moto, de l'automobile et du vélo compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0847",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chatellerault-musee-de-la-moto-de-l-automobile-et-du-velo-m0847",
+      "latitude": 46.81393,
+      "longitude": 0.536238,
+      "name": {
+        "en": "musée de la moto, de l'automobile et du vélo",
+        "fr": "musée de la moto, de l'automobile et du vélo"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105405",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-theatre-municipal-pa00105405",
+      "latitude": 46.818211719622,
+      "longitude": 0.546434859556877,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Camille-de-Hogues is a distinctive architectural landmark in the city.",
+        "fr": "Pont Camille-de-Hogues est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA86000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-pont-camille-de-hogues-pa86000019",
+      "latitude": 46.813731580674606,
+      "longitude": 0.537392563085955,
+      "name": {
+        "en": "Pont Camille-de-Hogues",
+        "fr": "Pont Camille-de-Hogues"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont Henri IV is a distinctive architectural landmark in the city.",
+        "fr": "Pont Henri IV est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chatellerault-pont-henri-iv-pa00105404",
+      "latitude": 46.8164788553786,
+      "longitude": 0.539243422338823,
+      "name": {
+        "en": "Pont Henri IV",
+        "fr": "Pont Henri IV"
+      }
+    }
+  ]
+}

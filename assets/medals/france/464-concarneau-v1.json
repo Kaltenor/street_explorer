@@ -1,0 +1,204 @@
+{
+  "id": "concarneau-v1",
+  "cityId": "concarneau-fr",
+  "cityZoneId": "relation/166492",
+  "cityName": {
+    "en": "Concarneau",
+    "fr": "Concarneau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Kériolet is an important witness to the city's history.",
+        "fr": "Château de Kériolet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089890",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "concarneau-chateau-de-keriolet-pa00089890",
+      "latitude": 47.8864919084398,
+      "longitude": -3.90782313509069,
+      "name": {
+        "en": "Château de Kériolet",
+        "fr": "Château de Kériolet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Concarneau, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2936693",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-concarneau-q2936693",
+      "latitude": 47.877658,
+      "longitude": -3.92065,
+      "name": {
+        "en": "Concarneau",
+        "fr": "Concarneau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "roman catholic church located in Finistère, in France",
+        "fr": "église située dans le Finistère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580212",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-eglise-notre-dame-de-lorette-q3580212",
+      "latitude": 47.86963,
+      "longitude": -3.88394,
+      "name": {
+        "en": "église Notre-Dame-de-Lorette",
+        "fr": "église Notre-Dame-de-Lorette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Finistère, in France",
+        "fr": "église située dans le quartier de Beuzec-Conq, à Concarneau, Finistère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16649041",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-eglise-saint-budoc-q16649041",
+      "latitude": 47.8889,
+      "longitude": -3.90191,
+      "name": {
+        "en": "église Saint-Budoc",
+        "fr": "église Saint-Budoc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Finistère, in France",
+        "fr": "église située dans le Finistère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18402240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-eglise-saint-c-ur-de-marie-q18402240",
+      "latitude": 47.872761,
+      "longitude": -3.91876,
+      "name": {
+        "en": "église Saint-Cœur-de-Marie",
+        "fr": "église Saint-Cœur-de-Marie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort du Cabellou is an important witness to the city's history.",
+        "fr": "Fort du Cabellou est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089893",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "concarneau-fort-du-cabellou-pa00089893",
+      "latitude": 47.855954309072,
+      "longitude": -3.91873663308287,
+      "name": {
+        "en": "Fort du Cabellou",
+        "fr": "Fort du Cabellou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "manoir du Moros is an important witness to the city's history.",
+        "fr": "manoir français du XVe siècle"
+      },
+      "externalIdentity": {
+        "id": "Q20978571",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-manoir-du-moros-q20978571",
+      "latitude": 47.878541,
+      "longitude": -3.895344,
+      "name": {
+        "en": "manoir du Moros",
+        "fr": "manoir du Moros"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la pêche is one of the city's notable cultural landmarks.",
+        "fr": "musée de la pêche compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0199",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "concarneau-musee-de-la-peche-m0199",
+      "latitude": 47.872103,
+      "longitude": -3.915485,
+      "name": {
+        "en": "musée de la pêche",
+        "fr": "musée de la pêche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts de la Ville Close is an important witness to the city's history.",
+        "fr": "Remparts de la Ville Close est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00089895",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "concarneau-remparts-de-la-ville-close-pa00089895",
+      "latitude": 47.8723036017093,
+      "longitude": -3.9162559394613203,
+      "name": {
+        "en": "Remparts de la Ville Close",
+        "fr": "Remparts de la Ville Close"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Concarneau, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q26208603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "concarneau-la-boissiere-q26208603",
+      "latitude": 47.921229,
+      "longitude": -3.902772,
+      "name": {
+        "en": "La Boissière",
+        "fr": "La Boissière"
+      }
+    }
+  ]
+}

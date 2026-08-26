@@ -1,0 +1,204 @@
+{
+  "id": "romans-sur-isere-v1",
+  "cityId": "romans-sur-isere-fr",
+  "cityZoneId": "relation/36664",
+  "cityName": {
+    "en": "Romans-sur-Isère",
+    "fr": "Romans-sur-Isère"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cimetière des Récollets is a distinctive architectural landmark in the city.",
+        "fr": "Cimetière des Récollets est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-cimetiere-des-recollets-pa00117027",
+      "latitude": 45.0445170336964,
+      "longitude": 5.03593712079792,
+      "name": {
+        "en": "Cimetière des Récollets",
+        "fr": "Cimetière des Récollets"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-Lourdes is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-Lourdes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA26000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-eglise-notre-dame-de-lourdes-pa26000039",
+      "latitude": 45.04622500149577,
+      "longitude": 5.053989842685463,
+      "name": {
+        "en": "Église Notre-Dame-de-Lourdes",
+        "fr": "Église Notre-Dame-de-Lourdes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Clérieu is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Clérieu est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-hotel-de-clerieu-pa00117038",
+      "latitude": 45.0426087251057,
+      "longitude": 5.0502692343798605,
+      "name": {
+        "en": "Hôtel de Clérieu",
+        "fr": "Hôtel de Clérieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Framond (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Framond (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117031",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-hotel-de-framond-ancien-pa00117031",
+      "latitude": 45.0426090714953,
+      "longitude": 5.05093757416851,
+      "name": {
+        "en": "Hôtel de Framond (ancien)",
+        "fr": "Hôtel de Framond (ancien)"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA26000035",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-monument-aux-morts-pa26000035",
+      "latitude": 45.045240350974126,
+      "longitude": 5.053006200531517,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la chaussure is one of the city's notable cultural landmarks.",
+        "fr": "musée de la chaussure compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0986",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-musee-de-la-chaussure-m0986",
+      "latitude": 45.0431,
+      "longitude": 5.055376,
+      "name": {
+        "en": "musée de la chaussure",
+        "fr": "musée de la chaussure"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Jacquemart is an important witness to the city's history.",
+        "fr": "Tour Jacquemart est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-tour-jacquemart-pa00117041",
+      "latitude": 45.0448636559929,
+      "longitude": 5.04964359905152,
+      "name": {
+        "en": "Tour Jacquemart",
+        "fr": "Tour Jacquemart"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Thomé (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Thomé (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117033",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-hotel-thome-ancien-pa00117033",
+      "latitude": 45.0430916632058,
+      "longitude": 5.05229563288033,
+      "name": {
+        "en": "Hôtel Thomé (ancien)",
+        "fr": "Hôtel Thomé (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117034",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-immeuble-pa00117034",
+      "latitude": 45.0430536150968,
+      "longitude": 5.04855701850879,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117037",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romans-sur-isere-maison-pa00117037",
+      "latitude": 45.0423614457838,
+      "longitude": 5.05080443215192,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

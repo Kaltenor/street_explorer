@@ -1,0 +1,204 @@
+{
+  "id": "cormeilles-en-parisis-v1",
+  "cityId": "cormeilles-en-parisis-fr",
+  "cityZoneId": "relation/402367",
+  "cityName": {
+    "en": "Cormeilles-en-Parisis",
+    "fr": "Cormeilles-en-Parisis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q841957",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cormeilles-en-parisis-cormeilles-en-parisis-q841957",
+      "latitude": 48.973055555,
+      "longitude": 2.200555555,
+      "name": {
+        "en": "Cormeilles-en-Parisis",
+        "fr": "Cormeilles-en-Parisis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Christ-Roi is a distinctive architectural landmark in the city.",
+        "fr": "Église du Christ-Roi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/390694810",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-eglise-du-christ-roi-way-390694810",
+      "latitude": 48.965278,
+      "longitude": 2.1919475,
+      "name": {
+        "en": "Église du Christ-Roi",
+        "fr": "Église du Christ-Roi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3582744",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cormeilles-en-parisis-eglise-saint-martin-de-cormeilles-en-parisis-q3582744",
+      "latitude": 48.9773,
+      "longitude": 2.20377,
+      "name": {
+        "en": "église Saint-Martin de Cormeilles-en-Parisis",
+        "fr": "église Saint-Martin de Cormeilles-en-Parisis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/390605338",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-eglise-saint-martin-way-390605338",
+      "latitude": 48.977314,
+      "longitude": 2.2039155,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Cormeilles is an important witness to the city's history.",
+        "fr": "fort type Séré de Rivières à Cormeilles-en-Parisis (Val-d'Oise)"
+      },
+      "externalIdentity": {
+        "id": "Q2282291",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cormeilles-en-parisis-fort-de-cormeilles-q2282291",
+      "latitude": 48.98373,
+      "longitude": 2.1958,
+      "name": {
+        "en": "fort de Cormeilles",
+        "fr": "fort de Cormeilles"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin des familles is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin des familles compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1367291690",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-jardin-des-familles-way-1367291690",
+      "latitude": 48.9588026,
+      "longitude": 2.2023968,
+      "name": {
+        "en": "Jardin des familles",
+        "fr": "Jardin des familles"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc boisé Chabrand-Thibaullt is one of the city's notable green or natural landmarks.",
+        "fr": "Parc boisé Chabrand-Thibaullt compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1134288660",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-parc-boise-chabrand-thibaullt-way-1134288660",
+      "latitude": 48.9797882,
+      "longitude": 2.2082494,
+      "name": {
+        "en": "Parc boisé Chabrand-Thibaullt",
+        "fr": "Parc boisé Chabrand-Thibaullt"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Départemental Schlumberger is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Départemental Schlumberger compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/30724470",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-parc-departemental-schlumberger-way-30724470",
+      "latitude": 48.9811751,
+      "longitude": 2.2048802,
+      "name": {
+        "en": "Parc Départemental Schlumberger",
+        "fr": "Parc Départemental Schlumberger"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Promenade des Bois Rochefort is an important witness to the city's history.",
+        "fr": "Promenade des Bois Rochefort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/667405963",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-promenade-des-bois-rochefort-way-667405963",
+      "latitude": 48.9560107,
+      "longitude": 2.1952492,
+      "name": {
+        "en": "Promenade des Bois Rochefort",
+        "fr": "Promenade des Bois Rochefort"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre du Cormier - Lucienne Malovry is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre du Cormier - Lucienne Malovry compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/391092432",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "cormeilles-en-parisis-theatre-du-cormier-lucienne-malovry-way-391092432",
+      "latitude": 48.960909,
+      "longitude": 2.1903365,
+      "name": {
+        "en": "Théâtre du Cormier - Lucienne Malovry",
+        "fr": "Théâtre du Cormier - Lucienne Malovry"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "voiron-v1",
+  "cityId": "voiron-fr",
+  "cityZoneId": "relation/184482",
+  "cityName": {
+    "en": "Voiron",
+    "fr": "Voiron"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "caves de la Chartreuse is a distinctive architectural landmark in the city.",
+        "fr": "lieu de production de la liqueur des Chartreux à Voiron dans l'Isère"
+      },
+      "externalIdentity": {
+        "id": "Q125685096",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-caves-de-la-chartreuse-q125685096",
+      "latitude": 45.36182,
+      "longitude": 5.59807,
+      "name": {
+        "en": "caves de la Chartreuse",
+        "fr": "caves de la Chartreuse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Isère, in France",
+        "fr": "chapelle située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109732482",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-chapelle-de-l-hopital-de-voiron-q109732482",
+      "latitude": 45.36868,
+      "longitude": 5.59476,
+      "name": {
+        "en": "chapelle de l'hôpital de Voiron",
+        "fr": "chapelle de l'hôpital de Voiron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Isère, in France",
+        "fr": "chapelle située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60337416",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-chapelle-de-la-grace-de-voiron-q60337416",
+      "latitude": 45.36699,
+      "longitude": 5.59564,
+      "name": {
+        "en": "chapelle de la Grâce de Voiron",
+        "fr": "chapelle de la Grâce de Voiron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Isère, in France",
+        "fr": "chapelle située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60362924",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-chapelle-notre-dame-des-victoires-de-voiron-q60362924",
+      "latitude": 45.367282914,
+      "longitude": 5.596134599,
+      "name": {
+        "en": "chapelle Notre-Dame-des-Victoires de Voiron",
+        "fr": "chapelle Notre-Dame-des-Victoires de Voiron"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "war memorial in Voiron, Isère, France",
+        "fr": "monument de Voiron, Isère, France"
+      },
+      "externalIdentity": {
+        "id": "Q66759118",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-monument-aux-morts-de-voiron-q66759118",
+      "latitude": 45.36068,
+      "longitude": 5.5912,
+      "name": {
+        "en": "monument aux morts de Voiron",
+        "fr": "monument aux morts de Voiron"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Mainssieux is one of the city's notable cultural landmarks.",
+        "fr": "musée Mainssieux compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1137",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "voiron-musee-mainssieux-m1137",
+      "latitude": 45.356047,
+      "longitude": 5.579652,
+      "name": {
+        "en": "musée Mainssieux",
+        "fr": "musée Mainssieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Bruno is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Bruno est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132951",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "voiron-eglise-saint-bruno-pa00132951",
+      "latitude": 45.36707272983636,
+      "longitude": 5.592146974835281,
+      "name": {
+        "en": "Église Saint-Bruno",
+        "fr": "Église Saint-Bruno"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38645149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-eglise-saint-joseph-de-paviot-q38645149",
+      "latitude": 45.350405,
+      "longitude": 5.588903,
+      "name": {
+        "en": "église Saint-Joseph de Paviot",
+        "fr": "église Saint-Joseph de Paviot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Isère, in France",
+        "fr": "église située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56681811",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-eglise-saint-pierre-de-voiron-q56681811",
+      "latitude": 45.37062,
+      "longitude": 5.58483,
+      "name": {
+        "en": "église Saint-Pierre de Voiron",
+        "fr": "église Saint-Pierre de Voiron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Voiron, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3098036",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "voiron-voiron-q3098036",
+      "latitude": 45.363895,
+      "longitude": 5.594655,
+      "name": {
+        "en": "Voiron",
+        "fr": "Voiron"
+      }
+    }
+  ]
+}

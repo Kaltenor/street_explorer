@@ -1,0 +1,204 @@
+{
+  "id": "sceaux-v1",
+  "cityId": "sceaux-fr",
+  "cityZoneId": "relation/28069",
+  "cityName": {
+    "en": "Sceaux",
+    "fr": "Sceaux"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "château de Sceaux, musée départemental is one of the city's notable cultural landmarks.",
+        "fr": "château de Sceaux, musée départemental compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0417",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "sceaux-chateau-de-sceaux-musee-departemental-m0417",
+      "latitude": 48.774707,
+      "longitude": 2.299024,
+      "name": {
+        "en": "château de Sceaux, musée départemental",
+        "fr": "château de Sceaux, musée départemental"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine de Sceaux is an important witness to the city's history.",
+        "fr": "Domaine de Sceaux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088146",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-domaine-de-sceaux-pa00088146",
+      "latitude": 48.7676477999677,
+      "longitude": 2.298728763078,
+      "name": {
+        "en": "Domaine de Sceaux",
+        "fr": "Domaine de Sceaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088147",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-eglise-saint-jean-baptiste-pa00088147",
+      "latitude": 48.7768041730495,
+      "longitude": 2.29619891190219,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lycée Marie Curie is a distinctive architectural landmark in the city.",
+        "fr": "Lycée Marie Curie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-lycee-marie-curie-pa92000008",
+      "latitude": 48.7771913100997,
+      "longitude": 2.28841963603243,
+      "name": {
+        "en": "Lycée Marie Curie",
+        "fr": "Lycée Marie Curie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Badin is a distinctive architectural landmark in the city.",
+        "fr": "Maison Badin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-maison-badin-pa92000022",
+      "latitude": 48.7740992965375,
+      "longitude": 2.29033239294478,
+      "name": {
+        "en": "Maison Badin",
+        "fr": "Maison Badin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison d'André Lurçat is a distinctive architectural landmark in the city.",
+        "fr": "Maison d'André Lurçat est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-maison-d-andre-lurcat-pa92000020",
+      "latitude": 48.7743381382526,
+      "longitude": 2.29167382591259,
+      "name": {
+        "en": "Maison d'André Lurçat",
+        "fr": "Maison d'André Lurçat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite Willerval is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite Willerval est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000165",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-maison-dite-willerval-pa92000165",
+      "latitude": 48.774615383215135,
+      "longitude": 2.293244059689492,
+      "name": {
+        "en": "Maison dite Willerval",
+        "fr": "Maison dite Willerval"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Le Chalet Blanc is a distinctive architectural landmark in the city.",
+        "fr": "Maison Le Chalet Blanc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088148",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-maison-le-chalet-blanc-pa00088148",
+      "latitude": 48.7795636180347,
+      "longitude": 2.30302796761732,
+      "name": {
+        "en": "Maison Le Chalet Blanc",
+        "fr": "Maison Le Chalet Blanc"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché aux bestiaux (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Marché aux bestiaux (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088181",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-marche-aux-bestiaux-ancien-pa00088181",
+      "latitude": 48.7744364035779,
+      "longitude": 2.31269604867487,
+      "name": {
+        "en": "Marché aux bestiaux (ancien)",
+        "fr": "Marché aux bestiaux (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Trapenard is a distinctive architectural landmark in the city.",
+        "fr": "Villa Trapenard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA92000014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sceaux-villa-trapenard-pa92000014",
+      "latitude": 48.774409250040605,
+      "longitude": 2.3048161678819,
+      "name": {
+        "en": "Villa Trapenard",
+        "fr": "Villa Trapenard"
+      }
+    }
+  ]
+}

@@ -6,27 +6,27 @@
     "en": "Angers",
     "fr": "Angers"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
       "category": "history",
       "description": {
-        "en": "Ancien abbaye Saint-Nicolas is an important witness to the city's history.",
-        "fr": "Ancien abbaye Saint-Nicolas est un témoin important de l’histoire de la ville."
+        "en": "Abbaye Saint-Serge (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Serge (ancienne) est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "PA00108862",
+        "id": "PA00108863",
         "source": "merimee",
         "type": "record"
       },
-      "id": "angers-ancien-abbaye-saint-nicolas-pa00108862",
-      "latitude": 47.475185315351,
-      "longitude": -0.575709883334167,
+      "id": "angers-abbaye-saint-serge-ancienne-pa00108863",
+      "latitude": 47.4762072257108,
+      "longitude": -0.546083230714297,
       "name": {
-        "en": "Ancien abbaye Saint-Nicolas",
-        "fr": "Ancien abbaye Saint-Nicolas"
+        "en": "Abbaye Saint-Serge (ancienne)",
+        "fr": "Abbaye Saint-Serge (ancienne)"
       }
     },
     {
@@ -51,6 +51,25 @@
     {
       "category": "history",
       "description": {
+        "en": "Ancien abbaye du Ronceray is an important witness to the city's history.",
+        "fr": "Ancien abbaye du Ronceray est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108860",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-abbaye-du-ronceray-pa00108860",
+      "latitude": 47.4756565030791,
+      "longitude": -0.560894002865168,
+      "name": {
+        "en": "Ancien abbaye du Ronceray",
+        "fr": "Ancien abbaye du Ronceray"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
         "en": "Ancien abbaye Saint-Aubin, actuelle préfecture is an important witness to the city's history.",
         "fr": "Ancien abbaye Saint-Aubin, actuelle préfecture est un témoin important de l’histoire de la ville."
       },
@@ -65,6 +84,44 @@
       "name": {
         "en": "Ancien abbaye Saint-Aubin, actuelle préfecture",
         "fr": "Ancien abbaye Saint-Aubin, actuelle préfecture"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Nicolas is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Nicolas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108862",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-abbaye-saint-nicolas-pa00108862",
+      "latitude": 47.475185315351,
+      "longitude": -0.575709883334167,
+      "name": {
+        "en": "Ancien abbaye Saint-Nicolas",
+        "fr": "Ancien abbaye Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien évêché ou Palais du Tau is a distinctive architectural landmark in the city.",
+        "fr": "Ancien évêché ou Palais du Tau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108880",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-ancien-eveche-ou-palais-du-tau-pa00108880",
+      "latitude": 47.4708792519356,
+      "longitude": -0.554377961723317,
+      "name": {
+        "en": "Ancien évêché ou Palais du Tau",
+        "fr": "Ancien évêché ou Palais du Tau"
       }
     },
     {
@@ -84,6 +141,177 @@
       "name": {
         "en": "Cathédrale Saint-Maurice",
         "fr": "Cathédrale Saint-Maurice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'Angers is an important witness to the city's history.",
+        "fr": "Château d'Angers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108871",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-chateau-d-angers-pa00108871",
+      "latitude": 47.4699321848952,
+      "longitude": -0.55966292629343,
+      "name": {
+        "en": "Château d'Angers",
+        "fr": "Château d'Angers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'Orgemont is an important witness to the city's history.",
+        "fr": "Château d'Orgemont est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108872",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-chateau-d-orgemont-pa00108872",
+      "latitude": 47.4426926934595,
+      "longitude": -0.540716650873208,
+      "name": {
+        "en": "Château d'Orgemont",
+        "fr": "Château d'Orgemont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Trinité is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Trinité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108879",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-eglise-de-la-trinite-pa00108879",
+      "latitude": 47.4750187113729,
+      "longitude": -0.560980694871521,
+      "name": {
+        "en": "Église de la Trinité",
+        "fr": "Église de la Trinité"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame des Victoires is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame des Victoires est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-eglise-notre-dame-des-victoires-pa49000059",
+      "latitude": 47.4728607501631,
+      "longitude": -0.548143341580834,
+      "name": {
+        "en": "Église Notre-Dame des Victoires",
+        "fr": "Église Notre-Dame des Victoires"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Augustin-lès-Angers is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Augustin-lès-Angers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108876",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-eglise-saint-augustin-les-angers-pa00108876",
+      "latitude": 47.447006222803005,
+      "longitude": -0.52598491426939,
+      "name": {
+        "en": "Église Saint-Augustin-lès-Angers",
+        "fr": "Église Saint-Augustin-lès-Angers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Laurent (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Laurent (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108877",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-eglise-saint-laurent-ancienne-pa00108877",
+      "latitude": 47.4774521541555,
+      "longitude": -0.5586650027901,
+      "name": {
+        "en": "Église Saint-Laurent (ancienne)",
+        "fr": "Église Saint-Laurent (ancienne)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine du Pied-Boulet is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine du Pied-Boulet compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108881",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-fontaine-du-pied-boulet-pa00108881",
+      "latitude": 47.4719580062168,
+      "longitude": -0.556582505246029,
+      "name": {
+        "en": "Fontaine du Pied-Boulet",
+        "fr": "Fontaine du Pied-Boulet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Hôtel Demarie, actuellement musée d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "Hôtel Demarie, actuellement musée d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135543",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "angers-hotel-demarie-actuellement-musee-d-histoire-naturelle-pa00135543",
+      "latitude": 47.4737090177202,
+      "longitude": -0.546284142085053,
+      "name": {
+        "en": "Hôtel Demarie, actuellement musée d'histoire naturelle",
+        "fr": "Hôtel Demarie, actuellement musée d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et galerie David-d'Angers is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et galerie David-d'Angers compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0748",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "angers-musee-des-beaux-arts-et-galerie-david-d-angers-m0748",
+      "latitude": 47.469659,
+      "longitude": -0.555485,
+      "name": {
+        "en": "musée des beaux-arts et galerie David-d'Angers",
+        "fr": "musée des beaux-arts et galerie David-d'Angers"
       }
     },
     {
@@ -127,39 +355,39 @@
     {
       "category": "culture",
       "description": {
-        "en": "musée des beaux-arts et galerie David-d'Angers is one of the city's notable cultural landmarks.",
-        "fr": "musée des beaux-arts et galerie David-d'Angers compte parmi les lieux culturels marquants de la ville."
+        "en": "muséum des sciences naturelles is one of the city's notable cultural landmarks.",
+        "fr": "muséum des sciences naturelles compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0748",
+        "id": "M7017",
         "source": "museofile",
         "type": "record"
       },
-      "id": "angers-musee-des-beaux-arts-et-galerie-david-d-angers-m0748",
-      "latitude": 47.469659,
-      "longitude": -0.555485,
+      "id": "angers-museum-des-sciences-naturelles-m7017",
+      "latitude": 47.473467,
+      "longitude": -0.546399,
       "name": {
-        "en": "musée des beaux-arts et galerie David-d'Angers",
-        "fr": "musée des beaux-arts et galerie David-d'Angers"
+        "en": "muséum des sciences naturelles",
+        "fr": "muséum des sciences naturelles"
       }
     },
     {
       "category": "architecture",
       "description": {
-        "en": "Ancien évêché ou Palais du Tau is a distinctive architectural landmark in the city.",
-        "fr": "Ancien évêché ou Palais du Tau est un repère architectural remarquable de la ville."
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00108880",
+        "id": "PA00108939",
         "source": "merimee",
         "type": "record"
       },
-      "id": "angers-ancien-eveche-ou-palais-du-tau-pa00108880",
-      "latitude": 47.4708792519356,
-      "longitude": -0.554377961723317,
+      "id": "angers-palais-de-justice-pa00108939",
+      "latitude": 47.4707055491332,
+      "longitude": -0.543358148286314,
       "name": {
-        "en": "Ancien évêché ou Palais du Tau",
-        "fr": "Ancien évêché ou Palais du Tau"
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
       }
     }
   ]

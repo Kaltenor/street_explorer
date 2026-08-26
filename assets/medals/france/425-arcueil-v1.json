@@ -1,0 +1,204 @@
+{
+  "id": "arcueil-v1",
+  "cityId": "arcueil-fr",
+  "cityZoneId": "relation/103967",
+  "cityName": {
+    "en": "Arcueil",
+    "fr": "Arcueil"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "group of aqueducts in Paris, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q2859246",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-aqueducs-d-arcueil-et-de-cachan-q2859246",
+      "latitude": 48.799316,
+      "longitude": 2.332857,
+      "name": {
+        "en": "aqueducs d'Arcueil et de Cachan",
+        "fr": "aqueducs d'Arcueil et de Cachan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Denys is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Denys est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079846",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arcueil-eglise-saint-denys-pa00079846",
+      "latitude": 48.8024606630507,
+      "longitude": 2.3319657102812,
+      "name": {
+        "en": "Église Saint-Denys",
+        "fr": "Église Saint-Denys"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Montrouge is an important witness to the city's history.",
+        "fr": "fort à Arcueil (Val-de-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q3078203",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-fort-de-montrouge-q3078203",
+      "latitude": 48.8078,
+      "longitude": 2.32161,
+      "name": {
+        "en": "fort de Montrouge",
+        "fr": "fort de Montrouge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Arcueil, Val-de-Marne, France",
+        "fr": "mairie d'Arcueil, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409698",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-hotel-de-ville-d-arcueil-q83409698",
+      "latitude": 48.804446,
+      "longitude": 2.334713,
+      "name": {
+        "en": "hôtel de ville d'Arcueil",
+        "fr": "hôtel de ville d'Arcueil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q782121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-laplace-q782121",
+      "latitude": 48.8075,
+      "longitude": 2.333333,
+      "name": {
+        "en": "Laplace",
+        "fr": "Laplace"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison des Gardes de l'ancien château is an important witness to the city's history.",
+        "fr": "Maison des Gardes de l'ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079848",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "arcueil-maison-des-gardes-de-l-ancien-chateau-pa00079848",
+      "latitude": 48.8013734522905,
+      "longitude": 2.33245727951448,
+      "name": {
+        "en": "Maison des Gardes de l'ancien château",
+        "fr": "Maison des Gardes de l'ancien château"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136041409",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-monument-aux-morts-d-arcueil-q136041409",
+      "latitude": 48.80198,
+      "longitude": 2.33189,
+      "name": {
+        "en": "monument aux morts d'Arcueil",
+        "fr": "monument aux morts d'Arcueil"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "former park in Arcueil, France",
+        "fr": "ancien parc à Arcueil"
+      },
+      "externalIdentity": {
+        "id": "Q134000294",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-parc-de-madame-de-provigny-q134000294",
+      "latitude": 48.800176232,
+      "longitude": 2.333436796,
+      "name": {
+        "en": "parc de Madame de Provigny",
+        "fr": "parc de Madame de Provigny"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc du Coteau de Bièvre is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé entre Arcueil et Gentilly, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109447097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-parc-du-coteau-de-bievre-q109447097",
+      "latitude": 48.8072,
+      "longitude": 2.34335,
+      "name": {
+        "en": "parc du Coteau de Bièvre",
+        "fr": "parc du Coteau de Bièvre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa in Arcueil, France",
+        "fr": "villa d'Arcueil, en France"
+      },
+      "externalIdentity": {
+        "id": "Q111917062",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "arcueil-villa-de-la-citadelle-q111917062",
+      "latitude": 48.7977912,
+      "longitude": 2.3392155,
+      "name": {
+        "en": "villa de la Citadelle",
+        "fr": "villa de la Citadelle"
+      }
+    }
+  ]
+}

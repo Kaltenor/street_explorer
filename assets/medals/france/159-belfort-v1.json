@@ -1,0 +1,204 @@
+{
+  "id": "belfort-v1",
+  "cityId": "belfort-fr",
+  "cityZoneId": "relation/75618",
+  "cityName": {
+    "en": "Belfort",
+    "fr": "Belfort"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "cabinet d'un amateur - donation Maurice Jardot is one of the city's notable cultural landmarks.",
+        "fr": "cabinet d'un amateur - donation Maurice Jardot compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1075",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "belfort-cabinet-d-un-amateur-donation-maurice-jardot-m1075",
+      "latitude": 47.642439,
+      "longitude": 6.855466,
+      "name": {
+        "en": "cabinet d'un amateur - donation Maurice Jardot",
+        "fr": "cabinet d'un amateur - donation Maurice Jardot"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Château, actuellement musée d'Art et d'Histoire, et enceinte urbaine is one of the city's notable cultural landmarks.",
+        "fr": "Château, actuellement musée d'Art et d'Histoire, et enceinte urbaine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101142",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-chateau-actuellement-musee-d-art-et-d-histoire-et-enceinte-urbaine-pa00101142",
+      "latitude": 47.636101284036606,
+      "longitude": 6.86667515712469,
+      "name": {
+        "en": "Château, actuellement musée d'Art et d'Histoire, et enceinte urbaine",
+        "fr": "Château, actuellement musée d'Art et d'Histoire, et enceinte urbaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Brasse (ancienne) , actuellement chapelle du cimetière is a distinctive architectural landmark in the city.",
+        "fr": "Église de Brasse (ancienne) , actuellement chapelle du cimetière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101134",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-eglise-de-brasse-ancienne-actuellement-chapelle-du-cimetiere-pa00101134",
+      "latitude": 47.6455214029525,
+      "longitude": 6.85807736178824,
+      "name": {
+        "en": "Église de Brasse (ancienne) , actuellement chapelle du cimetière",
+        "fr": "Église de Brasse (ancienne) , actuellement chapelle du cimetière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Christophe is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Christophe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101135",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-eglise-saint-christophe-pa00101135",
+      "latitude": 47.63857238756,
+      "longitude": 6.86376371058505,
+      "name": {
+        "en": "Église Saint-Christophe",
+        "fr": "Église Saint-Christophe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Gare de Belfort is an important witness to the city's history.",
+        "fr": "Gare de Belfort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA90000015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-gare-de-belfort-pa90000015",
+      "latitude": 47.6332834111128,
+      "longitude": 6.85389455966186,
+      "name": {
+        "en": "Gare de Belfort",
+        "fr": "Gare de Belfort"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Habitat fortifié is an important witness to the city's history.",
+        "fr": "Habitat fortifié est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125421",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-habitat-fortifie-pa00125421",
+      "latitude": 47.6529036627915,
+      "longitude": 6.89213237675823,
+      "name": {
+        "en": "Habitat fortifié",
+        "fr": "Habitat fortifié"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101139",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-hotel-de-ville-pa00101139",
+      "latitude": 47.6379442767469,
+      "longitude": 6.86297297016057,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0361",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "belfort-musee-d-art-et-d-histoire-m0361",
+      "latitude": 47.63757,
+      "longitude": 6.867072,
+      "name": {
+        "en": "musée d'art et d'histoire",
+        "fr": "musée d'art et d'histoire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Petite fontaine is a distinctive architectural landmark in the city.",
+        "fr": "Petite fontaine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101137",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-petite-fontaine-pa00101137",
+      "latitude": 47.6390429595719,
+      "longitude": 6.86506337328731,
+      "name": {
+        "en": "Petite fontaine",
+        "fr": "Petite fontaine"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "square du Souvenir et monument aux morts is a notable work of public art and local memory.",
+        "fr": "square du Souvenir et monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA90000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "belfort-square-du-souvenir-et-monument-aux-morts-pa90000017",
+      "latitude": 47.6356611474542,
+      "longitude": 6.860674439579268,
+      "name": {
+        "en": "square du Souvenir et monument aux morts",
+        "fr": "square du Souvenir et monument aux morts"
+      }
+    }
+  ]
+}

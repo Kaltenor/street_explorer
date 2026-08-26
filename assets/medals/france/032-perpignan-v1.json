@@ -1,0 +1,394 @@
+{
+  "id": "perpignan-v1",
+  "cityId": "perpignan-fr",
+  "cityZoneId": "relation/18000",
+  "cityName": {
+    "en": "Perpignan",
+    "fr": "Perpignan"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église des Carmes is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église des Carmes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104073",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-ancien-eglise-des-carmes-pa00104073",
+      "latitude": 42.6965262611859,
+      "longitude": 2.90048412849347,
+      "name": {
+        "en": "Ancien église des Carmes",
+        "fr": "Ancien église des Carmes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104087",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-ancien-palais-de-justice-pa00104087",
+      "latitude": 42.6993509263109,
+      "longitude": 2.89457838938768,
+      "name": {
+        "en": "Ancien palais de justice",
+        "fr": "Ancien palais de justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Aqueduc des Arcades is a distinctive architectural landmark in the city.",
+        "fr": "Aqueduc des Arcades est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104064",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-aqueduc-des-arcades-pa00104064",
+      "latitude": 42.6757348273036,
+      "longitude": 2.8869770080874804,
+      "name": {
+        "en": "Aqueduc des Arcades",
+        "fr": "Aqueduc des Arcades"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet is an important witness to the city's history.",
+        "fr": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104066",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-castillet-grand-castillet-porte-notre-dame-ou-petit-castillet-pa00104066",
+      "latitude": 42.7006150968989,
+      "longitude": 2.89402766244451,
+      "name": {
+        "en": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet",
+        "fr": "Castillet, Grand-Castillet, porte Notre-Dame ou Petit-Castillet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104067",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-cathedrale-saint-jean-baptiste-pa00104067",
+      "latitude": 42.7006179903729,
+      "longitude": 2.89718724751146,
+      "name": {
+        "en": "Cathédrale Saint-Jean-Baptiste",
+        "fr": "Cathédrale Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle de Château-Roussillon, ancienne église Sainte-Marie de Château-Roussillon is an important witness to the city's history.",
+        "fr": "Chapelle de Château-Roussillon, ancienne église Sainte-Marie de Château-Roussillon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA66000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-chapelle-de-chateau-roussillon-ancienne-eglise-sainte-marie-de-chateau-roussillon-pa66000038",
+      "latitude": 42.7109318045522,
+      "longitude": 2.94668021334425,
+      "name": {
+        "en": "Chapelle de Château-Roussillon, ancienne église Sainte-Marie de Château-Roussillon",
+        "fr": "Chapelle de Château-Roussillon, ancienne église Sainte-Marie de Château-Roussillon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Cinéma \"Castillet\" is one of the city's notable cultural landmarks.",
+        "fr": "Cinéma \"Castillet\" compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA66000004",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-cinema-castillet-pa66000004",
+      "latitude": 42.7011620537067,
+      "longitude": 2.89435688410423,
+      "name": {
+        "en": "Cinéma \"Castillet\"",
+        "fr": "Cinéma \"Castillet\""
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon is an important witness to the city's history.",
+        "fr": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104069",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-citadelle-ou-ancien-palais-des-rois-de-majorque-et-d-aragon-pa00104069",
+      "latitude": 42.6936803347857,
+      "longitude": 2.89641110563733,
+      "name": {
+        "en": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon",
+        "fr": "Citadelle ou ancien palais des Rois de Majorque et d'Aragon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Vieux-Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Église du Vieux-Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104076",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-eglise-du-vieux-saint-jean-pa00104076",
+      "latitude": 42.7008401103722,
+      "longitude": 2.89681830772323,
+      "name": {
+        "en": "Église du Vieux-Saint-Jean",
+        "fr": "Église du Vieux-Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de la Réal is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de la Réal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104074",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-eglise-notre-dame-de-la-real-pa00104074",
+      "latitude": 42.6966482268048,
+      "longitude": 2.89766619512843,
+      "name": {
+        "en": "Église Notre-Dame de la Réal",
+        "fr": "Église Notre-Dame de la Réal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104079",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-hotel-de-ville-pa00104079",
+      "latitude": 42.6994460089509,
+      "longitude": 2.89486629300855,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts départemental de la guerre de 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts départemental de la guerre de 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA66000055",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-monument-aux-morts-departemental-de-la-guerre-de-1914-1918-pa66000055",
+      "latitude": 42.702466711620474,
+      "longitude": 2.8984155105494764,
+      "name": {
+        "en": "Monument aux morts départemental de la guerre de 1914-1918",
+        "fr": "Monument aux morts départemental de la guerre de 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée archéologique de Ruscino is one of the city's notable cultural landmarks.",
+        "fr": "musée archéologique de Ruscino compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0493",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-archeologique-de-ruscino-m0493",
+      "latitude": 42.709124,
+      "longitude": 2.945875,
+      "name": {
+        "en": "musée archéologique de Ruscino",
+        "fr": "musée archéologique de Ruscino"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Casa Pairal is one of the city's notable cultural landmarks.",
+        "fr": "musée Casa Pairal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0494",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-casa-pairal-m0494",
+      "latitude": 42.727965,
+      "longitude": 2.896696,
+      "name": {
+        "en": "musée Casa Pairal",
+        "fr": "musée Casa Pairal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Hyacinthe Rigaud is one of the city's notable cultural landmarks.",
+        "fr": "musée Hyacinthe Rigaud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0491",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-hyacinthe-rigaud-m0491",
+      "latitude": 42.698013,
+      "longitude": 2.892984,
+      "name": {
+        "en": "musée Hyacinthe Rigaud",
+        "fr": "musée Hyacinthe Rigaud"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Joseph Puig is one of the city's notable cultural landmarks.",
+        "fr": "musée Joseph Puig compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0492",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-musee-joseph-puig-m0492",
+      "latitude": 42.69945,
+      "longitude": 2.883256,
+      "name": {
+        "en": "musée Joseph Puig",
+        "fr": "musée Joseph Puig"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7055",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "perpignan-museum-d-histoire-naturelle-m7055",
+      "latitude": 42.697731358540544,
+      "longitude": 2.900461442325304,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Museum is one of the city's notable cultural landmarks.",
+        "fr": "Museum compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-museum-pa00104085",
+      "latitude": 42.6973223928036,
+      "longitude": 2.89970651947619,
+      "name": {
+        "en": "Museum",
+        "fr": "Museum"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Oppidum gallo-romain de Ruscino is an important witness to the city's history.",
+        "fr": "Oppidum gallo-romain de Ruscino est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104086",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-oppidum-gallo-romain-de-ruscino-pa00104086",
+      "latitude": 42.7095973990116,
+      "longitude": 2.94666808759407,
+      "name": {
+        "en": "Oppidum gallo-romain de Ruscino",
+        "fr": "Oppidum gallo-romain de Ruscino"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour de Château-Roussillon is an important witness to the city's history.",
+        "fr": "Tour de Château-Roussillon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA66000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "perpignan-tour-de-chateau-roussillon-pa66000039",
+      "latitude": 42.7112137630409,
+      "longitude": 2.94658440391604,
+      "name": {
+        "en": "Tour de Château-Roussillon",
+        "fr": "Tour de Château-Roussillon"
+      }
+    }
+  ]
+}

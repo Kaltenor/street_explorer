@@ -1,0 +1,204 @@
+{
+  "id": "gennevilliers-v1",
+  "cityId": "gennevilliers-fr",
+  "cityZoneId": "relation/90082",
+  "cityName": {
+    "en": "Gennevilliers",
+    "fr": "Gennevilliers"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21027339",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-eglise-saint-jean-des-gresillons-q21027339",
+      "latitude": 48.918865,
+      "longitude": 2.300257,
+      "name": {
+        "en": "église Saint-Jean-des-Grésillons",
+        "fr": "église Saint-Jean-des-Grésillons"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gennevilliers, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2305273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-gennevilliers-q2305273",
+      "latitude": 48.93333,
+      "longitude": 2.3075,
+      "name": {
+        "en": "Gennevilliers",
+        "fr": "Gennevilliers"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in Gennevilliers, France",
+        "fr": "Jardin Chenard et Walcker compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3162303",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-jardin-chenard-et-walcker-q3162303",
+      "latitude": 48.9204,
+      "longitude": 2.29997,
+      "name": {
+        "en": "Jardin Chenard et Walcker",
+        "fr": "Jardin Chenard et Walcker"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gennevilliers, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2089423",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-les-gresillons-q2089423",
+      "latitude": 48.92,
+      "longitude": 2.31417,
+      "name": {
+        "en": "Les Grésillons",
+        "fr": "Les Grésillons"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "former market and multi-purpose hall complex in Gennevilliers, France, converted to a theatre",
+        "fr": "ancien marché et salle des fêtes située à Gennevilliers, dans les Hauts-de-Seine, la salle des fêtes réaménagée en théâtre"
+      },
+      "externalIdentity": {
+        "id": "Q96605921",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-marche-et-salle-des-fetes-des-gresillons-q96605921",
+      "latitude": 48.9145,
+      "longitude": 2.29907,
+      "name": {
+        "en": "marché et salle des fêtes des Grésillons",
+        "fr": "marché et salle des fêtes des Grésillons"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Tram stop",
+        "fr": "station de la ligne T1 du tramway d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q28655243",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-parc-des-chanteraines-q28655243",
+      "latitude": 48.933835,
+      "longitude": 2.313742,
+      "name": {
+        "en": "Parc des Chanteraines",
+        "fr": "Parc des Chanteraines"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc des Sévines compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q21027253",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-parc-des-sevines-q21027253",
+      "latitude": 48.93,
+      "longitude": 2.304,
+      "name": {
+        "en": "parc des Sévines",
+        "fr": "parc des Sévines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "road bridge over the River Seine in France",
+        "fr": "pont sur la Seine"
+      },
+      "externalIdentity": {
+        "id": "Q1306697",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-pont-d-argenteuil-q1306697",
+      "latitude": 48.940275,
+      "longitude": 2.255003,
+      "name": {
+        "en": "pont d'Argenteuil",
+        "fr": "pont d'Argenteuil"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "French theatre",
+        "fr": "théâtre de Gennevilliers compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3527627",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-theatre-de-gennevilliers-q3527627",
+      "latitude": 48.91417,
+      "longitude": 2.29972,
+      "name": {
+        "en": "théâtre de Gennevilliers",
+        "fr": "théâtre de Gennevilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont routier sur la Seine reliant Argenteuil à Gennevilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3556573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gennevilliers-viaduc-de-gennevilliers-q3556573",
+      "latitude": 48.9492,
+      "longitude": 2.28035,
+      "name": {
+        "en": "viaduc de Gennevilliers",
+        "fr": "viaduc de Gennevilliers"
+      }
+    }
+  ]
+}

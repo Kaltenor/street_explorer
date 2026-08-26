@@ -1,0 +1,204 @@
+{
+  "id": "tremblay-en-france-v1",
+  "cityId": "tremblay-en-france-fr",
+  "cityZoneId": "relation/160818",
+  "cityName": {
+    "en": "Tremblay-en-France",
+    "fr": "Tremblay-en-France"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "international airport serving Paris, France",
+        "fr": "aéroport desservant Paris (Île-de-France, France)"
+      },
+      "externalIdentity": {
+        "id": "Q46280",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-aeroport-paris-charles-de-gaulle-q46280",
+      "latitude": 49.009722222,
+      "longitude": 2.547777777,
+      "name": {
+        "en": "aéroport Paris-Charles-de-Gaulle",
+        "fr": "aéroport Paris-Charles-de-Gaulle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "circuit Carole is a distinctive architectural landmark in the city.",
+        "fr": "circuit automobile français"
+      },
+      "externalIdentity": {
+        "id": "Q2973963",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-circuit-carole-q2973963",
+      "latitude": 48.97754,
+      "longitude": 2.52214,
+      "name": {
+        "en": "circuit Carole",
+        "fr": "circuit Carole"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583294",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-eglise-saint-medard-de-tremblay-en-france-q3583294",
+      "latitude": 48.9796,
+      "longitude": 2.55803,
+      "name": {
+        "en": "église Saint-Médard de Tremblay-en-France",
+        "fr": "église Saint-Médard de Tremblay-en-France"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Médard is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Médard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079965",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tremblay-en-france-eglise-saint-medard-pa00079965",
+      "latitude": 48.9795516079577,
+      "longitude": 2.55802455401723,
+      "name": {
+        "en": "Église Saint-Médard",
+        "fr": "Église Saint-Médard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Grange aux dîmes is an important witness to the city's history.",
+        "fr": "Grange aux dîmes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079966",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tremblay-en-france-grange-aux-dimes-pa00079966",
+      "latitude": 48.9792437494375,
+      "longitude": 2.55785531891725,
+      "name": {
+        "en": "Grange aux dîmes",
+        "fr": "Grange aux dîmes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096948",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-monument-aux-morts-de-la-mairie-de-tremblay-en-france-q136096948",
+      "latitude": 48.9873024,
+      "longitude": 2.5553256,
+      "name": {
+        "en": "monument aux morts de la mairie de Tremblay-en-France",
+        "fr": "monument aux morts de la mairie de Tremblay-en-France"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "street in Tremblay-en-France, France",
+        "fr": "ruelle de Tremblay-en-France, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113448274",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-ruelle-du-chateau-bleu-q113448274",
+      "latitude": 48.9822724,
+      "longitude": 2.5540285,
+      "name": {
+        "en": "ruelle du Château-Bleu",
+        "fr": "ruelle du Château-Bleu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3248027",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-eglise-sainte-therese-du-vert-galant-q3248027",
+      "latitude": 48.942298,
+      "longitude": 2.582414,
+      "name": {
+        "en": "église Sainte-Thérèse du Vert-Galant",
+        "fr": "église Sainte-Thérèse du Vert-Galant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Tremblay-en-France, France",
+        "fr": "hôtel de ville situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q96186512",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-hotel-de-ville-de-tremblay-en-france-q96186512",
+      "latitude": 48.95121,
+      "longitude": 2.57073,
+      "name": {
+        "en": "hôtel de ville de Tremblay-en-France",
+        "fr": "hôtel de ville de Tremblay-en-France"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc de la ligne 17 du métro de Paris is a distinctive architectural landmark in the city.",
+        "fr": "pont du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q135003018",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tremblay-en-france-viaduc-de-la-ligne-17-du-metro-de-paris-q135003018",
+      "latitude": 48.969624,
+      "longitude": 2.512844,
+      "name": {
+        "en": "viaduc de la ligne 17 du métro de Paris",
+        "fr": "viaduc de la ligne 17 du métro de Paris"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "le-gosier-v1",
+  "cityId": "le-gosier-fr",
+  "cityZoneId": "relation/255779",
+  "cityName": {
+    "en": "Le Gosier",
+    "fr": "Le Gosier"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Anse du Mont is a distinctive architectural landmark in the city.",
+        "fr": "baie en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q118719878",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-anse-du-mont-q118719878",
+      "latitude": 16.201553,
+      "longitude": -61.457183,
+      "name": {
+        "en": "Anse du Mont",
+        "fr": "Anse du Mont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "aquarium de la Guadeloupe is a distinctive architectural landmark in the city.",
+        "fr": "aquarium de la Guadeloupe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2859172",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-aquarium-de-la-guadeloupe-q2859172",
+      "latitude": 16.218,
+      "longitude": -61.5038,
+      "name": {
+        "en": "aquarium de la Guadeloupe",
+        "fr": "aquarium de la Guadeloupe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Guadeloupe, in France",
+        "fr": "église située en Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60387430",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-eglise-saint-louis-du-gosier-q60387430",
+      "latitude": 16.206697,
+      "longitude": -61.494503,
+      "name": {
+        "en": "église Saint-Louis du Gosier",
+        "fr": "église Saint-Louis du Gosier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort Fleur d'Épée is an important witness to the city's history.",
+        "fr": "fort au Gosier (Guadeloupe)"
+      },
+      "externalIdentity": {
+        "id": "Q3077867",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-fort-fleur-d-epee-q3077867",
+      "latitude": 16.216666666,
+      "longitude": -61.513055555,
+      "name": {
+        "en": "fort Fleur d'Épée",
+        "fr": "fort Fleur d'Épée"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Fort l'Union is an important witness to the city's history.",
+        "fr": "Fort l'Union est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105890",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-gosier-fort-l-union-pa00105890",
+      "latitude": 16.2163732365427,
+      "longitude": -61.525879405377395,
+      "name": {
+        "en": "Fort l'Union",
+        "fr": "Fort l'Union"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort in Le Gosier (Guadeloupe, France)",
+        "fr": "fort au Gosier (Guadeloupe)"
+      },
+      "externalIdentity": {
+        "id": "Q13518771",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-fort-louis-q13518771",
+      "latitude": 16.2163,
+      "longitude": -61.5259,
+      "name": {
+        "en": "fort Louis",
+        "fr": "fort Louis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Guadeloupe department, France",
+        "fr": "monument aux morts de Guadeloupe, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136059884",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-monument-aux-morts-du-gosier-q136059884",
+      "latitude": 16.206378,
+      "longitude": -61.493128,
+      "name": {
+        "en": "monument aux morts du Gosier",
+        "fr": "monument aux morts du Gosier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plage de l'Anse Vinaigri is a distinctive architectural landmark in the city.",
+        "fr": "Plage au Gosier, en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q124877549",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-plage-de-l-anse-vinaigri-q124877549",
+      "latitude": 16.198363,
+      "longitude": -61.469839,
+      "name": {
+        "en": "plage de l'Anse Vinaigri",
+        "fr": "plage de l'Anse Vinaigri"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stade Roger Zami is a distinctive architectural landmark in the city.",
+        "fr": "stade français situé en Guadeloupe"
+      },
+      "externalIdentity": {
+        "id": "Q9341076",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-stade-roger-zami-q9341076",
+      "latitude": 16.21003,
+      "longitude": -61.50237,
+      "name": {
+        "en": "stade Roger Zami",
+        "fr": "stade Roger Zami"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Municipal building",
+        "fr": "Town hall of Le Gosier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q138456575",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-gosier-town-hall-of-le-gosier-q138456575",
+      "latitude": 16.206,
+      "longitude": -61.4921,
+      "name": {
+        "en": "Town hall of Le Gosier",
+        "fr": "Town hall of Le Gosier"
+      }
+    }
+  ]
+}

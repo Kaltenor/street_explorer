@@ -1,0 +1,394 @@
+{
+  "id": "pau-v1",
+  "cityId": "pau-fr",
+  "cityZoneId": "relation/162431",
+  "cityName": {
+    "en": "Pau",
+    "fr": "Pau"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel de Gassion, actuellement cercle de jeux is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel de Gassion, actuellement cercle de jeux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084485",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-ancien-hotel-de-gassion-actuellement-cercle-de-jeux-pa00084485",
+      "latitude": 43.2940502913332,
+      "longitude": -0.37345180285141405,
+      "name": {
+        "en": "Ancien Hôtel de Gassion, actuellement cercle de jeux",
+        "fr": "Ancien Hôtel de Gassion, actuellement cercle de jeux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel de Peyré ou maison dite de Sully is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel de Peyré ou maison dite de Sully est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084486",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-ancien-hotel-de-peyre-ou-maison-dite-de-sully-pa00084486",
+      "latitude": 43.2947002900079,
+      "longitude": -0.37450642459335,
+      "name": {
+        "en": "Ancien Hôtel de Peyré ou maison dite de Sully",
+        "fr": "Ancien Hôtel de Peyré ou maison dite de Sully"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle funéraire Guillemin-Montebello dans le Grand Cimetière is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle funéraire Guillemin-Montebello dans le Grand Cimetière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-chapelle-funeraire-guillemin-montebello-dans-le-grand-cimetiere-pa64000020",
+      "latitude": 43.297677572712,
+      "longitude": -0.380658282667116,
+      "name": {
+        "en": "Chapelle funéraire Guillemin-Montebello dans le Grand Cimetière",
+        "fr": "Chapelle funéraire Guillemin-Montebello dans le Grand Cimetière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Castle in Pau, France",
+        "fr": "château français situé à Pau"
+      },
+      "externalIdentity": {
+        "id": "Q1480604",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pau-chateau-de-pau-q1480604",
+      "latitude": 43.294722222,
+      "longitude": -0.375,
+      "name": {
+        "en": "château de Pau",
+        "fr": "château de Pau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château de Pau ou château Henri IV is an important witness to the city's history.",
+        "fr": "Domaine du château de Pau ou château Henri IV est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084483",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-domaine-du-chateau-de-pau-ou-chateau-henri-iv-pa00084483",
+      "latitude": 43.2966153028094,
+      "longitude": -0.388712473444269,
+      "name": {
+        "en": "Domaine du château de Pau ou château Henri IV",
+        "fr": "Domaine du château de Pau ou château Henri IV"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église anglicane Saint-Andrew is a distinctive architectural landmark in the city.",
+        "fr": "Église anglicane Saint-Andrew est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000108",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-anglicane-saint-andrew-pa64000108",
+      "latitude": 43.3017606558849,
+      "longitude": -0.371142816633364,
+      "name": {
+        "en": "Église anglicane Saint-Andrew",
+        "fr": "Église anglicane Saint-Andrew"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000081",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-saint-jacques-pa64000081",
+      "latitude": 43.2978838609327,
+      "longitude": -0.372272339043169,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000038",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-saint-joseph-pa64000038",
+      "latitude": 43.306271974291,
+      "longitude": -0.373801197077028,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000107",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-saint-martin-pa64000107",
+      "latitude": 43.2941917391955,
+      "longitude": -0.372570362503552,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "mairie-théâtre is one of the city's notable cultural landmarks.",
+        "fr": "mairie-théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000112",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-mairie-theatre-pa64000112",
+      "latitude": 43.29485663242404,
+      "longitude": -0.37078187214779856,
+      "name": {
+        "en": "mairie-théâtre",
+        "fr": "mairie-théâtre"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre 1914-1918 is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre 1914-1918 est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA64000098",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-monument-aux-morts-de-la-guerre-1914-1918-pa64000098",
+      "latitude": 43.2936828775426,
+      "longitude": -0.37262599506367,
+      "name": {
+        "en": "Monument aux morts de la guerre 1914-1918",
+        "fr": "Monument aux morts de la guerre 1914-1918"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée béarnais is one of the city's notable cultural landmarks.",
+        "fr": "musée béarnais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0100",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-bearnais-m0100",
+      "latitude": 43.18818,
+      "longitude": -0.604752,
+      "name": {
+        "en": "musée béarnais",
+        "fr": "musée béarnais"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bernadotte is one of the city's notable cultural landmarks.",
+        "fr": "musée Bernadotte compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0099",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-bernadotte-m0099",
+      "latitude": 43.297209,
+      "longitude": -0.372526,
+      "name": {
+        "en": "musée Bernadotte",
+        "fr": "musée Bernadotte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0098",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-des-beaux-arts-m0098",
+      "latitude": 43.297254,
+      "longitude": -0.364384,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national du château de Pau is one of the city's notable cultural landmarks.",
+        "fr": "musée national du château de Pau compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5017",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "pau-musee-national-du-chateau-de-pau-m5017",
+      "latitude": 43.294699,
+      "longitude": -0.374378,
+      "name": {
+        "en": "musée national du château de Pau",
+        "fr": "musée national du château de Pau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000120",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-eglise-saint-pierre-pa64000120",
+      "latitude": 43.30971030142253,
+      "longitude": -0.3644014897871322,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison natale de Charles Bernadotte is a distinctive architectural landmark in the city.",
+        "fr": "Maison natale de Charles Bernadotte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084487",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-maison-natale-de-charles-bernadotte-pa00084487",
+      "latitude": 43.2973382914121,
+      "longitude": -0.372560974802505,
+      "name": {
+        "en": "Maison natale de Charles Bernadotte",
+        "fr": "Maison natale de Charles Bernadotte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "architectural structure",
+        "fr": "Salle omnisports à Pau"
+      },
+      "externalIdentity": {
+        "id": "Q778495",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pau-palais-des-sports-de-pau-q778495",
+      "latitude": 43.3345351,
+      "longitude": -0.3627098,
+      "name": {
+        "en": "palais des sports de Pau",
+        "fr": "palais des sports de Pau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Sorrento, dit aussi Castet de l'Array is a distinctive architectural landmark in the city.",
+        "fr": "Palais Sorrento, dit aussi Castet de l'Array est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000097",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-palais-sorrento-dit-aussi-castet-de-l-array-pa64000097",
+      "latitude": 43.2969528130029,
+      "longitude": -0.337363593115043,
+      "name": {
+        "en": "Palais Sorrento, dit aussi Castet de l'Array",
+        "fr": "Palais Sorrento, dit aussi Castet de l'Array"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Sainte-Hélène, actuellement résidence du préfet de département is a distinctive architectural landmark in the city.",
+        "fr": "Villa Sainte-Hélène, actuellement résidence du préfet de département est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA64000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "pau-villa-sainte-helene-actuellement-residence-du-prefet-de-departement-pa64000046",
+      "latitude": 43.304686209989,
+      "longitude": -0.345258488958977,
+      "name": {
+        "en": "Villa Sainte-Hélène, actuellement résidence du préfet de département",
+        "fr": "Villa Sainte-Hélène, actuellement résidence du préfet de département"
+      }
+    }
+  ]
+}

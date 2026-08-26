@@ -1,0 +1,204 @@
+{
+  "id": "gentilly-v1",
+  "cityId": "gentilly-fr",
+  "cityZoneId": "relation/104479",
+  "cityName": {
+    "en": "Gentilly",
+    "fr": "Gentilly"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "cinema in Gentilly, France",
+        "fr": "cinéma situé à Gentilly, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88485552",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-cinema-la-gaite-palace-q88485552",
+      "latitude": 48.816038,
+      "longitude": 2.352099,
+      "name": {
+        "en": "cinéma la Gaité-Palace",
+        "fr": "cinéma la Gaité-Palace"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cité du Chaperon-Vert is a distinctive architectural landmark in the city.",
+        "fr": "cité du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q86681770",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-cite-du-chaperon-vert-q86681770",
+      "latitude": 48.81351,
+      "longitude": 2.33396,
+      "name": {
+        "en": "cité du Chaperon-Vert",
+        "fr": "cité du Chaperon-Vert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Paris, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3585978",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-eglise-du-sacre-c-ur-de-gentilly-q3585978",
+      "latitude": 48.8162,
+      "longitude": 2.33629,
+      "name": {
+        "en": "église du Sacré-Cœur de Gentilly",
+        "fr": "église du Sacré-Cœur de Gentilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Coeur, ancienne chapelle de la cité universitaire is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Coeur, ancienne chapelle de la cité universitaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA94000013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gentilly-eglise-du-sacre-coeur-ancienne-chapelle-de-la-cite-universitaire-pa94000013",
+      "latitude": 48.8161533042383,
+      "longitude": 2.33631227995672,
+      "name": {
+        "en": "Église du Sacré-Coeur, ancienne chapelle de la cité universitaire",
+        "fr": "Église du Sacré-Coeur, ancienne chapelle de la cité universitaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Saturnin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Saturnin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079878",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "gentilly-eglise-saint-saturnin-pa00079878",
+      "latitude": 48.8154954056507,
+      "longitude": 2.35159456591992,
+      "name": {
+        "en": "Église Saint-Saturnin",
+        "fr": "Église Saint-Saturnin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français"
+      },
+      "externalIdentity": {
+        "id": "Q6737061",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-maison-de-la-photographie-robert-doisneau-q6737061",
+      "latitude": 48.81409,
+      "longitude": 2.34755,
+      "name": {
+        "en": "maison de la photographie Robert-Doisneau",
+        "fr": "maison de la photographie Robert-Doisneau"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Gentilly is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Gentilly, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88485544",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-monument-aux-morts-de-gentilly-q88485544",
+      "latitude": 48.81534,
+      "longitude": 2.34825,
+      "name": {
+        "en": "monument aux morts de Gentilly",
+        "fr": "monument aux morts de Gentilly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc du Coteau de Bièvre is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé entre Arcueil et Gentilly, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109447097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-parc-du-coteau-de-bievre-q109447097",
+      "latitude": 48.8072,
+      "longitude": 2.34335,
+      "name": {
+        "en": "parc du Coteau de Bièvre",
+        "fr": "parc du Coteau de Bièvre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Gentilly, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096532",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-gentilly-q3096532",
+      "latitude": 48.815556,
+      "longitude": 2.340556,
+      "name": {
+        "en": "Gentilly",
+        "fr": "Gentilly"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Gentilly, France",
+        "fr": "édifice à Gentilly, France"
+      },
+      "externalIdentity": {
+        "id": "Q61913826",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "gentilly-hotel-de-ville-de-gentilly-q61913826",
+      "latitude": 48.8156,
+      "longitude": 2.3481,
+      "name": {
+        "en": "hôtel de ville de Gentilly",
+        "fr": "hôtel de ville de Gentilly"
+      }
+    }
+  ]
+}

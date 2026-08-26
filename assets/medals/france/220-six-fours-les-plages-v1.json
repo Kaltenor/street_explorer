@@ -1,0 +1,204 @@
+{
+  "id": "six-fours-les-plages-v1",
+  "cityId": "six-fours-les-plages-fr",
+  "cityZoneId": "relation/194637",
+  "cityName": {
+    "en": "Six-Fours-les-Plages",
+    "fr": "Six-Fours-les-Plages"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "archipelago in Six-Fours-les-Plages, France",
+        "fr": "archipel de Six-Fours-les-Plages, France"
+      },
+      "externalIdentity": {
+        "id": "Q2860226",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-archipel-des-embiez-q2860226",
+      "latitude": 43.077222,
+      "longitude": 5.778056,
+      "name": {
+        "en": "archipel des Embiez",
+        "fr": "archipel des Embiez"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Var, in France",
+        "fr": "chapelle située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2956715",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-chapelle-notre-dame-de-la-pepiole-q2956715",
+      "latitude": 43.12004,
+      "longitude": 5.82946,
+      "name": {
+        "en": "chapelle Notre-Dame de la Pépiole",
+        "fr": "chapelle Notre-Dame de la Pépiole"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Var, in France",
+        "fr": "chapelle située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q47460073",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-chapelle-notre-dame-du-mai-q47460073",
+      "latitude": 43.05324,
+      "longitude": 5.84711,
+      "name": {
+        "en": "chapelle Notre-Dame-du-Mai",
+        "fr": "chapelle Notre-Dame-du-Mai"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Var, in France",
+        "fr": "église située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3583573",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-eglise-saint-pierre-aux-liens-de-six-fours-les-plages-q3583573",
+      "latitude": 43.1035,
+      "longitude": 5.84089,
+      "name": {
+        "en": "église Saint-Pierre-aux-Liens de Six-Fours-les-Plages",
+        "fr": "église Saint-Pierre-aux-Liens de Six-Fours-les-Plages"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Six Fours is an important witness to the city's history.",
+        "fr": "fort de Six Fours est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3078238",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-fort-de-six-fours-q3078238",
+      "latitude": 43.1028,
+      "longitude": 5.83977,
+      "name": {
+        "en": "fort de Six Fours",
+        "fr": "fort de Six Fours"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in Six-Fours-les-Plages, France",
+        "fr": "île de Six-Fours-les-Plages, France"
+      },
+      "externalIdentity": {
+        "id": "Q3593460",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-ile-des-embiez-q3593460",
+      "latitude": 43.0756,
+      "longitude": 5.78278,
+      "name": {
+        "en": "île des Embiez",
+        "fr": "île des Embiez"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in Six-Fours-les-Plages, France",
+        "fr": "île de Six-Fours-les-Plages, France"
+      },
+      "externalIdentity": {
+        "id": "Q3593485",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-ile-du-grand-rouveau-q3593485",
+      "latitude": 43.0803,
+      "longitude": 5.7675,
+      "name": {
+        "en": "île du Grand Rouveau",
+        "fr": "île du Grand Rouveau"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour émettrice de Toulon-Cap Sicié is an important witness to the city's history.",
+        "fr": "tour de télécommunication en France"
+      },
+      "externalIdentity": {
+        "id": "Q137004457",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-tour-emettrice-de-toulon-cap-sicie-q137004457",
+      "latitude": 43.053,
+      "longitude": 5.845657,
+      "name": {
+        "en": "tour émettrice de Toulon-Cap Sicié",
+        "fr": "tour émettrice de Toulon-Cap Sicié"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-aux-Liens is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-aux-Liens est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081741",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "six-fours-les-plages-eglise-saint-pierre-aux-liens-pa00081741",
+      "latitude": 43.1034963851635,
+      "longitude": 5.84079235294317,
+      "name": {
+        "en": "Église Saint-Pierre-aux-Liens",
+        "fr": "Église Saint-Pierre-aux-Liens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Var, in France",
+        "fr": "église située dans le Var, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60391563",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "six-fours-les-plages-eglise-saint-pierre-du-brusc-q60391563",
+      "latitude": 43.074425,
+      "longitude": 5.80267,
+      "name": {
+        "en": "église Saint-Pierre du Brusc",
+        "fr": "église Saint-Pierre du Brusc"
+      }
+    }
+  ]
+}

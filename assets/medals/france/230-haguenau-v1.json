@@ -1,0 +1,204 @@
+{
+  "id": "haguenau-v1",
+  "cityId": "haguenau-fr",
+  "cityZoneId": "relation/89859",
+  "cityName": {
+    "en": "Haguenau",
+    "fr": "Haguenau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Georges is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Georges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084724",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-eglise-saint-georges-pa00084724",
+      "latitude": 48.8137343869596,
+      "longitude": 7.78684491382528,
+      "name": {
+        "en": "Église Saint-Georges",
+        "fr": "Église Saint-Georges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084725",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-eglise-saint-nicolas-pa00084725",
+      "latitude": 48.82023679838,
+      "longitude": 7.79218731771706,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine aux Abeilles is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine aux Abeilles compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084727",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-fontaine-aux-abeilles-pa00084727",
+      "latitude": 48.813673512939,
+      "longitude": 7.785934803039441,
+      "name": {
+        "en": "Fontaine aux Abeilles",
+        "fr": "Fontaine aux Abeilles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée alsacien is one of the city's notable cultural landmarks.",
+        "fr": "musée alsacien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0004",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "haguenau-musee-alsacien-m0004",
+      "latitude": 48.814611,
+      "longitude": 7.789527,
+      "name": {
+        "en": "musée alsacien",
+        "fr": "musée alsacien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée historique is one of the city's notable cultural landmarks.",
+        "fr": "musée historique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0005",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "haguenau-musee-historique-m0005",
+      "latitude": 48.812831,
+      "longitude": 7.791481,
+      "name": {
+        "en": "musée historique",
+        "fr": "musée historique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Wissembourg is an important witness to the city's history.",
+        "fr": "Porte de Wissembourg est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084739",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-porte-de-wissembourg-pa00084739",
+      "latitude": 48.8209597688837,
+      "longitude": 7.791445807754481,
+      "name": {
+        "en": "Porte de Wissembourg",
+        "fr": "Porte de Wissembourg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte des Chevaliers is an important witness to the city's history.",
+        "fr": "Porte des Chevaliers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084738",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-porte-des-chevaliers-pa00084738",
+      "latitude": 48.8180964592298,
+      "longitude": 7.787342129762671,
+      "name": {
+        "en": "Porte des Chevaliers",
+        "fr": "Porte des Chevaliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084740",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-synagogue-pa00084740",
+      "latitude": 48.813942758826,
+      "longitude": 7.79076550688125,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théatre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théatre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135144",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-theatre-municipal-pa00135144",
+      "latitude": 48.8126792654446,
+      "longitude": 7.788840246269281,
+      "name": {
+        "en": "Théatre municipal",
+        "fr": "Théatre municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour des Pêcheurs is an important witness to the city's history.",
+        "fr": "Tour des Pêcheurs est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084741",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "haguenau-tour-des-pecheurs-pa00084741",
+      "latitude": 48.8148142171982,
+      "longitude": 7.7928509727906,
+      "name": {
+        "en": "Tour des Pêcheurs",
+        "fr": "Tour des Pêcheurs"
+      }
+    }
+  ]
+}

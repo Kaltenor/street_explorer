@@ -1,0 +1,204 @@
+{
+  "id": "livry-gargan-v1",
+  "cityId": "livry-gargan-fr",
+  "cityZoneId": "relation/162566",
+  "cityName": {
+    "en": "Livry-Gargan",
+    "fr": "Livry-Gargan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Seine-Saint-Denis, in France",
+        "fr": "abbaye française"
+      },
+      "externalIdentity": {
+        "id": "Q2820310",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-abbaye-notre-dame-de-livry-q2820310",
+      "latitude": 48.91923,
+      "longitude": 2.53612,
+      "name": {
+        "en": "abbaye Notre-Dame de Livry",
+        "fr": "abbaye Notre-Dame de Livry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q81119399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-ancien-cimetiere-du-raincy-q81119399",
+      "latitude": 48.9064,
+      "longitude": 2.5256,
+      "name": {
+        "en": "Ancien cimetière du Raincy",
+        "fr": "Ancien cimetière du Raincy"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Forêt is an important witness to the city's history.",
+        "fr": "château de Livry-Gargan, France"
+      },
+      "externalIdentity": {
+        "id": "Q72819359",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-chateau-de-la-foret-q72819359",
+      "latitude": 48.9176,
+      "longitude": 2.5321,
+      "name": {
+        "en": "château de la Forêt",
+        "fr": "château de la Forêt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20080493",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-eglise-notre-dame-de-livry-q20080493",
+      "latitude": 48.92122,
+      "longitude": 2.54743,
+      "name": {
+        "en": "église Notre-Dame de Livry",
+        "fr": "église Notre-Dame de Livry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19921923",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-eglise-saint-michel-de-gargan-q19921923",
+      "latitude": 48.91157,
+      "longitude": 2.52251,
+      "name": {
+        "en": "église Saint-Michel de Gargan",
+        "fr": "église Saint-Michel de Gargan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall, Livry-Gargan, France",
+        "fr": "hôtel de ville, Livry-Gargan, France"
+      },
+      "externalIdentity": {
+        "id": "Q33651988",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-hotel-de-ville-de-livry-gargan-q33651988",
+      "latitude": 48.91916,
+      "longitude": 2.53611,
+      "name": {
+        "en": "hôtel de ville de Livry-Gargan",
+        "fr": "hôtel de ville de Livry-Gargan"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136061219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-monument-aux-morts-de-livry-gargan-q136061219",
+      "latitude": 48.92485,
+      "longitude": 2.55265,
+      "name": {
+        "en": "monument aux morts de Livry-Gargan",
+        "fr": "monument aux morts de Livry-Gargan"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096083",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-monument-aux-morts-du-cimetiere-ancien-du-raincy-q136096083",
+      "latitude": 48.9055,
+      "longitude": 2.52542,
+      "name": {
+        "en": "monument aux morts du cimetière ancien du Raincy",
+        "fr": "monument aux morts du cimetière ancien du Raincy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc forestier de la Poudrerie is one of the city's notable green or natural landmarks.",
+        "fr": "parc situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q97367948",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-parc-forestier-de-la-poudrerie-q97367948",
+      "latitude": 48.938204,
+      "longitude": 2.557583,
+      "name": {
+        "en": "parc forestier de la Poudrerie",
+        "fr": "parc forestier de la Poudrerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc de Gargan is a distinctive architectural landmark in the city.",
+        "fr": "pont tramway en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q116742538",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "livry-gargan-viaduc-de-gargan-q116742538",
+      "latitude": 48.91120743,
+      "longitude": 2.516673173,
+      "name": {
+        "en": "viaduc de Gargan",
+        "fr": "viaduc de Gargan"
+      }
+    }
+  ]
+}

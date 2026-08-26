@@ -1,0 +1,204 @@
+{
+  "id": "massy-v1",
+  "cityId": "massy-fr",
+  "cityZoneId": "relation/29251",
+  "cityName": {
+    "en": "Massy",
+    "fr": "Massy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Centre Pompidou Francilien is one of the city's notable cultural landmarks.",
+        "fr": "annexe du Centre Pompidou à Massy"
+      },
+      "externalIdentity": {
+        "id": "Q120692864",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-centre-pompidou-francilien-q120692864",
+      "latitude": 48.729749852,
+      "longitude": 2.293089409,
+      "name": {
+        "en": "Centre Pompidou Francilien",
+        "fr": "Centre Pompidou Francilien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Vilgénis is an important witness to the city's history.",
+        "fr": "Château de Vilgénis est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087948",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "massy-chateau-de-vilgenis-pa00087948",
+      "latitude": 48.734006524166,
+      "longitude": 2.24349480446995,
+      "name": {
+        "en": "Château de Vilgénis",
+        "fr": "Château de Vilgénis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Marie-Madeleine is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Marie-Madeleine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087949",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "massy-eglise-sainte-marie-madeleine-pa00087949",
+      "latitude": 48.7304670529941,
+      "longitude": 2.27323769853194,
+      "name": {
+        "en": "Église Sainte-Marie-Madeleine",
+        "fr": "Église Sainte-Marie-Madeleine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q65225920",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-massy-opera-q65225920",
+      "latitude": 48.731666666,
+      "longitude": 2.290833333,
+      "name": {
+        "en": "Massy Opéra",
+        "fr": "Massy Opéra"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q801166",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-massy-palaiseau-q801166",
+      "latitude": 48.724722222,
+      "longitude": 2.258333333,
+      "name": {
+        "en": "Massy - Palaiseau",
+        "fr": "Massy - Palaiseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "TGV railway station in Massy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q801170",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-massy-tgv-q801170",
+      "latitude": 48.726111,
+      "longitude": 2.261667,
+      "name": {
+        "en": "Massy TGV",
+        "fr": "Massy TGV"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Massy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1820997",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-massy-verrieres-q1820997",
+      "latitude": 48.734722222,
+      "longitude": 2.273333333,
+      "name": {
+        "en": "Massy - Verrières",
+        "fr": "Massy - Verrières"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc de Vilgénis is one of the city's notable green or natural landmarks.",
+        "fr": "parc de Massy"
+      },
+      "externalIdentity": {
+        "id": "Q116701867",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-parc-de-vilgenis-q116701867",
+      "latitude": 48.736819444,
+      "longitude": 2.2505,
+      "name": {
+        "en": "parc de Vilgénis",
+        "fr": "parc de Vilgénis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "thoroughfare in Massy, Essonne in France",
+        "fr": "place de Massy, dans l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q134007097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-place-de-touraine-q134007097",
+      "latitude": 48.7361506,
+      "longitude": 2.3003004,
+      "name": {
+        "en": "place de Touraine",
+        "fr": "place de Touraine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "thoroughfare in Massy, Essonne in France",
+        "fr": "square de Massy, dans l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q133872809",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "massy-square-de-belfort-q133872809",
+      "latitude": 48.7350914,
+      "longitude": 2.2930931,
+      "name": {
+        "en": "square de Belfort",
+        "fr": "square de Belfort"
+      }
+    }
+  ]
+}

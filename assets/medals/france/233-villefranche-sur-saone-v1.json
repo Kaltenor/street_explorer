@@ -1,0 +1,204 @@
+{
+  "id": "villefranche-sur-saone-v1",
+  "cityId": "villefranche-sur-saone-fr",
+  "cityZoneId": "relation/74082",
+  "cityName": {
+    "en": "Villefranche-sur-Saône",
+    "fr": "Villefranche-sur-Saône"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Rhône, in France",
+        "fr": "ancienne abbaye du Beaujolais"
+      },
+      "externalIdentity": {
+        "id": "Q17278168",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-abbaye-du-joug-dieu-q17278168",
+      "latitude": 45.990277777,
+      "longitude": 4.720277777,
+      "name": {
+        "en": "abbaye du Joug-Dieu",
+        "fr": "abbaye du Joug-Dieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Marais is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Marais est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villefranche-sur-saone-eglise-notre-dame-des-marais-pa00118090",
+      "latitude": 45.9888246820926,
+      "longitude": 4.71895711418979,
+      "name": {
+        "en": "Église Notre-Dame-des-Marais",
+        "fr": "Église Notre-Dame-des-Marais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118092",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villefranche-sur-saone-hotel-de-ville-pa00118092",
+      "latitude": 45.9880320673964,
+      "longitude": 4.71817168046388,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "marché couvert de Villefranche-sur-Saône is a distinctive architectural landmark in the city.",
+        "fr": "marché couvert situé à Villefranche-sur-Saône"
+      },
+      "externalIdentity": {
+        "id": "Q16508974",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-marche-couvert-de-villefranche-sur-saone-q16508974",
+      "latitude": 45.9892,
+      "longitude": 4.71442,
+      "name": {
+        "en": "marché couvert de Villefranche-sur-Saône",
+        "fr": "marché couvert de Villefranche-sur-Saône"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q94532180",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-musee-des-conscrits-de-villefranche-sur-saone-q94532180",
+      "latitude": 45.988638,
+      "longitude": 4.719265,
+      "name": {
+        "en": "musée des conscrits de Villefranche-sur-Saône",
+        "fr": "musée des conscrits de Villefranche-sur-Saône"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q93962263",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-musee-du-souvenir-de-villefranche-sur-saone-q93962263",
+      "latitude": 45.988042,
+      "longitude": 4.717803,
+      "name": {
+        "en": "musée du souvenir de Villefranche-sur-Saône",
+        "fr": "musée du souvenir de Villefranche-sur-Saône"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée français d'art moderne et contemporain, Beaux-Arts"
+      },
+      "externalIdentity": {
+        "id": "Q16335746",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-musee-paul-dini-de-villefranche-sur-saone-q16335746",
+      "latitude": 45.9908,
+      "longitude": 4.721,
+      "name": {
+        "en": "musée Paul-Dini de Villefranche-sur-Saône",
+        "fr": "musée Paul-Dini de Villefranche-sur-Saône"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Paul Dini is one of the city's notable cultural landmarks.",
+        "fr": "musée Paul Dini compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1041",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "villefranche-sur-saone-musee-paul-dini-m1041",
+      "latitude": 45.990936,
+      "longitude": 4.721527,
+      "name": {
+        "en": "musée Paul Dini",
+        "fr": "musée Paul Dini"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour et remparts is an important witness to the city's history.",
+        "fr": "Tour et remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villefranche-sur-saone-tour-et-remparts-pa00118100",
+      "latitude": 45.9879509625779,
+      "longitude": 4.71996504000425,
+      "name": {
+        "en": "Tour et remparts",
+        "fr": "Tour et remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Villefranche-sur-Saône, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2576354",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villefranche-sur-saone-villefranche-sur-saone-q2576354",
+      "latitude": 45.984577,
+      "longitude": 4.721071,
+      "name": {
+        "en": "Villefranche-sur-Saône",
+        "fr": "Villefranche-sur-Saône"
+      }
+    }
+  ]
+}

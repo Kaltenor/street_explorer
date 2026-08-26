@@ -1,0 +1,204 @@
+{
+  "id": "le-bouscat-v1",
+  "cityId": "le-bouscat-fr",
+  "cityZoneId": "relation/105283",
+  "cityName": {
+    "en": "Le Bouscat",
+    "fr": "Le Bouscat"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573637",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-calypso-q98573637",
+      "latitude": 44.861062,
+      "longitude": -0.600548,
+      "name": {
+        "en": "Calypso",
+        "fr": "Calypso"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castel d'Andorte is an important witness to the city's history.",
+        "fr": "château au Bouscat (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q22920179",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-castel-d-andorte-q22920179",
+      "latitude": 44.865841,
+      "longitude": -0.6106,
+      "name": {
+        "en": "castel d'Andorte",
+        "fr": "castel d'Andorte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573640",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-champ-de-courses-treulon-q98573640",
+      "latitude": 44.876251,
+      "longitude": -0.621512,
+      "name": {
+        "en": "Champ de Courses - Treulon",
+        "fr": "Champ de Courses - Treulon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573642",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-courbet-q98573642",
+      "latitude": 44.8566,
+      "longitude": -0.596954,
+      "name": {
+        "en": "Courbet",
+        "fr": "Courbet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38510240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-eglise-sainte-clotilde-du-bouscat-q38510240",
+      "latitude": 44.86546,
+      "longitude": -0.60074,
+      "name": {
+        "en": "église Sainte-Clotilde du Bouscat",
+        "fr": "église Sainte-Clotilde du Bouscat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573649",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-hippodrome-q98573649",
+      "latitude": 44.873835,
+      "longitude": -0.628416,
+      "name": {
+        "en": "Hippodrome",
+        "fr": "Hippodrome"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Le Bouscat, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573669",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-la-vache-q98573669",
+      "latitude": 44.872331,
+      "longitude": -0.590992,
+      "name": {
+        "en": "La Vache",
+        "fr": "La Vache"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Gironde department, France",
+        "fr": "siège municipal du Bouscat, en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119341411",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-mairie-du-bouscat-q119341411",
+      "latitude": 44.865232212,
+      "longitude": -0.599674659,
+      "name": {
+        "en": "mairie du Bouscat",
+        "fr": "mairie du Bouscat"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2012038",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-ravezies-q2012038",
+      "latitude": 44.866459,
+      "longitude": -0.57682,
+      "name": {
+        "en": "Ravezies",
+        "fr": "Ravezies"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Association Football Stadium in France",
+        "fr": "stade omnisports situé au Bouscat, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3495862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-bouscat-stade-sainte-germaine-q3495862",
+      "latitude": 44.87036,
+      "longitude": -0.61829,
+      "name": {
+        "en": "stade Sainte-Germaine",
+        "fr": "stade Sainte-Germaine"
+      }
+    }
+  ]
+}

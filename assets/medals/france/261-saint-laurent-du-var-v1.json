@@ -1,0 +1,204 @@
+{
+  "id": "saint-laurent-du-var-v1",
+  "cityId": "saint-laurent-du-var-fr",
+  "cityZoneId": "relation/149032",
+  "cityName": {
+    "en": "Saint-Laurent-du-Var",
+    "fr": "Saint-Laurent-du-Var"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1727236",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-laurent-du-var-canton-de-saint-laurent-du-var-cagnes-sur-mer-est-q1727236",
+      "latitude": 43.66805556,
+      "longitude": 7.18805556,
+      "name": {
+        "en": "canton de Saint-Laurent-du-Var-Cagnes-sur-Mer-Est",
+        "fr": "canton de Saint-Laurent-du-Var-Cagnes-sur-Mer-Est"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Shopping Mall on the French Riviera, France",
+        "fr": "centre commercial majeur des Alpes-Maritimes"
+      },
+      "externalIdentity": {
+        "id": "Q2936988",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-laurent-du-var-cap-3000-q2936988",
+      "latitude": 43.658611,
+      "longitude": 7.197778,
+      "name": {
+        "en": "Cap 3000",
+        "fr": "Cap 3000"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/238084090",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-laurent-du-var-eglise-saint-joseph-way-238084090",
+      "latitude": 43.6755503,
+      "longitude": 7.1863354,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/63433886",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-laurent-du-var-eglise-saint-laurent-way-63433886",
+      "latitude": 43.6758136,
+      "longitude": 7.1902427,
+      "name": {
+        "en": "Église Saint-Laurent",
+        "fr": "Église Saint-Laurent"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc du Jaquon is one of the city's notable green or natural landmarks.",
+        "fr": "Parc du Jaquon compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/871681250",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-laurent-du-var-parc-du-jaquon-way-871681250",
+      "latitude": 43.6663783,
+      "longitude": 7.182503,
+      "name": {
+        "en": "Parc du Jaquon",
+        "fr": "Parc du Jaquon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc François LAYET is one of the city's notable green or natural landmarks.",
+        "fr": "Parc François LAYET compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/56702996",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-laurent-du-var-parc-francois-layet-way-56702996",
+      "latitude": 43.6758648,
+      "longitude": 7.1913714,
+      "name": {
+        "en": "Parc François LAYET",
+        "fr": "Parc François LAYET"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théatre Georges Brassens is one of the city's notable cultural landmarks.",
+        "fr": "Théatre Georges Brassens compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/63445617",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-laurent-du-var-theatre-georges-brassens-way-63445617",
+      "latitude": 43.6759181,
+      "longitude": 7.1914814,
+      "name": {
+        "en": "Théatre Georges Brassens",
+        "fr": "Théatre Georges Brassens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français sur le Var"
+      },
+      "externalIdentity": {
+        "id": "Q3907996",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-laurent-du-var-pont-napoleon-iii-q3907996",
+      "latitude": 43.6637,
+      "longitude": 7.19859,
+      "name": {
+        "en": "pont Napoléon-III",
+        "fr": "pont Napoléon-III"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Alpes-Maritimes, France",
+        "fr": "commune française du département des Alpes-Maritimes"
+      },
+      "externalIdentity": {
+        "id": "Q217755",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-laurent-du-var-saint-laurent-du-var-q217755",
+      "latitude": 43.673333333,
+      "longitude": 7.19,
+      "name": {
+        "en": "Saint-Laurent-du-Var",
+        "fr": "Saint-Laurent-du-Var"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bridge of the A8 autoroute crossing the Var (France)",
+        "fr": "pont de l'autoroute A8 au dessus du Var (France)"
+      },
+      "externalIdentity": {
+        "id": "Q3556722",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-laurent-du-var-viaduc-du-var-q3556722",
+      "latitude": 43.6682,
+      "longitude": 7.19731,
+      "name": {
+        "en": "viaduc du Var",
+        "fr": "viaduc du Var"
+      }
+    }
+  ]
+}

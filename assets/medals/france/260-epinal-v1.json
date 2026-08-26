@@ -1,0 +1,204 @@
+{
+  "id": "epinal-v1",
+  "cityId": "epinal-fr",
+  "cityZoneId": "relation/78828",
+  "cityName": {
+    "en": "Épinal",
+    "fr": "Épinal"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107139",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-chateau-pa00107139",
+      "latitude": 48.1751133706327,
+      "longitude": 6.455544653488551,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame au Cierge is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame au Cierge est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA88000047",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-eglise-notre-dame-au-cierge-pa88000047",
+      "latitude": 48.1779973737904,
+      "longitude": 6.44373261460115,
+      "name": {
+        "en": "Église Notre-Dame au Cierge",
+        "fr": "Église Notre-Dame au Cierge"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107140",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-eglise-saint-maurice-pa00107140",
+      "latitude": 48.1742089821892,
+      "longitude": 6.45102980157797,
+      "name": {
+        "en": "Église Saint-Maurice",
+        "fr": "Église Saint-Maurice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107142",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-immeuble-pa00107142",
+      "latitude": 48.1693582304102,
+      "longitude": 6.45122485173438,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite du Bailli is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite du Bailli est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107147",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-maison-dite-du-bailli-pa00107147",
+      "latitude": 48.174868508705,
+      "longitude": 6.450055111630091,
+      "name": {
+        "en": "Maison dite du Bailli",
+        "fr": "Maison dite du Bailli"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'image is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'image compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0537",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "epinal-musee-de-l-image-m0537",
+      "latitude": 48.183628,
+      "longitude": 6.445992,
+      "name": {
+        "en": "musée de l'image",
+        "fr": "musée de l'image"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental d'art ancien et contemporain is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental d'art ancien et contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0536",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "epinal-musee-departemental-d-art-ancien-et-contemporain-m0536",
+      "latitude": 48.17326,
+      "longitude": 6.446595,
+      "name": {
+        "en": "musée départemental d'art ancien et contemporain",
+        "fr": "musée départemental d'art ancien et contemporain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107143",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-maison-pa00107143",
+      "latitude": 48.1748255053133,
+      "longitude": 6.44991671385213,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison romaine is a distinctive architectural landmark in the city.",
+        "fr": "Maison romaine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107328",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-maison-romaine-pa00107328",
+      "latitude": 48.180997840219,
+      "longitude": 6.44583895183137,
+      "name": {
+        "en": "Maison romaine",
+        "fr": "Maison romaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maisons is a distinctive architectural landmark in the city.",
+        "fr": "Maisons est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107155",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "epinal-maisons-pa00107155",
+      "latitude": 48.1748488979463,
+      "longitude": 6.450521937134771,
+      "name": {
+        "en": "Maisons",
+        "fr": "Maisons"
+      }
+    }
+  ]
+}

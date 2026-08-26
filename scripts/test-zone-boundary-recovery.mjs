@@ -206,6 +206,17 @@ assert.ok(mapSource.includes("reloadSavedCompletionObjective()"));
 assert.ok(mapSource.includes("isSelectableMapObjectiveZone"));
 assert.ok(mapSource.includes("setObjective(null)"));
 assert.ok(mapSource.includes("setSelectedZone(null)"));
+assert.ok(
+  completionRepositorySource.includes("getExploredCellRecordsWithinBounds") &&
+    completionRepositorySource.includes("AND cell_x BETWEEN ? AND ?") &&
+    completionRepositorySource.includes("AND cell_y BETWEEN ? AND ?"),
+  "zone completion can query the indexed explored-cell subset inside one boundary"
+);
+assert.ok(
+  completionSource.includes("getExploredCellRecordsWithinBounds(mode, bounds)") &&
+    mapSource.includes("getExploredCellRecordsWithinBounds(objective.mode, bounds)"),
+  "the completion catalogue and active objective avoid full-ledger scans for bounded zones"
+);
 
 function boundarySquare(minLatitude, minLongitude, maxLatitude, maxLongitude) {
   return [

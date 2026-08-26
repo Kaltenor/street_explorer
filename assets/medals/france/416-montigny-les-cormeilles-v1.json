@@ -1,0 +1,204 @@
+{
+  "id": "montigny-les-cormeilles-v1",
+  "cityId": "montigny-les-cormeilles-fr",
+  "cityZoneId": "relation/398309",
+  "cityName": {
+    "en": "Montigny-lès-Cormeilles",
+    "fr": "Montigny-lès-Cormeilles"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Centre culturel Picasso is one of the city's notable cultural landmarks.",
+        "fr": "Centre culturel Picasso compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/664200572",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "montigny-les-cormeilles-centre-culturel-picasso-node-664200572",
+      "latitude": 48.996137,
+      "longitude": 2.1995332,
+      "name": {
+        "en": "Centre culturel Picasso",
+        "fr": "Centre culturel Picasso"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Joseph est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/837013366",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montigny-les-cormeilles-eglise-saint-joseph-way-837013366",
+      "latitude": 49.0025512,
+      "longitude": 2.2030798,
+      "name": {
+        "en": "Église Saint-Joseph",
+        "fr": "Église Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647574",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-cormeilles-eglise-saint-martin-de-montigny-les-cormeilles-q29647574",
+      "latitude": 48.9867,
+      "longitude": 2.18851,
+      "name": {
+        "en": "église Saint-Martin de Montigny-lès-Cormeilles",
+        "fr": "église Saint-Martin de Montigny-lès-Cormeilles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/226657503",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montigny-les-cormeilles-eglise-saint-martin-way-226657503",
+      "latitude": 48.9866985,
+      "longitude": 2.188518,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grande Mosquée de Montigny-lès-Cormeilles is a distinctive architectural landmark in the city.",
+        "fr": "Grande Mosquée de Montigny-lès-Cormeilles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/226657485",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montigny-les-cormeilles-grande-mosquee-de-montigny-les-cormeilles-way-226657485",
+      "latitude": 49.003596,
+      "longitude": 2.2062585,
+      "name": {
+        "en": "Grande Mosquée de Montigny-lès-Cormeilles",
+        "fr": "Grande Mosquée de Montigny-lès-Cormeilles"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136064145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-cormeilles-monument-aux-morts-de-montigny-les-cormeilles-q136064145",
+      "latitude": 48.987805,
+      "longitude": 2.190018,
+      "name": {
+        "en": "monument aux morts de Montigny-lès-Cormeilles",
+        "fr": "monument aux morts de Montigny-lès-Cormeilles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Musée Jean-Noël Carpentier is one of the city's notable cultural landmarks.",
+        "fr": "Musée Jean-Noël Carpentier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/13245353758",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "montigny-les-cormeilles-musee-jean-noel-carpentier-node-13245353758",
+      "latitude": 48.987551,
+      "longitude": 2.1877371,
+      "name": {
+        "en": "Musée Jean-Noël Carpentier",
+        "fr": "Musée Jean-Noël Carpentier"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Gabriel Péri is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Gabriel Péri compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/1042676053",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "montigny-les-cormeilles-parc-gabriel-peri-way-1042676053",
+      "latitude": 48.9882894,
+      "longitude": 2.1882151,
+      "name": {
+        "en": "Parc Gabriel Péri",
+        "fr": "Parc Gabriel Péri"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q727864",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-cormeilles-montigny-beauchamp-q727864",
+      "latitude": 49.007222222,
+      "longitude": 2.1975,
+      "name": {
+        "en": "Montigny - Beauchamp",
+        "fr": "Montigny - Beauchamp"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q1458741",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montigny-les-cormeilles-montigny-les-cormeilles-q1458741",
+      "latitude": 48.993888888,
+      "longitude": 2.195,
+      "name": {
+        "en": "Montigny-lès-Cormeilles",
+        "fr": "Montigny-lès-Cormeilles"
+      }
+    }
+  ]
+}

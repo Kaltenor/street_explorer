@@ -1,0 +1,204 @@
+{
+  "id": "alfortville-v1",
+  "cityId": "alfortville-fr",
+  "cityZoneId": "relation/104271",
+  "cityName": {
+    "en": "Alfortville",
+    "fr": "Alfortville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "chapel located in Val-de-Marne, in France",
+        "fr": "chapelle située dans le Val-de-Marne en France"
+      },
+      "externalIdentity": {
+        "id": "Q29819621",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-chapelle-saint-louis-d-alfortville-q29819621",
+      "latitude": 48.814691,
+      "longitude": 2.414273,
+      "name": {
+        "en": "chapelle Saint-Louis d'Alfortville",
+        "fr": "chapelle Saint-Louis d'Alfortville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cemetery located in Val-de-Marne, in France",
+        "fr": "cimetière situé dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q81945496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-cimetiere-d-alfortville-q81945496",
+      "latitude": 48.78298,
+      "longitude": 2.42656,
+      "name": {
+        "en": "cimetière d'Alfortville",
+        "fr": "cimetière d'Alfortville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38368838",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-eglise-apostolique-armenienne-saint-pierre-et-saint-paul-d-alfortville-q38368838",
+      "latitude": 48.78993,
+      "longitude": 2.42447,
+      "name": {
+        "en": "église apostolique arménienne Saint-Pierre-et-Saint-Paul d'Alfortville",
+        "fr": "église apostolique arménienne Saint-Pierre-et-Saint-Paul d'Alfortville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "entrepôt Général d'Alimentation de l'Union des Coopérateurs is one of the city's notable cultural landmarks.",
+        "fr": "entrepôt situé à Alfortville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88331565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-entrepot-general-d-alimentation-de-l-union-des-cooperateurs-q88331565",
+      "latitude": 48.7933,
+      "longitude": 2.4257,
+      "name": {
+        "en": "entrepôt Général d'Alimentation de l'Union des Coopérateurs",
+        "fr": "entrepôt Général d'Alimentation de l'Union des Coopérateurs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in Alfortville, Val-de-Marne, France",
+        "fr": "édifice d'Alfortville, Val-de-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q83409696",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-hotel-de-ville-d-alfortville-q83409696",
+      "latitude": 48.80538,
+      "longitude": 2.42026,
+      "name": {
+        "en": "hôtel de ville d'Alfortville",
+        "fr": "hôtel de ville d'Alfortville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "maison, 12 rue du Parc is a distinctive architectural landmark in the city.",
+        "fr": "maison située à Alfortville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88331505",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-maison-12-rue-du-parc-q88331505",
+      "latitude": 48.81523,
+      "longitude": 2.41412,
+      "name": {
+        "en": "maison, 12 rue du Parc",
+        "fr": "maison, 12 rue du Parc"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts d'Alfortville is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Alfortville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88331552",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-monument-aux-morts-d-alfortville-q88331552",
+      "latitude": 48.80558,
+      "longitude": 2.42007,
+      "name": {
+        "en": "monument aux morts d'Alfortville",
+        "fr": "monument aux morts d'Alfortville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Alfortville, France",
+        "fr": "place d'Alfortville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105097395",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-place-du-petit-pont-q105097395",
+      "latitude": 48.78992475,
+      "longitude": 2.42579405,
+      "name": {
+        "en": "place du Petit-Pont",
+        "fr": "place du Petit-Pont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont sur la Seine reliant Alfortville et Ivry-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q17636967",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-pont-d-ivry-q17636967",
+      "latitude": 48.8146,
+      "longitude": 2.41025,
+      "name": {
+        "en": "pont d'Ivry",
+        "fr": "pont d'Ivry"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge that spans the Seine river in Paris, France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397487",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "alfortville-pont-du-port-a-l-anglais-q3397487",
+      "latitude": 48.797222222,
+      "longitude": 2.418888888,
+      "name": {
+        "en": "pont du Port-à-l'Anglais",
+        "fr": "pont du Port-à-l'Anglais"
+      }
+    }
+  ]
+}

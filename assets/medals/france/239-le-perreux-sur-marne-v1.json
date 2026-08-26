@@ -1,0 +1,204 @@
+{
+  "id": "le-perreux-sur-marne-v1",
+  "cityId": "le-perreux-sur-marne-fr",
+  "cityZoneId": "relation/108312",
+  "cityName": {
+    "en": "Le Perreux-sur-Marne",
+    "fr": "Le Perreux-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31146126",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-eglise-notre-dame-de-toutes-graces-du-perreux-sur-marne-q31146126",
+      "latitude": 48.834899,
+      "longitude": 2.508394,
+      "name": {
+        "en": "église Notre-Dame-de-Toutes-Grâces du Perreux-sur-Marne",
+        "fr": "église Notre-Dame-de-Toutes-Grâces du Perreux-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31143617",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-eglise-saint-jean-baptiste-du-perreux-q31143617",
+      "latitude": 48.841822,
+      "longitude": 2.507961,
+      "name": {
+        "en": "église Saint Jean-Baptiste du Perreux",
+        "fr": "église Saint Jean-Baptiste du Perreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-de-Marne, in France",
+        "fr": "église située dans le Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q31146148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-eglise-sainte-marguerite-marie-du-perreux-q31146148",
+      "latitude": 48.85216,
+      "longitude": 2.50089,
+      "name": {
+        "en": "église Sainte-Marguerite-Marie du Perreux",
+        "fr": "église Sainte-Marguerite-Marie du Perreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Le Perreux-sur-Marne, France",
+        "fr": "hôtel de ville au Perreux-sur-Marne, France"
+      },
+      "externalIdentity": {
+        "id": "Q71962707",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-hotel-de-ville-du-perreux-sur-marne-q71962707",
+      "latitude": 48.840719444,
+      "longitude": 2.508144444,
+      "name": {
+        "en": "hôtel de ville du Perreux-sur-Marne",
+        "fr": "hôtel de ville du Perreux-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts des Soldats Indochinois morts à la Guerre de 1914-1918 is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé au Perreux-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88224041",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-monument-aux-morts-des-soldats-indochinois-morts-a-la-guerre-de-1914-1918-q88224041",
+      "latitude": 48.84654,
+      "longitude": 2.4929,
+      "name": {
+        "en": "monument aux morts des Soldats Indochinois morts à la Guerre de 1914-1918",
+        "fr": "monument aux morts des Soldats Indochinois morts à la Guerre de 1914-1918"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts du cimetière de Nogent-sur-Marne is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé au Perreux-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88224044",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-monument-aux-morts-du-cimetiere-de-nogent-sur-marne-q88224044",
+      "latitude": 48.84724,
+      "longitude": 2.49287,
+      "name": {
+        "en": "monument aux morts du cimetière de Nogent-sur-Marne",
+        "fr": "monument aux morts du cimetière de Nogent-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts du Perreux-sur-Marne is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé au Perreux-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q88223648",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-monument-aux-morts-du-perreux-sur-marne-q88223648",
+      "latitude": 48.84034,
+      "longitude": 2.50768,
+      "name": {
+        "en": "monument aux morts du Perreux-sur-Marne",
+        "fr": "monument aux morts du Perreux-sur-Marne"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-de-Marne department, France",
+        "fr": "monument aux morts du Val-de-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097923",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-monument-des-otages-du-25-aout-1944-du-perreux-sur-marne-q136097923",
+      "latitude": 48.84958,
+      "longitude": 2.49633,
+      "name": {
+        "en": "monument des Otages du 25 août 1944 du Perreux-sur-Marne",
+        "fr": "monument des Otages du 25 août 1944 du Perreux-sur-Marne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "future Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q61084132",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-nogent-le-perreux-q61084132",
+      "latitude": 48.8382,
+      "longitude": 2.4948,
+      "name": {
+        "en": "Nogent - Le Perreux",
+        "fr": "Nogent - Le Perreux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont routier sur la Marne"
+      },
+      "externalIdentity": {
+        "id": "Q13361308",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-perreux-sur-marne-pont-de-bry-q13361308",
+      "latitude": 48.8341,
+      "longitude": 2.51768,
+      "name": {
+        "en": "pont de Bry",
+        "fr": "pont de Bry"
+      }
+    }
+  ]
+}

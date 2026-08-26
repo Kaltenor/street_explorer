@@ -1,0 +1,204 @@
+{
+  "id": "franconville-v1",
+  "cityId": "franconville-fr",
+  "cityZoneId": "relation/115249",
+  "cityName": {
+    "en": "Franconville",
+    "fr": "Franconville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Cadet-de-Vaux is an important witness to the city's history.",
+        "fr": "château français situé à Franconville"
+      },
+      "externalIdentity": {
+        "id": "Q27570939",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-chateau-de-cadet-de-vaux-q27570939",
+      "latitude": 48.983613,
+      "longitude": 2.230732,
+      "name": {
+        "en": "château de Cadet-de-Vaux",
+        "fr": "château de Cadet-de-Vaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110357978",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-cimetiere-ancien-de-franconville-q110357978",
+      "latitude": 48.9788,
+      "longitude": 2.2333,
+      "name": {
+        "en": "cimetière ancien de Franconville",
+        "fr": "cimetière ancien de Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647564",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-eglise-notre-dame-des-noues-de-franconville-q29647564",
+      "latitude": 48.99621,
+      "longitude": 2.2227,
+      "name": {
+        "en": "église Notre-Dame-des-Noues de Franconville",
+        "fr": "église Notre-Dame-des-Noues de Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise en France"
+      },
+      "externalIdentity": {
+        "id": "Q29647566",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-eglise-sainte-madeleine-de-franconville-q29647566",
+      "latitude": 48.98295,
+      "longitude": 2.22967,
+      "name": {
+        "en": "église Sainte-Madeleine de Franconville",
+        "fr": "église Sainte-Madeleine de Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forêt des Buttes du Parisis is a distinctive architectural landmark in the city.",
+        "fr": "forêt en France"
+      },
+      "externalIdentity": {
+        "id": "Q140130589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-foret-des-buttes-du-parisis-q140130589",
+      "latitude": 48.977919,
+      "longitude": 2.219992,
+      "name": {
+        "en": "forêt des Buttes du Parisis",
+        "fr": "forêt des Buttes du Parisis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136096292",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-monument-aux-morts-du-cimetiere-de-franconville-q136096292",
+      "latitude": 48.97846,
+      "longitude": 2.23228,
+      "name": {
+        "en": "monument aux morts du cimetière de Franconville",
+        "fr": "monument aux morts du cimetière de Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096481",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-franconville-le-plessis-bouchard-q3096481",
+      "latitude": 48.99333,
+      "longitude": 2.23472,
+      "name": {
+        "en": "Franconville - Le Plessis-Bouchard",
+        "fr": "Franconville - Le Plessis-Bouchard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q237333",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-franconville-q237333",
+      "latitude": 48.988055555,
+      "longitude": 2.230555555,
+      "name": {
+        "en": "Franconville",
+        "fr": "Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Franconville, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119310065",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-mairie-de-franconville-q119310065",
+      "latitude": 48.98612,
+      "longitude": 2.23001,
+      "name": {
+        "en": "mairie de Franconville",
+        "fr": "mairie de Franconville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "street in Franconville, France",
+        "fr": "rue de Franconville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27965431",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "franconville-rue-de-paris-q27965431",
+      "latitude": 48.981449,
+      "longitude": 2.233068,
+      "name": {
+        "en": "rue de Paris",
+        "fr": "rue de Paris"
+      }
+    }
+  ]
+}

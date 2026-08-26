@@ -1,0 +1,204 @@
+{
+  "id": "le-cannet-v1",
+  "cityId": "le-cannet-fr",
+  "cityZoneId": "relation/91840",
+  "cityName": {
+    "en": "Le Cannet",
+    "fr": "Le Cannet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Alpes-Maritimes, in France",
+        "fr": "chapelle située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2956627",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-chapelle-notre-dame-des-anges-du-cannet-q2956627",
+      "latitude": 43.5739,
+      "longitude": 7.01403,
+      "name": {
+        "en": "chapelle Notre-Dame-des-Anges du Cannet",
+        "fr": "chapelle Notre-Dame-des-Anges du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Alpes-Maritimes, in France",
+        "fr": "chapelle située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60365542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-chapelle-saint-bernardin-du-cannet-q60365542",
+      "latitude": 43.57307,
+      "longitude": 7.01766,
+      "name": {
+        "en": "chapelle Saint-Bernardin du Cannet",
+        "fr": "chapelle Saint-Bernardin du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Alpes-Maritimes, in France",
+        "fr": "chapelle située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q99529453",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-chapelle-saint-sauveur-du-cannet-q99529453",
+      "latitude": 43.576347,
+      "longitude": 7.021455,
+      "name": {
+        "en": "chapelle Saint-Sauveur du Cannet",
+        "fr": "chapelle Saint-Sauveur du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Catherine is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Catherine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080698",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-cannet-eglise-sainte-catherine-pa00080698",
+      "latitude": 43.57319231910561,
+      "longitude": 7.01730756423521,
+      "name": {
+        "en": "Église Sainte-Catherine",
+        "fr": "Église Sainte-Catherine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bonnard is one of the city's notable cultural landmarks.",
+        "fr": "musée Bonnard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1135",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-cannet-musee-bonnard-m1135",
+      "latitude": 43.576273,
+      "longitude": 7.019853,
+      "name": {
+        "en": "musée Bonnard",
+        "fr": "musée Bonnard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "tour des Danys du Cannet is an important witness to the city's history.",
+        "fr": "tour au Cannet (Alpes-Maritimes)"
+      },
+      "externalIdentity": {
+        "id": "Q3533634",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-tour-des-danys-du-cannet-q3533634",
+      "latitude": 43.5742,
+      "longitude": 7.02126,
+      "name": {
+        "en": "tour des Danys du Cannet",
+        "fr": "tour des Danys du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Alpes-Maritimes, in France",
+        "fr": "église située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27343135",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-eglise-sainte-philomene-du-cannet-q27343135",
+      "latitude": 43.57669,
+      "longitude": 7.02,
+      "name": {
+        "en": "église Sainte-Philomène du Cannet",
+        "fr": "église Sainte-Philomène du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Alpes-Maritimes department, France",
+        "fr": "siège municipal du Cannet, dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119341471",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-cannet-mairie-du-cannet-q119341471",
+      "latitude": 43.576598815,
+      "longitude": 7.019116631,
+      "name": {
+        "en": "mairie du Cannet",
+        "fr": "mairie du Cannet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du brigand is a distinctive architectural landmark in the city.",
+        "fr": "Maison du brigand est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080699",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-cannet-maison-du-brigand-pa00080699",
+      "latitude": 43.5742418504677,
+      "longitude": 7.02116462852156,
+      "name": {
+        "en": "Maison du brigand",
+        "fr": "Maison du brigand"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa le Bosquet du peintre Pierre Bonnard is a distinctive architectural landmark in the city.",
+        "fr": "Villa le Bosquet du peintre Pierre Bonnard est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080700",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-cannet-villa-le-bosquet-du-peintre-pierre-bonnard-pa00080700",
+      "latitude": 43.5761100174345,
+      "longitude": 7.02828810063666,
+      "name": {
+        "en": "Villa le Bosquet du peintre Pierre Bonnard",
+        "fr": "Villa le Bosquet du peintre Pierre Bonnard"
+      }
+    }
+  ]
+}

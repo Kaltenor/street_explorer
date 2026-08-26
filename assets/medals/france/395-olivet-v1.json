@@ -1,0 +1,204 @@
+{
+  "id": "olivet-v1",
+  "cityId": "olivet-fr",
+  "cityZoneId": "relation/147557",
+  "cityName": {
+    "en": "Olivet",
+    "fr": "Olivet"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1726565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-canton-d-olivet-q1726565",
+      "latitude": 47.870022296,
+      "longitude": 1.867198851,
+      "name": {
+        "en": "canton d'Olivet",
+        "fr": "canton d'Olivet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de La Fontaine is an important witness to the city's history.",
+        "fr": "château situé à Olivet (France)"
+      },
+      "externalIdentity": {
+        "id": "Q2969545",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-chateau-de-la-fontaine-q2969545",
+      "latitude": 47.8722,
+      "longitude": 1.8801,
+      "name": {
+        "en": "château de La Fontaine",
+        "fr": "château de La Fontaine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "building in France",
+        "fr": "Château du Poutyl parc municipal d'Olivet"
+      },
+      "externalIdentity": {
+        "id": "Q24937728",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-chateau-du-poutyl-q24937728",
+      "latitude": 47.86777778,
+      "longitude": 1.89711111,
+      "name": {
+        "en": "Château du Poutyl",
+        "fr": "Château du Poutyl"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Rondon is an important witness to the city's history.",
+        "fr": "Château du Rondon est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098834",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "olivet-chateau-du-rondon-pa00098834",
+      "latitude": 47.8715816762759,
+      "longitude": 1.85868827308786,
+      "name": {
+        "en": "Château du Rondon",
+        "fr": "Château du Rondon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "watercourse",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q929949",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-dhuy-q929949",
+      "latitude": 47.855,
+      "longitude": 1.92583333,
+      "name": {
+        "en": "Dhuy",
+        "fr": "Dhuy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Olivet, Seine-et-Marne, France",
+        "fr": "édifice religieux catholique à Olivet (Loiret), en France"
+      },
+      "externalIdentity": {
+        "id": "Q38385289",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-eglise-notre-dame-du-val-d-olivet-q38385289",
+      "latitude": 47.872863,
+      "longitude": 1.901662,
+      "name": {
+        "en": "église Notre-Dame du Val d'Olivet",
+        "fr": "église Notre-Dame du Val d'Olivet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098835",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "olivet-eglise-saint-martin-pa00098835",
+      "latitude": 47.866964317086,
+      "longitude": 1.89177813033553,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Loiret department, France",
+        "fr": "monument aux morts du Loiret, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-monument-aux-morts-d-olivet-q136067399",
+      "latitude": 47.8663281,
+      "longitude": 1.8929171,
+      "name": {
+        "en": "monument aux morts d'Olivet",
+        "fr": "monument aux morts d'Olivet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "cours d'eau français du Loiret"
+      },
+      "externalIdentity": {
+        "id": "Q1245601",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-loiret-q1245601",
+      "latitude": 47.868611,
+      "longitude": 1.898056,
+      "name": {
+        "en": "Loiret",
+        "fr": "Loiret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in Loiret, Centre-Val de Loire",
+        "fr": "commune française du département du Loiret"
+      },
+      "externalIdentity": {
+        "id": "Q243866",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "olivet-olivet-q243866",
+      "latitude": 47.863055555,
+      "longitude": 1.899722222,
+      "name": {
+        "en": "Olivet",
+        "fr": "Olivet"
+      }
+    }
+  ]
+}

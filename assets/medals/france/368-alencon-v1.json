@@ -1,0 +1,204 @@
+{
+  "id": "alencon-v1",
+  "cityId": "alencon-fr",
+  "cityZoneId": "relation/553607",
+  "cityName": {
+    "en": "Alençon",
+    "fr": "Alençon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château is an important witness to the city's history.",
+        "fr": "Ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110691",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-ancien-chateau-pa00110691",
+      "latitude": 48.4295684724637,
+      "longitude": 0.0831044460060444,
+      "name": {
+        "en": "Ancien château",
+        "fr": "Ancien château"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque municipale (ancienne chapelle des Jésuites) is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque municipale (ancienne chapelle des Jésuites) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110689",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-bibliotheque-municipale-ancienne-chapelle-des-jesuites-pa00110689",
+      "latitude": 48.4318022793824,
+      "longitude": 0.0841894982834088,
+      "name": {
+        "en": "Bibliothèque municipale (ancienne chapelle des Jésuites)",
+        "fr": "Bibliothèque municipale (ancienne chapelle des Jésuites)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110692",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-eglise-notre-dame-pa00110692",
+      "latitude": 48.4297936158775,
+      "longitude": 0.089067947306471,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre du quartier de Montsor is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre du quartier de Montsor est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA61000043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-eglise-saint-pierre-du-quartier-de-montsor-pa61000043",
+      "latitude": 48.425434268394305,
+      "longitude": 0.0898713393178816,
+      "name": {
+        "en": "Église Saint-Pierre du quartier de Montsor",
+        "fr": "Église Saint-Pierre du quartier de Montsor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la préfecture (ancien Hôtel de Guise) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la préfecture (ancien Hôtel de Guise) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110695",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-hotel-de-la-prefecture-ancien-hotel-de-guise-pa00110695",
+      "latitude": 48.4324184612033,
+      "longitude": 0.0913321583565377,
+      "name": {
+        "en": "Hôtel de la préfecture (ancien Hôtel de Guise)",
+        "fr": "Hôtel de la préfecture (ancien Hôtel de Guise)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110698",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-hotel-de-ville-pa00110698",
+      "latitude": 48.4301526849703,
+      "longitude": 0.0821373713010057,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et de la dentelle is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et de la dentelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0694",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "alencon-musee-des-beaux-arts-et-de-la-dentelle-m0694",
+      "latitude": 48.431484,
+      "longitude": 0.083508,
+      "name": {
+        "en": "musée des beaux-arts et de la dentelle",
+        "fr": "musée des beaux-arts et de la dentelle"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Vestiges des remparts is an important witness to the city's history.",
+        "fr": "Vestiges des remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110711",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-vestiges-des-remparts-pa00110711",
+      "latitude": 48.4282890688293,
+      "longitude": 0.0881560474225583,
+      "name": {
+        "en": "Vestiges des remparts",
+        "fr": "Vestiges des remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Libert is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Libert est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110696",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-hotel-libert-pa00110696",
+      "latitude": 48.431060085220004,
+      "longitude": 0.0859606416781321,
+      "name": {
+        "en": "Hôtel Libert",
+        "fr": "Hôtel Libert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de la Franc-Maçonnerie is a distinctive architectural landmark in the city.",
+        "fr": "Maison de la Franc-Maçonnerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00110707",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "alencon-maison-de-la-franc-maconnerie-pa00110707",
+      "latitude": 48.4294698207636,
+      "longitude": 0.08733622102370471,
+      "name": {
+        "en": "Maison de la Franc-Maçonnerie",
+        "fr": "Maison de la Franc-Maçonnerie"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "grasse-v1",
+  "cityId": "grasse-fr",
+  "cityZoneId": "relation/102748",
+  "cityName": {
+    "en": "Grasse",
+    "fr": "Grasse"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080727",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-cathedrale-ancienne-pa00080727",
+      "latitude": 43.6578498635129,
+      "longitude": 6.92476771244689,
+      "name": {
+        "en": "Cathédrale (ancienne)",
+        "fr": "Cathédrale (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Saint-Thomas is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Saint-Thomas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080728",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-chapelle-saint-thomas-pa00080728",
+      "latitude": 43.6578612779613,
+      "longitude": 6.92355091958116,
+      "name": {
+        "en": "Chapelle Saint-Thomas",
+        "fr": "Chapelle Saint-Thomas"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de la Sagesse is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de la Sagesse compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000054",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-fontaine-de-la-sagesse-pa06000054",
+      "latitude": 43.6569820974013,
+      "longitude": 6.920471382718424,
+      "name": {
+        "en": "Fontaine de la Sagesse",
+        "fr": "Fontaine de la Sagesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Pontèves (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Pontèves (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080735",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-hotel-de-ponteves-ancien-pa00080735",
+      "latitude": 43.6580854366935,
+      "longitude": 6.92182771295046,
+      "name": {
+        "en": "Hôtel de Pontèves (ancien)",
+        "fr": "Hôtel de Pontèves (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison Tournaire is an important witness to the city's history.",
+        "fr": "Maison Tournaire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080739",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-maison-tournaire-pa00080739",
+      "latitude": 43.6596034853089,
+      "longitude": 6.92566474679422,
+      "name": {
+        "en": "Maison Tournaire",
+        "fr": "Maison Tournaire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire de Provence is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire de Provence compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0875",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "grasse-musee-d-art-et-d-histoire-de-provence-m0875",
+      "latitude": 43.657615,
+      "longitude": 6.922508,
+      "name": {
+        "en": "musée d'art et d'histoire de Provence",
+        "fr": "musée d'art et d'histoire de Provence"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Fragonard is one of the city's notable cultural landmarks.",
+        "fr": "musée Fragonard compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0876",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "grasse-musee-fragonard-m0876",
+      "latitude": 43.656739,
+      "longitude": 6.921091,
+      "name": {
+        "en": "musée Fragonard",
+        "fr": "musée Fragonard"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée international de la parfumerie is one of the city's notable cultural landmarks.",
+        "fr": "musée international de la parfumerie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0877",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "grasse-musee-international-de-la-parfumerie-m0877",
+      "latitude": 43.658385,
+      "longitude": 6.922,
+      "name": {
+        "en": "musée international de la parfumerie",
+        "fr": "musée international de la parfumerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais épiscopal (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais épiscopal (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080740",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-palais-episcopal-ancien-pa00080740",
+      "latitude": 43.658072825388,
+      "longitude": 6.92462805916351,
+      "name": {
+        "en": "Palais épiscopal (ancien)",
+        "fr": "Palais épiscopal (ancien)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Neuve is an important witness to the city's history.",
+        "fr": "Porte Neuve est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080741",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grasse-porte-neuve-pa00080741",
+      "latitude": 43.6588258329778,
+      "longitude": 6.92589224675285,
+      "name": {
+        "en": "Porte Neuve",
+        "fr": "Porte Neuve"
+      }
+    }
+  ]
+}

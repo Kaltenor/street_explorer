@@ -1,0 +1,204 @@
+{
+  "id": "rochefort-v1",
+  "cityId": "rochefort-fr",
+  "cityZoneId": "relation/117888",
+  "cityName": {
+    "en": "Rochefort",
+    "fr": "Rochefort"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôtel de Cheusse, dit Hôtel de l'Intendance maritime is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôtel de Cheusse, dit Hôtel de l'Intendance maritime est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104868",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-ancien-hotel-de-cheusse-dit-hotel-de-l-intendance-maritime-pa00104868",
+      "latitude": 45.9346923544739,
+      "longitude": -0.9576482652897261,
+      "name": {
+        "en": "Ancien Hôtel de Cheusse, dit Hôtel de l'Intendance maritime",
+        "fr": "Ancien Hôtel de Cheusse, dit Hôtel de l'Intendance maritime"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre Dame du Faubourg is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre Dame du Faubourg est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA17000103",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-eglise-notre-dame-du-faubourg-pa17000103",
+      "latitude": 45.940631604229,
+      "longitude": -0.969279078690798,
+      "name": {
+        "en": "Église Notre Dame du Faubourg",
+        "fr": "Église Notre Dame du Faubourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104864",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-eglise-saint-louis-pa00104864",
+      "latitude": 45.9375326740195,
+      "longitude": -0.9623117728753959,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104865",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-fontaine-pa00104865",
+      "latitude": 45.9365780438567,
+      "longitude": -0.961175011803151,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d’Amblimont is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d’Amblimont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA17000109",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-hotel-d-amblimont-pa17000109",
+      "latitude": 45.934459718563815,
+      "longitude": -0.9578658974573597,
+      "name": {
+        "en": "Hôtel d’Amblimont",
+        "fr": "Hôtel d’Amblimont"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art et d'histoire is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art et d'histoire compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0830",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rochefort-musee-d-art-et-d-histoire-m0830",
+      "latitude": 45.935666,
+      "longitude": -0.962523,
+      "name": {
+        "en": "musée d'art et d'histoire",
+        "fr": "musée d'art et d'histoire"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la maison de Pierre Loti is one of the city's notable cultural landmarks.",
+        "fr": "musée de la maison de Pierre Loti compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0831",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "rochefort-musee-de-la-maison-de-pierre-loti-m0831",
+      "latitude": 45.934295,
+      "longitude": -0.962724,
+      "name": {
+        "en": "musée de la maison de Pierre Loti",
+        "fr": "musée de la maison de Pierre Loti"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts is an important witness to the city's history.",
+        "fr": "Remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104871",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-remparts-pa00104871",
+      "latitude": 45.9310133357687,
+      "longitude": -0.9601912406132651,
+      "name": {
+        "en": "Remparts",
+        "fr": "Remparts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal, dit de la Coupe d'Or is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal, dit de la Coupe d'Or compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00104872",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-theatre-municipal-dit-de-la-coupe-d-or-pa00104872",
+      "latitude": 45.9378716299456,
+      "longitude": -0.961328203616957,
+      "name": {
+        "en": "Théâtre municipal, dit de la Coupe d'Or",
+        "fr": "Théâtre municipal, dit de la Coupe d'Or"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Loge maçonnique l'Accord Parfait is a distinctive architectural landmark in the city.",
+        "fr": "Loge maçonnique l'Accord Parfait est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA17000100",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "rochefort-loge-maconnique-l-accord-parfait-pa17000100",
+      "latitude": 45.9353295455555,
+      "longitude": -0.964009599531821,
+      "name": {
+        "en": "Loge maçonnique l'Accord Parfait",
+        "fr": "Loge maçonnique l'Accord Parfait"
+      }
+    }
+  ]
+}

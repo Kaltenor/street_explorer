@@ -1,0 +1,204 @@
+{
+  "id": "vannes-v1",
+  "cityId": "vannes-fr",
+  "cityZoneId": "relation/192306",
+  "cityName": {
+    "en": "Vannes",
+    "fr": "Vannes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien hôtel du Parlement de Bretagne, dit Château-Gaillard is an important witness to the city's history.",
+        "fr": "Ancien hôtel du Parlement de Bretagne, dit Château-Gaillard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091785",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-ancien-hotel-du-parlement-de-bretagne-dit-chateau-gaillard-pa00091785",
+      "latitude": 47.6568420357345,
+      "longitude": -2.75795122886727,
+      "name": {
+        "en": "Ancien hôtel du Parlement de Bretagne, dit Château-Gaillard",
+        "fr": "Ancien hôtel du Parlement de Bretagne, dit Château-Gaillard"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Anciens remparts is an important witness to the city's history.",
+        "fr": "Anciens remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091806",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-anciens-remparts-pa00091806",
+      "latitude": 47.6575222763362,
+      "longitude": -2.75578479483169,
+      "name": {
+        "en": "Anciens remparts",
+        "fr": "Anciens remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091772",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-cathedrale-saint-pierre-pa00091772",
+      "latitude": 47.6578902943611,
+      "longitude": -2.75679207040454,
+      "name": {
+        "en": "Cathédrale Saint-Pierre",
+        "fr": "Cathédrale Saint-Pierre"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de l'Hermine is an important witness to the city's history.",
+        "fr": "Château de l'Hermine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091775",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-chateau-de-l-hermine-pa00091775",
+      "latitude": 47.6559447184864,
+      "longitude": -2.75760687665449,
+      "name": {
+        "en": "Château de l'Hermine",
+        "fr": "Château de l'Hermine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Patern is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Patern est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-eglise-saint-patern-pa00091782",
+      "latitude": 47.6594368893906,
+      "longitude": -2.7540480383163,
+      "name": {
+        "en": "Église Saint-Patern",
+        "fr": "Église Saint-Patern"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Limur is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Limur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091784",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-hotel-de-limur-pa00091784",
+      "latitude": 47.6569587267763,
+      "longitude": -2.76069665320501,
+      "name": {
+        "en": "Hôtel de Limur",
+        "fr": "Hôtel de Limur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091814",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-hotel-de-ville-pa00091814",
+      "latitude": 47.658373583706,
+      "longitude": -2.76093037263185,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0227",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vannes-musee-d-histoire-et-d-archeologie-m0227",
+      "latitude": 47.656705,
+      "longitude": -2.757726,
+      "name": {
+        "en": "musée d'histoire et d'archéologie",
+        "fr": "musée d'histoire et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0228",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "vannes-musee-des-beaux-arts-m0228",
+      "latitude": 47.657693,
+      "longitude": -2.757556,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00091797",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "vannes-maison-pa00091797",
+      "latitude": 47.6577038485507,
+      "longitude": -2.75665031880918,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    }
+  ]
+}

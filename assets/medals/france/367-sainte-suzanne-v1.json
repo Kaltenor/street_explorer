@@ -1,0 +1,204 @@
+{
+  "id": "sainte-suzanne-v1",
+  "cityId": "sainte-suzanne-fr",
+  "cityZoneId": "relation/280102",
+  "cityName": {
+    "en": "Sainte-Suzanne",
+    "fr": "Sainte-Suzanne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lake in France",
+        "fr": "lac en France"
+      },
+      "externalIdentity": {
+        "id": "Q2887440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-bassin-b-uf-q2887440",
+      "latitude": -20.9492,
+      "longitude": 55.5836,
+      "name": {
+        "en": "bassin Bœuf",
+        "fr": "bassin Bœuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cheminée Quartier-Français is a distinctive architectural landmark in the city.",
+        "fr": "cheminée à Sainte-Suzanne (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q2962541",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-cheminee-quartier-francais-q2962541",
+      "latitude": -20.931889,
+      "longitude": 55.639639,
+      "name": {
+        "en": "cheminée Quartier-Français",
+        "fr": "cheminée Quartier-Français"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "plantation in Sainte-Suzanne, France",
+        "fr": "domaine agricole à Sainte-Suzanne (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q3034610",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-domaine-du-grand-hazier-q3034610",
+      "latitude": -20.905,
+      "longitude": 55.588611,
+      "name": {
+        "en": "domaine du Grand Hazier",
+        "fr": "domaine du Grand Hazier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385516",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-eglise-notre-dame-du-bon-secours-de-quartier-francais-q60385516",
+      "latitude": -20.935842,
+      "longitude": 55.637133,
+      "name": {
+        "en": "église Notre-Dame-du-Bon-Secours de quartier Français",
+        "fr": "église Notre-Dame-du-Bon-Secours de quartier Français"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38565865",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-eglise-sainte-suzanne-de-sainte-suzanne-q38565865",
+      "latitude": -20.906272,
+      "longitude": 55.607966,
+      "name": {
+        "en": "église Sainte-Suzanne de Sainte-Suzanne",
+        "fr": "église Sainte-Suzanne de Sainte-Suzanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "wind farm",
+        "fr": "parc éolien de l'île de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3068977",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-ferme-eolienne-de-la-perriere-q3068977",
+      "latitude": -20.957611,
+      "longitude": 55.58275,
+      "name": {
+        "en": "ferme éolienne de La Perrière",
+        "fr": "ferme éolienne de La Perrière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Sainte-Suzanne, Réunion, France",
+        "fr": "siège municipal de Sainte-Suzanne, à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119331380",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-mairie-de-sainte-suzanne-q119331380",
+      "latitude": -20.9055,
+      "longitude": 55.6075,
+      "name": {
+        "en": "mairie de Sainte-Suzanne",
+        "fr": "mairie de Sainte-Suzanne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "lighthouse in Réunion, France",
+        "fr": "phare à Sainte-Suzanne (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q3378178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-phare-de-bel-air-q3378178",
+      "latitude": -20.9014398,
+      "longitude": 55.6020222,
+      "name": {
+        "en": "phare de Bel-Air",
+        "fr": "phare de Bel-Air"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Pont de la Ravine des Chèvres is a distinctive architectural landmark in the city.",
+        "fr": "Pont de la Ravine des Chèvres est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sainte-suzanne-pont-de-la-ravine-des-chevres-pa97400018",
+      "latitude": -20.895572052912,
+      "longitude": 55.5758514868606,
+      "name": {
+        "en": "Pont de la Ravine des Chèvres",
+        "fr": "Pont de la Ravine des Chèvres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "temple located in La Réunion, in France",
+        "fr": "temple situé à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q130379254",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sainte-suzanne-temple-du-front-de-mer-q130379254",
+      "latitude": -20.8976,
+      "longitude": 55.5854,
+      "name": {
+        "en": "Temple du Front de Mer",
+        "fr": "Temple du Front de Mer"
+      }
+    }
+  ]
+}

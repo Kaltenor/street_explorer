@@ -1,0 +1,204 @@
+{
+  "id": "cagnes-sur-mer-v1",
+  "cityId": "cagnes-sur-mer-fr",
+  "cityZoneId": "relation/78617",
+  "cityName": {
+    "en": "Cagnes-sur-Mer",
+    "fr": "Cagnes-sur-Mer"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Cagnes-sur-Mer, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096110",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cagnes-sur-mer-cagnes-sur-mer-q3096110",
+      "latitude": 43.657778,
+      "longitude": 7.148056,
+      "name": {
+        "en": "Cagnes-sur-Mer",
+        "fr": "Cagnes-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Alpes-Maritimes, in France",
+        "fr": "chapelle située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q13518438",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cagnes-sur-mer-chapelle-notre-dame-de-protection-de-cagnes-sur-mer-q13518438",
+      "latitude": 43.668,
+      "longitude": 7.1465,
+      "name": {
+        "en": "chapelle Notre-Dame-de-Protection de Cagnes-sur-Mer",
+        "fr": "chapelle Notre-Dame-de-Protection de Cagnes-sur-Mer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Notre-Dame de Protection is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Notre-Dame de Protection est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080686",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cagnes-sur-mer-chapelle-notre-dame-de-protection-pa00080686",
+      "latitude": 43.6680442257421,
+      "longitude": 7.14654813266422,
+      "name": {
+        "en": "Chapelle Notre-Dame de Protection",
+        "fr": "Chapelle Notre-Dame de Protection"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Grimaldi ou château de Cagnes is an important witness to the city's history.",
+        "fr": "Château Grimaldi ou château de Cagnes est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080687",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cagnes-sur-mer-chateau-grimaldi-ou-chateau-de-cagnes-pa00080687",
+      "latitude": 43.6669498953905,
+      "longitude": 7.14546231707034,
+      "name": {
+        "en": "Château Grimaldi ou château de Cagnes",
+        "fr": "Château Grimaldi ou château de Cagnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Cagnes-sur-Mer, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2546150",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cagnes-sur-mer-cros-de-cagnes-q2546150",
+      "latitude": 43.660511,
+      "longitude": 7.166969,
+      "name": {
+        "en": "Cros-de-Cagnes",
+        "fr": "Cros-de-Cagnes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée-château is one of the city's notable cultural landmarks.",
+        "fr": "musée-château compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0870",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cagnes-sur-mer-musee-chateau-m0870",
+      "latitude": 43.666892,
+      "longitude": 7.145213,
+      "name": {
+        "en": "musée-château",
+        "fr": "musée-château"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Renoir is one of the city's notable cultural landmarks.",
+        "fr": "musée Renoir compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0871",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cagnes-sur-mer-musee-renoir-m0871",
+      "latitude": 43.667649,
+      "longitude": 7.156541,
+      "name": {
+        "en": "musée Renoir",
+        "fr": "musée Renoir"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc des Rives du Loup compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3364287",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cagnes-sur-mer-parc-des-rives-du-loup-q3364287",
+      "latitude": 43.658309665,
+      "longitude": 7.120225983,
+      "name": {
+        "en": "parc des Rives du Loup",
+        "fr": "parc des Rives du Loup"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine des Collettes is a distinctive architectural landmark in the city.",
+        "fr": "Domaine des Collettes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA06000001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cagnes-sur-mer-domaine-des-collettes-pa06000001",
+      "latitude": 43.6677196019702,
+      "longitude": 7.15622610653218,
+      "name": {
+        "en": "Domaine des Collettes",
+        "fr": "Domaine des Collettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Alpes-Maritimes, in France",
+        "fr": "église située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q27342411",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cagnes-sur-mer-eglise-saint-pierre-saint-paul-de-cagnes-sur-mer-q27342411",
+      "latitude": 43.66662,
+      "longitude": 7.14541,
+      "name": {
+        "en": "église Saint-Pierre-Saint-Paul de Cagnes-sur-Mer",
+        "fr": "église Saint-Pierre-Saint-Paul de Cagnes-sur-Mer"
+      }
+    }
+  ]
+}

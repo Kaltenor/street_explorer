@@ -1,0 +1,204 @@
+{
+  "id": "carcassonne-v1",
+  "cityId": "carcassonne-fr",
+  "cityZoneId": "relation/37774",
+  "cityName": {
+    "en": "Carcassonne",
+    "fr": "Carcassonne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastion de Montmorency is an important witness to the city's history.",
+        "fr": "Bastion de Montmorency est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102583",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-bastion-de-montmorency-pa00102583",
+      "latitude": 43.2108559935888,
+      "longitude": 2.35486162938475,
+      "name": {
+        "en": "Bastion de Montmorency",
+        "fr": "Bastion de Montmorency"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Michel et abords is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Michel et abords est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102584",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-cathedrale-saint-michel-et-abords-pa00102584",
+      "latitude": 43.2109343880396,
+      "longitude": 2.35087925021238,
+      "name": {
+        "en": "Cathédrale Saint-Michel et abords",
+        "fr": "Cathédrale Saint-Michel et abords"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Chapelle Notre-Dame de l’Abbaye is an important witness to the city's history.",
+        "fr": "Chapelle Notre-Dame de l’Abbaye est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA11000065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-chapelle-notre-dame-de-l-abbaye-pa11000065",
+      "latitude": 43.20949027042748,
+      "longitude": 2.365468645705109,
+      "name": {
+        "en": "Chapelle Notre-Dame de l’Abbaye",
+        "fr": "Chapelle Notre-Dame de l’Abbaye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Saint-Martin-de-Poursan is an important witness to the city's history.",
+        "fr": "Château de Saint-Martin-de-Poursan est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102586",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-chateau-de-saint-martin-de-poursan-pa00102586",
+      "latitude": 43.2282601648582,
+      "longitude": 2.39713973591152,
+      "name": {
+        "en": "Château de Saint-Martin-de-Poursan",
+        "fr": "Château de Saint-Martin-de-Poursan"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Cité de Carcassonne is an important witness to the city's history.",
+        "fr": "Cité de Carcassonne est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102588",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-cite-de-carcassonne-pa00102588",
+      "latitude": 43.2064207097729,
+      "longitude": 2.36556718854597,
+      "name": {
+        "en": "Cité de Carcassonne",
+        "fr": "Cité de Carcassonne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église paroissiale Saint-Gimer is a distinctive architectural landmark in the city.",
+        "fr": "Église paroissiale Saint-Gimer est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA11000059",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-eglise-paroissiale-saint-gimer-pa11000059",
+      "latitude": 43.207208933771625,
+      "longitude": 2.361914009719505,
+      "name": {
+        "en": "Église paroissiale Saint-Gimer",
+        "fr": "Église paroissiale Saint-Gimer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nazaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nazaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102592",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-eglise-saint-nazaire-pa00102592",
+      "latitude": 43.20522777377451,
+      "longitude": 2.36285635488558,
+      "name": {
+        "en": "Église Saint-Nazaire",
+        "fr": "Église Saint-Nazaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vincent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vincent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00102594",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-eglise-saint-vincent-pa00102594",
+      "latitude": 43.2148311944376,
+      "longitude": 2.35074439910206,
+      "name": {
+        "en": "Église Saint-Vincent",
+        "fr": "Église Saint-Vincent"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0440",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "carcassonne-musee-des-beaux-arts-m0440",
+      "latitude": 43.211552,
+      "longitude": 2.355531,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA11000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carcassonne-theatre-municipal-pa11000022",
+      "latitude": 43.21131375261731,
+      "longitude": 2.35277664806752,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    }
+  ]
+}

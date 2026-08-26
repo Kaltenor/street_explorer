@@ -1,0 +1,204 @@
+{
+  "id": "corbeil-essonnes-v1",
+  "cityId": "corbeil-essonnes-fr",
+  "cityZoneId": "relation/149203",
+  "cityName": {
+    "en": "Corbeil-Essonnes",
+    "fr": "Corbeil-Essonnes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Essonne, in France",
+        "fr": "abbaye située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28469986",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-abbaye-saint-spire-de-corbeil-q28469986",
+      "latitude": 48.6118596,
+      "longitude": 2.4826527,
+      "name": {
+        "en": "abbaye Saint-Spire de Corbeil",
+        "fr": "abbaye Saint-Spire de Corbeil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Jean-de-l'Ile ou Saint-Jean-en-l'Isle is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Jean-de-l'Ile ou Saint-Jean-en-l'Isle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087865",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "corbeil-essonnes-ancien-eglise-saint-jean-de-l-ile-ou-saint-jean-en-l-isle-pa00087865",
+      "latitude": 48.6070379594198,
+      "longitude": 2.4748472759044,
+      "name": {
+        "en": "Ancien église Saint-Jean-de-l'Ile ou Saint-Jean-en-l'Isle",
+        "fr": "Ancien église Saint-Jean-de-l'Ile ou Saint-Jean-en-l'Isle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Essonne, in France",
+        "fr": "cathédrale située dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2212795",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-cathedrale-saint-spire-de-corbeil-essonnes-q2212795",
+      "latitude": 48.611861111,
+      "longitude": 2.482666666,
+      "name": {
+        "en": "cathédrale Saint-Spire de Corbeil-Essonnes",
+        "fr": "cathédrale Saint-Spire de Corbeil-Essonnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Corbeil-Essonnes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2489748",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-corbeil-essonnes-q2489748",
+      "latitude": 48.61389,
+      "longitude": 2.47333,
+      "name": {
+        "en": "Corbeil-Essonnes",
+        "fr": "Corbeil-Essonnes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église ou Cathédrale Saint-Spire is a distinctive architectural landmark in the city.",
+        "fr": "Église ou Cathédrale Saint-Spire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087863",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "corbeil-essonnes-eglise-ou-cathedrale-saint-spire-pa00087863",
+      "latitude": 48.6118980464589,
+      "longitude": 2.48269474187722,
+      "name": {
+        "en": "Église ou Cathédrale Saint-Spire",
+        "fr": "Église ou Cathédrale Saint-Spire"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136053848",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-monument-aux-morts-d-essonnes-q136053848",
+      "latitude": 48.59366,
+      "longitude": 2.47453,
+      "name": {
+        "en": "monument aux morts d'Essonnes",
+        "fr": "monument aux morts d'Essonnes"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136051608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-monument-aux-morts-de-corbeil-q136051608",
+      "latitude": 48.61464,
+      "longitude": 2.47158,
+      "name": {
+        "en": "monument aux morts de Corbeil",
+        "fr": "monument aux morts de Corbeil"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095570",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-monument-aux-morts-de-la-guerre-franco-prussienne-de-corbeil-q136095570",
+      "latitude": 48.6113,
+      "longitude": 2.47712,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Corbeil",
+        "fr": "monument aux morts de la guerre franco-prussienne de Corbeil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087864",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "corbeil-essonnes-eglise-saint-etienne-pa00087864",
+      "latitude": 48.603677145451,
+      "longitude": 2.4694951278106,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Corbeil-Essonnes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2182178",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "corbeil-essonnes-essonnes-robinson-q2182178",
+      "latitude": 48.606111111,
+      "longitude": 2.463611111,
+      "name": {
+        "en": "Essonnes - Robinson",
+        "fr": "Essonnes - Robinson"
+      }
+    }
+  ]
+}

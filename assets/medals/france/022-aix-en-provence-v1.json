@@ -1,0 +1,394 @@
+{
+  "id": "aix-en-provence-v1",
+  "cityId": "aix-en-provence-fr",
+  "cityZoneId": "relation/70279",
+  "cityName": {
+    "en": "Aix-en-Provence",
+    "fr": "Aix-en-Provence"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Bastide, dénommée aussi château de la Mignarde is an important witness to the city's history.",
+        "fr": "Bastide, dénommée aussi château de la Mignarde est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080990",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-bastide-denommee-aussi-chateau-de-la-mignarde-pa00080990",
+      "latitude": 43.565179947056706,
+      "longitude": 5.47614990317385,
+      "name": {
+        "en": "Bastide, dénommée aussi château de la Mignarde",
+        "fr": "Bastide, dénommée aussi château de la Mignarde"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080981",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-cathedrale-saint-sauveur-pa00080981",
+      "latitude": 43.53181497414061,
+      "longitude": 5.44733259722635,
+      "name": {
+        "en": "Cathédrale Saint-Sauveur",
+        "fr": "Cathédrale Saint-Sauveur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Gaude is an important witness to the city's history.",
+        "fr": "Château de la Gaude est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080988",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-la-gaude-pa00080988",
+      "latitude": 43.5685368101405,
+      "longitude": 5.478062514502451,
+      "name": {
+        "en": "Château de la Gaude",
+        "fr": "Château de la Gaude"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Pioline is an important witness to the city's history.",
+        "fr": "Château de la Pioline est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080992",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-la-pioline-pa00080992",
+      "latitude": 43.5088977849897,
+      "longitude": 5.40451952223664,
+      "name": {
+        "en": "Château de la Pioline",
+        "fr": "Château de la Pioline"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lenfant (ou Lanfant) is an important witness to the city's history.",
+        "fr": "Château de Lenfant (ou Lanfant) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080989",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-lenfant-ou-lanfant-pa00080989",
+      "latitude": 43.4778901663221,
+      "longitude": 5.3912125989894,
+      "name": {
+        "en": "Château de Lenfant (ou Lanfant)",
+        "fr": "Château de Lenfant (ou Lanfant)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Montjustin (ou de la Gourdonne) is an important witness to the city's history.",
+        "fr": "Château de Montjustin (ou de la Gourdonne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080991",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-chateau-de-montjustin-ou-de-la-gourdonne-pa00080991",
+      "latitude": 43.5765952161211,
+      "longitude": 5.40186825189402,
+      "name": {
+        "en": "Château de Montjustin (ou de la Gourdonne)",
+        "fr": "Château de Montjustin (ou de la Gourdonne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Madeleine, ou ancienne église des Prêcheurs is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Madeleine, ou ancienne église des Prêcheurs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080997",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-eglise-de-la-madeleine-ou-ancienne-eglise-des-precheurs-pa00080997",
+      "latitude": 43.5293992635186,
+      "longitude": 5.451594216414771,
+      "name": {
+        "en": "Église de la Madeleine, ou ancienne église des Prêcheurs",
+        "fr": "Église de la Madeleine, ou ancienne église des Prêcheurs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Esprit is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Esprit est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080999",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-eglise-saint-esprit-pa00080999",
+      "latitude": 43.5274750099184,
+      "longitude": 5.446810842012211,
+      "name": {
+        "en": "Église Saint-Esprit",
+        "fr": "Église Saint-Esprit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste du Faubourg is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste du Faubourg est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081000",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-eglise-saint-jean-baptiste-du-faubourg-pa00081000",
+      "latitude": 43.5290951014414,
+      "longitude": 5.44359501276434,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste du Faubourg",
+        "fr": "Église Saint-Jean-Baptiste du Faubourg"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-de-Malte is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-de-Malte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081001",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-eglise-saint-jean-de-malte-pa00081001",
+      "latitude": 43.5256519157116,
+      "longitude": 5.45300748660227,
+      "name": {
+        "en": "Église Saint-Jean-de-Malte",
+        "fr": "Église Saint-Jean-de-Malte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "fondation Vasarely is one of the city's notable cultural landmarks.",
+        "fr": "fondation Vasarely compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1215",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-fondation-vasarely-m1215",
+      "latitude": 43.5212929153,
+      "longitude": 5.42464477906,
+      "name": {
+        "en": "fondation Vasarely",
+        "fr": "fondation Vasarely"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Espagnet ou Maurel de Pontevès is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Espagnet ou Maurel de Pontevès est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-hotel-d-espagnet-ou-maurel-de-ponteves-pa00081030",
+      "latitude": 43.5264715201434,
+      "longitude": 5.45014858748807,
+      "name": {
+        "en": "Hôtel d'Espagnet ou Maurel de Pontevès",
+        "fr": "Hôtel d'Espagnet ou Maurel de Pontevès"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de Châteaurenard is an important witness to the city's history.",
+        "fr": "Hôtel de Châteaurenard est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081029",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-hotel-de-chateaurenard-pa00081029",
+      "latitude": 43.5309386160191,
+      "longitude": 5.44718874400589,
+      "name": {
+        "en": "Hôtel de Châteaurenard",
+        "fr": "Hôtel de Châteaurenard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aix-en-provence-hotel-de-ville-pa00081058",
+      "latitude": 43.5298245587762,
+      "longitude": 5.44737998040628,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'atelier de Paul Cézanne is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'atelier de Paul Cézanne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0895",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-de-l-atelier-de-paul-cezanne-m0895",
+      "latitude": 43.537816,
+      "longitude": 5.446601,
+      "name": {
+        "en": "musée de l'atelier de Paul Cézanne",
+        "fr": "musée de l'atelier de Paul Cézanne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des tapisseries is one of the city's notable cultural landmarks.",
+        "fr": "musée des tapisseries compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0897",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-des-tapisseries-m0897",
+      "latitude": 43.531366,
+      "longitude": 5.447546,
+      "name": {
+        "en": "musée des tapisseries",
+        "fr": "musée des tapisseries"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du pavillon de Vendôme is one of the city's notable cultural landmarks.",
+        "fr": "musée du pavillon de Vendôme compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0896",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-du-pavillon-de-vendome-m0896",
+      "latitude": 43.530846,
+      "longitude": 5.439915,
+      "name": {
+        "en": "musée du pavillon de Vendôme",
+        "fr": "musée du pavillon de Vendôme"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieil Aix is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieil Aix compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0898",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-du-vieil-aix-m0898",
+      "latitude": 43.530857,
+      "longitude": 5.447432,
+      "name": {
+        "en": "musée du vieil Aix",
+        "fr": "musée du vieil Aix"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Granet is one of the city's notable cultural landmarks.",
+        "fr": "musée Granet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0894",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-granet-m0894",
+      "latitude": 43.494315,
+      "longitude": 5.410889,
+      "name": {
+        "en": "musée Granet",
+        "fr": "musée Granet"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Paul Arbaud is one of the city's notable cultural landmarks.",
+        "fr": "musée Paul Arbaud compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0899",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "aix-en-provence-musee-paul-arbaud-m0899",
+      "latitude": 43.526201,
+      "longitude": 5.449931,
+      "name": {
+        "en": "musée Paul Arbaud",
+        "fr": "musée Paul Arbaud"
+      }
+    }
+  ]
+}

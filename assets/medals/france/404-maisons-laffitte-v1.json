@@ -1,0 +1,204 @@
+{
+  "id": "maisons-laffitte-v1",
+  "cityId": "maisons-laffitte-fr",
+  "cityZoneId": "relation/75453",
+  "cityName": {
+    "en": "Maisons-Laffitte",
+    "fr": "Maisons-Laffitte"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abords du château de Maisons-Lafitte is an important witness to the city's history.",
+        "fr": "Abords du château de Maisons-Lafitte est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087490",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-abords-du-chateau-de-maisons-lafitte-pa00087490",
+      "latitude": 48.9466270602645,
+      "longitude": 2.15705123092411,
+      "name": {
+        "en": "Abords du château de Maisons-Lafitte",
+        "fr": "Abords du château de Maisons-Lafitte"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Maisons-Laffitte is an important witness to the city's history.",
+        "fr": "Château de Maisons-Laffitte est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087491",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-chateau-de-maisons-laffitte-pa00087491",
+      "latitude": 48.9472262148483,
+      "longitude": 2.15390370153446,
+      "name": {
+        "en": "Château de Maisons-Laffitte",
+        "fr": "Château de Maisons-Laffitte"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ecuries du château (anciennes) is an important witness to the city's history.",
+        "fr": "Ecuries du château (anciennes) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087492",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-ecuries-du-chateau-anciennes-pa00087492",
+      "latitude": 48.948297045998,
+      "longitude": 2.15291061524974,
+      "name": {
+        "en": "Ecuries du château (anciennes)",
+        "fr": "Ecuries du château (anciennes)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église (ancienne) ou chapelle de la Paix is a distinctive architectural landmark in the city.",
+        "fr": "Église (ancienne) ou chapelle de la Paix est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087493",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-eglise-ancienne-ou-chapelle-de-la-paix-pa00087493",
+      "latitude": 48.9464713972739,
+      "longitude": 2.15237298504026,
+      "name": {
+        "en": "Église (ancienne) ou chapelle de la Paix",
+        "fr": "Église (ancienne) ou chapelle de la Paix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ensemble dit Les Caves du Nord is a distinctive architectural landmark in the city.",
+        "fr": "Ensemble dit Les Caves du Nord est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087494",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-ensemble-dit-les-caves-du-nord-pa00087494",
+      "latitude": 48.9568816034278,
+      "longitude": 2.13546401854827,
+      "name": {
+        "en": "Ensemble dit Les Caves du Nord",
+        "fr": "Ensemble dit Les Caves du Nord"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087495",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-fontaine-pa00087495",
+      "latitude": 48.9466043728454,
+      "longitude": 2.15197074814133,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dit Hôtel Royal is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dit Hôtel Royal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087496",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-immeuble-dit-hotel-royal-pa00087496",
+      "latitude": 48.9475067030832,
+      "longitude": 2.15546932703101,
+      "name": {
+        "en": "Immeuble dit Hôtel Royal",
+        "fr": "Immeuble dit Hôtel Royal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Machine des eaux (ancienne) et aqueduc is a distinctive architectural landmark in the city.",
+        "fr": "Machine des eaux (ancienne) et aqueduc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087498",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-machine-des-eaux-ancienne-et-aqueduc-pa00087498",
+      "latitude": 48.94367229789031,
+      "longitude": 2.15384298680934,
+      "name": {
+        "en": "Machine des eaux (ancienne) et aqueduc",
+        "fr": "Machine des eaux (ancienne) et aqueduc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Mur d'enceinte du château : vestiges is an important witness to the city's history.",
+        "fr": "Mur d'enceinte du château : vestiges est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087499",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-mur-d-enceinte-du-chateau-vestiges-pa00087499",
+      "latitude": 48.9480368398882,
+      "longitude": 2.15081120983416,
+      "name": {
+        "en": "Mur d'enceinte du château : vestiges",
+        "fr": "Mur d'enceinte du château : vestiges"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc (ancien) is one of the city's notable green or natural landmarks.",
+        "fr": "Parc (ancien) compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087500",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "maisons-laffitte-parc-ancien-pa00087500",
+      "latitude": 48.952067517239,
+      "longitude": 2.14402079828996,
+      "name": {
+        "en": "Parc (ancien)",
+        "fr": "Parc (ancien)"
+      }
+    }
+  ]
+}

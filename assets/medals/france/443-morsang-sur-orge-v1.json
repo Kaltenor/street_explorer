@@ -1,0 +1,204 @@
+{
+  "id": "morsang-sur-orge-v1",
+  "cityId": "morsang-sur-orge-fr",
+  "cityZoneId": "relation/92321",
+  "cityName": {
+    "en": "Morsang-sur-Orge",
+    "fr": "Morsang-sur-Orge"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087978",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "morsang-sur-orge-abbaye-ancienne-pa00087978",
+      "latitude": 48.6639044227638,
+      "longitude": 2.35174974895132,
+      "name": {
+        "en": "Abbaye (ancienne)",
+        "fr": "Abbaye (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Morsang is an important witness to the city's history.",
+        "fr": "Château de Morsang est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087980",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "morsang-sur-orge-chateau-de-morsang-pa00087980",
+      "latitude": 48.6647845624684,
+      "longitude": 2.35174279032604,
+      "name": {
+        "en": "Château de Morsang",
+        "fr": "Château de Morsang"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-Grâce is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-Grâce est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/144993392",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-eglise-notre-dame-de-grace-way-144993392",
+      "latitude": 48.6524545,
+      "longitude": 2.3530005,
+      "name": {
+        "en": "Église Notre-Dame-de-Grâce",
+        "fr": "Église Notre-Dame-de-Grâce"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/144993707",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-eglise-saint-jean-baptiste-way-144993707",
+      "latitude": 48.6638985,
+      "longitude": 2.3522475,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché de la Forêt is a distinctive architectural landmark in the city.",
+        "fr": "Marché de la Forêt est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/144993570",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-marche-de-la-foret-way-144993570",
+      "latitude": 48.652277,
+      "longitude": 2.3567075,
+      "name": {
+        "en": "Marché de la Forêt",
+        "fr": "Marché de la Forêt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Essonne, France",
+        "fr": "commune française du département de l'Essonne"
+      },
+      "externalIdentity": {
+        "id": "Q990453",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "morsang-sur-orge-morsang-sur-orge-q990453",
+      "latitude": 48.663333333,
+      "longitude": 2.351388888,
+      "name": {
+        "en": "Morsang-sur-Orge",
+        "fr": "Morsang-sur-Orge"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Source is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Source compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/375649835",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-parc-de-la-source-way-375649835",
+      "latitude": 48.6642927,
+      "longitude": 2.3473328,
+      "name": {
+        "en": "Parc de la Source",
+        "fr": "Parc de la Source"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Pablo Picasso is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Pablo Picasso compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/43759500",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-parc-pablo-picasso-way-43759500",
+      "latitude": 48.6483235,
+      "longitude": 2.3468867,
+      "name": {
+        "en": "Parc Pablo Picasso",
+        "fr": "Parc Pablo Picasso"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Toussaint Louverture is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Toussaint Louverture compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/926021119",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-parc-toussaint-louverture-way-926021119",
+      "latitude": 48.6546274,
+      "longitude": 2.3453437,
+      "name": {
+        "en": "Parc Toussaint Louverture",
+        "fr": "Parc Toussaint Louverture"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre de L'Arlequin is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre de L'Arlequin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/145002345",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "morsang-sur-orge-theatre-de-l-arlequin-way-145002345",
+      "latitude": 48.6634015,
+      "longitude": 2.350539,
+      "name": {
+        "en": "Théâtre de L'Arlequin",
+        "fr": "Théâtre de L'Arlequin"
+      }
+    }
+  ]
+}

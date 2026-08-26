@@ -1,0 +1,204 @@
+{
+  "id": "tournefeuille-v1",
+  "cityId": "tournefeuille-fr",
+  "cityZoneId": "relation/35735",
+  "cityName": {
+    "en": "Tournefeuille",
+    "fr": "Tournefeuille"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Centre Protestante Église Réformée Evangélique de Toulouse Ouest is a distinctive architectural landmark in the city.",
+        "fr": "Centre Protestante Église Réformée Evangélique de Toulouse Ouest est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74792966",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-centre-protestante-eglise-reformee-evangelique-de-toulouse-ouest-way-74792966",
+      "latitude": 43.5781047,
+      "longitude": 1.3273351,
+      "name": {
+        "en": "Centre Protestante Église Réformée Evangélique de Toulouse Ouest",
+        "fr": "Centre Protestante Église Réformée Evangélique de Toulouse Ouest"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Bagatelle is an important witness to the city's history.",
+        "fr": "Château de Bagatelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74796147",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-chateau-de-bagatelle-way-74796147",
+      "latitude": 43.5813943,
+      "longitude": 1.3657706,
+      "name": {
+        "en": "Château de Bagatelle",
+        "fr": "Château de Bagatelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74801785",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-eglise-saint-pierre-way-74801785",
+      "latitude": 43.5840574,
+      "longitude": 1.3459785,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "L'Escale is one of the city's notable cultural landmarks.",
+        "fr": "L'Escale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74803813",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-l-escale-way-74803813",
+      "latitude": 43.5828272,
+      "longitude": 1.3452875,
+      "name": {
+        "en": "L'Escale",
+        "fr": "L'Escale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Mairie (ancien château de Gramart) is an important witness to the city's history.",
+        "fr": "Mairie (ancien château de Gramart) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094646",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tournefeuille-mairie-ancien-chateau-de-gramart-pa00094646",
+      "latitude": 43.5828136298889,
+      "longitude": 1.3466659655994402,
+      "name": {
+        "en": "Mairie (ancien château de Gramart)",
+        "fr": "Mairie (ancien château de Gramart)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Mairie de Tournefeuille is an important witness to the city's history.",
+        "fr": "Mairie de Tournefeuille est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/74787690",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-mairie-de-tournefeuille-way-74787690",
+      "latitude": 43.582849,
+      "longitude": 1.3466029,
+      "name": {
+        "en": "Mairie de Tournefeuille",
+        "fr": "Mairie de Tournefeuille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q2041828",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tournefeuille-ousseau-q2041828",
+      "latitude": 43.58277778,
+      "longitude": 1.35055556,
+      "name": {
+        "en": "Ousseau",
+        "fr": "Ousseau"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Paderne is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Paderne compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/603653557",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "tournefeuille-parc-de-la-paderne-way-603653557",
+      "latitude": 43.58611,
+      "longitude": 1.3322427,
+      "name": {
+        "en": "Parc de la Paderne",
+        "fr": "Parc de la Paderne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "commune in Haute-Garonne, France",
+        "fr": "commune française du département de la Haute-Garonne"
+      },
+      "externalIdentity": {
+        "id": "Q328022",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tournefeuille-tournefeuille-q328022",
+      "latitude": 43.584444444,
+      "longitude": 1.343611111,
+      "name": {
+        "en": "Tournefeuille",
+        "fr": "Tournefeuille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "zone de loisirs de la Ramée is a distinctive architectural landmark in the city.",
+        "fr": "zone de loisirs de la Ramée est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3575791",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tournefeuille-zone-de-loisirs-de-la-ramee-q3575791",
+      "latitude": 43.5694,
+      "longitude": 1.35,
+      "name": {
+        "en": "zone de loisirs de la Ramée",
+        "fr": "zone de loisirs de la Ramée"
+      }
+    }
+  ]
+}

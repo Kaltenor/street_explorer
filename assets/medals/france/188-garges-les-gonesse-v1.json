@@ -1,0 +1,204 @@
+{
+  "id": "garges-les-gonesse-v1",
+  "cityId": "garges-les-gonesse-fr",
+  "cityZoneId": "relation/452532",
+  "cityName": {
+    "en": "Garges-lès-Gonesse",
+    "fr": "Garges-lès-Gonesse"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q984185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-canton-de-garges-les-gonesse-est-q984185",
+      "latitude": 48.966667,
+      "longitude": 2.416667,
+      "name": {
+        "en": "canton de Garges-lès-Gonesse-Est",
+        "fr": "canton de Garges-lès-Gonesse-Est"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Garges is an important witness to the city's history.",
+        "fr": "Château de Garges est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "garges-les-gonesse-chateau-de-garges-pa00080065",
+      "latitude": 48.9672734103058,
+      "longitude": 2.41323518726232,
+      "name": {
+        "en": "Château de Garges",
+        "fr": "Château de Garges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958325",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-eglise-saint-martin-de-garges-les-gonesse-q15958325",
+      "latitude": 48.9676,
+      "longitude": 2.41359,
+      "name": {
+        "en": "église Saint-Martin de Garges-lès-Gonesse",
+        "fr": "église Saint-Martin de Garges-lès-Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958326",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-eglise-sainte-genevieve-de-garges-les-gonesse-q15958326",
+      "latitude": 48.9729,
+      "longitude": 2.38933,
+      "name": {
+        "en": "église Sainte-Geneviève de Garges-lès-Gonesse",
+        "fr": "église Sainte-Geneviève de Garges-lès-Gonesse"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Stains is an important witness to the city's history.",
+        "fr": "fort de Stains est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3078245",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-fort-de-stains-q3078245",
+      "latitude": 48.975982361,
+      "longitude": 2.403504956,
+      "name": {
+        "en": "fort de Stains",
+        "fr": "fort de Stains"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "ville du Val-d'Oise, France",
+        "fr": "commune française du département du Val-d'Oise"
+      },
+      "externalIdentity": {
+        "id": "Q244271",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-garges-les-gonesse-q244271",
+      "latitude": 48.971944444,
+      "longitude": 2.4,
+      "name": {
+        "en": "Garges-lès-Gonesse",
+        "fr": "Garges-lès-Gonesse"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc de la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q3363820",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-parc-georges-valbon-q3363820",
+      "latitude": 48.9426,
+      "longitude": 2.39897,
+      "name": {
+        "en": "parc Georges-Valbon",
+        "fr": "parc Georges-Valbon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Île-de-France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2003691",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-garges-sarcelles-q2003691",
+      "latitude": 48.97611,
+      "longitude": 2.39,
+      "name": {
+        "en": "Garges - Sarcelles",
+        "fr": "Garges - Sarcelles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Garges-lès-Gonesse, France",
+        "fr": "édifice de Garges-lès-Gonesse, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412767",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-hotel-de-ville-de-garges-les-gonesse-q83412767",
+      "latitude": 48.9717,
+      "longitude": 2.4006,
+      "name": {
+        "en": "hôtel de ville de Garges-lès-Gonesse",
+        "fr": "hôtel de ville de Garges-lès-Gonesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière française"
+      },
+      "externalIdentity": {
+        "id": "Q3377206",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "garges-les-gonesse-petit-rosne-q3377206",
+      "latitude": 48.979444444,
+      "longitude": 2.416111111,
+      "name": {
+        "en": "Petit Rosne",
+        "fr": "Petit Rosne"
+      }
+    }
+  ]
+}

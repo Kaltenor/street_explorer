@@ -1,0 +1,394 @@
+{
+  "id": "tours-v1",
+  "cityId": "tours-fr",
+  "cityZoneId": "relation/76306",
+  "cityName": {
+    "en": "Tours",
+    "fr": "Tours"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Beaumont is an important witness to the city's history.",
+        "fr": "Abbaye de Beaumont est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098128",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-abbaye-de-beaumont-pa00098128",
+      "latitude": 47.3825420443157,
+      "longitude": 0.672041118060684,
+      "name": {
+        "en": "Abbaye de Beaumont",
+        "fr": "Abbaye de Beaumont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Marmoutier is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Marmoutier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098129",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-abbaye-de-marmoutier-pa00098129",
+      "latitude": 47.404140491677424,
+      "longitude": 0.7186008728083135,
+      "name": {
+        "en": "Ancien abbaye de Marmoutier",
+        "fr": "Ancien abbaye de Marmoutier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Julien is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Julien est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-abbaye-de-saint-julien-pa00098130",
+      "latitude": 47.39615576064054,
+      "longitude": 0.6873586300161967,
+      "name": {
+        "en": "Ancien abbaye de Saint-Julien",
+        "fr": "Ancien abbaye de Saint-Julien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Martin is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Martin est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098131",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-abbaye-de-saint-martin-pa00098131",
+      "latitude": 47.3933368095993,
+      "longitude": 0.682582037546157,
+      "name": {
+        "en": "Ancien abbaye de Saint-Martin",
+        "fr": "Ancien abbaye de Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien chapelle des Filles de l'Union Chrétienne is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chapelle des Filles de l'Union Chrétienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098138",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-chapelle-des-filles-de-l-union-chretienne-pa00098138",
+      "latitude": 47.3930405442502,
+      "longitude": 0.690401766830532,
+      "name": {
+        "en": "Ancien chapelle des Filles de l'Union Chrétienne",
+        "fr": "Ancien chapelle des Filles de l'Union Chrétienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-François is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-François est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098151",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-eglise-saint-francois-pa00098151",
+      "latitude": 47.39524210391322,
+      "longitude": 0.6873811428057693,
+      "name": {
+        "en": "Ancien église Saint-François",
+        "fr": "Ancien église Saint-François"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien maison canoniale de Saint-Gatien, dite du Curé de Tours is an important witness to the city's history.",
+        "fr": "Ancien maison canoniale de Saint-Gatien, dite du Curé de Tours est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098253",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-maison-canoniale-de-saint-gatien-dite-du-cure-de-tours-pa00098253",
+      "latitude": 47.3959728539176,
+      "longitude": 0.694564617708534,
+      "name": {
+        "en": "Ancien maison canoniale de Saint-Gatien, dite du Curé de Tours",
+        "fr": "Ancien maison canoniale de Saint-Gatien, dite du Curé de Tours"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien palais des Gouverneurs is an important witness to the city's history.",
+        "fr": "Ancien palais des Gouverneurs est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098260",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-ancien-palais-des-gouverneurs-pa00098260",
+      "latitude": 47.3973146482449,
+      "longitude": 0.694761791367137,
+      "name": {
+        "en": "Ancien palais des Gouverneurs",
+        "fr": "Ancien palais des Gouverneurs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Basilique Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098305",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-basilique-saint-martin-pa00098305",
+      "latitude": 47.3928636819373,
+      "longitude": 0.682980866296358,
+      "name": {
+        "en": "Basilique Saint-Martin",
+        "fr": "Basilique Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Gatien is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Gatien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098135",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-cathedrale-saint-gatien-pa00098135",
+      "latitude": 47.3955826105032,
+      "longitude": 0.694456239829972,
+      "name": {
+        "en": "Cathédrale Saint-Gatien",
+        "fr": "Cathédrale Saint-Gatien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "collections du musée de la société archéologique de Touraine is one of the city's notable cultural landmarks.",
+        "fr": "collections du musée de la société archéologique de Touraine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0268",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tours-collections-du-musee-de-la-societe-archeologique-de-touraine-m0268",
+      "latitude": 47.395094,
+      "longitude": 0.684809,
+      "name": {
+        "en": "collections du musée de la société archéologique de Touraine",
+        "fr": "collections du musée de la société archéologique de Touraine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église paroissiale Saint-Symphorien is a distinctive architectural landmark in the city.",
+        "fr": "Église paroissiale Saint-Symphorien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098157",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-eglise-paroissiale-saint-symphorien-pa00098157",
+      "latitude": 47.402789458095505,
+      "longitude": 0.694399247689447,
+      "name": {
+        "en": "Église paroissiale Saint-Symphorien",
+        "fr": "Église paroissiale Saint-Symphorien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Enceinte de Martinopole ou de Châteauneuf is an important witness to the city's history.",
+        "fr": "Enceinte de Martinopole ou de Châteauneuf est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098159",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-enceinte-de-martinopole-ou-de-chateauneuf-pa00098159",
+      "latitude": 47.394053653479,
+      "longitude": 0.683427097186041,
+      "name": {
+        "en": "Enceinte de Martinopole ou de Châteauneuf",
+        "fr": "Enceinte de Martinopole ou de Châteauneuf"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine de Beaune-Semblançay is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine de Beaune-Semblançay compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098160",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-fontaine-de-beaune-semblancay-pa00098160",
+      "latitude": 47.3951202965677,
+      "longitude": 0.687414851481314,
+      "name": {
+        "en": "Fontaine de Beaune-Semblançay",
+        "fr": "Fontaine de Beaune-Semblançay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00098190",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-hotel-de-ville-pa00098190",
+      "latitude": 47.3906071341962,
+      "longitude": 0.6893204912439571,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0265",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tours-musee-des-beaux-arts-m0265",
+      "latitude": 47.394698,
+      "longitude": 0.694004,
+      "name": {
+        "en": "musée des beaux-arts",
+        "fr": "musée des beaux-arts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des vins de Touraine is one of the city's notable cultural landmarks.",
+        "fr": "musée des vins de Touraine compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0267",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tours-musee-des-vins-de-touraine-m0267",
+      "latitude": 47.393692,
+      "longitude": 0.687373,
+      "name": {
+        "en": "musée des vins de Touraine",
+        "fr": "musée des vins de Touraine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du compagnonnage is one of the city's notable cultural landmarks.",
+        "fr": "musée du compagnonnage compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0266",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tours-musee-du-compagnonnage-m0266",
+      "latitude": 47.39627,
+      "longitude": 0.686457,
+      "name": {
+        "en": "musée du compagnonnage",
+        "fr": "musée du compagnonnage"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7062",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "tours-museum-d-histoire-naturelle-m7062",
+      "latitude": 47.394637,
+      "longitude": 0.68388,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal ou Grand Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal ou Grand Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132565",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "tours-theatre-municipal-ou-grand-theatre-pa00132565",
+      "latitude": 47.39454778648202,
+      "longitude": 0.6898215849936378,
+      "name": {
+        "en": "Théâtre municipal ou Grand Théâtre",
+        "fr": "Théâtre municipal ou Grand Théâtre"
+      }
+    }
+  ]
+}

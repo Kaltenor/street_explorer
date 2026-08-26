@@ -1,6 +1,6 @@
 # Downloadable Medal Country Packs
 
-Street Explorer v0.23 keeps the 100-city, 875-medal France catalogue bundled for immediate offline compatibility. Every newer country catalogue is a versioned downloadable pack. The app bundles only a compact city-zone manifest, downloads one country when one of its supported cities is first selected, verifies the compressed byte count and SHA-256 checksum, expands and validates the schema, then retains the gzip file in the app document directory for offline reuse.
+Street Explorer v0.33 keeps a 500-city, 6,082-medal France catalogue bundled for immediate offline compatibility. It covers the 500 largest communes, including departments and collectivities overseas, with at least 20 medals in ranks 1–100 and 10 in ranks 101–500. Every other country catalogue is a versioned downloadable pack. The app bundles only a compact city-zone manifest, downloads one country when one of its supported cities is first selected, verifies the compressed byte count and SHA-256 checksum, expands and validates the schema, then retains the gzip file in the app document directory for offline reuse.
 
 ## Pack Contract
 
@@ -46,12 +46,25 @@ Belgium demonstrates that regional official feeds can provide most of a national
 
 The generated results and estimate variance are written to `country-packs/v1/wave-1-results.json`. `npm run test:country-packs` verifies every gzip size and checksum, schema and locale completeness, global identity uniqueness, the five-medal floor, and the approved download/cache budgets.
 
+## Measured Distribution And SQLite Footprint
+
+`npm run measure:medal-storage` rebuilds `country-packs/v1/medal-storage-report.json`. France's distributed value is the exact sum of its 500 pretty-printed bundled album files; the other countries use their published gzip bytes. SQLite size is a fresh 4 KiB-page database containing the production catalogue tables and indexes after `VACUUM`; the empty schema is 36,864 bytes in every case.
+
+| Country | Albums | Medals | Distributed | Expanded definitions | Seeded SQLite | Catalogue above empty schema |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| France | 500 | 6,082 | 3,830,420 B | 2,861,319 B | 3,682,304 B | 3,645,440 B |
+| Belgium | 91 | 782 | 66,511 B | 762,005 B | 671,744 B | 634,880 B |
+| Germany | 100 | 864 | 73,212 B | 687,040 B | 593,920 B | 557,056 B |
+| Spain | 100 | 858 | 75,940 B | 709,974 B | 589,824 B | 552,960 B |
+| Italy | 100 | 854 | 70,980 B | 665,823 B | 536,576 B | 499,712 B |
+| Netherlands | 58 | 492 | 46,085 B | 436,982 B | 368,640 B | 331,776 B |
+
 ## Build And Publish Workflow
 
 1. Download the cited official population and heritage inputs. Large source exports and query caches stay outside the repository.
 2. Run the country generator in `scripts/country-packs/`. Each generator writes the gzip, descriptor, and quality report and fails rather than publishing an underfilled or unidentified city.
 3. Run `npm run build:country-pack-report` and review coverage, candidate counts, source mix, actual size, and limitations.
-4. Run `npm run build:country-pack-manifest`, `npm run test:country-packs`, and `npm run test:medals`.
+4. Run `npm run build:country-pack-manifest`, `npm run measure:medal-storage`, `npm run test:country-packs`, and `npm run test:medals`.
 5. Publish the immutable versioned gzip files at the HTTPS URLs pinned in the descriptors before releasing the app manifest. A development checkout cannot download unpublished raw GitHub artifacts.
 6. Increment a country pack's version whenever its roster, coordinates, copy, or source identity changes. Never replace bytes behind an existing version/checksum pair.
 

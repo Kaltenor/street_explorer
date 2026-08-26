@@ -1,0 +1,204 @@
+{
+  "id": "saint-andre-v1",
+  "cityId": "saint-andre-fr",
+  "cityZoneId": "relation/280118",
+  "cityName": {
+    "en": "Saint-André",
+    "fr": "Saint-André"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite de \"Ravine Creuse\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite de \"Ravine Creuse\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-cheminee-dite-de-ravine-creuse-pa97400048",
+      "latitude": -20.968208650071,
+      "longitude": 55.6651937152118,
+      "name": {
+        "en": "Cheminée dite de \"Ravine Creuse\"",
+        "fr": "Cheminée dite de \"Ravine Creuse\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite \"Le Colosse\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite \"Le Colosse\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-cheminee-dite-le-colosse-pa97400049",
+      "latitude": -20.935345566013,
+      "longitude": 55.6719983111558,
+      "name": {
+        "en": "Cheminée dite \"Le Colosse\"",
+        "fr": "Cheminée dite \"Le Colosse\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cheminée dite \"le Désert\" is a distinctive architectural landmark in the city.",
+        "fr": "Cheminée dite \"le Désert\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400047",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-cheminee-dite-le-desert-pa97400047",
+      "latitude": -20.965249560695103,
+      "longitude": 55.6285957924538,
+      "name": {
+        "en": "Cheminée dite \"le Désert\"",
+        "fr": "Cheminée dite \"le Désert\""
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dit \" salle Jeanne d'Arc \" is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dit \" salle Jeanne d'Arc \" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400111",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-immeuble-dit-salle-jeanne-d-arc-pa97400111",
+      "latitude": -20.9603039261856,
+      "longitude": 55.6489294134527,
+      "name": {
+        "en": "Immeuble dit \" salle Jeanne d'Arc \"",
+        "fr": "Immeuble dit \" salle Jeanne d'Arc \""
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison Martin ou Martin Valliamé, actuellement office du tourisme de Saint-André is an important witness to the city's history.",
+        "fr": "Maison Martin ou Martin Valliamé, actuellement office du tourisme de Saint-André est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105809",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-maison-martin-ou-martin-valliame-actuellement-office-du-tourisme-de-saint-andre-pa00105809",
+      "latitude": -20.9499224698382,
+      "longitude": 55.6580607971027,
+      "name": {
+        "en": "Maison Martin ou Martin Valliamé, actuellement office du tourisme de Saint-André",
+        "fr": "Maison Martin ou Martin Valliamé, actuellement office du tourisme de Saint-André"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA97400154",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-monument-aux-morts-pa97400154",
+      "latitude": -20.96026712365638,
+      "longitude": 55.649984753938185,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Bellier is a distinctive architectural landmark in the city.",
+        "fr": "Maison Bellier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400145",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-maison-bellier-pa97400145",
+      "latitude": -20.91481358376186,
+      "longitude": 55.63842958632739,
+      "name": {
+        "en": "Maison Bellier",
+        "fr": "Maison Bellier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Monument funéraire de Nicole Robinet de la Serve, situé dans le cimetière is a distinctive architectural landmark in the city.",
+        "fr": "Monument funéraire de Nicole Robinet de la Serve, situé dans le cimetière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400089",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-monument-funeraire-de-nicole-robinet-de-la-serve-situe-dans-le-cimetiere-pa97400089",
+      "latitude": -20.9600506444618,
+      "longitude": 55.6495334124353,
+      "name": {
+        "en": "Monument funéraire de Nicole Robinet de la Serve, situé dans le cimetière",
+        "fr": "Monument funéraire de Nicole Robinet de la Serve, situé dans le cimetière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Propriété Appavoupoulle is a distinctive architectural landmark in the city.",
+        "fr": "Propriété Appavoupoulle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132888",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-propriete-appavoupoulle-pa00132888",
+      "latitude": -20.9622296971864,
+      "longitude": 55.6502399998219,
+      "name": {
+        "en": "Propriété Appavoupoulle",
+        "fr": "Propriété Appavoupoulle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Temple Mardévirin is a distinctive architectural landmark in the city.",
+        "fr": "Temple Mardévirin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400106",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-andre-temple-mardevirin-pa97400106",
+      "latitude": -20.9432051321553,
+      "longitude": 55.6481324793175,
+      "name": {
+        "en": "Temple Mardévirin",
+        "fr": "Temple Mardévirin"
+      }
+    }
+  ]
+}

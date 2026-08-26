@@ -1,0 +1,394 @@
+{
+  "id": "aulnay-sous-bois-v1",
+  "cityId": "aulnay-sous-bois-fr",
+  "cityZoneId": "relation/162259",
+  "cityName": {
+    "en": "Aulnay-sous-Bois",
+    "fr": "Aulnay-sous-Bois"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Aulnay-sous-Bois, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-aulnay-sous-bois-q3095703",
+      "latitude": 48.931944,
+      "longitude": 2.494444,
+      "name": {
+        "en": "Aulnay-sous-Bois",
+        "fr": "Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "proposed Metro station in Paris",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q39281462",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-aulnay-val-francilia-q39281462",
+      "latitude": 48.9514,
+      "longitude": 2.4882,
+      "name": {
+        "en": "Aulnay Val Francilia",
+        "fr": "Aulnay Val Francilia"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q2994467",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-conservatoire-citroen-q2994467",
+      "latitude": 48.966,
+      "longitude": 2.4957,
+      "name": {
+        "en": "conservatoire Citroën",
+        "fr": "conservatoire Citroën"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19921920",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-eglise-saint-joseph-d-aulnay-sous-bois-q19921920",
+      "latitude": 48.926336,
+      "longitude": 2.501218,
+      "name": {
+        "en": "église Saint-Joseph d'Aulnay-sous-Bois",
+        "fr": "église Saint-Joseph d'Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située dans la Seine-Saint-Denis en France"
+      },
+      "externalIdentity": {
+        "id": "Q29856842",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-eglise-saint-pierre-de-nonneville-d-aulnay-sous-bois-q29856842",
+      "latitude": 48.92401,
+      "longitude": 2.48507,
+      "name": {
+        "en": "église Saint-Pierre-de-Nonneville d'Aulnay-sous-Bois",
+        "fr": "église Saint-Pierre-de-Nonneville d'Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Sulpice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Sulpice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079928",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aulnay-sous-bois-eglise-saint-sulpice-pa00079928",
+      "latitude": 48.9408454262609,
+      "longitude": 2.49728978079403,
+      "name": {
+        "en": "Église Saint-Sulpice",
+        "fr": "Église Saint-Sulpice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Garonor is a distinctive architectural landmark in the city.",
+        "fr": "parc d'activités situé à Aulnay-sous-Bois et au Blanc-Mesnil"
+      },
+      "externalIdentity": {
+        "id": "Q596875",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-garonor-q596875",
+      "latitude": 48.9562,
+      "longitude": 2.4624,
+      "name": {
+        "en": "Garonor",
+        "fr": "Garonor"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Aulnay-sous-Bois, France",
+        "fr": "mairie en France"
+      },
+      "externalIdentity": {
+        "id": "Q28914254",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-hotel-de-ville-d-aulnay-sous-bois-q28914254",
+      "latitude": 48.93424,
+      "longitude": 2.50011,
+      "name": {
+        "en": "hôtel de ville d'Aulnay-sous-Bois",
+        "fr": "hôtel de ville d'Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136042446",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-monument-aux-morts-d-aulnay-sous-bois-q136042446",
+      "latitude": 48.94274,
+      "longitude": 2.50349,
+      "name": {
+        "en": "monument aux morts d'Aulnay-sous-Bois",
+        "fr": "monument aux morts d'Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3364367",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-parc-departemental-du-sausset-q3364367",
+      "latitude": 48.9639,
+      "longitude": 2.50866,
+      "name": {
+        "en": "parc départemental du Sausset",
+        "fr": "parc départemental du Sausset"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Robert Ballanger d'Aulnay-sous-Bois is one of the city's notable green or natural landmarks.",
+        "fr": "parc Robert Ballanger d'Aulnay-sous-Bois compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q133247423",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-parc-robert-ballanger-d-aulnay-sous-bois-q133247423",
+      "latitude": 48.9586,
+      "longitude": 2.4886,
+      "name": {
+        "en": "parc Robert Ballanger d'Aulnay-sous-Bois",
+        "fr": "parc Robert Ballanger d'Aulnay-sous-Bois"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "roundabout in Aulnay-sous-Bois, France",
+        "fr": "rond-point d'Aulnay-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113447561",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-rond-point-du-chateau-q113447561",
+      "latitude": 48.940160395,
+      "longitude": 2.49481212,
+      "name": {
+        "en": "rond-point du Château",
+        "fr": "rond-point du Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cul-de-sac in Aulnay-sous-Bois, France",
+        "fr": "impasse d'Aulnay-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113447205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-impasse-de-pontoise-q113447205",
+      "latitude": 48.93027775,
+      "longitude": 2.49301115,
+      "name": {
+        "en": "impasse de Pontoise",
+        "fr": "impasse de Pontoise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "tramline system in the Paris region",
+        "fr": "ligne du tramway d'Île-de-France reliant Aulnay-sous-Bois et Montfermeil à Bondy"
+      },
+      "externalIdentity": {
+        "id": "Q1826681",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-ligne-t4-q1826681",
+      "latitude": 48.90250015,
+      "longitude": 2.50666666,
+      "name": {
+        "en": "ligne T4",
+        "fr": "ligne T4"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Aulnay-sous-Bois, France",
+        "fr": "place d'Aulnay-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113447150",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-place-de-l-eglise-parvis-jean-paul-ii-q113447150",
+      "latitude": 48.941295555,
+      "longitude": 2.497325488,
+      "name": {
+        "en": "place de l'Église - parvis Jean-Paul II",
+        "fr": "place de l'Église - parvis Jean-Paul II"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "thoroughfare in Aulnay-sous-Bois, France",
+        "fr": "place de Aulnay-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q134348464",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-place-de-l-eglise-q134348464",
+      "latitude": 48.955277,
+      "longitude": 2.500151,
+      "name": {
+        "en": "place de l'Église",
+        "fr": "place de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "square in Aulnay-sous-Bois, France",
+        "fr": "place d'Aulnay-sous-Bois, en France"
+      },
+      "externalIdentity": {
+        "id": "Q113447235",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-place-de-l-hotel-de-ville-q113447235",
+      "latitude": 48.93412725,
+      "longitude": 2.4999813,
+      "name": {
+        "en": "place de l'Hôtel de Ville",
+        "fr": "place de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Aulnay-sous-Bois, France",
+        "fr": "pont à Bondy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q65147665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-pont-d-aulnay-q65147665",
+      "latitude": 48.90724,
+      "longitude": 2.48026,
+      "name": {
+        "en": "pont d'Aulnay",
+        "fr": "pont d'Aulnay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Aulnay-sous-Bois, France",
+        "fr": "pont d'Aulnay-sous-Bois"
+      },
+      "externalIdentity": {
+        "id": "Q108911872",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-pont-de-l-union-q108911872",
+      "latitude": 48.92435,
+      "longitude": 2.51292,
+      "name": {
+        "en": "pont de l'Union",
+        "fr": "pont de l'Union"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "usine PSA d'Aulnay-sous-Bois is a distinctive architectural landmark in the city.",
+        "fr": "usine PSA d'Aulnay-sous-Bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3552603",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aulnay-sous-bois-usine-psa-d-aulnay-sous-bois-q3552603",
+      "latitude": 48.9633,
+      "longitude": 2.48306,
+      "name": {
+        "en": "usine PSA d'Aulnay-sous-Bois",
+        "fr": "usine PSA d'Aulnay-sous-Bois"
+      }
+    }
+  ]
+}

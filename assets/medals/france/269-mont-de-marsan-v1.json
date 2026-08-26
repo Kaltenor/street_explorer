@@ -1,0 +1,204 @@
+{
+  "id": "mont-de-marsan-v1",
+  "cityId": "mont-de-marsan-fr",
+  "cityZoneId": "relation/150319",
+  "cityName": {
+    "en": "Mont-de-Marsan",
+    "fr": "Mont-de-Marsan"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien Donjon de Lacataye is an important witness to the city's history.",
+        "fr": "Ancien Donjon de Lacataye est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083975",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-ancien-donjon-de-lacataye-pa00083975",
+      "latitude": 43.8922862701848,
+      "longitude": -0.499009931356986,
+      "name": {
+        "en": "Ancien Donjon de Lacataye",
+        "fr": "Ancien Donjon de Lacataye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien prison is a distinctive architectural landmark in the city.",
+        "fr": "Ancien prison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083981",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-ancien-prison-pa00083981",
+      "latitude": 43.8930220134373,
+      "longitude": -0.501955463825329,
+      "name": {
+        "en": "Ancien prison",
+        "fr": "Ancien prison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Madeleine is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Madeleine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083976",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-eglise-de-la-madeleine-pa00083976",
+      "latitude": 43.8927455647338,
+      "longitude": -0.500647058653179,
+      "name": {
+        "en": "Église de la Madeleine",
+        "fr": "Église de la Madeleine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vincent de Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vincent de Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA40000065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-eglise-saint-vincent-de-paul-pa40000065",
+      "latitude": 43.9014765453896,
+      "longitude": -0.48337672145237,
+      "name": {
+        "en": "Église Saint-Vincent de Paul",
+        "fr": "Église Saint-Vincent de Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la Préfecture is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la Préfecture est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083978",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-hotel-de-la-prefecture-pa00083978",
+      "latitude": 43.8934686999977,
+      "longitude": -0.5001245942421221,
+      "name": {
+        "en": "Hôtel de la Préfecture",
+        "fr": "Hôtel de la Préfecture"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison romane is an important witness to the city's history.",
+        "fr": "Maison romane est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083980",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-maison-romane-pa00083980",
+      "latitude": 43.8937678074869,
+      "longitude": -0.500564426257046,
+      "name": {
+        "en": "Maison romane",
+        "fr": "Maison romane"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Despiau-Wlérick is one of the city's notable cultural landmarks.",
+        "fr": "musée Despiau-Wlérick compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0081",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-musee-despiau-wlerick-m0081",
+      "latitude": 43.8926,
+      "longitude": -0.498893,
+      "name": {
+        "en": "musée Despiau-Wlérick",
+        "fr": "musée Despiau-Wlérick"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts is an important witness to the city's history.",
+        "fr": "Remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083982",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-remparts-pa00083982",
+      "latitude": 43.8924608388143,
+      "longitude": -0.49837833081619703,
+      "name": {
+        "en": "Remparts",
+        "fr": "Remparts"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Dupeyré is a distinctive architectural landmark in the city.",
+        "fr": "Maison Dupeyré est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA40000049",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-maison-dupeyre-pa40000049",
+      "latitude": 43.892727688484605,
+      "longitude": -0.503974362227787,
+      "name": {
+        "en": "Maison Dupeyré",
+        "fr": "Maison Dupeyré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Rotonde de la Vignotte is a distinctive architectural landmark in the city.",
+        "fr": "Rotonde de la Vignotte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083983",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mont-de-marsan-rotonde-de-la-vignotte-pa00083983",
+      "latitude": 43.8914883779861,
+      "longitude": -0.503640239406442,
+      "name": {
+        "en": "Rotonde de la Vignotte",
+        "fr": "Rotonde de la Vignotte"
+      }
+    }
+  ]
+}

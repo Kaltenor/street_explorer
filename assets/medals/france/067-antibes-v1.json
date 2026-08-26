@@ -1,0 +1,394 @@
+{
+  "id": "antibes-v1",
+  "cityId": "antibes-fr",
+  "cityZoneId": "relation/74687",
+  "cityName": {
+    "en": "Antibes",
+    "fr": "Antibes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q800390",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-antibes-q800390",
+      "latitude": 43.585833333,
+      "longitude": 7.119444444,
+      "name": {
+        "en": "Antibes",
+        "fr": "Antibes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Antibes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095990",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-biot-q3095990",
+      "latitude": 43.610868,
+      "longitude": 7.126334,
+      "name": {
+        "en": "Biot",
+        "fr": "Biot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Alpes-Maritimes, in France",
+        "fr": "cathédrale située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942253",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-cathedrale-notre-dame-de-la-platea-d-antibes-q2942253",
+      "latitude": 43.58111111,
+      "longitude": 7.12833333,
+      "name": {
+        "en": "cathédrale Notre-Dame-de-la-Platea d'Antibes",
+        "fr": "cathédrale Notre-Dame-de-la-Platea d'Antibes"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "French riviera chateau",
+        "fr": "château français de style victorien du 20e siècle"
+      },
+      "externalIdentity": {
+        "id": "Q2971213",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-chateau-de-la-croe-q2971213",
+      "latitude": 43.54605,
+      "longitude": 7.13413,
+      "name": {
+        "en": "château de la Croë",
+        "fr": "château de la Croë"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château in Antibes, France",
+        "fr": "château de la Garoupe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q19460950",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-chateau-de-la-garoupe-q19460950",
+      "latitude": 43.55,
+      "longitude": 7.13806,
+      "name": {
+        "en": "château de la Garoupe",
+        "fr": "château de la Garoupe"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Château des Grimaldi, actuellement musée Picasso is one of the city's notable cultural landmarks.",
+        "fr": "Château des Grimaldi, actuellement musée Picasso compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080651",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "antibes-chateau-des-grimaldi-actuellement-musee-picasso-pa00080651",
+      "latitude": 43.5807126495702,
+      "longitude": 7.12826229206881,
+      "name": {
+        "en": "Château des Grimaldi, actuellement musée Picasso",
+        "fr": "Château des Grimaldi, actuellement musée Picasso"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Grimaldi is an important witness to the city's history.",
+        "fr": "ancien château fort situé à Antibes abritant le musée Picasso"
+      },
+      "externalIdentity": {
+        "id": "Q13398054",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-chateau-des-grimaldi-q13398054",
+      "latitude": 43.580556,
+      "longitude": 7.128333,
+      "name": {
+        "en": "château des Grimaldi",
+        "fr": "château des Grimaldi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Antibes, France",
+        "fr": "église située dans les Alpes-Maritimes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580741",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-eglise-notre-dame-de-la-garoupe-q3580741",
+      "latitude": 43.5642,
+      "longitude": 7.13207,
+      "name": {
+        "en": "église Notre-Dame de la Garoupe",
+        "fr": "église Notre-Dame de la Garoupe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église paroissiale, chapelle Saint-Esprit et tour Grimaldi is an important witness to the city's history.",
+        "fr": "Église paroissiale, chapelle Saint-Esprit et tour Grimaldi est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080653",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "antibes-eglise-paroissiale-chapelle-saint-esprit-et-tour-grimaldi-pa00080653",
+      "latitude": 43.5812353998949,
+      "longitude": 7.12817564689636,
+      "name": {
+        "en": "Église paroissiale, chapelle Saint-Esprit et tour Grimaldi",
+        "fr": "Église paroissiale, chapelle Saint-Esprit et tour Grimaldi"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in Antibes, France",
+        "fr": "musée d'Antibes"
+      },
+      "externalIdentity": {
+        "id": "Q1435656",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-fondation-hartung-bergman-q1435656",
+      "latitude": 43.603872222,
+      "longitude": 7.097494444,
+      "name": {
+        "en": "fondation Hartung-Bergman",
+        "fr": "fondation Hartung-Bergman"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "quartier de la commune française d'Antibes"
+      },
+      "externalIdentity": {
+        "id": "Q1026520",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-juan-les-pins-q1026520",
+      "latitude": 43.571111111,
+      "longitude": 7.109444444,
+      "name": {
+        "en": "Juan-les-Pins",
+        "fr": "Juan-les-Pins"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "oceanarium in Antibes, France",
+        "fr": "ancien parc à thème marin français"
+      },
+      "externalIdentity": {
+        "id": "Q1898465",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-marineland-d-antibes-q1898465",
+      "latitude": 43.615,
+      "longitude": 7.125,
+      "name": {
+        "en": "Marineland d'Antibes",
+        "fr": "Marineland d'Antibes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0868",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "antibes-musee-d-archeologie-m0868",
+      "latitude": 43.576824,
+      "longitude": 7.124074,
+      "name": {
+        "en": "musée d'archéologie",
+        "fr": "musée d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée de la carte postale d'Antibes compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q97367410",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-musee-de-la-carte-postale-d-antibes-q97367410",
+      "latitude": 43.582913,
+      "longitude": 7.120621,
+      "name": {
+        "en": "musée de la carte postale d'Antibes",
+        "fr": "musée de la carte postale d'Antibes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Antibes, France",
+        "fr": "musée d'Antibes"
+      },
+      "externalIdentity": {
+        "id": "Q60193124",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-musee-peynet-et-du-dessin-humoristique-q60193124",
+      "latitude": 43.5809835,
+      "longitude": 7.1259239,
+      "name": {
+        "en": "musée Peynet et du Dessin Humoristique",
+        "fr": "musée Peynet et du Dessin Humoristique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Picasso is one of the city's notable cultural landmarks.",
+        "fr": "musée Picasso compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0867",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "antibes-musee-picasso-m0867",
+      "latitude": 43.580973,
+      "longitude": 7.127959,
+      "name": {
+        "en": "musée Picasso",
+        "fr": "musée Picasso"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts et demi-bastion 17 dit Fort Saint-André is an important witness to the city's history.",
+        "fr": "Remparts et demi-bastion 17 dit Fort Saint-André est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080660",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "antibes-remparts-et-demi-bastion-17-dit-fort-saint-andre-pa00080660",
+      "latitude": 43.581582807893,
+      "longitude": 7.12890395138833,
+      "name": {
+        "en": "Remparts et demi-bastion 17 dit Fort Saint-André",
+        "fr": "Remparts et demi-bastion 17 dit Fort Saint-André"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "football stadium",
+        "fr": "Stade football"
+      },
+      "externalIdentity": {
+        "id": "Q946007",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-stade-du-fort-carre-q946007",
+      "latitude": 43.59221,
+      "longitude": 7.12603,
+      "name": {
+        "en": "stade du Fort Carré",
+        "fr": "stade du Fort Carré"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "medieval tower in southern France",
+        "fr": "tour à Antibes (Alpes-Maritimes)"
+      },
+      "externalIdentity": {
+        "id": "Q13518448",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-tour-grimaldi-q13518448",
+      "latitude": 43.5812,
+      "longitude": 7.12823,
+      "name": {
+        "en": "tour Grimaldi",
+        "fr": "tour Grimaldi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q6159750",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "antibes-villa-thuret-q6159750",
+      "latitude": 43.56388889,
+      "longitude": 7.12444444,
+      "name": {
+        "en": "villa Thuret",
+        "fr": "villa Thuret"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "la-possession-v1",
+  "cityId": "la-possession-fr",
+  "cityZoneId": "relation/278304",
+  "cityName": {
+    "en": "La Possession",
+    "fr": "La Possession"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q2923896",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-bras-d-oussy-q2923896",
+      "latitude": -21.021388888,
+      "longitude": 55.403611111,
+      "name": {
+        "en": "Bras d'Oussy",
+        "fr": "Bras d'Oussy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q2923915",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-bras-des-merles-q2923915",
+      "latitude": -20.998055555,
+      "longitude": 55.397777777,
+      "name": {
+        "en": "Bras des Merles",
+        "fr": "Bras des Merles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de La Réunion, dans le cirque de Mafate"
+      },
+      "externalIdentity": {
+        "id": "Q2923893",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-bras-sainte-suzanne-q2923893",
+      "latitude": -21.001846,
+      "longitude": 55.38871,
+      "name": {
+        "en": "bras Sainte-Suzanne",
+        "fr": "bras Sainte-Suzanne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cliff on Reunion Island",
+        "fr": "rempart montagneux et point de vue à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q2937074",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-cap-noir-q2937074",
+      "latitude": -20.99305556,
+      "longitude": 55.38972222,
+      "name": {
+        "en": "Cap Noir",
+        "fr": "Cap Noir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "crête montagneuse réunionnaise"
+      },
+      "externalIdentity": {
+        "id": "Q3006360",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-crete-d-aurere-q3006360",
+      "latitude": -21.0125,
+      "longitude": 55.4097,
+      "name": {
+        "en": "crête d'Aurère",
+        "fr": "crête d'Aurère"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "office de tourisme de l'Ouest - Mafate is an important witness to the city's history.",
+        "fr": "bâtiment à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q139071192",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-office-de-tourisme-de-l-ouest-mafate-q139071192",
+      "latitude": -21.076615,
+      "longitude": 55.424528,
+      "name": {
+        "en": "office de tourisme de l'Ouest - Mafate",
+        "fr": "office de tourisme de l'Ouest - Mafate"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "montagne à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3006364",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-crete-de-la-marianne-q3006364",
+      "latitude": -21,
+      "longitude": 55.43333,
+      "name": {
+        "en": "crête de la Marianne",
+        "fr": "crête de la Marianne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Summit in Reunion",
+        "fr": "Sommet à la Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3324199",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-morne-de-fourche-q3324199",
+      "latitude": -21.0643,
+      "longitude": 55.4417,
+      "name": {
+        "en": "Morne de Fourche",
+        "fr": "Morne de Fourche"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "cours d'eau de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3433889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-riviere-des-galets-q3433889",
+      "latitude": -20.95416667,
+      "longitude": 55.27805556,
+      "name": {
+        "en": "rivière des Galets",
+        "fr": "rivière des Galets"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "sommet à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3437550",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-possession-roche-ecrite-q3437550",
+      "latitude": -21.0147,
+      "longitude": 55.4608,
+      "name": {
+        "en": "roche Écrite",
+        "fr": "roche Écrite"
+      }
+    }
+  ]
+}

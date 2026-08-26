@@ -1,0 +1,204 @@
+{
+  "id": "albertville-v1",
+  "cityId": "albertville-fr",
+  "cityZoneId": "relation/111528",
+  "cityName": {
+    "en": "Albertville",
+    "fr": "Albertville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2905334",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "albertville-albertville-q2905334",
+      "latitude": 45.673056,
+      "longitude": 6.381667,
+      "name": {
+        "en": "Albertville",
+        "fr": "Albertville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Manuel à Conflans is an important witness to the city's history.",
+        "fr": "Château de Manuel à Conflans est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118176",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albertville-chateau-de-manuel-a-conflans-pa00118176",
+      "latitude": 45.6720516028357,
+      "longitude": 6.39538689405817,
+      "name": {
+        "en": "Château de Manuel à Conflans",
+        "fr": "Château de Manuel à Conflans"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château fort de Conflans is an important witness to the city's history.",
+        "fr": "château fort"
+      },
+      "externalIdentity": {
+        "id": "Q21674768",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "albertville-chateau-fort-de-conflans-q21674768",
+      "latitude": 45.670459,
+      "longitude": 6.396516,
+      "name": {
+        "en": "château fort de Conflans",
+        "fr": "château fort de Conflans"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Rouge à Conflans is an important witness to the city's history.",
+        "fr": "Château Rouge à Conflans est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118177",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albertville-chateau-rouge-a-conflans-pa00118177",
+      "latitude": 45.6706389762361,
+      "longitude": 6.39875090081601,
+      "name": {
+        "en": "Château Rouge à Conflans",
+        "fr": "Château Rouge à Conflans"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Conflans is a distinctive architectural landmark in the city.",
+        "fr": "Église de Conflans est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118317",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albertville-eglise-de-conflans-pa00118317",
+      "latitude": 45.6712658897538,
+      "longitude": 6.39774207098022,
+      "name": {
+        "en": "Église de Conflans",
+        "fr": "Église de Conflans"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "indoor arena in Albertville, France",
+        "fr": "halle olympique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3126105",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "albertville-halle-olympique-q3126105",
+      "latitude": 45.66389,
+      "longitude": 6.37444,
+      "name": {
+        "en": "halle olympique",
+        "fr": "halle olympique"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison à tourelles is an important witness to the city's history.",
+        "fr": "Maison à tourelles est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118180",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "albertville-maison-a-tourelles-pa00118180",
+      "latitude": 45.6722344210394,
+      "longitude": 6.39739826839615,
+      "name": {
+        "en": "Maison à tourelles",
+        "fr": "Maison à tourelles"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal d'Albertville-Conflans is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal d'Albertville-Conflans compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1046",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "albertville-musee-municipal-d-albertville-conflans-m1046",
+      "latitude": 45.670787,
+      "longitude": 6.397471,
+      "name": {
+        "en": "musée municipal d'Albertville-Conflans",
+        "fr": "musée municipal d'Albertville-Conflans"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Sporting Venue",
+        "fr": "stade olympique Henri-Dujol est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2343868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "albertville-stade-olympique-henri-dujol-q2343868",
+      "latitude": 45.6641,
+      "longitude": 6.3709,
+      "name": {
+        "en": "stade olympique Henri-Dujol",
+        "fr": "stade olympique Henri-Dujol"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "former stadium at Albertville, France",
+        "fr": "stade français"
+      },
+      "externalIdentity": {
+        "id": "Q2698412",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "albertville-theatre-des-ceremonies-q2698412",
+      "latitude": 45.661592,
+      "longitude": 6.369367,
+      "name": {
+        "en": "Théâtre des Cérémonies",
+        "fr": "Théâtre des Cérémonies"
+      }
+    }
+  ]
+}

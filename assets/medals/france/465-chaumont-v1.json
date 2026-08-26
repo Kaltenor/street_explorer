@@ -1,0 +1,204 @@
+{
+  "id": "chaumont-v1",
+  "cityId": "chaumont-fr",
+  "cityZoneId": "relation/904595",
+  "cityName": {
+    "en": "Chaumont",
+    "fr": "Chaumont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château (ancien) is an important witness to the city's history.",
+        "fr": "Château (ancien) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079009",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-chateau-ancien-pa00079009",
+      "latitude": 48.1130926203171,
+      "longitude": 5.13635878397969,
+      "name": {
+        "en": "Château (ancien)",
+        "fr": "Château (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Brottes is a distinctive architectural landmark in the city.",
+        "fr": "Église de Brottes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-eglise-de-brottes-pa00079014",
+      "latitude": 48.0825615175451,
+      "longitude": 5.12938917093974,
+      "name": {
+        "en": "Église de Brottes",
+        "fr": "Église de Brottes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Aignan is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Aignan est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079307",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-eglise-saint-aignan-pa00079307",
+      "latitude": 48.1195598278384,
+      "longitude": 5.150102500818251,
+      "name": {
+        "en": "Église Saint-Aignan",
+        "fr": "Église Saint-Aignan"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean-Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean-Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-eglise-saint-jean-baptiste-pa00079013",
+      "latitude": 48.1123469955738,
+      "longitude": 5.13881649984757,
+      "name": {
+        "en": "Église Saint-Jean-Baptiste",
+        "fr": "Église Saint-Jean-Baptiste"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Bouchardon is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Bouchardon compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-fontaine-bouchardon-pa00079015",
+      "latitude": 48.1123213887121,
+      "longitude": 5.14079834987045,
+      "name": {
+        "en": "Fontaine Bouchardon",
+        "fr": "Fontaine Bouchardon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-hotel-de-ville-pa00079019",
+      "latitude": 48.1108961379089,
+      "longitude": 5.13942784882123,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de l'affiche is one of the city's notable cultural landmarks.",
+        "fr": "musée de l'affiche compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0318",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chaumont-musee-de-l-affiche-m0318",
+      "latitude": 48.110756,
+      "longitude": 5.135234,
+      "name": {
+        "en": "musée de l'affiche",
+        "fr": "musée de l'affiche"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0319",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "chaumont-musee-des-beaux-arts-et-d-archeologie-m0319",
+      "latitude": 48.112482,
+      "longitude": 5.137331,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-hotel-pa00079017",
+      "latitude": 48.1134829332372,
+      "longitude": 5.13974519270374,
+      "name": {
+        "en": "Hôtel",
+        "fr": "Hôtel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "chaumont-immeuble-pa00079022",
+      "latitude": 48.1099260226229,
+      "longitude": 5.13691491336469,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    }
+  ]
+}

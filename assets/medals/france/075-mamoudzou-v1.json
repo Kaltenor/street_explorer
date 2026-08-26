@@ -1,0 +1,394 @@
+{
+  "id": "mamoudzou-v1",
+  "cityId": "mamoudzou-fr",
+  "cityZoneId": "relation/3366531",
+  "cityName": {
+    "en": "Mamoudzou",
+    "fr": "Mamoudzou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "archives départementales de Mayotte is one of the city's notable cultural landmarks.",
+        "fr": "archives du département de Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q2860467",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-archives-departementales-de-mayotte-q2860467",
+      "latitude": -12.761848,
+      "longitude": 45.227678,
+      "name": {
+        "en": "archives départementales de Mayotte",
+        "fr": "archives départementales de Mayotte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cantons of Mamoudzou is a distinctive architectural landmark in the city.",
+        "fr": "Cantons of Mamoudzou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q39046903",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-cantons-of-mamoudzou-q39046903",
+      "latitude": -12.78,
+      "longitude": 45.23,
+      "name": {
+        "en": "Cantons of Mamoudzou",
+        "fr": "Cantons of Mamoudzou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Case SIM dite « Dôme » is a distinctive architectural landmark in the city.",
+        "fr": "Case SIM dite « Dôme » est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97600016",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "mamoudzou-case-sim-dite-dome-pa97600016",
+      "latitude": -12.783648884886109,
+      "longitude": 45.22565746176957,
+      "name": {
+        "en": "Case SIM dite « Dôme »",
+        "fr": "Case SIM dite « Dôme »"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in France",
+        "fr": "île de Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q2892706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-chissioua-mbouzi-q2892706",
+      "latitude": -12.8108,
+      "longitude": 45.235,
+      "name": {
+        "en": "Chissioua Mbouzi",
+        "fr": "Chissioua Mbouzi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "sports venue in Mamoudzou, Mayotte",
+        "fr": "complexe de Kawani est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2990486",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-complexe-de-kawani-q2990486",
+      "latitude": -12.784166666,
+      "longitude": 45.221666666,
+      "name": {
+        "en": "complexe de Kawani",
+        "fr": "complexe de Kawani"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Mayotte, in France",
+        "fr": "église située à Mayotte, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24538892",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-eglise-notre-dame-de-fatima-de-mamoudzou-q24538892",
+      "latitude": -12.779873,
+      "longitude": 45.230989,
+      "name": {
+        "en": "église Notre-Dame-de-Fatima de Mamoudzou",
+        "fr": "église Notre-Dame-de-Fatima de Mamoudzou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Mamoudzou, France",
+        "fr": "hôtel de ville de Mamoudzou est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q115973566",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-hotel-de-ville-de-mamoudzou-q115973566",
+      "latitude": -12.78055,
+      "longitude": 45.23242,
+      "name": {
+        "en": "hôtel de ville de Mamoudzou",
+        "fr": "hôtel de ville de Mamoudzou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q6379102",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-kavani-q6379102",
+      "latitude": -12.783055555,
+      "longitude": 45.221111111,
+      "name": {
+        "en": "Kavani",
+        "fr": "Kavani"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in Mamoudzou, Mayotte, Overseas France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q3194368",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-kaweni-q3194368",
+      "latitude": -12.771388888,
+      "longitude": 45.223611111,
+      "name": {
+        "en": "Kawéni",
+        "fr": "Kawéni"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q3280509",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-majicavo-lamir-q3280509",
+      "latitude": -12.755277777,
+      "longitude": 45.229722222,
+      "name": {
+        "en": "Majicavo Lamir",
+        "fr": "Majicavo Lamir"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Mayotte, France",
+        "fr": "commune française du département et région d'outre-mer de Mayotte (chef-lieu)"
+      },
+      "externalIdentity": {
+        "id": "Q132676",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-mamoudzou-q132676",
+      "latitude": -12.781388888,
+      "longitude": 45.231666666,
+      "name": {
+        "en": "Mamoudzou",
+        "fr": "Mamoudzou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "area of Mayotte where endangered birds are protected",
+        "fr": "Mlima Combani and Mlima Mtsapéré Important Bird Area est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q15253900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-mlima-combani-and-mlima-mtsapere-important-bird-area-q15253900",
+      "latitude": -12.78333333,
+      "longitude": 45.16666667,
+      "name": {
+        "en": "Mlima Combani and Mlima Mtsapéré Important Bird Area",
+        "fr": "Mlima Combani and Mlima Mtsapéré Important Bird Area"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque located in Mayotte, in France",
+        "fr": "mosquée située à Mayotte, en France"
+      },
+      "externalIdentity": {
+        "id": "Q69385765",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-mosquee-de-mtsapere-q69385765",
+      "latitude": -12.78696,
+      "longitude": 45.22189,
+      "name": {
+        "en": "mosquée de Mtsapéré",
+        "fr": "mosquée de Mtsapéré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q3327310",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-mtsapere-q3327310",
+      "latitude": -12.787222222,
+      "longitude": 45.221944444,
+      "name": {
+        "en": "Mtsapéré",
+        "fr": "Mtsapéré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "village de Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q7142530",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-passamainty-q7142530",
+      "latitude": -12.801111111,
+      "longitude": 45.208888888,
+      "name": {
+        "en": "Passamaïnty",
+        "fr": "Passamaïnty"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "point in France",
+        "fr": "parc situé à Mamoudzou (Mayotte)"
+      },
+      "externalIdentity": {
+        "id": "Q31998080",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-pointe-de-mahabou-q31998080",
+      "latitude": -12.783333333,
+      "longitude": 45.238055555,
+      "name": {
+        "en": "pointe de Mahabou",
+        "fr": "pointe de Mahabou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "protected area in France",
+        "fr": "réserve naturelle nationale de France"
+      },
+      "externalIdentity": {
+        "id": "Q15401949",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-reserve-naturelle-nationale-de-l-ilot-mbouzi-q15401949",
+      "latitude": -12.808055555,
+      "longitude": 45.233888888,
+      "name": {
+        "en": "réserve naturelle nationale de l'îlot Mbouzi",
+        "fr": "réserve naturelle nationale de l'îlot Mbouzi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "protected area on Mayotte",
+        "fr": "réserve naturelle nationale de France située à Mayotte"
+      },
+      "externalIdentity": {
+        "id": "Q106762351",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-reserve-naturelle-nationale-des-forets-de-mayotte-q106762351",
+      "latitude": -12.763611111,
+      "longitude": 45.172777777,
+      "name": {
+        "en": "réserve naturelle nationale des forêts de Mayotte",
+        "fr": "réserve naturelle nationale des forêts de Mayotte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "multi-use sports in Mamoudzou, Mayotte",
+        "fr": "stade français situé à Mamoudzou (Mayotte)"
+      },
+      "externalIdentity": {
+        "id": "Q7596096",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-stade-cavani-q7596096",
+      "latitude": -12.78342,
+      "longitude": 45.22232,
+      "name": {
+        "en": "stade Cavani",
+        "fr": "stade Cavani"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q7908619",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mamoudzou-vahibe-q7908619",
+      "latitude": -12.790555555,
+      "longitude": 45.178055555,
+      "name": {
+        "en": "Vahibé",
+        "fr": "Vahibé"
+      }
+    }
+  ]
+}

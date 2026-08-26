@@ -1,0 +1,204 @@
+{
+  "id": "cenon-v1",
+  "cityId": "cenon-fr",
+  "cityZoneId": "relation/88808",
+  "cityName": {
+    "en": "Cenon",
+    "fr": "Cenon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Cenon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q7604218",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-buttiniere-q7604218",
+      "latitude": 44.864102,
+      "longitude": -0.524948,
+      "name": {
+        "en": "Buttinière",
+        "fr": "Buttinière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096161",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-cenon-q3096161",
+      "latitude": 44.85633,
+      "longitude": -0.533632,
+      "name": {
+        "en": "Cenon",
+        "fr": "Cenon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60392055",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-eglise-saint-romain-de-cenon-q60392055",
+      "latitude": 44.84916,
+      "longitude": -0.53017,
+      "name": {
+        "en": "église Saint-Romain de Cenon",
+        "fr": "église Saint-Romain de Cenon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Cenon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573677",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-jean-jaures-q98573677",
+      "latitude": 44.853787,
+      "longitude": -0.537857,
+      "name": {
+        "en": "Jean Jaurès",
+        "fr": "Jean Jaurès"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "garden in France",
+        "fr": "jardin en France"
+      },
+      "externalIdentity": {
+        "id": "Q3363873",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-parc-palmer-q3363873",
+      "latitude": 44.8605,
+      "longitude": -0.526893,
+      "name": {
+        "en": "Parc Palmer",
+        "fr": "Parc Palmer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Cenon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573680",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-jean-zay-q98573680",
+      "latitude": 44.854086,
+      "longitude": -0.513118,
+      "name": {
+        "en": "Jean Zay",
+        "fr": "Jean Zay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Cenon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573682",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-la-maregue-q98573682",
+      "latitude": 44.850778,
+      "longitude": -0.50887,
+      "name": {
+        "en": "La Marègue",
+        "fr": "La Marègue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Cenon, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573686",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-la-morlette-q98573686",
+      "latitude": 44.854963,
+      "longitude": -0.518153,
+      "name": {
+        "en": "La Morlette",
+        "fr": "La Morlette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le Rocher de Palmer is a distinctive architectural landmark in the city.",
+        "fr": "salle de spectacle multifonctionnelle de la région bordelaise"
+      },
+      "externalIdentity": {
+        "id": "Q3226501",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-le-rocher-de-palmer-q3226501",
+      "latitude": 44.8628,
+      "longitude": -0.524281,
+      "name": {
+        "en": "Le Rocher de Palmer",
+        "fr": "Le Rocher de Palmer"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Gironde department, France",
+        "fr": "siège municipal de Cenon, en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119304868",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "cenon-mairie-de-cenon-q119304868",
+      "latitude": 44.857663409,
+      "longitude": -0.530991507,
+      "name": {
+        "en": "mairie de Cenon",
+        "fr": "mairie de Cenon"
+      }
+    }
+  ]
+}

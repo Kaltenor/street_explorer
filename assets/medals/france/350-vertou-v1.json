@@ -1,0 +1,204 @@
+{
+  "id": "vertou-v1",
+  "cityId": "vertou-fr",
+  "cityZoneId": "relation/63642",
+  "cityName": {
+    "en": "Vertou",
+    "fr": "Vertou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "abbey located in Loire-Atlantique, in France",
+        "fr": "abbaye française"
+      },
+      "externalIdentity": {
+        "id": "Q2820405",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-abbaye-saint-martin-de-vertou-q2820405",
+      "latitude": 47.168097,
+      "longitude": -1.47315,
+      "name": {
+        "en": "abbaye Saint-Martin de Vertou",
+        "fr": "abbaye Saint-Martin de Vertou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle à Vertou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24809637",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-chapelle-de-la-bauche-malo-q24809637",
+      "latitude": 47.140338,
+      "longitude": -1.486209,
+      "name": {
+        "en": "chapelle de la Bauche Malo",
+        "fr": "chapelle de la Bauche Malo"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Loire-Atlantique, in France",
+        "fr": "chapelle située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60338065",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-chapelle-de-la-ville-au-blanc-q60338065",
+      "latitude": 47.182917,
+      "longitude": -1.451547,
+      "name": {
+        "en": "chapelle de la Ville au Blanc",
+        "fr": "chapelle de la Ville au Blanc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de la Frémoire is an important witness to the city's history.",
+        "fr": "château à Vertou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q56149877",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-chateau-de-la-fremoire-q56149877",
+      "latitude": 47.154164098,
+      "longitude": -1.474608778,
+      "name": {
+        "en": "château de la Frémoire",
+        "fr": "château de la Frémoire"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Mottechaix is an important witness to the city's history.",
+        "fr": "château à Vertou, France"
+      },
+      "externalIdentity": {
+        "id": "Q56149259",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-chateau-de-mottechaix-q56149259",
+      "latitude": 47.1699355,
+      "longitude": -1.4840341,
+      "name": {
+        "en": "château de Mottechaix",
+        "fr": "château de Mottechaix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q19827893",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-eglise-saint-martin-de-vertou-de-vertou-q19827893",
+      "latitude": 47.168422,
+      "longitude": -1.472801,
+      "name": {
+        "en": "église Saint-Martin-de-Vertou de Vertou",
+        "fr": "église Saint-Martin-de-Vertou de Vertou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forêt de Touffou is a distinctive architectural landmark in the city.",
+        "fr": "forêt au Bignon, France"
+      },
+      "externalIdentity": {
+        "id": "Q49329524",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-foret-de-touffou-q49329524",
+      "latitude": 47.12694,
+      "longitude": -1.48625,
+      "name": {
+        "en": "forêt de Touffou",
+        "fr": "forêt de Touffou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "villa de la Bastière is an important witness to the city's history.",
+        "fr": "château à Vertou (Loire-Atlantique)"
+      },
+      "externalIdentity": {
+        "id": "Q3558834",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-villa-de-la-bastiere-q3558834",
+      "latitude": 47.1487,
+      "longitude": -1.45749,
+      "name": {
+        "en": "villa de la Bastière",
+        "fr": "villa de la Bastière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Vertou, France",
+        "fr": "hôtel de ville, Vertou, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341721",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-hotel-de-ville-de-vertou-q105341721",
+      "latitude": 47.1677,
+      "longitude": -1.4735,
+      "name": {
+        "en": "hôtel de ville de Vertou",
+        "fr": "hôtel de ville de Vertou"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Vertou, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2303672",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "vertou-vertou-q2303672",
+      "latitude": 47.186111,
+      "longitude": -1.478056,
+      "name": {
+        "en": "Vertou",
+        "fr": "Vertou"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "libourne-v1",
+  "cityId": "libourne-fr",
+  "cityZoneId": "relation/89255",
+  "cityName": {
+    "en": "Libourne",
+    "fr": "Libourne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Sales (également sur commune de Lalande-de-Pomerol) is an important witness to the city's history.",
+        "fr": "Château de Sales (également sur commune de Lalande-de-Pomerol) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000006",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-chateau-de-sales-egalement-sur-commune-de-lalande-de-pomerol-pa33000006",
+      "latitude": 44.9451995743364,
+      "longitude": -0.225110461963374,
+      "name": {
+        "en": "Château de Sales (également sur commune de Lalande-de-Pomerol)",
+        "fr": "Château de Sales (également sur commune de Lalande-de-Pomerol)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Pintey is an important witness to the city's history.",
+        "fr": "Château du Pintey est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083595",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-chateau-du-pintey-pa00083595",
+      "latitude": 44.9336887040077,
+      "longitude": -0.24293818785381302,
+      "name": {
+        "en": "Château du Pintey",
+        "fr": "Château du Pintey"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000011",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-eglise-saint-jean-pa33000011",
+      "latitude": 44.9128892920572,
+      "longitude": -0.24568060610353,
+      "name": {
+        "en": "Église Saint-Jean",
+        "fr": "Église Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083597",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-hotel-de-ville-pa00083597",
+      "latitude": 44.9144792405327,
+      "longitude": -0.24533621033745398,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083598",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-maison-pa00083598",
+      "latitude": 44.9162029835894,
+      "longitude": -0.24640808152585403,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la guerre de 1914-1918, situé Jardin du Poilu is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la guerre de 1914-1918, situé Jardin du Poilu est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA33000177",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-monument-aux-morts-de-la-guerre-de-1914-1918-situe-jardin-du-poilu-pa33000177",
+      "latitude": 44.913901294045,
+      "longitude": -0.240675857484393,
+      "name": {
+        "en": "Monument aux morts de la guerre de 1914-1918, situé Jardin du Poilu",
+        "fr": "Monument aux morts de la guerre de 1914-1918, situé Jardin du Poilu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0072",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "libourne-musee-des-beaux-arts-et-d-archeologie-m0072",
+      "latitude": 44.914487,
+      "longitude": -0.245068,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée historique du vieux Libourne is one of the city's notable cultural landmarks.",
+        "fr": "musée historique du vieux Libourne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0073",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "libourne-musee-historique-du-vieux-libourne-m0073",
+      "latitude": 44.914803303323666,
+      "longitude": -0.24517994951765779,
+      "name": {
+        "en": "musée historique du vieux Libourne",
+        "fr": "musée historique du vieux Libourne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte du Port is an important witness to the city's history.",
+        "fr": "Porte du Port est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083599",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-porte-du-port-pa00083599",
+      "latitude": 44.9163459517812,
+      "longitude": -0.247031725234,
+      "name": {
+        "en": "Porte du Port",
+        "fr": "Porte du Port"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Synagogue is a distinctive architectural landmark in the city.",
+        "fr": "Synagogue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135179",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "libourne-synagogue-pa00135179",
+      "latitude": 44.91262674120641,
+      "longitude": -0.244731125625942,
+      "name": {
+        "en": "Synagogue",
+        "fr": "Synagogue"
+      }
+    }
+  ]
+}

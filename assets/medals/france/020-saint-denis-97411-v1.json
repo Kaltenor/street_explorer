@@ -1,0 +1,394 @@
+{
+  "id": "saint-denis-97411-v1",
+  "cityId": "saint-denis-97411-fr",
+  "cityZoneId": "relation/192468",
+  "cityName": {
+    "en": "Saint-Denis",
+    "fr": "Saint-Denis"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien génie militaire et maison dite du Commandant d'Armes is a distinctive architectural landmark in the city.",
+        "fr": "Ancien génie militaire et maison dite du Commandant d'Armes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400091",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-ancien-genie-militaire-et-maison-dite-du-commandant-d-armes-pa97400091",
+      "latitude": -20.873512997144303,
+      "longitude": 55.448222102496,
+      "name": {
+        "en": "Ancien génie militaire et maison dite du Commandant d'Armes",
+        "fr": "Ancien génie militaire et maison dite du Commandant d'Armes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien parc d'artillerie et maison dite du commandant de gendarmerie is a distinctive architectural landmark in the city.",
+        "fr": "Ancien parc d'artillerie et maison dite du commandant de gendarmerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400085",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-ancien-parc-d-artillerie-et-maison-dite-du-commandant-de-gendarmerie-pa97400085",
+      "latitude": -20.8730211776879,
+      "longitude": 55.4490540522664,
+      "name": {
+        "en": "Ancien parc d'artillerie et maison dite du commandant de gendarmerie",
+        "fr": "Ancien parc d'artillerie et maison dite du commandant de gendarmerie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Caserne Lambert is a distinctive architectural landmark in the city.",
+        "fr": "Caserne Lambert est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400090",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-caserne-lambert-pa97400090",
+      "latitude": -20.8781649823144,
+      "longitude": 55.4408067858232,
+      "name": {
+        "en": "Caserne Lambert",
+        "fr": "Caserne Lambert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Denis is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Denis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105812",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-cathedrale-saint-denis-pa00105812",
+      "latitude": -20.8771738858884,
+      "longitude": 55.4486029807927,
+      "name": {
+        "en": "Cathédrale Saint-Denis",
+        "fr": "Cathédrale Saint-Denis"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Morange is an important witness to the city's history.",
+        "fr": "Château Morange est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400099",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-chateau-morange-pa97400099",
+      "latitude": -20.8920526033042,
+      "longitude": 55.4616100467704,
+      "name": {
+        "en": "Château Morange",
+        "fr": "Château Morange"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise Notre-Dame de la Délivrance is a distinctive architectural landmark in the city.",
+        "fr": "Eglise Notre-Dame de la Délivrance est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-eglise-notre-dame-de-la-delivrance-pa97400003",
+      "latitude": -20.8798201025367,
+      "longitude": 55.4433369289654,
+      "name": {
+        "en": "Eglise Notre-Dame de la Délivrance",
+        "fr": "Eglise Notre-Dame de la Délivrance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Gare de La Grande Chaloupe is a distinctive architectural landmark in the city.",
+        "fr": "Gare de La Grande Chaloupe est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400025",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-gare-de-la-grande-chaloupe-pa97400025",
+      "latitude": -20.896307752445505,
+      "longitude": 55.3771306596026,
+      "name": {
+        "en": "Gare de La Grande Chaloupe",
+        "fr": "Gare de La Grande Chaloupe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grand Marché is a distinctive architectural landmark in the city.",
+        "fr": "Grand Marché est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400015",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-grand-marche-pa97400015",
+      "latitude": -20.8810490944081,
+      "longitude": 55.4478389336682,
+      "name": {
+        "en": "Grand Marché",
+        "fr": "Grand Marché"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Jardin du Brûlé, situé au Brûlé is one of the city's notable green or natural landmarks.",
+        "fr": "Jardin du Brûlé, situé au Brûlé compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400112",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-jardin-du-brule-situe-au-brule-pa97400112",
+      "latitude": -20.9225455620734,
+      "longitude": 55.436634419235205,
+      "name": {
+        "en": "Jardin du Brûlé, situé au Brûlé",
+        "fr": "Jardin du Brûlé, situé au Brûlé"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts de la Grande Guerre is a notable work of public art and local memory.",
+        "fr": "Monument aux morts de la Grande Guerre est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA97400096",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-monument-aux-morts-de-la-grande-guerre-pa97400096",
+      "latitude": -20.8784851404497,
+      "longitude": 55.4484862451125,
+      "name": {
+        "en": "Monument aux morts de la Grande Guerre",
+        "fr": "Monument aux morts de la Grande Guerre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Muséum d'Histoire Naturelle is one of the city's notable cultural landmarks.",
+        "fr": "Muséum d'Histoire Naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105817",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-museum-d-histoire-naturelle-pa00105817",
+      "latitude": -20.8868285170877,
+      "longitude": 55.451064939838,
+      "name": {
+        "en": "Muséum d'Histoire Naturelle",
+        "fr": "Muséum d'Histoire Naturelle"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue de François Mahé de La Bourdonnais is a notable work of public art and local memory.",
+        "fr": "Statue de François Mahé de La Bourdonnais est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA97400042",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-statue-de-francois-mahe-de-la-bourdonnais-pa97400042",
+      "latitude": -20.8752586984951,
+      "longitude": 55.4467758035239,
+      "name": {
+        "en": "Statue de François Mahé de La Bourdonnais",
+        "fr": "Statue de François Mahé de La Bourdonnais"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la Préfecture is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la Préfecture est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105814",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-hotel-de-la-prefecture-pa00105814",
+      "latitude": -20.875690473764,
+      "longitude": 55.4460872019967,
+      "name": {
+        "en": "Hôtel de la Préfecture",
+        "fr": "Hôtel de la Préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105815",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-hotel-de-ville-pa00105815",
+      "latitude": -20.8791605576298,
+      "longitude": 55.4482708328317,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "La Redoute Bourbon is a distinctive architectural landmark in the city.",
+        "fr": "La Redoute Bourbon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400095",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-la-redoute-bourbon-pa97400095",
+      "latitude": -20.8819373504053,
+      "longitude": 55.4424710892611,
+      "name": {
+        "en": "La Redoute Bourbon",
+        "fr": "La Redoute Bourbon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Rontaunay is a distinctive architectural landmark in the city.",
+        "fr": "Palais Rontaunay est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97400016",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-palais-rontaunay-pa97400016",
+      "latitude": -20.8754959517694,
+      "longitude": 55.4487689178274,
+      "name": {
+        "en": "Palais Rontaunay",
+        "fr": "Palais Rontaunay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Propriété Maureau is a distinctive architectural landmark in the city.",
+        "fr": "Propriété Maureau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105818",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-propriete-maureau-pa00105818",
+      "latitude": -20.888281548154,
+      "longitude": 55.4936167355939,
+      "name": {
+        "en": "Propriété Maureau",
+        "fr": "Propriété Maureau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Résidence du premier Président de la Cour d'Appel is a distinctive architectural landmark in the city.",
+        "fr": "Résidence du premier Président de la Cour d'Appel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105819",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-residence-du-premier-president-de-la-cour-d-appel-pa00105819",
+      "latitude": -20.8807711864955,
+      "longitude": 55.4517580485245,
+      "name": {
+        "en": "Résidence du premier Président de la Cour d'Appel",
+        "fr": "Résidence du premier Président de la Cour d'Appel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa Deramond is a distinctive architectural landmark in the city.",
+        "fr": "Villa Deramond est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105820",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-villa-deramond-pa00105820",
+      "latitude": -20.8799702767499,
+      "longitude": 55.4494233487434,
+      "name": {
+        "en": "Villa Deramond",
+        "fr": "Villa Deramond"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Villa du Général is a distinctive architectural landmark in the city.",
+        "fr": "Villa du Général est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125732",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-denis-97411-villa-du-general-pa00125732",
+      "latitude": -20.8843993905612,
+      "longitude": 55.450899099437,
+      "name": {
+        "en": "Villa du Général",
+        "fr": "Villa du Général"
+      }
+    }
+  ]
+}

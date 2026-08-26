@@ -1,0 +1,204 @@
+{
+  "id": "saint-dizier-v1",
+  "cityId": "saint-dizier-fr",
+  "cityZoneId": "relation/418777",
+  "cityName": {
+    "en": "Saint-Dizier",
+    "fr": "Saint-Dizier"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Saint-Dizier is an important witness to the city's history.",
+        "fr": "Château de Saint-Dizier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132595",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-chateau-de-saint-dizier-pa00132595",
+      "latitude": 48.6360628465361,
+      "longitude": 4.95210106199424,
+      "name": {
+        "en": "Château de Saint-Dizier",
+        "fr": "Château de Saint-Dizier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église d'Hoericourt (vestiges) is an important witness to the city's history.",
+        "fr": "Église d'Hoericourt (vestiges) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079225",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-eglise-d-hoericourt-vestiges-pa00079225",
+      "latitude": 48.6271026773495,
+      "longitude": 4.89698510465266,
+      "name": {
+        "en": "Église d'Hoericourt (vestiges)",
+        "fr": "Église d'Hoericourt (vestiges)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de Gigny is a distinctive architectural landmark in the city.",
+        "fr": "Église de Gigny est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079224",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-eglise-de-gigny-pa00079224",
+      "latitude": 48.6367235891536,
+      "longitude": 4.955573782469381,
+      "name": {
+        "en": "Église de Gigny",
+        "fr": "Église de Gigny"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Noue is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Noue est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079226",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-eglise-de-la-noue-pa00079226",
+      "latitude": 48.63688296152671,
+      "longitude": 4.93579494830276,
+      "name": {
+        "en": "Église de la Noue",
+        "fr": "Église de la Noue"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079223",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-eglise-notre-dame-pa00079223",
+      "latitude": 48.6372769549786,
+      "longitude": 4.9502138518148,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Charles de Marnaval is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Charles de Marnaval est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA52000041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-eglise-saint-charles-de-marnaval-pa52000041",
+      "latitude": 48.62497070161075,
+      "longitude": 4.989514671080988,
+      "name": {
+        "en": "Église Saint-Charles de Marnaval",
+        "fr": "Église Saint-Charles de Marnaval"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0323",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-dizier-musee-municipal-m0323",
+      "latitude": 48.63804122933198,
+      "longitude": 4.948277733396815,
+      "name": {
+        "en": "musée municipal",
+        "fr": "musée municipal"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA52000027",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-theatre-municipal-pa52000027",
+      "latitude": 48.6366933645785,
+      "longitude": 4.94719237110112,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison du «Petit-Paris» is a distinctive architectural landmark in the city.",
+        "fr": "Maison du «Petit-Paris» est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079229",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-maison-du-petit-paris-pa00079229",
+      "latitude": 48.63795879449161,
+      "longitude": 4.93797259245662,
+      "name": {
+        "en": "Maison du «Petit-Paris»",
+        "fr": "Maison du «Petit-Paris»"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison en pans de bois is a distinctive architectural landmark in the city.",
+        "fr": "Maison en pans de bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079227",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-dizier-maison-en-pans-de-bois-pa00079227",
+      "latitude": 48.637689804227,
+      "longitude": 4.94950220805162,
+      "name": {
+        "en": "Maison en pans de bois",
+        "fr": "Maison en pans de bois"
+      }
+    }
+  ]
+}

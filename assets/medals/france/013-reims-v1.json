@@ -6,29 +6,10 @@
     "en": "Reims",
     "fr": "Reims"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Roman Catholic cathedral of Reims in France",
-        "fr": "cathédrale située dans la Marne, en France"
-      },
-      "externalIdentity": {
-        "id": "Q206823",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "reims-cathedrale-notre-dame-de-reims-q206823",
-      "latitude": 49.253888888,
-      "longitude": 4.034166666,
-      "name": {
-        "en": "cathédrale Notre-Dame de Reims",
-        "fr": "cathédrale Notre-Dame de Reims"
-      }
-    },
     {
       "category": "history",
       "description": {
@@ -70,6 +51,44 @@
     {
       "category": "architecture",
       "description": {
+        "en": "Ancien archevêché, actuellement Palais du Tau is a distinctive architectural landmark in the city.",
+        "fr": "Ancien archevêché, actuellement Palais du Tau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078774",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-ancien-archeveche-actuellement-palais-du-tau-pa00078774",
+      "latitude": 49.2533052415195,
+      "longitude": 4.034647125043,
+      "name": {
+        "en": "Ancien archevêché, actuellement Palais du Tau",
+        "fr": "Ancien archevêché, actuellement Palais du Tau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078791",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-ancien-hotel-dieu-actuellement-annexe-du-palais-de-justice-pa00078791",
+      "latitude": 49.2540109747559,
+      "longitude": 4.03163216701849,
+      "name": {
+        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice",
+        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
         "en": "basilica located in Marne, in France",
         "fr": "basilique située dans la Marne, en France"
       },
@@ -84,6 +103,139 @@
       "name": {
         "en": "basilique Saint-Remi de Reims",
         "fr": "basilique Saint-Remi de Reims"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Roman Catholic cathedral of Reims in France",
+        "fr": "cathédrale située dans la Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q206823",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "reims-cathedrale-notre-dame-de-reims-q206823",
+      "latitude": 49.253888888,
+      "longitude": 4.034166666,
+      "name": {
+        "en": "cathédrale Notre-Dame de Reims",
+        "fr": "cathédrale Notre-Dame de Reims"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Cinéma-opéra is one of the city's notable cultural landmarks.",
+        "fr": "Cinéma-opéra compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078778",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-cinema-opera-pa00078778",
+      "latitude": 49.25386908298571,
+      "longitude": 4.0272917333153,
+      "name": {
+        "en": "Cinéma-opéra",
+        "fr": "Cinéma-opéra"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-eglise-saint-jacques-pa00078782",
+      "latitude": 49.2540853020513,
+      "longitude": 4.02860928080562,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Michel (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Michel (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078783",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-eglise-saint-michel-ancienne-pa00078783",
+      "latitude": 49.2545796159733,
+      "longitude": 4.03370688133787,
+      "name": {
+        "en": "Église Saint-Michel (ancienne)",
+        "fr": "Église Saint-Michel (ancienne)"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine des Boucheries is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine des Boucheries compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078786",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-fontaine-des-boucheries-pa00078786",
+      "latitude": 49.2578244932511,
+      "longitude": 4.02893958804079,
+      "name": {
+        "en": "Fontaine des Boucheries",
+        "fr": "Fontaine des Boucheries"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078787",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-fontaine-pa00078787",
+      "latitude": 49.2475706246307,
+      "longitude": 4.041058488486,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078795",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-hotel-de-ville-pa00078795",
+      "latitude": 49.2582294023735,
+      "longitude": 4.03156396406196,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
       }
     },
     {
@@ -108,6 +260,25 @@
     {
       "category": "culture",
       "description": {
+        "en": "musée des beaux-arts de Reims is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts de Reims compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0311",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "reims-musee-des-beaux-arts-de-reims-m0311",
+      "latitude": 49.253442,
+      "longitude": 4.030921,
+      "name": {
+        "en": "musée des beaux-arts de Reims",
+        "fr": "musée des beaux-arts de Reims"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
         "en": "musée-hôtel Le Vergeur – maison Hugues Krafft is one of the city's notable cultural landmarks.",
         "fr": "musée-hôtel Le Vergeur – maison Hugues Krafft compte parmi les lieux culturels marquants de la ville."
       },
@@ -127,39 +298,96 @@
     {
       "category": "culture",
       "description": {
-        "en": "musée des beaux-arts de Reims is one of the city's notable cultural landmarks.",
-        "fr": "musée des beaux-arts de Reims compte parmi les lieux culturels marquants de la ville."
+        "en": "musée Saint-Rémi is one of the city's notable cultural landmarks.",
+        "fr": "musée Saint-Rémi compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0311",
+        "id": "M0312",
         "source": "museofile",
         "type": "record"
       },
-      "id": "reims-musee-des-beaux-arts-de-reims-m0311",
-      "latitude": 49.253442,
-      "longitude": 4.030921,
+      "id": "reims-musee-saint-remi-m0312",
+      "latitude": 49.243111,
+      "longitude": 4.040351,
       "name": {
-        "en": "musée des beaux-arts de Reims",
-        "fr": "musée des beaux-arts de Reims"
+        "en": "musée Saint-Rémi",
+        "fr": "musée Saint-Rémi"
       }
     },
     {
-      "category": "architecture",
+      "category": "history",
       "description": {
-        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice is a distinctive architectural landmark in the city.",
-        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice est un repère architectural remarquable de la ville."
+        "en": "Porte Bazée (vestiges) is an important witness to the city's history.",
+        "fr": "Porte Bazée (vestiges) est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "PA00078791",
+        "id": "PA00078824",
         "source": "merimee",
         "type": "record"
       },
-      "id": "reims-ancien-hotel-dieu-actuellement-annexe-du-palais-de-justice-pa00078791",
-      "latitude": 49.2540109747559,
-      "longitude": 4.03163216701849,
+      "id": "reims-porte-bazee-vestiges-pa00078824",
+      "latitude": 49.2514882826906,
+      "longitude": 4.03757484380036,
       "name": {
-        "en": "Ancien hôtel-Dieu, actuellement annexe du palais de justice",
-        "fr": "Ancien hôtel-Dieu, actuellement annexe du palais de justice"
+        "en": "Porte Bazée (vestiges)",
+        "fr": "Porte Bazée (vestiges)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Mars is an important witness to the city's history.",
+        "fr": "Porte de Mars est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078825",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-porte-de-mars-pa00078825",
+      "latitude": 49.2607153912844,
+      "longitude": 4.03007667363364,
+      "name": {
+        "en": "Porte de Mars",
+        "fr": "Porte de Mars"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Paris is an important witness to the city's history.",
+        "fr": "Porte de Paris est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078826",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-porte-de-paris-pa00078826",
+      "latitude": 49.2554391183509,
+      "longitude": 4.02204178725085,
+      "name": {
+        "en": "Porte de Paris",
+        "fr": "Porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte servant autrefois d'entrée à «la Pourcelette» is an important witness to the city's history.",
+        "fr": "Porte servant autrefois d'entrée à «la Pourcelette» est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078823",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "reims-porte-servant-autrefois-d-entree-a-la-pourcelette-pa00078823",
+      "latitude": 49.2521489409648,
+      "longitude": 4.03455327986072,
+      "name": {
+        "en": "Porte servant autrefois d'entrée à «la Pourcelette»",
+        "fr": "Porte servant autrefois d'entrée à «la Pourcelette»"
       }
     }
   ]

@@ -1,0 +1,204 @@
+{
+  "id": "la-garenne-colombes-v1",
+  "cityId": "la-garenne-colombes-fr",
+  "cityZoneId": "relation/91775",
+  "cityName": {
+    "en": "La Garenne-Colombes",
+    "fr": "La Garenne-Colombes"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "annexe de la Médiathèque de La Garenne-Colombes is one of the city's notable cultural landmarks.",
+        "fr": "maison située à La Garenne-Colombes, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96590983",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-annexe-de-la-mediatheque-de-la-garenne-colombes-q96590983",
+      "latitude": 48.90707,
+      "longitude": 2.24881,
+      "name": {
+        "en": "annexe de la Médiathèque de La Garenne-Colombes",
+        "fr": "annexe de la Médiathèque de La Garenne-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Hauts-de-Seine, in France",
+        "fr": "église située dans les Hauts-de-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21034084",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-eglise-saint-andre-sainte-helene-de-la-garenne-colombes-q21034084",
+      "latitude": 48.904571,
+      "longitude": 2.237297,
+      "name": {
+        "en": "église Saint-André-Sainte-Hélène de La Garenne-Colombes",
+        "fr": "église Saint-André-Sainte-Hélène de La Garenne-Colombes"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Wallace, parc de l'Hôtel de Ville is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine Wallace située à La Garenne-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q128920452",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-fontaine-wallace-parc-de-l-hotel-de-ville-q128920452",
+      "latitude": 48.907181,
+      "longitude": 2.245869,
+      "name": {
+        "en": "fontaine Wallace, parc de l'Hôtel de Ville",
+        "fr": "fontaine Wallace, parc de l'Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in La Garenne-Colombes, France",
+        "fr": "édifice de La Garenne-Colombes, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412778",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-hotel-de-ville-de-la-garenne-colombes-q83412778",
+      "latitude": 48.9069,
+      "longitude": 2.2465,
+      "name": {
+        "en": "hôtel de ville de La Garenne-Colombes",
+        "fr": "hôtel de ville de La Garenne-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Garenne-Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2399131",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-la-garenne-colombes-q2399131",
+      "latitude": 48.909477,
+      "longitude": 2.23987,
+      "name": {
+        "en": "La Garenne-Colombes",
+        "fr": "La Garenne-Colombes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in La Garenne-Colombes, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2382862",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-les-vallees-q2382862",
+      "latitude": 48.913489,
+      "longitude": 2.257937,
+      "name": {
+        "en": "Les Vallées",
+        "fr": "Les Vallées"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "square in La Garenne-Colombes, arrondissement of Nanterre, Hauts-de-Seine, Île-de-France, France",
+        "fr": "place de La Garenne-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q125340042",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-place-de-la-tournelle-q125340042",
+      "latitude": 48.90694,
+      "longitude": 2.23648,
+      "name": {
+        "en": "place de la Tournelle",
+        "fr": "place de la Tournelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Vannes, France",
+        "fr": "cinéma à Vannes, France"
+      },
+      "externalIdentity": {
+        "id": "Q63411877",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-theatre-de-la-garenne-q63411877",
+      "latitude": 48.90563,
+      "longitude": 2.23433,
+      "name": {
+        "en": "Théâtre de La Garenne",
+        "fr": "Théâtre de La Garenne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Nova is an important witness to the city's history.",
+        "fr": "Tour Nova est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3533141",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-tour-nova-q3533141",
+      "latitude": 48.9058,
+      "longitude": 2.23828,
+      "name": {
+        "en": "Tour Nova",
+        "fr": "Tour Nova"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "street in La Garenne-Colombes, France",
+        "fr": "villa de La Garenne-Colombes, en France"
+      },
+      "externalIdentity": {
+        "id": "Q114860983",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-garenne-colombes-villa-du-chateau-q114860983",
+      "latitude": 48.903899733,
+      "longitude": 2.244793333,
+      "name": {
+        "en": "villa du Château",
+        "fr": "villa du Château"
+      }
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "troyes-v1",
+  "cityId": "troyes-fr",
+  "cityZoneId": "relation/414972",
+  "cityName": {
+    "en": "Troyes",
+    "fr": "Troyes"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Loup (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Loup (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078248",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-abbaye-saint-loup-ancienne-pa00078248",
+      "latitude": 48.3007682367842,
+      "longitude": 4.08039149245252,
+      "name": {
+        "en": "Abbaye Saint-Loup (ancienne)",
+        "fr": "Abbaye Saint-Loup (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Martin-ès-Aires (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Martin-ès-Aires (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078249",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-abbaye-saint-martin-es-aires-ancienne-pa00078249",
+      "latitude": 48.3023718725186,
+      "longitude": 4.08506053471138,
+      "name": {
+        "en": "Abbaye Saint-Martin-ès-Aires (ancienne)",
+        "fr": "Abbaye Saint-Martin-ès-Aires (ancienne)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "apothicairerie de l'hôtel-Dieu-le-Comte is one of the city's notable cultural landmarks.",
+        "fr": "apothicairerie de l'hôtel-Dieu-le-Comte compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0305",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-apothicairerie-de-l-hotel-dieu-le-comte-m0305",
+      "latitude": 48.298985,
+      "longitude": 4.078036,
+      "name": {
+        "en": "apothicairerie de l'hôtel-Dieu-le-Comte",
+        "fr": "apothicairerie de l'hôtel-Dieu-le-Comte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathédrale Saint-Pierre Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Pierre Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078250",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-cathedrale-saint-pierre-saint-paul-pa00078250",
+      "latitude": 48.3003579010656,
+      "longitude": 4.081401717983111,
+      "name": {
+        "en": "cathédrale Saint-Pierre Saint-Paul",
+        "fr": "cathédrale Saint-Pierre Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église de la Madeleine et ancien cimetière is a distinctive architectural landmark in the city.",
+        "fr": "Église de la Madeleine et ancien cimetière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078254",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-de-la-madeleine-et-ancien-cimetiere-pa00078254",
+      "latitude": 48.2976793687089,
+      "longitude": 4.07145394220599,
+      "name": {
+        "en": "Église de la Madeleine et ancien cimetière",
+        "fr": "Église de la Madeleine et ancien cimetière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame des Trévois is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame des Trévois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA10000012",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-notre-dame-des-trevois-pa10000012",
+      "latitude": 48.2838212030348,
+      "longitude": 4.08508579634587,
+      "name": {
+        "en": "Église Notre-Dame des Trévois",
+        "fr": "Église Notre-Dame des Trévois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jean is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jean est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078255",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-jean-pa00078255",
+      "latitude": 48.2965423347053,
+      "longitude": 4.07380962804224,
+      "name": {
+        "en": "Église Saint-Jean",
+        "fr": "Église Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin-es-Vignes is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin-es-Vignes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078256",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-martin-es-vignes-pa00078256",
+      "latitude": 48.3053272030472,
+      "longitude": 4.0613499311341,
+      "name": {
+        "en": "Église Saint-Martin-es-Vignes",
+        "fr": "Église Saint-Martin-es-Vignes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nicolas is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nicolas est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078257",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-nicolas-pa00078257",
+      "latitude": 48.2939820489506,
+      "longitude": 4.06941640885904,
+      "name": {
+        "en": "Église Saint-Nicolas",
+        "fr": "Église Saint-Nicolas"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Nizier is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Nizier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078258",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-nizier-pa00078258",
+      "latitude": 48.301865489928,
+      "longitude": 4.08338529297806,
+      "name": {
+        "en": "Église Saint-Nizier",
+        "fr": "Église Saint-Nizier"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "maison de l'outil et de la pensée ouvrière is one of the city's notable cultural landmarks.",
+        "fr": "maison de l'outil et de la pensée ouvrière compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0306",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-maison-de-l-outil-et-de-la-pensee-ouvriere-m0306",
+      "latitude": 48.29473,
+      "longitude": 4.072849,
+      "name": {
+        "en": "maison de l'outil et de la pensée ouvrière",
+        "fr": "maison de l'outil et de la pensée ouvrière"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'art moderne is one of the city's notable cultural landmarks.",
+        "fr": "musée d'art moderne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0302",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-musee-d-art-moderne-m0302",
+      "latitude": 48.299643,
+      "longitude": 4.080736,
+      "name": {
+        "en": "musée d'art moderne",
+        "fr": "musée d'art moderne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la maille - mode et industrie is one of the city's notable cultural landmarks.",
+        "fr": "musée de la maille - mode et industrie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1216",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-musee-de-la-maille-mode-et-industrie-m1216",
+      "latitude": 48.29455640224518,
+      "longitude": 4.071872499014824,
+      "name": {
+        "en": "musée de la maille - mode et industrie",
+        "fr": "musée de la maille - mode et industrie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la Renaissance en Champagne is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Renaissance en Champagne compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0304",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-musee-de-la-renaissance-en-champagne-m0304",
+      "latitude": 48.294239,
+      "longitude": 4.071824,
+      "name": {
+        "en": "musée de la Renaissance en Champagne",
+        "fr": "musée de la Renaissance en Champagne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des beaux-arts et d'archéologie is one of the city's notable cultural landmarks.",
+        "fr": "musée des beaux-arts et d'archéologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0303",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "troyes-musee-des-beaux-arts-et-d-archeologie-m0303",
+      "latitude": 48.300638,
+      "longitude": 4.08003,
+      "name": {
+        "en": "musée des beaux-arts et d'archéologie",
+        "fr": "musée des beaux-arts et d'archéologie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pantaléon is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pantaléon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078259",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-pantaleon-pa00078259",
+      "latitude": 48.2947029199005,
+      "longitude": 4.07184834010371,
+      "name": {
+        "en": "Église Saint-Pantaléon",
+        "fr": "Église Saint-Pantaléon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Rémy is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Rémy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078260",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-remy-pa00078260",
+      "latitude": 48.2992595293585,
+      "longitude": 4.07531282383641,
+      "name": {
+        "en": "Église Saint-Rémy",
+        "fr": "Église Saint-Rémy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Urbain is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Urbain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078261",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eglise-saint-urbain-pa00078261",
+      "latitude": 48.2981288241808,
+      "longitude": 4.0764738270494,
+      "name": {
+        "en": "Église Saint-Urbain",
+        "fr": "Église Saint-Urbain"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Évêché (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Évêché (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078262",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-eveche-ancien-pa00078262",
+      "latitude": 48.3000348697948,
+      "longitude": 4.08248306846312,
+      "name": {
+        "en": "Évêché (ancien)",
+        "fr": "Évêché (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00078272",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "troyes-hotel-de-ville-pa00078272",
+      "latitude": 48.2974464683564,
+      "longitude": 4.0742468933448,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    }
+  ]
+}

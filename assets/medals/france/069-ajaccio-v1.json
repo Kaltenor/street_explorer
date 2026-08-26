@@ -1,0 +1,394 @@
+{
+  "id": "ajaccio-v1",
+  "cityId": "ajaccio-fr",
+  "cityZoneId": "relation/73283",
+  "cityName": {
+    "en": "Ajaccio",
+    "fr": "Ajaccio"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien palais épiscopal is a distinctive architectural landmark in the city.",
+        "fr": "Ancien palais épiscopal est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099070",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-ancien-palais-episcopal-pa00099070",
+      "latitude": 41.91750437671771,
+      "longitude": 8.73940530837277,
+      "name": {
+        "en": "Ancien palais épiscopal",
+        "fr": "Ancien palais épiscopal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Baptistère paléochrétien de Saint-Jean is an important witness to the city's history.",
+        "fr": "Baptistère paléochrétien de Saint-Jean est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA2A000004",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-baptistere-paleochretien-de-saint-jean-pa2a000004",
+      "latitude": 41.9293022191855,
+      "longitude": 8.737815854188922,
+      "name": {
+        "en": "Baptistère paléochrétien de Saint-Jean",
+        "fr": "Baptistère paléochrétien de Saint-Jean"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Corse-du-Sud, in France",
+        "fr": "cathédrale située à Ajaccio en Corse-du-Sud, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2437680",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-cathedrale-notre-dame-de-l-assomption-d-ajaccio-q2437680",
+      "latitude": 41.917495,
+      "longitude": 8.737961,
+      "name": {
+        "en": "cathédrale Notre-Dame-de-l'Assomption d'Ajaccio",
+        "fr": "cathédrale Notre-Dame-de-l'Assomption d'Ajaccio"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099058",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-cathedrale-santa-maria-assunta-ou-cathedrale-notre-dame-pa00099058",
+      "latitude": 41.917393872149,
+      "longitude": 8.73785050436549,
+      "name": {
+        "en": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame",
+        "fr": "Cathédrale Santa Maria Assunta ou cathédrale Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle Impériale is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle Impériale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099060",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-chapelle-imperiale-pa00099060",
+      "latitude": 41.9217154659698,
+      "longitude": 8.73852285578615,
+      "name": {
+        "en": "Chapelle Impériale",
+        "fr": "Chapelle Impériale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fortress at Ajaccio, France",
+        "fr": "citadelle à Ajaccio (Corse-du-Sud)"
+      },
+      "externalIdentity": {
+        "id": "Q5122393",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-citadelle-d-ajaccio-q5122393",
+      "latitude": 41.91666667,
+      "longitude": 8.74027778,
+      "name": {
+        "en": "citadelle d'Ajaccio",
+        "fr": "citadelle d'Ajaccio"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Citadelle is an important witness to the city's history.",
+        "fr": "Citadelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-citadelle-pa00099062",
+      "latitude": 41.916952542892,
+      "longitude": 8.7401792917107,
+      "name": {
+        "en": "Citadelle",
+        "fr": "Citadelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Domaine des Milelli is a distinctive architectural landmark in the city.",
+        "fr": "Domaine des Milelli est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099065",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-domaine-des-milelli-pa00099065",
+      "latitude": 41.9376632953469,
+      "longitude": 8.71933165541862,
+      "name": {
+        "en": "Domaine des Milelli",
+        "fr": "Domaine des Milelli"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099127",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-hotel-de-ville-pa00099127",
+      "latitude": 41.9193538515285,
+      "longitude": 8.73900248135867,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble dit ancien Château Conti is an important witness to the city's history.",
+        "fr": "Immeuble dit ancien Château Conti est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099063",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-immeuble-dit-ancien-chateau-conti-pa00099063",
+      "latitude": 41.918295484731,
+      "longitude": 8.731797228524142,
+      "name": {
+        "en": "Immeuble dit ancien Château Conti",
+        "fr": "Immeuble dit ancien Château Conti"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de Napoléon Bonaparte is a distinctive architectural landmark in the city.",
+        "fr": "Maison de Napoléon Bonaparte est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099066",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-maison-de-napoleon-bonaparte-pa00099066",
+      "latitude": 41.917955242953,
+      "longitude": 8.73861182153737,
+      "name": {
+        "en": "Maison de Napoléon Bonaparte",
+        "fr": "Maison de Napoléon Bonaparte"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument commémoratif Napoléon 1er et ses frères is a notable work of public art and local memory.",
+        "fr": "Monument commémoratif Napoléon 1er et ses frères est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA2A000017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-monument-commemoratif-napoleon-1er-et-ses-freres-pa2a000017",
+      "latitude": 41.9175595605266,
+      "longitude": 8.7361980051378,
+      "name": {
+        "en": "Monument commémoratif Napoléon 1er et ses frères",
+        "fr": "Monument commémoratif Napoléon 1er et ses frères"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée napoléonien is one of the city's notable cultural landmarks.",
+        "fr": "musée napoléonien compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0325",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-napoleonien-m0325",
+      "latitude": 41.92499,
+      "longitude": 8.735937,
+      "name": {
+        "en": "musée napoléonien",
+        "fr": "musée napoléonien"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée national de la maison Bonaparte is one of the city's notable cultural landmarks.",
+        "fr": "musée national de la maison Bonaparte compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5046",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-national-de-la-maison-bonaparte-m5046",
+      "latitude": 41.917701,
+      "longitude": 8.73795,
+      "name": {
+        "en": "musée national de la maison Bonaparte",
+        "fr": "musée national de la maison Bonaparte"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée palais Fesch is one of the city's notable cultural landmarks.",
+        "fr": "musée palais Fesch compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0324",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "ajaccio-musee-palais-fesch-m0324",
+      "latitude": 41.922406,
+      "longitude": 8.738487,
+      "name": {
+        "en": "musée palais Fesch",
+        "fr": "musée palais Fesch"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue du cardinal Fesch is a notable work of public art and local memory.",
+        "fr": "Statue du cardinal Fesch est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA2A000018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-statue-du-cardinal-fesch-pa2a000018",
+      "latitude": 41.9219538829493,
+      "longitude": 8.73863393572217,
+      "name": {
+        "en": "Statue du cardinal Fesch",
+        "fr": "Statue du cardinal Fesch"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue du général Abbatucci is a notable work of public art and local memory.",
+        "fr": "Statue du général Abbatucci est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA2A000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-statue-du-general-abbatucci-pa2a000019",
+      "latitude": 41.92543117218201,
+      "longitude": 8.73841623044256,
+      "name": {
+        "en": "Statue du général Abbatucci",
+        "fr": "Statue du général Abbatucci"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Peraldi is a distinctive architectural landmark in the city.",
+        "fr": "Maison Peraldi est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099067",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-maison-peraldi-pa00099067",
+      "latitude": 41.9167520725443,
+      "longitude": 8.73836817651941,
+      "name": {
+        "en": "Maison Peraldi",
+        "fr": "Maison Peraldi"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais Lantivy is a distinctive architectural landmark in the city.",
+        "fr": "Palais Lantivy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00099128",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "ajaccio-palais-lantivy-pa00099128",
+      "latitude": 41.9195753045389,
+      "longitude": 8.73636614165677,
+      "name": {
+        "en": "Palais Lantivy",
+        "fr": "Palais Lantivy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "football stadium in Ajaccio, France",
+        "fr": "stade de football situé à Ajaccio"
+      },
+      "externalIdentity": {
+        "id": "Q1807356",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ajaccio-stade-michel-moretti-q1807356",
+      "latitude": 41.93157,
+      "longitude": 8.77887,
+      "name": {
+        "en": "stade Michel-Moretti",
+        "fr": "stade Michel-Moretti"
+      }
+    }
+  ]
+}

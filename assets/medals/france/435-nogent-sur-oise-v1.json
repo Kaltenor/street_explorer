@@ -1,0 +1,204 @@
+{
+  "id": "nogent-sur-oise-v1",
+  "cityId": "nogent-sur-oise-fr",
+  "cityZoneId": "relation/142096",
+  "cityName": {
+    "en": "Nogent-sur-Oise",
+    "fr": "Nogent-sur-Oise"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France (until March 2015)",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q155118",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-oise-canton-de-creil-nogent-sur-oise-q155118",
+      "latitude": 49.27408963,
+      "longitude": 2.47955922,
+      "name": {
+        "en": "canton de Creil-Nogent-sur-Oise",
+        "fr": "canton de Creil-Nogent-sur-Oise"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Rochers is an important witness to the city's history.",
+        "fr": "Château des Rochers est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/80806133",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "nogent-sur-oise-chateau-des-rochers-way-80806133",
+      "latitude": 49.2791778,
+      "longitude": 2.4601491,
+      "name": {
+        "en": "Château des Rochers",
+        "fr": "Château des Rochers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Protestante Évangélique is a distinctive architectural landmark in the city.",
+        "fr": "Église Protestante Évangélique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/80810635",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "nogent-sur-oise-eglise-protestante-evangelique-way-80810635",
+      "latitude": 49.2690056,
+      "longitude": 2.4767994,
+      "name": {
+        "en": "Église Protestante Évangélique",
+        "fr": "Église Protestante Évangélique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Marie-et-Sainte-Brigitte de Nogent-les-Vierges is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Marie-et-Sainte-Brigitte de Nogent-les-Vierges est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nogent-sur-oise-eglise-saint-marie-et-sainte-brigitte-de-nogent-les-vierges-pa00114782",
+      "latitude": 49.280048014486184,
+      "longitude": 2.4755392711131816,
+      "name": {
+        "en": "Église Saint-Marie-et-Sainte-Brigitte de Nogent-les-Vierges",
+        "fr": "Église Saint-Marie-et-Sainte-Brigitte de Nogent-les-Vierges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Oise, in France",
+        "fr": "église située dans l'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3585239",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-oise-eglise-sainte-maure-et-sainte-brigide-de-nogent-sur-oise-q3585239",
+      "latitude": 49.28005,
+      "longitude": 2.47548,
+      "name": {
+        "en": "église Sainte-Maure-et-Sainte-Brigide de Nogent-sur-Oise",
+        "fr": "église Sainte-Maure-et-Sainte-Brigide de Nogent-sur-Oise"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Oise department, France",
+        "fr": "monument aux morts de l'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067021",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-oise-monument-aux-morts-de-nogent-sur-oise-q136067021",
+      "latitude": 49.280022,
+      "longitude": 2.474422,
+      "name": {
+        "en": "monument aux morts de Nogent-sur-Oise",
+        "fr": "monument aux morts de Nogent-sur-Oise"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Restes du château de Sarcus is an important witness to the city's history.",
+        "fr": "Restes du château de Sarcus est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114780",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "nogent-sur-oise-restes-du-chateau-de-sarcus-pa00114780",
+      "latitude": 49.27073994998719,
+      "longitude": 2.4667088904023005,
+      "name": {
+        "en": "Restes du château de Sarcus",
+        "fr": "Restes du château de Sarcus"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Maure-et-Sainte-Brigide is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Maure-et-Sainte-Brigide est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/80808941",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "nogent-sur-oise-eglise-sainte-maure-et-sainte-brigide-way-80808941",
+      "latitude": 49.2800438,
+      "longitude": 2.4754511,
+      "name": {
+        "en": "Église Sainte-Maure-et-Sainte-Brigide",
+        "fr": "Église Sainte-Maure-et-Sainte-Brigide"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville de Nogent-sur-Oise is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville de Nogent-sur-Oise est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/80813488",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "nogent-sur-oise-hotel-de-ville-de-nogent-sur-oise-way-80813488",
+      "latitude": 49.2747078,
+      "longitude": 2.46742,
+      "name": {
+        "en": "Hôtel de Ville de Nogent-sur-Oise",
+        "fr": "Hôtel de Ville de Nogent-sur-Oise"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in Oise, Hauts-de-France (formerly Picardy)",
+        "fr": "commune française du département de l'Oise (Hauts-de-France)"
+      },
+      "externalIdentity": {
+        "id": "Q693488",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "nogent-sur-oise-nogent-sur-oise-q693488",
+      "latitude": 49.274722222,
+      "longitude": 2.4675,
+      "name": {
+        "en": "Nogent-sur-Oise",
+        "fr": "Nogent-sur-Oise"
+      }
+    }
+  ]
+}

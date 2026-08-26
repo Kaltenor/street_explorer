@@ -1,0 +1,204 @@
+{
+  "id": "meyzieu-v1",
+  "cityId": "meyzieu-fr",
+  "cityZoneId": "relation/122349",
+  "cityName": {
+    "en": "Meyzieu",
+    "fr": "Meyzieu"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Rhône, in France",
+        "fr": "cimetière situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83191470",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-cimetiere-des-taches-q83191470",
+      "latitude": 45.7575,
+      "longitude": 5.02426,
+      "name": {
+        "en": "cimetière des Taches",
+        "fr": "cimetière des Taches"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41794900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-eglise-saint-sebastien-de-meyzieu-q41794900",
+      "latitude": 45.7610964,
+      "longitude": 4.9997527,
+      "name": {
+        "en": "église Saint-Sébastien de Meyzieu",
+        "fr": "église Saint-Sébastien de Meyzieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in Lyon, France",
+        "fr": "parc de l'agglomération lyonnaise"
+      },
+      "externalIdentity": {
+        "id": "Q8387",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-grand-parc-de-miribel-jonage-q8387",
+      "latitude": 45.80583,
+      "longitude": 4.93639,
+      "name": {
+        "en": "Grand Parc de Miribel-Jonage",
+        "fr": "Grand Parc de Miribel-Jonage"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Meyzieu, France",
+        "fr": "siège municipal de Meyzieu, dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119318328",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-mairie-de-meyzieu-q119318328",
+      "latitude": 45.76537,
+      "longitude": 5.00523,
+      "name": {
+        "en": "mairie de Meyzieu",
+        "fr": "mairie de Meyzieu"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136063231",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-monument-aux-morts-de-meyzieu-q136063231",
+      "latitude": 45.760784,
+      "longitude": 5.000104,
+      "name": {
+        "en": "monument aux morts de Meyzieu",
+        "fr": "monument aux morts de Meyzieu"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Meyzieu Gare is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194563",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-meyzieu-gare-q96194563",
+      "latitude": 45.7715807,
+      "longitude": 4.9990146,
+      "name": {
+        "en": "Meyzieu Gare",
+        "fr": "Meyzieu Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Meyzieu Les Panettes is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194561",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-meyzieu-les-panettes-q96194561",
+      "latitude": 45.76616,
+      "longitude": 5.03498,
+      "name": {
+        "en": "Meyzieu Les Panettes",
+        "fr": "Meyzieu Les Panettes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Meyzieu Z.I. is a distinctive architectural landmark in the city.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q3497339",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-meyzieu-z-i-q3497339",
+      "latitude": 45.7677,
+      "longitude": 5.03168,
+      "name": {
+        "en": "Meyzieu Z.I.",
+        "fr": "Meyzieu Z.I."
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Meyzieu",
+        "fr": "pont à Meyzieu"
+      },
+      "externalIdentity": {
+        "id": "Q18579512",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-pont-d-herbens-q18579512",
+      "latitude": 45.7951,
+      "longitude": 4.9908,
+      "name": {
+        "en": "pont d'Herbens",
+        "fr": "pont d'Herbens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "stèle du génocide de Meyzieu is a distinctive architectural landmark in the city.",
+        "fr": "mémorial du génocide arménien en France"
+      },
+      "externalIdentity": {
+        "id": "Q40847620",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "meyzieu-stele-du-genocide-de-meyzieu-q40847620",
+      "latitude": 45.771328,
+      "longitude": 4.98748,
+      "name": {
+        "en": "stèle du génocide de Meyzieu",
+        "fr": "stèle du génocide de Meyzieu"
+      }
+    }
+  ]
+}

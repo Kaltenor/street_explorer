@@ -1,0 +1,204 @@
+{
+  "id": "laval-v1",
+  "cityId": "laval-fr",
+  "cityZoneId": "relation/393284",
+  "cityName": {
+    "en": "Laval",
+    "fr": "Laval"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109530",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-ancien-eglise-saint-martin-pa00109530",
+      "latitude": 48.0712795515943,
+      "longitude": -0.779540388721866,
+      "name": {
+        "en": "Ancien église Saint-Martin",
+        "fr": "Ancien église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale de la Trinité is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale de la Trinité est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109523",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-cathedrale-de-la-trinite-pa00109523",
+      "latitude": 48.0681353485487,
+      "longitude": -0.773588680174887,
+      "name": {
+        "en": "Cathédrale de la Trinité",
+        "fr": "Cathédrale de la Trinité"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Neuf, actuellement Palais de Justice de Laval is an important witness to the city's history.",
+        "fr": "Château Neuf, actuellement Palais de Justice de Laval est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109526",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-chateau-neuf-actuellement-palais-de-justice-de-laval-pa00109526",
+      "latitude": 48.06856369699319,
+      "longitude": -0.7712419523856316,
+      "name": {
+        "en": "Château Neuf, actuellement Palais de Justice de Laval",
+        "fr": "Château Neuf, actuellement Palais de Justice de Laval"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Vieux is an important witness to the city's history.",
+        "fr": "Château Vieux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109527",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-chateau-vieux-pa00109527",
+      "latitude": 48.068473144827,
+      "longitude": -0.770662878232375,
+      "name": {
+        "en": "Château Vieux",
+        "fr": "Château Vieux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame d'Avesnière is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame d'Avesnière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109529",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-eglise-notre-dame-d-avesniere-pa00109529",
+      "latitude": 48.0599300927091,
+      "longitude": -0.762924253780493,
+      "name": {
+        "en": "Église Notre-Dame d'Avesnière",
+        "fr": "Église Notre-Dame d'Avesnière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame des Cordeliers is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame des Cordeliers est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109528",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-eglise-notre-dame-des-cordeliers-pa00109528",
+      "latitude": 48.0701043695261,
+      "longitude": -0.778240756665509,
+      "name": {
+        "en": "Église Notre-Dame des Cordeliers",
+        "fr": "Église Notre-Dame des Cordeliers"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109532",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-fontaine-pa00109532",
+      "latitude": 48.0669937864776,
+      "longitude": -0.770400999726631,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine publique dite Fontaine des Trois Croix ou du Puits Rocher is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine publique dite Fontaine des Trois Croix ou du Puits Rocher compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109534",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-fontaine-publique-dite-fontaine-des-trois-croix-ou-du-puits-rocher-pa00109534",
+      "latitude": 48.0648233652356,
+      "longitude": -0.769125244624694,
+      "name": {
+        "en": "Fontaine publique dite Fontaine des Trois Croix ou du Puits Rocher",
+        "fr": "Fontaine publique dite Fontaine des Trois Croix ou du Puits Rocher"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Saint-Martin is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Saint-Martin compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109535",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "laval-fontaine-saint-martin-pa00109535",
+      "latitude": 48.0710719858645,
+      "longitude": -0.778584953644603,
+      "name": {
+        "en": "Fontaine Saint-Martin",
+        "fr": "Fontaine Saint-Martin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des sciences is one of the city's notable cultural landmarks.",
+        "fr": "musée des sciences compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7041",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "laval-musee-des-sciences-m7041",
+      "latitude": 48.06597,
+      "longitude": -0.772148,
+      "name": {
+        "en": "musée des sciences",
+        "fr": "musée des sciences"
+      }
+    }
+  ]
+}

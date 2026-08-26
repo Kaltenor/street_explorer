@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-08-26T00:00:00.000Z",
+  "methodology": {
+    "distributedBytes": "Actual bundled JSON bytes for France; published gzip bytes for downloadable countries.",
+    "expandedDefinitionBytes": "UTF-8 aggregate JSON for France; gunzipped published JSON for downloadable countries.",
+    "referenceGzipBytes": "Deterministic gzip of the France aggregate; identical to distributedBytes for downloadable countries.",
+    "sqliteBytes": "Fresh 4096-byte-page SQLite database containing the production medal catalogue tables and indexes after VACUUM."
+  },
+  "countries": {
+    "fr": {
+      "albumCount": 500,
+      "medalCount": 6082,
+      "distributedBytes": 3830420,
+      "expandedDefinitionBytes": 2861319,
+      "referenceGzipBytes": 423127,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 3682304,
+      "sqliteCatalogBytes": 3645440
+    },
+    "be": {
+      "albumCount": 91,
+      "medalCount": 782,
+      "distributedBytes": 66511,
+      "expandedDefinitionBytes": 762005,
+      "referenceGzipBytes": 66511,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 671744,
+      "sqliteCatalogBytes": 634880
+    },
+    "de": {
+      "albumCount": 100,
+      "medalCount": 864,
+      "distributedBytes": 73212,
+      "expandedDefinitionBytes": 687040,
+      "referenceGzipBytes": 73212,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 593920,
+      "sqliteCatalogBytes": 557056
+    },
+    "es": {
+      "albumCount": 100,
+      "medalCount": 858,
+      "distributedBytes": 75940,
+      "expandedDefinitionBytes": 709974,
+      "referenceGzipBytes": 75940,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 589824,
+      "sqliteCatalogBytes": 552960
+    },
+    "it": {
+      "albumCount": 100,
+      "medalCount": 854,
+      "distributedBytes": 70980,
+      "expandedDefinitionBytes": 665823,
+      "referenceGzipBytes": 70980,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 536576,
+      "sqliteCatalogBytes": 499712
+    },
+    "nl": {
+      "albumCount": 58,
+      "medalCount": 492,
+      "distributedBytes": 46085,
+      "expandedDefinitionBytes": 436982,
+      "referenceGzipBytes": 46085,
+      "sqliteEmptySchemaBytes": 36864,
+      "sqliteBytes": 368640,
+      "sqliteCatalogBytes": 331776
+    }
+  }
+}

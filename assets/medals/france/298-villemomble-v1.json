@@ -1,0 +1,204 @@
+{
+  "id": "villemomble-v1",
+  "cityId": "villemomble-fr",
+  "cityZoneId": "relation/162329",
+  "cityName": {
+    "en": "Villemomble",
+    "fr": "Villemomble"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q109928749",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-ancien-eglise-de-villemomble-q109928749",
+      "latitude": 48.88384,
+      "longitude": 2.5112,
+      "name": {
+        "en": "Ancien église de Villemomble",
+        "fr": "Ancien église de Villemomble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Saint-Denis, in France",
+        "fr": "chapelle située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20828454",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-chapelle-saint-andre-q20828454",
+      "latitude": 48.877711353,
+      "longitude": 2.523591129,
+      "name": {
+        "en": "chapelle Saint-André",
+        "fr": "chapelle Saint-André"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Villemomble is an important witness to the city's history.",
+        "fr": "château à Villemomble (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q2971003",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-chateau-de-villemomble-q2971003",
+      "latitude": 48.884554,
+      "longitude": 2.51103,
+      "name": {
+        "en": "château de Villemomble",
+        "fr": "château de Villemomble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20828458",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-eglise-notre-dame-d-esperance-de-villemomble-q20828458",
+      "latitude": 48.88384,
+      "longitude": 2.49684,
+      "name": {
+        "en": "église Notre-Dame-d’Espérance de Villemomble",
+        "fr": "église Notre-Dame-d’Espérance de Villemomble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000003",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villemomble-eglise-saint-louis-pa93000003",
+      "latitude": 48.8854225927119,
+      "longitude": 2.5158275853057,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097310",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-monument-aux-morts-de-villemomble-q136097310",
+      "latitude": 48.88575,
+      "longitude": 2.51487,
+      "name": {
+        "en": "monument aux morts de Villemomble",
+        "fr": "monument aux morts de Villemomble"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Villemomble, France",
+        "fr": "théâtre à Villemomble, en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q33965093",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-theatre-georges-brassens-q33965093",
+      "latitude": 48.88573,
+      "longitude": 2.51332,
+      "name": {
+        "en": "théâtre Georges-Brassens",
+        "fr": "théâtre Georges-Brassens"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Folie (ancienne) is a distinctive architectural landmark in the city.",
+        "fr": "Folie (ancienne) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079968",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villemomble-folie-ancienne-pa00079968",
+      "latitude": 48.8845484775711,
+      "longitude": 2.51104870054547,
+      "name": {
+        "en": "Folie (ancienne)",
+        "fr": "Folie (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Villemomble, France",
+        "fr": "édifice de Villemomble, France"
+      },
+      "externalIdentity": {
+        "id": "Q83412810",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-hotel-de-ville-de-villemomble-q83412810",
+      "latitude": 48.8821,
+      "longitude": 2.5078,
+      "name": {
+        "en": "hôtel de ville de Villemomble",
+        "fr": "hôtel de ville de Villemomble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "plateau à l'est de Paris, dans la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q1945381",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villemomble-plateau-d-avron-q1945381",
+      "latitude": 48.87277778,
+      "longitude": 2.51083333,
+      "name": {
+        "en": "plateau d'Avron",
+        "fr": "plateau d'Avron"
+      }
+    }
+  ]
+}

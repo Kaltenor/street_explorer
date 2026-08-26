@@ -1,0 +1,204 @@
+{
+  "id": "ozoir-la-ferriere-v1",
+  "cityId": "ozoir-la-ferriere-fr",
+  "cityZoneId": "relation/403076",
+  "cityName": {
+    "en": "Ozoir-la-Ferrière",
+    "fr": "Ozoir-la-Ferrière"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Pour Tous is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Pour Tous compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/2485355044",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "ozoir-la-ferriere-bibliotheque-pour-tous-node-2485355044",
+      "latitude": 48.7650728,
+      "longitude": 2.6739306,
+      "name": {
+        "en": "Bibliothèque Pour Tous",
+        "fr": "Bibliothèque Pour Tous"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Agneaux is an important witness to the city's history.",
+        "fr": "Château des Agneaux est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112300636",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-chateau-des-agneaux-way-112300636",
+      "latitude": 48.763005,
+      "longitude": 2.6519359,
+      "name": {
+        "en": "Château des Agneaux",
+        "fr": "Château des Agneaux"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Protestante Évangélique is a distinctive architectural landmark in the city.",
+        "fr": "Église Protestante Évangélique est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112293461",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-eglise-protestante-evangelique-way-112293461",
+      "latitude": 48.7621755,
+      "longitude": 2.673519,
+      "name": {
+        "en": "Église Protestante Évangélique",
+        "fr": "Église Protestante Évangélique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112296246",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-eglise-saint-pierre-way-112296246",
+      "latitude": 48.7626345,
+      "longitude": 2.668943,
+      "name": {
+        "en": "Église Saint-Pierre",
+        "fr": "Église Saint-Pierre"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Espace Horizon is one of the city's notable cultural landmarks.",
+        "fr": "Espace Horizon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112305437",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-espace-horizon-way-112305437",
+      "latitude": 48.7644085,
+      "longitude": 2.6754445,
+      "name": {
+        "en": "Espace Horizon",
+        "fr": "Espace Horizon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ferme Pereire is a distinctive architectural landmark in the city.",
+        "fr": "Ferme Pereire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/218044963",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-ferme-pereire-way-218044963",
+      "latitude": 48.757965,
+      "longitude": 2.698253,
+      "name": {
+        "en": "Ferme Pereire",
+        "fr": "Ferme Pereire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-et-Marne, France",
+        "fr": "commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q274588",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "ozoir-la-ferriere-ozoir-la-ferriere-q274588",
+      "latitude": 48.769166666,
+      "longitude": 2.679166666,
+      "name": {
+        "en": "Ozoir-la-Ferrière",
+        "fr": "Ozoir-la-Ferrière"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Belle-croix is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Belle-croix compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/220365204",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-parc-belle-croix-way-220365204",
+      "latitude": 48.7609757,
+      "longitude": 2.6896707,
+      "name": {
+        "en": "Parc Belle-croix",
+        "fr": "Parc Belle-croix"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de La Brêche-aux-Loups is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de La Brêche-aux-Loups compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/364662563",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-parc-de-la-breche-aux-loups-way-364662563",
+      "latitude": 48.7664962,
+      "longitude": 2.6758534,
+      "name": {
+        "en": "Parc de La Brêche-aux-Loups",
+        "fr": "Parc de La Brêche-aux-Loups"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Charmeraie is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Charmeraie compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/219654066",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "ozoir-la-ferriere-parc-de-la-charmeraie-way-219654066",
+      "latitude": 48.7595691,
+      "longitude": 2.6732684,
+      "name": {
+        "en": "Parc de la Charmeraie",
+        "fr": "Parc de la Charmeraie"
+      }
+    }
+  ]
+}

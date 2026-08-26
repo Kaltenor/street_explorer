@@ -1,0 +1,204 @@
+{
+  "id": "saint-etienne-du-rouvray-v1",
+  "cityId": "saint-etienne-du-rouvray-fr",
+  "cityZoneId": "relation/102144",
+  "cityName": {
+    "en": "Saint-Étienne-du-Rouvray",
+    "fr": "Saint-Étienne-du-Rouvray"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Georges-Déziré is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Georges-Déziré compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/6566230961",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-etienne-du-rouvray-bibliotheque-georges-dezire-node-6566230961",
+      "latitude": 49.3836613,
+      "longitude": 1.1080133,
+      "name": {
+        "en": "Bibliothèque Georges-Déziré",
+        "fr": "Bibliothèque Georges-Déziré"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque Louis-Aragon is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque Louis-Aragon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/47228925",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-etienne-du-rouvray-bibliotheque-louis-aragon-way-47228925",
+      "latitude": 49.3720543,
+      "longitude": 1.1007519,
+      "name": {
+        "en": "Bibliothèque Louis-Aragon",
+        "fr": "Bibliothèque Louis-Aragon"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque médicale (101) is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque médicale (101) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/364912490",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-etienne-du-rouvray-bibliotheque-medicale-101-way-364912490",
+      "latitude": 49.3963836,
+      "longitude": 1.0998207,
+      "name": {
+        "en": "Bibliothèque médicale (101)",
+        "fr": "Bibliothèque médicale (101)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque universitaire de Science et Techniques is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque universitaire de Science et Techniques compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/5888098593",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "saint-etienne-du-rouvray-bibliotheque-universitaire-de-science-et-techniques-node-5888098593",
+      "latitude": 49.3876715,
+      "longitude": 1.0678254,
+      "name": {
+        "en": "Bibliothèque universitaire de Science et Techniques",
+        "fr": "Bibliothèque universitaire de Science et Techniques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1727511",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-etienne-du-rouvray-canton-de-sotteville-les-rouen-est-q1727511",
+      "latitude": 49.393888888,
+      "longitude": 1.0975,
+      "name": {
+        "en": "canton de Sotteville-lès-Rouen-Est",
+        "fr": "canton de Sotteville-lès-Rouen-Est"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/70471076",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-etienne-du-rouvray-eglise-saint-etienne-way-70471076",
+      "latitude": 49.3827835,
+      "longitude": 1.1068372,
+      "name": {
+        "en": "Église Saint-Étienne",
+        "fr": "Église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French Grande école",
+        "fr": "grande école d'ingénieurs française"
+      },
+      "externalIdentity": {
+        "id": "Q1665112",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-etienne-du-rouvray-institut-national-des-sciences-appliquees-de-rouen-q1665112",
+      "latitude": 49.38583333,
+      "longitude": 1.06833333,
+      "name": {
+        "en": "Institut national des sciences appliquées de Rouen",
+        "fr": "Institut national des sciences appliquées de Rouen"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de l'Orée du Rouvray is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de l'Orée du Rouvray compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/249474842",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-etienne-du-rouvray-parc-de-l-oree-du-rouvray-way-249474842",
+      "latitude": 49.391534,
+      "longitude": 1.0857522,
+      "name": {
+        "en": "Parc de l'Orée du Rouvray",
+        "fr": "Parc de l'Orée du Rouvray"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc Graccus Babeuf is one of the city's notable green or natural landmarks.",
+        "fr": "Parc Graccus Babeuf compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/435001410",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "saint-etienne-du-rouvray-parc-graccus-babeuf-way-435001410",
+      "latitude": 49.3953619,
+      "longitude": 1.0685771,
+      "name": {
+        "en": "Parc Graccus Babeuf",
+        "fr": "Parc Graccus Babeuf"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-Maritime, France",
+        "fr": "commune française du département de la Seine-Maritime"
+      },
+      "externalIdentity": {
+        "id": "Q1058186",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-etienne-du-rouvray-saint-etienne-du-rouvray-q1058186",
+      "latitude": 49.377777777,
+      "longitude": 1.104166666,
+      "name": {
+        "en": "Saint-Étienne-du-Rouvray",
+        "fr": "Saint-Étienne-du-Rouvray"
+      }
+    }
+  ]
+}

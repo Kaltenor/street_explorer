@@ -1,0 +1,204 @@
+{
+  "id": "mantes-la-ville-v1",
+  "cityId": "mantes-la-ville-fr",
+  "cityZoneId": "relation/371002",
+  "cityName": {
+    "en": "Mantes-la-Ville",
+    "fr": "Mantes-la-Ville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38385829",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mantes-la-ville-eglise-du-sacre-c-ur-de-mantes-la-ville-q38385829",
+      "latitude": 48.98423,
+      "longitude": 1.70731,
+      "name": {
+        "en": "église du Sacré-Cœur de Mantes-la-Ville",
+        "fr": "église du Sacré-Cœur de Mantes-la-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Sacré-Cœur is a distinctive architectural landmark in the city.",
+        "fr": "Église du Sacré-Cœur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/157443917",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mantes-la-ville-eglise-du-sacre-c-ur-way-157443917",
+      "latitude": 48.9842089,
+      "longitude": 1.7073597,
+      "name": {
+        "en": "Église du Sacré-Cœur",
+        "fr": "Église du Sacré-Cœur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/157436392",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mantes-la-ville-eglise-saint-etienne-way-157436392",
+      "latitude": 48.9739898,
+      "longitude": 1.7121367,
+      "name": {
+        "en": "Église Saint-Étienne",
+        "fr": "Église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French public engineering school",
+        "fr": "école d'ingénieurs publique"
+      },
+      "externalIdentity": {
+        "id": "Q3152185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mantes-la-ville-institut-des-sciences-et-techniques-des-yvelines-q3152185",
+      "latitude": 48.984626,
+      "longitude": 1.701644,
+      "name": {
+        "en": "Institut des sciences et techniques des Yvelines",
+        "fr": "Institut des sciences et techniques des Yvelines"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de la Vallée is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de la Vallée compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/202513016",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "mantes-la-ville-parc-de-la-vallee-way-202513016",
+      "latitude": 48.9727084,
+      "longitude": 1.7161309,
+      "name": {
+        "en": "Parc de la Vallée",
+        "fr": "Parc de la Vallée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Salle Jacques Brel is one of the city's notable cultural landmarks.",
+        "fr": "Salle Jacques Brel compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/600110345",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "mantes-la-ville-salle-jacques-brel-node-600110345",
+      "latitude": 48.975981,
+      "longitude": 1.7089118,
+      "name": {
+        "en": "Salle Jacques Brel",
+        "fr": "Salle Jacques Brel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Yvelines, France",
+        "fr": "commune française du département des Yvelines"
+      },
+      "externalIdentity": {
+        "id": "Q760624",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mantes-la-ville-mantes-la-ville-q760624",
+      "latitude": 48.974166666,
+      "longitude": 1.710833333,
+      "name": {
+        "en": "Mantes-la-Ville",
+        "fr": "Mantes-la-Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Mantes-la-Jolie, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q1881023",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mantes-la-ville-mantes-station-q1881023",
+      "latitude": 48.983591,
+      "longitude": 1.71532,
+      "name": {
+        "en": "Mantes-Station",
+        "fr": "Mantes-Station"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mosquée Mantes Sud is a distinctive architectural landmark in the city.",
+        "fr": "Mosquée Mantes Sud est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/9709147417",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "mantes-la-ville-mosquee-mantes-sud-node-9709147417",
+      "latitude": 48.9765414,
+      "longitude": 1.7076464,
+      "name": {
+        "en": "Mosquée Mantes Sud",
+        "fr": "Mosquée Mantes Sud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "rivière de France"
+      },
+      "externalIdentity": {
+        "id": "Q1675661",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "mantes-la-ville-vaucouleurs-q1675661",
+      "latitude": 48.98222222,
+      "longitude": 1.72777778,
+      "name": {
+        "en": "Vaucouleurs",
+        "fr": "Vaucouleurs"
+      }
+    }
+  ]
+}

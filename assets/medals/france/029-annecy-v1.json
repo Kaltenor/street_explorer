@@ -1,0 +1,394 @@
+{
+  "id": "annecy-v1",
+  "cityId": "annecy-fr",
+  "cityZoneId": "relation/6791758",
+  "cityName": {
+    "en": "Annecy",
+    "fr": "Annecy"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118342",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-cathedrale-pa00118342",
+      "latitude": 45.8992716713685,
+      "longitude": 6.12547283719583,
+      "name": {
+        "en": "Cathédrale",
+        "fr": "Cathédrale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118343",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-chateau-pa00118343",
+      "latitude": 45.8975416303856,
+      "longitude": 6.12610242818215,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Edifice gallo-romain dit Basilique de Boutae is an important witness to the city's history.",
+        "fr": "Edifice gallo-romain dit Basilique de Boutae est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118346",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-edifice-gallo-romain-dit-basilique-de-boutae-pa00118346",
+      "latitude": 45.9117441789422,
+      "longitude": 6.12134493825117,
+      "name": {
+        "en": "Edifice gallo-romain dit Basilique de Boutae",
+        "fr": "Edifice gallo-romain dit Basilique de Boutae"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-François is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-François est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118344",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-eglise-saint-francois-pa00118344",
+      "latitude": 45.8986373162947,
+      "longitude": 6.12831482953496,
+      "name": {
+        "en": "Église Saint-François",
+        "fr": "Église Saint-François"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118347",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-fontaine-pa00118347",
+      "latitude": 45.8982427260001,
+      "longitude": 6.12611422105931,
+      "name": {
+        "en": "Fontaine",
+        "fr": "Fontaine"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Quiberet is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Quiberet compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118348",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-fontaine-quiberet-pa00118348",
+      "latitude": 45.89819145449,
+      "longitude": 6.1238722389963,
+      "name": {
+        "en": "Fontaine Quiberet",
+        "fr": "Fontaine Quiberet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Haras national d'Annecy is a distinctive architectural landmark in the city.",
+        "fr": "Haras national d'Annecy est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA74000006",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-haras-national-d-annecy-pa74000006",
+      "latitude": 45.9047188187718,
+      "longitude": 6.12743878048203,
+      "name": {
+        "en": "Haras national d'Annecy",
+        "fr": "Haras national d'Annecy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la Préfecture de Haute-Savoie is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la Préfecture de Haute-Savoie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA74000041",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-hotel-de-la-prefecture-de-haute-savoie-pa74000041",
+      "latitude": 45.90311499437824,
+      "longitude": 6.132424441006849,
+      "name": {
+        "en": "Hôtel de la Préfecture de Haute-Savoie",
+        "fr": "Hôtel de la Préfecture de Haute-Savoie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Sales is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Sales est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118350",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-hotel-de-sales-pa00118350",
+      "latitude": 45.9009604804561,
+      "longitude": 6.12642389581356,
+      "name": {
+        "en": "Hôtel de Sales",
+        "fr": "Hôtel de Sales"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118351",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-hotel-de-ville-ancien-pa00118351",
+      "latitude": 45.8998494264754,
+      "longitude": 6.12551327987295,
+      "name": {
+        "en": "Hôtel de ville (ancien)",
+        "fr": "Hôtel de ville (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Favre is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Favre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118349",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-hotel-favre-pa00118349",
+      "latitude": 45.8986635724923,
+      "longitude": 6.12432236943382,
+      "name": {
+        "en": "Hôtel Favre",
+        "fr": "Hôtel Favre"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Monument aux morts is a notable work of public art and local memory.",
+        "fr": "Monument aux morts est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA74000036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-monument-aux-morts-pa74000036",
+      "latitude": 45.9028900047506,
+      "longitude": 6.130204599543031,
+      "name": {
+        "en": "Monument aux morts",
+        "fr": "Monument aux morts"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée-château is one of the city's notable cultural landmarks.",
+        "fr": "musée-château compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1052",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "annecy-musee-chateau-m1052",
+      "latitude": 45.897263,
+      "longitude": 6.124916,
+      "name": {
+        "en": "musée-château",
+        "fr": "musée-château"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Site archéologique du Pâquier immergé dans le lac d'Annecy is an important witness to the city's history.",
+        "fr": "Site archéologique du Pâquier immergé dans le lac d'Annecy est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA74000014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-site-archeologique-du-paquier-immerge-dans-le-lac-d-annecy-pa74000014",
+      "latitude": 45.9021946332174,
+      "longitude": 6.13894562693314,
+      "name": {
+        "en": "Site archéologique du Pâquier immergé dans le lac d'Annecy",
+        "fr": "Site archéologique du Pâquier immergé dans le lac d'Annecy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue de Berthollet is a notable work of public art and local memory.",
+        "fr": "Statue de Berthollet est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA74000030",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-statue-de-berthollet-pa74000030",
+      "latitude": 45.8992682973807,
+      "longitude": 6.132240050805591,
+      "name": {
+        "en": "Statue de Berthollet",
+        "fr": "Statue de Berthollet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Magasin is a distinctive architectural landmark in the city.",
+        "fr": "Magasin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118353",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-magasin-pa00118353",
+      "latitude": 45.9007839517051,
+      "longitude": 6.12640093336954,
+      "name": {
+        "en": "Magasin",
+        "fr": "Magasin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Lambert is a distinctive architectural landmark in the city.",
+        "fr": "Maison Lambert est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118356",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-maison-lambert-pa00118356",
+      "latitude": 45.8989787785262,
+      "longitude": 6.12524453899549,
+      "name": {
+        "en": "Maison Lambert",
+        "fr": "Maison Lambert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Manoir de Novel is a distinctive architectural landmark in the city.",
+        "fr": "Manoir de Novel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118357",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-manoir-de-novel-pa00118357",
+      "latitude": 45.9182934853299,
+      "longitude": 6.13472029747718,
+      "name": {
+        "en": "Manoir de Novel",
+        "fr": "Manoir de Novel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de l'Isle is a distinctive architectural landmark in the city.",
+        "fr": "Palais de l'Isle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118359",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-palais-de-l-isle-pa00118359",
+      "latitude": 45.8985660045534,
+      "longitude": 6.12714981123418,
+      "name": {
+        "en": "Palais de l'Isle",
+        "fr": "Palais de l'Isle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais épiscopal (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Palais épiscopal (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00118358",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "annecy-palais-episcopal-ancien-pa00118358",
+      "latitude": 45.8993499440349,
+      "longitude": 6.12501160295206,
+      "name": {
+        "en": "Palais épiscopal (ancien)",
+        "fr": "Palais épiscopal (ancien)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "bourg-en-bresse-v1",
+  "cityId": "bourg-en-bresse-fr",
+  "cityZoneId": "relation/140253",
+  "cityName": {
+    "en": "Bourg-en-Bresse",
+    "fr": "Bourg-en-Bresse"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Brou is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Brou est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116318",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-ancien-abbaye-de-brou-pa00116318",
+      "latitude": 46.197651936735184,
+      "longitude": 5.236535763871114,
+      "name": {
+        "en": "Ancien abbaye de Brou",
+        "fr": "Ancien abbaye de Brou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Pennesuyt, dit aussi château de Loëze is an important witness to the city's history.",
+        "fr": "Château de Pennesuyt, dit aussi château de Loëze est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116319",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-chateau-de-pennesuyt-dit-aussi-chateau-de-loeze-pa00116319",
+      "latitude": 46.2019360095325,
+      "longitude": 5.25439955346395,
+      "name": {
+        "en": "Château de Pennesuyt, dit aussi château de Loëze",
+        "fr": "Château de Pennesuyt, dit aussi château de Loëze"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116321",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-eglise-notre-dame-pa00116321",
+      "latitude": 46.2057379689927,
+      "longitude": 5.22729738206571,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116324",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-hotel-de-ville-pa00116324",
+      "latitude": 46.20541442483355,
+      "longitude": 5.224962524310166,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison à pans de bois is a distinctive architectural landmark in the city.",
+        "fr": "Maison à pans de bois est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116339",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-maison-a-pans-de-bois-pa00116339",
+      "latitude": 46.204874824440424,
+      "longitude": 5.2238723991734535,
+      "name": {
+        "en": "Maison à pans de bois",
+        "fr": "Maison à pans de bois"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116332",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-maison-pa00116332",
+      "latitude": 46.206109298399674,
+      "longitude": 5.222377766638927,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Brou is one of the city's notable cultural landmarks.",
+        "fr": "musée de Brou compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0963",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-musee-de-brou-m0963",
+      "latitude": 46.196549,
+      "longitude": 5.236521,
+      "name": {
+        "en": "musée de Brou",
+        "fr": "musée de Brou"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musées des pays de l'Ain is one of the city's notable cultural landmarks.",
+        "fr": "musées des pays de l'Ain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0964",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-musees-des-pays-de-l-ain-m0964",
+      "latitude": 46.196543,
+      "longitude": 5.219217,
+      "name": {
+        "en": "musées des pays de l'Ain",
+        "fr": "musées des pays de l'Ain"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte des Jacobins is an important witness to the city's history.",
+        "fr": "Porte des Jacobins est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116344",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-porte-des-jacobins-pa00116344",
+      "latitude": 46.2033886940671,
+      "longitude": 5.22669250137888,
+      "name": {
+        "en": "Porte des Jacobins",
+        "fr": "Porte des Jacobins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116346",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "bourg-en-bresse-theatre-pa00116346",
+      "latitude": 46.2064803391323,
+      "longitude": 5.22562403890812,
+      "name": {
+        "en": "Théâtre",
+        "fr": "Théâtre"
+      }
+    }
+  ]
+}

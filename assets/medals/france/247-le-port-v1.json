@@ -1,0 +1,204 @@
+{
+  "id": "le-port-v1",
+  "cityId": "le-port-fr",
+  "cityZoneId": "relation/278311",
+  "cityName": {
+    "en": "Le Port",
+    "fr": "Le Port"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "aérodrome de La Possession is a distinctive architectural landmark in the city.",
+        "fr": "ancien aérodrome en France, à La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q138746351",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-aerodrome-de-la-possession-q138746351",
+      "latitude": -20.933308,
+      "longitude": 55.323158,
+      "name": {
+        "en": "aérodrome de La Possession",
+        "fr": "aérodrome de La Possession"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "building in Le Port, France",
+        "fr": "bâtiment au Port (La Réunion)"
+      },
+      "externalIdentity": {
+        "id": "Q98831343",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-batiment-du-credit-foncier-de-madagascar-au-port-q98831343",
+      "latitude": -20.935978,
+      "longitude": 55.290422,
+      "name": {
+        "en": "bâtiment du Crédit foncier de Madagascar au Port",
+        "fr": "bâtiment du Crédit foncier de Madagascar au Port"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cap Sacré-Cœur is a distinctive architectural landmark in the city.",
+        "fr": "Cap Sacré-Cœur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2944970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-cap-sacre-c-ur-q2944970",
+      "latitude": -20.956388888,
+      "longitude": 55.308333333,
+      "name": {
+        "en": "Cap Sacré-Cœur",
+        "fr": "Cap Sacré-Cœur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le Port, France",
+        "fr": "Clinique Jeanne d'Arc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2979283",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-clinique-jeanne-d-arc-q2979283",
+      "latitude": -20.9364,
+      "longitude": 55.2959,
+      "name": {
+        "en": "Clinique Jeanne d'Arc",
+        "fr": "Clinique Jeanne d'Arc"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc Boisé compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3363793",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-parc-boise-q3363793",
+      "latitude": -20.9439,
+      "longitude": 55.3031,
+      "name": {
+        "en": "parc Boisé",
+        "fr": "parc Boisé"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in La Réunion, in France",
+        "fr": "église située à La Réunion, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38515429",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-eglise-sainte-jeanne-d-arc-du-port-q38515429",
+      "latitude": -20.93561,
+      "longitude": 55.29231,
+      "name": {
+        "en": "église Sainte-Jeanne-d'Arc du Port",
+        "fr": "église Sainte-Jeanne-d'Arc du Port"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Institut de l'image de l'océan Indien is a distinctive architectural landmark in the city.",
+        "fr": "Institut de l'image de l'océan Indien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3152017",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-institut-de-l-image-de-l-ocean-indien-q3152017",
+      "latitude": -20.9413,
+      "longitude": 55.2991,
+      "name": {
+        "en": "Institut de l'image de l'océan Indien",
+        "fr": "Institut de l'image de l'océan Indien"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "nouveau pont de la Rivière des Galets is a distinctive architectural landmark in the city.",
+        "fr": "nouveau pont de la Rivière des Galets est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q104147372",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-nouveau-pont-de-la-riviere-des-galets-q104147372",
+      "latitude": -20.9594809,
+      "longitude": 55.308157053,
+      "name": {
+        "en": "nouveau pont de la Rivière des Galets",
+        "fr": "nouveau pont de la Rivière des Galets"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397229",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-pont-de-l-axe-mixte-q3397229",
+      "latitude": -20.9575,
+      "longitude": 55.2939,
+      "name": {
+        "en": "pont de l'Axe mixte",
+        "fr": "pont de l'Axe mixte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "river in France",
+        "fr": "cours d'eau de La Réunion"
+      },
+      "externalIdentity": {
+        "id": "Q3433889",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-port-riviere-des-galets-q3433889",
+      "latitude": -20.95416667,
+      "longitude": 55.27805556,
+      "name": {
+        "en": "rivière des Galets",
+        "fr": "rivière des Galets"
+      }
+    }
+  ]
+}

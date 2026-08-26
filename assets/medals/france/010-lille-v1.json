@@ -6,10 +6,48 @@
     "en": "Lille",
     "fr": "Lille"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Loos is an important witness to the city's history.",
+        "fr": "Abbaye de Loos est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107567",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-abbaye-de-loos-pa00107567",
+      "latitude": 50.6400512158913,
+      "longitude": 3.0610402281921405,
+      "name": {
+        "en": "Abbaye de Loos",
+        "fr": "Abbaye de Loos"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien fort Saint-Sauveur is an important witness to the city's history.",
+        "fr": "Ancien fort Saint-Sauveur est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107585",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-ancien-fort-saint-sauveur-pa00107585",
+      "latitude": 50.62943820190184,
+      "longitude": 3.071689095542241,
+      "name": {
+        "en": "Ancien fort Saint-Sauveur",
+        "fr": "Ancien fort Saint-Sauveur"
+      }
+    },
     {
       "category": "history",
       "description": {
@@ -27,6 +65,158 @@
       "name": {
         "en": "Citadelle de Lille",
         "fr": "Citadelle de Lille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107577",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-eglise-saint-andre-pa00107577",
+      "latitude": 50.64480082332701,
+      "longitude": 3.05394103155605,
+      "name": {
+        "en": "Église Saint-André",
+        "fr": "Église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107580",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-eglise-saint-etienne-pa00107580",
+      "latitude": 50.635096308879056,
+      "longitude": 3.059655189833747,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Maurice is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Maurice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107582",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-eglise-saint-maurice-pa00107582",
+      "latitude": 50.6358789945061,
+      "longitude": 3.0675007535946,
+      "name": {
+        "en": "Église Saint-Maurice",
+        "fr": "Église Saint-Maurice"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Catherine is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Catherine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107578",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-eglise-sainte-catherine-pa00107578",
+      "latitude": 50.63686880493754,
+      "longitude": 3.058044454699192,
+      "name": {
+        "en": "Église Sainte-Catherine",
+        "fr": "Église Sainte-Catherine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA59000078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-hotel-de-ville-pa59000078",
+      "latitude": 50.6303018793353,
+      "longitude": 3.0711316213373006,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "La Noble Tour is an important witness to the city's history.",
+        "fr": "La Noble Tour est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107728",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-la-noble-tour-pa00107728",
+      "latitude": 50.63085779515837,
+      "longitude": 3.0742245348968344,
+      "name": {
+        "en": "La Noble Tour",
+        "fr": "La Noble Tour"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Maison natale du Général de Gaulle, actuellement musée is one of the city's notable cultural landmarks.",
+        "fr": "Maison natale du Général de Gaulle, actuellement musée compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107904",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-maison-natale-du-general-de-gaulle-actuellement-musee-pa00107904",
+      "latitude": 50.645853660671776,
+      "longitude": 3.058745140633601,
+      "name": {
+        "en": "Maison natale du Général de Gaulle, actuellement musée",
+        "fr": "Maison natale du Général de Gaulle, actuellement musée"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle et de géologie is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle et de géologie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7001",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lille-musee-d-histoire-naturelle-et-de-geologie-m7001",
+      "latitude": 50.626639,
+      "longitude": 3.066546,
+      "name": {
+        "en": "musée d'histoire naturelle et de géologie",
+        "fr": "musée d'histoire naturelle et de géologie"
       }
     },
     {
@@ -70,58 +260,39 @@
     {
       "category": "culture",
       "description": {
-        "en": "musée d'histoire naturelle et de géologie is one of the city's notable cultural landmarks.",
-        "fr": "musée d'histoire naturelle et de géologie compte parmi les lieux culturels marquants de la ville."
+        "en": "Opéra de Lille is one of the city's notable cultural landmarks.",
+        "fr": "Opéra de Lille compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M7001",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "lille-musee-d-histoire-naturelle-et-de-geologie-m7001",
-      "latitude": 50.626639,
-      "longitude": 3.066546,
-      "name": {
-        "en": "musée d'histoire naturelle et de géologie",
-        "fr": "musée d'histoire naturelle et de géologie"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
-        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA59000078",
+        "id": "PA59000043",
         "source": "merimee",
         "type": "record"
       },
-      "id": "lille-hotel-de-ville-pa59000078",
-      "latitude": 50.6303018793353,
-      "longitude": 3.0711316213373006,
+      "id": "lille-opera-de-lille-pa59000043",
+      "latitude": 50.6377194069618,
+      "longitude": 3.06531732519046,
       "name": {
-        "en": "Hôtel de ville",
-        "fr": "Hôtel de ville"
+        "en": "Opéra de Lille",
+        "fr": "Opéra de Lille"
       }
     },
     {
-      "category": "architecture",
+      "category": "culture",
       "description": {
-        "en": "Palais Rihour is a distinctive architectural landmark in the city.",
-        "fr": "Palais Rihour est un repère architectural remarquable de la ville."
+        "en": "Palais des Beaux-Arts is one of the city's notable cultural landmarks.",
+        "fr": "Palais des Beaux-Arts compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "PA00107721",
+        "id": "PA00107719",
         "source": "merimee",
         "type": "record"
       },
-      "id": "lille-palais-rihour-pa00107721",
-      "latitude": 50.635531855500105,
-      "longitude": 3.06194897629531,
+      "id": "lille-palais-des-beaux-arts-pa00107719",
+      "latitude": 50.6304581981315,
+      "longitude": 3.06281103021387,
       "name": {
-        "en": "Palais Rihour",
-        "fr": "Palais Rihour"
+        "en": "Palais des Beaux-Arts",
+        "fr": "Palais des Beaux-Arts"
       }
     },
     {
@@ -144,22 +315,79 @@
       }
     },
     {
-      "category": "history",
+      "category": "architecture",
       "description": {
-        "en": "Ancien fort Saint-Sauveur is an important witness to the city's history.",
-        "fr": "Ancien fort Saint-Sauveur est un témoin important de l’histoire de la ville."
+        "en": "Palais Rihour is a distinctive architectural landmark in the city.",
+        "fr": "Palais Rihour est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00107585",
+        "id": "PA00107721",
         "source": "merimee",
         "type": "record"
       },
-      "id": "lille-ancien-fort-saint-sauveur-pa00107585",
-      "latitude": 50.62943820190184,
-      "longitude": 3.071689095542241,
+      "id": "lille-palais-rihour-pa00107721",
+      "latitude": 50.635531855500105,
+      "longitude": 3.06194897629531,
       "name": {
-        "en": "Ancien fort Saint-Sauveur",
-        "fr": "Ancien fort Saint-Sauveur"
+        "en": "Palais Rihour",
+        "fr": "Palais Rihour"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Gand et ensemble des fortifications is an important witness to the city's history.",
+        "fr": "Porte de Gand et ensemble des fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107722",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-porte-de-gand-et-ensemble-des-fortifications-pa00107722",
+      "latitude": 50.64375176805551,
+      "longitude": 3.06799645252197,
+      "name": {
+        "en": "Porte de Gand et ensemble des fortifications",
+        "fr": "Porte de Gand et ensemble des fortifications"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Paris is an important witness to the city's history.",
+        "fr": "Porte de Paris est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107723",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-porte-de-paris-pa00107723",
+      "latitude": 50.6296241646129,
+      "longitude": 3.06880553637804,
+      "name": {
+        "en": "Porte de Paris",
+        "fr": "Porte de Paris"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte de Roubaix is an important witness to the city's history.",
+        "fr": "Porte de Roubaix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00107724",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lille-porte-de-roubaix-pa00107724",
+      "latitude": 50.639319393071005,
+      "longitude": 3.070689878452625,
+      "name": {
+        "en": "Porte de Roubaix",
+        "fr": "Porte de Roubaix"
       }
     }
   ]

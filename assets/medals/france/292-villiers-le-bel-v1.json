@@ -1,0 +1,204 @@
+{
+  "id": "villiers-le-bel-v1",
+  "cityId": "villiers-le-bel-fr",
+  "cityZoneId": "relation/534505",
+  "cityName": {
+    "en": "Villiers-le-Bel",
+    "fr": "Villiers-le-Bel"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110358079",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-cimetiere-de-villiers-le-bel-q110358079",
+      "latitude": 49.0103,
+      "longitude": 2.394,
+      "name": {
+        "en": "cimetière de Villiers-le-Bel",
+        "fr": "cimetière de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "école élémentaire Marie Curie de Villiers-le-Bel is a distinctive architectural landmark in the city.",
+        "fr": "établissement d'enseignement primaire en France"
+      },
+      "externalIdentity": {
+        "id": "Q119643240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-ecole-elementaire-marie-curie-de-villiers-le-bel-q119643240",
+      "latitude": 49.00673346,
+      "longitude": 2.387894552,
+      "name": {
+        "en": "école élémentaire Marie Curie de Villiers-le-Bel",
+        "fr": "école élémentaire Marie Curie de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, France",
+        "fr": "église française située à Villiers-le-Bel"
+      },
+      "externalIdentity": {
+        "id": "Q2212382",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-eglise-saint-didier-de-villiers-le-bel-q2212382",
+      "latitude": 49.008278,
+      "longitude": 2.38924,
+      "name": {
+        "en": "église Saint-Didier de Villiers-le-Bel",
+        "fr": "église Saint-Didier de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Eterne (ancienne) ou église Saint-Didier is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Eterne (ancienne) ou église Saint-Didier est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080235",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villiers-le-bel-eglise-saint-eterne-ancienne-ou-eglise-saint-didier-pa00080235",
+      "latitude": 49.0083072700157,
+      "longitude": 2.38923384268103,
+      "name": {
+        "en": "Église Saint-Eterne (ancienne) ou église Saint-Didier",
+        "fr": "Église Saint-Eterne (ancienne) ou église Saint-Didier"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095894",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-monument-aux-morts-de-la-guerre-franco-prussienne-de-villiers-le-bel-q136095894",
+      "latitude": 49.01061,
+      "longitude": 2.39256,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Villiers-le-Bel",
+        "fr": "monument aux morts de la guerre franco-prussienne de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097214",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-monument-aux-morts-de-villiers-le-bel-q136097214",
+      "latitude": 49.005319444,
+      "longitude": 2.397311111,
+      "name": {
+        "en": "monument aux morts de Villiers-le-Bel",
+        "fr": "monument aux morts de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hospital in France",
+        "fr": "EHPAD"
+      },
+      "externalIdentity": {
+        "id": "Q3145148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-hopital-adelaide-hautval-q3145148",
+      "latitude": 49.0094,
+      "longitude": 2.3911,
+      "name": {
+        "en": "hôpital Adélaïde-Hautval",
+        "fr": "hôpital Adélaïde-Hautval"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Villiers-le-Bel, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119339308",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "villiers-le-bel-mairie-de-villiers-le-bel-q119339308",
+      "latitude": 49.007527,
+      "longitude": 2.387874,
+      "name": {
+        "en": "mairie de Villiers-le-Bel",
+        "fr": "mairie de Villiers-le-Bel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080236",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villiers-le-bel-maison-pa00080236",
+      "latitude": 49.00673608760201,
+      "longitude": 2.38773600726611,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Puits gallo-romain is a distinctive architectural landmark in the city.",
+        "fr": "Puits gallo-romain est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080237",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villiers-le-bel-puits-gallo-romain-pa00080237",
+      "latitude": 49.0079335455649,
+      "longitude": 2.39028389098198,
+      "name": {
+        "en": "Puits gallo-romain",
+        "fr": "Puits gallo-romain"
+      }
+    }
+  ]
+}

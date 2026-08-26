@@ -1,0 +1,204 @@
+{
+  "id": "villeneuve-sur-lot-v1",
+  "cityId": "villeneuve-sur-lot-fr",
+  "cityZoneId": "relation/148985",
+  "cityName": {
+    "en": "Villeneuve-sur-Lot",
+    "fr": "Villeneuve-sur-Lot"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien chapelle des Pénitents Blancs is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chapelle des Pénitents Blancs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132933",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-ancien-chapelle-des-penitents-blancs-pa00132933",
+      "latitude": 44.4051873235992,
+      "longitude": 0.7033784202652347,
+      "name": {
+        "en": "Ancien chapelle des Pénitents Blancs",
+        "fr": "Ancien chapelle des Pénitents Blancs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Sylvestrie is an important witness to the city's history.",
+        "fr": "Château de la Sylvestrie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA47000048",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-chateau-de-la-sylvestrie-pa47000048",
+      "latitude": 44.380103266441544,
+      "longitude": 0.7311221256549046,
+      "name": {
+        "en": "Château de la Sylvestrie",
+        "fr": "Château de la Sylvestrie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Lamothe is an important witness to the city's history.",
+        "fr": "Château de Lamothe est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084268",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-chateau-de-lamothe-pa00084268",
+      "latitude": 44.419004955949646,
+      "longitude": 0.6938895437729559,
+      "name": {
+        "en": "Château de Lamothe",
+        "fr": "Château de Lamothe"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Monrepos is an important witness to the city's history.",
+        "fr": "Château de Monrepos est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084269",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-chateau-de-monrepos-pa00084269",
+      "latitude": 44.395013935393614,
+      "longitude": 0.7352362266328489,
+      "name": {
+        "en": "Château de Monrepos",
+        "fr": "Château de Monrepos"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084270",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-eglise-saint-etienne-pa00084270",
+      "latitude": 44.40707639293064,
+      "longitude": 0.7001238871417228,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Sainte-Catherine is a distinctive architectural landmark in the city.",
+        "fr": "Église Sainte-Catherine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA47000104",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-eglise-sainte-catherine-pa47000104",
+      "latitude": 44.40697983624177,
+      "longitude": 0.7071426836331165,
+      "name": {
+        "en": "Église Sainte-Catherine",
+        "fr": "Église Sainte-Catherine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée municipal de Gajac is one of the city's notable cultural landmarks.",
+        "fr": "musée municipal de Gajac compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0091",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-musee-municipal-de-gajac-m0091",
+      "latitude": 44.405095,
+      "longitude": 0.707815,
+      "name": {
+        "en": "musée municipal de Gajac",
+        "fr": "musée municipal de Gajac"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal Georges Leygues is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal Georges Leygues compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA47000078",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-theatre-municipal-georges-leygues-pa47000078",
+      "latitude": 44.4092458577011,
+      "longitude": 0.706282945764925,
+      "name": {
+        "en": "Théâtre municipal Georges Leygues",
+        "fr": "Théâtre municipal Georges Leygues"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tours de Pujols et de Paris is an important witness to the city's history.",
+        "fr": "Tours de Pujols et de Paris est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084274",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-tours-de-pujols-et-de-paris-pa00084274",
+      "latitude": 44.4079921518157,
+      "longitude": 0.706994810242492,
+      "name": {
+        "en": "Tours de Pujols et de Paris",
+        "fr": "Tours de Pujols et de Paris"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Vieux Pont is a distinctive architectural landmark in the city.",
+        "fr": "Vieux Pont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00084273",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "villeneuve-sur-lot-vieux-pont-pa00084273",
+      "latitude": 44.40618071992951,
+      "longitude": 0.7036020677621261,
+      "name": {
+        "en": "Vieux Pont",
+        "fr": "Vieux Pont"
+      }
+    }
+  ]
+}

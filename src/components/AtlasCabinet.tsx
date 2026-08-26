@@ -51,6 +51,7 @@ type AtlasAudioPlayer = ReturnType<typeof createAudioPlayer>;
 
 const ATLAS_REWARD_JINGLE_DELAY_MS = 90;
 const ATLAS_PAGE_SOUND_VOLUME = 0.5;
+const ATLAS_STAMP_MAX_VISIBLE_MS = 4_000;
 const ATLAS_DOCK_HIT_SLOP = { bottom: 2, left: 2, right: 2, top: 2 } as const;
 const ATLAS_DOCK_COMPACT_HIT_SLOP = { bottom: 5, left: 5, right: 5, top: 5 } as const;
 const DAYLIGHT_STAMP_DROP_STYLE: TextStyle = { color: "rgba(1, 7, 11, 0.95)" };
@@ -642,6 +643,13 @@ export function AtlasStamp({
   const isMapSelection = message?.presentation === "map-selection";
   const isDaylight = isDaylightAppearance();
   const artworkReady = loadedArtworkMessageId === message?.id;
+
+  useEffect(() => {
+    if (!message) return;
+
+    const safetyDismissTimer = setTimeout(onDismiss, ATLAS_STAMP_MAX_VISIBLE_MS);
+    return () => clearTimeout(safetyDismissTimer);
+  }, [message?.id, onDismiss]);
 
   useEffect(() => {
     progress.stopAnimation();

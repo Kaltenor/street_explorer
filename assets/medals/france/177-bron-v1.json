@@ -1,0 +1,204 @@
+{
+  "id": "bron-v1",
+  "cityId": "bron-fr",
+  "cityZoneId": "relation/164214",
+  "cityName": {
+    "en": "Bron",
+    "fr": "Bron"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "airport in Bron, France",
+        "fr": "aéroport desservant Lyon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q4102",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-aeroport-de-lyon-bron-q4102",
+      "latitude": 45.729444444,
+      "longitude": 4.938888888,
+      "name": {
+        "en": "aéroport de Lyon-Bron",
+        "fr": "aéroport de Lyon-Bron"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "batterie de Lessivas is an important witness to the city's history.",
+        "fr": "batterie de Lessivas est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2891704",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-batterie-de-lessivas-q2891704",
+      "latitude": 45.745463,
+      "longitude": 4.914483,
+      "name": {
+        "en": "batterie de Lessivas",
+        "fr": "batterie de Lessivas"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "batterie de Parilly is an important witness to the city's history.",
+        "fr": "batterie de Parilly est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q2891707",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-batterie-de-parilly-q2891707",
+      "latitude": 45.723814,
+      "longitude": 4.900439,
+      "name": {
+        "en": "batterie de Parilly",
+        "fr": "batterie de Parilly"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bibliothèque départementale du Rhône is one of the city's notable cultural landmarks.",
+        "fr": "Bibliothèque départementale du Rhône compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q25391373",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-bibliotheque-departementale-du-rhone-q25391373",
+      "latitude": 45.737377,
+      "longitude": 4.904475,
+      "name": {
+        "en": "Bibliothèque départementale du Rhône",
+        "fr": "Bibliothèque départementale du Rhône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former military medical school in Bron, France",
+        "fr": "école militaire Lyon-Bron"
+      },
+      "externalIdentity": {
+        "id": "Q8448",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-ecole-du-service-de-sante-des-armees-de-lyon-bron-q8448",
+      "latitude": 45.731,
+      "longitude": 4.92598,
+      "name": {
+        "en": "École du service de santé des armées de Lyon-Bron",
+        "fr": "École du service de santé des armées de Lyon-Bron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38495079",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-eglise-saint-denis-de-bron-q38495079",
+      "latitude": 45.73743,
+      "longitude": 4.91744,
+      "name": {
+        "en": "église Saint-Denis de Bron",
+        "fr": "église Saint-Denis de Bron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Lyon tramway station",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96193992",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-hotel-de-ville-bron-q96193992",
+      "latitude": 45.7333853,
+      "longitude": 4.909094,
+      "name": {
+        "en": "Hôtel de Ville - Bron",
+        "fr": "Hôtel de Ville - Bron"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "cemetery located in Rhône, in France",
+        "fr": "cimetière situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83191538",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-parc-cimetiere-du-grand-lyon-q83191538",
+      "latitude": 45.72468,
+      "longitude": 4.91931,
+      "name": {
+        "en": "parc cimetière du Grand Lyon",
+        "fr": "parc cimetière du Grand Lyon"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "urban park in France",
+        "fr": "jardin public situé à Bron et Vénissieux"
+      },
+      "externalIdentity": {
+        "id": "Q3364150",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-parc-de-parilly-q3364150",
+      "latitude": 45.7223,
+      "longitude": 4.9005,
+      "name": {
+        "en": "parc de Parilly",
+        "fr": "parc de Parilly"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc du Chêne is one of the city's notable green or natural landmarks.",
+        "fr": "station du tramway de Lyon"
+      },
+      "externalIdentity": {
+        "id": "Q96194567",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "bron-parc-du-chene-q96194567",
+      "latitude": 45.7390245,
+      "longitude": 4.9266222,
+      "name": {
+        "en": "Parc du Chêne",
+        "fr": "Parc du Chêne"
+      }
+    }
+  ]
+}

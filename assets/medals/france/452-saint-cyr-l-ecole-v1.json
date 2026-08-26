@@ -1,0 +1,204 @@
+{
+  "id": "saint-cyr-l-ecole-v1",
+  "cityId": "saint-cyr-l-ecole-fr",
+  "cityZoneId": "relation/27811",
+  "cityName": {
+    "en": "Saint-Cyr-l'École",
+    "fr": "Saint-Cyr-l'École"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Notre-Dame-des-Anges (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Notre-Dame-des-Anges (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087598",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cyr-l-ecole-abbaye-notre-dame-des-anges-ancienne-pa00087598",
+      "latitude": 48.8035793192834,
+      "longitude": 2.06268252928411,
+      "name": {
+        "en": "Abbaye Notre-Dame-des-Anges (ancienne)",
+        "fr": "Abbaye Notre-Dame-des-Anges (ancienne)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bâtiments sociaux de l'INRAE is a distinctive architectural landmark in the city.",
+        "fr": "Bâtiments sociaux de l'INRAE est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA78000521",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cyr-l-ecole-batiments-sociaux-de-l-inrae-pa78000521",
+      "latitude": 48.801258,
+      "longitude": 2.075704,
+      "name": {
+        "en": "Bâtiments sociaux de l'INRAE",
+        "fr": "Bâtiments sociaux de l'INRAE"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Yvelines, in France",
+        "fr": "chapelle située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q24660624",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-chapelle-sainte-therese-de-saint-cyr-l-ecole-q24660624",
+      "latitude": 48.792305,
+      "longitude": 2.066484,
+      "name": {
+        "en": "chapelle Sainte-Thérèse de Saint-Cyr-l'École",
+        "fr": "chapelle Sainte-Thérèse de Saint-Cyr-l'École"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ecole spéciale militaire (ancienne maison royale de Saint-Louis). is a distinctive architectural landmark in the city.",
+        "fr": "Ecole spéciale militaire (ancienne maison royale de Saint-Louis). est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087599",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-cyr-l-ecole-ecole-speciale-militaire-ancienne-maison-royale-de-saint-louis-pa00087599",
+      "latitude": 48.8028210179417,
+      "longitude": 2.06779353297105,
+      "name": {
+        "en": "Ecole spéciale militaire (ancienne maison royale de Saint-Louis).",
+        "fr": "Ecole spéciale militaire (ancienne maison royale de Saint-Louis)."
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38493939",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-eglise-saint-cyr-et-sainte-julitte-de-saint-cyr-l-ecole-q38493939",
+      "latitude": 48.79953,
+      "longitude": 2.06447,
+      "name": {
+        "en": "église Saint-Cyr-et-Sainte-Julitte de Saint-Cyr-l'École",
+        "fr": "église Saint-Cyr-et-Sainte-Julitte de Saint-Cyr-l'École"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "ferme à Saint-Cyr-l'École (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q3068872",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-ferme-de-gally-q3068872",
+      "latitude": 48.818055555,
+      "longitude": 2.081944444,
+      "name": {
+        "en": "ferme de Gally",
+        "fr": "ferme de Gally"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French public establishment specializing in aerodynamic studies",
+        "fr": "établissement public français spécialisé dans les études d'aérodynamique"
+      },
+      "externalIdentity": {
+        "id": "Q3151844",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-institut-aerotechnique-q3151844",
+      "latitude": 48.797881944,
+      "longitude": 2.053819166,
+      "name": {
+        "en": "Institut aérotechnique",
+        "fr": "Institut aérotechnique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Military academy in Paris, France",
+        "fr": "lycée à Saint-Cyr-l'École (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q3269133",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-lycee-militaire-de-saint-cyr-q3269133",
+      "latitude": 48.80083333,
+      "longitude": 2.06333333,
+      "name": {
+        "en": "lycée militaire de Saint-Cyr",
+        "fr": "lycée militaire de Saint-Cyr"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "boarding school",
+        "fr": "internat à Saint-Cyr-l'École (Yvelines)"
+      },
+      "externalIdentity": {
+        "id": "Q153231",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-maison-royale-de-saint-louis-q153231",
+      "latitude": 48.80055556,
+      "longitude": 2.06611111,
+      "name": {
+        "en": "maison royale de Saint-Louis",
+        "fr": "maison royale de Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Cyr-l'École, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2134724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-cyr-l-ecole-saint-cyr-q2134724",
+      "latitude": 48.799002,
+      "longitude": 2.073562,
+      "name": {
+        "en": "Saint-Cyr",
+        "fr": "Saint-Cyr"
+      }
+    }
+  ]
+}

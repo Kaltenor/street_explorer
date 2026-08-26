@@ -1,0 +1,394 @@
+{
+  "id": "asnieres-sur-seine-v1",
+  "cityId": "asnieres-sur-seine-fr",
+  "cityZoneId": "relation/91641",
+  "cityName": {
+    "en": "Asnières-sur-Seine",
+    "fr": "Asnières-sur-Seine"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "art",
+      "description": {
+        "en": "Barry chien sauveteur is a notable work of public art and local memory.",
+        "fr": "relief à Asnières, cimetière des Chiens"
+      },
+      "externalIdentity": {
+        "id": "Q65938073",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-barry-chien-sauveteur-q65938073",
+      "latitude": 48.909991,
+      "longitude": 2.297619,
+      "name": {
+        "en": "Barry chien sauveteur",
+        "fr": "Barry chien sauveteur"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in France",
+        "fr": "château français situé à Asnières-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q2968138",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-chateau-d-asnieres-q2968138",
+      "latitude": 48.9103,
+      "longitude": 2.29361,
+      "name": {
+        "en": "château d'Asnières",
+        "fr": "château d'Asnières"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château is an important witness to the city's history.",
+        "fr": "Château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088062",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "asnieres-sur-seine-chateau-pa00088062",
+      "latitude": 48.910459640977805,
+      "longitude": 2.2934906921324205,
+      "name": {
+        "en": "Château",
+        "fr": "Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "animal cemetery in Asnières-sur-Seine, France",
+        "fr": "cimetière pour animaux à Asnières-sur-Seine en France"
+      },
+      "externalIdentity": {
+        "id": "Q1092097",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-cimetiere-des-chiens-q1092097",
+      "latitude": 48.909444444,
+      "longitude": 2.296666666,
+      "name": {
+        "en": "cimetière des Chiens",
+        "fr": "cimetière des Chiens"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Asnières-sur-Seine, France",
+        "fr": "salle de cinéma à Asnières-sur-Seine, France"
+      },
+      "externalIdentity": {
+        "id": "Q61859275",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-cinema-l-alcazar-q61859275",
+      "latitude": 48.906404622,
+      "longitude": 2.283983991,
+      "name": {
+        "en": "cinéma l'Alcazar",
+        "fr": "cinéma l'Alcazar"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine de la place Jean-Jacques Rousseau is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine située à Asnières-sur-Seine, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96604887",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-fontaine-de-la-place-jean-jacques-rousseau-q96604887",
+      "latitude": 48.913422452,
+      "longitude": 2.292121764,
+      "name": {
+        "en": "fontaine de la place Jean-Jacques Rousseau",
+        "fr": "fontaine de la place Jean-Jacques Rousseau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Asnières-sur-Seine, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2683482",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-gare-d-asnieres-q2683482",
+      "latitude": 48.905833333,
+      "longitude": 2.283333333,
+      "name": {
+        "en": "Gare d'Asnières",
+        "fr": "Gare d'Asnières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Asnières-sur-Seine, France",
+        "fr": "mairie à Asnières-sur-Seine (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q29580631",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-hotel-de-ville-d-asnieres-sur-seine-q29580631",
+      "latitude": 48.91071,
+      "longitude": 2.2889,
+      "name": {
+        "en": "hôtel de ville d'Asnières-sur-Seine",
+        "fr": "hôtel de ville d'Asnières-sur-Seine"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Asnières-sur-Seine, France",
+        "fr": "impasse d'Asnières-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q114842857",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-impasse-du-chateau-q114842857",
+      "latitude": 48.90736065,
+      "longitude": 2.289301,
+      "name": {
+        "en": "impasse du Château",
+        "fr": "impasse du Château"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Asnières-sur-Seine, France",
+        "fr": "gare ferroviaire française désaffectée"
+      },
+      "externalIdentity": {
+        "id": "Q2780619",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-les-carbonnets-q2780619",
+      "latitude": 48.9122,
+      "longitude": 2.2733,
+      "name": {
+        "en": "Les Carbonnets",
+        "fr": "Les Carbonnets"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts d'Asnières-sur-Seine is a notable work of public art and local memory.",
+        "fr": "monument aux morts situé à Asnières-sur-Seine, dans les Hauts-de-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q96602207",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-monument-aux-morts-d-asnieres-sur-seine-q96602207",
+      "latitude": 48.91824,
+      "longitude": 2.28855,
+      "name": {
+        "en": "monument aux morts d'Asnières-sur-Seine",
+        "fr": "monument aux morts d'Asnières-sur-Seine"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "demeure-musée du XIXe siècle, à Asnières-sur-Seine (Hauts-de-Seine)"
+      },
+      "externalIdentity": {
+        "id": "Q3329250",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-musee-louis-vuitton-q3329250",
+      "latitude": 48.9135,
+      "longitude": 2.28604,
+      "name": {
+        "en": "musée Louis-Vuitton",
+        "fr": "musée Louis-Vuitton"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc en région parisienne"
+      },
+      "externalIdentity": {
+        "id": "Q3364187",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-parc-de-l-ile-robinson-q3364187",
+      "latitude": 48.9092,
+      "longitude": 2.29583,
+      "name": {
+        "en": "parc de l'Île Robinson",
+        "fr": "parc de l'Île Robinson"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "parc Voyer-d'Argenson is one of the city's notable green or natural landmarks.",
+        "fr": "jardin public d'Asnières-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q86670254",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-parc-voyer-d-argenson-q86670254",
+      "latitude": 48.91053,
+      "longitude": 2.29509,
+      "name": {
+        "en": "parc Voyer-d'Argenson",
+        "fr": "parc Voyer-d'Argenson"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "passage de la Tour is an important witness to the city's history.",
+        "fr": "passage d'Asnières-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q125385204",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-passage-de-la-tour-q125385204",
+      "latitude": 48.91784975,
+      "longitude": 2.3133035,
+      "name": {
+        "en": "passage de la Tour",
+        "fr": "passage de la Tour"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "square in Asnières-sur-Seine, France",
+        "fr": "place d'Asnières-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q114842833",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-place-des-theatres-q114842833",
+      "latitude": 48.91142016,
+      "longitude": 2.28909968,
+      "name": {
+        "en": "place des Théâtres",
+        "fr": "place des Théâtres"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3396824",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-pont-d-asnieres-q3396824",
+      "latitude": 48.9042,
+      "longitude": 2.28833,
+      "name": {
+        "en": "pont d'Asnières",
+        "fr": "pont d'Asnières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in Asnières-sur-Seine, France",
+        "fr": "pont sur la Seine reliant Asnières-sur-Seine et Clichy, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3396928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-pont-de-clichy-q3396928",
+      "latitude": 48.909724,
+      "longitude": 2.299499,
+      "name": {
+        "en": "pont de Clichy",
+        "fr": "pont de Clichy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theatre in Asnières-sur-Seine, France",
+        "fr": "centre dramatique français situé à Asnières-sur-Seine"
+      },
+      "externalIdentity": {
+        "id": "Q3500936",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-studio-theatre-d-asnieres-q3500936",
+      "latitude": 48.91132,
+      "longitude": 2.289359,
+      "name": {
+        "en": "Studio-théâtre d'Asnières",
+        "fr": "Studio-théâtre d'Asnières"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tramway, light or metro rail bridge in Clichy, Hauts-de-Seine (92), Île-de-France, France; Clichy, Hauts-de-Seine (92), Île-de-France, France",
+        "fr": "pont permettant au métro de franchir la Seine entre Clichy et Asnières-sur-Seine, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21115111",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "asnieres-sur-seine-viaduc-ferroviaire-de-clichy-q21115111",
+      "latitude": 48.90968,
+      "longitude": 2.299353,
+      "name": {
+        "en": "viaduc ferroviaire de Clichy",
+        "fr": "viaduc ferroviaire de Clichy"
+      }
+    }
+  ]
+}

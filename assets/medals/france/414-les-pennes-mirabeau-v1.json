@@ -1,0 +1,204 @@
+{
+  "id": "les-pennes-mirabeau-v1",
+  "cityId": "les-pennes-mirabeau-fr",
+  "cityZoneId": "relation/71505",
+  "cityName": {
+    "en": "Les Pennes-Mirabeau",
+    "fr": "Les Pennes-Mirabeau"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1725871",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-canton-des-pennes-mirabeau-q1725871",
+      "latitude": 43.410611111,
+      "longitude": 5.310305555,
+      "name": {
+        "en": "canton des Pennes-Mirabeau",
+        "fr": "canton des Pennes-Mirabeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Bouches-du-Rhône, in France",
+        "fr": "chapelle située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q52691512",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-chapelle-notre-dame-d-aide-des-pennes-mirabeau-q52691512",
+      "latitude": 43.410187,
+      "longitude": 5.307946,
+      "name": {
+        "en": "chapelle Notre-Dame-d'Aide des Pennes-Mirabeau",
+        "fr": "chapelle Notre-Dame-d'Aide des Pennes-Mirabeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38469525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-eglise-saint-blaise-des-pennes-mirabeau-q38469525",
+      "latitude": 43.410068,
+      "longitude": 5.309553,
+      "name": {
+        "en": "église Saint-Blaise des Pennes-Mirabeau",
+        "fr": "église Saint-Blaise des Pennes-Mirabeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Bouches-du-Rhône, in France",
+        "fr": "église située dans les Bouches-du-Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q52692138",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-eglise-saint-dominique-des-cadeneaux-q52692138",
+      "latitude": 43.394257,
+      "longitude": 5.340975,
+      "name": {
+        "en": "église Saint-Dominique des Cadeneaux",
+        "fr": "église Saint-Dominique des Cadeneaux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "human settlement in France",
+        "fr": "oppidum aux Pennes-Mirabeau (Bouches-du-Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q19945481",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-oppidum-de-la-cloche-q19945481",
+      "latitude": 43.39,
+      "longitude": 5.2774,
+      "name": {
+        "en": "oppidum de la Cloche",
+        "fr": "oppidum de la Cloche"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Oppidum de Teste-Nègre is an important witness to the city's history.",
+        "fr": "Oppidum de Teste-Nègre est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081404",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "les-pennes-mirabeau-oppidum-de-teste-negre-pa00081404",
+      "latitude": 43.3962423709133,
+      "longitude": 5.29285517384283,
+      "name": {
+        "en": "Oppidum de Teste-Nègre",
+        "fr": "Oppidum de Teste-Nègre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "La Grande Colle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31677231",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-la-grande-colle-q31677231",
+      "latitude": 43.39673,
+      "longitude": 5.30672,
+      "name": {
+        "en": "La Grande Colle",
+        "fr": "La Grande Colle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Bouches-du-Rhône, France",
+        "fr": "commune française du département des Bouches-du-Rhône"
+      },
+      "externalIdentity": {
+        "id": "Q243100",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-les-pennes-mirabeau-q243100",
+      "latitude": 43.41,
+      "longitude": 5.309444444,
+      "name": {
+        "en": "Les Pennes-Mirabeau",
+        "fr": "Les Pennes-Mirabeau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Plan de Campagne is a distinctive architectural landmark in the city.",
+        "fr": "zone commerciale entre Marseille et Aix-en-Provence"
+      },
+      "externalIdentity": {
+        "id": "Q3391228",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-plan-de-campagne-q3391228",
+      "latitude": 43.4176,
+      "longitude": 5.36068,
+      "name": {
+        "en": "Plan de Campagne",
+        "fr": "Plan de Campagne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "succession of tunnels and cut-and-covers in Marseille, France",
+        "fr": "succession de tunnels et tranchées couvertes ferroviaires à Marseille"
+      },
+      "externalIdentity": {
+        "id": "Q2460080",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "les-pennes-mirabeau-tunnel-de-marseille-q2460080",
+      "latitude": 43.393129473,
+      "longitude": 5.337494011,
+      "name": {
+        "en": "tunnel de Marseille",
+        "fr": "tunnel de Marseille"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "abbeville-v1",
+  "cityId": "abbeville-fr",
+  "cityZoneId": "relation/114349",
+  "cityName": {
+    "en": "Abbeville",
+    "fr": "Abbeville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Notre-Dame de Willencourt is an important witness to the city's history.",
+        "fr": "Abbaye Notre-Dame de Willencourt est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000008",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-abbaye-notre-dame-de-willencourt-pa80000008",
+      "latitude": 50.1113296882425,
+      "longitude": 1.82937093100396,
+      "name": {
+        "en": "Abbaye Notre-Dame de Willencourt",
+        "fr": "Abbaye Notre-Dame de Willencourt"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Carrière Carpentier is an important witness to the city's history.",
+        "fr": "Carrière Carpentier est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-carriere-carpentier-pa00116013",
+      "latitude": 50.106439646054,
+      "longitude": 1.8476529764197702,
+      "name": {
+        "en": "Carrière Carpentier",
+        "fr": "Carrière Carpentier"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Carrière de Menchecourt is an important witness to the city's history.",
+        "fr": "Carrière de Menchecourt est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116014",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-carriere-de-menchecourt-pa00116014",
+      "latitude": 50.1182214664916,
+      "longitude": 1.82361962943905,
+      "name": {
+        "en": "Carrière de Menchecourt",
+        "fr": "Carrière de Menchecourt"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église du Saint-Sépulcre is a distinctive architectural landmark in the city.",
+        "fr": "Église du Saint-Sépulcre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-eglise-du-saint-sepulcre-pa00116018",
+      "latitude": 50.1091112935168,
+      "longitude": 1.8375380805976103,
+      "name": {
+        "en": "Église du Saint-Sépulcre",
+        "fr": "Église du Saint-Sépulcre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-de-la-Chapelle is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-de-la-Chapelle est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-eglise-notre-dame-de-la-chapelle-pa00116017",
+      "latitude": 50.1172102971722,
+      "longitude": 1.83172935233613,
+      "name": {
+        "en": "Église Notre-Dame-de-la-Chapelle",
+        "fr": "Église Notre-Dame-de-la-Chapelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vulfran ou ancienne collégiale is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vulfran ou ancienne collégiale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-eglise-saint-vulfran-ou-ancienne-collegiale-pa00116019",
+      "latitude": 50.1047631155588,
+      "longitude": 1.8318662954744,
+      "name": {
+        "en": "Église Saint-Vulfran ou ancienne collégiale",
+        "fr": "Église Saint-Vulfran ou ancienne collégiale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00116023",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-hotel-de-ville-pa00116023",
+      "latitude": 50.10723133969451,
+      "longitude": 1.8329578379259102,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Le Beffroi - musée Boucher de Perthes – Manessier is one of the city's notable cultural landmarks.",
+        "fr": "Le Beffroi - musée Boucher de Perthes – Manessier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0811",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "abbeville-le-beffroi-musee-boucher-de-perthes-manessier-m0811",
+      "latitude": 50.10712,
+      "longitude": 1.833193,
+      "name": {
+        "en": "Le Beffroi - musée Boucher de Perthes – Manessier",
+        "fr": "Le Beffroi - musée Boucher de Perthes – Manessier"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Théâtre municipal is one of the city's notable cultural landmarks.",
+        "fr": "Théâtre municipal compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000039",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-theatre-municipal-pa80000039",
+      "latitude": 50.1069560431531,
+      "longitude": 1.84040796588588,
+      "name": {
+        "en": "Théâtre municipal",
+        "fr": "Théâtre municipal"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Maillefeu is an important witness to the city's history.",
+        "fr": "Tour Maillefeu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA80000125",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "abbeville-tour-maillefeu-pa80000125",
+      "latitude": 50.10152153339153,
+      "longitude": 1.8272480322891422,
+      "name": {
+        "en": "Tour Maillefeu",
+        "fr": "Tour Maillefeu"
+      }
+    }
+  ]
+}

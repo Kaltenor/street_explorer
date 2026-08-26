@@ -1,0 +1,204 @@
+{
+  "id": "beaupreau-en-mauges-v1",
+  "cityId": "beaupreau-en-mauges-fr",
+  "cityZoneId": "relation/296180",
+  "cityName": {
+    "en": "Beaupréau-en-Mauges",
+    "fr": "Beaupréau-en-Mauges"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "1793 battle",
+        "fr": "bataille de la guerre de Vendée de 1793"
+      },
+      "externalIdentity": {
+        "id": "Q2888127",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-bataille-de-beaupreau-q2888127",
+      "latitude": 47.202777777,
+      "longitude": -0.993333333,
+      "name": {
+        "en": "bataille de Beaupréau",
+        "fr": "bataille de Beaupréau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Maine-et-Loire, France",
+        "fr": "commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q21027205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-beaupreau-en-mauges-q21027205",
+      "latitude": 47.2019,
+      "longitude": -0.9936,
+      "name": {
+        "en": "Beaupréau-en-Mauges",
+        "fr": "Beaupréau-en-Mauges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in Maine-et-Loire, France",
+        "fr": "ancienne commune française du département de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q752918",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-beaupreau-q752918",
+      "latitude": 47.201944444,
+      "longitude": -0.994444444,
+      "name": {
+        "en": "Beaupréau",
+        "fr": "Beaupréau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Maine-et-Loire, in France",
+        "fr": "chapelle située en Maine-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60346756",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-chapelle-notre-dame-de-beaupreau-en-mauges-q60346756",
+      "latitude": 47.202543,
+      "longitude": -0.991377,
+      "name": {
+        "en": "chapelle Notre-Dame de Beaupréau-en-Mauges",
+        "fr": "chapelle Notre-Dame de Beaupréau-en-Mauges"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Beaupréau is an important witness to the city's history.",
+        "fr": "château français situé à Beaupréau"
+      },
+      "externalIdentity": {
+        "id": "Q83711850",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-chateau-de-beaupreau-q83711850",
+      "latitude": 47.19921,
+      "longitude": -0.99189,
+      "name": {
+        "en": "château de Beaupréau",
+        "fr": "château de Beaupréau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "collegiate church located in Maine-et-Loire, in France",
+        "fr": "collégiale située en Maine-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60442350",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-collegiale-de-la-sainte-croix-de-beaupreau-q60442350",
+      "latitude": 47.19951,
+      "longitude": -0.993008,
+      "name": {
+        "en": "collégiale de la Sainte-Croix de Beaupréau",
+        "fr": "collégiale de la Sainte-Croix de Beaupréau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA49000055",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "beaupreau-en-mauges-eglise-notre-dame-pa49000055",
+      "latitude": 47.202162644531,
+      "longitude": -0.990736707019055,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Maine-et-Loire, in France",
+        "fr": "église située en Maine-et-Loire, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60387762",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-eglise-saint-martin-de-beaupreau-en-mauges-q60387762",
+      "latitude": 47.203417,
+      "longitude": -0.982554,
+      "name": {
+        "en": "église Saint-Martin de Beaupréau-en-Mauges",
+        "fr": "église Saint-Martin de Beaupréau-en-Mauges"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "massacre de Beaupréau is a distinctive architectural landmark in the city.",
+        "fr": "massacre de Beaupréau est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q109314813",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-massacre-de-beaupreau-q109314813",
+      "latitude": 47.2028,
+      "longitude": -0.99333,
+      "name": {
+        "en": "massacre de Beaupréau",
+        "fr": "massacre de Beaupréau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Mauges is a distinctive architectural landmark in the city.",
+        "fr": "région naturelle du sud-ouest du département français de Maine-et-Loire"
+      },
+      "externalIdentity": {
+        "id": "Q609309",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "beaupreau-en-mauges-mauges-q609309",
+      "latitude": 47.232,
+      "longitude": -0.991,
+      "name": {
+        "en": "Mauges",
+        "fr": "Mauges"
+      }
+    }
+  ]
+}

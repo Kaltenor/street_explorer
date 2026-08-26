@@ -1,0 +1,204 @@
+{
+  "id": "tassin-la-demi-lune-v1",
+  "cityId": "tassin-la-demi-lune-fr",
+  "cityZoneId": "relation/252642",
+  "cityName": {
+    "en": "Tassin-la-Demi-Lune",
+    "fr": "Tassin-la-Demi-Lune"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Tassin-la-Demi-Lune, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3095600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-alai-q3095600",
+      "latitude": 45.751966,
+      "longitude": 4.771816,
+      "name": {
+        "en": "Alaï",
+        "fr": "Alaï"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Rhône, in France",
+        "fr": "cimetière situé dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q83191373",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-ancien-cimetiere-de-tassin-q83191373",
+      "latitude": 45.75986,
+      "longitude": 4.76031,
+      "name": {
+        "en": "Ancien cimetière de Tassin",
+        "fr": "Ancien cimetière de Tassin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q130552184",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-ancien-eglise-de-tassin-q130552184",
+      "latitude": 45.759989,
+      "longitude": 4.757971,
+      "name": {
+        "en": "Ancien église de Tassin",
+        "fr": "Ancien église de Tassin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2203719",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-ecully-la-demi-lune-q2203719",
+      "latitude": 45.76572,
+      "longitude": 4.77952,
+      "name": {
+        "en": "Écully-la-Demi-Lune",
+        "fr": "Écully-la-Demi-Lune"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "clock-tower in Tassin-la-Demi-Lune",
+        "fr": "tour horloge à Tassin-la-Demi-Lune (Rhône)"
+      },
+      "externalIdentity": {
+        "id": "Q15950343",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-horloge-monumentale-de-tassin-la-demi-lune-q15950343",
+      "latitude": 45.7639,
+      "longitude": 4.7815,
+      "name": {
+        "en": "horloge monumentale de Tassin-la-Demi-Lune",
+        "fr": "horloge monumentale de Tassin-la-Demi-Lune"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Rhône department, France",
+        "fr": "monument aux morts du Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136079828",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-monument-aux-morts-de-tassin-la-demi-lune-q136079828",
+      "latitude": 45.756336,
+      "longitude": 4.766521,
+      "name": {
+        "en": "monument aux morts de Tassin-la-Demi-Lune",
+        "fr": "monument aux morts de Tassin-la-Demi-Lune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38487701",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-eglise-saint-claude-de-tassin-la-demi-lune-q38487701",
+      "latitude": 45.76079,
+      "longitude": 4.75859,
+      "name": {
+        "en": "église Saint-Claude de Tassin-la-Demi-Lune",
+        "fr": "église Saint-Claude de Tassin-la-Demi-Lune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Rhône, in France",
+        "fr": "église située dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38644440",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-eglise-saint-joseph-de-la-demi-lune-q38644440",
+      "latitude": 45.76515,
+      "longitude": 4.78499,
+      "name": {
+        "en": "église Saint-Joseph de la Demi-Lune",
+        "fr": "église Saint-Joseph de la Demi-Lune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Rhône department, France",
+        "fr": "siège municipal de Tassin-la-Demi-Lune, dans le Rhône, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119333934",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-mairie-de-tassin-la-demi-lune-q119333934",
+      "latitude": 45.761318475,
+      "longitude": 4.777231567,
+      "name": {
+        "en": "mairie de Tassin-la-Demi-Lune",
+        "fr": "mairie de Tassin-la-Demi-Lune"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Tassin-la-Demi-Lune, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097842",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "tassin-la-demi-lune-tassin-q3097842",
+      "latitude": 45.761614,
+      "longitude": 4.758482,
+      "name": {
+        "en": "Tassin",
+        "fr": "Tassin"
+      }
+    }
+  ]
+}

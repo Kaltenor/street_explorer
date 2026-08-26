@@ -1,0 +1,204 @@
+{
+  "id": "lormont-v1",
+  "cityId": "lormont-fr",
+  "cityZoneId": "relation/88807",
+  "cityName": {
+    "en": "Lormont",
+    "fr": "Lormont"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien château is an important witness to the city's history.",
+        "fr": "Ancien château est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083903",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lormont-ancien-chateau-pa00083903",
+      "latitude": 44.8780704632114,
+      "longitude": -0.5297972859293691,
+      "name": {
+        "en": "Ancien château",
+        "fr": "Ancien château"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Tram stop in Lormont, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573722",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-bois-fleuri-q98573722",
+      "latitude": 44.875987,
+      "longitude": -0.519344,
+      "name": {
+        "en": "Bois Fleuri",
+        "fr": "Bois Fleuri"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château in Nouvelle-Aquitaine, France",
+        "fr": "château français situé à Lormont"
+      },
+      "externalIdentity": {
+        "id": "Q1929031",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-chateau-de-lormont-q1929031",
+      "latitude": 44.87833333,
+      "longitude": -0.52972222,
+      "name": {
+        "en": "château de Lormont",
+        "fr": "château de Lormont"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château des Lauriers is an important witness to the city's history.",
+        "fr": "château à Lormont (Gironde)"
+      },
+      "externalIdentity": {
+        "id": "Q2971506",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-chateau-des-lauriers-q2971506",
+      "latitude": 44.8818,
+      "longitude": -0.520703,
+      "name": {
+        "en": "château des Lauriers",
+        "fr": "château des Lauriers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église paroissiale du Saint-Esprit is a distinctive architectural landmark in the city.",
+        "fr": "Église paroissiale du Saint-Esprit est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000036",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lormont-eglise-paroissiale-du-saint-esprit-pa33000036",
+      "latitude": 44.8832959620372,
+      "longitude": -0.524456689077497,
+      "name": {
+        "en": "Église paroissiale du Saint-Esprit",
+        "fr": "Église paroissiale du Saint-Esprit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Gironde, in France",
+        "fr": "église située en Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15953643",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-eglise-saint-esprit-de-lormont-q15953643",
+      "latitude": 44.8833,
+      "longitude": -0.5245,
+      "name": {
+        "en": "église Saint-Esprit de Lormont",
+        "fr": "église Saint-Esprit de Lormont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083603",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lormont-eglise-saint-martin-pa00083603",
+      "latitude": 44.8775177832118,
+      "longitude": -0.531421445733496,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Lormont, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q98573750",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-la-gardette-bassens-carbon-blanc-q98573750",
+      "latitude": 44.887668,
+      "longitude": -0.517313,
+      "name": {
+        "en": "La Gardette - Bassens - Carbon-Blanc",
+        "fr": "La Gardette - Bassens - Carbon-Blanc"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée en France"
+      },
+      "externalIdentity": {
+        "id": "Q30739055",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-musee-national-de-l-assurance-maladie-q30739055",
+      "latitude": 44.8818245,
+      "longitude": -0.5207346,
+      "name": {
+        "en": "musée national de l'Assurance maladie",
+        "fr": "musée national de l'Assurance maladie"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Lormont, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q110549900",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lormont-lormont-q110549900",
+      "latitude": 44.877217,
+      "longitude": -0.53357,
+      "name": {
+        "en": "Lormont",
+        "fr": "Lormont"
+      }
+    }
+  ]
+}

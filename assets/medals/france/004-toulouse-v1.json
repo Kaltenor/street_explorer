@@ -6,46 +6,27 @@
     "en": "Toulouse",
     "fr": "Toulouse"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "history",
-      "description": {
-        "en": "Château de Reynerie is an important witness to the city's history.",
-        "fr": "Château de Reynerie est un témoin important de l’histoire de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00094506",
-        "source": "merimee",
-        "type": "record"
-      },
-      "id": "toulouse-chateau-de-reynerie-pa00094506",
-      "latitude": 43.5725156885542,
-      "longitude": 1.3985516641373,
-      "name": {
-        "en": "Château de Reynerie",
-        "fr": "Château de Reynerie"
-      }
-    },
-    {
       "category": "architecture",
       "description": {
-        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
-        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+        "en": "Ancien chapelle des Pénitents Bleus, actuellement église Saint-Jérôme is a distinctive architectural landmark in the city.",
+        "fr": "Ancien chapelle des Pénitents Bleus, actuellement église Saint-Jérôme est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00094498",
+        "id": "PA00094500",
         "source": "merimee",
         "type": "record"
       },
-      "id": "toulouse-cathedrale-saint-etienne-pa00094498",
-      "latitude": 43.5998879848683,
-      "longitude": 1.45066365002575,
+      "id": "toulouse-ancien-chapelle-des-penitents-bleus-actuellement-eglise-saint-jerome-pa00094500",
+      "latitude": 43.6032645586296,
+      "longitude": 1.44622016080154,
       "name": {
-        "en": "cathédrale Saint-Étienne",
-        "fr": "cathédrale Saint-Étienne"
+        "en": "Ancien chapelle des Pénitents Bleus, actuellement église Saint-Jérôme",
+        "fr": "Ancien chapelle des Pénitents Bleus, actuellement église Saint-Jérôme"
       }
     },
     {
@@ -68,60 +49,41 @@
       }
     },
     {
-      "category": "culture",
+      "category": "architecture",
       "description": {
-        "en": "musée Georges Labit is one of the city's notable cultural landmarks.",
-        "fr": "musée Georges Labit compte parmi les lieux culturels marquants de la ville."
+        "en": "Ancien église Saint-Pierre-des-Cuisines is a distinctive architectural landmark in the city.",
+        "fr": "Ancien église Saint-Pierre-des-Cuisines est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "M0564",
-        "source": "museofile",
+        "id": "PA00094523",
+        "source": "merimee",
         "type": "record"
       },
-      "id": "toulouse-musee-georges-labit-m0564",
-      "latitude": 43.590964,
-      "longitude": 1.4584,
+      "id": "toulouse-ancien-eglise-saint-pierre-des-cuisines-pa00094523",
+      "latitude": 43.6043040113032,
+      "longitude": 1.43563525588714,
       "name": {
-        "en": "musée Georges Labit",
-        "fr": "musée Georges Labit"
+        "en": "Ancien église Saint-Pierre-des-Cuisines",
+        "fr": "Ancien église Saint-Pierre-des-Cuisines"
       }
     },
     {
-      "category": "culture",
+      "category": "architecture",
       "description": {
-        "en": "musée des Augustins is one of the city's notable cultural landmarks.",
-        "fr": "musée des Augustins compte parmi les lieux culturels marquants de la ville."
+        "en": "Ancien trésorerie royale, actuellement temple protestant du Salin is a distinctive architectural landmark in the city.",
+        "fr": "Ancien trésorerie royale, actuellement temple protestant du Salin est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "M0562",
-        "source": "museofile",
+        "id": "PA00094643",
+        "source": "merimee",
         "type": "record"
       },
-      "id": "toulouse-musee-des-augustins-m0562",
-      "latitude": 43.600562,
-      "longitude": 1.445904,
+      "id": "toulouse-ancien-tresorerie-royale-actuellement-temple-protestant-du-salin-pa00094643",
+      "latitude": 43.5951502608638,
+      "longitude": 1.44456080789976,
       "name": {
-        "en": "musée des Augustins",
-        "fr": "musée des Augustins"
-      }
-    },
-    {
-      "category": "culture",
-      "description": {
-        "en": "musée des Arts Précieux Paul-Dupuy is one of the city's notable cultural landmarks.",
-        "fr": "musée des Arts Précieux Paul-Dupuy compte parmi les lieux culturels marquants de la ville."
-      },
-      "externalIdentity": {
-        "id": "M0565",
-        "source": "museofile",
-        "type": "record"
-      },
-      "id": "toulouse-musee-des-arts-precieux-paul-dupuy-m0565",
-      "latitude": 43.596898,
-      "longitude": 1.446935,
-      "name": {
-        "en": "musée des Arts Précieux Paul-Dupuy",
-        "fr": "musée des Arts Précieux Paul-Dupuy"
+        "en": "Ancien trésorerie royale, actuellement temple protestant du Salin",
+        "fr": "Ancien trésorerie royale, actuellement temple protestant du Salin"
       }
     },
     {
@@ -146,6 +108,101 @@
     {
       "category": "architecture",
       "description": {
+        "en": "cathédrale Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "cathédrale Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094498",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-cathedrale-saint-etienne-pa00094498",
+      "latitude": 43.5998879848683,
+      "longitude": 1.45066365002575,
+      "name": {
+        "en": "cathédrale Saint-Étienne",
+        "fr": "cathédrale Saint-Étienne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château d'eau et station de pompage is an important witness to the city's history.",
+        "fr": "Château d'eau et station de pompage est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094504",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-chateau-d-eau-et-station-de-pompage-pa00094504",
+      "latitude": 43.5986915625314,
+      "longitude": 1.43693014379859,
+      "name": {
+        "en": "Château d'eau et station de pompage",
+        "fr": "Château d'eau et station de pompage"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Bellevue is an important witness to the city's history.",
+        "fr": "Château de Bellevue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00125576",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-chateau-de-bellevue-pa00125576",
+      "latitude": 43.5587516777637,
+      "longitude": 1.45823008373338,
+      "name": {
+        "en": "Château de Bellevue",
+        "fr": "Château de Bellevue"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Reynerie is an important witness to the city's history.",
+        "fr": "Château de Reynerie est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094506",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-chateau-de-reynerie-pa00094506",
+      "latitude": 43.5725156885542,
+      "longitude": 1.3985516641373,
+      "name": {
+        "en": "Château de Reynerie",
+        "fr": "Château de Reynerie"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église Notre-Dame-de-la-Daurade is an important witness to the city's history.",
+        "fr": "Église Notre-Dame-de-la-Daurade est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094519",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-eglise-notre-dame-de-la-daurade-pa00094519",
+      "latitude": 43.6009360638408,
+      "longitude": 1.43985247192855,
+      "name": {
+        "en": "Église Notre-Dame-de-la-Daurade",
+        "fr": "Église Notre-Dame-de-la-Daurade"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
         "en": "Hôtel de ville appelé Le Capitole is a distinctive architectural landmark in the city.",
         "fr": "Hôtel de ville appelé Le Capitole est un repère architectural remarquable de la ville."
       },
@@ -160,6 +217,177 @@
       "name": {
         "en": "Hôtel de ville appelé Le Capitole",
         "fr": "Hôtel de ville appelé Le Capitole"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Les Abattoirs, musée d'art moderne et contemporain is one of the city's notable cultural landmarks.",
+        "fr": "Les Abattoirs, musée d'art moderne et contemporain compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0566",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-les-abattoirs-musee-d-art-moderne-et-contemporain-m0566",
+      "latitude": 43.600678,
+      "longitude": 1.428998,
+      "name": {
+        "en": "Les Abattoirs, musée d'art moderne et contemporain",
+        "fr": "Les Abattoirs, musée d'art moderne et contemporain"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Arts Précieux Paul-Dupuy is one of the city's notable cultural landmarks.",
+        "fr": "musée des Arts Précieux Paul-Dupuy compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0565",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-des-arts-precieux-paul-dupuy-m0565",
+      "latitude": 43.596898,
+      "longitude": 1.446935,
+      "name": {
+        "en": "musée des Arts Précieux Paul-Dupuy",
+        "fr": "musée des Arts Précieux Paul-Dupuy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des Augustins is one of the city's notable cultural landmarks.",
+        "fr": "musée des Augustins compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0562",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-des-augustins-m0562",
+      "latitude": 43.600562,
+      "longitude": 1.445904,
+      "name": {
+        "en": "musée des Augustins",
+        "fr": "musée des Augustins"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du vieux Toulouse is one of the city's notable cultural landmarks.",
+        "fr": "musée du vieux Toulouse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0567",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-du-vieux-toulouse-m0567",
+      "latitude": 43.602258,
+      "longitude": 1.443132,
+      "name": {
+        "en": "musée du vieux Toulouse",
+        "fr": "musée du vieux Toulouse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Georges Labit is one of the city's notable cultural landmarks.",
+        "fr": "musée Georges Labit compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0564",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-georges-labit-m0564",
+      "latitude": 43.590964,
+      "longitude": 1.4584,
+      "name": {
+        "en": "musée Georges Labit",
+        "fr": "musée Georges Labit"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Saint-Raymond - Musée d’Archéologie de Toulouse is one of the city's notable cultural landmarks.",
+        "fr": "musée Saint-Raymond - Musée d’Archéologie de Toulouse compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0563",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-musee-saint-raymond-musee-d-archeologie-de-toulouse-m0563",
+      "latitude": 43.608897,
+      "longitude": 1.441776,
+      "name": {
+        "en": "musée Saint-Raymond - Musée d’Archéologie de Toulouse",
+        "fr": "musée Saint-Raymond - Musée d’Archéologie de Toulouse"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7013",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "toulouse-museum-d-histoire-naturelle-m7013",
+      "latitude": 43.594189,
+      "longitude": 1.448945,
+      "name": {
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Palais de Justice is a distinctive architectural landmark in the city.",
+        "fr": "Palais de Justice est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132672",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-palais-de-justice-pa00132672",
+      "latitude": 43.5939086142992,
+      "longitude": 1.44557171166882,
+      "name": {
+        "en": "Palais de Justice",
+        "fr": "Palais de Justice"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Morand is an important witness to the city's history.",
+        "fr": "Tour Morand est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00094641",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "toulouse-tour-morand-pa00094641",
+      "latitude": 43.6070936658633,
+      "longitude": 1.44235364735188,
+      "name": {
+        "en": "Tour Morand",
+        "fr": "Tour Morand"
       }
     }
   ]

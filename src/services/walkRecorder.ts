@@ -7,23 +7,23 @@ import {
 import {
   finishWalkSession,
   getGpsPointForSessionTimestamp,
+  getGpsPointsForSession,
   getLastGpsPointForSession,
   getWalkSessionById,
-  saveGpsPointWithNextIndex
+  saveGpsPointWithNextIndex,
+  updateActiveWalkDistance
 } from "../database/walkRepository";
-import {
-  calculatePathDistanceMeters,
-  haversineDistanceMeters
-} from "./distance";
 import { ActiveWalk, ActivityMode, GpsPoint } from "../types/walk";
 import {
   ACTIVE_RAW_POINT_LIMIT,
   appendGpsPoint,
   appendPersistedGpsPoint,
   applyRejectedGpsEvaluation,
+  calculateTrustedGpsDistanceMeters,
   collectConfirmedLiveExploredCellIds,
   createActiveWalk,
-  evaluateGpsPoint
+  evaluateGpsPoint,
+  getTrustedGpsDistanceIncrementMeters
 } from "./recordingState";
 
 export {
@@ -31,6 +31,7 @@ export {
   appendGpsPoint,
   appendPersistedGpsPoint,
   applyRejectedGpsEvaluation,
+  calculateTrustedGpsDistanceMeters,
   collectConfirmedLiveExploredCellIds,
   createActiveWalk,
   evaluateGpsPoint
@@ -63,7 +64,9 @@ type GpsPersistenceQueue = {
 };
 
 const GPS_PERSISTENCE_MAX_PENDING_JOBS = 4096;
-const GPS_PERSISTENCE_REORDER_WINDOW_MS = 750;
+// Raw observations already rebuild deterministically when a late fix arrives.
+// Do not keep a newly delivered foreground fix only in JavaScript memory.
+const GPS_PERSISTENCE_REORDER_WINDOW_MS = 0;
 const GPS_PERSISTENCE_RETRY_DELAYS_MS = [
   250,
   1000,
@@ -498,7 +501,7 @@ async function persistGpsPointJob(
     const replaced = await replaceActiveWalkGpsPointsFromObservations(
       sessionId,
       acceptedPoints,
-      calculatePathDistanceMeters(acceptedPoints),
+      calculateTrustedGpsDistanceMeters(acceptedPoints, job.activityMode),
       observationWrite
     );
 
@@ -554,10 +557,11 @@ async function persistGpsPointJob(
     sessionId,
     job.rawPoint,
     previousPoint
-      ? haversineDistanceMeters(previousPoint, {
-          ...job.rawPoint,
-          pointIndex: 0
-        })
+      ? getTrustedGpsDistanceIncrementMeters(
+          previousPoint,
+          { ...job.rawPoint, pointIndex: 0 },
+          job.activityMode
+        )
       : 0
   );
 
@@ -629,7 +633,18 @@ export async function finishPersistedActiveWalk(
   displayName?: string
 ) {
   await flushPendingGpsPoints(activeWalk.sessionId);
-  const persistedSession = await getWalkSessionById(activeWalk.sessionId);
+  const [persistedSession, persistedPoints] = await Promise.all([
+    getWalkSessionById(activeWalk.sessionId),
+    getGpsPointsForSession(activeWalk.sessionId)
+  ]);
+  const trustedDistanceMeters = calculateTrustedGpsDistanceMeters(
+    persistedPoints,
+    activeWalk.activityMode
+  );
+  await updateActiveWalkDistance(
+    activeWalk.sessionId,
+    trustedDistanceMeters
+  );
   const durationSeconds = Math.max(
     0,
     Math.round((new Date(endedAt).getTime() - new Date(activeWalk.startedAt).getTime()) / 1000)
@@ -637,8 +652,9 @@ export async function finishPersistedActiveWalk(
   const finalized = await finishWalkSession(activeWalk.sessionId, {
     endedAt,
     ...(displayName !== undefined ? { displayName } : {}),
-    distanceMeters:
-      persistedSession?.distanceMeters ?? activeWalk.distanceMeters,
+    distanceMeters: persistedSession
+      ? trustedDistanceMeters
+      : activeWalk.distanceMeters,
     durationSeconds,
     stepCount
   });

@@ -1,0 +1,204 @@
+{
+  "id": "lagny-sur-marne-v1",
+  "cityId": "lagny-sur-marne-fr",
+  "cityZoneId": "relation/402922",
+  "cityName": {
+    "en": "Lagny-sur-Marne",
+    "fr": "Lagny-sur-Marne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye Saint-Pierre (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye Saint-Pierre (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lagny-sur-marne-abbaye-saint-pierre-ancienne-pa00087043",
+      "latitude": 48.8776292172705,
+      "longitude": 2.70533788958823,
+      "name": {
+        "en": "Abbaye Saint-Pierre (ancienne)",
+        "fr": "Abbaye Saint-Pierre (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "thoroughfare in Lagny-sur-Marne, France",
+        "fr": "cour de Lagny-sur-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135404866",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lagny-sur-marne-cour-de-l-abbaye-q135404866",
+      "latitude": 48.8779215,
+      "longitude": 2.7051633,
+      "name": {
+        "en": "cour de l'Abbaye",
+        "fr": "cour de l'Abbaye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Ardents et Saint-Pierre is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Ardents et Saint-Pierre est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087044",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lagny-sur-marne-eglise-notre-dame-des-ardents-et-saint-pierre-pa00087044",
+      "latitude": 48.8774346002611,
+      "longitude": 2.70618275319829,
+      "name": {
+        "en": "Église Notre-Dame-des-Ardents et Saint-Pierre",
+        "fr": "Église Notre-Dame-des-Ardents et Saint-Pierre"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Furcy (ancienne) : partie subsistante is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Furcy (ancienne) : partie subsistante est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087045",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lagny-sur-marne-eglise-saint-furcy-ancienne-partie-subsistante-pa00087045",
+      "latitude": 48.8776132279888,
+      "longitude": 2.70430621612662,
+      "name": {
+        "en": "Église Saint-Furcy (ancienne) : partie subsistante",
+        "fr": "Église Saint-Furcy (ancienne) : partie subsistante"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-et-Marne, in France",
+        "fr": "église située en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3581484",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lagny-sur-marne-eglise-saint-furcy-de-lagny-sur-marne-q3581484",
+      "latitude": 48.8776,
+      "longitude": 2.70429,
+      "name": {
+        "en": "église Saint-Furcy de Lagny-sur-Marne",
+        "fr": "église Saint-Furcy de Lagny-sur-Marne"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Fontaine Saint-Furcy is one of the city's notable green or natural landmarks.",
+        "fr": "Fontaine Saint-Furcy compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "lagny-sur-marne-fontaine-saint-furcy-pa00087046",
+      "latitude": 48.8773053996567,
+      "longitude": 2.7046156667750605,
+      "name": {
+        "en": "Fontaine Saint-Furcy",
+        "fr": "Fontaine Saint-Furcy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "fontaine Saint-Fursy is one of the city's notable green or natural landmarks.",
+        "fr": "fontaine à Lagny-sur-Marne (Seine-et-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q16964666",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lagny-sur-marne-fontaine-saint-fursy-q16964666",
+      "latitude": 48.8788,
+      "longitude": 2.7075,
+      "name": {
+        "en": "fontaine Saint-Fursy",
+        "fr": "fontaine Saint-Fursy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "hôtel de ville de Lagny-sur-Marne is a distinctive architectural landmark in the city.",
+        "fr": "hôtel de ville de Lagny-sur-Marne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q116856548",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lagny-sur-marne-hotel-de-ville-de-lagny-sur-marne-q116856548",
+      "latitude": 48.877588636,
+      "longitude": 2.705280335,
+      "name": {
+        "en": "hôtel de ville de Lagny-sur-Marne",
+        "fr": "hôtel de ville de Lagny-sur-Marne"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "house in Lagny-sur-Marne, France",
+        "fr": "maison à Lagny-sur-Marne (Seine-et-Marne)"
+      },
+      "externalIdentity": {
+        "id": "Q22922859",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "lagny-sur-marne-maison-8-rue-de-l-hotel-de-ville-4-cour-de-l-abbaye-q22922859",
+      "latitude": 48.8778,
+      "longitude": 2.7051,
+      "name": {
+        "en": "maison, 8 Rue de l'Hôtel-de-Ville, 4 Cour de l'Abbaye",
+        "fr": "maison, 8 Rue de l'Hôtel-de-Ville, 4 Cour de l'Abbaye"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Gatien Bonnet is one of the city's notable cultural landmarks.",
+        "fr": "musée Gatien Bonnet compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0376",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "lagny-sur-marne-musee-gatien-bonnet-m0376",
+      "latitude": 48.879644,
+      "longitude": 2.707767,
+      "name": {
+        "en": "musée Gatien Bonnet",
+        "fr": "musée Gatien Bonnet"
+      }
+    }
+  ]
+}

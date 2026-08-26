@@ -1,0 +1,204 @@
+{
+  "id": "sartrouville-v1",
+  "cityId": "sartrouville-fr",
+  "cityZoneId": "relation/75022",
+  "cityName": {
+    "en": "Sartrouville",
+    "fr": "Sartrouville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Greek Orthodox church (1984-)",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q135977650",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-eglise-de-la-presentation-du-sauveur-au-temple-q135977650",
+      "latitude": 48.940377303,
+      "longitude": 2.166344705,
+      "name": {
+        "en": "église de la Présentation-du-Sauveur-au-Temple",
+        "fr": "église de la Présentation-du-Sauveur-au-Temple"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3580177",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-eglise-jean-xxiii-de-sartrouville-q3580177",
+      "latitude": 48.94274,
+      "longitude": 2.19446,
+      "name": {
+        "en": "église Jean-XXIII de Sartrouville",
+        "fr": "église Jean-XXIII de Sartrouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Yvelines, in France",
+        "fr": "église située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38645533",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-eglise-saint-joseph-de-sartrouville-q38645533",
+      "latitude": 48.934166666,
+      "longitude": 2.154166666,
+      "name": {
+        "en": "église Saint-Joseph de Sartrouville",
+        "fr": "église Saint-Joseph de Sartrouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Martin is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Martin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00087647",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sartrouville-eglise-saint-martin-pa00087647",
+      "latitude": 48.9456903784808,
+      "longitude": 2.17311450772098,
+      "name": {
+        "en": "Église Saint-Martin",
+        "fr": "Église Saint-Martin"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "monument aux morts de Sartrouville is a notable work of public art and local memory.",
+        "fr": "monument aux morts de Sartrouville est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "Q135472964",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-monument-aux-morts-de-sartrouville-q135472964",
+      "latitude": 48.9443676,
+      "longitude": 2.1731846,
+      "name": {
+        "en": "monument aux morts de Sartrouville",
+        "fr": "monument aux morts de Sartrouville"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "théâtre de Sartrouville et des Yvelines is one of the city's notable cultural landmarks.",
+        "fr": "lieu culturel en France"
+      },
+      "externalIdentity": {
+        "id": "Q3527649",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-theatre-de-sartrouville-et-des-yvelines-q3527649",
+      "latitude": 48.94032,
+      "longitude": 2.19279,
+      "name": {
+        "en": "théâtre de Sartrouville et des Yvelines",
+        "fr": "théâtre de Sartrouville et des Yvelines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque located in Yvelines, in France",
+        "fr": "mosquée située dans les Yvelines, en France"
+      },
+      "externalIdentity": {
+        "id": "Q124332040",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-mosquee-ennour-de-sartrouville-q124332040",
+      "latitude": 48.94989,
+      "longitude": 2.19652,
+      "name": {
+        "en": "mosquée Ennour de Sartrouville",
+        "fr": "mosquée Ennour de Sartrouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3397043",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-pont-de-maisons-laffitte-q3397043",
+      "latitude": 48.9447,
+      "longitude": 2.15806,
+      "name": {
+        "en": "pont de Maisons-Laffitte",
+        "fr": "pont de Maisons-Laffitte"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Sartrouville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2549086",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-sartrouville-q2549086",
+      "latitude": 48.9375,
+      "longitude": 2.157222,
+      "name": {
+        "en": "Sartrouville",
+        "fr": "Sartrouville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Sartrouville, France",
+        "fr": "projet de gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097682",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sartrouville-sartrouville-val-notre-dame-q3097682",
+      "latitude": 48.94,
+      "longitude": 2.19426,
+      "name": {
+        "en": "Sartrouville-Val Notre-Dame",
+        "fr": "Sartrouville-Val Notre-Dame"
+      }
+    }
+  ]
+}

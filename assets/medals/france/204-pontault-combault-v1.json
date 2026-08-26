@@ -1,0 +1,204 @@
+{
+  "id": "pontault-combault-v1",
+  "cityId": "pontault-combault-fr",
+  "cityZoneId": "relation/403055",
+  "cityName": {
+    "en": "Pontault-Combault",
+    "fr": "Pontault-Combault"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Château du Bois la Croix is an important witness to the city's history.",
+        "fr": "Château du Bois la Croix est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112028774",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "pontault-combault-chateau-du-bois-la-croix-way-112028774",
+      "latitude": 48.7998095,
+      "longitude": 2.5942215,
+      "name": {
+        "en": "Château du Bois la Croix",
+        "fr": "Château du Bois la Croix"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église des Pèlerins d'Emmaüs is a distinctive architectural landmark in the city.",
+        "fr": "Église des Pèlerins d'Emmaüs est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112042362",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "pontault-combault-eglise-des-pelerins-d-emmaus-way-112042362",
+      "latitude": 48.8000125,
+      "longitude": 2.6093675,
+      "name": {
+        "en": "Église des Pèlerins d'Emmaüs",
+        "fr": "Église des Pèlerins d'Emmaüs"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Protestante Baptiste is a distinctive architectural landmark in the city.",
+        "fr": "Église Protestante Baptiste est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "node/1109714122",
+        "source": "openstreetmap",
+        "type": "node"
+      },
+      "id": "pontault-combault-eglise-protestante-baptiste-node-1109714122",
+      "latitude": 48.7909961,
+      "longitude": 2.6114485,
+      "name": {
+        "en": "Église Protestante Baptiste",
+        "fr": "Église Protestante Baptiste"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Denis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Denis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/112037750",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "pontault-combault-eglise-saint-denis-way-112037750",
+      "latitude": 48.782787,
+      "longitude": 2.601017,
+      "name": {
+        "en": "Église Saint-Denis",
+        "fr": "Église Saint-Denis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Les Jardins d'Aimé is a distinctive architectural landmark in the city.",
+        "fr": "Les Jardins d'Aimé est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/472375019",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "pontault-combault-les-jardins-d-aime-way-472375019",
+      "latitude": 48.7905124,
+      "longitude": 2.6119855,
+      "name": {
+        "en": "Les Jardins d'Aimé",
+        "fr": "Les Jardins d'Aimé"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136069307",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pontault-combault-monument-aux-morts-de-pontault-combault-q136069307",
+      "latitude": 48.78226,
+      "longitude": 2.602,
+      "name": {
+        "en": "monument aux morts de Pontault-Combault",
+        "fr": "monument aux morts de Pontault-Combault"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "Parc de l’Hôtel de Ville is one of the city's notable green or natural landmarks.",
+        "fr": "Parc de l’Hôtel de Ville compte parmi les repères naturels ou paysagers de la ville."
+      },
+      "externalIdentity": {
+        "id": "way/727745356",
+        "source": "openstreetmap",
+        "type": "way"
+      },
+      "id": "pontault-combault-parc-de-l-hotel-de-ville-way-727745356",
+      "latitude": 48.8016417,
+      "longitude": 2.609583,
+      "name": {
+        "en": "Parc de l’Hôtel de Ville",
+        "fr": "Parc de l’Hôtel de Ville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Marché de la Gare is a distinctive architectural landmark in the city.",
+        "fr": "Marché de la Gare est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "relation/10081411",
+        "source": "openstreetmap",
+        "type": "relation"
+      },
+      "id": "pontault-combault-marche-de-la-gare-relation-10081411",
+      "latitude": 48.805404,
+      "longitude": 2.6182372,
+      "name": {
+        "en": "Marché de la Gare",
+        "fr": "Marché de la Gare"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-et-Marne, France",
+        "fr": "commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q717049",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pontault-combault-pontault-combault-q717049",
+      "latitude": 48.798333333,
+      "longitude": 2.605277777,
+      "name": {
+        "en": "Pontault-Combault",
+        "fr": "Pontault-Combault"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former commune in France",
+        "fr": "ancienne commune française du département de Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q65738569",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "pontault-combault-pontault-q65738569",
+      "latitude": 48.782471,
+      "longitude": 2.601043,
+      "name": {
+        "en": "Pontault",
+        "fr": "Pontault"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "carquefou-v1",
+  "cityId": "carquefou-fr",
+  "cityZoneId": "relation/68336",
+  "cityName": {
+    "en": "Carquefou",
+    "fr": "Carquefou"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Carquefou is a distinctive architectural landmark in the city.",
+        "fr": "ancienne gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q120758344",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-carquefou-q120758344",
+      "latitude": 47.295277777,
+      "longitude": -1.485833333,
+      "name": {
+        "en": "Carquefou",
+        "fr": "Carquefou"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Florigny is an important witness to the city's history.",
+        "fr": "château à Carquefou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106228206",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-chateau-de-florigny-q106228206",
+      "latitude": 47.297120714,
+      "longitude": -1.483771204,
+      "name": {
+        "en": "château de Florigny",
+        "fr": "château de Florigny"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de l'Epinay is an important witness to the city's history.",
+        "fr": "Château de l'Epinay est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108575",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carquefou-chateau-de-l-epinay-pa00108575",
+      "latitude": 47.2877189574682,
+      "longitude": -1.49040889764853,
+      "name": {
+        "en": "Château de l'Epinay",
+        "fr": "Château de l'Epinay"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Seilleraye is an important witness to the city's history.",
+        "fr": "Château de la Seilleraye est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00108576",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "carquefou-chateau-de-la-seilleraye-pa00108576",
+      "latitude": 47.2994489866191,
+      "longitude": -1.41913296459043,
+      "name": {
+        "en": "Château de la Seilleraye",
+        "fr": "Château de la Seilleraye"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Maubreuil is an important witness to the city's history.",
+        "fr": "château à Carquefou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q30739348",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-chateau-de-maubreuil-q30739348",
+      "latitude": 47.297258962,
+      "longitude": -1.465210318,
+      "name": {
+        "en": "château de Maubreuil",
+        "fr": "château de Maubreuil"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Loire-Atlantique, in France",
+        "fr": "église située en Loire-Atlantique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q41766706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-eglise-saint-pierre-de-carquefou-q41766706",
+      "latitude": 47.29657,
+      "longitude": -1.49234,
+      "name": {
+        "en": "église Saint-Pierre de Carquefou",
+        "fr": "église Saint-Pierre de Carquefou"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "espace culturel et de loisirs de la Fleuriaye is one of the city's notable cultural landmarks.",
+        "fr": "espace culturel et de loisirs à Carquefou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106224665",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-espace-culturel-et-de-loisirs-de-la-fleuriaye-q106224665",
+      "latitude": 47.299823775,
+      "longitude": -1.501114368,
+      "name": {
+        "en": "espace culturel et de loisirs de la Fleuriaye",
+        "fr": "espace culturel et de loisirs de la Fleuriaye"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Carquefou, France",
+        "fr": "hôtel de ville, Carquefou, France"
+      },
+      "externalIdentity": {
+        "id": "Q105341712",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-hotel-de-ville-de-carquefou-q105341712",
+      "latitude": 47.299,
+      "longitude": -1.4925,
+      "name": {
+        "en": "hôtel de ville de Carquefou",
+        "fr": "hôtel de ville de Carquefou"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "museum in France",
+        "fr": "musée à Carquefou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106224777",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-musee-de-l-erdre-q106224777",
+      "latitude": 47.299812861,
+      "longitude": -1.512599587,
+      "name": {
+        "en": "musée de l'Erdre",
+        "fr": "musée de l'Erdre"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in France",
+        "fr": "parc à Carquefou, en France"
+      },
+      "externalIdentity": {
+        "id": "Q3364197",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "carquefou-parc-de-la-chantrerie-q3364197",
+      "latitude": 47.2885,
+      "longitude": -1.5253,
+      "name": {
+        "en": "parc de la Chantrerie",
+        "fr": "parc de la Chantrerie"
+      }
+    }
+  ]
+}

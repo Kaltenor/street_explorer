@@ -1,0 +1,204 @@
+{
+  "id": "talence-v1",
+  "cityId": "talence-fr",
+  "cityZoneId": "relation/105267",
+  "cityName": {
+    "en": "Talence",
+    "fr": "Talence"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Tram stop in Talence, France",
+        "fr": "station du tramway de Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q7604212",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-arts-metiers-q7604212",
+      "latitude": 44.805983,
+      "longitude": -0.602284,
+      "name": {
+        "en": "Arts & Métiers",
+        "fr": "Arts & Métiers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château Belair is an important witness to the city's history.",
+        "fr": "Château Belair est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA33000130",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "talence-chateau-belair-pa33000130",
+      "latitude": 44.8024277577871,
+      "longitude": -0.58012739109894,
+      "name": {
+        "en": "Château Belair",
+        "fr": "Château Belair"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Peixotto is an important witness to the city's history.",
+        "fr": "Château de Peixotto est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083845",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "talence-chateau-de-peixotto-pa00083845",
+      "latitude": 44.8079586293863,
+      "longitude": -0.589837901393148,
+      "name": {
+        "en": "Château de Peixotto",
+        "fr": "Château de Peixotto"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château dit du Prince Noir is an important witness to the city's history.",
+        "fr": "Château dit du Prince Noir est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083846",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "talence-chateau-dit-du-prince-noir-pa00083846",
+      "latitude": 44.8170702817059,
+      "longitude": -0.592864489661412,
+      "name": {
+        "en": "Château dit du Prince Noir",
+        "fr": "Château dit du Prince Noir"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Domaine du château Raba is an important witness to the city's history.",
+        "fr": "Domaine du château Raba est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00083847",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "talence-domaine-du-chateau-raba-pa00083847",
+      "latitude": 44.7942249843785,
+      "longitude": -0.599822806923394,
+      "name": {
+        "en": "Domaine du château Raba",
+        "fr": "Domaine du château Raba"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French grande école",
+        "fr": "Grande école d'ingénieur à Bordeaux"
+      },
+      "externalIdentity": {
+        "id": "Q3578219",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-ecole-nationale-superieure-d-electronique-informatique-telecommunications-mathematiques-et-mecanique-de-bordeaux-q3578219",
+      "latitude": 44.8067,
+      "longitude": -0.605744,
+      "name": {
+        "en": "École nationale supérieure d'électronique, informatique, télécommunications, mathématiques et mécanique de Bordeaux",
+        "fr": "École nationale supérieure d'électronique, informatique, télécommunications, mathématiques et mécanique de Bordeaux"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "botanical garden in France",
+        "fr": "jardin botanique français"
+      },
+      "externalIdentity": {
+        "id": "Q9010928",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-jardin-botanique-de-talence-q9010928",
+      "latitude": 44.8099,
+      "longitude": -0.5905,
+      "name": {
+        "en": "Jardin botanique de Talence",
+        "fr": "Jardin botanique de Talence"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Gironde department, France",
+        "fr": "monument aux morts de la Gironde, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136079746",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-monument-aux-morts-de-talence-q136079746",
+      "latitude": 44.8126682,
+      "longitude": -0.5812941,
+      "name": {
+        "en": "monument aux morts de Talence",
+        "fr": "monument aux morts de Talence"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Talence, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097820",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-talence-medoquine-q3097820",
+      "latitude": 44.8162,
+      "longitude": -0.601154,
+      "name": {
+        "en": "Talence-Médoquine",
+        "fr": "Talence-Médoquine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "former French university founded in 1971, replaced and abolished in 2014",
+        "fr": "université française fondée en 1971, remplacée et supprimée en 2014"
+      },
+      "externalIdentity": {
+        "id": "Q13338",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "talence-universite-bordeaux-i-q13338",
+      "latitude": 44.806944444,
+      "longitude": -0.6,
+      "name": {
+        "en": "université Bordeaux-I",
+        "fr": "université Bordeaux-I"
+      }
+    }
+  ]
+}

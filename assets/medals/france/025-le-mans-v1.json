@@ -1,0 +1,394 @@
+{
+  "id": "le-mans-v1",
+  "cityId": "le-mans-fr",
+  "cityZoneId": "relation/107435",
+  "cityName": {
+    "en": "Le Mans",
+    "fr": "Le Mans"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de la Couture (ancienne) is an important witness to the city's history.",
+        "fr": "Abbaye de la Couture (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-abbaye-de-la-couture-ancienne-pa00109798",
+      "latitude": 48.0019508777536,
+      "longitude": 0.200409305322903,
+      "name": {
+        "en": "Abbaye de la Couture (ancienne)",
+        "fr": "Abbaye de la Couture (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye Saint-Vincent, actuellement lycée Bellevue is an important witness to the city's history.",
+        "fr": "Ancien abbaye Saint-Vincent, actuellement lycée Bellevue est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109799",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-ancien-abbaye-saint-vincent-actuellement-lycee-bellevue-pa00109799",
+      "latitude": 48.0128468023593,
+      "longitude": 0.203371758006471,
+      "name": {
+        "en": "Ancien abbaye Saint-Vincent, actuellement lycée Bellevue",
+        "fr": "Ancien abbaye Saint-Vincent, actuellement lycée Bellevue"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Bâtiment de la Psalette is one of the city's notable cultural landmarks.",
+        "fr": "Bâtiment de la Psalette compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109851",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-batiment-de-la-psalette-pa00109851",
+      "latitude": 48.0094999085608,
+      "longitude": 0.19919576215422702,
+      "name": {
+        "en": "Bâtiment de la Psalette",
+        "fr": "Bâtiment de la Psalette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Julien is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Julien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109800",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-cathedrale-saint-julien-pa00109800",
+      "latitude": 48.0093012514707,
+      "longitude": 0.198796744746797,
+      "name": {
+        "en": "Cathédrale Saint-Julien",
+        "fr": "Cathédrale Saint-Julien"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château des Comtes du Maine is an important witness to the city's history.",
+        "fr": "Château des Comtes du Maine est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109801",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-chateau-des-comtes-du-maine-pa00109801",
+      "latitude": 48.0072890191564,
+      "longitude": 0.197291302861815,
+      "name": {
+        "en": "Château des Comtes du Maine",
+        "fr": "Château des Comtes du Maine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-du-Pré is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-du-Pré est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109805",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-eglise-notre-dame-du-pre-pa00109805",
+      "latitude": 48.0096291511554,
+      "longitude": 0.192893143486463,
+      "name": {
+        "en": "Église Notre-Dame-du-Pré",
+        "fr": "Église Notre-Dame-du-Pré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eléments d'architecture sculptés de style Renaissance dans la cour de l'immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Eléments d'architecture sculptés de style Renaissance dans la cour de l'immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109806",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-elements-d-architecture-sculptes-de-style-renaissance-dans-la-cour-de-l-immeuble-pa00109806",
+      "latitude": 48.006338088607,
+      "longitude": 0.197672333138628,
+      "name": {
+        "en": "Eléments d'architecture sculptés de style Renaissance dans la cour de l'immeuble",
+        "fr": "Eléments d'architecture sculptés de style Renaissance dans la cour de l'immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Vaux is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Vaux est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109823",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-hotel-de-vaux-pa00109823",
+      "latitude": 48.0082749966286,
+      "longitude": 0.195147559611132,
+      "name": {
+        "en": "Hôtel de Vaux",
+        "fr": "Hôtel de Vaux"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel-Dieu de Coeffort is an important witness to the city's history.",
+        "fr": "Hôtel-Dieu de Coeffort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109818",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-hotel-dieu-de-coeffort-pa00109818",
+      "latitude": 47.9951969953147,
+      "longitude": 0.203591338841287,
+      "name": {
+        "en": "Hôtel-Dieu de Coeffort",
+        "fr": "Hôtel-Dieu de Coeffort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hötel dit Hôtel du Louvre ou Hôtel de Vignolles is a distinctive architectural landmark in the city.",
+        "fr": "Hötel dit Hôtel du Louvre ou Hôtel de Vignolles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109820",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-hotel-dit-hotel-du-louvre-ou-hotel-de-vignolles-pa00109820",
+      "latitude": 48.0077941278924,
+      "longitude": 0.196831924133599,
+      "name": {
+        "en": "Hötel dit Hôtel du Louvre ou Hôtel de Vignolles",
+        "fr": "Hötel dit Hôtel du Louvre ou Hôtel de Vignolles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Nepveu de Rouillon is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Nepveu de Rouillon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109821",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-hotel-nepveu-de-rouillon-pa00109821",
+      "latitude": 48.006957698226,
+      "longitude": 0.194607471475849,
+      "name": {
+        "en": "Hôtel Nepveu de Rouillon",
+        "fr": "Hôtel Nepveu de Rouillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel Pérot is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel Pérot est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109822",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-hotel-perot-pa00109822",
+      "latitude": 48.0073027546638,
+      "longitude": 0.195880305091173,
+      "name": {
+        "en": "Hôtel Pérot",
+        "fr": "Hôtel Pérot"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la reine Bérengère is one of the city's notable cultural landmarks.",
+        "fr": "musée de la reine Bérengère compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0771",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-mans-musee-de-la-reine-berengere-m0771",
+      "latitude": 48.008953,
+      "longitude": 0.1977,
+      "name": {
+        "en": "musée de la reine Bérengère",
+        "fr": "musée de la reine Bérengère"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de Tessé is one of the city's notable cultural landmarks.",
+        "fr": "musée de Tessé compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0770",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-mans-musee-de-tesse-m0770",
+      "latitude": 48.01112,
+      "longitude": 0.203755,
+      "name": {
+        "en": "musée de Tessé",
+        "fr": "musée de Tessé"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée vert Véron-de-Forbonnais is one of the city's notable cultural landmarks.",
+        "fr": "musée vert Véron-de-Forbonnais compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1192",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "le-mans-musee-vert-veron-de-forbonnais-m1192",
+      "latitude": 47.986868,
+      "longitude": 0.208417,
+      "name": {
+        "en": "musée vert Véron-de-Forbonnais",
+        "fr": "musée vert Véron-de-Forbonnais"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Romane is an important witness to the city's history.",
+        "fr": "Porte Romane est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109849",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-porte-romane-pa00109849",
+      "latitude": 48.0090956853337,
+      "longitude": 0.197302400298291,
+      "name": {
+        "en": "Porte Romane",
+        "fr": "Porte Romane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de la Reine-Bérangère is a distinctive architectural landmark in the city.",
+        "fr": "Maison de la Reine-Bérangère est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109841",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-maison-de-la-reine-berangere-pa00109841",
+      "latitude": 48.00882498489321,
+      "longitude": 0.19769454043966,
+      "name": {
+        "en": "Maison de la Reine-Bérangère",
+        "fr": "Maison de la Reine-Bérangère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite des Deux Amis is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite des Deux Amis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109827",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-maison-dite-des-deux-amis-pa00109827",
+      "latitude": 48.0088834297244,
+      "longitude": 0.197436446996418,
+      "name": {
+        "en": "Maison dite des Deux Amis",
+        "fr": "Maison dite des Deux Amis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison is a distinctive architectural landmark in the city.",
+        "fr": "Maison est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109834",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-maison-pa00109834",
+      "latitude": 48.006720929215,
+      "longitude": 0.194942478245258,
+      "name": {
+        "en": "Maison",
+        "fr": "Maison"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Menhir, dressé contre la cathédrale, dit Pierre Saint-Julien is a distinctive architectural landmark in the city.",
+        "fr": "Menhir, dressé contre la cathédrale, dit Pierre Saint-Julien est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00109848",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "le-mans-menhir-dresse-contre-la-cathedrale-dit-pierre-saint-julien-pa00109848",
+      "latitude": 48.0096734389397,
+      "longitude": 0.198079663880698,
+      "name": {
+        "en": "Menhir, dressé contre la cathédrale, dit Pierre Saint-Julien",
+        "fr": "Menhir, dressé contre la cathédrale, dit Pierre Saint-Julien"
+      }
+    }
+  ]
+}

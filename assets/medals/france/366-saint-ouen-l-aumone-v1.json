@@ -1,0 +1,204 @@
+{
+  "id": "saint-ouen-l-aumone-v1",
+  "cityId": "saint-ouen-l-aumone-fr",
+  "cityZoneId": "relation/73899",
+  "cityName": {
+    "en": "Saint-Ouen-l'Aumône",
+    "fr": "Saint-Ouen-l'Aumône"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Maubuisson is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Maubuisson est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080199",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-ouen-l-aumone-ancien-abbaye-de-maubuisson-pa00080199",
+      "latitude": 49.0473783661244,
+      "longitude": 2.11742705611563,
+      "name": {
+        "en": "Ancien abbaye de Maubuisson",
+        "fr": "Ancien abbaye de Maubuisson"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106145053",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-cimetiere-de-saint-ouen-l-aumone-q106145053",
+      "latitude": 49.0356,
+      "longitude": 2.1039,
+      "name": {
+        "en": "cimetière de Saint-Ouen-l'Aumône",
+        "fr": "cimetière de Saint-Ouen-l'Aumône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080201",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-ouen-l-aumone-eglise-pa00080201",
+      "latitude": 49.0391588294471,
+      "longitude": 2.10471046877564,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Ouen-l'Aumône, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2752323",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-epluches-q2752323",
+      "latitude": 49.054518,
+      "longitude": 2.122222,
+      "name": {
+        "en": "Épluches",
+        "fr": "Épluches"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forêt de Maubuisson is a distinctive architectural landmark in the city.",
+        "fr": "forêt créée au XXIe siècle en Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q131379285",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-foret-de-maubuisson-q131379285",
+      "latitude": 49.037277,
+      "longitude": 2.175346,
+      "name": {
+        "en": "forêt de Maubuisson",
+        "fr": "forêt de Maubuisson"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136076754",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-monument-aux-morts-de-saint-ouen-l-aumone-q136076754",
+      "latitude": 49.0359082,
+      "longitude": 2.1028331,
+      "name": {
+        "en": "monument aux morts de Saint-Ouen-l'Aumône",
+        "fr": "monument aux morts de Saint-Ouen-l'Aumône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Saint-Ouen-l'Aumône, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119329853",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-mairie-de-saint-ouen-l-aumone-q119329853",
+      "latitude": 49.04439,
+      "longitude": 2.10622,
+      "name": {
+        "en": "mairie de Saint-Ouen-l'Aumône",
+        "fr": "mairie de Saint-Ouen-l'Aumône"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Ouen-l'Aumône, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2410901",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-pont-petit-q2410901",
+      "latitude": 49.06037,
+      "longitude": 2.130561,
+      "name": {
+        "en": "Pont-Petit",
+        "fr": "Pont-Petit"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Ouen-l'Aumône, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097589",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-saint-ouen-l-aumone-liesse-q3097589",
+      "latitude": 49.034166666,
+      "longitude": 2.127777777,
+      "name": {
+        "en": "Saint-Ouen-l'Aumône-Liesse",
+        "fr": "Saint-Ouen-l'Aumône-Liesse"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Saint-Ouen-l'Aumône, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3097591",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "saint-ouen-l-aumone-saint-ouen-l-aumone-quartier-de-l-eglise-q3097591",
+      "latitude": 49.04,
+      "longitude": 2.103611111,
+      "name": {
+        "en": "Saint-Ouen-l'Aumône-Quartier de l'Église",
+        "fr": "Saint-Ouen-l'Aumône-Quartier de l'Église"
+      }
+    }
+  ]
+}

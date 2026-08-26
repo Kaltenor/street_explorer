@@ -1,0 +1,394 @@
+{
+  "id": "aubervilliers-v1",
+  "cityId": "aubervilliers-fr",
+  "cityZoneId": "relation/87628",
+  "cityName": {
+    "en": "Aubervilliers",
+    "fr": "Aubervilliers"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "University campus",
+        "fr": "campus interuniversitaire"
+      },
+      "externalIdentity": {
+        "id": "Q2935605",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-campus-condorcet-q2935605",
+      "latitude": 48.908553,
+      "longitude": 2.366288,
+      "name": {
+        "en": "Campus Condorcet",
+        "fr": "Campus Condorcet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q67787239",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-cimetiere-communal-d-aubervilliers-q67787239",
+      "latitude": 48.91639,
+      "longitude": 2.39505,
+      "name": {
+        "en": "cimetière communal d'Aubervilliers",
+        "fr": "cimetière communal d'Aubervilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "public high school",
+        "fr": "institution d'éducation secondaire en France"
+      },
+      "externalIdentity": {
+        "id": "Q28155564",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-college-lycee-la-reussite-q28155564",
+      "latitude": 48.91559,
+      "longitude": 2.37514,
+      "name": {
+        "en": "Collège-Lycée La Réussite",
+        "fr": "Collège-Lycée La Réussite"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cours du Fort is an important witness to the city's history.",
+        "fr": "cours d'Aubervilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q130349386",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-cours-du-fort-q130349386",
+      "latitude": 48.912043,
+      "longitude": 2.402439,
+      "name": {
+        "en": "cours du Fort",
+        "fr": "cours du Fort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame-des-Vertus is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame-des-Vertus est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079927",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "aubervilliers-eglise-notre-dame-des-vertus-pa00079927",
+      "latitude": 48.91454147188661,
+      "longitude": 2.38267910898766,
+      "name": {
+        "en": "Église Notre-Dame-des-Vertus",
+        "fr": "Église Notre-Dame-des-Vertus"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60041896",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-eglise-saint-paul-sainte-genevieve-du-montfort-d-aubervilliers-q60041896",
+      "latitude": 48.917032,
+      "longitude": 2.40013,
+      "name": {
+        "en": "église Saint-Paul-Sainte-Geneviève-du-Montfort d'Aubervilliers",
+        "fr": "église Saint-Paul-Sainte-Geneviève-du-Montfort d'Aubervilliers"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fortification in Paris, France",
+        "fr": "ancienne fortification de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q3078133",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-fort-d-aubervilliers-q3078133",
+      "latitude": 48.91083,
+      "longitude": 2.40611,
+      "name": {
+        "en": "fort d'Aubervilliers",
+        "fr": "fort d'Aubervilliers"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Aubervilliers, France",
+        "fr": "hôtel de ville en France"
+      },
+      "externalIdentity": {
+        "id": "Q33200068",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-hotel-de-ville-d-aubervilliers-q33200068",
+      "latitude": 48.91458,
+      "longitude": 2.38171,
+      "name": {
+        "en": "hôtel de ville d'Aubervilliers",
+        "fr": "hôtel de ville d'Aubervilliers"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "library and facility in St. Denis (France)",
+        "fr": "bibliothèque de recherche en sciences humaines et sociales"
+      },
+      "externalIdentity": {
+        "id": "Q105079565",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-humatheque-condorcet-q105079565",
+      "latitude": 48.909611,
+      "longitude": 2.366852,
+      "name": {
+        "en": "Humathèque Condorcet",
+        "fr": "Humathèque Condorcet"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Aubervilliers, France",
+        "fr": "impasse d'Aubervilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110486063",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-impasse-du-fort-q110486063",
+      "latitude": 48.9118987,
+      "longitude": 2.39758015,
+      "name": {
+        "en": "impasse du Fort",
+        "fr": "impasse du Fort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cul-de-sac in Aubervilliers, France",
+        "fr": "impasse d'Aubervilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110485981",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-impasse-du-pont-blanc-q110485981",
+      "latitude": 48.9154792,
+      "longitude": 2.393248166,
+      "name": {
+        "en": "impasse du Pont-Blanc",
+        "fr": "impasse du Pont-Blanc"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095475",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-monument-aux-morts-de-la-guerre-franco-prussienne-d-aubervilliers-q136095475",
+      "latitude": 48.91621,
+      "longitude": 2.39597,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne d'Aubervilliers",
+        "fr": "monument aux morts de la guerre franco-prussienne d'Aubervilliers"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097638",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-monument-aux-morts-de-la-premiere-guerre-mondiale-du-carre-militaire-d-aubervilliers-q136097638",
+      "latitude": 48.91573,
+      "longitude": 2.39456,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale du carré militaire d'Aubervilliers",
+        "fr": "monument aux morts de la Première Guerre mondiale du carré militaire d'Aubervilliers"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097825",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-monument-aux-morts-de-la-seconde-guerre-mondiale-d-aubervilliers-q136097825",
+      "latitude": 48.91565,
+      "longitude": 2.39487,
+      "name": {
+        "en": "monument aux morts de la Seconde Guerre mondiale d'Aubervilliers",
+        "fr": "monument aux morts de la Seconde Guerre mondiale d'Aubervilliers"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "bicycle-sharing station of Vélib’ Métropole network",
+        "fr": "station de vélopartage du réseau Vélib' Métropole"
+      },
+      "externalIdentity": {
+        "id": "Q86255958",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-parc-eli-lotar-q86255958",
+      "latitude": 48.91844993,
+      "longitude": 2.372708581,
+      "name": {
+        "en": "Parc Éli Lotar",
+        "fr": "Parc Éli Lotar"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "way in Aubervilliers, France",
+        "fr": "chemin d'Aubervilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110486091",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-petit-chemin-du-pont-blanc-q110486091",
+      "latitude": 48.92159941,
+      "longitude": 2.39176794,
+      "name": {
+        "en": "petit chemin du Pont Blanc",
+        "fr": "petit chemin du Pont Blanc"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "theater in Aubervilliers",
+        "fr": "théâtre situé à Aubervilliers"
+      },
+      "externalIdentity": {
+        "id": "Q57934",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-theatre-de-la-commune-q57934",
+      "latitude": 48.9109,
+      "longitude": 2.38354,
+      "name": {
+        "en": "théâtre de la Commune",
+        "fr": "théâtre de la Commune"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "office skyscraper located in Aubervilliers",
+        "fr": "tour de bureaux située dans la commune d'Aubervilliers"
+      },
+      "externalIdentity": {
+        "id": "Q3533107",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-tour-la-villette-q3533107",
+      "latitude": 48.901666666,
+      "longitude": 2.387777777,
+      "name": {
+        "en": "Tour La Villette",
+        "fr": "Tour La Villette"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "park in Aubervilliers, France",
+        "fr": "parc à Aubervilliers, en France"
+      },
+      "externalIdentity": {
+        "id": "Q105386328",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-square-de-stalingrad-q105386328",
+      "latitude": 48.91165,
+      "longitude": 2.38326,
+      "name": {
+        "en": "square de Stalingrad",
+        "fr": "square de Stalingrad"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc du canal de Saint-Denis is a distinctive architectural landmark in the city.",
+        "fr": "viaduc d'un canal en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q66619159",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "aubervilliers-viaduc-du-canal-de-saint-denis-q66619159",
+      "latitude": 48.92152,
+      "longitude": 2.36785,
+      "name": {
+        "en": "viaduc du canal de Saint-Denis",
+        "fr": "viaduc du canal de Saint-Denis"
+      }
+    }
+  ]
+}

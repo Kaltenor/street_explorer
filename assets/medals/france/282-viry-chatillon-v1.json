@@ -1,0 +1,204 @@
+{
+  "id": "viry-chatillon-v1",
+  "cityId": "viry-chatillon-fr",
+  "cityZoneId": "relation/92313",
+  "cityName": {
+    "en": "Viry-Châtillon",
+    "fr": "Viry-Châtillon"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Essonne, in France",
+        "fr": "cimetière situé dans l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110361044",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-cimetiere-de-l-eglise-saint-denis-q110361044",
+      "latitude": 48.6694,
+      "longitude": 2.3746,
+      "name": {
+        "en": "cimetière de l'église Saint-Denis",
+        "fr": "cimetière de l'église Saint-Denis"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Conservatoire à rayonnement communal de Viry-Châtillon is one of the city's notable cultural landmarks.",
+        "fr": "conservatoire de musique français"
+      },
+      "externalIdentity": {
+        "id": "Q107014844",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-conservatoire-a-rayonnement-communal-de-viry-chatillon-q107014844",
+      "latitude": 48.671666666,
+      "longitude": 2.376666666,
+      "name": {
+        "en": "Conservatoire à rayonnement communal de Viry-Châtillon",
+        "fr": "Conservatoire à rayonnement communal de Viry-Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Viry-Châtillon, France",
+        "fr": "édifice religieux catholique à Viry-Châtillon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q16008706",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-eglise-du-saint-esprit-de-viry-chatillon-q16008706",
+      "latitude": 48.67897,
+      "longitude": 2.3754,
+      "name": {
+        "en": "église du Saint-Esprit de Viry-Châtillon",
+        "fr": "église du Saint-Esprit de Viry-Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Viry-Châtillon, France",
+        "fr": "édifice religieux catholique à Viry-Châtillon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29866233",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-eglise-notre-dame-des-cites-de-viry-chatillon-q29866233",
+      "latitude": 48.66941,
+      "longitude": 2.36037,
+      "name": {
+        "en": "église Notre-Dame-des-Cités de Viry-Châtillon",
+        "fr": "église Notre-Dame-des-Cités de Viry-Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088045",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "viry-chatillon-eglise-pa00088045",
+      "latitude": 48.6691661213746,
+      "longitude": 2.37466385464679,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136082780",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-monument-aux-morts-de-viry-chatillon-q136082780",
+      "latitude": 48.67202,
+      "longitude": 2.37191,
+      "name": {
+        "en": "monument aux morts de Viry-Châtillon",
+        "fr": "monument aux morts de Viry-Châtillon"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "place des Martyrs de Chateaubriant is an important witness to the city's history.",
+        "fr": "place de Viry-Châtillon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q125544222",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-place-des-martyrs-de-chateaubriant-q125544222",
+      "latitude": 48.673163409,
+      "longitude": 2.375319247,
+      "name": {
+        "en": "place des Martyrs de Chateaubriant",
+        "fr": "place des Martyrs de Chateaubriant"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Viry-Châtillon, France",
+        "fr": "édifice religieux catholique à Viry-Châtillon, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29866232",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-eglise-sainte-bernadette-de-viry-chatillon-q29866232",
+      "latitude": 48.6604,
+      "longitude": 2.36627,
+      "name": {
+        "en": "église Sainte-Bernadette de Viry-Châtillon",
+        "fr": "église Sainte-Bernadette de Viry-Châtillon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble, actuellement institut Saint-Clément is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble, actuellement institut Saint-Clément est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00088046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "viry-chatillon-immeuble-actuellement-institut-saint-clement-pa00088046",
+      "latitude": 48.6702491043375,
+      "longitude": 2.37449710743979,
+      "name": {
+        "en": "Immeuble, actuellement institut Saint-Clément",
+        "fr": "Immeuble, actuellement institut Saint-Clément"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Viry-Châtillon, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2092521",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "viry-chatillon-viry-chatillon-q2092521",
+      "latitude": 48.67611,
+      "longitude": 2.38639,
+      "name": {
+        "en": "Viry-Châtillon",
+        "fr": "Viry-Châtillon"
+      }
+    }
+  ]
+}

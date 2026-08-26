@@ -1,0 +1,204 @@
+{
+  "id": "neuilly-plaisance-v1",
+  "cityId": "neuilly-plaisance-fr",
+  "cityZoneId": "relation/134947",
+  "cityName": {
+    "en": "Neuilly-Plaisance",
+    "fr": "Neuilly-Plaisance"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'eau du Plateau d'Avron is an important witness to the city's history.",
+        "fr": "château d'eau situé en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q88090510",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-chateau-d-eau-du-plateau-d-avron-q88090510",
+      "latitude": 48.87088,
+      "longitude": 2.51502,
+      "name": {
+        "en": "château d'eau du Plateau d'Avron",
+        "fr": "château d'eau du Plateau d'Avron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20054600",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-eglise-notre-dame-de-l-assomption-de-neuilly-plaisance-q20054600",
+      "latitude": 48.87393,
+      "longitude": 2.50891,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Neuilly-Plaisance",
+        "fr": "église Notre-Dame-de-l'Assomption de Neuilly-Plaisance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame de l'Assomption ou Notre-Dame d'Avron is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame de l'Assomption ou Notre-Dame d'Avron est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA93000016",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "neuilly-plaisance-eglise-notre-dame-de-l-assomption-ou-notre-dame-d-avron-pa93000016",
+      "latitude": 48.873931095255,
+      "longitude": 2.508916073321,
+      "name": {
+        "en": "Église Notre-Dame de l'Assomption ou Notre-Dame d'Avron",
+        "fr": "Église Notre-Dame de l'Assomption ou Notre-Dame d'Avron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située dans la Seine-Saint-Denis en France"
+      },
+      "externalIdentity": {
+        "id": "Q29856853",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-eglise-saint-henri-de-neuilly-plaisance-q29856853",
+      "latitude": 48.85708,
+      "longitude": 2.50808,
+      "name": {
+        "en": "église Saint-Henri de Neuilly-Plaisance",
+        "fr": "église Saint-Henri de Neuilly-Plaisance"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Neuilly-Plaisance, France",
+        "fr": "cinéma à Neuilly-Plaisance, France"
+      },
+      "externalIdentity": {
+        "id": "Q42295131",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-fauvette-q42295131",
+      "latitude": 48.8730884,
+      "longitude": 2.5106035,
+      "name": {
+        "en": "Fauvette",
+        "fr": "Fauvette"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136095730",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-monument-aux-morts-de-la-guerre-franco-prussienne-de-neuilly-plaisance-q136095730",
+      "latitude": 48.86967,
+      "longitude": 2.51561,
+      "name": {
+        "en": "monument aux morts de la guerre franco-prussienne de Neuilly-Plaisance",
+        "fr": "monument aux morts de la guerre franco-prussienne de Neuilly-Plaisance"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097664",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-monument-aux-morts-de-la-premiere-guerre-mondiale-de-neuilly-plaisance-q136097664",
+      "latitude": 48.86104,
+      "longitude": 2.50816,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale de Neuilly-Plaisance",
+        "fr": "monument aux morts de la Première Guerre mondiale de Neuilly-Plaisance"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Neuilly-Plaisance, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2373182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-neuilly-plaisance-q2373182",
+      "latitude": 48.85333,
+      "longitude": 2.51361,
+      "name": {
+        "en": "Neuilly-Plaisance",
+        "fr": "Neuilly-Plaisance"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "park in Neuilly-Plaisance, France",
+        "fr": "parc à Neuilly-Plaisance, Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q81121105",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-parc-des-coteaux-d-avron-q81121105",
+      "latitude": 48.8687,
+      "longitude": 2.5133,
+      "name": {
+        "en": "parc des Coteaux-d'Avron",
+        "fr": "parc des Coteaux-d'Avron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "plateau à l'est de Paris, dans la Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q1945381",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "neuilly-plaisance-plateau-d-avron-q1945381",
+      "latitude": 48.87277778,
+      "longitude": 2.51083333,
+      "name": {
+        "en": "plateau d'Avron",
+        "fr": "plateau d'Avron"
+      }
+    }
+  ]
+}

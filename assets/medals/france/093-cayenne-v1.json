@@ -1,0 +1,394 @@
+{
+  "id": "cayenne-v1",
+  "cityId": "cayenne-fr",
+  "cityZoneId": "relation/1663791",
+  "cityName": {
+    "en": "Cayenne",
+    "fr": "Cayenne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien boulangerie Anatole is a distinctive architectural landmark in the city.",
+        "fr": "Ancien boulangerie Anatole est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135673",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-ancien-boulangerie-anatole-pa00135673",
+      "latitude": 4.939469391432077,
+      "longitude": -52.3301353608177,
+      "name": {
+        "en": "Ancien boulangerie Anatole",
+        "fr": "Ancien boulangerie Anatole"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien caserne du Génie, dite Hôtel de l'Inspection is a distinctive architectural landmark in the city.",
+        "fr": "Ancien caserne du Génie, dite Hôtel de l'Inspection est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135674",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-ancien-caserne-du-genie-dite-hotel-de-l-inspection-pa00135674",
+      "latitude": 4.939003974632568,
+      "longitude": -52.33640627609297,
+      "name": {
+        "en": "Ancien caserne du Génie, dite Hôtel de l'Inspection",
+        "fr": "Ancien caserne du Génie, dite Hôtel de l'Inspection"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôpital de l'île Royale is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôpital de l'île Royale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105900",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-ancien-hopital-de-l-ile-royale-pa00105900",
+      "latitude": 5.286958767572341,
+      "longitude": -52.59187261503462,
+      "name": {
+        "en": "Ancien Hôpital de l'île Royale",
+        "fr": "Ancien Hôpital de l'île Royale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien Hôpital Jean Martial is a distinctive architectural landmark in the city.",
+        "fr": "Ancien Hôpital Jean Martial est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105930",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-ancien-hopital-jean-martial-pa00105930",
+      "latitude": 4.9416342859182105,
+      "longitude": -52.33457350246255,
+      "name": {
+        "en": "Ancien Hôpital Jean Martial",
+        "fr": "Ancien Hôpital Jean Martial"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Cathédrale Saint-Sauveur is a distinctive architectural landmark in the city.",
+        "fr": "Cathédrale Saint-Sauveur est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105932",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-cathedrale-saint-sauveur-pa00105932",
+      "latitude": 4.939881523910762,
+      "longitude": -52.331565071438405,
+      "name": {
+        "en": "Cathédrale Saint-Sauveur",
+        "fr": "Cathédrale Saint-Sauveur"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Chapelle de l'île Royale is a distinctive architectural landmark in the city.",
+        "fr": "Chapelle de l'île Royale est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105899",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-chapelle-de-l-ile-royale-pa00105899",
+      "latitude": 5.28658825979762,
+      "longitude": -52.59123298973364,
+      "name": {
+        "en": "Chapelle de l'île Royale",
+        "fr": "Chapelle de l'île Royale"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Couvent des Jésuites (ancien), ou ancienne Préfecture, ou Hôtel des Palmistes is a distinctive architectural landmark in the city.",
+        "fr": "Couvent des Jésuites (ancien), ou ancienne Préfecture, ou Hôtel des Palmistes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105894",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-couvent-des-jesuites-ancien-ou-ancienne-prefecture-ou-hotel-des-palmistes-pa00105894",
+      "latitude": 4.939307015573923,
+      "longitude": -52.33591619803556,
+      "name": {
+        "en": "Couvent des Jésuites (ancien), ou ancienne Préfecture, ou Hôtel des Palmistes",
+        "fr": "Couvent des Jésuites (ancien), ou ancienne Préfecture, ou Hôtel des Palmistes"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée départemental Alexandre Franconie is one of the city's notable cultural landmarks.",
+        "fr": "musée départemental Alexandre Franconie compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1063",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cayenne-musee-departemental-alexandre-franconie-m1063",
+      "latitude": 4.938177,
+      "longitude": -52.334359,
+      "name": {
+        "en": "musée départemental Alexandre Franconie",
+        "fr": "musée départemental Alexandre Franconie"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée des arts et traditions populaires de la Guyane is one of the city's notable cultural landmarks.",
+        "fr": "musée des arts et traditions populaires de la Guyane compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M1064",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "cayenne-musee-des-arts-et-traditions-populaires-de-la-guyane-m1064",
+      "latitude": 4.94156,
+      "longitude": -52.32837,
+      "name": {
+        "en": "musée des arts et traditions populaires de la Guyane",
+        "fr": "musée des arts et traditions populaires de la Guyane"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Poudrière (ancienne) is an important witness to the city's history.",
+        "fr": "Poudrière (ancienne) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105919",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-poudriere-ancienne-pa00105919",
+      "latitude": 4.940241900174653,
+      "longitude": -52.33604088058232,
+      "name": {
+        "en": "Poudrière (ancienne)",
+        "fr": "Poudrière (ancienne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Roches gravées de la Pointe-Marie-Galante, sur l'île Saint-Joseph is an important witness to the city's history.",
+        "fr": "Roches gravées de la Pointe-Marie-Galante, sur l'île Saint-Joseph est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135684",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-roches-gravees-de-la-pointe-marie-galante-sur-l-ile-saint-joseph-pa00135684",
+      "latitude": 5.282642,
+      "longitude": -52.579001,
+      "name": {
+        "en": "Roches gravées de la Pointe-Marie-Galante, sur l'île Saint-Joseph",
+        "fr": "Roches gravées de la Pointe-Marie-Galante, sur l'île Saint-Joseph"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "Statue de Victor Schoelcher is a notable work of public art and local memory.",
+        "fr": "Statue de Victor Schoelcher est une œuvre marquante de l’art public et de la mémoire locale."
+      },
+      "externalIdentity": {
+        "id": "PA00135683",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-statue-de-victor-schoelcher-pa00135683",
+      "latitude": 4.9372694173052185,
+      "longitude": -52.335142043934184,
+      "name": {
+        "en": "Statue de Victor Schoelcher",
+        "fr": "Statue de Victor Schoelcher"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble, ancien poste de police is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble, ancien poste de police est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135682",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-immeuble-ancien-poste-de-police-pa00135682",
+      "latitude": 4.939878581969059,
+      "longitude": -52.32682808320766,
+      "name": {
+        "en": "Immeuble, ancien poste de police",
+        "fr": "Immeuble, ancien poste de police"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble de l'ancienne douane is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble de l'ancienne douane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105918",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-immeuble-de-l-ancienne-douane-pa00105918",
+      "latitude": 4.936619510131004,
+      "longitude": -52.33684262360062,
+      "name": {
+        "en": "Immeuble de l'ancienne douane",
+        "fr": "Immeuble de l'ancienne douane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble Delabergerie, siège de la Direction Régionale des Affaires Culturelles de la Guyane is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble Delabergerie, siège de la Direction Régionale des Affaires Culturelles de la Guyane est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105928",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-immeuble-delabergerie-siege-de-la-direction-regionale-des-affaires-culturelles-de-la-guyane-pa00105928",
+      "latitude": 4.94005469214726,
+      "longitude": -52.3269992599786,
+      "name": {
+        "en": "Immeuble Delabergerie, siège de la Direction Régionale des Affaires Culturelles de la Guyane",
+        "fr": "Immeuble Delabergerie, siège de la Direction Régionale des Affaires Culturelles de la Guyane"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble dit Bar des Palmistes ou Maison Thémire is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble dit Bar des Palmistes ou Maison Thémire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105917",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-immeuble-dit-bar-des-palmistes-ou-maison-themire-pa00105917",
+      "latitude": 4.9381291055355225,
+      "longitude": -52.33391662099079,
+      "name": {
+        "en": "Immeuble dit Bar des Palmistes ou Maison Thémire",
+        "fr": "Immeuble dit Bar des Palmistes ou Maison Thémire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison Ceïde, actuelle Galerie des Trois-Fontaines is a distinctive architectural landmark in the city.",
+        "fr": "Maison Ceïde, actuelle Galerie des Trois-Fontaines est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300016",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-maison-ceide-actuelle-galerie-des-trois-fontaines-pa97300016",
+      "latitude": 4.938760385740362,
+      "longitude": -52.33096567685931,
+      "name": {
+        "en": "Maison Ceïde, actuelle Galerie des Trois-Fontaines",
+        "fr": "Maison Ceïde, actuelle Galerie des Trois-Fontaines"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison de Dreyfus, sur l'île du Diable is a distinctive architectural landmark in the city.",
+        "fr": "Maison de Dreyfus, sur l'île du Diable est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105897",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-maison-de-dreyfus-sur-l-ile-du-diable-pa00105897",
+      "latitude": 5.290844386546626,
+      "longitude": -52.58492499120926,
+      "name": {
+        "en": "Maison de Dreyfus, sur l'île du Diable",
+        "fr": "Maison de Dreyfus, sur l'île du Diable"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Place de l'Esplanade, dite place des Palmistes is a distinctive architectural landmark in the city.",
+        "fr": "Place de l'Esplanade, dite place des Palmistes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135680",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-place-de-l-esplanade-dite-place-des-palmistes-pa00135680",
+      "latitude": 4.940105725218864,
+      "longitude": -52.33395337182637,
+      "name": {
+        "en": "Place de l'Esplanade, dite place des Palmistes",
+        "fr": "Place de l'Esplanade, dite place des Palmistes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Place Léopold-Héder, dite aussi place de Grenoble is a distinctive architectural landmark in the city.",
+        "fr": "Place Léopold-Héder, dite aussi place de Grenoble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135681",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "cayenne-place-leopold-heder-dite-aussi-place-de-grenoble-pa00135681",
+      "latitude": 4.9393524519837015,
+      "longitude": -52.33509387621963,
+      "name": {
+        "en": "Place Léopold-Héder, dite aussi place de Grenoble",
+        "fr": "Place Léopold-Héder, dite aussi place de Grenoble"
+      }
+    }
+  ]
+}

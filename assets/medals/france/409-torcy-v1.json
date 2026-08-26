@@ -1,0 +1,204 @@
+{
+  "id": "torcy-v1",
+  "cityId": "torcy-fr",
+  "cityZoneId": "relation/402764",
+  "cityName": {
+    "en": "Torcy",
+    "fr": "Torcy"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Torcy, Seine-et-Marne, France",
+        "fr": "édifice religieux catholique à Torcy (Seine-et-Marne), en France"
+      },
+      "externalIdentity": {
+        "id": "Q38432742",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-eglise-saint-barthelemy-de-torcy-q38432742",
+      "latitude": 48.84999,
+      "longitude": 2.65325,
+      "name": {
+        "en": "église Saint-Barthélemy de Torcy",
+        "fr": "église Saint-Barthélemy de Torcy"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "outdoor and leisure center in French region of in Île-de-France",
+        "fr": "base de plein air et de loisirs située en Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q2886608",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-ile-de-loisirs-de-vaires-torcy-q2886608",
+      "latitude": 48.862777777,
+      "longitude": 2.633055555,
+      "name": {
+        "en": "Île de loisirs de Vaires-Torcy",
+        "fr": "Île de loisirs de Vaires-Torcy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Parisian high school",
+        "fr": "lycée français à Torcy, en Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q26791724",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-lycee-jean-moulin-de-torcy-q26791724",
+      "latitude": 48.836079449,
+      "longitude": 2.657643391,
+      "name": {
+        "en": "lycée Jean Moulin de Torcy",
+        "fr": "lycée Jean Moulin de Torcy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Seine-et-Marne department, France",
+        "fr": "siège municipal de Torcy, en Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119335001",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-mairie-de-torcy-q119335001",
+      "latitude": 48.849415934,
+      "longitude": 2.652411543,
+      "name": {
+        "en": "mairie de Torcy",
+        "fr": "mairie de Torcy"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Torcy, France",
+        "fr": "cinéma à Torcy, France"
+      },
+      "externalIdentity": {
+        "id": "Q3304207",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-mega-cgr-torcy-marne-la-vallee-q3304207",
+      "latitude": 48.8408,
+      "longitude": 2.65546,
+      "name": {
+        "en": "Méga CGR Torcy Marne la Vallée",
+        "fr": "Méga CGR Torcy Marne la Vallée"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial located in Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136097773",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-monument-aux-morts-de-la-premiere-guerre-mondiale-de-torcy-q136097773",
+      "latitude": 48.849423,
+      "longitude": 2.651876,
+      "name": {
+        "en": "monument aux morts de la Première Guerre mondiale de Torcy",
+        "fr": "monument aux morts de la Première Guerre mondiale de Torcy"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-et-Marne department, France",
+        "fr": "monument aux morts de Seine-et-Marne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136080296",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-monument-aux-morts-de-torcy-q136080296",
+      "latitude": 48.849385,
+      "longitude": 2.651584,
+      "name": {
+        "en": "monument aux morts de Torcy",
+        "fr": "monument aux morts de Torcy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "thoroughfare in Torcy in Seine-et-Marne, France",
+        "fr": "place de Torcy, en Seine-et-Marne"
+      },
+      "externalIdentity": {
+        "id": "Q134128216",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-place-de-l-eglise-q134128216",
+      "latitude": 48.8501876,
+      "longitude": 2.6531855,
+      "name": {
+        "en": "place de l'Église",
+        "fr": "place de l'Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Bridge over the Marne river, in France",
+        "fr": "pont sur la Marne"
+      },
+      "externalIdentity": {
+        "id": "Q116947356",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-pont-de-vaires-q116947356",
+      "latitude": 48.86217,
+      "longitude": 2.64434,
+      "name": {
+        "en": "pont de Vaires",
+        "fr": "pont de Vaires"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Torcy, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2186119",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "torcy-torcy-q2186119",
+      "latitude": 48.839444,
+      "longitude": 2.654722,
+      "name": {
+        "en": "Torcy",
+        "fr": "Torcy"
+      }
+    }
+  ]
+}

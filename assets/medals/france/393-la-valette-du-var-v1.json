@@ -1,0 +1,204 @@
+{
+  "id": "la-valette-du-var-v1",
+  "cityId": "la-valette-du-var-fr",
+  "cityZoneId": "relation/76463",
+  "cityName": {
+    "en": "La Valette-du-Var",
+    "fr": "La Valette-du-Var"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'Orvès is an important witness to the city's history.",
+        "fr": "château à La Valette-du-Var (Var)"
+      },
+      "externalIdentity": {
+        "id": "Q22969160",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-chateau-d-orves-q22969160",
+      "latitude": 43.144477,
+      "longitude": 5.9899,
+      "name": {
+        "en": "château d'Orvès",
+        "fr": "château d'Orvès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "arboretum and Provençal garden in France",
+        "fr": "Domaine d'Orvès est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q5289856",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-domaine-d-orves-q5289856",
+      "latitude": 43.1445,
+      "longitude": 5.9898,
+      "name": {
+        "en": "Domaine d'Orvès",
+        "fr": "Domaine d'Orvès"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French engineering school - University of Toulon",
+        "fr": "école d'ingénieurs généraliste experte en sciences et technologies marines - université de Toulon"
+      },
+      "externalIdentity": {
+        "id": "Q17355542",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-ecole-d-ingenieurs-de-l-universite-de-toulon-q17355542",
+      "latitude": 43.136246111,
+      "longitude": 6.012521111,
+      "name": {
+        "en": "École d’ingénieurs de l’université de Toulon",
+        "fr": "École d’ingénieurs de l’université de Toulon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00081772",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "la-valette-du-var-eglise-pa00081772",
+      "latitude": 43.1377202075189,
+      "longitude": 5.98318371113186,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "church located in Var, in France",
+        "fr": "église à La Valette-du-Var (Var)"
+      },
+      "externalIdentity": {
+        "id": "Q22916577",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-eglise-saint-jean-devant-la-porte-latine-de-la-valette-du-var-q22916577",
+      "latitude": 43.137745,
+      "longitude": 5.983,
+      "name": {
+        "en": "église Saint-Jean-Devant-la-Porte-Latine de La Valette-du-Var",
+        "fr": "église Saint-Jean-Devant-la-Porte-Latine de La Valette-du-Var"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Grand Var is a distinctive architectural landmark in the city.",
+        "fr": "centre commercial varois"
+      },
+      "externalIdentity": {
+        "id": "Q3114628",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-grand-var-q3114628",
+      "latitude": 43.137130555,
+      "longitude": 6.007203888,
+      "name": {
+        "en": "Grand Var",
+        "fr": "Grand Var"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Previous French public engineer school part of Toulon University, 2014 disappeared",
+        "fr": "école publique d'ingénieurs française interne à l'université de Toulon, dissoute en 2014"
+      },
+      "externalIdentity": {
+        "id": "Q3152149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-institut-des-sciences-de-l-ingenieur-de-toulon-et-du-var-q3152149",
+      "latitude": 43.13527778,
+      "longitude": 6.01,
+      "name": {
+        "en": "Institut des sciences de l'ingénieur de Toulon et du Var",
+        "fr": "Institut des sciences de l'ingénieur de Toulon et du Var"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Var, France",
+        "fr": "commune française du département du Var"
+      },
+      "externalIdentity": {
+        "id": "Q321128",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-la-valette-du-var-q321128",
+      "latitude": 43.137222222,
+      "longitude": 5.9825,
+      "name": {
+        "en": "La Valette-du-Var",
+        "fr": "La Valette-du-Var"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "Le Coudon est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q31640148",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-le-coudon-q31640148",
+      "latitude": 43.16062,
+      "longitude": 6.00871,
+      "name": {
+        "en": "Le Coudon",
+        "fr": "Le Coudon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mountain in France",
+        "fr": "mont toulonnais"
+      },
+      "externalIdentity": {
+        "id": "Q3321779",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "la-valette-du-var-mont-coudon-q3321779",
+      "latitude": 43.1603,
+      "longitude": 6.0083,
+      "name": {
+        "en": "mont Coudon",
+        "fr": "mont Coudon"
+      }
+    }
+  ]
+}

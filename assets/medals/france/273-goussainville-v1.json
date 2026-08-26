@@ -1,0 +1,204 @@
+{
+  "id": "goussainville-v1",
+  "cityId": "goussainville-fr",
+  "cityZoneId": "relation/161530",
+  "cityName": {
+    "en": "Goussainville",
+    "fr": "Goussainville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Val-d'Oise, in France",
+        "fr": "cimetière situé dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q110366704",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-cimetiere-de-goussainville-q110366704",
+      "latitude": 49.0112,
+      "longitude": 2.4768,
+      "name": {
+        "en": "cimetière de Goussainville",
+        "fr": "cimetière de Goussainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Val-d'Oise, in France",
+        "fr": "église située dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q21055710",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-eglise-saint-michel-de-goussainville-q21055710",
+      "latitude": 49.03395,
+      "longitude": 2.4743,
+      "name": {
+        "en": "église Saint-Michel de Goussainville",
+        "fr": "église Saint-Michel de Goussainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Pierre-Saint-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Pierre-Saint-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00080075",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "goussainville-eglise-saint-pierre-saint-paul-pa00080075",
+      "latitude": 49.0138345376549,
+      "longitude": 2.46554778498161,
+      "name": {
+        "en": "Église Saint-Pierre-Saint-Paul",
+        "fr": "Église Saint-Pierre-Saint-Paul"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Goussainville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q3096567",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-goussainville-q3096567",
+      "latitude": 49.02361,
+      "longitude": 2.46306,
+      "name": {
+        "en": "Goussainville",
+        "fr": "Goussainville"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Val-d'Oise department, France",
+        "fr": "monument aux morts du Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136055845",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-monument-aux-morts-de-goussainville-q136055845",
+      "latitude": 49.01368,
+      "longitude": 2.46599,
+      "name": {
+        "en": "monument aux morts de Goussainville",
+        "fr": "monument aux morts de Goussainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Goussainville, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2602083",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-les-noues-q2602083",
+      "latitude": 49.03222,
+      "longitude": 2.47667,
+      "name": {
+        "en": "Les Noues",
+        "fr": "Les Noues"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall located in Val-d'Oise department, France",
+        "fr": "siège municipal de Goussainville, dans le Val-d'Oise, en France"
+      },
+      "externalIdentity": {
+        "id": "Q119311182",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-mairie-de-goussainville-q119311182",
+      "latitude": 49.032370126,
+      "longitude": 2.473265613,
+      "name": {
+        "en": "mairie de Goussainville",
+        "fr": "mairie de Goussainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "pigeonnier de la ferme de Montmorency is a distinctive architectural landmark in the city.",
+        "fr": "édifice à Goussainville"
+      },
+      "externalIdentity": {
+        "id": "Q27903003",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-pigeonnier-de-la-ferme-de-montmorency-q27903003",
+      "latitude": 49.015304,
+      "longitude": 2.468764,
+      "name": {
+        "en": "pigeonnier de la ferme de Montmorency",
+        "fr": "pigeonnier de la ferme de Montmorency"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "retable architecturé (Goussainville) is a distinctive architectural landmark in the city.",
+        "fr": "retable architecturé du maître-autel de l'église Saint-Pierre-et-Saint-Paul à Goussainville (Val-d'Oise, France) ; classé en tant qu'Objet monument historique"
+      },
+      "externalIdentity": {
+        "id": "Q27586184",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-retable-architecture-goussainville-q27586184",
+      "latitude": 49.014,
+      "longitude": 2.465417,
+      "name": {
+        "en": "retable architecturé (Goussainville)",
+        "fr": "retable architecturé (Goussainville)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc du Crould is a distinctive architectural landmark in the city.",
+        "fr": "viaduc du Crould est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q109188185",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "goussainville-viaduc-du-crould-q109188185",
+      "latitude": 49.017411216,
+      "longitude": 2.472810267,
+      "name": {
+        "en": "viaduc du Crould",
+        "fr": "viaduc du Crould"
+      }
+    }
+  ]
+}

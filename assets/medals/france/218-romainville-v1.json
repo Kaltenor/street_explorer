@@ -1,0 +1,204 @@
+{
+  "id": "romainville-v1",
+  "cityId": "romainville-fr",
+  "cityZoneId": "relation/130632",
+  "cityName": {
+    "en": "Romainville",
+    "fr": "Romainville"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Romainville is an important witness to the city's history.",
+        "fr": "château à Romainville (Seine-Saint-Denis)"
+      },
+      "externalIdentity": {
+        "id": "Q63640523",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-chateau-de-romainville-q63640523",
+      "latitude": 48.88595,
+      "longitude": 2.43502,
+      "name": {
+        "en": "château de Romainville",
+        "fr": "château de Romainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église is a distinctive architectural landmark in the city.",
+        "fr": "Église est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00079950",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "romainville-eglise-pa00079950",
+      "latitude": 48.8856721148327,
+      "longitude": 2.43639801845341,
+      "name": {
+        "en": "Église",
+        "fr": "Église"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q15958321",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-eglise-saint-germain-l-auxerrois-de-romainville-q15958321",
+      "latitude": 48.885711,
+      "longitude": 2.436395,
+      "name": {
+        "en": "église Saint-Germain-l'Auxerrois de Romainville",
+        "fr": "église Saint-Germain-l'Auxerrois de Romainville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q20033496",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-eglise-saint-luc-des-grands-champs-q20033496",
+      "latitude": 48.8766,
+      "longitude": 2.4445,
+      "name": {
+        "en": "église Saint-Luc-des-Grands-Champs",
+        "fr": "église Saint-Luc-des-Grands-Champs"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "fort de Noisy is an important witness to the city's history.",
+        "fr": "fort d'Île-de-France"
+      },
+      "externalIdentity": {
+        "id": "Q3078205",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-fort-de-noisy-q3078205",
+      "latitude": 48.8832,
+      "longitude": 2.44853,
+      "name": {
+        "en": "fort de Noisy",
+        "fr": "fort de Noisy"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Romainville, France",
+        "fr": "hôtel de ville, Romainville, France"
+      },
+      "externalIdentity": {
+        "id": "Q72928324",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-hotel-de-ville-de-romainville-q72928324",
+      "latitude": 48.8854,
+      "longitude": 2.4354,
+      "name": {
+        "en": "hôtel de ville de Romainville",
+        "fr": "hôtel de ville de Romainville"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "project of outdoor and leisure center in French region of in Île-de-France",
+        "fr": "projet de base de plein air et de loisirs en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q48752145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-ile-de-loisirs-de-la-corniche-des-forts-q48752145",
+      "latitude": 48.8879,
+      "longitude": 2.4317,
+      "name": {
+        "en": "Île de loisirs de la Corniche des Forts",
+        "fr": "Île de loisirs de la Corniche des Forts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "cul-de-sac in Romainville, France",
+        "fr": "impasse de Romainville, en France"
+      },
+      "externalIdentity": {
+        "id": "Q106606821",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-impasse-de-l-ancien-chateau-q106606821",
+      "latitude": 48.885314,
+      "longitude": 2.432058575,
+      "name": {
+        "en": "impasse de l'Ancien Château",
+        "fr": "impasse de l'Ancien Château"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Romainville, France",
+        "fr": "cinéma à Romainville, France"
+      },
+      "externalIdentity": {
+        "id": "Q3227810",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-le-trianon-q3227810",
+      "latitude": 48.884,
+      "longitude": 2.441,
+      "name": {
+        "en": "Le Trianon",
+        "fr": "Le Trianon"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136071262",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "romainville-monument-aux-morts-de-romainville-q136071262",
+      "latitude": 48.88627,
+      "longitude": 2.43661,
+      "name": {
+        "en": "monument aux morts de Romainville",
+        "fr": "monument aux morts de Romainville"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "compiegne-v1",
+  "cityId": "compiegne-fr",
+  "cityZoneId": "relation/195340",
+  "cityName": {
+    "en": "Compiègne",
+    "fr": "Compiègne"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Abbaye de Royallieu is an important witness to the city's history.",
+        "fr": "Abbaye de Royallieu est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114604",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-abbaye-de-royallieu-pa00114604",
+      "latitude": 49.39902649998751,
+      "longitude": 2.802541774316599,
+      "name": {
+        "en": "Abbaye de Royallieu",
+        "fr": "Abbaye de Royallieu"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien abbaye de Saint-Corneille, abritant la Bibliothèque municipale Saint-Corneille is one of the city's notable cultural landmarks.",
+        "fr": "Ancien abbaye de Saint-Corneille, abritant la Bibliothèque municipale Saint-Corneille compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114605",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-ancien-abbaye-de-saint-corneille-abritant-la-bibliotheque-municipale-saint-corneille-pa00114605",
+      "latitude": 49.41706889998748,
+      "longitude": 2.8243261041293652,
+      "name": {
+        "en": "Ancien abbaye de Saint-Corneille, abritant la Bibliothèque municipale Saint-Corneille",
+        "fr": "Ancien abbaye de Saint-Corneille, abritant la Bibliothèque municipale Saint-Corneille"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Antoine is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Antoine est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114613",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-eglise-saint-antoine-pa00114613",
+      "latitude": 49.41587260898025,
+      "longitude": 2.823352585630714,
+      "name": {
+        "en": "Église Saint-Antoine",
+        "fr": "Église Saint-Antoine"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114614",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-eglise-saint-jacques-pa00114614",
+      "latitude": 49.416972460967855,
+      "longitude": 2.8278061047001097,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114622",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-hotel-de-ville-pa00114622",
+      "latitude": 49.41796184998749,
+      "longitude": 2.8260676155603495,
+      "name": {
+        "en": "Hôtel de ville",
+        "fr": "Hôtel de ville"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Maison forestière de la Porte Chapelle is an important witness to the city's history.",
+        "fr": "Maison forestière de la Porte Chapelle est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA60000114",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-maison-forestiere-de-la-porte-chapelle-pa60000114",
+      "latitude": 49.419459,
+      "longitude": 2.836509,
+      "name": {
+        "en": "Maison forestière de la Porte Chapelle",
+        "fr": "Maison forestière de la Porte Chapelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Antoine Vivenel is one of the city's notable cultural landmarks.",
+        "fr": "musée Antoine Vivenel compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0803",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "compiegne-musee-antoine-vivenel-m0803",
+      "latitude": 49.417414,
+      "longitude": 2.821526,
+      "name": {
+        "en": "musée Antoine Vivenel",
+        "fr": "musée Antoine Vivenel"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la figurine historique is one of the city's notable cultural landmarks.",
+        "fr": "musée de la figurine historique compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0804",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "compiegne-musee-de-la-figurine-historique-m0804",
+      "latitude": 49.417761,
+      "longitude": 2.826358,
+      "name": {
+        "en": "musée de la figurine historique",
+        "fr": "musée de la figurine historique"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée de la voiture et du tourisme (annexe du musée national du château de Compiègne) is one of the city's notable cultural landmarks.",
+        "fr": "musée de la voiture et du tourisme (annexe du musée national du château de Compiègne) compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M5010",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "compiegne-musee-de-la-voiture-et-du-tourisme-annexe-du-musee-national-du-chateau-de-compiegne-m5010",
+      "latitude": 49.418172668861054,
+      "longitude": 2.8299891671026103,
+      "name": {
+        "en": "musée de la voiture et du tourisme (annexe du musée national du château de Compiègne)",
+        "fr": "musée de la voiture et du tourisme (annexe du musée national du château de Compiègne)"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Palais de Compiègne et ses abords is an important witness to the city's history.",
+        "fr": "Palais de Compiègne et ses abords est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00114635",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "compiegne-palais-de-compiegne-et-ses-abords-pa00114635",
+      "latitude": 49.42289109633137,
+      "longitude": 2.830008267449127,
+      "name": {
+        "en": "Palais de Compiègne et ses abords",
+        "fr": "Palais de Compiègne et ses abords"
+      }
+    }
+  ]
+}

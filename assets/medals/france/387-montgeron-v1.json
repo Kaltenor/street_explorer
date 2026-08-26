@@ -1,0 +1,204 @@
+{
+  "id": "montgeron-v1",
+  "cityId": "montgeron-fr",
+  "cityZoneId": "relation/954184",
+  "cityName": {
+    "en": "Montgeron",
+    "fr": "Montgeron"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "château de Rottembourg is an important witness to the city's history.",
+        "fr": "château français situé à Montgeron"
+      },
+      "externalIdentity": {
+        "id": "Q65244845",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-chateau-de-rottembourg-q65244845",
+      "latitude": 48.708333333,
+      "longitude": 2.456666666,
+      "name": {
+        "en": "château de Rottembourg",
+        "fr": "château de Rottembourg"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "castle in Montgeron, France",
+        "fr": "château situé à Montgeron, France"
+      },
+      "externalIdentity": {
+        "id": "Q15944244",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-domaine-des-pres-q15944244",
+      "latitude": 48.7039,
+      "longitude": 2.46045,
+      "name": {
+        "en": "domaine des Prés",
+        "fr": "domaine des Prés"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Montgeron, France",
+        "fr": "édifice religieux catholique à Montgeron, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38397511",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-eglise-notre-dame-de-la-glaciere-q38397511",
+      "latitude": 48.711333,
+      "longitude": 2.442807,
+      "name": {
+        "en": "église Notre-Dame de la Glacière",
+        "fr": "église Notre-Dame de la Glacière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Jacques is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Jacques est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA91000275",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montgeron-eglise-saint-jacques-pa91000275",
+      "latitude": 48.70733115138919,
+      "longitude": 2.4565265839323303,
+      "name": {
+        "en": "Église Saint-Jacques",
+        "fr": "Église Saint-Jacques"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "catholic religious building in Montgeron, France",
+        "fr": "édifice religieux catholique à Montgeron, en France"
+      },
+      "externalIdentity": {
+        "id": "Q29898970",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-eglise-saint-joseph-artisan-de-montgeron-q29898970",
+      "latitude": 48.69959,
+      "longitude": 2.46905,
+      "name": {
+        "en": "église Saint-Joseph-Artisan de Montgeron",
+        "fr": "église Saint-Joseph-Artisan de Montgeron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "forest in France",
+        "fr": "forêt française"
+      },
+      "externalIdentity": {
+        "id": "Q639713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-foret-de-senart-q639713",
+      "latitude": 48.6667,
+      "longitude": 2.48333,
+      "name": {
+        "en": "forêt de Sénart",
+        "fr": "forêt de Sénart"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Essonne department, France",
+        "fr": "monument aux morts de l'Essonne, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136064064",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-monument-aux-morts-de-montgeron-q136064064",
+      "latitude": 48.70703,
+      "longitude": 2.45565,
+      "name": {
+        "en": "monument aux morts de Montgeron",
+        "fr": "monument aux morts de Montgeron"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Museum in France",
+        "fr": "Musée Josèphe Jacquiot compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q136608072",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-musee-josephe-jacquiot-q136608072",
+      "latitude": 48.706194444,
+      "longitude": 2.456388888,
+      "name": {
+        "en": "Musée Josèphe Jacquiot",
+        "fr": "Musée Josèphe Jacquiot"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "train station (Paris RER)",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2435703",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "montgeron-montgeron-crosne-q2435703",
+      "latitude": 48.70806,
+      "longitude": 2.46222,
+      "name": {
+        "en": "Montgeron - Crosne",
+        "fr": "Montgeron - Crosne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Moulin de Senlis is a distinctive architectural landmark in the city.",
+        "fr": "Moulin de Senlis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA91000273",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "montgeron-moulin-de-senlis-pa91000273",
+      "latitude": 48.7148241823799,
+      "longitude": 2.4513213810853,
+      "name": {
+        "en": "Moulin de Senlis",
+        "fr": "Moulin de Senlis"
+      }
+    }
+  ]
+}

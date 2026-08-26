@@ -1,0 +1,204 @@
+{
+  "id": "noisy-le-sec-v1",
+  "cityId": "noisy-le-sec-fr",
+  "cityZoneId": "relation/131216",
+  "cityName": {
+    "en": "Noisy-le-Sec",
+    "fr": "Noisy-le-Sec"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Seine-Saint-Denis, in France",
+        "fr": "chapelle située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28827384",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-chapelle-du-saint-esprit-de-noisy-le-sec-q28827384",
+      "latitude": 48.886219,
+      "longitude": 2.466029,
+      "name": {
+        "en": "chapelle du Saint-Esprit de Noisy-le-Sec",
+        "fr": "chapelle du Saint-Esprit de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cemetery located in Seine-Saint-Denis, in France",
+        "fr": "cimetière situé en Seine-Saint-Denis, France"
+      },
+      "externalIdentity": {
+        "id": "Q81093121",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-cimetiere-nouveau-de-noisy-le-sec-q81093121",
+      "latitude": 48.88244,
+      "longitude": 2.46097,
+      "name": {
+        "en": "cimetière nouveau de Noisy-le-Sec",
+        "fr": "cimetière nouveau de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Paris metro station",
+        "fr": "station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q16040626",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-coteaux-beauclair-q16040626",
+      "latitude": 48.88224,
+      "longitude": 2.46735,
+      "name": {
+        "en": "Coteaux Beauclair",
+        "fr": "Coteaux Beauclair"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28827399",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-eglise-saint-etienne-de-noisy-le-sec-q28827399",
+      "latitude": 48.88978,
+      "longitude": 2.45078,
+      "name": {
+        "en": "église Saint-Étienne de Noisy-le-Sec",
+        "fr": "église Saint-Étienne de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "project of outdoor and leisure center in French region of in Île-de-France",
+        "fr": "projet de base de plein air et de loisirs en Seine-Saint-Denis"
+      },
+      "externalIdentity": {
+        "id": "Q48752145",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-ile-de-loisirs-de-la-corniche-des-forts-q48752145",
+      "latitude": 48.8879,
+      "longitude": 2.4317,
+      "name": {
+        "en": "Île de loisirs de la Corniche des Forts",
+        "fr": "Île de loisirs de la Corniche des Forts"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Seine-Saint-Denis department, France",
+        "fr": "monument aux morts de Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136067058",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-monument-aux-morts-de-noisy-le-sec-q136067058",
+      "latitude": 48.89565,
+      "longitude": 2.45603,
+      "name": {
+        "en": "monument aux morts de Noisy-le-Sec",
+        "fr": "monument aux morts de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Saint-Denis, in France",
+        "fr": "église située en Seine-Saint-Denis, en France"
+      },
+      "externalIdentity": {
+        "id": "Q28827414",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-eglise-saint-jean-baptiste-de-noisy-le-sec-q28827414",
+      "latitude": 48.8942,
+      "longitude": 2.46231,
+      "name": {
+        "en": "église Saint-Jean-Baptiste de Noisy-le-Sec",
+        "fr": "église Saint-Jean-Baptiste de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "town hall in Noisy-le-Sec, France",
+        "fr": "hôtel de ville à Noisy-le-Sec, France"
+      },
+      "externalIdentity": {
+        "id": "Q72714465",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-hotel-de-ville-de-noisy-le-sec-q72714465",
+      "latitude": 48.8899,
+      "longitude": 2.4519,
+      "name": {
+        "en": "hôtel de ville de Noisy-le-Sec",
+        "fr": "hôtel de ville de Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station in Noisy-le-Sec, France",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q2144965",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-noisy-le-sec-q2144965",
+      "latitude": 48.896111,
+      "longitude": 2.458889,
+      "name": {
+        "en": "Noisy-le-Sec",
+        "fr": "Noisy-le-Sec"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "planned Paris metro station",
+        "fr": "future station du métro de Paris"
+      },
+      "externalIdentity": {
+        "id": "Q76467149",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "noisy-le-sec-pont-de-bondy-q76467149",
+      "latitude": 48.9049,
+      "longitude": 2.4705,
+      "name": {
+        "en": "Pont de Bondy",
+        "fr": "Pont de Bondy"
+      }
+    }
+  ]
+}

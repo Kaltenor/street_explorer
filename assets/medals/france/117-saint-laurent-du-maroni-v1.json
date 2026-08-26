@@ -1,0 +1,204 @@
+{
+  "id": "saint-laurent-du-maroni-v1",
+  "cityId": "saint-laurent-du-maroni-fr",
+  "cityZoneId": "relation/1663806",
+  "cityName": {
+    "en": "Saint-Laurent-du-Maroni",
+    "fr": "Saint-Laurent-du-Maroni"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien centre pénitentiaire dit Camp de la Transportation is a distinctive architectural landmark in the city.",
+        "fr": "Ancien centre pénitentiaire dit Camp de la Transportation est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105911",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-ancien-centre-penitentiaire-dit-camp-de-la-transportation-pa00105911",
+      "latitude": 5,
+      "longitude": -54,
+      "name": {
+        "en": "Ancien centre pénitentiaire dit Camp de la Transportation",
+        "fr": "Ancien centre pénitentiaire dit Camp de la Transportation"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôpital André-Bouron is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôpital André-Bouron est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105912",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-ancien-hopital-andre-bouron-pa00105912",
+      "latitude": 5.501188439383647,
+      "longitude": -54.032182984231966,
+      "name": {
+        "en": "Ancien hôpital André-Bouron",
+        "fr": "Ancien hôpital André-Bouron"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église paroissiale dédiée à Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Église paroissiale dédiée à Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135692",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-eglise-paroissiale-dediee-a-saint-laurent-pa00135692",
+      "latitude": 5.503163149253771,
+      "longitude": -54.02835388995576,
+      "name": {
+        "en": "Église paroissiale dédiée à Saint-Laurent",
+        "fr": "Église paroissiale dédiée à Saint-Laurent"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Immeuble dit \"Maison bleue\", sis à l'angle des rues Montravel et Tourtet is an important witness to the city's history.",
+        "fr": "Immeuble dit \"Maison bleue\", sis à l'angle des rues Montravel et Tourtet est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135693",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-immeuble-dit-maison-bleue-sis-a-l-angle-des-rues-montravel-et-tourtet-pa00135693",
+      "latitude": 5.501796763860712,
+      "longitude": -54.02821056034395,
+      "name": {
+        "en": "Immeuble dit \"Maison bleue\", sis à l'angle des rues Montravel et Tourtet",
+        "fr": "Immeuble dit \"Maison bleue\", sis à l'angle des rues Montravel et Tourtet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Le presbytère is a distinctive architectural landmark in the city.",
+        "fr": "Le presbytère est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300017",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-le-presbytere-pa97300017",
+      "latitude": 5.503212000000001,
+      "longitude": -54.027927,
+      "name": {
+        "en": "Le presbytère",
+        "fr": "Le presbytère"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison dite du Receveur des douanes is a distinctive architectural landmark in the city.",
+        "fr": "Maison dite du Receveur des douanes est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300018",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-maison-dite-du-receveur-des-douanes-pa97300018",
+      "latitude": 5.506396,
+      "longitude": -54.027906,
+      "name": {
+        "en": "Maison dite du Receveur des douanes",
+        "fr": "Maison dite du Receveur des douanes"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Relais Barcarel is a distinctive architectural landmark in the city.",
+        "fr": "Relais Barcarel est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA97300020",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-relais-barcarel-pa97300020",
+      "latitude": 5.502385,
+      "longitude": -54.029119,
+      "name": {
+        "en": "Relais Barcarel",
+        "fr": "Relais Barcarel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Résidence du Sous-Préfet is a distinctive architectural landmark in the city.",
+        "fr": "Résidence du Sous-Préfet est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105923",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-residence-du-sous-prefet-pa00105923",
+      "latitude": 5.506576400619448,
+      "longitude": -54.02723917811272,
+      "name": {
+        "en": "Résidence du Sous-Préfet",
+        "fr": "Résidence du Sous-Préfet"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Sous-préfecture is a distinctive architectural landmark in the city.",
+        "fr": "Sous-préfecture est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105914",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-sous-prefecture-pa00105914",
+      "latitude": 5.505319373846401,
+      "longitude": -54.02904269584004,
+      "name": {
+        "en": "Sous-préfecture",
+        "fr": "Sous-préfecture"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Trésorerie is a distinctive architectural landmark in the city.",
+        "fr": "Trésorerie est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00105913",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-laurent-du-maroni-tresorerie-pa00105913",
+      "latitude": 5.504684330749793,
+      "longitude": -54.028434746390104,
+      "name": {
+        "en": "Trésorerie",
+        "fr": "Trésorerie"
+      }
+    }
+  ]
+}

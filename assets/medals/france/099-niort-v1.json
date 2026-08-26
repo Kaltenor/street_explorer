@@ -1,0 +1,394 @@
+{
+  "id": "niort-v1",
+  "cityId": "niort-fr",
+  "cityZoneId": "relation/150303",
+  "cityName": {
+    "en": "Niort",
+    "fr": "Niort"
+  },
+  "version": 3,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "history",
+      "description": {
+        "en": "Ancien abbaye de Saint-Liguaire is an important witness to the city's history.",
+        "fr": "Ancien abbaye de Saint-Liguaire est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000026",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-ancien-abbaye-de-saint-liguaire-pa79000026",
+      "latitude": 46.3250068753585,
+      "longitude": -0.5113325523514,
+      "name": {
+        "en": "Ancien abbaye de Saint-Liguaire",
+        "fr": "Ancien abbaye de Saint-Liguaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de La Marcardière is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de La Marcardière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000022",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-ancien-hotel-de-la-marcardiere-pa79000022",
+      "latitude": 46.3244191822402,
+      "longitude": -0.46021898346611106,
+      "name": {
+        "en": "Ancien hôtel de La Marcardière",
+        "fr": "Ancien hôtel de La Marcardière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien hôtel de ville, dit Le Pilori is a distinctive architectural landmark in the city.",
+        "fr": "Ancien hôtel de ville, dit Le Pilori est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101287",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-ancien-hotel-de-ville-dit-le-pilori-pa00101287",
+      "latitude": 46.3252010313278,
+      "longitude": -0.461316211787481,
+      "name": {
+        "en": "Ancien hôtel de ville, dit Le Pilori",
+        "fr": "Ancien hôtel de ville, dit Le Pilori"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Caserne Duguesclin ou centre Duguesclin is a distinctive architectural landmark in the city.",
+        "fr": "Caserne Duguesclin ou centre Duguesclin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132782",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-caserne-duguesclin-ou-centre-duguesclin-pa00132782",
+      "latitude": 46.3291631502572,
+      "longitude": -0.460726895407497,
+      "name": {
+        "en": "Caserne Duguesclin ou centre Duguesclin",
+        "fr": "Caserne Duguesclin ou centre Duguesclin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de Niort is an important witness to the city's history.",
+        "fr": "Château de Niort est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101283",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-chateau-de-niort-pa00101283",
+      "latitude": 46.3253600067301,
+      "longitude": -0.465080484765436,
+      "name": {
+        "en": "Château de Niort",
+        "fr": "Château de Niort"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "medieval castle in the French town of Niort",
+        "fr": "château fort français"
+      },
+      "externalIdentity": {
+        "id": "Q15214745",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "niort-donjon-de-niort-q15214745",
+      "latitude": 46.3253,
+      "longitude": -0.465,
+      "name": {
+        "en": "donjon de Niort",
+        "fr": "donjon de Niort"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Notre-Dame is a distinctive architectural landmark in the city.",
+        "fr": "Église Notre-Dame est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101284",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-eglise-notre-dame-pa00101284",
+      "latitude": 46.3227406991946,
+      "longitude": -0.46601282885659806,
+      "name": {
+        "en": "Église Notre-Dame",
+        "fr": "Église Notre-Dame"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Église Saint-André is an important witness to the city's history.",
+        "fr": "Église Saint-André est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000044",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-eglise-saint-andre-pa79000044",
+      "latitude": 46.3276531407494,
+      "longitude": -0.462002627668485,
+      "name": {
+        "en": "Église Saint-André",
+        "fr": "Église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "église Saint-Étienne is a distinctive architectural landmark in the city.",
+        "fr": "église Saint-Étienne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000035",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-eglise-saint-etienne-pa79000035",
+      "latitude": 46.3277900608009,
+      "longitude": -0.46857451958078405,
+      "name": {
+        "en": "église Saint-Étienne",
+        "fr": "église Saint-Étienne"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Hilaire is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Hilaire est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-eglise-saint-hilaire-pa79000043",
+      "latitude": 46.3211147725039,
+      "longitude": -0.45696385594667294,
+      "name": {
+        "en": "Église Saint-Hilaire",
+        "fr": "Église Saint-Hilaire"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Eglise Sainte-Pezenne is a distinctive architectural landmark in the city.",
+        "fr": "Eglise Sainte-Pezenne est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000024",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-eglise-sainte-pezenne-pa79000024",
+      "latitude": 46.3491078467614,
+      "longitude": -0.46935727317991605,
+      "name": {
+        "en": "Eglise Sainte-Pezenne",
+        "fr": "Eglise Sainte-Pezenne"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Bernard d'Agesci is one of the city's notable cultural landmarks.",
+        "fr": "musée Bernard d'Agesci compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0841",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "niort-musee-bernard-d-agesci-m0841",
+      "latitude": 46.321065,
+      "longitude": -0.454107,
+      "name": {
+        "en": "musée Bernard d'Agesci",
+        "fr": "musée Bernard d'Agesci"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M7052",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "niort-musee-d-histoire-naturelle-m7052",
+      "latitude": 46.321168,
+      "longitude": -0.454351,
+      "name": {
+        "en": "musée d'histoire naturelle",
+        "fr": "musée d'histoire naturelle"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée ethnographique et archéologique du donjon is one of the city's notable cultural landmarks.",
+        "fr": "musée ethnographique et archéologique du donjon compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0842",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "niort-musee-ethnographique-et-archeologique-du-donjon-m0842",
+      "latitude": 46.329091,
+      "longitude": -0.509253,
+      "name": {
+        "en": "musée ethnographique et archéologique du donjon",
+        "fr": "musée ethnographique et archéologique du donjon"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Halles is a distinctive architectural landmark in the city.",
+        "fr": "Halles est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101285",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-halles-pa00101285",
+      "latitude": 46.3256601139786,
+      "longitude": -0.46422494135849307,
+      "name": {
+        "en": "Halles",
+        "fr": "Halles"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel d'Estissac is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel d'Estissac est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101286",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-hotel-d-estissac-pa00101286",
+      "latitude": 46.3241061565668,
+      "longitude": -0.463374198921604,
+      "name": {
+        "en": "Hôtel d'Estissac",
+        "fr": "Hôtel d'Estissac"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Chaumont is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Chaumont est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000013",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-hotel-de-chaumont-pa79000013",
+      "latitude": 46.3260046099218,
+      "longitude": -0.4634337851185589,
+      "name": {
+        "en": "Hôtel de Chaumont",
+        "fr": "Hôtel de Chaumont"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de la Roulière is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de la Roulière est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00101412",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-hotel-de-la-rouliere-pa00101412",
+      "latitude": 46.3269889056895,
+      "longitude": -0.459945711155751,
+      "name": {
+        "en": "Hôtel de la Roulière",
+        "fr": "Hôtel de la Roulière"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Immeuble is a distinctive architectural landmark in the city.",
+        "fr": "Immeuble est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00135592",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-immeuble-pa00135592",
+      "latitude": 46.3261871320123,
+      "longitude": -0.459291286872726,
+      "name": {
+        "en": "Immeuble",
+        "fr": "Immeuble"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Maison à pan de bois, dite \"de la Vierge\" is a distinctive architectural landmark in the city.",
+        "fr": "Maison à pan de bois, dite \"de la Vierge\" est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA79000019",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "niort-maison-a-pan-de-bois-dite-de-la-vierge-pa79000019",
+      "latitude": 46.3264082989801,
+      "longitude": -0.459846210683551,
+      "name": {
+        "en": "Maison à pan de bois, dite \"de la Vierge\"",
+        "fr": "Maison à pan de bois, dite \"de la Vierge\""
+      }
+    }
+  ]
+}

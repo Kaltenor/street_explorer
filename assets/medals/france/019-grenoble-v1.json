@@ -6,46 +6,198 @@
     "en": "Grenoble",
     "fr": "Grenoble"
   },
-  "version": 1,
-  "publishedAt": "2026-08-08",
+  "version": 3,
+  "publishedAt": "2026-08-26",
   "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
   "medals": [
     {
-      "category": "history",
+      "category": "architecture",
       "description": {
-        "en": "Tour Perret, située dans le parc Paul-Mistral is an important witness to the city's history.",
-        "fr": "Tour Perret, située dans le parc Paul-Mistral est un témoin important de l’histoire de la ville."
+        "en": "Basilique Saint-Joseph is a distinctive architectural landmark in the city.",
+        "fr": "Basilique Saint-Joseph est un repère architectural remarquable de la ville."
       },
       "externalIdentity": {
-        "id": "PA00117204",
+        "id": "PA38000044",
         "source": "merimee",
         "type": "record"
       },
-      "id": "grenoble-tour-perret-situee-dans-le-parc-paul-mistral-pa00117204",
-      "latitude": 45.184948948892945,
-      "longitude": 5.735423796583893,
+      "id": "grenoble-basilique-saint-joseph-pa38000044",
+      "latitude": 45,
+      "longitude": 5,
       "name": {
-        "en": "Tour Perret, située dans le parc Paul-Mistral",
-        "fr": "Tour Perret, située dans le parc Paul-Mistral"
+        "en": "Basilique Saint-Joseph",
+        "fr": "Basilique Saint-Joseph"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "cathedral located in Isère, in France",
+        "fr": "cathédrale située en Isère, en France"
+      },
+      "externalIdentity": {
+        "id": "Q2942283",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "grenoble-cathedrale-notre-dame-de-grenoble-q2942283",
+      "latitude": 45.1925,
+      "longitude": 5.732222222,
+      "name": {
+        "en": "cathédrale Notre-Dame de Grenoble",
+        "fr": "cathédrale Notre-Dame de Grenoble"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Crypte archéologique is an important witness to the city's history.",
+        "fr": "Crypte archéologique est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00132939",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-crypte-archeologique-pa00132939",
+      "latitude": 45.1929382268011,
+      "longitude": 5.73179059333927,
+      "name": {
+        "en": "Crypte archéologique",
+        "fr": "Crypte archéologique"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-André is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-André est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117181",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-eglise-saint-andre-pa00117181",
+      "latitude": 45.19278692682934,
+      "longitude": 5.727966605454554,
+      "name": {
+        "en": "Église Saint-André",
+        "fr": "Église Saint-André"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Laurent is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Laurent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117182",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-eglise-saint-laurent-pa00117182",
+      "latitude": 45.1976576065383,
+      "longitude": 5.7314906956215,
+      "name": {
+        "en": "Église Saint-Laurent",
+        "fr": "Église Saint-Laurent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Louis is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Louis est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117183",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-eglise-saint-louis-pa00117183",
+      "latitude": 45.18972882577587,
+      "longitude": 5.725818776457675,
+      "name": {
+        "en": "Église Saint-Louis",
+        "fr": "Église Saint-Louis"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de François-Marc (ancien) is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de François-Marc (ancien) est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117190",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-hotel-de-francois-marc-ancien-pa00117190",
+      "latitude": 45.192724215629845,
+      "longitude": 5.730074620033111,
+      "name": {
+        "en": "Hôtel de François-Marc (ancien)",
+        "fr": "Hôtel de François-Marc (ancien)"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Hôtel de Ville is a distinctive architectural landmark in the city.",
+        "fr": "Hôtel de Ville est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA38000046",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-hotel-de-ville-pa38000046",
+      "latitude": 45.186443578526436,
+      "longitude": 5.7364402985136795,
+      "name": {
+        "en": "Hôtel de Ville",
+        "fr": "Hôtel de Ville"
       }
     },
     {
       "category": "culture",
       "description": {
-        "en": "musée Saint-Laurent is one of the city's notable cultural landmarks.",
-        "fr": "musée Saint-Laurent compte parmi les lieux culturels marquants de la ville."
+        "en": "Musée-Bibliothèque is one of the city's notable cultural landmarks.",
+        "fr": "Musée-Bibliothèque compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "M0997",
+        "id": "PA00117202",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-musee-bibliotheque-pa00117202",
+      "latitude": 45.189584847582,
+      "longitude": 5.7332786992616604,
+      "name": {
+        "en": "Musée-Bibliothèque",
+        "fr": "Musée-Bibliothèque"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée dauphinois is one of the city's notable cultural landmarks.",
+        "fr": "musée dauphinois compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0996",
         "source": "museofile",
         "type": "record"
       },
-      "id": "grenoble-musee-saint-laurent-m0997",
-      "latitude": 45.19778,
-      "longitude": 5.731922,
+      "id": "grenoble-musee-dauphinois-m0996",
+      "latitude": 45.1951875353051,
+      "longitude": 5.726944536301466,
       "name": {
-        "en": "musée Saint-Laurent",
-        "fr": "musée Saint-Laurent"
+        "en": "musée dauphinois",
+        "fr": "musée dauphinois"
       }
     },
     {
@@ -70,6 +222,44 @@
     {
       "category": "culture",
       "description": {
+        "en": "musée de la Résistance et de la déportation is one of the city's notable cultural landmarks.",
+        "fr": "musée de la Résistance et de la déportation compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0998",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "grenoble-musee-de-la-resistance-et-de-la-deportation-m0998",
+      "latitude": 45.190041,
+      "longitude": 5.735245,
+      "name": {
+        "en": "musée de la Résistance et de la déportation",
+        "fr": "musée de la Résistance et de la déportation"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée Saint-Laurent is one of the city's notable cultural landmarks.",
+        "fr": "musée Saint-Laurent compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0997",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "grenoble-musee-saint-laurent-m0997",
+      "latitude": 45.19778,
+      "longitude": 5.731922,
+      "name": {
+        "en": "musée Saint-Laurent",
+        "fr": "musée Saint-Laurent"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
         "en": "musée Stendhal is one of the city's notable cultural landmarks.",
         "fr": "musée Stendhal compte parmi les lieux culturels marquants de la ville."
       },
@@ -87,60 +277,41 @@
       }
     },
     {
-      "category": "architecture",
+      "category": "culture",
       "description": {
-        "en": "Hôtel de Ville is a distinctive architectural landmark in the city.",
-        "fr": "Hôtel de Ville est un repère architectural remarquable de la ville."
+        "en": "muséum d'histoire naturelle is one of the city's notable cultural landmarks.",
+        "fr": "muséum d'histoire naturelle compte parmi les lieux culturels marquants de la ville."
       },
       "externalIdentity": {
-        "id": "PA38000046",
-        "source": "merimee",
+        "id": "M7038",
+        "source": "museofile",
         "type": "record"
       },
-      "id": "grenoble-hotel-de-ville-pa38000046",
-      "latitude": 45.186443578526436,
-      "longitude": 5.7364402985136795,
+      "id": "grenoble-museum-d-histoire-naturelle-m7038",
+      "latitude": 45.188059,
+      "longitude": 5.735163,
       "name": {
-        "en": "Hôtel de Ville",
-        "fr": "Hôtel de Ville"
+        "en": "muséum d'histoire naturelle",
+        "fr": "muséum d'histoire naturelle"
       }
     },
     {
-      "category": "architecture",
+      "category": "history",
       "description": {
-        "en": "cathedral located in Isère, in France",
-        "fr": "cathédrale située en Isère, en France"
+        "en": "Ouvrages militaires de la Bastille (ensemble) is an important witness to the city's history.",
+        "fr": "Ouvrages militaires de la Bastille (ensemble) est un témoin important de l’histoire de la ville."
       },
       "externalIdentity": {
-        "id": "Q2942283",
-        "source": "wikidata",
-        "type": "item"
-      },
-      "id": "grenoble-cathedrale-notre-dame-de-grenoble-q2942283",
-      "latitude": 45.1925,
-      "longitude": 5.732222222,
-      "name": {
-        "en": "cathédrale Notre-Dame de Grenoble",
-        "fr": "cathédrale Notre-Dame de Grenoble"
-      }
-    },
-    {
-      "category": "architecture",
-      "description": {
-        "en": "Église Saint-Laurent is a distinctive architectural landmark in the city.",
-        "fr": "Église Saint-Laurent est un repère architectural remarquable de la ville."
-      },
-      "externalIdentity": {
-        "id": "PA00117182",
+        "id": "PA00117197",
         "source": "merimee",
         "type": "record"
       },
-      "id": "grenoble-eglise-saint-laurent-pa00117182",
-      "latitude": 45.1976576065383,
-      "longitude": 5.7314906956215,
+      "id": "grenoble-ouvrages-militaires-de-la-bastille-ensemble-pa00117197",
+      "latitude": 45.198730568624,
+      "longitude": 5.72534015277546,
       "name": {
-        "en": "Église Saint-Laurent",
-        "fr": "Église Saint-Laurent"
+        "en": "Ouvrages militaires de la Bastille (ensemble)",
+        "fr": "Ouvrages militaires de la Bastille (ensemble)"
       }
     },
     {
@@ -160,6 +331,63 @@
       "name": {
         "en": "Pavillon de la Porte de France",
         "fr": "Pavillon de la Porte de France"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Porte Saint-Laurent is an important witness to the city's history.",
+        "fr": "Porte Saint-Laurent est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117200",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-porte-saint-laurent-pa00117200",
+      "latitude": 45.197898102203,
+      "longitude": 5.73170694959495,
+      "name": {
+        "en": "Porte Saint-Laurent",
+        "fr": "Porte Saint-Laurent"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Remparts is an important witness to the city's history.",
+        "fr": "Remparts est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117203",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-remparts-pa00117203",
+      "latitude": 45.19084412590626,
+      "longitude": 5.729417275442627,
+      "name": {
+        "en": "Remparts",
+        "fr": "Remparts"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tour Perret, située dans le parc Paul-Mistral is an important witness to the city's history.",
+        "fr": "Tour Perret, située dans le parc Paul-Mistral est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00117204",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "grenoble-tour-perret-situee-dans-le-parc-paul-mistral-pa00117204",
+      "latitude": 45.184948948892945,
+      "longitude": 5.735423796583893,
+      "name": {
+        "en": "Tour Perret, située dans le parc Paul-Mistral",
+        "fr": "Tour Perret, située dans le parc Paul-Mistral"
       }
     }
   ]

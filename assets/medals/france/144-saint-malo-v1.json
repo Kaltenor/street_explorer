@@ -1,0 +1,204 @@
+{
+  "id": "saint-malo-v1",
+  "cityId": "saint-malo-fr",
+  "cityZoneId": "relation/905534",
+  "cityName": {
+    "en": "Saint-Malo",
+    "fr": "Saint-Malo"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Ancien cathédrale Saint-Vincent is a distinctive architectural landmark in the city.",
+        "fr": "Ancien cathédrale Saint-Vincent est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090798",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-ancien-cathedrale-saint-vincent-pa00090798",
+      "latitude": 48.6494897551351,
+      "longitude": -2.02528868820582,
+      "name": {
+        "en": "Ancien cathédrale Saint-Vincent",
+        "fr": "Ancien cathédrale Saint-Vincent"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "Ancien hôtel André-Desilles, actuellement bibliothèque municipale is one of the city's notable cultural landmarks.",
+        "fr": "Ancien hôtel André-Desilles, actuellement bibliothèque municipale compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090812",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-ancien-hotel-andre-desilles-actuellement-bibliotheque-municipale-pa00090812",
+      "latitude": 48.6476870600407,
+      "longitude": -2.02571071226183,
+      "name": {
+        "en": "Ancien hôtel André-Desilles, actuellement bibliothèque municipale",
+        "fr": "Ancien hôtel André-Desilles, actuellement bibliothèque municipale"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château de la Chipaudière is an important witness to the city's history.",
+        "fr": "Château de la Chipaudière est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090803",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-chateau-de-la-chipaudiere-pa00090803",
+      "latitude": 48.6366152778147,
+      "longitude": -1.9569568510751898,
+      "name": {
+        "en": "Château de la Chipaudière",
+        "fr": "Château de la Chipaudière"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Château et fortifications is an important witness to the city's history.",
+        "fr": "Château et fortifications est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090801",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-chateau-et-fortifications-pa00090801",
+      "latitude": 48.6514151320381,
+      "longitude": -2.02350062890221,
+      "name": {
+        "en": "Château et fortifications",
+        "fr": "Château et fortifications"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Ideuc is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Ideuc est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090807",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-eglise-saint-ideuc-pa00090807",
+      "latitude": 48.6628749247594,
+      "longitude": -1.97460455124923,
+      "name": {
+        "en": "Église Saint-Ideuc",
+        "fr": "Église Saint-Ideuc"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Hôtel de la Gicquelais (maison natale de Chateaubriand) is an important witness to the city's history.",
+        "fr": "Hôtel de la Gicquelais (maison natale de Chateaubriand) est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090815",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-hotel-de-la-gicquelais-maison-natale-de-chateaubriand-pa00090815",
+      "latitude": 48.6512121928188,
+      "longitude": -2.02434045151383,
+      "name": {
+        "en": "Hôtel de la Gicquelais (maison natale de Chateaubriand)",
+        "fr": "Hôtel de la Gicquelais (maison natale de Chateaubriand)"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée d'histoire de la ville et d'ethnographie du pays malouin is one of the city's notable cultural landmarks.",
+        "fr": "musée d'histoire de la ville et d'ethnographie du pays malouin compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0214",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-malo-musee-d-histoire-de-la-ville-et-d-ethnographie-du-pays-malouin-m0214",
+      "latitude": 48.650738,
+      "longitude": -2.023727,
+      "name": {
+        "en": "musée d'histoire de la ville et d'ethnographie du pays malouin",
+        "fr": "musée d'histoire de la ville et d'ethnographie du pays malouin"
+      }
+    },
+    {
+      "category": "culture",
+      "description": {
+        "en": "musée du long-cours cap-hornier is one of the city's notable cultural landmarks.",
+        "fr": "musée du long-cours cap-hornier compte parmi les lieux culturels marquants de la ville."
+      },
+      "externalIdentity": {
+        "id": "M0215",
+        "source": "museofile",
+        "type": "record"
+      },
+      "id": "saint-malo-musee-du-long-cours-cap-hornier-m0215",
+      "latitude": 48.63419813712232,
+      "longitude": -2.0259046691604174,
+      "name": {
+        "en": "musée du long-cours cap-hornier",
+        "fr": "musée du long-cours cap-hornier"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Phare du Grand-Jardin is a distinctive architectural landmark in the city.",
+        "fr": "Phare du Grand-Jardin est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA35000043",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-phare-du-grand-jardin-pa35000043",
+      "latitude": 48.670036310537,
+      "longitude": -2.08284885545014,
+      "name": {
+        "en": "Phare du Grand-Jardin",
+        "fr": "Phare du Grand-Jardin"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Tombeau de Chateaubriand et ensemble de l'îlot du Grand Bé is an important witness to the city's history.",
+        "fr": "Tombeau de Chateaubriand et ensemble de l'îlot du Grand Bé est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA00090870",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "saint-malo-tombeau-de-chateaubriand-et-ensemble-de-l-ilot-du-grand-be-pa00090870",
+      "latitude": 48.6522691860053,
+      "longitude": -2.03318520634636,
+      "name": {
+        "en": "Tombeau de Chateaubriand et ensemble de l'îlot du Grand Bé",
+        "fr": "Tombeau de Chateaubriand et ensemble de l'îlot du Grand Bé"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "id": "sotteville-les-rouen-v1",
+  "cityId": "sotteville-les-rouen-fr",
+  "cityZoneId": "relation/93029",
+  "cityName": {
+    "en": "Sotteville-lès-Rouen",
+    "fr": "Sotteville-lès-Rouen"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q1727513",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-canton-de-sotteville-les-rouen-ouest-q1727513",
+      "latitude": 49.416667,
+      "longitude": 1.1,
+      "name": {
+        "en": "canton de Sotteville-lès-Rouen-Ouest",
+        "fr": "canton de Sotteville-lès-Rouen-Ouest"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église située en Seine-Maritime, en France"
+      },
+      "externalIdentity": {
+        "id": "Q60385273",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-eglise-notre-dame-de-l-assomption-de-sotteville-les-rouen-q60385273",
+      "latitude": 49.417523,
+      "longitude": 1.096101,
+      "name": {
+        "en": "église Notre-Dame-de-l'Assomption de Sotteville-lès-Rouen",
+        "fr": "église Notre-Dame-de-l'Assomption de Sotteville-lès-Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Seine-Maritime, in France",
+        "fr": "église à Sotteville-lès-Rouen (Seine-Maritime)"
+      },
+      "externalIdentity": {
+        "id": "Q22980432",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-eglise-saint-vincent-de-paul-de-sotteville-les-rouen-q22980432",
+      "latitude": 49.40683,
+      "longitude": 1.0991,
+      "name": {
+        "en": "église Saint-Vincent-de-Paul de Sotteville-lès-Rouen",
+        "fr": "église Saint-Vincent-de-Paul de Sotteville-lès-Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "Église Saint-Vincent-de-Paul is a distinctive architectural landmark in the city.",
+        "fr": "Église Saint-Vincent-de-Paul est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA76000068",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "sotteville-les-rouen-eglise-saint-vincent-de-paul-pa76000068",
+      "latitude": 49.4068329304141,
+      "longitude": 1.09909201546534,
+      "name": {
+        "en": "Église Saint-Vincent-de-Paul",
+        "fr": "Église Saint-Vincent-de-Paul"
+      }
+    },
+    {
+      "category": "nature",
+      "description": {
+        "en": "island in France",
+        "fr": "île française"
+      },
+      "externalIdentity": {
+        "id": "Q34791502",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-ile-du-jonquay-q34791502",
+      "latitude": 49.4,
+      "longitude": 1.116666666,
+      "name": {
+        "en": "île du Jonquay",
+        "fr": "île du Jonquay"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "grues hydrauliques de Sotteville-lès-Rouen is a distinctive architectural landmark in the city.",
+        "fr": "grue à Sotteville-lès-Rouen (Seine-Maritime)"
+      },
+      "externalIdentity": {
+        "id": "Q22980357",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-grues-hydrauliques-de-sotteville-les-rouen-q22980357",
+      "latitude": 49.420333,
+      "longitude": 1.100583,
+      "name": {
+        "en": "grues hydrauliques de Sotteville-lès-Rouen",
+        "fr": "grues hydrauliques de Sotteville-lès-Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "commune in Seine-Maritime, France",
+        "fr": "commune française du département de la Seine-Maritime"
+      },
+      "externalIdentity": {
+        "id": "Q317082",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-sotteville-les-rouen-q317082",
+      "latitude": 49.408611111,
+      "longitude": 1.089166666,
+      "name": {
+        "en": "Sotteville-lès-Rouen",
+        "fr": "Sotteville-lès-Rouen"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "railway station",
+        "fr": "gare ferroviaire française"
+      },
+      "externalIdentity": {
+        "id": "Q608867",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-sotteville-q608867",
+      "latitude": 49.412817,
+      "longitude": 1.102495,
+      "name": {
+        "en": "Sotteville",
+        "fr": "Sotteville"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "athletics stadium in Sotteville-lès-Rouen, France",
+        "fr": "stade Jean-Adret est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q3495637",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-stade-jean-adret-q3495637",
+      "latitude": 49.40452,
+      "longitude": 1.0978,
+      "name": {
+        "en": "stade Jean-Adret",
+        "fr": "stade Jean-Adret"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "viaduc d'Eauplet is a distinctive architectural landmark in the city.",
+        "fr": "viaduc ferroviaire d'Eauplet"
+      },
+      "externalIdentity": {
+        "id": "Q3556525",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "sotteville-les-rouen-viaduc-d-eauplet-q3556525",
+      "latitude": 49.4266,
+      "longitude": 1.1093,
+      "name": {
+        "en": "viaduc d'Eauplet",
+        "fr": "viaduc d'Eauplet"
+      }
+    }
+  ]
+}

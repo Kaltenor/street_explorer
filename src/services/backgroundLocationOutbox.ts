@@ -15,11 +15,11 @@ import {
   purgeExpiredUnderfilledRecordings
 } from "../database/walkRepository";
 import { ActivityMode, GpsPoint, WalkSession } from "../types/walk";
-import { calculatePathDistanceMeters } from "./distance";
 import {
   evaluateGpsPoint,
   persistAcceptedGpsPoint
 } from "./walkRecorder";
+import { calculateTrustedGpsDistanceMeters } from "./recordingState";
 
 type RawGpsPoint = Omit<GpsPoint, "pointIndex">;
 
@@ -442,7 +442,10 @@ async function persistFinalizedSessionPoints(
           session.id,
           session.endedAt,
           canonicalPoints,
-          calculatePathDistanceMeters(canonicalPoints),
+          calculateTrustedGpsDistanceMeters(
+            canonicalPoints,
+            session.activityMode
+          ),
           observationGeneration
         );
 

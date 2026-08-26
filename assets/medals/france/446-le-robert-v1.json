@@ -1,0 +1,204 @@
+{
+  "id": "le-robert-v1",
+  "cityId": "le-robert-fr",
+  "cityZoneId": "relation/289393",
+  "cityName": {
+    "en": "Le Robert",
+    "fr": "Le Robert"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "architecture",
+      "description": {
+        "en": "canton of France",
+        "fr": "ancien canton français"
+      },
+      "externalIdentity": {
+        "id": "Q2642240",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-canton-du-robert-1-sud-q2642240",
+      "latitude": 14.677944,
+      "longitude": -60.939278,
+      "name": {
+        "en": "canton du Robert-1-Sud",
+        "fr": "canton du Robert-1-Sud"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Martinique, in France",
+        "fr": "église située en Martinique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q67110713",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-eglise-sainte-jeanne-d-arc-du-vert-pre-q67110713",
+      "latitude": 14.6924,
+      "longitude": -60.973,
+      "name": {
+        "en": "église Sainte-Jeanne-d’Arc du Vert-Pré",
+        "fr": "église Sainte-Jeanne-d’Arc du Vert-Pré"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Martinique, in France",
+        "fr": "église située en Martinique, en France"
+      },
+      "externalIdentity": {
+        "id": "Q38565641",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-eglise-sainte-rose-de-lima-du-robert-q38565641",
+      "latitude": 14.677206,
+      "longitude": -60.938775,
+      "name": {
+        "en": "église Sainte-Rose-de-Lima du Robert",
+        "fr": "église Sainte-Rose-de-Lima du Robert"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "human settlement in Martinique",
+        "fr": "établissement humain en France"
+      },
+      "externalIdentity": {
+        "id": "Q5952304",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-hyacinthe-q5952304",
+      "latitude": 14.665,
+      "longitude": -60.905,
+      "name": {
+        "en": "Hyacinthe",
+        "fr": "Hyacinthe"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in France",
+        "fr": "îlet habité de Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q27729606",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-ilet-a-eau-q27729606",
+      "latitude": 14.6861182,
+      "longitude": -60.9013507,
+      "name": {
+        "en": "îlet à Eau",
+        "fr": "îlet à Eau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in France",
+        "fr": "îlet aux Rats est un repère architectural remarquable de la ville."
+      },
+      "externalIdentity": {
+        "id": "Q27728998",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-ilet-aux-rats-q27728998",
+      "latitude": 14.6835934,
+      "longitude": -60.898997,
+      "name": {
+        "en": "îlet aux Rats",
+        "fr": "îlet aux Rats"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in Martinique, France",
+        "fr": "île de Martinique, France"
+      },
+      "externalIdentity": {
+        "id": "Q16040009",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-ilet-chancel-q16040009",
+      "latitude": 14.6931,
+      "longitude": -60.8889,
+      "name": {
+        "en": "îlet Chancel",
+        "fr": "îlet Chancel"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in Martinique, France",
+        "fr": "île de Martinique, France"
+      },
+      "externalIdentity": {
+        "id": "Q2918173",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-ilet-madame-q2918173",
+      "latitude": 14.6704,
+      "longitude": -60.8828,
+      "name": {
+        "en": "îlet Madame",
+        "fr": "îlet Madame"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "island in France",
+        "fr": "îlet inhabité de Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q27729123",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-ilet-petit-vincent-q27729123",
+      "latitude": 14.6883718,
+      "longitude": -60.9212255,
+      "name": {
+        "en": "îlet Petit Vincent",
+        "fr": "îlet Petit Vincent"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "French commune in Martinique, Lesser Antilles",
+        "fr": "commune française du département d'outre-mer de la Martinique"
+      },
+      "externalIdentity": {
+        "id": "Q1617674",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "le-robert-le-robert-q1617674",
+      "latitude": 14.6775,
+      "longitude": -60.939166666,
+      "name": {
+        "en": "Le Robert",
+        "fr": "Le Robert"
+      }
+    }
+  ]
+}

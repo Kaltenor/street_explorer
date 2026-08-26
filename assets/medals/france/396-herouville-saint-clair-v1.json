@@ -1,0 +1,204 @@
+{
+  "id": "herouville-saint-clair-v1",
+  "cityId": "herouville-saint-clair-fr",
+  "cityZoneId": "relation/172627",
+  "cityName": {
+    "en": "Hérouville-Saint-Clair",
+    "fr": "Hérouville-Saint-Clair"
+  },
+  "version": 2,
+  "publishedAt": "2026-08-26",
+  "sourceAttribution": "Roster and coordinates derived from the French Ministry of Culture Mérimée and Muséofile open datasets; gaps reviewed with Wikidata (CC0). Commune identity: OpenStreetMap relation via Wikidata.",
+  "medals": [
+    {
+      "category": "culture",
+      "description": {
+        "en": "movie theater in Hérouville-Saint-Clair, France",
+        "fr": "salle de cinéma située à Hérouville-Saint-Clair, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26257812",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-cafe-des-images-q26257812",
+      "latitude": 49.20277,
+      "longitude": -0.33243,
+      "name": {
+        "en": "Café des images",
+        "fr": "Café des images"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "chapel located in Calvados, in France",
+        "fr": "chapelle à Hérouville-Saint-Clair (Calvados)"
+      },
+      "externalIdentity": {
+        "id": "Q22995775",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-chapelle-saint-vincent-d-herouville-saint-clair-q22995775",
+      "latitude": 49.213524,
+      "longitude": -0.341889,
+      "name": {
+        "en": "chapelle Saint-Vincent d'Hérouville-Saint-Clair",
+        "fr": "chapelle Saint-Vincent d'Hérouville-Saint-Clair"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "château d'eau d'Hérouville-Saint-Clair is an important witness to the city's history.",
+        "fr": "château d'eau français"
+      },
+      "externalIdentity": {
+        "id": "Q2968357",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-chateau-d-eau-d-herouville-saint-clair-q2968357",
+      "latitude": 49.2028,
+      "longitude": -0.342317,
+      "name": {
+        "en": "château d'eau d'Hérouville-Saint-Clair",
+        "fr": "château d'eau d'Hérouville-Saint-Clair"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "domaine de Beauregard is an important witness to the city's history.",
+        "fr": "château et parc dans le Calvados"
+      },
+      "externalIdentity": {
+        "id": "Q3034410",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-domaine-de-beauregard-q3034410",
+      "latitude": 49.214,
+      "longitude": -0.312083,
+      "name": {
+        "en": "domaine de Beauregard",
+        "fr": "domaine de Beauregard"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "church located in Calvados, in France",
+        "fr": "église située dans le Calvados, en France"
+      },
+      "externalIdentity": {
+        "id": "Q18564304",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-eglise-saint-clair-d-herouville-saint-clair-q18564304",
+      "latitude": 49.20681,
+      "longitude": -0.31783,
+      "name": {
+        "en": "église Saint-Clair d'Hérouville-Saint-Clair",
+        "fr": "église Saint-Clair d'Hérouville-Saint-Clair"
+      }
+    },
+    {
+      "category": "art",
+      "description": {
+        "en": "War memorial of Calvados department, France",
+        "fr": "monument aux morts du Calvados, en France"
+      },
+      "externalIdentity": {
+        "id": "Q136056684",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-monument-aux-morts-de-herouville-saint-clair-q136056684",
+      "latitude": 49.2066885,
+      "longitude": -0.3181496,
+      "name": {
+        "en": "monument aux morts de Hérouville-Saint-Clair",
+        "fr": "monument aux morts de Hérouville-Saint-Clair"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "mosque in France",
+        "fr": "mosquée située dans le Calvados, en France"
+      },
+      "externalIdentity": {
+        "id": "Q26722163",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-mosquee-d-herouville-saint-clair-q26722163",
+      "latitude": 49.213084,
+      "longitude": -0.331034,
+      "name": {
+        "en": "mosquée d'Hérouville-Saint-Clair",
+        "fr": "mosquée d'Hérouville-Saint-Clair"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont en France"
+      },
+      "externalIdentity": {
+        "id": "Q129706897",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-pont-de-colombelles-q129706897",
+      "latitude": 49.206666666,
+      "longitude": -0.314444444,
+      "name": {
+        "en": "pont de Colombelles",
+        "fr": "pont de Colombelles"
+      }
+    },
+    {
+      "category": "history",
+      "description": {
+        "en": "Réservoir métallique ou château d'eau is an important witness to the city's history.",
+        "fr": "Réservoir métallique ou château d'eau est un témoin important de l’histoire de la ville."
+      },
+      "externalIdentity": {
+        "id": "PA14000093",
+        "source": "merimee",
+        "type": "record"
+      },
+      "id": "herouville-saint-clair-reservoir-metallique-ou-chateau-d-eau-pa14000093",
+      "latitude": 49.2028466343639,
+      "longitude": -0.342213102760908,
+      "name": {
+        "en": "Réservoir métallique ou château d'eau",
+        "fr": "Réservoir métallique ou château d'eau"
+      }
+    },
+    {
+      "category": "architecture",
+      "description": {
+        "en": "bridge in France",
+        "fr": "pont français"
+      },
+      "externalIdentity": {
+        "id": "Q3556551",
+        "source": "wikidata",
+        "type": "item"
+      },
+      "id": "herouville-saint-clair-viaduc-de-calix-q3556551",
+      "latitude": 49.1847,
+      "longitude": -0.327641,
+      "name": {
+        "en": "viaduc de Calix",
+        "fr": "viaduc de Calix"
+      }
+    }
+  ]
+}
