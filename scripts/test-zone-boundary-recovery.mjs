@@ -230,7 +230,8 @@ assert.match(
   /isReady=\{[\s\S]*isMapLaunchReady &&[\s\S]*isLaunchCompletionPrefetchReady[\s\S]*\}/
 );
 assert.match(launchCompletionPrefetchSource, /getSavedCompletionObjective/);
-assert.match(launchCompletionPrefetchSource, /getSavedPlayerLocation/);
+assert.match(launchCompletionPrefetchSource, /getCachedZones\("city"\)/);
+assert.doesNotMatch(launchCompletionPrefetchSource, /getSavedPlayerLocation/);
 assert.match(launchCompletionPrefetchSource, /getZoneCompletionSnapshot/);
 assert.match(launchCompletionPrefetchSource, /getZoneAchievement/);
 assert.match(launchCompletionPrefetchSource, /completionPercent: 100/);
