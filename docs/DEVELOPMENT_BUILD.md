@@ -49,6 +49,8 @@ Configured in `eas.json`:
 - `preview`: internal distribution
 - `production`: production build placeholder
 
+The `preview` profile is a standalone application build, not a development client. It embeds the JavaScript bundle and bundled assets, launches directly from the iPhone icon, and does not connect to Metro or require the development computer after installation.
+
 ## Build For Physical iPhone
 
 ```powershell
@@ -68,6 +70,20 @@ npx expo start --dev-client
 ```
 
 Open the installed Street Explorer development build on the iPhone and connect to the local dev server.
+
+## Build A Standalone Preview For Physical iPhone
+
+Use this profile when the phone must run Street Explorer without access to the development computer or Metro server:
+
+```powershell
+cd W:\street_explorer
+npx --yes eas-cli@latest login
+npm run build:ios:preview
+```
+
+EAS may ask for Apple credentials and physical-device registration. After the build completes, open its Expo installation link on the registered iPhone and install the build. Once installed, it launches directly from its icon and does not need the development computer, Expo Go, a development client, or a Metro connection.
+
+The installed preview remains useful when internet connectivity drops: GPS recording, SQLite persistence, saved exploration, cached boundaries and streets, the bundled France medal catalogue, and already-installed country packs remain local. Internet access is still required for uncached Apple map tiles, new OpenStreetMap street or boundary requests, Wikipedia pages, and country-pack downloads. A network failure must not end an active recording; unavailable network-backed data may remain stale, absent, or retryable until connectivity returns.
 
 ## Validate The Native Launch Screen
 

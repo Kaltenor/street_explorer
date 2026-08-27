@@ -1,5 +1,28 @@
 # Testing
 
+## Launch-Gated Completion Stamp V0.34.2 Manual Test
+
+Prerequisites: install iOS build 223 or newer on a physical iPhone whose saved objective is an already completed district or city. Keep sound and haptics enabled so launch-time feedback leakage is observable.
+
+1. Force-close Street Explorer and launch it again. Expected: the Mapbound splash remains visually clean throughout loading and the Press to start phase; no district/city completion stamp, ink sound, or impact haptic appears before or during the fade.
+2. Press to start and wait for the splash fade to finish. Expected: the eligible completion stamp appears only over the revealed map, with its normal sound and haptic feedback.
+3. Force-close and repeat once with Reduce Motion enabled. Expected: the splash remains clean and silent, and the completion stamp still waits until after launch dismissal while using its reduced-motion presentation.
+
+Automated UI regression coverage verifies both the completion-stamp creation gate and the shared Atlas stamp render gate. Physical-device validation remains required for native splash stacking, sound, and haptic timing.
+
+## Standalone iOS Preview V0.34.1 Manual Test
+
+Prerequisites: install iOS preview build 222 or newer on its registered physical iPhone through the EAS internal-distribution link. Allow the requested location and motion permissions, and start with internet access so Apple Maps and the current local boundary context can populate. The development computer and Metro server should remain stopped throughout this procedure.
+
+1. Launch Street Explorer from its iPhone home-screen icon. Expected: the app reaches its normal Mapbound launch presentation and map without Expo Go, a development-client launcher, or a Metro connection.
+2. Start a short walk while online, confirm the route and explored cells update, then lock and unlock the phone once. Expected: foreground and permitted background recording continue, with the walk still active after unlocking.
+3. While the walk remains active, enable Airplane Mode without force-closing Street Explorer and continue walking for several accepted GPS fixes. Expected: the app remains open, recording stays active, locally available route/exploration data continues updating, and any uncached map or OpenStreetMap content may be absent or stale without terminating the walk.
+4. Stop and save the walk while still offline, then reopen History and the saved walk. Expected: finalization and local history persistence succeed; network-backed reconciliation may defer or use cached street data.
+5. Force-close and relaunch the preview while still offline. Expected: the standalone bundle launches without Metro and the saved walk remains available. Cached map content may remain visible, while uncached Apple map tiles, Wikipedia, and new country-pack downloads remain unavailable.
+6. Restore connectivity and revisit the map. Expected: network-backed map and OpenStreetMap requests can resume or be retried without losing the offline-recorded walk.
+
+Automated checks validate the embedded Expo bundle and project behavior, but physical-device installation, signing, background GPS, Apple MapKit caching, and real connectivity transitions still require this manual procedure.
+
 ## Countryside Selection and Surface Color V0.34.0 Manual Test
 
 Prerequisites: install development build 221 or newer on a physical iPhone with foreground location allowed. Keep networking available for the first selection, enable explored cells, and prepare mapped walking cells inside a city, on rural land outside every city boundary, and—only with safe simulated/test data—over open ocean. Cache the city and containing country boundaries before repeating the offline checks.

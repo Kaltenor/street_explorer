@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.34.2
+
+- Deferred cached district/city completion stamps until the Mapbound launch presentation has fully dismissed, preventing reward artwork from appearing over the splash screen.
+- Gated the shared Atlas stamp renderer during launch so queued reward artwork, sound, haptics, and dismissal timers begin only after the map is revealed, without discarding the eligible completion reward.
+- Added automated launch-gate regression coverage plus physical-iPhone normal-motion and Reduce Motion validation steps.
+- Synchronized version 0.34.2 with iOS build 223 and Android version code 223.
+
+## v0.34.1
+
+- Prepared an installable iOS internal-distribution preview that embeds the application bundle and bundled assets, launches without Expo Go or Metro, and does not depend on the development computer after installation.
+- Documented the standalone preview build, device installation flow, offline-safe local functionality, network-backed limitations, and a physical-iPhone online-to-offline validation procedure.
+- Synchronized version 0.34.1 with iOS build 222 and Android version code 222.
+
 ## v0.34.0
 
 - Added an explicit countryside selection state for map holds that fall inside an exact country boundary but outside every exact city and district boundary. It clears the city objective, replaces the city medal rail with localized “Out of the city / Exploring the countryside” status, and leaves open-ocean holds ignored.

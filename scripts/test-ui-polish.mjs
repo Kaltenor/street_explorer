@@ -412,6 +412,11 @@ assert.match(summarySource, /CARNET DE L'EXPLORATEUR/);
 assert.match(summarySource, /<AtlasStamp/);
 assert.match(summarySource, /presentation: "map-selection"/);
 assert.match(summarySource, /mapContentInsets=\{mapStampInsets\}/);
+assert.match(summarySource, /message=\{isLaunchDismissed \? atlasStampMessage : null\}/);
+assert.match(
+  summarySource,
+  /if \(\s*!isLaunchDismissed \|\|\s*!objective \|\|\s*!objectiveStats\?\.permanentlyCompleted\s*\)/
+);
 assert.match(summarySource, /onLayout=\{handleMapTopPanelLayout\}/);
 assert.match(summarySource, /onLayout=\{handleMapBottomPanelLayout\}/);
 assert.match(atlasSource, /height: 106/);

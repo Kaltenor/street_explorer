@@ -2873,7 +2873,11 @@ export function MapScreen({
   ]);
 
   useEffect(() => {
-    if (!objective || !objectiveStats?.permanentlyCompleted) {
+    if (
+      !isLaunchDismissed ||
+      !objective ||
+      !objectiveStats?.permanentlyCompleted
+    ) {
       return;
     }
 
@@ -2889,7 +2893,12 @@ export function MapScreen({
         ? language === "fr" ? "VILLE COMPL\u00c8TE" : "CITY COMPLETE"
         : language === "fr" ? "QUARTIER COMPL\u00c9T\u00c9" : "DISTRICT COMPLETE"
     });
-  }, [language, objective, objectiveStats?.permanentlyCompleted]);
+  }, [
+    isLaunchDismissed,
+    language,
+    objective,
+    objectiveStats?.permanentlyCompleted
+  ]);
 
   useEffect(() => {
     if (!expeditionDistrict) {
@@ -5521,7 +5530,7 @@ export function MapScreen({
 
       <AtlasStamp
         mapContentInsets={mapStampInsets}
-        message={atlasStampMessage}
+        message={isLaunchDismissed ? atlasStampMessage : null}
         onDismiss={clearAtlasStamp}
       />
       <ForbiddenZoneCommentModal

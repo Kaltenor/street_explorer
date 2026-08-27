@@ -7,7 +7,7 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.34.0)
+## Current shipped medal contract (v0.34.2)
 
 - The frozen offline catalogue contains 6,082 medals across France's 500 largest communes, including departments and collectivities overseas. Ranks 1–100 have at least 20 medals and ranks 101–500 at least 10. Thonon v1 retains 10 balanced commune-local landmarks; Paris v2 contains 60, Marseille v2 contains 38, Lyon v2 contains 44, and Villeurbanne v2 contains 20.
 - Belgium, Germany, Italy, the Netherlands, and Spain are versioned downloadable country packs. Their compact pinned manifest ships with the app; gzip payloads are size- and SHA-256-verified, schema-validated, atomically cached, and reusable offline. A failed download leaves non-medal map hydration available and exposes an explicit retry state.
