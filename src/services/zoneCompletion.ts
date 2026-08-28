@@ -364,21 +364,31 @@ export async function calculateZoneCompletionStats(
     achievement = await getZoneAchievement(zone.id);
   }
 
+  const permanentlyCompleted = Boolean(achievement);
+  const displayedExploredCells = achievement
+    ? Math.max(uniqueExplored, achievement.exploredCells)
+    : uniqueExplored;
+  const displayedTotalZoneCells = achievement
+    ? achievement.totalZoneCells
+    : totalZoneCells;
+
   return {
     completedAt: achievement?.completedAt ?? null,
-    completionPercent,
-    completionStatus: !completionEligible
-      ? "invalid_boundary"
-      : rawTotalZoneCells === null
-        ? "too_large"
-        : "available",
+    completionPercent: achievement ? 100 : completionPercent,
+    completionStatus: achievement
+      ? "available"
+      : !completionEligible
+        ? "invalid_boundary"
+        : rawTotalZoneCells === null
+          ? "too_large"
+          : "available",
     directlyWalkedCells,
-    exploredCells: uniqueExplored,
+    exploredCells: displayedExploredCells,
     forbiddenCells,
     inferredCells,
     loopFilledCells,
-    permanentlyCompleted: Boolean(achievement),
-    totalZoneCells
+    permanentlyCompleted,
+    totalZoneCells: displayedTotalZoneCells
   };
 }
 
