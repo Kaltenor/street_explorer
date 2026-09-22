@@ -101,6 +101,11 @@ export function runZoneCompletionSingleFlight<T>(
 
   let entry = completionFlights.get(key) as SingleFlightEntry<T> | undefined;
 
+  if (entry?.controller.signal.aborted) {
+    completionFlights.delete(key);
+    entry = undefined;
+  }
+
   if (!entry) {
     const controller = new AbortController();
     const nextEntry: SingleFlightEntry<T> = {

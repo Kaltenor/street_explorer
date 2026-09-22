@@ -1,3 +1,4 @@
+import { withRequestDeadline } from "./networkRequest";
 import { getDatabase } from "../database/db";
 import { MedalCategory } from "../types/medal";
 
@@ -61,20 +62,23 @@ export async function fetchPoiCandidatesForReview(
   );
 
   try {
-    const response = await fetch("https://overpass-api.de/api/interpreter", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "text/plain;charset=UTF-8"
-      },
-      body: buildCandidateQuery(bounds)
-    });
+    const payload = await withRequestDeadline(async (signal) => {
+      const response = await fetch("https://overpass-api.de/api/interpreter", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "text/plain;charset=UTF-8"
+        },
+        signal,
+        body: buildCandidateQuery(bounds)
+      });
 
-    if (!response.ok) {
-      throw new Error(`OpenStreetMap candidate request failed (${response.status}).`);
-    }
+      if (!response.ok) {
+        throw new Error(`OpenStreetMap candidate request failed (${response.status}).`);
+      }
 
-    const payload = await response.json() as { elements?: OverpassElement[] };
+      return await response.json() as { elements?: OverpassElement[] };
+    }, 55_000);
     const candidates = (payload.elements ?? [])
       .map(toPoiCandidate)
       .filter((candidate): candidate is PoiCandidate => candidate !== null)

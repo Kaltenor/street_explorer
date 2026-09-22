@@ -87,7 +87,7 @@ export const PLAYER_SPEECH_MESSAGES: Record<
     ],
     walkStarted: [
       "Boots laced. Adventure awaits!",
-      "The expedition begins!",
+      "The walk begins!",
       "Forward! There are streets to conquer.",
       "A fresh route awaits our footprints.",
       "Compass ready. Curiosity forward!",
@@ -98,7 +98,7 @@ export const PLAYER_SPEECH_MESSAGES: Record<
     ],
     walkStopped: [
       "Quill down. A fine chapter!",
-      "Expedition complete. Boots may celebrate.",
+      "Walk complete. Boots may celebrate.",
       "A worthy route for the chronicles!",
       "The streets may rest now.",
       "Route secured. Legend improved.",
@@ -166,7 +166,7 @@ export const PLAYER_SPEECH_MESSAGES: Record<
     ],
     walkStarted: [
       "Bottes lacées. L'aventure nous attend !",
-      "L'expédition commence !",
+      "La marche commence !",
       "En avant ! Des rues nous attendent.",
       "Un nouvel itinéraire attend nos pas.",
       "Boussole prête. Curiosité en avant !",
@@ -177,7 +177,7 @@ export const PLAYER_SPEECH_MESSAGES: Record<
     ],
     walkStopped: [
       "Plume posée. Quel beau chapitre !",
-      "Expédition terminée. Les bottes peuvent fêter ça.",
+      "Marche terminée. Les bottes peuvent fêter ça.",
       "Un itinéraire digne des chroniques !",
       "Les rues peuvent se reposer maintenant.",
       "Itinéraire assuré. Légende améliorée.",

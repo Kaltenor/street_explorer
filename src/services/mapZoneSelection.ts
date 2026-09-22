@@ -4,6 +4,32 @@ type MapZoneScopeChoiceInput = {
   heldCityId: string | null;
 };
 
+// A missing district is normal for many cities. It must not force a network
+// request before a usable local city selection can be presented.
+export async function resolveMapSelection<T>(options: {
+  visible: T | null;
+  loadCached: () => Promise<T>;
+  loadRemote: (cached: T) => Promise<T>;
+  hasObjective: (result: T) => boolean;
+  signal: AbortSignal;
+}): Promise<T> {
+  const checkCancelled = () => {
+    if (options.signal.aborted) {
+      const error = new Error("Map selection superseded");
+      error.name = "AbortError";
+      throw error;
+    }
+  };
+  checkCancelled();
+  if (options.visible && options.hasObjective(options.visible)) return options.visible;
+  const cached = await options.loadCached();
+  checkCancelled();
+  if (options.hasObjective(cached)) return cached;
+  const remote = await options.loadRemote(cached);
+  checkCancelled();
+  return remote;
+}
+
 export const MAP_ZONE_SELECTION_CONFIG = {
   angleSteps: 16,
   maxHitSlopMeters: 120,

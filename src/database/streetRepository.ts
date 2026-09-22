@@ -147,47 +147,6 @@ export async function getAllStreetSegments(): Promise<OsmStreetSegment[]> {
   return rows.map(mapStreetSegmentRow);
 }
 
-export async function getStreetSegmentsWithinBounds(bounds: {
-  maxLatitude: number;
-  maxLongitude: number;
-  minLatitude: number;
-  minLongitude: number;
-}): Promise<OsmStreetSegment[]> {
-  const db = await getDatabase();
-  const rows = await db.getAllAsync<OsmStreetSegmentRow>(
-    `
-      SELECT
-        id,
-        name,
-        highway,
-        access,
-        foot,
-        bridge,
-        tunnel,
-        layer,
-        coordinates_json,
-        min_latitude,
-        max_latitude,
-        min_longitude,
-        max_longitude,
-        fetched_at
-      FROM osm_street_segments
-      WHERE max_latitude >= ?
-        AND min_latitude <= ?
-        AND max_longitude >= ?
-        AND min_longitude <= ?
-        AND id LIKE 'way/%/part/%'
-      ORDER BY id
-    `,
-    bounds.minLatitude,
-    bounds.maxLatitude,
-    bounds.minLongitude,
-    bounds.maxLongitude
-  );
-
-  return rows.map(mapStreetSegmentRow);
-}
-
 export async function deleteAllStreetSegments() {
   const db = await getDatabase();
 

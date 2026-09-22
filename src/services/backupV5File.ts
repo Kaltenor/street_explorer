@@ -60,6 +60,7 @@ export async function inspectBackupV5File(
     const blockChecksums: number[] = [];
 
     for (const plan of manifest.blocks) {
+      await yieldBetweenBackupBlocks();
       const expectedKind =
         plan.kind === "hot"
           ? BACKUP_V5_RECORD_KIND.hotBlock
@@ -123,6 +124,7 @@ export async function* readBackupV5Blocks(
     }
 
     for (const plan of expectedManifest.blocks) {
+      await yieldBetweenBackupBlocks();
       const expectedKind =
         plan.kind === "hot"
           ? BACKUP_V5_RECORD_KIND.hotBlock
@@ -178,6 +180,7 @@ async function writeBackupV5Archive(
     handle.writeBytes(manifestRecord.bytes);
 
     for (const plan of manifest.blocks) {
+      await yieldBetweenBackupBlocks();
       const sessions = await source.loadSessions(plan.sessionIds);
       const payload = createBackupV5BlockPayload(plan, sessions);
       const kind =
@@ -261,3 +264,7 @@ function assertMagic(bytes: Uint8Array) {
 }
 
 const BACKUP_V5_MAX_RECORD_BYTES = 256 * 1024 * 1024;
+
+function yieldBetweenBackupBlocks() {
+  return new Promise<void>((resolve) => setTimeout(resolve, 0));
+}

@@ -131,7 +131,6 @@ export type AtlasPageId =
   | "map"
   | "completion"
   | "details"
-  | "expeditions"
   | "history"
   | "medals"
   | "options";
@@ -167,7 +166,6 @@ const ATLAS_DOCK_ITEMS: Array<{
   { icon: "time-outline", id: "history" },
   { icon: "trophy-outline", id: "completion" },
   { icon: "medal-outline", id: "medals" },
-  { icon: "compass-outline", id: "expeditions" },
   { icon: "options-outline", id: "options" }
 ];
 
@@ -207,7 +205,6 @@ export function AtlasNavigationDock({
     map: strings.common.map,
     completion: strings.common.completion,
     details: strings.common.details,
-    expeditions: language === "fr" ? "Expéditions" : "Expeditions",
     history: strings.common.history,
     medals: language === "fr" ? "Médailles" : "Medals",
     options: strings.common.options
@@ -291,9 +288,6 @@ export function AtlasNavigationDock({
                 highlighted ? styles.navigationDockItemActive : null,
                 expanded ? styles.navigationDockItemExpanded : null,
                 expanded && isCompactDock ? styles.navigationDockItemExpandedCompact : null,
-                index === ATLAS_DOCK_ITEMS.length - 1
-                  ? styles.navigationDockOptionsItem
-                  : null,
                 disabled ? styles.navigationDockDisabled : null
               ]}
             >
@@ -896,6 +890,7 @@ const styles = createAppearanceStyles({
   },
   navigationDock: {
     alignItems: "center",
+    justifyContent: "space-between",
     flexDirection: "row",
     gap: 1,
     marginHorizontal: 8,
@@ -957,7 +952,6 @@ const styles = createAppearanceStyles({
     fontSize: 8,
     letterSpacing: 0
   },
-  navigationDockOptionsItem: { marginLeft: "auto" },
   navigationDockLayer: {
     bottom: 0,
     left: 0,

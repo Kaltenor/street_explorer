@@ -1,10 +1,10 @@
 {
   "name": "street-explorer",
-  "version": "0.34.2",
+  "version": "0.35.2",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
-    "test": "npm run typecheck && npm run test:geometry && npm run test:zones && npm run test:completion && npm run test:ui && npm run test:player && npm run test:player-speech && npm run test:wikipedia && npm run test:medals && npm run test:expeditions && npm run test:backup && npm run test:gpx && npm run test:country-packs && npm run test:docs",
+    "test": "npm run typecheck && npm run test:geometry && npm run test:zones && npm run test:completion && npm run test:ui && npm run test:player && npm run test:player-speech && npm run test:wikipedia && npm run test:medals && npm run test:backup && npm run test:gpx && npm run test:country-packs && npm run test:resilience && npm run test:docs && npm run test:map-provider",
     "postinstall": "node scripts/patch-react-native-maps-poi-filter.js",
     "start": "expo start",
     "start:dev": "expo start --dev-client",
@@ -17,7 +17,6 @@
     "test:country-packs": "node scripts/test-country-packs.mjs",
     "test:backup": "node scripts/test-backup-v5.js",
     "test:gpx": "node scripts/test-gpx-export.js",
-    "test:expeditions": "node scripts/test-district-expeditions.js",
     "test:docs": "node scripts/test-doc-consistency.mjs",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
@@ -30,7 +29,9 @@
     "build:ios:sim": "eas build --platform ios --profile development-simulator",
     "build:ios:preview": "eas build --platform ios --profile preview",
     "test:player": "node scripts/test-player-marker.js",
-    "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs"
+    "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs",
+    "test:resilience": "node scripts/test-resilience.js",
+    "test:map-provider": "node scripts/test-map-provider.js"
   },
   "dependencies": {
     "@expo/vector-icons": "latest",

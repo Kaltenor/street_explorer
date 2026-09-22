@@ -1,3 +1,4 @@
+import { fetchBoundaryData } from "./boundaryRequest";
 import {
   MapCoordinate,
   collectFillableEnclosedExplorationCellIds,
@@ -36,7 +37,7 @@ import {
   runZoneCompletionSingleFlight
 } from "./zoneCompletionLifecycle";
 
-const OVERPASS_ENDPOINT = "https://overpass-api.de/api/interpreter";
+
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
 const COMPLETION_SCAN_YIELD_INTERVAL = 2_048;
 export const ZONE_BOUNDARY_STALE_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
@@ -254,20 +255,9 @@ export async function fetchNearbyOsmZonesWithDebug(
   center: Pick<GpsPoint, "latitude" | "longitude">,
   signal?: AbortSignal
 ): Promise<ZoneFetchResult> {
-  const response = await fetch(OVERPASS_ENDPOINT, {
-    body: buildBoundaryQuery(center.latitude, center.longitude),
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    method: "POST",
-    signal
-  });
-
-  if (!response.ok) {
-    throw new Error(`Overpass boundary request failed: ${response.status}`);
-  }
-
-  const data = (await response.json()) as OverpassBoundaryResponse;
+  const data = await fetchBoundaryData<OverpassBoundaryResponse>(
+    buildBoundaryQuery(center.latitude, center.longitude), signal
+  );
   const fetchedAt = new Date().toISOString();
   const relationElements = (data.elements ?? []).filter((element) => element.type === "relation");
   const mappedZones = relationElements

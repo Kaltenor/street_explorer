@@ -1,5 +1,67 @@
 # Changelog
 
+## v0.35.2
+
+- Prevent Android medal markers from freezing their custom view before layout; redraw once after settling and preload the icon font.
+- iOS build 232; Android version code 232.
+
+## v0.35.1
+
+- Ship the existing Google map appearance support to the Android preview build.
+- Fetch missing local boundaries after launch, retry boundary-service failures through a second endpoint, identify requests, reject partial responses, and report long-press lookup failures.
+- iOS build 231; Android version code 231.
+
+## v0.35.0
+
+- Add a persisted iOS Options → Map provider selector, defaulting to Apple Maps; block changes during recording transitions and unfinished-walk recovery. Persist before switching and preserve the existing provider if saving fails.
+- Include optional Google Maps native support with a separate iOS-restricted key. Older native clients fall back to Apple Maps and explain why Google is unavailable. Android remains Google-only.
+- Remount only the native map when switching, retain its last center/zoom and exploration state, scope Apple POI filtering/muted style/speech offsets to Apple Maps, and apply light/dark Google styles. Gate readiness by native-map identity and avoid replaying old medal focus after remounting.
+- Add executable provider/lifecycle/SQLite/config regressions and physical iPhone test procedures. iOS development client build 230 completed successfully; installation and pending device validation are recorded in Development Build.
+- iOS build 230; Android version code 230.
+
+## v0.34.8
+
+- Read the Android Google Maps key from `GOOGLE_MAPS_API_KEY` through Expo dynamic configuration; reject EAS Android builds without a key. Ignore local environment files and include a key-free example.
+- Configure and verify the Google Maps key's API/package/signing-certificate restrictions, EAS preview environment variable, and Android signing keystore. Document APK distribution and Android device checks; Android preview APK build 229 succeeded; device validation remains pending.
+- iOS build 229; Android version code 229.
+
+## v0.34.7
+
+- Resolve displayed city/district holds from memory, avoid country geometry reads for known urban selections, and reuse validated visible district membership.
+- Select cached cities without awaiting an unnecessary district boundary fetch; publish objectives before completion-cache hydration.
+- Cancel superseded requests and reject stale results, including when choosing an objective directly or entering Forbidden Zone mode. Preserve cross-city teardown and existing native gestures.
+- Add executable visible/cache/remote selection and cancellation regressions. iOS build 228; Android version code 228.
+
+## v0.34.6
+
+- Replace the location-label sound with the user-selected Piano_Ui (4).wav, copied unchanged. Keep existing volume, mute, and cancellation behavior.
+- Extend the label to 3.2 seconds to accommodate the piano decay; remove the superseded procedural sound/generator and update provenance.
+- iOS build 227; Android version code 227.
+
+## v0.34.5
+
+- Replace city/district and countryside selection stamps with an unboxed map label, fine brass rules, smooth reveal/fade, and an original soft offline sound cue.
+- Cancel superseded labels and delayed audio, keep map touches available, and respect sound settings, Reduce Motion, launch gating, and day/night appearance.
+- Preserve medal, objective-completion, and enclosure celebrations. Add sound cancellation/muting and PCM-envelope regression checks.
+- iOS build 226; Android version code 226.
+
+## v0.34.4
+
+- Remove expeditions end to end: journal, mission generation/progress, contextual HUD, rewards, and 200-point seal bonuses. Six Atlas destinations remain, spaced across the footer.
+- Migration 37 atomically removes only legacy expedition tables, retaining walks, exploration, medals, completion, and Forbidden Zones. Preserve historical migrations for upgrades.
+- Continue accepting older Backup V5 archives while ignoring expedition metadata; omit it from new exports and restore previews.
+- Add interruption/retry and legacy-backup regressions; update current documentation and iPhone validation procedures. Release build identifiers: iOS/Android 225.
+
+## v0.34.3
+
+- Publish local map readiness before optional medal work; defer pending route repair until launch dismissal and provide a retry for failed saved-map loading.
+- Keep network deadlines through body consumption; bound country-pack streaming to its manifest size and retain checksum/atomic installation.
+- Reconstruct street completion dates from chronological frozen-route coverage; migration 36 invalidates old rebuild-time dates without revoking earned seals. Rebuild one recording at a time and omit raw GPS reads when unnecessary.
+- Cache saved boundary edges for incremental live enclosure checks and saved city/countryside classification for map updates.
+- Yield between backup records, isolate schema migrations with atomic ledger updates, recover old interrupted loop-fill copies, restart aborted shared completion requests, and journal native GPS before database waits.
+- Add executable network, SQLite migration, backup yielding, historical-date, cancellation, and randomized geometry regressions.
+- Version 0.34.3; iOS build 224 and Android version code 224.
+
 ## v0.34.2
 
 - Deferred cached district/city completion stamps until the Mapbound launch presentation has fully dismissed, preventing reward artwork from appearing over the splash screen.

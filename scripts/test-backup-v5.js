@@ -305,79 +305,23 @@ assert(
   "older V5 manifests without Forbidden Zones remain valid"
 );
 
-const expeditionManifest = createBackupV5Manifest({
-  appVersion: "0.16.24",
-  expeditionSystem: {
-    expeditions: [{
-      abandonedAt: null,
-      acceptedAt: "2026-08-02T08:00:00.000Z",
-      completedAt: "2026-08-02T09:00:00.000Z",
-      districtId: "relation/9",
-      districtName: "Test District",
-      id: "expedition-1",
-      kind: "grand_tour",
-      localDate: "2026-08-02",
-      progress: 4,
-      slot: 1,
-      target: 4,
-      updatedAt: "2026-08-02T09:00:00.000Z"
-    }],
-    loopEvidence: [{
-      detectedAt: "2026-08-02T08:30:00.000Z",
-      expeditionId: "expedition-1",
-      sessionId: 1
-    }],
-    seals: [{
-      districtId: "relation/9",
-      districtName: "Test District",
-      earnedAt: "2026-08-02T09:00:00.000Z",
-      expeditionId: "expedition-1",
-      id: "seal-expedition-1",
-      kind: "grand_tour",
-      localDate: "2026-08-02"
-    }]
-  },
-  exportedAt: "2026-08-02T12:00:00.000Z",
-  medalSystem: {
-    acquisitionEvents: [],
-    collectedMedals: [],
-    retroScanSettings: []
-  },
-  sessions: groupedSessions,
-  zoneAchievements: []
-});
-assertBackupV5Manifest(expeditionManifest);
-assert(
-  expeditionManifest.expeditionSystem.seals.length === 1,
-  "V5 manifests preserve new expedition kinds, loop evidence, and seals"
-);
-
-let rejectedOrphanedExpeditionEvidence = false;
-try {
-  assertBackupV5Manifest({
-    ...expeditionManifest,
-    expeditionSystem: {
-      ...expeditionManifest.expeditionSystem,
-      loopEvidence: [{
-        detectedAt: "2026-08-02T08:30:00.000Z",
-        expeditionId: "expedition-1",
-        sessionId: 99999
-      }]
-    }
-  });
-} catch {
-  rejectedOrphanedExpeditionEvidence = true;
-}
+// Legacy mission fields are ignored, even if they contain references no longer relevant.
+const legacyManifest = { ...manifest, expeditionSystem: {
+  expeditions: [{ id: "old-mission" }], seals: [{ expeditionId: "old-mission" }],
+  loopEvidence: [{ expeditionId: "old-mission", sessionId: 99999 }]
+} };
+assertBackupV5Manifest(legacyManifest);
+assertBackupV5Manifest({ ...manifest, expeditionSystem: null });
+const reexported = createBackupV5Manifest(legacyManifest);
+assert(!Object.hasOwn(reexported, "expeditionSystem"), "exports omit retired expedition metadata");
+assert(JSON.stringify(reexported.sessions) === JSON.stringify(manifest.sessions), "legacy metadata does not alter walks");
 
 assert(
   backupSource.includes('reason: "discovered_area" | "recording" | "retro_scan"') &&
     backupSource.includes('["discovered_area", "recording", "retro_scan"].includes'),
   "V5 backup preserves discovered-area medal acquisition events"
 );
-assert(
-  rejectedOrphanedExpeditionEvidence,
-  "V5 validation rejects expedition evidence for a missing walk"
-);
+
 
 console.log("Backup V5 regression checks passed.");
 

@@ -142,10 +142,6 @@ const databaseSource = fs.readFileSync(
   path.resolve(__dirname, "../src/database/db.ts"),
   "utf8"
 );
-const expeditionSource = fs.readFileSync(
-  path.resolve(__dirname, "../src/services/districtExpeditions.ts"),
-  "utf8"
-);
 const countryPackStoreSource = fs.readFileSync(
   path.resolve(__dirname, "../src/services/medalCountryPackStore.ts"),
   "utf8"
@@ -633,7 +629,7 @@ assert(
 assert(
   sha256.sha256Hex(Buffer.from("abc")) ===
     "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad" &&
-    countryPackStoreSource.includes("File.downloadFileAsync") &&
+    countryPackStoreSource.includes("withRequestDeadline") && countryPackStoreSource.includes("response.body?.getReader()") &&
     countryPackStoreSource.includes("sha256Hex(compressed)") &&
     countryPackStoreSource.includes("temporaryFile.rename") &&
     countryPackStoreSource.includes("Paths.document") &&
@@ -682,15 +678,6 @@ assert(
     mapScreenSource.includes("the next refresh will retry") &&
     mapScreenSource.includes("awardMedalsInDiscoveredCells(discoveredCellIds)"),
   "launch and live checks award the validated exploration surface, serialize album writes, and retry changed or failed exploration revisions"
-);
-assert(
-  medalRepositorySource.includes("getUncollectedMedalsInBounds") &&
-    medalRepositorySource.includes("getCollectedMedalsSinceInBounds") &&
-    expeditionSource.includes("getMedalAlbumIdForZone(district)") &&
-    expeditionSource.includes("getStreetSegmentsWithinBounds(bounds)") &&
-    !expeditionSource.includes("getAllStreetSegments") &&
-    !expeditionSource.includes("getAllMedalAlbumProgress"),
-  "district expedition opportunity checks use direct indexed district queries"
 );
 assert(
   medalRepositorySource.includes("medalAlbumSeedOperations") &&

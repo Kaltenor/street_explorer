@@ -7,7 +7,7 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.34.2)
+## Current shipped medal contract (v0.35.2)
 
 - The frozen offline catalogue contains 6,082 medals across France's 500 largest communes, including departments and collectivities overseas. Ranks 1–100 have at least 20 medals and ranks 101–500 at least 10. Thonon v1 retains 10 balanced commune-local landmarks; Paris v2 contains 60, Marseille v2 contains 38, Lyon v2 contains 44, and Villeurbanne v2 contains 20.
 - Belgium, Germany, Italy, the Netherlands, and Spain are versioned downloadable country packs. Their compact pinned manifest ships with the app; gzip payloads are size- and SHA-256-verified, schema-validated, atomically cached, and reusable offline. A failed download leaves non-medal map hydration available and exposes an explicit retry state.
@@ -17,7 +17,7 @@ This document began as the pre-implementation audit and records the decisions im
 - Paris, Marseille, Lyon, Villeurbanne, and Thonon-les-Bains retain curated identities and published medals. The other 495 albums are frozen from official INSEE and Ministry of Culture source snapshots with polygon-validated Wikidata/OpenStreetMap gap filling; runtime network results never create collectibles.
 - The collection keeps permanent Unlocked and Locked sections, All plus every boundary-backed city subdivision for the active album, a sequential numeric fallback when boundaries are unavailable, an offline-safe All Cities view grouped from locally unlocked evidence, durable presentation state, a two-second stereo original CC0 orchestral unlock cue, 3D reveal and flight-to-tab feedback, active-city markers, and Backup V5 preservation.
 - Only unlocked descriptions expose the reward-only Wikipedia action. It opens a localized, read-only in-app WebView when `RNCWebViewModule` is available and otherwise uses the default browser without crashing older native clients.
-- Runtime scaling is local and bounded: the launch pass performs set membership across the finite available catalogue without loading saved GPS routes or absent country packs, pending presentations query referenced albums only, live/Stop work touches the active album, historical work loads spatially overlapping new sessions only, and expedition opportunity checks use indexed active-city bounds.
+- Runtime scaling is local and bounded: the launch pass performs set membership across the finite available catalogue without loading saved GPS routes or absent country packs, pending presentations query referenced albums only, live/Stop work touches the active album, historical work loads spatially overlapping new sessions only,.
 
 The sections below are historical unless a statement is also present in the current sources of truth linked above. In particular, v0.5.0 superseded the original strict evaluator, and later Backup V5 and national-catalogue releases superseded the early backup and Lyon-prototype scope.
 

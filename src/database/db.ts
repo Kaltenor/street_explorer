@@ -1,5 +1,32 @@
 import * as SQLite from "expo-sqlite";
-import { DISTRICT_EXPEDITION_KINDS } from "../types/expedition";
+// Frozen legacy schema values, used only to upgrade pre-removal databases.
+const DISTRICT_EXPEDITION_KINDS = [
+  "explore_cells",
+  "frontier_push",
+  "seal_breach",
+  "dense_survey",
+  "sector_sweep",
+  "northward_scout",
+  "southward_scout",
+  "eastward_scout",
+  "westward_scout",
+  "boundary_scout",
+  "district_heart",
+  "outer_reach",
+  "complete_street",
+  "complete_street_pair",
+  "street_and_cells",
+  "close_loop",
+  "double_loop",
+  "loop_and_cells",
+  "loop_and_frontier",
+  "street_and_loop",
+  "collect_medal",
+  "collect_medal_pair",
+  "medal_and_cells",
+  "field_triad",
+  "grand_tour"
+] as const;
 
 const DISTRICT_EXPEDITION_KIND_SQL = DISTRICT_EXPEDITION_KINDS
   .map((kind) => `'${kind}'`)
@@ -54,7 +81,7 @@ async function initializeDatabase() {
     );
   `);
 
-  await applyMigration(1, "create_walk_tables", async () => {
+  await applyMigration(1, "create_walk_tables", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS walk_sessions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -81,7 +108,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(2, "add_activity_mode_to_walk_sessions", async () => {
+  await applyMigration(2, "add_activity_mode_to_walk_sessions", async (db) => {
     const columns = await db.getAllAsync<{ name: string }>("PRAGMA table_info(walk_sessions)");
     const hasActivityMode = columns.some((column) => column.name === "activity_mode");
 
@@ -98,7 +125,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(3, "add_app_settings", async () => {
+  await applyMigration(3, "add_app_settings", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS app_settings (
         key TEXT PRIMARY KEY NOT NULL,
@@ -107,7 +134,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(4, "add_walk_session_display_name", async () => {
+  await applyMigration(4, "add_walk_session_display_name", async (db) => {
     const columns = await db.getAllAsync<{ name: string }>("PRAGMA table_info(walk_sessions)");
     const hasDisplayName = columns.some((column) => column.name === "display_name");
 
@@ -119,7 +146,7 @@ async function initializeDatabase() {
     }
   });
 
-  await applyMigration(5, "create_osm_street_segments", async () => {
+  await applyMigration(5, "create_osm_street_segments", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS osm_street_segments (
         id TEXT PRIMARY KEY NOT NULL,
@@ -138,13 +165,13 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(6, "clear_oversized_osm_street_cache", async () => {
+  await applyMigration(6, "clear_oversized_osm_street_cache", async (db) => {
     await db.execAsync(`
       DELETE FROM osm_street_segments;
     `);
   });
 
-  await applyMigration(7, "create_completion_tables", async () => {
+  await applyMigration(7, "create_completion_tables", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS zones (
         id TEXT PRIMARY KEY NOT NULL,
@@ -189,14 +216,14 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(8, "reset_explored_cells_for_15m_grid", async () => {
+  await applyMigration(8, "reset_explored_cells_for_15m_grid", async (db) => {
     await db.execAsync(`
       DELETE FROM explored_cells;
       DELETE FROM loop_fills;
     `);
   });
 
-  await applyMigration(9, "create_zone_cell_totals", async () => {
+  await applyMigration(9, "create_zone_cell_totals", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS zone_cell_totals (
         zone_id TEXT NOT NULL,
@@ -208,7 +235,15 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(10, "allow_global_loop_fills", async () => {
+  await applyMigration(10, "allow_global_loop_fills", async (db) => {
+    const source = await db.getFirstAsync("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'loop_fills'");
+    const replacement = await db.getFirstAsync("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'loop_fills_next'");
+    // Recover an interruption from older, non-transactional application versions.
+    if (!source && replacement) {
+      await db.execAsync("ALTER TABLE loop_fills_next RENAME TO loop_fills;");
+      return;
+    }
+    if (source && replacement) await db.execAsync("DROP TABLE loop_fills_next;");
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS loop_fills_next (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -253,7 +288,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(11, "add_step_count_to_walk_sessions", async () => {
+  await applyMigration(11, "add_step_count_to_walk_sessions", async (db) => {
     const columns = await db.getAllAsync<{ name: string }>("PRAGMA table_info(walk_sessions)");
     const hasStepCount = columns.some((column) => column.name === "step_count");
 
@@ -265,7 +300,7 @@ async function initializeDatabase() {
     }
   });
 
-  await applyMigration(12, "freeze_rendered_routes_and_deduplicate_gps", async () => {
+  await applyMigration(12, "freeze_rendered_routes_and_deduplicate_gps", async (db) => {
     await db.execAsync(`
       DELETE FROM gps_points
       WHERE id NOT IN (
@@ -288,13 +323,13 @@ async function initializeDatabase() {
       );
     `);
   });
-  await applyMigration(13, "reset_unstable_osm_segment_ids", async () => {
+  await applyMigration(13, "reset_unstable_osm_segment_ids", async (db) => {
     // Older fetches numbered only the locally returned pieces of each OSM way.
     // Overlapping fetch windows could therefore overwrite an unrelated road piece
     // under the same ID and leave gaps in the routing graph.
     await db.execAsync("DELETE FROM osm_street_segments;");
   });
-  await applyMigration(14, "track_pending_recording_repairs", async () => {
+  await applyMigration(14, "track_pending_recording_repairs", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS pending_recording_repairs (
         session_id INTEGER PRIMARY KEY NOT NULL,
@@ -303,7 +338,7 @@ async function initializeDatabase() {
       );
     `);
   });
-  await applyMigration(15, "track_route_snapshot_gps_generation", async () => {
+  await applyMigration(15, "track_route_snapshot_gps_generation", async (db) => {
     const columns = await db.getAllAsync<{ name: string }>(
       "PRAGMA table_info(route_snapshots)"
     );
@@ -327,7 +362,7 @@ async function initializeDatabase() {
       ), 0);
     `);
   });
-  await applyMigration(16, "retain_order-independent_gps_observations", async () => {
+  await applyMigration(16, "retain_order-independent_gps_observations", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS gps_observations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -353,7 +388,7 @@ async function initializeDatabase() {
       FROM gps_points;
     `);
   });
-  await applyMigration(17, "retain_underfilled_recordings_for_late_gps", async () => {
+  await applyMigration(17, "retain_underfilled_recordings_for_late_gps", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS pending_recording_discards (
         session_id INTEGER PRIMARY KEY NOT NULL,
@@ -365,7 +400,7 @@ async function initializeDatabase() {
         ON pending_recording_discards (discard_after);
     `);
   });
-  await applyMigration(18, "consolidate_exploration_into_walks", async () => {
+  await applyMigration(18, "consolidate_exploration_into_walks", async (db) => {
     await db.execAsync(`
       UPDATE walk_sessions
       SET activity_mode = 'walk'
@@ -399,7 +434,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(19, "create_landmark_medal_tables", async () => {
+  await applyMigration(19, "create_landmark_medal_tables", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS medal_albums (
         id TEXT PRIMARY KEY NOT NULL,
@@ -461,7 +496,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(20, "create_poi_candidate_review_tables", async () => {
+  await applyMigration(20, "create_poi_candidate_review_tables", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS poi_candidate_fetches (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -491,7 +526,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(21, "add_exploration_query_indexes", async () => {
+  await applyMigration(21, "add_exploration_query_indexes", async (db) => {
     await db.execAsync(`
       CREATE INDEX IF NOT EXISTS explored_cells_coordinate_cover_index
         ON explored_cells (
@@ -502,7 +537,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(22, "add_zone_completion_v2", async () => {
+  await applyMigration(22, "add_zone_completion_v2", async (db) => {
     const totalColumns = await db.getAllAsync<{ name: string }>(
       "PRAGMA table_info(zone_cell_totals)"
     );
@@ -543,7 +578,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(23, "add_street_topology_metadata", async () => {
+  await applyMigration(23, "add_street_topology_metadata", async (db) => {
     const columns = await db.getAllAsync<{ name: string }>(
       "PRAGMA table_info(osm_street_segments)"
     );
@@ -568,7 +603,7 @@ async function initializeDatabase() {
     await db.execAsync("DELETE FROM osm_street_segments;");
   });
 
-  await applyMigration(24, "add_street_completion_v2", async () => {
+  await applyMigration(24, "add_street_completion_v2", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS street_completion_v1_evidence (
         segment_id TEXT PRIMARY KEY NOT NULL,
@@ -635,7 +670,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(25, "cache_zone_completion_snapshots", async () => {
+  await applyMigration(25, "cache_zone_completion_snapshots", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS exploration_revisions (
         mode TEXT PRIMARY KEY NOT NULL,
@@ -688,7 +723,7 @@ async function initializeDatabase() {
       );
     `);
   });
-  await applyMigration(26, "preserve_zone_admin_level", async () => {
+  await applyMigration(26, "preserve_zone_admin_level", async (db) => {
     const zoneColumns = await db.getAllAsync<{ name: string }>(
       "PRAGMA table_info(zones)"
     );
@@ -709,7 +744,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(27, "add_district_expeditions", async () => {
+  await applyMigration(27, "add_district_expeditions", async (db) => {
     await db.execAsync(`
       CREATE TABLE IF NOT EXISTS district_expeditions (
         id TEXT PRIMARY KEY NOT NULL,
@@ -760,7 +795,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(28, "enforce_one_active_district_expedition", async () => {
+  await applyMigration(28, "enforce_one_active_district_expedition", async (db) => {
     await db.execAsync(`
       CREATE UNIQUE INDEX IF NOT EXISTS idx_district_expeditions_one_active
         ON district_expeditions ((1))
@@ -770,7 +805,7 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(29, "scale_city_medal_catalogue", async () => {
+  await applyMigration(29, "scale_city_medal_catalogue", async (db) => {
     const albumColumns = await db.getAllAsync<{ name: string }>(
       "PRAGMA table_info(medal_albums)"
     );
@@ -845,22 +880,19 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(30, "allow_multiple_active_district_expeditions", async () => {
+  await applyMigration(30, "allow_multiple_active_district_expeditions", async (db) => {
     await db.execAsync(`
       DROP INDEX IF EXISTS idx_district_expeditions_one_active;
     `);
   });
 
-  await applyMigration(31, "expand_and_refresh_district_expeditions", async () => {
+  await applyMigration(31, "expand_and_refresh_district_expeditions", async (db) => {
     const table = await db.getFirstAsync<{ sql: string | null }>(
       "SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'district_expeditions'"
     );
 
     if (!table?.sql?.includes("'grand_tour'")) {
-      await db.execAsync("PRAGMA foreign_keys = OFF;");
-      try {
-        await db.withExclusiveTransactionAsync(async (transaction) => {
-          await transaction.execAsync(`
+      await db.execAsync(`
             DROP TABLE IF EXISTS district_expeditions_next;
 
             CREATE TABLE district_expeditions_next (
@@ -896,10 +928,7 @@ async function initializeDatabase() {
             CREATE INDEX district_expeditions_active_index
               ON district_expeditions (accepted_at, completed_at, abandoned_at);
           `);
-        });
-      } finally {
-        await db.execAsync("PRAGMA foreign_keys = ON;");
-      }
+
     }
 
     const foreignKeyViolations = [
@@ -921,27 +950,42 @@ async function initializeDatabase() {
     `);
   });
 
-  await applyMigration(32, "add_forbidden_zones", async () => {
+  await applyMigration(32, "add_forbidden_zones", async (db) => {
     await ensureForbiddenZoneSchema(db);
   });
 
   // Development builds can carry a migration id written by another branch.
   // Repair the actual schema under a new ledger entry, then enforce the same
   // idempotent invariant even if that numeric id is already present as well.
-  await applyMigration(33, "repair_forbidden_zone_schema", async () => {
+  await applyMigration(33, "repair_forbidden_zone_schema", async (db) => {
     await ensureForbiddenZoneSchema(db);
   });
   await ensureForbiddenZoneSchema(db);
-  await applyMigration(34, "add_forbidden_zone_comments", async () => {
+  await applyMigration(34, "add_forbidden_zone_comments", async (db) => {
     await ensureForbiddenZoneCommentColumn(db);
   });
   await ensureForbiddenZoneCommentColumn(db);
-  await applyMigration(35, "remove_orphaned_forbidden_zone_cells", async () => {
+  await applyMigration(35, "remove_orphaned_forbidden_zone_cells", async (db) => {
     await ensureNoOrphanedForbiddenZoneCells(db);
   });
   // Development migration ledgers can collide across branches, so enforce the
   // repair invariant even if migration id 35 was already claimed elsewhere.
   await ensureNoOrphanedForbiddenZoneCells(db);
+
+  await applyMigration(36, "rebuild_historical_street_completion_dates", async (db) => {
+    await db.execAsync(`
+      UPDATE street_completion_segments SET completed_at = NULL;
+      UPDATE street_completion_state SET needs_rebuild = 1, status = 'pending' WHERE id = 1;
+    `);
+  });
+
+  await applyMigration(37, "remove_district_expeditions", async (db) => {
+    await db.execAsync(`
+      DROP TABLE IF EXISTS district_expedition_loop_evidence;
+      DROP TABLE IF EXISTS district_expedition_seals;
+      DROP TABLE IF EXISTS district_expeditions;
+    `);
+  });
 
   await db.runAsync(`
     UPDATE collected_medals
@@ -1009,22 +1053,33 @@ async function ensureNoOrphanedForbiddenZoneCells(
   }
 }
 
-async function applyMigration(id: number, name: string, migration: () => Promise<void>) {
-  const db = await getDatabase();
-  const existing = await db.getFirstAsync<{ id: number }>(
-    "SELECT id FROM schema_migrations WHERE id = ?",
-    id
-  );
-
-  if (existing) {
-    return;
+async function applyMigration(
+  id: number,
+  name: string,
+  migration: (db: SQLite.SQLiteDatabase) => Promise<void>
+) {
+  const shared = await getDatabase();
+  if (await shared.getFirstAsync("SELECT id FROM schema_migrations WHERE id = ?", id)) return;
+  // A dedicated connection keeps unrelated queries outside the schema transaction.
+  const db = await SQLite.openDatabaseAsync("street_explorer.db", { useNewConnection: true });
+  let began = false;
+  try {
+    // Replacing the expedition parent must not cascade-delete its durable children.
+    await db.execAsync(`PRAGMA foreign_keys = ${id === 31 ? "OFF" : "ON"}; BEGIN IMMEDIATE;`);
+    began = true;
+    if (!await db.getFirstAsync("SELECT id FROM schema_migrations WHERE id = ?", id)) {
+      await migration(db);
+      await db.runAsync(
+        "INSERT INTO schema_migrations (id, name, applied_at) VALUES (?, ?, ?)",
+        id, name, new Date().toISOString()
+      );
+    }
+    await db.execAsync("COMMIT;");
+    began = false;
+  } catch (error) {
+    if (began) await db.execAsync("ROLLBACK;").catch(() => undefined);
+    throw error;
+  } finally {
+    await db.closeAsync();
   }
-
-  await migration();
-  await db.runAsync(
-    "INSERT INTO schema_migrations (id, name, applied_at) VALUES (?, ?, ?)",
-    id,
-    name,
-    new Date().toISOString()
-  );
 }

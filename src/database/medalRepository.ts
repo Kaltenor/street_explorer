@@ -30,13 +30,6 @@ const medalAlbumSeedOperations = new Map<
 >();
 let medalAlbumSeedChain = Promise.resolve();
 
-type MedalCoordinateRow = {
-  acquired_at?: string;
-  latitude: number;
-  longitude: number;
-  medal_id: string;
-};
-
 type CollectedMedalCityRow = CollectedMedalRow & {
   category: CollectedMedal["category"];
   city_name_json: string;
@@ -326,76 +319,6 @@ export async function getPendingMedalPresentations() {
 
   return albums.flatMap((album) =>
     album?.medals.filter((medal) => medal.presentationState === "pending") ?? []
-  );
-}
-
-export async function getUncollectedMedalsInBounds(
-  albumId: string,
-  bounds: {
-    maxLatitude: number;
-    maxLongitude: number;
-    minLatitude: number;
-    minLongitude: number;
-  }
-) {
-  const album = await ensureMedalAlbumSeeded(albumId);
-
-  if (!album) {
-    return [];
-  }
-
-  const db = await getDatabase();
-  return db.getAllAsync<MedalCoordinateRow>(
-    `SELECT medals.id AS medal_id, medals.latitude, medals.longitude
-    FROM medal_album_items
-    JOIN medals ON medals.id = medal_album_items.medal_id
-    LEFT JOIN collected_medals
-      ON collected_medals.album_id = medal_album_items.album_id
-      AND collected_medals.medal_id = medal_album_items.medal_id
-    WHERE medal_album_items.album_id = ?
-      AND collected_medals.medal_id IS NULL
-      AND medals.latitude BETWEEN ? AND ?
-      AND medals.longitude BETWEEN ? AND ?`,
-    albumId,
-    bounds.minLatitude,
-    bounds.maxLatitude,
-    bounds.minLongitude,
-    bounds.maxLongitude
-  );
-}
-
-export async function getCollectedMedalsSinceInBounds(
-  albumId: string,
-  since: string,
-  bounds: {
-    maxLatitude: number;
-    maxLongitude: number;
-    minLatitude: number;
-    minLongitude: number;
-  }
-) {
-  const album = await ensureMedalAlbumSeeded(albumId);
-
-  if (!album) {
-    return [];
-  }
-
-  const db = await getDatabase();
-  return db.getAllAsync<MedalCoordinateRow & { acquired_at: string }>(
-    `SELECT medals.id AS medal_id, medals.latitude, medals.longitude,
-      medal_acquisition_events.acquired_at
-    FROM medal_acquisition_events
-    JOIN medals ON medals.id = medal_acquisition_events.medal_id
-    WHERE medal_acquisition_events.album_id = ?
-      AND medal_acquisition_events.acquired_at >= ?
-      AND medals.latitude BETWEEN ? AND ?
-      AND medals.longitude BETWEEN ? AND ?`,
-    albumId,
-    since,
-    bounds.minLatitude,
-    bounds.maxLatitude,
-    bounds.minLongitude,
-    bounds.maxLongitude
   );
 }
 

@@ -195,9 +195,13 @@ export function collectEnclosedExplorationCellGroups(
 ) {
   const occupiedCellIds = new Set(cells.map(getExplorationCellId));
 
+  return collectEnclosedGroupsFromContours(occupiedCellIds, buildGridContours(cells));
+}
+
+function collectEnclosedGroupsFromContours(occupiedCellIds: Set<string>, contours: GridContour[]) {
   const claimedCellIds = new Set<string>();
   const groups: string[][] = [];
-  const holeContours = buildGridContours(cells)
+  const holeContours = contours
     .filter((contour) => contour.area < 0)
     .sort((left, right) => Math.abs(right.area) - Math.abs(left.area));
 
@@ -276,17 +280,60 @@ export function collectFillableEnclosedExplorationCellIds(
     .filter((group) => group.length <= maxCellCount)
     .flat();
 }
+/** Cache unchanged saved boundaries; update only cells adjacent to active changes. */
+export function createIncrementalEnclosureCollector(savedCells: readonly string[], maxArea: number) {
+  const saved = new Set(savedCells);
+  const occupied = new Set(saved);
+  const boundaryByCell = new Map<string, GridEdge[]>();
+  let previousActive = new Set<string>();
+  let result: string[] | null = null;
+  const updateBoundary = (id: string) => {
+    const edges = occupied.has(id) ? buildGridBoundaryEdges([id], occupied) : [];
+    if (edges.length) boundaryByCell.set(id, edges);
+    else boundaryByCell.delete(id);
+  };
+  let initialized = false;
+  return (activeCells: readonly string[]) => {
+    if (!initialized) {
+      for (const id of saved) updateBoundary(id);
+      initialized = true;
+    }
+    const active = new Set(activeCells.filter((id) => !saved.has(id)));
+    const changed = new Set<string>();
+    for (const id of previousActive) if (!active.has(id)) { occupied.delete(id); changed.add(id); }
+    for (const id of active) if (!previousActive.has(id)) { occupied.add(id); changed.add(id); }
+    previousActive = active;
+    if (!changed.size && result) return result;
+    const affected = new Set<string>();
+    for (const id of changed) {
+      const { x, y } = stringToCellKey(id);
+      for (const [dx, dy] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+        affected.add(cellKeyToString({ x: x + dx, y: y + dy }));
+      }
+    }
+    for (const id of affected) updateBoundary(id);
+    const contours = traceGridOutlinePaths([...boundaryByCell.values()].flat())
+      .map((path) => ({ path, area: calculateSignedGridPathArea(path) }))
+      .filter((contour) => contour.area !== 0);
+    const maxCells = Math.floor(maxArea / (EXPLORATION_CELL_SIZE_METERS ** 2));
+    result = collectEnclosedGroupsFromContours(occupied, contours)
+      .filter((group) => group.length <= maxCells).flat();
+    return result;
+  };
+}
+
 function collectUnoccupiedCellsInsideGridContour(
   contour: GridContour,
   occupiedCellIds: Set<string>,
   maxCellCount?: number
 ) {
-  const xValues = contour.path.map((point) => point.x);
-  const yValues = contour.path.map((point) => point.y);
-  const minX = Math.floor(Math.min(...xValues));
-  const maxX = Math.ceil(Math.max(...xValues));
-  const minY = Math.floor(Math.min(...yValues));
-  const maxY = Math.ceil(Math.max(...yValues));
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  for (const point of contour.path) {
+    minX = Math.min(minX, point.x); maxX = Math.max(maxX, point.x);
+    minY = Math.min(minY, point.y); maxY = Math.max(maxY, point.y);
+  }
+  minX = Math.floor(minX); maxX = Math.ceil(maxX);
+  minY = Math.floor(minY); maxY = Math.ceil(maxY);
   const enclosedCellIds: string[] = [];
 
   for (let x = minX; x < maxX; x += 1) {
@@ -572,11 +619,11 @@ function buildGridContours(cells: readonly ExplorationCellReference[]): GridCont
     .filter((contour) => contour.area !== 0);
 }
 
-function buildGridBoundaryEdges(cells: readonly ExplorationCellReference[]) {
-  const cellKeys = new Set(cells.map(getExplorationCellId));
+function buildGridBoundaryEdges(cells: readonly ExplorationCellReference[], occupied?: Set<string>) {
+  const cellKeys = occupied ?? new Set(cells.map(getExplorationCellId));
   const edges: GridEdge[] = [];
 
-  for (const cellId of cellKeys) {
+  for (const cellId of occupied ? cells.map(getExplorationCellId) : cellKeys) {
     const key = stringToCellKey(cellId);
 
     if (!cellKeys.has(cellKeyToString({ x: key.x, y: key.y - 1 }))) {

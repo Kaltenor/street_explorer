@@ -1,3 +1,6 @@
+import { MapLocationLabel, type MapLocationMessage } from "../components/MapLocationLabel";
+import { canChangeMapProvider, type MapProvider } from "../services/mapProvider";
+import { createIncrementalEnclosureCollector } from "../services/explorationArea";
 import {
   type ComponentRef,
   useCallback,
@@ -19,6 +22,7 @@ import {
   AppState,
   ImageBackground,
   Modal,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -47,10 +51,6 @@ import {
 } from "../components/AtlasCabinet";
 import { AtlasHudDivider, AtlasHudTexture } from "../components/AtlasHudDecor";
 import { CompletionModal, CompletionObjective } from "../components/CompletionModal";
-import {
-  DistrictExpeditionModal,
-  getExpeditionTitle
-} from "../components/DistrictExpeditionModal";
 import { ExplorationMap } from "../components/ExplorationMap";
 import { ExplorerScorePanel } from "../components/ExplorerScorePanel";
 import { ForbiddenZoneCommentModal } from "../components/ForbiddenZoneCommentModal";
@@ -126,12 +126,6 @@ import {
   upsertZones
 } from "../database/completionRepository";
 import {
-  abandonDistrictExpedition,
-  acceptDistrictExpedition,
-  getDistrictExpeditionSealCount,
-  recordDistrictExpeditionLoopEvidence
-} from "../database/expeditionRepository";
-import {
   drainPendingBackgroundLocationBatches,
   persistDeliveredBackgroundLocationBatch,
   subscribeToFinalizedBackgroundLocationChanges
@@ -154,7 +148,6 @@ import {
 } from "../services/explorationArea";
 import {
   calculateExplorerScore,
-  EXPLORER_POINTS_PER_EXPEDITION,
   type ExplorerScore
 } from "../services/explorerScore";
 import {
@@ -194,10 +187,9 @@ import {
   shouldRunExpensiveCompletionMaintenance
 } from "../services/zoneCompletionLifecycle";
 import { doesDistrictGeometryBelongToCity } from "../services/zoneBoundaryPolicy";
-import { loadDistrictExpeditionDashboard } from "../services/districtExpeditions";
-import { isLoopExpeditionKind } from "../services/expeditionDefinitions";
 import {
   buildMapZoneSelectionProbeCoordinates,
+  resolveMapSelection,
   shouldOfferMapZoneScopeChoice,
   shouldSelectCountryside
 } from "../services/mapZoneSelection";
@@ -275,10 +267,6 @@ import {
   CollectedMedalCity,
   MedalAlbumProgress
 } from "../types/medal";
-import type {
-  DistrictExpedition,
-  DistrictExpeditionDashboard
-} from "../types/expedition";
 import { MODE_LOCATION_CONFIG } from "../constants/config";
 import {
   createForbiddenZone,
@@ -326,6 +314,10 @@ function getGpsTimestamp(point: GpsPoint) {
 }
 
 type MapScreenProps = {
+  mapProvider: MapProvider;
+  googleMapsAvailable: boolean;
+  isSavingMapProvider: boolean;
+  onChangeMapProvider: (provider: MapProvider) => Promise<void>;
   appearanceMode: AppearanceMode;
   hapticsEnabled: boolean;
   isLaunchDismissed: boolean;
@@ -479,7 +471,16 @@ async function persistRecordingExplorationDelta(
   return [...new Set([...cellIdsBySource.gps, ...cellIdsBySource.inferred])];
 }
 
-async function repairPendingRecordingCaches() {
+let pendingRecordingRepairOperation: Promise<number[]> | null = null;
+function repairPendingRecordingCaches() {
+  if (!pendingRecordingRepairOperation) {
+    pendingRecordingRepairOperation = performPendingRecordingRepairs().finally(() => {
+      pendingRecordingRepairOperation = null;
+    });
+  }
+  return pendingRecordingRepairOperation;
+}
+async function performPendingRecordingRepairs() {
   let sessionIds: number[];
 
   try {
@@ -555,6 +556,10 @@ function returnToMapFromAtlas(onReturn: () => void) {
 
 
 export function MapScreen({
+  mapProvider,
+  googleMapsAvailable,
+  isSavingMapProvider,
+  onChangeMapProvider,
   appearanceMode,
   hapticsEnabled,
   isLaunchDismissed,
@@ -586,12 +591,6 @@ export function MapScreen({
   const [dashboardExpanded, setDashboardExpanded] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [completionVisible, setCompletionVisible] = useState(false);
-  const [expeditionsVisible, setExpeditionsVisible] = useState(false);
-  const [expeditionDashboard, setExpeditionDashboard] =
-    useState<DistrictExpeditionDashboard | null>(null);
-  const [isExpeditionBusy, setIsExpeditionBusy] = useState(false);
-  const [expeditionRevision, setExpeditionRevision] = useState(0);
-  const [expeditionSealCount, setExpeditionSealCount] = useState(0);
   const [medalsVisible, setMedalsVisible] = useState(false);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
   const [collectedMedalCities, setCollectedMedalCities] = useState<CollectedMedalCity[]>([]);
@@ -632,6 +631,8 @@ export function MapScreen({
   const [objectiveHudVisible, setObjectiveHudVisible] = useState(true);
   const [objectiveStats, setObjectiveStats] = useState<ZoneCompletionStats | null>(null);
   const [isObjectiveStatsCalculating, setIsObjectiveStatsCalculating] = useState(false);
+  const [locationMessage, setLocationMessage] = useState<MapLocationMessage | null>(null);
+  const locationMessageIdRef = useRef(0);
   const [atlasStampMessage, setAtlasStampMessage] = useState<AtlasStampMessage | null>(null);
   const [mapOverlayPanelHeights, setMapOverlayPanelHeights] = useState({
     bottom: 0,
@@ -740,8 +741,6 @@ export function MapScreen({
         ? "history"
         : completionVisible
           ? "completion"
-          : expeditionsVisible
-            ? "expeditions"
             : medalsVisible
               ? "medals"
               : optionsVisible
@@ -805,6 +804,8 @@ export function MapScreen({
   const mapBoundarySwapGenerationRef = useRef(0);
   const launchObjectiveSelectionStartedRef = useRef(false);
   const mapZoneSelectionRequestRef = useRef(0);
+  const mapZoneSelectionAbortRef = useRef<AbortController | null>(null);
+  useEffect(() => () => mapZoneSelectionAbortRef.current?.abort(), []);
   const forbiddenZoneRequestRef = useRef(0);
   const objectiveSaveChainRef = useRef(Promise.resolve());
   const objectiveStatsRequestRef = useRef(0);
@@ -814,7 +815,6 @@ export function MapScreen({
   const objectiveScopePairRef = useRef<MapZoneSelection | null>(null);
   const objectiveStatsCacheRef = useRef(new Map<string, ZoneCompletionSnapshot>());
   const completedStampZoneIdsRef = useRef(new Set<string>());
-  const knownExpeditionSealIdsRef = useRef<Set<string> | null>(null);
   const activeClosureMonitorRef = useRef<{
     contextKey: string | null;
     fillCellIds: Set<string>;
@@ -833,6 +833,7 @@ export function MapScreen({
   const streetLoadRequestRef = useRef(0);
   const streetCompletionMigrationStartedRef = useRef(false);
   const isStartingRecordingRef = useRef(false);
+  const isChangingMapProviderRef = useRef(false);
   const isStoppingRecordingRef = useRef(false);
   const lastPlayerLocationPersistedAtRef = useRef(0);
   const latestPlayerLocationForPersistenceRef = useRef<GpsPoint | null>(null);
@@ -1068,24 +1069,21 @@ export function MapScreen({
   const activeClosureContextKey = activeWalk
     ? `${activeWalk.sessionId}:${activeWalk.activityMode}`
     : null;
+  const collectActiveEnclosures = useMemo(() => createIncrementalEnclosureCollector(
+    savedExplorationCellIds, LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activityMode]
+  ), [savedExplorationCellIds, activityMode]);
   const activeClosureFillCellIds = useMemo(() => {
     if (!activeClosureContextKey || !activeWalk) {
       return [];
     }
 
-    const combinedCellIds = [
-      ...new Set([...savedExplorationCellIds, ...activeClosureBoundaryCellIds])
-    ];
-
     return measurePerformance(
       "map.live-enclosure",
-      () => collectFillableEnclosedExplorationCellIds(
-        combinedCellIds,
-        LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode[activeWalk.activityMode]
-      ).sort(),
+      () => collectActiveEnclosures(activeClosureBoundaryCellIds).slice().sort(),
       12
     );
   }, [
+    collectActiveEnclosures,
     activeClosureBoundaryCellIds,
     activeClosureContextKey,
     activeWalk?.activityMode,
@@ -1107,7 +1105,6 @@ export function MapScreen({
           ...savedExplorationCellIds,
           ...(activeWalk?.exploredCellIds ?? [])
         ],
-        expeditionSealCount,
         forbiddenCellIds: forbiddenZoneCellIds,
         loopFillCellIds,
         maxEnclosedAreaSquareMeters:
@@ -1122,7 +1119,6 @@ export function MapScreen({
       activeWalk?.activityMode,
       activeWalk?.exploredCellIds,
       activityMode,
-      expeditionSealCount,
       forbiddenZoneCellIds,
       loopFillCellIds,
       savedExplorationCellIds
@@ -1163,10 +1159,6 @@ export function MapScreen({
       : 0,
     [objective, todayNewCellIds]
   );
-  const expeditionDistrict =
-    objective?.zone.type === "district" && isOfficialDistrictZone(objective.zone)
-      ? objective.zone
-      : null;
   const displayStats = useMemo(
     () => ({
       ...stats,
@@ -1279,6 +1271,8 @@ export function MapScreen({
     promise: Promise<void>;
   } | null>(null);
 
+  const savedDataRefreshGenerationRef = useRef(0);
+  const savedDataRefreshOperationsRef = useRef(new Set<Promise<void>>());
   const refreshSavedData = useCallback((options: {
     hideExplorationDuringRefresh?: boolean;
     repairPendingCaches?: boolean;
@@ -1298,6 +1292,7 @@ export function MapScreen({
       return existingOperation.promise;
     }
 
+    const refreshGeneration = ++savedDataRefreshGenerationRef.current;
     const operation = (async () => {
 
       if (hideExplorationDuringRefresh) {
@@ -1394,7 +1389,6 @@ export function MapScreen({
         savedHistory,
         savedLoopFillCellIds,
         savedLoopFillSummaries,
-        savedExpeditionSealCount,
         exploredCellIds,
         todayNewExploredCellIds,
         explorationRevision,
@@ -1406,7 +1400,6 @@ export function MapScreen({
           getWalkHistory(activityMode),
           getLoopFillCellKeys(activityMode),
           getLoopFillSessionSummaries(activityMode),
-          getDistrictExpeditionSealCount(),
           getExploredCellKeys(activityMode),
           getTodayNewExploredCellKeys(activityMode),
           getExplorationRevision(activityMode),
@@ -1414,10 +1407,7 @@ export function MapScreen({
         ]),
         100
       );
-      const medalData = await loadMedalData(
-        exploredCellIds,
-        explorationRevision
-      );
+      if (refreshGeneration !== savedDataRefreshGenerationRef.current) return;
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
         (longest, walk) => {
@@ -1439,22 +1429,9 @@ export function MapScreen({
 
       setLoopFillCellIds(savedLoopFillCellIds);
       setLoopFillSummaries(savedLoopFillSummaries);
-      setExpeditionSealCount(savedExpeditionSealCount);
       setSavedExplorationCellIds(exploredCellIds);
       setSavedTodayNewCellIds(todayNewExploredCellIds);
       setKnownCityZones(savedCityZones.filter(isZoneCompletionEligible));
-      setMedalPresentationQueue(medalData.pendingMedalPresentations);
-      setCollectedMedalCities(medalData.savedCollectedMedalCities);
-      if (activeMedalAlbumId === activeMedalAlbumIdRef.current) {
-        setMedalPackLoadState(medalData.state);
-        if (medalData.savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
-          setMedalProgress(medalData.savedMedalProgress);
-          setMedalRetroScanComplete(medalData.retroScanComplete);
-        } else if (medalData.state === "unavailable") {
-          setMedalProgress(null);
-          setMedalRetroScanComplete(false);
-        }
-      }
       setStats({
         ...lifetimeStats,
         approximateExploredAreaSquareMeters: exploredCellIds.length * 15 * 15,
@@ -1481,6 +1458,24 @@ export function MapScreen({
           : null
       );
       setIsSavedDataReady(true);
+      // Optional catalogue/network work must never hold local map readiness.
+      if (hideExplorationDuringRefresh && isMapReadyRef.current) setIsExplorationEnabled(true);
+      const medalData = await loadMedalData(exploredCellIds, explorationRevision);
+      if (refreshGeneration === savedDataRefreshGenerationRef.current) {
+        setMedalPresentationQueue(medalData.pendingMedalPresentations);
+        setCollectedMedalCities(medalData.savedCollectedMedalCities);
+        if (activeMedalAlbumId === activeMedalAlbumIdRef.current) {
+          setMedalPackLoadState(medalData.state);
+          if (medalData.savedMedalProgress?.album.id === activeMedalAlbumIdRef.current) {
+            setMedalProgress(medalData.savedMedalProgress);
+            setMedalRetroScanComplete(medalData.retroScanComplete);
+          } else if (medalData.state === "unavailable") {
+            setMedalProgress(null);
+            setMedalRetroScanComplete(false);
+          }
+        }
+
+      }
 
       // Once launch is complete, refreshes also hydrate independent world state.
       // The initial refresh skips this query so it cannot hold the launch gate.
@@ -1502,13 +1497,14 @@ export function MapScreen({
           // A failed cache refresh must never leave already valid exploration hidden.
           await new Promise<void>((resolve) => setTimeout(resolve, 0));
 
-          if (isMapReadyRef.current) {
+          if (isMapReadyRef.current && refreshGeneration === savedDataRefreshGenerationRef.current) {
             setIsExplorationEnabled(true);
           }
         }
       }
     })();
     const trackedOperation = operation.finally(() => {
+      savedDataRefreshOperationsRef.current.delete(trackedOperation);
       if (savedDataRefreshOperationRef.current?.promise === trackedOperation) {
         savedDataRefreshOperationRef.current = null;
       }
@@ -1517,11 +1513,13 @@ export function MapScreen({
       key: operationKey,
       promise: trackedOperation
     };
+    savedDataRefreshOperationsRef.current.add(trackedOperation);
     return trackedOperation;
   }, [activeMedalAlbumId, activityMode, loadDetailedWalks]);
 
   useEffect(() => {
     if (
+      !isLaunchDismissed ||
       !isSavedDataReady ||
       !isRecoveryCheckComplete ||
       activeWalk ||
@@ -1538,21 +1536,20 @@ export function MapScreen({
 
       streetCompletionMigrationStartedRef.current = true;
       getStreetCompletionState()
-        .then((state) =>
-          state.needsRebuild
-            ? rebuildStreetCompletionV2({
-                refreshStreetCoverage: true,
-                shouldAbort: () => Boolean(activeWalkRef.current)
-              })
-            : null
-        )
+        .then(async (state) => {
+          await repairPendingRecordingCaches();
+          return state.needsRebuild ? rebuildStreetCompletionV2({
+            refreshStreetCoverage: true,
+            shouldAbort: () => Boolean(activeWalkRef.current)
+          }) : null;
+        })
         .catch((error) =>
           console.warn("Automatic Street Completion V2 rebuild failed", error)
         );
     }, 0);
 
     return () => clearTimeout(timer);
-  }, [activeWalk, isRecoveryCheckComplete, isSavedDataReady, recoverableRecording]);
+  }, [activeWalk, isLaunchDismissed, isRecoveryCheckComplete, isSavedDataReady, recoverableRecording]);
 
   const toggleLayer = useCallback((layer: keyof MapLayerState) => {
     setLayers((current) => ({
@@ -1560,6 +1557,12 @@ export function MapScreen({
       [layer]: !current[layer]
     }));
   }, []);
+  const clearLocationMessage = useCallback((id: number) => {
+    setLocationMessage((current) => current?.id === id ? null : current);
+  }, []);
+  useEffect(() => {
+    if (!isAppActive || activeAtlasPage || atlasStampMessage || celebrationMedal) setLocationMessage(null);
+  }, [isAppActive, activeAtlasPage, atlasStampMessage, celebrationMedal, locationMessage?.id]);
   const clearAtlasStamp = useCallback(() => {
     setAtlasStampMessage(null);
   }, []);
@@ -1602,20 +1605,33 @@ export function MapScreen({
   }, []);
 
   useEffect(() => {
-    refreshSavedData().catch((error) =>
-      console.warn("Failed to refresh saved map data", error)
-    );
-  }, [refreshSavedData]);
+    let mounted = true;
+    const load = () => refreshSavedData({ repairPendingCaches: isLaunchDismissedRef.current }).catch((error) => {
+      console.warn("Failed to refresh saved map data", error);
+      if (mounted) Alert.alert(
+        language === "fr" ? "Chargement impossible" : "Unable to load saved map",
+        language === "fr" ? "Vos données sont conservées. Réessayez le chargement." : "Your saved data is preserved. Retry loading it.",
+        [{ text: language === "fr" ? "Réessayer" : "Retry", onPress: () => { void load(); } }]
+      );
+    });
+    void load();
+    return () => { mounted = false; };
+  }, [refreshSavedData, language]);
 
   useEffect(() => {
     if (!isLaunchDismissed || !isSavedDataReady) {
       return;
     }
 
+    void getPendingRecordingRepairSessionIds().then((ids) => {
+      if (ids.length && !activeWalkRef.current) {
+        return refreshSavedData({ hideExplorationDuringRefresh: false });
+      }
+    }).catch((error) => console.warn("Deferred recording repair will retry", error));
     getForbiddenZones()
       .then(setForbiddenZones)
       .catch((error) => console.warn("Failed to load Forbidden Zones", error));
-  }, [isLaunchDismissed, isSavedDataReady]);
+  }, [isLaunchDismissed, isSavedDataReady, refreshSavedData]);
 
   useEffect(() => {
     if (!layers.showPaths) {
@@ -2062,13 +2078,13 @@ export function MapScreen({
         : null)
     );
     if (options.showSelectionStamp !== false) {
-      setAtlasStampMessage({
-        detail: cachedStats ? `${zone.name} - ${formatObjectiveCompletion(cachedStats)}` : zone.name,
-        id: Date.now(),
-        presentation: "map-selection",
-        title: zone.type === "city"
-          ? language === "fr" ? "VILLE CHOISIE" : "CITY SELECTED"
-          : language === "fr" ? "QUARTIER CHOISI" : "DISTRICT SELECTED"
+      setLocationMessage({
+        id: ++locationMessageIdRef.current,
+        expiresAt: Date.now() + 3200,
+        name: zone.name,
+        scope: zone.type === "city"
+          ? language === "fr" ? "VILLE" : "CITY"
+          : language === "fr" ? "QUARTIER" : "DISTRICT"
       });
     }
     objectiveSaveChainRef.current = objectiveSaveChainRef.current
@@ -2082,10 +2098,16 @@ export function MapScreen({
   }, [language]);
 
   const applyMapObjective = useCallback((zone: CachedZone) => {
+    mapZoneSelectionAbortRef.current?.abort();
+    mapZoneSelectionRequestRef.current += 1;
+    setIsMapZoneSelectionLoading(false);
     commitMapObjective(zone);
   }, [commitMapObjective]);
 
-  const commitCountrysideSelection = useCallback(async () => {
+  const commitCountrysideSelection = useCallback(async (requestId: number) => {
+    districtZoneLoadRequestRef.current += 1;
+    await commitMapBoundaryContext(EMPTY_MAP_BOUNDARY_CONTEXT);
+    if (mapZoneSelectionRequestRef.current !== requestId) return;
     setIsCountrysideSelected(true);
     setObjective(null);
     setObjectiveHudVisible(true);
@@ -2094,15 +2116,11 @@ export function MapScreen({
     setSelectedZone(null);
     setMapZoneSelection(null);
     objectiveScopePairRef.current = null;
-    districtZoneLoadRequestRef.current += 1;
-    await commitMapBoundaryContext(EMPTY_MAP_BOUNDARY_CONTEXT);
-    setAtlasStampMessage({
-      detail: language === "fr"
-        ? "Exploration de la campagne"
-        : "Exploring the countryside",
-      id: Date.now(),
-      presentation: "map-selection",
-      title: language === "fr" ? "HORS DE LA VILLE" : "OUT OF THE CITY"
+    setLocationMessage({
+      id: ++locationMessageIdRef.current,
+      expiresAt: Date.now() + 3200,
+      name: language === "fr" ? "La campagne" : "The countryside",
+      scope: language === "fr" ? "EXPLORATION" : "EXPLORING"
     });
     objectiveSaveChainRef.current = objectiveSaveChainRef.current
       .then(() => saveCompletionObjective(null))
@@ -2114,73 +2132,87 @@ export function MapScreen({
   const handleMapLongPress = useCallback(async (coordinate: {
     latitude: number;
     longitude: number;
-  }) => {
+  }, showFailure = true) => {
     const requestId = mapZoneSelectionRequestRef.current + 1;
     mapZoneSelectionRequestRef.current = requestId;
+    mapZoneSelectionAbortRef.current?.abort();
+    const selectionController = new AbortController();
+    mapZoneSelectionAbortRef.current = selectionController;
     setIsMapZoneSelectionLoading(true);
     setMapZoneSelection(null);
 
     try {
       objectiveScopePairRef.current = null;
-      await playSelectionHaptic();
+      void playSelectionHaptic();
 
-      let [countries, cities, districts] = await Promise.all([
-        getCachedZones("country"),
-        getCachedZones("city"),
-        getCachedZones("district")
-      ]);
+      const visible = mapBoundaryContextRef.current;
+      let countries: CachedZone[] = [];
+      let cities = visible.city ? [visible.city] : [];
+      let districts = visible.districts;
       const resolveHeldZones = () => {
-        const eligibleCountries = countries.filter(isZoneCompletionEligible);
         const eligibleCities = cities.filter(isZoneCompletionEligible);
         const city = findContainingZoneForMapHold(
-          coordinate,
-          eligibleCities,
-          mapViewportRegionRef.current
+          coordinate, eligibleCities, mapViewportRegionRef.current
         );
-        const eligibleDistricts = districts.filter(
-          (candidate) =>
-            isZoneCompletionEligible(candidate) &&
-            (!city || doesDistrictBelongToCity(candidate, city))
+        const eligibleDistricts = districts === visible.districts && city === visible.city
+          ? districts
+          : districts.filter((candidate) =>
+          isZoneCompletionEligible(candidate) &&
+          (!city || doesDistrictBelongToCity(candidate, city))
         );
         const district = findContainingZoneForMapHold(
-          coordinate,
-          eligibleDistricts,
-          mapViewportRegionRef.current
+          coordinate, eligibleDistricts, mapViewportRegionRef.current
         );
-
-        const country = findContainingZone(coordinate, eligibleCountries);
-
+        const country = !city && !district
+          ? findContainingZone(coordinate, countries.filter(isZoneCompletionEligible))
+          : null;
         return { city, country, district };
       };
-      let { city, country, district } = resolveHeldZones();
-
-      if (!city || !district) {
-        try {
-          const result = await fetchNearbyOsmZonesWithDebug(coordinate);
-          await upsertZones(result.zones);
-          [countries, cities, districts] = await Promise.all([
-            getCachedZones("country"),
-            getCachedZones("city"),
-            getCachedZones("district")
+      const visibleResult = resolveHeldZones();
+      let loadedCache = false;
+      const { city, country, district } = await resolveMapSelection({
+        visible: visibleResult.city && visibleResult.district ? visibleResult : null,
+        hasObjective: (result) => Boolean(result.city || result.district),
+        signal: selectionController.signal,
+        loadCached: async () => {
+          [cities, districts] = await Promise.all([
+            getCachedZones("city"), getCachedZones("district")
           ]);
-          ({ city, country, district } = resolveHeldZones());
-        } catch (error) {
-          console.warn("Failed to load boundaries for map long press", error);
+          loadedCache = true;
+          return resolveHeldZones();
+        },
+        loadRemote: async () => {
+          countries = await getCachedZones("country");
+          if (selectionController.signal.aborted) return resolveHeldZones();
+          try {
+            const result = await fetchNearbyOsmZonesWithDebug(coordinate, selectionController.signal);
+            if (selectionController.signal.aborted) return resolveHeldZones();
+            await upsertZones(result.zones);
+            [countries, cities, districts] = await Promise.all([
+              getCachedZones("country"), getCachedZones("city"), getCachedZones("district")
+            ]);
+          } catch (error) {
+            if (!selectionController.signal.aborted) {
+              console.warn("Failed to load boundaries for map long press", error);
+              throw error;
+            }
+          }
+          return resolveHeldZones();
         }
-      }
+      });
 
       if (mapZoneSelectionRequestRef.current !== requestId) {
         return;
       }
 
-      setKnownCityZones(cities.filter(isZoneCompletionEligible));
+      if (loadedCache) setKnownCityZones(cities.filter(isZoneCompletionEligible));
 
       if (shouldSelectCountryside({
         hasContainingCity: Boolean(city),
         hasContainingCountry: Boolean(country),
         hasContainingDistrict: Boolean(district)
       })) {
-        await commitCountrysideSelection();
+        await commitCountrysideSelection(requestId);
         return;
       }
 
@@ -2192,7 +2224,9 @@ export function MapScreen({
       const currentCityId = objective?.zone.type === "city"
         ? objective.zone.id
         : mapBoundaryContextRef.current.city?.id ?? null;
-      const cityDistrictZones = city
+      const cityDistrictZones = city === visible.city && districts === visible.districts
+        ? districts
+        : city
         ? districts.filter(
             (zone) =>
               isZoneCompletionEligible(zone) && doesDistrictBelongToCity(zone, city)
@@ -2221,15 +2255,8 @@ export function MapScreen({
         heldCityId: city?.id ?? null
       });
       setMapZoneSelection(shouldOfferScopeChoice ? choices : null);
-      await hydrateObjectiveZonesIntoCache(
-        buildCompletionHydrationZones(null, choices),
-        "walk"
-      );
-
-      if (mapZoneSelectionRequestRef.current !== requestId) {
-        return;
-      }
-
+      // The objective effect hydrates/recalculates progress after selection.
+      // SQLite completion reads must not delay acknowledgement of the hold.
       const preferredZone = shouldOfferScopeChoice && objective?.zone.type === "city"
         ? city ?? district
         : district ?? city;
@@ -2237,6 +2264,16 @@ export function MapScreen({
 
       if (preferredZone) {
         applyMapObjective(preferredZone);
+      }
+    } catch (error) {
+      if (!selectionController.signal.aborted && mapZoneSelectionRequestRef.current === requestId) {
+        console.warn("Failed to select map area", error);
+        if (showFailure) Alert.alert(
+          language === "fr" ? "Limites indisponibles" : "Boundaries unavailable",
+          language === "fr"
+            ? "Impossible de charger les villes et arrondissements. Vérifiez votre connexion, puis réessayez avec un appui long."
+            : "Could not load cities and districts. Check your connection, then long-press to try again."
+        );
       }
     } finally {
       if (mapZoneSelectionRequestRef.current === requestId) {
@@ -2247,11 +2284,20 @@ export function MapScreen({
     applyMapObjective,
     commitCountrysideSelection,
     commitMapBoundaryContext,
-    hydrateObjectiveZonesIntoCache,
     language,
     objective?.zone.id,
     objective?.zone.type
   ]);
+
+  const initialBoundaryLookupStarted = useRef(false);
+  useEffect(() => {
+    if (!isLaunchDismissed || !isLaunchObjectiveResolved || !currentLocation ||
+        objective || activeWalk || initialBoundaryLookupStarted.current ||
+        mapZoneSelectionRequestRef.current !== 0) return;
+    initialBoundaryLookupStarted.current = true;
+    // Never block launch on the network. A user hold supersedes this request.
+    void handleMapLongPress(currentLocation, false);
+  }, [isLaunchDismissed, isLaunchObjectiveResolved, currentLocation, objective, activeWalk, handleMapLongPress]);
 
   const handleToggleForbiddenZoneMode = useCallback(() => {
     if (activeWalkRef.current) {
@@ -2262,6 +2308,7 @@ export function MapScreen({
     setIsForbiddenZoneProcessing(false);
     setMapZoneSelection(null);
     mapZoneSelectionRequestRef.current += 1;
+    mapZoneSelectionAbortRef.current?.abort();
     setIsMapZoneSelectionLoading(false);
     setIsForbiddenZoneModeActive((active) => !active);
   }, []);
@@ -2656,11 +2703,6 @@ export function MapScreen({
     };
 
     if (newlyEnclosedCellIds.length > 0) {
-      const activeLoopExpeditions = expeditionDashboard?.active.filter(
-        (expedition) =>
-          isLoopExpeditionKind(expedition.kind) &&
-          expedition.districtId === objective?.zone.id
-      ) ?? [];
 
       setAtlasStampMessage({
         detail: language === "fr"
@@ -2673,24 +2715,12 @@ export function MapScreen({
         title: language === "fr" ? "ZONE ENCLOSE" : "AREA ENCLOSED"
       });
 
-      if (activeLoopExpeditions.length > 0 && activeWalk?.sessionId) {
-        for (const expedition of activeLoopExpeditions) {
-          void recordDistrictExpeditionLoopEvidence(
-            expedition.id,
-            activeWalk.sessionId
-          ).catch((error) =>
-            console.warn("Failed to preserve expedition loop evidence", error)
-          );
-        }
-      }
-
     }
   }, [
     activeClosureContextKey,
     activeClosureFillCellKey,
     activeWalk?.activityMode,
     activeWalk?.sessionId,
-    expeditionDashboard?.active,
     language,
     objective?.mode,
     objective?.zone.id
@@ -2900,69 +2930,10 @@ export function MapScreen({
     objectiveStats?.permanentlyCompleted
   ]);
 
-  useEffect(() => {
-    if (!expeditionDistrict) {
-      setExpeditionDashboard(null);
-      setIsExpeditionBusy(false);
-      return;
-    }
-
-    if (!isAppActive) {
-      return;
-    }
-
-    let isMounted = true;
-    setIsExpeditionBusy(true);
-    loadDistrictExpeditionDashboard(expeditionDistrict)
-      .then((dashboard) => {
-        if (!isMounted) {
-          return;
-        }
-
-        const knownSealIds = knownExpeditionSealIdsRef.current;
-        const newlyEarnedSeal = knownSealIds
-          ? dashboard.seals.find((seal) => !knownSealIds.has(seal.id))
-          : null;
-        knownExpeditionSealIdsRef.current = new Set(
-          dashboard.seals.map((seal) => seal.id)
-        );
-        setExpeditionSealCount(dashboard.seals.length);
-        setExpeditionDashboard(dashboard);
-
-        if (newlyEarnedSeal) {
-          setAtlasStampMessage({
-            detail: newlyEarnedSeal.districtName,
-            id: Date.now(),
-            pointsAwarded: EXPLORER_POINTS_PER_EXPEDITION,
-            presentation: "map-selection",
-            sound: "reward",
-            title: language === "fr" ? "EXPÉDITION ACCOMPLIE" : "EXPEDITION COMPLETE"
-          });
-        }
-      })
-      .catch((error) => console.warn("Failed to load district expeditions", error))
-      .finally(() => {
-        if (isMounted) {
-          setIsExpeditionBusy(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [
-    expeditionDistrict?.fetchedAt,
-    expeditionDistrict?.id,
-    expeditionRevision,
-    isAppActive,
-    language
-  ]);
-
   const closeAllAtlasPages = useCallback(() => {
     setDashboardExpanded(false);
     setHistoryVisible(false);
     setCompletionVisible(false);
-    setExpeditionsVisible(false);
     setMedalsVisible(false);
     setOptionsVisible(false);
     setDiagnosticsVisible(false);
@@ -2997,10 +2968,6 @@ export function MapScreen({
       case "completion":
         setCompletionVisible(true);
         break;
-      case "expeditions":
-        setExpeditionsVisible(true);
-        setExpeditionRevision((revision) => revision + 1);
-        break;
       case "medals":
         setMedalsVisible(true);
         break;
@@ -3009,64 +2976,6 @@ export function MapScreen({
         break;
     }
   }, [activeAtlasPage, closeAllAtlasPages, handleReturnToMapFromAtlas]);
-  const handleOpenExpeditions = useCallback(() => {
-    navigateAtlasPage("expeditions");
-  }, [navigateAtlasPage]);
-
-  const handleAcceptExpedition = useCallback(async (
-    expedition: DistrictExpedition
-  ) => {
-    if (activeWalkRef.current) {
-      Alert.alert(
-        language === "fr" ? "Marche en cours" : "Walk in progress",
-        language === "fr"
-          ? "Terminez la marche avant d’accepter une expédition."
-          : "Finish the walk before accepting an expedition."
-      );
-      return;
-    }
-
-    setIsExpeditionBusy(true);
-    try {
-      await acceptDistrictExpedition(expedition.id);
-      setExpeditionRevision((revision) => revision + 1);
-    } catch (error) {
-      console.warn("Failed to accept district expedition", error);
-      Alert.alert(
-        language === "fr" ? "Expédition indisponible" : "Expedition unavailable",
-        error instanceof Error ? error.message : String(error)
-      );
-    } finally {
-      setIsExpeditionBusy(false);
-    }
-  }, [language]);
-
-  const handleAbandonExpedition = useCallback((expedition: DistrictExpedition) => {
-    Alert.alert(
-      language === "fr" ? "Abandonner l’expédition ?" : "Abandon expedition?",
-      language === "fr"
-        ? "La mission restera dans les choix du jour et pourra être reprise depuis zéro."
-        : "The mission remains in today’s choices and can be restarted from zero.",
-      [
-        { text: strings.common.cancel, style: "cancel" },
-        {
-          text: language === "fr" ? "Abandonner" : "Abandon",
-          style: "destructive",
-          onPress: async () => {
-            setIsExpeditionBusy(true);
-            try {
-              await abandonDistrictExpedition(expedition.id);
-              setExpeditionRevision((revision) => revision + 1);
-            } catch (error) {
-              console.warn("Failed to abandon district expedition", error);
-            } finally {
-              setIsExpeditionBusy(false);
-            }
-          }
-        }
-      ]
-    );
-  }, [language, strings.common.cancel]);
 
   const clearStreetCoverageRetry = useCallback(() => {
     streetRetryAfterRef.current = 0;
@@ -3809,6 +3718,7 @@ export function MapScreen({
 
   const handleStartWalk = useCallback(async () => {
     if (
+      isChangingMapProviderRef.current ||
       activeWalk ||
       recoverableRecording ||
       !isRecoveryCheckComplete ||
@@ -4462,7 +4372,6 @@ export function MapScreen({
             hideExplorationDuringRefresh: false,
             repairPendingCaches: false
           });
-          setExpeditionRevision((revision) => revision + 1);
         } catch (error) {
           console.warn("Recording saved but deferred map refresh failed", error);
         }
@@ -4745,6 +4654,7 @@ export function MapScreen({
 
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (
+      isChangingMapProviderRef.current ||
       !recoverableRecording ||
       isStartingRecordingRef.current ||
       isStoppingRecordingRef.current
@@ -5069,7 +4979,6 @@ export function MapScreen({
         }
 
         await refreshSavedData();
-        setExpeditionRevision((revision) => revision + 1);
         await waitForMapRenderCommit();
       } catch (error) {
         console.warn("Recovered recording saved but refresh failed", error);
@@ -5367,7 +5276,6 @@ export function MapScreen({
       interpolate(strings.map.restorePreviewMessage, {
         achievements: candidate.preview.zoneAchievementCount,
         date: formatBackupExportDate(candidate.preview.exportedAt, language),
-        expeditions: candidate.preview.expeditionSealCount,
         medals: candidate.preview.medalCount,
         points: candidate.preview.pointCount,
         sessions: candidate.preview.sessionCount,
@@ -5388,6 +5296,9 @@ export function MapScreen({
             }
 
             try {
+              await Promise.allSettled([...savedDataRefreshOperationsRef.current]);
+              savedDataRefreshGenerationRef.current += 1;
+              savedDataRefreshOperationRef.current = null;
               await restoreBackupV5(candidate);
               await clearActiveRecordingSettings();
               setSelectedSessionId(null);
@@ -5483,6 +5394,7 @@ export function MapScreen({
     >
     <View style={styles.screen}>
       <ExplorationMap
+        mapProvider={mapProvider}
         activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
         activeRouteChunks={activeWalk?.routeChunks ?? EMPTY_LIVE_ROUTE_CHUNKS}
         appearanceMode={appearanceMode}
@@ -5528,6 +5440,14 @@ export function MapScreen({
         zoneFocusRequestId={zoneFocusRequestId}
       />
 
+      {isLaunchDismissed && isAppActive && !activeAtlasPage && !atlasStampMessage && !celebrationMedal && locationMessage ? (
+        <MapLocationLabel
+          key={locationMessage.id}
+          mapContentInsets={mapStampInsets}
+          message={locationMessage}
+          onDismiss={clearLocationMessage}
+        />
+      ) : null}
       <AtlasStamp
         mapContentInsets={mapStampInsets}
         message={isLaunchDismissed ? atlasStampMessage : null}
@@ -5614,11 +5534,9 @@ export function MapScreen({
           )}
           {!isCountrysideSelected && objective && objectiveHudVisible ? (
             <ObjectiveHud
-              activeExpeditions={expeditionDashboard?.active ?? []}
               isCalculating={isObjectiveStatsCalculating}
               objective={objective}
               language={language}
-              onExpeditionsPress={expeditionDistrict ? handleOpenExpeditions : undefined}
               stats={objectiveStats}
               todayCellCount={todayObjectiveCellCount}
             />
@@ -5717,6 +5635,23 @@ export function MapScreen({
       />
 
       {optionsVisible ? <OptionsModal
+        mapProvider={mapProvider}
+        googleMapsAvailable={googleMapsAvailable}
+        mapProviderDisabled={isSavingMapProvider || !canChangeMapProvider({
+          platform: Platform.OS, recording: isRecording, starting: isStartingRecording,
+          stopping: isComputingRecording, recovering: !isRecoveryCheckComplete || Boolean(recoverableRecording)
+        })}
+        onChangeMapProvider={(provider) => {
+          if (isChangingMapProviderRef.current || isSavingMapProvider || !canChangeMapProvider({
+            platform: Platform.OS, recording: Boolean(activeWalkRef.current),
+            starting: isStartingRecordingRef.current, stopping: isStoppingRecordingRef.current,
+            recovering: !isRecoveryCheckComplete || Boolean(recoverableRecording)
+          })) return;
+          isChangingMapProviderRef.current = true;
+          void onChangeMapProvider(provider).finally(() => {
+            isChangingMapProviderRef.current = false;
+          });
+        }}
         appearanceMode={appearanceMode}
         hapticsEnabled={hapticsEnabled}
         language={language}
@@ -5815,18 +5750,7 @@ export function MapScreen({
         onZonesUpdated={handleCompletionZonesUpdated}
         visible={completionVisible}
       /> : null}
-      {expeditionsVisible ? <DistrictExpeditionModal
-        dashboard={expeditionDashboard}
-        districtAvailable={Boolean(expeditionDistrict)}
-        isBusy={isExpeditionBusy}
-        isRecording={Boolean(activeWalk)}
-        language={language}
-        onAbandon={handleAbandonExpedition}
-        onAccept={handleAcceptExpedition}
-        onClose={handleReturnToMapFromAtlas}
-        onSelectDistrict={() => navigateAtlasPage("completion")}
-        visible={expeditionsVisible}
-      /> : null}
+
       {medalsVisible ? <MedalCollectionModal
         collectedCities={collectedMedalCities}
         districtZones={visibleMapBoundaryContext.districts}
@@ -6034,19 +5958,15 @@ function MapZoneScopePicker({
 }
 
 function ObjectiveHud({
-  activeExpeditions,
   isCalculating,
   objective,
   language,
-  onExpeditionsPress,
   stats,
   todayCellCount
 }: {
-  activeExpeditions: DistrictExpedition[];
   isCalculating: boolean;
   objective: CompletionObjective;
   language: AppLanguage;
-  onExpeditionsPress?: () => void;
   stats: ZoneCompletionStats | null;
   todayCellCount: number;
 }) {
@@ -6055,24 +5975,9 @@ function ObjectiveHud({
   const objectiveProgress = presentedPercent === null
     ? 0
     : Math.max(0, Math.min(100, presentedPercent));
-  const activeInDistrict = activeExpeditions.filter(
-    (expedition) => expedition.districtId === objective.zone.id
-  );
-  const activeExpedition = activeInDistrict[0] ?? null;
 
   return (
-    <TouchableOpacity
-      accessibilityLabel={
-        onExpeditionsPress
-          ? language === "fr" ? "Ouvrir les expéditions du quartier" : "Open district expeditions"
-          : undefined
-      }
-      accessibilityRole={onExpeditionsPress ? "button" : undefined}
-      activeOpacity={onExpeditionsPress ? 0.82 : 1}
-      disabled={!onExpeditionsPress}
-      onPress={onExpeditionsPress}
-      style={styles.objectiveHud}
-    >
+    <View style={styles.objectiveHud}>
       <AtlasHudTexture opacity={0.1} />
       <View style={styles.objectiveHeader}>
         <View style={styles.objectiveSeal}>
@@ -6108,31 +6013,8 @@ function ObjectiveHud({
         </Text>
         <Text style={styles.objectiveToday}>+{todayCellCount} {language === "fr" ? "aujourd’hui" : "today"}</Text>
       </View>
-      {objective.zone.type === "district" ? (
-        <View style={styles.objectiveExpeditionLink}>
-          <Ionicons color={APP_COLORS.gold} name="compass-outline" size={15} />
-          <Text numberOfLines={1} style={styles.objectiveExpeditionText}>
-            {activeInDistrict.length === 1 && activeExpedition
-              ? `${getExpeditionTitle(activeExpedition, language === "fr")} · ${Math.min(
-                  activeExpedition.progress,
-                  activeExpedition.target
-                )}/${activeExpedition.target}`
-              : activeInDistrict.length > 1
-                ? language === "fr"
-                  ? `${activeInDistrict.length} expéditions actives dans ce quartier`
-                  : `${activeInDistrict.length} active expeditions in this district`
-              : activeExpeditions.length > 0
-                ? language === "fr"
-                  ? `${activeExpeditions.length} expédition${activeExpeditions.length === 1 ? "" : "s"} active${activeExpeditions.length === 1 ? "" : "s"} ailleurs`
-                  : `${activeExpeditions.length} active expedition${activeExpeditions.length === 1 ? "" : "s"} elsewhere`
-                : language === "fr"
-                  ? "Ouvrir les expéditions du jour"
-                  : "Open today's expeditions"}
-          </Text>
-          <Ionicons color={APP_COLORS.textMuted} name="chevron-forward" size={14} />
-        </View>
-      ) : null}
-    </TouchableOpacity>
+
+    </View>
   );
 }
 
@@ -6799,6 +6681,10 @@ function formatLoopResultShort(result: LoopProcessingResult, language: AppLangua
 }
 
 function OptionsModal({
+  mapProvider,
+  googleMapsAvailable,
+  mapProviderDisabled,
+  onChangeMapProvider,
   appearanceMode,
   hapticsEnabled,
   language,
@@ -6816,6 +6702,10 @@ function OptionsModal({
   soundEnabled,
   visible
 }: {
+  mapProvider: MapProvider;
+  googleMapsAvailable: boolean;
+  mapProviderDisabled: boolean;
+  onChangeMapProvider: (provider: MapProvider) => void;
   appearanceMode: AppearanceMode;
   hapticsEnabled: boolean;
   language: AppLanguage;
@@ -6877,6 +6767,44 @@ function OptionsModal({
             icon="language-outline"
             title={language === "fr" ? "R\u00c9GLAGES DE L'ATLAS" : "ATLAS SETTINGS"}
           />
+          {Platform.OS === "ios" ? (
+            <View style={styles.optionPanel}>
+              <Text style={styles.pathDisplayTitle}>
+                {language === "fr" ? "Fournisseur de carte" : "Map provider"}
+              </Text>
+              <View style={styles.appearanceOptions}>
+                {(["apple", "google"] as const).map((provider) => {
+                  const selected = mapProvider === provider;
+                  const disabled = mapProviderDisabled || (provider === "google" && !googleMapsAvailable);
+                  return (
+                    <TouchableOpacity
+                      key={provider}
+                      accessibilityRole="radio"
+                      accessibilityState={{ checked: selected, disabled }}
+                      disabled={disabled}
+                      onPress={() => onChangeMapProvider(provider)}
+                      style={[
+                        styles.appearanceOption,
+                        selected ? styles.selectedPathDisplayButton : null,
+                        disabled ? { opacity: 0.5 } : null
+                      ]}
+                    >
+                      <Text style={[styles.pathDisplayButtonText, selected ? styles.selectedPathDisplayButtonText : null]}>
+                        {provider === "apple" ? "Apple Maps" : "Google Maps"}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+              <Text style={styles.optionHelpText}>
+                {!googleMapsAvailable
+                  ? language === "fr" ? "Installez la nouvelle version de l'app pour utiliser Google Maps." : "Install the new app build to use Google Maps."
+                  : mapProviderDisabled
+                    ? language === "fr" ? "Disponible une fois la marche terminée et enregistrée." : "Available once your walk has finished and saved."
+                    : language === "fr" ? "Votre choix est conservé. Vos marches et découvertes restent les mêmes." : "Your choice is remembered. Your walks and discoveries stay the same."}
+              </Text>
+            </View>
+          ) : null}
           <View style={styles.optionPanel}>
             <Text style={styles.pathDisplayTitle}>
               {language === "fr" ? "Apparence" : "Appearance"}
@@ -7140,7 +7068,7 @@ function DetailsModal({
           <ExplorerScorePanel language={language} score={explorerScore} />
           <AtlasSectionLabel
             icon="navigate-circle-outline"
-            title={language === "fr" ? "\u00c9TAT DE L'EXP\u00c9DITION" : "EXPEDITION STATUS"}
+            title={language === "fr" ? "STATISTIQUES" : "EXPLORATION STATUS"}
           />
           <StatsPanel activityMode={activityMode} language={language} stats={stats} />
           <GameProgressPanel
@@ -8102,23 +8030,6 @@ const styles = createAppearanceStyles({
     overflow: "hidden"
   },
   objectiveFooter: { alignItems: "center", flexDirection: "row", justifyContent: "space-between" },
-  objectiveExpeditionLink: {
-    alignItems: "center",
-    borderTopColor: APP_COLORS.goldBorder,
-    borderTopWidth: 1,
-    flexDirection: "row",
-    gap: 7,
-    marginHorizontal: -12,
-    marginBottom: -12,
-    paddingHorizontal: 12,
-    paddingVertical: 9
-  },
-  objectiveExpeditionText: {
-    color: APP_COLORS.parchmentMuted,
-    flex: 1,
-    fontSize: 11,
-    fontWeight: "800"
-  },
   objectiveMeta: { color: "#94a3b8", fontSize: 11, fontWeight: "700" },
   objectiveToday: { color: "#f5c451", fontSize: 11, fontWeight: "900" },
   mapZoneSelection: {

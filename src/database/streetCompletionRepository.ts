@@ -15,6 +15,7 @@ type StreetCompletionStateRow = {
 };
 
 export type StreetCompletionRebuildInput = {
+  completedAtByStreetId?: Record<string, string>;
   captureLegacyEvidence: boolean;
   legacyMatchedSegments: OsmStreetSegment[];
   processedRecordingCount: number;
@@ -121,21 +122,6 @@ export async function replaceStreetCompletionV2(input: StreetCompletionRebuildIn
     const completedAtByStreetId = new Map(
       existingAchievements.map((row) => [row.street_id, row.completed_at])
     );
-    const totalsByStreetId = new Map<
-      string,
-      { totalDistanceMeters: number; walkedDistanceMeters: number }
-    >();
-
-    for (const progress of input.segmentProgress) {
-      const totals = totalsByStreetId.get(progress.streetId) ?? {
-        totalDistanceMeters: 0,
-        walkedDistanceMeters: 0
-      };
-      totals.totalDistanceMeters += progress.totalDistanceMeters;
-      totals.walkedDistanceMeters += progress.walkedDistanceMeters;
-      totalsByStreetId.set(progress.streetId, totals);
-    }
-
     if (input.captureLegacyEvidence) {
       const legacyBatchSize = 75;
 
@@ -213,15 +199,10 @@ export async function replaceStreetCompletionV2(input: StreetCompletionRebuildIn
       const values: Array<number | string | null> = [];
 
       for (const progress of batch) {
-        const streetTotals = totalsByStreetId.get(progress.streetId);
-        const streetIsComplete = Boolean(
-          streetTotals &&
-            streetTotals.totalDistanceMeters > 0 &&
-            streetTotals.walkedDistanceMeters >= streetTotals.totalDistanceMeters * 0.9
-        );
         const completedAt =
-          completedAtByStreetId.get(progress.streetId) ??
-          (streetIsComplete ? updatedAt : null);
+          input.completedAtByStreetId !== undefined
+            ? input.completedAtByStreetId[progress.streetId] ?? null
+            : completedAtByStreetId.get(progress.streetId) ?? null;
         values.push(
           progress.segmentId,
           progress.streetId,
@@ -354,32 +335,6 @@ export async function getStreetCompletionSummary(): Promise<StreetCompletionSumm
 function getOsmStreetId(segmentId: string) {
   const match = /^(way\/[^/]+)/.exec(segmentId);
   return match?.[1] ?? segmentId;
-}
-
-export async function getStreetCompletionStreetStates() {
-  const db = await getDatabase();
-  const rows = await db.getAllAsync<{
-    completed_at: string | null;
-    street_id: string;
-    total_distance_m: number;
-    walked_distance_m: number;
-  }>(`
-    SELECT
-      street_id,
-      MIN(completed_at) AS completed_at,
-      SUM(walked_distance_m) AS walked_distance_m,
-      SUM(total_distance_m) AS total_distance_m
-    FROM street_completion_segments
-    GROUP BY street_id
-  `);
-
-  return rows.map((row) => ({
-    completedAt: row.completed_at,
-    isComplete:
-      row.total_distance_m > 0 &&
-      row.walked_distance_m >= row.total_distance_m * 0.9,
-    streetId: row.street_id
-  }));
 }
 
 function calculateCoordinatePathDistance(segment: OsmStreetSegment) {

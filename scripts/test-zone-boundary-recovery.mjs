@@ -11,6 +11,7 @@ import {
 } from "../src/services/zoneBoundaryPolicy.ts";
 import {
   buildMapZoneSelectionProbeCoordinates,
+  resolveMapSelection,
   MAP_ZONE_SELECTION_CONFIG,
   shouldOfferMapZoneScopeChoice,
   shouldSelectCountryside
@@ -197,7 +198,7 @@ assert.ok(mapSource.includes("objective.zone.id === mapBoundaryContext.city.id")
 assert.ok(mapSource.includes("doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city)"));
 assert.ok(mapSource.includes("cityZone={visibleMapBoundaryContext.city}"));
 assert.match(mapSource, /!cityDistrictZones\.some/);
-assert.ok(explorationMapSource.includes('key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}'));
+assert.ok(explorationMapSource.includes('`native-map-${mapProvider}-${appearanceMode}-city-${cityZone?.id ?? "none"}`'));
 assert.match(explorationMapSource, /initialRegion={visibleRegion}/);
 assert.match(explorationMapSource, /onLongPress=\{handleMapLongPress\}/);
 assert.match(explorationMapSource, /playerFocusRequestId/);
@@ -318,3 +319,37 @@ assert.equal(OFFICIAL_DISTRICT_ADMIN_LEVEL, 9);
 assert.equal(NEIGHBORHOOD_ADMIN_LEVEL, 10);
 assert.equal(isOfficialDistrictAdminLevel(9), true);
 assert.equal(isOfficialDistrictAdminLevel(10), false);
+
+// Exercise the real selection pipeline with blocked dependencies, not timing assumptions.
+const readyDistrict = { city: "city", district: "district" };
+const readyCity = { city: "city", district: null };
+const emptyArea = { city: null, district: null };
+const hasObjective = value => Boolean(value.city || value.district);
+const unexpectedRead = async () => { throw new Error("unexpected blocking dependency"); };
+assert.equal(await resolveMapSelection({ visible: readyDistrict,
+  loadCached: unexpectedRead, loadRemote: unexpectedRead, hasObjective,
+  signal: new AbortController().signal }), readyDistrict);
+assert.equal(await resolveMapSelection({ visible: null,
+  loadCached: async () => readyCity, loadRemote: unexpectedRead, hasObjective,
+  signal: new AbortController().signal }), readyCity);
+let remoteCount = 0;
+assert.equal(await resolveMapSelection({ visible: null,
+  loadCached: async () => emptyArea, loadRemote: async () => { remoteCount++; return readyDistrict; },
+  hasObjective, signal: new AbortController().signal }), readyDistrict);
+assert.equal(remoteCount, 1);
+const cancelledSelection = new AbortController();
+let finishRead;
+const pendingSelection = resolveMapSelection({ visible: null,
+  loadCached: () => new Promise(resolve => { finishRead = resolve; }),
+  loadRemote: unexpectedRead, hasObjective, signal: cancelledSelection.signal });
+cancelledSelection.abort(); finishRead(emptyArea);
+await assert.rejects(pendingSelection, { name: "AbortError" });
+const remoteController = new AbortController();
+let finishRemote;
+const staleRemote = resolveMapSelection({ visible: null, loadCached: async () => emptyArea,
+  loadRemote: () => new Promise(resolve => { finishRemote = resolve; }), hasObjective,
+  signal: remoteController.signal });
+await Promise.resolve();
+remoteController.abort(); finishRemote(readyDistrict);
+await assert.rejects(staleRemote, { name: "AbortError" });
+console.log("PASS visible selection bypasses storage/network, city-only cache bypasses HTTP, and superseded cache/remote results are rejected");

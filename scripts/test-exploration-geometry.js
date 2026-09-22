@@ -478,17 +478,6 @@ assert(
   JSON.stringify(precomputedLiveExplorerScore) === JSON.stringify(liveExplorerScore),
   "live Explorer Score reuses the enclosure monitor result without changing points"
 );
-const expeditionExplorerScore = explorerScore.calculateExplorerScore({
-  exploredCellIds: [...scoreBoundary],
-  expeditionSealCount: 3,
-  maxEnclosedAreaSquareMeters: 150000
-});
-assert(
-  expeditionExplorerScore.expeditionSealCount === 3 &&
-    expeditionExplorerScore.expeditionPoints === 600 &&
-    expeditionExplorerScore.points === liveExplorerScore.points + 600,
-  "each permanent expedition seal adds 200 retroactive Explorer Points"
-);
 
 const forbiddenExplorerScore = explorerScore.calculateExplorerScore({
   derivedEnclosedCellIds: ["4:4", "5:5"],
@@ -1187,7 +1176,7 @@ const activeRouteRenderSource = explorationMapSource.slice(
   explorationMapSource.indexOf("{playerLocation ?", activeRouteRenderStart)
 );
 const exploredAreaBuildSource = explorationMapSource.slice(
-  explorationMapSource.indexOf("const renderedExplorationCellIds"),
+  explorationMapSource.indexOf("const savedCellSet"),
   explorationMapSource.indexOf("const explorationOutlineSegments")
 );
 
@@ -1323,15 +1312,15 @@ assert(
     backgroundLocationOutboxSource.includes(
       "replaceFinalizedWalkGpsPointsFromObservations"
     ) &&
-    backgroundLocationTaskSource.includes("resolveBackgroundTrackingSessionId") &&
-    backgroundLocationTaskSource.includes("getActiveRecordingSettings") &&
+    backgroundLocationTaskSource.includes("getBackgroundTrackingSessionId()") &&
+    !backgroundLocationTaskSource.includes("await resolveBackgroundTrackingSessionId()") &&
     backgroundLocationOutboxSource.includes(
       "allowUniqueSessionFallback"
     ) &&
     backgroundLocationOutboxSource.includes(
       "matchingSessions.length === 1"
     ),
-  "cold background callbacks resolve the persisted active recording and late Stop events rebuild finalized routes"
+  "cold background callbacks journal before database waits and late Stop events rebuild finalized routes"
 );
 assert(
   backgroundLocationTaskSource.includes(
@@ -1673,7 +1662,7 @@ assert(
   "completion zone scans yield to navigation and cancel when the menu closes"
 );
 assert(
-  mapScreenSource.includes("collectFillableEnclosedExplorationCellIds(") &&
+  mapScreenSource.includes("createIncrementalEnclosureCollector(") &&
     mapScreenSource.includes("activeClosureFillCellKey") &&
     mapScreenSource.includes("newlyEnclosedCellIds") &&
     mapScreenSource.includes(

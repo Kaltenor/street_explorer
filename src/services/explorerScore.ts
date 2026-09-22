@@ -7,15 +7,12 @@ import {
 
 export const EXPLORER_POINTS_PER_DISCOVERED_TILE = 1;
 export const EXPLORER_ENCLOSURE_BONUS_PER_TILE = 1;
-export const EXPLORER_POINTS_PER_EXPEDITION = 200;
 export const EXPLORATION_CELL_AREA_SQUARE_METERS =
   EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS;
 
 export type ExplorerScore = {
   discoveredCellCount: number;
   enclosedCellCount: number;
-  expeditionPoints: number;
-  expeditionSealCount: number;
   points: number;
   surfaceAreaSquareMeters: number;
   walkedCellCount: number;
@@ -31,7 +28,6 @@ export type AreaComparisonProgress = {
 export function calculateExplorerScore(input: {
   derivedEnclosedCellIds?: readonly string[];
   exploredCellIds: readonly string[];
-  expeditionSealCount?: number;
   forbiddenCellIds?: readonly string[];
   loopFillCellIds?: readonly string[];
   maxEnclosedAreaSquareMeters: number;
@@ -60,21 +56,13 @@ export function calculateExplorerScore(input: {
     )
   );
   const discoveredCellIds = new Set([...walkedCellIds, ...enclosedCellIds]);
-  const expeditionSealCount = Math.max(
-    0,
-    Math.floor(input.expeditionSealCount ?? 0)
-  );
-  const expeditionPoints = expeditionSealCount * EXPLORER_POINTS_PER_EXPEDITION;
 
   return {
     discoveredCellCount: discoveredCellIds.size,
     enclosedCellCount: enclosedCellIds.size,
-    expeditionPoints,
-    expeditionSealCount,
     points:
       discoveredCellIds.size * EXPLORER_POINTS_PER_DISCOVERED_TILE +
-      enclosedCellIds.size * EXPLORER_ENCLOSURE_BONUS_PER_TILE +
-      expeditionPoints,
+      enclosedCellIds.size * EXPLORER_ENCLOSURE_BONUS_PER_TILE,
     surfaceAreaSquareMeters:
       discoveredCellIds.size * EXPLORATION_CELL_AREA_SQUARE_METERS,
     walkedCellCount: walkedCellIds.size

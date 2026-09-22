@@ -16,3 +16,7 @@
 - License: Creative Commons Zero 1.0 / public-domain dedication
 
 The assets are bundled locally so Atlas navigation, medal unlocks, and reward feedback work offline. Attribution is not required by CC0, but the sources and generation method are retained here for provenance.
+
+`map-location-piano.wav` is the user-selected `Piano_Ui (4).wav`, copied byte-for-byte from `W:/Keeperbane/Sources/audio/Fantasy UI SFX/Piano/Piano_Ui (4).wav`. It is approximately 3.004 seconds, stereo 44.1 kHz 16-bit PCM. Playback remains at 0.38 volume and respects Sound effects. The 3.2-second label lifetime accommodates its decay.
+
+Source: user-provided Fantasy UI SFX library. No license metadata was supplied with this selection; this asset is not identified as an original or CC0 synthesis. The superseded procedural cue and its generator were removed.

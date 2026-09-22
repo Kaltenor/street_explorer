@@ -1,4 +1,5 @@
 import { getDatabase } from "./db";
+import type { MapProvider } from "../services/mapProvider";
 import { ActivityMode, GpsPoint } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
 import { AppLanguage } from "../i18n";
@@ -10,6 +11,7 @@ import {
 
 const APP_LANGUAGE_KEY = "app_language";
 const APPEARANCE_MODE_KEY = "appearance_mode";
+const MAP_PROVIDER_KEY = "map_provider";
 const HAPTICS_ENABLED_KEY = "haptics_enabled";
 const SOUND_ENABLED_KEY = "sound_enabled";
 const ACTIVE_RECORDING_SESSION_ID_KEY = "active_recording_session_id";
@@ -85,6 +87,22 @@ export async function saveAppearanceMode(mode: AppearanceMode) {
     `,
     APPEARANCE_MODE_KEY,
     mode
+  );
+}
+
+export async function getMapProvider(): Promise<MapProvider> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_settings WHERE key = ?", MAP_PROVIDER_KEY
+  );
+  return row?.value === "google" ? "google" : "apple";
+}
+
+export async function saveMapProvider(provider: MapProvider) {
+  const db = await getDatabase();
+  await db.runAsync(
+    "INSERT INTO app_settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+    MAP_PROVIDER_KEY, provider
   );
 }
 

@@ -106,7 +106,6 @@ const stopConfirmationSource = summarySource.slice(
   summarySource.indexOf("function RecordingSummaryModal")
 );
 const medalCollectionSource = readFileSync(new URL("../src/components/MedalCollectionModal.tsx", import.meta.url), "utf8");
-const expeditionSource = readFileSync(new URL("../src/components/DistrictExpeditionModal.tsx", import.meta.url), "utf8");
 const themeSource = readFileSync(new URL("../src/constants/theme.ts", import.meta.url), "utf8");
 const appearanceSource = readFileSync(new URL("../src/constants/appearance.ts", import.meta.url), "utf8");
 const settingsSource = readFileSync(new URL("../src/database/settingsRepository.ts", import.meta.url), "utf8");
@@ -137,8 +136,6 @@ assert.ok(AREA_COMPARISONS.every((entry, index) =>
 ));
 assert.match(explorerScorePanelSource, /EXPLORER POINTS/);
 assert.match(explorerScorePanelSource, /nextProgress/);
-assert.match(explorerScorePanelSource, /score\.expeditionSealCount/);
-assert.match(explorerScorePanelSource, /200 pts per expedition/);
 assert.match(walkControlsSource, /explorerScore/);
 assert.match(walkControlsSource, /todayStepCount/);
 assert.match(walkControlsSource, /width: "60%"/);
@@ -174,7 +171,7 @@ assert.match(themeSource, /exploredArea: "rgba\(229, 122, 50, 0\.46\)"/);
 assert.match(themeSource, /countrysideArea: "rgba\(244, 224, 138, 0\.54\)"/);
 assert.match(mapSource, /map\.countryside-exploration-surface/);
 assert.match(summarySource, /function CountrysideStatus/);
-assert.match(summarySource, /OUT OF THE CITY/);
+assert.match(summarySource, /The countryside/);
 assert.match(summarySource, /Exploring the countryside/);
 assert.match(themeSource, /ATLAS_DISPLAY_FONT = "Cinzel"/);
 assert.match(themeSource, /cityBoundary: "#8d5268"/);
@@ -246,7 +243,7 @@ assert.match(mapSource, /const isSelectedDistrict/);
 assert.match(mapSource, /memo\(function AdministrativeBoundaryOverlay/);
 assert.doesNotMatch(mapSource, /unselectedDistrictZones|selectedZone\.geometry\.map/);
 assert.ok(summarySource.includes("const visibleMapBoundaryContext = useMemo"));
-assert.ok(mapSource.includes('key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}'));
+assert.ok(mapSource.includes('`native-map-${mapProvider}-${appearanceMode}-city-${cityZone?.id ?? "none"}`'));
 assert.match(mapSource, /initialRegion={visibleRegion}/);
 assert.ok(summarySource.includes("objectiveMatchesCity"));
 assert.ok(summarySource.includes("doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city)"));
@@ -393,11 +390,8 @@ assert.match(completionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
 assert.match(historySource, /onSwipeBack=\{detailWalk \? \(\) => setDetailSessionId\(null\) : onClose\}/);
 assert.match(historySource, /swipeBackDisabled=\{dataOperation !== null\}/);
 assert.match(medalCollectionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
-assert.match(expeditionSource, /<AtlasScreen onSwipeBack=\{onClose\}/);
-assert.match(expeditionSource, /No district selected/);
-assert.match(expeditionSource, /onPress=\{onSelectDistrict\}/);
 assert.equal((summarySource.match(/<AtlasScreen onSwipeBack=\{onClose\}/g) ?? []).length, 2);
-for (const modalSource of [completionSource, historySource, medalCollectionSource, expeditionSource, summarySource]) {
+for (const modalSource of [completionSource, historySource, medalCollectionSource, summarySource]) {
   assert.match(modalSource, /presentationStyle="overFullScreen"/);
   assert.match(modalSource, /transparent/);
 }
@@ -435,7 +429,7 @@ assert.match(atlasSource, /ATLAS_STAMP_MAX_VISIBLE_MS = 4_000/);
 assert.match(atlasSource, /setTimeout\(onDismiss, ATLAS_STAMP_MAX_VISIBLE_MS\)/);
 assert.match(summarySource, /title: language === "fr" \? "ZONE ENCLOSE" : "AREA ENCLOSED"/);
 assert.match(summarySource, /sound: "reward"/);
-assert.ok(summarySource.match(/presentation: "map-selection"/g)?.length >= 3);
+assert.equal(summarySource.match(/presentation: "map-selection"/g)?.length, 1);
 assert.match(mapSource, /setIsInkRevealing/);
 assert.match(mapSource, /highlightedRouteDrawProgress/);
 assert.match(mapSource, /drawProgress=\{isHighlighted/);
@@ -445,7 +439,6 @@ console.log("PASS map paths use the shared semantic walking palette");
 console.log("PASS iOS map switches between Explorator and Daylight while preserving game-owned territory and markers");
 console.log("PASS route details and recording summaries use summary-first quality cards");
 console.log("PASS visual hierarchy uses collapsing branding, display type, quiet borders, and branded dialogs");
-console.log("PASS Map, Details, History, Completion, Expeditions, Options, and Medals share the Atlas Cabinet architecture");
-console.log("PASS Expeditions is a permanent engraved navigation destination with a district-selection empty state");
+console.log("PASS Map, Details, History, Completion, Options, and Medals share the Atlas Cabinet architecture");
 console.log("PASS map HUD uses four separate lightly inset Atlas stripes with a uniformly textured objective action");
 console.log("PASS handled reprocess failures avoid LogBox and delegate repair logging to callers");

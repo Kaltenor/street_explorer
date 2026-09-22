@@ -1,3 +1,4 @@
+import { createStreetCompletionTimeline } from "./streetCompletionTimeline";
 import {
   getStreetCompletionState,
   getStreetCompletionSummary,
@@ -7,14 +8,13 @@ import {
   replaceStreetCompletionV2
 } from "../database/streetCompletionRepository";
 import { getAllStreetSegments } from "../database/streetRepository";
-import { getAllWalksWithPoints } from "../database/walkRepository";
+import { getAllWalksWithPoints, getWalkHistory } from "../database/walkRepository";
 import {
   StreetCompletionSegmentProgress,
   StreetCompletionSessionCoverage,
   StreetCompletionSummary
 } from "../types/street";
 import {
-  addStreetCoverageToAggregate,
   calculateCoordinatePathDistance,
   createStreetCoverageMatcher,
   getOsmStreetId,
@@ -22,7 +22,14 @@ import {
   matchGpsPointsToStreetSegments,
   STREET_COMPLETION_V2_BIN_METERS
 } from "./streetCompletion";
-import { repairStreetCoverageForRecordings } from "./routeSnapshot";
+import { repairStreetCoverageForRecordings, samplePathCenters } from "./routeSnapshot";
+
+let rebuildGeneration = 0;
+
+export async function cancelStreetCompletionRebuild() {
+  rebuildGeneration += 1;
+  await activeRebuild?.catch(() => undefined);
+}
 
 let activeRebuild: Promise<StreetCompletionSummary> | null = null;
 
@@ -38,7 +45,11 @@ export function rebuildStreetCompletionV2(
     return activeRebuild;
   }
 
-  activeRebuild = performRebuild(options).finally(() => {
+  const generation = rebuildGeneration;
+  activeRebuild = performRebuild({
+    ...options,
+    shouldAbort: () => generation !== rebuildGeneration || Boolean(options.shouldAbort?.())
+  }).finally(() => {
     activeRebuild = null;
   });
 
@@ -46,7 +57,7 @@ export function rebuildStreetCompletionV2(
 }
 
 async function performRebuild(options: StreetCompletionRebuildOptions) {
-  const walks = await getAllWalksWithPoints("walk");
+  const walks = (await getWalkHistory("walk")).sort((a, b) => a.endedAt.localeCompare(b.endedAt) || a.id - b.id);
 
   if (options.shouldAbort?.()) {
     return getStreetCompletionSummary();
@@ -56,7 +67,16 @@ async function performRebuild(options: StreetCompletionRebuildOptions) {
 
   try {
     if (options.refreshStreetCoverage && walks.length > 0) {
-      const repair = await repairStreetCoverageForRecordings(walks);
+      const corridors = [];
+      for (const session of walks) {
+        if (options.shouldAbort?.()) {
+          await markStreetCompletionPending();
+          return getStreetCompletionSummary();
+        }
+        const [walk] = await getAllWalksWithPoints("walk", { kind: "selected", sessionId: session.id });
+        if (walk) corridors.push({ points: samplePathCenters(walk.points, 175) });
+      }
+      const repair = await repairStreetCoverageForRecordings(corridors);
 
       if (repair.status === "failed") {
         console.warn(
@@ -83,17 +103,16 @@ async function performRebuild(options: StreetCompletionRebuildOptions) {
     const matchFrozenRoute = createStreetCoverageMatcher(streetSegments);
     const captureLegacyEvidence =
       state.legacyCapturedAt === null && streetSegments.length > 0;
-    const legacyMatchedIds = captureLegacyEvidence
-      ? matchGpsPointsToStreetSegments(
-          walks.flatMap((walk) => walk.points),
-          streetSegments
-        )
-      : new Set<string>();
+    const legacyMatchedIds = new Set<string>();
+    const timeline = createStreetCompletionTimeline(streetSegments.map((segment) => ({
+      segmentId: segment.id, streetId: getOsmStreetId(segment.id),
+      totalDistanceMeters: calculateCoordinatePathDistance(segment.coordinates)
+    })));
     const sessionCoverage: StreetCompletionSessionCoverage[] = [];
-    const aggregateBinsBySegmentId = new Map<string, Set<number>>();
+    const aggregateBinsBySegmentId = timeline.aggregateBinsBySegmentId;
     let processedRecordingCount = 0;
 
-    for (const [walkIndex, walk] of walks.entries()) {
+    for (const [walkIndex, session] of walks.entries()) {
       if (walkIndex > 0 && walkIndex % 4 === 0) {
         await yieldToEventLoop();
       }
@@ -103,11 +122,17 @@ async function performRebuild(options: StreetCompletionRebuildOptions) {
         return getStreetCompletionSummary();
       }
 
+      const [walk] = await getAllWalksWithPoints("walk", { kind: "selected", sessionId: session.id }, { includePoints: captureLegacyEvidence });
+      if (!walk) continue;
+      if (captureLegacyEvidence) {
+        for (const id of matchGpsPointsToStreetSegments(walk.points, streetSegments)) legacyMatchedIds.add(id);
+      }
       if (!walk.routeSegments) {
         continue;
       }
 
       const coverage = matchFrozenRoute(walk.routeSegments);
+      timeline.append(coverage, walk.endedAt);
       processedRecordingCount += 1;
 
       for (const segmentCoverage of coverage) {
@@ -116,7 +141,6 @@ async function performRebuild(options: StreetCompletionRebuildOptions) {
           sessionId: walk.id
         });
       }
-      addStreetCoverageToAggregate(aggregateBinsBySegmentId, coverage);
     }
 
     const segmentProgress: StreetCompletionSegmentProgress[] = streetSegments.flatMap(
@@ -156,6 +180,7 @@ async function performRebuild(options: StreetCompletionRebuildOptions) {
     }
 
     const replaced = await replaceStreetCompletionV2({
+      completedAtByStreetId: timeline.completedAtByStreetId,
       captureLegacyEvidence,
       legacyMatchedSegments: streetSegments.filter((segment) => legacyMatchedIds.has(segment.id)),
       processedRecordingCount,

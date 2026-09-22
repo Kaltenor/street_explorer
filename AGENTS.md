@@ -11,7 +11,7 @@ These instructions apply to the entire repository.
 - Exploration contour, loop-fill, and large-surface regression checks run with npm run test:geometry.
 - For changes that can affect the Expo bundle or assets, also run npx expo export --platform ios --output-dir <temporary-directory> when practical.
 - Physical-device development builds are available through npm run build:ios:dev; simulator builds use npm run build:ios:sim. These remote, credentialed builds should only be run when requested or needed for release/device validation.
-- There is no full automated test or lint suite. Run npm run test:geometry for exploration changes, follow the relevant manual procedures in docs/TESTING.md, and do not claim that nonexistent checks were run.
+- The aggregate automated check is npm test, including typecheck and focused regression scripts. There is no lint or native end-to-end suite. Run npm run test:geometry for exploration changes, npm run test:resilience for persistence/network/performance changes, and follow the relevant manual procedures in docs/TESTING.md. Do not claim physical-device checks were run automatically.
 
 ## Version Discipline
 

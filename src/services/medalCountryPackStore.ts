@@ -1,3 +1,5 @@
+import { fetch as expoFetch } from "expo/fetch";
+import { withRequestDeadline } from "./networkRequest";
 import { Directory, File, Paths } from "expo-file-system";
 import { gunzipSync, strFromU8 } from "fflate";
 
@@ -150,9 +152,28 @@ async function loadCountryPackOnce(
   );
 
   try {
-    await File.downloadFileAsync(descriptor.url, temporaryFile, {
-      idempotent: true
-    });
+    const bytes = await withRequestDeadline(async (signal) => {
+      const response = await expoFetch(descriptor.url, { signal });
+      if (!response.ok) throw new Error(`Medal pack request failed: ${response.status}`);
+      const reader = response.body?.getReader();
+      if (!reader) throw new Error("Medal pack response has no body.");
+      const output = new Uint8Array(descriptor.compressedBytes);
+      let offset = 0;
+      try {
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          if (offset + value.length > output.length) throw new Error("Medal pack exceeds its manifest size.");
+          output.set(value, offset);
+          offset += value.length;
+        }
+      } finally {
+        await reader.cancel().catch(() => undefined);
+      }
+      if (offset !== output.length) throw new Error("Medal pack is truncated.");
+      return output;
+    }, 60_000);
+    temporaryFile.write(bytes);
     const pack = await readAndValidateCountryPack(temporaryFile, descriptor);
 
     if (installedFile.exists) {

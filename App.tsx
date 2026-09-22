@@ -2,9 +2,12 @@ import { StatusBar } from "expo-status-bar";
 import { setAudioModeAsync } from "expo-audio";
 import { createAppearanceStyles } from "./src/constants/appearance";
 import { useFonts } from "expo-font";
-import { useEffect, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -17,6 +20,8 @@ import {
   getAppLanguage,
   getAppearanceMode,
   getFeedbackPreferences,
+  getMapProvider,
+  saveMapProvider,
   saveAppLanguage,
   saveAppearanceMode,
   saveHapticsEnabled,
@@ -29,6 +34,8 @@ import {
 import { AppLanguage } from "./src/i18n";
 import { LaunchLoadingOverlay } from "./src/components/LaunchLoadingOverlay";
 import { MapScreen } from "./src/screens/MapScreen";
+import { resolveMapProvider, type MapProvider } from "./src/services/mapProvider";
+import { isGoogleMapsAvailable } from "./src/services/nativeMapProvider";
 import {
   drainPendingBackgroundLocationBatches
 } from "./src/services/backgroundLocationTask";
@@ -40,6 +47,7 @@ import {
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
+    ...Ionicons.font,
     Cinzel: require("./assets/fonts/Cinzel-Variable.ttf")
   });
   const [databaseReady, setDatabaseReady] = useState(false);
@@ -49,6 +57,12 @@ export default function App() {
     useState<AppearanceMode>("explorator");
   const [hapticsEnabled, setHapticsEnabled] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [googleMapsAvailable] = useState(isGoogleMapsAvailable);
+  const [mapProvider, setMapProvider] = useState<MapProvider>(
+    Platform.OS === "android" ? "google" : "apple"
+  );
+  const mapProviderSaveInFlight = useRef(false);
+  const [isSavingMapProvider, setIsSavingMapProvider] = useState(false);
   const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
   const [isMapLaunchReady, setIsMapLaunchReady] = useState(false);
 
@@ -56,13 +70,15 @@ export default function App() {
     setDatabaseFailed(false);
     initDatabase()
       .then(async () => {
-        const [savedLanguage, savedAppearanceMode, savedFeedbackPreferences] = await Promise.all([
+        const [savedLanguage, savedAppearanceMode, savedFeedbackPreferences, savedMapProvider] = await Promise.all([
           getAppLanguage(),
           getAppearanceMode(),
-          getFeedbackPreferences()
+          getFeedbackPreferences(),
+          getMapProvider()
         ]);
 
         setLanguage(savedLanguage);
+        setMapProvider(resolveMapProvider(savedMapProvider, Platform.OS, googleMapsAvailable));
         setActiveAppearanceMode(savedAppearanceMode);
         setAppearanceMode(savedAppearanceMode);
         setFeedbackPreferences(savedFeedbackPreferences);
@@ -117,6 +133,27 @@ export default function App() {
     await saveSoundEnabled(enabled);
   };
 
+  const handleChangeMapProvider = async (nextProvider: MapProvider) => {
+    if (mapProviderSaveInFlight.current || nextProvider === mapProvider ||
+        resolveMapProvider(nextProvider, Platform.OS, googleMapsAvailable) !== nextProvider) return;
+    mapProviderSaveInFlight.current = true;
+    setIsSavingMapProvider(true);
+    try {
+      // Commit the preference before remounting; failed persistence keeps the
+      // currently usable map, and rapid taps cannot reorder writes.
+      await saveMapProvider(nextProvider);
+      setMapProvider(nextProvider);
+    } catch {
+      Alert.alert(
+        language === "fr" ? "Carte inchangée" : "Map unchanged",
+        language === "fr" ? "Impossible d'enregistrer ce choix. Réessayez." : "Could not save your choice. Please try again."
+      );
+    } finally {
+      mapProviderSaveInFlight.current = false;
+      setIsSavingMapProvider(false);
+    }
+  };
+
   const isAppContentReady = databaseReady && (fontsLoaded || Boolean(fontError));
 
   return (
@@ -125,6 +162,10 @@ export default function App() {
         <StatusBar style={appearanceMode === "daylight" ? "dark" : "light"} />
         {isAppContentReady ? (
           <MapScreen
+            mapProvider={mapProvider}
+            googleMapsAvailable={googleMapsAvailable}
+            isSavingMapProvider={isSavingMapProvider}
+            onChangeMapProvider={handleChangeMapProvider}
             appearanceMode={appearanceMode}
             hapticsEnabled={hapticsEnabled}
             isLaunchDismissed={isLaunchDismissed}

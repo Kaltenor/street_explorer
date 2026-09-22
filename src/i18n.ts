@@ -129,7 +129,7 @@ export const STRINGS = {
       restoreFailedMessage: "Street Explorer could not restore this backup file.",
       restoreFailedTitle: "Restore failed",
       restoreInspectFailedMessage: "Street Explorer could not verify this backup. Local data was not changed.",
-      restorePreviewMessage: "Exported {date} by Street Explorer {version}\n{size} | {sessions} walks | {points} GPS points\n{medals} medals | {achievements} zone achievements | {expeditions} expedition seals\n\nRestoring replaces all current local recordings and progress.",
+      restorePreviewMessage: "Exported {date} by Street Explorer {version}\n{size} | {sessions} walks | {points} GPS points\n{medals} medals | {achievements} zone achievements\n\nRestoring replaces all current local recordings and progress.",
       restorePreviewTitle: "Restore this backup?"
     },
     options: {
@@ -350,7 +350,7 @@ export const STRINGS = {
       restoreFailedMessage: "Street Explorer n'a pas pu restaurer cette sauvegarde.",
       restoreFailedTitle: "Restauration impossible",
       restoreInspectFailedMessage: "Street Explorer n'a pas pu v\u00e9rifier cette sauvegarde. Les donn\u00e9es locales n'ont pas \u00e9t\u00e9 modifi\u00e9es.",
-      restorePreviewMessage: "Export\u00e9e le {date} par Street Explorer {version}\n{size} | {sessions} marches | {points} points GPS\n{medals} m\u00e9dailles | {achievements} r\u00e9ussites de zone | {expeditions} sceaux d'exp\u00e9dition\n\nLa restauration remplace tous les enregistrements et progr\u00e8s locaux actuels.",
+      restorePreviewMessage: "Export\u00e9e le {date} par Street Explorer {version}\n{size} | {sessions} marches | {points} points GPS\n{medals} m\u00e9dailles | {achievements} r\u00e9ussites de zone\n\nLa restauration remplace tous les enregistrements et progr\u00e8s locaux actuels.",
       restorePreviewTitle: "Restaurer cette sauvegarde ?"
     },
     options: {

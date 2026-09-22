@@ -84,7 +84,7 @@ for (const claim of [
   "clean-cache build 159",
   "bundled France",
   "offline-cache",
-  "+200 PTS",
+  "migration 37",
   "Daylight",
   "Wikipedia"
 ]) {

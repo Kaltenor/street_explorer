@@ -1,3 +1,4 @@
+import { cancelStreetCompletionRebuild } from "./streetCompletionV2";
 import * as DocumentPicker from "expo-document-picker";
 import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
@@ -67,7 +68,6 @@ export type BackupV5OperationResult = {
 
 export type BackupV5RestorePreview = {
   appVersion: string;
-  expeditionSealCount: number;
   exportedAt: string;
   fileSize: number;
   medalCount: number;
@@ -203,7 +203,6 @@ export async function selectBackupV5ForRestore(): Promise<
     inspection,
     preview: {
       appVersion: manifest.appVersion,
-      expeditionSealCount: manifest.expeditionSystem?.seals.length ?? 0,
       exportedAt: manifest.exportedAt,
       fileSize: inspection.fileSize,
       medalCount: manifest.medalSystem.collectedMedals.length,
@@ -227,6 +226,7 @@ export async function restoreBackupV5(candidate: BackupV5RestoreCandidate) {
     );
   }
 
+  await cancelStreetCompletionRebuild();
   const reopenOutboxAdmission = closeBackgroundLocationOutboxAdmission();
   let reopenGpsAdmission: (() => void) | null = null;
 

@@ -13,6 +13,7 @@ import {
   isDaylightAppearance
 } from "../constants/appearance";
 import type {
+  ComponentRef,
   ComponentProps,
   ForwardRefExoticComponent,
   RefAttributes
@@ -23,6 +24,7 @@ import MapView, {
   Marker,
   Polygon,
   Polyline,
+  PROVIDER_GOOGLE,
   Region
 } from "react-native-maps";
 import { Image, Platform, StyleSheet, Text, View } from "react-native";
@@ -38,6 +40,7 @@ import {
   MODE_LOCATION_CONFIG
 } from "../constants/config";
 import { APP_COLORS, WALKING_COLORS } from "../constants/theme";
+import { GOOGLE_DAYLIGHT_STYLE, GOOGLE_EXPLORATOR_STYLE, type MapProvider } from "../services/mapProvider";
 import { CachedZone } from "../database/completionRepository";
 import type { ForbiddenZone } from "../database/forbiddenZoneRepository";
 import {
@@ -73,6 +76,7 @@ import {
 } from "../types/walk";
 
 type ExplorationMapProps = {
+  mapProvider: MapProvider;
   walks: WalkWithPoints[];
   pathWalks: WalkWithPoints[];
   activePoints: GpsPoint[];
@@ -161,6 +165,7 @@ const GAMEPLAY_POI_FILTER = {
 const MEDAL_MARKER_MAX_LATITUDE_DELTA = 0.14;
 
 export const ExplorationMap = memo(function ExplorationMap({
+  mapProvider,
   walks,
   activeExplorationCellIds,
   appearanceMode,
@@ -205,6 +210,8 @@ export const ExplorationMap = memo(function ExplorationMap({
 }: ExplorationMapProps) {
   usePerformanceRenderCounter("ExplorationMap");
   const reducedMotion = useReducedMotionPreference();
+  const usesAppleMaps = Platform.OS === "ios" && mapProvider === "apple";
+  const nativeMapKey = `native-map-${mapProvider}-${appearanceMode}-city-${cityZone?.id ?? "none"}`;
   const [highlightedRouteDrawProgress, setHighlightedRouteDrawProgress] = useState(1);
   const [isInkRevealing, setIsInkRevealing] = useState(false);
   const previousExplorationCellCountRef = useRef<number | null>(null);
@@ -214,8 +221,10 @@ export const ExplorationMap = memo(function ExplorationMap({
   const handledPlayerFocusRequestId = useRef(playerFocusRequestId);
   const pendingPlayerFocusTimestampRef = useRef<number | null>(null);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
+  const handledMedalFocusRequestId = useRef(0);
   const persistentPlayerLocationRef = useRef<GpsPoint | null>(null);
-  const [isNativeMapReady, setIsNativeMapReady] = useState(false);
+  const [readyMapKey, setReadyMapKey] = useState<string | null>(null);
+  const isNativeMapReady = readyMapKey === nativeMapKey;
   const activeRouteStartPoint =
     activeRouteChunks[0]?.points[0] ?? activePoints[0] ?? null;
   const activeRouteEndPoint =
@@ -274,30 +283,31 @@ export const ExplorationMap = memo(function ExplorationMap({
     activeExplorationCellIds,
     650
   );
-  const renderedExplorationCellIds = useMemo(
-    () =>
-      shouldBuildExploredArea
-        ? [
-            ...new Set([
-              ...savedExplorationCellIds,
-              ...settledActiveExplorationCellIds
-            ])
-          ]
+  const savedCellSet = useMemo(() => new Set(savedExplorationCellIds), [savedExplorationCellIds]);
+  const savedCellPartition = useMemo(() => partitionExplorationCellIdsByCity({
+    cellIds: shouldBuildExploredArea ? [...savedCellSet] : [],
+    cityBoundaries: knownCityZones,
+    getCellCenter: explorationCellKeyToCenterCoordinate
+  }), [savedCellSet, knownCityZones, shouldBuildExploredArea]);
+  const explorationCellPartition = useMemo(() => {
+    const activePartition = partitionExplorationCellIdsByCity({
+      cellIds: shouldBuildExploredArea
+        ? [...new Set(settledActiveExplorationCellIds)].filter((id) => !savedCellSet.has(id))
         : [],
-    [
-      savedExplorationCellIds,
-      settledActiveExplorationCellIds,
-      shouldBuildExploredArea
-    ]
-  );
-  const explorationCellPartition = useMemo(
-    () => partitionExplorationCellIdsByCity({
-      cellIds: renderedExplorationCellIds,
       cityBoundaries: knownCityZones,
       getCellCenter: explorationCellKeyToCenterCoordinate
-    }),
-    [knownCityZones, renderedExplorationCellIds]
-  );
+    });
+    return {
+      cityCellIds: activePartition.cityCellIds.length
+        ? [...savedCellPartition.cityCellIds, ...activePartition.cityCellIds]
+        : savedCellPartition.cityCellIds,
+      countrysideCellIds: activePartition.countrysideCellIds.length
+        ? [...savedCellPartition.countrysideCellIds, ...activePartition.countrysideCellIds]
+        : savedCellPartition.countrysideCellIds
+    };
+  }, [savedCellPartition, savedCellSet, knownCityZones, settledActiveExplorationCellIds, shouldBuildExploredArea]);
+  const renderedExplorationCellCount = explorationCellPartition.cityCellIds.length +
+    explorationCellPartition.countrysideCellIds.length;
   const explorationPolygons = useMemo(
     () =>
       shouldShowCompletedArea
@@ -399,12 +409,12 @@ export const ExplorationMap = memo(function ExplorationMap({
 
   useEffect(() => {
     const previousCount = previousExplorationCellCountRef.current;
-    previousExplorationCellCountRef.current = renderedExplorationCellIds.length;
+    previousExplorationCellCountRef.current = renderedExplorationCellCount;
 
     if (
       reducedMotion ||
       previousCount === null ||
-      renderedExplorationCellIds.length <= previousCount
+      renderedExplorationCellCount <= previousCount
     ) {
       return;
     }
@@ -412,7 +422,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     setIsInkRevealing(true);
     const revealTimer = setTimeout(() => setIsInkRevealing(false), 520);
     return () => clearTimeout(revealTimer);
-  }, [reducedMotion, renderedExplorationCellIds.length]);
+  }, [reducedMotion, renderedExplorationCellCount]);
   useEffect(() => {
     if (!isNativeMapReady || !startupCenter) {
       return;
@@ -581,9 +591,11 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [selectedZone, zoneFocusRequestId]);
 
   useEffect(() => {
-    if (!focusedMedal || medalFocusRequestId === 0 || !isNativeMapReady) {
+    if (!focusedMedal || medalFocusRequestId === 0 || !isNativeMapReady ||
+        handledMedalFocusRequestId.current === medalFocusRequestId) {
       return;
     }
+    handledMedalFocusRequestId.current = medalFocusRequestId;
 
     mapRef.current?.animateToRegion(
       {
@@ -619,9 +631,9 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [onMapPress]);
 
   const handleNativeMapReady = useCallback(() => {
-    setIsNativeMapReady(true);
+    setReadyMapKey(nativeMapKey);
     onMapReady?.();
-  }, [onMapReady]);
+  }, [nativeMapKey, onMapReady]);
 
   const fitToPoints = (
     points: GpsPoint[],
@@ -637,16 +649,20 @@ export const ExplorationMap = memo(function ExplorationMap({
     <View style={styles.container}>
       <ApplePoiFilteredMapView
         ref={mapRef}
-        key={`native-map-${appearanceMode}-city-${cityZone?.id ?? "none"}`}
+        key={nativeMapKey}
+        provider={mapProvider === "google" ? PROVIDER_GOOGLE : undefined}
         style={styles.map}
-        appleMapsPointsOfInterestFilter={GAMEPLAY_POI_FILTER}
+        appleMapsPointsOfInterestFilter={usesAppleMaps ? GAMEPLAY_POI_FILTER : undefined}
+        customMapStyle={mapProvider === "google"
+          ? isDaylightAppearance(appearanceMode) ? GOOGLE_DAYLIGHT_STYLE : GOOGLE_EXPLORATOR_STYLE
+          : undefined}
         mapType={
-          Platform.OS === "ios" && !isDaylightAppearance(appearanceMode)
+          usesAppleMaps && !isDaylightAppearance(appearanceMode)
             ? "mutedStandard"
             : "standard"
         }
         userInterfaceStyle={
-          Platform.OS === "ios"
+          usesAppleMaps
             ? isDaylightAppearance(appearanceMode) ? "light" : "dark"
             : undefined
         }
@@ -782,6 +798,7 @@ export const ExplorationMap = memo(function ExplorationMap({
 
         {playerVisible && playerLocation ? (
           <PlayerSpeechMarker
+            usesAppleMaps={usesAppleMaps}
             gpsAccuracyMeters={gpsAccuracyMeters}
             gpsStatus={gpsStatus}
             isRecording={isRecording}
@@ -986,8 +1003,24 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
   medal: CollectedMedal;
   onMedalPress?: (medal: CollectedMedal) => void;
 }) {
+  const markerRef = useRef<ComponentRef<typeof Marker>>(null);
+  const [hasLayout, setHasLayout] = useState(false);
+  const [tracksSnapshot, setTracksSnapshot] = useState(Platform.OS === "android");
+
+  useEffect(() => {
+    if (Platform.OS !== "android" || !hasLayout) return;
+    // Google snapshots custom marker children. Freezing before their first
+    // layout can preserve an empty bitmap for the marker's entire lifetime.
+    const timer = setTimeout(() => {
+      markerRef.current?.redraw();
+      setTracksSnapshot(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [hasLayout]);
+
   return (
     <Marker
+      ref={markerRef}
       accessibilityLabel={
         medal.name.en + ", " + (medal.isCollected ? "collected" : lockedLabel)
       }
@@ -1000,10 +1033,11 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
           : undefined
       }
       title={medal.name.en}
-      tracksViewChanges={false}
+      tracksViewChanges={tracksSnapshot}
     >
       <View
         collapsable={false}
+        onLayout={() => setHasLayout(true)}
         style={[
           styles.atlasMedalMarker,
           medal.isCollected
@@ -1415,6 +1449,7 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
 });
 
 const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
+  usesAppleMaps,
   gpsAccuracyMeters,
   gpsStatus,
   isRecording,
@@ -1425,6 +1460,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
   recordingSpeedMetersPerSecond,
   reducedMotion
 }: {
+  usesAppleMaps: boolean;
   gpsAccuracyMeters: number | null;
   gpsStatus: string | null;
   isRecording: boolean;
@@ -1724,7 +1760,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
     <Marker
       anchor={{ x: 0.5, y: 1 }}
       centerOffset={
-        Platform.OS === "ios"
+        usesAppleMaps
           ? { x: 0, y: PLAYER_SPEECH_IOS_CENTER_OFFSET_Y }
           : undefined
       }

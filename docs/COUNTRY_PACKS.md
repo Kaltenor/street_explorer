@@ -69,3 +69,7 @@ The generated results and estimate variance are written to `country-packs/v1/wav
 6. Increment a country pack's version whenever its roster, coordinates, copy, or source identity changes. Never replace bytes behind an existing version/checksum pair.
 
 The generators are reproducible transformation and review tools, not runtime code. Their temporary PowerShell network transport exists only for the Windows authoring environment when direct Node networking is sandboxed; the mobile app uses Expo's native HTTPS file download path.
+
+## Download resilience (0.34.3)
+
+Downloads use Expo fetch streaming with a 60-second deadline covering the response body and a hard compressed-byte ceiling from the descriptor. Oversized, truncated, timed-out, or checksum-invalid downloads never replace the installed pack. Optional album loading does not hold the local-map readiness flag. Retry remains explicit through the existing country-pack retry action. A restore referencing an absent foreign-country album still needs network access to obtain that pack.

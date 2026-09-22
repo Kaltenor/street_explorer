@@ -1,3 +1,4 @@
+import { withRequestDeadline } from "./networkRequest";
 import { OsmStreetSegment } from "../types/street";
 import { GpsPoint } from "../types/walk";
 
@@ -121,45 +122,26 @@ export async function fetchOverpassQuery(query: string) {
 }
 
 async function fetchOverpassEndpoint(query: string, endpoint: string) {
-  const abortController = new AbortController();
-  const timeout = setTimeout(() => abortController.abort(), OVERPASS_TIMEOUT_MS);
-  let response: Response;
-
   try {
-    response = await fetch(endpoint, {
-      body: `data=${encodeURIComponent(query)}`,
-      headers: {
-        Accept: "application/json",
-        "User-Agent": "StreetExplorer-App/1.0 (com.kaltenor.streetexplorer)",
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      method: "POST",
-      signal: abortController.signal
-    });
+    return await withRequestDeadline(async (signal) => {
+      const response = await fetch(endpoint, {
+        body: `data=${encodeURIComponent(query)}`,
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "StreetExplorer-App/1.0 (com.kaltenor.streetexplorer)",
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        method: "POST",
+        signal
+      });
+      if (!response.ok) {
+        throw new OverpassRequestError(`HTTP ${response.status}`, isRetryableOverpassStatus(response.status));
+      }
+      return (await response.json()) as OverpassResponse;
+    }, OVERPASS_TIMEOUT_MS);
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw new OverpassRequestError("request timed out", true);
-    }
-
-    throw new OverpassRequestError(
-      error instanceof Error ? error.message : "network request failed",
-      true
-    );
-  } finally {
-    clearTimeout(timeout);
-  }
-
-  if (!response.ok) {
-    throw new OverpassRequestError(
-      `HTTP ${response.status}`,
-      isRetryableOverpassStatus(response.status)
-    );
-  }
-
-  try {
-    return (await response.json()) as OverpassResponse;
-  } catch {
-    throw new OverpassRequestError("invalid JSON response", true);
+    if (error instanceof OverpassRequestError) throw error;
+    throw new OverpassRequestError(error instanceof Error ? error.message : "network request failed", true);
   }
 }
 

@@ -367,7 +367,7 @@ async function getCachedStreetCorridor(points: GpsPoint[]) {
   return [...segmentsById.values()];
 }
 
-function samplePathCenters(
+export function samplePathCenters(
   points: GpsPoint[],
   spacingMeters = STREET_SAMPLE_SPACING_METERS
 ) {

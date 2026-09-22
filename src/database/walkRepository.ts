@@ -2,12 +2,6 @@ import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
 import { ensureMedalAlbumSeeded } from "./medalRepository";
-import {
-  mapExpeditionRow,
-  mapLoopEvidenceRow,
-  mapSealRow
-} from "./expeditionRepository";
-import type { DistrictExpeditionKind } from "../types/expedition";
 import type { CompletionScope } from "./completionRepository";
 import { APP_VERSION } from "../constants/config";
 import type {
@@ -558,7 +552,8 @@ export type WalkPointLoadScope =
 
 export async function getAllWalksWithPoints(
   activityMode: ActivityMode,
-  scope: WalkPointLoadScope = { kind: "all" }
+  scope: WalkPointLoadScope = { kind: "all" },
+  options: { includePoints?: boolean } = {}
 ): Promise<WalkWithPoints[]> {
   const db = await getDatabase();
   const scopeSql =
@@ -618,7 +613,7 @@ export async function getAllWalksWithPoints(
     return [];
   }
 
-  const points = await db.getAllAsync<GpsPointRow>(
+  const points = options.includePoints === false ? [] : await db.getAllAsync<GpsPointRow>(
     `
       SELECT id, session_id, latitude, longitude, timestamp, accuracy, point_index
       FROM gps_points
@@ -1154,63 +1149,10 @@ export async function withBackupV5Snapshot<T>(
       FROM zone_achievements
       ORDER BY completed_at
     `);
-    const expeditionRows = await transaction.getAllAsync<{
-      abandoned_at: string | null;
-      accepted_at: string | null;
-      completed_at: string | null;
-      district_id: string;
-      district_name: string;
-      id: string;
-      kind: DistrictExpeditionKind;
-      local_date: string;
-      progress: number;
-      slot: number;
-      target: number;
-      updated_at: string;
-    }>(`
-      SELECT id, district_id, district_name, local_date, slot, kind, target,
-        progress, accepted_at, abandoned_at, completed_at, updated_at
-      FROM district_expeditions
-      ORDER BY local_date, district_id, slot
-    `);
-    const expeditionSealRows = await transaction.getAllAsync<{
-      district_id: string;
-      district_name: string;
-      earned_at: string;
-      expedition_id: string;
-      id: string;
-      kind: DistrictExpeditionKind;
-      local_date: string;
-    }>(`
-      SELECT id, expedition_id, district_id, district_name, local_date, kind,
-        earned_at
-      FROM district_expedition_seals
-      ORDER BY earned_at, id
-    `);
-    const expeditionLoopEvidenceRows = await transaction.getAllAsync<{
-      detected_at: string;
-      expedition_id: string;
-      session_id: number;
-    }>(`
-      SELECT evidence.expedition_id, evidence.session_id, evidence.detected_at
-      FROM district_expedition_loop_evidence AS evidence
-      JOIN walk_sessions ON walk_sessions.id = evidence.session_id
-      WHERE walk_sessions.ended_at > walk_sessions.started_at
-        AND NOT EXISTS (
-          SELECT 1 FROM pending_recording_discards
-          WHERE session_id = walk_sessions.id
-        )
-      ORDER BY evidence.expedition_id, evidence.session_id
-    `);
     const forbiddenZones = await getForbiddenZones(transaction);
 
     const metadata: BackupV5Metadata = {
       appVersion: APP_VERSION,
-      expeditionSystem: {
-        expeditions: expeditionRows.map(mapExpeditionRow),
-        loopEvidence: expeditionLoopEvidenceRows.map(mapLoopEvidenceRow),
-        seals: expeditionSealRows.map(mapSealRow)
-      },
       exportedAt: new Date().toISOString(),
       forbiddenZones,
       medalSystem: {
@@ -1358,9 +1300,6 @@ export async function restoreBackupV5Data(
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
-      DELETE FROM district_expedition_loop_evidence;
-      DELETE FROM district_expedition_seals;
-      DELETE FROM district_expeditions;
       DELETE FROM street_completion_session_coverage;
       DELETE FROM street_completion_segments;
       DELETE FROM street_completion_v1_evidence;
@@ -1584,60 +1523,6 @@ export async function restoreBackupV5Data(
       );
     }
 
-    const expeditionSystem = manifest.expeditionSystem ?? {
-      expeditions: [],
-      loopEvidence: [],
-      seals: []
-    };
-
-    for (const expedition of expeditionSystem.expeditions) {
-      await transaction.runAsync(
-        `INSERT INTO district_expeditions (
-          id, district_id, district_name, local_date, slot, kind, target,
-          progress, accepted_at, abandoned_at, completed_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        expedition.id,
-        expedition.districtId,
-        expedition.districtName,
-        expedition.localDate,
-        expedition.slot,
-        expedition.kind,
-        expedition.target,
-        expedition.progress,
-        expedition.acceptedAt,
-        expedition.abandonedAt,
-        expedition.completedAt,
-        expedition.updatedAt
-      );
-    }
-
-    for (const seal of expeditionSystem.seals) {
-      await transaction.runAsync(
-        `INSERT INTO district_expedition_seals (
-          id, expedition_id, district_id, district_name, local_date, kind,
-          earned_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        seal.id,
-        seal.expeditionId,
-        seal.districtId,
-        seal.districtName,
-        seal.localDate,
-        seal.kind,
-        seal.earnedAt
-      );
-    }
-
-    for (const evidence of expeditionSystem.loopEvidence) {
-      await transaction.runAsync(
-        `INSERT INTO district_expedition_loop_evidence (
-          expedition_id, session_id, detected_at
-        ) VALUES (?, ?, ?)`,
-        evidence.expeditionId,
-        evidence.sessionId,
-        evidence.detectedAt
-      );
-    }
-
     await replaceForbiddenZonesFromBackup(
       transaction,
       manifest.forbiddenZones ?? []
@@ -1681,9 +1566,6 @@ export async function deleteAllData() {
       DELETE FROM collected_medals;
       DELETE FROM medal_acquisition_events;
       DELETE FROM zone_achievements;
-      DELETE FROM district_expedition_loop_evidence;
-      DELETE FROM district_expedition_seals;
-      DELETE FROM district_expeditions;
       DELETE FROM street_completion_session_coverage;
       DELETE FROM street_completion_segments;
       DELETE FROM street_completion_v1_evidence;

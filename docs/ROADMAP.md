@@ -1,9 +1,27 @@
 # Roadmap
 
+## Android medal visibility — 0.35.2
+
+Android medal markers now track their custom view until layout plus a bounded 500 ms settling interval, explicitly redraw, then stop tracking. The icon font is preloaded before map startup. This addresses the empty first-snapshot failure without continuously refreshing static medals. Existing zoom/layer visibility and medal collection rules are unchanged. Physical Android confirmation is pending.
+
+## Android fresh-install recovery — 0.35.1
+
+Version 0.35.1 / build 231 includes Android Google Explorator/Daylight styling from 0.35.0, a non-blocking first-location boundary lookup when no objective is cached, identified Overpass requests with a second-server fallback, and a visible retry explanation after failed map holds. Partial/error boundary responses are rejected. Cached areas remain selectable offline. The user confirmed Android map styling and local-area lookup work on 2026-09-22; medal-marker rendering is tracked separately in 0.35.2.
+
+## Android Distribution Preparation
+
+Version 0.34.8 adds environment-based Google Maps key configuration and standalone APK instructions. Google Cloud API restrictions, the EAS signing certificate, and the sensitive preview environment key were configured on 2026-09-22. The preview APK (build 229) built successfully on 2026-09-22. Remaining: validate map rendering, locked-screen recording, and saved walks on a physical Android phone. See [Development Build](DEVELOPMENT_BUILD.md#android-google-maps-and-standalone-apk) and [Testing](TESTING.md).
+
+## iOS Provider Switch (0.35.0)
+
+Implemented: saved Apple/Google selection, Apple default, idle-only switching, older-client fallback, separate restricted iOS Maps key, and provider-specific map styling/speech anchoring. The iOS development client 0.35.0 / 230 built successfully on 2026-09-22; no new standalone iOS preview was requested. Remaining: verify both providers, saved selection, camera continuity, permissions, offline behavior, and recording on a physical iPhone; consult Development Build for native build status.
+
 ## Completed
 
+- 0.34.4 resilience pass: atomic migrations and legacy interruption recovery, bounded body-aware requests, startup Retry, preserved historical street-completion meaning, per-session rebuilds, yielding backup records, and incremental live boundary edges.
+
 - Persistent Atlas footer navigation across all main and secondary pages, direct tab switching, highlighted-tab return to map, return-triggered map-title enlargement, and localized hold-to-preview labels on the map.
-- Explorer Score with one point per unique walked tile, one enclosure bonus per enclosed tile, 200 points per permanent expedition seal, automatic retroactive calculation, live updates, a source breakdown in Details, a combined idle Field Log score/today-steps row, point-bearing enclosure and expedition stamps, and a 55-item offline international mapped-surface ladder.
+- Explorer Score with one point per unique discovered tile, one enclosure bonus per enclosed tile, automatic retroactive calculation, live updates, a source breakdown in Details, a combined idle Field Log score/today-steps row, point-bearing enclosure stamps, and a 55-item offline international mapped-surface ladder.
 - Real book-page audio at a restrained 50% player volume for both directions of Atlas icon-bar navigation, preloaded offline, audible in iPhone Silent mode, and mixed over music or podcasts.
 - Expo React Native TypeScript app scaffold.
 - Local SQLite persistence.
@@ -55,7 +73,7 @@
 - Persistent appearance modes with Explorator as the existing dark atlas and an app-wide daylight-optimized high-contrast palette, light native map, and matching status-bar foreground. The former non-functional Custom placeholder has been removed.
 - Persistent, independent sound-effect and haptic controls in Options, enabled by default and respected by navigation, stamps, rewards, selection, and medal feedback.
 - iOS-first Midnight Cartographer playfield with dark muted MapKit, hidden native POIs/cursor, burnt-orange explored territory, gold current activity, muted copper district boundaries, restrained wine city boundaries, selected-objective stroke hierarchy, restrained route colors, and hand-inked atlas markers. Locked medal pins remain informational name/Locked callouts, while collected pins open Medals.
-- Atlas identity pass: original hand-inked cartographer player, bundled Cinzel display typography, neutral-edged cartographic shells for Details/History/Completion/Medals/Options, gold active and reward emphasis, textured navy paper including Stop and recording-summary dialogs, matching textured main-map ledgers and navigation dock with engraved selections and neutral GPS framing, quiet preloaded UI sounds mixed over external audio, Reduce Motion-aware transitions, a reusable generated gold/navy/burnt-orange cartographer seal with fitted outlined wording and a load-gated synchronized artwork/text strike, dedicated non-blocking enclosure/expedition reward wording with an immediate ink hit before its CC0 jingle, explored-area ink reveal, saved-route draw-on focus, and a folded-map objective HUD.
+- Atlas identity pass: original hand-inked cartographer player, bundled Cinzel display typography, neutral-edged cartographic shells for Details/History/Completion/Medals/Options, gold active and reward emphasis, textured navy paper including Stop and recording-summary dialogs, matching textured main-map ledgers and navigation dock with engraved selections and neutral GPS framing, quiet preloaded UI sounds mixed over external audio, Reduce Motion-aware transitions, a reusable generated gold/navy/burnt-orange cartographer seal with fitted outlined wording and a load-gated synchronized artwork/text strike, dedicated non-blocking enclosure reward wording with an immediate ink hit before its CC0 jingle, explored-area ink reveal, saved-route draw-on focus, and a folded-map objective HUD.
 - Original hand-inked four-direction cartographer animation inside one explicitly sized MapKit sprite annotation, with all idle, walk, and stale-GPS frames pre-mounted and transitioned at a 170ms cadence through a 60ms incoming/outgoing overlap that prevents blank native snapshots. Automatic English/French parchment speech uses a separate same-coordinate annotation, avoiding native Callout selection and its unsolicited fit-to-bubble camera movement. That speech marker stays continuously tracked in a fixed 244-by-128 layout, with the original panel and arrow locked together. Apple Maps uses its required native -58-point center offset to place the arrow tip at the hat; Android retains its normalized bottom anchor. Child-only hidden opacity prevents upper-left reactivation snapshots, while elapsed-time typewriter progress catches up after background JS stalls. Prioritized lifecycle, distance, new-cell/streak, revisit, stationary, GPS, and randomized reactions, short dismissal, and Reduce Motion remain. Sprite and speech state are isolated in single-annotation components, so bubble changes never refresh the player marker. One-time Start/Resume recentering, camera-independent panning, durable trustworthy-position restore, accessible stale-GPS state, and Stop/Start/recovery visibility remain intact. Screen-space projection, coordinate animation, marker-image replacement, and parallel sprite annotations remain disabled for device-stable rendering.
 
 - Performance pass V1: immediate player/route lane, non-starving coalesced and geometry-keyed exploration surfaces, anchor-gated medal analysis, localized timers, lower-frequency tail polling, virtualized/unmounted menus, scoped route-history SQL, exploration/session indexes, corrected aggregate queries, concurrent startup drain, bounded backup serialization, direct Ionicons fonts, and focused diagnostics/regressions.
@@ -70,9 +88,10 @@
 - Recording Recovery V2: full-screen persisted-route preview, verified Active/Interrupted/Uncertain background status, safe recommended actions, bounded long-route rendering, and atomic date/time-based naming during recovered finalization.
 - UI Polish V2: semantic walking/path colors, consistent dark cards across Details/History/Completion, summary-first route details and post-walk reports, and five explicit GPS presentation states with age/accuracy thresholds.
 - Data Tools V2: verified archive preview before restore confirmation, same-file revalidation before atomic replacement, streaming bulk GPX ZIP export, and retirement of the temporary V4 converter.
-- District Expeditions V2: five district-and-date-shuffled offline choices per local day from 25 unique spatial, street, loop, medal, and staged-combination archetypes; opportunity-aware viability filtering; migration-31 replacement of the legacy four-kind constraint plus one-time current-day rotation of untouched offers; persisted concurrent selection across days and districts; independent durable finalized progress; permanent journal seals worth 200 retroactive Explorer Points each; a permanent Atlas navigation destination plus contextual multi-mission HUD shortcut; no-district handoff to Completion; and Backup V5 preservation.
 
 ## Next Priority
+
+Complete the physical-device protocol and remaining performance measurements in [Audit follow-up](AUDIT_FOLLOWUP.md): full polygon regeneration, large individual backup records, aggregate coverage memory,.
 
 ### 1. District Progress Map
 
@@ -81,7 +100,7 @@
 
 ### 2. Explorer Journal
 
-- chronological district, medal, loop, walk-record, and expedition milestones
+- chronological district, medal, loop, walk-record milestones
 - offline and derived from durable local evidence
 
 ## Not Planned Yet
@@ -92,3 +111,9 @@
 - achievements
 - social features
 - route recommendations
+
+Completed in 0.34.4: remove expeditions, their bonuses, and their storage with legacy V5 import compatibility. Remaining verification includes real-device upgrade/restore and six-tab navigation, alongside the audit profiling tasks.
+
+Completed in 0.34.5, piano cue updated in 0.34.6: discreet map location labels for city/district/countryside selection, with a user-selected piano cue, cancellable reveal/fade, Reduce Motion support, and independent reward presentation. Physical-device typography, timing, and sound balance still need validation.
+
+Completed in 0.34.7: local-first long-press selection and removal of completion-hydration waits. Remaining: measure physical-iPhone hold recognition and selection latency with a restored history, offline cached areas, and uncached locations before changing the gesture or adding another control.

@@ -2,8 +2,6 @@ import * as Location from "expo-location";
 import * as TaskManager from "expo-task-manager";
 
 import { MODE_LOCATION_CONFIG } from "../constants/config";
-import { initDatabase } from "../database/db";
-import { getActiveRecordingSettings } from "../database/settingsRepository";
 import {
   drainPendingBackgroundLocationBatches,
   persistDeliveredBackgroundLocationBatch
@@ -41,7 +39,7 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TASK_NAME, async ({ data, error }) =>
     );
     await persistDeliveredBackgroundLocationBatch(
       orderedLocations.map(locationToGpsPoint),
-      await resolveBackgroundTrackingSessionId()
+      getBackgroundTrackingSessionId()
     );
   } catch (error) {
     console.warn(
@@ -223,22 +221,6 @@ function getBackgroundTrackingSessionId() {
     parseBackgroundTrackingSessionId(desiredBackgroundTrackingOwner) ??
     lastBackgroundTrackingSessionId
   );
-}
-
-async function resolveBackgroundTrackingSessionId() {
-  const inMemorySessionId = getBackgroundTrackingSessionId();
-
-  try {
-    await initDatabase();
-    const persistedRecording = await getActiveRecordingSettings();
-    return persistedRecording?.sessionId ?? inMemorySessionId;
-  } catch (error) {
-    console.warn(
-      "Background GPS could not resolve the persisted active session; using the native task hint",
-      error
-    );
-    return inMemorySessionId;
-  }
 }
 
 function parseBackgroundTrackingSessionId(owner: string | null) {
