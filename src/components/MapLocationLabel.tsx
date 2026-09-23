@@ -68,6 +68,10 @@ export function MapLocationLabel({ message, mapContentInsets, onDismiss }: {
           }]
         }]}
       >
+        <View
+          accessible={false}
+          style={[styles.backdrop, daylight ? styles.daylightBackdrop : styles.nightBackdrop]}
+        />
         <View style={styles.eyebrow}>
           <Animated.View style={[styles.rule, { backgroundColor: accent, transform: [{
             scaleX: reducedMotion ? 1 : progress.interpolate({ inputRange: [0, 1, 2], outputRange: [0.15, 1, 0.6] })
@@ -88,6 +92,23 @@ export function MapLocationLabel({ message, mapContentInsets, onDismiss }: {
 const styles = StyleSheet.create({
   layer: { position: "absolute", left: 24, right: 24, justifyContent: "center", alignItems: "center" },
   label: { alignItems: "center", width: "100%", maxWidth: 350, gap: 9 },
+  // Keep the backdrop inside the animated label so replacement, expiry, and
+  // Reduce Motion always fade the background and lettering as one element.
+  backdrop: { position: "absolute", top: -18, bottom: -18, left: -8, right: -8, borderRadius: 24 },
+  nightBackdrop: {
+    backgroundColor: "rgba(7, 16, 24, 0.78)",
+    boxShadow: [
+      { offsetX: 0, offsetY: 0, blurRadius: 20, spreadDistance: 4, color: "rgba(7, 16, 24, 0.45)" },
+      { offsetX: 0, offsetY: 0, blurRadius: 40, spreadDistance: 8, color: "rgba(7, 16, 24, 0.22)" }
+    ]
+  },
+  daylightBackdrop: {
+    backgroundColor: "rgba(255, 250, 240, 0.88)",
+    boxShadow: [
+      { offsetX: 0, offsetY: 0, blurRadius: 20, spreadDistance: 4, color: "rgba(255, 250, 240, 0.55)" },
+      { offsetX: 0, offsetY: 3, blurRadius: 36, spreadDistance: 6, color: "rgba(23, 43, 57, 0.18)" }
+    ]
+  },
   eyebrow: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 12 },
   rule: { width: 28, height: 1, opacity: 0.8 },
   scope: { fontSize: 10, letterSpacing: 3, fontWeight: "600", textTransform: "uppercase", flexShrink: 1 },

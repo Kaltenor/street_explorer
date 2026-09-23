@@ -11,6 +11,26 @@ require.extensions[".ts"] = (module, filename) => module._compile(
 );
 
 async function main() {
+  const { publishLatestSnapshot } = require("../src/services/latestSnapshot.ts");
+  const snapshotGeneration = { current: 0 };
+  const pendingSnapshots = [];
+  const publishedSnapshots = [];
+  const loadSnapshot = () => new Promise((resolve) => pendingSnapshots.push(resolve));
+  const publishSnapshot = (value) => publishedSnapshots.push(value);
+  const oldLoad = publishLatestSnapshot(snapshotGeneration, loadSnapshot, publishSnapshot);
+  const newLoad = publishLatestSnapshot(snapshotGeneration, loadSnapshot, publishSnapshot);
+  pendingSnapshots[1](["new"]);
+  await newLoad;
+  pendingSnapshots[0](["old"]);
+  await oldLoad;
+  assert.deepEqual(publishedSnapshots, [["new"]]);
+  const editRace = publishLatestSnapshot(snapshotGeneration, loadSnapshot, publishSnapshot);
+  snapshotGeneration.current += 1;
+  pendingSnapshots[2](["stale after edit"]);
+  await editRace;
+  assert.deepEqual(publishedSnapshots, [["new"]]);
+  console.log("PASS stale Forbidden Zone loads cannot replace newer reads or completed edits");
+
   const { fetchBoundaryData } = require("../src/services/boundaryRequest.ts");
   const realFetch = global.fetch;
   const calls = [];

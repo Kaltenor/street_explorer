@@ -260,6 +260,16 @@ assert(
     solid[0].coordinates.length === 4,
   "solid cells render as one seamless polygon"
 );
+const grownSolid = explorationArea.buildMergedExplorationPolygons([
+  ...rectangle(3, 3),
+  "3:0"
+]);
+assert(
+  grownSolid.length === 1 &&
+    grownSolid[0].id === solid[0].id &&
+    grownSolid[0].coordinates.length > solid[0].coordinates.length,
+  "ordinary frontier growth updates one native polygon instead of remounting it"
+);
 
 const ring = explorationArea.buildMergedExplorationPolygons(
   rectangle(3, 3, new Set(["1:1"]))
@@ -1132,7 +1142,8 @@ const forbiddenMigrationSource = databaseSource.slice(
 assert(
   !forbiddenMigrationSource.includes("DELETE FROM zone_completion_snapshots") &&
     refreshSavedDataSource.indexOf("setIsSavedDataReady(true)") <
-      refreshSavedDataSource.indexOf("setForbiddenZones(await getForbiddenZones())") &&
+      refreshSavedDataSource.indexOf("void refreshForbiddenZones()") &&
+    refreshSavedDataSource.includes("if (isLaunchDismissedRef.current) void refreshForbiddenZones()") &&
     mapScreenSource.includes("isObjectiveCacheHydrated") &&
     mapScreenSource.includes("hydrateObjectiveZonesIntoCache") &&
     mapScreenSource.includes("shouldRunExpensiveCompletionMaintenance"),

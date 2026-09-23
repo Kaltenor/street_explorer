@@ -1,13 +1,50 @@
 # Testing
 
-## Android medal visibility — 0.35.2
+## Splash contrast and completion stamp lifecycle — 0.35.8
 
-Prerequisites: Android APK 232 installed over the previous app, a selected city with its medal album loaded, Pins/Repères enabled, city/street-level zoom.
+Prerequisites: reload the 0.35.8 bundle in an SDK 54 development client (standalone installs need build 238), and have one previously completed objective plus a test district close to completion. Keep sound and haptics enabled for the celebration checks.
+
+1. Choose Daylight and cold-launch. Expected: all three launch phrases and the start prompt remain clearly readable against the fixed dark artwork. Switch to Explorator and relaunch; expected: the same words and high-contrast splash appearance.
+2. Set the saved objective to the already completed city or district, then force-close and relaunch. Expected: its 100% progress is restored after entering the map, with no completion stamp, stamp sound, or haptic.
+3. Record a walk in a nearly complete objective, add enough explored area to reach 100%, then stop and allow finalization. Expected: one completion stamp appears for that city/district after the walk is finalized.
+4. Revisit that objective, return to the map from another Atlas page, and force-close/reopen. Expected: progress remains complete and the stamp does not replay. Repeat the successful completion path with Reduce Motion enabled; expected: the single new-completion presentation respects Reduce Motion.
+
+Physical devices are required to assess splash readability, native sound/haptics, and the final stamp animation. No device build was produced for this change.
+
+## Player-centered map launch — 0.35.7
+
+Prerequisites: reload the 0.35.7 bundle in an SDK 54 dev client, enable precise location, and test somewhere outside Paris. Test Apple Maps on iOS and Google Maps on both mobile platforms.
+
+1. Cold-launch with a usable GPS fix. After the splash, expect walking-scale focus at the player, with no return to Paris when city boundaries finish loading.
+2. Repeat with a saved objective/route in another city: live location must take precedence. Switch providers and confirm the camera remains at its current region.
+3. Delay GPS, then allow a fix: expect the map to center once before manual interaction. Deny permission or disable location: expect a usable saved-position/route fallback without indefinite splash waiting.
+4. Pan or hold elsewhere, then receive newer fixes: the camera must respect manual exploration. Background/reopen and confirm the map does not unmount or reset on foreground location refresh.
+5. Focus a medal, route, or objective after launch: the camera must accept that focus rather than retaining a pending startup target.
+
+Physical location timing and native camera behavior require these device checks.
+
+## Polygon performance and Forbidden Zone visibility — 0.35.5
+
+Prerequisites: a new iOS build 235 or newer for the Apple Maps native patch, a populated profile with at least one Forbidden Zone and a large explored surface, location permission for a short walk, and both map providers configured if testing Google Maps on iOS. The automated geometry, provider, type, and bundle checks do not measure native frame rate or prove MapKit visibility on a phone.
+
+1. Cold-launch with a saved Forbidden Zone. Expected: its purple fill and edge appear after the map opens, before any optional medal scan finishes; reopening produces the same layer.
+2. Toggle Explored Cells off and on, change the district/city objective, switch appearance and map provider, and pan/zoom across the zone. Expected: the purple zone stays visible and remains distinct from orange territory; boundaries and routes remain readable.
+3. Start a walk beside a large saved explored island and add new cells. Expected: the surface extends on its normal coalesced cadence without disappearing or covering the purple zone. Check development logs for `map.exploration-surface` and note visible frame pauses on each provider.
+4. Close a qualifying loop, then inspect an oversized unfilled hole. Expected: the small hole fills immediately, the oversized hole stays transparent, and neither leaves a stale native polygon.
+5. Stop, reopen, create a second Forbidden Zone, edit its comment, then remove it while a map refresh is in progress. Expected: the saved purple zones match the latest database state after every step and remain correct after another reopen.
+
+## Splash version label — 0.35.4
+
+The splash screen version label is now 12 points, doubled from 6 points (200%), and remains in the safe bottom-right corner.
+
+## Google Maps medal visibility — 0.35.3
+
+Prerequisites: Android APK 233 or iOS development client 233 installed over the previous app, a selected city with its medal album loaded, Pins/Repères enabled, city/street-level zoom.
 
 1. Cold-launch and select Lyon: locked medal icons should appear after layout, without opening the medal list first.
 2. Pan, zoom out/in, toggle Pins off/on, and change appearance: medals should reappear without blank or clipped icons.
 3. Tap a locked medal: its name/locked label should appear. Tap a collected medal, if available: its details should open.
-4. Reopen the app: medals should remain visible and collection progress should be unchanged. Test Apple Maps on iOS for regression when available.
+4. Reopen the app: medals should remain visible and collection progress should be unchanged. Switch to Apple Maps on iOS: medal markers should still appear. Repeat in Google Maps on iOS and Android.
 
 Automated type, UI, medal, and bundle checks do not substitute for Google Maps rendering on a physical Android device.
 
@@ -60,14 +97,14 @@ Prerequisites: physical iPhone, existing SDK 54 dev client reloaded with 0.34.7,
 
 Automated tests exercise the real visible/cache/remote resolver, missing-district cache behavior, and cancellation during cache/network waits. Native recognition, busy-JS response time, and MapKit teardown still need physical-device verification. Completion remains the tap-based alternative.
 
-## Discreet location label — 0.34.6
+## Discreet location label — 0.35.6
 
-Prerequisites: a physical iPhone with the SDK 54 dev client, a fully reloaded 0.34.6 Metro bundle, sound enabled, and cached city/district boundaries (or network access to fetch them). Use an area with selectable city/district objectives and a long place name. Location permission is needed only for the recording/reward step.
+Prerequisites: a physical iPhone or Android phone with the SDK 54 dev client, a fully reloaded 0.35.6 Metro bundle, sound enabled, and cached city/district boundaries (or network access to fetch them). Use an area with selectable city/district objectives and a long place name. Location permission is needed only for the recording/reward step.
 
-1. Switch city and district from both the map and Completion. Expected: a small localized scope and place name appear in the free map space, with thin rules, a gentle upward reveal and a quiet piano cue. After about 3.2 seconds the text dissolves. No seal, impact, or fanfare appears. Map gestures remain available. Repeat countryside selection.
+1. Switch city and district from both the map and Completion. Expected: a small localized scope and place name appear in the free map space, with thin rules, a gentle upward reveal and a quiet piano cue. A soft themed shadow backdrop should fade in with the lettering and keep the place name readable over dense streets. After about 3.2 seconds the text and backdrop dissolve together. No seal, impact, or fanfare appears. Map gestures remain available. Repeat countryside selection.
 2. Switch rapidly three times, then open a tab or background the app midway. Expected: only the newest label survives; leaving cancels it and its sound. Return and expect no old label or late audio. Relaunch and confirm the chosen objective persisted without replaying the label.
 3. Disable Sound effects and switch again; repeat with external music playing and sounds enabled. Expected: mute suppresses the cue; enabled feedback mixes without pausing the music. Check speaker and headphones for comfortable volume.
-4. Enable Reduce Motion, test Explorator and Daylight, switch language, and select a long place name at larger text sizes. Expected: reduced motion uses fades without translation or rule expansion; text stays legible, wraps within the map area, and avoids controls.
+4. Enable Reduce Motion, test Explorator and Daylight, switch language, and select a long place name at larger text sizes. Expected: reduced motion uses fades without translation or rule expansion; text stays legible over its navy/parchment backdrop, wraps within the map area, and avoids controls. Verify the backdrop disappears with the label when rapidly switching or leaving the map.
 5. Unlock a medal, complete an objective, and close a qualifying enclosure during a walk. Expected: their existing celebrations, sounds, points, and haptics remain; a location label never covers them. Stop and reopen to verify saved progress.
 
 Automated checks cover sound replacement/cancellation, mute during asynchronous seek, selected-clip integrity and WAV format, and existing gameplay/UI regressions. Native animation, map readability, sound balance, accessibility and reward interaction still need this device protocol.
@@ -85,15 +122,16 @@ Prerequisites: an existing SDK 54 iPhone development client receiving the 0.34.4
 
 Automated coverage exercises schema removal rollback/retry, retention of other tables, reopening, legacy metadata acceptance/export omission, and the existing geometry, score, medal, backup and UI suites. Native termination, Files, GPS, MapKit layout, and device memory still require this physical protocol.
 
-## Launch-Gated Completion Stamp V0.34.2 Manual Test
+## Completion Stamp Lifecycle — 0.35.8 Manual Test
 
-Prerequisites: install iOS build 223 or newer on a physical iPhone whose saved objective is an already completed district or city. Keep sound and haptics enabled so launch-time feedback leakage is observable.
+Prerequisites: use the current 0.35.8 development client on a physical iPhone with an already completed saved objective and a separate nearly complete district. Keep sound and haptics enabled.
 
-1. Force-close Street Explorer and launch it again. Expected: the Mapbound splash remains visually clean throughout loading and the Press to start phase; no district/city completion stamp, ink sound, or impact haptic appears before or during the fade.
-2. Press to start and wait for the splash fade to finish. Expected: the eligible completion stamp appears only over the revealed map, with its normal sound and haptic feedback.
-3. Force-close and repeat once with Reduce Motion enabled. Expected: the splash remains clean and silent, and the completion stamp still waits until after launch dismissal while using its reduced-motion presentation.
+1. Reopen with the already completed objective saved. Expected: the splash and Press to start phase stay quiet, and entering the map does not show its old completion stamp or feedback.
+2. Complete the separate district by recording enough new explored area and stop the walk. Expected: a stamp and its normal sound/haptic feedback appear once after finalization.
+3. Force-close and reopen, then revisit the newly completed district. Expected: no repeat stamp or feedback; its 100% achievement remains visible.
+4. Repeat a new completion using Reduce Motion. Expected: the one newly earned stamp follows the reduced-motion presentation.
 
-Automated UI regression coverage verifies both the completion-stamp creation gate and the shared Atlas stamp render gate. Physical-device validation remains required for native splash stacking, sound, and haptic timing.
+Physical-device validation remains required for native splash stacking, sound, haptic timing, and animation behavior.
 
 ## Standalone iOS Preview V0.34.1 Manual Test
 
@@ -324,14 +362,14 @@ Prerequisites: install version 0.27.2 in a portrait physical-device development 
 
 1. Cold-launch and observe the shared artwork through its native-to-React handoff. Expected: the root overlay appears before database, font, or map readiness can gate it and receives one clean 1000ms budget from the JavaScript runtime launch epoch—no subtitle, version, spinner, loading row, or start prompt during that budget. If a slow development bundle or native handoff already consumes the second, the subtitle starts immediately when the React artwork decodes; there is no second post-handoff pause.
 2. After the hold, watch the subtitle. Expected: cyan Walk fades/rises first, gold Explore overlaps shortly afterward, and the parchment Reveal phrase completes the native sequence in roughly 1050ms. There is no random-letter pause or whole-sentence pop.
-3. After the subtitle completes, count the quiet beat. Expected: approximately 500ms later, Press to start fades in and begins its restrained pulse. The six-point version is independently visible in the safe bottom-right corner. No loading message has appeared.
+3. After the subtitle completes, count the quiet beat. Expected: approximately 500ms later, Press to start fades in and begins its restrained pulse. The 12-point version is independently visible in the safe bottom-right corner. No loading message has appeared.
 4. With preparation still incomplete, press once. Expected: the prompt immediately becomes the localized loading row on the same retained splash. Further taps do nothing. When readiness completes, the entire splash—including subtitle, loading row, and version—fades slowly over roughly 800ms to reveal the prepared map automatically.
 5. Relaunch with preparation already complete before pressing. Expected: pressing skips the loading row and begins the same 800ms fade immediately. The map accepts input only after the fading overlay has been dismissed, and the transition occurs exactly once.
 6. Repeat with readiness completing just before, during, and just after the press. Expected: each race takes exactly one branch, produces exactly one fade and dismissal, and never flashes the loading row before player input.
 7. Enable Reduce Motion and relaunch. Expected: the one-second launch-wide clean-background budget and half-second quiet beat remain; the subtitle appears in its complete state, Press to start remains steady rather than pulsing, and either readiness branch still uses the requested opacity fade into the map.
 8. Repeat on the narrowest supported iPhone and an iPad portrait canvas with larger text and VoiceOver. Expected: the phrase row remains fitted and unclipped, the version stays above the safe-area inset at the extreme right, focus cannot reach the prompt before it is visible, and the loading row is announced only after activation.
 
-Automated checks cover root ownership before the application-content gate, upward MapScreen readiness, the shared JPEG and dimensions, image-decode gate, runtime-origin 1000ms budget and zero-remaining-time branch, three real native phrase nodes, 1050ms native-driver stagger, 500ms prompt delay, post-press-only loading state, ready/unready press branches, idempotent 800ms root fade, responsive phrase sizing, independent six-point safe-corner version, pulse gating, Reduce Motion wiring, type safety, and the iOS Expo bundle. Physical-device verification remains required for perceived timing under real startup load, fade compositing over MapKit, VoiceOver announcement timing, safe-area placement, and native-to-React continuity.
+Automated checks cover root ownership before the application-content gate, upward MapScreen readiness, the shared JPEG and dimensions, image-decode gate, runtime-origin 1000ms budget and zero-remaining-time branch, three real native phrase nodes, 1050ms native-driver stagger, 500ms prompt delay, post-press-only loading state, ready/unready press branches, idempotent 800ms root fade, responsive phrase sizing, independent 12-point safe-corner version, pulse gating, Reduce Motion wiring, type safety, and the iOS Expo bundle. Physical-device verification remains required for perceived timing under real startup load, fade compositing over MapKit, VoiceOver announcement timing, safe-area placement, and native-to-React continuity.
 
 ## Map Return and Active-Walk HUD V0.24.0 Manual Test
 
@@ -354,7 +392,7 @@ Prerequisites: install a freshly generated preview or production build on a port
 2. Wait for the in-app launch layer. Expected: the same aspect-ratio-preserving artwork remains visually stable without a width change while the localized subtitle appears beneath the Mapbound title bar. English reads `Walk. Explore. Reveal your city.`; French reads `Marchez. Explorez. Révélez votre ville.`
 3. Inspect the subtitle at normal and larger system text sizes. Expected: Walk/Marchez is cyan, Explore/Explorez is gold, the final phrase is parchment, and the phrases have balanced spacing. The full sentence stays centered below the decorative rule rather than overlapping the title or rule, remains on one line through bounded font scaling, and its shadow stays legible without covering the skyline.
 4. Confirm the artwork receives one clean launch-wide second without restarting that delay when React takes over, then the localized subtitle reveals and Press to start appears after the half-second quiet beat. Expected: preparation remains silent and no loading row appears before the player presses.
-5. Press once. Expected: an already prepared map begins the slow fade immediately; unfinished preparation replaces the prompt with the localized loading row, retains the splash, and begins the same fade automatically when ready. The independent half-size version remains inside the safe bottom-right corner throughout.
+5. Press once. Expected: an already prepared map begins the slow fade immediately; unfinished preparation replaces the prompt with the localized loading row, retains the splash, and begins the same fade automatically when ready. The independent 12-point version remains inside the safe bottom-right corner throughout.
 6. Repeat on the narrowest supported phone and an iPad portrait layout. Expected: the logo, subtitle, coastline, bottom action, and version remain visible; note any unacceptable stretch or crop for a later device-specific asset pass.
 
 Automated coverage verifies the PNG/JPEG signatures and 1320x2868 dimensions, explicit native plugin and in-app asset wiring, removal of the deprecated native path, localized subtitle keys, type safety, and iOS bundling. Physical preview/production-device verification remains required for the OS-owned first frame, native-to-React visual continuity, exact typography placement, safe-area behavior, and perceived image quality.
@@ -935,7 +973,7 @@ Startup regressions: when testing an older development binary against the curren
 5. Open and close Details, History, Completion, and Options in turn; after each one, confirm the map gestures and bottom controls still respond.
 6. With foreground permission granted, confirm the player icon appears before recording and the map centers on the current location.
 7. If no fix is available, confirm startup resolves after the bounded attempt; a later fix may center the map unless you already moved it.
-8. Confirm the half-size version number remains independently aligned to the safe bottom-right corner and the matching transparent `title.png` Mapbound logo appears on the map.
+8. Confirm the 12-point version number remains independently aligned to the safe bottom-right corner and the matching transparent `title.png` Mapbound logo appears on the map.
 9. Tap Start and confirm the button immediately shows Starting, then changes to Stop without waiting for step or background-service setup.
 10. Confirm repeated taps while Starting do not create duplicate recordings.
 11. Move at least 20-30 meters.

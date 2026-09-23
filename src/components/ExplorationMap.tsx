@@ -27,7 +27,7 @@ import MapView, {
   PROVIDER_GOOGLE,
   Region
 } from "react-native-maps";
-import { Image, Platform, StyleSheet, Text, View } from "react-native";
+import { Image, Platform, StyleSheet, Text, View, type LayoutChangeEvent } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import {
@@ -218,13 +218,15 @@ export const ExplorationMap = memo(function ExplorationMap({
   const mapRef = useRef<MapView | null>(null);
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
+  const pendingStartupRegionRef = useRef<Region | null>(null);
   const handledPlayerFocusRequestId = useRef(playerFocusRequestId);
   const pendingPlayerFocusTimestampRef = useRef<number | null>(null);
   const handledZoneFocusRequestId = useRef(zoneFocusRequestId);
   const handledMedalFocusRequestId = useRef(0);
   const persistentPlayerLocationRef = useRef<GpsPoint | null>(null);
   const [readyMapKey, setReadyMapKey] = useState<string | null>(null);
-  const isNativeMapReady = readyMapKey === nativeMapKey;
+  const [laidOutMapKey, setLaidOutMapKey] = useState<string | null>(null);
+  const isNativeMapReady = readyMapKey === nativeMapKey && laidOutMapKey === nativeMapKey;
   const activeRouteStartPoint =
     activeRouteChunks[0]?.points[0] ?? activePoints[0] ?? null;
   const activeRouteEndPoint =
@@ -260,7 +262,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     [activeMode, activeRouteEndPoint, playerLocation]
   );
   const [visibleRegion, setVisibleRegion] = useState(() =>
-    getInitialRegion(startupCenter?.point ?? null, walks)
+    getInitialRegion(playerLocation, walks)
   );
   const renderLevel = getMapRenderLevel(visibleRegion.latitudeDelta);
   const areaStyle = getExploredAreaStyle(visibleRegion.latitudeDelta);
@@ -446,17 +448,23 @@ export const ExplorationMap = memo(function ExplorationMap({
       }
     }
 
-    mapRef.current?.animateToRegion(
-      {
+    const region = {
         latitude: startupCenter.point.latitude,
         longitude: startupCenter.point.longitude,
         latitudeDelta: MAP_CONFIG.defaultLatitudeDelta,
         longitudeDelta: MAP_CONFIG.defaultLongitudeDelta
-      },
-      450
-    );
+    };
+    // Retain the intended camera immediately: loading the local city may remount
+    // the map before its first native region-change callback reaches JavaScript.
+    pendingStartupRegionRef.current = region;
+    setVisibleRegion(region);
+    mapRef.current?.animateToRegion(region, 0);
     initialCenterRef.current = startupCenter;
   }, [isNativeMapReady, startupCenter]);
+
+  useEffect(() => {
+    if (isNativeMapReady) onMapReady?.();
+  }, [isNativeMapReady, onMapReady]);
 
   useEffect(() => {
     if (
@@ -468,6 +476,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     }
 
     handledPlayerFocusRequestId.current = playerFocusRequestId;
+    pendingStartupRegionRef.current = null;
     hasUserMovedMapRef.current = false;
     pendingPlayerFocusTimestampRef.current = getPointTimestamp(playerLocation);
     mapRef.current?.animateToRegion(
@@ -522,6 +531,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     const highlightedWalk = walks.find((walk) => walk.id === highlightedSessionId);
 
     if (highlightedWalk && highlightedWalk.points.length > 1) {
+      pendingStartupRegionRef.current = null;
       pendingPlayerFocusTimestampRef.current = null;
       fitToPoints(highlightedWalk.points, {
         bottom: 230,
@@ -577,6 +587,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     const coordinates = selectedZone.geometry.flat();
 
     if (coordinates.length > 1) {
+      pendingStartupRegionRef.current = null;
       pendingPlayerFocusTimestampRef.current = null;
       mapRef.current?.fitToCoordinates(coordinates, {
         animated: true,
@@ -596,6 +607,7 @@ export const ExplorationMap = memo(function ExplorationMap({
       return;
     }
     handledMedalFocusRequestId.current = medalFocusRequestId;
+    pendingStartupRegionRef.current = null;
 
     mapRef.current?.animateToRegion(
       {
@@ -611,16 +623,24 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [focusedMedal, isNativeMapReady, medalFocusRequestId]);
 
   const handleRegionChangeComplete = useCallback((nextRegion: Region) => {
+    const pending = pendingStartupRegionRef.current;
+    if (pending && (
+      Math.abs(nextRegion.latitude - pending.latitude) > pending.latitudeDelta * 0.01 ||
+      Math.abs(nextRegion.longitude - pending.longitude) > pending.longitudeDelta * 0.01
+    )) return; // Ignore the late callback from the launch fallback camera.
+    pendingStartupRegionRef.current = null;
     setVisibleRegion(nextRegion);
     onVisibleRegionChange?.(nextRegion);
   }, [onVisibleRegionChange]);
 
   const handleMapPan = useCallback(() => {
+    pendingStartupRegionRef.current = null;
     pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
   }, []);
 
   const handleMapLongPress = useCallback((event: LongPressEvent) => {
+    pendingStartupRegionRef.current = null;
     pendingPlayerFocusTimestampRef.current = null;
     hasUserMovedMapRef.current = true;
     onMapLongPress?.(event.nativeEvent.coordinate);
@@ -632,8 +652,12 @@ export const ExplorationMap = memo(function ExplorationMap({
 
   const handleNativeMapReady = useCallback(() => {
     setReadyMapKey(nativeMapKey);
-    onMapReady?.();
-  }, [nativeMapKey, onMapReady]);
+  }, [nativeMapKey]);
+
+  const handleNativeMapLayout = useCallback((event: LayoutChangeEvent) => {
+    const { width, height } = event.nativeEvent.layout;
+    if (width > 0 && height > 0) setLaidOutMapKey(nativeMapKey);
+  }, [nativeMapKey]);
 
   const fitToPoints = (
     points: GpsPoint[],
@@ -669,6 +693,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         initialRegion={visibleRegion}
         onPanDrag={handleMapPan}
         onMapReady={handleNativeMapReady}
+        onLayout={handleNativeMapLayout}
         onPress={handleMapPress}
         onLongPress={handleMapLongPress}
         onRegionChangeComplete={handleRegionChangeComplete}
@@ -785,6 +810,7 @@ export const ExplorationMap = memo(function ExplorationMap({
             }`}
             lockedLabel={lockedMedalLabel}
             medal={medal}
+            usesGoogleMaps={mapProvider === "google"}
             onMedalPress={onMedalPress}
           />
         )) : null}
@@ -834,6 +860,7 @@ const ForbiddenZoneOverlay = memo(function ForbiddenZoneOverlay({
             strokeColor="rgba(77, 31, 116, 0.88)"
             strokeWidth={2}
             tappable={false}
+            zIndex={1}
           />
         ))
       )}
@@ -916,6 +943,7 @@ const AdministrativeBoundaryOverlay = memo(function AdministrativeBoundaryOverla
                   : WALKING_COLORS.districtBoundaryMuted
               }
               strokeWidth={isSelectedDistrict ? 3 : 1.5}
+              zIndex={2}
             />
           );
         })
@@ -941,6 +969,7 @@ const AdministrativeBoundaryOverlay = memo(function AdministrativeBoundaryOverla
                     : WALKING_COLORS.cityBoundaryMuted
                 }
                 strokeWidth={isSelectedCity ? 4 : 3}
+                zIndex={2}
               />
             );
           })
@@ -997,18 +1026,22 @@ const AtlasRouteMarker = memo(function AtlasRouteMarker({
 const AtlasMedalMarker = memo(function AtlasMedalMarker({
   lockedLabel,
   medal,
+  usesGoogleMaps,
   onMedalPress
 }: {
   lockedLabel: string;
   medal: CollectedMedal;
+  usesGoogleMaps: boolean;
   onMedalPress?: (medal: CollectedMedal) => void;
 }) {
   const markerRef = useRef<ComponentRef<typeof Marker>>(null);
   const [hasLayout, setHasLayout] = useState(false);
-  const [tracksSnapshot, setTracksSnapshot] = useState(Platform.OS === "android");
+  const shouldTrackSnapshot = Platform.OS === "android" || usesGoogleMaps;
+  const [tracksSnapshot, setTracksSnapshot] = useState(shouldTrackSnapshot);
 
   useEffect(() => {
-    if (Platform.OS !== "android" || !hasLayout) return;
+    setTracksSnapshot(shouldTrackSnapshot);
+    if (!shouldTrackSnapshot || !hasLayout) return;
     // Google snapshots custom marker children. Freezing before their first
     // layout can preserve an empty bitmap for the marker's entire lifetime.
     const timer = setTimeout(() => {
@@ -1016,7 +1049,7 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
       setTracksSnapshot(false);
     }, 500);
     return () => clearTimeout(timer);
-  }, [hasLayout]);
+  }, [hasLayout, shouldTrackSnapshot]);
 
   return (
     <Marker
@@ -2105,6 +2138,7 @@ const RoutePolyline = memo(function RoutePolyline({
       lineJoin="round"
       strokeColor={getSegmentStrokeColor({ color, isDimmed, isInferred })}
       strokeWidth={isHighlighted ? 8 : 5}
+      zIndex={3}
     />
   );
 });

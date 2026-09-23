@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.35.8
+
+- Keep splash lettering high-contrast and identical across Explorator and Daylight; the launch artwork remains fixed dark art.
+- Trigger a city/district completion stamp only after a finalized recording changes the objective from incomplete to permanently complete. Hydrating, reopening, or revisiting a completed objective no longer replays it.
+- iOS build 238; Android version code 238.
+
+## v0.35.7
+
+- Center map launch on the player for both providers by waiting for initial location resolution and native map layout. Preserve the startup camera across city remounts and reject late default-camera callbacks.
+- Retain last-known player position ahead of saved-route/default fallback when GPS is unavailable.
+- iOS build 237; Android version code 237.
+
+## v0.35.6
+
+- Add a soft themed shadow backdrop to city/district/countryside selection labels, sharing the text reveal and dismissal animation for better map readability.
+- iOS build 236; Android version code 236.
+
+## v0.35.5
+
+- Keep growing discovered islands on the same native polygon; continue remounting when holes change.
+- Preserve Apple Maps polygon child order during native overlay updates so Forbidden Zones remain above explored territory. Set explicit Google Maps layer order and load Forbidden Zones before optional medal scans, rejecting stale loads after edits.
+- Add geometry and native-patch regressions, performance audit measurements, and a device test protocol. Apple Maps fix requires a new iOS build.
+- iOS build 235; Android version code 235.
+
+## v0.35.4
+
+- Double the in-app splash version label from 6 to 12 points (200%), retaining its safe bottom-right placement.
+- iOS build 234; Android version code 234.
+
+## v0.35.3
+
+- Keep Google Maps medal snapshots live through layout and redraw on iOS and Android, then freeze static markers. Preload Ionicons before map startup.
+- iOS build 233; Android version code 233.
+
 ## v0.35.2
 
 - Prevent Android medal markers from freezing their custom view before layout; redraw once after settling and preload the icon font.

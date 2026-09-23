@@ -1,5 +1,6 @@
 import { MapLocationLabel, type MapLocationMessage } from "../components/MapLocationLabel";
 import { canChangeMapProvider, type MapProvider } from "../services/mapProvider";
+import { publishLatestSnapshot } from "../services/latestSnapshot";
 import { createIncrementalEnclosureCollector } from "../services/explorationArea";
 import {
   type ComponentRef,
@@ -814,7 +815,6 @@ export function MapScreen({
   const legacyObjectiveRefreshIdsRef = useRef(new Set<string>());
   const objectiveScopePairRef = useRef<MapZoneSelection | null>(null);
   const objectiveStatsCacheRef = useRef(new Map<string, ZoneCompletionSnapshot>());
-  const completedStampZoneIdsRef = useRef(new Set<string>());
   const activeClosureMonitorRef = useRef<{
     contextKey: string | null;
     fillCellIds: Set<string>;
@@ -992,6 +992,13 @@ export function MapScreen({
     isRecording: Boolean(activeWalk),
     onPoint: handleLocationPoint
   });
+  const [canMountInitialMap, setCanMountInitialMap] = useState(false);
+  useEffect(() => {
+    if (permissionState !== "unknown" &&
+        (permissionState !== "granted" || initialLocationResolved)) {
+      setCanMountInitialMap(true);
+    }
+  }, [initialLocationResolved, permissionState]);
   const playerLocationPersistenceCandidate =
     activeWalk?.routeChunks.at(-1)?.points.at(-1) ??
     activeWalk?.points.at(-1) ??
@@ -1272,6 +1279,18 @@ export function MapScreen({
   } | null>(null);
 
   const savedDataRefreshGenerationRef = useRef(0);
+  const forbiddenZoneLoadGenerationRef = useRef(0);
+  const refreshForbiddenZones = useCallback(async () => {
+    try {
+      await publishLatestSnapshot(
+        forbiddenZoneLoadGenerationRef,
+        getForbiddenZones,
+        setForbiddenZones
+      );
+    } catch (error) {
+      console.warn("Failed to load Forbidden Zones", error);
+    }
+  }, []);
   const savedDataRefreshOperationsRef = useRef(new Set<Promise<void>>());
   const refreshSavedData = useCallback((options: {
     hideExplorationDuringRefresh?: boolean;
@@ -1460,6 +1479,8 @@ export function MapScreen({
       setIsSavedDataReady(true);
       // Optional catalogue/network work must never hold local map readiness.
       if (hideExplorationDuringRefresh && isMapReadyRef.current) setIsExplorationEnabled(true);
+      // Hydrate the independent purple layer before optional medal scans.
+      if (isLaunchDismissedRef.current) void refreshForbiddenZones();
       const medalData = await loadMedalData(exploredCellIds, explorationRevision);
       if (refreshGeneration === savedDataRefreshGenerationRef.current) {
         setMedalPresentationQueue(medalData.pendingMedalPresentations);
@@ -1475,16 +1496,6 @@ export function MapScreen({
           }
         }
 
-      }
-
-      // Once launch is complete, refreshes also hydrate independent world state.
-      // The initial refresh skips this query so it cannot hold the launch gate.
-      if (isLaunchDismissedRef.current) {
-        try {
-          setForbiddenZones(await getForbiddenZones());
-        } catch (error) {
-          console.warn("Failed to load Forbidden Zones", error);
-        }
       }
 
       if (detailedWalksModeRef.current === activityMode) {
@@ -1515,7 +1526,7 @@ export function MapScreen({
     };
     savedDataRefreshOperationsRef.current.add(trackedOperation);
     return trackedOperation;
-  }, [activeMedalAlbumId, activityMode, loadDetailedWalks]);
+  }, [activeMedalAlbumId, activityMode, loadDetailedWalks, refreshForbiddenZones]);
 
   useEffect(() => {
     if (
@@ -1628,10 +1639,8 @@ export function MapScreen({
         return refreshSavedData({ hideExplorationDuringRefresh: false });
       }
     }).catch((error) => console.warn("Deferred recording repair will retry", error));
-    getForbiddenZones()
-      .then(setForbiddenZones)
-      .catch((error) => console.warn("Failed to load Forbidden Zones", error));
-  }, [isLaunchDismissed, isSavedDataReady, refreshSavedData]);
+    void refreshForbiddenZones();
+  }, [isLaunchDismissed, isSavedDataReady, refreshForbiddenZones, refreshSavedData]);
 
   useEffect(() => {
     if (!layers.showPaths) {
@@ -2363,6 +2372,7 @@ export function MapScreen({
                 setIsForbiddenZoneProcessing(true);
                 void deleteForbiddenZone(existingZone.id)
                   .then(() => {
+                    forbiddenZoneLoadGenerationRef.current += 1;
                     setForbiddenZones((zones) =>
                       zones.filter((zone) => zone.id !== existingZone.id)
                     );
@@ -2451,6 +2461,7 @@ export function MapScreen({
         polygons: selection.polygons
       });
 
+      forbiddenZoneLoadGenerationRef.current += 1;
       setForbiddenZones((zones) => [...zones, created]);
       objectiveStatsCacheRef.current.clear();
       setObjectiveMaintenanceRevision((revision) => revision + 1);
@@ -2765,6 +2776,7 @@ export function MapScreen({
         forbiddenZoneCommentEditor.zoneId,
         comment
       );
+      forbiddenZoneLoadGenerationRef.current += 1;
       setForbiddenZones((zones) => zones.map((zone) =>
         zone.id === forbiddenZoneCommentEditor.zoneId
           ? { ...zone, comment: update.comment, updatedAt: update.updatedAt }
@@ -2900,34 +2912,6 @@ export function MapScreen({
     objective?.mode,
     objective?.zone,
     objectiveMaintenanceRevision
-  ]);
-
-  useEffect(() => {
-    if (
-      !isLaunchDismissed ||
-      !objective ||
-      !objectiveStats?.permanentlyCompleted
-    ) {
-      return;
-    }
-
-    if (completedStampZoneIdsRef.current.has(objective.zone.id)) {
-      return;
-    }
-
-    completedStampZoneIdsRef.current.add(objective.zone.id);
-    setAtlasStampMessage({
-      detail: objective.zone.name,
-      id: Date.now(),
-      title: objective.zone.type === "city"
-        ? language === "fr" ? "VILLE COMPL\u00c8TE" : "CITY COMPLETE"
-        : language === "fr" ? "QUARTIER COMPL\u00c9T\u00c9" : "DISTRICT COMPLETE"
-    });
-  }, [
-    isLaunchDismissed,
-    language,
-    objective,
-    objectiveStats?.permanentlyCompleted
   ]);
 
   const closeAllAtlasPages = useCallback(() => {
@@ -4345,6 +4329,30 @@ export function MapScreen({
               objectiveAbortController.signal
             );
             const currentObjective = objectiveRef.current;
+            const achievementCompletedAtMs = objectiveAfter.completedAt
+              ? Date.parse(objectiveAfter.completedAt)
+              : Number.NaN;
+            const walkStartedAtMs = Date.parse(walkToStop.startedAt);
+            const achievementWasEarnedDuringWalk =
+              objectiveAfter.permanentlyCompleted &&
+              Number.isFinite(achievementCompletedAtMs) &&
+              Number.isFinite(walkStartedAtMs) &&
+              achievementCompletedAtMs >= walkStartedAtMs &&
+              achievementCompletedAtMs <= Date.now();
+
+            if (
+              !objectiveBefore?.permanentlyCompleted &&
+              achievementWasEarnedDuringWalk &&
+              isLaunchDismissedRef.current
+            ) {
+              setAtlasStampMessage({
+                detail: objective.zone.name,
+                id: Date.now(),
+                title: objective.zone.type === "city"
+                  ? language === "fr" ? "VILLE COMPL\u00c8TE" : "CITY COMPLETE"
+                  : language === "fr" ? "QUARTIER COMPL\u00c9T\u00c9" : "DISTRICT COMPLETE"
+              });
+            }
 
             if (
               currentObjective?.mode === objective.mode &&
@@ -4408,6 +4416,7 @@ export function MapScreen({
     activeWalk,
     backgroundTrackingStatus,
     invalidateRecordingLifecycle,
+    language,
     objective,
     objectiveStats,
     recordingQuality,
@@ -5393,7 +5402,7 @@ export function MapScreen({
       }}
     >
     <View style={styles.screen}>
-      <ExplorationMap
+      {canMountInitialMap ? <ExplorationMap
         mapProvider={mapProvider}
         activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
         activeRouteChunks={activeWalk?.routeChunks ?? EMPTY_LIVE_ROUTE_CHUNKS}
@@ -5438,7 +5447,7 @@ export function MapScreen({
         savedExplorationCellIds={savedExplorationCellIds}
         todayNewCellIds={todayNewCellIds}
         zoneFocusRequestId={zoneFocusRequestId}
-      />
+      /> : null}
 
       {isLaunchDismissed && isAppActive && !activeAtlasPage && !atlasStampMessage && !celebrationMedal && locationMessage ? (
         <MapLocationLabel

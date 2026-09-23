@@ -269,13 +269,13 @@ assert(
   "the in-app splash sequences background, tagline, start prompt, post-press loading, and fade"
 );
 assert(
-  launchOverlaySource.includes("fontSize: 6") &&
+  launchOverlaySource.includes("fontSize: 12") &&
     launchOverlaySource.includes("position: \"absolute\"") &&
     launchOverlaySource.includes("right: 10") &&
     launchOverlaySource.includes("Math.max(safeAreaInsets.bottom, 8)") &&
     launchOverlaySource.indexOf("v{APP_VERSION}") >
       launchOverlaySource.indexOf("</Animated.View>"),
-  "the half-size version label is independent in the safe bottom-right corner"
+  "the 12-point version label is independent in the safe bottom-right corner"
 );
 assert(
     mapScreenSource.includes("evaluateLiveMedalCollection(input)") &&

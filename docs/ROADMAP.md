@@ -1,8 +1,28 @@
 # Roadmap
 
-## Android medal visibility — 0.35.2
+## Splash contrast and completion stamp lifecycle — 0.35.8
 
-Android medal markers now track their custom view until layout plus a bounded 500 ms settling interval, explicitly redraw, then stop tracking. The icon font is preloaded before map startup. This addresses the empty first-snapshot failure without continuously refreshing static medals. Existing zoom/layer visibility and medal collection rules are unchanged. Physical Android confirmation is pending.
+The in-app splash keeps its original readable lettering in both appearance modes. Objective-completion stamps now follow the first permanent completion earned by a finalized walk; cached achievements remain visible in the HUD without replaying their celebration on launch or zone revisit.
+
+## Player-centered map launch — 0.35.7
+
+Apple Maps and Google Maps now mount after the initial foreground-location lookup resolves (or permission is denied). This gate latches once, so resuming the app does not unmount the map. The initial camera prefers the player location, including a saved last-known location when a fresh fix is unavailable. Startup camera commands wait for both map readiness and nonzero native layout, retain the intended region before a city remount, and ignore late fallback-camera events until the target is reached. A user pan, area hold, or explicit focus cancels that pending camera guard. Without any available location, saved-route/default fallback remains necessary.
+
+## Location-label readability — 0.35.6
+
+City/district selection labels now reveal a translucent backdrop with soft shadows alongside the text. Explorator uses dark navy; Daylight uses warm parchment behind dark lettering. The backdrop follows the same reveal, fade, replacement, and Reduce Motion behavior as the label.
+
+## Polygon performance and Forbidden Zone visibility — 0.35.5
+
+Implemented stable keys for ordinary explored-island growth, an Apple Maps native overlay-order patch, explicit Google Maps layer order, and guarded early Forbidden Zone hydration. Connected islands are already merged; a single native polygon cannot represent disconnected territory without covering unexplored space. Next validation is a build 235 iPhone walk and provider-switch check, including native frame pacing and purple-layer visibility. Viewport culling or tile-based geometry should be considered only after device profiling of fragmented histories.
+
+## Splash version label — 0.35.4
+
+The splash screen version label is now 12 points, doubled from 6 points (200%), and remains in the safe bottom-right corner.
+
+## Google Maps medal visibility — 0.35.3
+
+Google Maps medal markers now keep their custom view drawable on both Android and iOS through native layout and font rendering, redraw after 500 ms, then freeze to avoid ongoing snapshot cost. Apple Maps retains its stable native marker behavior. Ionicons are preloaded before map startup. Physical Google Maps checks remain pending.
 
 ## Android fresh-install recovery — 0.35.1
 
@@ -59,7 +79,7 @@ Implemented: saved Apple/Google selection, Apple default, idle-only switching, o
 - Recording quality summary after stopping a recording.
 - Device step counting for walks.
 - Full-screen Details, History, and Completion views.
-- Explicit SDK 54 `expo-splash-screen` native configuration using the 1320x2868 `mapbound-native-splash.png`, paired with the lightweight `loading-screen3.jpg` root-owned in-app launch presentation, mounted before database/font/map startup gates, with one launch-wide clean-background second that is not restarted at the React handoff, native-thread stagger across real cyan/gold/parchment phrase nodes, a half-second beat before the restrained Press to start pulse, post-press-only loading feedback, an automatic slow map fade on readiness, launch-gated completion and Atlas reward stamps, an independent half-size safe-corner version, Reduce Motion fallbacks, and the matching transparent `title.png` map logo HUD.
+- Explicit SDK 54 `expo-splash-screen` native configuration using the 1320x2868 `mapbound-native-splash.png`, paired with the lightweight `loading-screen3.jpg` root-owned in-app launch presentation, mounted before database/font/map startup gates, with one launch-wide clean-background second that is not restarted at the React handoff, native-thread stagger across real cyan/gold/parchment phrase nodes with fixed high-contrast colors in both appearance modes, a half-second beat before the restrained Press to start pulse, post-press-only loading feedback, an automatic slow map fade on readiness, launch-gated Atlas reward stamps, completion stamps only after a finalized walk first completes its objective, a 12-point safe-corner version, Reduce Motion fallbacks, and the matching transparent `title.png` map logo HUD.
 - Frozen street-aware path inference with high/medium-confidence bridges contributing separately tracked inferred cells.
 - Authoritative contour-to-completion synchronization and non-destructive exploration reprocessing.
 - Phased reprocessing progress, timeout handling, and visible completion diagnostics.

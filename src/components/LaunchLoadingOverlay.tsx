@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { createAppearanceStyles } from "../constants/appearance";
 import { APP_COLORS } from "../constants/theme";
 
 import { APP_VERSION } from "../constants/config";
@@ -352,7 +351,9 @@ function getTaglineRevealStyle(
   };
 }
 
-const styles = createAppearanceStyles({
+// The launch artwork stays dark in every appearance mode, so its overlaid copy
+// must keep the same high-contrast colors instead of the map's daylight palette.
+const styles = StyleSheet.create({
   background: {
     backgroundColor: "#071018",
     flex: 1,
@@ -434,7 +435,7 @@ const styles = createAppearanceStyles({
   },
   version: {
     color: "rgba(248, 250, 252, 0.72)",
-    fontSize: 6,
+    fontSize: 12,
     fontWeight: "700",
     letterSpacing: 0.4,
     position: "absolute",

@@ -117,9 +117,7 @@ export function buildMergedExplorationPolygons(
         "area:" +
         (first?.x ?? 0) +
         ":" +
-        (first?.y ?? 0) +
-        ":" +
-        Math.round(contour.area)
+        (first?.y ?? 0)
     };
   });
 
@@ -155,17 +153,17 @@ export function buildMergedExplorationPolygons(
     }
   }
 
-  // MapKit can retain the previous native polygon when only its holes change.
-  // Include the complete rendered geometry in the identity so closing a loop
-  // remounts that polygon instead of leaving a stale transparent interior.
+  // MapKit updates exterior coordinates in place, but can retain stale holes.
+  // Keep ordinary frontier growth on the same native polygon and remount only
+  // when its hole geometry changes (including a filled or removed hole).
   for (const polygon of polygons) {
-    polygon.id += ":geometry:" + hashExplorationPolygonGeometry(polygon);
+    polygon.id += ":holes:" + hashExplorationPolygonHoles(polygon.holes);
   }
 
   return polygons;
 }
 
-function hashExplorationPolygonGeometry(polygon: ExplorationPolygon) {
+function hashExplorationPolygonHoles(holes: MapCoordinate[][]) {
   let hash = 2166136261;
   const mix = (value: number) => {
     hash ^= value;
@@ -180,10 +178,9 @@ function hashExplorationPolygonGeometry(polygon: ExplorationPolygon) {
     }
   };
 
-  mixPath(polygon.coordinates);
-  mix(polygon.holes.length);
+  mix(holes.length);
 
-  for (const hole of polygon.holes) {
+  for (const hole of holes) {
     mixPath(hole);
   }
 

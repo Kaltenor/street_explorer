@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const Module = require("node:module");
 const { DatabaseSync } = require("node:sqlite");
 const ts = require("typescript");
+const { patchPolygonOrder } = require("./patch-react-native-maps-polygon-order.js");
 
 require.extensions[".ts"] = (module, filename) => module._compile(
   ts.transpileModule(fs.readFileSync(filename, "utf8"), {
@@ -11,6 +12,21 @@ require.extensions[".ts"] = (module, filename) => module._compile(
 );
 
 async function main() {
+  const originalPolygonUpdate = "    [_map addOverlay:self];";
+  const patchedPolygonUpdate = patchPolygonOrder(originalPolygonUpdate);
+  assert.match(patchedPolygonUpdate, /insertOverlay:self belowOverlay:/);
+  assert.equal(patchPolygonOrder(patchedPolygonUpdate), patchedPolygonUpdate);
+  assert.throws(() => patchPolygonOrder("unrecognized polygon source"));
+  const installedPolygonSource = fs.readFileSync(
+    require.resolve("react-native-maps/package.json").replace(
+      /package\.json$/,
+      "ios/AirMaps/AIRMapPolygon.m"
+    ),
+    "utf8"
+  );
+  assert.match(installedPolygonSource, /insertOverlay:self belowOverlay:/);
+  console.log("PASS idempotent Apple Maps patch keeps updated polygons below later overlays");
+
   const { resolveMapProvider, canChangeMapProvider } = require("../src/services/mapProvider.ts");
   assert.equal(resolveMapProvider(null, "ios", true), "apple");
   assert.equal(resolveMapProvider("unknown", "ios", true), "apple");
