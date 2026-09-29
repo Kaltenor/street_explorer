@@ -6,7 +6,7 @@ const ENDPOINTS = [
 ];
 
 /** Failed or partial Overpass responses must never become an empty local cache. */
-export async function fetchBoundaryData<T>(query: string, signal?: AbortSignal): Promise<T> {
+export async function fetchBoundaryData<T>(query: string, signal?: AbortSignal, timeoutMs = 40_000): Promise<T> {
   let failure: unknown;
   for (const endpoint of ENDPOINTS) {
     if (signal?.aborted) throw new Error("Boundary request cancelled");
@@ -27,7 +27,7 @@ export async function fetchBoundaryData<T>(query: string, signal?: AbortSignal):
           throw new Error("Boundary service returned incomplete data");
         }
         return data as T;
-      }, 40_000, signal);
+      }, timeoutMs, signal);
     } catch (error) {
       if (signal?.aborted) throw error;
       failure = error;

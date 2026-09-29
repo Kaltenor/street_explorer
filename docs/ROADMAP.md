@@ -1,5 +1,12 @@
 # Roadmap
 
+## Bounded interactive area lookup - 0.35.19
+
+Map holds use a targeted containing-area query for local administrative levels 8/9/10, excluding the former surrounding-3.5-km and whole-country geometry payload. Country geometry is fetched separately only when no containing city/district is returned and no cached country contains the point. Broader explicit boundary-refresh queries are unchanged.
+
+Interactive requests allow 8 seconds per server including body consumption. The complete map selection has a 20-second wall-clock timer that aborts the request, clears the loading state, invalidates its generation and offers a long-press retry message. Stale responses cannot commit the selected objective. Visible/cached city selections still bypass the network. Timers require a responsive JS event loop; no guarantee is made about public Overpass availability.
+
+
 ## Large-city completion - 0.35.18
 
 Completion totals now count integer cell-center ranges along each grid row instead of visiting every candidate cell. Outer ranges are merged and the union of hole ranges is subtracted, preserving overlap and strict boundary semantics. Coordinate binary searches use the existing projection to avoid rounded boundary errors. The bounding-box safety cap increases from 350,000 to 20 million candidate cells; larger/invalid boundaries show an explicit unavailable/too-large result rather than endless pending. Totals and snapshots use a new geometry-cache namespace so old too-large results recalculate once. Stored exploration and permanent achievements are retained.

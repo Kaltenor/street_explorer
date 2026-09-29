@@ -28,6 +28,7 @@ import {
   doesDistrictGeometryBelongToCity,
   isOfficialDistrictAdminLevel,
   buildBoundaryQuery,
+  buildMapSelectionBoundaryQuery,
   EXACT_ZONE_BOUNDARY_SOURCE
 } from "./zoneBoundaryPolicy";
 import { ActivityMode, GpsPoint } from "../types/walk";
@@ -261,11 +262,23 @@ export async function fetchNearbyOsmZones(
 
 export async function fetchNearbyOsmZonesWithDebug(
   center: Pick<GpsPoint, "latitude" | "longitude">,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  options: { selectionOnly?: boolean; fetchCountryIfEmpty?: boolean } = {}
 ): Promise<ZoneFetchResult> {
-  const data = await fetchBoundaryData<OverpassBoundaryResponse>(
-    buildBoundaryQuery(center.latitude, center.longitude), signal
+  let data = await fetchBoundaryData<OverpassBoundaryResponse>(
+    options.selectionOnly
+      ? buildMapSelectionBoundaryQuery(center.latitude, center.longitude)
+      : buildBoundaryQuery(center.latitude, center.longitude),
+    signal, options.selectionOnly ? 8_000 : 40_000
   );
+  if (options.selectionOnly && options.fetchCountryIfEmpty !== false &&
+      !(data.elements ?? []).some(element => element.type === "relation" &&
+        (element.tags?.admin_level === "8" || element.tags?.admin_level === "9"))) {
+    const country = await fetchBoundaryData<OverpassBoundaryResponse>(
+      buildMapSelectionBoundaryQuery(center.latitude, center.longitude, true), signal, 8_000
+    );
+    data = { elements: [...(data.elements ?? []), ...(country.elements ?? [])] };
+  }
   const fetchedAt = new Date().toISOString();
   const relationElements = (data.elements ?? []).filter((element) => element.type === "relation");
   const mappedZones = relationElements

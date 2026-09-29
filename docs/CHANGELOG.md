@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.35.19
+
+- Fetch only containing local boundaries for interactive city selection; defer country geometry until needed for countryside.
+- Bound server attempts to 8 seconds and map selection to 20 seconds; clear the spinner, report timeout and reject late results. Cached selection remains local.
+- Add targeted-query and executed-selection timeout regressions. Build 249.
+
 ## v0.35.18
 
 - Replace cell-by-cell total scans with exact row range counting; support up to 20 million bounding-box candidates instead of 350,000.

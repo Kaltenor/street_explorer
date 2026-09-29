@@ -181,3 +181,15 @@ export function shouldReplaceCachedZone(
     incomingSource !== EXACT_ZONE_BOUNDARY_SOURCE
   );
 }
+
+/** Interactive holds need containing relations, not every nearby boundary. */
+export function buildMapSelectionBoundaryQuery(latitude: number, longitude: number, countryOnly = false) {
+  const levels = countryOnly ? "2" : "8|9|10";
+  return `
+    [out:json][timeout:8];
+    is_in(${latitude},${longitude})->.containingAreas;
+    area.containingAreas["boundary"="administrative"]["admin_level"~"^(${levels})$"]->.selectedAreas;
+    rel(pivot.selectedAreas);
+    out body geom;
+  `;
+}

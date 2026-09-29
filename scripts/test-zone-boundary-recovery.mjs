@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 
 import {
   buildBoundaryQuery,
+  buildMapSelectionBoundaryQuery,
   doesDistrictGeometryBelongToCity,
   isOfficialDistrictAdminLevel,
   NEIGHBORHOOD_ADMIN_LEVEL,
@@ -353,3 +354,10 @@ await Promise.resolve();
 remoteController.abort(); finishRemote(readyDistrict);
 await assert.rejects(staleRemote, { name: "AbortError" });
 console.log("PASS visible selection bypasses storage/network, city-only cache bypasses HTTP, and superseded cache/remote results are rejected");
+
+const interactiveQuery = buildMapSelectionBoundaryQuery(45.7, 4.9);
+assert.match(interactiveQuery, /is_in\(45.7,4.9\)/);
+assert.match(interactiveQuery, /8\|9\|10/);
+assert.doesNotMatch(interactiveQuery, /around:|countryRelations|cityDistrictRelations/);
+assert.match(buildMapSelectionBoundaryQuery(45.7, 4.9, true), /\^\(2\)\$/);
+console.log("PASS interactive city lookup requests containing local boundaries; country geometry is separate");

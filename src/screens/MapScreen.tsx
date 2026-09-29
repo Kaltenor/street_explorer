@@ -2168,6 +2168,18 @@ export function MapScreen({
     mapZoneSelectionAbortRef.current?.abort();
     const selectionController = new AbortController();
     mapZoneSelectionAbortRef.current = selectionController;
+    const lookupDeadline = setTimeout(() => {
+      if (selectionController.signal.aborted || mapZoneSelectionRequestRef.current !== requestId) return;
+      selectionController.abort();
+      mapZoneSelectionRequestRef.current += 1;
+      setIsMapZoneSelectionLoading(false);
+      if (showFailure) Alert.alert(
+        language === "fr" ? "Recherche trop longue" : "Area lookup timed out",
+        language === "fr"
+          ? "Le service des limites ne répond pas assez vite. Réessayez avec un appui long ; la sélection précédente est conservée."
+          : "The boundary service is taking too long. Long-press to retry; your previous selection is preserved."
+      );
+    }, 20_000);
     setIsMapZoneSelectionLoading(true);
     setMapZoneSelection(null);
 
@@ -2215,7 +2227,10 @@ export function MapScreen({
           countries = await getCachedZones("country");
           if (selectionController.signal.aborted) return resolveHeldZones();
           try {
-            const result = await fetchNearbyOsmZonesWithDebug(coordinate, selectionController.signal);
+            const result = await fetchNearbyOsmZonesWithDebug(coordinate, selectionController.signal, {
+              selectionOnly: true,
+              fetchCountryIfEmpty: !findContainingZone(coordinate, countries.filter(isZoneCompletionEligible))
+            });
             if (selectionController.signal.aborted) return resolveHeldZones();
             await upsertZones(result.zones);
             [countries, cities, districts] = await Promise.all([
@@ -2231,7 +2246,7 @@ export function MapScreen({
         }
       });
 
-      if (mapZoneSelectionRequestRef.current !== requestId) {
+      if (selectionController.signal.aborted || mapZoneSelectionRequestRef.current !== requestId) {
         return;
       }
 
@@ -2274,7 +2289,7 @@ export function MapScreen({
         districts: nextDistrictZones
       });
 
-      if (mapZoneSelectionRequestRef.current !== requestId) {
+      if (selectionController.signal.aborted || mapZoneSelectionRequestRef.current !== requestId) {
         return;
       }
 
@@ -2306,6 +2321,7 @@ export function MapScreen({
         );
       }
     } finally {
+      clearTimeout(lookupDeadline);
       if (mapZoneSelectionRequestRef.current === requestId) {
         setIsMapZoneSelectionLoading(false);
       }

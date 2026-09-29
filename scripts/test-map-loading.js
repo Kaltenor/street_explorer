@@ -100,3 +100,33 @@ async function testPathLoadOrdering() {
   console.log('PASS path loads reject stale scope results, honor null selection and stop publishing after layer cleanup');
 }
 (async () => { await testSnapshotReuse(); await testPathLoadOrdering(); })().catch(error => { console.error(error); process.exitCode = 1; });
+
+async function testSelectionDeadline() {
+  const request = deferred(); let timer, cleared = false;
+  const loading = [], alerts = [], applied = [];
+  const context = {
+    AbortController, console, language: 'en', objective: null,
+    mapZoneSelectionRequestRef: { current: 0 }, mapZoneSelectionAbortRef: { current: null },
+    objectiveScopePairRef: { current: null }, mapBoundaryContextRef: { current: { city: null, districts: [] } },
+    mapViewportRegionRef: { current: null },
+    setTimeout: (fn, delay) => { assert.equal(delay, 20000); timer = fn; return 1; },
+    clearTimeout: () => { cleared = true; },
+    setIsMapZoneSelectionLoading: value => loading.push(value), setMapZoneSelection: () => {},
+    playSelectionHaptic: async () => {}, findContainingZoneForMapHold: () => null,
+    findContainingZone: () => null, isZoneCompletionEligible: () => true,
+    resolveMapSelection: () => request.promise,
+    Alert: { alert: (...args) => alerts.push(args) },
+    applyMapObjective: value => applied.push(value)
+  };
+  const select = callback('handleMapLongPress', context);
+  const pending = select({ latitude: 45.7, longitude: 4.9 });
+  assert.deepEqual(loading, [true]); timer();
+  assert.equal(context.mapZoneSelectionAbortRef.current.signal.aborted, true);
+  assert.deepEqual(loading, [true, false]); assert.equal(alerts.length, 1);
+  request.resolve({ city: { id: 'late' }, district: null, country: null });
+  await pending;
+  assert.equal(applied.length, 0, 'timed-out lookup must never replace the previous objective');
+  assert(cleared);
+  console.log('PASS stuck selection stops loading at its deadline and ignores late results');
+}
+testSelectionDeadline().catch(error => { console.error(error); process.exitCode = 1; });

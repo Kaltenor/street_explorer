@@ -1,5 +1,9 @@
 # Development Build
 
+## Interactive boundary lookup - 0.35.19
+
+Version/build 0.35.19 / 249. JavaScript-only lookup change for SDK 54 clients; no migration, asset change or remote build required.
+
 ## Large-city completion - 0.35.18
 
 Version/build 0.35.18 / 248. Load the JavaScript bundle in an SDK 54 client. Completion totals/snapshots recalculate once under a new cache namespace, without a schema migration or remote build.
