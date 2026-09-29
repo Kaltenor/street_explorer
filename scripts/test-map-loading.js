@@ -170,3 +170,44 @@ function testStartupPaths() {
   console.log('PASS startup enables Today paths, waits for saved data, and respects manual hiding');
 }
 testStartupPaths();
+
+function testStopRouteHandoff() {
+  let update;
+  function visit(node) {
+    if (ts.isCallExpression(node) && node.expression.getText(ast) === 'setWalks' &&
+        node.getText(ast).includes('...immediateSession')) update = node;
+    ts.forEachChild(node, visit);
+  }
+  visit(ast); assert(update);
+  const chunks = [{ id: 'chunk', type: 'confirmed', points: [{ latitude: 45, longitude: 4 }, { latitude: 45.01, longitude: 4.01 }] }];
+  const preserved = { id: 1, points: [] };
+  let walks = [preserved, { id: 2, points: ['old'] }];
+  const context = {
+    savedSessionId: 2, immediateSession: { id: 2, endedAt: '2026-09-29T18:30:00Z' },
+    walkToStop: { points: chunks[0].points, routeChunks: chunks },
+    setWalks: updater => { walks = updater(walks); }
+  };
+  vm.runInNewContext(ts.transpileModule(update.getText(ast), { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText, context);
+  assert.equal(walks.length, 2);
+  assert.equal(walks[0], preserved);
+  assert.equal(walks[1].routeSegments, chunks, 'confirmed chunks survive Stop without waiting for inference');
+  assert.equal(walks[1].points, chunks[0].points);
+  const before = source.slice(update.pos - 90, update.pos);
+  assert(before.includes('detailedWalksRequestRef.current += 1'), 'older reads cannot erase the handoff');
+
+  const mapSource = fs.readFileSync(path.resolve(__dirname, '../src/components/ExplorationMap.tsx'), 'utf8');
+  const mapAst = ts.createSourceFile('ExplorationMap.tsx', mapSource, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  let visibility;
+  function find(node) {
+    if (ts.isVariableDeclaration(node) && node.name.getText(mapAst) === 'shouldShowTodayHighlights') visibility = node.initializer;
+    ts.forEachChild(node, find);
+  }
+  find(mapAst); assert(visibility);
+  for (const area of [false, true]) for (const routes of [false, true]) {
+    assert.equal(vm.runInNewContext(visibility.getText(mapAst), {
+      shouldShowCompletedArea: area, shouldShowRoutes: routes
+    }), area && !routes);
+  }
+  console.log('PASS Stop retains confirmed route chunks; today-cell highlights defer to the visible path layer');
+}
+testStopRouteHandoff();

@@ -4261,6 +4261,17 @@ export function MapScreen({
         stepCount: walkToStop.stepCount
       };
 
+      // Publish the confirmed line before derived processing; invalidate older scoped reads.
+      detailedWalksRequestRef.current += 1;
+      setWalks((currentWalks) => [
+        ...currentWalks.filter((walk) => walk.id !== savedSessionId),
+        {
+          ...immediateSession,
+          points: walkToStop.points,
+          routeSegments: walkToStop.routeChunks.length ? walkToStop.routeChunks : null
+        }
+      ]);
+
       // The live route is already confirmed. Keep it visible immediately while
       // route inference and the durable repair outbox finish in the background.
       setSavedExplorationCellIds((currentCellIds) => [

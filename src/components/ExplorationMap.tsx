@@ -287,6 +287,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
   // Saved paths follow the layer toggle at every zoom; only markers use zoom tiers.
   const shouldShowRoutes = layers.showPaths;
+  const shouldShowTodayHighlights = shouldShowCompletedArea && !shouldShowRoutes;
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
   const shouldShowMedalMarkers =
     layers.showMarkers &&
@@ -389,7 +390,7 @@ export const ExplorationMap = memo(function ExplorationMap({
   );
   const todayNewPolygons = useMemo(
     () =>
-      explorationEnabled && shouldShowCompletedArea
+      explorationEnabled && shouldShowTodayHighlights
         ? measurePerformance(
             "map.today-surface",
             () =>
@@ -400,13 +401,13 @@ export const ExplorationMap = memo(function ExplorationMap({
     [
       explorationEnabled,
       maxFilledHoleAreaSquareMeters,
-      shouldShowCompletedArea,
+      shouldShowTodayHighlights,
       todayCellPartition.cityCellIds
     ]
   );
   const countrysideTodayNewPolygons = useMemo(
     () =>
-      explorationEnabled && shouldShowCompletedArea
+      explorationEnabled && shouldShowTodayHighlights
         ? measurePerformance(
             "map.countryside-today-surface",
             () =>
@@ -417,7 +418,7 @@ export const ExplorationMap = memo(function ExplorationMap({
     [
       explorationEnabled,
       maxFilledHoleAreaSquareMeters,
-      shouldShowCompletedArea,
+      shouldShowTodayHighlights,
       todayCellPartition.countrysideCellIds
     ]
   );

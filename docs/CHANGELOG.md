@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.35.23
+
+Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.
+
+
 ## v0.35.22
 
 Paths now start enabled with the existing Today filter. Scoped GPS loading waits for saved-data readiness; full history is not loaded by default. The Paths toggle can still hide routes for the current app session. Previously every fresh launch initialized Paths to off, leaving today's newly explored cells visible without the saved route. Applies to both map providers; saved recordings are unchanged. Version/build 0.35.22 / 252, JavaScript-only.
