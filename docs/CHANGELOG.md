@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.35.16
+
+- Speed up city completion scans with per-ring edge indexes and same-latitude crossing reuse; preserve exact grid/hole semantics.
+- Avoid unnecessary scan timers while retaining cancellation and cooperative yields. Reuse authoritative persisted snapshots before scanning.
+- Add parity, cache-invalidation and cancellation regressions. Build 246.
+
 ## v0.35.15
 
 - Keep saved paths visible when zooming out; only route markers retain the close-zoom cutoff. Preserve all route corners and existing scope/layer controls. Build 245.

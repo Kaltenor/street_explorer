@@ -1,5 +1,9 @@
 # Development Build
 
+## City completion performance - 0.35.16
+
+Version/build 0.35.16 / 246. JavaScript changes work with a compatible SDK 54 client; no database migration or remote build is required for development validation.
+
 ## Route zoom visibility - 0.35.15
 
 Version/build 0.35.15 / 245. JavaScript-only route visibility fix for SDK 54 clients; no asset, database migration or remote build is required for development validation.

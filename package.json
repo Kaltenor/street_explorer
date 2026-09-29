@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.35.15",
+  "version": "0.35.16",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "test:ui": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-ui-polish.mjs && node scripts/test-ui-lifecycle.js && node scripts/test-map-loading.js",
     "test:wikipedia": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-wikipedia-reader.mjs",
     "test:zones": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-boundary-recovery.mjs",
-    "test:completion": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-completion-lifecycle.mjs",
+    "test:completion": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-completion-lifecycle.mjs && node scripts/test-zone-completion-performance.js",
     "build:ios:dev": "eas build --platform ios --profile development",
     "build:ios:sim": "eas build --platform ios --profile development-simulator",
     "build:ios:preview": "eas build --platform ios --profile preview",

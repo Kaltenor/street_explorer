@@ -1,5 +1,17 @@
 # Testing
 
+## City switching performance - 0.35.16
+
+Prerequisites: SDK 54 client with the current bundle, two cities with downloaded exact boundaries, and saved exploration. Save any active recording before testing maintenance calculations.
+
+1. Switch between both cities and back. Expected: completion matches prior counts; revisiting unchanged data avoids the scan. Measure selection-to-result time on device.
+2. Select a district with holes or disconnected boundary pieces. Expected: the same totals and remaining cells as before; no filled holes or skipped islands.
+3. Switch rapidly during a calculation, then record/save new exploration and revisit. Expected: obsolete results do not replace the selection and changed exploration triggers a fresh count.
+4. Repeat offline with cached boundaries, then compare with a never-loaded city online. Expected: cached geometry works offline; first-time downloads can still add latency.
+
+Automated fixture: 41,590 point/vertex comparisons against the original predicate, holes, multipart/degenerate boundaries, and snapshot invalidation by revision/geometry/mode. One synthetic cold city calculation (25,872 cells) measured 448.4 ms before versus 21.9 ms after on this Windows/Node host; containment-only checks measured 239.9 ms versus 2.1 ms. These are single local measurements, not phone timings. Reproduce with node scripts/test-zone-completion-performance.js --benchmark <old-zoneCompletion-source.txt> (baseline commit 7b99ff9).
+
+
 ## Saved paths across zoom levels - 0.35.15
 
 In an SDK 54 client with this bundle and a saved multi-turn walk, enable Paths and select that walk. Zoom from street to district/city scale and back. Expected: the complete route remains visible, including both sides of loops; marker icons may hide at wider zooms. Disable Paths: saved lines disappear while explored surfaces remain. Re-enable Paths and repeat with Today/All scopes. Native MapKit/Google rendering remains a physical-device check.

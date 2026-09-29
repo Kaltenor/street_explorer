@@ -1,5 +1,12 @@
 # Project Overview
 
+## City completion performance - 0.35.16
+
+Completion calculations prepare per-ring latitude edge buckets and reuse sorted ray crossings along each scanned grid row. Ring bounds reject unrelated islands; strict boundary comparisons and hole subtraction preserve the previous point-in-polygon result. The index lives only for the calculation, so changed geometry does not reuse stale data. Scans check cancellation every 2,048 cells and yield when a batch checkpoint exceeds an 8 ms elapsed-work budget, avoiding unnecessary timer delays on fast batches.
+
+The snapshot calculation entry point checks persisted results before scanning; reuse requires matching zone, mode, geometry fingerprint and exploration revision. Changed exploration/boundaries still recompute. First-time boundary downloads and SQLite/network latency are not eliminated.
+
+
 Saved route polylines remain visible at every zoom when the Paths layer is enabled (0.35.15). Route scope and exact coordinates are unchanged; start/end markers retain their close-zoom limit. This removes the former 0.018 latitude-delta cutoff that left only exploration surfaces visible.
 
 ## Recording reload recovery - 0.35.14

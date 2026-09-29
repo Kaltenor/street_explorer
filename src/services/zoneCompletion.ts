@@ -1,3 +1,4 @@
+import { prepareZoneContainment } from "./zoneContainment";
 import { fetchBoundaryData } from "./boundaryRequest";
 import {
   MapCoordinate,
@@ -40,6 +41,7 @@ import {
 
 const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
 const COMPLETION_SCAN_YIELD_INTERVAL = 2_048;
+const COMPLETION_SCAN_BUDGET_MS = 8;
 export const ZONE_BOUNDARY_STALE_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
 const renderedContourFillCache = new WeakMap<ExploredCellRecord[], ExploredCellRecord[]>();
 
@@ -198,6 +200,12 @@ export async function calculateZoneCompletionSnapshot(
   });
 
   return runZoneCompletionSingleFlight(key, signal, async (sharedSignal) => {
+    throwIfCompletionCancelled(sharedSignal);
+    const cachedSnapshot = await getZoneCompletionSnapshot(zone.id, mode);
+    throwIfCompletionCancelled(sharedSignal);
+    if (isZoneCompletionSnapshotValid({
+      explorationRevision, geometryFingerprint, mode, snapshot: cachedSnapshot, zoneId: zone.id
+    }) && cachedSnapshot) return cachedSnapshot;
     const bounds = getZoneBounds(zone);
     const cells = bounds
       ? await getExploredCellRecordsWithinBounds(mode, bounds)
@@ -285,17 +293,22 @@ export async function calculateZoneCompletionStats(
   const completionCells = includeRenderedContourFills(exploredCells);
   const exploredInside: ExploredCellRecord[] = [];
 
+  const contains = prepareZoneContainment(zone);
+  let lastYieldAt = Date.now();
   for (let index = 0; index < completionCells.length; index += 1) {
     if (index > 0 && index % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
       throwIfCompletionCancelled(signal);
-      await yieldToEventLoop();
+      if (Date.now() - lastYieldAt >= COMPLETION_SCAN_BUDGET_MS) {
+        await yieldToEventLoop();
+        lastYieldAt = Date.now();
+      }
     }
 
     const cell = completionCells[index];
 
     if (
       cell &&
-      isPointInsideZone(explorationCellKeyToCenterCoordinate(cell.cellKey), zone)
+      contains(explorationCellKeyToCenterCoordinate(cell.cellKey))
     ) {
       exploredInside.push(cell);
     }
@@ -314,11 +327,11 @@ export async function calculateZoneCompletionStats(
   );
   const completionEligible = isZoneCompletionEligible(zone);
   const rawTotalZoneCells = completionEligible
-    ? await calculateTotalZoneCells(zone, signal)
+    ? await calculateTotalZoneCells(zone, signal, contains)
     : null;
   const forbiddenCells = rawTotalZoneCells === null
     ? 0
-    : await countForbiddenCellsInsideZone(zone, signal);
+    : await countForbiddenCellsInsideZone(zone, signal, contains);
   const adjustedCompletion = rawTotalZoneCells === null
     ? null
     : calculateCompletionWithForbiddenCells({
@@ -374,7 +387,8 @@ export async function calculateZoneCompletionStats(
 
 async function countForbiddenCellsInsideZone(
   zone: CachedZone,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  contains = prepareZoneContainment(zone)
 ) {
   const bounds = getZoneBounds(zone);
 
@@ -395,18 +409,22 @@ async function countForbiddenCellsInsideZone(
     minY: Math.min(...cornerKeys.map((key) => key.y))
   });
   let count = 0;
+  let lastYieldAt = Date.now();
 
   for (let index = 0; index < cellKeys.length; index += 1) {
     if (index > 0 && index % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
       throwIfCompletionCancelled(signal);
-      await yieldToEventLoop();
+      if (Date.now() - lastYieldAt >= COMPLETION_SCAN_BUDGET_MS) {
+        await yieldToEventLoop();
+        lastYieldAt = Date.now();
+      }
     }
 
     const cellKey = cellKeys[index];
 
     if (
       cellKey &&
-      isPointInsideZone(explorationCellKeyToCenterCoordinate(cellKey), zone)
+      contains(explorationCellKeyToCenterCoordinate(cellKey))
     ) {
       count += 1;
     }
@@ -786,7 +804,7 @@ function buildBoundsGeometry(bounds: {
   ]];
 }
 
-async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal) {
+async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal, contains = prepareZoneContainment(zone)) {
   throwIfCompletionCancelled(signal);
   const geometryFingerprint = getZoneGeometryFingerprint(zone);
   const cachedTotal = await getCachedZoneTotal(zone.id, geometryFingerprint);
@@ -821,19 +839,23 @@ async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal) {
 
   let count = 0;
   let scannedCellCount = 0;
+  let lastYieldAt = Date.now();
 
-  for (let x = minX; x <= maxX; x += 1) {
-    for (let y = minY; y <= maxY; y += 1) {
+  for (let y = minY; y <= maxY; y += 1) {
+    for (let x = minX; x <= maxX; x += 1) {
       scannedCellCount += 1;
 
       if (scannedCellCount % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
         throwIfCompletionCancelled(signal);
-        await yieldToEventLoop();
+        if (Date.now() - lastYieldAt >= COMPLETION_SCAN_BUDGET_MS) {
+          await yieldToEventLoop();
+          lastYieldAt = Date.now();
+        }
       }
 
       const center = explorationCellKeyToCenterCoordinate(`${x}:${y}`);
 
-      if (isPointInsideZone(center, zone)) {
+      if (contains(center)) {
         count += 1;
       }
     }
