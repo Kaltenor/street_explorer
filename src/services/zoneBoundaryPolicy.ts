@@ -186,7 +186,7 @@ export function shouldReplaceCachedZone(
 export function buildMapSelectionBoundaryQuery(latitude: number, longitude: number, countryOnly = false) {
   const levels = countryOnly ? "2" : "8|9|10";
   return `
-    [out:json][timeout:8];
+    [out:json][timeout:12];
     is_in(${latitude},${longitude})->.containingAreas;
     area.containingAreas["boundary"="administrative"]["admin_level"~"^(${levels})$"]->.selectedAreas;
     rel(pivot.selectedAreas);

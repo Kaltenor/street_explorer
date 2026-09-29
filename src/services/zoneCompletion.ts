@@ -269,13 +269,13 @@ export async function fetchNearbyOsmZonesWithDebug(
     options.selectionOnly
       ? buildMapSelectionBoundaryQuery(center.latitude, center.longitude)
       : buildBoundaryQuery(center.latitude, center.longitude),
-    signal, options.selectionOnly ? 8_000 : 40_000
+    signal, options.selectionOnly ? 16_000 : 40_000, options.selectionOnly ? 1_500 : undefined
   );
   if (options.selectionOnly && options.fetchCountryIfEmpty !== false &&
       !(data.elements ?? []).some(element => element.type === "relation" &&
         (element.tags?.admin_level === "8" || element.tags?.admin_level === "9"))) {
     const country = await fetchBoundaryData<OverpassBoundaryResponse>(
-      buildMapSelectionBoundaryQuery(center.latitude, center.longitude, true), signal, 8_000
+      buildMapSelectionBoundaryQuery(center.latitude, center.longitude, true), signal, 16_000, 1_500
     );
     data = { elements: [...(data.elements ?? []), ...(country.elements ?? [])] };
   }

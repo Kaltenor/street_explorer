@@ -1,15 +1,15 @@
 # Testing
 
-## Unvisited-city lookup - 0.35.19
+## Unvisited-city lookup - 0.35.20
 
 Prerequisites: compatible SDK 54 client with this bundle and network access for uncached cities. Save real recordings before network interruption tests.
 
-1. Long-press an uncached city. Expected: containing city/official district loads without downloading all neighboring boundaries or full country geometry.
+1. Long-press an uncached city, including Bernex (Haute-Savoie). Expected: containing city/official district loads without downloading all neighboring boundaries or full country geometry.
 2. Switch away and back. Expected: cached city selection avoids HTTP. A countryside hold still resolves using cached country geometry or a separate country request.
 3. Simulate an unresponsive connection and hold an uncached city. Expected: Finding area clears after approximately 20 seconds at latest while JS remains responsive, with a retry message. Existing selected objective stays selected.
 4. Select another city while the first is loading, then restore connectivity. Expected: the late first response never replaces the new selection. Retry by long-press after failure.
 
-Automated query tests and production-callback deadline tests cover the narrowed query, spinner cleanup, abort and late-result rejection. Live public-server latency and native-device responsiveness require manual verification.
+Automated query tests and production-callback deadline tests cover the narrowed query, spinner cleanup, abort and late-result rejection. Live desktop probe: Bernex relation 105234 returned from the primary in about 0.5 seconds while the backup exceeded 25 seconds; this confirms the boundary exists, not the cause of the reported phone failure. Automated transport tests cover stalled primary, failed backup, first-success cancellation, immediate failure fallback and no backup traffic for fast responses. A subsequent live call through the updated production helper returned HTTP 504 from the primary and timed out on the backup: public-server availability remains a limitation, and this change cannot guarantee every uncached lookup succeeds. Native-device responsiveness still requires manual verification.
 
 
 ## Large-city pending result - 0.35.18

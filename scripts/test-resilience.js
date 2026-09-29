@@ -54,6 +54,58 @@ async function main() {
     global.fetch = async () => { count++; controller.abort(); throw new Error("cancelled"); };
     await assert.rejects(fetchBoundaryData("query", controller.signal));
     assert.equal(count, 1, "cancelled selections must not retry on another server");
+    // Interactive requests hedge a stalled primary without waiting for its deadline.
+    const hedgedSignals = [];
+    global.fetch = async (url, options) => {
+      hedgedSignals.push(options.signal);
+      return hedgedSignals.length === 1 ? new Promise(() => {})
+        : { ok: true, json: async () => ({ elements: [{ id: 105234 }] }) };
+    };
+    assert.deepEqual(await fetchBoundaryData("Bernex", undefined, 1000, 5), { elements: [{ id: 105234 }] });
+    assert.equal(hedgedSignals.length, 2);
+    assert.ok(hedgedSignals[0].aborted, "winner cancels losing transport");
+
+    // A failed backup must not discard the still-running primary or its body.
+    let finishPrimary;
+    count = 0;
+    global.fetch = async () => {
+      count++;
+      if (count === 1) return { ok: true, json: () => new Promise(resolve => { finishPrimary = resolve; }) };
+      finishPrimary({ elements: [{ id: 105234 }] });
+      return { ok: false, status: 429 };
+    };
+    assert.deepEqual(await fetchBoundaryData("Bernex", undefined, 1000, 5), { elements: [{ id: 105234 }] });
+    assert.equal(count, 2);
+
+    count = 0;
+    global.fetch = async () => { count++; return { ok: true, json: async () => ({ elements: [] }) }; };
+    await fetchBoundaryData("fast", undefined, 1000, 5);
+    await new Promise(resolve => setTimeout(resolve, 15));
+    assert.equal(count, 1, "fast primary does not generate backup traffic");
+
+    count = 0;
+    global.fetch = async () => { count++; return { ok: false, status: 503 }; };
+    await assert.rejects(fetchBoundaryData("failed", undefined, 1000, 500), /503/);
+    assert.equal(count, 2, "immediate failure starts backup immediately");
+
+    global.fetch = async () => new Promise(() => {});
+    await assert.rejects(fetchBoundaryData("both stalled", undefined, 15, 5), /timed out/);
+
+    count = 0;
+    global.fetch = async () => {
+      count++;
+      return { ok: true, json: async () => count === 1
+        ? { elements: [{ id: 1 }], remark: "runtime error: timeout" }
+        : { elements: [{ id: 105234 }] } };
+    };
+    assert.deepEqual(await fetchBoundaryData("partial", undefined, 1000, 500), { elements: [{ id: 105234 }] });
+
+    const hedgedController = new AbortController();
+    count = 0;
+    global.fetch = async () => { count++; hedgedController.abort(); return new Promise(() => {}); };
+    await assert.rejects(fetchBoundaryData("cancel", hedgedController.signal, 1000, 5));
+    await new Promise(resolve => setTimeout(resolve, 15));
+    assert.equal(count, 1, "cancellation never starts the delayed backup");
   } finally { global.fetch = realFetch; }
   console.log("PASS boundary server fallback, identified requests, partial-data rejection and cancellation");
 

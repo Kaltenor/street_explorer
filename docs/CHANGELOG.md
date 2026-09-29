@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.35.20
+
+- Give interactive boundary requests 16 seconds per server (12-second server execution budget), starting a backup after 1.5 seconds instead of waiting for an 8-second failure. Keep the 20-second overall selection limit.
+- Accept the first valid result, cancel losing requests, and avoid backup traffic when the primary is fast. Add transport regressions for slow/failing endpoints and cancellation.
+- Confirm Bernex boundary availability with a live desktop query; subsequent live attempts hit HTTP 504/timeout, so upstream availability remains a limitation and the phone-specific failure is unconfirmed. Build 250.
+
 ## v0.35.19
 
 - Fetch only containing local boundaries for interactive city selection; defer country geometry until needed for countryside.
