@@ -1,5 +1,9 @@
 # Development Build
 
+## Route zoom visibility - 0.35.15
+
+Version/build 0.35.15 / 245. JavaScript-only route visibility fix for SDK 54 clients; no asset, database migration or remote build is required for development validation.
+
 ## Recording recovery bundle - 0.35.14
 
 Version/build 0.35.14 / 244. Compatible SDK 54 development clients can load the JavaScript fixes. The write coordinator initializes with a fresh JavaScript runtime; save an active walk before deliberately reloading. No remote build or data migration was requested.

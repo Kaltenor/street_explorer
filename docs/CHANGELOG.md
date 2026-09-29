@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.35.15
+
+- Keep saved paths visible when zooming out; only route markers retain the close-zoom cutoff. Preserve all route corners and existing scope/layer controls. Build 245.
+
 ## v0.35.14
 
 - Serialize database mutations and reserve transaction writes before reads; configure lock timeout and foreign keys on each connection.

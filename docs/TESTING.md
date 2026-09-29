@@ -1,5 +1,9 @@
 # Testing
 
+## Saved paths across zoom levels - 0.35.15
+
+In an SDK 54 client with this bundle and a saved multi-turn walk, enable Paths and select that walk. Zoom from street to district/city scale and back. Expected: the complete route remains visible, including both sides of loops; marker icons may hide at wider zooms. Disable Paths: saved lines disappear while explored surfaces remain. Re-enable Paths and repeat with Today/All scopes. Native MapKit/Google rendering remains a physical-device check.
+
 ## Recording reload recovery - 0.35.14
 
 Prerequisites: SDK 54 client with 0.35.14 (standalone build 244), location permission, outdoor GPS and background permission when testing background collection. Save any real active walk first; use a short disposable recording for deliberate reloads.

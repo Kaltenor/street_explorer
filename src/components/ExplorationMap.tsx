@@ -285,7 +285,8 @@ export const ExplorationMap = memo(function ExplorationMap({
   const pathSimplificationToleranceMeters = 0;
   const shouldShowCompletedArea = layers.showExploredCells;
   const shouldShowOutline = layers.showExploredCells && renderLevel !== "far";
-  const shouldShowRoutes = layers.showPaths && renderLevel === "close";
+  // Saved paths follow the layer toggle at every zoom; only markers use zoom tiers.
+  const shouldShowRoutes = layers.showPaths;
   const shouldShowMarkers = layers.showMarkers && renderLevel === "close";
   const shouldShowMedalMarkers =
     layers.showMarkers &&

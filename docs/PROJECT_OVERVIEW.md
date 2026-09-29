@@ -1,5 +1,7 @@
 # Project Overview
 
+Saved route polylines remain visible at every zoom when the Paths layer is enabled (0.35.15). Route scope and exact coordinates are unchanged; start/end markers retain their close-zoom limit. This removes the former 0.018 latitude-delta cutoff that left only exploration surfaces visible.
+
 ## Recording reload recovery - 0.35.14
 
 Database mutations on the shared handle are serialized; each exclusive transaction opens a dedicated connection with a 5-second busy timeout, foreign keys and BEGIN IMMEDIATE before running its callback. WAL reads remain concurrent. A failed transaction rolls back and does not poison the write queue. Transaction callbacks must use their supplied connection, not enqueue writes on the outer handle. External/native writers can still exceed the timeout; existing GPS journals remain the fallback.
