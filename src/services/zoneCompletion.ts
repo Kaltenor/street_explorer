@@ -39,7 +39,7 @@ import {
 } from "./zoneCompletionLifecycle";
 
 
-const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 350_000;
+const MAX_TOTAL_ZONE_CELLS_TO_SCAN = 20_000_000;
 const COMPLETION_SCAN_YIELD_INTERVAL = 2_048;
 const COMPLETION_SCAN_BUDGET_MS = 8;
 export const ZONE_BOUNDARY_STALE_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
@@ -487,7 +487,7 @@ export function getZoneGeometryFingerprint(zone: CachedZone) {
     hash = Math.imul(hash, 16777619);
   }
 
-  return `fnv1a:${(hash >>> 0).toString(16).padStart(8, "0")}`;
+  return `row-grid-v2:fnv1a:${(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 export function includeRenderedContourFills(exploredCells: ExploredCellRecord[]) {
   const cached = renderedContourFillCache.get(exploredCells);
@@ -838,27 +838,17 @@ async function calculateTotalZoneCells(zone: CachedZone, signal?: AbortSignal, c
   }
 
   let count = 0;
-  let scannedCellCount = 0;
   let lastYieldAt = Date.now();
-
   for (let y = minY; y <= maxY; y += 1) {
-    for (let x = minX; x <= maxX; x += 1) {
-      scannedCellCount += 1;
-
-      if (scannedCellCount % COMPLETION_SCAN_YIELD_INTERVAL === 0) {
-        throwIfCompletionCancelled(signal);
-        if (Date.now() - lastYieldAt >= COMPLETION_SCAN_BUDGET_MS) {
-          await yieldToEventLoop();
-          lastYieldAt = Date.now();
-        }
-      }
-
-      const center = explorationCellKeyToCenterCoordinate(`${x}:${y}`);
-
-      if (contains(center)) {
-        count += 1;
-      }
+    throwIfCompletionCancelled(signal);
+    if (Date.now() - lastYieldAt >= COMPLETION_SCAN_BUDGET_MS) {
+      await yieldToEventLoop();
+      throwIfCompletionCancelled(signal);
+      lastYieldAt = Date.now();
     }
+    const latitude = explorationCellKeyToCenterCoordinate(`${minX}:${y}`).latitude;
+    count += contains.countRow(latitude, minX, maxX,
+      x => explorationCellKeyToCenterCoordinate(`${x}:${y}`).longitude);
   }
 
   throwIfCompletionCancelled(signal);

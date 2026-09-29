@@ -1,5 +1,9 @@
 # Development Build
 
+## Large-city completion - 0.35.18
+
+Version/build 0.35.18 / 248. Load the JavaScript bundle in an SDK 54 client. Completion totals/snapshots recalculate once under a new cache namespace, without a schema migration or remote build.
+
 ## Boundary cache preservation - 0.35.17
 
 Version/build 0.35.17 / 247. Compatible SDK 54 clients can load this JavaScript fix without a database migration. No remote build requested.

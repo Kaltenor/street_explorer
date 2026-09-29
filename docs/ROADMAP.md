@@ -1,5 +1,12 @@
 # Roadmap
 
+## Large-city completion - 0.35.18
+
+Completion totals now count integer cell-center ranges along each grid row instead of visiting every candidate cell. Outer ranges are merged and the union of hole ranges is subtracted, preserving overlap and strict boundary semantics. Coordinate binary searches use the existing projection to avoid rounded boundary errors. The bounding-box safety cap increases from 350,000 to 20 million candidate cells; larger/invalid boundaries show an explicit unavailable/too-large result rather than endless pending. Totals and snapshots use a new geometry-cache namespace so old too-large results recalculate once. Stored exploration and permanent achievements are retained.
+
+Medal loading is not used to determine this limit. The reported correlation with medal cities is not independently verified on-device. The known size cutoff reproduces a completed calculation with no percentage, previously mislabeled pending.
+
+
 ## Boundary-refresh cache preservation - 0.35.17
 
 Refreshing an existing city/district now updates its row in place. SQLite REPLACE previously deleted the parent row and cascaded deletion of completion snapshots even for identical geometry. In-place UPSERT preserves unchanged snapshots and totals; changed geometry or boundary source explicitly invalidates both. This reduces repeat calculation after boundary refresh, but first downloads and larger boundary calculations still cost more. Saint-Priest-specific device timing has not been measured.

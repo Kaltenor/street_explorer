@@ -831,7 +831,9 @@ function formatCompletion(stats: ZoneCompletionStats | null, language: AppLangua
   const presentedPercent = getPresentedCompletionPercent(stats);
 
   if (presentedPercent === null) {
-    return getStrings(language).common.pending;
+    return stats?.completionStatus === "too_large"
+      ? strings.large
+      : getStrings(language).common.pending;
   }
 
   return `${presentedPercent}%`;

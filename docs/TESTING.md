@@ -1,5 +1,16 @@
 # Testing
 
+## Large-city pending result - 0.35.18
+
+In the SDK 54 client with this bundle, stop/save any real recording and browse the map:
+
+1. Select a previously pending city, including Saint-Priest. Expected: eligible boundaries within the new budget produce a percentage and remaining cells. A first recalculation is expected after the cache namespace change.
+2. Switch to a small city and back, then reopen. Expected: cached counts remain stable; medals and prior achievements are preserved.
+3. Compare a multipart city/one with holes. Expected: overlapping outer pieces are counted once and holes excluded. Truly oversized or invalid boundaries must display an explicit status, not endless pending.
+
+Automated row counts are checked against exhaustive point tests on overlapping rings, holes, negative coordinates, vertex ties and self-crossings. A synthetic city with 616,143 eligible cells now produces 0% instead of too_large; the prior 25,872-cell benchmark returns the identical count in 3.4 ms versus 419.1 ms in the original implementation (single desktop run, not phone timing). Phone confirmation of the reported medal-city symptom remains required.
+
+
 ## Boundary refresh and repeated city switches - 0.35.17
 
 With this bundle in an SDK 54 client, load Saint-Priest or another slow city and let completion finish. Switch away and back: expect cached completion. Refresh the same unchanged boundary, then revisit: the snapshot should survive rather than force a new scan. New exploration or changed geometry must still recalculate. Compare the pending/network stage separately from calculation time; no Saint-Priest-specific phone timing is claimed. The automated SQLite regression enables foreign keys and verifies unchanged refresh retention plus geometry/source invalidation.

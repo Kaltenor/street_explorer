@@ -56,6 +56,29 @@ async function main() {
       const point = { latitude: y, longitude: x }; assert.equal(test(point), completion.isPointInsideZone(point, shape));
     }
   }
+  // Compare scanline counts against exhaustive original tests, including overlapping
+  // outer pieces, overlapping holes, self crossings, negative coordinates and ties.
+  const shapes = [zone,
+    { geometry: [ring(0, 0, 1, 37), ring(0.7, 0, 1, 29)], holes: [ring(0, 0, 0.4, 19), ring(0.2, 0, 0.4, 17)] },
+    { geometry: [[{latitude:0,longitude:0},{latitude:1,longitude:1},{latitude:0,longitude:1},{latitude:1,longitude:0}]], holes: [] },
+    { geometry: [[{latitude:0,longitude:0},{latitude:0,longitude:1},{latitude:1,longitude:1},{latitude:1,longitude:0}]], holes: [] }
+  ];
+  for (const shape of shapes) {
+    const index = prepareZoneContainment(shape);
+    for (let row = -100; row <= 100; row++) {
+      const latitude = row * 0.02;
+      let expected = 0;
+      for (let x = -100; x <= 100; x++) if (completion.isPointInsideZone({ latitude, longitude: x * 0.02 }, shape)) expected++;
+      assert.equal(index.countRow(latitude, -100, 100, x => x * 0.02), expected, "row ranges preserve exact union-minus-holes counts");
+    }
+  }
+  // The previous 350k bounding-box-cell cutoff silently left this city pending.
+  const largeZone = { ...zone, id: "large-city", geometry: [ring(4, 45, 0.05, 1000)], holes: [] };
+  const largeResult = await completion.calculateZoneCompletionStats(largeZone, [], undefined, { persistAchievement: false });
+  assert.equal(largeResult.completionStatus, "available");
+  assert(largeResult.totalZoneCells > 350000);
+  assert.equal(largeResult.completionPercent, 0);
+  console.log(`PASS large city returns ${largeResult.totalZoneCells} cells and 0% instead of pending`);
   const first = await completion.calculateZoneCompletionSnapshot(zone, "walk", revision);
   const firstReads = reads, firstTotals = totalReads;
   assert.equal(await completion.calculateZoneCompletionSnapshot(zone, "walk", revision), first);

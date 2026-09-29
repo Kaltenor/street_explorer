@@ -6034,7 +6034,7 @@ function ObjectiveHud({
         <Text style={styles.objectivePercent}>
           {isCalculating && !stats
             ? language === "fr" ? "Calcul…" : "Calculating…"
-            : formatObjectiveCompletion(stats)}
+            : formatObjectiveCompletion(stats, language)}
         </Text>
       </View>
       <AtlasHudDivider />
@@ -7328,11 +7328,13 @@ function getForbiddenZonePersistenceFailureMessage(
     : "Mapbound could not save this area.";
 }
 
-function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
+function formatObjectiveCompletion(stats: ZoneCompletionStats | null, language: AppLanguage) {
   const presentedPercent = getPresentedCompletionPercent(stats);
 
   if (presentedPercent === null) {
-    return "pending";
+    if (stats?.completionStatus === "too_large") return language === "fr" ? "Trop vaste" : "Too large";
+    if (stats?.completionStatus === "invalid_boundary") return language === "fr" ? "Indisponible" : "Unavailable";
+    return language === "fr" ? "En attente" : "Pending";
   }
 
   return `${presentedPercent}%`;

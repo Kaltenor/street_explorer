@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.35.18
+
+- Replace cell-by-cell total scans with exact row range counting; support up to 20 million bounding-box candidates instead of 350,000.
+- Invalidate old completion calculation caches once so previously oversized cities retry. Saved exploration/achievements remain intact.
+- Show too-large/unavailable results instead of permanent pending. Add overlap/hole/boundary and 616,143-cell city regressions. Build 248.
+
 ## v0.35.17
 
 - Preserve completion snapshots when city/district boundaries refresh unchanged, using in-place UPSERT instead of cascading SQLite REPLACE.
