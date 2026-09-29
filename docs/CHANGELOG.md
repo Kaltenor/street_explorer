@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.35.14
+
+- Serialize database mutations and reserve transaction writes before reads; configure lock timeout and foreign keys on each connection.
+- Fix recovery claim ownership when startup effects are canceled/restarted, preserving unfinished sessions.
+- Add real SQLite concurrency/rollback tests and an executable production-effect regression. Build 244.
+
 ## v0.35.13
 
 - Remove the dark circle, border and halo shadow behind the player sprite in fresh and stale GPS states. Build 243.

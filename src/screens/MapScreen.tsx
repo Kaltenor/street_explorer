@@ -3692,6 +3692,7 @@ export function MapScreen({
       })
       .finally(() => {
         if (
+          isMounted &&
           claimedSessionId !== null &&
           !didCommitRecovery &&
           recoveryPromptedSessionRef.current === claimedSessionId
@@ -3706,6 +3707,12 @@ export function MapScreen({
 
     return () => {
       isMounted = false;
+      // Release this attempt before React starts its replacement. Its late
+      // finally must never clear a claim owned by the next effect instance.
+      if (!didCommitRecovery && claimedSessionId !== null &&
+          recoveryPromptedSessionRef.current === claimedSessionId) {
+        recoveryPromptedSessionRef.current = null;
+      }
     };
   }, [
     activeWalk?.sessionId,

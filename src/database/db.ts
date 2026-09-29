@@ -1,3 +1,4 @@
+import { serializeDatabaseWrites } from "./serializedWrites";
 import * as SQLite from "expo-sqlite";
 // Frozen legacy schema values, used only to upgrade pre-removal databases.
 const DISTRICT_EXPEDITION_KINDS = [
@@ -43,9 +44,17 @@ export async function getDatabase() {
 
   if (!databaseOpenPromise) {
     databaseOpenPromise = SQLite.openDatabaseAsync("street_explorer.db")
-      .then((openedDatabase) => {
-        database = openedDatabase;
-        return openedDatabase;
+      .then(async (openedDatabase) => {
+        try {
+          await openedDatabase.execAsync("PRAGMA busy_timeout = 5000; PRAGMA foreign_keys = ON;");
+        } catch (error) {
+          await openedDatabase.closeAsync().catch(() => undefined);
+          throw error;
+        }
+        database = serializeDatabaseWrites(openedDatabase, () =>
+          SQLite.openDatabaseAsync("street_explorer.db", { useNewConnection: true })
+        );
+        return database;
       })
       .catch((error) => {
         databaseOpenPromise = null;

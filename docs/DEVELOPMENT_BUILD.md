@@ -1,5 +1,9 @@
 # Development Build
 
+## Recording recovery bundle - 0.35.14
+
+Version/build 0.35.14 / 244. Compatible SDK 54 development clients can load the JavaScript fixes. The write coordinator initializes with a fresh JavaScript runtime; save an active walk before deliberately reloading. No remote build or data migration was requested.
+
 ## Player background removal - 0.35.13
 
 Version/build 0.35.13 / 243. Reload the JavaScript bundle in a compatible SDK 54 client; no sprite regeneration or remote build is needed for development validation.

@@ -1,5 +1,12 @@
 # Architecture
 
+## Recording reload recovery - 0.35.14
+
+Database mutations on the shared handle are serialized; each exclusive transaction opens a dedicated connection with a 5-second busy timeout, foreign keys and BEGIN IMMEDIATE before running its callback. WAL reads remain concurrent. A failed transaction rolls back and does not poison the write queue. Transaction callbacks must use their supplied connection, not enqueue writes on the outer handle. External/native writers can still exceed the timeout; existing GPS journals remain the fallback.
+
+Startup recovery releases an uncommitted session claim during effect cleanup. A canceled attempt cannot clear a replacement attempt's claim. This prevents an album/language/dependency update from skipping unfinished-session recovery. Existing walks and GPS data are not migrated or rewritten.
+
+
 The player sprite renders without a circular background, border or halo shadow in both fresh and stale GPS states (0.35.13).
 
 ## Grade-separated topology - 0.35.12

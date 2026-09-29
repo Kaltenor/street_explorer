@@ -1,5 +1,9 @@
 # Street Explorer
 
+## Recording reliability - 0.35.14
+
+Serialize SQLite writes to avoid foreground/background contention and fix interrupted recovery when startup effects restart. No saved routes are rewritten. See [the recording incident report](docs/RECORDING_RELOAD_0_35_14.md).
+
 ## Bridge/tunnel topology fix - 0.35.12
 
 Coincident vertices at different elevations no longer create false gap connections. Shared OSM node IDs preserve real entrances; old caches remain conservative until refreshed. Historical routes require explicit reprocessing. See [testing](docs/TESTING.md).
@@ -82,7 +86,7 @@ On iOS, Options → Map provider offers Apple Maps (default) and Google Maps, re
 
 ## Current Status
 
-Current version: `v0.35.13`
+Current version: `v0.35.14`
 
 For an installable physical-iPhone preview that does not depend on Metro or a development server, run `npm run build:ios:preview`. The EAS internal-distribution build embeds the application bundle and bundled assets. Core recording, saved exploration, cached boundaries, the bundled France medal catalogue, and already-installed country packs remain available when connectivity drops; uncached Apple map tiles, fresh OpenStreetMap data, Wikipedia, and country-pack downloads still require internet access. See [Development Build](docs/DEVELOPMENT_BUILD.md) for signing, device registration, installation, and verification details.
 

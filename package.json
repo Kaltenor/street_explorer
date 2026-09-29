@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.35.13",
+  "version": "0.35.14",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "build:ios:preview": "eas build --platform ios --profile preview",
     "test:player": "node scripts/test-player-marker.js",
     "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs",
-    "test:resilience": "node scripts/test-resilience.js && node scripts/test-recording-validation.js",
+    "test:resilience": "node scripts/test-resilience.js && node scripts/test-recording-validation.js && node scripts/test-recording-reload.js",
     "test:map-provider": "node scripts/test-map-provider.js"
   },
   "dependencies": {

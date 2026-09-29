@@ -249,7 +249,7 @@ assert.ok(summarySource.includes("objectiveMatchesCity"));
 assert.ok(summarySource.includes("doesDistrictBelongToCity(objective.zone, mapBoundaryContext.city)"));
 assert.ok(summarySource.includes("cityZone={visibleMapBoundaryContext.city}"));
 assert.ok(summarySource.includes("districtZones={visibleMapBoundaryContext.districts}"));
-assert.match(mapSource, /styles\.playerCompassHalo/);
+assert.doesNotMatch(mapSource, /styles\.playerCompassHalo/);
 assert.match(mapSource, /strokeWidth=\{isSelectedDistrict \? 3 : 1\.5\}/);
 assert.match(mapSource, /\? 4 : 3/);
 assert.match(mapSource, /MEDAL_MARKER_MAX_LATITUDE_DELTA = 0\.14/);
