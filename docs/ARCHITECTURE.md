@@ -1,5 +1,9 @@
 # Architecture
 
+## Geometry and loading maintenance — 0.35.11
+
+Polygon generation now indexes contour bounds instead of comparing every hole with every island. Each map surface retains one previous polygon result and reuses it when reloaded cell IDs and fill limits are identical. Country/city partitioning filters individual rings before point-in-polygon work. Gap inference releases temporary graph nodes and constructs topology only when a suspicious interval needs it. Saved-map loading separates album refreshes from core history reads. The polygon cache holds one snapshot per city/countryside and total/today layer, scoped to the map instance; changed cells or fill limits invalidate it, and failed builds do not publish cache entries. Hiding exploration keeps the cached result for re-enabling. Coalescing cleanup clears its timer ref so React effect replay can schedule again. Original frozen routes are not silently reprocessed.
+
 ## Durable pack installation and restore checks — 0.35.10
 
 An installed country pack is retained after a temporary filesystem read error. Invalid content still triggers replacement. Downloaded albums enter memory only after the temporary file is successfully renamed; obsolete-file cleanup failure does not invalidate a successful install. Backup V5 block reading compares the full current manifest to the verified snapshot before yielding any data, rejecting changed metadata even if the backup ID is reused.
@@ -412,3 +416,9 @@ resolveMapSelection returns usable visible scopes without SQLite or HTTP. The vi
 ## Player lifecycle and snapshots — 0.35.10
 
 Player direction subtracts the native camera heading after region-change completion; stale camera responses are generation-guarded. Walking intervals run only for reliable movement while active and outside Reduce Motion. Returning to the app recalculates GPS freshness. Google player snapshots stay live during walking and image loading, then redraw once and freeze after idle handoff; Apple retains foreground tracking. Speech timers stop and both active/pending messages clear in background, so old speech does not replay. Standing-still checks read the latest fresh motion on every timer tick, so constant speed no longer looks like inactivity and stale GPS is not evidence of standing still.
+
+## Gap topology V5 and scoped refreshes — 0.35.11
+
+Route snapshot algorithm 5 attaches a gap snap directly to validated interior intersections of its own street edge and connects successive intersections along that edge, avoiding endpoint backtracking. Each gap releases temporary nodes and reverse edges in a finally block; a confirmed-only route never constructs a street graph. Existing snapshots remain immutable; only new snapshots and explicit reprocessing use the new algorithm. Geometric crossing/endpoint compatibility rules remain enforced.
+
+Saved core map data uses one snapshot promise per activity mode for album-only consumers, including when the initial read is pending. Language changes do not relaunch core reads. Explicit refreshes after mutations still read the database; failures evict the snapshot for retry. Album-only refreshes do not republish unchanged cell/stat arrays. Hidden route layers skip refresh work; request generations prevent slow older scopes replacing the latest selected paths, and an explicit null selection is respected.

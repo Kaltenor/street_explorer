@@ -26,17 +26,18 @@ export function partitionExplorationCellIdsByCity(input: {
   getCellCenter: (cellId: string) => BoundaryCoordinate;
 }): ExplorationAreaPartition {
   const indexedBoundaries = input.cityBoundaries
-    .map((zone) => ({ bounds: getGeometryBounds(zone.geometry), zone }))
-    .filter((entry): entry is { bounds: BoundaryBounds; zone: CityBoundary } =>
-      entry.bounds !== null
-    );
+    .map((zone) => ({
+      bounds: getGeometryBounds(zone.geometry),
+      geometry: indexBoundaryRings(zone.geometry),
+      holes: indexBoundaryRings(zone.holes)
+    }));
   const cityCellIds: string[] = [];
   const countrysideCellIds: string[] = [];
 
   for (const cellId of input.cellIds) {
     const center = input.getCellCenter(cellId);
-    const isInsideCity = indexedBoundaries.some(({ bounds, zone }) =>
-      isPointInsideBounds(center, bounds) && isPointInsideBoundary(center, zone)
+    const isInsideCity = indexedBoundaries.some((zone) =>
+      zone.bounds && isPointInsideBounds(center, zone.bounds) && isPointInsideBoundary(center, zone)
     );
 
     (isInsideCity ? cityCellIds : countrysideCellIds).push(cellId);
@@ -45,34 +46,48 @@ export function partitionExplorationCellIdsByCity(input: {
   return { cityCellIds, countrysideCellIds };
 }
 
-function isPointInsideBoundary(point: BoundaryCoordinate, zone: CityBoundary) {
-  const insideOuter = zone.geometry.some((ring) => pointInPolygon(point, ring));
-  const insideHole = zone.holes.some((ring) => pointInPolygon(point, ring));
+type IndexedBoundaryRing = { bounds: BoundaryBounds; ring: BoundaryCoordinate[] };
+
+function indexBoundaryRings(rings: BoundaryCoordinate[][]): IndexedBoundaryRing[] {
+  return rings.flatMap((ring) => {
+    const bounds = getGeometryBounds([ring]);
+    return bounds ? [{ bounds, ring }] : [];
+  });
+}
+
+function isPointInsideBoundary(
+  point: BoundaryCoordinate,
+  zone: { geometry: IndexedBoundaryRing[]; holes: IndexedBoundaryRing[] }
+) {
+  const insideOuter = zone.geometry.some(({ bounds, ring }) =>
+    isPointInsideBounds(point, bounds) && pointInPolygon(point, ring)
+  );
+  if (!insideOuter) return false;
+  const insideHole = zone.holes.some(({ bounds, ring }) =>
+    isPointInsideBounds(point, bounds) && pointInPolygon(point, ring)
+  );
 
   return insideOuter && !insideHole;
 }
 
 function getGeometryBounds(geometry: BoundaryCoordinate[][]): BoundaryBounds | null {
-  const coordinates = geometry.flat();
-
-  if (coordinates.length === 0) {
-    return null;
-  }
-
-  return coordinates.reduce<BoundaryBounds>(
-    (bounds, point) => ({
-      maxLatitude: Math.max(bounds.maxLatitude, point.latitude),
-      maxLongitude: Math.max(bounds.maxLongitude, point.longitude),
-      minLatitude: Math.min(bounds.minLatitude, point.latitude),
-      minLongitude: Math.min(bounds.minLongitude, point.longitude)
-    }),
-    {
-      maxLatitude: Number.NEGATIVE_INFINITY,
-      maxLongitude: Number.NEGATIVE_INFINITY,
-      minLatitude: Number.POSITIVE_INFINITY,
-      minLongitude: Number.POSITIVE_INFINITY
+  let bounds: BoundaryBounds | null = null;
+  for (const ring of geometry) {
+    for (const point of ring) {
+      if (!bounds) {
+        bounds = {
+          maxLatitude: point.latitude, maxLongitude: point.longitude,
+          minLatitude: point.latitude, minLongitude: point.longitude
+        };
+      } else {
+        bounds.maxLatitude = Math.max(bounds.maxLatitude, point.latitude);
+        bounds.maxLongitude = Math.max(bounds.maxLongitude, point.longitude);
+        bounds.minLatitude = Math.min(bounds.minLatitude, point.latitude);
+        bounds.minLongitude = Math.min(bounds.minLongitude, point.longitude);
+      }
     }
-  );
+  }
+  return bounds;
 }
 
 function isPointInsideBounds(point: BoundaryCoordinate, bounds: BoundaryBounds) {

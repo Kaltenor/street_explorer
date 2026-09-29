@@ -72,7 +72,7 @@ export function buildPathSegmentsWithInference(
   streetSegments: OsmStreetSegment[] = []
 ): PathSegment[] {
   const segments: PathSegment[] = [];
-  const routingContext = createStreetRoutingContext(streetSegments);
+  let routingContext: StreetRoutingContext | null | undefined;
 
   for (let index = 1; index < points.length; index += 1) {
     const startPoint = points[index - 1];
@@ -101,6 +101,9 @@ export function buildPathSegmentsWithInference(
       continue;
     }
 
+    if (routingContext === undefined) {
+      routingContext = createStreetRoutingContext(streetSegments);
+    }
     const inferredPath = inferPathBetweenPointsWithContext(
       startPoint,
       endPoint,
@@ -215,6 +218,7 @@ type GraphNode = {
 
 type StreetRoutingContext = {
   graph: Map<string, GraphNode>;
+  crossingKeysByEdge: Map<string, Set<string>>;
   nextSnapId: number;
   streetSegments: OsmStreetSegment[];
 };
@@ -239,7 +243,7 @@ function createStreetRoutingContext(
   }
 
   return {
-    graph: buildStreetGraph(usableStreetSegments),
+    ...buildStreetGraph(usableStreetSegments),
     nextSnapId: 0,
     streetSegments: usableStreetSegments
   };
@@ -257,6 +261,7 @@ function inferStreetRoute(
     startPoint,
     graph,
     routingContext.streetSegments,
+    routingContext.crossingKeysByEdge,
     String(routingContext.nextSnapId++),
     maxSnapDistanceMeters
   );
@@ -264,9 +269,35 @@ function inferStreetRoute(
     endPoint,
     graph,
     routingContext.streetSegments,
+    routingContext.crossingKeysByEdge,
     String(routingContext.nextSnapId++),
     maxSnapDistanceMeters
   );
+
+  try {
+    return inferAttachedStreetRoute(startPoint, endPoint, activityMode, routingContext, startNodes, endNodes);
+  } finally {
+    // Snaps belong only to this gap. Retaining them makes subsequent shortest
+    // path searches grow with recording length and can reuse outdated snaps.
+    for (const { key } of [...startNodes, ...endNodes]) {
+      for (const edge of graph.get(key)?.edges ?? []) {
+        const neighbour = graph.get(edge.key);
+        if (neighbour) neighbour.edges = neighbour.edges.filter((candidate) => candidate.key !== key);
+      }
+      graph.delete(key);
+    }
+  }
+}
+
+function inferAttachedStreetRoute(
+  startPoint: GpsPoint,
+  endPoint: GpsPoint,
+  activityMode: ActivityMode,
+  routingContext: StreetRoutingContext,
+  startNodes: StreetSnapNode[],
+  endNodes: StreetSnapNode[]
+): InferredPathSegment | null {
+  const graph = routingContext.graph;
 
   if (startNodes.length === 0 || endNodes.length === 0) {
     return null;
@@ -427,6 +458,7 @@ type ProjectedPoint = {
 
 function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
   const graph = new Map<string, GraphNode>();
+  const crossingKeysByEdge = new Map<string, Set<string>>();
   const lines: StreetGraphLine[] = [];
 
   for (const segment of streetSegments) {
@@ -456,15 +488,30 @@ function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
     }
   }
 
-  connectSafeGeometricCrossings(graph, lines);
+  connectSafeGeometricCrossings(graph, lines, crossingKeysByEdge);
+  // Multiple crossings on one original edge must also connect along that edge;
+  // otherwise a turn-to-turn route detours via the original street endpoints.
+  for (const [edgeKey, crossingKeys] of crossingKeysByEdge) {
+    if (crossingKeys.size < 2) continue;
+    const origin = graph.get(edgeKey.split(">")[0] ?? "")?.coordinate;
+    if (!origin) continue;
+    const ordered = [...crossingKeys].sort((left, right) =>
+      haversineDistanceMeters(toGpsPoint(origin), toGpsPoint(graph.get(left)!.coordinate)) -
+      haversineDistanceMeters(toGpsPoint(origin), toGpsPoint(graph.get(right)!.coordinate))
+    );
+    for (let index = 1; index < ordered.length; index++) {
+      connectGraphNodes(graph, ordered[index - 1]!, ordered[index]!, "intersection");
+    }
+  }
   connectSafeEndpointJoins(graph, lines);
 
-  return graph;
+  return { graph, crossingKeysByEdge };
 }
 
 function connectSafeGeometricCrossings(
   graph: Map<string, GraphNode>,
-  lines: StreetGraphLine[]
+  lines: StreetGraphLine[],
+  crossingKeysByEdge: Map<string, Set<string>>
 ) {
   const originLatitude = lines[0]?.from.latitude ?? 0;
   const bucketSizeMeters = 32;
@@ -534,6 +581,13 @@ function connectSafeGeometricCrossings(
 
         const crossingKey = `intersection:${coordinateKey(crossing)}`;
         ensureGraphNode(graph, crossingKey, crossing);
+
+        for (const line of [left, right]) {
+          const edgeKey = streetEdgeKey(line.fromKey, line.toKey, line.segment);
+          const crossingKeys = crossingKeysByEdge.get(edgeKey) ?? new Set<string>();
+          crossingKeys.add(crossingKey);
+          crossingKeysByEdge.set(edgeKey, crossingKeys);
+        }
 
         for (const endpointKey of [left.fromKey, left.toKey, right.fromKey, right.toKey]) {
           connectGraphNodes(graph, crossingKey, endpointKey, "intersection");
@@ -713,6 +767,7 @@ function attachPointCandidatesToStreetGraph(
   point: GpsPoint,
   graph: Map<string, GraphNode>,
   streetSegments: OsmStreetSegment[],
+  crossingKeysByEdge: Map<string, Set<string>>,
   keySuffix: string,
   maxSnapDistanceMeters: number
 ): StreetSnapNode[] {
@@ -737,7 +792,7 @@ function attachPointCandidatesToStreetGraph(
       const distanceMeters = haversineDistanceMeters(point, toGpsPoint(coordinate));
       const fromKey = coordinateKey(from);
       const toKey = coordinateKey(to);
-      const edgeKey = [fromKey, toKey].sort().join(">");
+      const edgeKey = streetEdgeKey(fromKey, toKey, segment);
       const existing = candidatesByEdge.get(edgeKey);
 
       if (!existing || distanceMeters < existing.distanceMeters) {
@@ -772,6 +827,11 @@ function attachPointCandidatesToStreetGraph(
       ensureGraphNode(graph, key, candidate.coordinate);
       connectGraphNodes(graph, key, candidate.fromKey, "snap");
       connectGraphNodes(graph, key, candidate.toKey, "snap");
+      // A snap lies on this original street edge, so its internal crossings
+      // are reachable directly without backtracking through either endpoint.
+      for (const crossingKey of crossingKeysByEdge.get(candidate.edgeKey) ?? []) {
+        connectGraphNodes(graph, key, crossingKey, "snap");
+      }
 
       return {
         distanceMeters: candidate.distanceMeters,
@@ -896,15 +956,15 @@ function findShortestPath(graph: Map<string, GraphNode>, startKey: string, endKe
       return null;
     }
 
-    edges.unshift(previousStep.edge);
-    keys.unshift(previousStep.key);
+    edges.push(previousStep.edge);
+    keys.push(previousStep.key);
     currentKey = previousStep.key;
   }
 
   return {
     distanceMeters: distance,
-    edges,
-    keys
+    edges: edges.reverse(),
+    keys: keys.reverse()
   };
 }
 
@@ -973,6 +1033,10 @@ function popNearestQueueItem(
 
 function coordinateKey(coordinate: MapCoordinate) {
   return `${coordinate.latitude.toFixed(6)}:${coordinate.longitude.toFixed(6)}`;
+}
+
+function streetEdgeKey(fromKey: string, toKey: string, segment: OsmStreetSegment) {
+  return `${[fromKey, toKey].sort().join(">")}|${Number(segment.bridge)}:${Number(segment.tunnel)}:${segment.layer}`;
 }
 
 function toGpsPoint(

@@ -10,7 +10,7 @@ import {
 import { collectExploredCellIdsForPath } from "./explorationArea";
 import { buildPathSegments, buildPathSegmentsWithInference } from "./pathInference";
 
-const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 4;
+const ROUTE_SNAPSHOT_ALGORITHM_VERSION = 5;
 const GAP_TOPOLOGY_FETCH_RADIUS_METERS = 120;
 const GAP_TOPOLOGY_PROBE_RADIUS_METERS = 70;
 const GAP_TOPOLOGY_FRESHNESS_MS = 30 * 24 * 60 * 60 * 1000;

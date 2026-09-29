@@ -1,5 +1,9 @@
 # Roadmap
 
+## Measured maintenance — 0.35.11
+
+Indexed contour containment, equivalent-snapshot reuse, bounded temporary gap topology and scoped data refreshes reduce demonstrated work. Physical cold/warm startup, Stop, native frame times and large real-history memory remain to be measured. Existing historical route snapshots remain immutable until explicit reprocessing.
+
 ## Player visual maintenance — 0.35.10
 
 The cartographer now has more natural adult proportions and a newly generated transparent directional sprite sheet. Runtime frames retain the 64 x 64 canvas, four directions, three walking poses and stale-GPS variants. Extraction uses one shared scale and a fixed boot baseline to avoid pose-dependent resizing and vertical jitter. Physical Apple/Google rendering, rotation, background transitions and reduced-motion behavior require the device protocol in Testing.
@@ -145,3 +149,7 @@ Completed in 0.34.4: remove expeditions, their bonuses, and their storage with l
 Completed in 0.34.5, piano cue updated in 0.34.6: discreet map location labels for city/district/countryside selection, with a user-selected piano cue, cancellable reveal/fade, Reduce Motion support, and independent reward presentation. Physical-device typography, timing, and sound balance still need validation.
 
 Completed in 0.34.7: local-first long-press selection and removal of completion-hydration waits. Remaining: measure physical-iPhone hold recognition and selection latency with a restored history, offline cached areas, and uncached locations before changing the gesture or adding another control.
+
+## Topology provenance follow-up
+
+Priority: preserve OSM node/endpoint provenance before repairing the confirmed legacy shared-coordinate vertex ambiguity between different street elevations. A blanket separation by grade would also disconnect legitimate bridge/tunnel entrances. See [the 0.35.11 audit](AUDIT_0_35_11.md).

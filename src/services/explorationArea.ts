@@ -98,16 +98,22 @@ export function buildMergedExplorationPolygons(
       isHoleWithinFillLimit(contour, options.maxFilledHoleAreaSquareMeters)
     )
   );
+  const filledHoles = [...filledHoleContours];
+  const filledHoleIndex = createGridContourIndex(filledHoles);
   const exteriorContours = contours
     .filter((contour) => contour.area > 0)
     .filter((contour) => {
+      if (filledHoles.length === 0) return true;
       const sample = getGridContourInteriorPoint(contour);
 
-      return !sample || ![...filledHoleContours].some((holeContour) =>
-        isPointInsideGridPath(sample, holeContour.path)
+      return !sample || !filledHoleIndex(sample).some((index) =>
+        isPointInsideGridPath(sample, filledHoles[index]!.path)
       );
     })
     .sort((left, right) => right.area - left.area);
+  const exteriorIndex = holeContours.length > filledHoles.length
+    ? createGridContourIndex(exteriorContours)
+    : () => [];
   const polygons: ExplorationPolygon[] = exteriorContours.map((contour) => {
     const first = contour.path[0];
 
@@ -136,12 +142,12 @@ export function buildMergedExplorationPolygons(
     let ownerIndex = -1;
     let ownerArea = Number.POSITIVE_INFINITY;
 
-    for (let index = 0; index < exteriorContours.length; index += 1) {
+    for (const index of exteriorIndex(sample)) {
       const exterior = exteriorContours[index];
 
       if (
         exterior &&
-        exterior.area < ownerArea &&
+        (exterior.area < ownerArea || (exterior.area === ownerArea && index < ownerIndex)) &&
         isPointInsideGridPath(sample, exterior.path)
       ) {
         ownerArea = exterior.area;
@@ -162,6 +168,63 @@ export function buildMergedExplorationPolygons(
   }
 
   return polygons;
+}
+
+type GridBounds = { minX: number; minY: number; maxX: number; maxY: number };
+type IndexedGridContour = GridBounds & { index: number };
+type GridContourTree = GridBounds & {
+  entries?: IndexedGridContour[];
+  left?: GridContourTree;
+  right?: GridContourTree;
+};
+
+/** A per-build bounding tree avoids comparing every island with every hole. */
+function createGridContourIndex(contours: readonly GridContour[]) {
+  const entries = contours.map((contour, index): IndexedGridContour => {
+    const bounds = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+    for (const point of contour.path) {
+      bounds.minX = Math.min(bounds.minX, point.x);
+      bounds.minY = Math.min(bounds.minY, point.y);
+      bounds.maxX = Math.max(bounds.maxX, point.x);
+      bounds.maxY = Math.max(bounds.maxY, point.y);
+    }
+    return { ...bounds, index };
+  });
+  const build = (items: IndexedGridContour[]): GridContourTree => {
+    const bounds = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+    for (const item of items) {
+      bounds.minX = Math.min(bounds.minX, item.minX);
+      bounds.minY = Math.min(bounds.minY, item.minY);
+      bounds.maxX = Math.max(bounds.maxX, item.maxX);
+      bounds.maxY = Math.max(bounds.maxY, item.maxY);
+    }
+    if (items.length <= 8) return { ...bounds, entries: items };
+    const useX = bounds.maxX - bounds.minX >= bounds.maxY - bounds.minY;
+    items.sort((left, right) => useX
+      ? left.minX + left.maxX - right.minX - right.maxX
+      : left.minY + left.maxY - right.minY - right.maxY);
+    const middle = Math.floor(items.length / 2);
+    return { ...bounds, left: build(items.slice(0, middle)), right: build(items.slice(middle)) };
+  };
+  const root = entries.length ? build(entries) : null;
+  const contains = (bounds: GridBounds, point: CellKey) =>
+    point.x >= bounds.minX && point.x <= bounds.maxX &&
+    point.y >= bounds.minY && point.y <= bounds.maxY;
+  return (point: CellKey): number[] => {
+    const found: number[] = [];
+    const pending = root ? [root] : [];
+    while (pending.length) {
+      const node = pending.pop()!;
+      if (!contains(node, point)) continue;
+      if (node.entries) {
+        for (const entry of node.entries) if (contains(entry, point)) found.push(entry.index);
+      } else {
+        if (node.left) pending.push(node.left);
+        if (node.right) pending.push(node.right);
+      }
+    }
+    return found;
+  };
 }
 
 function hashExplorationPolygonHoles(holes: MapCoordinate[][]) {

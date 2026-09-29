@@ -48,6 +48,7 @@ import {
   buildMergedExplorationPolygons,
   explorationCellKeyToCenterCoordinate
 } from "../services/explorationArea";
+import { createExplorationPolygonCache } from "../services/explorationPolygonCache";
 import { partitionExplorationCellIdsByCity } from "../services/countrysideExploration";
 import { haversineDistanceMeters } from "../services/distance";
 import { buildPathSegments, type PathSegment } from "../services/pathInference";
@@ -297,6 +298,12 @@ export const ExplorationMap = memo(function ExplorationMap({
     activeExplorationCellIds,
     650
   );
+  const surfaceBuilders = useMemo(() => {
+    const create = () => createExplorationPolygonCache(
+      (ids, limit) => buildMergedExplorationPolygons(ids, { maxFilledHoleAreaSquareMeters: limit })
+    );
+    return { city: create(), countryside: create(), todayCity: create(), todayCountryside: create() };
+  }, []);
   const savedCellSet = useMemo(() => new Set(savedExplorationCellIds), [savedExplorationCellIds]);
   const savedCellPartition = useMemo(() => partitionExplorationCellIdsByCity({
     cellIds: shouldBuildExploredArea ? [...savedCellSet] : [],
@@ -324,17 +331,16 @@ export const ExplorationMap = memo(function ExplorationMap({
     explorationCellPartition.countrysideCellIds.length;
   const explorationPolygons = useMemo(
     () =>
-      shouldShowCompletedArea
+      explorationEnabled && shouldShowCompletedArea
         ? measurePerformance(
             "map.exploration-surface",
             () =>
-              buildMergedExplorationPolygons(explorationCellPartition.cityCellIds, {
-                maxFilledHoleAreaSquareMeters
-              }),
+              surfaceBuilders.city(explorationCellPartition.cityCellIds, maxFilledHoleAreaSquareMeters),
             12
           )
         : [],
     [
+      explorationEnabled,
       explorationCellPartition.cityCellIds,
       maxFilledHoleAreaSquareMeters,
       shouldShowCompletedArea
@@ -342,17 +348,16 @@ export const ExplorationMap = memo(function ExplorationMap({
   );
   const countrysideExplorationPolygons = useMemo(
     () =>
-      shouldShowCompletedArea
+      explorationEnabled && shouldShowCompletedArea
         ? measurePerformance(
             "map.countryside-exploration-surface",
             () =>
-              buildMergedExplorationPolygons(explorationCellPartition.countrysideCellIds, {
-                maxFilledHoleAreaSquareMeters
-              }),
+              surfaceBuilders.countryside(explorationCellPartition.countrysideCellIds, maxFilledHoleAreaSquareMeters),
             12
           )
         : [],
     [
+      explorationEnabled,
       explorationCellPartition.countrysideCellIds,
       maxFilledHoleAreaSquareMeters,
       shouldShowCompletedArea
@@ -387,9 +392,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         ? measurePerformance(
             "map.today-surface",
             () =>
-              buildMergedExplorationPolygons(todayCellPartition.cityCellIds, {
-                maxFilledHoleAreaSquareMeters
-              }),
+              surfaceBuilders.todayCity(todayCellPartition.cityCellIds, maxFilledHoleAreaSquareMeters),
             8
           )
         : [],
@@ -406,9 +409,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         ? measurePerformance(
             "map.countryside-today-surface",
             () =>
-              buildMergedExplorationPolygons(todayCellPartition.countrysideCellIds, {
-                maxFilledHoleAreaSquareMeters
-              }),
+              surfaceBuilders.todayCountryside(todayCellPartition.countrysideCellIds, maxFilledHoleAreaSquareMeters),
             8
           )
         : [],
@@ -1248,6 +1249,7 @@ function useCoalescedValue<T>(value: T, intervalMs: number) {
     () => () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
+        timerRef.current = null;
       }
     },
     []

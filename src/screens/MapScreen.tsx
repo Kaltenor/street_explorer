@@ -833,6 +833,11 @@ export function MapScreen({
   const latestPlayerLocationForPersistenceRef = useRef<GpsPoint | null>(null);
   const isMapReadyRef = useRef(false);
   const detailedWalksModeRef = useRef<ActivityMode | null>(null);
+  const detailedWalksRequestRef = useRef(0);
+  const showPathsRef = useRef(layers.showPaths);
+  const languageRef = useRef(language);
+  showPathsRef.current = layers.showPaths;
+  languageRef.current = language;
   const pathDisplayModeRef = useRef<PathDisplayMode>(pathDisplayMode);
   const selectedSessionIdRef = useRef<number | null>(selectedSessionId);
   objectiveRef.current = objective;
@@ -1249,16 +1254,20 @@ export function MapScreen({
     mode?: PathDisplayMode;
     selectedSessionId?: number | null;
   }) => {
+    const requestId = ++detailedWalksRequestRef.current;
     const mode = options?.mode ?? pathDisplayModeRef.current;
     const scope = getWalkPointLoadScope(
       mode,
-      options?.selectedSessionId ?? selectedSessionIdRef.current
+      options && "selectedSessionId" in options
+        ? options.selectedSessionId ?? null
+        : selectedSessionIdRef.current
     );
     const savedWalks = await measureAsyncPerformance(
       "map.path-history-load",
       () => getAllWalksWithPoints(activityMode, scope),
       100
     );
+    if (requestId !== detailedWalksRequestRef.current) return;
     detailedWalksModeRef.current = activityMode;
     setWalks(savedWalks);
   }, [activityMode]);
@@ -1286,16 +1295,27 @@ export function MapScreen({
     }
   }, []);
   const savedDataRefreshOperationsRef = useRef(new Set<Promise<void>>());
+  const savedMapSnapshotRef = useRef<{
+    activityMode: ActivityMode;
+    promise: Promise<{
+      values: Awaited<ReturnType<typeof loadSavedMapSnapshot>>;
+      repairedSessionIds: number[];
+    }>;
+  } | null>(null);
+  const publishedSavedMapSnapshotRef = useRef<Promise<unknown> | null>(null);
   const refreshSavedData = useCallback((options: {
     hideExplorationDuringRefresh?: boolean;
     repairPendingCaches?: boolean;
+    medalsOnly?: boolean;
   } = {}) => {
+    const medalsOnly = options.medalsOnly ?? false;
     const hideExplorationDuringRefresh =
-      options.hideExplorationDuringRefresh ?? true;
-    const repairPendingCaches = options.repairPendingCaches ?? true;
+      !medalsOnly && (options.hideExplorationDuringRefresh ?? true);
+    const repairPendingCaches = !medalsOnly && (options.repairPendingCaches ?? true);
     const operationKey = [
       activityMode,
       activeMedalAlbumId ?? "none",
+      medalsOnly ? "medals" : "all",
       hideExplorationDuringRefresh ? "hide" : "show",
       repairPendingCaches ? "repair" : "skip-repair"
     ].join(":");
@@ -1314,9 +1334,21 @@ export function MapScreen({
 
       try {
         setMedalPackLoadState(activeMedalAlbumId ? "loading" : "idle");
-        const repairedSessionIds = repairPendingCaches
-        ? await repairPendingRecordingCaches()
-        : [];
+        let snapshot = savedMapSnapshotRef.current;
+        if (!medalsOnly || !snapshot || snapshot.activityMode !== activityMode) {
+          snapshot = {
+            activityMode,
+            promise: (async () => {
+              const repairedSessionIds = repairPendingCaches ? await repairPendingRecordingCaches() : [];
+              return { repairedSessionIds, values: await loadSavedMapSnapshot(activityMode) };
+            })()
+          };
+          savedMapSnapshotRef.current = snapshot;
+        }
+        const { values, repairedSessionIds } = await snapshot.promise.catch(error => {
+          if (savedMapSnapshotRef.current === snapshot) savedMapSnapshotRef.current = null;
+          throw error;
+        });
       const loadMedalData = async (
         discoveredCellIds: readonly string[],
         explorationRevision: number
@@ -1406,21 +1438,9 @@ export function MapScreen({
         todayNewExploredCellIds,
         explorationRevision,
         savedCityZones
-      ] = await measureAsyncPerformance(
-        "map.saved-data-queries",
-        () => Promise.all([
-          getLifetimeStats(activityMode),
-          getWalkHistory(activityMode),
-          getLoopFillCellKeys(activityMode),
-          getLoopFillSessionSummaries(activityMode),
-          getExploredCellKeys(activityMode),
-          getTodayNewExploredCellKeys(activityMode),
-          getExplorationRevision(activityMode),
-          getCachedZones("city")
-        ]),
-        100
-      );
+      ] = values;
       if (refreshGeneration !== savedDataRefreshGenerationRef.current) return;
+      if (!medalsOnly || publishedSavedMapSnapshotRef.current !== snapshot.promise) {
       const latestWalk = savedHistory[0] ?? null;
       const longestWalk = savedHistory.reduce<WalkSession | null>(
         (longest, walk) => {
@@ -1471,10 +1491,12 @@ export function MapScreen({
           : null
       );
       setIsSavedDataReady(true);
+      publishedSavedMapSnapshotRef.current = snapshot.promise;
       // Optional catalogue/network work must never hold local map readiness.
-      if (hideExplorationDuringRefresh && isMapReadyRef.current) setIsExplorationEnabled(true);
+      if (isMapReadyRef.current) setIsExplorationEnabled(true);
       // Hydrate the independent purple layer before optional medal scans.
       if (isLaunchDismissedRef.current) void refreshForbiddenZones();
+      }
       const medalData = await loadMedalData(exploredCellIds, explorationRevision);
       if (refreshGeneration === savedDataRefreshGenerationRef.current) {
         setMedalPresentationQueue(medalData.pendingMedalPresentations);
@@ -1492,7 +1514,7 @@ export function MapScreen({
 
       }
 
-      if (detailedWalksModeRef.current === activityMode) {
+      if (!medalsOnly && showPathsRef.current && detailedWalksModeRef.current === activityMode) {
         loadDetailedWalks().catch((error) =>
           console.warn("Failed to refresh detailed recordings", error)
         );
@@ -1611,8 +1633,12 @@ export function MapScreen({
 
   useEffect(() => {
     let mounted = true;
-    const load = () => refreshSavedData({ repairPendingCaches: isLaunchDismissedRef.current }).catch((error) => {
+    const load = () => refreshSavedData({
+      medalsOnly: savedMapSnapshotRef.current?.activityMode === activityMode,
+      repairPendingCaches: isLaunchDismissedRef.current
+    }).catch((error) => {
       console.warn("Failed to refresh saved map data", error);
+      const language = languageRef.current;
       if (mounted) Alert.alert(
         language === "fr" ? "Chargement impossible" : "Unable to load saved map",
         language === "fr" ? "Vos données sont conservées. Réessayez le chargement." : "Your saved data is preserved. Retry loading it.",
@@ -1621,7 +1647,7 @@ export function MapScreen({
     });
     void load();
     return () => { mounted = false; };
-  }, [refreshSavedData, language]);
+  }, [activityMode, refreshSavedData]);
 
   useEffect(() => {
     if (!isLaunchDismissed || !isSavedDataReady) {
@@ -1647,6 +1673,7 @@ export function MapScreen({
     }).catch((error) =>
       console.warn("Failed to load scoped saved paths", error)
     );
+    return () => { detailedWalksRequestRef.current += 1; };
   }, [
     layers.showPaths,
     loadDetailedWalks,
@@ -7356,6 +7383,23 @@ function isToday(value: string) {
     date.getFullYear() === now.getFullYear() &&
     date.getMonth() === now.getMonth() &&
     date.getDate() === now.getDate()
+  );
+}
+
+function loadSavedMapSnapshot(activityMode: ActivityMode) {
+  return measureAsyncPerformance(
+    "map.saved-data-queries",
+    () => Promise.all([
+      getLifetimeStats(activityMode),
+      getWalkHistory(activityMode),
+      getLoopFillCellKeys(activityMode),
+      getLoopFillSessionSummaries(activityMode),
+      getExploredCellKeys(activityMode),
+      getTodayNewExploredCellKeys(activityMode),
+      getExplorationRevision(activityMode),
+      getCachedZones("city")
+    ]),
+    100
   );
 }
 

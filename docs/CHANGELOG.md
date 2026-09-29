@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.35.11
+
+- Fix valid gap turns at interior street intersections; new/reprocessed route snapshots use algorithm 5 while existing snapshots remain unchanged.
+- Index polygon-hole containment and city boundary rings; reuse equivalent polygon snapshots per map layer.
+- Release temporary gap-routing topology and skip street graph construction on fully confirmed routes.
+- Separate album/language refresh from full saved-map loading and guard detailed-route results.
+- Recover coalesced polygon updates after React effect replay.
+- iOS build 241; Android version code 241.
+
 ## v0.35.10
 
 - Recreate the directional cartographer sprite with realistic adult proportions, shared scale and fixed boot alignment.

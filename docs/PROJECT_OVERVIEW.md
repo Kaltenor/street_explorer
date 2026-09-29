@@ -1,5 +1,9 @@
 # Project Overview
 
+## Polygon, gap and loading maintenance — 0.35.11
+
+Polygon generation now indexes contour bounds instead of comparing every hole with every island. Each map surface retains one previous polygon result and reuses it when reloaded cell IDs and fill limits are identical. Country/city partitioning filters individual rings before point-in-polygon work. Gap inference releases temporary graph nodes and constructs topology only when a suspicious interval needs it. Saved-map loading separates album refreshes from core history reads.
+
 ## Player presentation maintenance — 0.35.10
 
 The cartographer now has more natural adult proportions and a newly generated transparent directional sprite sheet. Runtime frames retain the 64 x 64 canvas, four directions, three walking poses and stale-GPS variants. Extraction uses one shared scale and a fixed boot baseline to avoid pose-dependent resizing and vertical jitter.

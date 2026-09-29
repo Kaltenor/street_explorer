@@ -67,8 +67,8 @@ const liveMedalEffectSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const handleCompleteMedalCelebration")
 );
 const coreSavedDataHydrationSource = mapScreenSource.slice(
-  mapScreenSource.indexOf('"map.saved-data-queries"'),
-  mapScreenSource.indexOf('"map.saved-data-queries"') + 800
+  mapScreenSource.indexOf("function loadSavedMapSnapshot"),
+  mapScreenSource.indexOf("function waitForMapRenderCommit")
 );
 const medalCelebrationSource = fs.readFileSync(
   path.resolve(__dirname, "../src/components/MedalCelebration.tsx"),
@@ -641,8 +641,11 @@ assert(
 assert(
     mapScreenSource.includes('type MedalPackLoadState = "idle" | "loading" | "ready" | "unavailable"') &&
     mapScreenSource.includes("const medalData = await loadMedalData(") &&
-    mapScreenSource.indexOf("const medalData = await loadMedalData(") >
-      mapScreenSource.indexOf('"map.saved-data-queries"') &&
+    mapScreenSource.includes("values: await loadSavedMapSnapshot(activityMode)") &&
+    mapScreenSource.indexOf("await snapshot.promise.catch") <
+      mapScreenSource.indexOf("setIsSavedDataReady(true)") &&
+    mapScreenSource.indexOf("setIsSavedDataReady(true)") <
+      mapScreenSource.indexOf("const medalData = await loadMedalData(") &&
     mapScreenSource.includes('medalPackLoadState === "unavailable"') &&
     mapScreenSource.includes("resetMedalCountryPackFailure(activeMedalAlbumId)") &&
     mapScreenSource.includes("existingOperation?.key === operationKey") &&

@@ -1,5 +1,9 @@
 # Development Build
 
+## Geometry/loading bundle — 0.35.11
+
+Version/build metadata is 0.35.11 / 241. JavaScript changes work in the compatible SDK 54 development client; standalone distribution requires a rebuilt binary. No remote build is requested for this maintenance pass.
+
 ## Player maintenance bundle — 0.35.10
 
 Version/build metadata is 0.35.10 / 240. Reload the JavaScript bundle and new sprite assets in the compatible SDK 54 development client; standalone distribution needs a rebuilt binary. No remote build was requested.

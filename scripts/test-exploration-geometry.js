@@ -1189,6 +1189,10 @@ const refreshSavedDataSource = mapScreenSource.slice(
   mapScreenSource.indexOf("const refreshSavedData"),
   mapScreenSource.indexOf("const toggleLayer")
 );
+const savedMapSnapshotSource = mapScreenSource.slice(
+  mapScreenSource.indexOf("function loadSavedMapSnapshot"),
+  mapScreenSource.indexOf("function waitForMapRenderCommit")
+);
 const forbiddenMigrationStart = databaseSource.indexOf(
   'applyMigration(32, "add_forbidden_zones"'
 );
@@ -1249,7 +1253,10 @@ const exploredAreaBuildSource = explorationMapSource.slice(
 );
 
 assert(
-  refreshSavedDataSource.includes("getExploredCellKeys") &&
+  refreshSavedDataSource.includes("await loadSavedMapSnapshot(activityMode)") &&
+    savedMapSnapshotSource.includes("getExploredCellKeys(activityMode)") &&
+    !savedMapSnapshotSource.includes("getAllWalksWithPoints") &&
+    !savedMapSnapshotSource.includes("createRouteSnapshot") &&
     !refreshSavedDataSource.includes("getAllWalksWithPoints") &&
     !refreshSavedDataSource.includes("createRouteSnapshot"),
   "normal startup reads the saved cell cache without loading or rebuilding route history"
@@ -1691,7 +1698,7 @@ assert(
 assert(
   databaseSource.includes('applyMigration(23, "add_street_topology_metadata"') &&
     databaseSource.includes("DELETE FROM osm_street_segments") &&
-    routeSnapshotSource.includes("ROUTE_SNAPSHOT_ALGORITHM_VERSION = 4") &&
+    routeSnapshotSource.includes("ROUTE_SNAPSHOT_ALGORITHM_VERSION = 5") &&
     routeSnapshotSource.includes("refreshSuspiciousGapTopology") &&
     routeSnapshotSource.includes("inferredCellCount: collectExploredCellIdsForPath") &&
     walkRepositorySource.includes("isRouteBridgeEvidence") &&
