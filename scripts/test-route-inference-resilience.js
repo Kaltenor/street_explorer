@@ -49,6 +49,38 @@ for (const grade of [{ bridge: true }, { tunnel: true }, { layer: 1 }]) {
     [crossingStreets[0], { ...crossingStreets[1], ...grade }]).status, "rejected",
     "crossing snap attachments never bridge disconnected elevations");
 }
+// Exactly coincident vertices must not manufacture a cross-grade junction.
+for (const grade of [{ bridge: true, layer: 1 }, { tunnel: true, layer: -1 }, { layer: 1 }]) {
+  const ground = { ...crossingStreets[0], coordinates: [point(-60, 0), point(0, 0), point(60, 0)] };
+  const elevated = { ...crossingStreets[1], ...grade,
+    coordinates: [point(0, 0, -60), point(0, 0), point(0, 0, 60)] };
+  for (const useNodeIds of [false, true]) {
+    const a = { ...ground, coordinates: ground.coordinates.map((p, i) => ({ ...p, ...(useNodeIds ? { osmNodeId: 100 + i } : {}) })) };
+    const b = { ...elevated, coordinates: elevated.coordinates.map((p, i) => ({ ...p, ...(useNodeIds ? { osmNodeId: 200 + i } : {}) })) };
+    assert.equal(inference.inferPathBetweenPoints(point(-50, 0), point(0, 60, 50), "walk", [a, b]).status,
+      "rejected", "coincident vertices on distinct levels remain disconnected with new or legacy cache");
+  }
+  const approach = { ...ground, coordinates: [point(-60, 0), { ...point(0, 0), osmNodeId: 123 }] };
+  const entrance = { ...elevated, coordinates: [{ ...point(0, 0), osmNodeId: 123 }, point(0, 0, 60)] };
+  assert.equal(inference.inferPathBetweenPoints(point(-50, 0), point(0, 60, 50), "walk",
+    JSON.parse(JSON.stringify([approach, entrance]))).status, "inferred",
+    "explicit shared OSM entrance survives the coordinate JSON cache roundtrip");
+}
+// Exercise the production parser and splitter: synthetic points have no OSM identity.
+const osmFilename = path.resolve(__dirname, "../src/services/osmStreetService.ts");
+const osmModule = new Module(osmFilename, module);
+osmModule.filename = osmFilename; osmModule.paths = module.paths;
+osmModule._compile(ts.transpileModule(fs.readFileSync(osmFilename, "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 }
+}).outputText + "\nexports.parseCoordinates = getWayCoordinates;", osmFilename);
+const parsed = osmModule.exports.parseCoordinates({ nodes: [11, 12], geometry: [{ lat: 0, lon: 0 }, { lat: 0, lon: 0.001 }] });
+const split = osmModule.exports.splitWayIntoStableLocalSegments(parsed, point(0, 0), 1000);
+assert.equal(split[0].coordinates[0].osmNodeId, 11);
+assert.equal(split.at(-1).coordinates.at(-1).osmNodeId, 12);
+assert(split.slice(0, -1).every(part => part.coordinates[1].osmNodeId === undefined));
+assert(osmModule.exports.parseCoordinates({ nodes: [11], geometry: [{ lat: 0, lon: 0 }, { lat: 0, lon: 1 }] })
+  .every(p => p.osmNodeId === undefined), "misaligned provenance is discarded");
+console.log("PASS coincident overpasses rejected, explicit bridge/tunnel entrances preserved, OSM provenance retained only at real vertices");
 const overlappingBridge = { ...crossingStreets[0], id: "way/elevated/part/0", bridge: true, layer: 1 };
 const gradedContext = inference.inspectContext([...crossingStreets, overlappingBridge]);
 const bridgeSnaps = inference.inspectSnaps(point(-15, 0), gradedContext.graph, [overlappingBridge],

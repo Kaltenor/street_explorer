@@ -1698,7 +1698,7 @@ assert(
 assert(
   databaseSource.includes('applyMigration(23, "add_street_topology_metadata"') &&
     databaseSource.includes("DELETE FROM osm_street_segments") &&
-    routeSnapshotSource.includes("ROUTE_SNAPSHOT_ALGORITHM_VERSION = 5") &&
+    routeSnapshotSource.includes("ROUTE_SNAPSHOT_ALGORITHM_VERSION = 6") &&
     routeSnapshotSource.includes("refreshSuspiciousGapTopology") &&
     routeSnapshotSource.includes("inferredCellCount: collectExploredCellIdsForPath") &&
     walkRepositorySource.includes("isRouteBridgeEvidence") &&

@@ -460,6 +460,7 @@ function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
   const graph = new Map<string, GraphNode>();
   const crossingKeysByEdge = new Map<string, Set<string>>();
   const lines: StreetGraphLine[] = [];
+  const osmNodes = new Map<number, string>();
 
   for (const segment of streetSegments) {
     for (let index = 1; index < segment.coordinates.length; index += 1) {
@@ -470,8 +471,8 @@ function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
         continue;
       }
 
-      const fromKey = coordinateKey(from);
-      const toKey = coordinateKey(to);
+      const fromKey = streetVertexKey(from, segment);
+      const toKey = streetVertexKey(to, segment);
       const distanceMeters = haversineDistanceMeters(toGpsPoint(from), toGpsPoint(to));
 
       ensureGraphNode(graph, fromKey, from).edges.push({
@@ -485,6 +486,14 @@ function buildStreetGraph(streetSegments: OsmStreetSegment[]) {
         key: fromKey
       });
       lines.push({ from, fromKey, segment, to, toKey });
+      // Only explicit shared OSM nodes establish transitions across grades.
+      for (const [coordinate, key] of [[from, fromKey], [to, toKey]] as const) {
+        const nodeId = coordinate.osmNodeId;
+        if (!Number.isSafeInteger(nodeId) || nodeId === undefined || nodeId <= 0) continue;
+        const previousKey = osmNodes.get(nodeId);
+        if (previousKey) connectGraphNodes(graph, previousKey, key, "street");
+        else osmNodes.set(nodeId, key);
+      }
     }
   }
 
@@ -790,8 +799,8 @@ function attachPointCandidatesToStreetGraph(
 
       const coordinate = projectCoordinateOntoSegment(point, from, to);
       const distanceMeters = haversineDistanceMeters(point, toGpsPoint(coordinate));
-      const fromKey = coordinateKey(from);
-      const toKey = coordinateKey(to);
+      const fromKey = streetVertexKey(from, segment);
+      const toKey = streetVertexKey(to, segment);
       const edgeKey = streetEdgeKey(fromKey, toKey, segment);
       const existing = candidatesByEdge.get(edgeKey);
 
@@ -1051,4 +1060,8 @@ function toGpsPoint(
     pointIndex,
     timestamp
   };
+}
+
+function streetVertexKey(coordinate: MapCoordinate, segment: OsmStreetSegment) {
+  return `${coordinateKey(coordinate)}@${Number(segment.bridge)}:${Number(segment.tunnel)}:${segment.layer}`;
 }

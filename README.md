@@ -1,5 +1,9 @@
 # Street Explorer
 
+## Bridge/tunnel topology fix - 0.35.12
+
+Coincident vertices at different elevations no longer create false gap connections. Shared OSM node IDs preserve real entrances; old caches remain conservative until refreshed. Historical routes require explicit reprocessing. See [testing](docs/TESTING.md).
+
 ## Polygon, gap and loading maintenance — 0.35.11
 
 Polygon generation now indexes contour bounds instead of comparing every hole with every island. Each map surface retains one previous polygon result and reuses it when reloaded cell IDs and fill limits are identical. Country/city partitioning filters individual rings before point-in-polygon work. Gap inference releases temporary graph nodes and constructs topology only when a suspicious interval needs it. Saved-map loading separates album refreshes from core history reads.
@@ -78,7 +82,7 @@ On iOS, Options → Map provider offers Apple Maps (default) and Google Maps, re
 
 ## Current Status
 
-Current version: `v0.35.11`
+Current version: `v0.35.12`
 
 For an installable physical-iPhone preview that does not depend on Metro or a development server, run `npm run build:ios:preview`. The EAS internal-distribution build embeds the application bundle and bundled assets. Core recording, saved exploration, cached boundaries, the bundled France medal catalogue, and already-installed country packs remain available when connectivity drops; uncached Apple map tiles, fresh OpenStreetMap data, Wikipedia, and country-pack downloads still require internet access. See [Development Build](docs/DEVELOPMENT_BUILD.md) for signing, device registration, installation, and verification details.
 

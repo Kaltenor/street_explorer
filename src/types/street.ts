@@ -1,9 +1,11 @@
 import { MapCoordinate } from "../services/explorationArea";
 
+export type StreetCoordinate = MapCoordinate & { osmNodeId?: number };
+
 export type OsmStreetSegment = {
   access: string | null;
   bridge: boolean;
-  coordinates: MapCoordinate[];
+  coordinates: StreetCoordinate[];
   fetchedAt: string;
   foot: string | null;
   highway: string;

@@ -1,5 +1,16 @@
 # Testing
 
+## Bridge/tunnel topology - 0.35.12
+
+Prerequisites: SDK 54 client with 0.35.12 (standalone build 242), backed-up disposable history and street data refreshed online to retain OSM node IDs.
+
+1. Reprocess a gap turning from a road beneath a bridge onto that bridge at coincident but distinct vertices. Expected: no false junction, including legacy cache without IDs.
+2. Reprocess a valid bridge/tunnel approach with a shared OSM entrance node. Expected: accepted using refreshed data; old cache without IDs may conservatively reject it.
+3. Reopen offline. Expected: saved results persist. Opening old histories alone must not rewrite frozen routes; reprocessing is explicit.
+
+Automated parser/splitter and inference fixtures cover these distinctions; physical-device GPS behavior remains a manual check.
+
+
 ## Polygons, gaps and loading — 0.35.11
 
 Prerequisites: SDK 54 client with the 0.35.11 bundle (standalone build 241), populated history with disconnected islands/holes, cached street topology, location permission and a verified backup before explicit history reprocessing. Use a disposable test profile for route fixtures.
@@ -7,7 +18,7 @@ Prerequisites: SDK 54 client with the 0.35.11 bundle (standalone build 241), pop
 1. Cold-launch a large history, repeat warm, then change language and city album. Expected: local exploration remains available; language/album changes do not reload all history or raw route points. Record elapsed times on device rather than infer startup gains from desktop benchmarks.
 2. Hide/re-enable exploration and paths, switch selected history rapidly and pan/zoom. Expected: correct holes, islands, latest selected route and stable native polygon keys; old async route responses never overwrite the current selection.
 3. Walk through new cells and close a qualifying loop. Expected: fill, medals and score match before reopening; oversized holes and forbidden areas retain their rules.
-4. On a test history with GPS gaps, run explicit reprocessing using valid cached/fetched streets. Expected: plausible connected street routes can bridge, while private roads, noncoincident grade-separated crossings, impossible speeds and unsupported gaps stay rejected. The known exactly-coincident cross-grade vertex defect is documented in [the audit](AUDIT_0_35_11.md). Existing frozen routes do not change merely by opening the map.
+4. On a test history with GPS gaps, run explicit reprocessing using valid cached/fetched streets. Expected: plausible connected street routes can bridge, while private roads, noncoincident grade-separated crossings, impossible speeds and unsupported gaps stay rejected. The defect recorded in [the audit](AUDIT_0_35_11.md) is fixed in 0.35.12; follow the topology protocol above. Existing frozen routes do not change merely by opening the map.
 5. Stop after a gap-heavy recording, then reopen offline. Expected: saved cells and frozen route persist without duplicate segments or uncontrolled loading; missing network coverage does not become a straight-line exploration bridge.
 
 Desktop tests do not establish device startup duration, GPS delivery, native frame rate or live Overpass availability.

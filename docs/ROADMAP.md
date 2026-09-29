@@ -1,5 +1,12 @@
 # Roadmap
 
+## Grade-separated topology - 0.35.12
+
+Routing algorithm 6 separates vertices by bridge/tunnel/layer. Only explicit shared OSM node IDs establish cross-grade transitions. IDs survive street splitting and coordinate JSON persistence; synthetic points have no invented node identity. No database migration is needed.
+
+Legacy caches without provenance conservatively reject cross-grade transitions until street data is fetched again. Frozen history stays unchanged; explicit reprocessing with refreshed streets is needed for historical gaps.
+
+
 ## Measured maintenance — 0.35.11
 
 Indexed contour containment, equivalent-snapshot reuse, bounded temporary gap topology and scoped data refreshes reduce demonstrated work. Physical cold/warm startup, Stop, native frame times and large real-history memory remain to be measured. Existing historical route snapshots remain immutable until explicit reprocessing.
@@ -152,4 +159,4 @@ Completed in 0.34.7: local-first long-press selection and removal of completion-
 
 ## Topology provenance follow-up
 
-Priority: preserve OSM node/endpoint provenance before repairing the confirmed legacy shared-coordinate vertex ambiguity between different street elevations. A blanket separation by grade would also disconnect legitimate bridge/tunnel entrances. See [the 0.35.11 audit](AUDIT_0_35_11.md).
+Resolved in 0.35.12 with grade-scoped vertices and shared OSM node provenance. Legacy caches remain conservative until refreshed.

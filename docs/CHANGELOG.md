@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.35.12
+
+- Fix false gap connections between coincident bridge/tunnel/layer-separated vertices.
+- Preserve real entrances through shared OSM node IDs, retained through splitting and coordinate JSON cache persistence.
+- Algorithm 6: legacy cache transitions remain conservative until refreshed; old snapshots require explicit reprocessing.
+- Add parser/splitter and routing regressions for old/new caches and real entrances. Build 242.
+
+
 ## v0.35.11
 
 - Fix valid gap turns at interior street intersections; new/reprocessed route snapshots use algorithm 5 while existing snapshots remain unchanged.

@@ -1,5 +1,12 @@
 # Architecture
 
+## Grade-separated topology - 0.35.12
+
+Routing algorithm 6 separates vertices by bridge/tunnel/layer. Only explicit shared OSM node IDs establish cross-grade transitions. IDs survive street splitting and coordinate JSON persistence; synthetic points have no invented node identity. No database migration is needed.
+
+Legacy caches without provenance conservatively reject cross-grade transitions until street data is fetched again. Frozen history stays unchanged; explicit reprocessing with refreshed streets is needed for historical gaps.
+
+
 ## Geometry and loading maintenance — 0.35.11
 
 Polygon generation now indexes contour bounds instead of comparing every hole with every island. Each map surface retains one previous polygon result and reuses it when reloaded cell IDs and fill limits are identical. Country/city partitioning filters individual rings before point-in-polygon work. Gap inference releases temporary graph nodes and constructs topology only when a suspicious interval needs it. Saved-map loading separates album refreshes from core history reads. The polygon cache holds one snapshot per city/countryside and total/today layer, scoped to the map instance; changed cells or fill limits invalidate it, and failed builds do not publish cache entries. Hiding exploration keeps the cached result for re-enabling. Coalescing cleanup clears its timer ref so React effect replay can schedule again. Original frozen routes are not silently reprocessed.

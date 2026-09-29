@@ -1,6 +1,5 @@
 import { withRequestDeadline } from "./networkRequest";
-import { OsmStreetSegment } from "../types/street";
-import { GpsPoint } from "../types/walk";
+import { OsmStreetSegment, StreetCoordinate } from "../types/street";
 
 const OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
@@ -23,7 +22,7 @@ const EXCLUDED_HIGHWAYS = [
   "steps"
 ];
 
-type StreetCenter = Pick<GpsPoint, "latitude" | "longitude">;
+type StreetCenter = StreetCoordinate;
 
 type OverpassGeometryPoint = {
   lat: number;
@@ -32,6 +31,7 @@ type OverpassGeometryPoint = {
 
 type OverpassWayElement = {
   geometry?: OverpassGeometryPoint[];
+  nodes?: number[];
   id: number;
   tags?: {
     access?: string;
@@ -235,7 +235,9 @@ function mapOverpassWayForCorridors(
 }
 
 function getWayCoordinates(element: OverpassWayElement) {
-  return element.geometry?.map((point) => ({
+  return element.geometry?.map((point, index) => ({
+    ...(element.nodes?.length === element.geometry?.length && Number.isSafeInteger(element.nodes?.[index])
+      ? { osmNodeId: element.nodes![index] } : {}),
     latitude: point.lat,
     longitude: point.lon
   })) ?? [];
@@ -404,6 +406,8 @@ function buildStreetSegment(input: {
 }
 
 function interpolateCoordinate(from: StreetCenter, to: StreetCenter, progress: number) {
+  if (progress === 0) return { ...from };
+  if (progress === 1) return { ...to };
   return {
     latitude: from.latitude + (to.latitude - from.latitude) * progress,
     longitude: from.longitude + (to.longitude - from.longitude) * progress
