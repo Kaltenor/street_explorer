@@ -1,5 +1,10 @@
 # Project Overview
 
+## Boundary-refresh cache preservation - 0.35.17
+
+Refreshing an existing city/district now updates its row in place. SQLite REPLACE previously deleted the parent row and cascaded deletion of completion snapshots even for identical geometry. In-place UPSERT preserves unchanged snapshots and totals; changed geometry or boundary source explicitly invalidates both. This reduces repeat calculation after boundary refresh, but first downloads and larger boundary calculations still cost more. Saint-Priest-specific device timing has not been measured.
+
+
 ## City completion performance - 0.35.16
 
 Completion calculations prepare per-ring latitude edge buckets and reuse sorted ray crossings along each scanned grid row. Ring bounds reject unrelated islands; strict boundary comparisons and hole subtraction preserve the previous point-in-polygon result. The index lives only for the calculation, so changed geometry does not reuse stale data. Scans check cancellation every 2,048 cells and yield when a batch checkpoint exceeds an 8 ms elapsed-work budget, avoiding unnecessary timer delays on fast batches.

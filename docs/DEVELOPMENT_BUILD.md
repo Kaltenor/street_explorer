@@ -1,5 +1,9 @@
 # Development Build
 
+## Boundary cache preservation - 0.35.17
+
+Version/build 0.35.17 / 247. Compatible SDK 54 clients can load this JavaScript fix without a database migration. No remote build requested.
+
 ## City completion performance - 0.35.16
 
 Version/build 0.35.16 / 246. JavaScript changes work with a compatible SDK 54 client; no database migration or remote build is required for development validation.

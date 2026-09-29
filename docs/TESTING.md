@@ -1,5 +1,10 @@
 # Testing
 
+## Boundary refresh and repeated city switches - 0.35.17
+
+With this bundle in an SDK 54 client, load Saint-Priest or another slow city and let completion finish. Switch away and back: expect cached completion. Refresh the same unchanged boundary, then revisit: the snapshot should survive rather than force a new scan. New exploration or changed geometry must still recalculate. Compare the pending/network stage separately from calculation time; no Saint-Priest-specific phone timing is claimed. The automated SQLite regression enables foreign keys and verifies unchanged refresh retention plus geometry/source invalidation.
+
+
 ## City switching performance - 0.35.16
 
 Prerequisites: SDK 54 client with the current bundle, two cities with downloaded exact boundaries, and saved exploration. Save any active recording before testing maintenance calculations.

@@ -684,7 +684,7 @@ export async function upsertZones(zones: CachedZone[]) {
         continue;
       }
 
-      if (existing && existing.geometry_json !== geometryJson) {
+      if (existing && (existing.geometry_json !== geometryJson || existing.source !== zone.source)) {
         await transaction.runAsync(
           "DELETE FROM zone_cell_totals WHERE zone_id = ?",
           zone.id
@@ -697,7 +697,7 @@ export async function upsertZones(zones: CachedZone[]) {
 
       await transaction.runAsync(
         `
-          INSERT OR REPLACE INTO zones (
+          INSERT INTO zones (
             id,
             type,
             name,
@@ -708,6 +708,14 @@ export async function upsertZones(zones: CachedZone[]) {
             fetched_at
           )
           VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            type = excluded.type,
+            name = excluded.name,
+            parent_zone_id = excluded.parent_zone_id,
+            admin_level = excluded.admin_level,
+            source = excluded.source,
+            geometry_json = excluded.geometry_json,
+            fetched_at = excluded.fetched_at
         `,
         zone.id,
         zone.type,

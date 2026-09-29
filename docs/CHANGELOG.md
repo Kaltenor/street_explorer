@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.35.17
+
+- Preserve completion snapshots when city/district boundaries refresh unchanged, using in-place UPSERT instead of cascading SQLite REPLACE.
+- Explicitly invalidate totals/snapshots on geometry or boundary-source changes. Add real SQLite regression coverage. Build 247.
+
 ## v0.35.16
 
 - Speed up city completion scans with per-ring edge indexes and same-latitude crossing reuse; preserve exact grid/hole semantics.
