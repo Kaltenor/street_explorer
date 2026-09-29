@@ -1,5 +1,15 @@
 # Testing
 
+## Google Maps route visibility - 0.35.21
+
+Prerequisites: an iOS SDK 54 client with Google Maps available, the updated bundle, and a saved walk from today with Paths enabled. Save any active recording before switching providers.
+
+1. Display today's route on Apple Maps; switch to Google Maps. Expected: the same route remains visible, without re-recording or re-importing it.
+2. Highlight the saved walk, clear the selection, then zoom and pan. Expected: the full route and its highlight/dim colors remain visible, along with exploration outlines.
+3. Switch back to Apple, then Google, and reopen the app. Expected: saved walks and path display preferences are preserved.
+
+Automated tests execute the solid-line component across provider/color changes, checking geometry, styling and overlay order props. Physical-device rendering cannot be verified on this Windows host and remains a manual check.
+
 ## Unvisited-city lookup - 0.35.20
 
 Prerequisites: compatible SDK 54 client with this bundle and network access for uncached cities. Save real recordings before network interruption tests.

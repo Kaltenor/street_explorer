@@ -1,5 +1,10 @@
 # Development Build
 
+## Google Maps route visibility - 0.35.21
+
+Saved/live route lines and exploration outlines explicitly set solid style spans on iOS Google Maps. The installed native bridge initializes a span before receiving strokeColor; supplying its fillColor property sets that span to the current route color, including highlight/dimming updates. Apple Maps and Android retain their existing stroke styling. Provider changes preserve route arrays and saved recordings. This is a JavaScript workaround; no native rebuild is required for a compatible client that already includes Google Maps.
+
+
 ## Interactive boundary lookup - 0.35.20
 
 Version/build 0.35.20 / 250. JavaScript-only lookup change for SDK 54 clients; no migration, asset change or remote build required.

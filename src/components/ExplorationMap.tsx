@@ -23,7 +23,6 @@ import MapView, {
   type MapPressEvent,
   Marker,
   Polygon,
-  Polyline,
   PROVIDER_GOOGLE,
   Region
 } from "react-native-maps";
@@ -65,6 +64,7 @@ import {
   usePerformanceRenderCounter
 } from "../services/performance";
 import { simplifyGpsPointsForRender } from "../services/routeSimplification";
+import { SolidMapPolyline } from "./SolidMapPolyline";
 import { MapLayerState } from "../types/mapLayers";
 import type { AppLanguage } from "../i18n";
 import { CollectedMedal } from "../types/medal";
@@ -730,6 +730,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         followsUserLocation={false}
       >
         <ExplorationSurfaceOverlay
+          mapProvider={mapProvider}
           areaStyle={areaStyle}
           countrysideAreaStyle={countrysideAreaStyle}
           countrysideExplorationPolygons={countrysideExplorationPolygons}
@@ -772,6 +773,7 @@ export const ExplorationMap = memo(function ExplorationMap({
           return (
             <Fragment key={walk.id}>
               <PathSegmentLines
+                mapProvider={mapProvider}
                 activityMode={walk.activityMode}
                 color={color}
                 drawProgress={isHighlighted ? highlightedRouteDrawProgress : 1}
@@ -806,6 +808,7 @@ export const ExplorationMap = memo(function ExplorationMap({
         {activeRouteStartPoint && activeRouteChunks.length > 0 ? (
           <>
             <PathSegmentLines
+              mapProvider={mapProvider}
               activityMode={activeMode}
               color={WALKING_COLORS.activeRoute}
               isDimmed={false}
@@ -1117,6 +1120,7 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
 });
 
 type ExplorationSurfaceOverlayProps = {
+  mapProvider: MapProvider;
   areaStyle: ReturnType<typeof getExploredAreaStyle>;
   countrysideAreaStyle: ReturnType<typeof getCountrysideExploredAreaStyle>;
   countrysideExplorationPolygons: ReturnType<typeof buildMergedExplorationPolygons>;
@@ -1131,6 +1135,7 @@ type ExplorationSurfaceOverlayProps = {
 };
 
 const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
+  mapProvider,
   areaStyle,
   countrysideAreaStyle,
   countrysideExplorationPolygons,
@@ -1203,7 +1208,8 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
         : null}
       {shouldShowOutline
         ? outlineSegments.map((segment) => (
-            <Polyline
+            <SolidMapPolyline
+              mapProvider={mapProvider}
               coordinates={segment.coordinates}
               key={`outline-${segment.id}`}
               lineCap="round"
@@ -1215,7 +1221,8 @@ const ExplorationSurfaceOverlay = memo(function ExplorationSurfaceOverlay({
         : null}
       {shouldShowOutline
         ? countrysideOutlineSegments.map((segment) => (
-            <Polyline
+            <SolidMapPolyline
+              mapProvider={mapProvider}
               coordinates={segment.coordinates}
               key={`countryside-outline-${segment.id}`}
               lineCap="round"
@@ -2089,6 +2096,7 @@ function getMapRenderLevel(latitudeDelta: number): "close" | "far" | "medium" {
 }
 
 const PathSegmentLines = memo(function PathSegmentLines({
+  mapProvider,
   activityMode,
   color,
   drawProgress = 1,
@@ -2098,6 +2106,7 @@ const PathSegmentLines = memo(function PathSegmentLines({
   segments,
   simplificationToleranceMeters
 }: {
+  mapProvider: MapProvider;
   activityMode: ActivityMode;
   color: string;
   drawProgress?: number;
@@ -2153,6 +2162,7 @@ const PathSegmentLines = memo(function PathSegmentLines({
       {visibleSegments.map(({ points: visiblePoints, segment }, index) => {
         return (
           <RoutePolyline
+            mapProvider={mapProvider}
             color={color}
             isDimmed={isDimmed}
             isHighlighted={isHighlighted}
@@ -2172,6 +2182,7 @@ const PathSegmentLines = memo(function PathSegmentLines({
 });
 
 const RoutePolyline = memo(function RoutePolyline({
+  mapProvider,
   color,
   isDimmed,
   isHighlighted,
@@ -2179,6 +2190,7 @@ const RoutePolyline = memo(function RoutePolyline({
   points,
   simplificationToleranceMeters
 }: {
+  mapProvider: MapProvider;
   color: string;
   isDimmed: boolean;
   isHighlighted: boolean;
@@ -2199,7 +2211,8 @@ const RoutePolyline = memo(function RoutePolyline({
   }
 
   return (
-    <Polyline
+    <SolidMapPolyline
+      mapProvider={mapProvider}
       coordinates={coordinates}
       lineCap="round"
       lineDashPattern={undefined}

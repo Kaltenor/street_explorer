@@ -41,6 +41,42 @@ async function main() {
   assert(!canChangeMapProvider({ ...idle, platform: "android" }));
   console.log("PASS provider defaults, unavailable-native fallback, Android policy and recording lifecycle lock");
 
+  // Execute the production line wrapper through Apple -> Google -> Apple and color updates.
+  const platform = { OS: "ios" };
+  const polylineLoad = Module._load;
+  Module._load = function(request) {
+    if (request === "react-native") return { Platform: platform };
+    if (request === "react-native-maps") return { Polyline: "NativePolyline" };
+    return polylineLoad.apply(this, arguments);
+  };
+  try {
+    const filename = require("node:path").resolve(__dirname, "../src/components/SolidMapPolyline.tsx");
+    const loaded = new Module(filename, module);
+    loaded.filename = filename;
+    loaded.paths = module.paths;
+    loaded._compile(ts.transpileModule(fs.readFileSync(filename, "utf8"), {
+      compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX }
+    }).outputText, filename);
+    const { SolidMapPolyline } = loaded.exports;
+    const coordinates = [{ latitude: 45, longitude: 4 }, { latitude: 45.001, longitude: 4.001 }];
+    for (const provider of ["apple", "google", "apple", "google"]) {
+      for (const color of ["#ffd780", "rgba(255, 215, 128, 0.3)"]) {
+        const line = SolidMapPolyline({ mapProvider: provider, coordinates, strokeColor: color, strokeWidth: 8, zIndex: 3 });
+        assert.equal(line.props.coordinates, coordinates, "switching keeps route geometry");
+        assert.equal(line.props.strokeColor, color);
+        assert.equal(line.props.fillColor, provider === "google" ? color : undefined);
+        assert.equal(line.props.strokeWidth, 8);
+        assert.equal(line.props.zIndex, 3);
+      }
+    }
+    platform.OS = "android";
+    assert.equal(SolidMapPolyline({ mapProvider: "google", coordinates, strokeColor: "gold" }).props.fillColor, undefined);
+    const nativeSource = fs.readFileSync(require.resolve("react-native-maps/package.json").replace(
+      /package\.json$/, "ios/AirGoogleMaps/AIRGoogleMapPolyline.m"), "utf8");
+    assert.match(nativeSource, /setFillColor:[\s\S]*?_polyline.spans = @\[\[GMSStyleSpan spanWithColor:fillColor\]\];/);
+  } finally { Module._load = polylineLoad; }
+  console.log("PASS provider switches preserve route geometry and set/update explicit Google iOS solid spans");
+
   const db = new DatabaseSync(":memory:");
   db.exec("CREATE TABLE app_settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
   const adapter = {

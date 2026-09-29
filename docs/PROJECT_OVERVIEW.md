@@ -1,5 +1,10 @@
 # Project Overview
 
+## Google Maps route visibility - 0.35.21
+
+Saved/live route lines and exploration outlines explicitly set solid style spans on iOS Google Maps. The installed native bridge initializes a span before receiving strokeColor; supplying its fillColor property sets that span to the current route color, including highlight/dimming updates. Apple Maps and Android retain their existing stroke styling. Provider changes preserve route arrays and saved recordings. This is a JavaScript workaround; no native rebuild is required for a compatible client that already includes Google Maps.
+
+
 ## Bounded interactive area lookup - 0.35.20
 
 Map holds use a targeted containing-area query for local administrative levels 8/9/10, excluding the former surrounding-3.5-km and whole-country geometry payload. Country geometry is fetched separately only when no containing city/district is returned and no cached country contains the point. Broader explicit boundary-refresh queries are unchanged.

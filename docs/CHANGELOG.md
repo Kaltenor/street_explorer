@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.35.21
+
+- Explicitly color iOS Google Maps solid-line spans for saved/live routes and exploration outlines, addressing invisible paths after provider switching. Preserve Apple/Android styling and saved data.
+- Add executed provider/color-switch regression coverage and device verification steps. JavaScript-only change; build 251.
+
 ## v0.35.20
 
 - Give interactive boundary requests 16 seconds per server (12-second server execution budget), starting a backup after 1.5 seconds instead of waiting for an 8-second failure. Keep the 20-second overall selection limit.
