@@ -1,5 +1,9 @@
 # Development Build
 
+## Player background removal - 0.35.13
+
+Version/build 0.35.13 / 243. Reload the JavaScript bundle in a compatible SDK 54 client; no sprite regeneration or remote build is needed for development validation.
+
 ## Topology correction bundle — 0.35.12
 
 Version/build metadata is 0.35.12 / 242. JavaScript changes work in the compatible SDK 54 development client; standalone distribution requires a rebuilt binary. No remote build is requested for this maintenance pass.

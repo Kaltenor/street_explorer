@@ -82,7 +82,7 @@ On iOS, Options → Map provider offers Apple Maps (default) and Google Maps, re
 
 ## Current Status
 
-Current version: `v0.35.12`
+Current version: `v0.35.13`
 
 For an installable physical-iPhone preview that does not depend on Metro or a development server, run `npm run build:ios:preview`. The EAS internal-distribution build embeds the application bundle and bundled assets. Core recording, saved exploration, cached boundaries, the bundled France medal catalogue, and already-installed country packs remain available when connectivity drops; uncached Apple map tiles, fresh OpenStreetMap data, Wikipedia, and country-pack downloads still require internet access. See [Development Build](docs/DEVELOPMENT_BUILD.md) for signing, device registration, installation, and verification details.
 

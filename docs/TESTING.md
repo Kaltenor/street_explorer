@@ -1,5 +1,9 @@
 # Testing
 
+## Player transparency - 0.35.13
+
+With the current bundle in an SDK 54 client, view the player while idle, walking and with stale GPS, on both light and dark map surfaces. Expected: character only, with no dark circular plate, ring or halo shadow; animation and position anchoring stay stable. Physical-device check remains manual.
+
 ## Bridge/tunnel topology - 0.35.12
 
 Prerequisites: SDK 54 client with 0.35.12 (standalone build 242), backed-up disposable history and street data refreshed online to retain OSM node IDs.

@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.35.13
+
+- Remove the dark circle, border and halo shadow behind the player sprite in fresh and stale GPS states. Build 243.
+
 ## v0.35.12
 
 - Fix false gap connections between coincident bridge/tunnel/layer-separated vertices.

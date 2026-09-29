@@ -10,3 +10,5 @@ The active cartographer was recreated for version 0.35.10 with OpenAI's built-in
 - [Exact generation prompt](GENERATION_PROMPT.md).
 
 Frames remain pre-mounted inside one persistent native marker. The earlier CC0 pixel source and extracted frames are inactive history, not the current character.
+
+Since 0.35.13, the marker renders these transparent frames without the former dark circular background or its shadow.

@@ -1504,12 +1504,6 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
       zIndex={1000}
     >
       <View collapsable={false} onLayout={() => setHasLayout(true)} pointerEvents="none" style={styles.playerMarker}>
-        <View
-          style={[
-            styles.playerCompassHalo,
-            !isGpsFresh ? styles.playerCompassHaloStale : null
-          ]}
-        />
         {PLAYER_SPRITE_LAYERS.map((frame) => (
           <Image
             accessibilityIgnoresInvertColors
@@ -2599,24 +2593,6 @@ const styles = createAppearanceStyles({
     backgroundColor: "#dfca99",
     borderColor: "#2a2015",
     transform: [{ rotate: "-2deg" }]
-  },
-  playerCompassHalo: {
-    backgroundColor: "rgba(4, 16, 22, 0.82)",
-    borderColor: "rgba(245, 196, 81, 0.68)",
-    borderRadius: 20,
-    borderWidth: 1,
-    height: 40,
-    position: "absolute",
-    shadowColor: "#02060a",
-    shadowOffset: { height: 2, width: 0 },
-    shadowOpacity: 0.52,
-    shadowRadius: 3,
-    transform: [{ rotate: "-3deg" }],
-    width: 40
-  },
-  playerCompassHaloStale: {
-    backgroundColor: "rgba(20, 27, 29, 0.88)",
-    borderColor: "rgba(223, 202, 153, 0.82)"
   },
   forbiddenZoneLabel: {
     alignItems: "center",
