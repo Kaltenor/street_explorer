@@ -1,5 +1,10 @@
 # Project Overview
 
+## Today paths on launch - 0.35.22
+
+Paths now start enabled with the existing Today filter. Scoped GPS loading waits for saved-data readiness; full history is not loaded by default. The Paths toggle can still hide routes for the current app session. Previously every fresh launch initialized Paths to off, leaving today's newly explored cells visible without the saved route. Applies to both map providers; saved recordings are unchanged. Version/build 0.35.22 / 252, JavaScript-only.
+
+
 ## Google Maps route visibility - 0.35.21
 
 Saved/live route lines and exploration outlines explicitly set solid style spans on iOS Google Maps. The installed native bridge initializes a span before receiving strokeColor; supplying its fillColor property sets that span to the current route color, including highlight/dimming updates. Apple Maps and Android retain their existing stroke styling. Provider changes preserve route arrays and saved recordings. This is a JavaScript workaround; no native rebuild is required for a compatible client that already includes Google Maps.

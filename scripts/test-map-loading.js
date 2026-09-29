@@ -130,3 +130,43 @@ async function testSelectionDeadline() {
   console.log('PASS stuck selection stops loading at its deadline and ignores late results');
 }
 testSelectionDeadline().catch(error => { console.error(error); process.exitCode = 1; });
+
+function testStartupPaths() {
+  let layerDeclaration, modeDeclaration, loadEffect;
+  function visit(node) {
+    if (ts.isVariableDeclaration(node)) {
+      if (node.name.getText(ast) === '[layers, setLayers]') layerDeclaration = node;
+      if (node.name.getText(ast) === '[pathDisplayMode, setPathDisplayMode]') modeDeclaration = node;
+    }
+    if (ts.isCallExpression(node) && node.expression.getText(ast) === 'useEffect' &&
+        node.arguments[0].getText(ast).includes('Failed to load scoped saved paths')) loadEffect = node;
+    ts.forEachChild(node, visit);
+  }
+  visit(ast);
+  assert(layerDeclaration && modeDeclaration && loadEffect);
+  const evaluate = (code, context = {}) => vm.runInNewContext(ts.transpileModule(code, {
+    compilerOptions: { target: ts.ScriptTarget.ES2022 }
+  }).outputText, context);
+  const layers = evaluate(`(${layerDeclaration.initializer.arguments[0].getText(ast)})`);
+  const mode = evaluate(modeDeclaration.initializer.arguments[0].getText(ast));
+  assert.equal(layers.showPaths, true, 'fresh launches show saved paths');
+  assert.equal(mode, 'today', 'launch does not load all historical GPS');
+  assert(loadEffect.arguments[1].getText(ast).includes('isSavedDataReady'), 'readiness transition triggers loading');
+  for (const ready of [false, true]) for (const visible of [false, true]) {
+    const requests = [];
+    const generation = { current: 0 };
+    const cleanup = evaluate(`(${loadEffect.arguments[0].getText(ast)})()`, {
+      layers: { showPaths: visible }, isSavedDataReady: ready,
+      pathDisplayMode: mode, selectedSessionId: null,
+      loadDetailedWalks: options => { requests.push(options); return Promise.resolve(); },
+      detailedWalksRequestRef: generation, console
+    });
+    assert.equal(requests.length, ready && visible ? 1 : 0);
+    if (ready && visible) {
+      assert.equal(requests[0].mode, 'today');
+      cleanup(); assert.equal(generation.current, 1, 'hidden/replaced scope invalidates pending loads');
+    }
+  }
+  console.log('PASS startup enables Today paths, waits for saved data, and respects manual hiding');
+}
+testStartupPaths();

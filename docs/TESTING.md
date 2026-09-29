@@ -1,5 +1,12 @@
 # Testing
 
+## Today paths on launch - 0.35.22
+
+Paths now start enabled with the existing Today filter. Scoped GPS loading waits for saved-data readiness; full history is not loaded by default. The Paths toggle can still hide routes for the current app session. Previously every fresh launch initialized Paths to off, leaving today's newly explored cells visible without the saved route. Applies to both map providers; saved recordings are unchanged. Version/build 0.35.22 / 252, JavaScript-only.
+
+With a saved walk from today and the updated bundle, fully reopen the app on Apple Maps, then Google Maps: today's saved route should appear automatically. Toggle Paths off/on and verify it hides/returns; reopen and verify Today paths are visible again. A day with no saved walks should show no saved route. Automated startup/effect tests cover defaults and deferred loading; physical-device confirmation remains required.
+
+
 ## Google Maps route visibility - 0.35.21
 
 Prerequisites: an iOS SDK 54 client with Google Maps available, the updated bundle, and a saved walk from today with Paths enabled. Save any active recording before switching providers.

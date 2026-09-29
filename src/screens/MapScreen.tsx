@@ -726,7 +726,7 @@ export function MapScreen({
   const [layers, setLayers] = useState<MapLayerState>({
     showExploredCells: true,
     showMarkers: true,
-    showPaths: false
+    showPaths: true
   });
   const activeAtlasPage: AtlasPageId | null = diagnosticsVisible
     ? "history"
@@ -1663,7 +1663,7 @@ export function MapScreen({
   }, [isLaunchDismissed, isSavedDataReady, refreshForbiddenZones, refreshSavedData]);
 
   useEffect(() => {
-    if (!layers.showPaths) {
+    if (!layers.showPaths || !isSavedDataReady) {
       return;
     }
 
@@ -1676,6 +1676,7 @@ export function MapScreen({
     return () => { detailedWalksRequestRef.current += 1; };
   }, [
     layers.showPaths,
+    isSavedDataReady,
     loadDetailedWalks,
     pathDisplayMode,
     selectedSessionId

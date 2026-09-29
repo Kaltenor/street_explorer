@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.35.22
+
+Paths now start enabled with the existing Today filter. Scoped GPS loading waits for saved-data readiness; full history is not loaded by default. The Paths toggle can still hide routes for the current app session. Previously every fresh launch initialized Paths to off, leaving today's newly explored cells visible without the saved route. Applies to both map providers; saved recordings are unchanged. Version/build 0.35.22 / 252, JavaScript-only.
+
+
 ## v0.35.21
 
 - Explicitly color iOS Google Maps solid-line spans for saved/live routes and exploration outlines, addressing invisible paths after provider switching. Preserve Apple/Android styling and saved data.
