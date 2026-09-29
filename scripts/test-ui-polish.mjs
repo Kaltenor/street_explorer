@@ -409,8 +409,10 @@ assert.match(summarySource, /mapContentInsets=\{mapStampInsets\}/);
 assert.match(summarySource, /message=\{isLaunchDismissed \? atlasStampMessage : null\}/);
 assert.match(
   summarySource,
-  /if \(\s*!isLaunchDismissed \|\|\s*!objective \|\|\s*!objectiveStats\?\.permanentlyCompleted\s*\)/
+  /if \(\s*!objectiveBefore\?\.permanentlyCompleted &&\s*achievementWasEarnedDuringWalk &&\s*isLaunchDismissedRef\.current\s*\)/
 );
+assert.match(summarySource, /achievementCompletedAtMs >= walkStartedAtMs/);
+assert.match(summarySource, /achievementCompletedAtMs <= Date\.now\(\)/);
 assert.match(summarySource, /onLayout=\{handleMapTopPanelLayout\}/);
 assert.match(summarySource, /onLayout=\{handleMapBottomPanelLayout\}/);
 assert.match(atlasSource, /height: 106/);

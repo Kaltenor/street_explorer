@@ -1,5 +1,10 @@
 # Resilience audit follow-up — 0.34.3
 
+## Follow-up maintenance — 0.35.9
+
+The subsequent audit addresses large-component crashes, hole enumeration cost, repeated country-pack decoding, temporary GPS journal I/O failures, recording/restore overlap, invalid GPS import, preference writes and Wikipedia fallback recovery. See [the new audit](AUDIT_0_35_9.md) for current results and remaining device checks. Earlier entries below are historical.
+
+
 Date: 2026-09-22. Previous version: 0.34.2 / build 223. New version: 0.34.3 / build 224.
 
 Current follow-up: 0.34.4 / build 225 retires expeditions. The audit measurements below remain those captured for 0.34.3. See [the removal protocol](TESTING.md#expedition-removal--0344) for upgrade and legacy-backup checks.

@@ -229,7 +229,7 @@ function findEnclosedCellGroups(boundaryCellIds: string[]) {
   return collectDetectionBoundaryGroups(boundary)
     .flatMap((detectionBoundary) => {
       const exactBoundary = new Set(
-        [...boundary].filter((cellKey) => detectionBoundary.has(cellKey))
+        [...detectionBoundary].filter((cellKey) => boundary.has(cellKey))
       );
       const exactGroups = collectConnectedCellGroups(exactBoundary)
         .flatMap((group) => findEnclosedCellGroupsInComponent(boundary, new Set(group)));
@@ -251,32 +251,20 @@ function collectDetectionBoundaryGroups(boundary: Set<string>) {
 }
 
 function findEnclosedCellGroupsInComponent(boundary: Set<string>, detectionBoundary: Set<string>) {
-  const detectionKeys = [...detectionBoundary].map(parseCellKey);
-  const componentBoundaryKeys = [...boundary]
-    .filter((cellKey) => detectionBoundary.has(cellKey))
-    .map(parseCellKey);
+  const componentBoundaryKeys = [...detectionBoundary]
+    .filter((cellKey) => boundary.has(cellKey));
 
   if (componentBoundaryKeys.length === 0) {
     return [];
   }
 
-  const floodBounds = {
-    maxX: Math.max(...detectionKeys.map((key) => key.x)) + 1,
-    maxY: Math.max(...detectionKeys.map((key) => key.y)) + 1,
-    minX: Math.min(...detectionKeys.map((key) => key.x)) - 1,
-    minY: Math.min(...detectionKeys.map((key) => key.y)) - 1
-  };
+  const floodBounds = getCellBounds(detectionBoundary, 1);
 
   if (countCellsInBounds(floodBounds) > LOOP_FILL_CONFIG.maxFloodBoundsCells) {
     return [];
   }
 
-  const candidateBounds = {
-    maxX: Math.max(...componentBoundaryKeys.map((key) => key.x)),
-    maxY: Math.max(...componentBoundaryKeys.map((key) => key.y)),
-    minX: Math.min(...componentBoundaryKeys.map((key) => key.x)),
-    minY: Math.min(...componentBoundaryKeys.map((key) => key.y))
-  };
+  const candidateBounds = getCellBounds(componentBoundaryKeys);
   const outside = floodReachableCells({
     blocked: detectionBoundary,
     bounds: floodBounds,
@@ -295,6 +283,16 @@ function findEnclosedCellGroupsInComponent(boundary: Set<string>, detectionBound
   }
 
   return collectConnectedCellGroups(enclosed);
+}
+
+function getCellBounds(cellIds: Iterable<string>, padding = 0) {
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const cellId of cellIds) {
+    const { x, y } = parseCellKey(cellId);
+    minX = Math.min(minX, x); maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y); maxY = Math.max(maxY, y);
+  }
+  return { minX: minX - padding, minY: minY - padding, maxX: maxX + padding, maxY: maxY + padding };
 }
 
 function countCellsInBounds(bounds: { maxX: number; maxY: number; minX: number; minY: number }) {
@@ -325,7 +323,7 @@ function floodReachableCells(input: {
   bounds: { maxX: number; maxY: number; minX: number; minY: number };
   start: CellKey;
 }) {
-  const visited = new Set<string>();
+  const visited = new Set<string>([cellKeyToString(input.start)]);
   const queue: CellKey[] = [input.start];
   let queueIndex = 0;
 
@@ -337,19 +335,13 @@ function floodReachableCells(input: {
       continue;
     }
 
-    const key = cellKeyToString(current);
-
-    if (visited.has(key) || input.blocked.has(key)) {
-      continue;
+    for (const neighbor of getNeighborCellKeys(current)) {
+      const key = cellKeyToString(neighbor);
+      if (isInsideBounds(neighbor, input.bounds) && !visited.has(key) && !input.blocked.has(key)) {
+        visited.add(key);
+        queue.push(neighbor);
+      }
     }
-
-    visited.add(key);
-    queue.push(
-      { x: current.x + 1, y: current.y },
-      { x: current.x - 1, y: current.y },
-      { x: current.x, y: current.y + 1 },
-      { x: current.x, y: current.y - 1 }
-    );
   }
 
   return visited;
@@ -418,21 +410,6 @@ function getCellGroupBoundsPolygon(cellIds: string[]) {
 
 function isWalkable(segment: OsmStreetSegment) {
   return WALKABLE_HIGHWAYS.has(segment.highway);
-}
-
-function calculatePolygonAreaSquareMeters(points: ProjectedPoint[]) {
-  let area = 0;
-
-  for (let index = 0; index < points.length; index += 1) {
-    const current = points[index];
-    const next = points[(index + 1) % points.length];
-
-    if (current && next) {
-      area += current.x * next.y - next.x * current.y;
-    }
-  }
-
-  return Math.abs(area) / 2;
 }
 
 function pointInPolygon(point: ProjectedPoint, polygon: ProjectedPoint[]) {

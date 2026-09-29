@@ -90,6 +90,63 @@ function analyzeWalkingLoop(size) {
   });
 }
 
+const concaveBoundary = new Set(offsetPerimeter(80, -40, -40));
+for (let x = -38; x < 38; x += 4) {
+  for (let y = -39; y < 10; y += 1) concaveBoundary.add(`${x}:${y}`);
+}
+const expectedConcaveInterior = [];
+for (let x = -39; x < 39; x += 1) {
+  for (let y = -39; y < 39; y += 1) {
+    if (!concaveBoundary.has(`${x}:${y}`)) expectedConcaveInterior.push(`${x}:${y}`);
+  }
+}
+assert(
+  JSON.stringify(explorationArea.collectEnclosedExplorationCellGroups([...concaveBoundary]).flat()) ===
+    JSON.stringify(expectedConcaveInterior),
+  "scanline enclosure preserves every concave cell and deterministic order at negative coordinates"
+);
+const truncatedConcaveRegion = explorationArea.findEnclosedExplorationRegionContainingCell({
+  boundaryCells: [...concaveBoundary], maxCellCount: 20, targetCellId: "0:20"
+});
+assert(
+  truncatedConcaveRegion?.truncated &&
+    JSON.stringify(truncatedConcaveRegion.cellIds) === JSON.stringify(expectedConcaveInterior.slice(0, 21)),
+  "bounded enclosure scanning stops at the first cell beyond the requested limit"
+);
+assert(
+  loopFill.analyzeLoopFillsForCells({
+    activityMode: "walk", boundaryCellIds: rectangle(450, 300),
+    exploredStreetIds: new Set(), streetSegments: []
+  }).length === 0,
+  "loop detection handles 135000 contiguous cells without exceeding JavaScript argument limits"
+);
+const dateLinePoints = [179.99999, -179.99999].map((longitude, index) => ({
+  accuracy: 5, latitude: 0, longitude, pointIndex: index,
+  timestamp: new Date(Date.UTC(2026, 0, 1, 0, 0, index * 5)).toISOString()
+}));
+const dateLineCells = explorationArea.collectExploredCellIdsForPath(dateLinePoints, "walk");
+assert(
+  dateLineCells.length > 0 && dateLineCells.length < 20 &&
+    dateLineCells.every((id) => Math.abs(explorationArea.explorationCellKeyToCenterCoordinate(id).longitude) > 179.99),
+  "a short date-line crossing explores only nearby cells instead of interpolating around the world"
+);
+const reversedDateLineCells = explorationArea.collectExploredCellIdsByRouteSegments([{
+  type: "confirmed", points: [...dateLinePoints].reverse()
+}]).gps;
+assert(
+  JSON.stringify([...dateLineCells].sort()) === JSON.stringify(reversedDateLineCells.sort()),
+  "date-line exploration is identical in both travel directions and frozen routes"
+);
+const dateLinePolygons = explorationArea.buildMergedExplorationPolygons(dateLineCells);
+assert(
+  dateLinePolygons.length === 2 && dateLinePolygons.every((polygon) => {
+    const longitudes = polygon.coordinates.map((coordinate) => coordinate.longitude);
+    return Math.max(...longitudes) - Math.min(...longitudes) < 0.001 &&
+      longitudes.every((longitude) => Math.abs(longitude) > 179.99);
+  }),
+  "date-line cells render as two local edge polygons without a world-spanning contour"
+);
+
 function analyzeForbiddenSelection(size, targetCellId, boundary = perimeter(size)) {
   return forbiddenZones.analyzeForbiddenZoneSelection({
     activityMode: "walk",

@@ -1,5 +1,14 @@
 # Downloadable Medal Country Packs
 
+## Durable pack installation and restore checks — 0.35.10
+
+An installed country pack is retained after a temporary filesystem read error. Invalid content still triggers replacement. Downloaded albums enter memory only after the temporary file is successfully renamed; obsolete-file cleanup failure does not invalidate a successful install. Backup V5 block reading compares the full current manifest to the verified snapshot before yielding any data, rejecting changed metadata even if the backup ID is reused.
+
+## Validated in-memory reuse — 0.35.9
+
+Repeated local-discovery scans reuse validated country-pack objects by checksum-addressed filename instead of rereading, hashing, decompressing and parsing the same installed archive. Newly downloaded temporary files still receive complete validation. A regression counts one file read for three accesses; no device timing claim is implied.
+
+
 Street Explorer v0.33 keeps a 500-city, 6,082-medal France catalogue bundled for immediate offline compatibility. It covers the 500 largest communes, including departments and collectivities overseas, with at least 20 medals in ranks 1–100 and 10 in ranks 101–500. Every other country catalogue is a versioned downloadable pack. The app bundles only a compact city-zone manifest, downloads one country when one of its supported cities is first selected, verifies the compressed byte count and SHA-256 checksum, expands and validates the schema, then retains the gzip file in the app document directory for offline reuse.
 
 ## Pack Contract

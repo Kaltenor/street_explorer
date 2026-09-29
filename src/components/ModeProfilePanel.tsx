@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { createAppearanceStyles } from "../constants/appearance";
 
 import { MODE_LOCATION_CONFIG } from "../constants/config";

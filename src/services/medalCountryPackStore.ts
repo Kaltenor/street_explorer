@@ -26,8 +26,13 @@ const countryPackDirectory = new Directory(
   COUNTRY_PACK_DIRECTORY_NAME
 );
 const loadedAlbums = new Map<string, MedalAlbumDefinition>();
+// These immutable, checksum-addressed packs share their album objects with
+// loadedAlbums. Repeated discovery scans need not decode the same archive.
+const loadedCountryPacks = new Map<string, MedalCountryPack>();
 const packLoadOperations = new Map<string, Promise<MedalCountryPack>>();
 const failedPackLoads = new Map<string, unknown>();
+
+class InvalidCountryPackError extends Error {}
 
 export async function getMedalAlbumDefinition(albumId: string) {
   const bundled = getBundledMedalAlbum(albumId);
@@ -137,6 +142,9 @@ async function loadCountryPackOnce(
     try {
       return await readAndValidateCountryPack(installedFile, descriptor);
     } catch (error) {
+      // A transient filesystem failure is not proof that the offline pack is
+      // corrupt. Keep it for the next attempt instead of deleting valid data.
+      if (!(error instanceof InvalidCountryPackError)) throw error;
       console.warn("Discarding an invalid cached medal country pack", error);
       installedFile.delete();
     }
@@ -174,13 +182,20 @@ async function loadCountryPackOnce(
       return output;
     }, 60_000);
     temporaryFile.write(bytes);
-    const pack = await readAndValidateCountryPack(temporaryFile, descriptor);
+    const pack = await readAndValidateCountryPack(temporaryFile, descriptor, false);
 
     if (installedFile.exists) {
       installedFile.delete();
     }
     temporaryFile.rename(getCountryPackFileName(descriptor));
-    removeObsoleteCountryPackFiles(descriptor);
+    cacheCountryPack(pack, descriptor);
+    try {
+      removeObsoleteCountryPackFiles(descriptor);
+    } catch (error) {
+      // Installation succeeded; obsolete-file cleanup must not turn a durable
+      // available pack into a reported download failure.
+      console.warn("Could not remove obsolete medal country packs", error);
+    }
     return pack;
   } catch (error) {
     if (temporaryFile.exists) {
@@ -192,9 +207,48 @@ async function loadCountryPackOnce(
 
 async function readAndValidateCountryPack(
   file: File,
+  descriptor: DownloadableMedalCountryPackDescriptor,
+  allowMemoryCache = true
+) {
+  const cacheKey = getCountryPackFileName(descriptor);
+  const cached = loadedCountryPacks.get(cacheKey);
+  if (allowMemoryCache && cached) {
+    return cached;
+  }
+  const compressed = await file.bytes();
+
+  const pack = validateCountryPackBytes(compressed, descriptor);
+  if (allowMemoryCache) cacheCountryPack(pack, descriptor);
+  return pack;
+}
+
+function cacheCountryPack(
+  pack: MedalCountryPack,
   descriptor: DownloadableMedalCountryPackDescriptor
 ) {
-  const compressed = await file.bytes();
+  for (const album of pack.albums) {
+    loadedAlbums.set(album.id, album);
+  }
+  loadedCountryPacks.set(getCountryPackFileName(descriptor), pack);
+}
+
+function validateCountryPackBytes(
+  compressed: Uint8Array,
+  descriptor: DownloadableMedalCountryPackDescriptor
+) {
+  try {
+    return decodeCountryPackBytes(compressed, descriptor);
+  } catch (error) {
+    throw new InvalidCountryPackError(
+      error instanceof Error ? error.message : "Invalid medal country pack."
+    );
+  }
+}
+
+function decodeCountryPackBytes(
+  compressed: Uint8Array,
+  descriptor: DownloadableMedalCountryPackDescriptor
+) {
 
   if (compressed.byteLength !== descriptor.compressedBytes) {
     throw new Error("Medal country pack size does not match its manifest.");
@@ -210,13 +264,7 @@ async function readAndValidateCountryPack(
   }
 
   const parsed = JSON.parse(strFromU8(uncompressed)) as unknown;
-  const pack = assertCountryPack(parsed, descriptor);
-
-  for (const album of pack.albums) {
-    loadedAlbums.set(album.id, album);
-  }
-
-  return pack;
+  return assertCountryPack(parsed, descriptor);
 }
 
 function assertCountryPack(

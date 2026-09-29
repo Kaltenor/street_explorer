@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, View } from "react-native";
 import { createAppearanceStyles } from "../constants/appearance";
 
 import { APP_COLORS } from "../constants/theme";

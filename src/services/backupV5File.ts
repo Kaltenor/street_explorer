@@ -7,7 +7,6 @@ import {
   BACKUP_V5_MAGIC,
   BACKUP_V5_RECORD_HEADER_BYTES,
   BACKUP_V5_RECORD_KIND,
-  BackupV5BlockPlan,
   BackupV5Footer,
   BackupV5Manifest,
   BackupV5Metadata,
@@ -119,7 +118,9 @@ export async function* readBackupV5Blocks(
     );
     assertBackupV5Manifest(manifestValue);
 
-    if (manifestValue.backupId !== expectedManifest.backupId) {
+    // The identifier alone cannot detect replacement of metadata under the
+    // same backup ID between inspection and this transactional restore read.
+    if (JSON.stringify(manifestValue) !== JSON.stringify(expectedManifest)) {
       throw new Error("V5 backup changed after verification.");
     }
 

@@ -5,7 +5,8 @@ import {
   getWikipediaSearchUrl,
   isAllowedWikipediaReadingUrl,
   isConfidentWikipediaTitle,
-  selectWikipediaSitelink
+  selectWikipediaSitelink,
+  resolveMedalWikipedia
 } from "../src/services/wikipedia.ts";
 
 const selectedFrench = selectWikipediaSitelink(
@@ -29,6 +30,40 @@ const fallbackEnglish = selectWikipediaSitelink(
 assert.equal(fallbackEnglish?.language, "en");
 assert.equal(fallbackEnglish?.url, "https://en.wikipedia.org/wiki/Eiffel_Tower");
 console.log("PASS missing selected-language articles fall back to the other app language");
+
+const originalFetch = globalThis.fetch;
+const resolutionInput = (id) => ({
+  cityName: { en: "Paris", fr: "Paris" },
+  language: "fr",
+  medal: {
+    name: { en: "Test monument", fr: "Monument test" },
+    externalIdentity: { source: "osm", id }
+  }
+});
+try {
+  globalThis.fetch = async (url) => {
+    if (String(url).startsWith("https://en.")) throw new Error("Offline language endpoint");
+    return { ok: true, json: async () => ({ query: { search: [{ title: "Monument test" }] } }) };
+  };
+  assert.equal((await resolveMedalWikipedia(resolutionInput("one-fails"))).kind, "article");
+  globalThis.fetch = async (url) => {
+    if (String(url).startsWith("https://fr.")) throw new Error("Offline language endpoint");
+    return { ok: true, json: async () => ({ query: { search: [{ title: "Test monument" }] } }) };
+  };
+  assert.equal((await resolveMedalWikipedia(resolutionInput("other-fails"))).language, "en");
+  console.log("PASS one failed language endpoint preserves the other successful article");
+
+  const retryInput = resolutionInput("offline-retry");
+  globalThis.fetch = async () => { throw new Error("Offline"); };
+  const first = resolveMedalWikipedia(retryInput);
+  assert.equal(resolveMedalWikipedia(retryInput), first);
+  assert.equal((await first).kind, "search");
+  globalThis.fetch = async () => ({ ok: true, json: async () => ({ query: { search: [{ title: "Monument test" }] } }) });
+  assert.equal((await resolveMedalWikipedia(retryInput)).kind, "article");
+  console.log("PASS offline search retries after reconnect while concurrent resolutions are shared");
+} finally {
+  globalThis.fetch = originalFetch;
+}
 
 assert.equal(
   getWikipediaSearchUrl("fr", "Musée des Arts et Métiers Paris"),

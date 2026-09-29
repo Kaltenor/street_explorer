@@ -200,6 +200,46 @@ assert(
   "confirmed references and inferred route geometry round-trip losslessly"
 );
 
+const coordinatePlan = { ...blockPlan, expectedPointCount: 1 };
+for (const target of ["raw", "inferred"]) {
+  for (const invalid of [
+    { latitude: 90.01 }, { latitude: -90.01 },
+    { longitude: 180.01 }, { longitude: -180.01 },
+    { timestamp: "invalid-date" }, { accuracy: -1 }
+  ]) {
+    const raw = { ...point(1, 0), ...(target === "raw" ? invalid : {}) };
+    const inferred = { ...inferredPoint, ...(target === "inferred" ? invalid : {}) };
+    const payload = createBackupV5BlockPayload(coordinatePlan, [{
+      sessionId: 1, points: [raw], routeSnapshot: {
+        ...sessionData.routeSnapshot,
+        sourcePointCount: 1,
+        segments: [{ type: "inferred", points: [inferred] }]
+      }
+    }]);
+    // Re-encode so the checksum remains valid: reject semantic corruption too.
+    const encoded = encodeBackupV5Record(BACKUP_V5_RECORD_KIND.hotBlock, payload);
+    const decoded = decodeBackupV5RecordPayload(
+      decodeBackupV5RecordHeader(encoded.bytes.slice(0, BACKUP_V5_RECORD_HEADER_BYTES)),
+      encoded.bytes.slice(BACKUP_V5_RECORD_HEADER_BYTES)
+    );
+    require("node:assert/strict").throws(
+      () => decodeBackupV5BlockPayload(decoded, coordinatePlan), /invalid.*point/
+    );
+  }
+}
+assert(true, "valid-checksum V5 blocks reject invalid raw and inferred GPS coordinates, dates and accuracy");
+const boundaryPoint = { ...point(1, 0), latitude: -90, longitude: 180, accuracy: null };
+const boundaryPayload = createBackupV5BlockPayload(coordinatePlan, [{
+  sessionId: 1, points: [boundaryPoint], routeSnapshot: {
+    ...sessionData.routeSnapshot, sourcePointCount: 1,
+    segments: [{ type: "inferred", points: [boundaryPoint] }]
+  }
+}]);
+const boundaryRestored = decodeBackupV5BlockPayload(boundaryPayload, coordinatePlan)[0];
+assert(boundaryRestored.points[0].accuracy === null &&
+  boundaryRestored.routeSnapshot.segments[0].points[0].accuracy === null,
+  "legacy unknown accuracy and valid coordinate boundaries remain importable");
+
 const duplicateV4Shape = JSON.stringify({
   points: rawPoints,
   routeSnapshots: [{ segments: [{ points: rawPoints, type: "confirmed" }] }]

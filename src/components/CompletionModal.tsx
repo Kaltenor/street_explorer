@@ -5,7 +5,6 @@ import {
   InteractionManager,
   Modal,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View
@@ -916,12 +915,6 @@ function getNearestIncompleteZone(
       return !stats || !stats.permanentlyCompleted;
     }) ?? null
   );
-}
-
-function formatZoneSource(zone: CachedZone, language: AppLanguage) {
-  const strings = getStrings(language).completionMenu;
-
-  return zone.source.includes("fallback") ? strings.approxBounds : strings.exactPolygon;
 }
 
 function getZoneNotice(zone: CachedZone, language: AppLanguage) {

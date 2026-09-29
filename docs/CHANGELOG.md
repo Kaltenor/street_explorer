@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.35.10
+
+- Recreate the directional cartographer sprite with realistic adult proportions, shared scale and fixed boot alignment.
+- Correct map-relative direction, reduced-motion/background animation and false standing-still speech; reduce idle Google marker snapshot work.
+- Bind backup block reading to the full verified manifest and preserve installed country packs after temporary read or installation errors.
+- Includes the preceding 0.35.9 maintenance corrections.
+- iOS build 240; Android version code 240.
+
+## v0.35.9
+
+
+- Reject invalid raw/inferred GPS records during V5 inspection; prevent recording/restore overlap and indefinite animation-frame waits during Stop.
+
+- Preserve GPS journals on temporary storage failures; reject invalid recording inputs and incomplete street-server responses.
+- Serialize preference saves and publish only committed settings; repair foreground GPS effect replay and stale callbacks.
+- Preserve successful Wikipedia language results and retry offline search fallbacks.
+- Reuse validated country packs; optimize enclosed-cell scanlines and flood queues; prevent large-component stack overflow and world-width date-line sampling.
+- Remove compiler-confirmed unused imports/helpers and refresh stale UI/documentation checks.
+- iOS build 239; Android version code 239. See [audit results](AUDIT_0_35_9.md) for validation and limitations.
+
 ## v0.35.8
 
 - Keep splash lettering high-contrast and identical across Explorator and Daylight; the launch artwork remains fixed dark art.

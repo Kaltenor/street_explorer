@@ -6,7 +6,6 @@ import {
   FlatList,
   Modal,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -764,18 +763,6 @@ function formatLoopSummary(summary: LoopFillSessionSummary | null) {
   }
 
   return formatLoopRejectionReason(summary.rejectionReason);
-}
-
-function formatLoopExplanation(summary: LoopFillSessionSummary | null) {
-  if (!summary) {
-    return "No enclosed cell boundary was found for this recording.";
-  }
-
-  if (summary.accepted) {
-    return `${summary.loopFilledCellCount} interior cells were added because walked cells formed a closed boundary under the current max-area limit.`;
-  }
-
-  return `${formatLoopRejectionReason(summary.rejectionReason)}. The walked cells did not produce a fillable enclosed area.`;
 }
 
 function formatLoopCount(summary: LoopFillSessionSummary | null) {

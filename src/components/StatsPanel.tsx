@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { createAppearanceStyles } from "../constants/appearance";
 
 import { ACTIVITY_MODE_TEXT, AppLanguage, getStrings, interpolate } from "../i18n";
@@ -54,14 +54,6 @@ function Stat({ label, value }: { label: string; value: string }) {
       <Text style={styles.label}>{label}</Text>
     </View>
   );
-}
-
-function formatArea(squareMeters: number) {
-  if (squareMeters < 10000) {
-    return `${Math.round(squareMeters)} m2`;
-  }
-
-  return `${(squareMeters / 10000).toFixed(2)} ha`;
 }
 
 function formatNumber(value: number) {

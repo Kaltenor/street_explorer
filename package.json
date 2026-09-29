@@ -1,6 +1,6 @@
 {
   "name": "street-explorer",
-  "version": "0.35.8",
+  "version": "0.35.10",
   "private": true,
   "main": "expo/AppEntry.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test:geometry": "node scripts/test-exploration-geometry.js && node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-countryside-exploration.mjs",
-    "test:ui": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-ui-polish.mjs",
+    "test:ui": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-ui-polish.mjs && node scripts/test-ui-lifecycle.js",
     "test:wikipedia": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-wikipedia-reader.mjs",
     "test:zones": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-boundary-recovery.mjs",
     "test:completion": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-zone-completion-lifecycle.mjs",
@@ -31,7 +31,7 @@
     "build:ios:preview": "eas build --platform ios --profile preview",
     "test:player": "node scripts/test-player-marker.js",
     "test:player-speech": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/test-player-speech.mjs",
-    "test:resilience": "node scripts/test-resilience.js",
+    "test:resilience": "node scripts/test-resilience.js && node scripts/test-recording-validation.js",
     "test:map-provider": "node scripts/test-map-provider.js"
   },
   "dependencies": {

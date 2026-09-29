@@ -191,7 +191,7 @@ async function resolveUncached(input: {
   };
 
   try {
-    const [selected, fallback] = await Promise.all([
+    const [selected, fallback] = await Promise.allSettled([
       findConfidentArticle(language, namesByLanguage[language], cityName[language]),
       findConfidentArticle(
         fallbackLanguage,
@@ -200,11 +200,11 @@ async function resolveUncached(input: {
       )
     ]);
 
-    if (selected) {
-      return selected;
+    if (selected.status === "fulfilled" && selected.value) {
+      return selected.value;
     }
-    if (fallback) {
-      return fallback;
+    if (fallback.status === "fulfilled" && fallback.value) {
+      return fallback.value;
     }
   } catch {
     // A readable Wikipedia search is the deterministic offline-resolution fallback.
@@ -222,13 +222,15 @@ export function resolveMedalWikipedia(input: {
   language: AppLanguage;
   medal: CollectedMedal;
 }) {
-  const key = [
+  const key = JSON.stringify([
     input.language,
     input.medal.externalIdentity.source,
     input.medal.externalIdentity.id,
     input.medal.name.en,
-    input.medal.name.fr
-  ].join("|");
+    input.medal.name.fr,
+    input.cityName.en,
+    input.cityName.fr
+  ]);
   const cached = resolutionCache.get(key);
 
   if (cached) {
@@ -244,5 +246,11 @@ export function resolveMedalWikipedia(input: {
     )
   }));
   resolutionCache.set(key, resolution);
+  // Share in-flight requests, but allow an offline/search fallback to retry.
+  void resolution.then((result) => {
+    if (result.kind === "search" && resolutionCache.get(key) === resolution) {
+      resolutionCache.delete(key);
+    }
+  });
   return resolution;
 }

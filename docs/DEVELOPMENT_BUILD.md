@@ -1,5 +1,13 @@
 # Development Build
 
+## Player maintenance bundle — 0.35.10
+
+Version/build metadata is 0.35.10 / 240. Reload the JavaScript bundle and new sprite assets in the compatible SDK 54 development client; standalone distribution needs a rebuilt binary. No remote build was requested.
+
+## Maintenance bundle — 0.35.9
+
+Version/build metadata is 0.35.9 / 239. These JavaScript/TypeScript maintenance changes can be loaded in the compatible SDK 54 development client; standalone distribution requires a rebuilt binary. No remote build is requested or produced by this audit. Native GPS, Files, provider rendering and lifecycle checks remain in [Testing](TESTING.md).
+
 ## Splash contrast and completion stamp lifecycle — 0.35.8
 
 Reload the 0.35.8 bundle in the SDK 54 development client to receive the theme-independent launch lettering and new-completion-only stamps. Standalone installs need a rebuilt app. Version/build metadata is 0.35.8 / 238; no remote build was run for this change.

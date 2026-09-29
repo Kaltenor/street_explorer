@@ -137,7 +137,13 @@ async function fetchOverpassEndpoint(query: string, endpoint: string) {
       if (!response.ok) {
         throw new OverpassRequestError(`HTTP ${response.status}`, isRetryableOverpassStatus(response.status));
       }
-      return (await response.json()) as OverpassResponse;
+      const data = await response.json();
+      // Overpass reports runtime limits in a successful HTTP response too.
+      // Never cache that partial result as a complete street download.
+      if (!Array.isArray(data?.elements) || data.remark) {
+        throw new OverpassRequestError("Overpass returned incomplete data", true);
+      }
+      return data as OverpassResponse;
     }, OVERPASS_TIMEOUT_MS);
   } catch (error) {
     if (error instanceof OverpassRequestError) throw error;

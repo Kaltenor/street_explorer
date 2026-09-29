@@ -246,6 +246,18 @@ export function evaluateGpsPoint(
   rawPoint: GpsPoint
 ): PointEvaluation {
   const modeConfig = MODE_LOCATION_CONFIG[activityMode];
+  const rawTimestamp = new Date(rawPoint.timestamp).getTime();
+
+  if (!Number.isFinite(rawTimestamp)) {
+    return { accepted: false, countAsRejected: true, reason: "GPS point ignored: invalid timestamp" };
+  }
+
+  if (
+    !Number.isFinite(rawPoint.latitude) || Math.abs(rawPoint.latitude) > 90 ||
+    !Number.isFinite(rawPoint.longitude) || Math.abs(rawPoint.longitude) > 180
+  ) {
+    return { accepted: false, countAsRejected: true, reason: "GPS point ignored: invalid coordinates" };
+  }
 
   if (!hasUsableAccuracy(rawPoint, modeConfig.maxAcceptedAccuracyMeters)) {
     return {
@@ -265,7 +277,6 @@ export function evaluateGpsPoint(
   }
 
   const distanceFromPrevious = haversineDistanceMeters(previousPoint, rawPoint);
-  const rawTimestamp = new Date(rawPoint.timestamp).getTime();
   const previousTimestamp = new Date(previousPoint.timestamp).getTime();
 
   if (!Number.isFinite(rawTimestamp) || !Number.isFinite(previousTimestamp)) {
@@ -329,7 +340,8 @@ function hasUsableAccuracy(
     return true;
   }
 
-  return point.accuracy <= maxAcceptedAccuracyMeters;
+  return Number.isFinite(point.accuracy) &&
+    point.accuracy >= 0 && point.accuracy <= maxAcceptedAccuracyMeters;
 }
 
 function formatSpeed(metersPerSecond: number) {

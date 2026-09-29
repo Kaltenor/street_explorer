@@ -11,6 +11,8 @@ require.extensions[".ts"] = (module, filename) => module._compile(
 );
 
 async function main() {
+  await require("./test-background-outbox.js")();
+  await require("./test-country-pack-cache.js")();
   const { publishLatestSnapshot } = require("../src/services/latestSnapshot.ts");
   const snapshotGeneration = { current: 0 };
   const pendingSnapshots = [];
@@ -129,6 +131,17 @@ async function main() {
     global.fetch = async () => { attempts++; return { ok: false, status: 400 }; };
     await assert.rejects(fetchOverpassQuery("fixture"), /HTTP 400/);
     assert.equal(attempts, 1);
+    for (const incomplete of [{ elements: [], remark: "runtime error: timeout" }, {}, null]) {
+      attempts = 0;
+      global.fetch = async () => { attempts++; return { ok: true, json: async () => incomplete }; };
+      await assert.rejects(fetchOverpassQuery("fixture"), /incomplete data/);
+      assert.equal(attempts, 2, "incomplete HTTP 200 results must retry instead of populating the street cache");
+    }
+    attempts = 0;
+    global.fetch = async () => ({ ok: true, json: async () => ++attempts === 1
+      ? { elements: [{ id: 1 }], remark: "runtime error" } : { elements: [] } });
+    assert.deepEqual(await fetchOverpassQuery("fixture"), { elements: [] });
+    assert.equal(attempts, 2, "a complete empty fallback is valid");
   } finally { global.fetch = nativeFetch; global.setTimeout = nativeTimer; }
   console.log("PASS request deadlines cover stalled bodies, cancellation, fallback, and permanent errors");
 
@@ -316,7 +329,7 @@ async function main() {
     assert.equal((await takeSnapshot()).metadata.sessions.length, 0);
     console.log("PASS actual legacy restore/export preserves walks, GPS, medals, achievements and Forbidden Zones; interruption rolls back and delete-all works without retired tables");
 
-    const { inspectBackupV5File } = require("../src/services/backupV5File.ts");
+    const { inspectBackupV5File, readBackupV5Blocks } = require("../src/services/backupV5File.ts");
     const sessions = Array.from({ length: 3 }, (_, index) => ({ id: index + 1, activityMode: "walk",
       displayName: null, startedAt: `2026-01-0${index + 1}T08:00:00.000Z`,
       endedAt: `2026-01-0${index + 1}T09:00:00.000Z`, distanceMeters: 0,
@@ -339,6 +352,13 @@ async function main() {
     setTimeout(() => { heartbeat = true; }, 0);
     await inspectBackupV5File(file);
     assert(heartbeat);
+    let restoredBlocks = 0;
+    for await (const _block of readBackupV5Blocks(file, manifest)) restoredBlocks++;
+    assert.equal(restoredBlocks, manifest.blocks.length);
+    const previouslyInspected = JSON.parse(JSON.stringify(manifest));
+    previouslyInspected.sessions[0].displayName = "Previous metadata under the same backup ID";
+    await assert.rejects(readBackupV5Blocks(file, previouslyInspected).next(), /changed after verification/);
+    console.log("PASS restore rechecks the complete inspected manifest before yielding any GPS block");
     bytes[bytes.length - 1] ^= 1;
     await assert.rejects(inspectBackupV5File(file));
     console.log("PASS archive inspection yields while retaining complete footer/corruption validation");

@@ -21,7 +21,6 @@ import {
   ImageBackground,
   PanResponder,
   Platform,
-  StyleSheet,
   Text,
   type TextStyle,
   TouchableOpacity,
@@ -257,7 +256,7 @@ export function AtlasNavigationDock({
       <View pointerEvents="none" style={styles.navigationDockFrame}>
         <AtlasHudTexture opacity={0.07} />
       </View>
-      {ATLAS_DOCK_ITEMS.map((item, index) => {
+      {ATLAS_DOCK_ITEMS.map((item) => {
         const expanded = expandedPage === item.id;
         const active = activePage === item.id || (item.id === "medals" && medalPulse);
         const highlighted = active || expanded;

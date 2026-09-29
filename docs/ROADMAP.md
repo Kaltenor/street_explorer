@@ -1,5 +1,13 @@
 # Roadmap
 
+## Player visual maintenance — 0.35.10
+
+The cartographer now has more natural adult proportions and a newly generated transparent directional sprite sheet. Runtime frames retain the 64 x 64 canvas, four directions, three walking poses and stale-GPS variants. Extraction uses one shared scale and a fixed boot baseline to avoid pose-dependent resizing and vertical jitter. Physical Apple/Google rendering, rotation, background transitions and reduced-motion behavior require the device protocol in Testing.
+
+## Maintenance audit — 0.35.9
+
+Implemented GPS journal retry preservation, input validation, partial Overpass rejection, saved-preference consistency, Wikipedia retry recovery, validated country-pack reuse, and bounded large-component geometry. Native frame-time/memory profiling, locked-screen recording, storage-pressure recovery and restore interruption still require physical devices. Cross-date-line enclosure topology remains outside this maintenance change. See [audit results](AUDIT_0_35_9.md).
+
 ## Splash contrast and completion stamp lifecycle — 0.35.8
 
 The in-app splash keeps its original readable lettering in both appearance modes. Objective-completion stamps now follow the first permanent completion earned by a finalized walk; cached achievements remain visible in the HUD without replaying their celebration on launch or zone revisit.

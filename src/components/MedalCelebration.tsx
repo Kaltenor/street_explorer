@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { createAppearanceStyles } from "../constants/appearance";
-import { APP_COLORS } from "../constants/theme";
 import {
   AccessibilityInfo,
   Animated,
   Easing,
   Modal,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View

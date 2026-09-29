@@ -1,7 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAppearanceStyles } from "../constants/appearance";
 import { APP_COLORS } from "../constants/theme";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { formatDistance } from "../services/distance";

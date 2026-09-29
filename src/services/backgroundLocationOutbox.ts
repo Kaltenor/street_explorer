@@ -185,8 +185,11 @@ async function drainBackgroundLocationOutboxFiles() {
   const batches: ParsedBackgroundLocationBatch[] = [];
 
   for (const file of files) {
+    // A transient read failure is not evidence of corrupt GPS data. Leave the
+    // journal in place and retry on the next drain.
+    const contents = await file.text();
     try {
-      batches.push(parseBackgroundLocationBatch(await file.text()));
+      batches.push(parseBackgroundLocationBatch(contents));
       validFiles.push(file);
     } catch (error) {
       console.error("Quarantining an invalid background GPS outbox batch", error);
@@ -234,13 +237,18 @@ async function recoverTemporaryBackgroundLocationBatches() {
     .map((entry) => new File(entry.uri));
 
   for (const file of temporaryFiles) {
+    const contents = await file.text();
+    let batch: ParsedBackgroundLocationBatch;
     try {
-      const batch = parseBackgroundLocationBatch(await file.text());
-      file.rename(`${batch.id}.json`);
+      batch = parseBackgroundLocationBatch(contents);
     } catch (error) {
       console.error("Quarantining an incomplete background GPS journal", error);
       quarantineInvalidBatch(file);
+      continue;
     }
+    // Rename failures (for example temporary storage unavailability) must keep
+    // a valid journal recoverable, rather than permanently quarantine it.
+    file.rename(`${batch.id}.json`);
   }
 }
 

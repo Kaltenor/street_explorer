@@ -7,6 +7,7 @@ export const EXPLORATION_CELL_SIZE_METERS = 15;
 export type ExplorationCellSource = "gps" | "inferred" | "loop_fill";
 
 const EARTH_RADIUS_METERS = 6378137;
+const MERCATOR_WORLD_WIDTH_METERS = 2 * Math.PI * EARTH_RADIUS_METERS;
 const SAMPLE_SPACING_METERS = EXPLORATION_CELL_SIZE_METERS / 4;
 const CELL_CAPTURE_RADIUS_METERS = EXPLORATION_CELL_SIZE_METERS / Math.SQRT2;
 
@@ -324,30 +325,40 @@ function collectUnoccupiedCellsInsideGridContour(
   occupiedCellIds: Set<string>,
   maxCellCount?: number
 ) {
-  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-  for (const point of contour.path) {
-    minX = Math.min(minX, point.x); maxX = Math.max(maxX, point.x);
-    minY = Math.min(minY, point.y); maxY = Math.max(maxY, point.y);
+  // Scan at cell centres. Only horizontal grid edges cross these vertical
+  // scanlines; pairing their intersections preserves the even/odd fill rule.
+  // This avoids testing every candidate cell against the entire contour.
+  const crossingsByColumn = new Map<number, number[]>();
+  for (let index = 0; index < contour.path.length; index += 1) {
+    const from = contour.path[index];
+    const to = contour.path[(index + 1) % contour.path.length];
+    if (!from || !to || from.x === to.x) continue;
+    for (let x = Math.min(from.x, to.x); x < Math.max(from.x, to.x); x += 1) {
+      const crossings = crossingsByColumn.get(x) ?? [];
+      crossings.push(from.y);
+      crossingsByColumn.set(x, crossings);
+    }
   }
-  minX = Math.floor(minX); maxX = Math.ceil(maxX);
-  minY = Math.floor(minY); maxY = Math.ceil(maxY);
   const enclosedCellIds: string[] = [];
 
-  for (let x = minX; x < maxX; x += 1) {
-    for (let y = minY; y < maxY; y += 1) {
-      const cellId = cellKeyToString({ x, y });
+  for (const x of [...crossingsByColumn.keys()].sort((left, right) => left - right)) {
+    const crossings = crossingsByColumn.get(x)!;
+    crossings.sort((left, right) => left - right);
+    for (let index = 0; index + 1 < crossings.length; index += 2) {
+      const minY = crossings[index]!;
+      const maxY = crossings[index + 1]!;
+      for (let y = minY; y < maxY; y += 1) {
+        const cellId = cellKeyToString({ x, y });
 
-      if (
-        !occupiedCellIds.has(cellId) &&
-        isPointInsideGridPath({ x: x + 0.5, y: y + 0.5 }, contour.path)
-      ) {
-        enclosedCellIds.push(cellId);
+        if (!occupiedCellIds.has(cellId)) {
+          enclosedCellIds.push(cellId);
 
-        if (
-          maxCellCount !== undefined &&
-          enclosedCellIds.length > maxCellCount
-        ) {
-          return enclosedCellIds;
+          if (
+            maxCellCount !== undefined &&
+            enclosedCellIds.length > maxCellCount
+          ) {
+            return enclosedCellIds;
+          }
         }
       }
     }
@@ -542,8 +553,15 @@ function markPathCells(keys: Set<string>, points: GpsPoint[], activityMode: Acti
 function markSegmentCells(keys: Set<string>, from: GpsPoint, to: GpsPoint) {
   const fromPoint = coordinateToMercator(from);
   const toPoint = coordinateToMercator(to);
+  if (![fromPoint.x, fromPoint.y, toPoint.x, toPoint.y].every(Number.isFinite)) {
+    return;
+  }
+  let deltaX = toPoint.x - fromPoint.x;
+  // Crossing the date line is a short local path, not a sweep of the world.
+  if (deltaX > MERCATOR_WORLD_WIDTH_METERS / 2) deltaX -= MERCATOR_WORLD_WIDTH_METERS;
+  else if (deltaX < -MERCATOR_WORLD_WIDTH_METERS / 2) deltaX += MERCATOR_WORLD_WIDTH_METERS;
   const delta = {
-    x: toPoint.x - fromPoint.x,
+    x: deltaX,
     y: toPoint.y - fromPoint.y
   };
   const distance = Math.hypot(delta.x, delta.y);
@@ -555,6 +573,8 @@ function markSegmentCells(keys: Set<string>, from: GpsPoint, to: GpsPoint) {
       x: fromPoint.x + delta.x * progress,
       y: fromPoint.y + delta.y * progress
     };
+    if (sample.x > MERCATOR_WORLD_WIDTH_METERS / 2) sample.x -= MERCATOR_WORLD_WIDTH_METERS;
+    else if (sample.x < -MERCATOR_WORLD_WIDTH_METERS / 2) sample.x += MERCATOR_WORLD_WIDTH_METERS;
 
     markNearbyCells(keys, sample);
   }

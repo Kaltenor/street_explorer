@@ -676,9 +676,12 @@ function expandRawPoint(value: unknown, sessionId: number): GpsPoint {
     value.length !== 6 ||
     !Number.isInteger(value[0]) ||
     !isFiniteNumber(value[1]) ||
+    value[1] < -90 || value[1] > 90 ||
     !isFiniteNumber(value[2]) ||
+    value[2] < -180 || value[2] > 180 ||
     typeof value[3] !== "string" ||
-    (value[4] !== null && !isFiniteNumber(value[4])) ||
+    !Number.isFinite(new Date(value[3]).getTime()) ||
+    (value[4] !== null && (!isFiniteNumber(value[4]) || value[4] < 0)) ||
     !Number.isInteger(value[5])
   ) {
     throw new Error(`V5 backup session ${sessionId} contains an invalid GPS point.`);
@@ -784,9 +787,12 @@ function expandRoutePoint(value: unknown): GpsPoint {
     !Array.isArray(value) ||
     value.length !== 9 ||
     !isFiniteNumber(value[0]) ||
+    value[0] < -90 || value[0] > 90 ||
     !isFiniteNumber(value[1]) ||
+    value[1] < -180 || value[1] > 180 ||
     typeof value[2] !== "string" ||
-    (value[3] !== null && !isFiniteNumber(value[3])) ||
+    !Number.isFinite(new Date(value[2]).getTime()) ||
+    (value[3] !== null && (!isFiniteNumber(value[3]) || value[3] < 0)) ||
     !Number.isInteger(value[4]) ||
     (value[5] !== null && !Number.isInteger(value[5])) ||
     (value[6] !== null && !Number.isInteger(value[6])) ||

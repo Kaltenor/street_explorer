@@ -138,7 +138,11 @@ export function useReliableForegroundLocation({
   );
 
   useEffect(() => {
+    // React may replay effects without rendering again (Strict Mode). Restore
+    // the flag cleared by lifecycle cleanup before starting another lookup.
+    enabledRef.current = enabled;
     lifecycleGenerationRef.current += 1;
+    const generation = lifecycleGenerationRef.current;
 
     if (!enabled) {
       setLocationResolution({ enabled: false, resolved: true });
@@ -147,6 +151,9 @@ export function useReliableForegroundLocation({
 
     setLocationResolution({ enabled: true, resolved: false });
     refreshCurrentLocation({ allowLastKnown: true }).catch((error) => {
+      if (!enabledRef.current || generation !== lifecycleGenerationRef.current) {
+        return;
+      }
       console.warn("Initial foreground location lookup failed", error);
       setLocationResolution({ enabled: true, resolved: true });
     });

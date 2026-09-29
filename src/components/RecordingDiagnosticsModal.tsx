@@ -1,7 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAppearanceStyles } from "../constants/appearance";
 import { APP_COLORS } from "../constants/theme";
-import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Modal, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import { BackgroundTrackingStatus } from "./RecordingHealthPanel";
 import { RecordingDiagnosticsPanel } from "./RecordingDiagnosticsPanel";

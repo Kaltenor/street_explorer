@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAppearanceStyles } from "../constants/appearance";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 import { AppLanguage } from "../i18n";
 import { APP_COLORS } from "../constants/theme";

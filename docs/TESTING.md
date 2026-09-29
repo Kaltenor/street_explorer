@@ -1,5 +1,32 @@
 # Testing
 
+## Player presentation — 0.35.10
+
+Prerequisites: SDK 54 client with the 0.35.10 bundle/assets (standalone build 240), precise GPS outdoors, Apple Maps and Google Maps where available, and sound enabled for speech checks.
+
+1. Launch, walk in each cardinal direction, stop and restart. Expected: realistic character, distinct leg poses, stable boot alignment and one marker without disappearing frames.
+2. Rotate the map 90 and 180 degrees, then walk straight. Expected: character faces travel relative to the rotated screen after camera movement completes; GPS position stays anchored.
+3. Keep walking steadily for over 45 seconds. Expected: no stationary complaint caused solely by unchanged speed. Stop long enough; expected: stationary speech can occur.
+4. Enable Reduce Motion, then background/reopen during movement. Expected: decorative walk animation respects the setting; background animation work pauses and fresh/stale appearance is correct after return.
+5. Repeat idle/walk/stale transitions on Google Maps and switch appearance/provider. Expected: the character remains visible after tracking freezes, redraws when needed and retains its position.
+6. Reopen after changing preferences and save a short walk. Expected: settings, route and progress persist.
+
+Physical rendering and sensor timing are not established by desktop checks.
+
+## Maintenance audit — 0.35.9
+
+Prerequisites: compatible SDK 54 client with the 0.35.9 bundle (standalone build 239), precise foreground/background location permission, cached city data, and a disposable profile plus verified V5 backup for restore/error tests. Use both available map providers.
+
+1. Cold-launch, change language/appearance/sound/haptics, then reopen. Expected: each successfully saved setting persists; a deliberately injected storage error keeps the prior value and shows an error.
+2. Record outdoors, lock/unlock, then Stop and immediately background/reopen. Expected: one finalized recording, preserved route and no indefinitely pending Stop.
+3. With a large history, explore new cells and close a normal loop. Expected: correct filled area and stable score after reopening; large surfaces do not crash. Capture native frame times separately from desktop benchmarks.
+4. Open a collected medal article offline, restore connectivity, then reopen it. Expected: resolution retries; one failed language service does not discard an article found in the other language.
+5. Revisit a downloaded country album offline. Expected: medals remain available without another download. Repeat city changes and ensure awards remain correct.
+6. On the disposable profile, export/verify/restore V5 and reopen offline. Expected: original counts and routes round-trip; damaged GPS records are rejected before replacement. Attempt Start/Resume while a data operation is busy; expected: no overlapping recording.
+7. Use a mocked/injected storage failure for journal read/promotion, then remove it and retry. Expected: pending GPS points remain recoverable; malformed journal data alone is quarantined. Do not corrupt the only real history.
+
+Desktop regression tests do not prove physical GPS delivery, native rendering, background scheduling or Files behavior. See [audit results](AUDIT_0_35_9.md) for actual automated results.
+
 ## Splash contrast and completion stamp lifecycle — 0.35.8
 
 Prerequisites: reload the 0.35.8 bundle in an SDK 54 development client (standalone installs need build 238), and have one previously completed objective plus a test district close to completion. Keep sound and haptics enabled for the celebration checks.

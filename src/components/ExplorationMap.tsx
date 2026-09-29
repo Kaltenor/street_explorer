@@ -27,7 +27,7 @@ import MapView, {
   PROVIDER_GOOGLE,
   Region
 } from "react-native-maps";
-import { Image, Platform, StyleSheet, Text, View, type LayoutChangeEvent } from "react-native";
+import { AppState, Image, Platform, StyleSheet, Text, View, type LayoutChangeEvent } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import {
@@ -210,8 +210,20 @@ export const ExplorationMap = memo(function ExplorationMap({
 }: ExplorationMapProps) {
   usePerformanceRenderCounter("ExplorationMap");
   const reducedMotion = useReducedMotionPreference();
+  const [isAppActive, setIsAppActive] = useState(AppState.currentState === "active");
+  const [cameraHeading, setCameraHeading] = useState(0);
+  const cameraRequestRef = useRef(0);
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", state => setIsAppActive(state === "active"));
+    return () => subscription.remove();
+  }, []);
   const usesAppleMaps = Platform.OS === "ios" && mapProvider === "apple";
   const nativeMapKey = `native-map-${mapProvider}-${appearanceMode}-city-${cityZone?.id ?? "none"}`;
+  useEffect(() => {
+    cameraRequestRef.current += 1;
+    setCameraHeading(0);
+    return () => { cameraRequestRef.current += 1; };
+  }, [nativeMapKey]);
   const [highlightedRouteDrawProgress, setHighlightedRouteDrawProgress] = useState(1);
   const [isInkRevealing, setIsInkRevealing] = useState(false);
   const previousExplorationCellCountRef = useRef<number | null>(null);
@@ -623,6 +635,13 @@ export const ExplorationMap = memo(function ExplorationMap({
   }, [focusedMedal, isNativeMapReady, medalFocusRequestId]);
 
   const handleRegionChangeComplete = useCallback((nextRegion: Region) => {
+    const requestId = ++cameraRequestRef.current;
+    const map = mapRef.current;
+    void map?.getCamera().then(camera => {
+      if (requestId === cameraRequestRef.current && map === mapRef.current && Number.isFinite(camera.heading)) {
+        setCameraHeading(camera.heading);
+      }
+    }).catch(() => { /* A remounted native map may no longer answer. */ });
     const pending = pendingStartupRegionRef.current;
     if (pending && (
       Math.abs(nextRegion.latitude - pending.latitude) > pending.latitudeDelta * 0.01 ||
@@ -817,13 +836,18 @@ export const ExplorationMap = memo(function ExplorationMap({
 
         {playerVisible && playerLocation ? (
           <PlayerLocationMarker
+            cameraHeading={cameraHeading}
+            isAppActive={isAppActive}
             language={language}
             location={playerLocation}
+            reducedMotion={reducedMotion}
+            usesGoogleMaps={mapProvider === "google"}
           />
         ) : null}
 
         {playerVisible && playerLocation ? (
           <PlayerSpeechMarker
+            isAppActive={isAppActive}
             usesAppleMaps={usesAppleMaps}
             gpsAccuracyMeters={gpsAccuracyMeters}
             gpsStatus={gpsStatus}
@@ -1329,20 +1353,31 @@ const PLAYER_SPEECH_PRIORITIES: Record<PlayerSpeechBehavior, number> = {
 };
 
 const PlayerLocationMarker = memo(function PlayerLocationMarker({
+  cameraHeading,
+  isAppActive,
   language,
-  location
+  location,
+  reducedMotion,
+  usesGoogleMaps
 }: {
+  cameraHeading: number;
+  isAppActive: boolean;
   language: AppLanguage;
   location: GpsPoint;
+  reducedMotion: boolean;
+  usesGoogleMaps: boolean;
 }) {
   const movementAnchorRef = useRef(location);
   const [movement, setMovement] = useState<RecentMovement | null>(null);
   const [isGpsFresh, setIsGpsFresh] = useState(() =>
     isPlayerMotionPointFresh(location)
   );
-  const [direction, setDirection] = useState<PlayerDirection>(() =>
-    getPlayerDirection(getPlayerHeading(location, movement))
-  );
+  const lastHeadingRef = useRef<number | null>(null);
+  const markerRef = useRef<ComponentRef<typeof Marker>>(null);
+  const loadedSpritesRef = useRef(new Set<number>());
+  const [loadedSpriteCount, setLoadedSpriteCount] = useState(0);
+  const [hasLayout, setHasLayout] = useState(false);
+  const [tracksSnapshot, setTracksSnapshot] = useState(true);
   const [walkFrameIndex, setWalkFrameIndex] = useState(0);
   const liveSpeed =
     typeof location.speedMetersPerSecond === "number" &&
@@ -1360,9 +1395,12 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     Math.max(liveSpeed, movement?.speedMetersPerSecond ?? 0) >=
       PLAYER_MOVING_SPEED_METERS_PER_SECOND;
   const heading = getPlayerHeading(location, movement);
+  if (heading !== null) lastHeadingRef.current = heading;
+  const direction = getPlayerDirection(lastHeadingRef.current, cameraHeading);
+  const shouldAnimate = isMoving && isAppActive && !reducedMotion;
   const targetSpriteSource = !isGpsFresh
     ? PLAYER_SPRITES[direction].stale
-    : isMoving
+    : shouldAnimate
     ? PLAYER_SPRITES[direction].walk[walkFrameIndex] ?? PLAYER_SPRITES[direction].idle
     : PLAYER_SPRITES[direction].idle;
   const [visibleSpriteSources, setVisibleSpriteSources] = useState<readonly number[]>(
@@ -1406,16 +1444,10 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     );
 
     return () => clearTimeout(freshnessTimer);
-  }, [location]);
+  }, [isAppActive, location]);
 
   useEffect(() => {
-    if (heading !== null) {
-      setDirection(getPlayerDirection(heading));
-    }
-  }, [heading]);
-
-  useEffect(() => {
-    if (!isMoving) {
+    if (!shouldAnimate) {
       setWalkFrameIndex(0);
       return;
     }
@@ -1425,7 +1457,7 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     }, PLAYER_WALK_FRAME_INTERVAL_MS);
 
     return () => clearInterval(frameTimer);
-  }, [isMoving]);
+  }, [shouldAnimate]);
 
   useEffect(() => {
     setVisibleSpriteSources((sources) =>
@@ -1441,6 +1473,18 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
     return () => clearTimeout(handoffTimer);
   }, [targetSpriteSource]);
 
+  useEffect(() => {
+    setTracksSnapshot(true);
+    if (!usesGoogleMaps || !isAppActive || shouldAnimate || !hasLayout || loadedSpriteCount < PLAYER_SPRITE_LAYERS.length) return;
+    // Keep snapshots alive through image decoding and the frame handoff; idle
+    // Google markers then stop repeatedly rasterizing the same 20 image layers.
+    const timer = setTimeout(() => {
+      markerRef.current?.redraw();
+      setTracksSnapshot(false);
+    }, PLAYER_SPRITE_HANDOFF_MS + 150);
+    return () => clearTimeout(timer);
+  }, [hasLayout, isAppActive, loadedSpriteCount, shouldAnimate, targetSpriteSource, usesGoogleMaps]);
+
   const accessibilityLabel = isGpsFresh
     ? language === "fr" ? "Position actuelle du joueur" : "Current player location"
     : language === "fr"
@@ -1449,14 +1493,15 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
 
   return (
     <Marker
+      ref={markerRef}
       accessibilityLabel={accessibilityLabel}
       anchor={{ x: 0.5, y: 0.5 }}
       coordinate={pointToCoordinate(location)}
       identifier="street-explorer-player"
-      tracksViewChanges
+      tracksViewChanges={isAppActive && (!usesGoogleMaps || shouldAnimate || tracksSnapshot)}
       zIndex={1000}
     >
-      <View collapsable={false} pointerEvents="none" style={styles.playerMarker}>
+      <View collapsable={false} onLayout={() => setHasLayout(true)} pointerEvents="none" style={styles.playerMarker}>
         <View
           style={[
             styles.playerCompassHalo,
@@ -1470,6 +1515,11 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
             key={frame.key}
             resizeMode="contain"
             source={frame.source}
+            onLoadEnd={() => {
+              if (loadedSpritesRef.current.has(frame.source)) return;
+              loadedSpritesRef.current.add(frame.source);
+              setLoadedSpriteCount(loadedSpritesRef.current.size);
+            }}
             style={[
               styles.playerSpriteImage,
               { opacity: visibleSpriteSources.includes(frame.source) ? 1 : 0 }
@@ -1482,6 +1532,7 @@ const PlayerLocationMarker = memo(function PlayerLocationMarker({
 });
 
 const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
+  isAppActive,
   usesAppleMaps,
   gpsAccuracyMeters,
   gpsStatus,
@@ -1493,6 +1544,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
   recordingSpeedMetersPerSecond,
   reducedMotion
 }: {
+  isAppActive: boolean;
   usesAppleMaps: boolean;
   gpsAccuracyMeters: number | null;
   gpsStatus: string | null;
@@ -1521,11 +1573,14 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
   const lastMovementAtRef = useRef(Date.now());
   const hasStandingSpeechRef = useRef(false);
   const hasPoorGpsSpeechRef = useRef(false);
+  const latestMotionRef = useRef({ location, speed: recordingSpeedMetersPerSecond });
+  latestMotionRef.current = { location, speed: recordingSpeedMetersPerSecond };
 
   const enqueueSpeech = useCallback((
     behavior: PlayerSpeechBehavior,
     options: { distanceMeters?: number } = {}
   ) => {
+    if (!isAppActive) return;
     const request: PlayerSpeechRequest = {
       behavior,
       id: nextSpeechIdRef.current,
@@ -1553,10 +1608,19 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
     ) {
       pendingSpeechRef.current = request;
     }
-  }, [language]);
+  }, [isAppActive, language]);
 
   useEffect(() => {
+    if (!isAppActive) {
+      activeSpeechRef.current = null;
+      pendingSpeechRef.current = null;
+      setActiveSpeech(null);
+      setTypedSpeech("");
+      setIsSpeechVisible(false);
+      return;
+    }
     if (!activeSpeech) {
+      setIsSpeechVisible(false);
       return;
     }
 
@@ -1608,7 +1672,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
       if (completionTimer) clearTimeout(completionTimer);
       if (advanceTimer) clearTimeout(advanceTimer);
     };
-  }, [activeSpeech?.id, reducedMotion]);
+  }, [activeSpeech?.id, isAppActive, reducedMotion]);
 
   useEffect(() => {
     const wasRecording = previousRecordingRef.current;
@@ -1734,11 +1798,18 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
   }, [isRecording, recordingSpeedMetersPerSecond]);
 
   useEffect(() => {
-    if (!isRecording) {
+    if (!isRecording || !isAppActive) {
       return;
     }
 
     const standingTimer = setInterval(() => {
+      const motion = latestMotionRef.current;
+      if (!isPlayerMotionPointFresh(motion.location)) return;
+      if (motion.speed >= PLAYER_MOVING_SPEED_METERS_PER_SECOND) {
+        lastMovementAtRef.current = Date.now();
+        hasStandingSpeechRef.current = false;
+        return;
+      }
       if (
         !hasStandingSpeechRef.current &&
         Date.now() - lastMovementAtRef.current >=
@@ -1750,7 +1821,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
     }, 1_000);
 
     return () => clearInterval(standingTimer);
-  }, [enqueueSpeech, isRecording]);
+  }, [enqueueSpeech, isAppActive, isRecording]);
 
   useEffect(() => {
     const hasPoorGps = isRecording && (
@@ -1768,7 +1839,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
   }, [enqueueSpeech, gpsAccuracyMeters, gpsStatus, isRecording]);
 
   useEffect(() => {
-    if (!isRecording) {
+    if (!isRecording || !isAppActive) {
       return;
     }
 
@@ -1787,7 +1858,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
     return () => {
       if (cheerTimer) clearTimeout(cheerTimer);
     };
-  }, [enqueueSpeech, isRecording]);
+  }, [enqueueSpeech, isAppActive, isRecording]);
 
   return (
     <Marker
@@ -1800,7 +1871,7 @@ const PlayerSpeechMarker = memo(function PlayerSpeechMarker({
       coordinate={pointToCoordinate(location)}
       identifier="street-explorer-player-speech"
       tappable={false}
-      tracksViewChanges
+      tracksViewChanges={isAppActive}
       zIndex={1001}
     >
       <View
@@ -1853,12 +1924,12 @@ function getMovementBetween(
   };
 }
 
-function getPlayerDirection(heading: number | null): PlayerDirection {
+function getPlayerDirection(heading: number | null, cameraHeading = 0): PlayerDirection {
   if (heading === null) {
     return "south";
   }
 
-  const normalizedHeading = normalizeHeading(heading);
+  const normalizedHeading = normalizeHeading(heading - cameraHeading);
 
   if (normalizedHeading >= 45 && normalizedHeading < 135) {
     return "east";

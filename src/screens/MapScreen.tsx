@@ -25,7 +25,6 @@ import {
   Modal,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   type DimensionValue,
@@ -60,13 +59,9 @@ import {
   MedalFlightTarget
 } from "../components/MedalCelebration";
 import { MedalCollectionModal } from "../components/MedalCollectionModal";
-import { MapLegend } from "../components/MapLegend";
-import { ModeProfilePanel } from "../components/ModeProfilePanel";
 import {
-  BackgroundTrackingStatus,
-  RecordingHealthPanel
+  BackgroundTrackingStatus
 } from "../components/RecordingHealthPanel";
-import { RecordingDiagnosticsPanel } from "../components/RecordingDiagnosticsPanel";
 import { RecordingDiagnosticsModal } from "../components/RecordingDiagnosticsModal";
 import {
   RecoverableRecording,
@@ -144,7 +139,6 @@ import {
 } from "../services/feedbackPreferences";
 import {
   collectExploredCellIdsByRouteSegments,
-  collectFillableEnclosedExplorationCellIds,
   coordinateToExplorationCellKey
 } from "../services/explorationArea";
 import {
@@ -3702,6 +3696,7 @@ export function MapScreen({
 
   const handleStartWalk = useCallback(async () => {
     if (
+      dataOperationRef.current !== null ||
       isChangingMapProviderRef.current ||
       activeWalk ||
       recoverableRecording ||
@@ -4125,13 +4120,17 @@ export function MapScreen({
     invalidateRecordingLifecycle();
     stopStepWatch();
 
-    const backgroundStopPromise = stopBackgroundLocationTracking();
+    // Observe rejection immediately, including while the UI yields its frame.
+    const backgroundStopPromise = Promise.allSettled([stopBackgroundLocationTracking()]);
 
     try {
       await waitForMapRenderCommit();
 
       try {
-        await backgroundStopPromise;
+        const [backgroundStop] = await backgroundStopPromise;
+        if (backgroundStop.status === "rejected") {
+          throw backgroundStop.reason;
+        }
         endedAt = new Date().toISOString();
       } catch (error) {
         console.warn("Background tracking did not stop; restoring recording", error);
@@ -4663,6 +4662,7 @@ export function MapScreen({
 
   const handleResumeRecoveredRecording = useCallback(async () => {
     if (
+      dataOperationRef.current !== null ||
       isChangingMapProviderRef.current ||
       !recoverableRecording ||
       isStartingRecordingRef.current ||
@@ -5163,7 +5163,14 @@ export function MapScreen({
   const beginDataOperation = useCallback(async (
     operation: Exclude<DataOperation, null>
   ) => {
-    if (dataOperationRef.current !== null) {
+    if (
+      dataOperationRef.current !== null ||
+      ((operation === "restore" || operation === "restorePreview") && (
+        activeWalkRef.current !== null ||
+        isStartingRecordingRef.current ||
+        isStoppingRecordingRef.current
+      ))
+    ) {
       return false;
     }
 
@@ -5679,22 +5686,12 @@ export function MapScreen({
         visible={optionsVisible}
       /> : null}
       {dashboardExpanded ? <DetailsModal
-        activeWalk={activeWalk}
         activityMode={activityMode}
-        backgroundMessage={backgroundTrackingMessage}
-        backgroundStatus={backgroundTrackingStatus}
-        currentLocation={currentLocation}
         language={language}
-        layers={layers}
-        mode={pathDisplayMode}
-        onChangeMode={setPathDisplayMode}
         onClose={handleReturnToMapFromAtlas}
         onOpenHistory={() => navigateAtlasPage("history")}
-        onReprocessRecordings={handleReprocessRecordings}
         objectiveStats={objectiveStats}
         explorerScore={explorerScore}
-        recordingQuality={recordingQuality}
-        selectedSessionId={selectedSessionId}
         stats={displayStats}
         visible={dashboardExpanded}
         history={history}
@@ -6570,21 +6567,6 @@ function getObjectiveProgressDelta(
   };
 }
 
-function formatObjectiveDelta(
-  delta: { cells: number; percent: number | null },
-  language: AppLanguage
-) {
-  if (delta.cells === 0 && (delta.percent === null || delta.percent === 0)) {
-    return language === "fr" ? "inchange" : "unchanged";
-  }
-
-  const percentText = delta.percent !== null && delta.percent !== 0
-    ? `, ${delta.percent > 0 ? "+" : ""}${delta.percent}%`
-    : "";
-
-  return `${delta.cells > 0 ? "+" : ""}${delta.cells} cells${percentText}`;
-}
-
 function formatObjectiveProgressLine(
   before: ZoneCompletionStats | null,
   after: ZoneCompletionStats | null,
@@ -6631,14 +6613,6 @@ function formatBackupExportDate(value: string, language: AppLanguage) {
   });
 }
 
-function formatGpsSummary(pausedEventCount: number, language: AppLanguage) {
-  if (pausedEventCount === 0) {
-    return language === "fr" ? "propre" : "clean";
-  }
-
-  return language === "fr" ? `${pausedEventCount} pauses` : `${pausedEventCount} paused`;
-}
-
 function getRecordingMilestones(summary: RecordingSummary, language: AppLanguage) {
   const isFrench = language === "fr";
   const milestones: Array<{ icon: keyof typeof Ionicons.glyphMap; label: string }> = [];
@@ -6673,20 +6647,6 @@ function getRecordingMilestones(summary: RecordingSummary, language: AppLanguage
   }
 
   return milestones;
-}
-
-function formatLoopResultShort(result: LoopProcessingResult, language: AppLanguage) {
-  if (result.status === "filled") {
-    return language === "fr"
-      ? `${result.filledLoopCount} / ${result.filledCellCount} cellules`
-      : `${result.filledLoopCount} / ${result.filledCellCount} cells`;
-  }
-
-  if (result.status === "rejected") {
-    return language === "fr" ? `${result.rejectedLoopCount} rejetées` : `${result.rejectedLoopCount} rejected`;
-  }
-
-  return language === "fr" ? "aucune" : "none";
 }
 
 function OptionsModal({
@@ -7009,42 +6969,22 @@ function OptionToggle({
 }
 
 function DetailsModal({
-  activeWalk,
   activityMode,
-  backgroundMessage,
-  backgroundStatus,
-  currentLocation,
   explorerScore,
   language,
-  layers,
-  mode,
-  onChangeMode,
   onClose,
   onOpenHistory,
-  onReprocessRecordings,
   objectiveStats,
-  recordingQuality,
-  selectedSessionId,
   stats,
   visible,
   history
 }: {
-  activeWalk: ActiveWalk | null;
   activityMode: ActivityMode;
-  backgroundMessage: string | null;
-  backgroundStatus: BackgroundTrackingStatus;
-  currentLocation: GpsPoint | null;
   explorerScore: ExplorerScore;
   language: AppLanguage;
-  layers: MapLayerState;
-  mode: PathDisplayMode;
-  onChangeMode: (mode: PathDisplayMode) => void;
   onClose: () => void;
   onOpenHistory: () => void;
-  onReprocessRecordings: () => void;
   objectiveStats: ZoneCompletionStats | null;
-  recordingQuality: ReturnType<typeof calculateRecordingQuality>;
-  selectedSessionId: number | null;
   stats: LifetimeStats;
   visible: boolean;
   history: WalkSession[];
@@ -7354,10 +7294,6 @@ function getForbiddenZonePersistenceFailureMessage(
     : "Mapbound could not save this area.";
 }
 
-function formatObjectiveMode(mode: CompletionObjective["mode"], language: AppLanguage) {
-  return ACTIVITY_MODE_TEXT[language].labels[mode];
-}
-
 function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
   const presentedPercent = getPresentedCompletionPercent(stats);
 
@@ -7366,45 +7302,6 @@ function formatObjectiveCompletion(stats: ZoneCompletionStats | null) {
   }
 
   return `${presentedPercent}%`;
-}
-
-function showRecordingResultAlert({
-  activeWalk,
-  backgroundStatus,
-  finalStepCount,
-  loopResult,
-  quality
-}: {
-  activeWalk: ActiveWalk;
-  backgroundStatus: BackgroundTrackingStatus;
-  finalStepCount: number;
-  loopResult: LoopProcessingResult;
-  quality: ReturnType<typeof calculateRecordingQuality>;
-}) {
-  const segments = buildPathSegments(activeWalk.points, activeWalk.activityMode);
-  const rejectedGapCount = segments.filter((segment) => segment.type === "rejected").length;
-  const gpsTotal = activeWalk.acceptedGpsPointCount + activeWalk.rejectedGpsPointCount;
-  const acceptRate = gpsTotal > 0
-    ? Math.round((activeWalk.acceptedGpsPointCount / gpsTotal) * 100)
-    : 0;
-
-  Alert.alert(
-    `Recording saved - ${quality.label}`,
-    [
-      `Distance: ${formatDistance(activeWalk.distanceMeters)} from accepted GPS path.`,
-      `GPS: ${activeWalk.acceptedGpsPointCount} accepted, ${activeWalk.rejectedGpsPointCount} rejected (${acceptRate}% accepted).`,
-      `Gaps: ${rejectedGapCount} required validation; street-matched bridges count, unmatched gaps stay hidden.`,
-      `Steps: ${finalStepCount.toLocaleString()}.`,
-      `Background: ${formatBackgroundStatus(backgroundStatus)}.`,
-      `Quality: ${quality.reason}`,
-      formatLoopResultLine(loopResult)
-    ].join("\n"),
-    [
-      {
-        text: "Add new data on map"
-      }
-    ]
-  );
 }
 
 function formatLoopResultLine(result: LoopProcessingResult) {
@@ -7417,21 +7314,6 @@ function formatLoopResultLine(result: LoopProcessingResult) {
   }
 
   return `Loops: rejected - ${formatLoopRejectionReason(result.rejectionReason)}`;
-}
-
-function formatBackgroundStatus(status: BackgroundTrackingStatus) {
-  switch (status) {
-    case "enabled":
-      return "enabled";
-    case "foreground-only":
-      return "foreground only";
-    case "starting":
-      return "starting";
-    case "unavailable":
-      return "unavailable";
-    default:
-      return "idle";
-  }
 }
 
 function formatLoopRejectionReason(reason: string | null) {
@@ -7479,8 +7361,17 @@ function isToday(value: string) {
 
 function waitForMapRenderCommit() {
   return new Promise<void>((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => resolve());
+    let frameId: number | null = null;
+    const finish = () => {
+      clearTimeout(timeoutId);
+      if (frameId !== null) cancelAnimationFrame(frameId);
+      resolve();
+    };
+    // Animation frames pause in the background. Derived UI work must not hold
+    // recording finalization or a data-operation lock indefinitely.
+    const timeoutId = setTimeout(finish, 150);
+    frameId = requestAnimationFrame(() => {
+      frameId = requestAnimationFrame(finish);
     });
   });
 }

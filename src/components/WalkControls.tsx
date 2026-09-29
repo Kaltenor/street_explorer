@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { createAppearanceStyles } from "../constants/appearance";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useEffect, useRef, useState } from "react";

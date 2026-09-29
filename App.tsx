@@ -8,7 +8,6 @@ import {
   ActivityIndicator,
   Alert,
   Platform,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View
@@ -62,6 +61,7 @@ export default function App() {
     Platform.OS === "android" ? "google" : "apple"
   );
   const mapProviderSaveInFlight = useRef(false);
+  const preferenceSaveChain = useRef<Promise<void>>(Promise.resolve());
   const [isSavingMapProvider, setIsSavingMapProvider] = useState(false);
   const [isLaunchDismissed, setIsLaunchDismissed] = useState(false);
   const [isMapLaunchReady, setIsMapLaunchReady] = useState(false);
@@ -110,28 +110,45 @@ export default function App() {
     initializeApp();
   }, []);
 
-  const handleChangeLanguage = async (nextLanguage: AppLanguage) => {
-    setLanguage(nextLanguage);
-    await saveAppLanguage(nextLanguage);
+  // Serialize writes and publish only committed values. A failed save must not
+  // leave the controls (or global feedback/appearance state) claiming success.
+  const savePreference = (save: () => Promise<void>, publish: () => void) => {
+    const operation = preferenceSaveChain.current.then(async () => {
+      await save();
+      publish();
+    });
+    preferenceSaveChain.current = operation.catch((error) => {
+      console.warn("Failed to save app preference", error);
+      Alert.alert(
+        language === "fr" ? "Réglage inchangé" : "Setting unchanged",
+        language === "fr"
+          ? "Impossible d'enregistrer ce choix. Réessayez."
+          : "Could not save your choice. Please try again."
+      );
+    });
+    return preferenceSaveChain.current;
   };
 
-  const handleChangeAppearanceMode = async (nextMode: AppearanceMode) => {
-    setActiveAppearanceMode(nextMode);
-    setAppearanceMode(nextMode);
-    await saveAppearanceMode(nextMode);
-  };
+  const handleChangeLanguage = (nextLanguage: AppLanguage) =>
+    savePreference(() => saveAppLanguage(nextLanguage), () => setLanguage(nextLanguage));
 
-  const handleChangeHapticsEnabled = async (enabled: boolean) => {
-    setHapticFeedbackEnabled(enabled);
-    setHapticsEnabled(enabled);
-    await saveHapticsEnabled(enabled);
-  };
+  const handleChangeAppearanceMode = (nextMode: AppearanceMode) =>
+    savePreference(() => saveAppearanceMode(nextMode), () => {
+      setActiveAppearanceMode(nextMode);
+      setAppearanceMode(nextMode);
+    });
 
-  const handleChangeSoundEnabled = async (enabled: boolean) => {
-    setSoundFeedbackEnabled(enabled);
-    setSoundEnabled(enabled);
-    await saveSoundEnabled(enabled);
-  };
+  const handleChangeHapticsEnabled = (enabled: boolean) =>
+    savePreference(() => saveHapticsEnabled(enabled), () => {
+      setHapticFeedbackEnabled(enabled);
+      setHapticsEnabled(enabled);
+    });
+
+  const handleChangeSoundEnabled = (enabled: boolean) =>
+    savePreference(() => saveSoundEnabled(enabled), () => {
+      setSoundFeedbackEnabled(enabled);
+      setSoundEnabled(enabled);
+    });
 
   const handleChangeMapProvider = async (nextProvider: MapProvider) => {
     if (mapProviderSaveInFlight.current || nextProvider === mapProvider ||
