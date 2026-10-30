@@ -11,3 +11,8 @@ expo-start.err.log
 .env
 .env.*
 !.env.example
+
+# Local audit output and downloaded country-pack research
+.tmp/
+.tmp-country-pack-size/
+tmp/

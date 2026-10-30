@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { fileURLToPath } from "node:url";
 
 import {
@@ -24,13 +25,6 @@ const OSM_RELATION_OVERRIDES = new Map([["06435014", 535895]]);
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const options = parseArguments(globalThis.process?.argv?.slice(2) ?? []);
 
-if (!options.destatis && globalThis.nodeRepl) {
-  options.destatis = path.join(
-    repositoryRoot,
-    ".tmp-country-pack-size/germany/GV100AD_31122024.txt"
-  );
-}
-
 if (!options.destatis) {
   throw new Error(
     "Usage: node scripts/country-packs/generate-germany-pack.mjs " +
@@ -50,7 +44,7 @@ const targetCodes = targetCities.map((city) => city.code);
 const cachePath = path.resolve(
   options.cache ??
   path.join(
-    globalThis.process?.env?.TEMP ?? path.join(repositoryRoot, ".tmp-country-pack-size/germany"),
+    os.tmpdir(),
     "street-explorer-germany-candidate-cache-v1.json"
   )
 );

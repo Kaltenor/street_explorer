@@ -1,5 +1,58 @@
 # Changelog
 
+## v0.36.6
+
+- Reduce production runtime payload by 21.9% on iOS/Android through independently compressed offline France albums, a shared DEFLATE dictionary, an exact Ionicons subset and lossless image optimization. All 6,082 medals, coordinates, text, image pixels and used icon shapes remain intact.
+- Add reproducible generators, export-size measurements and aggregate tests for catalogue equivalence/freshness, icon coverage and Metro resolution. Update the France storage report to distinguish compressed runtime payload from authoring JSON.
+- Version 0.36.5 to 0.36.6; iOS/Android builds 260 to 261. No new runtime dependency or database migration. Native splash bytes change only in rebuilt binaries. [Exact measurements and limits](APP_SIZE_0_36_6.md).
+
+## v0.36.5
+
+- Remove 183 unused source/asset/research files (263,060,762 bytes), 24 unreferenced exported declarations, their unused supporting declarations and obsolete profile translations. Preserve active features, database migrations and published country packs.
+- Ignore local research/audit output; exclude Photoshop and cartographer authoring sources from EAS uploads while retaining them locally. Enable TypeScript unused-local and unused-parameter checks. Germany generation now consistently requires an explicit population input and uses the OS temporary directory for its default candidate cache.
+- Version 0.36.4 to 0.36.5; iOS/Android builds 259 to 260. No native dependency or schema change. See [audit](AUDIT_0_36_5.md).
+
+## v0.36.4
+
+- Tapping a collected map medal opens its collection with that exact album/medal card highlighted and scrolled into view. A medal from another city opens All Cities; ordinary dock navigation still opens the overview.
+- Wait for modal presentation, content size and section/card layout before a single nonanimated reveal. Refreshes do not pull the reader away. Add executable callback/component regressions for scope, duplicate IDs, delayed data and event ordering.
+- Version 0.36.3 to 0.36.4; iOS/Android builds 258 to 259. JavaScript-only; no native dependency or schema change.
+
+## v0.36.3
+
+- Refine existing Atlas planner choices, primary validation action, distance summaries, blue guidance, statistics hierarchy and recording controls in both appearances. Allow History actions to wrap and grow with text; expose busy/expanded accessibility states.
+- Fix false off-route warnings between sparse route vertices by measuring the nearest segment; show a waiting state when location is unavailable. Prepare the short-route projection once per geometry.
+- Reuse History report and inferred-cell calculations across rename edits and detail expansion; invalidate when underlying data changes.
+- Add executable geometry/component regressions and a reproducible guidance benchmark. Version 0.36.2 to 0.36.3; iOS/Android builds 257 to 258. No new dependency or schema change; native visual/device checks remain manual.
+
+## v0.36.2
+
+- Fix "No command found with name redraw" on Apple Maps when planning a walk: numbered stops and the guidance start marker now receive their map provider and skip Google-only snapshot commands on MapKit.
+- Preserve Google/Android post-layout marker refresh and cancel pending redraws on provider changes or unmount. Add executable provider/lifecycle regression coverage.
+- Version 0.36.1 → 0.36.2; iOS/Android builds 256 → 257. JavaScript-only fix; no native rebuild required in a compatible client.
+
+## v0.36.1
+
+- Replace the large planning page with compact controls over the existing map; hide normal panels/dock during preparation and remove the Saved option.
+- Create prompts for a start and successive points, recalculates after taps, supports undo and validates directly into persistent guidance. Suggest calculates automatically after choosing a remote start, retaining 2/4/6 km targets and optional return.
+- Rank suggestions by unique valid unexplored cells using the same grid/capture rules as recorded paths; exclude explored surfaces, filled enclosures and Forbidden Zones. Preserve old library/backup data.
+- Add component interaction and canonical-cell regression checks. Version 0.36.0 → 0.36.1; builds 255 → 256. Physical-device verification remains required.
+
+## v0.36.0
+
+- Add Atlas Create / Suggest / Saved planning beside idle Start, including remote start selection, ordered map/medal stops and optional return to start.
+- Generate 2/4/6 km walking suggestions using public OSM data and on-device routing, with exploration/medal preferences and a strict 6 km maximum.
+- Persist offline route geometry, show independent blue guidance, and bind it atomically to recording sessions for recovery without granting rewards.
+- Add migration 38, a bounded disposable topology cache, optional validated Backup V5 routePlans and focused routing/persistence/network regressions.
+- Version/build advances from 0.35.24 / 254 to 0.36.0 / 255. No new native dependency. Physical-device checks remain required.
+
+## v0.35.24
+
+- Prevent stack overflow in long-route simplification and reuse per-range projection work; correct short date-line projection without rewriting stored GPS or route snapshots.
+- Prevent stale completion scope reads, canceled startup reads and overlapping summary polls from publishing incorrect state or accumulating work.
+- Reject mismatched medal/event identities and duplicate collected awards during Backup V5 inspection, before replacement.
+- Add targeted regressions, a reproducible comparative route benchmark, audit evidence and device steps. Version/build moves from 0.35.23 / 253 to 0.35.24 / 254.
+
 ## v0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.

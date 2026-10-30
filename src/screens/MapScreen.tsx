@@ -1,4 +1,7 @@
 import { MapLocationLabel, type MapLocationMessage } from "../components/MapLocationLabel";
+import { RoutePlanner, type PlanningMapState } from "../components/RoutePlanner";
+import { PlanGuidance } from "../components/PlanGuidance";
+import { usePlannedWalk } from "../hooks/usePlannedWalk";
 import { canChangeMapProvider, type MapProvider } from "../services/mapProvider";
 import { publishLatestSnapshot } from "../services/latestSnapshot";
 import { createIncrementalEnclosureCollector } from "../services/explorationArea";
@@ -293,6 +296,7 @@ const EMPTY_STATS: LifetimeStats = {
 };
 
 const EMPTY_CELL_IDS: string[] = [];
+const EMPTY_PLAN_STOPS: import("../services/routePlanning").PlanStop[] = [];
 const EMPTY_GPS_POINTS: GpsPoint[] = [];
 const EMPTY_LIVE_ROUTE_CHUNKS: ActiveWalk["routeChunks"] = [];
 const EMPTY_MEDALS: CollectedMedal[] = [];
@@ -587,6 +591,7 @@ export function MapScreen({
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [completionVisible, setCompletionVisible] = useState(false);
   const [medalsVisible, setMedalsVisible] = useState(false);
+  const [collectionMedal, setCollectionMedal] = useState<CollectedMedal | null>(null);
   const [medalProgress, setMedalProgress] = useState<MedalAlbumProgress | null>(null);
   const [collectedMedalCities, setCollectedMedalCities] = useState<CollectedMedalCity[]>([]);
   const [medalPackLoadState, setMedalPackLoadState] = useState<MedalPackLoadState>("idle");
@@ -709,6 +714,9 @@ export function MapScreen({
   const [isMapWordmarkCollapsed, setIsMapWordmarkCollapsed] = useState(false);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isSavedDataReady, setIsSavedDataReady] = useState(false);
+  const [plannerVisible, setPlannerVisible] = useState(false);
+  const [planningMap, setPlanningMap] = useState<PlanningMapState | null>(null);
+  const [planFocusRequestId, setPlanFocusRequestId] = useState(0);
   const [isSavedObjectiveReady, setIsSavedObjectiveReady] = useState(false);
   const [isLaunchObjectiveResolved, setIsLaunchObjectiveResolved] = useState(false);
   const [isObjectiveCacheHydrated, setIsObjectiveCacheHydrated] = useState(false);
@@ -720,6 +728,10 @@ export function MapScreen({
   const [recoveryCheckRevision, setRecoveryCheckRevision] = useState(0);
   const [streetRetryRevision, setStreetRetryRevision] = useState(0);
   const [isAppActive, setIsAppActive] = useState(AppState.currentState === "active");
+  const plannedWalk = usePlannedWalk(isSavedDataReady && isRecoveryCheckComplete, activeWalk?.sessionId ?? null, recoverableRecording?.session.id ?? null);
+  useEffect(() => {
+    if (!isAppActive || activeWalk || dataOperation) setPlannerVisible(false);
+  }, [isAppActive, activeWalk?.sessionId, dataOperation]);
   const isLaunchDismissedRef = useRef(isLaunchDismissed);
   isLaunchDismissedRef.current = isLaunchDismissed;
   const mapViewportRegionRef = useRef<Region | null>(null);
@@ -728,7 +740,7 @@ export function MapScreen({
     showMarkers: true,
     showPaths: true
   });
-  const activeAtlasPage: AtlasPageId | null = diagnosticsVisible
+  const activeAtlasPage: AtlasPageId | null = plannerVisible ? "map" : diagnosticsVisible
     ? "history"
     : dashboardExpanded
       ? "details"
@@ -1207,6 +1219,7 @@ export function MapScreen({
     }
 
     setFocusedMedal(medal);
+    setCollectionMedal(medal);
     setMedalsVisible(true);
   }, []);
 
@@ -1685,7 +1698,7 @@ export function MapScreen({
   useEffect(() => {
     const nextMedal = medalPresentationQueue[0];
 
-    if (!isLaunchDismissed || celebrationMedal || !nextMedal) {
+    if (!isLaunchDismissed || plannerVisible || celebrationMedal || !nextMedal) {
       return;
     }
 
@@ -1694,7 +1707,7 @@ export function MapScreen({
     markMedalPresentationState(nextMedal.albumId, nextMedal.id, "presenting").catch(
       (error) => console.warn("Failed to start medal presentation", error)
     );
-  }, [celebrationMedal, isLaunchDismissed, medalPresentationQueue]);
+  }, [celebrationMedal, isLaunchDismissed, medalPresentationQueue, plannerVisible]);
 
   useEffect(() => {
     if (!celebrationMedal) {
@@ -2953,10 +2966,12 @@ export function MapScreen({
   ]);
 
   const closeAllAtlasPages = useCallback(() => {
+    setPlannerVisible(false);
     setDashboardExpanded(false);
     setHistoryVisible(false);
     setCompletionVisible(false);
     setMedalsVisible(false);
+    setCollectionMedal(null);
     setOptionsVisible(false);
     setDiagnosticsVisible(false);
   }, [publishCurrentLocation]);
@@ -3747,6 +3762,7 @@ export function MapScreen({
 
   const handleStartWalk = useCallback(async () => {
     if (
+      !plannedWalk.loaded ||
       dataOperationRef.current !== null ||
       isChangingMapProviderRef.current ||
       activeWalk ||
@@ -3777,7 +3793,8 @@ export function MapScreen({
       const startedAt = new Date().toISOString();
       const sessionId = await createActiveRecordingSession({
         activityMode,
-        startedAt
+        startedAt,
+        routePlan: plannedWalk.following?.plan
       });
       const nextWalk = createActiveWalk(activityMode, sessionId, startedAt);
       const lifecycleGeneration = beginRecordingLifecycle(sessionId);
@@ -3830,6 +3847,8 @@ export function MapScreen({
   }, [
     activeMedalAlbumId,
     activeWalk,
+    plannedWalk.loaded,
+    plannedWalk.following,
     beginRecordingLifecycle,
     enableBackgroundTracking,
     isRecoveryCheckComplete,
@@ -5359,7 +5378,7 @@ export function MapScreen({
         sessions: candidate.preview.sessionCount,
         size: formatBackupFileSize(candidate.preview.fileSize),
         version: candidate.preview.appVersion
-      }),
+      }) + `\n${language === "fr" ? "Parcours prévus" : "Saved plans"}: ${candidate.preview.routePlanCount}`,
       [
         {
           text: strings.common.cancel,
@@ -5378,6 +5397,7 @@ export function MapScreen({
               savedDataRefreshGenerationRef.current += 1;
               savedDataRefreshOperationRef.current = null;
               await restoreBackupV5(candidate);
+              plannedWalk.reload();
               await clearActiveRecordingSettings();
               setSelectedSessionId(null);
               await refreshSavedData();
@@ -5472,6 +5492,10 @@ export function MapScreen({
     >
     <View style={styles.screen}>
       {canMountInitialMap ? <ExplorationMap
+        plannedRoute={plannerVisible ? planningMap?.plan : plannedWalk.following?.plan}
+        planningStops={plannerVisible ? planningMap?.stops ?? EMPTY_PLAN_STOPS : undefined}
+        autoFramePlan={plannerVisible && planningMap?.autoFrame}
+        planFocusRequestId={planFocusRequestId}
         mapProvider={mapProvider}
         activeExplorationCellIds={activeWalk?.exploredCellIds ?? EMPTY_CELL_IDS}
         activeRouteChunks={activeWalk?.routeChunks ?? EMPTY_LIVE_ROUTE_CHUNKS}
@@ -5485,15 +5509,15 @@ export function MapScreen({
         gpsStatus={activeWalk?.lastRejectedPointReason ?? null}
         isRecording={Boolean(activeWalk)}
         language={language}
-        focusedMedal={focusedMedal}
+        focusedMedal={plannerVisible ? null : focusedMedal}
         forbiddenZoneLabel={
-          isForbiddenZoneModeActive ? null : visibleForbiddenZoneLabelData
+          plannerVisible || isForbiddenZoneModeActive ? null : visibleForbiddenZoneLabelData
         }
         forbiddenZones={forbiddenZones}
         medalFocusRequestId={medalFocusRequestId}
         lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}
         medals={visibleMapMedals}
-        onMedalPress={handleMapMedalPress}
+        onMedalPress={plannerVisible ? planningMap?.onPress : handleMapMedalPress}
         currentLocation={currentLocation}
         cityZone={visibleMapBoundaryContext.city}
         knownCityZones={knownCityZones}
@@ -5501,9 +5525,9 @@ export function MapScreen({
         highlightedSessionId={selectedSessionId}
         routeFocusRequestId={routeFocusRequestId}
         layers={layers}
-        onForbiddenZoneLabelPress={handleForbiddenZoneLabelPress}
-        onMapPress={handleMapPressEvent}
-        onMapLongPress={handleMapLongPressEvent}
+        onForbiddenZoneLabelPress={plannerVisible ? undefined : handleForbiddenZoneLabelPress}
+        onMapPress={plannerVisible ? planningMap?.onPress : handleMapPressEvent}
+        onMapLongPress={plannerVisible ? undefined : handleMapLongPressEvent}
         onMapReady={handleMapReady}
         onMapInteraction={handleMapInteraction}
         onVisibleRegionChange={handleVisibleRegionChange}
@@ -5528,7 +5552,7 @@ export function MapScreen({
       ) : null}
       <AtlasStamp
         mapContentInsets={mapStampInsets}
-        message={isLaunchDismissed ? atlasStampMessage : null}
+        message={isLaunchDismissed && !plannerVisible ? atlasStampMessage : null}
         onDismiss={clearAtlasStamp}
       />
       <ForbiddenZoneCommentModal
@@ -5544,7 +5568,7 @@ export function MapScreen({
         onSave={handleSaveForbiddenZoneComment}
         visible={Boolean(forbiddenZoneCommentEditorZone)}
       />
-      <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
+      {!plannerVisible ? <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
         <View onLayout={handleMapTopPanelLayout} style={styles.topPanel}>
           <Animated.View
             style={[
@@ -5671,13 +5695,25 @@ export function MapScreen({
             }
           ]}
         >
+          {plannedWalk.following ? <PlanGuidance plan={plannedWalk.following.plan} point={currentLocation} recording={Boolean(activeWalk)} language={language}
+            onFocus={() => setPlanFocusRequestId(v => v + 1)}
+            onHide={() => { void plannedWalk.select(null).catch(() => Alert.alert(language === "fr" ? "Impossible de masquer le parcours. Réessayez." : "Could not hide guidance. Please retry.")); }} /> : null}
+          {plannedWalk.error ? <TouchableOpacity accessibilityRole="button" onPress={plannedWalk.reload} style={{ minHeight: 44, backgroundColor: APP_COLORS.card, padding: 10 }}>
+            <Text style={{ color: APP_COLORS.text }}>{language === "fr" ? "Guidage indisponible · réessayer" : "Guidance unavailable · retry"}</Text>
+          </TouchableOpacity> : null}
           <WalkControls
+            onPlan={() => {
+              if (dataOperationRef.current || activeWalkRef.current || isStartingRecordingRef.current || isStoppingRecordingRef.current) return;
+              setIsForbiddenZoneModeActive(false);
+              closeAllAtlasPages();
+              setPlannerVisible(true);
+            }}
             activityMode={activeWalk?.activityMode ?? activityMode}
             acceptedGpsPointCount={activeWalk?.acceptedGpsPointCount ?? 0}
             backgroundStatus={backgroundTrackingStatus}
             isFinalizing={isComputingRecording}
             isRecording={Boolean(activeWalk)}
-            isStarting={isStartingRecording || !isRecoveryCheckComplete}
+            isStarting={isStartingRecording || !isRecoveryCheckComplete || !plannedWalk.loaded}
             explorerScore={explorerScore.points}
             forbiddenZoneModeActive={isForbiddenZoneModeActive}
             forbiddenZoneModeDisabled={Boolean(activeWalk)}
@@ -5701,16 +5737,26 @@ export function MapScreen({
             onToggleForbiddenZoneMode={handleToggleForbiddenZoneMode}
           />
         </Animated.View>
-      </SafeAreaView>
+      </SafeAreaView> : null}
 
-      <AtlasNavigationDockLayer
+      {!plannerVisible ? <AtlasNavigationDockLayer
         activePage="map"
         language={language}
         medalPulse={medalTabPulse}
         medalTabRef={medalTabRef}
         onNavigate={navigateAtlasPage}
         placement="map"
-      />
+      /> : null}
+
+      {plannerVisible ? <RoutePlanner language={language} onMapStateChange={setPlanningMap}
+        exploredCellIds={savedExplorationCellIds} forbiddenZones={forbiddenZones}
+        onClose={handleReturnToMapFromAtlas}
+        onFollow={async plan => {
+          if (dataOperationRef.current || activeWalkRef.current) throw new Error("Recording or data operation active");
+          await plannedWalk.select(plan);
+          setPlannerVisible(false);
+          setPlanFocusRequestId(v => v + 1);
+        }} /> : null}
 
       {optionsVisible ? <OptionsModal
         mapProvider={mapProvider}
@@ -5820,6 +5866,7 @@ export function MapScreen({
       /> : null}
 
       {medalsVisible ? <MedalCollectionModal
+        initialSelectedMedal={collectionMedal}
         collectedCities={collectedMedalCities}
         districtZones={visibleMapBoundaryContext.districts}
         language={language}
@@ -5838,7 +5885,7 @@ export function MapScreen({
       <MedalCelebration
         flightTarget={medalFlightTarget}
         language={language}
-        medal={celebrationMedal}
+        medal={plannerVisible ? null : celebrationMedal}
         onComplete={handleCompleteMedalCelebration}
       />
       {diagnosticsVisible ? <RecordingDiagnosticsModal

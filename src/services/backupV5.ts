@@ -1,4 +1,5 @@
 import { gunzipSync, gzipSync, strFromU8, strToU8 } from "fflate";
+import { assertRoutePlan, MAX_SAVED_PLANS, type RoutePlan } from "./routePlanning";
 
 import type { ZoneAchievement } from "../database/completionRepository";
 import type { ForbiddenZoneSnapshot } from "../database/forbiddenZoneRepository";
@@ -55,6 +56,7 @@ export type BackupV5Metadata = {
   appVersion: string;
   exportedAt: string;
   forbiddenZones?: ForbiddenZoneSnapshot[];
+  routePlans?: RoutePlan[];
   medalSystem: BackupMedalSystem;
   sessions: WalkSession[];
   zoneAchievements: ZoneAchievement[];
@@ -191,6 +193,7 @@ export function createBackupV5Manifest(
     medalSystem: metadata.medalSystem,
     zoneAchievements: metadata.zoneAchievements,
     ...(metadata.forbiddenZones === undefined ? {} : { forbiddenZones: metadata.forbiddenZones }),
+    ...(metadata.routePlans === undefined ? {} : { routePlans: metadata.routePlans }),
     backupId: [
       exportedAt,
       sessions.length,
@@ -529,6 +532,15 @@ export function assertBackupV5Manifest(
   assertBackupV5MedalSystem(value.medalSystem, sessionIds);
   assertBackupV5ZoneAchievements(value.zoneAchievements);
   assertBackupV5ForbiddenZones(value.forbiddenZones);
+  if (value.routePlans !== undefined) {
+    if (!Array.isArray(value.routePlans) || value.routePlans.length > MAX_SAVED_PLANS) throw new Error("Invalid route plans in backup");
+    const ids = new Set<string>();
+    for (const plan of value.routePlans) {
+      assertRoutePlan(plan);
+      if (ids.has(plan.id)) throw new Error("Duplicate route plan in backup");
+      ids.add(plan.id);
+    }
+  }
 }
 
 export function assertBackupV5Footer(
@@ -906,14 +918,14 @@ function assertBackupV5MedalSystem(
   medalSystem: Record<string, any>,
   sessionIds: ReadonlySet<number>
 ) {
-  const eventIds = new Set<number>();
+  const eventsById = new Map<number, { albumId: string; medalId: string }>();
 
   for (const event of medalSystem.acquisitionEvents as unknown[]) {
     if (
       !isRecord(event) ||
       !Number.isInteger(event.id) ||
       event.id <= 0 ||
-      eventIds.has(event.id) ||
+      eventsById.has(event.id) ||
       typeof event.albumId !== "string" ||
       typeof event.medalId !== "string" ||
       (event.sessionId !== null && !sessionIds.has(event.sessionId)) ||
@@ -930,15 +942,18 @@ function assertBackupV5MedalSystem(
       throw new Error("V5 backup contains invalid medal acquisition data.");
     }
 
-    eventIds.add(event.id);
+    eventsById.set(event.id, { albumId: event.albumId, medalId: event.medalId });
   }
 
+  const collectedKeys = new Set<string>();
   for (const medal of medalSystem.collectedMedals as unknown[]) {
     if (
       !isRecord(medal) ||
       typeof medal.albumId !== "string" ||
       typeof medal.medalId !== "string" ||
-      !eventIds.has(medal.acquisitionEventId) ||
+      eventsById.get(medal.acquisitionEventId)?.albumId !== medal.albumId ||
+      eventsById.get(medal.acquisitionEventId)?.medalId !== medal.medalId ||
+      collectedKeys.has(JSON.stringify([medal.albumId, medal.medalId])) ||
       !["pending", "presenting", "presented"].includes(medal.presentationState) ||
       (medal.presentedAt !== null &&
         (typeof medal.presentedAt !== "string" ||
@@ -946,6 +961,7 @@ function assertBackupV5MedalSystem(
     ) {
       throw new Error("V5 backup contains invalid collected medal data.");
     }
+    collectedKeys.add(JSON.stringify([medal.albumId, medal.medalId]));
   }
 
   for (const setting of medalSystem.retroScanSettings as unknown[]) {

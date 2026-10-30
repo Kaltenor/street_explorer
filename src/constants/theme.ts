@@ -9,6 +9,7 @@ type AppColorPalette = {
   cardRaised: string;
   gold: string;
   goldBorder: string;
+  guidance: string;
   inkOnGold: string;
   parchment: string;
   parchmentMuted: string;
@@ -44,6 +45,7 @@ const EXPLORATOR_APP_COLORS: AppColorPalette = {
   cardRaised: "#13212b",
   cardHighlight: "#182630",
   gold: "#f5c451",
+  guidance: "#7bbcff",
   inkOnGold: "#151006",
   parchment: "#f3e5bd",
   parchmentMuted: "#cdbf9e",
@@ -61,6 +63,7 @@ const DAYLIGHT_APP_COLORS: AppColorPalette = {
   cardRaised: "#eee3cf",
   cardHighlight: "#e3d5ba",
   gold: "#8a5300",
+  guidance: "#175a9e",
   inkOnGold: "#fffaf0",
   parchment: "#241a0d",
   parchmentMuted: "#594a37",

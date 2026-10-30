@@ -1,3 +1,4 @@
+import { PlannedRouteOverlay, PlanningMarker } from "./PlannedRouteOverlay";
 import {
   Fragment,
   memo,
@@ -77,6 +78,10 @@ import {
 } from "../types/walk";
 
 type ExplorationMapProps = {
+  plannedRoute?: import("../services/routePlanning").RoutePlan | null;
+  planFocusRequestId?: number;
+  planningStops?: import("../services/routePlanning").PlanStop[];
+  autoFramePlan?: boolean;
   mapProvider: MapProvider;
   walks: WalkWithPoints[];
   pathWalks: WalkWithPoints[];
@@ -166,6 +171,10 @@ const GAMEPLAY_POI_FILTER = {
 const MEDAL_MARKER_MAX_LATITUDE_DELTA = 0.14;
 
 export const ExplorationMap = memo(function ExplorationMap({
+  plannedRoute,
+  planFocusRequestId,
+  planningStops,
+  autoFramePlan,
   mapProvider,
   walks,
   activeExplorationCellIds,
@@ -229,6 +238,12 @@ export const ExplorationMap = memo(function ExplorationMap({
   const [isInkRevealing, setIsInkRevealing] = useState(false);
   const previousExplorationCellCountRef = useRef<number | null>(null);
   const mapRef = useRef<MapView | null>(null);
+  useEffect(() => {
+    if (!plannedRoute || (planningStops ? !autoFramePlan : !planFocusRequestId)) return;
+    mapRef.current?.fitToCoordinates(plannedRoute.coordinates, {
+      edgePadding: { top: planningStops ? 150 : 200, right: 40, bottom: planningStops ? 200 : 280, left: 40 }, animated: !reducedMotion
+    });
+  }, [planFocusRequestId, plannedRoute, reducedMotion, planningStops, autoFramePlan]);
   const hasUserMovedMapRef = useRef(false);
   const initialCenterRef = useRef<InitialMapCenter | null>(null);
   const pendingStartupRegionRef = useRef<Region | null>(null);
@@ -747,6 +762,10 @@ export const ExplorationMap = memo(function ExplorationMap({
 
         <ForbiddenZoneOverlay zones={forbiddenZones} />
 
+        {plannedRoute ? <PlannedRouteOverlay plan={plannedRoute} mapProvider={mapProvider} appearanceMode={appearanceMode}
+          showStart={!planningStops?.length} label={language === "fr" ? "Départ prévu" : "Planned start"} /> : null}
+        {planningStops?.map((stop, index) => <PlanningMarker key={index} coordinate={stop} title={stop.label} text={`${index + 1}`} appearanceMode={appearanceMode} mapProvider={mapProvider} />)}
+
         <AdministrativeBoundaryOverlay
           cityZone={cityZone}
           districtZones={districtZones}
@@ -835,6 +854,7 @@ export const ExplorationMap = memo(function ExplorationMap({
             }`}
             lockedLabel={lockedMedalLabel}
             medal={medal}
+            isPlanning={planningStops !== undefined}
             usesGoogleMaps={mapProvider === "google"}
             onMedalPress={onMedalPress}
           />
@@ -1057,11 +1077,13 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
   lockedLabel,
   medal,
   usesGoogleMaps,
+  isPlanning,
   onMedalPress
 }: {
   lockedLabel: string;
   medal: CollectedMedal;
   usesGoogleMaps: boolean;
+  isPlanning: boolean;
   onMedalPress?: (medal: CollectedMedal) => void;
 }) {
   const markerRef = useRef<ComponentRef<typeof Marker>>(null);
@@ -1089,13 +1111,13 @@ const AtlasMedalMarker = memo(function AtlasMedalMarker({
       }
       anchor={{ x: 0.5, y: 0.5 }}
       coordinate={{ latitude: medal.latitude, longitude: medal.longitude }}
-      description={medal.isCollected ? undefined : lockedLabel}
+      description={isPlanning || medal.isCollected ? undefined : lockedLabel}
       onPress={
-        medal.isCollected && onMedalPress
-          ? () => onMedalPress(medal)
+        (isPlanning || medal.isCollected) && onMedalPress
+          ? event => { if (isPlanning) event.stopPropagation(); onMedalPress(medal); }
           : undefined
       }
-      title={medal.name.en}
+      title={isPlanning ? undefined : medal.name.en}
       tracksViewChanges={tracksSnapshot}
     >
       <View

@@ -1597,7 +1597,7 @@ assert(
     medalEnclosureSource.includes("getMedalsInsideBoundaryBounds") &&
     medalEnclosureSource.includes("medals.anchor-gated-enclosure") &&
     mapScreenSource.includes("}, 650);") &&
-    mapScreenSource.includes("onMapLongPress={handleMapLongPressEvent}") &&
+    mapScreenSource.includes("onMapLongPress={plannerVisible ? undefined : handleMapLongPressEvent}") &&
     mapScreenSource.includes('"map.live-enclosure"') &&
     mapScreenSource.includes('"map.saved-data-queries"') &&
     mapScreenSource.includes('"map.path-history-load"') &&

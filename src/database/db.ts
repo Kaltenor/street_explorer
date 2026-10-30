@@ -996,6 +996,19 @@ async function initializeDatabase() {
     `);
   });
 
+  await applyMigration(38, "walking_route_plans", async (db) => {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS route_plans (
+        id TEXT PRIMARY KEY NOT NULL, data TEXT NOT NULL, updated_at TEXT NOT NULL
+      );
+      CREATE TABLE IF NOT EXISTS planning_cache (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, latitude REAL NOT NULL,
+        longitude REAL NOT NULL, radius REAL NOT NULL, data TEXT NOT NULL,
+        fetched_at TEXT NOT NULL
+      );
+    `);
+  });
+
   await db.runAsync(`
     UPDATE collected_medals
     SET presentation_state = 'pending'

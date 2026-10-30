@@ -70,6 +70,9 @@ const styles = createAppearanceStyles({
     padding: 14
   },
   caption: {
+    borderTopWidth: 1,
+    borderTopColor: APP_COLORS.border,
+    paddingTop: 10,
     color: "#94a3b8",
     fontSize: 11,
     fontWeight: "700"
@@ -85,14 +88,19 @@ const styles = createAppearanceStyles({
   },
   primaryRow: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 12
   },
   secondaryRow: {
+    backgroundColor: APP_COLORS.cardRaised,
+    borderRadius: 12,
+    padding: 10,
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 12
   },
   value: {
+    fontVariant: ["tabular-nums"],
     color: APP_COLORS.text,
     fontSize: 18,
     fontWeight: "900"

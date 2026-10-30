@@ -1,5 +1,5 @@
-import { haversineDistanceMeters } from "./distance";
 import { GpsPoint } from "../types/walk";
+import { haversineDistanceMeters } from "./distance";
 
 export function simplifyGpsPointsForRender(points: GpsPoint[], toleranceMeters: number) {
   if (points.length <= 2 || toleranceMeters <= 0) {
@@ -7,82 +7,51 @@ export function simplifyGpsPointsForRender(points: GpsPoint[], toleranceMeters: 
   }
 
   const keep = new Set<number>([0, points.length - 1]);
+  // Recovery previews can contain an entire walk. An unbalanced split must not
+  // consume one JavaScript call frame per retained point.
+  const pending = [0, points.length - 1];
+  while (pending.length > 0) {
+    const endIndex = pending.pop()!;
+    const startIndex = pending.pop()!;
+    if (endIndex <= startIndex + 1) continue;
+    const start = points[startIndex];
+    const end = points[endIndex];
+    if (!start || !end) continue;
 
-  simplifyRange(points, 0, points.length - 1, toleranceMeters, keep);
+    // The projection and baseline are constant for every point in this range.
+    const longitudeMeters = 111_320 * Math.cos((start.latitude * Math.PI) / 180);
+    const endX = longitudeDelta(end.longitude, start.longitude) * longitudeMeters;
+    const endY = (end.latitude - start.latitude) * 111_320;
+    const baselineSquared = endX * endX + endY * endY;
+    let maxDistance = 0;
+    let maxIndex = startIndex;
 
+    for (let index = startIndex + 1; index < endIndex; index += 1) {
+      const point = points[index];
+      if (!point) continue;
+      const x = longitudeDelta(point.longitude, start.longitude) * longitudeMeters;
+      const y = (point.latitude - start.latitude) * 111_320;
+      const progress = baselineSquared === 0 ? 0 : Math.max(
+        0, Math.min(1, (x * endX + y * endY) / baselineSquared)
+      );
+      const distance = baselineSquared === 0
+        ? haversineDistanceMeters(point, start)
+        : Math.hypot(x - endX * progress, y - endY * progress);
+      if (distance > maxDistance) {
+        maxDistance = distance;
+        maxIndex = index;
+      }
+    }
+
+    if (maxDistance > toleranceMeters) {
+      keep.add(maxIndex);
+      pending.push(maxIndex, endIndex, startIndex, maxIndex);
+    }
+  }
   return points.filter((_, index) => keep.has(index));
 }
 
-function simplifyRange(
-  points: GpsPoint[],
-  startIndex: number,
-  endIndex: number,
-  toleranceMeters: number,
-  keep: Set<number>
-) {
-  const start = points[startIndex];
-  const end = points[endIndex];
-
-  if (!start || !end || endIndex <= startIndex + 1) {
-    return;
-  }
-
-  let maxDistance = 0;
-  let maxIndex = startIndex;
-
-  for (let index = startIndex + 1; index < endIndex; index += 1) {
-    const point = points[index];
-
-    if (!point) {
-      continue;
-    }
-
-    const distance = perpendicularDistanceMeters(point, start, end);
-
-    if (distance > maxDistance) {
-      maxDistance = distance;
-      maxIndex = index;
-    }
-  }
-
-  if (maxDistance > toleranceMeters) {
-    keep.add(maxIndex);
-    simplifyRange(points, startIndex, maxIndex, toleranceMeters, keep);
-    simplifyRange(points, maxIndex, endIndex, toleranceMeters, keep);
-  }
-}
-
-function perpendicularDistanceMeters(point: GpsPoint, start: GpsPoint, end: GpsPoint) {
-  const baselineDistance = haversineDistanceMeters(start, end);
-
-  if (baselineDistance === 0) {
-    return haversineDistanceMeters(point, start);
-  }
-
-  const projected = projectPointToLocalMeters(point, start);
-  const projectedEnd = projectPointToLocalMeters(end, start);
-  const progress = Math.max(
-    0,
-    Math.min(
-      1,
-      (projected.x * projectedEnd.x + projected.y * projectedEnd.y) /
-        (projectedEnd.x ** 2 + projectedEnd.y ** 2)
-    )
-  );
-  const closest = {
-    x: projectedEnd.x * progress,
-    y: projectedEnd.y * progress
-  };
-
-  return Math.hypot(projected.x - closest.x, projected.y - closest.y);
-}
-
-function projectPointToLocalMeters(point: GpsPoint, origin: GpsPoint) {
-  const latitudeMeters = 111_320;
-  const longitudeMeters = latitudeMeters * Math.cos((origin.latitude * Math.PI) / 180);
-
-  return {
-    x: (point.longitude - origin.longitude) * longitudeMeters,
-    y: (point.latitude - origin.latitude) * latitudeMeters
-  };
+function longitudeDelta(longitude: number, origin: number) {
+  const delta = longitude - origin;
+  return delta > 180 ? delta - 360 : delta < -180 ? delta + 360 : delta;
 }

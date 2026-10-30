@@ -7,11 +7,12 @@ const { patchPolygonOrder } = require("./patch-react-native-maps-polygon-order.j
 
 require.extensions[".ts"] = (module, filename) => module._compile(
   ts.transpileModule(fs.readFileSync(filename, "utf8"), {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 }
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true }
   }).outputText, filename
 );
 
 async function main() {
+  require("./test-planning-marker.js")();
   const originalPolygonUpdate = "    [_map addOverlay:self];";
   const patchedPolygonUpdate = patchPolygonOrder(originalPolygonUpdate);
   assert.match(patchedPolygonUpdate, /insertOverlay:self belowOverlay:/);

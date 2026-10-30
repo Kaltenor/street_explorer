@@ -543,26 +543,6 @@ export async function getTodayNewExploredCellKeys(mode: ActivityMode) {
   return rows.map((row) => `${row.cell_x}:${row.cell_y}`);
 }
 
-export async function deleteLoopFillDataForMode(mode: ActivityMode) {
-  const db = await getDatabase();
-
-  await db.runAsync(
-    `
-      DELETE FROM explored_cells
-      WHERE mode = ?
-        AND source = 'loop_fill'
-    `,
-    mode
-  );
-  await db.runAsync(
-    `
-      DELETE FROM loop_fills
-      WHERE mode = ?
-    `,
-    mode
-  );
-}
-
 export type LoopFillInput = {
   accepted: boolean;
   areaM2: number;
@@ -591,11 +571,6 @@ export async function replaceExplorationForMode(
       await insertLoopFill(transaction, input, createdAt);
     }
   });
-}
-
-export async function saveLoopFill(input: LoopFillInput) {
-  const db = await getDatabase();
-  await insertLoopFill(db, input, new Date().toISOString());
 }
 
 async function insertLoopFill(
@@ -866,19 +841,6 @@ export async function getZoneAchievement(zoneId: string) {
   );
 
   return row ? mapZoneAchievementRow(row) : null;
-}
-
-export async function getZoneAchievements() {
-  const db = await getDatabase();
-  const rows = await db.getAllAsync<ZoneAchievementRow>(`
-    SELECT zone_id, zone_type, zone_name, completed_at, explored_cells,
-      total_zone_cells, boundary_fetched_at, boundary_source,
-      geometry_fingerprint
-    FROM zone_achievements
-    ORDER BY completed_at DESC
-  `);
-
-  return rows.map(mapZoneAchievementRow);
 }
 
 export async function getZoneAchievementRollup(): Promise<ZoneAchievementRollup> {

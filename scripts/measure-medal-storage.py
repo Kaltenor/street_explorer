@@ -140,9 +140,9 @@ def seeded_sqlite_size(albums: list[dict], directory: Path, country_code: str) -
 
 def main() -> None:
     report = {
-        "generatedAt": "2026-08-26T00:00:00.000Z",
+        "generatedAt": "2026-10-29T00:00:00.000Z",
         "methodology": {
-            "distributedBytes": "Actual bundled JSON bytes for France; published gzip bytes for downloadable countries.",
+            "distributedBytes": "Generated compressed payload JSON bytes for France (before Hermes packaging); published gzip bytes for downloadable countries.",
             "expandedDefinitionBytes": "UTF-8 aggregate JSON for France; gunzipped published JSON for downloadable countries.",
             "referenceGzipBytes": "Deterministic gzip of the France aggregate; identical to distributedBytes for downloadable countries.",
             "sqliteBytes": "Fresh 4096-byte-page SQLite database containing the production medal catalogue tables and indexes after VACUUM.",
@@ -155,7 +155,8 @@ def main() -> None:
     try:
         for country_code in COUNTRIES:
             if country_code == "fr":
-                albums, distributed, expanded, reference_gzip = load_france()
+                albums, source_bytes, expanded, reference_gzip = load_france()
+                distributed = (ROOT / "src/data/generated/franceMedalAlbumPayloads.json").stat().st_size
             else:
                 albums, distributed, expanded, reference_gzip = load_downloadable(country_code)
             empty_bytes, sqlite_bytes = seeded_sqlite_size(

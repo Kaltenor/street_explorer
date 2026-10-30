@@ -147,12 +147,6 @@ export async function getAllStreetSegments(): Promise<OsmStreetSegment[]> {
   return rows.map(mapStreetSegmentRow);
 }
 
-export async function deleteAllStreetSegments() {
-  const db = await getDatabase();
-
-  await db.runAsync("DELETE FROM osm_street_segments");
-}
-
 function mapStreetSegmentRow(row: OsmStreetSegmentRow): OsmStreetSegment {
   return {
     access: row.access,

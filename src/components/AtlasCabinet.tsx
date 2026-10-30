@@ -24,7 +24,6 @@ import {
   Text,
   type TextStyle,
   TouchableOpacity,
-  type ViewStyle,
   View,
   useWindowDimensions
 } from "react-native";
@@ -814,13 +813,6 @@ export function AtlasStamp({
     </View>
   );
 }
-
-export const ATLAS_CARD_STYLE: ViewStyle = {
-  backgroundColor: "rgba(9, 19, 27, 0.92)",
-  borderColor: APP_COLORS.border,
-  borderRadius: 18,
-  borderWidth: 1
-};
 
 const styles = createAppearanceStyles({
   backButton: {

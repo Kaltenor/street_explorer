@@ -13,10 +13,6 @@ export function setActiveAppearanceMode(mode: AppearanceMode) {
   activeAppearanceMode = mode;
 }
 
-export function getActiveAppearanceMode() {
-  return activeAppearanceMode;
-}
-
 export function isDaylightAppearance(mode = activeAppearanceMode) {
   return mode === "daylight";
 }
@@ -55,6 +51,7 @@ const COMMON_DAYLIGHT_COLORS: Record<string, string> = {
   "#8d5268": "#7b2448",
   "#c28a45": "#895000",
   "#38bdf8": "#0369a1",
+  "#7bbcff": "#175a9e",
   "#22c55e": "#16783a",
   "#fb923c": "#a84605",
   "#ef4444": "#b42318",

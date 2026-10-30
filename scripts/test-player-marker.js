@@ -29,7 +29,7 @@ function readPngDimensions(filePath) {
   return { height: png.readUInt32BE(20), width: png.readUInt32BE(16) };
 }
 
-function assertFrame(name, shouldBeBundled) {
+function assertFrame(name) {
   const filePath = path.join(root, "assets", "player", name);
   assert(fs.existsSync(filePath), `Missing player frame: ${name}`);
   const dimensions = readPngDimensions(filePath);
@@ -37,22 +37,18 @@ function assertFrame(name, shouldBeBundled) {
     dimensions.width === 64 && dimensions.height === 64,
     `Unexpected player frame size for ${name}: ${dimensions.width}x${dimensions.height}`
   );
-  if (shouldBeBundled) {
-    assert(
-      mapSource.includes(`../../assets/player/${name}`),
-      `Native marker frame is not bundled: ${name}`
-    );
-  }
+  assert(
+    mapSource.includes(`../../assets/player/${name}`),
+    `Native marker frame is not bundled: ${name}`
+  );
 }
 
 for (const direction of directions) {
-  assertFrame(`idle-${direction}.png`, false);
-  assertFrame(`native-idle-${direction}.png`, true);
-  assertFrame(`native-stale-${direction}.png`, true);
+  assertFrame(`native-idle-${direction}.png`);
+  assertFrame(`native-stale-${direction}.png`);
 
   for (let frame = 1; frame <= 3; frame += 1) {
-    assertFrame(`walk-${direction}-${frame}.png`, false);
-    assertFrame(`native-walk-${direction}-${frame}.png`, true);
+    assertFrame(`native-walk-${direction}-${frame}.png`);
   }
 }
 

@@ -1,4 +1,5 @@
 import { getDatabase } from "./db";
+import { assertRoutePlan, FOLLOWING_PLAN_KEY, type RoutePlan } from "../services/routePlanning";
 import type { MapProvider } from "../services/mapProvider";
 import { ActivityMode, GpsPoint } from "../types/walk";
 import { getCachedZoneById } from "./completionRepository";
@@ -241,7 +242,9 @@ export class ActiveRecordingConflictError extends Error {
 export async function createActiveRecordingSession(input: {
   activityMode: ActivityMode;
   startedAt: string;
+  routePlan?: RoutePlan | null;
 }) {
+  if (input.routePlan) assertRoutePlan(input.routePlan);
   const db = await getDatabase();
   let sessionId: number | null = null;
 
@@ -303,6 +306,16 @@ export async function createActiveRecordingSession(input: {
       input.startedAt
     );
     sessionId = result.lastInsertRowId;
+
+    // Bind the immutable guidance snapshot in the same transaction as recording.
+    if (input.routePlan) {
+      await transaction.runAsync(
+        "INSERT INTO app_settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        FOLLOWING_PLAN_KEY, JSON.stringify({ plan: input.routePlan, sessionId })
+      );
+    } else {
+      await transaction.runAsync("DELETE FROM app_settings WHERE key = ?", FOLLOWING_PLAN_KEY);
+    }
 
     await transaction.runAsync(
       `

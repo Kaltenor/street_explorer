@@ -251,15 +251,6 @@ export function calculateCompletionWithForbiddenCells(input: {
   return { completionPercent, eligibleZoneCells };
 }
 
-export async function fetchNearbyOsmZones(
-  center: Pick<GpsPoint, "latitude" | "longitude">,
-  signal?: AbortSignal
-): Promise<CachedZone[]> {
-  const result = await fetchNearbyOsmZonesWithDebug(center, signal);
-
-  return result.zones;
-}
-
 export async function fetchNearbyOsmZonesWithDebug(
   center: Pick<GpsPoint, "latitude" | "longitude">,
   signal?: AbortSignal,

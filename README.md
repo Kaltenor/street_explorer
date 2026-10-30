@@ -1,5 +1,31 @@
 # Street Explorer
 
+## Smaller production payload - 0.36.6
+
+Lossless catalogue compression, an exact icon subset and pixel-identical image optimization reduce the iOS runtime payload from 11.85 MB to 9.26 MB (21.9%); Android has the same proportional improvement. Features and offline France medals remain intact. These are Metro bundle/asset totals, not complete native app sizes. See [measurements and device checks](docs/APP_SIZE_0_36_6.md).
+
+## Project cleanup - 0.36.5
+
+Removed unused modules, obsolete player frames and tracked research scratch files. Typecheck now rejects unused locals and parameters. Published packs and active assets remain intact; see [audit results and regeneration requirements](docs/AUDIT_0_36_5.md).
+
+## Map medal selection - 0.36.4
+
+Tap a collected medal on the map to open Medals with that medal highlighted and scrolled into view. A medal from another city selects All Cities automatically. Opening Medals from the navigation dock still opens the normal overview. See [device checks](docs/TESTING.md#map-medal-selection---0364).
+
+## Visual refinement and maintenance - 0.36.3
+
+Atlas planning now has descriptive Create/Suggest choices, a gold validation action and clearer distance summaries. Blue-accent guidance distinguishes the planned route from recording; History actions accommodate larger text and statistics use aligned digits. Guidance measures distance to the actual segments, fixing false off-route warnings on straight paths with sparse map nodes. History reuses route calculations while renaming or expanding details. See the [audit and desktop measurements](docs/AUDIT_0_36_3.md) and [validation protocol](docs/TESTING.md#visual-refinement-and-guidance---0363).
+
+## Plan your next walk — 0.36.2
+
+Apple Maps planning markers no longer issue an unsupported native redraw command (fixed in 0.36.2). Reload the JavaScript bundle in a compatible development client; no native rebuild is required.
+
+Plan a walk beside Start hides the normal panels and opens compact Create / Suggest controls over the existing map. Create lets you tap a remote start, add successive points, then Validate walk. Suggest automatically finds a 2/4/6 km walking route after you tap its starting point, favoring unique valid unexplored cells. Return is optional and every route stays within 6 km. Validation prepares persistent blue guidance; start recording separately when ready. There is no Saved option. Public OSM data and on-device routing require no key or paid service. Older plan libraries remain preserved in Backup V5. See [route planning and limits](docs/ROUTE_PLANNING.md) and [device tests](docs/TESTING.md#walking-route-planning---0362).
+
+## Reliability and measured route performance - 0.35.24
+
+Long recovery previews no longer overflow the JavaScript stack. Route simplification reuses each segment's projection and handles short date-line crossings; saved GPS and frozen routes are unchanged. Completion ignores stale scope reads and prevents overlapping summary queries. Backup V5 inspection rejects mismatched medal acquisition identities and duplicate awards before replacement. See [audit measurements and limits](docs/AUDIT_0_35_24.md) and [device checks](docs/TESTING.md#maintenance-audit---03524).
+
 ## Large-city completion - 0.35.18
 
 Row-based grid counting supports larger cities without leaving completed-but-unavailable results labeled pending. Existing completion caches recalculate once; saved walks and achievements are preserved.
@@ -94,7 +120,7 @@ On iOS, Options → Map provider offers Apple Maps (default) and Google Maps, re
 
 ## Current Status
 
-Current version: `v0.35.23`
+Current version: `v0.36.6`
 
 For an installable physical-iPhone preview that does not depend on Metro or a development server, run `npm run build:ios:preview`. The EAS internal-distribution build embeds the application bundle and bundled assets. Core recording, saved exploration, cached boundaries, the bundled France medal catalogue, and already-installed country packs remain available when connectivity drops; uncached Apple map tiles, fresh OpenStreetMap data, Wikipedia, and country-pack downloads still require internet access. See [Development Build](docs/DEVELOPMENT_BUILD.md) for signing, device registration, installation, and verification details.
 

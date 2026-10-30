@@ -336,8 +336,8 @@ assert(
   "every active-city district view renders permanent unlocked and locked medal sections"
 );
 assert(
-  explorationMapSource.includes("description={medal.isCollected ? undefined : lockedLabel}") &&
-    explorationMapSource.includes("medal.isCollected && onMedalPress") &&
+  explorationMapSource.includes("description={isPlanning || medal.isCollected ? undefined : lockedLabel}") &&
+    explorationMapSource.includes("(isPlanning || medal.isCollected) && onMedalPress") &&
     mapScreenSource.includes("if (!medal.isCollected)") &&
     mapScreenSource.includes('lockedMedalLabel={language === "fr" ? "Verrouillée" : "Locked"}'),
   "locked map medals show a localized locked callout without opening Medals"

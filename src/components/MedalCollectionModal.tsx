@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createAppearanceStyles } from "../constants/appearance";
 import {
   ActivityIndicator,
@@ -42,6 +42,7 @@ type MedalDistrictOption = {
 type MedalCollectionModalProps = {
   collectedCities: CollectedMedalCity[];
   districtZones: CachedZone[];
+  initialSelectedMedal?: CollectedMedal | null;
   language: AppLanguage;
   progress: MedalAlbumProgress | null;
   retroScanComplete: boolean;
@@ -63,6 +64,7 @@ const CATEGORY_ICONS: Record<MedalCategory, keyof typeof Ionicons.glyphMap> = {
 export function MedalCollectionModal({
   collectedCities,
   districtZones,
+  initialSelectedMedal = null,
   language,
   progress,
   retroScanComplete,
@@ -73,7 +75,24 @@ export function MedalCollectionModal({
   onRunRetroScan
 }: MedalCollectionModalProps) {
   const [district, setDistrict] = useState<DistrictFilter>("all");
-  const [scope, setScope] = useState<MedalScope>("city");
+  const [scope, setScope] = useState<MedalScope>(
+    initialSelectedMedal && initialSelectedMedal.albumId !== progress?.album.id ? "allCities" : "city"
+  );
+  const medalListRef = useRef<ScrollView>(null);
+  const selectionLayout = useRef({ section: null as number | null, card: null as number | null, shown: false, contentReady: false, scrolled: false });
+  // This page mounts for each opening. Wait for both native layout and Modal presentation,
+  // then reveal once so later data refreshes cannot pull the reader away while browsing.
+  const revealSelection = () => {
+    const layout = selectionLayout.current;
+    if (!initialSelectedMedal || layout.scrolled || !layout.shown || !layout.contentReady ||
+      layout.section === null || layout.card === null || !medalListRef.current) return;
+    medalListRef.current.scrollTo({ y: Math.max(0, layout.section + layout.card - 12), animated: false });
+    layout.scrolled = true;
+  };
+  const recordSelectionLayout = (part: "section" | "card", y: number) => {
+    selectionLayout.current[part] = y;
+    revealSelection();
+  };
   const [wikipediaSelection, setWikipediaSelection] = useState<{
     cityName: LocalizedMedalText;
     medal: CollectedMedal;
@@ -151,6 +170,7 @@ export function MedalCollectionModal({
   return (
     <Modal
       animationType="none"
+      onShow={() => { selectionLayout.current.shown = true; revealSelection(); }}
       onRequestClose={wikipediaSelection ? () => setWikipediaSelection(null) : onClose}
       presentationStyle="overFullScreen"
       transparent
@@ -226,13 +246,19 @@ export function MedalCollectionModal({
           </> : null}
         </View>
 
-        <ScrollView contentContainerStyle={styles.medalGrid}>
+        <ScrollView
+          ref={medalListRef}
+          onContentSizeChange={() => { selectionLayout.current.contentReady = true; revealSelection(); }}
+          contentContainerStyle={styles.medalGrid}
+        >
           {scope === "city" ? <>
             <MedalSection
             cityName={progress?.album.cityName}
             emptyLabel={text.noUnlocked}
             language={language}
             medals={collectedMedals}
+            selectedMedal={initialSelectedMedal}
+            onSelectedLayout={recordSelectionLayout}
             onFocusMedal={onFocusMedal}
             onOpenWikipedia={openWikipedia}
             districtByMedalId={districtByMedalId}
@@ -243,6 +269,8 @@ export function MedalCollectionModal({
             emptyLabel={text.noLocked}
             language={language}
             medals={lockedMedals}
+            selectedMedal={initialSelectedMedal}
+            onSelectedLayout={recordSelectionLayout}
             onFocusMedal={onFocusMedal}
             onOpenWikipedia={openWikipedia}
             districtByMedalId={districtByMedalId}
@@ -278,6 +306,8 @@ export function MedalCollectionModal({
               key={city.albumId}
               language={language}
               medals={city.medals}
+              selectedMedal={initialSelectedMedal}
+              onSelectedLayout={recordSelectionLayout}
               onFocusMedal={onFocusMedal}
               onOpenWikipedia={openWikipedia}
               sourceAttribution={city.sourceAttribution}
@@ -307,6 +337,8 @@ function MedalSection({
   emptyLabel,
   language,
   medals,
+  selectedMedal,
+  onSelectedLayout,
   onFocusMedal,
   onOpenWikipedia,
   sourceAttribution,
@@ -317,6 +349,8 @@ function MedalSection({
   emptyLabel: string;
   language: AppLanguage;
   medals: CollectedMedal[];
+  selectedMedal?: CollectedMedal | null;
+  onSelectedLayout?: (part: "section" | "card", y: number) => void;
   onFocusMedal: (medal: CollectedMedal) => void;
   onOpenWikipedia: (
     cityName: LocalizedMedalText,
@@ -327,9 +361,14 @@ function MedalSection({
   title: string;
 }) {
   const text = getText(language);
+  const isSelected = (medal: CollectedMedal) =>
+    medal.albumId === selectedMedal?.albumId && medal.id === selectedMedal.id;
 
   return (
-    <View style={styles.section}>
+    <View
+      onLayout={medals.some(isSelected) ? event => onSelectedLayout?.("section", event.nativeEvent.layout.y) : undefined}
+      style={styles.section}
+    >
       <View style={styles.sectionHeader}>
         <Text style={styles.sectionTitle}>{title}</Text>
         <Text style={styles.sectionCount}>{medals.length}</Text>
@@ -338,12 +377,14 @@ function MedalSection({
       {medals.map((medal) => (
         <View
           key={medal.id}
-          style={[styles.card, medal.isCollected ? styles.cardCollected : styles.cardLocked]}
+          onLayout={isSelected(medal) ? event => onSelectedLayout?.("card", event.nativeEvent.layout.y) : undefined}
+          style={[styles.card, medal.isCollected ? styles.cardCollected : styles.cardLocked, isSelected(medal) && styles.cardSelected]}
         >
           <TouchableOpacity
             accessibilityHint={text.mapHint}
             accessibilityLabel={medal.name[language] + ", " + (medal.isCollected ? text.unlocked : text.locked)}
             accessibilityRole="button"
+            accessibilityState={{ selected: isSelected(medal) }}
             onPress={() => onFocusMedal(medal)}
             style={styles.cardMapAction}
           >
@@ -571,6 +612,7 @@ const styles = createAppearanceStyles({
   },
   cardMapAction: { alignItems: "center", flexDirection: "row", gap: 14, padding: 14 },
   cardCollected: { backgroundColor: "rgba(19, 35, 42, 0.96)" },
+  cardSelected: { borderColor: APP_COLORS.gold, backgroundColor: APP_COLORS.cardHighlight, opacity: 1 },
   cardLocked: { backgroundColor: "rgba(9, 19, 27, 0.9)", opacity: 0.78 },
   medal: { alignItems: "center", backgroundColor: "#202c35", borderColor: "#43515c", borderRadius: 29, borderWidth: 2, height: 58, justifyContent: "center", width: 58 },
   medalCollected: { backgroundColor: "#9a6d15", borderColor: APP_COLORS.gold },

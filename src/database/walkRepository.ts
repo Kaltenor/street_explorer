@@ -1,6 +1,7 @@
 import type { SQLiteDatabase } from "expo-sqlite";
 
 import { getDatabase } from "./db";
+import { getRoutePlans } from "./routePlanRepository";
 import { ensureMedalAlbumSeeded } from "./medalRepository";
 import type { CompletionScope } from "./completionRepository";
 import { APP_VERSION } from "../constants/config";
@@ -55,15 +56,6 @@ type RouteSnapshotRow = {
   source_point_count: number;
 };
 
-type CreateWalkInput = {
-  activityMode: ActivityMode;
-  startedAt: string;
-  endedAt: string;
-  distanceMeters: number;
-  durationSeconds: number;
-  stepCount?: number;
-};
-
 type FinishWalkInput = {
   displayName?: string | null;
   endedAt: string;
@@ -71,55 +63,6 @@ type FinishWalkInput = {
   durationSeconds: number;
   stepCount: number;
 };
-
-export async function createWalkSession(input: CreateWalkInput) {
-  const db = await getDatabase();
-  const result = await db.runAsync(
-    `
-      INSERT INTO walk_sessions (
-        activity_mode,
-        started_at,
-        ended_at,
-        distance_meters,
-        duration_seconds,
-        step_count
-      )
-      VALUES (?, ?, ?, ?, ?, ?)
-    `,
-    input.activityMode,
-    input.startedAt,
-    input.endedAt,
-    input.distanceMeters,
-    input.durationSeconds,
-    input.stepCount ?? 0
-  );
-
-  return result.lastInsertRowId;
-}
-
-export async function saveGpsPoint(sessionId: number, point: GpsPoint) {
-  const db = await getDatabase();
-
-  await db.runAsync(
-    `
-      INSERT INTO gps_points (
-        session_id,
-        latitude,
-        longitude,
-        timestamp,
-        accuracy,
-        point_index
-      )
-      VALUES (?, ?, ?, ?, ?, ?)
-    `,
-    sessionId,
-    point.latitude,
-    point.longitude,
-    point.timestamp,
-    point.accuracy,
-    point.pointIndex
-  );
-}
 
 export async function saveGpsPointWithNextIndex(
   sessionId: number,
@@ -330,21 +273,6 @@ export async function clearPendingRecordingRepair(sessionId: number) {
     "DELETE FROM pending_recording_repairs WHERE session_id = ?",
     sessionId
   );
-}
-
-
-export async function getGpsPointCountForSession(sessionId: number): Promise<number> {
-  const db = await getDatabase();
-  const row = await db.getFirstAsync<{ count: number }>(
-    `
-      SELECT COUNT(*) AS count
-      FROM gps_points
-      WHERE session_id = ?
-    `,
-    sessionId
-  );
-
-  return row?.count ?? 0;
 }
 
 export async function updateActiveWalkDistance(
@@ -1155,6 +1083,7 @@ export async function withBackupV5Snapshot<T>(
       appVersion: APP_VERSION,
       exportedAt: new Date().toISOString(),
       forbiddenZones,
+      routePlans: await getRoutePlans(transaction),
       medalSystem: {
         acquisitionEvents: medalEventRows.map((row) => ({
           acquiredAt: row.acquired_at,
@@ -1527,6 +1456,10 @@ export async function restoreBackupV5Data(
       transaction,
       manifest.forbiddenZones ?? []
     );
+    await transaction.execAsync("DELETE FROM route_plans; DELETE FROM planning_cache; DELETE FROM app_settings WHERE key = 'following_route_plan';");
+    for (const plan of manifest.routePlans ?? []) {
+      await transaction.runAsync("INSERT INTO route_plans (id, data, updated_at) VALUES (?, ?, ?)", plan.id, JSON.stringify(plan), plan.updatedAt);
+    }
   });
 }
 
@@ -1547,6 +1480,7 @@ export async function deleteAllData() {
   const db = await getDatabase();
 
   await db.withExclusiveTransactionAsync(async (transaction) => {
+    await transaction.execAsync("DELETE FROM route_plans; DELETE FROM planning_cache; DELETE FROM app_settings WHERE key = 'following_route_plan';");
     await transaction.execAsync(`
       DELETE FROM app_settings
       WHERE key IN (

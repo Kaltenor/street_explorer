@@ -1,5 +1,31 @@
 # Roadmap
 
+## Runtime payload optimization - 0.36.6
+
+Implemented: lossless per-city catalogue compression with shared dictionary, exact icon-font subsetting, lossless image optimization and reproducible size/equivalence checks. Remaining: device launch/font/catalogue smoke checks and comparison of signed native release artifacts. [Measurements and protocol](APP_SIZE_0_36_6.md).
+
+## Bloat cleanup - 0.36.5
+
+Implemented: unused module/export removal, inactive sprite removal, research scratch cleanup, EAS authoring-source exclusions and stricter typecheck. Runtime and physical-device performance improvements are not claimed. Device smoke checks remain manual; see [audit](AUDIT_0_36_5.md).
+
+## Map medal selection - 0.36.4
+
+Implemented: map-to-collection selection handoff, exact album/medal highlight, initial scroll after native layout, cross-city scope and ordinary dock overview. Executable component regressions cover event ordering and delayed data. Remaining: physical-device marker-to-card scrolling on both providers.
+
+## Visual and guidance maintenance - 0.36.3
+
+Implemented: refined Atlas planner/recording cards, clearer primary action, blue guidance, grouped statistics, flexible History actions, segment-based off-route detection and memoized History geometry. Automated regressions cover guidance geometry and report reuse/invalidation. Remaining: physical-device appearance/touch/large-text checks and real frame-time/memory measurements. Desktop timings do not establish phone performance.
+
+## Walking plans implemented — 0.36.2
+
+Manual walking plans and automatic 2/4/6 km suggestions use the existing map with compact Atlas strips and hidden normal panels. Remote start selection, successive points, undo, optional return, validation, persistent blue guidance and recording recovery are implemented. Suggestions rank unique valid unexplored cells with a 6 km ceiling. The Saved option is removed; legacy plan data remains preserved in Backup V5. No API key or paid routing service. Remaining validation: physical-device layout/touch interaction, real pedestrian networks, provider parity, background recovery and large-city memory/latency. [Contract and limitations](ROUTE_PLANNING.md).
+
+## Verified maintenance - 0.35.24
+
+Completed: iterative route simplification with shared per-range calculations, short date-line projection, stale completion-load protection, bounded summary polling, and backup medal identity validation. Targeted regressions are included in the aggregate checks.
+
+Remaining validation: native startup/Stop/frame-time and memory measurements on a large disposable history, physical background recovery, and offline restore. Pathological alternating routes remain quadratic (12,000-point desktop fixture: about 1.27 seconds); an algorithm or preview-sampling change needs device evidence and an explicit fidelity decision. See [audit](AUDIT_0_35_24.md).
+
 ## Clear routes after stopping - 0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.
@@ -185,7 +211,7 @@ Complete the physical-device protocol and remaining performance measurements in 
 ### 1. District Progress Map
 
 - optional emphasis for underexplored district pockets and incomplete streets
-- no automatic routing or prescribed path
+- complement the optional route planner with a free-exploration progress view
 
 ### 2. Explorer Journal
 
@@ -199,7 +225,6 @@ Complete the physical-device protocol and remaining performance measurements in 
 - cloud sync
 - achievements
 - social features
-- route recommendations
 
 Completed in 0.34.4: remove expeditions, their bonuses, and their storage with legacy V5 import compatibility. Remaining verification includes real-device upgrade/restore and six-tab navigation, alongside the audit profiling tasks.
 

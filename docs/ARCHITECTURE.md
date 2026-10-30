@@ -1,5 +1,43 @@
 # Architecture
 
+## Compressed offline catalogue and icon subset - 0.36.6
+
+The France manifest now delegates synchronous load() to bundledMedalPayload.ts. A generated JSON module contains per-city raw DEFLATE/base64 streams and a gzip-compressed 32 KiB shared dictionary. The dictionary initializes on first lookup; each album decodes once into a cached object, preserving lazy offline behavior and object identity. Source albums remain under assets/medals for authoring and equality tests, but are no longer imported into the runtime.
+
+metro.config.js redirects only @expo/vector-icons/Ionicons to AppIcon.ts, which uses the existing createIconSet implementation and ionicons family with a generated glyph map and subset font. Font preloading is unchanged. Artwork is recompressed without changing decoded pixels or dimensions. See [measurements, regeneration and constraints](APP_SIZE_0_36_6.md).
+
+## Source and build hygiene - 0.36.5
+
+The application import graph contains 100 reachable TypeScript modules including App.tsx. Removed disconnected MapLegend, ModeProfilePanel and POI review modules, plus unreferenced legacy wrappers/constants. Existing database tables and migrations remain for compatibility. Typecheck rejects unused locals and parameters; it does not detect unused exports. Scratch directories are ignored; EAS also excludes Photoshop and cartographer source artwork. [Audit scope and evidence](AUDIT_0_36_5.md).
+
+## Map-to-collection selection - 0.36.4
+
+MapScreen passes a separate collectionMedal request to the freshly mounted MedalCollectionModal as initialSelectedMedal; map camera focus remains independent. Closing all Atlas pages clears the collection selection, so dock navigation opens the overview. The collection initializes to the current city or All Cities based on album identity, matches both albumId and medal ID, and highlights the selected card with an accessibility selected state. Scroll offsets combine the section and card layouts. The one-time, nonanimated reveal waits for Modal.onShow and ScrollView content size, including delayed collection data. Later refreshes do not reset manual scrolling. Existing locked-marker and reward-only Wikipedia behavior remains unchanged.
+
+## Visual refinement and guidance - 0.36.3
+
+PlanGuidance prepares routeGuidance's local metric projection once per coordinates reference. Recording guidance computes nearest point on each segment (clamped to endpoints), using wrapped longitude across the date line; it no longer tests only OSM vertices. This approximation is scoped to the planner's maximum 6 km routes, not general long-distance navigation. Start distance remains haversine; absent GPS displays a waiting state. The existing 50 m off-route threshold remains.
+
+RecordingDetail memoizes its report by walk, GPS details and loop-fill summary; inferred sections/cell totals depend on route segments and activity mode. Rename drafts and disclosure state do not rerun geometry scans. Shared theme guidance colors cover both appearances. Existing planner controls gain descriptive choices and a distinct validation action without changing routing/persistence.
+
+## Route planner — 0.36.2
+
+PlanningMarker receives the map provider from both numbered preparation stops and the guidance start marker. Only Google/Android snapshot markers schedule redraw after layout; Apple MapKit annotation views skip the unsupported command. Provider changes and unmount cancel pending timers. Existing medal/player redraw paths already have provider guards.
+
+RoutePlanner is an idle-only transparent overlay reached from WalkControls. MapScreen hides the normal HUD/dock and routes taps on its existing ExplorationMap to the planner. Numbered stops and blue previews share this map; manual additions preserve the viewport, while suggestions frame the computed route. Compact safe-area strips replace the old Atlas form, dedicated picker and Saved tab. Long-press objectives and medal panels are suspended during preparation and restored on exit.
+
+Create recalculates after successive stops; Suggest calculates after its first start tap and after distance/return changes. Requests debounce for 350 ms and abort on superseding edits, cancellation or unmount; stale results cannot publish. routePlanning owns a bounded pedestrian graph and yielding A* searches. planningExploration caches cell eligibility against explored polygons (including filled enclosures) and Forbidden Zones. collectPlannedRouteCellIds shares the recorded-path grid/capture implementation; candidate scores count unique new cells. planningData owns cancellable Overpass downloads and a three-area, seven-day SQLite cache.
+
+Validate walk persists only the following_route_plan snapshot. usePlannedWalk hydrates pending guidance or the matching recording association; recording creation binds it atomically. Migration 38 and Backup V5 retain legacy route_plans without exposing a library UI. Restore clears topology/guidance before replacing legacy plans within the existing transaction. Optional estimatedNewCellCount keeps older plans compatible. No new native dependency or migration in this patch. See [routing contracts and limits](ROUTE_PLANNING.md).
+
+## Maintenance invariants - 0.35.24
+
+Route rendering uses an explicit Douglas-Peucker work stack, with baseline/projection constants computed once per range. Longitude deltas follow the short date-line direction. Repeated endpoints keep their haversine fallback; tolerances, point identity/order and saved route data are preserved. The algorithm still has quadratic worst-case work on highly alternating routes.
+
+Completion zone-list requests share a generation counter and read the current scope/visibility; stale results cannot replace a newer selection or cleared list. Cleanup invalidates pending reads, including after closing/reopening. Summary polling has at most one pending query per visible effect, releases its guard on failure, and suppresses publication after cleanup. Delayed statistics and automatic-refresh-state reads also ignore canceled effects.
+
+Backup V5 validation requires each collected medal's album and medal identity to match its acquisition event, and rejects duplicate collected keys before restore begins. Valid archives, schema and permanent-award behavior are unchanged. See [audit evidence](AUDIT_0_35_24.md).
+
 ## Clear routes after stopping - 0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.
@@ -148,7 +186,7 @@ On iOS, `react-native-maps` uses Apple MapKit in dark `mutedStandard` mode for E
 - `src/services`: app logic such as recording, distance, cells, and background tasks.
 - `src/database`: SQLite initialization and repositories.
 - `src/types`: shared TypeScript types.
-- `src/constants/appearance.ts`: persisted appearance-mode contract plus live style translation between the existing Explorator palette and the Daylight palette; Custom currently resolves to Explorator until its own palette is defined.
+- `src/constants/appearance.ts`: persisted appearance-mode contract plus live style translation between the existing Explorator palette and the Daylight palette; removed legacy Custom values resolve to Explorator.
 - `src/constants/theme.ts`: paired Explorator/Daylight surfaces plus semantic walking, path, exploration, and GPS-state colors.
 - `src/constants`: walking GPS configuration and labels.
 
@@ -205,7 +243,7 @@ Tables:
 
 `app_settings` stores lightweight local settings:
 
-- selected appearance mode (`explorator`, `daylight`, or the future-facing `custom` placeholder)
+- selected appearance mode (`explorator` or `daylight`; legacy `custom` values fall back to Explorator)
 - active recording session id
 - active recording profile marker
 - last trustworthy player position for cold-launch continuity
@@ -300,7 +338,7 @@ The map treats the native player annotation and active route as the immediate la
 
 The parent map screen no longer owns a one-second elapsed timer. Walk Controls owns that small clock, inactive SQLite tail polling runs every three seconds, and it loads the session only after finding new indexed points. During recording, raw-fix publication waits for the same persistence settlement as the canonical active-walk update so React can batch both state changes into one render; idle location remains immediate, and failures/backpressure still publish the newest raw fix with their visible health state. Hidden full-screen panels are unmounted, History uses a virtualized list, and route history is loaded with a fixed SQL scope for All, Today, Last 7 days, or Selected rather than a session-sized placeholder list. History summary point counts use the validated finalized route snapshot's source count without joining the complete GPS ledger; a missing snapshot or durable pending-repair marker falls back to an exact indexed per-session count. Development timing labels distinguish `map.saved-data-queries`, `map.path-history-load`, and `map.selected-walk-load` database/hydration latency from the synchronous geometry and MapKit lanes.
 
-Migration 21 adds covering indexes for coordinate/source exploration reads and mode/start/end session queries. Completion uses grouped coordinate subqueries, indexed ISO day ranges, and pre-aggregated loop/cell CTEs. Backup keeps its exclusive consistent snapshot but V5 loads, compacts, and gzip-compresses one bounded record at a time, avoiding both a monolithic JSON value and duplicate confirmed-route point storage. Startup exposes the map after database and language readiness while the coalesced background outbox drain continues concurrently; unfinished-recording detection still awaits that same drain before making a recovery decision. Direct Ionicons imports keep unrelated icon fonts out of the bundle.
+Migration 21 adds covering indexes for coordinate/source exploration reads and mode/start/end session queries. Completion uses grouped coordinate subqueries, indexed ISO day ranges, and pre-aggregated loop/cell CTEs. Backup keeps its exclusive consistent snapshot but V5 loads, compacts, and gzip-compresses one bounded record at a time, avoiding both a monolithic JSON value and duplicate confirmed-route point storage. Startup exposes the map after database and language readiness while the coalesced background outbox drain continues concurrently; unfinished-recording detection still awaits that same drain before making a recovery decision. Direct Ionicons imports are now redirected by Metro to the generated exact glyph subset (0.36.6), keeping unrelated fonts and unused Ionicons glyphs out of the bundle.
 
 ## GPS Filtering
 
@@ -381,7 +419,7 @@ Startup resets an interrupted `presenting` state to `pending`, so every collecte
 
 The Medals screen retains its explicitly confirmed incremental recording scan for the active city. Catalogue-version changes reset only that album's cursor so new landmarks can be tested against relevant saved walks, while the automatic launch rule independently covers all currently available definitions through the persisted discovered-cell ledger. Backup V5 includes `recording`, `retro_scan`, and `discovered_area` acquisition events, collected state, presentation state, and cursor settings. V1-V4 restore support and the temporary V4 conversion bridge have been removed.
 
-The developer-only POI candidate service queries an allowlisted set of OpenStreetMap tags inside fixed bounds and stores candidates as `unreviewed`. Network results never mutate the frozen shipped album or become collectible without review and a release change.
+The disconnected developer-only POI candidate service was removed in 0.36.5. Its legacy tables remain in the migration history for database compatibility. Country-pack generation and release review remain the supported catalogue-authoring workflow; network results do not directly become collectible.
 ## Street Completion
 
 Street Completion V2 keeps Apple MapKit as the visible map while using cached OpenStreetMap ways as a durable analysis denominator. Progress is rebuilt only from immutable `route_snapshots`; raw GPS remains available solely to capture the one-time V1 migration baseline.

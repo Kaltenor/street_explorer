@@ -1,0 +1,4 @@
+# Authoring tools only; ordinary npm installs and mobile builds do not use Python.
+fonttools==4.68.0
+Pillow==12.3.0
+zopfli==0.4.3

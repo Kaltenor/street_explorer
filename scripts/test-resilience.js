@@ -325,7 +325,9 @@ async function main() {
     await initDatabase();
     assert.deepEqual(snapshot(), beforeRemoval);
     assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM sqlite_master WHERE name LIKE 'district_expedition%'").get().n, 0);
-    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM schema_migrations").get().n, 37);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM schema_migrations").get().n, 38);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM route_plans").get().n, 0);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM planning_cache").get().n, 0);
     assert.equal(sqlite.prepare("PRAGMA foreign_key_check").all().length, 0);
     delete require.cache[require.resolve("../src/database/db.ts")];
     await require("../src/database/db.ts").initDatabase();
@@ -360,7 +362,18 @@ async function main() {
     const takeSnapshot = () => walks.withBackupV5Snapshot(async ({ metadata, loadSessions }) => ({
       metadata, data: await loadSessions(metadata.sessions.map(session => session.id))
     }));
+    const { haversineDistanceMeters } = require("../src/services/distance.ts");
+    const coordinates = [{ latitude: 45.76, longitude: 4.84 }, { latitude: 45.761, longitude: 4.84 }];
+    const planDistance = haversineDistanceMeters(...coordinates);
+    const routePlan = { id: "saved-plan", name: "Next walk", updatedAt: "2026-10-09T12:00:00Z",
+      coordinates, stops: coordinates.map(point => ({ ...point, label: "Stop" })), returnToStart: false,
+      distanceMeters: planDistance, durationMinutes: Math.ceil(planDistance / 75), estimatedNewMeters: 0,
+      medalOpportunities: 0, targetMeters: null, preference: "balanced" };
+    sqlite.prepare("INSERT INTO route_plans VALUES(?,?,?)").run(routePlan.id, JSON.stringify(routePlan), routePlan.updatedAt);
+    sqlite.prepare("INSERT INTO app_settings VALUES(?,?)").run("following_route_plan", JSON.stringify({ plan: routePlan, sessionId: null }));
+    sqlite.exec("INSERT INTO planning_cache(latitude,longitude,radius,data,fetched_at) VALUES(45.76,4.84,1000,'{}','2026-10-09')");
     const original = await takeSnapshot();
+    assert.deepEqual(original.metadata.routePlans, [routePlan]);
     assert.equal(Object.hasOwn(original.metadata, "expeditionSystem"), false);
     const legacy = { ...backup.createBackupV5Manifest(original.metadata), expeditionSystem: {
       expeditions: [{ id: "retired" }], seals: [{ expeditionId: "retired" }],
@@ -370,11 +383,17 @@ async function main() {
     async function* interruptedBlocks() { yield original.data; throw new Error("restore interrupted"); }
     await assert.rejects(walks.restoreBackupV5Data(legacy, interruptedBlocks()), /restore interrupted/);
     assert.deepEqual((await takeSnapshot()).data, original.data);
+    assert.deepEqual((await takeSnapshot()).metadata.routePlans, [routePlan]);
     await walks.restoreBackupV5Data(legacy, fixtureBlocks());
     const restored = await takeSnapshot();
     assert.deepEqual(restored.data, original.data);
-    for (const key of ["sessions", "medalSystem", "zoneAchievements", "forbiddenZones"])
+    for (const key of ["sessions", "medalSystem", "zoneAchievements", "forbiddenZones", "routePlans"])
       assert.deepEqual(restored.metadata[key], original.metadata[key]);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM planning_cache").get().n, 0);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM app_settings WHERE key='following_route_plan'").get().n, 0);
+    await walks.restoreBackupV5Data({ ...legacy, routePlans: undefined }, fixtureBlocks());
+    assert.deepEqual((await takeSnapshot()).metadata.routePlans, []);
+    console.log("PASS route-plan backup/restore is transactional, clears guidance/cache and accepts older archives without plans");
     assert.equal(Object.hasOwn(restored.metadata, "expeditionSystem"), false);
     assert.equal(sqlite.prepare("PRAGMA foreign_key_check").all().length, 0);
     await walks.deleteAllData();
@@ -418,9 +437,9 @@ async function main() {
     sqlite = new DatabaseSync(":memory:");
     delete require.cache[require.resolve("../src/database/db.ts")];
     await require("../src/database/db.ts").initDatabase();
-    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM schema_migrations").get().n, 37);
+    assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM schema_migrations").get().n, 38);
     assert.equal(sqlite.prepare("SELECT COUNT(*) AS n FROM sqlite_master WHERE name LIKE 'district_expedition%'").get().n, 0);
-    console.log("PASS fresh installation initializes all 37 migrations without expedition tables");
+    console.log("PASS fresh installation initializes all 38 migrations without expedition tables");
   } finally { Module._load = originalLoad; sqlite.close(); }
 }
 

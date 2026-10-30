@@ -1,5 +1,80 @@
 # Testing
 
+## Bundle and visual equivalence - 0.36.6
+
+Run npm run test:bundle-assets (also included in npm test) to check all 500 decoded France albums against source JSON, cached object identity, generated-data freshness, icon-name coverage and Metro resolution. Production iOS and Android exports must retain 31 runtime assets and the subset font. Image optimization and font generation assert pixel/outline/metric equivalence before writing assets.
+
+[The size audit](APP_SIZE_0_36_6.md) records byte counts and a numbered device protocol for both appearances/languages, icons, offline cities, recording, sounds, persistence and downloadable catalogues. These native-device checks remain manual.
+
+## Cleanup smoke checks - 0.36.5
+
+Automated validation: npm test includes the stricter unused-local/parameter typecheck; export the iOS bundle with npx expo export --platform ios --output-dir .tmp/cleanup-ios. See [audit results](AUDIT_0_36_5.md).
+
+Manual prerequisites: compatible SDK 54 device client with the updated bundle (or standalone build 260), location permission, saved walks and collected medals. These physical-device checks are not automated.
+
+1. Launch in both appearance modes. Expect the branded splash, fonts and animated cartographer to render.
+2. Open History, Medals and planning; select a collected map medal. Expect existing records, selection and planning controls to work.
+3. Record and finish a short walk, then reopen the app. Expect the saved path and achievements to persist.
+4. Disable networking and reopen a previously downloaded country catalogue. Expect its cached medals to remain available.
+
+## Map medal selection - 0.36.4
+
+Automated: npm run test:ui includes scripts/test-medal-selection.js. It executes the map tap callback and collection/section components with mocked native primitives: current and foreign albums, duplicate IDs, delayed data, three layout/presentation event orders, one-time scrolling, selected accessibility state, visible highlight, and an unselected ordinary overview. It is not a native rendering test.
+
+Manual prerequisites: compatible SDK 54 client with this bundle (standalone build 259), collected medals including one far down a city's list, and ideally collected medals in two cities. Cached medals work offline. Test Apple Maps and Google Maps where configured.
+
+1. Tap a collected map medal far down the list. Expected: Medals opens in the correct city, scrolls to its card and highlights it; its description/Wikipedia action remain available.
+2. Return to the map, tap a different medal, then tap the first again. Expected: the latest tapped card is selected on every opening. Scroll elsewhere in the collection and let data refresh; expected: no jump back.
+3. In All Cities, focus a collected medal from another city on the map, then tap its marker. Expected: All Cities opens and reveals the matching city's card, even if another album contains the same medal ID.
+4. Close and open Medals using the dock. Expected: normal city overview with no stale selected card. Repeat in French/English, both appearances and larger text; expected: the target is visible and highlighted after layout settles.
+
+Physical-device validation remains manual; this patch does not change locked-marker interactions or medal rewards.
+
+## Visual refinement and guidance - 0.36.3
+
+Automated: npm run test:ui includes scripts/test-refinement.js. It executes production guidance and History components with a hook harness (no native renderer), covering the sparse-segment midpoint, both sides of the 50 m threshold, endpoint clamping, repeated points, corners, date-line wrapping, latitude scaling, missing GPS, replacement plans, 30 rename edits without repeated geometry scans, and invalidation when GPS/loop data changes. Run node scripts/test-refinement.js --benchmark for warmed desktop medians on a 15,000-vertex plan. The old vertex metric and corrected segment metric have different semantics.
+
+Manual prerequisites: compatible SDK 54 client with this bundle (standalone build 258), saved walks including a long recording, precise foreground GPS, and internet for uncached planning. Use Apple Maps and Google Maps where configured. These checks require a physical device and were not automated.
+
+1. Open the map, statistics and History in Explorator and Daylight; repeat in French and English at normal and larger system text sizes, including a narrow phone. Expected: readable labels, stable metric digits, wrapping History actions and accessible Start/Stop/Plan controls without clipped action text.
+2. Open Plan a walk, try Create and Suggest, set start/stops, switch distance/Return, undo, cancel and retry. Expected: descriptive choices, visible selected settings, a distinct gold Validate walk action, responsive map taps and no obsolete result replacing the latest edit.
+3. Validate a route with a long straight segment and start recording near its midpoint. Expected: no off-route warning solely because the nearest source nodes are far away. Move more than 50 m away from the blue line: expect off-route guidance. Before recording, expect straight-line distance to the start; without a location, expect waiting guidance. GPS accuracy can affect the threshold.
+4. Open a long walk in History and type a name, expand details, then save and reopen. Expected: responsive typing, unchanged route statistics and persisted name. Reprocess only a disposable walk if checking invalidation; expect updated statistics after completion.
+5. Hide guidance during recording, stop, and reopen offline. Expected: recording survives Hide, saved route remains intact, and hidden guidance stays hidden. Check uncached planning offline: a clear retryable error and an operable Close control.
+
+No phone frame-rate, native screenshot or physical GPS result is implied by the desktop tests or iOS bundle export.
+
+## Walking route planning - 0.36.2
+
+Marker regression: npm run test:map-provider executes the planning marker effect with Apple, Google iOS and Google Android. It verifies no Apple redraw, post-layout Google refresh, label/theme updates, provider-switch cancellation and unmount cleanup, and checks the installed native command exports. On an iPhone using Apple Maps, open Create, tap several points, wait over 500 ms, validate, then reopen/close planning. Expected: visible markers without a redraw error. Repeat on Google Maps where supported and change appearance/provider while idle. Native rendering still requires device verification.
+
+Automated: npm run test:planning (also in npm test) tests pedestrian routing, 2/4/6 km suggestions, canonical walk-grid capture, unique cell counts, explored/Forbidden Zone exclusions and filled enclosures. The planner component harness exercises real callbacks/effects with remote starts, successive taps, undo, automatic calculation, distance changes, validation and stale-result cancellation. Persistence, recording association, reward isolation, V5 compatibility, cache and network-failure fixtures remain covered. These Node tests do not render a native screen. Release checks: npm test and npx expo export --platform ios --output-dir <temporary-directory>.
+
+Prerequisites: compatible SDK 54 development client with 0.36.2 / build 257, migration 38 applied, internet for uncached pedestrian data, a mapped walkable area and test exploration/Forbidden Zones. Location is unnecessary for map selection; precise foreground/background location is required for recording/recovery. Test both providers where available, French/English, Explorator/Daylight, large text, VoiceOver and Reduce Motion. Use a disposable profile and verified external backup for restore tests.
+
+1. While idle, tap Plan a walk. Expected: normal panels, recording controls and dock disappear; only compact Create / Suggest controls remain over the same pannable map, with no Saved option. Close it: normal controls and objective long-press return.
+2. Choose Create, pan away from GPS and tap a start, then a second and third point. Expected: numbered markers, a prompt for the next point, automatic blue path previews after each added point, and compact controls leaving most of the map free. Undo a point and toggle Return; the preview recalculates. Repeat with location permission denied.
+3. Validate a suitable route. Expected: preparation closes, normal controls return with blue guidance, recording remains stopped and no exploration/medals are earned. Reopen the app: pending guidance persists. Start a new preparation and cancel: the prior validated guidance returns.
+4. Choose Suggest and tap a remote starting point. Expected: calculation begins automatically for 2 km. Try 4 km, 6 km, Return, refresh and a new start. Actual distance (never over 6 km), time and unique new-cell estimate appear. The preview frames the route. Routes should favor valid unexplored ground, without credit for existing filled surfaces, duplicate return cells or Forbidden Zones. Fully explored areas may report zero new cells.
+5. Change points/distances while calculating, cancel, close or background the app. Expected: old results never replace the latest route; cancellation remains responsive. An inaccessible start, disconnected paths or unsuitable distance produces actionable feedback, without fabricated connecting lines. Undo or select a new start to recover.
+6. Validate, travel to the chosen start with recording off, then tap Start walk. Expected: transport creates no recording; walking records normally. More than 50 m away from the route, expect off-route guidance without automatic rerouting. Hide guidance: recording continues. Background/relaunch and recover a planned recording: its guidance returns. Stop, then start spontaneously: old guidance must not reattach.
+7. Reopen pending guidance in airplane mode. Expected: retained route geometry works, although basemap tiles may be absent. Recently cached topology can recalculate; an uncached area fails clearly. Restore connectivity and retry. Planning never changes exploration, completion or medal totals.
+8. On a disposable profile containing an older plan library, export/inspect/restore Backup V5. Expected: legacy routePlans roundtrip without a Saved UI; live guidance/cache clear on restore. An older archive without routePlans remains accepted. These backup guarantees are also checked with SQLite fixtures.
+
+## Maintenance audit - 0.35.24
+
+Automated: `npm test` includes `scripts/test-route-simplification.js` in geometry and `scripts/test-completion-loading.js` in completion. Backup tests reject mismatched medal/event identities, missing events and duplicate collected keys while retaining valid V5 archives. The completion harness executes actual component callbacks with delayed reads and simulated timer ticks; it does not render a native screen.
+
+Reproduce desktop route measurements with `node scripts/benchmark-route-simplification.js 941cc1c6eeae1284e7cc9de3aa27d3fec4d86b58`. This compares the historical and working implementations in one process, warms each workload, reports five-run medians, and checks 300 ordinary-route/tolerance equivalence cases. Polygon baseline: `npm run measure:polygons`.
+
+Physical-device protocol (not run automatically): use a disposable profile/device, compatible SDK 54 client with 0.35.24, precise foreground and Always location permissions, and an externally verified test backup containing walks and medals. Use internet for uncached boundaries; repeat cached paths offline. Do not interrupt or replace the only copy of real data.
+
+1. Launch online and offline with saved walks. Open History and focus a long route, then pan/zoom. Expected: saved route remains visible with correct endpoints and turns; note device/frame-time stalls rather than assuming desktop timings apply.
+2. In Completion, quickly switch District/City/Country while reads are pending; close and reopen. Expected: the final selected scope retains its own list, with no late overwrite from an earlier scope. Leave it open during slow storage/rebuild work; summaries recover after temporary failures without a growing query backlog (inspect diagnostics if available).
+3. Start a disposable walk, lock/unlock, return, Stop and reopen. Expected: one finalized walk with retained route and stats. In a separate disposable interrupted-walk scenario, reopen into automatic recovery or its fallback preview; a long route must not trigger a stack-overflow crash. Permission-denied recovery should retain the existing Finish/Discard choices.
+4. Export and restore the disposable V5 backup, compare walk/point and medal counts, then reopen offline. Expected: matching awards, routes and persistent state. For the malformed-reference edge cases use `npm run test:backup`; those fixtures are generated in memory and need no edits to personal archives.
+5. On each available map provider, verify selected-route corners and a prepared date-line route in the test dataset at multiple zoom levels. Expected: short crossings obey the display tolerance; raw GPS/exported coordinates remain unchanged. Report any native map wrapping artifact separately from simplification.
+
 ## Clear routes after stopping - 0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.

@@ -363,5 +363,31 @@ assert(
 );
 
 
+const medalManifest = structuredClone(manifest);
+medalManifest.medalSystem.acquisitionEvents = [{
+  id: 1, albumId: "album-a", medalId: "medal-a", sessionId: null,
+  reason: "discovered_area", enclosureId: "surface", anchorCellId: "1:1",
+  enclosureAreaSquareMeters: 225, enclosureCellIds: ["1:1"],
+  acquiredAt: "2026-08-02T10:00:00.000Z"
+}];
+medalManifest.medalSystem.collectedMedals = [{
+  albumId: "album-a", medalId: "medal-a", acquisitionEventId: 1,
+  presentationState: "presented", presentedAt: "2026-08-02T10:00:00.000Z"
+}];
+assertBackupV5Manifest(medalManifest);
+for (const mutate of [
+  value => { value[0].albumId = "album-b"; },
+  value => { value[0].medalId = "medal-b"; },
+  value => { value[0].acquisitionEventId = 99; },
+  value => { value.push({ ...value[0] }); }
+]) {
+  const invalid = structuredClone(medalManifest);
+  mutate(invalid.medalSystem.collectedMedals);
+  require("node:assert/strict").throws(
+    () => assertBackupV5Manifest(invalid), /invalid collected medal data/
+  );
+}
+assert(true, "medal restore rejects mismatched album/event identities, missing events and duplicate awards before replacement");
+
 console.log("Backup V5 regression checks passed.");
 

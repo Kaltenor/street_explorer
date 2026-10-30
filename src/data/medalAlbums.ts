@@ -28,18 +28,9 @@ export const BUNDLED_MEDAL_COUNT = FRANCE_MEDAL_ALBUM_MANIFEST.reduce(
   (total, entry) => total + entry.medalCount,
   0
 );
-export const DOWNLOADABLE_MEDAL_ALBUM_COUNT = downloadableAlbums.length;
-export const DOWNLOADABLE_MEDAL_COUNT = DOWNLOADABLE_MEDAL_COUNTRY_PACKS.reduce(
-  (total, pack) => total + pack.medalCount,
-  0
-);
 
 export function getBundledMedalAlbum(albumId: string) {
   return manifestByAlbumId.get(albumId)?.load() ?? null;
-}
-
-export function getBundledMedalAlbumMetadata(albumId: string) {
-  return manifestByAlbumId.get(albumId) ?? null;
 }
 
 export function getAllBundledMedalAlbums() {

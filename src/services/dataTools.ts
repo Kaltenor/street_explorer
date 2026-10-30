@@ -74,6 +74,7 @@ export type BackupV5RestorePreview = {
   pointCount: number;
   sessionCount: number;
   zoneAchievementCount: number;
+  routePlanCount: number;
 };
 
 export type BackupV5RestoreCandidate = {
@@ -208,7 +209,8 @@ export async function selectBackupV5ForRestore(): Promise<
       medalCount: manifest.medalSystem.collectedMedals.length,
       pointCount: manifest.totals.pointCount,
       sessionCount: manifest.totals.sessionCount,
-      zoneAchievementCount: manifest.zoneAchievements.length
+      zoneAchievementCount: manifest.zoneAchievements.length,
+      routePlanCount: manifest.routePlans?.length ?? 0
     }
   };
 }

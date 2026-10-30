@@ -74,19 +74,6 @@ export function collectExplorationCellIds(
   return [...cellKeys];
 }
 
-export function buildExplorationCells(
-  walks: WalkWithPoints[],
-  activePoints: GpsPoint[],
-  activeMode: ActivityMode,
-  loopFillCellIds: string[] = []
-) {
-  const loopFillKeys = new Set(loopFillCellIds);
-
-  return collectExplorationCellIds(walks, activePoints, activeMode, loopFillCellIds).map((key) =>
-    buildExplorationCell(key, loopFillKeys.has(key) ? "loop_fill" : "gps")
-  );
-}
-
 export function buildMergedExplorationPolygons(
   cells: readonly ExplorationCellReference[],
   options: ExplorationPolygonOptions = {}
@@ -453,32 +440,10 @@ export function buildExplorationOutlineSegments(
   );
 }
 
-export function calculateExploredAreaSquareMeters(walks: WalkWithPoints[]) {
-  return calculateExploredCellCount(walks) * EXPLORATION_CELL_SIZE_METERS * EXPLORATION_CELL_SIZE_METERS;
-}
-
 export function calculateExploredCellCount(walks: WalkWithPoints[]) {
   const cellKeys = collectExploredCellKeys(walks, [], "walk");
 
   return cellKeys.size;
-}
-
-export function calculateNewCellsForActivePath(
-  walks: WalkWithPoints[],
-  activePoints: GpsPoint[],
-  activeMode: ActivityMode
-) {
-  const savedKeys = collectExploredCellKeys(walks, [], activeMode);
-  const activeKeys = collectExploredCellKeys([], activePoints, activeMode);
-  let newCellCount = 0;
-
-  for (const key of activeKeys) {
-    if (!savedKeys.has(key)) {
-      newCellCount += 1;
-    }
-  }
-
-  return newCellCount;
 }
 
 export function collectExploredCellIdsForPath(points: GpsPoint[], activityMode: ActivityMode) {
@@ -486,6 +451,13 @@ export function collectExploredCellIdsForPath(points: GpsPoint[], activityMode: 
 
   markPathCells(keys, points, activityMode);
 
+  return [...keys];
+}
+
+/** Read-only preview using exactly the recorded-route grid and capture radius. */
+export function collectPlannedRouteCellIds(points: readonly MapCoordinate[]) {
+  const keys = new Set<string>();
+  for (let i = 1; i < points.length; i++) markSegmentCells(keys, points[i - 1]!, points[i]!);
   return [...keys];
 }
 
@@ -613,7 +585,7 @@ function markPathCells(keys: Set<string>, points: GpsPoint[], activityMode: Acti
   }
 }
 
-function markSegmentCells(keys: Set<string>, from: GpsPoint, to: GpsPoint) {
+function markSegmentCells(keys: Set<string>, from: MapCoordinate, to: MapCoordinate) {
   const fromPoint = coordinateToMercator(from);
   const toPoint = coordinateToMercator(to);
   if (![fromPoint.x, fromPoint.y, toPoint.x, toPoint.y].every(Number.isFinite)) {

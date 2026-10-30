@@ -61,13 +61,6 @@ export function getCachedMedalAlbumDefinition(albumId: string) {
   return getBundledMedalAlbum(albumId) ?? loadedAlbums.get(albumId) ?? null;
 }
 
-export function isMedalCountryPackInstalled(
-  descriptor: DownloadableMedalCountryPackDescriptor
-) {
-  ensureCountryPackDirectory();
-  return getCountryPackFile(descriptor).exists;
-}
-
 export async function getLocallyAvailableMedalAlbumDefinitions() {
   const albums = getAllBundledMedalAlbums();
 

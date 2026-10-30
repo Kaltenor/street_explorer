@@ -27,9 +27,6 @@ import {
   MedalCollectionResult
 } from "../types/medal";
 import { GpsPoint, RenderedRouteSegment, WalkWithPoints } from "../types/walk";
-
-export const MEDAL_MAX_ENCLOSURE_AREA_SQUARE_METERS =
-  LOOP_FILL_CONFIG.maxPolygonAreaSquareMetersByMode.walk;
 export const MEDAL_MIN_BOUNDARY_LENGTH_METERS =
   LOOP_FILL_CONFIG.minLoopDistanceMeters;
 

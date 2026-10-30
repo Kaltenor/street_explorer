@@ -163,11 +163,6 @@ export const STRINGS = {
       recording: "Recording",
       savedRoute: "Saved route"
     },
-    modeProfile: {
-      gps: "GPS",
-      jumpCap: "Jump cap",
-      profile: "{mode} profile"
-    },
     history: {
       backup: "Backup",
       backupProcessing: "Backup in progress...",
@@ -383,11 +378,6 @@ export const STRINGS = {
       recording: "En cours",
       savedRoute: "Trace enregistrée"
     },
-    modeProfile: {
-      gps: "GPS",
-      jumpCap: "Limite de saut",
-      profile: "Profil {mode}"
-    },
     history: {
       backup: "Sauvegarder",
       backupProcessing: "Sauvegarde en cours...",
@@ -489,8 +479,6 @@ export const STRINGS = {
     }
   }
 } as const;
-
-export type AppStrings = typeof STRINGS.en;
 
 export function getStrings(language: AppLanguage) {
   return STRINGS[language];

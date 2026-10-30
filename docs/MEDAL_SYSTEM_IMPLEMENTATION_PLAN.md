@@ -7,7 +7,11 @@
 
 This document began as the pre-implementation audit and records the decisions implemented in v0.4.0 plus selected maintenance notes through v0.8.1. Its long-form findings remain useful design rationale, but they are intentionally not rewritten as the product evolves.
 
-## Current shipped medal contract (v0.35.23)
+## Current shipped medal contract (v0.36.6)
+
+Route planning prioritizes unexplored cells; its simplified UI has no medal-preference or medal-list controls. Plans and internal estimated opportunities never grant medals. Only the established recorded exploration rules award them.
+
+Backup V5 inspection verifies that each collected medal references an acquisition event for the same album and medal, and rejects duplicate collected keys before replacement. This maintenance does not change qualification rules or catalogue contents.
 
 - The frozen offline catalogue contains 6,082 medals across France's 500 largest communes, including departments and collectivities overseas. Ranks 1–100 have at least 20 medals and ranks 101–500 at least 10. Thonon v1 retains 10 balanced commune-local landmarks; Paris v2 contains 60, Marseille v2 contains 38, Lyon v2 contains 44, and Villeurbanne v2 contains 20.
 - Belgium, Germany, Italy, the Netherlands, and Spain are versioned downloadable country packs. Their compact pinned manifest ships with the app; gzip payloads are size- and SHA-256-verified, schema-validated, atomically cached, and reusable offline. A failed download leaves non-medal map hydration available and exposes an explicit retry state.
@@ -172,7 +176,7 @@ Substantial generic activity-mode residue remains:
 | Exploration schema | `explored_cells.mode` and `loop_fills.mode` (`src/database/db.ts:154-176`) | Legacy partition key; do not drop during medal work |
 | Settings | `active_recording_mode` and completion objective `mode` (`src/database/settingsRepository.ts:6-18`, `48-51`, `253-306`) | Recovery/compatibility residue |
 | Repository APIs | Mode-filtered session, stats, cell, loop, and rebuild queries (`src/database/walkRepository.ts:509-524`, `737-809`; `src/database/completionRepository.ts:191-430`) | Internally fixed to walk by callers |
-| UI copy | `ACTIVITY_MODE_TEXT`, History's visible Mode row, `ModeProfilePanel`, Details' `{mode}` subtitle (`src/i18n.ts:10-45`; `src/components/WalkHistoryModal.tsx:232-258`; `src/components/ModeProfilePanel.tsx`; `src/screens/MapScreen.tsx:3666-3691`) | User-visible generic mode language still exists, but offers no selection |
+| UI copy | `ACTIVITY_MODE_TEXT`, History's visible Mode row, the former `ModeProfilePanel` (removed as unused in 0.36.5), Details' `{mode}` subtitle (`src/i18n.ts:10-45`; `src/components/WalkHistoryModal.tsx:232-258`; `src/screens/MapScreen.tsx:3666-3691`) | User-visible generic mode language still exists, but offers no selection |
 | Completion | `const mode = "walk"`; objective persists a mode (`src/components/CompletionModal.tsx:64`; `src/database/settingsRepository.ts:15-18`) | No activity selector |
 | Reprocessing | `reprocessModeExploration(mode)` and mode-keyed loops (`src/screens/MapScreen.tsx:1534-1764`) | Single-mode implementation behind a generic name |
 | Backup | V2 sessions serialize `activityMode`; restore hardcodes `"walk"` (`src/database/walkRepository.ts:61-74`, `881-940`, `968-991`) | Old field accepted, original legacy value not preserved |
@@ -295,7 +299,7 @@ Recommended modules:
 src/types/medal.ts
 src/database/medalRepository.ts
 src/database/poiCandidateRepository.ts
-src/services/poiCandidateService.ts
+(historical: poiCandidateService.ts, removed as disconnected in 0.36.5)
 src/services/medalAlbumService.ts
 src/services/medalEnclosure.ts
 src/services/medalCollection.ts
@@ -1150,7 +1154,7 @@ Keep each commit internally valid; do not split a required migration from the re
 - [x] Completion objective still serializes a walk mode.
 - [x] Repositories still accept mode parameters fixed to walk by callers.
 - [x] History still shows a generic Mode row.
-- [x] `ModeProfilePanel` still shows a walking profile.
+- [x] Historical: `ModeProfilePanel` showed a walking profile; the disconnected component was removed in 0.36.5.
 - [x] Localization still uses `ACTIVITY_MODE_TEXT`.
 - [x] Backup V2 still serializes session activity mode.
 - [x] Restore hardcodes operational mode to walk.

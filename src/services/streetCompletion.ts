@@ -5,7 +5,7 @@ import {
   StreetCompletionSummary,
   StreetSegmentCoverage
 } from "../types/street";
-import { GpsPoint, RenderedRouteSegment, WalkWithPoints } from "../types/walk";
+import { GpsPoint, RenderedRouteSegment } from "../types/walk";
 
 const STREET_MATCH_THRESHOLD_METERS = 12;
 const STREET_SAMPLE_STRIDE = 3;
@@ -42,61 +42,6 @@ type IndexedStreetLine = {
   unitX: number;
   unitY: number;
 };
-
-export function calculateStreetCompletion(
-  walks: WalkWithPoints[],
-  activePoints: GpsPoint[],
-  streetSegments: OsmStreetSegment[],
-  status: StreetCompletionSummary["status"]
-): StreetCompletionResult {
-  if (streetSegments.length === 0) {
-    return {
-      exploredStreetIds: new Set(),
-      summary: emptyStreetCompletionSummary(status)
-    };
-  }
-
-  const gpsPoints = [...walks.flatMap((walk) => walk.points), ...activePoints];
-  const exploredStreetIds = matchGpsPointsToStreetSegments(gpsPoints, streetSegments);
-  const totalDistanceMeters = streetSegments.reduce(
-    (distance, segment) => distance + calculateCoordinatePathDistance(segment.coordinates),
-    0
-  );
-  const exploredDistanceMeters = streetSegments.reduce((distance, segment) => {
-    if (!exploredStreetIds.has(segment.id)) {
-      return distance;
-    }
-
-    return distance + calculateCoordinatePathDistance(segment.coordinates);
-  }, 0);
-  const exploredStreetCount = new Set(
-    streetSegments
-      .filter((segment) => exploredStreetIds.has(segment.id))
-      .map((segment) => getOsmStreetId(segment.id))
-  ).size;
-  const loadedStreetCount = new Set(
-    streetSegments.map((segment) => getOsmStreetId(segment.id))
-  ).size;
-
-  return {
-    exploredStreetIds,
-    summary: {
-      completedStreetCount: exploredStreetCount,
-      completionPercent:
-        totalDistanceMeters > 0
-          ? Math.round((exploredDistanceMeters / totalDistanceMeters) * 1000) / 10
-          : 0,
-      exploredDistanceMeters,
-      exploredStreetCount,
-      legacyMatchedStreetCount: exploredStreetCount,
-      loadedStreetCount,
-      processedRecordingCount: walks.length,
-      status,
-      totalDistanceMeters,
-      updatedAt: null
-    }
-  };
-}
 
 export function emptyStreetCompletionSummary(
   status: StreetCompletionSummary["status"] = "empty"

@@ -1,5 +1,33 @@
 # Development Build
 
+## Smaller runtime payload - 0.36.6
+
+Current version 0.36.6 / iOS and Android build 261. The existing SDK 54 client can load the compressed catalogue, subset font and optimized runtime images. A rebuilt binary is needed for the optimized native splash. No native dependency or schema change.
+
+After manual France album edits run npm run build:bundled-medals; the France generator does this automatically. After adding/changing icon names run npm run build:icon-subset (Python fonttools and Pillow required; install scripts/requirements-asset-tools.txt). Ordinary builds use checked-in generated assets and need no Python installation. npm test verifies that both generated datasets match source usage. Export measurements use npm run measure:export -- <directory>; compare exports made with identical source-map settings. See [full results and device protocol](APP_SIZE_0_36_6.md).
+
+## Build input hygiene - 0.36.5
+
+The 0.36.5 release used iOS and Android build 260. No native dependency or schema change; a compatible SDK 54 client can load the updated JavaScript. The new .easignore includes the .gitignore exclusions plus assets/*.psd and assets/player/cartographer-sheet.png. Keep the shared exclusions synchronized when editing either ignore file. Active splash, fonts, sprites, sounds and bundled catalogue data remain available to builds. See [cleanup audit](AUDIT_0_36_5.md).
+
+## Medal selection fix - 0.36.4
+
+The 0.36.4 release used iOS and Android build 259. Reload the JavaScript bundle in a compatible SDK 54 client; no new native dependency, migration or credentialed build is required. Verify [map medal selection](TESTING.md#map-medal-selection---0364) on both supported providers. Native scrolling and highlighting still require physical-device confirmation.
+
+## Refinement validation build - 0.36.3
+
+The 0.36.3 release used iOS and Android build 258. This maintenance patch changes JavaScript only, with no new dependency or migration. Reload a compatible SDK 54 client; standalone installs use the new build metadata. Validate both appearances, French/English, larger text, planner controls, sparse-segment guidance and History renaming using [the refinement protocol](TESTING.md#visual-refinement-and-guidance---0363). No remote credentialed build was requested.
+
+## Route-planning validation build — 0.36.2
+
+The 0.36.2 patch fixes the Apple Maps native "No command found with name redraw" error. The installed MapKit marker manager has no redraw command; Google does. A full JavaScript reload is sufficient in a compatible client. Test adding planning points, validating guidance, closing/reopening and switching providers without the command error.
+
+Version 0.36.2 / iOS and Android build 257. No new native dependency: a compatible SDK 54 development client can load this JavaScript bundle. Fully reload; migration 38 from 0.36.0 remains required, with no further schema change. No credentialed EAS build is needed for local validation. Physical-device checks must cover compact controls, hidden HUD/dock, successive main-map taps, automatic suggestions, both providers/appearances, remote starts, offline pending guidance and recording recovery; see [the planning protocol](TESTING.md#walking-route-planning---0362).
+
+## Audit validation build - 0.35.24
+
+Version 0.35.24 / iOS and Android build 254. These are JavaScript-only fixes, with no new native dependency or schema migration. Use an existing compatible SDK 54 development client and Metro for [the audit device protocol](TESTING.md#maintenance-audit---03524). No remote EAS build was requested or run. Local iOS export validates bundling, not installation or background GPS behavior.
+
 ## Clear routes after stopping - 0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.

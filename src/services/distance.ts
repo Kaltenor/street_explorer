@@ -6,7 +6,7 @@ function toRadians(value: number) {
   return (value * Math.PI) / 180;
 }
 
-export function haversineDistanceMeters(from: GpsPoint, to: GpsPoint) {
+export function haversineDistanceMeters(from: Pick<GpsPoint, "latitude" | "longitude">, to: Pick<GpsPoint, "latitude" | "longitude">) {
   const latitudeDelta = toRadians(to.latitude - from.latitude);
   const longitudeDelta = toRadians(to.longitude - from.longitude);
   const fromLatitude = toRadians(from.latitude);

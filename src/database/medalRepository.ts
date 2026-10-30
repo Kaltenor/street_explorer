@@ -23,7 +23,6 @@ type CollectedMedalRow = {
 };
 
 const RETRO_SCAN_SETTING_PREFIX = "medal_retro_scan:";
-const RECORDING_REPAIR_SETTING_KEY = "medal_recording_repair:gameplay-v2";
 const medalAlbumSeedOperations = new Map<
   string,
   Promise<Awaited<ReturnType<typeof getMedalAlbumDefinition>>>
@@ -421,28 +420,6 @@ export async function markMedalPresentationState(
   );
 }
 
-export async function hasCompletedMedalRecordingRepair() {
-  const db = await getDatabase();
-  const row = await db.getFirstAsync<{ value: string }>(
-    "SELECT value FROM app_settings WHERE key = ?",
-    RECORDING_REPAIR_SETTING_KEY
-  );
-
-  return Boolean(row?.value);
-}
-
-export async function markMedalRecordingRepairCompleted() {
-  const db = await getDatabase();
-
-  await db.runAsync(
-    `INSERT INTO app_settings (key, value)
-    VALUES (?, ?)
-    ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
-    RECORDING_REPAIR_SETTING_KEY,
-    new Date().toISOString()
-  );
-}
-
 export async function hasCompletedMedalRetroScan(albumId: string) {
   const album = await getMedalAlbumDefinition(albumId);
 
@@ -513,21 +490,4 @@ function parseMedalRetroScanCursor(value: string | undefined) {
   }
 
   return null;
-}
-
-export async function clearAllCollectedMedals() {
-  const db = await getDatabase();
-
-  await db.withExclusiveTransactionAsync(async (transaction) => {
-    await transaction.runAsync("DELETE FROM collected_medals");
-    await transaction.runAsync("DELETE FROM medal_acquisition_events");
-    await transaction.runAsync(
-      "DELETE FROM app_settings WHERE key LIKE ?",
-      RETRO_SCAN_SETTING_PREFIX + "%"
-    );
-    await transaction.runAsync(
-      "DELETE FROM app_settings WHERE key = ?",
-      RECORDING_REPAIR_SETTING_KEY
-    );
-  });
 }

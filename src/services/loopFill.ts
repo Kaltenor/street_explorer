@@ -62,15 +62,6 @@ const WALKABLE_HIGHWAYS = new Set([
   "steps"
 ]);
 
-export function analyzeLoopFill(input: {
-  activityMode: ActivityMode;
-  exploredStreetIds: Set<string>;
-  points: GpsPoint[];
-  streetSegments: OsmStreetSegment[];
-}): LoopFillResult | null {
-  return analyzeLoopFills(input)[0] ?? null;
-}
-
 export function analyzeLoopFills(input: {
   activityMode: ActivityMode;
   exploredStreetIds: Set<string>;

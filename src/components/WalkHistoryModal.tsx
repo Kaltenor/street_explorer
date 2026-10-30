@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createAppearanceStyles } from "../constants/appearance";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -358,20 +358,23 @@ function RecordingDetail({
   onReprocessWalk: (sessionId: number) => void;
   onUpdateDraftName: (value: string) => void;
 }) {
-  const report = buildRecordingReport(walk, walkWithPoints, loopFillSummary);
+  const report = useMemo(
+    () => buildRecordingReport(walk, walkWithPoints, loopFillSummary),
+    [walk, walkWithPoints, loopFillSummary]
+  );
   const strings = getStrings(language);
   const modeText = ACTIVITY_MODE_TEXT[language];
   const [technicalVisible, setTechnicalVisible] = useState(false);
-  const inferredSegments = walkWithPoints?.routeSegments?.filter(
+  const inferredSegments = useMemo(() => walkWithPoints?.routeSegments?.filter(
     (segment) => segment.type === "inferred"
-  ) ?? [];
-  const inferredCellCount = inferredSegments.reduce(
+  ) ?? [], [walkWithPoints?.routeSegments]);
+  const inferredCellCount = useMemo(() => inferredSegments.reduce(
     (total, segment) => total + (
       segment.bridgeEvidence?.inferredCellCount ??
       collectExploredCellIdsForPath(segment.points, walk.activityMode).length
     ),
     0
-  );
+  ), [inferredSegments, walk.activityMode]);
   const bridgeSummary = interpolate(strings.history.bridgeSummary, {
     cells: inferredCellCount,
     count: inferredSegments.length,
@@ -448,6 +451,7 @@ function RecordingDetail({
 
         <TouchableOpacity
           accessibilityRole="button"
+          accessibilityState={{ expanded: technicalVisible }}
           onPress={() => setTechnicalVisible((visible) => !visible)}
           style={styles.technicalToggle}
         >
@@ -534,6 +538,7 @@ function RecordingDetail({
         ) : null}
 
         <TextInput
+          accessibilityLabel={strings.history.recordingName}
           placeholder={strings.history.recordingName}
           placeholderTextColor={APP_COLORS.textMuted}
           onChangeText={onUpdateDraftName}
@@ -835,10 +840,12 @@ const styles = createAppearanceStyles({
   },
   actions: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10,
     marginTop: 2
   },
   backButton: {
+    minHeight: 44,
     alignItems: "center",
     alignSelf: "flex-start",
     flexDirection: "row",
@@ -883,7 +890,8 @@ const styles = createAppearanceStyles({
     flex: 1,
     flexDirection: "row",
     gap: 6,
-    height: 42,
+    minHeight: 44,
+    paddingVertical: 10,
     justifyContent: "center",
     paddingHorizontal: 12
   },
@@ -1059,11 +1067,14 @@ const styles = createAppearanceStyles({
     flex: 1,
     flexDirection: "row",
     gap: 6,
-    height: 42,
+    minHeight: 44,
+    paddingVertical: 10,
     justifyContent: "center",
     paddingHorizontal: 12
   },
   saveButtonText: {
+    flexShrink: 1,
+    textAlign: "center",
     color: "#151006",
     fontSize: 14,
     fontWeight: "700"
@@ -1077,11 +1088,15 @@ const styles = createAppearanceStyles({
     flex: 1,
     flexDirection: "row",
     gap: 6,
-    height: 42,
+    minHeight: 44,
+    minWidth: 130,
+    paddingVertical: 10,
     justifyContent: "center",
     paddingHorizontal: 12
   },
   secondaryButtonText: {
+    flexShrink: 1,
+    textAlign: "center",
     color: "#f8fafc",
     fontSize: 14,
     fontWeight: "700"
@@ -1114,6 +1129,7 @@ const styles = createAppearanceStyles({
     marginTop: 2
   },
   summaryValue: {
+    fontVariant: ["tabular-nums"],
     color: "#f8fafc",
     fontSize: 17,
     fontWeight: "900"
@@ -1227,7 +1243,8 @@ const styles = createAppearanceStyles({
     borderWidth: 1,
     flexDirection: "row",
     gap: 7,
-    minHeight: 40,
+    minHeight: 44,
+    paddingVertical: 8,
     paddingHorizontal: 12
   },
   toolButtonDisabled: {

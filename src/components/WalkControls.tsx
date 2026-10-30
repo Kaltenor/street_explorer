@@ -40,6 +40,7 @@ type WalkControlsProps = {
   language: AppLanguage;
   recordingQuality: RecordingQuality;
   onStart: () => void;
+  onPlan: () => void;
   onStop: () => void;
   onToggleForbiddenZoneMode: () => void;
 };
@@ -70,6 +71,7 @@ export function WalkControls({
   language,
   recordingQuality,
   onStart,
+  onPlan,
   onStop,
   onToggleForbiddenZoneMode
 }: WalkControlsProps) {
@@ -215,12 +217,15 @@ export function WalkControls({
         </View>
       ) : null}
 
+      <View style={styles.actionsRow}>
       <TouchableOpacity
         accessibilityRole="button"
+        accessibilityState={{ busy: isStarting || isFinalizing, disabled: isStarting || isFinalizing }}
         disabled={isStarting || isFinalizing}
         onPress={isRecording ? onStop : onStart}
         style={[
           styles.button,
+          !isRecording ? styles.idleStartButton : null,
           isRecording ? styles.stopButton : styles.startButton,
           isStarting || isFinalizing ? styles.disabledButton : null
         ]}
@@ -244,6 +249,17 @@ export function WalkControls({
               : `${strings.walkControls.start} ${recordingNoun}`}
         </Text>
       </TouchableOpacity>
+
+      {!isRecording ? <TouchableOpacity accessibilityRole="button" disabled={isStarting || isFinalizing}
+        accessibilityState={{ disabled: isStarting || isFinalizing }}
+        accessibilityLabel={language === "fr" ? "Préparer une balade" : "Plan a walk"}
+        onPress={onPlan} style={[styles.planButton, isStarting || isFinalizing ? styles.disabledButton : null]}>
+        <Ionicons name="map-outline" size={17} color={APP_COLORS.gold} />
+        <Text style={styles.planButtonText}>
+          {language === "fr" ? "Préparer" : "Plan a walk"}
+        </Text>
+      </TouchableOpacity> : null}
+      </View>
 
       <GpsStateBadge
         accuracyMeters={gpsAccuracyMeters}
@@ -506,6 +522,10 @@ function getQualityStyle(label: RecordingQuality["label"]) {
 }
 
 const styles = createAppearanceStyles({
+  actionsRow: { flexDirection: "row", gap: 8, justifyContent: "center", alignItems: "stretch" },
+  idleStartButton: { flex: 1, width: undefined },
+  planButton: { minHeight: 46, maxWidth: "45%", paddingHorizontal: 12, paddingVertical: 8, backgroundColor: APP_COLORS.cardRaised, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 7, borderWidth: 1, borderColor: APP_COLORS.goldBorder, borderRadius: 12 },
+  planButtonText: { color: APP_COLORS.parchment, fontFamily: ATLAS_DISPLAY_FONT, fontSize: 12, flexShrink: 1 },
   button: {
     alignItems: "center",
     alignSelf: "center",
@@ -513,10 +533,14 @@ const styles = createAppearanceStyles({
     flexDirection: "row",
     gap: 8,
     justifyContent: "center",
-    minHeight: 44,
+    minHeight: 46,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
     width: "60%"
   },
   buttonText: {
+    textAlign: "center",
+    flexShrink: 1,
     color: "#ffffff",
     fontFamily: ATLAS_DISPLAY_FONT,
     fontSize: 13,
@@ -527,12 +551,12 @@ const styles = createAppearanceStyles({
     backgroundColor: "rgba(7, 16, 24, 0.96)",
     borderColor: APP_COLORS.borderStrong,
     borderTopColor: "rgba(245, 196, 81, 0.28)",
-    borderRadius: 10,
+    borderRadius: 14,
     borderWidth: 1,
-    gap: 7,
+    gap: 9,
     marginHorizontal: -7,
     overflow: "hidden",
-    padding: 9
+    padding: 10
   },
   details: {
     backgroundColor: "rgba(19, 33, 43, 0.92)",
@@ -675,6 +699,7 @@ const styles = createAppearanceStyles({
     marginTop: 1
   },
   metricValue: {
+    fontVariant: ["tabular-nums"],
     color: "#f8fafc",
     fontSize: 14,
     fontWeight: "700"

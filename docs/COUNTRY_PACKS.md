@@ -1,5 +1,15 @@
 # Downloadable Medal Country Packs
 
+## Lossless bundled France payload - 0.36.6
+
+All France definitions remain available offline, with no content or catalogue-version change. The manifest loads independent compressed city payloads via a shared 32 KiB DEFLATE dictionary; decoded albums retain cached identity. Run npm run build:bundled-medals after changing source JSON and npm run test:bundle-assets to verify every original field. Foreign downloadable pack files, checksums and installation behavior are unchanged. [Size measurements](APP_SIZE_0_36_6.md).
+
+## Generator inputs after cleanup - 0.36.5
+
+Published country-packs/v1 artifacts, descriptors, quality reports, source attribution, Spain population shortlist and curation files remain versioned. Research downloads, screenshots and candidate caches under .tmp-country-pack-size/ and tmp/pdfs/ were removed; these scratch directories are now ignored. App installation and offline pack reuse do not need them.
+
+To regenerate Belgium, supply the Statbel TF_SOC_POP_STRUCT_2025.txt with --statbel=<path>; for Italy, supply ISTAT POSAS_2025_it_Comuni.csv with --istat=<path>; for Germany, supply Destatis GV100AD_31122024.txt with --destatis=<path>. Germany has no implicit REPL input path and uses the OS temporary directory for its default cache (override with --cache=<path>). Italy caches beside its input unless --cache is set. Obtain the matching dated datasets from the publishers identified in each generator and published quality report. Fresh candidate queries need network access and may produce different results as upstream data changes; this cleanup did not regenerate or publish packs. For exact historical research snapshots, retrieve them from Git history.
+
 ## Durable pack installation and restore checks — 0.35.10
 
 An installed country pack is retained after a temporary filesystem read error. Invalid content still triggers replacement. Downloaded albums enter memory only after the temporary file is successfully renamed; obsolete-file cleanup failure does not invalidate a successful install. Backup V5 block reading compares the full current manifest to the verified snapshot before yielding any data, rejecting changed metadata even if the backup ID is reused.
@@ -57,11 +67,11 @@ The generated results and estimate variance are written to `country-packs/v1/wav
 
 ## Measured Distribution And SQLite Footprint
 
-`npm run measure:medal-storage` rebuilds `country-packs/v1/medal-storage-report.json`. France's distributed value is the exact sum of its 500 pretty-printed bundled album files; the other countries use their published gzip bytes. SQLite size is a fresh 4 KiB-page database containing the production catalogue tables and indexes after `VACUUM`; the empty schema is 36,864 bytes in every case.
+`npm run measure:medal-storage` rebuilds `country-packs/v1/medal-storage-report.json`. France's distributed value is the generated compressed payload JSON before Hermes packaging (625,879 bytes in 0.36.6), not the original pretty-printed source files; the other countries use their published gzip bytes. Actual compiled bundle size is measured separately by npm run measure:export. SQLite size is a fresh 4 KiB-page database containing the production catalogue tables and indexes after `VACUUM`; the empty schema is 36,864 bytes in every case.
 
 | Country | Albums | Medals | Distributed | Expanded definitions | Seeded SQLite | Catalogue above empty schema |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| France | 500 | 6,082 | 3,830,420 B | 2,861,319 B | 3,682,304 B | 3,645,440 B |
+| France | 500 | 6,082 | 625,879 B | 2,861,319 B | 3,682,304 B | 3,645,440 B |
 | Belgium | 91 | 782 | 66,511 B | 762,005 B | 671,744 B | 634,880 B |
 | Germany | 100 | 864 | 73,212 B | 687,040 B | 593,920 B | 557,056 B |
 | Spain | 100 | 858 | 75,940 B | 709,974 B | 589,824 B | 552,960 B |

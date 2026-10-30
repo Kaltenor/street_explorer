@@ -226,7 +226,7 @@ assert.match(
 );
 assert.match(mapSource, /ForbiddenZoneMapLabel/);
 assert.match(mapSource, /formatForbiddenZoneArea\(zone\.areaM2\)/);
-assert.match(summarySource, /onMapPress=\{handleMapPressEvent\}/);
+assert.match(summarySource, /onMapPress=\{plannerVisible \? planningMap\?\.onPress : handleMapPressEvent\}/);
 assert.match(summarySource, /visibleForbiddenZoneLabel\.districtId !== activeDistrictObjectiveId/);
 assert.match(summarySource, /updateForbiddenZoneComment/);
 assert.match(forbiddenZoneCommentSource, /maxLength=\{FORBIDDEN_ZONE_COMMENT_MAX_LENGTH\}/);
@@ -353,8 +353,9 @@ assert.match(walkControlsSource, /fontFamily: ATLAS_DISPLAY_FONT/);
 assert.match(walkControlsSource, /style=\{styles\.gpsState\}/);
 assert.match(walkControlsSource, /borderColor: APP_COLORS\.border/);
 assert.doesNotMatch(walkControlsSource, /borderColor: color/);
-assert.match(walkControlsSource, /minHeight: 44/);
-assert.match(walkControlsSource, /container: \{[\s\S]*borderRadius: 10,[\s\S]*marginHorizontal: -7/);
+assert(Number(walkControlsSource.match(/\n  button: \{[\s\S]*?minHeight: (\d+)/)?.[1]) >= 44,
+  "primary recording action keeps at least a 44-point touch target");
+assert.match(walkControlsSource, /container: \{[\s\S]*marginHorizontal: -7/);
 
 assert.match(atlasSource, /isReduceMotionEnabled/);
 assert.match(atlasSource, /atlas-paper-texture\.png/);
@@ -406,7 +407,7 @@ assert.match(summarySource, /CARNET DE L'EXPLORATEUR/);
 assert.match(summarySource, /<AtlasStamp/);
 assert.match(summarySource, /presentation: "map-selection"/);
 assert.match(summarySource, /mapContentInsets=\{mapStampInsets\}/);
-assert.match(summarySource, /message=\{isLaunchDismissed \? atlasStampMessage : null\}/);
+assert.match(summarySource, /message=\{isLaunchDismissed && !plannerVisible \? atlasStampMessage : null\}/);
 assert.match(
   summarySource,
   /if \(\s*!objectiveBefore\?\.permanentlyCompleted &&\s*achievementWasEarnedDuringWalk &&\s*isLaunchDismissedRef\.current\s*\)/

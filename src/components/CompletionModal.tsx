@@ -125,6 +125,9 @@ export function CompletionModal({
   const autoRefreshAttemptedRef = useRef(false);
   const currentLocationRef = useRef(currentLocation);
   currentLocationRef.current = currentLocation;
+  const zoneLoadGenerationRef = useRef(0);
+  const zoneListContextRef = useRef({ scope, visible });
+  zoneListContextRef.current = { scope, visible };
   const hasCurrentLocation = Boolean(currentLocation);
   const strings = getStrings(language);
   const completionStrings = strings.completionMenu;
@@ -135,11 +138,17 @@ export function CompletionModal({
 
   const loadZones = useCallback(
     async () => {
+      const { scope: requestedScope, visible: isVisible } = zoneListContextRef.current;
+      if (!isVisible) return;
+      const generation = ++zoneLoadGenerationRef.current;
       const referenceLocation = currentLocationRef.current;
       const cachedZones = sortZonesForLocation(
-        await getCachedZones(scope),
+        await getCachedZones(requestedScope),
         referenceLocation
       );
+      if (generation !== zoneLoadGenerationRef.current ||
+          requestedScope !== zoneListContextRef.current.scope ||
+          !zoneListContextRef.current.visible) return;
       const bestZone = getBestZoneForLocation(cachedZones, referenceLocation);
 
       setZones(cachedZones);
@@ -150,7 +159,7 @@ export function CompletionModal({
       );
       setZonePickerOpen(false);
     },
-    [scope]
+    []
   );
 
   useEffect(() => {
@@ -158,13 +167,14 @@ export function CompletionModal({
       return;
     }
 
+    let cancelled = false;
     const interactionTask = InteractionManager.runAfterInteractions(() => {
       getCompletionStats(mode)
-        .then(setStats)
+        .then((value) => { if (!cancelled) setStats(value); })
         .catch((error) => console.warn("Failed to load completion stats", error));
     });
 
-    return () => interactionTask.cancel();
+    return () => { cancelled = true; interactionTask.cancel(); };
   }, [mode, visible]);
 
   useEffect(() => {
@@ -173,15 +183,19 @@ export function CompletionModal({
     }
 
     let cancelled = false;
+    let inFlight = false;
     let refreshTimer: ReturnType<typeof setInterval> | null = null;
     const loadStreetSummary = () => {
+      if (cancelled || inFlight) return;
+      inFlight = true;
       getStreetCompletionSummary()
         .then((summary) => {
           if (!cancelled) {
             setStreetSummary(summary);
           }
         })
-        .catch((error) => console.warn("Failed to load street completion", error));
+        .catch((error) => console.warn("Failed to load street completion", error))
+        .finally(() => { inFlight = false; });
     };
     const interactionTask = InteractionManager.runAfterInteractions(() => {
       loadStreetSummary();
@@ -207,8 +221,11 @@ export function CompletionModal({
         .catch((error) => console.warn("Failed to load completion zones", error));
     });
 
-    return () => interactionTask.cancel();
-  }, [loadZones, visible]);
+    return () => {
+      zoneLoadGenerationRef.current += 1;
+      interactionTask.cancel();
+    };
+  }, [loadZones, scope, visible]);
 
   useEffect(() => {
     if (!selectedZone) {
@@ -465,9 +482,11 @@ export function CompletionModal({
       return;
     }
 
+    let cancelled = false;
     const interactionTask = InteractionManager.runAfterInteractions(() => {
       Promise.all([getZoneRefreshState(), getZoneAchievementRollup()])
         .then(([storedRefreshState, storedRollup]) => {
+          if (cancelled) return;
           setRefreshState(storedRefreshState);
           setAchievementRollup(storedRollup);
 
@@ -484,7 +503,7 @@ export function CompletionModal({
         .catch((error) => console.warn("Failed to load zone V2 state", error));
     });
 
-    return () => interactionTask.cancel();
+    return () => { cancelled = true; interactionTask.cancel(); };
   }, [hasCurrentLocation, isRecording, refreshBoundaries, visible]);
   const handleClearBoundaries = () => {
     Alert.alert(completionStrings.clearCachedZones, completionStrings.clearCachedZonesMessage, [
@@ -497,6 +516,7 @@ export function CompletionModal({
         style: "destructive",
         onPress: async () => {
           await deleteCachedZones();
+          zoneLoadGenerationRef.current += 1;
           setZones([]);
           setSelectedZoneId(null);
           setZoneStats(null);

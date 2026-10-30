@@ -1,5 +1,29 @@
 # Project Overview
 
+## Runtime size maintenance - 0.36.6
+
+Production Hermes code plus assets totals 9.26 MB per platform, down about 21.9%, with unchanged features and visual content. France retains all 500 cities and 6,082 medals offline. Native binary/store-download sizes require separate release-build measurements. [Evidence and manual protocol](APP_SIZE_0_36_6.md).
+
+## Project maintenance - 0.36.5
+
+Unused source and inactive artwork were removed alongside 263 MB of tracked scratch/research files. Existing recording, exploration, medals, planning and backups are preserved. Country-pack population inputs must be supplied separately for regeneration. See [cleanup audit](AUDIT_0_36_5.md).
+
+## Medal navigation fix - 0.36.4
+
+Collected map medals now open their matching card in the collection, highlighted and visible without searching the list. Cross-city medals open All Cities. The navigation dock retains its normal overview behavior. Collection rules, locked medals and Wikipedia access are unchanged.
+
+## Visual maintenance - 0.36.3
+
+The existing Atlas style now has clearer planning choices and validation, a blue-accent planned-walk banner, grouped statistics and flexible History buttons for larger text. Recording guidance follows the route segments rather than just the source nodes, and missing GPS is explicit. Renaming a saved walk no longer repeats its geometry calculations on each keystroke. Native layout and frame-time verification are pending; follow [Testing](TESTING.md#visual-refinement-and-guidance---0363).
+
+## Walking route planning — 0.36.2
+
+Optional planning beside idle Start uses the main map with compact Atlas controls and hides the normal HUD and navigation dock. Create guides successive map taps from any starting point; Suggest calculates automatically after selecting a start, with 2/4/6 km targets and a 6 km ceiling. Suggestions favor unique unexplored cells using the recorded-path capture grid, excluding explored surfaces and Forbidden Zones. Validate walk prepares blue guidance and restores normal controls; recording starts manually after travelling to the start. There is no Saved option. Pending guidance and matching recording recovery persist; legacy plan libraries remain preserved by migration 38 and optional Backup V5 routePlans. Planning never awards exploration or rewards. See [behavior and limitations](ROUTE_PLANNING.md).
+
+## Reliability audit - 0.35.24
+
+Build 254 fixes long-route recovery-preview stack overflow, completion scope-loading races and overlapping summary polling, and inconsistent medal references in backup inspection. Route simplification has measured desktop CPU reductions; native frame times and background recovery still need device checks. No database migration, catalogue change or saved-route rewrite is introduced. [Audit details](AUDIT_0_35_24.md).
+
 ## Clear routes after stopping - 0.35.23
 
 Today-only gold cell highlights are hidden while Paths is enabled; they remain available with Paths off and explored areas on. Exploration geometry, counts and persistence are unchanged. After successful recording finalization, confirmed live route chunks are immediately retained in saved-path state while background inference/rewards finish. Older pending scoped reads are invalidated so they cannot erase that handoff. Final processed routes still replace this preview. JavaScript-only, build 253.
